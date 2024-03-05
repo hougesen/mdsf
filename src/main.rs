@@ -43,13 +43,12 @@ fn format_command(args: FormatCommandArguments) -> std::io::Result<()> {
             .require_git(false)
             .hidden(true)
             .build()
+            .flatten()
         {
-            if let Ok(d) = entry {
-                let file_path = d.path();
+            let file_path = entry.path();
 
-                if file_path.extension() == Some(&OsStr::from("md")) {
-                    format_file(file_path)?;
-                }
+            if file_path.extension() == Some(&OsStr::from("md")) {
+                format_file(file_path)?;
             }
         }
     }
