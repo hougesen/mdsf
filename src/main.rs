@@ -7,7 +7,7 @@ mod config;
 mod formatters;
 
 fn format_file(path: &std::path::Path) -> std::io::Result<()> {
-    println!("Formatting {:#?}", path);
+    println!("Formatting {path:#?}");
 
     let input = std::fs::read_to_string(path)?;
 
