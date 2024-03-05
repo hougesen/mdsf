@@ -38,7 +38,7 @@ pub fn format_snippet(language: &str, code: String) -> String {
         code
     }
     .trim()
-    .to_string();
+    .to_owned();
 
     f.push('\n');
 
