@@ -13,5 +13,6 @@ categories = ["development-tools"]
 
 [dependencies]
 clap = { version = "4.5.1", features = ["derive"] }
+ignore = "0.4.22"
 markdown = "0.3.0"
 tempfile = "3.10.1"

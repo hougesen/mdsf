@@ -1,4 +1,4 @@
-use clap::Parser;
+use clap::{builder::OsStr, Parser};
 use config::{Cli, Commands, FormatCommandArguments};
 use formatters::format_snippet;
 use markdown::{generate_markdown, Block};
@@ -7,7 +7,9 @@ mod config;
 mod formatters;
 
 fn format_file(path: &std::path::Path) -> std::io::Result<()> {
-    let input = std::fs::read_to_string("input.md")?;
+    println!("Formatting {:#?}", path);
+
+    let input = std::fs::read_to_string(path)?;
 
     let tokens = markdown::tokenize(&input);
 
@@ -23,14 +25,33 @@ fn format_file(path: &std::path::Path) -> std::io::Result<()> {
         }
     }
 
-    output.push(Block::Raw(String::new()));
+    output.push(Block::Paragraph(Vec::new()));
 
-    std::fs::write(path, generate_markdown(output))
+    let mut s = generate_markdown(output).trim().to_owned();
+
+    s.push('\n');
+
+    std::fs::write(path, s)
 }
 
 fn format_command(args: FormatCommandArguments) -> std::io::Result<()> {
     if args.path.is_file() {
-        return format_file(&args.path);
+        format_file(&args.path)?;
+    } else {
+        for entry in ignore::WalkBuilder::new(args.path)
+            .git_ignore(true)
+            .require_git(false)
+            .hidden(true)
+            .build()
+        {
+            if let Ok(d) = entry {
+                let file_path = d.path();
+
+                if file_path.extension() == Some(&OsStr::from("md")) {
+                    format_file(file_path)?;
+                }
+            }
+        }
     }
 
     Ok(())
