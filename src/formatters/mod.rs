@@ -4,8 +4,8 @@ use tempfile::NamedTempFile;
 
 use self::{lua::format_using_stylua, rust::format_using_rustfmt};
 
-mod lua;
-mod rust;
+mod rustfmt;
+mod stylua;
 
 pub fn setup_snippet(code: &str) -> std::io::Result<NamedTempFile> {
     let mut f = NamedTempFile::new()?;

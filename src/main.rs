@@ -1,7 +1,7 @@
-use languages::format_snippet;
+use formatters::format_snippet;
 use markdown::{generate_markdown, Block};
 
-mod languages;
+mod formatters;
 
 fn main() -> std::io::Result<()> {
     let input = std::fs::read_to_string("input.md")?;
