@@ -2,8 +2,12 @@ use std::{io::Write, process::Command};
 
 use tempfile::NamedTempFile;
 
-use self::{ruff::format_using_ruff, rustfmt::format_using_rustfmt, stylua::format_using_stylua};
+use self::{
+    nimpretty::format_using_nimpretty, ruff::format_using_ruff, rustfmt::format_using_rustfmt,
+    stylua::format_using_stylua,
+};
 
+mod nimpretty;
 mod ruff;
 mod rustfmt;
 mod stylua;
@@ -30,7 +34,7 @@ pub fn format_snippet(language: &str, code: String) -> String {
         "rust" => format_using_rustfmt(&code),
         "lua" => format_using_stylua(&code),
         "python" => format_using_ruff(&code),
-
+        "nim" => format_using_nimpretty(&code),
         _ => Ok(None),
     } {
         return formatted_code;
