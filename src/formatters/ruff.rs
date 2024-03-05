@@ -1,14 +1,16 @@
+use std::process::Command;
+
 use super::{execute_command, read_snippet, setup_snippet};
 
-pub fn format_using_rustfmt(code: &str) -> std::io::Result<Option<String>> {
+pub fn format_using_ruff(code: &str) -> std::io::Result<Option<String>> {
     let file = setup_snippet(code)?;
     let file_path = file.path();
 
-    let mut cmd = std::process::Command::new("rustfmt");
+    let mut cmd = Command::new("ruff");
 
-    // Needed for async
-    cmd.arg("--edition").arg("2021");
-
+    cmd.arg("format");
+    cmd.arg("--quiet");
+    cmd.arg("--no-cache");
     cmd.arg(file_path);
 
     if execute_command(&mut cmd)? {
