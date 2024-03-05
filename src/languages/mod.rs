@@ -2,8 +2,9 @@ use std::{io::Write, process::Command};
 
 use tempfile::NamedTempFile;
 
-use self::rust::format_using_rustfmt;
+use self::{lua::format_using_stylua, rust::format_using_rustfmt};
 
+mod lua;
 mod rust;
 
 pub fn setup_snippet(code: &str) -> std::io::Result<NamedTempFile> {
@@ -26,6 +27,7 @@ pub fn execute_command(cmd: &mut Command) -> std::io::Result<bool> {
 pub fn format_snippet(language: &str, code: String) -> String {
     let mut f = if let Ok(Some(formatted_code)) = match language {
         "rust" => format_using_rustfmt(&code),
+        "lua" => format_using_stylua(&code),
         _ => Ok(None),
     } {
         return formatted_code;
