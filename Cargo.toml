@@ -12,3 +12,5 @@ readme = "README.md"
 categories = ["development-tools"]
 
 [dependencies]
+markdown = "0.3.0"
+tempfile = "3.10.1"
