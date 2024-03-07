@@ -13,3 +13,35 @@ pub fn format_using_zigfmt(file_path: &std::path::Path) -> std::io::Result<Optio
 
     Ok(None)
 }
+
+#[cfg(test)]
+mod test_zigfmt {
+    use crate::{
+        formatters::{setup_snippet, zigfmt::format_using_zigfmt},
+        languages::Language,
+    };
+
+    #[test]
+    fn it_should_format_zig() {
+        let input = "
+    fn     add   (a : i32    , b :   i32 )             i32 {
+        return a + b ;
+
+    }
+    ";
+
+        let expected_output = "fn add(a: i32, b: i32) i32 {
+    return a + b;
+}
+";
+
+        let snippet =
+            setup_snippet(input, Language::Zig.to_file_ext()).expect("it to create a snippet file");
+
+        let output = format_using_zigfmt(snippet.path())
+            .expect("it to be succesful")
+            .expect("it to be some");
+
+        assert_eq!(expected_output, output);
+    }
+}

@@ -11,8 +11,8 @@ env:
   RUST_BACKTRACE: full
 
 jobs:
-  test:
-    name: test
+  lint:
+    name: lint
     strategy:
       matrix:
         os:
@@ -30,4 +30,58 @@ jobs:
       - run: cargo fetch
       - run: cargo fmt -- --check --color always
       - run: cargo clippy
+
+  test:
+    name: test
+    strategy:
+      matrix:
+        os:
+          - ubuntu-latest
+        node:
+          - 20
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: Swatinem/rust-cache@v2
+      # Used by ruff
+      - uses: actions/setup-python@v5
+        with:
+          cache: "pip"
+      # Used by biome
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+      # Used by nimpretty
+      - uses: jiro4989/setup-nim-action@v1
+      # Used by zigfmt
+      - uses: goto-bus-stop/setup-zig@v2
+      - uses: uncenter/setup-taplo@v1
+
+      - run: rustup toolchain install stable --profile minimal
+      - run: rustup component add rustfmt clippy
+
+      - name: Validate taplo
+        run: taplo --version
+
+      - name: Install ruff
+        run: pip install ruff
+
+      - name: Validate ruff
+        run: ruff --version
+
+      - name: Install stylua
+        run: cargo install stylua
+
+      - name: Validate stylua
+        run: stylua --version
+
+      - name: Validate biome
+        run: npx --yes @biomejs/biome --version
+
+      - name: Validate nimpretty
+        run: nimpretty --version
+
+      - name: Validate zig fmt
+        run: zig fmt --help
+
       - run: cargo test
