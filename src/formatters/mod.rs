@@ -2,6 +2,8 @@ use std::{io::Write, process::Command};
 
 use tempfile::NamedTempFile;
 
+use crate::languages::Language;
+
 use self::{
     nimpretty::format_using_nimpretty, ruff::format_using_ruff, rustfmt::format_using_rustfmt,
     stylua::format_using_stylua, zigfmt::format_using_zigfmt,
@@ -31,15 +33,22 @@ pub fn execute_command(cmd: &mut Command) -> std::io::Result<bool> {
 }
 
 pub fn format_snippet(language: &str, code: String) -> String {
-    let mut f = if let Ok(Some(formatted_code)) = match language {
-        "rust" => format_using_rustfmt(&code),
-        "lua" => format_using_stylua(&code),
-        "python" => format_using_ruff(&code),
-        "nim" => format_using_nimpretty(&code),
-        "zig" => format_using_zigfmt(&code),
-        _ => Ok(None),
-    } {
-        return formatted_code;
+    let mut f = if let Some(l) = Language::from_str(language) {
+        if let Ok(snippet) = setup_snippet(&code) {
+            let snippet_path = snippet.path();
+
+            if let Ok(Some(formatted_code)) = match l {
+                Language::Lua => format_using_stylua(snippet_path),
+                Language::Nim => format_using_nimpretty(snippet_path),
+                Language::Python => format_using_ruff(snippet_path),
+                Language::Rust => format_using_rustfmt(snippet_path),
+                Language::Zig => format_using_zigfmt(snippet_path),
+            } {
+                return formatted_code;
+            }
+        }
+
+        code
     } else {
         code
     }

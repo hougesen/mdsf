@@ -1,9 +1,6 @@
-use super::{execute_command, read_snippet, setup_snippet};
+use super::{execute_command, read_snippet};
 
-pub fn format_using_nimpretty(code: &str) -> std::io::Result<Option<String>> {
-    let file = setup_snippet(code)?;
-    let file_path = file.path();
-
+pub fn format_using_nimpretty(file_path: &std::path::Path) -> std::io::Result<Option<String>> {
     let mut cmd = std::process::Command::new("nimpretty");
 
     cmd.arg(file_path);

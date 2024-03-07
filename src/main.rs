@@ -5,6 +5,7 @@ use markdown::{generate_markdown, Block};
 
 mod config;
 mod formatters;
+mod languages;
 
 fn format_file(path: &std::path::Path) -> std::io::Result<()> {
     println!("Formatting {path:#?}");

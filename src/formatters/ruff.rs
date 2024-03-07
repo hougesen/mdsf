@@ -1,12 +1,7 @@
-use std::process::Command;
+use super::{execute_command, read_snippet};
 
-use super::{execute_command, read_snippet, setup_snippet};
-
-pub fn format_using_ruff(code: &str) -> std::io::Result<Option<String>> {
-    let file = setup_snippet(code)?;
-    let file_path = file.path();
-
-    let mut cmd = Command::new("ruff");
+pub fn format_using_ruff(file_path: &std::path::Path) -> std::io::Result<Option<String>> {
+    let mut cmd = std::process::Command::new("ruff");
 
     cmd.arg("format");
     cmd.arg("--quiet");
