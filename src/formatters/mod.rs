@@ -4,13 +4,14 @@ use tempfile::NamedTempFile;
 
 use self::{
     nimpretty::format_using_nimpretty, ruff::format_using_ruff, rustfmt::format_using_rustfmt,
-    stylua::format_using_stylua,
+    stylua::format_using_stylua, zigfmt::format_using_zigfmt,
 };
 
 mod nimpretty;
 mod ruff;
 mod rustfmt;
 mod stylua;
+mod zigfmt;
 
 pub fn setup_snippet(code: &str) -> std::io::Result<NamedTempFile> {
     let mut f = NamedTempFile::new()?;
@@ -35,6 +36,7 @@ pub fn format_snippet(language: &str, code: String) -> String {
         "lua" => format_using_stylua(&code),
         "python" => format_using_ruff(&code),
         "nim" => format_using_nimpretty(&code),
+        "zig" => format_using_zigfmt(&code),
         _ => Ok(None),
     } {
         return formatted_code;
