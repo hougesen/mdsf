@@ -57,7 +57,22 @@ jobs:
       - run: rustup toolchain install stable --profile minimal
       - run: rustup component add rustfmt clippy
 
-      - run: cargo install taplo-cli
-      - run: pip install ruff
+      - name: Install taplo
+        run: cargo install taplo-cli
+
+      - name: Validate taplo
+        run: taplo --version
+
+      - name: Install ruff
+        run: pip install ruff
+
+      - name: Validate ruff
+        run: ruff --version
+
+      - name: Validate biome
+        run: npx --yes @biomejs/biome --version
+
+      - name: Validate nimpretty
+        run: nimpretty --version
 
       - run: cargo test
