@@ -58,7 +58,7 @@ jobs:
       - run: rustup component add rustfmt clippy
 
       - name: Install taplo
-        run: cargo install taplo-cli
+        run: curl -fsSL https://github.com/tamasfe/taplo/releases/latest/download/taplo-full-linux-x86_64.gz  | gzip -d - | install -m 755 /dev/stdin /usr/local/bin/taplo
 
       - name: Validate taplo
         run: taplo --version
