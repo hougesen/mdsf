@@ -1,9 +1,9 @@
 use clap::{builder::OsStr, Parser};
-use config::{Cli, Commands, FormatCommandArguments};
+use cli::{Cli, Commands, FormatCommandArguments};
 use formatters::format_snippet;
 use markdown::{generate_markdown, Block};
 
-mod config;
+mod cli;
 mod formatters;
 mod languages;
 
