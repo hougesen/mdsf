@@ -22,13 +22,13 @@ mod test_taplo {
 
     #[test]
     fn it_should_format_toml() {
-        let input = r#"          package         =              "mdsf"
-  author   = "Mads Hougesen" 
-  "#;
+        let input = "          package         =              \"mdsf\"
+  author   = \"Mads Hougesen\" 
+  ";
 
-        let expected_output = r#"package = "mdsf"
-author = "Mads Hougesen"
-"#;
+        let expected_output = "package = \"mdsf\"
+author = \"Mads Hougesen\"
+";
 
         let snippet = setup_snippet(input, Language::Toml.to_file_ext())
             .expect("it to create a snippet file");

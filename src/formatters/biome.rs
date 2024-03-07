@@ -27,17 +27,17 @@ mod test_biome {
 
     #[test]
     fn it_should_format_json() {
-        let input = r#"          
+        let input = "          
               {
     // comments are allowed
-              "key": "value", 
-  "key2": [
-      "value2", 
-      "value3", 
+              \"key\": \"value\", 
+  \"key2\": [
+      \"value2\", 
+      \"value3\", 
       1
             , null]
  }
-  "#;
+  ";
 
         let expected_output = "{
 \t// comments are allowed
