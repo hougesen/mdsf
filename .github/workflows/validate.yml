@@ -51,6 +51,8 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node }}
+      # Used by nimpretty
+      - uses: jiro4989/setup-nim-action@v1
 
       - run: rustup toolchain install stable --profile minimal
       - run: rustup component add rustfmt clippy
