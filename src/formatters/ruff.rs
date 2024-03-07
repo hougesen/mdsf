@@ -22,12 +22,12 @@ mod test_ruff {
     use super::format_using_ruff;
 
     #[test]
-    fn it_should_format_code() {
-        let snippet = r"def add( a: int ,  b:int)->int: return a+b";
+    fn it_should_format_python() {
+        let input = "def add( a: int ,  b:int)->int: return a+b";
 
         let expected_output = "def add(a: int, b: int) -> int:\n    return a + b\n";
 
-        let snippet = setup_snippet(snippet, Language::Python.to_file_ext())
+        let snippet = setup_snippet(input, Language::Python.to_file_ext())
             .expect("it to create a snippet file");
 
         let output = format_using_ruff(snippet.path())

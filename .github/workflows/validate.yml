@@ -48,6 +48,7 @@ jobs:
       - run: rustup toolchain install stable --profile minimal
       - run: rustup component add rustfmt clippy
 
+      - run: cargo install taplo
       - run: pip install ruff
 
       - run: cargo test

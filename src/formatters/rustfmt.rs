@@ -22,8 +22,8 @@ mod test_rustfmt {
     use super::format_using_rustfmt;
 
     #[test]
-    fn it_should_format_code() {
-        let snippet = r"pub     
+    fn it_should_format_rust() {
+        let input = "pub     
                     async 
             fn    add( a: i32, 
                             b:i32 )->                   i32 {a+b}
@@ -31,7 +31,7 @@ mod test_rustfmt {
 
         let expected_output = "pub async fn add(a: i32, b: i32) -> i32 {\n    a + b\n}\n";
 
-        let snippet = setup_snippet(snippet, Language::Rust.to_file_ext())
+        let snippet = setup_snippet(input, Language::Rust.to_file_ext())
             .expect("it to create a snippet file");
 
         let output = format_using_rustfmt(snippet.path())
