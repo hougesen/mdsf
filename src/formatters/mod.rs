@@ -1,4 +1,7 @@
-use std::{io::Write, process::Command};
+use std::{
+    io::Write,
+    process::{Command, Stdio},
+};
 
 use tempfile::NamedTempFile;
 
@@ -33,7 +36,7 @@ pub fn read_snippet(file_path: &std::path::Path) -> std::io::Result<String> {
 }
 
 pub fn execute_command(cmd: &mut Command) -> std::io::Result<bool> {
-    Ok(cmd.spawn()?.wait()?.success())
+    Ok(cmd.stdout(Stdio::null()).spawn()?.wait()?.success())
 }
 
 pub fn format_snippet(language: &str, code: String) -> String {
