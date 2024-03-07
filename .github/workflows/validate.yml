@@ -76,7 +76,7 @@ jobs:
         run: stylua --version
 
       - name: Validate biome
-        run: npx --yes @biomejs/biome@latest --version
+        run: npx --yes @biomejs/biome --version
 
       - name: Validate nimpretty
         run: nimpretty --version
