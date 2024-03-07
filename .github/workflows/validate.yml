@@ -53,6 +53,8 @@ jobs:
           node-version: ${{ matrix.node }}
       # Used by nimpretty
       - uses: jiro4989/setup-nim-action@v1
+      # Used by zigfmt
+      - uses: goto-bus-stop/setup-zig@v2
       - uses: uncenter/setup-taplo@v1
 
       - run: rustup toolchain install stable --profile minimal
@@ -72,5 +74,8 @@ jobs:
 
       - name: Validate nimpretty
         run: nimpretty --version
+
+      - name: Validate zig fmt
+        run: zig fmt --help
 
       - run: cargo test
