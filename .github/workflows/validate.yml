@@ -37,14 +37,22 @@ jobs:
       matrix:
         os:
           - ubuntu-latest
+        node:
+          - 20
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v4
       - uses: Swatinem/rust-cache@v2
-      # Used for ruff
+      # Used by ruff
       - uses: actions/setup-python@v5
         with:
           cache: "pip"
+      # Used by biome
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+          cache: "npm"
+
       - run: rustup toolchain install stable --profile minimal
       - run: rustup component add rustfmt clippy
 
