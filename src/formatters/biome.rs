@@ -55,4 +55,30 @@ mod test_biome {
 
         assert_eq!(expected_output, output);
     }
+
+    #[test]
+    fn it_should_format_javascript() {
+        let input = r#"          
+    async function asyncAddition(
+            a,b
+        ) {
+        return a+b 
+    }
+
+            "#;
+
+        let expected_output = "async function asyncAddition(a, b) {
+\treturn a + b;
+}
+";
+
+        let snippet = setup_snippet(input, Language::JavaScript.to_file_ext())
+            .expect("it to create a snippet file");
+
+        let output = format_using_biome(snippet.path())
+            .expect("it to be succesful")
+            .expect("it to be some");
+
+        assert_eq!(expected_output, output);
+    }
 }
