@@ -19,8 +19,6 @@ jobs:
           - windows-latest
           - macos-latest
           - ubuntu-latest
-            # TODO: remove once macos-latest is upgraded to an arm machine
-          - macos-14
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v4
