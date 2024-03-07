@@ -1,7 +1,5 @@
 use std::{
-    fs::Permissions,
     io::Write,
-    os::unix::fs::PermissionsExt,
     process::{Command, Stdio},
 };
 
@@ -27,7 +25,6 @@ pub fn setup_snippet(code: &str, file_ext: &str) -> std::io::Result<NamedTempFil
     let mut f = tempfile::Builder::new()
         .rand_bytes(12)
         .suffix(file_ext)
-        .permissions(Permissions::from_mode(0o777))
         .tempfile()?;
 
     f.write_all(code.as_bytes())?;
