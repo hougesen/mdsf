@@ -30,4 +30,7 @@ jobs:
       - run: cargo fetch
       - run: cargo fmt -- --check --color always
       - run: cargo clippy
+
+      - run: pip install ruff
+
       - run: cargo test
