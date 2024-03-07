@@ -5,6 +5,7 @@ pub enum Language {
     Nim,
     Python,
     Rust,
+    Toml,
     TypeScript,
     Zig,
 }
@@ -18,9 +19,9 @@ impl Language {
             "nim" => Some(Self::Nim),
             "python" => Some(Self::Python),
             "rust" => Some(Self::Rust),
+            "toml" => Some(Self::Toml),
             "ts" | "tsx" | "typescript" => Some(Self::TypeScript),
             "zig" => Some(Self::Zig),
-
             _ => None,
         }
     }
@@ -33,6 +34,7 @@ impl Language {
             Self::Nim => ".nim",
             Self::Python => ".py",
             Self::Rust => ".rs",
+            Self::Toml => ".toml",
             Self::TypeScript => ".ts",
             Self::Zig => ".zig",
         }

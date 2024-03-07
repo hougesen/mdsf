@@ -9,7 +9,8 @@ use crate::languages::Language;
 
 use self::{
     biome::format_using_biome, nimpretty::format_using_nimpretty, ruff::format_using_ruff,
-    rustfmt::format_using_rustfmt, stylua::format_using_stylua, zigfmt::format_using_zigfmt,
+    rustfmt::format_using_rustfmt, stylua::format_using_stylua, taplo::format_using_taplo,
+    zigfmt::format_using_zigfmt,
 };
 
 mod biome;
@@ -17,6 +18,7 @@ mod nimpretty;
 mod ruff;
 mod rustfmt;
 mod stylua;
+mod taplo;
 mod zigfmt;
 
 pub fn setup_snippet(code: &str, file_ext: &str) -> std::io::Result<NamedTempFile> {
@@ -51,6 +53,7 @@ pub fn format_snippet(language: &str, code: String) -> String {
                 Language::Nim => format_using_nimpretty(snippet_path),
                 Language::Python => format_using_ruff(snippet_path),
                 Language::Rust => format_using_rustfmt(snippet_path),
+                Language::Toml => format_using_taplo(snippet_path),
                 Language::TypeScript => format_using_biome(snippet_path),
                 Language::Zig => format_using_zigfmt(snippet_path),
             } {
