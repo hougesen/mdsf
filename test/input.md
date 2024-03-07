@@ -58,3 +58,37 @@ fn add (a : i32    , b :   i32 )             i32 {
 
 
 ```
+
+```javascript
+function                                add(
+                a,
+                         b)       
+                        {
+  return a              
+  +
+         b;
+}
+```
+
+
+
+```typescript
+function                                add(
+                a:number,
+                         b              :number)       
+                        :number{
+  return a              
+  +
+         b;
+}
+```
+
+
+```json
+
+                        // This is a comment  
+{
+        "add": { "a":1, 
+                                "b": ["1",23,null]}
+                }
+```
