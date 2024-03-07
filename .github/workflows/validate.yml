@@ -51,7 +51,6 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node }}
-          cache: "npm"
 
       - run: rustup toolchain install stable --profile minimal
       - run: rustup component add rustfmt clippy
