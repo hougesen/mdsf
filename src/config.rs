@@ -9,7 +9,7 @@ use crate::languages::{
 pub struct MdsfConfig {
     #[schemars(skip)]
     #[serde(rename = "$schema", default = "default_schema_location")]
-    schema: String,
+    pub schema: String,
     #[serde(default)]
     pub javascript: JavaScript,
     #[serde(default)]
@@ -48,20 +48,8 @@ impl Default for MdsfConfig {
     }
 }
 
-pub fn init_config_command() -> std::io::Result<()> {
-    let current_dir = std::env::current_dir()?;
-
-    let conf = MdsfConfig::default();
-
-    let config = serde_json::to_string_pretty(&conf)?;
-
-    std::fs::write(current_dir.join("mdsf.json"), config)?;
-
-    Ok(())
-}
-
 #[inline]
-pub fn default_enabled() -> bool {
+pub const fn default_enabled() -> bool {
     true
 }
 
