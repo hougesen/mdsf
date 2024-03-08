@@ -7,7 +7,7 @@ use mdsf::{
 };
 
 fn format_command(args: FormatCommandArguments) -> Result<(), MdsfError> {
-    let conf = MdsfConfig::default();
+    let conf = MdsfConfig::load();
 
     if args.path.is_file() {
         format_file(&conf, &args.path)?;

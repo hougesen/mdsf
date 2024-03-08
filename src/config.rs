@@ -60,6 +60,19 @@ impl Default for MdsfConfig {
     }
 }
 
+impl MdsfConfig {
+    #[inline]
+    pub fn load() -> Self {
+        if let Ok(raw_config) = std::fs::read_to_string("mdsf.json") {
+            if let Ok(config) = serde_json::from_str::<Self>(&raw_config) {
+                return config;
+            }
+        }
+
+        Self::default()
+    }
+}
+
 #[inline]
 pub const fn default_enabled() -> bool {
     true

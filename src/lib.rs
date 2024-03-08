@@ -55,6 +55,8 @@ pub fn format_file(config: &MdsfConfig, path: &std::path::Path) -> Result<(), Md
 
     let mut state = None;
 
+    let mut modified = false;
+
     for event in parser {
         let ev = match event {
             pulldown_cmark::Event::Start(start) => {
@@ -76,7 +78,7 @@ pub fn format_file(config: &MdsfConfig, path: &std::path::Path) -> Result<(), Md
             pulldown_cmark::Event::Text(text) => {
                 if let Some(language) = &codeblock_language {
                     let formatted = CowStr::from(format_snippet(config, language, &text));
-
+                    modified = true;
                     pulldown_cmark::Event::Text(formatted)
                 } else {
                     pulldown_cmark::Event::Text(text)
@@ -104,14 +106,17 @@ pub fn format_file(config: &MdsfConfig, path: &std::path::Path) -> Result<(), Md
 
     if config.markdown.enabled && !output.is_empty() {
         output = format_snippet(config, &Language::Markdown, &output);
+        modified = true;
     }
 
     let duration = time.elapsed();
 
-    if input != output {
+    if modified {
+        std::fs::write(path, output)?;
+
         write_changed_line(path, duration);
 
-        return std::fs::write(path, output).map_err(MdsfError::from);
+        return Ok(());
     }
 
     write_unchanged_line(path, duration);
