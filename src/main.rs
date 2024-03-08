@@ -1,7 +1,8 @@
 use clap::{builder::OsStr, Parser};
 use cli::{Cli, Commands, FormatCommandArguments};
 use formatters::format_snippet;
-use markdown::{generate_markdown, Block};
+use languages::Language;
+use pulldown_cmark::{CowStr, Options};
 
 mod cli;
 mod formatters;
@@ -12,27 +13,48 @@ fn format_file(path: &std::path::Path) -> std::io::Result<()> {
 
     let input = std::fs::read_to_string(path)?;
 
-    let tokens = markdown::tokenize(&input);
+    let parser = pulldown_cmark::Parser::new_ext(&input, Options::all());
 
-    let mut output = Vec::new();
+    let mut output = String::with_capacity(input.len() + 128);
 
-    for token in tokens {
-        if let Block::CodeBlock(Some(language), c) = token {
-            let formatted = format_snippet(&language, c);
+    let mut codeblock_language = None;
 
-            output.push(Block::CodeBlock(Some(language), formatted));
-        } else {
-            output.push(token);
+    let events = parser.map(|event| match event {
+        pulldown_cmark::Event::Start(start) => {
+            match &start {
+                pulldown_cmark::Tag::CodeBlock(block) => {
+                    match &block {
+                        pulldown_cmark::CodeBlockKind::Fenced(l) => {
+                            codeblock_language = Language::from_str(l);
+                        }
+                        pulldown_cmark::CodeBlockKind::Indented => {}
+                    };
+                }
+                _ => {}
+            };
+
+            pulldown_cmark::Event::Start(start)
         }
-    }
+        pulldown_cmark::Event::End(end) => {
+            if codeblock_language.is_some() {
+                codeblock_language = None;
+            }
 
-    output.push(Block::Paragraph(Vec::new()));
+            pulldown_cmark::Event::End(end)
+        }
+        pulldown_cmark::Event::Text(text) => {
+            if let Some(language) = &codeblock_language {
+                let formatted = format_snippet(language, text.to_string());
 
-    let mut s = generate_markdown(output).trim().to_owned();
+                return pulldown_cmark::Event::Text(CowStr::from(formatted));
+            };
 
-    s.push('\n');
+            pulldown_cmark::Event::Text(text)
+        }
+        e => e,
+    });
 
-    std::fs::write(path, s)
+    std::fs::write(path, output)
 }
 
 fn format_command(args: FormatCommandArguments) -> std::io::Result<()> {

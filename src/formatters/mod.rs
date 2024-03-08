@@ -41,24 +41,22 @@ pub fn execute_command(cmd: &mut Command) -> std::io::Result<bool> {
     Ok(cmd.stdout(Stdio::null()).spawn()?.wait()?.success())
 }
 
-pub fn format_snippet(language: &str, code: String) -> String {
-    let mut f = if let Some(l) = Language::from_str(language) {
-        if let Ok(snippet) = setup_snippet(&code, l.to_file_ext()) {
-            let snippet_path = snippet.path();
+pub fn format_snippet(language: &Language, code: String) -> String {
+    let mut f = if let Ok(snippet) = setup_snippet(&code, language.to_file_ext()) {
+        let snippet_path = snippet.path();
 
-            if let Ok(Some(formatted_code)) = match l {
-                Language::JavaScript => format_using_biome(snippet_path),
-                Language::Json => format_using_biome(snippet_path),
-                Language::Lua => format_using_stylua(snippet_path),
-                Language::Nim => format_using_nimpretty(snippet_path),
-                Language::Python => format_using_ruff(snippet_path),
-                Language::Rust => format_using_rustfmt(snippet_path),
-                Language::Toml => format_using_taplo(snippet_path),
-                Language::TypeScript => format_using_biome(snippet_path),
-                Language::Zig => format_using_zigfmt(snippet_path),
-            } {
-                return formatted_code;
-            }
+        if let Ok(Some(formatted_code)) = match language {
+            Language::JavaScript => format_using_biome(snippet_path),
+            Language::Json => format_using_biome(snippet_path),
+            Language::Lua => format_using_stylua(snippet_path),
+            Language::Nim => format_using_nimpretty(snippet_path),
+            Language::Python => format_using_ruff(snippet_path),
+            Language::Rust => format_using_rustfmt(snippet_path),
+            Language::Toml => format_using_taplo(snippet_path),
+            Language::TypeScript => format_using_biome(snippet_path),
+            Language::Zig => format_using_zigfmt(snippet_path),
+        } {
+            return formatted_code;
         }
 
         code
