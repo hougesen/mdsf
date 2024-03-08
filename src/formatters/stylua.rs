@@ -1,5 +1,6 @@
 use super::{execute_command, read_snippet};
 
+#[inline]
 pub fn format_using_stylua(file_path: &std::path::Path) -> std::io::Result<Option<String>> {
     let mut cmd = std::process::Command::new("stylua");
 

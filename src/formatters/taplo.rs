@@ -1,5 +1,6 @@
 use super::{execute_command, read_snippet};
 
+#[inline]
 pub fn format_using_taplo(file_path: &std::path::Path) -> std::io::Result<Option<String>> {
     let mut cmd = std::process::Command::new("taplo");
 
@@ -23,7 +24,7 @@ mod test_taplo {
     #[test]
     fn it_should_format_toml() {
         let input = "          package         =              \"mdsf\"
-  author   = \"Mads Hougesen\" 
+  author   = \"Mads Hougesen\"
   ";
 
         let expected_output = "package = \"mdsf\"
