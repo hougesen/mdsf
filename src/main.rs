@@ -1,5 +1,6 @@
 use clap::{builder::OsStr, Parser};
 use cli::{Cli, Commands, FormatCommandArguments};
+use config::MdsfConfig;
 use error::MdsfError;
 use formatters::format_snippet;
 use languages::Language;
@@ -7,11 +8,12 @@ use pulldown_cmark::CowStr;
 use pulldown_cmark_to_cmark::cmark_resume_with_options;
 
 mod cli;
+mod config;
 mod error;
 mod formatters;
 mod languages;
 
-fn format_file(path: &std::path::Path) -> Result<(), MdsfError> {
+fn format_file(config: &MdsfConfig, path: &std::path::Path) -> Result<(), MdsfError> {
     println!("Formatting {path:#?}");
 
     let input = std::fs::read_to_string(path)?;
@@ -46,7 +48,7 @@ fn format_file(path: &std::path::Path) -> Result<(), MdsfError> {
             }
             pulldown_cmark::Event::Text(text) => {
                 if let Some(language) = &codeblock_language {
-                    let formatted = CowStr::from(format_snippet(language, &text));
+                    let formatted = CowStr::from(format_snippet(config, language, &text));
 
                     if formatted != text {
                         modified = true;
@@ -76,6 +78,9 @@ fn format_file(path: &std::path::Path) -> Result<(), MdsfError> {
     if modified {
         if let Some(s) = state {
             s.finalize(&mut output).map_err(MdsfError::from)?;
+
+            output = output.trim().to_owned();
+            output.push('\n');
         }
 
         println!("{path:#?} was formatted");
@@ -87,8 +92,10 @@ fn format_file(path: &std::path::Path) -> Result<(), MdsfError> {
 }
 
 fn format_command(args: FormatCommandArguments) -> Result<(), MdsfError> {
+    let conf = MdsfConfig::default();
+
     if args.path.is_file() {
-        format_file(&args.path)?;
+        format_file(&conf, &args.path)?;
     } else {
         for entry in ignore::WalkBuilder::new(args.path)
             .git_ignore(true)
@@ -100,7 +107,7 @@ fn format_command(args: FormatCommandArguments) -> Result<(), MdsfError> {
             let file_path = entry.path();
 
             if file_path.extension() == Some(&OsStr::from("md")) {
-                format_file(file_path)?;
+                format_file(&conf, file_path)?;
             }
         }
     }
