@@ -41,8 +41,8 @@ pub fn execute_command(cmd: &mut Command) -> std::io::Result<bool> {
     Ok(cmd.stdout(Stdio::null()).spawn()?.wait()?.success())
 }
 
-pub fn format_snippet(language: &Language, code: String) -> String {
-    let mut f = if let Ok(snippet) = setup_snippet(&code, language.to_file_ext()) {
+pub fn format_snippet(language: &Language, code: &str) -> String {
+    if let Ok(snippet) = setup_snippet(code, language.to_file_ext()) {
         let snippet_path = snippet.path();
 
         if let Ok(Some(formatted_code)) = match language {
@@ -56,17 +56,12 @@ pub fn format_snippet(language: &Language, code: String) -> String {
             Language::TypeScript => format_using_biome(snippet_path),
             Language::Zig => format_using_zigfmt(snippet_path),
         } {
-            return formatted_code;
+            let mut f = formatted_code.trim().to_owned();
+
+            f.push('\n');
+            return f;
         }
-
-        code
-    } else {
-        code
     }
-    .trim()
-    .to_owned();
 
-    f.push('\n');
-
-    f
+    code.to_owned()
 }
