@@ -56,6 +56,11 @@ jobs:
       # Used by zigfmt
       - uses: goto-bus-stop/setup-zig@v2
       - uses: uncenter/setup-taplo@v1
+      # Used by gleam format
+      - uses: erlef/setup-beam@v1
+        with:
+          otp-version: false
+          gleam-version: "1.0.0"
 
       - run: rustup toolchain install stable --profile minimal
       - run: rustup component add rustfmt clippy
@@ -69,9 +74,6 @@ jobs:
       - name: Validate ruff
         run: ruff --version
 
-      - name: Install stylua
-        run: cargo install stylua
-
       - name: Validate stylua
         run: stylua --version
 
@@ -83,5 +85,11 @@ jobs:
 
       - name: Validate zig fmt
         run: zig fmt --help
+
+      - name: Validate gleam format
+        run: gleam format --help
+
+      - name: Install stylua
+        run: cargo install stylua
 
       - run: cargo test

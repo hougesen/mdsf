@@ -111,7 +111,7 @@ pub fn format_file(config: &MdsfConfig, path: &std::path::Path) -> Result<(), Md
 
     let duration = time.elapsed();
 
-    if modified {
+    if modified && output != input {
         std::fs::write(path, output)?;
 
         write_changed_line(path, duration);
