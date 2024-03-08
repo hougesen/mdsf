@@ -14,6 +14,17 @@
         }
       ]
     },
+    "gleam": {
+      "default": {
+        "enabled": true,
+        "formatter": "gleam_format"
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/Gleam"
+        }
+      ]
+    },
     "html": {
       "default": {
         "enabled": true,
@@ -60,7 +71,7 @@
     },
     "markdown": {
       "default": {
-        "enabled": true,
+        "enabled": false,
         "formatter": "prettier"
       },
       "allOf": [
@@ -169,6 +180,27 @@
       "type": "string",
       "enum": ["prettier"]
     },
+    "Gleam": {
+      "type": "object",
+      "properties": {
+        "enabled": {
+          "default": true,
+          "type": "boolean"
+        },
+        "formatter": {
+          "default": "gleam_format",
+          "allOf": [
+            {
+              "$ref": "#/definitions/GleamFormatter"
+            }
+          ]
+        }
+      }
+    },
+    "GleamFormatter": {
+      "type": "string",
+      "enum": ["gleam_format"]
+    },
     "Html": {
       "type": "object",
       "properties": {
@@ -257,7 +289,7 @@
       "type": "object",
       "properties": {
         "enabled": {
-          "default": true,
+          "default": false,
           "type": "boolean"
         },
         "formatter": {
