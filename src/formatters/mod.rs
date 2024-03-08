@@ -47,6 +47,7 @@ pub fn format_snippet(config: &MdsfConfig, language: &Language, code: &str) -> S
             Language::JavaScript => config.javascript.format(snippet_path),
             Language::Json => config.json.format(snippet_path),
             Language::Lua => config.lua.format(snippet_path),
+            Language::Markdown => config.markdown.format(snippet_path),
             Language::Nim => config.nim.format(snippet_path),
             Language::Python => config.python.format(snippet_path),
             Language::Rust => config.rust.format(snippet_path),

@@ -2,6 +2,7 @@ pub enum Language {
     JavaScript,
     Json,
     Lua,
+    Markdown,
     Nim,
     Python,
     Rust,
@@ -13,6 +14,7 @@ pub enum Language {
 pub mod javascript;
 pub mod json;
 pub mod lua;
+pub mod markdown;
 pub mod nim;
 pub mod python;
 pub mod rust;
@@ -30,6 +32,7 @@ impl Language {
             "js" | "jsx" | "javascript" => Some(Self::JavaScript),
             "json" => Some(Self::Json),
             "lua" => Some(Self::Lua),
+            "markdown" | "md" => Some(Self::Markdown),
             "nim" => Some(Self::Nim),
             "python" => Some(Self::Python),
             "rust" => Some(Self::Rust),
@@ -45,6 +48,7 @@ impl Language {
             Self::JavaScript => ".js",
             Self::Json => ".jsonc",
             Self::Lua => ".lua",
+            Self::Markdown => ".md",
             Self::Nim => ".nim",
             Self::Python => ".py",
             Self::Rust => ".rs",
