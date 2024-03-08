@@ -1,5 +1,6 @@
 use super::{execute_command, read_snippet};
 
+#[inline]
 pub fn format_using_prettier(snippet_path: &std::path::Path) -> std::io::Result<Option<String>> {
     // TODO: use installed prettier instead
     let mut cmd = std::process::Command::new("npx");
@@ -162,5 +163,33 @@ number>
             .expect("it to be some");
 
         assert_eq!(input, output);
+    }
+
+    #[test]
+    fn it_should_format_html() {
+        let input = " <!doctype html> <html> <head> <style> body {background-color: powderblue;} h1   {color: blue;} p    {color: red;} </style> </head> <body>  <h1>This is a heading</h1> <p>This is a paragraph.</p>  </body> </html> ";
+
+        let expected_output = "<!doctype html>
+<html>
+  <head>
+    <style>
+      body {background-color: powderblue;} h1   {color: blue;} p    {color: red;}
+    </style>
+  </head>
+  <body>
+    <h1>This is a heading</h1>
+    <p>This is a paragraph.</p>
+  </body>
+</html>
+";
+
+        let snippet = setup_snippet(input, Language::Html.to_file_ext())
+            .expect("it to create a snippet file");
+
+        let output = format_using_prettier(snippet.path())
+            .expect("it to be succesful")
+            .expect("it to be some");
+
+        assert_eq!(expected_output, output);
     }
 }

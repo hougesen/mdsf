@@ -3,6 +3,17 @@
   "title": "MdsfConfig",
   "type": "object",
   "properties": {
+    "html": {
+      "default": {
+        "enabled": true,
+        "formatter": "prettier"
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/Html"
+        }
+      ]
+    },
     "javascript": {
       "default": {
         "enabled": true,
@@ -115,6 +126,29 @@
     }
   },
   "definitions": {
+    "Html": {
+      "type": "object",
+      "properties": {
+        "enabled": {
+          "default": true,
+          "type": "boolean"
+        },
+        "formatter": {
+          "default": "prettier",
+          "allOf": [
+            {
+              "$ref": "#/definitions/HtmlFormatter"
+            }
+          ]
+        }
+      }
+    },
+    "HtmlFormatter": {
+      "type": "string",
+      "enum": [
+        "prettier"
+      ]
+    },
     "JavaScript": {
       "type": "object",
       "properties": {

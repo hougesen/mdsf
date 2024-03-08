@@ -1,4 +1,5 @@
 pub enum Language {
+    Html,
     JavaScript,
     Json,
     Lua,
@@ -11,6 +12,7 @@ pub enum Language {
     Zig,
 }
 
+pub mod html;
 pub mod javascript;
 pub mod json;
 pub mod lua;
@@ -29,6 +31,7 @@ pub trait LanguageFormatter {
 impl Language {
     pub fn maybe_from_str(input: &str) -> Option<Self> {
         match input {
+            "html" => Some(Self::Html),
             "js" | "jsx" | "javascript" => Some(Self::JavaScript),
             "json" => Some(Self::Json),
             "lua" => Some(Self::Lua),
@@ -45,6 +48,7 @@ impl Language {
 
     pub const fn to_file_ext(&self) -> &'static str {
         match self {
+            Self::Html => ".html",
             Self::JavaScript => ".js",
             Self::Json => ".jsonc",
             Self::Lua => ".lua",
