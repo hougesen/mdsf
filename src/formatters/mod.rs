@@ -48,6 +48,7 @@ pub fn format_snippet(config: &MdsfConfig, language: &Language, code: &str) -> S
         let snippet_path = snippet.path();
 
         if let Ok(Some(formatted_code)) = match language {
+            Language::Css => config.css.format(snippet_path),
             Language::Html => config.html.format(snippet_path),
             Language::JavaScript => config.javascript.format(snippet_path),
             Language::Json => config.json.format(snippet_path),

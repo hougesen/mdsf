@@ -1,4 +1,5 @@
 pub enum Language {
+    Css,
     Html,
     JavaScript,
     Json,
@@ -12,6 +13,7 @@ pub enum Language {
     Zig,
 }
 
+pub mod css;
 pub mod html;
 pub mod javascript;
 pub mod json;
@@ -31,6 +33,7 @@ pub trait LanguageFormatter {
 impl Language {
     pub fn maybe_from_str(input: &str) -> Option<Self> {
         match input {
+            "css" | "scss" => Some(Self::Html),
             "html" => Some(Self::Html),
             "js" | "jsx" | "javascript" => Some(Self::JavaScript),
             "json" => Some(Self::Json),
@@ -48,6 +51,8 @@ impl Language {
 
     pub const fn to_file_ext(&self) -> &'static str {
         match self {
+            // NOTE: since scss is a superset of css we might as well support both at the same time
+            Self::Css => ".scss",
             Self::Html => ".html",
             Self::JavaScript => ".js",
             Self::Json => ".jsonc",

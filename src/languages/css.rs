@@ -5,31 +5,31 @@ use crate::{config::default_enabled, formatters::prettier::format_using_prettier
 use super::LanguageFormatter;
 
 #[derive(Debug, Default, serde::Serialize, serde::Deserialize, JsonSchema)]
-pub enum MarkdownFormatter {
+pub enum CssFormatter {
     #[default]
     #[serde(rename = "prettier")]
     Prettier,
 }
 
 #[derive(Debug, serde::Serialize, serde::Deserialize, JsonSchema)]
-pub struct Markdown {
+pub struct Css {
     #[serde(default = "default_enabled")]
     pub enabled: bool,
     #[serde(default)]
-    pub formatter: MarkdownFormatter,
+    pub formatter: CssFormatter,
 }
 
-impl Default for Markdown {
+impl Default for Css {
     #[inline]
     fn default() -> Self {
         Self {
             enabled: true,
-            formatter: MarkdownFormatter::default(),
+            formatter: CssFormatter::default(),
         }
     }
 }
 
-impl LanguageFormatter for Markdown {
+impl LanguageFormatter for Css {
     #[inline]
     fn format(&self, snippet_path: &std::path::Path) -> std::io::Result<Option<String>> {
         if !self.enabled {
@@ -37,7 +37,7 @@ impl LanguageFormatter for Markdown {
         }
 
         match self.formatter {
-            MarkdownFormatter::Prettier => format_using_prettier(snippet_path, false),
+            CssFormatter::Prettier => format_using_prettier(snippet_path, true),
         }
     }
 }

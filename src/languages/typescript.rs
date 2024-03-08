@@ -43,7 +43,7 @@ impl LanguageFormatter for TypeScript {
 
         match self.formatter {
             TypeScriptFormatter::Biome => format_using_biome(snippet_path),
-            TypeScriptFormatter::Prettier => format_using_prettier(snippet_path),
+            TypeScriptFormatter::Prettier => format_using_prettier(snippet_path, true),
         }
     }
 }

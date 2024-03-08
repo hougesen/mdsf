@@ -1,17 +1,21 @@
 use super::{execute_command, read_snippet};
 
 #[inline]
-pub fn format_using_prettier(snippet_path: &std::path::Path) -> std::io::Result<Option<String>> {
+pub fn format_using_prettier(
+    snippet_path: &std::path::Path,
+    embedded_language_formatting: bool,
+) -> std::io::Result<Option<String>> {
     // TODO: use installed prettier instead
     let mut cmd = std::process::Command::new("npx");
 
     // Incase the use hasn't installed prettier
-    cmd.arg("--yes")
-        .arg("prettier")
-        .arg("--embedded-language-formatting")
-        .arg("off")
-        .arg("--write")
-        .arg(snippet_path);
+    cmd.arg("--yes").arg("prettier");
+
+    if !embedded_language_formatting {
+        cmd.arg("--embedded-language-formatting").arg("off");
+    }
+
+    cmd.arg("--write").arg(snippet_path);
 
     if execute_command(&mut cmd)? {
         return read_snippet(snippet_path).map(Some);
@@ -51,7 +55,7 @@ mod test_prettier {
         let snippet = setup_snippet(input, Language::Json.to_file_ext())
             .expect("it to create a snippet file");
 
-        let output = format_using_prettier(snippet.path())
+        let output = format_using_prettier(snippet.path(), true)
             .expect("it to be succesful")
             .expect("it to be some");
 
@@ -77,7 +81,7 @@ mod test_prettier {
         let snippet = setup_snippet(input, Language::JavaScript.to_file_ext())
             .expect("it to create a snippet file");
 
-        let output = format_using_prettier(snippet.path())
+        let output = format_using_prettier(snippet.path(), true)
             .expect("it to be succesful")
             .expect("it to be some");
 
@@ -106,7 +110,7 @@ number>
         let snippet = setup_snippet(input, Language::TypeScript.to_file_ext())
             .expect("it to create a snippet file");
 
-        let output = format_using_prettier(snippet.path())
+        let output = format_using_prettier(snippet.path(), true)
             .expect("it to be succesful")
             .expect("it to be some");
 
@@ -132,7 +136,7 @@ this is a paragraph
         let snippet = setup_snippet(input, Language::Markdown.to_file_ext())
             .expect("it to create a snippet file");
 
-        let output = format_using_prettier(snippet.path())
+        let output = format_using_prettier(snippet.path(), false)
             .expect("it to be succesful")
             .expect("it to be some");
 
@@ -158,7 +162,7 @@ number>
         let snippet = setup_snippet(input, Language::Markdown.to_file_ext())
             .expect("it to create a snippet file");
 
-        let output = format_using_prettier(snippet.path())
+        let output = format_using_prettier(snippet.path(), false)
             .expect("it to be succesful")
             .expect("it to be some");
 
@@ -173,7 +177,15 @@ number>
 <html>
   <head>
     <style>
-      body {background-color: powderblue;} h1   {color: blue;} p    {color: red;}
+      body {
+        background-color: powderblue;
+      }
+      h1 {
+        color: blue;
+      }
+      p {
+        color: red;
+      }
     </style>
   </head>
   <body>
@@ -186,7 +198,29 @@ number>
         let snippet = setup_snippet(input, Language::Html.to_file_ext())
             .expect("it to create a snippet file");
 
-        let output = format_using_prettier(snippet.path())
+        let output = format_using_prettier(snippet.path(), true)
+            .expect("it to be succesful")
+            .expect("it to be some");
+
+        assert_eq!(expected_output, output);
+    }
+
+    #[test]
+    fn it_should_format_css() {
+        let input = " h1   {color: blue;} p    {color: red;} ";
+
+        let expected_output = "h1 {
+  color: blue;
+}
+p {
+  color: red;
+}
+";
+
+        let snippet =
+            setup_snippet(input, Language::Css.to_file_ext()).expect("it to create a snippet file");
+
+        let output = format_using_prettier(snippet.path(), true)
             .expect("it to be succesful")
             .expect("it to be some");
 
