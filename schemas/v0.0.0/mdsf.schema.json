@@ -1,0 +1,315 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "MdsfConfig",
+  "type": "object",
+  "properties": {
+    "javascript": {
+      "default": {
+        "enabled": true,
+        "formatter": "biome"
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/JavaScript"
+        }
+      ]
+    },
+    "json": {
+      "default": {
+        "enabled": true,
+        "formatter": "biome"
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/Json"
+        }
+      ]
+    },
+    "lua": {
+      "default": {
+        "enabled": true,
+        "formatter": "stylua"
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/Lua"
+        }
+      ]
+    },
+    "nim": {
+      "default": {
+        "enabled": true,
+        "formatter": "nimpretty"
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/Nim"
+        }
+      ]
+    },
+    "python": {
+      "default": {
+        "enabled": true,
+        "formatter": "ruff"
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/Python"
+        }
+      ]
+    },
+    "rust": {
+      "default": {
+        "enabled": true,
+        "formatter": "rustfmt"
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/Rust"
+        }
+      ]
+    },
+    "toml": {
+      "default": {
+        "enabled": true,
+        "formatter": "taplo"
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/Toml"
+        }
+      ]
+    },
+    "typescript": {
+      "default": {
+        "enabled": true,
+        "formatter": "biome"
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/TypeScript"
+        }
+      ]
+    },
+    "zig": {
+      "default": {
+        "enabled": true,
+        "formatter": "zigfmt"
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/Zig"
+        }
+      ]
+    }
+  },
+  "definitions": {
+    "JavaScript": {
+      "type": "object",
+      "properties": {
+        "enabled": {
+          "default": true,
+          "type": "boolean"
+        },
+        "formatter": {
+          "default": "biome",
+          "allOf": [
+            {
+              "$ref": "#/definitions/JavaScriptFormatter"
+            }
+          ]
+        }
+      }
+    },
+    "JavaScriptFormatter": {
+      "type": "string",
+      "enum": [
+        "biome"
+      ]
+    },
+    "Json": {
+      "type": "object",
+      "properties": {
+        "enabled": {
+          "default": true,
+          "type": "boolean"
+        },
+        "formatter": {
+          "default": "biome",
+          "allOf": [
+            {
+              "$ref": "#/definitions/JsonFormatter"
+            }
+          ]
+        }
+      }
+    },
+    "JsonFormatter": {
+      "type": "string",
+      "enum": [
+        "biome"
+      ]
+    },
+    "Lua": {
+      "type": "object",
+      "properties": {
+        "enabled": {
+          "default": true,
+          "type": "boolean"
+        },
+        "formatter": {
+          "default": "stylua",
+          "allOf": [
+            {
+              "$ref": "#/definitions/LuaFormatter"
+            }
+          ]
+        }
+      }
+    },
+    "LuaFormatter": {
+      "type": "string",
+      "enum": [
+        "stylua"
+      ]
+    },
+    "Nim": {
+      "type": "object",
+      "properties": {
+        "enabled": {
+          "default": true,
+          "type": "boolean"
+        },
+        "formatter": {
+          "default": "nimpretty",
+          "allOf": [
+            {
+              "$ref": "#/definitions/NimFormatter"
+            }
+          ]
+        }
+      }
+    },
+    "NimFormatter": {
+      "type": "string",
+      "enum": [
+        "nimpretty"
+      ]
+    },
+    "Python": {
+      "type": "object",
+      "properties": {
+        "enabled": {
+          "default": true,
+          "type": "boolean"
+        },
+        "formatter": {
+          "default": "ruff",
+          "allOf": [
+            {
+              "$ref": "#/definitions/PythonFormatter"
+            }
+          ]
+        }
+      }
+    },
+    "PythonFormatter": {
+      "type": "string",
+      "enum": [
+        "ruff"
+      ]
+    },
+    "Rust": {
+      "type": "object",
+      "properties": {
+        "enabled": {
+          "default": true,
+          "type": "boolean"
+        },
+        "formatter": {
+          "default": "rustfmt",
+          "allOf": [
+            {
+              "$ref": "#/definitions/RustFormatter"
+            }
+          ]
+        }
+      }
+    },
+    "RustFormatter": {
+      "type": "string",
+      "enum": [
+        "rustfmt"
+      ]
+    },
+    "Toml": {
+      "type": "object",
+      "properties": {
+        "enabled": {
+          "default": true,
+          "type": "boolean"
+        },
+        "formatter": {
+          "default": "taplo",
+          "allOf": [
+            {
+              "$ref": "#/definitions/TomlFormatter"
+            }
+          ]
+        }
+      }
+    },
+    "TomlFormatter": {
+      "type": "string",
+      "enum": [
+        "taplo"
+      ]
+    },
+    "TypeScript": {
+      "type": "object",
+      "properties": {
+        "enabled": {
+          "default": true,
+          "type": "boolean"
+        },
+        "formatter": {
+          "default": "biome",
+          "allOf": [
+            {
+              "$ref": "#/definitions/TypeScriptFormatter"
+            }
+          ]
+        }
+      }
+    },
+    "TypeScriptFormatter": {
+      "type": "string",
+      "enum": [
+        "biome"
+      ]
+    },
+    "Zig": {
+      "type": "object",
+      "properties": {
+        "enabled": {
+          "default": true,
+          "type": "boolean"
+        },
+        "formatter": {
+          "default": "zigfmt",
+          "allOf": [
+            {
+              "$ref": "#/definitions/ZigFormatter"
+            }
+          ]
+        }
+      }
+    },
+    "ZigFormatter": {
+      "type": "string",
+      "enum": [
+        "zigfmt"
+      ]
+    }
+  }
+}

@@ -243,6 +243,7 @@ dependencies = [
  "pulldown-cmark-to-cmark",
  "schemars",
  "serde",
+ "serde_json",
  "tempfile",
 ]
 

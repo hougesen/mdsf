@@ -25,7 +25,7 @@ pub trait LanguageFormatter {
 }
 
 impl Language {
-    pub fn from_str(input: &str) -> Option<Self> {
+    pub fn maybe_from_str(input: &str) -> Option<Self> {
         match input {
             "js" | "jsx" | "javascript" => Some(Self::JavaScript),
             "json" => Some(Self::Json),

@@ -27,6 +27,18 @@ pub struct MdsfConfig {
     pub zig: Zig,
 }
 
+pub fn init_config_command() -> std::io::Result<()> {
+    let current_dir = std::env::current_dir()?;
+
+    let conf = MdsfConfig::default();
+
+    let config = serde_json::to_string_pretty(&conf)?;
+
+    std::fs::write(current_dir.join("mdsf.json"), config)?;
+
+    Ok(())
+}
+
 #[inline]
 pub fn default_enabled() -> bool {
     true

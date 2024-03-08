@@ -10,6 +10,7 @@ keywords = ["markdown", "formatter", "pretty-printing"]
 homepage = "https://github.com/hougesen/mdsf"
 readme = "README.md"
 categories = ["development-tools"]
+default-run = "mdsf"
 
 [dependencies]
 clap = { version = "4.5.1", features = ["derive"] }
@@ -18,4 +19,11 @@ pulldown-cmark = { version = "0.9.6", default-features = false }
 pulldown-cmark-to-cmark = "11.2.0"
 schemars = "0.8.16"
 serde = { version = "1.0.197", features = ["derive"] }
+serde_json = "1.0.114"
 tempfile = "3.10.1"
+
+[[bin]]
+name = "mdsf"
+
+[[bin]]
+name = "init-schema"
