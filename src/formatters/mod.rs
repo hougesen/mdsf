@@ -5,21 +5,18 @@ use std::{
 
 use tempfile::NamedTempFile;
 
-use crate::languages::Language;
-
-use self::{
-    biome::format_using_biome, nimpretty::format_using_nimpretty, ruff::format_using_ruff,
-    rustfmt::format_using_rustfmt, stylua::format_using_stylua, taplo::format_using_taplo,
-    zigfmt::format_using_zigfmt,
+use crate::{
+    config::MdsfConfig,
+    languages::{Language, LanguageFormatter},
 };
 
-mod biome;
-mod nimpretty;
-mod ruff;
-mod rustfmt;
-mod stylua;
-mod taplo;
-mod zigfmt;
+pub mod biome;
+pub mod nimpretty;
+pub mod ruff;
+pub mod rustfmt;
+pub mod stylua;
+pub mod taplo;
+pub mod zigfmt;
 
 pub fn setup_snippet(code: &str, file_ext: &str) -> std::io::Result<NamedTempFile> {
     let mut f = tempfile::Builder::new()
@@ -41,20 +38,20 @@ pub fn execute_command(cmd: &mut Command) -> std::io::Result<bool> {
     Ok(cmd.stdout(Stdio::null()).spawn()?.wait()?.success())
 }
 
-pub fn format_snippet(language: &Language, code: &str) -> String {
+pub fn format_snippet(config: &MdsfConfig, language: &Language, code: &str) -> String {
     if let Ok(snippet) = setup_snippet(code, language.to_file_ext()) {
         let snippet_path = snippet.path();
 
         if let Ok(Some(formatted_code)) = match language {
-            Language::JavaScript => format_using_biome(snippet_path),
-            Language::Json => format_using_biome(snippet_path),
-            Language::Lua => format_using_stylua(snippet_path),
-            Language::Nim => format_using_nimpretty(snippet_path),
-            Language::Python => format_using_ruff(snippet_path),
-            Language::Rust => format_using_rustfmt(snippet_path),
-            Language::Toml => format_using_taplo(snippet_path),
-            Language::TypeScript => format_using_biome(snippet_path),
-            Language::Zig => format_using_zigfmt(snippet_path),
+            Language::JavaScript => config.javascript.format(snippet_path),
+            Language::Json => config.json.format(snippet_path),
+            Language::Lua => config.lua.format(snippet_path),
+            Language::Nim => config.nim.format(snippet_path),
+            Language::Python => config.python.format(snippet_path),
+            Language::Rust => config.rust.format(snippet_path),
+            Language::Toml => config.toml.format(snippet_path),
+            Language::TypeScript => config.typescript.format(snippet_path),
+            Language::Zig => config.zig.format(snippet_path),
         } {
             let mut f = formatted_code.trim().to_owned();
 
