@@ -20,7 +20,7 @@ mod test_nimpretty {
     };
 
     #[test]
-    fn it_should_format_toml() {
+    fn it_should_format_nim() {
         let input = "proc           add( a         :int , b:int )        : int =
   return a +          b  ";
 

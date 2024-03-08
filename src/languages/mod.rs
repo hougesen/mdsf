@@ -26,7 +26,7 @@ impl Language {
         }
     }
 
-    pub fn to_file_ext(&self) -> &'static str {
+    pub const fn to_file_ext(&self) -> &'static str {
         match self {
             Self::JavaScript => ".js",
             Self::Json => ".jsonc",
