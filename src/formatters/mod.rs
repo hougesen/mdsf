@@ -12,6 +12,7 @@ use crate::{
 
 pub mod biome;
 pub mod nimpretty;
+pub mod prettier;
 pub mod ruff;
 pub mod rustfmt;
 pub mod stylua;
