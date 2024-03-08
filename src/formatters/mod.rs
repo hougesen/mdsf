@@ -39,7 +39,12 @@ pub fn read_snippet(file_path: &std::path::Path) -> std::io::Result<String> {
 
 #[inline]
 pub fn execute_command(cmd: &mut Command) -> std::io::Result<bool> {
-    Ok(cmd.stdout(Stdio::null()).spawn()?.wait()?.success())
+    Ok(cmd
+        .stdout(Stdio::null())
+        .stderr(Stdio::null())
+        .spawn()?
+        .wait()?
+        .success())
 }
 
 #[inline]

@@ -11,6 +11,7 @@ pub mod error;
 pub mod formatters;
 pub mod languages;
 
+#[inline]
 pub fn format_file(config: &MdsfConfig, path: &std::path::Path) -> Result<(), MdsfError> {
     println!("Formatting {path:#?}");
 
