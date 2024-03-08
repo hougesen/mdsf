@@ -20,6 +20,7 @@ pub struct Toml {
 }
 
 impl Default for Toml {
+    #[inline]
     fn default() -> Self {
         Self {
             enabled: true,

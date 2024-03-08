@@ -20,6 +20,7 @@ pub struct Zig {
 }
 
 impl Default for Zig {
+    #[inline]
     fn default() -> Self {
         Self {
             enabled: true,

@@ -20,6 +20,7 @@ pub struct Python {
 }
 
 impl Default for Python {
+    #[inline]
     fn default() -> Self {
         Self {
             enabled: true,

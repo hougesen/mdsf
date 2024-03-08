@@ -20,6 +20,7 @@ pub struct Rust {
 }
 
 impl Default for Rust {
+    #[inline]
     fn default() -> Self {
         Self {
             enabled: true,

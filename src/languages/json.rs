@@ -20,6 +20,7 @@ pub struct Json {
 }
 
 impl Default for Json {
+    #[inline]
     fn default() -> Self {
         Self {
             enabled: true,

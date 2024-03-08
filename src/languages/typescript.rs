@@ -20,6 +20,7 @@ pub struct TypeScript {
 }
 
 impl Default for TypeScript {
+    #[inline]
     fn default() -> Self {
         Self {
             enabled: true,

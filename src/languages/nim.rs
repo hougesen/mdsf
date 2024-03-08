@@ -20,6 +20,7 @@ pub struct Nim {
 }
 
 impl Default for Nim {
+    #[inline]
     fn default() -> Self {
         Self {
             enabled: true,

@@ -20,6 +20,7 @@ pub struct JavaScript {
 }
 
 impl Default for JavaScript {
+    #[inline]
     fn default() -> Self {
         Self {
             enabled: true,

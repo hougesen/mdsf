@@ -20,6 +20,7 @@ pub struct Lua {
 }
 
 impl Default for Lua {
+    #[inline]
     fn default() -> Self {
         Self {
             enabled: true,
