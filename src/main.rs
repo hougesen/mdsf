@@ -1,15 +1,17 @@
 use clap::{builder::OsStr, Parser};
 use cli::{Cli, Commands, FormatCommandArguments};
+use error::MdsfError;
 use formatters::format_snippet;
 use languages::Language;
 use pulldown_cmark::CowStr;
 use pulldown_cmark_to_cmark::cmark_resume_with_options;
 
 mod cli;
+mod error;
 mod formatters;
 mod languages;
 
-fn format_file(path: &std::path::Path) -> std::io::Result<()> {
+fn format_file(path: &std::path::Path) -> Result<(), MdsfError> {
     println!("Formatting {path:#?}");
 
     let input = std::fs::read_to_string(path)?;
@@ -67,23 +69,24 @@ fn format_file(path: &std::path::Path) -> std::io::Result<()> {
                 ..Default::default()
             },
         )
-        .unwrap()
+        .map_err(MdsfError::from)?
         .into();
     }
 
     if modified {
         if let Some(s) = state {
-            s.finalize(&mut output).unwrap();
+            s.finalize(&mut output).map_err(MdsfError::from)?;
         }
+
         println!("{path:#?} was formatted");
-        return std::fs::write(path, output);
+        return std::fs::write(path, output).map_err(MdsfError::from);
     }
 
     println!("{path:#?} was not changed");
     Ok(())
 }
 
-fn format_command(args: FormatCommandArguments) -> std::io::Result<()> {
+fn format_command(args: FormatCommandArguments) -> Result<(), MdsfError> {
     if args.path.is_file() {
         format_file(&args.path)?;
     } else {
