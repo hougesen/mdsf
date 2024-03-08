@@ -1,6 +1,6 @@
 use schemars::JsonSchema;
 
-use crate::{config::default_enabled, formatters::prettier::format_using_prettier};
+use crate::formatters::prettier::format_using_prettier;
 
 use super::LanguageFormatter;
 
@@ -13,7 +13,7 @@ pub enum MarkdownFormatter {
 
 #[derive(Debug, serde::Serialize, serde::Deserialize, JsonSchema)]
 pub struct Markdown {
-    #[serde(default = "default_enabled")]
+    #[serde(default = "bool::default")]
     pub enabled: bool,
     #[serde(default)]
     pub formatter: MarkdownFormatter,
@@ -23,7 +23,7 @@ impl Default for Markdown {
     #[inline]
     fn default() -> Self {
         Self {
-            enabled: true,
+            enabled: false,
             formatter: MarkdownFormatter::default(),
         }
     }
