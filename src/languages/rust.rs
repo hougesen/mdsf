@@ -4,16 +4,18 @@ use crate::{config::default_enabled, formatters::rustfmt::format_using_rustfmt};
 
 use super::LanguageFormatter;
 
-#[derive(Debug, Default, serde::Deserialize, JsonSchema)]
+#[derive(Debug, Default, serde::Serialize, serde::Deserialize, JsonSchema)]
 pub enum RustFormatter {
     #[default]
+    #[serde(rename = "rustfmt")]
     RustFmt,
 }
 
-#[derive(Debug, serde::Deserialize, JsonSchema)]
+#[derive(Debug, serde::Serialize, serde::Deserialize, JsonSchema)]
 pub struct Rust {
     #[serde(default = "default_enabled")]
     pub enabled: bool,
+    #[serde(default)]
     pub formatter: RustFormatter,
 }
 

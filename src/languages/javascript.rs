@@ -4,16 +4,18 @@ use crate::{config::default_enabled, formatters::biome::format_using_biome};
 
 use super::LanguageFormatter;
 
-#[derive(Debug, Default, serde::Deserialize, JsonSchema)]
+#[derive(Debug, Default, serde::Serialize, serde::Deserialize, JsonSchema)]
 pub enum JavaScriptFormatter {
     #[default]
+    #[serde(rename = "biome")]
     Biome,
 }
 
-#[derive(Debug, serde::Deserialize, JsonSchema)]
+#[derive(Debug, serde::Serialize, serde::Deserialize, JsonSchema)]
 pub struct JavaScript {
     #[serde(default = "default_enabled")]
     pub enabled: bool,
+    #[serde(default)]
     pub formatter: JavaScriptFormatter,
 }
 

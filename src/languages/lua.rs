@@ -4,16 +4,18 @@ use crate::{config::default_enabled, formatters::stylua::format_using_stylua};
 
 use super::LanguageFormatter;
 
-#[derive(Debug, Default, serde::Deserialize, JsonSchema)]
+#[derive(Debug, Default, serde::Serialize, serde::Deserialize, JsonSchema)]
 pub enum LuaFormatter {
     #[default]
+    #[serde(rename = "stylua")]
     Stylua,
 }
 
-#[derive(Debug, serde::Deserialize, JsonSchema)]
+#[derive(Debug, serde::Serialize, serde::Deserialize, JsonSchema)]
 pub struct Lua {
     #[serde(default = "default_enabled")]
     pub enabled: bool,
+    #[serde(default)]
     pub formatter: LuaFormatter,
 }
 

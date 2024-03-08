@@ -5,17 +5,26 @@ use crate::languages::{
     typescript::TypeScript, zig::Zig,
 };
 
-#[derive(Debug, Default, serde::Deserialize, JsonSchema)]
+#[derive(Debug, Default, serde::Serialize, serde::Deserialize, JsonSchema)]
 pub struct MdsfConfig {
-    pub json: Json,
+    #[serde(default)]
     pub javascript: JavaScript,
-    pub typescript: TypeScript,
-    pub rust: Rust,
+    #[serde(default)]
+    pub json: Json,
+    #[serde(default)]
     pub lua: Lua,
-    pub zig: Zig,
-    pub toml: Toml,
+    #[serde(default)]
     pub nim: Nim,
+    #[serde(default)]
     pub python: Python,
+    #[serde(default)]
+    pub rust: Rust,
+    #[serde(default)]
+    pub toml: Toml,
+    #[serde(default)]
+    pub typescript: TypeScript,
+    #[serde(default)]
+    pub zig: Zig,
 }
 
 #[inline]

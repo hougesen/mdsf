@@ -4,16 +4,18 @@ use crate::{config::default_enabled, formatters::taplo::format_using_taplo};
 
 use super::LanguageFormatter;
 
-#[derive(Debug, Default, serde::Deserialize, JsonSchema)]
+#[derive(Debug, Default, serde::Serialize, serde::Deserialize, JsonSchema)]
 pub enum TomlFormatter {
     #[default]
+    #[serde(rename = "taplo")]
     Taplo,
 }
 
-#[derive(Debug, serde::Deserialize, JsonSchema)]
+#[derive(Debug, serde::Serialize, serde::Deserialize, JsonSchema)]
 pub struct Toml {
     #[serde(default = "default_enabled")]
     pub enabled: bool,
+    #[serde(default)]
     pub formatter: TomlFormatter,
 }
 
