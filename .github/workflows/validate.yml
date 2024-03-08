@@ -59,8 +59,9 @@ jobs:
       # Used by gleam format
       - uses: erlef/setup-beam@v1
         with:
-          otp-version: false
+          otp-version: "26"
           gleam-version: "1.0.0"
+          elixir-version: "1.16.1"
 
       - run: rustup toolchain install stable --profile minimal
       - run: rustup component add rustfmt clippy
@@ -80,6 +81,9 @@ jobs:
       - name: Validate biome
         run: npx --yes @biomejs/biome --version
 
+      - name: Validate prettier
+        run: npx --yes prettier --version
+
       - name: Validate nimpretty
         run: nimpretty --version
 
@@ -88,6 +92,9 @@ jobs:
 
       - name: Validate gleam format
         run: gleam format --help
+
+      - name: Validate mix format
+        run: mix help format
 
       - name: Install stylua
         run: cargo install stylua
