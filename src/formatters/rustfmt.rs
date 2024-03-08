@@ -1,5 +1,6 @@
 use super::{execute_command, read_snippet};
 
+#[inline]
 pub fn format_using_rustfmt(file_path: &std::path::Path) -> std::io::Result<Option<String>> {
     let mut cmd = std::process::Command::new("rustfmt");
 
@@ -23,9 +24,9 @@ mod test_rustfmt {
 
     #[test]
     fn it_should_format_rust() {
-        let input = "pub     
-                    async 
-            fn    add( a: i32, 
+        let input = "pub
+                    async
+            fn    add( a: i32,
                             b:i32 )->                   i32 {a+b}
     ";
 

@@ -1,5 +1,6 @@
 use super::{execute_command, read_snippet};
 
+#[inline]
 pub fn format_using_biome(file_path: &std::path::Path) -> std::io::Result<Option<String>> {
     // TODO: use installed biome instead
     let mut cmd = std::process::Command::new("npx");
@@ -27,13 +28,13 @@ mod test_biome {
 
     #[test]
     fn it_should_format_json() {
-        let input = "          
+        let input = "
               {
     // comments are allowed
-              \"key\": \"value\", 
+              \"key\": \"value\",
   \"key2\": [
-      \"value2\", 
-      \"value3\", 
+      \"value2\",
+      \"value3\",
       1
             , null]
  }
@@ -58,11 +59,11 @@ mod test_biome {
 
     #[test]
     fn it_should_format_javascript() {
-        let input = "          
+        let input = "
     async function asyncAddition(
             a,b
         ) {
-        return a+b 
+        return a+b
     }
 
             ";
@@ -84,13 +85,13 @@ mod test_biome {
 
     #[test]
     fn it_should_format_typescript() {
-        let input = "          
+        let input = "
     async function asyncAddition(
             a:number,b:number
         ) :Promise<
-number> 
+number>
     {
-        return a+b 
+        return a+b
     }
 
             ";
