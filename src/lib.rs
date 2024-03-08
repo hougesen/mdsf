@@ -16,6 +16,11 @@ pub fn format_file(config: &MdsfConfig, path: &std::path::Path) -> Result<(), Md
 
     let input = std::fs::read_to_string(path)?;
 
+    if input.is_empty() {
+        println!("{path:#?} was not changed");
+        return Ok(());
+    }
+
     let parser = pulldown_cmark::Parser::new_ext(&input, pulldown_cmark::Options::all());
 
     let mut output = String::with_capacity(input.len() + 128);
@@ -71,11 +76,11 @@ pub fn format_file(config: &MdsfConfig, path: &std::path::Path) -> Result<(), Md
         s.finalize(&mut output).map_err(MdsfError::from)?;
     }
 
-    if config.markdown.enabled {
+    if config.markdown.enabled && !output.is_empty() {
         output = format_snippet(config, &Language::Markdown, &output);
     }
 
-    if input != output {
+    if input != output && (input.trim().is_empty() == output.trim().is_empty()) {
         println!("{path:#?} was formatted");
         return std::fs::write(path, output).map_err(MdsfError::from);
     }
