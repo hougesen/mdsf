@@ -12,13 +12,38 @@ pub mod formatters;
 pub mod languages;
 
 #[inline]
+fn write_unchanged_line(path: &std::path::Path, dur: core::time::Duration) {
+    #[cfg(target_os = "windows")]
+    let pre = "";
+    #[cfg(not(target_os = "windows"))]
+    let pre = "\u{1b}[2m";
+
+    #[cfg(target_os = "windows")]
+    let post = "";
+    #[cfg(not(target_os = "windows"))]
+    let post = "\u{1b}[0m";
+
+    println!(
+        "{pre}{} {}ms (unchanged){post}",
+        path.display(),
+        dur.as_millis()
+    );
+}
+
+#[inline]
+fn write_changed_line(path: &std::path::Path, dur: core::time::Duration) {
+    println!("{} {}ms", path.display(), dur.as_millis());
+}
+
+#[inline]
 pub fn format_file(config: &MdsfConfig, path: &std::path::Path) -> Result<(), MdsfError> {
-    println!("Formatting {path:#?}");
+    let time = std::time::Instant::now();
 
     let input = std::fs::read_to_string(path)?;
 
     if input.is_empty() {
-        println!("{path:#?} was not changed");
+        let duration = time.elapsed();
+        write_unchanged_line(path, duration);
         return Ok(());
     }
 
@@ -81,12 +106,15 @@ pub fn format_file(config: &MdsfConfig, path: &std::path::Path) -> Result<(), Md
         output = format_snippet(config, &Language::Markdown, &output);
     }
 
-    if input != output && (input.trim().is_empty() == output.trim().is_empty()) {
-        println!("{path:#?} was formatted");
+    let duration = time.elapsed();
+
+    if input != output {
+        write_changed_line(path, duration);
+
         return std::fs::write(path, output).map_err(MdsfError::from);
     }
 
-    println!("{path:#?} was not changed");
+    write_unchanged_line(path, duration);
 
     Ok(())
 }
