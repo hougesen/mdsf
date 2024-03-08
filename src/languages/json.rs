@@ -1,12 +1,17 @@
 use schemars::JsonSchema;
 
-use crate::{config::default_enabled, formatters::biome::format_using_biome};
+use crate::{
+    config::default_enabled,
+    formatters::{biome::format_using_biome, prettier::format_using_prettier},
+};
 
 use super::LanguageFormatter;
 
 #[derive(Debug, Default, serde::Serialize, serde::Deserialize, JsonSchema)]
 pub enum JsonFormatter {
     #[default]
+    #[serde(rename = "prettier")]
+    Prettier,
     #[serde(rename = "biome")]
     Biome,
 }
@@ -38,6 +43,7 @@ impl LanguageFormatter for Json {
 
         match self.formatter {
             JsonFormatter::Biome => format_using_biome(snippet_path),
+            JsonFormatter::Prettier => format_using_prettier(snippet_path),
         }
     }
 }
