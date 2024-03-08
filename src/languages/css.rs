@@ -1,40 +1,35 @@
 use schemars::JsonSchema;
 
-use crate::{
-    config::default_enabled,
-    formatters::{biome::format_using_biome, prettier::format_using_prettier},
-};
+use crate::{config::default_enabled, formatters::prettier::format_using_prettier};
 
 use super::LanguageFormatter;
 
 #[derive(Debug, Default, serde::Serialize, serde::Deserialize, JsonSchema)]
-pub enum TypeScriptFormatter {
+pub enum CssFormatter {
     #[default]
     #[serde(rename = "prettier")]
     Prettier,
-    #[serde(rename = "biome")]
-    Biome,
 }
 
 #[derive(Debug, serde::Serialize, serde::Deserialize, JsonSchema)]
-pub struct TypeScript {
+pub struct Css {
     #[serde(default = "default_enabled")]
     pub enabled: bool,
     #[serde(default)]
-    pub formatter: TypeScriptFormatter,
+    pub formatter: CssFormatter,
 }
 
-impl Default for TypeScript {
+impl Default for Css {
     #[inline]
     fn default() -> Self {
         Self {
             enabled: true,
-            formatter: TypeScriptFormatter::default(),
+            formatter: CssFormatter::default(),
         }
     }
 }
 
-impl LanguageFormatter for TypeScript {
+impl LanguageFormatter for Css {
     #[inline]
     fn format(&self, snippet_path: &std::path::Path) -> std::io::Result<Option<String>> {
         if !self.enabled {
@@ -42,8 +37,7 @@ impl LanguageFormatter for TypeScript {
         }
 
         match self.formatter {
-            TypeScriptFormatter::Biome => format_using_biome(snippet_path),
-            TypeScriptFormatter::Prettier => format_using_prettier(snippet_path, true),
+            CssFormatter::Prettier => format_using_prettier(snippet_path, true),
         }
     }
 }

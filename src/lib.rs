@@ -20,8 +20,6 @@ pub fn format_file(config: &MdsfConfig, path: &std::path::Path) -> Result<(), Md
 
     let mut output = String::with_capacity(input.len() + 128);
 
-    let mut modified = false;
-
     let mut codeblock_language = None;
 
     let mut state = None;
@@ -48,10 +46,6 @@ pub fn format_file(config: &MdsfConfig, path: &std::path::Path) -> Result<(), Md
                 if let Some(language) = &codeblock_language {
                     let formatted = CowStr::from(format_snippet(config, language, &text));
 
-                    if formatted != text {
-                        modified = true;
-                    }
-
                     pulldown_cmark::Event::Text(formatted)
                 } else {
                     pulldown_cmark::Event::Text(text)
@@ -73,18 +67,20 @@ pub fn format_file(config: &MdsfConfig, path: &std::path::Path) -> Result<(), Md
         .into();
     }
 
-    if modified {
-        if let Some(s) = state {
-            s.finalize(&mut output).map_err(MdsfError::from)?;
-        }
+    if let Some(s) = state {
+        s.finalize(&mut output).map_err(MdsfError::from)?;
+    }
 
-        let mut trimmed = output.trim().to_owned();
-        trimmed.push('\n');
+    if config.markdown.enabled {
+        output = format_snippet(config, &Language::Markdown, &output);
+    }
 
+    if input != output {
         println!("{path:#?} was formatted");
-        return std::fs::write(path, trimmed).map_err(MdsfError::from);
+        return std::fs::write(path, output).map_err(MdsfError::from);
     }
 
     println!("{path:#?} was not changed");
+
     Ok(())
 }
