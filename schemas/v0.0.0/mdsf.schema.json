@@ -6,7 +6,7 @@
     "javascript": {
       "default": {
         "enabled": true,
-        "formatter": "biome"
+        "formatter": "prettier"
       },
       "allOf": [
         {
@@ -17,7 +17,7 @@
     "json": {
       "default": {
         "enabled": true,
-        "formatter": "biome"
+        "formatter": "prettier"
       },
       "allOf": [
         {
@@ -33,6 +33,17 @@
       "allOf": [
         {
           "$ref": "#/definitions/Lua"
+        }
+      ]
+    },
+    "markdown": {
+      "default": {
+        "enabled": true,
+        "formatter": "prettier"
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/Markdown"
         }
       ]
     },
@@ -83,7 +94,7 @@
     "typescript": {
       "default": {
         "enabled": true,
-        "formatter": "biome"
+        "formatter": "prettier"
       },
       "allOf": [
         {
@@ -112,7 +123,7 @@
           "type": "boolean"
         },
         "formatter": {
-          "default": "biome",
+          "default": "prettier",
           "allOf": [
             {
               "$ref": "#/definitions/JavaScriptFormatter"
@@ -124,6 +135,7 @@
     "JavaScriptFormatter": {
       "type": "string",
       "enum": [
+        "prettier",
         "biome"
       ]
     },
@@ -135,7 +147,7 @@
           "type": "boolean"
         },
         "formatter": {
-          "default": "biome",
+          "default": "prettier",
           "allOf": [
             {
               "$ref": "#/definitions/JsonFormatter"
@@ -147,6 +159,7 @@
     "JsonFormatter": {
       "type": "string",
       "enum": [
+        "prettier",
         "biome"
       ]
     },
@@ -171,6 +184,29 @@
       "type": "string",
       "enum": [
         "stylua"
+      ]
+    },
+    "Markdown": {
+      "type": "object",
+      "properties": {
+        "enabled": {
+          "default": true,
+          "type": "boolean"
+        },
+        "formatter": {
+          "default": "prettier",
+          "allOf": [
+            {
+              "$ref": "#/definitions/MarkdownFormatter"
+            }
+          ]
+        }
+      }
+    },
+    "MarkdownFormatter": {
+      "type": "string",
+      "enum": [
+        "prettier"
       ]
     },
     "Nim": {
@@ -273,7 +309,7 @@
           "type": "boolean"
         },
         "formatter": {
-          "default": "biome",
+          "default": "prettier",
           "allOf": [
             {
               "$ref": "#/definitions/TypeScriptFormatter"
@@ -285,6 +321,7 @@
     "TypeScriptFormatter": {
       "type": "string",
       "enum": [
+        "prettier",
         "biome"
       ]
     },
