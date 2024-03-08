@@ -11,6 +11,7 @@ pub struct Cli {
 #[derive(Subcommand, Debug)]
 pub enum Commands {
     Format(FormatCommandArguments),
+    /// Create a new mdsf config
     Init,
 }
 
