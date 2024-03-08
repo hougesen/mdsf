@@ -14,6 +14,17 @@
         }
       ]
     },
+    "elixir": {
+      "default": {
+        "enabled": true,
+        "formatter": "mix_format"
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/Elixir"
+        }
+      ]
+    },
     "gleam": {
       "default": {
         "enabled": true,
@@ -179,6 +190,27 @@
     "CssFormatter": {
       "type": "string",
       "enum": ["prettier"]
+    },
+    "Elixir": {
+      "type": "object",
+      "properties": {
+        "enabled": {
+          "default": true,
+          "type": "boolean"
+        },
+        "formatter": {
+          "default": "mix_format",
+          "allOf": [
+            {
+              "$ref": "#/definitions/ElixirFormatter"
+            }
+          ]
+        }
+      }
+    },
+    "ElixirFormatter": {
+      "type": "string",
+      "enum": ["mix_format"]
     },
     "Gleam": {
       "type": "object",

@@ -1,5 +1,6 @@
 pub enum Language {
     Css,
+    Elixir,
     Gleam,
     Html,
     JavaScript,
@@ -16,6 +17,7 @@ pub enum Language {
 }
 
 pub mod css;
+pub mod elixir;
 pub mod gleam;
 pub mod html;
 pub mod javascript;
@@ -39,6 +41,7 @@ impl Language {
     pub fn maybe_from_str(input: &str) -> Option<Self> {
         match input {
             "css" | "scss" => Some(Self::Css),
+            "elixir" => Some(Self::Elixir),
             "gleam" => Some(Self::Gleam),
             "html" => Some(Self::Html),
             "js" | "jsx" | "javascript" => Some(Self::JavaScript),
@@ -61,6 +64,7 @@ impl Language {
         match self {
             // NOTE: since scss is a superset of css we might as well support both at the same time
             Self::Css => ".scss",
+            Self::Elixir => ".ex",
             Self::Gleam => ".gleam",
             Self::Html => ".html",
             Self::JavaScript => ".js",

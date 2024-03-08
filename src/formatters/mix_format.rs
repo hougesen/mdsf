@@ -1,8 +1,8 @@
 use super::{execute_command, read_snippet};
 
 #[inline]
-pub fn format_using_gleam_format(file_path: &std::path::Path) -> std::io::Result<Option<String>> {
-    let mut cmd = std::process::Command::new("gleam");
+pub fn format_using_mix_format(file_path: &std::path::Path) -> std::io::Result<Option<String>> {
+    let mut cmd = std::process::Command::new("mix");
 
     // Incase the use hasn't installed biome
     cmd.arg("format").arg(file_path);
@@ -17,22 +17,25 @@ pub fn format_using_gleam_format(file_path: &std::path::Path) -> std::io::Result
 #[cfg(test)]
 mod test_gleam_format {
     use crate::{
-        formatters::{gleam_format::format_using_gleam_format, setup_snippet},
+        formatters::{mix_format::format_using_mix_format, setup_snippet},
         languages::Language,
     };
 
     #[test]
     fn it_should_format_gleam() {
-        let input = "pub fn add(a:Int,b:Int)->Int{a+b}";
-        let expected_output = "pub fn add(a: Int, b: Int) -> Int {
+        let input = "
+        def              add(a  ,      b   )   do    a   +   b                 end
+
+";
+        let expected_output = "def add(a, b) do
   a + b
-}
+end
 ";
 
-        let snippet = setup_snippet(input, Language::Gleam.to_file_ext())
+        let snippet = setup_snippet(input, Language::Elixir.to_file_ext())
             .expect("it to create a snippet file");
 
-        let output = format_using_gleam_format(snippet.path())
+        let output = format_using_mix_format(snippet.path())
             .expect("it to be succesful")
             .expect("it to be some");
 
