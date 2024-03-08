@@ -59,6 +59,7 @@ pub fn format_snippet(config: &MdsfConfig, language: &Language, code: &str) -> S
             Language::Rust => config.rust.format(snippet_path),
             Language::Toml => config.toml.format(snippet_path),
             Language::TypeScript => config.typescript.format(snippet_path),
+            Language::Yaml => config.yaml.format(snippet_path),
             Language::Zig => config.zig.format(snippet_path),
         } {
             let mut f = formatted_code.trim().to_owned();

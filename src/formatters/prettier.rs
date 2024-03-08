@@ -226,4 +226,59 @@ p {
 
         assert_eq!(expected_output, output);
     }
+
+    #[test]
+    fn it_should_format_yaml() {
+        let input = "
+
+
+version:                                                                             2
+updates:
+  - package-ecosystem:                    \"cargo\"
+    directory:  \"/\"
+    schedule:
+      interval:     \"monthly\"
+    assignees:
+      -     \"hougesen\"
+    open-pull-requests-limit:       25
+
+  - package-ecosystem:                              \"github-actions\"
+    directory:          \"/\"
+    schedule:
+        interval:          \"monthly\"
+    assignees:
+        - \"hougesen\"
+    open-pull-requests-limit: 25
+
+
+        ";
+
+        let expected_output = "version: 2
+updates:
+  - package-ecosystem: \"cargo\"
+    directory: \"/\"
+    schedule:
+      interval: \"monthly\"
+    assignees:
+      - \"hougesen\"
+    open-pull-requests-limit: 25
+
+  - package-ecosystem: \"github-actions\"
+    directory: \"/\"
+    schedule:
+      interval: \"monthly\"
+    assignees:
+      - \"hougesen\"
+    open-pull-requests-limit: 25
+";
+
+        let snippet = setup_snippet(input, Language::Yaml.to_file_ext())
+            .expect("it to create a snippet file");
+
+        let output = format_using_prettier(snippet.path(), false)
+            .expect("it to be succesful")
+            .expect("it to be some");
+
+        assert_eq!(expected_output, output);
+    }
 }

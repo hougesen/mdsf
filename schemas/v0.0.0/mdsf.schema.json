@@ -3,6 +3,17 @@
   "title": "MdsfConfig",
   "type": "object",
   "properties": {
+    "css": {
+      "default": {
+        "enabled": true,
+        "formatter": "prettier"
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/Css"
+        }
+      ]
+    },
     "html": {
       "default": {
         "enabled": true,
@@ -113,6 +124,17 @@
         }
       ]
     },
+    "yaml": {
+      "default": {
+        "enabled": true,
+        "formatter": "prettier"
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/Yaml"
+        }
+      ]
+    },
     "zig": {
       "default": {
         "enabled": true,
@@ -126,6 +148,27 @@
     }
   },
   "definitions": {
+    "Css": {
+      "type": "object",
+      "properties": {
+        "enabled": {
+          "default": true,
+          "type": "boolean"
+        },
+        "formatter": {
+          "default": "prettier",
+          "allOf": [
+            {
+              "$ref": "#/definitions/CssFormatter"
+            }
+          ]
+        }
+      }
+    },
+    "CssFormatter": {
+      "type": "string",
+      "enum": ["prettier"]
+    },
     "Html": {
       "type": "object",
       "properties": {
@@ -145,9 +188,7 @@
     },
     "HtmlFormatter": {
       "type": "string",
-      "enum": [
-        "prettier"
-      ]
+      "enum": ["prettier"]
     },
     "JavaScript": {
       "type": "object",
@@ -168,10 +209,7 @@
     },
     "JavaScriptFormatter": {
       "type": "string",
-      "enum": [
-        "prettier",
-        "biome"
-      ]
+      "enum": ["prettier", "biome"]
     },
     "Json": {
       "type": "object",
@@ -192,10 +230,7 @@
     },
     "JsonFormatter": {
       "type": "string",
-      "enum": [
-        "prettier",
-        "biome"
-      ]
+      "enum": ["prettier", "biome"]
     },
     "Lua": {
       "type": "object",
@@ -216,9 +251,7 @@
     },
     "LuaFormatter": {
       "type": "string",
-      "enum": [
-        "stylua"
-      ]
+      "enum": ["stylua"]
     },
     "Markdown": {
       "type": "object",
@@ -239,9 +272,7 @@
     },
     "MarkdownFormatter": {
       "type": "string",
-      "enum": [
-        "prettier"
-      ]
+      "enum": ["prettier"]
     },
     "Nim": {
       "type": "object",
@@ -262,9 +293,7 @@
     },
     "NimFormatter": {
       "type": "string",
-      "enum": [
-        "nimpretty"
-      ]
+      "enum": ["nimpretty"]
     },
     "Python": {
       "type": "object",
@@ -285,9 +314,7 @@
     },
     "PythonFormatter": {
       "type": "string",
-      "enum": [
-        "ruff"
-      ]
+      "enum": ["ruff"]
     },
     "Rust": {
       "type": "object",
@@ -308,9 +335,7 @@
     },
     "RustFormatter": {
       "type": "string",
-      "enum": [
-        "rustfmt"
-      ]
+      "enum": ["rustfmt"]
     },
     "Toml": {
       "type": "object",
@@ -331,9 +356,7 @@
     },
     "TomlFormatter": {
       "type": "string",
-      "enum": [
-        "taplo"
-      ]
+      "enum": ["taplo"]
     },
     "TypeScript": {
       "type": "object",
@@ -354,10 +377,28 @@
     },
     "TypeScriptFormatter": {
       "type": "string",
-      "enum": [
-        "prettier",
-        "biome"
-      ]
+      "enum": ["prettier", "biome"]
+    },
+    "Yaml": {
+      "type": "object",
+      "properties": {
+        "enabled": {
+          "default": true,
+          "type": "boolean"
+        },
+        "formatter": {
+          "default": "prettier",
+          "allOf": [
+            {
+              "$ref": "#/definitions/YamlFormatter"
+            }
+          ]
+        }
+      }
+    },
+    "YamlFormatter": {
+      "type": "string",
+      "enum": ["prettier"]
     },
     "Zig": {
       "type": "object",
@@ -378,9 +419,7 @@
     },
     "ZigFormatter": {
       "type": "string",
-      "enum": [
-        "zigfmt"
-      ]
+      "enum": ["zigfmt"]
     }
   }
 }

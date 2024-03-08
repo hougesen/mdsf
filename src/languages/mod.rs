@@ -10,6 +10,7 @@ pub enum Language {
     Rust,
     Toml,
     TypeScript,
+    Yaml,
     Zig,
 }
 
@@ -24,6 +25,7 @@ pub mod python;
 pub mod rust;
 pub mod toml;
 pub mod typescript;
+pub mod yaml;
 pub mod zig;
 
 pub trait LanguageFormatter {
@@ -31,9 +33,10 @@ pub trait LanguageFormatter {
 }
 
 impl Language {
+    #[inline]
     pub fn maybe_from_str(input: &str) -> Option<Self> {
         match input {
-            "css" | "scss" => Some(Self::Html),
+            "css" | "scss" => Some(Self::Css),
             "html" => Some(Self::Html),
             "js" | "jsx" | "javascript" => Some(Self::JavaScript),
             "json" => Some(Self::Json),
@@ -44,11 +47,13 @@ impl Language {
             "rust" => Some(Self::Rust),
             "toml" => Some(Self::Toml),
             "ts" | "tsx" | "typescript" => Some(Self::TypeScript),
+            "yml" | "yaml" => Some(Self::Yaml),
             "zig" => Some(Self::Zig),
             _ => None,
         }
     }
 
+    #[inline]
     pub const fn to_file_ext(&self) -> &'static str {
         match self {
             // NOTE: since scss is a superset of css we might as well support both at the same time
@@ -63,6 +68,7 @@ impl Language {
             Self::Rust => ".rs",
             Self::Toml => ".toml",
             Self::TypeScript => ".ts",
+            Self::Yaml => ".yml",
             Self::Zig => ".zig",
         }
     }
