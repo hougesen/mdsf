@@ -41,7 +41,7 @@ end
             setup_snippet(input, Language::Lua.to_file_ext()).expect("it to create a snippet file");
 
         let output = format_using_stylua(snippet.path())
-            .expect("it to be succesful")
+            .expect("it to be successful")
             .expect("it to be some");
 
         assert_eq!(expected_output, output);

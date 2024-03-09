@@ -56,7 +56,7 @@ mod test_prettier {
             .expect("it to create a snippet file");
 
         let output = format_using_prettier(snippet.path(), true)
-            .expect("it to be succesful")
+            .expect("it to be successful")
             .expect("it to be some");
 
         assert_eq!(expected_output, output);
@@ -82,7 +82,7 @@ mod test_prettier {
             .expect("it to create a snippet file");
 
         let output = format_using_prettier(snippet.path(), true)
-            .expect("it to be succesful")
+            .expect("it to be successful")
             .expect("it to be some");
 
         assert_eq!(expected_output, output);
@@ -111,7 +111,7 @@ number>
             .expect("it to create a snippet file");
 
         let output = format_using_prettier(snippet.path(), true)
-            .expect("it to be succesful")
+            .expect("it to be successful")
             .expect("it to be some");
 
         assert_eq!(expected_output, output);
@@ -137,7 +137,7 @@ this is a paragraph
             .expect("it to create a snippet file");
 
         let output = format_using_prettier(snippet.path(), false)
-            .expect("it to be succesful")
+            .expect("it to be successful")
             .expect("it to be some");
 
         assert_eq!(expected_output, output);
@@ -163,7 +163,7 @@ number>
             .expect("it to create a snippet file");
 
         let output = format_using_prettier(snippet.path(), false)
-            .expect("it to be succesful")
+            .expect("it to be successful")
             .expect("it to be some");
 
         assert_eq!(input, output);
@@ -199,7 +199,7 @@ number>
             .expect("it to create a snippet file");
 
         let output = format_using_prettier(snippet.path(), true)
-            .expect("it to be succesful")
+            .expect("it to be successful")
             .expect("it to be some");
 
         assert_eq!(expected_output, output);
@@ -221,7 +221,7 @@ p {
             setup_snippet(input, Language::Css.to_file_ext()).expect("it to create a snippet file");
 
         let output = format_using_prettier(snippet.path(), true)
-            .expect("it to be succesful")
+            .expect("it to be successful")
             .expect("it to be some");
 
         assert_eq!(expected_output, output);
@@ -276,7 +276,7 @@ updates:
             .expect("it to create a snippet file");
 
         let output = format_using_prettier(snippet.path(), false)
-            .expect("it to be succesful")
+            .expect("it to be successful")
             .expect("it to be some");
 
         assert_eq!(expected_output, output);

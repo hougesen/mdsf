@@ -36,7 +36,7 @@ end
             .expect("it to create a snippet file");
 
         let output = format_using_mix_format(snippet.path())
-            .expect("it to be succesful")
+            .expect("it to be successful")
             .expect("it to be some");
 
         assert_eq!(expected_output, output);
