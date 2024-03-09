@@ -3,6 +3,17 @@
   "title": "MdsfConfig",
   "type": "object",
   "properties": {
+    "bash": {
+      "default": {
+        "enabled": true,
+        "formatter": "shfmt"
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/Bash"
+        }
+      ]
+    },
     "css": {
       "default": {
         "enabled": true,
@@ -170,6 +181,27 @@
     }
   },
   "definitions": {
+    "Bash": {
+      "type": "object",
+      "properties": {
+        "enabled": {
+          "default": true,
+          "type": "boolean"
+        },
+        "formatter": {
+          "default": "shfmt",
+          "allOf": [
+            {
+              "$ref": "#/definitions/BashFormatter"
+            }
+          ]
+        }
+      }
+    },
+    "BashFormatter": {
+      "type": "string",
+      "enum": ["shfmt"]
+    },
     "Css": {
       "type": "object",
       "properties": {

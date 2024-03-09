@@ -1,4 +1,5 @@
 pub enum Language {
+    Bash,
     Css,
     Elixir,
     Gleam,
@@ -16,6 +17,7 @@ pub enum Language {
     Zig,
 }
 
+pub mod bash;
 pub mod css;
 pub mod elixir;
 pub mod gleam;
@@ -40,6 +42,7 @@ impl Language {
     #[inline]
     pub fn maybe_from_str(input: &str) -> Option<Self> {
         match input {
+            "sh" | "shell" | "bash" => Some(Self::Bash),
             "css" | "scss" => Some(Self::Css),
             "elixir" => Some(Self::Elixir),
             "gleam" => Some(Self::Gleam),
@@ -62,6 +65,7 @@ impl Language {
     #[inline]
     pub const fn to_file_ext(&self) -> &'static str {
         match self {
+            Self::Bash => ".sh",
             // NOTE: since scss is a superset of css we might as well support both at the same time
             Self::Css => ".scss",
             Self::Elixir => ".ex",
