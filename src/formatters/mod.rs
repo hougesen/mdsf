@@ -12,6 +12,7 @@ use crate::{
 
 pub mod biome;
 pub mod gleam_format;
+pub mod gofmt;
 pub mod mix_format;
 pub mod nimpretty;
 pub mod prettier;
@@ -86,6 +87,7 @@ pub fn format_snippet(config: &MdsfConfig, language: &Language, code: &str) -> S
         if let Ok(Some(formatted_code)) = match language {
             Language::Css => config.css.format(snippet_path),
             Language::Elixir => config.elixir.format(snippet_path),
+            Language::Go => config.go.format(snippet_path),
             Language::Gleam => config.gleam.format(snippet_path),
             Language::Html => config.html.format(snippet_path),
             Language::JavaScript => config.javascript.format(snippet_path),

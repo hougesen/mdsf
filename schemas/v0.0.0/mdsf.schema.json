@@ -36,6 +36,17 @@
         }
       ]
     },
+    "go": {
+      "default": {
+        "enabled": true,
+        "formatter": "gofmt"
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/Go"
+        }
+      ]
+    },
     "html": {
       "default": {
         "enabled": true,
@@ -265,6 +276,27 @@
     "GleamFormatter": {
       "type": "string",
       "enum": ["gleam_format"]
+    },
+    "Go": {
+      "type": "object",
+      "properties": {
+        "enabled": {
+          "default": true,
+          "type": "boolean"
+        },
+        "formatter": {
+          "default": "gofmt",
+          "allOf": [
+            {
+              "$ref": "#/definitions/GoFormatter"
+            }
+          ]
+        }
+      }
+    },
+    "GoFormatter": {
+      "type": "string",
+      "enum": ["gofmt"]
     },
     "Html": {
       "type": "object",
