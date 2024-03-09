@@ -23,6 +23,7 @@ pub mod ruff;
 pub mod rustfmt;
 pub mod shfmt;
 pub mod sql_formatter;
+pub mod sqlfluff;
 pub mod stylua;
 pub mod taplo;
 pub mod zigfmt;

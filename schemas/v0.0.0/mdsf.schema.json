@@ -171,7 +171,7 @@
     "sql": {
       "default": {
         "enabled": true,
-        "formatter": "sql-formatter"
+        "formatter": "sqlfluff"
       },
       "allOf": [
         {
@@ -530,10 +530,6 @@
       "type": "string",
       "enum": ["rustfmt"]
     },
-    "SQLFormatter": {
-      "type": "string",
-      "enum": ["sql-formatter"]
-    },
     "Shell": {
       "type": "object",
       "properties": {
@@ -563,14 +559,18 @@
           "type": "boolean"
         },
         "formatter": {
-          "default": "sql-formatter",
+          "default": "sqlfluff",
           "allOf": [
             {
-              "$ref": "#/definitions/SQLFormatter"
+              "$ref": "#/definitions/SqlFormatter"
             }
           ]
         }
       }
+    },
+    "SqlFormatter": {
+      "type": "string",
+      "enum": ["sqlfluff", "sql-formatter"]
     },
     "Toml": {
       "type": "object",
