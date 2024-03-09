@@ -1,15 +1,34 @@
+use crate::runners::npx::new_npx_cmd;
+
 use super::execute_command;
+
+#[inline]
+fn set_stylua_args(cmd: &mut std::process::Command, snippet_path: &std::path::Path) {
+    cmd.arg("--verify");
+    cmd.arg(snippet_path);
+}
+
+#[inline]
+fn invoke_stylua(
+    mut cmd: std::process::Command,
+    snippet_path: &std::path::Path,
+) -> std::io::Result<(bool, Option<String>)> {
+    set_stylua_args(&mut cmd, snippet_path);
+
+    execute_command(&mut cmd, snippet_path)
+}
 
 #[inline]
 pub fn format_using_stylua(
     snippet_path: &std::path::Path,
 ) -> std::io::Result<(bool, Option<String>)> {
-    let mut cmd = std::process::Command::new("stylua");
+    let path_result = invoke_stylua(std::process::Command::new("stylua"), snippet_path)?;
 
-    cmd.arg("--verify");
-    cmd.arg(snippet_path);
+    if !path_result.0 {
+        return Ok(path_result);
+    }
 
-    execute_command(&mut cmd, snippet_path)
+    invoke_stylua(new_npx_cmd("@johnnymorganz/stylua-bin"), snippet_path)
 }
 
 #[cfg(test)]

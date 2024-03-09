@@ -1,18 +1,15 @@
+use crate::runners::npx::new_npx_cmd;
+
 use super::execute_command;
 
 #[inline]
 pub fn format_using_biome(
     snippet_path: &std::path::Path,
 ) -> std::io::Result<(bool, Option<String>)> {
-    // TODO: use installed biome instead
-    let mut cmd = std::process::Command::new("npx");
+    // NOTE: the biome docs recommend running biome using npx, and not directly
+    let mut cmd = new_npx_cmd("@biomejs/biome");
 
-    // Incase the user hasn't installed biome
-    cmd.arg("--yes")
-        .arg("@biomejs/biome")
-        .arg("format")
-        .arg("--write")
-        .arg(snippet_path);
+    cmd.arg("format").arg("--write").arg(snippet_path);
 
     execute_command(&mut cmd, snippet_path)
 }
