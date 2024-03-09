@@ -37,7 +37,7 @@ impl LanguageFormatter for Python {
         }
 
         match self.formatter {
-            PythonFormatter::Ruff => format_using_ruff(snippet_path),
+            PythonFormatter::Ruff => format_using_ruff(snippet_path).map(|res| res.1),
         }
     }
 }

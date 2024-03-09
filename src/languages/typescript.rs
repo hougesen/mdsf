@@ -42,8 +42,10 @@ impl LanguageFormatter for TypeScript {
         }
 
         match self.formatter {
-            TypeScriptFormatter::Biome => format_using_biome(snippet_path),
-            TypeScriptFormatter::Prettier => format_using_prettier(snippet_path, true),
+            TypeScriptFormatter::Biome => format_using_biome(snippet_path).map(|res| res.1),
+            TypeScriptFormatter::Prettier => {
+                format_using_prettier(snippet_path, true).map(|res| res.1)
+            }
         }
     }
 }

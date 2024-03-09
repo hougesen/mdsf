@@ -1,16 +1,14 @@
-use super::{execute_command, read_snippet};
+use super::execute_command;
 
 #[inline]
-pub fn format_using_nimpretty(file_path: &std::path::Path) -> std::io::Result<Option<String>> {
+pub fn format_using_nimpretty(
+    snippet_path: &std::path::Path,
+) -> std::io::Result<(bool, Option<String>)> {
     let mut cmd = std::process::Command::new("nimpretty");
 
-    cmd.arg(file_path);
+    cmd.arg(snippet_path);
 
-    if execute_command(&mut cmd)? {
-        return read_snippet(file_path).map(Some);
-    }
-
-    Ok(None)
+    execute_command(&mut cmd, snippet_path)
 }
 
 #[cfg(test)]
@@ -34,6 +32,7 @@ mod test_nimpretty {
 
         let output = format_using_nimpretty(snippet.path())
             .expect("it to be successful")
+            .1
             .expect("it to be some");
 
         assert_eq!(expected_output, output);

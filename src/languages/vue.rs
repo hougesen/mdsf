@@ -37,7 +37,7 @@ impl LanguageFormatter for Vue {
         }
 
         match self.formatter {
-            VueFormatter::Prettier => format_using_prettier(snippet_path, true),
+            VueFormatter::Prettier => format_using_prettier(snippet_path, true).map(|res| res.1),
         }
     }
 }

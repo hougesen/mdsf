@@ -1,22 +1,20 @@
-use super::{execute_command, read_snippet};
+use super::execute_command;
 
 #[inline]
-pub fn format_using_biome(file_path: &std::path::Path) -> std::io::Result<Option<String>> {
+pub fn format_using_biome(
+    snippet_path: &std::path::Path,
+) -> std::io::Result<(bool, Option<String>)> {
     // TODO: use installed biome instead
     let mut cmd = std::process::Command::new("npx");
 
-    // Incase the use hasn't installed biome
+    // Incase the user hasn't installed biome
     cmd.arg("--yes")
         .arg("@biomejs/biome")
         .arg("format")
         .arg("--write")
-        .arg(file_path);
+        .arg(snippet_path);
 
-    if execute_command(&mut cmd)? {
-        return read_snippet(file_path).map(Some);
-    }
-
-    Ok(None)
+    execute_command(&mut cmd, snippet_path)
 }
 
 #[cfg(test)]
@@ -52,6 +50,7 @@ mod test_biome {
 
         let output = format_using_biome(snippet.path())
             .expect("it to be successful")
+            .1
             .expect("it to be some");
 
         assert_eq!(expected_output, output);
@@ -78,6 +77,7 @@ mod test_biome {
 
         let output = format_using_biome(snippet.path())
             .expect("it to be successful")
+            .1
             .expect("it to be some");
 
         assert_eq!(expected_output, output);
@@ -107,6 +107,7 @@ number>
 
         let output = format_using_biome(snippet.path())
             .expect("it to be successful")
+            .1
             .expect("it to be some");
 
         assert_eq!(expected_output, output);

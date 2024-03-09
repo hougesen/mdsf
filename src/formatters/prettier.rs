@@ -1,27 +1,51 @@
-use super::{execute_command, read_snippet};
+use crate::runners::npx::new_npx_cmd;
+
+use super::execute_command;
 
 #[inline]
-pub fn format_using_prettier(
+fn set_prettier_args(
+    cmd: &mut std::process::Command,
     snippet_path: &std::path::Path,
     embedded_language_formatting: bool,
-) -> std::io::Result<Option<String>> {
-    // TODO: use installed prettier instead
-    let mut cmd = std::process::Command::new("npx");
-
-    // Incase the use hasn't installed prettier
-    cmd.arg("--yes").arg("prettier");
-
+) {
     if !embedded_language_formatting {
         cmd.arg("--embedded-language-formatting").arg("off");
     }
 
     cmd.arg("--write").arg(snippet_path);
+}
 
-    if execute_command(&mut cmd)? {
-        return read_snippet(snippet_path).map(Some);
+#[inline]
+fn invoke_prettier(
+    mut cmd: std::process::Command,
+    snippet_path: &std::path::Path,
+    embedded_language_formatting: bool,
+) -> std::io::Result<(bool, Option<String>)> {
+    set_prettier_args(&mut cmd, snippet_path, embedded_language_formatting);
+
+    execute_command(&mut cmd, snippet_path)
+}
+
+#[inline]
+pub fn format_using_prettier(
+    snippet_path: &std::path::Path,
+    embedded_language_formatting: bool,
+) -> std::io::Result<(bool, Option<String>)> {
+    let path_result = invoke_prettier(
+        std::process::Command::new("prettier"),
+        snippet_path,
+        embedded_language_formatting,
+    )?;
+
+    if !path_result.0 {
+        return Ok(path_result);
     }
 
-    Ok(None)
+    invoke_prettier(
+        new_npx_cmd("prettier"),
+        snippet_path,
+        embedded_language_formatting,
+    )
 }
 
 #[cfg(test)]
@@ -57,6 +81,7 @@ mod test_prettier {
 
         let output = format_using_prettier(snippet.path(), true)
             .expect("it to be successful")
+            .1
             .expect("it to be some");
 
         assert_eq!(expected_output, output);
@@ -83,6 +108,7 @@ mod test_prettier {
 
         let output = format_using_prettier(snippet.path(), true)
             .expect("it to be successful")
+            .1
             .expect("it to be some");
 
         assert_eq!(expected_output, output);
@@ -112,6 +138,7 @@ number>
 
         let output = format_using_prettier(snippet.path(), true)
             .expect("it to be successful")
+            .1
             .expect("it to be some");
 
         assert_eq!(expected_output, output);
@@ -138,6 +165,7 @@ this is a paragraph
 
         let output = format_using_prettier(snippet.path(), false)
             .expect("it to be successful")
+            .1
             .expect("it to be some");
 
         assert_eq!(expected_output, output);
@@ -164,6 +192,7 @@ number>
 
         let output = format_using_prettier(snippet.path(), false)
             .expect("it to be successful")
+            .1
             .expect("it to be some");
 
         assert_eq!(input, output);
@@ -200,6 +229,7 @@ number>
 
         let output = format_using_prettier(snippet.path(), true)
             .expect("it to be successful")
+            .1
             .expect("it to be some");
 
         assert_eq!(expected_output, output);
@@ -222,6 +252,7 @@ p {
 
         let output = format_using_prettier(snippet.path(), true)
             .expect("it to be successful")
+            .1
             .expect("it to be some");
 
         assert_eq!(expected_output, output);
@@ -277,6 +308,7 @@ updates:
 
         let output = format_using_prettier(snippet.path(), false)
             .expect("it to be successful")
+            .1
             .expect("it to be some");
 
         assert_eq!(expected_output, output);

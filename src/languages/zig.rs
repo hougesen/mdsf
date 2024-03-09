@@ -37,7 +37,7 @@ impl LanguageFormatter for Zig {
         }
 
         match self.formatter {
-            ZigFormatter::ZigFmt => format_using_zigfmt(snippet_path),
+            ZigFormatter::ZigFmt => format_using_zigfmt(snippet_path).map(|res| res.1),
         }
     }
 }

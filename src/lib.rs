@@ -10,6 +10,7 @@ pub mod config;
 pub mod error;
 pub mod formatters;
 pub mod languages;
+mod runners;
 
 #[inline]
 fn write_unchanged_line(path: &std::path::Path, dur: core::time::Duration) {

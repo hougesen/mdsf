@@ -1,19 +1,35 @@
-use super::{execute_command, read_snippet};
+use crate::runners::npx::new_npx_cmd;
+
+use super::execute_command;
 
 #[inline]
-pub fn format_using_taplo(file_path: &std::path::Path) -> std::io::Result<Option<String>> {
-    let mut cmd = std::process::Command::new("taplo");
-
+fn set_taplo_args(cmd: &mut std::process::Command, snippet_path: &std::path::Path) {
     cmd.arg("fmt");
-    cmd.arg(file_path);
-
-    if execute_command(&mut cmd)? {
-        return read_snippet(file_path).map(Some);
-    }
-
-    Ok(None)
+    cmd.arg(snippet_path);
 }
 
+#[inline]
+fn invoke_taplo(
+    mut cmd: std::process::Command,
+    snippet_path: &std::path::Path,
+) -> std::io::Result<(bool, Option<String>)> {
+    set_taplo_args(&mut cmd, snippet_path);
+
+    execute_command(&mut cmd, snippet_path)
+}
+
+#[inline]
+pub fn format_using_taplo(
+    snippet_path: &std::path::Path,
+) -> std::io::Result<(bool, Option<String>)> {
+    let path_result = invoke_taplo(std::process::Command::new("taplo"), snippet_path)?;
+
+    if !path_result.0 {
+        return Ok(path_result);
+    }
+
+    invoke_taplo(new_npx_cmd("@taplo/cli"), snippet_path)
+}
 #[cfg(test)]
 mod test_taplo {
     use crate::{
@@ -36,6 +52,7 @@ author = \"Mads Hougesen\"
 
         let output = format_using_taplo(snippet.path())
             .expect("it to be successful")
+            .1
             .expect("it to be some");
 
         assert_eq!(expected_output, output);
