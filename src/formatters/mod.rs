@@ -70,6 +70,7 @@ pub fn format_snippet(config: &MdsfConfig, language: &Language, code: &str) -> S
             Language::Shell => config.shell.format(snippet_path),
             Language::Toml => config.toml.format(snippet_path),
             Language::TypeScript => config.typescript.format(snippet_path),
+            Language::Vue => config.vue.format(snippet_path),
             Language::Yaml => config.yaml.format(snippet_path),
             Language::Zig => config.zig.format(snippet_path),
         } {

@@ -13,8 +13,21 @@ pub enum Language {
     Shell,
     Toml,
     TypeScript,
+    Vue,
     Yaml,
     Zig,
+    // TODO: Go,
+    // TODO: Cpp,
+    // TODO: C,
+    // TODO: Haskell,
+    // TODO: OCaml,
+    // TODO: Crystal,
+    // TODO: Ruby,
+    // TODO: PHP,
+    // TODO: Java,
+    // TODO: Kotlin,
+    // TODO: CSharp,
+    // TODO: FSharp,
 }
 
 pub mod css;
@@ -31,6 +44,7 @@ pub mod rust;
 pub mod shell;
 pub mod toml;
 pub mod typescript;
+pub mod vue;
 pub mod yaml;
 pub mod zig;
 
@@ -58,6 +72,7 @@ impl Language {
             "ts" | "tsx" | "typescript" => Some(Self::TypeScript),
             "yml" | "yaml" => Some(Self::Yaml),
             "zig" => Some(Self::Zig),
+            "vue" => Some(Self::Vue),
             _ => None,
         }
     }
@@ -82,6 +97,7 @@ impl Language {
             Self::TypeScript => ".ts",
             Self::Yaml => ".yml",
             Self::Zig => ".zig",
+            Self::Vue => ".vue",
         }
     }
 }

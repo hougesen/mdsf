@@ -157,6 +157,17 @@
         }
       ]
     },
+    "vue": {
+      "default": {
+        "enabled": true,
+        "formatter": "prettier"
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/Vue"
+        }
+      ]
+    },
     "yaml": {
       "default": {
         "enabled": true,
@@ -474,6 +485,27 @@
     "TypeScriptFormatter": {
       "type": "string",
       "enum": ["prettier", "biome"]
+    },
+    "Vue": {
+      "type": "object",
+      "properties": {
+        "enabled": {
+          "default": true,
+          "type": "boolean"
+        },
+        "formatter": {
+          "default": "prettier",
+          "allOf": [
+            {
+              "$ref": "#/definitions/VueFormatter"
+            }
+          ]
+        }
+      }
+    },
+    "VueFormatter": {
+      "type": "string",
+      "enum": ["prettier"]
     },
     "Yaml": {
       "type": "object",
