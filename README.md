@@ -57,7 +57,7 @@ mdsf init
 | JavaScript | `prettier`, `biome`         |
 | Lua        | `stylua`                    |
 | Nim        | `nimpretty`                 |
-| Python     | `ruff`                      |
+| Python     | `ruff`, `black`             |
 | Ruby       | `rubocop`                   |
 | Rust       | `rustfmt`                   |
 | SQL        | `sqlfluff`, `sql-formatter` |

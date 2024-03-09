@@ -11,6 +11,7 @@ use crate::{
 };
 
 pub mod biome;
+pub mod black;
 pub mod dart_format;
 pub mod gleam_format;
 pub mod gofmt;
