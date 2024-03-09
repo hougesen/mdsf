@@ -25,7 +25,7 @@ cargo install --path ./mdsf --bin mdsf
 ## Usage
 
 ```sh
-mdsf format NAME_OF_FOLDER_OR_FOLDER
+mdsf format <NAME_OF_FOLDER_OR_FOLDER>
 ```
 
 ## Configuration
@@ -37,3 +37,27 @@ If you are interested in customizing which formatter is run, you can create a ne
 ```sh
 mdsf init
 ```
+
+### Supported languages & formatters
+
+> \[!NOTE\]
+> mdsf is not a tool for installing formatters.
+> Only formatters that are installed already will be used.
+
+| Language   | Formatters          |
+| ---------- | ------------------- |
+| CSS        | `prettier`          |
+| Elixir     | `mix_format`        |
+| Gleam      | `gleam_format`      |
+| HTML       | `prettier`          |
+| JSON       | `prettier`, `biome` |
+| JavaScript | `prettier`, `biome` |
+| Lua        | `stylua`            |
+| Nim        | `nimpretty`         |
+| Python     | `ruff`              |
+| Rust       | `rustfmt`           |
+| Shell      | `shfmt`             |
+| TOML       | `taplo`             |
+| TypeScript | `prettier`, `biome` |
+| YAML       | `prettier`          |
+| Zig        | `zigfmt`            |
