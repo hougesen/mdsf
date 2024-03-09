@@ -1,12 +1,17 @@
 use schemars::JsonSchema;
 
-use crate::{config::default_enabled, formatters::sql_formatter::format_using_sql_formatter};
+use crate::{
+    config::default_enabled, formatters::sql_formatter::format_using_sql_formatter,
+    formatters::sqlfluff::format_using_sqlfluff,
+};
 
 use super::LanguageFormatter;
 
 #[derive(Debug, Default, serde::Serialize, serde::Deserialize, JsonSchema)]
-pub enum SQLFormatter {
+pub enum SqlFormatter {
     #[default]
+    #[serde(rename = "sqlfluff")]
+    Sqlfluff,
     #[serde(rename = "sql-formatter")]
     SQLFormatter,
 }
@@ -16,7 +21,7 @@ pub struct Sql {
     #[serde(default = "default_enabled")]
     pub enabled: bool,
     #[serde(default)]
-    pub formatter: SQLFormatter,
+    pub formatter: SqlFormatter,
 }
 
 impl Default for Sql {
@@ -24,7 +29,7 @@ impl Default for Sql {
     fn default() -> Self {
         Self {
             enabled: true,
-            formatter: SQLFormatter::default(),
+            formatter: SqlFormatter::default(),
         }
     }
 }
@@ -37,7 +42,8 @@ impl LanguageFormatter for Sql {
         }
 
         match self.formatter {
-            SQLFormatter::SQLFormatter => format_using_sql_formatter(snippet_path).map(|res| res.1),
+            SqlFormatter::SQLFormatter => format_using_sql_formatter(snippet_path).map(|res| res.1),
+            SqlFormatter::Sqlfluff => format_using_sqlfluff(snippet_path).map(|res| res.1),
         }
     }
 }

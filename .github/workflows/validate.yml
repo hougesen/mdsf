@@ -83,9 +83,13 @@ jobs:
 
       - name: Install ruff
         run: pip install ruff
-
       - name: Validate ruff
         run: ruff --version
+
+      - name: Install sqlfluff
+        run: pip install sqlfluff
+      - name: Validate sqlfluff
+        run: sqlfluff format  --version
 
       - name: Validate biome
         run: npx --yes @biomejs/biome --version
