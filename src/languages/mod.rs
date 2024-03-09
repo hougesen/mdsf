@@ -9,6 +9,7 @@ pub enum Language {
     Markdown,
     Nim,
     Python,
+    Ruby,
     Rust,
     Shell,
     Toml,
@@ -22,7 +23,6 @@ pub enum Language {
     // TODO: Haskell,
     // TODO: OCaml,
     // TODO: Crystal,
-    // TODO: Ruby,
     // TODO: PHP,
     // TODO: Java,
     // TODO: Kotlin,
@@ -54,6 +54,7 @@ pub mod lua;
 pub mod markdown;
 pub mod nim;
 pub mod python;
+pub mod ruby;
 pub mod rust;
 pub mod shell;
 pub mod toml;
@@ -74,16 +75,17 @@ impl Language {
             "elixir" => Some(Self::Elixir),
             "gleam" => Some(Self::Gleam),
             "html" => Some(Self::Html),
-            "js" | "jsx" | "javascript" => Some(Self::JavaScript),
+            "javascript" | "js" | "jsx" => Some(Self::JavaScript),
             "json" => Some(Self::Json),
             "lua" => Some(Self::Lua),
             "markdown" | "md" => Some(Self::Markdown),
             "nim" => Some(Self::Nim),
             "python" => Some(Self::Python),
-            "rust" => Some(Self::Rust),
-            "sh" | "shell" | "bash" | "zh" => Some(Self::Shell),
+            "ruby" => Some(Self::Ruby),
+            "rust" | "rb" => Some(Self::Rust),
+            "shell" | "sh" | "bash" | "zsh" => Some(Self::Shell),
             "toml" => Some(Self::Toml),
-            "ts" | "tsx" | "typescript" => Some(Self::TypeScript),
+            "typescript" | "ts" | "tsx" => Some(Self::TypeScript),
             "yml" | "yaml" => Some(Self::Yaml),
             "zig" => Some(Self::Zig),
             "vue" => Some(Self::Vue),
@@ -105,6 +107,7 @@ impl Language {
             Self::Markdown => ".md",
             Self::Nim => ".nim",
             Self::Python => ".py",
+            Self::Ruby => ".rb",
             Self::Rust => ".rs",
             Self::Shell => ".sh",
             Self::Toml => ".toml",

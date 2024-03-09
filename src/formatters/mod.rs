@@ -15,6 +15,7 @@ pub mod gleam_format;
 pub mod mix_format;
 pub mod nimpretty;
 pub mod prettier;
+pub mod rubocop;
 pub mod ruff;
 pub mod rustfmt;
 pub mod shfmt;
@@ -93,6 +94,7 @@ pub fn format_snippet(config: &MdsfConfig, language: &Language, code: &str) -> S
             Language::Markdown => config.markdown.format(snippet_path),
             Language::Nim => config.nim.format(snippet_path),
             Language::Python => config.python.format(snippet_path),
+            Language::Ruby => config.ruby.format(snippet_path),
             Language::Rust => config.rust.format(snippet_path),
             Language::Shell => config.shell.format(snippet_path),
             Language::Toml => config.toml.format(snippet_path),
