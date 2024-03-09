@@ -2,7 +2,10 @@ use schemars::JsonSchema;
 
 use crate::{
     config::default_enabled,
-    formatters::{biome::format_using_biome, prettier::format_using_prettier},
+    formatters::{
+        biome::format_using_biome, clang_format::format_using_clang_format,
+        prettier::format_using_prettier,
+    },
 };
 
 use super::LanguageFormatter;
@@ -14,6 +17,8 @@ pub enum JavaScriptFormatter {
     Prettier,
     #[serde(rename = "biome")]
     Biome,
+    #[serde(rename = "clang-format")]
+    ClangFormat,
 }
 
 #[derive(Debug, serde::Serialize, serde::Deserialize, JsonSchema)]
@@ -45,6 +50,9 @@ impl LanguageFormatter for JavaScript {
             JavaScriptFormatter::Biome => format_using_biome(snippet_path).map(|res| res.1),
             JavaScriptFormatter::Prettier => {
                 format_using_prettier(snippet_path, true).map(|res| res.1)
+            }
+            JavaScriptFormatter::ClangFormat => {
+                format_using_clang_format(snippet_path).map(|res| res.1)
             }
         }
     }

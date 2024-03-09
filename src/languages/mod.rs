@@ -1,15 +1,21 @@
 pub enum Language {
+    C,
+    CSharp,
+    Cpp,
     Css,
     Dart,
     Elixir,
     Gleam,
     Go,
     Html,
+    Java,
     JavaScript,
     Json,
     Lua,
     Markdown,
     Nim,
+    ObjectiveC,
+    Protobuf,
     Python,
     Ruby,
     Rust,
@@ -20,15 +26,11 @@ pub enum Language {
     Vue,
     Yaml,
     Zig,
-    // TODO: Cpp,
-    // TODO: C,
     // TODO: Haskell,
     // TODO: OCaml,
     // TODO: Crystal,
     // TODO: PHP,
-    // TODO: Java,
     // TODO: Kotlin,
-    // TODO: CSharp,
     // TODO: FSharp,
     // TODO: Swift,
     // TODO: Svelte,
@@ -41,20 +43,25 @@ pub enum Language {
     // TODO: Scala,
     // TODO: R,
     // TODO: GraphQL,
-    // TODO: Protobuf,
 }
 
+pub mod c;
+pub mod cpp;
+pub mod csharp;
 pub mod css;
 pub mod dart;
 pub mod elixir;
 pub mod gleam;
 pub mod go;
 pub mod html;
+pub mod java;
 pub mod javascript;
 pub mod json;
 pub mod lua;
 pub mod markdown;
 pub mod nim;
+pub mod objective_c;
+pub mod protobuf;
 pub mod python;
 pub mod ruby;
 pub mod rust;
@@ -74,17 +81,23 @@ impl Language {
     #[inline]
     pub fn maybe_from_str(input: &str) -> Option<Self> {
         match input {
+            "c" | "clang" => Some(Self::C),
+            "cpp" | "c++" => Some(Self::Cpp),
+            "csharp" | "c#" => Some(Self::CSharp),
             "css" | "scss" => Some(Self::Css),
             "dart" => Some(Self::Dart),
             "elixir" => Some(Self::Elixir),
             "gleam" => Some(Self::Gleam),
             "go" | "golang" => Some(Self::Go),
             "html" => Some(Self::Html),
+            "java" => Some(Self::Java),
             "javascript" | "js" | "jsx" => Some(Self::JavaScript),
             "json" => Some(Self::Json),
             "lua" => Some(Self::Lua),
             "markdown" | "md" => Some(Self::Markdown),
             "nim" => Some(Self::Nim),
+            "objectivec" | "objective-c" | "objc" => Some(Self::ObjectiveC),
+            "profobuf" | "profo" => Some(Self::Protobuf),
             "python" => Some(Self::Python),
             "ruby" => Some(Self::Ruby),
             "rust" | "rb" => Some(Self::Rust),
@@ -105,17 +118,23 @@ impl Language {
     pub const fn to_file_ext(&self) -> &'static str {
         match self {
             // NOTE: since scss is a superset of css we might as well support both at the same time
+            Self::C => ".c",
+            Self::CSharp => ".cs",
+            Self::Cpp => "cpp",
             Self::Css => ".scss",
             Self::Dart => ".dart",
             Self::Elixir => ".ex",
             Self::Gleam => ".gleam",
             Self::Go => ".go",
             Self::Html => ".html",
+            Self::Java => ".java",
             Self::JavaScript => ".js",
             Self::Json => ".jsonc",
             Self::Lua => ".lua",
             Self::Markdown => ".md",
             Self::Nim => ".nim",
+            Self::ObjectiveC => ".m",
+            Self::Protobuf => ".proto",
             Self::Python => ".py",
             Self::Ruby => ".rb",
             Self::Rust => ".rs",

@@ -129,4 +129,7 @@ jobs:
       - name: Install autopep
         run: pip install autopep8 && autopep8 --version
 
+      - name: Install clang-format
+        run: pip install clang-format && clang-format --version
+
       - run: cargo test
