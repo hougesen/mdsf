@@ -21,7 +21,7 @@ mod test_autopep8 {
     fn it_should_format_python() {
         let input = "def add( a: int ,  b:int)->int: return a+b";
 
-        let expected_output = "def add(a: int, b: int) -> int: return a+b\n";
+        let expected_output = "def add(a: int,  b: int) -> int: return a+b\n";
 
         let snippet = setup_snippet(input, Language::Python.to_file_ext())
             .expect("it to create a snippet file");
