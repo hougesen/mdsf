@@ -3,6 +3,39 @@
   "title": "MdsfConfig",
   "type": "object",
   "properties": {
+    "c": {
+      "default": {
+        "enabled": true,
+        "formatter": "clang-format"
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/C"
+        }
+      ]
+    },
+    "cpp": {
+      "default": {
+        "enabled": true,
+        "formatter": "clang-format"
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/Cpp"
+        }
+      ]
+    },
+    "csharp": {
+      "default": {
+        "enabled": true,
+        "formatter": "clang-format"
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/CSharp"
+        }
+      ]
+    },
     "css": {
       "default": {
         "enabled": true,
@@ -69,6 +102,17 @@
         }
       ]
     },
+    "java": {
+      "default": {
+        "enabled": true,
+        "formatter": "clang-format"
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/Java"
+        }
+      ]
+    },
     "javascript": {
       "default": {
         "enabled": true,
@@ -121,6 +165,28 @@
       "allOf": [
         {
           "$ref": "#/definitions/Nim"
+        }
+      ]
+    },
+    "objective_c": {
+      "default": {
+        "enabled": true,
+        "formatter": "clang-format"
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/ObjectiveC"
+        }
+      ]
+    },
+    "protobuf": {
+      "default": {
+        "enabled": true,
+        "formatter": "clang-format"
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/Protobuf"
         }
       ]
     },
@@ -236,6 +302,69 @@
     }
   },
   "definitions": {
+    "C": {
+      "type": "object",
+      "properties": {
+        "enabled": {
+          "default": true,
+          "type": "boolean"
+        },
+        "formatter": {
+          "default": "clang-format",
+          "allOf": [
+            {
+              "$ref": "#/definitions/CFormatter"
+            }
+          ]
+        }
+      }
+    },
+    "CFormatter": {
+      "type": "string",
+      "enum": ["clang-format"]
+    },
+    "CSharp": {
+      "type": "object",
+      "properties": {
+        "enabled": {
+          "default": true,
+          "type": "boolean"
+        },
+        "formatter": {
+          "default": "clang-format",
+          "allOf": [
+            {
+              "$ref": "#/definitions/CSharpFormatter"
+            }
+          ]
+        }
+      }
+    },
+    "CSharpFormatter": {
+      "type": "string",
+      "enum": ["clang-format"]
+    },
+    "Cpp": {
+      "type": "object",
+      "properties": {
+        "enabled": {
+          "default": true,
+          "type": "boolean"
+        },
+        "formatter": {
+          "default": "clang-format",
+          "allOf": [
+            {
+              "$ref": "#/definitions/CppFormatter"
+            }
+          ]
+        }
+      }
+    },
+    "CppFormatter": {
+      "type": "string",
+      "enum": ["clang-format"]
+    },
     "Css": {
       "type": "object",
       "properties": {
@@ -362,6 +491,27 @@
       "type": "string",
       "enum": ["prettier"]
     },
+    "Java": {
+      "type": "object",
+      "properties": {
+        "enabled": {
+          "default": true,
+          "type": "boolean"
+        },
+        "formatter": {
+          "default": "clang-format",
+          "allOf": [
+            {
+              "$ref": "#/definitions/JavaFormatter"
+            }
+          ]
+        }
+      }
+    },
+    "JavaFormatter": {
+      "type": "string",
+      "enum": ["clang-format"]
+    },
     "JavaScript": {
       "type": "object",
       "properties": {
@@ -381,7 +531,7 @@
     },
     "JavaScriptFormatter": {
       "type": "string",
-      "enum": ["prettier", "biome"]
+      "enum": ["prettier", "biome", "clang-format"]
     },
     "Json": {
       "type": "object",
@@ -402,7 +552,7 @@
     },
     "JsonFormatter": {
       "type": "string",
-      "enum": ["prettier", "biome"]
+      "enum": ["prettier", "biome", "clang-format"]
     },
     "Lua": {
       "type": "object",
@@ -466,6 +616,48 @@
     "NimFormatter": {
       "type": "string",
       "enum": ["nimpretty"]
+    },
+    "ObjectiveC": {
+      "type": "object",
+      "properties": {
+        "enabled": {
+          "default": true,
+          "type": "boolean"
+        },
+        "formatter": {
+          "default": "clang-format",
+          "allOf": [
+            {
+              "$ref": "#/definitions/ObjectiveCFormatter"
+            }
+          ]
+        }
+      }
+    },
+    "ObjectiveCFormatter": {
+      "type": "string",
+      "enum": ["clang-format"]
+    },
+    "Protobuf": {
+      "type": "object",
+      "properties": {
+        "enabled": {
+          "default": true,
+          "type": "boolean"
+        },
+        "formatter": {
+          "default": "clang-format",
+          "allOf": [
+            {
+              "$ref": "#/definitions/ProtobufFormatter"
+            }
+          ]
+        }
+      }
+    },
+    "ProtobufFormatter": {
+      "type": "string",
+      "enum": ["clang-format"]
     },
     "Python": {
       "type": "object",

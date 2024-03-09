@@ -14,6 +14,7 @@ pub mod autopep8;
 pub mod biome;
 pub mod black;
 pub mod blue;
+pub mod clang_format;
 pub mod dart_format;
 pub mod gleam_format;
 pub mod gofmt;
@@ -114,6 +115,12 @@ pub fn format_snippet(config: &MdsfConfig, language: &Language, code: &str) -> S
             Language::Vue => config.vue.format(snippet_path),
             Language::Yaml => config.yaml.format(snippet_path),
             Language::Zig => config.zig.format(snippet_path),
+            Language::Protobuf => config.protobuf.format(snippet_path),
+            Language::CSharp => config.csharp.format(snippet_path),
+            Language::ObjectiveC => config.objective_c.format(snippet_path),
+            Language::Java => config.java.format(snippet_path),
+            Language::Cpp => config.cpp.format(snippet_path),
+            Language::C => config.c.format(snippet_path),
         } {
             let mut f = formatted_code.trim().to_owned();
 
