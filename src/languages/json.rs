@@ -42,8 +42,8 @@ impl LanguageFormatter for Json {
         }
 
         match self.formatter {
-            JsonFormatter::Biome => format_using_biome(snippet_path),
-            JsonFormatter::Prettier => format_using_prettier(snippet_path, true),
+            JsonFormatter::Biome => format_using_biome(snippet_path).map(|res| res.1),
+            JsonFormatter::Prettier => format_using_prettier(snippet_path, true).map(|res| res.1),
         }
     }
 }

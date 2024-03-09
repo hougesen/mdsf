@@ -41,13 +41,40 @@ pub fn read_snippet(file_path: &std::path::Path) -> std::io::Result<String> {
 }
 
 #[inline]
-pub fn execute_command(cmd: &mut Command) -> std::io::Result<bool> {
+fn handle_post_execution(
+    result: std::io::Result<bool>,
+    snippet_path: &std::path::Path,
+) -> std::io::Result<(bool, Option<String>)> {
+    if let Err(err) = result {
+        if err.kind() == std::io::ErrorKind::NotFound {
+            return Ok((true, None));
+        }
+
+        return Err(err);
+    }
+
+    if matches!(result, Ok(true)) {
+        return read_snippet(snippet_path).map(|code| (false, Some(code)));
+    }
+
+    Ok((false, None))
+}
+
+fn spawn_command(cmd: &mut Command) -> std::io::Result<bool> {
     Ok(cmd
         .stdout(Stdio::null())
         .stderr(Stdio::null())
         .spawn()?
         .wait()?
         .success())
+}
+
+#[inline]
+pub fn execute_command(
+    cmd: &mut Command,
+    snippet_path: &std::path::Path,
+) -> std::io::Result<(bool, Option<String>)> {
+    handle_post_execution(spawn_command(cmd), snippet_path)
 }
 
 #[inline]

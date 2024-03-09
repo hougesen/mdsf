@@ -42,8 +42,10 @@ impl LanguageFormatter for JavaScript {
         }
 
         match self.formatter {
-            JavaScriptFormatter::Biome => format_using_biome(snippet_path),
-            JavaScriptFormatter::Prettier => format_using_prettier(snippet_path, true),
+            JavaScriptFormatter::Biome => format_using_biome(snippet_path).map(|res| res.1),
+            JavaScriptFormatter::Prettier => {
+                format_using_prettier(snippet_path, true).map(|res| res.1)
+            }
         }
     }
 }

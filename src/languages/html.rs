@@ -37,7 +37,7 @@ impl LanguageFormatter for Html {
         }
 
         match self.formatter {
-            HtmlFormatter::Prettier => format_using_prettier(snippet_path, true),
+            HtmlFormatter::Prettier => format_using_prettier(snippet_path, true).map(|res| res.1),
         }
     }
 }

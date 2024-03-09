@@ -28,6 +28,20 @@ pub enum Language {
     // TODO: Kotlin,
     // TODO: CSharp,
     // TODO: FSharp,
+    // TODO: Swift,
+    // TODO: Svelte,
+    // TODO: Dart,
+    // TODO: Julia,
+    // TODO: Dockerfile,
+    // TODO: XML,
+    // TODO: D,
+    // TODO: Erlang,
+    // TODO: Elm,
+    // TODO: Scala,
+    // TODO: R,
+    // TODO: GraphQL,
+    // TODO: Protobuf,
+    // TODO: SQL,
 }
 
 pub mod css;
