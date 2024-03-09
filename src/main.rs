@@ -42,10 +42,27 @@ fn init_config_command() -> std::io::Result<()> {
     Ok(())
 }
 
+fn generate_schema_command() -> std::io::Result<()> {
+    let mut p = std::env::current_dir()?;
+
+    let package_version = env!("CARGO_PKG_VERSION");
+
+    p.push(format!("schemas/v{package_version}"));
+
+    std::fs::create_dir_all(&p)?;
+
+    let schema = serde_json::to_string_pretty(&schemars::schema_for!(MdsfConfig))?;
+
+    std::fs::write(p.join("mdsf.schema.json"), schema)?;
+
+    Ok(())
+}
+
 fn main() {
     let command_result = match Cli::parse().command {
         Commands::Format(args) => format_command(args),
         Commands::Init => init_config_command().map_err(MdsfError::from),
+        Commands::Schema => generate_schema_command().map_err(MdsfError::from),
     };
 
     if let Err(error) = command_result {

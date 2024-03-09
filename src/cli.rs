@@ -13,6 +13,8 @@ pub enum Commands {
     Format(FormatCommandArguments),
     /// Create a new mdsf config
     Init,
+    /// Generate json schema
+    Schema,
 }
 
 /// Run formatters on input files
