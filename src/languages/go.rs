@@ -1,6 +1,9 @@
 use schemars::JsonSchema;
 
-use crate::{config::default_enabled, formatters::gofmt::format_using_gofmt};
+use crate::{
+    config::default_enabled,
+    formatters::{gofmt::format_using_gofmt, gofumpt::format_using_gofumpt},
+};
 
 use super::LanguageFormatter;
 
@@ -9,6 +12,8 @@ pub enum GoFormatter {
     #[default]
     #[serde(rename = "gofmt")]
     GoFmt,
+    #[serde(rename = "gofumpt")]
+    GoFumpt,
 }
 
 #[derive(Debug, serde::Serialize, serde::Deserialize, JsonSchema)]
@@ -38,6 +43,7 @@ impl LanguageFormatter for Go {
 
         match self.formatter {
             GoFormatter::GoFmt => format_using_gofmt(snippet_path).map(|res| res.1),
+            GoFormatter::GoFumpt => format_using_gofumpt(snippet_path).map(|res| res.1),
         }
     }
 }

@@ -104,20 +104,22 @@ jobs:
 
       - name: Install rubocop
         run: gem install rubocop
-
       - name: Validate rubocop
         run: rubocop --version
 
       - name: Install stylua
         run: cargo install stylua
-
       - name: Validate stylua
         run: stylua --version
 
       - name: Install shfmt
         run: go install mvdan.cc/sh/v3/cmd/shfmt@latest
-
       - name: Validate shfmt
         run: shfmt --version
+
+      - name: Install gofumpt
+        run: go install mvdan.cc/gofumpt@latest
+      - name: Validate gofumpt
+        run: gofumpt --version
 
       - run: cargo test

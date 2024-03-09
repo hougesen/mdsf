@@ -13,6 +13,7 @@ use crate::{
 pub mod biome;
 pub mod gleam_format;
 pub mod gofmt;
+pub mod gofumpt;
 pub mod mix_format;
 pub mod nimpretty;
 pub mod prettier;
