@@ -104,9 +104,13 @@ pub fn format_file(config: &MdsfConfig, path: &std::path::Path) -> Result<(), Md
         s.finalize(&mut output).map_err(MdsfError::from)?;
     }
 
-    if config.markdown.enabled && !output.is_empty() {
-        output = format_snippet(config, &Language::Markdown, &output);
-        modified = true;
+    if config.markdown.enabled {
+        if !output.is_empty() {
+            output = format_snippet(config, &Language::Markdown, &output);
+            modified = true;
+        }
+    } else {
+        output.push('\n');
     }
 
     let duration = time.elapsed();

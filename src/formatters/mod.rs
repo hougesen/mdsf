@@ -17,6 +17,7 @@ pub mod nimpretty;
 pub mod prettier;
 pub mod ruff;
 pub mod rustfmt;
+pub mod shfmt;
 pub mod stylua;
 pub mod taplo;
 pub mod zigfmt;
@@ -55,6 +56,7 @@ pub fn format_snippet(config: &MdsfConfig, language: &Language, code: &str) -> S
         let snippet_path = snippet.path();
 
         if let Ok(Some(formatted_code)) = match language {
+            Language::Bash => config.bash.format(snippet_path),
             Language::Css => config.css.format(snippet_path),
             Language::Elixir => config.elixir.format(snippet_path),
             Language::Gleam => config.gleam.format(snippet_path),

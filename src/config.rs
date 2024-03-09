@@ -1,8 +1,8 @@
 use schemars::JsonSchema;
 
 use crate::languages::{
-    css::Css, elixir::Elixir, gleam::Gleam, html::Html, javascript::JavaScript, json::Json,
-    lua::Lua, markdown::Markdown, nim::Nim, python::Python, rust::Rust, toml::Toml,
+    bash::Bash, css::Css, elixir::Elixir, gleam::Gleam, html::Html, javascript::JavaScript,
+    json::Json, lua::Lua, markdown::Markdown, nim::Nim, python::Python, rust::Rust, toml::Toml,
     typescript::TypeScript, yaml::Yaml, zig::Zig,
 };
 
@@ -11,6 +11,9 @@ pub struct MdsfConfig {
     #[schemars(skip)]
     #[serde(rename = "$schema", default = "default_schema_location")]
     pub schema: String,
+
+    #[serde(default)]
+    pub bash: Bash,
 
     #[serde(default)]
     pub css: Css,
@@ -63,6 +66,7 @@ impl Default for MdsfConfig {
     fn default() -> Self {
         Self {
             schema: default_schema_location(),
+            bash: Bash::default(),
             css: Css::default(),
             elixir: Elixir::default(),
             gleam: Gleam::default(),
