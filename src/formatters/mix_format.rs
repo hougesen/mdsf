@@ -19,7 +19,7 @@ mod test_gleam_format {
     };
 
     #[test]
-    fn it_should_format_gleam() {
+    fn it_should_format_elixir() {
         let input = "
         def              add(a  ,      b   )   do    a   +   b                 end
 

@@ -43,6 +43,13 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: Swatinem/rust-cache@v2
+      # Used by gleam format, mix format
+      # NOTE: should be first since it is sometimes crashes (?)
+      - uses: erlef/setup-beam@v1
+        with:
+          otp-version: "26"
+          gleam-version: "1.0.0"
+          elixir-version: "1.16.1"
       # Used by ruff
       - uses: actions/setup-python@v5
         with:
@@ -56,16 +63,14 @@ jobs:
       # Used by zigfmt
       - uses: goto-bus-stop/setup-zig@v2
       - uses: uncenter/setup-taplo@v1
-      # Used by gleam format
-      - uses: erlef/setup-beam@v1
-        with:
-          otp-version: "26"
-          gleam-version: "1.0.0"
-          elixir-version: "1.16.1"
       # Used go shfmt
       - uses: actions/setup-go@v5
         with:
           go-version: "stable"
+      # Used by rubocop
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.3"
 
       - run: rustup toolchain install stable --profile minimal
       - run: rustup component add rustfmt clippy
@@ -78,9 +83,6 @@ jobs:
 
       - name: Validate ruff
         run: ruff --version
-
-      - name: Validate stylua
-        run: stylua --version
 
       - name: Validate biome
         run: npx --yes @biomejs/biome --version
@@ -100,8 +102,17 @@ jobs:
       - name: Validate mix format
         run: mix help format
 
+      - name: Install rubocop
+        run: gem install rubocop
+
+      - name: Validate rubocop
+        run: rubocop --version
+
       - name: Install stylua
         run: cargo install stylua
+
+      - name: Validate stylua
+        run: stylua --version
 
       - name: Install shfmt
         run: go install mvdan.cc/sh/v3/cmd/shfmt@latest

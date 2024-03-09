@@ -55,6 +55,7 @@ mdsf init
 | Lua        | `stylua`            |
 | Nim        | `nimpretty`         |
 | Python     | `ruff`              |
+| Ruby       | `rubocop`           |
 | Rust       | `rustfmt`           |
 | Shell      | `shfmt`             |
 | TOML       | `taplo`             |

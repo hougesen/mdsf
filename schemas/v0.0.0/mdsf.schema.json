@@ -113,6 +113,17 @@
         }
       ]
     },
+    "ruby": {
+      "default": {
+        "enabled": true,
+        "formatter": "rubocop"
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/Ruby"
+        }
+      ]
+    },
     "rust": {
       "default": {
         "enabled": true,
@@ -401,6 +412,27 @@
     "PythonFormatter": {
       "type": "string",
       "enum": ["ruff"]
+    },
+    "Ruby": {
+      "type": "object",
+      "properties": {
+        "enabled": {
+          "default": true,
+          "type": "boolean"
+        },
+        "formatter": {
+          "default": "rubocop",
+          "allOf": [
+            {
+              "$ref": "#/definitions/RubyFormatter"
+            }
+          ]
+        }
+      }
+    },
+    "RubyFormatter": {
+      "type": "string",
+      "enum": ["rubocop"]
     },
     "Rust": {
       "type": "object",
