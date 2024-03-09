@@ -22,6 +22,7 @@ pub mod rubocop;
 pub mod ruff;
 pub mod rustfmt;
 pub mod shfmt;
+pub mod sql_formatter;
 pub mod stylua;
 pub mod taplo;
 pub mod zigfmt;
@@ -90,8 +91,8 @@ pub fn format_snippet(config: &MdsfConfig, language: &Language, code: &str) -> S
             Language::Css => config.css.format(snippet_path),
             Language::Dart => config.dart.format(snippet_path),
             Language::Elixir => config.elixir.format(snippet_path),
-            Language::Go => config.go.format(snippet_path),
             Language::Gleam => config.gleam.format(snippet_path),
+            Language::Go => config.go.format(snippet_path),
             Language::Html => config.html.format(snippet_path),
             Language::JavaScript => config.javascript.format(snippet_path),
             Language::Json => config.json.format(snippet_path),
@@ -102,6 +103,7 @@ pub fn format_snippet(config: &MdsfConfig, language: &Language, code: &str) -> S
             Language::Ruby => config.ruby.format(snippet_path),
             Language::Rust => config.rust.format(snippet_path),
             Language::Shell => config.shell.format(snippet_path),
+            Language::Sql => config.sql.format(snippet_path),
             Language::Toml => config.toml.format(snippet_path),
             Language::TypeScript => config.typescript.format(snippet_path),
             Language::Vue => config.vue.format(snippet_path),

@@ -2,8 +2,8 @@ pub enum Language {
     Css,
     Dart,
     Elixir,
-    Go,
     Gleam,
+    Go,
     Html,
     JavaScript,
     Json,
@@ -14,6 +14,7 @@ pub enum Language {
     Ruby,
     Rust,
     Shell,
+    Sql,
     Toml,
     TypeScript,
     Vue,
@@ -41,7 +42,6 @@ pub enum Language {
     // TODO: R,
     // TODO: GraphQL,
     // TODO: Protobuf,
-    // TODO: SQL,
 }
 
 pub mod css;
@@ -59,6 +59,7 @@ pub mod python;
 pub mod ruby;
 pub mod rust;
 pub mod shell;
+pub mod sql;
 pub mod toml;
 pub mod typescript;
 pub mod vue;
@@ -76,8 +77,8 @@ impl Language {
             "css" | "scss" => Some(Self::Css),
             "dart" => Some(Self::Dart),
             "elixir" => Some(Self::Elixir),
-            "go" | "golang" => Some(Self::Go),
             "gleam" => Some(Self::Gleam),
+            "go" | "golang" => Some(Self::Go),
             "html" => Some(Self::Html),
             "javascript" | "js" | "jsx" => Some(Self::JavaScript),
             "json" => Some(Self::Json),
@@ -88,11 +89,14 @@ impl Language {
             "ruby" => Some(Self::Ruby),
             "rust" | "rb" => Some(Self::Rust),
             "shell" | "sh" | "bash" | "zsh" => Some(Self::Shell),
+            "sql" | "bigquery" | "db2" | "db2i" | "hive" | "mariadb" | "mysql" | "n1ql"
+            | "plsql" | "postgresql" | "redshift" | "singlestoredb" | "snowflake" | "spark"
+            | "sqlite" | "transactsql" | "trino" | "tsql" => Some(Self::Sql),
             "toml" => Some(Self::Toml),
             "typescript" | "ts" | "tsx" => Some(Self::TypeScript),
+            "vue" => Some(Self::Vue),
             "yml" | "yaml" => Some(Self::Yaml),
             "zig" => Some(Self::Zig),
-            "vue" => Some(Self::Vue),
             _ => None,
         }
     }
@@ -104,8 +108,8 @@ impl Language {
             Self::Css => ".scss",
             Self::Dart => ".dart",
             Self::Elixir => ".ex",
-            Self::Go => ".go",
             Self::Gleam => ".gleam",
+            Self::Go => ".go",
             Self::Html => ".html",
             Self::JavaScript => ".js",
             Self::Json => ".jsonc",
@@ -116,11 +120,12 @@ impl Language {
             Self::Ruby => ".rb",
             Self::Rust => ".rs",
             Self::Shell => ".sh",
+            Self::Sql => ".sql",
             Self::Toml => ".toml",
             Self::TypeScript => ".ts",
+            Self::Vue => ".vue",
             Self::Yaml => ".yml",
             Self::Zig => ".zig",
-            Self::Vue => ".vue",
         }
     }
 }
