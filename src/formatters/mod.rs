@@ -10,8 +10,10 @@ use crate::{
     languages::{Language, LanguageFormatter},
 };
 
+pub mod autopep8;
 pub mod biome;
 pub mod black;
+pub mod blue;
 pub mod dart_format;
 pub mod gleam_format;
 pub mod gofmt;
@@ -27,6 +29,7 @@ pub mod sql_formatter;
 pub mod sqlfluff;
 pub mod stylua;
 pub mod taplo;
+pub mod yapf;
 pub mod zigfmt;
 
 #[inline]
