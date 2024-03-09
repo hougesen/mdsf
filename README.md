@@ -49,7 +49,7 @@ mdsf init
 | ---------- | ------------------- |
 | CSS        | `prettier`          |
 | Elixir     | `mix_format`        |
-| Go         | `gofmt`             |
+| Go         | `gofmt`, `gofumpt`  |
 | Gleam      | `gleam_format`      |
 | HTML       | `prettier`          |
 | JSON       | `prettier`, `biome` |

@@ -296,7 +296,7 @@
     },
     "GoFormatter": {
       "type": "string",
-      "enum": ["gofmt"]
+      "enum": ["gofmt", "gofumpt"]
     },
     "Html": {
       "type": "object",
