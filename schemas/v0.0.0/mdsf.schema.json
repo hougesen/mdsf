@@ -486,7 +486,7 @@
     },
     "PythonFormatter": {
       "type": "string",
-      "enum": ["ruff"]
+      "enum": ["ruff", "black"]
     },
     "Ruby": {
       "type": "object",

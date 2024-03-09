@@ -1,6 +1,9 @@
 use schemars::JsonSchema;
 
-use crate::{config::default_enabled, formatters::ruff::format_using_ruff};
+use crate::{
+    config::default_enabled,
+    formatters::{black::format_using_black, ruff::format_using_ruff},
+};
 
 use super::LanguageFormatter;
 
@@ -9,6 +12,8 @@ pub enum PythonFormatter {
     #[default]
     #[serde(rename = "ruff")]
     Ruff,
+    #[serde(rename = "black")]
+    Black,
 }
 
 #[derive(Debug, serde::Serialize, serde::Deserialize, JsonSchema)]
@@ -38,6 +43,7 @@ impl LanguageFormatter for Python {
 
         match self.formatter {
             PythonFormatter::Ruff => format_using_ruff(snippet_path).map(|res| res.1),
+            PythonFormatter::Black => format_using_black(snippet_path).map(|res| res.1),
         }
     }
 }

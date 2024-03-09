@@ -129,4 +129,7 @@ jobs:
       - name: Validate gofumpt
         run: gofumpt --version
 
+      - name: Install black
+        run: pip install black && black --version
+
       - run: cargo test
