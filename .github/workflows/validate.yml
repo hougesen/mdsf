@@ -126,4 +126,7 @@ jobs:
       - name: Install yapf
         run: pip install yapf && yapf --version
 
+      - name: Install autopep
+        run: pip install autopep8 && autopep8 --version
+
       - run: cargo test
