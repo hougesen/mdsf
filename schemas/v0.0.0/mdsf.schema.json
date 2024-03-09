@@ -168,6 +168,17 @@
         }
       ]
     },
+    "sql": {
+      "default": {
+        "enabled": true,
+        "formatter": "sql-formatter"
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/Sql"
+        }
+      ]
+    },
     "toml": {
       "default": {
         "enabled": true,
@@ -519,6 +530,10 @@
       "type": "string",
       "enum": ["rustfmt"]
     },
+    "SQLFormatter": {
+      "type": "string",
+      "enum": ["sql-formatter"]
+    },
     "Shell": {
       "type": "object",
       "properties": {
@@ -539,6 +554,23 @@
     "ShellFormatter": {
       "type": "string",
       "enum": ["shfmt"]
+    },
+    "Sql": {
+      "type": "object",
+      "properties": {
+        "enabled": {
+          "default": true,
+          "type": "boolean"
+        },
+        "formatter": {
+          "default": "sql-formatter",
+          "allOf": [
+            {
+              "$ref": "#/definitions/SQLFormatter"
+            }
+          ]
+        }
+      }
     },
     "Toml": {
       "type": "object",

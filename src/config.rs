@@ -3,7 +3,7 @@ use schemars::JsonSchema;
 use crate::languages::{
     css::Css, dart::Dart, elixir::Elixir, gleam::Gleam, go::Go, html::Html, javascript::JavaScript,
     json::Json, lua::Lua, markdown::Markdown, nim::Nim, python::Python, ruby::Ruby, rust::Rust,
-    shell::Shell, toml::Toml, typescript::TypeScript, vue::Vue, yaml::Yaml, zig::Zig,
+    shell::Shell, sql::Sql, toml::Toml, typescript::TypeScript, vue::Vue, yaml::Yaml, zig::Zig,
 };
 
 #[derive(Debug, serde::Serialize, serde::Deserialize, JsonSchema)]
@@ -22,10 +22,10 @@ pub struct MdsfConfig {
     pub elixir: Elixir,
 
     #[serde(default)]
-    pub go: Go,
+    pub gleam: Gleam,
 
     #[serde(default)]
-    pub gleam: Gleam,
+    pub go: Go,
 
     #[serde(default)]
     pub html: Html,
@@ -58,6 +58,9 @@ pub struct MdsfConfig {
     pub shell: Shell,
 
     #[serde(default)]
+    pub sql: Sql,
+
+    #[serde(default)]
     pub toml: Toml,
 
     #[serde(default)]
@@ -78,11 +81,12 @@ impl Default for MdsfConfig {
     fn default() -> Self {
         Self {
             schema: default_schema_location(),
+
             css: Css::default(),
             dart: Dart::default(),
             elixir: Elixir::default(),
-            go: Go::default(),
             gleam: Gleam::default(),
+            go: Go::default(),
             html: Html::default(),
             javascript: JavaScript::default(),
             json: Json::default(),
@@ -93,6 +97,7 @@ impl Default for MdsfConfig {
             ruby: Ruby::default(),
             rust: Rust::default(),
             shell: Shell::default(),
+            sql: Sql::default(),
             toml: Toml::default(),
             typescript: TypeScript::default(),
             vue: Vue::default(),

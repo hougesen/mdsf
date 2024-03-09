@@ -50,8 +50,8 @@ mdsf init
 | CSS        | `prettier`          |
 | Dart       | `dart_format`       |
 | Elixir     | `mix_format`        |
-| Go         | `gofmt`, `gofumpt`  |
 | Gleam      | `gleam_format`      |
+| Go         | `gofmt`, `gofumpt`  |
 | HTML       | `prettier`          |
 | JSON       | `prettier`, `biome` |
 | JavaScript | `prettier`, `biome` |
@@ -60,6 +60,7 @@ mdsf init
 | Python     | `ruff`              |
 | Ruby       | `rubocop`           |
 | Rust       | `rustfmt`           |
+| SQL        | `sql-formatter`     |
 | Shell      | `shfmt`             |
 | TOML       | `taplo`             |
 | TypeScript | `prettier`, `biome` |

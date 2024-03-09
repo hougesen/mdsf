@@ -54,7 +54,7 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           cache: "pip"
-      # biome, prettier, stylua
+      # biome, prettier, stylua, sql-formatter
       - uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node }}
