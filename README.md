@@ -59,5 +59,6 @@ mdsf init
 | Shell      | `shfmt`             |
 | TOML       | `taplo`             |
 | TypeScript | `prettier`, `biome` |
+| Vue        | `prettier`          |
 | YAML       | `prettier`          |
 | Zig        | `zigfmt`            |

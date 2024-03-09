@@ -3,7 +3,7 @@ use schemars::JsonSchema;
 use crate::languages::{
     css::Css, elixir::Elixir, gleam::Gleam, html::Html, javascript::JavaScript, json::Json,
     lua::Lua, markdown::Markdown, nim::Nim, python::Python, rust::Rust, shell::Shell, toml::Toml,
-    typescript::TypeScript, yaml::Yaml, zig::Zig,
+    typescript::TypeScript, vue::Vue, yaml::Yaml, zig::Zig,
 };
 
 #[derive(Debug, serde::Serialize, serde::Deserialize, JsonSchema)]
@@ -55,6 +55,9 @@ pub struct MdsfConfig {
     pub typescript: TypeScript,
 
     #[serde(default)]
+    pub vue: Vue,
+
+    #[serde(default)]
     pub yaml: Yaml,
 
     #[serde(default)]
@@ -80,6 +83,7 @@ impl Default for MdsfConfig {
             shell: Shell::default(),
             toml: Toml::default(),
             typescript: TypeScript::default(),
+            vue: Vue::default(),
             yaml: Yaml::default(),
             zig: Zig::default(),
         }
