@@ -45,25 +45,25 @@ mdsf init
 >
 > Only formatters that are already installed will be used.
 
-| Language   | Formatters                  |
-| ---------- | --------------------------- |
-| CSS        | `prettier`                  |
-| Dart       | `dart_format`               |
-| Elixir     | `mix_format`                |
-| Gleam      | `gleam_format`              |
-| Go         | `gofmt`, `gofumpt`          |
-| HTML       | `prettier`                  |
-| JSON       | `prettier`, `biome`         |
-| JavaScript | `prettier`, `biome`         |
-| Lua        | `stylua`                    |
-| Nim        | `nimpretty`                 |
-| Python     | `ruff`, `black`             |
-| Ruby       | `rubocop`                   |
-| Rust       | `rustfmt`                   |
-| SQL        | `sqlfluff`, `sql-formatter` |
-| Shell      | `shfmt`                     |
-| TOML       | `taplo`                     |
-| TypeScript | `prettier`, `biome`         |
-| Vue        | `prettier`                  |
-| YAML       | `prettier`                  |
-| Zig        | `zigfmt`                    |
+| Language   | Formatters                                  |
+| ---------- | ------------------------------------------- |
+| CSS        | `prettier`                                  |
+| Dart       | `dart_format`                               |
+| Elixir     | `mix_format`                                |
+| Gleam      | `gleam_format`                              |
+| Go         | `gofmt`, `gofumpt`                          |
+| HTML       | `prettier`                                  |
+| JSON       | `prettier`, `biome`                         |
+| JavaScript | `prettier`, `biome`                         |
+| Lua        | `stylua`                                    |
+| Nim        | `nimpretty`                                 |
+| Python     | `ruff`, `black`, `blue`, `yapf`, `autopep8` |
+| Ruby       | `rubocop`                                   |
+| Rust       | `rustfmt`                                   |
+| SQL        | `sqlfluff`, `sql-formatter`                 |
+| Shell      | `shfmt`                                     |
+| TOML       | `taplo`                                     |
+| TypeScript | `prettier`, `biome`                         |
+| Vue        | `prettier`                                  |
+| YAML       | `prettier`                                  |
+| Zig        | `zigfmt`                                    |

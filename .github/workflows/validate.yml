@@ -50,7 +50,7 @@ jobs:
           otp-version: "26"
           gleam-version: "1.0.0"
           elixir-version: "1.16.1"
-      # ruff
+      # ruff, sqlfluff, black, blue, yapf, autopep8
       - uses: actions/setup-python@v5
         with:
           cache: "pip"
@@ -82,14 +82,10 @@ jobs:
         run: taplo --version
 
       - name: Install ruff
-        run: pip install ruff
-      - name: Validate ruff
-        run: ruff --version
+        run: pip install ruff && ruff --version
 
       - name: Install sqlfluff
-        run: pip install sqlfluff
-      - name: Validate sqlfluff
-        run: sqlfluff format  --version
+        run: pip install sqlfluff && sqlfluff format --version
 
       - name: Validate biome
         run: npx --yes @biomejs/biome --version
@@ -110,26 +106,27 @@ jobs:
         run: mix help format
 
       - name: Install rubocop
-        run: gem install rubocop
-      - name: Validate rubocop
-        run: rubocop --version
+        run: gem install rubocop && rubocop --version
 
       - name: Install stylua
-        run: cargo install stylua
-      - name: Validate stylua
-        run: stylua --version
+        run: cargo install stylua && stylua --version
 
       - name: Install shfmt
-        run: go install mvdan.cc/sh/v3/cmd/shfmt@latest
-      - name: Validate shfmt
-        run: shfmt --version
+        run: go install mvdan.cc/sh/v3/cmd/shfmt@latest && shfmt --version
 
       - name: Install gofumpt
-        run: go install mvdan.cc/gofumpt@latest
-      - name: Validate gofumpt
-        run: gofumpt --version
+        run: go install mvdan.cc/gofumpt@latest && gofumpt --version
 
       - name: Install black
         run: pip install black && black --version
+
+      - name: Install blue
+        run: pip install blue && blue --version
+
+      - name: Install yapf
+        run: pip install yapf && yapf --version
+
+      - name: Install autopep
+        run: pip install autopep8 && autopep8 --version
 
       - run: cargo test
