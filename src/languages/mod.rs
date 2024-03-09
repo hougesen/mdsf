@@ -1,5 +1,6 @@
 pub enum Language {
     Css,
+    Dart,
     Elixir,
     Go,
     Gleam,
@@ -30,7 +31,6 @@ pub enum Language {
     // TODO: FSharp,
     // TODO: Swift,
     // TODO: Svelte,
-    // TODO: Dart,
     // TODO: Julia,
     // TODO: Dockerfile,
     // TODO: XML,
@@ -45,6 +45,7 @@ pub enum Language {
 }
 
 pub mod css;
+pub mod dart;
 pub mod elixir;
 pub mod gleam;
 pub mod go;
@@ -73,6 +74,7 @@ impl Language {
     pub fn maybe_from_str(input: &str) -> Option<Self> {
         match input {
             "css" | "scss" => Some(Self::Css),
+            "dart" => Some(Self::Dart),
             "elixir" => Some(Self::Elixir),
             "go" | "golang" => Some(Self::Go),
             "gleam" => Some(Self::Gleam),
@@ -100,6 +102,7 @@ impl Language {
         match self {
             // NOTE: since scss is a superset of css we might as well support both at the same time
             Self::Css => ".scss",
+            Self::Dart => ".dart",
             Self::Elixir => ".ex",
             Self::Go => ".go",
             Self::Gleam => ".gleam",

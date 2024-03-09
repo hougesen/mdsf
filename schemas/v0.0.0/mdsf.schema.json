@@ -14,6 +14,17 @@
         }
       ]
     },
+    "dart": {
+      "default": {
+        "enabled": true,
+        "formatter": "dart_format"
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/Dart"
+        }
+      ]
+    },
     "elixir": {
       "default": {
         "enabled": true,
@@ -234,6 +245,27 @@
     "CssFormatter": {
       "type": "string",
       "enum": ["prettier"]
+    },
+    "Dart": {
+      "type": "object",
+      "properties": {
+        "enabled": {
+          "default": true,
+          "type": "boolean"
+        },
+        "formatter": {
+          "default": "dart_format",
+          "allOf": [
+            {
+              "$ref": "#/definitions/DartFormatter"
+            }
+          ]
+        }
+      }
+    },
+    "DartFormatter": {
+      "type": "string",
+      "enum": ["dart_format"]
     },
     "Elixir": {
       "type": "object",
