@@ -43,34 +43,37 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: Swatinem/rust-cache@v2
-      # Used by gleam format, mix format
+      # gleam_format, mix_format
       # NOTE: should be first since it is sometimes crashes (?)
       - uses: erlef/setup-beam@v1
         with:
           otp-version: "26"
           gleam-version: "1.0.0"
           elixir-version: "1.16.1"
-      # Used by ruff
+      # ruff
       - uses: actions/setup-python@v5
         with:
           cache: "pip"
-      # Used by biome
+      # biome, prettier, stylua
       - uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node }}
-      # Used by nimpretty
+      # nimpretty
       - uses: jiro4989/setup-nim-action@v1
-      # Used by zigfmt
+      # zigfmt
       - uses: goto-bus-stop/setup-zig@v2
+      # taplo
       - uses: uncenter/setup-taplo@v1
-      # Used go shfmt
+      # shfmt, gofmt, gofumpt
       - uses: actions/setup-go@v5
         with:
           go-version: "stable"
-      # Used by rubocop
+      # rubocop
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: "3.3"
+      # dart_format
+      - uses: dart-lang/setup-dart@v1
 
       - run: rustup toolchain install stable --profile minimal
       - run: rustup component add rustfmt clippy

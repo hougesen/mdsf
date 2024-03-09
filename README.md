@@ -48,6 +48,7 @@ mdsf init
 | Language   | Formatters          |
 | ---------- | ------------------- |
 | CSS        | `prettier`          |
+| Dart       | `dart_format`       |
 | Elixir     | `mix_format`        |
 | Go         | `gofmt`, `gofumpt`  |
 | Gleam      | `gleam_format`      |
