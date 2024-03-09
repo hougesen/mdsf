@@ -42,12 +42,14 @@ mdsf init
 
 > \[!NOTE\]
 > mdsf is not a tool for installing formatters.
-> Only formatters that are installed already will be used.
+>
+> Only formatters that are already installed will be used.
 
 | Language   | Formatters          |
 | ---------- | ------------------- |
 | CSS        | `prettier`          |
 | Elixir     | `mix_format`        |
+| Go         | `gofmt`             |
 | Gleam      | `gleam_format`      |
 | HTML       | `prettier`          |
 | JSON       | `prettier`, `biome` |

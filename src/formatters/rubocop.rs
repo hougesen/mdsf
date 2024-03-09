@@ -16,7 +16,7 @@ pub fn format_using_rubocop(
 }
 
 #[cfg(test)]
-mod test_ruff {
+mod test_rubocop {
     use crate::{
         formatters::{rubocop::format_using_rubocop, setup_snippet},
         languages::Language,

@@ -1,6 +1,7 @@
 pub enum Language {
     Css,
     Elixir,
+    Go,
     Gleam,
     Html,
     JavaScript,
@@ -17,7 +18,6 @@ pub enum Language {
     Vue,
     Yaml,
     Zig,
-    // TODO: Go,
     // TODO: Cpp,
     // TODO: C,
     // TODO: Haskell,
@@ -47,6 +47,7 @@ pub enum Language {
 pub mod css;
 pub mod elixir;
 pub mod gleam;
+pub mod go;
 pub mod html;
 pub mod javascript;
 pub mod json;
@@ -73,6 +74,7 @@ impl Language {
         match input {
             "css" | "scss" => Some(Self::Css),
             "elixir" => Some(Self::Elixir),
+            "go" | "golang" => Some(Self::Go),
             "gleam" => Some(Self::Gleam),
             "html" => Some(Self::Html),
             "javascript" | "js" | "jsx" => Some(Self::JavaScript),
@@ -99,6 +101,7 @@ impl Language {
             // NOTE: since scss is a superset of css we might as well support both at the same time
             Self::Css => ".scss",
             Self::Elixir => ".ex",
+            Self::Go => ".go",
             Self::Gleam => ".gleam",
             Self::Html => ".html",
             Self::JavaScript => ".js",

@@ -12,7 +12,7 @@ pub fn format_using_mix_format(
 }
 
 #[cfg(test)]
-mod test_gleam_format {
+mod test_mix_format {
     use crate::{
         formatters::{mix_format::format_using_mix_format, setup_snippet},
         languages::Language,
