@@ -43,6 +43,13 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: Swatinem/rust-cache@v2
+      # Used by gleam format, mix format
+      # NOTE: should be first since it is sometimes crashes (?)
+      - uses: erlef/setup-beam@v1
+        with:
+          otp-version: "26"
+          gleam-version: "1.0.0"
+          elixir-version: "1.16.1"
       # Used by ruff
       - uses: actions/setup-python@v5
         with:
@@ -56,12 +63,6 @@ jobs:
       # Used by zigfmt
       - uses: goto-bus-stop/setup-zig@v2
       - uses: uncenter/setup-taplo@v1
-      # Used by gleam format
-      - uses: erlef/setup-beam@v1
-        with:
-          otp-version: "26"
-          gleam-version: "1.0.0"
-          elixir-version: "1.16.1"
       # Used go shfmt
       - uses: actions/setup-go@v5
         with:
@@ -99,6 +100,12 @@ jobs:
 
       - name: Validate mix format
         run: mix help format
+
+      - name: Install rubocop
+        run: gem install rubocop
+
+      - name: Validate rubocop
+        run: rubocop --version
 
       - name: Install stylua
         run: cargo install stylua

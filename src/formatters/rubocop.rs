@@ -23,7 +23,7 @@ mod test_ruff {
     };
 
     #[test]
-    fn it_should_format_rust() {
+    fn it_should_format_ruby() {
         let input = "def   add(  a ,                                                          b )
                         return a + b
                 end";
