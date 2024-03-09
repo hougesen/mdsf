@@ -1,8 +1,8 @@
 use schemars::JsonSchema;
 
 use crate::languages::{
-    bash::Bash, css::Css, elixir::Elixir, gleam::Gleam, html::Html, javascript::JavaScript,
-    json::Json, lua::Lua, markdown::Markdown, nim::Nim, python::Python, rust::Rust, toml::Toml,
+    css::Css, elixir::Elixir, gleam::Gleam, html::Html, javascript::JavaScript, json::Json,
+    lua::Lua, markdown::Markdown, nim::Nim, python::Python, rust::Rust, shell::Shell, toml::Toml,
     typescript::TypeScript, yaml::Yaml, zig::Zig,
 };
 
@@ -11,9 +11,6 @@ pub struct MdsfConfig {
     #[schemars(skip)]
     #[serde(rename = "$schema", default = "default_schema_location")]
     pub schema: String,
-
-    #[serde(default)]
-    pub bash: Bash,
 
     #[serde(default)]
     pub css: Css,
@@ -49,6 +46,9 @@ pub struct MdsfConfig {
     pub rust: Rust,
 
     #[serde(default)]
+    pub shell: Shell,
+
+    #[serde(default)]
     pub toml: Toml,
 
     #[serde(default)]
@@ -66,7 +66,6 @@ impl Default for MdsfConfig {
     fn default() -> Self {
         Self {
             schema: default_schema_location(),
-            bash: Bash::default(),
             css: Css::default(),
             elixir: Elixir::default(),
             gleam: Gleam::default(),
@@ -78,6 +77,7 @@ impl Default for MdsfConfig {
             nim: Nim::default(),
             python: Python::default(),
             rust: Rust::default(),
+            shell: Shell::default(),
             toml: Toml::default(),
             typescript: TypeScript::default(),
             yaml: Yaml::default(),

@@ -5,31 +5,31 @@ use crate::{config::default_enabled, formatters::shfmt::format_using_shfmt};
 use super::LanguageFormatter;
 
 #[derive(Debug, Default, serde::Serialize, serde::Deserialize, JsonSchema)]
-pub enum BashFormatter {
+pub enum ShellFormatter {
     #[default]
     #[serde(rename = "shfmt")]
     Shfmt,
 }
 
 #[derive(Debug, serde::Serialize, serde::Deserialize, JsonSchema)]
-pub struct Bash {
+pub struct Shell {
     #[serde(default = "default_enabled")]
     pub enabled: bool,
     #[serde(default)]
-    pub formatter: BashFormatter,
+    pub formatter: ShellFormatter,
 }
 
-impl Default for Bash {
+impl Default for Shell {
     #[inline]
     fn default() -> Self {
         Self {
             enabled: true,
-            formatter: BashFormatter::default(),
+            formatter: ShellFormatter::default(),
         }
     }
 }
 
-impl LanguageFormatter for Bash {
+impl LanguageFormatter for Shell {
     #[inline]
     fn format(&self, snippet_path: &std::path::Path) -> std::io::Result<Option<String>> {
         if !self.enabled {
@@ -37,7 +37,7 @@ impl LanguageFormatter for Bash {
         }
 
         match self.formatter {
-            BashFormatter::Shfmt => format_using_shfmt(snippet_path),
+            ShellFormatter::Shfmt => format_using_shfmt(snippet_path),
         }
     }
 }

@@ -46,7 +46,7 @@ add() {
 }
 ";
 
-        let snippet = setup_snippet(input, Language::Bash.to_file_ext())
+        let snippet = setup_snippet(input, Language::Shell.to_file_ext())
             .expect("it to create a snippet file");
 
         let output = format_using_shfmt(snippet.path())
@@ -60,7 +60,7 @@ add() {
     fn it_should_format_bash() {
         let input = "
 
-#!/bin/bash
+#!/bin/shell
 
        add      ()   {
     echo \"$1\"                 +          \"$2\"
@@ -74,14 +74,14 @@ add() {
 
 
 ";
-        let expected_output = "#!/bin/bash
+        let expected_output = "#!/bin/shell
 
 add() {
 \techo \"$1\" + \"$2\"
 }
 ";
 
-        let snippet = setup_snippet(input, Language::Bash.to_file_ext())
+        let snippet = setup_snippet(input, Language::Shell.to_file_ext())
             .expect("it to create a snippet file");
 
         let output = format_using_shfmt(snippet.path())

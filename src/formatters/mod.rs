@@ -56,7 +56,6 @@ pub fn format_snippet(config: &MdsfConfig, language: &Language, code: &str) -> S
         let snippet_path = snippet.path();
 
         if let Ok(Some(formatted_code)) = match language {
-            Language::Bash => config.bash.format(snippet_path),
             Language::Css => config.css.format(snippet_path),
             Language::Elixir => config.elixir.format(snippet_path),
             Language::Gleam => config.gleam.format(snippet_path),
@@ -68,6 +67,7 @@ pub fn format_snippet(config: &MdsfConfig, language: &Language, code: &str) -> S
             Language::Nim => config.nim.format(snippet_path),
             Language::Python => config.python.format(snippet_path),
             Language::Rust => config.rust.format(snippet_path),
+            Language::Shell => config.shell.format(snippet_path),
             Language::Toml => config.toml.format(snippet_path),
             Language::TypeScript => config.typescript.format(snippet_path),
             Language::Yaml => config.yaml.format(snippet_path),
