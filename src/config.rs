@@ -158,3 +158,20 @@ fn default_schema_location() -> String {
         "https://raw.githubusercontent.com/hougesen/mdsf/main/schemas/v{package_version}/mdsf.schema.json"
     )
 }
+
+#[cfg(test)]
+
+mod test {
+    use super::MdsfConfig;
+
+    #[test]
+    fn schema_should_be_serializable() {
+        serde_json::to_string_pretty(&MdsfConfig::default()).expect("it to be serializable");
+    }
+
+    #[test]
+    fn json_schema_should_be_serializable() {
+        serde_json::to_string_pretty(&schemars::schema_for!(MdsfConfig))
+            .expect("it to be serializable");
+    }
+}
