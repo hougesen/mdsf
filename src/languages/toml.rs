@@ -5,7 +5,7 @@ use crate::{config::default_enabled, formatters::taplo::format_using_taplo};
 use super::LanguageFormatter;
 
 #[derive(Debug, Default, serde::Serialize, serde::Deserialize, JsonSchema)]
-#[cfg_attr(test, derive(PartialEq))]
+#[cfg_attr(test, derive(PartialEq, Eq))]
 pub enum TomlFormatter {
     #[default]
     #[serde(rename = "taplo")]
@@ -13,7 +13,7 @@ pub enum TomlFormatter {
 }
 
 #[derive(Debug, serde::Serialize, serde::Deserialize, JsonSchema)]
-#[cfg_attr(test, derive(PartialEq))]
+#[cfg_attr(test, derive(PartialEq, Eq))]
 pub struct Toml {
     #[serde(default = "default_enabled")]
     pub enabled: bool,
@@ -58,13 +58,7 @@ mod test_toml {
 
     #[test]
     fn it_should_be_enabled_by_default() {
-        let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");
-        let snippet_path = snippet.path();
-
-        Toml::default()
-            .format(snippet_path)
-            .expect("it to not fail")
-            .expect("it to be a snippet");
+        assert!(Toml::default().enabled);
     }
 
     #[test]

@@ -5,7 +5,7 @@ use crate::{config::default_enabled, formatters::clang_format::format_using_clan
 use super::LanguageFormatter;
 
 #[derive(Debug, Default, serde::Serialize, serde::Deserialize, JsonSchema)]
-#[cfg_attr(test, derive(PartialEq))]
+#[cfg_attr(test, derive(PartialEq, Eq))]
 pub enum ProtobufFormatter {
     #[default]
     #[serde(rename = "clang-format")]
@@ -13,7 +13,7 @@ pub enum ProtobufFormatter {
 }
 
 #[derive(Debug, serde::Serialize, serde::Deserialize, JsonSchema)]
-#[cfg_attr(test, derive(PartialEq))]
+#[cfg_attr(test, derive(PartialEq, Eq))]
 pub struct Protobuf {
     #[serde(default = "default_enabled")]
     pub enabled: bool,
@@ -60,13 +60,7 @@ mod test_protobuf {
 
     #[test]
     fn it_should_be_enabled_by_default() {
-        let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");
-        let snippet_path = snippet.path();
-
-        Protobuf::default()
-            .format(snippet_path)
-            .expect("it to not fail")
-            .expect("it to be a snippet");
+        assert!(Protobuf::default().enabled);
     }
 
     #[test]

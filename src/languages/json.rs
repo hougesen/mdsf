@@ -11,7 +11,7 @@ use crate::{
 use super::LanguageFormatter;
 
 #[derive(Debug, Default, serde::Serialize, serde::Deserialize, JsonSchema)]
-#[cfg_attr(test, derive(PartialEq))]
+#[cfg_attr(test, derive(PartialEq, Eq))]
 pub enum JsonFormatter {
     #[default]
     #[serde(rename = "prettier")]
@@ -23,7 +23,7 @@ pub enum JsonFormatter {
 }
 
 #[derive(Debug, serde::Serialize, serde::Deserialize, JsonSchema)]
-#[cfg_attr(test, derive(PartialEq))]
+#[cfg_attr(test, derive(PartialEq, Eq))]
 pub struct Json {
     #[serde(default = "default_enabled")]
     pub enabled: bool,
@@ -77,13 +77,7 @@ mod test {
 
     #[test]
     fn it_should_be_enabled_by_default() {
-        let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");
-        let snippet_path = snippet.path();
-
-        Json::default()
-            .format(snippet_path)
-            .expect("it to not fail")
-            .expect("it to be a snippet");
+        assert!(Json::default().enabled);
     }
 
     #[test]

@@ -8,7 +8,7 @@ use crate::languages::{
 };
 
 #[derive(Debug, serde::Serialize, serde::Deserialize, JsonSchema)]
-#[cfg_attr(test, derive(PartialEq))]
+#[cfg_attr(test, derive(PartialEq, Eq))]
 pub struct MdsfConfig {
     #[schemars(skip)]
     #[serde(rename = "$schema", default = "default_schema_location")]
@@ -161,7 +161,6 @@ fn default_schema_location() -> String {
 }
 
 #[cfg(test)]
-
 mod test_config {
     use super::MdsfConfig;
 

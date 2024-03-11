@@ -5,7 +5,7 @@ use crate::{config::default_enabled, formatters::shfmt::format_using_shfmt};
 use super::LanguageFormatter;
 
 #[derive(Debug, Default, serde::Serialize, serde::Deserialize, JsonSchema)]
-#[cfg_attr(test, derive(PartialEq))]
+#[cfg_attr(test, derive(PartialEq, Eq))]
 pub enum ShellFormatter {
     #[default]
     #[serde(rename = "shfmt")]
@@ -13,7 +13,7 @@ pub enum ShellFormatter {
 }
 
 #[derive(Debug, serde::Serialize, serde::Deserialize, JsonSchema)]
-#[cfg_attr(test, derive(PartialEq))]
+#[cfg_attr(test, derive(PartialEq, Eq))]
 pub struct Shell {
     #[serde(default = "default_enabled")]
     pub enabled: bool,
@@ -74,13 +74,7 @@ mod test_shell {
 
     #[test]
     fn it_should_be_enabled_by_default() {
-        let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");
-        let snippet_path = snippet.path();
-
-        Shell::default()
-            .format(snippet_path)
-            .expect("it to not fail")
-            .expect("it to be a snippet");
+        assert!(Shell::default().enabled);
     }
 
     #[test]

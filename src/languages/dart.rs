@@ -5,7 +5,7 @@ use crate::{config::default_enabled, formatters::dart_format::format_using_dart_
 use super::LanguageFormatter;
 
 #[derive(Debug, Default, serde::Serialize, serde::Deserialize, JsonSchema)]
-#[cfg_attr(test, derive(PartialEq))]
+#[cfg_attr(test, derive(PartialEq, Eq))]
 pub enum DartFormatter {
     #[default]
     #[serde(rename = "dart_format")]
@@ -13,7 +13,7 @@ pub enum DartFormatter {
 }
 
 #[derive(Debug, serde::Serialize, serde::Deserialize, JsonSchema)]
-#[cfg_attr(test, derive(PartialEq))]
+#[cfg_attr(test, derive(PartialEq, Eq))]
 pub struct Dart {
     #[serde(default = "default_enabled")]
     pub enabled: bool,
@@ -56,13 +56,7 @@ mod test_dart {
 
     #[test]
     fn it_should_be_enabled_by_default() {
-        let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");
-        let snippet_path = snippet.path();
-
-        Dart::default()
-            .format(snippet_path)
-            .expect("it to not fail")
-            .expect("it to be a snippet");
+        assert!(Dart::default().enabled);
     }
 
     #[test]
