@@ -90,4 +90,29 @@ mod test_shell {
         .expect("it to not fail")
         .is_none());
     }
+
+    #[test]
+    fn test_shfmt() {
+        let expected_output = "#!/bin/sh
+
+add() {
+\techo \"$1\" + \"$2\"
+}
+";
+
+        let l = Shell {
+            enabled: true,
+            formatter: ShellFormatter::Shfmt,
+        };
+
+        let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");
+        let snippet_path = snippet.path();
+
+        let output = l
+            .format(snippet_path)
+            .expect("it to not fail")
+            .expect("it to be a snippet");
+
+        assert_eq!(output, expected_output);
+    }
 }
