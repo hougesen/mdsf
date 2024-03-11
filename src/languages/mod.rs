@@ -1,7 +1,8 @@
 pub enum Language {
     C,
-    CSharp,
+    Crystal,
     Cpp,
+    CSharp,
     Css,
     Dart,
     Elixir,
@@ -28,7 +29,6 @@ pub enum Language {
     Zig,
     // TODO: Haskell,
     // TODO: OCaml,
-    // TODO: Crystal,
     // TODO: PHP,
     // TODO: Kotlin,
     // TODO: FSharp,
@@ -47,6 +47,7 @@ pub enum Language {
 
 pub mod c;
 pub mod cpp;
+pub mod crystal;
 pub mod csharp;
 pub mod css;
 pub mod dart;
@@ -83,6 +84,7 @@ impl Language {
         match input {
             "c" | "clang" => Some(Self::C),
             "cpp" | "c++" => Some(Self::Cpp),
+            "crystal" | "cr" => Some(Self::Crystal),
             "csharp" | "c#" => Some(Self::CSharp),
             "css" | "scss" => Some(Self::Css),
             "dart" => Some(Self::Dart),
@@ -119,8 +121,9 @@ impl Language {
         match self {
             // NOTE: since scss is a superset of css we might as well support both at the same time
             Self::C => ".c",
+            Self::Cpp => ".cpp",
+            Self::Crystal => ".cr",
             Self::CSharp => ".cs",
-            Self::Cpp => "cpp",
             Self::Css => ".scss",
             Self::Dart => ".dart",
             Self::Elixir => ".ex",

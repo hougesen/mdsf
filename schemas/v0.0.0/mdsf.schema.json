@@ -25,6 +25,17 @@
         }
       ]
     },
+    "crystal": {
+      "default": {
+        "enabled": true,
+        "formatter": "crystal_format"
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/Crystal"
+        }
+      ]
+    },
     "csharp": {
       "default": {
         "enabled": true,
@@ -364,6 +375,27 @@
     "CppFormatter": {
       "type": "string",
       "enum": ["clang-format"]
+    },
+    "Crystal": {
+      "type": "object",
+      "properties": {
+        "enabled": {
+          "default": true,
+          "type": "boolean"
+        },
+        "formatter": {
+          "default": "crystal_format",
+          "allOf": [
+            {
+              "$ref": "#/definitions/CrystalFormatter"
+            }
+          ]
+        }
+      }
+    },
+    "CrystalFormatter": {
+      "type": "string",
+      "enum": ["crystal_format"]
     },
     "Css": {
       "type": "object",

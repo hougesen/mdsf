@@ -1,10 +1,11 @@
 use schemars::JsonSchema;
 
 use crate::languages::{
-    c::C, cpp::Cpp, csharp::CSharp, css::Css, dart::Dart, elixir::Elixir, gleam::Gleam, go::Go,
-    html::Html, java::Java, javascript::JavaScript, json::Json, lua::Lua, markdown::Markdown,
-    nim::Nim, objective_c::ObjectiveC, protobuf::Protobuf, python::Python, ruby::Ruby, rust::Rust,
-    shell::Shell, sql::Sql, toml::Toml, typescript::TypeScript, vue::Vue, yaml::Yaml, zig::Zig,
+    c::C, cpp::Cpp, crystal::Crystal, csharp::CSharp, css::Css, dart::Dart, elixir::Elixir,
+    gleam::Gleam, go::Go, html::Html, java::Java, javascript::JavaScript, json::Json, lua::Lua,
+    markdown::Markdown, nim::Nim, objective_c::ObjectiveC, protobuf::Protobuf, python::Python,
+    ruby::Ruby, rust::Rust, shell::Shell, sql::Sql, toml::Toml, typescript::TypeScript, vue::Vue,
+    yaml::Yaml, zig::Zig,
 };
 
 #[derive(Debug, serde::Serialize, serde::Deserialize, JsonSchema)]
@@ -19,6 +20,9 @@ pub struct MdsfConfig {
 
     #[serde(default)]
     pub cpp: Cpp,
+
+    #[serde(default)]
+    pub crystal: Crystal,
 
     #[serde(default)]
     pub csharp: CSharp,
@@ -104,6 +108,7 @@ impl Default for MdsfConfig {
 
             c: C::default(),
             cpp: Cpp::default(),
+            crystal: Crystal::default(),
             csharp: CSharp::default(),
             css: Css::default(),
             dart: Dart::default(),
