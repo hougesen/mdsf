@@ -76,4 +76,25 @@ mod test_protobuf {
         .expect("it to not fail")
         .is_none());
     }
+
+    #[test]
+    fn test_clang_format() {
+        let expected_output =
+            "service SearchService { rpc Search(SearchRequest) returns (SearchResponse); }";
+
+        let l = Protobuf {
+            enabled: true,
+            formatter: ProtobufFormatter::ClangFormat,
+        };
+
+        let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");
+        let snippet_path = snippet.path();
+
+        let output = l
+            .format(snippet_path)
+            .expect("it to not fail")
+            .expect("it to be a snippet");
+
+        assert_eq!(output, expected_output);
+    }
 }
