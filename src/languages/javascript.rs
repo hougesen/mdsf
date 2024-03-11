@@ -57,3 +57,124 @@ impl LanguageFormatter for JavaScript {
         }
     }
 }
+
+#[cfg(test)]
+mod test_javascript {
+    use crate::{
+        formatters::setup_snippet,
+        languages::{Language, LanguageFormatter},
+    };
+
+    use super::{JavaScript, JavaScriptFormatter};
+
+    const INPUT: &str = "
+    async function asyncAddition(
+            a,b
+        )
+    {
+        return a+b
+    }
+
+            ";
+
+    #[test]
+    fn it_should_not_format_when_enabled_is_false() {
+        let snippet =
+            setup_snippet(INPUT, Language::JavaScript.to_file_ext()).expect("it to save the file");
+        let snippet_path = snippet.path();
+
+        let prettier = JavaScript {
+            enabled: false,
+            formatter: JavaScriptFormatter::Prettier,
+        };
+
+        assert!(prettier
+            .format(snippet_path)
+            .expect("it to not fail")
+            .is_none());
+
+        let biome = JavaScript {
+            enabled: false,
+            formatter: JavaScriptFormatter::Biome,
+        };
+
+        assert!(biome
+            .format(snippet_path)
+            .expect("it to not fail")
+            .is_none());
+    }
+
+    #[test]
+    fn test_prettier() {
+        let l = JavaScript {
+            enabled: true,
+            formatter: JavaScriptFormatter::Prettier,
+        };
+
+        let snippet =
+            setup_snippet(INPUT, Language::JavaScript.to_file_ext()).expect("it to save the file");
+        let snippet_path = snippet.path();
+
+        let output = l
+            .format(snippet_path)
+            .expect("it to not fail")
+            .expect("it to be a snippet");
+
+        let expected_output = "async function asyncAddition(a, b) {
+  return a + b;
+}
+";
+
+        assert_eq!(output, expected_output);
+    }
+
+    #[test]
+    fn test_biome() {
+        let l = JavaScript {
+            enabled: true,
+            formatter: JavaScriptFormatter::Biome,
+        };
+
+        let snippet =
+            setup_snippet(INPUT, Language::JavaScript.to_file_ext()).expect("it to save the file");
+        let snippet_path = snippet.path();
+
+        let output = l
+            .format(snippet_path)
+            .expect("it to not fail")
+            .expect("it to be a snippet");
+
+        let expected_output = "async function asyncAddition(a, b) {
+\treturn a + b;
+}
+";
+
+        assert_eq!(output, expected_output);
+    }
+
+    #[test]
+    fn test_clang_format() {
+        let input = "    async function asyncAddition(  a,b) {
+            a * b;
+        return a+b
+    }            ";
+
+        let expected_output = "async function asyncAddition(a, b) {\n  a * b;\n  return a + b\n}";
+
+        let l = JavaScript {
+            enabled: true,
+            formatter: JavaScriptFormatter::ClangFormat,
+        };
+
+        let snippet =
+            setup_snippet(input, Language::JavaScript.to_file_ext()).expect("it to save the file");
+        let snippet_path = snippet.path();
+
+        let output = l
+            .format(snippet_path)
+            .expect("it to not fail")
+            .expect("it to be a snippet");
+
+        assert_eq!(expected_output, output);
+    }
+}
