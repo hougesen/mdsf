@@ -75,4 +75,27 @@ mod test_ruby {
         .expect("it to not fail")
         .is_none());
     }
+
+    #[test]
+    fn test_rubocop() {
+        let expected_output = "def add(a, b)
+  return a + b
+end
+";
+
+        let l = Ruby {
+            enabled: true,
+            formatter: RubyFormatter::RuboCop,
+        };
+
+        let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");
+        let snippet_path = snippet.path();
+
+        let output = l
+            .format(snippet_path)
+            .expect("it to not fail")
+            .expect("it to be a snippet");
+
+        assert_eq!(output, expected_output);
+    }
 }
