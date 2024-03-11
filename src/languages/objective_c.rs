@@ -77,4 +77,27 @@ mod test_objective_c {
         .expect("it to not fail")
         .is_none());
     }
+
+    #[test]
+    fn test_clang_format() {
+        let expected_output = "int add(int a, int b) {
+  a - a;
+  return a + b;
+}";
+
+        let l = ObjectiveC {
+            enabled: true,
+            formatter: ObjectiveCFormatter::ClangFormat,
+        };
+
+        let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");
+        let snippet_path = snippet.path();
+
+        let output = l
+            .format(snippet_path)
+            .expect("it to not fail")
+            .expect("it to be a snippet");
+
+        assert_eq!(output, expected_output);
+    }
 }
