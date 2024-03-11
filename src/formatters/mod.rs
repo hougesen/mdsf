@@ -1,7 +1,4 @@
-use std::{
-    io::Write,
-    process::{Command, Stdio},
-};
+use std::{io::Write, process::Command};
 
 use tempfile::NamedTempFile;
 
@@ -72,12 +69,12 @@ fn handle_post_execution(
 }
 
 fn spawn_command(cmd: &mut Command) -> std::io::Result<bool> {
-    Ok(cmd
-        .stdout(Stdio::null())
-        .stderr(Stdio::null())
-        .spawn()?
-        .wait()?
-        .success())
+    #[cfg(not(test))]
+    cmd.stdout(std::process::Stdio::null());
+    #[cfg(not(test))]
+    cmd.stderr(std::process::Stdio::null());
+
+    Ok(cmd.spawn()?.wait()?.success())
 }
 
 #[inline]

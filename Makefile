@@ -22,8 +22,7 @@ test:
 
 test-coverage:
 	cargo llvm-cov clean
-	cargo llvm-cov --all-features --lcov --output-path lcov.info
-	cargo llvm-cov --open
+	cargo llvm-cov --all-features --open
 
 precommit:
 	cargo clean

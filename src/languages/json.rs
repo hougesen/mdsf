@@ -11,6 +11,7 @@ use crate::{
 use super::LanguageFormatter;
 
 #[derive(Debug, Default, serde::Serialize, serde::Deserialize, JsonSchema)]
+#[cfg_attr(test, derive(PartialEq, Eq))]
 pub enum JsonFormatter {
     #[default]
     #[serde(rename = "prettier")]
@@ -22,6 +23,7 @@ pub enum JsonFormatter {
 }
 
 #[derive(Debug, serde::Serialize, serde::Deserialize, JsonSchema)]
+#[cfg_attr(test, derive(PartialEq, Eq))]
 pub struct Json {
     #[serde(default = "default_enabled")]
     pub enabled: bool,
@@ -51,5 +53,113 @@ impl LanguageFormatter for Json {
             JsonFormatter::Prettier => format_using_prettier(snippet_path, true).map(|res| res.1),
             JsonFormatter::ClangFormat => format_using_clang_format(snippet_path).map(|res| res.1),
         }
+    }
+}
+
+#[cfg(test)]
+mod test_json {
+    use crate::{formatters::setup_snippet, languages::LanguageFormatter};
+
+    use super::{Json, JsonFormatter};
+
+    const INPUT: &str = "
+              {
+              \"key\": \"value\",
+  \"key2\": [
+      \"value2\",
+      \"value3\",
+      1
+            , null]
+ }
+  ";
+
+    const EXTENSION: &str = crate::languages::Language::Json.to_file_ext();
+
+    #[test]
+    fn it_should_be_enabled_by_default() {
+        assert!(Json::default().enabled);
+    }
+
+    #[test]
+    fn it_should_not_format_when_enabled_is_false() {
+        let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");
+        let snippet_path = snippet.path();
+
+        assert!(Json {
+            enabled: false,
+            formatter: JsonFormatter::default(),
+        }
+        .format(snippet_path)
+        .expect("it to not fail")
+        .is_none());
+    }
+
+    #[test]
+    fn test_prettier() {
+        let l = Json {
+            enabled: true,
+            formatter: JsonFormatter::Prettier,
+        };
+
+        let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");
+        let snippet_path = snippet.path();
+
+        let output = l
+            .format(snippet_path)
+            .expect("it to not fail")
+            .expect("it to be a snippet");
+
+        let expected_output = "{
+  \"key\": \"value\",
+  \"key2\": [\"value2\", \"value3\", 1, null],
+}
+";
+
+        assert_eq!(output, expected_output);
+    }
+
+    #[test]
+    fn test_biome() {
+        let l = Json {
+            enabled: true,
+            formatter: JsonFormatter::Biome,
+        };
+
+        let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");
+        let snippet_path = snippet.path();
+
+        let output = l
+            .format(snippet_path)
+            .expect("it to not fail")
+            .expect("it to be a snippet");
+
+        let expected_output = "{
+\t\"key\": \"value\",
+\t\"key2\": [\"value2\", \"value3\", 1, null]
+}
+";
+
+        assert_eq!(output, expected_output);
+    }
+
+    #[test]
+    fn test_clang_format() {
+        let l = Json {
+            enabled: true,
+            formatter: JsonFormatter::ClangFormat,
+        };
+
+        let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");
+        let snippet_path = snippet.path();
+
+        let output = l
+            .format(snippet_path)
+            .expect("it to not fail")
+            .expect("it to be a snippet");
+
+        let expected_output =
+            "\n{ \"key\" : \"value\", \"key2\" : [ \"value2\", \"value3\", 1, null ] }\n";
+
+        assert_eq!(output, expected_output);
     }
 }

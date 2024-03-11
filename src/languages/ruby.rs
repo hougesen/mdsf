@@ -5,6 +5,7 @@ use crate::{config::default_enabled, formatters::rubocop::format_using_rubocop};
 use super::LanguageFormatter;
 
 #[derive(Debug, Default, serde::Serialize, serde::Deserialize, JsonSchema)]
+#[cfg_attr(test, derive(PartialEq, Eq))]
 pub enum RubyFormatter {
     #[default]
     #[serde(rename = "rubocop")]
@@ -12,6 +13,7 @@ pub enum RubyFormatter {
 }
 
 #[derive(Debug, serde::Serialize, serde::Deserialize, JsonSchema)]
+#[cfg_attr(test, derive(PartialEq, Eq))]
 pub struct Ruby {
     #[serde(default = "default_enabled")]
     pub enabled: bool,
@@ -39,5 +41,61 @@ impl LanguageFormatter for Ruby {
         match self.formatter {
             RubyFormatter::RuboCop => format_using_rubocop(snippet_path).map(|res| res.1),
         }
+    }
+}
+
+#[cfg(test)]
+mod test_ruby {
+    use crate::{formatters::setup_snippet, languages::LanguageFormatter};
+
+    use super::{Ruby, RubyFormatter};
+
+    const INPUT: &str =
+        "def   add(  a ,                                                          b )
+                        return a + b
+                end";
+
+    const EXTENSION: &str = crate::languages::Language::Ruby.to_file_ext();
+
+    #[test]
+    fn it_should_be_enabled_by_default() {
+        assert!(Ruby::default().enabled);
+    }
+
+    #[test]
+    fn it_should_not_format_when_enabled_is_false() {
+        let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");
+        let snippet_path = snippet.path();
+
+        assert!(Ruby {
+            enabled: false,
+            formatter: RubyFormatter::RuboCop,
+        }
+        .format(snippet_path)
+        .expect("it to not fail")
+        .is_none());
+    }
+
+    #[test]
+    fn test_rubocop() {
+        let expected_output = "def add(a, b)
+  return a + b
+end
+";
+
+        let l = Ruby {
+            enabled: true,
+            formatter: RubyFormatter::RuboCop,
+        };
+
+        let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");
+        let snippet_path = snippet.path();
+
+        let output = l
+            .format(snippet_path)
+            .expect("it to not fail")
+            .expect("it to be a snippet");
+
+        assert_eq!(output, expected_output);
     }
 }

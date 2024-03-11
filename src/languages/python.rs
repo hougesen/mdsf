@@ -11,6 +11,7 @@ use crate::{
 use super::LanguageFormatter;
 
 #[derive(Debug, Default, serde::Serialize, serde::Deserialize, JsonSchema)]
+#[cfg_attr(test, derive(PartialEq, Eq))]
 pub enum PythonFormatter {
     #[default]
     #[serde(rename = "ruff")]
@@ -26,6 +27,7 @@ pub enum PythonFormatter {
 }
 
 #[derive(Debug, serde::Serialize, serde::Deserialize, JsonSchema)]
+#[cfg_attr(test, derive(PartialEq, Eq))]
 pub struct Python {
     #[serde(default = "default_enabled")]
     pub enabled: bool,
@@ -57,5 +59,135 @@ impl LanguageFormatter for Python {
             PythonFormatter::Ruff => format_using_ruff(snippet_path).map(|res| res.1),
             PythonFormatter::Yapf => format_using_yapf(snippet_path).map(|res| res.1),
         }
+    }
+}
+
+#[cfg(test)]
+mod test_python {
+    use crate::{formatters::setup_snippet, languages::LanguageFormatter};
+
+    use super::{Python, PythonFormatter};
+
+    const INPUT: &str = "def add( a: int ,  b:int)->int: return a+b";
+
+    const EXTENSION: &str = crate::languages::Language::Python.to_file_ext();
+
+    #[test]
+    fn it_should_be_enabled_by_default() {
+        assert!(Python::default().enabled);
+    }
+
+    #[test]
+    fn it_should_not_format_when_enabled_is_false() {
+        let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");
+        let snippet_path = snippet.path();
+
+        assert!(Python {
+            enabled: false,
+            formatter: PythonFormatter::default(),
+        }
+        .format(snippet_path)
+        .expect("it to not fail")
+        .is_none());
+    }
+
+    #[test]
+    fn test_black() {
+        let expected_output = "def add(a: int, b: int) -> int:\n    return a + b\n";
+
+        let l = Python {
+            enabled: true,
+            formatter: PythonFormatter::Black,
+        };
+
+        let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");
+        let snippet_path = snippet.path();
+
+        let output = l
+            .format(snippet_path)
+            .expect("it to not fail")
+            .expect("it to be a snippet");
+
+        assert_eq!(output, expected_output);
+    }
+
+    #[test]
+    fn test_blue() {
+        let expected_output = "def add(a: int, b: int) -> int:\n    return a + b\n";
+
+        let l = Python {
+            enabled: true,
+            formatter: PythonFormatter::Blue,
+        };
+
+        let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");
+        let snippet_path = snippet.path();
+
+        let output = l
+            .format(snippet_path)
+            .expect("it to not fail")
+            .expect("it to be a snippet");
+
+        assert_eq!(output, expected_output);
+    }
+
+    #[test]
+    fn test_ruff() {
+        let expected_output = "def add(a: int, b: int) -> int:\n    return a + b\n";
+
+        let l = Python {
+            enabled: true,
+            formatter: PythonFormatter::Ruff,
+        };
+
+        let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");
+        let snippet_path = snippet.path();
+
+        let output = l
+            .format(snippet_path)
+            .expect("it to not fail")
+            .expect("it to be a snippet");
+
+        assert_eq!(output, expected_output);
+    }
+
+    #[test]
+    fn test_autopep8() {
+        let expected_output = "def add(a: int,  b: int) -> int: return a+b\n";
+
+        let l = Python {
+            enabled: true,
+            formatter: PythonFormatter::Autopep8,
+        };
+
+        let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");
+        let snippet_path = snippet.path();
+
+        let output = l
+            .format(snippet_path)
+            .expect("it to not fail")
+            .expect("it to be a snippet");
+
+        assert_eq!(output, expected_output);
+    }
+
+    #[test]
+    fn test_yapf() {
+        let expected_output = "def add(a: int, b: int) -> int:\n    return a + b\n";
+
+        let l = Python {
+            enabled: true,
+            formatter: PythonFormatter::Yapf,
+        };
+
+        let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");
+        let snippet_path = snippet.path();
+
+        let output = l
+            .format(snippet_path)
+            .expect("it to not fail")
+            .expect("it to be a snippet");
+
+        assert_eq!(output, expected_output);
     }
 }

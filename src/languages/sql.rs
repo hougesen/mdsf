@@ -8,6 +8,7 @@ use crate::{
 use super::LanguageFormatter;
 
 #[derive(Debug, Default, serde::Serialize, serde::Deserialize, JsonSchema)]
+#[cfg_attr(test, derive(PartialEq, Eq))]
 pub enum SqlFormatter {
     #[default]
     #[serde(rename = "sqlfluff")]
@@ -17,6 +18,7 @@ pub enum SqlFormatter {
 }
 
 #[derive(Debug, serde::Serialize, serde::Deserialize, JsonSchema)]
+#[cfg_attr(test, derive(PartialEq, Eq))]
 pub struct Sql {
     #[serde(default = "default_enabled")]
     pub enabled: bool,
@@ -45,5 +47,95 @@ impl LanguageFormatter for Sql {
             SqlFormatter::SQLFormatter => format_using_sql_formatter(snippet_path).map(|res| res.1),
             SqlFormatter::Sqlfluff => format_using_sqlfluff(snippet_path).map(|res| res.1),
         }
+    }
+}
+
+#[cfg(test)]
+mod test_sql {
+    use crate::{
+        formatters::setup_snippet,
+        languages::{sql::SqlFormatter, Language, LanguageFormatter},
+    };
+
+    use super::Sql;
+
+    const INPUT: &str = "SELECT  *                  FROM  tbl
+                        WHERE                      foo   = 'bar';         ";
+
+    const EXTENSION: &str = Language::Sql.to_file_ext();
+
+    #[test]
+    fn it_should_be_enabled_by_default() {
+        assert!(Sql::default().enabled);
+    }
+
+    #[test]
+    fn it_should_not_format_when_enabled_is_false() {
+        let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");
+        let snippet_path = snippet.path();
+
+        assert!(Sql {
+            enabled: false,
+            formatter: SqlFormatter::SQLFormatter,
+        }
+        .format(snippet_path)
+        .expect("it to not fail")
+        .is_none());
+
+        assert!(Sql {
+            enabled: false,
+            formatter: SqlFormatter::Sqlfluff,
+        }
+        .format(snippet_path)
+        .expect("it to not fail")
+        .is_none());
+    }
+
+    #[test]
+    fn test_sql_formatter() {
+        let expected_output = "SELECT
+  *
+FROM
+  tbl
+WHERE
+  foo = 'bar';
+";
+
+        let l = Sql {
+            enabled: true,
+            formatter: SqlFormatter::SQLFormatter,
+        };
+
+        let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");
+        let snippet_path = snippet.path();
+
+        let output = l
+            .format(snippet_path)
+            .expect("it to not fail")
+            .expect("it to be a snippet");
+
+        assert_eq!(output, expected_output);
+    }
+
+    #[test]
+    fn test_sqlfluff() {
+        let expected_output = "SELECT * FROM tbl
+WHERE foo = 'bar';
+";
+
+        let l = Sql {
+            enabled: true,
+            formatter: SqlFormatter::Sqlfluff,
+        };
+
+        let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");
+        let snippet_path = snippet.path();
+
+        let output = l
+            .format(snippet_path)
+            .expect("it to not fail")
+            .expect("it to be a snippet");
+
+        assert_eq!(output, expected_output);
     }
 }

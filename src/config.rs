@@ -8,6 +8,7 @@ use crate::languages::{
 };
 
 #[derive(Debug, serde::Serialize, serde::Deserialize, JsonSchema)]
+#[cfg_attr(test, derive(PartialEq, Eq))]
 pub struct MdsfConfig {
     #[schemars(skip)]
     #[serde(rename = "$schema", default = "default_schema_location")]
@@ -157,4 +158,26 @@ fn default_schema_location() -> String {
     format!(
         "https://raw.githubusercontent.com/hougesen/mdsf/main/schemas/v{package_version}/mdsf.schema.json"
     )
+}
+
+#[cfg(test)]
+mod test_config {
+    use super::MdsfConfig;
+
+    #[test]
+    fn schema_should_be_serializable() {
+        let config = MdsfConfig::default();
+
+        let json = serde_json::to_string_pretty(&config).expect("it to be serializable");
+
+        let loaded = serde_json::from_str::<MdsfConfig>(&json).expect("it to be parsed");
+
+        assert_eq!(config, loaded);
+    }
+
+    #[test]
+    fn json_schema_should_be_serializable() {
+        serde_json::to_string_pretty(&schemars::schema_for!(MdsfConfig))
+            .expect("it to be serializable");
+    }
 }

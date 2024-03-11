@@ -5,6 +5,7 @@ use crate::{config::default_enabled, formatters::nimpretty::format_using_nimpret
 use super::LanguageFormatter;
 
 #[derive(Debug, Default, serde::Serialize, serde::Deserialize, JsonSchema)]
+#[cfg_attr(test, derive(PartialEq, Eq))]
 pub enum NimFormatter {
     #[default]
     #[serde(rename = "nimpretty")]
@@ -12,6 +13,7 @@ pub enum NimFormatter {
 }
 
 #[derive(Debug, serde::Serialize, serde::Deserialize, JsonSchema)]
+#[cfg_attr(test, derive(PartialEq, Eq))]
 pub struct Nim {
     #[serde(default = "default_enabled")]
     pub enabled: bool,
@@ -39,5 +41,58 @@ impl LanguageFormatter for Nim {
         match self.formatter {
             NimFormatter::Nimpretty => format_using_nimpretty(snippet_path).map(|res| res.1),
         }
+    }
+}
+
+#[cfg(test)]
+mod test_nim {
+    use crate::{formatters::setup_snippet, languages::LanguageFormatter};
+
+    use super::{Nim, NimFormatter};
+
+    const INPUT: &str = "proc           add( a         :int , b:int )        : int =
+  return a +          b  ";
+
+    const EXTENSION: &str = crate::languages::Language::Nim.to_file_ext();
+
+    #[test]
+    fn it_should_be_enabled_by_default() {
+        assert!(Nim::default().enabled);
+    }
+
+    #[test]
+    fn it_should_not_format_when_enabled_is_false() {
+        let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");
+        let snippet_path = snippet.path();
+
+        assert!(Nim {
+            enabled: false,
+            formatter: NimFormatter::default(),
+        }
+        .format(snippet_path)
+        .expect("it to not fail")
+        .is_none());
+    }
+
+    #[test]
+    fn test_clang_format() {
+        let l = Nim {
+            enabled: true,
+            formatter: NimFormatter::Nimpretty,
+        };
+
+        let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");
+        let snippet_path = snippet.path();
+
+        let output = l
+            .format(snippet_path)
+            .expect("it to not fail")
+            .expect("it to be a snippet");
+
+        let expected_output = "proc add(a: int, b: int): int =
+  return a + b
+";
+
+        assert_eq!(output, expected_output);
     }
 }
