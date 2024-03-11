@@ -5,6 +5,7 @@ use crate::{config::default_enabled, formatters::rubocop::format_using_rubocop};
 use super::LanguageFormatter;
 
 #[derive(Debug, Default, serde::Serialize, serde::Deserialize, JsonSchema)]
+#[cfg_attr(test, derive(PartialEq))]
 pub enum RubyFormatter {
     #[default]
     #[serde(rename = "rubocop")]
@@ -12,6 +13,7 @@ pub enum RubyFormatter {
 }
 
 #[derive(Debug, serde::Serialize, serde::Deserialize, JsonSchema)]
+#[cfg_attr(test, derive(PartialEq))]
 pub struct Ruby {
     #[serde(default = "default_enabled")]
     pub enabled: bool,

@@ -5,6 +5,7 @@ use crate::{config::default_enabled, formatters::prettier::format_using_prettier
 use super::LanguageFormatter;
 
 #[derive(Debug, Default, serde::Serialize, serde::Deserialize, JsonSchema)]
+#[cfg_attr(test, derive(PartialEq))]
 pub enum CssFormatter {
     #[default]
     #[serde(rename = "prettier")]
@@ -12,6 +13,7 @@ pub enum CssFormatter {
 }
 
 #[derive(Debug, serde::Serialize, serde::Deserialize, JsonSchema)]
+#[cfg_attr(test, derive(PartialEq))]
 pub struct Css {
     #[serde(default = "default_enabled")]
     pub enabled: bool,

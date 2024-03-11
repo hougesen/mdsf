@@ -11,6 +11,7 @@ use crate::{
 use super::LanguageFormatter;
 
 #[derive(Debug, Default, serde::Serialize, serde::Deserialize, JsonSchema)]
+#[cfg_attr(test, derive(PartialEq))]
 pub enum PythonFormatter {
     #[default]
     #[serde(rename = "ruff")]
@@ -26,6 +27,7 @@ pub enum PythonFormatter {
 }
 
 #[derive(Debug, serde::Serialize, serde::Deserialize, JsonSchema)]
+#[cfg_attr(test, derive(PartialEq))]
 pub struct Python {
     #[serde(default = "default_enabled")]
     pub enabled: bool,

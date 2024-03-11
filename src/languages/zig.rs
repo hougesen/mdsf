@@ -5,6 +5,7 @@ use crate::{config::default_enabled, formatters::zigfmt::format_using_zigfmt};
 use super::LanguageFormatter;
 
 #[derive(Debug, Default, serde::Serialize, serde::Deserialize, JsonSchema)]
+#[cfg_attr(test, derive(PartialEq))]
 pub enum ZigFormatter {
     #[default]
     #[serde(rename = "zigfmt")]
@@ -12,6 +13,7 @@ pub enum ZigFormatter {
 }
 
 #[derive(Debug, serde::Serialize, serde::Deserialize, JsonSchema)]
+#[cfg_attr(test, derive(PartialEq))]
 pub struct Zig {
     #[serde(default = "default_enabled")]
     pub enabled: bool,

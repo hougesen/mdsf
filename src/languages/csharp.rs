@@ -5,6 +5,7 @@ use crate::{config::default_enabled, formatters::clang_format::format_using_clan
 use super::LanguageFormatter;
 
 #[derive(Debug, Default, serde::Serialize, serde::Deserialize, JsonSchema)]
+#[cfg_attr(test, derive(PartialEq))]
 pub enum CSharpFormatter {
     #[default]
     #[serde(rename = "clang-format")]
@@ -12,6 +13,7 @@ pub enum CSharpFormatter {
 }
 
 #[derive(Debug, serde::Serialize, serde::Deserialize, JsonSchema)]
+#[cfg_attr(test, derive(PartialEq))]
 pub struct CSharp {
     #[serde(default = "default_enabled")]
     pub enabled: bool,

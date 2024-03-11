@@ -5,6 +5,7 @@ use crate::{config::default_enabled, formatters::mix_format::format_using_mix_fo
 use super::LanguageFormatter;
 
 #[derive(Debug, Default, serde::Serialize, serde::Deserialize, JsonSchema)]
+#[cfg_attr(test, derive(PartialEq))]
 pub enum ElixirFormatter {
     #[default]
     #[serde(rename = "mix_format")]
@@ -12,6 +13,7 @@ pub enum ElixirFormatter {
 }
 
 #[derive(Debug, serde::Serialize, serde::Deserialize, JsonSchema)]
+#[cfg_attr(test, derive(PartialEq))]
 pub struct Elixir {
     #[serde(default = "default_enabled")]
     pub enabled: bool,

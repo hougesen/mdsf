@@ -11,6 +11,7 @@ use crate::{
 use super::LanguageFormatter;
 
 #[derive(Debug, Default, serde::Serialize, serde::Deserialize, JsonSchema)]
+#[cfg_attr(test, derive(PartialEq))]
 pub enum JsonFormatter {
     #[default]
     #[serde(rename = "prettier")]
@@ -22,6 +23,7 @@ pub enum JsonFormatter {
 }
 
 #[derive(Debug, serde::Serialize, serde::Deserialize, JsonSchema)]
+#[cfg_attr(test, derive(PartialEq))]
 pub struct Json {
     #[serde(default = "default_enabled")]
     pub enabled: bool,

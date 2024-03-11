@@ -5,6 +5,7 @@ use crate::{config::default_enabled, formatters::shfmt::format_using_shfmt};
 use super::LanguageFormatter;
 
 #[derive(Debug, Default, serde::Serialize, serde::Deserialize, JsonSchema)]
+#[cfg_attr(test, derive(PartialEq))]
 pub enum ShellFormatter {
     #[default]
     #[serde(rename = "shfmt")]
@@ -12,6 +13,7 @@ pub enum ShellFormatter {
 }
 
 #[derive(Debug, serde::Serialize, serde::Deserialize, JsonSchema)]
+#[cfg_attr(test, derive(PartialEq))]
 pub struct Shell {
     #[serde(default = "default_enabled")]
     pub enabled: bool,

@@ -8,6 +8,7 @@ use crate::{
 use super::LanguageFormatter;
 
 #[derive(Debug, Default, serde::Serialize, serde::Deserialize, JsonSchema)]
+#[cfg_attr(test, derive(PartialEq))]
 pub enum GoFormatter {
     #[default]
     #[serde(rename = "gofmt")]
@@ -17,6 +18,7 @@ pub enum GoFormatter {
 }
 
 #[derive(Debug, serde::Serialize, serde::Deserialize, JsonSchema)]
+#[cfg_attr(test, derive(PartialEq))]
 pub struct Go {
     #[serde(default = "default_enabled")]
     pub enabled: bool,

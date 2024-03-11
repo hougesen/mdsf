@@ -5,6 +5,7 @@ use crate::{config::default_enabled, formatters::dart_format::format_using_dart_
 use super::LanguageFormatter;
 
 #[derive(Debug, Default, serde::Serialize, serde::Deserialize, JsonSchema)]
+#[cfg_attr(test, derive(PartialEq))]
 pub enum DartFormatter {
     #[default]
     #[serde(rename = "dart_format")]
@@ -12,6 +13,7 @@ pub enum DartFormatter {
 }
 
 #[derive(Debug, serde::Serialize, serde::Deserialize, JsonSchema)]
+#[cfg_attr(test, derive(PartialEq))]
 pub struct Dart {
     #[serde(default = "default_enabled")]
     pub enabled: bool,

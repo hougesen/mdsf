@@ -5,6 +5,7 @@ use crate::{config::default_enabled, formatters::nimpretty::format_using_nimpret
 use super::LanguageFormatter;
 
 #[derive(Debug, Default, serde::Serialize, serde::Deserialize, JsonSchema)]
+#[cfg_attr(test, derive(PartialEq))]
 pub enum NimFormatter {
     #[default]
     #[serde(rename = "nimpretty")]
@@ -12,6 +13,7 @@ pub enum NimFormatter {
 }
 
 #[derive(Debug, serde::Serialize, serde::Deserialize, JsonSchema)]
+#[cfg_attr(test, derive(PartialEq))]
 pub struct Nim {
     #[serde(default = "default_enabled")]
     pub enabled: bool,
