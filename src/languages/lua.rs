@@ -88,4 +88,24 @@ end
         .expect("it to not fail")
         .is_none());
     }
+
+    #[test]
+    fn test_stylua() {
+        let expected_output = "local function add(a, b)\n\treturn a + b\nend\n";
+
+        let l = Lua {
+            enabled: true,
+            formatter: LuaFormatter::Stylua,
+        };
+
+        let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");
+        let snippet_path = snippet.path();
+
+        let output = l
+            .format(snippet_path)
+            .expect("it to not fail")
+            .expect("it to be a snippet");
+
+        assert_eq!(output, expected_output);
+    }
 }
