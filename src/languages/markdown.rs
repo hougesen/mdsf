@@ -48,10 +48,58 @@ impl LanguageFormatter for Markdown {
 
 #[cfg(test)]
 mod test_markdown {
-    use crate::languages::markdown::Markdown;
+    use crate::{formatters::setup_snippet, languages::LanguageFormatter};
+
+    use super::{Markdown, MarkdownFormatter};
+
+    const INPUT: &str = "
+# mads    was here
+
+
+  the    whitespace    should    be removed
+";
+
+    const EXTENSION: &str = crate::languages::Language::Markdown.to_file_ext();
 
     #[test]
     fn it_should_be_enabled_by_default() {
         assert!(!Markdown::default().enabled);
+    }
+
+    #[test]
+    fn it_should_not_format_when_enabled_is_false() {
+        let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");
+        let snippet_path = snippet.path();
+
+        assert!(Markdown {
+            enabled: false,
+            formatter: MarkdownFormatter::default(),
+        }
+        .format(snippet_path)
+        .expect("it to not fail")
+        .is_none());
+    }
+
+    #[test]
+    fn test_prettier() {
+        let expected_output = "# mads was here
+
+the whitespace should be removed
+";
+
+        let l = Markdown {
+            enabled: true,
+            formatter: MarkdownFormatter::Prettier,
+        };
+
+        let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");
+        let snippet_path = snippet.path();
+
+        let output = l
+            .format(snippet_path)
+            .expect("it to not fail")
+            .expect("it to be a snippet");
+
+        assert_eq!(output, expected_output);
     }
 }
