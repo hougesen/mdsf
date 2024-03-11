@@ -313,4 +313,50 @@ updates:
 
         assert_eq!(expected_output, output);
     }
+
+    #[test]
+    fn it_should_format_vue() {
+        let input = "<script lang=\"ts\"   setup >
+import {
+
+    ref
+} from \"vue\"
+
+
+    const count   = ref(1)
+    function add (a:number,b:number):number {
+                return a +b
+        }   </script>
+
+
+<template>
+    <button  @click=\"()=> count = add(count,count )\">Increment </button>
+        </template>
+
+";
+
+        let expected_output = "<script lang=\"ts\" setup>
+import { ref } from \"vue\";
+
+const count = ref(1);
+function add(a: number, b: number): number {
+  return a + b;
+}
+</script>
+
+<template>
+  <button @click=\"() => (count = add(count, count))\">Increment</button>
+</template>
+";
+
+        let snippet =
+            setup_snippet(input, Language::Vue.to_file_ext()).expect("it to create a snippet file");
+
+        let output = format_using_prettier(snippet.path(), true)
+            .expect("it to be successful")
+            .1
+            .expect("it to be some");
+
+        assert_eq!(expected_output, output);
+    }
 }

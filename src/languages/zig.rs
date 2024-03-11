@@ -73,7 +73,7 @@ mod test_zig {
     }
 
     #[test]
-    fn zig_fmt() {
+    fn test_zigfmt() {
         let l = Zig {
             enabled: true,
             formatter: ZigFormatter::ZigFmt,

@@ -43,7 +43,7 @@ impl LanguageFormatter for Yaml {
 }
 
 #[cfg(test)]
-mod test_zig {
+mod test_yaml {
     use crate::{
         formatters::setup_snippet,
         languages::{Language, LanguageFormatter},
@@ -90,7 +90,7 @@ updates:
     }
 
     #[test]
-    fn zig_fmt() {
+    fn test_prettier() {
         let l = Yaml {
             enabled: true,
             formatter: YamlFormatter::Prettier,
