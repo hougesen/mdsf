@@ -51,7 +51,7 @@ pub fn format_file(config: &MdsfConfig, path: &std::path::Path) -> Result<(), Md
 
     // NOTE: should be removed once `pulldown-cmark-to-cmark` is upgraded to `v0.10.0` of `pulldown-cmark`
     let (frontmatter, markdown_input) =
-        matter(&input).unwrap_or_else(|| (String::new(), input.to_owned()));
+        matter(&input).unwrap_or_else(|| (String::new(), input.clone()));
 
     let parser = pulldown_cmark::Parser::new_ext(&markdown_input, pulldown_cmark::Options::all());
 
@@ -65,21 +65,25 @@ pub fn format_file(config: &MdsfConfig, path: &std::path::Path) -> Result<(), Md
 
     for event in parser {
         let ev = match event {
-            pulldown_cmark::Event::Start(start) => {
-                if let pulldown_cmark::Tag::CodeBlock(pulldown_cmark::CodeBlockKind::Fenced(l)) =
-                    &start
-                {
-                    codeblock_language = Language::maybe_from_str(l);
-                }
+            pulldown_cmark::Event::Start(pulldown_cmark::Tag::CodeBlock(
+                pulldown_cmark::CodeBlockKind::Fenced(l),
+            )) => {
+                codeblock_language = Language::maybe_from_str(&l);
 
-                pulldown_cmark::Event::Start(start)
+                pulldown_cmark::Event::Start(pulldown_cmark::Tag::CodeBlock(
+                    pulldown_cmark::CodeBlockKind::Fenced(l),
+                ))
             }
-            pulldown_cmark::Event::End(end) => {
+            pulldown_cmark::Event::End(pulldown_cmark::Tag::CodeBlock(
+                pulldown_cmark::CodeBlockKind::Fenced(s),
+            )) => {
                 if codeblock_language.is_some() {
                     codeblock_language = None;
                 }
 
-                pulldown_cmark::Event::End(end)
+                pulldown_cmark::Event::End(pulldown_cmark::Tag::CodeBlock(
+                    pulldown_cmark::CodeBlockKind::Fenced(s),
+                ))
             }
             pulldown_cmark::Event::Text(text) => {
                 if let Some(language) = &codeblock_language {
