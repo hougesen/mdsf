@@ -44,19 +44,20 @@ impl LanguageFormatter for Elixir {
 
 #[cfg(test)]
 mod test {
-    use crate::{
-        formatters::setup_snippet,
-        languages::{Language, LanguageFormatter},
-    };
+    use crate::{formatters::setup_snippet, languages::LanguageFormatter};
 
     use super::{Elixir, ElixirFormatter};
 
-    const INPUT: &str = "";
+    const INPUT: &str = "
+        def              add(a  ,      b   )   do    a   +   b                 end
+
+";
+
+    const EXTENSION: &str = crate::languages::Language::Elixir.to_file_ext();
 
     #[test]
     fn it_should_be_enabled_by_default() {
-        let snippet =
-            setup_snippet(INPUT, Language::Elixir.to_file_ext()).expect("it to save the file");
+        let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");
         let snippet_path = snippet.path();
 
         Elixir::default()
@@ -67,8 +68,7 @@ mod test {
 
     #[test]
     fn it_should_not_format_when_enabled_is_false() {
-        let snippet =
-            setup_snippet(INPUT, Language::Elixir.to_file_ext()).expect("it to save the file");
+        let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");
         let snippet_path = snippet.path();
 
         assert!(Elixir {
@@ -78,5 +78,28 @@ mod test {
         .format(snippet_path)
         .expect("it to not fail")
         .is_none());
+    }
+
+    #[test]
+    fn test_mix_format() {
+        let l = Elixir {
+            enabled: true,
+            formatter: ElixirFormatter::MixFormat,
+        };
+
+        let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");
+        let snippet_path = snippet.path();
+
+        let output = l
+            .format(snippet_path)
+            .expect("it to not fail")
+            .expect("it to be a snippet");
+
+        let expected_output = "def add(a, b) do
+  a + b
+end
+";
+
+        assert_eq!(output, expected_output);
     }
 }
