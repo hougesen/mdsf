@@ -58,11 +58,6 @@ mod test_zig {
     }
     ";
 
-    const EXPECTED_OUTPUT: &str = "fn add(a: i32, b: i32) i32 {
-    return a + b;
-}
-";
-
     #[test]
     fn it_should_not_format_when_enabled_is_false() {
         let l = Zig {
@@ -93,6 +88,11 @@ mod test_zig {
             .expect("it to not fail")
             .expect("it to be a snippet");
 
-        assert_eq!(output, EXPECTED_OUTPUT);
+        let expected_output = "fn add(a: i32, b: i32) i32 {
+    return a + b;
+}
+";
+
+        assert_eq!(output, expected_output);
     }
 }
