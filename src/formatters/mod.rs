@@ -72,12 +72,12 @@ fn handle_post_execution(
 }
 
 fn spawn_command(cmd: &mut Command) -> std::io::Result<bool> {
-    Ok(cmd
-        .stdout(Stdio::null())
-        .stderr(Stdio::null())
-        .spawn()?
-        .wait()?
-        .success())
+    #[cfg(not(test))]
+    cmd.stdout(Stdio::null());
+    #[cfg(not(test))]
+    cmd.stderr(Stdio::null());
+
+    Ok(cmd.spawn()?.wait()?.success())
 }
 
 #[inline]
