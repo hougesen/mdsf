@@ -76,4 +76,24 @@ mod test_rust {
         .expect("it to not fail")
         .is_none());
     }
+
+    #[test]
+    fn test_rustfmt() {
+        let expected_output = "pub async fn add(a: i32, b: i32) -> i32 {\n    a + b\n}\n";
+
+        let l = Rust {
+            enabled: true,
+            formatter: RustFormatter::RustFmt,
+        };
+
+        let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");
+        let snippet_path = snippet.path();
+
+        let output = l
+            .format(snippet_path)
+            .expect("it to not fail")
+            .expect("it to be a snippet");
+
+        assert_eq!(output, expected_output);
+    }
 }
