@@ -20,6 +20,7 @@ pub mod gofumpt;
 pub mod mix_format;
 pub mod nimpretty;
 pub mod prettier;
+pub mod roc_format;
 pub mod rubocop;
 pub mod ruff;
 pub mod rustfmt;
@@ -111,6 +112,7 @@ pub fn format_snippet(config: &MdsfConfig, language: &Language, code: &str) -> S
             Language::ObjectiveC => config.objective_c.format(snippet_path),
             Language::Protobuf => config.protobuf.format(snippet_path),
             Language::Python => config.python.format(snippet_path),
+            Language::Roc => config.roc.format(snippet_path),
             Language::Ruby => config.ruby.format(snippet_path),
             Language::Rust => config.rust.format(snippet_path),
             Language::Shell => config.shell.format(snippet_path),

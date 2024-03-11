@@ -4,8 +4,8 @@ use crate::languages::{
     c::C, cpp::Cpp, crystal::Crystal, csharp::CSharp, css::Css, dart::Dart, elixir::Elixir,
     gleam::Gleam, go::Go, html::Html, java::Java, javascript::JavaScript, json::Json, lua::Lua,
     markdown::Markdown, nim::Nim, objective_c::ObjectiveC, protobuf::Protobuf, python::Python,
-    ruby::Ruby, rust::Rust, shell::Shell, sql::Sql, toml::Toml, typescript::TypeScript, vue::Vue,
-    yaml::Yaml, zig::Zig,
+    roc::Roc, ruby::Ruby, rust::Rust, shell::Shell, sql::Sql, toml::Toml, typescript::TypeScript,
+    vue::Vue, yaml::Yaml, zig::Zig,
 };
 
 #[derive(Debug, serde::Serialize, serde::Deserialize, JsonSchema)]
@@ -73,6 +73,9 @@ pub struct MdsfConfig {
     pub python: Python,
 
     #[serde(default)]
+    pub roc: Roc,
+
+    #[serde(default)]
     pub ruby: Ruby,
 
     #[serde(default)]
@@ -125,6 +128,7 @@ impl Default for MdsfConfig {
             objective_c: ObjectiveC::default(),
             protobuf: Protobuf::default(),
             python: Python::default(),
+            roc: Roc::default(),
             ruby: Ruby::default(),
             rust: Rust::default(),
             shell: Shell::default(),

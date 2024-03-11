@@ -18,6 +18,7 @@ pub enum Language {
     ObjectiveC,
     Protobuf,
     Python,
+    Roc,
     Ruby,
     Rust,
     Shell,
@@ -64,6 +65,7 @@ pub mod nim;
 pub mod objective_c;
 pub mod protobuf;
 pub mod python;
+pub mod roc;
 pub mod ruby;
 pub mod rust;
 pub mod shell;
@@ -101,6 +103,7 @@ impl Language {
             "objectivec" | "objective-c" | "objc" => Some(Self::ObjectiveC),
             "profobuf" | "profo" => Some(Self::Protobuf),
             "python" => Some(Self::Python),
+            "roc" => Some(Self::Roc),
             "ruby" => Some(Self::Ruby),
             "rust" | "rb" => Some(Self::Rust),
             "shell" | "sh" | "bash" | "zsh" => Some(Self::Shell),
@@ -139,6 +142,7 @@ impl Language {
             Self::ObjectiveC => ".m",
             Self::Protobuf => ".proto",
             Self::Python => ".py",
+            Self::Roc => ".roc",
             Self::Ruby => ".rb",
             Self::Rust => ".rs",
             Self::Shell => ".sh",
