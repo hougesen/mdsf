@@ -45,7 +45,7 @@ impl LanguageFormatter for Elixir {
 }
 
 #[cfg(test)]
-mod test {
+mod test_elixir  {
     use crate::{formatters::setup_snippet, languages::LanguageFormatter};
 
     use super::{Elixir, ElixirFormatter};

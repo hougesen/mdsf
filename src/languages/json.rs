@@ -57,7 +57,7 @@ impl LanguageFormatter for Json {
 }
 
 #[cfg(test)]
-mod test {
+mod test_json {
     use crate::{formatters::setup_snippet, languages::LanguageFormatter};
 
     use super::{Json, JsonFormatter};

@@ -45,7 +45,7 @@ impl LanguageFormatter for Css {
 }
 
 #[cfg(test)]
-mod test {
+mod test_css {
     use crate::{formatters::setup_snippet, languages::LanguageFormatter};
 
     use super::{Css, CssFormatter};

@@ -90,4 +90,104 @@ mod test_python {
         .expect("it to not fail")
         .is_none());
     }
+
+    #[test]
+    fn test_black() {
+        let expected_output = "def add(a: int, b: int) -> int:\n    return a + b\n";
+
+        let l = Python {
+            enabled: true,
+            formatter: PythonFormatter::Black,
+        };
+
+        let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");
+        let snippet_path = snippet.path();
+
+        let output = l
+            .format(snippet_path)
+            .expect("it to not fail")
+            .expect("it to be a snippet");
+
+        assert_eq!(output, expected_output);
+    }
+
+    #[test]
+    fn test_blue() {
+        let expected_output = "def add(a: int, b: int) -> int:\n    return a + b\n";
+
+        let l = Python {
+            enabled: true,
+            formatter: PythonFormatter::Blue,
+        };
+
+        let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");
+        let snippet_path = snippet.path();
+
+        let output = l
+            .format(snippet_path)
+            .expect("it to not fail")
+            .expect("it to be a snippet");
+
+        assert_eq!(output, expected_output);
+    }
+
+    #[test]
+    fn test_ruff() {
+        let expected_output = "def add(a: int, b: int) -> int:\n    return a + b\n";
+
+        let l = Python {
+            enabled: true,
+            formatter: PythonFormatter::Ruff,
+        };
+
+        let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");
+        let snippet_path = snippet.path();
+
+        let output = l
+            .format(snippet_path)
+            .expect("it to not fail")
+            .expect("it to be a snippet");
+
+        assert_eq!(output, expected_output);
+    }
+
+    #[test]
+    fn test_autopep8() {
+        let expected_output = "def add(a: int,  b: int) -> int: return a+b\n";
+
+        let l = Python {
+            enabled: true,
+            formatter: PythonFormatter::Autopep8,
+        };
+
+        let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");
+        let snippet_path = snippet.path();
+
+        let output = l
+            .format(snippet_path)
+            .expect("it to not fail")
+            .expect("it to be a snippet");
+
+        assert_eq!(output, expected_output);
+    }
+
+    #[test]
+    fn test_yapf() {
+        let expected_output = "def add(a: int, b: int) -> int:\n    return a + b\n";
+
+        let l = Python {
+            enabled: true,
+            formatter: PythonFormatter::Yapf,
+        };
+
+        let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");
+        let snippet_path = snippet.path();
+
+        let output = l
+            .format(snippet_path)
+            .expect("it to not fail")
+            .expect("it to be a snippet");
+
+        assert_eq!(output, expected_output);
+    }
 }

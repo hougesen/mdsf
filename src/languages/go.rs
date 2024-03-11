@@ -51,7 +51,7 @@ impl LanguageFormatter for Go {
 }
 
 #[cfg(test)]
-mod test {
+mod test_go {
     use crate::{formatters::setup_snippet, languages::LanguageFormatter};
 
     use super::{Go, GoFormatter};

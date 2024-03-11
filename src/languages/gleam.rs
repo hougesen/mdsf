@@ -45,7 +45,7 @@ impl LanguageFormatter for Gleam {
 }
 
 #[cfg(test)]
-mod test {
+mod test_gleam {
     use crate::{formatters::setup_snippet, languages::LanguageFormatter};
 
     use super::{Gleam, GleamFormatter};

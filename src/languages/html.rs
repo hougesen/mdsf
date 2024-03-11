@@ -45,7 +45,7 @@ impl LanguageFormatter for Html {
 }
 
 #[cfg(test)]
-mod test {
+mod test_html {
     use crate::{formatters::setup_snippet, languages::LanguageFormatter};
 
     use super::{Html, HtmlFormatter};
