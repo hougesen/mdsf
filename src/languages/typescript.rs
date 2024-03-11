@@ -49,3 +49,101 @@ impl LanguageFormatter for TypeScript {
         }
     }
 }
+
+#[cfg(test)]
+mod test_typescript {
+    use crate::{
+        formatters::setup_snippet,
+        languages::{Language, LanguageFormatter},
+    };
+
+    use super::{TypeScript, TypeScriptFormatter};
+
+    const INPUT: &str = "
+    async function asyncAddition(
+            a:number,b:number
+        ) :Promise<
+number>
+    {
+        return a+b
+    }
+
+            ";
+
+    #[test]
+    fn it_should_not_format_when_enabled_is_false() {
+        let snippet =
+            setup_snippet(INPUT, Language::TypeScript.to_file_ext()).expect("it to save the file");
+        let snippet_path = snippet.path();
+
+        let prettier = TypeScript {
+            enabled: false,
+            formatter: TypeScriptFormatter::Prettier,
+        };
+
+        assert!(prettier
+            .format(snippet_path)
+            .expect("it to not fail")
+            .is_none());
+
+        let biome = TypeScript {
+            enabled: false,
+            formatter: TypeScriptFormatter::Biome,
+        };
+
+        assert!(biome
+            .format(snippet_path)
+            .expect("it to not fail")
+            .is_none());
+    }
+
+    #[test]
+    fn test_prettier() {
+        let l = TypeScript {
+            enabled: true,
+            formatter: TypeScriptFormatter::Prettier,
+        };
+
+        let snippet =
+            setup_snippet(INPUT, Language::TypeScript.to_file_ext()).expect("it to save the file");
+        let snippet_path = snippet.path();
+
+        let output = l
+            .format(snippet_path)
+            .expect("it to not fail")
+            .expect("it to be a snippet");
+
+        let expected_output =
+            "async function asyncAddition(a: number, b: number): Promise<number> {
+  return a + b;
+}
+";
+
+        assert_eq!(output, expected_output);
+    }
+
+    #[test]
+    fn test_biome() {
+        let l = TypeScript {
+            enabled: true,
+            formatter: TypeScriptFormatter::Biome,
+        };
+
+        let snippet =
+            setup_snippet(INPUT, Language::TypeScript.to_file_ext()).expect("it to save the file");
+        let snippet_path = snippet.path();
+
+        let output = l
+            .format(snippet_path)
+            .expect("it to not fail")
+            .expect("it to be a snippet");
+
+        let expected_output =
+            "async function asyncAddition(a: number, b: number): Promise<number> {
+\treturn a + b;
+}
+";
+
+        assert_eq!(output, expected_output);
+    }
+}
