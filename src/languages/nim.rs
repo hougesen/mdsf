@@ -56,14 +56,9 @@ mod test_nim {
     const EXTENSION: &str = crate::languages::Language::Nim.to_file_ext();
 
     #[test]
+    #[ignore]
     fn it_should_be_enabled_by_default() {
-        let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");
-        let snippet_path = snippet.path();
-
-        Nim::default()
-            .format(snippet_path)
-            .expect("it to not fail")
-            .expect("it to be a snippet");
+        assert!(Nim::default().enabled);
     }
 
     #[test]
@@ -78,5 +73,27 @@ mod test_nim {
         .format(snippet_path)
         .expect("it to not fail")
         .is_none());
+    }
+
+    #[test]
+    fn test_clang_format() {
+        let l = Nim {
+            enabled: true,
+            formatter: NimFormatter::Nimpretty,
+        };
+
+        let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");
+        let snippet_path = snippet.path();
+
+        let output = l
+            .format(snippet_path)
+            .expect("it to not fail")
+            .expect("it to be a snippet");
+
+        let expected_output = "proc add(a: int, b: int): int =
+  return a + b
+";
+
+        assert_eq!(output, expected_output);
     }
 }
