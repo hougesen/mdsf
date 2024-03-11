@@ -44,24 +44,19 @@ impl LanguageFormatter for Toml {
 
 #[cfg(test)]
 mod test_toml {
-    use crate::{
-        formatters::setup_snippet,
-        languages::{Language, LanguageFormatter},
-    };
+    use crate::{formatters::setup_snippet, languages::LanguageFormatter};
 
     use super::{Toml, TomlFormatter};
 
-    const INPUT: &str = "
-    fn     add   (a : i32    , b :   i32 )             i32 {
-        return a + b ;
+    const INPUT: &str = "          package         =              \"mdsf\"
+  author   = \"Mads Hougesen\"
+  ";
 
-    }
-    ";
+    const EXTENSION: &str = crate::languages::Language::Toml.to_file_ext();
 
     #[test]
     fn it_should_be_enabled_by_default() {
-        let snippet =
-            setup_snippet(INPUT, Language::Toml.to_file_ext()).expect("it to save the file");
+        let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");
         let snippet_path = snippet.path();
 
         Toml::default()
@@ -77,8 +72,7 @@ mod test_toml {
             formatter: TomlFormatter::Taplo,
         };
 
-        let snippet =
-            setup_snippet(INPUT, Language::Toml.to_file_ext()).expect("it to save the file");
+        let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");
         let snippet_path = snippet.path();
 
         assert!(l.format(snippet_path).expect("it to not fail").is_none());
@@ -91,8 +85,7 @@ mod test_toml {
             formatter: TomlFormatter::Taplo,
         };
 
-        let snippet =
-            setup_snippet(INPUT, Language::Toml.to_file_ext()).expect("it to save the file");
+        let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");
         let snippet_path = snippet.path();
 
         let output = l
@@ -100,9 +93,8 @@ mod test_toml {
             .expect("it to not fail")
             .expect("it to be a snippet");
 
-        let expected_output = "fn add(a: i32, b: i32) i32 {
-    return a + b;
-}
+        let expected_output = "package = \"mdsf\"
+author = \"Mads Hougesen\"
 ";
 
         assert_eq!(output, expected_output);

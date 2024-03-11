@@ -48,7 +48,10 @@ mod test {
 
     use super::{Cpp, CppFormatter};
 
-    const INPUT: &str = "";
+    const INPUT: &str = "int add(int a,int b){
+                 a-b;
+       return a + b;
+    }";
 
     const EXTENSION: &str = crate::languages::Language::Cpp.to_file_ext();
 

@@ -44,10 +44,7 @@ impl LanguageFormatter for Yaml {
 
 #[cfg(test)]
 mod test_yaml {
-    use crate::{
-        formatters::setup_snippet,
-        languages::{Language, LanguageFormatter},
-    };
+    use crate::{formatters::setup_snippet, languages::LanguageFormatter};
 
     use super::{Yaml, YamlFormatter};
 
@@ -75,10 +72,11 @@ updates:
 
         ";
 
+    const EXTENSION: &str = crate::languages::Language::Yaml.to_file_ext();
+
     #[test]
     fn it_should_be_enabled_by_default() {
-        let snippet =
-            setup_snippet(INPUT, Language::Yaml.to_file_ext()).expect("it to save the file");
+        let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");
         let snippet_path = snippet.path();
 
         Yaml::default()
@@ -94,8 +92,7 @@ updates:
             formatter: YamlFormatter::Prettier,
         };
 
-        let snippet =
-            setup_snippet(INPUT, Language::Yaml.to_file_ext()).expect("it to save the file");
+        let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");
         let snippet_path = snippet.path();
 
         assert!(l.format(snippet_path).expect("it to not fail").is_none());
@@ -108,8 +105,7 @@ updates:
             formatter: YamlFormatter::Prettier,
         };
 
-        let snippet =
-            setup_snippet(INPUT, Language::Yaml.to_file_ext()).expect("it to save the file");
+        let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");
         let snippet_path = snippet.path();
 
         let output = l

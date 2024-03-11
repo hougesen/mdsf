@@ -60,10 +60,7 @@ impl LanguageFormatter for JavaScript {
 
 #[cfg(test)]
 mod test_javascript {
-    use crate::{
-        formatters::setup_snippet,
-        languages::{Language, LanguageFormatter},
-    };
+    use crate::{formatters::setup_snippet, languages::LanguageFormatter};
 
     use super::{JavaScript, JavaScriptFormatter};
 
@@ -77,10 +74,11 @@ mod test_javascript {
 
             ";
 
+    const EXTENSION: &str = crate::languages::Language::JavaScript.to_file_ext();
+
     #[test]
     fn it_should_be_enabled_by_default() {
-        let snippet =
-            setup_snippet(INPUT, Language::JavaScript.to_file_ext()).expect("it to save the file");
+        let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");
         let snippet_path = snippet.path();
 
         JavaScript::default()
@@ -91,8 +89,7 @@ mod test_javascript {
 
     #[test]
     fn it_should_not_format_when_enabled_is_false() {
-        let snippet =
-            setup_snippet(INPUT, Language::JavaScript.to_file_ext()).expect("it to save the file");
+        let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");
         let snippet_path = snippet.path();
 
         let prettier = JavaScript {
@@ -123,8 +120,7 @@ mod test_javascript {
             formatter: JavaScriptFormatter::Prettier,
         };
 
-        let snippet =
-            setup_snippet(INPUT, Language::JavaScript.to_file_ext()).expect("it to save the file");
+        let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");
         let snippet_path = snippet.path();
 
         let output = l
@@ -147,8 +143,7 @@ mod test_javascript {
             formatter: JavaScriptFormatter::Biome,
         };
 
-        let snippet =
-            setup_snippet(INPUT, Language::JavaScript.to_file_ext()).expect("it to save the file");
+        let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");
         let snippet_path = snippet.path();
 
         let output = l
@@ -178,8 +173,7 @@ mod test_javascript {
             formatter: JavaScriptFormatter::ClangFormat,
         };
 
-        let snippet =
-            setup_snippet(input, Language::JavaScript.to_file_ext()).expect("it to save the file");
+        let snippet = setup_snippet(input, EXTENSION).expect("it to save the file");
         let snippet_path = snippet.path();
 
         let output = l

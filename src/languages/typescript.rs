@@ -52,10 +52,7 @@ impl LanguageFormatter for TypeScript {
 
 #[cfg(test)]
 mod test_typescript {
-    use crate::{
-        formatters::setup_snippet,
-        languages::{Language, LanguageFormatter},
-    };
+    use crate::{formatters::setup_snippet, languages::LanguageFormatter};
 
     use super::{TypeScript, TypeScriptFormatter};
 
@@ -70,10 +67,11 @@ number>
 
             ";
 
+    const EXTENSION: &str = crate::languages::Language::TypeScript.to_file_ext();
+
     #[test]
     fn it_should_be_enabled_by_default() {
-        let snippet =
-            setup_snippet(INPUT, Language::TypeScript.to_file_ext()).expect("it to save the file");
+        let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");
         let snippet_path = snippet.path();
 
         TypeScript::default()
@@ -84,8 +82,7 @@ number>
 
     #[test]
     fn it_should_not_format_when_enabled_is_false() {
-        let snippet =
-            setup_snippet(INPUT, Language::TypeScript.to_file_ext()).expect("it to save the file");
+        let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");
         let snippet_path = snippet.path();
 
         let prettier = TypeScript {
@@ -116,8 +113,7 @@ number>
             formatter: TypeScriptFormatter::Prettier,
         };
 
-        let snippet =
-            setup_snippet(INPUT, Language::TypeScript.to_file_ext()).expect("it to save the file");
+        let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");
         let snippet_path = snippet.path();
 
         let output = l
@@ -141,8 +137,7 @@ number>
             formatter: TypeScriptFormatter::Biome,
         };
 
-        let snippet =
-            setup_snippet(INPUT, Language::TypeScript.to_file_ext()).expect("it to save the file");
+        let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");
         let snippet_path = snippet.path();
 
         let output = l

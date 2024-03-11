@@ -57,12 +57,14 @@ mod test_sql {
 
     use super::Sql;
 
-    const INPUT: &str = "";
+    const INPUT: &str = "SELECT  *                  FROM  tbl
+                        WHERE                      foo   = 'bar';         ";
+
+    const EXTENSION: &str = Language::Sql.to_file_ext();
 
     #[test]
     fn it_should_be_enabled_by_default() {
-        let snippet =
-            setup_snippet(INPUT, Language::Sql.to_file_ext()).expect("it to save the file");
+        let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");
         let snippet_path = snippet.path();
 
         Sql::default()
@@ -73,8 +75,7 @@ mod test_sql {
 
     #[test]
     fn it_should_not_format_when_enabled_is_false() {
-        let snippet =
-            setup_snippet(INPUT, Language::Sql.to_file_ext()).expect("it to save the file");
+        let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");
         let snippet_path = snippet.path();
 
         assert!(Sql {

@@ -93,10 +93,10 @@ mod test {
             .expect("it to be a snippet");
 
         let expected_output = "h1 {
-color: blue;
+  color: blue;
 }
 p {
-color: red;
+  color: red;
 }
 ";
 

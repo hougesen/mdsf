@@ -44,19 +44,27 @@ impl LanguageFormatter for Lua {
 
 #[cfg(test)]
 mod test {
-    use crate::{
-        formatters::setup_snippet,
-        languages::{Language, LanguageFormatter},
-    };
+    use crate::{formatters::setup_snippet, languages::LanguageFormatter};
 
     use super::{Lua, LuaFormatter};
 
-    const INPUT: &str = "";
+    const INPUT: &str = "
+
+        local               function        add (                                       a , b
+)
+
+return              a +b
+
+
+end
+
+    ";
+
+    const EXTENSION: &str = crate::languages::Language::Lua.to_file_ext();
 
     #[test]
     fn it_should_be_enabled_by_default() {
-        let snippet =
-            setup_snippet(INPUT, Language::Lua.to_file_ext()).expect("it to save the file");
+        let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");
         let snippet_path = snippet.path();
 
         Lua::default()
@@ -67,8 +75,7 @@ mod test {
 
     #[test]
     fn it_should_not_format_when_enabled_is_false() {
-        let snippet =
-            setup_snippet(INPUT, Language::Lua.to_file_ext()).expect("it to save the file");
+        let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");
         let snippet_path = snippet.path();
 
         assert!(Lua {

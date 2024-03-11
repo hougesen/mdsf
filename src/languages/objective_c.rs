@@ -46,19 +46,20 @@ impl LanguageFormatter for ObjectiveC {
 
 #[cfg(test)]
 mod test {
-    use crate::{
-        formatters::setup_snippet,
-        languages::{Language, LanguageFormatter},
-    };
+    use crate::{formatters::setup_snippet, languages::LanguageFormatter};
 
     use super::{ObjectiveC, ObjectiveCFormatter};
 
-    const INPUT: &str = "";
+    const INPUT: &str = "int add(int a,int b){
+            a - a ;
+       return a + b;
+    }";
+
+    const EXTENSION: &str = crate::languages::Language::ObjectiveC.to_file_ext();
 
     #[test]
     fn it_should_be_enabled_by_default() {
-        let snippet =
-            setup_snippet(INPUT, Language::ObjectiveC.to_file_ext()).expect("it to save the file");
+        let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");
         let snippet_path = snippet.path();
 
         ObjectiveC::default()
@@ -69,8 +70,7 @@ mod test {
 
     #[test]
     fn it_should_not_format_when_enabled_is_false() {
-        let snippet =
-            setup_snippet(INPUT, Language::ObjectiveC.to_file_ext()).expect("it to save the file");
+        let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");
         let snippet_path = snippet.path();
 
         assert!(ObjectiveC {

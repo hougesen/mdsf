@@ -44,10 +44,7 @@ impl LanguageFormatter for Vue {
 
 #[cfg(test)]
 mod test_vue {
-    use crate::{
-        formatters::setup_snippet,
-        languages::{Language, LanguageFormatter},
-    };
+    use crate::{formatters::setup_snippet, languages::LanguageFormatter};
 
     use super::{Vue, VueFormatter};
 
@@ -70,10 +67,11 @@ import {
 
 ";
 
+    const EXTENSION: &str = crate::languages::Language::Vue.to_file_ext();
+
     #[test]
     fn it_should_be_enabled_by_default() {
-        let snippet =
-            setup_snippet(INPUT, Language::Vue.to_file_ext()).expect("it to save the file");
+        let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");
         let snippet_path = snippet.path();
 
         Vue::default()
@@ -89,8 +87,7 @@ import {
             formatter: VueFormatter::Prettier,
         };
 
-        let snippet =
-            setup_snippet(INPUT, Language::Vue.to_file_ext()).expect("it to save the file");
+        let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");
         let snippet_path = snippet.path();
 
         assert!(l.format(snippet_path).expect("it to not fail").is_none());
@@ -103,8 +100,7 @@ import {
             formatter: VueFormatter::Prettier,
         };
 
-        let snippet =
-            setup_snippet(INPUT, Language::Vue.to_file_ext()).expect("it to save the file");
+        let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");
         let snippet_path = snippet.path();
 
         let output = l

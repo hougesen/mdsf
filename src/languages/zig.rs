@@ -44,10 +44,7 @@ impl LanguageFormatter for Zig {
 
 #[cfg(test)]
 mod test_zig {
-    use crate::{
-        formatters::setup_snippet,
-        languages::{Language, LanguageFormatter},
-    };
+    use crate::{formatters::setup_snippet, languages::LanguageFormatter};
 
     use super::{Zig, ZigFormatter};
 
@@ -58,10 +55,11 @@ mod test_zig {
     }
     ";
 
+    const EXTENSION: &str = crate::languages::Language::Zig.to_file_ext();
+
     #[test]
     fn it_should_be_enabled_by_default() {
-        let snippet =
-            setup_snippet(INPUT, Language::Zig.to_file_ext()).expect("it to save the file");
+        let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");
         let snippet_path = snippet.path();
 
         Zig::default()
@@ -77,8 +75,7 @@ mod test_zig {
             formatter: ZigFormatter::ZigFmt,
         };
 
-        let snippet =
-            setup_snippet(INPUT, Language::Zig.to_file_ext()).expect("it to save the file");
+        let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");
         let snippet_path = snippet.path();
 
         assert!(l.format(snippet_path).expect("it to not fail").is_none());
@@ -91,8 +88,7 @@ mod test_zig {
             formatter: ZigFormatter::ZigFmt,
         };
 
-        let snippet =
-            setup_snippet(INPUT, Language::Zig.to_file_ext()).expect("it to save the file");
+        let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");
         let snippet_path = snippet.path();
 
         let output = l

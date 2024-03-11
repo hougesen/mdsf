@@ -51,12 +51,28 @@ mod test_shell {
 
     use super::Shell;
 
-    const INPUT: &str = "";
+    const INPUT: &str = "
+
+#!/bin/sh
+
+       add      ()   {
+    echo \"$1\"                 +          \"$2\"
+             }
+
+
+
+
+
+
+
+
+";
+
+    const EXTENSION: &str = Language::Shell.to_file_ext();
 
     #[test]
     fn it_should_be_enabled_by_default() {
-        let snippet =
-            setup_snippet(INPUT, Language::Shell.to_file_ext()).expect("it to save the file");
+        let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");
         let snippet_path = snippet.path();
 
         Shell::default()
@@ -67,8 +83,7 @@ mod test_shell {
 
     #[test]
     fn it_should_not_format_when_enabled_is_false() {
-        let snippet =
-            setup_snippet(INPUT, Language::Shell.to_file_ext()).expect("it to save the file");
+        let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");
         let snippet_path = snippet.path();
 
         assert!(Shell {
