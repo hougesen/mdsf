@@ -63,7 +63,7 @@ impl LanguageFormatter for Python {
 }
 
 #[cfg(test)]
-mod test {
+mod test_python {
     use crate::{formatters::setup_snippet, languages::LanguageFormatter};
 
     use super::{Python, PythonFormatter};

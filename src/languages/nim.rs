@@ -45,7 +45,7 @@ impl LanguageFormatter for Nim {
 }
 
 #[cfg(test)]
-mod test {
+mod test_nim {
     use crate::{formatters::setup_snippet, languages::LanguageFormatter};
 
     use super::{Nim, NimFormatter};

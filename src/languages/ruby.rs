@@ -45,7 +45,7 @@ impl LanguageFormatter for Ruby {
 }
 
 #[cfg(test)]
-mod test {
+mod test_ruby {
     use crate::{formatters::setup_snippet, languages::LanguageFormatter};
 
     use super::{Ruby, RubyFormatter};

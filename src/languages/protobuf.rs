@@ -47,7 +47,7 @@ impl LanguageFormatter for Protobuf {
 }
 
 #[cfg(test)]
-mod test {
+mod test_protobuf {
     use crate::{formatters::setup_snippet, languages::LanguageFormatter};
 
     use super::{Protobuf, ProtobufFormatter};

@@ -47,7 +47,7 @@ impl LanguageFormatter for ObjectiveC {
 }
 
 #[cfg(test)]
-mod test {
+mod test_objective_c {
     use crate::{formatters::setup_snippet, languages::LanguageFormatter};
 
     use super::{ObjectiveC, ObjectiveCFormatter};

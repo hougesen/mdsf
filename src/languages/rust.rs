@@ -45,7 +45,7 @@ impl LanguageFormatter for Rust {
 }
 
 #[cfg(test)]
-mod test {
+mod test_rust {
     use crate::{formatters::setup_snippet, languages::LanguageFormatter};
 
     use super::{Rust, RustFormatter};

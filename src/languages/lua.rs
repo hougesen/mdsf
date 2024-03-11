@@ -45,7 +45,7 @@ impl LanguageFormatter for Lua {
 }
 
 #[cfg(test)]
-mod test {
+mod test_lua {
     use crate::{formatters::setup_snippet, languages::LanguageFormatter};
 
     use super::{Lua, LuaFormatter};

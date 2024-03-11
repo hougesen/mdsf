@@ -96,4 +96,52 @@ mod test_sql {
         .expect("it to not fail")
         .is_none());
     }
+
+    #[test]
+    fn test_sql_formatter() {
+        let expected_output = "SELECT
+  *
+FROM
+  tbl
+WHERE
+  foo = 'bar';
+";
+
+        let l = Sql {
+            enabled: true,
+            formatter: SqlFormatter::SQLFormatter,
+        };
+
+        let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");
+        let snippet_path = snippet.path();
+
+        let output = l
+            .format(snippet_path)
+            .expect("it to not fail")
+            .expect("it to be a snippet");
+
+        assert_eq!(output, expected_output);
+    }
+
+    #[test]
+    fn test_sqlfluff() {
+        let expected_output = "SELECT * FROM tbl
+WHERE foo = 'bar';
+";
+
+        let l = Sql {
+            enabled: true,
+            formatter: SqlFormatter::Sqlfluff,
+        };
+
+        let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");
+        let snippet_path = snippet.path();
+
+        let output = l
+            .format(snippet_path)
+            .expect("it to not fail")
+            .expect("it to be a snippet");
+
+        assert_eq!(output, expected_output);
+    }
 }

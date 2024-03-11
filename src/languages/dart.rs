@@ -45,7 +45,7 @@ impl LanguageFormatter for Dart {
 }
 
 #[cfg(test)]
-mod test {
+mod test_dart {
     use crate::{formatters::setup_snippet, languages::LanguageFormatter};
 
     use super::{Dart, DartFormatter};

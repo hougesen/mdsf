@@ -45,7 +45,7 @@ impl LanguageFormatter for C {
 }
 
 #[cfg(test)]
-mod test {
+mod test_c {
     use crate::{formatters::setup_snippet, languages::LanguageFormatter};
 
     use super::{CFormatter, C};

@@ -47,7 +47,7 @@ impl LanguageFormatter for CSharp {
 }
 
 #[cfg(test)]
-mod test {
+mod test_csharp {
     use crate::{formatters::setup_snippet, languages::LanguageFormatter};
 
     use super::{CSharp, CSharpFormatter};

@@ -162,7 +162,7 @@ fn default_schema_location() -> String {
 
 #[cfg(test)]
 
-mod test {
+mod test_config {
     use super::MdsfConfig;
 
     #[test]
