@@ -41,3 +41,70 @@ impl LanguageFormatter for Toml {
         }
     }
 }
+
+#[cfg(test)]
+mod test_toml {
+    use crate::{
+        formatters::setup_snippet,
+        languages::{Language, LanguageFormatter},
+    };
+
+    use super::{Toml, TomlFormatter};
+
+    const INPUT: &str = "
+    fn     add   (a : i32    , b :   i32 )             i32 {
+        return a + b ;
+
+    }
+    ";
+
+    #[test]
+    fn it_should_be_enabled_by_default() {
+        let snippet =
+            setup_snippet(INPUT, Language::Toml.to_file_ext()).expect("it to save the file");
+        let snippet_path = snippet.path();
+
+        Toml::default()
+            .format(snippet_path)
+            .expect("it to not fail")
+            .expect("it to be a snippet");
+    }
+
+    #[test]
+    fn it_should_not_format_when_enabled_is_false() {
+        let l = Toml {
+            enabled: false,
+            formatter: TomlFormatter::Taplo,
+        };
+
+        let snippet =
+            setup_snippet(INPUT, Language::Toml.to_file_ext()).expect("it to save the file");
+        let snippet_path = snippet.path();
+
+        assert!(l.format(snippet_path).expect("it to not fail").is_none());
+    }
+
+    #[test]
+    fn test_taplo() {
+        let l = Toml {
+            enabled: true,
+            formatter: TomlFormatter::Taplo,
+        };
+
+        let snippet =
+            setup_snippet(INPUT, Language::Toml.to_file_ext()).expect("it to save the file");
+        let snippet_path = snippet.path();
+
+        let output = l
+            .format(snippet_path)
+            .expect("it to not fail")
+            .expect("it to be a snippet");
+
+        let expected_output = "fn add(a: i32, b: i32) i32 {
+    return a + b;
+}
+";
+
+        assert_eq!(output, expected_output);
+    }
+}

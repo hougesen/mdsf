@@ -41,3 +41,42 @@ impl LanguageFormatter for Java {
         }
     }
 }
+
+#[cfg(test)]
+mod test {
+    use crate::{
+        formatters::setup_snippet,
+        languages::{Language, LanguageFormatter},
+    };
+
+    use super::{Java, JavaFormatter};
+
+    const INPUT: &str = "";
+
+    #[test]
+    fn it_should_be_enabled_by_default() {
+        let snippet =
+            setup_snippet(INPUT, Language::Java.to_file_ext()).expect("it to save the file");
+        let snippet_path = snippet.path();
+
+        Java::default()
+            .format(snippet_path)
+            .expect("it to not fail")
+            .expect("it to be a snippet");
+    }
+
+    #[test]
+    fn it_should_not_format_when_enabled_is_false() {
+        let snippet =
+            setup_snippet(INPUT, Language::Java.to_file_ext()).expect("it to save the file");
+        let snippet_path = snippet.path();
+
+        assert!(Java {
+            enabled: false,
+            formatter: JavaFormatter::default(),
+        }
+        .format(snippet_path)
+        .expect("it to not fail")
+        .is_none());
+    }
+}

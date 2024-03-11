@@ -71,6 +71,18 @@ import {
 ";
 
     #[test]
+    fn it_should_be_enabled_by_default() {
+        let snippet =
+            setup_snippet(INPUT, Language::Vue.to_file_ext()).expect("it to save the file");
+        let snippet_path = snippet.path();
+
+        Vue::default()
+            .format(snippet_path)
+            .expect("it to not fail")
+            .expect("it to be a snippet");
+    }
+
+    #[test]
     fn it_should_not_format_when_enabled_is_false() {
         let l = Vue {
             enabled: false,
