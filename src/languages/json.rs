@@ -99,4 +99,73 @@ mod test {
         .expect("it to not fail")
         .is_none());
     }
+
+    #[test]
+    fn test_prettier() {
+        let l = Json {
+            enabled: true,
+            formatter: JsonFormatter::Prettier,
+        };
+
+        let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");
+        let snippet_path = snippet.path();
+
+        let output = l
+            .format(snippet_path)
+            .expect("it to not fail")
+            .expect("it to be a snippet");
+
+        let expected_output = "{
+  \"key\": \"value\",
+  \"key2\": [\"value2\", \"value3\", 1, null],
+}
+";
+
+        assert_eq!(output, expected_output);
+    }
+
+    #[test]
+    fn test_biome() {
+        let l = Json {
+            enabled: true,
+            formatter: JsonFormatter::Biome,
+        };
+
+        let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");
+        let snippet_path = snippet.path();
+
+        let output = l
+            .format(snippet_path)
+            .expect("it to not fail")
+            .expect("it to be a snippet");
+
+        let expected_output = "{
+\t\"key\": \"value\",
+\t\"key2\": [\"value2\", \"value3\", 1, null]
+}
+";
+
+        assert_eq!(output, expected_output);
+    }
+
+    #[test]
+    fn test_clang_format() {
+        let l = Json {
+            enabled: true,
+            formatter: JsonFormatter::ClangFormat,
+        };
+
+        let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");
+        let snippet_path = snippet.path();
+
+        let output = l
+            .format(snippet_path)
+            .expect("it to not fail")
+            .expect("it to be a snippet");
+
+        let expected_output =
+            "\n{ \"key\" : \"value\", \"key2\" : [ \"value2\", \"value3\", 1, null ] }\n";
+
+        assert_eq!(output, expected_output);
+    }
 }
