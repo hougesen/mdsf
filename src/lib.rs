@@ -99,6 +99,9 @@ pub fn format_file(config: &MdsfConfig, path: &std::path::Path) -> Result<(), Md
             state.take(),
             pulldown_cmark_to_cmark::Options {
                 code_block_token_count: 3,
+                // Default for prettier
+                list_token: '-',
+                emphasis_token: '_',
                 ..Default::default()
             },
         )
