@@ -20,10 +20,10 @@ mod test_gofmt {
 
     #[test]
     fn it_should_format_go() {
-        let input = "package main 
+        let input = "package main
 
    func add(a int , b int  ) int {
-                return a + b 
+                return a + b
        }
 
     ";
