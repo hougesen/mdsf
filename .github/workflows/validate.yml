@@ -76,6 +76,8 @@ jobs:
       - uses: dart-lang/setup-dart@v1
       # crystal_format
       - uses: crystal-lang/install-crystal@v1
+      # roc_format
+      - uses: hasnep/setup-roc
 
       - run: rustup toolchain install stable --profile minimal
       - run: rustup component add rustfmt clippy

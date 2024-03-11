@@ -64,6 +64,7 @@ mdsf init
 | Objective C | `clang-format`                              |
 | Protobuf    | `clang-format`                              |
 | Python      | `ruff`, `black`, `blue`, `yapf`, `autopep8` |
+| Roc         | `roc_format`                                |
 | Ruby        | `rubocop`                                   |
 | Rust        | `rustfmt`                                   |
 | SQL         | `sqlfluff`, `sql-formatter`                 |

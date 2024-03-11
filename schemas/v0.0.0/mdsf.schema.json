@@ -212,6 +212,17 @@
         }
       ]
     },
+    "roc": {
+      "default": {
+        "enabled": true,
+        "formatter": "roc_format"
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/Roc"
+        }
+      ]
+    },
     "ruby": {
       "default": {
         "enabled": true,
@@ -711,6 +722,27 @@
     "PythonFormatter": {
       "type": "string",
       "enum": ["ruff", "black", "yapf", "blue", "autopep8"]
+    },
+    "Roc": {
+      "type": "object",
+      "properties": {
+        "enabled": {
+          "default": true,
+          "type": "boolean"
+        },
+        "formatter": {
+          "default": "roc_format",
+          "allOf": [
+            {
+              "$ref": "#/definitions/RocFormatter"
+            }
+          ]
+        }
+      }
+    },
+    "RocFormatter": {
+      "type": "string",
+      "enum": ["roc_format"]
     },
     "Ruby": {
       "type": "object",
