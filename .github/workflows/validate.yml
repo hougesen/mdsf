@@ -74,6 +74,8 @@ jobs:
           ruby-version: "3.3"
       # dart_format
       - uses: dart-lang/setup-dart@v1
+      # crystal_format
+      - uses: crystal-lang/install-crystal@v1
 
       - run: rustup toolchain install stable --profile minimal
       - run: rustup component add rustfmt clippy

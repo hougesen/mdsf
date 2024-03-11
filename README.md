@@ -50,6 +50,7 @@ mdsf init
 | C           | `clang-format`                              |
 | CSS         | `prettier`                                  |
 | Cpp         | `clang-format`                              |
+| Crystal     | `crystal_format`                            |
 | Dart        | `dart_format`                               |
 | Elixir      | `mix_format`                                |
 | Gleam       | `gleam_format`                              |

@@ -12,6 +12,7 @@ pub mod biome;
 pub mod black;
 pub mod blue;
 pub mod clang_format;
+pub mod crystal_format;
 pub mod dart_format;
 pub mod gleam_format;
 pub mod gofmt;
@@ -91,17 +92,24 @@ pub fn format_snippet(config: &MdsfConfig, language: &Language, code: &str) -> S
         let snippet_path = snippet.path();
 
         if let Ok(Some(formatted_code)) = match language {
+            Language::C => config.c.format(snippet_path),
+            Language::CSharp => config.csharp.format(snippet_path),
+            Language::Cpp => config.cpp.format(snippet_path),
+            Language::Crystal => config.crystal.format(snippet_path),
             Language::Css => config.css.format(snippet_path),
             Language::Dart => config.dart.format(snippet_path),
             Language::Elixir => config.elixir.format(snippet_path),
             Language::Gleam => config.gleam.format(snippet_path),
             Language::Go => config.go.format(snippet_path),
             Language::Html => config.html.format(snippet_path),
+            Language::Java => config.java.format(snippet_path),
             Language::JavaScript => config.javascript.format(snippet_path),
             Language::Json => config.json.format(snippet_path),
             Language::Lua => config.lua.format(snippet_path),
             Language::Markdown => config.markdown.format(snippet_path),
             Language::Nim => config.nim.format(snippet_path),
+            Language::ObjectiveC => config.objective_c.format(snippet_path),
+            Language::Protobuf => config.protobuf.format(snippet_path),
             Language::Python => config.python.format(snippet_path),
             Language::Ruby => config.ruby.format(snippet_path),
             Language::Rust => config.rust.format(snippet_path),
@@ -112,12 +120,6 @@ pub fn format_snippet(config: &MdsfConfig, language: &Language, code: &str) -> S
             Language::Vue => config.vue.format(snippet_path),
             Language::Yaml => config.yaml.format(snippet_path),
             Language::Zig => config.zig.format(snippet_path),
-            Language::Protobuf => config.protobuf.format(snippet_path),
-            Language::CSharp => config.csharp.format(snippet_path),
-            Language::ObjectiveC => config.objective_c.format(snippet_path),
-            Language::Java => config.java.format(snippet_path),
-            Language::Cpp => config.cpp.format(snippet_path),
-            Language::C => config.c.format(snippet_path),
         } {
             let mut f = formatted_code.trim().to_owned();
 
