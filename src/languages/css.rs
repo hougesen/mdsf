@@ -44,19 +44,17 @@ impl LanguageFormatter for Css {
 
 #[cfg(test)]
 mod test {
-    use crate::{
-        formatters::setup_snippet,
-        languages::{Language, LanguageFormatter},
-    };
+    use crate::{formatters::setup_snippet, languages::LanguageFormatter};
 
     use super::{Css, CssFormatter};
 
-    const INPUT: &str = "";
+    const INPUT: &str = " h1   {color: blue;} p    {color: red;} ";
+
+    const EXTENSION: &str = crate::languages::Language::Css.to_file_ext();
 
     #[test]
     fn it_should_be_enabled_by_default() {
-        let snippet =
-            setup_snippet(INPUT, Language::Css.to_file_ext()).expect("it to save the file");
+        let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");
         let snippet_path = snippet.path();
 
         Css::default()
@@ -67,8 +65,7 @@ mod test {
 
     #[test]
     fn it_should_not_format_when_enabled_is_false() {
-        let snippet =
-            setup_snippet(INPUT, Language::Css.to_file_ext()).expect("it to save the file");
+        let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");
         let snippet_path = snippet.path();
 
         assert!(Css {
@@ -78,5 +75,31 @@ mod test {
         .format(snippet_path)
         .expect("it to not fail")
         .is_none());
+    }
+
+    #[test]
+    fn test_prettier() {
+        let l = Css {
+            enabled: true,
+            formatter: CssFormatter::Prettier,
+        };
+
+        let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");
+        let snippet_path = snippet.path();
+
+        let output = l
+            .format(snippet_path)
+            .expect("it to not fail")
+            .expect("it to be a snippet");
+
+        let expected_output = "h1 {
+color: blue;
+}
+p {
+color: red;
+}
+";
+
+        assert_eq!(output, expected_output);
     }
 }
