@@ -574,7 +574,7 @@
     },
     "JavaScriptFormatter": {
       "type": "string",
-      "enum": ["prettier", "biome", "clang-format"]
+      "enum": ["prettier", "biome", "deno_fmt", "clang-format"]
     },
     "Json": {
       "type": "object",
@@ -595,7 +595,7 @@
     },
     "JsonFormatter": {
       "type": "string",
-      "enum": ["prettier", "biome", "clang-format"]
+      "enum": ["prettier", "biome", "deno_fmt", "clang-format"]
     },
     "Lua": {
       "type": "object",
@@ -868,7 +868,7 @@
     },
     "TypeScriptFormatter": {
       "type": "string",
-      "enum": ["prettier", "biome"]
+      "enum": ["prettier", "biome", "deno_fmt"]
     },
     "Vue": {
       "type": "object",
