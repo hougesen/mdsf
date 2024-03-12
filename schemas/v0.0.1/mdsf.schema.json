@@ -25,6 +25,17 @@
         }
       ]
     },
+    "crystal": {
+      "default": {
+        "enabled": true,
+        "formatter": "crystal_format"
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/Crystal"
+        }
+      ]
+    },
     "csharp": {
       "default": {
         "enabled": true,
@@ -201,6 +212,17 @@
         }
       ]
     },
+    "roc": {
+      "default": {
+        "enabled": true,
+        "formatter": "roc_format"
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/Roc"
+        }
+      ]
+    },
     "ruby": {
       "default": {
         "enabled": true,
@@ -364,6 +386,27 @@
     "CppFormatter": {
       "type": "string",
       "enum": ["clang-format"]
+    },
+    "Crystal": {
+      "type": "object",
+      "properties": {
+        "enabled": {
+          "default": true,
+          "type": "boolean"
+        },
+        "formatter": {
+          "default": "crystal_format",
+          "allOf": [
+            {
+              "$ref": "#/definitions/CrystalFormatter"
+            }
+          ]
+        }
+      }
+    },
+    "CrystalFormatter": {
+      "type": "string",
+      "enum": ["crystal_format"]
     },
     "Css": {
       "type": "object",
@@ -679,6 +722,27 @@
     "PythonFormatter": {
       "type": "string",
       "enum": ["ruff", "black", "yapf", "blue", "autopep8"]
+    },
+    "Roc": {
+      "type": "object",
+      "properties": {
+        "enabled": {
+          "default": true,
+          "type": "boolean"
+        },
+        "formatter": {
+          "default": "roc_format",
+          "allOf": [
+            {
+              "$ref": "#/definitions/RocFormatter"
+            }
+          ]
+        }
+      }
+    },
+    "RocFormatter": {
+      "type": "string",
+      "enum": ["roc_format"]
     },
     "Ruby": {
       "type": "object",
