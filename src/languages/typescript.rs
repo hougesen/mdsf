@@ -2,7 +2,10 @@ use schemars::JsonSchema;
 
 use crate::{
     config::default_enabled,
-    formatters::{biome::format_using_biome, prettier::format_using_prettier},
+    formatters::{
+        biome::format_using_biome, deno_format::format_using_deno_fmt,
+        prettier::format_using_prettier,
+    },
 };
 
 use super::LanguageFormatter;
@@ -15,6 +18,8 @@ pub enum TypeScriptFormatter {
     Prettier,
     #[serde(rename = "biome")]
     Biome,
+    #[serde(rename = "deno_fmt")]
+    DenoFmt,
 }
 
 #[derive(Debug, serde::Serialize, serde::Deserialize, JsonSchema)]
@@ -44,11 +49,11 @@ impl LanguageFormatter for TypeScript {
         }
 
         match self.formatter {
-            TypeScriptFormatter::Biome => format_using_biome(snippet_path).map(|res| res.1),
-            TypeScriptFormatter::Prettier => {
-                format_using_prettier(snippet_path, true).map(|res| res.1)
-            }
+            TypeScriptFormatter::Biome => format_using_biome(snippet_path),
+            TypeScriptFormatter::Prettier => format_using_prettier(snippet_path, true),
+            TypeScriptFormatter::DenoFmt => format_using_deno_fmt(snippet_path),
         }
+        .map(|res| res.1)
     }
 }
 
@@ -144,6 +149,34 @@ number>
         let expected_output =
             "async function asyncAddition(a: number, b: number): Promise<number> {
 \treturn a + b;
+}
+";
+
+        assert_eq!(output, expected_output);
+    }
+
+    #[test]
+    fn test_deno_fmt() {
+        let l = TypeScript {
+            enabled: true,
+            formatter: TypeScriptFormatter::DenoFmt,
+        };
+
+        let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");
+        let snippet_path = snippet.path();
+
+        let output = l
+            .format(snippet_path)
+            .expect("it to not fail")
+            .expect("it to be a snippet");
+
+        let expected_output = "async function asyncAddition(
+  a: number,
+  b: number,
+): Promise<
+  number
+> {
+  return a + b;
 }
 ";
 

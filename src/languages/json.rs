@@ -4,7 +4,7 @@ use crate::{
     config::default_enabled,
     formatters::{
         biome::format_using_biome, clang_format::format_using_clang_format,
-        prettier::format_using_prettier,
+        deno_format::format_using_deno_fmt, prettier::format_using_prettier,
     },
 };
 
@@ -18,6 +18,8 @@ pub enum JsonFormatter {
     Prettier,
     #[serde(rename = "biome")]
     Biome,
+    #[serde(rename = "deno_fmt")]
+    DenoFmt,
     #[serde(rename = "clang-format")]
     ClangFormat,
 }
@@ -49,10 +51,12 @@ impl LanguageFormatter for Json {
         }
 
         match self.formatter {
-            JsonFormatter::Biome => format_using_biome(snippet_path).map(|res| res.1),
-            JsonFormatter::Prettier => format_using_prettier(snippet_path, true).map(|res| res.1),
-            JsonFormatter::ClangFormat => format_using_clang_format(snippet_path).map(|res| res.1),
+            JsonFormatter::Biome => format_using_biome(snippet_path),
+            JsonFormatter::Prettier => format_using_prettier(snippet_path, true),
+            JsonFormatter::ClangFormat => format_using_clang_format(snippet_path),
+            JsonFormatter::DenoFmt => format_using_deno_fmt(snippet_path),
         }
+        .map(|res| res.1)
     }
 }
 
@@ -159,6 +163,35 @@ mod test_json {
 
         let expected_output =
             "\n{ \"key\" : \"value\", \"key2\" : [ \"value2\", \"value3\", 1, null ] }\n";
+
+        assert_eq!(output, expected_output);
+    }
+
+    #[test]
+    fn test_deno_fmt() {
+        let l = Json {
+            enabled: true,
+            formatter: JsonFormatter::DenoFmt,
+        };
+
+        let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");
+        let snippet_path = snippet.path();
+
+        let output = l
+            .format(snippet_path)
+            .expect("it to not fail")
+            .expect("it to be a snippet");
+
+        let expected_output = "{
+  \"key\": \"value\",
+  \"key2\": [
+    \"value2\",
+    \"value3\",
+    1,
+    null
+  ]
+}
+";
 
         assert_eq!(output, expected_output);
     }

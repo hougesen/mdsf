@@ -14,6 +14,7 @@ pub mod blue;
 pub mod clang_format;
 pub mod crystal_format;
 pub mod dart_format;
+pub mod deno_format;
 pub mod gleam_format;
 pub mod gofmt;
 pub mod gofumpt;

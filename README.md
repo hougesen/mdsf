@@ -45,32 +45,32 @@ mdsf init
 >
 > Only formatters that are already installed will be used.
 
-| Language    | Formatters                                  |
-| ----------- | ------------------------------------------- |
-| C           | `clang-format`                              |
-| CSS         | `prettier`                                  |
-| Cpp         | `clang-format`                              |
-| Crystal     | `crystal_format`                            |
-| Dart        | `dart_format`                               |
-| Elixir      | `mix_format`                                |
-| Gleam       | `gleam_format`                              |
-| Go          | `gofmt`, `gofumpt`                          |
-| HTML        | `prettier`                                  |
-| JSON        | `prettier`, `biome`, `clang-format`         |
-| Java        | `clang-format`                              |
-| JavaScript  | `prettier`, `biome`, `clang-format`         |
-| Lua         | `stylua`                                    |
-| Nim         | `nimpretty`                                 |
-| Objective C | `clang-format`                              |
-| Protobuf    | `clang-format`                              |
-| Python      | `ruff`, `black`, `blue`, `yapf`, `autopep8` |
-| Roc         | `roc_format`                                |
-| Ruby        | `rubocop`                                   |
-| Rust        | `rustfmt`                                   |
-| SQL         | `sqlfluff`, `sql-formatter`                 |
-| Shell       | `shfmt`                                     |
-| TOML        | `taplo`                                     |
-| TypeScript  | `prettier`, `biome`                         |
-| Vue         | `prettier`                                  |
-| YAML        | `prettier`                                  |
-| Zig         | `zigfmt`                                    |
+| Language    | Formatters                                      |
+| ----------- | ----------------------------------------------- |
+| C           | `clang-format`                                  |
+| CSS         | `prettier`                                      |
+| Cpp         | `clang-format`                                  |
+| Crystal     | `crystal_format`                                |
+| Dart        | `dart_format`                                   |
+| Elixir      | `mix_format`                                    |
+| Gleam       | `gleam_format`                                  |
+| Go          | `gofmt`, `gofumpt`                              |
+| HTML        | `prettier`                                      |
+| JSON        | `prettier`, `biome`, `clang-format`, `deno_fmt` |
+| Java        | `clang-format`                                  |
+| JavaScript  | `prettier`, `biome`, `clang-format`, `deno_fmt` |
+| Lua         | `stylua`                                        |
+| Nim         | `nimpretty`                                     |
+| Objective C | `clang-format`                                  |
+| Protobuf    | `clang-format`                                  |
+| Python      | `ruff`, `black`, `blue`, `yapf`, `autopep8`     |
+| Roc         | `roc_format`                                    |
+| Ruby        | `rubocop`                                       |
+| Rust        | `rustfmt`                                       |
+| SQL         | `sqlfluff`, `sql-formatter`                     |
+| Shell       | `shfmt`                                         |
+| TOML        | `taplo`                                         |
+| TypeScript  | `prettier`, `biome`, `deno_fmt`                 |
+| Vue         | `prettier`                                      |
+| YAML        | `prettier`                                      |
+| Zig         | `zigfmt`                                        |

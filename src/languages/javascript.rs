@@ -4,7 +4,7 @@ use crate::{
     config::default_enabled,
     formatters::{
         biome::format_using_biome, clang_format::format_using_clang_format,
-        prettier::format_using_prettier,
+        deno_format::format_using_deno_fmt, prettier::format_using_prettier,
     },
 };
 
@@ -18,6 +18,8 @@ pub enum JavaScriptFormatter {
     Prettier,
     #[serde(rename = "biome")]
     Biome,
+    #[serde(rename = "deno_fmt")]
+    DenoFmt,
     #[serde(rename = "clang-format")]
     ClangFormat,
 }
@@ -49,14 +51,12 @@ impl LanguageFormatter for JavaScript {
         }
 
         match self.formatter {
-            JavaScriptFormatter::Biome => format_using_biome(snippet_path).map(|res| res.1),
-            JavaScriptFormatter::Prettier => {
-                format_using_prettier(snippet_path, true).map(|res| res.1)
-            }
-            JavaScriptFormatter::ClangFormat => {
-                format_using_clang_format(snippet_path).map(|res| res.1)
-            }
+            JavaScriptFormatter::Biome => format_using_biome(snippet_path),
+            JavaScriptFormatter::Prettier => format_using_prettier(snippet_path, true),
+            JavaScriptFormatter::ClangFormat => format_using_clang_format(snippet_path),
+            JavaScriptFormatter::DenoFmt => format_using_deno_fmt(snippet_path),
         }
+        .map(|res| res.1)
     }
 }
 
@@ -167,6 +167,32 @@ mod test_javascript {
         let l = JavaScript {
             enabled: true,
             formatter: JavaScriptFormatter::ClangFormat,
+        };
+
+        let snippet = setup_snippet(input, EXTENSION).expect("it to save the file");
+        let snippet_path = snippet.path();
+
+        let output = l
+            .format(snippet_path)
+            .expect("it to not fail")
+            .expect("it to be a snippet");
+
+        assert_eq!(expected_output, output);
+    }
+
+    #[test]
+    fn test_deno_fmt() {
+        let input = "    async function asyncAddition(  a,b) {
+            a * b;
+        return a+b
+    }            ";
+
+        let expected_output =
+            "async function asyncAddition(a, b) {\n  a * b;\n  return a + b;\n}\n";
+
+        let l = JavaScript {
+            enabled: true,
+            formatter: JavaScriptFormatter::DenoFmt,
         };
 
         let snippet = setup_snippet(input, EXTENSION).expect("it to save the file");

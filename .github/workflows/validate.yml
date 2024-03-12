@@ -78,6 +78,10 @@ jobs:
       - uses: crystal-lang/install-crystal@v1
       # roc_format
       - uses: hasnep/setup-roc@v0.1.1
+      # deno_fmt
+      - uses: denoland/setup-deno@v1
+        with:
+          deno-version: v1.x
 
       - run: rustup toolchain install stable --profile minimal
       - run: rustup component add rustfmt clippy
