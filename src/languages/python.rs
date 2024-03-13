@@ -4,7 +4,7 @@ use crate::{
     config::default_enabled,
     formatters::{
         autopep8::format_using_autopep8, black::format_using_black, blue::format_using_blue,
-        ruff::format_using_ruff, yapf::format_using_yapf,
+        isort::format_using_isort, ruff::format_using_ruff, yapf::format_using_yapf,
     },
 };
 
@@ -24,6 +24,8 @@ pub enum PythonFormatter {
     Blue,
     #[serde(rename = "autopep8")]
     Autopep8,
+    #[serde(rename = "isort")]
+    Isort,
 }
 
 #[derive(Debug, serde::Serialize, serde::Deserialize, JsonSchema)]
@@ -53,12 +55,14 @@ impl LanguageFormatter for Python {
         }
 
         match self.formatter {
-            PythonFormatter::Autopep8 => format_using_autopep8(snippet_path).map(|res| res.1),
-            PythonFormatter::Black => format_using_black(snippet_path).map(|res| res.1),
-            PythonFormatter::Blue => format_using_blue(snippet_path).map(|res| res.1),
-            PythonFormatter::Ruff => format_using_ruff(snippet_path).map(|res| res.1),
-            PythonFormatter::Yapf => format_using_yapf(snippet_path).map(|res| res.1),
+            PythonFormatter::Autopep8 => format_using_autopep8(snippet_path),
+            PythonFormatter::Black => format_using_black(snippet_path),
+            PythonFormatter::Blue => format_using_blue(snippet_path),
+            PythonFormatter::Ruff => format_using_ruff(snippet_path),
+            PythonFormatter::Yapf => format_using_yapf(snippet_path),
+            PythonFormatter::Isort => format_using_isort(snippet_path),
         }
+        .map(|(_modified, output)| output)
     }
 }
 
@@ -181,6 +185,44 @@ mod test_python {
         };
 
         let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");
+        let snippet_path = snippet.path();
+
+        let output = l
+            .format(snippet_path)
+            .expect("it to not fail")
+            .expect("it to be a snippet");
+
+        assert_eq!(output, expected_output);
+    }
+
+    #[test]
+    fn test_isort() {
+        let input = "from q import d
+import b
+import a 
+import c 
+
+
+def add(a: int, b: int) -> int:
+  return a + b
+";
+
+        let expected_output = "import a
+import b
+import c
+from q import d
+
+
+def add(a: int, b: int) -> int:
+  return a + b
+";
+
+        let l = Python {
+            enabled: true,
+            formatter: PythonFormatter::Isort,
+        };
+
+        let snippet = setup_snippet(input, EXTENSION).expect("it to save the file");
         let snippet_path = snippet.path();
 
         let output = l
