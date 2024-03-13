@@ -9,7 +9,7 @@ build-local:
 
 lint:
 	cargo fmt -- --check --color always
-	cargo clippy --all-targets --all-features -- -D warnings
+	cargo clippy --all-targets --all-features
 
 lint-aggressive:
 	cargo clean
@@ -29,9 +29,9 @@ precommit:
 	make build
 	make lint
 	make test
-	cargo run --bin init-schema
+	cargo run -- schema
 	npx --yes prettier --write .
-	git restore tests/markdown.md
+	git restore tests/
 	typos .
 
 

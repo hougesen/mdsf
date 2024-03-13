@@ -721,7 +721,7 @@
     },
     "PythonFormatter": {
       "type": "string",
-      "enum": ["ruff", "black", "yapf", "blue", "autopep8"]
+      "enum": ["ruff", "black", "yapf", "blue", "autopep8", "isort"]
     },
     "Roc": {
       "type": "object",

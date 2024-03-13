@@ -18,6 +18,7 @@ pub mod deno_format;
 pub mod gleam_format;
 pub mod gofmt;
 pub mod gofumpt;
+pub mod isort;
 pub mod mix_format;
 pub mod nimpretty;
 pub mod prettier;
