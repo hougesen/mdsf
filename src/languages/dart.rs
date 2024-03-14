@@ -39,8 +39,9 @@ impl LanguageFormatter for Dart {
         }
 
         match self.formatter {
-            DartFormatter::DartFormat => format_using_dart_format(snippet_path).map(|res| res.1),
+            DartFormatter::DartFormat => format_using_dart_format(snippet_path),
         }
+        .map(|res| res.1)
     }
 }
 

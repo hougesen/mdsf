@@ -39,8 +39,9 @@ impl LanguageFormatter for Nim {
         }
 
         match self.formatter {
-            NimFormatter::Nimpretty => format_using_nimpretty(snippet_path).map(|res| res.1),
+            NimFormatter::Nimpretty => format_using_nimpretty(snippet_path),
         }
+        .map(|res| res.1)
     }
 }
 

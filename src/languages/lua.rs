@@ -39,8 +39,9 @@ impl LanguageFormatter for Lua {
         }
 
         match self.formatter {
-            LuaFormatter::Stylua => format_using_stylua(snippet_path).map(|res| res.1),
+            LuaFormatter::Stylua => format_using_stylua(snippet_path),
         }
+        .map(|res| res.1)
     }
 }
 

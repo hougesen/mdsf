@@ -39,10 +39,9 @@ impl LanguageFormatter for Crystal {
         }
 
         match self.formatter {
-            CrystalFormatter::CrystalFormat => {
-                format_using_crystal_format(snippet_path).map(|res| res.1)
-            }
+            CrystalFormatter::CrystalFormat => format_using_crystal_format(snippet_path),
         }
+        .map(|res| res.1)
     }
 }
 

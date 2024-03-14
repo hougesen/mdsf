@@ -39,10 +39,9 @@ impl LanguageFormatter for Protobuf {
         }
 
         match self.formatter {
-            ProtobufFormatter::ClangFormat => {
-                format_using_clang_format(snippet_path).map(|res| res.1)
-            }
+            ProtobufFormatter::ClangFormat => format_using_clang_format(snippet_path),
         }
+        .map(|res| res.1)
     }
 }
 

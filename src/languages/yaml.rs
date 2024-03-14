@@ -39,8 +39,9 @@ impl LanguageFormatter for Yaml {
         }
 
         match self.formatter {
-            YamlFormatter::Prettier => format_using_prettier(snippet_path, true).map(|res| res.1),
+            YamlFormatter::Prettier => format_using_prettier(snippet_path, true),
         }
+        .map(|res| res.1)
     }
 }
 

@@ -39,10 +39,9 @@ impl LanguageFormatter for CSharp {
         }
 
         match self.formatter {
-            CSharpFormatter::ClangFormat => {
-                format_using_clang_format(snippet_path).map(|res| res.1)
-            }
+            CSharpFormatter::ClangFormat => format_using_clang_format(snippet_path),
         }
+        .map(|res| res.1)
     }
 }
 

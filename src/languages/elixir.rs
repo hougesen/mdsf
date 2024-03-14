@@ -39,8 +39,9 @@ impl LanguageFormatter for Elixir {
         }
 
         match self.formatter {
-            ElixirFormatter::MixFormat => format_using_mix_format(snippet_path).map(|res| res.1),
+            ElixirFormatter::MixFormat => format_using_mix_format(snippet_path),
         }
+        .map(|res| res.1)
     }
 }
 

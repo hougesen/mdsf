@@ -39,8 +39,9 @@ impl LanguageFormatter for Java {
         }
 
         match self.formatter {
-            JavaFormatter::ClangFormat => format_using_clang_format(snippet_path).map(|res| res.1),
+            JavaFormatter::ClangFormat => format_using_clang_format(snippet_path),
         }
+        .map(|res| res.1)
     }
 }
 

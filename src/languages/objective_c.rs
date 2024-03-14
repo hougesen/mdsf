@@ -39,10 +39,9 @@ impl LanguageFormatter for ObjectiveC {
         }
 
         match self.formatter {
-            ObjectiveCFormatter::ClangFormat => {
-                format_using_clang_format(snippet_path).map(|res| res.1)
-            }
+            ObjectiveCFormatter::ClangFormat => format_using_clang_format(snippet_path),
         }
+        .map(|res| res.1)
     }
 }
 

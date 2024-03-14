@@ -39,8 +39,9 @@ impl LanguageFormatter for Css {
         }
 
         match self.formatter {
-            CssFormatter::Prettier => format_using_prettier(snippet_path, true).map(|res| res.1),
+            CssFormatter::Prettier => format_using_prettier(snippet_path, true),
         }
+        .map(|res| res.1)
     }
 }
 

@@ -39,8 +39,9 @@ impl LanguageFormatter for Toml {
         }
 
         match self.formatter {
-            TomlFormatter::Taplo => format_using_taplo(snippet_path).map(|res| res.1),
+            TomlFormatter::Taplo => format_using_taplo(snippet_path),
         }
+        .map(|res| res.1)
     }
 }
 

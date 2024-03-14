@@ -39,8 +39,9 @@ impl LanguageFormatter for C {
         }
 
         match self.formatter {
-            CFormatter::ClangFormat => format_using_clang_format(snippet_path).map(|res| res.1),
+            CFormatter::ClangFormat => format_using_clang_format(snippet_path),
         }
+        .map(|res| res.1)
     }
 }
 

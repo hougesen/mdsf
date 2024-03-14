@@ -39,8 +39,9 @@ impl LanguageFormatter for Roc {
         }
 
         match self.formatter {
-            RocFormatter::RocFormat => format_using_roc_format(snippet_path).map(|res| res.1),
+            RocFormatter::RocFormat => format_using_roc_format(snippet_path),
         }
+        .map(|res| res.1)
     }
 }
 

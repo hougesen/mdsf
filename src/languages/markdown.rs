@@ -39,10 +39,9 @@ impl LanguageFormatter for Markdown {
         }
 
         match self.formatter {
-            MarkdownFormatter::Prettier => {
-                format_using_prettier(snippet_path, false).map(|res| res.1)
-            }
+            MarkdownFormatter::Prettier => format_using_prettier(snippet_path, false),
         }
+        .map(|res| res.1)
     }
 }
 

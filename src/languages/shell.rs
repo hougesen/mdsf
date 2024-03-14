@@ -39,8 +39,9 @@ impl LanguageFormatter for Shell {
         }
 
         match self.formatter {
-            ShellFormatter::Shfmt => format_using_shfmt(snippet_path).map(|res| res.1),
+            ShellFormatter::Shfmt => format_using_shfmt(snippet_path),
         }
+        .map(|res| res.1)
     }
 }
 

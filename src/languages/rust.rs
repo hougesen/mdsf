@@ -39,8 +39,9 @@ impl LanguageFormatter for Rust {
         }
 
         match self.formatter {
-            RustFormatter::RustFmt => format_using_rustfmt(snippet_path).map(|res| res.1),
+            RustFormatter::RustFmt => format_using_rustfmt(snippet_path),
         }
+        .map(|res| res.1)
     }
 }
 

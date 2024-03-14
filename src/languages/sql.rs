@@ -44,9 +44,10 @@ impl LanguageFormatter for Sql {
         }
 
         match self.formatter {
-            SqlFormatter::SQLFormatter => format_using_sql_formatter(snippet_path).map(|res| res.1),
-            SqlFormatter::Sqlfluff => format_using_sqlfluff(snippet_path).map(|res| res.1),
+            SqlFormatter::SQLFormatter => format_using_sql_formatter(snippet_path),
+            SqlFormatter::Sqlfluff => format_using_sqlfluff(snippet_path),
         }
+        .map(|res| res.1)
     }
 }
 

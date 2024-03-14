@@ -39,8 +39,9 @@ impl LanguageFormatter for Ruby {
         }
 
         match self.formatter {
-            RubyFormatter::RuboCop => format_using_rubocop(snippet_path).map(|res| res.1),
+            RubyFormatter::RuboCop => format_using_rubocop(snippet_path),
         }
+        .map(|res| res.1)
     }
 }
 

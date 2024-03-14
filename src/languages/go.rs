@@ -44,9 +44,10 @@ impl LanguageFormatter for Go {
         }
 
         match self.formatter {
-            GoFormatter::GoFmt => format_using_gofmt(snippet_path).map(|res| res.1),
-            GoFormatter::GoFumpt => format_using_gofumpt(snippet_path).map(|res| res.1),
+            GoFormatter::GoFmt => format_using_gofmt(snippet_path),
+            GoFormatter::GoFumpt => format_using_gofumpt(snippet_path),
         }
+        .map(|res| res.1)
     }
 }
 

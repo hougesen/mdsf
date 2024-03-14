@@ -39,8 +39,9 @@ impl LanguageFormatter for Gleam {
         }
 
         match self.formatter {
-            GleamFormatter::GleamFormat => format_using_gleam_format(snippet_path).map(|res| res.1),
+            GleamFormatter::GleamFormat => format_using_gleam_format(snippet_path),
         }
+        .map(|res| res.1)
     }
 }
 
