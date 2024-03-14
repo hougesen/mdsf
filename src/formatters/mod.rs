@@ -31,6 +31,7 @@ pub mod sql_formatter;
 pub mod sqlfluff;
 pub mod stylua;
 pub mod taplo;
+pub mod usort;
 pub mod yapf;
 pub mod zigfmt;
 
