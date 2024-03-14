@@ -141,5 +141,6 @@ jobs:
         run: pip install clang-format && clang-format --version
 
       - run: pip install isort
+      - run: pip install usort
 
       - run: cargo test
