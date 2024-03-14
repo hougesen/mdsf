@@ -4,7 +4,8 @@ use crate::{
     config::default_enabled,
     formatters::{
         autopep8::format_using_autopep8, black::format_using_black, blue::format_using_blue,
-        isort::format_using_isort, ruff::format_using_ruff, yapf::format_using_yapf,
+        isort::format_using_isort, ruff::format_using_ruff, usort::format_using_usort,
+        yapf::format_using_yapf,
     },
 };
 
@@ -26,6 +27,8 @@ pub enum PythonFormatter {
     Autopep8,
     #[serde(rename = "isort")]
     Isort,
+    #[serde(rename = "usort")]
+    Usort,
 }
 
 #[derive(Debug, serde::Serialize, serde::Deserialize, JsonSchema)]
@@ -61,6 +64,7 @@ impl LanguageFormatter for Python {
             PythonFormatter::Ruff => format_using_ruff(snippet_path),
             PythonFormatter::Yapf => format_using_yapf(snippet_path),
             PythonFormatter::Isort => format_using_isort(snippet_path),
+            PythonFormatter::Usort => format_using_usort(snippet_path),
         }
         .map(|(_modified, output)| output)
     }
@@ -220,6 +224,44 @@ def add(a: int, b: int) -> int:
         let l = Python {
             enabled: true,
             formatter: PythonFormatter::Isort,
+        };
+
+        let snippet = setup_snippet(input, EXTENSION).expect("it to save the file");
+        let snippet_path = snippet.path();
+
+        let output = l
+            .format(snippet_path)
+            .expect("it to not fail")
+            .expect("it to be a snippet");
+
+        assert_eq!(output, expected_output);
+    }
+
+    #[test]
+    fn test_usort() {
+        let input = "from q import d
+import b
+import a 
+import c 
+
+
+def add(a: int, b: int) -> int:
+  return a + b
+";
+
+        let expected_output = "import a
+import b
+import c
+from q import d
+
+
+def add(a: int, b: int) -> int:
+  return a + b
+";
+
+        let l = Python {
+            enabled: true,
+            formatter: PythonFormatter::Usort,
         };
 
         let snippet = setup_snippet(input, EXTENSION).expect("it to save the file");
