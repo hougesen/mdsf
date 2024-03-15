@@ -76,8 +76,13 @@ pub mod vue;
 pub mod yaml;
 pub mod zig;
 
-pub trait LanguageFormatter {
+pub trait LanguageFormatter<T> {
     fn format(&self, snippet_path: &std::path::Path) -> std::io::Result<Option<String>>;
+
+    fn format_single(
+        formatter: &T,
+        snippet_path: &std::path::Path,
+    ) -> std::io::Result<(bool, Option<String>)>;
 }
 
 impl Language {

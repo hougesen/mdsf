@@ -51,30 +51,30 @@ impl Default for MdsfFormatter<TypeScriptFormatter> {
     }
 }
 
-fn format_single(
-    formatter: &TypeScriptFormatter,
-    snippet_path: &std::path::Path,
-) -> std::io::Result<(bool, Option<String>)> {
-    println!("formatter: {formatter:#?}");
-
-    match formatter {
-        TypeScriptFormatter::Biome => format_using_biome(snippet_path),
-        TypeScriptFormatter::Prettier => format_using_prettier(snippet_path, true),
-        TypeScriptFormatter::DenoFmt => format_using_deno_fmt(snippet_path),
-    }
-}
-
-impl LanguageFormatter for TypeScript {
+impl LanguageFormatter<TypeScriptFormatter> for TypeScript {
     #[inline]
     fn format(&self, snippet_path: &std::path::Path) -> std::io::Result<Option<String>> {
         if !self.enabled {
             return Ok(None);
         }
 
-        let fb = Box::from(format_single);
         println!("formatters: {:#?}", self.formatter);
 
-        format_multiple(&self.formatter, snippet_path, &fb).map(|res| res.1)
+        format_multiple(&self.formatter, snippet_path, &TypeScript::format_single).map(|res| res.1)
+    }
+
+    #[inline]
+    fn format_single(
+        formatter: &TypeScriptFormatter,
+        snippet_path: &std::path::Path,
+    ) -> std::io::Result<(bool, Option<String>)> {
+        println!("formatter: {formatter:#?}");
+
+        match formatter {
+            TypeScriptFormatter::Biome => format_using_biome(snippet_path),
+            TypeScriptFormatter::Prettier => format_using_prettier(snippet_path, true),
+            TypeScriptFormatter::DenoFmt => format_using_deno_fmt(snippet_path),
+        }
     }
 }
 

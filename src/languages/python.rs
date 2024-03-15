@@ -4,8 +4,8 @@ use crate::{
     config::default_enabled,
     formatters::{
         autopep8::format_using_autopep8, black::format_using_black, blue::format_using_blue,
-        isort::format_using_isort, ruff::format_using_ruff, usort::format_using_usort,
-        yapf::format_using_yapf,
+        format_multiple, isort::format_using_isort, ruff::format_using_ruff,
+        usort::format_using_usort, yapf::format_using_yapf, MdsfFormatter,
     },
 };
 
@@ -37,7 +37,7 @@ pub struct Python {
     #[serde(default = "default_enabled")]
     pub enabled: bool,
     #[serde(default)]
-    pub formatter: PythonFormatter,
+    pub formatter: MdsfFormatter<PythonFormatter>,
 }
 
 impl Default for Python {
@@ -45,19 +45,50 @@ impl Default for Python {
     fn default() -> Self {
         Self {
             enabled: true,
-            formatter: PythonFormatter::default(),
+            formatter: MdsfFormatter::<PythonFormatter>::default(),
         }
     }
 }
 
-impl LanguageFormatter for Python {
+impl Default for MdsfFormatter<PythonFormatter> {
+    fn default() -> Self {
+        MdsfFormatter::Multiple(vec![
+            MdsfFormatter::Single(PythonFormatter::Ruff),
+            MdsfFormatter::Multiple(vec![
+                MdsfFormatter::Multiple(vec![MdsfFormatter::Multiple(vec![
+                    MdsfFormatter::Single(PythonFormatter::Usort),
+                    MdsfFormatter::Single(PythonFormatter::Isort),
+                ])]),
+                MdsfFormatter::Multiple(vec![
+                    MdsfFormatter::Single(PythonFormatter::Blue),
+                    MdsfFormatter::Single(PythonFormatter::Black),
+                    MdsfFormatter::Single(PythonFormatter::Yapf),
+                    MdsfFormatter::Single(PythonFormatter::Autopep8),
+                ]),
+            ]),
+        ])
+    }
+}
+
+impl LanguageFormatter<PythonFormatter> for Python {
     #[inline]
     fn format(&self, snippet_path: &std::path::Path) -> std::io::Result<Option<String>> {
         if !self.enabled {
             return Ok(None);
         }
 
-        match self.formatter {
+        format_multiple(&self.formatter, snippet_path, &Python::format_single)
+            .map(|(_modified, output)| output)
+    }
+
+    #[inline]
+    fn format_single(
+        formatter: &PythonFormatter,
+        snippet_path: &std::path::Path,
+    ) -> std::io::Result<(bool, Option<String>)> {
+        println!("formatter: {formatter:#?}");
+
+        match formatter {
             PythonFormatter::Autopep8 => format_using_autopep8(snippet_path),
             PythonFormatter::Black => format_using_black(snippet_path),
             PythonFormatter::Blue => format_using_blue(snippet_path),
@@ -66,13 +97,15 @@ impl LanguageFormatter for Python {
             PythonFormatter::Isort => format_using_isort(snippet_path),
             PythonFormatter::Usort => format_using_usort(snippet_path),
         }
-        .map(|(_modified, output)| output)
     }
 }
 
 #[cfg(test)]
 mod test_python {
-    use crate::{formatters::setup_snippet, languages::LanguageFormatter};
+    use crate::{
+        formatters::{setup_snippet, MdsfFormatter},
+        languages::LanguageFormatter,
+    };
 
     use super::{Python, PythonFormatter};
 
@@ -92,7 +125,7 @@ mod test_python {
 
         assert!(Python {
             enabled: false,
-            formatter: PythonFormatter::default(),
+            formatter: MdsfFormatter::Single(PythonFormatter::default()),
         }
         .format(snippet_path)
         .expect("it to not fail")
@@ -105,7 +138,7 @@ mod test_python {
 
         let l = Python {
             enabled: true,
-            formatter: PythonFormatter::Black,
+            formatter: MdsfFormatter::Single(PythonFormatter::Black),
         };
 
         let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");
@@ -125,7 +158,7 @@ mod test_python {
 
         let l = Python {
             enabled: true,
-            formatter: PythonFormatter::Blue,
+            formatter: MdsfFormatter::Single(PythonFormatter::Blue),
         };
 
         let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");
@@ -145,7 +178,7 @@ mod test_python {
 
         let l = Python {
             enabled: true,
-            formatter: PythonFormatter::Ruff,
+            formatter: MdsfFormatter::Single(PythonFormatter::Ruff),
         };
 
         let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");
@@ -165,7 +198,7 @@ mod test_python {
 
         let l = Python {
             enabled: true,
-            formatter: PythonFormatter::Autopep8,
+            formatter: MdsfFormatter::Single(PythonFormatter::Autopep8),
         };
 
         let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");
@@ -185,7 +218,7 @@ mod test_python {
 
         let l = Python {
             enabled: true,
-            formatter: PythonFormatter::Yapf,
+            formatter: MdsfFormatter::Single(PythonFormatter::Yapf),
         };
 
         let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");
@@ -223,7 +256,7 @@ def add(a: int, b: int) -> int:
 
         let l = Python {
             enabled: true,
-            formatter: PythonFormatter::Isort,
+            formatter: MdsfFormatter::Single(PythonFormatter::Isort),
         };
 
         let snippet = setup_snippet(input, EXTENSION).expect("it to save the file");
@@ -261,7 +294,7 @@ def add(a: int, b: int) -> int:
 
         let l = Python {
             enabled: true,
-            formatter: PythonFormatter::Usort,
+            formatter: MdsfFormatter::Single(PythonFormatter::Usort),
         };
 
         let snippet = setup_snippet(input, EXTENSION).expect("it to save the file");
