@@ -94,7 +94,7 @@
     "go": {
       "default": {
         "enabled": true,
-        "formatter": ["gofumpt", "gofmt"]
+        "formatter": [["gofumpt", "gofmt"]]
       },
       "allOf": [
         {
@@ -127,7 +127,7 @@
     "javascript": {
       "default": {
         "enabled": true,
-        "formatter": ["biome", "prettier", "deno_fmt", "clang-format"]
+        "formatter": [["biome", "prettier", "deno_fmt", "clang-format"]]
       },
       "allOf": [
         {
@@ -138,7 +138,7 @@
     "json": {
       "default": {
         "enabled": true,
-        "formatter": ["biome", "prettier", "deno_fmt", "clang-format"]
+        "formatter": [["biome", "prettier", "deno_fmt", "clang-format"]]
       },
       "allOf": [
         {
@@ -205,10 +205,12 @@
       "default": {
         "enabled": true,
         "formatter": [
-          "ruff",
           [
-            ["usort", "isort"],
-            ["blue", "black", "yapf", "autopep8"]
+            "ruff",
+            [
+              ["usort", "isort"],
+              ["blue", "black", "yapf", "autopep8"]
+            ]
           ]
         ]
       },
@@ -265,7 +267,7 @@
     "sql": {
       "default": {
         "enabled": true,
-        "formatter": ["sql-formatter", "sqlfluff"]
+        "formatter": [["sql-formatter", "sqlfluff"]]
       },
       "allOf": [
         {
@@ -287,7 +289,7 @@
     "typescript": {
       "default": {
         "enabled": true,
-        "formatter": ["biome", "prettier", "deno_fmt"]
+        "formatter": [["biome", "prettier", "deno_fmt"]]
       },
       "allOf": [
         {

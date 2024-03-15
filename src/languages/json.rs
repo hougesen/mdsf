@@ -34,12 +34,12 @@ impl Default for Lang<Json> {
 impl Default for MdsfFormatter<Json> {
     #[inline]
     fn default() -> Self {
-        Self::Multiple(vec![
+        Self::Multiple(vec![Self::Multiple(vec![
             Self::Single(Json::Biome),
             Self::Single(Json::Prettier),
             Self::Single(Json::DenoFmt),
             Self::Single(Json::ClangFormat),
-        ])
+        ])])
     }
 }
 

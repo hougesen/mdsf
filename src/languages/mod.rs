@@ -180,7 +180,7 @@ impl<T: LanguageFormatter> Lang<T> {
             return Ok(None);
         }
 
-        Self::format_multiple(&self.formatter, snippet_path)
+        Self::format_multiple(&self.formatter, snippet_path, false)
             .map(|(_should_continue, output)| output)
     }
 
@@ -188,22 +188,26 @@ impl<T: LanguageFormatter> Lang<T> {
     pub fn format_multiple(
         formatter: &MdsfFormatter<T>,
         snippet_path: &std::path::Path,
+        nested: bool,
     ) -> std::io::Result<(bool, Option<String>)> {
         match formatter {
             MdsfFormatter::Single(f) => f.format_single(snippet_path),
 
             MdsfFormatter::Multiple(formatters) => {
-                for f in formatters {
-                    let res = Self::format_multiple(f, snippet_path);
+                let mut r = Ok((true, None));
 
-                    if let Ok((should_continue, code)) = res {
-                        if !should_continue {
-                            return Ok((should_continue, code));
-                        }
+                for f in formatters {
+                    r = Self::format_multiple(f, snippet_path, true);
+
+                    if r.as_ref()
+                        .is_ok_and(|(should_continue, _code)| !should_continue)
+                        && nested
+                    {
+                        break;
                     }
                 }
 
-                Ok((true, None))
+                r
             }
         }
     }

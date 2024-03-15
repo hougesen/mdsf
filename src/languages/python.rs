@@ -49,7 +49,7 @@ impl LanguageFormatter for Python {
 impl Default for MdsfFormatter<Python> {
     #[inline]
     fn default() -> Self {
-        Self::Multiple(vec![
+        Self::Multiple(vec![Self::Multiple(vec![
             Self::Single(Python::Ruff),
             Self::Multiple(vec![
                 Self::Multiple(vec![
@@ -63,7 +63,7 @@ impl Default for MdsfFormatter<Python> {
                     Self::Single(Python::Autopep8),
                 ]),
             ]),
-        ])
+        ])])
     }
 }
 

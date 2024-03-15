@@ -29,10 +29,10 @@ impl Default for Lang<Sql> {
 impl Default for MdsfFormatter<Sql> {
     #[inline]
     fn default() -> Self {
-        Self::Multiple(vec![
+        Self::Multiple(vec![Self::Multiple(vec![
             Self::Single(Sql::SQLFormatter),
             Self::Single(Sql::Sqlfluff),
-        ])
+        ])])
     }
 }
 

@@ -27,7 +27,10 @@ impl Default for Lang<Go> {
 impl Default for MdsfFormatter<Go> {
     #[inline]
     fn default() -> Self {
-        Self::Multiple(vec![Self::Single(Go::GoFumpt), Self::Single(Go::GoFmt)])
+        Self::Multiple(vec![Self::Multiple(vec![
+            Self::Single(Go::GoFumpt),
+            Self::Single(Go::GoFmt),
+        ])])
     }
 }
 
