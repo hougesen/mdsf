@@ -212,3 +212,113 @@ impl<T: LanguageFormatter> Lang<T> {
         }
     }
 }
+
+#[cfg(test)]
+mod test_lang {
+    use std::io::Write;
+
+    use crate::formatters::{setup_snippet, MdsfFormatter};
+
+    use super::{Lang, LanguageFormatter};
+
+    enum TestLanguage {
+        A,
+        B,
+        C,
+        // Will fail
+        D,
+        E,
+    }
+
+    impl LanguageFormatter for TestLanguage {
+        fn format_snippet(
+            &self,
+            snippet_path: &std::path::Path,
+        ) -> std::io::Result<(bool, Option<String>)> {
+            let mut file = std::fs::OpenOptions::new()
+                .append(true)
+                .open(snippet_path)?;
+
+            let (should_fail, _) = match self {
+                Self::A => (false, file.write(b"a")),
+                Self::B => (false, file.write(b"b")),
+                Self::C => (false, file.write(b"c")),
+                Self::D => (true, Ok(0)),
+                Self::E => (true, Ok(0)),
+            };
+
+            Ok((should_fail, std::fs::read_to_string(snippet_path).ok()))
+        }
+    }
+
+    #[test]
+    fn test_single() {
+        let l = Lang::<TestLanguage> {
+            enabled: true,
+            formatter: MdsfFormatter::Single(TestLanguage::A),
+        };
+
+        let file = setup_snippet("", ".txt").expect("it to create a snippet");
+
+        let snippet_path = file.path();
+
+        let code = l
+            .format(snippet_path)
+            .expect("it to be ok")
+            .expect("it to be some");
+
+        assert_eq!("a", code);
+    }
+
+    #[test]
+    fn test_multiple_sequentially() {
+        let l = Lang::<TestLanguage> {
+            enabled: true,
+            formatter: MdsfFormatter::Multiple(vec![
+                MdsfFormatter::Single(TestLanguage::A),
+                MdsfFormatter::Single(TestLanguage::B),
+                MdsfFormatter::Single(TestLanguage::C),
+            ]),
+        };
+
+        let file = setup_snippet("", ".txt").expect("it to create a snippet");
+
+        let snippet_path = file.path();
+
+        let code = l
+            .format(snippet_path)
+            .expect("it to be ok")
+            .expect("it to be some");
+
+        assert_eq!("abc", code);
+    }
+
+    #[test]
+    fn test_multiple_fallback() {
+        let l = Lang::<TestLanguage> {
+            enabled: true,
+            formatter: MdsfFormatter::Multiple(vec![
+                MdsfFormatter::Multiple(vec![
+                    MdsfFormatter::Single(TestLanguage::D),
+                    MdsfFormatter::Single(TestLanguage::A),
+                ]),
+                MdsfFormatter::Multiple(vec![
+                    MdsfFormatter::Single(TestLanguage::E),
+                    MdsfFormatter::Single(TestLanguage::B),
+                ]),
+                MdsfFormatter::Single(TestLanguage::C),
+            ]),
+        };
+
+        let file = setup_snippet("", ".txt").expect("it to create a snippet");
+
+        let snippet_path = file.path();
+
+        let code = l
+            .format(snippet_path)
+            .expect("it to be ok")
+            .expect("it to be some");
+
+        assert_eq!("abc", code);
+    }
+}

@@ -205,13 +205,8 @@
       "default": {
         "enabled": true,
         "formatter": [
-          [
-            "ruff",
-            [
-              ["usort", "isort"],
-              ["blue", "black", "yapf", "autopep8"]
-            ]
-          ]
+          ["usort", "isort"],
+          ["ruff", "blue", "black", "yapf", "autopep8"]
         ]
       },
       "allOf": [

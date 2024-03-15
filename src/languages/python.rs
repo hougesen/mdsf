@@ -49,21 +49,19 @@ impl LanguageFormatter for Python {
 impl Default for MdsfFormatter<Python> {
     #[inline]
     fn default() -> Self {
-        Self::Multiple(vec![Self::Multiple(vec![
-            Self::Single(Python::Ruff),
+        Self::Multiple(vec![
             Self::Multiple(vec![
-                Self::Multiple(vec![
-                    Self::Single(Python::Usort),
-                    Self::Single(Python::Isort),
-                ]),
-                Self::Multiple(vec![
-                    Self::Single(Python::Blue),
-                    Self::Single(Python::Black),
-                    Self::Single(Python::Yapf),
-                    Self::Single(Python::Autopep8),
-                ]),
+                Self::Single(Python::Usort),
+                Self::Single(Python::Isort),
             ]),
-        ])])
+            Self::Multiple(vec![
+                Self::Single(Python::Ruff),
+                Self::Single(Python::Blue),
+                Self::Single(Python::Black),
+                Self::Single(Python::Yapf),
+                Self::Single(Python::Autopep8),
+            ]),
+        ])
     }
 }
 
