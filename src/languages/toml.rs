@@ -1,6 +1,9 @@
 use schemars::JsonSchema;
 
-use crate::{config::default_enabled, formatters::taplo::format_using_taplo};
+use crate::{
+    config::default_enabled,
+    formatters::{format_multiple, taplo::format_using_taplo, MdsfFormatter},
+};
 
 use super::LanguageFormatter;
 
@@ -18,7 +21,7 @@ pub struct Toml {
     #[serde(default = "default_enabled")]
     pub enabled: bool,
     #[serde(default)]
-    pub formatter: TomlFormatter,
+    pub formatter: MdsfFormatter<TomlFormatter>,
 }
 
 impl Default for Toml {
@@ -26,28 +29,46 @@ impl Default for Toml {
     fn default() -> Self {
         Self {
             enabled: true,
-            formatter: TomlFormatter::default(),
+            formatter: MdsfFormatter::<TomlFormatter>::default(),
         }
     }
 }
 
-impl LanguageFormatter for Toml {
+impl Default for MdsfFormatter<TomlFormatter> {
+    #[inline]
+    fn default() -> Self {
+        Self::Single(TomlFormatter::Taplo)
+    }
+}
+
+impl LanguageFormatter<TomlFormatter> for Toml {
     #[inline]
     fn format(&self, snippet_path: &std::path::Path) -> std::io::Result<Option<String>> {
         if !self.enabled {
             return Ok(None);
         }
 
-        match self.formatter {
+        format_multiple(&self.formatter, snippet_path, &Self::format_single)
+            .map(|(_should_continue, output)| output)
+    }
+
+    #[inline]
+    fn format_single(
+        formatter: &TomlFormatter,
+        snippet_path: &std::path::Path,
+    ) -> std::io::Result<(bool, Option<String>)> {
+        match formatter {
             TomlFormatter::Taplo => format_using_taplo(snippet_path),
         }
-        .map(|res| res.1)
     }
 }
 
 #[cfg(test)]
 mod test_toml {
-    use crate::{formatters::setup_snippet, languages::LanguageFormatter};
+    use crate::{
+        formatters::{setup_snippet, MdsfFormatter},
+        languages::LanguageFormatter,
+    };
 
     use super::{Toml, TomlFormatter};
 
@@ -66,7 +87,7 @@ mod test_toml {
     fn it_should_not_format_when_enabled_is_false() {
         let l = Toml {
             enabled: false,
-            formatter: TomlFormatter::Taplo,
+            formatter: MdsfFormatter::Single(TomlFormatter::Taplo),
         };
 
         let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");
@@ -79,7 +100,7 @@ mod test_toml {
     fn test_taplo() {
         let l = Toml {
             enabled: true,
-            formatter: TomlFormatter::Taplo,
+            formatter: MdsfFormatter::Single(TomlFormatter::Taplo),
         };
 
         let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");

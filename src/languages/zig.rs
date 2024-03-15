@@ -1,6 +1,9 @@
 use schemars::JsonSchema;
 
-use crate::{config::default_enabled, formatters::zigfmt::format_using_zigfmt};
+use crate::{
+    config::default_enabled,
+    formatters::{format_multiple, zigfmt::format_using_zigfmt, MdsfFormatter},
+};
 
 use super::LanguageFormatter;
 
@@ -18,7 +21,7 @@ pub struct Zig {
     #[serde(default = "default_enabled")]
     pub enabled: bool,
     #[serde(default)]
-    pub formatter: ZigFormatter,
+    pub formatter: MdsfFormatter<ZigFormatter>,
 }
 
 impl Default for Zig {
@@ -26,28 +29,46 @@ impl Default for Zig {
     fn default() -> Self {
         Self {
             enabled: true,
-            formatter: ZigFormatter::default(),
+            formatter: MdsfFormatter::<ZigFormatter>::default(),
         }
     }
 }
 
-impl LanguageFormatter for Zig {
+impl Default for MdsfFormatter<ZigFormatter> {
+    #[inline]
+    fn default() -> Self {
+        Self::Single(ZigFormatter::ZigFmt)
+    }
+}
+
+impl LanguageFormatter<ZigFormatter> for Zig {
     #[inline]
     fn format(&self, snippet_path: &std::path::Path) -> std::io::Result<Option<String>> {
         if !self.enabled {
             return Ok(None);
         }
 
-        match self.formatter {
+        format_multiple(&self.formatter, snippet_path, &Self::format_single)
+            .map(|(_should_continue, output)| output)
+    }
+
+    #[inline]
+    fn format_single(
+        formatter: &ZigFormatter,
+        snippet_path: &std::path::Path,
+    ) -> std::io::Result<(bool, Option<String>)> {
+        match formatter {
             ZigFormatter::ZigFmt => format_using_zigfmt(snippet_path),
         }
-        .map(|res| res.1)
     }
 }
 
 #[cfg(test)]
 mod test_zig {
-    use crate::{formatters::setup_snippet, languages::LanguageFormatter};
+    use crate::{
+        formatters::{setup_snippet, MdsfFormatter},
+        languages::LanguageFormatter,
+    };
 
     use super::{Zig, ZigFormatter};
 
@@ -69,7 +90,7 @@ mod test_zig {
     fn it_should_not_format_when_enabled_is_false() {
         let l = Zig {
             enabled: false,
-            formatter: ZigFormatter::ZigFmt,
+            formatter: MdsfFormatter::Single(ZigFormatter::ZigFmt),
         };
 
         let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");
@@ -82,7 +103,7 @@ mod test_zig {
     fn test_zigfmt() {
         let l = Zig {
             enabled: true,
-            formatter: ZigFormatter::ZigFmt,
+            formatter: MdsfFormatter::Single(ZigFormatter::ZigFmt),
         };
 
         let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");

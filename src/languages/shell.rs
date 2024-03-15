@@ -1,6 +1,9 @@
 use schemars::JsonSchema;
 
-use crate::{config::default_enabled, formatters::shfmt::format_using_shfmt};
+use crate::{
+    config::default_enabled,
+    formatters::{format_multiple, shfmt::format_using_shfmt, MdsfFormatter},
+};
 
 use super::LanguageFormatter;
 
@@ -18,7 +21,7 @@ pub struct Shell {
     #[serde(default = "default_enabled")]
     pub enabled: bool,
     #[serde(default)]
-    pub formatter: ShellFormatter,
+    pub formatter: MdsfFormatter<ShellFormatter>,
 }
 
 impl Default for Shell {
@@ -26,29 +29,44 @@ impl Default for Shell {
     fn default() -> Self {
         Self {
             enabled: true,
-            formatter: ShellFormatter::default(),
+            formatter: MdsfFormatter::<ShellFormatter>::default(),
         }
     }
 }
 
-impl LanguageFormatter for Shell {
+impl Default for MdsfFormatter<ShellFormatter> {
+    #[inline]
+    fn default() -> Self {
+        Self::Single(ShellFormatter::Shfmt)
+    }
+}
+
+impl LanguageFormatter<ShellFormatter> for Shell {
     #[inline]
     fn format(&self, snippet_path: &std::path::Path) -> std::io::Result<Option<String>> {
         if !self.enabled {
             return Ok(None);
         }
 
-        match self.formatter {
+        format_multiple(&self.formatter, snippet_path, &Self::format_single)
+            .map(|(_should_continue, output)| output)
+    }
+
+    #[inline]
+    fn format_single(
+        formatter: &ShellFormatter,
+        snippet_path: &std::path::Path,
+    ) -> std::io::Result<(bool, Option<String>)> {
+        match formatter {
             ShellFormatter::Shfmt => format_using_shfmt(snippet_path),
         }
-        .map(|res| res.1)
     }
 }
 
 #[cfg(test)]
 mod test_shell {
     use crate::{
-        formatters::setup_snippet,
+        formatters::{setup_snippet, MdsfFormatter},
         languages::{shell::ShellFormatter, Language, LanguageFormatter},
     };
 
@@ -85,7 +103,7 @@ mod test_shell {
 
         assert!(Shell {
             enabled: false,
-            formatter: ShellFormatter::Shfmt,
+            formatter: MdsfFormatter::Single(ShellFormatter::Shfmt),
         }
         .format(snippet_path)
         .expect("it to not fail")
@@ -103,7 +121,7 @@ add() {
 
         let l = Shell {
             enabled: true,
-            formatter: ShellFormatter::Shfmt,
+            formatter: MdsfFormatter::Single(ShellFormatter::Shfmt),
         };
 
         let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");

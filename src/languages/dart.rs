@@ -1,6 +1,9 @@
 use schemars::JsonSchema;
 
-use crate::{config::default_enabled, formatters::dart_format::format_using_dart_format};
+use crate::{
+    config::default_enabled,
+    formatters::{dart_format::format_using_dart_format, format_multiple, MdsfFormatter},
+};
 
 use super::LanguageFormatter;
 
@@ -18,7 +21,7 @@ pub struct Dart {
     #[serde(default = "default_enabled")]
     pub enabled: bool,
     #[serde(default)]
-    pub formatter: DartFormatter,
+    pub formatter: MdsfFormatter<DartFormatter>,
 }
 
 impl Default for Dart {
@@ -26,28 +29,46 @@ impl Default for Dart {
     fn default() -> Self {
         Self {
             enabled: true,
-            formatter: DartFormatter::default(),
+            formatter: MdsfFormatter::<DartFormatter>::default(),
         }
     }
 }
 
-impl LanguageFormatter for Dart {
+impl Default for MdsfFormatter<DartFormatter> {
+    #[inline]
+    fn default() -> Self {
+        Self::Single(DartFormatter::DartFormat)
+    }
+}
+
+impl LanguageFormatter<DartFormatter> for Dart {
     #[inline]
     fn format(&self, snippet_path: &std::path::Path) -> std::io::Result<Option<String>> {
         if !self.enabled {
             return Ok(None);
         }
 
-        match self.formatter {
+        format_multiple(&self.formatter, snippet_path, &Self::format_single)
+            .map(|(_should_continue, output)| output)
+    }
+
+    #[inline]
+    fn format_single(
+        formatter: &DartFormatter,
+        snippet_path: &std::path::Path,
+    ) -> std::io::Result<(bool, Option<String>)> {
+        match formatter {
             DartFormatter::DartFormat => format_using_dart_format(snippet_path),
         }
-        .map(|res| res.1)
     }
 }
 
 #[cfg(test)]
 mod test_dart {
-    use crate::{formatters::setup_snippet, languages::LanguageFormatter};
+    use crate::{
+        formatters::{setup_snippet, MdsfFormatter},
+        languages::LanguageFormatter,
+    };
 
     use super::{Dart, DartFormatter};
 
@@ -67,7 +88,7 @@ mod test_dart {
 
         assert!(Dart {
             enabled: false,
-            formatter: DartFormatter::default(),
+            formatter: MdsfFormatter::Single(DartFormatter::default(),)
         }
         .format(snippet_path)
         .expect("it to not fail")
@@ -78,7 +99,7 @@ mod test_dart {
     fn test_dart_format() {
         let l = Dart {
             enabled: true,
-            formatter: DartFormatter::DartFormat,
+            formatter: MdsfFormatter::Single(DartFormatter::DartFormat),
         };
 
         let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");

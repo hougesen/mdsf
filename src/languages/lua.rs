@@ -1,6 +1,9 @@
 use schemars::JsonSchema;
 
-use crate::{config::default_enabled, formatters::stylua::format_using_stylua};
+use crate::{
+    config::default_enabled,
+    formatters::{format_multiple, stylua::format_using_stylua, MdsfFormatter},
+};
 
 use super::LanguageFormatter;
 
@@ -18,7 +21,7 @@ pub struct Lua {
     #[serde(default = "default_enabled")]
     pub enabled: bool,
     #[serde(default)]
-    pub formatter: LuaFormatter,
+    pub formatter: MdsfFormatter<LuaFormatter>,
 }
 
 impl Default for Lua {
@@ -26,28 +29,46 @@ impl Default for Lua {
     fn default() -> Self {
         Self {
             enabled: true,
-            formatter: LuaFormatter::default(),
+            formatter: MdsfFormatter::<LuaFormatter>::default(),
         }
     }
 }
 
-impl LanguageFormatter for Lua {
+impl Default for MdsfFormatter<LuaFormatter> {
+    #[inline]
+    fn default() -> Self {
+        Self::Single(LuaFormatter::Stylua)
+    }
+}
+
+impl LanguageFormatter<LuaFormatter> for Lua {
     #[inline]
     fn format(&self, snippet_path: &std::path::Path) -> std::io::Result<Option<String>> {
         if !self.enabled {
             return Ok(None);
         }
 
-        match self.formatter {
+        format_multiple(&self.formatter, snippet_path, &Self::format_single)
+            .map(|(_should_continue, output)| output)
+    }
+
+    #[inline]
+    fn format_single(
+        formatter: &LuaFormatter,
+        snippet_path: &std::path::Path,
+    ) -> std::io::Result<(bool, Option<String>)> {
+        match formatter {
             LuaFormatter::Stylua => format_using_stylua(snippet_path),
         }
-        .map(|res| res.1)
     }
 }
 
 #[cfg(test)]
 mod test_lua {
-    use crate::{formatters::setup_snippet, languages::LanguageFormatter};
+    use crate::{
+        formatters::{setup_snippet, MdsfFormatter},
+        languages::LanguageFormatter,
+    };
 
     use super::{Lua, LuaFormatter};
 
@@ -77,7 +98,7 @@ end
 
         assert!(Lua {
             enabled: false,
-            formatter: LuaFormatter::default(),
+            formatter: MdsfFormatter::Single(LuaFormatter::default()),
         }
         .format(snippet_path)
         .expect("it to not fail")
@@ -90,7 +111,7 @@ end
 
         let l = Lua {
             enabled: true,
-            formatter: LuaFormatter::Stylua,
+            formatter: MdsfFormatter::Single(LuaFormatter::Stylua),
         };
 
         let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");

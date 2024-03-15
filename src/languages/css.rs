@@ -1,6 +1,9 @@
 use schemars::JsonSchema;
 
-use crate::{config::default_enabled, formatters::prettier::format_using_prettier};
+use crate::{
+    config::default_enabled,
+    formatters::{format_multiple, prettier::format_using_prettier, MdsfFormatter},
+};
 
 use super::LanguageFormatter;
 
@@ -18,7 +21,7 @@ pub struct Css {
     #[serde(default = "default_enabled")]
     pub enabled: bool,
     #[serde(default)]
-    pub formatter: CssFormatter,
+    pub formatter: MdsfFormatter<CssFormatter>,
 }
 
 impl Default for Css {
@@ -26,28 +29,46 @@ impl Default for Css {
     fn default() -> Self {
         Self {
             enabled: true,
-            formatter: CssFormatter::default(),
+            formatter: MdsfFormatter::<CssFormatter>::default(),
         }
     }
 }
 
-impl LanguageFormatter for Css {
+impl Default for MdsfFormatter<CssFormatter> {
+    #[inline]
+    fn default() -> Self {
+        Self::Single(CssFormatter::Prettier)
+    }
+}
+
+impl LanguageFormatter<CssFormatter> for Css {
     #[inline]
     fn format(&self, snippet_path: &std::path::Path) -> std::io::Result<Option<String>> {
         if !self.enabled {
             return Ok(None);
         }
 
-        match self.formatter {
+        format_multiple(&self.formatter, snippet_path, &Self::format_single)
+            .map(|(_should_continue, output)| output)
+    }
+
+    #[inline]
+    fn format_single(
+        formatter: &CssFormatter,
+        snippet_path: &std::path::Path,
+    ) -> std::io::Result<(bool, Option<String>)> {
+        match formatter {
             CssFormatter::Prettier => format_using_prettier(snippet_path, true),
         }
-        .map(|res| res.1)
     }
 }
 
 #[cfg(test)]
 mod test_css {
-    use crate::{formatters::setup_snippet, languages::LanguageFormatter};
+    use crate::{
+        formatters::{setup_snippet, MdsfFormatter},
+        languages::LanguageFormatter,
+    };
 
     use super::{Css, CssFormatter};
 
@@ -67,7 +88,7 @@ mod test_css {
 
         assert!(Css {
             enabled: false,
-            formatter: CssFormatter::default(),
+            formatter: MdsfFormatter::Single(CssFormatter::default()),
         }
         .format(snippet_path)
         .expect("it to not fail")
@@ -78,7 +99,7 @@ mod test_css {
     fn test_prettier() {
         let l = Css {
             enabled: true,
-            formatter: CssFormatter::Prettier,
+            formatter: MdsfFormatter::Single(CssFormatter::Prettier),
         };
 
         let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");

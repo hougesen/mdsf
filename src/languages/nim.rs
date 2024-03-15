@@ -1,6 +1,9 @@
 use schemars::JsonSchema;
 
-use crate::{config::default_enabled, formatters::nimpretty::format_using_nimpretty};
+use crate::{
+    config::default_enabled,
+    formatters::{format_multiple, nimpretty::format_using_nimpretty, MdsfFormatter},
+};
 
 use super::LanguageFormatter;
 
@@ -18,7 +21,7 @@ pub struct Nim {
     #[serde(default = "default_enabled")]
     pub enabled: bool,
     #[serde(default)]
-    pub formatter: NimFormatter,
+    pub formatter: MdsfFormatter<NimFormatter>,
 }
 
 impl Default for Nim {
@@ -26,28 +29,46 @@ impl Default for Nim {
     fn default() -> Self {
         Self {
             enabled: true,
-            formatter: NimFormatter::default(),
+            formatter: MdsfFormatter::<NimFormatter>::default(),
         }
     }
 }
 
-impl LanguageFormatter for Nim {
+impl Default for MdsfFormatter<NimFormatter> {
+    #[inline]
+    fn default() -> Self {
+        Self::Single(NimFormatter::Nimpretty)
+    }
+}
+
+impl LanguageFormatter<NimFormatter> for Nim {
     #[inline]
     fn format(&self, snippet_path: &std::path::Path) -> std::io::Result<Option<String>> {
         if !self.enabled {
             return Ok(None);
         }
 
-        match self.formatter {
+        format_multiple(&self.formatter, snippet_path, &Self::format_single)
+            .map(|(_should_continue, output)| output)
+    }
+
+    #[inline]
+    fn format_single(
+        formatter: &NimFormatter,
+        snippet_path: &std::path::Path,
+    ) -> std::io::Result<(bool, Option<String>)> {
+        match formatter {
             NimFormatter::Nimpretty => format_using_nimpretty(snippet_path),
         }
-        .map(|res| res.1)
     }
 }
 
 #[cfg(test)]
 mod test_nim {
-    use crate::{formatters::setup_snippet, languages::LanguageFormatter};
+    use crate::{
+        formatters::{setup_snippet, MdsfFormatter},
+        languages::LanguageFormatter,
+    };
 
     use super::{Nim, NimFormatter};
 
@@ -68,7 +89,7 @@ mod test_nim {
 
         assert!(Nim {
             enabled: false,
-            formatter: NimFormatter::default(),
+            formatter: MdsfFormatter::Single(NimFormatter::default()),
         }
         .format(snippet_path)
         .expect("it to not fail")
@@ -79,7 +100,7 @@ mod test_nim {
     fn test_clang_format() {
         let l = Nim {
             enabled: true,
-            formatter: NimFormatter::Nimpretty,
+            formatter: MdsfFormatter::Single(NimFormatter::Nimpretty),
         };
 
         let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");

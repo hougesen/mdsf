@@ -1,6 +1,9 @@
 use schemars::JsonSchema;
 
-use crate::{config::default_enabled, formatters::mix_format::format_using_mix_format};
+use crate::{
+    config::default_enabled,
+    formatters::{format_multiple, mix_format::format_using_mix_format, MdsfFormatter},
+};
 
 use super::LanguageFormatter;
 
@@ -18,7 +21,7 @@ pub struct Elixir {
     #[serde(default = "default_enabled")]
     pub enabled: bool,
     #[serde(default)]
-    pub formatter: ElixirFormatter,
+    pub formatter: MdsfFormatter<ElixirFormatter>,
 }
 
 impl Default for Elixir {
@@ -26,28 +29,46 @@ impl Default for Elixir {
     fn default() -> Self {
         Self {
             enabled: true,
-            formatter: ElixirFormatter::default(),
+            formatter: MdsfFormatter::<ElixirFormatter>::default(),
         }
     }
 }
 
-impl LanguageFormatter for Elixir {
+impl Default for MdsfFormatter<ElixirFormatter> {
+    #[inline]
+    fn default() -> Self {
+        Self::Single(ElixirFormatter::MixFormat)
+    }
+}
+
+impl LanguageFormatter<ElixirFormatter> for Elixir {
     #[inline]
     fn format(&self, snippet_path: &std::path::Path) -> std::io::Result<Option<String>> {
         if !self.enabled {
             return Ok(None);
         }
 
-        match self.formatter {
+        format_multiple(&self.formatter, snippet_path, &Self::format_single)
+            .map(|(_should_continue, output)| output)
+    }
+
+    #[inline]
+    fn format_single(
+        formatter: &ElixirFormatter,
+        snippet_path: &std::path::Path,
+    ) -> std::io::Result<(bool, Option<String>)> {
+        match formatter {
             ElixirFormatter::MixFormat => format_using_mix_format(snippet_path),
         }
-        .map(|res| res.1)
     }
 }
 
 #[cfg(test)]
 mod test_elixir {
-    use crate::{formatters::setup_snippet, languages::LanguageFormatter};
+    use crate::{
+        formatters::{setup_snippet, MdsfFormatter},
+        languages::LanguageFormatter,
+    };
 
     use super::{Elixir, ElixirFormatter};
 
@@ -70,7 +91,7 @@ mod test_elixir {
 
         assert!(Elixir {
             enabled: false,
-            formatter: ElixirFormatter::default(),
+            formatter: MdsfFormatter::Single(ElixirFormatter::default()),
         }
         .format(snippet_path)
         .expect("it to not fail")
@@ -81,7 +102,7 @@ mod test_elixir {
     fn test_mix_format() {
         let l = Elixir {
             enabled: true,
-            formatter: ElixirFormatter::MixFormat,
+            formatter: MdsfFormatter::Single(ElixirFormatter::MixFormat),
         };
 
         let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");

@@ -42,11 +42,12 @@ impl Default for TypeScript {
 }
 
 impl Default for MdsfFormatter<TypeScriptFormatter> {
+    #[inline]
     fn default() -> Self {
-        MdsfFormatter::Multiple(vec![
-            MdsfFormatter::Single(TypeScriptFormatter::Biome),
-            MdsfFormatter::Single(TypeScriptFormatter::Prettier),
-            MdsfFormatter::Single(TypeScriptFormatter::DenoFmt),
+        Self::Multiple(vec![
+            Self::Single(TypeScriptFormatter::Biome),
+            Self::Single(TypeScriptFormatter::Prettier),
+            Self::Single(TypeScriptFormatter::DenoFmt),
         ])
     }
 }
@@ -60,7 +61,8 @@ impl LanguageFormatter<TypeScriptFormatter> for TypeScript {
 
         println!("formatters: {:#?}", self.formatter);
 
-        format_multiple(&self.formatter, snippet_path, &TypeScript::format_single).map(|res| res.1)
+        format_multiple(&self.formatter, snippet_path, &Self::format_single)
+            .map(|(_should_continue, output)| output)
     }
 
     #[inline]

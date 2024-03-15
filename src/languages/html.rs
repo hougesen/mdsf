@@ -1,6 +1,9 @@
 use schemars::JsonSchema;
 
-use crate::{config::default_enabled, formatters::prettier::format_using_prettier};
+use crate::{
+    config::default_enabled,
+    formatters::{format_multiple, prettier::format_using_prettier, MdsfFormatter},
+};
 
 use super::LanguageFormatter;
 
@@ -18,7 +21,7 @@ pub struct Html {
     #[serde(default = "default_enabled")]
     pub enabled: bool,
     #[serde(default)]
-    pub formatter: HtmlFormatter,
+    pub formatter: MdsfFormatter<HtmlFormatter>,
 }
 
 impl Default for Html {
@@ -26,28 +29,46 @@ impl Default for Html {
     fn default() -> Self {
         Self {
             enabled: true,
-            formatter: HtmlFormatter::default(),
+            formatter: MdsfFormatter::<HtmlFormatter>::default(),
         }
     }
 }
 
-impl LanguageFormatter for Html {
+impl Default for MdsfFormatter<HtmlFormatter> {
+    #[inline]
+    fn default() -> Self {
+        Self::Single(HtmlFormatter::Prettier)
+    }
+}
+
+impl LanguageFormatter<HtmlFormatter> for Html {
     #[inline]
     fn format(&self, snippet_path: &std::path::Path) -> std::io::Result<Option<String>> {
         if !self.enabled {
             return Ok(None);
         }
 
-        match self.formatter {
+        format_multiple(&self.formatter, snippet_path, &Self::format_single)
+            .map(|(_should_continue, output)| output)
+    }
+
+    #[inline]
+    fn format_single(
+        formatter: &HtmlFormatter,
+        snippet_path: &std::path::Path,
+    ) -> std::io::Result<(bool, Option<String>)> {
+        match formatter {
             HtmlFormatter::Prettier => format_using_prettier(snippet_path, true),
         }
-        .map(|res| res.1)
     }
 }
 
 #[cfg(test)]
 mod test_html {
-    use crate::{formatters::setup_snippet, languages::LanguageFormatter};
+    use crate::{
+        formatters::{setup_snippet, MdsfFormatter},
+        languages::LanguageFormatter,
+    };
 
     use super::{Html, HtmlFormatter};
 
@@ -67,7 +88,7 @@ mod test_html {
 
         assert!(Html {
             enabled: false,
-            formatter: HtmlFormatter::default(),
+            formatter: MdsfFormatter::Single(HtmlFormatter::default()),
         }
         .format(snippet_path)
         .expect("it to not fail")
@@ -100,7 +121,7 @@ mod test_html {
 
         let l = Html {
             enabled: true,
-            formatter: HtmlFormatter::Prettier,
+            formatter: MdsfFormatter::Single(HtmlFormatter::Prettier),
         };
 
         let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");

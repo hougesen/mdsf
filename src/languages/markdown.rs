@@ -1,6 +1,6 @@
 use schemars::JsonSchema;
 
-use crate::formatters::prettier::format_using_prettier;
+use crate::formatters::{format_multiple, prettier::format_using_prettier, MdsfFormatter};
 
 use super::LanguageFormatter;
 
@@ -18,7 +18,7 @@ pub struct Markdown {
     #[serde(default = "bool::default")]
     pub enabled: bool,
     #[serde(default)]
-    pub formatter: MarkdownFormatter,
+    pub formatter: MdsfFormatter<MarkdownFormatter>,
 }
 
 impl Default for Markdown {
@@ -26,28 +26,46 @@ impl Default for Markdown {
     fn default() -> Self {
         Self {
             enabled: false,
-            formatter: MarkdownFormatter::default(),
+            formatter: MdsfFormatter::<MarkdownFormatter>::default(),
         }
     }
 }
 
-impl LanguageFormatter for Markdown {
+impl Default for MdsfFormatter<MarkdownFormatter> {
+    #[inline]
+    fn default() -> Self {
+        Self::Single(MarkdownFormatter::Prettier)
+    }
+}
+
+impl LanguageFormatter<MarkdownFormatter> for Markdown {
     #[inline]
     fn format(&self, snippet_path: &std::path::Path) -> std::io::Result<Option<String>> {
         if !self.enabled {
             return Ok(None);
         }
 
-        match self.formatter {
+        format_multiple(&self.formatter, snippet_path, &Self::format_single)
+            .map(|(_should_continue, output)| output)
+    }
+
+    #[inline]
+    fn format_single(
+        formatter: &MarkdownFormatter,
+        snippet_path: &std::path::Path,
+    ) -> std::io::Result<(bool, Option<String>)> {
+        match formatter {
             MarkdownFormatter::Prettier => format_using_prettier(snippet_path, false),
         }
-        .map(|res| res.1)
     }
 }
 
 #[cfg(test)]
 mod test_markdown {
-    use crate::{formatters::setup_snippet, languages::LanguageFormatter};
+    use crate::{
+        formatters::{setup_snippet, MdsfFormatter},
+        languages::LanguageFormatter,
+    };
 
     use super::{Markdown, MarkdownFormatter};
 
@@ -72,7 +90,7 @@ mod test_markdown {
 
         assert!(Markdown {
             enabled: false,
-            formatter: MarkdownFormatter::default(),
+            formatter: MdsfFormatter::<MarkdownFormatter>::default(),
         }
         .format(snippet_path)
         .expect("it to not fail")
@@ -88,7 +106,7 @@ the whitespace should be removed
 
         let l = Markdown {
             enabled: true,
-            formatter: MarkdownFormatter::Prettier,
+            formatter: MdsfFormatter::Single(MarkdownFormatter::Prettier),
         };
 
         let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");

@@ -1,6 +1,9 @@
 use schemars::JsonSchema;
 
-use crate::{config::default_enabled, formatters::prettier::format_using_prettier};
+use crate::{
+    config::default_enabled,
+    formatters::{format_multiple, prettier::format_using_prettier, MdsfFormatter},
+};
 
 use super::LanguageFormatter;
 
@@ -18,7 +21,7 @@ pub struct Yaml {
     #[serde(default = "default_enabled")]
     pub enabled: bool,
     #[serde(default)]
-    pub formatter: YamlFormatter,
+    pub formatter: MdsfFormatter<YamlFormatter>,
 }
 
 impl Default for Yaml {
@@ -26,28 +29,46 @@ impl Default for Yaml {
     fn default() -> Self {
         Self {
             enabled: true,
-            formatter: YamlFormatter::default(),
+            formatter: MdsfFormatter::<YamlFormatter>::default(),
         }
     }
 }
 
-impl LanguageFormatter for Yaml {
+impl Default for MdsfFormatter<YamlFormatter> {
+    #[inline]
+    fn default() -> Self {
+        Self::Single(YamlFormatter::Prettier)
+    }
+}
+
+impl LanguageFormatter<YamlFormatter> for Yaml {
     #[inline]
     fn format(&self, snippet_path: &std::path::Path) -> std::io::Result<Option<String>> {
         if !self.enabled {
             return Ok(None);
         }
 
-        match self.formatter {
+        format_multiple(&self.formatter, snippet_path, &Self::format_single)
+            .map(|(_should_continue, output)| output)
+    }
+
+    #[inline]
+    fn format_single(
+        formatter: &YamlFormatter,
+        snippet_path: &std::path::Path,
+    ) -> std::io::Result<(bool, Option<String>)> {
+        match formatter {
             YamlFormatter::Prettier => format_using_prettier(snippet_path, true),
         }
-        .map(|res| res.1)
     }
 }
 
 #[cfg(test)]
 mod test_yaml {
-    use crate::{formatters::setup_snippet, languages::LanguageFormatter};
+    use crate::{
+        formatters::{setup_snippet, MdsfFormatter},
+        languages::LanguageFormatter,
+    };
 
     use super::{Yaml, YamlFormatter};
 
@@ -86,7 +107,7 @@ updates:
     fn it_should_not_format_when_enabled_is_false() {
         let l = Yaml {
             enabled: false,
-            formatter: YamlFormatter::Prettier,
+            formatter: MdsfFormatter::Single(YamlFormatter::Prettier),
         };
 
         let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");
@@ -99,7 +120,7 @@ updates:
     fn test_prettier() {
         let l = Yaml {
             enabled: true,
-            formatter: YamlFormatter::Prettier,
+            formatter: MdsfFormatter::Single(YamlFormatter::Prettier),
         };
 
         let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");

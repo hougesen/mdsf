@@ -4,7 +4,8 @@ use crate::{
     config::default_enabled,
     formatters::{
         biome::format_using_biome, clang_format::format_using_clang_format,
-        deno_format::format_using_deno_fmt, prettier::format_using_prettier,
+        deno_format::format_using_deno_fmt, format_multiple, prettier::format_using_prettier,
+        MdsfFormatter,
     },
 };
 
@@ -30,7 +31,7 @@ pub struct Json {
     #[serde(default = "default_enabled")]
     pub enabled: bool,
     #[serde(default)]
-    pub formatter: JsonFormatter,
+    pub formatter: MdsfFormatter<JsonFormatter>,
 }
 
 impl Default for Json {
@@ -38,31 +39,54 @@ impl Default for Json {
     fn default() -> Self {
         Self {
             enabled: true,
-            formatter: JsonFormatter::default(),
+            formatter: MdsfFormatter::<JsonFormatter>::default(),
         }
     }
 }
 
-impl LanguageFormatter for Json {
+impl Default for MdsfFormatter<JsonFormatter> {
+    #[inline]
+    fn default() -> Self {
+        Self::Multiple(vec![
+            Self::Single(JsonFormatter::Biome),
+            Self::Single(JsonFormatter::Prettier),
+            Self::Single(JsonFormatter::DenoFmt),
+            Self::Single(JsonFormatter::ClangFormat),
+        ])
+    }
+}
+
+impl LanguageFormatter<JsonFormatter> for Json {
     #[inline]
     fn format(&self, snippet_path: &std::path::Path) -> std::io::Result<Option<String>> {
         if !self.enabled {
             return Ok(None);
         }
 
-        match self.formatter {
+        format_multiple(&self.formatter, snippet_path, &Self::format_single)
+            .map(|(_should_continue, output)| output)
+    }
+
+    #[inline]
+    fn format_single(
+        formatter: &JsonFormatter,
+        snippet_path: &std::path::Path,
+    ) -> std::io::Result<(bool, Option<String>)> {
+        match formatter {
             JsonFormatter::Biome => format_using_biome(snippet_path),
             JsonFormatter::Prettier => format_using_prettier(snippet_path, true),
             JsonFormatter::ClangFormat => format_using_clang_format(snippet_path),
             JsonFormatter::DenoFmt => format_using_deno_fmt(snippet_path),
         }
-        .map(|res| res.1)
     }
 }
 
 #[cfg(test)]
 mod test_json {
-    use crate::{formatters::setup_snippet, languages::LanguageFormatter};
+    use crate::{
+        formatters::{setup_snippet, MdsfFormatter},
+        languages::LanguageFormatter,
+    };
 
     use super::{Json, JsonFormatter};
 
@@ -91,7 +115,7 @@ mod test_json {
 
         assert!(Json {
             enabled: false,
-            formatter: JsonFormatter::default(),
+            formatter: MdsfFormatter::<JsonFormatter>::default(),
         }
         .format(snippet_path)
         .expect("it to not fail")
@@ -102,7 +126,7 @@ mod test_json {
     fn test_prettier() {
         let l = Json {
             enabled: true,
-            formatter: JsonFormatter::Prettier,
+            formatter: MdsfFormatter::Single(JsonFormatter::Prettier),
         };
 
         let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");
@@ -126,7 +150,7 @@ mod test_json {
     fn test_biome() {
         let l = Json {
             enabled: true,
-            formatter: JsonFormatter::Biome,
+            formatter: MdsfFormatter::Single(JsonFormatter::Biome),
         };
 
         let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");
@@ -150,7 +174,7 @@ mod test_json {
     fn test_clang_format() {
         let l = Json {
             enabled: true,
-            formatter: JsonFormatter::ClangFormat,
+            formatter: MdsfFormatter::Single(JsonFormatter::ClangFormat),
         };
 
         let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");
@@ -171,7 +195,7 @@ mod test_json {
     fn test_deno_fmt() {
         let l = Json {
             enabled: true,
-            formatter: JsonFormatter::DenoFmt,
+            formatter: MdsfFormatter::Single(JsonFormatter::DenoFmt),
         };
 
         let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");

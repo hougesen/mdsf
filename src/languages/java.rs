@@ -1,6 +1,9 @@
 use schemars::JsonSchema;
 
-use crate::{config::default_enabled, formatters::clang_format::format_using_clang_format};
+use crate::{
+    config::default_enabled,
+    formatters::{clang_format::format_using_clang_format, format_multiple, MdsfFormatter},
+};
 
 use super::LanguageFormatter;
 
@@ -18,7 +21,7 @@ pub struct Java {
     #[serde(default = "default_enabled")]
     pub enabled: bool,
     #[serde(default)]
-    pub formatter: JavaFormatter,
+    pub formatter: MdsfFormatter<JavaFormatter>,
 }
 
 impl Default for Java {
@@ -26,28 +29,46 @@ impl Default for Java {
     fn default() -> Self {
         Self {
             enabled: true,
-            formatter: JavaFormatter::default(),
+            formatter: MdsfFormatter::<JavaFormatter>::default(),
         }
     }
 }
 
-impl LanguageFormatter for Java {
+impl Default for MdsfFormatter<JavaFormatter> {
+    #[inline]
+    fn default() -> Self {
+        Self::Single(JavaFormatter::ClangFormat)
+    }
+}
+
+impl LanguageFormatter<JavaFormatter> for Java {
     #[inline]
     fn format(&self, snippet_path: &std::path::Path) -> std::io::Result<Option<String>> {
         if !self.enabled {
             return Ok(None);
         }
 
-        match self.formatter {
+        format_multiple(&self.formatter, snippet_path, &Self::format_single)
+            .map(|(_should_continue, output)| output)
+    }
+
+    #[inline]
+    fn format_single(
+        formatter: &JavaFormatter,
+        snippet_path: &std::path::Path,
+    ) -> std::io::Result<(bool, Option<String>)> {
+        match formatter {
             JavaFormatter::ClangFormat => format_using_clang_format(snippet_path),
         }
-        .map(|res| res.1)
     }
 }
 
 #[cfg(test)]
 mod test_java {
-    use crate::{formatters::setup_snippet, languages::LanguageFormatter};
+    use crate::{
+        formatters::{setup_snippet, MdsfFormatter},
+        languages::LanguageFormatter,
+    };
 
     use super::{Java, JavaFormatter};
 
@@ -72,7 +93,7 @@ mod test_java {
 
         assert!(Java {
             enabled: false,
-            formatter: JavaFormatter::default(),
+            formatter: MdsfFormatter::Single(JavaFormatter::default()),
         }
         .format(snippet_path)
         .expect("it to not fail")
@@ -89,7 +110,7 @@ mod test_java {
 }";
         let l = Java {
             enabled: true,
-            formatter: JavaFormatter::ClangFormat,
+            formatter: MdsfFormatter::Single(JavaFormatter::ClangFormat),
         };
 
         let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");

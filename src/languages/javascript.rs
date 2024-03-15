@@ -4,7 +4,8 @@ use crate::{
     config::default_enabled,
     formatters::{
         biome::format_using_biome, clang_format::format_using_clang_format,
-        deno_format::format_using_deno_fmt, prettier::format_using_prettier,
+        deno_format::format_using_deno_fmt, format_multiple, prettier::format_using_prettier,
+        MdsfFormatter,
     },
 };
 
@@ -30,7 +31,7 @@ pub struct JavaScript {
     #[serde(default = "default_enabled")]
     pub enabled: bool,
     #[serde(default)]
-    pub formatter: JavaScriptFormatter,
+    pub formatter: MdsfFormatter<JavaScriptFormatter>,
 }
 
 impl Default for JavaScript {
@@ -38,31 +39,54 @@ impl Default for JavaScript {
     fn default() -> Self {
         Self {
             enabled: true,
-            formatter: JavaScriptFormatter::default(),
+            formatter: MdsfFormatter::<JavaScriptFormatter>::default(),
         }
     }
 }
 
-impl LanguageFormatter for JavaScript {
+impl Default for MdsfFormatter<JavaScriptFormatter> {
+    #[inline]
+    fn default() -> Self {
+        Self::Multiple(vec![
+            Self::Single(JavaScriptFormatter::Biome),
+            Self::Single(JavaScriptFormatter::Prettier),
+            Self::Single(JavaScriptFormatter::DenoFmt),
+            Self::Single(JavaScriptFormatter::ClangFormat),
+        ])
+    }
+}
+
+impl LanguageFormatter<JavaScriptFormatter> for JavaScript {
     #[inline]
     fn format(&self, snippet_path: &std::path::Path) -> std::io::Result<Option<String>> {
         if !self.enabled {
             return Ok(None);
         }
 
-        match self.formatter {
+        format_multiple(&self.formatter, snippet_path, &Self::format_single)
+            .map(|(_should_continue, output)| output)
+    }
+
+    #[inline]
+    fn format_single(
+        formatter: &JavaScriptFormatter,
+        snippet_path: &std::path::Path,
+    ) -> std::io::Result<(bool, Option<String>)> {
+        match formatter {
             JavaScriptFormatter::Biome => format_using_biome(snippet_path),
             JavaScriptFormatter::Prettier => format_using_prettier(snippet_path, true),
             JavaScriptFormatter::ClangFormat => format_using_clang_format(snippet_path),
             JavaScriptFormatter::DenoFmt => format_using_deno_fmt(snippet_path),
         }
-        .map(|res| res.1)
     }
 }
 
 #[cfg(test)]
 mod test_javascript {
-    use crate::{formatters::setup_snippet, languages::LanguageFormatter};
+    use crate::{
+        formatters::{setup_snippet, MdsfFormatter},
+        languages::LanguageFormatter,
+    };
 
     use super::{JavaScript, JavaScriptFormatter};
 
@@ -90,7 +114,7 @@ mod test_javascript {
 
         let prettier = JavaScript {
             enabled: false,
-            formatter: JavaScriptFormatter::Prettier,
+            formatter: MdsfFormatter::Single(JavaScriptFormatter::Prettier),
         };
 
         assert!(prettier
@@ -100,7 +124,7 @@ mod test_javascript {
 
         let biome = JavaScript {
             enabled: false,
-            formatter: JavaScriptFormatter::Biome,
+            formatter: MdsfFormatter::Single(JavaScriptFormatter::Biome),
         };
 
         assert!(biome
@@ -113,7 +137,7 @@ mod test_javascript {
     fn test_prettier() {
         let l = JavaScript {
             enabled: true,
-            formatter: JavaScriptFormatter::Prettier,
+            formatter: MdsfFormatter::Single(JavaScriptFormatter::Prettier),
         };
 
         let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");
@@ -136,7 +160,7 @@ mod test_javascript {
     fn test_biome() {
         let l = JavaScript {
             enabled: true,
-            formatter: JavaScriptFormatter::Biome,
+            formatter: MdsfFormatter::Single(JavaScriptFormatter::Biome),
         };
 
         let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");
@@ -166,7 +190,7 @@ mod test_javascript {
 
         let l = JavaScript {
             enabled: true,
-            formatter: JavaScriptFormatter::ClangFormat,
+            formatter: MdsfFormatter::Single(JavaScriptFormatter::ClangFormat),
         };
 
         let snippet = setup_snippet(input, EXTENSION).expect("it to save the file");
@@ -192,7 +216,7 @@ mod test_javascript {
 
         let l = JavaScript {
             enabled: true,
-            formatter: JavaScriptFormatter::DenoFmt,
+            formatter: MdsfFormatter::Single(JavaScriptFormatter::DenoFmt),
         };
 
         let snippet = setup_snippet(input, EXTENSION).expect("it to save the file");

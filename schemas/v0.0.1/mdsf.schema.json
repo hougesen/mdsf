@@ -2,39 +2,12 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "title": "MdsfConfig",
   "type": "object",
-  "required": [
-    "c",
-    "cpp",
-    "crystal",
-    "csharp",
-    "css",
-    "dart",
-    "elixir",
-    "gleam",
-    "go",
-    "html",
-    "java",
-    "javascript",
-    "json",
-    "lua",
-    "markdown",
-    "nim",
-    "objective_c",
-    "protobuf",
-    "python",
-    "roc",
-    "ruby",
-    "rust",
-    "shell",
-    "sql",
-    "toml",
-    "vue",
-    "yaml",
-    "zig"
-  ],
   "properties": {
     "c": {
-      "writeOnly": true,
+      "default": {
+        "enabled": true,
+        "formatter": "clang-format"
+      },
       "allOf": [
         {
           "$ref": "#/definitions/C"
@@ -42,7 +15,10 @@
       ]
     },
     "cpp": {
-      "writeOnly": true,
+      "default": {
+        "enabled": true,
+        "formatter": "clang-format"
+      },
       "allOf": [
         {
           "$ref": "#/definitions/Cpp"
@@ -50,7 +26,10 @@
       ]
     },
     "crystal": {
-      "writeOnly": true,
+      "default": {
+        "enabled": true,
+        "formatter": "crystal_format"
+      },
       "allOf": [
         {
           "$ref": "#/definitions/Crystal"
@@ -58,7 +37,10 @@
       ]
     },
     "csharp": {
-      "writeOnly": true,
+      "default": {
+        "enabled": true,
+        "formatter": "clang-format"
+      },
       "allOf": [
         {
           "$ref": "#/definitions/CSharp"
@@ -66,7 +48,10 @@
       ]
     },
     "css": {
-      "writeOnly": true,
+      "default": {
+        "enabled": true,
+        "formatter": "prettier"
+      },
       "allOf": [
         {
           "$ref": "#/definitions/Css"
@@ -74,7 +59,10 @@
       ]
     },
     "dart": {
-      "writeOnly": true,
+      "default": {
+        "enabled": true,
+        "formatter": "dart_format"
+      },
       "allOf": [
         {
           "$ref": "#/definitions/Dart"
@@ -82,7 +70,10 @@
       ]
     },
     "elixir": {
-      "writeOnly": true,
+      "default": {
+        "enabled": true,
+        "formatter": "mix_format"
+      },
       "allOf": [
         {
           "$ref": "#/definitions/Elixir"
@@ -90,7 +81,10 @@
       ]
     },
     "gleam": {
-      "writeOnly": true,
+      "default": {
+        "enabled": true,
+        "formatter": "gleam_format"
+      },
       "allOf": [
         {
           "$ref": "#/definitions/Gleam"
@@ -98,7 +92,10 @@
       ]
     },
     "go": {
-      "writeOnly": true,
+      "default": {
+        "enabled": true,
+        "formatter": ["gofumpt", "gofmt"]
+      },
       "allOf": [
         {
           "$ref": "#/definitions/Go"
@@ -106,7 +103,10 @@
       ]
     },
     "html": {
-      "writeOnly": true,
+      "default": {
+        "enabled": true,
+        "formatter": "prettier"
+      },
       "allOf": [
         {
           "$ref": "#/definitions/Html"
@@ -114,7 +114,10 @@
       ]
     },
     "java": {
-      "writeOnly": true,
+      "default": {
+        "enabled": true,
+        "formatter": "clang-format"
+      },
       "allOf": [
         {
           "$ref": "#/definitions/Java"
@@ -122,7 +125,10 @@
       ]
     },
     "javascript": {
-      "writeOnly": true,
+      "default": {
+        "enabled": true,
+        "formatter": ["biome", "prettier", "deno_fmt", "clang-format"]
+      },
       "allOf": [
         {
           "$ref": "#/definitions/JavaScript"
@@ -130,7 +136,10 @@
       ]
     },
     "json": {
-      "writeOnly": true,
+      "default": {
+        "enabled": true,
+        "formatter": ["biome", "prettier", "deno_fmt", "clang-format"]
+      },
       "allOf": [
         {
           "$ref": "#/definitions/Json"
@@ -138,7 +147,10 @@
       ]
     },
     "lua": {
-      "writeOnly": true,
+      "default": {
+        "enabled": true,
+        "formatter": "stylua"
+      },
       "allOf": [
         {
           "$ref": "#/definitions/Lua"
@@ -146,7 +158,10 @@
       ]
     },
     "markdown": {
-      "writeOnly": true,
+      "default": {
+        "enabled": false,
+        "formatter": "prettier"
+      },
       "allOf": [
         {
           "$ref": "#/definitions/Markdown"
@@ -154,7 +169,10 @@
       ]
     },
     "nim": {
-      "writeOnly": true,
+      "default": {
+        "enabled": true,
+        "formatter": "nimpretty"
+      },
       "allOf": [
         {
           "$ref": "#/definitions/Nim"
@@ -162,7 +180,10 @@
       ]
     },
     "objective_c": {
-      "writeOnly": true,
+      "default": {
+        "enabled": true,
+        "formatter": "clang-format"
+      },
       "allOf": [
         {
           "$ref": "#/definitions/ObjectiveC"
@@ -170,7 +191,10 @@
       ]
     },
     "protobuf": {
-      "writeOnly": true,
+      "default": {
+        "enabled": true,
+        "formatter": "clang-format"
+      },
       "allOf": [
         {
           "$ref": "#/definitions/Protobuf"
@@ -178,7 +202,16 @@
       ]
     },
     "python": {
-      "writeOnly": true,
+      "default": {
+        "enabled": true,
+        "formatter": [
+          "ruff",
+          [
+            ["usort", "isort"],
+            ["blue", "black", "yapf", "autopep8"]
+          ]
+        ]
+      },
       "allOf": [
         {
           "$ref": "#/definitions/Python"
@@ -186,7 +219,10 @@
       ]
     },
     "roc": {
-      "writeOnly": true,
+      "default": {
+        "enabled": true,
+        "formatter": "roc_format"
+      },
       "allOf": [
         {
           "$ref": "#/definitions/Roc"
@@ -194,7 +230,10 @@
       ]
     },
     "ruby": {
-      "writeOnly": true,
+      "default": {
+        "enabled": true,
+        "formatter": "rubocop"
+      },
       "allOf": [
         {
           "$ref": "#/definitions/Ruby"
@@ -202,7 +241,10 @@
       ]
     },
     "rust": {
-      "writeOnly": true,
+      "default": {
+        "enabled": true,
+        "formatter": "rustfmt"
+      },
       "allOf": [
         {
           "$ref": "#/definitions/Rust"
@@ -210,7 +252,10 @@
       ]
     },
     "shell": {
-      "writeOnly": true,
+      "default": {
+        "enabled": true,
+        "formatter": "shfmt"
+      },
       "allOf": [
         {
           "$ref": "#/definitions/Shell"
@@ -218,7 +263,10 @@
       ]
     },
     "sql": {
-      "writeOnly": true,
+      "default": {
+        "enabled": true,
+        "formatter": ["sql-formatter", "sqlfluff"]
+      },
       "allOf": [
         {
           "$ref": "#/definitions/Sql"
@@ -226,7 +274,10 @@
       ]
     },
     "toml": {
-      "writeOnly": true,
+      "default": {
+        "enabled": true,
+        "formatter": "taplo"
+      },
       "allOf": [
         {
           "$ref": "#/definitions/Toml"
@@ -236,11 +287,7 @@
     "typescript": {
       "default": {
         "enabled": true,
-        "formatter": [
-          "biome",
-          "prettier",
-          "deno_fmt"
-        ]
+        "formatter": ["biome", "prettier", "deno_fmt"]
       },
       "allOf": [
         {
@@ -249,7 +296,10 @@
       ]
     },
     "vue": {
-      "writeOnly": true,
+      "default": {
+        "enabled": true,
+        "formatter": "prettier"
+      },
       "allOf": [
         {
           "$ref": "#/definitions/Vue"
@@ -257,7 +307,10 @@
       ]
     },
     "yaml": {
-      "writeOnly": true,
+      "default": {
+        "enabled": true,
+        "formatter": "prettier"
+      },
       "allOf": [
         {
           "$ref": "#/definitions/Yaml"
@@ -265,7 +318,10 @@
       ]
     },
     "zig": {
-      "writeOnly": true,
+      "default": {
+        "enabled": true,
+        "formatter": "zigfmt"
+      },
       "allOf": [
         {
           "$ref": "#/definitions/Zig"
@@ -285,7 +341,7 @@
           "default": "clang-format",
           "allOf": [
             {
-              "$ref": "#/definitions/CFormatter"
+              "$ref": "#/definitions/MdsfFormatter_for_CFormatter"
             }
           ]
         }
@@ -293,9 +349,7 @@
     },
     "CFormatter": {
       "type": "string",
-      "enum": [
-        "clang-format"
-      ]
+      "enum": ["clang-format"]
     },
     "CSharp": {
       "type": "object",
@@ -308,7 +362,7 @@
           "default": "clang-format",
           "allOf": [
             {
-              "$ref": "#/definitions/CSharpFormatter"
+              "$ref": "#/definitions/MdsfFormatter_for_CSharpFormatter"
             }
           ]
         }
@@ -316,9 +370,7 @@
     },
     "CSharpFormatter": {
       "type": "string",
-      "enum": [
-        "clang-format"
-      ]
+      "enum": ["clang-format"]
     },
     "Cpp": {
       "type": "object",
@@ -331,7 +383,7 @@
           "default": "clang-format",
           "allOf": [
             {
-              "$ref": "#/definitions/CppFormatter"
+              "$ref": "#/definitions/MdsfFormatter_for_CppFormatter"
             }
           ]
         }
@@ -339,9 +391,7 @@
     },
     "CppFormatter": {
       "type": "string",
-      "enum": [
-        "clang-format"
-      ]
+      "enum": ["clang-format"]
     },
     "Crystal": {
       "type": "object",
@@ -354,7 +404,7 @@
           "default": "crystal_format",
           "allOf": [
             {
-              "$ref": "#/definitions/CrystalFormatter"
+              "$ref": "#/definitions/MdsfFormatter_for_CrystalFormatter"
             }
           ]
         }
@@ -362,9 +412,7 @@
     },
     "CrystalFormatter": {
       "type": "string",
-      "enum": [
-        "crystal_format"
-      ]
+      "enum": ["crystal_format"]
     },
     "Css": {
       "type": "object",
@@ -377,7 +425,7 @@
           "default": "prettier",
           "allOf": [
             {
-              "$ref": "#/definitions/CssFormatter"
+              "$ref": "#/definitions/MdsfFormatter_for_CssFormatter"
             }
           ]
         }
@@ -385,9 +433,7 @@
     },
     "CssFormatter": {
       "type": "string",
-      "enum": [
-        "prettier"
-      ]
+      "enum": ["prettier"]
     },
     "Dart": {
       "type": "object",
@@ -400,7 +446,7 @@
           "default": "dart_format",
           "allOf": [
             {
-              "$ref": "#/definitions/DartFormatter"
+              "$ref": "#/definitions/MdsfFormatter_for_DartFormatter"
             }
           ]
         }
@@ -408,9 +454,7 @@
     },
     "DartFormatter": {
       "type": "string",
-      "enum": [
-        "dart_format"
-      ]
+      "enum": ["dart_format"]
     },
     "Elixir": {
       "type": "object",
@@ -423,7 +467,7 @@
           "default": "mix_format",
           "allOf": [
             {
-              "$ref": "#/definitions/ElixirFormatter"
+              "$ref": "#/definitions/MdsfFormatter_for_ElixirFormatter"
             }
           ]
         }
@@ -431,9 +475,7 @@
     },
     "ElixirFormatter": {
       "type": "string",
-      "enum": [
-        "mix_format"
-      ]
+      "enum": ["mix_format"]
     },
     "Gleam": {
       "type": "object",
@@ -446,7 +488,7 @@
           "default": "gleam_format",
           "allOf": [
             {
-              "$ref": "#/definitions/GleamFormatter"
+              "$ref": "#/definitions/MdsfFormatter_for_GleamFormatter"
             }
           ]
         }
@@ -454,9 +496,7 @@
     },
     "GleamFormatter": {
       "type": "string",
-      "enum": [
-        "gleam_format"
-      ]
+      "enum": ["gleam_format"]
     },
     "Go": {
       "type": "object",
@@ -466,10 +506,10 @@
           "type": "boolean"
         },
         "formatter": {
-          "default": "gofmt",
+          "default": ["gofumpt", "gofmt"],
           "allOf": [
             {
-              "$ref": "#/definitions/GoFormatter"
+              "$ref": "#/definitions/MdsfFormatter_for_GoFormatter"
             }
           ]
         }
@@ -477,10 +517,7 @@
     },
     "GoFormatter": {
       "type": "string",
-      "enum": [
-        "gofmt",
-        "gofumpt"
-      ]
+      "enum": ["gofmt", "gofumpt"]
     },
     "Html": {
       "type": "object",
@@ -493,7 +530,7 @@
           "default": "prettier",
           "allOf": [
             {
-              "$ref": "#/definitions/HtmlFormatter"
+              "$ref": "#/definitions/MdsfFormatter_for_HtmlFormatter"
             }
           ]
         }
@@ -501,9 +538,7 @@
     },
     "HtmlFormatter": {
       "type": "string",
-      "enum": [
-        "prettier"
-      ]
+      "enum": ["prettier"]
     },
     "Java": {
       "type": "object",
@@ -516,7 +551,7 @@
           "default": "clang-format",
           "allOf": [
             {
-              "$ref": "#/definitions/JavaFormatter"
+              "$ref": "#/definitions/MdsfFormatter_for_JavaFormatter"
             }
           ]
         }
@@ -524,9 +559,7 @@
     },
     "JavaFormatter": {
       "type": "string",
-      "enum": [
-        "clang-format"
-      ]
+      "enum": ["clang-format"]
     },
     "JavaScript": {
       "type": "object",
@@ -536,10 +569,10 @@
           "type": "boolean"
         },
         "formatter": {
-          "default": "prettier",
+          "default": ["biome", "prettier", "deno_fmt", "clang-format"],
           "allOf": [
             {
-              "$ref": "#/definitions/JavaScriptFormatter"
+              "$ref": "#/definitions/MdsfFormatter_for_JavaScriptFormatter"
             }
           ]
         }
@@ -547,12 +580,7 @@
     },
     "JavaScriptFormatter": {
       "type": "string",
-      "enum": [
-        "prettier",
-        "biome",
-        "deno_fmt",
-        "clang-format"
-      ]
+      "enum": ["prettier", "biome", "deno_fmt", "clang-format"]
     },
     "Json": {
       "type": "object",
@@ -562,10 +590,10 @@
           "type": "boolean"
         },
         "formatter": {
-          "default": "prettier",
+          "default": ["biome", "prettier", "deno_fmt", "clang-format"],
           "allOf": [
             {
-              "$ref": "#/definitions/JsonFormatter"
+              "$ref": "#/definitions/MdsfFormatter_for_JsonFormatter"
             }
           ]
         }
@@ -573,12 +601,7 @@
     },
     "JsonFormatter": {
       "type": "string",
-      "enum": [
-        "prettier",
-        "biome",
-        "deno_fmt",
-        "clang-format"
-      ]
+      "enum": ["prettier", "biome", "deno_fmt", "clang-format"]
     },
     "Lua": {
       "type": "object",
@@ -591,7 +614,7 @@
           "default": "stylua",
           "allOf": [
             {
-              "$ref": "#/definitions/LuaFormatter"
+              "$ref": "#/definitions/MdsfFormatter_for_LuaFormatter"
             }
           ]
         }
@@ -599,9 +622,7 @@
     },
     "LuaFormatter": {
       "type": "string",
-      "enum": [
-        "stylua"
-      ]
+      "enum": ["stylua"]
     },
     "Markdown": {
       "type": "object",
@@ -614,7 +635,7 @@
           "default": "prettier",
           "allOf": [
             {
-              "$ref": "#/definitions/MarkdownFormatter"
+              "$ref": "#/definitions/MdsfFormatter_for_MarkdownFormatter"
             }
           ]
         }
@@ -622,8 +643,331 @@
     },
     "MarkdownFormatter": {
       "type": "string",
-      "enum": [
-        "prettier"
+      "enum": ["prettier"]
+    },
+    "MdsfFormatter_for_CFormatter": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/CFormatter"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MdsfFormatter_for_CFormatter"
+          }
+        }
+      ]
+    },
+    "MdsfFormatter_for_CSharpFormatter": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/CSharpFormatter"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MdsfFormatter_for_CSharpFormatter"
+          }
+        }
+      ]
+    },
+    "MdsfFormatter_for_CppFormatter": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/CppFormatter"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MdsfFormatter_for_CppFormatter"
+          }
+        }
+      ]
+    },
+    "MdsfFormatter_for_CrystalFormatter": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/CrystalFormatter"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MdsfFormatter_for_CrystalFormatter"
+          }
+        }
+      ]
+    },
+    "MdsfFormatter_for_CssFormatter": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/CssFormatter"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MdsfFormatter_for_CssFormatter"
+          }
+        }
+      ]
+    },
+    "MdsfFormatter_for_DartFormatter": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/DartFormatter"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MdsfFormatter_for_DartFormatter"
+          }
+        }
+      ]
+    },
+    "MdsfFormatter_for_ElixirFormatter": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/ElixirFormatter"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MdsfFormatter_for_ElixirFormatter"
+          }
+        }
+      ]
+    },
+    "MdsfFormatter_for_GleamFormatter": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/GleamFormatter"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MdsfFormatter_for_GleamFormatter"
+          }
+        }
+      ]
+    },
+    "MdsfFormatter_for_GoFormatter": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/GoFormatter"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MdsfFormatter_for_GoFormatter"
+          }
+        }
+      ]
+    },
+    "MdsfFormatter_for_HtmlFormatter": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/HtmlFormatter"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MdsfFormatter_for_HtmlFormatter"
+          }
+        }
+      ]
+    },
+    "MdsfFormatter_for_JavaFormatter": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/JavaFormatter"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MdsfFormatter_for_JavaFormatter"
+          }
+        }
+      ]
+    },
+    "MdsfFormatter_for_JavaScriptFormatter": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/JavaScriptFormatter"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MdsfFormatter_for_JavaScriptFormatter"
+          }
+        }
+      ]
+    },
+    "MdsfFormatter_for_JsonFormatter": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/JsonFormatter"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MdsfFormatter_for_JsonFormatter"
+          }
+        }
+      ]
+    },
+    "MdsfFormatter_for_LuaFormatter": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/LuaFormatter"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MdsfFormatter_for_LuaFormatter"
+          }
+        }
+      ]
+    },
+    "MdsfFormatter_for_MarkdownFormatter": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/MarkdownFormatter"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MdsfFormatter_for_MarkdownFormatter"
+          }
+        }
+      ]
+    },
+    "MdsfFormatter_for_NimFormatter": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/NimFormatter"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MdsfFormatter_for_NimFormatter"
+          }
+        }
+      ]
+    },
+    "MdsfFormatter_for_ObjectiveCFormatter": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/ObjectiveCFormatter"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MdsfFormatter_for_ObjectiveCFormatter"
+          }
+        }
+      ]
+    },
+    "MdsfFormatter_for_ProtobufFormatter": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/ProtobufFormatter"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MdsfFormatter_for_ProtobufFormatter"
+          }
+        }
+      ]
+    },
+    "MdsfFormatter_for_PythonFormatter": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/PythonFormatter"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MdsfFormatter_for_PythonFormatter"
+          }
+        }
+      ]
+    },
+    "MdsfFormatter_for_RocFormatter": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/RocFormatter"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MdsfFormatter_for_RocFormatter"
+          }
+        }
+      ]
+    },
+    "MdsfFormatter_for_RubyFormatter": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/RubyFormatter"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MdsfFormatter_for_RubyFormatter"
+          }
+        }
+      ]
+    },
+    "MdsfFormatter_for_RustFormatter": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/RustFormatter"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MdsfFormatter_for_RustFormatter"
+          }
+        }
+      ]
+    },
+    "MdsfFormatter_for_ShellFormatter": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/ShellFormatter"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MdsfFormatter_for_ShellFormatter"
+          }
+        }
+      ]
+    },
+    "MdsfFormatter_for_SqlFormatter": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/SqlFormatter"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MdsfFormatter_for_SqlFormatter"
+          }
+        }
+      ]
+    },
+    "MdsfFormatter_for_TomlFormatter": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/TomlFormatter"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MdsfFormatter_for_TomlFormatter"
+          }
+        }
       ]
     },
     "MdsfFormatter_for_TypeScriptFormatter": {
@@ -639,6 +983,45 @@
         }
       ]
     },
+    "MdsfFormatter_for_VueFormatter": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/VueFormatter"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MdsfFormatter_for_VueFormatter"
+          }
+        }
+      ]
+    },
+    "MdsfFormatter_for_YamlFormatter": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/YamlFormatter"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MdsfFormatter_for_YamlFormatter"
+          }
+        }
+      ]
+    },
+    "MdsfFormatter_for_ZigFormatter": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/ZigFormatter"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MdsfFormatter_for_ZigFormatter"
+          }
+        }
+      ]
+    },
     "Nim": {
       "type": "object",
       "properties": {
@@ -650,7 +1033,7 @@
           "default": "nimpretty",
           "allOf": [
             {
-              "$ref": "#/definitions/NimFormatter"
+              "$ref": "#/definitions/MdsfFormatter_for_NimFormatter"
             }
           ]
         }
@@ -658,9 +1041,7 @@
     },
     "NimFormatter": {
       "type": "string",
-      "enum": [
-        "nimpretty"
-      ]
+      "enum": ["nimpretty"]
     },
     "ObjectiveC": {
       "type": "object",
@@ -673,7 +1054,7 @@
           "default": "clang-format",
           "allOf": [
             {
-              "$ref": "#/definitions/ObjectiveCFormatter"
+              "$ref": "#/definitions/MdsfFormatter_for_ObjectiveCFormatter"
             }
           ]
         }
@@ -681,9 +1062,7 @@
     },
     "ObjectiveCFormatter": {
       "type": "string",
-      "enum": [
-        "clang-format"
-      ]
+      "enum": ["clang-format"]
     },
     "Protobuf": {
       "type": "object",
@@ -696,7 +1075,7 @@
           "default": "clang-format",
           "allOf": [
             {
-              "$ref": "#/definitions/ProtobufFormatter"
+              "$ref": "#/definitions/MdsfFormatter_for_ProtobufFormatter"
             }
           ]
         }
@@ -704,9 +1083,7 @@
     },
     "ProtobufFormatter": {
       "type": "string",
-      "enum": [
-        "clang-format"
-      ]
+      "enum": ["clang-format"]
     },
     "Python": {
       "type": "object",
@@ -716,10 +1093,16 @@
           "type": "boolean"
         },
         "formatter": {
-          "default": "ruff",
+          "default": [
+            "ruff",
+            [
+              ["usort", "isort"],
+              ["blue", "black", "yapf", "autopep8"]
+            ]
+          ],
           "allOf": [
             {
-              "$ref": "#/definitions/PythonFormatter"
+              "$ref": "#/definitions/MdsfFormatter_for_PythonFormatter"
             }
           ]
         }
@@ -727,15 +1110,7 @@
     },
     "PythonFormatter": {
       "type": "string",
-      "enum": [
-        "ruff",
-        "black",
-        "yapf",
-        "blue",
-        "autopep8",
-        "isort",
-        "usort"
-      ]
+      "enum": ["ruff", "black", "yapf", "blue", "autopep8", "isort", "usort"]
     },
     "Roc": {
       "type": "object",
@@ -748,7 +1123,7 @@
           "default": "roc_format",
           "allOf": [
             {
-              "$ref": "#/definitions/RocFormatter"
+              "$ref": "#/definitions/MdsfFormatter_for_RocFormatter"
             }
           ]
         }
@@ -756,9 +1131,7 @@
     },
     "RocFormatter": {
       "type": "string",
-      "enum": [
-        "roc_format"
-      ]
+      "enum": ["roc_format"]
     },
     "Ruby": {
       "type": "object",
@@ -771,7 +1144,7 @@
           "default": "rubocop",
           "allOf": [
             {
-              "$ref": "#/definitions/RubyFormatter"
+              "$ref": "#/definitions/MdsfFormatter_for_RubyFormatter"
             }
           ]
         }
@@ -779,9 +1152,7 @@
     },
     "RubyFormatter": {
       "type": "string",
-      "enum": [
-        "rubocop"
-      ]
+      "enum": ["rubocop"]
     },
     "Rust": {
       "type": "object",
@@ -794,7 +1165,7 @@
           "default": "rustfmt",
           "allOf": [
             {
-              "$ref": "#/definitions/RustFormatter"
+              "$ref": "#/definitions/MdsfFormatter_for_RustFormatter"
             }
           ]
         }
@@ -802,9 +1173,7 @@
     },
     "RustFormatter": {
       "type": "string",
-      "enum": [
-        "rustfmt"
-      ]
+      "enum": ["rustfmt"]
     },
     "Shell": {
       "type": "object",
@@ -817,7 +1186,7 @@
           "default": "shfmt",
           "allOf": [
             {
-              "$ref": "#/definitions/ShellFormatter"
+              "$ref": "#/definitions/MdsfFormatter_for_ShellFormatter"
             }
           ]
         }
@@ -825,9 +1194,7 @@
     },
     "ShellFormatter": {
       "type": "string",
-      "enum": [
-        "shfmt"
-      ]
+      "enum": ["shfmt"]
     },
     "Sql": {
       "type": "object",
@@ -837,10 +1204,10 @@
           "type": "boolean"
         },
         "formatter": {
-          "default": "sqlfluff",
+          "default": ["sql-formatter", "sqlfluff"],
           "allOf": [
             {
-              "$ref": "#/definitions/SqlFormatter"
+              "$ref": "#/definitions/MdsfFormatter_for_SqlFormatter"
             }
           ]
         }
@@ -848,10 +1215,7 @@
     },
     "SqlFormatter": {
       "type": "string",
-      "enum": [
-        "sqlfluff",
-        "sql-formatter"
-      ]
+      "enum": ["sqlfluff", "sql-formatter"]
     },
     "Toml": {
       "type": "object",
@@ -864,7 +1228,7 @@
           "default": "taplo",
           "allOf": [
             {
-              "$ref": "#/definitions/TomlFormatter"
+              "$ref": "#/definitions/MdsfFormatter_for_TomlFormatter"
             }
           ]
         }
@@ -872,9 +1236,7 @@
     },
     "TomlFormatter": {
       "type": "string",
-      "enum": [
-        "taplo"
-      ]
+      "enum": ["taplo"]
     },
     "TypeScript": {
       "type": "object",
@@ -884,11 +1246,7 @@
           "type": "boolean"
         },
         "formatter": {
-          "default": [
-            "biome",
-            "prettier",
-            "deno_fmt"
-          ],
+          "default": ["biome", "prettier", "deno_fmt"],
           "allOf": [
             {
               "$ref": "#/definitions/MdsfFormatter_for_TypeScriptFormatter"
@@ -899,11 +1257,7 @@
     },
     "TypeScriptFormatter": {
       "type": "string",
-      "enum": [
-        "prettier",
-        "biome",
-        "deno_fmt"
-      ]
+      "enum": ["prettier", "biome", "deno_fmt"]
     },
     "Vue": {
       "type": "object",
@@ -916,7 +1270,7 @@
           "default": "prettier",
           "allOf": [
             {
-              "$ref": "#/definitions/VueFormatter"
+              "$ref": "#/definitions/MdsfFormatter_for_VueFormatter"
             }
           ]
         }
@@ -924,9 +1278,7 @@
     },
     "VueFormatter": {
       "type": "string",
-      "enum": [
-        "prettier"
-      ]
+      "enum": ["prettier"]
     },
     "Yaml": {
       "type": "object",
@@ -939,7 +1291,7 @@
           "default": "prettier",
           "allOf": [
             {
-              "$ref": "#/definitions/YamlFormatter"
+              "$ref": "#/definitions/MdsfFormatter_for_YamlFormatter"
             }
           ]
         }
@@ -947,9 +1299,7 @@
     },
     "YamlFormatter": {
       "type": "string",
-      "enum": [
-        "prettier"
-      ]
+      "enum": ["prettier"]
     },
     "Zig": {
       "type": "object",
@@ -962,7 +1312,7 @@
           "default": "zigfmt",
           "allOf": [
             {
-              "$ref": "#/definitions/ZigFormatter"
+              "$ref": "#/definitions/MdsfFormatter_for_ZigFormatter"
             }
           ]
         }
@@ -970,9 +1320,7 @@
     },
     "ZigFormatter": {
       "type": "string",
-      "enum": [
-        "zigfmt"
-      ]
+      "enum": ["zigfmt"]
     }
   }
 }

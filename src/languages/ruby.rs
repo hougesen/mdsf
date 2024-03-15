@@ -1,6 +1,9 @@
 use schemars::JsonSchema;
 
-use crate::{config::default_enabled, formatters::rubocop::format_using_rubocop};
+use crate::{
+    config::default_enabled,
+    formatters::{format_multiple, rubocop::format_using_rubocop, MdsfFormatter},
+};
 
 use super::LanguageFormatter;
 
@@ -18,7 +21,7 @@ pub struct Ruby {
     #[serde(default = "default_enabled")]
     pub enabled: bool,
     #[serde(default)]
-    pub formatter: RubyFormatter,
+    pub formatter: MdsfFormatter<RubyFormatter>,
 }
 
 impl Default for Ruby {
@@ -26,28 +29,46 @@ impl Default for Ruby {
     fn default() -> Self {
         Self {
             enabled: true,
-            formatter: RubyFormatter::default(),
+            formatter: MdsfFormatter::<RubyFormatter>::default(),
         }
     }
 }
 
-impl LanguageFormatter for Ruby {
+impl Default for MdsfFormatter<RubyFormatter> {
+    #[inline]
+    fn default() -> Self {
+        Self::Single(RubyFormatter::RuboCop)
+    }
+}
+
+impl LanguageFormatter<RubyFormatter> for Ruby {
     #[inline]
     fn format(&self, snippet_path: &std::path::Path) -> std::io::Result<Option<String>> {
         if !self.enabled {
             return Ok(None);
         }
 
-        match self.formatter {
+        format_multiple(&self.formatter, snippet_path, &Self::format_single)
+            .map(|(_should_continue, output)| output)
+    }
+
+    #[inline]
+    fn format_single(
+        formatter: &RubyFormatter,
+        snippet_path: &std::path::Path,
+    ) -> std::io::Result<(bool, Option<String>)> {
+        match formatter {
             RubyFormatter::RuboCop => format_using_rubocop(snippet_path),
         }
-        .map(|res| res.1)
     }
 }
 
 #[cfg(test)]
 mod test_ruby {
-    use crate::{formatters::setup_snippet, languages::LanguageFormatter};
+    use crate::{
+        formatters::{setup_snippet, MdsfFormatter},
+        languages::LanguageFormatter,
+    };
 
     use super::{Ruby, RubyFormatter};
 
@@ -70,7 +91,7 @@ mod test_ruby {
 
         assert!(Ruby {
             enabled: false,
-            formatter: RubyFormatter::RuboCop,
+            formatter: MdsfFormatter::default(),
         }
         .format(snippet_path)
         .expect("it to not fail")
@@ -86,7 +107,7 @@ end
 
         let l = Ruby {
             enabled: true,
-            formatter: RubyFormatter::RuboCop,
+            formatter: MdsfFormatter::Single(RubyFormatter::RuboCop),
         };
 
         let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");

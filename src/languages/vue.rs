@@ -1,6 +1,9 @@
 use schemars::JsonSchema;
 
-use crate::{config::default_enabled, formatters::prettier::format_using_prettier};
+use crate::{
+    config::default_enabled,
+    formatters::{format_multiple, prettier::format_using_prettier, MdsfFormatter},
+};
 
 use super::LanguageFormatter;
 
@@ -18,7 +21,7 @@ pub struct Vue {
     #[serde(default = "default_enabled")]
     pub enabled: bool,
     #[serde(default)]
-    pub formatter: VueFormatter,
+    pub formatter: MdsfFormatter<VueFormatter>,
 }
 
 impl Default for Vue {
@@ -26,28 +29,46 @@ impl Default for Vue {
     fn default() -> Self {
         Self {
             enabled: true,
-            formatter: VueFormatter::default(),
+            formatter: MdsfFormatter::<VueFormatter>::default(),
         }
     }
 }
 
-impl LanguageFormatter for Vue {
+impl Default for MdsfFormatter<VueFormatter> {
+    #[inline]
+    fn default() -> Self {
+        Self::Single(VueFormatter::Prettier)
+    }
+}
+
+impl LanguageFormatter<VueFormatter> for Vue {
     #[inline]
     fn format(&self, snippet_path: &std::path::Path) -> std::io::Result<Option<String>> {
         if !self.enabled {
             return Ok(None);
         }
 
-        match self.formatter {
+        format_multiple(&self.formatter, snippet_path, &Self::format_single)
+            .map(|(_should_continue, output)| output)
+    }
+
+    #[inline]
+    fn format_single(
+        formatter: &VueFormatter,
+        snippet_path: &std::path::Path,
+    ) -> std::io::Result<(bool, Option<String>)> {
+        match formatter {
             VueFormatter::Prettier => format_using_prettier(snippet_path, true),
         }
-        .map(|res| res.1)
     }
 }
 
 #[cfg(test)]
 mod test_vue {
-    use crate::{formatters::setup_snippet, languages::LanguageFormatter};
+    use crate::{
+        formatters::{setup_snippet, MdsfFormatter},
+        languages::LanguageFormatter,
+    };
 
     use super::{Vue, VueFormatter};
 
@@ -81,7 +102,7 @@ import {
     fn it_should_not_format_when_enabled_is_false() {
         let l = Vue {
             enabled: false,
-            formatter: VueFormatter::Prettier,
+            formatter: MdsfFormatter::Single(VueFormatter::Prettier),
         };
 
         let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");
@@ -94,7 +115,7 @@ import {
     fn test_prettier() {
         let l = Vue {
             enabled: true,
-            formatter: VueFormatter::Prettier,
+            formatter: MdsfFormatter::Single(VueFormatter::Prettier),
         };
 
         let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");

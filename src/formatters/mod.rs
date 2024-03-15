@@ -149,17 +149,14 @@ pub enum MdsfFormatter<T> {
 pub fn format_multiple<T>(
     formatter: &MdsfFormatter<T>,
     snippet_path: &std::path::Path,
-    single: &dyn Fn(&T, &std::path::Path) -> std::io::Result<(bool, Option<String>)>,
+    format_single: &dyn Fn(&T, &std::path::Path) -> std::io::Result<(bool, Option<String>)>,
 ) -> std::io::Result<(bool, Option<String>)> {
     match formatter {
-        MdsfFormatter::Single(f) => {
-            let result = single(f, snippet_path);
-            result
-        }
+        MdsfFormatter::Single(f) => format_single(f, snippet_path),
 
         MdsfFormatter::Multiple(formatters) => {
             for f in formatters {
-                let res = format_multiple(f, snippet_path, &single);
+                let res = format_multiple(f, snippet_path, &format_single);
 
                 if let Ok((should_continue, code)) = res {
                     if !should_continue {
@@ -170,17 +167,5 @@ pub fn format_multiple<T>(
 
             Ok((true, None))
         }
-    }
-}
-
-impl<T> From<Vec<T>> for MdsfFormatter<T> {
-    fn from(value: Vec<T>) -> Self {
-        MdsfFormatter::Multiple(value)
-    }
-}
-
-impl<T> From<T> for MdsfFormatter<T> {
-    fn from(value: T) -> Self {
-        Self::Single(value)
     }
 }

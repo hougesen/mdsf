@@ -2,7 +2,9 @@ use schemars::JsonSchema;
 
 use crate::{
     config::default_enabled,
-    formatters::{gofmt::format_using_gofmt, gofumpt::format_using_gofumpt},
+    formatters::{
+        format_multiple, gofmt::format_using_gofmt, gofumpt::format_using_gofumpt, MdsfFormatter,
+    },
 };
 
 use super::LanguageFormatter;
@@ -23,7 +25,7 @@ pub struct Go {
     #[serde(default = "default_enabled")]
     pub enabled: bool,
     #[serde(default)]
-    pub formatter: GoFormatter,
+    pub formatter: MdsfFormatter<GoFormatter>,
 }
 
 impl Default for Go {
@@ -31,29 +33,50 @@ impl Default for Go {
     fn default() -> Self {
         Self {
             enabled: true,
-            formatter: GoFormatter::default(),
+            formatter: MdsfFormatter::<GoFormatter>::default(),
         }
     }
 }
 
-impl LanguageFormatter for Go {
+impl Default for MdsfFormatter<GoFormatter> {
+    #[inline]
+    fn default() -> Self {
+        Self::Multiple(vec![
+            Self::Single(GoFormatter::GoFumpt),
+            Self::Single(GoFormatter::GoFmt),
+        ])
+    }
+}
+
+impl LanguageFormatter<GoFormatter> for Go {
     #[inline]
     fn format(&self, snippet_path: &std::path::Path) -> std::io::Result<Option<String>> {
         if !self.enabled {
             return Ok(None);
         }
 
-        match self.formatter {
+        format_multiple(&self.formatter, snippet_path, &Self::format_single)
+            .map(|(_should_continue, output)| output)
+    }
+
+    #[inline]
+    fn format_single(
+        formatter: &GoFormatter,
+        snippet_path: &std::path::Path,
+    ) -> std::io::Result<(bool, Option<String>)> {
+        match formatter {
             GoFormatter::GoFmt => format_using_gofmt(snippet_path),
             GoFormatter::GoFumpt => format_using_gofumpt(snippet_path),
         }
-        .map(|res| res.1)
     }
 }
 
 #[cfg(test)]
 mod test_go {
-    use crate::{formatters::setup_snippet, languages::LanguageFormatter};
+    use crate::{
+        formatters::{setup_snippet, MdsfFormatter},
+        languages::LanguageFormatter,
+    };
 
     use super::{Go, GoFormatter};
 
@@ -79,7 +102,7 @@ mod test_go {
 
         assert!(Go {
             enabled: false,
-            formatter: GoFormatter::default(),
+            formatter: MdsfFormatter::<GoFormatter>::default(),
         }
         .format(snippet_path)
         .expect("it to not fail")
@@ -90,7 +113,7 @@ mod test_go {
     fn test_gofmt() {
         let l = Go {
             enabled: true,
-            formatter: GoFormatter::GoFmt,
+            formatter: MdsfFormatter::Single(GoFormatter::GoFmt),
         };
 
         let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");
@@ -115,7 +138,7 @@ func add(a int, b int) int {
     fn test_gofumpt() {
         let l = Go {
             enabled: true,
-            formatter: GoFormatter::GoFumpt,
+            formatter: MdsfFormatter::Single(GoFormatter::GoFumpt),
         };
 
         let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");

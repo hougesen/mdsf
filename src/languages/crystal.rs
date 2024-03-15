@@ -1,6 +1,9 @@
 use schemars::JsonSchema;
 
-use crate::{config::default_enabled, formatters::crystal_format::format_using_crystal_format};
+use crate::{
+    config::default_enabled,
+    formatters::{crystal_format::format_using_crystal_format, format_multiple, MdsfFormatter},
+};
 
 use super::LanguageFormatter;
 
@@ -18,7 +21,7 @@ pub struct Crystal {
     #[serde(default = "default_enabled")]
     pub enabled: bool,
     #[serde(default)]
-    pub formatter: CrystalFormatter,
+    pub formatter: MdsfFormatter<CrystalFormatter>,
 }
 
 impl Default for Crystal {
@@ -26,28 +29,46 @@ impl Default for Crystal {
     fn default() -> Self {
         Self {
             enabled: true,
-            formatter: CrystalFormatter::default(),
+            formatter: MdsfFormatter::<CrystalFormatter>::default(),
         }
     }
 }
 
-impl LanguageFormatter for Crystal {
+impl Default for MdsfFormatter<CrystalFormatter> {
+    #[inline]
+    fn default() -> Self {
+        Self::Single(CrystalFormatter::CrystalFormat)
+    }
+}
+
+impl LanguageFormatter<CrystalFormatter> for Crystal {
     #[inline]
     fn format(&self, snippet_path: &std::path::Path) -> std::io::Result<Option<String>> {
         if !self.enabled {
             return Ok(None);
         }
 
-        match self.formatter {
+        format_multiple(&self.formatter, snippet_path, &Self::format_single)
+            .map(|(_modified, code)| code)
+    }
+
+    #[inline]
+    fn format_single(
+        formatter: &CrystalFormatter,
+        snippet_path: &std::path::Path,
+    ) -> std::io::Result<(bool, Option<String>)> {
+        match formatter {
             CrystalFormatter::CrystalFormat => format_using_crystal_format(snippet_path),
         }
-        .map(|res| res.1)
     }
 }
 
 #[cfg(test)]
 mod test_crystal {
-    use crate::{formatters::setup_snippet, languages::LanguageFormatter};
+    use crate::{
+        formatters::{setup_snippet, MdsfFormatter},
+        languages::LanguageFormatter,
+    };
 
     use super::{Crystal, CrystalFormatter};
 
@@ -67,7 +88,7 @@ mod test_crystal {
 
         assert!(Crystal {
             enabled: false,
-            formatter: CrystalFormatter::CrystalFormat,
+            formatter: MdsfFormatter::Single(CrystalFormatter::CrystalFormat),
         }
         .format(snippet_path)
         .expect("it to not fail")
@@ -82,7 +103,7 @@ end
 ";
         let l = Crystal {
             enabled: true,
-            formatter: CrystalFormatter::CrystalFormat,
+            formatter: MdsfFormatter::Single(CrystalFormatter::CrystalFormat),
         };
 
         let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");

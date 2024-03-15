@@ -1,6 +1,9 @@
 use schemars::JsonSchema;
 
-use crate::{config::default_enabled, formatters::roc_format::format_using_roc_format};
+use crate::{
+    config::default_enabled,
+    formatters::{format_multiple, roc_format::format_using_roc_format, MdsfFormatter},
+};
 
 use super::LanguageFormatter;
 
@@ -18,7 +21,7 @@ pub struct Roc {
     #[serde(default = "default_enabled")]
     pub enabled: bool,
     #[serde(default)]
-    pub formatter: RocFormatter,
+    pub formatter: MdsfFormatter<RocFormatter>,
 }
 
 impl Default for Roc {
@@ -26,28 +29,46 @@ impl Default for Roc {
     fn default() -> Self {
         Self {
             enabled: true,
-            formatter: RocFormatter::default(),
+            formatter: MdsfFormatter::<RocFormatter>::default(),
         }
     }
 }
 
-impl LanguageFormatter for Roc {
+impl Default for MdsfFormatter<RocFormatter> {
+    #[inline]
+    fn default() -> Self {
+        Self::Single(RocFormatter::RocFormat)
+    }
+}
+
+impl LanguageFormatter<RocFormatter> for Roc {
     #[inline]
     fn format(&self, snippet_path: &std::path::Path) -> std::io::Result<Option<String>> {
         if !self.enabled {
             return Ok(None);
         }
 
-        match self.formatter {
+        format_multiple(&self.formatter, snippet_path, &Self::format_single)
+            .map(|(_should_continue, output)| output)
+    }
+
+    #[inline]
+    fn format_single(
+        formatter: &RocFormatter,
+        snippet_path: &std::path::Path,
+    ) -> std::io::Result<(bool, Option<String>)> {
+        match formatter {
             RocFormatter::RocFormat => format_using_roc_format(snippet_path),
         }
-        .map(|res| res.1)
     }
 }
 
 #[cfg(test)]
 mod test_roc {
-    use crate::{formatters::setup_snippet, languages::LanguageFormatter};
+    use crate::{
+        formatters::{setup_snippet, MdsfFormatter},
+        languages::LanguageFormatter,
+    };
 
     use super::{Roc, RocFormatter};
 
@@ -81,7 +102,7 @@ main =
 
         assert!(Roc {
             enabled: false,
-            formatter: RocFormatter::default(),
+            formatter: MdsfFormatter::Single(RocFormatter::default()),
         }
         .format(snippet_path)
         .expect("it to not fail")
@@ -92,7 +113,7 @@ main =
     fn test_roc_format() {
         let l = Roc {
             enabled: true,
-            formatter: RocFormatter::RocFormat,
+            formatter: MdsfFormatter::Single(RocFormatter::RocFormat),
         };
 
         let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");

@@ -51,19 +51,20 @@ impl Default for Python {
 }
 
 impl Default for MdsfFormatter<PythonFormatter> {
+    #[inline]
     fn default() -> Self {
-        MdsfFormatter::Multiple(vec![
-            MdsfFormatter::Single(PythonFormatter::Ruff),
-            MdsfFormatter::Multiple(vec![
-                MdsfFormatter::Multiple(vec![MdsfFormatter::Multiple(vec![
-                    MdsfFormatter::Single(PythonFormatter::Usort),
-                    MdsfFormatter::Single(PythonFormatter::Isort),
-                ])]),
-                MdsfFormatter::Multiple(vec![
-                    MdsfFormatter::Single(PythonFormatter::Blue),
-                    MdsfFormatter::Single(PythonFormatter::Black),
-                    MdsfFormatter::Single(PythonFormatter::Yapf),
-                    MdsfFormatter::Single(PythonFormatter::Autopep8),
+        Self::Multiple(vec![
+            Self::Single(PythonFormatter::Ruff),
+            Self::Multiple(vec![
+                Self::Multiple(vec![
+                    Self::Single(PythonFormatter::Usort),
+                    Self::Single(PythonFormatter::Isort),
+                ]),
+                Self::Multiple(vec![
+                    Self::Single(PythonFormatter::Blue),
+                    Self::Single(PythonFormatter::Black),
+                    Self::Single(PythonFormatter::Yapf),
+                    Self::Single(PythonFormatter::Autopep8),
                 ]),
             ]),
         ])
@@ -77,8 +78,8 @@ impl LanguageFormatter<PythonFormatter> for Python {
             return Ok(None);
         }
 
-        format_multiple(&self.formatter, snippet_path, &Python::format_single)
-            .map(|(_modified, output)| output)
+        format_multiple(&self.formatter, snippet_path, &Self::format_single)
+            .map(|(_should_continue, output)| output)
     }
 
     #[inline]
@@ -236,8 +237,8 @@ mod test_python {
     fn test_isort() {
         let input = "from q import d
 import b
-import a 
-import c 
+import a
+import c
 
 
 def add(a: int, b: int) -> int:
@@ -274,8 +275,8 @@ def add(a: int, b: int) -> int:
     fn test_usort() {
         let input = "from q import d
 import b
-import a 
-import c 
+import a
+import c
 
 
 def add(a: int, b: int) -> int:

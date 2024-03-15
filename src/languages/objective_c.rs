@@ -1,6 +1,9 @@
 use schemars::JsonSchema;
 
-use crate::{config::default_enabled, formatters::clang_format::format_using_clang_format};
+use crate::{
+    config::default_enabled,
+    formatters::{clang_format::format_using_clang_format, format_multiple, MdsfFormatter},
+};
 
 use super::LanguageFormatter;
 
@@ -18,7 +21,7 @@ pub struct ObjectiveC {
     #[serde(default = "default_enabled")]
     pub enabled: bool,
     #[serde(default)]
-    pub formatter: ObjectiveCFormatter,
+    pub formatter: MdsfFormatter<ObjectiveCFormatter>,
 }
 
 impl Default for ObjectiveC {
@@ -26,28 +29,46 @@ impl Default for ObjectiveC {
     fn default() -> Self {
         Self {
             enabled: true,
-            formatter: ObjectiveCFormatter::default(),
+            formatter: MdsfFormatter::<ObjectiveCFormatter>::default(),
         }
     }
 }
 
-impl LanguageFormatter for ObjectiveC {
+impl Default for MdsfFormatter<ObjectiveCFormatter> {
+    #[inline]
+    fn default() -> Self {
+        Self::Single(ObjectiveCFormatter::ClangFormat)
+    }
+}
+
+impl LanguageFormatter<ObjectiveCFormatter> for ObjectiveC {
     #[inline]
     fn format(&self, snippet_path: &std::path::Path) -> std::io::Result<Option<String>> {
         if !self.enabled {
             return Ok(None);
         }
 
-        match self.formatter {
+        format_multiple(&self.formatter, snippet_path, &Self::format_single)
+            .map(|(_should_continue, output)| output)
+    }
+
+    #[inline]
+    fn format_single(
+        formatter: &ObjectiveCFormatter,
+        snippet_path: &std::path::Path,
+    ) -> std::io::Result<(bool, Option<String>)> {
+        match formatter {
             ObjectiveCFormatter::ClangFormat => format_using_clang_format(snippet_path),
         }
-        .map(|res| res.1)
     }
 }
 
 #[cfg(test)]
 mod test_objective_c {
-    use crate::{formatters::setup_snippet, languages::LanguageFormatter};
+    use crate::{
+        formatters::{setup_snippet, MdsfFormatter},
+        languages::LanguageFormatter,
+    };
 
     use super::{ObjectiveC, ObjectiveCFormatter};
 
@@ -70,7 +91,7 @@ mod test_objective_c {
 
         assert!(ObjectiveC {
             enabled: false,
-            formatter: ObjectiveCFormatter::default(),
+            formatter: MdsfFormatter::Single(ObjectiveCFormatter::ClangFormat),
         }
         .format(snippet_path)
         .expect("it to not fail")
@@ -86,7 +107,7 @@ mod test_objective_c {
 
         let l = ObjectiveC {
             enabled: true,
-            formatter: ObjectiveCFormatter::ClangFormat,
+            formatter: MdsfFormatter::Single(ObjectiveCFormatter::ClangFormat),
         };
 
         let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");

@@ -1,6 +1,9 @@
 use schemars::JsonSchema;
 
-use crate::{config::default_enabled, formatters::clang_format::format_using_clang_format};
+use crate::{
+    config::default_enabled,
+    formatters::{clang_format::format_using_clang_format, format_multiple, MdsfFormatter},
+};
 
 use super::LanguageFormatter;
 
@@ -18,7 +21,7 @@ pub struct Protobuf {
     #[serde(default = "default_enabled")]
     pub enabled: bool,
     #[serde(default)]
-    pub formatter: ProtobufFormatter,
+    pub formatter: MdsfFormatter<ProtobufFormatter>,
 }
 
 impl Default for Protobuf {
@@ -26,28 +29,46 @@ impl Default for Protobuf {
     fn default() -> Self {
         Self {
             enabled: true,
-            formatter: ProtobufFormatter::default(),
+            formatter: MdsfFormatter::<ProtobufFormatter>::default(),
         }
     }
 }
 
-impl LanguageFormatter for Protobuf {
+impl Default for MdsfFormatter<ProtobufFormatter> {
+    #[inline]
+    fn default() -> Self {
+        Self::Single(ProtobufFormatter::ClangFormat)
+    }
+}
+
+impl LanguageFormatter<ProtobufFormatter> for Protobuf {
     #[inline]
     fn format(&self, snippet_path: &std::path::Path) -> std::io::Result<Option<String>> {
         if !self.enabled {
             return Ok(None);
         }
 
-        match self.formatter {
+        format_multiple(&self.formatter, snippet_path, &Self::format_single)
+            .map(|(_should_continue, output)| output)
+    }
+
+    #[inline]
+    fn format_single(
+        formatter: &ProtobufFormatter,
+        snippet_path: &std::path::Path,
+    ) -> std::io::Result<(bool, Option<String>)> {
+        match formatter {
             ProtobufFormatter::ClangFormat => format_using_clang_format(snippet_path),
         }
-        .map(|res| res.1)
     }
 }
 
 #[cfg(test)]
 mod test_protobuf {
-    use crate::{formatters::setup_snippet, languages::LanguageFormatter};
+    use crate::{
+        formatters::{setup_snippet, MdsfFormatter},
+        languages::LanguageFormatter,
+    };
 
     use super::{Protobuf, ProtobufFormatter};
 
@@ -69,7 +90,7 @@ mod test_protobuf {
 
         assert!(Protobuf {
             enabled: false,
-            formatter: ProtobufFormatter::default(),
+            formatter: MdsfFormatter::Single(ProtobufFormatter::default()),
         }
         .format(snippet_path)
         .expect("it to not fail")
@@ -83,7 +104,7 @@ mod test_protobuf {
 
         let l = Protobuf {
             enabled: true,
-            formatter: ProtobufFormatter::ClangFormat,
+            formatter: MdsfFormatter::Single(ProtobufFormatter::ClangFormat),
         };
 
         let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");

@@ -1,6 +1,9 @@
 use schemars::JsonSchema;
 
-use crate::{config::default_enabled, formatters::clang_format::format_using_clang_format};
+use crate::{
+    config::default_enabled,
+    formatters::{clang_format::format_using_clang_format, format_multiple, MdsfFormatter},
+};
 
 use super::LanguageFormatter;
 
@@ -18,7 +21,7 @@ pub struct Cpp {
     #[serde(default = "default_enabled")]
     pub enabled: bool,
     #[serde(default)]
-    pub formatter: CppFormatter,
+    pub formatter: MdsfFormatter<CppFormatter>,
 }
 
 impl Default for Cpp {
@@ -26,28 +29,46 @@ impl Default for Cpp {
     fn default() -> Self {
         Self {
             enabled: true,
-            formatter: CppFormatter::default(),
+            formatter: MdsfFormatter::<CppFormatter>::default(),
         }
     }
 }
 
-impl LanguageFormatter for Cpp {
+impl Default for MdsfFormatter<CppFormatter> {
+    #[inline]
+    fn default() -> Self {
+        Self::Single(CppFormatter::ClangFormat)
+    }
+}
+
+impl LanguageFormatter<CppFormatter> for Cpp {
     #[inline]
     fn format(&self, snippet_path: &std::path::Path) -> std::io::Result<Option<String>> {
         if !self.enabled {
             return Ok(None);
         }
 
-        match self.formatter {
+        format_multiple(&self.formatter, snippet_path, &Self::format_single)
+            .map(|(_modified, code)| code)
+    }
+
+    #[inline]
+    fn format_single(
+        formatter: &CppFormatter,
+        snippet_path: &std::path::Path,
+    ) -> std::io::Result<(bool, Option<String>)> {
+        match formatter {
             CppFormatter::ClangFormat => format_using_clang_format(snippet_path),
         }
-        .map(|res| res.1)
     }
 }
 
 #[cfg(test)]
 mod test_cpp {
-    use crate::{formatters::setup_snippet, languages::LanguageFormatter};
+    use crate::{
+        formatters::{setup_snippet, MdsfFormatter},
+        languages::LanguageFormatter,
+    };
 
     use super::{Cpp, CppFormatter};
 
@@ -70,7 +91,7 @@ mod test_cpp {
 
         assert!(Cpp {
             enabled: false,
-            formatter: CppFormatter::default(),
+            formatter: MdsfFormatter::Single(CppFormatter::default())
         }
         .format(snippet_path)
         .expect("it to not fail")
@@ -81,7 +102,7 @@ mod test_cpp {
     fn test_clang_format() {
         let l = Cpp {
             enabled: true,
-            formatter: CppFormatter::ClangFormat,
+            formatter: MdsfFormatter::Single(CppFormatter::ClangFormat),
         };
 
         let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");

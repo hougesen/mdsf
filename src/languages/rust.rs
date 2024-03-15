@@ -1,6 +1,9 @@
 use schemars::JsonSchema;
 
-use crate::{config::default_enabled, formatters::rustfmt::format_using_rustfmt};
+use crate::{
+    config::default_enabled,
+    formatters::{format_multiple, rustfmt::format_using_rustfmt, MdsfFormatter},
+};
 
 use super::LanguageFormatter;
 
@@ -18,7 +21,7 @@ pub struct Rust {
     #[serde(default = "default_enabled")]
     pub enabled: bool,
     #[serde(default)]
-    pub formatter: RustFormatter,
+    pub formatter: MdsfFormatter<RustFormatter>,
 }
 
 impl Default for Rust {
@@ -26,28 +29,46 @@ impl Default for Rust {
     fn default() -> Self {
         Self {
             enabled: true,
-            formatter: RustFormatter::default(),
+            formatter: MdsfFormatter::<RustFormatter>::default(),
         }
     }
 }
 
-impl LanguageFormatter for Rust {
+impl Default for MdsfFormatter<RustFormatter> {
+    #[inline]
+    fn default() -> Self {
+        Self::Single(RustFormatter::RustFmt)
+    }
+}
+
+impl LanguageFormatter<RustFormatter> for Rust {
     #[inline]
     fn format(&self, snippet_path: &std::path::Path) -> std::io::Result<Option<String>> {
         if !self.enabled {
             return Ok(None);
         }
 
-        match self.formatter {
+        format_multiple(&self.formatter, snippet_path, &Self::format_single)
+            .map(|(_should_continue, output)| output)
+    }
+
+    #[inline]
+    fn format_single(
+        formatter: &RustFormatter,
+        snippet_path: &std::path::Path,
+    ) -> std::io::Result<(bool, Option<String>)> {
+        match formatter {
             RustFormatter::RustFmt => format_using_rustfmt(snippet_path),
         }
-        .map(|res| res.1)
     }
 }
 
 #[cfg(test)]
 mod test_rust {
-    use crate::{formatters::setup_snippet, languages::LanguageFormatter};
+    use crate::{
+        formatters::{setup_snippet, MdsfFormatter},
+        languages::LanguageFormatter,
+    };
 
     use super::{Rust, RustFormatter};
 
@@ -71,7 +92,7 @@ mod test_rust {
 
         assert!(Rust {
             enabled: false,
-            formatter: RustFormatter::RustFmt,
+            formatter: MdsfFormatter::Single(RustFormatter::RustFmt),
         }
         .format(snippet_path)
         .expect("it to not fail")
@@ -84,7 +105,7 @@ mod test_rust {
 
         let l = Rust {
             enabled: true,
-            formatter: RustFormatter::RustFmt,
+            formatter: MdsfFormatter::Single(RustFormatter::RustFmt),
         };
 
         let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");
