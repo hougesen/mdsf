@@ -156,11 +156,6 @@ impl MdsfConfig {
 }
 
 #[inline]
-pub const fn default_enabled() -> bool {
-    true
-}
-
-#[inline]
 fn default_schema_location() -> String {
     let package_version = env!("CARGO_PKG_VERSION");
 
