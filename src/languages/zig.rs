@@ -45,7 +45,7 @@ impl LanguageFormatter for Zig {
 mod test_zig {
     use crate::{
         formatters::{setup_snippet, MdsfFormatter},
-        languages::{Lang},
+        languages::Lang,
     };
 
     use super::Zig;
