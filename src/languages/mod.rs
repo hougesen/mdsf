@@ -81,7 +81,7 @@ pub mod yaml;
 pub mod zig;
 
 pub trait LanguageFormatter {
-    fn format_single(
+    fn format_snippet(
         &self,
         snippet_path: &std::path::Path,
     ) -> std::io::Result<(bool, Option<String>)>;
@@ -191,7 +191,7 @@ impl<T: LanguageFormatter> Lang<T> {
         nested: bool,
     ) -> std::io::Result<(bool, Option<String>)> {
         match formatter {
-            MdsfFormatter::Single(f) => f.format_single(snippet_path),
+            MdsfFormatter::Single(f) => f.format_snippet(snippet_path),
 
             MdsfFormatter::Multiple(formatters) => {
                 let mut r = Ok((true, None));

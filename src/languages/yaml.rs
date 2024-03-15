@@ -31,7 +31,7 @@ impl Default for MdsfFormatter<Yaml> {
 
 impl LanguageFormatter for Yaml {
     #[inline]
-    fn format_single(
+    fn format_snippet(
         &self,
         snippet_path: &std::path::Path,
     ) -> std::io::Result<(bool, Option<String>)> {

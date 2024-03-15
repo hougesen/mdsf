@@ -38,7 +38,7 @@ impl Default for MdsfFormatter<Sql> {
 
 impl LanguageFormatter for Sql {
     #[inline]
-    fn format_single(
+    fn format_snippet(
         &self,
         snippet_path: &std::path::Path,
     ) -> std::io::Result<(bool, Option<String>)> {

@@ -31,7 +31,7 @@ impl Default for MdsfFormatter<Markdown> {
 
 impl LanguageFormatter for Markdown {
     #[inline]
-    fn format_single(
+    fn format_snippet(
         &self,
         snippet_path: &std::path::Path,
     ) -> std::io::Result<(bool, Option<String>)> {

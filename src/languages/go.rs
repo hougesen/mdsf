@@ -36,7 +36,7 @@ impl Default for MdsfFormatter<Go> {
 
 impl LanguageFormatter for Go {
     #[inline]
-    fn format_single(
+    fn format_snippet(
         &self,
         snippet_path: &std::path::Path,
     ) -> std::io::Result<(bool, Option<String>)> {
