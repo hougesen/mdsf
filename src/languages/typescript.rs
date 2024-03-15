@@ -3,8 +3,8 @@ use schemars::JsonSchema;
 use crate::{
     config::default_enabled,
     formatters::{
-        biome::format_using_biome, deno_format::format_using_deno_fmt,
-        prettier::format_using_prettier,
+        biome::format_using_biome, deno_format::format_using_deno_fmt, format_multiple,
+        prettier::format_using_prettier, MdsfFormatter,
     },
 };
 
@@ -28,7 +28,7 @@ pub struct TypeScript {
     #[serde(default = "default_enabled")]
     pub enabled: bool,
     #[serde(default)]
-    pub formatter: TypeScriptFormatter,
+    pub formatter: MdsfFormatter<TypeScriptFormatter>,
 }
 
 impl Default for TypeScript {
@@ -36,8 +36,31 @@ impl Default for TypeScript {
     fn default() -> Self {
         Self {
             enabled: true,
-            formatter: TypeScriptFormatter::default(),
+            formatter: MdsfFormatter::<TypeScriptFormatter>::default(),
         }
+    }
+}
+
+impl Default for MdsfFormatter<TypeScriptFormatter> {
+    fn default() -> Self {
+        MdsfFormatter::Multiple(vec![
+            MdsfFormatter::Single(TypeScriptFormatter::Biome),
+            MdsfFormatter::Single(TypeScriptFormatter::Prettier),
+            MdsfFormatter::Single(TypeScriptFormatter::DenoFmt),
+        ])
+    }
+}
+
+fn format_single(
+    formatter: &TypeScriptFormatter,
+    snippet_path: &std::path::Path,
+) -> std::io::Result<(bool, Option<String>)> {
+    println!("formatter: {formatter:#?}");
+
+    match formatter {
+        TypeScriptFormatter::Biome => format_using_biome(snippet_path),
+        TypeScriptFormatter::Prettier => format_using_prettier(snippet_path, true),
+        TypeScriptFormatter::DenoFmt => format_using_deno_fmt(snippet_path),
     }
 }
 
@@ -48,20 +71,22 @@ impl LanguageFormatter for TypeScript {
             return Ok(None);
         }
 
-        match self.formatter {
-            TypeScriptFormatter::Biome => format_using_biome(snippet_path),
-            TypeScriptFormatter::Prettier => format_using_prettier(snippet_path, true),
-            TypeScriptFormatter::DenoFmt => format_using_deno_fmt(snippet_path),
-        }
-        .map(|res| res.1)
+        let fb = Box::from(format_single);
+        println!("formatters: {:#?}", self.formatter);
+
+        format_multiple(&self.formatter, snippet_path, &fb).map(|res| res.1)
     }
 }
 
 #[cfg(test)]
 mod test_typescript {
-    use crate::{formatters::setup_snippet, languages::LanguageFormatter};
-
-    use super::{TypeScript, TypeScriptFormatter};
+    use crate::{
+        formatters::{setup_snippet, MdsfFormatter},
+        languages::{
+            typescript::{TypeScript, TypeScriptFormatter},
+            LanguageFormatter as _,
+        },
+    };
 
     const INPUT: &str = "
     async function asyncAddition(
@@ -88,7 +113,7 @@ number>
 
         let prettier = TypeScript {
             enabled: false,
-            formatter: TypeScriptFormatter::Prettier,
+            formatter: MdsfFormatter::Single(TypeScriptFormatter::Prettier),
         };
 
         assert!(prettier
@@ -98,7 +123,7 @@ number>
 
         let biome = TypeScript {
             enabled: false,
-            formatter: TypeScriptFormatter::Biome,
+            formatter: MdsfFormatter::Single(TypeScriptFormatter::Biome),
         };
 
         assert!(biome
@@ -111,7 +136,7 @@ number>
     fn test_prettier() {
         let l = TypeScript {
             enabled: true,
-            formatter: TypeScriptFormatter::Prettier,
+            formatter: MdsfFormatter::Single(TypeScriptFormatter::Prettier),
         };
 
         let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");
@@ -135,7 +160,7 @@ number>
     fn test_biome() {
         let l = TypeScript {
             enabled: true,
-            formatter: TypeScriptFormatter::Biome,
+            formatter: MdsfFormatter::Single(TypeScriptFormatter::Biome),
         };
 
         let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");
@@ -159,7 +184,7 @@ number>
     fn test_deno_fmt() {
         let l = TypeScript {
             enabled: true,
-            formatter: TypeScriptFormatter::DenoFmt,
+            formatter: MdsfFormatter::Single(TypeScriptFormatter::DenoFmt),
         };
 
         let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");
