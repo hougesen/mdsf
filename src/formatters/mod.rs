@@ -3,10 +3,7 @@ use std::{io::Write, process::Command};
 use schemars::JsonSchema;
 use tempfile::NamedTempFile;
 
-use crate::{
-    config::MdsfConfig,
-    languages::{Language, LanguageFormatter},
-};
+use crate::{config::MdsfConfig, languages::Language};
 
 pub mod autopep8;
 pub mod biome;
@@ -144,28 +141,4 @@ pub fn format_snippet(config: &MdsfConfig, language: &Language, code: &str) -> S
 pub enum MdsfFormatter<T> {
     Single(T),
     Multiple(Vec<MdsfFormatter<T>>),
-}
-
-pub fn format_multiple<T>(
-    formatter: &MdsfFormatter<T>,
-    snippet_path: &std::path::Path,
-    format_single: &dyn Fn(&T, &std::path::Path) -> std::io::Result<(bool, Option<String>)>,
-) -> std::io::Result<(bool, Option<String>)> {
-    match formatter {
-        MdsfFormatter::Single(f) => format_single(f, snippet_path),
-
-        MdsfFormatter::Multiple(formatters) => {
-            for f in formatters {
-                let res = format_multiple(f, snippet_path, &format_single);
-
-                if let Ok((should_continue, code)) = res {
-                    if !should_continue {
-                        return Ok((should_continue, code));
-                    }
-                }
-            }
-
-            Ok((true, None))
-        }
-    }
 }

@@ -1,64 +1,42 @@
 use schemars::JsonSchema;
 
-use crate::{
-    config::default_enabled,
-    formatters::{format_multiple, prettier::format_using_prettier, MdsfFormatter},
-};
+use crate::formatters::{prettier::format_using_prettier, MdsfFormatter};
 
-use super::LanguageFormatter;
+use super::{Lang, LanguageFormatter};
 
 #[derive(Debug, Default, serde::Serialize, serde::Deserialize, JsonSchema)]
 #[cfg_attr(test, derive(PartialEq, Eq))]
-pub enum YamlFormatter {
+pub enum Yaml {
     #[default]
     #[serde(rename = "prettier")]
     Prettier,
 }
 
-#[derive(Debug, serde::Serialize, serde::Deserialize, JsonSchema)]
-#[cfg_attr(test, derive(PartialEq, Eq))]
-pub struct Yaml {
-    #[serde(default = "default_enabled")]
-    pub enabled: bool,
-    #[serde(default)]
-    pub formatter: MdsfFormatter<YamlFormatter>,
-}
-
-impl Default for Yaml {
+impl Default for Lang<Yaml> {
     #[inline]
     fn default() -> Self {
         Self {
             enabled: true,
-            formatter: MdsfFormatter::<YamlFormatter>::default(),
+            formatter: MdsfFormatter::<Yaml>::default(),
         }
     }
 }
 
-impl Default for MdsfFormatter<YamlFormatter> {
+impl Default for MdsfFormatter<Yaml> {
     #[inline]
     fn default() -> Self {
-        Self::Single(YamlFormatter::Prettier)
+        Self::Single(Yaml::Prettier)
     }
 }
 
-impl LanguageFormatter<YamlFormatter> for Yaml {
-    #[inline]
-    fn format(&self, snippet_path: &std::path::Path) -> std::io::Result<Option<String>> {
-        if !self.enabled {
-            return Ok(None);
-        }
-
-        format_multiple(&self.formatter, snippet_path, &Self::format_single)
-            .map(|(_should_continue, output)| output)
-    }
-
+impl LanguageFormatter for Yaml {
     #[inline]
     fn format_single(
-        formatter: &YamlFormatter,
+        &self,
         snippet_path: &std::path::Path,
     ) -> std::io::Result<(bool, Option<String>)> {
-        match formatter {
-            YamlFormatter::Prettier => format_using_prettier(snippet_path, true),
+        match self {
+            Self::Prettier => format_using_prettier(snippet_path, true),
         }
     }
 }
@@ -67,10 +45,10 @@ impl LanguageFormatter<YamlFormatter> for Yaml {
 mod test_yaml {
     use crate::{
         formatters::{setup_snippet, MdsfFormatter},
-        languages::LanguageFormatter,
+        languages::Lang,
     };
 
-    use super::{Yaml, YamlFormatter};
+    use super::Yaml;
 
     const INPUT: &str = "
 
@@ -100,14 +78,14 @@ updates:
 
     #[test]
     fn it_should_be_enabled_by_default() {
-        assert!(Yaml::default().enabled);
+        assert!(Lang::<Yaml>::default().enabled);
     }
 
     #[test]
     fn it_should_not_format_when_enabled_is_false() {
-        let l = Yaml {
+        let l = Lang::<Yaml> {
             enabled: false,
-            formatter: MdsfFormatter::Single(YamlFormatter::Prettier),
+            formatter: MdsfFormatter::Single(Yaml::Prettier),
         };
 
         let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");
@@ -118,9 +96,9 @@ updates:
 
     #[test]
     fn test_prettier() {
-        let l = Yaml {
+        let l = Lang::<Yaml> {
             enabled: true,
-            formatter: MdsfFormatter::Single(YamlFormatter::Prettier),
+            formatter: MdsfFormatter::Single(Yaml::Prettier),
         };
 
         let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");

@@ -1,64 +1,42 @@
 use schemars::JsonSchema;
 
-use crate::{
-    config::default_enabled,
-    formatters::{clang_format::format_using_clang_format, format_multiple, MdsfFormatter},
-};
+use crate::formatters::{clang_format::format_using_clang_format, MdsfFormatter};
 
-use super::LanguageFormatter;
+use super::{Lang, LanguageFormatter};
 
 #[derive(Debug, Default, serde::Serialize, serde::Deserialize, JsonSchema)]
 #[cfg_attr(test, derive(PartialEq, Eq))]
-pub enum ObjectiveCFormatter {
+pub enum ObjectiveC {
     #[default]
     #[serde(rename = "clang-format")]
     ClangFormat,
 }
 
-#[derive(Debug, serde::Serialize, serde::Deserialize, JsonSchema)]
-#[cfg_attr(test, derive(PartialEq, Eq))]
-pub struct ObjectiveC {
-    #[serde(default = "default_enabled")]
-    pub enabled: bool,
-    #[serde(default)]
-    pub formatter: MdsfFormatter<ObjectiveCFormatter>,
-}
-
-impl Default for ObjectiveC {
+impl Default for Lang<ObjectiveC> {
     #[inline]
     fn default() -> Self {
         Self {
             enabled: true,
-            formatter: MdsfFormatter::<ObjectiveCFormatter>::default(),
+            formatter: MdsfFormatter::<ObjectiveC>::default(),
         }
     }
 }
 
-impl Default for MdsfFormatter<ObjectiveCFormatter> {
+impl Default for MdsfFormatter<ObjectiveC> {
     #[inline]
     fn default() -> Self {
-        Self::Single(ObjectiveCFormatter::ClangFormat)
+        Self::Single(ObjectiveC::ClangFormat)
     }
 }
 
-impl LanguageFormatter<ObjectiveCFormatter> for ObjectiveC {
-    #[inline]
-    fn format(&self, snippet_path: &std::path::Path) -> std::io::Result<Option<String>> {
-        if !self.enabled {
-            return Ok(None);
-        }
-
-        format_multiple(&self.formatter, snippet_path, &Self::format_single)
-            .map(|(_should_continue, output)| output)
-    }
-
+impl LanguageFormatter for ObjectiveC {
     #[inline]
     fn format_single(
-        formatter: &ObjectiveCFormatter,
+        &self,
         snippet_path: &std::path::Path,
     ) -> std::io::Result<(bool, Option<String>)> {
-        match formatter {
-            ObjectiveCFormatter::ClangFormat => format_using_clang_format(snippet_path),
+        match self {
+            Self::ClangFormat => format_using_clang_format(snippet_path),
         }
     }
 }
@@ -67,10 +45,10 @@ impl LanguageFormatter<ObjectiveCFormatter> for ObjectiveC {
 mod test_objective_c {
     use crate::{
         formatters::{setup_snippet, MdsfFormatter},
-        languages::LanguageFormatter,
+        languages::Lang,
     };
 
-    use super::{ObjectiveC, ObjectiveCFormatter};
+    use super::ObjectiveC;
 
     const INPUT: &str = "int add(int a,int b){
             a - a ;
@@ -81,7 +59,7 @@ mod test_objective_c {
 
     #[test]
     fn it_should_be_enabled_by_default() {
-        assert!(ObjectiveC::default().enabled);
+        assert!(Lang::<ObjectiveC>::default().enabled);
     }
 
     #[test]
@@ -89,9 +67,9 @@ mod test_objective_c {
         let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");
         let snippet_path = snippet.path();
 
-        assert!(ObjectiveC {
+        assert!(Lang::<ObjectiveC> {
             enabled: false,
-            formatter: MdsfFormatter::Single(ObjectiveCFormatter::ClangFormat),
+            formatter: MdsfFormatter::Single(ObjectiveC::ClangFormat),
         }
         .format(snippet_path)
         .expect("it to not fail")
@@ -105,9 +83,9 @@ mod test_objective_c {
   return a + b;
 }";
 
-        let l = ObjectiveC {
+        let l = Lang::<ObjectiveC> {
             enabled: true,
-            formatter: MdsfFormatter::Single(ObjectiveCFormatter::ClangFormat),
+            formatter: MdsfFormatter::Single(ObjectiveC::ClangFormat),
         };
 
         let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");

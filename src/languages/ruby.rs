@@ -1,64 +1,42 @@
 use schemars::JsonSchema;
 
-use crate::{
-    config::default_enabled,
-    formatters::{format_multiple, rubocop::format_using_rubocop, MdsfFormatter},
-};
+use crate::formatters::{rubocop::format_using_rubocop, MdsfFormatter};
 
-use super::LanguageFormatter;
+use super::{Lang, LanguageFormatter};
 
 #[derive(Debug, Default, serde::Serialize, serde::Deserialize, JsonSchema)]
 #[cfg_attr(test, derive(PartialEq, Eq))]
-pub enum RubyFormatter {
+pub enum Ruby {
     #[default]
     #[serde(rename = "rubocop")]
     RuboCop,
 }
 
-#[derive(Debug, serde::Serialize, serde::Deserialize, JsonSchema)]
-#[cfg_attr(test, derive(PartialEq, Eq))]
-pub struct Ruby {
-    #[serde(default = "default_enabled")]
-    pub enabled: bool,
-    #[serde(default)]
-    pub formatter: MdsfFormatter<RubyFormatter>,
-}
-
-impl Default for Ruby {
+impl Default for Lang<Ruby> {
     #[inline]
     fn default() -> Self {
         Self {
             enabled: true,
-            formatter: MdsfFormatter::<RubyFormatter>::default(),
+            formatter: MdsfFormatter::<Ruby>::default(),
         }
     }
 }
 
-impl Default for MdsfFormatter<RubyFormatter> {
+impl Default for MdsfFormatter<Ruby> {
     #[inline]
     fn default() -> Self {
-        Self::Single(RubyFormatter::RuboCop)
+        Self::Single(Ruby::RuboCop)
     }
 }
 
-impl LanguageFormatter<RubyFormatter> for Ruby {
-    #[inline]
-    fn format(&self, snippet_path: &std::path::Path) -> std::io::Result<Option<String>> {
-        if !self.enabled {
-            return Ok(None);
-        }
-
-        format_multiple(&self.formatter, snippet_path, &Self::format_single)
-            .map(|(_should_continue, output)| output)
-    }
-
+impl LanguageFormatter for Ruby {
     #[inline]
     fn format_single(
-        formatter: &RubyFormatter,
+        &self,
         snippet_path: &std::path::Path,
     ) -> std::io::Result<(bool, Option<String>)> {
-        match formatter {
-            RubyFormatter::RuboCop => format_using_rubocop(snippet_path),
+        match self {
+            Self::RuboCop => format_using_rubocop(snippet_path),
         }
     }
 }
@@ -67,10 +45,10 @@ impl LanguageFormatter<RubyFormatter> for Ruby {
 mod test_ruby {
     use crate::{
         formatters::{setup_snippet, MdsfFormatter},
-        languages::LanguageFormatter,
+        languages::Lang,
     };
 
-    use super::{Ruby, RubyFormatter};
+    use super::Ruby;
 
     const INPUT: &str =
         "def   add(  a ,                                                          b )
@@ -81,7 +59,7 @@ mod test_ruby {
 
     #[test]
     fn it_should_be_enabled_by_default() {
-        assert!(Ruby::default().enabled);
+        assert!(Lang::<Ruby>::default().enabled);
     }
 
     #[test]
@@ -89,7 +67,7 @@ mod test_ruby {
         let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");
         let snippet_path = snippet.path();
 
-        assert!(Ruby {
+        assert!(Lang::<Ruby> {
             enabled: false,
             formatter: MdsfFormatter::default(),
         }
@@ -105,9 +83,9 @@ mod test_ruby {
 end
 ";
 
-        let l = Ruby {
+        let l = Lang::<Ruby> {
             enabled: true,
-            formatter: MdsfFormatter::Single(RubyFormatter::RuboCop),
+            formatter: MdsfFormatter::Single(Ruby::RuboCop),
         };
 
         let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");

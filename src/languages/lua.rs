@@ -1,64 +1,42 @@
 use schemars::JsonSchema;
 
-use crate::{
-    config::default_enabled,
-    formatters::{format_multiple, stylua::format_using_stylua, MdsfFormatter},
-};
+use crate::formatters::{stylua::format_using_stylua, MdsfFormatter};
 
-use super::LanguageFormatter;
+use super::{Lang, LanguageFormatter};
 
 #[derive(Debug, Default, serde::Serialize, serde::Deserialize, JsonSchema)]
 #[cfg_attr(test, derive(PartialEq, Eq))]
-pub enum LuaFormatter {
+pub enum Lua {
     #[default]
     #[serde(rename = "stylua")]
     Stylua,
 }
 
-#[derive(Debug, serde::Serialize, serde::Deserialize, JsonSchema)]
-#[cfg_attr(test, derive(PartialEq, Eq))]
-pub struct Lua {
-    #[serde(default = "default_enabled")]
-    pub enabled: bool,
-    #[serde(default)]
-    pub formatter: MdsfFormatter<LuaFormatter>,
-}
-
-impl Default for Lua {
+impl Default for Lang<Lua> {
     #[inline]
     fn default() -> Self {
         Self {
             enabled: true,
-            formatter: MdsfFormatter::<LuaFormatter>::default(),
+            formatter: MdsfFormatter::<Lua>::default(),
         }
     }
 }
 
-impl Default for MdsfFormatter<LuaFormatter> {
+impl Default for MdsfFormatter<Lua> {
     #[inline]
     fn default() -> Self {
-        Self::Single(LuaFormatter::Stylua)
+        Self::Single(Lua::Stylua)
     }
 }
 
-impl LanguageFormatter<LuaFormatter> for Lua {
-    #[inline]
-    fn format(&self, snippet_path: &std::path::Path) -> std::io::Result<Option<String>> {
-        if !self.enabled {
-            return Ok(None);
-        }
-
-        format_multiple(&self.formatter, snippet_path, &Self::format_single)
-            .map(|(_should_continue, output)| output)
-    }
-
+impl LanguageFormatter for Lua {
     #[inline]
     fn format_single(
-        formatter: &LuaFormatter,
+        &self,
         snippet_path: &std::path::Path,
     ) -> std::io::Result<(bool, Option<String>)> {
-        match formatter {
-            LuaFormatter::Stylua => format_using_stylua(snippet_path),
+        match self {
+            Self::Stylua => format_using_stylua(snippet_path),
         }
     }
 }
@@ -67,10 +45,10 @@ impl LanguageFormatter<LuaFormatter> for Lua {
 mod test_lua {
     use crate::{
         formatters::{setup_snippet, MdsfFormatter},
-        languages::LanguageFormatter,
+        languages::Lang,
     };
 
-    use super::{Lua, LuaFormatter};
+    use super::Lua;
 
     const INPUT: &str = "
 
@@ -88,7 +66,7 @@ end
 
     #[test]
     fn it_should_be_enabled_by_default() {
-        assert!(Lua::default().enabled);
+        assert!(Lang::<Lua>::default().enabled);
     }
 
     #[test]
@@ -96,9 +74,9 @@ end
         let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");
         let snippet_path = snippet.path();
 
-        assert!(Lua {
+        assert!(Lang::<Lua> {
             enabled: false,
-            formatter: MdsfFormatter::Single(LuaFormatter::default()),
+            formatter: MdsfFormatter::Single(Lua::default()),
         }
         .format(snippet_path)
         .expect("it to not fail")
@@ -109,9 +87,9 @@ end
     fn test_stylua() {
         let expected_output = "local function add(a, b)\n\treturn a + b\nend\n";
 
-        let l = Lua {
+        let l = Lang::<Lua> {
             enabled: true,
-            formatter: MdsfFormatter::Single(LuaFormatter::Stylua),
+            formatter: MdsfFormatter::Single(Lua::Stylua),
         };
 
         let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");

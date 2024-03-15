@@ -1,64 +1,42 @@
 use schemars::JsonSchema;
 
-use crate::{
-    config::default_enabled,
-    formatters::{format_multiple, prettier::format_using_prettier, MdsfFormatter},
-};
+use crate::formatters::{prettier::format_using_prettier, MdsfFormatter};
 
-use super::LanguageFormatter;
+use super::{Lang, LanguageFormatter};
 
 #[derive(Debug, Default, serde::Serialize, serde::Deserialize, JsonSchema)]
 #[cfg_attr(test, derive(PartialEq, Eq))]
-pub enum CssFormatter {
+pub enum Css {
     #[default]
     #[serde(rename = "prettier")]
     Prettier,
 }
 
-#[derive(Debug, serde::Serialize, serde::Deserialize, JsonSchema)]
-#[cfg_attr(test, derive(PartialEq, Eq))]
-pub struct Css {
-    #[serde(default = "default_enabled")]
-    pub enabled: bool,
-    #[serde(default)]
-    pub formatter: MdsfFormatter<CssFormatter>,
-}
-
-impl Default for Css {
+impl Default for Lang<Css> {
     #[inline]
     fn default() -> Self {
         Self {
             enabled: true,
-            formatter: MdsfFormatter::<CssFormatter>::default(),
+            formatter: MdsfFormatter::<Css>::default(),
         }
     }
 }
 
-impl Default for MdsfFormatter<CssFormatter> {
+impl Default for MdsfFormatter<Css> {
     #[inline]
     fn default() -> Self {
-        Self::Single(CssFormatter::Prettier)
+        Self::Single(Css::Prettier)
     }
 }
 
-impl LanguageFormatter<CssFormatter> for Css {
-    #[inline]
-    fn format(&self, snippet_path: &std::path::Path) -> std::io::Result<Option<String>> {
-        if !self.enabled {
-            return Ok(None);
-        }
-
-        format_multiple(&self.formatter, snippet_path, &Self::format_single)
-            .map(|(_should_continue, output)| output)
-    }
-
+impl LanguageFormatter for Css {
     #[inline]
     fn format_single(
-        formatter: &CssFormatter,
+        &self,
         snippet_path: &std::path::Path,
     ) -> std::io::Result<(bool, Option<String>)> {
-        match formatter {
-            CssFormatter::Prettier => format_using_prettier(snippet_path, true),
+        match self {
+            Self::Prettier => format_using_prettier(snippet_path, true),
         }
     }
 }
@@ -67,10 +45,10 @@ impl LanguageFormatter<CssFormatter> for Css {
 mod test_css {
     use crate::{
         formatters::{setup_snippet, MdsfFormatter},
-        languages::LanguageFormatter,
+        languages::Lang,
     };
 
-    use super::{Css, CssFormatter};
+    use super::Css;
 
     const INPUT: &str = " h1   {color: blue;} p    {color: red;} ";
 
@@ -78,7 +56,7 @@ mod test_css {
 
     #[test]
     fn it_should_be_enabled_by_default() {
-        assert!(Css::default().enabled);
+        assert!(Lang::<Css>::default().enabled);
     }
 
     #[test]
@@ -86,9 +64,9 @@ mod test_css {
         let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");
         let snippet_path = snippet.path();
 
-        assert!(Css {
+        assert!(Lang::<Css> {
             enabled: false,
-            formatter: MdsfFormatter::Single(CssFormatter::default()),
+            formatter: MdsfFormatter::Single(Css::default()),
         }
         .format(snippet_path)
         .expect("it to not fail")
@@ -97,9 +75,9 @@ mod test_css {
 
     #[test]
     fn test_prettier() {
-        let l = Css {
+        let l = Lang::<Css> {
             enabled: true,
-            formatter: MdsfFormatter::Single(CssFormatter::Prettier),
+            formatter: MdsfFormatter::Single(Css::Prettier),
         };
 
         let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");

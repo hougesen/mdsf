@@ -1,64 +1,42 @@
 use schemars::JsonSchema;
 
-use crate::{
-    config::default_enabled,
-    formatters::{format_multiple, mix_format::format_using_mix_format, MdsfFormatter},
-};
+use crate::formatters::{mix_format::format_using_mix_format, MdsfFormatter};
 
-use super::LanguageFormatter;
+use super::{Lang, LanguageFormatter};
 
 #[derive(Debug, Default, serde::Serialize, serde::Deserialize, JsonSchema)]
 #[cfg_attr(test, derive(PartialEq, Eq))]
-pub enum ElixirFormatter {
+pub enum Elixir {
     #[default]
     #[serde(rename = "mix_format")]
     MixFormat,
 }
 
-#[derive(Debug, serde::Serialize, serde::Deserialize, JsonSchema)]
-#[cfg_attr(test, derive(PartialEq, Eq))]
-pub struct Elixir {
-    #[serde(default = "default_enabled")]
-    pub enabled: bool,
-    #[serde(default)]
-    pub formatter: MdsfFormatter<ElixirFormatter>,
-}
-
-impl Default for Elixir {
+impl Default for Lang<Elixir> {
     #[inline]
     fn default() -> Self {
         Self {
             enabled: true,
-            formatter: MdsfFormatter::<ElixirFormatter>::default(),
+            formatter: MdsfFormatter::<Elixir>::default(),
         }
     }
 }
 
-impl Default for MdsfFormatter<ElixirFormatter> {
+impl Default for MdsfFormatter<Elixir> {
     #[inline]
     fn default() -> Self {
-        Self::Single(ElixirFormatter::MixFormat)
+        Self::Single(Elixir::MixFormat)
     }
 }
 
-impl LanguageFormatter<ElixirFormatter> for Elixir {
-    #[inline]
-    fn format(&self, snippet_path: &std::path::Path) -> std::io::Result<Option<String>> {
-        if !self.enabled {
-            return Ok(None);
-        }
-
-        format_multiple(&self.formatter, snippet_path, &Self::format_single)
-            .map(|(_should_continue, output)| output)
-    }
-
+impl LanguageFormatter for Elixir {
     #[inline]
     fn format_single(
-        formatter: &ElixirFormatter,
+        &self,
         snippet_path: &std::path::Path,
     ) -> std::io::Result<(bool, Option<String>)> {
-        match formatter {
-            ElixirFormatter::MixFormat => format_using_mix_format(snippet_path),
+        match self {
+            Self::MixFormat => format_using_mix_format(snippet_path),
         }
     }
 }
@@ -67,10 +45,10 @@ impl LanguageFormatter<ElixirFormatter> for Elixir {
 mod test_elixir {
     use crate::{
         formatters::{setup_snippet, MdsfFormatter},
-        languages::LanguageFormatter,
+        languages::Lang,
     };
 
-    use super::{Elixir, ElixirFormatter};
+    use super::Elixir;
 
     const INPUT: &str = "
         def              add(a  ,      b   )   do    a   +   b                 end
@@ -81,7 +59,7 @@ mod test_elixir {
 
     #[test]
     fn it_should_be_enabled_by_default() {
-        assert!(Elixir::default().enabled);
+        assert!(Lang::<Elixir>::default().enabled);
     }
 
     #[test]
@@ -89,9 +67,9 @@ mod test_elixir {
         let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");
         let snippet_path = snippet.path();
 
-        assert!(Elixir {
+        assert!(Lang::<Elixir> {
             enabled: false,
-            formatter: MdsfFormatter::Single(ElixirFormatter::default()),
+            formatter: MdsfFormatter::Single(Elixir::default()),
         }
         .format(snippet_path)
         .expect("it to not fail")
@@ -100,9 +78,9 @@ mod test_elixir {
 
     #[test]
     fn test_mix_format() {
-        let l = Elixir {
+        let l = Lang::<Elixir> {
             enabled: true,
-            formatter: MdsfFormatter::Single(ElixirFormatter::MixFormat),
+            formatter: MdsfFormatter::Single(Elixir::MixFormat),
         };
 
         let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");

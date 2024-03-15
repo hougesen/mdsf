@@ -1,64 +1,42 @@
 use schemars::JsonSchema;
 
-use crate::{
-    config::default_enabled,
-    formatters::{format_multiple, gleam_format::format_using_gleam_format, MdsfFormatter},
-};
+use crate::formatters::{gleam_format::format_using_gleam_format, MdsfFormatter};
 
-use super::LanguageFormatter;
+use super::{Lang, LanguageFormatter};
 
 #[derive(Debug, Default, serde::Serialize, serde::Deserialize, JsonSchema)]
 #[cfg_attr(test, derive(PartialEq, Eq))]
-pub enum GleamFormatter {
+pub enum Gleam {
     #[default]
     #[serde(rename = "gleam_format")]
     GleamFormat,
 }
 
-#[derive(Debug, serde::Serialize, serde::Deserialize, JsonSchema)]
-#[cfg_attr(test, derive(PartialEq, Eq))]
-pub struct Gleam {
-    #[serde(default = "default_enabled")]
-    pub enabled: bool,
-    #[serde(default)]
-    pub formatter: MdsfFormatter<GleamFormatter>,
-}
-
-impl Default for Gleam {
+impl Default for Lang<Gleam> {
     #[inline]
     fn default() -> Self {
         Self {
             enabled: true,
-            formatter: MdsfFormatter::<GleamFormatter>::default(),
+            formatter: MdsfFormatter::<Gleam>::default(),
         }
     }
 }
 
-impl Default for MdsfFormatter<GleamFormatter> {
+impl Default for MdsfFormatter<Gleam> {
     #[inline]
     fn default() -> Self {
-        Self::Single(GleamFormatter::GleamFormat)
+        Self::Single(Gleam::GleamFormat)
     }
 }
 
-impl LanguageFormatter<GleamFormatter> for Gleam {
-    #[inline]
-    fn format(&self, snippet_path: &std::path::Path) -> std::io::Result<Option<String>> {
-        if !self.enabled {
-            return Ok(None);
-        }
-
-        format_multiple(&self.formatter, snippet_path, &Self::format_single)
-            .map(|(_should_continue, output)| output)
-    }
-
+impl LanguageFormatter for Gleam {
     #[inline]
     fn format_single(
-        formatter: &GleamFormatter,
+        &self,
         snippet_path: &std::path::Path,
     ) -> std::io::Result<(bool, Option<String>)> {
-        match formatter {
-            GleamFormatter::GleamFormat => format_using_gleam_format(snippet_path),
+        match self {
+            Self::GleamFormat => format_using_gleam_format(snippet_path),
         }
     }
 }
@@ -67,10 +45,10 @@ impl LanguageFormatter<GleamFormatter> for Gleam {
 mod test_gleam {
     use crate::{
         formatters::{setup_snippet, MdsfFormatter},
-        languages::LanguageFormatter,
+        languages::Lang,
     };
 
-    use super::{Gleam, GleamFormatter};
+    use super::Gleam;
 
     const INPUT: &str = "pub fn add(a:Int,b:Int)->Int{a+b}";
 
@@ -78,7 +56,7 @@ mod test_gleam {
 
     #[test]
     fn it_should_be_enabled_by_default() {
-        assert!(Gleam::default().enabled);
+        assert!(Lang::<Gleam>::default().enabled);
     }
 
     #[test]
@@ -86,9 +64,9 @@ mod test_gleam {
         let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");
         let snippet_path = snippet.path();
 
-        assert!(Gleam {
+        assert!(Lang::<Gleam> {
             enabled: false,
-            formatter: MdsfFormatter::Single(GleamFormatter::default())
+            formatter: MdsfFormatter::Single(Gleam::default())
         }
         .format(snippet_path)
         .expect("it to not fail")
@@ -97,9 +75,9 @@ mod test_gleam {
 
     #[test]
     fn test_gleam_format() {
-        let l = Gleam {
+        let l = Lang::<Gleam> {
             enabled: true,
-            formatter: MdsfFormatter::Single(GleamFormatter::GleamFormat),
+            formatter: MdsfFormatter::Single(Gleam::GleamFormat),
         };
 
         let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");

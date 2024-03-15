@@ -5,7 +5,7 @@ use crate::languages::{
     gleam::Gleam, go::Go, html::Html, java::Java, javascript::JavaScript, json::Json, lua::Lua,
     markdown::Markdown, nim::Nim, objective_c::ObjectiveC, protobuf::Protobuf, python::Python,
     roc::Roc, ruby::Ruby, rust::Rust, shell::Shell, sql::Sql, toml::Toml, typescript::TypeScript,
-    vue::Vue, yaml::Yaml, zig::Zig,
+    vue::Vue, yaml::Yaml, zig::Zig, Lang,
 };
 
 #[derive(Debug, serde::Serialize, serde::Deserialize, JsonSchema)]
@@ -16,91 +16,91 @@ pub struct MdsfConfig {
     pub schema: String,
 
     #[serde(default)]
-    pub c: C,
+    pub c: Lang<C>,
 
     #[serde(default)]
-    pub cpp: Cpp,
+    pub cpp: Lang<Cpp>,
 
     #[serde(default)]
-    pub crystal: Crystal,
+    pub crystal: Lang<Crystal>,
 
     #[serde(default)]
-    pub csharp: CSharp,
+    pub csharp: Lang<CSharp>,
 
     #[serde(default)]
-    pub css: Css,
+    pub css: Lang<Css>,
 
     #[serde(default)]
-    pub dart: Dart,
+    pub dart: Lang<Dart>,
 
     #[serde(default)]
-    pub elixir: Elixir,
+    pub elixir: Lang<Elixir>,
 
     #[serde(default)]
-    pub gleam: Gleam,
+    pub gleam: Lang<Gleam>,
 
     #[serde(default)]
-    pub go: Go,
+    pub go: Lang<Go>,
 
     #[serde(default)]
-    pub html: Html,
+    pub html: Lang<Html>,
 
     #[serde(default)]
-    pub java: Java,
+    pub java: Lang<Java>,
 
     #[serde(default)]
-    pub javascript: JavaScript,
+    pub javascript: Lang<JavaScript>,
 
     #[serde(default)]
-    pub json: Json,
+    pub json: Lang<Json>,
 
     #[serde(default)]
-    pub lua: Lua,
+    pub lua: Lang<Lua>,
 
     #[serde(default)]
-    pub markdown: Markdown,
+    pub markdown: Lang<Markdown>,
 
     #[serde(default)]
-    pub nim: Nim,
+    pub nim: Lang<Nim>,
 
     #[serde(default)]
-    pub objective_c: ObjectiveC,
+    pub objective_c: Lang<ObjectiveC>,
 
     #[serde(default)]
-    pub protobuf: Protobuf,
+    pub protobuf: Lang<Protobuf>,
 
     #[serde(default)]
-    pub python: Python,
+    pub python: Lang<Python>,
 
     #[serde(default)]
-    pub roc: Roc,
+    pub roc: Lang<Roc>,
 
     #[serde(default)]
-    pub ruby: Ruby,
+    pub ruby: Lang<Ruby>,
 
     #[serde(default)]
-    pub rust: Rust,
+    pub rust: Lang<Rust>,
 
     #[serde(default)]
-    pub shell: Shell,
+    pub shell: Lang<Shell>,
 
     #[serde(default)]
-    pub sql: Sql,
+    pub sql: Lang<Sql>,
 
     #[serde(default)]
-    pub toml: Toml,
+    pub toml: Lang<Toml>,
 
     #[serde(default)]
-    pub typescript: TypeScript,
+    pub typescript: Lang<TypeScript>,
 
     #[serde(default)]
-    pub vue: Vue,
+    pub vue: Lang<Vue>,
 
     #[serde(default)]
-    pub yaml: Yaml,
+    pub yaml: Lang<Yaml>,
 
     #[serde(default)]
-    pub zig: Zig,
+    pub zig: Lang<Zig>,
 }
 
 impl Default for MdsfConfig {
@@ -109,35 +109,35 @@ impl Default for MdsfConfig {
         Self {
             schema: default_schema_location(),
 
-            c: C::default(),
-            cpp: Cpp::default(),
-            crystal: Crystal::default(),
-            csharp: CSharp::default(),
-            css: Css::default(),
-            dart: Dart::default(),
-            elixir: Elixir::default(),
-            gleam: Gleam::default(),
-            go: Go::default(),
-            html: Html::default(),
-            java: Java::default(),
-            javascript: JavaScript::default(),
-            json: Json::default(),
-            lua: Lua::default(),
-            markdown: Markdown::default(),
-            nim: Nim::default(),
-            objective_c: ObjectiveC::default(),
-            protobuf: Protobuf::default(),
-            python: Python::default(),
-            roc: Roc::default(),
-            ruby: Ruby::default(),
-            rust: Rust::default(),
-            shell: Shell::default(),
-            sql: Sql::default(),
-            toml: Toml::default(),
-            typescript: TypeScript::default(),
-            vue: Vue::default(),
-            yaml: Yaml::default(),
-            zig: Zig::default(),
+            c: Lang::<C>::default(),
+            cpp: Lang::<Cpp>::default(),
+            crystal: Lang::<Crystal>::default(),
+            csharp: Lang::<CSharp>::default(),
+            css: Lang::<Css>::default(),
+            dart: Lang::<Dart>::default(),
+            elixir: Lang::<Elixir>::default(),
+            gleam: Lang::<Gleam>::default(),
+            go: Lang::<Go>::default(),
+            html: Lang::<Html>::default(),
+            java: Lang::<Java>::default(),
+            javascript: Lang::<JavaScript>::default(),
+            json: Lang::<Json>::default(),
+            lua: Lang::<Lua>::default(),
+            markdown: Lang::<Markdown>::default(),
+            nim: Lang::<Nim>::default(),
+            objective_c: Lang::<ObjectiveC>::default(),
+            protobuf: Lang::<Protobuf>::default(),
+            python: Lang::<Python>::default(),
+            roc: Lang::<Roc>::default(),
+            ruby: Lang::<Ruby>::default(),
+            rust: Lang::<Rust>::default(),
+            shell: Lang::<Shell>::default(),
+            sql: Lang::<Sql>::default(),
+            toml: Lang::<Toml>::default(),
+            typescript: Lang::<TypeScript>::default(),
+            vue: Lang::<Vue>::default(),
+            yaml: Lang::<Yaml>::default(),
+            zig: Lang::<Zig>::default(),
         }
     }
 }

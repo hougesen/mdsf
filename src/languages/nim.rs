@@ -1,64 +1,42 @@
 use schemars::JsonSchema;
 
-use crate::{
-    config::default_enabled,
-    formatters::{format_multiple, nimpretty::format_using_nimpretty, MdsfFormatter},
-};
+use crate::formatters::{nimpretty::format_using_nimpretty, MdsfFormatter};
 
-use super::LanguageFormatter;
+use super::{Lang, LanguageFormatter};
 
 #[derive(Debug, Default, serde::Serialize, serde::Deserialize, JsonSchema)]
 #[cfg_attr(test, derive(PartialEq, Eq))]
-pub enum NimFormatter {
+pub enum Nim {
     #[default]
     #[serde(rename = "nimpretty")]
     Nimpretty,
 }
 
-#[derive(Debug, serde::Serialize, serde::Deserialize, JsonSchema)]
-#[cfg_attr(test, derive(PartialEq, Eq))]
-pub struct Nim {
-    #[serde(default = "default_enabled")]
-    pub enabled: bool,
-    #[serde(default)]
-    pub formatter: MdsfFormatter<NimFormatter>,
-}
-
-impl Default for Nim {
+impl Default for Lang<Nim> {
     #[inline]
     fn default() -> Self {
         Self {
             enabled: true,
-            formatter: MdsfFormatter::<NimFormatter>::default(),
+            formatter: MdsfFormatter::<Nim>::default(),
         }
     }
 }
 
-impl Default for MdsfFormatter<NimFormatter> {
+impl Default for MdsfFormatter<Nim> {
     #[inline]
     fn default() -> Self {
-        Self::Single(NimFormatter::Nimpretty)
+        Self::Single(Nim::Nimpretty)
     }
 }
 
-impl LanguageFormatter<NimFormatter> for Nim {
-    #[inline]
-    fn format(&self, snippet_path: &std::path::Path) -> std::io::Result<Option<String>> {
-        if !self.enabled {
-            return Ok(None);
-        }
-
-        format_multiple(&self.formatter, snippet_path, &Self::format_single)
-            .map(|(_should_continue, output)| output)
-    }
-
+impl LanguageFormatter for Nim {
     #[inline]
     fn format_single(
-        formatter: &NimFormatter,
+        &self,
         snippet_path: &std::path::Path,
     ) -> std::io::Result<(bool, Option<String>)> {
-        match formatter {
-            NimFormatter::Nimpretty => format_using_nimpretty(snippet_path),
+        match self {
+            Self::Nimpretty => format_using_nimpretty(snippet_path),
         }
     }
 }
@@ -67,10 +45,10 @@ impl LanguageFormatter<NimFormatter> for Nim {
 mod test_nim {
     use crate::{
         formatters::{setup_snippet, MdsfFormatter},
-        languages::LanguageFormatter,
+        languages::Lang,
     };
 
-    use super::{Nim, NimFormatter};
+    use super::Nim;
 
     const INPUT: &str = "proc           add( a         :int , b:int )        : int =
   return a +          b  ";
@@ -79,7 +57,7 @@ mod test_nim {
 
     #[test]
     fn it_should_be_enabled_by_default() {
-        assert!(Nim::default().enabled);
+        assert!(Lang::<Nim>::default().enabled);
     }
 
     #[test]
@@ -87,9 +65,9 @@ mod test_nim {
         let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");
         let snippet_path = snippet.path();
 
-        assert!(Nim {
+        assert!(Lang::<Nim> {
             enabled: false,
-            formatter: MdsfFormatter::Single(NimFormatter::default()),
+            formatter: MdsfFormatter::Single(Nim::default()),
         }
         .format(snippet_path)
         .expect("it to not fail")
@@ -97,10 +75,10 @@ mod test_nim {
     }
 
     #[test]
-    fn test_clang_format() {
-        let l = Nim {
+    fn test_nimpretty() {
+        let l = Lang::<Nim> {
             enabled: true,
-            formatter: MdsfFormatter::Single(NimFormatter::Nimpretty),
+            formatter: MdsfFormatter::Single(Nim::Nimpretty),
         };
 
         let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");

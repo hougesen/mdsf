@@ -1,3 +1,7 @@
+use schemars::JsonSchema;
+
+use crate::formatters::MdsfFormatter;
+
 pub enum Language {
     C,
     Crystal,
@@ -76,11 +80,9 @@ pub mod vue;
 pub mod yaml;
 pub mod zig;
 
-pub trait LanguageFormatter<T> {
-    fn format(&self, snippet_path: &std::path::Path) -> std::io::Result<Option<String>>;
-
+pub trait LanguageFormatter {
     fn format_single(
-        formatter: &T,
+        &self,
         snippet_path: &std::path::Path,
     ) -> std::io::Result<(bool, Option<String>)>;
 }
@@ -157,6 +159,52 @@ impl Language {
             Self::Vue => ".vue",
             Self::Yaml => ".yml",
             Self::Zig => ".zig",
+        }
+    }
+}
+
+#[derive(Debug, serde::Serialize, serde::Deserialize, JsonSchema)]
+#[cfg_attr(test, derive(PartialEq, Eq))]
+pub struct Lang<T>
+where
+    T: LanguageFormatter,
+{
+    pub enabled: bool,
+    pub formatter: MdsfFormatter<T>,
+}
+
+impl<T: LanguageFormatter> Lang<T> {
+    #[inline]
+    pub fn format(&self, snippet_path: &std::path::Path) -> std::io::Result<Option<String>> {
+        if !self.enabled {
+            return Ok(None);
+        }
+
+        Self::format_multiple(&self.formatter, snippet_path)
+            .map(|(_should_continue, output)| output)
+    }
+
+    #[inline]
+    pub fn format_multiple(
+        formatter: &MdsfFormatter<T>,
+        snippet_path: &std::path::Path,
+    ) -> std::io::Result<(bool, Option<String>)> {
+        match formatter {
+            MdsfFormatter::Single(f) => f.format_single(snippet_path),
+
+            MdsfFormatter::Multiple(formatters) => {
+                for f in formatters {
+                    let res = Self::format_multiple(f, snippet_path);
+
+                    if let Ok((should_continue, code)) = res {
+                        if !should_continue {
+                            return Ok((should_continue, code));
+                        }
+                    }
+                }
+
+                Ok((true, None))
+            }
         }
     }
 }

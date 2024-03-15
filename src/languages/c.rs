@@ -1,64 +1,42 @@
 use schemars::JsonSchema;
 
-use crate::{
-    config::default_enabled,
-    formatters::{clang_format::format_using_clang_format, format_multiple, MdsfFormatter},
-};
+use crate::formatters::{clang_format::format_using_clang_format, MdsfFormatter};
 
-use super::LanguageFormatter;
+use super::{Lang, LanguageFormatter};
 
 #[derive(Debug, Default, serde::Serialize, serde::Deserialize, JsonSchema)]
 #[cfg_attr(test, derive(PartialEq, Eq))]
-pub enum CFormatter {
+pub enum C {
     #[default]
     #[serde(rename = "clang-format")]
     ClangFormat,
 }
 
-#[derive(Debug, serde::Serialize, serde::Deserialize, JsonSchema)]
-#[cfg_attr(test, derive(PartialEq, Eq))]
-pub struct C {
-    #[serde(default = "default_enabled")]
-    pub enabled: bool,
-    #[serde(default)]
-    pub formatter: MdsfFormatter<CFormatter>,
-}
-
-impl Default for C {
+impl Default for Lang<C> {
     #[inline]
     fn default() -> Self {
         Self {
             enabled: true,
-            formatter: MdsfFormatter::<CFormatter>::default(),
+            formatter: MdsfFormatter::<C>::default(),
         }
     }
 }
 
-impl Default for MdsfFormatter<CFormatter> {
+impl Default for MdsfFormatter<C> {
     #[inline]
     fn default() -> Self {
-        Self::Single(CFormatter::ClangFormat)
+        Self::Single(C::ClangFormat)
     }
 }
 
-impl LanguageFormatter<CFormatter> for C {
-    #[inline]
-    fn format(&self, snippet_path: &std::path::Path) -> std::io::Result<Option<String>> {
-        if !self.enabled {
-            return Ok(None);
-        }
-
-        format_multiple(&self.formatter, snippet_path, &Self::format_single)
-            .map(|(_should_continue, output)| output)
-    }
-
+impl LanguageFormatter for C {
     #[inline]
     fn format_single(
-        formatter: &CFormatter,
+        &self,
         snippet_path: &std::path::Path,
     ) -> std::io::Result<(bool, Option<String>)> {
-        match formatter {
-            CFormatter::ClangFormat => format_using_clang_format(snippet_path),
+        match self {
+            Self::ClangFormat => format_using_clang_format(snippet_path),
         }
     }
 }
@@ -67,10 +45,10 @@ impl LanguageFormatter<CFormatter> for C {
 mod test_c {
     use crate::{
         formatters::{setup_snippet, MdsfFormatter},
-        languages::LanguageFormatter,
+        languages::Lang,
     };
 
-    use super::{CFormatter, C};
+    use super::C;
 
     const INPUT: &str = "int add(int a,int b){
                 a-b;
@@ -81,7 +59,7 @@ mod test_c {
 
     #[test]
     fn it_should_be_enabled_by_default() {
-        assert!(C::default().enabled);
+        assert!(Lang::<C>::default().enabled);
     }
 
     #[test]
@@ -89,9 +67,9 @@ mod test_c {
         let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");
         let snippet_path = snippet.path();
 
-        assert!(C {
+        assert!(Lang::<C> {
             enabled: false,
-            formatter: MdsfFormatter::Single(CFormatter::default()),
+            formatter: MdsfFormatter::Single(C::default()),
         }
         .format(snippet_path)
         .expect("it to not fail")
@@ -100,9 +78,9 @@ mod test_c {
 
     #[test]
     fn test_clang_format() {
-        let l = C {
+        let l = Lang::<C> {
             enabled: true,
-            formatter: MdsfFormatter::Single(CFormatter::ClangFormat),
+            formatter: MdsfFormatter::Single(C::ClangFormat),
         };
 
         let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");

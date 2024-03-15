@@ -1,64 +1,42 @@
 use schemars::JsonSchema;
 
-use crate::{
-    config::default_enabled,
-    formatters::{crystal_format::format_using_crystal_format, format_multiple, MdsfFormatter},
-};
+use crate::formatters::{crystal_format::format_using_crystal_format, MdsfFormatter};
 
-use super::LanguageFormatter;
+use super::{Lang, LanguageFormatter};
 
 #[derive(Debug, Default, serde::Serialize, serde::Deserialize, JsonSchema)]
 #[cfg_attr(test, derive(PartialEq, Eq))]
-pub enum CrystalFormatter {
+pub enum Crystal {
     #[default]
     #[serde(rename = "crystal_format")]
     CrystalFormat,
 }
 
-#[derive(Debug, serde::Serialize, serde::Deserialize, JsonSchema)]
-#[cfg_attr(test, derive(PartialEq, Eq))]
-pub struct Crystal {
-    #[serde(default = "default_enabled")]
-    pub enabled: bool,
-    #[serde(default)]
-    pub formatter: MdsfFormatter<CrystalFormatter>,
-}
-
-impl Default for Crystal {
+impl Default for Lang<Crystal> {
     #[inline]
     fn default() -> Self {
         Self {
             enabled: true,
-            formatter: MdsfFormatter::<CrystalFormatter>::default(),
+            formatter: MdsfFormatter::<Crystal>::default(),
         }
     }
 }
 
-impl Default for MdsfFormatter<CrystalFormatter> {
+impl Default for MdsfFormatter<Crystal> {
     #[inline]
     fn default() -> Self {
-        Self::Single(CrystalFormatter::CrystalFormat)
+        Self::Single(Crystal::CrystalFormat)
     }
 }
 
-impl LanguageFormatter<CrystalFormatter> for Crystal {
-    #[inline]
-    fn format(&self, snippet_path: &std::path::Path) -> std::io::Result<Option<String>> {
-        if !self.enabled {
-            return Ok(None);
-        }
-
-        format_multiple(&self.formatter, snippet_path, &Self::format_single)
-            .map(|(_modified, code)| code)
-    }
-
+impl LanguageFormatter for Crystal {
     #[inline]
     fn format_single(
-        formatter: &CrystalFormatter,
+        &self,
         snippet_path: &std::path::Path,
     ) -> std::io::Result<(bool, Option<String>)> {
-        match formatter {
-            CrystalFormatter::CrystalFormat => format_using_crystal_format(snippet_path),
+        match self {
+            Self::CrystalFormat => format_using_crystal_format(snippet_path),
         }
     }
 }
@@ -67,10 +45,10 @@ impl LanguageFormatter<CrystalFormatter> for Crystal {
 mod test_crystal {
     use crate::{
         formatters::{setup_snippet, MdsfFormatter},
-        languages::LanguageFormatter,
+        languages::Lang,
     };
 
-    use super::{Crystal, CrystalFormatter};
+    use super::Crystal;
 
     const INPUT: &str = "def add(a, b)  return a + b end";
 
@@ -78,7 +56,7 @@ mod test_crystal {
 
     #[test]
     fn it_should_be_enabled_by_default() {
-        assert!(Crystal::default().enabled);
+        assert!(Lang::<Crystal>::default().enabled);
     }
 
     #[test]
@@ -86,9 +64,9 @@ mod test_crystal {
         let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");
         let snippet_path = snippet.path();
 
-        assert!(Crystal {
+        assert!(Lang::<Crystal> {
             enabled: false,
-            formatter: MdsfFormatter::Single(CrystalFormatter::CrystalFormat),
+            formatter: MdsfFormatter::Single(Crystal::CrystalFormat),
         }
         .format(snippet_path)
         .expect("it to not fail")
@@ -101,9 +79,9 @@ mod test_crystal {
   return a + b
 end
 ";
-        let l = Crystal {
+        let l = Lang::<Crystal> {
             enabled: true,
-            formatter: MdsfFormatter::Single(CrystalFormatter::CrystalFormat),
+            formatter: MdsfFormatter::Single(Crystal::CrystalFormat),
         };
 
         let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");

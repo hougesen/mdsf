@@ -1,17 +1,12 @@
 use schemars::JsonSchema;
 
-use crate::{
-    config::default_enabled,
-    formatters::{
-        format_multiple, gofmt::format_using_gofmt, gofumpt::format_using_gofumpt, MdsfFormatter,
-    },
-};
+use crate::formatters::{gofmt::format_using_gofmt, gofumpt::format_using_gofumpt, MdsfFormatter};
 
-use super::LanguageFormatter;
+use super::{Lang, LanguageFormatter};
 
 #[derive(Debug, Default, serde::Serialize, serde::Deserialize, JsonSchema)]
 #[cfg_attr(test, derive(PartialEq, Eq))]
-pub enum GoFormatter {
+pub enum Go {
     #[default]
     #[serde(rename = "gofmt")]
     GoFmt,
@@ -19,54 +14,32 @@ pub enum GoFormatter {
     GoFumpt,
 }
 
-#[derive(Debug, serde::Serialize, serde::Deserialize, JsonSchema)]
-#[cfg_attr(test, derive(PartialEq, Eq))]
-pub struct Go {
-    #[serde(default = "default_enabled")]
-    pub enabled: bool,
-    #[serde(default)]
-    pub formatter: MdsfFormatter<GoFormatter>,
-}
-
-impl Default for Go {
+impl Default for Lang<Go> {
     #[inline]
     fn default() -> Self {
         Self {
             enabled: true,
-            formatter: MdsfFormatter::<GoFormatter>::default(),
+            formatter: MdsfFormatter::<Go>::default(),
         }
     }
 }
 
-impl Default for MdsfFormatter<GoFormatter> {
+impl Default for MdsfFormatter<Go> {
     #[inline]
     fn default() -> Self {
-        Self::Multiple(vec![
-            Self::Single(GoFormatter::GoFumpt),
-            Self::Single(GoFormatter::GoFmt),
-        ])
+        Self::Multiple(vec![Self::Single(Go::GoFumpt), Self::Single(Go::GoFmt)])
     }
 }
 
-impl LanguageFormatter<GoFormatter> for Go {
-    #[inline]
-    fn format(&self, snippet_path: &std::path::Path) -> std::io::Result<Option<String>> {
-        if !self.enabled {
-            return Ok(None);
-        }
-
-        format_multiple(&self.formatter, snippet_path, &Self::format_single)
-            .map(|(_should_continue, output)| output)
-    }
-
+impl LanguageFormatter for Go {
     #[inline]
     fn format_single(
-        formatter: &GoFormatter,
+        &self,
         snippet_path: &std::path::Path,
     ) -> std::io::Result<(bool, Option<String>)> {
-        match formatter {
-            GoFormatter::GoFmt => format_using_gofmt(snippet_path),
-            GoFormatter::GoFumpt => format_using_gofumpt(snippet_path),
+        match self {
+            Self::GoFmt => format_using_gofmt(snippet_path),
+            Self::GoFumpt => format_using_gofumpt(snippet_path),
         }
     }
 }
@@ -75,10 +48,10 @@ impl LanguageFormatter<GoFormatter> for Go {
 mod test_go {
     use crate::{
         formatters::{setup_snippet, MdsfFormatter},
-        languages::LanguageFormatter,
+        languages::Lang,
     };
 
-    use super::{Go, GoFormatter};
+    use super::Go;
 
     const INPUT: &str = "package main
 
@@ -92,7 +65,7 @@ mod test_go {
 
     #[test]
     fn it_should_be_enabled_by_default() {
-        assert!(Go::default().enabled);
+        assert!(Lang::<Go>::default().enabled);
     }
 
     #[test]
@@ -100,9 +73,9 @@ mod test_go {
         let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");
         let snippet_path = snippet.path();
 
-        assert!(Go {
+        assert!(Lang::<Go> {
             enabled: false,
-            formatter: MdsfFormatter::<GoFormatter>::default(),
+            formatter: MdsfFormatter::<Go>::default(),
         }
         .format(snippet_path)
         .expect("it to not fail")
@@ -111,9 +84,9 @@ mod test_go {
 
     #[test]
     fn test_gofmt() {
-        let l = Go {
+        let l = Lang::<Go> {
             enabled: true,
-            formatter: MdsfFormatter::Single(GoFormatter::GoFmt),
+            formatter: MdsfFormatter::Single(Go::GoFmt),
         };
 
         let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");
@@ -136,9 +109,9 @@ func add(a int, b int) int {
 
     #[test]
     fn test_gofumpt() {
-        let l = Go {
+        let l = Lang::<Go> {
             enabled: true,
-            formatter: MdsfFormatter::Single(GoFormatter::GoFumpt),
+            formatter: MdsfFormatter::Single(Go::GoFumpt),
         };
 
         let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");

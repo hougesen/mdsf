@@ -1,64 +1,42 @@
 use schemars::JsonSchema;
 
-use crate::{
-    config::default_enabled,
-    formatters::{format_multiple, prettier::format_using_prettier, MdsfFormatter},
-};
+use crate::formatters::{prettier::format_using_prettier, MdsfFormatter};
 
-use super::LanguageFormatter;
+use super::{Lang, LanguageFormatter};
 
 #[derive(Debug, Default, serde::Serialize, serde::Deserialize, JsonSchema)]
 #[cfg_attr(test, derive(PartialEq, Eq))]
-pub enum HtmlFormatter {
+pub enum Html {
     #[default]
     #[serde(rename = "prettier")]
     Prettier,
 }
 
-#[derive(Debug, serde::Serialize, serde::Deserialize, JsonSchema)]
-#[cfg_attr(test, derive(PartialEq, Eq))]
-pub struct Html {
-    #[serde(default = "default_enabled")]
-    pub enabled: bool,
-    #[serde(default)]
-    pub formatter: MdsfFormatter<HtmlFormatter>,
-}
-
-impl Default for Html {
+impl Default for Lang<Html> {
     #[inline]
     fn default() -> Self {
         Self {
             enabled: true,
-            formatter: MdsfFormatter::<HtmlFormatter>::default(),
+            formatter: MdsfFormatter::<Html>::default(),
         }
     }
 }
 
-impl Default for MdsfFormatter<HtmlFormatter> {
+impl Default for MdsfFormatter<Html> {
     #[inline]
     fn default() -> Self {
-        Self::Single(HtmlFormatter::Prettier)
+        Self::Single(Html::Prettier)
     }
 }
 
-impl LanguageFormatter<HtmlFormatter> for Html {
-    #[inline]
-    fn format(&self, snippet_path: &std::path::Path) -> std::io::Result<Option<String>> {
-        if !self.enabled {
-            return Ok(None);
-        }
-
-        format_multiple(&self.formatter, snippet_path, &Self::format_single)
-            .map(|(_should_continue, output)| output)
-    }
-
+impl LanguageFormatter for Html {
     #[inline]
     fn format_single(
-        formatter: &HtmlFormatter,
+        &self,
         snippet_path: &std::path::Path,
     ) -> std::io::Result<(bool, Option<String>)> {
-        match formatter {
-            HtmlFormatter::Prettier => format_using_prettier(snippet_path, true),
+        match self {
+            Self::Prettier => format_using_prettier(snippet_path, true),
         }
     }
 }
@@ -67,10 +45,10 @@ impl LanguageFormatter<HtmlFormatter> for Html {
 mod test_html {
     use crate::{
         formatters::{setup_snippet, MdsfFormatter},
-        languages::LanguageFormatter,
+        languages::Lang,
     };
 
-    use super::{Html, HtmlFormatter};
+    use super::Html;
 
     const INPUT: &str =  " <!doctype html> <html> <head> <style> body {background-color: powderblue;} h1   {color: blue;} p    {color: red;} </style> </head> <body>  <h1>This is a heading</h1> <p>This is a paragraph.</p>  </body> </html> ";
 
@@ -78,7 +56,7 @@ mod test_html {
 
     #[test]
     fn it_should_be_enabled_by_default() {
-        assert!(Html::default().enabled);
+        assert!(Lang::<Html>::default().enabled);
     }
 
     #[test]
@@ -86,9 +64,9 @@ mod test_html {
         let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");
         let snippet_path = snippet.path();
 
-        assert!(Html {
+        assert!(Lang::<Html> {
             enabled: false,
-            formatter: MdsfFormatter::Single(HtmlFormatter::default()),
+            formatter: MdsfFormatter::Single(Html::default()),
         }
         .format(snippet_path)
         .expect("it to not fail")
@@ -119,9 +97,9 @@ mod test_html {
 </html>
 ";
 
-        let l = Html {
+        let l = Lang::<Html> {
             enabled: true,
-            formatter: MdsfFormatter::Single(HtmlFormatter::Prettier),
+            formatter: MdsfFormatter::Single(Html::Prettier),
         };
 
         let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");

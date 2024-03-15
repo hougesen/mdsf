@@ -1,64 +1,42 @@
 use schemars::JsonSchema;
 
-use crate::{
-    config::default_enabled,
-    formatters::{clang_format::format_using_clang_format, format_multiple, MdsfFormatter},
-};
+use crate::formatters::{clang_format::format_using_clang_format, MdsfFormatter};
 
-use super::LanguageFormatter;
+use super::{Lang, LanguageFormatter};
 
 #[derive(Debug, Default, serde::Serialize, serde::Deserialize, JsonSchema)]
 #[cfg_attr(test, derive(PartialEq, Eq))]
-pub enum ProtobufFormatter {
+pub enum Protobuf {
     #[default]
     #[serde(rename = "clang-format")]
     ClangFormat,
 }
 
-#[derive(Debug, serde::Serialize, serde::Deserialize, JsonSchema)]
-#[cfg_attr(test, derive(PartialEq, Eq))]
-pub struct Protobuf {
-    #[serde(default = "default_enabled")]
-    pub enabled: bool,
-    #[serde(default)]
-    pub formatter: MdsfFormatter<ProtobufFormatter>,
-}
-
-impl Default for Protobuf {
+impl Default for Lang<Protobuf> {
     #[inline]
     fn default() -> Self {
         Self {
             enabled: true,
-            formatter: MdsfFormatter::<ProtobufFormatter>::default(),
+            formatter: MdsfFormatter::<Protobuf>::default(),
         }
     }
 }
 
-impl Default for MdsfFormatter<ProtobufFormatter> {
+impl Default for MdsfFormatter<Protobuf> {
     #[inline]
     fn default() -> Self {
-        Self::Single(ProtobufFormatter::ClangFormat)
+        Self::Single(Protobuf::ClangFormat)
     }
 }
 
-impl LanguageFormatter<ProtobufFormatter> for Protobuf {
-    #[inline]
-    fn format(&self, snippet_path: &std::path::Path) -> std::io::Result<Option<String>> {
-        if !self.enabled {
-            return Ok(None);
-        }
-
-        format_multiple(&self.formatter, snippet_path, &Self::format_single)
-            .map(|(_should_continue, output)| output)
-    }
-
+impl LanguageFormatter for Protobuf {
     #[inline]
     fn format_single(
-        formatter: &ProtobufFormatter,
+        &self,
         snippet_path: &std::path::Path,
     ) -> std::io::Result<(bool, Option<String>)> {
-        match formatter {
-            ProtobufFormatter::ClangFormat => format_using_clang_format(snippet_path),
+        match self {
+            Self::ClangFormat => format_using_clang_format(snippet_path),
         }
     }
 }
@@ -67,10 +45,10 @@ impl LanguageFormatter<ProtobufFormatter> for Protobuf {
 mod test_protobuf {
     use crate::{
         formatters::{setup_snippet, MdsfFormatter},
-        languages::LanguageFormatter,
+        languages::Lang,
     };
 
-    use super::{Protobuf, ProtobufFormatter};
+    use super::Protobuf;
 
     const INPUT: &str = "service SearchService {
                               rpc Search (SearchRequest) returns (SearchResponse);
@@ -80,7 +58,7 @@ mod test_protobuf {
 
     #[test]
     fn it_should_be_enabled_by_default() {
-        assert!(Protobuf::default().enabled);
+        assert!(Lang::<Protobuf>::default().enabled);
     }
 
     #[test]
@@ -88,9 +66,9 @@ mod test_protobuf {
         let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");
         let snippet_path = snippet.path();
 
-        assert!(Protobuf {
+        assert!(Lang::<Protobuf> {
             enabled: false,
-            formatter: MdsfFormatter::Single(ProtobufFormatter::default()),
+            formatter: MdsfFormatter::Single(Protobuf::default()),
         }
         .format(snippet_path)
         .expect("it to not fail")
@@ -102,9 +80,9 @@ mod test_protobuf {
         let expected_output =
             "service SearchService { rpc Search(SearchRequest) returns (SearchResponse); }";
 
-        let l = Protobuf {
+        let l = Lang::<Protobuf> {
             enabled: true,
-            formatter: MdsfFormatter::Single(ProtobufFormatter::ClangFormat),
+            formatter: MdsfFormatter::Single(Protobuf::ClangFormat),
         };
 
         let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");
