@@ -26,6 +26,7 @@ test-coverage:
 
 precommit:
 	cargo clean
+	cargo fmt
 	make build
 	make lint
 	make test

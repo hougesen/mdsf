@@ -117,7 +117,7 @@ pub fn format_file(config: &MdsfConfig, path: &std::path::Path) -> Result<(), Md
         s.finalize(&mut output).map_err(MdsfError::from)?;
     }
 
-    output = output.trim().to_owned();
+    let mut output = output.trim().to_owned();
 
     if !frontmatter.is_empty() {
         output = format!("---\n{frontmatter}\n---\n\n{output}");

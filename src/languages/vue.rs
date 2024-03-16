@@ -1,55 +1,54 @@
 use schemars::JsonSchema;
 
-use crate::{config::default_enabled, formatters::prettier::format_using_prettier};
+use crate::formatters::{prettier::format_using_prettier, MdsfFormatter};
 
-use super::LanguageFormatter;
+use super::{Lang, LanguageFormatter};
 
 #[derive(Debug, Default, serde::Serialize, serde::Deserialize, JsonSchema)]
 #[cfg_attr(test, derive(PartialEq, Eq))]
-pub enum VueFormatter {
+pub enum Vue {
     #[default]
     #[serde(rename = "prettier")]
     Prettier,
 }
 
-#[derive(Debug, serde::Serialize, serde::Deserialize, JsonSchema)]
-#[cfg_attr(test, derive(PartialEq, Eq))]
-pub struct Vue {
-    #[serde(default = "default_enabled")]
-    pub enabled: bool,
-    #[serde(default)]
-    pub formatter: VueFormatter,
-}
-
-impl Default for Vue {
+impl Default for Lang<Vue> {
     #[inline]
     fn default() -> Self {
         Self {
             enabled: true,
-            formatter: VueFormatter::default(),
+            formatter: MdsfFormatter::<Vue>::default(),
         }
+    }
+}
+
+impl Default for MdsfFormatter<Vue> {
+    #[inline]
+    fn default() -> Self {
+        Self::Single(Vue::Prettier)
     }
 }
 
 impl LanguageFormatter for Vue {
     #[inline]
-    fn format(&self, snippet_path: &std::path::Path) -> std::io::Result<Option<String>> {
-        if !self.enabled {
-            return Ok(None);
+    fn format_snippet(
+        &self,
+        snippet_path: &std::path::Path,
+    ) -> std::io::Result<(bool, Option<String>)> {
+        match self {
+            Self::Prettier => format_using_prettier(snippet_path, true),
         }
-
-        match self.formatter {
-            VueFormatter::Prettier => format_using_prettier(snippet_path, true),
-        }
-        .map(|res| res.1)
     }
 }
 
 #[cfg(test)]
 mod test_vue {
-    use crate::{formatters::setup_snippet, languages::LanguageFormatter};
+    use crate::{
+        formatters::{setup_snippet, MdsfFormatter},
+        languages::Lang,
+    };
 
-    use super::{Vue, VueFormatter};
+    use super::Vue;
 
     const INPUT: &str = "<script lang=\"ts\"   setup >
 import {
@@ -74,14 +73,14 @@ import {
 
     #[test]
     fn it_should_be_enabled_by_default() {
-        assert!(Vue::default().enabled);
+        assert!(Lang::<Vue>::default().enabled);
     }
 
     #[test]
     fn it_should_not_format_when_enabled_is_false() {
-        let l = Vue {
+        let l = Lang::<Vue> {
             enabled: false,
-            formatter: VueFormatter::Prettier,
+            formatter: MdsfFormatter::Single(Vue::Prettier),
         };
 
         let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");
@@ -92,9 +91,9 @@ import {
 
     #[test]
     fn test_prettier() {
-        let l = Vue {
+        let l = Lang::<Vue> {
             enabled: true,
-            formatter: VueFormatter::Prettier,
+            formatter: MdsfFormatter::Single(Vue::Prettier),
         };
 
         let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");

@@ -1,55 +1,54 @@
 use schemars::JsonSchema;
 
-use crate::{config::default_enabled, formatters::clang_format::format_using_clang_format};
+use crate::formatters::{clang_format::format_using_clang_format, MdsfFormatter};
 
-use super::LanguageFormatter;
+use super::{Lang, LanguageFormatter};
 
 #[derive(Debug, Default, serde::Serialize, serde::Deserialize, JsonSchema)]
 #[cfg_attr(test, derive(PartialEq, Eq))]
-pub enum JavaFormatter {
+pub enum Java {
     #[default]
     #[serde(rename = "clang-format")]
     ClangFormat,
 }
 
-#[derive(Debug, serde::Serialize, serde::Deserialize, JsonSchema)]
-#[cfg_attr(test, derive(PartialEq, Eq))]
-pub struct Java {
-    #[serde(default = "default_enabled")]
-    pub enabled: bool,
-    #[serde(default)]
-    pub formatter: JavaFormatter,
-}
-
-impl Default for Java {
+impl Default for Lang<Java> {
     #[inline]
     fn default() -> Self {
         Self {
             enabled: true,
-            formatter: JavaFormatter::default(),
+            formatter: MdsfFormatter::<Java>::default(),
         }
+    }
+}
+
+impl Default for MdsfFormatter<Java> {
+    #[inline]
+    fn default() -> Self {
+        Self::Single(Java::ClangFormat)
     }
 }
 
 impl LanguageFormatter for Java {
     #[inline]
-    fn format(&self, snippet_path: &std::path::Path) -> std::io::Result<Option<String>> {
-        if !self.enabled {
-            return Ok(None);
+    fn format_snippet(
+        &self,
+        snippet_path: &std::path::Path,
+    ) -> std::io::Result<(bool, Option<String>)> {
+        match self {
+            Self::ClangFormat => format_using_clang_format(snippet_path),
         }
-
-        match self.formatter {
-            JavaFormatter::ClangFormat => format_using_clang_format(snippet_path),
-        }
-        .map(|res| res.1)
     }
 }
 
 #[cfg(test)]
 mod test_java {
-    use crate::{formatters::setup_snippet, languages::LanguageFormatter};
+    use crate::{
+        formatters::{setup_snippet, MdsfFormatter},
+        languages::Lang,
+    };
 
-    use super::{Java, JavaFormatter};
+    use super::Java;
 
     const INPUT: &str = "class HelloWorld {
     public static void main(String[] args) {
@@ -62,7 +61,7 @@ mod test_java {
 
     #[test]
     fn it_should_be_enabled_by_default() {
-        assert!(Java::default().enabled);
+        assert!(Lang::<Java>::default().enabled);
     }
 
     #[test]
@@ -70,9 +69,9 @@ mod test_java {
         let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");
         let snippet_path = snippet.path();
 
-        assert!(Java {
+        assert!(Lang::<Java> {
             enabled: false,
-            formatter: JavaFormatter::default(),
+            formatter: MdsfFormatter::Single(Java::default()),
         }
         .format(snippet_path)
         .expect("it to not fail")
@@ -87,9 +86,9 @@ mod test_java {
     System.out.println(\"World!\");
   }
 }";
-        let l = Java {
+        let l = Lang::<Java> {
             enabled: true,
-            formatter: JavaFormatter::ClangFormat,
+            formatter: MdsfFormatter::Single(Java::ClangFormat),
         };
 
         let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");

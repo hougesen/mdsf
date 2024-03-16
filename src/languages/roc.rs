@@ -1,55 +1,54 @@
 use schemars::JsonSchema;
 
-use crate::{config::default_enabled, formatters::roc_format::format_using_roc_format};
+use crate::formatters::{roc_format::format_using_roc_format, MdsfFormatter};
 
-use super::LanguageFormatter;
+use super::{Lang, LanguageFormatter};
 
 #[derive(Debug, Default, serde::Serialize, serde::Deserialize, JsonSchema)]
 #[cfg_attr(test, derive(PartialEq, Eq))]
-pub enum RocFormatter {
+pub enum Roc {
     #[default]
     #[serde(rename = "roc_format")]
     RocFormat,
 }
 
-#[derive(Debug, serde::Serialize, serde::Deserialize, JsonSchema)]
-#[cfg_attr(test, derive(PartialEq, Eq))]
-pub struct Roc {
-    #[serde(default = "default_enabled")]
-    pub enabled: bool,
-    #[serde(default)]
-    pub formatter: RocFormatter,
-}
-
-impl Default for Roc {
+impl Default for Lang<Roc> {
     #[inline]
     fn default() -> Self {
         Self {
             enabled: true,
-            formatter: RocFormatter::default(),
+            formatter: MdsfFormatter::<Roc>::default(),
         }
+    }
+}
+
+impl Default for MdsfFormatter<Roc> {
+    #[inline]
+    fn default() -> Self {
+        Self::Single(Roc::RocFormat)
     }
 }
 
 impl LanguageFormatter for Roc {
     #[inline]
-    fn format(&self, snippet_path: &std::path::Path) -> std::io::Result<Option<String>> {
-        if !self.enabled {
-            return Ok(None);
+    fn format_snippet(
+        &self,
+        snippet_path: &std::path::Path,
+    ) -> std::io::Result<(bool, Option<String>)> {
+        match self {
+            Self::RocFormat => format_using_roc_format(snippet_path),
         }
-
-        match self.formatter {
-            RocFormatter::RocFormat => format_using_roc_format(snippet_path),
-        }
-        .map(|res| res.1)
     }
 }
 
 #[cfg(test)]
 mod test_roc {
-    use crate::{formatters::setup_snippet, languages::LanguageFormatter};
+    use crate::{
+        formatters::{setup_snippet, MdsfFormatter},
+        languages::Lang,
+    };
 
-    use super::{Roc, RocFormatter};
+    use super::Roc;
 
     const INPUT: &str = r#"app "helloWorld"
     packages { pf: "https://github.com/roc-lang/" }
@@ -71,7 +70,7 @@ main =
 
     #[test]
     fn it_should_be_enabled_by_default() {
-        assert!(Roc::default().enabled);
+        assert!(Lang::<Roc>::default().enabled);
     }
 
     #[test]
@@ -79,9 +78,9 @@ main =
         let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");
         let snippet_path = snippet.path();
 
-        assert!(Roc {
+        assert!(Lang::<Roc> {
             enabled: false,
-            formatter: RocFormatter::default(),
+            formatter: MdsfFormatter::Single(Roc::default()),
         }
         .format(snippet_path)
         .expect("it to not fail")
@@ -90,9 +89,9 @@ main =
 
     #[test]
     fn test_roc_format() {
-        let l = Roc {
+        let l = Lang::<Roc> {
             enabled: true,
-            formatter: RocFormatter::RocFormat,
+            formatter: MdsfFormatter::Single(Roc::RocFormat),
         };
 
         let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");

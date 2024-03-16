@@ -1,15 +1,14 @@
 use schemars::JsonSchema;
 
-use crate::{
-    config::default_enabled, formatters::sql_formatter::format_using_sql_formatter,
-    formatters::sqlfluff::format_using_sqlfluff,
+use crate::formatters::{
+    sql_formatter::format_using_sql_formatter, sqlfluff::format_using_sqlfluff, MdsfFormatter,
 };
 
-use super::LanguageFormatter;
+use super::{Lang, LanguageFormatter};
 
 #[derive(Debug, Default, serde::Serialize, serde::Deserialize, JsonSchema)]
 #[cfg_attr(test, derive(PartialEq, Eq))]
-pub enum SqlFormatter {
+pub enum Sql {
     #[default]
     #[serde(rename = "sqlfluff")]
     Sqlfluff,
@@ -17,45 +16,45 @@ pub enum SqlFormatter {
     SQLFormatter,
 }
 
-#[derive(Debug, serde::Serialize, serde::Deserialize, JsonSchema)]
-#[cfg_attr(test, derive(PartialEq, Eq))]
-pub struct Sql {
-    #[serde(default = "default_enabled")]
-    pub enabled: bool,
-    #[serde(default)]
-    pub formatter: SqlFormatter,
-}
-
-impl Default for Sql {
+impl Default for Lang<Sql> {
     #[inline]
     fn default() -> Self {
         Self {
             enabled: true,
-            formatter: SqlFormatter::default(),
+            formatter: MdsfFormatter::<Sql>::default(),
         }
+    }
+}
+
+impl Default for MdsfFormatter<Sql> {
+    #[inline]
+    fn default() -> Self {
+        Self::Multiple(vec![Self::Multiple(vec![
+            Self::Single(Sql::SQLFormatter),
+            Self::Single(Sql::Sqlfluff),
+        ])])
     }
 }
 
 impl LanguageFormatter for Sql {
     #[inline]
-    fn format(&self, snippet_path: &std::path::Path) -> std::io::Result<Option<String>> {
-        if !self.enabled {
-            return Ok(None);
+    fn format_snippet(
+        &self,
+        snippet_path: &std::path::Path,
+    ) -> std::io::Result<(bool, Option<String>)> {
+        match self {
+            Self::SQLFormatter => format_using_sql_formatter(snippet_path),
+            Self::Sqlfluff => format_using_sqlfluff(snippet_path),
         }
-
-        match self.formatter {
-            SqlFormatter::SQLFormatter => format_using_sql_formatter(snippet_path),
-            SqlFormatter::Sqlfluff => format_using_sqlfluff(snippet_path),
-        }
-        .map(|res| res.1)
     }
 }
 
 #[cfg(test)]
 mod test_sql {
+
     use crate::{
-        formatters::setup_snippet,
-        languages::{sql::SqlFormatter, Language, LanguageFormatter},
+        formatters::{setup_snippet, MdsfFormatter},
+        languages::Lang,
     };
 
     use super::Sql;
@@ -63,11 +62,11 @@ mod test_sql {
     const INPUT: &str = "SELECT  *                  FROM  tbl
                         WHERE                      foo   = 'bar';         ";
 
-    const EXTENSION: &str = Language::Sql.to_file_ext();
+    const EXTENSION: &str = crate::languages::Language::Sql.to_file_ext();
 
     #[test]
     fn it_should_be_enabled_by_default() {
-        assert!(Sql::default().enabled);
+        assert!(Lang::<Sql>::default().enabled);
     }
 
     #[test]
@@ -75,17 +74,17 @@ mod test_sql {
         let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");
         let snippet_path = snippet.path();
 
-        assert!(Sql {
+        assert!(Lang::<Sql> {
             enabled: false,
-            formatter: SqlFormatter::SQLFormatter,
+            formatter: MdsfFormatter::Single(Sql::SQLFormatter),
         }
         .format(snippet_path)
         .expect("it to not fail")
         .is_none());
 
-        assert!(Sql {
+        assert!(Lang::<Sql> {
             enabled: false,
-            formatter: SqlFormatter::Sqlfluff,
+            formatter: MdsfFormatter::Single(Sql::Sqlfluff),
         }
         .format(snippet_path)
         .expect("it to not fail")
@@ -102,9 +101,9 @@ WHERE
   foo = 'bar';
 ";
 
-        let l = Sql {
+        let l = Lang::<Sql> {
             enabled: true,
-            formatter: SqlFormatter::SQLFormatter,
+            formatter: MdsfFormatter::Single(Sql::SQLFormatter),
         };
 
         let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");
@@ -124,9 +123,9 @@ WHERE
 WHERE foo = 'bar';
 ";
 
-        let l = Sql {
+        let l = Lang::<Sql> {
             enabled: true,
-            formatter: SqlFormatter::Sqlfluff,
+            formatter: MdsfFormatter::Single(Sql::Sqlfluff),
         };
 
         let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");

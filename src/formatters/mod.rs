@@ -1,11 +1,9 @@
 use std::{io::Write, process::Command};
 
+use schemars::JsonSchema;
 use tempfile::NamedTempFile;
 
-use crate::{
-    config::MdsfConfig,
-    languages::{Language, LanguageFormatter},
-};
+use crate::{config::MdsfConfig, languages::Language};
 
 pub mod autopep8;
 pub mod biome;
@@ -135,4 +133,12 @@ pub fn format_snippet(config: &MdsfConfig, language: &Language, code: &str) -> S
     }
 
     code.to_owned()
+}
+
+#[derive(Debug, serde::Serialize, serde::Deserialize, JsonSchema)]
+#[cfg_attr(test, derive(PartialEq, Eq))]
+#[serde(untagged)]
+pub enum MdsfFormatter<T> {
+    Single(T),
+    Multiple(Vec<MdsfFormatter<T>>),
 }

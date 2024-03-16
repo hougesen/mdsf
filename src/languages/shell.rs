@@ -1,55 +1,51 @@
 use schemars::JsonSchema;
 
-use crate::{config::default_enabled, formatters::shfmt::format_using_shfmt};
+use crate::formatters::{shfmt::format_using_shfmt, MdsfFormatter};
 
-use super::LanguageFormatter;
+use super::{Lang, LanguageFormatter};
 
 #[derive(Debug, Default, serde::Serialize, serde::Deserialize, JsonSchema)]
 #[cfg_attr(test, derive(PartialEq, Eq))]
-pub enum ShellFormatter {
+pub enum Shell {
     #[default]
     #[serde(rename = "shfmt")]
     Shfmt,
 }
 
-#[derive(Debug, serde::Serialize, serde::Deserialize, JsonSchema)]
-#[cfg_attr(test, derive(PartialEq, Eq))]
-pub struct Shell {
-    #[serde(default = "default_enabled")]
-    pub enabled: bool,
-    #[serde(default)]
-    pub formatter: ShellFormatter,
-}
-
-impl Default for Shell {
+impl Default for Lang<Shell> {
     #[inline]
     fn default() -> Self {
         Self {
             enabled: true,
-            formatter: ShellFormatter::default(),
+            formatter: MdsfFormatter::<Shell>::default(),
         }
+    }
+}
+
+impl Default for MdsfFormatter<Shell> {
+    #[inline]
+    fn default() -> Self {
+        Self::Single(Shell::Shfmt)
     }
 }
 
 impl LanguageFormatter for Shell {
     #[inline]
-    fn format(&self, snippet_path: &std::path::Path) -> std::io::Result<Option<String>> {
-        if !self.enabled {
-            return Ok(None);
+    fn format_snippet(
+        &self,
+        snippet_path: &std::path::Path,
+    ) -> std::io::Result<(bool, Option<String>)> {
+        match self {
+            Self::Shfmt => format_using_shfmt(snippet_path),
         }
-
-        match self.formatter {
-            ShellFormatter::Shfmt => format_using_shfmt(snippet_path),
-        }
-        .map(|res| res.1)
     }
 }
 
 #[cfg(test)]
 mod test_shell {
     use crate::{
-        formatters::setup_snippet,
-        languages::{shell::ShellFormatter, Language, LanguageFormatter},
+        formatters::{setup_snippet, MdsfFormatter},
+        languages::Lang,
     };
 
     use super::Shell;
@@ -71,11 +67,11 @@ mod test_shell {
 
 ";
 
-    const EXTENSION: &str = Language::Shell.to_file_ext();
+    const EXTENSION: &str = crate::languages::Language::Shell.to_file_ext();
 
     #[test]
     fn it_should_be_enabled_by_default() {
-        assert!(Shell::default().enabled);
+        assert!(Lang::<Shell>::default().enabled);
     }
 
     #[test]
@@ -83,9 +79,9 @@ mod test_shell {
         let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");
         let snippet_path = snippet.path();
 
-        assert!(Shell {
+        assert!(Lang::<Shell> {
             enabled: false,
-            formatter: ShellFormatter::Shfmt,
+            formatter: MdsfFormatter::Single(Shell::Shfmt),
         }
         .format(snippet_path)
         .expect("it to not fail")
@@ -101,9 +97,9 @@ add() {
 }
 ";
 
-        let l = Shell {
+        let l = Lang::<Shell> {
             enabled: true,
-            formatter: ShellFormatter::Shfmt,
+            formatter: MdsfFormatter::Single(Shell::Shfmt),
         };
 
         let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");

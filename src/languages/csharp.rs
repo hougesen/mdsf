@@ -1,55 +1,54 @@
 use schemars::JsonSchema;
 
-use crate::{config::default_enabled, formatters::clang_format::format_using_clang_format};
+use crate::formatters::{clang_format::format_using_clang_format, MdsfFormatter};
 
-use super::LanguageFormatter;
+use super::{Lang, LanguageFormatter};
 
 #[derive(Debug, Default, serde::Serialize, serde::Deserialize, JsonSchema)]
 #[cfg_attr(test, derive(PartialEq, Eq))]
-pub enum CSharpFormatter {
+pub enum CSharp {
     #[default]
     #[serde(rename = "clang-format")]
     ClangFormat,
 }
 
-#[derive(Debug, serde::Serialize, serde::Deserialize, JsonSchema)]
-#[cfg_attr(test, derive(PartialEq, Eq))]
-pub struct CSharp {
-    #[serde(default = "default_enabled")]
-    pub enabled: bool,
-    #[serde(default)]
-    pub formatter: CSharpFormatter,
-}
-
-impl Default for CSharp {
+impl Default for Lang<CSharp> {
     #[inline]
     fn default() -> Self {
         Self {
             enabled: true,
-            formatter: CSharpFormatter::default(),
+            formatter: MdsfFormatter::<CSharp>::default(),
         }
+    }
+}
+
+impl Default for MdsfFormatter<CSharp> {
+    #[inline]
+    fn default() -> Self {
+        Self::Single(CSharp::ClangFormat)
     }
 }
 
 impl LanguageFormatter for CSharp {
     #[inline]
-    fn format(&self, snippet_path: &std::path::Path) -> std::io::Result<Option<String>> {
-        if !self.enabled {
-            return Ok(None);
+    fn format_snippet(
+        &self,
+        snippet_path: &std::path::Path,
+    ) -> std::io::Result<(bool, Option<String>)> {
+        match self {
+            Self::ClangFormat => format_using_clang_format(snippet_path),
         }
-
-        match self.formatter {
-            CSharpFormatter::ClangFormat => format_using_clang_format(snippet_path),
-        }
-        .map(|res| res.1)
     }
 }
 
 #[cfg(test)]
 mod test_csharp {
-    use crate::{formatters::setup_snippet, languages::LanguageFormatter};
+    use crate::{
+        formatters::{setup_snippet, MdsfFormatter},
+        languages::Lang,
+    };
 
-    use super::{CSharp, CSharpFormatter};
+    use super::CSharp;
 
     const INPUT: &str = "namespace Mdsf {
                         class Adder {
@@ -64,7 +63,7 @@ mod test_csharp {
 
     #[test]
     fn it_should_be_enabled_by_default() {
-        assert!(CSharp::default().enabled);
+        assert!(Lang::<CSharp>::default().enabled);
     }
 
     #[test]
@@ -72,9 +71,9 @@ mod test_csharp {
         let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");
         let snippet_path = snippet.path();
 
-        assert!(CSharp {
+        assert!(Lang::<CSharp> {
             enabled: false,
-            formatter: CSharpFormatter::default(),
+            formatter: MdsfFormatter::<CSharp>::default(),
         }
         .format(snippet_path)
         .expect("it to not fail")
@@ -83,9 +82,9 @@ mod test_csharp {
 
     #[test]
     fn test_clang_format() {
-        let l = CSharp {
+        let l = Lang::<CSharp> {
             enabled: true,
-            formatter: CSharpFormatter::ClangFormat,
+            formatter: MdsfFormatter::Single(CSharp::ClangFormat),
         };
 
         let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");

@@ -38,6 +38,19 @@ If you are interested in customizing which formatter is run, you can create a ne
 mdsf init
 ```
 
+`mdsf` supports running multiple formatters on the save code snippet.
+
+```json
+{
+  // Only run `ruff` on Python snippets,
+  "python": "ruff",
+  // Run `usort` on file and then `black`
+  "python": ["usort", "black"],
+  // Run `usort`, if that fails run `isort`, finally run `black`
+  "python": [["usort", "isort"], "black"]
+}
+```
+
 ### Supported languages & formatters
 
 > \[!NOTE\]
@@ -45,32 +58,33 @@ mdsf init
 >
 > Only formatters that are already installed will be used.
 
-| Language    | Formatters                                      |
-| ----------- | ----------------------------------------------- |
-| C           | `clang-format`                                  |
-| CSS         | `prettier`                                      |
-| Cpp         | `clang-format`                                  |
-| Crystal     | `crystal_format`                                |
-| Dart        | `dart_format`                                   |
-| Elixir      | `mix_format`                                    |
-| Gleam       | `gleam_format`                                  |
-| Go          | `gofmt`, `gofumpt`                              |
-| HTML        | `prettier`                                      |
-| JSON        | `prettier`, `biome`, `clang-format`, `deno_fmt` |
-| Java        | `clang-format`                                  |
-| JavaScript  | `prettier`, `biome`, `clang-format`, `deno_fmt` |
-| Lua         | `stylua`                                        |
-| Nim         | `nimpretty`                                     |
-| Objective C | `clang-format`                                  |
-| Protobuf    | `clang-format`                                  |
-| Python      | `ruff`, `black`, `blue`, `yapf`, `autopep8`     |
-| Roc         | `roc_format`                                    |
-| Ruby        | `rubocop`                                       |
-| Rust        | `rustfmt`                                       |
-| SQL         | `sqlfluff`, `sql-formatter`                     |
-| Shell       | `shfmt`                                         |
-| TOML        | `taplo`                                         |
-| TypeScript  | `prettier`, `biome`, `deno_fmt`                 |
-| Vue         | `prettier`                                      |
-| YAML        | `prettier`                                      |
-| Zig         | `zigfmt`                                        |
+| Language    | Formatters                                                    |
+| ----------- | ------------------------------------------------------------- |
+| C           | `clang-format`                                                |
+| Cpp         | `clang-format`                                                |
+| Crystal     | `crystal_format`                                              |
+| CSharp      | `clang-format`                                                |
+| CSS         | `prettier`                                                    |
+| Dart        | `dart_format`                                                 |
+| Elixir      | `mix_format`                                                  |
+| Gleam       | `gleam_format`                                                |
+| Go          | `gofmt`, `gofumpt`                                            |
+| HTML        | `prettier`                                                    |
+| Java        | `clang-format`                                                |
+| JavaScript  | `prettier`, `biome`, `clang-format`, `deno_fmt`               |
+| JSON        | `prettier`, `biome`, `clang-format`, `deno_fmt`               |
+| Lua         | `stylua`                                                      |
+| Nim         | `nimpretty`                                                   |
+| Objective C | `clang-format`                                                |
+| Protobuf    | `clang-format`                                                |
+| Python      | `ruff`, `black`, `blue`, `yapf`, `autopep8`, `isort`, `usort` |
+| Roc         | `roc_format`                                                  |
+| Ruby        | `rubocop`                                                     |
+| Rust        | `rustfmt`                                                     |
+| Shell       | `shfmt`                                                       |
+| SQL         | `sqlfluff`, `sql-formatter`                                   |
+| TOML        | `taplo`                                                       |
+| TypeScript  | `prettier`, `biome`, `deno_fmt`                               |
+| Vue         | `prettier`                                                    |
+| YAML        | `prettier`                                                    |
+| Zig         | `zigfmt`                                                      |

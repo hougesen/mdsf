@@ -1,18 +1,15 @@
 use schemars::JsonSchema;
 
-use crate::{
-    config::default_enabled,
-    formatters::{
-        biome::format_using_biome, clang_format::format_using_clang_format,
-        deno_format::format_using_deno_fmt, prettier::format_using_prettier,
-    },
+use crate::formatters::{
+    biome::format_using_biome, clang_format::format_using_clang_format,
+    deno_format::format_using_deno_fmt, prettier::format_using_prettier, MdsfFormatter,
 };
 
-use super::LanguageFormatter;
+use super::{Lang, LanguageFormatter};
 
 #[derive(Debug, Default, serde::Serialize, serde::Deserialize, JsonSchema)]
 #[cfg_attr(test, derive(PartialEq, Eq))]
-pub enum JsonFormatter {
+pub enum Json {
     #[default]
     #[serde(rename = "prettier")]
     Prettier,
@@ -24,47 +21,51 @@ pub enum JsonFormatter {
     ClangFormat,
 }
 
-#[derive(Debug, serde::Serialize, serde::Deserialize, JsonSchema)]
-#[cfg_attr(test, derive(PartialEq, Eq))]
-pub struct Json {
-    #[serde(default = "default_enabled")]
-    pub enabled: bool,
-    #[serde(default)]
-    pub formatter: JsonFormatter,
-}
-
-impl Default for Json {
+impl Default for Lang<Json> {
     #[inline]
     fn default() -> Self {
         Self {
             enabled: true,
-            formatter: JsonFormatter::default(),
+            formatter: MdsfFormatter::<Json>::default(),
         }
+    }
+}
+
+impl Default for MdsfFormatter<Json> {
+    #[inline]
+    fn default() -> Self {
+        Self::Multiple(vec![Self::Multiple(vec![
+            Self::Single(Json::Biome),
+            Self::Single(Json::Prettier),
+            Self::Single(Json::DenoFmt),
+            Self::Single(Json::ClangFormat),
+        ])])
     }
 }
 
 impl LanguageFormatter for Json {
     #[inline]
-    fn format(&self, snippet_path: &std::path::Path) -> std::io::Result<Option<String>> {
-        if !self.enabled {
-            return Ok(None);
+    fn format_snippet(
+        &self,
+        snippet_path: &std::path::Path,
+    ) -> std::io::Result<(bool, Option<String>)> {
+        match self {
+            Self::Biome => format_using_biome(snippet_path),
+            Self::Prettier => format_using_prettier(snippet_path, true),
+            Self::ClangFormat => format_using_clang_format(snippet_path),
+            Self::DenoFmt => format_using_deno_fmt(snippet_path),
         }
-
-        match self.formatter {
-            JsonFormatter::Biome => format_using_biome(snippet_path),
-            JsonFormatter::Prettier => format_using_prettier(snippet_path, true),
-            JsonFormatter::ClangFormat => format_using_clang_format(snippet_path),
-            JsonFormatter::DenoFmt => format_using_deno_fmt(snippet_path),
-        }
-        .map(|res| res.1)
     }
 }
 
 #[cfg(test)]
 mod test_json {
-    use crate::{formatters::setup_snippet, languages::LanguageFormatter};
+    use crate::{
+        formatters::{setup_snippet, MdsfFormatter},
+        languages::Lang,
+    };
 
-    use super::{Json, JsonFormatter};
+    use super::Json;
 
     const INPUT: &str = "
               {
@@ -81,7 +82,7 @@ mod test_json {
 
     #[test]
     fn it_should_be_enabled_by_default() {
-        assert!(Json::default().enabled);
+        assert!(Lang::<Json>::default().enabled);
     }
 
     #[test]
@@ -89,9 +90,9 @@ mod test_json {
         let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");
         let snippet_path = snippet.path();
 
-        assert!(Json {
+        assert!(Lang::<Json> {
             enabled: false,
-            formatter: JsonFormatter::default(),
+            formatter: MdsfFormatter::<Json>::default(),
         }
         .format(snippet_path)
         .expect("it to not fail")
@@ -100,9 +101,9 @@ mod test_json {
 
     #[test]
     fn test_prettier() {
-        let l = Json {
+        let l = Lang::<Json> {
             enabled: true,
-            formatter: JsonFormatter::Prettier,
+            formatter: MdsfFormatter::Single(Json::Prettier),
         };
 
         let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");
@@ -124,9 +125,9 @@ mod test_json {
 
     #[test]
     fn test_biome() {
-        let l = Json {
+        let l = Lang::<Json> {
             enabled: true,
-            formatter: JsonFormatter::Biome,
+            formatter: MdsfFormatter::Single(Json::Biome),
         };
 
         let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");
@@ -148,9 +149,9 @@ mod test_json {
 
     #[test]
     fn test_clang_format() {
-        let l = Json {
+        let l = Lang::<Json> {
             enabled: true,
-            formatter: JsonFormatter::ClangFormat,
+            formatter: MdsfFormatter::Single(Json::ClangFormat),
         };
 
         let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");
@@ -169,9 +170,9 @@ mod test_json {
 
     #[test]
     fn test_deno_fmt() {
-        let l = Json {
+        let l = Lang::<Json> {
             enabled: true,
-            formatter: JsonFormatter::DenoFmt,
+            formatter: MdsfFormatter::Single(Json::DenoFmt),
         };
 
         let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");

@@ -1,55 +1,54 @@
 use schemars::JsonSchema;
 
-use crate::{config::default_enabled, formatters::zigfmt::format_using_zigfmt};
+use crate::formatters::{zigfmt::format_using_zigfmt, MdsfFormatter};
 
-use super::LanguageFormatter;
+use super::{Lang, LanguageFormatter};
 
 #[derive(Debug, Default, serde::Serialize, serde::Deserialize, JsonSchema)]
 #[cfg_attr(test, derive(PartialEq, Eq))]
-pub enum ZigFormatter {
+pub enum Zig {
     #[default]
     #[serde(rename = "zigfmt")]
     ZigFmt,
 }
 
-#[derive(Debug, serde::Serialize, serde::Deserialize, JsonSchema)]
-#[cfg_attr(test, derive(PartialEq, Eq))]
-pub struct Zig {
-    #[serde(default = "default_enabled")]
-    pub enabled: bool,
-    #[serde(default)]
-    pub formatter: ZigFormatter,
-}
-
-impl Default for Zig {
+impl Default for Lang<Zig> {
     #[inline]
     fn default() -> Self {
         Self {
             enabled: true,
-            formatter: ZigFormatter::default(),
+            formatter: MdsfFormatter::<Zig>::default(),
         }
+    }
+}
+
+impl Default for MdsfFormatter<Zig> {
+    #[inline]
+    fn default() -> Self {
+        Self::Single(Zig::ZigFmt)
     }
 }
 
 impl LanguageFormatter for Zig {
     #[inline]
-    fn format(&self, snippet_path: &std::path::Path) -> std::io::Result<Option<String>> {
-        if !self.enabled {
-            return Ok(None);
+    fn format_snippet(
+        &self,
+        snippet_path: &std::path::Path,
+    ) -> std::io::Result<(bool, Option<String>)> {
+        match self {
+            Self::ZigFmt => format_using_zigfmt(snippet_path),
         }
-
-        match self.formatter {
-            ZigFormatter::ZigFmt => format_using_zigfmt(snippet_path),
-        }
-        .map(|res| res.1)
     }
 }
 
 #[cfg(test)]
 mod test_zig {
-    use crate::{formatters::setup_snippet, languages::LanguageFormatter};
+    use crate::{
+        formatters::{setup_snippet, MdsfFormatter},
+        languages::Lang,
+    };
 
-    use super::{Zig, ZigFormatter};
+    use super::Zig;
 
     const INPUT: &str = "
     fn     add   (a : i32    , b :   i32 )             i32 {
@@ -62,14 +61,14 @@ mod test_zig {
 
     #[test]
     fn it_should_be_enabled_by_default() {
-        assert!(Zig::default().enabled);
+        assert!(Lang::<Zig>::default().enabled);
     }
 
     #[test]
     fn it_should_not_format_when_enabled_is_false() {
-        let l = Zig {
+        let l = Lang::<Zig> {
             enabled: false,
-            formatter: ZigFormatter::ZigFmt,
+            formatter: MdsfFormatter::Single(Zig::ZigFmt),
         };
 
         let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");
@@ -80,9 +79,9 @@ mod test_zig {
 
     #[test]
     fn test_zigfmt() {
-        let l = Zig {
+        let l = Lang::<Zig> {
             enabled: true,
-            formatter: ZigFormatter::ZigFmt,
+            formatter: MdsfFormatter::Single(Zig::ZigFmt),
         };
 
         let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");
