@@ -74,16 +74,13 @@ pub fn format_file(config: &MdsfConfig, path: &std::path::Path) -> Result<(), Md
                     pulldown_cmark::CodeBlockKind::Fenced(l),
                 ))
             }
-            pulldown_cmark::Event::End(pulldown_cmark::Tag::CodeBlock(
-                pulldown_cmark::CodeBlockKind::Fenced(s),
-            )) => {
+
+            pulldown_cmark::Event::End(t) => {
                 if codeblock_language.is_some() {
                     codeblock_language = None;
                 }
 
-                pulldown_cmark::Event::End(pulldown_cmark::Tag::CodeBlock(
-                    pulldown_cmark::CodeBlockKind::Fenced(s),
-                ))
+                pulldown_cmark::Event::End(t)
             }
             pulldown_cmark::Event::Text(text) => {
                 if let Some(language) = &codeblock_language {
