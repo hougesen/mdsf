@@ -1,4 +1,4 @@
-use crate::runners::npx::new_npx_cmd;
+use crate::runners::{setup_npm_script, JavaScriptRuntime};
 
 use super::execute_command;
 
@@ -42,7 +42,7 @@ pub fn format_using_prettier(
     }
 
     invoke_prettier(
-        new_npx_cmd("prettier"),
+        setup_npm_script(JavaScriptRuntime::Node, "prettier"),
         snippet_path,
         embedded_language_formatting,
     )

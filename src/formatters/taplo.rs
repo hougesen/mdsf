@@ -1,4 +1,4 @@
-use crate::runners::npx::new_npx_cmd;
+use crate::runners::{setup_npm_script, JavaScriptRuntime};
 
 use super::execute_command;
 
@@ -28,7 +28,10 @@ pub fn format_using_taplo(
         return Ok(path_result);
     }
 
-    invoke_taplo(new_npx_cmd("@taplo/cli"), snippet_path)
+    invoke_taplo(
+        setup_npm_script(JavaScriptRuntime::Node, "@taplo/cli"),
+        snippet_path,
+    )
 }
 #[cfg(test)]
 mod test_taplo {
