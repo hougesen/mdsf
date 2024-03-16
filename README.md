@@ -73,6 +73,7 @@ mdsf init
 | Java        | `clang-format`                                                |
 | JavaScript  | `prettier`, `biome`, `clang-format`, `deno_fmt`               |
 | JSON        | `prettier`, `biome`, `clang-format`, `deno_fmt`               |
+| Just        | `just_fmt`                                                    |
 | Lua         | `stylua`                                                      |
 | Nim         | `nimpretty`                                                   |
 | Objective C | `clang-format`                                                |
