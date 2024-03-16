@@ -1,4 +1,4 @@
-use crate::runners::npx::new_npx_cmd;
+use crate::runners::{setup_npm_script, JavaScriptRuntime};
 
 use super::execute_command;
 
@@ -28,7 +28,10 @@ pub fn format_using_stylua(
         return Ok(path_result);
     }
 
-    invoke_stylua(new_npx_cmd("@johnnymorganz/stylua-bin"), snippet_path)
+    invoke_stylua(
+        setup_npm_script(JavaScriptRuntime::Node, "@johnnymorganz/stylua-bin"),
+        snippet_path,
+    )
 }
 
 #[cfg(test)]

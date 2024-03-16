@@ -1,4 +1,4 @@
-use crate::runners::npx::new_npx_cmd;
+use crate::runners::{setup_npm_script, JavaScriptRuntime};
 
 use super::execute_command;
 
@@ -21,7 +21,10 @@ fn invote_sql_formatter(
 pub fn format_using_sql_formatter(
     snippet_path: &std::path::Path,
 ) -> std::io::Result<(bool, Option<String>)> {
-    invote_sql_formatter(new_npx_cmd("sql-formatter"), snippet_path)
+    invote_sql_formatter(
+        setup_npm_script(JavaScriptRuntime::Node, "sql-formatter"),
+        snippet_path,
+    )
 }
 
 #[cfg(test)]
