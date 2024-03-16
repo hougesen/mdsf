@@ -35,8 +35,8 @@ impl Default for MdsfFormatter<JavaScript> {
     #[inline]
     fn default() -> Self {
         Self::Multiple(vec![Self::Multiple(vec![
-            Self::Single(JavaScript::Biome),
             Self::Single(JavaScript::Prettier),
+            Self::Single(JavaScript::Biome),
             Self::Single(JavaScript::DenoFmt),
             Self::Single(JavaScript::ClangFormat),
         ])])

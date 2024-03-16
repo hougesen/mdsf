@@ -127,7 +127,7 @@
     "javascript": {
       "default": {
         "enabled": true,
-        "formatter": [["biome", "prettier", "deno_fmt", "clang-format"]]
+        "formatter": [["prettier", "biome", "deno_fmt", "clang-format"]]
       },
       "allOf": [
         {
@@ -284,7 +284,7 @@
     "typescript": {
       "default": {
         "enabled": true,
-        "formatter": [["biome", "prettier", "deno_fmt"]]
+        "formatter": [["prettier", "biome", "deno_fmt"]]
       },
       "allOf": [
         {

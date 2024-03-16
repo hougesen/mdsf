@@ -33,8 +33,8 @@ impl Default for MdsfFormatter<TypeScript> {
     #[inline]
     fn default() -> Self {
         Self::Multiple(vec![Self::Multiple(vec![
-            Self::Single(TypeScript::Biome),
             Self::Single(TypeScript::Prettier),
+            Self::Single(TypeScript::Biome),
             Self::Single(TypeScript::DenoFmt),
         ])])
     }
