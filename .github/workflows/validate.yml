@@ -82,6 +82,8 @@ jobs:
       - uses: denoland/setup-deno@v1
         with:
           deno-version: v1.x
+      # just_fmt
+      - uses: taiki-e/install-action@just
 
       - run: rustup toolchain install stable --profile minimal
       - run: rustup component add rustfmt clippy

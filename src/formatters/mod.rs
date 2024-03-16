@@ -17,6 +17,7 @@ pub mod gleam_format;
 pub mod gofmt;
 pub mod gofumpt;
 pub mod isort;
+pub mod just_fmt;
 pub mod mix_format;
 pub mod nimpretty;
 pub mod prettier;
@@ -107,6 +108,7 @@ pub fn format_snippet(config: &MdsfConfig, language: &Language, code: &str) -> S
             Language::Java => config.java.format(snippet_path),
             Language::JavaScript => config.javascript.format(snippet_path),
             Language::Json => config.json.format(snippet_path),
+            Language::Just => config.just.format(snippet_path),
             Language::Lua => config.lua.format(snippet_path),
             Language::Markdown => config.markdown.format(snippet_path),
             Language::Nim => config.nim.format(snippet_path),

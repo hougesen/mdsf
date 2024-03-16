@@ -146,6 +146,17 @@
         }
       ]
     },
+    "just": {
+      "default": {
+        "enabled": true,
+        "formatter": "just_fmt"
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/Lang_for_Just"
+        }
+      ]
+    },
     "lua": {
       "default": {
         "enabled": true,
@@ -379,6 +390,10 @@
       "type": "string",
       "enum": ["prettier", "biome", "deno_fmt", "clang-format"]
     },
+    "Just": {
+      "type": "string",
+      "enum": ["just_fmt"]
+    },
     "Lang_for_C": {
       "type": "object",
       "required": ["enabled", "formatter"],
@@ -532,6 +547,18 @@
         },
         "formatter": {
           "$ref": "#/definitions/MdsfFormatter_for_Json"
+        }
+      }
+    },
+    "Lang_for_Just": {
+      "type": "object",
+      "required": ["enabled", "formatter"],
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        },
+        "formatter": {
+          "$ref": "#/definitions/MdsfFormatter_for_Just"
         }
       }
     },
@@ -900,6 +927,19 @@
           "type": "array",
           "items": {
             "$ref": "#/definitions/MdsfFormatter_for_Json"
+          }
+        }
+      ]
+    },
+    "MdsfFormatter_for_Just": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/Just"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MdsfFormatter_for_Just"
           }
         }
       ]

@@ -16,6 +16,7 @@ pub enum Language {
     Java,
     JavaScript,
     Json,
+    Just,
     Lua,
     Markdown,
     Nim,
@@ -63,6 +64,7 @@ pub mod html;
 pub mod java;
 pub mod javascript;
 pub mod json;
+pub mod just;
 pub mod lua;
 pub mod markdown;
 pub mod nim;
@@ -103,7 +105,8 @@ impl Language {
             "html" => Some(Self::Html),
             "java" => Some(Self::Java),
             "javascript" | "js" | "jsx" => Some(Self::JavaScript),
-            "json" => Some(Self::Json),
+            "json" | "jsonc" => Some(Self::Json),
+            "just" | "justfile" => Some(Self::Just),
             "lua" => Some(Self::Lua),
             "markdown" | "md" => Some(Self::Markdown),
             "nim" => Some(Self::Nim),
@@ -143,6 +146,8 @@ impl Language {
             Self::Java => ".java",
             Self::JavaScript => ".js",
             Self::Json => ".jsonc",
+            // NOTE: just does not have any file ext
+            Self::Just => ".justfile",
             Self::Lua => ".lua",
             Self::Markdown => ".md",
             Self::Nim => ".nim",
