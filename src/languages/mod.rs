@@ -36,6 +36,7 @@ pub enum Language {
     Toml,
     TypeScript,
     Vue,
+    Xml,
     Yaml,
     Zig,
     // TODO: Haskell,
@@ -86,6 +87,7 @@ pub mod sql;
 pub mod toml;
 pub mod typescript;
 pub mod vue;
+pub mod xml;
 pub mod yaml;
 pub mod zig;
 
@@ -137,6 +139,7 @@ impl Language {
             "graphql" | "gql" => Some(Self::GraphQL),
             "elm" => Some(Self::Elm),
             "rescript" => Some(Self::ReScript),
+            "xml" => Some(Self::Xml),
             _ => None,
         }
     }
@@ -181,6 +184,7 @@ impl Language {
             Self::Blade => ".blade.php",
             Self::OCaml => ".ml",
             Self::ReScript => ".res",
+            Self::Xml => ".xml",
         }
     }
 }

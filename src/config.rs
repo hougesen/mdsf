@@ -6,7 +6,7 @@ use crate::languages::{
     javascript::JavaScript, json::Json, just::Just, lua::Lua, markdown::Markdown, nim::Nim,
     objective_c::ObjectiveC, ocaml::OCaml, protobuf::Protobuf, python::Python, rescript::ReScript,
     roc::Roc, ruby::Ruby, rust::Rust, shell::Shell, sql::Sql, toml::Toml, typescript::TypeScript,
-    vue::Vue, yaml::Yaml, zig::Zig, Lang,
+    vue::Vue, xml::Xml, yaml::Yaml, zig::Zig, Lang,
 };
 
 #[derive(Debug, serde::Serialize, serde::Deserialize, JsonSchema)]
@@ -116,6 +116,9 @@ pub struct MdsfConfig {
     pub vue: Lang<Vue>,
 
     #[serde(default)]
+    pub xml: Lang<Xml>,
+
+    #[serde(default)]
     pub yaml: Lang<Yaml>,
 
     #[serde(default)]
@@ -161,6 +164,7 @@ impl Default for MdsfConfig {
             toml: Lang::<Toml>::default(),
             typescript: Lang::<TypeScript>::default(),
             vue: Lang::<Vue>::default(),
+            xml: Lang::<Xml>::default(),
             yaml: Lang::<Yaml>::default(),
             zig: Lang::<Zig>::default(),
         }

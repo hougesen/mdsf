@@ -35,6 +35,7 @@ pub mod sqlfluff;
 pub mod stylua;
 pub mod taplo;
 pub mod usort;
+pub mod xmllint;
 pub mod yapf;
 pub mod zigfmt;
 
@@ -134,6 +135,7 @@ pub fn format_snippet(config: &MdsfConfig, language: &Language, code: &str) -> S
             Language::Yaml => config.yaml.format(snippet_path),
             Language::Zig => config.zig.format(snippet_path),
             Language::ReScript => config.rescript.format(snippet_path),
+            Language::Xml => config.xml.format(snippet_path),
         } {
             let mut f = formatted_code.trim().to_owned();
 
