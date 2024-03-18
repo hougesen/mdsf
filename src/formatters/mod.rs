@@ -104,6 +104,7 @@ pub fn format_snippet(config: &MdsfConfig, language: &Language, code: &str) -> S
             Language::Elixir => config.elixir.format(snippet_path),
             Language::Gleam => config.gleam.format(snippet_path),
             Language::Go => config.go.format(snippet_path),
+            Language::GraphQL => config.graphql.format(snippet_path),
             Language::Html => config.html.format(snippet_path),
             Language::Java => config.java.format(snippet_path),
             Language::JavaScript => config.javascript.format(snippet_path),

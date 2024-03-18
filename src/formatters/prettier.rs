@@ -359,4 +359,32 @@ function add(a: number, b: number): number {
 
         assert_eq!(expected_output, output);
     }
+
+    #[test]
+    fn it_should_format_graphql() {
+        let input = "{   hero {     name      
+            # Queries can have comments!    
+         friends {       name     }   } }";
+
+        let expected_output = "{
+  hero {
+    name
+    # Queries can have comments!
+    friends {
+      name
+    }
+  }
+}
+";
+
+        let snippet = setup_snippet(input, Language::GraphQL.to_file_ext())
+            .expect("it to create a snippet file");
+
+        let output = format_using_prettier(snippet.path(), true)
+            .expect("it to be successful")
+            .1
+            .expect("it to be some");
+
+        assert_eq!(expected_output, output);
+    }
 }
