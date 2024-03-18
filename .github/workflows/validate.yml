@@ -43,12 +43,12 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: Swatinem/rust-cache@v2
-      # gleam_format, mix_format
+      # _format, mix_format
       # NOTE: should be first since it is sometimes crashes (?)
       - uses: erlef/setup-beam@v1
         with:
           otp-version: "26"
-          gleam-version: "1.0.0"
+          -version: "1.0.0"
           elixir-version: "1.16.1"
       # ruff, sqlfluff, black, blue, yapf, autopep8
       - uses: actions/setup-python@v5
@@ -84,65 +84,82 @@ jobs:
           deno-version: v1.x
       # just_fmt
       - uses: taiki-e/install-action@just
+      # ocamlformat
+      - uses: ocaml/setup-ocaml@v2
+        with:
+          ocaml-compiler: "5.1"
 
       - run: rustup toolchain install stable --profile minimal
       - run: rustup component add rustfmt clippy
 
-      - name: Validate taplo
+      - name: taplo
         run: taplo --version
 
-      - name: Install ruff
+      - name: ruff
         run: pip install ruff && ruff --version
 
-      - name: Install sqlfluff
+      - name: sqlfluff
         run: pip install sqlfluff && sqlfluff format --version
 
-      - name: Validate biome
+      - name: biome
         run: npx --yes @biomejs/biome --version
 
-      - name: Validate prettier
+      - name: prettier
         run: npx --yes prettier --version
 
-      - name: Validate nimpretty
+      - name: nimpretty
         run: nimpretty --version
 
-      - name: Validate zig fmt
+      - name: zig fmt
         run: zig fmt --help
 
-      - name: Validate gleam format
+      - name: gleam format
         run: gleam format --help
 
-      - name: Validate mix format
+      - name: mix format
         run: mix help format
 
-      - name: Install rubocop
+      - name: rubocop
         run: gem install rubocop && rubocop --version
 
-      - name: Install stylua
+      - name: stylua
         run: cargo install stylua && stylua --version
 
-      - name: Install shfmt
+      - name: shfmt
         run: go install mvdan.cc/sh/v3/cmd/shfmt@latest && shfmt --version
 
-      - name: Install gofumpt
+      - name: gofumpt
         run: go install mvdan.cc/gofumpt@latest && gofumpt --version
 
-      - name: Install black
+      - name: black
         run: pip install black && black --version
 
-      - name: Install blue
+      - name: blue
         run: pip install blue && blue --version
 
-      - name: Install yapf
+      - name: yapf
         run: pip install yapf && yapf --version
 
-      - name: Install autopep
+      - name: autopep
         run: pip install autopep8 && autopep8 --version
 
-      - name: Install clang-format
+      - name: clang-format
         run: pip install clang-format && clang-format --version
 
-      - run: pip install isort
-      - run: pip install usort
+      - name: isort
+        run: pip install isort
 
-      - run: cargo test
+      - name: usort
+        run: pip install usort
+
+      - name: ocamlformat
+        run: eval $(opam env) && opam install ocamlformat && eval $(opam env) && ocamlformat --version
+
+      - name: blade-formatter
+        run: npx --yes blade-formatter --version
+
+      - name: crystal_format
+        run: crystal tool format --help
+
+      - name: run tests
+        run: cargo test

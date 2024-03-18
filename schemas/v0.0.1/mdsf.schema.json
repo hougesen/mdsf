@@ -234,6 +234,17 @@
         }
       ]
     },
+    "ocaml": {
+      "default": {
+        "enabled": true,
+        "formatter": "ocamlformat"
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/Lang_for_OCaml"
+        }
+      ]
+    },
     "protobuf": {
       "default": {
         "enabled": true,
@@ -679,6 +690,18 @@
         }
       }
     },
+    "Lang_for_OCaml": {
+      "type": "object",
+      "required": ["enabled", "formatter"],
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        },
+        "formatter": {
+          "$ref": "#/definitions/MdsfFormatter_for_OCaml"
+        }
+      }
+    },
     "Lang_for_ObjectiveC": {
       "type": "object",
       "required": ["enabled", "formatter"],
@@ -1103,6 +1126,19 @@
         }
       ]
     },
+    "MdsfFormatter_for_OCaml": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/OCaml"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MdsfFormatter_for_OCaml"
+          }
+        }
+      ]
+    },
     "MdsfFormatter_for_ObjectiveC": {
       "anyOf": [
         {
@@ -1275,6 +1311,10 @@
     "Nim": {
       "type": "string",
       "enum": ["nimpretty"]
+    },
+    "OCaml": {
+      "type": "string",
+      "enum": ["ocamlformat"]
     },
     "ObjectiveC": {
       "type": "string",
