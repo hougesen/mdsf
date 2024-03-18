@@ -8,7 +8,6 @@ pub fn format_using_ocamlformat(
 
     cmd.arg("--ignore-invalid-option")
         .arg("--inplace")
-        .arg("--quiet")
         .arg("--enable-outside-detected-project")
         .arg(snippet_path);
 
@@ -25,7 +24,7 @@ mod test_ocamlformat {
     #[test]
     fn it_should_format_ocaml() {
         let input = "
-let add a b  =  a +  b 
+let add a b  =  a +  b
             ";
         let expected_output = "let add a b = a + b
 ";

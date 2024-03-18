@@ -270,6 +270,17 @@
         }
       ]
     },
+    "rescript": {
+      "default": {
+        "enabled": true,
+        "formatter": "rescript_format"
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/Lang_for_ReScript"
+        }
+      ]
+    },
     "roc": {
       "default": {
         "enabled": true,
@@ -738,6 +749,18 @@
         }
       }
     },
+    "Lang_for_ReScript": {
+      "type": "object",
+      "required": ["enabled", "formatter"],
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        },
+        "formatter": {
+          "$ref": "#/definitions/MdsfFormatter_for_ReScript"
+        }
+      }
+    },
     "Lang_for_Roc": {
       "type": "object",
       "required": ["enabled", "formatter"],
@@ -1178,6 +1201,19 @@
         }
       ]
     },
+    "MdsfFormatter_for_ReScript": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/ReScript"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MdsfFormatter_for_ReScript"
+          }
+        }
+      ]
+    },
     "MdsfFormatter_for_Roc": {
       "anyOf": [
         {
@@ -1327,6 +1363,10 @@
     "Python": {
       "type": "string",
       "enum": ["ruff", "black", "yapf", "blue", "autopep8", "isort", "usort"]
+    },
+    "ReScript": {
+      "type": "string",
+      "enum": ["rescript_format"]
     },
     "Roc": {
       "type": "string",

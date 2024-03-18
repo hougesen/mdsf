@@ -27,6 +27,7 @@ pub enum Language {
     OCaml,
     Protobuf,
     Python,
+    ReScript,
     Roc,
     Ruby,
     Rust,
@@ -76,6 +77,7 @@ pub mod objective_c;
 pub mod ocaml;
 pub mod protobuf;
 pub mod python;
+pub mod rescript;
 pub mod roc;
 pub mod ruby;
 pub mod rust;
@@ -134,6 +136,7 @@ impl Language {
             "zig" => Some(Self::Zig),
             "graphql" | "gql" => Some(Self::GraphQL),
             "elm" => Some(Self::Elm),
+            "rescript" => Some(Self::ReScript),
             _ => None,
         }
     }
@@ -177,6 +180,7 @@ impl Language {
             Self::Elm => ".elm",
             Self::Blade => ".blade.php",
             Self::OCaml => ".ml",
+            Self::ReScript => ".res",
         }
     }
 }
