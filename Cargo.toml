@@ -22,4 +22,6 @@ serde_json = "1.0.114"
 tempfile = "3.10.1"
 
 [dev-dependencies]
-test-with = "0.12.6"
+test-with = { version = "0.12.6", default-features = false, features = [
+    "executable"
+] }
