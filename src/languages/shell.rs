@@ -88,6 +88,7 @@ mod test_shell {
         .is_none());
     }
 
+    #[test_with::executable(shfmt)]
     #[test]
     fn test_shfmt() {
         let expected_output = "#!/bin/sh

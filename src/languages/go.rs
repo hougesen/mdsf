@@ -85,6 +85,7 @@ mod test_go {
         .is_none());
     }
 
+    #[test_with::executable(gofmt)]
     #[test]
     fn test_gofmt() {
         let l = Lang::<Go> {
@@ -110,6 +111,7 @@ func add(a int, b int) int {
         assert_eq!(output, expected_output);
     }
 
+    #[test_with::executable(gofumpt)]
     #[test]
     fn test_gofumpt() {
         let l = Lang::<Go> {

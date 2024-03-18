@@ -17,6 +17,7 @@ mod test_deno_fmt {
 
     use super::format_using_deno_fmt;
 
+    #[test_with::executable(deno)]
     #[test]
     fn it_should_format_json() {
         let input = "
@@ -54,6 +55,7 @@ mod test_deno_fmt {
         assert_eq!(expected_output, output);
     }
 
+    #[test_with::executable(deno)]
     #[test]
     fn it_should_format_javascript() {
         let input = "
@@ -79,6 +81,7 @@ mod test_deno_fmt {
         assert_eq!(expected_output, output);
     }
 
+    #[test_with::executable(deno)]
     #[test]
     fn it_should_format_typescript() {
         let input = "

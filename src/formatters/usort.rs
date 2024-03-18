@@ -17,6 +17,7 @@ mod test_isort {
 
     use super::format_using_usort;
 
+    #[test_with::executable(usort)]
     #[test]
     fn it_should_format_python() {
         let input = "from q import d

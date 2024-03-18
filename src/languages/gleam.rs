@@ -73,6 +73,7 @@ mod test_gleam {
         .is_none());
     }
 
+    #[test_with::executable(gleam)]
     #[test]
     fn test_gleam_format() {
         let l = Lang::<Gleam> {

@@ -76,6 +76,7 @@ mod test_cpp {
         .is_none());
     }
 
+    #[test_with::executable(clang-format)]
     #[test]
     fn test_clang_format() {
         let l = Lang::<Cpp> {

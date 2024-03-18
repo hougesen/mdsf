@@ -19,6 +19,7 @@ mod test_ruff {
 
     use super::format_using_ruff;
 
+    #[test_with::executable(ruff)]
     #[test]
     fn it_should_format_python() {
         let input = "def add( a: int ,  b:int)->int: return a+b";

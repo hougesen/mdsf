@@ -21,8 +21,7 @@ mod test_ocamlformat {
         languages::Language,
     };
 
-    /// NOTE: this is ignored since the ocaml runtime takes a long time to installed
-    #[test_with::no_env(GITHUB_ACTIONS)]
+    #[test_with::executable(ocamlformat)]
     #[test]
     fn it_should_format_ocaml() {
         let input = "

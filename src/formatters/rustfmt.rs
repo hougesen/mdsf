@@ -20,6 +20,7 @@ mod test_rustfmt {
 
     use super::format_using_rustfmt;
 
+    #[test_with::executable(rustfmt)]
     #[test]
     fn it_should_format_rust() {
         let input = "pub

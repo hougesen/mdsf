@@ -78,6 +78,7 @@ build:
         .is_none());
     }
 
+    #[test_with::executable(just)]
     #[test]
     fn test_just_fmt() {
         let l = Lang::<Just> {

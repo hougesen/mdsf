@@ -15,6 +15,7 @@ pub fn format_using_dart_format(
 mod test_dart_format {
     use crate::{formatters::setup_snippet, languages::Language};
 
+    #[test_with::executable(dart)]
     #[test]
     fn it_should_format_dart() {
         let input = "class Adder {   int add(int a, int b) {     return a + b;   } }    ";

@@ -153,6 +153,7 @@ number>
         assert_eq!(output, expected_output);
     }
 
+    #[test_with::executable(deno)]
     #[test]
     fn test_deno_fmt() {
         let l = Lang::<TypeScript> {

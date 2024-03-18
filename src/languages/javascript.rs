@@ -156,6 +156,7 @@ mod test_javascript {
         assert_eq!(output, expected_output);
     }
 
+    #[test_with::executable(clang-format)]
     #[test]
     fn test_clang_format() {
         let input = "    async function asyncAddition(  a,b) {
@@ -181,6 +182,7 @@ mod test_javascript {
         assert_eq!(expected_output, output);
     }
 
+    #[test_with::executable(deno)]
     #[test]
     fn test_deno_fmt() {
         let input = "    async function asyncAddition(  a,b) {

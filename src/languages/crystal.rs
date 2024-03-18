@@ -73,6 +73,7 @@ mod test_crystal {
         .is_none());
     }
 
+    #[test_with::executable(crystal)]
     #[test]
     fn test_crystal_format() {
         let expected_output = "def add(a, b)

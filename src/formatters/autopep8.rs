@@ -17,6 +17,7 @@ mod test_autopep8 {
 
     use super::format_using_autopep8;
 
+    #[test_with::executable(autopep8)]
     #[test]
     fn it_should_format_python() {
         let input = "def add( a: int ,  b:int)->int: return a+b";

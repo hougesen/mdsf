@@ -18,6 +18,7 @@ mod test_clang_format {
         languages::Language,
     };
 
+    #[test_with::executable(clang-format)]
     #[test]
     fn it_should_format_c() {
         let input = "int add(int a,int b){
@@ -41,6 +42,7 @@ mod test_clang_format {
         assert_eq!(expected_output, output);
     }
 
+    #[test_with::executable(clang-format)]
     #[test]
     fn it_should_format_cpp() {
         let input = "int add(int a,int b){
@@ -64,6 +66,7 @@ mod test_clang_format {
         assert_eq!(expected_output, output);
     }
 
+    #[test_with::executable(clang-format)]
     #[test]
     fn it_should_format_csharp() {
         let input = "namespace Mdsf {
@@ -89,6 +92,7 @@ mod test_clang_format {
         assert_eq!(expected_output, output);
     }
 
+    #[test_with::executable(clang-format)]
     #[test]
     fn it_should_format_javascript() {
         let input = "    async function asyncAddition(  a,b) {
@@ -109,6 +113,7 @@ mod test_clang_format {
         assert_eq!(expected_output, output);
     }
 
+    #[test_with::executable(clang-format)]
     #[test]
     fn it_should_format_json() {
         let input = "              {
@@ -130,6 +135,7 @@ mod test_clang_format {
         assert_eq!(expected_output, output);
     }
 
+    #[test_with::executable(clang-format)]
     #[test]
     fn it_should_format_objective_c() {
         let input = "int add(int a,int b){
@@ -153,6 +159,7 @@ mod test_clang_format {
         assert_eq!(expected_output, output);
     }
 
+    #[test_with::executable(clang-format)]
     #[test]
     fn it_should_format_protobuf() {
         let input = "service SearchService {
@@ -173,6 +180,7 @@ mod test_clang_format {
         assert_eq!(expected_output, output);
     }
 
+    #[test_with::executable(clang-format)]
     #[test]
     fn it_should_format_java() {
         let input = "class HelloWorld {

@@ -20,6 +20,7 @@ mod test_zigfmt {
         languages::Language,
     };
 
+    #[test_with::executable(zig)]
     #[test]
     fn it_should_format_zig() {
         let input = "

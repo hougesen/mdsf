@@ -77,6 +77,7 @@ mod test_rust {
         .is_none());
     }
 
+    #[test_with::executable(rustfmt)]
     #[test]
     fn test_rustfmt() {
         let expected_output = "pub async fn add(a: i32, b: i32) -> i32 {\n    a + b\n}\n";

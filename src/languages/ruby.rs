@@ -76,6 +76,7 @@ mod test_ruby {
         .is_none());
     }
 
+    #[test_with::executable(rubocop)]
     #[test]
     fn test_rubocop() {
         let expected_output = "def add(a, b)

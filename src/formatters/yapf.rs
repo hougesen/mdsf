@@ -17,6 +17,7 @@ mod test_yapf {
 
     use super::format_using_yapf;
 
+    #[test_with::executable(yapf)]
     #[test]
     fn it_should_format_python() {
         let input = "def add( a: int ,  b:int)->int: return a+b";

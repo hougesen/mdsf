@@ -16,6 +16,7 @@ mod test_shfmt {
         languages::Language,
     };
 
+    #[test_with::executable(shfmt)]
     #[test]
     fn it_should_format_sh() {
         let input = "
@@ -52,6 +53,7 @@ add() {
         assert_eq!(expected_output, output);
     }
 
+    #[test_with::executable(shfmt)]
     #[test]
     fn it_should_format_bash() {
         let input = "

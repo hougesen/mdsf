@@ -18,6 +18,7 @@ mod test_gofmt {
         languages::Language,
     };
 
+    #[test_with::executable(gofmt)]
     #[test]
     fn it_should_format_go() {
         let input = "package main

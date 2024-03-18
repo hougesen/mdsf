@@ -73,6 +73,7 @@ mod test_dart {
         .is_none());
     }
 
+    #[test_with::executable(dart)]
     #[test]
     fn test_dart_format() {
         let l = Lang::<Dart> {
