@@ -2,7 +2,6 @@ use config::MdsfConfig;
 use error::MdsfError;
 use formatters::format_snippet;
 use languages::Language;
-use matter::matter;
 use pulldown_cmark::CowStr;
 use pulldown_cmark_to_cmark::cmark_resume_with_options;
 
@@ -49,11 +48,7 @@ pub fn format_file(config: &MdsfConfig, path: &std::path::Path) -> Result<(), Md
         return Ok(());
     }
 
-    // NOTE: should be removed once `pulldown-cmark-to-cmark` is upgraded to `v0.10.0` of `pulldown-cmark`
-    let (frontmatter, markdown_input) =
-        matter(&input).unwrap_or_else(|| (String::new(), input.clone()));
-
-    let parser = pulldown_cmark::Parser::new_ext(&markdown_input, pulldown_cmark::Options::all());
+    let parser = pulldown_cmark::Parser::new_ext(&input, pulldown_cmark::Options::all());
 
     let mut output = String::with_capacity(input.len() + 128);
 
@@ -115,10 +110,6 @@ pub fn format_file(config: &MdsfConfig, path: &std::path::Path) -> Result<(), Md
     }
 
     let mut output = output.trim().to_owned();
-
-    if !frontmatter.is_empty() {
-        output = format!("---\n{frontmatter}\n---\n\n{output}");
-    }
 
     if config.markdown.enabled {
         if !output.is_empty() {
