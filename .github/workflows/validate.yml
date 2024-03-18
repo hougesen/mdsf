@@ -86,6 +86,8 @@ jobs:
       - uses: taiki-e/install-action@just
       # ocamlformat
       - uses: ocaml/setup-ocaml@v2
+        with:
+          ocaml-compiler: "5.1"
 
       - run: rustup toolchain install stable --profile minimal
       - run: rustup component add rustfmt clippy
