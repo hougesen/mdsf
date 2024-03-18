@@ -151,6 +151,6 @@ jobs:
 
       - run: eval $(opam env)
       - run: opam install ocamlformat
-      - run: ocamlformat --version
+      - run: eval $(opam env) && ocamlformat --version
 
       - run: cargo test
