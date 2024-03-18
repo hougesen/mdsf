@@ -83,6 +83,7 @@ mdsf init
 | OCaml       | `ocamlformat`                                                 |
 | Protobuf    | `clang-format`                                                |
 | Python      | `ruff`, `black`, `blue`, `yapf`, `autopep8`, `isort`, `usort` |
+| ReScript    | `rescript_format`                                             |
 | Roc         | `roc_format`                                                  |
 | Ruby        | `rubocop`                                                     |
 | Rust        | `rustfmt`                                                     |
