@@ -149,6 +149,7 @@ jobs:
       - run: pip install isort
       - run: pip install usort
 
+      - run: eval $(opam env)
       - run: opam install ocamlformat
 
       - run: cargo test
