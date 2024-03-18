@@ -164,5 +164,8 @@ jobs:
       - name: crystal_format
         run: crystal tool format --help
 
+      - name: run ocaml tests
+        run: cargo test ocaml
+
       - name: run tests
         run: cargo test
