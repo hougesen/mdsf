@@ -11,6 +11,7 @@ pub enum Language {
     Dart,
     Elixir,
     Gleam,
+    GraphQL,
     Go,
     Html,
     Java,
@@ -48,7 +49,6 @@ pub enum Language {
     // TODO: Elm,
     // TODO: Scala,
     // TODO: R,
-    // TODO: GraphQL,
 }
 
 pub mod c;
@@ -60,6 +60,7 @@ pub mod dart;
 pub mod elixir;
 pub mod gleam;
 pub mod go;
+pub mod graphql;
 pub mod html;
 pub mod java;
 pub mod javascript;
@@ -125,6 +126,7 @@ impl Language {
             "vue" => Some(Self::Vue),
             "yml" | "yaml" => Some(Self::Yaml),
             "zig" => Some(Self::Zig),
+            "graphql" | "gql" => Some(Self::GraphQL),
             _ => None,
         }
     }
@@ -164,6 +166,7 @@ impl Language {
             Self::Vue => ".vue",
             Self::Yaml => ".yml",
             Self::Zig => ".zig",
+            Self::GraphQL => ".gql",
         }
     }
 }
@@ -248,8 +251,7 @@ mod test_lang {
                 Self::A => (false, file.write(b"a")),
                 Self::B => (false, file.write(b"b")),
                 Self::C => (false, file.write(b"c")),
-                Self::D => (true, Ok(0)),
-                Self::E => (true, Ok(0)),
+                Self::D | Self::E => (true, Ok(0)),
             };
 
             Ok((should_fail, std::fs::read_to_string(snippet_path).ok()))

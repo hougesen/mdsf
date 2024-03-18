@@ -69,6 +69,7 @@ mdsf init
 | Elixir      | `mix_format`                                                  |
 | Gleam       | `gleam_format`                                                |
 | Go          | `gofmt`, `gofumpt`                                            |
+| GraphQL     | `prettier`                                                    |
 | HTML        | `prettier`                                                    |
 | Java        | `clang-format`                                                |
 | JavaScript  | `prettier`, `biome`, `clang-format`, `deno_fmt`               |

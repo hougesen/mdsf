@@ -102,6 +102,17 @@
         }
       ]
     },
+    "graphql": {
+      "default": {
+        "enabled": true,
+        "formatter": "prettier"
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/Lang_for_GraphQL"
+        }
+      ]
+    },
     "html": {
       "default": {
         "enabled": true,
@@ -374,6 +385,10 @@
       "type": "string",
       "enum": ["gofmt", "gofumpt"]
     },
+    "GraphQL": {
+      "type": "string",
+      "enum": ["prettier"]
+    },
     "Html": {
       "type": "string",
       "enum": ["prettier"]
@@ -499,6 +514,18 @@
         },
         "formatter": {
           "$ref": "#/definitions/MdsfFormatter_for_Go"
+        }
+      }
+    },
+    "Lang_for_GraphQL": {
+      "type": "object",
+      "required": ["enabled", "formatter"],
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        },
+        "formatter": {
+          "$ref": "#/definitions/MdsfFormatter_for_GraphQL"
         }
       }
     },
@@ -875,6 +902,19 @@
           "type": "array",
           "items": {
             "$ref": "#/definitions/MdsfFormatter_for_Go"
+          }
+        }
+      ]
+    },
+    "MdsfFormatter_for_GraphQL": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/GraphQL"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MdsfFormatter_for_GraphQL"
           }
         }
       ]
