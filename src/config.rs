@@ -1,8 +1,8 @@
 use schemars::JsonSchema;
 
 use crate::languages::{
-    c::C, cpp::Cpp, crystal::Crystal, csharp::CSharp, css::Css, dart::Dart, elixir::Elixir,
-    elm::Elm, gleam::Gleam, go::Go, graphql::GraphQL, html::Html, java::Java,
+    blade::Blade, c::C, cpp::Cpp, crystal::Crystal, csharp::CSharp, css::Css, dart::Dart,
+    elixir::Elixir, elm::Elm, gleam::Gleam, go::Go, graphql::GraphQL, html::Html, java::Java,
     javascript::JavaScript, json::Json, just::Just, lua::Lua, markdown::Markdown, nim::Nim,
     objective_c::ObjectiveC, protobuf::Protobuf, python::Python, roc::Roc, ruby::Ruby, rust::Rust,
     shell::Shell, sql::Sql, toml::Toml, typescript::TypeScript, vue::Vue, yaml::Yaml, zig::Zig,
@@ -15,6 +15,9 @@ pub struct MdsfConfig {
     #[schemars(skip)]
     #[serde(rename = "$schema", default = "default_schema_location")]
     pub schema: String,
+
+    #[serde(default)]
+    pub blade: Lang<Blade>,
 
     #[serde(default)]
     pub c: Lang<C>,
@@ -119,6 +122,7 @@ impl Default for MdsfConfig {
         Self {
             schema: default_schema_location(),
 
+            blade: Lang::<Blade>::default(),
             c: Lang::<C>::default(),
             cpp: Lang::<Cpp>::default(),
             crystal: Lang::<Crystal>::default(),

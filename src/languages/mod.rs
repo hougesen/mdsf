@@ -3,6 +3,7 @@ use schemars::JsonSchema;
 use crate::formatters::MdsfFormatter;
 
 pub enum Language {
+    Blade,
     C,
     Crystal,
     Cpp,
@@ -51,6 +52,7 @@ pub enum Language {
     // TODO: R,
 }
 
+pub mod blade;
 pub mod c;
 pub mod cpp;
 pub mod crystal;
@@ -95,6 +97,7 @@ impl Language {
     #[inline]
     pub fn maybe_from_str(input: &str) -> Option<Self> {
         match input {
+            "blade" => Some(Self::Blade),
             "c" | "clang" => Some(Self::C),
             "cpp" | "c++" => Some(Self::Cpp),
             "crystal" | "cr" => Some(Self::Crystal),
@@ -170,6 +173,7 @@ impl Language {
             Self::Zig => ".zig",
             Self::GraphQL => ".gql",
             Self::Elm => ".elm",
+            Self::Blade => ".blade.php",
         }
     }
 }

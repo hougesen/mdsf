@@ -3,6 +3,17 @@
   "title": "MdsfConfig",
   "type": "object",
   "properties": {
+    "blade": {
+      "default": {
+        "enabled": true,
+        "formatter": "blade-formatter"
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/Lang_for_Blade"
+        }
+      ]
+    },
     "c": {
       "default": {
         "enabled": true,
@@ -360,6 +371,10 @@
     }
   },
   "definitions": {
+    "Blade": {
+      "type": "string",
+      "enum": ["blade-formatter"]
+    },
     "C": {
       "type": "string",
       "enum": ["clang-format"]
@@ -423,6 +438,18 @@
     "Just": {
       "type": "string",
       "enum": ["just_fmt"]
+    },
+    "Lang_for_Blade": {
+      "type": "object",
+      "required": ["enabled", "formatter"],
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        },
+        "formatter": {
+          "$ref": "#/definitions/MdsfFormatter_for_Blade"
+        }
+      }
     },
     "Lang_for_C": {
       "type": "object",
@@ -815,6 +842,19 @@
     "Markdown": {
       "type": "string",
       "enum": ["prettier"]
+    },
+    "MdsfFormatter_for_Blade": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/Blade"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MdsfFormatter_for_Blade"
+          }
+        }
+      ]
     },
     "MdsfFormatter_for_C": {
       "anyOf": [
