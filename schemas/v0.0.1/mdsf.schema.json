@@ -369,6 +369,17 @@
         }
       ]
     },
+    "xml": {
+      "default": {
+        "enabled": true,
+        "formatter": "xmllint"
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/Lang_for_Xml"
+        }
+      ]
+    },
     "yaml": {
       "default": {
         "enabled": true,
@@ -857,6 +868,18 @@
         }
       }
     },
+    "Lang_for_Xml": {
+      "type": "object",
+      "required": ["enabled", "formatter"],
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        },
+        "formatter": {
+          "$ref": "#/definitions/MdsfFormatter_for_Xml"
+        }
+      }
+    },
     "Lang_for_Yaml": {
       "type": "object",
       "required": ["enabled", "formatter"],
@@ -1318,6 +1341,19 @@
         }
       ]
     },
+    "MdsfFormatter_for_Xml": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/Xml"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MdsfFormatter_for_Xml"
+          }
+        }
+      ]
+    },
     "MdsfFormatter_for_Yaml": {
       "anyOf": [
         {
@@ -1399,6 +1435,10 @@
     "Vue": {
       "type": "string",
       "enum": ["prettier"]
+    },
+    "Xml": {
+      "type": "string",
+      "enum": ["xmllint"]
     },
     "Yaml": {
       "type": "string",

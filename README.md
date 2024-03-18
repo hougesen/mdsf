@@ -92,5 +92,6 @@ mdsf init
 | TOML        | `taplo`                                                       |
 | TypeScript  | `prettier`, `biome`, `deno_fmt`                               |
 | Vue         | `prettier`                                                    |
+| Xml         | `xmllint`                                                     |
 | YAML        | `prettier`                                                    |
 | Zig         | `zigfmt`                                                      |
