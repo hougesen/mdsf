@@ -88,9 +88,9 @@ jobs:
       # just_fmt
       - uses: taiki-e/install-action@just
       # ocamlformat
-      - uses: ocaml/setup-ocaml@v2
-        with:
-          ocaml-compiler: "5.1"
+      #- uses: ocaml/setup-ocaml@v2
+      #  with:
+      #    ocaml-compiler: "5.1"
 
       - run: rustup toolchain install stable --profile minimal
       - run: rustup component add rustfmt clippy
@@ -155,17 +155,14 @@ jobs:
       - name: usort
         run: pip install usort
 
-      - name: ocamlformat
-        run: eval $(opam env) && opam install ocamlformat && eval $(opam env) && ocamlformat --version
+      #- name: ocamlformat
+      #  run: eval $(opam env) && opam install ocamlformat && eval $(opam env) && ocamlformat --version
 
       - name: blade-formatter
         run: npx --yes blade-formatter --version
 
       - name: crystal_format
         run: crystal tool format --help
-
-      - name: run ocaml tests
-        run: cargo test ocaml
 
       - name: run tests
         run: cargo test

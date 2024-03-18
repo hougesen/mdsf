@@ -21,6 +21,8 @@ mod test_ocamlformat {
         languages::Language,
     };
 
+    /// NOTE: this is ignored since the ocaml runtime takes a long time to installed
+    #[test_with::no_env(GITHUB_ACTIONS)]
     #[test]
     fn it_should_format_ocaml() {
         let input = "
@@ -32,13 +34,7 @@ let add a b  =  a +  b
         let snippet = setup_snippet(input, Language::OCaml.to_file_ext())
             .expect("it to create a snippet file");
 
-        let output = format_using_ocamlformat(snippet.path());
-
-        let actual_code = std::fs::read_to_string(snippet.path());
-
-        println!("'{actual_code:#?}'");
-
-        let output = output
+        let output = format_using_ocamlformat(snippet.path())
             .expect("it to be successful")
             .1
             .expect("it to be some");

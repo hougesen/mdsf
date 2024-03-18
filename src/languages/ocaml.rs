@@ -51,7 +51,7 @@ mod test_ocaml {
     use super::OCaml;
 
     const INPUT: &str = "
-let add a b  =  a +  b 
+let add a b  =  a +  b
             ";
 
     const EXTENSION: &str = crate::languages::Language::OCaml.to_file_ext();
@@ -75,6 +75,8 @@ let add a b  =  a +  b
         .is_none());
     }
 
+    /// NOTE: this is ignored since the ocaml runtime takes a long time to installed
+    #[test_with::no_env(GITHUB_ACTIONS)]
     #[test]
     fn test_ocamlformat() {
         let l = Lang::<OCaml> {
