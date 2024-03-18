@@ -77,6 +77,7 @@ mod test_zig {
         assert!(l.format(snippet_path).expect("it to not fail").is_none());
     }
 
+    #[test_with::executable(zig)]
     #[test]
     fn test_zigfmt() {
         let l = Lang::<Zig> {

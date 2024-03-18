@@ -22,6 +22,7 @@ mod test_just_fmt {
         languages::Language,
     };
 
+    #[test_with::executable(just)]
     #[test]
     fn it_should_format_just() {
         let input = "build:

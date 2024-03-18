@@ -30,6 +30,7 @@ pub fn format_using_sqlfluff(
 mod test_sqlfluff {
     use crate::{formatters::setup_snippet, languages::Language};
 
+    #[test_with::executable(sqlfluff)]
     #[test]
     fn it_should_format_sql() {
         let input = "SELECT  *                  FROM  tbl 

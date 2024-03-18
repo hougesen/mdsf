@@ -119,7 +119,7 @@ impl Language {
             "markdown" | "md" => Some(Self::Markdown),
             "nim" => Some(Self::Nim),
             "objectivec" | "objective-c" | "objc" => Some(Self::ObjectiveC),
-            "ocaml" => Some(Self::ObjectiveC),
+            "ocaml" => Some(Self::OCaml),
             "profobuf" | "profo" => Some(Self::Protobuf),
             "python" => Some(Self::Python),
             "roc" => Some(Self::Roc),

@@ -15,6 +15,7 @@ pub fn format_using_gofumpt(
 mod test_gofumpt {
     use crate::{formatters::setup_snippet, languages::Language};
 
+    #[test_with::executable(gofumpt)]
     #[test]
     fn it_should_format_go() {
         let input = "package main 

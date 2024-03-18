@@ -17,6 +17,7 @@ mod test_black {
 
     use super::format_using_black;
 
+    #[test_with::executable(black)]
     #[test]
     fn it_should_format_python() {
         let input = "def add( a: int ,  b:int)->int: return a+b";

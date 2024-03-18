@@ -17,6 +17,7 @@ mod test_roc_format {
 
     use super::format_using_roc_format;
 
+    #[test_with::executable(roc)]
     #[test]
     fn it_should_format_roc() {
         let input = r#"app "helloWorld"

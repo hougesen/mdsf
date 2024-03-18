@@ -147,6 +147,7 @@ mod test_json {
         assert_eq!(output, expected_output);
     }
 
+    #[test_with::executable(clang-format)]
     #[test]
     fn test_clang_format() {
         let l = Lang::<Json> {
@@ -168,6 +169,7 @@ mod test_json {
         assert_eq!(output, expected_output);
     }
 
+    #[test_with::executable(deno)]
     #[test]
     fn test_deno_fmt() {
         let l = Lang::<Json> {

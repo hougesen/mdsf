@@ -76,6 +76,7 @@ mod test_objective_c {
         .is_none());
     }
 
+    #[test_with::executable(clang-format)]
     #[test]
     fn test_clang_format() {
         let expected_output = "int add(int a, int b) {

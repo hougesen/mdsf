@@ -18,6 +18,7 @@ mod test_gleam_format {
         languages::Language,
     };
 
+    #[test_with::executable(gleam)]
     #[test]
     fn it_should_format_gleam() {
         let input = "pub fn add(a:Int,b:Int)->Int{a+b}";

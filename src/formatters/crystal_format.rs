@@ -17,6 +17,7 @@ mod test_crystal_format {
 
     use super::format_using_crystal_format;
 
+    #[test_with::executable(crystal)]
     #[test]
     fn it_should_format_crystal() {
         let input = "def add(a, b)  return a + b end";

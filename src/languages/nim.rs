@@ -74,6 +74,7 @@ mod test_nim {
         .is_none());
     }
 
+    #[test_with::executable(nimpretty)]
     #[test]
     fn test_nimpretty() {
         let l = Lang::<Nim> {

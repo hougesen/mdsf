@@ -76,6 +76,7 @@ mod test_elixir {
         .is_none());
     }
 
+    #[test_with::executable(mix)]
     #[test]
     fn test_mix_format() {
         let l = Lang::<Elixir> {

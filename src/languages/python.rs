@@ -107,6 +107,7 @@ mod test_python {
         .is_none());
     }
 
+    #[test_with::executable(black)]
     #[test]
     fn test_black() {
         let expected_output = "def add(a: int, b: int) -> int:\n    return a + b\n";
@@ -127,6 +128,7 @@ mod test_python {
         assert_eq!(output, expected_output);
     }
 
+    #[test_with::executable(blue)]
     #[test]
     fn test_blue() {
         let expected_output = "def add(a: int, b: int) -> int:\n    return a + b\n";
@@ -147,6 +149,7 @@ mod test_python {
         assert_eq!(output, expected_output);
     }
 
+    #[test_with::executable(ruff)]
     #[test]
     fn test_ruff() {
         let expected_output = "def add(a: int, b: int) -> int:\n    return a + b\n";
@@ -167,6 +170,7 @@ mod test_python {
         assert_eq!(output, expected_output);
     }
 
+    #[test_with::executable(autopep8)]
     #[test]
     fn test_autopep8() {
         let expected_output = "def add(a: int,  b: int) -> int: return a+b\n";
@@ -187,6 +191,7 @@ mod test_python {
         assert_eq!(output, expected_output);
     }
 
+    #[test_with::executable(yapf)]
     #[test]
     fn test_yapf() {
         let expected_output = "def add(a: int, b: int) -> int:\n    return a + b\n";
@@ -207,6 +212,7 @@ mod test_python {
         assert_eq!(output, expected_output);
     }
 
+    #[test_with::executable(isort)]
     #[test]
     fn test_isort() {
         let input = "from q import d
@@ -245,6 +251,7 @@ def add(a: int, b: int) -> int:
         assert_eq!(output, expected_output);
     }
 
+    #[test_with::executable(usort)]
     #[test]
     fn test_usort() {
         let input = "from q import d

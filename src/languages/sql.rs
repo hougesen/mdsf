@@ -117,6 +117,7 @@ WHERE
         assert_eq!(output, expected_output);
     }
 
+    #[test_with::executable(sqlfluff)]
     #[test]
     fn test_sqlfluff() {
         let expected_output = "SELECT * FROM tbl

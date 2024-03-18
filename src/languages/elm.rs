@@ -58,8 +58,8 @@ mod test_elm {
 
 main =
       text              "Hello!"
-  
-  
+
+
   "#;
 
     const EXTENSION: &str = crate::languages::Language::Elm.to_file_ext();

@@ -55,8 +55,8 @@ mod test_elm_format {
 
 main =
       text              "Hello!"
-  
-  
+
+
   "#;
         let expected_output = r#"module Main exposing (main)
 

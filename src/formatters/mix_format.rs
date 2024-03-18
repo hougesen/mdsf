@@ -18,6 +18,7 @@ mod test_mix_format {
         languages::Language,
     };
 
+    #[test_with::executable(mix)]
     #[test]
     fn it_should_format_elixir() {
         let input = "

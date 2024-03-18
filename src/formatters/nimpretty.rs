@@ -18,6 +18,7 @@ mod test_nimpretty {
         languages::Language,
     };
 
+    #[test_with::executable(nimpretty)]
     #[test]
     fn it_should_format_nim() {
         let input = "proc           add( a         :int , b:int )        : int =

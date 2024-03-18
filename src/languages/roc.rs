@@ -87,6 +87,7 @@ main =
         .is_none());
     }
 
+    #[test_with::executable(roc)]
     #[test]
     fn test_roc_format() {
         let l = Lang::<Roc> {
