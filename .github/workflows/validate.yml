@@ -84,6 +84,8 @@ jobs:
           deno-version: v1.x
       # just_fmt
       - uses: taiki-e/install-action@just
+      # ocamlformat
+      - uses: ocaml/setup-ocaml@v2
 
       - run: rustup toolchain install stable --profile minimal
       - run: rustup component add rustfmt clippy
@@ -144,5 +146,7 @@ jobs:
 
       - run: pip install isort
       - run: pip install usort
+
+      - run: opam install ocamlformat
 
       - run: cargo test

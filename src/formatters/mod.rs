@@ -22,6 +22,7 @@ pub mod isort;
 pub mod just_fmt;
 pub mod mix_format;
 pub mod nimpretty;
+pub mod ocamlformat;
 pub mod prettier;
 pub mod roc_format;
 pub mod rubocop;
@@ -118,6 +119,7 @@ pub fn format_snippet(config: &MdsfConfig, language: &Language, code: &str) -> S
             Language::Markdown => config.markdown.format(snippet_path),
             Language::Nim => config.nim.format(snippet_path),
             Language::ObjectiveC => config.objective_c.format(snippet_path),
+            Language::OCaml => config.ocaml.format(snippet_path),
             Language::Protobuf => config.protobuf.format(snippet_path),
             Language::Python => config.python.format(snippet_path),
             Language::Roc => config.roc.format(snippet_path),

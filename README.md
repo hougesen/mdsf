@@ -80,6 +80,7 @@ mdsf init
 | Lua         | `stylua`                                                      |
 | Nim         | `nimpretty`                                                   |
 | Objective C | `clang-format`                                                |
+| OCaml       | `ocamlformat`                                                 |
 | Protobuf    | `clang-format`                                                |
 | Python      | `ruff`, `black`, `blue`, `yapf`, `autopep8`, `isort`, `usort` |
 | Roc         | `roc_format`                                                  |

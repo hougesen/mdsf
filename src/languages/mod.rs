@@ -24,6 +24,7 @@ pub enum Language {
     Markdown,
     Nim,
     ObjectiveC,
+    OCaml,
     Protobuf,
     Python,
     Roc,
@@ -37,7 +38,6 @@ pub enum Language {
     Yaml,
     Zig,
     // TODO: Haskell,
-    // TODO: OCaml,
     // TODO: PHP,
     // TODO: Kotlin,
     // TODO: FSharp,
@@ -73,6 +73,7 @@ pub mod lua;
 pub mod markdown;
 pub mod nim;
 pub mod objective_c;
+pub mod ocaml;
 pub mod protobuf;
 pub mod python;
 pub mod roc;
@@ -116,6 +117,7 @@ impl Language {
             "markdown" | "md" => Some(Self::Markdown),
             "nim" => Some(Self::Nim),
             "objectivec" | "objective-c" | "objc" => Some(Self::ObjectiveC),
+            "ocaml" => Some(Self::ObjectiveC),
             "profobuf" | "profo" => Some(Self::Protobuf),
             "python" => Some(Self::Python),
             "roc" => Some(Self::Roc),
@@ -174,6 +176,7 @@ impl Language {
             Self::GraphQL => ".gql",
             Self::Elm => ".elm",
             Self::Blade => ".blade.php",
+            Self::OCaml => ".ml",
         }
     }
 }
