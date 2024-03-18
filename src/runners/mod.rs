@@ -11,9 +11,12 @@ mod node;
 #[derive(Debug, Default, serde::Serialize, serde::Deserialize, JsonSchema, Clone, Copy)]
 #[cfg_attr(test, derive(PartialEq, Eq))]
 pub enum JavaScriptRuntime {
+    #[serde(rename = "bun")]
     Bun,
+    #[serde(rename = "deno")]
     Deno,
     #[default]
+    #[serde(rename = "node")]
     Node,
 }
 

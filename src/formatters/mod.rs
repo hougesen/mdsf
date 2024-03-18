@@ -13,6 +13,7 @@ pub mod clang_format;
 pub mod crystal_format;
 pub mod dart_format;
 pub mod deno_format;
+pub mod elm_format;
 pub mod gleam_format;
 pub mod gofmt;
 pub mod gofumpt;
@@ -101,6 +102,7 @@ pub fn format_snippet(config: &MdsfConfig, language: &Language, code: &str) -> S
             Language::Crystal => config.crystal.format(snippet_path),
             Language::Css => config.css.format(snippet_path),
             Language::Dart => config.dart.format(snippet_path),
+            Language::Elm => config.elm.format(snippet_path),
             Language::Elixir => config.elixir.format(snippet_path),
             Language::Gleam => config.gleam.format(snippet_path),
             Language::Go => config.go.format(snippet_path),
