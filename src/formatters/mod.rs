@@ -8,6 +8,7 @@ use crate::{config::MdsfConfig, languages::Language};
 pub mod autopep8;
 pub mod biome;
 pub mod black;
+pub mod blade_formatter;
 pub mod blue;
 pub mod clang_format;
 pub mod crystal_format;
@@ -96,6 +97,7 @@ pub fn format_snippet(config: &MdsfConfig, language: &Language, code: &str) -> S
         let snippet_path = snippet.path();
 
         if let Ok(Some(formatted_code)) = match language {
+            Language::Blade => config.blade.format(snippet_path),
             Language::C => config.c.format(snippet_path),
             Language::CSharp => config.csharp.format(snippet_path),
             Language::Cpp => config.cpp.format(snippet_path),

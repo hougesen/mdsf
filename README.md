@@ -60,6 +60,7 @@ mdsf init
 
 | Language    | Formatters                                                    |
 | ----------- | ------------------------------------------------------------- |
+| Blade       | `blade-formatter`                                             |
 | C           | `clang-format`                                                |
 | Cpp         | `clang-format`                                                |
 | Crystal     | `crystal_format`                                              |
