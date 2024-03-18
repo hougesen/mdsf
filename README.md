@@ -66,6 +66,7 @@ mdsf init
 | CSharp      | `clang-format`                                                |
 | CSS         | `prettier`                                                    |
 | Dart        | `dart_format`                                                 |
+| Elm         | `elm-format`                                                  |
 | Elixir      | `mix_format`                                                  |
 | Gleam       | `gleam_format`                                                |
 | Go          | `gofmt`, `gofumpt`                                            |

@@ -42,7 +42,7 @@ pub fn format_using_prettier(
     }
 
     invoke_prettier(
-        setup_npm_script(JavaScriptRuntime::Node, "prettier"),
+        setup_npm_script(JavaScriptRuntime::default(), "prettier"),
         snippet_path,
         embedded_language_formatting,
     )

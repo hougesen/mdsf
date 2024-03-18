@@ -7,7 +7,7 @@ pub fn format_using_biome(
     snippet_path: &std::path::Path,
 ) -> std::io::Result<(bool, Option<String>)> {
     // NOTE: the biome docs recommend running biome using npx, and not directly
-    let mut cmd = setup_npm_script(JavaScriptRuntime::Node, "@biomejs/biome");
+    let mut cmd = setup_npm_script(JavaScriptRuntime::default(), "@biomejs/biome");
 
     cmd.arg("format").arg("--write").arg(snippet_path);
 

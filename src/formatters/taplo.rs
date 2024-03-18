@@ -29,7 +29,7 @@ pub fn format_using_taplo(
     }
 
     invoke_taplo(
-        setup_npm_script(JavaScriptRuntime::Node, "@taplo/cli"),
+        setup_npm_script(JavaScriptRuntime::default(), "@taplo/cli"),
         snippet_path,
     )
 }

@@ -9,6 +9,7 @@ pub enum Language {
     CSharp,
     Css,
     Dart,
+    Elm,
     Elixir,
     Gleam,
     GraphQL,
@@ -46,7 +47,6 @@ pub enum Language {
     // TODO: XML,
     // TODO: D,
     // TODO: Erlang,
-    // TODO: Elm,
     // TODO: Scala,
     // TODO: R,
 }
@@ -58,6 +58,7 @@ pub mod csharp;
 pub mod css;
 pub mod dart;
 pub mod elixir;
+pub mod elm;
 pub mod gleam;
 pub mod go;
 pub mod graphql;
@@ -127,6 +128,7 @@ impl Language {
             "yml" | "yaml" => Some(Self::Yaml),
             "zig" => Some(Self::Zig),
             "graphql" | "gql" => Some(Self::GraphQL),
+            "elm" => Some(Self::Elm),
             _ => None,
         }
     }
@@ -167,6 +169,7 @@ impl Language {
             Self::Yaml => ".yml",
             Self::Zig => ".zig",
             Self::GraphQL => ".gql",
+            Self::Elm => ".elm",
         }
     }
 }

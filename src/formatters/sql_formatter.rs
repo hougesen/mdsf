@@ -22,7 +22,7 @@ pub fn format_using_sql_formatter(
     snippet_path: &std::path::Path,
 ) -> std::io::Result<(bool, Option<String>)> {
     invote_sql_formatter(
-        setup_npm_script(JavaScriptRuntime::Node, "sql-formatter"),
+        setup_npm_script(JavaScriptRuntime::default(), "sql-formatter"),
         snippet_path,
     )
 }

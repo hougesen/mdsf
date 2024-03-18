@@ -80,6 +80,17 @@
         }
       ]
     },
+    "elm": {
+      "default": {
+        "enabled": true,
+        "formatter": "elm-format"
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/Lang_for_Elm"
+        }
+      ]
+    },
     "gleam": {
       "default": {
         "enabled": true,
@@ -377,6 +388,10 @@
       "type": "string",
       "enum": ["mix_format"]
     },
+    "Elm": {
+      "type": "string",
+      "enum": ["elm-format"]
+    },
     "Gleam": {
       "type": "string",
       "enum": ["gleam_format"]
@@ -490,6 +505,18 @@
         },
         "formatter": {
           "$ref": "#/definitions/MdsfFormatter_for_Elixir"
+        }
+      }
+    },
+    "Lang_for_Elm": {
+      "type": "object",
+      "required": ["enabled", "formatter"],
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        },
+        "formatter": {
+          "$ref": "#/definitions/MdsfFormatter_for_Elm"
         }
       }
     },
@@ -876,6 +903,19 @@
           "type": "array",
           "items": {
             "$ref": "#/definitions/MdsfFormatter_for_Elixir"
+          }
+        }
+      ]
+    },
+    "MdsfFormatter_for_Elm": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/Elm"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MdsfFormatter_for_Elm"
           }
         }
       ]

@@ -29,7 +29,7 @@ pub fn format_using_stylua(
     }
 
     invoke_stylua(
-        setup_npm_script(JavaScriptRuntime::Node, "@johnnymorganz/stylua-bin"),
+        setup_npm_script(JavaScriptRuntime::default(), "@johnnymorganz/stylua-bin"),
         snippet_path,
     )
 }
