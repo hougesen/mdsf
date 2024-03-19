@@ -36,6 +36,7 @@ precommit:
     just lint
     just test
     cargo run -- schema
+    node scripts/update-supported-languages.mjs
     npx --yes prettier --write .
     git restore tests/
     typos .
