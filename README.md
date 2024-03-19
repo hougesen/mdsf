@@ -58,40 +58,45 @@ mdsf init
 >
 > Only formatters that are already installed will be used.
 
-| Language    | Formatters                                                    |
-| ----------- | ------------------------------------------------------------- |
-| Blade       | `blade-formatter`                                             |
-| C           | `clang-format`                                                |
-| Cpp         | `clang-format`                                                |
-| Crystal     | `crystal_format`                                              |
-| CSharp      | `clang-format`                                                |
-| CSS         | `prettier`                                                    |
-| Dart        | `dart_format`                                                 |
-| Elm         | `elm-format`                                                  |
-| Elixir      | `mix_format`                                                  |
-| Gleam       | `gleam_format`                                                |
-| Go          | `gofmt`, `gofumpt`                                            |
-| GraphQL     | `prettier`                                                    |
-| HTML        | `prettier`                                                    |
-| Java        | `clang-format`                                                |
-| JavaScript  | `prettier`, `biome`, `clang-format`, `deno_fmt`               |
-| JSON        | `prettier`, `biome`, `clang-format`, `deno_fmt`               |
-| Just        | `just_fmt`                                                    |
-| Lua         | `stylua`                                                      |
-| Nim         | `nimpretty`                                                   |
-| Objective C | `clang-format`                                                |
-| OCaml       | `ocamlformat`                                                 |
-| Protobuf    | `clang-format`                                                |
-| Python      | `ruff`, `black`, `blue`, `yapf`, `autopep8`, `isort`, `usort` |
-| ReScript    | `rescript_format`                                             |
-| Roc         | `roc_format`                                                  |
-| Ruby        | `rubocop`                                                     |
-| Rust        | `rustfmt`                                                     |
-| Shell       | `shfmt`                                                       |
-| SQL         | `sqlfluff`, `sql-formatter`                                   |
-| TOML        | `taplo`                                                       |
-| TypeScript  | `prettier`, `biome`, `deno_fmt`                               |
-| Vue         | `prettier`                                                    |
-| Xml         | `xmllint`                                                     |
-| YAML        | `prettier`                                                    |
-| Zig         | `zigfmt`                                                      |
+<!-- START_SECTION:supported-languages -->
+
+| Language   | Formatters                                                    |
+| ---------- | ------------------------------------------------------------- |
+| Blade      | `blade-formatter`                                             |
+| C          | `clang-format`                                                |
+| CSharp     | `clang-format`                                                |
+| Cpp        | `clang-format`                                                |
+| Crystal    | `crystal_format`                                              |
+| Css        | `prettier`                                                    |
+| Dart       | `dart_format`                                                 |
+| Elixir     | `mix_format`                                                  |
+| Elm        | `elm-format`                                                  |
+| Gleam      | `gleam_format`                                                |
+| Go         | `gofmt`, `gofumpt`                                            |
+| GraphQL    | `prettier`                                                    |
+| Html       | `prettier`                                                    |
+| Java       | `clang-format`                                                |
+| JavaScript | `biome`, `clang-format`, `deno_fmt`, `prettier`               |
+| Json       | `biome`, `clang-format`, `deno_fmt`, `prettier`               |
+| Just       | `just_fmt`                                                    |
+| Lua        | `stylua`                                                      |
+| Markdown   | `prettier`                                                    |
+| Nim        | `nimpretty`                                                   |
+| OCaml      | `ocamlformat`                                                 |
+| ObjectiveC | `clang-format`                                                |
+| Protobuf   | `clang-format`                                                |
+| Python     | `autopep8`, `black`, `blue`, `isort`, `ruff`, `usort`, `yapf` |
+| ReScript   | `rescript_format`                                             |
+| Roc        | `roc_format`                                                  |
+| Ruby       | `rubocop`                                                     |
+| Rust       | `rustfmt`                                                     |
+| Shell      | `shfmt`                                                       |
+| Sql        | `sql-formatter`, `sqlfluff`                                   |
+| Toml       | `taplo`                                                       |
+| TypeScript | `biome`, `deno_fmt`, `prettier`                               |
+| Vue        | `prettier`                                                    |
+| Xml        | `xmllint`                                                     |
+| Yaml       | `prettier`                                                    |
+| Zig        | `zigfmt`                                                      |
+
+<!-- END_SECTION:supported-languages -->
