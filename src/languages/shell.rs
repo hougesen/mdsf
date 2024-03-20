@@ -29,10 +29,10 @@ impl Default for Lang<Shell> {
 impl Default for MdsfFormatter<Shell> {
     #[inline]
     fn default() -> Self {
-        Self::Multiple(vec![
+        Self::Multiple(vec![Self::Multiple(vec![
             Self::Single(Shell::Shfmt),
             Self::Single(Shell::Beautysh),
-        ])
+        ])])
     }
 }
 

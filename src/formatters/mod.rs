@@ -36,6 +36,7 @@ pub mod roc_format;
 pub mod rubocop;
 pub mod ruff;
 pub mod rustfmt;
+pub mod scalafmt;
 pub mod shfmt;
 pub mod sql_formatter;
 pub mod sqlfluff;
@@ -139,6 +140,7 @@ pub fn format_snippet(config: &MdsfConfig, language: &Language, code: &str) -> S
             Language::Roc => config.roc.format(snippet_path),
             Language::Ruby => config.ruby.format(snippet_path),
             Language::Rust => config.rust.format(snippet_path),
+            Language::Scala => config.scala.format(snippet_path),
             Language::Shell => config.shell.format(snippet_path),
             Language::Sql => config.sql.format(snippet_path),
             Language::Toml => config.toml.format(snippet_path),

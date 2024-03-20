@@ -358,10 +358,21 @@
         }
       ]
     },
+    "scala": {
+      "default": {
+        "enabled": true,
+        "formatter": "scalafmt"
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/Lang_for_Scala"
+        }
+      ]
+    },
     "shell": {
       "default": {
         "enabled": true,
-        "formatter": ["shfmt", "beautysh"]
+        "formatter": [["shfmt", "beautysh"]]
       },
       "allOf": [
         {
@@ -908,6 +919,18 @@
         }
       }
     },
+    "Lang_for_Scala": {
+      "type": "object",
+      "required": ["enabled", "formatter"],
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        },
+        "formatter": {
+          "$ref": "#/definitions/MdsfFormatter_for_Scala"
+        }
+      }
+    },
     "Lang_for_Shell": {
       "type": "object",
       "required": ["enabled", "formatter"],
@@ -1428,6 +1451,19 @@
         }
       ]
     },
+    "MdsfFormatter_for_Scala": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/Scala"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MdsfFormatter_for_Scala"
+          }
+        }
+      ]
+    },
     "MdsfFormatter_for_Shell": {
       "anyOf": [
         {
@@ -1575,6 +1611,10 @@
     "Rust": {
       "type": "string",
       "enum": ["rustfmt"]
+    },
+    "Scala": {
+      "type": "string",
+      "enum": ["scalafmt"]
     },
     "Shell": {
       "type": "string",

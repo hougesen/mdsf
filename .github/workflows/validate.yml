@@ -91,6 +91,8 @@ jobs:
       #- uses: ocaml/setup-ocaml@v2
       #  with:
       #    ocaml-compiler: "5.1"
+      # scalafmt
+      - uses: olafurpg/setup-scala@v11
 
       - run: rustup toolchain install stable --profile minimal
       - run: rustup component add rustfmt clippy
@@ -175,6 +177,9 @@ jobs:
 
       - name: cljstyle
         run: curl -sLO https://raw.githubusercontent.com/greglook/cljstyle/main/util/install-cljstyle && chmod +x install-cljstyle && sudo ./install-cljstyle
+
+      - name: scalafmt
+        run: cs install scalafmt
 
       - name: run tests
         run: cargo test

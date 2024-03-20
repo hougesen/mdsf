@@ -94,6 +94,7 @@ mdsf init
 | Roc        | `roc_format`                                                  |
 | Ruby       | `rubocop`                                                     |
 | Rust       | `rustfmt`                                                     |
+| Scala      | `scalafmt`                                                    |
 | Shell      | `beautysh`, `shfmt`                                           |
 | Sql        | `sql-formatter`, `sqlfluff`                                   |
 | Toml       | `taplo`                                                       |
