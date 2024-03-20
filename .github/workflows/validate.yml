@@ -95,7 +95,7 @@ jobs:
       - uses: actions/setup-java@v4
         with:
           java-version: "21"
-          distribution: "termurin"
+          distribution: "temurin"
 
       - run: rustup toolchain install stable --profile minimal
       - run: rustup component add rustfmt clippy
