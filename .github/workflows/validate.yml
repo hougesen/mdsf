@@ -91,6 +91,11 @@ jobs:
       #- uses: ocaml/setup-ocaml@v2
       #  with:
       #    ocaml-compiler: "5.1"
+      # scalafmt
+      - uses: actions/setup-java@v4
+        with:
+          java-version: "21"
+          distribution: "temurin"
 
       - run: rustup toolchain install stable --profile minimal
       - run: rustup component add rustfmt clippy

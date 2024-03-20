@@ -35,6 +35,7 @@ pub enum Language {
     Roc,
     Ruby,
     Rust,
+    Scala,
     Shell,
     Sql,
     Toml,
@@ -54,7 +55,6 @@ pub enum Language {
     // TODO: XML,
     // TODO: D,
     // TODO: Erlang,
-    // TODO: Scala,
     // TODO: R,
 }
 
@@ -90,6 +90,7 @@ pub mod rescript;
 pub mod roc;
 pub mod ruby;
 pub mod rust;
+pub mod scala;
 pub mod shell;
 pub mod sql;
 pub mod toml;
@@ -141,6 +142,7 @@ impl Language {
             "roc" => Some(Self::Roc),
             "ruby" | "rb" => Some(Self::Ruby),
             "rust" | "rs" => Some(Self::Rust),
+            "scala" => Some(Self::Scala),
             "shell" | "sh" | "bash" | "zsh" => Some(Self::Shell),
             "sql" | "bigquery" | "db2" | "db2i" | "hive" | "mariadb" | "mysql" | "n1ql"
             | "plsql" | "postgresql" | "redshift" | "singlestoredb" | "snowflake" | "spark"
@@ -191,6 +193,7 @@ impl Language {
             Self::Ruby => ".rb",
             Self::Rust => ".rs",
             Self::Shell => ".sh",
+            Self::Scala => ".scala",
             Self::Sql => ".sql",
             Self::Toml => ".toml",
             Self::TypeScript => ".ts",
