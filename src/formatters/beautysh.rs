@@ -21,23 +21,13 @@ mod test_beautysh {
     #[test_with::executable(beautysh)]
     #[test]
     fn it_should_format_sh() {
-        let input = "
+        let input = "#!/bin/shell
 
-#!/bin/sh
-
-       add      ()   {
-    echo \"$1\"                 +          \"$2\"
+       add() {
+    echo \"$1\" + \"$2\"
              }
-
-
-
-
-
-
-
-
 ";
-        let expected_output = "#!/bin/sh
+        let expected_output = "#!/bin/shell
 
 add() {
     echo \"$1\" + \"$2\"

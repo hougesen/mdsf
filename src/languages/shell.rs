@@ -143,7 +143,7 @@ add() {
             formatter: MdsfFormatter::Single(Shell::Beautysh),
         };
 
-        let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");
+        let snippet = setup_snippet(input, EXTENSION).expect("it to save the file");
         let snippet_path = snippet.path();
 
         let output = l
