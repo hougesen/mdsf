@@ -1,6 +1,8 @@
 use schemars::JsonSchema;
 
-use crate::formatters::{fourmolu::format_using_fourmolu, MdsfFormatter};
+use crate::formatters::{
+    fourmolu::format_using_fourmolu, hindent::format_using_hindent, MdsfFormatter,
+};
 
 use super::{Lang, LanguageFormatter};
 
@@ -10,6 +12,8 @@ pub enum Haskell {
     #[default]
     #[serde(rename = "fourmolu")]
     Fourmolu,
+    #[serde(rename = "hindent")]
+    HIndent,
 }
 
 impl Default for Lang<Haskell> {
@@ -37,6 +41,7 @@ impl LanguageFormatter for Haskell {
     ) -> std::io::Result<(bool, Option<String>)> {
         match self {
             Self::Fourmolu => format_using_fourmolu(snippet_path),
+            Self::HIndent => format_using_hindent(snippet_path),
         }
     }
 }
@@ -96,6 +101,30 @@ addNumbers a b = do
         let expected_output = "addNumbers :: Int -> Int -> Int
 addNumbers a b = do
     a + b
+";
+
+        assert_eq!(output, expected_output);
+    }
+
+    #[test_with::executable(hindent)]
+    #[test]
+    fn test_hindent() {
+        let l = Lang::<Haskell> {
+            enabled: true,
+            formatter: MdsfFormatter::Single(Haskell::HIndent),
+        };
+
+        let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");
+        let snippet_path = snippet.path();
+
+        let output = l
+            .format(snippet_path)
+            .expect("it to not fail")
+            .expect("it to be a snippet");
+
+        let expected_output = "addNumbers :: Int -> Int -> Int
+addNumbers a b = do
+  a + b
 ";
 
         assert_eq!(output, expected_output);
