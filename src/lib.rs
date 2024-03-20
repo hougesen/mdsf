@@ -1,3 +1,5 @@
+use std::sync::atomic::AtomicBool;
+
 use config::MdsfConfig;
 use error::MdsfError;
 use formatters::format_snippet;
@@ -11,6 +13,11 @@ pub mod error;
 pub mod formatters;
 pub mod languages;
 mod runners;
+
+#[cfg(test)]
+pub static DEBUG: AtomicBool = AtomicBool::new(true);
+#[cfg(not(test))]
+pub static DEBUG: AtomicBool = AtomicBool::new(false);
 
 #[inline]
 fn write_unchanged_line(path: &std::path::Path, dur: core::time::Duration) {

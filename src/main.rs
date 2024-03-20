@@ -7,6 +7,8 @@ use mdsf::{
 };
 
 fn format_command(args: FormatCommandArguments) -> Result<(), MdsfError> {
+    mdsf::DEBUG.swap(args.debug, std::sync::atomic::Ordering::Relaxed);
+
     let conf = MdsfConfig::load();
 
     if args.path.is_file() {
