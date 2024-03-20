@@ -173,5 +173,8 @@ jobs:
       - name: beautysh
         run: pip install beautysh
 
+      - name: cljstyle
+        run: curl -sLO https://raw.githubusercontent.com/greglook/cljstyle/main/util/install-cljstyle && chmod +x install-cljstyle && sudo ./install-cljstyle
+
       - name: run tests
         run: cargo test
