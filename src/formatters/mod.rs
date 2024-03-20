@@ -12,6 +12,7 @@ pub mod black;
 pub mod blade_formatter;
 pub mod blue;
 pub mod clang_format;
+pub mod cljstyle;
 pub mod crystal_format;
 pub mod dart_format;
 pub mod deno_fmt;
@@ -108,6 +109,7 @@ pub fn format_snippet(config: &MdsfConfig, language: &Language, code: &str) -> S
         if let Ok(Some(formatted_code)) = match language {
             Language::Blade => config.blade.format(snippet_path),
             Language::C => config.c.format(snippet_path),
+            Language::Clojure => config.clojure.format(snippet_path),
             Language::CSharp => config.csharp.format(snippet_path),
             Language::Cpp => config.cpp.format(snippet_path),
             Language::Crystal => config.crystal.format(snippet_path),

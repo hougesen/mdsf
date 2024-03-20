@@ -5,6 +5,7 @@ use crate::formatters::MdsfFormatter;
 pub enum Language {
     Blade,
     C,
+    Clojure,
     CSharp,
     Cpp,
     Crystal,
@@ -59,6 +60,7 @@ pub enum Language {
 
 pub mod blade;
 pub mod c;
+pub mod clojure;
 pub mod cpp;
 pub mod crystal;
 pub mod csharp;
@@ -149,6 +151,7 @@ impl Language {
             "xml" => Some(Self::Xml),
             "yml" | "yaml" => Some(Self::Yaml),
             "zig" => Some(Self::Zig),
+            "clojure" => Some(Self::Clojure),
             _ => None,
         }
     }
@@ -195,6 +198,7 @@ impl Language {
             Self::Xml => ".xml",
             Self::Yaml => ".yml",
             Self::Zig => ".zig",
+            Self::Clojure => ".clj",
         }
     }
 }
