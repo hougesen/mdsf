@@ -5,8 +5,9 @@ use crate::languages::{
     elixir::Elixir, elm::Elm, gleam::Gleam, go::Go, graphql::GraphQL, groovy::Groovy, html::Html,
     java::Java, javascript::JavaScript, json::Json, just::Just, lua::Lua, markdown::Markdown,
     nim::Nim, objective_c::ObjectiveC, ocaml::OCaml, perl::Perl, protobuf::Protobuf,
-    python::Python, rescript::ReScript, roc::Roc, ruby::Ruby, rust::Rust, shell::Shell, sql::Sql,
-    toml::Toml, typescript::TypeScript, vue::Vue, xml::Xml, yaml::Yaml, zig::Zig, Lang,
+    purescript::PureScript, python::Python, rescript::ReScript, roc::Roc, ruby::Ruby, rust::Rust,
+    shell::Shell, sql::Sql, toml::Toml, typescript::TypeScript, vue::Vue, xml::Xml, yaml::Yaml,
+    zig::Zig, Lang,
 };
 
 #[derive(Debug, serde::Serialize, serde::Deserialize, JsonSchema)]
@@ -92,6 +93,9 @@ pub struct MdsfConfig {
     pub perl: Lang<Perl>,
 
     #[serde(default)]
+    pub purescript: Lang<PureScript>,
+
+    #[serde(default)]
     pub python: Lang<Python>,
 
     #[serde(default)]
@@ -163,6 +167,7 @@ impl Default for MdsfConfig {
             protobuf: Lang::<Protobuf>::default(),
             perl: Lang::<Perl>::default(),
             python: Lang::<Python>::default(),
+            purescript: Lang::<PureScript>::default(),
             rescript: Lang::<ReScript>::default(),
             roc: Lang::<Roc>::default(),
             ruby: Lang::<Ruby>::default(),

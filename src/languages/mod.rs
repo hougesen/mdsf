@@ -28,6 +28,7 @@ pub enum Language {
     ObjectiveC,
     Perl,
     Protobuf,
+    PureScript,
     Python,
     ReScript,
     Roc,
@@ -81,6 +82,7 @@ pub mod objective_c;
 pub mod ocaml;
 pub mod perl;
 pub mod protobuf;
+pub mod purescript;
 pub mod python;
 pub mod rescript;
 pub mod roc;
@@ -132,6 +134,7 @@ impl Language {
             "perl" => Some(Self::Perl),
             "profobuf" | "profo" => Some(Self::Protobuf),
             "python" => Some(Self::Python),
+            "purescript" => Some(Self::PureScript),
             "rescript" => Some(Self::ReScript),
             "roc" => Some(Self::Roc),
             "ruby" | "rb" => Some(Self::Ruby),
@@ -178,6 +181,7 @@ impl Language {
             Self::ObjectiveC => ".m",
             Self::Perl => ".pl",
             Self::Protobuf => ".proto",
+            Self::PureScript => ".purs",
             Self::Python => ".py",
             Self::ReScript => ".res",
             Self::Roc => ".roc",

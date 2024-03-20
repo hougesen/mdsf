@@ -29,6 +29,7 @@ pub mod npm_groovy_lint;
 pub mod ocamlformat;
 pub mod perltidy;
 pub mod prettier;
+pub mod purs_tidy;
 pub mod rescript_format;
 pub mod roc_format;
 pub mod rubocop;
@@ -131,6 +132,7 @@ pub fn format_snippet(config: &MdsfConfig, language: &Language, code: &str) -> S
             Language::Perl => config.perl.format(snippet_path),
             Language::Protobuf => config.protobuf.format(snippet_path),
             Language::Python => config.python.format(snippet_path),
+            Language::PureScript => config.purescript.format(snippet_path),
             Language::ReScript => config.rescript.format(snippet_path),
             Language::Roc => config.roc.format(snippet_path),
             Language::Ruby => config.ruby.format(snippet_path),

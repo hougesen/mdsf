@@ -278,6 +278,17 @@
         }
       ]
     },
+    "purescript": {
+      "default": {
+        "enabled": true,
+        "formatter": "purs-tidy"
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/Lang_for_PureScript"
+        }
+      ]
+    },
     "python": {
       "default": {
         "enabled": true,
@@ -798,6 +809,18 @@
         }
       }
     },
+    "Lang_for_PureScript": {
+      "type": "object",
+      "required": ["enabled", "formatter"],
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        },
+        "formatter": {
+          "$ref": "#/definitions/MdsfFormatter_for_PureScript"
+        }
+      }
+    },
     "Lang_for_Python": {
       "type": "object",
       "required": ["enabled", "formatter"],
@@ -1287,6 +1310,19 @@
         }
       ]
     },
+    "MdsfFormatter_for_PureScript": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/PureScript"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MdsfFormatter_for_PureScript"
+          }
+        }
+      ]
+    },
     "MdsfFormatter_for_Python": {
       "anyOf": [
         {
@@ -1475,6 +1511,10 @@
     "Protobuf": {
       "type": "string",
       "enum": ["clang-format"]
+    },
+    "PureScript": {
+      "type": "string",
+      "enum": ["purs-tidy"]
     },
     "Python": {
       "type": "string",
