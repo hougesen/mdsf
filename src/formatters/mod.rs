@@ -3,7 +3,7 @@ use std::{io::Write, process::Command};
 use schemars::JsonSchema;
 use tempfile::NamedTempFile;
 
-use crate::{config::MdsfConfig, languages::Language};
+use crate::{config::MdsfConfig, languages::Language, DEBUG};
 
 pub mod autopep8;
 pub mod biome;
@@ -82,10 +82,10 @@ fn handle_post_execution(
 }
 
 fn spawn_command(cmd: &mut Command) -> std::io::Result<bool> {
-    #[cfg(not(test))]
-    cmd.stdout(std::process::Stdio::null());
-    #[cfg(not(test))]
-    cmd.stderr(std::process::Stdio::null());
+    if !DEBUG.load(std::sync::atomic::Ordering::Relaxed) {
+        cmd.stdout(std::process::Stdio::null());
+        cmd.stderr(std::process::Stdio::null());
+    }
 
     Ok(cmd.spawn()?.wait()?.success())
 }

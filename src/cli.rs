@@ -20,6 +20,11 @@ pub enum Commands {
 /// Run formatters on input files
 #[derive(Args, Debug)]
 pub struct FormatCommandArguments {
+    // Path to file or directory
     #[arg()]
     pub path: std::path::PathBuf,
+
+    /// Log stdout and stderr of formatters
+    #[arg(long, default_value_t = false)]
+    pub debug: bool,
 }
