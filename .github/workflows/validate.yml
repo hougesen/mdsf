@@ -164,5 +164,8 @@ jobs:
       - name: crystal_format
         run: crystal tool format --help
 
+      - name: perltidy
+        run: sudo apt-get install -y perltidy
+
       - name: run tests
         run: cargo test
