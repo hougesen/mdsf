@@ -160,7 +160,7 @@
     "haskell": {
       "default": {
         "enabled": true,
-        "formatter": "fourmolu"
+        "formatter": [["fourmolu", "hindent"]]
       },
       "allOf": [
         {

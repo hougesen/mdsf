@@ -39,6 +39,6 @@ addNumbers a b = do
             .1
             .expect("it to be some");
 
-        assert_eq!(expected_output, output);
+        assert_eq!(output, expected_output);
     }
 }

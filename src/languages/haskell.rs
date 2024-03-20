@@ -29,7 +29,10 @@ impl Default for Lang<Haskell> {
 impl Default for MdsfFormatter<Haskell> {
     #[inline]
     fn default() -> Self {
-        Self::Single(Haskell::Fourmolu)
+        Self::Multiple(vec![Self::Multiple(vec![
+            Self::Single(Haskell::Fourmolu),
+            Self::Single(Haskell::HIndent),
+        ])])
     }
 }
 
