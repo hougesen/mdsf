@@ -3,8 +3,8 @@ use schemars::JsonSchema;
 use crate::languages::{
     blade::Blade, c::C, clojure::Clojure, cpp::Cpp, crystal::Crystal, csharp::CSharp, css::Css,
     dart::Dart, elixir::Elixir, elm::Elm, gleam::Gleam, go::Go, graphql::GraphQL, groovy::Groovy,
-    html::Html, java::Java, javascript::JavaScript, json::Json, just::Just, lua::Lua,
-    markdown::Markdown, nim::Nim, objective_c::ObjectiveC, ocaml::OCaml, perl::Perl,
+    haskell::Haskell, html::Html, java::Java, javascript::JavaScript, json::Json, just::Just,
+    lua::Lua, markdown::Markdown, nim::Nim, objective_c::ObjectiveC, ocaml::OCaml, perl::Perl,
     protobuf::Protobuf, purescript::PureScript, python::Python, rescript::ReScript, roc::Roc,
     ruby::Ruby, rust::Rust, scala::Scala, shell::Shell, sql::Sql, toml::Toml,
     typescript::TypeScript, vue::Vue, xml::Xml, yaml::Yaml, zig::Zig, Lang,
@@ -58,6 +58,9 @@ pub struct MdsfConfig {
 
     #[serde(default)]
     pub groovy: Lang<Groovy>,
+
+    #[serde(default)]
+    pub haskell: Lang<Haskell>,
 
     #[serde(default)]
     pub html: Lang<Html>,
@@ -161,6 +164,7 @@ impl Default for MdsfConfig {
             go: Lang::<Go>::default(),
             graphql: Lang::<GraphQL>::default(),
             groovy: Lang::<Groovy>::default(),
+            haskell: Lang::<Haskell>::default(),
             html: Lang::<Html>::default(),
             java: Lang::<Java>::default(),
             javascript: Lang::<JavaScript>::default(),

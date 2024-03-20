@@ -17,6 +17,7 @@ pub enum Language {
     Go,
     GraphQL,
     Groovy,
+    Haskell,
     Html,
     Java,
     JavaScript,
@@ -44,7 +45,6 @@ pub enum Language {
     Xml,
     Yaml,
     Zig,
-    // TODO: Haskell,
     // TODO: PHP,
     // TODO: Kotlin,
     // TODO: FSharp,
@@ -72,6 +72,7 @@ pub mod gleam;
 pub mod go;
 pub mod graphql;
 pub mod groovy;
+pub mod haskell;
 pub mod html;
 pub mod java;
 pub mod javascript;
@@ -124,7 +125,8 @@ impl Language {
             "go" | "golang" => Some(Self::Go),
             "graphql" | "gql" => Some(Self::GraphQL),
             "groovy" => Some(Self::Groovy),
-            "html" => Some(Self::Html),
+            "haskell" => Some(Self::Haskell),
+            "html" | "html5" => Some(Self::Html),
             "java" => Some(Self::Java),
             "javascript" | "js" | "jsx" => Some(Self::JavaScript),
             "json" | "jsonc" => Some(Self::Json),
@@ -174,6 +176,7 @@ impl Language {
             Self::Go => ".go",
             Self::GraphQL => ".gql",
             Self::Groovy => ".groovy",
+            Self::Haskell => ".hs",
             Self::Html => ".html",
             Self::Java => ".java",
             Self::JavaScript => ".js",
