@@ -74,6 +74,7 @@ mdsf init
 | Gleam      | `gleam_format`                                                |
 | Go         | `gofmt`, `gofumpt`                                            |
 | GraphQL    | `prettier`                                                    |
+| Groovy     | `npm-groovy-lint`                                             |
 | Html       | `prettier`                                                    |
 | Java       | `clang-format`                                                |
 | JavaScript | `biome`, `clang-format`, `deno_fmt`, `prettier`               |

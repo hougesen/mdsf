@@ -22,6 +22,7 @@ pub mod isort;
 pub mod just_fmt;
 pub mod mix_format;
 pub mod nimpretty;
+pub mod npm_groovy_lint;
 pub mod ocamlformat;
 pub mod prettier;
 pub mod rescript_format;
@@ -112,6 +113,7 @@ pub fn format_snippet(config: &MdsfConfig, language: &Language, code: &str) -> S
             Language::Gleam => config.gleam.format(snippet_path),
             Language::Go => config.go.format(snippet_path),
             Language::GraphQL => config.graphql.format(snippet_path),
+            Language::Groovy => config.groovy.format(snippet_path),
             Language::Html => config.html.format(snippet_path),
             Language::Java => config.java.format(snippet_path),
             Language::JavaScript => config.javascript.format(snippet_path),
