@@ -15,6 +15,7 @@ pub enum Language {
     Gleam,
     Go,
     GraphQL,
+    Groovy,
     Html,
     Java,
     JavaScript,
@@ -66,6 +67,7 @@ pub mod elm;
 pub mod gleam;
 pub mod go;
 pub mod graphql;
+pub mod groovy;
 pub mod html;
 pub mod java;
 pub mod javascript;
@@ -114,6 +116,7 @@ impl Language {
             "gleam" => Some(Self::Gleam),
             "go" | "golang" => Some(Self::Go),
             "graphql" | "gql" => Some(Self::GraphQL),
+            "groovy" => Some(Self::Groovy),
             "html" => Some(Self::Html),
             "java" => Some(Self::Java),
             "javascript" | "js" | "jsx" => Some(Self::JavaScript),
@@ -159,6 +162,7 @@ impl Language {
             Self::Gleam => ".gleam",
             Self::Go => ".go",
             Self::GraphQL => ".gql",
+            Self::Groovy => ".groovy",
             Self::Html => ".html",
             Self::Java => ".java",
             Self::JavaScript => ".js",

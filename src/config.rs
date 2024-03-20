@@ -2,11 +2,11 @@ use schemars::JsonSchema;
 
 use crate::languages::{
     blade::Blade, c::C, cpp::Cpp, crystal::Crystal, csharp::CSharp, css::Css, dart::Dart,
-    elixir::Elixir, elm::Elm, gleam::Gleam, go::Go, graphql::GraphQL, html::Html, java::Java,
-    javascript::JavaScript, json::Json, just::Just, lua::Lua, markdown::Markdown, nim::Nim,
-    objective_c::ObjectiveC, ocaml::OCaml, protobuf::Protobuf, python::Python, rescript::ReScript,
-    roc::Roc, ruby::Ruby, rust::Rust, shell::Shell, sql::Sql, toml::Toml, typescript::TypeScript,
-    vue::Vue, xml::Xml, yaml::Yaml, zig::Zig, Lang,
+    elixir::Elixir, elm::Elm, gleam::Gleam, go::Go, graphql::GraphQL, groovy::Groovy, html::Html,
+    java::Java, javascript::JavaScript, json::Json, just::Just, lua::Lua, markdown::Markdown,
+    nim::Nim, objective_c::ObjectiveC, ocaml::OCaml, protobuf::Protobuf, python::Python,
+    rescript::ReScript, roc::Roc, ruby::Ruby, rust::Rust, shell::Shell, sql::Sql, toml::Toml,
+    typescript::TypeScript, vue::Vue, xml::Xml, yaml::Yaml, zig::Zig, Lang,
 };
 
 #[derive(Debug, serde::Serialize, serde::Deserialize, JsonSchema)]
@@ -51,6 +51,9 @@ pub struct MdsfConfig {
 
     #[serde(default)]
     pub graphql: Lang<GraphQL>,
+
+    #[serde(default)]
+    pub groovy: Lang<Groovy>,
 
     #[serde(default)]
     pub html: Lang<Html>,
@@ -143,6 +146,7 @@ impl Default for MdsfConfig {
             gleam: Lang::<Gleam>::default(),
             go: Lang::<Go>::default(),
             graphql: Lang::<GraphQL>::default(),
+            groovy: Lang::<Groovy>::default(),
             html: Lang::<Html>::default(),
             java: Lang::<Java>::default(),
             javascript: Lang::<JavaScript>::default(),

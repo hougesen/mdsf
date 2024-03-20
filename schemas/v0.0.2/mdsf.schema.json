@@ -135,6 +135,17 @@
         }
       ]
     },
+    "groovy": {
+      "default": {
+        "enabled": true,
+        "formatter": "npm-groovy-lint"
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/Lang_for_Groovy"
+        }
+      ]
+    },
     "html": {
       "default": {
         "enabled": true,
@@ -452,6 +463,10 @@
       "type": "string",
       "enum": ["prettier"]
     },
+    "Groovy": {
+      "type": "string",
+      "enum": ["npm-groovy-lint"]
+    },
     "Html": {
       "type": "string",
       "enum": ["prettier"]
@@ -613,6 +628,18 @@
         },
         "formatter": {
           "$ref": "#/definitions/MdsfFormatter_for_GraphQL"
+        }
+      }
+    },
+    "Lang_for_Groovy": {
+      "type": "object",
+      "required": ["enabled", "formatter"],
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        },
+        "formatter": {
+          "$ref": "#/definitions/MdsfFormatter_for_Groovy"
         }
       }
     },
@@ -1064,6 +1091,19 @@
           "type": "array",
           "items": {
             "$ref": "#/definitions/MdsfFormatter_for_GraphQL"
+          }
+        }
+      ]
+    },
+    "MdsfFormatter_for_Groovy": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/Groovy"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MdsfFormatter_for_Groovy"
           }
         }
       ]
