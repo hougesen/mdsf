@@ -76,7 +76,7 @@ mdsf init
 | GraphQL    | `prettier`                                                    |
 | Groovy     | `npm-groovy-lint`                                             |
 | Html       | `prettier`                                                    |
-| Java       | `clang-format`                                                |
+| Java       | `clang-format`, `google-java-format`                          |
 | JavaScript | `biome`, `clang-format`, `deno_fmt`, `prettier`               |
 | Json       | `biome`, `clang-format`, `deno_fmt`, `prettier`               |
 | Just       | `just_fmt`                                                    |

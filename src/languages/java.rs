@@ -1,6 +1,9 @@
 use schemars::JsonSchema;
 
-use crate::formatters::{clang_format::format_using_clang_format, MdsfFormatter};
+use crate::formatters::{
+    clang_format::format_using_clang_format, google_java_format::format_using_google_java_format,
+    MdsfFormatter,
+};
 
 use super::{Lang, LanguageFormatter};
 
@@ -8,6 +11,8 @@ use super::{Lang, LanguageFormatter};
 #[cfg_attr(test, derive(PartialEq, Eq))]
 pub enum Java {
     #[default]
+    #[serde(rename = "google-java-format")]
+    GoogleJavaFormat,
     #[serde(rename = "clang-format")]
     ClangFormat,
 }
@@ -25,7 +30,10 @@ impl Default for Lang<Java> {
 impl Default for MdsfFormatter<Java> {
     #[inline]
     fn default() -> Self {
-        Self::Single(Java::ClangFormat)
+        Self::Multiple(vec![
+            Self::Single(Java::GoogleJavaFormat),
+            Self::Single(Java::ClangFormat),
+        ])
     }
 }
 
@@ -37,6 +45,7 @@ impl LanguageFormatter for Java {
     ) -> std::io::Result<(bool, Option<String>)> {
         match self {
             Self::ClangFormat => format_using_clang_format(snippet_path),
+            Self::GoogleJavaFormat => format_using_google_java_format(snippet_path),
         }
     }
 }
@@ -90,6 +99,32 @@ mod test_java {
         let l = Lang::<Java> {
             enabled: true,
             formatter: MdsfFormatter::Single(Java::ClangFormat),
+        };
+
+        let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");
+        let snippet_path = snippet.path();
+
+        let output = l
+            .format(snippet_path)
+            .expect("it to not fail")
+            .expect("it to be a snippet");
+
+        assert_eq!(expected_output, output);
+    }
+
+    #[test_with::executable(google-java-format)]
+    #[test]
+    fn test_google_java_format() {
+        let expected_output = "class HelloWorld {
+  public static void main(String[] args) {
+    System.out.println(\"Hello\");
+    System.out.println(\"World!\");
+  }
+}
+";
+        let l = Lang::<Java> {
+            enabled: true,
+            formatter: MdsfFormatter::Single(Java::GoogleJavaFormat),
         };
 
         let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");

@@ -19,6 +19,7 @@ pub mod gleam_format;
 pub mod gofmt;
 pub mod gofumpt;
 pub mod goimports;
+pub mod google_java_format;
 pub mod isort;
 pub mod just_fmt;
 pub mod mix_format;
