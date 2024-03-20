@@ -1,6 +1,8 @@
 use schemars::JsonSchema;
 
-use crate::formatters::{shfmt::format_using_shfmt, MdsfFormatter};
+use crate::formatters::{
+    beautysh::format_using_beautysh, shfmt::format_using_shfmt, MdsfFormatter,
+};
 
 use super::{Lang, LanguageFormatter};
 
@@ -10,6 +12,8 @@ pub enum Shell {
     #[default]
     #[serde(rename = "shfmt")]
     Shfmt,
+    #[serde(rename = "beautysh")]
+    Beautysh,
 }
 
 impl Default for Lang<Shell> {
@@ -25,7 +29,10 @@ impl Default for Lang<Shell> {
 impl Default for MdsfFormatter<Shell> {
     #[inline]
     fn default() -> Self {
-        Self::Single(Shell::Shfmt)
+        Self::Multiple(vec![
+            Self::Single(Shell::Shfmt),
+            Self::Single(Shell::Beautysh),
+        ])
     }
 }
 
@@ -37,6 +44,7 @@ impl LanguageFormatter for Shell {
     ) -> std::io::Result<(bool, Option<String>)> {
         match self {
             Self::Shfmt => format_using_shfmt(snippet_path),
+            Self::Beautysh => format_using_beautysh(snippet_path),
         }
     }
 }
@@ -101,6 +109,38 @@ add() {
         let l = Lang::<Shell> {
             enabled: true,
             formatter: MdsfFormatter::Single(Shell::Shfmt),
+        };
+
+        let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");
+        let snippet_path = snippet.path();
+
+        let output = l
+            .format(snippet_path)
+            .expect("it to not fail")
+            .expect("it to be a snippet");
+
+        assert_eq!(output, expected_output);
+    }
+
+    #[test_with::executable(beautysh)]
+    #[test]
+    fn test_beautysh() {
+        let input = "#!/bin/shell
+
+       add() {
+    echo \"$1\" + \"$2\"
+             }
+";
+        let expected_output = "#!/bin/shell
+
+add() {
+    echo \"$1\" + \"$2\"
+}
+";
+
+        let l = Lang::<Shell> {
+            enabled: true,
+            formatter: MdsfFormatter::Single(Shell::Beautysh),
         };
 
         let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");
