@@ -72,7 +72,7 @@ mdsf init
 | Elixir     | `mix_format`                                                  |
 | Elm        | `elm-format`                                                  |
 | Gleam      | `gleam_format`                                                |
-| Go         | `gofmt`, `gofumpt`                                            |
+| Go         | `gofmt`, `gofumpt`, `goimports`                               |
 | GraphQL    | `prettier`                                                    |
 | Groovy     | `npm-groovy-lint`                                             |
 | Html       | `prettier`                                                    |

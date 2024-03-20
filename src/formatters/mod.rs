@@ -18,6 +18,7 @@ pub mod elm_format;
 pub mod gleam_format;
 pub mod gofmt;
 pub mod gofumpt;
+pub mod goimports;
 pub mod isort;
 pub mod just_fmt;
 pub mod mix_format;

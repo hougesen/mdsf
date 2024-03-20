@@ -1,6 +1,9 @@
 use schemars::JsonSchema;
 
-use crate::formatters::{gofmt::format_using_gofmt, gofumpt::format_using_gofumpt, MdsfFormatter};
+use crate::formatters::{
+    gofmt::format_using_gofmt, gofumpt::format_using_gofumpt, goimports::format_using_goimports,
+    MdsfFormatter,
+};
 
 use super::{Lang, LanguageFormatter};
 
@@ -12,6 +15,8 @@ pub enum Go {
     GoFmt,
     #[serde(rename = "gofumpt")]
     GoFumpt,
+    #[serde(rename = "goimports")]
+    GoImports,
 }
 
 impl Default for Lang<Go> {
@@ -27,10 +32,10 @@ impl Default for Lang<Go> {
 impl Default for MdsfFormatter<Go> {
     #[inline]
     fn default() -> Self {
-        Self::Multiple(vec![Self::Multiple(vec![
-            Self::Single(Go::GoFumpt),
-            Self::Single(Go::GoFmt),
-        ])])
+        Self::Multiple(vec![
+            Self::Single(Go::GoImports),
+            Self::Multiple(vec![Self::Single(Go::GoFumpt), Self::Single(Go::GoFmt)]),
+        ])
     }
 }
 
@@ -43,6 +48,7 @@ impl LanguageFormatter for Go {
         match self {
             Self::GoFmt => format_using_gofmt(snippet_path),
             Self::GoFumpt => format_using_gofumpt(snippet_path),
+            Self::GoImports => format_using_goimports(snippet_path),
         }
     }
 }
@@ -133,6 +139,52 @@ func add(a int, b int) int {
 \treturn a + b
 }
 ";
+
+        assert_eq!(output, expected_output);
+    }
+
+    #[test_with::executable(goimports)]
+    #[test]
+    fn test_goimports() {
+        let input = "package main
+
+import (
+\t\"os\"
+\t\"fmt\"
+)
+
+func add(a int, b int) int {
+\tfmt.Print(a)
+\tfmt.Print(b)
+\treturn a + b
+}
+";
+
+        let expected_output = "package main
+
+import (
+\t\"fmt\"
+)
+
+func add(a int, b int) int {
+\tfmt.Print(a)
+\tfmt.Print(b)
+\treturn a + b
+}
+";
+
+        let l = Lang::<Go> {
+            enabled: true,
+            formatter: MdsfFormatter::Single(Go::GoImports),
+        };
+
+        let snippet = setup_snippet(input, EXTENSION).expect("it to save the file");
+        let snippet_path = snippet.path();
+
+        let output = l
+            .format(snippet_path)
+            .expect("it to not fail")
+            .expect("it to be a snippet");
 
         assert_eq!(output, expected_output);
     }
