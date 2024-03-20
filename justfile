@@ -29,16 +29,20 @@ test-coverage:
     cargo llvm-cov clean
     cargo llvm-cov --all-features --open
 
+
+update-readme:
+    cargo run -- schema
+    node scripts/update-supported-languages.mjs
+    npx --yes prettier --write .
+    git restore tests/
+
 precommit:
     cargo clean
     cargo fmt
     just build
     just lint
     just test
-    cargo run -- schema
-    node scripts/update-supported-languages.mjs
-    npx --yes prettier --write .
-    git restore tests/
+    just update-readme
     typos .
 
 publish:

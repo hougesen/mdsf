@@ -1,7 +1,7 @@
 use schemars::JsonSchema;
 
 use crate::formatters::{
-    biome::format_using_biome, deno_format::format_using_deno_fmt, prettier::format_using_prettier,
+    biome::format_using_biome, deno_fmt::format_using_deno_fmt, prettier::format_using_prettier,
     MdsfFormatter,
 };
 

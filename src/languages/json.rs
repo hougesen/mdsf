@@ -2,7 +2,7 @@ use schemars::JsonSchema;
 
 use crate::formatters::{
     biome::format_using_biome, clang_format::format_using_clang_format,
-    deno_format::format_using_deno_fmt, prettier::format_using_prettier, MdsfFormatter,
+    deno_fmt::format_using_deno_fmt, prettier::format_using_prettier, MdsfFormatter,
 };
 
 use super::{Lang, LanguageFormatter};
