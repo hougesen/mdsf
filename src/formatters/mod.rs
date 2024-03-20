@@ -82,7 +82,7 @@ fn handle_post_execution(
 }
 
 fn spawn_command(cmd: &mut Command) -> std::io::Result<bool> {
-    if !DEBUG.load(std::sync::atomic::Ordering::Relaxed) {
+    if !DEBUG.load(core::sync::atomic::Ordering::Relaxed) {
         cmd.stdout(std::process::Stdio::null());
         cmd.stderr(std::process::Stdio::null());
     }

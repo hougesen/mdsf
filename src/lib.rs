@@ -1,4 +1,4 @@
-use std::sync::atomic::AtomicBool;
+use core::sync::atomic::AtomicBool;
 
 use config::MdsfConfig;
 use error::MdsfError;
