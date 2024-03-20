@@ -97,6 +97,13 @@ jobs:
           java-version: "21"
           distribution: "temurin"
 
+      # fourmolo, hindent
+      - uses: haskell-actions/setup@v2
+        with:
+          ghc-version: "latest"
+          cabal-version: "latest"
+          cabal-update: true
+
       - run: rustup toolchain install stable --profile minimal
       - run: rustup component add rustfmt clippy
 
@@ -180,6 +187,12 @@ jobs:
 
       - name: cljstyle
         run: curl -sLO https://raw.githubusercontent.com/greglook/cljstyle/main/util/install-cljstyle && chmod +x install-cljstyle && sudo ./install-cljstyle
+
+      - name: fourmolu
+        run: cabal install fourmolu
+
+      - name: hindent
+        run: cabal install hindent
 
       - name: run tests
         run: cargo test
