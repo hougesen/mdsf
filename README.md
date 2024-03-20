@@ -92,7 +92,7 @@ mdsf init
 | Roc        | `roc_format`                                                  |
 | Ruby       | `rubocop`                                                     |
 | Rust       | `rustfmt`                                                     |
-| Shell      | `shfmt`                                                       |
+| Shell      | `beautysh`, `shfmt`                                           |
 | Sql        | `sql-formatter`, `sqlfluff`                                   |
 | Toml       | `taplo`                                                       |
 | TypeScript | `biome`, `deno_fmt`, `prettier`                               |

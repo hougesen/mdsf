@@ -6,6 +6,7 @@ use tempfile::NamedTempFile;
 use crate::{config::MdsfConfig, languages::Language, DEBUG};
 
 pub mod autopep8;
+pub mod beautysh;
 pub mod biome;
 pub mod black;
 pub mod blade_formatter;

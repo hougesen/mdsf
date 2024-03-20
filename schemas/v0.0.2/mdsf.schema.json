@@ -339,7 +339,7 @@
     "shell": {
       "default": {
         "enabled": true,
-        "formatter": "shfmt"
+        "formatter": ["shfmt", "beautysh"]
       },
       "allOf": [
         {
@@ -1498,7 +1498,7 @@
     },
     "Shell": {
       "type": "string",
-      "enum": ["shfmt"]
+      "enum": ["shfmt", "beautysh"]
     },
     "Sql": {
       "type": "string",
