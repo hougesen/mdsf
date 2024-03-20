@@ -256,6 +256,17 @@
         }
       ]
     },
+    "perl": {
+      "default": {
+        "enabled": true,
+        "formatter": "perltidy"
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/Lang_for_Perl"
+        }
+      ]
+    },
     "protobuf": {
       "default": {
         "enabled": true,
@@ -763,6 +774,18 @@
         }
       }
     },
+    "Lang_for_Perl": {
+      "type": "object",
+      "required": ["enabled", "formatter"],
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        },
+        "formatter": {
+          "$ref": "#/definitions/MdsfFormatter_for_Perl"
+        }
+      }
+    },
     "Lang_for_Protobuf": {
       "type": "object",
       "required": ["enabled", "formatter"],
@@ -1238,6 +1261,19 @@
         }
       ]
     },
+    "MdsfFormatter_for_Perl": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/Perl"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MdsfFormatter_for_Perl"
+          }
+        }
+      ]
+    },
     "MdsfFormatter_for_Protobuf": {
       "anyOf": [
         {
@@ -1431,6 +1467,10 @@
     "ObjectiveC": {
       "type": "string",
       "enum": ["clang-format"]
+    },
+    "Perl": {
+      "type": "string",
+      "enum": ["perltidy"]
     },
     "Protobuf": {
       "type": "string",

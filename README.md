@@ -85,6 +85,7 @@ mdsf init
 | Nim        | `nimpretty`                                                   |
 | OCaml      | `ocamlformat`                                                 |
 | ObjectiveC | `clang-format`                                                |
+| Perl       | `perltidy`                                                    |
 | Protobuf   | `clang-format`                                                |
 | Python     | `autopep8`, `black`, `blue`, `isort`, `ruff`, `usort`, `yapf` |
 | ReScript   | `rescript_format`                                             |

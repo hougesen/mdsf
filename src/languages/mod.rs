@@ -26,6 +26,7 @@ pub enum Language {
     Nim,
     OCaml,
     ObjectiveC,
+    Perl,
     Protobuf,
     Python,
     ReScript,
@@ -78,6 +79,7 @@ pub mod markdown;
 pub mod nim;
 pub mod objective_c;
 pub mod ocaml;
+pub mod perl;
 pub mod protobuf;
 pub mod python;
 pub mod rescript;
@@ -127,6 +129,7 @@ impl Language {
             "nim" => Some(Self::Nim),
             "objectivec" | "objective-c" | "objc" => Some(Self::ObjectiveC),
             "ocaml" => Some(Self::OCaml),
+            "perl" => Some(Self::Perl),
             "profobuf" | "profo" => Some(Self::Protobuf),
             "python" => Some(Self::Python),
             "rescript" => Some(Self::ReScript),
@@ -173,6 +176,7 @@ impl Language {
             Self::Nim => ".nim",
             Self::OCaml => ".ml",
             Self::ObjectiveC => ".m",
+            Self::Perl => ".pl",
             Self::Protobuf => ".proto",
             Self::Python => ".py",
             Self::ReScript => ".res",

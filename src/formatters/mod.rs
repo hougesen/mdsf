@@ -24,6 +24,7 @@ pub mod mix_format;
 pub mod nimpretty;
 pub mod npm_groovy_lint;
 pub mod ocamlformat;
+pub mod perltidy;
 pub mod prettier;
 pub mod rescript_format;
 pub mod roc_format;
@@ -124,6 +125,7 @@ pub fn format_snippet(config: &MdsfConfig, language: &Language, code: &str) -> S
             Language::Nim => config.nim.format(snippet_path),
             Language::OCaml => config.ocaml.format(snippet_path),
             Language::ObjectiveC => config.objective_c.format(snippet_path),
+            Language::Perl => config.perl.format(snippet_path),
             Language::Protobuf => config.protobuf.format(snippet_path),
             Language::Python => config.python.format(snippet_path),
             Language::ReScript => config.rescript.format(snippet_path),
