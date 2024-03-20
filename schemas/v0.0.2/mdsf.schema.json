@@ -25,6 +25,17 @@
         }
       ]
     },
+    "clojure": {
+      "default": {
+        "enabled": true,
+        "formatter": "cljstyle"
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/Lang_for_Clojure"
+        }
+      ]
+    },
     "cpp": {
       "default": {
         "enabled": true,
@@ -449,6 +460,10 @@
       "type": "string",
       "enum": ["clang-format"]
     },
+    "Clojure": {
+      "type": "string",
+      "enum": ["cljstyle"]
+    },
     "Cpp": {
       "type": "string",
       "enum": ["clang-format"]
@@ -542,6 +557,18 @@
         },
         "formatter": {
           "$ref": "#/definitions/MdsfFormatter_for_CSharp"
+        }
+      }
+    },
+    "Lang_for_Clojure": {
+      "type": "object",
+      "required": ["enabled", "formatter"],
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        },
+        "formatter": {
+          "$ref": "#/definitions/MdsfFormatter_for_Clojure"
         }
       }
     },
@@ -1020,6 +1047,19 @@
           "type": "array",
           "items": {
             "$ref": "#/definitions/MdsfFormatter_for_CSharp"
+          }
+        }
+      ]
+    },
+    "MdsfFormatter_for_Clojure": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/Clojure"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MdsfFormatter_for_Clojure"
           }
         }
       ]
