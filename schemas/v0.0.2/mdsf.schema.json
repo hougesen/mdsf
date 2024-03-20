@@ -116,7 +116,7 @@
     "go": {
       "default": {
         "enabled": true,
-        "formatter": [["gofumpt", "gofmt"]]
+        "formatter": ["goimports", ["gofumpt", "gofmt"]]
       },
       "allOf": [
         {
@@ -468,7 +468,7 @@
     },
     "Go": {
       "type": "string",
-      "enum": ["gofmt", "gofumpt"]
+      "enum": ["gofmt", "gofumpt", "goimports"]
     },
     "GraphQL": {
       "type": "string",
