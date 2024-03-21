@@ -47,6 +47,7 @@ pub mod shfmt;
 pub mod sql_formatter;
 pub mod sqlfluff;
 pub mod stylua;
+pub mod swiftformat;
 pub mod taplo;
 pub mod usort;
 pub mod xmllint;
@@ -160,6 +161,7 @@ pub fn format_snippet(config: &MdsfConfig, language: &Language, code: &str) -> S
             Language::Scala => config.scala.format(snippet_path),
             Language::Shell => config.shell.format(snippet_path),
             Language::Sql => config.sql.format(snippet_path),
+            Language::Swift => config.swift.format(snippet_path),
             Language::Toml => config.toml.format(snippet_path),
             Language::TypeScript => config.typescript.format(snippet_path),
             Language::Vue => config.vue.format(snippet_path),

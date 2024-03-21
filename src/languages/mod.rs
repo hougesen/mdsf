@@ -40,6 +40,7 @@ pub enum Language {
     Scala,
     Shell,
     Sql,
+    Swift,
     Toml,
     TypeScript,
     Vue,
@@ -48,7 +49,6 @@ pub enum Language {
     Zig,
     // TODO: PHP,
     // TODO: FSharp,
-    // TODO: Swift,
     // TODO: Svelte,
     // TODO: Julia,
     // TODO: Dockerfile,
@@ -95,6 +95,7 @@ pub mod rust;
 pub mod scala;
 pub mod shell;
 pub mod sql;
+pub mod swift;
 pub mod toml;
 pub mod typescript;
 pub mod vue;
@@ -151,6 +152,7 @@ impl Language {
             "sql" | "bigquery" | "db2" | "db2i" | "hive" | "mariadb" | "mysql" | "n1ql"
             | "plsql" | "postgresql" | "redshift" | "singlestoredb" | "snowflake" | "spark"
             | "sqlite" | "transactsql" | "trino" | "tsql" => Some(Self::Sql),
+            "swift" => Some(Self::Swift),
             "toml" => Some(Self::Toml),
             "typescript" | "ts" | "tsx" => Some(Self::TypeScript),
             "vue" => Some(Self::Vue),
@@ -201,6 +203,7 @@ impl Language {
             Self::Shell => ".sh",
             Self::Scala => ".scala",
             Self::Sql => ".sql",
+            Self::Swift => ".swift",
             Self::Toml => ".toml",
             Self::TypeScript => ".ts",
             Self::Vue => ".vue",

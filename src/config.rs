@@ -6,8 +6,8 @@ use crate::languages::{
     haskell::Haskell, html::Html, java::Java, javascript::JavaScript, json::Json, just::Just,
     kotlin::Kotlin, lua::Lua, markdown::Markdown, nim::Nim, objective_c::ObjectiveC, ocaml::OCaml,
     perl::Perl, protobuf::Protobuf, purescript::PureScript, python::Python, rescript::ReScript,
-    roc::Roc, ruby::Ruby, rust::Rust, scala::Scala, shell::Shell, sql::Sql, toml::Toml,
-    typescript::TypeScript, vue::Vue, xml::Xml, yaml::Yaml, zig::Zig, Lang,
+    roc::Roc, ruby::Ruby, rust::Rust, scala::Scala, shell::Shell, sql::Sql, swift::Swift,
+    toml::Toml, typescript::TypeScript, vue::Vue, xml::Xml, yaml::Yaml, zig::Zig, Lang,
 };
 
 #[derive(Debug, serde::Serialize, serde::Deserialize, JsonSchema)]
@@ -126,6 +126,9 @@ pub struct MdsfConfig {
     pub shell: Lang<Shell>,
 
     #[serde(default)]
+    pub swift: Lang<Swift>,
+
+    #[serde(default)]
     pub sql: Lang<Sql>,
 
     #[serde(default)]
@@ -136,7 +139,6 @@ pub struct MdsfConfig {
 
     #[serde(default)]
     pub vue: Lang<Vue>,
-
     #[serde(default)]
     pub xml: Lang<Xml>,
 
@@ -189,6 +191,7 @@ impl Default for MdsfConfig {
             rust: Lang::<Rust>::default(),
             scala: Lang::<Scala>::default(),
             shell: Lang::<Shell>::default(),
+            swift: Lang::<Swift>::default(),
             sql: Lang::<Sql>::default(),
             toml: Lang::<Toml>::default(),
             typescript: Lang::<TypeScript>::default(),
