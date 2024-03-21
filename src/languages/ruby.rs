@@ -1,6 +1,6 @@
 use schemars::JsonSchema;
 
-use crate::formatters::{rubocop::format_using_rubocop, MdsfFormatter};
+use crate::formatters::{rubocop::format_using_rubocop, rufo::format_using_rufo, MdsfFormatter};
 
 use super::{Lang, LanguageFormatter};
 
@@ -10,6 +10,8 @@ pub enum Ruby {
     #[default]
     #[serde(rename = "rubocop")]
     RuboCop,
+    #[serde(rename = "rufo")]
+    Rufo,
 }
 
 impl Default for Lang<Ruby> {
@@ -25,7 +27,10 @@ impl Default for Lang<Ruby> {
 impl Default for MdsfFormatter<Ruby> {
     #[inline]
     fn default() -> Self {
-        Self::Single(Ruby::RuboCop)
+        Self::Multiple(vec![Self::Multiple(vec![
+            Self::Single(Ruby::RuboCop),
+            Self::Single(Ruby::Rufo),
+        ])])
     }
 }
 
@@ -37,6 +42,7 @@ impl LanguageFormatter for Ruby {
     ) -> std::io::Result<(bool, Option<String>)> {
         match self {
             Self::RuboCop => format_using_rubocop(snippet_path),
+            Self::Rufo => format_using_rufo(snippet_path),
         }
     }
 }
@@ -87,6 +93,30 @@ end
         let l = Lang::<Ruby> {
             enabled: true,
             formatter: MdsfFormatter::Single(Ruby::RuboCop),
+        };
+
+        let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");
+        let snippet_path = snippet.path();
+
+        let output = l
+            .format(snippet_path)
+            .expect("it to not fail")
+            .expect("it to be a snippet");
+
+        assert_eq!(output, expected_output);
+    }
+
+    #[test_with::executable(rufo)]
+    #[test]
+    fn test_rufo() {
+        let expected_output = "def add(a, b)
+  return a + b
+end
+";
+
+        let l = Lang::<Ruby> {
+            enabled: true,
+            formatter: MdsfFormatter::Single(Ruby::Rufo),
         };
 
         let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");
