@@ -94,7 +94,7 @@ mdsf init
 | Python     | `autopep8`, `black`, `blue`, `isort`, `ruff`, `usort`, `yapf` |
 | ReScript   | `rescript_format`                                             |
 | Roc        | `roc_format`                                                  |
-| Ruby       | `rubocop`                                                     |
+| Ruby       | `rubocop`, `rufo`                                             |
 | Rust       | `rustfmt`                                                     |
 | Scala      | `scalafmt`                                                    |
 | Shell      | `beautysh`, `shfmt`                                           |

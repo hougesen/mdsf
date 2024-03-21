@@ -38,6 +38,7 @@ pub mod rescript_format;
 pub mod roc_format;
 pub mod rubocop;
 pub mod ruff;
+pub mod rufo;
 pub mod rustfmt;
 pub mod scalafmt;
 pub mod shfmt;
@@ -52,16 +53,18 @@ pub mod zigfmt;
 
 #[inline]
 pub fn setup_snippet(code: &str, file_ext: &str) -> std::io::Result<NamedTempFile> {
-    let mut b = tempfile::Builder::new();
-
-    b.rand_bytes(12).suffix(file_ext);
-
-    // ktlint wants PascalCase file names
-    if file_ext == Language::Kotlin.to_file_ext() {
-        b.prefix("MdsfFile");
-    }
-
-    let mut f = b.tempfile()?;
+    let mut f = tempfile::Builder::new()
+        .rand_bytes(12)
+        .suffix(file_ext)
+        .prefix(
+            // ktlint wants PascalCase file names
+            if file_ext == Language::Kotlin.to_file_ext() {
+                "MdsfFile"
+            } else {
+                "mdsf"
+            },
+        )
+        .tempfile()?;
 
     f.write_all(code.as_bytes())?;
     f.flush()?;

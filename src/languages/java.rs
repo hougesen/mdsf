@@ -30,10 +30,10 @@ impl Default for Lang<Java> {
 impl Default for MdsfFormatter<Java> {
     #[inline]
     fn default() -> Self {
-        Self::Multiple(vec![
+        Self::Multiple(vec![Self::Multiple(vec![
             Self::Single(Java::GoogleJavaFormat),
             Self::Single(Java::ClangFormat),
-        ])
+        ])])
     }
 }
 

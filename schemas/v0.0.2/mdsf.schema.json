@@ -182,7 +182,7 @@
     "java": {
       "default": {
         "enabled": true,
-        "formatter": ["google-java-format", "clang-format"]
+        "formatter": [["google-java-format", "clang-format"]]
       },
       "allOf": [
         {
@@ -361,7 +361,7 @@
     "ruby": {
       "default": {
         "enabled": true,
-        "formatter": "rubocop"
+        "formatter": [["rubocop", "rufo"]]
       },
       "allOf": [
         {
@@ -1686,7 +1686,7 @@
     },
     "Ruby": {
       "type": "string",
-      "enum": ["rubocop"]
+      "enum": ["rubocop", "rufo"]
     },
     "Rust": {
       "type": "string",
