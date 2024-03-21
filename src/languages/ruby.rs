@@ -1,6 +1,9 @@
 use schemars::JsonSchema;
 
-use crate::formatters::{rubocop::format_using_rubocop, rufo::format_using_rufo, MdsfFormatter};
+use crate::formatters::{
+    rubocop::format_using_rubocop, rubyfmt::format_using_rubyfmt, rufo::format_using_rufo,
+    MdsfFormatter,
+};
 
 use super::{Lang, LanguageFormatter};
 
@@ -8,6 +11,8 @@ use super::{Lang, LanguageFormatter};
 #[cfg_attr(test, derive(PartialEq, Eq))]
 pub enum Ruby {
     #[default]
+    #[serde(rename = "rubyfmt")]
+    RubyFmt,
     #[serde(rename = "rubocop")]
     RuboCop,
     #[serde(rename = "rufo")]
@@ -30,6 +35,7 @@ impl Default for MdsfFormatter<Ruby> {
         Self::Multiple(vec![Self::Multiple(vec![
             Self::Single(Ruby::RuboCop),
             Self::Single(Ruby::Rufo),
+            Self::Single(Ruby::RubyFmt),
         ])])
     }
 }
@@ -43,6 +49,7 @@ impl LanguageFormatter for Ruby {
         match self {
             Self::RuboCop => format_using_rubocop(snippet_path),
             Self::Rufo => format_using_rufo(snippet_path),
+            Self::RubyFmt => format_using_rubyfmt(snippet_path),
         }
     }
 }
