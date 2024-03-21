@@ -50,6 +50,7 @@ pub mod stylua;
 pub mod taplo;
 pub mod usort;
 pub mod xmllint;
+pub mod yamlfmt;
 pub mod yapf;
 pub mod zigfmt;
 
