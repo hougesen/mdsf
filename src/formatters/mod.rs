@@ -31,6 +31,7 @@ pub mod mix_format;
 pub mod nimpretty;
 pub mod npm_groovy_lint;
 pub mod ocamlformat;
+pub mod ormolu;
 pub mod perltidy;
 pub mod prettier;
 pub mod purs_tidy;
