@@ -157,6 +157,17 @@
         }
       ]
     },
+    "haskell": {
+      "default": {
+        "enabled": true,
+        "formatter": [["fourmolu", "hindent"]]
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/Lang_for_Haskell"
+        }
+      ]
+    },
     "html": {
       "default": {
         "enabled": true,
@@ -515,6 +526,10 @@
       "type": "string",
       "enum": ["npm-groovy-lint"]
     },
+    "Haskell": {
+      "type": "string",
+      "enum": ["fourmolu", "hindent"]
+    },
     "Html": {
       "type": "string",
       "enum": ["prettier"]
@@ -700,6 +715,18 @@
         },
         "formatter": {
           "$ref": "#/definitions/MdsfFormatter_for_Groovy"
+        }
+      }
+    },
+    "Lang_for_Haskell": {
+      "type": "object",
+      "required": ["enabled", "formatter"],
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        },
+        "formatter": {
+          "$ref": "#/definitions/MdsfFormatter_for_Haskell"
         }
       }
     },
@@ -1213,6 +1240,19 @@
           "type": "array",
           "items": {
             "$ref": "#/definitions/MdsfFormatter_for_Groovy"
+          }
+        }
+      ]
+    },
+    "MdsfFormatter_for_Haskell": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/Haskell"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MdsfFormatter_for_Haskell"
           }
         }
       ]

@@ -76,6 +76,7 @@ mdsf init
 | Go         | `gofmt`, `gofumpt`, `goimports`                               |
 | GraphQL    | `prettier`                                                    |
 | Groovy     | `npm-groovy-lint`                                             |
+| Haskell    | `fourmolu`, `hindent`                                         |
 | Html       | `prettier`                                                    |
 | Java       | `clang-format`, `google-java-format`                          |
 | JavaScript | `biome`, `clang-format`, `deno_fmt`, `prettier`               |
