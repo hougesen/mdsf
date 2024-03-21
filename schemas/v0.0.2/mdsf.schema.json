@@ -237,7 +237,7 @@
     "lua": {
       "default": {
         "enabled": true,
-        "formatter": "stylua"
+        "formatter": [["stylua", "luaformatter"]]
       },
       "allOf": [
         {
@@ -1106,7 +1106,7 @@
     },
     "Lua": {
       "type": "string",
-      "enum": ["stylua"]
+      "enum": ["stylua", "luaformatter"]
     },
     "Markdown": {
       "type": "string",
