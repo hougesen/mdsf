@@ -113,6 +113,17 @@
         }
       ]
     },
+    "erlang": {
+      "default": {
+        "enabled": true,
+        "formatter": "erlfmt"
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/Lang_for_Erlang"
+        }
+      ]
+    },
     "gleam": {
       "default": {
         "enabled": true,
@@ -361,7 +372,7 @@
     "ruby": {
       "default": {
         "enabled": true,
-        "formatter": [["rubocop", "rufo", "rubyfmt"]]
+        "formatter": [["rubocop", "rufo", "rubyfmt", "standardrb"]]
       },
       "allOf": [
         {
@@ -532,6 +543,10 @@
       "type": "string",
       "enum": ["elm-format"]
     },
+    "Erlang": {
+      "type": "string",
+      "enum": ["erlfmt"]
+    },
     "Gleam": {
       "type": "string",
       "enum": ["gleam_format"]
@@ -693,6 +708,18 @@
         },
         "formatter": {
           "$ref": "#/definitions/MdsfFormatter_for_Elm"
+        }
+      }
+    },
+    "Lang_for_Erlang": {
+      "type": "object",
+      "required": ["enabled", "formatter"],
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        },
+        "formatter": {
+          "$ref": "#/definitions/MdsfFormatter_for_Erlang"
         }
       }
     },
@@ -1242,6 +1269,19 @@
         }
       ]
     },
+    "MdsfFormatter_for_Erlang": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/Erlang"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MdsfFormatter_for_Erlang"
+          }
+        }
+      ]
+    },
     "MdsfFormatter_for_Gleam": {
       "anyOf": [
         {
@@ -1722,7 +1762,7 @@
     },
     "Ruby": {
       "type": "string",
-      "enum": ["rubyfmt", "rubocop", "rufo"]
+      "enum": ["rubyfmt", "rubocop", "rufo", "standardrb"]
     },
     "Rust": {
       "type": "string",

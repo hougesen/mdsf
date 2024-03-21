@@ -13,6 +13,7 @@ pub enum Language {
     Dart,
     Elixir,
     Elm,
+    Erlang,
     Gleam,
     Go,
     GraphQL,
@@ -54,7 +55,6 @@ pub enum Language {
     // TODO: Dockerfile,
     // TODO: XML,
     // TODO: D,
-    // TODO: Erlang,
     // TODO: R,
 }
 
@@ -68,6 +68,7 @@ pub mod css;
 pub mod dart;
 pub mod elixir;
 pub mod elm;
+pub mod erlang;
 pub mod gleam;
 pub mod go;
 pub mod graphql;
@@ -123,6 +124,7 @@ impl Language {
             "dart" => Some(Self::Dart),
             "elixir" => Some(Self::Elixir),
             "elm" => Some(Self::Elm),
+            "erlang" => Some(Self::Erlang),
             "gleam" => Some(Self::Gleam),
             "go" | "golang" => Some(Self::Go),
             "graphql" | "gql" => Some(Self::GraphQL),
@@ -176,6 +178,7 @@ impl Language {
             Self::Dart => ".dart",
             Self::Elixir => ".ex",
             Self::Elm => ".elm",
+            Self::Erlang => ".erl",
             Self::Gleam => ".gleam",
             Self::Go => ".go",
             Self::GraphQL => ".gql",
