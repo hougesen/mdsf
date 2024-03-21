@@ -1,6 +1,6 @@
 use schemars::JsonSchema;
 
-use crate::formatters::{gleam_format::format_using_gleam_format, MdsfFormatter};
+use crate::formatters::{erlfmt::format_using_erlfmt, MdsfFormatter};
 
 use super::{Lang, LanguageFormatter};
 
@@ -36,13 +36,13 @@ impl LanguageFormatter for Erlang {
         snippet_path: &std::path::Path,
     ) -> std::io::Result<(bool, Option<String>)> {
         match self {
-            Self::Erlfmt => format_using_gleam_format(snippet_path),
+            Self::Erlfmt => format_using_erlfmt(snippet_path),
         }
     }
 }
 
 #[cfg(test)]
-mod test_gleam {
+mod test_erlang {
     use crate::{
         formatters::{setup_snippet, MdsfFormatter},
         languages::Lang,
@@ -77,7 +77,7 @@ case Erlang of movie->[hello(mike,joe,robert),credits]; language->formatting_arg
 
     #[test_with::executable(erlfmt)]
     #[test]
-    fn test_gleam_format() {
+    fn test_erlfmt() {
         let l = Lang::<Erlang> {
             enabled: true,
             formatter: MdsfFormatter::Single(Erlang::Erlfmt),
