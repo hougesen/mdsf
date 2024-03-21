@@ -46,6 +46,7 @@ pub mod scalafmt;
 pub mod shfmt;
 pub mod sql_formatter;
 pub mod sqlfluff;
+pub mod standardrb;
 pub mod stylua;
 pub mod swiftformat;
 pub mod taplo;

@@ -203,5 +203,8 @@ jobs:
       - name: yamlfmt
         run: go install github.com/google/yamlfmt/cmd/yamlfmt@latest
 
+      - name: standardrb
+        run: gem install standardrb
+
       - name: run tests
         run: cargo test
