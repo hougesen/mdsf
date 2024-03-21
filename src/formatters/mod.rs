@@ -37,6 +37,7 @@ pub mod purs_tidy;
 pub mod rescript_format;
 pub mod roc_format;
 pub mod rubocop;
+pub mod rubyfmt;
 pub mod ruff;
 pub mod rufo;
 pub mod rustfmt;
