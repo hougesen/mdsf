@@ -23,6 +23,7 @@ pub enum Language {
     JavaScript,
     Json,
     Just,
+    Kotlin,
     Lua,
     Markdown,
     Nim,
@@ -46,7 +47,6 @@ pub enum Language {
     Yaml,
     Zig,
     // TODO: PHP,
-    // TODO: Kotlin,
     // TODO: FSharp,
     // TODO: Swift,
     // TODO: Svelte,
@@ -78,6 +78,7 @@ pub mod java;
 pub mod javascript;
 pub mod json;
 pub mod just;
+pub mod kotlin;
 pub mod lua;
 pub mod markdown;
 pub mod nim;
@@ -131,6 +132,7 @@ impl Language {
             "javascript" | "js" | "jsx" => Some(Self::JavaScript),
             "json" | "jsonc" => Some(Self::Json),
             "just" | "justfile" => Some(Self::Just),
+            "kotlin" => Some(Self::Kotlin),
             "lua" => Some(Self::Lua),
             "markdown" | "md" => Some(Self::Markdown),
             "nim" => Some(Self::Nim),
@@ -182,6 +184,7 @@ impl Language {
             Self::JavaScript => ".js",
             Self::Json => ".jsonc",
             Self::Just => ".justfile",
+            Self::Kotlin => ".kt",
             Self::Lua => ".lua",
             Self::Markdown => ".md",
             Self::Nim => ".nim",

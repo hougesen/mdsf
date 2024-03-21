@@ -26,6 +26,7 @@ pub mod google_java_format;
 pub mod hindent;
 pub mod isort;
 pub mod just_fmt;
+pub mod ktlint;
 pub mod mix_format;
 pub mod nimpretty;
 pub mod npm_groovy_lint;
@@ -51,10 +52,16 @@ pub mod zigfmt;
 
 #[inline]
 pub fn setup_snippet(code: &str, file_ext: &str) -> std::io::Result<NamedTempFile> {
-    let mut f = tempfile::Builder::new()
-        .rand_bytes(12)
-        .suffix(file_ext)
-        .tempfile()?;
+    let mut b = tempfile::Builder::new();
+
+    b.rand_bytes(12).suffix(file_ext);
+
+    // ktlint wants PascalCase file names
+    if file_ext == Language::Kotlin.to_file_ext() {
+        b.prefix("MdsfFile");
+    }
+
+    let mut f = b.tempfile()?;
 
     f.write_all(code.as_bytes())?;
     f.flush()?;
@@ -130,6 +137,7 @@ pub fn format_snippet(config: &MdsfConfig, language: &Language, code: &str) -> S
             Language::JavaScript => config.javascript.format(snippet_path),
             Language::Json => config.json.format(snippet_path),
             Language::Just => config.just.format(snippet_path),
+            Language::Kotlin => config.kotlin.format(snippet_path),
             Language::Lua => config.lua.format(snippet_path),
             Language::Markdown => config.markdown.format(snippet_path),
             Language::Nim => config.nim.format(snippet_path),

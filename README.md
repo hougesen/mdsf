@@ -82,6 +82,7 @@ mdsf init
 | JavaScript | `biome`, `clang-format`, `deno_fmt`, `prettier`               |
 | Json       | `biome`, `clang-format`, `deno_fmt`, `prettier`               |
 | Just       | `just_fmt`                                                    |
+| Kotlin     | `ktlint`                                                      |
 | Lua        | `stylua`                                                      |
 | Markdown   | `prettier`                                                    |
 | Nim        | `nimpretty`                                                   |
