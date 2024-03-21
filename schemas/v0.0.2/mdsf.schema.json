@@ -223,6 +223,17 @@
         }
       ]
     },
+    "kotlin": {
+      "default": {
+        "enabled": true,
+        "formatter": "ktlint"
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/Lang_for_Kotlin"
+        }
+      ]
+    },
     "lua": {
       "default": {
         "enabled": true,
@@ -550,6 +561,10 @@
       "type": "string",
       "enum": ["just_fmt"]
     },
+    "Kotlin": {
+      "type": "string",
+      "enum": ["ktlint"]
+    },
     "Lang_for_Blade": {
       "type": "object",
       "required": ["enabled", "formatter"],
@@ -787,6 +802,18 @@
         },
         "formatter": {
           "$ref": "#/definitions/MdsfFormatter_for_Just"
+        }
+      }
+    },
+    "Lang_for_Kotlin": {
+      "type": "object",
+      "required": ["enabled", "formatter"],
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        },
+        "formatter": {
+          "$ref": "#/definitions/MdsfFormatter_for_Kotlin"
         }
       }
     },
@@ -1318,6 +1345,19 @@
           "type": "array",
           "items": {
             "$ref": "#/definitions/MdsfFormatter_for_Just"
+          }
+        }
+      ]
+    },
+    "MdsfFormatter_for_Kotlin": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/Kotlin"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MdsfFormatter_for_Kotlin"
           }
         }
       ]

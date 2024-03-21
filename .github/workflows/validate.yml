@@ -194,5 +194,8 @@ jobs:
       - name: hindent
         run: cabal install hindent
 
+      - name: ktlint
+        run: brew install ktlint
+
       - name: run tests
         run: cargo test

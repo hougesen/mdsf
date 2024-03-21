@@ -4,9 +4,9 @@ use crate::languages::{
     blade::Blade, c::C, clojure::Clojure, cpp::Cpp, crystal::Crystal, csharp::CSharp, css::Css,
     dart::Dart, elixir::Elixir, elm::Elm, gleam::Gleam, go::Go, graphql::GraphQL, groovy::Groovy,
     haskell::Haskell, html::Html, java::Java, javascript::JavaScript, json::Json, just::Just,
-    lua::Lua, markdown::Markdown, nim::Nim, objective_c::ObjectiveC, ocaml::OCaml, perl::Perl,
-    protobuf::Protobuf, purescript::PureScript, python::Python, rescript::ReScript, roc::Roc,
-    ruby::Ruby, rust::Rust, scala::Scala, shell::Shell, sql::Sql, toml::Toml,
+    kotlin::Kotlin, lua::Lua, markdown::Markdown, nim::Nim, objective_c::ObjectiveC, ocaml::OCaml,
+    perl::Perl, protobuf::Protobuf, purescript::PureScript, python::Python, rescript::ReScript,
+    roc::Roc, ruby::Ruby, rust::Rust, scala::Scala, shell::Shell, sql::Sql, toml::Toml,
     typescript::TypeScript, vue::Vue, xml::Xml, yaml::Yaml, zig::Zig, Lang,
 };
 
@@ -76,6 +76,9 @@ pub struct MdsfConfig {
 
     #[serde(default)]
     pub just: Lang<Just>,
+
+    #[serde(default)]
+    pub kotlin: Lang<Kotlin>,
 
     #[serde(default)]
     pub lua: Lang<Lua>,
@@ -170,6 +173,7 @@ impl Default for MdsfConfig {
             javascript: Lang::<JavaScript>::default(),
             json: Lang::<Json>::default(),
             just: Lang::<Just>::default(),
+            kotlin: Lang::<Kotlin>::default(),
             lua: Lang::<Lua>::default(),
             markdown: Lang::<Markdown>::default(),
             nim: Lang::<Nim>::default(),
