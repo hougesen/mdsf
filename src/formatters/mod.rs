@@ -17,6 +17,7 @@ pub mod crystal_format;
 pub mod dart_format;
 pub mod deno_fmt;
 pub mod elm_format;
+pub mod erlfmt;
 pub mod fourmolu;
 pub mod gleam_format;
 pub mod gofmt;
@@ -136,6 +137,7 @@ pub fn format_snippet(config: &MdsfConfig, language: &Language, code: &str) -> S
             Language::Dart => config.dart.format(snippet_path),
             Language::Elixir => config.elixir.format(snippet_path),
             Language::Elm => config.elm.format(snippet_path),
+            Language::Erlang => config.erlang.format(snippet_path),
             Language::Gleam => config.gleam.format(snippet_path),
             Language::Go => config.go.format(snippet_path),
             Language::GraphQL => config.graphql.format(snippet_path),
