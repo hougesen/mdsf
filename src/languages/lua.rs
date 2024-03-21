@@ -1,6 +1,8 @@
 use schemars::JsonSchema;
 
-use crate::formatters::{stylua::format_using_stylua, MdsfFormatter};
+use crate::formatters::{
+    luaformatter::format_using_luaformatter, stylua::format_using_stylua, MdsfFormatter,
+};
 
 use super::{Lang, LanguageFormatter};
 
@@ -10,6 +12,9 @@ pub enum Lua {
     #[default]
     #[serde(rename = "stylua")]
     Stylua,
+
+    #[serde(rename = "luaformatter")]
+    LuaFormatter,
 }
 
 impl Default for Lang<Lua> {
@@ -25,7 +30,10 @@ impl Default for Lang<Lua> {
 impl Default for MdsfFormatter<Lua> {
     #[inline]
     fn default() -> Self {
-        Self::Single(Lua::Stylua)
+        Self::Multiple(vec![Self::Multiple(vec![
+            Self::Single(Lua::Stylua),
+            Self::Single(Lua::LuaFormatter),
+        ])])
     }
 }
 
@@ -37,6 +45,7 @@ impl LanguageFormatter for Lua {
     ) -> std::io::Result<(bool, Option<String>)> {
         match self {
             Self::Stylua => format_using_stylua(snippet_path),
+            Self::LuaFormatter => format_using_luaformatter(snippet_path),
         }
     }
 }
@@ -54,12 +63,11 @@ mod test_lua {
 
         local               function        add (                                       a , b
 )
-
-return              a +b
+    local c =  a  + b 
+return              c 
 
 
 end
-
     ";
 
     const EXTENSION: &str = crate::languages::Language::Lua.to_file_ext();
@@ -85,11 +93,41 @@ end
 
     #[test]
     fn test_stylua() {
-        let expected_output = "local function add(a, b)\n\treturn a + b\nend\n";
+        let expected_output = "local function add(a, b)
+\tlocal c = a + b
+\treturn c
+end
+";
 
         let l = Lang::<Lua> {
             enabled: true,
             formatter: MdsfFormatter::Single(Lua::Stylua),
+        };
+
+        let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");
+        let snippet_path = snippet.path();
+
+        let output = l
+            .format(snippet_path)
+            .expect("it to not fail")
+            .expect("it to be a snippet");
+
+        assert_eq!(output, expected_output);
+    }
+
+    #[test_with::executable(lua-format)]
+    #[test]
+    fn test_luaformatter() {
+        let expected_output = "local function add(a, b)
+    local c = a + b
+    return c
+
+end
+";
+
+        let l = Lang::<Lua> {
+            enabled: true,
+            formatter: MdsfFormatter::Single(Lua::LuaFormatter),
         };
 
         let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");

@@ -27,6 +27,7 @@ pub mod hindent;
 pub mod isort;
 pub mod just_fmt;
 pub mod ktlint;
+pub mod luaformatter;
 pub mod mix_format;
 pub mod nimpretty;
 pub mod npm_groovy_lint;
