@@ -200,5 +200,8 @@ jobs:
       - name: rufo
         run: gem install rufo
 
+      - name: yamlfmt
+        run: go install github.com/google/yamlfmt/cmd/yamlfmt@latest
+
       - name: run tests
         run: cargo test

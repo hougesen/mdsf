@@ -1,6 +1,8 @@
 use schemars::JsonSchema;
 
-use crate::formatters::{prettier::format_using_prettier, MdsfFormatter};
+use crate::formatters::{
+    prettier::format_using_prettier, yamlfmt::format_using_yamlfmt, MdsfFormatter,
+};
 
 use super::{Lang, LanguageFormatter};
 
@@ -10,6 +12,8 @@ pub enum Yaml {
     #[default]
     #[serde(rename = "prettier")]
     Prettier,
+    #[serde(rename = "yamlfmt")]
+    YamlFmt,
 }
 
 impl Default for Lang<Yaml> {
@@ -25,7 +29,10 @@ impl Default for Lang<Yaml> {
 impl Default for MdsfFormatter<Yaml> {
     #[inline]
     fn default() -> Self {
-        Self::Single(Yaml::Prettier)
+        Self::Multiple(vec![Self::Multiple(vec![
+            Self::Single(Yaml::Prettier),
+            Self::Single(Yaml::YamlFmt),
+        ])])
     }
 }
 
@@ -37,6 +44,7 @@ impl LanguageFormatter for Yaml {
     ) -> std::io::Result<(bool, Option<String>)> {
         match self {
             Self::Prettier => format_using_prettier(snippet_path, true),
+            Self::YamlFmt => format_using_yamlfmt(snippet_path),
         }
     }
 }
@@ -119,6 +127,43 @@ updates:
       - \"hougesen\"
     open-pull-requests-limit: 25
 
+  - package-ecosystem: \"github-actions\"
+    directory: \"/\"
+    schedule:
+      interval: \"monthly\"
+    assignees:
+      - \"hougesen\"
+    open-pull-requests-limit: 25
+";
+
+        assert_eq!(output, expected_output);
+    }
+
+    #[test_with::executable(yamlfmt)]
+    #[test]
+    fn test_yamlfmt() {
+        let l = Lang::<Yaml> {
+            enabled: true,
+            formatter: MdsfFormatter::Single(Yaml::YamlFmt),
+        };
+
+        let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");
+        let snippet_path = snippet.path();
+
+        let output = l
+            .format(snippet_path)
+            .expect("it to not fail")
+            .expect("it to be a snippet");
+
+        let expected_output = "version: 2
+updates:
+  - package-ecosystem: \"cargo\"
+    directory: \"/\"
+    schedule:
+      interval: \"monthly\"
+    assignees:
+      - \"hougesen\"
+    open-pull-requests-limit: 25
   - package-ecosystem: \"github-actions\"
     directory: \"/\"
     schedule:
