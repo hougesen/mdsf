@@ -76,7 +76,7 @@ mdsf init
 | Go         | `gofmt`, `gofumpt`, `goimports`                               |
 | GraphQL    | `prettier`                                                    |
 | Groovy     | `npm-groovy-lint`                                             |
-| Haskell    | `fourmolu`, `hindent`                                         |
+| Haskell    | `fourmolu`, `hindent`, `ormolu`                               |
 | Html       | `prettier`                                                    |
 | Java       | `clang-format`, `google-java-format`                          |
 | JavaScript | `biome`, `clang-format`, `deno_fmt`, `prettier`               |
@@ -94,16 +94,17 @@ mdsf init
 | Python     | `autopep8`, `black`, `blue`, `isort`, `ruff`, `usort`, `yapf` |
 | ReScript   | `rescript_format`                                             |
 | Roc        | `roc_format`                                                  |
-| Ruby       | `rubocop`, `rufo`                                             |
+| Ruby       | `rubocop`, `rubyfmt`, `rufo`                                  |
 | Rust       | `rustfmt`                                                     |
 | Scala      | `scalafmt`                                                    |
 | Shell      | `beautysh`, `shfmt`                                           |
 | Sql        | `sql-formatter`, `sqlfluff`                                   |
+| Swift      | `swiftformat`                                                 |
 | Toml       | `taplo`                                                       |
 | TypeScript | `biome`, `deno_fmt`, `prettier`                               |
 | Vue        | `prettier`                                                    |
 | Xml        | `xmllint`                                                     |
-| Yaml       | `prettier`                                                    |
+| Yaml       | `prettier`, `yamlfmt`                                         |
 | Zig        | `zigfmt`                                                      |
 
 <!-- END_SECTION:supported-languages -->

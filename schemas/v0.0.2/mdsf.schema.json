@@ -160,7 +160,7 @@
     "haskell": {
       "default": {
         "enabled": true,
-        "formatter": [["fourmolu", "hindent"]]
+        "formatter": [["fourmolu", "ormolu", "hindent"]]
       },
       "allOf": [
         {
@@ -361,7 +361,7 @@
     "ruby": {
       "default": {
         "enabled": true,
-        "formatter": [["rubocop", "rufo"]]
+        "formatter": [["rubocop", "rufo", "rubyfmt"]]
       },
       "allOf": [
         {
@@ -413,6 +413,17 @@
         }
       ]
     },
+    "swift": {
+      "default": {
+        "enabled": true,
+        "formatter": "swiftformat"
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/Lang_for_Swift"
+        }
+      ]
+    },
     "toml": {
       "default": {
         "enabled": true,
@@ -460,7 +471,7 @@
     "yaml": {
       "default": {
         "enabled": true,
-        "formatter": "prettier"
+        "formatter": [["prettier", "yamlfmt"]]
       },
       "allOf": [
         {
@@ -539,7 +550,7 @@
     },
     "Haskell": {
       "type": "string",
-      "enum": ["fourmolu", "hindent"]
+      "enum": ["fourmolu", "ormolu", "hindent"]
     },
     "Html": {
       "type": "string",
@@ -1006,6 +1017,18 @@
         },
         "formatter": {
           "$ref": "#/definitions/MdsfFormatter_for_Sql"
+        }
+      }
+    },
+    "Lang_for_Swift": {
+      "type": "object",
+      "required": ["enabled", "formatter"],
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        },
+        "formatter": {
+          "$ref": "#/definitions/MdsfFormatter_for_Swift"
         }
       }
     },
@@ -1570,6 +1593,19 @@
         }
       ]
     },
+    "MdsfFormatter_for_Swift": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/Swift"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MdsfFormatter_for_Swift"
+          }
+        }
+      ]
+    },
     "MdsfFormatter_for_Toml": {
       "anyOf": [
         {
@@ -1686,7 +1722,7 @@
     },
     "Ruby": {
       "type": "string",
-      "enum": ["rubocop", "rufo"]
+      "enum": ["rubyfmt", "rubocop", "rufo"]
     },
     "Rust": {
       "type": "string",
@@ -1703,6 +1739,10 @@
     "Sql": {
       "type": "string",
       "enum": ["sqlfluff", "sql-formatter"]
+    },
+    "Swift": {
+      "type": "string",
+      "enum": ["swiftformat"]
     },
     "Toml": {
       "type": "string",
@@ -1722,7 +1762,7 @@
     },
     "Yaml": {
       "type": "string",
-      "enum": ["prettier"]
+      "enum": ["prettier", "yamlfmt"]
     },
     "Zig": {
       "type": "string",
