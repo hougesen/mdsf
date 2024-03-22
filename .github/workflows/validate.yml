@@ -189,7 +189,7 @@ jobs:
         run: curl -sLO https://raw.githubusercontent.com/greglook/cljstyle/main/util/install-cljstyle && chmod +x install-cljstyle && sudo ./install-cljstyle
 
       - name: fourmolu
-        run: cabal install fourmolu
+        run: curl -sLO https://github.com/fourmolu/fourmolu/releases/download/v0.15.0.0/fourmolu-0.15.0.0-linux-x86_64 && chmod +x fourmolu-0.15.0.0-linux-x86_64 && sudo mv fourmolu-0.15.0.0-linux-x86_64 /usr/local/bin/fourmolu && fourmolu --version
 
       - name: hindent
         run: cabal install hindent
