@@ -1,6 +1,6 @@
 use schemars::JsonSchema;
 
-use crate::formatters::{erlfmt::format_using_erlfmt, MdsfFormatter};
+use crate::formatters::{efmt::format_using_efmt, erlfmt::format_using_erlfmt, MdsfFormatter};
 
 use super::{Lang, LanguageFormatter};
 
@@ -10,6 +10,8 @@ pub enum Erlang {
     #[default]
     #[serde(rename = "erlfmt")]
     Erlfmt,
+    #[serde(rename = "efmt")]
+    Efmt,
 }
 
 impl Default for Lang<Erlang> {
@@ -37,6 +39,7 @@ impl LanguageFormatter for Erlang {
     ) -> std::io::Result<(bool, Option<String>)> {
         match self {
             Self::Erlfmt => format_using_erlfmt(snippet_path),
+            Self::Efmt => format_using_efmt(snippet_path),
         }
     }
 }
@@ -96,6 +99,34 @@ case Erlang of movie->[hello(mike,joe,robert),credits]; language->formatting_arg
         movie -> [hello(mike, joe, robert), credits];
         language -> no_more_formatting_arguments
     end.";
+
+        assert_eq!(output, expected_output);
+    }
+
+    #[test_with::executable(efmt)]
+    #[test]
+    fn test_efmt() {
+        let input = "what_is(Erlang) ->
+case Erlang of movie->[hello(mike,joe,robert),credits]; language->formatting_arguments end
+.";
+
+        let l = Lang::<Erlang> {
+            enabled: true,
+            formatter: MdsfFormatter::Single(Erlang::Efmt),
+        };
+
+        let snippet = setup_snippet(input, EXTENSION).expect("it to save the file");
+        let snippet_path = snippet.path();
+
+        let output = l
+            .format(snippet_path)
+            .expect("it to not fail")
+            .expect("it to be a snippet");
+
+        let expected_output = "what_is(Erlang) ->
+    case Erlang of movie -> [hello(mike, joe, robert), credits]; language -> formatting_arguments end.
+"
+;
 
         assert_eq!(output, expected_output);
     }
