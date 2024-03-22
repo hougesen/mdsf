@@ -72,7 +72,7 @@ mdsf init
 | Dart       | `dart_format`                                                 |
 | Elixir     | `mix_format`                                                  |
 | Elm        | `elm-format`                                                  |
-| Erlang     | `erlfmt`                                                      |
+| Erlang     | `efmt`, `erlfmt`                                              |
 | Gleam      | `gleam_format`                                                |
 | Go         | `gofmt`, `gofumpt`, `goimports`                               |
 | GraphQL    | `prettier`                                                    |

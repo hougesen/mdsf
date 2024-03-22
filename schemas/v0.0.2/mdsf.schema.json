@@ -545,7 +545,7 @@
     },
     "Erlang": {
       "type": "string",
-      "enum": ["erlfmt"]
+      "enum": ["erlfmt", "efmt"]
     },
     "Gleam": {
       "type": "string",

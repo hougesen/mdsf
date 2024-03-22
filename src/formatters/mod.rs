@@ -16,6 +16,7 @@ pub mod cljstyle;
 pub mod crystal_format;
 pub mod dart_format;
 pub mod deno_fmt;
+pub mod efmt;
 pub mod elm_format;
 pub mod erlfmt;
 pub mod fourmolu;
