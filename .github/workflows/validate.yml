@@ -192,7 +192,7 @@ jobs:
         run: curl -sLO https://github.com/fourmolu/fourmolu/releases/download/v0.15.0.0/fourmolu-0.15.0.0-linux-x86_64 && chmod +x fourmolu-0.15.0.0-linux-x86_64 && sudo mv fourmolu-0.15.0.0-linux-x86_64 /usr/local/bin/fourmolu && fourmolu --version
 
       - name: hindent
-        run: cabal install hindent
+        run: curl -sSLO https://github.com/mihaimaruseac/hindent/releases/download/v6.1.1/hindent && chmod a+x hindent && sudo mv hindent /usr/local/bin/ && hindent --version
 
       - name: ktlint
         run: curl -sSLO https://github.com/pinterest/ktlint/releases/download/1.2.1/ktlint && chmod a+x ktlint && sudo mv ktlint /usr/local/bin/
