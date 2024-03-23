@@ -237,7 +237,7 @@
     "kotlin": {
       "default": {
         "enabled": true,
-        "formatter": "ktlint"
+        "formatter": [["ktlint", "ktfmt"]]
       },
       "allOf": [
         {
@@ -589,7 +589,7 @@
     },
     "Kotlin": {
       "type": "string",
-      "enum": ["ktlint"]
+      "enum": ["ktlint", "ktfmt"]
     },
     "Lang_for_Blade": {
       "type": "object",

@@ -1,6 +1,6 @@
 use schemars::JsonSchema;
 
-use crate::formatters::{ktlint::format_using_ktlint, MdsfFormatter};
+use crate::formatters::{ktfmt::format_using_ktfmt, ktlint::format_using_ktlint, MdsfFormatter};
 
 use super::{Lang, LanguageFormatter};
 
@@ -10,6 +10,8 @@ pub enum Kotlin {
     #[default]
     #[serde(rename = "ktlint")]
     Ktlint,
+    #[serde(rename = "ktfmt")]
+    Ktfmt,
 }
 
 impl Default for Lang<Kotlin> {
@@ -25,7 +27,10 @@ impl Default for Lang<Kotlin> {
 impl Default for MdsfFormatter<Kotlin> {
     #[inline]
     fn default() -> Self {
-        Self::Single(Kotlin::Ktlint)
+        Self::Multiple(vec![Self::Multiple(vec![
+            Self::Single(Kotlin::Ktlint),
+            Self::Single(Kotlin::Ktfmt),
+        ])])
     }
 }
 
@@ -37,6 +42,7 @@ impl LanguageFormatter for Kotlin {
     ) -> std::io::Result<(bool, Option<String>)> {
         match self {
             Self::Ktlint => format_using_ktlint(snippet_path),
+            Self::Ktfmt => format_using_ktfmt(snippet_path),
         }
     }
 }
@@ -98,6 +104,30 @@ fun add(
     a: Int,
     b: Int,
 ): Int {
+    return a + b
+}
+";
+
+        assert_eq!(output, expected_output);
+    }
+
+    #[test_with::executable(ktfmt)]
+    #[test]
+    fn test_ktfmt() {
+        let l = Lang::<Kotlin> {
+            enabled: true,
+            formatter: MdsfFormatter::Single(Kotlin::Ktfmt),
+        };
+
+        let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");
+        let snippet_path = snippet.path();
+
+        let output = l
+            .format(snippet_path)
+            .expect("it to not fail")
+            .expect("it to be a snippet");
+
+        let expected_output = "fun add(a: Int, b: Int): Int {
     return a + b
 }
 ";

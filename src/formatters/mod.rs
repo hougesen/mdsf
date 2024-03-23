@@ -28,6 +28,7 @@ pub mod google_java_format;
 pub mod hindent;
 pub mod isort;
 pub mod just_fmt;
+pub mod ktfmt;
 pub mod ktlint;
 pub mod luaformatter;
 pub mod mix_format;
