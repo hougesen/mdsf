@@ -2,13 +2,13 @@ use schemars::JsonSchema;
 
 use crate::languages::{
     blade::Blade, c::C, clojure::Clojure, cpp::Cpp, crystal::Crystal, csharp::CSharp, css::Css,
-    dart::Dart, elixir::Elixir, elm::Elm, erlang::Erlang, gleam::Gleam, go::Go, graphql::GraphQL,
-    groovy::Groovy, haskell::Haskell, html::Html, java::Java, javascript::JavaScript, json::Json,
-    just::Just, kotlin::Kotlin, lua::Lua, markdown::Markdown, nim::Nim, objective_c::ObjectiveC,
-    ocaml::OCaml, perl::Perl, protobuf::Protobuf, purescript::PureScript, python::Python,
-    rescript::ReScript, roc::Roc, ruby::Ruby, rust::Rust, scala::Scala, shell::Shell, sql::Sql,
-    swift::Swift, toml::Toml, typescript::TypeScript, vue::Vue, xml::Xml, yaml::Yaml, zig::Zig,
-    Lang,
+    dart::Dart, elixir::Elixir, elm::Elm, erlang::Erlang, fsharp::FSharp, gleam::Gleam, go::Go,
+    graphql::GraphQL, groovy::Groovy, haskell::Haskell, html::Html, java::Java,
+    javascript::JavaScript, json::Json, just::Just, kotlin::Kotlin, lua::Lua, markdown::Markdown,
+    nim::Nim, objective_c::ObjectiveC, ocaml::OCaml, perl::Perl, protobuf::Protobuf,
+    purescript::PureScript, python::Python, rescript::ReScript, roc::Roc, ruby::Ruby, rust::Rust,
+    scala::Scala, shell::Shell, sql::Sql, swift::Swift, toml::Toml, typescript::TypeScript,
+    vue::Vue, xml::Xml, yaml::Yaml, zig::Zig, Lang,
 };
 
 #[derive(Debug, serde::Serialize, serde::Deserialize, JsonSchema)]
@@ -50,6 +50,9 @@ pub struct MdsfConfig {
 
     #[serde(default)]
     pub erlang: Lang<Erlang>,
+
+    #[serde(default)]
+    pub fsharp: Lang<FSharp>,
 
     #[serde(default)]
     pub gleam: Lang<Gleam>,
@@ -170,6 +173,7 @@ impl Default for MdsfConfig {
             elixir: Lang::<Elixir>::default(),
             elm: Lang::<Elm>::default(),
             erlang: Lang::<Erlang>::default(),
+            fsharp: Lang::<FSharp>::default(),
             gleam: Lang::<Gleam>::default(),
             go: Lang::<Go>::default(),
             graphql: Lang::<GraphQL>::default(),

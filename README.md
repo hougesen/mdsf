@@ -73,6 +73,7 @@ mdsf init
 | Elixir     | `mix_format`                                                  |
 | Elm        | `elm-format`                                                  |
 | Erlang     | `efmt`, `erlfmt`                                              |
+| FSharp     | `fantomas`                                                    |
 | Gleam      | `gleam_format`                                                |
 | Go         | `gofmt`, `gofumpt`, `goimports`                               |
 | GraphQL    | `prettier`                                                    |

@@ -14,6 +14,7 @@ pub enum Language {
     Elixir,
     Elm,
     Erlang,
+    FSharp,
     Gleam,
     Go,
     GraphQL,
@@ -49,7 +50,6 @@ pub enum Language {
     Yaml,
     Zig,
     // TODO: PHP,
-    // TODO: FSharp,
     // TODO: Svelte,
     // TODO: Julia,
     // TODO: Dockerfile,
@@ -69,6 +69,7 @@ pub mod dart;
 pub mod elixir;
 pub mod elm;
 pub mod erlang;
+pub mod fsharp;
 pub mod gleam;
 pub mod go;
 pub mod graphql;
@@ -125,6 +126,7 @@ impl Language {
             "elixir" => Some(Self::Elixir),
             "elm" => Some(Self::Elm),
             "erlang" => Some(Self::Erlang),
+            "fsharp" => Some(Self::FSharp),
             "gleam" => Some(Self::Gleam),
             "go" | "golang" => Some(Self::Go),
             "graphql" | "gql" => Some(Self::GraphQL),
@@ -179,6 +181,7 @@ impl Language {
             Self::Elixir => ".ex",
             Self::Elm => ".elm",
             Self::Erlang => ".erl",
+            Self::FSharp => ".fs",
             Self::Gleam => ".gleam",
             Self::Go => ".go",
             Self::GraphQL => ".gql",

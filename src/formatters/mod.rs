@@ -19,6 +19,7 @@ pub mod deno_fmt;
 pub mod efmt;
 pub mod elm_format;
 pub mod erlfmt;
+pub mod fantomas;
 pub mod fourmolu;
 pub mod gleam_format;
 pub mod gofmt;
@@ -140,6 +141,7 @@ pub fn format_snippet(config: &MdsfConfig, language: &Language, code: &str) -> S
             Language::Elixir => config.elixir.format(snippet_path),
             Language::Elm => config.elm.format(snippet_path),
             Language::Erlang => config.erlang.format(snippet_path),
+            Language::FSharp => config.fsharp.format(snippet_path),
             Language::Gleam => config.gleam.format(snippet_path),
             Language::Go => config.go.format(snippet_path),
             Language::GraphQL => config.graphql.format(snippet_path),
