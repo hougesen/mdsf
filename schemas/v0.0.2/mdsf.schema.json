@@ -124,6 +124,17 @@
         }
       ]
     },
+    "fsharp": {
+      "default": {
+        "enabled": true,
+        "formatter": "fantomas"
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/Lang_for_FSharp"
+        }
+      ]
+    },
     "gleam": {
       "default": {
         "enabled": true,
@@ -547,6 +558,10 @@
       "type": "string",
       "enum": ["erlfmt", "efmt"]
     },
+    "FSharp": {
+      "type": "string",
+      "enum": ["fantomas"]
+    },
     "Gleam": {
       "type": "string",
       "enum": ["gleam_format"]
@@ -720,6 +735,18 @@
         },
         "formatter": {
           "$ref": "#/definitions/MdsfFormatter_for_Erlang"
+        }
+      }
+    },
+    "Lang_for_FSharp": {
+      "type": "object",
+      "required": ["enabled", "formatter"],
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        },
+        "formatter": {
+          "$ref": "#/definitions/MdsfFormatter_for_FSharp"
         }
       }
     },
@@ -1278,6 +1305,19 @@
           "type": "array",
           "items": {
             "$ref": "#/definitions/MdsfFormatter_for_Erlang"
+          }
+        }
+      ]
+    },
+    "MdsfFormatter_for_FSharp": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/FSharp"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MdsfFormatter_for_FSharp"
           }
         }
       ]
