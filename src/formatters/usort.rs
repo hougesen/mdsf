@@ -12,7 +12,7 @@ pub fn format_using_usort(
 }
 
 #[cfg(test)]
-mod test_isort {
+mod test_usort {
     use crate::{formatters::setup_snippet, languages::Language};
 
     use super::format_using_usort;
