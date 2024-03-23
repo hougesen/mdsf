@@ -63,6 +63,8 @@ pub mod zigfmt;
 
 #[inline]
 pub fn setup_snippet(code: &str, file_ext: &str) -> std::io::Result<NamedTempFile> {
+    let _ = std::fs::create_dir_all(".mdsf-cache");
+
     let mut f = tempfile::Builder::new()
         .rand_bytes(12)
         .suffix(file_ext)
@@ -74,7 +76,7 @@ pub fn setup_snippet(code: &str, file_ext: &str) -> std::io::Result<NamedTempFil
                 "mdsf"
             },
         )
-        .tempfile()?;
+        .tempfile_in(".mdsf-cache")?;
 
     f.write_all(code.as_bytes())?;
     f.flush()?;
