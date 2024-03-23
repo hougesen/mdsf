@@ -64,7 +64,7 @@ mdsf init
 | ---------- | ------------------------------------------------------------- |
 | Blade      | `blade-formatter`                                             |
 | C          | `clang-format`                                                |
-| CSharp     | `clang-format`                                                |
+| CSharp     | `clang-format`, `csharpier`                                   |
 | Clojure    | `cljstyle`                                                    |
 | Cpp        | `clang-format`                                                |
 | Crystal    | `crystal_format`                                              |

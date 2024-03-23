@@ -61,7 +61,7 @@
     "csharp": {
       "default": {
         "enabled": true,
-        "formatter": "clang-format"
+        "formatter": [["csharpier", "clang-format"]]
       },
       "allOf": [
         {
@@ -524,7 +524,7 @@
     },
     "CSharp": {
       "type": "string",
-      "enum": ["clang-format"]
+      "enum": ["csharpier", "clang-format"]
     },
     "Clojure": {
       "type": "string",

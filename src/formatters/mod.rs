@@ -14,6 +14,7 @@ pub mod blue;
 pub mod clang_format;
 pub mod cljstyle;
 pub mod crystal_format;
+pub mod csharpier;
 pub mod dart_format;
 pub mod deno_fmt;
 pub mod efmt;
@@ -63,20 +64,23 @@ pub mod zigfmt;
 
 #[inline]
 pub fn setup_snippet(code: &str, file_ext: &str) -> std::io::Result<NamedTempFile> {
-    let _ = std::fs::create_dir_all(".mdsf-cache");
+    let mut b = tempfile::Builder::new();
 
-    let mut f = tempfile::Builder::new()
-        .rand_bytes(12)
-        .suffix(file_ext)
-        .prefix(
-            // ktlint wants PascalCase file names
-            if file_ext == Language::Kotlin.to_file_ext() {
-                "MdsfFile"
-            } else {
-                "mdsf"
-            },
-        )
-        .tempfile_in(".mdsf-cache")?;
+    b.rand_bytes(12).suffix(file_ext).prefix(
+        // ktlint wants PascalCase file names
+        if file_ext == Language::Kotlin.to_file_ext() {
+            "MdsfFile"
+        } else {
+            "mdsf"
+        },
+    );
+
+    let mut f = if file_ext == ".cs" {
+        let _ = std::fs::create_dir_all(".mdsf-cache");
+        b.tempfile_in(".mdsf-cache")
+    } else {
+        b.tempfile()
+    }?;
 
     f.write_all(code.as_bytes())?;
     f.flush()?;
