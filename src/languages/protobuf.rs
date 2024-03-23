@@ -1,6 +1,8 @@
 use schemars::JsonSchema;
 
-use crate::formatters::{clang_format::format_using_clang_format, MdsfFormatter};
+use crate::formatters::{
+    buf::format_using_buf, clang_format::format_using_clang_format, MdsfFormatter,
+};
 
 use super::{Lang, LanguageFormatter};
 
@@ -8,6 +10,8 @@ use super::{Lang, LanguageFormatter};
 #[cfg_attr(test, derive(PartialEq, Eq))]
 pub enum Protobuf {
     #[default]
+    #[serde(rename = "buf")]
+    Buf,
     #[serde(rename = "clang-format")]
     ClangFormat,
 }
@@ -25,7 +29,10 @@ impl Default for Lang<Protobuf> {
 impl Default for MdsfFormatter<Protobuf> {
     #[inline]
     fn default() -> Self {
-        Self::Single(Protobuf::ClangFormat)
+        Self::Multiple(vec![Self::Multiple(vec![
+            Self::Single(Protobuf::Buf),
+            Self::Single(Protobuf::ClangFormat),
+        ])])
     }
 }
 
@@ -36,6 +43,7 @@ impl LanguageFormatter for Protobuf {
         snippet_path: &std::path::Path,
     ) -> std::io::Result<(bool, Option<String>)> {
         match self {
+            Self::Buf => format_using_buf(snippet_path),
             Self::ClangFormat => format_using_clang_format(snippet_path),
         }
     }
@@ -73,6 +81,30 @@ mod test_protobuf {
         .format(snippet_path)
         .expect("it to not fail")
         .is_none());
+    }
+
+    #[test_with::executable(buf)]
+    #[test]
+    fn test_buf() {
+        let expected_output = "service SearchService {
+  rpc Search(SearchRequest) returns (SearchResponse);
+}
+";
+
+        let l = Lang::<Protobuf> {
+            enabled: true,
+            formatter: MdsfFormatter::Single(Protobuf::Buf),
+        };
+
+        let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");
+        let snippet_path = snippet.path();
+
+        let output = l
+            .format(snippet_path)
+            .expect("it to not fail")
+            .expect("it to be a snippet");
+
+        assert_eq!(output, expected_output);
     }
 
     #[test_with::executable(clang-format)]

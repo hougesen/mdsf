@@ -325,7 +325,7 @@
     "protobuf": {
       "default": {
         "enabled": true,
-        "formatter": "clang-format"
+        "formatter": [["buf", "clang-format"]]
       },
       "allOf": [
         {
@@ -1782,7 +1782,7 @@
     },
     "Protobuf": {
       "type": "string",
-      "enum": ["clang-format"]
+      "enum": ["buf", "clang-format"]
     },
     "PureScript": {
       "type": "string",

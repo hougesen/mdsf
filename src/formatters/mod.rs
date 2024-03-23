@@ -11,6 +11,7 @@ pub mod biome;
 pub mod black;
 pub mod blade_formatter;
 pub mod blue;
+pub mod buf;
 pub mod clang_format;
 pub mod cljstyle;
 pub mod crystal_format;
@@ -75,7 +76,7 @@ pub fn setup_snippet(code: &str, file_ext: &str) -> std::io::Result<NamedTempFil
         },
     );
 
-    let mut f = if file_ext == ".cs" {
+    let mut f = if file_ext == ".cs" || file_ext == ".proto" {
         let _ = std::fs::create_dir_all(".mdsf-cache");
         b.tempfile_in(".mdsf-cache")
     } else {
