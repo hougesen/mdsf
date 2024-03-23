@@ -1,6 +1,8 @@
 use schemars::JsonSchema;
 
-use crate::formatters::{clang_format::format_using_clang_format, MdsfFormatter};
+use crate::formatters::{
+    clang_format::format_using_clang_format, csharpier::format_using_csharpier, MdsfFormatter,
+};
 
 use super::{Lang, LanguageFormatter};
 
@@ -8,6 +10,8 @@ use super::{Lang, LanguageFormatter};
 #[cfg_attr(test, derive(PartialEq, Eq))]
 pub enum CSharp {
     #[default]
+    #[serde(rename = "csharpier")]
+    CSharpier,
     #[serde(rename = "clang-format")]
     ClangFormat,
 }
@@ -25,7 +29,10 @@ impl Default for Lang<CSharp> {
 impl Default for MdsfFormatter<CSharp> {
     #[inline]
     fn default() -> Self {
-        Self::Single(CSharp::ClangFormat)
+        Self::Multiple(vec![Self::Multiple(vec![
+            Self::Single(CSharp::CSharpier),
+            Self::Single(CSharp::ClangFormat),
+        ])])
     }
 }
 
@@ -36,6 +43,7 @@ impl LanguageFormatter for CSharp {
         snippet_path: &std::path::Path,
     ) -> std::io::Result<(bool, Option<String>)> {
         match self {
+            Self::CSharpier => format_using_csharpier(snippet_path),
             Self::ClangFormat => format_using_clang_format(snippet_path),
         }
     }
@@ -53,8 +61,8 @@ mod test_csharp {
     const INPUT: &str = "namespace Mdsf {
                         class Adder {
                                                     public static int add(int a,int b) {
-                                a-b ;
-                                                        return a + b;
+                                var c         = a+b ;
+                                                        return c;
                                                     }
                                                  }
                                                  } ";
@@ -99,11 +107,43 @@ mod test_csharp {
         let expected_output = "namespace Mdsf {
 class Adder {
   public static int add(int a, int b) {
-    a - b;
-    return a + b;
+    var c = a + b;
+    return c;
   }
 }
 }";
+
+        assert_eq!(output, expected_output);
+    }
+
+    #[test_with::executable(dotnet)]
+    #[test]
+    fn test_csharpier() {
+        let l = Lang::<CSharp> {
+            enabled: true,
+            formatter: MdsfFormatter::Single(CSharp::CSharpier),
+        };
+
+        let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");
+        let snippet_path = snippet.path();
+
+        let output = l
+            .format(snippet_path)
+            .expect("it to not fail")
+            .expect("it to be a snippet");
+
+        let expected_output = "namespace Mdsf
+{
+    class Adder
+    {
+        public static int add(int a, int b)
+        {
+            var c = a + b;
+            return c;
+        }
+    }
+}
+";
 
         assert_eq!(output, expected_output);
     }

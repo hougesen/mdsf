@@ -14,6 +14,7 @@ pub mod blue;
 pub mod clang_format;
 pub mod cljstyle;
 pub mod crystal_format;
+pub mod csharpier;
 pub mod dart_format;
 pub mod deno_fmt;
 pub mod efmt;
