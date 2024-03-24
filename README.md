@@ -91,7 +91,7 @@ mdsf init
 | OCaml      | `ocamlformat`                                                 |
 | ObjectiveC | `clang-format`                                                |
 | Perl       | `perltidy`                                                    |
-| Protobuf   | `clang-format`                                                |
+| Protobuf   | `buf`, `clang-format`                                         |
 | PureScript | `purs-tidy`                                                   |
 | Python     | `autopep8`, `black`, `blue`, `isort`, `ruff`, `usort`, `yapf` |
 | ReScript   | `rescript_format`                                             |
