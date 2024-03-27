@@ -253,7 +253,6 @@ name = "mdsf"
 version = "0.0.2"
 dependencies = [
  "clap",
- "fastrand",
  "ignore",
  "pulldown-cmark",
  "pulldown-cmark-to-cmark",
