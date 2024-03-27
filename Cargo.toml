@@ -12,7 +12,7 @@ readme = "README.md"
 categories = ["development-tools"]
 
 [dependencies]
-clap = { version = "4.5.3", features = ["derive"] }
+clap = { version = "4.5.4", features = ["derive"] }
 ignore = "0.4.22"
 pulldown-cmark = { version = "0.10.0", default-features = false }
 pulldown-cmark-to-cmark = "13.0.0"
