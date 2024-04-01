@@ -13,7 +13,7 @@ fn format_command(args: FormatCommandArguments) -> Result<(), MdsfError> {
 
     if args.path.is_file() {
         handle_file(&conf, &args.path)?;
-    } else {
+    } else if args.path.is_dir() {
         for entry in ignore::WalkBuilder::new(args.path)
             .git_ignore(true)
             .require_git(false)
@@ -27,6 +27,21 @@ fn format_command(args: FormatCommandArguments) -> Result<(), MdsfError> {
                 handle_file(&conf, file_path)?;
             }
         }
+    } else {
+        #[cfg(target_os = "windows")]
+        let pre = "";
+        #[cfg(not(target_os = "windows"))]
+        let pre = "\u{1b}[31m";
+
+        #[cfg(target_os = "windows")]
+        let post = "";
+        #[cfg(not(target_os = "windows"))]
+        let post = "\u{1b}[0m";
+
+        println!(
+            "{pre}No file or directory with the name \"{}\" found{post}",
+            args.path.display(),
+        );
     }
 
     Ok(())
