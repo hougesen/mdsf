@@ -4,8 +4,6 @@ use config::MdsfConfig;
 use error::MdsfError;
 use formatters::format_snippet;
 use languages::Language;
-use pulldown_cmark::CowStr;
-use pulldown_cmark_to_cmark::cmark_resume_with_options;
 
 pub mod cli;
 pub mod config;
@@ -55,80 +53,59 @@ pub fn format_file(config: &MdsfConfig, path: &std::path::Path) -> Result<(), Md
         return Ok(());
     }
 
-    let mut parser_options = pulldown_cmark::Options::all();
-
-    parser_options.remove(pulldown_cmark::Options::ENABLE_SMART_PUNCTUATION);
-
-    let parser = pulldown_cmark::Parser::new_ext(&input, parser_options);
-
     let mut output = String::with_capacity(input.len() + 128);
-
-    let mut codeblock_language = None;
-
-    let mut state = None;
 
     let mut modified = false;
 
-    for event in parser {
-        let ev = match event {
-            pulldown_cmark::Event::Start(pulldown_cmark::Tag::CodeBlock(
-                pulldown_cmark::CodeBlockKind::Fenced(l),
-            )) => {
-                codeblock_language = Language::maybe_from_str(&l);
+    let mut lines = input.lines().enumerate();
 
-                pulldown_cmark::Event::Start(pulldown_cmark::Tag::CodeBlock(
-                    pulldown_cmark::CodeBlockKind::Fenced(l),
-                ))
-            }
+    while let Some((_, line)) = lines.next() {
+        // TODO: implement support for code blocks with 4 `
+        if line.starts_with("```") {
+            if let Some(language) = line.strip_prefix("```").and_then(Language::maybe_from_str) {
+                let mut code_snippet = String::new();
 
-            pulldown_cmark::Event::End(t) => {
-                if codeblock_language.is_some() {
-                    codeblock_language = None;
+                let mut is_snippet = false;
+
+                for (_, subline) in lines.by_ref() {
+                    if subline.trim_end() == "```" {
+                        is_snippet = true;
+                        break;
+                    }
+
+                    code_snippet.push_str(subline);
+
+                    code_snippet.push('\n');
                 }
 
-                pulldown_cmark::Event::End(t)
-            }
-            pulldown_cmark::Event::Text(text) => {
-                if let Some(language) = &codeblock_language {
-                    let formatted = CowStr::from(format_snippet(config, language, &text));
-                    modified = true;
-                    pulldown_cmark::Event::Text(formatted)
+                if is_snippet {
+                    let formatted = format_snippet(config, &language, &code_snippet);
+
+                    output.push_str(line);
+                    output.push('\n');
+                    output.push_str(formatted.trim());
+                    output.push_str("\n```");
+
+                    if formatted != code_snippet {
+                        modified = true;
+                    }
                 } else {
-                    pulldown_cmark::Event::Text(text)
+                    output.push_str(line);
+                    output.push_str(&code_snippet);
                 }
+            } else {
+                output.push_str(line);
             }
-            e => e,
-        };
-
-        state = cmark_resume_with_options(
-            core::iter::once(ev),
-            &mut output,
-            state.take(),
-            pulldown_cmark_to_cmark::Options {
-                code_block_token_count: 3,
-                // Default for prettier
-                list_token: '-',
-                emphasis_token: '_',
-                ..Default::default()
-            },
-        )
-        .map_err(MdsfError::from)?
-        .into();
-    }
-
-    if let Some(s) = state {
-        s.finalize(&mut output).map_err(MdsfError::from)?;
-    }
-
-    let mut output = output.trim().to_owned();
-
-    if config.markdown.enabled {
-        if !output.is_empty() {
-            output = format_snippet(config, &Language::Markdown, &output);
-            modified = true;
+        } else {
+            output.push_str(line);
         }
-    } else {
+
         output.push('\n');
+    }
+
+    if config.markdown.enabled && !output.is_empty() {
+        output = format_snippet(config, &Language::Markdown, &output);
+        modified = true;
     }
 
     let duration = time.elapsed();
@@ -151,8 +128,8 @@ mod tests {
     use crate::{config::MdsfConfig, format_file, formatters::setup_snippet};
 
     #[test]
-    fn it_should_not_modify_base_chars() {
-        let input_snippet = "```rust
+    fn it_should_format_the_code() {
+        let input = "```rust
 fn           add(
      a:
       i32, b: i32) -> i32 {
@@ -160,18 +137,73 @@ fn           add(
 }
 ```";
 
-        let formatted_snippet = "```rust
+        let expected_output = "```rust
 fn add(a: i32, b: i32) -> i32 {
     a + b
 }
-```";
+```
+";
 
-        let n = ["...", "\"mdsf\"", "'mdsf'", "`mdsf`"].join("\n");
+        let file = setup_snippet(input, ".md").expect("it to create a file");
 
-        let input = format!("{input_snippet}\n\n{n}");
-        let expected_output = format!("{formatted_snippet}\n\n{n}\n");
+        let config = MdsfConfig::default();
 
-        let file = setup_snippet(&input, ".md").expect("it to create a file");
+        format_file(&config, file.path()).expect("it to format the file without errors");
+
+        let output = std::fs::read_to_string(file.path()).expect("it to read the file");
+
+        assert_eq!(output, expected_output);
+    }
+
+    #[test]
+    fn it_should_not_modify_outside_blocks() {
+        let input = "# title
+
+Let's play!
+
+Have some fun...
+
+I like \"mdsf\"
+
+| Field            | Description            |
+|------------------|------------------------|
+| foo              |   foo field            |
+| bar              |   bar field            |
+
+```rust
+fn           add(
+     a:
+      i32, b: i32) -> i32 {
+    a + b
+}
+```
+
+
+";
+
+        let expected_output = "# title
+
+Let's play!
+
+Have some fun...
+
+I like \"mdsf\"
+
+| Field            | Description            |
+|------------------|------------------------|
+| foo              |   foo field            |
+| bar              |   bar field            |
+
+```rust
+fn add(a: i32, b: i32) -> i32 {
+    a + b
+}
+```
+
+
+";
+
+        let file = setup_snippet(input, ".md").expect("it to create a file");
 
         let config = MdsfConfig::default();
 
