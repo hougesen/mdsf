@@ -4,8 +4,6 @@ use config::MdsfConfig;
 use error::MdsfError;
 use formatters::format_snippet;
 use languages::Language;
-use pulldown_cmark::CowStr;
-use pulldown_cmark_to_cmark::cmark_resume_with_options;
 
 pub mod cli;
 pub mod config;
@@ -44,7 +42,67 @@ fn write_changed_line(path: &std::path::Path, dur: core::time::Duration) {
 }
 
 #[inline]
-pub fn format_file(config: &MdsfConfig, path: &std::path::Path) -> Result<(), MdsfError> {
+fn format_file(config: &MdsfConfig, input: &str) -> (bool, String) {
+    let mut output = String::with_capacity(input.len() + 128);
+
+    let mut modified = false;
+
+    let mut lines = input.lines().enumerate();
+
+    while let Some((_, line)) = lines.next() {
+        // TODO: implement support for code blocks with 4 `
+        if line.starts_with("```") {
+            if let Some(language) = line.strip_prefix("```").and_then(Language::maybe_from_str) {
+                let mut code_snippet = String::new();
+
+                let mut is_snippet = false;
+
+                for (_, subline) in lines.by_ref() {
+                    if subline.trim_end() == "```" {
+                        is_snippet = true;
+                        break;
+                    }
+
+                    code_snippet.push_str(subline);
+
+                    code_snippet.push('\n');
+                }
+
+                if is_snippet {
+                    let formatted = format_snippet(config, &language, &code_snippet);
+
+                    output.push_str(line);
+                    output.push('\n');
+                    output.push_str(formatted.trim());
+                    output.push_str("\n```");
+
+                    if formatted != code_snippet {
+                        modified = true;
+                    }
+                } else {
+                    output.push_str(line);
+                    output.push_str(&code_snippet);
+                }
+            } else {
+                output.push_str(line);
+            }
+        } else {
+            output.push_str(line);
+        }
+
+        output.push('\n');
+    }
+
+    if config.markdown.enabled && !output.is_empty() {
+        output = format_snippet(config, &Language::Markdown, &output);
+        modified = true;
+    }
+
+    (modified, output)
+}
+
+#[inline]
+pub fn handle_file(config: &MdsfConfig, path: &std::path::Path) -> Result<(), MdsfError> {
     let time = std::time::Instant::now();
 
     let input = std::fs::read_to_string(path)?;
@@ -55,83 +113,9 @@ pub fn format_file(config: &MdsfConfig, path: &std::path::Path) -> Result<(), Md
         return Ok(());
     }
 
-    let mut parser_options = pulldown_cmark::Options::all();
-
-    parser_options.remove(pulldown_cmark::Options::ENABLE_SMART_PUNCTUATION);
-
-    let parser = pulldown_cmark::Parser::new_ext(&input, parser_options);
-
-    let mut output = String::with_capacity(input.len() + 128);
-
-    let mut codeblock_language = None;
-
-    let mut state = None;
-
-    let mut modified = false;
-
-    for event in parser {
-        let ev = match event {
-            pulldown_cmark::Event::Start(pulldown_cmark::Tag::CodeBlock(
-                pulldown_cmark::CodeBlockKind::Fenced(l),
-            )) => {
-                codeblock_language = Language::maybe_from_str(&l);
-
-                pulldown_cmark::Event::Start(pulldown_cmark::Tag::CodeBlock(
-                    pulldown_cmark::CodeBlockKind::Fenced(l),
-                ))
-            }
-
-            pulldown_cmark::Event::End(t) => {
-                if codeblock_language.is_some() {
-                    codeblock_language = None;
-                }
-
-                pulldown_cmark::Event::End(t)
-            }
-            pulldown_cmark::Event::Text(text) => {
-                if let Some(language) = &codeblock_language {
-                    let formatted = CowStr::from(format_snippet(config, language, &text));
-                    modified = true;
-                    pulldown_cmark::Event::Text(formatted)
-                } else {
-                    pulldown_cmark::Event::Text(text)
-                }
-            }
-            e => e,
-        };
-
-        state = cmark_resume_with_options(
-            core::iter::once(ev),
-            &mut output,
-            state.take(),
-            pulldown_cmark_to_cmark::Options {
-                code_block_token_count: 3,
-                // Default for prettier
-                list_token: '-',
-                emphasis_token: '_',
-                ..Default::default()
-            },
-        )
-        .map_err(MdsfError::from)?
-        .into();
-    }
-
-    if let Some(s) = state {
-        s.finalize(&mut output).map_err(MdsfError::from)?;
-    }
-
-    let mut output = output.trim().to_owned();
-
-    if config.markdown.enabled {
-        if !output.is_empty() {
-            output = format_snippet(config, &Language::Markdown, &output);
-            modified = true;
-        }
-    } else {
-        output.push('\n');
-    }
-
     let duration = time.elapsed();
+
+    let (modified, output) = format_file(config, &input);
 
     if modified && output != input {
         std::fs::write(path, output)?;
@@ -148,11 +132,11 @@ pub fn format_file(config: &MdsfConfig, path: &std::path::Path) -> Result<(), Md
 
 #[cfg(test)]
 mod tests {
-    use crate::{config::MdsfConfig, format_file, formatters::setup_snippet};
+    use crate::{config::MdsfConfig, format_file, formatters::setup_snippet, handle_file};
 
     #[test]
-    fn it_should_not_modify_base_chars() {
-        let input_snippet = "```rust
+    fn it_should_format_the_code() {
+        let input = "```rust
 fn           add(
      a:
       i32, b: i32) -> i32 {
@@ -160,25 +144,767 @@ fn           add(
 }
 ```";
 
-        let formatted_snippet = "```rust
+        let expected_output = "```rust
 fn add(a: i32, b: i32) -> i32 {
     a + b
 }
-```";
-
-        let n = ["...", "\"mdsf\"", "'mdsf'", "`mdsf`"].join("\n");
-
-        let input = format!("{input_snippet}\n\n{n}");
-        let expected_output = format!("{formatted_snippet}\n\n{n}\n");
-
-        let file = setup_snippet(&input, ".md").expect("it to create a file");
+```
+";
 
         let config = MdsfConfig::default();
 
-        format_file(&config, file.path()).expect("it to format the file without errors");
+        {
+            let (modified, output) = format_file(&config, input);
 
-        let output = std::fs::read_to_string(file.path()).expect("it to read the file");
+            assert!(modified);
+
+            assert_eq!(output, expected_output);
+        };
+
+        {
+            let file = setup_snippet(input, ".md").expect("it to create a file");
+
+            handle_file(&config, file.path()).expect("it to be a success");
+
+            let output = std::fs::read_to_string(file.path()).expect("it to return the string");
+
+            assert_eq!(output, expected_output);
+        };
+    }
+
+    #[test]
+    fn it_should_not_modify_outside_blocks() {
+        let input = "# title
+
+Let's play!
+
+Have some fun...
+
+I like \"mdsf\"
+
+| Field            | Description            |
+|------------------|------------------------|
+| foo              |   foo field            |
+| bar              |   bar field            |
+
+```rust
+fn           add(
+     a:
+      i32, b: i32) -> i32 {
+    a + b
+}
+```
+
+
+";
+
+        let expected_output = "# title
+
+Let's play!
+
+Have some fun...
+
+I like \"mdsf\"
+
+| Field            | Description            |
+|------------------|------------------------|
+| foo              |   foo field            |
+| bar              |   bar field            |
+
+```rust
+fn add(a: i32, b: i32) -> i32 {
+    a + b
+}
+```
+
+
+";
+
+        let config = MdsfConfig::default();
+
+        let (modified, output) = format_file(&config, input);
+
+        assert!(modified);
 
         assert_eq!(output, expected_output);
+    }
+
+    #[test]
+    fn it_should_support_multiple_languages() {
+        let input = r#"---
+tile1: asd asd
+tile2: asd asd
+tile3: asd asd
+
+tile4: asd asd
+
+tile5: asd asd
+---
+
+this is the content
+
+```go
+package main
+
+func add(a int, b int) int {
+	return a + b
+}
+```
+
+This snippets is from 'bash.md':
+
+```sh
+
+#!/bin/bash
+
+       add      ()   {
+    echo "$1"                 +          "$2"
+             }
+
+
+
+
+
+
+
+
+
+
+```
+
+This snippets is from 'crystal.md':
+
+```crystal
+
+
+
+
+def add(a : Int32, b : Int32)
+return a + b
+end
+
+
+
+
+
+```
+
+This snippets is from 'css.md':
+
+```css
+
+       body {         background-color: powderblue;       }       h1 {         color: blue;       }       p {         color: red;       }
+```
+
+This snippets is from 'dart.md':
+
+```dart
+
+            class Adder {int add(int a, int b) {return a + b;}}
+
+
+```
+
+This snippets is from 'elixir.md':
+
+```elixir
+
+        def              add(a  ,      b   )   do    a   +   b                 end
+
+
+```
+
+This snippets is from 'gleam.md':
+
+```gleam
+
+
+pub fn add(a:Int,b:Int)->Int{a+b}
+
+
+```
+
+This snippets is from 'go.md':
+
+```go
+
+
+
+  package main
+
+   func add(a int , b int  ) int {
+                return a + b
+       }
+
+
+```
+
+This snippets is from 'html.md':
+
+```html
+
+ <!doctype html> <html> <head> <style> body {background-color: powderblue;} h1   {color: blue;} p    {color: red;} </style> </head> <body>  <h1>This is a heading</h1> <p>This is a paragraph.</p>  </body> </html>
+```
+
+This snippets is from 'javascript.md':
+
+```javascript
+
+
+
+function                                add(
+                a,
+                         b)
+                        {
+  return a
+  +
+         b;
+                }
+
+
+
+
+```
+
+This snippets is from 'json.md':
+
+```json
+
+                        // This is a comment
+{
+        "add": { "a":1,
+                                "b": ["1",23,null]}
+                }
+
+
+
+```
+
+This snippets is from 'lua.md':
+
+```lua
+
+        local               function        add (                                       a , b
+)
+
+return              a +b
+
+
+end
+
+
+```
+
+This snippets is from 'markdown.md':
+
+
+
+
+
+
+
+# this is a header
+
+this             is a paragraph
+
+
+
+```lua
+
+        local               function        add (                                       a , b
+)
+
+return              a +b
+
+
+end
+
+
+```
+
+
+
+
+
+
+
+This snippets is from 'nim.md':
+
+```nim
+
+
+proc add( a         :int , b:int )        : int =
+        return a +          b
+
+
+
+
+
+```
+
+This snippets is from 'python.md':
+
+```python
+
+
+
+def add (
+        a  : int ,              b:int )->int :
+                    return a                +b
+
+
+
+
+
+```
+
+This snippets is from 'roc.md':
+
+```roc
+
+app "helloWorld"
+    packages { pf: "https://github.com/roc-lang/" }
+    imports [pf.Stdout]
+    provides [main] to pf
+
+
+
+
+
+
+main =
+    Stdout.line "Hello, World!"
+
+
+```
+
+This snippets is from 'ruby.md':
+
+```ruby
+
+
+def   add(  a , b )
+                    return a + b
+                        end
+
+
+
+
+
+```
+
+This snippets is from 'rust.md':
+
+```rust
+
+
+pub async
+    fn          add(
+    a:
+    i32,
+
+    b: i32)
+
+    -> i32 {
+    a +
+
+    b
+                }
+
+
+
+```
+
+This snippets is from 'sh.md':
+
+```sh
+
+#!/bin/sh
+
+       add      ()   {
+    echo "$1"                 +          "$2"
+             }
+
+
+
+
+
+
+
+
+
+
+```
+
+This snippets is from 'sql.md':
+
+```sql
+
+
+
+            SELECT * FROM
+            tbl WHERE foo =
+
+                        'bar';
+
+
+```
+
+This snippets is from 'toml.md':
+
+```toml
+
+
+name =          "mdsf"
+        author = "Mads Hougesen"
+
+
+```
+
+This snippets is from 'typescript.md':
+
+```typescript
+
+
+
+function                                add(
+                a:number,
+                         b              :number)
+                        :number{
+  return a
+  +
+         b;
+        }
+
+
+
+
+```
+
+This snippets is from 'vue.md':
+
+```vue
+<script lang="ts"   setup >
+import {
+
+    ref
+} from "vue"
+
+
+    const count   = ref(1)
+    function add (a:number,b:number):number {
+                return a +b
+        }   </script>
+
+
+<template>
+    <button  @click="()=> count = add(count,count )">Increment </button>
+        </template>
+
+
+```
+
+This snippets is from 'zig.md':
+
+```zig
+
+
+
+fn add (a : i32    , b :   i32 )             i32 {
+        return a + b ;
+
+    }
+
+
+```
+"#;
+
+        let expected_output = r#"---
+tile1: asd asd
+tile2: asd asd
+tile3: asd asd
+
+tile4: asd asd
+
+tile5: asd asd
+---
+
+this is the content
+
+```go
+package main
+
+func add(a int, b int) int {
+	return a + b
+}
+```
+
+This snippets is from 'bash.md':
+
+```sh
+#!/bin/bash
+
+add() {
+	echo "$1" + "$2"
+}
+```
+
+This snippets is from 'crystal.md':
+
+```crystal
+def add(a : Int32, b : Int32)
+  return a + b
+end
+```
+
+This snippets is from 'css.md':
+
+```css
+body {
+  background-color: powderblue;
+}
+h1 {
+  color: blue;
+}
+p {
+  color: red;
+}
+```
+
+This snippets is from 'dart.md':
+
+```dart
+class Adder {
+  int add(int a, int b) {
+    return a + b;
+  }
+}
+```
+
+This snippets is from 'elixir.md':
+
+```elixir
+def add(a, b) do
+  a + b
+end
+```
+
+This snippets is from 'gleam.md':
+
+```gleam
+pub fn add(a: Int, b: Int) -> Int {
+  a + b
+}
+```
+
+This snippets is from 'go.md':
+
+```go
+package main
+
+func add(a int, b int) int {
+	return a + b
+}
+```
+
+This snippets is from 'html.md':
+
+```html
+<!doctype html>
+<html>
+  <head>
+    <style>
+      body {
+        background-color: powderblue;
+      }
+      h1 {
+        color: blue;
+      }
+      p {
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>This is a heading</h1>
+    <p>This is a paragraph.</p>
+  </body>
+</html>
+```
+
+This snippets is from 'javascript.md':
+
+```javascript
+function add(a, b) {
+  return a + b;
+}
+```
+
+This snippets is from 'json.md':
+
+```json
+// This is a comment
+{
+  "add": { "a": 1, "b": ["1", 23, null] },
+}
+```
+
+This snippets is from 'lua.md':
+
+```lua
+local function add(a, b)
+	return a + b
+end
+```
+
+This snippets is from 'markdown.md':
+
+
+
+
+
+
+
+# this is a header
+
+this             is a paragraph
+
+
+
+```lua
+local function add(a, b)
+	return a + b
+end
+```
+
+
+
+
+
+
+
+This snippets is from 'nim.md':
+
+```nim
+proc add(a: int, b: int): int =
+        return a + b
+```
+
+This snippets is from 'python.md':
+
+```python
+def add(a: int, b: int) -> int:
+    return a + b
+```
+
+This snippets is from 'roc.md':
+
+```roc
+app "helloWorld"
+    packages { pf: "https://github.com/roc-lang/" }
+    imports [pf.Stdout]
+    provides [main] to pf
+
+main =
+    Stdout.line "Hello, World!"
+```
+
+This snippets is from 'ruby.md':
+
+```ruby
+def add(a, b)
+  return a + b
+end
+```
+
+This snippets is from 'rust.md':
+
+```rust
+pub async fn add(a: i32, b: i32) -> i32 {
+    a + b
+}
+```
+
+This snippets is from 'sh.md':
+
+```sh
+#!/bin/sh
+
+add() {
+	echo "$1" + "$2"
+}
+```
+
+This snippets is from 'sql.md':
+
+```sql
+SELECT
+  *
+FROM
+  tbl
+WHERE
+  foo = 'bar';
+```
+
+This snippets is from 'toml.md':
+
+```toml
+name = "mdsf"
+author = "Mads Hougesen"
+```
+
+This snippets is from 'typescript.md':
+
+```typescript
+function add(a: number, b: number): number {
+  return a + b;
+}
+```
+
+This snippets is from 'vue.md':
+
+```vue
+<script lang="ts" setup>
+import { ref } from "vue";
+
+const count = ref(1);
+function add(a: number, b: number): number {
+  return a + b;
+}
+</script>
+
+<template>
+  <button @click="() => (count = add(count, count))">Increment</button>
+</template>
+```
+
+This snippets is from 'zig.md':
+
+```zig
+fn add(a: i32, b: i32) i32 {
+    return a + b;
+}
+```
+"#;
+
+        let config = MdsfConfig::default();
+
+        {
+            let (modified, output) = format_file(&config, input);
+
+            assert!(modified);
+
+            assert_eq!(output, expected_output);
+        };
+
+        {
+            let file = setup_snippet(input, ".md").expect("it to create a file");
+
+            handle_file(&config, file.path()).expect("it to be a success");
+
+            let output = std::fs::read_to_string(file.path()).expect("it to return the string");
+
+            assert_eq!(output, expected_output);
+        };
     }
 }

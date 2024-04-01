@@ -77,7 +77,7 @@ pub fn setup_snippet(code: &str, file_ext: &str) -> std::io::Result<NamedTempFil
     );
 
     let mut f = if file_ext == ".cs" || file_ext == ".proto" {
-        let _ = std::fs::create_dir_all(".mdsf-cache");
+        std::fs::create_dir_all(".mdsf-cache").ok();
         b.tempfile_in(".mdsf-cache")
     } else {
         b.tempfile()
