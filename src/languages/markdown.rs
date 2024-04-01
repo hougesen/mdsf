@@ -16,7 +16,7 @@ impl Default for Lang<Markdown> {
     #[inline]
     fn default() -> Self {
         Self {
-            enabled: false,
+            enabled: true,
             formatter: MdsfFormatter::<Markdown>::default(),
         }
     }
@@ -61,7 +61,7 @@ mod test_markdown {
 
     #[test]
     fn it_should_be_enabled_by_default() {
-        assert!(!Lang::<Markdown>::default().enabled);
+        assert!(Lang::<Markdown>::default().enabled);
     }
 
     #[test]

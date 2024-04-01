@@ -124,6 +124,11 @@
         }
       ]
     },
+    "format_finished_document": {
+      "description": "Format the processed document with the selected markdown formatter",
+      "default": false,
+      "type": "boolean"
+    },
     "fsharp": {
       "default": {
         "enabled": true,
@@ -269,7 +274,7 @@
     },
     "markdown": {
       "default": {
-        "enabled": false,
+        "enabled": true,
         "formatter": "prettier"
       },
       "allOf": [
