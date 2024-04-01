@@ -55,7 +55,11 @@ pub fn format_file(config: &MdsfConfig, path: &std::path::Path) -> Result<(), Md
         return Ok(());
     }
 
-    let parser = pulldown_cmark::Parser::new_ext(&input, pulldown_cmark::Options::all());
+    let mut parser_options = pulldown_cmark::Options::all();
+
+    parser_options.remove(pulldown_cmark::Options::ENABLE_SMART_PUNCTUATION);
+
+    let parser = pulldown_cmark::Parser::new_ext(&input, parser_options);
 
     let mut output = String::with_capacity(input.len() + 128);
 
@@ -140,4 +144,41 @@ pub fn format_file(config: &MdsfConfig, path: &std::path::Path) -> Result<(), Md
     write_unchanged_line(path, duration);
 
     Ok(())
+}
+
+#[cfg(test)]
+mod tests {
+    use crate::{config::MdsfConfig, format_file, formatters::setup_snippet};
+
+    #[test]
+    fn it_should_not_modify_base_chars() {
+        let input_snippet = "```rust
+fn           add(
+     a:
+      i32, b: i32) -> i32 {
+    a + b
+}
+```";
+
+        let formatted_snippet = "```rust
+fn add(a: i32, b: i32) -> i32 {
+    a + b
+}
+```";
+
+        let n = ["...", "\"mdsf\"", "'mdsf'", "`mdsf`"].join("\n");
+
+        let input = format!("{input_snippet}\n\n{n}");
+        let expected_output = format!("{formatted_snippet}\n\n{n}\n");
+
+        let file = setup_snippet(&input, ".md").expect("it to create a file");
+
+        let config = MdsfConfig::default();
+
+        format_file(&config, file.path()).expect("it to format the file without errors");
+
+        let output = std::fs::read_to_string(file.path()).expect("it to read the file");
+
+        assert_eq!(output, expected_output);
+    }
 }
