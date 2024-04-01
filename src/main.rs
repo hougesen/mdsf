@@ -3,7 +3,7 @@ use mdsf::{
     cli::{Cli, Commands, FormatCommandArguments},
     config::MdsfConfig,
     error::MdsfError,
-    format_file,
+    handle_file,
 };
 
 fn format_command(args: FormatCommandArguments) -> Result<(), MdsfError> {
@@ -12,7 +12,7 @@ fn format_command(args: FormatCommandArguments) -> Result<(), MdsfError> {
     let conf = MdsfConfig::load();
 
     if args.path.is_file() {
-        format_file(&conf, &args.path)?;
+        handle_file(&conf, &args.path)?;
     } else {
         for entry in ignore::WalkBuilder::new(args.path)
             .git_ignore(true)
@@ -24,7 +24,7 @@ fn format_command(args: FormatCommandArguments) -> Result<(), MdsfError> {
             let file_path = entry.path();
 
             if file_path.extension() == Some(&OsStr::from("md")) {
-                format_file(&conf, file_path)?;
+                handle_file(&conf, file_path)?;
             }
         }
     }

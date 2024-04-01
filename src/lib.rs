@@ -42,17 +42,7 @@ fn write_changed_line(path: &std::path::Path, dur: core::time::Duration) {
 }
 
 #[inline]
-pub fn format_file(config: &MdsfConfig, path: &std::path::Path) -> Result<(), MdsfError> {
-    let time = std::time::Instant::now();
-
-    let input = std::fs::read_to_string(path)?;
-
-    if input.is_empty() {
-        let duration = time.elapsed();
-        write_unchanged_line(path, duration);
-        return Ok(());
-    }
-
+fn format_file(config: &MdsfConfig, input: &str) -> (bool, String) {
     let mut output = String::with_capacity(input.len() + 128);
 
     let mut modified = false;
@@ -108,7 +98,24 @@ pub fn format_file(config: &MdsfConfig, path: &std::path::Path) -> Result<(), Md
         modified = true;
     }
 
+    (modified, output)
+}
+
+#[inline]
+pub fn handle_file(config: &MdsfConfig, path: &std::path::Path) -> Result<(), MdsfError> {
+    let time = std::time::Instant::now();
+
+    let input = std::fs::read_to_string(path)?;
+
+    if input.is_empty() {
+        let duration = time.elapsed();
+        write_unchanged_line(path, duration);
+        return Ok(());
+    }
+
     let duration = time.elapsed();
+
+    let (modified, output) = format_file(config, &input);
 
     if modified && output != input {
         std::fs::write(path, output)?;
@@ -124,8 +131,8 @@ pub fn format_file(config: &MdsfConfig, path: &std::path::Path) -> Result<(), Md
 }
 
 #[cfg(test)]
-mod tests {
-    use crate::{config::MdsfConfig, format_file, formatters::setup_snippet};
+mod test_format_file {
+    use crate::{config::MdsfConfig, format_file};
 
     #[test]
     fn it_should_format_the_code() {
@@ -144,13 +151,11 @@ fn add(a: i32, b: i32) -> i32 {
 ```
 ";
 
-        let file = setup_snippet(input, ".md").expect("it to create a file");
-
         let config = MdsfConfig::default();
 
-        format_file(&config, file.path()).expect("it to format the file without errors");
+        let (modified, output) = format_file(&config, input);
 
-        let output = std::fs::read_to_string(file.path()).expect("it to read the file");
+        assert!(modified);
 
         assert_eq!(output, expected_output);
     }
@@ -203,13 +208,11 @@ fn add(a: i32, b: i32) -> i32 {
 
 ";
 
-        let file = setup_snippet(input, ".md").expect("it to create a file");
-
         let config = MdsfConfig::default();
 
-        format_file(&config, file.path()).expect("it to format the file without errors");
+        let (modified, output) = format_file(&config, input);
 
-        let output = std::fs::read_to_string(file.path()).expect("it to read the file");
+        assert!(modified);
 
         assert_eq!(output, expected_output);
     }
