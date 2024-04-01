@@ -131,8 +131,8 @@ pub fn handle_file(config: &MdsfConfig, path: &std::path::Path) -> Result<(), Md
 }
 
 #[cfg(test)]
-mod test_format_file {
-    use crate::{config::MdsfConfig, format_file};
+mod tests {
+    use crate::{config::MdsfConfig, format_file, formatters::setup_snippet, handle_file};
 
     #[test]
     fn it_should_format_the_code() {
@@ -153,11 +153,23 @@ fn add(a: i32, b: i32) -> i32 {
 
         let config = MdsfConfig::default();
 
-        let (modified, output) = format_file(&config, input);
+        {
+            let (modified, output) = format_file(&config, input);
 
-        assert!(modified);
+            assert!(modified);
 
-        assert_eq!(output, expected_output);
+            assert_eq!(output, expected_output);
+        };
+
+        {
+            let file = setup_snippet(input, ".md").expect("it to create a file");
+
+            handle_file(&config, file.path()).expect("it to be a success");
+
+            let output = std::fs::read_to_string(file.path()).expect("it to return the string");
+
+            assert_eq!(output, expected_output);
+        };
     }
 
     #[test]
@@ -215,5 +227,684 @@ fn add(a: i32, b: i32) -> i32 {
         assert!(modified);
 
         assert_eq!(output, expected_output);
+    }
+
+    #[test]
+    fn it_should_support_multiple_languages() {
+        let input = r#"---
+tile1: asd asd
+tile2: asd asd
+tile3: asd asd
+
+tile4: asd asd
+
+tile5: asd asd
+---
+
+this is the content
+
+```go
+package main
+
+func add(a int, b int) int {
+	return a + b
+}
+```
+
+This snippets is from 'bash.md':
+
+```sh
+
+#!/bin/bash
+
+       add      ()   {
+    echo "$1"                 +          "$2"
+             }
+
+
+
+
+
+
+
+
+
+
+```
+
+This snippets is from 'crystal.md':
+
+```crystal
+
+
+
+
+def add(a : Int32, b : Int32)
+return a + b
+end
+
+
+
+
+
+```
+
+This snippets is from 'css.md':
+
+```css
+
+       body {         background-color: powderblue;       }       h1 {         color: blue;       }       p {         color: red;       }
+```
+
+This snippets is from 'dart.md':
+
+```dart
+
+            class Adder {int add(int a, int b) {return a + b;}}
+
+
+```
+
+This snippets is from 'elixir.md':
+
+```elixir
+
+        def              add(a  ,      b   )   do    a   +   b                 end
+
+
+```
+
+This snippets is from 'gleam.md':
+
+```gleam
+
+
+pub fn add(a:Int,b:Int)->Int{a+b}
+
+
+```
+
+This snippets is from 'go.md':
+
+```go
+
+
+
+  package main
+
+   func add(a int , b int  ) int {
+                return a + b
+       }
+
+
+```
+
+This snippets is from 'html.md':
+
+```html
+
+ <!doctype html> <html> <head> <style> body {background-color: powderblue;} h1   {color: blue;} p    {color: red;} </style> </head> <body>  <h1>This is a heading</h1> <p>This is a paragraph.</p>  </body> </html>
+```
+
+This snippets is from 'javascript.md':
+
+```javascript
+
+
+
+function                                add(
+                a,
+                         b)
+                        {
+  return a
+  +
+         b;
+                }
+
+
+
+
+```
+
+This snippets is from 'json.md':
+
+```json
+
+                        // This is a comment
+{
+        "add": { "a":1,
+                                "b": ["1",23,null]}
+                }
+
+
+
+```
+
+This snippets is from 'lua.md':
+
+```lua
+
+        local               function        add (                                       a , b
+)
+
+return              a +b
+
+
+end
+
+
+```
+
+This snippets is from 'markdown.md':
+
+
+
+
+
+
+
+# this is a header
+
+this             is a paragraph
+
+
+
+```lua
+
+        local               function        add (                                       a , b
+)
+
+return              a +b
+
+
+end
+
+
+```
+
+
+
+
+
+
+
+This snippets is from 'nim.md':
+
+```nim
+
+
+proc add( a         :int , b:int )        : int =
+        return a +          b
+
+
+
+
+
+```
+
+This snippets is from 'python.md':
+
+```python
+
+
+
+def add (
+        a  : int ,              b:int )->int :
+                    return a                +b
+
+
+
+
+
+```
+
+This snippets is from 'roc.md':
+
+```roc
+
+app "helloWorld"
+    packages { pf: "https://github.com/roc-lang/" }
+    imports [pf.Stdout]
+    provides [main] to pf
+
+
+
+
+
+
+main =
+    Stdout.line "Hello, World!"
+
+
+```
+
+This snippets is from 'ruby.md':
+
+```ruby
+
+
+def   add(  a , b )
+                    return a + b
+                        end
+
+
+
+
+
+```
+
+This snippets is from 'rust.md':
+
+```rust
+
+
+pub async
+    fn          add(
+    a:
+    i32,
+
+    b: i32)
+
+    -> i32 {
+    a +
+
+    b
+                }
+
+
+
+```
+
+This snippets is from 'sh.md':
+
+```sh
+
+#!/bin/sh
+
+       add      ()   {
+    echo "$1"                 +          "$2"
+             }
+
+
+
+
+
+
+
+
+
+
+```
+
+This snippets is from 'sql.md':
+
+```sql
+
+
+
+            SELECT * FROM
+            tbl WHERE foo =
+
+                        'bar';
+
+
+```
+
+This snippets is from 'toml.md':
+
+```toml
+
+
+name =          "mdsf"
+        author = "Mads Hougesen"
+
+
+```
+
+This snippets is from 'typescript.md':
+
+```typescript
+
+
+
+function                                add(
+                a:number,
+                         b              :number)
+                        :number{
+  return a
+  +
+         b;
+        }
+
+
+
+
+```
+
+This snippets is from 'vue.md':
+
+```vue
+<script lang="ts"   setup >
+import {
+
+    ref
+} from "vue"
+
+
+    const count   = ref(1)
+    function add (a:number,b:number):number {
+                return a +b
+        }   </script>
+
+
+<template>
+    <button  @click="()=> count = add(count,count )">Increment </button>
+        </template>
+
+
+```
+
+This snippets is from 'zig.md':
+
+```zig
+
+
+
+fn add (a : i32    , b :   i32 )             i32 {
+        return a + b ;
+
+    }
+
+
+```
+"#;
+
+        let expected_output = r#"---
+tile1: asd asd
+tile2: asd asd
+tile3: asd asd
+
+tile4: asd asd
+
+tile5: asd asd
+---
+
+this is the content
+
+```go
+package main
+
+func add(a int, b int) int {
+	return a + b
+}
+```
+
+This snippets is from 'bash.md':
+
+```sh
+#!/bin/bash
+
+add() {
+	echo "$1" + "$2"
+}
+```
+
+This snippets is from 'crystal.md':
+
+```crystal
+def add(a : Int32, b : Int32)
+  return a + b
+end
+```
+
+This snippets is from 'css.md':
+
+```css
+body {
+  background-color: powderblue;
+}
+h1 {
+  color: blue;
+}
+p {
+  color: red;
+}
+```
+
+This snippets is from 'dart.md':
+
+```dart
+class Adder {
+  int add(int a, int b) {
+    return a + b;
+  }
+}
+```
+
+This snippets is from 'elixir.md':
+
+```elixir
+def add(a, b) do
+  a + b
+end
+```
+
+This snippets is from 'gleam.md':
+
+```gleam
+pub fn add(a: Int, b: Int) -> Int {
+  a + b
+}
+```
+
+This snippets is from 'go.md':
+
+```go
+package main
+
+func add(a int, b int) int {
+	return a + b
+}
+```
+
+This snippets is from 'html.md':
+
+```html
+<!doctype html>
+<html>
+  <head>
+    <style>
+      body {
+        background-color: powderblue;
+      }
+      h1 {
+        color: blue;
+      }
+      p {
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>This is a heading</h1>
+    <p>This is a paragraph.</p>
+  </body>
+</html>
+```
+
+This snippets is from 'javascript.md':
+
+```javascript
+function add(a, b) {
+  return a + b;
+}
+```
+
+This snippets is from 'json.md':
+
+```json
+// This is a comment
+{
+  "add": { "a": 1, "b": ["1", 23, null] },
+}
+```
+
+This snippets is from 'lua.md':
+
+```lua
+local function add(a, b)
+	return a + b
+end
+```
+
+This snippets is from 'markdown.md':
+
+
+
+
+
+
+
+# this is a header
+
+this             is a paragraph
+
+
+
+```lua
+local function add(a, b)
+	return a + b
+end
+```
+
+
+
+
+
+
+
+This snippets is from 'nim.md':
+
+```nim
+proc add(a: int, b: int): int =
+        return a + b
+```
+
+This snippets is from 'python.md':
+
+```python
+def add(a: int, b: int) -> int:
+    return a + b
+```
+
+This snippets is from 'roc.md':
+
+```roc
+app "helloWorld"
+    packages { pf: "https://github.com/roc-lang/" }
+    imports [pf.Stdout]
+    provides [main] to pf
+
+main =
+    Stdout.line "Hello, World!"
+```
+
+This snippets is from 'ruby.md':
+
+```ruby
+def add(a, b)
+  return a + b
+end
+```
+
+This snippets is from 'rust.md':
+
+```rust
+pub async fn add(a: i32, b: i32) -> i32 {
+    a + b
+}
+```
+
+This snippets is from 'sh.md':
+
+```sh
+#!/bin/sh
+
+add() {
+	echo "$1" + "$2"
+}
+```
+
+This snippets is from 'sql.md':
+
+```sql
+SELECT
+  *
+FROM
+  tbl
+WHERE
+  foo = 'bar';
+```
+
+This snippets is from 'toml.md':
+
+```toml
+name = "mdsf"
+author = "Mads Hougesen"
+```
+
+This snippets is from 'typescript.md':
+
+```typescript
+function add(a: number, b: number): number {
+  return a + b;
+}
+```
+
+This snippets is from 'vue.md':
+
+```vue
+<script lang="ts" setup>
+import { ref } from "vue";
+
+const count = ref(1);
+function add(a: number, b: number): number {
+  return a + b;
+}
+</script>
+
+<template>
+  <button @click="() => (count = add(count, count))">Increment</button>
+</template>
+```
+
+This snippets is from 'zig.md':
+
+```zig
+fn add(a: i32, b: i32) i32 {
+    return a + b;
+}
+```
+"#;
+
+        let config = MdsfConfig::default();
+
+        {
+            let (modified, output) = format_file(&config, input);
+
+            assert!(modified);
+
+            assert_eq!(output, expected_output);
+        };
+
+        {
+            let file = setup_snippet(input, ".md").expect("it to create a file");
+
+            handle_file(&config, file.path()).expect("it to be a success");
+
+            let output = std::fs::read_to_string(file.path()).expect("it to return the string");
+
+            assert_eq!(output, expected_output);
+        };
     }
 }
