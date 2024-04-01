@@ -1,0 +1,1857 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "MdsfConfig",
+  "type": "object",
+  "properties": {
+    "blade": {
+      "default": {
+        "enabled": true,
+        "formatter": "blade-formatter"
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/Lang_for_Blade"
+        }
+      ]
+    },
+    "c": {
+      "default": {
+        "enabled": true,
+        "formatter": "clang-format"
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/Lang_for_C"
+        }
+      ]
+    },
+    "clojure": {
+      "default": {
+        "enabled": true,
+        "formatter": "cljstyle"
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/Lang_for_Clojure"
+        }
+      ]
+    },
+    "cpp": {
+      "default": {
+        "enabled": true,
+        "formatter": "clang-format"
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/Lang_for_Cpp"
+        }
+      ]
+    },
+    "crystal": {
+      "default": {
+        "enabled": true,
+        "formatter": "crystal_format"
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/Lang_for_Crystal"
+        }
+      ]
+    },
+    "csharp": {
+      "default": {
+        "enabled": true,
+        "formatter": [["csharpier", "clang-format"]]
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/Lang_for_CSharp"
+        }
+      ]
+    },
+    "css": {
+      "default": {
+        "enabled": true,
+        "formatter": "prettier"
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/Lang_for_Css"
+        }
+      ]
+    },
+    "dart": {
+      "default": {
+        "enabled": true,
+        "formatter": "dart_format"
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/Lang_for_Dart"
+        }
+      ]
+    },
+    "elixir": {
+      "default": {
+        "enabled": true,
+        "formatter": "mix_format"
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/Lang_for_Elixir"
+        }
+      ]
+    },
+    "elm": {
+      "default": {
+        "enabled": true,
+        "formatter": "elm-format"
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/Lang_for_Elm"
+        }
+      ]
+    },
+    "erlang": {
+      "default": {
+        "enabled": true,
+        "formatter": "erlfmt"
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/Lang_for_Erlang"
+        }
+      ]
+    },
+    "format_finished_document": {
+      "description": "Format the processed document with the selected markdown formatter",
+      "default": false,
+      "type": "boolean"
+    },
+    "fsharp": {
+      "default": {
+        "enabled": true,
+        "formatter": "fantomas"
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/Lang_for_FSharp"
+        }
+      ]
+    },
+    "gleam": {
+      "default": {
+        "enabled": true,
+        "formatter": "gleam_format"
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/Lang_for_Gleam"
+        }
+      ]
+    },
+    "go": {
+      "default": {
+        "enabled": true,
+        "formatter": ["goimports", ["gofumpt", "gofmt"]]
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/Lang_for_Go"
+        }
+      ]
+    },
+    "graphql": {
+      "default": {
+        "enabled": true,
+        "formatter": "prettier"
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/Lang_for_GraphQL"
+        }
+      ]
+    },
+    "groovy": {
+      "default": {
+        "enabled": true,
+        "formatter": "npm-groovy-lint"
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/Lang_for_Groovy"
+        }
+      ]
+    },
+    "haskell": {
+      "default": {
+        "enabled": true,
+        "formatter": [["fourmolu", "ormolu", "hindent"]]
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/Lang_for_Haskell"
+        }
+      ]
+    },
+    "html": {
+      "default": {
+        "enabled": true,
+        "formatter": "prettier"
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/Lang_for_Html"
+        }
+      ]
+    },
+    "java": {
+      "default": {
+        "enabled": true,
+        "formatter": [["google-java-format", "clang-format"]]
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/Lang_for_Java"
+        }
+      ]
+    },
+    "javascript": {
+      "default": {
+        "enabled": true,
+        "formatter": [["prettier", "biome", "deno_fmt", "clang-format"]]
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/Lang_for_JavaScript"
+        }
+      ]
+    },
+    "json": {
+      "default": {
+        "enabled": true,
+        "formatter": [["prettier", "biome", "deno_fmt", "clang-format"]]
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/Lang_for_Json"
+        }
+      ]
+    },
+    "just": {
+      "default": {
+        "enabled": true,
+        "formatter": "just_fmt"
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/Lang_for_Just"
+        }
+      ]
+    },
+    "kotlin": {
+      "default": {
+        "enabled": true,
+        "formatter": [["ktlint", "ktfmt"]]
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/Lang_for_Kotlin"
+        }
+      ]
+    },
+    "lua": {
+      "default": {
+        "enabled": true,
+        "formatter": [["stylua", "luaformatter"]]
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/Lang_for_Lua"
+        }
+      ]
+    },
+    "markdown": {
+      "default": {
+        "enabled": true,
+        "formatter": "prettier"
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/Lang_for_Markdown"
+        }
+      ]
+    },
+    "nim": {
+      "default": {
+        "enabled": true,
+        "formatter": "nimpretty"
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/Lang_for_Nim"
+        }
+      ]
+    },
+    "objective_c": {
+      "default": {
+        "enabled": true,
+        "formatter": "clang-format"
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/Lang_for_ObjectiveC"
+        }
+      ]
+    },
+    "ocaml": {
+      "default": {
+        "enabled": true,
+        "formatter": "ocamlformat"
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/Lang_for_OCaml"
+        }
+      ]
+    },
+    "perl": {
+      "default": {
+        "enabled": true,
+        "formatter": "perltidy"
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/Lang_for_Perl"
+        }
+      ]
+    },
+    "protobuf": {
+      "default": {
+        "enabled": true,
+        "formatter": [["buf", "clang-format"]]
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/Lang_for_Protobuf"
+        }
+      ]
+    },
+    "purescript": {
+      "default": {
+        "enabled": true,
+        "formatter": "purs-tidy"
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/Lang_for_PureScript"
+        }
+      ]
+    },
+    "python": {
+      "default": {
+        "enabled": true,
+        "formatter": [
+          ["usort", "isort"],
+          ["ruff", "blue", "black", "yapf", "autopep8"]
+        ]
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/Lang_for_Python"
+        }
+      ]
+    },
+    "rescript": {
+      "default": {
+        "enabled": true,
+        "formatter": "rescript_format"
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/Lang_for_ReScript"
+        }
+      ]
+    },
+    "roc": {
+      "default": {
+        "enabled": true,
+        "formatter": "roc_format"
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/Lang_for_Roc"
+        }
+      ]
+    },
+    "ruby": {
+      "default": {
+        "enabled": true,
+        "formatter": [["rubocop", "rufo", "rubyfmt", "standardrb"]]
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/Lang_for_Ruby"
+        }
+      ]
+    },
+    "rust": {
+      "default": {
+        "enabled": true,
+        "formatter": "rustfmt"
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/Lang_for_Rust"
+        }
+      ]
+    },
+    "scala": {
+      "default": {
+        "enabled": true,
+        "formatter": "scalafmt"
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/Lang_for_Scala"
+        }
+      ]
+    },
+    "shell": {
+      "default": {
+        "enabled": true,
+        "formatter": [["shfmt", "beautysh"]]
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/Lang_for_Shell"
+        }
+      ]
+    },
+    "sql": {
+      "default": {
+        "enabled": true,
+        "formatter": [["sql-formatter", "sqlfluff"]]
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/Lang_for_Sql"
+        }
+      ]
+    },
+    "swift": {
+      "default": {
+        "enabled": true,
+        "formatter": "swiftformat"
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/Lang_for_Swift"
+        }
+      ]
+    },
+    "toml": {
+      "default": {
+        "enabled": true,
+        "formatter": "taplo"
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/Lang_for_Toml"
+        }
+      ]
+    },
+    "typescript": {
+      "default": {
+        "enabled": true,
+        "formatter": [["prettier", "biome", "deno_fmt"]]
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/Lang_for_TypeScript"
+        }
+      ]
+    },
+    "vue": {
+      "default": {
+        "enabled": true,
+        "formatter": "prettier"
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/Lang_for_Vue"
+        }
+      ]
+    },
+    "xml": {
+      "default": {
+        "enabled": true,
+        "formatter": "xmllint"
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/Lang_for_Xml"
+        }
+      ]
+    },
+    "yaml": {
+      "default": {
+        "enabled": true,
+        "formatter": [["prettier", "yamlfmt"]]
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/Lang_for_Yaml"
+        }
+      ]
+    },
+    "zig": {
+      "default": {
+        "enabled": true,
+        "formatter": "zigfmt"
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/Lang_for_Zig"
+        }
+      ]
+    }
+  },
+  "definitions": {
+    "Blade": {
+      "type": "string",
+      "enum": ["blade-formatter"]
+    },
+    "C": {
+      "type": "string",
+      "enum": ["clang-format"]
+    },
+    "CSharp": {
+      "type": "string",
+      "enum": ["csharpier", "clang-format"]
+    },
+    "Clojure": {
+      "type": "string",
+      "enum": ["cljstyle"]
+    },
+    "Cpp": {
+      "type": "string",
+      "enum": ["clang-format"]
+    },
+    "Crystal": {
+      "type": "string",
+      "enum": ["crystal_format"]
+    },
+    "Css": {
+      "type": "string",
+      "enum": ["prettier"]
+    },
+    "Dart": {
+      "type": "string",
+      "enum": ["dart_format"]
+    },
+    "Elixir": {
+      "type": "string",
+      "enum": ["mix_format"]
+    },
+    "Elm": {
+      "type": "string",
+      "enum": ["elm-format"]
+    },
+    "Erlang": {
+      "type": "string",
+      "enum": ["erlfmt", "efmt"]
+    },
+    "FSharp": {
+      "type": "string",
+      "enum": ["fantomas"]
+    },
+    "Gleam": {
+      "type": "string",
+      "enum": ["gleam_format"]
+    },
+    "Go": {
+      "type": "string",
+      "enum": ["gofmt", "gofumpt", "goimports"]
+    },
+    "GraphQL": {
+      "type": "string",
+      "enum": ["prettier"]
+    },
+    "Groovy": {
+      "type": "string",
+      "enum": ["npm-groovy-lint"]
+    },
+    "Haskell": {
+      "type": "string",
+      "enum": ["fourmolu", "ormolu", "hindent"]
+    },
+    "Html": {
+      "type": "string",
+      "enum": ["prettier"]
+    },
+    "Java": {
+      "type": "string",
+      "enum": ["google-java-format", "clang-format"]
+    },
+    "JavaScript": {
+      "type": "string",
+      "enum": ["prettier", "biome", "deno_fmt", "clang-format"]
+    },
+    "Json": {
+      "type": "string",
+      "enum": ["prettier", "biome", "deno_fmt", "clang-format"]
+    },
+    "Just": {
+      "type": "string",
+      "enum": ["just_fmt"]
+    },
+    "Kotlin": {
+      "type": "string",
+      "enum": ["ktlint", "ktfmt"]
+    },
+    "Lang_for_Blade": {
+      "type": "object",
+      "required": ["enabled", "formatter"],
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        },
+        "formatter": {
+          "$ref": "#/definitions/MdsfFormatter_for_Blade"
+        }
+      }
+    },
+    "Lang_for_C": {
+      "type": "object",
+      "required": ["enabled", "formatter"],
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        },
+        "formatter": {
+          "$ref": "#/definitions/MdsfFormatter_for_C"
+        }
+      }
+    },
+    "Lang_for_CSharp": {
+      "type": "object",
+      "required": ["enabled", "formatter"],
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        },
+        "formatter": {
+          "$ref": "#/definitions/MdsfFormatter_for_CSharp"
+        }
+      }
+    },
+    "Lang_for_Clojure": {
+      "type": "object",
+      "required": ["enabled", "formatter"],
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        },
+        "formatter": {
+          "$ref": "#/definitions/MdsfFormatter_for_Clojure"
+        }
+      }
+    },
+    "Lang_for_Cpp": {
+      "type": "object",
+      "required": ["enabled", "formatter"],
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        },
+        "formatter": {
+          "$ref": "#/definitions/MdsfFormatter_for_Cpp"
+        }
+      }
+    },
+    "Lang_for_Crystal": {
+      "type": "object",
+      "required": ["enabled", "formatter"],
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        },
+        "formatter": {
+          "$ref": "#/definitions/MdsfFormatter_for_Crystal"
+        }
+      }
+    },
+    "Lang_for_Css": {
+      "type": "object",
+      "required": ["enabled", "formatter"],
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        },
+        "formatter": {
+          "$ref": "#/definitions/MdsfFormatter_for_Css"
+        }
+      }
+    },
+    "Lang_for_Dart": {
+      "type": "object",
+      "required": ["enabled", "formatter"],
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        },
+        "formatter": {
+          "$ref": "#/definitions/MdsfFormatter_for_Dart"
+        }
+      }
+    },
+    "Lang_for_Elixir": {
+      "type": "object",
+      "required": ["enabled", "formatter"],
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        },
+        "formatter": {
+          "$ref": "#/definitions/MdsfFormatter_for_Elixir"
+        }
+      }
+    },
+    "Lang_for_Elm": {
+      "type": "object",
+      "required": ["enabled", "formatter"],
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        },
+        "formatter": {
+          "$ref": "#/definitions/MdsfFormatter_for_Elm"
+        }
+      }
+    },
+    "Lang_for_Erlang": {
+      "type": "object",
+      "required": ["enabled", "formatter"],
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        },
+        "formatter": {
+          "$ref": "#/definitions/MdsfFormatter_for_Erlang"
+        }
+      }
+    },
+    "Lang_for_FSharp": {
+      "type": "object",
+      "required": ["enabled", "formatter"],
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        },
+        "formatter": {
+          "$ref": "#/definitions/MdsfFormatter_for_FSharp"
+        }
+      }
+    },
+    "Lang_for_Gleam": {
+      "type": "object",
+      "required": ["enabled", "formatter"],
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        },
+        "formatter": {
+          "$ref": "#/definitions/MdsfFormatter_for_Gleam"
+        }
+      }
+    },
+    "Lang_for_Go": {
+      "type": "object",
+      "required": ["enabled", "formatter"],
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        },
+        "formatter": {
+          "$ref": "#/definitions/MdsfFormatter_for_Go"
+        }
+      }
+    },
+    "Lang_for_GraphQL": {
+      "type": "object",
+      "required": ["enabled", "formatter"],
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        },
+        "formatter": {
+          "$ref": "#/definitions/MdsfFormatter_for_GraphQL"
+        }
+      }
+    },
+    "Lang_for_Groovy": {
+      "type": "object",
+      "required": ["enabled", "formatter"],
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        },
+        "formatter": {
+          "$ref": "#/definitions/MdsfFormatter_for_Groovy"
+        }
+      }
+    },
+    "Lang_for_Haskell": {
+      "type": "object",
+      "required": ["enabled", "formatter"],
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        },
+        "formatter": {
+          "$ref": "#/definitions/MdsfFormatter_for_Haskell"
+        }
+      }
+    },
+    "Lang_for_Html": {
+      "type": "object",
+      "required": ["enabled", "formatter"],
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        },
+        "formatter": {
+          "$ref": "#/definitions/MdsfFormatter_for_Html"
+        }
+      }
+    },
+    "Lang_for_Java": {
+      "type": "object",
+      "required": ["enabled", "formatter"],
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        },
+        "formatter": {
+          "$ref": "#/definitions/MdsfFormatter_for_Java"
+        }
+      }
+    },
+    "Lang_for_JavaScript": {
+      "type": "object",
+      "required": ["enabled", "formatter"],
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        },
+        "formatter": {
+          "$ref": "#/definitions/MdsfFormatter_for_JavaScript"
+        }
+      }
+    },
+    "Lang_for_Json": {
+      "type": "object",
+      "required": ["enabled", "formatter"],
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        },
+        "formatter": {
+          "$ref": "#/definitions/MdsfFormatter_for_Json"
+        }
+      }
+    },
+    "Lang_for_Just": {
+      "type": "object",
+      "required": ["enabled", "formatter"],
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        },
+        "formatter": {
+          "$ref": "#/definitions/MdsfFormatter_for_Just"
+        }
+      }
+    },
+    "Lang_for_Kotlin": {
+      "type": "object",
+      "required": ["enabled", "formatter"],
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        },
+        "formatter": {
+          "$ref": "#/definitions/MdsfFormatter_for_Kotlin"
+        }
+      }
+    },
+    "Lang_for_Lua": {
+      "type": "object",
+      "required": ["enabled", "formatter"],
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        },
+        "formatter": {
+          "$ref": "#/definitions/MdsfFormatter_for_Lua"
+        }
+      }
+    },
+    "Lang_for_Markdown": {
+      "type": "object",
+      "required": ["enabled", "formatter"],
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        },
+        "formatter": {
+          "$ref": "#/definitions/MdsfFormatter_for_Markdown"
+        }
+      }
+    },
+    "Lang_for_Nim": {
+      "type": "object",
+      "required": ["enabled", "formatter"],
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        },
+        "formatter": {
+          "$ref": "#/definitions/MdsfFormatter_for_Nim"
+        }
+      }
+    },
+    "Lang_for_OCaml": {
+      "type": "object",
+      "required": ["enabled", "formatter"],
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        },
+        "formatter": {
+          "$ref": "#/definitions/MdsfFormatter_for_OCaml"
+        }
+      }
+    },
+    "Lang_for_ObjectiveC": {
+      "type": "object",
+      "required": ["enabled", "formatter"],
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        },
+        "formatter": {
+          "$ref": "#/definitions/MdsfFormatter_for_ObjectiveC"
+        }
+      }
+    },
+    "Lang_for_Perl": {
+      "type": "object",
+      "required": ["enabled", "formatter"],
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        },
+        "formatter": {
+          "$ref": "#/definitions/MdsfFormatter_for_Perl"
+        }
+      }
+    },
+    "Lang_for_Protobuf": {
+      "type": "object",
+      "required": ["enabled", "formatter"],
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        },
+        "formatter": {
+          "$ref": "#/definitions/MdsfFormatter_for_Protobuf"
+        }
+      }
+    },
+    "Lang_for_PureScript": {
+      "type": "object",
+      "required": ["enabled", "formatter"],
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        },
+        "formatter": {
+          "$ref": "#/definitions/MdsfFormatter_for_PureScript"
+        }
+      }
+    },
+    "Lang_for_Python": {
+      "type": "object",
+      "required": ["enabled", "formatter"],
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        },
+        "formatter": {
+          "$ref": "#/definitions/MdsfFormatter_for_Python"
+        }
+      }
+    },
+    "Lang_for_ReScript": {
+      "type": "object",
+      "required": ["enabled", "formatter"],
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        },
+        "formatter": {
+          "$ref": "#/definitions/MdsfFormatter_for_ReScript"
+        }
+      }
+    },
+    "Lang_for_Roc": {
+      "type": "object",
+      "required": ["enabled", "formatter"],
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        },
+        "formatter": {
+          "$ref": "#/definitions/MdsfFormatter_for_Roc"
+        }
+      }
+    },
+    "Lang_for_Ruby": {
+      "type": "object",
+      "required": ["enabled", "formatter"],
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        },
+        "formatter": {
+          "$ref": "#/definitions/MdsfFormatter_for_Ruby"
+        }
+      }
+    },
+    "Lang_for_Rust": {
+      "type": "object",
+      "required": ["enabled", "formatter"],
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        },
+        "formatter": {
+          "$ref": "#/definitions/MdsfFormatter_for_Rust"
+        }
+      }
+    },
+    "Lang_for_Scala": {
+      "type": "object",
+      "required": ["enabled", "formatter"],
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        },
+        "formatter": {
+          "$ref": "#/definitions/MdsfFormatter_for_Scala"
+        }
+      }
+    },
+    "Lang_for_Shell": {
+      "type": "object",
+      "required": ["enabled", "formatter"],
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        },
+        "formatter": {
+          "$ref": "#/definitions/MdsfFormatter_for_Shell"
+        }
+      }
+    },
+    "Lang_for_Sql": {
+      "type": "object",
+      "required": ["enabled", "formatter"],
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        },
+        "formatter": {
+          "$ref": "#/definitions/MdsfFormatter_for_Sql"
+        }
+      }
+    },
+    "Lang_for_Swift": {
+      "type": "object",
+      "required": ["enabled", "formatter"],
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        },
+        "formatter": {
+          "$ref": "#/definitions/MdsfFormatter_for_Swift"
+        }
+      }
+    },
+    "Lang_for_Toml": {
+      "type": "object",
+      "required": ["enabled", "formatter"],
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        },
+        "formatter": {
+          "$ref": "#/definitions/MdsfFormatter_for_Toml"
+        }
+      }
+    },
+    "Lang_for_TypeScript": {
+      "type": "object",
+      "required": ["enabled", "formatter"],
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        },
+        "formatter": {
+          "$ref": "#/definitions/MdsfFormatter_for_TypeScript"
+        }
+      }
+    },
+    "Lang_for_Vue": {
+      "type": "object",
+      "required": ["enabled", "formatter"],
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        },
+        "formatter": {
+          "$ref": "#/definitions/MdsfFormatter_for_Vue"
+        }
+      }
+    },
+    "Lang_for_Xml": {
+      "type": "object",
+      "required": ["enabled", "formatter"],
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        },
+        "formatter": {
+          "$ref": "#/definitions/MdsfFormatter_for_Xml"
+        }
+      }
+    },
+    "Lang_for_Yaml": {
+      "type": "object",
+      "required": ["enabled", "formatter"],
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        },
+        "formatter": {
+          "$ref": "#/definitions/MdsfFormatter_for_Yaml"
+        }
+      }
+    },
+    "Lang_for_Zig": {
+      "type": "object",
+      "required": ["enabled", "formatter"],
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        },
+        "formatter": {
+          "$ref": "#/definitions/MdsfFormatter_for_Zig"
+        }
+      }
+    },
+    "Lua": {
+      "type": "string",
+      "enum": ["stylua", "luaformatter"]
+    },
+    "Markdown": {
+      "type": "string",
+      "enum": ["prettier"]
+    },
+    "MdsfFormatter_for_Blade": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/Blade"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MdsfFormatter_for_Blade"
+          }
+        }
+      ]
+    },
+    "MdsfFormatter_for_C": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/C"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MdsfFormatter_for_C"
+          }
+        }
+      ]
+    },
+    "MdsfFormatter_for_CSharp": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/CSharp"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MdsfFormatter_for_CSharp"
+          }
+        }
+      ]
+    },
+    "MdsfFormatter_for_Clojure": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/Clojure"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MdsfFormatter_for_Clojure"
+          }
+        }
+      ]
+    },
+    "MdsfFormatter_for_Cpp": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/Cpp"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MdsfFormatter_for_Cpp"
+          }
+        }
+      ]
+    },
+    "MdsfFormatter_for_Crystal": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/Crystal"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MdsfFormatter_for_Crystal"
+          }
+        }
+      ]
+    },
+    "MdsfFormatter_for_Css": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/Css"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MdsfFormatter_for_Css"
+          }
+        }
+      ]
+    },
+    "MdsfFormatter_for_Dart": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/Dart"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MdsfFormatter_for_Dart"
+          }
+        }
+      ]
+    },
+    "MdsfFormatter_for_Elixir": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/Elixir"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MdsfFormatter_for_Elixir"
+          }
+        }
+      ]
+    },
+    "MdsfFormatter_for_Elm": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/Elm"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MdsfFormatter_for_Elm"
+          }
+        }
+      ]
+    },
+    "MdsfFormatter_for_Erlang": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/Erlang"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MdsfFormatter_for_Erlang"
+          }
+        }
+      ]
+    },
+    "MdsfFormatter_for_FSharp": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/FSharp"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MdsfFormatter_for_FSharp"
+          }
+        }
+      ]
+    },
+    "MdsfFormatter_for_Gleam": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/Gleam"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MdsfFormatter_for_Gleam"
+          }
+        }
+      ]
+    },
+    "MdsfFormatter_for_Go": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/Go"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MdsfFormatter_for_Go"
+          }
+        }
+      ]
+    },
+    "MdsfFormatter_for_GraphQL": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/GraphQL"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MdsfFormatter_for_GraphQL"
+          }
+        }
+      ]
+    },
+    "MdsfFormatter_for_Groovy": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/Groovy"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MdsfFormatter_for_Groovy"
+          }
+        }
+      ]
+    },
+    "MdsfFormatter_for_Haskell": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/Haskell"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MdsfFormatter_for_Haskell"
+          }
+        }
+      ]
+    },
+    "MdsfFormatter_for_Html": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/Html"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MdsfFormatter_for_Html"
+          }
+        }
+      ]
+    },
+    "MdsfFormatter_for_Java": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/Java"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MdsfFormatter_for_Java"
+          }
+        }
+      ]
+    },
+    "MdsfFormatter_for_JavaScript": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/JavaScript"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MdsfFormatter_for_JavaScript"
+          }
+        }
+      ]
+    },
+    "MdsfFormatter_for_Json": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/Json"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MdsfFormatter_for_Json"
+          }
+        }
+      ]
+    },
+    "MdsfFormatter_for_Just": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/Just"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MdsfFormatter_for_Just"
+          }
+        }
+      ]
+    },
+    "MdsfFormatter_for_Kotlin": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/Kotlin"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MdsfFormatter_for_Kotlin"
+          }
+        }
+      ]
+    },
+    "MdsfFormatter_for_Lua": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/Lua"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MdsfFormatter_for_Lua"
+          }
+        }
+      ]
+    },
+    "MdsfFormatter_for_Markdown": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/Markdown"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MdsfFormatter_for_Markdown"
+          }
+        }
+      ]
+    },
+    "MdsfFormatter_for_Nim": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/Nim"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MdsfFormatter_for_Nim"
+          }
+        }
+      ]
+    },
+    "MdsfFormatter_for_OCaml": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/OCaml"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MdsfFormatter_for_OCaml"
+          }
+        }
+      ]
+    },
+    "MdsfFormatter_for_ObjectiveC": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/ObjectiveC"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MdsfFormatter_for_ObjectiveC"
+          }
+        }
+      ]
+    },
+    "MdsfFormatter_for_Perl": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/Perl"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MdsfFormatter_for_Perl"
+          }
+        }
+      ]
+    },
+    "MdsfFormatter_for_Protobuf": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/Protobuf"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MdsfFormatter_for_Protobuf"
+          }
+        }
+      ]
+    },
+    "MdsfFormatter_for_PureScript": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/PureScript"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MdsfFormatter_for_PureScript"
+          }
+        }
+      ]
+    },
+    "MdsfFormatter_for_Python": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/Python"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MdsfFormatter_for_Python"
+          }
+        }
+      ]
+    },
+    "MdsfFormatter_for_ReScript": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/ReScript"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MdsfFormatter_for_ReScript"
+          }
+        }
+      ]
+    },
+    "MdsfFormatter_for_Roc": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/Roc"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MdsfFormatter_for_Roc"
+          }
+        }
+      ]
+    },
+    "MdsfFormatter_for_Ruby": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/Ruby"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MdsfFormatter_for_Ruby"
+          }
+        }
+      ]
+    },
+    "MdsfFormatter_for_Rust": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/Rust"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MdsfFormatter_for_Rust"
+          }
+        }
+      ]
+    },
+    "MdsfFormatter_for_Scala": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/Scala"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MdsfFormatter_for_Scala"
+          }
+        }
+      ]
+    },
+    "MdsfFormatter_for_Shell": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/Shell"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MdsfFormatter_for_Shell"
+          }
+        }
+      ]
+    },
+    "MdsfFormatter_for_Sql": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/Sql"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MdsfFormatter_for_Sql"
+          }
+        }
+      ]
+    },
+    "MdsfFormatter_for_Swift": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/Swift"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MdsfFormatter_for_Swift"
+          }
+        }
+      ]
+    },
+    "MdsfFormatter_for_Toml": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/Toml"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MdsfFormatter_for_Toml"
+          }
+        }
+      ]
+    },
+    "MdsfFormatter_for_TypeScript": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/TypeScript"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MdsfFormatter_for_TypeScript"
+          }
+        }
+      ]
+    },
+    "MdsfFormatter_for_Vue": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/Vue"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MdsfFormatter_for_Vue"
+          }
+        }
+      ]
+    },
+    "MdsfFormatter_for_Xml": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/Xml"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MdsfFormatter_for_Xml"
+          }
+        }
+      ]
+    },
+    "MdsfFormatter_for_Yaml": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/Yaml"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MdsfFormatter_for_Yaml"
+          }
+        }
+      ]
+    },
+    "MdsfFormatter_for_Zig": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/Zig"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MdsfFormatter_for_Zig"
+          }
+        }
+      ]
+    },
+    "Nim": {
+      "type": "string",
+      "enum": ["nimpretty"]
+    },
+    "OCaml": {
+      "type": "string",
+      "enum": ["ocamlformat"]
+    },
+    "ObjectiveC": {
+      "type": "string",
+      "enum": ["clang-format"]
+    },
+    "Perl": {
+      "type": "string",
+      "enum": ["perltidy"]
+    },
+    "Protobuf": {
+      "type": "string",
+      "enum": ["buf", "clang-format"]
+    },
+    "PureScript": {
+      "type": "string",
+      "enum": ["purs-tidy"]
+    },
+    "Python": {
+      "type": "string",
+      "enum": ["ruff", "black", "yapf", "blue", "autopep8", "isort", "usort"]
+    },
+    "ReScript": {
+      "type": "string",
+      "enum": ["rescript_format"]
+    },
+    "Roc": {
+      "type": "string",
+      "enum": ["roc_format"]
+    },
+    "Ruby": {
+      "type": "string",
+      "enum": ["rubyfmt", "rubocop", "rufo", "standardrb"]
+    },
+    "Rust": {
+      "type": "string",
+      "enum": ["rustfmt"]
+    },
+    "Scala": {
+      "type": "string",
+      "enum": ["scalafmt"]
+    },
+    "Shell": {
+      "type": "string",
+      "enum": ["shfmt", "beautysh"]
+    },
+    "Sql": {
+      "type": "string",
+      "enum": ["sqlfluff", "sql-formatter"]
+    },
+    "Swift": {
+      "type": "string",
+      "enum": ["swiftformat"]
+    },
+    "Toml": {
+      "type": "string",
+      "enum": ["taplo"]
+    },
+    "TypeScript": {
+      "type": "string",
+      "enum": ["prettier", "biome", "deno_fmt"]
+    },
+    "Vue": {
+      "type": "string",
+      "enum": ["prettier"]
+    },
+    "Xml": {
+      "type": "string",
+      "enum": ["xmllint"]
+    },
+    "Yaml": {
+      "type": "string",
+      "enum": ["prettier", "yamlfmt"]
+    },
+    "Zig": {
+      "type": "string",
+      "enum": ["zigfmt"]
+    }
+  }
+}
