@@ -93,7 +93,7 @@ fn format_file(config: &MdsfConfig, input: &str) -> (bool, String) {
         output.push('\n');
     }
 
-    if config.markdown.enabled && !output.is_empty() {
+    if config.format_finished_document && !output.is_empty() {
         output = format_snippet(config, &Language::Markdown, &output);
         modified = true;
     }

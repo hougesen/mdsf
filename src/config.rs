@@ -18,6 +18,10 @@ pub struct MdsfConfig {
     #[serde(rename = "$schema", default = "default_schema_location")]
     pub schema: String,
 
+    /// Format the processed document with the selected markdown formatter
+    #[serde(default)]
+    pub format_finished_document: bool,
+
     #[serde(default)]
     pub blade: Lang<Blade>,
 
@@ -161,6 +165,7 @@ impl Default for MdsfConfig {
     fn default() -> Self {
         Self {
             schema: default_schema_location(),
+            format_finished_document: false,
 
             blade: Lang::<Blade>::default(),
             c: Lang::<C>::default(),
