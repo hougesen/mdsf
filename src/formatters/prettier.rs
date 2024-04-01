@@ -31,14 +31,26 @@ pub fn format_using_prettier(
     snippet_path: &std::path::Path,
     embedded_language_formatting: bool,
 ) -> std::io::Result<(bool, Option<String>)> {
-    let path_result = invoke_prettier(
+    // Local prettier
+    let local_result = invoke_prettier(
+        std::process::Command::new("node_modules/prettier/bin/prettier.cjs"),
+        snippet_path,
+        embedded_language_formatting,
+    )?;
+
+    if !local_result.0 {
+        return Ok(local_result);
+    }
+
+    // Global prettier
+    let global_result = invoke_prettier(
         std::process::Command::new("prettier"),
         snippet_path,
         embedded_language_formatting,
     )?;
 
-    if !path_result.0 {
-        return Ok(path_result);
+    if !global_result.0 {
+        return Ok(global_result);
     }
 
     invoke_prettier(
