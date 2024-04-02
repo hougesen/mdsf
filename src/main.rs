@@ -12,6 +12,8 @@ fn format_command(args: FormatCommandArguments) -> Result<(), MdsfError> {
 
     let conf = MdsfConfig::load()?;
 
+    mdsf::runners::set_javascript_runtime(conf.javascript_runtime);
+
     if args.path.is_file() {
         handle_file(&conf, &args.path)?;
     } else if args.path.is_dir() {

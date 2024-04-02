@@ -1,7 +1,4 @@
-use crate::{
-    runners::{setup_npm_script, JavaScriptRuntime},
-    terminal::print_formatter_info,
-};
+use crate::{runners::setup_npm_script, terminal::print_formatter_info};
 
 use super::execute_command;
 
@@ -25,22 +22,15 @@ fn invoke_elm_format(
 #[inline]
 pub fn format_using_elm_format(
     snippet_path: &std::path::Path,
-    javascript_runtime: JavaScriptRuntime,
 ) -> std::io::Result<(bool, Option<String>)> {
-    let path_result = invoke_elm_format(
-        setup_npm_script(javascript_runtime, "elm-format"),
-        snippet_path,
-    )?;
+    let path_result = invoke_elm_format(setup_npm_script("elm-format"), snippet_path)?;
 
     if !path_result.0 {
         return Ok(path_result);
     }
 
     invoke_elm_format(
-        setup_npm_script(
-            JavaScriptRuntime::default(),
-            "@johnnymorganz/elm_format-bin",
-        ),
+        setup_npm_script("@johnnymorganz/elm_format-bin"),
         snippet_path,
     )
 }
@@ -50,7 +40,6 @@ mod test_elm_format {
     use crate::{
         formatters::{elm_format::format_using_elm_format, setup_snippet},
         languages::Language,
-        runners::JavaScriptRuntime,
     };
 
     #[test]
@@ -75,7 +64,7 @@ main =
         let snippet =
             setup_snippet(input, Language::Elm.to_file_ext()).expect("it to create a snippet file");
 
-        let output = format_using_elm_format(snippet.path(), JavaScriptRuntime::default())
+        let output = format_using_elm_format(snippet.path())
             .expect("it to be successful")
             .1
             .expect("it to be some");

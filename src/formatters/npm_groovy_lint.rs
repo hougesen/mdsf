@@ -1,7 +1,4 @@
-use crate::{
-    runners::{setup_npm_script, JavaScriptRuntime},
-    terminal::print_formatter_info,
-};
+use crate::{runners::setup_npm_script, terminal::print_formatter_info};
 
 use super::execute_command;
 
@@ -34,10 +31,7 @@ pub fn format_using_npm_groovy_lint(
         return Ok(path_result);
     }
 
-    invoke_npm_groovy_lint(
-        setup_npm_script(JavaScriptRuntime::default(), "npm-groovy-lint"),
-        snippet_path,
-    )
+    invoke_npm_groovy_lint(setup_npm_script("npm-groovy-lint"), snippet_path)
 }
 
 #[cfg(test)]

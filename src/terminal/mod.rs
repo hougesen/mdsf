@@ -1,4 +1,4 @@
-use crate::{error::MdsfError, languages::Language, DEBUG};
+use crate::{error::MdsfError, languages::Language, runners::JavaScriptRuntime, DEBUG};
 
 #[cfg(target_os = "windows")]
 const GREY_TEXT: &str = "";
@@ -73,4 +73,16 @@ pub fn print_config_info(maybe_config_path: Option<&std::path::Path>) {
     } else {
         print_debug("Using default config since no config was found");
     }
+}
+
+#[inline]
+pub fn print_unknown_javascript_runtime(value: u8, fallback: JavaScriptRuntime) {
+    print_debug(format!(
+        "Unknown JavaScript runtime value '{value}'; Using {fallback:?} instead"
+    ));
+}
+
+#[inline]
+pub fn print_javascript_runtime(runtime: JavaScriptRuntime) {
+    print_debug(format!("Using JavaScript runtime '{runtime}'"));
 }

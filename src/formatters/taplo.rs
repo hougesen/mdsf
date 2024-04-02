@@ -1,7 +1,4 @@
-use crate::{
-    runners::{setup_npm_script, JavaScriptRuntime},
-    terminal::print_formatter_info,
-};
+use crate::{runners::setup_npm_script, terminal::print_formatter_info};
 
 use super::execute_command;
 
@@ -33,10 +30,7 @@ pub fn format_using_taplo(
         return Ok(path_result);
     }
 
-    invoke_taplo(
-        setup_npm_script(JavaScriptRuntime::default(), "@taplo/cli"),
-        snippet_path,
-    )
+    invoke_taplo(setup_npm_script("@taplo/cli"), snippet_path)
 }
 #[cfg(test)]
 mod test_taplo {

@@ -1,7 +1,4 @@
-use crate::{
-    runners::{setup_npm_script, JavaScriptRuntime},
-    terminal::print_formatter_info,
-};
+use crate::{runners::setup_npm_script, terminal::print_formatter_info};
 
 use super::execute_command;
 
@@ -59,7 +56,7 @@ pub fn format_using_prettier(
     }
 
     invoke_prettier(
-        setup_npm_script(JavaScriptRuntime::default(), "prettier"),
+        setup_npm_script("prettier"),
         snippet_path,
         embedded_language_formatting,
     )

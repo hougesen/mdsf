@@ -125,7 +125,7 @@
       ]
     },
     "format_finished_document": {
-      "description": "Format the processed document with the selected markdown formatter",
+      "description": "Format the processed document with the selected markdown formatter.",
       "default": false,
       "type": "boolean"
     },
@@ -225,6 +225,15 @@
       "allOf": [
         {
           "$ref": "#/definitions/Lang_for_JavaScript"
+        }
+      ]
+    },
+    "javascript_runtime": {
+      "description": "Set npm script runner runtime.\n\nShould be considered experimental since not all tools support being run using Bun/Deno.\n\n`node -> npx`\n\n`bun -> bunx`\n\n`deno -> deno run`",
+      "default": "node",
+      "allOf": [
+        {
+          "$ref": "#/definitions/JavaScriptRuntime"
         }
       ]
     },
@@ -598,6 +607,10 @@
     "JavaScript": {
       "type": "string",
       "enum": ["prettier", "biome", "deno_fmt", "clang-format"]
+    },
+    "JavaScriptRuntime": {
+      "type": "string",
+      "enum": ["bun", "deno", "node"]
     },
     "Json": {
       "type": "string",

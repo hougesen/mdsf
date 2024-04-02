@@ -41,7 +41,11 @@ function createLanguageTable(schema) {
   const languages = new Map();
 
   for (const [key, value] of Object.entries(schema.definitions)) {
-    if (key.startsWith("MdsfFormatter_") || key.startsWith("Lang_")) {
+    if (
+      key.startsWith("MdsfFormatter_") ||
+      key.startsWith("Lang_") ||
+      key.includes("JavaScriptRuntime")
+    ) {
       continue;
     }
 
@@ -62,7 +66,7 @@ function createLanguageTable(schema) {
   for (const [key, value] of languages) {
     const line = `| ${key.padEnd(languageWidth, " ")} | ${value.padEnd(
       formatterWidth,
-      " ",
+      " "
     )} |`;
 
     lines.push(line);
@@ -72,14 +76,14 @@ function createLanguageTable(schema) {
 
   const filler = `| ${"".padEnd(languageWidth, "-")} | ${"".padEnd(
     formatterWidth,
-    "-",
+    "-"
   )} |`;
 
   lines.unshift(filler);
 
   const heading = `| ${languageHeading.padEnd(
     languageWidth,
-    " ",
+    " "
   )} | ${formatterHeading.padEnd(formatterWidth, " ")} |`;
 
   lines.unshift(heading);
