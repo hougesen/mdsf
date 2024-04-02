@@ -1,7 +1,4 @@
-use crate::{
-    runners::{setup_npm_script, JavaScriptRuntime},
-    terminal::print_formatter_info,
-};
+use crate::{runners::setup_npm_script, terminal::print_formatter_info};
 
 use super::execute_command;
 
@@ -26,10 +23,7 @@ pub fn format_using_sql_formatter(
 ) -> std::io::Result<(bool, Option<String>)> {
     print_formatter_info("sql-formatter");
 
-    invote_sql_formatter(
-        setup_npm_script(JavaScriptRuntime::default(), "sql-formatter"),
-        snippet_path,
-    )
+    invote_sql_formatter(setup_npm_script("sql-formatter"), snippet_path)
 }
 
 #[cfg(test)]

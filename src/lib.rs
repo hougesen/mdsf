@@ -11,7 +11,7 @@ pub mod config;
 pub mod error;
 pub mod formatters;
 pub mod languages;
-mod runners;
+pub mod runners;
 pub mod terminal;
 
 #[cfg(test)]

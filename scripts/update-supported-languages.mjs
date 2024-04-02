@@ -41,7 +41,11 @@ function createLanguageTable(schema) {
   const languages = new Map();
 
   for (const [key, value] of Object.entries(schema.definitions)) {
-    if (key.startsWith("MdsfFormatter_") || key.startsWith("Lang_")) {
+    if (
+      key.startsWith("MdsfFormatter_") ||
+      key.startsWith("Lang_") ||
+      key.includes("JavaScriptRuntime")
+    ) {
       continue;
     }
 

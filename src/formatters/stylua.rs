@@ -1,7 +1,4 @@
-use crate::{
-    runners::{setup_npm_script, JavaScriptRuntime},
-    terminal::print_formatter_info,
-};
+use crate::{runners::setup_npm_script, terminal::print_formatter_info};
 
 use super::execute_command;
 
@@ -33,10 +30,7 @@ pub fn format_using_stylua(
         return Ok(path_result);
     }
 
-    invoke_stylua(
-        setup_npm_script(JavaScriptRuntime::default(), "@johnnymorganz/stylua-bin"),
-        snippet_path,
-    )
+    invoke_stylua(setup_npm_script("@johnnymorganz/stylua-bin"), snippet_path)
 }
 
 #[cfg(test)]

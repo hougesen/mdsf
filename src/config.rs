@@ -12,6 +12,7 @@ use crate::{
         ruby::Ruby, rust::Rust, scala::Scala, shell::Shell, sql::Sql, swift::Swift, toml::Toml,
         typescript::TypeScript, vue::Vue, xml::Xml, yaml::Yaml, zig::Zig, Lang,
     },
+    runners::JavaScriptRuntime,
     terminal::print_config_info,
 };
 
@@ -22,9 +23,21 @@ pub struct MdsfConfig {
     #[serde(rename = "$schema", default = "default_schema_location")]
     pub schema: String,
 
-    /// Format the processed document with the selected markdown formatter
+    /// Format the processed document with the selected markdown formatter.
     #[serde(default)]
     pub format_finished_document: bool,
+
+    /// Set npm script runner runtime.
+    ///
+    /// Should be considered experimental since not all tools support being run using Bun/Deno.
+    ///
+    /// `node -> npx`
+    ///
+    /// `bun -> bunx`
+    ///
+    /// `deno -> deno run`
+    #[serde(default)]
+    pub javascript_runtime: JavaScriptRuntime,
 
     #[serde(default)]
     pub blade: Lang<Blade>,
@@ -154,6 +167,7 @@ pub struct MdsfConfig {
 
     #[serde(default)]
     pub vue: Lang<Vue>,
+
     #[serde(default)]
     pub xml: Lang<Xml>,
 
@@ -170,6 +184,7 @@ impl Default for MdsfConfig {
         Self {
             schema: default_schema_location(),
             format_finished_document: false,
+            javascript_runtime: JavaScriptRuntime::default(),
 
             blade: Lang::<Blade>::default(),
             c: Lang::<C>::default(),

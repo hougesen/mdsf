@@ -1,7 +1,4 @@
-use crate::{
-    runners::{setup_npm_script, JavaScriptRuntime},
-    terminal::print_formatter_info,
-};
+use crate::{runners::setup_npm_script, terminal::print_formatter_info};
 
 use super::execute_command;
 
@@ -26,10 +23,7 @@ pub fn format_using_rescript_format(
 ) -> std::io::Result<(bool, Option<String>)> {
     print_formatter_info("rescript_format");
 
-    invote_rescript_format(
-        setup_npm_script(JavaScriptRuntime::default(), "rescript"),
-        snippet_path,
-    )
+    invote_rescript_format(setup_npm_script("rescript"), snippet_path)
 }
 
 #[cfg(test)]

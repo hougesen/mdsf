@@ -1,9 +1,6 @@
 use schemars::JsonSchema;
 
-use crate::{
-    formatters::{elm_format::format_using_elm_format, MdsfFormatter},
-    runners::JavaScriptRuntime,
-};
+use crate::formatters::{elm_format::format_using_elm_format, MdsfFormatter};
 
 use super::{Lang, LanguageFormatter};
 
@@ -39,7 +36,7 @@ impl LanguageFormatter for Elm {
         snippet_path: &std::path::Path,
     ) -> std::io::Result<(bool, Option<String>)> {
         match self {
-            Self::ElmFormat => format_using_elm_format(snippet_path, JavaScriptRuntime::default()),
+            Self::ElmFormat => format_using_elm_format(snippet_path),
         }
     }
 }
