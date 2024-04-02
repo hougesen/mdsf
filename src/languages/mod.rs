@@ -58,6 +58,38 @@ impl core::fmt::Display for ShellFlavor {
 }
 
 #[derive(Clone, Copy, PartialEq, Eq)]
+pub enum JavaScriptFlavor {
+    JavaScript,
+    JSX,
+}
+
+impl core::fmt::Display for JavaScriptFlavor {
+    #[inline]
+    fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
+        match self {
+            Self::JavaScript => f.write_str("javascript"),
+            Self::JSX => f.write_str("jsx"),
+        }
+    }
+}
+
+#[derive(Clone, Copy, PartialEq, Eq)]
+pub enum TypeScriptFlavor {
+    TypeScript,
+    TSX,
+}
+
+impl core::fmt::Display for TypeScriptFlavor {
+    #[inline]
+    fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
+        match self {
+            Self::TypeScript => f.write_str("typescript"),
+            Self::TSX => f.write_str("tsx"),
+        }
+    }
+}
+
+#[derive(Clone, Copy, PartialEq, Eq)]
 pub enum Language {
     Blade,
     C,
@@ -78,7 +110,7 @@ pub enum Language {
     Haskell,
     Html,
     Java,
-    JavaScript,
+    JavaScript(JavaScriptFlavor),
     Json(JsonFlavor),
     Just,
     Kotlin,
@@ -100,7 +132,7 @@ pub enum Language {
     Sql,
     Swift,
     Toml,
-    TypeScript,
+    TypeScript(TypeScriptFlavor),
     Vue,
     Xml,
     Yaml,
@@ -137,7 +169,7 @@ impl core::fmt::Display for Language {
             Self::Haskell => f.write_str("haskell"),
             Self::Html => f.write_str("html"),
             Self::Java => f.write_str("java"),
-            Self::JavaScript => f.write_str("javascript"),
+            Self::JavaScript(flavor) => flavor.fmt(f),
             Self::Json(flavor) => flavor.fmt(f),
             Self::Just => f.write_str("just"),
             Self::Kotlin => f.write_str("kotlin"),
@@ -159,7 +191,7 @@ impl core::fmt::Display for Language {
             Self::Sql => f.write_str("sql"),
             Self::Swift => f.write_str("swift"),
             Self::Toml => f.write_str("toml"),
-            Self::TypeScript => f.write_str("typescript"),
+            Self::TypeScript(flavor) => flavor.fmt(f),
             Self::Vue => f.write_str("vue"),
             Self::Xml => f.write_str("xml"),
             Self::Yaml => f.write_str("yaml"),
@@ -247,7 +279,8 @@ impl Language {
             "haskell" => Some(Self::Haskell),
             "html" | "html5" => Some(Self::Html),
             "java" => Some(Self::Java),
-            "javascript" | "js" | "jsx" => Some(Self::JavaScript),
+            "javascript" | "js" => Some(Self::JavaScript(JavaScriptFlavor::JavaScript)),
+            "jsx" => Some(Self::JavaScript(JavaScriptFlavor::JSX)),
             "json" => Some(Self::Json(JsonFlavor::Json)),
             "jsonc" => Some(Self::Json(JsonFlavor::JsonC)),
             "json5" => Some(Self::Json(JsonFlavor::Json5)),
@@ -275,7 +308,8 @@ impl Language {
             | "sqlite" | "transactsql" | "trino" | "tsql" => Some(Self::Sql),
             "swift" => Some(Self::Swift),
             "toml" => Some(Self::Toml),
-            "typescript" | "ts" | "tsx" => Some(Self::TypeScript),
+            "typescript" | "ts" => Some(Self::TypeScript(TypeScriptFlavor::TypeScript)),
+            "tsx" => Some(Self::TypeScript(TypeScriptFlavor::TSX)),
             "vue" => Some(Self::Vue),
             "xml" => Some(Self::Xml),
             "yml" | "yaml" => Some(Self::Yaml),
@@ -309,7 +343,8 @@ impl Language {
             Self::Haskell => ".hs",
             Self::Html => ".html",
             Self::Java => ".java",
-            Self::JavaScript => ".js",
+            Self::JavaScript(JavaScriptFlavor::JavaScript) => ".js",
+            Self::JavaScript(JavaScriptFlavor::JSX) => ".jsx",
             Self::Json(JsonFlavor::Json) => ".json",
             Self::Json(JsonFlavor::JsonC) => ".jsonc",
             Self::Json(JsonFlavor::Json5) => ".json5",
@@ -335,7 +370,8 @@ impl Language {
             Self::Sql => ".sql",
             Self::Swift => ".swift",
             Self::Toml => ".toml",
-            Self::TypeScript => ".ts",
+            Self::TypeScript(TypeScriptFlavor::TypeScript) => ".ts",
+            Self::TypeScript(TypeScriptFlavor::TSX) => ".tsx",
             Self::Vue => ".vue",
             Self::Xml => ".xml",
             Self::Yaml => ".yml",

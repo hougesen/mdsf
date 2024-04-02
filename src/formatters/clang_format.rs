@@ -19,7 +19,7 @@ pub fn format_using_clang_format(
 mod test_clang_format {
     use crate::{
         formatters::{clang_format::format_using_clang_format, setup_snippet},
-        languages::{JsonFlavor, Language},
+        languages::{JavaScriptFlavor, JsonFlavor, Language},
     };
 
     #[test_with::executable(clang-format)]
@@ -106,8 +106,11 @@ mod test_clang_format {
 
         let expected_output = "async function asyncAddition(a, b) {\n  a * b;\n  return a + b\n}";
 
-        let snippet = setup_snippet(input, Language::JavaScript.to_file_ext())
-            .expect("it to create a snippet file");
+        let snippet = setup_snippet(
+            input,
+            Language::JavaScript(JavaScriptFlavor::JavaScript).to_file_ext(),
+        )
+        .expect("it to create a snippet file");
 
         let output = format_using_clang_format(snippet.path())
             .expect("it to be successful")

@@ -20,7 +20,7 @@ pub fn format_using_biome(
 mod test_biome {
     use crate::{
         formatters::{biome::format_using_biome, setup_snippet},
-        languages::{JsonFlavor, Language},
+        languages::{JavaScriptFlavor, JsonFlavor, Language, TypeScriptFlavor},
     };
 
     #[test]
@@ -69,8 +69,11 @@ mod test_biome {
 }
 ";
 
-        let snippet = setup_snippet(input, Language::JavaScript.to_file_ext())
-            .expect("it to create a snippet file");
+        let snippet = setup_snippet(
+            input,
+            Language::JavaScript(JavaScriptFlavor::JavaScript).to_file_ext(),
+        )
+        .expect("it to create a snippet file");
 
         let output = format_using_biome(snippet.path())
             .expect("it to be successful")
@@ -99,8 +102,11 @@ number>
 }
 ";
 
-        let snippet = setup_snippet(input, Language::TypeScript.to_file_ext())
-            .expect("it to create a snippet file");
+        let snippet = setup_snippet(
+            input,
+            Language::TypeScript(TypeScriptFlavor::TypeScript).to_file_ext(),
+        )
+        .expect("it to create a snippet file");
 
         let output = format_using_biome(snippet.path())
             .expect("it to be successful")

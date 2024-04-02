@@ -19,7 +19,7 @@ pub fn format_using_deno_fmt(
 mod test_deno_fmt {
     use crate::{
         formatters::setup_snippet,
-        languages::{JsonFlavor, Language},
+        languages::{JavaScriptFlavor, JsonFlavor, Language, TypeScriptFlavor},
     };
 
     use super::format_using_deno_fmt;
@@ -77,8 +77,11 @@ mod test_deno_fmt {
 }
 ";
 
-        let snippet = setup_snippet(input, Language::JavaScript.to_file_ext())
-            .expect("it to create a snippet file");
+        let snippet = setup_snippet(
+            input,
+            Language::JavaScript(JavaScriptFlavor::JavaScript).to_file_ext(),
+        )
+        .expect("it to create a snippet file");
 
         let output = format_using_deno_fmt(snippet.path())
             .expect("it to be successful")
@@ -105,8 +108,11 @@ mod test_deno_fmt {
 }
 ";
 
-        let snippet = setup_snippet(input, Language::TypeScript.to_file_ext())
-            .expect("it to create a snippet file");
+        let snippet = setup_snippet(
+            input,
+            Language::TypeScript(TypeScriptFlavor::TypeScript).to_file_ext(),
+        )
+        .expect("it to create a snippet file");
 
         let output = format_using_deno_fmt(snippet.path())
             .expect("it to be successful")
