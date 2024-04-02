@@ -21,6 +21,26 @@ impl core::fmt::Display for JsonFlavor {
 }
 
 #[derive(Clone, Copy, PartialEq, Eq)]
+pub enum CssFlavor {
+    Css,
+    Scss,
+    Sass,
+    Less,
+}
+
+impl core::fmt::Display for CssFlavor {
+    #[inline]
+    fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
+        match self {
+            Self::Css => f.write_str("css"),
+            Self::Scss => f.write_str("scss"),
+            Self::Sass => f.write_str("sass"),
+            Self::Less => f.write_str("less"),
+        }
+    }
+}
+
+#[derive(Clone, Copy, PartialEq, Eq)]
 pub enum Language {
     Blade,
     C,
@@ -28,7 +48,7 @@ pub enum Language {
     CSharp,
     Cpp,
     Crystal,
-    Css,
+    Css(CssFlavor),
     Dart,
     Elixir,
     Elm,
@@ -87,7 +107,7 @@ impl core::fmt::Display for Language {
             Self::CSharp => f.write_str("c#"),
             Self::Cpp => f.write_str("c++"),
             Self::Crystal => f.write_str("crystal"),
-            Self::Css => f.write_str("css"),
+            Self::Css(flavor) => flavor.fmt(f),
             Self::Dart => f.write_str("dart"),
             Self::Elixir => f.write_str("elixir"),
             Self::Elm => f.write_str("elm"),
@@ -194,7 +214,10 @@ impl Language {
             "cpp" | "c++" => Some(Self::Cpp),
             "crystal" | "cr" => Some(Self::Crystal),
             "csharp" | "c#" => Some(Self::CSharp),
-            "css" | "scss" => Some(Self::Css),
+            "css" => Some(Self::Css(CssFlavor::Css)),
+            "scss" => Some(Self::Css(CssFlavor::Scss)),
+            "sass" => Some(Self::Css(CssFlavor::Sass)),
+            "less" => Some(Self::Css(CssFlavor::Less)),
             "dart" => Some(Self::Dart),
             "elixir" => Some(Self::Elixir),
             "elm" => Some(Self::Elm),
@@ -251,7 +274,10 @@ impl Language {
             Self::CSharp => ".cs",
             Self::Cpp => ".cpp",
             Self::Crystal => ".cr",
-            Self::Css => ".scss",
+            Self::Css(CssFlavor::Css) => ".css",
+            Self::Css(CssFlavor::Scss) => ".scss",
+            Self::Css(CssFlavor::Sass) => ".sass",
+            Self::Css(CssFlavor::Less) => ".less",
             Self::Dart => ".dart",
             Self::Elixir => ".ex",
             Self::Elm => ".elm",
