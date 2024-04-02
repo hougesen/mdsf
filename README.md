@@ -81,7 +81,7 @@ mdsf init
 | Haskell    | `fourmolu`, `hindent`, `ormolu`                               |
 | Html       | `prettier`                                                    |
 | Java       | `clang-format`, `google-java-format`                          |
-| JavaScript | `biome`, `clang-format`, `deno_fmt`, `prettier`               |
+| JavaScript | `biome`, `clang-format`, `deno_fmt`, `prettier`, `standardjs` |
 | Json       | `biome`, `clang-format`, `deno_fmt`, `prettier`               |
 | Just       | `just_fmt`                                                    |
 | Kotlin     | `ktfmt`, `ktlint`                                             |
