@@ -86,3 +86,8 @@ pub fn print_unknown_javascript_runtime(value: u8, fallback: JavaScriptRuntime) 
 pub fn print_javascript_runtime(runtime: JavaScriptRuntime) {
     print_debug(format!("Using JavaScript runtime '{runtime}'"));
 }
+
+#[inline]
+pub fn print_binary_not_in_path(binary_name: &str) {
+    print_debug(format!("'{binary_name}' not found in path"));
+}

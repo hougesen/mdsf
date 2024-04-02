@@ -18,6 +18,7 @@ schemars = "0.8.16"
 serde = { version = "1.0.197", features = ["derive"] }
 serde_json = "1.0.115"
 tempfile = "3.10.1"
+which = "6.0.1"
 
 [dev-dependencies]
 test-with = { version = "0.12.6", default-features = false, features = [

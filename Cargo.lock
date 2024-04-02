@@ -259,6 +259,7 @@ dependencies = [
  "serde_json",
  "tempfile",
  "test-with",
+ "which 6.0.1",
 ]
 
 [[package]]
@@ -489,7 +490,7 @@ dependencies = [
  "quote",
  "regex",
  "syn 2.0.57",
- "which",
+ "which 5.0.0",
 ]
 
 [[package]]
@@ -531,6 +532,18 @@ dependencies = [
  "once_cell",
  "rustix",
  "windows-sys 0.48.0",
+]
+
+[[package]]
+name = "which"
+version = "6.0.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "8211e4f58a2b2805adfbefbc07bab82958fc91e3836339b1ab7ae32465dce0d7"
+dependencies = [
+ "either",
+ "home",
+ "rustix",
+ "winsafe",
 ]
 
 [[package]]
@@ -695,3 +708,9 @@ name = "windows_x86_64_msvc"
 version = "0.52.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "32b752e52a2da0ddfbdbcc6fceadfeede4c939ed16d13e648833a61dfb611ed8"
+
+[[package]]
+name = "winsafe"
+version = "0.0.19"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "d135d17ab770252ad95e9a872d365cf3090e3be864a34ab46f48555993efc904"

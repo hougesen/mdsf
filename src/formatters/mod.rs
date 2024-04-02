@@ -1,9 +1,10 @@
-use std::{io::Write, process::Command};
+use std::{ffi::OsStr, io::Write, process::Command};
 
 use schemars::JsonSchema;
 use tempfile::NamedTempFile;
+use which::which;
 
-use crate::{config::MdsfConfig, languages::Language, DEBUG};
+use crate::{config::MdsfConfig, languages::Language, terminal::print_binary_not_in_path, DEBUG};
 
 pub mod autopep8;
 pub mod beautysh;
@@ -128,6 +129,10 @@ pub fn execute_command(
     cmd: &mut Command,
     snippet_path: &std::path::Path,
 ) -> std::io::Result<(bool, Option<String>)> {
+    if !binary_in_path(cmd.get_program()) {
+        return Ok((true, None));
+    }
+
     handle_post_execution(spawn_command(cmd), snippet_path)
 }
 
@@ -201,4 +206,14 @@ pub fn format_snippet(config: &MdsfConfig, language: &Language, code: &str) -> S
 pub enum MdsfFormatter<T> {
     Single(T),
     Multiple(Vec<MdsfFormatter<T>>),
+}
+
+#[inline]
+pub fn binary_in_path(binary_name: &OsStr) -> bool {
+    if which(binary_name).is_ok() {
+        true
+    } else {
+        print_binary_not_in_path(&binary_name.to_string_lossy());
+        false
+    }
 }
