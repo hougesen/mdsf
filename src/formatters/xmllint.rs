@@ -1,9 +1,13 @@
+use crate::terminal::print_debug_formatter_info;
+
 use super::execute_command;
 
 #[inline]
 pub fn format_using_xmllint(
     snippet_path: &std::path::Path,
 ) -> std::io::Result<(bool, Option<String>)> {
+    print_debug_formatter_info("xmllint");
+
     let mut cmd = std::process::Command::new("xmllint");
 
     cmd.arg("--format")

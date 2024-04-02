@@ -4,6 +4,9 @@ use config::MdsfConfig;
 use error::MdsfError;
 use formatters::format_snippet;
 use languages::Language;
+use terminal::{
+    print_debug_file_info, print_debug_line_info, write_changed_line, write_unchanged_line,
+};
 
 pub mod cli;
 pub mod config;
@@ -11,35 +14,12 @@ pub mod error;
 pub mod formatters;
 pub mod languages;
 mod runners;
+pub mod terminal;
 
 #[cfg(test)]
 pub static DEBUG: AtomicBool = AtomicBool::new(true);
 #[cfg(not(test))]
 pub static DEBUG: AtomicBool = AtomicBool::new(false);
-
-#[inline]
-fn write_unchanged_line(path: &std::path::Path, dur: core::time::Duration) {
-    #[cfg(target_os = "windows")]
-    let pre = "";
-    #[cfg(not(target_os = "windows"))]
-    let pre = "\u{1b}[2m";
-
-    #[cfg(target_os = "windows")]
-    let post = "";
-    #[cfg(not(target_os = "windows"))]
-    let post = "\u{1b}[0m";
-
-    println!(
-        "{pre}{} {}ms (unchanged){post}",
-        path.display(),
-        dur.as_millis()
-    );
-}
-
-#[inline]
-fn write_changed_line(path: &std::path::Path, dur: core::time::Duration) {
-    println!("{} {}ms", path.display(), dur.as_millis());
-}
 
 #[inline]
 fn format_file(config: &MdsfConfig, input: &str) -> (bool, String) {
@@ -49,7 +29,7 @@ fn format_file(config: &MdsfConfig, input: &str) -> (bool, String) {
 
     let mut lines = input.lines().enumerate();
 
-    while let Some((_, line)) = lines.next() {
+    while let Some((line_index, line)) = lines.next() {
         // TODO: implement support for code blocks with 4 `
         if line.starts_with("```") {
             if let Some(language) = line.strip_prefix("```").and_then(Language::maybe_from_str) {
@@ -57,7 +37,11 @@ fn format_file(config: &MdsfConfig, input: &str) -> (bool, String) {
 
                 let mut is_snippet = false;
 
+                let mut snippet_lines = 0;
+
                 for (_, subline) in lines.by_ref() {
+                    snippet_lines += 1;
+
                     if subline.trim_end() == "```" {
                         is_snippet = true;
                         break;
@@ -69,6 +53,14 @@ fn format_file(config: &MdsfConfig, input: &str) -> (bool, String) {
                 }
 
                 if is_snippet {
+                    if DEBUG.load(core::sync::atomic::Ordering::Relaxed) {
+                        print_debug_line_info(
+                            language,
+                            line_index + 1,
+                            line_index + snippet_lines + 1,
+                        );
+                    }
+
                     let formatted = format_snippet(config, &language, &code_snippet);
 
                     output.push_str(line);
@@ -103,6 +95,8 @@ fn format_file(config: &MdsfConfig, input: &str) -> (bool, String) {
 
 #[inline]
 pub fn handle_file(config: &MdsfConfig, path: &std::path::Path) -> Result<(), MdsfError> {
+    print_debug_file_info(path);
+
     let time = std::time::Instant::now();
 
     let input = std::fs::read_to_string(path)?;

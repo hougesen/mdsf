@@ -1,9 +1,13 @@
+use crate::terminal::print_debug_formatter_info;
+
 use super::execute_command;
 
 #[inline]
 pub fn format_using_rubyfmt(
     snippet_path: &std::path::Path,
 ) -> std::io::Result<(bool, Option<String>)> {
+    print_debug_formatter_info("rubyfmt");
+
     let mut cmd = std::process::Command::new("rubyfmt");
 
     cmd.arg("-i").arg(snippet_path);

@@ -1,9 +1,14 @@
-use crate::runners::{setup_npm_script, JavaScriptRuntime};
+use crate::{
+    runners::{setup_npm_script, JavaScriptRuntime},
+    terminal::print_debug_formatter_info,
+};
 
 use super::execute_command;
 
 #[inline]
 fn set_elm_format_args(cmd: &mut std::process::Command, snippet_path: &std::path::Path) {
+    print_debug_formatter_info("elm_format");
+
     cmd.arg("--elm-version=0.19").arg("--yes").arg(snippet_path);
 }
 

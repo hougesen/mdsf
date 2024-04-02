@@ -1,4 +1,7 @@
-use crate::runners::{setup_npm_script, JavaScriptRuntime};
+use crate::{
+    runners::{setup_npm_script, JavaScriptRuntime},
+    terminal::print_debug_formatter_info,
+};
 
 use super::execute_command;
 
@@ -21,6 +24,8 @@ fn invoke_purs_tidy(
 pub fn format_using_purs_tidy(
     snippet_path: &std::path::Path,
 ) -> std::io::Result<(bool, Option<String>)> {
+    print_debug_formatter_info("purs-tidy");
+
     invoke_purs_tidy(
         setup_npm_script(JavaScriptRuntime::default(), "purs-tidy"),
         snippet_path,

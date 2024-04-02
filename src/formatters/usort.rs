@@ -1,9 +1,13 @@
+use crate::terminal::print_debug_formatter_info;
+
 use super::execute_command;
 
 #[inline]
 pub fn format_using_usort(
     snippet_path: &std::path::Path,
 ) -> std::io::Result<(bool, Option<String>)> {
+    print_debug_formatter_info("usort");
+
     let mut cmd = std::process::Command::new("usort");
 
     cmd.arg("format").arg(snippet_path);
@@ -22,8 +26,8 @@ mod test_usort {
     fn it_should_format_python() {
         let input = "from q import d
 import b
-import a 
-import c 
+import a
+import c
 
 
 def add(a: int, b: int) -> int:
