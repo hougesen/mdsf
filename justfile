@@ -43,6 +43,8 @@ precommit:
     just lint
     just test
     just update-readme
+    cargo run -- init
+    npx prettier --write mdsf.json
     typos .
 
 publish:

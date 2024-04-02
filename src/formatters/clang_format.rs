@@ -15,7 +15,7 @@ pub fn format_using_clang_format(
 mod test_clang_format {
     use crate::{
         formatters::{clang_format::format_using_clang_format, setup_snippet},
-        languages::Language,
+        languages::{JsonFlavor, Language},
     };
 
     #[test_with::executable(clang-format)]
@@ -39,7 +39,7 @@ mod test_clang_format {
             .1
             .expect("it to be some");
 
-        assert_eq!(expected_output, output);
+        assert_eq!(output, expected_output);
     }
 
     #[test_with::executable(clang-format)]
@@ -63,7 +63,7 @@ mod test_clang_format {
             .1
             .expect("it to be some");
 
-        assert_eq!(expected_output, output);
+        assert_eq!(output, expected_output);
     }
 
     #[test_with::executable(clang-format)]
@@ -89,7 +89,7 @@ mod test_clang_format {
             .1
             .expect("it to be some");
 
-        assert_eq!(expected_output, output);
+        assert_eq!(output, expected_output);
     }
 
     #[test_with::executable(clang-format)]
@@ -110,7 +110,7 @@ mod test_clang_format {
             .1
             .expect("it to be some");
 
-        assert_eq!(expected_output, output);
+        assert_eq!(output, expected_output);
     }
 
     #[test_with::executable(clang-format)]
@@ -118,13 +118,20 @@ mod test_clang_format {
     fn it_should_format_json() {
         let input = "              {
               \"key\": \"value\",
-  \"key2\": [      \"value2\", \"value3\", 1            , null]
+  \"key2\": [\"value2\", \"value3\", 1            , null]
  }  ";
 
-        let expected_output =
-            "{ \"key\" : \"value\", \"key2\" : [ \"value2\", \"value3\", 1, null ] }";
+        let expected_output = "{
+  \"key\": \"value\",
+  \"key2\": [
+    \"value2\",
+    \"value3\",
+    1,
+    null
+  ]
+}";
 
-        let snippet = setup_snippet(input, Language::Json.to_file_ext())
+        let snippet = setup_snippet(input, Language::Json(JsonFlavor::Json).to_file_ext())
             .expect("it to create a snippet file");
 
         let output = format_using_clang_format(snippet.path())
@@ -132,7 +139,7 @@ mod test_clang_format {
             .1
             .expect("it to be some");
 
-        assert_eq!(expected_output, output);
+        assert_eq!(output, expected_output);
     }
 
     #[test_with::executable(clang-format)]
@@ -156,7 +163,7 @@ mod test_clang_format {
             .1
             .expect("it to be some");
 
-        assert_eq!(expected_output, output);
+        assert_eq!(output, expected_output);
     }
 
     #[test_with::executable(clang-format)]
@@ -177,7 +184,7 @@ mod test_clang_format {
             .1
             .expect("it to be some");
 
-        assert_eq!(expected_output, output);
+        assert_eq!(output, expected_output);
     }
 
     #[test_with::executable(clang-format)]
@@ -205,6 +212,6 @@ mod test_clang_format {
             .1
             .expect("it to be some");
 
-        assert_eq!(expected_output, output);
+        assert_eq!(output, expected_output);
     }
 }

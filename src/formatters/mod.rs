@@ -157,7 +157,7 @@ pub fn format_snippet(config: &MdsfConfig, language: &Language, code: &str) -> S
             Language::Html => config.html.format(snippet_path),
             Language::Java => config.java.format(snippet_path),
             Language::JavaScript => config.javascript.format(snippet_path),
-            Language::Json => config.json.format(snippet_path),
+            Language::Json(_flavor) => config.json.format(snippet_path),
             Language::Just => config.just.format(snippet_path),
             Language::Kotlin => config.kotlin.format(snippet_path),
             Language::Lua => config.lua.format(snippet_path),
