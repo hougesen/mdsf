@@ -66,7 +66,7 @@ impl LanguageFormatter for JavaScript {
 mod test_javascript {
     use crate::{
         formatters::{setup_snippet, MdsfFormatter},
-        languages::Lang,
+        languages::{JavaScriptFlavor, Lang},
     };
 
     use super::JavaScript;
@@ -81,7 +81,8 @@ mod test_javascript {
 
             ";
 
-    const EXTENSION: &str = crate::languages::Language::JavaScript.to_file_ext();
+    const EXTENSION: &str =
+        crate::languages::Language::JavaScript(JavaScriptFlavor::JavaScript).to_file_ext();
 
     #[test]
     fn it_should_be_enabled_by_default() {

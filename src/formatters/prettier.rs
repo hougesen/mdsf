@@ -54,7 +54,7 @@ pub fn format_using_prettier(
 mod test_prettier {
     use crate::{
         formatters::{prettier::format_using_prettier, setup_snippet},
-        languages::{CssFlavor, JsonFlavor, Language},
+        languages::{CssFlavor, JavaScriptFlavor, JsonFlavor, Language, TypeScriptFlavor},
     };
 
     #[test]
@@ -105,8 +105,11 @@ mod test_prettier {
 }
 ";
 
-        let snippet = setup_snippet(input, Language::JavaScript.to_file_ext())
-            .expect("it to create a snippet file");
+        let snippet = setup_snippet(
+            input,
+            Language::JavaScript(JavaScriptFlavor::JavaScript).to_file_ext(),
+        )
+        .expect("it to create a snippet file");
 
         let output = format_using_prettier(snippet.path(), true)
             .expect("it to be successful")
@@ -135,8 +138,11 @@ number>
 }
 ";
 
-        let snippet = setup_snippet(input, Language::TypeScript.to_file_ext())
-            .expect("it to create a snippet file");
+        let snippet = setup_snippet(
+            input,
+            Language::TypeScript(TypeScriptFlavor::TypeScript).to_file_ext(),
+        )
+        .expect("it to create a snippet file");
 
         let output = format_using_prettier(snippet.path(), true)
             .expect("it to be successful")

@@ -58,7 +58,7 @@ impl LanguageFormatter for TypeScript {
 mod test_typescript {
     use crate::{
         formatters::{setup_snippet, MdsfFormatter},
-        languages::{typescript::TypeScript, Lang},
+        languages::{typescript::TypeScript, Lang, TypeScriptFlavor},
     };
 
     const INPUT: &str = "
@@ -72,7 +72,8 @@ number>
 
             ";
 
-    const EXTENSION: &str = crate::languages::Language::TypeScript.to_file_ext();
+    const EXTENSION: &str =
+        crate::languages::Language::TypeScript(TypeScriptFlavor::TypeScript).to_file_ext();
 
     #[test]
     fn it_should_be_enabled_by_default() {
