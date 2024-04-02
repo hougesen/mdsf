@@ -1,4 +1,4 @@
-use crate::terminal::print_debug_formatter_info;
+use crate::terminal::print_formatter_info;
 
 use super::execute_command;
 
@@ -6,7 +6,7 @@ use super::execute_command;
 pub fn format_using_blue(
     snippet_path: &std::path::Path,
 ) -> std::io::Result<(bool, Option<String>)> {
-    print_debug_formatter_info("blue");
+    print_formatter_info("blue");
 
     let mut cmd = std::process::Command::new("blue");
 

@@ -1,6 +1,6 @@
 use crate::{
     runners::{setup_npm_script, JavaScriptRuntime},
-    terminal::print_debug_formatter_info,
+    terminal::print_formatter_info,
 };
 
 use super::execute_command;
@@ -34,7 +34,7 @@ pub fn format_using_prettier(
     snippet_path: &std::path::Path,
     embedded_language_formatting: bool,
 ) -> std::io::Result<(bool, Option<String>)> {
-    print_debug_formatter_info("prettier");
+    print_formatter_info("prettier");
 
     // Local prettier
     let local_result = invoke_prettier(

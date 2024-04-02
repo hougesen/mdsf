@@ -1,4 +1,4 @@
-use crate::{languages::Language, DEBUG};
+use crate::{error::MdsfError, languages::Language, DEBUG};
 
 #[cfg(target_os = "windows")]
 const GREY_TEXT: &str = "";
@@ -21,31 +21,36 @@ const TEXT_RESET: &str = "";
 const TEXT_RESET: &str = "\u{1b}[0m";
 
 #[inline]
-pub fn print_debug_file_info(filename: &std::path::Path) {
+pub fn print_error(error: &MdsfError) {
+    println!("{ERROR_TEXT_DECORATION}{error}{TEXT_RESET}");
+}
+
+#[inline]
+pub fn print_debug<T: core::fmt::Display>(args: T) {
     if DEBUG.load(core::sync::atomic::Ordering::Relaxed) {
-        println!(
-            "{DEBUG_TEXT_DECORATION}Formatting '{}'{TEXT_RESET}",
-            filename.display()
-        );
+        println!("{DEBUG_TEXT_DECORATION}{args}{TEXT_RESET}");
     }
 }
 
 #[inline]
-pub fn print_debug_line_info(language: Language, start: usize, end: usize) {
-    if DEBUG.load(core::sync::atomic::Ordering::Relaxed) {
-        println!("{DEBUG_TEXT_DECORATION}Formatting '{language}' block from :{start} to :{end}{TEXT_RESET}");
-    }
+pub fn print_file_info(filename: &std::path::Path) {
+    print_debug(format!("Formatting '{}'", filename.display()));
 }
 
 #[inline]
-pub fn print_debug_formatter_info(formatter: &str) {
-    if DEBUG.load(core::sync::atomic::Ordering::Relaxed) {
-        println!("{DEBUG_TEXT_DECORATION}Using formatter: '{formatter}'{TEXT_RESET}");
-    }
+pub fn print_line_info(language: Language, start: usize, end: usize) {
+    print_debug(format!(
+        "Formatting '{language}' block from :{start} to :{end}"
+    ));
 }
 
 #[inline]
-pub fn write_unchanged_line(path: &std::path::Path, dur: core::time::Duration) {
+pub fn print_formatter_info(formatter: &str) {
+    print_debug(format!("Using formatter: '{formatter}'"));
+}
+
+#[inline]
+pub fn print_unchanged_file(path: &std::path::Path, dur: core::time::Duration) {
     println!(
         "{GREY_TEXT}{} {}ms (unchanged){TEXT_RESET}",
         path.display(),
@@ -54,14 +59,18 @@ pub fn write_unchanged_line(path: &std::path::Path, dur: core::time::Duration) {
 }
 
 #[inline]
-pub fn write_changed_line(path: &std::path::Path, dur: core::time::Duration) {
+pub fn print_changed_line(path: &std::path::Path, dur: core::time::Duration) {
     println!("{} {}ms", path.display(), dur.as_millis());
 }
 
 #[inline]
-pub fn print_file_not_found(path: &std::path::Path) {
-    println!(
-        "{ERROR_TEXT_DECORATION}No file or directory with the name \"{}\" found{TEXT_RESET}",
-        path.display(),
-    );
+pub fn print_config_info(maybe_config_path: Option<&std::path::Path>) {
+    if let Some(config_path) = maybe_config_path {
+        print_debug(format!(
+            "{DEBUG_TEXT_DECORATION}Using config found at '{}'{TEXT_RESET}",
+            config_path.display()
+        ));
+    } else {
+        print_debug("Using default config since no config was found");
+    }
 }

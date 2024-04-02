@@ -1,6 +1,6 @@
 use crate::{
     runners::{setup_npm_script, JavaScriptRuntime},
-    terminal::print_debug_formatter_info,
+    terminal::print_formatter_info,
 };
 
 use super::execute_command;
@@ -24,7 +24,7 @@ fn invote_blade_formatter(
 pub fn format_using_blade_formatter(
     snippet_path: &std::path::Path,
 ) -> std::io::Result<(bool, Option<String>)> {
-    print_debug_formatter_info("blade-formatter");
+    print_formatter_info("blade-formatter");
 
     invote_blade_formatter(
         setup_npm_script(JavaScriptRuntime::default(), "blade-formatter"),

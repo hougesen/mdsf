@@ -1,6 +1,6 @@
 use crate::{
     runners::{setup_npm_script, JavaScriptRuntime},
-    terminal::print_debug_formatter_info,
+    terminal::print_formatter_info,
 };
 
 use super::execute_command;
@@ -9,7 +9,7 @@ use super::execute_command;
 pub fn format_using_biome(
     snippet_path: &std::path::Path,
 ) -> std::io::Result<(bool, Option<String>)> {
-    print_debug_formatter_info("biome");
+    print_formatter_info("biome");
 
     // NOTE: the biome docs recommend running biome using npx, and not directly
     let mut cmd = setup_npm_script(JavaScriptRuntime::default(), "@biomejs/biome");

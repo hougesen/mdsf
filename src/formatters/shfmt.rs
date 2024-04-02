@@ -1,10 +1,10 @@
-use crate::terminal::print_debug_formatter_info;
+use crate::terminal::print_formatter_info;
 
 use super::execute_command;
 
 #[inline]
 pub fn format_using_shfmt(file_path: &std::path::Path) -> std::io::Result<(bool, Option<String>)> {
-    print_debug_formatter_info("shfmt");
+    print_formatter_info("shfmt");
 
     let mut cmd = std::process::Command::new("shfmt");
 
