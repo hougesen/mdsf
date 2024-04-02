@@ -180,7 +180,7 @@ pub fn format_snippet(config: &MdsfConfig, language: &Language, code: &str) -> S
             Language::Ruby => config.ruby.format(snippet_path),
             Language::Rust => config.rust.format(snippet_path),
             Language::Scala => config.scala.format(snippet_path),
-            Language::Shell => config.shell.format(snippet_path),
+            Language::Shell(_flavor) => config.shell.format(snippet_path),
             Language::Sql => config.sql.format(snippet_path),
             Language::Swift => config.swift.format(snippet_path),
             Language::Toml => config.toml.format(snippet_path),
