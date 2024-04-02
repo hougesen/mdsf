@@ -66,7 +66,7 @@ pub fn format_using_prettier(
 mod test_prettier {
     use crate::{
         formatters::{prettier::format_using_prettier, setup_snippet},
-        languages::{JsonFlavor, Language},
+        languages::{CssFlavor, JsonFlavor, Language},
     };
 
     #[test]
@@ -261,8 +261,8 @@ p {
 }
 ";
 
-        let snippet =
-            setup_snippet(input, Language::Css.to_file_ext()).expect("it to create a snippet file");
+        let snippet = setup_snippet(input, Language::Css(CssFlavor::Css).to_file_ext())
+            .expect("it to create a snippet file");
 
         let output = format_using_prettier(snippet.path(), true)
             .expect("it to be successful")

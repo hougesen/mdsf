@@ -45,14 +45,14 @@ impl LanguageFormatter for Css {
 mod test_css {
     use crate::{
         formatters::{setup_snippet, MdsfFormatter},
-        languages::Lang,
+        languages::{CssFlavor, Lang},
     };
 
     use super::Css;
 
     const INPUT: &str = " h1   {color: blue;} p    {color: red;} ";
 
-    const EXTENSION: &str = crate::languages::Language::Css.to_file_ext();
+    const EXTENSION: &str = crate::languages::Language::Css(CssFlavor::Css).to_file_ext();
 
     #[test]
     fn it_should_be_enabled_by_default() {

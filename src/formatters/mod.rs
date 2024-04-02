@@ -143,7 +143,7 @@ pub fn format_snippet(config: &MdsfConfig, language: &Language, code: &str) -> S
             Language::CSharp => config.csharp.format(snippet_path),
             Language::Cpp => config.cpp.format(snippet_path),
             Language::Crystal => config.crystal.format(snippet_path),
-            Language::Css => config.css.format(snippet_path),
+            Language::Css(_flavor) => config.css.format(snippet_path),
             Language::Dart => config.dart.format(snippet_path),
             Language::Elixir => config.elixir.format(snippet_path),
             Language::Elm => config.elm.format(snippet_path),
