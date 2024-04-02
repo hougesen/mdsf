@@ -254,6 +254,8 @@ version = "0.0.3"
 dependencies = [
  "clap",
  "ignore",
+ "once_cell",
+ "regex",
  "schemars",
  "serde",
  "serde_json",

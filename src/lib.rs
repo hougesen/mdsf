@@ -4,6 +4,7 @@ use config::MdsfConfig;
 use error::MdsfError;
 use formatters::format_snippet;
 use languages::Language;
+use parser::{parse_generic_codeblock, parse_go_codeblock};
 use terminal::{print_changed_line, print_file_info, print_line_info, print_unchanged_file};
 
 pub mod cli;
@@ -11,6 +12,7 @@ pub mod config;
 pub mod error;
 pub mod formatters;
 pub mod languages;
+mod parser;
 pub mod runners;
 pub mod terminal;
 
@@ -33,31 +35,14 @@ fn format_file(config: &MdsfConfig, input: &str) -> (bool, String) {
         // TODO: implement support for code blocks with 4 `
         if line.starts_with("```") {
             if let Some(language) = line.strip_prefix("```").and_then(Language::maybe_from_str) {
-                let mut code_snippet = String::new();
-
-                let mut is_snippet = false;
-
-                let mut snippet_lines = 0;
-
-                for (_, subline) in lines.by_ref() {
-                    snippet_lines += 1;
-
-                    if subline.trim_end() == "```" {
-                        is_snippet = true;
-                        break;
-                    }
-
-                    code_snippet.push_str(subline);
-
-                    code_snippet.push('\n');
-                }
+                let (is_snippet, code_snippet, snippet_lines) = if language == Language::Go {
+                    parse_go_codeblock(&mut lines)
+                } else {
+                    parse_generic_codeblock(&mut lines)
+                };
 
                 if is_snippet {
                     print_line_info(language, line_index + 1, line_index + snippet_lines + 1);
-
-                    if language == Language::Go && !code_snippet.contains("package ") {
-                        code_snippet.insert_str(0, GO_TEMPORARY_PACKAGE_NAME);
-                    }
 
                     let formatted = format_snippet(config, &language, &code_snippet);
 
