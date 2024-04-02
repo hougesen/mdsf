@@ -19,6 +19,8 @@ pub static DEBUG: AtomicBool = AtomicBool::new(true);
 #[cfg(not(test))]
 pub static DEBUG: AtomicBool = AtomicBool::new(false);
 
+const GO_TEMPORARY_PACKAGE_NAME: &str = "package mdsfformattertemporarynamespace\n";
+
 #[inline]
 fn format_file(config: &MdsfConfig, input: &str) -> (bool, String) {
     let mut output = String::with_capacity(input.len() + 128);
@@ -53,11 +55,21 @@ fn format_file(config: &MdsfConfig, input: &str) -> (bool, String) {
                 if is_snippet {
                     print_line_info(language, line_index + 1, line_index + snippet_lines + 1);
 
+                    if language == Language::Go && !code_snippet.contains("package ") {
+                        code_snippet.insert_str(0, GO_TEMPORARY_PACKAGE_NAME);
+                    }
+
                     let formatted = format_snippet(config, &language, &code_snippet);
 
                     output.push_str(line);
                     output.push('\n');
-                    output.push_str(formatted.trim());
+
+                    if language == Language::Go && formatted.contains(GO_TEMPORARY_PACKAGE_NAME) {
+                        output.push_str(formatted.replace(GO_TEMPORARY_PACKAGE_NAME, "").trim());
+                    } else {
+                        output.push_str(formatted.trim());
+                    }
+
                     output.push_str("\n```");
 
                     if formatted != code_snippet {
@@ -115,7 +127,13 @@ pub fn handle_file(config: &MdsfConfig, path: &std::path::Path) -> Result<(), Md
 
 #[cfg(test)]
 mod tests {
-    use crate::{config::MdsfConfig, format_file, formatters::setup_snippet, handle_file};
+    use crate::{
+        config::MdsfConfig,
+        format_file,
+        formatters::{setup_snippet, MdsfFormatter},
+        handle_file,
+        languages::{go::Go, Lang},
+    };
 
     #[test]
     fn it_should_format_the_code() {
@@ -889,5 +907,285 @@ fn add(a: i32, b: i32) i32 {
 
             assert_eq!(output, expected_output);
         };
+    }
+
+    #[test]
+    fn it_should_support_go_with_package() {
+        let input = "```go
+package main
+
+import (
+\t\"errors\"
+\t\"time\"
+)
+
+var err = errors.New(\"dddd\")
+
+type Whatever struct {
+     StartAt                time.Time  `json:\"start_at\"`
+                End                time.Time  `json:\"end_at\"`
+    Delete bool `json:-\"`
+}
+```";
+
+        let expected_output = "```go
+package main
+
+import (
+\t\"errors\"
+\t\"time\"
+)
+
+var err = errors.New(\"dddd\")
+
+type Whatever struct {
+\tStartAt time.Time `json:\"start_at\"`
+\tEnd     time.Time `json:\"end_at\"`
+\tDelete  bool      `json:-\"`
+}
+```
+";
+
+        {
+            let config = MdsfConfig::default();
+
+            {
+                let (modified, output) = format_file(&config, input);
+
+                assert!(modified);
+
+                assert_eq!(output, expected_output);
+            };
+
+            {
+                let file = setup_snippet(input, ".md").expect("it to create a file");
+
+                handle_file(&config, file.path()).expect("it to be a success");
+
+                let output = std::fs::read_to_string(file.path()).expect("it to return the string");
+
+                assert_eq!(output, expected_output);
+            };
+        };
+
+        {
+            let config = MdsfConfig {
+                go: Lang::<Go> {
+                    enabled: true,
+                    formatter: MdsfFormatter::Single(Go::GoFmt),
+                },
+                ..MdsfConfig::default()
+            };
+
+            {
+                let (modified, output) = format_file(&config, input);
+
+                assert!(modified);
+
+                assert_eq!(output, expected_output);
+            };
+
+            {
+                let file = setup_snippet(input, ".md").expect("it to create a file");
+
+                handle_file(&config, file.path()).expect("it to be a success");
+
+                let output = std::fs::read_to_string(file.path()).expect("it to return the string");
+
+                assert_eq!(output, expected_output);
+            };
+        }
+    }
+
+    #[test]
+    fn it_should_add_go_package_if_missing() {
+        let input = "```go
+import (
+\t\"errors\"
+\t\"time\"
+)
+
+var err = errors.New(\"dddd\")
+
+type Whatever struct {
+     StartAt                time.Time  `json:\"start_at\"`
+                End                time.Time  `json:\"end_at\"`
+    Delete bool `json:-\"`
+}
+```";
+
+        let expected_output = "```go
+import (
+\t\"errors\"
+\t\"time\"
+)
+
+var err = errors.New(\"dddd\")
+
+type Whatever struct {
+\tStartAt time.Time `json:\"start_at\"`
+\tEnd     time.Time `json:\"end_at\"`
+\tDelete  bool      `json:-\"`
+}
+```
+";
+
+        {
+            let config = MdsfConfig::default();
+
+            {
+                let (modified, output) = format_file(&config, input);
+
+                assert!(modified);
+
+                assert_eq!(output, expected_output);
+            };
+
+            {
+                let file = setup_snippet(input, ".md").expect("it to create a file");
+
+                handle_file(&config, file.path()).expect("it to be a success");
+
+                let output = std::fs::read_to_string(file.path()).expect("it to return the string");
+
+                assert_eq!(output, expected_output);
+            };
+        };
+
+        {
+            let config = MdsfConfig {
+                go: Lang::<Go> {
+                    enabled: true,
+                    formatter: MdsfFormatter::Single(Go::GoFmt),
+                },
+                ..MdsfConfig::default()
+            };
+
+            {
+                let (modified, output) = format_file(&config, input);
+
+                assert!(modified);
+
+                assert_eq!(output, expected_output);
+            };
+
+            {
+                let file = setup_snippet(input, ".md").expect("it to create a file");
+
+                handle_file(&config, file.path()).expect("it to be a success");
+
+                let output = std::fs::read_to_string(file.path()).expect("it to return the string");
+
+                assert_eq!(output, expected_output);
+            };
+        }
+    }
+
+    #[test]
+    fn it_should_not_care_if_go_package_is_set() {
+        let input = "With package name
+
+```go
+
+
+
+  package main
+
+   func add(a int , b int  ) int {
+                return a + b
+       }
+
+
+```
+
+
+Without package name
+
+
+```go
+
+
+
+
+   func add(a int , b int  ) int {
+                return a + b
+       }
+
+
+```
+
+";
+
+        let expected_output = "With package name
+
+```go
+package main
+
+func add(a int, b int) int {
+	return a + b
+}
+```
+
+
+Without package name
+
+
+```go
+func add(a int, b int) int {
+	return a + b
+}
+```
+
+";
+
+        {
+            let config = MdsfConfig::default();
+
+            {
+                let (modified, output) = format_file(&config, input);
+
+                assert!(modified);
+
+                assert_eq!(output, expected_output);
+            };
+
+            {
+                let file = setup_snippet(input, ".md").expect("it to create a file");
+
+                handle_file(&config, file.path()).expect("it to be a success");
+
+                let output = std::fs::read_to_string(file.path()).expect("it to return the string");
+
+                assert_eq!(output, expected_output);
+            };
+        };
+
+        {
+            let config = MdsfConfig {
+                go: Lang::<Go> {
+                    enabled: true,
+                    formatter: MdsfFormatter::Single(Go::GoFmt),
+                },
+                ..MdsfConfig::default()
+            };
+
+            {
+                let (modified, output) = format_file(&config, input);
+
+                assert!(modified);
+
+                assert_eq!(output, expected_output);
+            };
+
+            {
+                let file = setup_snippet(input, ".md").expect("it to create a file");
+
+                handle_file(&config, file.path()).expect("it to be a success");
+
+                let output = std::fs::read_to_string(file.path()).expect("it to return the string");
+
+                assert_eq!(output, expected_output);
+            };
+        }
     }
 }

@@ -1,3 +1,5 @@
+With package name 
+
 ```go
 
 
@@ -10,3 +12,20 @@
 
 
 ```
+
+
+Without package name 
+
+
+```go
+
+
+
+
+   func add(a int , b int  ) int {
+                return a + b
+       }
+
+
+```
+

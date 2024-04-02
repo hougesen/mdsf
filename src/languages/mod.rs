@@ -2,7 +2,7 @@ use schemars::JsonSchema;
 
 use crate::formatters::MdsfFormatter;
 
-#[derive(Clone, Copy)]
+#[derive(Clone, Copy, PartialEq, Eq)]
 pub enum JsonFlavor {
     Json,
     JsonC,
@@ -20,7 +20,7 @@ impl core::fmt::Display for JsonFlavor {
     }
 }
 
-#[derive(Clone, Copy)]
+#[derive(Clone, Copy, PartialEq, Eq)]
 pub enum Language {
     Blade,
     C,
