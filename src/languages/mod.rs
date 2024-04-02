@@ -41,6 +41,23 @@ impl core::fmt::Display for CssFlavor {
 }
 
 #[derive(Clone, Copy, PartialEq, Eq)]
+pub enum ShellFlavor {
+    Shell,
+    Bash,
+    Zsh,
+}
+
+impl core::fmt::Display for ShellFlavor {
+    fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
+        match self {
+            Self::Shell => f.write_str("shell"),
+            Self::Bash => f.write_str("bash"),
+            Self::Zsh => f.write_str("zsh"),
+        }
+    }
+}
+
+#[derive(Clone, Copy, PartialEq, Eq)]
 pub enum Language {
     Blade,
     C,
@@ -79,7 +96,7 @@ pub enum Language {
     Ruby,
     Rust,
     Scala,
-    Shell,
+    Shell(ShellFlavor),
     Sql,
     Swift,
     Toml,
@@ -138,7 +155,7 @@ impl core::fmt::Display for Language {
             Self::Ruby => f.write_str("ruby"),
             Self::Rust => f.write_str("rust"),
             Self::Scala => f.write_str("scala"),
-            Self::Shell => f.write_str("shell"),
+            Self::Shell(flavor) => flavor.fmt(f),
             Self::Sql => f.write_str("sql"),
             Self::Swift => f.write_str("swift"),
             Self::Toml => f.write_str("toml"),
@@ -250,7 +267,9 @@ impl Language {
             "ruby" | "rb" => Some(Self::Ruby),
             "rust" | "rs" => Some(Self::Rust),
             "scala" => Some(Self::Scala),
-            "shell" | "sh" | "bash" | "zsh" => Some(Self::Shell),
+            "shell" | "sh" | "shell-script" => Some(Self::Shell(ShellFlavor::Shell)),
+            "bash" => Some(Self::Shell(ShellFlavor::Bash)),
+            "zsh" => Some(Self::Shell(ShellFlavor::Zsh)),
             "sql" | "bigquery" | "db2" | "db2i" | "hive" | "mariadb" | "mysql" | "n1ql"
             | "plsql" | "postgresql" | "redshift" | "singlestoredb" | "snowflake" | "spark"
             | "sqlite" | "transactsql" | "trino" | "tsql" => Some(Self::Sql),
@@ -309,7 +328,9 @@ impl Language {
             Self::Roc => ".roc",
             Self::Ruby => ".rb",
             Self::Rust => ".rs",
-            Self::Shell => ".sh",
+            Self::Shell(ShellFlavor::Shell) => ".sh",
+            Self::Shell(ShellFlavor::Bash) => ".bash",
+            Self::Shell(ShellFlavor::Zsh) => ".zsh",
             Self::Scala => ".scala",
             Self::Sql => ".sql",
             Self::Swift => ".swift",

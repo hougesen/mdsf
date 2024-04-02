@@ -19,7 +19,7 @@ pub fn format_using_beautysh(
 mod test_beautysh {
     use crate::{
         formatters::{beautysh::format_using_beautysh, setup_snippet},
-        languages::Language,
+        languages::{Language, ShellFlavor},
     };
 
     #[test_with::executable(beautysh)]
@@ -38,7 +38,7 @@ add() {
 }
 ";
 
-        let snippet = setup_snippet(input, Language::Shell.to_file_ext())
+        let snippet = setup_snippet(input, Language::Shell(ShellFlavor::Shell).to_file_ext())
             .expect("it to create a snippet file");
 
         let output = format_using_beautysh(snippet.path())
@@ -52,20 +52,20 @@ add() {
     #[test_with::executable(beautysh)]
     #[test]
     fn it_should_format_bash() {
-        let input = "#!/bin/shell
+        let input = "#!/bin/bash
 
        add() {
     echo \"$1\" + \"$2\"
              }
 ";
-        let expected_output = "#!/bin/shell
+        let expected_output = "#!/bin/bash
 
 add() {
     echo \"$1\" + \"$2\"
 }
 ";
 
-        let snippet = setup_snippet(input, Language::Shell.to_file_ext())
+        let snippet = setup_snippet(input, Language::Shell(ShellFlavor::Bash).to_file_ext())
             .expect("it to create a snippet file");
 
         let output = format_using_beautysh(snippet.path())

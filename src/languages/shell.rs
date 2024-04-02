@@ -53,7 +53,7 @@ impl LanguageFormatter for Shell {
 mod test_shell {
     use crate::{
         formatters::{setup_snippet, MdsfFormatter},
-        languages::Lang,
+        languages::{Lang, ShellFlavor},
     };
 
     use super::Shell;
@@ -75,7 +75,7 @@ mod test_shell {
 
 ";
 
-    const EXTENSION: &str = crate::languages::Language::Shell.to_file_ext();
+    const EXTENSION: &str = crate::languages::Language::Shell(ShellFlavor::Shell).to_file_ext();
 
     #[test]
     fn it_should_be_enabled_by_default() {
