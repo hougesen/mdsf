@@ -1,9 +1,13 @@
+use crate::terminal::print_debug_formatter_info;
+
 use super::execute_command;
 
 #[inline]
 pub fn format_using_swiftformat(
     snippet_path: &std::path::Path,
 ) -> std::io::Result<(bool, Option<String>)> {
+    print_debug_formatter_info("swiftformat");
+
     let mut cmd = std::process::Command::new("swiftformat");
 
     cmd.arg("--quiet").arg(snippet_path);
@@ -21,7 +25,7 @@ mod test_swiftformat {
     #[test]
     fn it_should_format_swift() {
         let input = " func add(a:Int ,b:Int)->Int {
-    return a + b     
+    return a + b
     }";
 
         let expected_output = "func add(a: Int, b: Int) -> Int {

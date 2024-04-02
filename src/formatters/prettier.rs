@@ -1,4 +1,7 @@
-use crate::runners::{setup_npm_script, JavaScriptRuntime};
+use crate::{
+    runners::{setup_npm_script, JavaScriptRuntime},
+    terminal::print_debug_formatter_info,
+};
 
 use super::execute_command;
 
@@ -31,6 +34,8 @@ pub fn format_using_prettier(
     snippet_path: &std::path::Path,
     embedded_language_formatting: bool,
 ) -> std::io::Result<(bool, Option<String>)> {
+    print_debug_formatter_info("prettier");
+
     // Local prettier
     let local_result = invoke_prettier(
         std::process::Command::new("node_modules/prettier/bin/prettier.cjs"),
@@ -374,8 +379,8 @@ function add(a: number, b: number): number {
 
     #[test]
     fn it_should_format_graphql() {
-        let input = "{   hero {     name      
-            # Queries can have comments!    
+        let input = "{   hero {     name
+            # Queries can have comments!
          friends {       name     }   } }";
 
         let expected_output = "{

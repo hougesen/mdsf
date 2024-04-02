@@ -1,9 +1,13 @@
+use crate::terminal::print_debug_formatter_info;
+
 use super::execute_command;
 
 #[inline]
 pub fn format_using_autopep8(
     snippet_path: &std::path::Path,
 ) -> std::io::Result<(bool, Option<String>)> {
+    print_debug_formatter_info("autopep8");
+
     let mut cmd = std::process::Command::new("autopep8");
 
     cmd.arg("--in-place").arg(snippet_path);

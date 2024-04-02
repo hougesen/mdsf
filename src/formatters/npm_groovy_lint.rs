@@ -1,4 +1,7 @@
-use crate::runners::{setup_npm_script, JavaScriptRuntime};
+use crate::{
+    runners::{setup_npm_script, JavaScriptRuntime},
+    terminal::print_debug_formatter_info,
+};
 
 use super::execute_command;
 
@@ -22,6 +25,8 @@ fn invoke_npm_groovy_lint(
 pub fn format_using_npm_groovy_lint(
     snippet_path: &std::path::Path,
 ) -> std::io::Result<(bool, Option<String>)> {
+    print_debug_formatter_info("npm-groovy-lint");
+
     let path_result =
         invoke_npm_groovy_lint(std::process::Command::new("npm-groovy-lint"), snippet_path)?;
 
@@ -45,7 +50,7 @@ mod test_npm_groovy_lint {
     #[test]
     fn it_should_format_groovy() {
         let input = "                  def add(a, b) {
-            return a + b 
+            return a + b
         }
 
         assert add(1,2) == 3 ";

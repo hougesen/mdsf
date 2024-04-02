@@ -1,9 +1,13 @@
+use crate::terminal::print_debug_formatter_info;
+
 use super::execute_command;
 
 #[inline]
 pub fn format_using_gofumpt(
     snippet_path: &std::path::Path,
 ) -> std::io::Result<(bool, Option<String>)> {
+    print_debug_formatter_info("gofumpt");
+
     let mut cmd = std::process::Command::new("gofumpt");
 
     cmd.arg("-w").arg(snippet_path);
@@ -18,10 +22,10 @@ mod test_gofumpt {
     #[test_with::executable(gofumpt)]
     #[test]
     fn it_should_format_go() {
-        let input = "package main 
+        let input = "package main
 
    func add(a int , b int  ) int {
-                return a + b 
+                return a + b
        }
 
     ";

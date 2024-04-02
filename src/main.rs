@@ -4,6 +4,7 @@ use mdsf::{
     config::MdsfConfig,
     error::MdsfError,
     handle_file,
+    terminal::print_file_not_found,
 };
 
 fn format_command(args: FormatCommandArguments) -> Result<(), MdsfError> {
@@ -28,20 +29,7 @@ fn format_command(args: FormatCommandArguments) -> Result<(), MdsfError> {
             }
         }
     } else {
-        #[cfg(target_os = "windows")]
-        let pre = "";
-        #[cfg(not(target_os = "windows"))]
-        let pre = "\u{1b}[31m";
-
-        #[cfg(target_os = "windows")]
-        let post = "";
-        #[cfg(not(target_os = "windows"))]
-        let post = "\u{1b}[0m";
-
-        println!(
-            "{pre}No file or directory with the name \"{}\" found{post}",
-            args.path.display(),
-        );
+        print_file_not_found(&args.path);
     }
 
     Ok(())

@@ -1,9 +1,13 @@
+use crate::terminal::print_debug_formatter_info;
+
 use super::execute_command;
 
 #[inline]
 pub fn format_using_nimpretty(
     snippet_path: &std::path::Path,
 ) -> std::io::Result<(bool, Option<String>)> {
+    print_debug_formatter_info("nimpretty");
+
     let mut cmd = std::process::Command::new("nimpretty");
 
     cmd.arg(snippet_path);

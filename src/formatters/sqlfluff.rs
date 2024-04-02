@@ -1,3 +1,5 @@
+use crate::terminal::print_debug_formatter_info;
+
 use super::execute_command;
 
 #[inline]
@@ -23,6 +25,8 @@ fn invote_sqlfluff(
 pub fn format_using_sqlfluff(
     snippet_path: &std::path::Path,
 ) -> std::io::Result<(bool, Option<String>)> {
+    print_debug_formatter_info("sqlfluff");
+
     invote_sqlfluff(std::process::Command::new("sqlfluff"), snippet_path)
 }
 
@@ -33,7 +37,7 @@ mod test_sqlfluff {
     #[test_with::executable(sqlfluff)]
     #[test]
     fn it_should_format_sql() {
-        let input = "SELECT  *                  FROM  tbl 
+        let input = "SELECT  *                  FROM  tbl
                         WHERE                      foo   = 'bar';         ";
 
         let expected_output = "SELECT * FROM tbl

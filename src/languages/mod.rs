@@ -2,12 +2,25 @@ use schemars::JsonSchema;
 
 use crate::formatters::MdsfFormatter;
 
+#[derive(Clone, Copy)]
 pub enum JsonFlavor {
     Json,
     JsonC,
     Json5,
 }
 
+impl core::fmt::Display for JsonFlavor {
+    #[inline]
+    fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
+        match self {
+            Self::Json => f.write_str("json"),
+            Self::JsonC => f.write_str("jsonc"),
+            Self::Json5 => f.write_str("json5"),
+        }
+    }
+}
+
+#[derive(Clone, Copy)]
 pub enum Language {
     Blade,
     C,
@@ -62,6 +75,60 @@ pub enum Language {
     // TODO: XML,
     // TODO: D,
     // TODO: R,
+}
+
+impl core::fmt::Display for Language {
+    #[inline]
+    fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
+        match self {
+            Self::Blade => f.write_str("blade"),
+            Self::C => f.write_str("c"),
+            Self::Clojure => f.write_str("clojure"),
+            Self::CSharp => f.write_str("c#"),
+            Self::Cpp => f.write_str("c++"),
+            Self::Crystal => f.write_str("crystal"),
+            Self::Css => f.write_str("css"),
+            Self::Dart => f.write_str("dart"),
+            Self::Elixir => f.write_str("elixir"),
+            Self::Elm => f.write_str("elm"),
+            Self::Erlang => f.write_str("erlang"),
+            Self::FSharp => f.write_str("f#"),
+            Self::Gleam => f.write_str("gleam"),
+            Self::Go => f.write_str("go"),
+            Self::GraphQL => f.write_str("graphql"),
+            Self::Groovy => f.write_str("groovy"),
+            Self::Haskell => f.write_str("haskell"),
+            Self::Html => f.write_str("html"),
+            Self::Java => f.write_str("java"),
+            Self::JavaScript => f.write_str("javascript"),
+            Self::Json(flavor) => flavor.fmt(f),
+            Self::Just => f.write_str("just"),
+            Self::Kotlin => f.write_str("kotlin"),
+            Self::Lua => f.write_str("lua"),
+            Self::Markdown => f.write_str("markdown"),
+            Self::Nim => f.write_str("nim"),
+            Self::OCaml => f.write_str("ocaml"),
+            Self::ObjectiveC => f.write_str("objective c"),
+            Self::Perl => f.write_str("perl"),
+            Self::Protobuf => f.write_str("protobuf"),
+            Self::PureScript => f.write_str("purescript"),
+            Self::Python => f.write_str("python"),
+            Self::ReScript => f.write_str("rescript"),
+            Self::Roc => f.write_str("roc"),
+            Self::Ruby => f.write_str("ruby"),
+            Self::Rust => f.write_str("rust"),
+            Self::Scala => f.write_str("scala"),
+            Self::Shell => f.write_str("shell"),
+            Self::Sql => f.write_str("sql"),
+            Self::Swift => f.write_str("swift"),
+            Self::Toml => f.write_str("toml"),
+            Self::TypeScript => f.write_str("typescript"),
+            Self::Vue => f.write_str("vue"),
+            Self::Xml => f.write_str("xml"),
+            Self::Yaml => f.write_str("yaml"),
+            Self::Zig => f.write_str("zig"),
+        }
+    }
 }
 
 pub mod blade;

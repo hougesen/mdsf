@@ -1,9 +1,13 @@
+use crate::terminal::print_debug_formatter_info;
+
 use super::execute_command;
 
 #[inline]
 pub fn format_using_fourmolu(
     snippet_path: &std::path::Path,
 ) -> std::io::Result<(bool, Option<String>)> {
+    print_debug_formatter_info("fourmolu");
+
     let mut cmd = std::process::Command::new("fourmolu");
 
     cmd.arg("-i").arg(snippet_path);
@@ -22,8 +26,8 @@ mod test_fourmolu {
     fn it_should_format_haskell() {
         let input = "
 addNumbers::Int->Int->Int
-addNumbers a b = do 
-        a + b 
+addNumbers a b = do
+        a + b
         ";
 
         let expected_output = "addNumbers :: Int -> Int -> Int

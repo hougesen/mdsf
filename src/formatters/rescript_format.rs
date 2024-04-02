@@ -1,4 +1,7 @@
-use crate::runners::{setup_npm_script, JavaScriptRuntime};
+use crate::{
+    runners::{setup_npm_script, JavaScriptRuntime},
+    terminal::print_debug_formatter_info,
+};
 
 use super::execute_command;
 
@@ -21,6 +24,8 @@ fn invote_rescript_format(
 pub fn format_using_rescript_format(
     snippet_path: &std::path::Path,
 ) -> std::io::Result<(bool, Option<String>)> {
+    print_debug_formatter_info("rescript_format");
+
     invote_rescript_format(
         setup_npm_script(JavaScriptRuntime::default(), "rescript"),
         snippet_path,

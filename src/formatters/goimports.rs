@@ -1,9 +1,13 @@
+use crate::terminal::print_debug_formatter_info;
+
 use super::execute_command;
 
 #[inline]
 pub fn format_using_goimports(
     snippet_path: &std::path::Path,
 ) -> std::io::Result<(bool, Option<String>)> {
+    print_debug_formatter_info("goimports");
+
     let mut cmd = std::process::Command::new("goimports");
 
     cmd.arg("-w").arg(snippet_path);

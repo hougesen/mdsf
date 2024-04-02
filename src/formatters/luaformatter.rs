@@ -1,9 +1,13 @@
+use crate::terminal::print_debug_formatter_info;
+
 use super::execute_command;
 
 #[inline]
 pub fn format_using_luaformatter(
     snippet_path: &std::path::Path,
 ) -> std::io::Result<(bool, Option<String>)> {
+    print_debug_formatter_info("luaformatter");
+
     let mut cmd = std::process::Command::new("lua-format");
 
     cmd.arg("-i").arg(snippet_path);
@@ -26,7 +30,7 @@ mod test_luaformatter {
         local               function        add (                                       a , b
 )
 local c=a+b
-return    c  
+return    c
 
 
 end
