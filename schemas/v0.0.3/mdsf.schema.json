@@ -606,7 +606,7 @@
     },
     "JavaScript": {
       "type": "string",
-      "enum": ["prettier", "biome", "deno_fmt", "clang-format"]
+      "enum": ["prettier", "biome", "deno_fmt", "clang-format", "standardjs"]
     },
     "JavaScriptRuntime": {
       "type": "string",

@@ -2,7 +2,8 @@ use schemars::JsonSchema;
 
 use crate::formatters::{
     biome::format_using_biome, clang_format::format_using_clang_format,
-    deno_fmt::format_using_deno_fmt, prettier::format_using_prettier, MdsfFormatter,
+    deno_fmt::format_using_deno_fmt, prettier::format_using_prettier,
+    standardjs::format_using_standardjs, MdsfFormatter,
 };
 
 use super::{Lang, LanguageFormatter};
@@ -19,6 +20,8 @@ pub enum JavaScript {
     DenoFmt,
     #[serde(rename = "clang-format")]
     ClangFormat,
+    #[serde(rename = "standardjs")]
+    Standardjs,
 }
 
 impl Default for Lang<JavaScript> {
@@ -54,6 +57,7 @@ impl LanguageFormatter for JavaScript {
             Self::Prettier => format_using_prettier(snippet_path, true),
             Self::ClangFormat => format_using_clang_format(snippet_path),
             Self::DenoFmt => format_using_deno_fmt(snippet_path),
+            Self::Standardjs => format_using_standardjs(snippet_path),
         }
     }
 }
@@ -196,6 +200,41 @@ mod test_javascript {
         let l = Lang::<JavaScript> {
             enabled: true,
             formatter: MdsfFormatter::Single(JavaScript::DenoFmt),
+        };
+
+        let snippet = setup_snippet(input, EXTENSION).expect("it to save the file");
+        let snippet_path = snippet.path();
+
+        let output = l
+            .format(snippet_path)
+            .expect("it to not fail")
+            .expect("it to be a snippet");
+
+        assert_eq!(expected_output, output);
+    }
+
+    #[test_with::executable(npx)]
+    #[test]
+    fn test_standardjs() {
+        let input = "
+    async function asyncAddition(a,b  )
+     {
+        return a+b
+                              }
+
+                          console.info(asyncAddition(1, 2));
+            ";
+
+        let expected_output = "async function asyncAddition (a, b) {
+  return a + b
+}
+
+console.info(asyncAddition(1, 2))
+";
+
+        let l = Lang::<JavaScript> {
+            enabled: true,
+            formatter: MdsfFormatter::Single(JavaScript::Standardjs),
         };
 
         let snippet = setup_snippet(input, EXTENSION).expect("it to save the file");

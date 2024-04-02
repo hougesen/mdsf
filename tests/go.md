@@ -1,4 +1,4 @@
-With package name 
+With package name
 
 ```go
 
@@ -13,9 +13,7 @@ With package name
 
 ```
 
-
-Without package name 
-
+Without package name
 
 ```go
 
@@ -29,3 +27,40 @@ Without package name
 
 ```
 
+```go
+
+
+// 	package mdsf
+
+   func add(a int , b int  ) int {
+                return a + b
+       }
+
+
+```
+
+```go
+
+
+//package 	mdsf
+
+
+   func add(a int , b int  ) int {
+                return a + b
+       }
+
+
+```
+
+```go
+
+
+//  package mdsf
+
+
+   func add(a int , b int  ) int {
+                return a + b
+       }
+
+
+```
