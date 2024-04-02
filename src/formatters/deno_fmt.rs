@@ -13,7 +13,10 @@ pub fn format_using_deno_fmt(
 
 #[cfg(test)]
 mod test_deno_fmt {
-    use crate::{formatters::setup_snippet, languages::Language};
+    use crate::{
+        formatters::setup_snippet,
+        languages::{JsonFlavor, Language},
+    };
 
     use super::format_using_deno_fmt;
 
@@ -44,7 +47,7 @@ mod test_deno_fmt {
 }
 ";
 
-        let snippet = setup_snippet(input, Language::Json.to_file_ext())
+        let snippet = setup_snippet(input, Language::Json(JsonFlavor::Json).to_file_ext())
             .expect("it to create a snippet file");
 
         let output = format_using_deno_fmt(snippet.path())

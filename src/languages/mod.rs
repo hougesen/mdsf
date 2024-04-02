@@ -2,6 +2,12 @@ use schemars::JsonSchema;
 
 use crate::formatters::MdsfFormatter;
 
+pub enum JsonFlavor {
+    Json,
+    JsonC,
+    Json5,
+}
+
 pub enum Language {
     Blade,
     C,
@@ -23,7 +29,7 @@ pub enum Language {
     Html,
     Java,
     JavaScript,
-    Json,
+    Json(JsonFlavor),
     Just,
     Kotlin,
     Lua,
@@ -135,7 +141,9 @@ impl Language {
             "html" | "html5" => Some(Self::Html),
             "java" => Some(Self::Java),
             "javascript" | "js" | "jsx" => Some(Self::JavaScript),
-            "json" | "jsonc" => Some(Self::Json),
+            "json" => Some(Self::Json(JsonFlavor::Json)),
+            "jsonc" => Some(Self::Json(JsonFlavor::JsonC)),
+            "json5" => Some(Self::Json(JsonFlavor::Json5)),
             "just" | "justfile" => Some(Self::Just),
             "kotlin" => Some(Self::Kotlin),
             "lua" => Some(Self::Lua),
@@ -190,7 +198,9 @@ impl Language {
             Self::Html => ".html",
             Self::Java => ".java",
             Self::JavaScript => ".js",
-            Self::Json => ".jsonc",
+            Self::Json(JsonFlavor::Json) => ".json",
+            Self::Json(JsonFlavor::JsonC) => ".jsonc",
+            Self::Json(JsonFlavor::Json5) => ".json5",
             Self::Just => ".justfile",
             Self::Kotlin => ".kt",
             Self::Lua => ".lua",

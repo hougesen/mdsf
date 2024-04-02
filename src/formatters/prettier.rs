@@ -64,7 +64,7 @@ pub fn format_using_prettier(
 mod test_prettier {
     use crate::{
         formatters::{prettier::format_using_prettier, setup_snippet},
-        languages::Language,
+        languages::{JsonFlavor, Language},
     };
 
     #[test]
@@ -84,11 +84,11 @@ mod test_prettier {
         let expected_output = "{
   // comments are allowed
   \"key\": \"value\",
-  \"key2\": [\"value2\", \"value3\", 1, null],
+  \"key2\": [\"value2\", \"value3\", 1, null]
 }
 ";
 
-        let snippet = setup_snippet(input, Language::Json.to_file_ext())
+        let snippet = setup_snippet(input, Language::Json(JsonFlavor::Json).to_file_ext())
             .expect("it to create a snippet file");
 
         let output = format_using_prettier(snippet.path(), true)

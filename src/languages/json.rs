@@ -62,13 +62,12 @@ impl LanguageFormatter for Json {
 mod test_json {
     use crate::{
         formatters::{setup_snippet, MdsfFormatter},
-        languages::Lang,
+        languages::{JsonFlavor, Lang},
     };
 
     use super::Json;
 
-    const INPUT: &str = "
-              {
+    const INPUT: &str = "{
               \"key\": \"value\",
   \"key2\": [
       \"value2\",
@@ -78,7 +77,7 @@ mod test_json {
  }
   ";
 
-    const EXTENSION: &str = crate::languages::Language::Json.to_file_ext();
+    const EXTENSION: &str = crate::languages::Language::Json(JsonFlavor::Json).to_file_ext();
 
     #[test]
     fn it_should_be_enabled_by_default() {
@@ -116,7 +115,7 @@ mod test_json {
 
         let expected_output = "{
   \"key\": \"value\",
-  \"key2\": [\"value2\", \"value3\", 1, null],
+  \"key2\": [\"value2\", \"value3\", 1, null]
 }
 ";
 
@@ -163,8 +162,16 @@ mod test_json {
             .expect("it to not fail")
             .expect("it to be a snippet");
 
-        let expected_output =
-            "\n{ \"key\" : \"value\", \"key2\" : [ \"value2\", \"value3\", 1, null ] }\n";
+        let expected_output = "{
+  \"key\": \"value\",
+  \"key2\": [
+    \"value2\",
+    \"value3\",
+    1,
+    null
+  ]
+}
+";
 
         assert_eq!(output, expected_output);
     }
