@@ -1,14 +1,18 @@
 use schemars::JsonSchema;
 
-use crate::languages::{
-    blade::Blade, c::C, clojure::Clojure, cpp::Cpp, crystal::Crystal, csharp::CSharp, css::Css,
-    dart::Dart, elixir::Elixir, elm::Elm, erlang::Erlang, fsharp::FSharp, gleam::Gleam, go::Go,
-    graphql::GraphQL, groovy::Groovy, haskell::Haskell, html::Html, java::Java,
-    javascript::JavaScript, json::Json, just::Just, kotlin::Kotlin, lua::Lua, markdown::Markdown,
-    nim::Nim, objective_c::ObjectiveC, ocaml::OCaml, perl::Perl, protobuf::Protobuf,
-    purescript::PureScript, python::Python, rescript::ReScript, roc::Roc, ruby::Ruby, rust::Rust,
-    scala::Scala, shell::Shell, sql::Sql, swift::Swift, toml::Toml, typescript::TypeScript,
-    vue::Vue, xml::Xml, yaml::Yaml, zig::Zig, Lang,
+use crate::{
+    error::MdsfError,
+    languages::{
+        blade::Blade, c::C, clojure::Clojure, cpp::Cpp, crystal::Crystal, csharp::CSharp, css::Css,
+        dart::Dart, elixir::Elixir, elm::Elm, erlang::Erlang, fsharp::FSharp, gleam::Gleam, go::Go,
+        graphql::GraphQL, groovy::Groovy, haskell::Haskell, html::Html, java::Java,
+        javascript::JavaScript, json::Json, just::Just, kotlin::Kotlin, lua::Lua,
+        markdown::Markdown, nim::Nim, objective_c::ObjectiveC, ocaml::OCaml, perl::Perl,
+        protobuf::Protobuf, purescript::PureScript, python::Python, rescript::ReScript, roc::Roc,
+        ruby::Ruby, rust::Rust, scala::Scala, shell::Shell, sql::Sql, swift::Swift, toml::Toml,
+        typescript::TypeScript, vue::Vue, xml::Xml, yaml::Yaml, zig::Zig, Lang,
+    },
+    terminal::print_config_info,
 };
 
 #[derive(Debug, serde::Serialize, serde::Deserialize, JsonSchema)]
@@ -219,14 +223,29 @@ impl Default for MdsfConfig {
 
 impl MdsfConfig {
     #[inline]
-    pub fn load() -> Self {
-        if let Ok(raw_config) = std::fs::read_to_string("mdsf.json") {
-            if let Ok(config) = serde_json::from_str::<Self>(&raw_config) {
-                return config;
-            }
-        }
+    pub fn load() -> Result<Self, MdsfError> {
+        let dir = std::env::current_dir()?;
 
-        Self::default()
+        let path = dir.join("mdsf.json");
+
+        match std::fs::read_to_string(&path) {
+            Ok(raw_config) => {
+                if let Ok(config) = serde_json::from_str::<Self>(&raw_config) {
+                    print_config_info(Some(&path));
+                    Ok(config)
+                } else {
+                    Err(MdsfError::ConfigParse(path))
+                }
+            }
+            Err(error) => match error.kind() {
+                std::io::ErrorKind::NotFound => {
+                    print_config_info(None);
+                    Ok(Self::default())
+                }
+
+                _ => Err(MdsfError::from(error)),
+            },
+        }
     }
 }
 

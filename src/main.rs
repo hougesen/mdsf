@@ -4,13 +4,13 @@ use mdsf::{
     config::MdsfConfig,
     error::MdsfError,
     handle_file,
-    terminal::print_file_not_found,
+    terminal::print_error,
 };
 
 fn format_command(args: FormatCommandArguments) -> Result<(), MdsfError> {
     mdsf::DEBUG.swap(args.debug, core::sync::atomic::Ordering::Relaxed);
 
-    let conf = MdsfConfig::load();
+    let conf = MdsfConfig::load()?;
 
     if args.path.is_file() {
         handle_file(&conf, &args.path)?;
@@ -29,7 +29,7 @@ fn format_command(args: FormatCommandArguments) -> Result<(), MdsfError> {
             }
         }
     } else {
-        print_file_not_found(&args.path);
+        return Err(MdsfError::FileNotFound(args.path));
     }
 
     Ok(())
@@ -71,6 +71,6 @@ fn main() {
     };
 
     if let Err(error) = command_result {
-        eprintln!("{error}");
+        print_error(&error);
     }
 }

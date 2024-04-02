@@ -2,6 +2,8 @@
 pub enum MdsfError {
     Io(std::io::Error),
     Fmt(core::fmt::Error),
+    ConfigParse(std::path::PathBuf),
+    FileNotFound(std::path::PathBuf),
 }
 
 impl core::fmt::Display for MdsfError {
@@ -10,6 +12,14 @@ impl core::fmt::Display for MdsfError {
         match self {
             Self::Io(e) => e.fmt(f),
             Self::Fmt(e) => e.fmt(f),
+            Self::ConfigParse(path) => f.write_fmt(format_args!(
+                "Error parsing config found at '{}'",
+                path.display()
+            )),
+            Self::FileNotFound(path) => f.write_fmt(format_args!(
+                "No file or directory with the name '{}' found",
+                path.display()
+            )),
         }
     }
 }

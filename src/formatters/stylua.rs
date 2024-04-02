@@ -1,6 +1,6 @@
 use crate::{
     runners::{setup_npm_script, JavaScriptRuntime},
-    terminal::print_debug_formatter_info,
+    terminal::print_formatter_info,
 };
 
 use super::execute_command;
@@ -25,7 +25,7 @@ fn invoke_stylua(
 pub fn format_using_stylua(
     snippet_path: &std::path::Path,
 ) -> std::io::Result<(bool, Option<String>)> {
-    print_debug_formatter_info("stylua");
+    print_formatter_info("stylua");
 
     let path_result = invoke_stylua(std::process::Command::new("stylua"), snippet_path)?;
 

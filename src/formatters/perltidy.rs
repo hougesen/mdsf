@@ -1,4 +1,4 @@
-use crate::terminal::print_debug_formatter_info;
+use crate::terminal::print_formatter_info;
 
 use super::execute_command;
 
@@ -22,7 +22,7 @@ fn invoke_perltidy(
 pub fn format_using_perltidy(
     snippet_path: &std::path::Path,
 ) -> std::io::Result<(bool, Option<String>)> {
-    print_debug_formatter_info("perltidy");
+    print_formatter_info("perltidy");
 
     invoke_perltidy(std::process::Command::new("perltidy"), snippet_path)
 }

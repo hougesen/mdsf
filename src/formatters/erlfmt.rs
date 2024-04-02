@@ -1,10 +1,10 @@
-use crate::terminal::print_debug_formatter_info;
+use crate::terminal::print_formatter_info;
 
 use super::execute_command;
 
 #[inline]
 pub fn format_using_erlfmt(file_path: &std::path::Path) -> std::io::Result<(bool, Option<String>)> {
-    print_debug_formatter_info("erlfmt");
+    print_formatter_info("erlfmt");
 
     let mut cmd = std::process::Command::new("erlfmt");
 

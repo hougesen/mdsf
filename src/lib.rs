@@ -4,9 +4,7 @@ use config::MdsfConfig;
 use error::MdsfError;
 use formatters::format_snippet;
 use languages::Language;
-use terminal::{
-    print_debug_file_info, print_debug_line_info, write_changed_line, write_unchanged_line,
-};
+use terminal::{print_changed_line, print_file_info, print_line_info, print_unchanged_file};
 
 pub mod cli;
 pub mod config;
@@ -53,13 +51,7 @@ fn format_file(config: &MdsfConfig, input: &str) -> (bool, String) {
                 }
 
                 if is_snippet {
-                    if DEBUG.load(core::sync::atomic::Ordering::Relaxed) {
-                        print_debug_line_info(
-                            language,
-                            line_index + 1,
-                            line_index + snippet_lines + 1,
-                        );
-                    }
+                    print_line_info(language, line_index + 1, line_index + snippet_lines + 1);
 
                     let formatted = format_snippet(config, &language, &code_snippet);
 
@@ -95,14 +87,14 @@ fn format_file(config: &MdsfConfig, input: &str) -> (bool, String) {
 
 #[inline]
 pub fn handle_file(config: &MdsfConfig, path: &std::path::Path) -> Result<(), MdsfError> {
-    print_debug_file_info(path);
+    print_file_info(path);
 
     let time = std::time::Instant::now();
 
     let input = std::fs::read_to_string(path)?;
 
     if input.is_empty() {
-        write_unchanged_line(path, time.elapsed());
+        print_unchanged_file(path, time.elapsed());
         return Ok(());
     }
 
@@ -111,12 +103,12 @@ pub fn handle_file(config: &MdsfConfig, path: &std::path::Path) -> Result<(), Md
     if modified && output != input {
         std::fs::write(path, output)?;
 
-        write_changed_line(path, time.elapsed());
+        print_changed_line(path, time.elapsed());
 
         return Ok(());
     }
 
-    write_unchanged_line(path, time.elapsed());
+    print_unchanged_file(path, time.elapsed());
 
     Ok(())
 }
