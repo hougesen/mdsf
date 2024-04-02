@@ -35,9 +35,9 @@ impl core::fmt::Display for JavaScriptRuntime {
 
 static RUNTIME_FLAG: AtomicU8 = AtomicU8::new(0);
 
-const JAVASCRIPT_RUNTIME_BUN: u8 = 0;
-const JAVASCRIPT_RUNTIME_DENO: u8 = 1;
-const JAVASCRIPT_RUNTIME_NODE: u8 = 2;
+const JAVASCRIPT_RUNTIME_NODE: u8 = 0;
+const JAVASCRIPT_RUNTIME_BUN: u8 = 1;
+const JAVASCRIPT_RUNTIME_DENO: u8 = 2;
 
 impl From<JavaScriptRuntime> for u8 {
     #[inline]
