@@ -108,24 +108,21 @@ pub fn handle_file(config: &MdsfConfig, path: &std::path::Path) -> Result<(), Md
     let input = std::fs::read_to_string(path)?;
 
     if input.is_empty() {
-        let duration = time.elapsed();
-        write_unchanged_line(path, duration);
+        write_unchanged_line(path, time.elapsed());
         return Ok(());
     }
-
-    let duration = time.elapsed();
 
     let (modified, output) = format_file(config, &input);
 
     if modified && output != input {
         std::fs::write(path, output)?;
 
-        write_changed_line(path, duration);
+        write_changed_line(path, time.elapsed());
 
         return Ok(());
     }
 
-    write_unchanged_line(path, duration);
+    write_unchanged_line(path, time.elapsed());
 
     Ok(())
 }
