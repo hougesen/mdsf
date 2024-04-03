@@ -31,6 +31,7 @@ pub mod goimports;
 pub mod google_java_format;
 pub mod hindent;
 pub mod isort;
+pub mod juliaformatter_jl;
 pub mod just_fmt;
 pub mod ktfmt;
 pub mod ktlint;
@@ -164,6 +165,7 @@ pub fn format_snippet(config: &MdsfConfig, language: &Language, code: &str) -> S
             Language::Java => config.java.format(snippet_path),
             Language::JavaScript(_flavor) => config.javascript.format(snippet_path),
             Language::Json(_flavor) => config.json.format(snippet_path),
+            Language::Julia => config.julia.format(snippet_path),
             Language::Just => config.just.format(snippet_path),
             Language::Kotlin => config.kotlin.format(snippet_path),
             Language::Lua => config.lua.format(snippet_path),

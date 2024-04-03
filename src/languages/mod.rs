@@ -112,6 +112,7 @@ pub enum Language {
     Java,
     JavaScript(JavaScriptFlavor),
     Json(JsonFlavor),
+    Julia,
     Just,
     Kotlin,
     Lua,
@@ -139,7 +140,6 @@ pub enum Language {
     Zig,
     // TODO: PHP,
     // TODO: Svelte,
-    // TODO: Julia,
     // TODO: Dockerfile,
     // TODO: XML,
     // TODO: D,
@@ -171,6 +171,7 @@ impl core::fmt::Display for Language {
             Self::Java => f.write_str("java"),
             Self::JavaScript(flavor) => flavor.fmt(f),
             Self::Json(flavor) => flavor.fmt(f),
+            Self::Julia => f.write_str("julia"),
             Self::Just => f.write_str("just"),
             Self::Kotlin => f.write_str("kotlin"),
             Self::Lua => f.write_str("lua"),
@@ -221,6 +222,7 @@ pub mod html;
 pub mod java;
 pub mod javascript;
 pub mod json;
+pub mod julia;
 pub mod just;
 pub mod kotlin;
 pub mod lua;
@@ -284,6 +286,7 @@ impl Language {
             "json" => Some(Self::Json(JsonFlavor::Json)),
             "jsonc" => Some(Self::Json(JsonFlavor::JsonC)),
             "json5" => Some(Self::Json(JsonFlavor::Json5)),
+            "julia" | "jl" => Some(Self::Julia),
             "just" | "justfile" => Some(Self::Just),
             "kotlin" => Some(Self::Kotlin),
             "lua" => Some(Self::Lua),
@@ -348,6 +351,7 @@ impl Language {
             Self::Json(JsonFlavor::Json) => ".json",
             Self::Json(JsonFlavor::JsonC) => ".jsonc",
             Self::Json(JsonFlavor::Json5) => ".json5",
+            Self::Julia => ".jl",
             Self::Just => ".justfile",
             Self::Kotlin => ".kt",
             Self::Lua => ".lua",

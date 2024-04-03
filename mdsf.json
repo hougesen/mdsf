@@ -86,6 +86,10 @@
     "enabled": true,
     "formatter": [["prettier", "biome", "deno_fmt", "clang-format"]]
   },
+  "julia": {
+    "enabled": true,
+    "formatter": "juliaformatter.jl"
+  },
   "just": {
     "enabled": true,
     "formatter": "just_fmt"
