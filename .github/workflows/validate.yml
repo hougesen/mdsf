@@ -96,16 +96,20 @@ jobs:
         with:
           java-version: "21"
           distribution: "temurin"
-
       # fourmolo, hindent
       - uses: haskell-actions/setup@v2
         with:
           ghc-version: "latest"
           cabal-version: "latest"
           cabal-update: true
+      - uses: julia-actions/cache@v1
 
       - run: rustup toolchain install stable --profile minimal
       - run: rustup component add rustfmt clippy
+
+      - name: juliaformatter.jl
+        run: |
+          julia  -e 'import Pkg; Pkg.add("JuliaFormatter")'
 
       - name: taplo
         run: taplo --version

@@ -6,7 +6,7 @@ use crate::{
         blade::Blade, c::C, clojure::Clojure, cpp::Cpp, crystal::Crystal, csharp::CSharp, css::Css,
         dart::Dart, elixir::Elixir, elm::Elm, erlang::Erlang, fsharp::FSharp, gleam::Gleam, go::Go,
         graphql::GraphQL, groovy::Groovy, haskell::Haskell, html::Html, java::Java,
-        javascript::JavaScript, json::Json, just::Just, kotlin::Kotlin, lua::Lua,
+        javascript::JavaScript, json::Json, julia::Julia, just::Just, kotlin::Kotlin, lua::Lua,
         markdown::Markdown, nim::Nim, objective_c::ObjectiveC, ocaml::OCaml, perl::Perl,
         protobuf::Protobuf, purescript::PureScript, python::Python, rescript::ReScript, roc::Roc,
         ruby::Ruby, rust::Rust, scala::Scala, shell::Shell, sql::Sql, swift::Swift, toml::Toml,
@@ -101,6 +101,9 @@ pub struct MdsfConfig {
 
     #[serde(default)]
     pub json: Lang<Json>,
+
+    #[serde(default)]
+    pub julia: Lang<Julia>,
 
     #[serde(default)]
     pub just: Lang<Just>,
@@ -207,6 +210,7 @@ impl Default for MdsfConfig {
             java: Lang::<Java>::default(),
             javascript: Lang::<JavaScript>::default(),
             json: Lang::<Json>::default(),
+            julia: Lang::<Julia>::default(),
             just: Lang::<Just>::default(),
             kotlin: Lang::<Kotlin>::default(),
             lua: Lang::<Lua>::default(),
