@@ -1,6 +1,5 @@
-use crate::{runners::setup_npm_script, terminal::print_formatter_info};
-
 use super::execute_command;
+use crate::{runners::setup_npm_script, terminal::print_formatter_info};
 
 #[inline]
 pub fn format_using_biome(

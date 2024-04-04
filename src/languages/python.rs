@@ -1,12 +1,11 @@
 use schemars::JsonSchema;
 
+use super::{Lang, LanguageFormatter};
 use crate::formatters::{
     autopep8::format_using_autopep8, black::format_using_black, blue::format_using_blue,
     isort::format_using_isort, ruff::format_using_ruff, usort::format_using_usort,
     yapf::format_using_yapf, MdsfFormatter,
 };
-
-use super::{Lang, LanguageFormatter};
 
 #[derive(Debug, Default, serde::Serialize, serde::Deserialize, JsonSchema)]
 #[cfg_attr(test, derive(PartialEq, Eq))]
@@ -77,12 +76,11 @@ impl Default for Lang<Python> {
 
 #[cfg(test)]
 mod test_python {
+    use super::Python;
     use crate::{
         formatters::{setup_snippet, MdsfFormatter},
         languages::Lang,
     };
-
-    use super::Python;
 
     const INPUT: &str = "def add( a: int ,  b:int)->int: return a+b";
 

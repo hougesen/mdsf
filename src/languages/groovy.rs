@@ -1,8 +1,7 @@
 use schemars::JsonSchema;
 
-use crate::formatters::{npm_groovy_lint::format_using_npm_groovy_lint, MdsfFormatter};
-
 use super::{Lang, LanguageFormatter};
+use crate::formatters::{npm_groovy_lint::format_using_npm_groovy_lint, MdsfFormatter};
 
 #[derive(Debug, Default, serde::Serialize, serde::Deserialize, JsonSchema)]
 #[cfg_attr(test, derive(PartialEq, Eq))]
@@ -43,12 +42,11 @@ impl LanguageFormatter for Groovy {
 
 #[cfg(test)]
 mod test_groovy {
+    use super::Groovy;
     use crate::{
         formatters::{setup_snippet, MdsfFormatter},
         languages::Lang,
     };
-
-    use super::Groovy;
 
     const INPUT: &str = "        def add(a, b) {
             return a + b 

@@ -1,8 +1,7 @@
 use schemars::JsonSchema;
 
-use crate::formatters::{elm_format::format_using_elm_format, MdsfFormatter};
-
 use super::{Lang, LanguageFormatter};
+use crate::formatters::{elm_format::format_using_elm_format, MdsfFormatter};
 
 #[derive(Debug, Default, serde::Serialize, serde::Deserialize, JsonSchema)]
 #[cfg_attr(test, derive(PartialEq, Eq))]
@@ -43,12 +42,11 @@ impl LanguageFormatter for Elm {
 
 #[cfg(test)]
 mod test_elm {
+    use super::Elm;
     use crate::{
         formatters::{setup_snippet, MdsfFormatter},
         languages::Lang,
     };
-
-    use super::Elm;
 
     const INPUT: &str = r#"import   Html       exposing   (text)
 

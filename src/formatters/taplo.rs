@@ -1,6 +1,5 @@
-use crate::{runners::setup_npm_script, terminal::print_formatter_info};
-
 use super::execute_command;
+use crate::{runners::setup_npm_script, terminal::print_formatter_info};
 
 #[inline]
 fn set_taplo_args(cmd: &mut std::process::Command, snippet_path: &std::path::Path) {

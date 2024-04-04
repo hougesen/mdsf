@@ -1,8 +1,7 @@
 use schemars::JsonSchema;
 
-use crate::formatters::{prettier::format_using_prettier, MdsfFormatter};
-
 use super::{Lang, LanguageFormatter};
+use crate::formatters::{prettier::format_using_prettier, MdsfFormatter};
 
 #[derive(Debug, Default, serde::Serialize, serde::Deserialize, JsonSchema)]
 #[cfg_attr(test, derive(PartialEq, Eq))]
@@ -43,12 +42,11 @@ impl LanguageFormatter for Markdown {
 
 #[cfg(test)]
 mod test_markdown {
+    use super::Markdown;
     use crate::{
         formatters::{setup_snippet, MdsfFormatter},
         languages::Lang,
     };
-
-    use super::Markdown;
 
     const INPUT: &str = "
 # mads    was here

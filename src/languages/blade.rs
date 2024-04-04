@@ -1,8 +1,7 @@
 use schemars::JsonSchema;
 
-use crate::formatters::{blade_formatter::format_using_blade_formatter, MdsfFormatter};
-
 use super::{Lang, LanguageFormatter};
+use crate::formatters::{blade_formatter::format_using_blade_formatter, MdsfFormatter};
 
 #[derive(Debug, Default, serde::Serialize, serde::Deserialize, JsonSchema)]
 #[cfg_attr(test, derive(PartialEq, Eq))]
@@ -43,12 +42,11 @@ impl LanguageFormatter for Blade {
 
 #[cfg(test)]
 mod test_blade {
+    use super::Blade;
     use crate::{
         formatters::{setup_snippet, MdsfFormatter},
         languages::Lang,
     };
-
-    use super::Blade;
 
     const INPUT: &str = r#"@extends('frontend.layouts.app')
 @section('title') foo

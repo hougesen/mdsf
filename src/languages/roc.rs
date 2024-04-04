@@ -1,8 +1,7 @@
 use schemars::JsonSchema;
 
-use crate::formatters::{roc_format::format_using_roc_format, MdsfFormatter};
-
 use super::{Lang, LanguageFormatter};
+use crate::formatters::{roc_format::format_using_roc_format, MdsfFormatter};
 
 #[derive(Debug, Default, serde::Serialize, serde::Deserialize, JsonSchema)]
 #[cfg_attr(test, derive(PartialEq, Eq))]
@@ -43,12 +42,11 @@ impl LanguageFormatter for Roc {
 
 #[cfg(test)]
 mod test_roc {
+    use super::Roc;
     use crate::{
         formatters::{setup_snippet, MdsfFormatter},
         languages::Lang,
     };
-
-    use super::Roc;
 
     const INPUT: &str = r#"app "helloWorld"
     packages { pf: "https://github.com/roc-lang/" }

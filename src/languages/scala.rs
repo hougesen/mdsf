@@ -1,8 +1,7 @@
 use schemars::JsonSchema;
 
-use crate::formatters::{scalafmt::format_using_scalafmt, MdsfFormatter};
-
 use super::{Lang, LanguageFormatter};
+use crate::formatters::{scalafmt::format_using_scalafmt, MdsfFormatter};
 
 #[derive(Debug, Default, serde::Serialize, serde::Deserialize, JsonSchema)]
 #[cfg_attr(test, derive(PartialEq, Eq))]
@@ -43,12 +42,11 @@ impl LanguageFormatter for Scala {
 
 #[cfg(test)]
 mod test_blade {
+    use super::Scala;
     use crate::{
         formatters::{setup_snippet, MdsfFormatter},
         languages::Lang,
     };
-
-    use super::Scala;
 
     const INPUT: &str = r#"
          object A    {  println   ("HELLO!"  )  }

@@ -1,8 +1,7 @@
 use schemars::JsonSchema;
 
-use crate::formatters::{zigfmt::format_using_zigfmt, MdsfFormatter};
-
 use super::{Lang, LanguageFormatter};
+use crate::formatters::{zigfmt::format_using_zigfmt, MdsfFormatter};
 
 #[derive(Debug, Default, serde::Serialize, serde::Deserialize, JsonSchema)]
 #[cfg_attr(test, derive(PartialEq, Eq))]
@@ -43,12 +42,11 @@ impl LanguageFormatter for Zig {
 
 #[cfg(test)]
 mod test_zig {
+    use super::Zig;
     use crate::{
         formatters::{setup_snippet, MdsfFormatter},
         languages::Lang,
     };
-
-    use super::Zig;
 
     const INPUT: &str = "
     fn     add   (a : i32    , b :   i32 )             i32 {

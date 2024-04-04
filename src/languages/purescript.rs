@@ -1,8 +1,7 @@
 use schemars::JsonSchema;
 
-use crate::formatters::{purs_tidy::format_using_purs_tidy, MdsfFormatter};
-
 use super::{Lang, LanguageFormatter};
+use crate::formatters::{purs_tidy::format_using_purs_tidy, MdsfFormatter};
 
 #[derive(Debug, Default, serde::Serialize, serde::Deserialize, JsonSchema)]
 #[cfg_attr(test, derive(PartialEq, Eq))]
@@ -43,12 +42,11 @@ impl LanguageFormatter for PureScript {
 
 #[cfg(test)]
 mod test_purescript {
+    use super::PureScript;
     use crate::{
         formatters::{setup_snippet, MdsfFormatter},
         languages::Lang,
     };
-
-    use super::PureScript;
 
     const INPUT: &str = r#"module       Test.Main   where
 

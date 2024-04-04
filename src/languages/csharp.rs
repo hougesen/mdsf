@@ -1,10 +1,9 @@
 use schemars::JsonSchema;
 
+use super::{Lang, LanguageFormatter};
 use crate::formatters::{
     clang_format::format_using_clang_format, csharpier::format_using_csharpier, MdsfFormatter,
 };
-
-use super::{Lang, LanguageFormatter};
 
 #[derive(Debug, Default, serde::Serialize, serde::Deserialize, JsonSchema)]
 #[cfg_attr(test, derive(PartialEq, Eq))]
@@ -51,12 +50,11 @@ impl LanguageFormatter for CSharp {
 
 #[cfg(test)]
 mod test_csharp {
+    use super::CSharp;
     use crate::{
         formatters::{setup_snippet, MdsfFormatter},
         languages::Lang,
     };
-
-    use super::CSharp;
 
     const INPUT: &str = "namespace Mdsf {
                         class Adder {

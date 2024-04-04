@@ -1,11 +1,10 @@
 use schemars::JsonSchema;
 
+use super::{Lang, LanguageFormatter};
 use crate::formatters::{
     biome::format_using_biome, deno_fmt::format_using_deno_fmt, prettier::format_using_prettier,
     MdsfFormatter,
 };
-
-use super::{Lang, LanguageFormatter};
 
 #[derive(Debug, Default, serde::Serialize, serde::Deserialize, JsonSchema)]
 #[cfg_attr(test, derive(PartialEq, Eq))]

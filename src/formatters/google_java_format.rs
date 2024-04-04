@@ -1,6 +1,5 @@
-use crate::terminal::print_formatter_info;
-
 use super::execute_command;
+use crate::terminal::print_formatter_info;
 
 #[inline]
 pub fn format_using_google_java_format(
@@ -17,9 +16,8 @@ pub fn format_using_google_java_format(
 
 #[cfg(test)]
 mod test_google_java_format {
-    use crate::{formatters::setup_snippet, languages::Language};
-
     use super::format_using_google_java_format;
+    use crate::{formatters::setup_snippet, languages::Language};
 
     #[test_with::executable(google-java-format)]
     #[test]

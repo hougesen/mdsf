@@ -1,6 +1,5 @@
-use crate::{runners::setup_npm_script, terminal::print_formatter_info};
-
 use super::execute_command;
+use crate::{runners::setup_npm_script, terminal::print_formatter_info};
 
 #[inline]
 fn set_purs_tidy_args(cmd: &mut std::process::Command, snippet_path: &std::path::Path) {
@@ -28,9 +27,8 @@ pub fn format_using_purs_tidy(
 
 #[cfg(test)]
 mod test_purs_tidy {
-    use crate::{formatters::setup_snippet, languages::Language};
-
     use super::format_using_purs_tidy;
+    use crate::{formatters::setup_snippet, languages::Language};
 
     #[test]
     fn it_should_format_purescript() {

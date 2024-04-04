@@ -1,8 +1,7 @@
 use schemars::JsonSchema;
 
-use crate::formatters::{taplo::format_using_taplo, MdsfFormatter};
-
 use super::{Lang, LanguageFormatter};
+use crate::formatters::{taplo::format_using_taplo, MdsfFormatter};
 
 #[derive(Debug, Default, serde::Serialize, serde::Deserialize, JsonSchema)]
 #[cfg_attr(test, derive(PartialEq, Eq))]
@@ -43,12 +42,11 @@ impl LanguageFormatter for Toml {
 
 #[cfg(test)]
 mod test_toml {
+    use super::Toml;
     use crate::{
         formatters::{setup_snippet, MdsfFormatter},
         languages::Lang,
     };
-
-    use super::Toml;
 
     const INPUT: &str = "          package         =              \"mdsf\"
   author   = \"Mads Hougesen\"

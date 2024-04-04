@@ -1,8 +1,7 @@
 use schemars::JsonSchema;
 
-use crate::formatters::{ktfmt::format_using_ktfmt, ktlint::format_using_ktlint, MdsfFormatter};
-
 use super::{Lang, LanguageFormatter};
+use crate::formatters::{ktfmt::format_using_ktfmt, ktlint::format_using_ktlint, MdsfFormatter};
 
 #[derive(Debug, Default, serde::Serialize, serde::Deserialize, JsonSchema)]
 #[cfg_attr(test, derive(PartialEq, Eq))]
@@ -49,12 +48,11 @@ impl LanguageFormatter for Kotlin {
 
 #[cfg(test)]
 mod test_kotlin {
+    use super::Kotlin;
     use crate::{
         formatters::{setup_snippet, MdsfFormatter},
         languages::Lang,
     };
-
-    use super::Kotlin;
 
     const INPUT: &str = "  fun add(a:Int ,b:Int ):Int {
                     return a + b

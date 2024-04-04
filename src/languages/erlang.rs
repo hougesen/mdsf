@@ -1,8 +1,7 @@
 use schemars::JsonSchema;
 
-use crate::formatters::{efmt::format_using_efmt, erlfmt::format_using_erlfmt, MdsfFormatter};
-
 use super::{Lang, LanguageFormatter};
+use crate::formatters::{efmt::format_using_efmt, erlfmt::format_using_erlfmt, MdsfFormatter};
 
 #[derive(Debug, Default, serde::Serialize, serde::Deserialize, JsonSchema)]
 #[cfg_attr(test, derive(PartialEq, Eq))]
@@ -46,12 +45,11 @@ impl LanguageFormatter for Erlang {
 
 #[cfg(test)]
 mod test_erlang {
+    use super::Erlang;
     use crate::{
         formatters::{setup_snippet, MdsfFormatter},
         languages::Lang,
     };
-
-    use super::Erlang;
 
     const INPUT: &str = "what_is(Erlang) ->
 case Erlang of movie->[hello(mike,joe,robert),credits]; language->formatting_arguments end

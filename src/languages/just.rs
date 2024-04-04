@@ -1,8 +1,7 @@
 use schemars::JsonSchema;
 
-use crate::formatters::{just_fmt::format_using_just_fmt, MdsfFormatter};
-
 use super::{Lang, LanguageFormatter};
+use crate::formatters::{just_fmt::format_using_just_fmt, MdsfFormatter};
 
 #[derive(Debug, Default, serde::Serialize, serde::Deserialize, JsonSchema)]
 #[cfg_attr(test, derive(PartialEq, Eq))]
@@ -43,12 +42,11 @@ impl LanguageFormatter for Just {
 
 #[cfg(test)]
 mod test_just {
+    use super::Just;
     use crate::{
         formatters::{setup_snippet, MdsfFormatter},
         languages::Lang,
     };
-
-    use super::Just;
 
     const INPUT: &str = "
 

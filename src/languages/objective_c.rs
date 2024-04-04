@@ -1,8 +1,7 @@
 use schemars::JsonSchema;
 
-use crate::formatters::{clang_format::format_using_clang_format, MdsfFormatter};
-
 use super::{Lang, LanguageFormatter};
+use crate::formatters::{clang_format::format_using_clang_format, MdsfFormatter};
 
 #[derive(Debug, Default, serde::Serialize, serde::Deserialize, JsonSchema)]
 #[cfg_attr(test, derive(PartialEq, Eq))]
@@ -43,12 +42,11 @@ impl LanguageFormatter for ObjectiveC {
 
 #[cfg(test)]
 mod test_objective_c {
+    use super::ObjectiveC;
     use crate::{
         formatters::{setup_snippet, MdsfFormatter},
         languages::Lang,
     };
-
-    use super::ObjectiveC;
 
     const INPUT: &str = "int add(int a,int b){
             a - a ;

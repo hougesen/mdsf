@@ -1,11 +1,10 @@
 use schemars::JsonSchema;
 
+use super::{Lang, LanguageFormatter};
 use crate::formatters::{
     rubocop::format_using_rubocop, rubyfmt::format_using_rubyfmt, rufo::format_using_rufo,
     standardrb::format_using_standardrb, MdsfFormatter,
 };
-
-use super::{Lang, LanguageFormatter};
 
 #[derive(Debug, Default, serde::Serialize, serde::Deserialize, JsonSchema)]
 #[cfg_attr(test, derive(PartialEq, Eq))]
@@ -60,12 +59,11 @@ impl LanguageFormatter for Ruby {
 
 #[cfg(test)]
 mod test_ruby {
+    use super::Ruby;
     use crate::{
         formatters::{setup_snippet, MdsfFormatter},
         languages::Lang,
     };
-
-    use super::Ruby;
 
     const INPUT: &str =
         "def   add(  a ,                                                          b )

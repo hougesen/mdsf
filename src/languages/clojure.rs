@@ -1,8 +1,7 @@
 use schemars::JsonSchema;
 
-use crate::formatters::{cljstyle::format_using_cljstyle, MdsfFormatter};
-
 use super::{Lang, LanguageFormatter};
+use crate::formatters::{cljstyle::format_using_cljstyle, MdsfFormatter};
 
 #[derive(Debug, Default, serde::Serialize, serde::Deserialize, JsonSchema)]
 #[cfg_attr(test, derive(PartialEq, Eq))]
@@ -43,12 +42,11 @@ impl LanguageFormatter for Clojure {
 
 #[cfg(test)]
 mod test_c {
+    use super::Clojure;
     use crate::{
         formatters::{setup_snippet, MdsfFormatter},
         languages::Lang,
     };
-
-    use super::Clojure;
 
     const INPUT: &str = "(  ns
  foo.bar.baz  \"some doc\"

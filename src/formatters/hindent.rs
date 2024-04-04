@@ -1,6 +1,5 @@
-use crate::terminal::print_formatter_info;
-
 use super::execute_command;
+use crate::terminal::print_formatter_info;
 
 #[inline]
 pub fn format_using_hindent(
@@ -17,9 +16,8 @@ pub fn format_using_hindent(
 
 #[cfg(test)]
 mod test_hindent {
-    use crate::{formatters::setup_snippet, languages::Language};
-
     use super::format_using_hindent;
+    use crate::{formatters::setup_snippet, languages::Language};
 
     #[test_with::executable(hindent)]
     #[test]

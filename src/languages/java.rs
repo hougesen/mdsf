@@ -1,11 +1,10 @@
 use schemars::JsonSchema;
 
+use super::{Lang, LanguageFormatter};
 use crate::formatters::{
     clang_format::format_using_clang_format, google_java_format::format_using_google_java_format,
     MdsfFormatter,
 };
-
-use super::{Lang, LanguageFormatter};
 
 #[derive(Debug, Default, serde::Serialize, serde::Deserialize, JsonSchema)]
 #[cfg_attr(test, derive(PartialEq, Eq))]
@@ -52,12 +51,11 @@ impl LanguageFormatter for Java {
 
 #[cfg(test)]
 mod test_java {
+    use super::Java;
     use crate::{
         formatters::{setup_snippet, MdsfFormatter},
         languages::Lang,
     };
-
-    use super::Java;
 
     const INPUT: &str = "class HelloWorld {
     public static void main(String[] args) {

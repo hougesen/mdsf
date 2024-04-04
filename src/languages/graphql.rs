@@ -1,8 +1,7 @@
 use schemars::JsonSchema;
 
-use crate::formatters::{prettier::format_using_prettier, MdsfFormatter};
-
 use super::{Lang, LanguageFormatter};
+use crate::formatters::{prettier::format_using_prettier, MdsfFormatter};
 
 #[derive(Debug, Default, serde::Serialize, serde::Deserialize, JsonSchema)]
 #[cfg_attr(test, derive(PartialEq, Eq))]
@@ -43,12 +42,11 @@ impl LanguageFormatter for GraphQL {
 
 #[cfg(test)]
 mod test_grapql {
+    use super::GraphQL;
     use crate::{
         formatters::{setup_snippet, MdsfFormatter},
         languages::Lang,
     };
-
-    use super::GraphQL;
 
     const INPUT: &str = "{   hero {     name     
                 # Queries can have comments!    

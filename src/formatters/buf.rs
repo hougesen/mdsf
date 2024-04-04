@@ -1,6 +1,5 @@
-use crate::terminal::print_formatter_info;
-
 use super::execute_command;
+use crate::terminal::print_formatter_info;
 
 #[inline]
 pub fn format_using_buf(snippet_path: &std::path::Path) -> std::io::Result<(bool, Option<String>)> {
@@ -15,9 +14,8 @@ pub fn format_using_buf(snippet_path: &std::path::Path) -> std::io::Result<(bool
 
 #[cfg(test)]
 mod test_buf {
-    use crate::{formatters::setup_snippet, languages::Language};
-
     use super::format_using_buf;
+    use crate::{formatters::setup_snippet, languages::Language};
 
     #[test_with::executable(buf)]
     #[test]
