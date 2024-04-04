@@ -40,6 +40,7 @@ pub mod mix_format;
 pub mod nimpretty;
 pub mod npm_groovy_lint;
 pub mod ocamlformat;
+pub mod ocp_indent;
 pub mod ormolu;
 pub mod perltidy;
 pub mod prettier;

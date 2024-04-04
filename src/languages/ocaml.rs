@@ -1,8 +1,9 @@
 use schemars::JsonSchema;
 
-use crate::formatters::{ocamlformat::format_using_ocamlformat, MdsfFormatter};
-
 use super::{Lang, LanguageFormatter};
+use crate::formatters::{
+    ocamlformat::format_using_ocamlformat, ocp_indent::format_using_ocp_indent, MdsfFormatter,
+};
 
 #[derive(Debug, Default, serde::Serialize, serde::Deserialize, JsonSchema)]
 #[cfg_attr(test, derive(PartialEq, Eq))]
@@ -10,6 +11,8 @@ pub enum OCaml {
     #[default]
     #[serde(rename = "ocamlformat")]
     OCamlFormat,
+    #[serde(rename = "ocp-indent")]
+    OcpIndent,
 }
 
 impl Default for Lang<OCaml> {
@@ -25,7 +28,10 @@ impl Default for Lang<OCaml> {
 impl Default for MdsfFormatter<OCaml> {
     #[inline]
     fn default() -> Self {
-        Self::Single(OCaml::OCamlFormat)
+        Self::Multiple(vec![Self::Multiple(vec![
+            Self::Single(OCaml::OCamlFormat),
+            Self::Single(OCaml::OcpIndent),
+        ])])
     }
 }
 
@@ -37,18 +43,18 @@ impl LanguageFormatter for OCaml {
     ) -> std::io::Result<(bool, Option<String>)> {
         match self {
             Self::OCamlFormat => format_using_ocamlformat(snippet_path),
+            Self::OcpIndent => format_using_ocp_indent(snippet_path),
         }
     }
 }
 
 #[cfg(test)]
 mod test_ocaml {
+    use super::OCaml;
     use crate::{
         formatters::{setup_snippet, MdsfFormatter},
         languages::Lang,
     };
-
-    use super::OCaml;
 
     const INPUT: &str = "
 let add a b  =  a +  b
@@ -93,6 +99,34 @@ let add a b  =  a +  b
 
         let expected_output = "let add a b = a + b
 ";
+
+        assert_eq!(output, expected_output);
+    }
+
+    #[test_with::executable(ocp-indent)]
+    #[test]
+    fn test_ocp_indent() {
+        let input = "
+    let add a b
+                                 = a + b
+                ";
+        let expected_output = "
+let add a b
+  = a + b
+";
+
+        let l = Lang::<OCaml> {
+            enabled: true,
+            formatter: MdsfFormatter::Single(OCaml::OcpIndent),
+        };
+
+        let snippet = setup_snippet(input, EXTENSION).expect("it to save the file");
+        let snippet_path = snippet.path();
+
+        let output = l
+            .format(snippet_path)
+            .expect("it to not fail")
+            .expect("it to be a snippet");
 
         assert_eq!(output, expected_output);
     }

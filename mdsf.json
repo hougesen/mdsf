@@ -116,7 +116,7 @@
   },
   "ocaml": {
     "enabled": true,
-    "formatter": "ocamlformat"
+    "formatter": [["ocamlformat", "ocp-indent"]]
   },
   "protobuf": {
     "enabled": true,
