@@ -58,6 +58,7 @@ pub mod sql_formatter;
 pub mod sqlfluff;
 pub mod standardjs;
 pub mod standardrb;
+pub mod stylelint;
 pub mod stylish_haskell;
 pub mod stylua;
 pub mod swiftformat;

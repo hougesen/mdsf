@@ -68,7 +68,7 @@ mdsf init
 | Clojure    | `cljstyle`                                                    |
 | Cpp        | `clang-format`                                                |
 | Crystal    | `crystal_format`                                              |
-| Css        | `prettier`                                                    |
+| Css        | `prettier`, `stylelint`                                       |
 | Dart       | `dart_format`                                                 |
 | Elixir     | `mix_format`                                                  |
 | Elm        | `elm-format`                                                  |
