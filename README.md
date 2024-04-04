@@ -107,7 +107,7 @@ mdsf init
 | TypeScript | `biome`, `deno_fmt`, `prettier`                               |
 | Vue        | `prettier`                                                    |
 | Xml        | `xmlformat`, `xmllint`                                        |
-| Yaml       | `prettier`, `yamlfmt`                                         |
+| Yaml       | `prettier`, `yamlfix`, `yamlfmt`                              |
 | Zig        | `zigfmt`                                                      |
 
 <!-- END_SECTION:supported-languages -->

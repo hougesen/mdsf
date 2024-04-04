@@ -63,6 +63,7 @@ pub mod taplo;
 pub mod usort;
 pub mod xmlformat;
 pub mod xmllint;
+pub mod yamlfix;
 pub mod yamlfmt;
 pub mod yapf;
 pub mod zigfmt;

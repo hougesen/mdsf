@@ -219,5 +219,8 @@ jobs:
       - name: xmlformatter/xmlformat
         run: pip install xmlformatter
 
+      - name: yamlfix
+        run: pip install yamlfix
+
       - name: run tests
         run: cargo test

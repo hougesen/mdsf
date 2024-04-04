@@ -518,7 +518,7 @@
     "yaml": {
       "default": {
         "enabled": true,
-        "formatter": [["prettier", "yamlfmt"]]
+        "formatter": [["prettier", "yamlfmt", "yamlfix"]]
       },
       "allOf": [
         {
@@ -1900,7 +1900,7 @@
     },
     "Yaml": {
       "type": "string",
-      "enum": ["prettier", "yamlfmt"]
+      "enum": ["prettier", "yamlfmt", "yamlfix"]
     },
     "Zig": {
       "type": "string",
