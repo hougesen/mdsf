@@ -104,7 +104,7 @@ mdsf init
 | Scala      | `scalafmt`                                                    |
 | Shell      | `beautysh`, `shfmt`                                           |
 | Sql        | `sql-formatter`, `sqlfluff`                                   |
-| Swift      | `swiftformat`                                                 |
+| Swift      | `swift-format`, `swiftformat`                                 |
 | Toml       | `taplo`                                                       |
 | TypeScript | `biome`, `deno_fmt`, `prettier`                               |
 | Vue        | `prettier`                                                    |

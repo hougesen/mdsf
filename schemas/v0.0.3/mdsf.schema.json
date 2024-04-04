@@ -485,7 +485,7 @@
     "swift": {
       "default": {
         "enabled": true,
-        "formatter": "swiftformat"
+        "formatter": [["swift-format", "swiftformat"]]
       },
       "allOf": [
         {
@@ -1960,7 +1960,7 @@
     },
     "Swift": {
       "type": "string",
-      "enum": ["swiftformat"]
+      "enum": ["swift-format", "swiftformat"]
     },
     "Toml": {
       "type": "string",
