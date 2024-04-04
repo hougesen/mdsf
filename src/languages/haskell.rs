@@ -1,11 +1,10 @@
 use schemars::JsonSchema;
 
+use super::{Lang, LanguageFormatter};
 use crate::formatters::{
     fourmolu::format_using_fourmolu, hindent::format_using_hindent, ormolu::format_using_ormolu,
     stylish_haskell::format_using_stylish_haskell, MdsfFormatter,
 };
-
-use super::{Lang, LanguageFormatter};
 
 #[derive(Debug, Default, serde::Serialize, serde::Deserialize, JsonSchema)]
 #[cfg_attr(test, derive(PartialEq, Eq))]
@@ -59,12 +58,11 @@ impl LanguageFormatter for Haskell {
 
 #[cfg(test)]
 mod test_haskell {
+    use super::Haskell;
     use crate::{
         formatters::{setup_snippet, MdsfFormatter},
         languages::Lang,
     };
-
-    use super::Haskell;
 
     const INPUT: &str = "
 addNumbers::Int->Int->Int
