@@ -507,7 +507,7 @@
     "xml": {
       "default": {
         "enabled": true,
-        "formatter": "xmllint"
+        "formatter": [["xmllint", "xmlformat"]]
       },
       "allOf": [
         {
@@ -1896,7 +1896,7 @@
     },
     "Xml": {
       "type": "string",
-      "enum": ["xmllint"]
+      "enum": ["xmllint", "xmlformat"]
     },
     "Yaml": {
       "type": "string",

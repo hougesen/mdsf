@@ -1,11 +1,8 @@
-use crate::{runners::setup_npm_script, terminal::print_formatter_info};
-
 use super::execute_command;
+use crate::{runners::setup_npm_script, terminal::print_formatter_info};
 
 #[inline]
 fn set_elm_format_args(cmd: &mut std::process::Command, snippet_path: &std::path::Path) {
-    print_formatter_info("elm_format");
-
     cmd.arg("--elm-version=0.19").arg("--yes").arg(snippet_path);
 }
 
@@ -23,16 +20,9 @@ fn invoke_elm_format(
 pub fn format_using_elm_format(
     snippet_path: &std::path::Path,
 ) -> std::io::Result<(bool, Option<String>)> {
-    let path_result = invoke_elm_format(setup_npm_script("elm-format"), snippet_path)?;
+    print_formatter_info("elm_format");
 
-    if !path_result.0 {
-        return Ok(path_result);
-    }
-
-    invoke_elm_format(
-        setup_npm_script("@johnnymorganz/elm_format-bin"),
-        snippet_path,
-    )
+    invoke_elm_format(setup_npm_script("elm-format"), snippet_path)
 }
 
 #[cfg(test)]

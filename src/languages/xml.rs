@@ -1,15 +1,18 @@
 use schemars::JsonSchema;
 
-use crate::formatters::{xmllint::format_using_xmllint, MdsfFormatter};
-
 use super::{Lang, LanguageFormatter};
+use crate::formatters::{
+    xmlformat::format_using_xmlformat, xmllint::format_using_xmllint, MdsfFormatter,
+};
 
 #[derive(Debug, Default, serde::Serialize, serde::Deserialize, JsonSchema)]
 #[cfg_attr(test, derive(PartialEq, Eq))]
 pub enum Xml {
     #[default]
     #[serde(rename = "xmllint")]
-    Xmllint,
+    XmlLint,
+    #[serde(rename = "xmlformat")]
+    XmlFormat,
 }
 
 impl Default for Lang<Xml> {
@@ -25,7 +28,10 @@ impl Default for Lang<Xml> {
 impl Default for MdsfFormatter<Xml> {
     #[inline]
     fn default() -> Self {
-        Self::Single(Xml::Xmllint)
+        Self::Multiple(vec![Self::Multiple(vec![
+            Self::Single(Xml::XmlLint),
+            Self::Single(Xml::XmlFormat),
+        ])])
     }
 }
 
@@ -36,19 +42,19 @@ impl LanguageFormatter for Xml {
         snippet_path: &std::path::Path,
     ) -> std::io::Result<(bool, Option<String>)> {
         match self {
-            Self::Xmllint => format_using_xmllint(snippet_path),
+            Self::XmlLint => format_using_xmllint(snippet_path),
+            Self::XmlFormat => format_using_xmlformat(snippet_path),
         }
     }
 }
 
 #[cfg(test)]
 mod test_xml {
+    use super::Xml;
     use crate::{
         formatters::{setup_snippet, MdsfFormatter},
         languages::Lang,
     };
-
-    use super::Xml;
 
     const INPUT: &str = "
 <note>
@@ -69,7 +75,7 @@ mod test_xml {
     fn it_should_not_format_when_enabled_is_false() {
         let l = Lang::<Xml> {
             enabled: false,
-            formatter: MdsfFormatter::Single(Xml::Xmllint),
+            formatter: MdsfFormatter::Single(Xml::XmlLint),
         };
 
         let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");
@@ -83,7 +89,7 @@ mod test_xml {
     fn test_xmllint() {
         let l = Lang::<Xml> {
             enabled: true,
-            formatter: MdsfFormatter::Single(Xml::Xmllint),
+            formatter: MdsfFormatter::Single(Xml::XmlLint),
         };
 
         let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");
@@ -102,6 +108,32 @@ mod test_xml {
   <body>Don't forget me this weekend!</body>
 </note>
 "#;
+
+        assert_eq!(output, expected_output);
+    }
+
+    #[test_with::executable(xmlformat)]
+    #[test]
+    fn test_xmlformat() {
+        let l = Lang::<Xml> {
+            enabled: true,
+            formatter: MdsfFormatter::Single(Xml::XmlFormat),
+        };
+
+        let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");
+        let snippet_path = snippet.path();
+
+        let output = l
+            .format(snippet_path)
+            .expect("it to not fail")
+            .expect("it to be a snippet");
+
+        let expected_output = "<note>
+  <to>Tove</to>
+  <from>Jani</from>
+  <heading>Reminder</heading>
+  <body>Don't forget me this weekend!</body>
+</note>";
 
         assert_eq!(output, expected_output);
     }

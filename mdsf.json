@@ -183,7 +183,7 @@
   },
   "xml": {
     "enabled": true,
-    "formatter": "xmllint"
+    "formatter": [["xmllint", "xmlformat"]]
   },
   "yaml": {
     "enabled": true,
