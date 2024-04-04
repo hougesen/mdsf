@@ -2,7 +2,7 @@ use schemars::JsonSchema;
 
 use crate::formatters::{
     fourmolu::format_using_fourmolu, hindent::format_using_hindent, ormolu::format_using_ormolu,
-    MdsfFormatter,
+    stylish_haskell::format_using_stylish_haskell, MdsfFormatter,
 };
 
 use super::{Lang, LanguageFormatter};
@@ -17,6 +17,8 @@ pub enum Haskell {
     Ormolu,
     #[serde(rename = "hindent")]
     HIndent,
+    #[serde(rename = "stylish-haskell")]
+    StylishHaskell,
 }
 
 impl Default for Lang<Haskell> {
@@ -50,6 +52,7 @@ impl LanguageFormatter for Haskell {
             Self::Fourmolu => format_using_fourmolu(snippet_path),
             Self::Ormolu => format_using_ormolu(snippet_path),
             Self::HIndent => format_using_hindent(snippet_path),
+            Self::StylishHaskell => format_using_stylish_haskell(snippet_path),
         }
     }
 }
@@ -157,6 +160,32 @@ addNumbers a b = do
         let expected_output = "addNumbers :: Int -> Int -> Int
 addNumbers a b = do
   a + b
+";
+
+        assert_eq!(output, expected_output);
+    }
+
+    #[test_with::executable(stylish-haskell)]
+    #[test]
+    fn test_stylish_haskell() {
+        let l = Lang::<Haskell> {
+            enabled: true,
+            formatter: MdsfFormatter::Single(Haskell::StylishHaskell),
+        };
+
+        let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");
+        let snippet_path = snippet.path();
+
+        let output = l
+            .format(snippet_path)
+            .expect("it to not fail")
+            .expect("it to be a snippet");
+
+        let expected_output = "
+addNumbers::Int->Int->Int
+addNumbers a b = do
+        a + b
+
 ";
 
         assert_eq!(output, expected_output);
