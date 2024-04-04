@@ -1,14 +1,18 @@
 use schemars::JsonSchema;
 
 use super::{Lang, LanguageFormatter};
-use crate::formatters::{swiftformat::format_using_swiftformat, MdsfFormatter};
+use crate::formatters::{
+    swift_format::format_using_swift_format, swiftformat::format_using_swiftformat, MdsfFormatter,
+};
 
 #[derive(Debug, Default, serde::Serialize, serde::Deserialize, JsonSchema)]
 #[cfg_attr(test, derive(PartialEq, Eq))]
 pub enum Swift {
     #[default]
+    #[serde(rename = "swift-format")]
+    AppleSwiftFormat,
     #[serde(rename = "swiftformat")]
-    SwiftFormat,
+    NicklockwoodSwiftFormat,
 }
 
 impl Default for Lang<Swift> {
@@ -24,7 +28,10 @@ impl Default for Lang<Swift> {
 impl Default for MdsfFormatter<Swift> {
     #[inline]
     fn default() -> Self {
-        Self::Single(Swift::SwiftFormat)
+        Self::Multiple(vec![Self::Multiple(vec![
+            Self::Single(Swift::AppleSwiftFormat),
+            Self::Single(Swift::NicklockwoodSwiftFormat),
+        ])])
     }
 }
 
@@ -35,7 +42,8 @@ impl LanguageFormatter for Swift {
         snippet_path: &std::path::Path,
     ) -> std::io::Result<(bool, Option<String>)> {
         match self {
-            Self::SwiftFormat => format_using_swiftformat(snippet_path),
+            Self::AppleSwiftFormat => format_using_swift_format(snippet_path),
+            Self::NicklockwoodSwiftFormat => format_using_swiftformat(snippet_path),
         }
     }
 }
@@ -78,7 +86,31 @@ mod test_swift {
     fn test_swiftformat() {
         let l = Lang::<Swift> {
             enabled: true,
-            formatter: MdsfFormatter::Single(Swift::SwiftFormat),
+            formatter: MdsfFormatter::Single(Swift::NicklockwoodSwiftFormat),
+        };
+
+        let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");
+        let snippet_path = snippet.path();
+
+        let output = l
+            .format(snippet_path)
+            .expect("it to not fail")
+            .expect("it to be a snippet");
+
+        let expected_output = "func add(a: Int, b: Int) -> Int {
+    return a + b
+}
+";
+
+        assert_eq!(output, expected_output);
+    }
+
+    #[test_with::executable(swift-format)]
+    #[test]
+    fn test_swift_format() {
+        let l = Lang::<Swift> {
+            enabled: true,
+            formatter: MdsfFormatter::Single(Swift::AppleSwiftFormat),
         };
 
         let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");

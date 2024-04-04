@@ -62,6 +62,7 @@ pub mod standardrb;
 pub mod stylelint;
 pub mod stylish_haskell;
 pub mod stylua;
+pub mod swift_format;
 pub mod swiftformat;
 pub mod taplo;
 pub mod terraform_fmt;
