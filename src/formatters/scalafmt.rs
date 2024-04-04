@@ -1,6 +1,5 @@
-use crate::terminal::print_formatter_info;
-
 use super::execute_command;
+use crate::terminal::print_formatter_info;
 
 #[inline]
 pub fn format_using_scalafmt(
@@ -27,9 +26,8 @@ pub fn format_using_scalafmt(
 
 #[cfg(test)]
 mod test_scalafmt {
-    use crate::{formatters::setup_snippet, languages::Language};
-
     use super::format_using_scalafmt;
+    use crate::{formatters::setup_snippet, languages::Language};
 
     #[test_with::executable(scalafmt)]
     #[test]

@@ -1,8 +1,7 @@
 use schemars::JsonSchema;
 
-use crate::formatters::{gleam_format::format_using_gleam_format, MdsfFormatter};
-
 use super::{Lang, LanguageFormatter};
+use crate::formatters::{gleam_format::format_using_gleam_format, MdsfFormatter};
 
 #[derive(Debug, Default, serde::Serialize, serde::Deserialize, JsonSchema)]
 #[cfg_attr(test, derive(PartialEq, Eq))]
@@ -43,12 +42,11 @@ impl LanguageFormatter for Gleam {
 
 #[cfg(test)]
 mod test_gleam {
+    use super::Gleam;
     use crate::{
         formatters::{setup_snippet, MdsfFormatter},
         languages::Lang,
     };
-
-    use super::Gleam;
 
     const INPUT: &str = "pub fn add(a:Int,b:Int)->Int{a+b}";
 

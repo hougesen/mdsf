@@ -1,6 +1,5 @@
-use crate::terminal::print_formatter_info;
-
 use super::execute_command;
+use crate::terminal::print_formatter_info;
 
 #[inline]
 pub fn format_using_deno_fmt(
@@ -17,12 +16,11 @@ pub fn format_using_deno_fmt(
 
 #[cfg(test)]
 mod test_deno_fmt {
+    use super::format_using_deno_fmt;
     use crate::{
         formatters::setup_snippet,
         languages::{JavaScriptFlavor, JsonFlavor, Language, TypeScriptFlavor},
     };
-
-    use super::format_using_deno_fmt;
 
     #[test_with::executable(deno)]
     #[test]

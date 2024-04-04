@@ -1,6 +1,5 @@
-use crate::terminal::print_formatter_info;
-
 use super::execute_command;
+use crate::terminal::print_formatter_info;
 
 #[inline]
 pub fn format_using_juliaformatter_jl(
@@ -20,9 +19,8 @@ pub fn format_using_juliaformatter_jl(
 
 #[cfg(test)]
 mod test_juliaformatter_jl {
-    use crate::{formatters::setup_snippet, languages::Language};
-
     use super::format_using_juliaformatter_jl;
+    use crate::{formatters::setup_snippet, languages::Language};
 
     #[test_with::executable(julia)]
     #[test]

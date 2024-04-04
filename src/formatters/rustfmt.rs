@@ -1,6 +1,5 @@
-use crate::terminal::print_formatter_info;
-
 use super::execute_command;
+use crate::terminal::print_formatter_info;
 
 #[inline]
 pub fn format_using_rustfmt(
@@ -20,9 +19,8 @@ pub fn format_using_rustfmt(
 
 #[cfg(test)]
 mod test_rustfmt {
-    use crate::{formatters::setup_snippet, languages::Language};
-
     use super::format_using_rustfmt;
+    use crate::{formatters::setup_snippet, languages::Language};
 
     #[test_with::executable(rustfmt)]
     #[test]

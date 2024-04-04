@@ -1,8 +1,7 @@
 use schemars::JsonSchema;
 
-use crate::formatters::{mix_format::format_using_mix_format, MdsfFormatter};
-
 use super::{Lang, LanguageFormatter};
+use crate::formatters::{mix_format::format_using_mix_format, MdsfFormatter};
 
 #[derive(Debug, Default, serde::Serialize, serde::Deserialize, JsonSchema)]
 #[cfg_attr(test, derive(PartialEq, Eq))]
@@ -43,12 +42,11 @@ impl LanguageFormatter for Elixir {
 
 #[cfg(test)]
 mod test_elixir {
+    use super::Elixir;
     use crate::{
         formatters::{setup_snippet, MdsfFormatter},
         languages::Lang,
     };
-
-    use super::Elixir;
 
     const INPUT: &str = "
         def              add(a  ,      b   )   do    a   +   b                 end

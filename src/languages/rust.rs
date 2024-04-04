@@ -1,8 +1,7 @@
 use schemars::JsonSchema;
 
-use crate::formatters::{rustfmt::format_using_rustfmt, MdsfFormatter};
-
 use super::{Lang, LanguageFormatter};
+use crate::formatters::{rustfmt::format_using_rustfmt, MdsfFormatter};
 
 #[derive(Debug, Default, serde::Serialize, serde::Deserialize, JsonSchema)]
 #[cfg_attr(test, derive(PartialEq, Eq))]
@@ -43,12 +42,11 @@ impl LanguageFormatter for Rust {
 
 #[cfg(test)]
 mod test_rust {
+    use super::Rust;
     use crate::{
         formatters::{setup_snippet, MdsfFormatter},
         languages::Lang,
     };
-
-    use super::Rust;
 
     const INPUT: &str = "pub
                     async

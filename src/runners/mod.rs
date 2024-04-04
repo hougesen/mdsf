@@ -2,9 +2,8 @@ use core::sync::atomic::{AtomicU8, Ordering};
 
 use schemars::JsonSchema;
 
-use crate::terminal::{print_javascript_runtime, print_unknown_javascript_runtime};
-
 use self::{bun::new_bunx_cmd, deno::new_deno_cmd, node::new_npx_cmd};
+use crate::terminal::{print_javascript_runtime, print_unknown_javascript_runtime};
 
 mod bun;
 mod deno;

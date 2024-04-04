@@ -1,10 +1,9 @@
 use schemars::JsonSchema;
 
+use super::{Lang, LanguageFormatter};
 use crate::formatters::{
     beautysh::format_using_beautysh, shfmt::format_using_shfmt, MdsfFormatter,
 };
-
-use super::{Lang, LanguageFormatter};
 
 #[derive(Debug, Default, serde::Serialize, serde::Deserialize, JsonSchema)]
 #[cfg_attr(test, derive(PartialEq, Eq))]
@@ -51,12 +50,11 @@ impl LanguageFormatter for Shell {
 
 #[cfg(test)]
 mod test_shell {
+    use super::Shell;
     use crate::{
         formatters::{setup_snippet, MdsfFormatter},
         languages::{Lang, ShellFlavor},
     };
-
-    use super::Shell;
 
     const INPUT: &str = "
 

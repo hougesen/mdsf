@@ -1,10 +1,9 @@
 use schemars::JsonSchema;
 
+use super::{Lang, LanguageFormatter};
 use crate::formatters::{
     buf::format_using_buf, clang_format::format_using_clang_format, MdsfFormatter,
 };
-
-use super::{Lang, LanguageFormatter};
 
 #[derive(Debug, Default, serde::Serialize, serde::Deserialize, JsonSchema)]
 #[cfg_attr(test, derive(PartialEq, Eq))]
@@ -51,12 +50,11 @@ impl LanguageFormatter for Protobuf {
 
 #[cfg(test)]
 mod test_protobuf {
+    use super::Protobuf;
     use crate::{
         formatters::{setup_snippet, MdsfFormatter},
         languages::Lang,
     };
-
-    use super::Protobuf;
 
     const INPUT: &str = "service SearchService {
                               rpc Search (SearchRequest) returns (SearchResponse);

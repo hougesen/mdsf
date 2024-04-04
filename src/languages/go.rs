@@ -1,11 +1,10 @@
 use schemars::JsonSchema;
 
+use super::{Lang, LanguageFormatter};
 use crate::formatters::{
     gofmt::format_using_gofmt, gofumpt::format_using_gofumpt, goimports::format_using_goimports,
     MdsfFormatter,
 };
-
-use super::{Lang, LanguageFormatter};
 
 #[derive(Debug, Default, serde::Serialize, serde::Deserialize, JsonSchema)]
 #[cfg_attr(test, derive(PartialEq, Eq))]
@@ -55,12 +54,11 @@ impl LanguageFormatter for Go {
 
 #[cfg(test)]
 mod test_go {
+    use super::Go;
     use crate::{
         formatters::{setup_snippet, MdsfFormatter},
         languages::Lang,
     };
-
-    use super::Go;
 
     const INPUT: &str = "package main
 

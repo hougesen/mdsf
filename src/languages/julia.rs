@@ -1,8 +1,7 @@
 use schemars::JsonSchema;
 
-use crate::formatters::{juliaformatter_jl::format_using_juliaformatter_jl, MdsfFormatter};
-
 use super::{Lang, LanguageFormatter};
+use crate::formatters::{juliaformatter_jl::format_using_juliaformatter_jl, MdsfFormatter};
 
 #[derive(Debug, Default, serde::Serialize, serde::Deserialize, JsonSchema)]
 #[cfg_attr(test, derive(PartialEq, Eq))]
@@ -43,12 +42,11 @@ impl LanguageFormatter for Julia {
 
 #[cfg(test)]
 mod test_julia {
+    use super::Julia;
     use crate::{
         formatters::{setup_snippet, MdsfFormatter},
         languages::Lang,
     };
-
-    use super::Julia;
 
     const INPUT: &str = "function add( a:: Int32,  b::Int32 )
             c = a+ b  

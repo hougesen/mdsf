@@ -1,10 +1,9 @@
 use schemars::JsonSchema;
 
+use super::{Lang, LanguageFormatter};
 use crate::formatters::{
     sql_formatter::format_using_sql_formatter, sqlfluff::format_using_sqlfluff, MdsfFormatter,
 };
-
-use super::{Lang, LanguageFormatter};
 
 #[derive(Debug, Default, serde::Serialize, serde::Deserialize, JsonSchema)]
 #[cfg_attr(test, derive(PartialEq, Eq))]
@@ -52,12 +51,11 @@ impl LanguageFormatter for Sql {
 #[cfg(test)]
 mod test_sql {
 
+    use super::Sql;
     use crate::{
         formatters::{setup_snippet, MdsfFormatter},
         languages::Lang,
     };
-
-    use super::Sql;
 
     const INPUT: &str = "SELECT  *                  FROM  tbl
                         WHERE                      foo   = 'bar';         ";

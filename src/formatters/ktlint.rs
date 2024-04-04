@@ -1,6 +1,5 @@
-use crate::terminal::print_formatter_info;
-
 use super::execute_command;
+use crate::terminal::print_formatter_info;
 
 #[inline]
 pub fn format_using_ktlint(
@@ -19,9 +18,8 @@ pub fn format_using_ktlint(
 
 #[cfg(test)]
 mod test_ktlint {
-    use crate::{formatters::setup_snippet, languages::Language};
-
     use super::format_using_ktlint;
+    use crate::{formatters::setup_snippet, languages::Language};
 
     #[test_with::executable(ktlint)]
     #[test]

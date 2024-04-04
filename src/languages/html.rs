@@ -1,8 +1,7 @@
 use schemars::JsonSchema;
 
-use crate::formatters::{prettier::format_using_prettier, MdsfFormatter};
-
 use super::{Lang, LanguageFormatter};
+use crate::formatters::{prettier::format_using_prettier, MdsfFormatter};
 
 #[derive(Debug, Default, serde::Serialize, serde::Deserialize, JsonSchema)]
 #[cfg_attr(test, derive(PartialEq, Eq))]
@@ -43,12 +42,11 @@ impl LanguageFormatter for Html {
 
 #[cfg(test)]
 mod test_html {
+    use super::Html;
     use crate::{
         formatters::{setup_snippet, MdsfFormatter},
         languages::Lang,
     };
-
-    use super::Html;
 
     const INPUT: &str =  " <!doctype html> <html> <head> <style> body {background-color: powderblue;} h1   {color: blue;} p    {color: red;} </style> </head> <body>  <h1>This is a heading</h1> <p>This is a paragraph.</p>  </body> </html> ";
 

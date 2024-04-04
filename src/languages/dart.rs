@@ -1,8 +1,7 @@
 use schemars::JsonSchema;
 
-use crate::formatters::{dart_format::format_using_dart_format, MdsfFormatter};
-
 use super::{Lang, LanguageFormatter};
+use crate::formatters::{dart_format::format_using_dart_format, MdsfFormatter};
 
 #[derive(Debug, Default, serde::Serialize, serde::Deserialize, JsonSchema)]
 #[cfg_attr(test, derive(PartialEq, Eq))]
@@ -43,12 +42,11 @@ impl LanguageFormatter for Dart {
 
 #[cfg(test)]
 mod test_dart {
+    use super::Dart;
     use crate::{
         formatters::{setup_snippet, MdsfFormatter},
         languages::Lang,
     };
-
-    use super::Dart;
 
     const INPUT: &str = "class Adder {   int add(int a, int b) {     return a + b;   } }    ";
 

@@ -1,11 +1,10 @@
 use schemars::JsonSchema;
 
+use super::{Lang, LanguageFormatter};
 use crate::formatters::{
     biome::format_using_biome, clang_format::format_using_clang_format,
     deno_fmt::format_using_deno_fmt, prettier::format_using_prettier, MdsfFormatter,
 };
-
-use super::{Lang, LanguageFormatter};
 
 #[derive(Debug, Default, serde::Serialize, serde::Deserialize, JsonSchema)]
 #[cfg_attr(test, derive(PartialEq, Eq))]
@@ -60,12 +59,11 @@ impl LanguageFormatter for Json {
 
 #[cfg(test)]
 mod test_json {
+    use super::Json;
     use crate::{
         formatters::{setup_snippet, MdsfFormatter},
         languages::{JsonFlavor, Lang},
     };
-
-    use super::Json;
 
     const INPUT: &str = "{
               \"key\": \"value\",

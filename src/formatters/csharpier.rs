@@ -1,6 +1,5 @@
-use crate::terminal::print_formatter_info;
-
 use super::execute_command;
+use crate::terminal::print_formatter_info;
 
 #[inline]
 pub fn format_using_csharpier(
@@ -17,9 +16,8 @@ pub fn format_using_csharpier(
 
 #[cfg(test)]
 mod test_csharpier {
-    use crate::{formatters::setup_snippet, languages::Language};
-
     use super::format_using_csharpier;
+    use crate::{formatters::setup_snippet, languages::Language};
 
     #[test_with::executable(dotnet)]
     #[test]

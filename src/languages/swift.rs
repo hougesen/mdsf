@@ -1,8 +1,7 @@
 use schemars::JsonSchema;
 
-use crate::formatters::{swiftformat::format_using_swiftformat, MdsfFormatter};
-
 use super::{Lang, LanguageFormatter};
+use crate::formatters::{swiftformat::format_using_swiftformat, MdsfFormatter};
 
 #[derive(Debug, Default, serde::Serialize, serde::Deserialize, JsonSchema)]
 #[cfg_attr(test, derive(PartialEq, Eq))]
@@ -43,12 +42,11 @@ impl LanguageFormatter for Swift {
 
 #[cfg(test)]
 mod test_swift {
+    use super::Swift;
     use crate::{
         formatters::{setup_snippet, MdsfFormatter},
         languages::Lang,
     };
-
-    use super::Swift;
 
     const INPUT: &str = " func add(a:Int ,b:Int)->Int {
     return a + b     

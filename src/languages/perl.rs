@@ -1,8 +1,7 @@
 use schemars::JsonSchema;
 
-use crate::formatters::{perltidy::format_using_perltidy, MdsfFormatter};
-
 use super::{Lang, LanguageFormatter};
+use crate::formatters::{perltidy::format_using_perltidy, MdsfFormatter};
 
 #[derive(Debug, Default, serde::Serialize, serde::Deserialize, JsonSchema)]
 #[cfg_attr(test, derive(PartialEq, Eq))]
@@ -43,12 +42,11 @@ impl LanguageFormatter for Perl {
 
 #[cfg(test)]
 mod test_perl {
+    use super::Perl;
     use crate::{
         formatters::{setup_snippet, MdsfFormatter},
         languages::Lang,
     };
-
-    use super::Perl;
 
     const INPUT: &str = r#"$_= <<'EOL';
    $url = new URI::URL "http://www/";   die if $url eq "xXx";

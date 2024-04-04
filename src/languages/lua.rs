@@ -1,10 +1,9 @@
 use schemars::JsonSchema;
 
+use super::{Lang, LanguageFormatter};
 use crate::formatters::{
     luaformatter::format_using_luaformatter, stylua::format_using_stylua, MdsfFormatter,
 };
-
-use super::{Lang, LanguageFormatter};
 
 #[derive(Debug, Default, serde::Serialize, serde::Deserialize, JsonSchema)]
 #[cfg_attr(test, derive(PartialEq, Eq))]
@@ -52,12 +51,11 @@ impl LanguageFormatter for Lua {
 
 #[cfg(test)]
 mod test_lua {
+    use super::Lua;
     use crate::{
         formatters::{setup_snippet, MdsfFormatter},
         languages::Lang,
     };
-
-    use super::Lua;
 
     const INPUT: &str = "
 

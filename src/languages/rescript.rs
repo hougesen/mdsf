@@ -1,8 +1,7 @@
 use schemars::JsonSchema;
 
-use crate::formatters::{rescript_format::format_using_rescript_format, MdsfFormatter};
-
 use super::{Lang, LanguageFormatter};
+use crate::formatters::{rescript_format::format_using_rescript_format, MdsfFormatter};
 
 #[derive(Debug, Default, serde::Serialize, serde::Deserialize, JsonSchema)]
 #[cfg_attr(test, derive(PartialEq, Eq))]
@@ -43,12 +42,11 @@ impl LanguageFormatter for ReScript {
 
 #[cfg(test)]
 mod test_rescript {
+    use super::ReScript;
     use crate::{
         formatters::{setup_snippet, MdsfFormatter},
         languages::Lang,
     };
-
-    use super::ReScript;
 
     const INPUT: &str = r#"module Button = {
   @react.component

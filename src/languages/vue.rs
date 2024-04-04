@@ -1,8 +1,7 @@
 use schemars::JsonSchema;
 
-use crate::formatters::{prettier::format_using_prettier, MdsfFormatter};
-
 use super::{Lang, LanguageFormatter};
+use crate::formatters::{prettier::format_using_prettier, MdsfFormatter};
 
 #[derive(Debug, Default, serde::Serialize, serde::Deserialize, JsonSchema)]
 #[cfg_attr(test, derive(PartialEq, Eq))]
@@ -43,12 +42,11 @@ impl LanguageFormatter for Vue {
 
 #[cfg(test)]
 mod test_vue {
+    use super::Vue;
     use crate::{
         formatters::{setup_snippet, MdsfFormatter},
         languages::Lang,
     };
-
-    use super::Vue;
 
     const INPUT: &str = "<script lang=\"ts\"   setup >
 import {

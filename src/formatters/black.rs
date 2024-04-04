@@ -1,6 +1,5 @@
-use crate::terminal::print_formatter_info;
-
 use super::execute_command;
+use crate::terminal::print_formatter_info;
 
 #[inline]
 pub fn format_using_black(
@@ -17,9 +16,8 @@ pub fn format_using_black(
 
 #[cfg(test)]
 mod test_black {
-    use crate::{formatters::setup_snippet, languages::Language};
-
     use super::format_using_black;
+    use crate::{formatters::setup_snippet, languages::Language};
 
     #[test_with::executable(black)]
     #[test]

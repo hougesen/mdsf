@@ -1,8 +1,7 @@
 use schemars::JsonSchema;
 
-use crate::formatters::{crystal_format::format_using_crystal_format, MdsfFormatter};
-
 use super::{Lang, LanguageFormatter};
+use crate::formatters::{crystal_format::format_using_crystal_format, MdsfFormatter};
 
 #[derive(Debug, Default, serde::Serialize, serde::Deserialize, JsonSchema)]
 #[cfg_attr(test, derive(PartialEq, Eq))]
@@ -43,12 +42,11 @@ impl LanguageFormatter for Crystal {
 
 #[cfg(test)]
 mod test_crystal {
+    use super::Crystal;
     use crate::{
         formatters::{setup_snippet, MdsfFormatter},
         languages::Lang,
     };
-
-    use super::Crystal;
 
     const INPUT: &str = "def add(a, b)  return a + b end";
 

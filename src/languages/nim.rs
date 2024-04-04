@@ -1,8 +1,7 @@
 use schemars::JsonSchema;
 
-use crate::formatters::{nimpretty::format_using_nimpretty, MdsfFormatter};
-
 use super::{Lang, LanguageFormatter};
+use crate::formatters::{nimpretty::format_using_nimpretty, MdsfFormatter};
 
 #[derive(Debug, Default, serde::Serialize, serde::Deserialize, JsonSchema)]
 #[cfg_attr(test, derive(PartialEq, Eq))]
@@ -43,12 +42,11 @@ impl LanguageFormatter for Nim {
 
 #[cfg(test)]
 mod test_nim {
+    use super::Nim;
     use crate::{
         formatters::{setup_snippet, MdsfFormatter},
         languages::Lang,
     };
-
-    use super::Nim;
 
     const INPUT: &str = "proc           add( a         :int , b:int )        : int =
   return a +          b  ";

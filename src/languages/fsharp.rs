@@ -1,8 +1,7 @@
 use schemars::JsonSchema;
 
-use crate::formatters::{fantomas::format_using_fantomas, MdsfFormatter};
-
 use super::{Lang, LanguageFormatter};
+use crate::formatters::{fantomas::format_using_fantomas, MdsfFormatter};
 
 #[derive(Debug, Default, serde::Serialize, serde::Deserialize, JsonSchema)]
 #[cfg_attr(test, derive(PartialEq, Eq))]
@@ -43,12 +42,11 @@ impl LanguageFormatter for FSharp {
 
 #[cfg(test)]
 mod test_fsharp {
+    use super::FSharp;
     use crate::{
         formatters::{setup_snippet, MdsfFormatter},
         languages::Lang,
     };
-
-    use super::FSharp;
 
     const INPUT: &str = "
 let add  a b   =  
