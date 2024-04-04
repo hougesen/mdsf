@@ -216,5 +216,8 @@ jobs:
       - name: csharpier
         run: dotnet tool install -g csharpier
 
+      - name: xmlformatter/xmlformat
+        run: pip install xmlformatter
+
       - name: run tests
         run: cargo test

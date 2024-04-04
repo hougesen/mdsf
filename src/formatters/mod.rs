@@ -61,6 +61,7 @@ pub mod stylua;
 pub mod swiftformat;
 pub mod taplo;
 pub mod usort;
+pub mod xmlformat;
 pub mod xmllint;
 pub mod yamlfmt;
 pub mod yapf;
