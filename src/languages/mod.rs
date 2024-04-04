@@ -2,6 +2,55 @@ use schemars::JsonSchema;
 
 use crate::formatters::MdsfFormatter;
 
+pub mod blade;
+pub mod c;
+pub mod cabal;
+pub mod clojure;
+pub mod cpp;
+pub mod crystal;
+pub mod csharp;
+pub mod css;
+pub mod dart;
+pub mod elixir;
+pub mod elm;
+pub mod erlang;
+pub mod fsharp;
+pub mod gleam;
+pub mod go;
+pub mod graphql;
+pub mod groovy;
+pub mod haskell;
+pub mod html;
+pub mod java;
+pub mod javascript;
+pub mod json;
+pub mod julia;
+pub mod just;
+pub mod kotlin;
+pub mod lua;
+pub mod markdown;
+pub mod nim;
+pub mod objective_c;
+pub mod ocaml;
+pub mod perl;
+pub mod protobuf;
+pub mod purescript;
+pub mod python;
+pub mod rescript;
+pub mod roc;
+pub mod ruby;
+pub mod rust;
+pub mod scala;
+pub mod shell;
+pub mod sql;
+pub mod swift;
+pub mod toml;
+pub mod typescript;
+pub mod vue;
+pub mod xml;
+pub mod yaml;
+pub mod zig;
+
 #[derive(Clone, Copy, PartialEq, Eq)]
 pub enum JsonFlavor {
     Json,
@@ -94,6 +143,7 @@ impl core::fmt::Display for TypeScriptFlavor {
 pub enum Language {
     Blade,
     C,
+    Cabal,
     Clojure,
     CSharp,
     Cpp,
@@ -153,6 +203,7 @@ impl core::fmt::Display for Language {
         match self {
             Self::Blade => f.write_str("blade"),
             Self::C => f.write_str("c"),
+            Self::Cabal => f.write_str("cabal"),
             Self::Clojure => f.write_str("clojure"),
             Self::CSharp => f.write_str("c#"),
             Self::Cpp => f.write_str("c++"),
@@ -202,54 +253,6 @@ impl core::fmt::Display for Language {
     }
 }
 
-pub mod blade;
-pub mod c;
-pub mod clojure;
-pub mod cpp;
-pub mod crystal;
-pub mod csharp;
-pub mod css;
-pub mod dart;
-pub mod elixir;
-pub mod elm;
-pub mod erlang;
-pub mod fsharp;
-pub mod gleam;
-pub mod go;
-pub mod graphql;
-pub mod groovy;
-pub mod haskell;
-pub mod html;
-pub mod java;
-pub mod javascript;
-pub mod json;
-pub mod julia;
-pub mod just;
-pub mod kotlin;
-pub mod lua;
-pub mod markdown;
-pub mod nim;
-pub mod objective_c;
-pub mod ocaml;
-pub mod perl;
-pub mod protobuf;
-pub mod purescript;
-pub mod python;
-pub mod rescript;
-pub mod roc;
-pub mod ruby;
-pub mod rust;
-pub mod scala;
-pub mod shell;
-pub mod sql;
-pub mod swift;
-pub mod toml;
-pub mod typescript;
-pub mod vue;
-pub mod xml;
-pub mod yaml;
-pub mod zig;
-
 pub trait LanguageFormatter {
     fn format_snippet(
         &self,
@@ -263,6 +266,7 @@ impl Language {
         match input {
             "blade" => Some(Self::Blade),
             "c" | "clang" => Some(Self::C),
+            "cabal" => Some(Self::Cabal),
             "cpp" | "c++" => Some(Self::Cpp),
             "crystal" | "cr" => Some(Self::Crystal),
             "csharp" | "c#" => Some(Self::CSharp),
@@ -328,6 +332,7 @@ impl Language {
         match self {
             Self::Blade => ".blade.php",
             Self::C => ".c",
+            Self::Cabal => ".cabal",
             Self::CSharp => ".cs",
             Self::Cpp => ".cpp",
             Self::Crystal => ".cr",
@@ -440,9 +445,8 @@ impl<T: LanguageFormatter> Lang<T> {
 mod test_lang {
     use std::io::Write;
 
-    use crate::formatters::{setup_snippet, MdsfFormatter};
-
     use super::{Lang, LanguageFormatter};
+    use crate::formatters::{setup_snippet, MdsfFormatter};
 
     enum TestLanguage {
         A,

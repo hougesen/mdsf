@@ -10,6 +10,10 @@
     "enabled": true,
     "formatter": "clang-format"
   },
+  "cabal": {
+    "enabled": true,
+    "formatter": "cabal_format"
+  },
   "clojure": {
     "enabled": true,
     "formatter": "cljstyle"

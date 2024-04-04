@@ -25,6 +25,17 @@
         }
       ]
     },
+    "cabal": {
+      "default": {
+        "enabled": true,
+        "formatter": "cabal_format"
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/Lang_for_Cabal"
+        }
+      ]
+    },
     "clojure": {
       "default": {
         "enabled": true,
@@ -551,6 +562,10 @@
       "type": "string",
       "enum": ["csharpier", "clang-format"]
     },
+    "Cabal": {
+      "type": "string",
+      "enum": ["cabal_format"]
+    },
     "Clojure": {
       "type": "string",
       "enum": ["cljstyle"]
@@ -672,6 +687,18 @@
         },
         "formatter": {
           "$ref": "#/definitions/MdsfFormatter_for_CSharp"
+        }
+      }
+    },
+    "Lang_for_Cabal": {
+      "type": "object",
+      "required": ["enabled", "formatter"],
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        },
+        "formatter": {
+          "$ref": "#/definitions/MdsfFormatter_for_Cabal"
         }
       }
     },
@@ -1246,6 +1273,19 @@
           "type": "array",
           "items": {
             "$ref": "#/definitions/MdsfFormatter_for_CSharp"
+          }
+        }
+      ]
+    },
+    "MdsfFormatter_for_Cabal": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/Cabal"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MdsfFormatter_for_Cabal"
           }
         }
       ]
