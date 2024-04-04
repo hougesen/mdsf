@@ -91,6 +91,7 @@ mdsf init
 | Lua        | `luaformatter`, `stylua`                                      |
 | Markdown   | `prettier`                                                    |
 | Nim        | `nimpretty`                                                   |
+| Nix        | `alejandra`, `nixfmt`, `nixpkgs-fmt`                          |
 | OCaml      | `ocamlformat`, `ocp-indent`                                   |
 | ObjectiveC | `clang-format`                                                |
 | Perl       | `perltidy`                                                    |

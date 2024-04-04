@@ -118,6 +118,10 @@
     "enabled": true,
     "formatter": "nimpretty"
   },
+  "nix": {
+    "enabled": true,
+    "formatter": [["nixfmt", "alejandra", "nixpkgs-fmt"]]
+  },
   "objective_c": {
     "enabled": true,
     "formatter": "clang-format"

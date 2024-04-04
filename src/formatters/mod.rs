@@ -6,6 +6,7 @@ use which::which;
 
 use crate::{config::MdsfConfig, languages::Language, terminal::print_binary_not_in_path, DEBUG};
 
+pub mod alejandra;
 pub mod autopep8;
 pub mod beautysh;
 pub mod biome;
@@ -39,6 +40,8 @@ pub mod ktlint;
 pub mod luaformatter;
 pub mod mix_format;
 pub mod nimpretty;
+pub mod nixfmt;
+pub mod nixpkgs_fmt;
 pub mod npm_groovy_lint;
 pub mod ocamlformat;
 pub mod ocp_indent;
@@ -181,6 +184,7 @@ pub fn format_snippet(config: &MdsfConfig, language: &Language, code: &str) -> S
             Language::Kotlin => config.kotlin.format(snippet_path),
             Language::Lua => config.lua.format(snippet_path),
             Language::Markdown => config.markdown.format(snippet_path),
+            Language::Nix => config.nix.format(snippet_path),
             Language::Nim => config.nim.format(snippet_path),
             Language::OCaml => config.ocaml.format(snippet_path),
             Language::ObjectiveC => config.objective_c.format(snippet_path),
