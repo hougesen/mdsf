@@ -80,6 +80,7 @@ mdsf init
 | GraphQL    | `prettier`                                                    |
 | Groovy     | `npm-groovy-lint`                                             |
 | Haskell    | `fourmolu`, `hindent`, `ormolu`, `stylish-haskell`            |
+| Hcl        | `terraform_fmt`, `tofu_fmt`                                   |
 | Html       | `prettier`                                                    |
 | Java       | `clang-format`, `google-java-format`                          |
 | JavaScript | `biome`, `clang-format`, `deno_fmt`, `prettier`, `standardjs` |
