@@ -187,7 +187,7 @@
   },
   "yaml": {
     "enabled": true,
-    "formatter": [["prettier", "yamlfmt"]]
+    "formatter": [["prettier", "yamlfmt", "yamlfix"]]
   },
   "zig": {
     "enabled": true,

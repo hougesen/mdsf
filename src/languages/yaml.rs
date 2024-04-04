@@ -1,10 +1,10 @@
 use schemars::JsonSchema;
 
-use crate::formatters::{
-    prettier::format_using_prettier, yamlfmt::format_using_yamlfmt, MdsfFormatter,
-};
-
 use super::{Lang, LanguageFormatter};
+use crate::formatters::{
+    prettier::format_using_prettier, yamlfix::format_using_yamlfix, yamlfmt::format_using_yamlfmt,
+    MdsfFormatter,
+};
 
 #[derive(Debug, Default, serde::Serialize, serde::Deserialize, JsonSchema)]
 #[cfg_attr(test, derive(PartialEq, Eq))]
@@ -14,6 +14,8 @@ pub enum Yaml {
     Prettier,
     #[serde(rename = "yamlfmt")]
     YamlFmt,
+    #[serde(rename = "yamlfix")]
+    YamlFix,
 }
 
 impl Default for Lang<Yaml> {
@@ -32,6 +34,7 @@ impl Default for MdsfFormatter<Yaml> {
         Self::Multiple(vec![Self::Multiple(vec![
             Self::Single(Yaml::Prettier),
             Self::Single(Yaml::YamlFmt),
+            Self::Single(Yaml::YamlFix),
         ])])
     }
 }
@@ -45,18 +48,18 @@ impl LanguageFormatter for Yaml {
         match self {
             Self::Prettier => format_using_prettier(snippet_path, true),
             Self::YamlFmt => format_using_yamlfmt(snippet_path),
+            Self::YamlFix => format_using_yamlfix(snippet_path),
         }
     }
 }
 
 #[cfg(test)]
 mod test_yaml {
+    use super::Yaml;
     use crate::{
         formatters::{setup_snippet, MdsfFormatter},
         languages::Lang,
     };
-
-    use super::Yaml;
 
     const INPUT: &str = "
 
@@ -170,6 +173,42 @@ updates:
       interval: \"monthly\"
     assignees:
       - \"hougesen\"
+    open-pull-requests-limit: 25
+";
+
+        assert_eq!(output, expected_output);
+    }
+
+    #[test_with::executable(yamlfix)]
+    #[test]
+    fn test_yamlfix() {
+        let l = Lang::<Yaml> {
+            enabled: true,
+            formatter: MdsfFormatter::Single(Yaml::YamlFix),
+        };
+
+        let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");
+        let snippet_path = snippet.path();
+
+        let output = l
+            .format(snippet_path)
+            .expect("it to not fail")
+            .expect("it to be a snippet");
+
+        let expected_output = "---
+version: 2
+updates:
+  - package-ecosystem: cargo
+    directory: /
+    schedule:
+      interval: monthly
+    assignees: [hougesen]
+    open-pull-requests-limit: 25
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: monthly
+    assignees: [hougesen]
     open-pull-requests-limit: 25
 ";
 

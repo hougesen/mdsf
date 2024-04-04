@@ -48,6 +48,7 @@ pub enum ShellFlavor {
 }
 
 impl core::fmt::Display for ShellFlavor {
+    #[inline]
     fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
         match self {
             Self::Shell => f.write_str("shell"),

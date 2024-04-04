@@ -1,12 +1,11 @@
 use schemars::JsonSchema;
 
+use super::{Lang, LanguageFormatter};
 use crate::formatters::{
     biome::format_using_biome, clang_format::format_using_clang_format,
     deno_fmt::format_using_deno_fmt, prettier::format_using_prettier,
     standardjs::format_using_standardjs, MdsfFormatter,
 };
-
-use super::{Lang, LanguageFormatter};
 
 #[derive(Debug, Default, serde::Serialize, serde::Deserialize, JsonSchema)]
 #[cfg_attr(test, derive(PartialEq, Eq))]
@@ -64,12 +63,11 @@ impl LanguageFormatter for JavaScript {
 
 #[cfg(test)]
 mod test_javascript {
+    use super::JavaScript;
     use crate::{
         formatters::{setup_snippet, MdsfFormatter},
         languages::{JavaScriptFlavor, Lang},
     };
-
-    use super::JavaScript;
 
     const INPUT: &str = "
     async function asyncAddition(
@@ -214,7 +212,7 @@ mod test_javascript {
         assert_eq!(expected_output, output);
     }
 
-    #[test_with::executable(npx)]
+    #[test_with::executable(standard)]
     #[test]
     fn test_standardjs() {
         let input = "
