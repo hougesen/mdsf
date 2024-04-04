@@ -64,6 +64,8 @@ pub mod stylish_haskell;
 pub mod stylua;
 pub mod swiftformat;
 pub mod taplo;
+pub mod terraform_fmt;
+pub mod tofu_fmt;
 pub mod usort;
 pub mod xmlformat;
 pub mod xmllint;
@@ -168,6 +170,7 @@ pub fn format_snippet(config: &MdsfConfig, language: &Language, code: &str) -> S
             Language::GraphQL => config.graphql.format(snippet_path),
             Language::Groovy => config.groovy.format(snippet_path),
             Language::Haskell => config.haskell.format(snippet_path),
+            Language::Hcl => config.hcl.format(snippet_path),
             Language::Html => config.html.format(snippet_path),
             Language::Java => config.java.format(snippet_path),
             Language::JavaScript(_flavor) => config.javascript.format(snippet_path),

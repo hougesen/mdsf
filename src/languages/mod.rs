@@ -20,6 +20,7 @@ pub mod go;
 pub mod graphql;
 pub mod groovy;
 pub mod haskell;
+pub mod hcl;
 pub mod html;
 pub mod java;
 pub mod javascript;
@@ -183,6 +184,7 @@ pub enum Language {
     Shell(ShellFlavor),
     Sql,
     Swift,
+    Hcl,
     Toml,
     TypeScript(TypeScriptFlavor),
     Vue,
@@ -243,6 +245,7 @@ impl core::fmt::Display for Language {
             Self::Shell(flavor) => flavor.fmt(f),
             Self::Sql => f.write_str("sql"),
             Self::Swift => f.write_str("swift"),
+            Self::Hcl => f.write_str("hcl"),
             Self::Toml => f.write_str("toml"),
             Self::TypeScript(flavor) => flavor.fmt(f),
             Self::Vue => f.write_str("vue"),
@@ -315,6 +318,7 @@ impl Language {
             | "plsql" | "postgresql" | "redshift" | "singlestoredb" | "snowflake" | "spark"
             | "sqlite" | "transactsql" | "trino" | "tsql" => Some(Self::Sql),
             "swift" => Some(Self::Swift),
+            "terraform" | "hcl" | "opentofu" => Some(Self::Hcl),
             "toml" => Some(Self::Toml),
             "typescript" | "ts" => Some(Self::TypeScript(TypeScriptFlavor::TypeScript)),
             "tsx" => Some(Self::TypeScript(TypeScriptFlavor::TSX)),
@@ -379,6 +383,7 @@ impl Language {
             Self::Scala => ".scala",
             Self::Sql => ".sql",
             Self::Swift => ".swift",
+            Self::Hcl => ".tf",
             Self::Toml => ".toml",
             Self::TypeScript(TypeScriptFlavor::TypeScript) => ".ts",
             Self::TypeScript(TypeScriptFlavor::TSX) => ".tsx",

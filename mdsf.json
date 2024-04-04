@@ -74,6 +74,10 @@
     "enabled": true,
     "formatter": [["fourmolu", "ormolu", "hindent"]]
   },
+  "hcl": {
+    "enabled": true,
+    "formatter": [["terraform_fmt", "tofu_fmt"]]
+  },
   "html": {
     "enabled": true,
     "formatter": "prettier"

@@ -206,6 +206,17 @@
         }
       ]
     },
+    "hcl": {
+      "default": {
+        "enabled": true,
+        "formatter": [["terraform_fmt", "tofu_fmt"]]
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/Lang_for_Hcl"
+        }
+      ]
+    },
     "html": {
       "default": {
         "enabled": true,
@@ -622,6 +633,10 @@
       "type": "string",
       "enum": ["fourmolu", "ormolu", "hindent", "stylish-haskell"]
     },
+    "Hcl": {
+      "type": "string",
+      "enum": ["terraform_fmt", "tofu_fmt"]
+    },
     "Html": {
       "type": "string",
       "enum": ["prettier"]
@@ -867,6 +882,18 @@
         },
         "formatter": {
           "$ref": "#/definitions/MdsfFormatter_for_Haskell"
+        }
+      }
+    },
+    "Lang_for_Hcl": {
+      "type": "object",
+      "required": ["enabled", "formatter"],
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        },
+        "formatter": {
+          "$ref": "#/definitions/MdsfFormatter_for_Hcl"
         }
       }
     },
@@ -1468,6 +1495,19 @@
           "type": "array",
           "items": {
             "$ref": "#/definitions/MdsfFormatter_for_Haskell"
+          }
+        }
+      ]
+    },
+    "MdsfFormatter_for_Hcl": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/Hcl"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MdsfFormatter_for_Hcl"
           }
         }
       ]
