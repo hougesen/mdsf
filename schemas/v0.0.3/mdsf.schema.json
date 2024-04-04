@@ -336,6 +336,17 @@
         }
       ]
     },
+    "nix": {
+      "default": {
+        "enabled": true,
+        "formatter": [["nixfmt", "alejandra", "nixpkgs-fmt"]]
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/Lang_for_Nix"
+        }
+      ]
+    },
     "objective_c": {
       "default": {
         "enabled": true,
@@ -1017,6 +1028,18 @@
         }
       }
     },
+    "Lang_for_Nix": {
+      "type": "object",
+      "required": ["enabled", "formatter"],
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        },
+        "formatter": {
+          "$ref": "#/definitions/MdsfFormatter_for_Nix"
+        }
+      }
+    },
     "Lang_for_OCaml": {
       "type": "object",
       "required": ["enabled", "formatter"],
@@ -1642,6 +1665,19 @@
         }
       ]
     },
+    "MdsfFormatter_for_Nix": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/Nix"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MdsfFormatter_for_Nix"
+          }
+        }
+      ]
+    },
     "MdsfFormatter_for_OCaml": {
       "anyOf": [
         {
@@ -1905,6 +1941,10 @@
     "Nim": {
       "type": "string",
       "enum": ["nimpretty"]
+    },
+    "Nix": {
+      "type": "string",
+      "enum": ["nixfmt", "nixpkgs-fmt", "alejandra"]
     },
     "OCaml": {
       "type": "string",

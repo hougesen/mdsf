@@ -31,6 +31,7 @@ pub mod kotlin;
 pub mod lua;
 pub mod markdown;
 pub mod nim;
+pub mod nix;
 pub mod objective_c;
 pub mod ocaml;
 pub mod perl;
@@ -170,6 +171,7 @@ pub enum Language {
     Lua,
     Markdown,
     Nim,
+    Nix,
     OCaml,
     ObjectiveC,
     Perl,
@@ -252,6 +254,7 @@ impl core::fmt::Display for Language {
             Self::Xml => f.write_str("xml"),
             Self::Yaml => f.write_str("yaml"),
             Self::Zig => f.write_str("zig"),
+            Self::Nix => f.write_str("nix"),
         }
     }
 }
@@ -327,6 +330,7 @@ impl Language {
             "yml" | "yaml" => Some(Self::Yaml),
             "zig" => Some(Self::Zig),
             "clojure" => Some(Self::Clojure),
+            "nix" | "nixos" => Some(Self::Nix),
             _ => None,
         }
     }
@@ -370,6 +374,7 @@ impl Language {
             Self::OCaml => ".ml",
             Self::ObjectiveC => ".m",
             Self::Perl => ".pl",
+            Self::Nix => ".nix",
             Self::Protobuf => ".proto",
             Self::PureScript => ".purs",
             Self::Python => ".py",
