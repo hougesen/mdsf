@@ -328,7 +328,7 @@
     "ocaml": {
       "default": {
         "enabled": true,
-        "formatter": "ocamlformat"
+        "formatter": [["ocamlformat", "ocp-indent"]]
       },
       "allOf": [
         {
@@ -1828,7 +1828,7 @@
     },
     "OCaml": {
       "type": "string",
-      "enum": ["ocamlformat"]
+      "enum": ["ocamlformat", "ocp-indent"]
     },
     "ObjectiveC": {
       "type": "string",
