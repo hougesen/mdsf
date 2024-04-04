@@ -181,16 +181,16 @@ jobs:
         run: crystal tool format --help
 
       - name: perltidy
-        run: sudo apt-get install -y perltidy
+        run: sudo apt-get install -y perltidy && perltidy --version
 
       - name: goimports
-        run: go install golang.org/x/tools/cmd/goimports@latest
+        run: go install golang.org/x/tools/cmd/goimports@latest && which goimports
 
       - name: beautysh
         run: pipx install beautysh && beautysh --version
 
       - name: cljstyle
-        run: curl -sLO https://raw.githubusercontent.com/greglook/cljstyle/main/util/install-cljstyle && chmod +x install-cljstyle && sudo ./install-cljstyle
+        run: curl -sLO https://raw.githubusercontent.com/greglook/cljstyle/main/util/install-cljstyle && chmod +x install-cljstyle && sudo ./install-cljstyle && cljstyle version
 
       - name: fourmolu
         run: curl -sLO https://github.com/fourmolu/fourmolu/releases/download/v0.15.0.0/fourmolu-0.15.0.0-linux-x86_64 && chmod +x fourmolu-0.15.0.0-linux-x86_64 && sudo mv fourmolu-0.15.0.0-linux-x86_64 /usr/local/bin/fourmolu && fourmolu --version
@@ -199,25 +199,25 @@ jobs:
         run: curl -sSLO https://github.com/mihaimaruseac/hindent/releases/download/v6.1.1/hindent && chmod a+x hindent && sudo mv hindent /usr/local/bin/ && hindent --version
 
       - name: ktlint
-        run: curl -sSLO https://github.com/pinterest/ktlint/releases/download/1.2.1/ktlint && chmod a+x ktlint && sudo mv ktlint /usr/local/bin/
+        run: curl -sSLO https://github.com/pinterest/ktlint/releases/download/1.2.1/ktlint && chmod a+x ktlint && sudo mv ktlint /usr/local/bin/ && ktlint --version
 
       - name: rufo
-        run: gem install rufo
+        run: gem install rufo && rufo --version
 
       - name: yamlfmt
-        run: go install github.com/google/yamlfmt/cmd/yamlfmt@latest
+        run: go install github.com/google/yamlfmt/cmd/yamlfmt@latest && yamlfmt --version
 
       - name: standardrb
-        run: gem install standardrb
+        run: gem install standardrb && standardrb --version
 
       - name: fantomas
-        run: dotnet tool install -g fantomas
+        run: dotnet tool install -g fantomas && fantomas --version
 
       - name: csharpier
-        run: dotnet tool install -g csharpier
+        run: dotnet tool install -g csharpieri && dotnet csharpier --version
 
       - name: xmlformatter/xmlformat
-        run: pipx install xmlformatter && xmlformat --help
+        run: pipx install xmlformatter && which xmlformat
 
       - name: yamlfix
         run: pipx install yamlfix && yamlfix --version
