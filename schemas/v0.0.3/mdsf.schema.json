@@ -565,7 +565,7 @@
     },
     "Css": {
       "type": "string",
-      "enum": ["prettier"]
+      "enum": ["prettier", "stylelint"]
     },
     "Dart": {
       "type": "string",

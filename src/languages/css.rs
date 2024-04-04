@@ -1,8 +1,9 @@
 use schemars::JsonSchema;
 
-use crate::formatters::{prettier::format_using_prettier, MdsfFormatter};
-
 use super::{Lang, LanguageFormatter};
+use crate::formatters::{
+    prettier::format_using_prettier, stylelint::format_using_stylelint, MdsfFormatter,
+};
 
 #[derive(Debug, Default, serde::Serialize, serde::Deserialize, JsonSchema)]
 #[cfg_attr(test, derive(PartialEq, Eq))]
@@ -10,6 +11,8 @@ pub enum Css {
     #[default]
     #[serde(rename = "prettier")]
     Prettier,
+    #[serde(rename = "stylelint")]
+    StyleLint,
 }
 
 impl Default for Lang<Css> {
@@ -37,18 +40,18 @@ impl LanguageFormatter for Css {
     ) -> std::io::Result<(bool, Option<String>)> {
         match self {
             Self::Prettier => format_using_prettier(snippet_path, true),
+            Self::StyleLint => format_using_stylelint(snippet_path),
         }
     }
 }
 
 #[cfg(test)]
 mod test_css {
+    use super::Css;
     use crate::{
         formatters::{setup_snippet, MdsfFormatter},
         languages::{CssFlavor, Lang},
     };
-
-    use super::Css;
 
     const INPUT: &str = " h1   {color: blue;} p    {color: red;} ";
 
