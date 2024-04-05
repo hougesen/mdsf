@@ -1,9 +1,12 @@
 use schemars::JsonSchema;
 
 use super::{Lang, LanguageFormatter};
-use crate::formatters::{
-    alejandra::format_using_alejandra, nixfmt::format_using_nixfmt,
-    nixpkgs_fmt::format_using_nixpkgs_fmt, MdsfFormatter,
+use crate::{
+    error::MdsfError,
+    formatters::{
+        alejandra::format_using_alejandra, nixfmt::format_using_nixfmt,
+        nixpkgs_fmt::format_using_nixpkgs_fmt, MdsfFormatter,
+    },
 };
 
 #[derive(Default, serde::Serialize, serde::Deserialize, JsonSchema)]
@@ -44,7 +47,7 @@ impl LanguageFormatter for Nix {
     fn format_snippet(
         &self,
         snippet_path: &std::path::Path,
-    ) -> std::io::Result<(bool, Option<String>)> {
+    ) -> Result<(bool, Option<String>), MdsfError> {
         match self {
             Self::Alejandra => format_using_alejandra(snippet_path),
             Self::Nixfmt => format_using_nixfmt(snippet_path),

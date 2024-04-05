@@ -1,10 +1,13 @@
 use schemars::JsonSchema;
 
 use super::{Lang, LanguageFormatter};
-use crate::formatters::{
-    biome::format_using_biome, clang_format::format_using_clang_format,
-    deno_fmt::format_using_deno_fmt, prettier::format_using_prettier,
-    standardjs::format_using_standardjs, MdsfFormatter,
+use crate::{
+    error::MdsfError,
+    formatters::{
+        biome::format_using_biome, clang_format::format_using_clang_format,
+        deno_fmt::format_using_deno_fmt, prettier::format_using_prettier,
+        standardjs::format_using_standardjs, MdsfFormatter,
+    },
 };
 
 #[derive(Default, serde::Serialize, serde::Deserialize, JsonSchema)]
@@ -50,7 +53,7 @@ impl LanguageFormatter for JavaScript {
     fn format_snippet(
         &self,
         snippet_path: &std::path::Path,
-    ) -> std::io::Result<(bool, Option<String>)> {
+    ) -> Result<(bool, Option<String>), MdsfError> {
         match self {
             Self::Biome => format_using_biome(snippet_path),
             Self::Prettier => format_using_prettier(snippet_path, true),

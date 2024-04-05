@@ -4,9 +4,7 @@ use schemars::JsonSchema;
 use tempfile::NamedTempFile;
 use which::which;
 
-use crate::{
-    config::MdsfConfig, languages::Language, terminal::print_binary_not_in_path, LineInfo, DEBUG,
-};
+use crate::{config::MdsfConfig, error::MdsfError, languages::Language, LineInfo, DEBUG};
 
 pub mod alejandra;
 pub mod autopep8;
@@ -115,20 +113,22 @@ pub fn read_snippet(file_path: &std::path::Path) -> std::io::Result<String> {
 fn handle_post_execution(
     result: std::io::Result<bool>,
     snippet_path: &std::path::Path,
-) -> std::io::Result<(bool, Option<String>)> {
-    if let Err(err) = result {
-        if err.kind() == std::io::ErrorKind::NotFound {
-            return Ok((true, None));
+) -> Result<(bool, Option<String>), MdsfError> {
+    match result {
+        Ok(true) => read_snippet(snippet_path)
+            .map(|code| (false, Some(code)))
+            .map_err(MdsfError::from),
+
+        Ok(false) => Err(MdsfError::FormatterError),
+
+        Err(err) => {
+            if err.kind() == std::io::ErrorKind::NotFound {
+                Ok((true, None))
+            } else {
+                Err(MdsfError::from(err))
+            }
         }
-
-        return Err(err);
     }
-
-    if matches!(result, Ok(true)) {
-        return read_snippet(snippet_path).map(|code| (false, Some(code)));
-    }
-
-    Ok((false, None))
 }
 
 fn spawn_command(cmd: &mut Command) -> std::io::Result<bool> {
@@ -144,9 +144,13 @@ fn spawn_command(cmd: &mut Command) -> std::io::Result<bool> {
 pub fn execute_command(
     cmd: &mut Command,
     snippet_path: &std::path::Path,
-) -> std::io::Result<(bool, Option<String>)> {
-    if !binary_in_path(cmd.get_program()) {
-        return Ok((true, None));
+) -> Result<(bool, Option<String>), MdsfError> {
+    let binary_name = cmd.get_program();
+
+    if !binary_in_path(binary_name) {
+        return Err(MdsfError::MissingBinary(
+            binary_name.to_string_lossy().to_string(),
+        ));
     }
 
     handle_post_execution(spawn_command(cmd), snippet_path)
@@ -233,10 +237,5 @@ where
 
 #[inline]
 pub fn binary_in_path(binary_name: &OsStr) -> bool {
-    if which(binary_name).is_ok() {
-        true
-    } else {
-        print_binary_not_in_path(&binary_name.to_string_lossy());
-        false
-    }
+    which(binary_name).is_ok()
 }

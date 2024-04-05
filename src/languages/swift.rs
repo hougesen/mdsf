@@ -1,8 +1,12 @@
 use schemars::JsonSchema;
 
 use super::{Lang, LanguageFormatter};
-use crate::formatters::{
-    swift_format::format_using_swift_format, swiftformat::format_using_swiftformat, MdsfFormatter,
+use crate::{
+    error::MdsfError,
+    formatters::{
+        swift_format::format_using_swift_format, swiftformat::format_using_swiftformat,
+        MdsfFormatter,
+    },
 };
 
 #[derive(Default, serde::Serialize, serde::Deserialize, JsonSchema)]
@@ -40,7 +44,7 @@ impl LanguageFormatter for Swift {
     fn format_snippet(
         &self,
         snippet_path: &std::path::Path,
-    ) -> std::io::Result<(bool, Option<String>)> {
+    ) -> Result<(bool, Option<String>), MdsfError> {
         match self {
             Self::AppleSwiftFormat => format_using_swift_format(snippet_path),
             Self::NicklockwoodSwiftFormat => format_using_swiftformat(snippet_path),

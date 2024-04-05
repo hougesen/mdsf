@@ -1,9 +1,10 @@
 use super::execute_command;
+use crate::error::MdsfError;
 
 #[inline]
 pub fn format_using_ocp_indent(
     snippet_path: &std::path::Path,
-) -> std::io::Result<(bool, Option<String>)> {
+) -> Result<(bool, Option<String>), MdsfError> {
     let mut cmd = std::process::Command::new("ocp-indent");
 
     cmd.arg("--inplace").arg(snippet_path);

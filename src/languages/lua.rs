@@ -1,8 +1,11 @@
 use schemars::JsonSchema;
 
 use super::{Lang, LanguageFormatter};
-use crate::formatters::{
-    luaformatter::format_using_luaformatter, stylua::format_using_stylua, MdsfFormatter,
+use crate::{
+    error::MdsfError,
+    formatters::{
+        luaformatter::format_using_luaformatter, stylua::format_using_stylua, MdsfFormatter,
+    },
 };
 
 #[derive(Default, serde::Serialize, serde::Deserialize, JsonSchema)]
@@ -40,7 +43,7 @@ impl LanguageFormatter for Lua {
     fn format_snippet(
         &self,
         snippet_path: &std::path::Path,
-    ) -> std::io::Result<(bool, Option<String>)> {
+    ) -> Result<(bool, Option<String>), MdsfError> {
         match self {
             Self::Stylua => format_using_stylua(snippet_path),
             Self::LuaFormatter => format_using_luaformatter(snippet_path),

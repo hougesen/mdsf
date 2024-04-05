@@ -1,8 +1,9 @@
 use schemars::JsonSchema;
 
 use super::{Lang, LanguageFormatter};
-use crate::formatters::{
-    beautysh::format_using_beautysh, shfmt::format_using_shfmt, MdsfFormatter,
+use crate::{
+    error::MdsfError,
+    formatters::{beautysh::format_using_beautysh, shfmt::format_using_shfmt, MdsfFormatter},
 };
 
 #[derive(Default, serde::Serialize, serde::Deserialize, JsonSchema)]
@@ -50,7 +51,7 @@ impl LanguageFormatter for Shell {
     fn format_snippet(
         &self,
         snippet_path: &std::path::Path,
-    ) -> std::io::Result<(bool, Option<String>)> {
+    ) -> Result<(bool, Option<String>), MdsfError> {
         match self {
             Self::Shfmt => format_using_shfmt(snippet_path),
             Self::Beautysh => format_using_beautysh(snippet_path),

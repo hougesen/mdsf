@@ -1,8 +1,11 @@
 use schemars::JsonSchema;
 
 use super::{Lang, LanguageFormatter};
-use crate::formatters::{
-    clang_format::format_using_clang_format, csharpier::format_using_csharpier, MdsfFormatter,
+use crate::{
+    error::MdsfError,
+    formatters::{
+        clang_format::format_using_clang_format, csharpier::format_using_csharpier, MdsfFormatter,
+    },
 };
 
 #[derive(Default, serde::Serialize, serde::Deserialize, JsonSchema)]
@@ -40,7 +43,7 @@ impl LanguageFormatter for CSharp {
     fn format_snippet(
         &self,
         snippet_path: &std::path::Path,
-    ) -> std::io::Result<(bool, Option<String>)> {
+    ) -> Result<(bool, Option<String>), MdsfError> {
         match self {
             Self::CSharpier => format_using_csharpier(snippet_path),
             Self::ClangFormat => format_using_clang_format(snippet_path),

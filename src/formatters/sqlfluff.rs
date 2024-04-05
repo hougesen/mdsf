@@ -1,4 +1,5 @@
 use super::execute_command;
+use crate::error::MdsfError;
 
 #[inline]
 fn set_sqlfluff_args(cmd: &mut std::process::Command, snippet_path: &std::path::Path) {
@@ -13,7 +14,7 @@ fn set_sqlfluff_args(cmd: &mut std::process::Command, snippet_path: &std::path::
 fn invote_sqlfluff(
     mut cmd: std::process::Command,
     snippet_path: &std::path::Path,
-) -> std::io::Result<(bool, Option<String>)> {
+) -> Result<(bool, Option<String>), MdsfError> {
     set_sqlfluff_args(&mut cmd, snippet_path);
 
     execute_command(&mut cmd, snippet_path)
@@ -22,7 +23,7 @@ fn invote_sqlfluff(
 #[inline]
 pub fn format_using_sqlfluff(
     snippet_path: &std::path::Path,
-) -> std::io::Result<(bool, Option<String>)> {
+) -> Result<(bool, Option<String>), MdsfError> {
     invote_sqlfluff(std::process::Command::new("sqlfluff"), snippet_path)
 }
 

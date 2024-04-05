@@ -13,11 +13,11 @@ pub fn print_error(error: &MdsfError) {
 #[inline]
 pub fn print_formatter_info(formatter: &str, info: &LineInfo) {
     debug!(
-        "{} formatting '{}' block from :{} to :{} using {formatter}",
+        "{}:{} to :{} {} block using {formatter}",
         info.filename.display(),
-        info.language,
         info.start,
-        info.end
+        info.end,
+        info.language
     );
 }
 
@@ -51,5 +51,15 @@ pub fn print_unknown_javascript_runtime(value: u8, fallback: JavaScriptRuntime) 
 
 #[inline]
 pub fn print_binary_not_in_path(binary_name: &str) {
-    warn!("'{binary_name}' not found in path");
+    warn!("{binary_name} not found in path");
+}
+
+#[inline]
+pub fn print_error_formatting(formatter_name: &str, info: &LineInfo) {
+    error!(
+        "{}:{} to :{} error formatting using {formatter_name}",
+        info.filename.display(),
+        info.start,
+        info.end
+    );
 }

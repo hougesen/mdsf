@@ -1,5 +1,5 @@
 use super::execute_command;
-use crate::runners::setup_npm_script;
+use crate::{error::MdsfError, runners::setup_npm_script};
 
 #[inline]
 fn set_prettier_args(
@@ -11,7 +11,10 @@ fn set_prettier_args(
         cmd.arg("--embedded-language-formatting").arg("off");
     }
 
-    cmd.arg("--write").arg(snippet_path);
+    cmd.arg("--log-level")
+        .arg("error")
+        .arg("--write")
+        .arg(snippet_path);
 }
 
 #[inline]
@@ -19,7 +22,7 @@ fn invoke_prettier(
     mut cmd: std::process::Command,
     snippet_path: &std::path::Path,
     embedded_language_formatting: bool,
-) -> std::io::Result<(bool, Option<String>)> {
+) -> Result<(bool, Option<String>), MdsfError> {
     set_prettier_args(&mut cmd, snippet_path, embedded_language_formatting);
 
     execute_command(&mut cmd, snippet_path)
@@ -29,15 +32,15 @@ fn invoke_prettier(
 pub fn format_using_prettier(
     snippet_path: &std::path::Path,
     embedded_language_formatting: bool,
-) -> std::io::Result<(bool, Option<String>)> {
-    let global_result = invoke_prettier(
+) -> Result<(bool, Option<String>), MdsfError> {
+    if let Ok(path_result) = invoke_prettier(
         std::process::Command::new("prettier"),
         snippet_path,
         embedded_language_formatting,
-    )?;
-
-    if !global_result.0 {
-        return Ok(global_result);
+    ) {
+        if !path_result.0 {
+            return Ok(path_result);
+        }
     }
 
     invoke_prettier(

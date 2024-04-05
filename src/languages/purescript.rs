@@ -1,7 +1,10 @@
 use schemars::JsonSchema;
 
 use super::{Lang, LanguageFormatter};
-use crate::formatters::{purs_tidy::format_using_purs_tidy, MdsfFormatter};
+use crate::{
+    error::MdsfError,
+    formatters::{purs_tidy::format_using_purs_tidy, MdsfFormatter},
+};
 
 #[derive(Default, serde::Serialize, serde::Deserialize, JsonSchema)]
 #[cfg_attr(test, derive(Debug, PartialEq, Eq))]
@@ -33,7 +36,7 @@ impl LanguageFormatter for PureScript {
     fn format_snippet(
         &self,
         snippet_path: &std::path::Path,
-    ) -> std::io::Result<(bool, Option<String>)> {
+    ) -> Result<(bool, Option<String>), MdsfError> {
         match self {
             Self::PursTidy => format_using_purs_tidy(snippet_path),
         }

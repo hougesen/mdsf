@@ -1,8 +1,11 @@
 use schemars::JsonSchema;
 
 use super::{Lang, LanguageFormatter};
-use crate::formatters::{
-    prettier::format_using_prettier, stylelint::format_using_stylelint, MdsfFormatter,
+use crate::{
+    error::MdsfError,
+    formatters::{
+        prettier::format_using_prettier, stylelint::format_using_stylelint, MdsfFormatter,
+    },
 };
 
 #[derive(Default, serde::Serialize, serde::Deserialize, JsonSchema)]
@@ -37,7 +40,7 @@ impl LanguageFormatter for Css {
     fn format_snippet(
         &self,
         snippet_path: &std::path::Path,
-    ) -> std::io::Result<(bool, Option<String>)> {
+    ) -> Result<(bool, Option<String>), MdsfError> {
         match self {
             Self::Prettier => format_using_prettier(snippet_path, true),
             Self::StyleLint => format_using_stylelint(snippet_path),

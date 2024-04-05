@@ -1,7 +1,10 @@
 use schemars::JsonSchema;
 
 use super::{Lang, LanguageFormatter};
-use crate::formatters::{crystal_format::format_using_crystal_format, MdsfFormatter};
+use crate::{
+    error::MdsfError,
+    formatters::{crystal_format::format_using_crystal_format, MdsfFormatter},
+};
 
 #[derive(Default, serde::Serialize, serde::Deserialize, JsonSchema)]
 #[cfg_attr(test, derive(Debug, PartialEq, Eq))]
@@ -33,7 +36,7 @@ impl LanguageFormatter for Crystal {
     fn format_snippet(
         &self,
         snippet_path: &std::path::Path,
-    ) -> std::io::Result<(bool, Option<String>)> {
+    ) -> Result<(bool, Option<String>), MdsfError> {
         match self {
             Self::CrystalFormat => format_using_crystal_format(snippet_path),
         }

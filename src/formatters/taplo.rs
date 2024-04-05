@@ -1,5 +1,5 @@
 use super::execute_command;
-use crate::runners::setup_npm_script;
+use crate::{error::MdsfError, runners::setup_npm_script};
 
 #[inline]
 fn set_taplo_args(cmd: &mut std::process::Command, snippet_path: &std::path::Path) {
@@ -11,7 +11,7 @@ fn set_taplo_args(cmd: &mut std::process::Command, snippet_path: &std::path::Pat
 fn invoke_taplo(
     mut cmd: std::process::Command,
     snippet_path: &std::path::Path,
-) -> std::io::Result<(bool, Option<String>)> {
+) -> Result<(bool, Option<String>), MdsfError> {
     set_taplo_args(&mut cmd, snippet_path);
 
     execute_command(&mut cmd, snippet_path)
@@ -20,11 +20,11 @@ fn invoke_taplo(
 #[inline]
 pub fn format_using_taplo(
     snippet_path: &std::path::Path,
-) -> std::io::Result<(bool, Option<String>)> {
-    let path_result = invoke_taplo(std::process::Command::new("taplo"), snippet_path)?;
-
-    if !path_result.0 {
-        return Ok(path_result);
+) -> Result<(bool, Option<String>), MdsfError> {
+    if let Ok(path_result) = invoke_taplo(std::process::Command::new("taplo"), snippet_path) {
+        if !path_result.0 {
+            return Ok(path_result);
+        }
     }
 
     invoke_taplo(setup_npm_script("@taplo/cli"), snippet_path)

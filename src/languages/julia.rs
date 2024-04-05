@@ -1,7 +1,10 @@
 use schemars::JsonSchema;
 
 use super::{Lang, LanguageFormatter};
-use crate::formatters::{juliaformatter_jl::format_using_juliaformatter_jl, MdsfFormatter};
+use crate::{
+    error::MdsfError,
+    formatters::{juliaformatter_jl::format_using_juliaformatter_jl, MdsfFormatter},
+};
 
 #[derive(Default, serde::Serialize, serde::Deserialize, JsonSchema)]
 #[cfg_attr(test, derive(Debug, PartialEq, Eq))]
@@ -33,7 +36,7 @@ impl LanguageFormatter for Julia {
     fn format_snippet(
         &self,
         snippet_path: &std::path::Path,
-    ) -> std::io::Result<(bool, Option<String>)> {
+    ) -> Result<(bool, Option<String>), MdsfError> {
         match self {
             Self::JuliaFormatterJl => format_using_juliaformatter_jl(snippet_path),
         }

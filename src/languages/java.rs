@@ -1,9 +1,12 @@
 use schemars::JsonSchema;
 
 use super::{Lang, LanguageFormatter};
-use crate::formatters::{
-    clang_format::format_using_clang_format, google_java_format::format_using_google_java_format,
-    MdsfFormatter,
+use crate::{
+    error::MdsfError,
+    formatters::{
+        clang_format::format_using_clang_format,
+        google_java_format::format_using_google_java_format, MdsfFormatter,
+    },
 };
 
 #[derive(Default, serde::Serialize, serde::Deserialize, JsonSchema)]
@@ -41,7 +44,7 @@ impl LanguageFormatter for Java {
     fn format_snippet(
         &self,
         snippet_path: &std::path::Path,
-    ) -> std::io::Result<(bool, Option<String>)> {
+    ) -> Result<(bool, Option<String>), MdsfError> {
         match self {
             Self::ClangFormat => format_using_clang_format(snippet_path),
             Self::GoogleJavaFormat => format_using_google_java_format(snippet_path),

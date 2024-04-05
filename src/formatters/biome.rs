@@ -1,10 +1,10 @@
 use super::execute_command;
-use crate::runners::setup_npm_script;
+use crate::{error::MdsfError, runners::setup_npm_script};
 
 #[inline]
 pub fn format_using_biome(
     snippet_path: &std::path::Path,
-) -> std::io::Result<(bool, Option<String>)> {
+) -> Result<(bool, Option<String>), MdsfError> {
     // NOTE: the biome docs recommend running biome using npx, and not directly
     let mut cmd = setup_npm_script("@biomejs/biome");
 

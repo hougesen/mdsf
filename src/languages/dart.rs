@@ -1,7 +1,10 @@
 use schemars::JsonSchema;
 
 use super::{Lang, LanguageFormatter};
-use crate::formatters::{dart_format::format_using_dart_format, MdsfFormatter};
+use crate::{
+    error::MdsfError,
+    formatters::{dart_format::format_using_dart_format, MdsfFormatter},
+};
 
 #[derive(Default, serde::Serialize, serde::Deserialize, JsonSchema)]
 #[cfg_attr(test, derive(Debug, PartialEq, Eq))]
@@ -33,7 +36,7 @@ impl LanguageFormatter for Dart {
     fn format_snippet(
         &self,
         snippet_path: &std::path::Path,
-    ) -> std::io::Result<(bool, Option<String>)> {
+    ) -> Result<(bool, Option<String>), MdsfError> {
         match self {
             Self::DartFormat => format_using_dart_format(snippet_path),
         }

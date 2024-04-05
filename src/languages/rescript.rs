@@ -1,7 +1,10 @@
 use schemars::JsonSchema;
 
 use super::{Lang, LanguageFormatter};
-use crate::formatters::{rescript_format::format_using_rescript_format, MdsfFormatter};
+use crate::{
+    error::MdsfError,
+    formatters::{rescript_format::format_using_rescript_format, MdsfFormatter},
+};
 
 #[derive(Default, serde::Serialize, serde::Deserialize, JsonSchema)]
 #[cfg_attr(test, derive(Debug, PartialEq, Eq))]
@@ -33,7 +36,7 @@ impl LanguageFormatter for ReScript {
     fn format_snippet(
         &self,
         snippet_path: &std::path::Path,
-    ) -> std::io::Result<(bool, Option<String>)> {
+    ) -> Result<(bool, Option<String>), MdsfError> {
         match self {
             Self::ReScriptFormat => format_using_rescript_format(snippet_path),
         }

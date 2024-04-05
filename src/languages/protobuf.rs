@@ -1,8 +1,9 @@
 use schemars::JsonSchema;
 
 use super::{Lang, LanguageFormatter};
-use crate::formatters::{
-    buf::format_using_buf, clang_format::format_using_clang_format, MdsfFormatter,
+use crate::{
+    error::MdsfError,
+    formatters::{buf::format_using_buf, clang_format::format_using_clang_format, MdsfFormatter},
 };
 
 #[derive(Default, serde::Serialize, serde::Deserialize, JsonSchema)]
@@ -40,7 +41,7 @@ impl LanguageFormatter for Protobuf {
     fn format_snippet(
         &self,
         snippet_path: &std::path::Path,
-    ) -> std::io::Result<(bool, Option<String>)> {
+    ) -> Result<(bool, Option<String>), MdsfError> {
         match self {
             Self::Buf => format_using_buf(snippet_path),
             Self::ClangFormat => format_using_clang_format(snippet_path),

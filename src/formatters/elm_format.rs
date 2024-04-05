@@ -1,5 +1,5 @@
 use super::execute_command;
-use crate::runners::setup_npm_script;
+use crate::{error::MdsfError, runners::setup_npm_script};
 
 #[inline]
 fn set_elm_format_args(cmd: &mut std::process::Command, snippet_path: &std::path::Path) {
@@ -10,7 +10,7 @@ fn set_elm_format_args(cmd: &mut std::process::Command, snippet_path: &std::path
 fn invoke_elm_format(
     mut cmd: std::process::Command,
     snippet_path: &std::path::Path,
-) -> std::io::Result<(bool, Option<String>)> {
+) -> Result<(bool, Option<String>), MdsfError> {
     set_elm_format_args(&mut cmd, snippet_path);
 
     execute_command(&mut cmd, snippet_path)
@@ -19,7 +19,7 @@ fn invoke_elm_format(
 #[inline]
 pub fn format_using_elm_format(
     snippet_path: &std::path::Path,
-) -> std::io::Result<(bool, Option<String>)> {
+) -> Result<(bool, Option<String>), MdsfError> {
     invoke_elm_format(setup_npm_script("elm-format"), snippet_path)
 }
 

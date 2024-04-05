@@ -1,8 +1,9 @@
 use schemars::JsonSchema;
 
 use super::{Lang, LanguageFormatter};
-use crate::formatters::{
-    xmlformat::format_using_xmlformat, xmllint::format_using_xmllint, MdsfFormatter,
+use crate::{
+    error::MdsfError,
+    formatters::{xmlformat::format_using_xmlformat, xmllint::format_using_xmllint, MdsfFormatter},
 };
 
 #[derive(Default, serde::Serialize, serde::Deserialize, JsonSchema)]
@@ -40,7 +41,7 @@ impl LanguageFormatter for Xml {
     fn format_snippet(
         &self,
         snippet_path: &std::path::Path,
-    ) -> std::io::Result<(bool, Option<String>)> {
+    ) -> Result<(bool, Option<String>), MdsfError> {
         match self {
             Self::XmlLint => format_using_xmllint(snippet_path),
             Self::XmlFormat => format_using_xmlformat(snippet_path),

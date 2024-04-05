@@ -1,9 +1,12 @@
 use schemars::JsonSchema;
 
 use super::{Lang, LanguageFormatter};
-use crate::formatters::{
-    gofmt::format_using_gofmt, gofumpt::format_using_gofumpt, goimports::format_using_goimports,
-    MdsfFormatter,
+use crate::{
+    error::MdsfError,
+    formatters::{
+        gofmt::format_using_gofmt, gofumpt::format_using_gofumpt,
+        goimports::format_using_goimports, MdsfFormatter,
+    },
 };
 
 #[derive(Default, serde::Serialize, serde::Deserialize, JsonSchema)]
@@ -43,7 +46,7 @@ impl LanguageFormatter for Go {
     fn format_snippet(
         &self,
         snippet_path: &std::path::Path,
-    ) -> std::io::Result<(bool, Option<String>)> {
+    ) -> Result<(bool, Option<String>), MdsfError> {
         match self {
             Self::GoFmt => format_using_gofmt(snippet_path),
             Self::GoFumpt => format_using_gofumpt(snippet_path),

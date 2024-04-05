@@ -1,6 +1,11 @@
 use schemars::JsonSchema;
 
-use crate::{formatters::MdsfFormatter, terminal::print_formatter_info, LineInfo};
+use crate::{
+    error::MdsfError,
+    formatters::MdsfFormatter,
+    terminal::{print_binary_not_in_path, print_error_formatting, print_formatter_info},
+    LineInfo,
+};
 
 pub mod blade;
 pub mod c;
@@ -262,7 +267,7 @@ pub trait LanguageFormatter {
     fn format_snippet(
         &self,
         snippet_path: &std::path::Path,
-    ) -> std::io::Result<(bool, Option<String>)>;
+    ) -> Result<(bool, Option<String>), MdsfError>;
 }
 
 impl Language {
@@ -416,7 +421,7 @@ impl<T: LanguageFormatter + core::fmt::Display> Lang<T> {
         &self,
         snippet_path: &std::path::Path,
         info: &LineInfo,
-    ) -> std::io::Result<Option<String>> {
+    ) -> Result<Option<String>, MdsfError> {
         if !self.enabled {
             return Ok(None);
         }
@@ -431,12 +436,34 @@ impl<T: LanguageFormatter + core::fmt::Display> Lang<T> {
         snippet_path: &std::path::Path,
         info: &LineInfo,
         nested: bool,
-    ) -> std::io::Result<(bool, Option<String>)> {
+    ) -> Result<(bool, Option<String>), MdsfError> {
         match formatter {
             MdsfFormatter::Single(f) => {
-                print_formatter_info(f.to_string().as_str(), info);
+                let formatter_name = f.to_string();
 
-                f.format_snippet(snippet_path)
+                print_formatter_info(&formatter_name, info);
+
+                let r = f.format_snippet(snippet_path);
+
+                if let Err(e) = &r {
+                    if let MdsfError::MissingBinary(binary) = e {
+                        print_binary_not_in_path(
+                            if &formatter_name == binary {
+                                formatter_name
+                            } else {
+                                format!("{binary} ({formatter_name})")
+                            }
+                            .as_str(),
+                        );
+
+                        return Ok((false, None));
+                    } else if matches!(e, MdsfError::FormatterError) {
+                        print_error_formatting(&formatter_name, info);
+                        return Ok((false, None));
+                    }
+                }
+
+                r
             }
 
             MdsfFormatter::Multiple(formatters) => {
@@ -465,6 +492,7 @@ mod test_lang {
 
     use super::{Lang, LanguageFormatter};
     use crate::{
+        error::MdsfError,
         formatters::{setup_snippet, MdsfFormatter},
         LineInfo,
     };
@@ -495,7 +523,7 @@ mod test_lang {
         fn format_snippet(
             &self,
             snippet_path: &std::path::Path,
-        ) -> std::io::Result<(bool, Option<String>)> {
+        ) -> Result<(bool, Option<String>), MdsfError> {
             let mut file = std::fs::OpenOptions::new()
                 .append(true)
                 .open(snippet_path)?;
