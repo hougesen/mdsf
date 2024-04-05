@@ -6,10 +6,16 @@ description = "Format markdown code snippets using your favorite code formatters
 authors = ["Mads Hougesen <mads@mhouge.dk>"]
 license = "MIT"
 repository = "https://github.com/hougesen/mdsf"
-keywords = ["markdown", "formatter", "pretty-printing", "code-formatter"]
+keywords = [
+  "markdown",
+  "formatter",
+  "pretty-printing",
+  "code-formatter",
+  "linter",
+]
 homepage = "https://github.com/hougesen/mdsf"
 readme = "README.md"
-categories = ["development-tools"]
+categories = ["development-tools", "command-line-utilities"]
 
 [dependencies]
 clap = { version = "4.5.4", features = ["derive"] }
