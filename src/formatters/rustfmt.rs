@@ -1,15 +1,16 @@
 use super::execute_command;
+use crate::error::MdsfError;
 
 #[inline]
 pub fn format_using_rustfmt(
     snippet_path: &std::path::Path,
-) -> std::io::Result<(bool, Option<String>)> {
+) -> Result<(bool, Option<String>), MdsfError> {
     let mut cmd = std::process::Command::new("rustfmt");
 
     // Needed for async
     cmd.arg("--edition").arg("2021");
 
-    cmd.arg(snippet_path);
+    cmd.arg("--quiet").arg(snippet_path);
 
     execute_command(&mut cmd, snippet_path)
 }

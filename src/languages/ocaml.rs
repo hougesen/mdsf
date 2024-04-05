@@ -1,8 +1,11 @@
 use schemars::JsonSchema;
 
 use super::{Lang, LanguageFormatter};
-use crate::formatters::{
-    ocamlformat::format_using_ocamlformat, ocp_indent::format_using_ocp_indent, MdsfFormatter,
+use crate::{
+    error::MdsfError,
+    formatters::{
+        ocamlformat::format_using_ocamlformat, ocp_indent::format_using_ocp_indent, MdsfFormatter,
+    },
 };
 
 #[derive(Default, serde::Serialize, serde::Deserialize, JsonSchema)]
@@ -40,7 +43,7 @@ impl LanguageFormatter for OCaml {
     fn format_snippet(
         &self,
         snippet_path: &std::path::Path,
-    ) -> std::io::Result<(bool, Option<String>)> {
+    ) -> Result<(bool, Option<String>), MdsfError> {
         match self {
             Self::OCamlFormat => format_using_ocamlformat(snippet_path),
             Self::OcpIndent => format_using_ocp_indent(snippet_path),

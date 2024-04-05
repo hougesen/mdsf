@@ -1,9 +1,12 @@
 use schemars::JsonSchema;
 
 use super::{Lang, LanguageFormatter};
-use crate::formatters::{
-    fourmolu::format_using_fourmolu, hindent::format_using_hindent, ormolu::format_using_ormolu,
-    stylish_haskell::format_using_stylish_haskell, MdsfFormatter,
+use crate::{
+    error::MdsfError,
+    formatters::{
+        fourmolu::format_using_fourmolu, hindent::format_using_hindent,
+        ormolu::format_using_ormolu, stylish_haskell::format_using_stylish_haskell, MdsfFormatter,
+    },
 };
 
 #[derive(Default, serde::Serialize, serde::Deserialize, JsonSchema)]
@@ -46,7 +49,7 @@ impl LanguageFormatter for Haskell {
     fn format_snippet(
         &self,
         snippet_path: &std::path::Path,
-    ) -> std::io::Result<(bool, Option<String>)> {
+    ) -> Result<(bool, Option<String>), MdsfError> {
         match self {
             Self::Fourmolu => format_using_fourmolu(snippet_path),
             Self::Ormolu => format_using_ormolu(snippet_path),

@@ -53,3 +53,11 @@ pub fn print_unknown_javascript_runtime(value: u8, fallback: JavaScriptRuntime) 
 pub fn print_binary_not_in_path(binary_name: &str) {
     warn!("'{binary_name}' not found in path");
 }
+
+#[inline]
+pub fn print_error_formatting(formatter_name: &str, info: &LineInfo) {
+    error!(
+        "{} error formatting using {formatter_name}",
+        info.filename.display(),
+    );
+}

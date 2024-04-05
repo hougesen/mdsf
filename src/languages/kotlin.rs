@@ -1,7 +1,10 @@
 use schemars::JsonSchema;
 
 use super::{Lang, LanguageFormatter};
-use crate::formatters::{ktfmt::format_using_ktfmt, ktlint::format_using_ktlint, MdsfFormatter};
+use crate::{
+    error::MdsfError,
+    formatters::{ktfmt::format_using_ktfmt, ktlint::format_using_ktlint, MdsfFormatter},
+};
 
 #[derive(Default, serde::Serialize, serde::Deserialize, JsonSchema)]
 #[cfg_attr(test, derive(Debug, PartialEq, Eq))]
@@ -38,7 +41,7 @@ impl LanguageFormatter for Kotlin {
     fn format_snippet(
         &self,
         snippet_path: &std::path::Path,
-    ) -> std::io::Result<(bool, Option<String>)> {
+    ) -> Result<(bool, Option<String>), MdsfError> {
         match self {
             Self::Ktlint => format_using_ktlint(snippet_path),
             Self::Ktfmt => format_using_ktfmt(snippet_path),

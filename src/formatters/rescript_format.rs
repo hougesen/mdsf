@@ -1,5 +1,5 @@
 use super::execute_command;
-use crate::runners::setup_npm_script;
+use crate::{error::MdsfError, runners::setup_npm_script};
 
 #[inline]
 fn set_rescript_format_args(cmd: &mut std::process::Command, snippet_path: &std::path::Path) {
@@ -10,7 +10,7 @@ fn set_rescript_format_args(cmd: &mut std::process::Command, snippet_path: &std:
 fn invote_rescript_format(
     mut cmd: std::process::Command,
     snippet_path: &std::path::Path,
-) -> std::io::Result<(bool, Option<String>)> {
+) -> Result<(bool, Option<String>), MdsfError> {
     set_rescript_format_args(&mut cmd, snippet_path);
 
     execute_command(&mut cmd, snippet_path)
@@ -19,7 +19,7 @@ fn invote_rescript_format(
 #[inline]
 pub fn format_using_rescript_format(
     snippet_path: &std::path::Path,
-) -> std::io::Result<(bool, Option<String>)> {
+) -> Result<(bool, Option<String>), MdsfError> {
     invote_rescript_format(setup_npm_script("rescript"), snippet_path)
 }
 

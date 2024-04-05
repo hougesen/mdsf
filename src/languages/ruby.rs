@@ -1,9 +1,12 @@
 use schemars::JsonSchema;
 
 use super::{Lang, LanguageFormatter};
-use crate::formatters::{
-    rubocop::format_using_rubocop, rubyfmt::format_using_rubyfmt, rufo::format_using_rufo,
-    standardrb::format_using_standardrb, MdsfFormatter,
+use crate::{
+    error::MdsfError,
+    formatters::{
+        rubocop::format_using_rubocop, rubyfmt::format_using_rubyfmt, rufo::format_using_rufo,
+        standardrb::format_using_standardrb, MdsfFormatter,
+    },
 };
 
 #[derive(Default, serde::Serialize, serde::Deserialize, JsonSchema)]
@@ -47,7 +50,7 @@ impl LanguageFormatter for Ruby {
     fn format_snippet(
         &self,
         snippet_path: &std::path::Path,
-    ) -> std::io::Result<(bool, Option<String>)> {
+    ) -> Result<(bool, Option<String>), MdsfError> {
         match self {
             Self::RuboCop => format_using_rubocop(snippet_path),
             Self::Rufo => format_using_rufo(snippet_path),

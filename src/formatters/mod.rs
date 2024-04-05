@@ -5,7 +5,8 @@ use tempfile::NamedTempFile;
 use which::which;
 
 use crate::{
-    config::MdsfConfig, languages::Language, terminal::print_binary_not_in_path, LineInfo, DEBUG,
+    config::MdsfConfig, error::MdsfError, languages::Language, terminal::print_binary_not_in_path,
+    LineInfo, DEBUG,
 };
 
 pub mod alejandra;
@@ -115,20 +116,22 @@ pub fn read_snippet(file_path: &std::path::Path) -> std::io::Result<String> {
 fn handle_post_execution(
     result: std::io::Result<bool>,
     snippet_path: &std::path::Path,
-) -> std::io::Result<(bool, Option<String>)> {
-    if let Err(err) = result {
-        if err.kind() == std::io::ErrorKind::NotFound {
-            return Ok((true, None));
+) -> Result<(bool, Option<String>), MdsfError> {
+    match result {
+        Ok(true) => read_snippet(snippet_path)
+            .map(|code| (false, Some(code)))
+            .map_err(MdsfError::from),
+
+        Ok(false) => Err(MdsfError::FormatterError),
+
+        Err(err) => {
+            if err.kind() == std::io::ErrorKind::NotFound {
+                Ok((true, None))
+            } else {
+                Err(MdsfError::from(err))
+            }
         }
-
-        return Err(err);
     }
-
-    if matches!(result, Ok(true)) {
-        return read_snippet(snippet_path).map(|code| (false, Some(code)));
-    }
-
-    Ok((false, None))
 }
 
 fn spawn_command(cmd: &mut Command) -> std::io::Result<bool> {
@@ -144,7 +147,7 @@ fn spawn_command(cmd: &mut Command) -> std::io::Result<bool> {
 pub fn execute_command(
     cmd: &mut Command,
     snippet_path: &std::path::Path,
-) -> std::io::Result<(bool, Option<String>)> {
+) -> Result<(bool, Option<String>), MdsfError> {
     if !binary_in_path(cmd.get_program()) {
         return Ok((true, None));
     }

@@ -1,9 +1,10 @@
 use super::execute_command;
+use crate::error::MdsfError;
 
 #[inline]
 pub fn format_using_xmlformat(
     snippet_path: &std::path::Path,
-) -> std::io::Result<(bool, Option<String>)> {
+) -> Result<(bool, Option<String>), MdsfError> {
     let mut cmd = std::process::Command::new("xmlformat");
 
     cmd.arg("--overwrite").arg(snippet_path);

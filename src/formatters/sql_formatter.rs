@@ -1,5 +1,5 @@
 use super::execute_command;
-use crate::runners::setup_npm_script;
+use crate::{error::MdsfError, runners::setup_npm_script};
 
 #[inline]
 fn set_sql_formatter_args(cmd: &mut std::process::Command, snippet_path: &std::path::Path) {
@@ -10,7 +10,7 @@ fn set_sql_formatter_args(cmd: &mut std::process::Command, snippet_path: &std::p
 fn invote_sql_formatter(
     mut cmd: std::process::Command,
     snippet_path: &std::path::Path,
-) -> std::io::Result<(bool, Option<String>)> {
+) -> Result<(bool, Option<String>), MdsfError> {
     set_sql_formatter_args(&mut cmd, snippet_path);
 
     execute_command(&mut cmd, snippet_path)
@@ -19,7 +19,7 @@ fn invote_sql_formatter(
 #[inline]
 pub fn format_using_sql_formatter(
     snippet_path: &std::path::Path,
-) -> std::io::Result<(bool, Option<String>)> {
+) -> Result<(bool, Option<String>), MdsfError> {
     invote_sql_formatter(setup_npm_script("sql-formatter"), snippet_path)
 }
 

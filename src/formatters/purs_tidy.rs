@@ -1,5 +1,5 @@
 use super::execute_command;
-use crate::runners::setup_npm_script;
+use crate::{error::MdsfError, runners::setup_npm_script};
 
 #[inline]
 fn set_purs_tidy_args(cmd: &mut std::process::Command, snippet_path: &std::path::Path) {
@@ -10,7 +10,7 @@ fn set_purs_tidy_args(cmd: &mut std::process::Command, snippet_path: &std::path:
 fn invoke_purs_tidy(
     mut cmd: std::process::Command,
     snippet_path: &std::path::Path,
-) -> std::io::Result<(bool, Option<String>)> {
+) -> Result<(bool, Option<String>), MdsfError> {
     set_purs_tidy_args(&mut cmd, snippet_path);
 
     execute_command(&mut cmd, snippet_path)
@@ -19,7 +19,7 @@ fn invoke_purs_tidy(
 #[inline]
 pub fn format_using_purs_tidy(
     snippet_path: &std::path::Path,
-) -> std::io::Result<(bool, Option<String>)> {
+) -> Result<(bool, Option<String>), MdsfError> {
     invoke_purs_tidy(setup_npm_script("purs-tidy"), snippet_path)
 }
 

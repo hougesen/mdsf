@@ -4,6 +4,7 @@ pub enum MdsfError {
     Fmt(core::fmt::Error),
     ConfigParse(std::path::PathBuf),
     FileNotFound(std::path::PathBuf),
+    FormatterError,
 }
 
 impl core::fmt::Display for MdsfError {
@@ -20,6 +21,7 @@ impl core::fmt::Display for MdsfError {
                 "No file or directory with the name '{}' found",
                 path.display()
             )),
+            Self::FormatterError => f.write_str("Error formatting"),
         }
     }
 }

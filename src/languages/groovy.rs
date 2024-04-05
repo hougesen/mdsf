@@ -1,7 +1,10 @@
 use schemars::JsonSchema;
 
 use super::{Lang, LanguageFormatter};
-use crate::formatters::{npm_groovy_lint::format_using_npm_groovy_lint, MdsfFormatter};
+use crate::{
+    error::MdsfError,
+    formatters::{npm_groovy_lint::format_using_npm_groovy_lint, MdsfFormatter},
+};
 
 #[derive(Default, serde::Serialize, serde::Deserialize, JsonSchema)]
 #[cfg_attr(test, derive(Debug, PartialEq, Eq))]
@@ -33,7 +36,7 @@ impl LanguageFormatter for Groovy {
     fn format_snippet(
         &self,
         snippet_path: &std::path::Path,
-    ) -> std::io::Result<(bool, Option<String>)> {
+    ) -> Result<(bool, Option<String>), MdsfError> {
         match self {
             Self::NpmGroovyLint => format_using_npm_groovy_lint(snippet_path),
         }

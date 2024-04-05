@@ -29,7 +29,9 @@ pub fn setup_logger(log_level: LogLevel) {
         .format_target(false)
         .format_level(false)
         .format(move |buf, record| match record.level() {
-            log::Level::Error => writeln!(buf, "{}", style(format!("{}", record.args())).red()),
+            log::Level::Error => {
+                writeln!(buf, "{}", style(format!("{}", record.args())).red().bold())
+            }
             log::Level::Warn => writeln!(
                 buf,
                 "{}",

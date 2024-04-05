@@ -1,9 +1,12 @@
 use schemars::JsonSchema;
 
 use super::{Lang, LanguageFormatter};
-use crate::formatters::{
-    prettier::format_using_prettier, yamlfix::format_using_yamlfix, yamlfmt::format_using_yamlfmt,
-    MdsfFormatter,
+use crate::{
+    error::MdsfError,
+    formatters::{
+        prettier::format_using_prettier, yamlfix::format_using_yamlfix,
+        yamlfmt::format_using_yamlfmt, MdsfFormatter,
+    },
 };
 
 #[derive(Default, serde::Serialize, serde::Deserialize, JsonSchema)]
@@ -44,7 +47,7 @@ impl LanguageFormatter for Yaml {
     fn format_snippet(
         &self,
         snippet_path: &std::path::Path,
-    ) -> std::io::Result<(bool, Option<String>)> {
+    ) -> Result<(bool, Option<String>), MdsfError> {
         match self {
             Self::Prettier => format_using_prettier(snippet_path, true),
             Self::YamlFmt => format_using_yamlfmt(snippet_path),

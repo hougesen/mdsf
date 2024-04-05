@@ -1,8 +1,11 @@
 use schemars::JsonSchema;
 
 use super::{Lang, LanguageFormatter};
-use crate::formatters::{
-    sql_formatter::format_using_sql_formatter, sqlfluff::format_using_sqlfluff, MdsfFormatter,
+use crate::{
+    error::MdsfError,
+    formatters::{
+        sql_formatter::format_using_sql_formatter, sqlfluff::format_using_sqlfluff, MdsfFormatter,
+    },
 };
 
 #[derive(Default, serde::Serialize, serde::Deserialize, JsonSchema)]
@@ -50,7 +53,7 @@ impl LanguageFormatter for Sql {
     fn format_snippet(
         &self,
         snippet_path: &std::path::Path,
-    ) -> std::io::Result<(bool, Option<String>)> {
+    ) -> Result<(bool, Option<String>), MdsfError> {
         match self {
             Self::SQLFormatter => format_using_sql_formatter(snippet_path),
             Self::Sqlfluff => format_using_sqlfluff(snippet_path),

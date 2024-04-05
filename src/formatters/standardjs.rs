@@ -1,5 +1,5 @@
 use super::execute_command;
-use crate::runners::setup_npm_script;
+use crate::{error::MdsfError, runners::setup_npm_script};
 
 #[inline]
 fn set_standardjs_args(cmd: &mut std::process::Command, snippet_path: &std::path::Path) {
@@ -10,7 +10,7 @@ fn set_standardjs_args(cmd: &mut std::process::Command, snippet_path: &std::path
 fn invoke_standardjs(
     mut cmd: std::process::Command,
     snippet_path: &std::path::Path,
-) -> std::io::Result<(bool, Option<String>)> {
+) -> Result<(bool, Option<String>), MdsfError> {
     set_standardjs_args(&mut cmd, snippet_path);
 
     execute_command(&mut cmd, snippet_path)
@@ -19,7 +19,7 @@ fn invoke_standardjs(
 #[inline]
 pub fn format_using_standardjs(
     snippet_path: &std::path::Path,
-) -> std::io::Result<(bool, Option<String>)> {
+) -> Result<(bool, Option<String>), MdsfError> {
     let global_result = invoke_standardjs(std::process::Command::new("standard"), snippet_path)?;
 
     if !global_result.0 {

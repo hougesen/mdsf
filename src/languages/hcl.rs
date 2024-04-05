@@ -1,8 +1,11 @@
 use schemars::JsonSchema;
 
 use super::{Lang, LanguageFormatter};
-use crate::formatters::{
-    terraform_fmt::format_using_terraform_fmt, tofu_fmt::format_using_tofu_fmt, MdsfFormatter,
+use crate::{
+    error::MdsfError,
+    formatters::{
+        terraform_fmt::format_using_terraform_fmt, tofu_fmt::format_using_tofu_fmt, MdsfFormatter,
+    },
 };
 
 #[derive(Default, serde::Serialize, serde::Deserialize, JsonSchema)]
@@ -40,7 +43,7 @@ impl LanguageFormatter for Hcl {
     fn format_snippet(
         &self,
         snippet_path: &std::path::Path,
-    ) -> std::io::Result<(bool, Option<String>)> {
+    ) -> Result<(bool, Option<String>), MdsfError> {
         match self {
             Self::TerraformFmt => format_using_terraform_fmt(snippet_path),
             Self::TofuFmt => format_using_tofu_fmt(snippet_path),

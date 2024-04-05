@@ -1,9 +1,12 @@
 use schemars::JsonSchema;
 
 use super::{Lang, LanguageFormatter};
-use crate::formatters::{
-    biome::format_using_biome, deno_fmt::format_using_deno_fmt, prettier::format_using_prettier,
-    MdsfFormatter,
+use crate::{
+    error::MdsfError,
+    formatters::{
+        biome::format_using_biome, deno_fmt::format_using_deno_fmt,
+        prettier::format_using_prettier, MdsfFormatter,
+    },
 };
 
 #[derive(Default, serde::Serialize, serde::Deserialize, JsonSchema)]
@@ -44,7 +47,7 @@ impl LanguageFormatter for TypeScript {
     fn format_snippet(
         &self,
         snippet_path: &std::path::Path,
-    ) -> std::io::Result<(bool, Option<String>)> {
+    ) -> Result<(bool, Option<String>), MdsfError> {
         match self {
             Self::Biome => format_using_biome(snippet_path),
             Self::Prettier => format_using_prettier(snippet_path, true),

@@ -1,7 +1,10 @@
 use schemars::JsonSchema;
 
 use super::{Lang, LanguageFormatter};
-use crate::formatters::{efmt::format_using_efmt, erlfmt::format_using_erlfmt, MdsfFormatter};
+use crate::{
+    error::MdsfError,
+    formatters::{efmt::format_using_efmt, erlfmt::format_using_erlfmt, MdsfFormatter},
+};
 
 #[derive(Default, serde::Serialize, serde::Deserialize, JsonSchema)]
 #[cfg_attr(test, derive(Debug, PartialEq, Eq))]
@@ -35,7 +38,7 @@ impl LanguageFormatter for Erlang {
     fn format_snippet(
         &self,
         snippet_path: &std::path::Path,
-    ) -> std::io::Result<(bool, Option<String>)> {
+    ) -> Result<(bool, Option<String>), MdsfError> {
         match self {
             Self::Erlfmt => format_using_erlfmt(snippet_path),
             Self::Efmt => format_using_efmt(snippet_path),

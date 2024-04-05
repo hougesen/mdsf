@@ -1,10 +1,13 @@
 use schemars::JsonSchema;
 
 use super::{Lang, LanguageFormatter};
-use crate::formatters::{
-    autopep8::format_using_autopep8, black::format_using_black, blue::format_using_blue,
-    isort::format_using_isort, ruff::format_using_ruff, usort::format_using_usort,
-    yapf::format_using_yapf, MdsfFormatter,
+use crate::{
+    error::MdsfError,
+    formatters::{
+        autopep8::format_using_autopep8, black::format_using_black, blue::format_using_blue,
+        isort::format_using_isort, ruff::format_using_ruff, usort::format_using_usort,
+        yapf::format_using_yapf, MdsfFormatter,
+    },
 };
 
 #[derive(Default, serde::Serialize, serde::Deserialize, JsonSchema)]
@@ -32,7 +35,7 @@ impl LanguageFormatter for Python {
     fn format_snippet(
         &self,
         snippet_path: &std::path::Path,
-    ) -> std::io::Result<(bool, Option<String>)> {
+    ) -> Result<(bool, Option<String>), MdsfError> {
         match self {
             Self::Autopep8 => format_using_autopep8(snippet_path),
             Self::Black => format_using_black(snippet_path),
