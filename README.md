@@ -88,6 +88,7 @@ mdsf init
 | Json       | `biome`, `clang-format`, `deno_fmt`, `prettier`               |
 | Julia      | `juliaformatter.jl`                                           |
 | Just       | `just_fmt`                                                    |
+| Kcl        | `kcl_fmt`                                                     |
 | Kotlin     | `ktfmt`, `ktlint`                                             |
 | Lua        | `luaformatter`, `stylua`                                      |
 | Markdown   | `prettier`                                                    |

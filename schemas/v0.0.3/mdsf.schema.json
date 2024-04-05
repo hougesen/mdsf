@@ -303,6 +303,17 @@
         }
       ]
     },
+    "kcl": {
+      "default": {
+        "enabled": true,
+        "formatter": "kcl_fmt"
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/Lang_for_Kcl"
+        }
+      ]
+    },
     "kotlin": {
       "default": {
         "enabled": true,
@@ -691,6 +702,10 @@
       "type": "string",
       "enum": ["just_fmt"]
     },
+    "Kcl": {
+      "type": "string",
+      "enum": ["kcl_fmt"]
+    },
     "Kotlin": {
       "type": "string",
       "enum": ["ktlint", "ktfmt"]
@@ -1004,6 +1019,18 @@
         },
         "formatter": {
           "$ref": "#/definitions/MdsfFormatter_for_Just"
+        }
+      }
+    },
+    "Lang_for_Kcl": {
+      "type": "object",
+      "required": ["enabled", "formatter"],
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        },
+        "formatter": {
+          "$ref": "#/definitions/MdsfFormatter_for_Kcl"
         }
       }
     },
@@ -1649,6 +1676,19 @@
           "type": "array",
           "items": {
             "$ref": "#/definitions/MdsfFormatter_for_Just"
+          }
+        }
+      ]
+    },
+    "MdsfFormatter_for_Kcl": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/Kcl"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MdsfFormatter_for_Kcl"
           }
         }
       ]

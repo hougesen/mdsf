@@ -33,6 +33,7 @@ pub mod javascript;
 pub mod json;
 pub mod julia;
 pub mod just;
+pub mod kcl;
 pub mod kotlin;
 pub mod lua;
 pub mod markdown;
@@ -174,6 +175,7 @@ pub enum Language {
     Json(JsonFlavor),
     Julia,
     Just,
+    Kcl,
     Kotlin,
     Lua,
     Markdown,
@@ -236,6 +238,7 @@ impl core::fmt::Display for Language {
             Self::Json(flavor) => flavor.fmt(f),
             Self::Julia => f.write_str("julia"),
             Self::Just => f.write_str("just"),
+            Self::Kcl => f.write_str("kcl"),
             Self::Kotlin => f.write_str("kotlin"),
             Self::Lua => f.write_str("lua"),
             Self::Markdown => f.write_str("markdown"),
@@ -307,6 +310,7 @@ impl Language {
             "json5" => Some(Self::Json(JsonFlavor::Json5)),
             "julia" | "jl" => Some(Self::Julia),
             "just" | "justfile" => Some(Self::Just),
+            "kcl" => Some(Self::Kcl),
             "kotlin" => Some(Self::Kotlin),
             "lua" => Some(Self::Lua),
             "markdown" | "md" => Some(Self::Markdown),
@@ -376,6 +380,7 @@ impl Language {
             Self::Json(JsonFlavor::Json5) => ".json5",
             Self::Julia => ".jl",
             Self::Just => ".justfile",
+            Self::Kcl => ".kcl",
             Self::Kotlin => ".kt",
             Self::Lua => ".lua",
             Self::Markdown => ".md",
