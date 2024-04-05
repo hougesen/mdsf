@@ -1,5 +1,4 @@
 use super::execute_command;
-use crate::terminal::print_formatter_info;
 
 #[inline]
 fn set_sqlfluff_args(cmd: &mut std::process::Command, snippet_path: &std::path::Path) {
@@ -24,8 +23,6 @@ fn invote_sqlfluff(
 pub fn format_using_sqlfluff(
     snippet_path: &std::path::Path,
 ) -> std::io::Result<(bool, Option<String>)> {
-    print_formatter_info("sqlfluff");
-
     invote_sqlfluff(std::process::Command::new("sqlfluff"), snippet_path)
 }
 

@@ -5,14 +5,24 @@ use crate::formatters::{
     sql_formatter::format_using_sql_formatter, sqlfluff::format_using_sqlfluff, MdsfFormatter,
 };
 
-#[derive(Debug, Default, serde::Serialize, serde::Deserialize, JsonSchema)]
-#[cfg_attr(test, derive(PartialEq, Eq))]
+#[derive(Default, serde::Serialize, serde::Deserialize, JsonSchema)]
+#[cfg_attr(test, derive(Debug, PartialEq, Eq))]
 pub enum Sql {
     #[default]
     #[serde(rename = "sqlfluff")]
     Sqlfluff,
     #[serde(rename = "sql-formatter")]
     SQLFormatter,
+}
+
+impl core::fmt::Display for Sql {
+    #[inline]
+    fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
+        match self {
+            Self::Sqlfluff => write!(f, "qqlfluff"),
+            Self::SQLFormatter => write!(f, "sql-formatter"),
+        }
+    }
 }
 
 impl Default for Lang<Sql> {
@@ -50,11 +60,11 @@ impl LanguageFormatter for Sql {
 
 #[cfg(test)]
 mod test_sql {
-
     use super::Sql;
     use crate::{
         formatters::{setup_snippet, MdsfFormatter},
         languages::Lang,
+        LineInfo,
     };
 
     const INPUT: &str = "SELECT  *                  FROM  tbl
@@ -76,7 +86,7 @@ mod test_sql {
             enabled: false,
             formatter: MdsfFormatter::Single(Sql::SQLFormatter),
         }
-        .format(snippet_path)
+        .format(snippet_path, &LineInfo::fake())
         .expect("it to not fail")
         .is_none());
 
@@ -84,7 +94,7 @@ mod test_sql {
             enabled: false,
             formatter: MdsfFormatter::Single(Sql::Sqlfluff),
         }
-        .format(snippet_path)
+        .format(snippet_path, &LineInfo::fake())
         .expect("it to not fail")
         .is_none());
     }
@@ -108,7 +118,7 @@ WHERE
         let snippet_path = snippet.path();
 
         let output = l
-            .format(snippet_path)
+            .format(snippet_path, &LineInfo::fake())
             .expect("it to not fail")
             .expect("it to be a snippet");
 
@@ -131,7 +141,7 @@ WHERE foo = 'bar';
         let snippet_path = snippet.path();
 
         let output = l
-            .format(snippet_path)
+            .format(snippet_path, &LineInfo::fake())
             .expect("it to not fail")
             .expect("it to be a snippet");
 

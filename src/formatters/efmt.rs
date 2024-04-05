@@ -1,10 +1,7 @@
 use super::execute_command;
-use crate::terminal::print_formatter_info;
 
 #[inline]
 pub fn format_using_efmt(file_path: &std::path::Path) -> std::io::Result<(bool, Option<String>)> {
-    print_formatter_info("efmt");
-
     let mut cmd = std::process::Command::new("efmt");
 
     cmd.arg("-w").arg(file_path);

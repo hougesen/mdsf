@@ -3,8 +3,8 @@ use schemars::JsonSchema;
 use super::{Lang, LanguageFormatter};
 use crate::formatters::{prettier::format_using_prettier, MdsfFormatter};
 
-#[derive(Debug, Default, serde::Serialize, serde::Deserialize, JsonSchema)]
-#[cfg_attr(test, derive(PartialEq, Eq))]
+#[derive(Default, serde::Serialize, serde::Deserialize, JsonSchema)]
+#[cfg_attr(test, derive(Debug, PartialEq, Eq))]
 pub enum Vue {
     #[default]
     #[serde(rename = "prettier")]
@@ -40,12 +40,22 @@ impl LanguageFormatter for Vue {
     }
 }
 
+impl core::fmt::Display for Vue {
+    #[inline]
+    fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
+        match self {
+            Self::Prettier => write!(f, "prettier"),
+        }
+    }
+}
+
 #[cfg(test)]
 mod test_vue {
     use super::Vue;
     use crate::{
         formatters::{setup_snippet, MdsfFormatter},
         languages::Lang,
+        LineInfo,
     };
 
     const INPUT: &str = "<script lang=\"ts\"   setup >
@@ -84,7 +94,10 @@ import {
         let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");
         let snippet_path = snippet.path();
 
-        assert!(l.format(snippet_path).expect("it to not fail").is_none());
+        assert!(l
+            .format(snippet_path, &LineInfo::fake())
+            .expect("it to not fail")
+            .is_none());
     }
 
     #[test]
@@ -98,7 +111,7 @@ import {
         let snippet_path = snippet.path();
 
         let output = l
-            .format(snippet_path)
+            .format(snippet_path, &LineInfo::fake())
             .expect("it to not fail")
             .expect("it to be a snippet");
 

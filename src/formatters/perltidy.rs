@@ -1,5 +1,4 @@
 use super::execute_command;
-use crate::terminal::print_formatter_info;
 
 #[inline]
 fn set_perltidy_args(cmd: &mut std::process::Command, snippet_path: &std::path::Path) {
@@ -21,8 +20,6 @@ fn invoke_perltidy(
 pub fn format_using_perltidy(
     snippet_path: &std::path::Path,
 ) -> std::io::Result<(bool, Option<String>)> {
-    print_formatter_info("perltidy");
-
     invoke_perltidy(std::process::Command::new("perltidy"), snippet_path)
 }
 

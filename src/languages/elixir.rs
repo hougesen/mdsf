@@ -3,8 +3,8 @@ use schemars::JsonSchema;
 use super::{Lang, LanguageFormatter};
 use crate::formatters::{mix_format::format_using_mix_format, MdsfFormatter};
 
-#[derive(Debug, Default, serde::Serialize, serde::Deserialize, JsonSchema)]
-#[cfg_attr(test, derive(PartialEq, Eq))]
+#[derive(Default, serde::Serialize, serde::Deserialize, JsonSchema)]
+#[cfg_attr(test, derive(Debug, PartialEq, Eq))]
 pub enum Elixir {
     #[default]
     #[serde(rename = "mix_format")]
@@ -40,12 +40,22 @@ impl LanguageFormatter for Elixir {
     }
 }
 
+impl core::fmt::Display for Elixir {
+    #[inline]
+    fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
+        match self {
+            Self::MixFormat => write!(f, "mix_format"),
+        }
+    }
+}
+
 #[cfg(test)]
 mod test_elixir {
     use super::Elixir;
     use crate::{
         formatters::{setup_snippet, MdsfFormatter},
         languages::Lang,
+        LineInfo,
     };
 
     const INPUT: &str = "
@@ -69,7 +79,7 @@ mod test_elixir {
             enabled: false,
             formatter: MdsfFormatter::Single(Elixir::default()),
         }
-        .format(snippet_path)
+        .format(snippet_path, &LineInfo::fake())
         .expect("it to not fail")
         .is_none());
     }
@@ -86,7 +96,7 @@ mod test_elixir {
         let snippet_path = snippet.path();
 
         let output = l
-            .format(snippet_path)
+            .format(snippet_path, &LineInfo::fake())
             .expect("it to not fail")
             .expect("it to be a snippet");
 

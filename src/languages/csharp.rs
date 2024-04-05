@@ -5,8 +5,8 @@ use crate::formatters::{
     clang_format::format_using_clang_format, csharpier::format_using_csharpier, MdsfFormatter,
 };
 
-#[derive(Debug, Default, serde::Serialize, serde::Deserialize, JsonSchema)]
-#[cfg_attr(test, derive(PartialEq, Eq))]
+#[derive(Default, serde::Serialize, serde::Deserialize, JsonSchema)]
+#[cfg_attr(test, derive(Debug, PartialEq, Eq))]
 pub enum CSharp {
     #[default]
     #[serde(rename = "csharpier")]
@@ -48,12 +48,23 @@ impl LanguageFormatter for CSharp {
     }
 }
 
+impl core::fmt::Display for CSharp {
+    #[inline]
+    fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
+        match self {
+            Self::CSharpier => write!(f, "csharpier"),
+            Self::ClangFormat => write!(f, "clang-format"),
+        }
+    }
+}
+
 #[cfg(test)]
 mod test_csharp {
     use super::CSharp;
     use crate::{
         formatters::{setup_snippet, MdsfFormatter},
         languages::Lang,
+        LineInfo,
     };
 
     const INPUT: &str = "namespace Mdsf {
@@ -81,7 +92,7 @@ mod test_csharp {
             enabled: false,
             formatter: MdsfFormatter::<CSharp>::default(),
         }
-        .format(snippet_path)
+        .format(snippet_path, &LineInfo::fake())
         .expect("it to not fail")
         .is_none());
     }
@@ -98,7 +109,7 @@ mod test_csharp {
         let snippet_path = snippet.path();
 
         let output = l
-            .format(snippet_path)
+            .format(snippet_path, &LineInfo::fake())
             .expect("it to not fail")
             .expect("it to be a snippet");
 
@@ -126,7 +137,7 @@ class Adder {
         let snippet_path = snippet.path();
 
         let output = l
-            .format(snippet_path)
+            .format(snippet_path, &LineInfo::fake())
             .expect("it to not fail")
             .expect("it to be a snippet");
 

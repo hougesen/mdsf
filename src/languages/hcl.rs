@@ -5,8 +5,8 @@ use crate::formatters::{
     terraform_fmt::format_using_terraform_fmt, tofu_fmt::format_using_tofu_fmt, MdsfFormatter,
 };
 
-#[derive(Debug, Default, serde::Serialize, serde::Deserialize, JsonSchema)]
-#[cfg_attr(test, derive(PartialEq, Eq))]
+#[derive(Default, serde::Serialize, serde::Deserialize, JsonSchema)]
+#[cfg_attr(test, derive(Debug, PartialEq, Eq))]
 pub enum Hcl {
     #[default]
     #[serde(rename = "terraform_fmt")]
@@ -48,15 +48,26 @@ impl LanguageFormatter for Hcl {
     }
 }
 
+impl core::fmt::Display for Hcl {
+    #[inline]
+    fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
+        match self {
+            Self::TerraformFmt => write!(f, "terraform_fmt"),
+            Self::TofuFmt => write!(f, "tofu_fmt"),
+        }
+    }
+}
+
 #[cfg(test)]
 mod test_hcl {
     use super::Hcl;
     use crate::{
         formatters::{setup_snippet, MdsfFormatter},
         languages::Lang,
+        LineInfo,
     };
 
-    const INPUT: &str = "resource \"aws_instance\" \"example\" {                         
+    const INPUT: &str = "resource \"aws_instance\" \"example\" {
                                          ami   = \"abc123\"
 
            network_interface  {
@@ -80,7 +91,7 @@ mod test_hcl {
             enabled: false,
             formatter: MdsfFormatter::Single(Hcl::default()),
         }
-        .format(snippet_path)
+        .format(snippet_path, &LineInfo::fake())
         .expect("it to not fail")
         .is_none());
     }
@@ -97,7 +108,7 @@ mod test_hcl {
         let snippet_path = snippet.path();
 
         let output = l
-            .format(snippet_path)
+            .format(snippet_path, &LineInfo::fake())
             .expect("it to not fail")
             .expect("it to be a snippet");
 
@@ -124,7 +135,7 @@ mod test_hcl {
         let snippet_path = snippet.path();
 
         let output = l
-            .format(snippet_path)
+            .format(snippet_path, &LineInfo::fake())
             .expect("it to not fail")
             .expect("it to be a snippet");
 

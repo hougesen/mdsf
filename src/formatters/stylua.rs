@@ -1,5 +1,5 @@
 use super::execute_command;
-use crate::{runners::setup_npm_script, terminal::print_formatter_info};
+use crate::runners::setup_npm_script;
 
 #[inline]
 fn set_stylua_args(cmd: &mut std::process::Command, snippet_path: &std::path::Path) {
@@ -21,8 +21,6 @@ fn invoke_stylua(
 pub fn format_using_stylua(
     snippet_path: &std::path::Path,
 ) -> std::io::Result<(bool, Option<String>)> {
-    print_formatter_info("stylua");
-
     let path_result = invoke_stylua(std::process::Command::new("stylua"), snippet_path)?;
 
     if !path_result.0 {

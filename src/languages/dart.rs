@@ -3,8 +3,8 @@ use schemars::JsonSchema;
 use super::{Lang, LanguageFormatter};
 use crate::formatters::{dart_format::format_using_dart_format, MdsfFormatter};
 
-#[derive(Debug, Default, serde::Serialize, serde::Deserialize, JsonSchema)]
-#[cfg_attr(test, derive(PartialEq, Eq))]
+#[derive(Default, serde::Serialize, serde::Deserialize, JsonSchema)]
+#[cfg_attr(test, derive(Debug, PartialEq, Eq))]
 pub enum Dart {
     #[default]
     #[serde(rename = "dart_format")]
@@ -40,12 +40,22 @@ impl LanguageFormatter for Dart {
     }
 }
 
+impl core::fmt::Display for Dart {
+    #[inline]
+    fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
+        match self {
+            Self::DartFormat => write!(f, "dart_format"),
+        }
+    }
+}
+
 #[cfg(test)]
 mod test_dart {
     use super::Dart;
     use crate::{
         formatters::{setup_snippet, MdsfFormatter},
         languages::Lang,
+        LineInfo,
     };
 
     const INPUT: &str = "class Adder {   int add(int a, int b) {     return a + b;   } }    ";
@@ -66,7 +76,7 @@ mod test_dart {
             enabled: false,
             formatter: MdsfFormatter::Single(Dart::default(),)
         }
-        .format(snippet_path)
+        .format(snippet_path, &LineInfo::fake())
         .expect("it to not fail")
         .is_none());
     }
@@ -83,7 +93,7 @@ mod test_dart {
         let snippet_path = snippet.path();
 
         let output = l
-            .format(snippet_path)
+            .format(snippet_path, &LineInfo::fake())
             .expect("it to not fail")
             .expect("it to be a snippet");
 

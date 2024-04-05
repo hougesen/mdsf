@@ -7,8 +7,8 @@ use crate::formatters::{
     yapf::format_using_yapf, MdsfFormatter,
 };
 
-#[derive(Debug, Default, serde::Serialize, serde::Deserialize, JsonSchema)]
-#[cfg_attr(test, derive(PartialEq, Eq))]
+#[derive(Default, serde::Serialize, serde::Deserialize, JsonSchema)]
+#[cfg_attr(test, derive(Debug, PartialEq, Eq))]
 pub enum Python {
     #[default]
     #[serde(rename = "ruff")]
@@ -74,12 +74,28 @@ impl Default for Lang<Python> {
     }
 }
 
+impl core::fmt::Display for Python {
+    #[inline]
+    fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
+        match self {
+            Self::Ruff => write!(f, "ruff"),
+            Self::Black => write!(f, "black"),
+            Self::Yapf => write!(f, "yapf"),
+            Self::Blue => write!(f, "blue"),
+            Self::Autopep8 => write!(f, "autopep8"),
+            Self::Isort => write!(f, "isort"),
+            Self::Usort => write!(f, "usort"),
+        }
+    }
+}
+
 #[cfg(test)]
 mod test_python {
     use super::Python;
     use crate::{
         formatters::{setup_snippet, MdsfFormatter},
         languages::Lang,
+        LineInfo,
     };
 
     const INPUT: &str = "def add( a: int ,  b:int)->int: return a+b";
@@ -100,7 +116,7 @@ mod test_python {
             enabled: false,
             formatter: MdsfFormatter::Single(Python::default()),
         }
-        .format(snippet_path)
+        .format(snippet_path, &LineInfo::fake())
         .expect("it to not fail")
         .is_none());
     }
@@ -119,7 +135,7 @@ mod test_python {
         let snippet_path = snippet.path();
 
         let output = l
-            .format(snippet_path)
+            .format(snippet_path, &LineInfo::fake())
             .expect("it to not fail")
             .expect("it to be a snippet");
 
@@ -140,7 +156,7 @@ mod test_python {
         let snippet_path = snippet.path();
 
         let output = l
-            .format(snippet_path)
+            .format(snippet_path, &LineInfo::fake())
             .expect("it to not fail")
             .expect("it to be a snippet");
 
@@ -161,7 +177,7 @@ mod test_python {
         let snippet_path = snippet.path();
 
         let output = l
-            .format(snippet_path)
+            .format(snippet_path, &LineInfo::fake())
             .expect("it to not fail")
             .expect("it to be a snippet");
 
@@ -182,7 +198,7 @@ mod test_python {
         let snippet_path = snippet.path();
 
         let output = l
-            .format(snippet_path)
+            .format(snippet_path, &LineInfo::fake())
             .expect("it to not fail")
             .expect("it to be a snippet");
 
@@ -203,7 +219,7 @@ mod test_python {
         let snippet_path = snippet.path();
 
         let output = l
-            .format(snippet_path)
+            .format(snippet_path, &LineInfo::fake())
             .expect("it to not fail")
             .expect("it to be a snippet");
 
@@ -242,7 +258,7 @@ def add(a: int, b: int) -> int:
         let snippet_path = snippet.path();
 
         let output = l
-            .format(snippet_path)
+            .format(snippet_path, &LineInfo::fake())
             .expect("it to not fail")
             .expect("it to be a snippet");
 
@@ -281,7 +297,7 @@ def add(a: int, b: int) -> int:
         let snippet_path = snippet.path();
 
         let output = l
-            .format(snippet_path)
+            .format(snippet_path, &LineInfo::fake())
             .expect("it to not fail")
             .expect("it to be a snippet");
 

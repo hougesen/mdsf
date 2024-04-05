@@ -5,8 +5,8 @@ use crate::formatters::{
     swift_format::format_using_swift_format, swiftformat::format_using_swiftformat, MdsfFormatter,
 };
 
-#[derive(Debug, Default, serde::Serialize, serde::Deserialize, JsonSchema)]
-#[cfg_attr(test, derive(PartialEq, Eq))]
+#[derive(Default, serde::Serialize, serde::Deserialize, JsonSchema)]
+#[cfg_attr(test, derive(Debug, PartialEq, Eq))]
 pub enum Swift {
     #[default]
     #[serde(rename = "swift-format")]
@@ -48,16 +48,27 @@ impl LanguageFormatter for Swift {
     }
 }
 
+impl core::fmt::Display for Swift {
+    #[inline]
+    fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
+        match self {
+            Self::AppleSwiftFormat => write!(f, "swift-format"),
+            Self::NicklockwoodSwiftFormat => write!(f, "swiftformat"),
+        }
+    }
+}
+
 #[cfg(test)]
 mod test_swift {
     use super::Swift;
     use crate::{
         formatters::{setup_snippet, MdsfFormatter},
         languages::Lang,
+        LineInfo,
     };
 
     const INPUT: &str = " func add(a:Int ,b:Int)->Int {
-    return a + b     
+    return a + b
     }";
 
     const EXTENSION: &str = crate::languages::Language::Swift.to_file_ext();
@@ -76,7 +87,7 @@ mod test_swift {
             enabled: false,
             formatter: MdsfFormatter::Single(Swift::default()),
         }
-        .format(snippet_path)
+        .format(snippet_path, &LineInfo::fake())
         .expect("it to not fail")
         .is_none());
     }
@@ -93,7 +104,7 @@ mod test_swift {
         let snippet_path = snippet.path();
 
         let output = l
-            .format(snippet_path)
+            .format(snippet_path, &LineInfo::fake())
             .expect("it to not fail")
             .expect("it to be a snippet");
 
@@ -117,7 +128,7 @@ mod test_swift {
         let snippet_path = snippet.path();
 
         let output = l
-            .format(snippet_path)
+            .format(snippet_path, &LineInfo::fake())
             .expect("it to not fail")
             .expect("it to be a snippet");
 

@@ -1,12 +1,9 @@
 use super::execute_command;
-use crate::terminal::print_formatter_info;
 
 #[inline]
 pub fn format_using_nixfmt(
     snippet_path: &std::path::Path,
 ) -> std::io::Result<(bool, Option<String>)> {
-    print_formatter_info("nixfmt");
-
     let mut cmd = std::process::Command::new("nixfmt");
 
     cmd.arg(snippet_path);

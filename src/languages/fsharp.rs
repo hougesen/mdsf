@@ -3,8 +3,8 @@ use schemars::JsonSchema;
 use super::{Lang, LanguageFormatter};
 use crate::formatters::{fantomas::format_using_fantomas, MdsfFormatter};
 
-#[derive(Debug, Default, serde::Serialize, serde::Deserialize, JsonSchema)]
-#[cfg_attr(test, derive(PartialEq, Eq))]
+#[derive(Default, serde::Serialize, serde::Deserialize, JsonSchema)]
+#[cfg_attr(test, derive(Debug, PartialEq, Eq))]
 pub enum FSharp {
     #[default]
     #[serde(rename = "fantomas")]
@@ -40,16 +40,26 @@ impl LanguageFormatter for FSharp {
     }
 }
 
+impl core::fmt::Display for FSharp {
+    #[inline]
+    fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
+        match self {
+            Self::Fantomas => write!(f, "fantomas"),
+        }
+    }
+}
+
 #[cfg(test)]
 mod test_fsharp {
     use super::FSharp;
     use crate::{
         formatters::{setup_snippet, MdsfFormatter},
         languages::Lang,
+        LineInfo,
     };
 
     const INPUT: &str = "
-let add  a b   =  
+let add  a b   =
                                                       a +  b
             ";
     const EXTENSION: &str = crate::languages::Language::FSharp.to_file_ext();
@@ -68,7 +78,7 @@ let add  a b   =
             enabled: false,
             formatter: MdsfFormatter::<FSharp>::default(),
         }
-        .format(snippet_path)
+        .format(snippet_path, &LineInfo::fake())
         .expect("it to not fail")
         .is_none());
     }
@@ -85,7 +95,7 @@ let add  a b   =
         let snippet_path = snippet.path();
 
         let output = l
-            .format(snippet_path)
+            .format(snippet_path, &LineInfo::fake())
             .expect("it to not fail")
             .expect("it to be a snippet");
 

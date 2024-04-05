@@ -3,8 +3,8 @@ use schemars::JsonSchema;
 use super::{Lang, LanguageFormatter};
 use crate::formatters::{elm_format::format_using_elm_format, MdsfFormatter};
 
-#[derive(Debug, Default, serde::Serialize, serde::Deserialize, JsonSchema)]
-#[cfg_attr(test, derive(PartialEq, Eq))]
+#[derive(Default, serde::Serialize, serde::Deserialize, JsonSchema)]
+#[cfg_attr(test, derive(Debug, PartialEq, Eq))]
 pub enum Elm {
     #[default]
     #[serde(rename = "elm-format")]
@@ -40,12 +40,22 @@ impl LanguageFormatter for Elm {
     }
 }
 
+impl core::fmt::Display for Elm {
+    #[inline]
+    fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
+        match self {
+            Self::ElmFormat => write!(f, "elm-format"),
+        }
+    }
+}
+
 #[cfg(test)]
 mod test_elm {
     use super::Elm;
     use crate::{
         formatters::{setup_snippet, MdsfFormatter},
         languages::Lang,
+        LineInfo,
     };
 
     const INPUT: &str = r#"import   Html       exposing   (text)
@@ -73,7 +83,7 @@ main =
             enabled: false,
             formatter: MdsfFormatter::Single(Elm::default())
         }
-        .format(snippet_path)
+        .format(snippet_path, &LineInfo::fake())
         .expect("it to not fail")
         .is_none());
     }
@@ -89,7 +99,7 @@ main =
         let snippet_path = snippet.path();
 
         let output = l
-            .format(snippet_path)
+            .format(snippet_path, &LineInfo::fake())
             .expect("it to not fail")
             .expect("it to be a snippet");
         let expected_output = r#"module Main exposing (main)

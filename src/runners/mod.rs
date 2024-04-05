@@ -3,7 +3,7 @@ use core::sync::atomic::{AtomicU8, Ordering};
 use schemars::JsonSchema;
 
 use self::{bun::new_bunx_cmd, deno::new_deno_cmd, node::new_npx_cmd};
-use crate::terminal::{print_javascript_runtime, print_unknown_javascript_runtime};
+use crate::terminal::print_unknown_javascript_runtime;
 
 mod bun;
 mod deno;
@@ -82,8 +82,6 @@ fn get_javascript_runtime() -> JavaScriptRuntime {
 #[inline]
 pub fn setup_npm_script(package_name: &str) -> std::process::Command {
     let runtime = get_javascript_runtime();
-
-    print_javascript_runtime(runtime);
 
     match runtime {
         JavaScriptRuntime::Bun => new_bunx_cmd(package_name),

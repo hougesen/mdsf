@@ -1,12 +1,9 @@
 use super::execute_command;
-use crate::terminal::print_formatter_info;
 
 #[inline]
 pub fn format_using_standardrb(
     snippet_path: &std::path::Path,
 ) -> std::io::Result<(bool, Option<String>)> {
-    print_formatter_info("standardrb");
-
     let mut cmd = std::process::Command::new("standardrb");
 
     cmd.arg("--fix").arg(snippet_path);

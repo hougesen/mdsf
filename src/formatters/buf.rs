@@ -1,10 +1,7 @@
 use super::execute_command;
-use crate::terminal::print_formatter_info;
 
 #[inline]
 pub fn format_using_buf(snippet_path: &std::path::Path) -> std::io::Result<(bool, Option<String>)> {
-    print_formatter_info("buf");
-
     let mut cmd = std::process::Command::new("buf");
 
     cmd.arg("format").arg("--write").arg(snippet_path);

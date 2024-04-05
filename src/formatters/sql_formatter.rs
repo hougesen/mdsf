@@ -1,5 +1,5 @@
 use super::execute_command;
-use crate::{runners::setup_npm_script, terminal::print_formatter_info};
+use crate::runners::setup_npm_script;
 
 #[inline]
 fn set_sql_formatter_args(cmd: &mut std::process::Command, snippet_path: &std::path::Path) {
@@ -20,8 +20,6 @@ fn invote_sql_formatter(
 pub fn format_using_sql_formatter(
     snippet_path: &std::path::Path,
 ) -> std::io::Result<(bool, Option<String>)> {
-    print_formatter_info("sql-formatter");
-
     invote_sql_formatter(setup_npm_script("sql-formatter"), snippet_path)
 }
 

@@ -3,8 +3,8 @@ use schemars::JsonSchema;
 use super::{Lang, LanguageFormatter};
 use crate::formatters::{rustfmt::format_using_rustfmt, MdsfFormatter};
 
-#[derive(Debug, Default, serde::Serialize, serde::Deserialize, JsonSchema)]
-#[cfg_attr(test, derive(PartialEq, Eq))]
+#[derive(Default, serde::Serialize, serde::Deserialize, JsonSchema)]
+#[cfg_attr(test, derive(Debug, PartialEq, Eq))]
 pub enum Rust {
     #[default]
     #[serde(rename = "rustfmt")]
@@ -40,12 +40,22 @@ impl LanguageFormatter for Rust {
     }
 }
 
+impl core::fmt::Display for Rust {
+    #[inline]
+    fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
+        match self {
+            Self::RustFmt => write!(f, "rustfmt"),
+        }
+    }
+}
+
 #[cfg(test)]
 mod test_rust {
     use super::Rust;
     use crate::{
         formatters::{setup_snippet, MdsfFormatter},
         languages::Lang,
+        LineInfo,
     };
 
     const INPUT: &str = "pub
@@ -70,7 +80,7 @@ mod test_rust {
             enabled: false,
             formatter: MdsfFormatter::Single(Rust::RustFmt),
         }
-        .format(snippet_path)
+        .format(snippet_path, &LineInfo::fake())
         .expect("it to not fail")
         .is_none());
     }
@@ -89,7 +99,7 @@ mod test_rust {
         let snippet_path = snippet.path();
 
         let output = l
-            .format(snippet_path)
+            .format(snippet_path, &LineInfo::fake())
             .expect("it to not fail")
             .expect("it to be a snippet");
 

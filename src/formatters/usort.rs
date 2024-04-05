@@ -1,12 +1,9 @@
 use super::execute_command;
-use crate::terminal::print_formatter_info;
 
 #[inline]
 pub fn format_using_usort(
     snippet_path: &std::path::Path,
 ) -> std::io::Result<(bool, Option<String>)> {
-    print_formatter_info("usort");
-
     let mut cmd = std::process::Command::new("usort");
 
     cmd.arg("format").arg(snippet_path);

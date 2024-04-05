@@ -27,4 +27,18 @@ pub struct FormatCommandArguments {
     /// Log stdout and stderr of formatters
     #[arg(long, default_value_t = false)]
     pub debug: bool,
+
+    #[arg(long, default_value_t, value_enum)]
+    pub log_level: LogLevel,
+}
+
+#[derive(clap::ValueEnum, Clone, Copy, PartialEq, Eq, Default, Debug)]
+pub enum LogLevel {
+    #[default]
+    Trace,
+    Debug,
+    Info,
+    Warn,
+    Error,
+    Off,
 }

@@ -1,5 +1,5 @@
 use super::execute_command;
-use crate::{runners::setup_npm_script, terminal::print_formatter_info};
+use crate::runners::setup_npm_script;
 
 #[inline]
 fn set_npm_groovy_lint_args(cmd: &mut std::process::Command, snippet_path: &std::path::Path) {
@@ -21,8 +21,6 @@ fn invoke_npm_groovy_lint(
 pub fn format_using_npm_groovy_lint(
     snippet_path: &std::path::Path,
 ) -> std::io::Result<(bool, Option<String>)> {
-    print_formatter_info("npm-groovy-lint");
-
     let path_result =
         invoke_npm_groovy_lint(std::process::Command::new("npm-groovy-lint"), snippet_path)?;
 

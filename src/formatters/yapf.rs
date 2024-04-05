@@ -1,12 +1,9 @@
 use super::execute_command;
-use crate::terminal::print_formatter_info;
 
 #[inline]
 pub fn format_using_yapf(
     snippet_path: &std::path::Path,
 ) -> std::io::Result<(bool, Option<String>)> {
-    print_formatter_info("yapf");
-
     let mut cmd = std::process::Command::new("yapf");
 
     cmd.arg("--in-place").arg(snippet_path);

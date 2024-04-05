@@ -1,5 +1,5 @@
 use super::execute_command;
-use crate::{runners::setup_npm_script, terminal::print_formatter_info};
+use crate::runners::setup_npm_script;
 
 #[inline]
 fn set_blade_formatter_args(cmd: &mut std::process::Command, snippet_path: &std::path::Path) {
@@ -20,8 +20,6 @@ fn invote_blade_formatter(
 pub fn format_using_blade_formatter(
     snippet_path: &std::path::Path,
 ) -> std::io::Result<(bool, Option<String>)> {
-    print_formatter_info("blade-formatter");
-
     invote_blade_formatter(setup_npm_script("blade-formatter"), snippet_path)
 }
 

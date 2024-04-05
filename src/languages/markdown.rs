@@ -3,12 +3,21 @@ use schemars::JsonSchema;
 use super::{Lang, LanguageFormatter};
 use crate::formatters::{prettier::format_using_prettier, MdsfFormatter};
 
-#[derive(Debug, Default, serde::Serialize, serde::Deserialize, JsonSchema)]
-#[cfg_attr(test, derive(PartialEq, Eq))]
+#[derive(Default, serde::Serialize, serde::Deserialize, JsonSchema)]
+#[cfg_attr(test, derive(Debug, PartialEq, Eq))]
 pub enum Markdown {
     #[default]
     #[serde(rename = "prettier")]
     Prettier,
+}
+
+impl core::fmt::Display for Markdown {
+    #[inline]
+    fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
+        match self {
+            Self::Prettier => write!(f, "prettier"),
+        }
+    }
 }
 
 impl Default for Lang<Markdown> {
@@ -46,6 +55,7 @@ mod test_markdown {
     use crate::{
         formatters::{setup_snippet, MdsfFormatter},
         languages::Lang,
+        LineInfo,
     };
 
     const INPUT: &str = "
@@ -71,7 +81,7 @@ mod test_markdown {
             enabled: false,
             formatter: MdsfFormatter::<Markdown>::default(),
         }
-        .format(snippet_path)
+        .format(snippet_path, &LineInfo::fake())
         .expect("it to not fail")
         .is_none());
     }
@@ -92,7 +102,7 @@ the whitespace should be removed
         let snippet_path = snippet.path();
 
         let output = l
-            .format(snippet_path)
+            .format(snippet_path, &LineInfo::fake())
             .expect("it to not fail")
             .expect("it to be a snippet");
 

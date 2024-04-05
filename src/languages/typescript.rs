@@ -6,8 +6,8 @@ use crate::formatters::{
     MdsfFormatter,
 };
 
-#[derive(Debug, Default, serde::Serialize, serde::Deserialize, JsonSchema)]
-#[cfg_attr(test, derive(PartialEq, Eq))]
+#[derive(Default, serde::Serialize, serde::Deserialize, JsonSchema)]
+#[cfg_attr(test, derive(Debug, PartialEq, Eq))]
 pub enum TypeScript {
     #[default]
     #[serde(rename = "prettier")]
@@ -53,11 +53,23 @@ impl LanguageFormatter for TypeScript {
     }
 }
 
+impl core::fmt::Display for TypeScript {
+    #[inline]
+    fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
+        match self {
+            Self::Prettier => write!(f, "prettier"),
+            Self::Biome => write!(f, "biome"),
+            Self::DenoFmt => write!(f, "deno_fmt"),
+        }
+    }
+}
+
 #[cfg(test)]
 mod test_typescript {
     use crate::{
         formatters::{setup_snippet, MdsfFormatter},
         languages::{typescript::TypeScript, Lang, TypeScriptFlavor},
+        LineInfo,
     };
 
     const INPUT: &str = "
@@ -90,7 +102,7 @@ number>
         };
 
         assert!(prettier
-            .format(snippet_path)
+            .format(snippet_path, &LineInfo::fake())
             .expect("it to not fail")
             .is_none());
 
@@ -100,7 +112,7 @@ number>
         };
 
         assert!(biome
-            .format(snippet_path)
+            .format(snippet_path, &LineInfo::fake())
             .expect("it to not fail")
             .is_none());
     }
@@ -116,7 +128,7 @@ number>
         let snippet_path = snippet.path();
 
         let output = l
-            .format(snippet_path)
+            .format(snippet_path, &LineInfo::fake())
             .expect("it to not fail")
             .expect("it to be a snippet");
 
@@ -140,7 +152,7 @@ number>
         let snippet_path = snippet.path();
 
         let output = l
-            .format(snippet_path)
+            .format(snippet_path, &LineInfo::fake())
             .expect("it to not fail")
             .expect("it to be a snippet");
 
@@ -165,7 +177,7 @@ number>
         let snippet_path = snippet.path();
 
         let output = l
-            .format(snippet_path)
+            .format(snippet_path, &LineInfo::fake())
             .expect("it to not fail")
             .expect("it to be a snippet");
 

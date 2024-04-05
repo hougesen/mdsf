@@ -5,8 +5,8 @@ use crate::formatters::{
     beautysh::format_using_beautysh, shfmt::format_using_shfmt, MdsfFormatter,
 };
 
-#[derive(Debug, Default, serde::Serialize, serde::Deserialize, JsonSchema)]
-#[cfg_attr(test, derive(PartialEq, Eq))]
+#[derive(Default, serde::Serialize, serde::Deserialize, JsonSchema)]
+#[cfg_attr(test, derive(Debug, PartialEq, Eq))]
 pub enum Shell {
     #[default]
     #[serde(rename = "shfmt")]
@@ -35,6 +35,16 @@ impl Default for MdsfFormatter<Shell> {
     }
 }
 
+impl core::fmt::Display for Shell {
+    #[inline]
+    fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
+        match self {
+            Self::Shfmt => write!(f, "shfmt"),
+            Self::Beautysh => write!(f, "beautysh"),
+        }
+    }
+}
+
 impl LanguageFormatter for Shell {
     #[inline]
     fn format_snippet(
@@ -54,6 +64,7 @@ mod test_shell {
     use crate::{
         formatters::{setup_snippet, MdsfFormatter},
         languages::{Lang, ShellFlavor},
+        LineInfo,
     };
 
     const INPUT: &str = "
@@ -89,7 +100,7 @@ mod test_shell {
             enabled: false,
             formatter: MdsfFormatter::Single(Shell::Shfmt),
         }
-        .format(snippet_path)
+        .format(snippet_path, &LineInfo::fake())
         .expect("it to not fail")
         .is_none());
     }
@@ -113,7 +124,7 @@ add() {
         let snippet_path = snippet.path();
 
         let output = l
-            .format(snippet_path)
+            .format(snippet_path, &LineInfo::fake())
             .expect("it to not fail")
             .expect("it to be a snippet");
 
@@ -145,7 +156,7 @@ add() {
         let snippet_path = snippet.path();
 
         let output = l
-            .format(snippet_path)
+            .format(snippet_path, &LineInfo::fake())
             .expect("it to not fail")
             .expect("it to be a snippet");
 

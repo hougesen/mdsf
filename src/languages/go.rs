@@ -6,8 +6,8 @@ use crate::formatters::{
     MdsfFormatter,
 };
 
-#[derive(Debug, Default, serde::Serialize, serde::Deserialize, JsonSchema)]
-#[cfg_attr(test, derive(PartialEq, Eq))]
+#[derive(Default, serde::Serialize, serde::Deserialize, JsonSchema)]
+#[cfg_attr(test, derive(Debug, PartialEq, Eq))]
 pub enum Go {
     #[default]
     #[serde(rename = "gofmt")]
@@ -52,12 +52,24 @@ impl LanguageFormatter for Go {
     }
 }
 
+impl core::fmt::Display for Go {
+    #[inline]
+    fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
+        match self {
+            Self::GoFmt => write!(f, "gofmt"),
+            Self::GoFumpt => write!(f, "gofumpt"),
+            Self::GoImports => write!(f, "goimports"),
+        }
+    }
+}
+
 #[cfg(test)]
 mod test_go {
     use super::Go;
     use crate::{
         formatters::{setup_snippet, MdsfFormatter},
         languages::Lang,
+        LineInfo,
     };
 
     const INPUT: &str = "package main
@@ -84,7 +96,7 @@ mod test_go {
             enabled: false,
             formatter: MdsfFormatter::<Go>::default(),
         }
-        .format(snippet_path)
+        .format(snippet_path, &LineInfo::fake())
         .expect("it to not fail")
         .is_none());
     }
@@ -101,7 +113,7 @@ mod test_go {
         let snippet_path = snippet.path();
 
         let output = l
-            .format(snippet_path)
+            .format(snippet_path, &LineInfo::fake())
             .expect("it to not fail")
             .expect("it to be a snippet");
 
@@ -127,7 +139,7 @@ func add(a int, b int) int {
         let snippet_path = snippet.path();
 
         let output = l
-            .format(snippet_path)
+            .format(snippet_path, &LineInfo::fake())
             .expect("it to not fail")
             .expect("it to be a snippet");
 
@@ -180,7 +192,7 @@ func add(a int, b int) int {
         let snippet_path = snippet.path();
 
         let output = l
-            .format(snippet_path)
+            .format(snippet_path, &LineInfo::fake())
             .expect("it to not fail")
             .expect("it to be a snippet");
 

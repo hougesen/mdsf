@@ -4,7 +4,9 @@ use schemars::JsonSchema;
 use tempfile::NamedTempFile;
 use which::which;
 
-use crate::{config::MdsfConfig, languages::Language, terminal::print_binary_not_in_path, DEBUG};
+use crate::{
+    config::MdsfConfig, languages::Language, terminal::print_binary_not_in_path, LineInfo, DEBUG,
+};
 
 pub mod alejandra;
 pub mod autopep8;
@@ -151,61 +153,61 @@ pub fn execute_command(
 }
 
 #[inline]
-pub fn format_snippet(config: &MdsfConfig, language: &Language, code: &str) -> String {
-    if let Ok(snippet) = setup_snippet(code, language.to_file_ext()) {
+pub fn format_snippet(config: &MdsfConfig, info: &LineInfo, code: &str) -> String {
+    if let Ok(snippet) = setup_snippet(code, info.language.to_file_ext()) {
         let snippet_path = snippet.path();
 
-        if let Ok(Some(formatted_code)) = match language {
-            Language::Blade => config.blade.format(snippet_path),
-            Language::C => config.c.format(snippet_path),
-            Language::Cabal => config.cabal.format(snippet_path),
-            Language::Clojure => config.clojure.format(snippet_path),
-            Language::CSharp => config.csharp.format(snippet_path),
-            Language::Cpp => config.cpp.format(snippet_path),
-            Language::Crystal => config.crystal.format(snippet_path),
-            Language::Css(_flavor) => config.css.format(snippet_path),
-            Language::Dart => config.dart.format(snippet_path),
-            Language::Elixir => config.elixir.format(snippet_path),
-            Language::Elm => config.elm.format(snippet_path),
-            Language::Erlang => config.erlang.format(snippet_path),
-            Language::FSharp => config.fsharp.format(snippet_path),
-            Language::Gleam => config.gleam.format(snippet_path),
-            Language::Go => config.go.format(snippet_path),
-            Language::GraphQL => config.graphql.format(snippet_path),
-            Language::Groovy => config.groovy.format(snippet_path),
-            Language::Haskell => config.haskell.format(snippet_path),
-            Language::Hcl => config.hcl.format(snippet_path),
-            Language::Html => config.html.format(snippet_path),
-            Language::Java => config.java.format(snippet_path),
-            Language::JavaScript(_flavor) => config.javascript.format(snippet_path),
-            Language::Json(_flavor) => config.json.format(snippet_path),
-            Language::Julia => config.julia.format(snippet_path),
-            Language::Just => config.just.format(snippet_path),
-            Language::Kotlin => config.kotlin.format(snippet_path),
-            Language::Lua => config.lua.format(snippet_path),
-            Language::Markdown => config.markdown.format(snippet_path),
-            Language::Nix => config.nix.format(snippet_path),
-            Language::Nim => config.nim.format(snippet_path),
-            Language::OCaml => config.ocaml.format(snippet_path),
-            Language::ObjectiveC => config.objective_c.format(snippet_path),
-            Language::Perl => config.perl.format(snippet_path),
-            Language::Protobuf => config.protobuf.format(snippet_path),
-            Language::Python => config.python.format(snippet_path),
-            Language::PureScript => config.purescript.format(snippet_path),
-            Language::ReScript => config.rescript.format(snippet_path),
-            Language::Roc => config.roc.format(snippet_path),
-            Language::Ruby => config.ruby.format(snippet_path),
-            Language::Rust => config.rust.format(snippet_path),
-            Language::Scala => config.scala.format(snippet_path),
-            Language::Shell(_flavor) => config.shell.format(snippet_path),
-            Language::Sql => config.sql.format(snippet_path),
-            Language::Swift => config.swift.format(snippet_path),
-            Language::Toml => config.toml.format(snippet_path),
-            Language::TypeScript(_flavor) => config.typescript.format(snippet_path),
-            Language::Vue => config.vue.format(snippet_path),
-            Language::Xml => config.xml.format(snippet_path),
-            Language::Yaml => config.yaml.format(snippet_path),
-            Language::Zig => config.zig.format(snippet_path),
+        if let Ok(Some(formatted_code)) = match info.language {
+            Language::Blade => config.blade.format(snippet_path, info),
+            Language::C => config.c.format(snippet_path, info),
+            Language::Cabal => config.cabal.format(snippet_path, info),
+            Language::Clojure => config.clojure.format(snippet_path, info),
+            Language::CSharp => config.csharp.format(snippet_path, info),
+            Language::Cpp => config.cpp.format(snippet_path, info),
+            Language::Crystal => config.crystal.format(snippet_path, info),
+            Language::Css(_flavor) => config.css.format(snippet_path, info),
+            Language::Dart => config.dart.format(snippet_path, info),
+            Language::Elixir => config.elixir.format(snippet_path, info),
+            Language::Elm => config.elm.format(snippet_path, info),
+            Language::Erlang => config.erlang.format(snippet_path, info),
+            Language::FSharp => config.fsharp.format(snippet_path, info),
+            Language::Gleam => config.gleam.format(snippet_path, info),
+            Language::Go => config.go.format(snippet_path, info),
+            Language::GraphQL => config.graphql.format(snippet_path, info),
+            Language::Groovy => config.groovy.format(snippet_path, info),
+            Language::Haskell => config.haskell.format(snippet_path, info),
+            Language::Hcl => config.hcl.format(snippet_path, info),
+            Language::Html => config.html.format(snippet_path, info),
+            Language::Java => config.java.format(snippet_path, info),
+            Language::JavaScript(_flavor) => config.javascript.format(snippet_path, info),
+            Language::Json(_flavor) => config.json.format(snippet_path, info),
+            Language::Julia => config.julia.format(snippet_path, info),
+            Language::Just => config.just.format(snippet_path, info),
+            Language::Kotlin => config.kotlin.format(snippet_path, info),
+            Language::Lua => config.lua.format(snippet_path, info),
+            Language::Markdown => config.markdown.format(snippet_path, info),
+            Language::Nix => config.nix.format(snippet_path, info),
+            Language::Nim => config.nim.format(snippet_path, info),
+            Language::OCaml => config.ocaml.format(snippet_path, info),
+            Language::ObjectiveC => config.objective_c.format(snippet_path, info),
+            Language::Perl => config.perl.format(snippet_path, info),
+            Language::Protobuf => config.protobuf.format(snippet_path, info),
+            Language::Python => config.python.format(snippet_path, info),
+            Language::PureScript => config.purescript.format(snippet_path, info),
+            Language::ReScript => config.rescript.format(snippet_path, info),
+            Language::Roc => config.roc.format(snippet_path, info),
+            Language::Ruby => config.ruby.format(snippet_path, info),
+            Language::Rust => config.rust.format(snippet_path, info),
+            Language::Scala => config.scala.format(snippet_path, info),
+            Language::Shell(_flavor) => config.shell.format(snippet_path, info),
+            Language::Sql => config.sql.format(snippet_path, info),
+            Language::Swift => config.swift.format(snippet_path, info),
+            Language::Toml => config.toml.format(snippet_path, info),
+            Language::TypeScript(_flavor) => config.typescript.format(snippet_path, info),
+            Language::Vue => config.vue.format(snippet_path, info),
+            Language::Xml => config.xml.format(snippet_path, info),
+            Language::Yaml => config.yaml.format(snippet_path, info),
+            Language::Zig => config.zig.format(snippet_path, info),
         } {
             let mut f = formatted_code.trim().to_owned();
 
@@ -221,7 +223,10 @@ pub fn format_snippet(config: &MdsfConfig, language: &Language, code: &str) -> S
 #[derive(Debug, serde::Serialize, serde::Deserialize, JsonSchema)]
 #[cfg_attr(test, derive(PartialEq, Eq))]
 #[serde(untagged)]
-pub enum MdsfFormatter<T> {
+pub enum MdsfFormatter<T>
+where
+    T: core::fmt::Display,
+{
     Single(T),
     Multiple(Vec<MdsfFormatter<T>>),
 }

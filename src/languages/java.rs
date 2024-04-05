@@ -6,8 +6,8 @@ use crate::formatters::{
     MdsfFormatter,
 };
 
-#[derive(Debug, Default, serde::Serialize, serde::Deserialize, JsonSchema)]
-#[cfg_attr(test, derive(PartialEq, Eq))]
+#[derive(Default, serde::Serialize, serde::Deserialize, JsonSchema)]
+#[cfg_attr(test, derive(Debug, PartialEq, Eq))]
 pub enum Java {
     #[default]
     #[serde(rename = "google-java-format")]
@@ -49,12 +49,23 @@ impl LanguageFormatter for Java {
     }
 }
 
+impl core::fmt::Display for Java {
+    #[inline]
+    fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
+        match self {
+            Self::GoogleJavaFormat => write!(f, "google-java-format"),
+            Self::ClangFormat => write!(f, "clang-format"),
+        }
+    }
+}
+
 #[cfg(test)]
 mod test_java {
     use super::Java;
     use crate::{
         formatters::{setup_snippet, MdsfFormatter},
         languages::Lang,
+        LineInfo,
     };
 
     const INPUT: &str = "class HelloWorld {
@@ -80,7 +91,7 @@ mod test_java {
             enabled: false,
             formatter: MdsfFormatter::Single(Java::default()),
         }
-        .format(snippet_path)
+        .format(snippet_path, &LineInfo::fake())
         .expect("it to not fail")
         .is_none());
     }
@@ -103,7 +114,7 @@ mod test_java {
         let snippet_path = snippet.path();
 
         let output = l
-            .format(snippet_path)
+            .format(snippet_path, &LineInfo::fake())
             .expect("it to not fail")
             .expect("it to be a snippet");
 
@@ -129,7 +140,7 @@ mod test_java {
         let snippet_path = snippet.path();
 
         let output = l
-            .format(snippet_path)
+            .format(snippet_path, &LineInfo::fake())
             .expect("it to not fail")
             .expect("it to be a snippet");
 

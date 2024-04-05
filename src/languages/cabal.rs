@@ -3,8 +3,8 @@ use schemars::JsonSchema;
 use super::{Lang, LanguageFormatter};
 use crate::formatters::{cabal_format::format_using_cabal_format, MdsfFormatter};
 
-#[derive(Debug, Default, serde::Serialize, serde::Deserialize, JsonSchema)]
-#[cfg_attr(test, derive(PartialEq, Eq))]
+#[derive(Default, serde::Serialize, serde::Deserialize, JsonSchema)]
+#[cfg_attr(test, derive(Debug, PartialEq, Eq))]
 pub enum Cabal {
     #[default]
     #[serde(rename = "cabal_format")]
@@ -40,21 +40,31 @@ impl LanguageFormatter for Cabal {
     }
 }
 
+impl core::fmt::Display for Cabal {
+    #[inline]
+    fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
+        match self {
+            Self::CabalFormat => write!(f, "cabal_format"),
+        }
+    }
+}
+
 #[cfg(test)]
 mod test_cabal {
     use super::Cabal;
     use crate::{
         formatters::{setup_snippet, MdsfFormatter},
         languages::Lang,
+        LineInfo,
     };
 
     const INPUT:&str = "cabal-version: 2.4
-name: mdsf 
+name: mdsf
 version: 0
 
-executable msdf 
+executable msdf
     default-language: Haskell2010
-    hs-source-dirs: src 
+    hs-source-dirs: src
     main-is: Mdsf.hs
     build-depends: base >=4.11 && <4.13, pretty >=1.1.3.6 && <1.2, bytestring, Cabal ^>=2.5, containers ^>=0.5.11.0 || ^>=0.6.0.1
     other-extensions:
@@ -78,7 +88,10 @@ executable msdf
         let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");
         let snippet_path = snippet.path();
 
-        assert!(l.format(snippet_path).expect("it to not fail").is_none());
+        assert!(l
+            .format(snippet_path, &LineInfo::fake())
+            .expect("it to not fail")
+            .is_none());
     }
 
     #[test]
@@ -92,7 +105,7 @@ executable msdf
         let snippet_path = snippet.path();
 
         let output = l
-            .format(snippet_path)
+            .format(snippet_path, &LineInfo::fake())
             .expect("it to not fail")
             .expect("it to be a snippet");
 

@@ -1,12 +1,9 @@
 use super::execute_command;
-use crate::terminal::print_formatter_info;
 
 #[inline]
 pub fn format_using_beautysh(
     file_path: &std::path::Path,
 ) -> std::io::Result<(bool, Option<String>)> {
-    print_formatter_info("beautysh");
-
     let mut cmd = std::process::Command::new("beautysh");
 
     cmd.arg(file_path);

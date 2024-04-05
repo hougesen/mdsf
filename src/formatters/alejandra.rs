@@ -1,12 +1,9 @@
 use super::execute_command;
-use crate::terminal::print_formatter_info;
 
 #[inline]
 pub fn format_using_alejandra(
     snippet_path: &std::path::Path,
 ) -> std::io::Result<(bool, Option<String>)> {
-    print_formatter_info("alejandra");
-
     let mut cmd = std::process::Command::new("alejandra");
 
     cmd.arg("--quiet").arg(snippet_path);
@@ -22,7 +19,7 @@ mod test_alejandra {
     #[test_with::executable(alejandra)]
     #[test]
     fn it_should_format_nix() {
-        let input = r#"{ 
+        let input = r#"{
             lib, buildPythonPackage, fetchFromGitHub, redis }:
 
 buildPythonPackage rec {

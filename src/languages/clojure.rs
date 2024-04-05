@@ -3,8 +3,8 @@ use schemars::JsonSchema;
 use super::{Lang, LanguageFormatter};
 use crate::formatters::{cljstyle::format_using_cljstyle, MdsfFormatter};
 
-#[derive(Debug, Default, serde::Serialize, serde::Deserialize, JsonSchema)]
-#[cfg_attr(test, derive(PartialEq, Eq))]
+#[derive(Default, serde::Serialize, serde::Deserialize, JsonSchema)]
+#[cfg_attr(test, derive(Debug, PartialEq, Eq))]
 pub enum Clojure {
     #[default]
     #[serde(rename = "cljstyle")]
@@ -40,12 +40,22 @@ impl LanguageFormatter for Clojure {
     }
 }
 
+impl core::fmt::Display for Clojure {
+    #[inline]
+    fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
+        match self {
+            Self::Cljstyle => write!(f, "cljstyle"),
+        }
+    }
+}
+
 #[cfg(test)]
 mod test_c {
     use super::Clojure;
     use crate::{
         formatters::{setup_snippet, MdsfFormatter},
         languages::Lang,
+        LineInfo,
     };
 
     const INPUT: &str = "(  ns
@@ -80,7 +90,7 @@ mod test_c {
             enabled: false,
             formatter: MdsfFormatter::Single(Clojure::default()),
         }
-        .format(snippet_path)
+        .format(snippet_path, &LineInfo::fake())
         .expect("it to not fail")
         .is_none());
     }
@@ -97,7 +107,7 @@ mod test_c {
         let snippet_path = snippet.path();
 
         let output = l
-            .format(snippet_path)
+            .format(snippet_path, &LineInfo::fake())
             .expect("it to not fail")
             .expect("it to be a snippet");
 

@@ -1,5 +1,5 @@
 use super::execute_command;
-use crate::{runners::setup_npm_script, terminal::print_formatter_info};
+use crate::runners::setup_npm_script;
 
 #[inline]
 fn set_stylelint_args(cmd: &mut std::process::Command, snippet_path: &std::path::Path) {
@@ -20,8 +20,6 @@ fn invoke_stylelint(
 pub fn format_using_stylelint(
     snippet_path: &std::path::Path,
 ) -> std::io::Result<(bool, Option<String>)> {
-    print_formatter_info("stylelint");
-
     let global_result = invoke_stylelint(std::process::Command::new("stylelint"), snippet_path)?;
 
     if !global_result.0 {

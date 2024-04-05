@@ -3,8 +3,8 @@ use schemars::JsonSchema;
 use super::{Lang, LanguageFormatter};
 use crate::formatters::{clang_format::format_using_clang_format, MdsfFormatter};
 
-#[derive(Debug, Default, serde::Serialize, serde::Deserialize, JsonSchema)]
-#[cfg_attr(test, derive(PartialEq, Eq))]
+#[derive(Default, serde::Serialize, serde::Deserialize, JsonSchema)]
+#[cfg_attr(test, derive(Debug, PartialEq, Eq))]
 pub enum Cpp {
     #[default]
     #[serde(rename = "clang-format")]
@@ -40,12 +40,22 @@ impl LanguageFormatter for Cpp {
     }
 }
 
+impl core::fmt::Display for Cpp {
+    #[inline]
+    fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
+        match self {
+            Self::ClangFormat => write!(f, "clang-format"),
+        }
+    }
+}
+
 #[cfg(test)]
 mod test_cpp {
     use super::Cpp;
     use crate::{
         formatters::{setup_snippet, MdsfFormatter},
         languages::Lang,
+        LineInfo,
     };
 
     const INPUT: &str = "int add(int a,int b){
@@ -69,7 +79,7 @@ mod test_cpp {
             enabled: false,
             formatter: MdsfFormatter::Single(Cpp::default())
         }
-        .format(snippet_path)
+        .format(snippet_path, &LineInfo::fake())
         .expect("it to not fail")
         .is_none());
     }
@@ -86,7 +96,7 @@ mod test_cpp {
         let snippet_path = snippet.path();
 
         let output = l
-            .format(snippet_path)
+            .format(snippet_path, &LineInfo::fake())
             .expect("it to not fail")
             .expect("it to be a snippet");
 

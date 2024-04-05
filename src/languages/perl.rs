@@ -3,8 +3,8 @@ use schemars::JsonSchema;
 use super::{Lang, LanguageFormatter};
 use crate::formatters::{perltidy::format_using_perltidy, MdsfFormatter};
 
-#[derive(Debug, Default, serde::Serialize, serde::Deserialize, JsonSchema)]
-#[cfg_attr(test, derive(PartialEq, Eq))]
+#[derive(Default, serde::Serialize, serde::Deserialize, JsonSchema)]
+#[cfg_attr(test, derive(Debug, PartialEq, Eq))]
 pub enum Perl {
     #[default]
     #[serde(rename = "perltidy")]
@@ -40,12 +40,22 @@ impl LanguageFormatter for Perl {
     }
 }
 
+impl core::fmt::Display for Perl {
+    #[inline]
+    fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
+        match self {
+            Self::PerlTidy => write!(f, "perltidy"),
+        }
+    }
+}
+
 #[cfg(test)]
 mod test_perl {
     use super::Perl;
     use crate::{
         formatters::{setup_snippet, MdsfFormatter},
         languages::Lang,
+        LineInfo,
     };
 
     const INPUT: &str = r#"$_= <<'EOL';
@@ -76,7 +86,10 @@ print(" MiXeD"),redo LOOP if/\G[A-Za-z]+\b[,.;]?\s*/gc;print(
         let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");
         let snippet_path = snippet.path();
 
-        assert!(l.format(snippet_path).expect("it to not fail").is_none());
+        assert!(l
+            .format(snippet_path, &LineInfo::fake())
+            .expect("it to not fail")
+            .is_none());
     }
 
     #[test_with::executable(perltidy)]
@@ -91,7 +104,7 @@ print(" MiXeD"),redo LOOP if/\G[A-Za-z]+\b[,.;]?\s*/gc;print(
         let snippet_path = snippet.path();
 
         let output = l
-            .format(snippet_path)
+            .format(snippet_path, &LineInfo::fake())
             .expect("it to not fail")
             .expect("it to be a snippet");
 

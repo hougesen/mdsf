@@ -1,12 +1,9 @@
 use super::execute_command;
-use crate::terminal::print_formatter_info;
 
 #[inline]
 pub fn format_using_fourmolu(
     snippet_path: &std::path::Path,
 ) -> std::io::Result<(bool, Option<String>)> {
-    print_formatter_info("fourmolu");
-
     let mut cmd = std::process::Command::new("fourmolu");
 
     cmd.arg("-i").arg(snippet_path);

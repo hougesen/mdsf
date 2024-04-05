@@ -5,8 +5,8 @@ use crate::formatters::{
     buf::format_using_buf, clang_format::format_using_clang_format, MdsfFormatter,
 };
 
-#[derive(Debug, Default, serde::Serialize, serde::Deserialize, JsonSchema)]
-#[cfg_attr(test, derive(PartialEq, Eq))]
+#[derive(Default, serde::Serialize, serde::Deserialize, JsonSchema)]
+#[cfg_attr(test, derive(Debug, PartialEq, Eq))]
 pub enum Protobuf {
     #[default]
     #[serde(rename = "buf")]
@@ -48,12 +48,23 @@ impl LanguageFormatter for Protobuf {
     }
 }
 
+impl core::fmt::Display for Protobuf {
+    #[inline]
+    fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
+        match self {
+            Self::Buf => write!(f, "buf"),
+            Self::ClangFormat => write!(f, "clang-format"),
+        }
+    }
+}
+
 #[cfg(test)]
 mod test_protobuf {
     use super::Protobuf;
     use crate::{
         formatters::{setup_snippet, MdsfFormatter},
         languages::Lang,
+        LineInfo,
     };
 
     const INPUT: &str = "service SearchService {
@@ -76,7 +87,7 @@ mod test_protobuf {
             enabled: false,
             formatter: MdsfFormatter::Single(Protobuf::default()),
         }
-        .format(snippet_path)
+        .format(snippet_path, &LineInfo::fake())
         .expect("it to not fail")
         .is_none());
     }
@@ -98,7 +109,7 @@ mod test_protobuf {
         let snippet_path = snippet.path();
 
         let output = l
-            .format(snippet_path)
+            .format(snippet_path, &LineInfo::fake())
             .expect("it to not fail")
             .expect("it to be a snippet");
 
@@ -120,7 +131,7 @@ mod test_protobuf {
         let snippet_path = snippet.path();
 
         let output = l
-            .format(snippet_path)
+            .format(snippet_path, &LineInfo::fake())
             .expect("it to not fail")
             .expect("it to be a snippet");
 

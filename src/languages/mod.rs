@@ -1,6 +1,6 @@
 use schemars::JsonSchema;
 
-use crate::formatters::MdsfFormatter;
+use crate::{formatters::MdsfFormatter, terminal::print_formatter_info, LineInfo};
 
 pub mod blade;
 pub mod c;
@@ -401,24 +401,28 @@ impl Language {
     }
 }
 
-#[derive(Debug, serde::Serialize, serde::Deserialize, JsonSchema)]
-#[cfg_attr(test, derive(PartialEq, Eq))]
+#[derive(serde::Serialize, serde::Deserialize, JsonSchema)]
+#[cfg_attr(test, derive(Debug, PartialEq, Eq))]
 pub struct Lang<T>
 where
-    T: LanguageFormatter,
+    T: LanguageFormatter + core::fmt::Display,
 {
     pub enabled: bool,
     pub formatter: MdsfFormatter<T>,
 }
 
-impl<T: LanguageFormatter> Lang<T> {
+impl<T: LanguageFormatter + core::fmt::Display> Lang<T> {
     #[inline]
-    pub fn format(&self, snippet_path: &std::path::Path) -> std::io::Result<Option<String>> {
+    pub fn format(
+        &self,
+        snippet_path: &std::path::Path,
+        info: &LineInfo,
+    ) -> std::io::Result<Option<String>> {
         if !self.enabled {
             return Ok(None);
         }
 
-        Self::format_multiple(&self.formatter, snippet_path, false)
+        Self::format_multiple(&self.formatter, snippet_path, info, false)
             .map(|(_should_continue, output)| output)
     }
 
@@ -426,16 +430,21 @@ impl<T: LanguageFormatter> Lang<T> {
     pub fn format_multiple(
         formatter: &MdsfFormatter<T>,
         snippet_path: &std::path::Path,
+        info: &LineInfo,
         nested: bool,
     ) -> std::io::Result<(bool, Option<String>)> {
         match formatter {
-            MdsfFormatter::Single(f) => f.format_snippet(snippet_path),
+            MdsfFormatter::Single(f) => {
+                print_formatter_info(f.to_string().as_str(), info);
+
+                f.format_snippet(snippet_path)
+            }
 
             MdsfFormatter::Multiple(formatters) => {
                 let mut r = Ok((true, None));
 
                 for f in formatters {
-                    r = Self::format_multiple(f, snippet_path, true);
+                    r = Self::format_multiple(f, snippet_path, info, true);
 
                     if r.as_ref()
                         .is_ok_and(|(should_continue, _code)| !should_continue)
@@ -456,8 +465,12 @@ mod test_lang {
     use std::io::Write;
 
     use super::{Lang, LanguageFormatter};
-    use crate::formatters::{setup_snippet, MdsfFormatter};
+    use crate::{
+        formatters::{setup_snippet, MdsfFormatter},
+        LineInfo,
+    };
 
+    #[derive(serde::Serialize)]
     enum TestLanguage {
         A,
         B,
@@ -465,6 +478,18 @@ mod test_lang {
         // Will fail
         D,
         E,
+    }
+
+    impl core::fmt::Display for TestLanguage {
+        fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
+            match self {
+                Self::A => write!(f, "A"),
+                Self::B => write!(f, "B"),
+                Self::C => write!(f, "C"),
+                Self::D => write!(f, "D"),
+                Self::E => write!(f, "E"),
+            }
+        }
     }
 
     impl LanguageFormatter for TestLanguage {
@@ -499,7 +524,7 @@ mod test_lang {
         let snippet_path = file.path();
 
         let code = l
-            .format(snippet_path)
+            .format(snippet_path, &LineInfo::fake())
             .expect("it to be ok")
             .expect("it to be some");
 
@@ -522,7 +547,7 @@ mod test_lang {
         let snippet_path = file.path();
 
         let code = l
-            .format(snippet_path)
+            .format(snippet_path, &LineInfo::fake())
             .expect("it to be ok")
             .expect("it to be some");
 
@@ -551,7 +576,7 @@ mod test_lang {
         let snippet_path = file.path();
 
         let code = l
-            .format(snippet_path)
+            .format(snippet_path, &LineInfo::fake())
             .expect("it to be ok")
             .expect("it to be some");
 

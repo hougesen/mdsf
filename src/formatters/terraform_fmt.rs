@@ -1,12 +1,9 @@
 use super::execute_command;
-use crate::terminal::print_formatter_info;
 
 #[inline]
 pub fn format_using_terraform_fmt(
     snippet_path: &std::path::Path,
 ) -> std::io::Result<(bool, Option<String>)> {
-    print_formatter_info("terraform_fmt");
-
     let mut cmd = std::process::Command::new("terraform");
 
     cmd.arg("fmt").arg("-write=true").arg(snippet_path);
@@ -22,7 +19,7 @@ mod test_terraform_fmt {
     #[test_with::executable(terraform)]
     #[test]
     fn it_should_format_hcl() {
-        let input = "resource \"aws_instance\" \"example\" {                
+        let input = "resource \"aws_instance\" \"example\" {
                     ami   = \"abc123\"
 
            network_interface  {
