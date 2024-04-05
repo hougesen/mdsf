@@ -3,8 +3,8 @@ use schemars::JsonSchema;
 use super::{Lang, LanguageFormatter};
 use crate::formatters::{crystal_format::format_using_crystal_format, MdsfFormatter};
 
-#[derive(Debug, Default, serde::Serialize, serde::Deserialize, JsonSchema)]
-#[cfg_attr(test, derive(PartialEq, Eq))]
+#[derive(Default, serde::Serialize, serde::Deserialize, JsonSchema)]
+#[cfg_attr(test, derive(Debug, PartialEq, Eq))]
 pub enum Crystal {
     #[default]
     #[serde(rename = "crystal_format")]
@@ -40,12 +40,22 @@ impl LanguageFormatter for Crystal {
     }
 }
 
+impl core::fmt::Display for Crystal {
+    #[inline]
+    fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
+        match self {
+            Self::CrystalFormat => write!(f, "crystal_format"),
+        }
+    }
+}
+
 #[cfg(test)]
 mod test_crystal {
     use super::Crystal;
     use crate::{
         formatters::{setup_snippet, MdsfFormatter},
         languages::Lang,
+        LineInfo,
     };
 
     const INPUT: &str = "def add(a, b)  return a + b end";
@@ -66,7 +76,7 @@ mod test_crystal {
             enabled: false,
             formatter: MdsfFormatter::Single(Crystal::CrystalFormat),
         }
-        .format(snippet_path)
+        .format(snippet_path, &LineInfo::fake())
         .expect("it to not fail")
         .is_none());
     }
@@ -87,7 +97,7 @@ end
         let snippet_path = snippet.path();
 
         let output = l
-            .format(snippet_path)
+            .format(snippet_path, &LineInfo::fake())
             .expect("it to not fail")
             .expect("it to be a snippet");
 

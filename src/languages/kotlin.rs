@@ -3,8 +3,8 @@ use schemars::JsonSchema;
 use super::{Lang, LanguageFormatter};
 use crate::formatters::{ktfmt::format_using_ktfmt, ktlint::format_using_ktlint, MdsfFormatter};
 
-#[derive(Debug, Default, serde::Serialize, serde::Deserialize, JsonSchema)]
-#[cfg_attr(test, derive(PartialEq, Eq))]
+#[derive(Default, serde::Serialize, serde::Deserialize, JsonSchema)]
+#[cfg_attr(test, derive(Debug, PartialEq, Eq))]
 pub enum Kotlin {
     #[default]
     #[serde(rename = "ktlint")]
@@ -46,12 +46,23 @@ impl LanguageFormatter for Kotlin {
     }
 }
 
+impl core::fmt::Display for Kotlin {
+    #[inline]
+    fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
+        match self {
+            Self::Ktlint => write!(f, "ktlint"),
+            Self::Ktfmt => write!(f, "ktfmt"),
+        }
+    }
+}
+
 #[cfg(test)]
 mod test_kotlin {
     use super::Kotlin;
     use crate::{
         formatters::{setup_snippet, MdsfFormatter},
         languages::Lang,
+        LineInfo,
     };
 
     const INPUT: &str = "  fun add(a:Int ,b:Int ):Int {
@@ -75,7 +86,7 @@ mod test_kotlin {
             enabled: false,
             formatter: MdsfFormatter::Single(Kotlin::default())
         }
-        .format(snippet_path)
+        .format(snippet_path, &LineInfo::fake())
         .expect("it to not fail")
         .is_none());
     }
@@ -92,7 +103,7 @@ mod test_kotlin {
         let snippet_path = snippet.path();
 
         let output = l
-            .format(snippet_path)
+            .format(snippet_path, &LineInfo::fake())
             .expect("it to not fail")
             .expect("it to be a snippet");
 
@@ -121,7 +132,7 @@ fun add(
         let snippet_path = snippet.path();
 
         let output = l
-            .format(snippet_path)
+            .format(snippet_path, &LineInfo::fake())
             .expect("it to not fail")
             .expect("it to be a snippet");
 

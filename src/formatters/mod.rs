@@ -153,7 +153,7 @@ pub fn execute_command(
 }
 
 #[inline]
-pub fn format_snippet(config: &MdsfConfig, info: LineInfo, code: &str) -> String {
+pub fn format_snippet(config: &MdsfConfig, info: &LineInfo, code: &str) -> String {
     if let Ok(snippet) = setup_snippet(code, info.language.to_file_ext()) {
         let snippet_path = snippet.path();
 
@@ -223,7 +223,10 @@ pub fn format_snippet(config: &MdsfConfig, info: LineInfo, code: &str) -> String
 #[derive(Debug, serde::Serialize, serde::Deserialize, JsonSchema)]
 #[cfg_attr(test, derive(PartialEq, Eq))]
 #[serde(untagged)]
-pub enum MdsfFormatter<T> {
+pub enum MdsfFormatter<T>
+where
+    T: core::fmt::Display,
+{
     Single(T),
     Multiple(Vec<MdsfFormatter<T>>),
 }

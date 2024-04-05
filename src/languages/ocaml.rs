@@ -5,8 +5,8 @@ use crate::formatters::{
     ocamlformat::format_using_ocamlformat, ocp_indent::format_using_ocp_indent, MdsfFormatter,
 };
 
-#[derive(Debug, Default, serde::Serialize, serde::Deserialize, JsonSchema)]
-#[cfg_attr(test, derive(PartialEq, Eq))]
+#[derive(Default, serde::Serialize, serde::Deserialize, JsonSchema)]
+#[cfg_attr(test, derive(Debug, PartialEq, Eq))]
 pub enum OCaml {
     #[default]
     #[serde(rename = "ocamlformat")]
@@ -48,12 +48,23 @@ impl LanguageFormatter for OCaml {
     }
 }
 
+impl core::fmt::Display for OCaml {
+    #[inline]
+    fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
+        match self {
+            Self::OCamlFormat => write!(f, "ocamlformat"),
+            Self::OcpIndent => write!(f, "ocpindent"),
+        }
+    }
+}
+
 #[cfg(test)]
 mod test_ocaml {
     use super::OCaml;
     use crate::{
         formatters::{setup_snippet, MdsfFormatter},
         languages::Lang,
+        LineInfo,
     };
 
     const INPUT: &str = "
@@ -76,7 +87,7 @@ let add a b  =  a +  b
             enabled: false,
             formatter: MdsfFormatter::Single(OCaml::default())
         }
-        .format(snippet_path)
+        .format(snippet_path, &LineInfo::fake())
         .expect("it to not fail")
         .is_none());
     }
@@ -93,7 +104,7 @@ let add a b  =  a +  b
         let snippet_path = snippet.path();
 
         let output = l
-            .format(snippet_path)
+            .format(snippet_path, &LineInfo::fake())
             .expect("it to not fail")
             .expect("it to be a snippet");
 
@@ -124,7 +135,7 @@ let add a b
         let snippet_path = snippet.path();
 
         let output = l
-            .format(snippet_path)
+            .format(snippet_path, &LineInfo::fake())
             .expect("it to not fail")
             .expect("it to be a snippet");
 

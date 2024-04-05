@@ -1,12 +1,9 @@
 use super::execute_command;
-use crate::terminal::print_formatter_info;
 
 #[inline]
 pub fn format_using_swiftformat(
     snippet_path: &std::path::Path,
 ) -> std::io::Result<(bool, Option<String>)> {
-    print_formatter_info("swiftformat");
-
     let mut cmd = std::process::Command::new("swiftformat");
 
     cmd.arg("--quiet").arg(snippet_path);

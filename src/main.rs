@@ -4,7 +4,7 @@ use mdsf::{
     config::MdsfConfig,
     error::MdsfError,
     handle_file,
-    terminal::{blankline, logging::setup_logger, print_error},
+    terminal::{logging::setup_logger, print_error},
 };
 
 fn format_command(args: FormatCommandArguments) -> Result<(), MdsfError> {
@@ -28,7 +28,6 @@ fn format_command(args: FormatCommandArguments) -> Result<(), MdsfError> {
 
             if file_path.extension() == Some(&OsStr::from("md")) {
                 handle_file(&conf, file_path)?;
-                blankline()
             }
         }
     } else {

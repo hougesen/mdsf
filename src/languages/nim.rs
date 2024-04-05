@@ -3,8 +3,8 @@ use schemars::JsonSchema;
 use super::{Lang, LanguageFormatter};
 use crate::formatters::{nimpretty::format_using_nimpretty, MdsfFormatter};
 
-#[derive(Debug, Default, serde::Serialize, serde::Deserialize, JsonSchema)]
-#[cfg_attr(test, derive(PartialEq, Eq))]
+#[derive(Default, serde::Serialize, serde::Deserialize, JsonSchema)]
+#[cfg_attr(test, derive(Debug, PartialEq, Eq))]
 pub enum Nim {
     #[default]
     #[serde(rename = "nimpretty")]
@@ -40,12 +40,22 @@ impl LanguageFormatter for Nim {
     }
 }
 
+impl core::fmt::Display for Nim {
+    #[inline]
+    fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
+        match self {
+            Self::Nimpretty => write!(f, "nimpretty"),
+        }
+    }
+}
+
 #[cfg(test)]
 mod test_nim {
     use super::Nim;
     use crate::{
         formatters::{setup_snippet, MdsfFormatter},
         languages::Lang,
+        LineInfo,
     };
 
     const INPUT: &str = "proc           add( a         :int , b:int )        : int =
@@ -67,7 +77,7 @@ mod test_nim {
             enabled: false,
             formatter: MdsfFormatter::Single(Nim::default()),
         }
-        .format(snippet_path)
+        .format(snippet_path, &LineInfo::fake())
         .expect("it to not fail")
         .is_none());
     }
@@ -84,7 +94,7 @@ mod test_nim {
         let snippet_path = snippet.path();
 
         let output = l
-            .format(snippet_path)
+            .format(snippet_path, &LineInfo::fake())
             .expect("it to not fail")
             .expect("it to be a snippet");
 

@@ -5,13 +5,12 @@ use crate::formatters::{
     luaformatter::format_using_luaformatter, stylua::format_using_stylua, MdsfFormatter,
 };
 
-#[derive(Debug, Default, serde::Serialize, serde::Deserialize, JsonSchema)]
-#[cfg_attr(test, derive(PartialEq, Eq))]
+#[derive(Default, serde::Serialize, serde::Deserialize, JsonSchema)]
+#[cfg_attr(test, derive(Debug, PartialEq, Eq))]
 pub enum Lua {
     #[default]
     #[serde(rename = "stylua")]
     Stylua,
-
     #[serde(rename = "luaformatter")]
     LuaFormatter,
 }
@@ -49,20 +48,31 @@ impl LanguageFormatter for Lua {
     }
 }
 
+impl core::fmt::Display for Lua {
+    #[inline]
+    fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
+        match self {
+            Self::Stylua => write!(f, "stylua"),
+            Self::LuaFormatter => write!(f, "luaformatter"),
+        }
+    }
+}
+
 #[cfg(test)]
 mod test_lua {
     use super::Lua;
     use crate::{
         formatters::{setup_snippet, MdsfFormatter},
         languages::Lang,
+        LineInfo,
     };
 
     const INPUT: &str = "
 
         local               function        add (                                       a , b
 )
-    local c =  a  + b 
-return              c 
+    local c =  a  + b
+return              c
 
 
 end
@@ -84,7 +94,7 @@ end
             enabled: false,
             formatter: MdsfFormatter::Single(Lua::default()),
         }
-        .format(snippet_path)
+        .format(snippet_path, &LineInfo::fake())
         .expect("it to not fail")
         .is_none());
     }
@@ -106,7 +116,7 @@ end
         let snippet_path = snippet.path();
 
         let output = l
-            .format(snippet_path)
+            .format(snippet_path, &LineInfo::fake())
             .expect("it to not fail")
             .expect("it to be a snippet");
 
@@ -132,7 +142,7 @@ end
         let snippet_path = snippet.path();
 
         let output = l
-            .format(snippet_path)
+            .format(snippet_path, &LineInfo::fake())
             .expect("it to not fail")
             .expect("it to be a snippet");
 

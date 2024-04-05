@@ -1,12 +1,9 @@
 use super::execute_command;
-use crate::terminal::print_formatter_info;
 
 #[inline]
 pub fn format_using_ormolu(
     snippet_path: &std::path::Path,
 ) -> std::io::Result<(bool, Option<String>)> {
-    print_formatter_info("ormolu");
-
     let mut cmd = std::process::Command::new("ormolu");
 
     cmd.arg("--mode").arg("inplace").arg(snippet_path);

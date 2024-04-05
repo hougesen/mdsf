@@ -7,8 +7,8 @@ use crate::formatters::{
     standardjs::format_using_standardjs, MdsfFormatter,
 };
 
-#[derive(Debug, Default, serde::Serialize, serde::Deserialize, JsonSchema)]
-#[cfg_attr(test, derive(PartialEq, Eq))]
+#[derive(Default, serde::Serialize, serde::Deserialize, JsonSchema)]
+#[cfg_attr(test, derive(Debug, PartialEq, Eq))]
 pub enum JavaScript {
     #[default]
     #[serde(rename = "prettier")]
@@ -61,12 +61,26 @@ impl LanguageFormatter for JavaScript {
     }
 }
 
+impl core::fmt::Display for JavaScript {
+    #[inline]
+    fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
+        match self {
+            Self::Prettier => write!(f, "prettier"),
+            Self::Biome => write!(f, "biome"),
+            Self::DenoFmt => write!(f, "deno_fmt"),
+            Self::ClangFormat => write!(f, "clang-format"),
+            Self::Standardjs => write!(f, "standardjs"),
+        }
+    }
+}
+
 #[cfg(test)]
 mod test_javascript {
     use super::JavaScript;
     use crate::{
         formatters::{setup_snippet, MdsfFormatter},
         languages::{JavaScriptFlavor, Lang},
+        LineInfo,
     };
 
     const INPUT: &str = "
@@ -98,7 +112,7 @@ mod test_javascript {
         };
 
         assert!(prettier
-            .format(snippet_path)
+            .format(snippet_path, &LineInfo::fake())
             .expect("it to not fail")
             .is_none());
 
@@ -108,7 +122,7 @@ mod test_javascript {
         };
 
         assert!(biome
-            .format(snippet_path)
+            .format(snippet_path, &LineInfo::fake())
             .expect("it to not fail")
             .is_none());
     }
@@ -124,7 +138,7 @@ mod test_javascript {
         let snippet_path = snippet.path();
 
         let output = l
-            .format(snippet_path)
+            .format(snippet_path, &LineInfo::fake())
             .expect("it to not fail")
             .expect("it to be a snippet");
 
@@ -147,7 +161,7 @@ mod test_javascript {
         let snippet_path = snippet.path();
 
         let output = l
-            .format(snippet_path)
+            .format(snippet_path, &LineInfo::fake())
             .expect("it to not fail")
             .expect("it to be a snippet");
 
@@ -178,7 +192,7 @@ mod test_javascript {
         let snippet_path = snippet.path();
 
         let output = l
-            .format(snippet_path)
+            .format(snippet_path, &LineInfo::fake())
             .expect("it to not fail")
             .expect("it to be a snippet");
 
@@ -205,7 +219,7 @@ mod test_javascript {
         let snippet_path = snippet.path();
 
         let output = l
-            .format(snippet_path)
+            .format(snippet_path, &LineInfo::fake())
             .expect("it to not fail")
             .expect("it to be a snippet");
 
@@ -240,7 +254,7 @@ console.info(asyncAddition(1, 2))
         let snippet_path = snippet.path();
 
         let output = l
-            .format(snippet_path)
+            .format(snippet_path, &LineInfo::fake())
             .expect("it to not fail")
             .expect("it to be a snippet");
 

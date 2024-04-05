@@ -3,8 +3,8 @@ use schemars::JsonSchema;
 use super::{Lang, LanguageFormatter};
 use crate::formatters::{zigfmt::format_using_zigfmt, MdsfFormatter};
 
-#[derive(Debug, Default, serde::Serialize, serde::Deserialize, JsonSchema)]
-#[cfg_attr(test, derive(PartialEq, Eq))]
+#[derive(Default, serde::Serialize, serde::Deserialize, JsonSchema)]
+#[cfg_attr(test, derive(Debug, PartialEq, Eq))]
 pub enum Zig {
     #[default]
     #[serde(rename = "zigfmt")]
@@ -40,12 +40,22 @@ impl LanguageFormatter for Zig {
     }
 }
 
+impl core::fmt::Display for Zig {
+    #[inline]
+    fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
+        match self {
+            Self::ZigFmt => write!(f, "zigfmt"),
+        }
+    }
+}
+
 #[cfg(test)]
 mod test_zig {
     use super::Zig;
     use crate::{
         formatters::{setup_snippet, MdsfFormatter},
         languages::Lang,
+        LineInfo,
     };
 
     const INPUT: &str = "
@@ -72,7 +82,10 @@ mod test_zig {
         let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");
         let snippet_path = snippet.path();
 
-        assert!(l.format(snippet_path).expect("it to not fail").is_none());
+        assert!(l
+            .format(snippet_path, &LineInfo::fake())
+            .expect("it to not fail")
+            .is_none());
     }
 
     #[test_with::executable(zig)]
@@ -87,7 +100,7 @@ mod test_zig {
         let snippet_path = snippet.path();
 
         let output = l
-            .format(snippet_path)
+            .format(snippet_path, &LineInfo::fake())
             .expect("it to not fail")
             .expect("it to be a snippet");
 

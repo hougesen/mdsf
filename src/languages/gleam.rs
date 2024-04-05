@@ -3,8 +3,8 @@ use schemars::JsonSchema;
 use super::{Lang, LanguageFormatter};
 use crate::formatters::{gleam_format::format_using_gleam_format, MdsfFormatter};
 
-#[derive(Debug, Default, serde::Serialize, serde::Deserialize, JsonSchema)]
-#[cfg_attr(test, derive(PartialEq, Eq))]
+#[derive(Default, serde::Serialize, serde::Deserialize, JsonSchema)]
+#[cfg_attr(test, derive(Debug, PartialEq, Eq))]
 pub enum Gleam {
     #[default]
     #[serde(rename = "gleam_format")]
@@ -40,12 +40,22 @@ impl LanguageFormatter for Gleam {
     }
 }
 
+impl core::fmt::Display for Gleam {
+    #[inline]
+    fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
+        match self {
+            Self::GleamFormat => write!(f, "gleam_format"),
+        }
+    }
+}
+
 #[cfg(test)]
 mod test_gleam {
     use super::Gleam;
     use crate::{
         formatters::{setup_snippet, MdsfFormatter},
         languages::Lang,
+        LineInfo,
     };
 
     const INPUT: &str = "pub fn add(a:Int,b:Int)->Int{a+b}";
@@ -66,7 +76,7 @@ mod test_gleam {
             enabled: false,
             formatter: MdsfFormatter::Single(Gleam::default())
         }
-        .format(snippet_path)
+        .format(snippet_path, &LineInfo::fake())
         .expect("it to not fail")
         .is_none());
     }
@@ -83,7 +93,7 @@ mod test_gleam {
         let snippet_path = snippet.path();
 
         let output = l
-            .format(snippet_path)
+            .format(snippet_path, &LineInfo::fake())
             .expect("it to not fail")
             .expect("it to be a snippet");
 

@@ -3,8 +3,8 @@ use schemars::JsonSchema;
 use super::{Lang, LanguageFormatter};
 use crate::formatters::{npm_groovy_lint::format_using_npm_groovy_lint, MdsfFormatter};
 
-#[derive(Debug, Default, serde::Serialize, serde::Deserialize, JsonSchema)]
-#[cfg_attr(test, derive(PartialEq, Eq))]
+#[derive(Default, serde::Serialize, serde::Deserialize, JsonSchema)]
+#[cfg_attr(test, derive(Debug, PartialEq, Eq))]
 pub enum Groovy {
     #[default]
     #[serde(rename = "npm-groovy-lint")]
@@ -40,16 +40,26 @@ impl LanguageFormatter for Groovy {
     }
 }
 
+impl core::fmt::Display for Groovy {
+    #[inline]
+    fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
+        match self {
+            Self::NpmGroovyLint => write!(f, "npm-groovy-lint"),
+        }
+    }
+}
+
 #[cfg(test)]
 mod test_groovy {
     use super::Groovy;
     use crate::{
         formatters::{setup_snippet, MdsfFormatter},
         languages::Lang,
+        LineInfo,
     };
 
     const INPUT: &str = "        def add(a, b) {
-            return a + b 
+            return a + b
         }
 
         assert add(1,2) == 3            ";
@@ -71,7 +81,10 @@ mod test_groovy {
         let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");
         let snippet_path = snippet.path();
 
-        assert!(l.format(snippet_path).expect("it to not fail").is_none());
+        assert!(l
+            .format(snippet_path, &LineInfo::fake())
+            .expect("it to not fail")
+            .is_none());
     }
 
     #[test]
@@ -85,7 +98,7 @@ mod test_groovy {
         let snippet_path = snippet.path();
 
         let output = l
-            .format(snippet_path)
+            .format(snippet_path, &LineInfo::fake())
             .expect("it to not fail")
             .expect("it to be a snippet");
 

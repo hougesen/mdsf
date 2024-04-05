@@ -3,8 +3,8 @@ use schemars::JsonSchema;
 use super::{Lang, LanguageFormatter};
 use crate::formatters::{juliaformatter_jl::format_using_juliaformatter_jl, MdsfFormatter};
 
-#[derive(Debug, Default, serde::Serialize, serde::Deserialize, JsonSchema)]
-#[cfg_attr(test, derive(PartialEq, Eq))]
+#[derive(Default, serde::Serialize, serde::Deserialize, JsonSchema)]
+#[cfg_attr(test, derive(Debug, PartialEq, Eq))]
 pub enum Julia {
     #[default]
     #[serde(rename = "juliaformatter.jl")]
@@ -40,17 +40,27 @@ impl LanguageFormatter for Julia {
     }
 }
 
+impl core::fmt::Display for Julia {
+    #[inline]
+    fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
+        match self {
+            Self::JuliaFormatterJl => write!(f, "juliaformatter.jl"),
+        }
+    }
+}
+
 #[cfg(test)]
 mod test_julia {
     use super::Julia;
     use crate::{
         formatters::{setup_snippet, MdsfFormatter},
         languages::Lang,
+        LineInfo,
     };
 
     const INPUT: &str = "function add( a:: Int32,  b::Int32 )
-            c = a+ b  
-            return c 
+            c = a+ b
+            return c
             end ";
 
     const EXTENSION: &str = crate::languages::Language::Julia.to_file_ext();
@@ -69,7 +79,7 @@ mod test_julia {
             enabled: false,
             formatter: MdsfFormatter::Single(Julia::default()),
         }
-        .format(snippet_path)
+        .format(snippet_path, &LineInfo::fake())
         .expect("it to not fail")
         .is_none());
     }
@@ -86,7 +96,7 @@ mod test_julia {
         let snippet_path = snippet.path();
 
         let output = l
-            .format(snippet_path)
+            .format(snippet_path, &LineInfo::fake())
             .expect("it to not fail")
             .expect("it to be a snippet");
 

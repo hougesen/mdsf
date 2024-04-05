@@ -1,12 +1,9 @@
 use super::execute_command;
-use crate::terminal::print_formatter_info;
 
 #[inline]
 pub fn format_using_ocp_indent(
     snippet_path: &std::path::Path,
 ) -> std::io::Result<(bool, Option<String>)> {
-    print_formatter_info("ocp-indent");
-
     let mut cmd = std::process::Command::new("ocp-indent");
 
     cmd.arg("--inplace").arg(snippet_path);

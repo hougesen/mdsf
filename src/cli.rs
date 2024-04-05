@@ -32,7 +32,7 @@ pub struct FormatCommandArguments {
     pub log_level: LogLevel,
 }
 
-#[derive(clap::ValueEnum, Clone, Copy, PartialEq, Default, Debug)]
+#[derive(clap::ValueEnum, Clone, Copy, PartialEq, Eq, Default, Debug)]
 pub enum LogLevel {
     #[default]
     Trace,

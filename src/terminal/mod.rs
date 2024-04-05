@@ -1,3 +1,4 @@
+use console::style;
 use log::{debug, error, info, warn};
 
 use crate::{error::MdsfError, runners::JavaScriptRuntime, LineInfo};
@@ -22,12 +23,20 @@ pub fn print_formatter_info(formatter: &str, info: &LineInfo) {
 
 #[inline]
 pub fn print_unchanged_file(path: &std::path::Path, dur: core::time::Duration) {
-    info!("{} {}ms (unchanged)", path.display(), dur.as_millis());
+    info!(
+        "{}",
+        style(format!(
+            "{} finished in {}ms (unchanged)\n",
+            path.display(),
+            dur.as_millis()
+        ))
+        .dim()
+    );
 }
 
 #[inline]
 pub fn print_changed_line(path: &std::path::Path, dur: core::time::Duration) {
-    info!("{} {}ms", path.display(), dur.as_millis());
+    info!("{} finished in {}ms\n", path.display(), dur.as_millis());
 }
 
 #[inline]

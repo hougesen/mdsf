@@ -3,8 +3,8 @@ use schemars::JsonSchema;
 use super::{Lang, LanguageFormatter};
 use crate::formatters::{scalafmt::format_using_scalafmt, MdsfFormatter};
 
-#[derive(Debug, Default, serde::Serialize, serde::Deserialize, JsonSchema)]
-#[cfg_attr(test, derive(PartialEq, Eq))]
+#[derive(Default, serde::Serialize, serde::Deserialize, JsonSchema)]
+#[cfg_attr(test, derive(Debug, PartialEq, Eq))]
 pub enum Scala {
     #[default]
     #[serde(rename = "scalafmt")]
@@ -40,12 +40,22 @@ impl LanguageFormatter for Scala {
     }
 }
 
+impl core::fmt::Display for Scala {
+    #[inline]
+    fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
+        match self {
+            Self::Scalafmt => write!(f, "scalafmt"),
+        }
+    }
+}
+
 #[cfg(test)]
-mod test_blade {
+mod test_scala {
     use super::Scala;
     use crate::{
         formatters::{setup_snippet, MdsfFormatter},
         languages::Lang,
+        LineInfo,
     };
 
     const INPUT: &str = r#"
@@ -71,7 +81,7 @@ mod test_blade {
             enabled: false,
             formatter: MdsfFormatter::Single(Scala::Scalafmt),
         }
-        .format(snippet_path)
+        .format(snippet_path, &LineInfo::fake())
         .expect("it to not fail")
         .is_none());
     }
@@ -93,7 +103,7 @@ mod test_blade {
         let snippet_path = snippet.path();
 
         let output = l
-            .format(snippet_path)
+            .format(snippet_path, &LineInfo::fake())
             .expect("it to not fail")
             .expect("it to be a snippet");
 

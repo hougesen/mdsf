@@ -3,8 +3,8 @@ use schemars::JsonSchema;
 use super::{Lang, LanguageFormatter};
 use crate::formatters::{prettier::format_using_prettier, MdsfFormatter};
 
-#[derive(Debug, Default, serde::Serialize, serde::Deserialize, JsonSchema)]
-#[cfg_attr(test, derive(PartialEq, Eq))]
+#[derive(Default, serde::Serialize, serde::Deserialize, JsonSchema)]
+#[cfg_attr(test, derive(Debug, PartialEq, Eq))]
 pub enum GraphQL {
     #[default]
     #[serde(rename = "prettier")]
@@ -40,16 +40,26 @@ impl LanguageFormatter for GraphQL {
     }
 }
 
+impl core::fmt::Display for GraphQL {
+    #[inline]
+    fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
+        match self {
+            Self::Prettier => write!(f, "prettier"),
+        }
+    }
+}
+
 #[cfg(test)]
 mod test_grapql {
     use super::GraphQL;
     use crate::{
         formatters::{setup_snippet, MdsfFormatter},
         languages::Lang,
+        LineInfo,
     };
 
-    const INPUT: &str = "{   hero {     name     
-                # Queries can have comments!    
+    const INPUT: &str = "{   hero {     name
+                # Queries can have comments!
          friends {       name     }   } }";
 
     const EXTENSION: &str = crate::languages::Language::GraphQL.to_file_ext();
@@ -68,7 +78,7 @@ mod test_grapql {
             enabled: false,
             formatter: MdsfFormatter::Single(GraphQL::default()),
         }
-        .format(snippet_path)
+        .format(snippet_path, &LineInfo::fake())
         .expect("it to not fail")
         .is_none());
     }
@@ -95,7 +105,7 @@ mod test_grapql {
         let snippet_path = snippet.path();
 
         let output = l
-            .format(snippet_path)
+            .format(snippet_path, &LineInfo::fake())
             .expect("it to not fail")
             .expect("it to be a snippet");
 

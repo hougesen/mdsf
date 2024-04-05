@@ -6,8 +6,8 @@ use crate::formatters::{
     deno_fmt::format_using_deno_fmt, prettier::format_using_prettier, MdsfFormatter,
 };
 
-#[derive(Debug, Default, serde::Serialize, serde::Deserialize, JsonSchema)]
-#[cfg_attr(test, derive(PartialEq, Eq))]
+#[derive(Default, serde::Serialize, serde::Deserialize, JsonSchema)]
+#[cfg_attr(test, derive(Debug, PartialEq, Eq))]
 pub enum Json {
     #[default]
     #[serde(rename = "prettier")]
@@ -57,12 +57,25 @@ impl LanguageFormatter for Json {
     }
 }
 
+impl core::fmt::Display for Json {
+    #[inline]
+    fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
+        match self {
+            Self::Prettier => write!(f, "prettier"),
+            Self::Biome => write!(f, "biome"),
+            Self::DenoFmt => write!(f, "deno_fmt"),
+            Self::ClangFormat => write!(f, "clang-format"),
+        }
+    }
+}
+
 #[cfg(test)]
 mod test_json {
     use super::Json;
     use crate::{
         formatters::{setup_snippet, MdsfFormatter},
         languages::{JsonFlavor, Lang},
+        LineInfo,
     };
 
     const INPUT: &str = "{
@@ -91,7 +104,7 @@ mod test_json {
             enabled: false,
             formatter: MdsfFormatter::<Json>::default(),
         }
-        .format(snippet_path)
+        .format(snippet_path, &LineInfo::fake())
         .expect("it to not fail")
         .is_none());
     }
@@ -107,7 +120,7 @@ mod test_json {
         let snippet_path = snippet.path();
 
         let output = l
-            .format(snippet_path)
+            .format(snippet_path, &LineInfo::fake())
             .expect("it to not fail")
             .expect("it to be a snippet");
 
@@ -131,7 +144,7 @@ mod test_json {
         let snippet_path = snippet.path();
 
         let output = l
-            .format(snippet_path)
+            .format(snippet_path, &LineInfo::fake())
             .expect("it to not fail")
             .expect("it to be a snippet");
 
@@ -156,7 +169,7 @@ mod test_json {
         let snippet_path = snippet.path();
 
         let output = l
-            .format(snippet_path)
+            .format(snippet_path, &LineInfo::fake())
             .expect("it to not fail")
             .expect("it to be a snippet");
 
@@ -186,7 +199,7 @@ mod test_json {
         let snippet_path = snippet.path();
 
         let output = l
-            .format(snippet_path)
+            .format(snippet_path, &LineInfo::fake())
             .expect("it to not fail")
             .expect("it to be a snippet");
 

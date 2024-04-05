@@ -262,20 +262,16 @@ impl MdsfConfig {
 
         match std::fs::read_to_string(&path) {
             Ok(raw_config) => {
-                if let Ok(config) = serde_json::from_str::<Self>(&raw_config) {
-                    Ok(config)
-                } else {
-                    Err(MdsfError::ConfigParse(path))
-                }
+                serde_json::from_str::<Self>(&raw_config).map_err(|_| MdsfError::ConfigParse(path))
             }
-            Err(error) => match error.kind() {
-                std::io::ErrorKind::NotFound => {
+            Err(error) => {
+                if error.kind() == std::io::ErrorKind::NotFound {
                     print_config_not_found();
                     Ok(Self::default())
+                } else {
+                    Err(MdsfError::from(error))
                 }
-
-                _ => Err(MdsfError::from(error)),
-            },
+            }
         }
     }
 }

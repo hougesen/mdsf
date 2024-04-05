@@ -1,12 +1,9 @@
 use super::execute_command;
-use crate::terminal::print_formatter_info;
 
 #[inline]
 pub fn format_using_csharpier(
     snippet_path: &std::path::Path,
 ) -> std::io::Result<(bool, Option<String>)> {
-    print_formatter_info("csharpier");
-
     let mut cmd = std::process::Command::new("dotnet");
 
     cmd.arg("csharpier").arg(snippet_path);

@@ -1,12 +1,9 @@
 use super::execute_command;
-use crate::terminal::print_formatter_info;
 
 #[inline]
 pub fn format_using_rufo(
     snippet_path: &std::path::Path,
 ) -> std::io::Result<(bool, Option<String>)> {
-    print_formatter_info("rufo");
-
     let mut cmd = std::process::Command::new("rufo");
 
     cmd.arg("--simple-exit").arg(snippet_path);

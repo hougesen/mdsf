@@ -6,8 +6,8 @@ use crate::formatters::{
     nixpkgs_fmt::format_using_nixpkgs_fmt, MdsfFormatter,
 };
 
-#[derive(Debug, Default, serde::Serialize, serde::Deserialize, JsonSchema)]
-#[cfg_attr(test, derive(PartialEq, Eq))]
+#[derive(Default, serde::Serialize, serde::Deserialize, JsonSchema)]
+#[cfg_attr(test, derive(Debug, PartialEq, Eq))]
 pub enum Nix {
     #[default]
     #[serde(rename = "nixfmt")]
@@ -53,16 +53,27 @@ impl LanguageFormatter for Nix {
     }
 }
 
+impl core::fmt::Display for Nix {
+    #[inline]
+    fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
+        match self {
+            Self::Alejandra => write!(f, "alejandra"),
+            Self::Nixfmt => write!(f, "nixfmt"),
+            Self::NixpkgsFmt => write!(f, "nixpkgs-fmt"),
+        }
+    }
+}
+
 #[cfg(test)]
 mod test_nix {
-
     use super::Nix;
     use crate::{
         formatters::{setup_snippet, MdsfFormatter},
         languages::Lang,
+        LineInfo,
     };
 
-    const INPUT: &str = r#"{ 
+    const INPUT: &str = r#"{
             lib, buildPythonPackage, fetchFromGitHub, redis }:
 
 buildPythonPackage rec {
@@ -106,7 +117,7 @@ buildPythonPackage rec {
             enabled: false,
             formatter: MdsfFormatter::Single(Nix::default()),
         }
-        .format(snippet_path)
+        .format(snippet_path, &LineInfo::fake())
         .expect("it to not fail")
         .is_none());
     }
@@ -150,7 +161,7 @@ buildPythonPackage rec {
         let snippet_path = snippet.path();
 
         let output = l
-            .format(snippet_path)
+            .format(snippet_path, &LineInfo::fake())
             .expect("it to not fail")
             .expect("it to be a snippet");
 
@@ -169,7 +180,7 @@ buildPythonPackage rec {
         let snippet_path = snippet.path();
 
         let output = l
-            .format(snippet_path)
+            .format(snippet_path, &LineInfo::fake())
             .expect("it to not fail")
             .expect("it to be a snippet");
 
@@ -249,7 +260,7 @@ buildPythonPackage rec {
         let snippet_path = snippet.path();
 
         let output = l
-            .format(snippet_path)
+            .format(snippet_path, &LineInfo::fake())
             .expect("it to not fail")
             .expect("it to be a snippet");
 

@@ -44,7 +44,7 @@ fn format_file(config: &MdsfConfig, filename: &std::path::Path, input: &str) -> 
                 if is_snippet {
                     let formatted = format_snippet(
                         config,
-                        LineInfo {
+                        &LineInfo {
                             filename,
                             language,
                             start: line_index + 1,
@@ -84,7 +84,7 @@ fn format_file(config: &MdsfConfig, filename: &std::path::Path, input: &str) -> 
     if config.format_finished_document && !output.is_empty() {
         output = format_snippet(
             config,
-            LineInfo {
+            &LineInfo {
                 filename,
                 language: Language::Markdown,
                 start: 0,

@@ -1,5 +1,5 @@
 use super::execute_command;
-use crate::{runners::setup_npm_script, terminal::print_formatter_info};
+use crate::runners::setup_npm_script;
 
 #[inline]
 fn set_purs_tidy_args(cmd: &mut std::process::Command, snippet_path: &std::path::Path) {
@@ -20,8 +20,6 @@ fn invoke_purs_tidy(
 pub fn format_using_purs_tidy(
     snippet_path: &std::path::Path,
 ) -> std::io::Result<(bool, Option<String>)> {
-    print_formatter_info("purs-tidy");
-
     invoke_purs_tidy(setup_npm_script("purs-tidy"), snippet_path)
 }
 

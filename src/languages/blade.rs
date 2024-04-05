@@ -3,8 +3,8 @@ use schemars::JsonSchema;
 use super::{Lang, LanguageFormatter};
 use crate::formatters::{blade_formatter::format_using_blade_formatter, MdsfFormatter};
 
-#[derive(Debug, Default, serde::Serialize, serde::Deserialize, JsonSchema)]
-#[cfg_attr(test, derive(PartialEq, Eq))]
+#[derive(Default, serde::Serialize, serde::Deserialize, JsonSchema)]
+#[cfg_attr(test, derive(Debug, PartialEq, Eq))]
 pub enum Blade {
     #[default]
     #[serde(rename = "blade-formatter")]
@@ -40,12 +40,22 @@ impl LanguageFormatter for Blade {
     }
 }
 
+impl core::fmt::Display for Blade {
+    #[inline]
+    fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
+        match self {
+            Self::BladeFormatter => write!(f, "blade-formatter"),
+        }
+    }
+}
+
 #[cfg(test)]
 mod test_blade {
     use super::Blade;
     use crate::{
         formatters::{setup_snippet, MdsfFormatter},
         languages::Lang,
+        LineInfo,
     };
 
     const INPUT: &str = r#"@extends('frontend.layouts.app')
@@ -95,7 +105,7 @@ mod test_blade {
             enabled: false,
             formatter: MdsfFormatter::Single(Blade::BladeFormatter),
         }
-        .format(snippet_path)
+        .format(snippet_path, &LineInfo::fake())
         .expect("it to not fail")
         .is_none());
     }
@@ -143,7 +153,7 @@ mod test_blade {
         let snippet_path = snippet.path();
 
         let output = l
-            .format(snippet_path)
+            .format(snippet_path, &LineInfo::fake())
             .expect("it to not fail")
             .expect("it to be a snippet");
 

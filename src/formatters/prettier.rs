@@ -1,5 +1,5 @@
 use super::execute_command;
-use crate::{runners::setup_npm_script, terminal::print_formatter_info};
+use crate::runners::setup_npm_script;
 
 #[inline]
 fn set_prettier_args(
@@ -30,8 +30,6 @@ pub fn format_using_prettier(
     snippet_path: &std::path::Path,
     embedded_language_formatting: bool,
 ) -> std::io::Result<(bool, Option<String>)> {
-    print_formatter_info("prettier");
-
     let global_result = invoke_prettier(
         std::process::Command::new("prettier"),
         snippet_path,

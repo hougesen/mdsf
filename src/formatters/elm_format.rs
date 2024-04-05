@@ -1,5 +1,5 @@
 use super::execute_command;
-use crate::{runners::setup_npm_script, terminal::print_formatter_info};
+use crate::runners::setup_npm_script;
 
 #[inline]
 fn set_elm_format_args(cmd: &mut std::process::Command, snippet_path: &std::path::Path) {
@@ -20,8 +20,6 @@ fn invoke_elm_format(
 pub fn format_using_elm_format(
     snippet_path: &std::path::Path,
 ) -> std::io::Result<(bool, Option<String>)> {
-    print_formatter_info("elm_format");
-
     invoke_elm_format(setup_npm_script("elm-format"), snippet_path)
 }
 

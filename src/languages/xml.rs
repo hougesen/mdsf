@@ -5,8 +5,8 @@ use crate::formatters::{
     xmlformat::format_using_xmlformat, xmllint::format_using_xmllint, MdsfFormatter,
 };
 
-#[derive(Debug, Default, serde::Serialize, serde::Deserialize, JsonSchema)]
-#[cfg_attr(test, derive(PartialEq, Eq))]
+#[derive(Default, serde::Serialize, serde::Deserialize, JsonSchema)]
+#[cfg_attr(test, derive(Debug, PartialEq, Eq))]
 pub enum Xml {
     #[default]
     #[serde(rename = "xmllint")]
@@ -48,12 +48,23 @@ impl LanguageFormatter for Xml {
     }
 }
 
+impl core::fmt::Display for Xml {
+    #[inline]
+    fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
+        match self {
+            Self::XmlLint => write!(f, "xmllint"),
+            Self::XmlFormat => write!(f, "xmlformat"),
+        }
+    }
+}
+
 #[cfg(test)]
 mod test_xml {
     use super::Xml;
     use crate::{
         formatters::{setup_snippet, MdsfFormatter},
         languages::Lang,
+        LineInfo,
     };
 
     const INPUT: &str = "
@@ -81,7 +92,10 @@ mod test_xml {
         let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");
         let snippet_path = snippet.path();
 
-        assert!(l.format(snippet_path).expect("it to not fail").is_none());
+        assert!(l
+            .format(snippet_path, &LineInfo::fake())
+            .expect("it to not fail")
+            .is_none());
     }
 
     #[test_with::executable(xmllint)]
@@ -96,7 +110,7 @@ mod test_xml {
         let snippet_path = snippet.path();
 
         let output = l
-            .format(snippet_path)
+            .format(snippet_path, &LineInfo::fake())
             .expect("it to not fail")
             .expect("it to be a snippet");
 
@@ -124,7 +138,7 @@ mod test_xml {
         let snippet_path = snippet.path();
 
         let output = l
-            .format(snippet_path)
+            .format(snippet_path, &LineInfo::fake())
             .expect("it to not fail")
             .expect("it to be a snippet");
 

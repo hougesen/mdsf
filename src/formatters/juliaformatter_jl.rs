@@ -1,12 +1,9 @@
 use super::execute_command;
-use crate::terminal::print_formatter_info;
 
 #[inline]
 pub fn format_using_juliaformatter_jl(
     snippet_path: &std::path::Path,
 ) -> std::io::Result<(bool, Option<String>)> {
-    print_formatter_info("juliaformatter.jl");
-
     let mut cmd = std::process::Command::new("julia");
 
     cmd.arg("-E").arg(format!(
@@ -26,8 +23,8 @@ mod test_juliaformatter_jl {
     #[test]
     fn it_should_format_julia() {
         let input = "function add( a:: Int32,  b::Int32 )
-            c = a+ b  
-            return c 
+            c = a+ b
+            return c
             end ";
 
         let expected_output = "function add(a::Int32, b::Int32)

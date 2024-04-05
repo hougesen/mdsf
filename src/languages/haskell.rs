@@ -6,8 +6,8 @@ use crate::formatters::{
     stylish_haskell::format_using_stylish_haskell, MdsfFormatter,
 };
 
-#[derive(Debug, Default, serde::Serialize, serde::Deserialize, JsonSchema)]
-#[cfg_attr(test, derive(PartialEq, Eq))]
+#[derive(Default, serde::Serialize, serde::Deserialize, JsonSchema)]
+#[cfg_attr(test, derive(Debug, PartialEq, Eq))]
 pub enum Haskell {
     #[serde(rename = "fourmolu")]
     Fourmolu,
@@ -56,18 +56,31 @@ impl LanguageFormatter for Haskell {
     }
 }
 
+impl core::fmt::Display for Haskell {
+    #[inline]
+    fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
+        match self {
+            Self::Fourmolu => write!(f, "fourmolu"),
+            Self::Ormolu => write!(f, "ormolu"),
+            Self::HIndent => write!(f, "hundent"),
+            Self::StylishHaskell => write!(f, "stylish-haskell"),
+        }
+    }
+}
+
 #[cfg(test)]
 mod test_haskell {
     use super::Haskell;
     use crate::{
         formatters::{setup_snippet, MdsfFormatter},
         languages::Lang,
+        LineInfo,
     };
 
     const INPUT: &str = "
 addNumbers::Int->Int->Int
-addNumbers a b = do 
-        a + b 
+addNumbers a b = do
+        a + b
         ";
 
     const EXTENSION: &str = crate::languages::Language::Haskell.to_file_ext();
@@ -86,7 +99,7 @@ addNumbers a b = do
             enabled: false,
             formatter: MdsfFormatter::Single(Haskell::default()),
         }
-        .format(snippet_path)
+        .format(snippet_path, &LineInfo::fake())
         .expect("it to not fail")
         .is_none());
     }
@@ -103,7 +116,7 @@ addNumbers a b = do
         let snippet_path = snippet.path();
 
         let output = l
-            .format(snippet_path)
+            .format(snippet_path, &LineInfo::fake())
             .expect("it to not fail")
             .expect("it to be a snippet");
 
@@ -127,7 +140,7 @@ addNumbers a b = do
         let snippet_path = snippet.path();
 
         let output = l
-            .format(snippet_path)
+            .format(snippet_path, &LineInfo::fake())
             .expect("it to not fail")
             .expect("it to be a snippet");
 
@@ -151,7 +164,7 @@ addNumbers a b = do
         let snippet_path = snippet.path();
 
         let output = l
-            .format(snippet_path)
+            .format(snippet_path, &LineInfo::fake())
             .expect("it to not fail")
             .expect("it to be a snippet");
 
@@ -175,7 +188,7 @@ addNumbers a b = do
         let snippet_path = snippet.path();
 
         let output = l
-            .format(snippet_path)
+            .format(snippet_path, &LineInfo::fake())
             .expect("it to not fail")
             .expect("it to be a snippet");
 

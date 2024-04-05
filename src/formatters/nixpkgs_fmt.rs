@@ -1,12 +1,9 @@
 use super::execute_command;
-use crate::terminal::print_formatter_info;
 
 #[inline]
 pub fn format_using_nixpkgs_fmt(
     snippet_path: &std::path::Path,
 ) -> std::io::Result<(bool, Option<String>)> {
-    print_formatter_info("nixpkgs-fmt");
-
     let mut cmd = std::process::Command::new("nixpkgs-fmt");
 
     cmd.arg(snippet_path);
@@ -22,7 +19,7 @@ mod test_nixpkgs_fmt {
     #[test_with::executable(nixpkgs-fmt)]
     #[test]
     fn it_should_format_nix() {
-        let input = r#"{ 
+        let input = r#"{
             lib, buildPythonPackage, fetchFromGitHub, redis }:
 
 buildPythonPackage rec {

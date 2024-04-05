@@ -3,8 +3,8 @@ use schemars::JsonSchema;
 use super::{Lang, LanguageFormatter};
 use crate::formatters::{efmt::format_using_efmt, erlfmt::format_using_erlfmt, MdsfFormatter};
 
-#[derive(Debug, Default, serde::Serialize, serde::Deserialize, JsonSchema)]
-#[cfg_attr(test, derive(PartialEq, Eq))]
+#[derive(Default, serde::Serialize, serde::Deserialize, JsonSchema)]
+#[cfg_attr(test, derive(Debug, PartialEq, Eq))]
 pub enum Erlang {
     #[default]
     #[serde(rename = "erlfmt")]
@@ -43,12 +43,23 @@ impl LanguageFormatter for Erlang {
     }
 }
 
+impl core::fmt::Display for Erlang {
+    #[inline]
+    fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
+        match self {
+            Self::Efmt => write!(f, "efmt"),
+            Self::Erlfmt => write!(f, "erlfmt"),
+        }
+    }
+}
+
 #[cfg(test)]
 mod test_erlang {
     use super::Erlang;
     use crate::{
         formatters::{setup_snippet, MdsfFormatter},
         languages::Lang,
+        LineInfo,
     };
 
     const INPUT: &str = "what_is(Erlang) ->
@@ -71,7 +82,7 @@ case Erlang of movie->[hello(mike,joe,robert),credits]; language->formatting_arg
             enabled: false,
             formatter: MdsfFormatter::Single(Erlang::default())
         }
-        .format(snippet_path)
+        .format(snippet_path, &LineInfo::fake())
         .expect("it to not fail")
         .is_none());
     }
@@ -88,7 +99,7 @@ case Erlang of movie->[hello(mike,joe,robert),credits]; language->formatting_arg
         let snippet_path = snippet.path();
 
         let output = l
-            .format(snippet_path)
+            .format(snippet_path, &LineInfo::fake())
             .expect("it to not fail")
             .expect("it to be a snippet");
 
@@ -117,7 +128,7 @@ case Erlang of movie->[hello(mike,joe,robert),credits]; language->formatting_arg
         let snippet_path = snippet.path();
 
         let output = l
-            .format(snippet_path)
+            .format(snippet_path, &LineInfo::fake())
             .expect("it to not fail")
             .expect("it to be a snippet");
 
