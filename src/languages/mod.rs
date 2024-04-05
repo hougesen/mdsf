@@ -196,7 +196,6 @@ pub enum Language {
     // TODO: PHP,
     // TODO: Svelte,
     // TODO: Dockerfile,
-    // TODO: XML,
     // TODO: D,
     // TODO: R,
 }
@@ -269,7 +268,7 @@ pub trait LanguageFormatter {
 impl Language {
     #[inline]
     pub fn maybe_from_str(input: &str) -> Option<Self> {
-        match input {
+        match input.to_ascii_lowercase().as_str() {
             "blade" => Some(Self::Blade),
             "c" | "clang" => Some(Self::C),
             "cabal" => Some(Self::Cabal),
