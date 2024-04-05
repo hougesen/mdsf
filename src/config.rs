@@ -261,9 +261,8 @@ impl MdsfConfig {
         let path = dir.join("mdsf.json");
 
         match std::fs::read_to_string(&path) {
-            Ok(raw_config) => {
-                serde_json::from_str::<Self>(&raw_config).map_err(|_| MdsfError::ConfigParse(path))
-            }
+            Ok(raw_config) => serde_json::from_str::<Self>(&raw_config)
+                .map_err(|_serde_error| MdsfError::ConfigParse(path)),
             Err(error) => {
                 if error.kind() == std::io::ErrorKind::NotFound {
                     print_config_not_found();

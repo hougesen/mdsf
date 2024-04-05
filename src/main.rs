@@ -7,6 +7,8 @@ use mdsf::{
     terminal::{logging::setup_logger, print_error},
 };
 
+const MDSF_IGNORE_FILE_NAME: &str = ".mdsfignore";
+
 fn format_command(args: FormatCommandArguments) -> Result<(), MdsfError> {
     mdsf::DEBUG.swap(args.debug, core::sync::atomic::Ordering::Relaxed);
 
@@ -17,13 +19,21 @@ fn format_command(args: FormatCommandArguments) -> Result<(), MdsfError> {
     if args.path.is_file() {
         handle_file(&conf, &args.path)?;
     } else if args.path.is_dir() {
-        for entry in ignore::WalkBuilder::new(args.path)
-            .git_ignore(true)
-            .require_git(false)
+        let mut walk_builder = ignore::WalkBuilder::new(args.path);
+
+        walk_builder
+            .standard_filters(true)
+            .parents(true)
             .hidden(true)
-            .build()
-            .flatten()
-        {
+            .add_custom_ignore_filename(MDSF_IGNORE_FILE_NAME);
+
+        let ignore_path = std::env::current_dir()?.join(MDSF_IGNORE_FILE_NAME);
+
+        if ignore_path.is_file() {
+            walk_builder.add_ignore(ignore_path);
+        }
+
+        for entry in walk_builder.build().flatten() {
             let file_path = entry.path();
 
             if file_path.extension() == Some(&OsStr::from("md")) {
