@@ -4,7 +4,7 @@ use mdsf::{
     config::MdsfConfig,
     error::MdsfError,
     handle_file,
-    terminal::print_error,
+    terminal::{blankline, logging::setup_logger, print_error},
 };
 
 fn format_command(args: FormatCommandArguments) -> Result<(), MdsfError> {
@@ -28,6 +28,7 @@ fn format_command(args: FormatCommandArguments) -> Result<(), MdsfError> {
 
             if file_path.extension() == Some(&OsStr::from("md")) {
                 handle_file(&conf, file_path)?;
+                blankline()
             }
         }
     } else {
@@ -67,7 +68,11 @@ fn generate_schema_command() -> std::io::Result<()> {
 
 fn main() {
     let command_result = match Cli::parse().command {
-        Commands::Format(args) => format_command(args),
+        Commands::Format(args) => {
+            setup_logger(args.log_level);
+
+            format_command(args)
+        }
         Commands::Init => init_config_command().map_err(MdsfError::from),
         Commands::Schema => generate_schema_command().map_err(MdsfError::from),
     };

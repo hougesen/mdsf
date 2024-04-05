@@ -1,6 +1,6 @@
 use schemars::JsonSchema;
 
-use crate::formatters::MdsfFormatter;
+use crate::{formatters::MdsfFormatter, LineInfo};
 
 pub mod blade;
 pub mod c;
@@ -263,6 +263,7 @@ pub trait LanguageFormatter {
     fn format_snippet(
         &self,
         snippet_path: &std::path::Path,
+        info: &LineInfo,
     ) -> std::io::Result<(bool, Option<String>)>;
 }
 
@@ -413,12 +414,16 @@ where
 
 impl<T: LanguageFormatter> Lang<T> {
     #[inline]
-    pub fn format(&self, snippet_path: &std::path::Path) -> std::io::Result<Option<String>> {
+    pub fn format(
+        &self,
+        snippet_path: &std::path::Path,
+        info: LineInfo,
+    ) -> std::io::Result<Option<String>> {
         if !self.enabled {
             return Ok(None);
         }
 
-        Self::format_multiple(&self.formatter, snippet_path, false)
+        Self::format_multiple(&self.formatter, snippet_path, &info, false)
             .map(|(_should_continue, output)| output)
     }
 
@@ -426,16 +431,17 @@ impl<T: LanguageFormatter> Lang<T> {
     pub fn format_multiple(
         formatter: &MdsfFormatter<T>,
         snippet_path: &std::path::Path,
+        info: &LineInfo,
         nested: bool,
     ) -> std::io::Result<(bool, Option<String>)> {
         match formatter {
-            MdsfFormatter::Single(f) => f.format_snippet(snippet_path),
+            MdsfFormatter::Single(f) => f.format_snippet(snippet_path, info),
 
             MdsfFormatter::Multiple(formatters) => {
                 let mut r = Ok((true, None));
 
                 for f in formatters {
-                    r = Self::format_multiple(f, snippet_path, true);
+                    r = Self::format_multiple(f, snippet_path, info, true);
 
                     if r.as_ref()
                         .is_ok_and(|(should_continue, _code)| !should_continue)

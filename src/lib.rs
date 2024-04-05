@@ -5,7 +5,7 @@ use error::MdsfError;
 use formatters::format_snippet;
 use languages::Language;
 use parser::{parse_generic_codeblock, parse_go_codeblock};
-use terminal::{print_changed_line, print_file_info, print_line_info, print_unchanged_file};
+use terminal::{print_changed_line, print_unchanged_file};
 
 pub mod cli;
 pub mod config;
@@ -24,7 +24,7 @@ pub static DEBUG: AtomicBool = AtomicBool::new(false);
 const GO_TEMPORARY_PACKAGE_NAME: &str = "package mdsfformattertemporarynamespace\n";
 
 #[inline]
-fn format_file(config: &MdsfConfig, input: &str) -> (bool, String) {
+fn format_file(config: &MdsfConfig, filename: &std::path::Path, input: &str) -> (bool, String) {
     let mut output = String::with_capacity(input.len() + 128);
 
     let mut modified = false;
@@ -42,9 +42,16 @@ fn format_file(config: &MdsfConfig, input: &str) -> (bool, String) {
                 };
 
                 if is_snippet {
-                    print_line_info(language, line_index + 1, line_index + snippet_lines + 1);
-
-                    let formatted = format_snippet(config, &language, &code_snippet);
+                    let formatted = format_snippet(
+                        config,
+                        LineInfo {
+                            filename,
+                            language,
+                            start: line_index + 1,
+                            end: line_index + snippet_lines + 1,
+                        },
+                        &code_snippet,
+                    );
 
                     output.push_str(line);
                     output.push('\n');
@@ -75,7 +82,16 @@ fn format_file(config: &MdsfConfig, input: &str) -> (bool, String) {
     }
 
     if config.format_finished_document && !output.is_empty() {
-        output = format_snippet(config, &Language::Markdown, &output);
+        output = format_snippet(
+            config,
+            LineInfo {
+                filename,
+                language: Language::Markdown,
+                start: 0,
+                end: 0,
+            },
+            &output,
+        );
         modified = true;
     }
 
@@ -84,8 +100,6 @@ fn format_file(config: &MdsfConfig, input: &str) -> (bool, String) {
 
 #[inline]
 pub fn handle_file(config: &MdsfConfig, path: &std::path::Path) -> Result<(), MdsfError> {
-    print_file_info(path);
-
     let time = std::time::Instant::now();
 
     let input = std::fs::read_to_string(path)?;
@@ -95,7 +109,7 @@ pub fn handle_file(config: &MdsfConfig, path: &std::path::Path) -> Result<(), Md
         return Ok(());
     }
 
-    let (modified, output) = format_file(config, &input);
+    let (modified, output) = format_file(config, path, &input);
 
     if modified && output != input {
         std::fs::write(path, output)?;
@@ -108,6 +122,25 @@ pub fn handle_file(config: &MdsfConfig, path: &std::path::Path) -> Result<(), Md
     print_unchanged_file(path, time.elapsed());
 
     Ok(())
+}
+
+pub struct LineInfo<'a> {
+    pub filename: &'a std::path::Path,
+    pub language: Language,
+    pub start: usize,
+    pub end: usize,
+}
+
+#[cfg(test)]
+impl<'a> LineInfo<'a> {
+    pub fn fake() -> Self {
+        Self {
+            filename: std::path::Path::new("."),
+            language: Language::Rust,
+            start: 0,
+            end: 0,
+        }
+    }
 }
 
 #[cfg(test)]
@@ -140,7 +173,7 @@ fn add(a: i32, b: i32) -> i32 {
         let config = MdsfConfig::default();
 
         {
-            let (modified, output) = format_file(&config, input);
+            let (modified, output) = format_file(&config, std::path::Path::new("."), input);
 
             assert!(modified);
 
@@ -208,7 +241,7 @@ fn add(a: i32, b: i32) -> i32 {
 
         let config = MdsfConfig::default();
 
-        let (modified, output) = format_file(&config, input);
+        let (modified, output) = format_file(&config, std::path::Path::new("."), input);
 
         assert!(modified);
 
@@ -876,7 +909,7 @@ fn add(a: i32, b: i32) i32 {
         let config = MdsfConfig::default();
 
         {
-            let (modified, output) = format_file(&config, input);
+            let (modified, output) = format_file(&config, std::path::Path::new("."), input);
 
             assert!(modified);
 
@@ -935,7 +968,7 @@ type Whatever struct {
             let config = MdsfConfig::default();
 
             {
-                let (modified, output) = format_file(&config, input);
+                let (modified, output) = format_file(&config, std::path::Path::new("."), input);
 
                 assert!(modified);
 
@@ -963,7 +996,7 @@ type Whatever struct {
             };
 
             {
-                let (modified, output) = format_file(&config, input);
+                let (modified, output) = format_file(&config, std::path::Path::new("."), input);
 
                 assert!(modified);
 
@@ -1019,7 +1052,7 @@ type Whatever struct {
             let config = MdsfConfig::default();
 
             {
-                let (modified, output) = format_file(&config, input);
+                let (modified, output) = format_file(&config, std::path::Path::new("."), input);
 
                 assert!(modified);
 
@@ -1047,7 +1080,7 @@ type Whatever struct {
             };
 
             {
-                let (modified, output) = format_file(&config, input);
+                let (modified, output) = format_file(&config, std::path::Path::new("."), input);
 
                 assert!(modified);
 
@@ -1127,7 +1160,7 @@ func add(a int, b int) int {
             let config = MdsfConfig::default();
 
             {
-                let (modified, output) = format_file(&config, input);
+                let (modified, output) = format_file(&config, std::path::Path::new("."), input);
 
                 assert!(modified);
 
@@ -1155,7 +1188,7 @@ func add(a int, b int) int {
             };
 
             {
-                let (modified, output) = format_file(&config, input);
+                let (modified, output) = format_file(&config, std::path::Path::new("."), input);
 
                 assert!(modified);
 

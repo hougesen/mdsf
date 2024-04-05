@@ -14,11 +14,11 @@ use crate::{
         typescript::TypeScript, vue::Vue, xml::Xml, yaml::Yaml, zig::Zig, Lang,
     },
     runners::JavaScriptRuntime,
-    terminal::print_config_info,
+    terminal::print_config_not_found,
 };
 
-#[derive(Debug, serde::Serialize, serde::Deserialize, JsonSchema)]
-#[cfg_attr(test, derive(PartialEq, Eq))]
+#[derive(serde::Serialize, serde::Deserialize, JsonSchema)]
+#[cfg_attr(test, derive(Debug, PartialEq, Eq,))]
 pub struct MdsfConfig {
     #[schemars(skip)]
     #[serde(rename = "$schema", default = "default_schema_location")]
@@ -263,7 +263,6 @@ impl MdsfConfig {
         match std::fs::read_to_string(&path) {
             Ok(raw_config) => {
                 if let Ok(config) = serde_json::from_str::<Self>(&raw_config) {
-                    print_config_info(Some(&path));
                     Ok(config)
                 } else {
                     Err(MdsfError::ConfigParse(path))
@@ -271,7 +270,7 @@ impl MdsfConfig {
             }
             Err(error) => match error.kind() {
                 std::io::ErrorKind::NotFound => {
-                    print_config_info(None);
+                    print_config_not_found();
                     Ok(Self::default())
                 }
 
