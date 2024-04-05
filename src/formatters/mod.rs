@@ -36,6 +36,7 @@ pub mod hindent;
 pub mod isort;
 pub mod juliaformatter_jl;
 pub mod just_fmt;
+pub mod kcl_fmt;
 pub mod ktfmt;
 pub mod ktlint;
 pub mod luaformatter;
@@ -189,6 +190,7 @@ pub fn format_snippet(config: &MdsfConfig, info: &LineInfo, code: &str) -> Strin
             Language::Json(_flavor) => config.json.format(snippet_path, info),
             Language::Julia => config.julia.format(snippet_path, info),
             Language::Just => config.just.format(snippet_path, info),
+            Language::Kcl => config.kcl.format(snippet_path, info),
             Language::Kotlin => config.kotlin.format(snippet_path, info),
             Language::Lua => config.lua.format(snippet_path, info),
             Language::Markdown => config.markdown.format(snippet_path, info),

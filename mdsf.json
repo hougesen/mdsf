@@ -106,6 +106,10 @@
     "enabled": true,
     "formatter": "just_fmt"
   },
+  "kcl": {
+    "enabled": true,
+    "formatter": "kcl_fmt"
+  },
   "kotlin": {
     "enabled": true,
     "formatter": [["ktlint", "ktfmt"]]
