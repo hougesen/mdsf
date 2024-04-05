@@ -75,6 +75,7 @@ mdsf init
 | Elm        | `elm-format`                                                  |
 | Erlang     | `efmt`, `erlfmt`                                              |
 | FSharp     | `fantomas`                                                    |
+| Fortran    | `fprettify`                                                   |
 | Gleam      | `gleam_format`                                                |
 | Go         | `gofmt`, `gofumpt`, `goimports`                               |
 | GraphQL    | `prettier`                                                    |

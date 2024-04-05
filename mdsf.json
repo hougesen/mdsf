@@ -50,6 +50,10 @@
     "enabled": true,
     "formatter": "erlfmt"
   },
+  "fortran": {
+    "enabled": true,
+    "formatter": "fprettify"
+  },
   "fsharp": {
     "enabled": true,
     "formatter": "fantomas"

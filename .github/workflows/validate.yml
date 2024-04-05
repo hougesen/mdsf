@@ -46,57 +46,41 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: Swatinem/rust-cache@v2
-      # gleam_format, mix_format
       # NOTE: should be first since it is sometimes crashes (?)
       - uses: erlef/setup-beam@v1
         with:
           otp-version: "26"
           gleam-version: "1.0.0"
           elixir-version: "1.16.1"
-      # ruff, sqlfluff, black, blue, yapf, autopep8
       - uses: actions/setup-python@v5
         with:
           cache: "pip"
-      # biome, prettier, stylua, sql-formatter
       - uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node }}
-      # nimpretty
       - uses: jiro4989/setup-nim-action@v1
-      # zigfmt
       - uses: goto-bus-stop/setup-zig@v2
-      # taplo
       - uses: uncenter/setup-taplo@v1
-      # shfmt, gofmt, gofumpt
       - uses: actions/setup-go@v5
         with:
           go-version: "stable"
-      # rubocop
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: "3.3"
-      # dart_format
       - uses: dart-lang/setup-dart@v1
-      # crystal_format
       - uses: crystal-lang/install-crystal@v1
-      # roc_format
       - uses: hasnep/setup-roc@v0.1.1
-      # deno_fmt
       - uses: denoland/setup-deno@v1
         with:
           deno-version: v1.x
-      # just_fmt
       - uses: taiki-e/install-action@just
-      # ocamlformat
       #- uses: ocaml/setup-ocaml@v2
       #  with:
       #    ocaml-compiler: "5.1"
-      # scalafmt
       - uses: actions/setup-java@v4
         with:
           java-version: "21"
           distribution: "temurin"
-      # fourmolo, hindent
       - uses: haskell-actions/setup@v2
         with:
           ghc-version: "latest"
@@ -227,5 +211,9 @@ jobs:
 
       - name: nixfmt
         run: wget https://github.com/NixOS/nixfmt/releases/download/v0.6.0/nixfmt-x86_64-linux && chmod +x nixfmt-x86_64-linux && sudo cp nixfmt-x86_64-linux /usr/local/bin/nixfmt && nixfmt --version
+
+      - name: fprettify
+        run: pipx install fprettify && fprettify --version
+
       - name: run tests
         run: cargo test

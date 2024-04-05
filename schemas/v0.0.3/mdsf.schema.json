@@ -140,6 +140,17 @@
       "default": false,
       "type": "boolean"
     },
+    "fortran": {
+      "default": {
+        "enabled": true,
+        "formatter": "fprettify"
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/Lang_for_Fortran"
+        }
+      ]
+    },
     "fsharp": {
       "default": {
         "enabled": true,
@@ -624,6 +635,10 @@
       "type": "string",
       "enum": ["fantomas"]
     },
+    "Fortran": {
+      "type": "string",
+      "enum": ["fprettify"]
+    },
     "Gleam": {
       "type": "string",
       "enum": ["gleam_format"]
@@ -833,6 +848,18 @@
         },
         "formatter": {
           "$ref": "#/definitions/MdsfFormatter_for_FSharp"
+        }
+      }
+    },
+    "Lang_for_Fortran": {
+      "type": "object",
+      "required": ["enabled", "formatter"],
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        },
+        "formatter": {
+          "$ref": "#/definitions/MdsfFormatter_for_Fortran"
         }
       }
     },
@@ -1453,6 +1480,19 @@
           "type": "array",
           "items": {
             "$ref": "#/definitions/MdsfFormatter_for_FSharp"
+          }
+        }
+      ]
+    },
+    "MdsfFormatter_for_Fortran": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/Fortran"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MdsfFormatter_for_Fortran"
           }
         }
       ]
