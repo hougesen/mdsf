@@ -36,10 +36,10 @@ jobs:
           - os: ubuntu-20.04
             artifact-name: mdsf-linux-x86_64-musl
             cargo-target: x86_64-unknown-linux-musl
-          - os: ubuntu-20.04
-            artifact-name: mdsf-linux-aarch64
-            cargo-target: aarch64-unknown-linux-gnu
-            linker: gcc-aarch64-linux-gnu
+          #- os: ubuntu-20.04
+          #  artifact-name: mdsf-linux-aarch64
+          #  cargo-target: aarch64-unknown-linux-gnu
+          #  linker: gcc-aarch64-linux-gnu
           - os: macos-latest
             artifact-name: mdsf-macos-x86_64
             artifact-alias: mdsf-macos
