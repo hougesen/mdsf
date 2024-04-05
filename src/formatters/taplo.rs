@@ -21,10 +21,10 @@ fn invoke_taplo(
 pub fn format_using_taplo(
     snippet_path: &std::path::Path,
 ) -> Result<(bool, Option<String>), MdsfError> {
-    let path_result = invoke_taplo(std::process::Command::new("taplo"), snippet_path)?;
-
-    if !path_result.0 {
-        return Ok(path_result);
+    if let Ok(path_result) = invoke_taplo(std::process::Command::new("taplo"), snippet_path) {
+        if !path_result.0 {
+            return Ok(path_result);
+        }
     }
 
     invoke_taplo(setup_npm_script("@taplo/cli"), snippet_path)

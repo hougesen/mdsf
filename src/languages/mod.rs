@@ -3,7 +3,7 @@ use schemars::JsonSchema;
 use crate::{
     error::MdsfError,
     formatters::MdsfFormatter,
-    terminal::{print_error_formatting, print_formatter_info},
+    terminal::{print_binary_not_in_path, print_error_formatting, print_formatter_info},
     LineInfo,
 };
 
@@ -445,8 +445,22 @@ impl<T: LanguageFormatter + core::fmt::Display> Lang<T> {
 
                 let r = f.format_snippet(snippet_path);
 
-                if r.is_err() {
-                    print_error_formatting(&formatter_name, info);
+                if let Err(e) = &r {
+                    if let MdsfError::MissingBinary(binary) = e {
+                        print_binary_not_in_path(
+                            if &formatter_name == binary {
+                                formatter_name
+                            } else {
+                                format!("{binary} ({formatter_name})")
+                            }
+                            .as_str(),
+                        );
+
+                        return Ok((false, None));
+                    } else if matches!(e, MdsfError::FormatterError) {
+                        print_error_formatting(&formatter_name, info);
+                        return Ok((false, None));
+                    }
                 }
 
                 r

@@ -10,7 +10,6 @@ pub fn format_using_scalafmt(
     #[cfg(test)]
     {
         cmd.arg("--config-str").arg("\"version=3.8.0\"");
-
         cmd.arg("--debug");
     };
 

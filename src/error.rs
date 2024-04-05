@@ -2,9 +2,13 @@
 pub enum MdsfError {
     Io(std::io::Error),
     Fmt(core::fmt::Error),
+    // TODO: use &std::path::Path
     ConfigParse(std::path::PathBuf),
+    // TODO: use &std::path::Path
     FileNotFound(std::path::PathBuf),
     FormatterError,
+    // TODO: use &str
+    MissingBinary(String),
 }
 
 impl core::fmt::Display for MdsfError {
@@ -13,15 +17,16 @@ impl core::fmt::Display for MdsfError {
         match self {
             Self::Io(e) => e.fmt(f),
             Self::Fmt(e) => e.fmt(f),
-            Self::ConfigParse(path) => f.write_fmt(format_args!(
-                "Error parsing config found at '{}'",
-                path.display()
-            )),
-            Self::FileNotFound(path) => f.write_fmt(format_args!(
+            Self::ConfigParse(path) => {
+                write!(f, "Error parsing config found at '{}'", path.display())
+            }
+            Self::FileNotFound(path) => write!(
+                f,
                 "No file or directory with the name '{}' found",
                 path.display()
-            )),
-            Self::FormatterError => f.write_str("Error formatting"),
+            ),
+            Self::FormatterError => write!(f, "Error formatting codeblock"),
+            Self::MissingBinary(binary_name) => write!(f, "{binary_name} was not found in path"),
         }
     }
 }

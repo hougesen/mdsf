@@ -20,10 +20,11 @@ fn invoke_standardjs(
 pub fn format_using_standardjs(
     snippet_path: &std::path::Path,
 ) -> Result<(bool, Option<String>), MdsfError> {
-    let global_result = invoke_standardjs(std::process::Command::new("standard"), snippet_path)?;
-
-    if !global_result.0 {
-        return Ok(global_result);
+    if let Ok(path_result) = invoke_standardjs(std::process::Command::new("standard"), snippet_path)
+    {
+        if !path_result.0 {
+            return Ok(path_result);
+        }
     }
 
     invoke_standardjs(setup_npm_script("standard"), snippet_path)

@@ -44,6 +44,7 @@ precommit:
     just test
     just update-readme
     cargo run -- init
+    cargo run -- format .
     npx prettier --write mdsf.json
     typos .
 

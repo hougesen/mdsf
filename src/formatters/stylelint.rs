@@ -20,10 +20,11 @@ fn invoke_stylelint(
 pub fn format_using_stylelint(
     snippet_path: &std::path::Path,
 ) -> Result<(bool, Option<String>), MdsfError> {
-    let global_result = invoke_stylelint(std::process::Command::new("stylelint"), snippet_path)?;
-
-    if !global_result.0 {
-        return Ok(global_result);
+    if let Ok(path_result) = invoke_stylelint(std::process::Command::new("stylelint"), snippet_path)
+    {
+        if !path_result.0 {
+            return Ok(path_result);
+        }
     }
 
     invoke_stylelint(setup_npm_script("stylelint"), snippet_path)

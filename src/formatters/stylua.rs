@@ -21,10 +21,10 @@ fn invoke_stylua(
 pub fn format_using_stylua(
     snippet_path: &std::path::Path,
 ) -> Result<(bool, Option<String>), MdsfError> {
-    let path_result = invoke_stylua(std::process::Command::new("stylua"), snippet_path)?;
-
-    if !path_result.0 {
-        return Ok(path_result);
+    if let Ok(path_result) = invoke_stylua(std::process::Command::new("stylua"), snippet_path) {
+        if !path_result.0 {
+            return Ok(path_result);
+        }
     }
 
     invoke_stylua(setup_npm_script("@johnnymorganz/stylua-bin"), snippet_path)

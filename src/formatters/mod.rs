@@ -4,10 +4,7 @@ use schemars::JsonSchema;
 use tempfile::NamedTempFile;
 use which::which;
 
-use crate::{
-    config::MdsfConfig, error::MdsfError, languages::Language, terminal::print_binary_not_in_path,
-    LineInfo, DEBUG,
-};
+use crate::{config::MdsfConfig, error::MdsfError, languages::Language, LineInfo, DEBUG};
 
 pub mod alejandra;
 pub mod autopep8;
@@ -148,8 +145,12 @@ pub fn execute_command(
     cmd: &mut Command,
     snippet_path: &std::path::Path,
 ) -> Result<(bool, Option<String>), MdsfError> {
-    if !binary_in_path(cmd.get_program()) {
-        return Ok((true, None));
+    let binary_name = cmd.get_program();
+
+    if !binary_in_path(binary_name) {
+        return Err(MdsfError::MissingBinary(
+            binary_name.to_string_lossy().to_string(),
+        ));
     }
 
     handle_post_execution(spawn_command(cmd), snippet_path)
@@ -236,10 +237,5 @@ where
 
 #[inline]
 pub fn binary_in_path(binary_name: &OsStr) -> bool {
-    if which(binary_name).is_ok() {
-        true
-    } else {
-        print_binary_not_in_path(&binary_name.to_string_lossy());
-        false
-    }
+    which(binary_name).is_ok()
 }

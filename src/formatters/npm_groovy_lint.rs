@@ -21,11 +21,12 @@ fn invoke_npm_groovy_lint(
 pub fn format_using_npm_groovy_lint(
     snippet_path: &std::path::Path,
 ) -> Result<(bool, Option<String>), MdsfError> {
-    let path_result =
-        invoke_npm_groovy_lint(std::process::Command::new("npm-groovy-lint"), snippet_path)?;
-
-    if !path_result.0 {
-        return Ok(path_result);
+    if let Ok(path_result) =
+        invoke_npm_groovy_lint(std::process::Command::new("npm-groovy-lint"), snippet_path)
+    {
+        if !path_result.0 {
+            return Ok(path_result);
+        }
     }
 
     invoke_npm_groovy_lint(setup_npm_script("npm-groovy-lint"), snippet_path)

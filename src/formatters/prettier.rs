@@ -33,14 +33,14 @@ pub fn format_using_prettier(
     snippet_path: &std::path::Path,
     embedded_language_formatting: bool,
 ) -> Result<(bool, Option<String>), MdsfError> {
-    let global_result = invoke_prettier(
+    if let Ok(path_result) = invoke_prettier(
         std::process::Command::new("prettier"),
         snippet_path,
         embedded_language_formatting,
-    )?;
-
-    if !global_result.0 {
-        return Ok(global_result);
+    ) {
+        if !path_result.0 {
+            return Ok(path_result);
+        }
     }
 
     invoke_prettier(
