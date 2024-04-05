@@ -5,9 +5,9 @@ use crate::{
     languages::{
         blade::Blade, c::C, cabal::Cabal, clojure::Clojure, cpp::Cpp, crystal::Crystal,
         csharp::CSharp, css::Css, dart::Dart, elixir::Elixir, elm::Elm, erlang::Erlang,
-        fsharp::FSharp, gleam::Gleam, go::Go, graphql::GraphQL, groovy::Groovy, haskell::Haskell,
-        hcl::Hcl, html::Html, java::Java, javascript::JavaScript, json::Json, julia::Julia,
-        just::Just, kotlin::Kotlin, lua::Lua, markdown::Markdown, nim::Nim, nix::Nix,
+        fortran::Fortran, fsharp::FSharp, gleam::Gleam, go::Go, graphql::GraphQL, groovy::Groovy,
+        haskell::Haskell, hcl::Hcl, html::Html, java::Java, javascript::JavaScript, json::Json,
+        julia::Julia, just::Just, kotlin::Kotlin, lua::Lua, markdown::Markdown, nim::Nim, nix::Nix,
         objective_c::ObjectiveC, ocaml::OCaml, perl::Perl, protobuf::Protobuf,
         purescript::PureScript, python::Python, rescript::ReScript, roc::Roc, ruby::Ruby,
         rust::Rust, scala::Scala, shell::Shell, sql::Sql, swift::Swift, toml::Toml,
@@ -75,6 +75,9 @@ pub struct MdsfConfig {
 
     #[serde(default)]
     pub erlang: Lang<Erlang>,
+
+    #[serde(default)]
+    pub fortran: Lang<Fortran>,
 
     #[serde(default)]
     pub fsharp: Lang<FSharp>,
@@ -211,6 +214,7 @@ impl Default for MdsfConfig {
             elixir: Lang::<Elixir>::default(),
             elm: Lang::<Elm>::default(),
             erlang: Lang::<Erlang>::default(),
+            fortran: Lang::<Fortran>::default(),
             fsharp: Lang::<FSharp>::default(),
             gleam: Lang::<Gleam>::default(),
             go: Lang::<Go>::default(),

@@ -26,6 +26,7 @@ pub mod elm_format;
 pub mod erlfmt;
 pub mod fantomas;
 pub mod fourmolu;
+pub mod fprettify;
 pub mod gleam_format;
 pub mod gofmt;
 pub mod gofumpt;
@@ -174,6 +175,7 @@ pub fn format_snippet(config: &MdsfConfig, info: &LineInfo, code: &str) -> Strin
             Language::Elixir => config.elixir.format(snippet_path, info),
             Language::Elm => config.elm.format(snippet_path, info),
             Language::Erlang => config.erlang.format(snippet_path, info),
+            Language::Fortran => config.fortran.format(snippet_path, info),
             Language::FSharp => config.fsharp.format(snippet_path, info),
             Language::Gleam => config.gleam.format(snippet_path, info),
             Language::Go => config.go.format(snippet_path, info),
