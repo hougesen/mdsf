@@ -11,9 +11,7 @@ keywords = [
   "formatter",
   "pretty-printing",
   "code-formatter",
-  "formatting",
   "linter",
-  "cli",
 ]
 homepage = "https://github.com/hougesen/mdsf"
 readme = "README.md"
