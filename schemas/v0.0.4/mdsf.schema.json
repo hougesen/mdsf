@@ -712,9 +712,9 @@
     },
     "Lang_for_Blade": {
       "type": "object",
-      "required": ["enabled", "formatter"],
       "properties": {
         "enabled": {
+          "default": true,
           "type": "boolean"
         },
         "formatter": {
@@ -724,9 +724,9 @@
     },
     "Lang_for_C": {
       "type": "object",
-      "required": ["enabled", "formatter"],
       "properties": {
         "enabled": {
+          "default": true,
           "type": "boolean"
         },
         "formatter": {
@@ -736,9 +736,9 @@
     },
     "Lang_for_CSharp": {
       "type": "object",
-      "required": ["enabled", "formatter"],
       "properties": {
         "enabled": {
+          "default": true,
           "type": "boolean"
         },
         "formatter": {
@@ -748,9 +748,9 @@
     },
     "Lang_for_Cabal": {
       "type": "object",
-      "required": ["enabled", "formatter"],
       "properties": {
         "enabled": {
+          "default": true,
           "type": "boolean"
         },
         "formatter": {
@@ -760,9 +760,9 @@
     },
     "Lang_for_Clojure": {
       "type": "object",
-      "required": ["enabled", "formatter"],
       "properties": {
         "enabled": {
+          "default": true,
           "type": "boolean"
         },
         "formatter": {
@@ -772,9 +772,9 @@
     },
     "Lang_for_Cpp": {
       "type": "object",
-      "required": ["enabled", "formatter"],
       "properties": {
         "enabled": {
+          "default": true,
           "type": "boolean"
         },
         "formatter": {
@@ -784,9 +784,9 @@
     },
     "Lang_for_Crystal": {
       "type": "object",
-      "required": ["enabled", "formatter"],
       "properties": {
         "enabled": {
+          "default": true,
           "type": "boolean"
         },
         "formatter": {
@@ -796,9 +796,9 @@
     },
     "Lang_for_Css": {
       "type": "object",
-      "required": ["enabled", "formatter"],
       "properties": {
         "enabled": {
+          "default": true,
           "type": "boolean"
         },
         "formatter": {
@@ -808,9 +808,9 @@
     },
     "Lang_for_Dart": {
       "type": "object",
-      "required": ["enabled", "formatter"],
       "properties": {
         "enabled": {
+          "default": true,
           "type": "boolean"
         },
         "formatter": {
@@ -820,9 +820,9 @@
     },
     "Lang_for_Elixir": {
       "type": "object",
-      "required": ["enabled", "formatter"],
       "properties": {
         "enabled": {
+          "default": true,
           "type": "boolean"
         },
         "formatter": {
@@ -832,9 +832,9 @@
     },
     "Lang_for_Elm": {
       "type": "object",
-      "required": ["enabled", "formatter"],
       "properties": {
         "enabled": {
+          "default": true,
           "type": "boolean"
         },
         "formatter": {
@@ -844,9 +844,9 @@
     },
     "Lang_for_Erlang": {
       "type": "object",
-      "required": ["enabled", "formatter"],
       "properties": {
         "enabled": {
+          "default": true,
           "type": "boolean"
         },
         "formatter": {
@@ -856,9 +856,9 @@
     },
     "Lang_for_FSharp": {
       "type": "object",
-      "required": ["enabled", "formatter"],
       "properties": {
         "enabled": {
+          "default": true,
           "type": "boolean"
         },
         "formatter": {
@@ -868,9 +868,9 @@
     },
     "Lang_for_Fortran": {
       "type": "object",
-      "required": ["enabled", "formatter"],
       "properties": {
         "enabled": {
+          "default": true,
           "type": "boolean"
         },
         "formatter": {
@@ -880,9 +880,9 @@
     },
     "Lang_for_Gleam": {
       "type": "object",
-      "required": ["enabled", "formatter"],
       "properties": {
         "enabled": {
+          "default": true,
           "type": "boolean"
         },
         "formatter": {
@@ -892,9 +892,9 @@
     },
     "Lang_for_Go": {
       "type": "object",
-      "required": ["enabled", "formatter"],
       "properties": {
         "enabled": {
+          "default": true,
           "type": "boolean"
         },
         "formatter": {
@@ -904,9 +904,9 @@
     },
     "Lang_for_GraphQL": {
       "type": "object",
-      "required": ["enabled", "formatter"],
       "properties": {
         "enabled": {
+          "default": true,
           "type": "boolean"
         },
         "formatter": {
@@ -916,9 +916,9 @@
     },
     "Lang_for_Groovy": {
       "type": "object",
-      "required": ["enabled", "formatter"],
       "properties": {
         "enabled": {
+          "default": true,
           "type": "boolean"
         },
         "formatter": {
@@ -928,9 +928,9 @@
     },
     "Lang_for_Haskell": {
       "type": "object",
-      "required": ["enabled", "formatter"],
       "properties": {
         "enabled": {
+          "default": true,
           "type": "boolean"
         },
         "formatter": {
@@ -940,9 +940,9 @@
     },
     "Lang_for_Hcl": {
       "type": "object",
-      "required": ["enabled", "formatter"],
       "properties": {
         "enabled": {
+          "default": true,
           "type": "boolean"
         },
         "formatter": {
@@ -952,9 +952,9 @@
     },
     "Lang_for_Html": {
       "type": "object",
-      "required": ["enabled", "formatter"],
       "properties": {
         "enabled": {
+          "default": true,
           "type": "boolean"
         },
         "formatter": {
@@ -964,9 +964,9 @@
     },
     "Lang_for_Java": {
       "type": "object",
-      "required": ["enabled", "formatter"],
       "properties": {
         "enabled": {
+          "default": true,
           "type": "boolean"
         },
         "formatter": {
@@ -976,9 +976,9 @@
     },
     "Lang_for_JavaScript": {
       "type": "object",
-      "required": ["enabled", "formatter"],
       "properties": {
         "enabled": {
+          "default": true,
           "type": "boolean"
         },
         "formatter": {
@@ -988,9 +988,9 @@
     },
     "Lang_for_Json": {
       "type": "object",
-      "required": ["enabled", "formatter"],
       "properties": {
         "enabled": {
+          "default": true,
           "type": "boolean"
         },
         "formatter": {
@@ -1000,9 +1000,9 @@
     },
     "Lang_for_Julia": {
       "type": "object",
-      "required": ["enabled", "formatter"],
       "properties": {
         "enabled": {
+          "default": true,
           "type": "boolean"
         },
         "formatter": {
@@ -1012,9 +1012,9 @@
     },
     "Lang_for_Just": {
       "type": "object",
-      "required": ["enabled", "formatter"],
       "properties": {
         "enabled": {
+          "default": true,
           "type": "boolean"
         },
         "formatter": {
@@ -1024,9 +1024,9 @@
     },
     "Lang_for_Kcl": {
       "type": "object",
-      "required": ["enabled", "formatter"],
       "properties": {
         "enabled": {
+          "default": true,
           "type": "boolean"
         },
         "formatter": {
@@ -1036,9 +1036,9 @@
     },
     "Lang_for_Kotlin": {
       "type": "object",
-      "required": ["enabled", "formatter"],
       "properties": {
         "enabled": {
+          "default": true,
           "type": "boolean"
         },
         "formatter": {
@@ -1048,9 +1048,9 @@
     },
     "Lang_for_Lua": {
       "type": "object",
-      "required": ["enabled", "formatter"],
       "properties": {
         "enabled": {
+          "default": true,
           "type": "boolean"
         },
         "formatter": {
@@ -1060,9 +1060,9 @@
     },
     "Lang_for_Markdown": {
       "type": "object",
-      "required": ["enabled", "formatter"],
       "properties": {
         "enabled": {
+          "default": true,
           "type": "boolean"
         },
         "formatter": {
@@ -1072,9 +1072,9 @@
     },
     "Lang_for_Nim": {
       "type": "object",
-      "required": ["enabled", "formatter"],
       "properties": {
         "enabled": {
+          "default": true,
           "type": "boolean"
         },
         "formatter": {
@@ -1084,9 +1084,9 @@
     },
     "Lang_for_Nix": {
       "type": "object",
-      "required": ["enabled", "formatter"],
       "properties": {
         "enabled": {
+          "default": true,
           "type": "boolean"
         },
         "formatter": {
@@ -1096,9 +1096,9 @@
     },
     "Lang_for_OCaml": {
       "type": "object",
-      "required": ["enabled", "formatter"],
       "properties": {
         "enabled": {
+          "default": true,
           "type": "boolean"
         },
         "formatter": {
@@ -1108,9 +1108,9 @@
     },
     "Lang_for_ObjectiveC": {
       "type": "object",
-      "required": ["enabled", "formatter"],
       "properties": {
         "enabled": {
+          "default": true,
           "type": "boolean"
         },
         "formatter": {
@@ -1120,9 +1120,9 @@
     },
     "Lang_for_Perl": {
       "type": "object",
-      "required": ["enabled", "formatter"],
       "properties": {
         "enabled": {
+          "default": true,
           "type": "boolean"
         },
         "formatter": {
@@ -1132,9 +1132,9 @@
     },
     "Lang_for_Protobuf": {
       "type": "object",
-      "required": ["enabled", "formatter"],
       "properties": {
         "enabled": {
+          "default": true,
           "type": "boolean"
         },
         "formatter": {
@@ -1144,9 +1144,9 @@
     },
     "Lang_for_PureScript": {
       "type": "object",
-      "required": ["enabled", "formatter"],
       "properties": {
         "enabled": {
+          "default": true,
           "type": "boolean"
         },
         "formatter": {
@@ -1156,9 +1156,9 @@
     },
     "Lang_for_Python": {
       "type": "object",
-      "required": ["enabled", "formatter"],
       "properties": {
         "enabled": {
+          "default": true,
           "type": "boolean"
         },
         "formatter": {
@@ -1168,9 +1168,9 @@
     },
     "Lang_for_ReScript": {
       "type": "object",
-      "required": ["enabled", "formatter"],
       "properties": {
         "enabled": {
+          "default": true,
           "type": "boolean"
         },
         "formatter": {
@@ -1180,9 +1180,9 @@
     },
     "Lang_for_Roc": {
       "type": "object",
-      "required": ["enabled", "formatter"],
       "properties": {
         "enabled": {
+          "default": true,
           "type": "boolean"
         },
         "formatter": {
@@ -1192,9 +1192,9 @@
     },
     "Lang_for_Ruby": {
       "type": "object",
-      "required": ["enabled", "formatter"],
       "properties": {
         "enabled": {
+          "default": true,
           "type": "boolean"
         },
         "formatter": {
@@ -1204,9 +1204,9 @@
     },
     "Lang_for_Rust": {
       "type": "object",
-      "required": ["enabled", "formatter"],
       "properties": {
         "enabled": {
+          "default": true,
           "type": "boolean"
         },
         "formatter": {
@@ -1216,9 +1216,9 @@
     },
     "Lang_for_Scala": {
       "type": "object",
-      "required": ["enabled", "formatter"],
       "properties": {
         "enabled": {
+          "default": true,
           "type": "boolean"
         },
         "formatter": {
@@ -1228,9 +1228,9 @@
     },
     "Lang_for_Shell": {
       "type": "object",
-      "required": ["enabled", "formatter"],
       "properties": {
         "enabled": {
+          "default": true,
           "type": "boolean"
         },
         "formatter": {
@@ -1240,9 +1240,9 @@
     },
     "Lang_for_Sql": {
       "type": "object",
-      "required": ["enabled", "formatter"],
       "properties": {
         "enabled": {
+          "default": true,
           "type": "boolean"
         },
         "formatter": {
@@ -1252,9 +1252,9 @@
     },
     "Lang_for_Swift": {
       "type": "object",
-      "required": ["enabled", "formatter"],
       "properties": {
         "enabled": {
+          "default": true,
           "type": "boolean"
         },
         "formatter": {
@@ -1264,9 +1264,9 @@
     },
     "Lang_for_Toml": {
       "type": "object",
-      "required": ["enabled", "formatter"],
       "properties": {
         "enabled": {
+          "default": true,
           "type": "boolean"
         },
         "formatter": {
@@ -1276,9 +1276,9 @@
     },
     "Lang_for_TypeScript": {
       "type": "object",
-      "required": ["enabled", "formatter"],
       "properties": {
         "enabled": {
+          "default": true,
           "type": "boolean"
         },
         "formatter": {
@@ -1288,9 +1288,9 @@
     },
     "Lang_for_Vue": {
       "type": "object",
-      "required": ["enabled", "formatter"],
       "properties": {
         "enabled": {
+          "default": true,
           "type": "boolean"
         },
         "formatter": {
@@ -1300,9 +1300,9 @@
     },
     "Lang_for_Xml": {
       "type": "object",
-      "required": ["enabled", "formatter"],
       "properties": {
         "enabled": {
+          "default": true,
           "type": "boolean"
         },
         "formatter": {
@@ -1312,9 +1312,9 @@
     },
     "Lang_for_Yaml": {
       "type": "object",
-      "required": ["enabled", "formatter"],
       "properties": {
         "enabled": {
+          "default": true,
           "type": "boolean"
         },
         "formatter": {
@@ -1324,9 +1324,9 @@
     },
     "Lang_for_Zig": {
       "type": "object",
-      "required": ["enabled", "formatter"],
       "properties": {
         "enabled": {
+          "default": true,
           "type": "boolean"
         },
         "formatter": {
