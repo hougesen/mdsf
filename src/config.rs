@@ -1,3 +1,4 @@
+use json_comments::{CommentSettings, StripComments};
 use schemars::JsonSchema;
 
 use crate::{
@@ -269,8 +270,9 @@ impl MdsfConfig {
         let path = dir.join("mdsf.json");
 
         match std::fs::read_to_string(&path) {
-            Ok(raw_config) => serde_json::from_str::<Self>(&raw_config)
-                .map_err(|_serde_error| MdsfError::ConfigParse(path)),
+            Ok(raw_config) => {
+                Self::parse(&raw_config).map_err(|_serde_error| MdsfError::ConfigParse(path))
+            }
             Err(error) => {
                 if error.kind() == std::io::ErrorKind::NotFound {
                     print_config_not_found();
@@ -280,6 +282,13 @@ impl MdsfConfig {
                 }
             }
         }
+    }
+
+    #[inline]
+    pub fn parse(input: &str) -> serde_json::Result<Self> {
+        let stripped = StripComments::with_settings(CommentSettings::c_style(), input.as_bytes());
+
+        serde_json::from_reader(stripped)
     }
 }
 
@@ -311,5 +320,36 @@ mod test_config {
     fn json_schema_should_be_serializable() {
         serde_json::to_string_pretty(&schemars::schema_for!(MdsfConfig))
             .expect("it to be serializable");
+    }
+
+    #[test]
+    fn it_should_ignore_comments() {
+        let r = r#"{
+    // this is a slash comment
+    "javascript": {
+        "enabled": false
+    },
+    "rust": {
+        "enabled": false
+    },
+    /* this is a multiline comment
+    "roc": {
+        "enabled": false
+    }
+    */
+    "go": {
+        "enabled": false // hello world
+    }
+}"#;
+
+        let c = MdsfConfig::parse(r).expect("it to parse the config");
+
+        assert!(!c.javascript.enabled);
+
+        assert!(!c.rust.enabled);
+
+        assert!(c.roc.enabled);
+
+        assert!(!c.go.enabled);
     }
 }
