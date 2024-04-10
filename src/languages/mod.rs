@@ -415,17 +415,28 @@ impl Language {
     }
 }
 
+const fn default_enabled() -> bool {
+    true
+}
+
 #[derive(serde::Serialize, serde::Deserialize, JsonSchema)]
 #[cfg_attr(test, derive(Debug, PartialEq, Eq))]
 pub struct Lang<T>
 where
     T: LanguageFormatter + core::fmt::Display,
+    MdsfFormatter<T>: Default,
 {
+    #[serde(default = "default_enabled")]
     pub enabled: bool,
+    #[serde(default)]
     pub formatter: MdsfFormatter<T>,
 }
 
-impl<T: LanguageFormatter + core::fmt::Display> Lang<T> {
+impl<T> Lang<T>
+where
+    T: LanguageFormatter + core::fmt::Display,
+    MdsfFormatter<T>: Default,
+{
     #[inline]
     pub fn format(
         &self,
@@ -515,6 +526,12 @@ mod test_lang {
         // Will fail
         D,
         E,
+    }
+
+    impl Default for MdsfFormatter<TestLanguage> {
+        fn default() -> Self {
+            Self::Single(TestLanguage::A)
+        }
     }
 
     impl core::fmt::Display for TestLanguage {
