@@ -3,6 +3,10 @@
   "title": "MdsfConfig",
   "type": "object",
   "properties": {
+    "$schema": {
+      "default": "https://raw.githubusercontent.com/hougesen/mdsf/main/schemas/v0.0.4/mdsf.schema.json",
+      "type": "string"
+    },
     "blade": {
       "default": {
         "enabled": true,
@@ -593,6 +597,7 @@
       ]
     }
   },
+  "additionalProperties": false,
   "definitions": {
     "Blade": {
       "type": "string",
@@ -720,7 +725,8 @@
         "formatter": {
           "$ref": "#/definitions/MdsfFormatter_for_Blade"
         }
-      }
+      },
+      "additionalProperties": false
     },
     "Lang_for_C": {
       "type": "object",
@@ -732,7 +738,8 @@
         "formatter": {
           "$ref": "#/definitions/MdsfFormatter_for_C"
         }
-      }
+      },
+      "additionalProperties": false
     },
     "Lang_for_CSharp": {
       "type": "object",
@@ -744,7 +751,8 @@
         "formatter": {
           "$ref": "#/definitions/MdsfFormatter_for_CSharp"
         }
-      }
+      },
+      "additionalProperties": false
     },
     "Lang_for_Cabal": {
       "type": "object",
@@ -756,7 +764,8 @@
         "formatter": {
           "$ref": "#/definitions/MdsfFormatter_for_Cabal"
         }
-      }
+      },
+      "additionalProperties": false
     },
     "Lang_for_Clojure": {
       "type": "object",
@@ -768,7 +777,8 @@
         "formatter": {
           "$ref": "#/definitions/MdsfFormatter_for_Clojure"
         }
-      }
+      },
+      "additionalProperties": false
     },
     "Lang_for_Cpp": {
       "type": "object",
@@ -780,7 +790,8 @@
         "formatter": {
           "$ref": "#/definitions/MdsfFormatter_for_Cpp"
         }
-      }
+      },
+      "additionalProperties": false
     },
     "Lang_for_Crystal": {
       "type": "object",
@@ -792,7 +803,8 @@
         "formatter": {
           "$ref": "#/definitions/MdsfFormatter_for_Crystal"
         }
-      }
+      },
+      "additionalProperties": false
     },
     "Lang_for_Css": {
       "type": "object",
@@ -804,7 +816,8 @@
         "formatter": {
           "$ref": "#/definitions/MdsfFormatter_for_Css"
         }
-      }
+      },
+      "additionalProperties": false
     },
     "Lang_for_Dart": {
       "type": "object",
@@ -816,7 +829,8 @@
         "formatter": {
           "$ref": "#/definitions/MdsfFormatter_for_Dart"
         }
-      }
+      },
+      "additionalProperties": false
     },
     "Lang_for_Elixir": {
       "type": "object",
@@ -828,7 +842,8 @@
         "formatter": {
           "$ref": "#/definitions/MdsfFormatter_for_Elixir"
         }
-      }
+      },
+      "additionalProperties": false
     },
     "Lang_for_Elm": {
       "type": "object",
@@ -840,7 +855,8 @@
         "formatter": {
           "$ref": "#/definitions/MdsfFormatter_for_Elm"
         }
-      }
+      },
+      "additionalProperties": false
     },
     "Lang_for_Erlang": {
       "type": "object",
@@ -852,7 +868,8 @@
         "formatter": {
           "$ref": "#/definitions/MdsfFormatter_for_Erlang"
         }
-      }
+      },
+      "additionalProperties": false
     },
     "Lang_for_FSharp": {
       "type": "object",
@@ -864,7 +881,8 @@
         "formatter": {
           "$ref": "#/definitions/MdsfFormatter_for_FSharp"
         }
-      }
+      },
+      "additionalProperties": false
     },
     "Lang_for_Fortran": {
       "type": "object",
@@ -876,7 +894,8 @@
         "formatter": {
           "$ref": "#/definitions/MdsfFormatter_for_Fortran"
         }
-      }
+      },
+      "additionalProperties": false
     },
     "Lang_for_Gleam": {
       "type": "object",
@@ -888,7 +907,8 @@
         "formatter": {
           "$ref": "#/definitions/MdsfFormatter_for_Gleam"
         }
-      }
+      },
+      "additionalProperties": false
     },
     "Lang_for_Go": {
       "type": "object",
@@ -900,7 +920,8 @@
         "formatter": {
           "$ref": "#/definitions/MdsfFormatter_for_Go"
         }
-      }
+      },
+      "additionalProperties": false
     },
     "Lang_for_GraphQL": {
       "type": "object",
@@ -912,7 +933,8 @@
         "formatter": {
           "$ref": "#/definitions/MdsfFormatter_for_GraphQL"
         }
-      }
+      },
+      "additionalProperties": false
     },
     "Lang_for_Groovy": {
       "type": "object",
@@ -924,7 +946,8 @@
         "formatter": {
           "$ref": "#/definitions/MdsfFormatter_for_Groovy"
         }
-      }
+      },
+      "additionalProperties": false
     },
     "Lang_for_Haskell": {
       "type": "object",
@@ -936,7 +959,8 @@
         "formatter": {
           "$ref": "#/definitions/MdsfFormatter_for_Haskell"
         }
-      }
+      },
+      "additionalProperties": false
     },
     "Lang_for_Hcl": {
       "type": "object",
@@ -948,7 +972,8 @@
         "formatter": {
           "$ref": "#/definitions/MdsfFormatter_for_Hcl"
         }
-      }
+      },
+      "additionalProperties": false
     },
     "Lang_for_Html": {
       "type": "object",
@@ -960,7 +985,8 @@
         "formatter": {
           "$ref": "#/definitions/MdsfFormatter_for_Html"
         }
-      }
+      },
+      "additionalProperties": false
     },
     "Lang_for_Java": {
       "type": "object",
@@ -972,7 +998,8 @@
         "formatter": {
           "$ref": "#/definitions/MdsfFormatter_for_Java"
         }
-      }
+      },
+      "additionalProperties": false
     },
     "Lang_for_JavaScript": {
       "type": "object",
@@ -984,7 +1011,8 @@
         "formatter": {
           "$ref": "#/definitions/MdsfFormatter_for_JavaScript"
         }
-      }
+      },
+      "additionalProperties": false
     },
     "Lang_for_Json": {
       "type": "object",
@@ -996,7 +1024,8 @@
         "formatter": {
           "$ref": "#/definitions/MdsfFormatter_for_Json"
         }
-      }
+      },
+      "additionalProperties": false
     },
     "Lang_for_Julia": {
       "type": "object",
@@ -1008,7 +1037,8 @@
         "formatter": {
           "$ref": "#/definitions/MdsfFormatter_for_Julia"
         }
-      }
+      },
+      "additionalProperties": false
     },
     "Lang_for_Just": {
       "type": "object",
@@ -1020,7 +1050,8 @@
         "formatter": {
           "$ref": "#/definitions/MdsfFormatter_for_Just"
         }
-      }
+      },
+      "additionalProperties": false
     },
     "Lang_for_Kcl": {
       "type": "object",
@@ -1032,7 +1063,8 @@
         "formatter": {
           "$ref": "#/definitions/MdsfFormatter_for_Kcl"
         }
-      }
+      },
+      "additionalProperties": false
     },
     "Lang_for_Kotlin": {
       "type": "object",
@@ -1044,7 +1076,8 @@
         "formatter": {
           "$ref": "#/definitions/MdsfFormatter_for_Kotlin"
         }
-      }
+      },
+      "additionalProperties": false
     },
     "Lang_for_Lua": {
       "type": "object",
@@ -1056,7 +1089,8 @@
         "formatter": {
           "$ref": "#/definitions/MdsfFormatter_for_Lua"
         }
-      }
+      },
+      "additionalProperties": false
     },
     "Lang_for_Markdown": {
       "type": "object",
@@ -1068,7 +1102,8 @@
         "formatter": {
           "$ref": "#/definitions/MdsfFormatter_for_Markdown"
         }
-      }
+      },
+      "additionalProperties": false
     },
     "Lang_for_Nim": {
       "type": "object",
@@ -1080,7 +1115,8 @@
         "formatter": {
           "$ref": "#/definitions/MdsfFormatter_for_Nim"
         }
-      }
+      },
+      "additionalProperties": false
     },
     "Lang_for_Nix": {
       "type": "object",
@@ -1092,7 +1128,8 @@
         "formatter": {
           "$ref": "#/definitions/MdsfFormatter_for_Nix"
         }
-      }
+      },
+      "additionalProperties": false
     },
     "Lang_for_OCaml": {
       "type": "object",
@@ -1104,7 +1141,8 @@
         "formatter": {
           "$ref": "#/definitions/MdsfFormatter_for_OCaml"
         }
-      }
+      },
+      "additionalProperties": false
     },
     "Lang_for_ObjectiveC": {
       "type": "object",
@@ -1116,7 +1154,8 @@
         "formatter": {
           "$ref": "#/definitions/MdsfFormatter_for_ObjectiveC"
         }
-      }
+      },
+      "additionalProperties": false
     },
     "Lang_for_Perl": {
       "type": "object",
@@ -1128,7 +1167,8 @@
         "formatter": {
           "$ref": "#/definitions/MdsfFormatter_for_Perl"
         }
-      }
+      },
+      "additionalProperties": false
     },
     "Lang_for_Protobuf": {
       "type": "object",
@@ -1140,7 +1180,8 @@
         "formatter": {
           "$ref": "#/definitions/MdsfFormatter_for_Protobuf"
         }
-      }
+      },
+      "additionalProperties": false
     },
     "Lang_for_PureScript": {
       "type": "object",
@@ -1152,7 +1193,8 @@
         "formatter": {
           "$ref": "#/definitions/MdsfFormatter_for_PureScript"
         }
-      }
+      },
+      "additionalProperties": false
     },
     "Lang_for_Python": {
       "type": "object",
@@ -1164,7 +1206,8 @@
         "formatter": {
           "$ref": "#/definitions/MdsfFormatter_for_Python"
         }
-      }
+      },
+      "additionalProperties": false
     },
     "Lang_for_ReScript": {
       "type": "object",
@@ -1176,7 +1219,8 @@
         "formatter": {
           "$ref": "#/definitions/MdsfFormatter_for_ReScript"
         }
-      }
+      },
+      "additionalProperties": false
     },
     "Lang_for_Roc": {
       "type": "object",
@@ -1188,7 +1232,8 @@
         "formatter": {
           "$ref": "#/definitions/MdsfFormatter_for_Roc"
         }
-      }
+      },
+      "additionalProperties": false
     },
     "Lang_for_Ruby": {
       "type": "object",
@@ -1200,7 +1245,8 @@
         "formatter": {
           "$ref": "#/definitions/MdsfFormatter_for_Ruby"
         }
-      }
+      },
+      "additionalProperties": false
     },
     "Lang_for_Rust": {
       "type": "object",
@@ -1212,7 +1258,8 @@
         "formatter": {
           "$ref": "#/definitions/MdsfFormatter_for_Rust"
         }
-      }
+      },
+      "additionalProperties": false
     },
     "Lang_for_Scala": {
       "type": "object",
@@ -1224,7 +1271,8 @@
         "formatter": {
           "$ref": "#/definitions/MdsfFormatter_for_Scala"
         }
-      }
+      },
+      "additionalProperties": false
     },
     "Lang_for_Shell": {
       "type": "object",
@@ -1236,7 +1284,8 @@
         "formatter": {
           "$ref": "#/definitions/MdsfFormatter_for_Shell"
         }
-      }
+      },
+      "additionalProperties": false
     },
     "Lang_for_Sql": {
       "type": "object",
@@ -1248,7 +1297,8 @@
         "formatter": {
           "$ref": "#/definitions/MdsfFormatter_for_Sql"
         }
-      }
+      },
+      "additionalProperties": false
     },
     "Lang_for_Swift": {
       "type": "object",
@@ -1260,7 +1310,8 @@
         "formatter": {
           "$ref": "#/definitions/MdsfFormatter_for_Swift"
         }
-      }
+      },
+      "additionalProperties": false
     },
     "Lang_for_Toml": {
       "type": "object",
@@ -1272,7 +1323,8 @@
         "formatter": {
           "$ref": "#/definitions/MdsfFormatter_for_Toml"
         }
-      }
+      },
+      "additionalProperties": false
     },
     "Lang_for_TypeScript": {
       "type": "object",
@@ -1284,7 +1336,8 @@
         "formatter": {
           "$ref": "#/definitions/MdsfFormatter_for_TypeScript"
         }
-      }
+      },
+      "additionalProperties": false
     },
     "Lang_for_Vue": {
       "type": "object",
@@ -1296,7 +1349,8 @@
         "formatter": {
           "$ref": "#/definitions/MdsfFormatter_for_Vue"
         }
-      }
+      },
+      "additionalProperties": false
     },
     "Lang_for_Xml": {
       "type": "object",
@@ -1308,7 +1362,8 @@
         "formatter": {
           "$ref": "#/definitions/MdsfFormatter_for_Xml"
         }
-      }
+      },
+      "additionalProperties": false
     },
     "Lang_for_Yaml": {
       "type": "object",
@@ -1320,7 +1375,8 @@
         "formatter": {
           "$ref": "#/definitions/MdsfFormatter_for_Yaml"
         }
-      }
+      },
+      "additionalProperties": false
     },
     "Lang_for_Zig": {
       "type": "object",
@@ -1332,7 +1388,8 @@
         "formatter": {
           "$ref": "#/definitions/MdsfFormatter_for_Zig"
         }
-      }
+      },
+      "additionalProperties": false
     },
     "Lua": {
       "type": "string",

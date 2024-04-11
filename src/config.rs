@@ -20,8 +20,8 @@ use crate::{
 
 #[derive(serde::Serialize, serde::Deserialize, JsonSchema)]
 #[cfg_attr(test, derive(Debug, PartialEq, Eq,))]
+#[schemars(deny_unknown_fields)]
 pub struct MdsfConfig {
-    #[schemars(skip)]
     #[serde(rename = "$schema", default = "default_schema_location")]
     pub schema: String,
 
