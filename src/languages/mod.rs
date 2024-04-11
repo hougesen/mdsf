@@ -421,6 +421,7 @@ const fn default_enabled() -> bool {
 
 #[derive(serde::Serialize, serde::Deserialize, JsonSchema)]
 #[cfg_attr(test, derive(Debug, PartialEq, Eq))]
+#[schemars(deny_unknown_fields)]
 pub struct Lang<T>
 where
     T: LanguageFormatter + core::fmt::Display,
