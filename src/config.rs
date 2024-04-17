@@ -10,9 +10,10 @@ use crate::{
         haskell::Haskell, hcl::Hcl, html::Html, java::Java, javascript::JavaScript, json::Json,
         julia::Julia, just::Just, kcl::Kcl, kotlin::Kotlin, lua::Lua, markdown::Markdown, nim::Nim,
         nix::Nix, objective_c::ObjectiveC, ocaml::OCaml, perl::Perl, protobuf::Protobuf,
-        purescript::PureScript, python::Python, rescript::ReScript, roc::Roc, ruby::Ruby,
-        rust::Rust, scala::Scala, shell::Shell, sql::Sql, swift::Swift, toml::Toml,
-        typescript::TypeScript, vue::Vue, xml::Xml, yaml::Yaml, zig::Zig, Lang,
+        purescript::PureScript, python::Python, rescript::ReScript,
+        restructuredtext::ReStructuredText, roc::Roc, ruby::Ruby, rust::Rust, scala::Scala,
+        shell::Shell, sql::Sql, swift::Swift, toml::Toml, typescript::TypeScript, vue::Vue,
+        xml::Xml, yaml::Yaml, zig::Zig, Lang,
     },
     runners::JavaScriptRuntime,
     terminal::print_config_not_found,
@@ -144,10 +145,10 @@ pub struct MdsfConfig {
     pub ocaml: Lang<OCaml>,
 
     #[serde(default)]
-    pub protobuf: Lang<Protobuf>,
+    pub perl: Lang<Perl>,
 
     #[serde(default)]
-    pub perl: Lang<Perl>,
+    pub protobuf: Lang<Protobuf>,
 
     #[serde(default)]
     pub purescript: Lang<PureScript>,
@@ -157,6 +158,9 @@ pub struct MdsfConfig {
 
     #[serde(default)]
     pub rescript: Lang<ReScript>,
+
+    #[serde(default)]
+    pub restructuredtext: Lang<ReStructuredText>,
 
     #[serde(default)]
     pub roc: Lang<Roc>,
@@ -174,10 +178,10 @@ pub struct MdsfConfig {
     pub shell: Lang<Shell>,
 
     #[serde(default)]
-    pub swift: Lang<Swift>,
+    pub sql: Lang<Sql>,
 
     #[serde(default)]
-    pub sql: Lang<Sql>,
+    pub swift: Lang<Swift>,
 
     #[serde(default)]
     pub toml: Lang<Toml>,
@@ -237,26 +241,27 @@ impl Default for MdsfConfig {
             lua: Lang::<Lua>::default(),
             markdown: Lang::<Markdown>::default(),
             nim: Lang::<Nim>::default(),
+            nix: Lang::<Nix>::default(),
             objective_c: Lang::<ObjectiveC>::default(),
             ocaml: Lang::<OCaml>::default(),
-            protobuf: Lang::<Protobuf>::default(),
             perl: Lang::<Perl>::default(),
-            python: Lang::<Python>::default(),
+            protobuf: Lang::<Protobuf>::default(),
             purescript: Lang::<PureScript>::default(),
+            python: Lang::<Python>::default(),
             rescript: Lang::<ReScript>::default(),
+            restructuredtext: Lang::<ReStructuredText>::default(),
             roc: Lang::<Roc>::default(),
             ruby: Lang::<Ruby>::default(),
             rust: Lang::<Rust>::default(),
             scala: Lang::<Scala>::default(),
             shell: Lang::<Shell>::default(),
-            swift: Lang::<Swift>::default(),
             sql: Lang::<Sql>::default(),
+            swift: Lang::<Swift>::default(),
             toml: Lang::<Toml>::default(),
             typescript: Lang::<TypeScript>::default(),
             vue: Lang::<Vue>::default(),
             xml: Lang::<Xml>::default(),
             yaml: Lang::<Yaml>::default(),
-            nix: Lang::<Nix>::default(),
             zig: Lang::<Zig>::default(),
         }
     }

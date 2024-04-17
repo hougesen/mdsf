@@ -60,60 +60,61 @@ mdsf init
 
 <!-- START_SECTION:supported-languages -->
 
-| Language   | Formatters                                                    |
-| ---------- | ------------------------------------------------------------- |
-| Blade      | `blade-formatter`                                             |
-| C          | `clang-format`                                                |
-| CSharp     | `clang-format`, `csharpier`                                   |
-| Cabal      | `cabal_format`                                                |
-| Clojure    | `cljstyle`                                                    |
-| Cpp        | `clang-format`                                                |
-| Crystal    | `crystal_format`                                              |
-| Css        | `prettier`, `stylelint`                                       |
-| Dart       | `dart_format`                                                 |
-| Elixir     | `mix_format`                                                  |
-| Elm        | `elm-format`                                                  |
-| Erlang     | `efmt`, `erlfmt`                                              |
-| FSharp     | `fantomas`                                                    |
-| Fortran    | `fprettify`                                                   |
-| Gleam      | `gleam_format`                                                |
-| Go         | `gofmt`, `gofumpt`, `goimports`                               |
-| GraphQL    | `prettier`                                                    |
-| Groovy     | `npm-groovy-lint`                                             |
-| Haskell    | `fourmolu`, `hindent`, `ormolu`, `stylish-haskell`            |
-| Hcl        | `terraform_fmt`, `tofu_fmt`                                   |
-| Html       | `prettier`                                                    |
-| Java       | `clang-format`, `google-java-format`                          |
-| JavaScript | `biome`, `clang-format`, `deno_fmt`, `prettier`, `standardjs` |
-| Json       | `biome`, `clang-format`, `deno_fmt`, `prettier`               |
-| Julia      | `juliaformatter.jl`                                           |
-| Just       | `just_fmt`                                                    |
-| Kcl        | `kcl_fmt`                                                     |
-| Kotlin     | `ktfmt`, `ktlint`                                             |
-| Lua        | `luaformatter`, `stylua`                                      |
-| Markdown   | `prettier`                                                    |
-| Nim        | `nimpretty`                                                   |
-| Nix        | `alejandra`, `nixfmt`, `nixpkgs-fmt`                          |
-| OCaml      | `ocamlformat`, `ocp-indent`                                   |
-| ObjectiveC | `clang-format`                                                |
-| Perl       | `perltidy`                                                    |
-| Protobuf   | `buf`, `clang-format`                                         |
-| PureScript | `purs-tidy`                                                   |
-| Python     | `autopep8`, `black`, `blue`, `isort`, `ruff`, `usort`, `yapf` |
-| ReScript   | `rescript_format`                                             |
-| Roc        | `roc_format`                                                  |
-| Ruby       | `rubocop`, `rubyfmt`, `rufo`, `standardrb`                    |
-| Rust       | `rustfmt`                                                     |
-| Scala      | `scalafmt`                                                    |
-| Shell      | `beautysh`, `shfmt`                                           |
-| Sql        | `sql-formatter`, `sqlfluff`                                   |
-| Swift      | `swift-format`, `swiftformat`                                 |
-| Toml       | `taplo`                                                       |
-| TypeScript | `biome`, `deno_fmt`, `prettier`                               |
-| Vue        | `prettier`                                                    |
-| Xml        | `xmlformat`, `xmllint`                                        |
-| Yaml       | `prettier`, `yamlfix`, `yamlfmt`                              |
-| Zig        | `zigfmt`                                                      |
+| Language         | Formatters                                                    |
+| ---------------- | ------------------------------------------------------------- |
+| Blade            | `blade-formatter`                                             |
+| C                | `clang-format`                                                |
+| CSharp           | `clang-format`, `csharpier`                                   |
+| Cabal            | `cabal_format`                                                |
+| Clojure          | `cljstyle`                                                    |
+| Cpp              | `clang-format`                                                |
+| Crystal          | `crystal_format`                                              |
+| Css              | `prettier`, `stylelint`                                       |
+| Dart             | `dart_format`                                                 |
+| Elixir           | `mix_format`                                                  |
+| Elm              | `elm-format`                                                  |
+| Erlang           | `efmt`, `erlfmt`                                              |
+| FSharp           | `fantomas`                                                    |
+| Fortran          | `fprettify`                                                   |
+| Gleam            | `gleam_format`                                                |
+| Go               | `gofmt`, `gofumpt`, `goimports`                               |
+| GraphQL          | `prettier`                                                    |
+| Groovy           | `npm-groovy-lint`                                             |
+| Haskell          | `fourmolu`, `hindent`, `ormolu`, `stylish-haskell`            |
+| Hcl              | `terraform_fmt`, `tofu_fmt`                                   |
+| Html             | `prettier`                                                    |
+| Java             | `clang-format`, `google-java-format`                          |
+| JavaScript       | `biome`, `clang-format`, `deno_fmt`, `prettier`, `standardjs` |
+| Json             | `biome`, `clang-format`, `deno_fmt`, `prettier`               |
+| Julia            | `juliaformatter.jl`                                           |
+| Just             | `just_fmt`                                                    |
+| Kcl              | `kcl_fmt`                                                     |
+| Kotlin           | `ktfmt`, `ktlint`                                             |
+| Lua              | `luaformatter`, `stylua`                                      |
+| Markdown         | `prettier`                                                    |
+| Nim              | `nimpretty`                                                   |
+| Nix              | `alejandra`, `nixfmt`, `nixpkgs-fmt`                          |
+| OCaml            | `ocamlformat`, `ocp-indent`                                   |
+| ObjectiveC       | `clang-format`                                                |
+| Perl             | `perltidy`                                                    |
+| Protobuf         | `buf`, `clang-format`                                         |
+| PureScript       | `purs-tidy`                                                   |
+| Python           | `autopep8`, `black`, `blue`, `isort`, `ruff`, `usort`, `yapf` |
+| ReScript         | `rescript_format`                                             |
+| ReStructuredText | `rstfmt`                                                      |
+| Roc              | `roc_format`                                                  |
+| Ruby             | `rubocop`, `rubyfmt`, `rufo`, `standardrb`                    |
+| Rust             | `rustfmt`                                                     |
+| Scala            | `scalafmt`                                                    |
+| Shell            | `beautysh`, `shfmt`                                           |
+| Sql              | `sql-formatter`, `sqlfluff`                                   |
+| Swift            | `swift-format`, `swiftformat`                                 |
+| Toml             | `taplo`                                                       |
+| TypeScript       | `biome`, `deno_fmt`, `prettier`                               |
+| Vue              | `prettier`                                                    |
+| Xml              | `xmlformat`, `xmllint`                                        |
+| Yaml             | `prettier`, `yamlfix`, `yamlfmt`                              |
+| Zig              | `zigfmt`                                                      |
 
 <!-- END_SECTION:supported-languages -->
 
