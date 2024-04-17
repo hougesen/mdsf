@@ -138,13 +138,13 @@
     "enabled": true,
     "formatter": [["ocamlformat", "ocp-indent"]]
   },
-  "protobuf": {
-    "enabled": true,
-    "formatter": [["buf", "clang-format"]]
-  },
   "perl": {
     "enabled": true,
     "formatter": "perltidy"
+  },
+  "protobuf": {
+    "enabled": true,
+    "formatter": [["buf", "clang-format"]]
   },
   "purescript": {
     "enabled": true,
@@ -160,6 +160,10 @@
   "rescript": {
     "enabled": true,
     "formatter": "rescript_format"
+  },
+  "restructuredtext": {
+    "enabled": true,
+    "formatter": "rstfmt"
   },
   "roc": {
     "enabled": true,
@@ -181,13 +185,13 @@
     "enabled": true,
     "formatter": [["shfmt", "beautysh"]]
   },
-  "swift": {
-    "enabled": true,
-    "formatter": [["swift-format", "swiftformat"]]
-  },
   "sql": {
     "enabled": true,
     "formatter": [["sql-formatter", "sqlfluff"]]
+  },
+  "swift": {
+    "enabled": true,
+    "formatter": [["swift-format", "swiftformat"]]
   },
   "toml": {
     "enabled": true,

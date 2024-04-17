@@ -453,6 +453,17 @@
         }
       ]
     },
+    "restructuredtext": {
+      "default": {
+        "enabled": true,
+        "formatter": "rstfmt"
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/Lang_for_ReStructuredText"
+        }
+      ]
+    },
     "roc": {
       "default": {
         "enabled": true,
@@ -1222,6 +1233,19 @@
       },
       "additionalProperties": false
     },
+    "Lang_for_ReStructuredText": {
+      "type": "object",
+      "properties": {
+        "enabled": {
+          "default": true,
+          "type": "boolean"
+        },
+        "formatter": {
+          "$ref": "#/definitions/MdsfFormatter_for_ReStructuredText"
+        }
+      },
+      "additionalProperties": false
+    },
     "Lang_for_Roc": {
       "type": "object",
       "properties": {
@@ -1906,6 +1930,19 @@
         }
       ]
     },
+    "MdsfFormatter_for_ReStructuredText": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/ReStructuredText"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MdsfFormatter_for_ReStructuredText"
+          }
+        }
+      ]
+    },
     "MdsfFormatter_for_Roc": {
       "anyOf": [
         {
@@ -2110,6 +2147,10 @@
     "ReScript": {
       "type": "string",
       "enum": ["rescript_format"]
+    },
+    "ReStructuredText": {
+      "type": "string",
+      "enum": ["rstfmt"]
     },
     "Roc": {
       "type": "string",
