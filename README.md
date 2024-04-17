@@ -116,3 +116,7 @@ mdsf init
 | Zig        | `zigfmt`                                                      |
 
 <!-- END_SECTION:supported-languages -->
+
+## Acknowledgement
+
+mdsf was inspired by the amazing neovim formatting plugin [conform.nvim](https://github.com/stevearc/conform.nvim).
