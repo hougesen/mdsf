@@ -120,3 +120,8 @@ mdsf init
 ## Acknowledgement
 
 mdsf was inspired by the amazing neovim formatting plugin [conform.nvim](https://github.com/stevearc/conform.nvim).
+
+## Alternatives to mdsf
+
+- [conform.nvim](https://github.com/stevearc/conform.nvim) using `injected` mode.
+- [mdformat](https://github.com/executablebooks/mdformat).
