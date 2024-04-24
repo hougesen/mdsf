@@ -49,7 +49,7 @@ impl LanguageFormatter for Yaml {
         snippet_path: &std::path::Path,
     ) -> Result<(bool, Option<String>), MdsfError> {
         match self {
-            Self::Prettier => format_using_prettier(snippet_path, true),
+            Self::Prettier => format_using_prettier(snippet_path),
             Self::YamlFmt => format_using_yamlfmt(snippet_path),
             Self::YamlFix => format_using_yamlfix(snippet_path),
         }
