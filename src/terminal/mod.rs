@@ -1,5 +1,5 @@
 use console::style;
-use log::{debug, error, info, warn};
+use log::{debug, error, info, trace, warn};
 
 use crate::{error::MdsfError, runners::JavaScriptRuntime, LineInfo};
 
@@ -18,6 +18,18 @@ pub fn print_formatter_info(formatter: &str, info: &LineInfo) {
         info.start,
         info.end,
         info.language
+    );
+}
+
+#[inline]
+pub fn print_formatter_time(formatter: &str, info: &LineInfo, duration: core::time::Duration) {
+    trace!(
+        "{}:{} to :{} {} took {}ms to format using {formatter}",
+        info.filename.display(),
+        info.start,
+        info.end,
+        info.language,
+        duration.as_millis()
     );
 }
 
