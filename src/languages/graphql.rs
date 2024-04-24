@@ -38,7 +38,7 @@ impl LanguageFormatter for GraphQL {
         snippet_path: &std::path::Path,
     ) -> Result<(bool, Option<String>), MdsfError> {
         match self {
-            Self::Prettier => format_using_prettier(snippet_path, true),
+            Self::Prettier => format_using_prettier(snippet_path),
         }
     }
 }

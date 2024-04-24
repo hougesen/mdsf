@@ -42,7 +42,7 @@ impl LanguageFormatter for Css {
         snippet_path: &std::path::Path,
     ) -> Result<(bool, Option<String>), MdsfError> {
         match self {
-            Self::Prettier => format_using_prettier(snippet_path, true),
+            Self::Prettier => format_using_prettier(snippet_path),
             Self::StyleLint => format_using_stylelint(snippet_path),
         }
     }

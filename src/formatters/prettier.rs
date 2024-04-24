@@ -31,8 +31,9 @@ fn invoke_prettier(
 #[inline]
 pub fn format_using_prettier(
     snippet_path: &std::path::Path,
-    embedded_language_formatting: bool,
 ) -> Result<(bool, Option<String>), MdsfError> {
+    let embedded_language_formatting = snippet_path.extension().is_some_and(|ext| ext != "md");
+
     if let Ok(path_result) = invoke_prettier(
         std::process::Command::new("prettier"),
         snippet_path,
@@ -81,7 +82,7 @@ mod test_prettier {
         let snippet = setup_snippet(input, Language::Json(JsonFlavor::Json).to_file_ext())
             .expect("it to create a snippet file");
 
-        let output = format_using_prettier(snippet.path(), true)
+        let output = format_using_prettier(snippet.path())
             .expect("it to be successful")
             .1
             .expect("it to be some");
@@ -111,7 +112,7 @@ mod test_prettier {
         )
         .expect("it to create a snippet file");
 
-        let output = format_using_prettier(snippet.path(), true)
+        let output = format_using_prettier(snippet.path())
             .expect("it to be successful")
             .1
             .expect("it to be some");
@@ -144,7 +145,7 @@ number>
         )
         .expect("it to create a snippet file");
 
-        let output = format_using_prettier(snippet.path(), true)
+        let output = format_using_prettier(snippet.path())
             .expect("it to be successful")
             .1
             .expect("it to be some");
@@ -171,7 +172,7 @@ this is a paragraph
         let snippet = setup_snippet(input, Language::Markdown.to_file_ext())
             .expect("it to create a snippet file");
 
-        let output = format_using_prettier(snippet.path(), false)
+        let output = format_using_prettier(snippet.path())
             .expect("it to be successful")
             .1
             .expect("it to be some");
@@ -198,7 +199,7 @@ number>
         let snippet = setup_snippet(input, Language::Markdown.to_file_ext())
             .expect("it to create a snippet file");
 
-        let output = format_using_prettier(snippet.path(), false)
+        let output = format_using_prettier(snippet.path())
             .expect("it to be successful")
             .1
             .expect("it to be some");
@@ -235,7 +236,7 @@ number>
         let snippet = setup_snippet(input, Language::Html.to_file_ext())
             .expect("it to create a snippet file");
 
-        let output = format_using_prettier(snippet.path(), true)
+        let output = format_using_prettier(snippet.path())
             .expect("it to be successful")
             .1
             .expect("it to be some");
@@ -258,7 +259,7 @@ p {
         let snippet = setup_snippet(input, Language::Css(CssFlavor::Css).to_file_ext())
             .expect("it to create a snippet file");
 
-        let output = format_using_prettier(snippet.path(), true)
+        let output = format_using_prettier(snippet.path())
             .expect("it to be successful")
             .1
             .expect("it to be some");
@@ -314,7 +315,7 @@ updates:
         let snippet = setup_snippet(input, Language::Yaml.to_file_ext())
             .expect("it to create a snippet file");
 
-        let output = format_using_prettier(snippet.path(), false)
+        let output = format_using_prettier(snippet.path())
             .expect("it to be successful")
             .1
             .expect("it to be some");
@@ -360,7 +361,7 @@ function add(a: number, b: number): number {
         let snippet =
             setup_snippet(input, Language::Vue.to_file_ext()).expect("it to create a snippet file");
 
-        let output = format_using_prettier(snippet.path(), true)
+        let output = format_using_prettier(snippet.path())
             .expect("it to be successful")
             .1
             .expect("it to be some");
@@ -388,7 +389,7 @@ function add(a: number, b: number): number {
         let snippet = setup_snippet(input, Language::GraphQL.to_file_ext())
             .expect("it to create a snippet file");
 
-        let output = format_using_prettier(snippet.path(), true)
+        let output = format_using_prettier(snippet.path())
             .expect("it to be successful")
             .1
             .expect("it to be some");

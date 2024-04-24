@@ -50,7 +50,7 @@ impl LanguageFormatter for TypeScript {
     ) -> Result<(bool, Option<String>), MdsfError> {
         match self {
             Self::Biome => format_using_biome(snippet_path),
-            Self::Prettier => format_using_prettier(snippet_path, true),
+            Self::Prettier => format_using_prettier(snippet_path),
             Self::DenoFmt => format_using_deno_fmt(snippet_path),
         }
     }
