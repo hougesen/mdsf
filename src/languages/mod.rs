@@ -3,7 +3,10 @@ use schemars::JsonSchema;
 use crate::{
     error::MdsfError,
     formatters::MdsfFormatter,
-    terminal::{print_binary_not_in_path, print_error_formatting, print_formatter_info},
+    terminal::{
+        print_binary_not_in_path, print_error_formatting, print_formatter_info,
+        print_formatter_time,
+    },
     LineInfo,
 };
 
@@ -465,7 +468,11 @@ where
 
                 print_formatter_info(&formatter_name, info);
 
+                let time = std::time::Instant::now();
+
                 let r = f.format_snippet(snippet_path);
+
+                print_formatter_time(&formatter_name, info, time.elapsed());
 
                 if let Err(e) = &r {
                     if let MdsfError::MissingBinary(binary) = e {
