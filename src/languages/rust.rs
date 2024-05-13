@@ -3,7 +3,7 @@ use schemars::JsonSchema;
 use super::{Lang, LanguageFormatter};
 use crate::{
     error::MdsfError,
-    formatters::{rustfmt::format_using_rustfmt, MdsfFormatter},
+    formatters::{rustfmt::format_using_rustfmt, yew_fmt::format_using_yew_fmt, MdsfFormatter},
 };
 
 #[derive(Default, serde::Serialize, serde::Deserialize, JsonSchema)]
@@ -12,6 +12,8 @@ pub enum Rust {
     #[default]
     #[serde(rename = "rustfmt")]
     RustFmt,
+    #[serde(rename = "yew-fmt")]
+    YewFmt,
 }
 
 impl Default for Lang<Rust> {
@@ -39,6 +41,7 @@ impl LanguageFormatter for Rust {
     ) -> Result<(bool, Option<String>), MdsfError> {
         match self {
             Self::RustFmt => format_using_rustfmt(snippet_path),
+            Self::YewFmt => format_using_yew_fmt(snippet_path),
         }
     }
 }
@@ -48,6 +51,7 @@ impl core::fmt::Display for Rust {
     fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
         match self {
             Self::RustFmt => write!(f, "rustfmt"),
+            Self::YewFmt => write!(f, "yew-fmt"),
         }
     }
 }
