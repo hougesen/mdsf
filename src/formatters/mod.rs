@@ -79,6 +79,7 @@ pub mod xmllint;
 pub mod yamlfix;
 pub mod yamlfmt;
 pub mod yapf;
+pub mod yew_fmt;
 pub mod zigfmt;
 
 #[inline]

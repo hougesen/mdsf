@@ -2162,7 +2162,7 @@
     },
     "Rust": {
       "type": "string",
-      "enum": ["rustfmt"]
+      "enum": ["rustfmt", "yew-fmt"]
     },
     "Scala": {
       "type": "string",

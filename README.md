@@ -104,7 +104,7 @@ mdsf init
 | ReStructuredText | `rstfmt`                                                      |
 | Roc              | `roc_format`                                                  |
 | Ruby             | `rubocop`, `rubyfmt`, `rufo`, `standardrb`                    |
-| Rust             | `rustfmt`                                                     |
+| Rust             | `rustfmt`, `yew-fmt`                                          |
 | Scala            | `scalafmt`                                                    |
 | Shell            | `beautysh`, `shfmt`                                           |
 | Sql              | `sql-formatter`, `sqlfluff`                                   |
