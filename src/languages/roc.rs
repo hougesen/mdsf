@@ -114,10 +114,9 @@ main =
             .expect("it to not fail")
             .expect("it to be a snippet");
 
-        let expected_output = r#"app "helloWorld"
-    packages { pf: "https://github.com/roc-lang/" }
-    imports [pf.Stdout]
-    provides [main] to pf
+        let expected_output = r#"app [main] { pf: platform "https://github.com/roc-lang/" }
+
+import pf.Stdout
 
 main =
     Stdout.line "Hello, World!"

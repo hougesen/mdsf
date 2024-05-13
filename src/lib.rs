@@ -819,10 +819,9 @@ def add(a: int, b: int) -> int:
 This snippets is from 'roc.md':
 
 ```roc
-app "helloWorld"
-    packages { pf: "https://github.com/roc-lang/" }
-    imports [pf.Stdout]
-    provides [main] to pf
+app [main] { pf: platform "https://github.com/roc-lang/" }
+
+import pf.Stdout
 
 main =
     Stdout.line "Hello, World!"
