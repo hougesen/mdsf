@@ -38,7 +38,7 @@ pub fn print_unchanged_file(path: &std::path::Path, dur: core::time::Duration) {
     info!(
         "{}",
         style(format!(
-            "{} finished in {}ms (unchanged)\n",
+            "{} finished in {}ms (unchanged)",
             path.display(),
             dur.as_millis()
         ))
@@ -47,8 +47,13 @@ pub fn print_unchanged_file(path: &std::path::Path, dur: core::time::Duration) {
 }
 
 #[inline]
-pub fn print_changed_line(path: &std::path::Path, dur: core::time::Duration) {
-    info!("{} finished in {}ms\n", path.display(), dur.as_millis());
+pub fn print_changed_file(path: &std::path::Path, dur: core::time::Duration) {
+    info!("{} finished in {}ms", path.display(), dur.as_millis());
+}
+
+#[inline]
+pub fn print_changed_file_error(path: &std::path::Path) {
+    error!("{} has changes", path.display());
 }
 
 #[inline]
@@ -68,7 +73,7 @@ pub fn print_binary_not_in_path(binary_name: &str) {
 
 #[inline]
 pub fn print_error_formatting(formatter_name: &str, info: &LineInfo) {
-    error!(
+    warn!(
         "{}:{} to :{} error formatting using {formatter_name}",
         info.filename.display(),
         info.start,

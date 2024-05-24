@@ -13,6 +13,9 @@ pub enum Commands {
     /// Run formatters on input files
     Format(FormatCommandArguments),
 
+    /// Verify files are formatted
+    Verify(FormatCommandArguments),
+
     /// Create a new mdsf config
     Init,
 
@@ -23,7 +26,7 @@ pub enum Commands {
 
 #[derive(Args, Debug)]
 pub struct FormatCommandArguments {
-    // Path to file or directory
+    /// Path to file or directory
     #[arg()]
     pub path: std::path::PathBuf,
 
@@ -31,14 +34,13 @@ pub struct FormatCommandArguments {
     #[arg(long, default_value_t = false)]
     pub debug: bool,
 
-    #[arg(long, default_value_t, value_enum)]
-    pub log_level: LogLevel,
+    #[arg(long, value_enum)]
+    pub log_level: Option<LogLevel>,
 }
 
-#[derive(clap::ValueEnum, Clone, Copy, PartialEq, Eq, Default, Debug)]
+#[derive(clap::ValueEnum, Clone, Copy, PartialEq, Eq, Debug)]
 pub enum LogLevel {
     Trace,
-    #[default]
     Debug,
     Info,
     Warn,
