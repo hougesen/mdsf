@@ -39,6 +39,7 @@ pub mod just_fmt;
 pub mod kcl_fmt;
 pub mod ktfmt;
 pub mod ktlint;
+pub mod leptosfmt;
 pub mod luaformatter;
 pub mod mix_format;
 pub mod nimpretty;
