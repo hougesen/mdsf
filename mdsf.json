@@ -34,6 +34,10 @@
     "enabled": true,
     "formatter": "prettier"
   },
+  "d": {
+    "enabled": true,
+    "formatter": "dfmt"
+  },
   "dart": {
     "enabled": true,
     "formatter": "dart_format"

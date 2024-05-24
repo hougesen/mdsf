@@ -4,7 +4,7 @@ use super::{Lang, LanguageFormatter};
 use crate::{
     error::MdsfError,
     formatters::{
-        gofmt::format_using_gofmt, gofumpt::format_using_gofumpt,
+        crlfmt::format_using_crlfmt, gofmt::format_using_gofmt, gofumpt::format_using_gofumpt,
         goimports::format_using_goimports, MdsfFormatter,
     },
 };
@@ -19,6 +19,8 @@ pub enum Go {
     GoFumpt,
     #[serde(rename = "goimports")]
     GoImports,
+    #[serde(rename = "crlfmt")]
+    CrlFmt,
 }
 
 impl Default for Lang<Go> {
@@ -51,6 +53,7 @@ impl LanguageFormatter for Go {
             Self::GoFmt => format_using_gofmt(snippet_path),
             Self::GoFumpt => format_using_gofumpt(snippet_path),
             Self::GoImports => format_using_goimports(snippet_path),
+            Self::CrlFmt => format_using_crlfmt(snippet_path),
         }
     }
 }
@@ -62,6 +65,7 @@ impl core::fmt::Display for Go {
             Self::GoFmt => write!(f, "gofmt"),
             Self::GoFumpt => write!(f, "gofumpt"),
             Self::GoImports => write!(f, "goimports"),
+            Self::CrlFmt => write!(f, "crlfmt"),
         }
     }
 }
