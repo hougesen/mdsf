@@ -95,6 +95,17 @@
         }
       ]
     },
+    "d": {
+      "default": {
+        "enabled": true,
+        "formatter": "dfmt"
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/Lang_for_D"
+        }
+      ]
+    },
     "dart": {
       "default": {
         "enabled": true,
@@ -642,6 +653,10 @@
       "type": "string",
       "enum": ["prettier", "stylelint"]
     },
+    "D": {
+      "type": "string",
+      "enum": ["dfmt"]
+    },
     "Dart": {
       "type": "string",
       "enum": ["dart_format"]
@@ -826,6 +841,19 @@
         },
         "formatter": {
           "$ref": "#/definitions/MdsfFormatter_for_Css"
+        }
+      },
+      "additionalProperties": false
+    },
+    "Lang_for_D": {
+      "type": "object",
+      "properties": {
+        "enabled": {
+          "default": true,
+          "type": "boolean"
+        },
+        "formatter": {
+          "$ref": "#/definitions/MdsfFormatter_for_D"
         }
       },
       "additionalProperties": false
@@ -1523,6 +1551,19 @@
           "type": "array",
           "items": {
             "$ref": "#/definitions/MdsfFormatter_for_Css"
+          }
+        }
+      ]
+    },
+    "MdsfFormatter_for_D": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/D"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MdsfFormatter_for_D"
           }
         }
       ]

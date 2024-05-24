@@ -70,6 +70,7 @@ mdsf init
 | Cpp              | `clang-format`                                                |
 | Crystal          | `crystal_format`                                              |
 | Css              | `prettier`, `stylelint`                                       |
+| D                | `dfmt`                                                        |
 | Dart             | `dart_format`                                                 |
 | Elixir           | `mix_format`                                                  |
 | Elm              | `elm-format`                                                  |
