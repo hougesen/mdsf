@@ -21,6 +21,7 @@ pub mod crystal_format;
 pub mod csharpier;
 pub mod dart_format;
 pub mod deno_fmt;
+pub mod dfmt;
 pub mod efmt;
 pub mod elm_format;
 pub mod erlfmt;
@@ -175,6 +176,7 @@ pub fn format_snippet(config: &MdsfConfig, info: &LineInfo, code: &str) -> Strin
             Language::Cpp => config.cpp.format(snippet_path, info),
             Language::Crystal => config.crystal.format(snippet_path, info),
             Language::Css(_flavor) => config.css.format(snippet_path, info),
+            Language::D => config.d.format(snippet_path, info),
             Language::Dart => config.dart.format(snippet_path, info),
             Language::Elixir => config.elixir.format(snippet_path, info),
             Language::Elm => config.elm.format(snippet_path, info),

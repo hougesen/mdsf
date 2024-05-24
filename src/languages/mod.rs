@@ -18,6 +18,7 @@ pub mod cpp;
 pub mod crystal;
 pub mod csharp;
 pub mod css;
+pub mod d;
 pub mod dart;
 pub mod elixir;
 pub mod elm;
@@ -162,6 +163,7 @@ pub enum Language {
     Cpp,
     Crystal,
     Css(CssFlavor),
+    D,
     Dart,
     Elixir,
     Elm,
@@ -221,6 +223,7 @@ impl core::fmt::Display for Language {
             Self::Cpp => f.write_str("c++"),
             Self::Crystal => f.write_str("crystal"),
             Self::Css(flavor) => flavor.fmt(f),
+            Self::D => f.write_str("d"),
             Self::Dart => f.write_str("dart"),
             Self::Elixir => f.write_str("elixir"),
             Self::Elm => f.write_str("elm"),
@@ -290,6 +293,7 @@ impl Language {
             "crystal" | "cr" => Some(Self::Crystal),
             "csharp" | "c#" => Some(Self::CSharp),
             "css" => Some(Self::Css(CssFlavor::Css)),
+            "d" => Some(Self::D),
             "dart" => Some(Self::Dart),
             "elixir" => Some(Self::Elixir),
             "elm" => Some(Self::Elm),
@@ -363,6 +367,7 @@ impl Language {
             Self::Css(CssFlavor::Less) => ".less",
             Self::Css(CssFlavor::Sass) => ".sass",
             Self::Css(CssFlavor::Scss) => ".scss",
+            Self::D => ".d",
             Self::Dart => ".dart",
             Self::Elixir => ".ex",
             Self::Elm => ".elm",

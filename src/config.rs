@@ -5,7 +5,7 @@ use crate::{
     error::MdsfError,
     languages::{
         blade::Blade, c::C, cabal::Cabal, clojure::Clojure, cpp::Cpp, crystal::Crystal,
-        csharp::CSharp, css::Css, dart::Dart, elixir::Elixir, elm::Elm, erlang::Erlang,
+        csharp::CSharp, css::Css, d::D, dart::Dart, elixir::Elixir, elm::Elm, erlang::Erlang,
         fortran::Fortran, fsharp::FSharp, gleam::Gleam, go::Go, graphql::GraphQL, groovy::Groovy,
         haskell::Haskell, hcl::Hcl, html::Html, java::Java, javascript::JavaScript, json::Json,
         julia::Julia, just::Just, kcl::Kcl, kotlin::Kotlin, lua::Lua, markdown::Markdown, nim::Nim,
@@ -65,6 +65,9 @@ pub struct MdsfConfig {
 
     #[serde(default)]
     pub css: Lang<Css>,
+
+    #[serde(default)]
+    pub d: Lang<D>,
 
     #[serde(default)]
     pub dart: Lang<Dart>,
@@ -218,6 +221,7 @@ impl Default for MdsfConfig {
             crystal: Lang::<Crystal>::default(),
             csharp: Lang::<CSharp>::default(),
             css: Lang::<Css>::default(),
+            d: Lang::<D>::default(),
             dart: Lang::<Dart>::default(),
             elixir: Lang::<Elixir>::default(),
             elm: Lang::<Elm>::default(),
