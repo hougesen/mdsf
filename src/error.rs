@@ -9,6 +9,7 @@ pub enum MdsfError {
     FormatterError,
     // TODO: use &str
     MissingBinary(String),
+    CheckModeChanges(u32),
 }
 
 impl core::fmt::Display for MdsfError {
@@ -27,6 +28,10 @@ impl core::fmt::Display for MdsfError {
             ),
             Self::FormatterError => write!(f, "Error formatting codeblock"),
             Self::MissingBinary(binary_name) => write!(f, "{binary_name} was not found in path"),
+            Self::CheckModeChanges(file_count) => write!(
+                f,
+                "Found changes while running in check mode ({file_count} files)"
+            ),
         }
     }
 }

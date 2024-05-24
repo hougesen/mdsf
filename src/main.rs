@@ -1,6 +1,6 @@
 use clap::{builder::OsStr, Parser};
 use mdsf::{
-    cli::{Cli, Commands, FormatCommandArguments},
+    cli::{Cli, Commands, FormatCommandArguments, LogLevel},
     config::MdsfConfig,
     error::MdsfError,
     handle_file,
@@ -9,15 +9,17 @@ use mdsf::{
 
 const MDSF_IGNORE_FILE_NAME: &str = ".mdsfignore";
 
-fn format_command(args: FormatCommandArguments) -> Result<(), MdsfError> {
+fn format_command(args: FormatCommandArguments, dry_run: bool) -> Result<(), MdsfError> {
     mdsf::DEBUG.swap(args.debug, core::sync::atomic::Ordering::Relaxed);
 
     let conf = MdsfConfig::load()?;
 
     mdsf::runners::set_javascript_runtime(conf.javascript_runtime);
 
+    let mut changed_file_count = 0;
+
     if args.path.is_file() {
-        handle_file(&conf, &args.path)?;
+        changed_file_count += u32::from(handle_file(&conf, &args.path, dry_run)?);
     } else if args.path.is_dir() {
         let mut walk_builder = ignore::WalkBuilder::new(args.path);
 
@@ -33,18 +35,24 @@ fn format_command(args: FormatCommandArguments) -> Result<(), MdsfError> {
             walk_builder.add_ignore(ignore_path);
         }
 
+        let md_ext = OsStr::from("md");
+
         for entry in walk_builder.build().flatten() {
             let file_path = entry.path();
 
-            if file_path.extension() == Some(&OsStr::from("md")) {
-                handle_file(&conf, file_path)?;
+            if file_path.extension() == Some(&md_ext) {
+                changed_file_count += u32::from(handle_file(&conf, file_path, dry_run)?);
             }
         }
     } else {
         return Err(MdsfError::FileNotFound(args.path));
     }
 
-    Ok(())
+    if dry_run && changed_file_count > 0 {
+        Err(MdsfError::CheckModeChanges(changed_file_count))
+    } else {
+        Ok(())
+    }
 }
 
 fn init_config_command() -> std::io::Result<()> {
@@ -78,15 +86,24 @@ fn generate_schema_command() -> std::io::Result<()> {
 fn main() {
     let command_result = match Cli::parse().command {
         Commands::Format(args) => {
-            setup_logger(args.log_level);
+            setup_logger(args.log_level.unwrap_or(LogLevel::Debug));
 
-            format_command(args)
+            format_command(args, false)
         }
+
+        Commands::Verify(args) => {
+            setup_logger(args.log_level.unwrap_or(LogLevel::Error));
+
+            format_command(args, true)
+        }
+
         Commands::Init => init_config_command().map_err(MdsfError::from),
         Commands::Schema => generate_schema_command().map_err(MdsfError::from),
     };
 
     if let Err(error) = command_result {
         print_error(&error);
+
+        std::process::exit(1);
     }
 }
