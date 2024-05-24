@@ -23,6 +23,7 @@ pub mod csharpier;
 pub mod dart_format;
 pub mod deno_fmt;
 pub mod dfmt;
+pub mod djlint;
 pub mod efmt;
 pub mod elm_format;
 pub mod erlfmt;
@@ -171,23 +172,24 @@ pub fn format_snippet(config: &MdsfConfig, info: &LineInfo, code: &str) -> Strin
         if let Ok(Some(formatted_code)) = match info.language {
             Language::Blade => config.blade.format(snippet_path, info),
             Language::C => config.c.format(snippet_path, info),
-            Language::CSharp => config.csharp.format(snippet_path, info),
             Language::Cabal => config.cabal.format(snippet_path, info),
             Language::Clojure => config.clojure.format(snippet_path, info),
             Language::Cpp => config.cpp.format(snippet_path, info),
             Language::Crystal => config.crystal.format(snippet_path, info),
+            Language::CSharp => config.csharp.format(snippet_path, info),
             Language::Css(_flavor) => config.css.format(snippet_path, info),
             Language::D => config.d.format(snippet_path, info),
             Language::Dart => config.dart.format(snippet_path, info),
             Language::Elixir => config.elixir.format(snippet_path, info),
             Language::Elm => config.elm.format(snippet_path, info),
             Language::Erlang => config.erlang.format(snippet_path, info),
-            Language::FSharp => config.fsharp.format(snippet_path, info),
             Language::Fortran => config.fortran.format(snippet_path, info),
+            Language::FSharp => config.fsharp.format(snippet_path, info),
             Language::Gleam => config.gleam.format(snippet_path, info),
             Language::Go => config.go.format(snippet_path, info),
             Language::GraphQL => config.graphql.format(snippet_path, info),
             Language::Groovy => config.groovy.format(snippet_path, info),
+            Language::Handlebars => config.handlebars.format(snippet_path, info),
             Language::Haskell => config.haskell.format(snippet_path, info),
             Language::Hcl => config.hcl.format(snippet_path, info),
             Language::Html => config.html.format(snippet_path, info),
@@ -200,10 +202,12 @@ pub fn format_snippet(config: &MdsfConfig, info: &LineInfo, code: &str) -> Strin
             Language::Kotlin => config.kotlin.format(snippet_path, info),
             Language::Lua => config.lua.format(snippet_path, info),
             Language::Markdown => config.markdown.format(snippet_path, info),
+            Language::Mustache => config.mustache.format(snippet_path, info),
             Language::Nim => config.nim.format(snippet_path, info),
             Language::Nix => config.nix.format(snippet_path, info),
-            Language::OCaml => config.ocaml.format(snippet_path, info),
+            Language::Nunjucks => config.nunjucks.format(snippet_path, info),
             Language::ObjectiveC => config.objective_c.format(snippet_path, info),
+            Language::OCaml => config.ocaml.format(snippet_path, info),
             Language::Perl => config.perl.format(snippet_path, info),
             Language::Protobuf => config.protobuf.format(snippet_path, info),
             Language::PureScript => config.purescript.format(snippet_path, info),

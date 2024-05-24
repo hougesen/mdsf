@@ -221,6 +221,17 @@
         }
       ]
     },
+    "handlebars": {
+      "default": {
+        "enabled": true,
+        "formatter": "prettier"
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/Lang_for_Handlebars"
+        }
+      ]
+    },
     "haskell": {
       "default": {
         "enabled": true,
@@ -362,6 +373,17 @@
         }
       ]
     },
+    "mustache": {
+      "default": {
+        "enabled": true,
+        "formatter": "djlint"
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/Lang_for_Mustache"
+        }
+      ]
+    },
     "nim": {
       "default": {
         "enabled": true,
@@ -381,6 +403,17 @@
       "allOf": [
         {
           "$ref": "#/definitions/Lang_for_Nix"
+        }
+      ]
+    },
+    "nunjucks": {
+      "default": {
+        "enabled": true,
+        "formatter": "djlint"
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/Lang_for_Nunjucks"
         }
       ]
     },
@@ -697,6 +730,10 @@
       "type": "string",
       "enum": ["npm-groovy-lint"]
     },
+    "Handlebars": {
+      "type": "string",
+      "enum": ["prettier", "djlint"]
+    },
     "Haskell": {
       "type": "string",
       "enum": ["fourmolu", "ormolu", "hindent", "stylish-haskell"]
@@ -707,7 +744,7 @@
     },
     "Html": {
       "type": "string",
-      "enum": ["prettier"]
+      "enum": ["prettier", "djlint"]
     },
     "Java": {
       "type": "string",
@@ -988,6 +1025,19 @@
       },
       "additionalProperties": false
     },
+    "Lang_for_Handlebars": {
+      "type": "object",
+      "properties": {
+        "enabled": {
+          "default": true,
+          "type": "boolean"
+        },
+        "formatter": {
+          "$ref": "#/definitions/MdsfFormatter_for_Handlebars"
+        }
+      },
+      "additionalProperties": false
+    },
     "Lang_for_Haskell": {
       "type": "object",
       "properties": {
@@ -1144,6 +1194,19 @@
       },
       "additionalProperties": false
     },
+    "Lang_for_Mustache": {
+      "type": "object",
+      "properties": {
+        "enabled": {
+          "default": true,
+          "type": "boolean"
+        },
+        "formatter": {
+          "$ref": "#/definitions/MdsfFormatter_for_Mustache"
+        }
+      },
+      "additionalProperties": false
+    },
     "Lang_for_Nim": {
       "type": "object",
       "properties": {
@@ -1166,6 +1229,19 @@
         },
         "formatter": {
           "$ref": "#/definitions/MdsfFormatter_for_Nix"
+        }
+      },
+      "additionalProperties": false
+    },
+    "Lang_for_Nunjucks": {
+      "type": "object",
+      "properties": {
+        "enabled": {
+          "default": true,
+          "type": "boolean"
+        },
+        "formatter": {
+          "$ref": "#/definitions/MdsfFormatter_for_Nunjucks"
         }
       },
       "additionalProperties": false
@@ -1698,6 +1774,19 @@
         }
       ]
     },
+    "MdsfFormatter_for_Handlebars": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/Handlebars"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MdsfFormatter_for_Handlebars"
+          }
+        }
+      ]
+    },
     "MdsfFormatter_for_Haskell": {
       "anyOf": [
         {
@@ -1854,6 +1943,19 @@
         }
       ]
     },
+    "MdsfFormatter_for_Mustache": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/Mustache"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MdsfFormatter_for_Mustache"
+          }
+        }
+      ]
+    },
     "MdsfFormatter_for_Nim": {
       "anyOf": [
         {
@@ -1876,6 +1978,19 @@
           "type": "array",
           "items": {
             "$ref": "#/definitions/MdsfFormatter_for_Nix"
+          }
+        }
+      ]
+    },
+    "MdsfFormatter_for_Nunjucks": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/Nunjucks"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MdsfFormatter_for_Nunjucks"
           }
         }
       ]
@@ -2153,6 +2268,10 @@
         }
       ]
     },
+    "Mustache": {
+      "type": "string",
+      "enum": ["djlint"]
+    },
     "Nim": {
       "type": "string",
       "enum": ["nimpretty"]
@@ -2160,6 +2279,10 @@
     "Nix": {
       "type": "string",
       "enum": ["nixfmt", "nixpkgs-fmt", "alejandra"]
+    },
+    "Nunjucks": {
+      "type": "string",
+      "enum": ["djlint"]
     },
     "OCaml": {
       "type": "string",

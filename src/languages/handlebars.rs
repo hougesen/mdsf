@@ -8,7 +8,7 @@ use crate::{
 
 #[derive(Default, serde::Serialize, serde::Deserialize, JsonSchema)]
 #[cfg_attr(test, derive(Debug, PartialEq, Eq))]
-pub enum Html {
+pub enum Handlebars {
     #[default]
     #[serde(rename = "prettier")]
     Prettier,
@@ -16,24 +16,24 @@ pub enum Html {
     DjLint,
 }
 
-impl Default for Lang<Html> {
+impl Default for Lang<Handlebars> {
     #[inline]
     fn default() -> Self {
         Self {
             enabled: true,
-            formatter: MdsfFormatter::<Html>::default(),
+            formatter: MdsfFormatter::<Handlebars>::default(),
         }
     }
 }
 
-impl Default for MdsfFormatter<Html> {
+impl Default for MdsfFormatter<Handlebars> {
     #[inline]
     fn default() -> Self {
-        Self::Single(Html::Prettier)
+        Self::Single(Handlebars::Prettier)
     }
 }
 
-impl LanguageFormatter for Html {
+impl LanguageFormatter for Handlebars {
     #[inline]
     fn format_snippet(
         &self,
@@ -46,7 +46,7 @@ impl LanguageFormatter for Html {
     }
 }
 
-impl core::fmt::Display for Html {
+impl core::fmt::Display for Handlebars {
     #[inline]
     fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
         match self {
@@ -57,8 +57,8 @@ impl core::fmt::Display for Html {
 }
 
 #[cfg(test)]
-mod test_html {
-    use super::Html;
+mod test_handlebars {
+    use super::Handlebars;
     use crate::{
         formatters::{setup_snippet, MdsfFormatter},
         languages::Lang,
@@ -67,11 +67,11 @@ mod test_html {
 
     const INPUT: &str =  " <!doctype html> <html> <head> <style> body {background-color: powderblue;} h1   {color: blue;} p    {color: red;} </style> </head> <body>  <h1>This is a heading</h1> <p>This is a paragraph.</p>  </body> </html> ";
 
-    const EXTENSION: &str = crate::languages::Language::Html.to_file_ext();
+    const EXTENSION: &str = crate::languages::Language::Handlebars.to_file_ext();
 
     #[test]
     fn it_should_be_enabled_by_default() {
-        assert!(Lang::<Html>::default().enabled);
+        assert!(Lang::<Handlebars>::default().enabled);
     }
 
     #[test]
@@ -79,52 +79,12 @@ mod test_html {
         let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");
         let snippet_path = snippet.path();
 
-        assert!(Lang::<Html> {
+        assert!(Lang::<Handlebars> {
             enabled: false,
-            formatter: MdsfFormatter::Single(Html::default()),
+            formatter: MdsfFormatter::Single(Handlebars::default()),
         }
         .format(snippet_path, &LineInfo::fake())
         .expect("it to not fail")
         .is_none());
-    }
-
-    #[test]
-    fn test_prettier() {
-        let expected_output = "<!doctype html>
-<html>
-  <head>
-    <style>
-      body {
-        background-color: powderblue;
-      }
-      h1 {
-        color: blue;
-      }
-      p {
-        color: red;
-      }
-    </style>
-  </head>
-  <body>
-    <h1>This is a heading</h1>
-    <p>This is a paragraph.</p>
-  </body>
-</html>
-";
-
-        let l = Lang::<Html> {
-            enabled: true,
-            formatter: MdsfFormatter::Single(Html::Prettier),
-        };
-
-        let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");
-        let snippet_path = snippet.path();
-
-        let output = l
-            .format(snippet_path, &LineInfo::fake())
-            .expect("it to not fail")
-            .expect("it to be a snippet");
-
-        assert_eq!(output, expected_output);
     }
 }
