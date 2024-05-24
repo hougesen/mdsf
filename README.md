@@ -81,9 +81,10 @@ mdsf init
 | Go               | `crlfmt`, `gofmt`, `gofumpt`, `goimports`                     |
 | GraphQL          | `prettier`                                                    |
 | Groovy           | `npm-groovy-lint`                                             |
+| Handlebars       | `djlint`, `prettier`                                          |
 | Haskell          | `fourmolu`, `hindent`, `ormolu`, `stylish-haskell`            |
 | Hcl              | `terraform_fmt`, `tofu_fmt`                                   |
-| Html             | `prettier`                                                    |
+| Html             | `djlint`, `prettier`                                          |
 | Java             | `clang-format`, `google-java-format`                          |
 | JavaScript       | `biome`, `clang-format`, `deno_fmt`, `prettier`, `standardjs` |
 | Json             | `biome`, `clang-format`, `deno_fmt`, `prettier`               |
@@ -93,8 +94,10 @@ mdsf init
 | Kotlin           | `ktfmt`, `ktlint`                                             |
 | Lua              | `luaformatter`, `stylua`                                      |
 | Markdown         | `prettier`                                                    |
+| Mustache         | `djlint`                                                      |
 | Nim              | `nimpretty`                                                   |
 | Nix              | `alejandra`, `nixfmt`, `nixpkgs-fmt`                          |
+| Nunjucks         | `djlint`                                                      |
 | OCaml            | `ocamlformat`, `ocp-indent`                                   |
 | ObjectiveC       | `clang-format`                                                |
 | Perl             | `perltidy`                                                    |

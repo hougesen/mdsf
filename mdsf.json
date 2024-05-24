@@ -82,6 +82,10 @@
     "enabled": true,
     "formatter": [["fourmolu", "ormolu", "hindent"]]
   },
+  "handlebars": {
+    "enabled": true,
+    "formatter": "prettier"
+  },
   "hcl": {
     "enabled": true,
     "formatter": [["terraform_fmt", "tofu_fmt"]]
@@ -220,5 +224,13 @@
   "zig": {
     "enabled": true,
     "formatter": "zigfmt"
+  },
+  "nunjucks": {
+    "enabled": true,
+    "formatter": "djlint"
+  },
+  "mustache": {
+    "enabled": true,
+    "formatter": "djlint"
   }
 }

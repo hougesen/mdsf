@@ -7,9 +7,10 @@ use crate::{
         blade::Blade, c::C, cabal::Cabal, clojure::Clojure, cpp::Cpp, crystal::Crystal,
         csharp::CSharp, css::Css, d::D, dart::Dart, elixir::Elixir, elm::Elm, erlang::Erlang,
         fortran::Fortran, fsharp::FSharp, gleam::Gleam, go::Go, graphql::GraphQL, groovy::Groovy,
-        haskell::Haskell, hcl::Hcl, html::Html, java::Java, javascript::JavaScript, json::Json,
-        julia::Julia, just::Just, kcl::Kcl, kotlin::Kotlin, lua::Lua, markdown::Markdown, nim::Nim,
-        nix::Nix, objective_c::ObjectiveC, ocaml::OCaml, perl::Perl, protobuf::Protobuf,
+        handlebars::Handlebars, haskell::Haskell, hcl::Hcl, html::Html, java::Java,
+        javascript::JavaScript, json::Json, julia::Julia, just::Just, kcl::Kcl, kotlin::Kotlin,
+        lua::Lua, markdown::Markdown, mustache::Mustache, nim::Nim, nix::Nix, nunjucks::Nunjucks,
+        objective_c::ObjectiveC, ocaml::OCaml, perl::Perl, protobuf::Protobuf,
         purescript::PureScript, python::Python, rescript::ReScript,
         restructuredtext::ReStructuredText, roc::Roc, ruby::Ruby, rust::Rust, scala::Scala,
         shell::Shell, sql::Sql, swift::Swift, toml::Toml, typescript::TypeScript, vue::Vue,
@@ -101,6 +102,9 @@ pub struct MdsfConfig {
 
     #[serde(default)]
     pub haskell: Lang<Haskell>,
+
+    #[serde(default)]
+    pub handlebars: Lang<Handlebars>,
 
     #[serde(default)]
     pub hcl: Lang<Hcl>,
@@ -203,6 +207,12 @@ pub struct MdsfConfig {
 
     #[serde(default)]
     pub zig: Lang<Zig>,
+
+    #[serde(default)]
+    pub nunjucks: Lang<Nunjucks>,
+
+    #[serde(default)]
+    pub mustache: Lang<Mustache>,
 }
 
 impl Default for MdsfConfig {
@@ -232,6 +242,7 @@ impl Default for MdsfConfig {
             go: Lang::<Go>::default(),
             graphql: Lang::<GraphQL>::default(),
             groovy: Lang::<Groovy>::default(),
+            handlebars: Lang::<_>::default(),
             haskell: Lang::<Haskell>::default(),
             hcl: Lang::<Hcl>::default(),
             html: Lang::<Html>::default(),
@@ -267,6 +278,8 @@ impl Default for MdsfConfig {
             xml: Lang::<Xml>::default(),
             yaml: Lang::<Yaml>::default(),
             zig: Lang::<Zig>::default(),
+            mustache: Lang::<Mustache>::default(),
+            nunjucks: Lang::<Nunjucks>::default(),
         }
     }
 }
