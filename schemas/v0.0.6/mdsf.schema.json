@@ -687,7 +687,7 @@
     },
     "Go": {
       "type": "string",
-      "enum": ["gofmt", "gofumpt", "goimports"]
+      "enum": ["gofmt", "gofumpt", "goimports", "crlfmt"]
     },
     "GraphQL": {
       "type": "string",
