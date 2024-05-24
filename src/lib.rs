@@ -1,11 +1,13 @@
 use core::sync::atomic::AtomicBool;
 
-use config::MdsfConfig;
-use error::MdsfError;
-use formatters::format_snippet;
-use languages::Language;
-use parser::{parse_generic_codeblock, parse_go_codeblock};
-use terminal::{print_changed_file, print_changed_file_error, print_unchanged_file};
+use crate::{
+    config::MdsfConfig,
+    error::MdsfError,
+    formatters::format_snippet,
+    languages::Language,
+    parser::{parse_generic_codeblock, parse_go_codeblock},
+    terminal::{print_changed_file, print_changed_file_error, print_unchanged_file},
+};
 
 pub mod cli;
 pub mod config;
@@ -108,24 +110,20 @@ pub fn handle_file(
 
     let input = std::fs::read_to_string(path)?;
 
-    if input.is_empty() {
-        print_unchanged_file(path, time.elapsed());
+    if !input.is_empty() {
+        let (modified, output) = format_file(config, path, &input);
 
-        return Ok(false);
-    }
+        if modified && output != input {
+            if dry_run {
+                print_changed_file_error(path);
+            } else {
+                std::fs::write(path, output)?;
+            }
 
-    let (modified, output) = format_file(config, path, &input);
+            print_changed_file(path, time.elapsed());
 
-    if modified && output != input {
-        print_changed_file(path, time.elapsed());
-
-        if dry_run {
-            print_changed_file_error(path);
-        } else {
-            std::fs::write(path, output)?;
+            return Ok(true);
         }
-
-        return Ok(true);
     }
 
     print_unchanged_file(path, time.elapsed());
