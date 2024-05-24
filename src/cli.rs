@@ -10,14 +10,17 @@ pub struct Cli {
 
 #[derive(Subcommand, Debug)]
 pub enum Commands {
+    /// Run formatters on input files
     Format(FormatCommandArguments),
+
     /// Create a new mdsf config
     Init,
+
+    #[clap(hide(true))]
     /// Generate json schema
     Schema,
 }
 
-/// Run formatters on input files
 #[derive(Args, Debug)]
 pub struct FormatCommandArguments {
     // Path to file or directory
