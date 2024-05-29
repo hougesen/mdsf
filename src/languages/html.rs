@@ -29,7 +29,10 @@ impl Default for Lang<Html> {
 impl Default for MdsfFormatter<Html> {
     #[inline]
     fn default() -> Self {
-        Self::Single(Html::Prettier)
+        Self::Multiple(vec![Self::Multiple(vec![
+            Self::Single(Html::Prettier),
+            Self::Single(Html::DjLint),
+        ])])
     }
 }
 

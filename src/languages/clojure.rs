@@ -3,7 +3,7 @@ use schemars::JsonSchema;
 use super::{Lang, LanguageFormatter};
 use crate::{
     error::MdsfError,
-    formatters::{cljstyle::format_using_cljstyle, MdsfFormatter},
+    formatters::{cljstyle::format_using_cljstyle, joker::format_using_joker, MdsfFormatter},
 };
 
 #[derive(Default, serde::Serialize, serde::Deserialize, JsonSchema)]
@@ -12,6 +12,8 @@ pub enum Clojure {
     #[default]
     #[serde(rename = "cljstyle")]
     Cljstyle,
+    #[serde(rename = "joker")]
+    Joker,
 }
 
 impl Default for Lang<Clojure> {
@@ -27,7 +29,10 @@ impl Default for Lang<Clojure> {
 impl Default for MdsfFormatter<Clojure> {
     #[inline]
     fn default() -> Self {
-        Self::Single(Clojure::Cljstyle)
+        Self::Multiple(vec![Self::Multiple(vec![
+            Self::Single(Clojure::Cljstyle),
+            Self::Single(Clojure::Joker),
+        ])])
     }
 }
 
@@ -39,6 +44,7 @@ impl LanguageFormatter for Clojure {
     ) -> Result<(bool, Option<String>), MdsfError> {
         match self {
             Self::Cljstyle => format_using_cljstyle(snippet_path),
+            Self::Joker => format_using_joker(snippet_path),
         }
     }
 }
@@ -48,12 +54,13 @@ impl core::fmt::Display for Clojure {
     fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
         match self {
             Self::Cljstyle => write!(f, "cljstyle"),
+            Self::Joker => write!(f, "joker"),
         }
     }
 }
 
 #[cfg(test)]
-mod test_c {
+mod test_clojure {
     use super::Clojure;
     use crate::{
         formatters::{setup_snippet, MdsfFormatter},

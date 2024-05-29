@@ -31,7 +31,10 @@ impl Default for Lang<Css> {
 impl Default for MdsfFormatter<Css> {
     #[inline]
     fn default() -> Self {
-        Self::Single(Css::Prettier)
+        Self::Multiple(vec![Self::Multiple(vec![
+            Self::Single(Css::Prettier),
+            Self::Single(Css::StyleLint),
+        ])])
     }
 }
 

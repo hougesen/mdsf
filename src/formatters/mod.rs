@@ -38,6 +38,7 @@ pub mod goimports;
 pub mod google_java_format;
 pub mod hindent;
 pub mod isort;
+pub mod joker;
 pub mod juliaformatter_jl;
 pub mod just_fmt;
 pub mod kcl_fmt;

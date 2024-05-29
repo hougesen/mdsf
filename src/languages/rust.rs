@@ -34,7 +34,7 @@ impl Default for Lang<Rust> {
 impl Default for MdsfFormatter<Rust> {
     #[inline]
     fn default() -> Self {
-        Self::Single(Rust::RustFmt)
+        Self::Multiple(vec![Self::Multiple(vec![Self::Single(Rust::RustFmt)])])
     }
 }
 
