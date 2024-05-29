@@ -5,8 +5,8 @@ use crate::{
     error::MdsfError,
     formatters::{
         autopep8::format_using_autopep8, black::format_using_black, blue::format_using_blue,
-        isort::format_using_isort, ruff::format_using_ruff, usort::format_using_usort,
-        yapf::format_using_yapf, MdsfFormatter,
+        isort::format_using_isort, pyink::format_using_pyink, ruff::format_using_ruff,
+        usort::format_using_usort, yapf::format_using_yapf, MdsfFormatter,
     },
 };
 
@@ -28,6 +28,8 @@ pub enum Python {
     Isort,
     #[serde(rename = "usort")]
     Usort,
+    #[serde(rename = "pyink")]
+    PyInk,
 }
 
 impl LanguageFormatter for Python {
@@ -44,6 +46,7 @@ impl LanguageFormatter for Python {
             Self::Yapf => format_using_yapf(snippet_path),
             Self::Isort => format_using_isort(snippet_path),
             Self::Usort => format_using_usort(snippet_path),
+            Self::PyInk => format_using_pyink(snippet_path),
         }
     }
 }
@@ -62,6 +65,7 @@ impl Default for MdsfFormatter<Python> {
                 Self::Single(Python::Black),
                 Self::Single(Python::Yapf),
                 Self::Single(Python::Autopep8),
+                Self::Single(Python::PyInk),
             ]),
         ])
     }
@@ -88,6 +92,7 @@ impl core::fmt::Display for Python {
             Self::Autopep8 => write!(f, "autopep8"),
             Self::Isort => write!(f, "isort"),
             Self::Usort => write!(f, "usort"),
+            Self::PyInk => write!(f, "pyink"),
         }
     }
 }
@@ -297,6 +302,27 @@ def add(a: int, b: int) -> int:
         };
 
         let snippet = setup_snippet(input, EXTENSION).expect("it to save the file");
+        let snippet_path = snippet.path();
+
+        let output = l
+            .format(snippet_path, &LineInfo::fake())
+            .expect("it to not fail")
+            .expect("it to be a snippet");
+
+        assert_eq!(output, expected_output);
+    }
+
+    #[test_with::executable(pyink)]
+    #[test]
+    fn test_pyink() {
+        let expected_output = "def add(a: int, b: int) -> int:\n    return a + b\n";
+
+        let l = Lang::<Python> {
+            enabled: true,
+            formatter: MdsfFormatter::Single(Python::PyInk),
+        };
+
+        let snippet = setup_snippet(INPUT, EXTENSION).expect("it to save the file");
         let snippet_path = snippet.path();
 
         let output = l

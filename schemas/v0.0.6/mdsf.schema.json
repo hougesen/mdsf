@@ -490,7 +490,7 @@
         "enabled": true,
         "formatter": [
           ["usort", "isort"],
-          ["ruff", "blue", "black", "yapf", "autopep8"]
+          ["ruff", "blue", "black", "yapf", "autopep8", "pyink"]
         ]
       },
       "allOf": [
@@ -2349,7 +2349,16 @@
     },
     "Python": {
       "type": "string",
-      "enum": ["ruff", "black", "yapf", "blue", "autopep8", "isort", "usort"]
+      "enum": [
+        "ruff",
+        "black",
+        "yapf",
+        "blue",
+        "autopep8",
+        "isort",
+        "usort",
+        "pyink"
+      ]
     },
     "ReScript": {
       "type": "string",

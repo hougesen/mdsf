@@ -168,7 +168,7 @@
     "enabled": true,
     "formatter": [
       ["usort", "isort"],
-      ["ruff", "blue", "black", "yapf", "autopep8"]
+      ["ruff", "blue", "black", "yapf", "autopep8", "pyink"]
     ]
   },
   "rescript": {
