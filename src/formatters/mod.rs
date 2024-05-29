@@ -54,6 +54,7 @@ pub mod ktlint;
 pub mod leptosfmt;
 pub mod luaformatter;
 pub mod mdformat;
+pub mod misspell;
 pub mod mix_format;
 pub mod nimpretty;
 pub mod nixfmt;
