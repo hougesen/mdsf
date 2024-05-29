@@ -32,6 +32,7 @@ test-coverage:
 
 update-readme:
     cargo run -- schema
+    cargo run -- init
     node scripts/update-supported-languages.mjs
     npx --yes prettier --write .
     git restore tests/

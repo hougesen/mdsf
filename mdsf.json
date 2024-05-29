@@ -50,6 +50,10 @@
     "enabled": true,
     "formatter": "elm-format"
   },
+  "erb": {
+    "enabled": true,
+    "formatter": "erb-formatter"
+  },
   "erlang": {
     "enabled": true,
     "formatter": "erlfmt"
@@ -84,7 +88,7 @@
   },
   "handlebars": {
     "enabled": true,
-    "formatter": "prettier"
+    "formatter": [["prettier", "djlint"]]
   },
   "hcl": {
     "enabled": true,

@@ -139,6 +139,17 @@
         }
       ]
     },
+    "erb": {
+      "default": {
+        "enabled": true,
+        "formatter": "erb-formatter"
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/Lang_for_Erb"
+        }
+      ]
+    },
     "erlang": {
       "default": {
         "enabled": true,
@@ -224,7 +235,7 @@
     "handlebars": {
       "default": {
         "enabled": true,
-        "formatter": "prettier"
+        "formatter": [["prettier", "djlint"]]
       },
       "allOf": [
         {
@@ -702,6 +713,10 @@
       "type": "string",
       "enum": ["elm-format"]
     },
+    "Erb": {
+      "type": "string",
+      "enum": ["erb-formatter"]
+    },
     "Erlang": {
       "type": "string",
       "enum": ["erlfmt", "efmt"]
@@ -930,6 +945,19 @@
         },
         "formatter": {
           "$ref": "#/definitions/MdsfFormatter_for_Elm"
+        }
+      },
+      "additionalProperties": false
+    },
+    "Lang_for_Erb": {
+      "type": "object",
+      "properties": {
+        "enabled": {
+          "default": true,
+          "type": "boolean"
+        },
+        "formatter": {
+          "$ref": "#/definitions/MdsfFormatter_for_Erb"
         }
       },
       "additionalProperties": false
@@ -1679,6 +1707,19 @@
           "type": "array",
           "items": {
             "$ref": "#/definitions/MdsfFormatter_for_Elm"
+          }
+        }
+      ]
+    },
+    "MdsfFormatter_for_Erb": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/Erb"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MdsfFormatter_for_Erb"
           }
         }
       ]

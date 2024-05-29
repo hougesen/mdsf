@@ -26,6 +26,7 @@ pub mod dfmt;
 pub mod djlint;
 pub mod efmt;
 pub mod elm_format;
+pub mod erb_formatter;
 pub mod erlfmt;
 pub mod fantomas;
 pub mod fourmolu;
@@ -182,6 +183,7 @@ pub fn format_snippet(config: &MdsfConfig, info: &LineInfo, code: &str) -> Strin
             Language::Dart => config.dart.format(snippet_path, info),
             Language::Elixir => config.elixir.format(snippet_path, info),
             Language::Elm => config.elm.format(snippet_path, info),
+            Language::Erb => config.erb.format(snippet_path, info),
             Language::Erlang => config.erlang.format(snippet_path, info),
             Language::Fortran => config.fortran.format(snippet_path, info),
             Language::FSharp => config.fsharp.format(snippet_path, info),
