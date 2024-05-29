@@ -5,7 +5,8 @@ use crate::{
     error::MdsfError,
     formatters::{
         crlfmt::format_using_crlfmt, gci::format_using_gci, gofmt::format_using_gofmt,
-        gofumpt::format_using_gofumpt, goimports::format_using_goimports, MdsfFormatter,
+        gofumpt::format_using_gofumpt, goimports::format_using_goimports,
+        goimports_reviser::format_using_goimports_reviser, MdsfFormatter,
     },
 };
 
@@ -19,6 +20,8 @@ pub enum Go {
     GoFumpt,
     #[serde(rename = "goimports")]
     GoImports,
+    #[serde(rename = "goimports-reviser")]
+    GoImportsReviser,
     #[serde(rename = "crlfmt")]
     CrlFmt,
     #[serde(rename = "gci")]
@@ -39,7 +42,11 @@ impl Default for MdsfFormatter<Go> {
     #[inline]
     fn default() -> Self {
         Self::Multiple(vec![
-            Self::Multiple(vec![Self::Single(Go::GCI), Self::Single(Go::GoImports)]),
+            Self::Multiple(vec![
+                Self::Single(Go::GCI),
+                Self::Single(Go::GoImportsReviser),
+                Self::Single(Go::GoImports),
+            ]),
             Self::Multiple(vec![
                 Self::Single(Go::GoFumpt),
                 Self::Single(Go::GoFmt),
@@ -59,6 +66,7 @@ impl LanguageFormatter for Go {
             Self::GoFmt => format_using_gofmt(snippet_path),
             Self::GoFumpt => format_using_gofumpt(snippet_path),
             Self::GoImports => format_using_goimports(snippet_path),
+            Self::GoImportsReviser => format_using_goimports_reviser(snippet_path),
             Self::CrlFmt => format_using_crlfmt(snippet_path),
             Self::GCI => format_using_gci(snippet_path),
         }
@@ -72,6 +80,7 @@ impl core::fmt::Display for Go {
             Self::GoFmt => write!(f, "gofmt"),
             Self::GoFumpt => write!(f, "gofumpt"),
             Self::GoImports => write!(f, "goimports"),
+            Self::GoImportsReviser => write!(f, "goimports-reviser"),
             Self::CrlFmt => write!(f, "crlfmt"),
             Self::GCI => write!(f, "gci"),
         }

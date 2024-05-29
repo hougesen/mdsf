@@ -40,6 +40,7 @@ pub mod gleam_format;
 pub mod gofmt;
 pub mod gofumpt;
 pub mod goimports;
+pub mod goimports_reviser;
 pub mod google_java_format;
 pub mod hindent;
 pub mod isort;

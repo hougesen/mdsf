@@ -203,7 +203,7 @@
       "default": {
         "enabled": true,
         "formatter": [
-          ["gci", "goimports"],
+          ["gci", "goimports-reviser", "goimports"],
           ["gofumpt", "gofmt", "crlfmt"]
         ]
       },
@@ -751,7 +751,14 @@
     },
     "Go": {
       "type": "string",
-      "enum": ["gofmt", "gofumpt", "goimports", "crlfmt", "gci"]
+      "enum": [
+        "gofmt",
+        "gofumpt",
+        "goimports",
+        "goimports-reviser",
+        "crlfmt",
+        "gci"
+      ]
     },
     "GraphQL": {
       "type": "string",
