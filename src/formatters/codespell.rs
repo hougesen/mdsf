@@ -7,9 +7,7 @@ pub fn format_using_codespell(
 ) -> Result<(bool, Option<String>), MdsfError> {
     let mut cmd = std::process::Command::new("codespell");
 
-    cmd.arg(snippet_path)
-        .arg("--check-hidden")
-        .arg("--write-changes");
+    cmd.arg(snippet_path).arg("--check-hidden");
 
     execute_command(&mut cmd, snippet_path)
 }
