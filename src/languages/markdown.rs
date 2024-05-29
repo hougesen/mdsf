@@ -5,8 +5,8 @@ use crate::{
     error::MdsfError,
     formatters::{
         autocorrect::format_using_autocorrect, codespell::format_using_codespell,
-        mdformat::format_using_mdformat, prettier::format_using_prettier,
-        typos::format_using_typos, MdsfFormatter,
+        mdformat::format_using_mdformat, misspell::format_using_misspell,
+        prettier::format_using_prettier, typos::format_using_typos, MdsfFormatter,
     },
 };
 
@@ -24,6 +24,8 @@ pub enum Markdown {
     Codespell,
     #[serde(rename = "autocorrect")]
     Autocorrect,
+    #[serde(rename = "misspell")]
+    Misspell,
 }
 
 impl core::fmt::Display for Markdown {
@@ -35,6 +37,7 @@ impl core::fmt::Display for Markdown {
             Self::Typos => write!(f, "typos"),
             Self::Codespell => write!(f, "codespell"),
             Self::Autocorrect => write!(f, "autocorrect"),
+            Self::Misspell => write!(f, "misspell"),
         }
     }
 }
@@ -71,6 +74,7 @@ impl LanguageFormatter for Markdown {
             Self::MdFormat => format_using_mdformat(snippet_path),
             Self::Prettier => format_using_prettier(snippet_path),
             Self::Typos => format_using_typos(snippet_path),
+            Self::Misspell => format_using_misspell(snippet_path),
         }
     }
 }
