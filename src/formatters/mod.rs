@@ -83,6 +83,7 @@ pub mod swiftformat;
 pub mod taplo;
 pub mod terraform_fmt;
 pub mod tofu_fmt;
+pub mod typos;
 pub mod usort;
 pub mod xmlformat;
 pub mod xmllint;

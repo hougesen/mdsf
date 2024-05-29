@@ -3,7 +3,10 @@ use schemars::JsonSchema;
 use super::{Lang, LanguageFormatter};
 use crate::{
     error::MdsfError,
-    formatters::{mdformat::format_using_mdformat, prettier::format_using_prettier, MdsfFormatter},
+    formatters::{
+        mdformat::format_using_mdformat, prettier::format_using_prettier,
+        typos::format_using_typos, MdsfFormatter,
+    },
 };
 
 #[derive(Default, serde::Serialize, serde::Deserialize, JsonSchema)]
@@ -14,6 +17,8 @@ pub enum Markdown {
     Prettier,
     #[serde(rename = "mdformat")]
     MdFormat,
+    #[serde(rename = "typos")]
+    Typos,
 }
 
 impl core::fmt::Display for Markdown {
@@ -22,6 +27,7 @@ impl core::fmt::Display for Markdown {
         match self {
             Self::Prettier => write!(f, "prettier"),
             Self::MdFormat => write!(f, "mdformat"),
+            Self::Typos => write!(f, "typos"),
         }
     }
 }
@@ -55,6 +61,7 @@ impl LanguageFormatter for Markdown {
         match self {
             Self::Prettier => format_using_prettier(snippet_path),
             Self::MdFormat => format_using_mdformat(snippet_path),
+            Self::Typos => format_using_typos(snippet_path),
         }
     }
 }
