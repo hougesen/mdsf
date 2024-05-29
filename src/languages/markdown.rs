@@ -4,8 +4,8 @@ use super::{Lang, LanguageFormatter};
 use crate::{
     error::MdsfError,
     formatters::{
-        mdformat::format_using_mdformat, prettier::format_using_prettier,
-        typos::format_using_typos, MdsfFormatter,
+        codespell::format_using_codespell, mdformat::format_using_mdformat,
+        prettier::format_using_prettier, typos::format_using_typos, MdsfFormatter,
     },
 };
 
@@ -19,6 +19,8 @@ pub enum Markdown {
     MdFormat,
     #[serde(rename = "typos")]
     Typos,
+    #[serde(rename = "codespell")]
+    Codespell,
 }
 
 impl core::fmt::Display for Markdown {
@@ -28,6 +30,7 @@ impl core::fmt::Display for Markdown {
             Self::Prettier => write!(f, "prettier"),
             Self::MdFormat => write!(f, "mdformat"),
             Self::Typos => write!(f, "typos"),
+            Self::Codespell => write!(f, "codespell"),
         }
     }
 }
@@ -62,6 +65,7 @@ impl LanguageFormatter for Markdown {
             Self::Prettier => format_using_prettier(snippet_path),
             Self::MdFormat => format_using_mdformat(snippet_path),
             Self::Typos => format_using_typos(snippet_path),
+            Self::Codespell => format_using_codespell(snippet_path),
         }
     }
 }

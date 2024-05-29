@@ -18,6 +18,7 @@ pub mod buf;
 pub mod cabal_format;
 pub mod clang_format;
 pub mod cljstyle;
+pub mod codespell;
 pub mod crlfmt;
 pub mod crystal_format;
 pub mod csharpier;
