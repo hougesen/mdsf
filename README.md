@@ -103,6 +103,7 @@ mdsf init
 | ObjectiveC       | `clang-format`                                                                          |
 | Perl             | `perltidy`                                                                              |
 | Protobuf         | `buf`, `clang-format`                                                                   |
+| Puppet           | `puppet-lint`                                                                           |
 | PureScript       | `purs-tidy`                                                                             |
 | Python           | `auto-optional`, `autopep8`, `black`, `blue`, `isort`, `pyink`, `ruff`, `usort`, `yapf` |
 | ReScript         | `rescript_format`                                                                       |
