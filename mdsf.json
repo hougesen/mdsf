@@ -73,7 +73,7 @@
   "go": {
     "enabled": true,
     "formatter": [
-      ["gci", "goimports"],
+      ["gci", "goimports-reviser", "goimports"],
       ["gofumpt", "gofmt", "crlfmt"]
     ]
   },
