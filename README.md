@@ -94,7 +94,7 @@ mdsf init
 | Kcl              | `kcl_fmt`                                                                               |
 | Kotlin           | `ktfmt`, `ktlint`                                                                       |
 | Lua              | `luaformatter`, `stylua`                                                                |
-| Markdown         | `mdformat`, `prettier`, `typos`                                                         |
+| Markdown         | `codespell`, `mdformat`, `prettier`, `typos`                                            |
 | Mustache         | `djlint`                                                                                |
 | Nim              | `nimpretty`                                                                             |
 | Nix              | `alejandra`, `nixfmt`, `nixpkgs-fmt`                                                    |
