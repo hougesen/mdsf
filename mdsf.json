@@ -72,7 +72,10 @@
   },
   "go": {
     "enabled": true,
-    "formatter": ["goimports", ["gofumpt", "gofmt", "crlfmt"]]
+    "formatter": [
+      ["gci", "goimports"],
+      ["gofumpt", "gofmt", "crlfmt"]
+    ]
   },
   "graphql": {
     "enabled": true,

@@ -60,7 +60,7 @@ impl core::fmt::Display for Fortran {
 }
 
 #[cfg(test)]
-mod test_fortrain {
+mod test_fortran {
     use super::Fortran;
     use crate::{
         formatters::{setup_snippet, MdsfFormatter},

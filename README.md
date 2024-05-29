@@ -79,7 +79,7 @@ mdsf init
 | FSharp           | `fantomas`                                                                              |
 | Fortran          | `findent`, `fprettify`                                                                  |
 | Gleam            | `gleam_format`                                                                          |
-| Go               | `crlfmt`, `gofmt`, `gofumpt`, `goimports`                                               |
+| Go               | `crlfmt`, `gci`, `gofmt`, `gofumpt`, `goimports`                                        |
 | GraphQL          | `prettier`                                                                              |
 | Groovy           | `npm-groovy-lint`                                                                       |
 | Handlebars       | `djlint`, `prettier`                                                                    |

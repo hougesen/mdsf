@@ -4,8 +4,8 @@ use super::{Lang, LanguageFormatter};
 use crate::{
     error::MdsfError,
     formatters::{
-        crlfmt::format_using_crlfmt, gofmt::format_using_gofmt, gofumpt::format_using_gofumpt,
-        goimports::format_using_goimports, MdsfFormatter,
+        crlfmt::format_using_crlfmt, gci::format_using_gci, gofmt::format_using_gofmt,
+        gofumpt::format_using_gofumpt, goimports::format_using_goimports, MdsfFormatter,
     },
 };
 
@@ -21,6 +21,8 @@ pub enum Go {
     GoImports,
     #[serde(rename = "crlfmt")]
     CrlFmt,
+    #[serde(rename = "gci")]
+    GCI,
 }
 
 impl Default for Lang<Go> {
@@ -37,7 +39,7 @@ impl Default for MdsfFormatter<Go> {
     #[inline]
     fn default() -> Self {
         Self::Multiple(vec![
-            Self::Single(Go::GoImports),
+            Self::Multiple(vec![Self::Single(Go::GCI), Self::Single(Go::GoImports)]),
             Self::Multiple(vec![
                 Self::Single(Go::GoFumpt),
                 Self::Single(Go::GoFmt),
@@ -58,6 +60,7 @@ impl LanguageFormatter for Go {
             Self::GoFumpt => format_using_gofumpt(snippet_path),
             Self::GoImports => format_using_goimports(snippet_path),
             Self::CrlFmt => format_using_crlfmt(snippet_path),
+            Self::GCI => format_using_gci(snippet_path),
         }
     }
 }
@@ -70,6 +73,7 @@ impl core::fmt::Display for Go {
             Self::GoFumpt => write!(f, "gofumpt"),
             Self::GoImports => write!(f, "goimports"),
             Self::CrlFmt => write!(f, "crlfmt"),
+            Self::GCI => write!(f, "gci"),
         }
     }
 }
