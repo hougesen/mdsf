@@ -60,7 +60,7 @@
   },
   "fortran": {
     "enabled": true,
-    "formatter": "fprettify"
+    "formatter": [["fprettify", "findent"]]
   },
   "fsharp": {
     "enabled": true,

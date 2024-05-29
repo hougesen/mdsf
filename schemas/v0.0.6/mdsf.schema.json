@@ -169,7 +169,7 @@
     "fortran": {
       "default": {
         "enabled": true,
-        "formatter": "fprettify"
+        "formatter": [["fprettify", "findent"]]
       },
       "allOf": [
         {
@@ -729,7 +729,7 @@
     },
     "Fortran": {
       "type": "string",
-      "enum": ["fprettify"]
+      "enum": ["fprettify", "findent"]
     },
     "Gleam": {
       "type": "string",
