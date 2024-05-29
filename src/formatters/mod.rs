@@ -7,6 +7,7 @@ use which::which;
 use crate::{config::MdsfConfig, error::MdsfError, languages::Language, LineInfo, DEBUG};
 
 pub mod alejandra;
+pub mod auto_optional;
 pub mod autopep8;
 pub mod beautysh;
 pub mod biome;
