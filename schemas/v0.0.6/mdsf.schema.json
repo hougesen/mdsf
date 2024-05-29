@@ -2357,7 +2357,8 @@
         "autopep8",
         "isort",
         "usort",
-        "pyink"
+        "pyink",
+        "auto-optional"
       ]
     },
     "ReScript": {
