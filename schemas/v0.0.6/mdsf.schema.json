@@ -1555,7 +1555,7 @@
     },
     "Markdown": {
       "type": "string",
-      "enum": ["prettier", "mdformat"]
+      "enum": ["prettier", "mdformat", "typos"]
     },
     "MdsfFormatter_for_Blade": {
       "anyOf": [
