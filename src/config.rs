@@ -13,8 +13,8 @@ use crate::{
         objective_c::ObjectiveC, ocaml::OCaml, perl::Perl, protobuf::Protobuf,
         purescript::PureScript, python::Python, rescript::ReScript,
         restructuredtext::ReStructuredText, roc::Roc, ruby::Ruby, rust::Rust, scala::Scala,
-        shell::Shell, sql::Sql, swift::Swift, toml::Toml, typescript::TypeScript, vue::Vue,
-        xml::Xml, yaml::Yaml, zig::Zig, Lang,
+        shell::Shell, solidity::Solidity, sql::Sql, swift::Swift, toml::Toml,
+        typescript::TypeScript, vue::Vue, xml::Xml, yaml::Yaml, zig::Zig, Lang,
     },
     runners::JavaScriptRuntime,
     terminal::print_config_not_found,
@@ -188,6 +188,9 @@ pub struct MdsfConfig {
     pub shell: Lang<Shell>,
 
     #[serde(default)]
+    pub solidity: Lang<Solidity>,
+
+    #[serde(default)]
     pub sql: Lang<Sql>,
 
     #[serde(default)]
@@ -275,6 +278,7 @@ impl Default for MdsfConfig {
             scala: Lang::<Scala>::default(),
             shell: Lang::<Shell>::default(),
             sql: Lang::<Sql>::default(),
+            solidity: Lang::<Solidity>::default(),
             swift: Lang::<Swift>::default(),
             toml: Lang::<Toml>::default(),
             typescript: Lang::<TypeScript>::default(),

@@ -60,6 +60,7 @@ pub mod ruby;
 pub mod rust;
 pub mod scala;
 pub mod shell;
+pub mod solidity;
 pub mod sql;
 pub mod swift;
 pub mod toml;
@@ -173,6 +174,7 @@ pub enum Language {
     Elm,
     Erb,
     Erlang,
+
     Fortran,
     FSharp,
     Gleam,
@@ -217,6 +219,7 @@ pub enum Language {
     Xml,
     Yaml,
     Zig,
+    Solidity,
 }
 
 impl core::fmt::Display for Language {
@@ -273,6 +276,7 @@ impl core::fmt::Display for Language {
             Self::Rust => f.write_str("rust"),
             Self::Scala => f.write_str("scala"),
             Self::Shell(flavor) => flavor.fmt(f),
+            Self::Solidity => f.write_str("solidity"),
             Self::Sql => f.write_str("sql"),
             Self::Swift => f.write_str("swift"),
             Self::Toml => f.write_str("toml"),
@@ -311,6 +315,7 @@ impl Language {
             "elm" => Some(Self::Elm),
             "erb" => Some(Self::Erb),
             "erlang" => Some(Self::Erlang),
+            "solidity" => Some(Self::Solidity),
             "fortran" => Some(Self::Fortran),
             "fsharp" => Some(Self::FSharp),
             "gleam" => Some(Self::Gleam),
@@ -389,6 +394,7 @@ impl Language {
             Self::Elm => ".elm",
             Self::Erb => ".erb",
             Self::Erlang => ".erl",
+            Self::Solidity => ".sol",
             Self::Fortran => ".f",
             Self::FSharp => ".fs",
             Self::Gleam => ".gleam",

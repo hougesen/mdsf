@@ -112,6 +112,7 @@ mdsf init
 | Rust             | `leptosfmt`, `rustfmt`, `yew-fmt`                                                       |
 | Scala            | `scalafmt`                                                                              |
 | Shell            | `beautysh`, `shfmt`                                                                     |
+| Solidity         | `forge_fmt`                                                                             |
 | Sql              | `sql-formatter`, `sqlfluff`                                                             |
 | Swift            | `swift-format`, `swiftformat`                                                           |
 | Toml             | `taplo`                                                                                 |
