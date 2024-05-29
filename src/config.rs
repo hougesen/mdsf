@@ -5,9 +5,9 @@ use crate::{
     error::MdsfError,
     languages::{
         blade::Blade, c::C, cabal::Cabal, clojure::Clojure, cpp::Cpp, crystal::Crystal,
-        csharp::CSharp, css::Css, d::D, dart::Dart, elixir::Elixir, elm::Elm, erlang::Erlang,
-        fortran::Fortran, fsharp::FSharp, gleam::Gleam, go::Go, graphql::GraphQL, groovy::Groovy,
-        handlebars::Handlebars, haskell::Haskell, hcl::Hcl, html::Html, java::Java,
+        csharp::CSharp, css::Css, d::D, dart::Dart, elixir::Elixir, elm::Elm, erb::Erb,
+        erlang::Erlang, fortran::Fortran, fsharp::FSharp, gleam::Gleam, go::Go, graphql::GraphQL,
+        groovy::Groovy, handlebars::Handlebars, haskell::Haskell, hcl::Hcl, html::Html, java::Java,
         javascript::JavaScript, json::Json, julia::Julia, just::Just, kcl::Kcl, kotlin::Kotlin,
         lua::Lua, markdown::Markdown, mustache::Mustache, nim::Nim, nix::Nix, nunjucks::Nunjucks,
         objective_c::ObjectiveC, ocaml::OCaml, perl::Perl, protobuf::Protobuf,
@@ -78,6 +78,9 @@ pub struct MdsfConfig {
 
     #[serde(default)]
     pub elm: Lang<Elm>,
+
+    #[serde(default)]
+    pub erb: Lang<Erb>,
 
     #[serde(default)]
     pub erlang: Lang<Erlang>,
@@ -235,6 +238,7 @@ impl Default for MdsfConfig {
             dart: Lang::<Dart>::default(),
             elixir: Lang::<Elixir>::default(),
             elm: Lang::<Elm>::default(),
+            erb: Lang::<Erb>::default(),
             erlang: Lang::<Erlang>::default(),
             fortran: Lang::<Fortran>::default(),
             fsharp: Lang::<FSharp>::default(),

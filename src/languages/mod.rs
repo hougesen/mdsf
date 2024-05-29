@@ -22,6 +22,7 @@ pub mod d;
 pub mod dart;
 pub mod elixir;
 pub mod elm;
+pub mod erb;
 pub mod erlang;
 pub mod fortran;
 pub mod fsharp;
@@ -170,6 +171,7 @@ pub enum Language {
     Dart,
     Elixir,
     Elm,
+    Erb,
     Erlang,
     Fortran,
     FSharp,
@@ -233,6 +235,7 @@ impl core::fmt::Display for Language {
             Self::Dart => f.write_str("dart"),
             Self::Elixir => f.write_str("elixir"),
             Self::Elm => f.write_str("elm"),
+            Self::Erb => f.write_str("erb"),
             Self::Erlang => f.write_str("erlang"),
             Self::Fortran => f.write_str("fortran"),
             Self::FSharp => f.write_str("f#"),
@@ -306,6 +309,7 @@ impl Language {
             "dart" => Some(Self::Dart),
             "elixir" => Some(Self::Elixir),
             "elm" => Some(Self::Elm),
+            "erb" => Some(Self::Erb),
             "erlang" => Some(Self::Erlang),
             "fortran" => Some(Self::Fortran),
             "fsharp" => Some(Self::FSharp),
@@ -383,6 +387,7 @@ impl Language {
             Self::Dart => ".dart",
             Self::Elixir => ".ex",
             Self::Elm => ".elm",
+            Self::Erb => ".erb",
             Self::Erlang => ".erl",
             Self::Fortran => ".f",
             Self::FSharp => ".fs",

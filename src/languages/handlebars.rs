@@ -29,7 +29,10 @@ impl Default for Lang<Handlebars> {
 impl Default for MdsfFormatter<Handlebars> {
     #[inline]
     fn default() -> Self {
-        Self::Single(Handlebars::Prettier)
+        Self::Multiple(vec![Self::Multiple(vec![
+            Self::Single(Handlebars::Prettier),
+            Self::Single(Handlebars::DjLint),
+        ])])
     }
 }
 

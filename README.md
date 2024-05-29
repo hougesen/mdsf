@@ -74,6 +74,7 @@ mdsf init
 | Dart             | `dart_format`                                                 |
 | Elixir           | `mix_format`                                                  |
 | Elm              | `elm-format`                                                  |
+| Erb              | `erb-formatter`                                               |
 | Erlang           | `efmt`, `erlfmt`                                              |
 | FSharp           | `fantomas`                                                    |
 | Fortran          | `fprettify`                                                   |
