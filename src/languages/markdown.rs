@@ -4,8 +4,9 @@ use super::{Lang, LanguageFormatter};
 use crate::{
     error::MdsfError,
     formatters::{
-        codespell::format_using_codespell, mdformat::format_using_mdformat,
-        prettier::format_using_prettier, typos::format_using_typos, MdsfFormatter,
+        autocorrect::format_using_autocorrect, codespell::format_using_codespell,
+        mdformat::format_using_mdformat, prettier::format_using_prettier,
+        typos::format_using_typos, MdsfFormatter,
     },
 };
 
@@ -21,6 +22,8 @@ pub enum Markdown {
     Typos,
     #[serde(rename = "codespell")]
     Codespell,
+    #[serde(rename = "autocorrect")]
+    Autocorrect,
 }
 
 impl core::fmt::Display for Markdown {
@@ -31,6 +34,7 @@ impl core::fmt::Display for Markdown {
             Self::MdFormat => write!(f, "mdformat"),
             Self::Typos => write!(f, "typos"),
             Self::Codespell => write!(f, "codespell"),
+            Self::Autocorrect => write!(f, "autocorrect"),
         }
     }
 }
@@ -62,10 +66,11 @@ impl LanguageFormatter for Markdown {
         snippet_path: &std::path::Path,
     ) -> Result<(bool, Option<String>), MdsfError> {
         match self {
-            Self::Prettier => format_using_prettier(snippet_path),
-            Self::MdFormat => format_using_mdformat(snippet_path),
-            Self::Typos => format_using_typos(snippet_path),
+            Self::Autocorrect => format_using_autocorrect(snippet_path),
             Self::Codespell => format_using_codespell(snippet_path),
+            Self::MdFormat => format_using_mdformat(snippet_path),
+            Self::Prettier => format_using_prettier(snippet_path),
+            Self::Typos => format_using_typos(snippet_path),
         }
     }
 }

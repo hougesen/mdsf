@@ -8,6 +8,7 @@ use crate::{config::MdsfConfig, error::MdsfError, languages::Language, LineInfo,
 
 pub mod alejandra;
 pub mod auto_optional;
+pub mod autocorrect;
 pub mod autopep8;
 pub mod beautysh;
 pub mod biome;

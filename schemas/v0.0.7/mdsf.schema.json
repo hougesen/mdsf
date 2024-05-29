@@ -1613,7 +1613,7 @@
     },
     "Markdown": {
       "type": "string",
-      "enum": ["prettier", "mdformat", "typos", "codespell"]
+      "enum": ["prettier", "mdformat", "typos", "codespell", "autocorrect"]
     },
     "MdsfFormatter_for_Blade": {
       "anyOf": [
