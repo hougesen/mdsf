@@ -3,7 +3,7 @@ use schemars::JsonSchema;
 use super::{Lang, LanguageFormatter};
 use crate::{
     error::MdsfError,
-    formatters::{fprettify::format_using_fprettify, MdsfFormatter},
+    formatters::{findent::format_using_findent, fprettify::format_using_fprettify, MdsfFormatter},
 };
 
 #[derive(Default, serde::Serialize, serde::Deserialize, JsonSchema)]
@@ -12,6 +12,8 @@ pub enum Fortran {
     #[default]
     #[serde(rename = "fprettify")]
     Fprettify,
+    #[serde(rename = "findent")]
+    Findent,
 }
 
 impl Default for Lang<Fortran> {
@@ -27,7 +29,10 @@ impl Default for Lang<Fortran> {
 impl Default for MdsfFormatter<Fortran> {
     #[inline]
     fn default() -> Self {
-        Self::Single(Fortran::Fprettify)
+        Self::Multiple(vec![Self::Multiple(vec![
+            Self::Single(Fortran::Fprettify),
+            Self::Single(Fortran::Findent),
+        ])])
     }
 }
 
@@ -39,6 +44,7 @@ impl LanguageFormatter for Fortran {
     ) -> Result<(bool, Option<String>), MdsfError> {
         match self {
             Self::Fprettify => format_using_fprettify(snippet_path),
+            Self::Findent => format_using_findent(snippet_path),
         }
     }
 }
@@ -48,6 +54,7 @@ impl core::fmt::Display for Fortran {
     fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
         match self {
             Self::Fprettify => write!(f, "fprettify"),
+            Self::Findent => write!(f, "findent"),
         }
     }
 }

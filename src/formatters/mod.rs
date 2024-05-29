@@ -29,6 +29,7 @@ pub mod elm_format;
 pub mod erb_formatter;
 pub mod erlfmt;
 pub mod fantomas;
+pub mod findent;
 pub mod fourmolu;
 pub mod fprettify;
 pub mod gleam_format;

@@ -5,7 +5,7 @@ use crate::error::MdsfError;
 pub fn format_using_erb_formatter(
     file_path: &std::path::Path,
 ) -> Result<(bool, Option<String>), MdsfError> {
-    let mut cmd = std::process::Command::new("erb-formatter");
+    let mut cmd = std::process::Command::new("erb-format");
 
     cmd.arg(file_path).arg("--write");
 
