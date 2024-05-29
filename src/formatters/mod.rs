@@ -32,6 +32,7 @@ pub mod erb_formatter;
 pub mod erlfmt;
 pub mod fantomas;
 pub mod findent;
+pub mod forge_fmt;
 pub mod fourmolu;
 pub mod fprettify;
 pub mod gci;
@@ -229,6 +230,7 @@ pub fn format_snippet(config: &MdsfConfig, info: &LineInfo, code: &str) -> Strin
             Language::Rust => config.rust.format(snippet_path, info),
             Language::Scala => config.scala.format(snippet_path, info),
             Language::Shell(_flavor) => config.shell.format(snippet_path, info),
+            Language::Solidity => config.solidity.format(snippet_path, info),
             Language::Sql => config.sql.format(snippet_path, info),
             Language::Swift => config.swift.format(snippet_path, info),
             Language::Toml => config.toml.format(snippet_path, info),

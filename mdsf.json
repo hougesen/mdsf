@@ -202,6 +202,10 @@
     "enabled": true,
     "formatter": [["shfmt", "beautysh"]]
   },
+  "solidity": {
+    "enabled": true,
+    "formatter": [["forge_fmt"]]
+  },
   "sql": {
     "enabled": true,
     "formatter": [["sql-formatter", "sqlfluff"]]

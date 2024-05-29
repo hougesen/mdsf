@@ -579,6 +579,17 @@
         }
       ]
     },
+    "solidity": {
+      "default": {
+        "enabled": true,
+        "formatter": [["forge_fmt"]]
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/Lang_for_Solidity"
+        }
+      ]
+    },
     "sql": {
       "default": {
         "enabled": true,
@@ -1448,6 +1459,19 @@
       },
       "additionalProperties": false
     },
+    "Lang_for_Solidity": {
+      "type": "object",
+      "properties": {
+        "enabled": {
+          "default": true,
+          "type": "boolean"
+        },
+        "formatter": {
+          "$ref": "#/definitions/MdsfFormatter_for_Solidity"
+        }
+      },
+      "additionalProperties": false
+    },
     "Lang_for_Sql": {
       "type": "object",
       "properties": {
@@ -2210,6 +2234,19 @@
         }
       ]
     },
+    "MdsfFormatter_for_Solidity": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/Solidity"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MdsfFormatter_for_Solidity"
+          }
+        }
+      ]
+    },
     "MdsfFormatter_for_Sql": {
       "anyOf": [
         {
@@ -2391,6 +2428,10 @@
     "Shell": {
       "type": "string",
       "enum": ["shfmt", "beautysh"]
+    },
+    "Solidity": {
+      "type": "string",
+      "enum": ["forge_fmt"]
     },
     "Sql": {
       "type": "string",
