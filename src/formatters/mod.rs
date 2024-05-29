@@ -34,6 +34,7 @@ pub mod fantomas;
 pub mod findent;
 pub mod fourmolu;
 pub mod fprettify;
+pub mod gci;
 pub mod gleam_format;
 pub mod gofmt;
 pub mod gofumpt;
