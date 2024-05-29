@@ -184,11 +184,11 @@ pub fn format_snippet(config: &MdsfConfig, info: &LineInfo, code: &str) -> Strin
         if let Ok(Some(formatted_code)) = match info.language {
             Language::Blade => config.blade.format(snippet_path, info),
             Language::C => config.c.format(snippet_path, info),
+            Language::CSharp => config.csharp.format(snippet_path, info),
             Language::Cabal => config.cabal.format(snippet_path, info),
             Language::Clojure => config.clojure.format(snippet_path, info),
             Language::Cpp => config.cpp.format(snippet_path, info),
             Language::Crystal => config.crystal.format(snippet_path, info),
-            Language::CSharp => config.csharp.format(snippet_path, info),
             Language::Css(_flavor) => config.css.format(snippet_path, info),
             Language::D => config.d.format(snippet_path, info),
             Language::Dart => config.dart.format(snippet_path, info),
@@ -196,8 +196,8 @@ pub fn format_snippet(config: &MdsfConfig, info: &LineInfo, code: &str) -> Strin
             Language::Elm => config.elm.format(snippet_path, info),
             Language::Erb => config.erb.format(snippet_path, info),
             Language::Erlang => config.erlang.format(snippet_path, info),
-            Language::Fortran => config.fortran.format(snippet_path, info),
             Language::FSharp => config.fsharp.format(snippet_path, info),
+            Language::Fortran => config.fortran.format(snippet_path, info),
             Language::Gleam => config.gleam.format(snippet_path, info),
             Language::Go => config.go.format(snippet_path, info),
             Language::GraphQL => config.graphql.format(snippet_path, info),
@@ -219,10 +219,11 @@ pub fn format_snippet(config: &MdsfConfig, info: &LineInfo, code: &str) -> Strin
             Language::Nim => config.nim.format(snippet_path, info),
             Language::Nix => config.nix.format(snippet_path, info),
             Language::Nunjucks => config.nunjucks.format(snippet_path, info),
-            Language::ObjectiveC => config.objective_c.format(snippet_path, info),
             Language::OCaml => config.ocaml.format(snippet_path, info),
+            Language::ObjectiveC => config.objective_c.format(snippet_path, info),
             Language::Perl => config.perl.format(snippet_path, info),
             Language::Protobuf => config.protobuf.format(snippet_path, info),
+            Language::Puppet => config.puppet.format(snippet_path, info),
             Language::PureScript => config.purescript.format(snippet_path, info),
             Language::Python => config.python.format(snippet_path, info),
             Language::ReScript => config.rescript.format(snippet_path, info),
@@ -241,7 +242,6 @@ pub fn format_snippet(config: &MdsfConfig, info: &LineInfo, code: &str) -> Strin
             Language::Xml => config.xml.format(snippet_path, info),
             Language::Yaml => config.yaml.format(snippet_path, info),
             Language::Zig => config.zig.format(snippet_path, info),
-            Language::Puppet => config.puppet.format(snippet_path, info),
         } {
             let mut f = formatted_code.trim().to_owned();
 

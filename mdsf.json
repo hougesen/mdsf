@@ -85,13 +85,13 @@
     "enabled": true,
     "formatter": "npm-groovy-lint"
   },
-  "haskell": {
-    "enabled": true,
-    "formatter": [["fourmolu", "ormolu", "hindent", "stylish-haskell"]]
-  },
   "handlebars": {
     "enabled": true,
     "formatter": [["prettier", "djlint"]]
+  },
+  "haskell": {
+    "enabled": true,
+    "formatter": [["fourmolu", "ormolu", "hindent", "stylish-haskell"]]
   },
   "hcl": {
     "enabled": true,
@@ -139,6 +139,10 @@
     "enabled": true,
     "formatter": [["prettier", "mdformat"]]
   },
+  "mustache": {
+    "enabled": true,
+    "formatter": "djlint"
+  },
   "nim": {
     "enabled": true,
     "formatter": "nimpretty"
@@ -146,6 +150,10 @@
   "nix": {
     "enabled": true,
     "formatter": [["nixfmt", "alejandra", "nixpkgs-fmt"]]
+  },
+  "nunjucks": {
+    "enabled": true,
+    "formatter": "djlint"
   },
   "objective_c": {
     "enabled": true,
@@ -162,6 +170,10 @@
   "protobuf": {
     "enabled": true,
     "formatter": [["buf", "clang-format"]]
+  },
+  "puppet": {
+    "enabled": true,
+    "formatter": [["puppet-lint"]]
   },
   "purescript": {
     "enabled": true,
@@ -237,17 +249,5 @@
   "zig": {
     "enabled": true,
     "formatter": "zigfmt"
-  },
-  "nunjucks": {
-    "enabled": true,
-    "formatter": "djlint"
-  },
-  "mustache": {
-    "enabled": true,
-    "formatter": "djlint"
-  },
-  "puppet": {
-    "enabled": true,
-    "formatter": [["puppet-lint"]]
   }
 }

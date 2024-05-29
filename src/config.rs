@@ -104,10 +104,10 @@ pub struct MdsfConfig {
     pub groovy: Lang<Groovy>,
 
     #[serde(default)]
-    pub haskell: Lang<Haskell>,
+    pub handlebars: Lang<Handlebars>,
 
     #[serde(default)]
-    pub handlebars: Lang<Handlebars>,
+    pub haskell: Lang<Haskell>,
 
     #[serde(default)]
     pub hcl: Lang<Hcl>,
@@ -143,10 +143,16 @@ pub struct MdsfConfig {
     pub markdown: Lang<Markdown>,
 
     #[serde(default)]
+    pub mustache: Lang<Mustache>,
+
+    #[serde(default)]
     pub nim: Lang<Nim>,
 
     #[serde(default)]
     pub nix: Lang<Nix>,
+
+    #[serde(default)]
+    pub nunjucks: Lang<Nunjucks>,
 
     #[serde(default)]
     pub objective_c: Lang<ObjectiveC>,
@@ -159,6 +165,9 @@ pub struct MdsfConfig {
 
     #[serde(default)]
     pub protobuf: Lang<Protobuf>,
+
+    #[serde(default)]
+    pub puppet: Lang<Puppet>,
 
     #[serde(default)]
     pub purescript: Lang<PureScript>,
@@ -213,15 +222,6 @@ pub struct MdsfConfig {
 
     #[serde(default)]
     pub zig: Lang<Zig>,
-
-    #[serde(default)]
-    pub nunjucks: Lang<Nunjucks>,
-
-    #[serde(default)]
-    pub mustache: Lang<Mustache>,
-
-    #[serde(default)]
-    pub puppet: Lang<Puppet>,
 }
 
 impl Default for MdsfConfig {
@@ -232,7 +232,6 @@ impl Default for MdsfConfig {
             format_finished_document: false,
             javascript_runtime: JavaScriptRuntime::default(),
 
-            blade: Lang::<Blade>::default(),
             c: Lang::<C>::default(),
             cabal: Lang::<Cabal>::default(),
             clojure: Lang::<Clojure>::default(),
@@ -265,12 +264,15 @@ impl Default for MdsfConfig {
             kotlin: Lang::<Kotlin>::default(),
             lua: Lang::<Lua>::default(),
             markdown: Lang::<Markdown>::default(),
+            mustache: Lang::<Mustache>::default(),
             nim: Lang::<Nim>::default(),
             nix: Lang::<Nix>::default(),
+            nunjucks: Lang::<Nunjucks>::default(),
             objective_c: Lang::<ObjectiveC>::default(),
             ocaml: Lang::<OCaml>::default(),
             perl: Lang::<Perl>::default(),
             protobuf: Lang::<Protobuf>::default(),
+            puppet: Lang::<Puppet>::default(),
             purescript: Lang::<PureScript>::default(),
             python: Lang::<Python>::default(),
             rescript: Lang::<ReScript>::default(),
@@ -280,8 +282,8 @@ impl Default for MdsfConfig {
             rust: Lang::<Rust>::default(),
             scala: Lang::<Scala>::default(),
             shell: Lang::<Shell>::default(),
-            sql: Lang::<Sql>::default(),
             solidity: Lang::<Solidity>::default(),
+            sql: Lang::<Sql>::default(),
             swift: Lang::<Swift>::default(),
             toml: Lang::<Toml>::default(),
             typescript: Lang::<TypeScript>::default(),
@@ -289,9 +291,7 @@ impl Default for MdsfConfig {
             xml: Lang::<Xml>::default(),
             yaml: Lang::<Yaml>::default(),
             zig: Lang::<Zig>::default(),
-            mustache: Lang::<Mustache>::default(),
-            nunjucks: Lang::<Nunjucks>::default(),
-            puppet: Lang::<Puppet>::default(),
+            blade: Lang::<Blade>::default(),
         }
     }
 }
