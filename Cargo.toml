@@ -1,6 +1,6 @@
 [package]
 name = "mdsf"
-version = "0.0.6"
+version = "0.0.7"
 edition = "2021"
 description = "Format markdown code snippets using your favorite code formatters"
 authors = ["Mads Hougesen <mads@mhouge.dk>"]

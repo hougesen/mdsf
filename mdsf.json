@@ -1,5 +1,5 @@
 {
-  "$schema": "https://raw.githubusercontent.com/hougesen/mdsf/main/schemas/v0.0.6/mdsf.schema.json",
+  "$schema": "https://raw.githubusercontent.com/hougesen/mdsf/main/schemas/v0.0.7/mdsf.schema.json",
   "format_finished_document": false,
   "javascript_runtime": "node",
   "blade": {
