@@ -245,5 +245,9 @@
   "mustache": {
     "enabled": true,
     "formatter": "djlint"
+  },
+  "puppet": {
+    "enabled": true,
+    "formatter": [["puppet-lint"]]
   }
 }

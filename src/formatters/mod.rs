@@ -63,6 +63,7 @@ pub mod ocp_indent;
 pub mod ormolu;
 pub mod perltidy;
 pub mod prettier;
+pub mod puppet_lint;
 pub mod purs_tidy;
 pub mod pyink;
 pub mod rescript_format;
@@ -240,6 +241,7 @@ pub fn format_snippet(config: &MdsfConfig, info: &LineInfo, code: &str) -> Strin
             Language::Xml => config.xml.format(snippet_path, info),
             Language::Yaml => config.yaml.format(snippet_path, info),
             Language::Zig => config.zig.format(snippet_path, info),
+            Language::Puppet => config.puppet.format(snippet_path, info),
         } {
             let mut f = formatted_code.trim().to_owned();
 

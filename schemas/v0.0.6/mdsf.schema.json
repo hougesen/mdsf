@@ -477,6 +477,17 @@
         }
       ]
     },
+    "puppet": {
+      "default": {
+        "enabled": true,
+        "formatter": [["puppet-lint"]]
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/Lang_for_Puppet"
+        }
+      ]
+    },
     "purescript": {
       "default": {
         "enabled": true,
@@ -1349,6 +1360,19 @@
       },
       "additionalProperties": false
     },
+    "Lang_for_Puppet": {
+      "type": "object",
+      "properties": {
+        "enabled": {
+          "default": true,
+          "type": "boolean"
+        },
+        "formatter": {
+          "$ref": "#/definitions/MdsfFormatter_for_Puppet"
+        }
+      },
+      "additionalProperties": false
+    },
     "Lang_for_PureScript": {
       "type": "object",
       "properties": {
@@ -2124,6 +2148,19 @@
         }
       ]
     },
+    "MdsfFormatter_for_Puppet": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/Puppet"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MdsfFormatter_for_Puppet"
+          }
+        }
+      ]
+    },
     "MdsfFormatter_for_PureScript": {
       "anyOf": [
         {
@@ -2389,6 +2426,10 @@
     "Protobuf": {
       "type": "string",
       "enum": ["buf", "clang-format"]
+    },
+    "Puppet": {
+      "type": "string",
+      "enum": ["puppet-lint"]
     },
     "PureScript": {
       "type": "string",

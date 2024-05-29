@@ -10,7 +10,7 @@ use crate::{
         groovy::Groovy, handlebars::Handlebars, haskell::Haskell, hcl::Hcl, html::Html, java::Java,
         javascript::JavaScript, json::Json, julia::Julia, just::Just, kcl::Kcl, kotlin::Kotlin,
         lua::Lua, markdown::Markdown, mustache::Mustache, nim::Nim, nix::Nix, nunjucks::Nunjucks,
-        objective_c::ObjectiveC, ocaml::OCaml, perl::Perl, protobuf::Protobuf,
+        objective_c::ObjectiveC, ocaml::OCaml, perl::Perl, protobuf::Protobuf, puppet::Puppet,
         purescript::PureScript, python::Python, rescript::ReScript,
         restructuredtext::ReStructuredText, roc::Roc, ruby::Ruby, rust::Rust, scala::Scala,
         shell::Shell, solidity::Solidity, sql::Sql, swift::Swift, toml::Toml,
@@ -219,6 +219,9 @@ pub struct MdsfConfig {
 
     #[serde(default)]
     pub mustache: Lang<Mustache>,
+
+    #[serde(default)]
+    pub puppet: Lang<Puppet>,
 }
 
 impl Default for MdsfConfig {
@@ -288,6 +291,7 @@ impl Default for MdsfConfig {
             zig: Lang::<Zig>::default(),
             mustache: Lang::<Mustache>::default(),
             nunjucks: Lang::<Nunjucks>::default(),
+            puppet: Lang::<Puppet>::default(),
         }
     }
 }

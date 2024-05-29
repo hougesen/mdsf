@@ -51,6 +51,7 @@ pub mod objective_c;
 pub mod ocaml;
 pub mod perl;
 pub mod protobuf;
+pub mod puppet;
 pub mod purescript;
 pub mod python;
 pub mod rescript;
@@ -220,6 +221,7 @@ pub enum Language {
     Yaml,
     Zig,
     Solidity,
+    Puppet,
 }
 
 impl core::fmt::Display for Language {
@@ -285,6 +287,7 @@ impl core::fmt::Display for Language {
             Self::Xml => f.write_str("xml"),
             Self::Yaml => f.write_str("yaml"),
             Self::Zig => f.write_str("zig"),
+            Self::Puppet => f.write_str("puppet"),
         }
     }
 }
@@ -370,6 +373,7 @@ impl Language {
             "yml" | "yaml" => Some(Self::Yaml),
             "zig" => Some(Self::Zig),
             "zsh" => Some(Self::Shell(ShellFlavor::Zsh)),
+            "puppet" => Some(Self::Puppet),
             _ => None,
         }
     }
@@ -445,6 +449,7 @@ impl Language {
             Self::Xml => ".xml",
             Self::Yaml => ".yml",
             Self::Zig => ".zig",
+            Self::Puppet => ".pp",
         }
     }
 }
