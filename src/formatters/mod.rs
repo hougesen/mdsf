@@ -58,6 +58,7 @@ pub mod ormolu;
 pub mod perltidy;
 pub mod prettier;
 pub mod purs_tidy;
+pub mod pyink;
 pub mod rescript_format;
 pub mod roc_format;
 pub mod rstfmt;

@@ -137,6 +137,9 @@ jobs:
       - name: black
         run: pipx install black && black --version
 
+      - name: pyink
+        run: pipx install pyink && pyink --version
+
       - name: blue
         run: pipx install blue && blue --version
 

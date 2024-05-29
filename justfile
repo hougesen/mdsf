@@ -34,7 +34,7 @@ update-readme:
     cargo run -- schema
     cargo run -- init
     node scripts/update-supported-languages.mjs
-    npx --yes prettier --write .
+    npx --yes prettier --cache --write .
     git restore tests/
 
 precommit:
