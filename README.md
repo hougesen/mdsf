@@ -66,7 +66,7 @@ mdsf init
 | C                | `clang-format`                                                |
 | CSharp           | `clang-format`, `csharpier`                                   |
 | Cabal            | `cabal_format`                                                |
-| Clojure          | `cljstyle`                                                    |
+| Clojure          | `cljstyle`, `joker`                                           |
 | Cpp              | `clang-format`                                                |
 | Crystal          | `crystal_format`                                              |
 | Css              | `prettier`, `stylelint`                                       |
@@ -116,7 +116,7 @@ mdsf init
 | Swift            | `swift-format`, `swiftformat`                                 |
 | Toml             | `taplo`                                                       |
 | TypeScript       | `biome`, `deno_fmt`, `prettier`                               |
-| Vue              | `prettier`                                                    |
+| Vue              | `biome`, `prettier`                                           |
 | Xml              | `xmlformat`, `xmllint`                                        |
 | Yaml             | `prettier`, `yamlfix`, `yamlfmt`                              |
 | Zig              | `zigfmt`                                                      |

@@ -43,7 +43,7 @@
     "clojure": {
       "default": {
         "enabled": true,
-        "formatter": "cljstyle"
+        "formatter": [["cljstyle", "joker"]]
       },
       "allOf": [
         {
@@ -87,7 +87,7 @@
     "css": {
       "default": {
         "enabled": true,
-        "formatter": "prettier"
+        "formatter": [["prettier", "stylelint"]]
       },
       "allOf": [
         {
@@ -153,7 +153,7 @@
     "erlang": {
       "default": {
         "enabled": true,
-        "formatter": "erlfmt"
+        "formatter": [["erlfmt", "efmt"]]
       },
       "allOf": [
         {
@@ -202,7 +202,7 @@
     "go": {
       "default": {
         "enabled": true,
-        "formatter": ["goimports", ["gofumpt", "gofmt"]]
+        "formatter": ["goimports", ["gofumpt", "gofmt", "crlfmt"]]
       },
       "allOf": [
         {
@@ -246,7 +246,7 @@
     "haskell": {
       "default": {
         "enabled": true,
-        "formatter": [["fourmolu", "ormolu", "hindent"]]
+        "formatter": [["fourmolu", "ormolu", "hindent", "stylish-haskell"]]
       },
       "allOf": [
         {
@@ -268,7 +268,7 @@
     "html": {
       "default": {
         "enabled": true,
-        "formatter": "prettier"
+        "formatter": [["prettier", "djlint"]]
       },
       "allOf": [
         {
@@ -290,7 +290,9 @@
     "javascript": {
       "default": {
         "enabled": true,
-        "formatter": [["prettier", "biome", "deno_fmt", "clang-format"]]
+        "formatter": [
+          ["prettier", "biome", "deno_fmt", "clang-format", "standardjs"]
+        ]
       },
       "allOf": [
         {
@@ -376,7 +378,7 @@
     "markdown": {
       "default": {
         "enabled": true,
-        "formatter": "prettier"
+        "formatter": [["prettier", "mdformat"]]
       },
       "allOf": [
         {
@@ -544,7 +546,7 @@
     "rust": {
       "default": {
         "enabled": true,
-        "formatter": "rustfmt"
+        "formatter": [["rustfmt"]]
       },
       "allOf": [
         {
@@ -683,7 +685,7 @@
     },
     "Clojure": {
       "type": "string",
-      "enum": ["cljstyle"]
+      "enum": ["cljstyle", "joker"]
     },
     "Cpp": {
       "type": "string",
@@ -2395,7 +2397,7 @@
     },
     "Vue": {
       "type": "string",
-      "enum": ["prettier"]
+      "enum": ["prettier", "biome"]
     },
     "Xml": {
       "type": "string",

@@ -39,7 +39,10 @@ impl Default for Lang<Markdown> {
 impl Default for MdsfFormatter<Markdown> {
     #[inline]
     fn default() -> Self {
-        Self::Single(Markdown::Prettier)
+        Self::Multiple(vec![Self::Multiple(vec![
+            Self::Single(Markdown::Prettier),
+            Self::Single(Markdown::MdFormat),
+        ])])
     }
 }
 

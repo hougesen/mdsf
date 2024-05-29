@@ -16,7 +16,7 @@
   },
   "clojure": {
     "enabled": true,
-    "formatter": "cljstyle"
+    "formatter": [["cljstyle", "joker"]]
   },
   "cpp": {
     "enabled": true,
@@ -32,7 +32,7 @@
   },
   "css": {
     "enabled": true,
-    "formatter": "prettier"
+    "formatter": [["prettier", "stylelint"]]
   },
   "d": {
     "enabled": true,
@@ -56,7 +56,7 @@
   },
   "erlang": {
     "enabled": true,
-    "formatter": "erlfmt"
+    "formatter": [["erlfmt", "efmt"]]
   },
   "fortran": {
     "enabled": true,
@@ -72,7 +72,7 @@
   },
   "go": {
     "enabled": true,
-    "formatter": ["goimports", ["gofumpt", "gofmt"]]
+    "formatter": ["goimports", ["gofumpt", "gofmt", "crlfmt"]]
   },
   "graphql": {
     "enabled": true,
@@ -84,7 +84,7 @@
   },
   "haskell": {
     "enabled": true,
-    "formatter": [["fourmolu", "ormolu", "hindent"]]
+    "formatter": [["fourmolu", "ormolu", "hindent", "stylish-haskell"]]
   },
   "handlebars": {
     "enabled": true,
@@ -96,7 +96,7 @@
   },
   "html": {
     "enabled": true,
-    "formatter": "prettier"
+    "formatter": [["prettier", "djlint"]]
   },
   "java": {
     "enabled": true,
@@ -104,7 +104,9 @@
   },
   "javascript": {
     "enabled": true,
-    "formatter": [["prettier", "biome", "deno_fmt", "clang-format"]]
+    "formatter": [
+      ["prettier", "biome", "deno_fmt", "clang-format", "standardjs"]
+    ]
   },
   "json": {
     "enabled": true,
@@ -132,7 +134,7 @@
   },
   "markdown": {
     "enabled": true,
-    "formatter": "prettier"
+    "formatter": [["prettier", "mdformat"]]
   },
   "nim": {
     "enabled": true,
@@ -187,7 +189,7 @@
   },
   "rust": {
     "enabled": true,
-    "formatter": "rustfmt"
+    "formatter": [["rustfmt"]]
   },
   "scala": {
     "enabled": true,

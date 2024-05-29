@@ -29,7 +29,10 @@ impl Default for Lang<Erlang> {
 impl Default for MdsfFormatter<Erlang> {
     #[inline]
     fn default() -> Self {
-        Self::Single(Erlang::Erlfmt)
+        Self::Multiple(vec![Self::Multiple(vec![
+            Self::Single(Erlang::Erlfmt),
+            Self::Single(Erlang::Efmt),
+        ])])
     }
 }
 

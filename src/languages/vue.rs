@@ -3,7 +3,7 @@ use schemars::JsonSchema;
 use super::{Lang, LanguageFormatter};
 use crate::{
     error::MdsfError,
-    formatters::{prettier::format_using_prettier, MdsfFormatter},
+    formatters::{biome::format_using_biome, prettier::format_using_prettier, MdsfFormatter},
 };
 
 #[derive(Default, serde::Serialize, serde::Deserialize, JsonSchema)]
@@ -12,6 +12,8 @@ pub enum Vue {
     #[default]
     #[serde(rename = "prettier")]
     Prettier,
+    #[serde(rename = "biome")]
+    Biome,
 }
 
 impl Default for Lang<Vue> {
@@ -39,6 +41,7 @@ impl LanguageFormatter for Vue {
     ) -> Result<(bool, Option<String>), MdsfError> {
         match self {
             Self::Prettier => format_using_prettier(snippet_path),
+            Self::Biome => format_using_biome(snippet_path),
         }
     }
 }
@@ -48,6 +51,7 @@ impl core::fmt::Display for Vue {
     fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
         match self {
             Self::Prettier => write!(f, "prettier"),
+            Self::Biome => write!(f, "biome"),
         }
     }
 }

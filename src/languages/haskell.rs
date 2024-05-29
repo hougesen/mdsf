@@ -40,6 +40,7 @@ impl Default for MdsfFormatter<Haskell> {
             Self::Single(Haskell::Fourmolu),
             Self::Single(Haskell::Ormolu),
             Self::Single(Haskell::HIndent),
+            Self::Single(Haskell::StylishHaskell),
         ])])
     }
 }

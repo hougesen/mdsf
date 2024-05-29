@@ -44,6 +44,7 @@ impl Default for MdsfFormatter<JavaScript> {
             Self::Single(JavaScript::Biome),
             Self::Single(JavaScript::DenoFmt),
             Self::Single(JavaScript::ClangFormat),
+            Self::Single(JavaScript::Standardjs),
         ])])
     }
 }
