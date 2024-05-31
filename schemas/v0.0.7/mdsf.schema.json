@@ -768,7 +768,8 @@
         "goimports",
         "goimports-reviser",
         "crlfmt",
-        "gci"
+        "gci",
+        "golines"
       ]
     },
     "GraphQL": {
