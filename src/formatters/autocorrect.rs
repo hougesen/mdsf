@@ -7,7 +7,7 @@ pub fn format_using_autocorrect(
 ) -> Result<(bool, Option<String>), MdsfError> {
     let mut cmd = std::process::Command::new("autocorrect");
 
-    cmd.arg("--lint").arg(snippet_path);
+    cmd.arg("--fix").arg(snippet_path);
 
     execute_command(&mut cmd, snippet_path)
 }
