@@ -6,7 +6,8 @@ use crate::{
     formatters::{
         crlfmt::format_using_crlfmt, gci::format_using_gci, gofmt::format_using_gofmt,
         gofumpt::format_using_gofumpt, goimports::format_using_goimports,
-        goimports_reviser::format_using_goimports_reviser, MdsfFormatter,
+        goimports_reviser::format_using_goimports_reviser, golines::format_using_golines,
+        MdsfFormatter,
     },
 };
 
@@ -26,6 +27,8 @@ pub enum Go {
     CrlFmt,
     #[serde(rename = "gci")]
     GCI,
+    #[serde(rename = "golines")]
+    GoLines,
 }
 
 impl Default for Lang<Go> {
@@ -69,6 +72,7 @@ impl LanguageFormatter for Go {
             Self::GoImportsReviser => format_using_goimports_reviser(snippet_path),
             Self::CrlFmt => format_using_crlfmt(snippet_path),
             Self::GCI => format_using_gci(snippet_path),
+            Self::GoLines => format_using_golines(snippet_path),
         }
     }
 }
@@ -83,6 +87,7 @@ impl core::fmt::Display for Go {
             Self::GoImportsReviser => write!(f, "goimports-reviser"),
             Self::CrlFmt => write!(f, "crlfmt"),
             Self::GCI => write!(f, "gci"),
+            Self::GoLines => write!(f, "golines"),
         }
     }
 }
@@ -210,6 +215,52 @@ func add(a int, b int) int {
         let l = Lang::<Go> {
             enabled: true,
             formatter: MdsfFormatter::Single(Go::GoImports),
+        };
+
+        let snippet = setup_snippet(input, EXTENSION).expect("it to save the file");
+        let snippet_path = snippet.path();
+
+        let output = l
+            .format(snippet_path, &LineInfo::fake())
+            .expect("it to not fail")
+            .expect("it to be a snippet");
+
+        assert_eq!(output, expected_output);
+    }
+
+    #[test_with::executable(golines)]
+    #[test]
+    fn test_golines() {
+        let input = "package main
+
+import (
+\t\"os\"
+\t\"fmt\"
+)
+
+func add(a int, b int) int {
+\tfmt.Print(a)
+\tfmt.Print(b)
+\treturn a + b
+}
+";
+
+        let expected_output = "package main
+
+import (
+\t\"fmt\"
+)
+
+func add(a int, b int) int {
+\tfmt.Print(a)
+\tfmt.Print(b)
+\treturn a + b
+}
+";
+
+        let l = Lang::<Go> {
+            enabled: true,
+            formatter: MdsfFormatter::Single(Go::GoLines),
         };
 
         let snippet = setup_snippet(input, EXTENSION).expect("it to save the file");
