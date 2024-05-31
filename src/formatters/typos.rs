@@ -7,7 +7,7 @@ pub fn format_using_typos(
 ) -> Result<(bool, Option<String>), MdsfError> {
     let mut cmd = std::process::Command::new("typos");
 
-    cmd.arg("--hidden").arg(snippet_path);
+    cmd.arg("-w").arg("--hidden").arg(snippet_path);
 
     execute_command(&mut cmd, snippet_path)
 }
