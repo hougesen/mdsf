@@ -7,7 +7,7 @@ pub fn format_using_misspell(
 ) -> Result<(bool, Option<String>), MdsfError> {
     let mut cmd = std::process::Command::new("misspell");
 
-    cmd.arg(snippet_path);
+    cmd.arg("-w").arg(snippet_path);
 
     execute_command(&mut cmd, snippet_path)
 }
