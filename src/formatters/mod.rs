@@ -100,6 +100,7 @@ pub mod yamlfmt;
 pub mod yapf;
 pub mod yew_fmt;
 pub mod zigfmt;
+pub mod zprint;
 
 #[inline]
 pub fn setup_snippet(code: &str, file_ext: &str) -> std::io::Result<NamedTempFile> {

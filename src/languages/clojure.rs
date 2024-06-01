@@ -3,7 +3,10 @@ use schemars::JsonSchema;
 use super::{Lang, LanguageFormatter};
 use crate::{
     error::MdsfError,
-    formatters::{cljstyle::format_using_cljstyle, joker::format_using_joker, MdsfFormatter},
+    formatters::{
+        cljstyle::format_using_cljstyle, joker::format_using_joker, zprint::format_using_zprint,
+        MdsfFormatter,
+    },
 };
 
 #[derive(Default, serde::Serialize, serde::Deserialize, JsonSchema)]
@@ -14,6 +17,8 @@ pub enum Clojure {
     Cljstyle,
     #[serde(rename = "joker")]
     Joker,
+    #[serde(rename = "zprint")]
+    Zprint,
 }
 
 impl Default for Lang<Clojure> {
@@ -45,6 +50,7 @@ impl LanguageFormatter for Clojure {
         match self {
             Self::Cljstyle => format_using_cljstyle(snippet_path),
             Self::Joker => format_using_joker(snippet_path),
+            Self::Zprint => format_using_zprint(snippet_path),
         }
     }
 }
@@ -55,6 +61,7 @@ impl core::fmt::Display for Clojure {
         match self {
             Self::Cljstyle => write!(f, "cljstyle"),
             Self::Joker => write!(f, "joker"),
+            Self::Zprint => write!(f, "zprint"),
         }
     }
 }

@@ -66,7 +66,7 @@ mdsf init
 | C                | `clang-format`                                                                          |
 | CSharp           | `clang-format`, `csharpier`                                                             |
 | Cabal            | `cabal_format`                                                                          |
-| Clojure          | `cljstyle`, `joker`                                                                     |
+| Clojure          | `cljstyle`, `joker`, `zprint`                                                           |
 | Cpp              | `clang-format`                                                                          |
 | Crystal          | `crystal_format`                                                                        |
 | Css              | `prettier`, `stylelint`                                                                 |
