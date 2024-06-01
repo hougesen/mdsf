@@ -1,0 +1,36 @@
+name: update-readme
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+concurrency:
+  group: ${{ github.workflow }}-${{ github.head_ref || github.run_id }}
+  cancel-in-progress: true
+env:
+  CARGO_TERM_COLOR: always
+  RUST_BACKTRACE: full
+jobs:
+  update-readme:
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+        node: [20]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: Swatinem/rust-cache@v2
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+      - name: Update schema
+        run: cargo run -- schema
+      - name: Update config
+        run: cargo run -- init
+      - name: Update readme
+        run: node scripts/update-supported-languages.mjs
+      - name: Format stuff
+        run: npx prettier --write schemas mdsf.json README.md && cargo run -- format README.md
+      - uses: EndBug/add-and-commit@v9
+        with:
+          add: schemas mdsf.json README.md
+          message: "chore: update schema"
