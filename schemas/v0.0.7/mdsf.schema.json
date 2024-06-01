@@ -710,7 +710,7 @@
     },
     "Clojure": {
       "type": "string",
-      "enum": ["cljstyle", "joker"]
+      "enum": ["cljstyle", "joker", "zprint"]
     },
     "Cpp": {
       "type": "string",
