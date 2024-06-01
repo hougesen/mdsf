@@ -1,4 +1,3 @@
----
 name: release
 on:
   push:
@@ -91,7 +90,6 @@ jobs:
           asset_path: release.zip
           asset_name: ${{ matrix.artifact-name }}.zip
           asset_content_type: application/zip
-
       # TODO: Remove this after deprecation notice
       - name: Upload Binary to Release aliases
         if: ${{ matrix.artifact-alias != '' }}
