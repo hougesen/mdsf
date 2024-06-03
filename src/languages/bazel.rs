@@ -11,7 +11,7 @@ use crate::{
 pub enum Bazel {
     #[default]
     #[serde(rename = "buildifier")]
-    BazelFormat,
+    Buildifier,
 }
 
 impl Default for Lang<Bazel> {
@@ -38,7 +38,7 @@ impl LanguageFormatter for Bazel {
         snippet_path: &std::path::Path,
     ) -> Result<(bool, Option<String>), MdsfError> {
         match self {
-            Self::BazelFormat => format_using_buildifier(snippet_path),
+            Self::Buildifier => format_using_buildifier(snippet_path),
         }
     }
 }
@@ -47,7 +47,7 @@ impl core::fmt::Display for Bazel {
     #[inline]
     fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
         match self {
-            Self::BazelFormat => write!(f, "buildifier"),
+            Self::Buildifier => write!(f, "buildifier"),
         }
     }
 }
