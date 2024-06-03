@@ -6,7 +6,9 @@ use crate::{
     formatters::format_snippet,
     languages::Language,
     parser::{parse_generic_codeblock, parse_go_codeblock},
-    terminal::{print_changed_file, print_changed_file_error, print_unchanged_file},
+    terminal::{
+        print_changed_file, print_changed_file_error, print_unchanged_file, warn_unknown_language,
+    },
 };
 
 pub mod cli;
@@ -36,7 +38,9 @@ fn format_file(config: &MdsfConfig, filename: &std::path::Path, input: &str) -> 
     while let Some((line_index, line)) = lines.next() {
         // TODO: implement support for code blocks with 4 `
         if line.starts_with("```") {
-            if let Some(language) = line.strip_prefix("```").and_then(Language::maybe_from_str) {
+            let language_text = line.strip_prefix("```").map(str::trim);
+
+            if let Some(language) = language_text.and_then(Language::maybe_from_str) {
                 let (is_snippet, code_snippet, snippet_lines) = if language == Language::Go {
                     parse_go_codeblock(&mut lines)
                 } else {
@@ -74,6 +78,12 @@ fn format_file(config: &MdsfConfig, filename: &std::path::Path, input: &str) -> 
                     output.push_str(&code_snippet);
                 }
             } else {
+                language_text.inspect(|l| {
+                    if !l.is_empty() {
+                        warn_unknown_language(l, filename);
+                    }
+                });
+
                 output.push_str(line);
             }
         } else {
