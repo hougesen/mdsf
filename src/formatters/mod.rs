@@ -38,6 +38,7 @@ pub mod erlfmt;
 pub mod fantomas;
 pub mod findent;
 pub mod fish_indent;
+pub mod fnlfmt;
 pub mod forge_fmt;
 pub mod fourmolu;
 pub mod fprettify;
@@ -208,6 +209,7 @@ pub fn format_snippet(config: &MdsfConfig, info: &LineInfo, code: &str) -> Strin
             Language::Elm => config.elm.format(snippet_path, info),
             Language::Erb => config.erb.format(snippet_path, info),
             Language::Erlang => config.erlang.format(snippet_path, info),
+            Language::Fennel => config.fennel.format(snippet_path, info),
             Language::FSharp => config.fsharp.format(snippet_path, info),
             Language::Fortran => config.fortran.format(snippet_path, info),
             Language::Gleam => config.gleam.format(snippet_path, info),
