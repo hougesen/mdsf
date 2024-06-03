@@ -2,6 +2,10 @@
   "$schema": "https://raw.githubusercontent.com/hougesen/mdsf/main/schemas/v0.0.7/mdsf.schema.json",
   "format_finished_document": false,
   "javascript_runtime": "node",
+  "assembly": {
+    "enabled": true,
+    "formatter": "asmfmt"
+  },
   "blade": {
     "enabled": true,
     "formatter": "blade-formatter"

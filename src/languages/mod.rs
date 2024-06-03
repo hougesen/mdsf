@@ -10,6 +10,7 @@ use crate::{
     LineInfo,
 };
 
+pub mod assembly;
 pub mod blade;
 pub mod c;
 pub mod cabal;
@@ -161,6 +162,7 @@ impl core::fmt::Display for TypeScriptFlavor {
 
 #[derive(Clone, Copy, PartialEq, Eq)]
 pub enum Language {
+    Assembly,
     Blade,
     C,
     CSharp,
@@ -227,6 +229,7 @@ impl core::fmt::Display for Language {
     #[inline]
     fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
         match self {
+            Self::Assembly => f.write_str("assembly"),
             Self::Blade => f.write_str("blade"),
             Self::C => f.write_str("c"),
             Self::CSharp => f.write_str("c#"),
@@ -302,6 +305,7 @@ impl Language {
     #[inline]
     pub fn maybe_from_str(input: &str) -> Option<Self> {
         match input.to_ascii_lowercase().as_str() {
+            "assembly" | "asm" => Some(Self::Assembly),
             "bash" => Some(Self::Shell(ShellFlavor::Bash)),
             "blade" => Some(Self::Blade),
             "c" | "clang" => Some(Self::C),
@@ -380,6 +384,7 @@ impl Language {
     #[inline]
     pub const fn to_file_ext(&self) -> &'static str {
         match self {
+            Self::Assembly => ".s",
             Self::Blade => ".blade.php",
             Self::C => ".c",
             Self::CSharp => ".cs",

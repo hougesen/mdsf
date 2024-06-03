@@ -7,6 +7,17 @@
       "default": "https://raw.githubusercontent.com/hougesen/mdsf/main/schemas/v0.0.7/mdsf.schema.json",
       "type": "string"
     },
+    "assembly": {
+      "default": {
+        "enabled": true,
+        "formatter": "asmfmt"
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/Lang_for_Assembly"
+        }
+      ]
+    },
     "blade": {
       "default": {
         "enabled": true,
@@ -692,6 +703,10 @@
   },
   "additionalProperties": false,
   "definitions": {
+    "Assembly": {
+      "type": "string",
+      "enum": ["asmfmt"]
+    },
     "Blade": {
       "type": "string",
       "enum": ["blade-formatter"]
@@ -827,6 +842,19 @@
     "Kotlin": {
       "type": "string",
       "enum": ["ktlint", "ktfmt"]
+    },
+    "Lang_for_Assembly": {
+      "type": "object",
+      "properties": {
+        "enabled": {
+          "default": true,
+          "type": "boolean"
+        },
+        "formatter": {
+          "$ref": "#/definitions/MdsfFormatter_for_Assembly"
+        }
+      },
+      "additionalProperties": false
     },
     "Lang_for_Blade": {
       "type": "object",
@@ -1621,6 +1649,19 @@
         "codespell",
         "autocorrect",
         "misspell"
+      ]
+    },
+    "MdsfFormatter_for_Assembly": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/Assembly"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MdsfFormatter_for_Assembly"
+          }
+        }
       ]
     },
     "MdsfFormatter_for_Blade": {
