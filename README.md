@@ -81,6 +81,7 @@ mdsf init
 | Erlang           | `efmt`, `erlfmt`                                                                                     |
 | FSharp           | `fantomas`                                                                                           |
 | Fennel           | `fnlfmt`                                                                                             |
+| Fish             | `fish_indent`                                                                                        |
 | Fortran          | `findent`, `fprettify`                                                                               |
 | GDScript         | `gdformat`                                                                                           |
 | Gleam            | `gleam_format`                                                                                       |

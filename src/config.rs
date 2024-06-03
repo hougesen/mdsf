@@ -6,15 +6,15 @@ use crate::{
     languages::{
         assembly::Assembly, bazel::Bazel, bicep::Bicep, blade::Blade, c::C, cabal::Cabal,
         clojure::Clojure, cpp::Cpp, crystal::Crystal, csharp::CSharp, css::Css, d::D, dart::Dart,
-        elixir::Elixir, elm::Elm, erb::Erb, erlang::Erlang, fennel::Fennel, fortran::Fortran,
-        fsharp::FSharp, gdscript::GDScript, gleam::Gleam, go::Go, graphql::GraphQL, groovy::Groovy,
-        handlebars::Handlebars, haskell::Haskell, hcl::Hcl, html::Html, java::Java,
-        javascript::JavaScript, json::Json, julia::Julia, just::Just, kcl::Kcl, kotlin::Kotlin,
-        lua::Lua, markdown::Markdown, mustache::Mustache, nim::Nim, nix::Nix, nunjucks::Nunjucks,
-        objective_c::ObjectiveC, ocaml::OCaml, perl::Perl, protobuf::Protobuf, puppet::Puppet,
-        purescript::PureScript, python::Python, rescript::ReScript,
-        restructuredtext::ReStructuredText, roc::Roc, ruby::Ruby, rust::Rust, scala::Scala,
-        shell::Shell, solidity::Solidity, sql::Sql, swift::Swift, toml::Toml,
+        elixir::Elixir, elm::Elm, erb::Erb, erlang::Erlang, fennel::Fennel, fish::Fish,
+        fortran::Fortran, fsharp::FSharp, gdscript::GDScript, gleam::Gleam, go::Go,
+        graphql::GraphQL, groovy::Groovy, handlebars::Handlebars, haskell::Haskell, hcl::Hcl,
+        html::Html, java::Java, javascript::JavaScript, json::Json, julia::Julia, just::Just,
+        kcl::Kcl, kotlin::Kotlin, lua::Lua, markdown::Markdown, mustache::Mustache, nim::Nim,
+        nix::Nix, nunjucks::Nunjucks, objective_c::ObjectiveC, ocaml::OCaml, perl::Perl,
+        protobuf::Protobuf, puppet::Puppet, purescript::PureScript, python::Python,
+        rescript::ReScript, restructuredtext::ReStructuredText, roc::Roc, ruby::Ruby, rust::Rust,
+        scala::Scala, shell::Shell, solidity::Solidity, sql::Sql, swift::Swift, toml::Toml,
         typescript::TypeScript, vue::Vue, xml::Xml, yaml::Yaml, zig::Zig, Lang,
     },
     runners::JavaScriptRuntime,
@@ -103,6 +103,9 @@ pub struct MdsfConfig {
 
     #[serde(default)]
     pub fsharp: Lang<FSharp>,
+
+    #[serde(default)]
+    pub fish: Lang<Fish>,
 
     #[serde(default)]
     pub gdscript: Lang<GDScript>,
@@ -267,6 +270,7 @@ impl Default for MdsfConfig {
             erlang: Lang::<Erlang>::default(),
             fennel: Lang::<Fennel>::default(),
             fortran: Lang::<Fortran>::default(),
+            fish: Lang::<Fish>::default(),
             fsharp: Lang::<FSharp>::default(),
             gdscript: Lang::<GDScript>::default(),
             gleam: Lang::<Gleam>::default(),
