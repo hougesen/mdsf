@@ -820,7 +820,7 @@
     },
     "Erb": {
       "type": "string",
-      "enum": ["erb-formatter"]
+      "enum": ["erb-formatter", "htmlbeautifier"]
     },
     "Erlang": {
       "type": "string",
@@ -884,7 +884,7 @@
     },
     "Html": {
       "type": "string",
-      "enum": ["prettier", "djlint"]
+      "enum": ["prettier", "djlint", "htmlbeautifier"]
     },
     "Java": {
       "type": "string",

@@ -3,7 +3,10 @@ use schemars::JsonSchema;
 use super::{Lang, LanguageFormatter};
 use crate::{
     error::MdsfError,
-    formatters::{erb_formatter::format_using_erb_formatter, MdsfFormatter},
+    formatters::{
+        erb_formatter::format_using_erb_formatter, htmlbeautifier::format_using_htmlbeautifier,
+        MdsfFormatter,
+    },
 };
 
 #[derive(Default, serde::Serialize, serde::Deserialize, JsonSchema)]
@@ -12,6 +15,8 @@ pub enum Erb {
     #[default]
     #[serde(rename = "erb-formatter")]
     ErbFormatter,
+    #[serde(rename = "htmlbeautifier")]
+    Htmlbeautifier,
 }
 
 impl Default for Lang<Erb> {
@@ -39,6 +44,7 @@ impl LanguageFormatter for Erb {
     ) -> Result<(bool, Option<String>), MdsfError> {
         match self {
             Self::ErbFormatter => format_using_erb_formatter(snippet_path),
+            Self::Htmlbeautifier => format_using_htmlbeautifier(snippet_path),
         }
     }
 }
@@ -48,6 +54,7 @@ impl core::fmt::Display for Erb {
     fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
         match self {
             Self::ErbFormatter => write!(f, "erb-formatter"),
+            Self::Htmlbeautifier => write!(f, "htmlbeautifier "),
         }
     }
 }
