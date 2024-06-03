@@ -527,7 +527,7 @@
     "restructuredtext": {
       "default": {
         "enabled": true,
-        "formatter": "rstfmt"
+        "formatter": [["rstfmt", "docstrfmt"]]
       },
       "allOf": [
         {
@@ -2454,7 +2454,8 @@
         "isort",
         "usort",
         "pyink",
-        "auto-optional"
+        "auto-optional",
+        "docstrfmt"
       ]
     },
     "ReScript": {
@@ -2463,7 +2464,7 @@
     },
     "ReStructuredText": {
       "type": "string",
-      "enum": ["rstfmt"]
+      "enum": ["rstfmt", "docstrfmt"]
     },
     "Roc": {
       "type": "string",

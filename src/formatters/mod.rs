@@ -27,6 +27,7 @@ pub mod dart_format;
 pub mod deno_fmt;
 pub mod dfmt;
 pub mod djlint;
+pub mod docstrfmt;
 pub mod efmt;
 pub mod elm_format;
 pub mod erb_formatter;

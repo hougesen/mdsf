@@ -5,9 +5,9 @@ use crate::{
     error::MdsfError,
     formatters::{
         auto_optional::format_using_auto_optional, autopep8::format_using_autopep8,
-        black::format_using_black, blue::format_using_blue, isort::format_using_isort,
-        pyink::format_using_pyink, ruff::format_using_ruff, usort::format_using_usort,
-        yapf::format_using_yapf, MdsfFormatter,
+        black::format_using_black, blue::format_using_blue, docstrfmt::format_using_docstrfmt,
+        isort::format_using_isort, pyink::format_using_pyink, ruff::format_using_ruff,
+        usort::format_using_usort, yapf::format_using_yapf, MdsfFormatter,
     },
 };
 
@@ -33,6 +33,8 @@ pub enum Python {
     PyInk,
     #[serde(rename = "auto-optional")]
     AutoOptional,
+    #[serde(rename = "docstrfmt")]
+    Docstrfmt,
 }
 
 impl LanguageFormatter for Python {
@@ -51,6 +53,7 @@ impl LanguageFormatter for Python {
             Self::Usort => format_using_usort(snippet_path),
             Self::PyInk => format_using_pyink(snippet_path),
             Self::AutoOptional => format_using_auto_optional(snippet_path),
+            Self::Docstrfmt => format_using_docstrfmt(snippet_path),
         }
     }
 }
@@ -98,6 +101,7 @@ impl core::fmt::Display for Python {
             Self::Usort => write!(f, "usort"),
             Self::PyInk => write!(f, "pyink"),
             Self::AutoOptional => write!(f, "auto-optional"),
+            Self::Docstrfmt => write!(f, "docstrfmt"),
         }
     }
 }
