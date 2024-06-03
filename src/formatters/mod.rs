@@ -52,6 +52,7 @@ pub mod goimports_reviser;
 pub mod golines;
 pub mod google_java_format;
 pub mod hindent;
+pub mod htmlbeautifier;
 pub mod isort;
 pub mod joker;
 pub mod juliaformatter_jl;

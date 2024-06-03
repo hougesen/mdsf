@@ -77,7 +77,7 @@ mdsf init
 | Dart             | `dart_format`                                                                                        |
 | Elixir           | `mix_format`                                                                                         |
 | Elm              | `elm-format`                                                                                         |
-| Erb              | `erb-formatter`                                                                                      |
+| Erb              | `erb-formatter`, `htmlbeautifier`                                                                    |
 | Erlang           | `efmt`, `erlfmt`                                                                                     |
 | FSharp           | `fantomas`                                                                                           |
 | Fennel           | `fnlfmt`                                                                                             |
@@ -91,7 +91,7 @@ mdsf init
 | Handlebars       | `djlint`, `prettier`                                                                                 |
 | Haskell          | `fourmolu`, `hindent`, `ormolu`, `stylish-haskell`                                                   |
 | Hcl              | `terraform_fmt`, `tofu_fmt`                                                                          |
-| Html             | `djlint`, `prettier`                                                                                 |
+| Html             | `djlint`, `htmlbeautifier`, `prettier`                                                               |
 | Java             | `clang-format`, `google-java-format`                                                                 |
 | JavaScript       | `biome`, `clang-format`, `deno_fmt`, `prettier`, `standardjs`                                        |
 | Json             | `biome`, `clang-format`, `deno_fmt`, `prettier`                                                      |

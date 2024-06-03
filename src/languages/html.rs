@@ -3,7 +3,10 @@ use schemars::JsonSchema;
 use super::{Lang, LanguageFormatter};
 use crate::{
     error::MdsfError,
-    formatters::{djlint::format_using_djlint, prettier::format_using_prettier, MdsfFormatter},
+    formatters::{
+        djlint::format_using_djlint, htmlbeautifier::format_using_htmlbeautifier,
+        prettier::format_using_prettier, MdsfFormatter,
+    },
 };
 
 #[derive(Default, serde::Serialize, serde::Deserialize, JsonSchema)]
@@ -14,6 +17,8 @@ pub enum Html {
     Prettier,
     #[serde(rename = "djlint")]
     DjLint,
+    #[serde(rename = "htmlbeautifier")]
+    Htmlbeautifier,
 }
 
 impl Default for Lang<Html> {
@@ -45,6 +50,7 @@ impl LanguageFormatter for Html {
         match self {
             Self::Prettier => format_using_prettier(snippet_path),
             Self::DjLint => format_using_djlint(snippet_path),
+            Self::Htmlbeautifier => format_using_htmlbeautifier(snippet_path),
         }
     }
 }
@@ -55,6 +61,7 @@ impl core::fmt::Display for Html {
         match self {
             Self::Prettier => write!(f, "prettier"),
             Self::DjLint => write!(f, "djlint"),
+            Self::Htmlbeautifier => write!(f, "htmlbeautifier"),
         }
     }
 }
