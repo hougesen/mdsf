@@ -7,6 +7,7 @@ use which::which;
 use crate::{config::MdsfConfig, error::MdsfError, languages::Language, LineInfo, DEBUG};
 
 pub mod alejandra;
+pub mod asmfmt;
 pub mod auto_optional;
 pub mod autocorrect;
 pub mod autopep8;
@@ -187,6 +188,7 @@ pub fn format_snippet(config: &MdsfConfig, info: &LineInfo, code: &str) -> Strin
         let snippet_path = snippet.path();
 
         if let Ok(Some(formatted_code)) = match info.language {
+            Language::Assembly => config.assembly.format(snippet_path, info),
             Language::Blade => config.blade.format(snippet_path, info),
             Language::C => config.c.format(snippet_path, info),
             Language::CSharp => config.csharp.format(snippet_path, info),

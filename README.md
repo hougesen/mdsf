@@ -62,6 +62,7 @@ mdsf init
 
 | Language         | Formatters                                                                                           |
 | ---------------- | ---------------------------------------------------------------------------------------------------- |
+| Assembly         | `asmfmt`                                                                                             |
 | Blade            | `blade-formatter`                                                                                    |
 | C                | `clang-format`                                                                                       |
 | CSharp           | `clang-format`, `csharpier`                                                                          |

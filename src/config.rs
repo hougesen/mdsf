@@ -4,16 +4,16 @@ use schemars::JsonSchema;
 use crate::{
     error::MdsfError,
     languages::{
-        blade::Blade, c::C, cabal::Cabal, clojure::Clojure, cpp::Cpp, crystal::Crystal,
-        csharp::CSharp, css::Css, d::D, dart::Dart, elixir::Elixir, elm::Elm, erb::Erb,
-        erlang::Erlang, fortran::Fortran, fsharp::FSharp, gleam::Gleam, go::Go, graphql::GraphQL,
-        groovy::Groovy, handlebars::Handlebars, haskell::Haskell, hcl::Hcl, html::Html, java::Java,
-        javascript::JavaScript, json::Json, julia::Julia, just::Just, kcl::Kcl, kotlin::Kotlin,
-        lua::Lua, markdown::Markdown, mustache::Mustache, nim::Nim, nix::Nix, nunjucks::Nunjucks,
-        objective_c::ObjectiveC, ocaml::OCaml, perl::Perl, protobuf::Protobuf, puppet::Puppet,
-        purescript::PureScript, python::Python, rescript::ReScript,
-        restructuredtext::ReStructuredText, roc::Roc, ruby::Ruby, rust::Rust, scala::Scala,
-        shell::Shell, solidity::Solidity, sql::Sql, swift::Swift, toml::Toml,
+        assembly::Assembly, blade::Blade, c::C, cabal::Cabal, clojure::Clojure, cpp::Cpp,
+        crystal::Crystal, csharp::CSharp, css::Css, d::D, dart::Dart, elixir::Elixir, elm::Elm,
+        erb::Erb, erlang::Erlang, fortran::Fortran, fsharp::FSharp, gleam::Gleam, go::Go,
+        graphql::GraphQL, groovy::Groovy, handlebars::Handlebars, haskell::Haskell, hcl::Hcl,
+        html::Html, java::Java, javascript::JavaScript, json::Json, julia::Julia, just::Just,
+        kcl::Kcl, kotlin::Kotlin, lua::Lua, markdown::Markdown, mustache::Mustache, nim::Nim,
+        nix::Nix, nunjucks::Nunjucks, objective_c::ObjectiveC, ocaml::OCaml, perl::Perl,
+        protobuf::Protobuf, puppet::Puppet, purescript::PureScript, python::Python,
+        rescript::ReScript, restructuredtext::ReStructuredText, roc::Roc, ruby::Ruby, rust::Rust,
+        scala::Scala, shell::Shell, solidity::Solidity, sql::Sql, swift::Swift, toml::Toml,
         typescript::TypeScript, vue::Vue, xml::Xml, yaml::Yaml, zig::Zig, Lang,
     },
     runners::JavaScriptRuntime,
@@ -42,6 +42,9 @@ pub struct MdsfConfig {
     /// `deno -> deno run`
     #[serde(default)]
     pub javascript_runtime: JavaScriptRuntime,
+
+    #[serde(default)]
+    pub assembly: Lang<Assembly>,
 
     #[serde(default)]
     pub blade: Lang<Blade>,
@@ -232,6 +235,8 @@ impl Default for MdsfConfig {
             format_finished_document: false,
             javascript_runtime: JavaScriptRuntime::default(),
 
+            assembly: Lang::<Assembly>::default(),
+            blade: Lang::<Blade>::default(),
             c: Lang::<C>::default(),
             cabal: Lang::<Cabal>::default(),
             clojure: Lang::<Clojure>::default(),
@@ -291,7 +296,6 @@ impl Default for MdsfConfig {
             xml: Lang::<Xml>::default(),
             yaml: Lang::<Yaml>::default(),
             zig: Lang::<Zig>::default(),
-            blade: Lang::<Blade>::default(),
         }
     }
 }
