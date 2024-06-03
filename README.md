@@ -115,7 +115,7 @@ mdsf init
 | Ruby             | `rubocop`, `rubyfmt`, `rufo`, `standardrb`                                                           |
 | Rust             | `leptosfmt`, `rustfmt`, `yew-fmt`                                                                    |
 | Scala            | `scalafmt`                                                                                           |
-| Shell            | `beautysh`, `shfmt`                                                                                  |
+| Shell            | `beautysh`, `fish_indent`, `shfmt`                                                                   |
 | Solidity         | `forge_fmt`                                                                                          |
 | Sql              | `sql-formatter`, `sqlfluff`                                                                          |
 | Swift            | `swift-format`, `swiftformat`                                                                        |

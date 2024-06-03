@@ -3,7 +3,10 @@ use schemars::JsonSchema;
 use super::{Lang, LanguageFormatter};
 use crate::{
     error::MdsfError,
-    formatters::{beautysh::format_using_beautysh, shfmt::format_using_shfmt, MdsfFormatter},
+    formatters::{
+        beautysh::format_using_beautysh, fish_indent::format_using_fish_indent,
+        shfmt::format_using_shfmt, MdsfFormatter,
+    },
 };
 
 #[derive(Default, serde::Serialize, serde::Deserialize, JsonSchema)]
@@ -14,6 +17,9 @@ pub enum Shell {
     Shfmt,
     #[serde(rename = "beautysh")]
     Beautysh,
+
+    #[serde(rename = "fish_indent")]
+    FishIndent,
 }
 
 impl Default for Lang<Shell> {
@@ -42,6 +48,7 @@ impl core::fmt::Display for Shell {
         match self {
             Self::Shfmt => write!(f, "shfmt"),
             Self::Beautysh => write!(f, "beautysh"),
+            Self::FishIndent => write!(f, "fish_indent"),
         }
     }
 }
@@ -55,6 +62,7 @@ impl LanguageFormatter for Shell {
         match self {
             Self::Shfmt => format_using_shfmt(snippet_path),
             Self::Beautysh => format_using_beautysh(snippet_path),
+            Self::FishIndent => format_using_fish_indent(snippet_path),
         }
     }
 }

@@ -37,6 +37,7 @@ pub mod erb_formatter;
 pub mod erlfmt;
 pub mod fantomas;
 pub mod findent;
+pub mod fish_indent;
 pub mod forge_fmt;
 pub mod fourmolu;
 pub mod fprettify;
