@@ -17,6 +17,7 @@ pub mod black;
 pub mod blade_formatter;
 pub mod blue;
 pub mod buf;
+pub mod buildifier;
 pub mod cabal_format;
 pub mod clang_format;
 pub mod cljstyle;
@@ -189,6 +190,7 @@ pub fn format_snippet(config: &MdsfConfig, info: &LineInfo, code: &str) -> Strin
 
         if let Ok(Some(formatted_code)) = match info.language {
             Language::Assembly => config.assembly.format(snippet_path, info),
+            Language::Bazel => config.bazel.format(snippet_path, info),
             Language::Blade => config.blade.format(snippet_path, info),
             Language::C => config.c.format(snippet_path, info),
             Language::CSharp => config.csharp.format(snippet_path, info),
