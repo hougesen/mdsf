@@ -6,6 +6,14 @@
     "enabled": true,
     "formatter": "asmfmt"
   },
+  "bazel": {
+    "enabled": true,
+    "formatter": "buildifier"
+  },
+  "bicep": {
+    "enabled": true,
+    "formatter": "bicep_format"
+  },
   "blade": {
     "enabled": true,
     "formatter": "blade-formatter"

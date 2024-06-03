@@ -12,6 +12,7 @@ pub mod auto_optional;
 pub mod autocorrect;
 pub mod autopep8;
 pub mod beautysh;
+pub mod bicep_format;
 pub mod biome;
 pub mod black;
 pub mod blade_formatter;
@@ -191,6 +192,7 @@ pub fn format_snippet(config: &MdsfConfig, info: &LineInfo, code: &str) -> Strin
         if let Ok(Some(formatted_code)) = match info.language {
             Language::Assembly => config.assembly.format(snippet_path, info),
             Language::Bazel => config.bazel.format(snippet_path, info),
+            Language::Bicep => config.bicep.format(snippet_path, info),
             Language::Blade => config.blade.format(snippet_path, info),
             Language::C => config.c.format(snippet_path, info),
             Language::CSharp => config.csharp.format(snippet_path, info),

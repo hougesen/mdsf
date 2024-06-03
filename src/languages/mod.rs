@@ -12,6 +12,7 @@ use crate::{
 
 pub mod assembly;
 pub mod bazel;
+pub mod bicep;
 pub mod blade;
 pub mod c;
 pub mod cabal;
@@ -165,6 +166,7 @@ impl core::fmt::Display for TypeScriptFlavor {
 pub enum Language {
     Assembly,
     Bazel,
+    Bicep,
     Blade,
     C,
     CSharp,
@@ -233,6 +235,7 @@ impl core::fmt::Display for Language {
         match self {
             Self::Assembly => f.write_str("assembly"),
             Self::Bazel => f.write_str("bazel"),
+            Self::Bicep => f.write_str("bicep"),
             Self::Blade => f.write_str("blade"),
             Self::C => f.write_str("c"),
             Self::CSharp => f.write_str("c#"),
@@ -312,6 +315,7 @@ impl Language {
             "bazel" => Some(Self::Bazel),
             "bash" => Some(Self::Shell(ShellFlavor::Bash)),
             "blade" => Some(Self::Blade),
+            "bicep" => Some(Self::Bicep),
             "c" | "clang" => Some(Self::C),
             "cabal" => Some(Self::Cabal),
             "clojure" => Some(Self::Clojure),
@@ -390,6 +394,7 @@ impl Language {
         match self {
             Self::Assembly => ".s",
             Self::Bazel => ".bzl",
+            Self::Bicep => ".bicep",
             Self::Blade => ".blade.php",
             Self::C => ".c",
             Self::CSharp => ".cs",
