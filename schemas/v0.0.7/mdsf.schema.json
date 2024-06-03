@@ -18,6 +18,28 @@
         }
       ]
     },
+    "bazel": {
+      "default": {
+        "enabled": true,
+        "formatter": "buildifier"
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/Lang_for_Bazel"
+        }
+      ]
+    },
+    "bicep": {
+      "default": {
+        "enabled": true,
+        "formatter": "bicep_format"
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/Lang_for_Bicep"
+        }
+      ]
+    },
     "blade": {
       "default": {
         "enabled": true,
@@ -707,6 +729,14 @@
       "type": "string",
       "enum": ["asmfmt"]
     },
+    "Bazel": {
+      "type": "string",
+      "enum": ["buildifier"]
+    },
+    "Bicep": {
+      "type": "string",
+      "enum": ["bicep_format"]
+    },
     "Blade": {
       "type": "string",
       "enum": ["blade-formatter"]
@@ -852,6 +882,32 @@
         },
         "formatter": {
           "$ref": "#/definitions/MdsfFormatter_for_Assembly"
+        }
+      },
+      "additionalProperties": false
+    },
+    "Lang_for_Bazel": {
+      "type": "object",
+      "properties": {
+        "enabled": {
+          "default": true,
+          "type": "boolean"
+        },
+        "formatter": {
+          "$ref": "#/definitions/MdsfFormatter_for_Bazel"
+        }
+      },
+      "additionalProperties": false
+    },
+    "Lang_for_Bicep": {
+      "type": "object",
+      "properties": {
+        "enabled": {
+          "default": true,
+          "type": "boolean"
+        },
+        "formatter": {
+          "$ref": "#/definitions/MdsfFormatter_for_Bicep"
         }
       },
       "additionalProperties": false
@@ -1660,6 +1716,32 @@
           "type": "array",
           "items": {
             "$ref": "#/definitions/MdsfFormatter_for_Assembly"
+          }
+        }
+      ]
+    },
+    "MdsfFormatter_for_Bazel": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/Bazel"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MdsfFormatter_for_Bazel"
+          }
+        }
+      ]
+    },
+    "MdsfFormatter_for_Bicep": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/Bicep"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MdsfFormatter_for_Bicep"
           }
         }
       ]

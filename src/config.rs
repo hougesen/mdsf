@@ -4,17 +4,18 @@ use schemars::JsonSchema;
 use crate::{
     error::MdsfError,
     languages::{
-        assembly::Assembly, bazel::Bazel, blade::Blade, c::C, cabal::Cabal, clojure::Clojure,
-        cpp::Cpp, crystal::Crystal, csharp::CSharp, css::Css, d::D, dart::Dart, elixir::Elixir,
-        elm::Elm, erb::Erb, erlang::Erlang, fortran::Fortran, fsharp::FSharp, gleam::Gleam, go::Go,
-        graphql::GraphQL, groovy::Groovy, handlebars::Handlebars, haskell::Haskell, hcl::Hcl,
-        html::Html, java::Java, javascript::JavaScript, json::Json, julia::Julia, just::Just,
-        kcl::Kcl, kotlin::Kotlin, lua::Lua, markdown::Markdown, mustache::Mustache, nim::Nim,
-        nix::Nix, nunjucks::Nunjucks, objective_c::ObjectiveC, ocaml::OCaml, perl::Perl,
-        protobuf::Protobuf, puppet::Puppet, purescript::PureScript, python::Python,
-        rescript::ReScript, restructuredtext::ReStructuredText, roc::Roc, ruby::Ruby, rust::Rust,
-        scala::Scala, shell::Shell, solidity::Solidity, sql::Sql, swift::Swift, toml::Toml,
-        typescript::TypeScript, vue::Vue, xml::Xml, yaml::Yaml, zig::Zig, Lang,
+        assembly::Assembly, bazel::Bazel, bicep::Bicep, blade::Blade, c::C, cabal::Cabal,
+        clojure::Clojure, cpp::Cpp, crystal::Crystal, csharp::CSharp, css::Css, d::D, dart::Dart,
+        elixir::Elixir, elm::Elm, erb::Erb, erlang::Erlang, fortran::Fortran, fsharp::FSharp,
+        gleam::Gleam, go::Go, graphql::GraphQL, groovy::Groovy, handlebars::Handlebars,
+        haskell::Haskell, hcl::Hcl, html::Html, java::Java, javascript::JavaScript, json::Json,
+        julia::Julia, just::Just, kcl::Kcl, kotlin::Kotlin, lua::Lua, markdown::Markdown,
+        mustache::Mustache, nim::Nim, nix::Nix, nunjucks::Nunjucks, objective_c::ObjectiveC,
+        ocaml::OCaml, perl::Perl, protobuf::Protobuf, puppet::Puppet, purescript::PureScript,
+        python::Python, rescript::ReScript, restructuredtext::ReStructuredText, roc::Roc,
+        ruby::Ruby, rust::Rust, scala::Scala, shell::Shell, solidity::Solidity, sql::Sql,
+        swift::Swift, toml::Toml, typescript::TypeScript, vue::Vue, xml::Xml, yaml::Yaml, zig::Zig,
+        Lang,
     },
     runners::JavaScriptRuntime,
     terminal::print_config_not_found,
@@ -48,6 +49,9 @@ pub struct MdsfConfig {
 
     #[serde(default)]
     pub bazel: Lang<Bazel>,
+
+    #[serde(default)]
+    pub bicep: Lang<Bicep>,
 
     #[serde(default)]
     pub blade: Lang<Blade>,
@@ -240,6 +244,7 @@ impl Default for MdsfConfig {
 
             assembly: Lang::<Assembly>::default(),
             bazel: Lang::<Bazel>::default(),
+            bicep: Lang::<Bicep>::default(),
             blade: Lang::<Blade>::default(),
             c: Lang::<C>::default(),
             cabal: Lang::<Cabal>::default(),

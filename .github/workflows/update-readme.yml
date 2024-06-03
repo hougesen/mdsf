@@ -1,7 +1,6 @@
 name: update-readme
 on:
   push:
-    branches: [main]
   workflow_dispatch:
 concurrency:
   group: ${{ github.workflow }}-${{ github.head_ref || github.run_id }}

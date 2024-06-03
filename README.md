@@ -63,6 +63,8 @@ mdsf init
 | Language         | Formatters                                                                                           |
 | ---------------- | ---------------------------------------------------------------------------------------------------- |
 | Assembly         | `asmfmt`                                                                                             |
+| Bazel            | `buildifier`                                                                                         |
+| Bicep            | `bicep_format`                                                                                       |
 | Blade            | `blade-formatter`                                                                                    |
 | C                | `clang-format`                                                                                       |
 | CSharp           | `clang-format`, `csharpier`                                                                          |
