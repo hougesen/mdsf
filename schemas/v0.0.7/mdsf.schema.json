@@ -2607,7 +2607,7 @@
     },
     "Shell": {
       "type": "string",
-      "enum": ["shfmt", "beautysh"]
+      "enum": ["shfmt", "beautysh", "fish_indent"]
     },
     "Solidity": {
       "type": "string",

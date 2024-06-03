@@ -117,6 +117,7 @@ pub enum ShellFlavor {
     Shell,
     Bash,
     Zsh,
+    Fish,
 }
 
 impl core::fmt::Display for ShellFlavor {
@@ -126,6 +127,7 @@ impl core::fmt::Display for ShellFlavor {
             Self::Shell => f.write_str("shell"),
             Self::Bash => f.write_str("bash"),
             Self::Zsh => f.write_str("zsh"),
+            Self::Fish => f.write_str("fish"),
         }
     }
 }
@@ -329,6 +331,7 @@ impl Language {
             "elm" => Some(Self::Elm),
             "erb" => Some(Self::Erb),
             "erlang" => Some(Self::Erlang),
+            "fish" => Some(Self::Shell(ShellFlavor::Fish)),
             "fortran" => Some(Self::Fortran),
             "fsharp" => Some(Self::FSharp),
             "gleam" => Some(Self::Gleam),
@@ -453,6 +456,7 @@ impl Language {
             Self::Scala => ".scala",
             Self::Shell(ShellFlavor::Bash) => ".bash",
             Self::Shell(ShellFlavor::Shell) => ".sh",
+            Self::Shell(ShellFlavor::Fish) => ".fish",
             Self::Shell(ShellFlavor::Zsh) => ".zsh",
             Self::Solidity => ".sol",
             Self::Sql => ".sql",
