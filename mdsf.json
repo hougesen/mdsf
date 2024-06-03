@@ -70,6 +70,10 @@
     "enabled": true,
     "formatter": [["erlfmt", "efmt"]]
   },
+  "fennel": {
+    "enabled": true,
+    "formatter": "fnlfmt"
+  },
   "fortran": {
     "enabled": true,
     "formatter": [["fprettify", "findent"]]

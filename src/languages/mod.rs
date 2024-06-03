@@ -27,6 +27,7 @@ pub mod elixir;
 pub mod elm;
 pub mod erb;
 pub mod erlang;
+pub mod fennel;
 pub mod fortran;
 pub mod fsharp;
 pub mod gleam;
@@ -183,6 +184,7 @@ pub enum Language {
     Elm,
     Erb,
     Erlang,
+    Fennel,
     FSharp,
     Fortran,
     Gleam,
@@ -252,6 +254,7 @@ impl core::fmt::Display for Language {
             Self::Elm => f.write_str("elm"),
             Self::Erb => f.write_str("erb"),
             Self::Erlang => f.write_str("erlang"),
+            Self::Fennel => f.write_str("fennel"),
             Self::FSharp => f.write_str("f#"),
             Self::Fortran => f.write_str("fortran"),
             Self::Gleam => f.write_str("gleam"),
@@ -331,6 +334,7 @@ impl Language {
             "elm" => Some(Self::Elm),
             "erb" => Some(Self::Erb),
             "erlang" => Some(Self::Erlang),
+            "fennel" | "fnl" => Some(Self::Fennel),
             "fish" => Some(Self::Shell(ShellFlavor::Fish)),
             "fortran" => Some(Self::Fortran),
             "fsharp" => Some(Self::FSharp),
@@ -415,6 +419,7 @@ impl Language {
             Self::Elm => ".elm",
             Self::Erb => ".erb",
             Self::Erlang => ".erl",
+            Self::Fennel => ".fnl",
             Self::FSharp => ".fs",
             Self::Fortran => ".f",
             Self::Gleam => ".gleam",

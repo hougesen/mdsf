@@ -194,6 +194,17 @@
         }
       ]
     },
+    "fennel": {
+      "default": {
+        "enabled": true,
+        "formatter": "fnlfmt"
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/Lang_for_Fennel"
+        }
+      ]
+    },
     "format_finished_document": {
       "description": "Format the processed document with the selected markdown formatter.",
       "default": false,
@@ -797,6 +808,10 @@
       "type": "string",
       "enum": ["fantomas"]
     },
+    "Fennel": {
+      "type": "string",
+      "enum": ["fnlfmt"]
+    },
     "Fortran": {
       "type": "string",
       "enum": ["fprettify", "findent"]
@@ -1103,6 +1118,19 @@
         },
         "formatter": {
           "$ref": "#/definitions/MdsfFormatter_for_FSharp"
+        }
+      },
+      "additionalProperties": false
+    },
+    "Lang_for_Fennel": {
+      "type": "object",
+      "properties": {
+        "enabled": {
+          "default": true,
+          "type": "boolean"
+        },
+        "formatter": {
+          "$ref": "#/definitions/MdsfFormatter_for_Fennel"
         }
       },
       "additionalProperties": false
@@ -1937,6 +1965,19 @@
           "type": "array",
           "items": {
             "$ref": "#/definitions/MdsfFormatter_for_FSharp"
+          }
+        }
+      ]
+    },
+    "MdsfFormatter_for_Fennel": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/Fennel"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MdsfFormatter_for_Fennel"
           }
         }
       ]

@@ -80,6 +80,7 @@ mdsf init
 | Erb              | `erb-formatter`                                                                                      |
 | Erlang           | `efmt`, `erlfmt`                                                                                     |
 | FSharp           | `fantomas`                                                                                           |
+| Fennel           | `fnlfmt`                                                                                             |
 | Fortran          | `findent`, `fprettify`                                                                               |
 | Gleam            | `gleam_format`                                                                                       |
 | Go               | `crlfmt`, `gci`, `gofmt`, `gofumpt`, `goimports`, `goimports-reviser`, `golines`                     |
