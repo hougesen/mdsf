@@ -82,6 +82,7 @@ mdsf init
 | FSharp           | `fantomas`                                                                                           |
 | Fennel           | `fnlfmt`                                                                                             |
 | Fortran          | `findent`, `fprettify`                                                                               |
+| GDScript         | `gdformat`                                                                                           |
 | Gleam            | `gleam_format`                                                                                       |
 | Go               | `crlfmt`, `gci`, `gofmt`, `gofumpt`, `goimports`, `goimports-reviser`, `golines`                     |
 | GraphQL          | `prettier`                                                                                           |

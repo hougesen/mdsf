@@ -232,6 +232,17 @@
         }
       ]
     },
+    "gdscript": {
+      "default": {
+        "enabled": true,
+        "formatter": "gdformat"
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/Lang_for_GDScript"
+        }
+      ]
+    },
     "gleam": {
       "default": {
         "enabled": true,
@@ -816,6 +827,10 @@
       "type": "string",
       "enum": ["fprettify", "findent"]
     },
+    "GDScript": {
+      "type": "string",
+      "enum": ["gdformat"]
+    },
     "Gleam": {
       "type": "string",
       "enum": ["gleam_format"]
@@ -1144,6 +1159,19 @@
         },
         "formatter": {
           "$ref": "#/definitions/MdsfFormatter_for_Fortran"
+        }
+      },
+      "additionalProperties": false
+    },
+    "Lang_for_GDScript": {
+      "type": "object",
+      "properties": {
+        "enabled": {
+          "default": true,
+          "type": "boolean"
+        },
+        "formatter": {
+          "$ref": "#/definitions/MdsfFormatter_for_GDScript"
         }
       },
       "additionalProperties": false
@@ -1991,6 +2019,19 @@
           "type": "array",
           "items": {
             "$ref": "#/definitions/MdsfFormatter_for_Fortran"
+          }
+        }
+      ]
+    },
+    "MdsfFormatter_for_GDScript": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/GDScript"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MdsfFormatter_for_GDScript"
           }
         }
       ]

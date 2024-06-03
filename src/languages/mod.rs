@@ -30,6 +30,7 @@ pub mod erlang;
 pub mod fennel;
 pub mod fortran;
 pub mod fsharp;
+pub mod gdscript;
 pub mod gleam;
 pub mod go;
 pub mod graphql;
@@ -187,6 +188,7 @@ pub enum Language {
     Fennel,
     FSharp,
     Fortran,
+    Gdscript,
     Gleam,
     Go,
     GraphQL,
@@ -257,6 +259,7 @@ impl core::fmt::Display for Language {
             Self::Fennel => f.write_str("fennel"),
             Self::FSharp => f.write_str("f#"),
             Self::Fortran => f.write_str("fortran"),
+            Self::Gdscript => f.write_str("gdscript"),
             Self::Gleam => f.write_str("gleam"),
             Self::Go => f.write_str("go"),
             Self::GraphQL => f.write_str("graphql"),
@@ -338,6 +341,7 @@ impl Language {
             "fish" => Some(Self::Shell(ShellFlavor::Fish)),
             "fortran" => Some(Self::Fortran),
             "fsharp" => Some(Self::FSharp),
+            "gdscript" => Some(Self::Gdscript),
             "gleam" => Some(Self::Gleam),
             "go" | "golang" => Some(Self::Go),
             "graphql" | "gql" => Some(Self::GraphQL),
@@ -422,6 +426,7 @@ impl Language {
             Self::Fennel => ".fnl",
             Self::FSharp => ".fs",
             Self::Fortran => ".f",
+            Self::Gdscript => ".gd",
             Self::Gleam => ".gleam",
             Self::Go => ".go",
             Self::GraphQL => ".gql",

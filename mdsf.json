@@ -82,6 +82,10 @@
     "enabled": true,
     "formatter": "fantomas"
   },
+  "gdscript": {
+    "enabled": true,
+    "formatter": "gdformat"
+  },
   "gleam": {
     "enabled": true,
     "formatter": "gleam_format"
