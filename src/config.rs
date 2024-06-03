@@ -7,7 +7,7 @@ use crate::{
         assembly::Assembly, bazel::Bazel, bicep::Bicep, blade::Blade, c::C, cabal::Cabal,
         clojure::Clojure, cpp::Cpp, crystal::Crystal, csharp::CSharp, css::Css, d::D, dart::Dart,
         elixir::Elixir, elm::Elm, erb::Erb, erlang::Erlang, fennel::Fennel, fortran::Fortran,
-        fsharp::FSharp, gleam::Gleam, go::Go, graphql::GraphQL, groovy::Groovy,
+        fsharp::FSharp, gdscript::GDScript, gleam::Gleam, go::Go, graphql::GraphQL, groovy::Groovy,
         handlebars::Handlebars, haskell::Haskell, hcl::Hcl, html::Html, java::Java,
         javascript::JavaScript, json::Json, julia::Julia, just::Just, kcl::Kcl, kotlin::Kotlin,
         lua::Lua, markdown::Markdown, mustache::Mustache, nim::Nim, nix::Nix, nunjucks::Nunjucks,
@@ -103,6 +103,9 @@ pub struct MdsfConfig {
 
     #[serde(default)]
     pub fsharp: Lang<FSharp>,
+
+    #[serde(default)]
+    pub gdscript: Lang<GDScript>,
 
     #[serde(default)]
     pub gleam: Lang<Gleam>,
@@ -265,6 +268,7 @@ impl Default for MdsfConfig {
             fennel: Lang::<Fennel>::default(),
             fortran: Lang::<Fortran>::default(),
             fsharp: Lang::<FSharp>::default(),
+            gdscript: Lang::<GDScript>::default(),
             gleam: Lang::<Gleam>::default(),
             go: Lang::<Go>::default(),
             graphql: Lang::<GraphQL>::default(),

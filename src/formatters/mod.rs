@@ -43,6 +43,7 @@ pub mod forge_fmt;
 pub mod fourmolu;
 pub mod fprettify;
 pub mod gci;
+pub mod gdformat;
 pub mod gleam_format;
 pub mod gofmt;
 pub mod gofumpt;
@@ -212,6 +213,7 @@ pub fn format_snippet(config: &MdsfConfig, info: &LineInfo, code: &str) -> Strin
             Language::Fennel => config.fennel.format(snippet_path, info),
             Language::FSharp => config.fsharp.format(snippet_path, info),
             Language::Fortran => config.fortran.format(snippet_path, info),
+            Language::Gdscript => config.gdscript.format(snippet_path, info),
             Language::Gleam => config.gleam.format(snippet_path, info),
             Language::Go => config.go.format(snippet_path, info),
             Language::GraphQL => config.graphql.format(snippet_path, info),
