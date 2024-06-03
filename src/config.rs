@@ -4,9 +4,9 @@ use schemars::JsonSchema;
 use crate::{
     error::MdsfError,
     languages::{
-        assembly::Assembly, blade::Blade, c::C, cabal::Cabal, clojure::Clojure, cpp::Cpp,
-        crystal::Crystal, csharp::CSharp, css::Css, d::D, dart::Dart, elixir::Elixir, elm::Elm,
-        erb::Erb, erlang::Erlang, fortran::Fortran, fsharp::FSharp, gleam::Gleam, go::Go,
+        assembly::Assembly, bazel::Bazel, blade::Blade, c::C, cabal::Cabal, clojure::Clojure,
+        cpp::Cpp, crystal::Crystal, csharp::CSharp, css::Css, d::D, dart::Dart, elixir::Elixir,
+        elm::Elm, erb::Erb, erlang::Erlang, fortran::Fortran, fsharp::FSharp, gleam::Gleam, go::Go,
         graphql::GraphQL, groovy::Groovy, handlebars::Handlebars, haskell::Haskell, hcl::Hcl,
         html::Html, java::Java, javascript::JavaScript, json::Json, julia::Julia, just::Just,
         kcl::Kcl, kotlin::Kotlin, lua::Lua, markdown::Markdown, mustache::Mustache, nim::Nim,
@@ -45,6 +45,9 @@ pub struct MdsfConfig {
 
     #[serde(default)]
     pub assembly: Lang<Assembly>,
+
+    #[serde(default)]
+    pub bazel: Lang<Bazel>,
 
     #[serde(default)]
     pub blade: Lang<Blade>,
@@ -236,6 +239,7 @@ impl Default for MdsfConfig {
             javascript_runtime: JavaScriptRuntime::default(),
 
             assembly: Lang::<Assembly>::default(),
+            bazel: Lang::<Bazel>::default(),
             blade: Lang::<Blade>::default(),
             c: Lang::<C>::default(),
             cabal: Lang::<Cabal>::default(),
