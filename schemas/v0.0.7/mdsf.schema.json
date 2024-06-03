@@ -205,6 +205,17 @@
         }
       ]
     },
+    "fish": {
+      "default": {
+        "enabled": true,
+        "formatter": "fish_indent"
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/Lang_for_Fish"
+        }
+      ]
+    },
     "format_finished_document": {
       "description": "Format the processed document with the selected markdown formatter.",
       "default": false,
@@ -823,6 +834,10 @@
       "type": "string",
       "enum": ["fnlfmt"]
     },
+    "Fish": {
+      "type": "string",
+      "enum": ["fish_indent"]
+    },
     "Fortran": {
       "type": "string",
       "enum": ["fprettify", "findent"]
@@ -1146,6 +1161,19 @@
         },
         "formatter": {
           "$ref": "#/definitions/MdsfFormatter_for_Fennel"
+        }
+      },
+      "additionalProperties": false
+    },
+    "Lang_for_Fish": {
+      "type": "object",
+      "properties": {
+        "enabled": {
+          "default": true,
+          "type": "boolean"
+        },
+        "formatter": {
+          "$ref": "#/definitions/MdsfFormatter_for_Fish"
         }
       },
       "additionalProperties": false
@@ -2006,6 +2034,19 @@
           "type": "array",
           "items": {
             "$ref": "#/definitions/MdsfFormatter_for_Fennel"
+          }
+        }
+      ]
+    },
+    "MdsfFormatter_for_Fish": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/Fish"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MdsfFormatter_for_Fish"
           }
         }
       ]

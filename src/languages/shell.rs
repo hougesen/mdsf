@@ -17,7 +17,6 @@ pub enum Shell {
     Shfmt,
     #[serde(rename = "beautysh")]
     Beautysh,
-
     #[serde(rename = "fish_indent")]
     FishIndent,
 }

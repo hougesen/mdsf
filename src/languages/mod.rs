@@ -28,6 +28,7 @@ pub mod elm;
 pub mod erb;
 pub mod erlang;
 pub mod fennel;
+pub mod fish;
 pub mod fortran;
 pub mod fsharp;
 pub mod gdscript;
@@ -119,7 +120,6 @@ pub enum ShellFlavor {
     Shell,
     Bash,
     Zsh,
-    Fish,
 }
 
 impl core::fmt::Display for ShellFlavor {
@@ -129,7 +129,6 @@ impl core::fmt::Display for ShellFlavor {
             Self::Shell => f.write_str("shell"),
             Self::Bash => f.write_str("bash"),
             Self::Zsh => f.write_str("zsh"),
-            Self::Fish => f.write_str("fish"),
         }
     }
 }
@@ -188,6 +187,7 @@ pub enum Language {
     Fennel,
     FSharp,
     Fortran,
+    Fish,
     Gdscript,
     Gleam,
     Go,
@@ -259,6 +259,7 @@ impl core::fmt::Display for Language {
             Self::Fennel => f.write_str("fennel"),
             Self::FSharp => f.write_str("f#"),
             Self::Fortran => f.write_str("fortran"),
+            Self::Fish => f.write_str("fish"),
             Self::Gdscript => f.write_str("gdscript"),
             Self::Gleam => f.write_str("gleam"),
             Self::Go => f.write_str("go"),
@@ -338,7 +339,7 @@ impl Language {
             "erb" => Some(Self::Erb),
             "erlang" => Some(Self::Erlang),
             "fennel" | "fnl" => Some(Self::Fennel),
-            "fish" => Some(Self::Shell(ShellFlavor::Fish)),
+            "fish" => Some(Self::Fish),
             "fortran" => Some(Self::Fortran),
             "fsharp" => Some(Self::FSharp),
             "gdscript" => Some(Self::Gdscript),
@@ -466,7 +467,7 @@ impl Language {
             Self::Scala => ".scala",
             Self::Shell(ShellFlavor::Bash) => ".bash",
             Self::Shell(ShellFlavor::Shell) => ".sh",
-            Self::Shell(ShellFlavor::Fish) => ".fish",
+            Self::Fish => ".fish",
             Self::Shell(ShellFlavor::Zsh) => ".zsh",
             Self::Solidity => ".sol",
             Self::Sql => ".sql",

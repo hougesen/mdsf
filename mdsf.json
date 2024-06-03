@@ -82,6 +82,10 @@
     "enabled": true,
     "formatter": "fantomas"
   },
+  "fish": {
+    "enabled": true,
+    "formatter": "fish_indent"
+  },
   "gdscript": {
     "enabled": true,
     "formatter": "gdformat"
