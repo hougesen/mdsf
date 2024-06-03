@@ -192,7 +192,7 @@
   },
   "restructuredtext": {
     "enabled": true,
-    "formatter": "rstfmt"
+    "formatter": [["rstfmt", "docstrfmt"]]
   },
   "roc": {
     "enabled": true,
