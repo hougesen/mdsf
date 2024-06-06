@@ -28,10 +28,14 @@ impl core::fmt::Display for MdsfError {
             ),
             Self::FormatterError => write!(f, "Error formatting codeblock"),
             Self::MissingBinary(binary_name) => write!(f, "{binary_name} was not found in path"),
-            Self::CheckModeChanges(file_count) => write!(
-                f,
-                "Found changes while running in check mode ({file_count} files)"
-            ),
+            Self::CheckModeChanges(file_count) => {
+                let file_or_files = if file_count == &1 { "file" } else { "files" };
+
+                write!(
+                    f,
+                    "Found changes while running in check mode ({file_count} {file_or_files})"
+                )
+            }
         }
     }
 }
