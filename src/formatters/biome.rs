@@ -20,6 +20,7 @@ mod test_biome {
         languages::{JavaScriptFlavor, JsonFlavor, Language, TypeScriptFlavor},
     };
 
+    #[test_with::executable(npx)]
     #[test]
     fn it_should_format_json() {
         let input = "
@@ -50,6 +51,7 @@ mod test_biome {
         assert_eq!(expected_output, output);
     }
 
+    #[test_with::executable(npx)]
     #[test]
     fn it_should_format_javascript() {
         let input = "
@@ -80,6 +82,7 @@ mod test_biome {
         assert_eq!(expected_output, output);
     }
 
+    #[test_with::executable(npx)]
     #[test]
     fn it_should_format_typescript() {
         let input = "

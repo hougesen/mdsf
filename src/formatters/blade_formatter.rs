@@ -27,6 +27,7 @@ pub fn format_using_blade_formatter(
 mod test_blade_formatter {
     use crate::{formatters::setup_snippet, languages::Language};
 
+    #[test_with::executable(npx)]
     #[test]
     fn it_should_format_blade() {
         let input = r#"@extends('frontend.layouts.app')

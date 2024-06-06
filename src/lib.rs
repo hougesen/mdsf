@@ -943,6 +943,7 @@ fn add(a: i32, b: i32) i32 {
         };
     }
 
+    #[test_with::executable(gofmt)]
     #[test]
     fn it_should_support_go_with_package() {
         let input = "```go
