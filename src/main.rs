@@ -1,4 +1,4 @@
-use clap::{builder::OsStr, Parser};
+use clap::{builder::OsStr, CommandFactory, Parser};
 use mdsf::{
     cli::{Cli, Commands, FormatCommandArguments, LogLevel},
     config::MdsfConfig,
@@ -99,6 +99,14 @@ fn main() {
 
         Commands::Init => init_config_command().map_err(MdsfError::from),
         Commands::Schema => generate_schema_command().map_err(MdsfError::from),
+        Commands::Completions(args) => {
+            let mut cmd = Cli::command();
+            let cmd_name = cmd.get_name().to_string();
+
+            clap_complete::generate(args.shell, &mut cmd, cmd_name, &mut std::io::stdout());
+
+            Ok(())
+        }
     };
 
     if let Err(error) = command_result {

@@ -28,6 +28,50 @@ cargo install --path ./mdsf --bin mdsf
 mdsf format <NAME_OF_FOLDER_OR_FOLDER>
 ```
 
+### Shell completions
+
+Shell completions can be generated using `mdsf completions <SHELL>`.
+
+#### Bash
+
+Add the following to your `.bashrc`.
+
+```bash
+eval "$(mdsf completions bash)"
+```
+
+#### Bash
+
+Add the following to your `.zshrc`.
+
+```bash
+eval "$(mdsf completions zsh)"
+```
+
+#### Fish
+
+Add the following to `~/.config/fish/config.fish`.
+
+```fish
+mdsf completions fish | source
+```
+
+#### PowerShell
+
+Add the following to your PowerShell configuraiton (Can be found by running `$PROFILE`).
+
+```powershell
+Invoke-Expression (&mdsf completions powershell)
+```
+
+#### Elvish
+
+Add the following to `~/.elvish/rc.elv`.
+
+```elvish
+eval (mdsf completions elvish)
+```
+
 ## Configuration
 
 The default configuration of `mdsf` aims to as sane as possible. For that reason the default formatter for each language is the one most people have installed.

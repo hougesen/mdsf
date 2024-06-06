@@ -22,6 +22,8 @@ pub enum Commands {
     #[clap(hide(true))]
     /// Generate json schema
     Schema,
+
+    Completions(CompletionsCommandArguments),
 }
 
 #[derive(Args, Debug)]
@@ -46,4 +48,9 @@ pub enum LogLevel {
     Warn,
     Error,
     Off,
+}
+
+#[derive(Args, Debug)]
+pub struct CompletionsCommandArguments {
+    pub shell: clap_complete::Shell,
 }
