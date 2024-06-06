@@ -58,7 +58,7 @@ mdsf completions fish | source
 
 #### PowerShell
 
-Add the following to your PowerShell configuraiton (Can be found by running `$PROFILE`).
+Add the following to your PowerShell configuration (Can be found by running `$PROFILE`).
 
 ```powershell
 Invoke-Expression (&mdsf completions powershell)
