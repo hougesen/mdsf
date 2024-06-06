@@ -16,6 +16,7 @@ keywords = [
 homepage = "https://github.com/hougesen/mdsf"
 readme = "README.md"
 categories = ["development-tools", "command-line-utilities"]
+rust-version = "1.76.0"
 
 [dependencies]
 clap = { version = "4.5.6", features = ["derive"] }
