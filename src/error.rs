@@ -12,6 +12,8 @@ pub enum MdsfError {
     CheckModeChanges(u32),
 }
 
+impl std::error::Error for MdsfError {}
+
 impl core::fmt::Display for MdsfError {
     #[inline]
     fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
