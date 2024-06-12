@@ -33,7 +33,7 @@ pub struct MdsfConfig {
     pub javascript_runtime: JavaScriptRuntime,
 
     #[serde(default)]
-    pub languages: std::collections::HashMap<String, MdsfFormatter<Tooling>>,
+    pub languages: std::collections::BTreeMap<String, MdsfFormatter<Tooling>>,
 }
 
 impl Default for MdsfConfig {

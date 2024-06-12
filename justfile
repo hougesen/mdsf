@@ -29,13 +29,11 @@ test-coverage:
     cargo llvm-cov clean
     cargo llvm-cov --all-features --open
 
-
 update-readme:
     cargo run -- schema
     cargo run -- init
     node scripts/update-supported-languages.mjs
-    npx --yes prettier --cache --write .
-    git restore tests/
+    npx --yes prettier@latest --cache --write mdsf.json schemas README.md
 
 precommit:
     cargo clean
@@ -44,9 +42,10 @@ precommit:
     just lint
     just test
     just update-readme
-    cargo run -- init
     cargo run -- format tests && git restore tests
-    npx prettier --write mdsf.json
+    npx --yes prettier@latest --write --cache .
+    git restore tests/
+    just --fmt --unstable .
     typos .
 
 publish:

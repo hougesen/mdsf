@@ -3,45 +3,45 @@
   "format_finished_document": false,
   "javascript_runtime": "node",
   "languages": {
-    "zig": "zigfmt",
-    "shell": [["shfmt", "beautysh"]],
-    "rust": "rustfmt",
-    "swift": [["swift-format", "swiftformat"]],
     "c": "clang-format",
-    "sql": [["sql-formatter", "sqlfluff"]],
-    "css": [["prettier", "stylelint"]],
-    "crystal": "crystal_format",
-    "json": [["prettier", "biome", "deno_fmt", "clang-format"]],
-    "lua": [["stylua", "luaformatter"]],
-    "yaml": [["prettier", "yamlfmt", "yamlfix"]],
-    "erlang": [["erlfmt", "efmt"]],
-    "csharp": [["csharpier", "clang-format"]],
-    "haskell": [["fourmolu", "ormolu", "hindent", "stylish-haskell"]],
-    "ruby": [["rubocop", "rufo", "rubyfmt", "standardrb"]],
-    "javascript": [
-      ["prettier", "biome", "deno_fmt", "clang-format", "standardjs"]
-    ],
-    "typescript": [["prettier", "biome", "deno_fmt"]],
-    "cpp": "clang-format",
-    "ocaml": [["ocamlformat", "ocp-indent"]],
-    "java": [["google-java-format", "clang-format"]],
-    "elm": "elm-format",
-    "d": "dfmt",
-    "html": [["prettier", "djlint"]],
-    "gleam": "gleam_format",
-    "dart": "dart_format",
     "clojure": [["cljstyle", "joker"]],
-    "python": [
-      ["usort", "isort"],
-      ["ruff", "blue", "black", "yapf", "autopep8", "pyink"]
-    ],
+    "cpp": "clang-format",
+    "crystal": "crystal_format",
+    "csharp": [["csharpier", "clang-format"]],
+    "css": [["prettier", "stylelint"]],
+    "d": "dfmt",
+    "dart": "dart_format",
     "elixir": "mix_format",
+    "elm": "elm-format",
+    "erlang": [["erlfmt", "efmt"]],
+    "gleam": "gleam_format",
     "go": [
       ["gci", "goimports-reviser", "goimports"],
       ["gofumpt", "gofmt", "crlfmt"]
     ],
-    "roc": "roc_format",
+    "haskell": [["fourmolu", "ormolu", "hindent", "stylish-haskell"]],
+    "html": [["prettier", "djlint"]],
+    "java": [["google-java-format", "clang-format"]],
+    "javascript": [
+      ["prettier", "biome", "deno_fmt", "clang-format", "standardjs"]
+    ],
+    "json": [["prettier", "biome", "deno_fmt", "clang-format"]],
+    "lua": [["stylua", "luaformatter"]],
     "nim": "nimpretty",
-    "toml": "taplo"
+    "ocaml": [["ocamlformat", "ocp-indent"]],
+    "python": [
+      ["usort", "isort"],
+      ["ruff", "blue", "black", "yapf", "autopep8", "pyink"]
+    ],
+    "roc": "roc_format",
+    "ruby": [["rubocop", "rufo", "rubyfmt", "standardrb"]],
+    "rust": "rustfmt",
+    "shell": [["shfmt", "beautysh"]],
+    "sql": [["sql-formatter", "sqlfluff"]],
+    "swift": [["swift-format", "swiftformat"]],
+    "toml": "taplo",
+    "typescript": [["prettier", "biome", "deno_fmt"]],
+    "yaml": [["prettier", "yamlfmt", "yamlfix"]],
+    "zig": "zigfmt"
   }
 }

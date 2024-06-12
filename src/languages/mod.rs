@@ -34,8 +34,8 @@ mod yaml;
 mod zig;
 
 #[inline]
-pub fn default_tools() -> std::collections::HashMap<String, MdsfFormatter<Tooling>> {
-    std::collections::HashMap::from_iter([
+pub fn default_tools() -> std::collections::BTreeMap<String, MdsfFormatter<Tooling>> {
+    std::collections::BTreeMap::from_iter([
         c::default_config(),
         clojure::default_config(),
         cpp::default_config(),

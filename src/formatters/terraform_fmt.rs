@@ -15,7 +15,7 @@ pub fn format_using_terraform_fmt(
 #[cfg(test)]
 mod test_terraform_fmt {
     use super::format_using_terraform_fmt;
-    use crate::{formatters::setup_snippet, generated::language_to_ext};
+    use crate::formatters::setup_snippet;
 
     #[test_with::executable(terraform)]
     #[test]
@@ -36,8 +36,7 @@ mod test_terraform_fmt {
 }
 ";
 
-        let snippet =
-            setup_snippet(input, &language_to_ext("hcl")).expect("it to create a snippet file");
+        let snippet = setup_snippet(input, ".tf").expect("it to create a snippet file");
 
         let output = format_using_terraform_fmt(snippet.path())
             .expect("it to be successful")
