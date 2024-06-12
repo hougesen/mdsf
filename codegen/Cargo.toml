@@ -10,7 +10,7 @@ categories = []
 
 [dependencies]
 anyhow = "1.0.86"
-mdsf = { path = "../" }
+mdsf = { path = "../", features = ["json-schema"] }
 reqwest = { version = "0.12.4", features = ["blocking", "json"] }
 schemars = "0.8.21"
 serde = { version = "1.0.203", features = ["derive"] }

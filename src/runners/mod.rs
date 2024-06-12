@@ -3,7 +3,6 @@ use core::sync::atomic::{AtomicU8, Ordering};
 use bun::new_bunx_cmd;
 use deno::new_deno_cmd;
 use node::new_npx_cmd;
-use schemars::JsonSchema;
 
 use crate::terminal::print_unknown_javascript_runtime;
 
@@ -11,8 +10,9 @@ mod bun;
 mod deno;
 mod node;
 
-#[derive(Debug, Default, serde::Serialize, serde::Deserialize, JsonSchema, Clone, Copy)]
+#[derive(Debug, Default, serde::Serialize, serde::Deserialize, Clone, Copy)]
 #[cfg_attr(test, derive(PartialEq, Eq))]
+#[cfg_attr(feature = "json-schema", derive(schemars::JsonSchema))]
 pub enum JavaScriptRuntime {
     #[serde(rename = "bun")]
     Bun,

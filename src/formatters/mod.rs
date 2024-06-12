@@ -1,7 +1,5 @@
 use std::{ffi::OsStr, io::Write, process::Command};
 
-use bpfmt::format_using_bpfmt;
-use schemars::JsonSchema;
 use tempfile::NamedTempFile;
 use which::which;
 
@@ -14,48 +12,49 @@ use crate::{
         autopep8::format_using_autopep8, beautysh::format_using_beautysh,
         bicep_format::format_using_bicep_format, biome::format_using_biome,
         black::format_using_black, blade_formatter::format_using_blade_formatter,
-        blue::format_using_blue, buf::format_using_buf, buildifier::format_using_buildifier,
-        cabal_format::format_using_cabal_format, clang_format::format_using_clang_format,
-        cljstyle::format_using_cljstyle, codespell::format_using_codespell,
-        crlfmt::format_using_crlfmt, crystal_format::format_using_crystal_format,
-        csharpier::format_using_csharpier, dart_format::format_using_dart_format,
-        deno_fmt::format_using_deno_fmt, dfmt::format_using_dfmt, djlint::format_using_djlint,
-        docstrfmt::format_using_docstrfmt, efmt::format_using_efmt,
-        elm_format::format_using_elm_format, erb_formatter::format_using_erb_formatter,
-        erlfmt::format_using_erlfmt, fantomas::format_using_fantomas,
-        findent::format_using_findent, fish_indent::format_using_fish_indent,
-        fnlfmt::format_using_fnlfmt, forge_fmt::format_using_forge_fmt,
-        fourmolu::format_using_fourmolu, fprettify::format_using_fprettify, gci::format_using_gci,
-        gdformat::format_using_gdformat, gleam_format::format_using_gleam_format,
-        gofmt::format_using_gofmt, gofumpt::format_using_gofumpt,
-        goimports::format_using_goimports, goimports_reviser::format_using_goimports_reviser,
-        golines::format_using_golines, google_java_format::format_using_google_java_format,
-        hindent::format_using_hindent, htmlbeautifier::format_using_htmlbeautifier,
-        isort::format_using_isort, joker::format_using_joker,
-        juliaformatter_jl::format_using_juliaformatter_jl, just_fmt::format_using_just_fmt,
-        kcl_fmt::format_using_kcl_fmt, ktfmt::format_using_ktfmt, ktlint::format_using_ktlint,
-        leptosfmt::format_using_leptosfmt, luaformatter::format_using_luaformatter,
-        mdformat::format_using_mdformat, misspell::format_using_misspell,
-        mix_format::format_using_mix_format, nimpretty::format_using_nimpretty,
-        nixfmt::format_using_nixfmt, nixpkgs_fmt::format_using_nixpkgs_fmt,
-        npm_groovy_lint::format_using_npm_groovy_lint, ocamlformat::format_using_ocamlformat,
-        ocp_indent::format_using_ocp_indent, ormolu::format_using_ormolu,
-        perltidy::format_using_perltidy, prettier::format_using_prettier,
-        puppet_lint::format_using_puppet_lint, purs_tidy::format_using_purs_tidy,
-        pyink::format_using_pyink, rescript_format::format_using_rescript_format,
-        roc_format::format_using_roc_format, rstfmt::format_using_rstfmt,
-        rubocop::format_using_rubocop, rubyfmt::format_using_rubyfmt, ruff::format_using_ruff,
-        rufo::format_using_rufo, rustfmt::format_using_rustfmt, scalafmt::format_using_scalafmt,
-        shfmt::format_using_shfmt, sql_formatter::format_using_sql_formatter,
-        sqlfluff::format_using_sqlfluff, standardjs::format_using_standardjs,
-        standardrb::format_using_standardrb, stylelint::format_using_stylelint,
-        stylish_haskell::format_using_stylish_haskell, stylua::format_using_stylua,
-        swift_format::format_using_swift_format, swiftformat::format_using_swiftformat,
-        taplo::format_using_taplo, terraform_fmt::format_using_terraform_fmt,
-        tofu_fmt::format_using_tofu_fmt, typos::format_using_typos, usort::format_using_usort,
-        xmlformat::format_using_xmlformat, xmllint::format_using_xmllint,
-        yamlfix::format_using_yamlfix, yamlfmt::format_using_yamlfmt, yapf::format_using_yapf,
-        yew_fmt::format_using_yew_fmt, zigfmt::format_using_zigfmt, zprint::format_using_zprint,
+        blue::format_using_blue, bpfmt::format_using_bpfmt, buf::format_using_buf,
+        buildifier::format_using_buildifier, cabal_format::format_using_cabal_format,
+        clang_format::format_using_clang_format, cljstyle::format_using_cljstyle,
+        codespell::format_using_codespell, crlfmt::format_using_crlfmt,
+        crystal_format::format_using_crystal_format, csharpier::format_using_csharpier,
+        dart_format::format_using_dart_format, deno_fmt::format_using_deno_fmt,
+        dfmt::format_using_dfmt, djlint::format_using_djlint, docstrfmt::format_using_docstrfmt,
+        efmt::format_using_efmt, elm_format::format_using_elm_format,
+        erb_formatter::format_using_erb_formatter, erlfmt::format_using_erlfmt,
+        fantomas::format_using_fantomas, findent::format_using_findent,
+        fish_indent::format_using_fish_indent, fnlfmt::format_using_fnlfmt,
+        forge_fmt::format_using_forge_fmt, fourmolu::format_using_fourmolu,
+        fprettify::format_using_fprettify, gci::format_using_gci, gdformat::format_using_gdformat,
+        gleam_format::format_using_gleam_format, gofmt::format_using_gofmt,
+        gofumpt::format_using_gofumpt, goimports::format_using_goimports,
+        goimports_reviser::format_using_goimports_reviser, golines::format_using_golines,
+        google_java_format::format_using_google_java_format, hindent::format_using_hindent,
+        htmlbeautifier::format_using_htmlbeautifier, isort::format_using_isort,
+        joker::format_using_joker, juliaformatter_jl::format_using_juliaformatter_jl,
+        just_fmt::format_using_just_fmt, kcl_fmt::format_using_kcl_fmt, ktfmt::format_using_ktfmt,
+        ktlint::format_using_ktlint, leptosfmt::format_using_leptosfmt,
+        luaformatter::format_using_luaformatter, mdformat::format_using_mdformat,
+        misspell::format_using_misspell, mix_format::format_using_mix_format,
+        nimpretty::format_using_nimpretty, nixfmt::format_using_nixfmt,
+        nixpkgs_fmt::format_using_nixpkgs_fmt, npm_groovy_lint::format_using_npm_groovy_lint,
+        ocamlformat::format_using_ocamlformat, ocp_indent::format_using_ocp_indent,
+        ormolu::format_using_ormolu, perltidy::format_using_perltidy,
+        prettier::format_using_prettier, puppet_lint::format_using_puppet_lint,
+        purs_tidy::format_using_purs_tidy, pyink::format_using_pyink,
+        rescript_format::format_using_rescript_format, roc_format::format_using_roc_format,
+        rstfmt::format_using_rstfmt, rubocop::format_using_rubocop, rubyfmt::format_using_rubyfmt,
+        ruff::format_using_ruff, rufo::format_using_rufo, rustfmt::format_using_rustfmt,
+        scalafmt::format_using_scalafmt, shfmt::format_using_shfmt,
+        sql_formatter::format_using_sql_formatter, sqlfluff::format_using_sqlfluff,
+        standardjs::format_using_standardjs, standardrb::format_using_standardrb,
+        stylelint::format_using_stylelint, stylish_haskell::format_using_stylish_haskell,
+        stylua::format_using_stylua, swift_format::format_using_swift_format,
+        swiftformat::format_using_swiftformat, taplo::format_using_taplo,
+        terraform_fmt::format_using_terraform_fmt, tofu_fmt::format_using_tofu_fmt,
+        typos::format_using_typos, usort::format_using_usort, xmlformat::format_using_xmlformat,
+        xmllint::format_using_xmllint, yamlfix::format_using_yamlfix,
+        yamlfmt::format_using_yamlfmt, yapf::format_using_yapf, yew_fmt::format_using_yew_fmt,
+        zigfmt::format_using_zigfmt, zprint::format_using_zprint,
     },
     generated::{self, language_to_ext},
     terminal::{
@@ -267,8 +266,9 @@ pub fn format_snippet(config: &MdsfConfig, info: &LineInfo, code: &str) -> Strin
     code.to_owned()
 }
 
-#[derive(Debug, serde::Serialize, serde::Deserialize, JsonSchema)]
+#[derive(Debug, serde::Serialize, serde::Deserialize)]
 #[cfg_attr(test, derive(PartialEq, Eq))]
+#[cfg_attr(feature = "json-schema", derive(schemars::JsonSchema))]
 #[serde(untagged)]
 pub enum MdsfFormatter<T>
 where
@@ -283,8 +283,9 @@ pub fn binary_in_path(binary_name: &OsStr) -> bool {
     which(binary_name).is_ok()
 }
 
-#[derive(serde::Serialize, serde::Deserialize, schemars::JsonSchema)]
+#[derive(serde::Serialize, serde::Deserialize)]
 #[cfg_attr(test, derive(Debug, PartialEq, Eq))]
+#[cfg_attr(feature = "json-schema", derive(schemars::JsonSchema))]
 pub enum Tooling {
     #[doc = "https://github.com/kamadorueda/alejandra"]
     #[serde(rename = "alejandra")]

@@ -1,5 +1,4 @@
 use json_comments::{CommentSettings, StripComments};
-use schemars::JsonSchema;
 
 use crate::{
     error::MdsfError,
@@ -9,9 +8,9 @@ use crate::{
     terminal::print_config_not_found,
 };
 
-#[derive(serde::Serialize, serde::Deserialize, JsonSchema)]
+#[derive(serde::Serialize, serde::Deserialize)]
 #[cfg_attr(test, derive(Debug, PartialEq, Eq))]
-#[schemars(deny_unknown_fields)]
+#[cfg_attr(feature = "json-schema", derive(schemars::JsonSchema))]
 pub struct MdsfConfig {
     #[serde(rename = "$schema", default = "default_schema_location")]
     pub schema: String,
@@ -104,6 +103,7 @@ mod test_config {
     }
 
     #[test]
+    #[cfg(feature = "json-schema")]
     fn json_schema_should_be_serializable() {
         serde_json::to_string_pretty(&schemars::schema_for!(MdsfConfig))
             .expect("it to be serializable");
