@@ -29,7 +29,6 @@ test-coverage:
     cargo llvm-cov clean
     cargo llvm-cov --all-features --open
 
-
 codegen:
     cd codegen && cargo run
 
@@ -40,7 +39,6 @@ precommit:
     just build
     just lint
     just test
-    just update-readme
     cargo run -- format tests && git restore tests
     npx --yes prettier@latest --write --cache .
     git restore tests/
