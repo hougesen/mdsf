@@ -844,6 +844,7 @@ version = "0.0.0"
 dependencies = [
  "anyhow",
  "mdsf",
+ "regex",
  "reqwest",
  "schemars",
  "serde",

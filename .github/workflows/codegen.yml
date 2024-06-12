@@ -21,10 +21,8 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node }}
-      - name: Update schema
+      - name: Generate stuff
         run: cd codegen && cargo run
-      - name: Update readme
-        run: node scripts/update-supported-languages.mjs
       - name: Format stuff
         run: npx prettier@latest --write schemas mdsf.json README.md && cargo run -- format README.md
       - uses: EndBug/add-and-commit@v9

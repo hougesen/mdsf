@@ -3,23 +3,7 @@ use std::str::FromStr;
 use anyhow::{Ok, Result};
 use mdsf::config::MdsfConfig;
 
-#[derive(serde::Deserialize)]
-struct Package {
-    version: String,
-}
-
-#[derive(serde::Deserialize)]
-struct Cargo {
-    package: Package,
-}
-
-fn get_package_version() -> Result<String> {
-    let file = std::fs::read_to_string("../Cargo.toml")?;
-
-    let config = toml::from_str::<Cargo>(&file)?;
-
-    Ok(config.package.version)
-}
+use crate::cargo::get_package_version;
 
 pub fn generate() -> Result<()> {
     println!("generate schema");

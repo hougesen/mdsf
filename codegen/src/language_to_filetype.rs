@@ -74,7 +74,7 @@ pub fn language_to_ext(language: &str) -> String {{
     )
 }
 
-pub fn generate_language_to_ft() -> Result<()> {
+pub fn generate() -> Result<()> {
     println!("generate language_to_ft");
 
     let languages = get_linguish_languages()?;
