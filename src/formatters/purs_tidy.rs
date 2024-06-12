@@ -26,7 +26,7 @@ pub fn format_using_purs_tidy(
 #[cfg(test)]
 mod test_purs_tidy {
     use super::format_using_purs_tidy;
-    use crate::{formatters::setup_snippet, languages::Language};
+    use crate::{formatters::setup_snippet, generated::language_to_ext};
 
     #[test]
     fn it_should_format_purescript() {
@@ -52,7 +52,7 @@ main :: Effect Unit
 main = do
   log "You should add some tests.""#;
 
-        let snippet = setup_snippet(input, Language::PureScript.to_file_ext())
+        let snippet = setup_snippet(input, &language_to_ext("purescript"))
             .expect("it to create a snippet file");
 
         let output = format_using_purs_tidy(snippet.path())

@@ -20,7 +20,7 @@ pub fn format_using_rubocop(
 mod test_rubocop {
     use crate::{
         formatters::{rubocop::format_using_rubocop, setup_snippet},
-        languages::Language,
+        generated::language_to_ext,
     };
 
     #[test_with::executable(rubocop)]
@@ -35,8 +35,8 @@ mod test_rubocop {
 end
 ";
 
-        let snippet = setup_snippet(input, Language::Ruby.to_file_ext())
-            .expect("it to create a snippet file");
+        let snippet =
+            setup_snippet(input, &language_to_ext("ruby")).expect("it to create a snippet file");
 
         let output = format_using_rubocop(snippet.path())
             .expect("it to be successful")

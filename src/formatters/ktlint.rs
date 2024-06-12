@@ -17,7 +17,7 @@ pub fn format_using_ktlint(
 #[cfg(test)]
 mod test_ktlint {
     use super::format_using_ktlint;
-    use crate::{formatters::setup_snippet, languages::Language};
+    use crate::{formatters::setup_snippet, generated::language_to_ext};
 
     #[test_with::executable(ktlint)]
     #[test]
@@ -37,8 +37,8 @@ fun add(
 }
 ";
 
-        let snippet = setup_snippet(input, Language::Kotlin.to_file_ext())
-            .expect("it to create a snippet file");
+        let snippet =
+            setup_snippet(input, &language_to_ext("kotlin")).expect("it to create a snippet file");
 
         let output = format_using_ktlint(snippet.path())
             .expect("it to be successful")

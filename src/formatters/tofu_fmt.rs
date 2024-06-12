@@ -15,7 +15,7 @@ pub fn format_using_tofu_fmt(
 #[cfg(test)]
 mod test_tofu_fmt {
     use super::format_using_tofu_fmt;
-    use crate::{formatters::setup_snippet, languages::Language};
+    use crate::formatters::setup_snippet;
 
     #[test_with::executable(tofu)]
     #[test]
@@ -36,8 +36,7 @@ mod test_tofu_fmt {
 }
 ";
 
-        let snippet =
-            setup_snippet(input, Language::Hcl.to_file_ext()).expect("it to create a snippet file");
+        let snippet = setup_snippet(input, ".tf").expect("it to create a snippet file");
 
         let output = format_using_tofu_fmt(snippet.path())
             .expect("it to be successful")

@@ -27,7 +27,7 @@ pub fn format_using_elm_format(
 mod test_elm_format {
     use crate::{
         formatters::{elm_format::format_using_elm_format, setup_snippet},
-        languages::Language,
+        generated::language_to_ext,
     };
 
     #[test]
@@ -50,7 +50,7 @@ main =
 "#;
 
         let snippet =
-            setup_snippet(input, Language::Elm.to_file_ext()).expect("it to create a snippet file");
+            setup_snippet(input, &language_to_ext("elm")).expect("it to create a snippet file");
 
         let output = format_using_elm_format(snippet.path())
             .expect("it to be successful")

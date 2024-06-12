@@ -15,7 +15,7 @@ pub fn format_using_crystal_format(
 #[cfg(test)]
 mod test_crystal_format {
     use super::format_using_crystal_format;
-    use crate::{formatters::setup_snippet, languages::Language};
+    use crate::{formatters::setup_snippet, generated::language_to_ext};
 
     #[test_with::executable(crystal)]
     #[test]
@@ -27,8 +27,8 @@ mod test_crystal_format {
 end
 ";
 
-        let snippet = setup_snippet(input, Language::Crystal.to_file_ext())
-            .expect("it to create a snippet file");
+        let snippet =
+            setup_snippet(input, &language_to_ext("crystal")).expect("it to create a snippet file");
 
         let output = format_using_crystal_format(snippet.path())
             .expect("it to be successful")

@@ -15,7 +15,7 @@ pub fn format_using_yapf(
 #[cfg(test)]
 mod test_yapf {
     use super::format_using_yapf;
-    use crate::{formatters::setup_snippet, languages::Language};
+    use crate::{formatters::setup_snippet, generated::language_to_ext};
 
     #[test_with::executable(yapf)]
     #[test]
@@ -24,8 +24,8 @@ mod test_yapf {
 
         let expected_output = "def add(a: int, b: int) -> int:\n    return a + b\n";
 
-        let snippet = setup_snippet(input, Language::Python.to_file_ext())
-            .expect("it to create a snippet file");
+        let snippet =
+            setup_snippet(input, &language_to_ext("python")).expect("it to create a snippet file");
 
         let output = format_using_yapf(snippet.path())
             .expect("it to be successful")

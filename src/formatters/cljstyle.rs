@@ -15,7 +15,7 @@ pub fn format_using_cljstyle(
 #[cfg(test)]
 mod test_cljstyle {
     use super::format_using_cljstyle;
-    use crate::{formatters::setup_snippet, languages::Language};
+    use crate::{formatters::setup_snippet, generated::language_to_ext};
 
     #[test_with::executable(cljstyle)]
     #[test]
@@ -56,8 +56,8 @@ mod test_cljstyle {
    (println \"Hello,\" name)))
 ";
 
-        let snippet = setup_snippet(input, Language::Clojure.to_file_ext())
-            .expect("it to create a snippet file");
+        let snippet =
+            setup_snippet(input, &language_to_ext("clojure")).expect("it to create a snippet file");
 
         let output = format_using_cljstyle(snippet.path())
             .expect("it to be successful")

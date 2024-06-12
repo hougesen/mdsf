@@ -15,7 +15,7 @@ pub fn format_using_buf(
 #[cfg(test)]
 mod test_buf {
     use super::format_using_buf;
-    use crate::{formatters::setup_snippet, languages::Language};
+    use crate::{formatters::setup_snippet, generated::language_to_ext};
 
     #[test_with::executable(buf)]
     #[test]
@@ -29,7 +29,7 @@ mod test_buf {
 }
 ";
 
-        let snippet = setup_snippet(input, Language::Protobuf.to_file_ext())
+        let snippet = setup_snippet(input, &language_to_ext("protobuf"))
             .expect("it to create a snippet file");
 
         let output = format_using_buf(snippet.path())

@@ -24,7 +24,7 @@ pub fn format_using_scalafmt(
 #[cfg(test)]
 mod test_scalafmt {
     use super::format_using_scalafmt;
-    use crate::{formatters::setup_snippet, languages::Language};
+    use crate::{formatters::setup_snippet, generated::language_to_ext};
 
     #[test_with::executable(scalafmt)]
     #[test]
@@ -41,8 +41,8 @@ mod test_scalafmt {
 }
 ";
 
-        let snippet = setup_snippet(input, Language::Scala.to_file_ext())
-            .expect("it to create a snippet file");
+        let snippet =
+            setup_snippet(input, &language_to_ext("scala")).expect("it to create a snippet file");
 
         let output = format_using_scalafmt(snippet.path())
             .expect("it to be successful")

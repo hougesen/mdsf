@@ -14,7 +14,7 @@ pub fn format_using_efmt(file_path: &std::path::Path) -> Result<(bool, Option<St
 mod test_efmt {
     use crate::{
         formatters::{efmt::format_using_efmt, setup_snippet},
-        languages::Language,
+        generated::language_to_ext,
     };
 
     #[test_with::executable(efmt)]
@@ -28,8 +28,8 @@ case Erlang of movie->[hello(mike,joe,robert),credits]; language->formatting_arg
     case Erlang of movie -> [hello(mike, joe, robert), credits]; language -> formatting_arguments end.
 "
 ;
-        let snippet = setup_snippet(input, Language::Erlang.to_file_ext())
-            .expect("it to create a snippet file");
+        let snippet =
+            setup_snippet(input, &language_to_ext("erlang")).expect("it to create a snippet file");
 
         let output = format_using_efmt(snippet.path())
             .expect("it to be successful")

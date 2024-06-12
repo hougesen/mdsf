@@ -20,7 +20,7 @@ pub fn format_using_just_fmt(
 mod test_just_fmt {
     use crate::{
         formatters::{just_fmt::format_using_just_fmt, setup_snippet},
-        languages::Language,
+        generated::language_to_ext,
     };
 
     #[test_with::executable(just)]
@@ -36,8 +36,8 @@ mod test_just_fmt {
     cargo build --release
 ";
 
-        let snippet = setup_snippet(input, Language::Gleam.to_file_ext())
-            .expect("it to create a snippet file");
+        let snippet =
+            setup_snippet(input, &language_to_ext("just")).expect("it to create a snippet file");
 
         let output = format_using_just_fmt(snippet.path())
             .expect("it to be successful")

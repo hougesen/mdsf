@@ -16,7 +16,7 @@ pub fn format_using_fantomas(
 mod test_fantomas {
     use crate::{
         formatters::{fantomas::format_using_fantomas, setup_snippet},
-        languages::Language,
+        generated::language_to_ext,
     };
 
     #[test_with::executable(fantomas)]
@@ -28,8 +28,8 @@ let add a b  =  a +  b
         let expected_output = "let add a b = a + b
 ";
 
-        let snippet = setup_snippet(input, Language::FSharp.to_file_ext())
-            .expect("it to create a snippet file");
+        let snippet =
+            setup_snippet(input, &language_to_ext("fsharp")).expect("it to create a snippet file");
 
         let output = format_using_fantomas(snippet.path())
             .expect("it to be successful")

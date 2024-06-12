@@ -16,7 +16,7 @@ pub fn format_using_gofmt(
 mod test_gofmt {
     use crate::{
         formatters::{gofmt::format_using_gofmt, setup_snippet},
-        languages::Language,
+        generated::language_to_ext,
     };
 
     #[test_with::executable(gofmt)]
@@ -38,7 +38,7 @@ func add(a int, b int) int {
 ";
 
         let snippet =
-            setup_snippet(input, Language::Go.to_file_ext()).expect("it to create a snippet file");
+            setup_snippet(input, &language_to_ext("go")).expect("it to create a snippet file");
 
         let output = format_using_gofmt(snippet.path())
             .expect("it to be successful")

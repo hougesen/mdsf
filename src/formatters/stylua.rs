@@ -34,7 +34,7 @@ pub fn format_using_stylua(
 mod test_stylua {
     use crate::{
         formatters::{setup_snippet, stylua::format_using_stylua},
-        languages::Language,
+        generated::language_to_ext,
     };
 
     #[test]
@@ -54,7 +54,7 @@ end
         let expected_output = "local function add(a, b)\n\treturn a + b\nend\n";
 
         let snippet =
-            setup_snippet(input, Language::Lua.to_file_ext()).expect("it to create a snippet file");
+            setup_snippet(input, &language_to_ext("lua")).expect("it to create a snippet file");
 
         let output = format_using_stylua(snippet.path())
             .expect("it to be successful")

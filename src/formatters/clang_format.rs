@@ -16,7 +16,7 @@ pub fn format_using_clang_format(
 mod test_clang_format {
     use crate::{
         formatters::{clang_format::format_using_clang_format, setup_snippet},
-        languages::{JavaScriptFlavor, JsonFlavor, Language},
+        generated::language_to_ext,
     };
 
     #[test_with::executable(clang-format)]
@@ -33,7 +33,7 @@ mod test_clang_format {
 }";
 
         let snippet =
-            setup_snippet(input, Language::C.to_file_ext()).expect("it to create a snippet file");
+            setup_snippet(input, &language_to_ext("c")).expect("it to create a snippet file");
 
         let output = format_using_clang_format(snippet.path())
             .expect("it to be successful")
@@ -57,7 +57,7 @@ mod test_clang_format {
 }";
 
         let snippet =
-            setup_snippet(input, Language::Cpp.to_file_ext()).expect("it to create a snippet file");
+            setup_snippet(input, &language_to_ext("cpp")).expect("it to create a snippet file");
 
         let output = format_using_clang_format(snippet.path())
             .expect("it to be successful")
@@ -82,8 +82,8 @@ mod test_clang_format {
         let expected_output =
          "namespace Mdsf {\nclass Adder {\n  public static int add(int a, int b) {\n    a - b;\n    return a + b;\n  }\n}\n}";
 
-        let snippet = setup_snippet(input, Language::CSharp.to_file_ext())
-            .expect("it to create a snippet file");
+        let snippet =
+            setup_snippet(input, &language_to_ext("csharp")).expect("it to create a snippet file");
 
         let output = format_using_clang_format(snippet.path())
             .expect("it to be successful")
@@ -103,11 +103,8 @@ mod test_clang_format {
 
         let expected_output = "async function asyncAddition(a, b) {\n  a * b;\n  return a + b\n}";
 
-        let snippet = setup_snippet(
-            input,
-            Language::JavaScript(JavaScriptFlavor::JavaScript).to_file_ext(),
-        )
-        .expect("it to create a snippet file");
+        let snippet = setup_snippet(input, &language_to_ext("javascript"))
+            .expect("it to create a snippet file");
 
         let output = format_using_clang_format(snippet.path())
             .expect("it to be successful")
@@ -135,8 +132,8 @@ mod test_clang_format {
   ]
 }";
 
-        let snippet = setup_snippet(input, Language::Json(JsonFlavor::Json).to_file_ext())
-            .expect("it to create a snippet file");
+        let snippet =
+            setup_snippet(input, &language_to_ext("json")).expect("it to create a snippet file");
 
         let output = format_using_clang_format(snippet.path())
             .expect("it to be successful")
@@ -159,7 +156,7 @@ mod test_clang_format {
   return a + b;
 }";
 
-        let snippet = setup_snippet(input, Language::ObjectiveC.to_file_ext())
+        let snippet = setup_snippet(input, &language_to_ext("objective-c"))
             .expect("it to create a snippet file");
 
         let output = format_using_clang_format(snippet.path())
@@ -180,7 +177,7 @@ mod test_clang_format {
         let expected_output =
             "service SearchService { rpc Search(SearchRequest) returns (SearchResponse); }";
 
-        let snippet = setup_snippet(input, Language::Protobuf.to_file_ext())
+        let snippet = setup_snippet(input, &language_to_ext("protobuf"))
             .expect("it to create a snippet file");
 
         let output = format_using_clang_format(snippet.path())
@@ -208,8 +205,8 @@ mod test_clang_format {
   }
 }";
 
-        let snippet = setup_snippet(input, Language::Java.to_file_ext())
-            .expect("it to create a snippet file");
+        let snippet =
+            setup_snippet(input, &language_to_ext("java")).expect("it to create a snippet file");
 
         let output = format_using_clang_format(snippet.path())
             .expect("it to be successful")

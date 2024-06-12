@@ -15,10 +15,7 @@ pub fn format_using_deno_fmt(
 #[cfg(test)]
 mod test_deno_fmt {
     use super::format_using_deno_fmt;
-    use crate::{
-        formatters::setup_snippet,
-        languages::{JavaScriptFlavor, JsonFlavor, Language, TypeScriptFlavor},
-    };
+    use crate::{formatters::setup_snippet, generated::language_to_ext};
 
     #[test_with::executable(deno)]
     #[test]
@@ -47,8 +44,8 @@ mod test_deno_fmt {
 }
 ";
 
-        let snippet = setup_snippet(input, Language::Json(JsonFlavor::Json).to_file_ext())
-            .expect("it to create a snippet file");
+        let snippet =
+            setup_snippet(input, &language_to_ext("json")).expect("it to create a snippet file");
 
         let output = format_using_deno_fmt(snippet.path())
             .expect("it to be successful")
@@ -73,11 +70,8 @@ mod test_deno_fmt {
 }
 ";
 
-        let snippet = setup_snippet(
-            input,
-            Language::JavaScript(JavaScriptFlavor::JavaScript).to_file_ext(),
-        )
-        .expect("it to create a snippet file");
+        let snippet = setup_snippet(input, &language_to_ext("javascript"))
+            .expect("it to create a snippet file");
 
         let output = format_using_deno_fmt(snippet.path())
             .expect("it to be successful")
@@ -104,11 +98,8 @@ mod test_deno_fmt {
 }
 ";
 
-        let snippet = setup_snippet(
-            input,
-            Language::TypeScript(TypeScriptFlavor::TypeScript).to_file_ext(),
-        )
-        .expect("it to create a snippet file");
+        let snippet = setup_snippet(input, &language_to_ext("typescript"))
+            .expect("it to create a snippet file");
 
         let output = format_using_deno_fmt(snippet.path())
             .expect("it to be successful")

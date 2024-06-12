@@ -17,7 +17,7 @@ pub fn format_using_erlfmt(
 mod test_erlfmt {
     use crate::{
         formatters::{erlfmt::format_using_erlfmt, setup_snippet},
-        languages::Language,
+        generated::language_to_ext,
     };
 
     #[test_with::executable(erlfmt)]
@@ -32,8 +32,8 @@ case Erlang of movie->[hello(mike,joe,robert),credits]; language->formatting_arg
         movie -> [hello(mike, joe, robert), credits];
         language -> no_more_formatting_arguments
     end.";
-        let snippet = setup_snippet(input, Language::Erlang.to_file_ext())
-            .expect("it to create a snippet file");
+        let snippet =
+            setup_snippet(input, &language_to_ext("erlang")).expect("it to create a snippet file");
 
         let output = format_using_erlfmt(snippet.path())
             .expect("it to be successful")

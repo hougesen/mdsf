@@ -83,5 +83,8 @@ pub fn print_error_formatting(formatter_name: &str, info: &LineInfo) {
 
 #[inline]
 pub fn warn_unknown_language(language_name: &str, filename: &std::path::Path) {
-    warn!("{} unknown language '{language_name}'", filename.display());
+    warn!(
+        "{} no formatter configured for '{language_name}'",
+        filename.display()
+    );
 }

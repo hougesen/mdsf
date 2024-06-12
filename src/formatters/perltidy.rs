@@ -28,7 +28,7 @@ pub fn format_using_perltidy(
 mod test_perltidy {
     use crate::{
         formatters::{perltidy::format_using_perltidy, setup_snippet},
-        languages::Language,
+        generated::language_to_ext,
     };
 
     #[test_with::executable(perltidy)]
@@ -61,8 +61,8 @@ LOOP: {
 }
 "#;
 
-        let snippet = setup_snippet(input, Language::Perl.to_file_ext())
-            .expect("it to create a snippet file");
+        let snippet =
+            setup_snippet(input, &language_to_ext("perl")).expect("it to create a snippet file");
 
         let output = format_using_perltidy(snippet.path())
             .expect("it to be successful")

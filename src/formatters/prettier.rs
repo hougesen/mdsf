@@ -55,7 +55,7 @@ pub fn format_using_prettier(
 mod test_prettier {
     use crate::{
         formatters::{prettier::format_using_prettier, setup_snippet},
-        languages::{CssFlavor, JavaScriptFlavor, JsonFlavor, Language, TypeScriptFlavor},
+        generated::language_to_ext,
     };
 
     #[test]
@@ -79,8 +79,8 @@ mod test_prettier {
 }
 ";
 
-        let snippet = setup_snippet(input, Language::Json(JsonFlavor::Json).to_file_ext())
-            .expect("it to create a snippet file");
+        let snippet =
+            setup_snippet(input, &language_to_ext("json")).expect("it to create a snippet file");
 
         let output = format_using_prettier(snippet.path())
             .expect("it to be successful")
@@ -106,11 +106,8 @@ mod test_prettier {
 }
 ";
 
-        let snippet = setup_snippet(
-            input,
-            Language::JavaScript(JavaScriptFlavor::JavaScript).to_file_ext(),
-        )
-        .expect("it to create a snippet file");
+        let snippet = setup_snippet(input, &language_to_ext("javascript"))
+            .expect("it to create a snippet file");
 
         let output = format_using_prettier(snippet.path())
             .expect("it to be successful")
@@ -139,11 +136,8 @@ number>
 }
 ";
 
-        let snippet = setup_snippet(
-            input,
-            Language::TypeScript(TypeScriptFlavor::TypeScript).to_file_ext(),
-        )
-        .expect("it to create a snippet file");
+        let snippet = setup_snippet(input, &language_to_ext("typescript"))
+            .expect("it to create a snippet file");
 
         let output = format_using_prettier(snippet.path())
             .expect("it to be successful")
@@ -169,7 +163,7 @@ this is a paragraph
 this is a paragraph
 ";
 
-        let snippet = setup_snippet(input, Language::Markdown.to_file_ext())
+        let snippet = setup_snippet(input, &language_to_ext("markdown"))
             .expect("it to create a snippet file");
 
         let output = format_using_prettier(snippet.path())
@@ -196,7 +190,7 @@ number>
 ```
 ";
 
-        let snippet = setup_snippet(input, Language::Markdown.to_file_ext())
+        let snippet = setup_snippet(input, &language_to_ext("markdown"))
             .expect("it to create a snippet file");
 
         let output = format_using_prettier(snippet.path())
@@ -233,8 +227,8 @@ number>
 </html>
 ";
 
-        let snippet = setup_snippet(input, Language::Html.to_file_ext())
-            .expect("it to create a snippet file");
+        let snippet =
+            setup_snippet(input, &language_to_ext("html")).expect("it to create a snippet file");
 
         let output = format_using_prettier(snippet.path())
             .expect("it to be successful")
@@ -256,8 +250,8 @@ p {
 }
 ";
 
-        let snippet = setup_snippet(input, Language::Css(CssFlavor::Css).to_file_ext())
-            .expect("it to create a snippet file");
+        let snippet =
+            setup_snippet(input, &language_to_ext("css")).expect("it to create a snippet file");
 
         let output = format_using_prettier(snippet.path())
             .expect("it to be successful")
@@ -312,8 +306,8 @@ updates:
     open-pull-requests-limit: 25
 ";
 
-        let snippet = setup_snippet(input, Language::Yaml.to_file_ext())
-            .expect("it to create a snippet file");
+        let snippet =
+            setup_snippet(input, &language_to_ext("yaml")).expect("it to create a snippet file");
 
         let output = format_using_prettier(snippet.path())
             .expect("it to be successful")
@@ -359,7 +353,7 @@ function add(a: number, b: number): number {
 ";
 
         let snippet =
-            setup_snippet(input, Language::Vue.to_file_ext()).expect("it to create a snippet file");
+            setup_snippet(input, &language_to_ext("vue")).expect("it to create a snippet file");
 
         let output = format_using_prettier(snippet.path())
             .expect("it to be successful")
@@ -386,8 +380,8 @@ function add(a: number, b: number): number {
 }
 ";
 
-        let snippet = setup_snippet(input, Language::GraphQL.to_file_ext())
-            .expect("it to create a snippet file");
+        let snippet =
+            setup_snippet(input, &language_to_ext("graphql")).expect("it to create a snippet file");
 
         let output = format_using_prettier(snippet.path())
             .expect("it to be successful")

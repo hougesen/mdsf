@@ -31,41 +31,32 @@ function loadSchema(version) {
  * @param schema {Awaited<ReturnType<typeof loadSchema>>}
  */
 function createLanguageTable(schema) {
-  const languageHeading = "Language";
-  let languageWidth = languageHeading.length;
+  const languageHeading = "Formatter";
+  let formatterWidth = languageHeading.length;
 
-  const formatterHeading = "Formatters";
-  let formatterWidth = formatterHeading.length;
+  const formatterHeading = "Description";
+  let descriptionWidth = formatterHeading.length;
 
   /** @type {Map<string, string>} */
-  const languages = new Map();
+  const formatters = new Map();
 
-  for (const [key, value] of Object.entries(schema.definitions)) {
-    if (
-      key.startsWith("MdsfFormatter_") ||
-      key.startsWith("Lang_") ||
-      key.includes("JavaScriptRuntime")
-    ) {
-      continue;
-    }
+  for (const entry of schema.definitions.Tooling.oneOf) {
+    const formatter = entry.enum[0];
 
-    const formatterLine = value.enum
-      .sort()
-      .map((f) => "`" + f + "`")
-      .join(", ");
+    const link = `[${entry.description}](${entry.description})`;
 
-    languageWidth = Math.max(languageWidth, key.length);
-    formatterWidth = Math.max(formatterWidth, formatterLine.length);
+    formatterWidth = Math.max(formatterWidth, formatter.length);
+    descriptionWidth = Math.max(descriptionWidth, link.length);
 
-    languages.set(key, formatterLine);
+    formatters.set(formatter, link);
   }
 
   /** @type {string[]} */
   const lines = [];
 
-  for (const [key, value] of languages) {
-    const line = `| ${key.padEnd(languageWidth, " ")} | ${value.padEnd(
-      formatterWidth,
+  for (const [key, value] of formatters) {
+    const line = `| ${key.padEnd(formatterWidth, " ")} | ${value.padEnd(
+      descriptionWidth,
       " ",
     )} |`;
 
@@ -74,21 +65,23 @@ function createLanguageTable(schema) {
 
   lines.sort();
 
-  const filler = `| ${"".padEnd(languageWidth, "-")} | ${"".padEnd(
-    formatterWidth,
+  const filler = `| ${"".padEnd(formatterWidth, "-")} | ${"".padEnd(
+    descriptionWidth,
     "-",
   )} |`;
 
   lines.unshift(filler);
 
   const heading = `| ${languageHeading.padEnd(
-    languageWidth,
+    formatterWidth,
     " ",
-  )} | ${formatterHeading.padEnd(formatterWidth, " ")} |`;
+  )} | ${formatterHeading.padEnd(descriptionWidth, " ")} |`;
 
   lines.unshift(heading);
 
-  return lines.join("\n");
+  const table = lines.join("\n");
+
+  return `\`mdsf\` currently supports ${formatters.size} tools.\n\n` + table;
 }
 
 /**

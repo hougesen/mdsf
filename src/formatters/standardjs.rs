@@ -34,7 +34,7 @@ pub fn format_using_standardjs(
 mod test_standardjs {
     use crate::{
         formatters::{setup_snippet, standardjs::format_using_standardjs},
-        languages::{JavaScriptFlavor, Language},
+        generated::language_to_ext,
     };
 
     #[test_with::executable(standard)]
@@ -56,11 +56,8 @@ console.info(asyncAddition(1, 2));
 console.info(asyncAddition(1, 2))
 ";
 
-        let snippet = setup_snippet(
-            input,
-            Language::JavaScript(JavaScriptFlavor::JavaScript).to_file_ext(),
-        )
-        .expect("it to create a snippet file");
+        let snippet = setup_snippet(input, &language_to_ext("javascript"))
+            .expect("it to create a snippet file");
 
         let output = format_using_standardjs(snippet.path())
             .expect("it to be successful")

@@ -15,7 +15,7 @@ pub fn format_using_fprettify(
 #[cfg(test)]
 mod test_fprettify {
     use super::format_using_fprettify;
-    use crate::{formatters::setup_snippet, languages::Language};
+    use crate::{formatters::setup_snippet, generated::language_to_ext};
 
     #[test_with::executable(fprettify)]
     #[test]
@@ -49,8 +49,8 @@ end program";
 end program
 ";
 
-        let snippet = setup_snippet(input, Language::Fortran.to_file_ext())
-            .expect("it to create a snippet file");
+        let snippet =
+            setup_snippet(input, &language_to_ext("fortran")).expect("it to create a snippet file");
 
         let output = format_using_fprettify(snippet.path())
             .expect("it to be successful")

@@ -10,13 +10,13 @@ The latest version of `mdsf` can be downloaded directly from [github.com/hougese
 
 Install using the [published crate](https://crates.io/crates/mdsf):
 
-```sh
+```shell
 cargo install mdsf
 ```
 
 or directly from source:
 
-```sh
+```shell
 git clone git@github.com:hougesen/mdsf.git
 
 cargo install --path ./mdsf --bin mdsf
@@ -24,7 +24,7 @@ cargo install --path ./mdsf --bin mdsf
 
 ## Usage
 
-```sh
+```shell
 mdsf format <NAME_OF_FOLDER_OR_FOLDER>
 ```
 
@@ -78,7 +78,7 @@ The default configuration of `mdsf` aims to as sane as possible. For that reason
 
 If you are interested in customizing which formatter is run, you can create a new `mdsf` configuration file by running
 
-```sh
+```shell
 mdsf init
 ```
 
@@ -95,83 +95,123 @@ mdsf init
 }
 ```
 
-### Supported languages & formatters
+### Supported tools
 
 > \[!NOTE\]
-> mdsf is not a tool for installing formatters.
+> mdsf is not a package manager.
 >
-> Only formatters that are already installed will be used.
+> Only tools that are already installed will be used.
 
 <!-- START_SECTION:supported-languages -->
 
-| Language         | Formatters                                                                                           |
-| ---------------- | ---------------------------------------------------------------------------------------------------- |
-| Assembly         | `asmfmt`                                                                                             |
-| Bazel            | `buildifier`                                                                                         |
-| Bicep            | `bicep_format`                                                                                       |
-| Blade            | `blade-formatter`                                                                                    |
-| C                | `clang-format`                                                                                       |
-| CSharp           | `clang-format`, `csharpier`                                                                          |
-| Cabal            | `cabal_format`                                                                                       |
-| Clojure          | `cljstyle`, `joker`, `zprint`                                                                        |
-| Cpp              | `clang-format`                                                                                       |
-| Crystal          | `crystal_format`                                                                                     |
-| Css              | `prettier`, `stylelint`                                                                              |
-| D                | `dfmt`                                                                                               |
-| Dart             | `dart_format`                                                                                        |
-| Elixir           | `mix_format`                                                                                         |
-| Elm              | `elm-format`                                                                                         |
-| Erb              | `erb-formatter`, `htmlbeautifier`                                                                    |
-| Erlang           | `efmt`, `erlfmt`                                                                                     |
-| FSharp           | `fantomas`                                                                                           |
-| Fennel           | `fnlfmt`                                                                                             |
-| Fish             | `fish_indent`                                                                                        |
-| Fortran          | `findent`, `fprettify`                                                                               |
-| GDScript         | `gdformat`                                                                                           |
-| Gleam            | `gleam_format`                                                                                       |
-| Go               | `crlfmt`, `gci`, `gofmt`, `gofumpt`, `goimports`, `goimports-reviser`, `golines`                     |
-| GraphQL          | `prettier`                                                                                           |
-| Groovy           | `npm-groovy-lint`                                                                                    |
-| Handlebars       | `djlint`, `prettier`                                                                                 |
-| Haskell          | `fourmolu`, `hindent`, `ormolu`, `stylish-haskell`                                                   |
-| Hcl              | `terraform_fmt`, `tofu_fmt`                                                                          |
-| Html             | `djlint`, `htmlbeautifier`, `prettier`                                                               |
-| Java             | `clang-format`, `google-java-format`                                                                 |
-| JavaScript       | `biome`, `clang-format`, `deno_fmt`, `prettier`, `standardjs`                                        |
-| Json             | `biome`, `clang-format`, `deno_fmt`, `prettier`                                                      |
-| Julia            | `juliaformatter.jl`                                                                                  |
-| Just             | `just_fmt`                                                                                           |
-| Kcl              | `kcl_fmt`                                                                                            |
-| Kotlin           | `ktfmt`, `ktlint`                                                                                    |
-| Lua              | `luaformatter`, `stylua`                                                                             |
-| Markdown         | `autocorrect`, `codespell`, `mdformat`, `misspell`, `prettier`, `typos`                              |
-| Mustache         | `djlint`                                                                                             |
-| Nim              | `nimpretty`                                                                                          |
-| Nix              | `alejandra`, `nixfmt`, `nixpkgs-fmt`                                                                 |
-| Nunjucks         | `djlint`                                                                                             |
-| OCaml            | `ocamlformat`, `ocp-indent`                                                                          |
-| ObjectiveC       | `clang-format`                                                                                       |
-| Perl             | `perltidy`                                                                                           |
-| Protobuf         | `buf`, `clang-format`                                                                                |
-| Puppet           | `puppet-lint`                                                                                        |
-| PureScript       | `purs-tidy`                                                                                          |
-| Python           | `auto-optional`, `autopep8`, `black`, `blue`, `docstrfmt`, `isort`, `pyink`, `ruff`, `usort`, `yapf` |
-| ReScript         | `rescript_format`                                                                                    |
-| ReStructuredText | `docstrfmt`, `rstfmt`                                                                                |
-| Roc              | `roc_format`                                                                                         |
-| Ruby             | `rubocop`, `rubyfmt`, `rufo`, `standardrb`                                                           |
-| Rust             | `leptosfmt`, `rustfmt`, `yew-fmt`                                                                    |
-| Scala            | `scalafmt`                                                                                           |
-| Shell            | `beautysh`, `fish_indent`, `shfmt`                                                                   |
-| Solidity         | `forge_fmt`                                                                                          |
-| Sql              | `sql-formatter`, `sqlfluff`                                                                          |
-| Swift            | `swift-format`, `swiftformat`                                                                        |
-| Toml             | `taplo`                                                                                              |
-| TypeScript       | `biome`, `deno_fmt`, `prettier`                                                                      |
-| Vue              | `biome`, `prettier`                                                                                  |
-| Xml              | `xmlformat`, `xmllint`                                                                               |
-| Yaml             | `prettier`, `yamlfix`, `yamlfmt`                                                                     |
-| Zig              | `zigfmt`                                                                                             |
+`mdsf` currently supports 104 tools.
+
+| Formatter          | Description                                                                                                            |
+| ------------------ | ---------------------------------------------------------------------------------------------------------------------- |
+| alejandra          | [https://github.com/kamadorueda/alejandra](https://github.com/kamadorueda/alejandra)                                   |
+| asmfmt             | [https://github.com/klauspost/asmfmt](https://github.com/klauspost/asmfmt)                                             |
+| auto-optional      | [https://pypi.org/project/auto-optional/](https://pypi.org/project/auto-optional/)                                     |
+| autocorrect        | [https://github.com/huacnlee/autocorrect](https://github.com/huacnlee/autocorrect)                                     |
+| autopep8           | [https://pypi.org/project/autopep8/](https://pypi.org/project/autopep8/)                                               |
+| beautysh           | [https://pypi.org/project/beautysh/](https://pypi.org/project/beautysh/)                                               |
+| bicep_format       | [https://github.com/Azure/bicep](https://github.com/Azure/bicep)                                                       |
+| biome              | [https://biomejs.dev](https://biomejs.dev)                                                                             |
+| black              | [https://github.com/psf/black](https://github.com/psf/black)                                                           |
+| blade-formatter    | [https://github.com/shufo/blade-formatter](https://github.com/shufo/blade-formatter)                                   |
+| blue               | [https://blue.readthedocs.io/en/latest/](https://blue.readthedocs.io/en/latest/)                                       |
+| bpfmt              | [https://source.android.com/docs/setup/reference/androidbp](https://source.android.com/docs/setup/reference/androidbp) |
+| buf                | [https://buf.build/docs/reference/cli/buf/format](https://buf.build/docs/reference/cli/buf/format)                     |
+| buildifier         | [https://github.com/bazelbuild/buildtools](https://github.com/bazelbuild/buildtools)                                   |
+| cabal_format       | [https://www.haskell.org/cabal/](https://www.haskell.org/cabal/)                                                       |
+| clang-format       | [https://docs.kernel.org/process/clang-format.html](https://docs.kernel.org/process/clang-format.html)                 |
+| cljstyle           | [https://github.com/greglook/cljstyle](https://github.com/greglook/cljstyle)                                           |
+| codespell          | [https://github.com/codespell-project/codespell](https://github.com/codespell-project/codespell)                       |
+| crlfmt             | [https://github.com/cockroachdb/crlfmt](https://github.com/cockroachdb/crlfmt)                                         |
+| crystal_format     | [https://crystal-lang.org/](https://crystal-lang.org/)                                                                 |
+| csharpier          | [https://csharpier.com/](https://csharpier.com/)                                                                       |
+| dart_format        | [https://dart.dev/tools/dart-format](https://dart.dev/tools/dart-format)                                               |
+| deno_fmt           | [https://dart.dev/tools/dart-format](https://dart.dev/tools/dart-format)                                               |
+| dfmt               | [https://github.com/dlang-community/dfmt](https://github.com/dlang-community/dfmt)                                     |
+| djlint             | [https://www.djlint.com/](https://www.djlint.com/)                                                                     |
+| docstrfmt          | [https://pypi.org/project/docstrfmt/](https://pypi.org/project/docstrfmt/)                                             |
+| efmt               | [https://github.com/sile/efmt](https://github.com/sile/efmt)                                                           |
+| elm-format         | [https://github.com/avh4/elm-format](https://github.com/avh4/elm-format)                                               |
+| erb-formatter      | [https://github.com/nebulab/erb-formatter](https://github.com/nebulab/erb-formatter)                                   |
+| erlfmt             | [https://github.com/WhatsApp/erlfmt](https://github.com/WhatsApp/erlfmt)                                               |
+| fantomas           | [https://github.com/fsprojects/fantomas](https://github.com/fsprojects/fantomas)                                       |
+| findent            | [https://pypi.org/project/findent/](https://pypi.org/project/findent/)                                                 |
+| fish_indent        | [https://fishshell.com/docs/current/cmds/fish_indent.html](https://fishshell.com/docs/current/cmds/fish_indent.html)   |
+| fnlfmt             | [https://git.sr.ht/~technomancy/fnlfmt](https://git.sr.ht/~technomancy/fnlfmt)                                         |
+| forge_fmt          | [https://docs.rs/forge-fmt/latest/forge_fmt/](https://docs.rs/forge-fmt/latest/forge_fmt/)                             |
+| fourmolu           | [https://hackage.haskell.org/package/fourmolu](https://hackage.haskell.org/package/fourmolu)                           |
+| fprettify          | [https://github.com/fortran-lang/fprettify](https://github.com/fortran-lang/fprettify)                                 |
+| gci                | [https://github.com/daixiang0/gci](https://github.com/daixiang0/gci)                                                   |
+| gdformat           | [https://godotengine.org/asset-library/asset/1057](https://godotengine.org/asset-library/asset/1057)                   |
+| gleam_format       | [https://gleam.run/](https://gleam.run/)                                                                               |
+| gofmt              | [https://pkg.go.dev/cmd/gofmt](https://pkg.go.dev/cmd/gofmt)                                                           |
+| gofumpt            | [https://github.com/mvdan/gofumpt](https://github.com/mvdan/gofumpt)                                                   |
+| goimports          | [https://pkg.go.dev/golang.org/x/tools/cmd/goimports](https://pkg.go.dev/golang.org/x/tools/cmd/goimports)             |
+| goimports-reviser  | [https://github.com/incu6us/goimports-reviser](https://github.com/incu6us/goimports-reviser)                           |
+| golines            | [https://github.com/segmentio/golines](https://github.com/segmentio/golines)                                           |
+| google-java-format | [https://github.com/google/google-java-format](https://github.com/google/google-java-format)                           |
+| hindent            | [https://hackage.haskell.org/package/hindent](https://hackage.haskell.org/package/hindent)                             |
+| htmlbeautifier     | [https://github.com/threedaymonk/htmlbeautifier](https://github.com/threedaymonk/htmlbeautifier)                       |
+| isort              | [https://pycqa.github.io/isort/](https://pycqa.github.io/isort/)                                                       |
+| joker              | [https://github.com/candid82/joker](https://github.com/candid82/joker)                                                 |
+| juliaformatter.jl  | [https://github.com/domluna/JuliaFormatter.jl](https://github.com/domluna/JuliaFormatter.jl)                           |
+| just_fmt           | [https://github.com/casey/just](https://github.com/casey/just)                                                         |
+| kcl_fmt            | [https://www.kcl-lang.io/docs/tools/cli/kcl/fmt](https://www.kcl-lang.io/docs/tools/cli/kcl/fmt)                       |
+| ktfmt              | [https://github.com/facebook/ktfmt](https://github.com/facebook/ktfmt)                                                 |
+| ktlint             | [https://github.com/pinterest/ktlint](https://github.com/pinterest/ktlint)                                             |
+| leptosfmt          | [https://github.com/bram209/leptosfmt](https://github.com/bram209/leptosfmt)                                           |
+| luaformatter       | [https://github.com/Koihik/LuaFormatter](https://github.com/Koihik/LuaFormatter)                                       |
+| mdformat           | [https://github.com/executablebooks/mdformat](https://github.com/executablebooks/mdformat)                             |
+| misspell           | [https://github.com/client9/misspell/](https://github.com/client9/misspell/)                                           |
+| mix_format         | [https://hexdocs.pm/mix/main/Mix.Tasks.Format.html](https://hexdocs.pm/mix/main/Mix.Tasks.Format.html)                 |
+| nimpretty          | [https://github.com/nim-lang/nim](https://github.com/nim-lang/nim)                                                     |
+| nixfmt             | [https://github.com/serokell/nixfmt](https://github.com/serokell/nixfmt)                                               |
+| nixpkgs-fmt        | [https://github.com/nix-community/nixpkgs-fmt](https://github.com/nix-community/nixpkgs-fmt)                           |
+| npm-groovy-lint    | [https://github.com/nvuillam/npm-groovy-lint](https://github.com/nvuillam/npm-groovy-lint)                             |
+| ocamlformat        | [https://github.com/ocaml-ppx/ocamlformat](https://github.com/ocaml-ppx/ocamlformat)                                   |
+| ocp-indent         | [https://github.com/OCamlPro/ocp-indent](https://github.com/OCamlPro/ocp-indent)                                       |
+| ormolu             | [https://hackage.haskell.org/package/ormolu](https://hackage.haskell.org/package/ormolu)                               |
+| perltidy           | [https://github.com/perltidy/perltidy](https://github.com/perltidy/perltidy)                                           |
+| prettier           | [https://github.com/prettier/prettier](https://github.com/prettier/prettier)                                           |
+| puppet-lint        | [https://github.com/puppetlabs/puppet-lint](https://github.com/puppetlabs/puppet-lint)                                 |
+| purs-tidy          | [https://github.com/natefaubion/purescript-tidy](https://github.com/natefaubion/purescript-tidy)                       |
+| pyink              | [https://github.com/google/pyink](https://github.com/google/pyink)                                                     |
+| rescript_format    | [https://rescript-lang.org/](https://rescript-lang.org/)                                                               |
+| roc_format         | [https://github.com/roc-lang/roc](https://github.com/roc-lang/roc)                                                     |
+| rstfmt             | [https://github.com/dzhu/rstfmt](https://github.com/dzhu/rstfmt)                                                       |
+| rubocop            | [https://github.com/rubocop/rubocop](https://github.com/rubocop/rubocop)                                               |
+| rubyfmt            | [https://github.com/fables-tales/rubyfmt](https://github.com/fables-tales/rubyfmt)                                     |
+| ruff               | [https://docs.astral.sh/ruff/](https://docs.astral.sh/ruff/)                                                           |
+| rufo               | [https://github.com/ruby-formatter/rufo](https://github.com/ruby-formatter/rufo)                                       |
+| rustfmt            | [https://github.com/rust-lang/rustfmt](https://github.com/rust-lang/rustfmt)                                           |
+| scalafmt           | [https://github.com/scalameta/scalafmt](https://github.com/scalameta/scalafmt)                                         |
+| shfmt              | [https://github.com/mvdan/sh](https://github.com/mvdan/sh)                                                             |
+| sql-formatter      | [https://github.com/sql-formatter-org/sql-formatter](https://github.com/sql-formatter-org/sql-formatter)               |
+| sqlfluff           | [https://github.com/sqlfluff/sqlfluff](https://github.com/sqlfluff/sqlfluff)                                           |
+| standardjs         | [https://standardjs.com/](https://standardjs.com/)                                                                     |
+| standardrb         | [https://github.com/standardrb/standard](https://github.com/standardrb/standard)                                       |
+| stylelint          | [https://github.com/stylelint/stylelint](https://github.com/stylelint/stylelint)                                       |
+| stylish-haskell    | [https://github.com/haskell/stylish-haskell](https://github.com/haskell/stylish-haskell)                               |
+| stylua             | [https://github.com/JohnnyMorganz/StyLua](https://github.com/JohnnyMorganz/StyLua)                                     |
+| swift-format       | [https://github.com/apple/swift-format](https://github.com/apple/swift-format)                                         |
+| swiftformat        | [https://github.com/nicklockwood/SwiftFormat](https://github.com/nicklockwood/SwiftFormat)                             |
+| taplo              | [https://github.com/tamasfe/taplo](https://github.com/tamasfe/taplo)                                                   |
+| terraform_fmt      | [https://www.terraform.io/docs/cli/commands/fmt.html](https://www.terraform.io/docs/cli/commands/fmt.html)             |
+| tofu_fmt           | [https://opentofu.org/docs/cli/commands/fmt/](https://opentofu.org/docs/cli/commands/fmt/)                             |
+| typos              | [https://github.com/crate-ci/typos](https://github.com/crate-ci/typos)                                                 |
+| usort              | [https://github.com/facebook/usort](https://github.com/facebook/usort)                                                 |
+| xmlformat          | [https://github.com/pamoller/xmlformatter](https://github.com/pamoller/xmlformatter)                                   |
+| xmllint            | [http://xmlsoft.org/xmllint.html](http://xmlsoft.org/xmllint.html)                                                     |
+| yamlfix            | [https://github.com/lyz-code/yamlfix](https://github.com/lyz-code/yamlfix)                                             |
+| yamlfmt            | [https://github.com/google/yamlfmt](https://github.com/google/yamlfmt)                                                 |
+| yapf               | [https://github.com/google/yapf](https://github.com/google/yapf)                                                       |
+| yew-fmt            | [https://github.com/its-the-shrimp/yew-fmt](https://github.com/its-the-shrimp/yew-fmt)                                 |
+| zigfmt             | [https://ziglang.org/](https://ziglang.org/)                                                                           |
+| zprint             | [https://github.com/kkinnear/zprint](https://github.com/kkinnear/zprint)                                               |
 
 <!-- END_SECTION:supported-languages -->
 

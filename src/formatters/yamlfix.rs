@@ -15,7 +15,7 @@ pub fn format_using_yamlfix(
 #[cfg(test)]
 mod test_yamlfix {
     use super::format_using_yamlfix;
-    use crate::{formatters::setup_snippet, languages::Language};
+    use crate::{formatters::setup_snippet, generated::language_to_ext};
 
     #[test_with::executable(yamlfix)]
     #[test]
@@ -61,8 +61,8 @@ updates:
     open-pull-requests-limit: 25
 ";
 
-        let snippet = setup_snippet(input, Language::Yaml.to_file_ext())
-            .expect("it to create a snippet file");
+        let snippet =
+            setup_snippet(input, &language_to_ext("yaml")).expect("it to create a snippet file");
 
         let output = format_using_yamlfix(snippet.path())
             .expect("it to be successful")

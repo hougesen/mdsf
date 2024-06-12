@@ -16,7 +16,7 @@ pub fn format_using_luaformatter(
 mod test_luaformatter {
     use crate::{
         formatters::{luaformatter::format_using_luaformatter, setup_snippet},
-        languages::Language,
+        generated::language_to_ext,
     };
 
     #[test_with::executable(lua-format)]
@@ -41,7 +41,7 @@ end
 ";
 
         let snippet =
-            setup_snippet(input, Language::Lua.to_file_ext()).expect("it to create a snippet file");
+            setup_snippet(input, &language_to_ext("lua")).expect("it to create a snippet file");
 
         let output = format_using_luaformatter(snippet.path())
             .expect("it to be successful")

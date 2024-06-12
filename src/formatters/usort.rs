@@ -15,7 +15,7 @@ pub fn format_using_usort(
 #[cfg(test)]
 mod test_usort {
     use super::format_using_usort;
-    use crate::{formatters::setup_snippet, languages::Language};
+    use crate::{formatters::setup_snippet, generated::language_to_ext};
 
     #[test_with::executable(usort)]
     #[test]
@@ -40,8 +40,8 @@ def add(a: int, b: int) -> int:
   return a + b
 ";
 
-        let snippet = setup_snippet(input, Language::Python.to_file_ext())
-            .expect("it to create a snippet file");
+        let snippet =
+            setup_snippet(input, &language_to_ext("python")).expect("it to create a snippet file");
 
         let output = format_using_usort(snippet.path())
             .expect("it to be successful")

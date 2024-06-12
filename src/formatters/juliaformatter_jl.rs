@@ -18,7 +18,7 @@ pub fn format_using_juliaformatter_jl(
 #[cfg(test)]
 mod test_juliaformatter_jl {
     use super::format_using_juliaformatter_jl;
-    use crate::{formatters::setup_snippet, languages::Language};
+    use crate::{formatters::setup_snippet, generated::language_to_ext};
 
     #[test_with::executable(julia)]
     #[test]
@@ -34,8 +34,8 @@ mod test_juliaformatter_jl {
 end
 ";
 
-        let snippet = setup_snippet(input, Language::Julia.to_file_ext())
-            .expect("it to create a snippet file");
+        let snippet =
+            setup_snippet(input, &language_to_ext("julia")).expect("it to create a snippet file");
 
         let output = format_using_juliaformatter_jl(snippet.path())
             .expect("it to be successful")

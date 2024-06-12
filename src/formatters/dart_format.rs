@@ -14,7 +14,7 @@ pub fn format_using_dart_format(
 
 #[cfg(test)]
 mod test_dart_format {
-    use crate::{formatters::setup_snippet, languages::Language};
+    use crate::{formatters::setup_snippet, generated::language_to_ext};
 
     #[test_with::executable(dart)]
     #[test]
@@ -28,8 +28,8 @@ mod test_dart_format {
 }
 ";
 
-        let snippet = setup_snippet(input, Language::Dart.to_file_ext())
-            .expect("it to create a snippet file");
+        let snippet =
+            setup_snippet(input, &language_to_ext("dart")).expect("it to create a snippet file");
 
         let output = super::format_using_dart_format(snippet.path())
             .expect("it to be successful")

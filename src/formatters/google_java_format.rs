@@ -15,7 +15,7 @@ pub fn format_using_google_java_format(
 #[cfg(test)]
 mod test_google_java_format {
     use super::format_using_google_java_format;
-    use crate::{formatters::setup_snippet, languages::Language};
+    use crate::{formatters::setup_snippet, generated::language_to_ext};
 
     #[test_with::executable(google-java-format)]
     #[test]
@@ -35,8 +35,8 @@ mod test_google_java_format {
 }
 ";
 
-        let snippet = setup_snippet(input, Language::Java.to_file_ext())
-            .expect("it to create a snippet file");
+        let snippet =
+            setup_snippet(input, &language_to_ext("java")).expect("it to create a snippet file");
 
         let output = format_using_google_java_format(snippet.path())
             .expect("it to be successful")
