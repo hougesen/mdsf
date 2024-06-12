@@ -1,4 +1,4 @@
-name: update-readme
+name: codegen
 on:
   push:
   workflow_dispatch:
@@ -22,9 +22,7 @@ jobs:
         with:
           node-version: ${{ matrix.node }}
       - name: Update schema
-        run: cargo run -- schema
-      - name: Update config
-        run: cargo run -- init
+        run: cd codegen && cargo run
       - name: Update readme
         run: node scripts/update-supported-languages.mjs
       - name: Format stuff
@@ -32,4 +30,4 @@ jobs:
       - uses: EndBug/add-and-commit@v9
         with:
           add: schemas mdsf.json README.md
-          message: "chore: updated schema"
+          message: "chore: updated generated code"
