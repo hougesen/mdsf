@@ -3,22 +3,22 @@
   "format_finished_document": false,
   "javascript_runtime": "node",
   "languages": {
-    "javascript": [["prettier", "biome", "deno_fmt", "clang-format"]],
-    "rust": "rustfmt",
-    "typescript": [["prettier", "biome", "deno_fmt"]],
-    "sql": [["sql-formatter", "sqlfluff"]],
-    "swift": [["swift-format", "swiftformat"]],
-    "yaml": [["prettier", "yamlfmt", "yamlfix"]],
-    "toml": "taplo",
+    "ruby": [["rubocop", "rufo", "rubyfmt", "standardrb"]],
     "go": [
       ["gci", "goimports-reviser", "goimports"],
       ["gofumpt", "gofmt", "crlfmt"]
     ],
-    "cpp": "clang-format",
-    "ruby": [["rubocop", "rufo", "rubyfmt", "standardrb"]],
+    "rust": "rustfmt",
+    "swift": [["swift-format", "swiftformat"]],
     "zig": "zigfmt",
     "java": [["google-java-format", "clang-format"]],
+    "cpp": "clang-format",
     "c": "clang-format",
-    "haskell": [["fourmolu", "ormolu", "hindent", "stylish-haskell"]]
+    "haskell": [["fourmolu", "ormolu", "hindent", "stylish-haskell"]],
+    "sql": [["sql-formatter", "sqlfluff"]],
+    "javascript": [["prettier", "biome", "deno_fmt", "clang-format"]],
+    "toml": "taplo",
+    "typescript": [["prettier", "biome", "deno_fmt"]],
+    "yaml": [["prettier", "yamlfmt", "yamlfix"]]
   }
 }

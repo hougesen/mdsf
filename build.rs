@@ -71,5 +71,5 @@ fn main() {
 
     let result = build_mapping(languages);
 
-    std::fs::write("src/generated.rs", result).unwrap();
+    std::fs::write("src/generated.rs", result).expect("it to write the generated code");
 }

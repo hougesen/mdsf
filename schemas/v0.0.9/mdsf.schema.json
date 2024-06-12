@@ -49,112 +49,527 @@
       ]
     },
     "Tooling": {
-      "type": "string",
-      "enum": [
-        "alejandra",
-        "asmfmt",
-        "auto-optional",
-        "autocorrect",
-        "autopep8",
-        "beautysh",
-        "bicep_format",
-        "biome",
-        "black",
-        "blade-formatter",
-        "blue",
-        "bpfmt",
-        "buf",
-        "buildifier",
-        "cabal_format",
-        "clang-format",
-        "cljstyle",
-        "codespell",
-        "crlfmt",
-        "crystal_format",
-        "csharpier",
-        "dart_format",
-        "deno_fmt",
-        "dfmt",
-        "djlint",
-        "docstrfmt",
-        "efmt",
-        "elm-format",
-        "erb-formatter",
-        "erlfmt",
-        "fantomas",
-        "findent",
-        "fish_indent",
-        "fnlfmt",
-        "forge_fmt",
-        "fourmolu",
-        "fprettify",
-        "gci",
-        "gdformat",
-        "gleam_format",
-        "gofmt",
-        "gofumpt",
-        "goimports",
-        "goimports-reviser",
-        "golines",
-        "google-java-format",
-        "hindent",
-        "htmlbeautifier",
-        "isort",
-        "joker",
-        "juliaformatter.jl",
-        "just_fmt",
-        "kcl_fmt",
-        "ktfmt",
-        "ktlint",
-        "leptosfmt",
-        "luaformatter",
-        "mdformat",
-        "misspell",
-        "mix_format",
-        "nimpretty",
-        "nixfmt",
-        "nixpkgs-fmt",
-        "npm-groovy-lint",
-        "ocamlformat",
-        "ocp-indent",
-        "ormolu",
-        "perltidy",
-        "prettier",
-        "puppet-lint",
-        "purs-tidy",
-        "pyink",
-        "rescript_format",
-        "roc_format",
-        "rstfmt",
-        "rubocop",
-        "rubyfmt",
-        "ruff",
-        "rufo",
-        "rustfmt",
-        "scalafmt",
-        "shfmt",
-        "sql-formatter",
-        "sqlfluff",
-        "standardjs",
-        "standardrb",
-        "stylelint",
-        "stylish-haskell",
-        "stylua",
-        "swift-format",
-        "swiftformat",
-        "taplo",
-        "terraform_fmt",
-        "tofu_fmt",
-        "typos",
-        "usort",
-        "xmlformat",
-        "xmllint",
-        "yamlfix",
-        "yamlfmt",
-        "yapf",
-        "yew-fmt",
-        "zigfmt",
-        "zprint"
+      "oneOf": [
+        {
+          "description": "https://github.com/kamadorueda/alejandra",
+          "type": "string",
+          "enum": ["alejandra"]
+        },
+        {
+          "description": "https://github.com/klauspost/asmfmt",
+          "type": "string",
+          "enum": ["asmfmt"]
+        },
+        {
+          "description": "https://pypi.org/project/auto-optional/",
+          "type": "string",
+          "enum": ["auto-optional"]
+        },
+        {
+          "description": "https://github.com/huacnlee/autocorrect",
+          "type": "string",
+          "enum": ["autocorrect"]
+        },
+        {
+          "description": "https://pypi.org/project/autopep8/",
+          "type": "string",
+          "enum": ["autopep8"]
+        },
+        {
+          "description": "https://pypi.org/project/beautysh/",
+          "type": "string",
+          "enum": ["beautysh"]
+        },
+        {
+          "description": "https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/overview?tabs=bicep",
+          "type": "string",
+          "enum": ["bicep_format"]
+        },
+        {
+          "description": "https://biomejs.dev",
+          "type": "string",
+          "enum": ["biome"]
+        },
+        {
+          "description": "https://github.com/psf/black",
+          "type": "string",
+          "enum": ["black"]
+        },
+        {
+          "description": "https://github.com/shufo/blade-formatter",
+          "type": "string",
+          "enum": ["blade-formatter"]
+        },
+        {
+          "description": "https://blue.readthedocs.io/en/latest/",
+          "type": "string",
+          "enum": ["blue"]
+        },
+        {
+          "description": "https://source.android.com/docs/setup/reference/androidbp",
+          "type": "string",
+          "enum": ["bpfmt"]
+        },
+        {
+          "description": "https://buf.build/docs/reference/cli/buf/format",
+          "type": "string",
+          "enum": ["buf"]
+        },
+        {
+          "description": "https://github.com/bazelbuild/buildtools",
+          "type": "string",
+          "enum": ["buildifier"]
+        },
+        {
+          "description": "https://www.haskell.org/cabal/",
+          "type": "string",
+          "enum": ["cabal_format"]
+        },
+        {
+          "description": "https://docs.kernel.org/process/clang-format.html",
+          "type": "string",
+          "enum": ["clang-format"]
+        },
+        {
+          "description": "https://github.com/greglook/cljstyle",
+          "type": "string",
+          "enum": ["cljstyle"]
+        },
+        {
+          "description": "https://github.com/codespell-project/codespell",
+          "type": "string",
+          "enum": ["codespell"]
+        },
+        {
+          "description": "https://github.com/cockroachdb/crlfmt",
+          "type": "string",
+          "enum": ["crlfmt"]
+        },
+        {
+          "description": "https://crystal-lang.org/",
+          "type": "string",
+          "enum": ["crystal_format"]
+        },
+        {
+          "description": "https://csharpier.com/",
+          "type": "string",
+          "enum": ["csharpier"]
+        },
+        {
+          "description": "https://dart.dev/tools/dart-format",
+          "type": "string",
+          "enum": ["dart_format"]
+        },
+        {
+          "description": "https://dart.dev/tools/dart-format",
+          "type": "string",
+          "enum": ["deno_fmt"]
+        },
+        {
+          "description": "https://github.com/dlang-community/dfmt",
+          "type": "string",
+          "enum": ["dfmt"]
+        },
+        {
+          "description": "https://www.djlint.com/",
+          "type": "string",
+          "enum": ["djlint"]
+        },
+        {
+          "description": "https://pypi.org/project/docstrfmt/",
+          "type": "string",
+          "enum": ["docstrfmt"]
+        },
+        {
+          "description": "https://github.com/sile/efmt",
+          "type": "string",
+          "enum": ["efmt"]
+        },
+        {
+          "description": "https://github.com/avh4/elm-format",
+          "type": "string",
+          "enum": ["elm-format"]
+        },
+        {
+          "description": "https://github.com/nebulab/erb-formatter",
+          "type": "string",
+          "enum": ["erb-formatter"]
+        },
+        {
+          "description": "https://github.com/WhatsApp/erlfmt",
+          "type": "string",
+          "enum": ["erlfmt"]
+        },
+        {
+          "description": "https://github.com/fsprojects/fantomas",
+          "type": "string",
+          "enum": ["fantomas"]
+        },
+        {
+          "description": "https://pypi.org/project/findent/",
+          "type": "string",
+          "enum": ["findent"]
+        },
+        {
+          "description": "https://fishshell.com/docs/current/cmds/fish_indent.html",
+          "type": "string",
+          "enum": ["fish_indent"]
+        },
+        {
+          "description": "https://git.sr.ht/~technomancy/fnlfmt",
+          "type": "string",
+          "enum": ["fnlfmt"]
+        },
+        {
+          "description": "https://docs.rs/forge-fmt/latest/forge_fmt/",
+          "type": "string",
+          "enum": ["forge_fmt"]
+        },
+        {
+          "description": "https://hackage.haskell.org/package/fourmolu",
+          "type": "string",
+          "enum": ["fourmolu"]
+        },
+        {
+          "description": "https://github.com/fortran-lang/fprettify",
+          "type": "string",
+          "enum": ["fprettify"]
+        },
+        {
+          "description": "https://github.com/daixiang0/gci",
+          "type": "string",
+          "enum": ["gci"]
+        },
+        {
+          "description": "https://godotengine.org/asset-library/asset/1057",
+          "type": "string",
+          "enum": ["gdformat"]
+        },
+        {
+          "description": "https://gleam.run/",
+          "type": "string",
+          "enum": ["gleam_format"]
+        },
+        {
+          "description": "https://pkg.go.dev/cmd/gofmt",
+          "type": "string",
+          "enum": ["gofmt"]
+        },
+        {
+          "description": "https://github.com/mvdan/gofumpt",
+          "type": "string",
+          "enum": ["gofumpt"]
+        },
+        {
+          "description": "https://pkg.go.dev/golang.org/x/tools/cmd/goimports",
+          "type": "string",
+          "enum": ["goimports"]
+        },
+        {
+          "description": "https://github.com/incu6us/goimports-reviser",
+          "type": "string",
+          "enum": ["goimports-reviser"]
+        },
+        {
+          "description": "https://github.com/segmentio/golines",
+          "type": "string",
+          "enum": ["golines"]
+        },
+        {
+          "description": "https://github.com/google/google-java-format",
+          "type": "string",
+          "enum": ["google-java-format"]
+        },
+        {
+          "description": "https://hackage.haskell.org/package/hindent",
+          "type": "string",
+          "enum": ["hindent"]
+        },
+        {
+          "description": "https://github.com/threedaymonk/htmlbeautifier",
+          "type": "string",
+          "enum": ["htmlbeautifier"]
+        },
+        {
+          "description": "https://pycqa.github.io/isort/",
+          "type": "string",
+          "enum": ["isort"]
+        },
+        {
+          "description": "https://github.com/candid82/joker",
+          "type": "string",
+          "enum": ["joker"]
+        },
+        {
+          "description": "https://github.com/domluna/JuliaFormatter.jl",
+          "type": "string",
+          "enum": ["juliaformatter.jl"]
+        },
+        {
+          "description": "https://github.com/casey/just",
+          "type": "string",
+          "enum": ["just_fmt"]
+        },
+        {
+          "description": "https://www.kcl-lang.io/docs/tools/cli/kcl/fmt",
+          "type": "string",
+          "enum": ["kcl_fmt"]
+        },
+        {
+          "description": "https://github.com/facebook/ktfmt",
+          "type": "string",
+          "enum": ["ktfmt"]
+        },
+        {
+          "description": "https://github.com/pinterest/ktlint",
+          "type": "string",
+          "enum": ["ktlint"]
+        },
+        {
+          "description": "https://github.com/bram209/leptosfmt",
+          "type": "string",
+          "enum": ["leptosfmt"]
+        },
+        {
+          "description": "https://github.com/Koihik/LuaFormatter",
+          "type": "string",
+          "enum": ["luaformatter"]
+        },
+        {
+          "description": "https://github.com/executablebooks/mdformat",
+          "type": "string",
+          "enum": ["mdformat"]
+        },
+        {
+          "description": "https://github.com/client9/misspell/",
+          "type": "string",
+          "enum": ["misspell"]
+        },
+        {
+          "description": "https://hexdocs.pm/mix/main/Mix.Tasks.Format.html",
+          "type": "string",
+          "enum": ["mix_format"]
+        },
+        {
+          "description": "https://github.com/nim-lang/nim",
+          "type": "string",
+          "enum": ["nimpretty"]
+        },
+        {
+          "description": "https://github.com/serokell/nixfmt",
+          "type": "string",
+          "enum": ["nixfmt"]
+        },
+        {
+          "description": "https://github.com/nix-community/nixpkgs-fmt",
+          "type": "string",
+          "enum": ["nixpkgs-fmt"]
+        },
+        {
+          "description": "https://github.com/nvuillam/npm-groovy-lint",
+          "type": "string",
+          "enum": ["npm-groovy-lint"]
+        },
+        {
+          "description": "https://github.com/ocaml-ppx/ocamlformat",
+          "type": "string",
+          "enum": ["ocamlformat"]
+        },
+        {
+          "description": "https://github.com/OCamlPro/ocp-indent",
+          "type": "string",
+          "enum": ["ocp-indent"]
+        },
+        {
+          "description": "https://hackage.haskell.org/package/ormolu",
+          "type": "string",
+          "enum": ["ormolu"]
+        },
+        {
+          "description": "https://github.com/perltidy/perltidy",
+          "type": "string",
+          "enum": ["perltidy"]
+        },
+        {
+          "description": "https://github.com/prettier/prettier",
+          "type": "string",
+          "enum": ["prettier"]
+        },
+        {
+          "description": "https://github.com/puppetlabs/puppet-lint",
+          "type": "string",
+          "enum": ["puppet-lint"]
+        },
+        {
+          "description": "https://github.com/natefaubion/purescript-tidy",
+          "type": "string",
+          "enum": ["purs-tidy"]
+        },
+        {
+          "description": "https://github.com/google/pyink",
+          "type": "string",
+          "enum": ["pyink"]
+        },
+        {
+          "description": "https://rescript-lang.org/",
+          "type": "string",
+          "enum": ["rescript_format"]
+        },
+        {
+          "description": "https://github.com/roc-lang/roc",
+          "type": "string",
+          "enum": ["roc_format"]
+        },
+        {
+          "description": "https://github.com/dzhu/rstfmt",
+          "type": "string",
+          "enum": ["rstfmt"]
+        },
+        {
+          "description": "https://github.com/rubocop/rubocop",
+          "type": "string",
+          "enum": ["rubocop"]
+        },
+        {
+          "description": "https://github.com/fables-tales/rubyfmt",
+          "type": "string",
+          "enum": ["rubyfmt"]
+        },
+        {
+          "description": "https://docs.astral.sh/ruff/",
+          "type": "string",
+          "enum": ["ruff"]
+        },
+        {
+          "description": "https://github.com/ruby-formatter/rufo",
+          "type": "string",
+          "enum": ["rufo"]
+        },
+        {
+          "description": "https://github.com/rust-lang/rustfmt",
+          "type": "string",
+          "enum": ["rustfmt"]
+        },
+        {
+          "description": "https://github.com/scalameta/scalafmt",
+          "type": "string",
+          "enum": ["scalafmt"]
+        },
+        {
+          "description": "https://github.com/mvdan/sh",
+          "type": "string",
+          "enum": ["shfmt"]
+        },
+        {
+          "description": "https://github.com/sql-formatter-org/sql-formatter",
+          "type": "string",
+          "enum": ["sql-formatter"]
+        },
+        {
+          "description": "https://github.com/sqlfluff/sqlfluff",
+          "type": "string",
+          "enum": ["sqlfluff"]
+        },
+        {
+          "description": "https://standardjs.com/",
+          "type": "string",
+          "enum": ["standardjs"]
+        },
+        {
+          "description": "https://github.com/standardrb/standard",
+          "type": "string",
+          "enum": ["standardrb"]
+        },
+        {
+          "description": "https://github.com/stylelint/stylelint",
+          "type": "string",
+          "enum": ["stylelint"]
+        },
+        {
+          "description": "https://github.com/haskell/stylish-haskell",
+          "type": "string",
+          "enum": ["stylish-haskell"]
+        },
+        {
+          "description": "https://github.com/JohnnyMorganz/StyLua",
+          "type": "string",
+          "enum": ["stylua"]
+        },
+        {
+          "description": "https://github.com/apple/swift-format",
+          "type": "string",
+          "enum": ["swift-format"]
+        },
+        {
+          "description": "https://github.com/nicklockwood/SwiftFormat",
+          "type": "string",
+          "enum": ["swiftformat"]
+        },
+        {
+          "description": "https://github.com/tamasfe/taplo",
+          "type": "string",
+          "enum": ["taplo"]
+        },
+        {
+          "description": "https://www.terraform.io/docs/cli/commands/fmt.html",
+          "type": "string",
+          "enum": ["terraform_fmt"]
+        },
+        {
+          "description": "https://opentofu.org/docs/cli/commands/fmt/",
+          "type": "string",
+          "enum": ["tofu_fmt"]
+        },
+        {
+          "description": "https://github.com/crate-ci/typos",
+          "type": "string",
+          "enum": ["typos"]
+        },
+        {
+          "description": "https://github.com/facebook/usort",
+          "type": "string",
+          "enum": ["usort"]
+        },
+        {
+          "description": "https://github.com/pamoller/xmlformatter",
+          "type": "string",
+          "enum": ["xmlformat"]
+        },
+        {
+          "description": "http://xmlsoft.org/xmllint.html",
+          "type": "string",
+          "enum": ["xmllint"]
+        },
+        {
+          "description": "https://github.com/lyz-code/yamlfix",
+          "type": "string",
+          "enum": ["yamlfix"]
+        },
+        {
+          "description": "https://github.com/google/yamlfmt",
+          "type": "string",
+          "enum": ["yamlfmt"]
+        },
+        {
+          "description": "https://github.com/google/yapf",
+          "type": "string",
+          "enum": ["yapf"]
+        },
+        {
+          "description": "https://github.com/its-the-shrimp/yew-fmt",
+          "type": "string",
+          "enum": ["yew-fmt"]
+        },
+        {
+          "description": "https://ziglang.org/",
+          "type": "string",
+          "enum": ["zigfmt"]
+        },
+        {
+          "description": "https://github.com/kkinnear/zprint",
+          "type": "string",
+          "enum": ["zprint"]
+        }
       ]
     }
   }
