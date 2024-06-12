@@ -53,11 +53,19 @@ fn build_mapping(languages: std::collections::HashMap<String, LinguishLanguage>)
     mappings.push(format!("{WHITESPACE}{WHITESPACE}_ => \"\","));
 
     format!(
-        "pub fn language_to_ext(language: &str) -> String {{
-{WHITESPACE}match language.to_lowercase().as_str() {{
+        "#[allow(clippy::too_many_lines)]
+pub fn language_to_ext(language: &str) -> String {{
+{WHITESPACE}#[allow(clippy::match_same_arms)]
+{WHITESPACE}let ft = match language.to_lowercase().as_str() {{
 {}
 {WHITESPACE}}}
-{WHITESPACE}.to_string()
+{WHITESPACE}.to_string();
+
+{WHITESPACE}if ft.is_empty() {{
+{WHITESPACE}{WHITESPACE}format!(\".{{language}}\")
+{WHITESPACE}}} else {{
+{WHITESPACE}{WHITESPACE}ft
+{WHITESPACE}}}
 }}
 ",
         mappings.join("\n")

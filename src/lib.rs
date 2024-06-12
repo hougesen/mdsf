@@ -266,6 +266,7 @@ fn add(a: i32, b: i32) -> i32 {
         assert_eq!(output, expected_output);
     }
 
+    #[allow(clippy::too_many_lines)]
     #[test]
     fn it_should_support_multiple_languages() {
         let input = r#"---
@@ -1011,7 +1012,7 @@ type Whatever struct {
 
         {
             let config = MdsfConfig {
-                languages: std::collections::HashMap::from_iter([(
+                languages: std::collections::BTreeMap::from_iter([(
                     "go".to_string(),
                     MdsfFormatter::Single(Tooling::GoFmt),
                 )]),
@@ -1097,7 +1098,7 @@ type Whatever struct {
 
         {
             let config = MdsfConfig {
-                languages: std::collections::HashMap::from_iter([(
+                languages: std::collections::BTreeMap::from_iter([(
                     "go".to_string(),
                     MdsfFormatter::Single(Tooling::GoFmt),
                 )]),
@@ -1185,7 +1186,7 @@ func add(a int, b int) int {
 
         {
             let config = MdsfConfig {
-                languages: std::collections::HashMap::from_iter([(
+                languages: std::collections::BTreeMap::from_iter([(
                     "go".to_string(),
                     MdsfFormatter::Single(Tooling::GoFmt),
                 )]),
@@ -1214,7 +1215,7 @@ func add(a int, b int) int {
 
         {
             let config = MdsfConfig {
-                languages: std::collections::HashMap::from_iter([(
+                languages: std::collections::BTreeMap::from_iter([(
                     "go".to_string(),
                     MdsfFormatter::Single(Tooling::GoFmt),
                 )]),

@@ -704,6 +704,7 @@ pub enum Tooling {
 }
 
 impl Tooling {
+    #[allow(clippy::too_many_lines)]
     #[inline]
     fn format_snippet(
         &self,
@@ -819,6 +820,7 @@ impl Tooling {
 }
 
 impl core::fmt::Display for Tooling {
+    #[allow(clippy::too_many_lines)]
     #[inline]
     fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
         match self {
