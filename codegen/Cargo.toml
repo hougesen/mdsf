@@ -11,6 +11,7 @@ categories = []
 [dependencies]
 anyhow = "1.0.86"
 mdsf = { path = "../", features = ["json-schema"] }
+regex = "1.10.5"
 reqwest = { version = "0.12.4", features = ["blocking", "json"] }
 schemars = "0.8.21"
 serde = { version = "1.0.203", features = ["derive"] }

@@ -29,9 +29,6 @@ test-coverage:
     cargo llvm-cov clean
     cargo llvm-cov --all-features --open
 
-update-readme:
-    node scripts/update-supported-languages.mjs
-    npx --yes prettier@latest --cache --write mdsf.json schemas README.md
 
 codegen:
     cd codegen && cargo run

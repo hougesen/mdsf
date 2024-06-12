@@ -17,6 +17,7 @@ homepage = "https://github.com/hougesen/mdsf"
 readme = "README.md"
 categories = ["development-tools", "command-line-utilities"]
 rust-version = "1.76.0"
+exclude = ["codegen/**"]
 
 [features]
 default = []
