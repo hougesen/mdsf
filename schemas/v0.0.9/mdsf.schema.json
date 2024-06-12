@@ -81,7 +81,7 @@
           "enum": ["beautysh"]
         },
         {
-          "description": "https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/overview?tabs=bicep",
+          "description": "https://github.com/Azure/bicep",
           "type": "string",
           "enum": ["bicep_format"]
         },

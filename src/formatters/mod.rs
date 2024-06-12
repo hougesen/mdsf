@@ -310,7 +310,7 @@ pub enum Tooling {
     #[serde(rename = "beautysh")]
     Beautysh,
 
-    #[doc = "https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/overview?tabs=bicep"]
+    #[doc = "https://github.com/Azure/bicep"]
     #[serde(rename = "bicep_format")]
     BicepFormat,
 
