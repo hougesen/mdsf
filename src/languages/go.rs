@@ -9,7 +9,27 @@ use crate::{
         goimports_reviser::format_using_goimports_reviser, golines::format_using_golines,
         MdsfFormatter,
     },
+    newstuff::Tool,
 };
+
+pub const fn go_language_name() -> &'static str {
+    "go"
+}
+
+pub fn go_default_formatters() -> MdsfFormatter<Tool> {
+    MdsfFormatter::Multiple(vec![
+        MdsfFormatter::Multiple(vec![
+            MdsfFormatter::Single(Tool::GCI),
+            MdsfFormatter::Single(Tool::GoImportsReviser),
+            MdsfFormatter::Single(Tool::GoImports),
+        ]),
+        MdsfFormatter::Multiple(vec![
+            MdsfFormatter::Single(Tool::GoFumpt),
+            MdsfFormatter::Single(Tool::GoFmt),
+            MdsfFormatter::Single(Tool::CrlFmt),
+        ]),
+    ])
+}
 
 #[derive(Default, serde::Serialize, serde::Deserialize, JsonSchema)]
 #[cfg_attr(test, derive(Debug, PartialEq, Eq))]

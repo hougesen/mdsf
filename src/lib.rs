@@ -4,7 +4,6 @@ use crate::{
     config::MdsfConfig,
     error::MdsfError,
     formatters::format_snippet,
-    languages::Language,
     parser::{parse_generic_codeblock, parse_go_codeblock},
     terminal::{
         print_changed_file, print_changed_file_error, print_unchanged_file, warn_unknown_language,
@@ -15,7 +14,9 @@ pub mod cli;
 pub mod config;
 pub mod error;
 pub mod formatters;
+pub mod generated;
 pub mod languages;
+pub mod newstuff;
 mod parser;
 pub mod runners;
 pub mod terminal;
@@ -38,10 +39,12 @@ fn format_file(config: &MdsfConfig, filename: &std::path::Path, input: &str) -> 
     while let Some((line_index, line)) = lines.next() {
         // TODO: implement support for code blocks with 4 `
         if line.starts_with("```") {
-            let language_text = line.strip_prefix("```").map(str::trim);
+            let language = line.strip_prefix("```").map(str::trim).unwrap_or_default();
 
-            if let Some(language) = language_text.and_then(Language::maybe_from_str) {
-                let (is_snippet, code_snippet, snippet_lines) = if language == Language::Go {
+            if config.languages.contains_key(language) {
+                let is_go = language == "go" || language == "golang";
+
+                let (is_snippet, code_snippet, snippet_lines) = if is_go {
                     parse_go_codeblock(&mut lines)
                 } else {
                     parse_generic_codeblock(&mut lines)
@@ -62,7 +65,7 @@ fn format_file(config: &MdsfConfig, filename: &std::path::Path, input: &str) -> 
                     output.push_str(line);
                     output.push('\n');
 
-                    if language == Language::Go && formatted.contains(GO_TEMPORARY_PACKAGE_NAME) {
+                    if is_go && formatted.contains(GO_TEMPORARY_PACKAGE_NAME) {
                         output.push_str(formatted.replace(GO_TEMPORARY_PACKAGE_NAME, "").trim());
                     } else {
                         output.push_str(formatted.trim());
@@ -78,11 +81,9 @@ fn format_file(config: &MdsfConfig, filename: &std::path::Path, input: &str) -> 
                     output.push_str(&code_snippet);
                 }
             } else {
-                language_text.inspect(|l| {
-                    if !l.is_empty() {
-                        warn_unknown_language(l, filename);
-                    }
-                });
+                if !language.is_empty() {
+                    warn_unknown_language(language, filename);
+                }
 
                 output.push_str(line);
             }
@@ -98,7 +99,7 @@ fn format_file(config: &MdsfConfig, filename: &std::path::Path, input: &str) -> 
             config,
             &LineInfo {
                 filename,
-                language: Language::Markdown,
+                language: "markdown",
                 start: 0,
                 end: 0,
             },
@@ -143,7 +144,7 @@ pub fn handle_file(
 
 pub struct LineInfo<'a> {
     pub filename: &'a std::path::Path,
-    pub language: Language,
+    pub language: &'a str,
     pub start: usize,
     pub end: usize,
 }
@@ -153,7 +154,7 @@ impl<'a> LineInfo<'a> {
     pub fn fake() -> Self {
         Self {
             filename: std::path::Path::new("."),
-            language: Language::Rust,
+            language: "fakelang",
             start: 0,
             end: 0,
         }
@@ -167,7 +168,7 @@ mod tests {
         format_file,
         formatters::{setup_snippet, MdsfFormatter},
         handle_file,
-        languages::{go::Go, Lang},
+        newstuff::Tool,
     };
 
     #[test]
@@ -1005,10 +1006,10 @@ type Whatever struct {
 
         {
             let config = MdsfConfig {
-                go: Lang::<Go> {
-                    enabled: true,
-                    formatter: MdsfFormatter::Single(Go::GoFmt),
-                },
+                languages: std::collections::HashMap::from_iter([(
+                    "go".to_string(),
+                    MdsfFormatter::Single(Tool::GoFmt),
+                )]),
                 ..MdsfConfig::default()
             };
 
@@ -1089,10 +1090,11 @@ type Whatever struct {
 
         {
             let config = MdsfConfig {
-                go: Lang::<Go> {
-                    enabled: true,
-                    formatter: MdsfFormatter::Single(Go::GoFmt),
-                },
+                languages: std::collections::HashMap::from_iter([(
+                    "go".to_string(),
+                    MdsfFormatter::Single(Tool::GoFmt),
+                )]),
+
                 ..MdsfConfig::default()
             };
 
@@ -1197,10 +1199,10 @@ func add(a int, b int) int {
 
         {
             let config = MdsfConfig {
-                go: Lang::<Go> {
-                    enabled: true,
-                    formatter: MdsfFormatter::Single(Go::GoFmt),
-                },
+                languages: std::collections::HashMap::from_iter([(
+                    "go".to_string(),
+                    MdsfFormatter::Single(Tool::GoFmt),
+                )]),
                 ..MdsfConfig::default()
             };
 

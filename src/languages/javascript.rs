@@ -8,7 +8,22 @@ use crate::{
         deno_fmt::format_using_deno_fmt, prettier::format_using_prettier,
         standardjs::format_using_standardjs, MdsfFormatter,
     },
+    newstuff::Tool,
 };
+
+pub const fn language_name() -> &'static str {
+    "javascript"
+}
+
+pub fn default_formatters() -> MdsfFormatter<Tool> {
+    MdsfFormatter::Multiple(vec![MdsfFormatter::Multiple(vec![
+        MdsfFormatter::Single(Tool::Prettier),
+        MdsfFormatter::Single(Tool::Biome),
+        MdsfFormatter::Single(Tool::DenoFmt),
+        MdsfFormatter::Single(Tool::ClangFormat),
+        MdsfFormatter::Single(Tool::Standardjs),
+    ])])
+}
 
 #[derive(Default, serde::Serialize, serde::Deserialize, JsonSchema)]
 #[cfg_attr(test, derive(Debug, PartialEq, Eq))]
