@@ -2,12 +2,20 @@
 name = "mdsf-codegen"
 version = "0.0.0"
 edition = "2021"
+description = "Code generator for mdsf"
+license = "MIT"
+readme = "../README.md"
+keywords = []
+categories = []
 
 [dependencies]
-mdsf = {path = "../"}
+anyhow = "1.0.86"
+mdsf = { path = "../" }
 reqwest = { version = "0.12.4", features = ["blocking", "json"] }
+schemars = "0.8.21"
 serde = { version = "1.0.203", features = ["derive"] }
+serde_json = { version = "1.0.117" }
 # TODO: switch to other yaml library since serde_yamlm is deprecated
 # NOTE: since it is just a build dependency it is low priority
 serde_yaml = { version = "0.9.34" }
-
+toml = { version = "0.8.14" }

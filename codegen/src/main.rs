@@ -1,5 +1,12 @@
-mod language_to_filetype;
+use anyhow::{Ok, Result};
 
-fn main() {
-    language_to_filetype::generate_language_to_ft();
+mod language_to_filetype;
+mod schema;
+
+fn main() -> Result<()> {
+    schema::generate()?;
+
+    language_to_filetype::generate_language_to_ft()?;
+
+    Ok(())
 }

@@ -26,10 +26,6 @@ pub enum Commands {
     /// Create a new mdsf config
     Init,
 
-    #[clap(hide(true))]
-    /// Generate json schema
-    Schema,
-
     Completions(CompletionsCommandArguments),
 }
 
