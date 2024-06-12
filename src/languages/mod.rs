@@ -7,6 +7,7 @@ mod crystal;
 mod csharp;
 mod css;
 mod d;
+mod dart;
 mod elixir;
 mod elm;
 mod erlang;
@@ -66,5 +67,6 @@ pub fn default_tools() -> std::collections::HashMap<String, MdsfFormatter<Toolin
         typescript::default_config(),
         yaml::default_config(),
         zig::default_config(),
+        dart::default_config(),
     ])
 }
