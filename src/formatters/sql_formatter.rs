@@ -25,7 +25,7 @@ pub fn format_using_sql_formatter(
 
 #[cfg(test)]
 mod test_sql_formatter {
-    use crate::{formatters::setup_snippet, languages::Language};
+    use crate::{formatters::setup_snippet, generated::language_to_ext};
 
     #[test]
     fn it_should_format_sql() {
@@ -40,7 +40,7 @@ WHERE
 ";
 
         let snippet =
-            setup_snippet(input, Language::Sql.to_file_ext()).expect("it to create a snippet file");
+            setup_snippet(input, &language_to_ext("sql")).expect("it to create a snippet file");
 
         let output = super::format_using_sql_formatter(snippet.path())
             .expect("it to be successful")

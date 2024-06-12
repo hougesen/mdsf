@@ -15,7 +15,7 @@ pub fn format_using_hindent(
 #[cfg(test)]
 mod test_hindent {
     use super::format_using_hindent;
-    use crate::{formatters::setup_snippet, languages::Language};
+    use crate::{formatters::setup_snippet, generated::language_to_ext};
 
     #[test_with::executable(hindent)]
     #[test]
@@ -31,8 +31,8 @@ addNumbers a b = do
   a + b
 ";
 
-        let snippet = setup_snippet(input, Language::Haskell.to_file_ext())
-            .expect("it to create a snippet file");
+        let snippet =
+            setup_snippet(input, &language_to_ext("haskell")).expect("it to create a snippet file");
 
         let output = format_using_hindent(snippet.path())
             .expect("it to be successful")

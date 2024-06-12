@@ -25,7 +25,7 @@ pub fn format_using_blade_formatter(
 
 #[cfg(test)]
 mod test_blade_formatter {
-    use crate::{formatters::setup_snippet, languages::Language};
+    use crate::{formatters::setup_snippet, generated::language_to_ext};
 
     #[test_with::executable(npx)]
     #[test]
@@ -94,7 +94,7 @@ mod test_blade_formatter {
 "#;
 
         let snippet =
-            setup_snippet(input, Language::Sql.to_file_ext()).expect("it to create a snippet file");
+            setup_snippet(input, &language_to_ext("sql")).expect("it to create a snippet file");
 
         let output = super::format_using_blade_formatter(snippet.path())
             .expect("it to be successful")

@@ -15,7 +15,7 @@ pub fn format_using_kcl_fmt(
 #[cfg(test)]
 mod test_kcl_fmt {
     use super::format_using_kcl_fmt;
-    use crate::{formatters::setup_snippet, languages::Language};
+    use crate::{formatters::setup_snippet, generated::language_to_ext};
 
     #[test_with::executable(kcl)]
     #[test]
@@ -59,7 +59,7 @@ spec = {
 "#;
 
         let snippet =
-            setup_snippet(input, Language::Kcl.to_file_ext()).expect("it to create a snippet file");
+            setup_snippet(input, &language_to_ext("kcl")).expect("it to create a snippet file");
 
         let output = format_using_kcl_fmt(snippet.path())
             .expect("it to be successful")

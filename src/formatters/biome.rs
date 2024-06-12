@@ -17,7 +17,7 @@ pub fn format_using_biome(
 mod test_biome {
     use crate::{
         formatters::{biome::format_using_biome, setup_snippet},
-        languages::{JavaScriptFlavor, JsonFlavor, Language, TypeScriptFlavor},
+        generated::language_to_ext,
     };
 
     #[test_with::executable(npx)]
@@ -40,8 +40,8 @@ mod test_biome {
 }
 ";
 
-        let snippet = setup_snippet(input, Language::Json(JsonFlavor::Json).to_file_ext())
-            .expect("it to create a snippet file");
+        let snippet =
+            setup_snippet(input, &language_to_ext("json")).expect("it to create a snippet file");
 
         let output = format_using_biome(snippet.path())
             .expect("it to be successful")
@@ -68,11 +68,8 @@ mod test_biome {
 }
 ";
 
-        let snippet = setup_snippet(
-            input,
-            Language::JavaScript(JavaScriptFlavor::JavaScript).to_file_ext(),
-        )
-        .expect("it to create a snippet file");
+        let snippet = setup_snippet(input, &language_to_ext("javascript"))
+            .expect("it to create a snippet file");
 
         let output = format_using_biome(snippet.path())
             .expect("it to be successful")
@@ -102,11 +99,8 @@ number>
 }
 ";
 
-        let snippet = setup_snippet(
-            input,
-            Language::TypeScript(TypeScriptFlavor::TypeScript).to_file_ext(),
-        )
-        .expect("it to create a snippet file");
+        let snippet = setup_snippet(input, &language_to_ext("typescript"))
+            .expect("it to create a snippet file");
 
         let output = format_using_biome(snippet.path())
             .expect("it to be successful")

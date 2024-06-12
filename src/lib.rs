@@ -16,7 +16,6 @@ pub mod error;
 pub mod formatters;
 pub mod generated;
 pub mod languages;
-pub mod newstuff;
 mod parser;
 pub mod runners;
 pub mod terminal;
@@ -166,9 +165,9 @@ mod tests {
     use crate::{
         config::MdsfConfig,
         format_file,
-        formatters::{setup_snippet, MdsfFormatter},
+        formatters::{setup_snippet, MdsfFormatter, Tooling},
+        generated::language_to_ext,
         handle_file,
-        newstuff::Tool,
     };
 
     #[test]
@@ -199,7 +198,8 @@ fn add(a: i32, b: i32) -> i32 {
         };
 
         {
-            let file = setup_snippet(input, ".md").expect("it to create a file");
+            let file =
+                setup_snippet(input, &language_to_ext("markdown")).expect("it to create a file");
 
             handle_file(&config, file.path(), false).expect("it to be a success");
 
@@ -934,7 +934,8 @@ fn add(a: i32, b: i32) i32 {
         };
 
         {
-            let file = setup_snippet(input, ".md").expect("it to create a file");
+            let file =
+                setup_snippet(input, &language_to_ext("markdown")).expect("it to create a file");
 
             handle_file(&config, file.path(), false).expect("it to be a success");
 
@@ -994,7 +995,8 @@ type Whatever struct {
             };
 
             {
-                let file = setup_snippet(input, ".md").expect("it to create a file");
+                let file = setup_snippet(input, &language_to_ext("markdown"))
+                    .expect("it to create a file");
 
                 handle_file(&config, file.path(), false).expect("it to be a success");
 
@@ -1008,7 +1010,7 @@ type Whatever struct {
             let config = MdsfConfig {
                 languages: std::collections::HashMap::from_iter([(
                     "go".to_string(),
-                    MdsfFormatter::Single(Tool::GoFmt),
+                    MdsfFormatter::Single(Tooling::GoFmt),
                 )]),
                 ..MdsfConfig::default()
             };
@@ -1022,7 +1024,8 @@ type Whatever struct {
             };
 
             {
-                let file = setup_snippet(input, ".md").expect("it to create a file");
+                let file = setup_snippet(input, &language_to_ext("markdown"))
+                    .expect("it to create a file");
 
                 handle_file(&config, file.path(), false).expect("it to be a success");
 
@@ -1078,7 +1081,8 @@ type Whatever struct {
             };
 
             {
-                let file = setup_snippet(input, ".md").expect("it to create a file");
+                let file = setup_snippet(input, &language_to_ext("markdown"))
+                    .expect("it to create a file");
 
                 handle_file(&config, file.path(), false).expect("it to be a success");
 
@@ -1092,7 +1096,7 @@ type Whatever struct {
             let config = MdsfConfig {
                 languages: std::collections::HashMap::from_iter([(
                     "go".to_string(),
-                    MdsfFormatter::Single(Tool::GoFmt),
+                    MdsfFormatter::Single(Tooling::GoFmt),
                 )]),
 
                 ..MdsfConfig::default()
@@ -1107,7 +1111,8 @@ type Whatever struct {
             };
 
             {
-                let file = setup_snippet(input, ".md").expect("it to create a file");
+                let file = setup_snippet(input, &language_to_ext("markdown"))
+                    .expect("it to create a file");
 
                 handle_file(&config, file.path(), false).expect("it to be a success");
 
@@ -1176,7 +1181,13 @@ func add(a int, b int) int {
 ";
 
         {
-            let config = MdsfConfig::default();
+            let config = MdsfConfig {
+                languages: std::collections::HashMap::from_iter([(
+                    "go".to_string(),
+                    MdsfFormatter::Single(Tooling::GoFmt),
+                )]),
+                ..Default::default()
+            };
 
             {
                 let (modified, output) = format_file(&config, std::path::Path::new("."), input);
@@ -1187,7 +1198,8 @@ func add(a int, b int) int {
             };
 
             {
-                let file = setup_snippet(input, ".md").expect("it to create a file");
+                let file = setup_snippet(input, &language_to_ext("markdown"))
+                    .expect("it to create a file");
 
                 handle_file(&config, file.path(), false).expect("it to be a success");
 
@@ -1201,7 +1213,7 @@ func add(a int, b int) int {
             let config = MdsfConfig {
                 languages: std::collections::HashMap::from_iter([(
                     "go".to_string(),
-                    MdsfFormatter::Single(Tool::GoFmt),
+                    MdsfFormatter::Single(Tooling::GoFmt),
                 )]),
                 ..MdsfConfig::default()
             };
@@ -1215,7 +1227,8 @@ func add(a int, b int) int {
             };
 
             {
-                let file = setup_snippet(input, ".md").expect("it to create a file");
+                let file = setup_snippet(input, &language_to_ext("markdown"))
+                    .expect("it to create a file");
 
                 handle_file(&config, file.path(), false).expect("it to be a success");
 

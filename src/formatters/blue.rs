@@ -15,7 +15,7 @@ pub fn format_using_blue(
 #[cfg(test)]
 mod test_blue {
     use super::format_using_blue;
-    use crate::{formatters::setup_snippet, languages::Language};
+    use crate::{formatters::setup_snippet, generated::language_to_ext};
 
     #[test_with::executable(blue)]
     #[test]
@@ -24,8 +24,8 @@ mod test_blue {
 
         let expected_output = "def add(a: int, b: int) -> int:\n    return a + b\n";
 
-        let snippet = setup_snippet(input, Language::Python.to_file_ext())
-            .expect("it to create a snippet file");
+        let snippet =
+            setup_snippet(input, &language_to_ext("python")).expect("it to create a snippet file");
 
         let output = format_using_blue(snippet.path())
             .expect("it to be successful")

@@ -16,7 +16,7 @@ pub fn format_using_ocp_indent(
 mod test_ocp_indent {
     use crate::{
         formatters::{ocp_indent::format_using_ocp_indent, setup_snippet},
-        languages::Language,
+        generated::language_to_ext,
     };
 
     #[test_with::executable(ocp-indent)]
@@ -31,8 +31,8 @@ let add a b
   = a + b
 ";
 
-        let snippet = setup_snippet(input, Language::OCaml.to_file_ext())
-            .expect("it to create a snippet file");
+        let snippet =
+            setup_snippet(input, &language_to_ext("ocaml")).expect("it to create a snippet file");
 
         let output = format_using_ocp_indent(snippet.path())
             .expect("it to be successful")

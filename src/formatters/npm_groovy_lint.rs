@@ -36,7 +36,7 @@ pub fn format_using_npm_groovy_lint(
 mod test_npm_groovy_lint {
     use crate::{
         formatters::{npm_groovy_lint::format_using_npm_groovy_lint, setup_snippet},
-        languages::Language,
+        generated::language_to_ext,
     };
 
     #[test]
@@ -54,8 +54,8 @@ mod test_npm_groovy_lint {
 assert add(1, 2) == 3
 ";
 
-        let snippet = setup_snippet(input, Language::Groovy.to_file_ext())
-            .expect("it to create a snippet file");
+        let snippet =
+            setup_snippet(input, &language_to_ext("groovy")).expect("it to create a snippet file");
 
         let output = format_using_npm_groovy_lint(snippet.path())
             .expect("it to be successful")

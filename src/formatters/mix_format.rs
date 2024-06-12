@@ -16,7 +16,7 @@ pub fn format_using_mix_format(
 mod test_mix_format {
     use crate::{
         formatters::{mix_format::format_using_mix_format, setup_snippet},
-        languages::Language,
+        generated::language_to_ext,
     };
 
     #[test_with::executable(mix)]
@@ -31,8 +31,8 @@ mod test_mix_format {
 end
 ";
 
-        let snippet = setup_snippet(input, Language::Elixir.to_file_ext())
-            .expect("it to create a snippet file");
+        let snippet =
+            setup_snippet(input, &language_to_ext("elixir")).expect("it to create a snippet file");
 
         let output = format_using_mix_format(snippet.path())
             .expect("it to be successful")

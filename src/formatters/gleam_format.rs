@@ -16,7 +16,7 @@ pub fn format_using_gleam_format(
 mod test_gleam_format {
     use crate::{
         formatters::{gleam_format::format_using_gleam_format, setup_snippet},
-        languages::Language,
+        generated::language_to_ext,
     };
 
     #[test_with::executable(gleam)]
@@ -28,8 +28,8 @@ mod test_gleam_format {
 }
 ";
 
-        let snippet = setup_snippet(input, Language::Gleam.to_file_ext())
-            .expect("it to create a snippet file");
+        let snippet =
+            setup_snippet(input, &language_to_ext("gleam")).expect("it to create a snippet file");
 
         let output = format_using_gleam_format(snippet.path())
             .expect("it to be successful")

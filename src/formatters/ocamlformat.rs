@@ -19,7 +19,7 @@ pub fn format_using_ocamlformat(
 mod test_ocamlformat {
     use crate::{
         formatters::{ocamlformat::format_using_ocamlformat, setup_snippet},
-        languages::Language,
+        generated::language_to_ext,
     };
 
     #[test_with::executable(ocamlformat)]
@@ -31,8 +31,8 @@ let add a b  =  a +  b
         let expected_output = "let add a b = a + b
 ";
 
-        let snippet = setup_snippet(input, Language::OCaml.to_file_ext())
-            .expect("it to create a snippet file");
+        let snippet =
+            setup_snippet(input, &language_to_ext("ocaml")).expect("it to create a snippet file");
 
         let output = format_using_ocamlformat(snippet.path())
             .expect("it to be successful")

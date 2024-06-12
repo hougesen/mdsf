@@ -15,7 +15,7 @@ pub fn format_using_ormolu(
 #[cfg(test)]
 mod test_ormolu {
     use super::format_using_ormolu;
-    use crate::{formatters::setup_snippet, languages::Language};
+    use crate::{formatters::setup_snippet, generated::language_to_ext};
 
     #[test_with::executable(ormolu)]
     #[test]
@@ -31,8 +31,8 @@ addNumbers a b = do
   a + b
 ";
 
-        let snippet = setup_snippet(input, Language::Haskell.to_file_ext())
-            .expect("it to create a snippet file");
+        let snippet =
+            setup_snippet(input, &language_to_ext("haskell")).expect("it to create a snippet file");
 
         let output = format_using_ormolu(snippet.path())
             .expect("it to be successful")

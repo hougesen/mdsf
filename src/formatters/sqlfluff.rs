@@ -29,7 +29,7 @@ pub fn format_using_sqlfluff(
 
 #[cfg(test)]
 mod test_sqlfluff {
-    use crate::{formatters::setup_snippet, languages::Language};
+    use crate::{formatters::setup_snippet, generated::language_to_ext};
 
     #[test_with::executable(sqlfluff)]
     #[test]
@@ -42,7 +42,7 @@ WHERE foo = 'bar';
 ";
 
         let snippet =
-            setup_snippet(input, Language::Sql.to_file_ext()).expect("it to create a snippet file");
+            setup_snippet(input, &language_to_ext("sql")).expect("it to create a snippet file");
 
         let output = super::format_using_sqlfluff(snippet.path())
             .expect("it to be successful")

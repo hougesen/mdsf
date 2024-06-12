@@ -2,7 +2,10 @@ use json_comments::{CommentSettings, StripComments};
 use schemars::JsonSchema;
 
 use crate::{
-    error::MdsfError, formatters::MdsfFormatter, newstuff::Tool, runners::JavaScriptRuntime,
+    error::MdsfError,
+    formatters::{MdsfFormatter, Tooling},
+    languages::default_tools,
+    runners::JavaScriptRuntime,
     terminal::print_config_not_found,
 };
 
@@ -29,7 +32,8 @@ pub struct MdsfConfig {
     #[serde(default)]
     pub javascript_runtime: JavaScriptRuntime,
 
-    pub languages: std::collections::HashMap<String, MdsfFormatter<Tool>>,
+    #[serde(default)]
+    pub languages: std::collections::HashMap<String, MdsfFormatter<Tooling>>,
 }
 
 impl Default for MdsfConfig {
@@ -40,7 +44,7 @@ impl Default for MdsfConfig {
             format_finished_document: false,
             javascript_runtime: JavaScriptRuntime::default(),
 
-            languages: default_formatters(),
+            languages: default_tools(),
         }
     }
 }
@@ -82,11 +86,6 @@ fn default_schema_location() -> String {
     format!(
         "https://raw.githubusercontent.com/hougesen/mdsf/main/schemas/v{package_version}/mdsf.schema.json"
     )
-}
-
-#[inline]
-fn default_formatters() -> std::collections::HashMap<String, MdsfFormatter<Tool>> {
-    std::collections::HashMap::from_iter([("rust".to_string(), MdsfFormatter::Single(Tool::Biome))])
 }
 
 #[cfg(test)]

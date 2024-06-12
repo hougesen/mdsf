@@ -17,7 +17,7 @@ pub fn format_using_ktfmt(
 #[cfg(test)]
 mod test_ktfmt {
     use super::format_using_ktfmt;
-    use crate::{formatters::setup_snippet, languages::Language};
+    use crate::{formatters::setup_snippet, generated::language_to_ext};
 
     #[test_with::executable(ktfmt)]
     #[test]
@@ -32,8 +32,8 @@ mod test_ktfmt {
 }
 ";
 
-        let snippet = setup_snippet(input, Language::Kotlin.to_file_ext())
-            .expect("it to create a snippet file");
+        let snippet =
+            setup_snippet(input, &language_to_ext("kotlin")).expect("it to create a snippet file");
 
         let output = format_using_ktfmt(snippet.path())
             .expect("it to be successful")

@@ -16,7 +16,7 @@ pub fn format_using_nimpretty(
 mod test_nimpretty {
     use crate::{
         formatters::{nimpretty::format_using_nimpretty, setup_snippet},
-        languages::Language,
+        generated::language_to_ext,
     };
 
     #[test_with::executable(nimpretty)]
@@ -30,7 +30,7 @@ mod test_nimpretty {
 ";
 
         let snippet =
-            setup_snippet(input, Language::Nim.to_file_ext()).expect("it to create a snippet file");
+            setup_snippet(input, &language_to_ext("nim")).expect("it to create a snippet file");
 
         let output = format_using_nimpretty(snippet.path())
             .expect("it to be successful")

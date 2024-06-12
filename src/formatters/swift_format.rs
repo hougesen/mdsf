@@ -15,7 +15,7 @@ pub fn format_using_swift_format(
 #[cfg(test)]
 mod test_swift_format {
     use super::format_using_swift_format;
-    use crate::{formatters::setup_snippet, languages::Language};
+    use crate::{formatters::setup_snippet, generated::language_to_ext};
 
     #[test_with::executable(swift_format)]
     #[test]
@@ -29,8 +29,8 @@ mod test_swift_format {
 }
 ";
 
-        let snippet = setup_snippet(input, Language::Swift.to_file_ext())
-            .expect("it to create a snippet file");
+        let snippet =
+            setup_snippet(input, &language_to_ext("swift")).expect("it to create a snippet file");
 
         let output = format_using_swift_format(snippet.path())
             .expect("it to be successful")

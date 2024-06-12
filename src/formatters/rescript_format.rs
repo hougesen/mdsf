@@ -25,7 +25,7 @@ pub fn format_using_rescript_format(
 
 #[cfg(test)]
 mod test_rescript_format {
-    use crate::{formatters::setup_snippet, languages::Language};
+    use crate::{formatters::setup_snippet, generated::language_to_ext};
 
     #[test]
     fn it_should_format_rescript() {
@@ -58,7 +58,7 @@ mod test_rescript_format {
 }
 "#;
 
-        let snippet = setup_snippet(input, Language::ReScript.to_file_ext())
+        let snippet = setup_snippet(input, &language_to_ext("rescript"))
             .expect("it to create a snippet file");
 
         let output = super::format_using_rescript_format(snippet.path())

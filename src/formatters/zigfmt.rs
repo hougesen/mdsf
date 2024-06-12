@@ -18,7 +18,7 @@ pub fn format_using_zigfmt(
 mod test_zigfmt {
     use crate::{
         formatters::{setup_snippet, zigfmt::format_using_zigfmt},
-        languages::Language,
+        generated::language_to_ext,
     };
 
     #[test_with::executable(zig)]
@@ -37,7 +37,7 @@ mod test_zigfmt {
 ";
 
         let snippet =
-            setup_snippet(input, Language::Zig.to_file_ext()).expect("it to create a snippet file");
+            setup_snippet(input, &language_to_ext("zig")).expect("it to create a snippet file");
 
         let output = format_using_zigfmt(snippet.path())
             .expect("it to be successful")

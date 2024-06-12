@@ -15,7 +15,7 @@ pub fn format_using_nixfmt(
 #[cfg(test)]
 mod test_nixfmt {
     use super::format_using_nixfmt;
-    use crate::{formatters::setup_snippet, languages::Language};
+    use crate::{formatters::setup_snippet, generated::language_to_ext};
 
     #[test_with::executable(nixfmt)]
     #[test]
@@ -75,7 +75,7 @@ buildPythonPackage rec {
 "#;
 
         let snippet =
-            setup_snippet(input, Language::Nix.to_file_ext()).expect("it to create a snippet file");
+            setup_snippet(input, &language_to_ext("nix")).expect("it to create a snippet file");
 
         let output = format_using_nixfmt(snippet.path())
             .expect("it to be successful")

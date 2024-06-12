@@ -15,7 +15,7 @@ pub fn format_using_cabal_format(
 #[cfg(test)]
 mod test_cabal_format {
     use super::format_using_cabal_format;
-    use crate::{formatters::setup_snippet, languages::Language};
+    use crate::{formatters::setup_snippet, generated::language_to_ext};
 
     #[test_with::executable(cabal)]
     #[test]
@@ -53,8 +53,8 @@ executable msdf
         containers ^>=0.5.11.0 || ^>=0.6.0.1
 ";
 
-        let snippet = setup_snippet(input, Language::Cabal.to_file_ext())
-            .expect("it to create a snippet file");
+        let snippet =
+            setup_snippet(input, &language_to_ext("cabal")).expect("it to create a snippet file");
 
         let output = format_using_cabal_format(snippet.path())
             .expect("it to be successful")

@@ -33,7 +33,7 @@ pub fn format_using_taplo(
 mod test_taplo {
     use crate::{
         formatters::{setup_snippet, taplo::format_using_taplo},
-        languages::Language,
+        generated::language_to_ext,
     };
 
     #[test]
@@ -46,8 +46,8 @@ mod test_taplo {
 author = \"Mads Hougesen\"
 ";
 
-        let snippet = setup_snippet(input, Language::Toml.to_file_ext())
-            .expect("it to create a snippet file");
+        let snippet =
+            setup_snippet(input, &language_to_ext("toml")).expect("it to create a snippet file");
 
         let output = format_using_taplo(snippet.path())
             .expect("it to be successful")

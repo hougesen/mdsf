@@ -16,7 +16,7 @@ pub fn format_using_rufo(
 mod test_rufo {
     use crate::{
         formatters::{rufo::format_using_rufo, setup_snippet},
-        languages::Language,
+        generated::language_to_ext,
     };
 
     #[test_with::executable(rufo)]
@@ -31,8 +31,8 @@ mod test_rufo {
 end
 ";
 
-        let snippet = setup_snippet(input, Language::Ruby.to_file_ext())
-            .expect("it to create a snippet file");
+        let snippet =
+            setup_snippet(input, &language_to_ext("ruby")).expect("it to create a snippet file");
 
         let output = format_using_rufo(snippet.path())
             .expect("it to be successful")

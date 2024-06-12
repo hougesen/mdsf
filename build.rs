@@ -54,7 +54,7 @@ fn build_mapping(languages: std::collections::HashMap<String, LinguishLanguage>)
 
     format!(
         "pub fn language_to_ext(language: &str) -> String {{
-{WHITESPACE}match language {{
+{WHITESPACE}match language.to_lowercase().as_str() {{
 {}
 {WHITESPACE}}}
 {WHITESPACE}.to_string()

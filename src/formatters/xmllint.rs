@@ -18,7 +18,7 @@ pub fn format_using_xmllint(
 #[cfg(test)]
 mod test_xmllint {
     use super::format_using_xmllint;
-    use crate::{formatters::setup_snippet, languages::Language};
+    use crate::{formatters::setup_snippet, generated::language_to_ext};
 
     #[test_with::executable(xmllint)]
     #[test]
@@ -41,7 +41,7 @@ mod test_xmllint {
 "#;
 
         let snippet =
-            setup_snippet(input, Language::Xml.to_file_ext()).expect("it to create a snippet file");
+            setup_snippet(input, &language_to_ext("xml")).expect("it to create a snippet file");
 
         let output = format_using_xmllint(snippet.path())
             .expect("it to be successful")

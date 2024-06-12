@@ -18,7 +18,7 @@ pub fn format_using_rustfmt(
 #[cfg(test)]
 mod test_rustfmt {
     use super::format_using_rustfmt;
-    use crate::{formatters::setup_snippet, languages::Language};
+    use crate::{formatters::setup_snippet, generated::language_to_ext};
 
     #[test_with::executable(rustfmt)]
     #[test]
@@ -31,8 +31,8 @@ mod test_rustfmt {
 
         let expected_output = "pub async fn add(a: i32, b: i32) -> i32 {\n    a + b\n}\n";
 
-        let snippet = setup_snippet(input, Language::Rust.to_file_ext())
-            .expect("it to create a snippet file");
+        let snippet =
+            setup_snippet(input, &language_to_ext("rust")).expect("it to create a snippet file");
 
         let output = format_using_rustfmt(snippet.path())
             .expect("it to be successful")

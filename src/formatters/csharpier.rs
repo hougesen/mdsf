@@ -15,7 +15,7 @@ pub fn format_using_csharpier(
 #[cfg(test)]
 mod test_csharpier {
     use super::format_using_csharpier;
-    use crate::{formatters::setup_snippet, languages::Language};
+    use crate::{formatters::setup_snippet, generated::language_to_ext};
 
     #[test_with::executable(dotnet)]
     #[test]
@@ -42,8 +42,8 @@ mod test_csharpier {
 }
 ";
 
-        let snippet = setup_snippet(input, Language::CSharp.to_file_ext())
-            .expect("it to create a snippet file");
+        let snippet =
+            setup_snippet(input, &language_to_ext("csharp")).expect("it to create a snippet file");
 
         let output = format_using_csharpier(snippet.path())
             .expect("it to be successful")

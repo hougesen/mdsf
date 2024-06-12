@@ -16,7 +16,7 @@ pub fn format_using_shfmt(
 mod test_shfmt {
     use crate::{
         formatters::{setup_snippet, shfmt::format_using_shfmt},
-        languages::{Language, ShellFlavor},
+        generated::language_to_ext,
     };
 
     #[test_with::executable(shfmt)]
@@ -45,8 +45,8 @@ add() {
 }
 ";
 
-        let snippet = setup_snippet(input, Language::Shell(ShellFlavor::Shell).to_file_ext())
-            .expect("it to create a snippet file");
+        let snippet =
+            setup_snippet(input, &language_to_ext("shell")).expect("it to create a snippet file");
 
         let output = format_using_shfmt(snippet.path())
             .expect("it to be successful")
@@ -82,8 +82,8 @@ add() {
 }
 ";
 
-        let snippet = setup_snippet(input, Language::Shell(ShellFlavor::Bash).to_file_ext())
-            .expect("it to create a snippet file");
+        let snippet =
+            setup_snippet(input, &language_to_ext("bash")).expect("it to create a snippet file");
 
         let output = format_using_shfmt(snippet.path())
             .expect("it to be successful")
@@ -119,8 +119,8 @@ add() {
 }
 ";
 
-        let snippet = setup_snippet(input, Language::Shell(ShellFlavor::Zsh).to_file_ext())
-            .expect("it to create a snippet file");
+        let snippet =
+            setup_snippet(input, &language_to_ext("zsh")).expect("it to create a snippet file");
 
         let output = format_using_shfmt(snippet.path())
             .expect("it to be successful")

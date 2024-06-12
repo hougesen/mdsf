@@ -15,7 +15,7 @@ pub fn format_using_stylish_haskell(
 #[cfg(test)]
 mod test_stylish_haskell {
     use super::format_using_stylish_haskell;
-    use crate::{formatters::setup_snippet, languages::Language};
+    use crate::{formatters::setup_snippet, generated::language_to_ext};
 
     #[test_with::executable(stylish-haskell)]
     #[test]
@@ -31,8 +31,8 @@ addNumbers a b = do
 
 ";
 
-        let snippet = setup_snippet(input, Language::Haskell.to_file_ext())
-            .expect("it to create a snippet file");
+        let snippet =
+            setup_snippet(input, &language_to_ext("haskell")).expect("it to create a snippet file");
 
         let output = format_using_stylish_haskell(snippet.path())
             .expect("it to be successful")

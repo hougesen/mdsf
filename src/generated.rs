@@ -1,5 +1,5 @@
 pub fn language_to_ext(language: &str) -> String {
-    match language {
+    match language.to_lowercase().as_str() {
         "1c enterprise" => ".bsl",
         "2-dimensional array" => ".2da",
         "4d" => ".4dm",

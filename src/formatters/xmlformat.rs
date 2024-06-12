@@ -15,7 +15,7 @@ pub fn format_using_xmlformat(
 #[cfg(test)]
 mod test_xmlformat {
     use super::format_using_xmlformat;
-    use crate::{formatters::setup_snippet, languages::Language};
+    use crate::{formatters::setup_snippet, generated::language_to_ext};
 
     #[test_with::executable(xmlformat)]
     #[test]
@@ -36,7 +36,7 @@ mod test_xmlformat {
 </note>";
 
         let snippet =
-            setup_snippet(input, Language::Xml.to_file_ext()).expect("it to create a snippet file");
+            setup_snippet(input, &language_to_ext("xml")).expect("it to create a snippet file");
 
         let output = format_using_xmlformat(snippet.path())
             .expect("it to be successful")
