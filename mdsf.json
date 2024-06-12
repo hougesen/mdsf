@@ -3,6 +3,22 @@
   "format_finished_document": false,
   "javascript_runtime": "node",
   "languages": {
-    "rust": "biome"
+    "rust": "rustfmt",
+    "javascript": [["prettier", "biome", "deno_fmt", "clang-format"]],
+    "go": [
+      ["gci", "goimports-reviser", "goimports"],
+      ["gofumpt", "gofmt", "crlfmt"]
+    ],
+    "ruby": [["rubocop", "rufo", "rubyfmt", "standardrb"]],
+    "yaml": [["prettier", "yamlfmt", "yamlfix"]],
+    "sql": [["sql-formatter", "sqlfluff"]],
+    "c": "clang-format",
+    "zig": "zigfmt",
+    "haskell": [["fourmolu", "ormolu", "hindent", "stylish-haskell"]],
+    "cpp": "clang-format",
+    "typescript": [["prettier", "biome", "deno_fmt"]],
+    "swift": [["swift-format", "swiftformat"]],
+    "java": [["google-java-format", "clang-format"]],
+    "toml": "taplo"
   }
 }
