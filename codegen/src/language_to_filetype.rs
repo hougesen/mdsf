@@ -53,7 +53,9 @@ fn build_mapping(languages: std::collections::HashMap<String, LinguishLanguage>)
     mappings.push(format!("{WHITESPACE}{WHITESPACE}_ => \"\","));
 
     format!(
-        "#[allow(clippy::too_many_lines)]
+        "// THIS CODE WAS GENERATED AND SHOULD NOT BE EDITED MANUALLY
+
+#[allow(clippy::too_many_lines)]
 pub fn language_to_ext(language: &str) -> String {{
 {WHITESPACE}#[allow(clippy::match_same_arms)]
 {WHITESPACE}let ft = match language.to_lowercase().as_str() {{
@@ -72,12 +74,14 @@ pub fn language_to_ext(language: &str) -> String {{
     )
 }
 
-fn main() {
-    println!("hello from build.rs");
+pub fn generate_language_to_ft() {
+    println!("generate_language_to_ft: started");
 
     let languages = get_linguish_languages();
 
     let result = build_mapping(languages);
 
-    std::fs::write("src/generated.rs", result).expect("it to write the generated code");
+    std::fs::write("../src/generated.rs", result).expect("it to write the generated code");
+
+    println!("generate_language_to_ft: finished");
 }

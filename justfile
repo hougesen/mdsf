@@ -35,9 +35,13 @@ update-readme:
     node scripts/update-supported-languages.mjs
     npx --yes prettier@latest --cache --write mdsf.json schemas README.md
 
+codegen:
+    cd codegen && cargo run
+
 precommit:
     cargo clean
     cargo fmt
+    just codegen
     just build
     just lint
     just test
@@ -46,7 +50,7 @@ precommit:
     npx --yes prettier@latest --write --cache .
     git restore tests/
     just --fmt --unstable .
-    typos .
+    typos --exclude src/generated.rs .
 
 publish:
     just build

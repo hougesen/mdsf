@@ -38,10 +38,3 @@ which = "6.0.1"
 test-with = { version = "0.12.6", default-features = false, features = [
   "executable",
 ] }
-
-[build-dependencies]
-reqwest = { version = "0.12.4", features = ["blocking", "json"] }
-serde = { version = "1.0.203", features = ["derive"] }
-# TODO: switch to other yaml library since serde_yamlm is deprecated 
-# NOTE: since it is just a build dependency it is low priority
-serde_yaml = { version = "0.9.34" }

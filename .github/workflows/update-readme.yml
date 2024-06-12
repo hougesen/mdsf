@@ -28,8 +28,8 @@ jobs:
       - name: Update readme
         run: node scripts/update-supported-languages.mjs
       - name: Format stuff
-        run: npx prettier --write schemas mdsf.json README.md && cargo run -- format README.md
+        run: npx prettier@latest --write schemas mdsf.json README.md && cargo run -- format README.md
       - uses: EndBug/add-and-commit@v9
         with:
           add: schemas mdsf.json README.md
-          message: "chore: update schema"
+          message: "chore: updated schema"

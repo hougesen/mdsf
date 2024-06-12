@@ -1,3 +1,5 @@
+// THIS CODE WAS GENERATED AND SHOULD NOT BE EDITED MANUALLY
+
 #[allow(clippy::too_many_lines)]
 pub fn language_to_ext(language: &str) -> String {
     #[allow(clippy::match_same_arms)]

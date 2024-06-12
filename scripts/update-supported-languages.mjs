@@ -57,7 +57,7 @@ function createLanguageTable(schema) {
   for (const [key, value] of formatters) {
     const line = `| ${key.padEnd(formatterWidth, " ")} | ${value.padEnd(
       descriptionWidth,
-      " "
+      " ",
     )} |`;
 
     lines.push(line);
@@ -67,14 +67,14 @@ function createLanguageTable(schema) {
 
   const filler = `| ${"".padEnd(formatterWidth, "-")} | ${"".padEnd(
     descriptionWidth,
-    "-"
+    "-",
   )} |`;
 
   lines.unshift(filler);
 
   const heading = `| ${languageHeading.padEnd(
     formatterWidth,
-    " "
+    " ",
   )} | ${formatterHeading.padEnd(descriptionWidth, " ")} |`;
 
   lines.unshift(heading);
