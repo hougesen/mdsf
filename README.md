@@ -95,12 +95,12 @@ mdsf init
 }
 ```
 
-### Supported languages & formatters
+### Supported tools
 
 > \[!NOTE\]
-> mdsf is not a tool for installing formatters.
+> mdsf is not a package manager.
 >
-> Only formatters that are already installed will be used.
+> Only tools that are already installed will be used.
 
 <!-- START_SECTION:supported-languages -->
 
