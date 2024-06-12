@@ -30,8 +30,6 @@ test-coverage:
     cargo llvm-cov --all-features --open
 
 update-readme:
-    cargo run -- schema
-    cargo run -- init
     node scripts/update-supported-languages.mjs
     npx --yes prettier@latest --cache --write mdsf.json schemas README.md
 

@@ -9,7 +9,6 @@ mod check;
 mod completions;
 mod format;
 mod init;
-mod schema;
 
 pub fn execute_command() -> Result<(), MdsfError> {
     match Cli::parse().command {
@@ -26,7 +25,6 @@ pub fn execute_command() -> Result<(), MdsfError> {
         }
 
         Commands::Init => init::run().map_err(MdsfError::from),
-        Commands::Schema => schema::run().map_err(MdsfError::from),
         Commands::Completions(args) => {
             completions::run(&args);
 
