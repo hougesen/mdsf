@@ -3,22 +3,44 @@
   "format_finished_document": false,
   "javascript_runtime": "node",
   "languages": {
+    "roc": "roc_format",
+    "clojure": [["cljstyle", "joker"]],
+    "sql": [["sql-formatter", "sqlfluff"]],
+    "c": "clang-format",
+    "elixir": "mix_format",
+    "zig": "zigfmt",
+    "csharp": [["csharpier", "clang-format"]],
+    "json": [["prettier", "biome", "deno_fmt", "clang-format"]],
+    "elm": "elm-format",
+    "nim": "nimpretty",
+    "python": [
+      ["usort", "isort"],
+      ["ruff", "blue", "black", "yapf", "autopep8", "pyink"]
+    ],
+    "swift": [["swift-format", "swiftformat"]],
+    "shell": [["shfmt", "beautysh"]],
+    "rust": "rustfmt",
+    "cpp": "clang-format",
+    "javascript": [
+      ["prettier", "biome", "deno_fmt", "clang-format", "standardjs"]
+    ],
+    "css": [["prettier", "stylelint"]],
+    "typescript": [["prettier", "biome", "deno_fmt"]],
+    "gleam": "gleam_format",
+    "toml": "taplo",
+    "lua": [["stylua", "luaformatter"]],
     "ruby": [["rubocop", "rufo", "rubyfmt", "standardrb"]],
+    "d": "dfmt",
+    "java": [["google-java-format", "clang-format"]],
     "go": [
       ["gci", "goimports-reviser", "goimports"],
       ["gofumpt", "gofmt", "crlfmt"]
     ],
-    "rust": "rustfmt",
-    "swift": [["swift-format", "swiftformat"]],
-    "zig": "zigfmt",
-    "java": [["google-java-format", "clang-format"]],
-    "cpp": "clang-format",
-    "c": "clang-format",
+    "erlang": [["erlfmt", "efmt"]],
     "haskell": [["fourmolu", "ormolu", "hindent", "stylish-haskell"]],
-    "sql": [["sql-formatter", "sqlfluff"]],
-    "javascript": [["prettier", "biome", "deno_fmt", "clang-format"]],
-    "toml": "taplo",
-    "typescript": [["prettier", "biome", "deno_fmt"]],
-    "yaml": [["prettier", "yamlfmt", "yamlfix"]]
+    "html": [["prettier", "djlint"]],
+    "ocaml": [["ocamlformat", "ocp-indent"]],
+    "yaml": [["prettier", "yamlfmt", "yamlfix"]],
+    "crystal": "crystal_format"
   }
 }

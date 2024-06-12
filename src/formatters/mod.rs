@@ -286,212 +286,419 @@ pub fn binary_in_path(binary_name: &OsStr) -> bool {
 #[derive(serde::Serialize, serde::Deserialize, schemars::JsonSchema)]
 #[cfg_attr(test, derive(Debug, PartialEq, Eq))]
 pub enum Tooling {
+    #[doc = "https://github.com/kamadorueda/alejandra"]
     #[serde(rename = "alejandra")]
     Alejandra,
+
+    #[doc = "https://github.com/klauspost/asmfmt"]
     #[serde(rename = "asmfmt")]
     Asmfmt,
+
+    #[doc = "https://pypi.org/project/auto-optional/"]
     #[serde(rename = "auto-optional")]
     AutoOptional,
+
+    #[doc = "https://github.com/huacnlee/autocorrect"]
     #[serde(rename = "autocorrect")]
     Autocorrect,
+
+    #[doc = "https://pypi.org/project/autopep8/"]
     #[serde(rename = "autopep8")]
     Autopep8,
+
+    #[doc = "https://pypi.org/project/beautysh/"]
     #[serde(rename = "beautysh")]
     Beautysh,
+
+    #[doc = "https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/overview?tabs=bicep"]
     #[serde(rename = "bicep_format")]
     BicepFormat,
+
+    #[doc = "https://biomejs.dev"]
     #[serde(rename = "biome")]
     Biome,
+
+    #[doc = "https://github.com/psf/black"]
     #[serde(rename = "black")]
     Black,
+
+    #[doc = "https://github.com/shufo/blade-formatter"]
     #[serde(rename = "blade-formatter")]
     BladeFormatter,
+
+    #[doc = "https://blue.readthedocs.io/en/latest/"]
     #[serde(rename = "blue")]
     Blue,
+
+    #[doc = "https://source.android.com/docs/setup/reference/androidbp"]
     #[serde(rename = "bpfmt")]
     Bpfmt,
+
+    #[doc = "https://buf.build/docs/reference/cli/buf/format"]
     #[serde(rename = "buf")]
     Buf,
+
+    #[doc = "https://github.com/bazelbuild/buildtools"]
     #[serde(rename = "buildifier")]
     Buildifier,
+
+    #[doc = "https://www.haskell.org/cabal/"]
     #[serde(rename = "cabal_format")]
     CabalFormat,
+
+    #[doc = "https://docs.kernel.org/process/clang-format.html"]
     #[serde(rename = "clang-format")]
     ClangFormat,
+
+    #[doc = "https://github.com/greglook/cljstyle"]
     #[serde(rename = "cljstyle")]
     Cljstyle,
+
+    #[doc = "https://github.com/codespell-project/codespell"]
     #[serde(rename = "codespell")]
     Codespell,
+
+    #[doc = "https://github.com/cockroachdb/crlfmt"]
     #[serde(rename = "crlfmt")]
     CrlFmt,
+
+    #[doc = "https://crystal-lang.org/"]
     #[serde(rename = "crystal_format")]
     CrystalFormat,
+
+    #[doc = "https://csharpier.com/"]
     #[serde(rename = "csharpier")]
     CSharpier,
+
+    #[doc = "https://dart.dev/tools/dart-format"]
     #[serde(rename = "dart_format")]
     DartFormat,
+
+    #[doc = "https://dart.dev/tools/dart-format"]
     #[serde(rename = "deno_fmt")]
     DenoFmt,
+
+    #[doc = "https://github.com/dlang-community/dfmt"]
     #[serde(rename = "dfmt")]
     DFmt,
+
+    #[doc = "https://www.djlint.com/"]
     #[serde(rename = "djlint")]
     DjLint,
+
+    #[doc = "https://pypi.org/project/docstrfmt/"]
     #[serde(rename = "docstrfmt")]
     Docstrfmt,
+
+    #[doc = "https://github.com/sile/efmt"]
     #[serde(rename = "efmt")]
     Efmt,
+
+    #[doc = "https://github.com/avh4/elm-format"]
     #[serde(rename = "elm-format")]
     ElmFormat,
+
+    #[doc = "https://github.com/nebulab/erb-formatter"]
     #[serde(rename = "erb-formatter")]
     ErbFormatter,
+
+    #[doc = "https://github.com/WhatsApp/erlfmt"]
     #[serde(rename = "erlfmt")]
     Erlfmt,
+
+    #[doc = "https://github.com/fsprojects/fantomas"]
     #[serde(rename = "fantomas")]
     Fantomas,
+
+    #[doc = "https://pypi.org/project/findent/"]
     #[serde(rename = "findent")]
     Findent,
+
+    #[doc = "https://fishshell.com/docs/current/cmds/fish_indent.html"]
     #[serde(rename = "fish_indent")]
     FishIndent,
+
+    #[doc = "https://git.sr.ht/~technomancy/fnlfmt"]
     #[serde(rename = "fnlfmt")]
     Fnlfmt,
+
+    #[doc = "https://docs.rs/forge-fmt/latest/forge_fmt/"]
     #[serde(rename = "forge_fmt")]
     ForgeFmt,
+
+    #[doc = "https://hackage.haskell.org/package/fourmolu"]
     #[serde(rename = "fourmolu")]
     Fourmolu,
+
+    #[doc = "https://github.com/fortran-lang/fprettify"]
     #[serde(rename = "fprettify")]
     Fprettify,
+
+    #[doc = "https://github.com/daixiang0/gci"]
     #[serde(rename = "gci")]
     GCI,
+
+    #[doc = "https://godotengine.org/asset-library/asset/1057"]
     #[serde(rename = "gdformat")]
     Gdformat,
+
+    #[doc = "https://gleam.run/"]
     #[serde(rename = "gleam_format")]
     GleamFormat,
+
+    #[doc = "https://pkg.go.dev/cmd/gofmt"]
     #[serde(rename = "gofmt")]
     GoFmt,
+
+    #[doc = "https://github.com/mvdan/gofumpt"]
     #[serde(rename = "gofumpt")]
     GoFumpt,
+
+    #[doc = "https://pkg.go.dev/golang.org/x/tools/cmd/goimports"]
     #[serde(rename = "goimports")]
     GoImports,
+
+    #[doc = "https://github.com/incu6us/goimports-reviser"]
     #[serde(rename = "goimports-reviser")]
     GoImportsReviser,
+
+    #[doc = "https://github.com/segmentio/golines"]
     #[serde(rename = "golines")]
     GoLines,
+
+    #[doc = "https://github.com/google/google-java-format"]
     #[serde(rename = "google-java-format")]
     GoogleJavaFormat,
+
+    #[doc = "https://hackage.haskell.org/package/hindent"]
     #[serde(rename = "hindent")]
     HIndent,
+
+    #[doc = "https://github.com/threedaymonk/htmlbeautifier"]
     #[serde(rename = "htmlbeautifier")]
     Htmlbeautifier,
+
+    #[doc = "https://pycqa.github.io/isort/"]
     #[serde(rename = "isort")]
     Isort,
+
+    #[doc = "https://github.com/candid82/joker"]
     #[serde(rename = "joker")]
     Joker,
+
+    #[doc = "https://github.com/domluna/JuliaFormatter.jl"]
     #[serde(rename = "juliaformatter.jl")]
     JuliaFormatterJl,
+
+    #[doc = "https://github.com/casey/just"]
     #[serde(rename = "just_fmt")]
     JustFmt,
+
+    #[doc = "https://www.kcl-lang.io/docs/tools/cli/kcl/fmt"]
     #[serde(rename = "kcl_fmt")]
     KclFmt,
+
+    #[doc = "https://github.com/facebook/ktfmt"]
     #[serde(rename = "ktfmt")]
     Ktfmt,
+
+    #[doc = "https://github.com/pinterest/ktlint"]
     #[serde(rename = "ktlint")]
     Ktlint,
+
+    #[doc = "https://github.com/bram209/leptosfmt"]
     #[serde(rename = "leptosfmt")]
     LeptosFmt,
+
+    #[doc = "https://github.com/Koihik/LuaFormatter"]
     #[serde(rename = "luaformatter")]
     LuaFormatter,
+
+    #[doc = "https://github.com/executablebooks/mdformat"]
     #[serde(rename = "mdformat")]
     MdFormat,
+
+    #[doc = "https://github.com/client9/misspell/"]
     #[serde(rename = "misspell")]
     Misspell,
+
+    #[doc = "https://hexdocs.pm/mix/main/Mix.Tasks.Format.html"]
     #[serde(rename = "mix_format")]
     MixFormat,
+
+    #[doc = "https://github.com/nim-lang/nim"]
     #[serde(rename = "nimpretty")]
     Nimpretty,
+
+    #[doc = "https://github.com/serokell/nixfmt"]
     #[serde(rename = "nixfmt")]
     Nixfmt,
+
+    #[doc = "https://github.com/nix-community/nixpkgs-fmt"]
     #[serde(rename = "nixpkgs-fmt")]
     NixpkgsFmt,
+
+    #[doc = "https://github.com/nvuillam/npm-groovy-lint"]
     #[serde(rename = "npm-groovy-lint")]
     NpmGroovyLint,
+
+    #[doc = "https://github.com/ocaml-ppx/ocamlformat"]
     #[serde(rename = "ocamlformat")]
     OCamlFormat,
+
+    #[doc = "https://github.com/OCamlPro/ocp-indent"]
     #[serde(rename = "ocp-indent")]
     OcpIndent,
+
+    #[doc = "https://hackage.haskell.org/package/ormolu"]
     #[serde(rename = "ormolu")]
     Ormolu,
+
+    #[doc = "https://github.com/perltidy/perltidy"]
     #[serde(rename = "perltidy")]
     PerlTidy,
+
+    #[doc = "https://github.com/prettier/prettier"]
     #[serde(rename = "prettier")]
     Prettier,
+
+    #[doc = "https://github.com/puppetlabs/puppet-lint"]
     #[serde(rename = "puppet-lint")]
     PuppetLint,
+
+    #[doc = "https://github.com/natefaubion/purescript-tidy"]
     #[serde(rename = "purs-tidy")]
     PursTidy,
+
+    #[doc = "https://github.com/google/pyink"]
     #[serde(rename = "pyink")]
     PyInk,
+
+    #[doc = "https://rescript-lang.org/"]
     #[serde(rename = "rescript_format")]
     ReScriptFormat,
+
+    #[doc = "https://github.com/roc-lang/roc"]
     #[serde(rename = "roc_format")]
     RocFormat,
+
+    #[doc = "https://github.com/dzhu/rstfmt"]
     #[serde(rename = "rstfmt")]
     RstFmt,
+
+    #[doc = "https://github.com/rubocop/rubocop"]
     #[serde(rename = "rubocop")]
     RuboCop,
+
+    #[doc = "https://github.com/fables-tales/rubyfmt"]
     #[serde(rename = "rubyfmt")]
     RubyFmt,
+
+    #[doc = "https://docs.astral.sh/ruff/"]
     #[serde(rename = "ruff")]
     Ruff,
+
+    #[doc = "https://github.com/ruby-formatter/rufo"]
     #[serde(rename = "rufo")]
     Rufo,
+
+    #[doc = "https://github.com/rust-lang/rustfmt"]
     #[serde(rename = "rustfmt")]
     RustFmt,
+
+    #[doc = "https://github.com/scalameta/scalafmt"]
     #[serde(rename = "scalafmt")]
     Scalafmt,
+
+    #[doc = "https://github.com/mvdan/sh"]
     #[serde(rename = "shfmt")]
     Shfmt,
+
+    #[doc = "https://github.com/sql-formatter-org/sql-formatter"]
     #[serde(rename = "sql-formatter")]
     SQLFormatter,
+
+    #[doc = "https://github.com/sqlfluff/sqlfluff"]
     #[serde(rename = "sqlfluff")]
     Sqlfluff,
+
+    #[doc = "https://standardjs.com/"]
     #[serde(rename = "standardjs")]
     Standardjs,
+
+    #[doc = "https://github.com/standardrb/standard"]
     #[serde(rename = "standardrb")]
     Standardrb,
+
+    #[doc = "https://github.com/stylelint/stylelint"]
     #[serde(rename = "stylelint")]
     StyleLint,
+
+    #[doc = "https://github.com/haskell/stylish-haskell"]
     #[serde(rename = "stylish-haskell")]
     StylishHaskell,
+
+    #[doc = "https://github.com/JohnnyMorganz/StyLua"]
     #[serde(rename = "stylua")]
     Stylua,
+
+    #[doc = "https://github.com/apple/swift-format"]
     #[serde(rename = "swift-format")]
     AppleSwiftFormat,
+
+    #[doc = "https://github.com/nicklockwood/SwiftFormat"]
     #[serde(rename = "swiftformat")]
     NicklockwoodSwiftFormat,
+
+    #[doc = "https://github.com/tamasfe/taplo"]
     #[serde(rename = "taplo")]
     Taplo,
+
+    #[doc = "https://www.terraform.io/docs/cli/commands/fmt.html"]
     #[serde(rename = "terraform_fmt")]
     TerraformFmt,
+
+    #[doc = "https://opentofu.org/docs/cli/commands/fmt/"]
     #[serde(rename = "tofu_fmt")]
     TofuFmt,
+
+    #[doc = "https://github.com/crate-ci/typos"]
     #[serde(rename = "typos")]
     Typos,
+
+    #[doc = "https://github.com/facebook/usort"]
     #[serde(rename = "usort")]
     Usort,
+
+    #[doc = "https://github.com/pamoller/xmlformatter"]
     #[serde(rename = "xmlformat")]
     XmlFormat,
+
+    #[doc = "http://xmlsoft.org/xmllint.html"]
     #[serde(rename = "xmllint")]
     XmlLint,
+
+    #[doc = "https://github.com/lyz-code/yamlfix"]
     #[serde(rename = "yamlfix")]
     YamlFix,
+
+    #[doc = "https://github.com/google/yamlfmt"]
     #[serde(rename = "yamlfmt")]
     YamlFmt,
+
+    #[doc = "https://github.com/google/yapf"]
     #[serde(rename = "yapf")]
     Yapf,
+
+    #[doc = "https://github.com/its-the-shrimp/yew-fmt"]
     #[serde(rename = "yew-fmt")]
     YewFmt,
+
+    #[doc = "https://ziglang.org/"]
     #[serde(rename = "zigfmt")]
     ZigFmt,
+
+    #[doc = "https://github.com/kkinnear/zprint"]
     #[serde(rename = "zprint")]
     Zprint,
 }
@@ -725,7 +932,7 @@ impl core::fmt::Display for Tooling {
 
 impl Default for MdsfFormatter<Tooling> {
     fn default() -> Self {
-        MdsfFormatter::Multiple(Vec::new())
+        Self::Multiple(Vec::new())
     }
 }
 
@@ -748,7 +955,7 @@ impl MdsfFormatter<Tooling> {
         nested: bool,
     ) -> Result<(bool, Option<String>), MdsfError> {
         match formatter {
-            MdsfFormatter::Single(f) => {
+            Self::Single(f) => {
                 let formatter_name = f.to_string();
 
                 print_formatter_info(&formatter_name, info);
@@ -780,7 +987,7 @@ impl MdsfFormatter<Tooling> {
                 r
             }
 
-            MdsfFormatter::Multiple(formatters) => {
+            Self::Multiple(formatters) => {
                 let mut r = Ok((true, None));
 
                 for f in formatters {

@@ -1,4 +1,4 @@
-```sh
+```shell
 
 #!/bin/bash
 

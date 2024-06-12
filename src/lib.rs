@@ -290,7 +290,7 @@ func add(a int, b int) int {
 
 This snippets is from 'bash.md':
 
-```sh
+```shell
 
 #!/bin/bash
 
@@ -554,7 +554,7 @@ pub async
 
 This snippets is from 'sh.md':
 
-```sh
+```shell
 
 #!/bin/sh
 
@@ -655,7 +655,6 @@ fn add (a : i32    , b :   i32 )             i32 {
 
 ```
 "#;
-
         let expected_output = r#"---
 tile1: asd asd
 tile2: asd asd
@@ -678,7 +677,7 @@ func add(a int, b int) int {
 
 This snippets is from 'bash.md':
 
-```sh
+```shell
 #!/bin/bash
 
 add() {
@@ -863,7 +862,7 @@ pub async fn add(a: i32, b: i32) -> i32 {
 
 This snippets is from 'sh.md':
 
-```sh
+```shell
 #!/bin/sh
 
 add() {
@@ -923,7 +922,11 @@ fn add(a: i32, b: i32) i32 {
 ```
 "#;
 
-        let config = MdsfConfig::default();
+        let mut config = MdsfConfig::default();
+
+        config
+            .languages
+            .insert("vue".to_string(), MdsfFormatter::Single(Tooling::Prettier));
 
         {
             let (modified, output) = format_file(&config, std::path::Path::new("."), input);
