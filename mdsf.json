@@ -3,44 +3,44 @@
   "format_finished_document": false,
   "javascript_runtime": "node",
   "languages": {
-    "roc": "roc_format",
-    "clojure": [["cljstyle", "joker"]],
-    "sql": [["sql-formatter", "sqlfluff"]],
-    "c": "clang-format",
-    "elixir": "mix_format",
-    "zig": "zigfmt",
-    "csharp": [["csharpier", "clang-format"]],
-    "json": [["prettier", "biome", "deno_fmt", "clang-format"]],
-    "elm": "elm-format",
-    "nim": "nimpretty",
-    "python": [
-      ["usort", "isort"],
-      ["ruff", "blue", "black", "yapf", "autopep8", "pyink"]
-    ],
     "swift": [["swift-format", "swiftformat"]],
-    "shell": [["shfmt", "beautysh"]],
-    "rust": "rustfmt",
-    "cpp": "clang-format",
-    "javascript": [
-      ["prettier", "biome", "deno_fmt", "clang-format", "standardjs"]
-    ],
-    "css": [["prettier", "stylelint"]],
-    "typescript": [["prettier", "biome", "deno_fmt"]],
     "gleam": "gleam_format",
-    "toml": "taplo",
-    "lua": [["stylua", "luaformatter"]],
-    "ruby": [["rubocop", "rufo", "rubyfmt", "standardrb"]],
+    "css": [["prettier", "stylelint"]],
     "d": "dfmt",
+    "elm": "elm-format",
+    "roc": "roc_format",
+    "sql": [["sql-formatter", "sqlfluff"]],
     "java": [["google-java-format", "clang-format"]],
+    "yaml": [["prettier", "yamlfmt", "yamlfix"]],
     "go": [
       ["gci", "goimports-reviser", "goimports"],
       ["gofumpt", "gofmt", "crlfmt"]
     ],
-    "erlang": [["erlfmt", "efmt"]],
-    "haskell": [["fourmolu", "ormolu", "hindent", "stylish-haskell"]],
+    "crystal": "crystal_format",
     "html": [["prettier", "djlint"]],
+    "lua": [["stylua", "luaformatter"]],
+    "c": "clang-format",
+    "typescript": [["prettier", "biome", "deno_fmt"]],
+    "shell": [["shfmt", "beautysh"]],
+    "python": [
+      ["usort", "isort"],
+      ["ruff", "blue", "black", "yapf", "autopep8", "pyink"]
+    ],
     "ocaml": [["ocamlformat", "ocp-indent"]],
-    "yaml": [["prettier", "yamlfmt", "yamlfix"]],
-    "crystal": "crystal_format"
+    "cpp": "clang-format",
+    "json": [["prettier", "biome", "deno_fmt", "clang-format"]],
+    "rust": "rustfmt",
+    "csharp": [["csharpier", "clang-format"]],
+    "ruby": [["rubocop", "rufo", "rubyfmt", "standardrb"]],
+    "zig": "zigfmt",
+    "erlang": [["erlfmt", "efmt"]],
+    "clojure": [["cljstyle", "joker"]],
+    "elixir": "mix_format",
+    "nim": "nimpretty",
+    "javascript": [
+      ["prettier", "biome", "deno_fmt", "clang-format", "standardjs"]
+    ],
+    "toml": "taplo",
+    "haskell": [["fourmolu", "ormolu", "hindent", "stylish-haskell"]]
   }
 }
