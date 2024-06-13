@@ -315,6 +315,11 @@
           "enum": ["kcl_fmt"]
         },
         {
+          "description": "https://github.com/hougesen/kdlfmt",
+          "type": "string",
+          "enum": ["kdlfmt"]
+        },
+        {
           "description": "https://github.com/facebook/ktfmt",
           "type": "string",
           "enum": ["ktfmt"]
