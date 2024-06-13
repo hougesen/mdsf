@@ -20,7 +20,6 @@ mod test_ocp_indent {
     };
 
     #[test_with::executable(ocp-indent)]
-    #[test]
     fn it_should_format_ocaml() {
         let input = "
 let add a b

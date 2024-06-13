@@ -41,8 +41,8 @@
     "swift": [["swift-format", "swiftformat"]],
     "toml": "taplo",
     "typescript": [["prettier", "biome", "deno_fmt"]],
+    "vue": "prettier",
     "yaml": [["prettier", "yamlfmt", "yamlfix"]],
-    "zig": "zigfmt",
-    "vue": "prettier"
+    "zig": "zigfmt"
   }
 }

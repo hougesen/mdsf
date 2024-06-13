@@ -18,7 +18,6 @@ mod test_buf {
     use crate::{formatters::setup_snippet, generated::language_to_ext};
 
     #[test_with::executable(buf)]
-    #[test]
     fn it_should_format_protobuf() {
         let input = "service SearchService {
                               rpc Search (SearchRequest) returns (SearchResponse);

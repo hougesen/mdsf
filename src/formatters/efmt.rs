@@ -18,7 +18,6 @@ mod test_efmt {
     };
 
     #[test_with::executable(efmt)]
-    #[test]
     fn it_should_format_erlang() {
         let input = "what_is(Erlang) ->
 case Erlang of movie->[hello(mike,joe,robert),credits]; language->formatting_arguments end

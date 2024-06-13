@@ -18,7 +18,6 @@ mod test_nixfmt {
     use crate::{formatters::setup_snippet, generated::language_to_ext};
 
     #[test_with::executable(nixfmt)]
-    #[test]
     fn it_should_format_nix() {
         let input = r#"{ lib, buildPythonPackage, fetchFromGitHub, redis }:
 

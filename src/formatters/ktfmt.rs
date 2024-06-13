@@ -20,7 +20,6 @@ mod test_ktfmt {
     use crate::{formatters::setup_snippet, generated::language_to_ext};
 
     #[test_with::executable(ktfmt)]
-    #[test]
     fn it_should_format_kotlin() {
         let input = "            fun add(a:Int ,b:Int ):Int {
                     return a + b

@@ -18,7 +18,6 @@ mod test_csharpier {
     use crate::{formatters::setup_snippet, generated::language_to_ext};
 
     #[test_with::executable(dotnet)]
-    #[test]
     fn it_should_format_csharp() {
         let input = "namespace Mdsf {
                         class Adder {

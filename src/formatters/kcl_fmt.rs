@@ -18,7 +18,6 @@ mod test_kcl_fmt {
     use crate::{formatters::setup_snippet, generated::language_to_ext};
 
     #[test_with::executable(kcl)]
-    #[test]
     fn it_should_format_kcl() {
         let input = r#"apiVersion = "apps/v1"
 kind = "Deployment"

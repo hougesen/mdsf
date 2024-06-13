@@ -18,7 +18,6 @@ mod test_ormolu {
     use crate::{formatters::setup_snippet, generated::language_to_ext};
 
     #[test_with::executable(ormolu)]
-    #[test]
     fn it_should_format_haskell() {
         let input = "
 addNumbers::Int->Int->Int

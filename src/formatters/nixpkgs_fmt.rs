@@ -18,7 +18,6 @@ mod test_nixpkgs_fmt {
     use crate::{formatters::setup_snippet, generated::language_to_ext};
 
     #[test_with::executable(nixpkgs-fmt)]
-    #[test]
     fn it_should_format_nix() {
         let input = r#"{
             lib, buildPythonPackage, fetchFromGitHub, redis }:

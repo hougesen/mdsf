@@ -32,7 +32,6 @@ mod test_perltidy {
     };
 
     #[test_with::executable(perltidy)]
-    #[test]
     fn it_should_format_perl() {
         let input = r#"$_= <<'EOL';
    $url = new URI::URL "http://www/";   die if $url eq "xXx";

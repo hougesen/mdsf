@@ -18,7 +18,6 @@ mod test_stylish_haskell {
     use crate::{formatters::setup_snippet, generated::language_to_ext};
 
     #[test_with::executable(stylish-haskell)]
-    #[test]
     fn it_should_format_haskell() {
         let input = "addNumbers::Int->Int->Int
 addNumbers a b = do

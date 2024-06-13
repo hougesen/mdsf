@@ -35,7 +35,6 @@ mod test_purs_tidy {
     use super::format_using_purs_tidy;
     use crate::{formatters::setup_snippet, generated::language_to_ext};
 
-    #[test]
     #[test_with::executable(npx)]
     fn it_should_format_purescript() {
         let input = r#"module       Test.Main   where

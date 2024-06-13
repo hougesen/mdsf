@@ -24,7 +24,6 @@ mod test_rubocop {
     };
 
     #[test_with::executable(rubocop)]
-    #[test]
     fn it_should_format_ruby() {
         let input = "def   add(  a ,                                                          b )
                         return a + b

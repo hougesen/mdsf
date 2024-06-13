@@ -24,7 +24,6 @@ mod test_just_fmt {
     };
 
     #[test_with::executable(just)]
-    #[test]
     fn it_should_format_just() {
         let input = "build:
                 cargo build

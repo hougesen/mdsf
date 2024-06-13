@@ -27,7 +27,6 @@ mod test_scalafmt {
     use crate::{formatters::setup_snippet, generated::language_to_ext};
 
     #[test_with::executable(scalafmt)]
-    #[test]
     fn it_should_format_scala() {
         let input = "object Addition {
              def main() = {

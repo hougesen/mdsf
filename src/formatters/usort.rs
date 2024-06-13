@@ -18,7 +18,6 @@ mod test_usort {
     use crate::{formatters::setup_snippet, generated::language_to_ext};
 
     #[test_with::executable(usort)]
-    #[test]
     fn it_should_format_python() {
         let input = "from q import d
 import b

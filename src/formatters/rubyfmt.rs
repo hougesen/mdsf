@@ -20,7 +20,6 @@ mod test_rubyfmt {
     };
 
     #[test_with::executable(rubyfmt)]
-    #[test]
     fn it_should_format_ruby() {
         let input = "def   add(  a ,                                                          b )
                         return a + b

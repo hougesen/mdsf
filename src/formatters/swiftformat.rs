@@ -18,7 +18,6 @@ mod test_swiftformat {
     use crate::{formatters::setup_snippet, generated::language_to_ext};
 
     #[test_with::executable(swiftformat)]
-    #[test]
     fn it_should_format_swift() {
         let input = " func add(a:Int ,b:Int)->Int {
     return a + b

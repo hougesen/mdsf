@@ -17,7 +17,6 @@ mod test_golines {
     use crate::{formatters::setup_snippet, generated::language_to_ext};
 
     #[test_with::executable(golines)]
-    #[test]
     fn it_should_format_go() {
         let input = "package main
 

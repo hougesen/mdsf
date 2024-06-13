@@ -38,7 +38,6 @@ mod test_standardjs {
     };
 
     #[test_with::executable(standard)]
-    #[test]
     fn it_should_format_javascript() {
         let input = "
     async function asyncAddition(a,b  )

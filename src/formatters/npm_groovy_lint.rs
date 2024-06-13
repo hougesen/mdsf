@@ -39,7 +39,7 @@ mod test_npm_groovy_lint {
         generated::language_to_ext,
     };
 
-    #[test]
+    #[test_with::executable(npx)]
     fn it_should_format_groovy() {
         let input = "                  def add(a, b) {
             return a + b
