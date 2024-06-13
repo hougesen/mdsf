@@ -18,7 +18,6 @@ mod test_terraform_fmt {
     use crate::formatters::setup_snippet;
 
     #[test_with::executable(terraform)]
-    #[test]
     fn it_should_format_hcl() {
         let input = "resource \"aws_instance\" \"example\" {
                     ami   = \"abc123\"

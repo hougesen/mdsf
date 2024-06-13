@@ -18,7 +18,6 @@ mod test_deno_fmt {
     use crate::{formatters::setup_snippet, generated::language_to_ext};
 
     #[test_with::executable(deno)]
-    #[test]
     fn it_should_format_json() {
         let input = "
               {
@@ -56,7 +55,6 @@ mod test_deno_fmt {
     }
 
     #[test_with::executable(deno)]
-    #[test]
     fn it_should_format_javascript() {
         let input = "
     async function asyncAddition(a,b){
@@ -82,7 +80,6 @@ mod test_deno_fmt {
     }
 
     #[test_with::executable(deno)]
-    #[test]
     fn it_should_format_typescript() {
         let input = "
     async function asyncAddition(                                a:       \tnumber,b:number ) :Promise< number>

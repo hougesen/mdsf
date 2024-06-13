@@ -37,7 +37,7 @@ mod test_stylua {
         generated::language_to_ext,
     };
 
-    #[test]
+    #[test_with::executable(stylua)]
     fn it_should_format_lua() {
         let input = "
 

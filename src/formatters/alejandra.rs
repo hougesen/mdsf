@@ -18,7 +18,6 @@ mod test_alejandra {
     use crate::{formatters::setup_snippet, generated::language_to_ext};
 
     #[test_with::executable(alejandra)]
-    #[test]
     fn it_should_format_nix() {
         let input = r#"{
             lib, buildPythonPackage, fetchFromGitHub, redis }:

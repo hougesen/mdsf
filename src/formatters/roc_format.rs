@@ -18,7 +18,6 @@ mod test_roc_format {
     use crate::{formatters::setup_snippet, generated::language_to_ext};
 
     #[test_with::executable(roc)]
-    #[test]
     fn it_should_format_roc() {
         let input = r#"app "helloWorld"
     packages { pf: "https://github.com/roc-lang/" }

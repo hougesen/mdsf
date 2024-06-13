@@ -23,7 +23,6 @@ mod test_ocamlformat {
     };
 
     #[test_with::executable(ocamlformat)]
-    #[test]
     fn it_should_format_ocaml() {
         let input = "
 let add a b  =  a +  b

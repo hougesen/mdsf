@@ -18,7 +18,6 @@ mod test_yapf {
     use crate::{formatters::setup_snippet, generated::language_to_ext};
 
     #[test_with::executable(yapf)]
-    #[test]
     fn it_should_format_python() {
         let input = "def add( a: int ,  b:int)->int: return a+b";
 

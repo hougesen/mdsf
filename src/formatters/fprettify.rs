@@ -18,7 +18,6 @@ mod test_fprettify {
     use crate::{formatters::setup_snippet, generated::language_to_ext};
 
     #[test_with::executable(fprettify)]
-    #[test]
     fn it_should_format_fortran() {
         let input = "program demo
 integer :: endif,if,elseif

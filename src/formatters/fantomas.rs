@@ -20,7 +20,6 @@ mod test_fantomas {
     };
 
     #[test_with::executable(fantomas)]
-    #[test]
     fn it_should_format_ocaml() {
         let input = "
 let add a b  =  a +  b

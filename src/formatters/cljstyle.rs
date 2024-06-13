@@ -18,7 +18,6 @@ mod test_cljstyle {
     use crate::{formatters::setup_snippet, generated::language_to_ext};
 
     #[test_with::executable(cljstyle)]
-    #[test]
     fn it_should_format_clojure() {
         let input = "(  ns
  foo.bar.baz  \"some doc\"

@@ -18,7 +18,6 @@ mod test_crystal_format {
     use crate::{formatters::setup_snippet, generated::language_to_ext};
 
     #[test_with::executable(crystal)]
-    #[test]
     fn it_should_format_crystal() {
         let input = "def add(a, b)  return a + b end";
 

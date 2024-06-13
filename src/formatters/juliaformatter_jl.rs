@@ -21,7 +21,6 @@ mod test_juliaformatter_jl {
     use crate::{formatters::setup_snippet, generated::language_to_ext};
 
     #[test_with::executable(julia)]
-    #[test]
     fn it_should_format_julia() {
         let input = "function add( a:: Int32,  b::Int32 )
             c = a+ b

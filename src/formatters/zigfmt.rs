@@ -22,7 +22,6 @@ mod test_zigfmt {
     };
 
     #[test_with::executable(zig)]
-    #[test]
     fn it_should_format_zig() {
         let input = "
     fn     add   (a : i32    , b :   i32 )             i32 {

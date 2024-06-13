@@ -21,7 +21,6 @@ mod test_biome {
     };
 
     #[test_with::executable(npx)]
-    #[test]
     fn it_should_format_json() {
         let input = "
               {
@@ -52,7 +51,6 @@ mod test_biome {
     }
 
     #[test_with::executable(npx)]
-    #[test]
     fn it_should_format_javascript() {
         let input = "
     async function asyncAddition(
@@ -80,7 +78,6 @@ mod test_biome {
     }
 
     #[test_with::executable(npx)]
-    #[test]
     fn it_should_format_typescript() {
         let input = "
     async function asyncAddition(

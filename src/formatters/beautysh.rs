@@ -20,7 +20,6 @@ mod test_beautysh {
     };
 
     #[test_with::executable(beautysh)]
-    #[test]
     fn it_should_format_sh() {
         let input = "#!/bin/shell
 
@@ -47,7 +46,6 @@ add() {
     }
 
     #[test_with::executable(beautysh)]
-    #[test]
     fn it_should_format_bash() {
         let input = "#!/bin/bash
 

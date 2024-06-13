@@ -18,7 +18,6 @@ mod test_yamlfmt {
     use crate::{formatters::setup_snippet, generated::language_to_ext};
 
     #[test_with::executable(yamlfmt)]
-    #[test]
     fn it_should_format_yaml() {
         let input = "
 

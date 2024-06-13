@@ -20,7 +20,6 @@ mod test_shfmt {
     };
 
     #[test_with::executable(shfmt)]
-    #[test]
     fn it_should_format_sh() {
         let input = "
 
@@ -57,7 +56,6 @@ add() {
     }
 
     #[test_with::executable(shfmt)]
-    #[test]
     fn it_should_format_bash() {
         let input = "
 
@@ -94,7 +92,6 @@ add() {
     }
 
     #[test_with::executable(shfmt)]
-    #[test]
     fn it_should_format_zsh() {
         let input = "
 

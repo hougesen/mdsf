@@ -18,7 +18,6 @@ mod test_xmlformat {
     use crate::{formatters::setup_snippet, generated::language_to_ext};
 
     #[test_with::executable(xmlformat)]
-    #[test]
     fn it_should_format_xml() {
         let input = "
 <note>

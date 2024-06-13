@@ -18,7 +18,6 @@ mod test_google_java_format {
     use crate::{formatters::setup_snippet, generated::language_to_ext};
 
     #[test_with::executable(google-java-format)]
-    #[test]
     fn it_should_format_java() {
         let input = "class HelloWorld {
     public static void main(String[] args) {

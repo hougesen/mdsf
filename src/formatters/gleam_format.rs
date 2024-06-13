@@ -20,7 +20,6 @@ mod test_gleam_format {
     };
 
     #[test_with::executable(gleam)]
-    #[test]
     fn it_should_format_gleam() {
         let input = "pub fn add(a:Int,b:Int)->Int{a+b}";
         let expected_output = "pub fn add(a: Int, b: Int) -> Int {

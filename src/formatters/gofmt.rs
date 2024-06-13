@@ -20,7 +20,6 @@ mod test_gofmt {
     };
 
     #[test_with::executable(gofmt)]
-    #[test]
     fn it_should_format_go() {
         let input = "package main
 

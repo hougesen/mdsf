@@ -21,7 +21,6 @@ mod test_rustfmt {
     use crate::{formatters::setup_snippet, generated::language_to_ext};
 
     #[test_with::executable(rustfmt)]
-    #[test]
     fn it_should_format_rust() {
         let input = "pub
                     async

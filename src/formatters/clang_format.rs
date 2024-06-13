@@ -20,7 +20,6 @@ mod test_clang_format {
     };
 
     #[test_with::executable(clang-format)]
-    #[test]
     fn it_should_format_c() {
         let input = "int add(int a,int b){
                 a-b;
@@ -44,7 +43,6 @@ mod test_clang_format {
     }
 
     #[test_with::executable(clang-format)]
-    #[test]
     fn it_should_format_cpp() {
         let input = "int add(int a,int b){
                  a-b;
@@ -68,7 +66,6 @@ mod test_clang_format {
     }
 
     #[test_with::executable(clang-format)]
-    #[test]
     fn it_should_format_csharp() {
         let input = "namespace Mdsf {
                         class Adder {
@@ -94,7 +91,6 @@ mod test_clang_format {
     }
 
     #[test_with::executable(clang-format)]
-    #[test]
     fn it_should_format_javascript() {
         let input = "    async function asyncAddition(  a,b) {
             a * b;
@@ -115,7 +111,6 @@ mod test_clang_format {
     }
 
     #[test_with::executable(clang-format)]
-    #[test]
     fn it_should_format_json() {
         let input = "              {
               \"key\": \"value\",
@@ -144,7 +139,6 @@ mod test_clang_format {
     }
 
     #[test_with::executable(clang-format)]
-    #[test]
     fn it_should_format_objective_c() {
         let input = "int add(int a,int b){
             a - a ;
@@ -168,7 +162,6 @@ mod test_clang_format {
     }
 
     #[test_with::executable(clang-format)]
-    #[test]
     fn it_should_format_protobuf() {
         let input = "service SearchService {
                               rpc Search (SearchRequest) returns (SearchResponse);
@@ -189,7 +182,6 @@ mod test_clang_format {
     }
 
     #[test_with::executable(clang-format)]
-    #[test]
     fn it_should_format_java() {
         let input = "class HelloWorld {
     public static void main(String[] args) {

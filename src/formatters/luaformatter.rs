@@ -20,7 +20,6 @@ mod test_luaformatter {
     };
 
     #[test_with::executable(lua-format)]
-    #[test]
     fn it_should_format_lua() {
         let input = "
 
