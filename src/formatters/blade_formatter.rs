@@ -7,7 +7,7 @@ fn set_blade_formatter_args(cmd: &mut std::process::Command, snippet_path: &std:
 }
 
 #[inline]
-fn invote_blade_formatter(
+fn invoke_blade_formatter(
     mut cmd: std::process::Command,
     snippet_path: &std::path::Path,
 ) -> Result<(bool, Option<String>), MdsfError> {
@@ -20,15 +20,22 @@ fn invote_blade_formatter(
 pub fn format_using_blade_formatter(
     snippet_path: &std::path::Path,
 ) -> Result<(bool, Option<String>), MdsfError> {
-    invote_blade_formatter(setup_npm_script("blade-formatter"), snippet_path)
+    if let Ok(path_result) =
+        invoke_blade_formatter(std::process::Command::new("blade-formatter"), snippet_path)
+    {
+        if !path_result.0 {
+            return Ok(path_result);
+        }
+    }
+
+    invoke_blade_formatter(setup_npm_script("blade-formatter"), snippet_path)
 }
 
 #[cfg(test)]
 mod test_blade_formatter {
     use crate::{formatters::setup_snippet, generated::language_to_ext};
 
-    #[test_with::executable(npx)]
-    #[test]
+    #[test_with::executable(blade-formatter)]
     fn it_should_format_blade() {
         let input = r#"@extends('frontend.layouts.app')
 @section('title') foo

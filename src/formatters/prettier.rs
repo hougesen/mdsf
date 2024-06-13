@@ -58,7 +58,7 @@ mod test_prettier {
         generated::language_to_ext,
     };
 
-    #[test]
+    #[test_with::executable(npx)]
     fn it_should_format_json() {
         let input = "
               {
@@ -90,7 +90,7 @@ mod test_prettier {
         assert_eq!(expected_output, output);
     }
 
-    #[test]
+    #[test_with::executable(npx)]
     fn it_should_format_javascript() {
         let input = "
     async function asyncAddition(
@@ -117,7 +117,7 @@ mod test_prettier {
         assert_eq!(expected_output, output);
     }
 
-    #[test]
+    #[test_with::executable(npx)]
     fn it_should_format_typescript() {
         let input = "
     async function asyncAddition(
@@ -147,7 +147,7 @@ number>
         assert_eq!(expected_output, output);
     }
 
-    #[test]
+    #[test_with::executable(npx)]
     fn it_should_format_markdown() {
         let input = "
 
@@ -174,7 +174,7 @@ this is a paragraph
         assert_eq!(expected_output, output);
     }
 
-    #[test]
+    #[test_with::executable(npx)]
     fn it_should_not_format_code_snippets_in_markdown() {
         let input = "```typescript
     async function asyncAddition(
@@ -201,7 +201,7 @@ number>
         assert_eq!(input, output);
     }
 
-    #[test]
+    #[test_with::executable(npx)]
     fn it_should_format_html() {
         let input = " <!doctype html> <html> <head> <style> body {background-color: powderblue;} h1   {color: blue;} p    {color: red;} </style> </head> <body>  <h1>This is a heading</h1> <p>This is a paragraph.</p>  </body> </html> ";
 
@@ -238,7 +238,7 @@ number>
         assert_eq!(expected_output, output);
     }
 
-    #[test]
+    #[test_with::executable(npx)]
     fn it_should_format_css() {
         let input = " h1   {color: blue;} p    {color: red;} ";
 
@@ -261,7 +261,7 @@ p {
         assert_eq!(expected_output, output);
     }
 
-    #[test]
+    #[test_with::executable(npx)]
     fn it_should_format_yaml() {
         let input = "
 
@@ -317,7 +317,7 @@ updates:
         assert_eq!(expected_output, output);
     }
 
-    #[test]
+    #[test_with::executable(npx)]
     fn it_should_format_vue() {
         let input = "<script lang=\"ts\"   setup >
 import {
@@ -363,7 +363,7 @@ function add(a: number, b: number): number {
         assert_eq!(expected_output, output);
     }
 
-    #[test]
+    #[test_with::executable(npx)]
     fn it_should_format_graphql() {
         let input = "{   hero {     name
             # Queries can have comments!

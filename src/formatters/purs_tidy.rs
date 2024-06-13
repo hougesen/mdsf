@@ -20,6 +20,13 @@ fn invoke_purs_tidy(
 pub fn format_using_purs_tidy(
     snippet_path: &std::path::Path,
 ) -> Result<(bool, Option<String>), MdsfError> {
+    if let Ok(path_result) = invoke_purs_tidy(std::process::Command::new("purs-tidy"), snippet_path)
+    {
+        if !path_result.0 {
+            return Ok(path_result);
+        }
+    }
+
     invoke_purs_tidy(setup_npm_script("purs-tidy"), snippet_path)
 }
 
@@ -29,6 +36,7 @@ mod test_purs_tidy {
     use crate::{formatters::setup_snippet, generated::language_to_ext};
 
     #[test]
+    #[test_with::executable(npx)]
     fn it_should_format_purescript() {
         let input = r#"module       Test.Main   where
 
