@@ -104,7 +104,7 @@ mdsf init
 
 <!-- START_SECTION:supported-languages -->
 
-`mdsf` currently supports 104 tools.
+`mdsf` currently supports 105 tools.
 
 | Formatter          | Description                                                                                                            |
 | ------------------ | ---------------------------------------------------------------------------------------------------------------------- |
@@ -161,6 +161,7 @@ mdsf init
 | juliaformatter.jl  | [https://github.com/domluna/JuliaFormatter.jl](https://github.com/domluna/JuliaFormatter.jl)                           |
 | just_fmt           | [https://github.com/casey/just](https://github.com/casey/just)                                                         |
 | kcl_fmt            | [https://www.kcl-lang.io/docs/tools/cli/kcl/fmt](https://www.kcl-lang.io/docs/tools/cli/kcl/fmt)                       |
+| kdlfmt             | [https://github.com/hougesen/kdlfmt](https://github.com/hougesen/kdlfmt)                                               |
 | ktfmt              | [https://github.com/facebook/ktfmt](https://github.com/facebook/ktfmt)                                                 |
 | ktlint             | [https://github.com/pinterest/ktlint](https://github.com/pinterest/ktlint)                                             |
 | leptosfmt          | [https://github.com/bram209/leptosfmt](https://github.com/bram209/leptosfmt)                                           |
