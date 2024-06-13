@@ -36,7 +36,7 @@ mod test_taplo {
         generated::language_to_ext,
     };
 
-    #[test]
+    #[test_with::executable(npx)]
     fn it_should_format_toml() {
         let input = "          package         =              \"mdsf\"
   author   = \"Mads Hougesen\"

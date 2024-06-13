@@ -11,7 +11,7 @@ fn set_sqlfluff_args(cmd: &mut std::process::Command, snippet_path: &std::path::
 }
 
 #[inline]
-fn invote_sqlfluff(
+fn invoke_sqlfluff(
     mut cmd: std::process::Command,
     snippet_path: &std::path::Path,
 ) -> Result<(bool, Option<String>), MdsfError> {
@@ -24,7 +24,7 @@ fn invote_sqlfluff(
 pub fn format_using_sqlfluff(
     snippet_path: &std::path::Path,
 ) -> Result<(bool, Option<String>), MdsfError> {
-    invote_sqlfluff(std::process::Command::new("sqlfluff"), snippet_path)
+    invoke_sqlfluff(std::process::Command::new("sqlfluff"), snippet_path)
 }
 
 #[cfg(test)]
@@ -32,7 +32,6 @@ mod test_sqlfluff {
     use crate::{formatters::setup_snippet, generated::language_to_ext};
 
     #[test_with::executable(sqlfluff)]
-    #[test]
     fn it_should_format_sql() {
         let input = "SELECT  *                  FROM  tbl
                         WHERE                      foo   = 'bar';         ";

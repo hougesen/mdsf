@@ -20,6 +20,14 @@ fn invoke_elm_format(
 pub fn format_using_elm_format(
     snippet_path: &std::path::Path,
 ) -> Result<(bool, Option<String>), MdsfError> {
+    if let Ok(path_result) =
+        invoke_elm_format(std::process::Command::new("elm-format"), snippet_path)
+    {
+        if !path_result.0 {
+            return Ok(path_result);
+        }
+    }
+
     invoke_elm_format(setup_npm_script("elm-format"), snippet_path)
 }
 
@@ -30,7 +38,7 @@ mod test_elm_format {
         generated::language_to_ext,
     };
 
-    #[test]
+    #[test_with::executable(npx)]
     fn it_should_format_elm() {
         let input = r#"import   Html       exposing   (text)
 

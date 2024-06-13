@@ -7,7 +7,7 @@ fn set_rescript_format_args(cmd: &mut std::process::Command, snippet_path: &std:
 }
 
 #[inline]
-fn invote_rescript_format(
+fn invoke_rescript_format(
     mut cmd: std::process::Command,
     snippet_path: &std::path::Path,
 ) -> Result<(bool, Option<String>), MdsfError> {
@@ -20,14 +20,22 @@ fn invote_rescript_format(
 pub fn format_using_rescript_format(
     snippet_path: &std::path::Path,
 ) -> Result<(bool, Option<String>), MdsfError> {
-    invote_rescript_format(setup_npm_script("rescript"), snippet_path)
+    if let Ok(path_result) =
+        invoke_rescript_format(std::process::Command::new("rescript"), snippet_path)
+    {
+        if !path_result.0 {
+            return Ok(path_result);
+        }
+    }
+
+    invoke_rescript_format(setup_npm_script("rescript"), snippet_path)
 }
 
 #[cfg(test)]
 mod test_rescript_format {
     use crate::{formatters::setup_snippet, generated::language_to_ext};
 
-    #[test]
+    #[test_with::executable(npx)]
     fn it_should_format_rescript() {
         let input = r#"module Button = {
   @react.component

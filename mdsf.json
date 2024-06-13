@@ -42,6 +42,7 @@
     "toml": "taplo",
     "typescript": [["prettier", "biome", "deno_fmt"]],
     "yaml": [["prettier", "yamlfmt", "yamlfix"]],
-    "zig": "zigfmt"
+    "zig": "zigfmt",
+    "vue": "prettier"
   }
 }
