@@ -11,7 +11,7 @@ The latest version of `mdsf` can be downloaded directly from [github.com/hougese
 Install using the [published crate](https://crates.io/crates/mdsf):
 
 ```shell
-cargo install mdsf
+cargo install mdsf --locked
 ```
 
 or directly from source:
