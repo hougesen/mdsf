@@ -3,6 +3,7 @@ use std::{ffi::OsStr, io::Write, process::Command};
 use astyle::format_using_astyle;
 use autoflake::format_using_autoflake;
 use dprint::format_using_dprint;
+use eslint::format_using_eslint;
 use tempfile::NamedTempFile;
 use which::which;
 
@@ -102,6 +103,7 @@ mod efmt;
 mod elm_format;
 mod erb_formatter;
 mod erlfmt;
+mod eslint;
 mod fantomas;
 mod findent;
 mod fish_indent;
@@ -431,6 +433,10 @@ pub enum Tooling {
     #[doc = "https://github.com/WhatsApp/erlfmt"]
     #[serde(rename = "erlfmt")]
     Erlfmt,
+
+    #[doc = "https://eslint.org"]
+    #[serde(rename = "eslint")]
+    Eslint,
 
     #[doc = "https://github.com/fsprojects/fantomas"]
     #[serde(rename = "fantomas")]
@@ -776,6 +782,7 @@ impl Tooling {
             Self::ElmFormat => format_using_elm_format(snippet_path),
             Self::ErbFormatter => format_using_erb_formatter(snippet_path),
             Self::Erlfmt => format_using_erlfmt(snippet_path),
+            Self::Eslint => format_using_eslint(snippet_path),
             Self::Fantomas => format_using_fantomas(snippet_path),
             Self::Findent => format_using_findent(snippet_path),
             Self::FishIndent => format_using_fish_indent(snippet_path),
@@ -894,6 +901,7 @@ impl core::fmt::Display for Tooling {
             Self::ElmFormat => write!(f, "elm-format"),
             Self::ErbFormatter => write!(f, "erb-formatter"),
             Self::Erlfmt => write!(f, "erlfmt"),
+            Self::Eslint => write!(f, "eslint"),
             Self::Fantomas => write!(f, "fantomas"),
             Self::Findent => write!(f, "findent"),
             Self::FishIndent => write!(f, "fish_indent"),

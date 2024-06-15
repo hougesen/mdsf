@@ -220,6 +220,11 @@
           "enum": ["erlfmt"]
         },
         {
+          "description": "https://eslint.org",
+          "type": "string",
+          "enum": ["eslint"]
+        },
+        {
           "description": "https://github.com/fsprojects/fantomas",
           "type": "string",
           "enum": ["fantomas"]

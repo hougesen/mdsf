@@ -104,7 +104,7 @@ mdsf init
 
 <!-- START_SECTION:supported-languages -->
 
-`mdsf` currently supports 109 tools.
+`mdsf` currently supports 110 tools.
 
 | Formatter          | Description                                                                                                            |
 | ------------------ | ---------------------------------------------------------------------------------------------------------------------- |
@@ -142,6 +142,7 @@ mdsf init
 | elm-format         | [https://github.com/avh4/elm-format](https://github.com/avh4/elm-format)                                               |
 | erb-formatter      | [https://github.com/nebulab/erb-formatter](https://github.com/nebulab/erb-formatter)                                   |
 | erlfmt             | [https://github.com/WhatsApp/erlfmt](https://github.com/WhatsApp/erlfmt)                                               |
+| eslint             | [https://eslint.org](https://eslint.org)                                                                               |
 | fantomas           | [https://github.com/fsprojects/fantomas](https://github.com/fsprojects/fantomas)                                       |
 | findent            | [https://pypi.org/project/findent/](https://pypi.org/project/findent/)                                                 |
 | fish_indent        | [https://fishshell.com/docs/current/cmds/fish_indent.html](https://fishshell.com/docs/current/cmds/fish_indent.html)   |
