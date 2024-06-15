@@ -195,6 +195,11 @@
           "enum": ["docstrfmt"]
         },
         {
+          "description": "https://dprint.dev",
+          "type": "string",
+          "enum": ["dprint"]
+        },
+        {
           "description": "https://github.com/sile/efmt",
           "type": "string",
           "enum": ["efmt"]
