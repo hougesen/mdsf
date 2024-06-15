@@ -270,9 +270,14 @@
           "enum": ["gci"]
         },
         {
-          "description": "https://godotengine.org/asset-library/asset/1057",
+          "description": "https://github.com/scony/godot-gdscript-toolkit",
           "type": "string",
           "enum": ["gdformat"]
+        },
+        {
+          "description": "https://github.com/blankspruce/gersemi",
+          "type": "string",
+          "enum": ["gersemi"]
         },
         {
           "description": "https://gleam.run/",

@@ -104,7 +104,7 @@ mdsf init
 
 <!-- START_SECTION:supported-languages -->
 
-`mdsf` currently supports 111 tools.
+`mdsf` currently supports 112 tools.
 
 | Formatter          | Description                                                                                                            |
 | ------------------ | ---------------------------------------------------------------------------------------------------------------------- |
@@ -152,7 +152,8 @@ mdsf init
 | fourmolu           | [https://hackage.haskell.org/package/fourmolu](https://hackage.haskell.org/package/fourmolu)                           |
 | fprettify          | [https://github.com/fortran-lang/fprettify](https://github.com/fortran-lang/fprettify)                                 |
 | gci                | [https://github.com/daixiang0/gci](https://github.com/daixiang0/gci)                                                   |
-| gdformat           | [https://godotengine.org/asset-library/asset/1057](https://godotengine.org/asset-library/asset/1057)                   |
+| gdformat           | [https://github.com/scony/godot-gdscript-toolkit](https://github.com/scony/godot-gdscript-toolkit)                     |
+| gersemi            | [https://github.com/blankspruce/gersemi](https://github.com/blankspruce/gersemi)                                       |
 | gleam_format       | [https://gleam.run/](https://gleam.run/)                                                                               |
 | gofmt              | [https://pkg.go.dev/cmd/gofmt](https://pkg.go.dev/cmd/gofmt)                                                           |
 | gofumpt            | [https://github.com/mvdan/gofumpt](https://github.com/mvdan/gofumpt)                                                   |
