@@ -19,8 +19,8 @@ use crate::{
         cljstyle::format_using_cljstyle, codespell::format_using_codespell,
         crlfmt::format_using_crlfmt, crystal_format::format_using_crystal_format,
         csharpier::format_using_csharpier, d2::format_using_d2,
-        dart_format::format_using_dart_format, deno_fmt::format_using_deno_fmt,
-        dfmt::format_using_dfmt, djlint::format_using_djlint,
+        dart_format::format_using_dart_format, dcm::format_using_dcm,
+        deno_fmt::format_using_deno_fmt, dfmt::format_using_dfmt, djlint::format_using_djlint,
         docformatter::format_using_docformatter, docstrfmt::format_using_docstrfmt,
         dprint::format_using_dprint, efmt::format_using_efmt, elm_format::format_using_elm_format,
         erb_formatter::format_using_erb_formatter, erlfmt::format_using_erlfmt,
@@ -100,6 +100,7 @@ mod crystal_format;
 mod csharpier;
 mod d2;
 mod dart_format;
+mod dcm;
 mod deno_fmt;
 mod dfmt;
 mod djlint;
@@ -422,6 +423,10 @@ pub enum Tooling {
     #[doc = "https://dart.dev/tools/dart-format"]
     #[serde(rename = "dart_format")]
     DartFormat,
+
+    #[doc = "https://dcm.dev"]
+    #[serde(rename = "dcm")]
+    Dcm,
 
     #[doc = "https://dart.dev/tools/dart-format"]
     #[serde(rename = "deno_fmt")]
@@ -860,6 +865,7 @@ impl Tooling {
             Self::D2 => format_using_d2(snippet_path),
             Self::DFmt => format_using_dfmt(snippet_path),
             Self::DartFormat => format_using_dart_format(snippet_path),
+            Self::Dcm => format_using_dcm(snippet_path),
             Self::DenoFmt => format_using_deno_fmt(snippet_path),
             Self::DjLint => format_using_djlint(snippet_path),
             Self::Docformatter => format_using_docformatter(snippet_path),
@@ -997,6 +1003,7 @@ impl core::fmt::Display for Tooling {
             Self::DartFormat => write!(f, "dart_format"),
             Self::DenoFmt => write!(f, "deno_fmt"),
             Self::DjLint => write!(f, "djlint"),
+            Self::Dcm => write!(f, "dcm"),
             Self::Docformatter => write!(f, "docformatter"),
             Self::Docstrfmt => write!(f, "docstrfmt"),
             Self::Dprint => write!(f, "dprint"),
