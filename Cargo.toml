@@ -16,8 +16,8 @@ keywords = [
 homepage = "https://github.com/hougesen/mdsf"
 readme = "README.md"
 categories = ["development-tools", "command-line-utilities"]
-rust-version = "1.76.0"
 exclude = ["codegen/**"]
+rust-version = "1.76"
 
 [features]
 default = []

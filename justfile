@@ -32,22 +32,25 @@ test-coverage:
 codegen:
     cd codegen && cargo run
 
+format:
+    cargo fmt 
+    just --fmt --unstable .
+    npx --yes prettier@latest --write --cache .
+    cargo run -- format tests 
+    git restore tests/
+
 precommit:
     cargo clean
-    cargo fmt
+    just fmt  
     just codegen
     just build
     just lint
     just test
-    cargo run -- format tests && git restore tests
-    npx --yes prettier@latest --write --cache .
-    git restore tests/
-    just --fmt --unstable .
+    just format 
     typos --exclude src/generated.rs .
 
 publish:
     just build
     just lint
-
     cargo clean
     cargo publish

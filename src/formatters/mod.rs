@@ -1,5 +1,6 @@
 use std::{ffi::OsStr, io::Write, process::Command};
 
+use astyle::format_using_astyle;
 use tempfile::NamedTempFile;
 use which::which;
 
@@ -66,6 +67,7 @@ use crate::{
 
 mod alejandra;
 mod asmfmt;
+mod astyle;
 mod auto_optional;
 mod autocorrect;
 mod autopep8;
@@ -295,6 +297,10 @@ pub enum Tooling {
     #[doc = "https://github.com/klauspost/asmfmt"]
     #[serde(rename = "asmfmt")]
     Asmfmt,
+
+    #[doc = "https://astyle.sourceforge.net"]
+    #[serde(rename = "astyle")]
+    Astyle,
 
     #[doc = "https://pypi.org/project/auto-optional/"]
     #[serde(rename = "auto-optional")]
@@ -720,6 +726,7 @@ impl Tooling {
             Self::Alejandra => format_using_alejandra(snippet_path),
             Self::AppleSwiftFormat => format_using_swift_format(snippet_path),
             Self::Asmfmt => format_using_asmfmt(snippet_path),
+            Self::Astyle => format_using_astyle(snippet_path),
             Self::AutoOptional => format_using_auto_optional(snippet_path),
             Self::Autocorrect => format_using_autocorrect(snippet_path),
             Self::Autopep8 => format_using_autopep8(snippet_path),
@@ -834,6 +841,7 @@ impl core::fmt::Display for Tooling {
             Self::Alejandra => write!(f, "alejandra"),
             Self::AppleSwiftFormat => write!(f, "swift-format"),
             Self::Asmfmt => write!(f, "asmfmt"),
+            Self::Astyle => write!(f, "astyle"),
             Self::AutoOptional => write!(f, "auto-optional"),
             Self::Autocorrect => write!(f, "autocorrect"),
             Self::Autopep8 => write!(f, "autopep8"),
