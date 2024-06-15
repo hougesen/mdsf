@@ -104,12 +104,13 @@ mdsf init
 
 <!-- START_SECTION:supported-languages -->
 
-`mdsf` currently supports 105 tools.
+`mdsf` currently supports 106 tools.
 
 | Formatter          | Description                                                                                                            |
 | ------------------ | ---------------------------------------------------------------------------------------------------------------------- |
 | alejandra          | [https://github.com/kamadorueda/alejandra](https://github.com/kamadorueda/alejandra)                                   |
 | asmfmt             | [https://github.com/klauspost/asmfmt](https://github.com/klauspost/asmfmt)                                             |
+| astyle             | [https://astyle.sourceforge.net](https://astyle.sourceforge.net)                                                       |
 | auto-optional      | [https://pypi.org/project/auto-optional/](https://pypi.org/project/auto-optional/)                                     |
 | autocorrect        | [https://github.com/huacnlee/autocorrect](https://github.com/huacnlee/autocorrect)                                     |
 | autopep8           | [https://pypi.org/project/autopep8/](https://pypi.org/project/autopep8/)                                               |

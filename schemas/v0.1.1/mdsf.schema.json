@@ -60,6 +60,11 @@
           "enum": ["asmfmt"]
         },
         {
+          "description": "https://astyle.sourceforge.net",
+          "type": "string",
+          "enum": ["astyle"]
+        },
+        {
           "description": "https://pypi.org/project/auto-optional/",
           "type": "string",
           "enum": ["auto-optional"]
