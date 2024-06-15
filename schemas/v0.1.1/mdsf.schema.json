@@ -520,6 +520,11 @@
           "enum": ["smlfmt"]
         },
         {
+          "description": "https://github.com/snakemake/snakefmt",
+          "type": "string",
+          "enum": ["snakefmt"]
+        },
+        {
           "description": "https://github.com/sql-formatter-org/sql-formatter",
           "type": "string",
           "enum": ["sql-formatter"]

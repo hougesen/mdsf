@@ -49,7 +49,7 @@ use crate::{
         rstfmt::format_using_rstfmt, rubocop::format_using_rubocop, rubyfmt::format_using_rubyfmt,
         ruff::format_using_ruff, rufo::format_using_rufo, rustfmt::format_using_rustfmt,
         rustywind::format_using_rustywind, scalafmt::format_using_scalafmt,
-        shfmt::format_using_shfmt, smlfmt::format_using_smlfmt,
+        shfmt::format_using_shfmt, smlfmt::format_using_smlfmt, snakefmt::format_using_snakefmt,
         sql_formatter::format_using_sql_formatter, sqlfluff::format_using_sqlfluff,
         standardjs::format_using_standardjs, standardrb::format_using_standardrb,
         stylelint::format_using_stylelint, stylish_haskell::format_using_stylish_haskell,
@@ -163,6 +163,7 @@ mod rustywind;
 mod scalafmt;
 mod shfmt;
 mod smlfmt;
+mod snakefmt;
 mod sql_formatter;
 mod sqlfluff;
 mod standardjs;
@@ -680,6 +681,10 @@ pub enum Tooling {
     #[serde(rename = "smlfmt")]
     Smlfmt,
 
+    #[doc = "https://github.com/snakemake/snakefmt"]
+    #[serde(rename = "snakefmt")]
+    Snakefmt,
+
     #[doc = "https://github.com/sql-formatter-org/sql-formatter"]
     #[serde(rename = "sql-formatter")]
     SQLFormatter,
@@ -874,6 +879,7 @@ impl Tooling {
             Self::Scalafmt => format_using_scalafmt(snippet_path),
             Self::Shfmt => format_using_shfmt(snippet_path),
             Self::Smlfmt => format_using_smlfmt(snippet_path),
+            Self::Snakefmt => format_using_snakefmt(snippet_path),
             Self::Sqlfluff => format_using_sqlfluff(snippet_path),
             Self::Standardjs => format_using_standardjs(snippet_path),
             Self::Standardrb => format_using_standardrb(snippet_path),
@@ -999,6 +1005,7 @@ impl core::fmt::Display for Tooling {
             Self::Scalafmt => write!(f, "scalafmt"),
             Self::Shfmt => write!(f, "shfmt"),
             Self::Smlfmt => write!(f, "smlfmt"),
+            Self::Snakefmt => write!(f, "snakefmt"),
             Self::Sqlfluff => write!(f, "qqlfluff"),
             Self::Standardjs => write!(f, "standardjs"),
             Self::Standardrb => write!(f, "standardrb"),
