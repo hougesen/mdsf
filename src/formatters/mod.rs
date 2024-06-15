@@ -59,7 +59,7 @@ use crate::{
         taplo::format_using_taplo, templ::format_using_templ,
         terraform_fmt::format_using_terraform_fmt, tofu_fmt::format_using_tofu_fmt,
         typos::format_using_typos, usort::format_using_usort, xmlformat::format_using_xmlformat,
-        xmllint::format_using_xmllint, yamlfix::format_using_yamlfix,
+        xmllint::format_using_xmllint, xo::format_using_xo, yamlfix::format_using_yamlfix,
         yamlfmt::format_using_yamlfmt, yapf::format_using_yapf, yew_fmt::format_using_yew_fmt,
         zigfmt::format_using_zigfmt, zprint::format_using_zprint,
     },
@@ -185,6 +185,7 @@ mod typos;
 mod usort;
 mod xmlformat;
 mod xmllint;
+mod xo;
 mod yamlfix;
 mod yamlfmt;
 mod yapf;
@@ -766,6 +767,10 @@ pub enum Tooling {
     #[serde(rename = "xmllint")]
     XmlLint,
 
+    #[doc = "http://github.com/xojs/xo"]
+    #[serde(rename = "xo")]
+    Xo,
+
     #[doc = "https://github.com/lyz-code/yamlfix"]
     #[serde(rename = "yamlfix")]
     YamlFix,
@@ -913,6 +918,7 @@ impl Tooling {
             Self::Usort => format_using_usort(snippet_path),
             Self::XmlFormat => format_using_xmlformat(snippet_path),
             Self::XmlLint => format_using_xmllint(snippet_path),
+            Self::Xo => format_using_xo(snippet_path),
             Self::YamlFix => format_using_yamlfix(snippet_path),
             Self::YamlFmt => format_using_yamlfmt(snippet_path),
             Self::Yapf => format_using_yapf(snippet_path),
@@ -1042,6 +1048,7 @@ impl core::fmt::Display for Tooling {
             Self::Usort => write!(f, "usort"),
             Self::XmlFormat => write!(f, "xmlformat"),
             Self::XmlLint => write!(f, "xmllint"),
+            Self::Xo => write!(f, "xo"),
             Self::YamlFix => write!(f, "yamlfix"),
             Self::YamlFmt => write!(f, "yamlfmt"),
             Self::Yapf => write!(f, "yapf"),

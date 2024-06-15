@@ -620,6 +620,11 @@
           "enum": ["xmllint"]
         },
         {
+          "description": "http://github.com/xojs/xo",
+          "type": "string",
+          "enum": ["xo"]
+        },
+        {
           "description": "https://github.com/lyz-code/yamlfix",
           "type": "string",
           "enum": ["yamlfix"]
