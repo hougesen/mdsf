@@ -38,12 +38,12 @@ use crate::{
         kcl_fmt::format_using_kcl_fmt, kdlfmt::format_using_kdlfmt, ktfmt::format_using_ktfmt,
         ktlint::format_using_ktlint, leptosfmt::format_using_leptosfmt,
         luaformatter::format_using_luaformatter, markdownlint::format_using_markdownlint,
-        mdformat::format_using_mdformat, misspell::format_using_misspell,
-        mix_format::format_using_mix_format, nimpretty::format_using_nimpretty,
-        nixfmt::format_using_nixfmt, nixpkgs_fmt::format_using_nixpkgs_fmt,
-        npm_groovy_lint::format_using_npm_groovy_lint, ocamlformat::format_using_ocamlformat,
-        ocp_indent::format_using_ocp_indent, ormolu::format_using_ormolu,
-        oxlint::format_using_oxlint, perltidy::format_using_perltidy,
+        markuplint::format_using_markuplint, mdformat::format_using_mdformat,
+        misspell::format_using_misspell, mix_format::format_using_mix_format,
+        nimpretty::format_using_nimpretty, nixfmt::format_using_nixfmt,
+        nixpkgs_fmt::format_using_nixpkgs_fmt, npm_groovy_lint::format_using_npm_groovy_lint,
+        ocamlformat::format_using_ocamlformat, ocp_indent::format_using_ocp_indent,
+        ormolu::format_using_ormolu, oxlint::format_using_oxlint, perltidy::format_using_perltidy,
         pg_format::format_using_pg_format, prettier::format_using_prettier,
         puppet_lint::format_using_puppet_lint, purs_tidy::format_using_purs_tidy,
         pyink::format_using_pyink, rescript_format::format_using_rescript_format,
@@ -139,6 +139,7 @@ mod ktlint;
 mod leptosfmt;
 mod luaformatter;
 mod markdownlint;
+mod markuplint;
 mod mdformat;
 mod misspell;
 mod mix_format;
@@ -582,6 +583,10 @@ pub enum Tooling {
     #[serde(rename = "markdownlint")]
     Markdownlint,
 
+    #[doc = "https://markuplint.dev"]
+    #[serde(rename = "markuplint")]
+    Markuplint,
+
     #[doc = "https://github.com/executablebooks/mdformat"]
     #[serde(rename = "mdformat")]
     MdFormat,
@@ -883,6 +888,7 @@ impl Tooling {
             Self::LeptosFmt => format_using_leptosfmt(snippet_path),
             Self::LuaFormatter => format_using_luaformatter(snippet_path),
             Self::Markdownlint => format_using_markdownlint(snippet_path),
+            Self::Markuplint => format_using_markuplint(snippet_path),
             Self::MdFormat => format_using_mdformat(snippet_path),
             Self::Misspell => format_using_misspell(snippet_path),
             Self::MixFormat => format_using_mix_format(snippet_path),
@@ -1015,6 +1021,7 @@ impl core::fmt::Display for Tooling {
             Self::LeptosFmt => write!(f, "leptosfmt"),
             Self::LuaFormatter => write!(f, "luaformatter"),
             Self::Markdownlint => write!(f, "markdownlint"),
+            Self::Markuplint => write!(f, "markuplint"),
             Self::MdFormat => write!(f, "mdformat"),
             Self::Misspell => write!(f, "misspell"),
             Self::MixFormat => write!(f, "mix_format"),
