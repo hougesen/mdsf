@@ -140,6 +140,11 @@
           "enum": ["clang-format"]
         },
         {
+          "description": "https://clang.llvm.org/extra/clang-tidy",
+          "type": "string",
+          "enum": ["clang-tidy"]
+        },
+        {
           "description": "https://github.com/greglook/cljstyle",
           "type": "string",
           "enum": ["cljstyle"]
