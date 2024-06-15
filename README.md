@@ -104,7 +104,7 @@ mdsf init
 
 <!-- START_SECTION:supported-languages -->
 
-`mdsf` currently supports 110 tools.
+`mdsf` currently supports 111 tools.
 
 | Formatter          | Description                                                                                                            |
 | ------------------ | ---------------------------------------------------------------------------------------------------------------------- |
@@ -146,6 +146,7 @@ mdsf init
 | fantomas           | [https://github.com/fsprojects/fantomas](https://github.com/fsprojects/fantomas)                                       |
 | findent            | [https://pypi.org/project/findent/](https://pypi.org/project/findent/)                                                 |
 | fish_indent        | [https://fishshell.com/docs/current/cmds/fish_indent.html](https://fishshell.com/docs/current/cmds/fish_indent.html)   |
+| fixjson            | [https://github.com/rhysd/fixjson](https://github.com/rhysd/fixjson)                                                   |
 | fnlfmt             | [https://git.sr.ht/~technomancy/fnlfmt](https://git.sr.ht/~technomancy/fnlfmt)                                         |
 | forge_fmt          | [https://docs.rs/forge-fmt/latest/forge_fmt/](https://docs.rs/forge-fmt/latest/forge_fmt/)                             |
 | fourmolu           | [https://hackage.haskell.org/package/fourmolu](https://hackage.haskell.org/package/fourmolu)                           |

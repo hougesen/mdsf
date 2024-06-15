@@ -240,6 +240,11 @@
           "enum": ["fish_indent"]
         },
         {
+          "description": "https://github.com/rhysd/fixjson",
+          "type": "string",
+          "enum": ["fixjson"]
+        },
+        {
           "description": "https://git.sr.ht/~technomancy/fnlfmt",
           "type": "string",
           "enum": ["fnlfmt"]
