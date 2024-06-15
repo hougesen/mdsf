@@ -435,6 +435,11 @@
           "enum": ["perltidy"]
         },
         {
+          "description": "https://github.com/darold/pgFormatter",
+          "type": "string",
+          "enum": ["pg_format"]
+        },
+        {
           "description": "https://github.com/prettier/prettier",
           "type": "string",
           "enum": ["prettier"]
