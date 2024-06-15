@@ -195,6 +195,11 @@
           "enum": ["djlint"]
         },
         {
+          "description": "https://pypi.org/project/docformatter/",
+          "type": "string",
+          "enum": ["docformatter"]
+        },
+        {
           "description": "https://pypi.org/project/docstrfmt/",
           "type": "string",
           "enum": ["docstrfmt"]
