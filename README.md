@@ -104,7 +104,7 @@ mdsf init
 
 <!-- START_SECTION:supported-languages -->
 
-`mdsf` currently supports 118 tools.
+`mdsf` currently supports 119 tools.
 
 | Formatter          | Description                                                                                                            |
 | ------------------ | ---------------------------------------------------------------------------------------------------------------------- |
@@ -214,6 +214,7 @@ mdsf init
 | swift-format       | [https://github.com/apple/swift-format](https://github.com/apple/swift-format)                                         |
 | swiftformat        | [https://github.com/nicklockwood/SwiftFormat](https://github.com/nicklockwood/SwiftFormat)                             |
 | taplo              | [https://github.com/tamasfe/taplo](https://github.com/tamasfe/taplo)                                                   |
+| templ              | [https://templ.guide](https://templ.guide)                                                                             |
 | terraform_fmt      | [https://www.terraform.io/docs/cli/commands/fmt.html](https://www.terraform.io/docs/cli/commands/fmt.html)             |
 | tofu_fmt           | [https://opentofu.org/docs/cli/commands/fmt/](https://opentofu.org/docs/cli/commands/fmt/)                             |
 | typos              | [https://github.com/crate-ci/typos](https://github.com/crate-ci/typos)                                                 |

@@ -580,6 +580,11 @@
           "enum": ["taplo"]
         },
         {
+          "description": "https://templ.guide",
+          "type": "string",
+          "enum": ["templ"]
+        },
+        {
           "description": "https://www.terraform.io/docs/cli/commands/fmt.html",
           "type": "string",
           "enum": ["terraform_fmt"]
