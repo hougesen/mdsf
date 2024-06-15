@@ -104,7 +104,7 @@ mdsf init
 
 <!-- START_SECTION:supported-languages -->
 
-`mdsf` currently supports 121 tools.
+`mdsf` currently supports 122 tools.
 
 | Formatter          | Description                                                                                                            |
 | ------------------ | ---------------------------------------------------------------------------------------------------------------------- |
@@ -218,6 +218,7 @@ mdsf init
 | templ              | [https://templ.guide](https://templ.guide)                                                                             |
 | terraform_fmt      | [https://www.terraform.io/docs/cli/commands/fmt.html](https://www.terraform.io/docs/cli/commands/fmt.html)             |
 | tofu_fmt           | [https://opentofu.org/docs/cli/commands/fmt/](https://opentofu.org/docs/cli/commands/fmt/)                             |
+| ts-standard        | [https://github.com/standard/ts-standard](https://github.com/standard/ts-standard)                                     |
 | typos              | [https://github.com/crate-ci/typos](https://github.com/crate-ci/typos)                                                 |
 | usort              | [https://github.com/facebook/usort](https://github.com/facebook/usort)                                                 |
 | xmlformat          | [https://github.com/pamoller/xmlformatter](https://github.com/pamoller/xmlformatter)                                   |

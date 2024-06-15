@@ -600,6 +600,11 @@
           "enum": ["tofu_fmt"]
         },
         {
+          "description": "https://github.com/standard/ts-standard",
+          "type": "string",
+          "enum": ["ts-standard"]
+        },
+        {
           "description": "https://github.com/crate-ci/typos",
           "type": "string",
           "enum": ["typos"]
