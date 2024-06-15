@@ -43,23 +43,23 @@ use crate::{
         nixfmt::format_using_nixfmt, nixpkgs_fmt::format_using_nixpkgs_fmt,
         npm_groovy_lint::format_using_npm_groovy_lint, ocamlformat::format_using_ocamlformat,
         ocp_indent::format_using_ocp_indent, ormolu::format_using_ormolu,
-        perltidy::format_using_perltidy, pg_format::format_using_pg_format,
-        prettier::format_using_prettier, puppet_lint::format_using_puppet_lint,
-        purs_tidy::format_using_purs_tidy, pyink::format_using_pyink,
-        rescript_format::format_using_rescript_format, roc_format::format_using_roc_format,
-        rstfmt::format_using_rstfmt, rubocop::format_using_rubocop, rubyfmt::format_using_rubyfmt,
-        ruff::format_using_ruff, rufo::format_using_rufo, rustfmt::format_using_rustfmt,
-        rustywind::format_using_rustywind, scalafmt::format_using_scalafmt,
-        shfmt::format_using_shfmt, smlfmt::format_using_smlfmt, snakefmt::format_using_snakefmt,
-        sql_formatter::format_using_sql_formatter, sqlfluff::format_using_sqlfluff,
-        sqlfmt::format_using_sqlfmt, standardjs::format_using_standardjs,
-        standardrb::format_using_standardrb, stylelint::format_using_stylelint,
-        stylish_haskell::format_using_stylish_haskell, stylua::format_using_stylua,
-        swift_format::format_using_swift_format, swiftformat::format_using_swiftformat,
-        taplo::format_using_taplo, templ::format_using_templ,
-        terraform_fmt::format_using_terraform_fmt, tofu_fmt::format_using_tofu_fmt,
-        ts_standard::format_using_ts_standard, typos::format_using_typos,
-        usort::format_using_usort, xmlformat::format_using_xmlformat,
+        oxlint::format_using_oxlint, perltidy::format_using_perltidy,
+        pg_format::format_using_pg_format, prettier::format_using_prettier,
+        puppet_lint::format_using_puppet_lint, purs_tidy::format_using_purs_tidy,
+        pyink::format_using_pyink, rescript_format::format_using_rescript_format,
+        roc_format::format_using_roc_format, rstfmt::format_using_rstfmt,
+        rubocop::format_using_rubocop, rubyfmt::format_using_rubyfmt, ruff::format_using_ruff,
+        rufo::format_using_rufo, rustfmt::format_using_rustfmt, rustywind::format_using_rustywind,
+        scalafmt::format_using_scalafmt, shfmt::format_using_shfmt, smlfmt::format_using_smlfmt,
+        snakefmt::format_using_snakefmt, sql_formatter::format_using_sql_formatter,
+        sqlfluff::format_using_sqlfluff, sqlfmt::format_using_sqlfmt,
+        standardjs::format_using_standardjs, standardrb::format_using_standardrb,
+        stylelint::format_using_stylelint, stylish_haskell::format_using_stylish_haskell,
+        stylua::format_using_stylua, swift_format::format_using_swift_format,
+        swiftformat::format_using_swiftformat, taplo::format_using_taplo,
+        templ::format_using_templ, terraform_fmt::format_using_terraform_fmt,
+        tofu_fmt::format_using_tofu_fmt, ts_standard::format_using_ts_standard,
+        typos::format_using_typos, usort::format_using_usort, xmlformat::format_using_xmlformat,
         xmllint::format_using_xmllint, xo::format_using_xo, yamlfix::format_using_yamlfix,
         yamlfmt::format_using_yamlfmt, yapf::format_using_yapf, yew_fmt::format_using_yew_fmt,
         zigfmt::format_using_zigfmt, zprint::format_using_zprint,
@@ -149,6 +149,7 @@ mod npm_groovy_lint;
 mod ocamlformat;
 mod ocp_indent;
 mod ormolu;
+mod oxlint;
 mod perltidy;
 mod pg_format;
 mod prettier;
@@ -621,6 +622,10 @@ pub enum Tooling {
     #[serde(rename = "ormolu")]
     Ormolu,
 
+    #[doc = "https://oxc.rs"]
+    #[serde(rename = "oxlint")]
+    Oxlint,
+
     #[doc = "https://github.com/perltidy/perltidy"]
     #[serde(rename = "perltidy")]
     PerlTidy,
@@ -889,6 +894,7 @@ impl Tooling {
             Self::OCamlFormat => format_using_ocamlformat(snippet_path),
             Self::OcpIndent => format_using_ocp_indent(snippet_path),
             Self::Ormolu => format_using_ormolu(snippet_path),
+            Self::Oxlint => format_using_oxlint(snippet_path),
             Self::PerlTidy => format_using_perltidy(snippet_path),
             Self::PgFormat => format_using_pg_format(snippet_path),
             Self::Prettier => format_using_prettier(snippet_path),
@@ -1020,6 +1026,7 @@ impl core::fmt::Display for Tooling {
             Self::OCamlFormat => write!(f, "ocamlformat"),
             Self::OcpIndent => write!(f, "ocpindent"),
             Self::Ormolu => write!(f, "ormolu"),
+            Self::Oxlint => write!(f, "oxlint"),
             Self::PerlTidy => write!(f, "perltidy"),
             Self::PgFormat => write!(f, "pg_format"),
             Self::Prettier => write!(f, "prettier"),
