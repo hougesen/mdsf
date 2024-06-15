@@ -104,7 +104,7 @@ mdsf init
 
 <!-- START_SECTION:supported-languages -->
 
-`mdsf` currently supports 117 tools.
+`mdsf` currently supports 118 tools.
 
 | Formatter          | Description                                                                                                            |
 | ------------------ | ---------------------------------------------------------------------------------------------------------------------- |
@@ -205,6 +205,7 @@ mdsf init
 | snakefmt           | [https://github.com/snakemake/snakefmt](https://github.com/snakemake/snakefmt)                                         |
 | sql-formatter      | [https://github.com/sql-formatter-org/sql-formatter](https://github.com/sql-formatter-org/sql-formatter)               |
 | sqlfluff           | [https://github.com/sqlfluff/sqlfluff](https://github.com/sqlfluff/sqlfluff)                                           |
+| sqlfmt             | [https://sqlfmt.com](https://sqlfmt.com)                                                                               |
 | standardjs         | [https://standardjs.com/](https://standardjs.com/)                                                                     |
 | standardrb         | [https://github.com/standardrb/standard](https://github.com/standardrb/standard)                                       |
 | stylelint          | [https://github.com/stylelint/stylelint](https://github.com/stylelint/stylelint)                                       |

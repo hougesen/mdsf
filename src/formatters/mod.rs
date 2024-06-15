@@ -51,15 +51,15 @@ use crate::{
         rustywind::format_using_rustywind, scalafmt::format_using_scalafmt,
         shfmt::format_using_shfmt, smlfmt::format_using_smlfmt, snakefmt::format_using_snakefmt,
         sql_formatter::format_using_sql_formatter, sqlfluff::format_using_sqlfluff,
-        standardjs::format_using_standardjs, standardrb::format_using_standardrb,
-        stylelint::format_using_stylelint, stylish_haskell::format_using_stylish_haskell,
-        stylua::format_using_stylua, swift_format::format_using_swift_format,
-        swiftformat::format_using_swiftformat, taplo::format_using_taplo,
-        terraform_fmt::format_using_terraform_fmt, tofu_fmt::format_using_tofu_fmt,
-        typos::format_using_typos, usort::format_using_usort, xmlformat::format_using_xmlformat,
-        xmllint::format_using_xmllint, yamlfix::format_using_yamlfix,
-        yamlfmt::format_using_yamlfmt, yapf::format_using_yapf, yew_fmt::format_using_yew_fmt,
-        zigfmt::format_using_zigfmt, zprint::format_using_zprint,
+        sqlfmt::format_using_sqlfmt, standardjs::format_using_standardjs,
+        standardrb::format_using_standardrb, stylelint::format_using_stylelint,
+        stylish_haskell::format_using_stylish_haskell, stylua::format_using_stylua,
+        swift_format::format_using_swift_format, swiftformat::format_using_swiftformat,
+        taplo::format_using_taplo, terraform_fmt::format_using_terraform_fmt,
+        tofu_fmt::format_using_tofu_fmt, typos::format_using_typos, usort::format_using_usort,
+        xmlformat::format_using_xmlformat, xmllint::format_using_xmllint,
+        yamlfix::format_using_yamlfix, yamlfmt::format_using_yamlfmt, yapf::format_using_yapf,
+        yew_fmt::format_using_yew_fmt, zigfmt::format_using_zigfmt, zprint::format_using_zprint,
     },
     generated::{self, language_to_ext},
     terminal::{
@@ -166,6 +166,7 @@ mod smlfmt;
 mod snakefmt;
 mod sql_formatter;
 mod sqlfluff;
+mod sqlfmt;
 mod standardjs;
 mod standardrb;
 mod stylelint;
@@ -693,6 +694,10 @@ pub enum Tooling {
     #[serde(rename = "sqlfluff")]
     Sqlfluff,
 
+    #[doc = "https://sqlfmt.com"]
+    #[serde(rename = "sqlfmt")]
+    Sqlfmt,
+
     #[doc = "https://standardjs.com/"]
     #[serde(rename = "standardjs")]
     Standardjs,
@@ -881,6 +886,7 @@ impl Tooling {
             Self::Smlfmt => format_using_smlfmt(snippet_path),
             Self::Snakefmt => format_using_snakefmt(snippet_path),
             Self::Sqlfluff => format_using_sqlfluff(snippet_path),
+            Self::Sqlfmt => format_using_sqlfmt(snippet_path),
             Self::Standardjs => format_using_standardjs(snippet_path),
             Self::Standardrb => format_using_standardrb(snippet_path),
             Self::StyleLint => format_using_stylelint(snippet_path),
@@ -1006,7 +1012,8 @@ impl core::fmt::Display for Tooling {
             Self::Shfmt => write!(f, "shfmt"),
             Self::Smlfmt => write!(f, "smlfmt"),
             Self::Snakefmt => write!(f, "snakefmt"),
-            Self::Sqlfluff => write!(f, "qqlfluff"),
+            Self::Sqlfluff => write!(f, "sqlfluff"),
+            Self::Sqlfmt => write!(f, "sqlfmt"),
             Self::Standardjs => write!(f, "standardjs"),
             Self::Standardrb => write!(f, "standardrb"),
             Self::StyleLint => write!(f, "stylelint"),

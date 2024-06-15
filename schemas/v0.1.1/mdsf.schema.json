@@ -535,6 +535,11 @@
           "enum": ["sqlfluff"]
         },
         {
+          "description": "https://sqlfmt.com",
+          "type": "string",
+          "enum": ["sqlfmt"]
+        },
+        {
           "description": "https://standardjs.com/",
           "type": "string",
           "enum": ["standardjs"]
