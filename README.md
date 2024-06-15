@@ -104,7 +104,7 @@ mdsf init
 
 <!-- START_SECTION:supported-languages -->
 
-`mdsf` currently supports 106 tools.
+`mdsf` currently supports 107 tools.
 
 | Formatter          | Description                                                                                                            |
 | ------------------ | ---------------------------------------------------------------------------------------------------------------------- |
@@ -113,6 +113,7 @@ mdsf init
 | astyle             | [https://astyle.sourceforge.net](https://astyle.sourceforge.net)                                                       |
 | auto-optional      | [https://pypi.org/project/auto-optional/](https://pypi.org/project/auto-optional/)                                     |
 | autocorrect        | [https://github.com/huacnlee/autocorrect](https://github.com/huacnlee/autocorrect)                                     |
+| autoflake          | [https://github.com/pycqa/autoflake](https://github.com/pycqa/autoflake)                                               |
 | autopep8           | [https://pypi.org/project/autopep8/](https://pypi.org/project/autopep8/)                                               |
 | beautysh           | [https://pypi.org/project/beautysh/](https://pypi.org/project/beautysh/)                                               |
 | bicep_format       | [https://github.com/Azure/bicep](https://github.com/Azure/bicep)                                                       |
