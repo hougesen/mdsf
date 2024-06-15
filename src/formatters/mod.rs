@@ -2,6 +2,7 @@ use std::{ffi::OsStr, io::Write, process::Command};
 
 use astyle::format_using_astyle;
 use autoflake::format_using_autoflake;
+use dprint::format_using_dprint;
 use tempfile::NamedTempFile;
 use which::which;
 
@@ -96,6 +97,7 @@ mod deno_fmt;
 mod dfmt;
 mod djlint;
 mod docstrfmt;
+mod dprint;
 mod efmt;
 mod elm_format;
 mod erb_formatter;
@@ -409,6 +411,10 @@ pub enum Tooling {
     #[doc = "https://pypi.org/project/docstrfmt/"]
     #[serde(rename = "docstrfmt")]
     Docstrfmt,
+
+    #[doc = "https://dprint.dev"]
+    #[serde(rename = "dprint")]
+    Dprint,
 
     #[doc = "https://github.com/sile/efmt"]
     #[serde(rename = "efmt")]
@@ -765,6 +771,7 @@ impl Tooling {
             Self::DenoFmt => format_using_deno_fmt(snippet_path),
             Self::DjLint => format_using_djlint(snippet_path),
             Self::Docstrfmt => format_using_docstrfmt(snippet_path),
+            Self::Dprint => format_using_dprint(snippet_path),
             Self::Efmt => format_using_efmt(snippet_path),
             Self::ElmFormat => format_using_elm_format(snippet_path),
             Self::ErbFormatter => format_using_erb_formatter(snippet_path),
@@ -882,6 +889,7 @@ impl core::fmt::Display for Tooling {
             Self::DenoFmt => write!(f, "deno_fmt"),
             Self::DjLint => write!(f, "djlint"),
             Self::Docstrfmt => write!(f, "docstrfmt"),
+            Self::Dprint => write!(f, "dprint"),
             Self::Efmt => write!(f, "efmt"),
             Self::ElmFormat => write!(f, "elm-format"),
             Self::ErbFormatter => write!(f, "erb-formatter"),

@@ -104,7 +104,7 @@ mdsf init
 
 <!-- START_SECTION:supported-languages -->
 
-`mdsf` currently supports 108 tools.
+`mdsf` currently supports 109 tools.
 
 | Formatter          | Description                                                                                                            |
 | ------------------ | ---------------------------------------------------------------------------------------------------------------------- |
@@ -137,6 +137,7 @@ mdsf init
 | dfmt               | [https://github.com/dlang-community/dfmt](https://github.com/dlang-community/dfmt)                                     |
 | djlint             | [https://www.djlint.com/](https://www.djlint.com/)                                                                     |
 | docstrfmt          | [https://pypi.org/project/docstrfmt/](https://pypi.org/project/docstrfmt/)                                             |
+| dprint             | [https://dprint.dev](https://dprint.dev)                                                                               |
 | efmt               | [https://github.com/sile/efmt](https://github.com/sile/efmt)                                                           |
 | elm-format         | [https://github.com/avh4/elm-format](https://github.com/avh4/elm-format)                                               |
 | erb-formatter      | [https://github.com/nebulab/erb-formatter](https://github.com/nebulab/erb-formatter)                                   |
