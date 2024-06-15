@@ -1,10 +1,5 @@
 use std::{ffi::OsStr, io::Write, process::Command};
 
-use astyle::format_using_astyle;
-use autoflake::format_using_autoflake;
-use dprint::format_using_dprint;
-use eslint::format_using_eslint;
-use fixjson::format_using_fixjson;
 use tempfile::NamedTempFile;
 use which::which;
 
@@ -13,7 +8,8 @@ use crate::{
     error::MdsfError,
     formatters::{
         alejandra::format_using_alejandra, asmfmt::format_using_asmfmt,
-        auto_optional::format_using_auto_optional, autocorrect::format_using_autocorrect,
+        astyle::format_using_astyle, auto_optional::format_using_auto_optional,
+        autocorrect::format_using_autocorrect, autoflake::format_using_autoflake,
         autopep8::format_using_autopep8, beautysh::format_using_beautysh,
         bicep_format::format_using_bicep_format, biome::format_using_biome,
         black::format_using_black, blade_formatter::format_using_blade_formatter,
@@ -24,13 +20,14 @@ use crate::{
         crystal_format::format_using_crystal_format, csharpier::format_using_csharpier,
         d2::format_using_d2, dart_format::format_using_dart_format,
         deno_fmt::format_using_deno_fmt, dfmt::format_using_dfmt, djlint::format_using_djlint,
-        docstrfmt::format_using_docstrfmt, efmt::format_using_efmt,
+        docstrfmt::format_using_docstrfmt, dprint::format_using_dprint, efmt::format_using_efmt,
         elm_format::format_using_elm_format, erb_formatter::format_using_erb_formatter,
-        erlfmt::format_using_erlfmt, fantomas::format_using_fantomas,
+        erlfmt::format_using_erlfmt, eslint::format_using_eslint, fantomas::format_using_fantomas,
         findent::format_using_findent, fish_indent::format_using_fish_indent,
-        fnlfmt::format_using_fnlfmt, forge_fmt::format_using_forge_fmt,
-        fourmolu::format_using_fourmolu, fprettify::format_using_fprettify, gci::format_using_gci,
-        gdformat::format_using_gdformat, gleam_format::format_using_gleam_format,
+        fixjson::format_using_fixjson, fnlfmt::format_using_fnlfmt,
+        forge_fmt::format_using_forge_fmt, fourmolu::format_using_fourmolu,
+        fprettify::format_using_fprettify, gci::format_using_gci, gdformat::format_using_gdformat,
+        gersemi::format_using_gersemi, gleam_format::format_using_gleam_format,
         gofmt::format_using_gofmt, gofumpt::format_using_gofumpt,
         goimports::format_using_goimports, goimports_reviser::format_using_goimports_reviser,
         golines::format_using_golines, google_java_format::format_using_google_java_format,
@@ -115,6 +112,7 @@ mod fourmolu;
 mod fprettify;
 mod gci;
 mod gdformat;
+mod gersemi;
 mod gleam_format;
 mod gofmt;
 mod gofumpt;
@@ -476,9 +474,13 @@ pub enum Tooling {
     #[serde(rename = "gci")]
     GCI,
 
-    #[doc = "https://godotengine.org/asset-library/asset/1057"]
+    #[doc = "https://github.com/scony/godot-gdscript-toolkit"]
     #[serde(rename = "gdformat")]
     Gdformat,
+
+    #[doc = "https://github.com/blankspruce/gersemi"]
+    #[serde(rename = "gersemi")]
+    Gersemi,
 
     #[doc = "https://gleam.run/"]
     #[serde(rename = "gleam_format")]
@@ -799,6 +801,7 @@ impl Tooling {
             Self::Fprettify => format_using_fprettify(snippet_path),
             Self::GCI => format_using_gci(snippet_path),
             Self::Gdformat => format_using_gdformat(snippet_path),
+            Self::Gersemi => format_using_gersemi(snippet_path),
             Self::GleamFormat => format_using_gleam_format(snippet_path),
             Self::GoFmt => format_using_gofmt(snippet_path),
             Self::GoFumpt => format_using_gofumpt(snippet_path),
@@ -919,6 +922,7 @@ impl core::fmt::Display for Tooling {
             Self::Fprettify => write!(f, "fprettify"),
             Self::GCI => write!(f, "gci"),
             Self::Gdformat => write!(f, "gdformat"),
+            Self::Gersemi => write!(f, "gersemi"),
             Self::GleamFormat => write!(f, "gleam_format"),
             Self::GoFmt => write!(f, "gofmt"),
             Self::GoFumpt => write!(f, "gofumpt"),
