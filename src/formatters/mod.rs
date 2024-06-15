@@ -1,6 +1,7 @@
 use std::{ffi::OsStr, io::Write, process::Command};
 
 use astyle::format_using_astyle;
+use autoflake::format_using_autoflake;
 use tempfile::NamedTempFile;
 use which::which;
 
@@ -70,6 +71,7 @@ mod asmfmt;
 mod astyle;
 mod auto_optional;
 mod autocorrect;
+mod autoflake;
 mod autopep8;
 mod beautysh;
 mod bicep_format;
@@ -309,6 +311,10 @@ pub enum Tooling {
     #[doc = "https://github.com/huacnlee/autocorrect"]
     #[serde(rename = "autocorrect")]
     Autocorrect,
+
+    #[doc = "https://github.com/pycqa/autoflake"]
+    #[serde(rename = "autoflake")]
+    Autoflake,
 
     #[doc = "https://pypi.org/project/autopep8/"]
     #[serde(rename = "autopep8")]
@@ -729,6 +735,7 @@ impl Tooling {
             Self::Astyle => format_using_astyle(snippet_path),
             Self::AutoOptional => format_using_auto_optional(snippet_path),
             Self::Autocorrect => format_using_autocorrect(snippet_path),
+            Self::Autoflake => format_using_autoflake(snippet_path),
             Self::Autopep8 => format_using_autopep8(snippet_path),
             Self::Beautysh => format_using_beautysh(snippet_path),
             Self::BicepFormat => format_using_bicep_format(snippet_path),
@@ -844,6 +851,7 @@ impl core::fmt::Display for Tooling {
             Self::Astyle => write!(f, "astyle"),
             Self::AutoOptional => write!(f, "auto-optional"),
             Self::Autocorrect => write!(f, "autocorrect"),
+            Self::Autoflake => write!(f, "autoflake"),
             Self::Autopep8 => write!(f, "autopep8"),
             Self::Beautysh => write!(f, "beautysh"),
             Self::BicepFormat => write!(f, "bicep_format"),

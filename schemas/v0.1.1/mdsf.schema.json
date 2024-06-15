@@ -75,6 +75,11 @@
           "enum": ["autocorrect"]
         },
         {
+          "description": "https://github.com/pycqa/autoflake",
+          "type": "string",
+          "enum": ["autoflake"]
+        },
+        {
           "description": "https://pypi.org/project/autopep8/",
           "type": "string",
           "enum": ["autopep8"]
