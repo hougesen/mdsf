@@ -4,6 +4,7 @@ use astyle::format_using_astyle;
 use autoflake::format_using_autoflake;
 use dprint::format_using_dprint;
 use eslint::format_using_eslint;
+use fixjson::format_using_fixjson;
 use tempfile::NamedTempFile;
 use which::which;
 
@@ -107,6 +108,7 @@ mod eslint;
 mod fantomas;
 mod findent;
 mod fish_indent;
+mod fixjson;
 mod fnlfmt;
 mod forge_fmt;
 mod fourmolu;
@@ -450,6 +452,10 @@ pub enum Tooling {
     #[serde(rename = "fish_indent")]
     FishIndent,
 
+    #[doc = "https://github.com/rhysd/fixjson"]
+    #[serde(rename = "fixjson")]
+    Fixjson,
+
     #[doc = "https://git.sr.ht/~technomancy/fnlfmt"]
     #[serde(rename = "fnlfmt")]
     Fnlfmt,
@@ -786,6 +792,7 @@ impl Tooling {
             Self::Fantomas => format_using_fantomas(snippet_path),
             Self::Findent => format_using_findent(snippet_path),
             Self::FishIndent => format_using_fish_indent(snippet_path),
+            Self::Fixjson => format_using_fixjson(snippet_path),
             Self::Fnlfmt => format_using_fnlfmt(snippet_path),
             Self::ForgeFmt => format_using_forge_fmt(snippet_path),
             Self::Fourmolu => format_using_fourmolu(snippet_path),
@@ -905,6 +912,7 @@ impl core::fmt::Display for Tooling {
             Self::Fantomas => write!(f, "fantomas"),
             Self::Findent => write!(f, "findent"),
             Self::FishIndent => write!(f, "fish_indent"),
+            Self::Fixjson => write!(f, "fixjson"),
             Self::Fnlfmt => write!(f, "fnlfmt"),
             Self::ForgeFmt => write!(f, "forge_fmt"),
             Self::Fourmolu => write!(f, "fourmolu"),
