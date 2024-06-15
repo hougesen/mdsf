@@ -375,6 +375,11 @@
           "enum": ["luaformatter"]
         },
         {
+          "description": "https://github.com/davidanson/markdownlint",
+          "type": "string",
+          "enum": ["markdownlint"]
+        },
+        {
           "description": "https://github.com/executablebooks/mdformat",
           "type": "string",
           "enum": ["mdformat"]

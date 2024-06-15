@@ -36,28 +36,28 @@ use crate::{
         juliaformatter_jl::format_using_juliaformatter_jl, just_fmt::format_using_just_fmt,
         kcl_fmt::format_using_kcl_fmt, kdlfmt::format_using_kdlfmt, ktfmt::format_using_ktfmt,
         ktlint::format_using_ktlint, leptosfmt::format_using_leptosfmt,
-        luaformatter::format_using_luaformatter, mdformat::format_using_mdformat,
-        misspell::format_using_misspell, mix_format::format_using_mix_format,
-        nimpretty::format_using_nimpretty, nixfmt::format_using_nixfmt,
-        nixpkgs_fmt::format_using_nixpkgs_fmt, npm_groovy_lint::format_using_npm_groovy_lint,
-        ocamlformat::format_using_ocamlformat, ocp_indent::format_using_ocp_indent,
-        ormolu::format_using_ormolu, perltidy::format_using_perltidy,
-        prettier::format_using_prettier, puppet_lint::format_using_puppet_lint,
-        purs_tidy::format_using_purs_tidy, pyink::format_using_pyink,
-        rescript_format::format_using_rescript_format, roc_format::format_using_roc_format,
-        rstfmt::format_using_rstfmt, rubocop::format_using_rubocop, rubyfmt::format_using_rubyfmt,
-        ruff::format_using_ruff, rufo::format_using_rufo, rustfmt::format_using_rustfmt,
-        scalafmt::format_using_scalafmt, shfmt::format_using_shfmt,
-        sql_formatter::format_using_sql_formatter, sqlfluff::format_using_sqlfluff,
-        standardjs::format_using_standardjs, standardrb::format_using_standardrb,
-        stylelint::format_using_stylelint, stylish_haskell::format_using_stylish_haskell,
-        stylua::format_using_stylua, swift_format::format_using_swift_format,
-        swiftformat::format_using_swiftformat, taplo::format_using_taplo,
-        terraform_fmt::format_using_terraform_fmt, tofu_fmt::format_using_tofu_fmt,
-        typos::format_using_typos, usort::format_using_usort, xmlformat::format_using_xmlformat,
-        xmllint::format_using_xmllint, yamlfix::format_using_yamlfix,
-        yamlfmt::format_using_yamlfmt, yapf::format_using_yapf, yew_fmt::format_using_yew_fmt,
-        zigfmt::format_using_zigfmt, zprint::format_using_zprint,
+        luaformatter::format_using_luaformatter, markdownlint::format_using_markdownlint,
+        mdformat::format_using_mdformat, misspell::format_using_misspell,
+        mix_format::format_using_mix_format, nimpretty::format_using_nimpretty,
+        nixfmt::format_using_nixfmt, nixpkgs_fmt::format_using_nixpkgs_fmt,
+        npm_groovy_lint::format_using_npm_groovy_lint, ocamlformat::format_using_ocamlformat,
+        ocp_indent::format_using_ocp_indent, ormolu::format_using_ormolu,
+        perltidy::format_using_perltidy, prettier::format_using_prettier,
+        puppet_lint::format_using_puppet_lint, purs_tidy::format_using_purs_tidy,
+        pyink::format_using_pyink, rescript_format::format_using_rescript_format,
+        roc_format::format_using_roc_format, rstfmt::format_using_rstfmt,
+        rubocop::format_using_rubocop, rubyfmt::format_using_rubyfmt, ruff::format_using_ruff,
+        rufo::format_using_rufo, rustfmt::format_using_rustfmt, scalafmt::format_using_scalafmt,
+        shfmt::format_using_shfmt, sql_formatter::format_using_sql_formatter,
+        sqlfluff::format_using_sqlfluff, standardjs::format_using_standardjs,
+        standardrb::format_using_standardrb, stylelint::format_using_stylelint,
+        stylish_haskell::format_using_stylish_haskell, stylua::format_using_stylua,
+        swift_format::format_using_swift_format, swiftformat::format_using_swiftformat,
+        taplo::format_using_taplo, terraform_fmt::format_using_terraform_fmt,
+        tofu_fmt::format_using_tofu_fmt, typos::format_using_typos, usort::format_using_usort,
+        xmlformat::format_using_xmlformat, xmllint::format_using_xmllint,
+        yamlfix::format_using_yamlfix, yamlfmt::format_using_yamlfmt, yapf::format_using_yapf,
+        yew_fmt::format_using_yew_fmt, zigfmt::format_using_zigfmt, zprint::format_using_zprint,
     },
     generated::{self, language_to_ext},
     terminal::{
@@ -132,6 +132,7 @@ mod ktfmt;
 mod ktlint;
 mod leptosfmt;
 mod luaformatter;
+mod markdownlint;
 mod mdformat;
 mod misspell;
 mod mix_format;
@@ -558,6 +559,10 @@ pub enum Tooling {
     #[serde(rename = "luaformatter")]
     LuaFormatter,
 
+    #[doc = "https://github.com/davidanson/markdownlint"]
+    #[serde(rename = "markdownlint")]
+    Markdownlint,
+
     #[doc = "https://github.com/executablebooks/mdformat"]
     #[serde(rename = "mdformat")]
     MdFormat,
@@ -821,6 +826,7 @@ impl Tooling {
             Self::Ktlint => format_using_ktlint(snippet_path),
             Self::LeptosFmt => format_using_leptosfmt(snippet_path),
             Self::LuaFormatter => format_using_luaformatter(snippet_path),
+            Self::Markdownlint => format_using_markdownlint(snippet_path),
             Self::MdFormat => format_using_mdformat(snippet_path),
             Self::Misspell => format_using_misspell(snippet_path),
             Self::MixFormat => format_using_mix_format(snippet_path),
@@ -942,6 +948,7 @@ impl core::fmt::Display for Tooling {
             Self::Ktlint => write!(f, "ktlint"),
             Self::LeptosFmt => write!(f, "leptosfmt"),
             Self::LuaFormatter => write!(f, "luaformatter"),
+            Self::Markdownlint => write!(f, "markdownlint"),
             Self::MdFormat => write!(f, "mdformat"),
             Self::Misspell => write!(f, "misspell"),
             Self::MixFormat => write!(f, "mix_format"),
