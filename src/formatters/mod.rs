@@ -32,18 +32,19 @@ use crate::{
         gofmt::format_using_gofmt, gofumpt::format_using_gofumpt,
         goimports::format_using_goimports, goimports_reviser::format_using_goimports_reviser,
         golines::format_using_golines, google_java_format::format_using_google_java_format,
-        hindent::format_using_hindent, htmlbeautifier::format_using_htmlbeautifier,
-        isort::format_using_isort, joker::format_using_joker,
-        juliaformatter_jl::format_using_juliaformatter_jl, just_fmt::format_using_just_fmt,
-        kcl_fmt::format_using_kcl_fmt, kdlfmt::format_using_kdlfmt, ktfmt::format_using_ktfmt,
-        ktlint::format_using_ktlint, leptosfmt::format_using_leptosfmt,
-        luaformatter::format_using_luaformatter, markdownlint::format_using_markdownlint,
-        markuplint::format_using_markuplint, mdformat::format_using_mdformat,
-        misspell::format_using_misspell, mix_format::format_using_mix_format,
-        nimpretty::format_using_nimpretty, nixfmt::format_using_nixfmt,
-        nixpkgs_fmt::format_using_nixpkgs_fmt, npm_groovy_lint::format_using_npm_groovy_lint,
-        ocamlformat::format_using_ocamlformat, ocp_indent::format_using_ocp_indent,
-        ormolu::format_using_ormolu, oxlint::format_using_oxlint, perltidy::format_using_perltidy,
+        haml_lint::format_using_haml_lint, hindent::format_using_hindent,
+        htmlbeautifier::format_using_htmlbeautifier, isort::format_using_isort,
+        joker::format_using_joker, juliaformatter_jl::format_using_juliaformatter_jl,
+        just_fmt::format_using_just_fmt, kcl_fmt::format_using_kcl_fmt,
+        kdlfmt::format_using_kdlfmt, ktfmt::format_using_ktfmt, ktlint::format_using_ktlint,
+        leptosfmt::format_using_leptosfmt, luaformatter::format_using_luaformatter,
+        markdownlint::format_using_markdownlint, markuplint::format_using_markuplint,
+        mdformat::format_using_mdformat, misspell::format_using_misspell,
+        mix_format::format_using_mix_format, nimpretty::format_using_nimpretty,
+        nixfmt::format_using_nixfmt, nixpkgs_fmt::format_using_nixpkgs_fmt,
+        npm_groovy_lint::format_using_npm_groovy_lint, ocamlformat::format_using_ocamlformat,
+        ocp_indent::format_using_ocp_indent, ormolu::format_using_ormolu,
+        oxlint::format_using_oxlint, perltidy::format_using_perltidy,
         pg_format::format_using_pg_format, prettier::format_using_prettier,
         puppet_lint::format_using_puppet_lint, purs_tidy::format_using_purs_tidy,
         pyink::format_using_pyink, rescript_format::format_using_rescript_format,
@@ -126,6 +127,7 @@ mod goimports;
 mod goimports_reviser;
 mod golines;
 mod google_java_format;
+mod haml_lint;
 mod hindent;
 mod htmlbeautifier;
 mod isort;
@@ -531,6 +533,10 @@ pub enum Tooling {
     #[serde(rename = "google-java-format")]
     GoogleJavaFormat,
 
+    #[doc = "https://github.com/sds/haml-lint"]
+    #[serde(rename = "haml-lint")]
+    HamlLint,
+
     #[doc = "https://hackage.haskell.org/package/hindent"]
     #[serde(rename = "hindent")]
     HIndent,
@@ -875,6 +881,7 @@ impl Tooling {
             Self::GoImportsReviser => format_using_goimports_reviser(snippet_path),
             Self::GoLines => format_using_golines(snippet_path),
             Self::GoogleJavaFormat => format_using_google_java_format(snippet_path),
+            Self::HamlLint => format_using_haml_lint(snippet_path),
             Self::HIndent => format_using_hindent(snippet_path),
             Self::Htmlbeautifier => format_using_htmlbeautifier(snippet_path),
             Self::Isort => format_using_isort(snippet_path),
@@ -1008,6 +1015,7 @@ impl core::fmt::Display for Tooling {
             Self::GoImportsReviser => write!(f, "goimports-reviser"),
             Self::GoLines => write!(f, "golines"),
             Self::GoogleJavaFormat => write!(f, "google-java-format"),
+            Self::HamlLint => write!(f, "haml-lint"),
             Self::HIndent => write!(f, "hundent"),
             Self::Htmlbeautifier => write!(f, "htmlbeautifier"),
             Self::Isort => write!(f, "isort"),

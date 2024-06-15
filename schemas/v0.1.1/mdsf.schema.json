@@ -320,6 +320,11 @@
           "enum": ["google-java-format"]
         },
         {
+          "description": "https://github.com/sds/haml-lint",
+          "type": "string",
+          "enum": ["haml-lint"]
+        },
+        {
           "description": "https://hackage.haskell.org/package/hindent",
           "type": "string",
           "enum": ["hindent"]

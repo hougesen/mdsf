@@ -104,7 +104,7 @@ mdsf init
 
 <!-- START_SECTION:supported-languages -->
 
-`mdsf` currently supports 124 tools.
+`mdsf` currently supports 125 tools.
 
 | Formatter          | Description                                                                                                            |
 | ------------------ | ---------------------------------------------------------------------------------------------------------------------- |
@@ -162,6 +162,7 @@ mdsf init
 | goimports-reviser  | [https://github.com/incu6us/goimports-reviser](https://github.com/incu6us/goimports-reviser)                           |
 | golines            | [https://github.com/segmentio/golines](https://github.com/segmentio/golines)                                           |
 | google-java-format | [https://github.com/google/google-java-format](https://github.com/google/google-java-format)                           |
+| haml-lint          | [https://github.com/sds/haml-lint](https://github.com/sds/haml-lint)                                                   |
 | hindent            | [https://hackage.haskell.org/package/hindent](https://hackage.haskell.org/package/hindent)                             |
 | htmlbeautifier     | [https://github.com/threedaymonk/htmlbeautifier](https://github.com/threedaymonk/htmlbeautifier)                       |
 | isort              | [https://pycqa.github.io/isort/](https://pycqa.github.io/isort/)                                                       |
