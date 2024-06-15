@@ -58,7 +58,8 @@ use crate::{
         swift_format::format_using_swift_format, swiftformat::format_using_swiftformat,
         taplo::format_using_taplo, templ::format_using_templ,
         terraform_fmt::format_using_terraform_fmt, tofu_fmt::format_using_tofu_fmt,
-        typos::format_using_typos, usort::format_using_usort, xmlformat::format_using_xmlformat,
+        ts_standard::format_using_ts_standard, typos::format_using_typos,
+        usort::format_using_usort, xmlformat::format_using_xmlformat,
         xmllint::format_using_xmllint, xo::format_using_xo, yamlfix::format_using_yamlfix,
         yamlfmt::format_using_yamlfmt, yapf::format_using_yapf, yew_fmt::format_using_yew_fmt,
         zigfmt::format_using_zigfmt, zprint::format_using_zprint,
@@ -181,6 +182,7 @@ mod taplo;
 mod templ;
 mod terraform_fmt;
 mod tofu_fmt;
+mod ts_standard;
 mod typos;
 mod usort;
 mod xmlformat;
@@ -751,6 +753,10 @@ pub enum Tooling {
     #[serde(rename = "tofu_fmt")]
     TofuFmt,
 
+    #[doc = "https://github.com/standard/ts-standard"]
+    #[serde(rename = "ts-standard")]
+    TsStandard,
+
     #[doc = "https://github.com/crate-ci/typos"]
     #[serde(rename = "typos")]
     Typos,
@@ -914,6 +920,7 @@ impl Tooling {
             Self::Templ => format_using_templ(snippet_path),
             Self::TerraformFmt => format_using_terraform_fmt(snippet_path),
             Self::TofuFmt => format_using_tofu_fmt(snippet_path),
+            Self::TsStandard => format_using_ts_standard(snippet_path),
             Self::Typos => format_using_typos(snippet_path),
             Self::Usort => format_using_usort(snippet_path),
             Self::XmlFormat => format_using_xmlformat(snippet_path),
@@ -1045,6 +1052,7 @@ impl core::fmt::Display for Tooling {
             Self::TerraformFmt => write!(f, "terraform_fmt"),
             Self::TofuFmt => write!(f, "tofu_fmt"),
             Self::Typos => write!(f, "typos"),
+            Self::TsStandard => write!(f, "ts-standard"),
             Self::Usort => write!(f, "usort"),
             Self::XmlFormat => write!(f, "xmlformat"),
             Self::XmlLint => write!(f, "xmllint"),
