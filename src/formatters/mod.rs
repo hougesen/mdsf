@@ -20,7 +20,8 @@ use crate::{
         crlfmt::format_using_crlfmt, crystal_format::format_using_crystal_format,
         csharpier::format_using_csharpier, d2::format_using_d2,
         dart_format::format_using_dart_format, deno_fmt::format_using_deno_fmt,
-        dfmt::format_using_dfmt, djlint::format_using_djlint, docstrfmt::format_using_docstrfmt,
+        dfmt::format_using_dfmt, djlint::format_using_djlint,
+        docformatter::format_using_docformatter, docstrfmt::format_using_docstrfmt,
         dprint::format_using_dprint, efmt::format_using_efmt, elm_format::format_using_elm_format,
         erb_formatter::format_using_erb_formatter, erlfmt::format_using_erlfmt,
         eslint::format_using_eslint, fantomas::format_using_fantomas,
@@ -102,6 +103,7 @@ mod dart_format;
 mod deno_fmt;
 mod dfmt;
 mod djlint;
+mod docformatter;
 mod docstrfmt;
 mod dprint;
 mod efmt;
@@ -432,6 +434,10 @@ pub enum Tooling {
     #[doc = "https://www.djlint.com/"]
     #[serde(rename = "djlint")]
     DjLint,
+
+    #[doc = "https://pypi.org/project/docformatter/"]
+    #[serde(rename = "docformatter")]
+    Docformatter,
 
     #[doc = "https://pypi.org/project/docstrfmt/"]
     #[serde(rename = "docstrfmt")]
@@ -851,11 +857,12 @@ impl Tooling {
             Self::Codespell => format_using_codespell(snippet_path),
             Self::CrlFmt => format_using_crlfmt(snippet_path),
             Self::CrystalFormat => format_using_crystal_format(snippet_path),
-            Self::DFmt => format_using_dfmt(snippet_path),
             Self::D2 => format_using_d2(snippet_path),
+            Self::DFmt => format_using_dfmt(snippet_path),
             Self::DartFormat => format_using_dart_format(snippet_path),
             Self::DenoFmt => format_using_deno_fmt(snippet_path),
             Self::DjLint => format_using_djlint(snippet_path),
+            Self::Docformatter => format_using_docformatter(snippet_path),
             Self::Docstrfmt => format_using_docstrfmt(snippet_path),
             Self::Dprint => format_using_dprint(snippet_path),
             Self::Efmt => format_using_efmt(snippet_path),
@@ -881,8 +888,8 @@ impl Tooling {
             Self::GoImportsReviser => format_using_goimports_reviser(snippet_path),
             Self::GoLines => format_using_golines(snippet_path),
             Self::GoogleJavaFormat => format_using_google_java_format(snippet_path),
-            Self::HamlLint => format_using_haml_lint(snippet_path),
             Self::HIndent => format_using_hindent(snippet_path),
+            Self::HamlLint => format_using_haml_lint(snippet_path),
             Self::Htmlbeautifier => format_using_htmlbeautifier(snippet_path),
             Self::Isort => format_using_isort(snippet_path),
             Self::Joker => format_using_joker(snippet_path),
@@ -985,11 +992,12 @@ impl core::fmt::Display for Tooling {
             Self::Codespell => write!(f, "codespell"),
             Self::CrlFmt => write!(f, "crlfmt"),
             Self::CrystalFormat => write!(f, "crystal_format"),
-            Self::DFmt => write!(f, "dfmt"),
             Self::D2 => write!(f, "d2"),
+            Self::DFmt => write!(f, "dfmt"),
             Self::DartFormat => write!(f, "dart_format"),
             Self::DenoFmt => write!(f, "deno_fmt"),
             Self::DjLint => write!(f, "djlint"),
+            Self::Docformatter => write!(f, "docformatter"),
             Self::Docstrfmt => write!(f, "docstrfmt"),
             Self::Dprint => write!(f, "dprint"),
             Self::Efmt => write!(f, "efmt"),
@@ -1015,8 +1023,8 @@ impl core::fmt::Display for Tooling {
             Self::GoImportsReviser => write!(f, "goimports-reviser"),
             Self::GoLines => write!(f, "golines"),
             Self::GoogleJavaFormat => write!(f, "google-java-format"),
-            Self::HamlLint => write!(f, "haml-lint"),
             Self::HIndent => write!(f, "hundent"),
+            Self::HamlLint => write!(f, "haml-lint"),
             Self::Htmlbeautifier => write!(f, "htmlbeautifier"),
             Self::Isort => write!(f, "isort"),
             Self::Joker => write!(f, "joker"),
@@ -1073,8 +1081,8 @@ impl core::fmt::Display for Tooling {
             Self::Templ => write!(f, "templ"),
             Self::TerraformFmt => write!(f, "terraform_fmt"),
             Self::TofuFmt => write!(f, "tofu_fmt"),
-            Self::Typos => write!(f, "typos"),
             Self::TsStandard => write!(f, "ts-standard"),
+            Self::Typos => write!(f, "typos"),
             Self::Usort => write!(f, "usort"),
             Self::XmlFormat => write!(f, "xmlformat"),
             Self::XmlLint => write!(f, "xmllint"),
