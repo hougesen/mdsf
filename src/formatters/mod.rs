@@ -55,11 +55,12 @@ use crate::{
         standardrb::format_using_standardrb, stylelint::format_using_stylelint,
         stylish_haskell::format_using_stylish_haskell, stylua::format_using_stylua,
         swift_format::format_using_swift_format, swiftformat::format_using_swiftformat,
-        taplo::format_using_taplo, terraform_fmt::format_using_terraform_fmt,
-        tofu_fmt::format_using_tofu_fmt, typos::format_using_typos, usort::format_using_usort,
-        xmlformat::format_using_xmlformat, xmllint::format_using_xmllint,
-        yamlfix::format_using_yamlfix, yamlfmt::format_using_yamlfmt, yapf::format_using_yapf,
-        yew_fmt::format_using_yew_fmt, zigfmt::format_using_zigfmt, zprint::format_using_zprint,
+        taplo::format_using_taplo, templ::format_using_templ,
+        terraform_fmt::format_using_terraform_fmt, tofu_fmt::format_using_tofu_fmt,
+        typos::format_using_typos, usort::format_using_usort, xmlformat::format_using_xmlformat,
+        xmllint::format_using_xmllint, yamlfix::format_using_yamlfix,
+        yamlfmt::format_using_yamlfmt, yapf::format_using_yapf, yew_fmt::format_using_yew_fmt,
+        zigfmt::format_using_zigfmt, zprint::format_using_zprint,
     },
     generated::{self, language_to_ext},
     terminal::{
@@ -175,6 +176,7 @@ mod stylua;
 mod swift_format;
 mod swiftformat;
 mod taplo;
+mod templ;
 mod terraform_fmt;
 mod tofu_fmt;
 mod typos;
@@ -730,6 +732,10 @@ pub enum Tooling {
     #[serde(rename = "taplo")]
     Taplo,
 
+    #[doc = "https://templ.guide"]
+    #[serde(rename = "templ")]
+    Templ,
+
     #[doc = "https://www.terraform.io/docs/cli/commands/fmt.html"]
     #[serde(rename = "terraform_fmt")]
     TerraformFmt,
@@ -893,6 +899,7 @@ impl Tooling {
             Self::StylishHaskell => format_using_stylish_haskell(snippet_path),
             Self::Stylua => format_using_stylua(snippet_path),
             Self::Taplo => format_using_taplo(snippet_path),
+            Self::Templ => format_using_templ(snippet_path),
             Self::TerraformFmt => format_using_terraform_fmt(snippet_path),
             Self::TofuFmt => format_using_tofu_fmt(snippet_path),
             Self::Typos => format_using_typos(snippet_path),
@@ -1020,6 +1027,7 @@ impl core::fmt::Display for Tooling {
             Self::StylishHaskell => write!(f, "stylish-haskell"),
             Self::Stylua => write!(f, "stylua"),
             Self::Taplo => write!(f, "taplo"),
+            Self::Templ => write!(f, "templ"),
             Self::TerraformFmt => write!(f, "terraform_fmt"),
             Self::TofuFmt => write!(f, "tofu_fmt"),
             Self::Typos => write!(f, "typos"),
