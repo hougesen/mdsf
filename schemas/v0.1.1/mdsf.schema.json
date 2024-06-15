@@ -180,6 +180,11 @@
           "enum": ["dart_format"]
         },
         {
+          "description": "https://dcm.dev",
+          "type": "string",
+          "enum": ["dcm"]
+        },
+        {
           "description": "https://dart.dev/tools/dart-format",
           "type": "string",
           "enum": ["deno_fmt"]
