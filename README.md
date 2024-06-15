@@ -104,7 +104,7 @@ mdsf init
 
 <!-- START_SECTION:supported-languages -->
 
-`mdsf` currently supports 120 tools.
+`mdsf` currently supports 121 tools.
 
 | Formatter          | Description                                                                                                            |
 | ------------------ | ---------------------------------------------------------------------------------------------------------------------- |
@@ -222,6 +222,7 @@ mdsf init
 | usort              | [https://github.com/facebook/usort](https://github.com/facebook/usort)                                                 |
 | xmlformat          | [https://github.com/pamoller/xmlformatter](https://github.com/pamoller/xmlformatter)                                   |
 | xmllint            | [http://xmlsoft.org/xmllint.html](http://xmlsoft.org/xmllint.html)                                                     |
+| xo                 | [http://github.com/xojs/xo](http://github.com/xojs/xo)                                                                 |
 | yamlfix            | [https://github.com/lyz-code/yamlfix](https://github.com/lyz-code/yamlfix)                                             |
 | yamlfmt            | [https://github.com/google/yamlfmt](https://github.com/google/yamlfmt)                                                 |
 | yapf               | [https://github.com/google/yapf](https://github.com/google/yapf)                                                       |
