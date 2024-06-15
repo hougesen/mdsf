@@ -104,7 +104,7 @@ mdsf init
 
 <!-- START_SECTION:supported-languages -->
 
-`mdsf` currently supports 122 tools.
+`mdsf` currently supports 123 tools.
 
 | Formatter          | Description                                                                                                            |
 | ------------------ | ---------------------------------------------------------------------------------------------------------------------- |
@@ -185,6 +185,7 @@ mdsf init
 | ocamlformat        | [https://github.com/ocaml-ppx/ocamlformat](https://github.com/ocaml-ppx/ocamlformat)                                   |
 | ocp-indent         | [https://github.com/OCamlPro/ocp-indent](https://github.com/OCamlPro/ocp-indent)                                       |
 | ormolu             | [https://hackage.haskell.org/package/ormolu](https://hackage.haskell.org/package/ormolu)                               |
+| oxlint             | [https://oxc.rs](https://oxc.rs)                                                                                       |
 | perltidy           | [https://github.com/perltidy/perltidy](https://github.com/perltidy/perltidy)                                           |
 | pg_format          | [https://github.com/darold/pgFormatter](https://github.com/darold/pgFormatter)                                         |
 | prettier           | [https://github.com/prettier/prettier](https://github.com/prettier/prettier)                                           |

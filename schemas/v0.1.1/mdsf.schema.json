@@ -435,6 +435,11 @@
           "enum": ["ormolu"]
         },
         {
+          "description": "https://oxc.rs",
+          "type": "string",
+          "enum": ["oxlint"]
+        },
+        {
           "description": "https://github.com/perltidy/perltidy",
           "type": "string",
           "enum": ["perltidy"]
