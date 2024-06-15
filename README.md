@@ -104,7 +104,7 @@ mdsf init
 
 <!-- START_SECTION:supported-languages -->
 
-`mdsf` currently supports 123 tools.
+`mdsf` currently supports 124 tools.
 
 | Formatter          | Description                                                                                                            |
 | ------------------ | ---------------------------------------------------------------------------------------------------------------------- |
@@ -175,6 +175,7 @@ mdsf init
 | leptosfmt          | [https://github.com/bram209/leptosfmt](https://github.com/bram209/leptosfmt)                                           |
 | luaformatter       | [https://github.com/Koihik/LuaFormatter](https://github.com/Koihik/LuaFormatter)                                       |
 | markdownlint       | [https://github.com/davidanson/markdownlint](https://github.com/davidanson/markdownlint)                               |
+| markuplint         | [https://markuplint.dev](https://markuplint.dev)                                                                       |
 | mdformat           | [https://github.com/executablebooks/mdformat](https://github.com/executablebooks/mdformat)                             |
 | misspell           | [https://github.com/client9/misspell/](https://github.com/client9/misspell/)                                           |
 | mix_format         | [https://hexdocs.pm/mix/main/Mix.Tasks.Format.html](https://hexdocs.pm/mix/main/Mix.Tasks.Format.html)                 |

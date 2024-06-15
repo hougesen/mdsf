@@ -385,6 +385,11 @@
           "enum": ["markdownlint"]
         },
         {
+          "description": "https://markuplint.dev",
+          "type": "string",
+          "enum": ["markuplint"]
+        },
+        {
           "description": "https://github.com/executablebooks/mdformat",
           "type": "string",
           "enum": ["mdformat"]
