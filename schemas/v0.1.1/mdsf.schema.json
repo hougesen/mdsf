@@ -515,6 +515,11 @@
           "enum": ["shfmt"]
         },
         {
+          "description": "https://github.com/shwestrick/smlfmt",
+          "type": "string",
+          "enum": ["smlfmt"]
+        },
+        {
           "description": "https://github.com/sql-formatter-org/sql-formatter",
           "type": "string",
           "enum": ["sql-formatter"]
