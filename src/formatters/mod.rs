@@ -42,22 +42,23 @@ use crate::{
         nixfmt::format_using_nixfmt, nixpkgs_fmt::format_using_nixpkgs_fmt,
         npm_groovy_lint::format_using_npm_groovy_lint, ocamlformat::format_using_ocamlformat,
         ocp_indent::format_using_ocp_indent, ormolu::format_using_ormolu,
-        perltidy::format_using_perltidy, prettier::format_using_prettier,
-        puppet_lint::format_using_puppet_lint, purs_tidy::format_using_purs_tidy,
-        pyink::format_using_pyink, rescript_format::format_using_rescript_format,
-        roc_format::format_using_roc_format, rstfmt::format_using_rstfmt,
-        rubocop::format_using_rubocop, rubyfmt::format_using_rubyfmt, ruff::format_using_ruff,
-        rufo::format_using_rufo, rustfmt::format_using_rustfmt, scalafmt::format_using_scalafmt,
-        shfmt::format_using_shfmt, sql_formatter::format_using_sql_formatter,
-        sqlfluff::format_using_sqlfluff, standardjs::format_using_standardjs,
-        standardrb::format_using_standardrb, stylelint::format_using_stylelint,
-        stylish_haskell::format_using_stylish_haskell, stylua::format_using_stylua,
-        swift_format::format_using_swift_format, swiftformat::format_using_swiftformat,
-        taplo::format_using_taplo, terraform_fmt::format_using_terraform_fmt,
-        tofu_fmt::format_using_tofu_fmt, typos::format_using_typos, usort::format_using_usort,
-        xmlformat::format_using_xmlformat, xmllint::format_using_xmllint,
-        yamlfix::format_using_yamlfix, yamlfmt::format_using_yamlfmt, yapf::format_using_yapf,
-        yew_fmt::format_using_yew_fmt, zigfmt::format_using_zigfmt, zprint::format_using_zprint,
+        perltidy::format_using_perltidy, pg_format::format_using_pg_format,
+        prettier::format_using_prettier, puppet_lint::format_using_puppet_lint,
+        purs_tidy::format_using_purs_tidy, pyink::format_using_pyink,
+        rescript_format::format_using_rescript_format, roc_format::format_using_roc_format,
+        rstfmt::format_using_rstfmt, rubocop::format_using_rubocop, rubyfmt::format_using_rubyfmt,
+        ruff::format_using_ruff, rufo::format_using_rufo, rustfmt::format_using_rustfmt,
+        scalafmt::format_using_scalafmt, shfmt::format_using_shfmt,
+        sql_formatter::format_using_sql_formatter, sqlfluff::format_using_sqlfluff,
+        standardjs::format_using_standardjs, standardrb::format_using_standardrb,
+        stylelint::format_using_stylelint, stylish_haskell::format_using_stylish_haskell,
+        stylua::format_using_stylua, swift_format::format_using_swift_format,
+        swiftformat::format_using_swiftformat, taplo::format_using_taplo,
+        terraform_fmt::format_using_terraform_fmt, tofu_fmt::format_using_tofu_fmt,
+        typos::format_using_typos, usort::format_using_usort, xmlformat::format_using_xmlformat,
+        xmllint::format_using_xmllint, yamlfix::format_using_yamlfix,
+        yamlfmt::format_using_yamlfmt, yapf::format_using_yapf, yew_fmt::format_using_yew_fmt,
+        zigfmt::format_using_zigfmt, zprint::format_using_zprint,
     },
     generated::{self, language_to_ext},
     terminal::{
@@ -144,6 +145,7 @@ mod ocamlformat;
 mod ocp_indent;
 mod ormolu;
 mod perltidy;
+mod pg_format;
 mod prettier;
 mod puppet_lint;
 mod purs_tidy;
@@ -607,6 +609,10 @@ pub enum Tooling {
     #[serde(rename = "perltidy")]
     PerlTidy,
 
+    #[doc = "https://github.com/darold/pgFormatter"]
+    #[serde(rename = "pg_format")]
+    PgFormat,
+
     #[doc = "https://github.com/prettier/prettier"]
     #[serde(rename = "prettier")]
     Prettier,
@@ -839,6 +845,7 @@ impl Tooling {
             Self::OcpIndent => format_using_ocp_indent(snippet_path),
             Self::Ormolu => format_using_ormolu(snippet_path),
             Self::PerlTidy => format_using_perltidy(snippet_path),
+            Self::PgFormat => format_using_pg_format(snippet_path),
             Self::Prettier => format_using_prettier(snippet_path),
             Self::PuppetLint => format_using_puppet_lint(snippet_path),
             Self::PursTidy => format_using_purs_tidy(snippet_path),
@@ -961,6 +968,7 @@ impl core::fmt::Display for Tooling {
             Self::OcpIndent => write!(f, "ocpindent"),
             Self::Ormolu => write!(f, "ormolu"),
             Self::PerlTidy => write!(f, "perltidy"),
+            Self::PgFormat => write!(f, "pg_format"),
             Self::Prettier => write!(f, "prettier"),
             Self::PuppetLint => write!(f, "puppet-lint"),
             Self::PursTidy => write!(f, "purs-tidy"),
