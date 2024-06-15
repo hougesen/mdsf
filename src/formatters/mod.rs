@@ -15,14 +15,15 @@ use crate::{
         black::format_using_black, blade_formatter::format_using_blade_formatter,
         blue::format_using_blue, bpfmt::format_using_bpfmt, buf::format_using_buf,
         buildifier::format_using_buildifier, cabal_format::format_using_cabal_format,
-        clang_format::format_using_clang_format, cljstyle::format_using_cljstyle,
-        codespell::format_using_codespell, crlfmt::format_using_crlfmt,
-        crystal_format::format_using_crystal_format, csharpier::format_using_csharpier,
-        d2::format_using_d2, dart_format::format_using_dart_format,
-        deno_fmt::format_using_deno_fmt, dfmt::format_using_dfmt, djlint::format_using_djlint,
-        docstrfmt::format_using_docstrfmt, dprint::format_using_dprint, efmt::format_using_efmt,
-        elm_format::format_using_elm_format, erb_formatter::format_using_erb_formatter,
-        erlfmt::format_using_erlfmt, eslint::format_using_eslint, fantomas::format_using_fantomas,
+        clang_format::format_using_clang_format, clang_tidy::format_using_clang_tidy,
+        cljstyle::format_using_cljstyle, codespell::format_using_codespell,
+        crlfmt::format_using_crlfmt, crystal_format::format_using_crystal_format,
+        csharpier::format_using_csharpier, d2::format_using_d2,
+        dart_format::format_using_dart_format, deno_fmt::format_using_deno_fmt,
+        dfmt::format_using_dfmt, djlint::format_using_djlint, docstrfmt::format_using_docstrfmt,
+        dprint::format_using_dprint, efmt::format_using_efmt, elm_format::format_using_elm_format,
+        erb_formatter::format_using_erb_formatter, erlfmt::format_using_erlfmt,
+        eslint::format_using_eslint, fantomas::format_using_fantomas,
         findent::format_using_findent, fish_indent::format_using_fish_indent,
         fixjson::format_using_fixjson, fnlfmt::format_using_fnlfmt,
         forge_fmt::format_using_forge_fmt, fourmolu::format_using_fourmolu,
@@ -88,6 +89,7 @@ mod buf;
 mod buildifier;
 mod cabal_format;
 mod clang_format;
+mod clang_tidy;
 mod cljstyle;
 mod codespell;
 mod crlfmt;
@@ -379,6 +381,10 @@ pub enum Tooling {
     #[doc = "https://docs.kernel.org/process/clang-format.html"]
     #[serde(rename = "clang-format")]
     ClangFormat,
+
+    #[doc = "https://clang.llvm.org/extra/clang-tidy"]
+    #[serde(rename = "clang-tidy")]
+    ClangTidy,
 
     #[doc = "https://github.com/greglook/cljstyle"]
     #[serde(rename = "cljstyle")]
@@ -813,6 +819,7 @@ impl Tooling {
             Self::CSharpier => format_using_csharpier(snippet_path),
             Self::CabalFormat => format_using_cabal_format(snippet_path),
             Self::ClangFormat => format_using_clang_format(snippet_path),
+            Self::ClangTidy => format_using_clang_tidy(snippet_path),
             Self::Cljstyle => format_using_cljstyle(snippet_path),
             Self::Codespell => format_using_codespell(snippet_path),
             Self::CrlFmt => format_using_crlfmt(snippet_path),
@@ -941,6 +948,7 @@ impl core::fmt::Display for Tooling {
             Self::CSharpier => write!(f, "csharpier"),
             Self::CabalFormat => write!(f, "cabal_format"),
             Self::ClangFormat => write!(f, "clang-format"),
+            Self::ClangTidy => write!(f, "clang-tidy"),
             Self::Cljstyle => write!(f, "cljstyle"),
             Self::Codespell => write!(f, "codespell"),
             Self::CrlFmt => write!(f, "crlfmt"),

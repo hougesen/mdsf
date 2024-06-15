@@ -104,7 +104,7 @@ mdsf init
 
 <!-- START_SECTION:supported-languages -->
 
-`mdsf` currently supports 119 tools.
+`mdsf` currently supports 120 tools.
 
 | Formatter          | Description                                                                                                            |
 | ------------------ | ---------------------------------------------------------------------------------------------------------------------- |
@@ -126,6 +126,7 @@ mdsf init
 | buildifier         | [https://github.com/bazelbuild/buildtools](https://github.com/bazelbuild/buildtools)                                   |
 | cabal_format       | [https://www.haskell.org/cabal/](https://www.haskell.org/cabal/)                                                       |
 | clang-format       | [https://docs.kernel.org/process/clang-format.html](https://docs.kernel.org/process/clang-format.html)                 |
+| clang-tidy         | [https://clang.llvm.org/extra/clang-tidy](https://clang.llvm.org/extra/clang-tidy)                                     |
 | cljstyle           | [https://github.com/greglook/cljstyle](https://github.com/greglook/cljstyle)                                           |
 | codespell          | [https://github.com/codespell-project/codespell](https://github.com/codespell-project/codespell)                       |
 | crlfmt             | [https://github.com/cockroachdb/crlfmt](https://github.com/cockroachdb/crlfmt)                                         |
