@@ -500,6 +500,11 @@
           "enum": ["rustfmt"]
         },
         {
+          "description": "https://github.com/avencera/rustywind",
+          "type": "string",
+          "enum": ["rustywind"]
+        },
+        {
           "description": "https://github.com/scalameta/scalafmt",
           "type": "string",
           "enum": ["scalafmt"]

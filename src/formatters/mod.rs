@@ -48,17 +48,17 @@ use crate::{
         rescript_format::format_using_rescript_format, roc_format::format_using_roc_format,
         rstfmt::format_using_rstfmt, rubocop::format_using_rubocop, rubyfmt::format_using_rubyfmt,
         ruff::format_using_ruff, rufo::format_using_rufo, rustfmt::format_using_rustfmt,
-        scalafmt::format_using_scalafmt, shfmt::format_using_shfmt,
-        sql_formatter::format_using_sql_formatter, sqlfluff::format_using_sqlfluff,
-        standardjs::format_using_standardjs, standardrb::format_using_standardrb,
-        stylelint::format_using_stylelint, stylish_haskell::format_using_stylish_haskell,
-        stylua::format_using_stylua, swift_format::format_using_swift_format,
-        swiftformat::format_using_swiftformat, taplo::format_using_taplo,
-        terraform_fmt::format_using_terraform_fmt, tofu_fmt::format_using_tofu_fmt,
-        typos::format_using_typos, usort::format_using_usort, xmlformat::format_using_xmlformat,
-        xmllint::format_using_xmllint, yamlfix::format_using_yamlfix,
-        yamlfmt::format_using_yamlfmt, yapf::format_using_yapf, yew_fmt::format_using_yew_fmt,
-        zigfmt::format_using_zigfmt, zprint::format_using_zprint,
+        rustywind::format_using_rustywind, scalafmt::format_using_scalafmt,
+        shfmt::format_using_shfmt, sql_formatter::format_using_sql_formatter,
+        sqlfluff::format_using_sqlfluff, standardjs::format_using_standardjs,
+        standardrb::format_using_standardrb, stylelint::format_using_stylelint,
+        stylish_haskell::format_using_stylish_haskell, stylua::format_using_stylua,
+        swift_format::format_using_swift_format, swiftformat::format_using_swiftformat,
+        taplo::format_using_taplo, terraform_fmt::format_using_terraform_fmt,
+        tofu_fmt::format_using_tofu_fmt, typos::format_using_typos, usort::format_using_usort,
+        xmlformat::format_using_xmlformat, xmllint::format_using_xmllint,
+        yamlfix::format_using_yamlfix, yamlfmt::format_using_yamlfmt, yapf::format_using_yapf,
+        yew_fmt::format_using_yew_fmt, zigfmt::format_using_zigfmt, zprint::format_using_zprint,
     },
     generated::{self, language_to_ext},
     terminal::{
@@ -158,6 +158,7 @@ mod rubyfmt;
 mod ruff;
 mod rufo;
 mod rustfmt;
+mod rustywind;
 mod scalafmt;
 mod shfmt;
 mod sql_formatter;
@@ -661,6 +662,10 @@ pub enum Tooling {
     #[serde(rename = "rustfmt")]
     RustFmt,
 
+    #[doc = "https://github.com/avencera/rustywind"]
+    #[serde(rename = "rustywind")]
+    Rustywind,
+
     #[doc = "https://github.com/scalameta/scalafmt"]
     #[serde(rename = "scalafmt")]
     Scalafmt,
@@ -858,6 +863,7 @@ impl Tooling {
             Self::Ruff => format_using_ruff(snippet_path),
             Self::Rufo => format_using_rufo(snippet_path),
             Self::RustFmt => format_using_rustfmt(snippet_path),
+            Self::Rustywind => format_using_rustywind(snippet_path),
             Self::SQLFormatter => format_using_sql_formatter(snippet_path),
             Self::Scalafmt => format_using_scalafmt(snippet_path),
             Self::Shfmt => format_using_shfmt(snippet_path),
@@ -981,6 +987,7 @@ impl core::fmt::Display for Tooling {
             Self::Ruff => write!(f, "ruff"),
             Self::Rufo => write!(f, "rufo"),
             Self::RustFmt => write!(f, "rustfmt"),
+            Self::Rustywind => write!(f, "rustywind"),
             Self::SQLFormatter => write!(f, "sql-formatter"),
             Self::Scalafmt => write!(f, "scalafmt"),
             Self::Shfmt => write!(f, "shfmt"),

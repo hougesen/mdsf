@@ -104,7 +104,7 @@ mdsf init
 
 <!-- START_SECTION:supported-languages -->
 
-`mdsf` currently supports 114 tools.
+`mdsf` currently supports 115 tools.
 
 | Formatter          | Description                                                                                                            |
 | ------------------ | ---------------------------------------------------------------------------------------------------------------------- |
@@ -198,6 +198,7 @@ mdsf init
 | ruff               | [https://docs.astral.sh/ruff/](https://docs.astral.sh/ruff/)                                                           |
 | rufo               | [https://github.com/ruby-formatter/rufo](https://github.com/ruby-formatter/rufo)                                       |
 | rustfmt            | [https://github.com/rust-lang/rustfmt](https://github.com/rust-lang/rustfmt)                                           |
+| rustywind          | [https://github.com/avencera/rustywind](https://github.com/avencera/rustywind)                                         |
 | scalafmt           | [https://github.com/scalameta/scalafmt](https://github.com/scalameta/scalafmt)                                         |
 | shfmt              | [https://github.com/mvdan/sh](https://github.com/mvdan/sh)                                                             |
 | sql-formatter      | [https://github.com/sql-formatter-org/sql-formatter](https://github.com/sql-formatter-org/sql-formatter)               |
