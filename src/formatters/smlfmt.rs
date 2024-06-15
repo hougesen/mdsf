@@ -7,7 +7,7 @@ pub fn format_using_smlfmt(
 ) -> Result<(bool, Option<String>), MdsfError> {
     let mut cmd = std::process::Command::new("smlfmt");
 
-    cmd.arg(file_path);
+    cmd.arg("--force").arg(file_path);
 
     execute_command(&mut cmd, file_path)
 }
