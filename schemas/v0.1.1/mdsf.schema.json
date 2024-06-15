@@ -165,6 +165,11 @@
           "enum": ["csharpier"]
         },
         {
+          "description": "https://d2lang.com/",
+          "type": "string",
+          "enum": ["d2"]
+        },
+        {
           "description": "https://dart.dev/tools/dart-format",
           "type": "string",
           "enum": ["dart_format"]
