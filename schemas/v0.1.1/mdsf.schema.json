@@ -100,6 +100,16 @@
           "enum": ["biome"]
         },
         {
+          "description": "https://biomejs.dev",
+          "type": "string",
+          "enum": ["biome_lint"]
+        },
+        {
+          "description": "https://biomejs.dev",
+          "type": "string",
+          "enum": ["biome_check"]
+        },
+        {
           "description": "https://github.com/psf/black",
           "type": "string",
           "enum": ["black"]
