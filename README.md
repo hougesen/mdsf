@@ -104,7 +104,7 @@ mdsf init
 
 <!-- START_SECTION:supported-languages -->
 
-`mdsf` currently supports 127 tools.
+`mdsf` currently supports 128 tools.
 
 | Formatter          | Description                                                                                                            |
 | ------------------ | ---------------------------------------------------------------------------------------------------------------------- |
@@ -122,6 +122,7 @@ mdsf init
 | blade-formatter    | [https://github.com/shufo/blade-formatter](https://github.com/shufo/blade-formatter)                                   |
 | blue               | [https://blue.readthedocs.io/en/latest/](https://blue.readthedocs.io/en/latest/)                                       |
 | bpfmt              | [https://source.android.com/docs/setup/reference/androidbp](https://source.android.com/docs/setup/reference/androidbp) |
+| bsfmt              | [https://github.com/rokucommunity/brighterscript-formatter](https://github.com/rokucommunity/brighterscript-formatter) |
 | buf                | [https://buf.build/docs/reference/cli/buf/format](https://buf.build/docs/reference/cli/buf/format)                     |
 | buildifier         | [https://github.com/bazelbuild/buildtools](https://github.com/bazelbuild/buildtools)                                   |
 | cabal_format       | [https://www.haskell.org/cabal/](https://www.haskell.org/cabal/)                                                       |

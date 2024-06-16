@@ -88,6 +88,7 @@ mod black;
 mod blade_formatter;
 mod blue;
 mod bpfmt;
+mod bsfmt;
 mod buf;
 mod buildifier;
 mod cabal_format;
@@ -375,6 +376,10 @@ pub enum Tooling {
     #[doc = "https://source.android.com/docs/setup/reference/androidbp"]
     #[serde(rename = "bpfmt")]
     Bpfmt,
+
+    #[doc = "https://github.com/rokucommunity/brighterscript-formatter"]
+    #[serde(rename = "bsfmt")]
+    Bsfmt,
 
     #[doc = "https://buf.build/docs/reference/cli/buf/format"]
     #[serde(rename = "buf")]
@@ -852,6 +857,7 @@ impl Tooling {
             Self::BladeFormatter => format_using_blade_formatter(snippet_path),
             Self::Blue => format_using_blue(snippet_path),
             Self::Bpfmt => format_using_bpfmt(snippet_path),
+            Self::Bsfmt => bsfmt::format_using_bsfmt(snippet_path),
             Self::Buf => format_using_buf(snippet_path),
             Self::Buildifier => format_using_buildifier(snippet_path),
             Self::CSharpier => format_using_csharpier(snippet_path),
@@ -988,6 +994,7 @@ impl core::fmt::Display for Tooling {
             Self::BladeFormatter => write!(f, "blade-formatter"),
             Self::Blue => write!(f, "blue"),
             Self::Bpfmt => write!(f, "bpfmt"),
+            Self::Bsfmt => write!(f, "bsfmt"),
             Self::Buf => write!(f, "buf"),
             Self::Buildifier => write!(f, "buildifier"),
             Self::CSharpier => write!(f, "csharpier"),

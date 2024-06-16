@@ -120,6 +120,11 @@
           "enum": ["bpfmt"]
         },
         {
+          "description": "https://github.com/rokucommunity/brighterscript-formatter",
+          "type": "string",
+          "enum": ["bsfmt"]
+        },
+        {
           "description": "https://buf.build/docs/reference/cli/buf/format",
           "type": "string",
           "enum": ["buf"]
