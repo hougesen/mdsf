@@ -17,9 +17,7 @@ fn invoke_stylelint(
 }
 
 #[inline]
-pub fn format_using_stylelint(
-    snippet_path: &std::path::Path,
-) -> Result<(bool, Option<String>), MdsfError> {
+pub fn run(snippet_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfError> {
     if let Ok(path_result) = invoke_stylelint(std::process::Command::new("stylelint"), snippet_path)
     {
         if !path_result.0 {

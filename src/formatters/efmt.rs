@@ -2,7 +2,7 @@ use super::execute_command;
 use crate::error::MdsfError;
 
 #[inline]
-pub fn format_using_efmt(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfError> {
+pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfError> {
     let mut cmd = std::process::Command::new("efmt");
 
     cmd.arg("-w").arg(file_path);
@@ -13,7 +13,7 @@ pub fn format_using_efmt(file_path: &std::path::Path) -> Result<(bool, Option<St
 #[cfg(test)]
 mod test_efmt {
     use crate::{
-        formatters::{efmt::format_using_efmt, setup_snippet},
+        formatters::{efmt::run, setup_snippet},
         generated::language_to_ext,
     };
 
@@ -30,7 +30,7 @@ case Erlang of movie->[hello(mike,joe,robert),credits]; language->formatting_arg
         let snippet =
             setup_snippet(input, &language_to_ext("erlang")).expect("it to create a snippet file");
 
-        let output = format_using_efmt(snippet.path())
+        let output = run(snippet.path())
             .expect("it to be successful")
             .1
             .expect("it to be some");

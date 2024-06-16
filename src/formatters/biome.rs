@@ -2,9 +2,7 @@ use super::execute_command;
 use crate::{error::MdsfError, runners::setup_npm_script};
 
 #[inline]
-pub fn format_using_biome(
-    snippet_path: &std::path::Path,
-) -> Result<(bool, Option<String>), MdsfError> {
+pub fn run(snippet_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfError> {
     // NOTE: the biome docs recommend running biome using npx, and not directly
     let mut cmd = setup_npm_script("@biomejs/biome");
 
@@ -16,7 +14,7 @@ pub fn format_using_biome(
 #[cfg(test)]
 mod test_biome {
     use crate::{
-        formatters::{biome::format_using_biome, setup_snippet},
+        formatters::{biome::run, setup_snippet},
         generated::language_to_ext,
     };
 
@@ -42,7 +40,7 @@ mod test_biome {
         let snippet =
             setup_snippet(input, &language_to_ext("json")).expect("it to create a snippet file");
 
-        let output = format_using_biome(snippet.path())
+        let output = run(snippet.path())
             .expect("it to be successful")
             .1
             .expect("it to be some");
@@ -69,7 +67,7 @@ mod test_biome {
         let snippet = setup_snippet(input, &language_to_ext("javascript"))
             .expect("it to create a snippet file");
 
-        let output = format_using_biome(snippet.path())
+        let output = run(snippet.path())
             .expect("it to be successful")
             .1
             .expect("it to be some");
@@ -99,7 +97,7 @@ number>
         let snippet = setup_snippet(input, &language_to_ext("typescript"))
             .expect("it to create a snippet file");
 
-        let output = format_using_biome(snippet.path())
+        let output = run(snippet.path())
             .expect("it to be successful")
             .1
             .expect("it to be some");

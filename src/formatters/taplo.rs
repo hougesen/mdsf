@@ -18,9 +18,7 @@ fn invoke_taplo(
 }
 
 #[inline]
-pub fn format_using_taplo(
-    snippet_path: &std::path::Path,
-) -> Result<(bool, Option<String>), MdsfError> {
+pub fn run(snippet_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfError> {
     if let Ok(path_result) = invoke_taplo(std::process::Command::new("taplo"), snippet_path) {
         if !path_result.0 {
             return Ok(path_result);
@@ -32,7 +30,7 @@ pub fn format_using_taplo(
 #[cfg(test)]
 mod test_taplo {
     use crate::{
-        formatters::{setup_snippet, taplo::format_using_taplo},
+        formatters::{setup_snippet, taplo::run},
         generated::language_to_ext,
     };
 
@@ -49,7 +47,7 @@ author = \"Mads Hougesen\"
         let snippet =
             setup_snippet(input, &language_to_ext("toml")).expect("it to create a snippet file");
 
-        let output = format_using_taplo(snippet.path())
+        let output = run(snippet.path())
             .expect("it to be successful")
             .1
             .expect("it to be some");

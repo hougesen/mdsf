@@ -2,9 +2,7 @@ use super::execute_command;
 use crate::error::MdsfError;
 
 #[inline]
-pub fn format_using_ocamlformat(
-    snippet_path: &std::path::Path,
-) -> Result<(bool, Option<String>), MdsfError> {
+pub fn run(snippet_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfError> {
     let mut cmd = std::process::Command::new("ocamlformat");
 
     cmd.arg("--ignore-invalid-option")
@@ -18,7 +16,7 @@ pub fn format_using_ocamlformat(
 #[cfg(test)]
 mod test_ocamlformat {
     use crate::{
-        formatters::{ocamlformat::format_using_ocamlformat, setup_snippet},
+        formatters::{ocamlformat::run, setup_snippet},
         generated::language_to_ext,
     };
 
@@ -33,7 +31,7 @@ let add a b  =  a +  b
         let snippet =
             setup_snippet(input, &language_to_ext("ocaml")).expect("it to create a snippet file");
 
-        let output = format_using_ocamlformat(snippet.path())
+        let output = run(snippet.path())
             .expect("it to be successful")
             .1
             .expect("it to be some");

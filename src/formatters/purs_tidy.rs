@@ -17,9 +17,7 @@ fn invoke_purs_tidy(
 }
 
 #[inline]
-pub fn format_using_purs_tidy(
-    snippet_path: &std::path::Path,
-) -> Result<(bool, Option<String>), MdsfError> {
+pub fn run(snippet_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfError> {
     if let Ok(path_result) = invoke_purs_tidy(std::process::Command::new("purs-tidy"), snippet_path)
     {
         if !path_result.0 {
@@ -32,7 +30,7 @@ pub fn format_using_purs_tidy(
 
 #[cfg(test)]
 mod test_purs_tidy {
-    use super::format_using_purs_tidy;
+    use super::run;
     use crate::{formatters::setup_snippet, generated::language_to_ext};
 
     #[test_with::executable(npx)]
@@ -62,7 +60,7 @@ main = do
         let snippet = setup_snippet(input, &language_to_ext("purescript"))
             .expect("it to create a snippet file");
 
-        let output = format_using_purs_tidy(snippet.path())
+        let output = run(snippet.path())
             .expect("it to be successful")
             .1
             .expect("it to be some");

@@ -2,9 +2,7 @@ use super::execute_command;
 use crate::error::MdsfError;
 
 #[inline]
-pub fn format_using_erlfmt(
-    file_path: &std::path::Path,
-) -> Result<(bool, Option<String>), MdsfError> {
+pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfError> {
     let mut cmd = std::process::Command::new("erlfmt");
 
     cmd.arg("-w")
@@ -16,7 +14,7 @@ pub fn format_using_erlfmt(
 #[cfg(test)]
 mod test_erlfmt {
     use crate::{
-        formatters::{erlfmt::format_using_erlfmt, setup_snippet},
+        formatters::{erlfmt::run, setup_snippet},
         generated::language_to_ext,
     };
 
@@ -34,7 +32,7 @@ case Erlang of movie->[hello(mike,joe,robert),credits]; language->formatting_arg
         let snippet =
             setup_snippet(input, &language_to_ext("erlang")).expect("it to create a snippet file");
 
-        let output = format_using_erlfmt(snippet.path())
+        let output = run(snippet.path())
             .expect("it to be successful")
             .1
             .expect("it to be some");

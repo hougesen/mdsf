@@ -2,9 +2,7 @@ use super::execute_command;
 use crate::error::MdsfError;
 
 #[inline]
-pub fn format_using_dart_format(
-    snippet_path: &std::path::Path,
-) -> Result<(bool, Option<String>), MdsfError> {
+pub fn run(snippet_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfError> {
     let mut cmd = std::process::Command::new("dart");
 
     cmd.arg("format").arg(snippet_path);
@@ -30,7 +28,7 @@ mod test_dart_format {
         let snippet =
             setup_snippet(input, &language_to_ext("dart")).expect("it to create a snippet file");
 
-        let output = super::format_using_dart_format(snippet.path())
+        let output = super::run(snippet.path())
             .expect("it to be successful")
             .1
             .expect("it to be some");
