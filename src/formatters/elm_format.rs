@@ -17,9 +17,7 @@ fn invoke_elm_format(
 }
 
 #[inline]
-pub fn format_using_elm_format(
-    snippet_path: &std::path::Path,
-) -> Result<(bool, Option<String>), MdsfError> {
+pub fn run(snippet_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfError> {
     if let Ok(path_result) =
         invoke_elm_format(std::process::Command::new("elm-format"), snippet_path)
     {
@@ -34,7 +32,7 @@ pub fn format_using_elm_format(
 #[cfg(test)]
 mod test_elm_format {
     use crate::{
-        formatters::{elm_format::format_using_elm_format, setup_snippet},
+        formatters::{elm_format::run, setup_snippet},
         generated::language_to_ext,
     };
 
@@ -60,7 +58,7 @@ main =
         let snippet =
             setup_snippet(input, &language_to_ext("elm")).expect("it to create a snippet file");
 
-        let output = format_using_elm_format(snippet.path())
+        let output = run(snippet.path())
             .expect("it to be successful")
             .1
             .expect("it to be some");

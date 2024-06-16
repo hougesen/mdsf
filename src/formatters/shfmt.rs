@@ -2,9 +2,7 @@ use super::execute_command;
 use crate::error::MdsfError;
 
 #[inline]
-pub fn format_using_shfmt(
-    file_path: &std::path::Path,
-) -> Result<(bool, Option<String>), MdsfError> {
+pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfError> {
     let mut cmd = std::process::Command::new("shfmt");
 
     cmd.arg("--write").arg(file_path);
@@ -15,7 +13,7 @@ pub fn format_using_shfmt(
 #[cfg(test)]
 mod test_shfmt {
     use crate::{
-        formatters::{setup_snippet, shfmt::format_using_shfmt},
+        formatters::{setup_snippet, shfmt::run},
         generated::language_to_ext,
     };
 
@@ -47,7 +45,7 @@ add() {
         let snippet =
             setup_snippet(input, &language_to_ext("shell")).expect("it to create a snippet file");
 
-        let output = format_using_shfmt(snippet.path())
+        let output = run(snippet.path())
             .expect("it to be successful")
             .1
             .expect("it to be some");
@@ -83,7 +81,7 @@ add() {
         let snippet =
             setup_snippet(input, &language_to_ext("bash")).expect("it to create a snippet file");
 
-        let output = format_using_shfmt(snippet.path())
+        let output = run(snippet.path())
             .expect("it to be successful")
             .1
             .expect("it to be some");
@@ -119,7 +117,7 @@ add() {
         let snippet =
             setup_snippet(input, &language_to_ext("zsh")).expect("it to create a snippet file");
 
-        let output = format_using_shfmt(snippet.path())
+        let output = run(snippet.path())
             .expect("it to be successful")
             .1
             .expect("it to be some");

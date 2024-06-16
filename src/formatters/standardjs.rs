@@ -17,9 +17,7 @@ fn invoke_standardjs(
 }
 
 #[inline]
-pub fn format_using_standardjs(
-    snippet_path: &std::path::Path,
-) -> Result<(bool, Option<String>), MdsfError> {
+pub fn run(snippet_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfError> {
     if let Ok(path_result) = invoke_standardjs(std::process::Command::new("standard"), snippet_path)
     {
         if !path_result.0 {
@@ -33,7 +31,7 @@ pub fn format_using_standardjs(
 #[cfg(test)]
 mod test_standardjs {
     use crate::{
-        formatters::{setup_snippet, standardjs::format_using_standardjs},
+        formatters::{setup_snippet, standardjs::run},
         generated::language_to_ext,
     };
 
@@ -58,7 +56,7 @@ console.info(asyncAddition(1, 2))
         let snippet = setup_snippet(input, &language_to_ext("javascript"))
             .expect("it to create a snippet file");
 
-        let output = format_using_standardjs(snippet.path())
+        let output = run(snippet.path())
             .expect("it to be successful")
             .1
             .expect("it to be some");

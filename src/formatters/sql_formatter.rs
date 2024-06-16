@@ -17,9 +17,7 @@ fn invoke_sql_formatter(
 }
 
 #[inline]
-pub fn format_using_sql_formatter(
-    snippet_path: &std::path::Path,
-) -> Result<(bool, Option<String>), MdsfError> {
+pub fn run(snippet_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfError> {
     if let Ok(path_result) =
         invoke_sql_formatter(std::process::Command::new("sql-formatter"), snippet_path)
     {
@@ -50,7 +48,7 @@ WHERE
         let snippet =
             setup_snippet(input, &language_to_ext("sql")).expect("it to create a snippet file");
 
-        let output = super::format_using_sql_formatter(snippet.path())
+        let output = super::run(snippet.path())
             .expect("it to be successful")
             .1
             .expect("it to be some");

@@ -17,9 +17,7 @@ fn invoke_xo(
 }
 
 #[inline]
-pub fn format_using_xo(
-    snippet_path: &std::path::Path,
-) -> Result<(bool, Option<String>), MdsfError> {
+pub fn run(snippet_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfError> {
     if let Ok(path_result) = invoke_xo(std::process::Command::new("xo"), snippet_path) {
         if !path_result.0 {
             return Ok(path_result);

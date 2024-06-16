@@ -18,16 +18,14 @@ fn invoke_perltidy(
 }
 
 #[inline]
-pub fn format_using_perltidy(
-    snippet_path: &std::path::Path,
-) -> Result<(bool, Option<String>), MdsfError> {
+pub fn run(snippet_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfError> {
     invoke_perltidy(std::process::Command::new("perltidy"), snippet_path)
 }
 
 #[cfg(test)]
 mod test_perltidy {
     use crate::{
-        formatters::{perltidy::format_using_perltidy, setup_snippet},
+        formatters::{perltidy::run, setup_snippet},
         generated::language_to_ext,
     };
 
@@ -63,7 +61,7 @@ LOOP: {
         let snippet =
             setup_snippet(input, &language_to_ext("perl")).expect("it to create a snippet file");
 
-        let output = format_using_perltidy(snippet.path())
+        let output = run(snippet.path())
             .expect("it to be successful")
             .1
             .expect("it to be some");

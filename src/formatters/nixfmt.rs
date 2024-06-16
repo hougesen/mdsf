@@ -2,9 +2,7 @@ use super::execute_command;
 use crate::error::MdsfError;
 
 #[inline]
-pub fn format_using_nixfmt(
-    snippet_path: &std::path::Path,
-) -> Result<(bool, Option<String>), MdsfError> {
+pub fn run(snippet_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfError> {
     let mut cmd = std::process::Command::new("nixfmt");
 
     cmd.arg(snippet_path);
@@ -14,7 +12,7 @@ pub fn format_using_nixfmt(
 
 #[cfg(test)]
 mod test_nixfmt {
-    use super::format_using_nixfmt;
+    use super::run;
     use crate::{formatters::setup_snippet, generated::language_to_ext};
 
     #[test_with::executable(nixfmt)]
@@ -76,7 +74,7 @@ buildPythonPackage rec {
         let snippet =
             setup_snippet(input, &language_to_ext("nix")).expect("it to create a snippet file");
 
-        let output = format_using_nixfmt(snippet.path())
+        let output = run(snippet.path())
             .expect("it to be successful")
             .1
             .expect("it to be some");

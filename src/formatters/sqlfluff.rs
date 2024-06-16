@@ -21,9 +21,7 @@ fn invoke_sqlfluff(
 }
 
 #[inline]
-pub fn format_using_sqlfluff(
-    snippet_path: &std::path::Path,
-) -> Result<(bool, Option<String>), MdsfError> {
+pub fn run(snippet_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfError> {
     invoke_sqlfluff(std::process::Command::new("sqlfluff"), snippet_path)
 }
 
@@ -43,7 +41,7 @@ WHERE foo = 'bar';
         let snippet =
             setup_snippet(input, &language_to_ext("sql")).expect("it to create a snippet file");
 
-        let output = super::format_using_sqlfluff(snippet.path())
+        let output = super::run(snippet.path())
             .expect("it to be successful")
             .1
             .expect("it to be some");

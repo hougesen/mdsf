@@ -17,9 +17,7 @@ fn invoke_rescript_format(
 }
 
 #[inline]
-pub fn format_using_rescript_format(
-    snippet_path: &std::path::Path,
-) -> Result<(bool, Option<String>), MdsfError> {
+pub fn run(snippet_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfError> {
     if let Ok(path_result) =
         invoke_rescript_format(std::process::Command::new("rescript"), snippet_path)
     {
@@ -69,7 +67,7 @@ mod test_rescript_format {
         let snippet = setup_snippet(input, &language_to_ext("rescript"))
             .expect("it to create a snippet file");
 
-        let output = super::format_using_rescript_format(snippet.path())
+        let output = super::run(snippet.path())
             .expect("it to be successful")
             .1
             .expect("it to be some");

@@ -17,9 +17,7 @@ fn invoke_ts_standard(
 }
 
 #[inline]
-pub fn format_using_ts_standard(
-    snippet_path: &std::path::Path,
-) -> Result<(bool, Option<String>), MdsfError> {
+pub fn run(snippet_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfError> {
     if let Ok(path_result) =
         invoke_ts_standard(std::process::Command::new("ts-standard"), snippet_path)
     {

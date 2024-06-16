@@ -18,9 +18,7 @@ fn invoke_npm_groovy_lint(
 }
 
 #[inline]
-pub fn format_using_npm_groovy_lint(
-    snippet_path: &std::path::Path,
-) -> Result<(bool, Option<String>), MdsfError> {
+pub fn run(snippet_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfError> {
     if let Ok(path_result) =
         invoke_npm_groovy_lint(std::process::Command::new("npm-groovy-lint"), snippet_path)
     {
@@ -35,7 +33,7 @@ pub fn format_using_npm_groovy_lint(
 #[cfg(test)]
 mod test_npm_groovy_lint {
     use crate::{
-        formatters::{npm_groovy_lint::format_using_npm_groovy_lint, setup_snippet},
+        formatters::{npm_groovy_lint::run, setup_snippet},
         generated::language_to_ext,
     };
 
@@ -57,7 +55,7 @@ assert add(1, 2) == 3
         let snippet =
             setup_snippet(input, &language_to_ext("groovy")).expect("it to create a snippet file");
 
-        let output = format_using_npm_groovy_lint(snippet.path())
+        let output = run(snippet.path())
             .expect("it to be successful")
             .1
             .expect("it to be some");

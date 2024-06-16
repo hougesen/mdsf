@@ -2,9 +2,7 @@ use super::execute_command;
 use crate::error::MdsfError;
 
 #[inline]
-pub fn format_using_clang_format(
-    snippet_path: &std::path::Path,
-) -> Result<(bool, Option<String>), MdsfError> {
+pub fn run(snippet_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfError> {
     let mut cmd = std::process::Command::new("clang-format");
 
     cmd.arg("-i").arg(snippet_path);
@@ -15,7 +13,7 @@ pub fn format_using_clang_format(
 #[cfg(test)]
 mod test_clang_format {
     use crate::{
-        formatters::{clang_format::format_using_clang_format, setup_snippet},
+        formatters::{clang_format::run, setup_snippet},
         generated::language_to_ext,
     };
 
@@ -34,7 +32,7 @@ mod test_clang_format {
         let snippet =
             setup_snippet(input, &language_to_ext("c")).expect("it to create a snippet file");
 
-        let output = format_using_clang_format(snippet.path())
+        let output = run(snippet.path())
             .expect("it to be successful")
             .1
             .expect("it to be some");
@@ -57,7 +55,7 @@ mod test_clang_format {
         let snippet =
             setup_snippet(input, &language_to_ext("cpp")).expect("it to create a snippet file");
 
-        let output = format_using_clang_format(snippet.path())
+        let output = run(snippet.path())
             .expect("it to be successful")
             .1
             .expect("it to be some");
@@ -82,7 +80,7 @@ mod test_clang_format {
         let snippet =
             setup_snippet(input, &language_to_ext("csharp")).expect("it to create a snippet file");
 
-        let output = format_using_clang_format(snippet.path())
+        let output = run(snippet.path())
             .expect("it to be successful")
             .1
             .expect("it to be some");
@@ -102,7 +100,7 @@ mod test_clang_format {
         let snippet = setup_snippet(input, &language_to_ext("javascript"))
             .expect("it to create a snippet file");
 
-        let output = format_using_clang_format(snippet.path())
+        let output = run(snippet.path())
             .expect("it to be successful")
             .1
             .expect("it to be some");
@@ -130,7 +128,7 @@ mod test_clang_format {
         let snippet =
             setup_snippet(input, &language_to_ext("json")).expect("it to create a snippet file");
 
-        let output = format_using_clang_format(snippet.path())
+        let output = run(snippet.path())
             .expect("it to be successful")
             .1
             .expect("it to be some");
@@ -153,7 +151,7 @@ mod test_clang_format {
         let snippet = setup_snippet(input, &language_to_ext("objective-c"))
             .expect("it to create a snippet file");
 
-        let output = format_using_clang_format(snippet.path())
+        let output = run(snippet.path())
             .expect("it to be successful")
             .1
             .expect("it to be some");
@@ -173,7 +171,7 @@ mod test_clang_format {
         let snippet = setup_snippet(input, &language_to_ext("protobuf"))
             .expect("it to create a snippet file");
 
-        let output = format_using_clang_format(snippet.path())
+        let output = run(snippet.path())
             .expect("it to be successful")
             .1
             .expect("it to be some");
@@ -200,7 +198,7 @@ mod test_clang_format {
         let snippet =
             setup_snippet(input, &language_to_ext("java")).expect("it to create a snippet file");
 
-        let output = format_using_clang_format(snippet.path())
+        let output = run(snippet.path())
             .expect("it to be successful")
             .1
             .expect("it to be some");

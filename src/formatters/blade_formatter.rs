@@ -17,9 +17,7 @@ fn invoke_blade_formatter(
 }
 
 #[inline]
-pub fn format_using_blade_formatter(
-    snippet_path: &std::path::Path,
-) -> Result<(bool, Option<String>), MdsfError> {
+pub fn run(snippet_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfError> {
     if let Ok(path_result) =
         invoke_blade_formatter(std::process::Command::new("blade-formatter"), snippet_path)
     {
@@ -103,7 +101,7 @@ mod test_blade_formatter {
         let snippet =
             setup_snippet(input, &language_to_ext("sql")).expect("it to create a snippet file");
 
-        let output = super::format_using_blade_formatter(snippet.path())
+        let output = super::run(snippet.path())
             .expect("it to be successful")
             .1
             .expect("it to be some");
