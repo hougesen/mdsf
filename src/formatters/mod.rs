@@ -377,9 +377,13 @@ pub enum Tooling {
     #[serde(rename = "dart_format")]
     DartFormat,
 
-    #[doc = "https://dcm.dev"]
-    #[serde(rename = "dcm")]
-    Dcm,
+    #[doc = "https://dcm.dev/docs/cli/fix/"]
+    #[serde(rename = "dcm_fix")]
+    DcmFix,
+
+    #[doc = "https://dcm.dev/docs/cli/format/"]
+    #[serde(rename = "dcm_format")]
+    DcmFormat,
 
     #[doc = "https://dart.dev/tools/dart-format"]
     #[serde(rename = "deno_fmt")]
@@ -821,7 +825,8 @@ impl Tooling {
             Self::D2 => d2::run(snippet_path),
             Self::DFmt => dfmt::run(snippet_path),
             Self::DartFormat => dart_format::run(snippet_path),
-            Self::Dcm => dcm::run(snippet_path),
+            Self::DcmFix => dcm::run_fix(snippet_path),
+            Self::DcmFormat => dcm::run_format(snippet_path),
             Self::DenoFmt => deno_fmt::run(snippet_path),
             Self::DjLint => djlint::run(snippet_path),
             Self::Docformatter => docformatter::run(snippet_path),
@@ -962,7 +967,8 @@ impl core::fmt::Display for Tooling {
             Self::DartFormat => write!(f, "dart_format"),
             Self::DenoFmt => write!(f, "deno_fmt"),
             Self::DjLint => write!(f, "djlint"),
-            Self::Dcm => write!(f, "dcm"),
+            Self::DcmFormat => write!(f, "dcm_format"),
+            Self::DcmFix => write!(f, "dcm_format"),
             Self::Docformatter => write!(f, "docformatter"),
             Self::Docstrfmt => write!(f, "docstrfmt"),
             Self::Dprint => write!(f, "dprint"),
