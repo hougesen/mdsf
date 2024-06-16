@@ -2,19 +2,29 @@ use super::execute_command;
 use crate::error::MdsfError;
 
 #[inline]
-pub fn run(snippet_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfError> {
+pub fn run_format(snippet_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfError> {
     let mut cmd = std::process::Command::new("ruff");
 
-    cmd.arg("format");
-    cmd.arg("--quiet");
-    cmd.arg(snippet_path);
+    cmd.arg("format").arg("--quiet").arg(snippet_path);
+
+    execute_command(&mut cmd, snippet_path)
+}
+
+#[inline]
+pub fn run_check(snippet_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfError> {
+    let mut cmd = std::process::Command::new("ruff");
+
+    cmd.arg("check")
+        .arg("--fix")
+        .arg("--quiet")
+        .arg(snippet_path);
 
     execute_command(&mut cmd, snippet_path)
 }
 
 #[cfg(test)]
 mod test_ruff {
-    use super::run;
+    use super::run_format;
     use crate::{formatters::setup_snippet, generated::language_to_ext};
 
     #[test_with::executable(ruff)]
@@ -26,7 +36,7 @@ mod test_ruff {
         let snippet =
             setup_snippet(input, &language_to_ext("python")).expect("it to create a snippet file");
 
-        let output = run(snippet.path())
+        let output = run_format(snippet.path())
             .expect("it to be successful")
             .1
             .expect("it to be some");

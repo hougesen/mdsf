@@ -104,7 +104,7 @@ mdsf init
 
 <!-- START_SECTION:supported-languages -->
 
-`mdsf` currently supports 131 tools.
+`mdsf` currently supports 132 tools.
 
 | Formatter          | Description                                                                                                            |
 | ------------------ | ---------------------------------------------------------------------------------------------------------------------- |
@@ -205,7 +205,8 @@ mdsf init
 | rstfmt             | [https://github.com/dzhu/rstfmt](https://github.com/dzhu/rstfmt)                                                       |
 | rubocop            | [https://github.com/rubocop/rubocop](https://github.com/rubocop/rubocop)                                               |
 | rubyfmt            | [https://github.com/fables-tales/rubyfmt](https://github.com/fables-tales/rubyfmt)                                     |
-| ruff               | [https://docs.astral.sh/ruff/](https://docs.astral.sh/ruff/)                                                           |
+| ruff               | [https://docs.astral.sh/ruff/formatter/](https://docs.astral.sh/ruff/formatter/)                                       |
+| ruff_check         | [https://docs.astral.sh/ruff/linter/](https://docs.astral.sh/ruff/linter/)                                             |
 | rufo               | [https://github.com/ruby-formatter/rufo](https://github.com/ruby-formatter/rufo)                                       |
 | rustfmt            | [https://github.com/rust-lang/rustfmt](https://github.com/rust-lang/rustfmt)                                           |
 | rustywind          | [https://github.com/avencera/rustywind](https://github.com/avencera/rustywind)                                         |

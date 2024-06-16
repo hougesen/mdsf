@@ -535,9 +535,14 @@
           "enum": ["rubyfmt"]
         },
         {
-          "description": "https://docs.astral.sh/ruff/",
+          "description": "https://docs.astral.sh/ruff/formatter/",
           "type": "string",
           "enum": ["ruff"]
+        },
+        {
+          "description": "https://docs.astral.sh/ruff/linter/",
+          "type": "string",
+          "enum": ["ruff_check"]
         },
         {
           "description": "https://github.com/ruby-formatter/rufo",
