@@ -649,9 +649,13 @@ pub enum Tooling {
     #[serde(rename = "rubyfmt")]
     RubyFmt,
 
-    #[doc = "https://docs.astral.sh/ruff/"]
+    #[doc = "https://docs.astral.sh/ruff/formatter/"]
     #[serde(rename = "ruff")]
     Ruff,
+
+    #[doc = "https://docs.astral.sh/ruff/linter/"]
+    #[serde(rename = "ruff_check")]
+    RuffCheck,
 
     #[doc = "https://github.com/ruby-formatter/rufo"]
     #[serde(rename = "rufo")]
@@ -893,7 +897,8 @@ impl Tooling {
             Self::RstFmt => rstfmt::run(snippet_path),
             Self::RuboCop => rubocop::run(snippet_path),
             Self::RubyFmt => rubyfmt::run(snippet_path),
-            Self::Ruff => ruff::run(snippet_path),
+            Self::Ruff => ruff::run_format(snippet_path),
+            Self::RuffCheck => ruff::run_check(snippet_path),
             Self::Rufo => rufo::run(snippet_path),
             Self::RustFmt => rustfmt::run(snippet_path),
             Self::Rustywind => rustywind::run(snippet_path),
@@ -1034,6 +1039,7 @@ impl core::fmt::Display for Tooling {
             Self::RuboCop => write!(f, "rubocop"),
             Self::RubyFmt => write!(f, "rubyfmt"),
             Self::Ruff => write!(f, "ruff"),
+            Self::RuffCheck => write!(f, "ruff_check"),
             Self::Rufo => write!(f, "rufo"),
             Self::RustFmt => write!(f, "rustfmt"),
             Self::Rustywind => write!(f, "rustywind"),
