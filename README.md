@@ -104,7 +104,7 @@ mdsf init
 
 <!-- START_SECTION:supported-languages -->
 
-`mdsf` currently supports 128 tools.
+`mdsf` currently supports 130 tools.
 
 | Formatter          | Description                                                                                                            |
 | ------------------ | ---------------------------------------------------------------------------------------------------------------------- |
@@ -118,6 +118,8 @@ mdsf init
 | beautysh           | [https://pypi.org/project/beautysh/](https://pypi.org/project/beautysh/)                                               |
 | bicep_format       | [https://github.com/Azure/bicep](https://github.com/Azure/bicep)                                                       |
 | biome              | [https://biomejs.dev](https://biomejs.dev)                                                                             |
+| biome_check        | [https://biomejs.dev](https://biomejs.dev)                                                                             |
+| biome_lint         | [https://biomejs.dev](https://biomejs.dev)                                                                             |
 | black              | [https://github.com/psf/black](https://github.com/psf/black)                                                           |
 | blade-formatter    | [https://github.com/shufo/blade-formatter](https://github.com/shufo/blade-formatter)                                   |
 | blue               | [https://blue.readthedocs.io/en/latest/](https://blue.readthedocs.io/en/latest/)                                       |

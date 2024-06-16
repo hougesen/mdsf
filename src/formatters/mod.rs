@@ -301,6 +301,14 @@ pub enum Tooling {
     #[serde(rename = "biome")]
     Biome,
 
+    #[doc = "https://biomejs.dev"]
+    #[serde(rename = "biome_lint")]
+    BiomeLint,
+
+    #[doc = "https://biomejs.dev"]
+    #[serde(rename = "biome_check")]
+    BiomeCheck,
+
     #[doc = "https://github.com/psf/black"]
     #[serde(rename = "black")]
     Black,
@@ -792,7 +800,9 @@ impl Tooling {
             Self::Autopep8 => autopep8::run(snippet_path),
             Self::Beautysh => beautysh::run(snippet_path),
             Self::BicepFormat => bicep_format::run(snippet_path),
-            Self::Biome => biome::run(snippet_path),
+            Self::Biome => biome::run_format(snippet_path),
+            Self::BiomeCheck => biome::run_check(snippet_path),
+            Self::BiomeLint => biome::run_lint(snippet_path),
             Self::Black => black::run(snippet_path),
             Self::BladeFormatter => blade_formatter::run(snippet_path),
             Self::Blue => blue::run(snippet_path),
@@ -930,6 +940,8 @@ impl core::fmt::Display for Tooling {
             Self::Beautysh => write!(f, "beautysh"),
             Self::BicepFormat => write!(f, "bicep_format"),
             Self::Biome => write!(f, "biome"),
+            Self::BiomeCheck => write!(f, "biome_check"),
+            Self::BiomeLint => write!(f, "biome_lint"),
             Self::Black => write!(f, "black"),
             Self::BladeFormatter => write!(f, "blade-formatter"),
             Self::Blue => write!(f, "blue"),
