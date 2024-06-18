@@ -973,7 +973,7 @@ impl core::fmt::Display for Tooling {
             Self::DenoFmt => write!(f, "deno_fmt"),
             Self::DjLint => write!(f, "djlint"),
             Self::DcmFormat => write!(f, "dcm_format"),
-            Self::DcmFix => write!(f, "dcm_format"),
+            Self::DcmFix => write!(f, "dcm_fix"),
             Self::Docformatter => write!(f, "docformatter"),
             Self::Docstrfmt => write!(f, "docstrfmt"),
             Self::Dprint => write!(f, "dprint"),

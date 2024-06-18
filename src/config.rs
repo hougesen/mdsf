@@ -50,22 +50,16 @@ impl Default for MdsfConfig {
 
 impl MdsfConfig {
     #[inline]
-    pub fn load() -> Result<Self, MdsfError> {
-        let dir = std::env::current_dir()?;
-
-        let path = dir.join("mdsf.json");
-
-        match std::fs::read_to_string(&path) {
-            Ok(raw_config) => {
-                Self::parse(&raw_config).map_err(|_serde_error| MdsfError::ConfigParse(path))
-            }
+    pub fn load(path: impl AsRef<std::path::Path>) -> Result<Self, MdsfError> {
+        match std::fs::read_to_string(path.as_ref()) {
+            Ok(raw_config) => Self::parse(&raw_config)
+                .map_err(|_serde_error| MdsfError::ConfigParse(path.as_ref().to_path_buf())),
             Err(error) => {
                 if error.kind() == std::io::ErrorKind::NotFound {
-                    print_config_not_found();
-                    Ok(Self::default())
-                } else {
-                    Err(MdsfError::from(error))
+                    print_config_not_found(path.as_ref());
                 }
+
+                Err(MdsfError::from(error))
             }
         }
     }

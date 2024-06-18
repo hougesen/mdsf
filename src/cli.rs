@@ -35,6 +35,10 @@ pub struct FormatCommandArguments {
     #[arg()]
     pub path: std::path::PathBuf,
 
+    /// Path to config
+    #[arg(long)]
+    pub config: Option<std::path::PathBuf>,
+
     /// Log stdout and stderr of formatters
     #[arg(long, default_value_t = false)]
     pub debug: bool,

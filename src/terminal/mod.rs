@@ -57,8 +57,8 @@ pub fn print_changed_file_error(path: &std::path::Path) {
 }
 
 #[inline]
-pub fn print_config_not_found() {
-    warn!("Using default config since no config was found");
+pub fn print_config_not_found(path: &std::path::Path) {
+    warn!("No config was found at {}", path.display());
 }
 
 #[inline]
