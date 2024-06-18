@@ -1,3 +1,5 @@
+use std::env::current_dir;
+
 use clap::builder::OsStr;
 use mdsf::{cli::FormatCommandArguments, config::MdsfConfig, error::MdsfError, handle_file};
 
@@ -6,7 +8,13 @@ const MDSF_IGNORE_FILE_NAME: &str = ".mdsfignore";
 pub fn run(args: FormatCommandArguments, dry_run: bool) -> Result<(), MdsfError> {
     mdsf::DEBUG.swap(args.debug, core::sync::atomic::Ordering::Relaxed);
 
-    let conf = MdsfConfig::load()?;
+    let conf = if let Some(config_path) = args.config {
+        MdsfConfig::load(&config_path)
+    } else {
+        let path = current_dir()?.join("mdsf.json");
+
+        Ok(MdsfConfig::load(path).unwrap_or_default())
+    }?;
 
     mdsf::runners::set_javascript_runtime(conf.javascript_runtime);
 

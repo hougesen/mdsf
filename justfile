@@ -41,7 +41,7 @@ format:
 
 precommit:
     cargo clean
-    just fmt  
+    just format 
     just codegen
     just build
     just lint
