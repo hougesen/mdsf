@@ -150,6 +150,11 @@
           "enum": ["cabal_format"]
         },
         {
+          "description": "https://caramel.run",
+          "type": "string",
+          "enum": ["caramel_fmt"]
+        },
+        {
           "description": "https://docs.kernel.org/process/clang-format.html",
           "type": "string",
           "enum": ["clang-format"]

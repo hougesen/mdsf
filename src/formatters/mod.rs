@@ -32,6 +32,7 @@ mod bsfmt;
 mod buf;
 mod buildifier;
 mod cabal_format;
+mod caramel;
 mod clang_format;
 mod clang_tidy;
 mod cljstyle;
@@ -349,6 +350,10 @@ pub enum Tooling {
     #[doc = "https://www.haskell.org/cabal/"]
     #[serde(rename = "cabal_format")]
     CabalFormat,
+
+    #[doc = "https://caramel.run"]
+    #[serde(rename = "caramel_fmt")]
+    CaramelFmt,
 
     #[doc = "https://docs.kernel.org/process/clang-format.html"]
     #[serde(rename = "clang-format")]
@@ -873,6 +878,7 @@ impl Tooling {
             Self::Buildifier => buildifier::run(snippet_path),
             Self::CSharpier => csharpier::run(snippet_path),
             Self::CabalFormat => cabal_format::run(snippet_path),
+            Self::CaramelFmt => caramel::run_fmt(snippet_path),
             Self::ClangFormat => clang_format::run(snippet_path),
             Self::ClangTidy => clang_tidy::run(snippet_path),
             Self::Cljstyle => cljstyle::run(snippet_path),
@@ -1025,6 +1031,7 @@ impl core::fmt::Display for Tooling {
             Self::Buildifier => write!(f, "buildifier"),
             Self::CSharpier => write!(f, "csharpier"),
             Self::CabalFormat => write!(f, "cabal_format"),
+            Self::CaramelFmt => write!(f, "caramel_fmt"),
             Self::ClangFormat => write!(f, "clang-format"),
             Self::ClangTidy => write!(f, "clang-tidy"),
             Self::Cljstyle => write!(f, "cljstyle"),
