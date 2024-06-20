@@ -31,8 +31,28 @@ pub struct MdsfConfig {
     #[serde(default)]
     pub javascript_runtime: JavaScriptRuntime,
 
+    ///  Defines which formatter is used by the language.
+    /// ```json
+    /// {
+    ///   "languages": {
+    ///     "rust": "rustfmt",
+    ///     "js": "prettier"
+    ///   }
+    /// }
+    /// ```
     #[serde(default)]
     pub languages: std::collections::BTreeMap<String, MdsfFormatter<Tooling>>,
+
+    /// Used for settings custom file extensions for a given language.
+    /// ```json
+    /// {
+    ///   "custom_file_extensions": {
+    ///     "rust": ".rust"
+    ///   }
+    /// }
+    /// ```
+    #[serde(default)]
+    pub custom_file_extensions: std::collections::BTreeMap<String, String>,
 }
 
 impl Default for MdsfConfig {
@@ -42,6 +62,7 @@ impl Default for MdsfConfig {
             schema: default_schema_location(),
             format_finished_document: false,
             javascript_runtime: JavaScriptRuntime::default(),
+            custom_file_extensions: std::collections::BTreeMap::default(),
 
             languages: default_tools(),
         }

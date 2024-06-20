@@ -78,7 +78,7 @@ mod test_prettier {
 ";
 
         let snippet =
-            setup_snippet(input, &language_to_ext("json")).expect("it to create a snippet file");
+            setup_snippet(input, language_to_ext("json")).expect("it to create a snippet file");
 
         let output = run(snippet.path())
             .expect("it to be successful")
@@ -104,7 +104,7 @@ mod test_prettier {
 }
 ";
 
-        let snippet = setup_snippet(input, &language_to_ext("javascript"))
+        let snippet = setup_snippet(input, language_to_ext("javascript"))
             .expect("it to create a snippet file");
 
         let output = run(snippet.path())
@@ -134,7 +134,7 @@ number>
 }
 ";
 
-        let snippet = setup_snippet(input, &language_to_ext("typescript"))
+        let snippet = setup_snippet(input, language_to_ext("typescript"))
             .expect("it to create a snippet file");
 
         let output = run(snippet.path())
@@ -161,8 +161,8 @@ this is a paragraph
 this is a paragraph
 ";
 
-        let snippet = setup_snippet(input, &language_to_ext("markdown"))
-            .expect("it to create a snippet file");
+        let snippet =
+            setup_snippet(input, language_to_ext("markdown")).expect("it to create a snippet file");
 
         let output = run(snippet.path())
             .expect("it to be successful")
@@ -188,8 +188,8 @@ number>
 ```
 ";
 
-        let snippet = setup_snippet(input, &language_to_ext("markdown"))
-            .expect("it to create a snippet file");
+        let snippet =
+            setup_snippet(input, language_to_ext("markdown")).expect("it to create a snippet file");
 
         let output = run(snippet.path())
             .expect("it to be successful")
@@ -226,7 +226,7 @@ number>
 ";
 
         let snippet =
-            setup_snippet(input, &language_to_ext("html")).expect("it to create a snippet file");
+            setup_snippet(input, language_to_ext("html")).expect("it to create a snippet file");
 
         let output = run(snippet.path())
             .expect("it to be successful")
@@ -249,7 +249,7 @@ p {
 ";
 
         let snippet =
-            setup_snippet(input, &language_to_ext("css")).expect("it to create a snippet file");
+            setup_snippet(input, language_to_ext("css")).expect("it to create a snippet file");
 
         let output = run(snippet.path())
             .expect("it to be successful")
@@ -305,7 +305,7 @@ updates:
 ";
 
         let snippet =
-            setup_snippet(input, &language_to_ext("yaml")).expect("it to create a snippet file");
+            setup_snippet(input, language_to_ext("yaml")).expect("it to create a snippet file");
 
         let output = run(snippet.path())
             .expect("it to be successful")
@@ -351,7 +351,7 @@ function add(a: number, b: number): number {
 ";
 
         let snippet =
-            setup_snippet(input, &language_to_ext("vue")).expect("it to create a snippet file");
+            setup_snippet(input, language_to_ext("vue")).expect("it to create a snippet file");
 
         let output = run(snippet.path())
             .expect("it to be successful")
@@ -379,7 +379,7 @@ function add(a: number, b: number): number {
 ";
 
         let snippet =
-            setup_snippet(input, &language_to_ext("graphql")).expect("it to create a snippet file");
+            setup_snippet(input, language_to_ext("graphql")).expect("it to create a snippet file");
 
         let output = run(snippet.path())
             .expect("it to be successful")

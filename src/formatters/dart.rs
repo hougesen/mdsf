@@ -35,7 +35,7 @@ mod test_dart_format {
 ";
 
         let snippet =
-            setup_snippet(input, &language_to_ext("dart")).expect("it to create a snippet file");
+            setup_snippet(input, language_to_ext("dart")).expect("it to create a snippet file");
 
         let output = super::run_format(snippet.path())
             .expect("it to be successful")

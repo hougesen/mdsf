@@ -7,8 +7,9 @@ pub fn run(snippet_path: &std::path::Path) -> Result<(bool, Option<String>), Mds
 
     #[cfg(test)]
     {
-        cmd.arg("--config-str").arg("\"version=3.8.0\"");
-        cmd.arg("--debug");
+        cmd.arg("--config-str")
+            .arg("\"version=3.8.0\"")
+            .arg("--debug");
     };
 
     cmd.arg("--quiet")
@@ -39,7 +40,7 @@ mod test_scalafmt {
 ";
 
         let snippet =
-            setup_snippet(input, &language_to_ext("scala")).expect("it to create a snippet file");
+            setup_snippet(input, language_to_ext("scala")).expect("it to create a snippet file");
 
         let output = run(snippet.path())
             .expect("it to be successful")

@@ -1,9 +1,9 @@
 // THIS CODE WAS GENERATED AND SHOULD NOT BE EDITED MANUALLY
 
 #[allow(clippy::too_many_lines)]
-pub fn language_to_ext(language: &str) -> String {
+pub fn language_to_ext(language: &str) -> &'static str {
     #[allow(clippy::match_same_arms)]
-    let ft = match language.to_lowercase().as_str() {
+    match language.to_lowercase().as_str() {
         "1c enterprise" => ".bsl",
         "2-dimensional array" => ".2da",
         "4d" => ".4dm",
@@ -1031,12 +1031,5 @@ pub fn language_to_ext(language: &str) -> String {
         "zimpl" => ".zimpl",
         "zsh" => ".sh",
         _ => "",
-    }
-    .to_string();
-
-    if ft.is_empty() {
-        format!(".{language}")
-    } else {
-        ft
     }
 }

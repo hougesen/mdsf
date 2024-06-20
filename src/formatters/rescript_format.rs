@@ -64,8 +64,8 @@ mod test_rescript_format {
 }
 "#;
 
-        let snippet = setup_snippet(input, &language_to_ext("rescript"))
-            .expect("it to create a snippet file");
+        let snippet =
+            setup_snippet(input, language_to_ext("rescript")).expect("it to create a snippet file");
 
         let output = super::run(snippet.path())
             .expect("it to be successful")

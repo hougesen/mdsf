@@ -3,8 +3,7 @@ use crate::{error::MdsfError, runners::setup_npm_script};
 
 #[inline]
 fn set_taplo_args(cmd: &mut std::process::Command, snippet_path: &std::path::Path) {
-    cmd.arg("fmt");
-    cmd.arg(snippet_path);
+    cmd.arg("fmt").arg(snippet_path);
 }
 
 #[inline]
@@ -45,7 +44,7 @@ author = \"Mads Hougesen\"
 ";
 
         let snippet =
-            setup_snippet(input, &language_to_ext("toml")).expect("it to create a snippet file");
+            setup_snippet(input, language_to_ext("toml")).expect("it to create a snippet file");
 
         let output = run(snippet.path())
             .expect("it to be successful")

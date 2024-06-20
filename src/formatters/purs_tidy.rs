@@ -57,7 +57,7 @@ main :: Effect Unit
 main = do
   log "You should add some tests.""#;
 
-        let snippet = setup_snippet(input, &language_to_ext("purescript"))
+        let snippet = setup_snippet(input, language_to_ext("purescript"))
             .expect("it to create a snippet file");
 
         let output = run(snippet.path())

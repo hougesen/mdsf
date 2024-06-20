@@ -38,7 +38,7 @@ def add(a: int, b: int) -> int:
 ";
 
         let snippet =
-            setup_snippet(input, &language_to_ext("python")).expect("it to create a snippet file");
+            setup_snippet(input, language_to_ext("python")).expect("it to create a snippet file");
 
         let output = run(snippet.path())
             .expect("it to be successful")

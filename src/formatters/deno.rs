@@ -51,7 +51,7 @@ mod test_deno_fmt {
 ";
 
         let snippet =
-            setup_snippet(input, &language_to_ext("json")).expect("it to create a snippet file");
+            setup_snippet(input, language_to_ext("json")).expect("it to create a snippet file");
 
         let output = run_fmt(snippet.path())
             .expect("it to be successful")
@@ -75,7 +75,7 @@ mod test_deno_fmt {
 }
 ";
 
-        let snippet = setup_snippet(input, &language_to_ext("javascript"))
+        let snippet = setup_snippet(input, language_to_ext("javascript"))
             .expect("it to create a snippet file");
 
         let output = run_fmt(snippet.path())
@@ -102,7 +102,7 @@ mod test_deno_fmt {
 }
 ";
 
-        let snippet = setup_snippet(input, &language_to_ext("typescript"))
+        let snippet = setup_snippet(input, language_to_ext("typescript"))
             .expect("it to create a snippet file");
 
         let output = run_fmt(snippet.path())

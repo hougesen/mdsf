@@ -29,7 +29,7 @@ mod test_rustfmt {
         let expected_output = "pub async fn add(a: i32, b: i32) -> i32 {\n    a + b\n}\n";
 
         let snippet =
-            setup_snippet(input, &language_to_ext("rust")).expect("it to create a snippet file");
+            setup_snippet(input, language_to_ext("rust")).expect("it to create a snippet file");
 
         let output = run(snippet.path())
             .expect("it to be successful")

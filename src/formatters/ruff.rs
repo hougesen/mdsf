@@ -34,7 +34,7 @@ mod test_ruff {
         let expected_output = "def add(a: int, b: int) -> int:\n    return a + b\n";
 
         let snippet =
-            setup_snippet(input, &language_to_ext("python")).expect("it to create a snippet file");
+            setup_snippet(input, language_to_ext("python")).expect("it to create a snippet file");
 
         let output = run_format(snippet.path())
             .expect("it to be successful")

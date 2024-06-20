@@ -56,17 +56,10 @@ fn build_mapping(languages: std::collections::HashMap<String, LinguishLanguage>)
         "// THIS CODE WAS GENERATED AND SHOULD NOT BE EDITED MANUALLY
 
 #[allow(clippy::too_many_lines)]
-pub fn language_to_ext(language: &str) -> String {{
+pub fn language_to_ext(language: &str) -> &'static str {{
 {WHITESPACE}#[allow(clippy::match_same_arms)]
-{WHITESPACE}let ft = match language.to_lowercase().as_str() {{
+{WHITESPACE}match language.to_lowercase().as_str() {{
 {}
-{WHITESPACE}}}
-{WHITESPACE}.to_string();
-
-{WHITESPACE}if ft.is_empty() {{
-{WHITESPACE}{WHITESPACE}format!(\".{{language}}\")
-{WHITESPACE}}} else {{
-{WHITESPACE}{WHITESPACE}ft
 {WHITESPACE}}}
 }}
 ",

@@ -199,7 +199,7 @@ fn add(a: i32, b: i32) -> i32 {
 
         {
             let file =
-                setup_snippet(input, &language_to_ext("markdown")).expect("it to create a file");
+                setup_snippet(input, language_to_ext("markdown")).expect("it to create a file");
 
             handle_file(&config, file.path(), false).expect("it to be a success");
 
@@ -939,7 +939,7 @@ fn add(a: i32, b: i32) i32 {
 
         {
             let file =
-                setup_snippet(input, &language_to_ext("markdown")).expect("it to create a file");
+                setup_snippet(input, language_to_ext("markdown")).expect("it to create a file");
 
             handle_file(&config, file.path(), false).expect("it to be a success");
 
@@ -999,8 +999,8 @@ type Whatever struct {
             };
 
             {
-                let file = setup_snippet(input, &language_to_ext("markdown"))
-                    .expect("it to create a file");
+                let file =
+                    setup_snippet(input, language_to_ext("markdown")).expect("it to create a file");
 
                 handle_file(&config, file.path(), false).expect("it to be a success");
 
@@ -1028,8 +1028,8 @@ type Whatever struct {
             };
 
             {
-                let file = setup_snippet(input, &language_to_ext("markdown"))
-                    .expect("it to create a file");
+                let file =
+                    setup_snippet(input, language_to_ext("markdown")).expect("it to create a file");
 
                 handle_file(&config, file.path(), false).expect("it to be a success");
 
@@ -1085,8 +1085,8 @@ type Whatever struct {
             };
 
             {
-                let file = setup_snippet(input, &language_to_ext("markdown"))
-                    .expect("it to create a file");
+                let file =
+                    setup_snippet(input, language_to_ext("markdown")).expect("it to create a file");
 
                 handle_file(&config, file.path(), false).expect("it to be a success");
 
@@ -1115,8 +1115,8 @@ type Whatever struct {
             };
 
             {
-                let file = setup_snippet(input, &language_to_ext("markdown"))
-                    .expect("it to create a file");
+                let file =
+                    setup_snippet(input, language_to_ext("markdown")).expect("it to create a file");
 
                 handle_file(&config, file.path(), false).expect("it to be a success");
 
@@ -1202,8 +1202,8 @@ func add(a int, b int) int {
             };
 
             {
-                let file = setup_snippet(input, &language_to_ext("markdown"))
-                    .expect("it to create a file");
+                let file =
+                    setup_snippet(input, language_to_ext("markdown")).expect("it to create a file");
 
                 handle_file(&config, file.path(), false).expect("it to be a success");
 
@@ -1231,8 +1231,8 @@ func add(a int, b int) int {
             };
 
             {
-                let file = setup_snippet(input, &language_to_ext("markdown"))
-                    .expect("it to create a file");
+                let file =
+                    setup_snippet(input, language_to_ext("markdown")).expect("it to create a file");
 
                 handle_file(&config, file.path(), false).expect("it to be a success");
 

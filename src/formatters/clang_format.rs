@@ -30,7 +30,7 @@ mod test_clang_format {
 }";
 
         let snippet =
-            setup_snippet(input, &language_to_ext("c")).expect("it to create a snippet file");
+            setup_snippet(input, language_to_ext("c")).expect("it to create a snippet file");
 
         let output = run(snippet.path())
             .expect("it to be successful")
@@ -53,7 +53,7 @@ mod test_clang_format {
 }";
 
         let snippet =
-            setup_snippet(input, &language_to_ext("cpp")).expect("it to create a snippet file");
+            setup_snippet(input, language_to_ext("cpp")).expect("it to create a snippet file");
 
         let output = run(snippet.path())
             .expect("it to be successful")
@@ -78,7 +78,7 @@ mod test_clang_format {
          "namespace Mdsf {\nclass Adder {\n  public static int add(int a, int b) {\n    a - b;\n    return a + b;\n  }\n}\n}";
 
         let snippet =
-            setup_snippet(input, &language_to_ext("csharp")).expect("it to create a snippet file");
+            setup_snippet(input, language_to_ext("csharp")).expect("it to create a snippet file");
 
         let output = run(snippet.path())
             .expect("it to be successful")
@@ -97,7 +97,7 @@ mod test_clang_format {
 
         let expected_output = "async function asyncAddition(a, b) {\n  a * b;\n  return a + b\n}";
 
-        let snippet = setup_snippet(input, &language_to_ext("javascript"))
+        let snippet = setup_snippet(input, language_to_ext("javascript"))
             .expect("it to create a snippet file");
 
         let output = run(snippet.path())
@@ -126,7 +126,7 @@ mod test_clang_format {
 }";
 
         let snippet =
-            setup_snippet(input, &language_to_ext("json")).expect("it to create a snippet file");
+            setup_snippet(input, language_to_ext("json")).expect("it to create a snippet file");
 
         let output = run(snippet.path())
             .expect("it to be successful")
@@ -148,7 +148,7 @@ mod test_clang_format {
   return a + b;
 }";
 
-        let snippet = setup_snippet(input, &language_to_ext("objective-c"))
+        let snippet = setup_snippet(input, language_to_ext("objective-c"))
             .expect("it to create a snippet file");
 
         let output = run(snippet.path())
@@ -168,8 +168,8 @@ mod test_clang_format {
         let expected_output =
             "service SearchService { rpc Search(SearchRequest) returns (SearchResponse); }";
 
-        let snippet = setup_snippet(input, &language_to_ext("protobuf"))
-            .expect("it to create a snippet file");
+        let snippet =
+            setup_snippet(input, language_to_ext("protobuf")).expect("it to create a snippet file");
 
         let output = run(snippet.path())
             .expect("it to be successful")
@@ -196,7 +196,7 @@ mod test_clang_format {
 }";
 
         let snippet =
-            setup_snippet(input, &language_to_ext("java")).expect("it to create a snippet file");
+            setup_snippet(input, language_to_ext("java")).expect("it to create a snippet file");
 
         let output = run(snippet.path())
             .expect("it to be successful")

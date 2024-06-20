@@ -58,7 +58,7 @@ mod test_biome {
 ";
 
         let snippet =
-            setup_snippet(input, &language_to_ext("json")).expect("it to create a snippet file");
+            setup_snippet(input, language_to_ext("json")).expect("it to create a snippet file");
 
         let output = run_format(snippet.path())
             .expect("it to be successful")
@@ -84,7 +84,7 @@ mod test_biome {
 }
 ";
 
-        let snippet = setup_snippet(input, &language_to_ext("javascript"))
+        let snippet = setup_snippet(input, language_to_ext("javascript"))
             .expect("it to create a snippet file");
 
         let output = run_format(snippet.path())
@@ -114,7 +114,7 @@ number>
 }
 ";
 
-        let snippet = setup_snippet(input, &language_to_ext("typescript"))
+        let snippet = setup_snippet(input, language_to_ext("typescript"))
             .expect("it to create a snippet file");
 
         let output = run_format(snippet.path())

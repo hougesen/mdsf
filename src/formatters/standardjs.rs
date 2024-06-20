@@ -53,7 +53,7 @@ console.info(asyncAddition(1, 2));
 console.info(asyncAddition(1, 2))
 ";
 
-        let snippet = setup_snippet(input, &language_to_ext("javascript"))
+        let snippet = setup_snippet(input, language_to_ext("javascript"))
             .expect("it to create a snippet file");
 
         let output = run(snippet.path())

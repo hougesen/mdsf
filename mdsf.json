@@ -1,5 +1,5 @@
 {
-  "$schema": "https://raw.githubusercontent.com/hougesen/mdsf/main/schemas/v0.1.1/mdsf.schema.json",
+  "$schema": "https://raw.githubusercontent.com/hougesen/mdsf/main/schemas/v0.1.2/mdsf.schema.json",
   "format_finished_document": false,
   "javascript_runtime": "node",
   "languages": {
@@ -46,5 +46,6 @@
     "vue": "prettier",
     "yaml": [["prettier", "yamlfmt", "yamlfix"]],
     "zig": "zigfmt"
-  }
+  },
+  "custom_file_extensions": {}
 }
