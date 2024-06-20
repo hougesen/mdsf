@@ -14,11 +14,13 @@
     "elixir": "mix_format",
     "elm": "elm-format",
     "erlang": [["erlfmt", "efmt"]],
+
     "gleam": "gleam_format",
     "go": [
       ["gci", "goimports-reviser", "goimports"],
       ["gofumpt", "gofmt", "crlfmt"]
     ],
+    "grain": "grain_format",
     "haskell": [["fourmolu", "ormolu", "hindent", "stylish-haskell"]],
     "html": [["prettier", "djlint"]],
     "java": [["google-java-format", "clang-format"]],
