@@ -590,6 +590,11 @@
           "enum": ["rufo"]
         },
         {
+          "description": "https://github.com/rune-rs/rune",
+          "type": "string",
+          "enum": ["rune_fmt"]
+        },
+        {
           "description": "https://github.com/rust-lang/rustfmt",
           "type": "string",
           "enum": ["rustfmt"]
