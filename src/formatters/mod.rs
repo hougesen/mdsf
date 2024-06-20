@@ -137,6 +137,7 @@ mod terraform_fmt;
 mod tofu_fmt;
 mod ts_standard;
 mod typos;
+mod uiua;
 mod usort;
 mod xmlformat;
 mod xmllint;
@@ -782,6 +783,10 @@ pub enum Tooling {
     #[serde(rename = "typos")]
     Typos,
 
+    #[doc = "https://github.com/uiua-lang/uiua"]
+    #[serde(rename = "uiua_fmt")]
+    UiuaFmt,
+
     #[doc = "https://github.com/facebook/usort"]
     #[serde(rename = "usort")]
     Usort,
@@ -960,6 +965,7 @@ impl Tooling {
             Self::TofuFmt => tofu_fmt::run(snippet_path),
             Self::TsStandard => ts_standard::run(snippet_path),
             Self::Typos => typos::run(snippet_path),
+            Self::UiuaFmt => uiua::run_fmt(snippet_path),
             Self::Usort => usort::run(snippet_path),
             Self::XmlFormat => xmlformat::run(snippet_path),
             Self::XmlLint => xmllint::run(snippet_path),
@@ -1108,6 +1114,7 @@ impl core::fmt::Display for Tooling {
             Self::TofuFmt => write!(f, "tofu_fmt"),
             Self::TsStandard => write!(f, "ts-standard"),
             Self::Typos => write!(f, "typos"),
+            Self::UiuaFmt => write!(f, "uiua_fmt"),
             Self::Usort => write!(f, "usort"),
             Self::XmlFormat => write!(f, "xmlformat"),
             Self::XmlLint => write!(f, "xmllint"),
