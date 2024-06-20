@@ -66,6 +66,7 @@ mod gci;
 mod gdformat;
 mod gersemi;
 mod gleam_format;
+mod gluon;
 mod gofmt;
 mod gofumpt;
 mod goimports;
@@ -491,6 +492,10 @@ pub enum Tooling {
     #[serde(rename = "gleam_format")]
     GleamFormat,
 
+    #[doc = "https://github.com/gluon-lang/gluon"]
+    #[serde(rename = "gluon_fmt")]
+    GluonFmt,
+
     #[doc = "https://pkg.go.dev/cmd/gofmt"]
     #[serde(rename = "gofmt")]
     GoFmt,
@@ -874,6 +879,7 @@ impl Tooling {
             Self::Gdformat => gdformat::run(snippet_path),
             Self::Gersemi => gersemi::run(snippet_path),
             Self::GleamFormat => gleam_format::run(snippet_path),
+            Self::GluonFmt => gluon::run_fmt(snippet_path),
             Self::GoFmt => gofmt::run(snippet_path),
             Self::GoFumpt => gofumpt::run(snippet_path),
             Self::GoImports => goimports::run(snippet_path),
@@ -1019,6 +1025,7 @@ impl core::fmt::Display for Tooling {
             Self::Gdformat => write!(f, "gdformat"),
             Self::Gersemi => write!(f, "gersemi"),
             Self::GleamFormat => write!(f, "gleam_format"),
+            Self::GluonFmt => write!(f, "gluon_fmt"),
             Self::GoFmt => write!(f, "gofmt"),
             Self::GoFumpt => write!(f, "gofumpt"),
             Self::GoImports => write!(f, "goimports"),

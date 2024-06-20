@@ -335,6 +335,11 @@
           "enum": ["gleam_format"]
         },
         {
+          "description": "https://github.com/gluon-lang/gluon",
+          "type": "string",
+          "enum": ["gluon_fmt"]
+        },
+        {
           "description": "https://pkg.go.dev/cmd/gofmt",
           "type": "string",
           "enum": ["gofmt"]
