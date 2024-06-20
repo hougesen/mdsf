@@ -2,7 +2,7 @@ use super::execute_command;
 use crate::error::MdsfError;
 
 #[inline]
-pub fn run(snippet_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfError> {
+pub fn run_fmt(snippet_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfError> {
     let mut cmd = std::process::Command::new("deno");
 
     cmd.arg("fmt").arg("--quiet").arg(snippet_path);
@@ -10,9 +10,18 @@ pub fn run(snippet_path: &std::path::Path) -> Result<(bool, Option<String>), Mds
     execute_command(&mut cmd, snippet_path)
 }
 
+#[inline]
+pub fn run_lint(snippet_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfError> {
+    let mut cmd = std::process::Command::new("deno");
+
+    cmd.arg("lint").arg("--fix").arg(snippet_path);
+
+    execute_command(&mut cmd, snippet_path)
+}
+
 #[cfg(test)]
 mod test_deno_fmt {
-    use super::run;
+    use super::run_fmt;
     use crate::{formatters::setup_snippet, generated::language_to_ext};
 
     #[test_with::executable(deno)]
@@ -44,7 +53,7 @@ mod test_deno_fmt {
         let snippet =
             setup_snippet(input, &language_to_ext("json")).expect("it to create a snippet file");
 
-        let output = run(snippet.path())
+        let output = run_fmt(snippet.path())
             .expect("it to be successful")
             .1
             .expect("it to be some");
@@ -69,7 +78,7 @@ mod test_deno_fmt {
         let snippet = setup_snippet(input, &language_to_ext("javascript"))
             .expect("it to create a snippet file");
 
-        let output = run(snippet.path())
+        let output = run_fmt(snippet.path())
             .expect("it to be successful")
             .1
             .expect("it to be some");
@@ -96,7 +105,7 @@ mod test_deno_fmt {
         let snippet = setup_snippet(input, &language_to_ext("typescript"))
             .expect("it to create a snippet file");
 
-        let output = run(snippet.path())
+        let output = run_fmt(snippet.path())
             .expect("it to be successful")
             .1
             .expect("it to be some");

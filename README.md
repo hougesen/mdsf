@@ -104,7 +104,7 @@ mdsf init
 
 <!-- START_SECTION:supported-languages -->
 
-`mdsf` currently supports 132 tools.
+`mdsf` currently supports 133 tools.
 
 | Formatter          | Description                                                                                                            |
 | ------------------ | ---------------------------------------------------------------------------------------------------------------------- |
@@ -139,7 +139,8 @@ mdsf init
 | dart_format        | [https://dart.dev/tools/dart-format](https://dart.dev/tools/dart-format)                                               |
 | dcm_fix            | [https://dcm.dev/docs/cli/fix/](https://dcm.dev/docs/cli/fix/)                                                         |
 | dcm_format         | [https://dcm.dev/docs/cli/format/](https://dcm.dev/docs/cli/format/)                                                   |
-| deno_fmt           | [https://dart.dev/tools/dart-format](https://dart.dev/tools/dart-format)                                               |
+| deno_fmt           | [https://docs.deno.com/runtime/manual/tools/formatter](https://docs.deno.com/runtime/manual/tools/formatter)           |
+| deno_lint          | [https://docs.deno.com/runtime/manual/tools/linter](https://docs.deno.com/runtime/manual/tools/linter)                 |
 | dfmt               | [https://github.com/dlang-community/dfmt](https://github.com/dlang-community/dfmt)                                     |
 | djlint             | [https://www.djlint.com/](https://www.djlint.com/)                                                                     |
 | docformatter       | [https://pypi.org/project/docformatter/](https://pypi.org/project/docformatter/)                                       |

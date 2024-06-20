@@ -205,9 +205,14 @@
           "enum": ["dcm_format"]
         },
         {
-          "description": "https://dart.dev/tools/dart-format",
+          "description": "https://docs.deno.com/runtime/manual/tools/formatter",
           "type": "string",
           "enum": ["deno_fmt"]
+        },
+        {
+          "description": "https://docs.deno.com/runtime/manual/tools/linter",
+          "type": "string",
+          "enum": ["deno_lint"]
         },
         {
           "description": "https://github.com/dlang-community/dfmt",
