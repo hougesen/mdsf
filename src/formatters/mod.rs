@@ -73,6 +73,7 @@ mod goimports;
 mod goimports_reviser;
 mod golines;
 mod google_java_format;
+mod grain;
 mod haml_lint;
 mod hindent;
 mod htmlbeautifier;
@@ -523,6 +524,10 @@ pub enum Tooling {
     #[serde(rename = "google-java-format")]
     GoogleJavaFormat,
 
+    #[doc = "https://grain-lang.org"]
+    #[serde(rename = "grain_format")]
+    GrainFormat,
+
     #[doc = "https://github.com/sds/haml-lint"]
     #[serde(rename = "haml-lint")]
     HamlLint,
@@ -901,6 +906,7 @@ impl Tooling {
             Self::GoImportsReviser => goimports_reviser::run(snippet_path),
             Self::GoLines => golines::run(snippet_path),
             Self::GoogleJavaFormat => google_java_format::run(snippet_path),
+            Self::GrainFormat => grain::run_format(snippet_path),
             Self::HIndent => hindent::run(snippet_path),
             Self::HamlLint => haml_lint::run(snippet_path),
             Self::Htmlbeautifier => htmlbeautifier::run(snippet_path),
@@ -1050,6 +1056,7 @@ impl core::fmt::Display for Tooling {
             Self::GoImportsReviser => write!(f, "goimports-reviser"),
             Self::GoLines => write!(f, "golines"),
             Self::GoogleJavaFormat => write!(f, "google-java-format"),
+            Self::GrainFormat => write!(f, "grain_format"),
             Self::HIndent => write!(f, "hundent"),
             Self::HamlLint => write!(f, "haml-lint"),
             Self::Htmlbeautifier => write!(f, "htmlbeautifier"),

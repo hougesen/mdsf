@@ -370,6 +370,11 @@
           "enum": ["google-java-format"]
         },
         {
+          "description": "https://grain-lang.org",
+          "type": "string",
+          "enum": ["grain_format"]
+        },
+        {
           "description": "https://github.com/sds/haml-lint",
           "type": "string",
           "enum": ["haml-lint"]
