@@ -140,6 +140,7 @@ mod ts_standard;
 mod typos;
 mod uiua;
 mod usort;
+mod veryl;
 mod xmlformat;
 mod xmllint;
 mod xo;
@@ -796,6 +797,10 @@ pub enum Tooling {
     #[serde(rename = "usort")]
     Usort,
 
+    #[doc = "https://github.com/veryl-lang/veryl"]
+    #[serde(rename = "veryl_fmt")]
+    VerylFmt,
+
     #[doc = "https://github.com/pamoller/xmlformatter"]
     #[serde(rename = "xmlformat")]
     XmlFormat,
@@ -973,6 +978,7 @@ impl Tooling {
             Self::Typos => typos::run(snippet_path),
             Self::UiuaFmt => uiua::run_fmt(snippet_path),
             Self::Usort => usort::run(snippet_path),
+            Self::VerylFmt => veryl::run_fmt(snippet_path),
             Self::XmlFormat => xmlformat::run(snippet_path),
             Self::XmlLint => xmllint::run(snippet_path),
             Self::Xo => xo::run(snippet_path),
@@ -1123,6 +1129,7 @@ impl core::fmt::Display for Tooling {
             Self::Typos => write!(f, "typos"),
             Self::UiuaFmt => write!(f, "uiua_fmt"),
             Self::Usort => write!(f, "usort"),
+            Self::VerylFmt => write!(f, "veryl_fmt"),
             Self::XmlFormat => write!(f, "xmlformat"),
             Self::XmlLint => write!(f, "xmllint"),
             Self::Xo => write!(f, "xo"),
