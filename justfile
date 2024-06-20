@@ -33,20 +33,24 @@ codegen:
     cd codegen && cargo run
 
 format:
-    cargo fmt 
+    cargo fmt
     just --fmt --unstable .
     npx --yes prettier@latest --write --cache .
-    cargo run -- format tests 
+    cargo run -- format tests
     git restore tests/
+
+changelog:
+    npx auto-changelog
 
 precommit:
     cargo clean
-    just format 
+    just format
     just codegen
     just build
     just lint
     just test
-    just format 
+    just changelog
+    just format
     typos --exclude src/generated.rs .
 
 publish:
