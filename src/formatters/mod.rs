@@ -42,7 +42,7 @@ mod csharpier;
 mod d2;
 mod dart_format;
 mod dcm;
-mod deno_fmt;
+mod deno;
 mod dfmt;
 mod djlint;
 mod docformatter;
@@ -385,9 +385,13 @@ pub enum Tooling {
     #[serde(rename = "dcm_format")]
     DcmFormat,
 
-    #[doc = "https://dart.dev/tools/dart-format"]
+    #[doc = "https://docs.deno.com/runtime/manual/tools/formatter"]
     #[serde(rename = "deno_fmt")]
     DenoFmt,
+
+    #[doc = "https://docs.deno.com/runtime/manual/tools/linter"]
+    #[serde(rename = "deno_lint")]
+    DenoLint,
 
     #[doc = "https://github.com/dlang-community/dfmt"]
     #[serde(rename = "dfmt")]
@@ -831,7 +835,8 @@ impl Tooling {
             Self::DartFormat => dart_format::run(snippet_path),
             Self::DcmFix => dcm::run_fix(snippet_path),
             Self::DcmFormat => dcm::run_format(snippet_path),
-            Self::DenoFmt => deno_fmt::run(snippet_path),
+            Self::DenoFmt => deno::run_fmt(snippet_path),
+            Self::DenoLint => deno::run_lint(snippet_path),
             Self::DjLint => djlint::run(snippet_path),
             Self::Docformatter => docformatter::run(snippet_path),
             Self::Docstrfmt => docstrfmt::run(snippet_path),
@@ -971,6 +976,7 @@ impl core::fmt::Display for Tooling {
             Self::DFmt => write!(f, "dfmt"),
             Self::DartFormat => write!(f, "dart_format"),
             Self::DenoFmt => write!(f, "deno_fmt"),
+            Self::DenoLint => write!(f, "deno_lint"),
             Self::DjLint => write!(f, "djlint"),
             Self::DcmFormat => write!(f, "dcm_format"),
             Self::DcmFix => write!(f, "dcm_fix"),
