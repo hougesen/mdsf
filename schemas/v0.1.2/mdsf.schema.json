@@ -7,6 +7,14 @@
       "default": "https://raw.githubusercontent.com/hougesen/mdsf/main/schemas/v0.1.2/mdsf.schema.json",
       "type": "string"
     },
+    "custom_file_extensions": {
+      "description": "Used for settings custom file extensions for a given language. ```json { \"custom_file_extensions\": { \"rust\": \".rust\" } } ```",
+      "default": {},
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      }
+    },
     "format_finished_document": {
       "description": "Format the processed document with the selected markdown formatter.",
       "default": false,
@@ -22,6 +30,7 @@
       ]
     },
     "languages": {
+      "description": "Defines which formatter is used by the language. ```json { \"languages\": { \"rust\": \"rustfmt\", \"js\": \"prettier\" } } ```",
       "default": {},
       "type": "object",
       "additionalProperties": {

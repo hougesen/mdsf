@@ -52,7 +52,7 @@ end
         let expected_output = "local function add(a, b)\n\treturn a + b\nend\n";
 
         let snippet =
-            setup_snippet(input, &language_to_ext("lua")).expect("it to create a snippet file");
+            setup_snippet(input, language_to_ext("lua")).expect("it to create a snippet file");
 
         let output = run(snippet.path())
             .expect("it to be successful")

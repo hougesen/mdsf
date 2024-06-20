@@ -3,8 +3,7 @@ use crate::{error::MdsfError, runners::setup_npm_script};
 
 #[inline]
 fn set_npm_groovy_lint_args(cmd: &mut std::process::Command, snippet_path: &std::path::Path) {
-    cmd.arg("--format");
-    cmd.arg(snippet_path);
+    cmd.arg("--format").arg(snippet_path);
 }
 
 #[inline]
@@ -53,7 +52,7 @@ assert add(1, 2) == 3
 ";
 
         let snippet =
-            setup_snippet(input, &language_to_ext("groovy")).expect("it to create a snippet file");
+            setup_snippet(input, language_to_ext("groovy")).expect("it to create a snippet file");
 
         let output = run(snippet.path())
             .expect("it to be successful")

@@ -29,7 +29,7 @@ addNumbers a b = do
 ";
 
         let snippet =
-            setup_snippet(input, &language_to_ext("haskell")).expect("it to create a snippet file");
+            setup_snippet(input, language_to_ext("haskell")).expect("it to create a snippet file");
 
         let output = run(snippet.path())
             .expect("it to be successful")

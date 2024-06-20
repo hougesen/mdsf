@@ -22,7 +22,7 @@ mod test_autopep8 {
         let expected_output = "def add(a: int,  b: int) -> int: return a+b\n";
 
         let snippet =
-            setup_snippet(input, &language_to_ext("python")).expect("it to create a snippet file");
+            setup_snippet(input, language_to_ext("python")).expect("it to create a snippet file");
 
         let output = run(snippet.path())
             .expect("it to be successful")

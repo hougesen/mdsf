@@ -3,8 +3,7 @@ use crate::error::MdsfError;
 
 #[inline]
 fn set_perltidy_args(cmd: &mut std::process::Command, snippet_path: &std::path::Path) {
-    cmd.arg("-b");
-    cmd.arg(snippet_path);
+    cmd.arg("-b").arg(snippet_path);
 }
 
 #[inline]
@@ -59,7 +58,7 @@ LOOP: {
 "#;
 
         let snippet =
-            setup_snippet(input, &language_to_ext("perl")).expect("it to create a snippet file");
+            setup_snippet(input, language_to_ext("perl")).expect("it to create a snippet file");
 
         let output = run(snippet.path())
             .expect("it to be successful")

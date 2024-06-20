@@ -26,7 +26,7 @@ let add a b  =  a +  b
 ";
 
         let snippet =
-            setup_snippet(input, &language_to_ext("fsharp")).expect("it to create a snippet file");
+            setup_snippet(input, language_to_ext("fsharp")).expect("it to create a snippet file");
 
         let output = run(snippet.path())
             .expect("it to be successful")

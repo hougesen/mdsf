@@ -236,7 +236,22 @@ pub fn execute_command(
 #[inline]
 pub fn format_snippet(config: &MdsfConfig, info: &LineInfo, code: &str) -> String {
     if let Some(formatters) = config.languages.get(info.language) {
-        if let Ok(snippet) = setup_snippet(code, &generated::language_to_ext(info.language)) {
+        if let Ok(snippet) = setup_snippet(
+            code,
+            config
+                .custom_file_extensions
+                .get(info.language)
+                .map_or_else(
+                    || generated::language_to_ext(info.language),
+                    |s| {
+                        if s.is_empty() {
+                            info.language
+                        } else {
+                            s
+                        }
+                    },
+                ),
+        ) {
             let snippet_path = snippet.path();
 
             if let Ok(Some(formatted_code)) = formatters.format(snippet_path, info) {

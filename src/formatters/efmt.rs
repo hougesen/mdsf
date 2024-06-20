@@ -28,7 +28,7 @@ case Erlang of movie->[hello(mike,joe,robert),credits]; language->formatting_arg
 "
 ;
         let snippet =
-            setup_snippet(input, &language_to_ext("erlang")).expect("it to create a snippet file");
+            setup_snippet(input, language_to_ext("erlang")).expect("it to create a snippet file");
 
         let output = run(snippet.path())
             .expect("it to be successful")
