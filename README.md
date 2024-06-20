@@ -104,7 +104,7 @@ mdsf init
 
 <!-- START_SECTION:supported-languages -->
 
-`mdsf` currently supports 144 tools.
+`mdsf` currently supports 145 tools.
 
 | Formatter          | Description                                                                                                            |
 | ------------------ | ---------------------------------------------------------------------------------------------------------------------- |
@@ -209,6 +209,7 @@ mdsf init
 | puppet-lint        | [https://github.com/puppetlabs/puppet-lint](https://github.com/puppetlabs/puppet-lint)                                 |
 | purs-tidy          | [https://github.com/natefaubion/purescript-tidy](https://github.com/natefaubion/purescript-tidy)                       |
 | pyink              | [https://github.com/google/pyink](https://github.com/google/pyink)                                                     |
+| raco_fmt           | [https://docs.racket-lang.org/fmt/](https://docs.racket-lang.org/fmt/)                                                 |
 | rescript_format    | [https://rescript-lang.org/](https://rescript-lang.org/)                                                               |
 | roc_format         | [https://github.com/roc-lang/roc](https://github.com/roc-lang/roc)                                                     |
 | rstfmt             | [https://github.com/dzhu/rstfmt](https://github.com/dzhu/rstfmt)                                                       |

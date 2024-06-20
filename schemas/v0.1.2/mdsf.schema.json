@@ -555,6 +555,11 @@
           "enum": ["pyink"]
         },
         {
+          "description": "https://docs.racket-lang.org/fmt/",
+          "type": "string",
+          "enum": ["raco_fmt"]
+        },
+        {
           "description": "https://rescript-lang.org/",
           "type": "string",
           "enum": ["rescript_format"]
