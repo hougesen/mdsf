@@ -110,6 +110,7 @@ mod prettier;
 mod puppet_lint;
 mod purs_tidy;
 mod pyink;
+mod raco;
 mod rescript_format;
 mod roc_format;
 mod rstfmt;
@@ -675,6 +676,10 @@ pub enum Tooling {
     #[serde(rename = "pyink")]
     PyInk,
 
+    #[doc = "https://docs.racket-lang.org/fmt/"]
+    #[serde(rename = "raco_fmt")]
+    RacoFmt,
+
     #[doc = "https://rescript-lang.org/"]
     #[serde(rename = "rescript_format")]
     ReScriptFormat,
@@ -959,6 +964,7 @@ impl Tooling {
             Self::PuppetLint => puppet_lint::run(snippet_path),
             Self::PursTidy => purs_tidy::run(snippet_path),
             Self::PyInk => pyink::run(snippet_path),
+            Self::RacoFmt => raco::run_fmt(snippet_path),
             Self::ReScriptFormat => rescript_format::run(snippet_path),
             Self::RocFormat => roc_format::run(snippet_path),
             Self::RstFmt => rstfmt::run(snippet_path),
@@ -1112,6 +1118,7 @@ impl core::fmt::Display for Tooling {
             Self::PuppetLint => write!(f, "puppet-lint"),
             Self::PursTidy => write!(f, "purs-tidy"),
             Self::PyInk => write!(f, "pyink"),
+            Self::RacoFmt => write!(f, "raco_fmt"),
             Self::ReScriptFormat => write!(f, "rescript_format"),
             Self::RocFormat => write!(f, "roc_format"),
             Self::RstFmt => write!(f, "rstfmt"),
