@@ -710,6 +710,11 @@
           "enum": ["usort"]
         },
         {
+          "description": "https://github.com/veryl-lang/veryl",
+          "type": "string",
+          "enum": ["veryl_fmt"]
+        },
+        {
           "description": "https://github.com/pamoller/xmlformatter",
           "type": "string",
           "enum": ["xmlformat"]
