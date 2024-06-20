@@ -240,6 +240,11 @@
           "enum": ["docstrfmt"]
         },
         {
+          "description": "https://github.com/dotenv-linter/dotenv-linter",
+          "type": "string",
+          "enum": ["dotenv-linter"]
+        },
+        {
           "description": "https://dprint.dev",
           "type": "string",
           "enum": ["dprint"]
