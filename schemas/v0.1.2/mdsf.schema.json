@@ -400,6 +400,11 @@
           "enum": ["just_fmt"]
         },
         {
+          "description": "https://github.com/jsona/jsona",
+          "type": "string",
+          "enum": ["jsona_format"]
+        },
+        {
           "description": "https://www.kcl-lang.io/docs/tools/cli/kcl/fmt",
           "type": "string",
           "enum": ["kcl_fmt"]
