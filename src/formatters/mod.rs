@@ -116,6 +116,7 @@ mod rubocop;
 mod rubyfmt;
 mod ruff;
 mod rufo;
+mod rune;
 mod rustfmt;
 mod rustywind;
 mod scalafmt;
@@ -701,6 +702,10 @@ pub enum Tooling {
     #[serde(rename = "rufo")]
     Rufo,
 
+    #[doc = "https://github.com/rune-rs/rune"]
+    #[serde(rename = "rune_fmt")]
+    RuneFmt,
+
     #[doc = "https://github.com/rust-lang/rustfmt"]
     #[serde(rename = "rustfmt")]
     RustFmt,
@@ -956,6 +961,7 @@ impl Tooling {
             Self::Ruff => ruff::run_format(snippet_path),
             Self::RuffCheck => ruff::run_check(snippet_path),
             Self::Rufo => rufo::run(snippet_path),
+            Self::RuneFmt => rune::run_fmt(snippet_path),
             Self::RustFmt => rustfmt::run(snippet_path),
             Self::Rustywind => rustywind::run(snippet_path),
             Self::SQLFormatter => sql_formatter::run(snippet_path),
@@ -1107,6 +1113,7 @@ impl core::fmt::Display for Tooling {
             Self::Ruff => write!(f, "ruff"),
             Self::RuffCheck => write!(f, "ruff_check"),
             Self::Rufo => write!(f, "rufo"),
+            Self::RuneFmt => write!(f, "rune_fmt"),
             Self::RustFmt => write!(f, "rustfmt"),
             Self::Rustywind => write!(f, "rustywind"),
             Self::SQLFormatter => write!(f, "sql-formatter"),
