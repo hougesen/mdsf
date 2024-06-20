@@ -47,6 +47,7 @@ mod dfmt;
 mod djlint;
 mod docformatter;
 mod docstrfmt;
+mod dotenv_linter;
 mod dprint;
 mod efmt;
 mod elm_format;
@@ -412,6 +413,10 @@ pub enum Tooling {
     #[doc = "https://pypi.org/project/docstrfmt/"]
     #[serde(rename = "docstrfmt")]
     Docstrfmt,
+
+    #[doc = "https://github.com/dotenv-linter/dotenv-linter"]
+    #[serde(rename = "dotenv-linter")]
+    DotenvLinter,
 
     #[doc = "https://dprint.dev"]
     #[serde(rename = "dprint")]
@@ -845,6 +850,7 @@ impl Tooling {
             Self::DjLint => djlint::run(snippet_path),
             Self::Docformatter => docformatter::run(snippet_path),
             Self::Docstrfmt => docstrfmt::run(snippet_path),
+            Self::DotenvLinter => dotenv_linter::run(snippet_path),
             Self::Dprint => dprint::run(snippet_path),
             Self::Efmt => efmt::run(snippet_path),
             Self::ElmFormat => elm_format::run(snippet_path),
@@ -988,6 +994,7 @@ impl core::fmt::Display for Tooling {
             Self::DcmFix => write!(f, "dcm_fix"),
             Self::Docformatter => write!(f, "docformatter"),
             Self::Docstrfmt => write!(f, "docstrfmt"),
+            Self::DotenvLinter => write!(f, "dotenv-linter"),
             Self::Dprint => write!(f, "dprint"),
             Self::Efmt => write!(f, "efmt"),
             Self::ElmFormat => write!(f, "elm-format"),
