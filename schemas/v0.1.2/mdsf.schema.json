@@ -195,6 +195,11 @@
           "enum": ["dart_format"]
         },
         {
+          "description": "https://dart.dev/tools/dart-fix",
+          "type": "string",
+          "enum": ["dart_fix"]
+        },
+        {
           "description": "https://dcm.dev/docs/cli/fix/",
           "type": "string",
           "enum": ["dcm_fix"]

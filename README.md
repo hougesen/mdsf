@@ -104,7 +104,7 @@ mdsf init
 
 <!-- START_SECTION:supported-languages -->
 
-`mdsf` currently supports 133 tools.
+`mdsf` currently supports 134 tools.
 
 | Formatter          | Description                                                                                                            |
 | ------------------ | ---------------------------------------------------------------------------------------------------------------------- |
@@ -136,6 +136,7 @@ mdsf init
 | crystal_format     | [https://crystal-lang.org/](https://crystal-lang.org/)                                                                 |
 | csharpier          | [https://csharpier.com/](https://csharpier.com/)                                                                       |
 | d2                 | [https://d2lang.com/](https://d2lang.com/)                                                                             |
+| dart_fix           | [https://dart.dev/tools/dart-fix](https://dart.dev/tools/dart-fix)                                                     |
 | dart_format        | [https://dart.dev/tools/dart-format](https://dart.dev/tools/dart-format)                                               |
 | dcm_fix            | [https://dcm.dev/docs/cli/fix/](https://dcm.dev/docs/cli/fix/)                                                         |
 | dcm_format         | [https://dcm.dev/docs/cli/format/](https://dcm.dev/docs/cli/format/)                                                   |
