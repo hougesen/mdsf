@@ -385,6 +385,11 @@
           "enum": ["htmlbeautifier"]
         },
         {
+          "description": "https://github.com/imba/imba",
+          "type": "string",
+          "enum": ["imba_fmt"]
+        },
+        {
           "description": "https://pycqa.github.io/isort/",
           "type": "string",
           "enum": ["isort"]

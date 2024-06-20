@@ -76,6 +76,7 @@ mod google_java_format;
 mod haml_lint;
 mod hindent;
 mod htmlbeautifier;
+mod imba;
 mod isort;
 mod joker;
 mod jsona;
@@ -532,6 +533,10 @@ pub enum Tooling {
     #[serde(rename = "htmlbeautifier")]
     Htmlbeautifier,
 
+    #[doc = "https://github.com/imba/imba"]
+    #[serde(rename = "imba_fmt")]
+    ImbaFmt,
+
     #[doc = "https://pycqa.github.io/isort/"]
     #[serde(rename = "isort")]
     Isort,
@@ -889,6 +894,7 @@ impl Tooling {
             Self::HIndent => hindent::run(snippet_path),
             Self::HamlLint => haml_lint::run(snippet_path),
             Self::Htmlbeautifier => htmlbeautifier::run(snippet_path),
+            Self::ImbaFmt => imba::run_fmt(snippet_path),
             Self::Isort => isort::run(snippet_path),
             Self::Joker => joker::run(snippet_path),
             Self::JuliaFormatterJl => juliaformatter_jl::run(snippet_path),
@@ -1035,6 +1041,7 @@ impl core::fmt::Display for Tooling {
             Self::HIndent => write!(f, "hundent"),
             Self::HamlLint => write!(f, "haml-lint"),
             Self::Htmlbeautifier => write!(f, "htmlbeautifier"),
+            Self::ImbaFmt => write!(f, "imba_fmt"),
             Self::Isort => write!(f, "isort"),
             Self::Joker => write!(f, "joker"),
             Self::JuliaFormatterJl => write!(f, "juliaformatter.jl"),

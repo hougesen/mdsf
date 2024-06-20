@@ -104,7 +104,7 @@ mdsf init
 
 <!-- START_SECTION:supported-languages -->
 
-`mdsf` currently supports 137 tools.
+`mdsf` currently supports 138 tools.
 
 | Formatter          | Description                                                                                                            |
 | ------------------ | ---------------------------------------------------------------------------------------------------------------------- |
@@ -175,6 +175,7 @@ mdsf init
 | haml-lint          | [https://github.com/sds/haml-lint](https://github.com/sds/haml-lint)                                                   |
 | hindent            | [https://hackage.haskell.org/package/hindent](https://hackage.haskell.org/package/hindent)                             |
 | htmlbeautifier     | [https://github.com/threedaymonk/htmlbeautifier](https://github.com/threedaymonk/htmlbeautifier)                       |
+| imba_fmt           | [https://github.com/imba/imba](https://github.com/imba/imba)                                                           |
 | isort              | [https://pycqa.github.io/isort/](https://pycqa.github.io/isort/)                                                       |
 | joker              | [https://github.com/candid82/joker](https://github.com/candid82/joker)                                                 |
 | jsona_format       | [https://github.com/jsona/jsona](https://github.com/jsona/jsona)                                                       |
