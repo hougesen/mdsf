@@ -104,7 +104,7 @@ mdsf init
 
 <!-- START_SECTION:supported-languages -->
 
-`mdsf` currently supports 145 tools.
+`mdsf` currently supports 146 tools.
 
 | Formatter          | Description                                                                                                            |
 | ------------------ | ---------------------------------------------------------------------------------------------------------------------- |
@@ -244,6 +244,7 @@ mdsf init
 | uiua_fmt           | [https://github.com/uiua-lang/uiua](https://github.com/uiua-lang/uiua)                                                 |
 | usort              | [https://github.com/facebook/usort](https://github.com/facebook/usort)                                                 |
 | veryl_fmt          | [https://github.com/veryl-lang/veryl](https://github.com/veryl-lang/veryl)                                             |
+| vlang_fmt          | [https://vlang.io](https://vlang.io)                                                                                   |
 | xmlformat          | [https://github.com/pamoller/xmlformatter](https://github.com/pamoller/xmlformatter)                                   |
 | xmllint            | [http://xmlsoft.org/xmllint.html](http://xmlsoft.org/xmllint.html)                                                     |
 | xo                 | [http://github.com/xojs/xo](http://github.com/xojs/xo)                                                                 |

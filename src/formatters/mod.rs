@@ -143,6 +143,7 @@ mod ts_standard;
 mod typos;
 mod uiua;
 mod usort;
+mod v;
 mod veryl;
 mod xmlformat;
 mod xmllint;
@@ -812,6 +813,10 @@ pub enum Tooling {
     #[serde(rename = "usort")]
     Usort,
 
+    #[doc = "https://vlang.io"]
+    #[serde(rename = "vlang_fmt")]
+    VlangFmt,
+
     #[doc = "https://github.com/veryl-lang/veryl"]
     #[serde(rename = "veryl_fmt")]
     VerylFmt,
@@ -996,6 +1001,7 @@ impl Tooling {
             Self::Typos => typos::run(snippet_path),
             Self::UiuaFmt => uiua::run_fmt(snippet_path),
             Self::Usort => usort::run(snippet_path),
+            Self::VlangFmt => v::run_fmt(snippet_path),
             Self::VerylFmt => veryl::run_fmt(snippet_path),
             Self::XmlFormat => xmlformat::run(snippet_path),
             Self::XmlLint => xmllint::run(snippet_path),
@@ -1150,6 +1156,7 @@ impl core::fmt::Display for Tooling {
             Self::Typos => write!(f, "typos"),
             Self::UiuaFmt => write!(f, "uiua_fmt"),
             Self::Usort => write!(f, "usort"),
+            Self::VlangFmt => write!(f, "vlang_fmt"),
             Self::VerylFmt => write!(f, "veryl_fmt"),
             Self::XmlFormat => write!(f, "xmlformat"),
             Self::XmlLint => write!(f, "xmllint"),
