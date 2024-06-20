@@ -77,6 +77,7 @@ mod hindent;
 mod htmlbeautifier;
 mod isort;
 mod joker;
+mod jsona;
 mod juliaformatter_jl;
 mod just_fmt;
 mod kcl_fmt;
@@ -542,6 +543,10 @@ pub enum Tooling {
     #[serde(rename = "just_fmt")]
     JustFmt,
 
+    #[doc = "https://github.com/jsona/jsona"]
+    #[serde(rename = "jsona_format")]
+    JsonaFormat,
+
     #[doc = "https://www.kcl-lang.io/docs/tools/cli/kcl/fmt"]
     #[serde(rename = "kcl_fmt")]
     KclFmt,
@@ -882,6 +887,7 @@ impl Tooling {
             Self::Joker => joker::run(snippet_path),
             Self::JuliaFormatterJl => juliaformatter_jl::run(snippet_path),
             Self::JustFmt => just_fmt::run(snippet_path),
+            Self::JsonaFormat => jsona::run_format(snippet_path),
             Self::KclFmt => kcl_fmt::run(snippet_path),
             Self::Kdlfmt => kdlfmt::run(snippet_path),
             Self::Ktfmt => ktfmt::run(snippet_path),
@@ -1026,6 +1032,7 @@ impl core::fmt::Display for Tooling {
             Self::Joker => write!(f, "joker"),
             Self::JuliaFormatterJl => write!(f, "juliaformatter.jl"),
             Self::JustFmt => write!(f, "just_fmt"),
+            Self::JsonaFormat => write!(f, "jsona_format"),
             Self::KclFmt => write!(f, "kcl_fmt"),
             Self::Kdlfmt => write!(f, "kdlfmt"),
             Self::Ktfmt => write!(f, "ktfmt"),

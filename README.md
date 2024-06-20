@@ -104,7 +104,7 @@ mdsf init
 
 <!-- START_SECTION:supported-languages -->
 
-`mdsf` currently supports 135 tools.
+`mdsf` currently supports 136 tools.
 
 | Formatter          | Description                                                                                                            |
 | ------------------ | ---------------------------------------------------------------------------------------------------------------------- |
@@ -176,6 +176,7 @@ mdsf init
 | htmlbeautifier     | [https://github.com/threedaymonk/htmlbeautifier](https://github.com/threedaymonk/htmlbeautifier)                       |
 | isort              | [https://pycqa.github.io/isort/](https://pycqa.github.io/isort/)                                                       |
 | joker              | [https://github.com/candid82/joker](https://github.com/candid82/joker)                                                 |
+| jsona_format       | [https://github.com/jsona/jsona](https://github.com/jsona/jsona)                                                       |
 | juliaformatter.jl  | [https://github.com/domluna/JuliaFormatter.jl](https://github.com/domluna/JuliaFormatter.jl)                           |
 | just_fmt           | [https://github.com/casey/just](https://github.com/casey/just)                                                         |
 | kcl_fmt            | [https://www.kcl-lang.io/docs/tools/cli/kcl/fmt](https://www.kcl-lang.io/docs/tools/cli/kcl/fmt)                       |
