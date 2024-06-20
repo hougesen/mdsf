@@ -2,10 +2,19 @@ use super::execute_command;
 use crate::error::MdsfError;
 
 #[inline]
-pub fn run(snippet_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfError> {
+pub fn run_format(snippet_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfError> {
     let mut cmd = std::process::Command::new("dart");
 
     cmd.arg("format").arg(snippet_path);
+
+    execute_command(&mut cmd, snippet_path)
+}
+
+#[inline]
+pub fn run_fix(snippet_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfError> {
+    let mut cmd = std::process::Command::new("dart");
+
+    cmd.arg("fix").arg("--apply").arg(snippet_path);
 
     execute_command(&mut cmd, snippet_path)
 }
@@ -28,7 +37,7 @@ mod test_dart_format {
         let snippet =
             setup_snippet(input, &language_to_ext("dart")).expect("it to create a snippet file");
 
-        let output = super::run(snippet.path())
+        let output = super::run_format(snippet.path())
             .expect("it to be successful")
             .1
             .expect("it to be some");
