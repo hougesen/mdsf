@@ -93,6 +93,7 @@ mod markuplint;
 mod mdformat;
 mod misspell;
 mod mix_format;
+mod nickel;
 mod nimpretty;
 mod nixfmt;
 mod nixpkgs_fmt;
@@ -601,6 +602,10 @@ pub enum Tooling {
     #[serde(rename = "mix_format")]
     MixFormat,
 
+    #[doc = "https://nickel-lang.org"]
+    #[serde(rename = "nickel_format")]
+    NickelFormat,
+
     #[doc = "https://github.com/nim-lang/nim"]
     #[serde(rename = "nimpretty")]
     Nimpretty,
@@ -911,6 +916,7 @@ impl Tooling {
             Self::MdFormat => mdformat::run(snippet_path),
             Self::Misspell => misspell::run(snippet_path),
             Self::MixFormat => mix_format::run(snippet_path),
+            Self::NickelFormat => nickel::run_format(snippet_path),
             Self::NicklockwoodSwiftFormat => swiftformat::run(snippet_path),
             Self::Nimpretty => nimpretty::run(snippet_path),
             Self::Nixfmt => nixfmt::run(snippet_path),
@@ -1058,6 +1064,7 @@ impl core::fmt::Display for Tooling {
             Self::MdFormat => write!(f, "mdformat"),
             Self::Misspell => write!(f, "misspell"),
             Self::MixFormat => write!(f, "mix_format"),
+            Self::NickelFormat => write!(f, "nickel_format"),
             Self::NicklockwoodSwiftFormat => write!(f, "swiftformat"),
             Self::Nimpretty => write!(f, "nimpretty"),
             Self::Nixfmt => write!(f, "nixfmt"),

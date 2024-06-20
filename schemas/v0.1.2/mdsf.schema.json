@@ -470,6 +470,11 @@
           "enum": ["mix_format"]
         },
         {
+          "description": "https://nickel-lang.org",
+          "type": "string",
+          "enum": ["nickel_format"]
+        },
+        {
           "description": "https://github.com/nim-lang/nim",
           "type": "string",
           "enum": ["nimpretty"]
