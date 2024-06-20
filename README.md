@@ -104,7 +104,7 @@ mdsf init
 
 <!-- START_SECTION:supported-languages -->
 
-`mdsf` currently supports 136 tools.
+`mdsf` currently supports 137 tools.
 
 | Formatter          | Description                                                                                                            |
 | ------------------ | ---------------------------------------------------------------------------------------------------------------------- |
@@ -165,6 +165,7 @@ mdsf init
 | gdformat           | [https://github.com/scony/godot-gdscript-toolkit](https://github.com/scony/godot-gdscript-toolkit)                     |
 | gersemi            | [https://github.com/blankspruce/gersemi](https://github.com/blankspruce/gersemi)                                       |
 | gleam_format       | [https://gleam.run/](https://gleam.run/)                                                                               |
+| gluon_fmt          | [https://github.com/gluon-lang/gluon](https://github.com/gluon-lang/gluon)                                             |
 | gofmt              | [https://pkg.go.dev/cmd/gofmt](https://pkg.go.dev/cmd/gofmt)                                                           |
 | gofumpt            | [https://github.com/mvdan/gofumpt](https://github.com/mvdan/gofumpt)                                                   |
 | goimports          | [https://pkg.go.dev/golang.org/x/tools/cmd/goimports](https://pkg.go.dev/golang.org/x/tools/cmd/goimports)             |
