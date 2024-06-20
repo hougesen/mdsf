@@ -104,7 +104,7 @@ mdsf init
 
 <!-- START_SECTION:supported-languages -->
 
-`mdsf` currently supports 139 tools.
+`mdsf` currently supports 140 tools.
 
 | Formatter          | Description                                                                                                            |
 | ------------------ | ---------------------------------------------------------------------------------------------------------------------- |
@@ -237,6 +237,7 @@ mdsf init
 | tofu_fmt           | [https://opentofu.org/docs/cli/commands/fmt/](https://opentofu.org/docs/cli/commands/fmt/)                             |
 | ts-standard        | [https://github.com/standard/ts-standard](https://github.com/standard/ts-standard)                                     |
 | typos              | [https://github.com/crate-ci/typos](https://github.com/crate-ci/typos)                                                 |
+| uiua_fmt           | [https://github.com/uiua-lang/uiua](https://github.com/uiua-lang/uiua)                                                 |
 | usort              | [https://github.com/facebook/usort](https://github.com/facebook/usort)                                                 |
 | xmlformat          | [https://github.com/pamoller/xmlformatter](https://github.com/pamoller/xmlformatter)                                   |
 | xmllint            | [http://xmlsoft.org/xmllint.html](http://xmlsoft.org/xmllint.html)                                                     |

@@ -695,6 +695,11 @@
           "enum": ["typos"]
         },
         {
+          "description": "https://github.com/uiua-lang/uiua",
+          "type": "string",
+          "enum": ["uiua_fmt"]
+        },
+        {
           "description": "https://github.com/facebook/usort",
           "type": "string",
           "enum": ["usort"]
