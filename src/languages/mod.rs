@@ -18,6 +18,7 @@ mod html;
 mod java;
 mod javascript;
 mod json;
+mod kotlin;
 mod lua;
 mod nim;
 mod ocaml;
@@ -43,6 +44,7 @@ pub fn default_tools() -> std::collections::BTreeMap<String, MdsfFormatter<Tooli
         csharp::default_config(),
         css::default_config(),
         d::default_config(),
+        dart::default_config(),
         elixir::default_config(),
         elm::default_config(),
         erlang::default_config(),
@@ -53,6 +55,7 @@ pub fn default_tools() -> std::collections::BTreeMap<String, MdsfFormatter<Tooli
         java::default_config(),
         javascript::default_config(),
         json::default_config(),
+        kotlin::default_config(),
         lua::default_config(),
         nim::default_config(),
         ocaml::default_config(),
@@ -67,6 +70,5 @@ pub fn default_tools() -> std::collections::BTreeMap<String, MdsfFormatter<Tooli
         typescript::default_config(),
         yaml::default_config(),
         zig::default_config(),
-        dart::default_config(),
     ])
 }
