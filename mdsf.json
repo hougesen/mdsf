@@ -1,5 +1,6 @@
 {
   "$schema": "https://raw.githubusercontent.com/hougesen/mdsf/main/schemas/v0.1.3/mdsf.schema.json",
+  "custom_file_extensions": {},
   "format_finished_document": false,
   "javascript_runtime": "node",
   "languages": {
@@ -14,7 +15,6 @@
     "elixir": "mix_format",
     "elm": "elm-format",
     "erlang": [["erlfmt", "efmt"]],
-
     "gleam": "gleam_format",
     "go": [
       ["gci", "goimports-reviser", "goimports"],
@@ -28,6 +28,7 @@
       ["prettier", "biome", "deno_fmt", "clang-format", "standardjs"]
     ],
     "json": [["prettier", "biome", "deno_fmt", "clang-format"]],
+    "kotlin": "ktfmt",
     "lua": [["stylua", "luaformatter"]],
     "nim": "nimpretty",
     "ocaml": [["ocamlformat", "ocp-indent"]],
@@ -46,6 +47,5 @@
     "vue": "prettier",
     "yaml": [["prettier", "yamlfmt", "yamlfix"]],
     "zig": "zigfmt"
-  },
-  "custom_file_extensions": {}
+  }
 }
