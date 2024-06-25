@@ -6,7 +6,7 @@ pub enum MdsfError {
     ConfigParse(std::path::PathBuf),
     // TODO: use &std::path::Path
     FileNotFound(std::path::PathBuf),
-    FormatterError,
+    FormatterError(String),
     // TODO: use &str
     MissingBinary(String),
     CheckModeChanges(u32),
@@ -28,7 +28,15 @@ impl core::fmt::Display for MdsfError {
                 "No file or directory with the name '{}' found",
                 path.display()
             ),
-            Self::FormatterError => write!(f, "Error formatting codeblock"),
+            Self::FormatterError(stderr) => {
+                let trimmed_stderr = stderr.trim();
+
+                if trimmed_stderr.is_empty() {
+                    write!(f, "Error formatting codeblock")
+                } else {
+                    write!(f, "Error formatting codeblock\n{trimmed_stderr}")
+                }
+            }
             Self::MissingBinary(binary_name) => write!(f, "{binary_name} was not found in path"),
             Self::CheckModeChanges(file_count) => {
                 let file_or_files = if file_count == &1 { "file" } else { "files" };

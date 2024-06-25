@@ -37,6 +37,7 @@ schemars = { version = "0.8.21", optional = true }
 serde = { version = "1.0.203", features = ["derive"] }
 serde_json = "1.0.118"
 tempfile = "3.10.1"
+terminal_size = "0.3.0"
 which = "6.0.1"
 
 [dev-dependencies]

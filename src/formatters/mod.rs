@@ -188,16 +188,21 @@ pub fn read_snippet(file_path: &std::path::Path) -> std::io::Result<String> {
 
 #[inline]
 fn handle_post_execution(
-    result: std::io::Result<bool>,
+    result: std::io::Result<std::process::Output>,
     snippet_path: &std::path::Path,
 ) -> Result<(bool, Option<String>), MdsfError> {
     match result {
-        Ok(true) => read_snippet(snippet_path)
-            .map(|code| (false, Some(code)))
-            .map_err(MdsfError::from),
-
-        Ok(false) => Err(MdsfError::FormatterError),
-
+        Ok(output) => {
+            if output.status.success() {
+                read_snippet(snippet_path)
+                    .map(|code| (false, Some(code)))
+                    .map_err(MdsfError::from)
+            } else {
+                Err(MdsfError::FormatterError(
+                    String::from_utf8_lossy(&output.stderr).to_string(),
+                ))
+            }
+        }
         Err(err) => {
             if err.kind() == std::io::ErrorKind::NotFound {
                 Ok((true, None))
@@ -208,13 +213,13 @@ fn handle_post_execution(
     }
 }
 
-fn spawn_command(cmd: &mut Command) -> std::io::Result<bool> {
+fn spawn_command(cmd: &mut Command) -> std::io::Result<std::process::Output> {
     if !DEBUG.load(core::sync::atomic::Ordering::Relaxed) {
         cmd.stdout(std::process::Stdio::null());
         cmd.stderr(std::process::Stdio::null());
     }
 
-    Ok(cmd.spawn()?.wait()?.success())
+    cmd.output()
 }
 
 #[inline]
@@ -1234,8 +1239,8 @@ impl MdsfFormatter<Tooling> {
                         );
 
                         return Ok((false, None));
-                    } else if matches!(e, MdsfError::FormatterError) {
-                        print_error_formatting(&formatter_name, info);
+                    } else if let MdsfError::FormatterError(stderr) = e {
+                        print_error_formatting(&formatter_name, info, stderr);
                         return Ok((false, None));
                     }
                 }
