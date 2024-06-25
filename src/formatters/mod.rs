@@ -1230,6 +1230,7 @@ impl MdsfFormatter<Tooling> {
                 if let Err(e) = &r {
                     if let MdsfError::MissingBinary(binary) = e {
                         print_binary_not_in_path(
+                            info.filename,
                             if &formatter_name == binary {
                                 formatter_name
                             } else {
