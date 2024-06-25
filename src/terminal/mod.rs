@@ -67,8 +67,8 @@ pub fn print_unknown_javascript_runtime(value: u8, fallback: JavaScriptRuntime) 
 }
 
 #[inline]
-pub fn print_binary_not_in_path(binary_name: &str) {
-    warn!("{binary_name} not found in path");
+pub fn print_binary_not_in_path(path: &std::path::Path, binary_name: &str) {
+    warn!("{} {binary_name} not found in path", path.display());
 }
 
 #[inline]
@@ -88,6 +88,16 @@ pub fn warn_unknown_language(language_name: &str, filename: &std::path::Path) {
         "{} no formatter configured for '{language_name}'",
         filename.display()
     );
+}
+
+#[inline]
+pub fn print_error_reading_file(path: &std::path::Path, error: &std::io::Error) {
+    error!("{} error reading file - {error}", path.display());
+}
+
+#[inline]
+pub fn print_error_saving_file(path: &std::path::Path, error: &std::io::Error) {
+    error!("{} error saving output - {error}", path.display());
 }
 
 #[inline]

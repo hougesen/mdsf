@@ -45,6 +45,10 @@ pub struct FormatCommandArguments {
 
     #[arg(long, value_enum)]
     pub log_level: Option<LogLevel>,
+
+    /// Amount of threads to use. Defaults to 0 (auto).
+    #[arg(long)]
+    pub threads: Option<usize>,
 }
 
 #[derive(clap::ValueEnum, Clone, Copy, PartialEq, Eq, Debug)]

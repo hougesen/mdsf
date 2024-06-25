@@ -1,8 +1,9 @@
 use core::sync::atomic::AtomicBool;
 
+use terminal::{print_error_reading_file, print_error_saving_file};
+
 use crate::{
     config::MdsfConfig,
-    error::MdsfError,
     formatters::format_snippet,
     parser::{parse_generic_codeblock, parse_go_codeblock},
     terminal::{
@@ -111,34 +112,44 @@ fn format_file(config: &MdsfConfig, filename: &std::path::Path, input: &str) -> 
 }
 
 #[inline]
-pub fn handle_file(
-    config: &MdsfConfig,
-    path: &std::path::Path,
-    dry_run: bool,
-) -> Result<bool, MdsfError> {
+pub fn handle_file(config: &MdsfConfig, path: &std::path::Path, dry_run: bool) -> bool {
     let time = std::time::Instant::now();
 
-    let input = std::fs::read_to_string(path)?;
+    match std::fs::read_to_string(path) {
+        Ok(input) => {
+            if !input.is_empty() {
+                let (modified, output) = format_file(config, path, &input);
 
-    if !input.is_empty() {
-        let (modified, output) = format_file(config, path, &input);
+                if modified && output != input {
+                    if dry_run {
+                        print_changed_file_error(path);
+                    } else {
+                        let write_result = std::fs::write(path, output);
 
-        if modified && output != input {
-            if dry_run {
-                print_changed_file_error(path);
-            } else {
-                std::fs::write(path, output)?;
+                        if let Err(write_error) = write_result {
+                            print_error_saving_file(path, &write_error);
+
+                            return false;
+                        }
+                    }
+
+                    print_changed_file(path, time.elapsed());
+
+                    return true;
+                }
             }
 
-            print_changed_file(path, time.elapsed());
+            print_unchanged_file(path, time.elapsed());
 
-            return Ok(true);
+            false
+        }
+
+        Err(error) => {
+            print_error_reading_file(path, &error);
+
+            false
         }
     }
-
-    print_unchanged_file(path, time.elapsed());
-
-    Ok(false)
 }
 
 pub struct LineInfo<'a> {
@@ -201,7 +212,7 @@ fn add(a: i32, b: i32) -> i32 {
             let file =
                 setup_snippet(input, language_to_ext("markdown")).expect("it to create a file");
 
-            handle_file(&config, file.path(), false).expect("it to be a success");
+            assert!(handle_file(&config, file.path(), false));
 
             let output = std::fs::read_to_string(file.path()).expect("it to return the string");
 
@@ -941,7 +952,7 @@ fn add(a: i32, b: i32) i32 {
             let file =
                 setup_snippet(input, language_to_ext("markdown")).expect("it to create a file");
 
-            handle_file(&config, file.path(), false).expect("it to be a success");
+            assert!(handle_file(&config, file.path(), false));
 
             let output = std::fs::read_to_string(file.path()).expect("it to return the string");
 
@@ -1002,7 +1013,7 @@ type Whatever struct {
                 let file =
                     setup_snippet(input, language_to_ext("markdown")).expect("it to create a file");
 
-                handle_file(&config, file.path(), false).expect("it to be a success");
+                assert!(handle_file(&config, file.path(), false));
 
                 let output = std::fs::read_to_string(file.path()).expect("it to return the string");
 
@@ -1031,7 +1042,7 @@ type Whatever struct {
                 let file =
                     setup_snippet(input, language_to_ext("markdown")).expect("it to create a file");
 
-                handle_file(&config, file.path(), false).expect("it to be a success");
+                assert!(handle_file(&config, file.path(), false));
 
                 let output = std::fs::read_to_string(file.path()).expect("it to return the string");
 
@@ -1088,7 +1099,7 @@ type Whatever struct {
                 let file =
                     setup_snippet(input, language_to_ext("markdown")).expect("it to create a file");
 
-                handle_file(&config, file.path(), false).expect("it to be a success");
+                assert!(handle_file(&config, file.path(), false));
 
                 let output = std::fs::read_to_string(file.path()).expect("it to return the string");
 
@@ -1118,7 +1129,7 @@ type Whatever struct {
                 let file =
                     setup_snippet(input, language_to_ext("markdown")).expect("it to create a file");
 
-                handle_file(&config, file.path(), false).expect("it to be a success");
+                assert!(handle_file(&config, file.path(), false));
 
                 let output = std::fs::read_to_string(file.path()).expect("it to return the string");
 
@@ -1205,7 +1216,7 @@ func add(a int, b int) int {
                 let file =
                     setup_snippet(input, language_to_ext("markdown")).expect("it to create a file");
 
-                handle_file(&config, file.path(), false).expect("it to be a success");
+                assert!(handle_file(&config, file.path(), false));
 
                 let output = std::fs::read_to_string(file.path()).expect("it to return the string");
 
@@ -1234,7 +1245,7 @@ func add(a int, b int) int {
                 let file =
                     setup_snippet(input, language_to_ext("markdown")).expect("it to create a file");
 
-                handle_file(&config, file.path(), false).expect("it to be a success");
+                assert!(handle_file(&config, file.path(), false));
 
                 let output = std::fs::read_to_string(file.path()).expect("it to return the string");
 
