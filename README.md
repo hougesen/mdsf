@@ -2,6 +2,30 @@
 
 Format markdown code snippets using your favorite code formatters.
 
+<!-- START_SECTION:base-command-help -->
+
+```
+mdsf 0.1.3
+Format markdown code snippets using your favorite code formatters
+Mads Hougesen <mads@mhouge.dk>
+
+Usage: mdsf <COMMAND>
+
+Commands:
+  format       Run formatters on input files
+  verify       Verify files are formatted
+  init         Create a new mdsf config
+  completions  Generate shell completion
+  cache-prune  Remove old caches
+  help         Print this message or the help of the given subcommand(s)
+
+Options:
+  -h, --help     Print help
+  -V, --version  Print version
+```
+
+<!-- END_SECTION:base-command-help -->
+
 ## Installation
 
 The latest version of `mdsf` can be downloaded directly from [github.com/hougesen/mdsf/releases](https://github.com/hougesen/mdsf/releases).
