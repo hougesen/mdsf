@@ -1,5 +1,6 @@
 use crate::formatters::{MdsfFormatter, Tooling};
 
+#[inline]
 pub fn default_config() -> (String, MdsfFormatter<Tooling>) {
     (
         "go".to_string(),

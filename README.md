@@ -43,6 +43,7 @@ Options:
       --debug                  Log stdout and stderr of formatters
       --log-level <LOG_LEVEL>  [possible values: trace, debug, info, warn, error, off]
       --threads <THREADS>      Amount of threads to use. Defaults to 0 (auto)
+      --cache                  Only format changed codeblocks
   -h, --help                   Print help
   -V, --version                Print version
 ```
@@ -83,6 +84,8 @@ Shell completions can be generated using `mdsf completions <SHELL>`.
 <!-- START_SECTION:completions-command-help -->
 
 ```
+Generate shell completion
+
 Usage: mdsf completions <SHELL>
 
 Arguments:

@@ -34,21 +34,27 @@ pub fn print_formatter_time(formatter: &str, info: &LineInfo, duration: core::ti
 }
 
 #[inline]
-pub fn print_unchanged_file(path: &std::path::Path, dur: core::time::Duration) {
+pub fn print_unchanged_file(path: &std::path::Path, dur: core::time::Duration, cached: bool) {
     info!(
         "{}",
         style(format!(
-            "{} finished in {}ms (unchanged)",
+            "{} finished in {}ms (unchanged){}",
             path.display(),
-            dur.as_millis()
+            dur.as_millis(),
+            if cached { " (cached)" } else { "" }
         ))
         .dim()
     );
 }
 
 #[inline]
-pub fn print_changed_file(path: &std::path::Path, dur: core::time::Duration) {
-    info!("{} finished in {}ms", path.display(), dur.as_millis());
+pub fn print_changed_file(path: &std::path::Path, dur: core::time::Duration, cached: bool) {
+    info!(
+        "{} finished in {}ms{}",
+        path.display(),
+        dur.as_millis(),
+        if cached { " (cached)" } else { "" }
+    );
 }
 
 #[inline]
