@@ -30,7 +30,7 @@ pub enum Commands {
     Completions(CompletionsCommandArguments),
 
     /// Remove old caches.
-    CachePrune,
+    CachePrune(CachePruneArguments),
 }
 
 #[derive(Args, Debug)]
@@ -108,4 +108,11 @@ pub enum LogLevel {
 #[derive(Args, Debug)]
 pub struct CompletionsCommandArguments {
     pub shell: clap_complete::Shell,
+}
+
+#[derive(Args, Debug)]
+pub struct CachePruneArguments {
+    /// Remove caches that aren't state (based on config).
+    #[arg(long, default_value_t = false)]
+    pub all: bool,
 }
