@@ -8,7 +8,7 @@ use crate::{
     terminal::print_config_not_found,
 };
 
-#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(serde::Serialize, serde::Deserialize, Hash)]
 #[cfg_attr(test, derive(Debug, PartialEq, Eq))]
 #[cfg_attr(feature = "json-schema", derive(schemars::JsonSchema))]
 pub struct MdsfConfig {

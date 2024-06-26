@@ -10,7 +10,7 @@ mod bun;
 mod deno;
 mod node;
 
-#[derive(Debug, Default, serde::Serialize, serde::Deserialize, Clone, Copy)]
+#[derive(Debug, Default, serde::Serialize, serde::Deserialize, Clone, Copy, Hash)]
 #[cfg_attr(test, derive(PartialEq, Eq))]
 #[cfg_attr(feature = "json-schema", derive(schemars::JsonSchema))]
 pub enum JavaScriptRuntime {

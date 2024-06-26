@@ -4,7 +4,10 @@ use std::{
 };
 
 use clap::builder::OsStr;
-use mdsf::{cli::FormatCommandArguments, config::MdsfConfig, error::MdsfError, handle_file};
+use mdsf::{
+    caching::get_config_hash, cli::FormatCommandArguments, config::MdsfConfig, error::MdsfError,
+    handle_file,
+};
 use threadpool::ThreadPool;
 
 const MDSF_IGNORE_FILE_NAME: &str = ".mdsfignore";
@@ -37,12 +40,18 @@ pub fn run(args: FormatCommandArguments, dry_run: bool) -> Result<(), MdsfError>
         Ok(MdsfConfig::load(path).unwrap_or_default())
     }?;
 
+    let config_cache_key = if args.cache {
+        Some(get_config_hash(&conf))
+    } else {
+        None
+    };
+
     mdsf::runners::set_javascript_runtime(conf.javascript_runtime);
 
     let changed_file_count = Arc::new(AtomicU32::new(0));
 
     if args.path.is_file() {
-        let was_formatted = handle_file(&conf, &args.path, dry_run);
+        let was_formatted = handle_file(&conf, &args.path, dry_run, config_cache_key);
 
         if was_formatted {
             changed_file_count.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
@@ -72,8 +81,11 @@ pub fn run(args: FormatCommandArguments, dry_run: bool) -> Result<(), MdsfError>
 
                 let changed_file_count_ref = changed_file_count.clone();
 
+                let config_cache_key_ref = config_cache_key.clone();
+
                 pool.execute(move || {
-                    let was_formatted = handle_file(&config_ref, &file_path, dry_run);
+                    let was_formatted =
+                        handle_file(&config_ref, &file_path, dry_run, config_cache_key_ref);
 
                     if was_formatted {
                         changed_file_count_ref.fetch_add(1, std::sync::atomic::Ordering::SeqCst);

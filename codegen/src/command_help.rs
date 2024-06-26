@@ -13,6 +13,8 @@ fn execute_command(name: &str) -> std::io::Result<std::process::Output> {
 }
 
 fn update_command(name: &str) -> anyhow::Result<()> {
+    println!("generate help for command '{name}'");
+
     let help = String::from_utf8(execute_command(name)?.stdout)?;
 
     update_readme(
@@ -25,7 +27,9 @@ fn update_command(name: &str) -> anyhow::Result<()> {
 
 pub fn generate() -> anyhow::Result<()> {
     update_command("format")?;
+
     update_command("verify")?;
+
     update_command("completions")?;
 
     anyhow::Ok(())
