@@ -1,4 +1,4 @@
-use std::{ffi::OsStr, io::Write, process::Command};
+use std::{ffi::OsStr, io::Write, process::Command, str::FromStr};
 
 use tempfile::NamedTempFile;
 use which::which;
@@ -180,7 +180,9 @@ pub fn setup_snippet(code: &str, file_ext: &str) -> std::io::Result<NamedTempFil
         },
     );
 
-    if !std::fs::exists(".mdsf-cache/.gitignore").unwrap_or_default() {
+    if !std::path::PathBuf::from_str(".mdsf-cache/.gitignore")
+        .is_ok_and(|p| p.try_exists().unwrap_or_default())
+    {
         setup_temp_dir()?;
     }
 
