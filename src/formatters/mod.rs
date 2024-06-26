@@ -156,6 +156,18 @@ mod zigfmt;
 mod zprint;
 
 #[inline]
+fn setup_temp_dir() -> std::io::Result<()> {
+    std::fs::create_dir_all(".mdsf-cache")?;
+
+    std::fs::write(
+        ".mdsf-cache/.gitignore",
+        "Automatically created by mdsf.\n*\n",
+    )?;
+
+    Ok(())
+}
+
+#[inline]
 pub fn setup_snippet(code: &str, file_ext: &str) -> std::io::Result<NamedTempFile> {
     let mut b = tempfile::Builder::new();
 
@@ -168,12 +180,11 @@ pub fn setup_snippet(code: &str, file_ext: &str) -> std::io::Result<NamedTempFil
         },
     );
 
-    let mut f = if file_ext == ".cs" || file_ext == ".proto" {
-        std::fs::create_dir_all(".mdsf-cache").ok();
-        b.tempfile_in(".mdsf-cache")
-    } else {
-        b.tempfile()
-    }?;
+    if !std::fs::exists(".mdsf-cache/.gitignore").unwrap_or_default() {
+        setup_temp_dir()?;
+    }
+
+    let mut f = b.tempfile_in(".mdsf-cache")?;
 
     f.write_all(code.as_bytes())?;
     f.flush()?;
