@@ -7,6 +7,10 @@ license = "MIT"
 readme = "../README.md"
 keywords = []
 categories = []
+authors = ["Mads Hougesen <mads@mhouge.dk>"]
+repository = "https://github.com/hougesen/mdsf"
+homepage = "https://github.com/hougesen/mdsf"
+publish = false
 
 [dependencies]
 anyhow = "1.0.86"

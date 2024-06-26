@@ -34,6 +34,7 @@ codegen:
 
 format:
     cargo fmt
+    (cd codegen && cargo fmt)
     just --fmt --unstable .
     npx --yes prettier@latest --write --cache .
     cargo run -- format tests
@@ -51,7 +52,7 @@ precommit:
     just test
     just changelog
     just format
-    typos --exclude src/generated.rs .
+    typos --exclude src/generated.rs --exclude CHANGELOG.md .
 
 publish:
     just build

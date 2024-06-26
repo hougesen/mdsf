@@ -110,20 +110,22 @@ fn create_table(schema: Vec<Tool>) -> String {
 
     lines.insert(
         0,
-        format!("`mdsf` currently supports {} tools.\n", tool_count),
+        format!("`mdsf` currently supports {tool_count} tools.\n"),
     );
 
     lines.join("\n")
 }
 
-fn update_readme(table: &str) -> Result<()> {
+pub fn update_readme(key: &str, value: &str) -> Result<()> {
     let readme = std::fs::read_to_string("../README.md")?;
 
-    let update = format!("<!-- START_SECTION:supported-languages -->\n\n{table}\n\n<!-- END_SECTION:supported-languages -->");
+    let update = format!("<!-- START_SECTION:{key} -->\n\n{value}\n\n<!-- END_SECTION:{key} -->");
 
-    let re  = RegexBuilder::new(
-        r"(<!-- START_SECTION:supported-languages -->)[^{}]*<!-- END_SECTION:supported-languages -->",
-    ).multi_line( true ) .build()?;
+    let re = RegexBuilder::new(
+        format!(r"(<!-- START_SECTION:{key} -->)[^{{}}]*<!-- END_SECTION:{key} -->",).as_str(),
+    )
+    .multi_line(true)
+    .build()?;
 
     let updated = re.replace(&readme, update);
 
@@ -141,7 +143,7 @@ pub fn generate() -> Result<()> {
 
     let table = create_table(schema.definitions.tooling.one_of);
 
-    update_readme(&table)?;
+    update_readme("supported-tools", &table)?;
 
     Ok(())
 }
