@@ -1,31 +1,40 @@
 use crate::readme_tooling::update_readme;
 
 fn execute_command(name: &str) -> std::io::Result<std::process::Output> {
-    let mut x = std::process::Command::new("cargo");
-    x.arg("build");
-    x.current_dir("../");
-    x.output()?;
+    std::process::Command::new("cargo")
+        .arg("build")
+        .current_dir("../")
+        .output()?;
 
-    std::process::Command::new("../target/debug/mdsf")
-        .arg(name)
-        .arg("--help")
-        .output()
+    let mut help_command = std::process::Command::new("../target/debug/mdsf");
+
+    if !name.is_empty() {
+        help_command.arg(name);
+    }
+
+    help_command.arg("--help");
+
+    help_command.output()
 }
 
 fn update_command(name: &str) -> anyhow::Result<()> {
-    println!("generate help for command '{name}'");
+    let section_name = &format!(
+        "{}-command-help",
+        if name.is_empty() { "base" } else { name }
+    );
+
+    println!("generate help for command '{section_name}'");
 
     let help = String::from_utf8(execute_command(name)?.stdout)?;
 
-    update_readme(
-        &format!("{name}-command-help"),
-        &format!("```\n{}\n```", help.trim()),
-    )?;
+    update_readme(section_name, &format!("```\n{}\n```", help.trim()))?;
 
     anyhow::Ok(())
 }
 
 pub fn generate() -> anyhow::Result<()> {
+    update_command("")?;
+
     update_command("format")?;
 
     update_command("verify")?;
