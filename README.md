@@ -28,9 +28,72 @@ cargo install --path ./mdsf --bin mdsf
 mdsf format <NAME_OF_FOLDER_OR_FOLDER>
 ```
 
+<!-- START_SECTION:format-command-help -->
+
+```
+Run formatters on input files
+
+Usage: mdsf format [OPTIONS] <PATH>
+
+Arguments:
+  <PATH>  Path to file or directory
+
+Options:
+      --config <CONFIG>        Path to config
+      --debug                  Log stdout and stderr of formatters
+      --log-level <LOG_LEVEL>  [possible values: trace, debug, info, warn, error, off]
+      --threads <THREADS>      Amount of threads to use. Defaults to 0 (auto)
+  -h, --help                   Print help
+  -V, --version                Print version
+```
+
+<!-- END_SECTION:format-command-help -->
+
+### Verify code is formatted
+
+```shell
+mdsf verify <NAME_OF_FOLDER_OR_FOLDER>
+```
+
+<!-- START_SECTION:verify-command-help -->
+
+```
+Verify files are formatted
+
+Usage: mdsf verify [OPTIONS] <PATH>
+
+Arguments:
+  <PATH>  Path to file or directory
+
+Options:
+      --config <CONFIG>        Path to config
+      --debug                  Log stdout and stderr of formatters
+      --log-level <LOG_LEVEL>  [possible values: trace, debug, info, warn, error, off]
+      --threads <THREADS>      Amount of threads to use. Defaults to 0 (auto)
+  -h, --help                   Print help
+  -V, --version                Print version
+```
+
+<!-- END_SECTION:verify-command-help -->
+
 ### Shell completions
 
 Shell completions can be generated using `mdsf completions <SHELL>`.
+
+<!-- START_SECTION:completions-command-help -->
+
+```
+Usage: mdsf completions <SHELL>
+
+Arguments:
+  <SHELL>  [possible values: bash, elvish, fish, powershell, zsh]
+
+Options:
+  -h, --help     Print help
+  -V, --version  Print version
+```
+
+<!-- END_SECTION:completions-command-help -->
 
 #### Bash
 
@@ -102,7 +165,7 @@ mdsf init
 >
 > Only tools that are already installed will be used.
 
-<!-- START_SECTION:supported-languages -->
+<!-- START_SECTION:supported-tools-->
 
 `mdsf` currently supports 146 tools.
 
@@ -255,7 +318,7 @@ mdsf init
 | zigfmt             | [https://ziglang.org/](https://ziglang.org/)                                                                           |
 | zprint             | [https://github.com/kkinnear/zprint](https://github.com/kkinnear/zprint)                                               |
 
-<!-- END_SECTION:supported-languages -->
+<!-- END_SECTION:supported-tools-->
 
 ## Acknowledgement
 

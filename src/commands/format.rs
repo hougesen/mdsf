@@ -10,7 +10,7 @@ use threadpool::ThreadPool;
 const MDSF_IGNORE_FILE_NAME: &str = ".mdsfignore";
 
 #[inline]
-fn detemine_threads_to_use(argument: &Option<usize>) -> usize {
+fn determine_threads_to_use(argument: &Option<usize>) -> usize {
     if let Some(thread_arg) = argument {
         if thread_arg > &0 {
             return thread_arg.to_owned();
@@ -58,7 +58,7 @@ pub fn run(args: FormatCommandArguments, dry_run: bool) -> Result<(), MdsfError>
 
         let md_ext = OsStr::from("md");
 
-        let thread_count = detemine_threads_to_use(&args.threads).max(1);
+        let thread_count = determine_threads_to_use(&args.threads).max(1);
 
         let pool = ThreadPool::new(thread_count);
 
