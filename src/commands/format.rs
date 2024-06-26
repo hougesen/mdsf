@@ -29,6 +29,7 @@ fn determine_threads_to_use(argument: &Option<usize>) -> usize {
     1
 }
 
+#[inline]
 pub fn run(args: FormatCommandArguments, dry_run: bool) -> Result<(), MdsfError> {
     mdsf::DEBUG.swap(args.debug, core::sync::atomic::Ordering::Relaxed);
 

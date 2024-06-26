@@ -5,11 +5,12 @@ use mdsf::{
     terminal::logging::setup_logger,
 };
 
-mod check;
 mod completions;
 mod format;
 mod init;
+mod prune_cache;
 
+#[inline]
 pub fn execute_command() -> Result<(), MdsfError> {
     match Cli::parse().command {
         Commands::Format(args) => {
@@ -27,6 +28,11 @@ pub fn execute_command() -> Result<(), MdsfError> {
         Commands::Init => init::run().map_err(MdsfError::from),
         Commands::Completions(args) => {
             completions::run(&args);
+
+            Ok(())
+        }
+        Commands::CachePrune => {
+            prune_cache::run();
 
             Ok(())
         }

@@ -84,6 +84,8 @@ Shell completions can be generated using `mdsf completions <SHELL>`.
 <!-- START_SECTION:completions-command-help -->
 
 ```
+Generate shell completion
+
 Usage: mdsf completions <SHELL>
 
 Arguments:

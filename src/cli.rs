@@ -17,16 +17,20 @@ pub struct Cli {
 
 #[derive(Subcommand, Debug)]
 pub enum Commands {
-    /// Run formatters on input files
+    /// Run formatters on input files.
     Format(FormatCommandArguments),
 
-    /// Verify files are formatted
+    /// Verify files are formatted.
     Verify(VerifyCommandArguments),
 
-    /// Create a new mdsf config
+    /// Create a new mdsf config.
     Init,
 
+    /// Generate shell completion.
     Completions(CompletionsCommandArguments),
+
+    /// Remove old caches.
+    CachePrune,
 }
 
 #[derive(Args, Debug)]
@@ -50,7 +54,7 @@ pub struct FormatCommandArguments {
     #[arg(long)]
     pub threads: Option<usize>,
 
-    /// Only format changed codeblocks  
+    /// Only format changed codeblocks
     #[arg(long, default_value_t = false)]
     pub cache: bool,
 }
@@ -78,6 +82,7 @@ pub struct VerifyCommandArguments {
 }
 
 impl From<VerifyCommandArguments> for FormatCommandArguments {
+    #[inline]
     fn from(value: VerifyCommandArguments) -> Self {
         Self {
             path: value.path,

@@ -1,6 +1,7 @@
 use clap::CommandFactory;
 use mdsf::cli::{Cli, CompletionsCommandArguments};
 
+#[inline]
 pub fn run(args: &CompletionsCommandArguments) {
     let mut cmd = Cli::command();
 

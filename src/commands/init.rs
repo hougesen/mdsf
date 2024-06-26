@@ -1,5 +1,6 @@
 use mdsf::config::MdsfConfig;
 
+#[inline]
 pub fn run() -> std::io::Result<()> {
     let current_dir = std::env::current_dir()?;
 

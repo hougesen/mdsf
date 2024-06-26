@@ -157,7 +157,7 @@ mod zprint;
 
 #[inline]
 fn setup_temp_dir() -> std::io::Result<()> {
-    std::fs::create_dir_all(".mdsf-cache")?;
+    std::fs::create_dir_all(".mdsf-cache/caches")?;
 
     std::fs::write(
         ".mdsf-cache/.gitignore",

@@ -114,8 +114,12 @@ fn format_file(config: &MdsfConfig, filename: &std::path::Path, input: &str) -> 
 }
 
 #[inline]
-fn save_file_cache(cache_key: &str, contents: &str) -> std::io::Result<()> {
-    std::fs::write(format!("/{cache_key}"), contents)
+fn save_file_cache(config_key: &str, file_key: &str, contents: &str) -> std::io::Result<()> {
+    let dir = std::path::PathBuf::from(format!(".mdsf-cache/caches/{config_key}"));
+
+    std::fs::create_dir_all(&dir)?;
+
+    std::fs::write(dir.join(file_key), contents)
 }
 
 #[inline]
@@ -123,10 +127,14 @@ fn format_or_use_cache(
     config: &MdsfConfig,
     path: &std::path::Path,
     input: &str,
-    cache_key: Option<String>,
+    cache_key: Option<(String, String)>,
 ) -> (String, bool, bool) {
-    if let Some(key) = &cache_key {
-        if let Ok(cached_value) = std::fs::read_to_string(format!("/{key}")) {
+    if let Some((config, file)) = &cache_key {
+        let dir = std::path::PathBuf::from(format!(".mdsf-cache/caches/{config}/"));
+
+        let _ = std::fs::create_dir_all(&dir);
+
+        if let Ok(cached_value) = std::fs::read_to_string(dir.join(file)) {
             let modified = cached_value != input;
 
             return (cached_value, modified, true);
@@ -135,9 +143,9 @@ fn format_or_use_cache(
 
     let (modified, output) = format_file(config, path, input);
 
-    if let Some(key) = cache_key {
+    if let Some((config_key, file_key)) = cache_key {
         // We do not (currently) care if saving the cache fails.
-        let _ = save_file_cache(&key, &output);
+        let _ = save_file_cache(&config_key, &file_key, &output);
     }
 
     (output, modified, false)
@@ -160,10 +168,9 @@ pub fn handle_file(
                 return false;
             }
 
-            let file_cache_key = cache_key.map(|key| format!("{key}-{}", hash_text_block(&input)));
+            let cache_key = cache_key.map(|key| (key, hash_text_block(&input)));
 
-            let (output, modified, cached) =
-                format_or_use_cache(config, path, &input, file_cache_key);
+            let (output, modified, cached) = format_or_use_cache(config, path, &input, cache_key);
 
             if modified && output != input {
                 if dry_run {
