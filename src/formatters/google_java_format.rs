@@ -12,11 +12,11 @@ pub async fn run(snippet_path: &std::path::Path) -> Result<(bool, Option<String>
 
 #[cfg(test)]
 mod test_google_java_format {
-    use super::run;
     use crate::{formatters::setup_snippet, generated::language_to_ext};
 
+    #[tokio::test]
     #[test_with::executable(google-java-format)]
-    fn it_should_format_java() {
+    async fn it_should_format_java() {
         let input = "class HelloWorld {
     public static void main(String[] args) {
                 System.out.println(\"Hello\");
@@ -32,10 +32,12 @@ mod test_google_java_format {
 }
 ";
 
-        let snippet =
-            setup_snippet(input, language_to_ext("java")).expect("it to create a snippet file");
+        let snippet = setup_snippet(input, language_to_ext("java"))
+            .await
+            .expect("it to create a snippet file");
 
-        let output = run(snippet.path())
+        let output = super::run(snippet.path())
+            .await
             .expect("it to be successful")
             .1
             .expect("it to be some");

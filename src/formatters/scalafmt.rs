@@ -22,11 +22,11 @@ pub async fn run(snippet_path: &std::path::Path) -> Result<(bool, Option<String>
 
 #[cfg(test)]
 mod test_scalafmt {
-    use super::run;
     use crate::{formatters::setup_snippet, generated::language_to_ext};
 
+    #[tokio::test]
     #[test_with::executable(scalafmt)]
-    fn it_should_format_scala() {
+    async fn it_should_format_scala() {
         let input = "object Addition {
              def main() = {
                  println(1 + 3)
@@ -39,10 +39,12 @@ mod test_scalafmt {
 }
 ";
 
-        let snippet =
-            setup_snippet(input, language_to_ext("scala")).expect("it to create a snippet file");
+        let snippet = setup_snippet(input, language_to_ext("scala"))
+            .await
+            .expect("it to create a snippet file");
 
-        let output = run(snippet.path())
+        let output = super::run(snippet.path())
+            .await
             .expect("it to be successful")
             .1
             .expect("it to be some");

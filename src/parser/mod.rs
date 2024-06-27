@@ -47,8 +47,8 @@ pub static GO_PACKAGE_RE: Lazy<Regex> = Lazy::new(|| Regex::new(r"^\s*package\s+
 mod test_go_package_re {
     use crate::parser::GO_PACKAGE_RE;
 
-    #[test]
-    fn it_should_match() {
+    #[tokio::test]
+    async fn it_should_match() {
         for s in [
             "package\tmdsf",
             "package mdsf ",
@@ -64,8 +64,8 @@ mod test_go_package_re {
         }
     }
 
-    #[test]
-    fn it_should_not_match() {
+    #[tokio::test]
+    async fn it_should_not_match() {
         for s in [
             "packageasd",
             "missing pkg name",

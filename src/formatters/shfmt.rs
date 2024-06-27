@@ -12,13 +12,11 @@ pub async fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), 
 
 #[cfg(test)]
 mod test_shfmt {
-    use crate::{
-        formatters::{setup_snippet, shfmt::run},
-        generated::language_to_ext,
-    };
+    use crate::{formatters::setup_snippet, generated::language_to_ext};
 
+    #[tokio::test]
     #[test_with::executable(shfmt)]
-    fn it_should_format_sh() {
+    async fn it_should_format_sh() {
         let input = "
 
 #!/bin/sh
@@ -42,10 +40,12 @@ add() {
 }
 ";
 
-        let snippet =
-            setup_snippet(input, language_to_ext("shell")).expect("it to create a snippet file");
+        let snippet = setup_snippet(input, language_to_ext("shell"))
+            .await
+            .expect("it to create a snippet file");
 
-        let output = run(snippet.path())
+        let output = super::run(snippet.path())
+            .await
             .expect("it to be successful")
             .1
             .expect("it to be some");
@@ -53,8 +53,9 @@ add() {
         assert_eq!(expected_output, output);
     }
 
+    #[tokio::test]
     #[test_with::executable(shfmt)]
-    fn it_should_format_bash() {
+    async fn it_should_format_bash() {
         let input = "
 
 #!/bin/bash
@@ -78,10 +79,12 @@ add() {
 }
 ";
 
-        let snippet =
-            setup_snippet(input, language_to_ext("bash")).expect("it to create a snippet file");
+        let snippet = setup_snippet(input, language_to_ext("bash"))
+            .await
+            .expect("it to create a snippet file");
 
-        let output = run(snippet.path())
+        let output = super::run(snippet.path())
+            .await
             .expect("it to be successful")
             .1
             .expect("it to be some");
@@ -89,8 +92,9 @@ add() {
         assert_eq!(expected_output, output);
     }
 
+    #[tokio::test]
     #[test_with::executable(shfmt)]
-    fn it_should_format_zsh() {
+    async fn it_should_format_zsh() {
         let input = "
 
 #!/bin/zsh
@@ -114,10 +118,12 @@ add() {
 }
 ";
 
-        let snippet =
-            setup_snippet(input, language_to_ext("zsh")).expect("it to create a snippet file");
+        let snippet = setup_snippet(input, language_to_ext("zsh"))
+            .await
+            .expect("it to create a snippet file");
 
-        let output = run(snippet.path())
+        let output = super::run(snippet.path())
+            .await
             .expect("it to be successful")
             .1
             .expect("it to be some");

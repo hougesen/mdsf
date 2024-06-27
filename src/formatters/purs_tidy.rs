@@ -31,11 +31,11 @@ pub async fn run(snippet_path: &std::path::Path) -> Result<(bool, Option<String>
 
 #[cfg(test)]
 mod test_purs_tidy {
-    use super::run;
     use crate::{formatters::setup_snippet, generated::language_to_ext};
 
+    #[tokio::test]
     #[test_with::executable(npx)]
-    fn it_should_format_purescript() {
+    async fn it_should_format_purescript() {
         let input = r#"module       Test.Main   where
 
 import Prelude
@@ -59,9 +59,11 @@ main = do
   log "You should add some tests.""#;
 
         let snippet = setup_snippet(input, language_to_ext("purescript"))
+            .await
             .expect("it to create a snippet file");
 
-        let output = run(snippet.path())
+        let output = super::run(snippet.path())
+            .await
             .expect("it to be successful")
             .1
             .expect("it to be some");

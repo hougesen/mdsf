@@ -37,13 +37,11 @@ pub async fn run_check(
 
 #[cfg(test)]
 mod test_biome {
-    use crate::{
-        formatters::{biome::run_format, setup_snippet},
-        generated::language_to_ext,
-    };
+    use crate::{formatters::setup_snippet, generated::language_to_ext};
 
+    #[tokio::test]
     #[test_with::executable(npx)]
-    fn it_should_format_json() {
+    async fn it_should_format_json() {
         let input = "
               {
               \"key\": \"value\",
@@ -61,10 +59,12 @@ mod test_biome {
 }
 ";
 
-        let snippet =
-            setup_snippet(input, language_to_ext("json")).expect("it to create a snippet file");
+        let snippet = setup_snippet(input, language_to_ext("json"))
+            .await
+            .expect("it to create a snippet file");
 
-        let output = run_format(snippet.path())
+        let output = super::run_format(snippet.path())
+            .await
             .expect("it to be successful")
             .1
             .expect("it to be some");
@@ -72,8 +72,9 @@ mod test_biome {
         assert_eq!(expected_output, output);
     }
 
+    #[tokio::test]
     #[test_with::executable(npx)]
-    fn it_should_format_javascript() {
+    async fn it_should_format_javascript() {
         let input = "
     async function asyncAddition(
             a,b
@@ -89,9 +90,11 @@ mod test_biome {
 ";
 
         let snippet = setup_snippet(input, language_to_ext("javascript"))
+            .await
             .expect("it to create a snippet file");
 
-        let output = run_format(snippet.path())
+        let output = super::run_format(snippet.path())
+            .await
             .expect("it to be successful")
             .1
             .expect("it to be some");
@@ -99,8 +102,9 @@ mod test_biome {
         assert_eq!(expected_output, output);
     }
 
+    #[tokio::test]
     #[test_with::executable(npx)]
-    fn it_should_format_typescript() {
+    async fn it_should_format_typescript() {
         let input = "
     async function asyncAddition(
             a:number,b:number
@@ -119,9 +123,11 @@ number>
 ";
 
         let snippet = setup_snippet(input, language_to_ext("typescript"))
+            .await
             .expect("it to create a snippet file");
 
-        let output = run_format(snippet.path())
+        let output = super::run_format(snippet.path())
+            .await
             .expect("it to be successful")
             .1
             .expect("it to be some");

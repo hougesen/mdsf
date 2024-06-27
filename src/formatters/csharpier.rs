@@ -12,11 +12,11 @@ pub async fn run(snippet_path: &std::path::Path) -> Result<(bool, Option<String>
 
 #[cfg(test)]
 mod test_csharpier {
-    use super::run;
     use crate::{formatters::setup_snippet, generated::language_to_ext};
 
+    #[tokio::test]
     #[test_with::executable(dotnet)]
-    fn it_should_format_csharp() {
+    async fn it_should_format_csharp() {
         let input = "namespace Mdsf {
                         class Adder {
                                                     public static int add(int a,int b) {
@@ -39,10 +39,12 @@ mod test_csharpier {
 }
 ";
 
-        let snippet =
-            setup_snippet(input, language_to_ext("csharp")).expect("it to create a snippet file");
+        let snippet = setup_snippet(input, language_to_ext("csharp"))
+            .await
+            .expect("it to create a snippet file");
 
-        let output = run(snippet.path())
+        let output = super::run(snippet.path())
+            .await
             .expect("it to be successful")
             .1
             .expect("it to be some");

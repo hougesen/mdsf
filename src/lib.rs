@@ -235,8 +235,8 @@ mod tests {
         handle_file,
     };
 
-    #[test]
-    fn it_should_format_the_code() {
+    #[tokio::test]
+    async fn it_should_format_the_code() {
         let input = "```rust
 fn           add(
      a:
@@ -255,7 +255,7 @@ fn add(a: i32, b: i32) -> i32 {
         let config = MdsfConfig::default();
 
         {
-            let (modified, output) = format_file(&config, std::path::Path::new("."), input);
+            let (modified, output) = format_file(&config, std::path::Path::new("."), input).await;
 
             assert!(modified);
 
@@ -263,10 +263,11 @@ fn add(a: i32, b: i32) -> i32 {
         };
 
         {
-            let file =
-                setup_snippet(input, language_to_ext("markdown")).expect("it to create a file");
+            let file = setup_snippet(input, language_to_ext("markdown"))
+                .await
+                .expect("it to create a file");
 
-            assert!(handle_file(&config, file.path(), false, None));
+            assert!(handle_file(&config, file.path(), false, None).await);
 
             let output = std::fs::read_to_string(file.path()).expect("it to return the string");
 
@@ -274,8 +275,8 @@ fn add(a: i32, b: i32) -> i32 {
         };
     }
 
-    #[test]
-    fn it_should_not_modify_outside_blocks() {
+    #[tokio::test]
+    async fn it_should_not_modify_outside_blocks() {
         let input = "# title
 
 Let's play!
@@ -324,7 +325,7 @@ fn add(a: i32, b: i32) -> i32 {
 
         let config = MdsfConfig::default();
 
-        let (modified, output) = format_file(&config, std::path::Path::new("."), input);
+        let (modified, output) = format_file(&config, std::path::Path::new("."), input).await;
 
         assert!(modified);
 
@@ -332,8 +333,8 @@ fn add(a: i32, b: i32) -> i32 {
     }
 
     #[allow(clippy::too_many_lines)]
-    #[test]
-    fn it_should_support_multiple_languages() {
+    #[tokio::test]
+    async fn it_should_support_multiple_languages() {
         let input = r#"---
 tile1: asd asd
 tile2: asd asd
@@ -995,7 +996,7 @@ fn add(a: i32, b: i32) i32 {
             .insert("vue".to_string(), MdsfFormatter::Single(Tooling::Prettier));
 
         {
-            let (modified, output) = format_file(&config, std::path::Path::new("."), input);
+            let (modified, output) = format_file(&config, std::path::Path::new("."), input).await;
 
             assert!(modified);
 
@@ -1003,10 +1004,11 @@ fn add(a: i32, b: i32) i32 {
         };
 
         {
-            let file =
-                setup_snippet(input, language_to_ext("markdown")).expect("it to create a file");
+            let file = setup_snippet(input, language_to_ext("markdown"))
+                .await
+                .expect("it to create a file");
 
-            assert!(handle_file(&config, file.path(), false, None));
+            assert!(handle_file(&config, file.path(), false, None).await);
 
             let output = std::fs::read_to_string(file.path()).expect("it to return the string");
 
@@ -1014,9 +1016,9 @@ fn add(a: i32, b: i32) i32 {
         };
     }
 
+    #[tokio::test]
     #[test_with::executable(gofmt)]
-    #[test]
-    fn it_should_support_go_with_package() {
+    async fn it_should_support_go_with_package() {
         let input = "```go
 package main
 
@@ -1056,7 +1058,8 @@ type Whatever struct {
             let config = MdsfConfig::default();
 
             {
-                let (modified, output) = format_file(&config, std::path::Path::new("."), input);
+                let (modified, output) =
+                    format_file(&config, std::path::Path::new("."), input).await;
 
                 assert!(modified);
 
@@ -1064,10 +1067,11 @@ type Whatever struct {
             };
 
             {
-                let file =
-                    setup_snippet(input, language_to_ext("markdown")).expect("it to create a file");
+                let file = setup_snippet(input, language_to_ext("markdown"))
+                    .await
+                    .expect("it to create a file");
 
-                assert!(handle_file(&config, file.path(), false, None));
+                assert!(handle_file(&config, file.path(), false, None).await);
 
                 let output = std::fs::read_to_string(file.path()).expect("it to return the string");
 
@@ -1085,7 +1089,8 @@ type Whatever struct {
             };
 
             {
-                let (modified, output) = format_file(&config, std::path::Path::new("."), input);
+                let (modified, output) =
+                    format_file(&config, std::path::Path::new("."), input).await;
 
                 assert!(modified);
 
@@ -1093,10 +1098,11 @@ type Whatever struct {
             };
 
             {
-                let file =
-                    setup_snippet(input, language_to_ext("markdown")).expect("it to create a file");
+                let file = setup_snippet(input, language_to_ext("markdown"))
+                    .await
+                    .expect("it to create a file");
 
-                assert!(handle_file(&config, file.path(), false, None));
+                assert!(handle_file(&config, file.path(), false, None).await);
 
                 let output = std::fs::read_to_string(file.path()).expect("it to return the string");
 
@@ -1105,8 +1111,8 @@ type Whatever struct {
         }
     }
 
-    #[test]
-    fn it_should_add_go_package_if_missing() {
+    #[tokio::test]
+    async fn it_should_add_go_package_if_missing() {
         let input = "```go
 import (
 \t\"errors\"
@@ -1142,7 +1148,8 @@ type Whatever struct {
             let config = MdsfConfig::default();
 
             {
-                let (modified, output) = format_file(&config, std::path::Path::new("."), input);
+                let (modified, output) =
+                    format_file(&config, std::path::Path::new("."), input).await;
 
                 assert!(modified);
 
@@ -1150,10 +1157,11 @@ type Whatever struct {
             };
 
             {
-                let file =
-                    setup_snippet(input, language_to_ext("markdown")).expect("it to create a file");
+                let file = setup_snippet(input, language_to_ext("markdown"))
+                    .await
+                    .expect("it to create a file");
 
-                assert!(handle_file(&config, file.path(), false, None));
+                assert!(handle_file(&config, file.path(), false, None).await);
 
                 let output = std::fs::read_to_string(file.path()).expect("it to return the string");
 
@@ -1172,7 +1180,8 @@ type Whatever struct {
             };
 
             {
-                let (modified, output) = format_file(&config, std::path::Path::new("."), input);
+                let (modified, output) =
+                    format_file(&config, std::path::Path::new("."), input).await;
 
                 assert!(modified);
 
@@ -1180,10 +1189,11 @@ type Whatever struct {
             };
 
             {
-                let file =
-                    setup_snippet(input, language_to_ext("markdown")).expect("it to create a file");
+                let file = setup_snippet(input, language_to_ext("markdown"))
+                    .await
+                    .expect("it to create a file");
 
-                assert!(handle_file(&config, file.path(), false, None));
+                assert!(handle_file(&config, file.path(), false, None).await);
 
                 let output = std::fs::read_to_string(file.path()).expect("it to return the string");
 
@@ -1192,8 +1202,8 @@ type Whatever struct {
         }
     }
 
-    #[test]
-    fn it_should_not_care_if_go_package_is_set() {
+    #[tokio::test]
+    async fn it_should_not_care_if_go_package_is_set() {
         let input = "With package name
 
 ```go
@@ -1259,7 +1269,8 @@ func add(a int, b int) int {
             };
 
             {
-                let (modified, output) = format_file(&config, std::path::Path::new("."), input);
+                let (modified, output) =
+                    format_file(&config, std::path::Path::new("."), input).await;
 
                 assert!(modified);
 
@@ -1267,10 +1278,11 @@ func add(a int, b int) int {
             };
 
             {
-                let file =
-                    setup_snippet(input, language_to_ext("markdown")).expect("it to create a file");
+                let file = setup_snippet(input, language_to_ext("markdown"))
+                    .await
+                    .expect("it to create a file");
 
-                assert!(handle_file(&config, file.path(), false, None));
+                assert!(handle_file(&config, file.path(), false, None).await);
 
                 let output = std::fs::read_to_string(file.path()).expect("it to return the string");
 
@@ -1288,7 +1300,8 @@ func add(a int, b int) int {
             };
 
             {
-                let (modified, output) = format_file(&config, std::path::Path::new("."), input);
+                let (modified, output) =
+                    format_file(&config, std::path::Path::new("."), input).await;
 
                 assert!(modified);
 
@@ -1296,10 +1309,11 @@ func add(a int, b int) int {
             };
 
             {
-                let file =
-                    setup_snippet(input, language_to_ext("markdown")).expect("it to create a file");
+                let file = setup_snippet(input, language_to_ext("markdown"))
+                    .await
+                    .expect("it to create a file");
 
-                assert!(handle_file(&config, file.path(), false, None));
+                assert!(handle_file(&config, file.path(), false, None).await);
 
                 let output = std::fs::read_to_string(file.path()).expect("it to return the string");
 

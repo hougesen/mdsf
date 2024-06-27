@@ -106,8 +106,8 @@ fn default_schema_location() -> String {
 mod test_config {
     use super::MdsfConfig;
 
-    #[test]
-    fn schema_should_be_serializable() {
+    #[tokio::test]
+    async fn schema_should_be_serializable() {
         let config = MdsfConfig::default();
 
         let json = serde_json::to_string_pretty(&config).expect("it to be serializable");
@@ -124,8 +124,8 @@ mod test_config {
             .expect("it to be serializable");
     }
 
-    #[test]
-    fn it_should_ignore_comments() {
+    #[tokio::test]
+    async fn it_should_ignore_comments() {
         let r = r#"{
     // this is a slash comment
     "javascript":  ["prettier"],

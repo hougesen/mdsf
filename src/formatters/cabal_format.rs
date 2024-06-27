@@ -12,11 +12,11 @@ pub async fn run(snippet_path: &std::path::Path) -> Result<(bool, Option<String>
 
 #[cfg(test)]
 mod test_cabal_format {
-    use super::run;
     use crate::{formatters::setup_snippet, generated::language_to_ext};
 
+    #[tokio::test]
     #[test_with::executable(cabal)]
-    fn it_should_format_cabal() {
+    async fn it_should_format_cabal() {
         let input = "cabal-version: 2.4
 name: mdsf
 version: 0
@@ -50,10 +50,12 @@ executable msdf
         containers ^>=0.5.11.0 || ^>=0.6.0.1
 ";
 
-        let snippet =
-            setup_snippet(input, language_to_ext("cabal")).expect("it to create a snippet file");
+        let snippet = setup_snippet(input, language_to_ext("cabal"))
+            .await
+            .expect("it to create a snippet file");
 
-        let output = run(snippet.path())
+        let output = super::run(snippet.path())
+            .await
             .expect("it to be successful")
             .1
             .expect("it to be some");

@@ -25,8 +25,9 @@ pub async fn run_fix(snippet_path: &std::path::Path) -> Result<(bool, Option<Str
 mod test_dart_format {
     use crate::{formatters::setup_snippet, generated::language_to_ext};
 
+    #[tokio::test]
     #[test_with::executable(dart)]
-    fn it_should_format_dart() {
+    async fn it_should_format_dart() {
         let input = "class Adder {   int add(int a, int b) {     return a + b;   } }    ";
 
         let expected_output = "class Adder {
@@ -36,10 +37,12 @@ mod test_dart_format {
 }
 ";
 
-        let snippet =
-            setup_snippet(input, language_to_ext("dart")).expect("it to create a snippet file");
+        let snippet = setup_snippet(input, language_to_ext("dart"))
+            .await
+            .expect("it to create a snippet file");
 
         let output = super::run_format(snippet.path())
+            .await
             .expect("it to be successful")
             .1
             .expect("it to be some");

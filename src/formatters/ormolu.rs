@@ -12,11 +12,11 @@ pub async fn run(snippet_path: &std::path::Path) -> Result<(bool, Option<String>
 
 #[cfg(test)]
 mod test_ormolu {
-    use super::run;
     use crate::{formatters::setup_snippet, generated::language_to_ext};
 
+    #[tokio::test]
     #[test_with::executable(ormolu)]
-    fn it_should_format_haskell() {
+    async fn it_should_format_haskell() {
         let input = "
 addNumbers::Int->Int->Int
 addNumbers a b = do
@@ -28,10 +28,12 @@ addNumbers a b = do
   a + b
 ";
 
-        let snippet =
-            setup_snippet(input, language_to_ext("haskell")).expect("it to create a snippet file");
+        let snippet = setup_snippet(input, language_to_ext("haskell"))
+            .await
+            .expect("it to create a snippet file");
 
-        let output = run(snippet.path())
+        let output = super::run(snippet.path())
+            .await
             .expect("it to be successful")
             .1
             .expect("it to be some");

@@ -31,13 +31,11 @@ pub async fn run(snippet_path: &std::path::Path) -> Result<(bool, Option<String>
 
 #[cfg(test)]
 mod test_standardjs {
-    use crate::{
-        formatters::{setup_snippet, standardjs::run},
-        generated::language_to_ext,
-    };
+    use crate::{formatters::setup_snippet, generated::language_to_ext};
 
+    #[tokio::test]
     #[test_with::executable(standard)]
-    fn it_should_format_javascript() {
+    async fn it_should_format_javascript() {
         let input = "
     async function asyncAddition(a,b  )
     {
@@ -55,9 +53,11 @@ console.info(asyncAddition(1, 2))
 ";
 
         let snippet = setup_snippet(input, language_to_ext("javascript"))
+            .await
             .expect("it to create a snippet file");
 
-        let output = run(snippet.path())
+        let output = super::run(snippet.path())
+            .await
             .expect("it to be successful")
             .1
             .expect("it to be some");

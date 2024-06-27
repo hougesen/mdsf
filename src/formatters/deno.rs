@@ -21,11 +21,11 @@ pub async fn run_lint(snippet_path: &std::path::Path) -> Result<(bool, Option<St
 
 #[cfg(test)]
 mod test_deno_fmt {
-    use super::run_fmt;
     use crate::{formatters::setup_snippet, generated::language_to_ext};
 
+    #[tokio::test]
     #[test_with::executable(deno)]
-    fn it_should_format_json() {
+    async fn it_should_format_json() {
         let input = "
               {
     // comments are allowed
@@ -50,10 +50,12 @@ mod test_deno_fmt {
 }
 ";
 
-        let snippet =
-            setup_snippet(input, language_to_ext("json")).expect("it to create a snippet file");
+        let snippet = setup_snippet(input, language_to_ext("json"))
+            .await
+            .expect("it to create a snippet file");
 
-        let output = run_fmt(snippet.path())
+        let output = super::run_fmt(snippet.path())
+            .await
             .expect("it to be successful")
             .1
             .expect("it to be some");
@@ -61,8 +63,9 @@ mod test_deno_fmt {
         assert_eq!(expected_output, output);
     }
 
+    #[tokio::test]
     #[test_with::executable(deno)]
-    fn it_should_format_javascript() {
+    async fn it_should_format_javascript() {
         let input = "
     async function asyncAddition(a,b){
         return a+b
@@ -76,9 +79,11 @@ mod test_deno_fmt {
 ";
 
         let snippet = setup_snippet(input, language_to_ext("javascript"))
+            .await
             .expect("it to create a snippet file");
 
-        let output = run_fmt(snippet.path())
+        let output = super::run_fmt(snippet.path())
+            .await
             .expect("it to be successful")
             .1
             .expect("it to be some");
@@ -86,8 +91,9 @@ mod test_deno_fmt {
         assert_eq!(expected_output, output);
     }
 
+    #[tokio::test]
     #[test_with::executable(deno)]
-    fn it_should_format_typescript() {
+    async fn it_should_format_typescript() {
         let input = "
     async function asyncAddition(                                a:       \tnumber,b:number ) :Promise< number>
     {
@@ -103,9 +109,11 @@ mod test_deno_fmt {
 ";
 
         let snippet = setup_snippet(input, language_to_ext("typescript"))
+            .await
             .expect("it to create a snippet file");
 
-        let output = run_fmt(snippet.path())
+        let output = super::run_fmt(snippet.path())
+            .await
             .expect("it to be successful")
             .1
             .expect("it to be some");

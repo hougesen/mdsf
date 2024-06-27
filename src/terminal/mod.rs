@@ -146,8 +146,8 @@ fn wrap_text(input: &str) -> String {
 mod test_wrap_text {
     use crate::terminal::wrap_text;
 
-    #[test]
-    fn it_should_ignore_empty_text() {
+    #[tokio::test]
+    async fn it_should_ignore_empty_text() {
         assert_eq!(wrap_text(""), "");
         assert_eq!(wrap_text("              "), "");
         assert_eq!(wrap_text(" \n  \n \n          "), "");

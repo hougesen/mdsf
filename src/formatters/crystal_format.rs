@@ -12,11 +12,11 @@ pub async fn run(snippet_path: &std::path::Path) -> Result<(bool, Option<String>
 
 #[cfg(test)]
 mod test_crystal_format {
-    use super::run;
     use crate::{formatters::setup_snippet, generated::language_to_ext};
 
+    #[tokio::test]
     #[test_with::executable(crystal)]
-    fn it_should_format_crystal() {
+    async fn it_should_format_crystal() {
         let input = "def add(a, b)  return a + b end";
 
         let expected_output = "def add(a, b)
@@ -24,10 +24,12 @@ mod test_crystal_format {
 end
 ";
 
-        let snippet =
-            setup_snippet(input, language_to_ext("crystal")).expect("it to create a snippet file");
+        let snippet = setup_snippet(input, language_to_ext("crystal"))
+            .await
+            .expect("it to create a snippet file");
 
-        let output = run(snippet.path())
+        let output = super::run(snippet.path())
+            .await
             .expect("it to be successful")
             .1
             .expect("it to be some");

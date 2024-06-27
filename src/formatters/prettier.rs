@@ -54,13 +54,11 @@ pub async fn run(snippet_path: &std::path::Path) -> Result<(bool, Option<String>
 
 #[cfg(test)]
 mod test_prettier {
-    use crate::{
-        formatters::{prettier::run, setup_snippet},
-        generated::language_to_ext,
-    };
+    use crate::{formatters::setup_snippet, generated::language_to_ext};
 
+    #[tokio::test]
     #[test_with::executable(npx)]
-    fn it_should_format_json() {
+    async fn it_should_format_json() {
         let input = "
               {
     // comments are allowed
@@ -80,10 +78,12 @@ mod test_prettier {
 }
 ";
 
-        let snippet =
-            setup_snippet(input, language_to_ext("json")).expect("it to create a snippet file");
+        let snippet = setup_snippet(input, language_to_ext("json"))
+            .await
+            .expect("it to create a snippet file");
 
-        let output = run(snippet.path())
+        let output = super::run(snippet.path())
+            .await
             .expect("it to be successful")
             .1
             .expect("it to be some");
@@ -91,8 +91,9 @@ mod test_prettier {
         assert_eq!(expected_output, output);
     }
 
+    #[tokio::test]
     #[test_with::executable(npx)]
-    fn it_should_format_javascript() {
+    async fn it_should_format_javascript() {
         let input = "
     async function asyncAddition(
             a,b
@@ -108,9 +109,11 @@ mod test_prettier {
 ";
 
         let snippet = setup_snippet(input, language_to_ext("javascript"))
+            .await
             .expect("it to create a snippet file");
 
-        let output = run(snippet.path())
+        let output = super::run(snippet.path())
+            .await
             .expect("it to be successful")
             .1
             .expect("it to be some");
@@ -118,8 +121,9 @@ mod test_prettier {
         assert_eq!(expected_output, output);
     }
 
+    #[tokio::test]
     #[test_with::executable(npx)]
-    fn it_should_format_typescript() {
+    async fn it_should_format_typescript() {
         let input = "
     async function asyncAddition(
             a:number,b:number
@@ -138,9 +142,11 @@ number>
 ";
 
         let snippet = setup_snippet(input, language_to_ext("typescript"))
+            .await
             .expect("it to create a snippet file");
 
-        let output = run(snippet.path())
+        let output = super::run(snippet.path())
+            .await
             .expect("it to be successful")
             .1
             .expect("it to be some");
@@ -148,8 +154,9 @@ number>
         assert_eq!(expected_output, output);
     }
 
+    #[tokio::test]
     #[test_with::executable(npx)]
-    fn it_should_format_markdown() {
+    async fn it_should_format_markdown() {
         let input = "
 
 
@@ -164,10 +171,12 @@ this is a paragraph
 this is a paragraph
 ";
 
-        let snippet =
-            setup_snippet(input, language_to_ext("markdown")).expect("it to create a snippet file");
+        let snippet = setup_snippet(input, language_to_ext("markdown"))
+            .await
+            .expect("it to create a snippet file");
 
-        let output = run(snippet.path())
+        let output = super::run(snippet.path())
+            .await
             .expect("it to be successful")
             .1
             .expect("it to be some");
@@ -175,8 +184,9 @@ this is a paragraph
         assert_eq!(expected_output, output);
     }
 
+    #[tokio::test]
     #[test_with::executable(npx)]
-    fn it_should_not_format_code_snippets_in_markdown() {
+    async fn it_should_not_format_code_snippets_in_markdown() {
         let input = "```typescript
     async function asyncAddition(
             a:number,b:number
@@ -191,10 +201,12 @@ number>
 ```
 ";
 
-        let snippet =
-            setup_snippet(input, language_to_ext("markdown")).expect("it to create a snippet file");
+        let snippet = setup_snippet(input, language_to_ext("markdown"))
+            .await
+            .expect("it to create a snippet file");
 
-        let output = run(snippet.path())
+        let output = super::run(snippet.path())
+            .await
             .expect("it to be successful")
             .1
             .expect("it to be some");
@@ -202,8 +214,9 @@ number>
         assert_eq!(input, output);
     }
 
+    #[tokio::test]
     #[test_with::executable(npx)]
-    fn it_should_format_html() {
+    async fn it_should_format_html() {
         let input = " <!doctype html> <html> <head> <style> body {background-color: powderblue;} h1   {color: blue;} p    {color: red;} </style> </head> <body>  <h1>This is a heading</h1> <p>This is a paragraph.</p>  </body> </html> ";
 
         let expected_output = "<!doctype html>
@@ -228,10 +241,12 @@ number>
 </html>
 ";
 
-        let snippet =
-            setup_snippet(input, language_to_ext("html")).expect("it to create a snippet file");
+        let snippet = setup_snippet(input, language_to_ext("html"))
+            .await
+            .expect("it to create a snippet file");
 
-        let output = run(snippet.path())
+        let output = super::run(snippet.path())
+            .await
             .expect("it to be successful")
             .1
             .expect("it to be some");
@@ -239,8 +254,9 @@ number>
         assert_eq!(expected_output, output);
     }
 
+    #[tokio::test]
     #[test_with::executable(npx)]
-    fn it_should_format_css() {
+    async fn it_should_format_css() {
         let input = " h1   {color: blue;} p    {color: red;} ";
 
         let expected_output = "h1 {
@@ -251,10 +267,12 @@ p {
 }
 ";
 
-        let snippet =
-            setup_snippet(input, language_to_ext("css")).expect("it to create a snippet file");
+        let snippet = setup_snippet(input, language_to_ext("css"))
+            .await
+            .expect("it to create a snippet file");
 
-        let output = run(snippet.path())
+        let output = super::run(snippet.path())
+            .await
             .expect("it to be successful")
             .1
             .expect("it to be some");
@@ -262,8 +280,9 @@ p {
         assert_eq!(expected_output, output);
     }
 
+    #[tokio::test]
     #[test_with::executable(npx)]
-    fn it_should_format_yaml() {
+    async fn it_should_format_yaml() {
         let input = "
 
 
@@ -307,10 +326,12 @@ updates:
     open-pull-requests-limit: 25
 ";
 
-        let snippet =
-            setup_snippet(input, language_to_ext("yaml")).expect("it to create a snippet file");
+        let snippet = setup_snippet(input, language_to_ext("yaml"))
+            .await
+            .expect("it to create a snippet file");
 
-        let output = run(snippet.path())
+        let output = super::run(snippet.path())
+            .await
             .expect("it to be successful")
             .1
             .expect("it to be some");
@@ -318,8 +339,9 @@ updates:
         assert_eq!(expected_output, output);
     }
 
+    #[tokio::test]
     #[test_with::executable(npx)]
-    fn it_should_format_vue() {
+    async fn it_should_format_vue() {
         let input = "<script lang=\"ts\"   setup >
 import {
 
@@ -353,10 +375,12 @@ function add(a: number, b: number): number {
 </template>
 ";
 
-        let snippet =
-            setup_snippet(input, language_to_ext("vue")).expect("it to create a snippet file");
+        let snippet = setup_snippet(input, language_to_ext("vue"))
+            .await
+            .expect("it to create a snippet file");
 
-        let output = run(snippet.path())
+        let output = super::run(snippet.path())
+            .await
             .expect("it to be successful")
             .1
             .expect("it to be some");
@@ -364,8 +388,9 @@ function add(a: number, b: number): number {
         assert_eq!(expected_output, output);
     }
 
+    #[tokio::test]
     #[test_with::executable(npx)]
-    fn it_should_format_graphql() {
+    async fn it_should_format_graphql() {
         let input = "{   hero {     name
             # Queries can have comments!
          friends {       name     }   } }";
@@ -381,10 +406,12 @@ function add(a: number, b: number): number {
 }
 ";
 
-        let snippet =
-            setup_snippet(input, language_to_ext("graphql")).expect("it to create a snippet file");
+        let snippet = setup_snippet(input, language_to_ext("graphql"))
+            .await
+            .expect("it to create a snippet file");
 
-        let output = run(snippet.path())
+        let output = super::run(snippet.path())
+            .await
             .expect("it to be successful")
             .1
             .expect("it to be some");

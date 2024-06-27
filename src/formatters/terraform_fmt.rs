@@ -12,11 +12,11 @@ pub async fn run(snippet_path: &std::path::Path) -> Result<(bool, Option<String>
 
 #[cfg(test)]
 mod test_terraform_fmt {
-    use super::run;
     use crate::formatters::setup_snippet;
 
+    #[tokio::test]
     #[test_with::executable(terraform)]
-    fn it_should_format_hcl() {
+    async fn it_should_format_hcl() {
         let input = "resource \"aws_instance\" \"example\" {
                     ami   = \"abc123\"
 
@@ -33,9 +33,12 @@ mod test_terraform_fmt {
 }
 ";
 
-        let snippet = setup_snippet(input, ".tf").expect("it to create a snippet file");
+        let snippet = setup_snippet(input, ".tf")
+            .await
+            .expect("it to create a snippet file");
 
-        let output = run(snippet.path())
+        let output = super::run(snippet.path())
+            .await
             .expect("it to be successful")
             .1
             .expect("it to be some");

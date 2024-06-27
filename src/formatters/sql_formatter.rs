@@ -33,8 +33,9 @@ pub async fn run(snippet_path: &std::path::Path) -> Result<(bool, Option<String>
 mod test_sql_formatter {
     use crate::{formatters::setup_snippet, generated::language_to_ext};
 
+    #[tokio::test]
     #[test_with::executable(npx)]
-    fn it_should_format_sql() {
+    async fn it_should_format_sql() {
         let input = "SELECT * FROM tbl WHERE foo = 'bar';";
 
         let expected_output = "SELECT
@@ -45,10 +46,12 @@ WHERE
   foo = 'bar';
 ";
 
-        let snippet =
-            setup_snippet(input, language_to_ext("sql")).expect("it to create a snippet file");
+        let snippet = setup_snippet(input, language_to_ext("sql"))
+            .await
+            .expect("it to create a snippet file");
 
         let output = super::run(snippet.path())
+            .await
             .expect("it to be successful")
             .1
             .expect("it to be some");
