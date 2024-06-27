@@ -549,6 +549,11 @@
           "enum": ["prettier"]
         },
         {
+          "description": "https://prisma.io/",
+          "type": "string",
+          "enum": ["prisma"]
+        },
+        {
           "description": "https://github.com/puppetlabs/puppet-lint",
           "type": "string",
           "enum": ["puppet-lint"]

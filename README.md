@@ -192,9 +192,9 @@ mdsf init
 >
 > Only tools that are already installed will be used.
 
-<!-- START_SECTION:supported-tools-->
+<!-- START_SECTION:supported-tools -->
 
-`mdsf` currently supports 146 tools.
+`mdsf` currently supports 147 tools.
 
 | Formatter          | Description                                                                                                            |
 | ------------------ | ---------------------------------------------------------------------------------------------------------------------- |
@@ -296,6 +296,7 @@ mdsf init
 | perltidy           | [https://github.com/perltidy/perltidy](https://github.com/perltidy/perltidy)                                           |
 | pg_format          | [https://github.com/darold/pgFormatter](https://github.com/darold/pgFormatter)                                         |
 | prettier           | [https://github.com/prettier/prettier](https://github.com/prettier/prettier)                                           |
+| prisma             | [https://prisma.io/](https://prisma.io/)                                                                               |
 | puppet-lint        | [https://github.com/puppetlabs/puppet-lint](https://github.com/puppetlabs/puppet-lint)                                 |
 | purs-tidy          | [https://github.com/natefaubion/purescript-tidy](https://github.com/natefaubion/purescript-tidy)                       |
 | pyink              | [https://github.com/google/pyink](https://github.com/google/pyink)                                                     |
@@ -345,7 +346,7 @@ mdsf init
 | zigfmt             | [https://ziglang.org/](https://ziglang.org/)                                                                           |
 | zprint             | [https://github.com/kkinnear/zprint](https://github.com/kkinnear/zprint)                                               |
 
-<!-- END_SECTION:supported-tools-->
+<!-- END_SECTION:supported-tools -->
 
 ## Acknowledgement
 
