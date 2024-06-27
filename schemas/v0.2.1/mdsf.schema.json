@@ -41,7 +41,7 @@
   "definitions": {
     "JavaScriptRuntime": {
       "type": "string",
-      "enum": ["bun", "deno", "node"]
+      "enum": ["bun", "deno", "node", "pnpm"]
     },
     "MdsfFormatter_for_Tooling": {
       "anyOf": [
