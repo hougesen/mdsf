@@ -24,6 +24,7 @@ default = []
 json-schema = ["dep:schemars"]
 
 [dependencies]
+async-recursion = "1.1.1"
 clap = { version = "4.5.7", features = ["derive"] }
 clap_complete = "4.5.6"
 console = "0.15.8"
@@ -38,7 +39,7 @@ serde = { version = "1.0.203", features = ["derive"] }
 serde_json = "1.0.118"
 tempfile = "3.10.1"
 terminal_size = "0.3.0"
-threadpool = "1.8.1"
+tokio = { version = "1.38.0", features = ["full"] }
 which = "6.0.1"
 
 [dev-dependencies]

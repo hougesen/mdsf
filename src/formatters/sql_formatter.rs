@@ -2,31 +2,31 @@ use super::execute_command;
 use crate::{error::MdsfError, runners::setup_npm_script};
 
 #[inline]
-fn set_sql_formatter_args(cmd: &mut std::process::Command, snippet_path: &std::path::Path) {
+fn set_sql_formatter_args(cmd: &mut tokio::process::Command, snippet_path: &std::path::Path) {
     cmd.arg("--fix").arg(snippet_path);
 }
 
 #[inline]
-fn invoke_sql_formatter(
-    mut cmd: std::process::Command,
+async fn invoke_sql_formatter(
+    mut cmd: tokio::process::Command,
     snippet_path: &std::path::Path,
 ) -> Result<(bool, Option<String>), MdsfError> {
     set_sql_formatter_args(&mut cmd, snippet_path);
 
-    execute_command(&mut cmd, snippet_path)
+    execute_command(&mut cmd, snippet_path).await
 }
 
 #[inline]
-pub fn run(snippet_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfError> {
+pub async fn run(snippet_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfError> {
     if let Ok(path_result) =
-        invoke_sql_formatter(std::process::Command::new("sql-formatter"), snippet_path)
+        invoke_sql_formatter(tokio::process::Command::new("sql-formatter"), snippet_path).await
     {
         if !path_result.0 {
             return Ok(path_result);
         }
     }
 
-    invoke_sql_formatter(setup_npm_script("sql-formatter"), snippet_path)
+    invoke_sql_formatter(setup_npm_script("sql-formatter"), snippet_path).await
 }
 
 #[cfg(test)]

@@ -2,23 +2,23 @@ use super::execute_command;
 use crate::error::MdsfError;
 
 #[inline]
-fn set_perltidy_args(cmd: &mut std::process::Command, snippet_path: &std::path::Path) {
+fn set_perltidy_args(cmd: &mut tokio::process::Command, snippet_path: &std::path::Path) {
     cmd.arg("-b").arg(snippet_path);
 }
 
 #[inline]
-fn invoke_perltidy(
-    mut cmd: std::process::Command,
+async fn invoke_perltidy(
+    mut cmd: tokio::process::Command,
     snippet_path: &std::path::Path,
 ) -> Result<(bool, Option<String>), MdsfError> {
     set_perltidy_args(&mut cmd, snippet_path);
 
-    execute_command(&mut cmd, snippet_path)
+    execute_command(&mut cmd, snippet_path).await
 }
 
 #[inline]
-pub fn run(snippet_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfError> {
-    invoke_perltidy(std::process::Command::new("perltidy"), snippet_path)
+pub async fn run(snippet_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfError> {
+    invoke_perltidy(tokio::process::Command::new("perltidy"), snippet_path).await
 }
 
 #[cfg(test)]

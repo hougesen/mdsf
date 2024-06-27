@@ -1,4 +1,4 @@
-use std::{ffi::OsStr, io::Write, process::Command, str::FromStr};
+use std::{ffi::OsStr, io::Write, str::FromStr};
 
 use tempfile::NamedTempFile;
 use which::which;
@@ -227,21 +227,21 @@ fn handle_post_execution(
     }
 }
 
-fn spawn_command(cmd: &mut Command) -> std::io::Result<std::process::Output> {
+async fn spawn_command(cmd: &mut tokio::process::Command) -> std::io::Result<std::process::Output> {
     if !DEBUG.load(core::sync::atomic::Ordering::Relaxed) {
         cmd.stdout(std::process::Stdio::null());
         cmd.stderr(std::process::Stdio::null());
     }
 
-    cmd.output()
+    cmd.output().await
 }
 
 #[inline]
-pub fn execute_command(
-    cmd: &mut Command,
+pub async fn execute_command(
+    cmd: &mut tokio::process::Command,
     snippet_path: &std::path::Path,
 ) -> Result<(bool, Option<String>), MdsfError> {
-    let binary_name = cmd.get_program();
+    let binary_name = cmd.as_std().get_program();
 
     if !binary_in_path(binary_name) {
         return Err(MdsfError::MissingBinary(
@@ -249,11 +249,11 @@ pub fn execute_command(
         ));
     }
 
-    handle_post_execution(spawn_command(cmd), snippet_path)
+    handle_post_execution(spawn_command(cmd).await, snippet_path)
 }
 
 #[inline]
-pub fn format_snippet(config: &MdsfConfig, info: &LineInfo, code: &str) -> String {
+pub async fn format_snippet(config: &MdsfConfig, info: &LineInfo<'_>, code: &str) -> String {
     if let Some(formatters) = config.languages.get(info.language) {
         if let Ok(snippet) = setup_snippet(
             code,
@@ -273,7 +273,7 @@ pub fn format_snippet(config: &MdsfConfig, info: &LineInfo, code: &str) -> Strin
         ) {
             let snippet_path = snippet.path();
 
-            if let Ok(Some(formatted_code)) = formatters.format(snippet_path, info) {
+            if let Ok(Some(formatted_code)) = formatters.format(snippet_path, info).await {
                 let mut f = formatted_code.trim().to_owned();
 
                 f.push('\n');
@@ -899,158 +899,158 @@ pub enum Tooling {
 impl Tooling {
     #[allow(clippy::too_many_lines)]
     #[inline]
-    fn format_snippet(
+    async fn format_snippet(
         &self,
         snippet_path: &std::path::Path,
     ) -> Result<(bool, Option<String>), MdsfError> {
         match self {
-            Self::Alejandra => alejandra::run(snippet_path),
-            Self::AppleSwiftFormat => swift_format::run(snippet_path),
-            Self::Asmfmt => asmfmt::run(snippet_path),
-            Self::Astyle => astyle::run(snippet_path),
-            Self::AutoOptional => auto_optional::run(snippet_path),
-            Self::Autocorrect => autocorrect::run(snippet_path),
-            Self::Autoflake => autoflake::run(snippet_path),
-            Self::Autopep8 => autopep8::run(snippet_path),
-            Self::Beautysh => beautysh::run(snippet_path),
-            Self::BicepFormat => bicep_format::run(snippet_path),
-            Self::Biome => biome::run_format(snippet_path),
-            Self::BiomeCheck => biome::run_check(snippet_path),
-            Self::BiomeLint => biome::run_lint(snippet_path),
-            Self::Black => black::run(snippet_path),
-            Self::BladeFormatter => blade_formatter::run(snippet_path),
-            Self::Blue => blue::run(snippet_path),
-            Self::Bpfmt => bpfmt::run(snippet_path),
-            Self::Bsfmt => bsfmt::run(snippet_path),
-            Self::Buf => buf::run(snippet_path),
-            Self::Buildifier => buildifier::run(snippet_path),
-            Self::CSharpier => csharpier::run(snippet_path),
-            Self::CabalFormat => cabal_format::run(snippet_path),
-            Self::CaramelFmt => caramel::run_fmt(snippet_path),
-            Self::ClangFormat => clang_format::run(snippet_path),
-            Self::ClangTidy => clang_tidy::run(snippet_path),
-            Self::Cljstyle => cljstyle::run(snippet_path),
-            Self::Codespell => codespell::run(snippet_path),
-            Self::CrlFmt => crlfmt::run(snippet_path),
-            Self::CrystalFormat => crystal_format::run(snippet_path),
-            Self::D2 => d2::run(snippet_path),
-            Self::DFmt => dfmt::run(snippet_path),
-            Self::DartFormat => dart::run_format(snippet_path),
-            Self::DartFix => dart::run_fix(snippet_path),
-            Self::DcmFix => dcm::run_fix(snippet_path),
-            Self::DcmFormat => dcm::run_format(snippet_path),
-            Self::DenoFmt => deno::run_fmt(snippet_path),
-            Self::DenoLint => deno::run_lint(snippet_path),
-            Self::DjLint => djlint::run(snippet_path),
-            Self::Docformatter => docformatter::run(snippet_path),
-            Self::Docstrfmt => docstrfmt::run(snippet_path),
-            Self::DotenvLinter => dotenv_linter::run(snippet_path),
-            Self::Dprint => dprint::run(snippet_path),
-            Self::Efmt => efmt::run(snippet_path),
-            Self::ElmFormat => elm_format::run(snippet_path),
-            Self::ErbFormatter => erb_formatter::run(snippet_path),
-            Self::Erlfmt => erlfmt::run(snippet_path),
-            Self::Eslint => eslint::run(snippet_path),
-            Self::Fantomas => fantomas::run(snippet_path),
-            Self::Findent => findent::run(snippet_path),
-            Self::FishIndent => fish_indent::run(snippet_path),
-            Self::Fixjson => fixjson::run(snippet_path),
-            Self::Fnlfmt => fnlfmt::run(snippet_path),
-            Self::ForgeFmt => forge_fmt::run(snippet_path),
-            Self::Fourmolu => fourmolu::run(snippet_path),
-            Self::Fprettify => fprettify::run(snippet_path),
-            Self::GCI => gci::run(snippet_path),
-            Self::Gdformat => gdformat::run(snippet_path),
-            Self::Gersemi => gersemi::run(snippet_path),
-            Self::GleamFormat => gleam_format::run(snippet_path),
-            Self::GluonFmt => gluon::run_fmt(snippet_path),
-            Self::GoFmt => gofmt::run(snippet_path),
-            Self::GoFumpt => gofumpt::run(snippet_path),
-            Self::GoImports => goimports::run(snippet_path),
-            Self::GoImportsReviser => goimports_reviser::run(snippet_path),
-            Self::GoLines => golines::run(snippet_path),
-            Self::GoogleJavaFormat => google_java_format::run(snippet_path),
-            Self::GrainFormat => grain::run_format(snippet_path),
-            Self::HIndent => hindent::run(snippet_path),
-            Self::HamlLint => haml_lint::run(snippet_path),
-            Self::Htmlbeautifier => htmlbeautifier::run(snippet_path),
-            Self::ImbaFmt => imba::run_fmt(snippet_path),
-            Self::Isort => isort::run(snippet_path),
-            Self::Joker => joker::run(snippet_path),
-            Self::JuliaFormatterJl => juliaformatter_jl::run(snippet_path),
-            Self::JustFmt => just_fmt::run(snippet_path),
-            Self::JsonaFormat => jsona::run_format(snippet_path),
-            Self::KclFmt => kcl_fmt::run(snippet_path),
-            Self::Kdlfmt => kdlfmt::run(snippet_path),
-            Self::Ktfmt => ktfmt::run(snippet_path),
-            Self::Ktlint => ktlint::run(snippet_path),
-            Self::LeptosFmt => leptosfmt::run(snippet_path),
-            Self::LuaFormatter => luaformatter::run(snippet_path),
-            Self::Markdownlint => markdownlint::run(snippet_path),
-            Self::Markuplint => markuplint::run(snippet_path),
-            Self::MdFormat => mdformat::run(snippet_path),
-            Self::Misspell => misspell::run(snippet_path),
-            Self::MixFormat => mix_format::run(snippet_path),
-            Self::NickelFormat => nickel::run_format(snippet_path),
-            Self::NicklockwoodSwiftFormat => swiftformat::run(snippet_path),
-            Self::Nimpretty => nimpretty::run(snippet_path),
-            Self::Nixfmt => nixfmt::run(snippet_path),
-            Self::NixpkgsFmt => nixpkgs_fmt::run(snippet_path),
-            Self::NpmGroovyLint => npm_groovy_lint::run(snippet_path),
-            Self::OCamlFormat => ocamlformat::run(snippet_path),
-            Self::OcpIndent => ocp_indent::run(snippet_path),
-            Self::Ormolu => ormolu::run(snippet_path),
-            Self::Oxlint => oxlint::run(snippet_path),
-            Self::PerlTidy => perltidy::run(snippet_path),
-            Self::PgFormat => pg_format::run(snippet_path),
-            Self::Prettier => prettier::run(snippet_path),
-            Self::Prisma => prisma::run_format(snippet_path),
-            Self::PuppetLint => puppet_lint::run(snippet_path),
-            Self::PursTidy => purs_tidy::run(snippet_path),
-            Self::PyInk => pyink::run(snippet_path),
-            Self::RacoFmt => raco::run_fmt(snippet_path),
-            Self::ReScriptFormat => rescript_format::run(snippet_path),
-            Self::RocFormat => roc_format::run(snippet_path),
-            Self::RstFmt => rstfmt::run(snippet_path),
-            Self::RuboCop => rubocop::run(snippet_path),
-            Self::RubyFmt => rubyfmt::run(snippet_path),
-            Self::Ruff => ruff::run_format(snippet_path),
-            Self::RuffCheck => ruff::run_check(snippet_path),
-            Self::Rufo => rufo::run(snippet_path),
-            Self::RuneFmt => rune::run_fmt(snippet_path),
-            Self::RustFmt => rustfmt::run(snippet_path),
-            Self::Rustywind => rustywind::run(snippet_path),
-            Self::SQLFormatter => sql_formatter::run(snippet_path),
-            Self::Scalafmt => scalafmt::run(snippet_path),
-            Self::Shfmt => shfmt::run(snippet_path),
-            Self::Smlfmt => smlfmt::run(snippet_path),
-            Self::Snakefmt => snakefmt::run(snippet_path),
-            Self::Sqlfluff => sqlfluff::run(snippet_path),
-            Self::Sqlfmt => sqlfmt::run(snippet_path),
-            Self::Standardjs => standardjs::run(snippet_path),
-            Self::Standardrb => standardrb::run(snippet_path),
-            Self::StyleLint => stylelint::run(snippet_path),
-            Self::StylishHaskell => stylish_haskell::run(snippet_path),
-            Self::Stylua => stylua::run(snippet_path),
-            Self::Taplo => taplo::run(snippet_path),
-            Self::Templ => templ::run(snippet_path),
-            Self::TerraformFmt => terraform_fmt::run(snippet_path),
-            Self::TofuFmt => tofu_fmt::run(snippet_path),
-            Self::TsStandard => ts_standard::run(snippet_path),
-            Self::Typos => typos::run(snippet_path),
-            Self::UiuaFmt => uiua::run_fmt(snippet_path),
-            Self::Usort => usort::run(snippet_path),
-            Self::VlangFmt => v::run_fmt(snippet_path),
-            Self::VerylFmt => veryl::run_fmt(snippet_path),
-            Self::XmlFormat => xmlformat::run(snippet_path),
-            Self::XmlLint => xmllint::run(snippet_path),
-            Self::Xo => xo::run(snippet_path),
-            Self::YamlFix => yamlfix::run(snippet_path),
-            Self::YamlFmt => yamlfmt::run(snippet_path),
-            Self::Yapf => yapf::run(snippet_path),
-            Self::YewFmt => yew_fmt::run(snippet_path),
-            Self::ZigFmt => zigfmt::run(snippet_path),
-            Self::Zprint => zprint::run(snippet_path),
+            Self::Alejandra => alejandra::run(snippet_path).await,
+            Self::AppleSwiftFormat => swift_format::run(snippet_path).await,
+            Self::Asmfmt => asmfmt::run(snippet_path).await,
+            Self::Astyle => astyle::run(snippet_path).await,
+            Self::AutoOptional => auto_optional::run(snippet_path).await,
+            Self::Autocorrect => autocorrect::run(snippet_path).await,
+            Self::Autoflake => autoflake::run(snippet_path).await,
+            Self::Autopep8 => autopep8::run(snippet_path).await,
+            Self::Beautysh => beautysh::run(snippet_path).await,
+            Self::BicepFormat => bicep_format::run(snippet_path).await,
+            Self::Biome => biome::run_format(snippet_path).await,
+            Self::BiomeCheck => biome::run_check(snippet_path).await,
+            Self::BiomeLint => biome::run_lint(snippet_path).await,
+            Self::Black => black::run(snippet_path).await,
+            Self::BladeFormatter => blade_formatter::run(snippet_path).await,
+            Self::Blue => blue::run(snippet_path).await,
+            Self::Bpfmt => bpfmt::run(snippet_path).await,
+            Self::Bsfmt => bsfmt::run(snippet_path).await,
+            Self::Buf => buf::run(snippet_path).await,
+            Self::Buildifier => buildifier::run(snippet_path).await,
+            Self::CSharpier => csharpier::run(snippet_path).await,
+            Self::CabalFormat => cabal_format::run(snippet_path).await,
+            Self::CaramelFmt => caramel::run_fmt(snippet_path).await,
+            Self::ClangFormat => clang_format::run(snippet_path).await,
+            Self::ClangTidy => clang_tidy::run(snippet_path).await,
+            Self::Cljstyle => cljstyle::run(snippet_path).await,
+            Self::Codespell => codespell::run(snippet_path).await,
+            Self::CrlFmt => crlfmt::run(snippet_path).await,
+            Self::CrystalFormat => crystal_format::run(snippet_path).await,
+            Self::D2 => d2::run(snippet_path).await,
+            Self::DFmt => dfmt::run(snippet_path).await,
+            Self::DartFormat => dart::run_format(snippet_path).await,
+            Self::DartFix => dart::run_fix(snippet_path).await,
+            Self::DcmFix => dcm::run_fix(snippet_path).await,
+            Self::DcmFormat => dcm::run_format(snippet_path).await,
+            Self::DenoFmt => deno::run_fmt(snippet_path).await,
+            Self::DenoLint => deno::run_lint(snippet_path).await,
+            Self::DjLint => djlint::run(snippet_path).await,
+            Self::Docformatter => docformatter::run(snippet_path).await,
+            Self::Docstrfmt => docstrfmt::run(snippet_path).await,
+            Self::DotenvLinter => dotenv_linter::run(snippet_path).await,
+            Self::Dprint => dprint::run(snippet_path).await,
+            Self::Efmt => efmt::run(snippet_path).await,
+            Self::ElmFormat => elm_format::run(snippet_path).await,
+            Self::ErbFormatter => erb_formatter::run(snippet_path).await,
+            Self::Erlfmt => erlfmt::run(snippet_path).await,
+            Self::Eslint => eslint::run(snippet_path).await,
+            Self::Fantomas => fantomas::run(snippet_path).await,
+            Self::Findent => findent::run(snippet_path).await,
+            Self::FishIndent => fish_indent::run(snippet_path).await,
+            Self::Fixjson => fixjson::run(snippet_path).await,
+            Self::Fnlfmt => fnlfmt::run(snippet_path).await,
+            Self::ForgeFmt => forge_fmt::run(snippet_path).await,
+            Self::Fourmolu => fourmolu::run(snippet_path).await,
+            Self::Fprettify => fprettify::run(snippet_path).await,
+            Self::GCI => gci::run(snippet_path).await,
+            Self::Gdformat => gdformat::run(snippet_path).await,
+            Self::Gersemi => gersemi::run(snippet_path).await,
+            Self::GleamFormat => gleam_format::run(snippet_path).await,
+            Self::GluonFmt => gluon::run_fmt(snippet_path).await,
+            Self::GoFmt => gofmt::run(snippet_path).await,
+            Self::GoFumpt => gofumpt::run(snippet_path).await,
+            Self::GoImports => goimports::run(snippet_path).await,
+            Self::GoImportsReviser => goimports_reviser::run(snippet_path).await,
+            Self::GoLines => golines::run(snippet_path).await,
+            Self::GoogleJavaFormat => google_java_format::run(snippet_path).await,
+            Self::GrainFormat => grain::run_format(snippet_path).await,
+            Self::HIndent => hindent::run(snippet_path).await,
+            Self::HamlLint => haml_lint::run(snippet_path).await,
+            Self::Htmlbeautifier => htmlbeautifier::run(snippet_path).await,
+            Self::ImbaFmt => imba::run_fmt(snippet_path).await,
+            Self::Isort => isort::run(snippet_path).await,
+            Self::Joker => joker::run(snippet_path).await,
+            Self::JuliaFormatterJl => juliaformatter_jl::run(snippet_path).await,
+            Self::JustFmt => just_fmt::run(snippet_path).await,
+            Self::JsonaFormat => jsona::run_format(snippet_path).await,
+            Self::KclFmt => kcl_fmt::run(snippet_path).await,
+            Self::Kdlfmt => kdlfmt::run(snippet_path).await,
+            Self::Ktfmt => ktfmt::run(snippet_path).await,
+            Self::Ktlint => ktlint::run(snippet_path).await,
+            Self::LeptosFmt => leptosfmt::run(snippet_path).await,
+            Self::LuaFormatter => luaformatter::run(snippet_path).await,
+            Self::Markdownlint => markdownlint::run(snippet_path).await,
+            Self::Markuplint => markuplint::run(snippet_path).await,
+            Self::MdFormat => mdformat::run(snippet_path).await,
+            Self::Misspell => misspell::run(snippet_path).await,
+            Self::MixFormat => mix_format::run(snippet_path).await,
+            Self::NickelFormat => nickel::run_format(snippet_path).await,
+            Self::NicklockwoodSwiftFormat => swiftformat::run(snippet_path).await,
+            Self::Nimpretty => nimpretty::run(snippet_path).await,
+            Self::Nixfmt => nixfmt::run(snippet_path).await,
+            Self::NixpkgsFmt => nixpkgs_fmt::run(snippet_path).await,
+            Self::NpmGroovyLint => npm_groovy_lint::run(snippet_path).await,
+            Self::OCamlFormat => ocamlformat::run(snippet_path).await,
+            Self::OcpIndent => ocp_indent::run(snippet_path).await,
+            Self::Ormolu => ormolu::run(snippet_path).await,
+            Self::Oxlint => oxlint::run(snippet_path).await,
+            Self::PerlTidy => perltidy::run(snippet_path).await,
+            Self::PgFormat => pg_format::run(snippet_path).await,
+            Self::Prettier => prettier::run(snippet_path).await,
+            Self::Prisma => prisma::run_format(snippet_path).await,
+            Self::PuppetLint => puppet_lint::run(snippet_path).await,
+            Self::PursTidy => purs_tidy::run(snippet_path).await,
+            Self::PyInk => pyink::run(snippet_path).await,
+            Self::RacoFmt => raco::run_fmt(snippet_path).await,
+            Self::ReScriptFormat => rescript_format::run(snippet_path).await,
+            Self::RocFormat => roc_format::run(snippet_path).await,
+            Self::RstFmt => rstfmt::run(snippet_path).await,
+            Self::RuboCop => rubocop::run(snippet_path).await,
+            Self::RubyFmt => rubyfmt::run(snippet_path).await,
+            Self::Ruff => ruff::run_format(snippet_path).await,
+            Self::RuffCheck => ruff::run_check(snippet_path).await,
+            Self::Rufo => rufo::run(snippet_path).await,
+            Self::RuneFmt => rune::run_fmt(snippet_path).await,
+            Self::RustFmt => rustfmt::run(snippet_path).await,
+            Self::Rustywind => rustywind::run(snippet_path).await,
+            Self::SQLFormatter => sql_formatter::run(snippet_path).await,
+            Self::Scalafmt => scalafmt::run(snippet_path).await,
+            Self::Shfmt => shfmt::run(snippet_path).await,
+            Self::Smlfmt => smlfmt::run(snippet_path).await,
+            Self::Snakefmt => snakefmt::run(snippet_path).await,
+            Self::Sqlfluff => sqlfluff::run(snippet_path).await,
+            Self::Sqlfmt => sqlfmt::run(snippet_path).await,
+            Self::Standardjs => standardjs::run(snippet_path).await,
+            Self::Standardrb => standardrb::run(snippet_path).await,
+            Self::StyleLint => stylelint::run(snippet_path).await,
+            Self::StylishHaskell => stylish_haskell::run(snippet_path).await,
+            Self::Stylua => stylua::run(snippet_path).await,
+            Self::Taplo => taplo::run(snippet_path).await,
+            Self::Templ => templ::run(snippet_path).await,
+            Self::TerraformFmt => terraform_fmt::run(snippet_path).await,
+            Self::TofuFmt => tofu_fmt::run(snippet_path).await,
+            Self::TsStandard => ts_standard::run(snippet_path).await,
+            Self::Typos => typos::run(snippet_path).await,
+            Self::UiuaFmt => uiua::run_fmt(snippet_path).await,
+            Self::Usort => usort::run(snippet_path).await,
+            Self::VlangFmt => v::run_fmt(snippet_path).await,
+            Self::VerylFmt => veryl::run_fmt(snippet_path).await,
+            Self::XmlFormat => xmlformat::run(snippet_path).await,
+            Self::XmlLint => xmllint::run(snippet_path).await,
+            Self::Xo => xo::run(snippet_path).await,
+            Self::YamlFix => yamlfix::run(snippet_path).await,
+            Self::YamlFmt => yamlfmt::run(snippet_path).await,
+            Self::Yapf => yapf::run(snippet_path).await,
+            Self::YewFmt => yew_fmt::run(snippet_path).await,
+            Self::ZigFmt => zigfmt::run(snippet_path).await,
+            Self::Zprint => zprint::run(snippet_path).await,
         }
     }
 }
@@ -1226,20 +1226,22 @@ impl Default for MdsfFormatter<Tooling> {
 
 impl MdsfFormatter<Tooling> {
     #[inline]
-    pub fn format(
+    pub async fn format(
         &self,
         snippet_path: &std::path::Path,
-        info: &LineInfo,
+        info: &LineInfo<'_>,
     ) -> Result<Option<String>, MdsfError> {
         Self::format_multiple(self, snippet_path, info, false)
+            .await
             .map(|(_should_continue, output)| output)
     }
 
     #[inline]
-    pub fn format_multiple(
+    #[async_recursion::async_recursion]
+    pub async fn format_multiple(
         formatter: &MdsfFormatter<Tooling>,
         snippet_path: &std::path::Path,
-        info: &LineInfo,
+        info: &LineInfo<'_>,
         nested: bool,
     ) -> Result<(bool, Option<String>), MdsfError> {
         match formatter {
@@ -1250,7 +1252,7 @@ impl MdsfFormatter<Tooling> {
 
                 let time = std::time::Instant::now();
 
-                let r = f.format_snippet(snippet_path);
+                let r = f.format_snippet(snippet_path).await;
 
                 print_formatter_time(formatter_name, info, time.elapsed());
 
@@ -1280,7 +1282,7 @@ impl MdsfFormatter<Tooling> {
                 let mut r = Ok((true, None));
 
                 for f in formatters {
-                    r = Self::format_multiple(f, snippet_path, info, true);
+                    r = Self::format_multiple(f, snippet_path, info, true).await;
 
                     if r.as_ref()
                         .is_ok_and(|(should_continue, _code)| !should_continue)

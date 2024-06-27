@@ -2,31 +2,34 @@ use super::execute_command;
 use crate::{error::MdsfError, runners::setup_npm_script};
 
 #[inline]
-fn set_blade_formatter_args(cmd: &mut std::process::Command, snippet_path: &std::path::Path) {
+fn set_blade_formatter_args(cmd: &mut tokio::process::Command, snippet_path: &std::path::Path) {
     cmd.arg("--write").arg(snippet_path);
 }
 
 #[inline]
-fn invoke_blade_formatter(
-    mut cmd: std::process::Command,
+async fn invoke_blade_formatter(
+    mut cmd: tokio::process::Command,
     snippet_path: &std::path::Path,
 ) -> Result<(bool, Option<String>), MdsfError> {
     set_blade_formatter_args(&mut cmd, snippet_path);
 
-    execute_command(&mut cmd, snippet_path)
+    execute_command(&mut cmd, snippet_path).await
 }
 
 #[inline]
-pub fn run(snippet_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfError> {
-    if let Ok(path_result) =
-        invoke_blade_formatter(std::process::Command::new("blade-formatter"), snippet_path)
+pub async fn run(snippet_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfError> {
+    if let Ok(path_result) = invoke_blade_formatter(
+        tokio::process::Command::new("blade-formatter"),
+        snippet_path,
+    )
+    .await
     {
         if !path_result.0 {
             return Ok(path_result);
         }
     }
 
-    invoke_blade_formatter(setup_npm_script("blade-formatter"), snippet_path)
+    invoke_blade_formatter(setup_npm_script("blade-formatter"), snippet_path).await
 }
 
 #[cfg(test)]

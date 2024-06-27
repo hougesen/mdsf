@@ -2,33 +2,37 @@ use super::execute_command;
 use crate::{error::MdsfError, runners::setup_npm_script};
 
 #[inline]
-pub fn run_format(snippet_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfError> {
+pub async fn run_format(
+    snippet_path: &std::path::Path,
+) -> Result<(bool, Option<String>), MdsfError> {
     // NOTE: the biome docs recommend running biome using npx, and not directly
     let mut cmd = setup_npm_script("@biomejs/biome");
 
     cmd.arg("format").arg("--write").arg(snippet_path);
 
-    execute_command(&mut cmd, snippet_path)
+    execute_command(&mut cmd, snippet_path).await
 }
 
 #[inline]
-pub fn run_lint(snippet_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfError> {
+pub async fn run_lint(snippet_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfError> {
     // NOTE: the biome docs recommend running biome using npx, and not directly
     let mut cmd = setup_npm_script("@biomejs/biome");
 
     cmd.arg("lint").arg("--write").arg(snippet_path);
 
-    execute_command(&mut cmd, snippet_path)
+    execute_command(&mut cmd, snippet_path).await
 }
 
 #[inline]
-pub fn run_check(snippet_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfError> {
+pub async fn run_check(
+    snippet_path: &std::path::Path,
+) -> Result<(bool, Option<String>), MdsfError> {
     // NOTE: the biome docs recommend running biome using npx, and not directly
     let mut cmd = setup_npm_script("@biomejs/biome");
 
     cmd.arg("check").arg("--write").arg(snippet_path);
 
-    execute_command(&mut cmd, snippet_path)
+    execute_command(&mut cmd, snippet_path).await
 }
 
 #[cfg(test)]

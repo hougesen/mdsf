@@ -2,30 +2,31 @@ use super::execute_command;
 use crate::{error::MdsfError, runners::setup_npm_script};
 
 #[inline]
-fn set_standardjs_args(cmd: &mut std::process::Command, snippet_path: &std::path::Path) {
+fn set_standardjs_args(cmd: &mut tokio::process::Command, snippet_path: &std::path::Path) {
     cmd.arg("--fix").arg(snippet_path);
 }
 
 #[inline]
-fn invoke_standardjs(
-    mut cmd: std::process::Command,
+async fn invoke_standardjs(
+    mut cmd: tokio::process::Command,
     snippet_path: &std::path::Path,
 ) -> Result<(bool, Option<String>), MdsfError> {
     set_standardjs_args(&mut cmd, snippet_path);
 
-    execute_command(&mut cmd, snippet_path)
+    execute_command(&mut cmd, snippet_path).await
 }
 
 #[inline]
-pub fn run(snippet_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfError> {
-    if let Ok(path_result) = invoke_standardjs(std::process::Command::new("standard"), snippet_path)
+pub async fn run(snippet_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfError> {
+    if let Ok(path_result) =
+        invoke_standardjs(tokio::process::Command::new("standard"), snippet_path).await
     {
         if !path_result.0 {
             return Ok(path_result);
         }
     }
 
-    invoke_standardjs(setup_npm_script("standard"), snippet_path)
+    invoke_standardjs(setup_npm_script("standard"), snippet_path).await
 }
 
 #[cfg(test)]

@@ -31,7 +31,11 @@ pub static DEBUG: AtomicBool = AtomicBool::new(false);
 const GO_TEMPORARY_PACKAGE_NAME: &str = "package mdsfformattertemporarynamespace\n";
 
 #[inline]
-fn format_file(config: &MdsfConfig, filename: &std::path::Path, input: &str) -> (bool, String) {
+async fn format_file(
+    config: &MdsfConfig,
+    filename: &std::path::Path,
+    input: &str,
+) -> (bool, String) {
     let mut output = String::with_capacity(input.len() + 128);
 
     let mut modified = false;
@@ -62,7 +66,8 @@ fn format_file(config: &MdsfConfig, filename: &std::path::Path, input: &str) -> 
                             end: line_index + snippet_lines + 1,
                         },
                         &code_snippet,
-                    );
+                    )
+                    .await;
 
                     output.push_str(line);
                     output.push('\n');
@@ -106,7 +111,8 @@ fn format_file(config: &MdsfConfig, filename: &std::path::Path, input: &str) -> 
                 end: 0,
             },
             &output,
-        );
+        )
+        .await;
         modified = true;
     }
 
@@ -114,16 +120,16 @@ fn format_file(config: &MdsfConfig, filename: &std::path::Path, input: &str) -> 
 }
 
 #[inline]
-fn save_file_cache(config_key: &str, file_key: &str, contents: &str) -> std::io::Result<()> {
+async fn save_file_cache(config_key: &str, file_key: &str, contents: &str) -> std::io::Result<()> {
     let dir = std::path::PathBuf::from(format!(".mdsf-cache/caches/{config_key}"));
 
-    std::fs::create_dir_all(&dir)?;
+    tokio::fs::create_dir_all(&dir).await?;
 
-    std::fs::write(dir.join(file_key), contents)
+    tokio::fs::write(dir.join(file_key), contents).await
 }
 
 #[inline]
-fn format_or_use_cache(
+async fn format_or_use_cache(
     config: &MdsfConfig,
     path: &std::path::Path,
     input: &str,
@@ -132,27 +138,27 @@ fn format_or_use_cache(
     if let Some((config, file)) = &cache_key {
         let dir = std::path::PathBuf::from(format!(".mdsf-cache/caches/{config}/"));
 
-        let _ = std::fs::create_dir_all(&dir);
+        let _ = tokio::fs::create_dir_all(&dir).await;
 
-        if let Ok(cached_value) = std::fs::read_to_string(dir.join(file)) {
+        if let Ok(cached_value) = tokio::fs::read_to_string(dir.join(file)).await {
             let modified = cached_value != input;
 
             return (cached_value, modified, true);
         }
     }
 
-    let (modified, output) = format_file(config, path, input);
+    let (modified, output) = format_file(config, path, input).await;
 
     if let Some((config_key, file_key)) = cache_key {
         // We do not (currently) care if saving the cache fails.
-        let _ = save_file_cache(&config_key, &file_key, &output);
+        let _ = save_file_cache(&config_key, &file_key, &output).await;
     }
 
     (output, modified, false)
 }
 
 #[inline]
-pub fn handle_file(
+pub async fn handle_file(
     config: &MdsfConfig,
     path: &std::path::Path,
     dry_run: bool,
@@ -160,7 +166,7 @@ pub fn handle_file(
 ) -> bool {
     let time = std::time::Instant::now();
 
-    match std::fs::read_to_string(path) {
+    match tokio::fs::read_to_string(path).await {
         Ok(input) => {
             if input.is_empty() {
                 print_unchanged_file(path, time.elapsed(), false);
@@ -170,15 +176,14 @@ pub fn handle_file(
 
             let cache_key = cache_key.map(|key| (key, hash_text_block(&input)));
 
-            let (output, modified, cached) = format_or_use_cache(config, path, &input, cache_key);
+            let (output, modified, cached) =
+                format_or_use_cache(config, path, &input, cache_key).await;
 
             if modified && output != input {
                 if dry_run {
                     print_changed_file_error(path);
                 } else {
-                    let write_result = std::fs::write(path, &output);
-
-                    if let Err(write_error) = write_result {
+                    if let Err(write_error) = tokio::fs::write(path, &output).await {
                         print_error_saving_file(path, &write_error);
 
                         return false;

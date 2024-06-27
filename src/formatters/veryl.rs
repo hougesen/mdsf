@@ -2,10 +2,10 @@ use super::execute_command;
 use crate::error::MdsfError;
 
 #[inline]
-pub fn run_fmt(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfError> {
-    let mut cmd = std::process::Command::new("veryl");
+pub async fn run_fmt(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfError> {
+    let mut cmd = tokio::process::Command::new("veryl");
 
     cmd.arg("fmt").arg(file_path);
 
-    execute_command(&mut cmd, file_path)
+    execute_command(&mut cmd, file_path).await
 }

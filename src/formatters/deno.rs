@@ -2,21 +2,21 @@ use super::execute_command;
 use crate::error::MdsfError;
 
 #[inline]
-pub fn run_fmt(snippet_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfError> {
-    let mut cmd = std::process::Command::new("deno");
+pub async fn run_fmt(snippet_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfError> {
+    let mut cmd = tokio::process::Command::new("deno");
 
     cmd.arg("fmt").arg("--quiet").arg(snippet_path);
 
-    execute_command(&mut cmd, snippet_path)
+    execute_command(&mut cmd, snippet_path).await
 }
 
 #[inline]
-pub fn run_lint(snippet_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfError> {
-    let mut cmd = std::process::Command::new("deno");
+pub async fn run_lint(snippet_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfError> {
+    let mut cmd = tokio::process::Command::new("deno");
 
     cmd.arg("lint").arg("--fix").arg(snippet_path);
 
-    execute_command(&mut cmd, snippet_path)
+    execute_command(&mut cmd, snippet_path).await
 }
 
 #[cfg(test)]

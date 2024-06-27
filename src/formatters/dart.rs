@@ -2,21 +2,23 @@ use super::execute_command;
 use crate::error::MdsfError;
 
 #[inline]
-pub fn run_format(snippet_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfError> {
-    let mut cmd = std::process::Command::new("dart");
+pub async fn run_format(
+    snippet_path: &std::path::Path,
+) -> Result<(bool, Option<String>), MdsfError> {
+    let mut cmd = tokio::process::Command::new("dart");
 
     cmd.arg("format").arg(snippet_path);
 
-    execute_command(&mut cmd, snippet_path)
+    execute_command(&mut cmd, snippet_path).await
 }
 
 #[inline]
-pub fn run_fix(snippet_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfError> {
-    let mut cmd = std::process::Command::new("dart");
+pub async fn run_fix(snippet_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfError> {
+    let mut cmd = tokio::process::Command::new("dart");
 
     cmd.arg("fix").arg("--apply").arg(snippet_path);
 
-    execute_command(&mut cmd, snippet_path)
+    execute_command(&mut cmd, snippet_path).await
 }
 
 #[cfg(test)]

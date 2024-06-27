@@ -3,7 +3,7 @@ use crate::{error::MdsfError, runners::setup_npm_script};
 
 #[inline]
 fn set_prettier_args(
-    cmd: &mut std::process::Command,
+    cmd: &mut tokio::process::Command,
     snippet_path: &std::path::Path,
     embedded_language_formatting: bool,
 ) {
@@ -18,25 +18,27 @@ fn set_prettier_args(
 }
 
 #[inline]
-fn invoke_prettier(
-    mut cmd: std::process::Command,
+async fn invoke_prettier(
+    mut cmd: tokio::process::Command,
     snippet_path: &std::path::Path,
     embedded_language_formatting: bool,
 ) -> Result<(bool, Option<String>), MdsfError> {
     set_prettier_args(&mut cmd, snippet_path, embedded_language_formatting);
 
-    execute_command(&mut cmd, snippet_path)
+    execute_command(&mut cmd, snippet_path).await
 }
 
 #[inline]
-pub fn run(snippet_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfError> {
+pub async fn run(snippet_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfError> {
     let embedded_language_formatting = snippet_path.extension().is_some_and(|ext| ext != "md");
 
     if let Ok(path_result) = invoke_prettier(
-        std::process::Command::new("prettier"),
+        tokio::process::Command::new("prettier"),
         snippet_path,
         embedded_language_formatting,
-    ) {
+    )
+    .await
+    {
         if !path_result.0 {
             return Ok(path_result);
         }
@@ -47,6 +49,7 @@ pub fn run(snippet_path: &std::path::Path) -> Result<(bool, Option<String>), Mds
         snippet_path,
         embedded_language_formatting,
     )
+    .await
 }
 
 #[cfg(test)]

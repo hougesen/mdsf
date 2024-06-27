@@ -2,8 +2,8 @@ use super::execute_command;
 use crate::error::MdsfError;
 
 #[inline]
-pub fn run(snippet_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfError> {
-    let mut cmd = std::process::Command::new("just");
+pub async fn run(snippet_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfError> {
+    let mut cmd = tokio::process::Command::new("just");
 
     cmd.arg("--fmt")
         // TODO: remove once it is stabilized
@@ -11,7 +11,7 @@ pub fn run(snippet_path: &std::path::Path) -> Result<(bool, Option<String>), Mds
         .arg("--justfile")
         .arg(snippet_path);
 
-    execute_command(&mut cmd, snippet_path)
+    execute_command(&mut cmd, snippet_path).await
 }
 
 #[cfg(test)]

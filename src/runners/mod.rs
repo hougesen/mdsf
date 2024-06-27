@@ -82,7 +82,7 @@ fn get_javascript_runtime() -> JavaScriptRuntime {
 }
 
 #[inline]
-pub fn setup_npm_script(package_name: &str) -> std::process::Command {
+pub fn setup_npm_script(package_name: &str) -> tokio::process::Command {
     let runtime = get_javascript_runtime();
 
     match runtime {
