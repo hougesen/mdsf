@@ -24,7 +24,6 @@ pub fn run_check(snippet_path: &std::path::Path) -> Result<(bool, Option<String>
 
 #[cfg(test)]
 mod test_ruff {
-    use super::run_format;
     use crate::{formatters::setup_snippet, generated::language_to_ext};
 
     #[test_with::executable(ruff)]
@@ -36,7 +35,7 @@ mod test_ruff {
         let snippet =
             setup_snippet(input, language_to_ext("python")).expect("it to create a snippet file");
 
-        let output = run_format(snippet.path())
+        let output = super::run_format(snippet.path())
             .expect("it to be successful")
             .1
             .expect("it to be some");

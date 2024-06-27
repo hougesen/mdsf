@@ -28,10 +28,7 @@ pub fn run(snippet_path: &std::path::Path) -> Result<(bool, Option<String>), Mds
 }
 #[cfg(test)]
 mod test_taplo {
-    use crate::{
-        formatters::{setup_snippet, taplo::run},
-        generated::language_to_ext,
-    };
+    use crate::{formatters::setup_snippet, generated::language_to_ext};
 
     #[test_with::executable(npx)]
     fn it_should_format_toml() {
@@ -46,7 +43,7 @@ author = \"Mads Hougesen\"
         let snippet =
             setup_snippet(input, language_to_ext("toml")).expect("it to create a snippet file");
 
-        let output = run(snippet.path())
+        let output = super::run(snippet.path())
             .expect("it to be successful")
             .1
             .expect("it to be some");

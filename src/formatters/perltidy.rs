@@ -23,10 +23,7 @@ pub fn run(snippet_path: &std::path::Path) -> Result<(bool, Option<String>), Mds
 
 #[cfg(test)]
 mod test_perltidy {
-    use crate::{
-        formatters::{perltidy::run, setup_snippet},
-        generated::language_to_ext,
-    };
+    use crate::{formatters::setup_snippet, generated::language_to_ext};
 
     #[test_with::executable(perltidy)]
     fn it_should_format_perl() {
@@ -60,7 +57,7 @@ LOOP: {
         let snippet =
             setup_snippet(input, language_to_ext("perl")).expect("it to create a snippet file");
 
-        let output = run(snippet.path())
+        let output = super::run(snippet.path())
             .expect("it to be successful")
             .1
             .expect("it to be some");

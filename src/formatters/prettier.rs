@@ -51,10 +51,7 @@ pub fn run(snippet_path: &std::path::Path) -> Result<(bool, Option<String>), Mds
 
 #[cfg(test)]
 mod test_prettier {
-    use crate::{
-        formatters::{prettier::run, setup_snippet},
-        generated::language_to_ext,
-    };
+    use crate::{formatters::setup_snippet, generated::language_to_ext};
 
     #[test_with::executable(npx)]
     fn it_should_format_json() {
@@ -80,7 +77,7 @@ mod test_prettier {
         let snippet =
             setup_snippet(input, language_to_ext("json")).expect("it to create a snippet file");
 
-        let output = run(snippet.path())
+        let output = super::run(snippet.path())
             .expect("it to be successful")
             .1
             .expect("it to be some");
@@ -107,7 +104,7 @@ mod test_prettier {
         let snippet = setup_snippet(input, language_to_ext("javascript"))
             .expect("it to create a snippet file");
 
-        let output = run(snippet.path())
+        let output = super::run(snippet.path())
             .expect("it to be successful")
             .1
             .expect("it to be some");
@@ -137,7 +134,7 @@ number>
         let snippet = setup_snippet(input, language_to_ext("typescript"))
             .expect("it to create a snippet file");
 
-        let output = run(snippet.path())
+        let output = super::run(snippet.path())
             .expect("it to be successful")
             .1
             .expect("it to be some");
@@ -164,7 +161,7 @@ this is a paragraph
         let snippet =
             setup_snippet(input, language_to_ext("markdown")).expect("it to create a snippet file");
 
-        let output = run(snippet.path())
+        let output = super::run(snippet.path())
             .expect("it to be successful")
             .1
             .expect("it to be some");
@@ -191,7 +188,7 @@ number>
         let snippet =
             setup_snippet(input, language_to_ext("markdown")).expect("it to create a snippet file");
 
-        let output = run(snippet.path())
+        let output = super::run(snippet.path())
             .expect("it to be successful")
             .1
             .expect("it to be some");
@@ -228,7 +225,7 @@ number>
         let snippet =
             setup_snippet(input, language_to_ext("html")).expect("it to create a snippet file");
 
-        let output = run(snippet.path())
+        let output = super::run(snippet.path())
             .expect("it to be successful")
             .1
             .expect("it to be some");
@@ -251,7 +248,7 @@ p {
         let snippet =
             setup_snippet(input, language_to_ext("css")).expect("it to create a snippet file");
 
-        let output = run(snippet.path())
+        let output = super::run(snippet.path())
             .expect("it to be successful")
             .1
             .expect("it to be some");
@@ -307,7 +304,7 @@ updates:
         let snippet =
             setup_snippet(input, language_to_ext("yaml")).expect("it to create a snippet file");
 
-        let output = run(snippet.path())
+        let output = super::run(snippet.path())
             .expect("it to be successful")
             .1
             .expect("it to be some");
@@ -353,7 +350,7 @@ function add(a: number, b: number): number {
         let snippet =
             setup_snippet(input, language_to_ext("vue")).expect("it to create a snippet file");
 
-        let output = run(snippet.path())
+        let output = super::run(snippet.path())
             .expect("it to be successful")
             .1
             .expect("it to be some");
@@ -381,7 +378,7 @@ function add(a: number, b: number): number {
         let snippet =
             setup_snippet(input, language_to_ext("graphql")).expect("it to create a snippet file");
 
-        let output = run(snippet.path())
+        let output = super::run(snippet.path())
             .expect("it to be successful")
             .1
             .expect("it to be some");

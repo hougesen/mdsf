@@ -12,10 +12,7 @@ pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfEr
 
 #[cfg(test)]
 mod test_beautysh {
-    use crate::{
-        formatters::{beautysh::run, setup_snippet},
-        generated::language_to_ext,
-    };
+    use crate::{formatters::setup_snippet, generated::language_to_ext};
 
     #[test_with::executable(beautysh)]
     fn it_should_format_sh() {
@@ -35,7 +32,7 @@ add() {
         let snippet =
             setup_snippet(input, language_to_ext("shell")).expect("it to create a snippet file");
 
-        let output = run(snippet.path())
+        let output = super::run(snippet.path())
             .expect("it to be successful")
             .1
             .expect("it to be some");
@@ -61,7 +58,7 @@ add() {
         let snippet =
             setup_snippet(input, language_to_ext("bash")).expect("it to create a snippet file");
 
-        let output = run(snippet.path())
+        let output = super::run(snippet.path())
             .expect("it to be successful")
             .1
             .expect("it to be some");
