@@ -21,7 +21,6 @@ pub fn run_lint(snippet_path: &std::path::Path) -> Result<(bool, Option<String>)
 
 #[cfg(test)]
 mod test_deno_fmt {
-    use super::run_fmt;
     use crate::{formatters::setup_snippet, generated::language_to_ext};
 
     #[test_with::executable(deno)]
@@ -53,7 +52,7 @@ mod test_deno_fmt {
         let snippet =
             setup_snippet(input, language_to_ext("json")).expect("it to create a snippet file");
 
-        let output = run_fmt(snippet.path())
+        let output = super::run_fmt(snippet.path())
             .expect("it to be successful")
             .1
             .expect("it to be some");
@@ -78,7 +77,7 @@ mod test_deno_fmt {
         let snippet = setup_snippet(input, language_to_ext("javascript"))
             .expect("it to create a snippet file");
 
-        let output = run_fmt(snippet.path())
+        let output = super::run_fmt(snippet.path())
             .expect("it to be successful")
             .1
             .expect("it to be some");
@@ -105,7 +104,7 @@ mod test_deno_fmt {
         let snippet = setup_snippet(input, language_to_ext("typescript"))
             .expect("it to create a snippet file");
 
-        let output = run_fmt(snippet.path())
+        let output = super::run_fmt(snippet.path())
             .expect("it to be successful")
             .1
             .expect("it to be some");

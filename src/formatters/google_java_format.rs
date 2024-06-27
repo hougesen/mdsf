@@ -12,7 +12,6 @@ pub fn run(snippet_path: &std::path::Path) -> Result<(bool, Option<String>), Mds
 
 #[cfg(test)]
 mod test_google_java_format {
-    use super::run;
     use crate::{formatters::setup_snippet, generated::language_to_ext};
 
     #[test_with::executable(google-java-format)]
@@ -35,7 +34,7 @@ mod test_google_java_format {
         let snippet =
             setup_snippet(input, language_to_ext("java")).expect("it to create a snippet file");
 
-        let output = run(snippet.path())
+        let output = super::run(snippet.path())
             .expect("it to be successful")
             .1
             .expect("it to be some");
