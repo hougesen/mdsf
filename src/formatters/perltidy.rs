@@ -2,18 +2,21 @@ use super::execute_command;
 use crate::error::MdsfError;
 
 #[inline]
-fn set_perltidy_args(cmd: &mut std::process::Command, snippet_path: &std::path::Path) {
+fn set_perltidy_args(
+    mut cmd: std::process::Command,
+    snippet_path: &std::path::Path,
+) -> std::process::Command {
     cmd.arg("-b").arg(snippet_path);
+
+    cmd
 }
 
 #[inline]
 fn invoke_perltidy(
-    mut cmd: std::process::Command,
+    cmd: std::process::Command,
     snippet_path: &std::path::Path,
 ) -> Result<(bool, Option<String>), MdsfError> {
-    set_perltidy_args(&mut cmd, snippet_path);
-
-    execute_command(&mut cmd, snippet_path)
+    execute_command(set_perltidy_args(cmd, snippet_path), snippet_path)
 }
 
 #[inline]

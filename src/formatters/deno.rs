@@ -7,7 +7,7 @@ pub fn run_fmt(snippet_path: &std::path::Path) -> Result<(bool, Option<String>),
 
     cmd.arg("fmt").arg("--quiet").arg(snippet_path);
 
-    execute_command(&mut cmd, snippet_path)
+    execute_command(cmd, snippet_path)
 }
 
 #[inline]
@@ -16,7 +16,7 @@ pub fn run_lint(snippet_path: &std::path::Path) -> Result<(bool, Option<String>)
 
     cmd.arg("lint").arg("--fix").arg(snippet_path);
 
-    execute_command(&mut cmd, snippet_path)
+    execute_command(cmd, snippet_path)
 }
 
 #[cfg(test)]

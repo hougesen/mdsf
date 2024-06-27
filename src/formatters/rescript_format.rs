@@ -2,18 +2,21 @@ use super::execute_command;
 use crate::{error::MdsfError, runners::setup_npm_script};
 
 #[inline]
-fn set_rescript_format_args(cmd: &mut std::process::Command, snippet_path: &std::path::Path) {
+fn set_rescript_format_args(
+    mut cmd: std::process::Command,
+    snippet_path: &std::path::Path,
+) -> std::process::Command {
     cmd.arg("format").arg(snippet_path);
+
+    cmd
 }
 
 #[inline]
 fn invoke_rescript_format(
-    mut cmd: std::process::Command,
+    cmd: std::process::Command,
     snippet_path: &std::path::Path,
 ) -> Result<(bool, Option<String>), MdsfError> {
-    set_rescript_format_args(&mut cmd, snippet_path);
-
-    execute_command(&mut cmd, snippet_path)
+    execute_command(set_rescript_format_args(cmd, snippet_path), snippet_path)
 }
 
 #[inline]

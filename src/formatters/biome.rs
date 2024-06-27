@@ -8,7 +8,7 @@ pub fn run_format(snippet_path: &std::path::Path) -> Result<(bool, Option<String
 
     cmd.arg("format").arg("--write").arg(snippet_path);
 
-    execute_command(&mut cmd, snippet_path)
+    execute_command(cmd, snippet_path)
 }
 
 #[inline]
@@ -18,7 +18,7 @@ pub fn run_lint(snippet_path: &std::path::Path) -> Result<(bool, Option<String>)
 
     cmd.arg("lint").arg("--write").arg(snippet_path);
 
-    execute_command(&mut cmd, snippet_path)
+    execute_command(cmd, snippet_path)
 }
 
 #[inline]
@@ -28,7 +28,7 @@ pub fn run_check(snippet_path: &std::path::Path) -> Result<(bool, Option<String>
 
     cmd.arg("check").arg("--write").arg(snippet_path);
 
-    execute_command(&mut cmd, snippet_path)
+    execute_command(cmd, snippet_path)
 }
 
 #[cfg(test)]

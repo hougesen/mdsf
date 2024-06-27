@@ -9,7 +9,7 @@ pub fn run(snippet_path: &std::path::Path) -> Result<(bool, Option<String>), Mds
         .arg("--log-level=error")
         .arg(snippet_path);
 
-    execute_command(&mut cmd, snippet_path)
+    execute_command(cmd, snippet_path)
 }
 
 #[cfg(test)]

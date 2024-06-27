@@ -7,7 +7,7 @@ pub fn run_format(file_path: &std::path::Path) -> Result<(bool, Option<String>),
 
     cmd.arg("format").arg(file_path);
 
-    execute_command(&mut cmd, file_path)
+    execute_command(cmd, file_path)
 }
 
 #[inline]
@@ -16,5 +16,5 @@ pub fn run_fix(file_path: &std::path::Path) -> Result<(bool, Option<String>), Md
 
     cmd.arg("fix").arg(file_path);
 
-    execute_command(&mut cmd, file_path)
+    execute_command(cmd, file_path)
 }
