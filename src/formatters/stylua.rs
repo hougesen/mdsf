@@ -2,19 +2,21 @@ use super::execute_command;
 use crate::{error::MdsfError, runners::setup_npm_script};
 
 #[inline]
-fn set_stylua_args(cmd: &mut std::process::Command, snippet_path: &std::path::Path) {
-    cmd.arg("--verify");
-    cmd.arg(snippet_path);
+fn set_stylua_args(
+    mut cmd: std::process::Command,
+    snippet_path: &std::path::Path,
+) -> std::process::Command {
+    cmd.arg("--verify").arg(snippet_path);
+
+    cmd
 }
 
 #[inline]
 fn invoke_stylua(
-    mut cmd: std::process::Command,
+    cmd: std::process::Command,
     snippet_path: &std::path::Path,
 ) -> Result<(bool, Option<String>), MdsfError> {
-    set_stylua_args(&mut cmd, snippet_path);
-
-    execute_command(&mut cmd, snippet_path)
+    execute_command(set_stylua_args(cmd, snippet_path), snippet_path)
 }
 
 #[inline]

@@ -7,5 +7,5 @@ pub fn run_fmt(file_path: &std::path::Path) -> Result<(bool, Option<String>), Md
 
     cmd.arg("fmt").arg("-i").arg(file_path);
 
-    execute_command(&mut cmd, file_path)
+    execute_command(cmd, file_path)
 }

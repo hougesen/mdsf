@@ -1,4 +1,4 @@
-use std::{ffi::OsStr, io::Write, process::Command, str::FromStr};
+use std::{ffi::OsStr, io::Write, str::FromStr};
 
 use tempfile::NamedTempFile;
 use which::which;
@@ -227,7 +227,7 @@ fn handle_post_execution(
     }
 }
 
-fn spawn_command(cmd: &mut Command) -> std::io::Result<std::process::Output> {
+fn spawn_command(mut cmd: std::process::Command) -> std::io::Result<std::process::Output> {
     if !DEBUG.load(core::sync::atomic::Ordering::Relaxed) {
         cmd.stdout(std::process::Stdio::null());
         cmd.stderr(std::process::Stdio::null());
@@ -238,7 +238,7 @@ fn spawn_command(cmd: &mut Command) -> std::io::Result<std::process::Output> {
 
 #[inline]
 pub fn execute_command(
-    cmd: &mut Command,
+    cmd: std::process::Command,
     snippet_path: &std::path::Path,
 ) -> Result<(bool, Option<String>), MdsfError> {
     let binary_name = cmd.get_program();

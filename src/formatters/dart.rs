@@ -7,7 +7,7 @@ pub fn run_format(snippet_path: &std::path::Path) -> Result<(bool, Option<String
 
     cmd.arg("format").arg(snippet_path);
 
-    execute_command(&mut cmd, snippet_path)
+    execute_command(cmd, snippet_path)
 }
 
 #[inline]
@@ -16,7 +16,7 @@ pub fn run_fix(snippet_path: &std::path::Path) -> Result<(bool, Option<String>),
 
     cmd.arg("fix").arg("--apply").arg(snippet_path);
 
-    execute_command(&mut cmd, snippet_path)
+    execute_command(cmd, snippet_path)
 }
 
 #[cfg(test)]

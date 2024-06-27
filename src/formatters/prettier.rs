@@ -3,10 +3,10 @@ use crate::{error::MdsfError, runners::setup_npm_script};
 
 #[inline]
 fn set_prettier_args(
-    cmd: &mut std::process::Command,
+    mut cmd: std::process::Command,
     snippet_path: &std::path::Path,
     embedded_language_formatting: bool,
-) {
+) -> std::process::Command {
     if !embedded_language_formatting {
         cmd.arg("--embedded-language-formatting").arg("off");
     }
@@ -15,17 +15,20 @@ fn set_prettier_args(
         .arg("error")
         .arg("--write")
         .arg(snippet_path);
+
+    cmd
 }
 
 #[inline]
 fn invoke_prettier(
-    mut cmd: std::process::Command,
+    cmd: std::process::Command,
     snippet_path: &std::path::Path,
     embedded_language_formatting: bool,
 ) -> Result<(bool, Option<String>), MdsfError> {
-    set_prettier_args(&mut cmd, snippet_path, embedded_language_formatting);
-
-    execute_command(&mut cmd, snippet_path)
+    execute_command(
+        set_prettier_args(cmd, snippet_path, embedded_language_formatting),
+        snippet_path,
+    )
 }
 
 #[inline]

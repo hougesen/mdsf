@@ -8,7 +8,7 @@ pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfEr
     cmd.arg("-w")
         .arg(format!("'{}'", file_path.to_string_lossy()));
 
-    execute_command(&mut cmd, file_path)
+    execute_command(cmd, file_path)
 }
 
 #[cfg(test)]
