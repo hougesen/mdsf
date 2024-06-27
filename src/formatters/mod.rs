@@ -107,6 +107,7 @@ mod oxlint;
 mod perltidy;
 mod pg_format;
 mod prettier;
+mod prisma;
 mod puppet_lint;
 mod purs_tidy;
 mod pyink;
@@ -698,6 +699,10 @@ pub enum Tooling {
     #[serde(rename = "prettier")]
     Prettier,
 
+    #[doc = "https://prisma.io/"]
+    #[serde(rename = "prisma")]
+    Prisma,
+
     #[doc = "https://github.com/puppetlabs/puppet-lint"]
     #[serde(rename = "puppet-lint")]
     PuppetLint,
@@ -999,6 +1004,7 @@ impl Tooling {
             Self::PerlTidy => perltidy::run(snippet_path),
             Self::PgFormat => pg_format::run(snippet_path),
             Self::Prettier => prettier::run(snippet_path),
+            Self::Prisma => prisma::run_format(snippet_path),
             Self::PuppetLint => puppet_lint::run(snippet_path),
             Self::PursTidy => purs_tidy::run(snippet_path),
             Self::PyInk => pyink::run(snippet_path),
@@ -1154,6 +1160,7 @@ impl AsRef<str> for Tooling {
             Self::PerlTidy => "perltidy",
             Self::PgFormat => "pg_format",
             Self::Prettier => "prettier",
+            Self::Prisma => "prisma",
             Self::PuppetLint => "puppet-lint",
             Self::PursTidy => "purs-tidy",
             Self::PyInk => "pyink",
