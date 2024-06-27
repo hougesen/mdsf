@@ -2,7 +2,7 @@ use super::execute_command;
 use crate::error::MdsfError;
 
 #[inline]
-pub async  fn run(snippet_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfError> {
+pub async fn run(snippet_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfError> {
     let mut cmd = tokio::process::Command::new("standardrb");
 
     cmd.arg("--fix").arg(snippet_path);

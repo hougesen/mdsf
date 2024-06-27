@@ -2,7 +2,9 @@ use super::execute_command;
 use crate::error::MdsfError;
 
 #[inline]
-pub async  fn run_format(snippet_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfError> {
+pub async fn run_format(
+    snippet_path: &std::path::Path,
+) -> Result<(bool, Option<String>), MdsfError> {
     let mut cmd = tokio::process::Command::new("ruff");
 
     cmd.arg("format").arg("--quiet").arg(snippet_path);
@@ -11,7 +13,9 @@ pub async  fn run_format(snippet_path: &std::path::Path) -> Result<(bool, Option
 }
 
 #[inline]
-pub async  fn run_check(snippet_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfError> {
+pub async fn run_check(
+    snippet_path: &std::path::Path,
+) -> Result<(bool, Option<String>), MdsfError> {
     let mut cmd = tokio::process::Command::new("ruff");
 
     cmd.arg("check")

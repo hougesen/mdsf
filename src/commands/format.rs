@@ -85,7 +85,7 @@ pub async fn run(args: FormatCommandArguments, dry_run: bool) -> Result<(), Mdsf
         return Err(MdsfError::FileNotFound(args.path));
     }
 
-    while let Some(_) = tasks.join_next().await {}
+    while (tasks.join_next().await).is_some() {}
 
     let total_changed_files = changed_file_count.load(std::sync::atomic::Ordering::SeqCst);
 

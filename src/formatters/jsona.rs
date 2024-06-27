@@ -7,4 +7,5 @@ pub async fn run_format(file_path: &std::path::Path) -> Result<(bool, Option<Str
 
     cmd.arg("format").arg(file_path);
 
-    execute_command(&mut cmd, file_path).await }
+    execute_command(&mut cmd, file_path).await
+}

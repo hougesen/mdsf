@@ -157,19 +157,18 @@ mod zigfmt;
 mod zprint;
 
 #[inline]
-fn setup_temp_dir() -> std::io::Result<()> {
-    std::fs::create_dir_all(".mdsf-cache/caches")?;
+async fn setup_temp_dir() -> std::io::Result<()> {
+    tokio::fs::create_dir_all(".mdsf-cache/caches").await?;
 
-    std::fs::write(
+    tokio::fs::write(
         ".mdsf-cache/.gitignore",
         "Automatically created by mdsf.\n*\n",
-    )?;
-
-    Ok(())
+    )
+    .await
 }
 
 #[inline]
-pub fn setup_snippet(code: &str, file_ext: &str) -> std::io::Result<NamedTempFile> {
+pub async fn setup_snippet(code: &str, file_ext: &str) -> std::io::Result<NamedTempFile> {
     let mut b = tempfile::Builder::new();
 
     b.rand_bytes(12).suffix(file_ext).prefix(
@@ -184,7 +183,7 @@ pub fn setup_snippet(code: &str, file_ext: &str) -> std::io::Result<NamedTempFil
     if !std::path::PathBuf::from_str(".mdsf-cache/.gitignore")
         .is_ok_and(|p| p.try_exists().unwrap_or_default())
     {
-        setup_temp_dir()?;
+        setup_temp_dir().await?;
     }
 
     let mut f = b.tempfile_in(".mdsf-cache")?;
@@ -270,7 +269,9 @@ pub async fn format_snippet(config: &MdsfConfig, info: &LineInfo<'_>, code: &str
                         }
                     },
                 ),
-        ) {
+        )
+        .await
+        {
             let snippet_path = snippet.path();
 
             if let Ok(Some(formatted_code)) = formatters.format(snippet_path, info).await {

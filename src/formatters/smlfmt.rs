@@ -7,4 +7,5 @@ pub async fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), 
 
     cmd.arg("--force").arg(file_path);
 
-    execute_command(&mut cmd, file_path).await }
+    execute_command(&mut cmd, file_path).await
+}

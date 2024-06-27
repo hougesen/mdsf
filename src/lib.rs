@@ -182,12 +182,10 @@ pub async fn handle_file(
             if modified && output != input {
                 if dry_run {
                     print_changed_file_error(path);
-                } else {
-                    if let Err(write_error) = tokio::fs::write(path, &output).await {
-                        print_error_saving_file(path, &write_error);
+                } else if let Err(write_error) = tokio::fs::write(path, &output).await {
+                    print_error_saving_file(path, &write_error);
 
-                        return false;
-                    }
+                    return false;
                 }
 
                 print_changed_file(path, time.elapsed(), cached);

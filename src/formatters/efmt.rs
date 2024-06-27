@@ -7,7 +7,8 @@ pub async fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), 
 
     cmd.arg("-w").arg(file_path);
 
-    execute_command(&mut cmd, file_path).await }
+    execute_command(&mut cmd, file_path).await
+}
 
 #[cfg(test)]
 mod test_efmt {

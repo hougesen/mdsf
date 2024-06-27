@@ -7,4 +7,5 @@ pub async fn run_fmt(file_path: &std::path::Path) -> Result<(bool, Option<String
 
     cmd.arg("fmt").arg(file_path);
 
-    execute_command(&mut cmd, file_path).await }
+    execute_command(&mut cmd, file_path).await
+}
