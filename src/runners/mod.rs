@@ -3,12 +3,14 @@ use core::sync::atomic::{AtomicU8, Ordering};
 use bun::new_bunx_cmd;
 use deno::new_deno_cmd;
 use node::new_npx_cmd;
+use pnpm::new_pnpm_dlx_cmd;
 
 use crate::terminal::print_unknown_javascript_runtime;
 
 mod bun;
 mod deno;
 mod node;
+mod pnpm;
 
 #[derive(Debug, Default, serde::Serialize, serde::Deserialize, Clone, Copy, Hash)]
 #[cfg_attr(test, derive(PartialEq, Eq))]
@@ -21,6 +23,8 @@ pub enum JavaScriptRuntime {
     #[default]
     #[serde(rename = "node")]
     Node,
+    #[serde(rename = "pnpm")]
+    Pnpm,
 }
 
 impl core::fmt::Display for JavaScriptRuntime {
@@ -30,6 +34,7 @@ impl core::fmt::Display for JavaScriptRuntime {
             Self::Bun => f.write_str("bun"),
             Self::Deno => f.write_str("deno"),
             Self::Node => f.write_str("node"),
+            Self::Pnpm => f.write_str("pnpm"),
         }
     }
 }
@@ -39,6 +44,7 @@ static RUNTIME_FLAG: AtomicU8 = AtomicU8::new(0);
 const JAVASCRIPT_RUNTIME_NODE: u8 = 0;
 const JAVASCRIPT_RUNTIME_BUN: u8 = 1;
 const JAVASCRIPT_RUNTIME_DENO: u8 = 2;
+const JAVASCRIPT_RUNTIME_PNPM: u8 = 3;
 
 impl From<JavaScriptRuntime> for u8 {
     #[inline]
@@ -47,6 +53,7 @@ impl From<JavaScriptRuntime> for u8 {
             JavaScriptRuntime::Bun => JAVASCRIPT_RUNTIME_BUN,
             JavaScriptRuntime::Deno => JAVASCRIPT_RUNTIME_DENO,
             JavaScriptRuntime::Node => JAVASCRIPT_RUNTIME_NODE,
+            JavaScriptRuntime::Pnpm => JAVASCRIPT_RUNTIME_PNPM,
         }
     }
 }
@@ -60,6 +67,7 @@ impl TryFrom<u8> for JavaScriptRuntime {
             JAVASCRIPT_RUNTIME_BUN => Ok(Self::Bun),
             JAVASCRIPT_RUNTIME_DENO => Ok(Self::Deno),
             JAVASCRIPT_RUNTIME_NODE => Ok(Self::Node),
+            JAVASCRIPT_RUNTIME_PNPM => Ok(Self::Pnpm),
             _ => Err(()),
         }
     }
@@ -89,5 +97,6 @@ pub fn setup_npm_script(package_name: &str) -> std::process::Command {
         JavaScriptRuntime::Bun => new_bunx_cmd(package_name),
         JavaScriptRuntime::Deno => new_deno_cmd(package_name),
         JavaScriptRuntime::Node => new_npx_cmd(package_name),
+        JavaScriptRuntime::Pnpm => new_pnpm_dlx_cmd(package_name),
     }
 }
