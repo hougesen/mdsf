@@ -354,6 +354,11 @@
           "enum": ["fprettify"]
         },
         {
+          "description": "https://github.com/ennocramer/floskell",
+          "type": "string",
+          "enum": ["floskell"]
+        },
+        {
           "description": "https://github.com/daixiang0/gci",
           "type": "string",
           "enum": ["gci"]
