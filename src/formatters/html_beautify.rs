@@ -42,7 +42,7 @@ mod test_html_beautify {
     use crate::{formatters::setup_snippet, generated::language_to_ext};
 
     #[test_with::executable(html-beautify)]
-    fn it_should_format_css() {
+    fn it_should_format_html() {
         let input = "<div>
                     <p>
                     Mads was here
