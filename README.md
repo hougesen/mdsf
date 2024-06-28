@@ -194,7 +194,7 @@ mdsf init
 
 <!-- START_SECTION:supported-tools -->
 
-`mdsf` currently supports 164 tools.
+`mdsf` currently supports 165 tools.
 
 | Formatter            | Description                                                                                                                  |
 | -------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
@@ -237,6 +237,7 @@ mdsf init
 | deno_fmt             | [https://docs.deno.com/runtime/manual/tools/formatter](https://docs.deno.com/runtime/manual/tools/formatter)                 |
 | deno_lint            | [https://docs.deno.com/runtime/manual/tools/linter](https://docs.deno.com/runtime/manual/tools/linter)                       |
 | dfmt                 | [https://github.com/dlang-community/dfmt](https://github.com/dlang-community/dfmt)                                           |
+| dhall                | [https://dhall-lang.org/](https://dhall-lang.org/)                                                                           |
 | djlint               | [https://www.djlint.com/](https://www.djlint.com/)                                                                           |
 | docformatter         | [https://pypi.org/project/docformatter/](https://pypi.org/project/docformatter/)                                             |
 | docstrfmt            | [https://pypi.org/project/docstrfmt/](https://pypi.org/project/docstrfmt/)                                                   |

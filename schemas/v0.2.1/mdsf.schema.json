@@ -254,6 +254,11 @@
           "enum": ["dfmt"]
         },
         {
+          "description": "https://dhall-lang.org/",
+          "type": "string",
+          "enum": ["dhall"]
+        },
+        {
           "description": "https://www.djlint.com/",
           "type": "string",
           "enum": ["djlint"]
