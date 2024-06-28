@@ -829,6 +829,11 @@
           "enum": ["tofu_fmt"]
         },
         {
+          "description": "https://github.com/tweag/topiary",
+          "type": "string",
+          "enum": ["topiary"]
+        },
+        {
           "description": "https://github.com/standard/ts-standard",
           "type": "string",
           "enum": ["ts-standard"]

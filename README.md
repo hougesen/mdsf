@@ -194,7 +194,7 @@ mdsf init
 
 <!-- START_SECTION:supported-tools -->
 
-`mdsf` currently supports 170 tools. Feel free to open an issue/pull-request if your favorite tool is missing! 😃
+`mdsf` currently supports 171 tools. Feel free to open an issue/pull-request if your favorite tool is missing! 😃
 
 | Formatter            | Description                                                                                                                  |
 | -------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
@@ -352,6 +352,7 @@ mdsf init
 | terraform_fmt        | [https://www.terraform.io/docs/cli/commands/fmt.html](https://www.terraform.io/docs/cli/commands/fmt.html)                   |
 | tlint                | [https://github.com/tighten/tlint](https://github.com/tighten/tlint)                                                         |
 | tofu_fmt             | [https://opentofu.org/docs/cli/commands/fmt/](https://opentofu.org/docs/cli/commands/fmt/)                                   |
+| topiary              | [https://github.com/tweag/topiary](https://github.com/tweag/topiary)                                                         |
 | ts-standard          | [https://github.com/standard/ts-standard](https://github.com/standard/ts-standard)                                           |
 | twig-cs-fixer        | [https://github.com/VincentLanglet/Twig-CS-Fixer](https://github.com/VincentLanglet/Twig-CS-Fixer)                           |
 | typos                | [https://github.com/crate-ci/typos](https://github.com/crate-ci/typos)                                                       |

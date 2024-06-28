@@ -162,6 +162,7 @@ mod templ;
 mod terraform_fmt;
 mod tlint;
 mod tofu_fmt;
+mod topiary;
 mod ts_standard;
 mod twig_cs_fixer;
 mod typos;
@@ -951,6 +952,10 @@ pub enum Tooling {
     #[serde(rename = "tofu_fmt")]
     TofuFmt,
 
+    #[doc = "https://github.com/tweag/topiary"]
+    #[serde(rename = "topiary")]
+    Topiary,
+
     #[doc = "https://github.com/standard/ts-standard"]
     #[serde(rename = "ts-standard")]
     TsStandard,
@@ -1178,6 +1183,7 @@ impl Tooling {
             Self::TerraformFmt => terraform_fmt::run(snippet_path),
             Self::Tlint => tlint::run(snippet_path),
             Self::TofuFmt => tofu_fmt::run(snippet_path),
+            Self::Topiary => topiary::run(snippet_path),
             Self::TsStandard => ts_standard::run(snippet_path),
             Self::TwigCsFixer => twig_cs_fixer::run(snippet_path),
             Self::Typos => typos::run(snippet_path),
@@ -1346,6 +1352,7 @@ impl AsRef<str> for Tooling {
             Self::Templ => "templ",
             Self::TerraformFmt => "terraform_fmt",
             Self::TofuFmt => "tofu_fmt",
+            Self::Topiary => "topiary",
             Self::TsStandard => "ts-standard",
             Self::Typos => "typos",
             Self::UiuaFmt => "uiua_fmt",
