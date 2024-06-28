@@ -454,6 +454,11 @@
           "enum": ["jsona_format"]
         },
         {
+          "description": "https://jsonnet.org/learning/tools.html",
+          "type": "string",
+          "enum": ["jsonnetfmt"]
+        },
+        {
           "description": "https://www.kcl-lang.io/docs/tools/cli/kcl/fmt",
           "type": "string",
           "enum": ["kcl_fmt"]

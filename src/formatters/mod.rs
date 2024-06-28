@@ -86,6 +86,7 @@ mod isort;
 mod joker;
 mod js_beautify;
 mod jsona;
+mod jsonnetfmt;
 mod juliaformatter_jl;
 mod just_fmt;
 mod kcl_fmt;
@@ -635,6 +636,10 @@ pub enum Tooling {
     #[serde(rename = "jsona_format")]
     JsonaFormat,
 
+    #[doc = "https://jsonnet.org/learning/tools.html"]
+    #[serde(rename = "jsonnetfmt")]
+    Jsonnetfmt,
+
     #[doc = "https://www.kcl-lang.io/docs/tools/cli/kcl/fmt"]
     #[serde(rename = "kcl_fmt")]
     KclFmt,
@@ -1042,6 +1047,7 @@ impl Tooling {
             Self::Joker => joker::run(snippet_path),
             Self::JsBeautify => js_beautify::run(snippet_path),
             Self::JsonaFormat => jsona::run_format(snippet_path),
+            Self::Jsonnetfmt => jsonnetfmt::run(snippet_path),
             Self::JuliaFormatterJl => juliaformatter_jl::run(snippet_path),
             Self::JustFmt => just_fmt::run(snippet_path),
             Self::KclFmt => kcl_fmt::run(snippet_path),
@@ -1208,6 +1214,7 @@ impl AsRef<str> for Tooling {
             Self::JuliaFormatterJl => "juliaformatter.jl",
             Self::JustFmt => "just_fmt",
             Self::JsonaFormat => "jsona_format",
+            Self::Jsonnetfmt => "jsonnetfmt",
             Self::KclFmt => "kcl_fmt",
             Self::Kdlfmt => "kdlfmt",
             Self::Ktfmt => "ktfmt",

@@ -194,7 +194,7 @@ mdsf init
 
 <!-- START_SECTION:supported-tools -->
 
-`mdsf` currently supports 159 tools.
+`mdsf` currently supports 160 tools.
 
 | Formatter            | Description                                                                                                                  |
 | -------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
@@ -275,6 +275,7 @@ mdsf init
 | joker                | [https://github.com/candid82/joker](https://github.com/candid82/joker)                                                       |
 | js-beautify          | [https://github.com/beautifier/js-beautify](https://github.com/beautifier/js-beautify)                                       |
 | jsona_format         | [https://github.com/jsona/jsona](https://github.com/jsona/jsona)                                                             |
+| jsonnetfmt           | [https://jsonnet.org/learning/tools.html](https://jsonnet.org/learning/tools.html)                                           |
 | juliaformatter.jl    | [https://github.com/domluna/JuliaFormatter.jl](https://github.com/domluna/JuliaFormatter.jl)                                 |
 | just_fmt             | [https://github.com/casey/just](https://github.com/casey/just)                                                               |
 | kcl_fmt              | [https://www.kcl-lang.io/docs/tools/cli/kcl/fmt](https://www.kcl-lang.io/docs/tools/cli/kcl/fmt)                             |
