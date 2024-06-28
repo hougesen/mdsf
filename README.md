@@ -194,7 +194,7 @@ mdsf init
 
 <!-- START_SECTION:supported-tools -->
 
-`mdsf` currently supports 168 tools. Feel free to open an issue/pull-request if your favorite tool is missing! 😃
+`mdsf` currently supports 169 tools. Feel free to open an issue/pull-request if your favorite tool is missing! 😃
 
 | Formatter            | Description                                                                                                                  |
 | -------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
@@ -229,6 +229,7 @@ mdsf init
 | crystal_format       | [https://crystal-lang.org/](https://crystal-lang.org/)                                                                       |
 | csharpier            | [https://csharpier.com/](https://csharpier.com/)                                                                             |
 | css-beautify         | [https://github.com/beautifier/js-beautify](https://github.com/beautifier/js-beautify)                                       |
+| csscomb              | [https://github.com/csscomb/csscomb.js](https://github.com/csscomb/csscomb.js)                                               |
 | d2                   | [https://d2lang.com/](https://d2lang.com/)                                                                                   |
 | dart_fix             | [https://dart.dev/tools/dart-fix](https://dart.dev/tools/dart-fix)                                                           |
 | dart_format          | [https://dart.dev/tools/dart-format](https://dart.dev/tools/dart-format)                                                     |

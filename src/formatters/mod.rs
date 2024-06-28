@@ -43,6 +43,7 @@ mod crlfmt;
 mod crystal_format;
 mod csharpier;
 mod css_beautify;
+mod csscomb;
 mod d2;
 mod dart;
 mod dcm;
@@ -265,6 +266,8 @@ pub fn execute_command(
     cmd: std::process::Command,
     snippet_path: &std::path::Path,
 ) -> Result<(bool, Option<String>), MdsfError> {
+    println!("cmd:{cmd:#?}");
+
     if cmd.get_current_dir().is_none() {
         let binary_name = cmd.get_program();
 
@@ -456,6 +459,10 @@ pub enum Tooling {
     #[doc = "https://github.com/beautifier/js-beautify"]
     #[serde(rename = "css-beautify")]
     CssBeautify,
+
+    #[doc = "https://github.com/csscomb/csscomb.js"]
+    #[serde(rename = "csscomb")]
+    Csscomb,
 
     #[doc = "https://d2lang.com/"]
     #[serde(rename = "d2")]
@@ -1046,6 +1053,7 @@ impl Tooling {
             Self::CrlFmt => crlfmt::run(snippet_path),
             Self::CrystalFormat => crystal_format::run(snippet_path),
             Self::CssBeautify => css_beautify::run(snippet_path),
+            Self::Csscomb => csscomb::run(snippet_path),
             Self::D2 => d2::run(snippet_path),
             Self::DFmt => dfmt::run(snippet_path),
             Self::Dhall => dhall::run(snippet_path),
@@ -1349,6 +1357,7 @@ impl AsRef<str> for Tooling {
             Self::ZigFmt => "zigfmt",
             Self::Zprint => "zprint",
             Self::CssBeautify => "css-beautify",
+            Self::Csscomb => "csscomb",
             Self::EasyCodingStandard => "easy-coding-standard",
             Self::HtmlBeautify => "html-beautify",
             Self::JsBeautify => "js-beautify",

@@ -214,6 +214,11 @@
           "enum": ["css-beautify"]
         },
         {
+          "description": "https://github.com/csscomb/csscomb.js",
+          "type": "string",
+          "enum": ["csscomb"]
+        },
+        {
           "description": "https://d2lang.com/",
           "type": "string",
           "enum": ["d2"]
