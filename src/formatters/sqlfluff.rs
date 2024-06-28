@@ -1,5 +1,5 @@
 use super::execute_command;
-use crate::error::MdsfError;
+use crate::{error::MdsfError, runners::CommandType};
 
 #[inline]
 fn set_sqlfluff_args(
@@ -25,7 +25,7 @@ fn invoke_sqlfluff(
 
 #[inline]
 pub fn run(snippet_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfError> {
-    invoke_sqlfluff(std::process::Command::new("sqlfluff"), snippet_path)
+    invoke_sqlfluff(CommandType::Direct("sqlfluff").build(), snippet_path)
 }
 
 #[cfg(test)]

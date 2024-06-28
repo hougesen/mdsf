@@ -199,6 +199,11 @@
           "enum": ["csharpier"]
         },
         {
+          "description": "https://github.com/beautifier/js-beautify",
+          "type": "string",
+          "enum": ["css-beautify"]
+        },
+        {
           "description": "https://d2lang.com/",
           "type": "string",
           "enum": ["d2"]
@@ -262,6 +267,11 @@
           "description": "https://dprint.dev",
           "type": "string",
           "enum": ["dprint"]
+        },
+        {
+          "description": "https://github.com/easy-coding-standard/easy-coding-standard",
+          "type": "string",
+          "enum": ["easy-cofing-standard"]
         },
         {
           "description": "https://github.com/sile/efmt",
@@ -404,6 +414,11 @@
           "enum": ["htmlbeautifier"]
         },
         {
+          "description": "https://github.com/beautifier/js-beautify",
+          "type": "string",
+          "enum": ["html-beautify"]
+        },
+        {
           "description": "https://github.com/imba/imba",
           "type": "string",
           "enum": ["imba_fmt"]
@@ -427,6 +442,11 @@
           "description": "https://github.com/casey/just",
           "type": "string",
           "enum": ["just_fmt"]
+        },
+        {
+          "description": "https://github.com/beautifier/js-beautify",
+          "type": "string",
+          "enum": ["js-beautify"]
         },
         {
           "description": "https://github.com/jsona/jsona",
@@ -457,6 +477,11 @@
           "description": "https://github.com/bram209/leptosfmt",
           "type": "string",
           "enum": ["leptosfmt"]
+        },
+        {
+          "description": "https://github.com/savonet/liquidsoap-prettier",
+          "type": "string",
+          "enum": ["liquidsoap-prettier"]
         },
         {
           "description": "https://github.com/Koihik/LuaFormatter",
@@ -544,9 +569,34 @@
           "enum": ["pg_format"]
         },
         {
+          "description": "https://github.com/PHP-CS-Fixer/PHP-CS-Fixer",
+          "type": "string",
+          "enum": ["php-cs-fixer"]
+        },
+        {
+          "description": "https://phpqa.io/projects/phpcbf.html",
+          "type": "string",
+          "enum": ["phpcbf"]
+        },
+        {
+          "description": "https://phpinsights.com/",
+          "type": "string",
+          "enum": ["phpinsights"]
+        },
+        {
+          "description": "https://github.com/laravel/pint",
+          "type": "string",
+          "enum": ["pint"]
+        },
+        {
           "description": "https://github.com/prettier/prettier",
           "type": "string",
           "enum": ["prettier"]
+        },
+        {
+          "description": "https://github.com/lkrms/pretty-php",
+          "type": "string",
+          "enum": ["pretty-php"]
         },
         {
           "description": "https://prisma.io/",
@@ -714,6 +764,11 @@
           "enum": ["terraform_fmt"]
         },
         {
+          "description": "https://github.com/tighten/tlint",
+          "type": "string",
+          "enum": ["tlint"]
+        },
+        {
           "description": "https://opentofu.org/docs/cli/commands/fmt/",
           "type": "string",
           "enum": ["tofu_fmt"]
@@ -722,6 +777,11 @@
           "description": "https://github.com/standard/ts-standard",
           "type": "string",
           "enum": ["ts-standard"]
+        },
+        {
+          "description": "https://github.com/VincentLanglet/Twig-CS-Fixer",
+          "type": "string",
+          "enum": ["twig-cs-fixer"]
         },
         {
           "description": "https://github.com/crate-ci/typos",

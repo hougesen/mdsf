@@ -4,18 +4,17 @@ use mdsf::{caching::get_config_hash, cli::CachePruneArguments, config::MdsfConfi
 
 #[inline]
 fn get_config() -> MdsfConfig {
-    if let Ok(p) = current_dir().map(|d| d.join("mdsf.json")) {
-        MdsfConfig::load(p).unwrap_or_default()
-    } else {
-        MdsfConfig::default()
-    }
+    current_dir().map(|d| d.join("mdsf.json")).map_or_else(
+        |_| MdsfConfig::default(),
+        |p| MdsfConfig::load(p).unwrap_or_default(),
+    )
 }
 
 #[inline]
-pub fn run(args: CachePruneArguments) {
+pub fn run(args: &CachePruneArguments) {
     let cache_dir = std::path::PathBuf::from(".mdsf-cache/caches");
 
-    if let Ok(true) = cache_dir.try_exists() {
+    if cache_dir.try_exists().is_ok_and(|exists| exists) {
         if args.all {
             let _ = std::fs::remove_dir_all(&cache_dir);
             let _ = std::fs::create_dir_all(cache_dir);

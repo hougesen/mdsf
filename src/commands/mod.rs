@@ -32,7 +32,7 @@ pub fn execute_command() -> Result<(), MdsfError> {
             Ok(())
         }
         Commands::CachePrune(args) => {
-            prune_cache::run(args);
+            prune_cache::run(&args);
 
             Ok(())
         }

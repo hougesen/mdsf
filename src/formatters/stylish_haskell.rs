@@ -1,9 +1,9 @@
 use super::execute_command;
-use crate::error::MdsfError;
+use crate::{error::MdsfError, runners::CommandType};
 
 #[inline]
 pub fn run(snippet_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfError> {
-    let mut cmd = std::process::Command::new("stylish-haskell");
+    let mut cmd = CommandType::Direct("stylish-haskell").build();
 
     cmd.arg("--inplace").arg(snippet_path);
 

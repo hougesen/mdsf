@@ -1,9 +1,9 @@
 use super::execute_command;
-use crate::error::MdsfError;
+use crate::{error::MdsfError, runners::CommandType};
 
 #[inline]
 pub fn run(snippet_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfError> {
-    let mut cmd = std::process::Command::new("yew-fmt");
+    let mut cmd = CommandType::Direct("yew-fmt").build();
 
     // Needed for async
     cmd.arg("--edition").arg("2021");

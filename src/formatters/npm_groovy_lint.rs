@@ -1,5 +1,5 @@
 use super::execute_command;
-use crate::{error::MdsfError, runners::setup_npm_script};
+use crate::{error::MdsfError, runners::CommandType};
 
 #[inline]
 fn set_npm_groovy_lint_args(
@@ -21,15 +21,24 @@ fn invoke_npm_groovy_lint(
 
 #[inline]
 pub fn run(snippet_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfError> {
+    if let Ok(path_result) = invoke_npm_groovy_lint(
+        CommandType::NodeModules("npm-groovy-lint").build(),
+        snippet_path,
+    ) {
+        if !path_result.0 {
+            return Ok(path_result);
+        }
+    }
+
     if let Ok(path_result) =
-        invoke_npm_groovy_lint(std::process::Command::new("npm-groovy-lint"), snippet_path)
+        invoke_npm_groovy_lint(CommandType::Direct("npm-groovy-lint").build(), snippet_path)
     {
         if !path_result.0 {
             return Ok(path_result);
         }
     }
 
-    invoke_npm_groovy_lint(setup_npm_script("npm-groovy-lint"), snippet_path)
+    invoke_npm_groovy_lint(CommandType::Npm("npm-groovy-lint").build(), snippet_path)
 }
 
 #[cfg(test)]

@@ -1,5 +1,5 @@
 use super::execute_command;
-use crate::{error::MdsfError, runners::setup_npm_script};
+use crate::{error::MdsfError, runners::CommandType};
 
 #[inline]
 fn set_markuplint_args(
@@ -22,12 +22,20 @@ fn invoke_markuplint(
 #[inline]
 pub fn run(snippet_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfError> {
     if let Ok(path_result) =
-        invoke_markuplint(std::process::Command::new("markuplint"), snippet_path)
+        invoke_markuplint(CommandType::NodeModules("markuplint").build(), snippet_path)
     {
         if !path_result.0 {
             return Ok(path_result);
         }
     }
 
-    invoke_markuplint(setup_npm_script("markuplint"), snippet_path)
+    if let Ok(path_result) =
+        invoke_markuplint(CommandType::Direct("markuplint").build(), snippet_path)
+    {
+        if !path_result.0 {
+            return Ok(path_result);
+        }
+    }
+
+    invoke_markuplint(CommandType::Npm("markuplint").build(), snippet_path)
 }

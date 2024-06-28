@@ -1,9 +1,9 @@
 use super::execute_command;
-use crate::error::MdsfError;
+use crate::{error::MdsfError, runners::CommandType};
 
 #[inline]
 pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfError> {
-    let mut cmd = std::process::Command::new("asmfmt");
+    let mut cmd = CommandType::Direct("asmfmt").build();
 
     cmd.arg("-w").arg(file_path);
 

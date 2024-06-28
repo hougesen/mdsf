@@ -1,5 +1,5 @@
 use super::execute_command;
-use crate::{error::MdsfError, runners::setup_npm_script};
+use crate::{error::MdsfError, runners::CommandType};
 
 #[inline]
 fn set_ts_standard_args(
@@ -21,13 +21,22 @@ fn invoke_ts_standard(
 
 #[inline]
 pub fn run(snippet_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfError> {
+    if let Ok(path_result) = invoke_ts_standard(
+        CommandType::NodeModules("ts-standard").build(),
+        snippet_path,
+    ) {
+        if !path_result.0 {
+            return Ok(path_result);
+        }
+    }
+
     if let Ok(path_result) =
-        invoke_ts_standard(std::process::Command::new("ts-standard"), snippet_path)
+        invoke_ts_standard(CommandType::Direct("ts-standard").build(), snippet_path)
     {
         if !path_result.0 {
             return Ok(path_result);
         }
     }
 
-    invoke_ts_standard(setup_npm_script("ts-standard"), snippet_path)
+    invoke_ts_standard(CommandType::Npm("ts-standard").build(), snippet_path)
 }

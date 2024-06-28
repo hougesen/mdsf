@@ -1,5 +1,5 @@
 use super::execute_command;
-use crate::{error::MdsfError, runners::setup_npm_script};
+use crate::{error::MdsfError, runners::CommandType};
 
 #[inline]
 fn set_standardjs_args(
@@ -21,14 +21,23 @@ fn invoke_standardjs(
 
 #[inline]
 pub fn run(snippet_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfError> {
-    if let Ok(path_result) = invoke_standardjs(std::process::Command::new("standard"), snippet_path)
+    if let Ok(path_result) =
+        invoke_standardjs(CommandType::NodeModules("standard").build(), snippet_path)
     {
         if !path_result.0 {
             return Ok(path_result);
         }
     }
 
-    invoke_standardjs(setup_npm_script("standard"), snippet_path)
+    if let Ok(path_result) =
+        invoke_standardjs(CommandType::Direct("standard").build(), snippet_path)
+    {
+        if !path_result.0 {
+            return Ok(path_result);
+        }
+    }
+
+    invoke_standardjs(CommandType::Npm("standard").build(), snippet_path)
 }
 
 #[cfg(test)]

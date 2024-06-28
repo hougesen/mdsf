@@ -40,6 +40,7 @@ mod codespell;
 mod crlfmt;
 mod crystal_format;
 mod csharpier;
+mod css_beautify;
 mod d2;
 mod dart;
 mod dcm;
@@ -50,6 +51,7 @@ mod docformatter;
 mod docstrfmt;
 mod dotenv_linter;
 mod dprint;
+mod easy_coding_standard;
 mod efmt;
 mod elm_format;
 mod erb_formatter;
@@ -77,10 +79,12 @@ mod google_java_format;
 mod grain;
 mod haml_lint;
 mod hindent;
+mod html_beautify;
 mod htmlbeautifier;
 mod imba;
 mod isort;
 mod joker;
+mod js_beautify;
 mod jsona;
 mod juliaformatter_jl;
 mod just_fmt;
@@ -89,6 +93,7 @@ mod kdlfmt;
 mod ktfmt;
 mod ktlint;
 mod leptosfmt;
+mod liquidsoap_prettier;
 mod luaformatter;
 mod markdownlint;
 mod markuplint;
@@ -106,7 +111,12 @@ mod ormolu;
 mod oxlint;
 mod perltidy;
 mod pg_format;
+mod php_cs_fixer;
+mod phpcbf;
+mod phpinsights;
+mod pint;
 mod prettier;
+mod pretty_php;
 mod prisma;
 mod puppet_lint;
 mod purs_tidy;
@@ -139,8 +149,10 @@ mod swiftformat;
 mod taplo;
 mod templ;
 mod terraform_fmt;
+mod tlint;
 mod tofu_fmt;
 mod ts_standard;
+mod twig_cs_fixer;
 mod typos;
 mod uiua;
 mod usort;
@@ -419,6 +431,10 @@ pub enum Tooling {
     #[serde(rename = "csharpier")]
     CSharpier,
 
+    #[doc = "https://github.com/beautifier/js-beautify"]
+    #[serde(rename = "css-beautify")]
+    CssBeautify,
+
     #[doc = "https://d2lang.com/"]
     #[serde(rename = "d2")]
     D2,
@@ -470,6 +486,10 @@ pub enum Tooling {
     #[doc = "https://dprint.dev"]
     #[serde(rename = "dprint")]
     Dprint,
+
+    #[doc = "https://github.com/easy-coding-standard/easy-coding-standard"]
+    #[serde(rename = "easy-cofing-standard")]
+    EasyCodingStandard,
 
     #[doc = "https://github.com/sile/efmt"]
     #[serde(rename = "efmt")]
@@ -583,6 +603,10 @@ pub enum Tooling {
     #[serde(rename = "htmlbeautifier")]
     Htmlbeautifier,
 
+    #[doc = "https://github.com/beautifier/js-beautify"]
+    #[serde(rename = "html-beautify")]
+    HtmlBeautify,
+
     #[doc = "https://github.com/imba/imba"]
     #[serde(rename = "imba_fmt")]
     ImbaFmt,
@@ -602,6 +626,10 @@ pub enum Tooling {
     #[doc = "https://github.com/casey/just"]
     #[serde(rename = "just_fmt")]
     JustFmt,
+
+    #[doc = "https://github.com/beautifier/js-beautify"]
+    #[serde(rename = "js-beautify")]
+    JsBeautify,
 
     #[doc = "https://github.com/jsona/jsona"]
     #[serde(rename = "jsona_format")]
@@ -626,6 +654,10 @@ pub enum Tooling {
     #[doc = "https://github.com/bram209/leptosfmt"]
     #[serde(rename = "leptosfmt")]
     LeptosFmt,
+
+    #[doc = "https://github.com/savonet/liquidsoap-prettier"]
+    #[serde(rename = "liquidsoap-prettier")]
+    LiquidsoapPrettier,
 
     #[doc = "https://github.com/Koihik/LuaFormatter"]
     #[serde(rename = "luaformatter")]
@@ -695,9 +727,29 @@ pub enum Tooling {
     #[serde(rename = "pg_format")]
     PgFormat,
 
+    #[doc = "https://github.com/PHP-CS-Fixer/PHP-CS-Fixer"]
+    #[serde(rename = "php-cs-fixer")]
+    PhpCsFixer,
+
+    #[doc = "https://phpqa.io/projects/phpcbf.html"]
+    #[serde(rename = "phpcbf")]
+    Phpcbf,
+
+    #[doc = "https://phpinsights.com/"]
+    #[serde(rename = "phpinsights")]
+    Phpinsights,
+
+    #[doc = "https://github.com/laravel/pint"]
+    #[serde(rename = "pint")]
+    Pint,
+
     #[doc = "https://github.com/prettier/prettier"]
     #[serde(rename = "prettier")]
     Prettier,
+
+    #[doc = "https://github.com/lkrms/pretty-php"]
+    #[serde(rename = "pretty-php")]
+    PrettyPhp,
 
     #[doc = "https://prisma.io/"]
     #[serde(rename = "prisma")]
@@ -831,6 +883,10 @@ pub enum Tooling {
     #[serde(rename = "terraform_fmt")]
     TerraformFmt,
 
+    #[doc = "https://github.com/tighten/tlint"]
+    #[serde(rename = "tlint")]
+    Tlint,
+
     #[doc = "https://opentofu.org/docs/cli/commands/fmt/"]
     #[serde(rename = "tofu_fmt")]
     TofuFmt,
@@ -838,6 +894,10 @@ pub enum Tooling {
     #[doc = "https://github.com/standard/ts-standard"]
     #[serde(rename = "ts-standard")]
     TsStandard,
+
+    #[doc = "https://github.com/VincentLanglet/Twig-CS-Fixer"]
+    #[serde(rename = "twig-cs-fixer")]
+    TwigCsFixer,
 
     #[doc = "https://github.com/crate-ci/typos"]
     #[serde(rename = "typos")]
@@ -933,10 +993,11 @@ impl Tooling {
             Self::Codespell => codespell::run(snippet_path),
             Self::CrlFmt => crlfmt::run(snippet_path),
             Self::CrystalFormat => crystal_format::run(snippet_path),
+            Self::CssBeautify => css_beautify::run(snippet_path),
             Self::D2 => d2::run(snippet_path),
             Self::DFmt => dfmt::run(snippet_path),
-            Self::DartFormat => dart::run_format(snippet_path),
             Self::DartFix => dart::run_fix(snippet_path),
+            Self::DartFormat => dart::run_format(snippet_path),
             Self::DcmFix => dcm::run_fix(snippet_path),
             Self::DcmFormat => dcm::run_format(snippet_path),
             Self::DenoFmt => deno::run_fmt(snippet_path),
@@ -946,6 +1007,7 @@ impl Tooling {
             Self::Docstrfmt => docstrfmt::run(snippet_path),
             Self::DotenvLinter => dotenv_linter::run(snippet_path),
             Self::Dprint => dprint::run(snippet_path),
+            Self::EasyCodingStandard => easy_coding_standard::run(snippet_path),
             Self::Efmt => efmt::run(snippet_path),
             Self::ElmFormat => elm_format::run(snippet_path),
             Self::ErbFormatter => erb_formatter::run(snippet_path),
@@ -973,18 +1035,21 @@ impl Tooling {
             Self::GrainFormat => grain::run_format(snippet_path),
             Self::HIndent => hindent::run(snippet_path),
             Self::HamlLint => haml_lint::run(snippet_path),
+            Self::HtmlBeautify => html_beautify::run(snippet_path),
             Self::Htmlbeautifier => htmlbeautifier::run(snippet_path),
             Self::ImbaFmt => imba::run_fmt(snippet_path),
             Self::Isort => isort::run(snippet_path),
             Self::Joker => joker::run(snippet_path),
+            Self::JsBeautify => js_beautify::run(snippet_path),
+            Self::JsonaFormat => jsona::run_format(snippet_path),
             Self::JuliaFormatterJl => juliaformatter_jl::run(snippet_path),
             Self::JustFmt => just_fmt::run(snippet_path),
-            Self::JsonaFormat => jsona::run_format(snippet_path),
             Self::KclFmt => kcl_fmt::run(snippet_path),
             Self::Kdlfmt => kdlfmt::run(snippet_path),
             Self::Ktfmt => ktfmt::run(snippet_path),
             Self::Ktlint => ktlint::run(snippet_path),
             Self::LeptosFmt => leptosfmt::run(snippet_path),
+            Self::LiquidsoapPrettier => liquidsoap_prettier::run(snippet_path),
             Self::LuaFormatter => luaformatter::run(snippet_path),
             Self::Markdownlint => markdownlint::run(snippet_path),
             Self::Markuplint => markuplint::run(snippet_path),
@@ -1003,7 +1068,12 @@ impl Tooling {
             Self::Oxlint => oxlint::run(snippet_path),
             Self::PerlTidy => perltidy::run(snippet_path),
             Self::PgFormat => pg_format::run(snippet_path),
+            Self::PhpCsFixer => php_cs_fixer::run(snippet_path),
+            Self::Phpcbf => phpcbf::run(snippet_path),
+            Self::Phpinsights => phpinsights::run(snippet_path),
+            Self::Pint => pint::run(snippet_path),
             Self::Prettier => prettier::run(snippet_path),
+            Self::PrettyPhp => pretty_php::run(snippet_path),
             Self::Prisma => prisma::run_format(snippet_path),
             Self::PuppetLint => puppet_lint::run(snippet_path),
             Self::PursTidy => purs_tidy::run(snippet_path),
@@ -1035,13 +1105,15 @@ impl Tooling {
             Self::Taplo => taplo::run(snippet_path),
             Self::Templ => templ::run(snippet_path),
             Self::TerraformFmt => terraform_fmt::run(snippet_path),
+            Self::Tlint => tlint::run(snippet_path),
             Self::TofuFmt => tofu_fmt::run(snippet_path),
             Self::TsStandard => ts_standard::run(snippet_path),
+            Self::TwigCsFixer => twig_cs_fixer::run(snippet_path),
             Self::Typos => typos::run(snippet_path),
             Self::UiuaFmt => uiua::run_fmt(snippet_path),
             Self::Usort => usort::run(snippet_path),
-            Self::VlangFmt => v::run_fmt(snippet_path),
             Self::VerylFmt => veryl::run_fmt(snippet_path),
+            Self::VlangFmt => v::run_fmt(snippet_path),
             Self::XmlFormat => xmlformat::run(snippet_path),
             Self::XmlLint => xmllint::run(snippet_path),
             Self::Xo => xo::run(snippet_path),
@@ -1141,6 +1213,7 @@ impl AsRef<str> for Tooling {
             Self::Ktfmt => "ktfmt",
             Self::Ktlint => "ktlint",
             Self::LeptosFmt => "leptosfmt",
+            Self::LiquidsoapPrettier => "liquidsoap-prettier",
             Self::LuaFormatter => "luaformatter",
             Self::Markdownlint => "markdownlint",
             Self::Markuplint => "markuplint",
@@ -1207,6 +1280,17 @@ impl AsRef<str> for Tooling {
             Self::YewFmt => "yew-fmt",
             Self::ZigFmt => "zigfmt",
             Self::Zprint => "zprint",
+            Self::CssBeautify => "css-beautify",
+            Self::EasyCodingStandard => "easy-coding-standard",
+            Self::HtmlBeautify => "html-beautify",
+            Self::JsBeautify => "js-beautify",
+            Self::PhpCsFixer => "php-cs-fixer",
+            Self::Phpcbf => "phpcbf",
+            Self::Phpinsights => "phpinsights",
+            Self::Pint => "pint",
+            Self::PrettyPhp => "pretty-php",
+            Self::Tlint => "tlint",
+            Self::TwigCsFixer => "twig-cs-fixer",
         }
     }
 }
@@ -1237,7 +1321,7 @@ impl MdsfFormatter<Tooling> {
 
     #[inline]
     pub fn format_multiple(
-        formatter: &MdsfFormatter<Tooling>,
+        formatter: &Self,
         snippet_path: &std::path::Path,
         info: &LineInfo,
         nested: bool,

@@ -1,5 +1,5 @@
 use super::execute_command;
-use crate::{error::MdsfError, runners::setup_npm_script};
+use crate::{error::MdsfError, runners::CommandType};
 
 #[inline]
 fn set_eslint_args(
@@ -21,11 +21,18 @@ fn invoke_eslint(
 
 #[inline]
 pub fn run(snippet_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfError> {
-    if let Ok(path_result) = invoke_eslint(std::process::Command::new("eslint"), snippet_path) {
+    if let Ok(path_result) = invoke_eslint(CommandType::NodeModules("eslint").build(), snippet_path)
+    {
         if !path_result.0 {
             return Ok(path_result);
         }
     }
 
-    invoke_eslint(setup_npm_script("eslint"), snippet_path)
+    if let Ok(path_result) = invoke_eslint(CommandType::Direct("eslint").build(), snippet_path) {
+        if !path_result.0 {
+            return Ok(path_result);
+        }
+    }
+
+    invoke_eslint(CommandType::Npm("eslint").build(), snippet_path)
 }

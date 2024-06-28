@@ -1,12 +1,13 @@
 use super::execute_command;
-use crate::{error::MdsfError, runners::setup_npm_script};
+use crate::{error::MdsfError, runners::CommandType};
 
 #[inline]
 fn set_prettier_args(
     mut cmd: std::process::Command,
     snippet_path: &std::path::Path,
-    embedded_language_formatting: bool,
 ) -> std::process::Command {
+    let embedded_language_formatting = snippet_path.extension().is_some_and(|ext| ext != "md");
+
     if !embedded_language_formatting {
         cmd.arg("--embedded-language-formatting").arg("off");
     }
@@ -23,33 +24,28 @@ fn set_prettier_args(
 fn invoke_prettier(
     cmd: std::process::Command,
     snippet_path: &std::path::Path,
-    embedded_language_formatting: bool,
 ) -> Result<(bool, Option<String>), MdsfError> {
-    execute_command(
-        set_prettier_args(cmd, snippet_path, embedded_language_formatting),
-        snippet_path,
-    )
+    execute_command(set_prettier_args(cmd, snippet_path), snippet_path)
 }
 
 #[inline]
 pub fn run(snippet_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfError> {
-    let embedded_language_formatting = snippet_path.extension().is_some_and(|ext| ext != "md");
-
-    if let Ok(path_result) = invoke_prettier(
-        std::process::Command::new("prettier"),
-        snippet_path,
-        embedded_language_formatting,
-    ) {
+    if let Ok(path_result) =
+        invoke_prettier(CommandType::NodeModules("prettier").build(), snippet_path)
+    {
         if !path_result.0 {
             return Ok(path_result);
         }
     }
 
-    invoke_prettier(
-        setup_npm_script("prettier"),
-        snippet_path,
-        embedded_language_formatting,
-    )
+    if let Ok(path_result) = invoke_prettier(CommandType::Direct("prettier").build(), snippet_path)
+    {
+        if !path_result.0 {
+            return Ok(path_result);
+        }
+    }
+
+    invoke_prettier(CommandType::Npm("prettier").build(), snippet_path)
 }
 
 #[cfg(test)]

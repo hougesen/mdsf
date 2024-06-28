@@ -1,9 +1,9 @@
 use super::execute_command;
-use crate::error::MdsfError;
+use crate::{error::MdsfError, runners::CommandType};
 
 #[inline]
 pub fn run(snippet_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfError> {
-    let mut cmd = std::process::Command::new("google-java-format");
+    let mut cmd = CommandType::Direct("google-java-format").build();
 
     cmd.arg("-i").arg(snippet_path);
 
