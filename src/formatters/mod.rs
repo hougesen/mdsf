@@ -48,6 +48,7 @@ mod dart;
 mod dcm;
 mod deno;
 mod dfmt;
+mod dhall;
 mod djlint;
 mod docformatter;
 mod docstrfmt;
@@ -479,6 +480,10 @@ pub enum Tooling {
     #[doc = "https://github.com/dlang-community/dfmt"]
     #[serde(rename = "dfmt")]
     DFmt,
+
+    #[doc = "https://dhall-lang.org/"]
+    #[serde(rename = "dhall")]
+    Dhall,
 
     #[doc = "https://www.djlint.com/"]
     #[serde(rename = "djlint")]
@@ -1023,6 +1028,7 @@ impl Tooling {
             Self::CssBeautify => css_beautify::run(snippet_path),
             Self::D2 => d2::run(snippet_path),
             Self::DFmt => dfmt::run(snippet_path),
+            Self::Dhall => dhall::run(snippet_path),
             Self::DartFix => dart::run_fix(snippet_path),
             Self::DartFormat => dart::run_format(snippet_path),
             Self::DcmFix => dcm::run_fix(snippet_path),
@@ -1195,6 +1201,7 @@ impl AsRef<str> for Tooling {
             Self::CrystalFormat => "crystal_format",
             Self::D2 => "d2",
             Self::DFmt => "dfmt",
+            Self::Dhall => "dhall",
             Self::DartFormat => "dart_format",
             Self::DartFix => "dart_fix",
             Self::DenoFmt => "deno_fmt",
