@@ -5,7 +5,7 @@ Format markdown code snippets using your favorite code formatters.
 <!-- START_SECTION:base-command-help -->
 
 ```
-mdsf 0.2.1
+mdsf 0.2.2
 Format markdown code snippets using your favorite code formatters
 Mads Hougesen <mads@mhouge.dk>
 
