@@ -194,7 +194,7 @@ mdsf init
 
 <!-- START_SECTION:supported-tools -->
 
-`mdsf` currently supports 169 tools. Feel free to open an issue/pull-request if your favorite tool is missing! 😃
+`mdsf` currently supports 170 tools. Feel free to open an issue/pull-request if your favorite tool is missing! 😃
 
 | Formatter            | Description                                                                                                                  |
 | -------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
@@ -341,6 +341,7 @@ mdsf init
 | sqlfmt               | [https://sqlfmt.com](https://sqlfmt.com)                                                                                     |
 | standardjs           | [https://standardjs.com/](https://standardjs.com/)                                                                           |
 | standardrb           | [https://github.com/standardrb/standard](https://github.com/standardrb/standard)                                             |
+| stylefmt             | [https://github.com/matype/stylefmt](https://github.com/matype/stylefmt)                                                     |
 | stylelint            | [https://github.com/stylelint/stylelint](https://github.com/stylelint/stylelint)                                             |
 | stylish-haskell      | [https://github.com/haskell/stylish-haskell](https://github.com/haskell/stylish-haskell)                                     |
 | stylua               | [https://github.com/JohnnyMorganz/StyLua](https://github.com/JohnnyMorganz/StyLua)                                           |

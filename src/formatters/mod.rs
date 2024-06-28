@@ -151,6 +151,7 @@ mod sqlfluff;
 mod sqlfmt;
 mod standardjs;
 mod standardrb;
+mod stylefmt;
 mod stylelint;
 mod stylish_haskell;
 mod stylua;
@@ -266,8 +267,6 @@ pub fn execute_command(
     cmd: std::process::Command,
     snippet_path: &std::path::Path,
 ) -> Result<(bool, Option<String>), MdsfError> {
-    println!("cmd:{cmd:#?}");
-
     if cmd.get_current_dir().is_none() {
         let binary_name = cmd.get_program();
 
@@ -908,6 +907,10 @@ pub enum Tooling {
     #[serde(rename = "standardrb")]
     Standardrb,
 
+    #[doc = "https://github.com/matype/stylefmt"]
+    #[serde(rename = "stylefmt")]
+    Stylefmt,
+
     #[doc = "https://github.com/stylelint/stylelint"]
     #[serde(rename = "stylelint")]
     StyleLint,
@@ -1166,6 +1169,7 @@ impl Tooling {
             Self::Sqlfmt => sqlfmt::run(snippet_path),
             Self::Standardjs => standardjs::run(snippet_path),
             Self::Standardrb => standardrb::run(snippet_path),
+            Self::Stylefmt => stylefmt::run(snippet_path),
             Self::StyleLint => stylelint::run(snippet_path),
             Self::StylishHaskell => stylish_haskell::run(snippet_path),
             Self::Stylua => stylua::run(snippet_path),
@@ -1334,6 +1338,7 @@ impl AsRef<str> for Tooling {
             Self::Sqlfmt => "sqlfmt",
             Self::Standardjs => "standardjs",
             Self::Standardrb => "standardrb",
+            Self::Stylefmt => "stylefmt",
             Self::StyleLint => "stylelint",
             Self::StylishHaskell => "stylish-haskell",
             Self::Stylua => "stylua",
