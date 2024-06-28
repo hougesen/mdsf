@@ -654,6 +654,11 @@
           "enum": ["pyink"]
         },
         {
+          "description": "https://github.com/jesperhh/qmlfmt",
+          "type": "string",
+          "enum": ["qmlfmt"]
+        },
+        {
           "description": "https://docs.racket-lang.org/fmt/",
           "type": "string",
           "enum": ["raco_fmt"]

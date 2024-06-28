@@ -194,7 +194,7 @@ mdsf init
 
 <!-- START_SECTION:supported-tools -->
 
-`mdsf` currently supports 166 tools.
+`mdsf` currently supports 167 tools.
 
 | Formatter            | Description                                                                                                                  |
 | -------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
@@ -317,6 +317,7 @@ mdsf init
 | purs-tidy            | [https://github.com/natefaubion/purescript-tidy](https://github.com/natefaubion/purescript-tidy)                             |
 | pycln                | [https://github.com/hadialqattan/pycln](https://github.com/hadialqattan/pycln)                                               |
 | pyink                | [https://github.com/google/pyink](https://github.com/google/pyink)                                                           |
+| qmlfmt               | [https://github.com/jesperhh/qmlfmt](https://github.com/jesperhh/qmlfmt)                                                     |
 | raco_fmt             | [https://docs.racket-lang.org/fmt/](https://docs.racket-lang.org/fmt/)                                                       |
 | rescript_format      | [https://rescript-lang.org/](https://rescript-lang.org/)                                                                     |
 | roc_format           | [https://github.com/roc-lang/roc](https://github.com/roc-lang/roc)                                                           |
