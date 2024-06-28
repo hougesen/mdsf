@@ -34,7 +34,7 @@ pub fn run(args: FormatCommandArguments, dry_run: bool) -> Result<(), MdsfError>
     mdsf::DEBUG.swap(args.debug, core::sync::atomic::Ordering::Relaxed);
 
     let conf = if let Some(config_path) = args.config {
-        MdsfConfig::load(&config_path)
+        MdsfConfig::load(config_path)
     } else {
         let path = current_dir()?.join("mdsf.json");
 

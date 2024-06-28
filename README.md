@@ -194,7 +194,7 @@ mdsf init
 
 <!-- START_SECTION:supported-tools -->
 
-`mdsf` currently supports 167 tools.
+`mdsf` currently supports 168 tools.
 
 | Formatter            | Description                                                                                                                  |
 | -------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
@@ -304,6 +304,7 @@ mdsf init
 | ocp-indent           | [https://github.com/OCamlPro/ocp-indent](https://github.com/OCamlPro/ocp-indent)                                             |
 | ormolu               | [https://hackage.haskell.org/package/ormolu](https://hackage.haskell.org/package/ormolu)                                     |
 | oxlint               | [https://oxc.rs](https://oxc.rs)                                                                                             |
+| packer_fmt           | [https://developer.hashicorp.com/packer/docs/commands/fmt](https://developer.hashicorp.com/packer/docs/commands/fmt)         |
 | perltidy             | [https://github.com/perltidy/perltidy](https://github.com/perltidy/perltidy)                                                 |
 | pg_format            | [https://github.com/darold/pgFormatter](https://github.com/darold/pgFormatter)                                               |
 | php-cs-fixer         | [https://github.com/PHP-CS-Fixer/PHP-CS-Fixer](https://github.com/PHP-CS-Fixer/PHP-CS-Fixer)                                 |
