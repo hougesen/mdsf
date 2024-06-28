@@ -1,8 +1,5 @@
 use super::execute_command;
-use crate::{
-    error::MdsfError,
-    runners::{run_executable_from_path, setup_npm_script},
-};
+use crate::{error::MdsfError, runners::CommandType};
 
 #[inline]
 fn set_elm_format_args(
@@ -24,24 +21,23 @@ fn invoke_elm_format(
 
 #[inline]
 pub fn run(snippet_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfError> {
-    if let Ok(path_result) = invoke_elm_format(
-        run_executable_from_path("node_modules/.bin/elm-format"),
-        snippet_path,
-    ) {
-        if !path_result.0 {
-            return Ok(path_result);
-        }
-    }
-
     if let Ok(path_result) =
-        invoke_elm_format(std::process::Command::new("elm-format"), snippet_path)
+        invoke_elm_format(CommandType::NodeModules("elm-format").build(), snippet_path)
     {
         if !path_result.0 {
             return Ok(path_result);
         }
     }
 
-    invoke_elm_format(setup_npm_script("elm-format"), snippet_path)
+    if let Ok(path_result) =
+        invoke_elm_format(CommandType::Direct("elm-format").build(), snippet_path)
+    {
+        if !path_result.0 {
+            return Ok(path_result);
+        }
+    }
+
+    invoke_elm_format(CommandType::Npm("elm-format").build(), snippet_path)
 }
 
 #[cfg(test)]

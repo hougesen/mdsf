@@ -1,9 +1,9 @@
 use super::execute_command;
-use crate::error::MdsfError;
+use crate::{error::MdsfError, runners::CommandType};
 
 #[inline]
 pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfError> {
-    let mut cmd = std::process::Command::new("erlfmt");
+    let mut cmd = CommandType::Direct("erlfmt").build();
 
     cmd.arg("-w")
         .arg(format!("'{}'", file_path.to_string_lossy()));

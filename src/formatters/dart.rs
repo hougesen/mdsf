@@ -1,9 +1,9 @@
 use super::execute_command;
-use crate::error::MdsfError;
+use crate::{error::MdsfError, runners::CommandType};
 
 #[inline]
 pub fn run_format(snippet_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfError> {
-    let mut cmd = std::process::Command::new("dart");
+    let mut cmd = CommandType::Direct("dart").build();
 
     cmd.arg("format").arg(snippet_path);
 
@@ -12,7 +12,7 @@ pub fn run_format(snippet_path: &std::path::Path) -> Result<(bool, Option<String
 
 #[inline]
 pub fn run_fix(snippet_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfError> {
-    let mut cmd = std::process::Command::new("dart");
+    let mut cmd = CommandType::Direct("dart").build();
 
     cmd.arg("fix").arg("--apply").arg(snippet_path);
 

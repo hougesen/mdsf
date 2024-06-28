@@ -1,5 +1,5 @@
 use super::execute_command;
-use crate::{error::MdsfError, runners::run_executable_from_path};
+use crate::{error::MdsfError, runners::CommandType};
 
 #[inline]
 fn set_ecs_args(
@@ -24,11 +24,11 @@ fn invoke_ecs(
 
 #[inline]
 pub fn run(snippet_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfError> {
-    if let Ok(path_result) = invoke_ecs(run_executable_from_path("vendor/bin/ecs"), snippet_path) {
+    if let Ok(path_result) = invoke_ecs(CommandType::PhpVendor("ecs").build(), snippet_path) {
         if !path_result.0 {
             return Ok(path_result);
         }
     }
 
-    invoke_ecs(std::process::Command::new("ecs"), snippet_path)
+    invoke_ecs(CommandType::Direct("ecs").build(), snippet_path)
 }

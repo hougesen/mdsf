@@ -93,6 +93,7 @@ mod kdlfmt;
 mod ktfmt;
 mod ktlint;
 mod leptosfmt;
+mod liquidsoap_prettier;
 mod luaformatter;
 mod markdownlint;
 mod markuplint;
@@ -654,6 +655,10 @@ pub enum Tooling {
     #[serde(rename = "leptosfmt")]
     LeptosFmt,
 
+    #[doc = "https://github.com/savonet/liquidsoap-prettier"]
+    #[serde(rename = "liquidsoap-prettier")]
+    LiquidsoapPrettier,
+
     #[doc = "https://github.com/Koihik/LuaFormatter"]
     #[serde(rename = "luaformatter")]
     LuaFormatter,
@@ -1044,6 +1049,7 @@ impl Tooling {
             Self::Ktfmt => ktfmt::run(snippet_path),
             Self::Ktlint => ktlint::run(snippet_path),
             Self::LeptosFmt => leptosfmt::run(snippet_path),
+            Self::LiquidsoapPrettier => liquidsoap_prettier::run(snippet_path),
             Self::LuaFormatter => luaformatter::run(snippet_path),
             Self::Markdownlint => markdownlint::run(snippet_path),
             Self::Markuplint => markuplint::run(snippet_path),
@@ -1207,6 +1213,7 @@ impl AsRef<str> for Tooling {
             Self::Ktfmt => "ktfmt",
             Self::Ktlint => "ktlint",
             Self::LeptosFmt => "leptosfmt",
+            Self::LiquidsoapPrettier => "liquidsoap-prettier",
             Self::LuaFormatter => "luaformatter",
             Self::Markdownlint => "markdownlint",
             Self::Markuplint => "markuplint",

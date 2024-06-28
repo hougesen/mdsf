@@ -1,9 +1,9 @@
 use super::execute_command;
-use crate::error::MdsfError;
+use crate::{error::MdsfError, runners::CommandType};
 
 #[inline]
 pub fn run(snippet_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfError> {
-    let mut cmd = std::process::Command::new("isort");
+    let mut cmd = CommandType::Direct("isort").build();
 
     cmd.arg("--quiet").arg(snippet_path);
 

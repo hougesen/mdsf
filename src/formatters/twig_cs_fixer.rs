@@ -1,5 +1,5 @@
 use super::execute_command;
-use crate::{error::MdsfError, runners::run_executable_from_path};
+use crate::{error::MdsfError, runners::CommandType};
 
 #[inline]
 fn set_twig_cs_fixer_args(
@@ -26,7 +26,7 @@ fn invoke_twig_cs_fixer(
 #[inline]
 pub fn run(snippet_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfError> {
     if let Ok(path_result) = invoke_twig_cs_fixer(
-        run_executable_from_path("vendor/bin/twig-cs-fixer"),
+        CommandType::PhpVendor("twig-cs-fixer").build(),
         snippet_path,
     ) {
         if !path_result.0 {
@@ -34,5 +34,5 @@ pub fn run(snippet_path: &std::path::Path) -> Result<(bool, Option<String>), Mds
         }
     }
 
-    invoke_twig_cs_fixer(std::process::Command::new("twig-cs-fixer"), snippet_path)
+    invoke_twig_cs_fixer(CommandType::Direct("twig-cs-fixer").build(), snippet_path)
 }

@@ -1,8 +1,5 @@
 use super::execute_command;
-use crate::{
-    error::MdsfError,
-    runners::{run_executable_from_path, setup_npm_script},
-};
+use crate::{error::MdsfError, runners::CommandType};
 
 #[inline]
 fn set_taplo_args(
@@ -24,22 +21,19 @@ fn invoke_taplo(
 
 #[inline]
 pub fn run(snippet_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfError> {
-    if let Ok(path_result) = invoke_taplo(
-        run_executable_from_path("node_modules/.bin/taplo"),
-        snippet_path,
-    ) {
+    if let Ok(path_result) = invoke_taplo(CommandType::NodeModules("taplo").build(), snippet_path) {
         if !path_result.0 {
             return Ok(path_result);
         }
     }
 
-    if let Ok(path_result) = invoke_taplo(std::process::Command::new("taplo"), snippet_path) {
+    if let Ok(path_result) = invoke_taplo(CommandType::Direct("taplo").build(), snippet_path) {
         if !path_result.0 {
             return Ok(path_result);
         }
     }
 
-    invoke_taplo(setup_npm_script("@taplo/cli"), snippet_path)
+    invoke_taplo(CommandType::Npm("@taplo/cli").build(), snippet_path)
 }
 #[cfg(test)]
 mod test_taplo {

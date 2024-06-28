@@ -1,5 +1,5 @@
 use super::execute_command;
-use crate::{error::MdsfError, runners::run_executable_from_path};
+use crate::{error::MdsfError, runners::CommandType};
 
 #[inline]
 fn set_tlint_args(
@@ -21,13 +21,11 @@ fn invoke_tlint(
 
 #[inline]
 pub fn run(snippet_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfError> {
-    if let Ok(path_result) =
-        invoke_tlint(run_executable_from_path("vendor/bin/tlint"), snippet_path)
-    {
+    if let Ok(path_result) = invoke_tlint(CommandType::PhpVendor("tlint").build(), snippet_path) {
         if !path_result.0 {
             return Ok(path_result);
         }
     }
 
-    invoke_tlint(std::process::Command::new("tlint"), snippet_path)
+    invoke_tlint(CommandType::Direct("tlint").build(), snippet_path)
 }

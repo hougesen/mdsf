@@ -1,5 +1,5 @@
 use super::execute_command;
-use crate::error::MdsfError;
+use crate::{error::MdsfError, runners::CommandType};
 
 #[inline]
 fn set_perltidy_args(
@@ -21,7 +21,7 @@ fn invoke_perltidy(
 
 #[inline]
 pub fn run(snippet_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfError> {
-    invoke_perltidy(std::process::Command::new("perltidy"), snippet_path)
+    invoke_perltidy(CommandType::Direct("perltidy").build(), snippet_path)
 }
 
 #[cfg(test)]

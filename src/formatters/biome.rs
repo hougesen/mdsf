@@ -1,34 +1,117 @@
 use super::execute_command;
-use crate::{error::MdsfError, runners::setup_npm_script};
+use crate::{error::MdsfError, runners::CommandType};
+
+#[inline]
+fn set_biome_format_args(
+    mut cmd: std::process::Command,
+    snippet_path: &std::path::Path,
+) -> std::process::Command {
+    cmd.arg("format").arg("--write").arg(snippet_path);
+
+    cmd
+}
+
+#[inline]
+fn invoke_biome_format(
+    cmd: std::process::Command,
+    snippet_path: &std::path::Path,
+) -> Result<(bool, Option<String>), MdsfError> {
+    execute_command(set_biome_format_args(cmd, snippet_path), snippet_path)
+}
 
 #[inline]
 pub fn run_format(snippet_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfError> {
-    // NOTE: the biome docs recommend running biome using npx, and not directly
-    let mut cmd = setup_npm_script("@biomejs/biome");
+    if let Ok(path_result) =
+        invoke_biome_format(CommandType::NodeModules("biome").build(), snippet_path)
+    {
+        if !path_result.0 {
+            return Ok(path_result);
+        }
+    }
 
-    cmd.arg("format").arg("--write").arg(snippet_path);
+    if let Ok(path_result) = invoke_biome_format(CommandType::Direct("biome").build(), snippet_path)
+    {
+        if !path_result.0 {
+            return Ok(path_result);
+        }
+    }
 
-    execute_command(cmd, snippet_path)
+    invoke_biome_format(CommandType::Npm("@biomejs/biome").build(), snippet_path)
+}
+
+#[inline]
+fn set_biome_lint_args(
+    mut cmd: std::process::Command,
+    snippet_path: &std::path::Path,
+) -> std::process::Command {
+    cmd.arg("lint").arg("--write").arg(snippet_path);
+
+    cmd
+}
+
+#[inline]
+fn invoke_biome_lint(
+    cmd: std::process::Command,
+    snippet_path: &std::path::Path,
+) -> Result<(bool, Option<String>), MdsfError> {
+    execute_command(set_biome_lint_args(cmd, snippet_path), snippet_path)
 }
 
 #[inline]
 pub fn run_lint(snippet_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfError> {
-    // NOTE: the biome docs recommend running biome using npx, and not directly
-    let mut cmd = setup_npm_script("@biomejs/biome");
+    if let Ok(path_result) =
+        invoke_biome_lint(CommandType::NodeModules("biome").build(), snippet_path)
+    {
+        if !path_result.0 {
+            return Ok(path_result);
+        }
+    }
 
-    cmd.arg("lint").arg("--write").arg(snippet_path);
+    if let Ok(path_result) = invoke_biome_lint(CommandType::Direct("biome").build(), snippet_path) {
+        if !path_result.0 {
+            return Ok(path_result);
+        }
+    }
 
-    execute_command(cmd, snippet_path)
+    invoke_biome_lint(CommandType::Npm("@biomejs/biome").build(), snippet_path)
+}
+
+#[inline]
+fn set_biome_check_args(
+    mut cmd: std::process::Command,
+    snippet_path: &std::path::Path,
+) -> std::process::Command {
+    cmd.arg("check").arg("--write").arg(snippet_path);
+
+    cmd
+}
+
+#[inline]
+fn invoke_biome_check(
+    cmd: std::process::Command,
+    snippet_path: &std::path::Path,
+) -> Result<(bool, Option<String>), MdsfError> {
+    execute_command(set_biome_check_args(cmd, snippet_path), snippet_path)
 }
 
 #[inline]
 pub fn run_check(snippet_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfError> {
-    // NOTE: the biome docs recommend running biome using npx, and not directly
-    let mut cmd = setup_npm_script("@biomejs/biome");
+    if let Ok(path_result) =
+        invoke_biome_check(CommandType::NodeModules("biome").build(), snippet_path)
+    {
+        if !path_result.0 {
+            return Ok(path_result);
+        }
+    }
 
-    cmd.arg("check").arg("--write").arg(snippet_path);
+    if let Ok(path_result) = invoke_biome_check(CommandType::Direct("biome").build(), snippet_path)
+    {
+        if !path_result.0 {
+            return Ok(path_result);
+        }
+    }
 
-    execute_command(cmd, snippet_path)
+    invoke_biome_check(CommandType::Npm("@biomejs/biome").build(), snippet_path)
 }
 
 #[cfg(test)]

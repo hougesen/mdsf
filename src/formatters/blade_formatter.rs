@@ -1,8 +1,5 @@
 use super::execute_command;
-use crate::{
-    error::MdsfError,
-    runners::{run_executable_from_path, setup_npm_script},
-};
+use crate::{error::MdsfError, runners::CommandType};
 
 #[inline]
 fn set_blade_formatter_args(
@@ -25,7 +22,7 @@ fn invoke_blade_formatter(
 #[inline]
 pub fn run(snippet_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfError> {
     if let Ok(path_result) = invoke_blade_formatter(
-        run_executable_from_path("node_modules/.bin/blade-formatter"),
+        CommandType::NodeModules("blade-formatter").build(),
         snippet_path,
     ) {
         if !path_result.0 {
@@ -34,14 +31,14 @@ pub fn run(snippet_path: &std::path::Path) -> Result<(bool, Option<String>), Mds
     }
 
     if let Ok(path_result) =
-        invoke_blade_formatter(std::process::Command::new("blade-formatter"), snippet_path)
+        invoke_blade_formatter(CommandType::Direct("blade-formatter").build(), snippet_path)
     {
         if !path_result.0 {
             return Ok(path_result);
         }
     }
 
-    invoke_blade_formatter(setup_npm_script("blade-formatter"), snippet_path)
+    invoke_blade_formatter(CommandType::Npm("blade-formatter").build(), snippet_path)
 }
 
 #[cfg(test)]

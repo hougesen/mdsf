@@ -1,5 +1,5 @@
 use super::execute_command;
-use crate::{error::MdsfError, runners::run_executable_from_path};
+use crate::{error::MdsfError, runners::CommandType};
 
 #[inline]
 fn set_phpinsights_args(
@@ -24,14 +24,13 @@ fn invoke_phpinsights(
 
 #[inline]
 pub fn run(snippet_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfError> {
-    if let Ok(path_result) = invoke_phpinsights(
-        run_executable_from_path("vendor/bin/phpinsights"),
-        snippet_path,
-    ) {
+    if let Ok(path_result) =
+        invoke_phpinsights(CommandType::PhpVendor("phpinsights").build(), snippet_path)
+    {
         if !path_result.0 {
             return Ok(path_result);
         }
     }
 
-    invoke_phpinsights(std::process::Command::new("phpinsights"), snippet_path)
+    invoke_phpinsights(CommandType::Direct("phpinsights").build(), snippet_path)
 }

@@ -1,8 +1,5 @@
 use super::execute_command;
-use crate::{
-    error::MdsfError,
-    runners::{run_executable_from_path, setup_npm_script},
-};
+use crate::{error::MdsfError, runners::CommandType};
 
 #[inline]
 fn set_stylua_args(
@@ -24,22 +21,23 @@ fn invoke_stylua(
 
 #[inline]
 pub fn run(snippet_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfError> {
-    if let Ok(path_result) = invoke_stylua(
-        run_executable_from_path("node_modules/.bin/stylua"),
+    if let Ok(path_result) = invoke_stylua(CommandType::Direct("stylua").build(), snippet_path) {
+        if !path_result.0 {
+            return Ok(path_result);
+        }
+    }
+
+    if let Ok(path_result) = invoke_stylua(CommandType::NodeModules("stylua").build(), snippet_path)
+    {
+        if !path_result.0 {
+            return Ok(path_result);
+        }
+    }
+
+    invoke_stylua(
+        CommandType::Npm("@johnnymorganz/stylua-bin").build(),
         snippet_path,
-    ) {
-        if !path_result.0 {
-            return Ok(path_result);
-        }
-    }
-
-    if let Ok(path_result) = invoke_stylua(std::process::Command::new("stylua"), snippet_path) {
-        if !path_result.0 {
-            return Ok(path_result);
-        }
-    }
-
-    invoke_stylua(setup_npm_script("@johnnymorganz/stylua-bin"), snippet_path)
+    )
 }
 
 #[cfg(test)]

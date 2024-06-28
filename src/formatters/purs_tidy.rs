@@ -1,8 +1,5 @@
 use super::execute_command;
-use crate::{
-    error::MdsfError,
-    runners::{run_executable_from_path, setup_npm_script},
-};
+use crate::{error::MdsfError, runners::CommandType};
 
 #[inline]
 fn set_purs_tidy_args(
@@ -24,23 +21,23 @@ fn invoke_purs_tidy(
 
 #[inline]
 pub fn run(snippet_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfError> {
-    if let Ok(path_result) = invoke_purs_tidy(
-        run_executable_from_path("node_modules/.bin/purs-tidy"),
-        snippet_path,
-    ) {
-        if !path_result.0 {
-            return Ok(path_result);
-        }
-    }
-
-    if let Ok(path_result) = invoke_purs_tidy(std::process::Command::new("purs-tidy"), snippet_path)
+    if let Ok(path_result) =
+        invoke_purs_tidy(CommandType::NodeModules("purs-tidy").build(), snippet_path)
     {
         if !path_result.0 {
             return Ok(path_result);
         }
     }
 
-    invoke_purs_tidy(setup_npm_script("purs-tidy"), snippet_path)
+    if let Ok(path_result) =
+        invoke_purs_tidy(CommandType::Direct("purs-tidy").build(), snippet_path)
+    {
+        if !path_result.0 {
+            return Ok(path_result);
+        }
+    }
+
+    invoke_purs_tidy(CommandType::Npm("purs-tidy").build(), snippet_path)
 }
 
 #[cfg(test)]

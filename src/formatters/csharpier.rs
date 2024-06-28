@@ -1,9 +1,9 @@
 use super::execute_command;
-use crate::error::MdsfError;
+use crate::{error::MdsfError, runners::CommandType};
 
 #[inline]
 pub fn run(snippet_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfError> {
-    let mut cmd = std::process::Command::new("dotnet");
+    let mut cmd = CommandType::Direct("dotnet").build();
 
     cmd.arg("csharpier").arg(snippet_path);
 

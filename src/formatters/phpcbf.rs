@@ -1,5 +1,5 @@
 use super::execute_command;
-use crate::{error::MdsfError, runners::run_executable_from_path};
+use crate::{error::MdsfError, runners::CommandType};
 
 #[inline]
 fn set_phpcbf_args(
@@ -21,13 +21,11 @@ fn invoke_phpcbf(
 
 #[inline]
 pub fn run(snippet_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfError> {
-    if let Ok(path_result) =
-        invoke_phpcbf(run_executable_from_path("vendor/bin/phpcbf"), snippet_path)
-    {
+    if let Ok(path_result) = invoke_phpcbf(CommandType::PhpVendor("phpcbf").build(), snippet_path) {
         if !path_result.0 {
             return Ok(path_result);
         }
     }
 
-    invoke_phpcbf(std::process::Command::new("phpcbf"), snippet_path)
+    invoke_phpcbf(CommandType::Direct("phpcbf").build(), snippet_path)
 }

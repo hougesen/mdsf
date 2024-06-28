@@ -479,6 +479,11 @@
           "enum": ["leptosfmt"]
         },
         {
+          "description": "https://github.com/savonet/liquidsoap-prettier",
+          "type": "string",
+          "enum": ["liquidsoap-prettier"]
+        },
+        {
           "description": "https://github.com/Koihik/LuaFormatter",
           "type": "string",
           "enum": ["luaformatter"]

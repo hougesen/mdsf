@@ -1,5 +1,5 @@
 use super::execute_command;
-use crate::{error::MdsfError, runners::run_executable_from_path};
+use crate::{error::MdsfError, runners::CommandType};
 
 #[inline]
 fn set_php_cs_fixer_args(
@@ -22,7 +22,7 @@ fn invoke_php_cs_fixer(
 #[inline]
 pub fn run(snippet_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfError> {
     if let Ok(path_result) = invoke_php_cs_fixer(
-        run_executable_from_path("tools/php-cs-fixer/vendor/bin/php-cs-fixer"),
+        CommandType::BinaryPath("tools/php-cs-fixer/vendor/bin/", "php-cs-fixer").build(),
         snippet_path,
     ) {
         if !path_result.0 {
@@ -30,14 +30,13 @@ pub fn run(snippet_path: &std::path::Path) -> Result<(bool, Option<String>), Mds
         }
     }
 
-    if let Ok(path_result) = invoke_php_cs_fixer(
-        run_executable_from_path("vendor/bin/php-cs-fixer"),
-        snippet_path,
-    ) {
+    if let Ok(path_result) =
+        invoke_php_cs_fixer(CommandType::PhpVendor("php-cs-fixer").build(), snippet_path)
+    {
         if !path_result.0 {
             return Ok(path_result);
         }
     }
 
-    invoke_php_cs_fixer(std::process::Command::new("php-cs-fixer"), snippet_path)
+    invoke_php_cs_fixer(CommandType::Direct("php-cs-fixer").build(), snippet_path)
 }

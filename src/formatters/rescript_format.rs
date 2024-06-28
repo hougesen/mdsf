@@ -1,8 +1,5 @@
 use super::execute_command;
-use crate::{
-    error::MdsfError,
-    runners::{run_executable_from_path, setup_npm_script},
-};
+use crate::{error::MdsfError, runners::CommandType};
 
 #[inline]
 fn set_rescript_format_args(
@@ -24,24 +21,23 @@ fn invoke_rescript_format(
 
 #[inline]
 pub fn run(snippet_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfError> {
-    if let Ok(path_result) = invoke_rescript_format(
-        run_executable_from_path("node_modules/.bin/rescript"),
-        snippet_path,
-    ) {
-        if !path_result.0 {
-            return Ok(path_result);
-        }
-    }
-
     if let Ok(path_result) =
-        invoke_rescript_format(std::process::Command::new("rescript"), snippet_path)
+        invoke_rescript_format(CommandType::NodeModules("rescript").build(), snippet_path)
     {
         if !path_result.0 {
             return Ok(path_result);
         }
     }
 
-    invoke_rescript_format(setup_npm_script("rescript"), snippet_path)
+    if let Ok(path_result) =
+        invoke_rescript_format(CommandType::Direct("rescript").build(), snippet_path)
+    {
+        if !path_result.0 {
+            return Ok(path_result);
+        }
+    }
+
+    invoke_rescript_format(CommandType::Npm("rescript").build(), snippet_path)
 }
 
 #[cfg(test)]

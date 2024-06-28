@@ -1,5 +1,5 @@
 use super::execute_command;
-use crate::{error::MdsfError, runners::run_executable_from_path};
+use crate::{error::MdsfError, runners::CommandType};
 
 #[inline]
 fn set_pint_args(
@@ -21,12 +21,11 @@ fn invoke_pint(
 
 #[inline]
 pub fn run(snippet_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfError> {
-    if let Ok(path_result) = invoke_pint(run_executable_from_path("vendor/bin/pint"), snippet_path)
-    {
+    if let Ok(path_result) = invoke_pint(CommandType::PhpVendor("pint").build(), snippet_path) {
         if !path_result.0 {
             return Ok(path_result);
         }
     }
 
-    invoke_pint(std::process::Command::new("pint"), snippet_path)
+    invoke_pint(CommandType::Direct("pint").build(), snippet_path)
 }

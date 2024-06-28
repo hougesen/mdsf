@@ -1,8 +1,5 @@
 use super::execute_command;
-use crate::{
-    error::MdsfError,
-    runners::{run_executable_from_path, setup_npm_script},
-};
+use crate::{error::MdsfError, runners::CommandType};
 
 #[inline]
 fn set_prisma_args(
@@ -25,20 +22,18 @@ fn invoke_prisma(
 
 #[inline]
 pub fn run_format(snippet_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfError> {
-    if let Ok(path_result) = invoke_prisma(
-        run_executable_from_path("node_modules/.bin/prisma"),
-        snippet_path,
-    ) {
+    if let Ok(path_result) = invoke_prisma(CommandType::NodeModules("prisma").build(), snippet_path)
+    {
         if !path_result.0 {
             return Ok(path_result);
         }
     }
 
-    if let Ok(path_result) = invoke_prisma(std::process::Command::new("prisma"), snippet_path) {
+    if let Ok(path_result) = invoke_prisma(CommandType::Direct("prisma").build(), snippet_path) {
         if !path_result.0 {
             return Ok(path_result);
         }
     }
 
-    invoke_prisma(setup_npm_script("prisma"), snippet_path)
+    invoke_prisma(CommandType::Npm("prisma").build(), snippet_path)
 }

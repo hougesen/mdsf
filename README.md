@@ -194,7 +194,7 @@ mdsf init
 
 <!-- START_SECTION:supported-tools -->
 
-`mdsf` currently supports 158 tools.
+`mdsf` currently supports 159 tools.
 
 | Formatter            | Description                                                                                                                  |
 | -------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
@@ -282,6 +282,7 @@ mdsf init
 | ktfmt                | [https://github.com/facebook/ktfmt](https://github.com/facebook/ktfmt)                                                       |
 | ktlint               | [https://github.com/pinterest/ktlint](https://github.com/pinterest/ktlint)                                                   |
 | leptosfmt            | [https://github.com/bram209/leptosfmt](https://github.com/bram209/leptosfmt)                                                 |
+| liquidsoap-prettier  | [https://github.com/savonet/liquidsoap-prettier](https://github.com/savonet/liquidsoap-prettier)                             |
 | luaformatter         | [https://github.com/Koihik/LuaFormatter](https://github.com/Koihik/LuaFormatter)                                             |
 | markdownlint         | [https://github.com/davidanson/markdownlint](https://github.com/davidanson/markdownlint)                                     |
 | markuplint           | [https://markuplint.dev](https://markuplint.dev)                                                                             |

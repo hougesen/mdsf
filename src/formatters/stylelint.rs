@@ -1,8 +1,5 @@
 use super::execute_command;
-use crate::{
-    error::MdsfError,
-    runners::{run_executable_from_path, setup_npm_script},
-};
+use crate::{error::MdsfError, runners::CommandType};
 
 #[inline]
 fn set_stylelint_args(
@@ -24,21 +21,21 @@ fn invoke_stylelint(
 
 #[inline]
 pub fn run(snippet_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfError> {
-    if let Ok(path_result) = invoke_stylelint(
-        run_executable_from_path("node_modules/.bin/stylelint"),
-        snippet_path,
-    ) {
-        if !path_result.0 {
-            return Ok(path_result);
-        }
-    }
-
-    if let Ok(path_result) = invoke_stylelint(std::process::Command::new("stylelint"), snippet_path)
+    if let Ok(path_result) =
+        invoke_stylelint(CommandType::NodeModules("stylelint").build(), snippet_path)
     {
         if !path_result.0 {
             return Ok(path_result);
         }
     }
 
-    invoke_stylelint(setup_npm_script("stylelint"), snippet_path)
+    if let Ok(path_result) =
+        invoke_stylelint(CommandType::Direct("stylelint").build(), snippet_path)
+    {
+        if !path_result.0 {
+            return Ok(path_result);
+        }
+    }
+
+    invoke_stylelint(CommandType::Npm("stylelint").build(), snippet_path)
 }

@@ -1,8 +1,5 @@
 use super::execute_command;
-use crate::{
-    error::MdsfError,
-    runners::{run_executable_from_path, setup_npm_script},
-};
+use crate::{error::MdsfError, runners::CommandType};
 
 #[inline]
 fn set_sql_formatter_args(
@@ -25,7 +22,7 @@ fn invoke_sql_formatter(
 #[inline]
 pub fn run(snippet_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfError> {
     if let Ok(path_result) = invoke_sql_formatter(
-        run_executable_from_path("node_modules/.bin/sql-formatter"),
+        CommandType::NodeModules("sql-formatter").build(),
         snippet_path,
     ) {
         if !path_result.0 {
@@ -34,14 +31,14 @@ pub fn run(snippet_path: &std::path::Path) -> Result<(bool, Option<String>), Mds
     }
 
     if let Ok(path_result) =
-        invoke_sql_formatter(std::process::Command::new("sql-formatter"), snippet_path)
+        invoke_sql_formatter(CommandType::Direct("sql-formatter").build(), snippet_path)
     {
         if !path_result.0 {
             return Ok(path_result);
         }
     }
 
-    invoke_sql_formatter(setup_npm_script("sql-formatter"), snippet_path)
+    invoke_sql_formatter(CommandType::Npm("sql-formatter").build(), snippet_path)
 }
 
 #[cfg(test)]

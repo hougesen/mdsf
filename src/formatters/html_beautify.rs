@@ -1,5 +1,5 @@
 use super::execute_command;
-use crate::{error::MdsfError, runners::run_executable_from_path};
+use crate::{error::MdsfError, runners::CommandType};
 
 #[inline]
 fn set_html_beautify_args(
@@ -26,7 +26,7 @@ fn invoke_html_beautify(
 #[inline]
 pub fn run(snippet_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfError> {
     if let Ok(path_result) = invoke_html_beautify(
-        run_executable_from_path("node_modules/.bin/html-beautify"),
+        CommandType::NodeModules("html-beautify").build(),
         snippet_path,
     ) {
         if !path_result.0 {
@@ -34,5 +34,5 @@ pub fn run(snippet_path: &std::path::Path) -> Result<(bool, Option<String>), Mds
         }
     }
 
-    invoke_html_beautify(std::process::Command::new("html-beautify"), snippet_path)
+    invoke_html_beautify(CommandType::Direct("html-beautify").build(), snippet_path)
 }

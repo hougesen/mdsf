@@ -1,9 +1,9 @@
 use super::execute_command;
-use crate::error::MdsfError;
+use crate::{error::MdsfError, runners::CommandType};
 
 #[inline]
 pub fn run_fmt(snippet_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfError> {
-    let mut cmd = std::process::Command::new("deno");
+    let mut cmd = CommandType::Direct("deno").build();
 
     cmd.arg("fmt").arg("--quiet").arg(snippet_path);
 
@@ -12,7 +12,7 @@ pub fn run_fmt(snippet_path: &std::path::Path) -> Result<(bool, Option<String>),
 
 #[inline]
 pub fn run_lint(snippet_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfError> {
-    let mut cmd = std::process::Command::new("deno");
+    let mut cmd = CommandType::Direct("deno").build();
 
     cmd.arg("lint").arg("--fix").arg(snippet_path);
 

@@ -1,9 +1,9 @@
 use super::execute_command;
-use crate::error::MdsfError;
+use crate::{error::MdsfError, runners::CommandType};
 
 #[inline]
 pub fn run(snippet_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfError> {
-    let mut cmd = std::process::Command::new("typos");
+    let mut cmd = CommandType::Direct("typos").build();
 
     cmd.arg("-w").arg("--hidden").arg(snippet_path);
 

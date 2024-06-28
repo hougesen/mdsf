@@ -90,7 +90,7 @@ fn get_javascript_runtime() -> JavaScriptRuntime {
 }
 
 #[inline]
-pub fn setup_npm_script(package_name: &str) -> std::process::Command {
+fn setup_npm_script(package_name: &str) -> std::process::Command {
     let runtime = get_javascript_runtime();
 
     match runtime {
@@ -102,6 +102,42 @@ pub fn setup_npm_script(package_name: &str) -> std::process::Command {
 }
 
 #[inline]
-pub fn run_executable_from_path(path: &str) -> std::process::Command {
-    std::process::Command::new(path)
+fn setup_command_from_path(path: &str, binary_name: &str) -> std::process::Command {
+    // TODO: logic to determine if binary in parent/sub folder
+    let mut cmd = std::process::Command::new(binary_name);
+
+    cmd.current_dir(path);
+
+    cmd
+}
+
+#[inline]
+fn setup_node_modules_command(binary_name: &str) -> std::process::Command {
+    setup_command_from_path("./node_modules/.bin/", binary_name)
+}
+
+#[inline]
+fn setup_php_vender_bin_command(binary_name: &str) -> std::process::Command {
+    setup_command_from_path("./vendor/bin/", binary_name)
+}
+
+pub enum CommandType {
+    BinaryPath(&'static str, &'static str),
+    Direct(&'static str),
+    NodeModules(&'static str),
+    Npm(&'static str),
+    PhpVendor(&'static str),
+}
+
+impl CommandType {
+    #[inline]
+    pub fn build(&self) -> std::process::Command {
+        match self {
+            Self::BinaryPath(path, binary_name) => setup_command_from_path(path, binary_name),
+            Self::Direct(binary_name) => std::process::Command::new(binary_name),
+            Self::NodeModules(binary_name) => setup_node_modules_command(binary_name),
+            Self::Npm(package_name) => setup_npm_script(package_name),
+            Self::PhpVendor(binary_name) => setup_php_vender_bin_command(binary_name),
+        }
+    }
 }
