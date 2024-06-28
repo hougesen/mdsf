@@ -36,3 +36,33 @@ pub fn run(snippet_path: &std::path::Path) -> Result<(bool, Option<String>), Mds
 
     invoke_html_beautify(CommandType::Direct("html-beautify").build(), snippet_path)
 }
+
+#[cfg(test)]
+mod test_html_beautify {
+    use crate::{formatters::setup_snippet, generated::language_to_ext};
+
+    #[test_with::executable(html-beautify)]
+    fn it_should_format_html() {
+        let input = "<div>
+                    <p>
+                    Mads was here
+                    </p>
+        </div>";
+
+        let expected_output = "<div>
+    <p>
+        Mads was here
+    </p>
+</div>";
+
+        let snippet =
+            setup_snippet(input, language_to_ext("html")).expect("it to create a snippet file");
+
+        let output = super::run(snippet.path())
+            .expect("it to be successful")
+            .1
+            .expect("it to be some");
+
+        assert_eq!(expected_output, output);
+    }
+}
