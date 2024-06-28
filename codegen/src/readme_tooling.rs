@@ -110,7 +110,7 @@ fn create_table(schema: Vec<Tool>) -> String {
 
     lines.insert(
         0,
-        format!("`mdsf` currently supports {tool_count} tools.\n"),
+        format!("`mdsf` currently supports {tool_count} tools. Feel free to open an issue/pull-request if your favorite tool is missing! 😃\n"),
     );
 
     lines.join("\n")
