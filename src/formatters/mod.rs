@@ -128,6 +128,7 @@ mod puppet_lint;
 mod purs_tidy;
 mod pycln;
 mod pyink;
+mod qmlfmt;
 mod raco;
 mod rescript_format;
 mod roc_format;
@@ -802,6 +803,10 @@ pub enum Tooling {
     #[serde(rename = "pyink")]
     PyInk,
 
+    #[doc = "https://github.com/jesperhh/qmlfmt"]
+    #[serde(rename = "qmlfmt")]
+    Qmlfmt,
+
     #[doc = "https://docs.racket-lang.org/fmt/"]
     #[serde(rename = "raco_fmt")]
     RacoFmt,
@@ -1120,6 +1125,7 @@ impl Tooling {
             Self::PursTidy => purs_tidy::run(snippet_path),
             Self::Pycln => pycln::run(snippet_path),
             Self::PyInk => pyink::run(snippet_path),
+            Self::Qmlfmt => qmlfmt::run(snippet_path),
             Self::RacoFmt => raco::run_fmt(snippet_path),
             Self::ReScriptFormat => rescript_format::run(snippet_path),
             Self::RocFormat => roc_format::run(snippet_path),
@@ -1286,6 +1292,7 @@ impl AsRef<str> for Tooling {
             Self::PursTidy => "purs-tidy",
             Self::Pycln => "pycln",
             Self::PyInk => "pyink",
+            Self::Qmlfmt => "qmlfmt",
             Self::RacoFmt => "raco_fmt",
             Self::ReScriptFormat => "rescript_format",
             Self::RocFormat => "roc_format",
