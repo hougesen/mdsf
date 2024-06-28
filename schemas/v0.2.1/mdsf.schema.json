@@ -569,6 +569,11 @@
           "enum": ["nixpkgs-fmt"]
         },
         {
+          "description": "https://github.com/arnetheduck/nph",
+          "type": "string",
+          "enum": ["nph"]
+        },
+        {
           "description": "https://github.com/nvuillam/npm-groovy-lint",
           "type": "string",
           "enum": ["npm-groovy-lint"]

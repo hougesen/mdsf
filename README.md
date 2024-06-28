@@ -194,7 +194,7 @@ mdsf init
 
 <!-- START_SECTION:supported-tools -->
 
-`mdsf` currently supports 171 tools. Feel free to open an issue/pull-request if your favorite tool is missing! 😃
+`mdsf` currently supports 172 tools. Feel free to open an issue/pull-request if your favorite tool is missing! 😃
 
 | Formatter            | Description                                                                                                                  |
 | -------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
@@ -300,6 +300,7 @@ mdsf init
 | nimpretty            | [https://github.com/nim-lang/nim](https://github.com/nim-lang/nim)                                                           |
 | nixfmt               | [https://github.com/serokell/nixfmt](https://github.com/serokell/nixfmt)                                                     |
 | nixpkgs-fmt          | [https://github.com/nix-community/nixpkgs-fmt](https://github.com/nix-community/nixpkgs-fmt)                                 |
+| nph                  | [https://github.com/arnetheduck/nph](https://github.com/arnetheduck/nph)                                                     |
 | npm-groovy-lint      | [https://github.com/nvuillam/npm-groovy-lint](https://github.com/nvuillam/npm-groovy-lint)                                   |
 | ocamlformat          | [https://github.com/ocaml-ppx/ocamlformat](https://github.com/ocaml-ppx/ocamlformat)                                         |
 | ocp-indent           | [https://github.com/OCamlPro/ocp-indent](https://github.com/OCamlPro/ocp-indent)                                             |
