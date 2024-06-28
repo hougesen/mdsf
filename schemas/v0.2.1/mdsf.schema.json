@@ -64,6 +64,11 @@
           "enum": ["alejandra"]
         },
         {
+          "description": "https://github.com/crystal-ameba/ameba",
+          "type": "string",
+          "enum": ["ameba"]
+        },
+        {
           "description": "https://github.com/klauspost/asmfmt",
           "type": "string",
           "enum": ["asmfmt"]

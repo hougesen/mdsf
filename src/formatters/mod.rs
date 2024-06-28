@@ -15,6 +15,7 @@ use crate::{
 };
 
 mod alejandra;
+mod ameba;
 mod asmfmt;
 mod astyle;
 mod auto_optional;
@@ -323,6 +324,10 @@ pub enum Tooling {
     #[doc = "https://github.com/kamadorueda/alejandra"]
     #[serde(rename = "alejandra")]
     Alejandra,
+
+    #[doc = "https://github.com/crystal-ameba/ameba"]
+    #[serde(rename = "ameba")]
+    Ameba,
 
     #[doc = "https://github.com/klauspost/asmfmt"]
     #[serde(rename = "asmfmt")]
@@ -970,6 +975,7 @@ impl Tooling {
     ) -> Result<(bool, Option<String>), MdsfError> {
         match self {
             Self::Alejandra => alejandra::run(snippet_path),
+            Self::Ameba => ameba::run(snippet_path),
             Self::AppleSwiftFormat => swift_format::run(snippet_path),
             Self::Asmfmt => asmfmt::run(snippet_path),
             Self::Astyle => astyle::run(snippet_path),
@@ -1139,6 +1145,7 @@ impl AsRef<str> for Tooling {
     fn as_ref(&self) -> &str {
         match self {
             Self::Alejandra => "alejandra",
+            Self::Ameba => "ameba",
             Self::AppleSwiftFormat => "swift-format",
             Self::Asmfmt => "asmfmt",
             Self::Astyle => "astyle",
