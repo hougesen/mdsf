@@ -159,6 +159,11 @@
           "enum": ["buildifier"]
         },
         {
+          "description": "https://github.com/lspitzner/brittany",
+          "type": "string",
+          "enum": ["brittany"]
+        },
+        {
           "description": "https://www.haskell.org/cabal/",
           "type": "string",
           "enum": ["cabal_format"]
