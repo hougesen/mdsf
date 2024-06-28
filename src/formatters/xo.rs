@@ -35,3 +35,27 @@ pub fn run(snippet_path: &std::path::Path) -> Result<(bool, Option<String>), Mds
 
     invoke_xo(CommandType::Npm("xo").build(), snippet_path)
 }
+
+#[cfg(test)]
+mod test_xo {
+    use crate::{formatters::setup_snippet, generated::language_to_ext};
+
+    #[test_with::executable(npx)]
+    fn it_should_format_javascript() {
+        let input = "console.info(1 === 2);
+";
+
+        let expected_output = "console.info(1 === 2);
+";
+
+        let snippet = setup_snippet(input, language_to_ext("javascript"))
+            .expect("it to create a snippet file");
+
+        let output = super::run(snippet.path())
+            .expect("it to be successful")
+            .1
+            .expect("it to be some");
+
+        assert_eq!(expected_output, output);
+    }
+}
