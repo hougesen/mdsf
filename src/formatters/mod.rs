@@ -29,6 +29,7 @@ mod black;
 mod blade_formatter;
 mod blue;
 mod bpfmt;
+mod brittany;
 mod bsfmt;
 mod buf;
 mod buildifier;
@@ -401,6 +402,10 @@ pub enum Tooling {
     #[doc = "https://github.com/bazelbuild/buildtools"]
     #[serde(rename = "buildifier")]
     Buildifier,
+
+    #[doc = "https://github.com/lspitzner/brittany"]
+    #[serde(rename = "brittany")]
+    Brittany,
 
     #[doc = "https://www.haskell.org/cabal/"]
     #[serde(rename = "cabal_format")]
@@ -1000,6 +1005,7 @@ impl Tooling {
             Self::Bsfmt => bsfmt::run(snippet_path),
             Self::Buf => buf::run(snippet_path),
             Self::Buildifier => buildifier::run(snippet_path),
+            Self::Brittany => brittany::run(snippet_path),
             Self::CSharpier => csharpier::run(snippet_path),
             Self::CabalFormat => cabal_format::run(snippet_path),
             Self::CaramelFmt => caramel::run_fmt(snippet_path),
@@ -1171,6 +1177,7 @@ impl AsRef<str> for Tooling {
             Self::Bsfmt => "bsfmt",
             Self::Buf => "buf",
             Self::Buildifier => "buildifier",
+            Self::Brittany => "brittany",
             Self::CSharpier => "csharpier",
             Self::CabalFormat => "cabal_format",
             Self::CaramelFmt => "caramel_fmt",
