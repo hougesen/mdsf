@@ -265,12 +265,14 @@ pub fn execute_command(
     cmd: std::process::Command,
     snippet_path: &std::path::Path,
 ) -> Result<(bool, Option<String>), MdsfError> {
-    let binary_name = cmd.get_program();
+    if cmd.get_current_dir().is_none() {
+        let binary_name = cmd.get_program();
 
-    if !binary_in_path(binary_name) {
-        return Err(MdsfError::MissingBinary(
-            binary_name.to_string_lossy().to_string(),
-        ));
+        if !binary_in_path(binary_name) {
+            return Err(MdsfError::MissingBinary(
+                binary_name.to_string_lossy().to_string(),
+            ));
+        }
     }
 
     handle_post_execution(spawn_command(cmd), snippet_path)
