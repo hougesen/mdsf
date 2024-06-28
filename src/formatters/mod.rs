@@ -115,6 +115,7 @@ mod ocamlformat;
 mod ocp_indent;
 mod ormolu;
 mod oxlint;
+mod packer;
 mod perltidy;
 mod pg_format;
 mod php_cs_fixer;
@@ -751,6 +752,10 @@ pub enum Tooling {
     #[serde(rename = "oxlint")]
     Oxlint,
 
+    #[doc = "https://developer.hashicorp.com/packer/docs/commands/fmt"]
+    #[serde(rename = "packer_fmt")]
+    PackerFmt,
+
     #[doc = "https://github.com/perltidy/perltidy"]
     #[serde(rename = "perltidy")]
     PerlTidy,
@@ -1112,6 +1117,7 @@ impl Tooling {
             Self::OcpIndent => ocp_indent::run(snippet_path),
             Self::Ormolu => ormolu::run(snippet_path),
             Self::Oxlint => oxlint::run(snippet_path),
+            Self::PackerFmt => packer::run_fmt(snippet_path),
             Self::PerlTidy => perltidy::run(snippet_path),
             Self::PgFormat => pg_format::run(snippet_path),
             Self::PhpCsFixer => php_cs_fixer::run(snippet_path),
@@ -1284,6 +1290,7 @@ impl AsRef<str> for Tooling {
             Self::OcpIndent => "ocpindent",
             Self::Ormolu => "ormolu",
             Self::Oxlint => "oxlint",
+            Self::PackerFmt => "packer_fmt",
             Self::PerlTidy => "perltidy",
             Self::PgFormat => "pg_format",
             Self::Prettier => "prettier",

@@ -589,6 +589,11 @@
           "enum": ["oxlint"]
         },
         {
+          "description": "https://developer.hashicorp.com/packer/docs/commands/fmt",
+          "type": "string",
+          "enum": ["packer_fmt"]
+        },
+        {
           "description": "https://github.com/perltidy/perltidy",
           "type": "string",
           "enum": ["perltidy"]
