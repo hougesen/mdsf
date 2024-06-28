@@ -414,6 +414,11 @@
           "enum": ["hindent"]
         },
         {
+          "description": "https://github.com/danstiner/hfmt",
+          "type": "string",
+          "enum": ["hfmt"]
+        },
+        {
           "description": "https://github.com/threedaymonk/htmlbeautifier",
           "type": "string",
           "enum": ["htmlbeautifier"]
