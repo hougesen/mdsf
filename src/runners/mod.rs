@@ -100,3 +100,8 @@ pub fn setup_npm_script(package_name: &str) -> std::process::Command {
         JavaScriptRuntime::Pnpm => new_pnpm_dlx_cmd(package_name),
     }
 }
+
+#[inline]
+pub fn run_executable_from_path(path: &str) -> std::process::Command {
+    std::process::Command::new(path)
+}

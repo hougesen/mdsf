@@ -1,5 +1,8 @@
 use super::execute_command;
-use crate::{error::MdsfError, runners::setup_npm_script};
+use crate::{
+    error::MdsfError,
+    runners::{run_executable_from_path, setup_npm_script},
+};
 
 #[inline]
 fn set_prettier_args(
@@ -34,6 +37,16 @@ fn invoke_prettier(
 #[inline]
 pub fn run(snippet_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfError> {
     let embedded_language_formatting = snippet_path.extension().is_some_and(|ext| ext != "md");
+
+    if let Ok(path_result) = invoke_prettier(
+        run_executable_from_path("node_modules/.bin/prettier"),
+        snippet_path,
+        embedded_language_formatting,
+    ) {
+        if !path_result.0 {
+            return Ok(path_result);
+        }
+    }
 
     if let Ok(path_result) = invoke_prettier(
         std::process::Command::new("prettier"),
