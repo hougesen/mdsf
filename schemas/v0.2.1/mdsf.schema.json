@@ -774,6 +774,11 @@
           "enum": ["standardrb"]
         },
         {
+          "description": "https://github.com/matype/stylefmt",
+          "type": "string",
+          "enum": ["stylefmt"]
+        },
+        {
           "description": "https://github.com/stylelint/stylelint",
           "type": "string",
           "enum": ["stylelint"]
