@@ -64,6 +64,7 @@ mod fantomas;
 mod findent;
 mod fish_indent;
 mod fixjson;
+mod floskell;
 mod fnlfmt;
 mod forge_fmt;
 mod fourmolu;
@@ -561,6 +562,10 @@ pub enum Tooling {
     #[serde(rename = "fprettify")]
     Fprettify,
 
+    #[doc = "https://github.com/ennocramer/floskell"]
+    #[serde(rename = "floskell")]
+    Floskell,
+
     #[doc = "https://github.com/daixiang0/gci"]
     #[serde(rename = "gci")]
     GCI,
@@ -1054,6 +1059,7 @@ impl Tooling {
             Self::ForgeFmt => forge_fmt::run(snippet_path),
             Self::Fourmolu => fourmolu::run(snippet_path),
             Self::Fprettify => fprettify::run(snippet_path),
+            Self::Floskell => floskell::run(snippet_path),
             Self::GCI => gci::run(snippet_path),
             Self::Gdformat => gdformat::run(snippet_path),
             Self::Gersemi => gersemi::run(snippet_path),
@@ -1226,6 +1232,7 @@ impl AsRef<str> for Tooling {
             Self::ForgeFmt => "forge_fmt",
             Self::Fourmolu => "fourmolu",
             Self::Fprettify => "fprettify",
+            Self::Floskell => "floskell",
             Self::GCI => "gci",
             Self::Gdformat => "gdformat",
             Self::Gersemi => "gersemi",
