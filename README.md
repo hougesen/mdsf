@@ -194,11 +194,12 @@ mdsf init
 
 <!-- START_SECTION:supported-tools -->
 
-`mdsf` currently supports 160 tools.
+`mdsf` currently supports 161 tools.
 
 | Formatter            | Description                                                                                                                  |
 | -------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
 | alejandra            | [https://github.com/kamadorueda/alejandra](https://github.com/kamadorueda/alejandra)                                         |
+| ameba                | [https://github.com/crystal-ameba/ameba](https://github.com/crystal-ameba/ameba)                                             |
 | asmfmt               | [https://github.com/klauspost/asmfmt](https://github.com/klauspost/asmfmt)                                                   |
 | astyle               | [https://astyle.sourceforge.net](https://astyle.sourceforge.net)                                                             |
 | auto-optional        | [https://pypi.org/project/auto-optional/](https://pypi.org/project/auto-optional/)                                           |
