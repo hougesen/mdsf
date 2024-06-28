@@ -127,6 +127,8 @@ jobs:
         run: pipx install isort && isort --version
       - name: usort
         run: pipx install usort && usort --version
+      - name: pycln
+        run: pipx install pycln && pycln --version
       #- name: ocamlformat
       #  run: eval $(opam env) && opam install ocamlformat && eval $(opam env) && ocamlformat --version
       - name: blade-formatter

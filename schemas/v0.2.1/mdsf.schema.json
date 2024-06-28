@@ -634,6 +634,11 @@
           "enum": ["purs-tidy"]
         },
         {
+          "description": "https://github.com/hadialqattan/pycln",
+          "type": "string",
+          "enum": ["pycln"]
+        },
+        {
           "description": "https://github.com/google/pyink",
           "type": "string",
           "enum": ["pyink"]

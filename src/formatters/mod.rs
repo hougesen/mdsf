@@ -124,6 +124,7 @@ mod pretty_php;
 mod prisma;
 mod puppet_lint;
 mod purs_tidy;
+mod pycln;
 mod pyink;
 mod raco;
 mod rescript_format;
@@ -783,6 +784,10 @@ pub enum Tooling {
     #[serde(rename = "purs-tidy")]
     PursTidy,
 
+    #[doc = "https://github.com/hadialqattan/pycln"]
+    #[serde(rename = "pycln")]
+    Pycln,
+
     #[doc = "https://github.com/google/pyink"]
     #[serde(rename = "pyink")]
     PyInk,
@@ -1101,6 +1106,7 @@ impl Tooling {
             Self::Prisma => prisma::run_format(snippet_path),
             Self::PuppetLint => puppet_lint::run(snippet_path),
             Self::PursTidy => purs_tidy::run(snippet_path),
+            Self::Pycln => pycln::run(snippet_path),
             Self::PyInk => pyink::run(snippet_path),
             Self::RacoFmt => raco::run_fmt(snippet_path),
             Self::ReScriptFormat => rescript_format::run(snippet_path),
@@ -1264,6 +1270,7 @@ impl AsRef<str> for Tooling {
             Self::Prisma => "prisma",
             Self::PuppetLint => "puppet-lint",
             Self::PursTidy => "purs-tidy",
+            Self::Pycln => "pycln",
             Self::PyInk => "pyink",
             Self::RacoFmt => "raco_fmt",
             Self::ReScriptFormat => "rescript_format",

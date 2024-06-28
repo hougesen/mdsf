@@ -194,7 +194,7 @@ mdsf init
 
 <!-- START_SECTION:supported-tools -->
 
-`mdsf` currently supports 163 tools.
+`mdsf` currently supports 164 tools.
 
 | Formatter            | Description                                                                                                                  |
 | -------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
@@ -313,6 +313,7 @@ mdsf init
 | prisma               | [https://prisma.io/](https://prisma.io/)                                                                                     |
 | puppet-lint          | [https://github.com/puppetlabs/puppet-lint](https://github.com/puppetlabs/puppet-lint)                                       |
 | purs-tidy            | [https://github.com/natefaubion/purescript-tidy](https://github.com/natefaubion/purescript-tidy)                             |
+| pycln                | [https://github.com/hadialqattan/pycln](https://github.com/hadialqattan/pycln)                                               |
 | pyink                | [https://github.com/google/pyink](https://github.com/google/pyink)                                                           |
 | raco_fmt             | [https://docs.racket-lang.org/fmt/](https://docs.racket-lang.org/fmt/)                                                       |
 | rescript_format      | [https://rescript-lang.org/](https://rescript-lang.org/)                                                                     |
