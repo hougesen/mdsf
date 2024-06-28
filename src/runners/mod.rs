@@ -104,7 +104,7 @@ fn setup_npm_script(package_name: &str) -> std::process::Command {
 #[inline]
 fn setup_command_from_path(path: &str, binary_name: &str) -> std::process::Command {
     // TODO: logic to determine if binary in parent/sub folder
-    let mut cmd = std::process::Command::new(binary_name);
+    let mut cmd = std::process::Command::new(format!("./{binary_name}"));
 
     cmd.current_dir(path);
 
