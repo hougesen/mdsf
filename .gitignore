@@ -1,2 +1,5 @@
-/target
 /codegen/target
+/target
+node_modules
+package-lock.json
+package.json

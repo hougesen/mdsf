@@ -194,7 +194,7 @@ mdsf init
 
 <!-- START_SECTION:supported-tools -->
 
-`mdsf` currently supports 172 tools. Feel free to open an issue/pull-request if your favorite tool is missing! 😃
+`mdsf` currently supports 173 tools. Feel free to open an issue/pull-request if your favorite tool is missing! 😃
 
 | Formatter            | Description                                                                                                                  |
 | -------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
@@ -322,6 +322,7 @@ mdsf init
 | pyink                | [https://github.com/google/pyink](https://github.com/google/pyink)                                                           |
 | qmlfmt               | [https://github.com/jesperhh/qmlfmt](https://github.com/jesperhh/qmlfmt)                                                     |
 | raco_fmt             | [https://docs.racket-lang.org/fmt/](https://docs.racket-lang.org/fmt/)                                                       |
+| refmt                | [https://reasonml.github.io/docs/en/](https://reasonml.github.io/docs/en/)                                                   |
 | rescript_format      | [https://rescript-lang.org/](https://rescript-lang.org/)                                                                     |
 | roc_format           | [https://github.com/roc-lang/roc](https://github.com/roc-lang/roc)                                                           |
 | rstfmt               | [https://github.com/dzhu/rstfmt](https://github.com/dzhu/rstfmt)                                                             |
