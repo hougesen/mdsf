@@ -183,7 +183,10 @@ fn setup_temp_dir() -> std::io::Result<()> {
 
     std::fs::write(
         ".mdsf-cache/.gitignore",
-        "Automatically created by mdsf.\n*\n",
+        "Automatically created by mdsf.
+.gitignore
+caches
+",
     )?;
 
     Ok(())
