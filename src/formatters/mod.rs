@@ -133,6 +133,7 @@ mod pycln;
 mod pyink;
 mod qmlfmt;
 mod raco;
+mod refmt;
 mod rescript_format;
 mod roc_format;
 mod rstfmt;
@@ -837,6 +838,10 @@ pub enum Tooling {
     #[serde(rename = "rescript_format")]
     ReScriptFormat,
 
+    #[doc = "https://reasonml.github.io/docs/en/"]
+    #[serde(rename = "refmt")]
+    Refmt,
+
     #[doc = "https://github.com/roc-lang/roc"]
     #[serde(rename = "roc_format")]
     RocFormat,
@@ -1161,6 +1166,7 @@ impl Tooling {
             Self::Qmlfmt => qmlfmt::run(snippet_path),
             Self::RacoFmt => raco::run_fmt(snippet_path),
             Self::ReScriptFormat => rescript_format::run(snippet_path),
+            Self::Refmt => refmt::run(snippet_path),
             Self::RocFormat => roc_format::run(snippet_path),
             Self::RstFmt => rstfmt::run(snippet_path),
             Self::RuboCop => rubocop::run(snippet_path),
@@ -1332,6 +1338,7 @@ impl AsRef<str> for Tooling {
             Self::Qmlfmt => "qmlfmt",
             Self::RacoFmt => "raco_fmt",
             Self::ReScriptFormat => "rescript_format",
+            Self::Refmt => "refmt",
             Self::RocFormat => "roc_format",
             Self::RstFmt => "rstfmt",
             Self::RuboCop => "rubocop",

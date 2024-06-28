@@ -684,6 +684,11 @@
           "enum": ["rescript_format"]
         },
         {
+          "description": "https://reasonml.github.io/docs/en/",
+          "type": "string",
+          "enum": ["refmt"]
+        },
+        {
           "description": "https://github.com/roc-lang/roc",
           "type": "string",
           "enum": ["roc_format"]
