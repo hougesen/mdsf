@@ -79,6 +79,7 @@ mod golines;
 mod google_java_format;
 mod grain;
 mod haml_lint;
+mod hfmt;
 mod hindent;
 mod html_beautify;
 mod htmlbeautifier;
@@ -605,6 +606,10 @@ pub enum Tooling {
     #[serde(rename = "hindent")]
     HIndent,
 
+    #[doc = "https://github.com/danstiner/hfmt"]
+    #[serde(rename = "hfmt")]
+    Hfmt,
+
     #[doc = "https://github.com/threedaymonk/htmlbeautifier"]
     #[serde(rename = "htmlbeautifier")]
     Htmlbeautifier,
@@ -1045,6 +1050,7 @@ impl Tooling {
             Self::GoogleJavaFormat => google_java_format::run(snippet_path),
             Self::GrainFormat => grain::run_format(snippet_path),
             Self::HIndent => hindent::run(snippet_path),
+            Self::Hfmt => hfmt::run(snippet_path),
             Self::HamlLint => haml_lint::run(snippet_path),
             Self::HtmlBeautify => html_beautify::run(snippet_path),
             Self::Htmlbeautifier => htmlbeautifier::run(snippet_path),
@@ -1212,7 +1218,8 @@ impl AsRef<str> for Tooling {
             Self::GoLines => "golines",
             Self::GoogleJavaFormat => "google-java-format",
             Self::GrainFormat => "grain_format",
-            Self::HIndent => "hundent",
+            Self::HIndent => "hindent",
+            Self::Hfmt => "hfmt",
             Self::HamlLint => "haml-lint",
             Self::Htmlbeautifier => "htmlbeautifier",
             Self::ImbaFmt => "imba_fmt",

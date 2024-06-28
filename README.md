@@ -194,7 +194,7 @@ mdsf init
 
 <!-- START_SECTION:supported-tools -->
 
-`mdsf` currently supports 161 tools.
+`mdsf` currently supports 162 tools.
 
 | Formatter            | Description                                                                                                                  |
 | -------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
@@ -268,6 +268,7 @@ mdsf init
 | google-java-format   | [https://github.com/google/google-java-format](https://github.com/google/google-java-format)                                 |
 | grain_format         | [https://grain-lang.org](https://grain-lang.org)                                                                             |
 | haml-lint            | [https://github.com/sds/haml-lint](https://github.com/sds/haml-lint)                                                         |
+| hfmt                 | [https://github.com/danstiner/hfmt](https://github.com/danstiner/hfmt)                                                       |
 | hindent              | [https://hackage.haskell.org/package/hindent](https://hackage.haskell.org/package/hindent)                                   |
 | html-beautify        | [https://github.com/beautifier/js-beautify](https://github.com/beautifier/js-beautify)                                       |
 | htmlbeautifier       | [https://github.com/threedaymonk/htmlbeautifier](https://github.com/threedaymonk/htmlbeautifier)                             |
