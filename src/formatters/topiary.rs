@@ -28,7 +28,7 @@ pub fn run(snippet_path: &std::path::Path) -> Result<(bool, Option<String>), Mds
 }
 
 #[cfg(test)]
-mod test_prettier {
+mod test_topiary {
     use crate::{formatters::setup_snippet, generated::language_to_ext};
 
     #[test_with::executable(topiary)]

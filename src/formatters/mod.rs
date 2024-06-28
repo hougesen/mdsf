@@ -111,6 +111,7 @@ mod nickel;
 mod nimpretty;
 mod nixfmt;
 mod nixpkgs_fmt;
+mod nph;
 mod npm_groovy_lint;
 mod ocamlformat;
 mod ocp_indent;
@@ -744,6 +745,10 @@ pub enum Tooling {
     #[serde(rename = "nixpkgs-fmt")]
     NixpkgsFmt,
 
+    #[doc = "https://github.com/arnetheduck/nph"]
+    #[serde(rename = "nph")]
+    Nph,
+
     #[doc = "https://github.com/nvuillam/npm-groovy-lint"]
     #[serde(rename = "npm-groovy-lint")]
     NpmGroovyLint,
@@ -1133,6 +1138,7 @@ impl Tooling {
             Self::Nimpretty => nimpretty::run(snippet_path),
             Self::Nixfmt => nixfmt::run(snippet_path),
             Self::NixpkgsFmt => nixpkgs_fmt::run(snippet_path),
+            Self::Nph => nph::run(snippet_path),
             Self::NpmGroovyLint => npm_groovy_lint::run(snippet_path),
             Self::OCamlFormat => ocamlformat::run(snippet_path),
             Self::OcpIndent => ocp_indent::run(snippet_path),
@@ -1308,6 +1314,7 @@ impl AsRef<str> for Tooling {
             Self::Nimpretty => "nimpretty",
             Self::Nixfmt => "nixfmt",
             Self::NixpkgsFmt => "nixpkgs-fmt",
+            Self::Nph => "nph",
             Self::NpmGroovyLint => "npm-groovy-lint",
             Self::OCamlFormat => "ocamlformat",
             Self::OcpIndent => "ocpindent",
