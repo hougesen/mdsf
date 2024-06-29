@@ -184,6 +184,8 @@ jobs:
         run: js-beautify --version
       - name: html-beautify
         run: html-beautify --version
+      - name: efmt
+        run: cargo install efmt && efmt --version
 
       - name: run tests
         run: cargo test
