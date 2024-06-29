@@ -194,6 +194,8 @@ jobs:
         run: gem install htmlbeautifier
       - name: kdlfmt
         run: cargo install kdlfmt
+      - name: kcl
+        run: go install kcl-lang.io/cli/cmd/kcl@latest
       - name: run tests
         run: cargo test
 
