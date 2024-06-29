@@ -130,7 +130,7 @@ jobs:
       - name: pycln
         run: pipx install pycln && pycln --version
       - name: auto-optional
-        run: pipx install auto-optional && --version auto-optional
+        run: pipx install auto-optional && auto-optional --version
       #- name: ocamlformat
       #  run: eval $(opam env) && opam install ocamlformat && eval $(opam env) && ocamlformat --version
       - name: blade-formatter
