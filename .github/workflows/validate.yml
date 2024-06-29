@@ -169,6 +169,8 @@ jobs:
       #  run: wget -O- https://apt.releases.hashicorp.com/gpg | sudo gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg && echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list && sudo apt update && sudo apt install terraform && terraform -version
       - name: nixfmt
         run: wget https://github.com/NixOS/nixfmt/releases/download/v0.6.0/nixfmt-x86_64-linux && chmod +x nixfmt-x86_64-linux && sudo cp nixfmt-x86_64-linux /usr/local/bin/nixfmt && nixfmt --version
+      - name: ae
+        run: curl -sSLO https://github.com/kamadorueda/alejandra/releases/download/3.0.0/alejandra-x86_64-unknown-linux-musl && chmod a+x alejandra-x86_64-unknown-linux-musl && sudo mv alejandra-x86_64-unknown-linux-musl /usr/local/bin/alejandra && alejandra --version
       - name: fprettify
         run: pipx install fprettify && fprettify --version
       - name: run tests
