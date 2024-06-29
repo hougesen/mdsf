@@ -130,7 +130,7 @@ jobs:
       - name: pycln
         run: pipx install pycln && pycln --version
       - name: auto-optional
-        run: pipx install auto-optional && auto-optional --version
+        run: pipx install auto-optional && auto-optional --help
       #- name: ocamlformat
       #  run: eval $(opam env) && opam install ocamlformat && eval $(opam env) && ocamlformat --version
       - name: blade-formatter
@@ -173,6 +173,30 @@ jobs:
         run: curl -sSLO https://github.com/kamadorueda/alejandra/releases/download/3.0.0/alejandra-x86_64-unknown-linux-musl && chmod a+x alejandra-x86_64-unknown-linux-musl && sudo mv alejandra-x86_64-unknown-linux-musl /usr/local/bin/alejandra && alejandra --version
       - name: fprettify
         run: pipx install fprettify && fprettify --version
+      - name: autoflake
+        run: pipx install autoflake && autoflake
+      - name: buf
+        run: sudo curl -sSL "https://github.com/bufbuild/buf/releases/download/v1.34.0/buf-$(uname -s)-$(uname -m)" -o "/usr/local/bin/buf" && sudo chmod +x "/usr/local/bin/buf" && buf --version
+      - run: npm i -g js-beautify
+      - name: css-beautify
+        run: css-beautify --version
+      - name: js-beautify
+        run: js-beautify --version
+      - name: html-beautify
+        run: html-beautify --version
+      - name: efmt
+        run: cargo install efmt && efmt --version
+      - name: golines
+        run: go install github.com/segmentio/golines@latest
+      - name: grain
+        run: sudo curl -L --output /usr/local/bin/grain https://github.com/grain-lang/grain/releases/download/grain-v0.6.4/grain-linux-x64 && sudo chmod +x /usr/local/bin/grain
+      - name: htmlbeautifier
+        run: gem install htmlbeautifier
+      - name: kdlfmt
+        run: cargo install kdlfmt
+      - name: kcl
+        run: go install kcl-lang.io/cli/cmd/kcl@latest
+      - run: cargo install typos
       - name: run tests
         run: cargo test
 
