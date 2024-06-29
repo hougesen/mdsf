@@ -24,6 +24,19 @@ pub fn get_config_hash(config: &MdsfConfig) -> String {
     )
 }
 
+#[cfg(test)]
+mod test_get_config_hash {
+    use crate::{caching::get_config_hash, config::MdsfConfig};
+
+    #[test]
+    fn it_shoud_be_deterministic() {
+        assert_eq!(
+            get_config_hash(&MdsfConfig::default()),
+            get_config_hash(&MdsfConfig::default()),
+        );
+    }
+}
+
 #[inline]
 pub fn hash_text_block(text: &str) -> String {
     let mut h = Sha256::new();
@@ -31,4 +44,17 @@ pub fn hash_text_block(text: &str) -> String {
     h.update(text);
 
     format!("{:X}", h.finalize())
+}
+
+#[cfg(test)]
+mod test_hash_text_block {
+    use crate::caching::hash_text_block;
+
+    #[test]
+    fn it_shoud_be_deterministic() {
+        assert_eq!(
+            hash_text_block("mads was here"),
+            hash_text_block("mads was here"),
+        );
+    }
 }
