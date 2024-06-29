@@ -188,6 +188,8 @@ jobs:
         run: cargo install efmt && efmt --version
       - name: golines
         run: go install github.com/segmentio/golines@latest
+      - name: grain
+        run: sudo curl -L --output /usr/local/bin/grain https://github.com/grain-lang/grain/releases/download/grain-v0.6.4/grain-linux-x64 && sudo chmod +x /usr/local/bin/grain
       - name: run tests
         run: cargo test
 
