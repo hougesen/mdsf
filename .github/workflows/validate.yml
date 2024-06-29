@@ -130,7 +130,7 @@ jobs:
       - name: pycln
         run: pipx install pycln && pycln --version
       - name: auto-optional
-        run: pipx install auto-optional && auto-optional --version
+        run: pipx install auto-optional && auto-optional --help
       #- name: ocamlformat
       #  run: eval $(opam env) && opam install ocamlformat && eval $(opam env) && ocamlformat --version
       - name: blade-formatter
@@ -173,6 +173,8 @@ jobs:
         run: curl -sSLO https://github.com/kamadorueda/alejandra/releases/download/3.0.0/alejandra-x86_64-unknown-linux-musl && chmod a+x alejandra-x86_64-unknown-linux-musl && sudo mv alejandra-x86_64-unknown-linux-musl /usr/local/bin/alejandra && alejandra --version
       - name: fprettify
         run: pipx install fprettify && fprettify --version
+      - name: autoflake
+        run: pipx install autoflake && autoflake
       - name: run tests
         run: cargo test
 

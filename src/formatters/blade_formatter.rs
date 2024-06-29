@@ -45,7 +45,7 @@ pub fn run(snippet_path: &std::path::Path) -> Result<(bool, Option<String>), Mds
 mod test_blade_formatter {
     use crate::{formatters::setup_snippet, generated::language_to_ext};
 
-    #[test_with::executable(blade-formatter)]
+    #[test_with::executable(npx)]
     fn it_should_format_blade() {
         let input = r#"@extends('frontend.layouts.app')
 @section('title') foo
