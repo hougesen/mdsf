@@ -19,6 +19,28 @@ impl From<LogLevel> for LevelFilter {
     }
 }
 
+#[cfg(test)]
+mod test_level_filter {
+    use log::LevelFilter;
+
+    use crate::cli::LogLevel;
+
+    #[test]
+    fn they_should_be_two_way() {
+        assert_eq!(LevelFilter::from(LogLevel::Off), LevelFilter::Off,);
+
+        assert_eq!(LevelFilter::from(LogLevel::Error), LevelFilter::Error,);
+
+        assert_eq!(LevelFilter::from(LogLevel::Warn), LevelFilter::Warn,);
+
+        assert_eq!(LevelFilter::from(LogLevel::Info), LevelFilter::Info,);
+
+        assert_eq!(LevelFilter::from(LogLevel::Debug), LevelFilter::Debug,);
+
+        assert_eq!(LevelFilter::from(LogLevel::Trace), LevelFilter::Trace,);
+    }
+}
+
 #[inline]
 pub fn setup_logger(log_level: LogLevel) {
     env_logger::Builder::from_env("MDSF_LOG")

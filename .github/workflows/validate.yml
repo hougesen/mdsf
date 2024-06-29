@@ -174,7 +174,7 @@ jobs:
       - name: fprettify
         run: pipx install fprettify && fprettify --version
       - name: autoflake
-        run: pipx install autoflake && autoflake
+        run: pipx install autoflake && autoflake --version
       - name: buf
         run: sudo curl -sSL "https://github.com/bufbuild/buf/releases/download/v1.34.0/buf-$(uname -s)-$(uname -m)" -o "/usr/local/bin/buf" && sudo chmod +x "/usr/local/bin/buf" && buf --version
       - run: npm i -g js-beautify
