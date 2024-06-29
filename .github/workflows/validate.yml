@@ -186,7 +186,8 @@ jobs:
         run: html-beautify --version
       - name: efmt
         run: cargo install efmt && efmt --version
-
+      - name: golines
+        run: go install github.com/segmentio/golines@latest
       - name: run tests
         run: cargo test
 
