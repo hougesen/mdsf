@@ -129,6 +129,8 @@ jobs:
         run: pipx install usort && usort --version
       - name: pycln
         run: pipx install pycln && pycln --version
+      - name: auto-optional
+        run: pipx install auto-optional && --version auto-optional
       #- name: ocamlformat
       #  run: eval $(opam env) && opam install ocamlformat && eval $(opam env) && ocamlformat --version
       - name: blade-formatter
