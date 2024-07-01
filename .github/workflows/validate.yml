@@ -202,6 +202,8 @@ jobs:
         run: sudo apt-get install -y libxml2 && xmllint --version
       - name: rubyfmt
         run: (which brew && brew install rubyfmt) || echo "Brew is not setup"
+      - name: ormolu
+        run: sudo apt-get install -y ormolu && ormolu --version
       - name: run tests
         run: cargo test
 
