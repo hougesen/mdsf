@@ -204,8 +204,8 @@ jobs:
         run: (which brew && brew install rubyfmt) || echo "Brew is not setup"
       - name: ormolu
         run: sudo apt-get install -y ormolu && ormolu --version
-      - name: ocp-indent
-        run: sudo apt-get install -y ocp-indent && ocp-indent --version && wget https://raw.githubusercontent.com/OCamlPro/ocp-indent/master/.ocp-indent -O .ocp-indent
+      # - name: ocp-indent
+      #   run: sudo apt-get install -y ocp-indent && ocp-indent --version && wget https://raw.githubusercontent.com/OCamlPro/ocp-indent/master/.ocp-indent -O .ocp-indent
       - name: run tests
         run: cargo test
 
