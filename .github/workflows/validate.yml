@@ -196,7 +196,10 @@ jobs:
         run: cargo install kdlfmt
       - name: kcl
         run: go install kcl-lang.io/cli/cmd/kcl@latest
-      - run: cargo install typos-cli
+      - name: typos
+        run: cargo install typos-cli
+      - name: xmllint
+        run: sudo apt-get install -y libxml2 && xmllint --version
       - name: run tests
         run: cargo test
 
