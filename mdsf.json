@@ -1,9 +1,10 @@
 {
-  "$schema": "https://raw.githubusercontent.com/hougesen/mdsf/main/schemas/v0.2.0/mdsf.schema.json",
+  "$schema": "https://raw.githubusercontent.com/hougesen/mdsf/main/schemas/v0.2.2/mdsf.schema.json",
   "custom_file_extensions": {},
   "format_finished_document": false,
   "javascript_runtime": "node",
   "languages": {
+    "bash": "shfmt",
     "c": "clang-format",
     "clojure": [["cljstyle", "joker"]],
     "cpp": "clang-format",

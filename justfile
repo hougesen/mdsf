@@ -35,7 +35,11 @@ test-coverage:
     cargo llvm-cov clean
     cargo llvm-cov --all-features --open
 
+changelog:
+    npx auto-changelog -u
+
 codegen:
+    just changelog
     cd codegen && cargo run
 
 format:
@@ -46,9 +50,6 @@ format:
     cargo run -- format tests
     git restore tests/
 
-changelog:
-    npx auto-changelog
-
 precommit:
     cargo clean
     just format
@@ -56,7 +57,6 @@ precommit:
     just build
     just lint
     just test
-    just changelog
     just format
     typos --exclude src/generated.rs --exclude CHANGELOG.md .
 
