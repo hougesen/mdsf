@@ -43,6 +43,6 @@ threadpool = "1.8.1"
 which = "6.0.1"
 
 [dev-dependencies]
-test-with = { version = "0.12.6", default-features = false, features = [
+test-with = { version = "0.13.0", default-features = false, features = [
   "executable",
 ] }
