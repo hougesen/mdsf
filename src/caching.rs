@@ -29,7 +29,7 @@ mod test_get_config_hash {
     use crate::{caching::get_config_hash, config::MdsfConfig};
 
     #[test]
-    fn it_shoud_be_deterministic() {
+    fn it_should_be_deterministic() {
         assert_eq!(
             get_config_hash(&MdsfConfig::default()),
             get_config_hash(&MdsfConfig::default()),
@@ -51,7 +51,7 @@ mod test_hash_text_block {
     use crate::caching::hash_text_block;
 
     #[test]
-    fn it_shoud_be_deterministic() {
+    fn it_should_be_deterministic() {
         assert_eq!(
             hash_text_block("mads was here"),
             hash_text_block("mads was here"),
