@@ -106,67 +106,6 @@ Options:
 
 <!-- END_SECTION:verify-command-help -->
 
-### Shell completions
-
-Shell completions can be generated using `mdsf completions <SHELL>`.
-
-<!-- START_SECTION:completions-command-help -->
-
-```
-Generate shell completion
-
-Usage: mdsf completions <SHELL>
-
-Arguments:
-  <SHELL>  [possible values: bash, elvish, fish, powershell, zsh]
-
-Options:
-  -h, --help     Print help
-  -V, --version  Print version
-```
-
-<!-- END_SECTION:completions-command-help -->
-
-#### Bash
-
-Add the following to your `.bashrc`.
-
-```bash
-eval "$(mdsf completions bash)"
-```
-
-#### Bash
-
-Add the following to your `.zshrc`.
-
-```bash
-eval "$(mdsf completions zsh)"
-```
-
-#### Fish
-
-Add the following to `~/.config/fish/config.fish`.
-
-```fish
-mdsf completions fish | source
-```
-
-#### PowerShell
-
-Add the following to your PowerShell configuration (Can be found by running `$PROFILE`).
-
-```powershell
-Invoke-Expression (&mdsf completions powershell)
-```
-
-#### Elvish
-
-Add the following to `~/.elvish/rc.elv`.
-
-```elvish
-eval (mdsf completions elvish)
-```
-
 ## Configuration
 
 The default configuration of `mdsf` aims to as sane as possible. For that reason the default formatter for each language is the one most people have installed.
@@ -378,6 +317,67 @@ mdsf init
 | zprint               | [https://github.com/kkinnear/zprint](https://github.com/kkinnear/zprint)                                                     |
 
 <!-- END_SECTION:supported-tools -->
+
+## Shell completions
+
+Shell completions can be generated using `mdsf completions <SHELL>`.
+
+<!-- START_SECTION:completions-command-help -->
+
+```
+Generate shell completion
+
+Usage: mdsf completions <SHELL>
+
+Arguments:
+  <SHELL>  [possible values: bash, elvish, fish, powershell, zsh]
+
+Options:
+  -h, --help     Print help
+  -V, --version  Print version
+```
+
+<!-- END_SECTION:completions-command-help -->
+
+#### Bash
+
+Add the following to your `.bashrc`.
+
+```bash
+eval "$(mdsf completions bash)"
+```
+
+#### Bash
+
+Add the following to your `.zshrc`.
+
+```bash
+eval "$(mdsf completions zsh)"
+```
+
+#### Fish
+
+Add the following to `~/.config/fish/config.fish`.
+
+```fish
+mdsf completions fish | source
+```
+
+#### PowerShell
+
+Add the following to your PowerShell configuration (Can be found by running `$PROFILE`).
+
+```powershell
+Invoke-Expression (&mdsf completions powershell)
+```
+
+#### Elvish
+
+Add the following to `~/.elvish/rc.elv`.
+
+```elvish
+eval (mdsf completions elvish)
+```
 
 ## Acknowledgement
 
