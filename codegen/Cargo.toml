@@ -23,4 +23,4 @@ serde_json = { version = "1.0.120" }
 # TODO: switch to other yaml library since serde_yaml is deprecated
 # NOTE: since it is just a build dependency it is low priority
 serde_yaml = { version = "0.9.34" }
-toml = { version = "0.8.14" }
+toml = { version = "0.8.15" }
