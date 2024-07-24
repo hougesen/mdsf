@@ -6,6 +6,12 @@ updates:
       interval: monthly
     assignees: [hougesen]
     open-pull-requests-limit: 25
+  - package-ecosystem: cargo
+    directory: /codegen
+    schedule:
+      interval: monthly
+    assignees: [hougesen]
+    open-pull-requests-limit: 25
   - package-ecosystem: github-actions
     directory: /
     schedule:
