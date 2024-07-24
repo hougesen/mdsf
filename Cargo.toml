@@ -27,7 +27,7 @@ json-schema = ["dep:schemars"]
 clap = { version = "4.5.9", features = ["derive"] }
 clap_complete = "4.5.8"
 console = "0.15.8"
-env_logger = "0.11.3"
+env_logger = "0.11.4"
 ignore = "0.4.22"
 json_comments = "0.2.2"
 log = "0.4.22"
