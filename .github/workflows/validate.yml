@@ -67,7 +67,7 @@ jobs:
         with:
           deno-version: v1.x
       - uses: taiki-e/install-action@just
-      - uses: ocaml/setup-ocaml@v2
+      - uses: ocaml/setup-ocaml@v3
         with:
           ocaml-compiler: "5.1"
       - uses: actions/setup-java@v4
