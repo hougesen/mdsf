@@ -146,6 +146,7 @@ mod rustfmt;
 mod rustywind;
 mod scalafmt;
 mod shfmt;
+mod sleek;
 mod smlfmt;
 mod snakefmt;
 mod sql_formatter;
@@ -890,6 +891,10 @@ pub enum Tooling {
     #[serde(rename = "shfmt")]
     Shfmt,
 
+    #[doc = "https://github.com/nrempel/sleek"]
+    #[serde(rename = "sleek")]
+    Sleek,
+
     #[doc = "https://github.com/shwestrick/smlfmt"]
     #[serde(rename = "smlfmt")]
     Smlfmt,
@@ -1180,6 +1185,7 @@ impl Tooling {
             Self::SQLFormatter => sql_formatter::run(snippet_path),
             Self::Scalafmt => scalafmt::run(snippet_path),
             Self::Shfmt => shfmt::run(snippet_path),
+            Self::Sleek => sleek::run(snippet_path),
             Self::Smlfmt => smlfmt::run(snippet_path),
             Self::Snakefmt => snakefmt::run(snippet_path),
             Self::Sqlfluff => sqlfluff::run(snippet_path),
@@ -1352,6 +1358,7 @@ impl AsRef<str> for Tooling {
             Self::SQLFormatter => "sql-formatter",
             Self::Scalafmt => "scalafmt",
             Self::Shfmt => "shfmt",
+            Self::Sleek => "sleek",
             Self::Smlfmt => "smlfmt",
             Self::Snakefmt => "snakefmt",
             Self::Sqlfluff => "sqlfluff",
