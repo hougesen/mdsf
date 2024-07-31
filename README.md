@@ -138,7 +138,7 @@ mdsf init
 
 <!-- START_SECTION:supported-tools -->
 
-`mdsf` currently supports 173 tools. Feel free to open an issue/pull-request if your favorite tool is missing! 😃
+`mdsf` currently supports 174 tools. Feel free to open an issue/pull-request if your favorite tool is missing! 😃
 
 | Formatter            | Description                                                                                                                  |
 | -------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
@@ -280,6 +280,7 @@ mdsf init
 | rustywind            | [https://github.com/avencera/rustywind](https://github.com/avencera/rustywind)                                               |
 | scalafmt             | [https://github.com/scalameta/scalafmt](https://github.com/scalameta/scalafmt)                                               |
 | shfmt                | [https://github.com/mvdan/sh](https://github.com/mvdan/sh)                                                                   |
+| sleek                | [https://github.com/nrempel/sleek](https://github.com/nrempel/sleek)                                                         |
 | smlfmt               | [https://github.com/shwestrick/smlfmt](https://github.com/shwestrick/smlfmt)                                                 |
 | snakefmt             | [https://github.com/snakemake/snakefmt](https://github.com/snakemake/snakefmt)                                               |
 | sql-formatter        | [https://github.com/sql-formatter-org/sql-formatter](https://github.com/sql-formatter-org/sql-formatter)                     |

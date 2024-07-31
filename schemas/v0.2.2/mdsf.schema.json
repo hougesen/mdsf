@@ -749,6 +749,11 @@
           "enum": ["shfmt"]
         },
         {
+          "description": "https://github.com/nrempel/sleek",
+          "type": "string",
+          "enum": ["sleek"]
+        },
+        {
           "description": "https://github.com/shwestrick/smlfmt",
           "type": "string",
           "enum": ["smlfmt"]
