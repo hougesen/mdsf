@@ -25,7 +25,7 @@ json-schema = ["dep:schemars"]
 
 [dependencies]
 clap = { version = "4.5.13", features = ["derive"] }
-clap_complete = "4.5.11"
+clap_complete = "4.5.12"
 console = "0.15.8"
 env_logger = "0.11.5"
 ignore = "0.4.22"
