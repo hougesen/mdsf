@@ -18,7 +18,7 @@ mdsf = { path = "../", features = ["json-schema"] }
 regex = "1.10.6"
 reqwest = { version = "0.12.7", features = ["blocking", "json"] }
 schemars = "0.8.21"
-serde = { version = "1.0.204", features = ["derive"] }
+serde = { version = "1.0.209", features = ["derive"] }
 serde_json = { version = "1.0.122" }
 # TODO: switch to other yaml library since serde_yaml is deprecated
 # NOTE: since it is just a build dependency it is low priority
