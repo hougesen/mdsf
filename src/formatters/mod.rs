@@ -286,7 +286,17 @@ pub fn execute_command(
 
 #[inline]
 pub fn format_snippet(config: &MdsfConfig, info: &LineInfo, code: &str) -> String {
-    if let Some(formatters) = config.languages.get(info.language) {
+    let always_ran = config.languages.get("*");
+
+    let language_formatters = config.languages.get(info.language).or_else(|| {
+        if always_ran.is_none() {
+            config.languages.get("_")
+        } else {
+            None
+        }
+    });
+
+    if always_ran.is_some() || language_formatters.is_some() {
         if let Ok(snippet) = setup_snippet(
             code,
             config
@@ -305,12 +315,26 @@ pub fn format_snippet(config: &MdsfConfig, info: &LineInfo, code: &str) -> Strin
         ) {
             let snippet_path = snippet.path();
 
-            if let Ok(Some(formatted_code)) = formatters.format(snippet_path, info) {
-                let mut f = formatted_code.trim().to_owned();
+            if let Some(formatters) = always_ran {
+                if let Ok(Some(formatted_code)) = formatters.format(snippet_path, info) {
+                    if language_formatters.is_none() {
+                        let mut f = formatted_code.trim().to_owned();
 
-                f.push('\n');
+                        f.push('\n');
 
-                return f;
+                        return f;
+                    }
+                }
+            }
+
+            if let Some(formatters) = language_formatters {
+                if let Ok(Some(formatted_code)) = formatters.format(snippet_path, info) {
+                    let mut f = formatted_code.trim().to_owned();
+
+                    f.push('\n');
+
+                    return f;
+                }
             }
         }
     }

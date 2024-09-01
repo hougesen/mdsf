@@ -43,7 +43,12 @@ fn format_file(config: &MdsfConfig, filename: &std::path::Path, input: &str) -> 
         if line.starts_with("```") {
             let language = line.strip_prefix("```").map(str::trim).unwrap_or_default();
 
-            if config.languages.contains_key(language) {
+            // "*" is always ran
+            // "_" is fallback formatters
+            if config.languages.contains_key(language)
+                || config.languages.contains_key("*")
+                || config.languages.contains_key("_")
+            {
                 let is_go = language == "go" || language == "golang";
 
                 let (is_snippet, code_snippet, snippet_lines) = if is_go {

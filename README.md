@@ -120,12 +120,20 @@ mdsf init
 
 ```json
 {
-  // Only run `ruff` on Python snippets,
-  "python": "ruff",
-  // Run `usort` on file and then `black`
-  "python": ["usort", "black"],
-  // Run `usort`, if that fails run `isort`, finally run `black`
-  "python": [["usort", "isort"], "black"]
+  "languages": {
+    // Only run `ruff` on Python snippets,
+    "python": "ruff",
+    // Run `usort` on file and then `black`
+    "python": ["usort", "black"],
+    // Run `usort`, if that fails run `isort`, finally run `black`
+    "python": [["usort", "isort"], "black"],
+
+    // Formatters listed under "*" will be run on any snippet.
+    "*": ["typos"],
+
+    // Formatters listed under "_" will only be run when there is not formatter configured for the file type OR globally ("*").
+    "_": "prettier"
+  }
 }
 ```
 
