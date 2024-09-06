@@ -1,12 +1,9 @@
 use crate::readme_tooling::update_readme;
 
 fn execute_command(name: &str) -> std::io::Result<std::process::Output> {
-    std::process::Command::new("cargo")
-        .arg("build")
-        .current_dir("../")
-        .output()?;
+    std::process::Command::new("cargo").arg("build").output()?;
 
-    let mut help_command = std::process::Command::new("../target/debug/mdsf");
+    let mut help_command = std::process::Command::new("./target/debug/mdsf");
 
     if !name.is_empty() {
         help_command.arg(name);
