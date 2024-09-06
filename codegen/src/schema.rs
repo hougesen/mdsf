@@ -10,7 +10,7 @@ pub fn generate() -> Result<()> {
 
     let package_version = get_package_version()?;
 
-    let p = std::path::PathBuf::from_str(&format!("../schemas/v{package_version}"))?;
+    let p = std::path::PathBuf::from_str(&format!("./schemas/v{package_version}"))?;
 
     std::fs::create_dir_all(&p)?;
 

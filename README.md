@@ -35,6 +35,20 @@ Options:
 
 The latest version of `mdsf` can be downloaded directly from [github.com/hougesen/mdsf/releases](https://github.com/hougesen/mdsf/releases).
 
+## Install
+
+### Linux & MacOS
+
+```shell
+curl --proto '=https' --tlsv1.2 -LsSf https://github.com/hougesen/mdsf/releases/latest/download/mdsf-installer.sh | sh
+```
+
+### Windows
+
+```powershell
+powershell -ExecutionPolicy ByPass -c "irm https://github.com/hougesen/mdsf/releases/latest/download/mdsf-installer.ps1 | iex"
+```
+
 ### Cargo
 
 Install using the [published crate](https://crates.io/crates/mdsf):
@@ -51,10 +65,34 @@ git clone git@github.com:hougesen/mdsf.git
 cargo install --path ./mdsf --bin mdsf
 ```
 
+If you do not have Cargo installed, you need to [install it first](https://www.rust-lang.org/learn/get-started).
+
+### npm/npx
+
+You can install mdsf using [npm](https://www.npmjs.com/package/mdsf-cli):
+
+```shell
+npm install -g mdsf-cli
+
+mdsf-cli format .
+```
+
+or run it directly using npx:
+
+```shell
+npx mdsf-cli format .
+```
+
+### Homebrew
+
+```shell
+brew install hougesen/tap/mdsf
+```
+
 ## Usage
 
 ```shell
-mdsf format <NAME_OF_FOLDER_OR_FOLDER>
+mdsf format file.md
 ```
 
 <!-- START_SECTION:format-command-help -->
@@ -82,7 +120,7 @@ Options:
 ### Verify code is formatted
 
 ```shell
-mdsf verify <NAME_OF_FOLDER_OR_FOLDER>
+mdsf verify docs/
 ```
 
 <!-- START_SECTION:verify-command-help -->

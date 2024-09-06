@@ -20,6 +20,12 @@ exclude = ["codegen/**"]
 rust-version = "1.76"
 default-run = "mdsf"
 
+[package.metadata.wix]
+upgrade-guid = "A0250526-8295-4489-AD3B-924CBD3EE2E7"
+path-guid = "500835C2-981A-4C1F-9A6F-36EC4D194212"
+license = false
+eula = false
+
 [features]
 default = []
 json-schema = ["dep:schemars"]

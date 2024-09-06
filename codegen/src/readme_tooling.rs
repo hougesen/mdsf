@@ -30,7 +30,7 @@ struct OpenApiSchema {
 
 fn load_schema(package_version: &str) -> Result<OpenApiSchema> {
     let p =
-        std::path::PathBuf::from_str(&format!("../schemas/v{package_version}/mdsf.schema.json"))?;
+        std::path::PathBuf::from_str(&format!("./schemas/v{package_version}/mdsf.schema.json"))?;
 
     let file = std::fs::read_to_string(p)?;
 
@@ -117,7 +117,7 @@ fn create_table(schema: Vec<Tool>) -> String {
 }
 
 pub fn update_readme(key: &str, value: &str) -> Result<()> {
-    let readme = std::fs::read_to_string("../README.md")?;
+    let readme = std::fs::read_to_string("./README.md")?;
 
     let update = format!("<!-- START_SECTION:{key} -->\n\n{value}\n\n<!-- END_SECTION:{key} -->");
 
@@ -129,7 +129,7 @@ pub fn update_readme(key: &str, value: &str) -> Result<()> {
 
     let updated = re.replace(&readme, update);
 
-    std::fs::write("../README.md", updated.to_string())?;
+    std::fs::write("./README.md", updated.to_string())?;
 
     Ok(())
 }

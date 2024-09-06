@@ -1,8 +1,3 @@
-alias b := build
-alias l := lint
-alias t := test
-alias tc := test-coverage
-
 build:
     cargo check
     cargo build
@@ -15,17 +10,11 @@ build-local:
 lint:
     cargo fmt -- --check --color always
     cargo clippy --all-targets --all-features
-    cd codegen && cargo clippy --all-targets --all-features
 
 lint-aggressive:
     cargo clean
     cargo clippy --all-targets --all-features -- -Dclippy::style -Dclippy::double_neg -Dclippy::perf -Dclippy::pedantic -Dclippy::all -Dclippy::cargo -Dclippy::complexity -Dclippy::nursery -Dclippy::suspicious -Aclippy::module_name_repetitions -Aclippy::missing_errors_doc -Aclippy::must_use_candidate -Aclippy::multiple_crate_versions
     cargo clean
-
-lint-aggressive-codegen:
-    cd codegen && cargo clean
-    cd codegen && cargo clippy --all-targets --all-features -- -Dclippy::style -Dclippy::double_neg -Dclippy::perf -Dclippy::pedantic -Dclippy::all -Dclippy::cargo -Dclippy::complexity -Dclippy::nursery -Dclippy::suspicious -Aclippy::module_name_repetitions -Aclippy::missing_errors_doc -Aclippy::must_use_candidate -Aclippy::multiple_crate_versions
-    cd codegen && cargo clean
 
 test:
     just lint
@@ -40,14 +29,16 @@ changelog:
 
 codegen:
     just changelog
-    cd codegen && cargo run
+    cargo run --package mdsf-codegen
+    cargo dist init --yes
 
 format:
+    taplo format
     cargo fmt
-    (cd codegen && cargo fmt)
     just --fmt --unstable .
     npx --yes prettier@latest --write --cache .
     cargo run -- format tests
+    cargo dist init --yes
     git restore tests/
 
 precommit:
