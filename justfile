@@ -55,4 +55,4 @@ publish:
     just build
     just lint
     cargo clean
-    cargo publish
+    cargo publish -p mdsf

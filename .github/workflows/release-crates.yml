@@ -109,4 +109,4 @@ jobs:
       - name: Install Rust
         uses: dtolnay/rust-toolchain@stable
       - name: Publish to cargo
-        run: cargo publish --verbose --locked --token ${{ secrets.CARGO_TOKEN }}
+        run: cargo publish -p mdsf --verbose --locked --token ${{ secrets.CARGO_TOKEN }}
