@@ -75,7 +75,7 @@ pub fn generate() -> Result<()> {
 
     let result = build_mapping(languages);
 
-    std::fs::write("../src/generated.rs", result)?;
+    std::fs::write("../mdsf/src/generated.rs", result)?;
 
     Ok(())
 }
