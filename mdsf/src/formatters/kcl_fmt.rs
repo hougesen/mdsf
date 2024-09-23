@@ -27,8 +27,7 @@ spec = {
     selector.matchLabels = metadata.labels
     template.metadata.labels = metadata.labels
     template.spec.containers = [
-        {
-            name = metadata.name
+        {    name = metadata.name
             image = "${metadata.name}:1.14.2"
             ports = [{ containerPort = 80 }]
         }
@@ -46,11 +45,13 @@ spec = {
     replicas = 3
     selector.matchLabels = metadata.labels
     template.metadata.labels = metadata.labels
-    template.spec.containers = [{
-        name = metadata.name
-        image = "${metadata.name}:1.14.2"
-        ports = [{containerPort = 80}]
-    }]
+    template.spec.containers = [
+        {
+            name = metadata.name
+            image = "${metadata.name}:1.14.2"
+            ports = [{containerPort = 80}]
+        }
+    ]
 }
 "#;
 
