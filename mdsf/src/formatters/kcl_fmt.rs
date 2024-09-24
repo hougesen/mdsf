@@ -16,46 +16,42 @@ mod test_kcl_fmt {
 
     #[test_with::executable(kcl)]
     fn it_should_format_kcl() {
-        let input = r#"apiVersion = "apps/v1"
-kind = "Deployment"
-metadata = {
-    name = "nginx"
-    labels.app = "nginx"
-}
-spec = {
-    replicas = 3
-    selector.matchLabels = metadata.labels
-    template.metadata.labels = metadata.labels
-    template.spec.containers = [
-        {
-            name = metadata.name
-            image = "${metadata.name}:1.14.2"
-            ports = [{ containerPort = 80 }]
-        }
-    ]
-}
+        let input = r#"import     math
+mixin DeploymentMixin:
+    service:str ="my-service"
+schema DeploymentBase:
+    name: str
+    image  : str
+schema Deployment[replicas] ( DeploymentBase )   :
+    mixin[DeploymentMixin]
+    replicas   : int   = replicas
+    command: [str  ]
+    labels: {str:  str}
+deploy = Deployment(replicas = 3){}
 "#;
 
-        let expected_output = r#"apiVersion = "apps/v1"
-kind = "Deployment"
-metadata = {
-    name = "nginx"
-    labels.app = "nginx"
-}
-spec = {
-    replicas = 3
-    selector.matchLabels = metadata.labels
-    template.metadata.labels = metadata.labels
-    template.spec.containers = [{
-        name = metadata.name
-        image = "${metadata.name}:1.14.2"
-        ports = [{containerPort = 80}]
-    }]
-}
+        let expected_output = r#"import math
+
+mixin DeploymentMixin:
+    service: str = "my-service"
+
+schema DeploymentBase:
+    name: str
+    image: str
+
+schema Deployment[replicas](DeploymentBase):
+    mixin [DeploymentMixin]
+    replicas: int = replicas
+    command: [str]
+    labels: {str:str}
+
+deploy = Deployment(replicas=3) {}
 "#;
 
-        let snippet =
-            setup_snippet(input, language_to_ext("kcl")).expect("it to create a snippet file");
+        let ft = language_to_ext("kcl");
+
+        let snippet = setup_snippet(input, if ft.is_empty() { ".k" } else { ft })
+            .expect("it to create a snippet file");
 
         let output = super::run(snippet.path())
             .expect("it to be successful")
