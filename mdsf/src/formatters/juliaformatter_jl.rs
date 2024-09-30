@@ -15,7 +15,7 @@ pub fn run(snippet_path: &std::path::Path) -> Result<(bool, Option<String>), Mds
 
 #[cfg(test)]
 mod test_juliaformatter_jl {
-    use crate::{formatters::setup_snippet, generated::language_to_ext};
+    use crate::{formatters::setup_snippet, fttype::get_file_extension};
 
     #[test_with::executable(julia)]
     fn it_should_format_julia() {
@@ -30,8 +30,8 @@ mod test_juliaformatter_jl {
 end
 ";
 
-        let snippet =
-            setup_snippet(input, language_to_ext("julia")).expect("it to create a snippet file");
+        let snippet = setup_snippet(input, &get_file_extension("julia"))
+            .expect("it to create a snippet file");
 
         let output = super::run(snippet.path())
             .expect("it to be successful")

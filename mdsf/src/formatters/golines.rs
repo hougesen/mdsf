@@ -12,7 +12,7 @@ pub fn run(snippet_path: &std::path::Path) -> Result<(bool, Option<String>), Mds
 
 #[cfg(test)]
 mod test_golines {
-    use crate::{formatters::setup_snippet, generated::language_to_ext};
+    use crate::{formatters::setup_snippet, fttype::get_file_extension};
 
     #[test_with::executable(golines)]
     fn it_should_format_go() {
@@ -44,7 +44,7 @@ func add(a int, b int) int {
 ";
 
         let snippet =
-            setup_snippet(input, language_to_ext("go")).expect("it to create a snippet file");
+            setup_snippet(input, &get_file_extension("go")).expect("it to create a snippet file");
 
         let output = super::run(snippet.path())
             .expect("it to be successful")

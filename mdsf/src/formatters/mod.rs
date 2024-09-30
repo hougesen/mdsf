@@ -6,7 +6,7 @@ use which::which;
 use crate::{
     config::MdsfConfig,
     error::MdsfError,
-    generated::{self, language_to_ext},
+    fttype::get_file_extension,
     terminal::{
         print_binary_not_in_path, print_error_formatting, print_formatter_info,
         print_formatter_time,
@@ -204,7 +204,7 @@ pub fn setup_snippet(code: &str, file_ext: &str) -> std::io::Result<NamedTempFil
 
     b.rand_bytes(12).suffix(file_ext).prefix(
         // ktlint wants PascalCase file names
-        if file_ext == language_to_ext("kotlin") {
+        if file_ext == get_file_extension("kotlin") {
             "MdsfFile"
         } else {
             "mdsf"
@@ -297,22 +297,15 @@ pub fn format_snippet(config: &MdsfConfig, info: &LineInfo, code: &str) -> Strin
     });
 
     if always_ran.is_some() || language_formatters.is_some() {
-        if let Ok(snippet) = setup_snippet(
-            code,
-            config
-                .custom_file_extensions
-                .get(info.language)
-                .map_or_else(
-                    || generated::language_to_ext(info.language),
-                    |s| {
-                        if s.is_empty() {
-                            info.language
-                        } else {
-                            s
-                        }
-                    },
-                ),
-        ) {
+        let ext = config
+            .custom_file_extensions
+            .get(info.language)
+            .map_or_else(
+                || get_file_extension(info.language),
+                std::borrow::ToOwned::to_owned,
+            );
+
+        if let Ok(snippet) = setup_snippet(code, &ext) {
             let snippet_path = snippet.path();
 
             if let Some(formatters) = always_ran {

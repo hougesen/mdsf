@@ -43,7 +43,7 @@ pub fn run(snippet_path: &std::path::Path) -> Result<(bool, Option<String>), Mds
 
 #[cfg(test)]
 mod test_blade_formatter {
-    use crate::{formatters::setup_snippet, generated::language_to_ext};
+    use crate::{formatters::setup_snippet, fttype::get_file_extension};
 
     #[test_with::executable(npx)]
     fn it_should_format_blade() {
@@ -111,7 +111,7 @@ mod test_blade_formatter {
 "#;
 
         let snippet =
-            setup_snippet(input, language_to_ext("sql")).expect("it to create a snippet file");
+            setup_snippet(input, &get_file_extension("sql")).expect("it to create a snippet file");
 
         let output = super::run(snippet.path())
             .expect("it to be successful")

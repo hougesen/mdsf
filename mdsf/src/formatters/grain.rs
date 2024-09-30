@@ -12,7 +12,7 @@ pub fn run_format(file_path: &std::path::Path) -> Result<(bool, Option<String>),
 
 #[cfg(test)]
 mod test_grain {
-    use crate::{formatters::setup_snippet, generated::language_to_ext};
+    use crate::{formatters::setup_snippet, fttype::get_file_extension};
 
     #[test_with::executable(grain)]
     fn it_should_format_grain() {
@@ -26,8 +26,8 @@ mod test_grain {
 print(\"Hello, world!\")
 ";
 
-        let snippet =
-            setup_snippet(input, language_to_ext("grain")).expect("it to create a snippet file");
+        let snippet = setup_snippet(input, &get_file_extension("grain"))
+            .expect("it to create a snippet file");
 
         let output = super::run_format(snippet.path())
             .expect("it to be successful")

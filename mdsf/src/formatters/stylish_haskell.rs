@@ -12,7 +12,7 @@ pub fn run(snippet_path: &std::path::Path) -> Result<(bool, Option<String>), Mds
 
 #[cfg(test)]
 mod test_stylish_haskell {
-    use crate::{formatters::setup_snippet, generated::language_to_ext};
+    use crate::{formatters::setup_snippet, fttype::get_file_extension};
 
     #[test_with::executable(stylish-haskell)]
     fn it_should_format_haskell() {
@@ -27,8 +27,8 @@ addNumbers a b = do
 
 ";
 
-        let snippet =
-            setup_snippet(input, language_to_ext("haskell")).expect("it to create a snippet file");
+        let snippet = setup_snippet(input, &get_file_extension("haskell"))
+            .expect("it to create a snippet file");
 
         let output = super::run(snippet.path())
             .expect("it to be successful")

@@ -24,7 +24,7 @@ pub fn run_check(snippet_path: &std::path::Path) -> Result<(bool, Option<String>
 
 #[cfg(test)]
 mod test_ruff {
-    use crate::{formatters::setup_snippet, generated::language_to_ext};
+    use crate::{formatters::setup_snippet, fttype::get_file_extension};
 
     #[test_with::executable(ruff)]
     fn it_should_format_python() {
@@ -32,8 +32,8 @@ mod test_ruff {
 
         let expected_output = "def add(a: int, b: int) -> int:\n    return a + b\n";
 
-        let snippet =
-            setup_snippet(input, language_to_ext("python")).expect("it to create a snippet file");
+        let snippet = setup_snippet(input, &get_file_extension("python"))
+            .expect("it to create a snippet file");
 
         let output = super::run_format(snippet.path())
             .expect("it to be successful")

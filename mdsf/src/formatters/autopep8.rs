@@ -12,7 +12,7 @@ pub fn run(snippet_path: &std::path::Path) -> Result<(bool, Option<String>), Mds
 
 #[cfg(test)]
 mod test_autopep8 {
-    use crate::{formatters::setup_snippet, generated::language_to_ext};
+    use crate::{formatters::setup_snippet, fttype::get_file_extension};
 
     #[test_with::executable(autopep8)]
     fn it_should_format_python() {
@@ -20,8 +20,8 @@ mod test_autopep8 {
 
         let expected_output = "def add(a: int,  b: int) -> int: return a+b\n";
 
-        let snippet =
-            setup_snippet(input, language_to_ext("python")).expect("it to create a snippet file");
+        let snippet = setup_snippet(input, &get_file_extension("python"))
+            .expect("it to create a snippet file");
 
         let output = super::run(snippet.path())
             .expect("it to be successful")

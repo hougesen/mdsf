@@ -12,7 +12,7 @@ pub fn run(snippet_path: &std::path::Path) -> Result<(bool, Option<String>), Mds
 
 #[cfg(test)]
 mod test_cabal_format {
-    use crate::{formatters::setup_snippet, generated::language_to_ext};
+    use crate::{formatters::setup_snippet, fttype::get_file_extension};
 
     #[test_with::executable(cabal)]
     fn it_should_format_cabal() {
@@ -49,8 +49,8 @@ executable msdf
         containers ^>=0.5.11.0 || ^>=0.6.0.1
 ";
 
-        let snippet =
-            setup_snippet(input, language_to_ext("cabal")).expect("it to create a snippet file");
+        let snippet = setup_snippet(input, &get_file_extension("cabal"))
+            .expect("it to create a snippet file");
 
         let output = super::run(snippet.path())
             .expect("it to be successful")

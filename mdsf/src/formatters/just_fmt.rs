@@ -16,7 +16,7 @@ pub fn run(snippet_path: &std::path::Path) -> Result<(bool, Option<String>), Mds
 
 #[cfg(test)]
 mod test_just_fmt {
-    use crate::{formatters::setup_snippet, generated::language_to_ext};
+    use crate::{formatters::setup_snippet, fttype::get_file_extension};
 
     #[test_with::executable(just)]
     fn it_should_format_just() {
@@ -31,7 +31,7 @@ mod test_just_fmt {
 ";
 
         let snippet =
-            setup_snippet(input, language_to_ext("just")).expect("it to create a snippet file");
+            setup_snippet(input, &get_file_extension("just")).expect("it to create a snippet file");
 
         let output = super::run(snippet.path())
             .expect("it to be successful")
