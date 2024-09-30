@@ -234,7 +234,7 @@ mod tests {
         config::MdsfConfig,
         format_file,
         formatters::{setup_snippet, MdsfFormatter, Tooling},
-        generated::language_to_ext,
+        fttype::get_file_extension,
         handle_file,
     };
 
@@ -267,7 +267,7 @@ fn add(a: i32, b: i32) -> i32 {
 
         {
             let file =
-                setup_snippet(input, language_to_ext("markdown")).expect("it to create a file");
+                setup_snippet(input, &get_file_extension("markdown")).expect("it to create a file");
 
             assert!(handle_file(&config, file.path(), false, None));
 
@@ -1007,7 +1007,7 @@ fn add(a: i32, b: i32) i32 {
 
         {
             let file =
-                setup_snippet(input, language_to_ext("markdown")).expect("it to create a file");
+                setup_snippet(input, &get_file_extension("markdown")).expect("it to create a file");
 
             assert!(handle_file(&config, file.path(), false, None));
 
@@ -1067,8 +1067,8 @@ type Whatever struct {
             };
 
             {
-                let file =
-                    setup_snippet(input, language_to_ext("markdown")).expect("it to create a file");
+                let file = setup_snippet(input, &get_file_extension("markdown"))
+                    .expect("it to create a file");
 
                 assert!(handle_file(&config, file.path(), false, None));
 
@@ -1096,8 +1096,8 @@ type Whatever struct {
             };
 
             {
-                let file =
-                    setup_snippet(input, language_to_ext("markdown")).expect("it to create a file");
+                let file = setup_snippet(input, &get_file_extension("markdown"))
+                    .expect("it to create a file");
 
                 assert!(handle_file(&config, file.path(), false, None));
 
@@ -1153,8 +1153,8 @@ type Whatever struct {
             };
 
             {
-                let file =
-                    setup_snippet(input, language_to_ext("markdown")).expect("it to create a file");
+                let file = setup_snippet(input, &get_file_extension("markdown"))
+                    .expect("it to create a file");
 
                 assert!(handle_file(&config, file.path(), false, None));
 
@@ -1183,8 +1183,8 @@ type Whatever struct {
             };
 
             {
-                let file =
-                    setup_snippet(input, language_to_ext("markdown")).expect("it to create a file");
+                let file = setup_snippet(input, &get_file_extension("markdown"))
+                    .expect("it to create a file");
 
                 assert!(handle_file(&config, file.path(), false, None));
 
@@ -1270,8 +1270,8 @@ func add(a int, b int) int {
             };
 
             {
-                let file =
-                    setup_snippet(input, language_to_ext("markdown")).expect("it to create a file");
+                let file = setup_snippet(input, &get_file_extension("markdown"))
+                    .expect("it to create a file");
 
                 assert!(handle_file(&config, file.path(), false, None));
 
@@ -1299,8 +1299,8 @@ func add(a int, b int) int {
             };
 
             {
-                let file =
-                    setup_snippet(input, language_to_ext("markdown")).expect("it to create a file");
+                let file = setup_snippet(input, &get_file_extension("markdown"))
+                    .expect("it to create a file");
 
                 assert!(handle_file(&config, file.path(), false, None));
 

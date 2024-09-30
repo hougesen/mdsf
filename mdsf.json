@@ -47,6 +47,7 @@
     "typescript": [["prettier", "biome", "deno_fmt"]],
     "vue": "prettier",
     "yaml": [["prettier", "yamlfmt", "yamlfix"]],
-    "zig": "zigfmt"
+    "zig": "zigfmt",
+    "kcl": "kcl_fmt"
   }
 }

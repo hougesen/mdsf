@@ -12,7 +12,7 @@ pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfEr
 
 #[cfg(test)]
 mod test_autoflake {
-    use crate::{formatters::setup_snippet, generated::language_to_ext};
+    use crate::{formatters::setup_snippet, fttype::get_file_extension};
 
     #[test_with::executable(autoflake)]
     fn it_should_format_python() {
@@ -48,8 +48,8 @@ def foo():
     return math.pi
 ";
 
-        let snippet =
-            setup_snippet(input, language_to_ext("python")).expect("it to create a snippet file");
+        let snippet = setup_snippet(input, &get_file_extension("python"))
+            .expect("it to create a snippet file");
 
         let output = super::run(snippet.path())
             .expect("it to be successful")

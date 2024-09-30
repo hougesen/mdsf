@@ -12,7 +12,7 @@ pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfEr
 
 #[cfg(test)]
 mod test_zprint {
-    use crate::{formatters::setup_snippet, generated::language_to_ext};
+    use crate::{formatters::setup_snippet, fttype::get_file_extension};
 
     #[test_with::executable(zprint)]
     fn it_should_format_clojure() {
@@ -41,8 +41,8 @@ mod test_zprint {
                   :else nil)]
       (assoc style-vec previous-element-index new-previous-element))))";
 
-        let snippet =
-            setup_snippet(input, language_to_ext("clojure")).expect("it to create a snippet file");
+        let snippet = setup_snippet(input, &get_file_extension("clojure"))
+            .expect("it to create a snippet file");
 
         let output = super::run(snippet.path())
             .expect("it to be successful")

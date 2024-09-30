@@ -21,7 +21,7 @@ pub fn run_fix(snippet_path: &std::path::Path) -> Result<(bool, Option<String>),
 
 #[cfg(test)]
 mod test_dart_format {
-    use crate::{formatters::setup_snippet, generated::language_to_ext};
+    use crate::{formatters::setup_snippet, fttype::get_file_extension};
 
     #[test_with::executable(dart)]
     fn it_should_format_dart() {
@@ -35,7 +35,7 @@ mod test_dart_format {
 ";
 
         let snippet =
-            setup_snippet(input, language_to_ext("dart")).expect("it to create a snippet file");
+            setup_snippet(input, &get_file_extension("dart")).expect("it to create a snippet file");
 
         let output = super::run_format(snippet.path())
             .expect("it to be successful")

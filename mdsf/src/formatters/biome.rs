@@ -116,7 +116,7 @@ pub fn run_check(snippet_path: &std::path::Path) -> Result<(bool, Option<String>
 
 #[cfg(test)]
 mod test_biome {
-    use crate::{formatters::setup_snippet, generated::language_to_ext};
+    use crate::{formatters::setup_snippet, fttype::get_file_extension};
 
     #[test_with::executable(npx)]
     fn it_should_format_json() {
@@ -138,7 +138,7 @@ mod test_biome {
 ";
 
         let snippet =
-            setup_snippet(input, language_to_ext("json")).expect("it to create a snippet file");
+            setup_snippet(input, &get_file_extension("json")).expect("it to create a snippet file");
 
         let output = super::run_format(snippet.path())
             .expect("it to be successful")
@@ -164,7 +164,7 @@ mod test_biome {
 }
 ";
 
-        let snippet = setup_snippet(input, language_to_ext("javascript"))
+        let snippet = setup_snippet(input, &get_file_extension("javascript"))
             .expect("it to create a snippet file");
 
         let output = super::run_format(snippet.path())
@@ -194,7 +194,7 @@ number>
 }
 ";
 
-        let snippet = setup_snippet(input, language_to_ext("typescript"))
+        let snippet = setup_snippet(input, &get_file_extension("typescript"))
             .expect("it to create a snippet file");
 
         let output = super::run_format(snippet.path())

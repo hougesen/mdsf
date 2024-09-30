@@ -6,8 +6,7 @@ use which::which;
 use crate::{
     config::MdsfConfig,
     error::MdsfError,
-    fttype::fallback_file_extension,
-    generated::{self, language_to_ext},
+    fttype::get_file_extension,
     terminal::{
         print_binary_not_in_path, print_error_formatting, print_formatter_info,
         print_formatter_time,
@@ -205,7 +204,7 @@ pub fn setup_snippet(code: &str, file_ext: &str) -> std::io::Result<NamedTempFil
 
     b.rand_bytes(12).suffix(file_ext).prefix(
         // ktlint wants PascalCase file names
-        if file_ext == language_to_ext("kotlin") {
+        if file_ext == get_file_extension("kotlin") {
             "MdsfFile"
         } else {
             "mdsf"
@@ -302,14 +301,8 @@ pub fn format_snippet(config: &MdsfConfig, info: &LineInfo, code: &str) -> Strin
             .custom_file_extensions
             .get(info.language)
             .map_or_else(
-                || generated::language_to_ext(info.language).to_string(),
-                |s| {
-                    if s.is_empty() {
-                        fallback_file_extension(info.language)
-                    } else {
-                        s.to_string()
-                    }
-                },
+                || get_file_extension(info.language),
+                std::borrow::ToOwned::to_owned,
             );
 
         if let Ok(snippet) = setup_snippet(code, &ext) {
