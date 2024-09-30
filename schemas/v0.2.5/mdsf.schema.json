@@ -184,6 +184,11 @@
           "enum": ["clang-tidy"]
         },
         {
+          "description": "https://github.com/weavejester/cljfmt",
+          "type": "string",
+          "enum": ["cljfmt"]
+        },
+        {
           "description": "https://github.com/greglook/cljstyle",
           "type": "string",
           "enum": ["cljstyle"]

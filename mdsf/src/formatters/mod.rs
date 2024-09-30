@@ -37,6 +37,7 @@ mod cabal_format;
 mod caramel;
 mod clang_format;
 mod clang_tidy;
+mod cljfmt;
 mod cljstyle;
 mod codespell;
 mod crlfmt;
@@ -455,6 +456,10 @@ pub enum Tooling {
     #[doc = "https://clang.llvm.org/extra/clang-tidy"]
     #[serde(rename = "clang-tidy")]
     ClangTidy,
+
+    #[doc = "https://github.com/weavejester/cljfmt"]
+    #[serde(rename = "cljfmt")]
+    Cljfmt,
 
     #[doc = "https://github.com/greglook/cljstyle"]
     #[serde(rename = "cljstyle")]
@@ -1088,6 +1093,7 @@ impl Tooling {
             Self::CaramelFmt => caramel::run_fmt(snippet_path),
             Self::ClangFormat => clang_format::run(snippet_path),
             Self::ClangTidy => clang_tidy::run(snippet_path),
+            Self::Cljfmt => cljfmt::run(snippet_path),
             Self::Cljstyle => cljstyle::run(snippet_path),
             Self::Codespell => codespell::run(snippet_path),
             Self::CrlFmt => crlfmt::run(snippet_path),
@@ -1271,6 +1277,7 @@ impl AsRef<str> for Tooling {
             Self::CaramelFmt => "caramel_fmt",
             Self::ClangFormat => "clang-format",
             Self::ClangTidy => "clang-tidy",
+            Self::Cljfmt => "cljfmt",
             Self::Cljstyle => "cljstyle",
             Self::Codespell => "codespell",
             Self::CrlFmt => "crlfmt",
