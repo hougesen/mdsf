@@ -184,7 +184,7 @@ mdsf init
 
 <!-- START_SECTION:supported-tools -->
 
-`mdsf` currently supports 174 tools. Feel free to open an issue/pull-request if your favorite tool is missing! 😃
+`mdsf` currently supports 175 tools. Feel free to open an issue/pull-request if your favorite tool is missing! 😃
 
 | Formatter            | Description                                                                                                                  |
 | -------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
@@ -213,6 +213,7 @@ mdsf init
 | caramel_fmt          | [https://caramel.run](https://caramel.run)                                                                                   |
 | clang-format         | [https://docs.kernel.org/process/clang-format.html](https://docs.kernel.org/process/clang-format.html)                       |
 | clang-tidy           | [https://clang.llvm.org/extra/clang-tidy](https://clang.llvm.org/extra/clang-tidy)                                           |
+| cljfmt               | [https://github.com/weavejester/cljfmt](https://github.com/weavejester/cljfmt)                                               |
 | cljstyle             | [https://github.com/greglook/cljstyle](https://github.com/greglook/cljstyle)                                                 |
 | codespell            | [https://github.com/codespell-project/codespell](https://github.com/codespell-project/codespell)                             |
 | crlfmt               | [https://github.com/cockroachdb/crlfmt](https://github.com/cockroachdb/crlfmt)                                               |

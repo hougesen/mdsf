@@ -1,5 +1,5 @@
 {
-  "$schema": "https://raw.githubusercontent.com/hougesen/mdsf/main/schemas/v0.2.2/mdsf.schema.json",
+  "$schema": "https://raw.githubusercontent.com/hougesen/mdsf/main/schemas/v0.2.5/mdsf.schema.json",
   "custom_file_extensions": {},
   "format_finished_document": false,
   "javascript_runtime": "node",
@@ -29,6 +29,7 @@
       ["prettier", "biome", "deno_fmt", "clang-format", "standardjs"]
     ],
     "json": [["prettier", "biome", "deno_fmt", "clang-format"]],
+    "kcl": "kcl_fmt",
     "kotlin": "ktfmt",
     "lua": [["stylua", "luaformatter"]],
     "nim": "nimpretty",
@@ -47,7 +48,6 @@
     "typescript": [["prettier", "biome", "deno_fmt"]],
     "vue": "prettier",
     "yaml": [["prettier", "yamlfmt", "yamlfix"]],
-    "zig": "zigfmt",
-    "kcl": "kcl_fmt"
+    "zig": "zigfmt"
   }
 }
