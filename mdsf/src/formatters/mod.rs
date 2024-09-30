@@ -6,6 +6,7 @@ use which::which;
 use crate::{
     config::MdsfConfig,
     error::MdsfError,
+    fttype::fallback_file_extension,
     generated::{self, language_to_ext},
     terminal::{
         print_binary_not_in_path, print_error_formatting, print_formatter_info,
@@ -297,22 +298,21 @@ pub fn format_snippet(config: &MdsfConfig, info: &LineInfo, code: &str) -> Strin
     });
 
     if always_ran.is_some() || language_formatters.is_some() {
-        if let Ok(snippet) = setup_snippet(
-            code,
-            config
-                .custom_file_extensions
-                .get(info.language)
-                .map_or_else(
-                    || generated::language_to_ext(info.language),
-                    |s| {
-                        if s.is_empty() {
-                            info.language
-                        } else {
-                            s
-                        }
-                    },
-                ),
-        ) {
+        let ext = config
+            .custom_file_extensions
+            .get(info.language)
+            .map_or_else(
+                || generated::language_to_ext(info.language).to_string(),
+                |s| {
+                    if s.is_empty() {
+                        fallback_file_extension(info.language)
+                    } else {
+                        s.to_string()
+                    }
+                },
+            );
+
+        if let Ok(snippet) = setup_snippet(code, &ext) {
             let snippet_path = snippet.path();
 
             if let Some(formatters) = always_ran {

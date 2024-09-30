@@ -14,7 +14,6 @@ pub fn run(snippet_path: &std::path::Path) -> Result<(bool, Option<String>), Mds
 mod test_kcl_fmt {
     use crate::{formatters::setup_snippet, generated::language_to_ext};
 
-    #[ignore]
     #[test_with::executable(kcl)]
     fn it_should_format_kcl() {
         let input = r#"apiVersion = "apps/v1"

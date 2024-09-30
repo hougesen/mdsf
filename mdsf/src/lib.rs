@@ -17,6 +17,7 @@ pub mod cli;
 pub mod config;
 pub mod error;
 pub mod formatters;
+pub mod fttype;
 pub mod generated;
 pub mod languages;
 mod parser;
