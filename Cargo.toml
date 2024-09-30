@@ -18,7 +18,7 @@ clap = { version = "4.5.18", features = ["derive"] }
 clap_complete = "4.5.26"
 console = "0.15.8"
 env_logger = "0.11.5"
-ignore = "0.4.22"
+ignore = "0.4.23"
 json_comments = "0.2.2"
 log = "0.4.22"
 mdsf = { path = "./mdsf", features = ["json-schema"] }
