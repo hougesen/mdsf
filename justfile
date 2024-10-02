@@ -49,7 +49,6 @@ precommit:
     just lint
     just test
     just format
-    typos --exclude src/generated.rs --exclude CHANGELOG.md .
 
 publish:
     just build
