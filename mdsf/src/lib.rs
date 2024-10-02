@@ -335,6 +335,7 @@ fn add(a: i32, b: i32) -> i32 {
     }
 
     #[allow(clippy::too_many_lines)]
+    #[test_with::env(GITHUB_ACTIONS)]
     #[test]
     fn it_should_support_multiple_languages() {
         let input = r#"---
