@@ -4,7 +4,7 @@
   "type": "object",
   "properties": {
     "$schema": {
-      "default": "https://raw.githubusercontent.com/hougesen/mdsf/main/schemas/v0.2.5/mdsf.schema.json",
+      "default": "https://raw.githubusercontent.com/hougesen/mdsf/main/schemas/v0.2.6/mdsf.schema.json",
       "type": "string"
     },
     "custom_file_extensions": {
@@ -182,6 +182,11 @@
           "description": "https://clang.llvm.org/extra/clang-tidy",
           "type": "string",
           "enum": ["clang-tidy"]
+        },
+        {
+          "description": "https://github.com/weavejester/cljfmt",
+          "type": "string",
+          "enum": ["cljfmt"]
         },
         {
           "description": "https://github.com/greglook/cljstyle",
