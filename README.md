@@ -184,7 +184,7 @@ mdsf init
 
 <!-- START_SECTION:supported-tools -->
 
-`mdsf` currently supports 180 tools. Feel free to open an issue/pull-request if your favorite tool is missing! 😃
+`mdsf` currently supports 181 tools. Feel free to open an issue/pull-request if your favorite tool is missing! 😃
 
 | Formatter            | Description                                                                                                                  |
 | -------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
@@ -354,6 +354,7 @@ mdsf init
 | ts-standard          | [https://github.com/standard/ts-standard](https://github.com/standard/ts-standard)                                           |
 | twig-cs-fixer        | [https://github.com/VincentLanglet/Twig-CS-Fixer](https://github.com/VincentLanglet/Twig-CS-Fixer)                           |
 | typos                | [https://github.com/crate-ci/typos](https://github.com/crate-ci/typos)                                                       |
+| ufmt                 | [https://github.com/omnilib/ufmt](https://github.com/omnilib/ufmt)                                                           |
 | uiua_fmt             | [https://github.com/uiua-lang/uiua](https://github.com/uiua-lang/uiua)                                                       |
 | usort                | [https://github.com/facebook/usort](https://github.com/facebook/usort)                                                       |
 | veryl_fmt            | [https://github.com/veryl-lang/veryl](https://github.com/veryl-lang/veryl)                                                   |
