@@ -184,7 +184,7 @@ mdsf init
 
 <!-- START_SECTION:supported-tools -->
 
-`mdsf` currently supports 178 tools. Feel free to open an issue/pull-request if your favorite tool is missing! 😃
+`mdsf` currently supports 179 tools. Feel free to open an issue/pull-request if your favorite tool is missing! 😃
 
 | Formatter            | Description                                                                                                                  |
 | -------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
@@ -365,6 +365,7 @@ mdsf init
 | yapf                 | [https://github.com/google/yapf](https://github.com/google/yapf)                                                             |
 | yew-fmt              | [https://github.com/its-the-shrimp/yew-fmt](https://github.com/its-the-shrimp/yew-fmt)                                       |
 | zigfmt               | [https://ziglang.org/](https://ziglang.org/)                                                                                 |
+| ziggy_fmt            | [https://ziggy-lang.io/documentation/ziggy-fmt/](https://ziggy-lang.io/documentation/ziggy-fmt/)                             |
 | zprint               | [https://github.com/kkinnear/zprint](https://github.com/kkinnear/zprint)                                                     |
 
 <!-- END_SECTION:supported-tools -->
