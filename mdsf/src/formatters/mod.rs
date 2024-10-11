@@ -22,6 +22,7 @@ mod auto_optional;
 mod autocorrect;
 mod autoflake;
 mod autopep8;
+mod beancount_black;
 mod beautysh;
 mod bicep_format;
 mod biome;
@@ -398,6 +399,10 @@ pub enum Tooling {
     #[doc = "https://pypi.org/project/autopep8/"]
     #[serde(rename = "autopep8")]
     Autopep8,
+
+    #[doc = "https://github.com/LaunchPlatform/beancount-black"]
+    #[serde(rename = "beancount-black")]
+    BeancountBlack,
 
     #[doc = "https://pypi.org/project/beautysh/"]
     #[serde(rename = "beautysh")]
@@ -1125,6 +1130,7 @@ impl Tooling {
             Self::Autocorrect => autocorrect::run(snippet_path),
             Self::Autoflake => autoflake::run(snippet_path),
             Self::Autopep8 => autopep8::run(snippet_path),
+            Self::BeancountBlack => beancount_black::run(snippet_path),
             Self::Beautysh => beautysh::run(snippet_path),
             Self::BicepFormat => bicep_format::run(snippet_path),
             Self::Biome => biome::run_format(snippet_path),
@@ -1319,6 +1325,7 @@ impl AsRef<str> for Tooling {
             Self::Autocorrect => "autocorrect",
             Self::Autoflake => "autoflake",
             Self::Autopep8 => "autopep8",
+            Self::BeancountBlack => "beancount-black",
             Self::Beautysh => "beautysh",
             Self::BicepFormat => "bicep_format",
             Self::Biome => "biome",
