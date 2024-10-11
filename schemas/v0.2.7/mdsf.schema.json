@@ -894,6 +894,11 @@
           "enum": ["typstfmt"]
         },
         {
+          "description": "https://github.com/Enter-tainer/typstyle",
+          "type": "string",
+          "enum": ["typstyle"]
+        },
+        {
           "description": "https://github.com/omnilib/ufmt",
           "type": "string",
           "enum": ["ufmt"]

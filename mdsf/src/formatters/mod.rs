@@ -175,6 +175,7 @@ mod ts_standard;
 mod twig_cs_fixer;
 mod typos;
 mod typstfmt;
+mod typstyle;
 mod ufmt;
 mod uiua;
 mod usort;
@@ -1032,6 +1033,10 @@ pub enum Tooling {
     #[serde(rename = "typstfmt")]
     Typstfmt,
 
+    #[doc = "https://github.com/Enter-tainer/typstyle"]
+    #[serde(rename = "typstyle")]
+    Typstyle,
+
     #[doc = "https://github.com/omnilib/ufmt"]
     #[serde(rename = "ufmt")]
     Ufmt,
@@ -1268,6 +1273,7 @@ impl Tooling {
             Self::TwigCsFixer => twig_cs_fixer::run(snippet_path),
             Self::Typos => typos::run(snippet_path),
             Self::Typstfmt => typstfmt::run(snippet_path),
+            Self::Typstyle => typstyle::run(snippet_path),
             Self::Ufmt => ufmt::run(snippet_path),
             Self::UiuaFmt => uiua::run_fmt(snippet_path),
             Self::Usort => usort::run(snippet_path),
@@ -1459,6 +1465,7 @@ impl AsRef<str> for Tooling {
             Self::TwigCsFixer => "twig-cs-fixer",
             Self::Typos => "typos",
             Self::Typstfmt => "typstfmt",
+            Self::Typstyle => "typstyle",
             Self::Ufmt => "ufmt",
             Self::UiuaFmt => "uiua_fmt",
             Self::Usort => "usort",
