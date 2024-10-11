@@ -21,6 +21,9 @@ pub fn get_file_extension(language: &str) -> String {
 fn fallback_file_extension(language: &str) -> Option<&'static str> {
     match language {
         "kcl" => Some(".k"),
+        "htm" => Some(".htm"),
+        "shtml" => Some(".shtml"),
+        "superhtml" => Some(".shtml"),
         _ => None,
     }
 }

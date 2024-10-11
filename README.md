@@ -184,7 +184,7 @@ mdsf init
 
 <!-- START_SECTION:supported-tools -->
 
-`mdsf` currently supports 176 tools. Feel free to open an issue/pull-request if your favorite tool is missing! 😃
+`mdsf` currently supports 177 tools. Feel free to open an issue/pull-request if your favorite tool is missing! 😃
 
 | Formatter            | Description                                                                                                                  |
 | -------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
@@ -340,6 +340,7 @@ mdsf init
 | stylelint            | [https://github.com/stylelint/stylelint](https://github.com/stylelint/stylelint)                                             |
 | stylish-haskell      | [https://github.com/haskell/stylish-haskell](https://github.com/haskell/stylish-haskell)                                     |
 | stylua               | [https://github.com/JohnnyMorganz/StyLua](https://github.com/JohnnyMorganz/StyLua)                                           |
+| superhtml_fmt        | [https://github.com/kristoff-it/superhtml](https://github.com/kristoff-it/superhtml)                                         |
 | swift-format         | [https://github.com/apple/swift-format](https://github.com/apple/swift-format)                                               |
 | swiftformat          | [https://github.com/nicklockwood/SwiftFormat](https://github.com/nicklockwood/SwiftFormat)                                   |
 | taplo                | [https://github.com/tamasfe/taplo](https://github.com/tamasfe/taplo)                                                         |

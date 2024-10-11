@@ -819,6 +819,11 @@
           "enum": ["stylua"]
         },
         {
+          "description": "https://github.com/kristoff-it/superhtml",
+          "type": "string",
+          "enum": ["superhtml_fmt"]
+        },
+        {
           "description": "https://github.com/apple/swift-format",
           "type": "string",
           "enum": ["swift-format"]
