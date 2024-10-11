@@ -184,7 +184,7 @@ mdsf init
 
 <!-- START_SECTION:supported-tools -->
 
-`mdsf` currently supports 175 tools. Feel free to open an issue/pull-request if your favorite tool is missing! 😃
+`mdsf` currently supports 176 tools. Feel free to open an issue/pull-request if your favorite tool is missing! 😃
 
 | Formatter            | Description                                                                                                                  |
 | -------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
@@ -287,6 +287,7 @@ mdsf init
 | mdformat             | [https://github.com/executablebooks/mdformat](https://github.com/executablebooks/mdformat)                                   |
 | misspell             | [https://github.com/client9/misspell/](https://github.com/client9/misspell/)                                                 |
 | mix_format           | [https://hexdocs.pm/mix/main/Mix.Tasks.Format.html](https://hexdocs.pm/mix/main/Mix.Tasks.Format.html)                       |
+| mojo_format          | [https://docs.modular.com/mojo/cli/format](https://docs.modular.com/mojo/cli/format)                                         |
 | nickel_format        | [https://nickel-lang.org](https://nickel-lang.org)                                                                           |
 | nimpretty            | [https://github.com/nim-lang/nim](https://github.com/nim-lang/nim)                                                           |
 | nixfmt               | [https://github.com/serokell/nixfmt](https://github.com/serokell/nixfmt)                                                     |

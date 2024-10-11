@@ -108,6 +108,7 @@ mod markuplint;
 mod mdformat;
 mod misspell;
 mod mix_format;
+mod mojo;
 mod nickel;
 mod nimpretty;
 mod nixfmt;
@@ -753,6 +754,10 @@ pub enum Tooling {
     #[serde(rename = "mix_format")]
     MixFormat,
 
+    #[doc = "https://docs.modular.com/mojo/cli/format"]
+    #[serde(rename = "mojo_format")]
+    MojoFormat,
+
     #[doc = "https://nickel-lang.org"]
     #[serde(rename = "nickel_format")]
     NickelFormat,
@@ -1166,6 +1171,7 @@ impl Tooling {
             Self::MdFormat => mdformat::run(snippet_path),
             Self::Misspell => misspell::run(snippet_path),
             Self::MixFormat => mix_format::run(snippet_path),
+            Self::MojoFormat => mojo::run_format(snippet_path),
             Self::NickelFormat => nickel::run_format(snippet_path),
             Self::NicklockwoodSwiftFormat => swiftformat::run(snippet_path),
             Self::Nimpretty => nimpretty::run(snippet_path),
@@ -1345,6 +1351,7 @@ impl AsRef<str> for Tooling {
             Self::MdFormat => "mdformat",
             Self::Misspell => "misspell",
             Self::MixFormat => "mix_format",
+            Self::MojoFormat => "mojo_format",
             Self::NickelFormat => "nickel_format",
             Self::NicklockwoodSwiftFormat => "swiftformat",
             Self::Nimpretty => "nimpretty",

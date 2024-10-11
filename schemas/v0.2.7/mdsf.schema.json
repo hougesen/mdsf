@@ -554,6 +554,11 @@
           "enum": ["mix_format"]
         },
         {
+          "description": "https://docs.modular.com/mojo/cli/format",
+          "type": "string",
+          "enum": ["mojo_format"]
+        },
+        {
           "description": "https://nickel-lang.org",
           "type": "string",
           "enum": ["nickel_format"]
