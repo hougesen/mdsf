@@ -184,7 +184,7 @@ mdsf init
 
 <!-- START_SECTION:supported-tools -->
 
-`mdsf` currently supports 183 tools. Feel free to open an issue/pull-request if your favorite tool is missing! 😃
+`mdsf` currently supports 184 tools. Feel free to open an issue/pull-request if your favorite tool is missing! 😃
 
 | Formatter            | Description                                                                                                                  |
 | -------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
@@ -360,6 +360,7 @@ mdsf init
 | uiua_fmt             | [https://github.com/uiua-lang/uiua](https://github.com/uiua-lang/uiua)                                                       |
 | usort                | [https://github.com/facebook/usort](https://github.com/facebook/usort)                                                       |
 | veryl_fmt            | [https://github.com/veryl-lang/veryl](https://github.com/veryl-lang/veryl)                                                   |
+| vhdl-style-guide     | [https://github.com/jeremiah-c-leary/vhdl-style-guide](https://github.com/jeremiah-c-leary/vhdl-style-guide)                 |
 | vlang_fmt            | [https://vlang.io](https://vlang.io)                                                                                         |
 | xmlformat            | [https://github.com/pamoller/xmlformatter](https://github.com/pamoller/xmlformatter)                                         |
 | xmllint              | [http://xmlsoft.org/xmllint.html](http://xmlsoft.org/xmllint.html)                                                           |

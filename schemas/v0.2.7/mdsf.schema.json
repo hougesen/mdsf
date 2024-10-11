@@ -924,6 +924,11 @@
           "enum": ["veryl_fmt"]
         },
         {
+          "description": "https://github.com/jeremiah-c-leary/vhdl-style-guide",
+          "type": "string",
+          "enum": ["vhdl-style-guide"]
+        },
+        {
           "description": "https://github.com/pamoller/xmlformatter",
           "type": "string",
           "enum": ["xmlformat"]

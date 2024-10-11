@@ -181,6 +181,7 @@ mod uiua;
 mod usort;
 mod v;
 mod veryl;
+mod vhdl_style_guide;
 mod xmlformat;
 mod xmllint;
 mod xo;
@@ -1057,6 +1058,10 @@ pub enum Tooling {
     #[serde(rename = "veryl_fmt")]
     VerylFmt,
 
+    #[doc = "https://github.com/jeremiah-c-leary/vhdl-style-guide"]
+    #[serde(rename = "vhdl-style-guide")]
+    VhdlStyleGuide,
+
     #[doc = "https://github.com/pamoller/xmlformatter"]
     #[serde(rename = "xmlformat")]
     XmlFormat,
@@ -1278,6 +1283,7 @@ impl Tooling {
             Self::UiuaFmt => uiua::run_fmt(snippet_path),
             Self::Usort => usort::run(snippet_path),
             Self::VerylFmt => veryl::run_fmt(snippet_path),
+            Self::VhdlStyleGuide => vhdl_style_guide::run(snippet_path),
             Self::VlangFmt => v::run_fmt(snippet_path),
             Self::XmlFormat => xmlformat::run(snippet_path),
             Self::XmlLint => xmllint::run(snippet_path),
@@ -1470,6 +1476,7 @@ impl AsRef<str> for Tooling {
             Self::UiuaFmt => "uiua_fmt",
             Self::Usort => "usort",
             Self::VerylFmt => "veryl_fmt",
+            Self::VhdlStyleGuide => "vhdl-style-guide",
             Self::VlangFmt => "vlang_fmt",
             Self::XmlFormat => "xmlformat",
             Self::XmlLint => "xmllint",
