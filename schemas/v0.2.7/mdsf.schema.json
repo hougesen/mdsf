@@ -99,6 +99,11 @@
           "enum": ["autopep8"]
         },
         {
+          "description": "https://github.com/LaunchPlatform/beancount-black",
+          "type": "string",
+          "enum": ["beancount-black"]
+        },
+        {
           "description": "https://pypi.org/project/beautysh/",
           "type": "string",
           "enum": ["beautysh"]

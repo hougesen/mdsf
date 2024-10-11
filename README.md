@@ -184,7 +184,7 @@ mdsf init
 
 <!-- START_SECTION:supported-tools -->
 
-`mdsf` currently supports 185 tools. Feel free to open an issue/pull-request if your favorite tool is missing! 😃
+`mdsf` currently supports 186 tools. Feel free to open an issue/pull-request if your favorite tool is missing! 😃
 
 | Formatter            | Description                                                                                                                  |
 | -------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
@@ -196,6 +196,7 @@ mdsf init
 | autocorrect          | [https://github.com/huacnlee/autocorrect](https://github.com/huacnlee/autocorrect)                                           |
 | autoflake            | [https://github.com/pycqa/autoflake](https://github.com/pycqa/autoflake)                                                     |
 | autopep8             | [https://pypi.org/project/autopep8/](https://pypi.org/project/autopep8/)                                                     |
+| beancount-black      | [https://github.com/LaunchPlatform/beancount-black](https://github.com/LaunchPlatform/beancount-black)                       |
 | beautysh             | [https://pypi.org/project/beautysh/](https://pypi.org/project/beautysh/)                                                     |
 | bicep_format         | [https://github.com/Azure/bicep](https://github.com/Azure/bicep)                                                             |
 | biome                | [https://biomejs.dev](https://biomejs.dev)                                                                                   |
