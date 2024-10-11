@@ -174,6 +174,7 @@ mod topiary;
 mod ts_standard;
 mod twig_cs_fixer;
 mod typos;
+mod ufmt;
 mod uiua;
 mod usort;
 mod v;
@@ -1026,6 +1027,10 @@ pub enum Tooling {
     #[serde(rename = "typos")]
     Typos,
 
+    #[doc = "https://github.com/omnilib/ufmt"]
+    #[serde(rename = "ufmt")]
+    Ufmt,
+
     #[doc = "https://github.com/uiua-lang/uiua"]
     #[serde(rename = "uiua_fmt")]
     UiuaFmt,
@@ -1257,6 +1262,7 @@ impl Tooling {
             Self::TsStandard => ts_standard::run(snippet_path),
             Self::TwigCsFixer => twig_cs_fixer::run(snippet_path),
             Self::Typos => typos::run(snippet_path),
+            Self::Ufmt => ufmt::run(snippet_path),
             Self::UiuaFmt => uiua::run_fmt(snippet_path),
             Self::Usort => usort::run(snippet_path),
             Self::VerylFmt => veryl::run_fmt(snippet_path),
@@ -1446,6 +1452,7 @@ impl AsRef<str> for Tooling {
             Self::TsStandard => "ts-standard",
             Self::TwigCsFixer => "twig-cs-fixer",
             Self::Typos => "typos",
+            Self::Ufmt => "ufmt",
             Self::UiuaFmt => "uiua_fmt",
             Self::Usort => "usort",
             Self::VerylFmt => "veryl_fmt",
