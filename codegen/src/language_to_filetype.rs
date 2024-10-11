@@ -42,7 +42,7 @@ fn build_mapping(languages: std::collections::HashMap<String, LinguishLanguage>)
     for (language, ext) in primary.into_iter().chain(secondary.into_iter()) {
         if !seen_languages.contains(&language) {
             mappings.push(format!(
-                "{WHITESPACE}{WHITESPACE}\"{language}\" => \"{ext}\",",
+                "{WHITESPACE}{WHITESPACE}\"{language}\" => Some(\"{ext}\"),",
             ));
             seen_languages.insert(language);
         }
@@ -50,14 +50,14 @@ fn build_mapping(languages: std::collections::HashMap<String, LinguishLanguage>)
 
     mappings.sort_unstable();
 
-    mappings.push(format!("{WHITESPACE}{WHITESPACE}_ => \"\","));
+    mappings.push(format!("{WHITESPACE}{WHITESPACE}_ => None,"));
 
     format!(
         "// THIS CODE WAS GENERATED AND SHOULD NOT BE EDITED MANUALLY
 
 #[allow(clippy::too_many_lines)]
 #[inline]
-pub fn language_to_ext(language: &str) -> &'static str {{
+pub fn language_to_ext(language: &str) -> Option<&'static str> {{
 {WHITESPACE}#[allow(clippy::match_same_arms)]
 {WHITESPACE}match language.to_lowercase().as_str() {{
 {}
