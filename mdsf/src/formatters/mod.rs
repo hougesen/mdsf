@@ -100,6 +100,7 @@ mod kcl_fmt;
 mod kdlfmt;
 mod ktfmt;
 mod ktlint;
+mod kulala_fmt;
 mod leptosfmt;
 mod liquidsoap_prettier;
 mod luaformatter;
@@ -723,6 +724,10 @@ pub enum Tooling {
     #[serde(rename = "ktlint")]
     Ktlint,
 
+    #[doc = "https://github.com/mistweaverco/kulala-fmt"]
+    #[serde(rename = "kulala-fmt")]
+    KulalaFmt,
+
     #[doc = "https://github.com/bram209/leptosfmt"]
     #[serde(rename = "leptosfmt")]
     LeptosFmt,
@@ -1168,6 +1173,7 @@ impl Tooling {
             Self::Kdlfmt => kdlfmt::run(snippet_path),
             Self::Ktfmt => ktfmt::run(snippet_path),
             Self::Ktlint => ktlint::run(snippet_path),
+            Self::KulalaFmt => kulala_fmt::run(snippet_path),
             Self::LeptosFmt => leptosfmt::run(snippet_path),
             Self::LiquidsoapPrettier => liquidsoap_prettier::run(snippet_path),
             Self::LuaFormatter => luaformatter::run(snippet_path),
@@ -1349,6 +1355,7 @@ impl AsRef<str> for Tooling {
             Self::Kdlfmt => "kdlfmt",
             Self::Ktfmt => "ktfmt",
             Self::Ktlint => "ktlint",
+            Self::KulalaFmt => "kulala-fmt",
             Self::LeptosFmt => "leptosfmt",
             Self::LiquidsoapPrettier => "liquidsoap-prettier",
             Self::LuaFormatter => "luaformatter",

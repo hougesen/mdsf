@@ -514,6 +514,11 @@
           "enum": ["ktlint"]
         },
         {
+          "description": "https://github.com/mistweaverco/kulala-fmt",
+          "type": "string",
+          "enum": ["kulala-fmt"]
+        },
+        {
           "description": "https://github.com/bram209/leptosfmt",
           "type": "string",
           "enum": ["leptosfmt"]
