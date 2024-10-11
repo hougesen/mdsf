@@ -944,6 +944,11 @@
           "enum": ["zigfmt"]
         },
         {
+          "description": "https://ziggy-lang.io/documentation/ziggy-fmt/",
+          "type": "string",
+          "enum": ["ziggy_fmt"]
+        },
+        {
           "description": "https://github.com/kkinnear/zprint",
           "type": "string",
           "enum": ["zprint"]
