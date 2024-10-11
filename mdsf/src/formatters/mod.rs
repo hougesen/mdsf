@@ -160,6 +160,7 @@ mod stylefmt;
 mod stylelint;
 mod stylish_haskell;
 mod stylua;
+mod superhtml;
 mod swift_format;
 mod swiftformat;
 mod taplo;
@@ -966,6 +967,10 @@ pub enum Tooling {
     #[serde(rename = "stylua")]
     Stylua,
 
+    #[doc = "https://github.com/kristoff-it/superhtml"]
+    #[serde(rename = "superhtml_fmt")]
+    SuperhtmlFmt,
+
     #[doc = "https://github.com/apple/swift-format"]
     #[serde(rename = "swift-format")]
     AppleSwiftFormat,
@@ -1225,6 +1230,7 @@ impl Tooling {
             Self::StyleLint => stylelint::run(snippet_path),
             Self::StylishHaskell => stylish_haskell::run(snippet_path),
             Self::Stylua => stylua::run(snippet_path),
+            Self::SuperhtmlFmt => superhtml::run_fmt(snippet_path),
             Self::Taplo => taplo::run(snippet_path),
             Self::Templ => templ::run(snippet_path),
             Self::TerraformFmt => terraform_fmt::run(snippet_path),
@@ -1400,6 +1406,7 @@ impl AsRef<str> for Tooling {
             Self::StyleLint => "stylelint",
             Self::StylishHaskell => "stylish-haskell",
             Self::Stylua => "stylua",
+            Self::SuperhtmlFmt => "superhtml_fmt",
             Self::Taplo => "taplo",
             Self::Templ => "templ",
             Self::TerraformFmt => "terraform_fmt",
