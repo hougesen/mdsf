@@ -889,6 +889,11 @@
           "enum": ["typos"]
         },
         {
+          "description": "https://github.com/astrale-sharp/typstfmt",
+          "type": "string",
+          "enum": ["typstfmt"]
+        },
+        {
           "description": "https://github.com/omnilib/ufmt",
           "type": "string",
           "enum": ["ufmt"]
