@@ -664,6 +664,11 @@
           "enum": ["pretty-php"]
         },
         {
+          "description": "https://github.com/antonWetzel/prettypst",
+          "type": "string",
+          "enum": ["prettypst"]
+        },
+        {
           "description": "https://prisma.io/",
           "type": "string",
           "enum": ["prisma"]
