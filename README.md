@@ -184,7 +184,7 @@ mdsf init
 
 <!-- START_SECTION:supported-tools -->
 
-`mdsf` currently supports 186 tools. Feel free to open an issue/pull-request if your favorite tool is missing! 😃
+`mdsf` currently supports 187 tools. Feel free to open an issue/pull-request if your favorite tool is missing! 😃
 
 | Formatter            | Description                                                                                                                  |
 | -------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
@@ -207,6 +207,7 @@ mdsf init
 | blue                 | [https://blue.readthedocs.io/en/latest/](https://blue.readthedocs.io/en/latest/)                                             |
 | bpfmt                | [https://source.android.com/docs/setup/reference/androidbp](https://source.android.com/docs/setup/reference/androidbp)       |
 | brittany             | [https://github.com/lspitzner/brittany](https://github.com/lspitzner/brittany)                                               |
+| brunette             | [https://github.com/odwyersoftware/brunette](https://github.com/odwyersoftware/brunette)                                     |
 | bsfmt                | [https://github.com/rokucommunity/brighterscript-formatter](https://github.com/rokucommunity/brighterscript-formatter)       |
 | buf                  | [https://buf.build/docs/reference/cli/buf/format](https://buf.build/docs/reference/cli/buf/format)                           |
 | buildifier           | [https://github.com/bazelbuild/buildtools](https://github.com/bazelbuild/buildtools)                                         |

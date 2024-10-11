@@ -31,6 +31,7 @@ mod blade_formatter;
 mod blue;
 mod bpfmt;
 mod brittany;
+mod brunette;
 mod bsfmt;
 mod buf;
 mod buildifier;
@@ -455,6 +456,10 @@ pub enum Tooling {
     #[doc = "https://github.com/lspitzner/brittany"]
     #[serde(rename = "brittany")]
     Brittany,
+
+    #[doc = "https://github.com/odwyersoftware/brunette"]
+    #[serde(rename = "brunette")]
+    Brunette,
 
     #[doc = "https://www.haskell.org/cabal/"]
     #[serde(rename = "cabal_format")]
@@ -1141,6 +1146,7 @@ impl Tooling {
             Self::Blue => blue::run(snippet_path),
             Self::Bpfmt => bpfmt::run(snippet_path),
             Self::Brittany => brittany::run(snippet_path),
+            Self::Brunette => brunette::run(snippet_path),
             Self::Bsfmt => bsfmt::run(snippet_path),
             Self::Buf => buf::run(snippet_path),
             Self::Buildifier => buildifier::run(snippet_path),
@@ -1336,6 +1342,7 @@ impl AsRef<str> for Tooling {
             Self::Blue => "blue",
             Self::Bpfmt => "bpfmt",
             Self::Brittany => "brittany",
+            Self::Brunette => "brunette",
             Self::Bsfmt => "bsfmt",
             Self::Buf => "buf",
             Self::Buildifier => "buildifier",
