@@ -130,6 +130,7 @@ mod phpinsights;
 mod pint;
 mod prettier;
 mod pretty_php;
+mod prettypst;
 mod prisma;
 mod puppet_lint;
 mod purs_tidy;
@@ -850,6 +851,10 @@ pub enum Tooling {
     #[serde(rename = "pretty-php")]
     PrettyPhp,
 
+    #[doc = "https://github.com/antonWetzel/prettypst"]
+    #[serde(rename = "prettypst")]
+    Prettypst,
+
     #[doc = "https://prisma.io/"]
     #[serde(rename = "prisma")]
     Prisma,
@@ -1234,6 +1239,7 @@ impl Tooling {
             Self::Pint => pint::run(snippet_path),
             Self::Prettier => prettier::run(snippet_path),
             Self::PrettyPhp => pretty_php::run(snippet_path),
+            Self::Prettypst => prettypst::run(snippet_path),
             Self::Prisma => prisma::run_format(snippet_path),
             Self::PuppetLint => puppet_lint::run(snippet_path),
             Self::PursTidy => purs_tidy::run(snippet_path),
@@ -1427,6 +1433,7 @@ impl AsRef<str> for Tooling {
             Self::Pint => "pint",
             Self::Prettier => "prettier",
             Self::PrettyPhp => "pretty-php",
+            Self::Prettypst => "prettypst",
             Self::Prisma => "prisma",
             Self::PuppetLint => "puppet-lint",
             Self::PursTidy => "purs-tidy",

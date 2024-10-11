@@ -184,7 +184,7 @@ mdsf init
 
 <!-- START_SECTION:supported-tools -->
 
-`mdsf` currently supports 184 tools. Feel free to open an issue/pull-request if your favorite tool is missing! 😃
+`mdsf` currently supports 185 tools. Feel free to open an issue/pull-request if your favorite tool is missing! 😃
 
 | Formatter            | Description                                                                                                                  |
 | -------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
@@ -309,6 +309,7 @@ mdsf init
 | pint                 | [https://github.com/laravel/pint](https://github.com/laravel/pint)                                                           |
 | prettier             | [https://github.com/prettier/prettier](https://github.com/prettier/prettier)                                                 |
 | pretty-php           | [https://github.com/lkrms/pretty-php](https://github.com/lkrms/pretty-php)                                                   |
+| prettypst            | [https://github.com/antonWetzel/prettypst](https://github.com/antonWetzel/prettypst)                                         |
 | prisma               | [https://prisma.io/](https://prisma.io/)                                                                                     |
 | puppet-lint          | [https://github.com/puppetlabs/puppet-lint](https://github.com/puppetlabs/puppet-lint)                                       |
 | purs-tidy            | [https://github.com/natefaubion/purescript-tidy](https://github.com/natefaubion/purescript-tidy)                             |
