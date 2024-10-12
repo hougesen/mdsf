@@ -100,10 +100,10 @@ mdsf format file.md
 ```
 Run formatters on input files
 
-Usage: mdsf format [OPTIONS] <PATH>
+Usage: mdsf format [OPTIONS] [INPUT]...
 
 Arguments:
-  <PATH>  Path to file or directory
+  [INPUT]...  Path to files and/or directories
 
 Options:
       --config <CONFIG>        Path to config
@@ -128,10 +128,10 @@ mdsf verify docs/
 ```
 Verify files are formatted
 
-Usage: mdsf verify [OPTIONS] <PATH>
+Usage: mdsf verify [OPTIONS] [INPUT]...
 
 Arguments:
-  <PATH>  Path to file or directory
+  [INPUT]...  Path to files and/or directories
 
 Options:
       --config <CONFIG>        Path to config
