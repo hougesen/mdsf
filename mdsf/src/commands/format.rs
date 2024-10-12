@@ -51,20 +51,18 @@ pub fn run(args: FormatCommandArguments, dry_run: bool) -> Result<(), MdsfError>
 
     let changed_file_count = Arc::new(AtomicU32::new(0));
 
-    if args.path.is_file() {
-        let was_formatted = handle_file(&conf, &args.path, dry_run, config_cache_key);
-
-        if was_formatted {
-            changed_file_count.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
-        }
-    } else if args.path.is_dir() {
-        let mut walk_builder = ignore::WalkBuilder::new(args.path);
+    if let Some(first_path) = args.input.first() {
+        let mut walk_builder = ignore::WalkBuilder::new(first_path);
 
         walk_builder
             .standard_filters(true)
             .parents(true)
             .hidden(true)
             .add_custom_ignore_filename(MDSF_IGNORE_FILE_NAME);
+
+        args.input.iter().skip(1).for_each(|p| {
+            walk_builder.add(p);
+        });
 
         let md_ext = OsStr::from("md");
 
@@ -96,8 +94,6 @@ pub fn run(args: FormatCommandArguments, dry_run: bool) -> Result<(), MdsfError>
         }
 
         pool.join();
-    } else {
-        return Err(MdsfError::FileNotFound(args.path));
     }
 
     let total_changed_files = changed_file_count.load(std::sync::atomic::Ordering::SeqCst);

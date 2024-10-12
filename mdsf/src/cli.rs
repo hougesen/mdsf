@@ -35,9 +35,9 @@ pub enum Commands {
 
 #[derive(Args, Debug)]
 pub struct FormatCommandArguments {
-    /// Path to file or directory
+    /// Path to files and/or directories.
     #[arg()]
-    pub path: std::path::PathBuf,
+    pub input: Vec<std::path::PathBuf>,
 
     /// Path to config
     #[arg(long)]
@@ -61,9 +61,9 @@ pub struct FormatCommandArguments {
 
 #[derive(Args, Debug)]
 pub struct VerifyCommandArguments {
-    /// Path to file or directory
+    /// Path to files and/or directories.
     #[arg()]
-    pub path: std::path::PathBuf,
+    pub input: Vec<std::path::PathBuf>,
 
     /// Path to config
     #[arg(long)]
@@ -85,7 +85,7 @@ impl From<VerifyCommandArguments> for FormatCommandArguments {
     #[inline]
     fn from(value: VerifyCommandArguments) -> Self {
         Self {
-            path: value.path,
+            input: value.input,
             config: value.config,
             debug: value.debug,
             log_level: value.log_level,
