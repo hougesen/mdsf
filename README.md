@@ -74,7 +74,7 @@ You can install mdsf using [npm](https://www.npmjs.com/package/mdsf-cli):
 ```shell
 npm install -g mdsf-cli
 
-mdsf-cli format .
+mdsf format .
 ```
 
 or run it directly using npx:
