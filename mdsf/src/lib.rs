@@ -23,6 +23,7 @@ pub mod languages;
 mod parser;
 pub mod runners;
 pub mod terminal;
+mod tools;
 
 #[cfg(test)]
 pub static DEBUG: AtomicBool = AtomicBool::new(true);
