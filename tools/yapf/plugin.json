@@ -5,8 +5,8 @@
   "commands": {
     "": ["--in-place", "$PATH"]
   },
-  "description": "",
-  "homepage": "",
+  "description": "A formatter for Python files",
+  "homepage": "https://github.com/google/yapf",
   "languages": ["python"],
   "name": null,
   "npm": null,

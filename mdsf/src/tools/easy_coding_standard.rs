@@ -13,10 +13,7 @@ fn set_easy_coding_standard_args(mut cmd: Command, file_path: &std::path::Path) 
 
 #[inline]
 pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfError> {
-    let commands = [
-        CommandType::PhpVendor("ecs"),
-        CommandType::Direct("easy-coding-standard"),
-    ];
+    let commands = [CommandType::PhpVendor("ecs"), CommandType::Direct("ecs")];
 
     for (index, cmd) in commands.iter().enumerate() {
         let cmd = set_easy_coding_standard_args(cmd.build(), file_path);

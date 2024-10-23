@@ -5,8 +5,8 @@
   "commands": {
     "": ["$PATH", "--check-hidden", "--write-changes"]
   },
-  "description": "",
-  "homepage": "",
+  "description": "Check code for common misspellings",
+  "homepage": "https://github.com/codespell-project/codespell",
   "languages": [],
   "name": null,
   "npm": null,

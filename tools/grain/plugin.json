@@ -1,0 +1,22 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "grain",
+  "categories": ["formatter"],
+  "commands": {
+    "format": ["format", "$PATH", "-o", "$PATH"]
+  },
+  "description": "",
+  "homepage": "",
+  "languages": ["grain"],
+  "name": null,
+  "npm": null,
+  "php": null,
+  "tests": [
+    {
+      "command": "format",
+      "language": "grain",
+      "test_input": "module Hello\n\n                                print(\"Hello, world!\")\n",
+      "test_output": "module Hello\n\nprint(\"Hello, world!\")\n"
+    }
+  ]
+}

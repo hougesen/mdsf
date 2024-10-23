@@ -1,6 +1,6 @@
 {
   "$schema": "../tool.schema.json",
-  "binary": "easy-coding-standard",
+  "binary": "ecs",
   "categories": ["linter", "formatter"],
   "commands": {
     "": ["check", "$PATH", "--fix", "--no-interaction"]

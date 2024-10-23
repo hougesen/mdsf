@@ -3,7 +3,7 @@
   "binary": "zig",
   "categories": ["formatter"],
   "commands": {
-    "": ["fmt", "$PATH"]
+    "fmt": ["fmt", "$PATH"]
   },
   "description": "Reformat Zig source into canonical form",
   "homepage": "https://ziglang.org/",

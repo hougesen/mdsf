@@ -5,8 +5,8 @@
   "commands": {
     "": ["--edition", "2021", "--quiet", "$PATH"]
   },
-  "description": "",
-  "homepage": "",
+  "description": "Code formatter for the Yew framework",
+  "homepage": "https://github.com/its-the-shrimp/yew-fmt",
   "languages": ["rust"],
   "name": null,
   "npm": null,

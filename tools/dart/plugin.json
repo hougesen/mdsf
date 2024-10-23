@@ -6,9 +6,9 @@
     "fix": ["fix", "$PATH"],
     "format": ["format", "--apply", "$PATH"]
   },
-  "description": "",
-  "homepage": "",
-  "languages": ["dart"],
+  "description": "Formatter and linter for Dart",
+  "homepage": "https://dart.dev/tools",
+  "languages": ["dart", "flutter"],
   "name": null,
   "npm": null,
   "php": null,

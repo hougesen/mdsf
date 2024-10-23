@@ -234,9 +234,10 @@ mod tests {
     use crate::{
         config::MdsfConfig,
         format_file,
-        formatters::{setup_snippet, MdsfFormatter, Tooling},
+        formatters::{setup_snippet, MdsfFormatter},
         fttype::get_file_extension,
         handle_file,
+        tools::Tooling,
     };
 
     #[test]

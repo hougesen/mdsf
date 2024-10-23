@@ -17,7 +17,7 @@ pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfEr
     let commands = [
         CommandType::NodeModules("css-beautify"),
         CommandType::Direct("css-beautify"),
-        CommandType::Npm("css-beautify"),
+        CommandType::Npm("js-beautify"),
     ];
 
     for (index, cmd) in commands.iter().enumerate() {

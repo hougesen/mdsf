@@ -1,7 +1,7 @@
 {
   "$schema": "../tool.schema.json",
   "binary": "clang-format",
-  "categories": [],
+  "categories": ["formatter"],
   "commands": {
     "": ["-i", "$PATH"]
   },

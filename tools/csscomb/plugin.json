@@ -1,13 +1,13 @@
 {
   "$schema": "../tool.schema.json",
   "binary": "csscomb",
-  "categories": [],
+  "categories": ["formatter"],
   "commands": {
     "": ["-t", "$PATH"]
   },
-  "description": "",
-  "homepage": "",
-  "languages": [],
+  "description": "CSS coding style formatter",
+  "homepage": "https://github.com/csscomb/csscomb.js",
+  "languages": ["css"],
   "name": null,
   "npm": "csscomb",
   "php": null,

@@ -1,0 +1,15 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "erb-format",
+  "categories": ["formatter"],
+  "commands": {
+    "": ["$PATH", "--write"]
+  },
+  "description": "Format ERB files with speed and precision",
+  "homepage": "https://github.com/nebulab/erb-formatter",
+  "languages": ["erb", "ruby"],
+  "name": "erb-formatter",
+  "npm": null,
+  "php": null,
+  "tests": []
+}

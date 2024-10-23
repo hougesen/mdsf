@@ -1,0 +1,23 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "golines",
+  "categories": ["formatter"],
+  "commands": {
+    "": ["-w", "$PATH"]
+  },
+  "description": "",
+  "homepage": "",
+  "languages": ["go"],
+  "name": null,
+  "npm": null,
+  "path": null,
+  "php": null,
+  "tests": [
+    {
+      "command": "",
+      "language": "go",
+      "test_input": "package main\n\nimport (\n\t\"os\"\n\t\"fmt\"\n)\n\nfunc add(a int, b int) int {\n\tfmt.Print(a)\n\tfmt.Print(b)\n\treturn a + b\n}\n",
+      "test_output": "package main\n\nimport (\n\t\"fmt\"\n)\n\nfunc add(a int, b int) int {\n\tfmt.Print(a)\n\tfmt.Print(b)\n\treturn a + b\n}\n"
+    }
+  ]
+}

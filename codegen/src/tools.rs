@@ -1,5 +1,7 @@
 use convert_case::{Case, Casing};
 
+const INDENT: &str = "    ";
+
 #[derive(Debug, serde::Deserialize, schemars::JsonSchema)]
 struct ToolTest {
     #[expect(unused)]
@@ -17,7 +19,6 @@ struct ToolTest {
 
 #[derive(Debug, serde::Deserialize, schemars::JsonSchema)]
 pub struct Tool {
-    #[expect(unused)]
     name: Option<String>,
 
     binary: String,
@@ -55,9 +56,11 @@ struct GeneratedCommand {
 
 impl Tool {
     fn generate(&self) -> Vec<GeneratedCommand> {
-        let binary_name = self.binary.clone();
-
-        let fn_prefix = binary_name.to_case(Case::Snake);
+        let fn_prefix = if let Some(name) = &self.name {
+            name.to_case(Case::Snake)
+        } else {
+            self.binary.to_case(Case::Snake)
+        };
 
         let mut all_commands = Vec::new();
 
@@ -94,7 +97,10 @@ impl Tool {
 
             // TODO: generate if statements instead of array
             let command_arr = if command_types.len() > 1 {
-                format!("\n        {},\n    ", command_types.join(",\n        "))
+                format!(
+                    "\n{INDENT}{INDENT}{},\n{INDENT}",
+                    command_types.join(format!(",\n{INDENT}{INDENT}").as_str())
+                )
             } else {
                 command_types.join(", ")
             };
@@ -105,9 +111,23 @@ impl Tool {
                 .map(|arg| {
                     if arg == "$PATH" {
                         args_includes_path = true;
-                        "    cmd.arg(file_path);".to_string()
+                        format!("{INDENT}cmd.arg(file_path);")
+                    } else if arg == "$PATH_STRING" {
+                        args_includes_path = true;
+
+                        let arg_str = "cmd.arg(format!(\"'{}'\", file_path.to_string_lossy()));";
+                        format!("{INDENT}{arg_str}")
+                    } else if arg.contains("$PATH_STRING") {
+                        args_includes_path = true;
+
+                        let declaration = "let fps = file_path.to_string_lossy();\n";
+
+                        format!(
+                            "{INDENT}{declaration}{INDENT}cmd.arg(format!(\"{}\"));",
+                            arg.replace("$PATH_STRING", "fps")
+                        )
                     } else {
-                        format!("    cmd.arg(\"{arg}\");")
+                        format!("{INDENT}cmd.arg(\"{arg}\");",)
                     }
                 })
                 .collect::<Vec<_>>()
@@ -123,29 +143,29 @@ use crate::{{error::MdsfError, formatters::execute_command, runners::CommandType
 #[inline]
 fn {set_args_fn_name}(mut cmd: Command, file_path: &std::path::Path) -> Command {{
 {string_args}
-    cmd
+{INDENT}cmd
 }}
 
 #[inline]
 pub fn {run_fn_name}(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfError> {{
-    let commands = [{command_arr}];
+{INDENT}let commands = [{command_arr}];
 
-    for (index, cmd) in commands.iter().enumerate() {{
-        let cmd = {set_args_fn_name}(cmd.build(), file_path);
-        let execution_result = execute_command(cmd, file_path);
+{INDENT}for (index, cmd) in commands.iter().enumerate() {{
+{INDENT}{INDENT}let cmd = {set_args_fn_name}(cmd.build(), file_path);
+{INDENT}{INDENT}let execution_result = execute_command(cmd, file_path);
 
-        if index == commands.len() - 1 {{
-            return execution_result;
-        }}
+{INDENT}{INDENT}if index == commands.len() - 1 {{
+{INDENT}{INDENT}{INDENT}return execution_result;
+{INDENT}{INDENT}}}
 
-        if let Ok(r) = execution_result {{
-            if !r.0 {{
-                return Ok(r);
-            }}
-        }}
-    }}
+{INDENT}{INDENT}if let Ok(r) = execution_result {{
+{INDENT}{INDENT}{INDENT}if !r.0 {{
+{INDENT}{INDENT}{INDENT}{INDENT}return Ok(r);
+{INDENT}{INDENT}{INDENT}}}
+{INDENT}{INDENT}}}
+{INDENT}}}
 
-    Ok((true, None))
+{INDENT}Ok((true, None))
 }}
 ",
             );
@@ -178,6 +198,7 @@ pub fn generate() -> anyhow::Result<()> {
 
     for entry in walker {
         if entry.file_name() == "plugin.json" {
+            println!("{entry:?}");
             let content = std::fs::read_to_string(entry.path())?;
 
             let parsed = serde_json::from_str::<Tool>(&content)?;
@@ -189,21 +210,21 @@ pub fn generate() -> anyhow::Result<()> {
 
                 files.insert(command.serde_value.clone());
                 enum_values.insert(format!(
-                    "    #[serde(rename = \"{}\")]
-    #[doc = \"{description} - [{homepage}]({homepage})\"]
-    {},",
+                    "{INDENT}#[serde(rename = \"{}\")]
+{INDENT}#[doc = \"{description} - [{homepage}]({homepage})\"]
+{INDENT}{},",
                     command.serde_value,
                     command.enum_value,
                     description = parsed.description,
                     homepage = parsed.homepage,
                 ));
                 format_snippet_values.insert(format!(
-                    "            Self::{} => {}::{}(snippet_path),",
+                    "{INDENT}{INDENT}{INDENT}Self::{} => {}::{}(snippet_path),",
                     command.enum_value, command.serde_value, command.fn_name
                 ));
 
                 as_ref_values.insert(format!(
-                    "            Self::{} => \"{}\",",
+                    "{INDENT}{INDENT}{INDENT}Self::{} => \"{}\",",
                     command.enum_value, command.serde_value,
                 ));
             }
@@ -236,26 +257,26 @@ pub enum Tooling {{
 }}
 
 impl Tooling {{
-    #[allow(clippy::too_many_lines)]
-    #[inline]
-    pub fn format_snippet(
-        &self,
-        snippet_path: &std::path::Path,
-    ) -> Result<(bool, Option<String>), crate::error::MdsfError> {{
-        match self {{
+{INDENT}#[allow(clippy::too_many_lines)]
+{INDENT}#[inline]
+{INDENT}pub fn format_snippet(
+{INDENT}{INDENT}&self,
+{INDENT}{INDENT}snippet_path: &std::path::Path,
+{INDENT}) -> Result<(bool, Option<String>), crate::error::MdsfError> {{
+{INDENT}{INDENT}match self {{
 {}
-        }}
-    }}
+{INDENT}{INDENT}}}
+{INDENT}}}
 }}
 
 impl AsRef<str> for Tooling {{
-    #[allow(clippy::too_many_lines)]
-    #[inline]
-    fn as_ref(&self) -> &str {{
-        match self {{
+{INDENT}#[allow(clippy::too_many_lines)]
+{INDENT}#[inline]
+{INDENT}fn as_ref(&self) -> &str {{
+{INDENT}{INDENT}match self {{
 {}
-        }}
-    }}
+{INDENT}{INDENT}}}
+{INDENT}}}
 }}
 ",
         modules.join("\n"),

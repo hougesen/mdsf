@@ -5,8 +5,8 @@
   "commands": {
     "fmt": ["fmt", "$PATH"]
   },
-  "description": "",
-  "homepage": "",
+  "description": "Formatter for the Caramel programming language",
+  "homepage": "https://caramel.run/",
   "languages": ["caramel"],
   "name": null,
   "npm": null,

@@ -5,11 +5,11 @@
   "commands": {
     "": ["-r", "--type", "css", "-f", "$PATH"]
   },
-  "description": "",
-  "homepage": "",
+  "description": "A css formatter",
+  "homepage": "https://github.com/beautifier/js-beautify?tab=readme-ov-file#css--html",
   "languages": ["css"],
   "name": null,
-  "npm": "css-beautify",
+  "npm": "js-beautify",
   "php": null,
   "tests": [
     {

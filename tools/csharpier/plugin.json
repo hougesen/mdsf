@@ -8,7 +8,7 @@
   "description": "An Opinionated Code Formatter for C#",
   "homepage": "https://csharpier.com/",
   "languages": ["c#"],
-  "name": "CSharpier",
+  "name": "csharpier",
   "npm": null,
   "php": null,
   "tests": [

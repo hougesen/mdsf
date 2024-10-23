@@ -1,13 +1,13 @@
 {
   "$schema": "../tool.schema.json",
   "binary": "crlfmt",
-  "categories": [],
+  "categories": ["formatter"],
   "commands": {
     "": ["-w", "$PATH"]
   },
-  "description": "",
-  "homepage": "",
-  "languages": [],
+  "description": "Formatter for CockroachDB's additions to the Go style guide",
+  "homepage": "https://github.com/cockroachdb/crlfmt",
+  "languages": ["go"],
   "name": null,
   "npm": null,
   "php": null,

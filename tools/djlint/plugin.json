@@ -8,7 +8,6 @@
   "description": "Lint & Format HTML Templates",
   "homepage": "https://www.djlint.com/",
   "languages": ["html", "jinja", "nunjucks", "twig", "handlebars", "mustache"],
-  "name": "djLint",
   "npm": null,
   "php": null,
   "tests": []
