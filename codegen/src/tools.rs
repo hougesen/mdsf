@@ -1,8 +1,23 @@
 use convert_case::{Case, Casing};
 
 #[derive(Debug, serde::Deserialize, schemars::JsonSchema)]
-struct Tool {
-    #[allow(unused)]
+struct ToolTest {
+    #[expect(unused)]
+    language: String,
+
+    #[expect(unused)]
+    command: String,
+
+    #[expect(unused)]
+    test_input: String,
+
+    #[expect(unused)]
+    test_output: String,
+}
+
+#[derive(Debug, serde::Deserialize, schemars::JsonSchema)]
+pub struct Tool {
+    #[expect(unused)]
     name: Option<String>,
 
     binary: String,
@@ -11,9 +26,11 @@ struct Tool {
 
     php: Option<String>,
 
+    commands: std::collections::HashMap<String, Vec<String>>,
+
     description: String,
 
-    website: String,
+    homepage: String,
 
     #[expect(unused)]
     categories: std::collections::HashSet<String>,
@@ -21,7 +38,8 @@ struct Tool {
     #[expect(unused)]
     languages: std::collections::HashSet<String>,
 
-    commands: std::collections::HashMap<String, Vec<String>>,
+    #[expect(unused)]
+    tests: Vec<ToolTest>,
 }
 
 #[derive(Debug)]
@@ -55,12 +73,12 @@ impl Tool {
 
             let set_args_fn_name = format!("set_{command_name}_args");
 
-            let run_fn_name = format!("run_{command_name}");
+            let run_fn_name = "run".to_string();
 
             let mut command_types: Vec<String> = Vec::new();
             {
-                if let Some(npm) = &self.npm {
-                    command_types.push(format!("CommandType::NodeModules(\"{}\")", npm));
+                if self.npm.is_some() {
+                    command_types.push(format!("CommandType::NodeModules(\"{}\")", self.binary));
                 };
 
                 if let Some(php) = &self.php {
@@ -74,19 +92,28 @@ impl Tool {
                 };
             };
 
-            let command_arr = command_types.join(", ");
+            // TODO: generate if statements instead of array
+            let command_arr = if command_types.len() > 1 {
+                format!("\n        {},\n    ", command_types.join(",\n        "))
+            } else {
+                command_types.join(", ")
+            };
+            let mut args_includes_path = false;
 
             let string_args = args
                 .iter()
                 .map(|arg| {
                     if arg == "$PATH" {
-                        ".arg(file_path)".to_string()
+                        args_includes_path = true;
+                        "    cmd.arg(file_path);".to_string()
                     } else {
-                        format!(".arg(\"{arg}\")")
+                        format!("    cmd.arg(\"{arg}\");")
                     }
                 })
                 .collect::<Vec<_>>()
-                .join("");
+                .join("\n");
+
+            assert!(args_includes_path);
 
             let code = format!(
                 "use std::process::Command;
@@ -95,8 +122,7 @@ use crate::{{error::MdsfError, formatters::execute_command, runners::CommandType
 
 #[inline]
 fn {set_args_fn_name}(mut cmd: Command, file_path: &std::path::Path) -> Command {{
-    cmd{string_args};
-
+{string_args}
     cmd
 }}
 
@@ -105,7 +131,8 @@ pub fn {run_fn_name}(file_path: &std::path::Path) -> Result<(bool, Option<String
     let commands = [{command_arr}];
 
     for (index, cmd) in commands.iter().enumerate() {{
-        let execution_result = execute_command({set_args_fn_name}(cmd.build(), file_path), file_path);
+        let cmd = {set_args_fn_name}(cmd.build(), file_path);
+        let execution_result = execute_command(cmd, file_path);
 
         if index == commands.len() - 1 {{
             return execution_result;
@@ -155,11 +182,7 @@ pub fn generate() -> anyhow::Result<()> {
 
             let parsed = serde_json::from_str::<Tool>(&content)?;
 
-            println!("{parsed:#?}");
-
             let converted = parsed.generate();
-
-            println!("{converted:#?}");
 
             for command in converted {
                 std::fs::write(format!("{folder}/{}.rs", command.serde_value), command.code)?;
@@ -167,12 +190,12 @@ pub fn generate() -> anyhow::Result<()> {
                 files.insert(command.serde_value.clone());
                 enum_values.insert(format!(
                     "    #[serde(rename = \"{}\")]
-    #[doc = \"{description} - [{website}]({website})\"]
+    #[doc = \"{description} - [{homepage}]({homepage})\"]
     {},",
                     command.serde_value,
                     command.enum_value,
                     description = parsed.description,
-                    website = parsed.website,
+                    homepage = parsed.homepage,
                 ));
                 format_snippet_values.insert(format!(
                     "            Self::{} => {}::{}(snippet_path),",
