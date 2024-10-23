@@ -1,11 +1,8 @@
 use json_comments::{CommentSettings, StripComments};
 
 use crate::{
-    error::MdsfError,
-    formatters::{MdsfFormatter, Tooling},
-    languages::default_tools,
-    runners::JavaScriptRuntime,
-    terminal::print_config_not_found,
+    error::MdsfError, formatters::MdsfFormatter, languages::default_tools,
+    runners::JavaScriptRuntime, terminal::print_config_not_found, tools::Tooling,
 };
 
 #[derive(serde::Serialize, serde::Deserialize, Hash)]

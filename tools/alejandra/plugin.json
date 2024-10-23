@@ -1,0 +1,10 @@
+{
+  "binary": "alejandra",
+  "description": "The Uncompromising Nix Code Formatter",
+  "website": "https://github.com/kamadorueda/alejandra",
+  "categories": ["formatter"],
+  "languages": ["nix"],
+  "commands": {
+    "": ["--quiet", "$PATH"]
+  }
+}

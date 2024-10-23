@@ -11,10 +11,8 @@ struct Tool {
 
     php: Option<String>,
 
-    #[expect(unused)]
     description: String,
 
-    #[expect(unused)]
     website: String,
 
     #[expect(unused)]
@@ -82,7 +80,7 @@ impl Tool {
                 .iter()
                 .map(|arg| {
                     if arg == "$PATH" {
-                        format!(".arg(file_path)")
+                        ".arg(file_path)".to_string()
                     } else {
                         format!(".arg(\"{arg}\")")
                     }
@@ -169,8 +167,12 @@ pub fn generate() -> anyhow::Result<()> {
                 files.insert(command.serde_value.clone());
                 enum_values.insert(format!(
                     "    #[serde(rename = \"{}\")]
+    #[doc = \"{description} - [{website}]({website})\"]
     {},",
-                    command.serde_value, command.enum_value
+                    command.serde_value,
+                    command.enum_value,
+                    description = parsed.description,
+                    website = parsed.website,
                 ));
                 format_snippet_values.insert(format!(
                     "            Self::{} => {}::{}(snippet_path),",

@@ -1,12 +1,19 @@
 {
-  "name": "Prettier",
   "binary": "prettier",
-  "npm": "prettier",
-  "description": "Prettier is an opinionated code formatter.",
-  "website": "https://github.com/prettier/prettier",
   "categories": ["formatter"],
-  "languages": ["javascript", "typescript", "json", "html", "css"],
   "commands": {
-    "": ["format", "--write", "$PATH"]
-  }
+    "": [
+      "format",
+      "--embedded-language-formatting",
+      "off",
+      "--log-level",
+      "error",
+      "--write",
+      "$PATH"
+    ]
+  },
+  "description": "Prettier is an opinionated code formatter.",
+  "languages": ["javascript", "typescript", "json", "html", "css"],
+  "npm": "prettier",
+  "website": "https://github.com/prettier/prettier"
 }

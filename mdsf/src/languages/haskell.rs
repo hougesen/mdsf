@@ -1,4 +1,4 @@
-use crate::formatters::{MdsfFormatter, Tooling};
+use crate::{formatters::MdsfFormatter, tools::Tooling};
 
 #[inline]
 pub fn default_config() -> (std::string::String, MdsfFormatter<Tooling>) {
