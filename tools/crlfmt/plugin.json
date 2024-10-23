@@ -1,0 +1,15 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "crlfmt",
+  "categories": [],
+  "commands": {
+    "": ["-w", "$PATH"]
+  },
+  "description": "",
+  "homepage": "",
+  "languages": [],
+  "name": null,
+  "npm": null,
+  "php": null,
+  "tests": []
+}

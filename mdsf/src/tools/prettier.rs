@@ -4,19 +4,18 @@ use crate::{error::MdsfError, formatters::execute_command, runners::CommandType}
 
 #[inline]
 fn set_prettier_args(mut cmd: Command, file_path: &std::path::Path) -> Command {
-    cmd.arg("format")
-        .arg("--embedded-language-formatting")
-        .arg("off")
-        .arg("--log-level")
-        .arg("error")
-        .arg("--write")
-        .arg(file_path);
-
+    cmd.arg("format");
+    cmd.arg("--embedded-language-formatting");
+    cmd.arg("off");
+    cmd.arg("--log-level");
+    cmd.arg("error");
+    cmd.arg("--write");
+    cmd.arg(file_path);
     cmd
 }
 
 #[inline]
-pub fn run_prettier(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfError> {
+pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfError> {
     let commands = [
         CommandType::NodeModules("prettier"),
         CommandType::Direct("prettier"),
@@ -24,8 +23,8 @@ pub fn run_prettier(file_path: &std::path::Path) -> Result<(bool, Option<String>
     ];
 
     for (index, cmd) in commands.iter().enumerate() {
-        let execution_result =
-            execute_command(set_prettier_args(cmd.build(), file_path), file_path);
+        let cmd = set_prettier_args(cmd.build(), file_path);
+        let execution_result = execute_command(cmd, file_path);
 
         if index == commands.len() - 1 {
             return execution_result;

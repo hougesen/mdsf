@@ -1,0 +1,83 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Tool",
+  "type": "object",
+  "required": [
+    "binary",
+    "categories",
+    "commands",
+    "description",
+    "homepage",
+    "languages",
+    "tests"
+  ],
+  "properties": {
+    "binary": {
+      "type": "string"
+    },
+    "categories": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    },
+    "commands": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      }
+    },
+    "description": {
+      "type": "string"
+    },
+    "homepage": {
+      "type": "string"
+    },
+    "languages": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    },
+    "name": {
+      "type": ["string", "null"]
+    },
+    "npm": {
+      "type": ["string", "null"]
+    },
+    "php": {
+      "type": ["string", "null"]
+    },
+    "tests": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/ToolTest"
+      }
+    }
+  },
+  "definitions": {
+    "ToolTest": {
+      "type": "object",
+      "required": ["command", "language", "test_input", "test_output"],
+      "properties": {
+        "command": {
+          "type": "string"
+        },
+        "language": {
+          "type": "string"
+        },
+        "test_input": {
+          "type": "string"
+        },
+        "test_output": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

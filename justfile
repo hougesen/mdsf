@@ -31,7 +31,7 @@ codegen:
     just changelog
     cargo run --package mdsf-codegen
     cargo dist init --yes
-    npx --yes prettier@latest --write --cache schemas/ README.md
+    npx --yes prettier@latest --write --cache schemas/ README.md tools/tool.schema.json
 
 format:
     taplo format

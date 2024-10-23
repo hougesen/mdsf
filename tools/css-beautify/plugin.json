@@ -1,0 +1,22 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "css-beautify",
+  "categories": ["formatter"],
+  "commands": {
+    "": ["-r", "--type", "css", "-f", "$PATH"]
+  },
+  "description": "",
+  "homepage": "",
+  "languages": ["css"],
+  "name": null,
+  "npm": "css-beautify",
+  "php": null,
+  "tests": [
+    {
+      "command": "",
+      "language": "css",
+      "test_input": "h1   {color: blue;} p    {color: red;}",
+      "test_output": "h1 {\n    color: blue;\n}\n\np {\n    color: red;\n}"
+    }
+  ]
+}

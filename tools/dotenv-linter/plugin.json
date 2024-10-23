@@ -1,0 +1,15 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "dotenv-linter",
+  "categories": ["linter"],
+  "commands": {
+    "": ["fix", "$PATH"]
+  },
+  "description": "Lightning-fast linter for .env files",
+  "homepage": "https://github.com/dotenv-linter/dotenv-linter",
+  "languages": ["env"],
+  "name": null,
+  "npm": null,
+  "php": null,
+  "tests": []
+}

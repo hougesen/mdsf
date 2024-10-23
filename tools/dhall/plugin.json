@@ -1,0 +1,15 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "dhall",
+  "categories": ["formatter"],
+  "commands": {
+    "": ["format", "$PATH"]
+  },
+  "description": "Format Dhall files",
+  "homepage": "https://dhall-lang.org/",
+  "languages": ["dhall"],
+  "name": null,
+  "npm": null,
+  "php": null,
+  "tests": []
+}

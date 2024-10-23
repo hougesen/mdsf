@@ -1,0 +1,15 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "dfmt",
+  "categories": ["formatter"],
+  "commands": {
+    "": ["-i", "$PATH"]
+  },
+  "description": "",
+  "homepage": "",
+  "languages": ["d"],
+  "name": null,
+  "npm": null,
+  "php": null,
+  "tests": []
+}

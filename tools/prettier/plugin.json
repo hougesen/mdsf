@@ -1,4 +1,5 @@
 {
+  "$schema": "../tool.schema.json",
   "binary": "prettier",
   "categories": ["formatter"],
   "commands": {
@@ -12,8 +13,11 @@
       "$PATH"
     ]
   },
-  "description": "Prettier is an opinionated code formatter.",
+  "description": "Prettier is an opinionated code formatter",
+  "homepage": "https://github.com/prettier/prettier",
   "languages": ["javascript", "typescript", "json", "html", "css"],
+  "name": null,
   "npm": "prettier",
-  "website": "https://github.com/prettier/prettier"
+  "php": null,
+  "tests": []
 }

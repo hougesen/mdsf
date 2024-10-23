@@ -1,0 +1,16 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "dcm",
+  "categories": ["formatter", "linter"],
+  "commands": {
+    "fix": ["fix", "$PATH"],
+    "format": ["format", "$PATH"]
+  },
+  "description": "",
+  "homepage": "",
+  "languages": ["dart"],
+  "name": null,
+  "npm": null,
+  "php": null,
+  "tests": []
+}

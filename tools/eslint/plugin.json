@@ -1,0 +1,15 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "eslint",
+  "categories": ["linter"],
+  "commands": {
+    "": ["--fix", "$PATH"]
+  },
+  "description": "Find and fix problems in your JavaScript code",
+  "homepage": "https://github.com/eslint/eslint/",
+  "languages": ["javascript", "typescript"],
+  "name": null,
+  "npm": "eslint",
+  "php": null,
+  "tests": []
+}

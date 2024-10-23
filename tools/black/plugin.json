@@ -1,0 +1,22 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "black",
+  "categories": ["formatter"],
+  "commands": {
+    "": ["--quiet", "$PATH"]
+  },
+  "description": "The uncompromising Python code formatter",
+  "homepage": "https://github.com/psf/black",
+  "languages": ["python"],
+  "name": null,
+  "npm": null,
+  "php": null,
+  "tests": [
+    {
+      "command": "",
+      "language": "python",
+      "test_input": "def add( a: int ,  b:int)->int: return a+b",
+      "test_output": "def add(a: int, b: int) -> int:\n    return a + b\n"
+    }
+  ]
+}

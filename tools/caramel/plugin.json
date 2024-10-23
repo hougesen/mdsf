@@ -1,0 +1,15 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "caramel",
+  "categories": ["formatter"],
+  "commands": {
+    "fmt": ["fmt", "$PATH"]
+  },
+  "description": "",
+  "homepage": "",
+  "languages": ["caramel"],
+  "name": null,
+  "npm": null,
+  "php": null,
+  "tests": []
+}

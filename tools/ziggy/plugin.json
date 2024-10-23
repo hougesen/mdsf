@@ -1,0 +1,15 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "ziggy",
+  "categories": ["formatter"],
+  "commands": {
+    "": ["fmt", "$PATH"]
+  },
+  "description": "Formats Ziggy documents and Ziggy schemas",
+  "homepage": "https://ziggy-lang.io/documentation/ziggy-fmt/",
+  "languages": ["ziggy"],
+  "name": null,
+  "npm": null,
+  "php": null,
+  "tests": []
+}

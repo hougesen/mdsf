@@ -1,0 +1,15 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "gersemi",
+  "categories": ["formatter"],
+  "commands": {
+    "": ["-i", "-q", "$PATH"]
+  },
+  "description": "A formatter to make your CMake code the real treasure",
+  "homepage": "https://github.com/blankspruce/gersemi",
+  "languages": ["cmake"],
+  "name": null,
+  "npm": null,
+  "php": null,
+  "tests": []
+}

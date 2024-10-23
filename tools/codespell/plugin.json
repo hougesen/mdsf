@@ -1,0 +1,15 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "codespell",
+  "categories": ["autocorrection"],
+  "commands": {
+    "": ["$PATH", "--check-hidden", "--write-changes"]
+  },
+  "description": "",
+  "homepage": "",
+  "languages": [],
+  "name": null,
+  "npm": null,
+  "php": null,
+  "tests": []
+}

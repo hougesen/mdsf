@@ -1,0 +1,23 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "dart",
+  "categories": ["formatter", "linter"],
+  "commands": {
+    "fix": ["fix", "$PATH"],
+    "format": ["format", "--apply", "$PATH"]
+  },
+  "description": "",
+  "homepage": "",
+  "languages": ["dart"],
+  "name": null,
+  "npm": null,
+  "php": null,
+  "tests": [
+    {
+      "command": "format",
+      "language": "dart",
+      "test_input": "class Adder {   int add(int a, int b) {     return a + b;   } }    ",
+      "test_output": "class Adder {\n  int add(int a, int b) {\n    return a + b;\n  }\n}\n"
+    }
+  ]
+}

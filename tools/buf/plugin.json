@@ -1,0 +1,22 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "buf",
+  "categories": ["formatter"],
+  "commands": {
+    "": ["format", "--write", "$PATH"]
+  },
+  "description": "The best way of working with Protocol Buffers",
+  "homepage": "https://buf.build/docs/reference/cli/buf/format/",
+  "languages": ["protobuf"],
+  "name": null,
+  "npm": "@bufbuild/buf",
+  "php": null,
+  "tests": [
+    {
+      "command": "",
+      "language": "protobuf",
+      "test_input": "service SearchService {\n                              rpc Search (SearchRequest) returns (SearchResponse);\n                               }",
+      "test_output": "service SearchService {\n  rpc Search(SearchRequest) returns (SearchResponse);\n}\n"
+    }
+  ]
+}
