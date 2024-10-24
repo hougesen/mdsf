@@ -199,7 +199,36 @@ pub fn generate() -> anyhow::Result<()> {
 
     let folder = "mdsf/src/tools";
 
+    std::fs::remove_dir_all(folder)?;
+
     let _ = std::fs::create_dir_all(folder);
+
+    let clean_mod_file = "#[derive(serde::Serialize, serde::Deserialize, Hash)]
+#[cfg_attr(test, derive(Debug, PartialEq, Eq))]
+#[cfg_attr(feature = \"json-schema\", derive(schemars::JsonSchema))]
+pub enum Tooling {}
+
+impl Tooling {
+    #[allow(clippy::too_many_lines)]
+    #[inline]
+    pub fn format_snippet(
+        &self,
+        _snippet_path: &std::path::Path,
+    ) -> Result<(bool, Option<String>), crate::error::MdsfError> {
+        todo!()
+    }
+}
+
+impl AsRef<str> for Tooling {
+    #[allow(clippy::too_many_lines)]
+    #[inline]
+    fn as_ref(&self) -> &str {
+        todo!()
+    }
+}
+";
+
+    std::fs::write(format!("{folder}/mod.rs"), clean_mod_file)?;
 
     let mut files = std::collections::HashSet::new();
 
