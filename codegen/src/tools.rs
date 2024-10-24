@@ -47,19 +47,21 @@ pub struct Tool {
 struct GeneratedCommand {
     enum_value: String,
 
-    serde_value: String,
+    module_name: String,
 
     fn_name: String,
 
     code: String,
+
+    serde_rename: String,
 }
 
 impl Tool {
     fn generate(&self) -> Vec<GeneratedCommand> {
         let fn_prefix = if let Some(name) = &self.name {
-            name.to_case(Case::Snake)
+            name.replace(".", "_").to_case(Case::Snake)
         } else {
-            self.binary.to_case(Case::Snake)
+            self.binary.replace(".", "_").to_case(Case::Snake)
         };
 
         let mut all_commands = Vec::new();
@@ -70,7 +72,7 @@ impl Tool {
                 if cmd.is_empty() {
                     String::new()
                 } else {
-                    format!("_{}", cmd.to_case(Case::Snake))
+                    format!("_{}", cmd.replace(".", "_").to_case(Case::Snake))
                 }
             );
 
@@ -171,10 +173,20 @@ pub fn {run_fn_name}(file_path: &std::path::Path) -> Result<(bool, Option<String
             );
 
             all_commands.push(GeneratedCommand {
-                enum_value: command_name.clone().to_case(Case::Pascal),
-                serde_value: command_name.clone().to_case(Case::Snake),
+                enum_value: command_name.to_case(Case::Pascal),
+                module_name: command_name.to_case(Case::Snake),
                 fn_name: run_fn_name,
                 code,
+                serde_rename: format!(
+                    "{}{}{}",
+                    if let Some(n) = &self.name {
+                        n
+                    } else {
+                        &self.binary
+                    },
+                    if cmd.is_empty() { "" } else { ":" },
+                    cmd
+                ),
             });
         }
 
@@ -206,26 +218,26 @@ pub fn generate() -> anyhow::Result<()> {
             let converted = parsed.generate();
 
             for command in converted {
-                std::fs::write(format!("{folder}/{}.rs", command.serde_value), command.code)?;
+                std::fs::write(format!("{folder}/{}.rs", command.module_name), command.code)?;
 
-                files.insert(command.serde_value.clone());
+                files.insert(command.module_name.clone());
                 enum_values.insert(format!(
-                    "{INDENT}#[serde(rename = \"{}\")]
+                    "{INDENT}#[serde(rename = \"{rename}\")]
 {INDENT}#[doc = \"{description} - [{homepage}]({homepage})\"]
-{INDENT}{},",
-                    command.serde_value,
-                    command.enum_value,
+{INDENT}{enum_name},",
+                    rename = command.serde_rename,
+                    enum_name = command.enum_value,
                     description = parsed.description,
                     homepage = parsed.homepage,
                 ));
                 format_snippet_values.insert(format!(
                     "{INDENT}{INDENT}{INDENT}Self::{} => {}::{}(snippet_path),",
-                    command.enum_value, command.serde_value, command.fn_name
+                    command.enum_value, command.module_name, command.fn_name
                 ));
 
                 as_ref_values.insert(format!(
                     "{INDENT}{INDENT}{INDENT}Self::{} => \"{}\",",
-                    command.enum_value, command.serde_value,
+                    command.enum_value, command.module_name,
                 ));
             }
         }
@@ -280,7 +292,7 @@ impl AsRef<str> for Tooling {{
 }}
 ",
         modules.join("\n"),
-        tooling_enum_content.join("\n"),
+        tooling_enum_content.join("\n\n"),
         format_snippet_content.join("\n"),
         as_ref_content.join("\n"),
     );
