@@ -1,0 +1,22 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "markdownfmt",
+  "categories": ["formatter"],
+  "commands": {
+    "": ["-w", "$PATH"]
+  },
+  "description": "Like gofmt, but for Markdown",
+  "homepage": "https://github.com/shurcooL/markdownfmt",
+  "languages": ["markdown"],
+  "name": null,
+  "npm": null,
+  "php": null,
+  "tests": [
+    {
+      "command": "",
+      "language": "markdown",
+      "test_input": "# hello w   world\n\nthis   text has      weird spacing\n\n- first\n* second",
+      "test_output": "hello w world\n=============\n\nthis text has weird spacing\n\n-\tfirst\n-\tsecond\n"
+    }
+  ]
+}

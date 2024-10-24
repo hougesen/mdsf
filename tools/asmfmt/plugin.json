@@ -1,0 +1,15 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "asmfmt",
+  "categories": ["formatter"],
+  "commands": {
+    "": ["-w", "$PATH"]
+  },
+  "description": "Go Assembler Formatter",
+  "homepage": "https://github.com/klauspost/asmfmt",
+  "languages": [],
+  "name": null,
+  "npm": null,
+  "php": null,
+  "tests": []
+}

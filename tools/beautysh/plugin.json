@@ -1,0 +1,28 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "beautysh",
+  "categories": ["formatter"],
+  "commands": {
+    "": ["$PATH"]
+  },
+  "description": "A Bash beautifier for the masses",
+  "homepage": "https://pypi.org/project/beautysh/",
+  "languages": ["shell", "bash"],
+  "name": null,
+  "npm": null,
+  "php": null,
+  "tests": [
+    {
+      "command": "",
+      "language": "shell",
+      "test_input": "#!/bin/shell\n\n       add() {\n    echo \"$1\" + \"$2\"\n             }\n",
+      "test_output": "#!/bin/shell\n\nadd() {\n    echo \"$1\" + \"$2\"\n}\n"
+    },
+    {
+      "command": "",
+      "language": "bash",
+      "test_input": "#!/bin/bash\n\n       add() {\n    echo \"$1\" + \"$2\"\n             }\n",
+      "test_output": "#!/bin/bash\n\nadd() {\n    echo \"$1\" + \"$2\"\n}\n"
+    }
+  ]
+}

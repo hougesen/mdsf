@@ -1,0 +1,15 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "bpfmt",
+  "categories": ["formatter"],
+  "commands": {
+    "": ["-w", "$PATH"]
+  },
+  "description": "A formatter for Blueprint files",
+  "homepage": "https://source.android.com/docs/setup/reference/androidbp#formatter",
+  "languages": ["blueprint"],
+  "name": null,
+  "npm": null,
+  "php": null,
+  "tests": []
+}

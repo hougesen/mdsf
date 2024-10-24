@@ -1,0 +1,15 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "brittany",
+  "categories": ["formatter"],
+  "commands": {
+    "": ["--write-mode=inplace", "$PATH"]
+  },
+  "description": "A Haskell source code formatter",
+  "homepage": "https://github.com/lspitzner/brittany",
+  "languages": ["haskell"],
+  "name": null,
+  "npm": null,
+  "php": null,
+  "tests": []
+}

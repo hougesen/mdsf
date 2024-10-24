@@ -1,4 +1,4 @@
-use crate::formatters::{MdsfFormatter, Tooling};
+use crate::{execution::MdsfFormatter, tools::Tooling};
 
 #[inline]
 pub fn default_config() -> (std::string::String, MdsfFormatter<Tooling>) {
@@ -7,7 +7,7 @@ pub fn default_config() -> (std::string::String, MdsfFormatter<Tooling>) {
         MdsfFormatter::Multiple(vec![MdsfFormatter::Multiple(vec![
             MdsfFormatter::Single(Tooling::Fourmolu),
             MdsfFormatter::Single(Tooling::Ormolu),
-            MdsfFormatter::Single(Tooling::HIndent),
+            MdsfFormatter::Single(Tooling::Hindent),
             MdsfFormatter::Single(Tooling::StylishHaskell),
         ])]),
     )

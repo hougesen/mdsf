@@ -1,0 +1,15 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "fnlfmt",
+  "categories": ["formatter"],
+  "commands": {
+    "": ["$PATH"]
+  },
+  "description": "A formatter for Fennel code",
+  "homepage": "https://git.sr.ht/~technomancy/fnlfmt",
+  "languages": ["fennel"],
+  "name": null,
+  "npm": null,
+  "php": null,
+  "tests": []
+}

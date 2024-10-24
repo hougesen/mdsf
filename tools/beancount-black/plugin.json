@@ -1,0 +1,15 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "bean-black",
+  "categories": ["formatter"],
+  "commands": {
+    "": ["$PATH"]
+  },
+  "description": "Opinionated code formatter, just like Python's black code formatter but for Beancount",
+  "homepage": "https://github.com/LaunchPlatform/beancount-black",
+  "languages": ["beancount"],
+  "name": "beancount-black",
+  "npm": null,
+  "php": null,
+  "tests": []
+}

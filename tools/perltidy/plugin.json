@@ -1,0 +1,15 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "perltidy",
+  "categories": ["formatter"],
+  "commands": {
+    "": ["-b", "$PATH"]
+  },
+  "description": "Perl::Tidy, a source code formatter for Perl",
+  "homepage": "https://github.com/perltidy/perltidy",
+  "languages": ["perl"],
+  "name": null,
+  "npm": null,
+  "php": null,
+  "tests": []
+}

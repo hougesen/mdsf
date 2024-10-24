@@ -1,0 +1,15 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "wfindent",
+  "categories": ["formatter"],
+  "commands": {
+    "": ["$PATH"]
+  },
+  "description": "Indents and optionally converts Fortran program sources",
+  "homepage": "https://github.com/wvermin/findent",
+  "languages": ["fortran"],
+  "name": null,
+  "npm": null,
+  "php": null,
+  "tests": []
+}

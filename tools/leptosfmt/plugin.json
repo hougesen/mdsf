@@ -1,0 +1,15 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "leptosfmt",
+  "categories": ["formatter"],
+  "commands": {
+    "": ["--quiet", "$PATH"]
+  },
+  "description": "A formatter for the leptos view! macro",
+  "homepage": "https://github.com/bram209/leptosfmt",
+  "languages": ["rust"],
+  "name": null,
+  "npm": null,
+  "php": null,
+  "tests": []
+}

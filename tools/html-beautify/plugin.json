@@ -1,0 +1,22 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "html-beautify",
+  "categories": ["formatter"],
+  "commands": {
+    "": ["-r", "--type", "html", "-f", "$PATH"]
+  },
+  "description": "A html formatter",
+  "homepage": "https://github.com/beautifier/js-beautify?tab=readme-ov-file#css--html",
+  "languages": ["html"],
+  "name": null,
+  "npm": "js-beautify",
+  "php": null,
+  "tests": [
+    {
+      "command": "",
+      "language": "html",
+      "test_input": "<div>\n                    <p>\n                    Mads was here\n                    </p>\n        </div>",
+      "test_output": "<div>\n    <p>\n        Mads was here\n    </p>\n</div>"
+    }
+  ]
+}

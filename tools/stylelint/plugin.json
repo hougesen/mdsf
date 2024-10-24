@@ -1,0 +1,15 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "stylelint",
+  "categories": ["linter"],
+  "commands": {
+    "": ["--fix", "$PATH"]
+  },
+  "description": "A mighty CSS linter that helps you avoid errors and enforce conventions",
+  "homepage": "https://github.com/stylelint/stylelint",
+  "languages": ["css", "scss"],
+  "name": null,
+  "npm": "stylelint",
+  "php": null,
+  "tests": []
+}

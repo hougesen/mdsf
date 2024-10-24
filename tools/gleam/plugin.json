@@ -1,0 +1,22 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "gleam",
+  "categories": ["formatter"],
+  "commands": {
+    "format": ["format", "$PATH"]
+  },
+  "description": "Format Gleam source code",
+  "homepage": "https://gleam.run",
+  "languages": ["gleam"],
+  "name": null,
+  "npm": null,
+  "php": null,
+  "tests": [
+    {
+      "command": "format",
+      "language": "gleam",
+      "test_input": "pub fn add(a:Int,b:Int)->Int{a+b}",
+      "test_output": "pub fn add(a: Int, b: Int) -> Int {\n  a + b\n}\n"
+    }
+  ]
+}

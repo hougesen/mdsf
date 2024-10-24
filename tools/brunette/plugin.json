@@ -1,0 +1,22 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "brunette",
+  "categories": ["formatter"],
+  "commands": {
+    "": ["--quiet", "$PATH"]
+  },
+  "description": "A best practice Python code formatter",
+  "homepage": "https://github.com/odwyersoftware/brunette",
+  "languages": ["python"],
+  "name": null,
+  "npm": null,
+  "php": null,
+  "tests": [
+    {
+      "command": "",
+      "language": "python",
+      "test_input": "def add( a: int ,  b:int)->int: return a+b",
+      "test_output": "def add(a: int, b: int) -> int:\n    return a + b\n"
+    }
+  ]
+}

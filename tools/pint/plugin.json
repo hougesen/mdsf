@@ -1,0 +1,15 @@
+{
+  "binary": "pint",
+  "commands": {
+    "": ["$PATH"]
+  },
+  "languages": ["php"],
+  "php": "pint",
+  "$schema": "../tool.schema.json",
+  "homepage": "https://github.com/laravel/pint",
+  "npm": null,
+  "name": null,
+  "tests": [],
+  "description": "Laravel Pint is an opinionated PHP code style fixer for minimalists",
+  "categories": ["formatter", "linter"]
+}

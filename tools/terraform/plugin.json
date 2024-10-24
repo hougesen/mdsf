@@ -1,0 +1,22 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "terraform",
+  "categories": ["formatter"],
+  "commands": {
+    "fmt": ["fmt", "-write=true", "$PATH"]
+  },
+  "description": "The terraform fmt command is used to rewrite Terraform configuration files to a canonical format and style",
+  "homepage": "https://www.terraform.io/docs/cli/commands/fmt.html",
+  "languages": ["terraform"],
+  "name": null,
+  "npm": null,
+  "php": null,
+  "tests": [
+    {
+      "command": "fmt",
+      "language": "terraform",
+      "test_input": "resource \"aws_instance\" \"example\" {\n                ami   = \"abc123\"\n\n           network_interface  {\n             }\n}\n",
+      "test_output": "resource \"aws_instance\" \"example\" {\n  ami = \"abc123\"\n\n  network_interface {\n  }\n}\n"
+    }
+  ]
+}

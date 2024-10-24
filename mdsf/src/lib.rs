@@ -5,7 +5,7 @@ use terminal::{print_error_reading_file, print_error_saving_file};
 
 use crate::{
     config::MdsfConfig,
-    formatters::format_snippet,
+    execution::format_snippet,
     parser::{parse_generic_codeblock, parse_go_codeblock},
     terminal::{
         print_changed_file, print_changed_file_error, print_unchanged_file, warn_unknown_language,
@@ -16,13 +16,14 @@ pub mod caching;
 pub mod cli;
 pub mod config;
 pub mod error;
-pub mod formatters;
+pub mod execution;
 pub mod fttype;
 pub mod generated;
 pub mod languages;
 mod parser;
 pub mod runners;
 pub mod terminal;
+mod tools;
 
 #[cfg(test)]
 pub static DEBUG: AtomicBool = AtomicBool::new(true);
@@ -217,7 +218,7 @@ pub struct LineInfo<'a> {
 }
 
 #[cfg(test)]
-impl<'a> LineInfo<'a> {
+impl LineInfo<'_> {
     pub fn fake() -> Self {
         Self {
             filename: std::path::Path::new("."),
@@ -232,10 +233,11 @@ impl<'a> LineInfo<'a> {
 mod tests {
     use crate::{
         config::MdsfConfig,
+        execution::{setup_snippet, MdsfFormatter},
         format_file,
-        formatters::{setup_snippet, MdsfFormatter, Tooling},
         fttype::get_file_extension,
         handle_file,
+        tools::Tooling,
     };
 
     #[test]
@@ -1083,7 +1085,7 @@ type Whatever struct {
             let config = MdsfConfig {
                 languages: std::collections::BTreeMap::from_iter([(
                     "go".to_string(),
-                    MdsfFormatter::Single(Tooling::GoFmt),
+                    MdsfFormatter::Single(Tooling::Gofmt),
                 )]),
                 ..MdsfConfig::default()
             };
@@ -1169,7 +1171,7 @@ type Whatever struct {
             let config = MdsfConfig {
                 languages: std::collections::BTreeMap::from_iter([(
                     "go".to_string(),
-                    MdsfFormatter::Single(Tooling::GoFmt),
+                    MdsfFormatter::Single(Tooling::Gofmt),
                 )]),
 
                 ..MdsfConfig::default()
@@ -1257,7 +1259,7 @@ func add(a int, b int) int {
             let config = MdsfConfig {
                 languages: std::collections::BTreeMap::from_iter([(
                     "go".to_string(),
-                    MdsfFormatter::Single(Tooling::GoFmt),
+                    MdsfFormatter::Single(Tooling::Gofmt),
                 )]),
                 ..Default::default()
             };
@@ -1286,7 +1288,7 @@ func add(a int, b int) int {
             let config = MdsfConfig {
                 languages: std::collections::BTreeMap::from_iter([(
                     "go".to_string(),
-                    MdsfFormatter::Single(Tooling::GoFmt),
+                    MdsfFormatter::Single(Tooling::Gofmt),
                 )]),
                 ..MdsfConfig::default()
             };

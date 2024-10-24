@@ -1,0 +1,22 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "mix",
+  "categories": ["formatter"],
+  "commands": {
+    "format": ["format", "$PATH"]
+  },
+  "description": "Code formatter for Elixir",
+  "homepage": "https://hexdocs.pm/mix/main/Mix.Tasks.Format.html",
+  "languages": ["elixir"],
+  "name": null,
+  "npm": null,
+  "php": null,
+  "tests": [
+    {
+      "command": "format",
+      "language": "elixir",
+      "test_input": "\n        def              add(a  ,      b   )   do    a   +   b                 end\n\n",
+      "test_output": "def add(a, b) do\n  a + b\nend\n"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "hfmt",
+  "categories": ["formatter"],
+  "commands": {
+    "": ["-w", "$PATH"]
+  },
+  "description": "Format Haskell programs. Inspired by the gofmt utility",
+  "homepage": "https://github.com/danstiner/hfmt",
+  "languages": ["haskell"],
+  "name": null,
+  "npm": null,
+  "php": null,
+  "tests": []
+}

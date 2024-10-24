@@ -1,4 +1,4 @@
-use crate::formatters::{MdsfFormatter, Tooling};
+use crate::{execution::MdsfFormatter, tools::Tooling};
 
 #[inline]
 pub fn default_config() -> (String, MdsfFormatter<Tooling>) {
@@ -10,12 +10,12 @@ pub fn default_config() -> (String, MdsfFormatter<Tooling>) {
                 MdsfFormatter::Single(Tooling::Isort),
             ]),
             MdsfFormatter::Multiple(vec![
-                MdsfFormatter::Single(Tooling::Ruff),
+                MdsfFormatter::Single(Tooling::RuffFormat),
                 MdsfFormatter::Single(Tooling::Blue),
                 MdsfFormatter::Single(Tooling::Black),
                 MdsfFormatter::Single(Tooling::Yapf),
                 MdsfFormatter::Single(Tooling::Autopep8),
-                MdsfFormatter::Single(Tooling::PyInk),
+                MdsfFormatter::Single(Tooling::Pyink),
             ]),
         ]),
     )

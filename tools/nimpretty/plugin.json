@@ -1,0 +1,22 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "nimpretty",
+  "categories": ["formatter"],
+  "commands": {
+    "": ["$PATH"]
+  },
+  "description": "Code formatter for the Nim programming language",
+  "homepage": "https://github.com/nim-lang/nim",
+  "languages": ["nim"],
+  "name": null,
+  "npm": null,
+  "php": null,
+  "tests": [
+    {
+      "command": "",
+      "language": "nim",
+      "test_input": "proc           add( a         :int , b:int )        : int =\n  return a +          b  ",
+      "test_output": "proc add(a: int, b: int): int =\n  return a + b\n"
+    }
+  ]
+}

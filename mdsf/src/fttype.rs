@@ -25,8 +25,7 @@ fn fallback_file_extension(language: &str) -> Option<&'static str> {
         "bean" | "beancount" | "beanhub" => Some(".bean"),
         "kcl" => Some(".k"),
         "htm" => Some(".htm"),
-        "shtml" => Some(".shtml"),
-        "superhtml" => Some(".shtml"),
+        "shtml" | "superhtml" => Some(".shtml"),
         _ => None,
     }
 }

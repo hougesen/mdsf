@@ -1,0 +1,15 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "pg_format",
+  "categories": ["formatter"],
+  "commands": {
+    "": ["--inplace", "$PATH"]
+  },
+  "description": "A PostgreSQL SQL syntax beautifier",
+  "homepage": "https://github.com/darold/pgFormatter",
+  "languages": ["sql"],
+  "name": null,
+  "npm": null,
+  "php": null,
+  "tests": []
+}

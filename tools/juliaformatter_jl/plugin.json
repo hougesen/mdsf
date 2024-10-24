@@ -1,0 +1,22 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "julia",
+  "categories": ["formatter"],
+  "commands": {
+    "": ["-E", "using JuliaFormatter;format_file(\\\"{$PATH_STRING}\\\")"]
+  },
+  "description": "An opinionated code formatter for Julia. Plot twist - the opinion is your own",
+  "homepage": "https://github.com/domluna/JuliaFormatter.jl",
+  "languages": ["julia"],
+  "name": "juliaformatter.jl",
+  "npm": null,
+  "php": null,
+  "tests": [
+    {
+      "command": "",
+      "language": "julia",
+      "test_input": "function add( a:: Int32,  b::Int32 )\n            c = a+ b\n            return c\n            end ",
+      "test_output": "function add(a::Int32, b::Int32)\n    c = a + b\n    return c\nend\n"
+    }
+  ]
+}

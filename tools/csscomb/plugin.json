@@ -1,0 +1,22 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "csscomb",
+  "categories": ["formatter"],
+  "commands": {
+    "": ["-t", "$PATH"]
+  },
+  "description": "CSS coding style formatter",
+  "homepage": "https://github.com/csscomb/csscomb.js",
+  "languages": ["css"],
+  "name": null,
+  "npm": "csscomb",
+  "php": null,
+  "tests": [
+    {
+      "command": "",
+      "language": "css",
+      "test_input": "h1   {color: blue;}\np {color: red;}",
+      "test_output": "h1\n{\n    color: blue;\n}\np\n{\n    color: red;\n}\n"
+    }
+  ]
+}

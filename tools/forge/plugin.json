@@ -1,0 +1,15 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "forge",
+  "categories": ["formatter"],
+  "commands": {
+    "fmt": ["fmt", "$PATH"]
+  },
+  "description": "A Solidity formatter",
+  "homepage": "https://github.com/foundry-rs/foundry",
+  "languages": ["solidity"],
+  "name": null,
+  "npm": null,
+  "php": null,
+  "tests": []
+}

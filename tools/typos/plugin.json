@@ -1,0 +1,22 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "typos",
+  "categories": ["autocorrection"],
+  "commands": {
+    "": ["-w", "--no-ignore", "--hidden", "$PATH"]
+  },
+  "description": "Source code spell checker",
+  "homepage": "https://github.com/crate-ci/typos",
+  "languages": [],
+  "name": null,
+  "npm": null,
+  "php": null,
+  "tests": [
+    {
+      "command": "",
+      "language": "python",
+      "test_input": "anouncement",
+      "test_output": "announcement"
+    }
+  ]
+}

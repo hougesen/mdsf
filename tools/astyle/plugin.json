@@ -1,0 +1,14 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "astyle",
+  "categories": ["formatter"],
+  "commands": {
+    "": ["--quiet", "$PATH"]
+  },
+  "description": "A Free, Fast, and Small Automatic Formatter for C, C++, C++/CLI, Objective-C, C#, and Java Source Code",
+  "homepage": "https://gitlab.com/saalen/astyle",
+  "languages": ["c", "c++", "objective-c", "c#", "java"],
+  "npm": null,
+  "php": null,
+  "tests": []
+}

@@ -1,0 +1,15 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "markuplint",
+  "categories": ["linter"],
+  "commands": {
+    "": ["--fix", "$PATH"]
+  },
+  "description": "An HTML linter for all markup developers",
+  "homepage": "https://markuplint.dev/",
+  "languages": ["html"],
+  "name": null,
+  "npm": "markuplint",
+  "php": null,
+  "tests": []
+}

@@ -1,0 +1,15 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "v",
+  "categories": ["formatter"],
+  "commands": {
+    "fmt": ["fmt", "-w", "$PATH"]
+  },
+  "description": "Tooling for V lang",
+  "homepage": "https://vlang.io/",
+  "languages": ["v"],
+  "name": null,
+  "npm": null,
+  "php": null,
+  "tests": []
+}

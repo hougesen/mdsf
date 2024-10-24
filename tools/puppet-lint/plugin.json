@@ -1,0 +1,15 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "puppet-lint",
+  "categories": ["linter"],
+  "commands": {
+    "": ["--fix", "$PATH"]
+  },
+  "description": "Check that your Puppet manifests conform to the style guide",
+  "homepage": "https://github.com/puppetlabs/puppet-lint",
+  "languages": ["puppet"],
+  "name": null,
+  "npm": null,
+  "php": null,
+  "tests": []
+}

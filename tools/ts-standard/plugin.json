@@ -1,0 +1,15 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "ts-standard",
+  "categories": ["formatter", "linter"],
+  "commands": {
+    "": ["--fix", "$PATH"]
+  },
+  "description": "Typescript style guide, linter, and formatter using StandardJS",
+  "homepage": "https://github.com/standard/ts-standard",
+  "languages": ["typescript"],
+  "name": null,
+  "npm": "ts-standard",
+  "php": null,
+  "tests": []
+}

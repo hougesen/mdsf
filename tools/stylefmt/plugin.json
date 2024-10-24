@@ -1,0 +1,28 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "stylefmt",
+  "categories": ["formatter"],
+  "commands": {
+    "": ["$PATH"]
+  },
+  "description": "stylefmt is a tool that automatically formats stylesheets",
+  "homepage": "https://github.com/matype/stylefmt",
+  "languages": ["css", "scss"],
+  "name": null,
+  "npm": "stylefmt",
+  "php": null,
+  "tests": [
+    {
+      "command": "",
+      "language": "scss",
+      "test_input": "// mixin for clearfix\n\n\n        @mixin      clearfix    ()      { &:before,\n  &:after {\n                content:\" \";\n    display              : table;  }\n\n  &:after        {clear: both;}\n   }.class\n{\n       padding:10px;@include        clearfix();}\n     .base {  color: red;  }\n\n// placeholder\n%base\n{\n\n\npadding: 12px\n}\n\n.foo{\n@extend      .base;}\n\n.bar\n      {     @extend            %base;\n\n}\n",
+      "test_output": "// mixin for clearfix\n\n\n@mixin clearfix() {\n  &:before,\n  &:after {\n    content: \" \";\n    display: table;\n  }\n\n  &:after {\n    clear: both;\n  }\n}\n\n.class {\n  padding: 10px;\n  @include clearfix();\n}\n\n.base {\n  color: red;\n}\n\n// placeholder\n%base {\n  padding: 12px;\n}\n\n.foo {\n  @extend .base;\n}\n\n.bar {\n  @extend %base;\n}\n"
+    },
+    {
+      "command": "",
+      "language": "css",
+      "test_input": "/* custom properties */\n:root{--fontSize: 1rem;\n  --mainColor       :#12345678;\n--highlightColor:hwb(190, 35%, 20%);\n}\n\n/* custom media queries */\n@custom-media\n\n--viewport-medium(width<=50rem);\n\n/* some var() & calc() */\nbody{color:var(--mainColor);\n    font-size:var(--fontSize);\n line-height: calc(var(--fontSize) * 1.5);\npadding: calc((var(--fontSize) / 2) + 1px)}\n\n/* custom media query usage */\n@media (--viewport-medium) {\nbody {font-size: calc(var(--fontSize) * 1.2); }\n}\n\n/* custom selectors */\n@custom-selector :--heading h1,h2,h3,    h4,h5,h6;\n:--heading { margin-top:0 }\n\n/* colors stuff */\na{\ncolor:var(--highlightColor);\n    transition:color 1s;\n}\na:hover{color  :gray(255,50%) }\na:active{color : rebeccapurple }\na:any-link { color:color(var(--highlightColor) blackness(+20%)) }\n\n/* font stuff */\nh2 {font-variant-caps:small-caps;\n}table{font-variant-numeric: lining-nums;\n}\n\n/* filters */\n.blur{filter:blur(4px)}.sepia{\nfilter: sepia(.8);}\n",
+      "test_output": "/* custom properties */\n:root {\n  --fontSize: 1rem;\n  --mainColor: #12345678;\n  --highlightColor: hwb(190, 35%, 20%);\n}\n\n/* custom media queries */\n@custom-media --viewport-medium (width <= 50rem);\n\n/* some var() & calc() */\nbody {\n  color: var(--mainColor);\n  font-size: var(--fontSize);\n  line-height: calc(var(--fontSize) * 1.5);\n  padding: calc((var(--fontSize) / 2) + 1px);\n}\n\n/* custom media query usage */\n@media (--viewport-medium) {\n  body {\n    font-size: calc(var(--fontSize) * 1.2);\n  }\n}\n\n/* custom selectors */\n@custom-selector :--heading h1, h2, h3, h4, h5, h6;\n\n:--heading {\n  margin-top: 0;\n}\n\n/* colors stuff */\na {\n  color: var(--highlightColor);\n  transition: color 1s;\n}\n\na:hover {\n  color: gray(255, 50%);\n}\n\na:active {\n  color: rebeccapurple;\n}\n\na:any-link {\n  color: color(var(--highlightColor) blackness(+20%));\n}\n\n/* font stuff */\nh2 {\n  font-variant-caps: small-caps;\n}\n\ntable {\n  font-variant-numeric: lining-nums;\n}\n\n/* filters */\n.blur {\n  filter: blur(4px);\n}\n\n.sepia {\n  filter: sepia(.8);\n}\n"
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "just",
+  "categories": ["formatter"],
+  "commands": {
+    "": ["--fmt", "--unstable", "--justfile", "$PATH"]
+  },
+  "description": "A formatter for justfiles",
+  "homepage": "https://github.com/casey/just",
+  "languages": ["just"],
+  "name": null,
+  "npm": null,
+  "php": null,
+  "tests": [
+    {
+      "command": "",
+      "language": "just",
+      "test_input": "build:\n                cargo build\n                cargo build --release\n            ",
+      "test_output": "build:\n    cargo build\n    cargo build --release\n"
+    }
+  ]
+}

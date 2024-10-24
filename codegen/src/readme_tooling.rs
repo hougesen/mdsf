@@ -51,7 +51,7 @@ fn create_table(schema: Vec<Tool>) -> String {
 
         formatter_width = formatter_width.max(formatter.len());
 
-        let description = format!("[{}]({})", tool.description.trim(), tool.description.trim());
+        let description = tool.description.trim().to_string();
 
         description_width = description_width.max(description.len());
 

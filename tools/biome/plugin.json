@@ -1,0 +1,36 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "biome",
+  "categories": ["formatter", "linter"],
+  "commands": {
+    "check": ["check", "--write", "$PATH"],
+    "format": ["format", "--write", "$PATH"],
+    "lint": ["lint", "--write", "$PATH"]
+  },
+  "description": "One toolchain for your web project",
+  "homepage": "https://biomejs.dev/",
+  "languages": ["javascript", "typescript", "vue", "json"],
+  "name": null,
+  "npm": "@biome/biomejs",
+  "php": null,
+  "tests": [
+    {
+      "command": "format",
+      "language": "json",
+      "test_input": "\n              {\n              \"key\": \"value\",\n  \"key2\": [\n      \"value2\",\n      \"value3\",\n      1\n            , null]\n }\n  ",
+      "test_output": "{\n\t\"key\": \"value\",\n\t\"key2\": [\"value2\", \"value3\", 1, null]\n}\n"
+    },
+    {
+      "command": "format",
+      "language": "javascript",
+      "test_input": "\n    async function asyncAddition(\n            a,b\n        ) {\n        return a+b\n    }\n\n            ",
+      "test_output": "async function asyncAddition(a, b) {\n\treturn a + b;\n}\n"
+    },
+    {
+      "command": "format",
+      "language": "typescript",
+      "test_input": "\n    async function asyncAddition(\n            a:number,b:number\n        ) :Promise<\nnumber>\n    {\n        return a+b\n    }\n\n            ",
+      "test_output": "async function asyncAddition(a: number, b: number): Promise<number> {\n\treturn a + b;\n}\n"
+    }
+  ]
+}

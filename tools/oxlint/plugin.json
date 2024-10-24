@@ -1,0 +1,15 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "oxlint",
+  "categories": ["linter"],
+  "commands": {
+    "": ["--fix", "$PATH"]
+  },
+  "description": "Oxlint is designed to catch erroneous or useless code without requiring any configurations by default",
+  "homepage": "https://oxc.rs/docs/guide/usage/linter.html",
+  "languages": ["javascript", "typescript"],
+  "name": null,
+  "npm": "oxlint",
+  "php": null,
+  "tests": []
+}

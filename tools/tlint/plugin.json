@@ -1,0 +1,15 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "tlint",
+  "categories": ["linter"],
+  "commands": {
+    "format": ["format", "$PATH"]
+  },
+  "description": "Tighten linter for Laravel conventions",
+  "homepage": "https://github.com/tighten/tlint",
+  "languages": ["php"],
+  "name": null,
+  "npm": null,
+  "php": "tlint",
+  "tests": []
+}

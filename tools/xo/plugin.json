@@ -1,0 +1,15 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "xo",
+  "categories": ["linter"],
+  "commands": {
+    "": ["--fix", "$PATH"]
+  },
+  "description": "JavaScript/TypeScript linter (ESLint wrapper) with great defaults",
+  "homepage": "http://github.com/xojs/xo",
+  "languages": ["javascript", "typescript"],
+  "name": null,
+  "npm": "xo",
+  "php": null,
+  "tests": []
+}

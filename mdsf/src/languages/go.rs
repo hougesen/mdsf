@@ -1,4 +1,4 @@
-use crate::formatters::{MdsfFormatter, Tooling};
+use crate::{execution::MdsfFormatter, tools::Tooling};
 
 #[inline]
 pub fn default_config() -> (String, MdsfFormatter<Tooling>) {
@@ -6,14 +6,14 @@ pub fn default_config() -> (String, MdsfFormatter<Tooling>) {
         "go".to_string(),
         MdsfFormatter::Multiple(vec![
             MdsfFormatter::Multiple(vec![
-                MdsfFormatter::Single(Tooling::GCI),
-                MdsfFormatter::Single(Tooling::GoImportsReviser),
-                MdsfFormatter::Single(Tooling::GoImports),
+                MdsfFormatter::Single(Tooling::Gci),
+                MdsfFormatter::Single(Tooling::GoimportsReviser),
+                MdsfFormatter::Single(Tooling::Goimports),
             ]),
             MdsfFormatter::Multiple(vec![
-                MdsfFormatter::Single(Tooling::GoFumpt),
-                MdsfFormatter::Single(Tooling::GoFmt),
-                MdsfFormatter::Single(Tooling::CrlFmt),
+                MdsfFormatter::Single(Tooling::Gofumpt),
+                MdsfFormatter::Single(Tooling::Gofmt),
+                MdsfFormatter::Single(Tooling::Crlfmt),
             ]),
         ]),
     )

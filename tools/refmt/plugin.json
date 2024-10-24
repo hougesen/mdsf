@@ -1,0 +1,15 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "refmt",
+  "categories": ["formatter"],
+  "commands": {
+    "": ["--in-place", "$PATH"]
+  },
+  "description": "refmt stands by Reason Formatter and it formats Reason programs, is a parser and pretty-printer for Reason",
+  "homepage": "https://reasonml.github.io/docs/en/refmt",
+  "languages": ["reason"],
+  "name": null,
+  "npm": null,
+  "php": null,
+  "tests": []
+}

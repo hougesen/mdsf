@@ -1,0 +1,15 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "joker",
+  "categories": ["linter", "formatter"],
+  "commands": {
+    "": ["--format", "--write", "$PATH"]
+  },
+  "description": "Small Clojure interpreter, linter and formatter",
+  "homepage": "https://github.com/candid82/joker",
+  "languages": ["clojure"],
+  "name": null,
+  "npm": null,
+  "php": null,
+  "tests": []
+}

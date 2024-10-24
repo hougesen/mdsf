@@ -1,0 +1,15 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "rune",
+  "categories": ["formatter"],
+  "commands": {
+    "fmt": ["fmt", "$PATH"]
+  },
+  "description": "Tools for the Rune programming language",
+  "homepage": "https://github.com/rune-rs/rune",
+  "languages": ["rune"],
+  "name": null,
+  "npm": null,
+  "php": null,
+  "tests": []
+}

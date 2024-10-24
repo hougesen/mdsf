@@ -1,0 +1,23 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "sqlfluff",
+  "categories": ["formatter", "linter"],
+  "commands": {
+    "fix": ["fix", "--dialect", "ansi", "$PATH"],
+    "format": ["format", "--dialect", "ansi", "$PATH"]
+  },
+  "description": "A modular SQL linter and auto-formatter with support for multiple dialects and templated code",
+  "homepage": "https://github.com/sqlfluff/sqlfluff",
+  "languages": ["sql"],
+  "name": null,
+  "npm": null,
+  "php": null,
+  "tests": [
+    {
+      "command": "format",
+      "language": "sql",
+      "test_input": "SELECT  *                  FROM  tbl\n                        WHERE                      foo   = 'bar';         ",
+      "test_output": "SELECT * FROM tbl\nWHERE foo = 'bar';\n"
+    }
+  ]
+}
