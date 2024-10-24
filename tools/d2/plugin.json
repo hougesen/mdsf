@@ -3,7 +3,7 @@
   "binary": "d2",
   "categories": ["formatter"],
   "commands": {
-    "": ["fmt", "$PATH"]
+    "fmt": ["fmt", "$PATH"]
   },
   "description": "Formatter for the d2 language",
   "homepage": "https://d2lang.com/",

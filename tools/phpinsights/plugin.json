@@ -1,0 +1,15 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "phpinsights",
+  "categories": ["linter"],
+  "commands": {
+    "fix": ["fix", "$PATH", "--no-interaction", "--quiet"]
+  },
+  "description": "Instant PHP quality checks from your console",
+  "homepage": "https://github.com/nunomaduro/phpinsights",
+  "languages": ["php"],
+  "name": null,
+  "npm": null,
+  "php": "phpinsights",
+  "tests": []
+}

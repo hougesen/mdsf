@@ -1,0 +1,15 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "kulala-fmt",
+  "categories": ["formatter"],
+  "commands": {
+    "": ["$PATH"]
+  },
+  "description": "An opinionated 🦄 .http and .rest 🐼 files linter 💄 and formatter ⚡.",
+  "homepage": "https://github.com/mistweaverco/kulala-fmt",
+  "languages": ["http"],
+  "name": null,
+  "npm": null,
+  "php": null,
+  "tests": []
+}

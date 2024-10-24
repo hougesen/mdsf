@@ -1,0 +1,22 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "rubocop",
+  "categories": ["formatter", "linter"],
+  "commands": {
+    "": ["--fix-layout", "--autocorrect", "--format", "quiet", "$PATH"]
+  },
+  "description": "A Ruby static code analyzer and formatter, based on the community Ruby style guide",
+  "homepage": "https://github.com/rubocop/rubocop",
+  "languages": ["ruby"],
+  "name": null,
+  "npm": null,
+  "php": null,
+  "tests": [
+    {
+      "command": "",
+      "language": "ruby",
+      "test_input": "def   add(  a ,                                                          b )\n                        return a + b\n                end",
+      "test_output": "def add(a, b)\n  return a + b\nend\n"
+    }
+  ]
+}

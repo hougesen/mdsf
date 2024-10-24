@@ -1,0 +1,22 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "swiftformat",
+  "categories": ["formatter"],
+  "commands": {
+    "": ["--quiet", "$PATH"]
+  },
+  "description": "A command-line tool and Xcode Extension for formatting Swift code",
+  "homepage": "https://github.com/nicklockwood/SwiftFormat",
+  "languages": ["swift"],
+  "name": null,
+  "npm": null,
+  "php": null,
+  "tests": [
+    {
+      "command": "",
+      "language": "swift",
+      "test_input": " func add(a:Int ,b:Int)->Int {\n    return a + b\n    }",
+      "test_output": "func add(a: Int, b: Int) -> Int {\n    return a + b\n}\n"
+    }
+  ]
+}

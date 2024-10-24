@@ -1,0 +1,15 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "ufmt",
+  "categories": ["formatter"],
+  "commands": {
+    "": ["format", "$PATH"]
+  },
+  "description": "Safe, atomic formatting with black and usort",
+  "homepage": "https://github.com/omnilib/ufmt",
+  "languages": ["python"],
+  "name": null,
+  "npm": null,
+  "php": null,
+  "tests": []
+}

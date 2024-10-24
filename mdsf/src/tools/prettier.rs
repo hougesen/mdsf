@@ -1,10 +1,9 @@
 use std::process::Command;
 
-use crate::{error::MdsfError, formatters::execute_command, runners::CommandType};
+use crate::{error::MdsfError, execution::execute_command, runners::CommandType};
 
 #[inline]
 fn set_prettier_args(mut cmd: Command, file_path: &std::path::Path) -> Command {
-    cmd.arg("format");
     cmd.arg("--embedded-language-formatting");
     cmd.arg("off");
     cmd.arg("--log-level");

@@ -5,8 +5,8 @@
   "commands": {
     "": ["$PATH"]
   },
-  "description": "",
-  "homepage": "",
+  "description": "Extensible Haskell pretty printer",
+  "homepage": "https://github.com/mihaimaruseac/hindent",
   "languages": ["haskell"],
   "name": null,
   "npm": null,

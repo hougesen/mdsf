@@ -1,0 +1,34 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "shfmt",
+  "categories": ["formatter"],
+  "commands": {
+    "": ["--write", "$PATH"]
+  },
+  "description": "Shell script formatter",
+  "homepage": "https://github.com/mvdan/sh",
+  "languages": ["shell"],
+  "name": null,
+  "npm": null,
+  "php": null,
+  "tests": [
+    {
+      "command": "",
+      "language": "shell",
+      "test_input": "\n\n#!/bin/sh\n\n       add      ()   {\n    echo \"$1\"                 +          \"$2\"\n             }\n\n\n\n\n\n\n\n\n",
+      "test_output": "#!/bin/sh\n\nadd() {\n\techo \"$1\" + \"$2\"\n}\n"
+    },
+    {
+      "command": "",
+      "language": "bash",
+      "test_input": "\n\n#!/bin/bash\n\n       add      ()   {\n    echo \"$1\"                 +          \"$2\"\n             }\n\n\n\n\n\n\n\n\n",
+      "test_output": "#!/bin/bash\n\nadd() {\n\techo \"$1\" + \"$2\"\n}\n"
+    },
+    {
+      "command": "",
+      "language": "zsh",
+      "test_input": "\n\n#!/bin/zsh\n\n       add      ()   {\n    echo \"$1\"                 +          \"$2\"\n             }\n\n\n\n\n\n\n\n\n",
+      "test_output": "#!/bin/zsh\n\nadd() {\n\techo \"$1\" + \"$2\"\n}\n"
+    }
+  ]
+}

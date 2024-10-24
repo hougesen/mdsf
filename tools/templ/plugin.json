@@ -1,0 +1,15 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "templ",
+  "categories": ["formatter"],
+  "commands": {
+    "fmt": ["fmt", "$PATH"]
+  },
+  "description": "Tooling for the Templ template language",
+  "homepage": "https://templ.guide/",
+  "languages": ["templ", "go"],
+  "name": null,
+  "npm": null,
+  "php": null,
+  "tests": []
+}

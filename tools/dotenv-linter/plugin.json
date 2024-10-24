@@ -3,7 +3,7 @@
   "binary": "dotenv-linter",
   "categories": ["linter"],
   "commands": {
-    "": ["fix", "$PATH"]
+    "fix": ["fix", "$PATH"]
   },
   "description": "Lightning-fast linter for .env files",
   "homepage": "https://github.com/dotenv-linter/dotenv-linter",

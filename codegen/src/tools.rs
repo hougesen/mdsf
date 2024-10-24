@@ -3,6 +3,7 @@ use convert_case::{Case, Casing};
 const INDENT: &str = "    ";
 
 #[derive(Debug, serde::Deserialize, schemars::JsonSchema)]
+#[schemars(deny_unknown_fields)]
 struct ToolTest {
     #[expect(unused)]
     language: String,
@@ -18,7 +19,12 @@ struct ToolTest {
 }
 
 #[derive(Debug, serde::Deserialize, schemars::JsonSchema)]
+#[schemars(deny_unknown_fields)]
 pub struct Tool {
+    #[expect(unused)]
+    #[serde(rename = "$schema")]
+    schema: String,
+
     name: Option<String>,
 
     binary: String,
@@ -140,7 +146,7 @@ impl Tool {
             let code = format!(
                 "use std::process::Command;
 
-use crate::{{error::MdsfError, formatters::execute_command, runners::CommandType}};
+use crate::{{error::MdsfError, execution::execute_command, runners::CommandType}};
 
 #[inline]
 fn {set_args_fn_name}(mut cmd: Command, file_path: &std::path::Path) -> Command {{

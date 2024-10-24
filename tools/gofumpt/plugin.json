@@ -5,8 +5,8 @@
   "commands": {
     "": ["-w", "$PATH"]
   },
-  "description": "",
-  "homepage": "",
+  "description": "A stricter gofmt",
+  "homepage": "https://github.com/mvdan/gofumpt",
   "languages": ["go"],
   "name": null,
   "npm": null,

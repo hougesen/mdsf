@@ -5,12 +5,11 @@
   "commands": {
     "": ["-w", "$PATH"]
   },
-  "description": "",
-  "homepage": "",
+  "description": "A golang formatter that fixes long lines",
+  "homepage": "https://github.com/segmentio/golines",
   "languages": ["go"],
   "name": null,
   "npm": null,
-  "path": null,
   "php": null,
   "tests": [
     {

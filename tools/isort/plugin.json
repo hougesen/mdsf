@@ -5,8 +5,8 @@
   "commands": {
     "": ["--quiet", "$PATH"]
   },
-  "description": "",
-  "homepage": "",
+  "description": "A Python utility to sort imports",
+  "homepage": "https://github.com/timothycrosley/isort",
   "languages": ["python"],
   "name": null,
   "npm": null,

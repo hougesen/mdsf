@@ -3,6 +3,7 @@
   "title": "Tool",
   "type": "object",
   "required": [
+    "$schema",
     "binary",
     "categories",
     "commands",
@@ -12,6 +13,9 @@
     "tests"
   ],
   "properties": {
+    "$schema": {
+      "type": "string"
+    },
     "binary": {
       "type": "string"
     },
@@ -60,6 +64,7 @@
       }
     }
   },
+  "additionalProperties": false,
   "definitions": {
     "ToolTest": {
       "type": "object",
@@ -77,7 +82,8 @@
         "test_output": {
           "type": "string"
         }
-      }
+      },
+      "additionalProperties": false
     }
   }
 }

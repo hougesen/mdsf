@@ -1,0 +1,22 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "nixfmt",
+  "categories": ["formatter"],
+  "commands": {
+    "": ["$PATH"]
+  },
+  "description": "The official (but not yet stable) formatter for Nix code",
+  "homepage": "https://github.com/serokell/nixfmt",
+  "languages": ["nix"],
+  "name": null,
+  "npm": null,
+  "php": null,
+  "tests": [
+    {
+      "command": "",
+      "language": "nix",
+      "test_input": "{ lib, buildPythonPackage, fetchFromGitHub, redis }:\n\nbuildPythonPackage rec {\n  pname = \"huey\";\n  version = \"2.4.2\";\n\n  src = fetchFromGitHub {\n    owner = \"coleifer\";\n    repo = pname;\n    rev = version;\n    sha256 = \"00fi04991skq61gjrmig8ry6936pc8zs7p8py8spfipbxf1irkjg\";\n  };\n\n  propagatedBuildInputs = [ redis ];\n\n  # connects to redis\n  doCheck = false;\n\n  meta = with lib; {\n    description = \"A little task queue for python\";\n    homepage = \"https://github.com/coleifer/huey\";\n    license = licenses.mit;\n    maintainers = [ maintainers.globin ];\n  };\n}\n",
+      "test_output": "{ lib, buildPythonPackage, fetchFromGitHub, redis }:\n\nbuildPythonPackage rec {\n  pname = \"huey\";\n  version = \"2.4.2\";\n\n  src = fetchFromGitHub {\n    owner = \"coleifer\";\n    repo = pname;\n    rev = version;\n    sha256 = \"00fi04991skq61gjrmig8ry6936pc8zs7p8py8spfipbxf1irkjg\";\n  };\n\n  propagatedBuildInputs = [ redis ];\n\n  # connects to redis\n  doCheck = false;\n\n  meta = with lib; {\n    description = \"A little task queue for python\";\n    homepage = \"https://github.com/coleifer/huey\";\n    license = licenses.mit;\n    maintainers = [ maintainers.globin ];\n  };\n}\n"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "dprint",
+  "categories": ["formatter"],
+  "commands": {
+    "fmt": ["fmt", "$PATH"]
+  },
+  "description": "A pluggable and configurable code formatting platform written in Rust",
+  "homepage": "https://dprint.dev/",
+  "languages": [],
+  "name": null,
+  "npm": "dprint",
+  "php": null,
+  "tests": []
+}

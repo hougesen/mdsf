@@ -5,10 +5,10 @@
   "commands": {
     "": ["-E", "using JuliaFormatter;format_file(\\\"{$PATH_STRING}\\\")"]
   },
-  "description": "",
-  "homepage": "",
+  "description": "An opinionated code formatter for Julia. Plot twist - the opinion is your own",
+  "homepage": "https://github.com/domluna/JuliaFormatter.jl",
   "languages": ["julia"],
-  "name": "juliaformatter_jl",
+  "name": "juliaformatter.jl",
   "npm": null,
   "php": null,
   "tests": [

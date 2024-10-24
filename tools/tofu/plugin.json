@@ -1,0 +1,22 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "tofu",
+  "categories": ["formatter"],
+  "commands": {
+    "fmt": ["fmt", "-write=true", "$PATH"]
+  },
+  "description": "The tofu fmt command is used to rewrite OpenTofu configuration files to a canonical format and style",
+  "homepage": "https://opentofu.org/docs/cli/commands/fmt/",
+  "languages": ["terraform", "tofu"],
+  "name": null,
+  "npm": null,
+  "php": null,
+  "tests": [
+    {
+      "command": "fmt",
+      "language": "terraform",
+      "test_input": "resource \"aws_instance\" \"example\" {\n                ami   = \"abc123\"\n\n           network_interface  {\n             }\n}\n",
+      "test_output": "resource \"aws_instance\" \"example\" {\n  ami = \"abc123\"\n\n  network_interface {\n  }\n}\n"
+    }
+  ]
+}

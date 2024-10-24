@@ -3,7 +3,7 @@
   "binary": "buf",
   "categories": ["formatter"],
   "commands": {
-    "": ["format", "--write", "$PATH"]
+    "format": ["format", "--write", "$PATH"]
   },
   "description": "The best way of working with Protocol Buffers",
   "homepage": "https://buf.build/docs/reference/cli/buf/format/",

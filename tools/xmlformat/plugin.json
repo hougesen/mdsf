@@ -1,0 +1,22 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "xmlformat",
+  "categories": ["formatter"],
+  "commands": {
+    "": ["--overwrite", "$PATH"]
+  },
+  "description": "Format and compress XML documents",
+  "homepage": "https://github.com/pamoller/xmlformatter",
+  "languages": ["xml"],
+  "name": null,
+  "npm": null,
+  "php": null,
+  "tests": [
+    {
+      "command": "",
+      "language": "xml",
+      "test_input": "\n<note>\n  <to>Tove</to>\n          <from>Jani</from>\n      <heading>Reminder</heading>\n        <body>Don't forget me this weekend!</body>\n   </note>",
+      "test_output": "<note>\n  <to>Tove</to>\n  <from>Jani</from>\n  <heading>Reminder</heading>\n  <body>Don't forget me this weekend!</body>\n</note>"
+    }
+  ]
+}

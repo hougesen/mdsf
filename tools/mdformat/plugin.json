@@ -1,0 +1,15 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "mdformat",
+  "categories": ["formatter"],
+  "commands": {
+    "": ["$PATH"]
+  },
+  "description": "CommonMark compliant Markdown formatter",
+  "homepage": "https://github.com/executablebooks/mdformat",
+  "languages": ["markdwon"],
+  "name": null,
+  "npm": null,
+  "php": null,
+  "tests": []
+}

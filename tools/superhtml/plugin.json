@@ -3,10 +3,10 @@
   "binary": "superhtml",
   "categories": ["formatter"],
   "commands": {
-    "": ["fmt", "$PATH"]
+    "fmt": ["fmt", "$PATH"]
   },
-  "description": "",
-  "homepage": "",
+  "description": "HTML Language Server & Templating Language Library",
+  "homepage": "https://github.com/kristoff-it/superhtml",
   "languages": ["html"],
   "name": null,
   "npm": null,

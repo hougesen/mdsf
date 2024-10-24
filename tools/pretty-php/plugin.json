@@ -1,0 +1,15 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "pretty-php",
+  "categories": ["formatter"],
+  "commands": {
+    "": ["$PATH"]
+  },
+  "description": "The opinionated PHP code formatter",
+  "homepage": "https://github.com/lkrms/pretty-php",
+  "languages": ["php"],
+  "name": null,
+  "npm": null,
+  "php": "pretty-php",
+  "tests": []
+}

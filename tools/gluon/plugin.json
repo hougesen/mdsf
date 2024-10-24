@@ -1,13 +1,13 @@
 {
   "$schema": "../tool.schema.json",
   "binary": "gluon",
-  "categories": [],
+  "categories": ["formatter"],
   "commands": {
-    "": ["fmt", "$PATH"]
+    "fmt": ["fmt", "$PATH"]
   },
-  "description": "",
-  "homepage": "",
-  "languages": [],
+  "description": "Code formatting for the gluon programming language",
+  "homepage": "https://github.com/gluon-lang/gluon",
+  "languages": ["gluon"],
   "name": null,
   "npm": null,
   "php": null,

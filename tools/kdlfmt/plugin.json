@@ -1,0 +1,15 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "kdlfmt",
+  "categories": ["formatter"],
+  "commands": {
+    "": ["format", "$PATH"]
+  },
+  "description": "A formatter for kdl documents",
+  "homepage": "https://github.com/hougesen/kdlfmt",
+  "languages": ["kdl"],
+  "name": null,
+  "npm": null,
+  "php": null,
+  "tests": []
+}

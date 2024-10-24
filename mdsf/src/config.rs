@@ -1,7 +1,7 @@
 use json_comments::{CommentSettings, StripComments};
 
 use crate::{
-    error::MdsfError, formatters::MdsfFormatter, languages::default_tools,
+    error::MdsfError, execution::MdsfFormatter, languages::default_tools,
     runners::JavaScriptRuntime, terminal::print_config_not_found, tools::Tooling,
 };
 

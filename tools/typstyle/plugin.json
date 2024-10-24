@@ -1,0 +1,15 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "typstyle",
+  "categories": ["formatter"],
+  "commands": {
+    "": ["-i", "$PATH"]
+  },
+  "description": "Beautiful and reliable typst code formatter",
+  "homepage": "https://github.com/Enter-tainer/typstyle",
+  "languages": ["typst"],
+  "name": null,
+  "npm": null,
+  "php": null,
+  "tests": []
+}
