@@ -23,6 +23,7 @@ pub mod bslint;
 pub mod buf_format;
 pub mod buildifier;
 pub mod cabal_format;
+pub mod caddy_fmt;
 pub mod caramel_fmt;
 pub mod clang_format;
 pub mod clang_tidy;
@@ -302,6 +303,10 @@ pub enum Tooling {
     #[serde(rename = "cabal:format")]
     /// `cabal format $PATH`
     CabalFormat,
+
+    #[serde(rename = "caddy:fmt")]
+    /// `caddy fmt $PATH -w`
+    CaddyFmt,
 
     #[serde(rename = "caramel:fmt")]
     /// `caramel fmt $PATH`
@@ -1037,6 +1042,7 @@ impl Tooling {
             Self::BufFormat => buf_format::run(snippet_path),
             Self::Buildifier => buildifier::run(snippet_path),
             Self::CabalFormat => cabal_format::run(snippet_path),
+            Self::CaddyFmt => caddy_fmt::run(snippet_path),
             Self::CaramelFmt => caramel_fmt::run(snippet_path),
             Self::ClangFormat => clang_format::run(snippet_path),
             Self::ClangTidy => clang_tidy::run(snippet_path),
@@ -1246,6 +1252,7 @@ impl AsRef<str> for Tooling {
             Self::BufFormat => "buf_format",
             Self::Buildifier => "buildifier",
             Self::CabalFormat => "cabal_format",
+            Self::CaddyFmt => "caddy_fmt",
             Self::CaramelFmt => "caramel_fmt",
             Self::ClangFormat => "clang_format",
             Self::ClangTidy => "clang_tidy",
