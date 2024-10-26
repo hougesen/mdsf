@@ -709,6 +709,11 @@
           "enum": ["prettypst"]
         },
         {
+          "description": "`protolint lint -fix $PATH`",
+          "type": "string",
+          "enum": ["protolint"]
+        },
+        {
           "description": "`puppet-lint --fix $PATH`",
           "type": "string",
           "enum": ["puppet-lint"]
