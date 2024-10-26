@@ -184,7 +184,7 @@ mdsf init
 
 <!-- START_SECTION:supported-tools -->
 
-`mdsf` currently supports 206 commands. Feel free to open an issue/pull-request if your favorite tool is missing! 😃
+`mdsf` currently supports 207 commands. Feel free to open an issue/pull-request if your favorite tool is missing! 😃
 
 | Name                     | Command                                                                                |
 | ------------------------ | -------------------------------------------------------------------------------------- |
@@ -311,6 +311,7 @@ mdsf init
 | `npm-groovy-lint`        | `npm-groovy-lint --format PATH`                                                        |
 | `ocamlformat`            | `ocamlformat --ignore-invalid-option --inplace --enable-outside-detected-project PATH` |
 | `ocp-indent`             | `ocp-indent --inplace PATH`                                                            |
+| `opa:fmt`                | `opa fmt PATH -w`                                                                      |
 | `ormolu`                 | `ormolu --mode inplace PATH`                                                           |
 | `oxlint`                 | `oxlint --fix PATH`                                                                    |
 | `packer:fmt`             | `packer fmt PATH`                                                                      |

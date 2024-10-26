@@ -121,6 +121,7 @@ pub mod nph;
 pub mod npm_groovy_lint;
 pub mod ocamlformat;
 pub mod ocp_indent;
+pub mod opa_fmt;
 pub mod ormolu;
 pub mod oxlint;
 pub mod packer_fmt;
@@ -701,6 +702,10 @@ pub enum Tooling {
     /// `ocp-indent --inplace $PATH`
     OcpIndent,
 
+    #[serde(rename = "opa:fmt")]
+    /// `opa fmt $PATH -w`
+    OpaFmt,
+
     #[serde(rename = "ormolu")]
     /// `ormolu --mode inplace $PATH`
     Ormolu,
@@ -1165,6 +1170,7 @@ impl Tooling {
             Self::NpmGroovyLint => npm_groovy_lint::run(snippet_path),
             Self::Ocamlformat => ocamlformat::run(snippet_path),
             Self::OcpIndent => ocp_indent::run(snippet_path),
+            Self::OpaFmt => opa_fmt::run(snippet_path),
             Self::Ormolu => ormolu::run(snippet_path),
             Self::Oxlint => oxlint::run(snippet_path),
             Self::PackerFmt => packer_fmt::run(snippet_path),
@@ -1380,6 +1386,7 @@ impl AsRef<str> for Tooling {
             Self::NpmGroovyLint => "npm_groovy_lint",
             Self::Ocamlformat => "ocamlformat",
             Self::OcpIndent => "ocp_indent",
+            Self::OpaFmt => "opa_fmt",
             Self::Ormolu => "ormolu",
             Self::Oxlint => "oxlint",
             Self::PackerFmt => "packer_fmt",
