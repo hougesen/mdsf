@@ -729,6 +729,11 @@
           "enum": ["refmt"]
         },
         {
+          "description": "`reformat-gherkin $PATH`",
+          "type": "string",
+          "enum": ["reformat-gherkin"]
+        },
+        {
           "description": "`rescript format $PATH`",
           "type": "string",
           "enum": ["rescript:format"]

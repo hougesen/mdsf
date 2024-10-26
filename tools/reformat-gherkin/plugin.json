@@ -1,0 +1,15 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "reformat-gherkin",
+  "categories": ["formatter"],
+  "commands": {
+    "": ["$PATH"]
+  },
+  "description": "Reformat-gherkin automatically formats Gherkin files",
+  "homepage": "https://github.com/ducminh-phan/reformat-gherkin",
+  "languages": ["gherkin"],
+  "name": null,
+  "npm": null,
+  "php": null,
+  "tests": []
+}

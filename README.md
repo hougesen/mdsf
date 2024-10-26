@@ -184,7 +184,7 @@ mdsf init
 
 <!-- START_SECTION:supported-tools -->
 
-`mdsf` currently supports 192 commands. Feel free to open an issue/pull-request if your favorite tool is missing! 😃
+`mdsf` currently supports 193 commands. Feel free to open an issue/pull-request if your favorite tool is missing! 😃
 
 | Name                   | Command                                                                                |
 | ---------------------- | -------------------------------------------------------------------------------------- |
@@ -322,6 +322,7 @@ mdsf init
 | `qmlfmt`               | `qmlfmt -w PATH`                                                                       |
 | `raco:fmt`             | `raco fmt -i PATH`                                                                     |
 | `refmt`                | `refmt --in-place PATH`                                                                |
+| `reformat-gherkin`     | `reformat-gherkin PATH`                                                                |
 | `rescript:format`      | `rescript format PATH`                                                                 |
 | `roc:format`           | `roc format PATH`                                                                      |
 | `rstfmt`               | `rstfmt PATH`                                                                          |
