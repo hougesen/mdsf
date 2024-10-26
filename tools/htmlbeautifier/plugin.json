@@ -1,0 +1,22 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "htmlbeautifier",
+  "categories": ["formatter"],
+  "commands": {
+    "": ["$PATH"]
+  },
+  "description": "A normaliser/beautifier for HTML that also understands embedded Ruby. Ideal for tidying up Rails templates",
+  "homepage": "https://github.com/threedaymonk/htmlbeautifier",
+  "languages": ["html", "erb", "ruby"],
+  "name": null,
+  "npm": null,
+  "php": null,
+  "tests": [
+    {
+      "command": "",
+      "language": "html",
+      "test_input": "<div>\n                    <p>\n                    Mads was here\n                    </p>\n        </div>",
+      "test_output": "<div>\n  <p>\n    Mads was here\n  </p>\n</div>\n"
+    }
+  ]
+}

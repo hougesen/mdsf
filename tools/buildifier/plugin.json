@@ -1,0 +1,15 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "buildifier",
+  "categories": ["formatter"],
+  "commands": {
+    "": ["$PATH"]
+  },
+  "description": "A bazel BUILD file formatter and",
+  "homepage": "https://github.com/bazelbuild/buildtools",
+  "languages": ["bazel"],
+  "name": null,
+  "npm": null,
+  "php": null,
+  "tests": []
+}

@@ -1,0 +1,22 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "yapf",
+  "categories": ["formatter"],
+  "commands": {
+    "": ["--in-place", "$PATH"]
+  },
+  "description": "A formatter for Python files",
+  "homepage": "https://github.com/google/yapf",
+  "languages": ["python"],
+  "name": null,
+  "npm": null,
+  "php": null,
+  "tests": [
+    {
+      "command": "",
+      "language": "python",
+      "test_input": "def add( a: int ,  b:int)->int: return a+b",
+      "test_output": "def add(a: int, b: int) -> int:\n    return a + b\n"
+    }
+  ]
+}

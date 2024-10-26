@@ -1,0 +1,15 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "raco",
+  "categories": ["formatter"],
+  "commands": {
+    "fmt": ["fmt", "-i", "$PATH"]
+  },
+  "description": "An extensible code formatter for Racket",
+  "homepage": "https://docs.racket-lang.org/fmt/",
+  "languages": ["racket"],
+  "name": null,
+  "npm": null,
+  "php": null,
+  "tests": []
+}

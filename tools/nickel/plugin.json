@@ -1,0 +1,15 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "nickel",
+  "categories": ["formatter"],
+  "commands": {
+    "format": ["format", "$PATH"]
+  },
+  "description": "Better configuration for less",
+  "homepage": "https://nickel-lang.org/",
+  "languages": ["nickel"],
+  "name": null,
+  "npm": null,
+  "php": null,
+  "tests": []
+}

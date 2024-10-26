@@ -1,0 +1,15 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "sqlfmt",
+  "categories": ["formatter"],
+  "commands": {
+    "": ["$PATH"]
+  },
+  "description": "sqlfmt formats your dbt SQL files so you don't have to",
+  "homepage": "https://github.com/tconbeer/sqlfmt",
+  "languages": ["sql"],
+  "name": null,
+  "npm": null,
+  "php": null,
+  "tests": []
+}

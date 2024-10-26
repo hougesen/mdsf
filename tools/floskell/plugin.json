@@ -1,0 +1,15 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "floskell",
+  "categories": ["formatter"],
+  "commands": {
+    "": ["$PATH"]
+  },
+  "description": "Floskell is a flexible Haskell source code pretty printer",
+  "homepage": "https://github.com/ennocramer/floskell",
+  "languages": ["haskell"],
+  "name": null,
+  "npm": null,
+  "php": null,
+  "tests": []
+}

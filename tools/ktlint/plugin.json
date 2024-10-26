@@ -1,0 +1,22 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "ktlint",
+  "categories": ["linter"],
+  "commands": {
+    "": ["--format", "--log-level=error", "$PATH"]
+  },
+  "description": "An anti-bikeshedding Kotlin linter with built-in formatter",
+  "homepage": "https://github.com/pinterest/ktlint",
+  "languages": ["kotlin"],
+  "name": null,
+  "npm": null,
+  "php": null,
+  "tests": [
+    {
+      "command": "",
+      "language": "kotlin",
+      "test_input": "            fun add(a:Int ,b:Int ):Int {\n                    return a + b\n                }\n            ",
+      "test_output": "\n\nfun add(\n    a: Int,\n    b: Int,\n): Int {\n    return a + b\n}\n"
+    }
+  ]
+}

@@ -1,11 +1,11 @@
-use crate::formatters::{MdsfFormatter, Tooling};
+use crate::{execution::MdsfFormatter, tools::Tooling};
 
 #[inline]
 pub fn default_config() -> (String, MdsfFormatter<Tooling>) {
     (
         "ocaml".to_string(),
         MdsfFormatter::Multiple(vec![MdsfFormatter::Multiple(vec![
-            MdsfFormatter::Single(Tooling::OCamlFormat),
+            MdsfFormatter::Single(Tooling::Ocamlformat),
             MdsfFormatter::Single(Tooling::OcpIndent),
         ])]),
     )

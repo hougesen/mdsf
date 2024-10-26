@@ -1,0 +1,15 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "markdownlint",
+  "categories": ["linter"],
+  "commands": {
+    "": ["--fix", "$PATH"]
+  },
+  "description": "A Node.js style checker and lint tool for Markdown/CommonMark files",
+  "homepage": "https://github.com/davidanson/markdownlint",
+  "languages": [],
+  "name": null,
+  "npm": "markdownlint",
+  "php": null,
+  "tests": []
+}

@@ -38,10 +38,10 @@ fn load_schema(package_version: &str) -> Result<OpenApiSchema> {
 }
 
 fn create_table(schema: Vec<Tool>) -> String {
-    let formatter_heading = "Formatter";
+    let formatter_heading = "Name";
     let mut formatter_width = formatter_heading.len();
 
-    let description_heading = "Description";
+    let description_heading = "Command";
     let mut description_width = description_heading.len();
 
     let mut tools = std::collections::HashMap::<String, String>::new();
@@ -51,11 +51,18 @@ fn create_table(schema: Vec<Tool>) -> String {
 
         formatter_width = formatter_width.max(formatter.len());
 
-        let description = format!("[{}]({})", tool.description.trim(), tool.description.trim());
+        let description = tool.description.trim().to_string();
 
         description_width = description_width.max(description.len());
 
-        tools.insert(formatter.to_owned(), description);
+        tools.insert(
+            format!("`{formatter}`"),
+            if formatter == "juliaformatter.jl" {
+                description.replace("{$PATH_STRING}", "$PATH_STRING")
+            } else {
+                description.replace("$PATH", "PATH")
+            },
+        );
     }
 
     let tool_count = tools.len();
@@ -110,7 +117,7 @@ fn create_table(schema: Vec<Tool>) -> String {
 
     lines.insert(
         0,
-        format!("`mdsf` currently supports {tool_count} tools. Feel free to open an issue/pull-request if your favorite tool is missing! 😃\n"),
+        format!("`mdsf` currently supports {tool_count} commands. Feel free to open an issue/pull-request if your favorite tool is missing! 😃\n"),
     );
 
     lines.join("\n")
@@ -122,7 +129,7 @@ pub fn update_readme(key: &str, value: &str) -> Result<()> {
     let update = format!("<!-- START_SECTION:{key} -->\n\n{value}\n\n<!-- END_SECTION:{key} -->");
 
     let re = RegexBuilder::new(
-        format!(r"(<!-- START_SECTION:{key} -->)[^{{}}]*<!-- END_SECTION:{key} -->",).as_str(),
+        format!(r"(<!-- START_SECTION:{key} -->)[^{{}}]*?<!-- END_SECTION:{key} -->").as_str(),
     )
     .multi_line(true)
     .build()?;
@@ -143,7 +150,7 @@ pub fn generate() -> Result<()> {
 
     let table = create_table(schema.definitions.tooling.one_of);
 
-    update_readme("supported-tools", &table)?;
+    update_readme("supported-tools", &table).unwrap();
 
     Ok(())
 }

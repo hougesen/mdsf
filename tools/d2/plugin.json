@@ -1,0 +1,15 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "d2",
+  "categories": ["formatter"],
+  "commands": {
+    "fmt": ["fmt", "$PATH"]
+  },
+  "description": "Formatter for the d2 language",
+  "homepage": "https://d2lang.com/",
+  "languages": ["d2"],
+  "name": null,
+  "npm": null,
+  "php": null,
+  "tests": []
+}

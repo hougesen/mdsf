@@ -1,0 +1,15 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "goimports-reviser",
+  "categories": ["formatter"],
+  "commands": {
+    "": ["-format", "$PATH"]
+  },
+  "description": "Right imports sorting & code formatting tool (goimports alternative)",
+  "homepage": "https://github.com/incu6us/goimports-reviser",
+  "languages": ["go"],
+  "name": null,
+  "npm": null,
+  "php": null,
+  "tests": []
+}

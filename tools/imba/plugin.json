@@ -1,0 +1,15 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "imba",
+  "categories": ["formatter"],
+  "commands": {
+    "fmt": ["fmt", "-f", "$PATH"]
+  },
+  "description": "A formatter for Imba",
+  "homepage": "https://imba.io/",
+  "languages": ["imba"],
+  "name": null,
+  "npm": "imba",
+  "php": null,
+  "tests": []
+}

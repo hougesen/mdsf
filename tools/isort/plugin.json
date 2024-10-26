@@ -1,0 +1,22 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "isort",
+  "categories": ["formatter"],
+  "commands": {
+    "": ["--quiet", "$PATH"]
+  },
+  "description": "A Python utility to sort imports",
+  "homepage": "https://github.com/timothycrosley/isort",
+  "languages": ["python"],
+  "name": null,
+  "npm": null,
+  "php": null,
+  "tests": [
+    {
+      "command": "",
+      "language": "python",
+      "test_input": "from q import d\nimport b\nimport a\nimport c\n\n\ndef add(a: int, b: int) -> int:\n  return a + b\n",
+      "test_output": "import a\nimport b\nimport c\nfrom q import d\n\n\ndef add(a: int, b: int) -> int:\n  return a + b\n"
+    }
+  ]
+}

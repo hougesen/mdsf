@@ -1,0 +1,15 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "ecs",
+  "categories": ["linter", "formatter"],
+  "commands": {
+    "": ["check", "$PATH", "--fix", "--no-interaction"]
+  },
+  "description": "The Easiest way to add coding standard to your PHP project",
+  "homepage": "https://github.com/easy-coding-standard/easy-coding-standard",
+  "languages": ["php"],
+  "name": "easy-coding-standard",
+  "npm": null,
+  "php": "ecs",
+  "tests": []
+}

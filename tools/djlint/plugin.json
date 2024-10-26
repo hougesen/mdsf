@@ -1,0 +1,14 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "djlint",
+  "categories": ["linter", "formatter"],
+  "commands": {
+    "": ["$PATH", "--reformat"]
+  },
+  "description": "Lint & Format HTML Templates",
+  "homepage": "https://www.djlint.com/",
+  "languages": ["html", "jinja", "nunjucks", "twig", "handlebars", "mustache"],
+  "npm": null,
+  "php": null,
+  "tests": []
+}

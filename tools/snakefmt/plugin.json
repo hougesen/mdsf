@@ -1,0 +1,15 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "snakefmt",
+  "categories": ["formatter"],
+  "commands": {
+    "": ["$PATH"]
+  },
+  "description": "The uncompromising Snakemake code formatter",
+  "homepage": "https://github.com/snakemake/snakefmt",
+  "languages": ["snakemake"],
+  "name": null,
+  "npm": null,
+  "php": null,
+  "tests": []
+}

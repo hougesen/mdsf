@@ -1,0 +1,15 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "qmlfmt",
+  "categories": ["formatter"],
+  "commands": {
+    "": ["-w", "$PATH"]
+  },
+  "description": "qmlfmt - command line application that formats QML files",
+  "homepage": "https://github.com/jesperhh/qmlfmt",
+  "languages": ["qml"],
+  "name": null,
+  "npm": null,
+  "php": null,
+  "tests": []
+}

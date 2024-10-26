@@ -1,0 +1,15 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "standard",
+  "categories": ["formatter", "linter"],
+  "commands": {
+    "": ["--fix", "$PATH"]
+  },
+  "description": "JavaScript style guide, linter, and formatter",
+  "homepage": "https://github.com/standard/standard",
+  "languages": ["javascript"],
+  "name": "standardjs",
+  "npm": "standard",
+  "php": null,
+  "tests": []
+}

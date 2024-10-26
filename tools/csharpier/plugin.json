@@ -1,0 +1,22 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "dotnet",
+  "categories": ["formatter"],
+  "commands": {
+    "": ["csharpier", "$PATH"]
+  },
+  "description": "An Opinionated Code Formatter for C#",
+  "homepage": "https://csharpier.com/",
+  "languages": ["c#"],
+  "name": "csharpier",
+  "npm": null,
+  "php": null,
+  "tests": [
+    {
+      "command": "",
+      "language": "csharp",
+      "test_input": "namespace Mdsf {\n                        class Adder {\n                                                    public static int add(int a,int b) {\n                                var c=a+b ;\n                                                        return c ;\n                                                    }\n                                                 }\n                                                 } ",
+      "test_output": "namespace Mdsf\n{\n    class Adder\n    {\n        public static int add(int a, int b)\n        {\n            var c = a + b;\n            return c;\n        }\n    }\n}\n"
+    }
+  ]
+}

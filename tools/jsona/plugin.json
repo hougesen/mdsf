@@ -1,0 +1,16 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "jsona",
+  "categories": ["formatter", "linter"],
+  "commands": {
+    "format": ["format", "$PATH"],
+    "lint": ["lint", "$PATH"]
+  },
+  "description": "JSONA linter and formatter",
+  "homepage": "https://github.com/jsona/jsona",
+  "languages": ["jsona"],
+  "name": null,
+  "npm": null,
+  "php": null,
+  "tests": []
+}

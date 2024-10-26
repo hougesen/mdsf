@@ -1,0 +1,15 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "prettypst",
+  "categories": ["formatter"],
+  "commands": {
+    "": ["$PATH"]
+  },
+  "description": "Formatter for Typst",
+  "homepage": "https://github.com/antonWetzel/prettypst",
+  "languages": ["typst"],
+  "name": null,
+  "npm": null,
+  "php": null,
+  "tests": []
+}

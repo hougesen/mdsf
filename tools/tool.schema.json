@@ -1,0 +1,91 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Tool",
+  "type": "object",
+  "required": [
+    "$schema",
+    "binary",
+    "categories",
+    "commands",
+    "description",
+    "homepage",
+    "languages"
+  ],
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "binary": {
+      "type": "string"
+    },
+    "categories": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    },
+    "commands": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      }
+    },
+    "description": {
+      "type": "string"
+    },
+    "homepage": {
+      "type": "string"
+    },
+    "languages": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    },
+    "name": {
+      "type": ["string", "null"]
+    },
+    "npm": {
+      "description": "Name of package on npm, if published there.",
+      "type": ["string", "null"]
+    },
+    "php": {
+      "description": "Binary name if installed through composer",
+      "type": ["string", "null"]
+    },
+    "tests": {
+      "type": ["array", "null"],
+      "items": {
+        "$ref": "#/definitions/ToolTest"
+      }
+    }
+  },
+  "additionalProperties": false,
+  "definitions": {
+    "ToolTest": {
+      "type": "object",
+      "required": ["command", "language", "test_input", "test_output"],
+      "properties": {
+        "command": {
+          "type": "string"
+        },
+        "language": {
+          "description": "Codeblock language used when generating tests",
+          "type": "string"
+        },
+        "test_input": {
+          "type": "string"
+        },
+        "test_output": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

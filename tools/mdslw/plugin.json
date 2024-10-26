@@ -1,0 +1,14 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "mdslw",
+  "categories": ["formatter"],
+  "commands": {
+    "": ["$PATH"]
+  },
+  "description": "Prepare your markdown for easy diff'ing!",
+  "homepage": "https://github.com/razziel89/mdslw",
+  "languages": ["markdown"],
+  "npm": null,
+  "php": null,
+  "tests": []
+}

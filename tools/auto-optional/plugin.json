@@ -1,0 +1,22 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "auto-optional",
+  "categories": ["formatter"],
+  "commands": {
+    "": ["$PATH"]
+  },
+  "description": "Adds the Optional type-hint to arguments where the default value is None",
+  "homepage": "https://pypi.org/project/auto-optional/",
+  "languages": ["python"],
+  "name": null,
+  "npm": null,
+  "php": null,
+  "tests": [
+    {
+      "command": "",
+      "language": "python",
+      "test_input": "def foo(bar: str = None):\n    pass\n",
+      "test_output": "from typing import Optional\ndef foo(bar: Optional[str] = None):\n    pass\n"
+    }
+  ]
+}
