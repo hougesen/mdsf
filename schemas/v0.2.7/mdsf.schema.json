@@ -184,6 +184,11 @@
           "enum": ["cabal:format"]
         },
         {
+          "description": "`caddy fmt $PATH -w`",
+          "type": "string",
+          "enum": ["caddy:fmt"]
+        },
+        {
           "description": "`caramel fmt $PATH`",
           "type": "string",
           "enum": ["caramel:fmt"]
