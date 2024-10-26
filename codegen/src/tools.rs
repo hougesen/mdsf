@@ -7,6 +7,7 @@ const INDENT: &str = "    ";
 #[derive(Debug, serde::Deserialize, schemars::JsonSchema, Hash)]
 #[schemars(deny_unknown_fields)]
 struct ToolTest {
+    /// Codeblock language used when generating tests
     language: String,
 
     command: String,
@@ -27,14 +28,18 @@ pub struct Tool {
 
     binary: String,
 
+    /// Name of package on npm, if published there.
     npm: Option<String>,
 
+    /// Binary name if installed through composer
     php: Option<String>,
 
     commands: std::collections::HashMap<String, Vec<String>>,
 
+    #[expect(unused)]
     description: String,
 
+    #[expect(unused)]
     homepage: String,
 
     #[expect(unused)]
@@ -57,6 +62,8 @@ struct GeneratedCommand {
     code: String,
 
     serde_rename: String,
+
+    args: Vec<String>,
 }
 
 impl Tool {
@@ -254,6 +261,7 @@ mod test_{module_name} {{{tests}}}
                     if cmd.is_empty() { "" } else { ":" },
                     cmd
                 ),
+                args: args.clone(),
             });
         }
 
@@ -322,12 +330,12 @@ impl AsRef<str> for Tooling {
                 files.insert(command.module_name.clone());
                 enum_values.insert(format!(
                     "{INDENT}#[serde(rename = \"{rename}\")]
-{INDENT}#[doc = \"{description} - [{homepage}]({homepage})\"]
+{INDENT}/// `{bin} {args}`
 {INDENT}{enum_name},",
                     rename = command.serde_rename,
                     enum_name = command.enum_value,
-                    description = parsed.description,
-                    homepage = parsed.homepage,
+                    bin = parsed.binary,
+                    args = command.args.join(" ")
                 ));
                 format_snippet_values.insert(format!(
                     "{INDENT}{INDENT}{INDENT}Self::{} => {}::{}(snippet_path),",

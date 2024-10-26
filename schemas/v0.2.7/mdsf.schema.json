@@ -59,947 +59,947 @@
     "Tooling": {
       "oneOf": [
         {
-          "description": "The Uncompromising Nix Code Formatter - [https://github.com/kamadorueda/alejandra](https://github.com/kamadorueda/alejandra)",
+          "description": "`alejandra --quiet $PATH`",
           "type": "string",
           "enum": ["alejandra"]
         },
         {
-          "description": "A static code analysis tool for Crystal - [https://github.com/crystal-ameba/ameba](https://github.com/crystal-ameba/ameba)",
+          "description": "`ameba --fix $PATH`",
           "type": "string",
           "enum": ["ameba"]
         },
         {
-          "description": "Go Assembler Formatter - [https://github.com/klauspost/asmfmt](https://github.com/klauspost/asmfmt)",
+          "description": "`asmfmt -w $PATH`",
           "type": "string",
           "enum": ["asmfmt"]
         },
         {
-          "description": "A Free, Fast, and Small Automatic Formatter for C, C++, C++/CLI, Objective-C, C#, and Java Source Code - [https://gitlab.com/saalen/astyle](https://gitlab.com/saalen/astyle)",
+          "description": "`astyle --quiet $PATH`",
           "type": "string",
           "enum": ["astyle"]
         },
         {
-          "description": "Adds the Optional type-hint to arguments where the default value is None - [https://pypi.org/project/auto-optional/](https://pypi.org/project/auto-optional/)",
+          "description": "`auto-optional $PATH`",
           "type": "string",
           "enum": ["auto-optional"]
         },
         {
-          "description": "A linter and formatter to help you to improve copywriting, correct spaces, words, and punctuations between CJK (Chinese, Japanese, Korean) - [https://github.com/huacnlee/autocorrect](https://github.com/huacnlee/autocorrect)",
+          "description": "`autocorrect --fix $PATH`",
           "type": "string",
           "enum": ["autocorrect"]
         },
         {
-          "description": "Removes unused imports and unused variables as reported by pyflakes - [https://github.com/pycqa/autoflake](https://github.com/pycqa/autoflake)",
+          "description": "`autoflake --quiet --in-place $PATH`",
           "type": "string",
           "enum": ["autoflake"]
         },
         {
-          "description": "A tool that automatically formats Python code to conform to the PEP 8 style guid - [https://pypi.org/project/autopep8/](https://pypi.org/project/autopep8/)",
+          "description": "`autopep8 --in-place $PATH`",
           "type": "string",
           "enum": ["autopep8"]
         },
         {
-          "description": "Opinionated code formatter, just like Python's black code formatter but for Beancount - [https://github.com/LaunchPlatform/beancount-black](https://github.com/LaunchPlatform/beancount-black)",
+          "description": "`bean-black $PATH`",
           "type": "string",
           "enum": ["beancount-black"]
         },
         {
-          "description": "A Bash beautifier for the masses - [https://pypi.org/project/beautysh/](https://pypi.org/project/beautysh/)",
+          "description": "`beautysh $PATH`",
           "type": "string",
           "enum": ["beautysh"]
         },
         {
-          "description": "Bicep is a declarative language for describing and deploying Azure resources - [https://github.com/Azure/bicep](https://github.com/Azure/bicep)",
+          "description": "`bicep format $PATH`",
           "type": "string",
           "enum": ["bicep:format"]
         },
         {
-          "description": "One toolchain for your web project - [https://biomejs.dev/](https://biomejs.dev/)",
+          "description": "`biome check --write $PATH`",
           "type": "string",
           "enum": ["biome:check"]
         },
         {
-          "description": "One toolchain for your web project - [https://biomejs.dev/](https://biomejs.dev/)",
+          "description": "`biome format --write $PATH`",
           "type": "string",
           "enum": ["biome:format"]
         },
         {
-          "description": "One toolchain for your web project - [https://biomejs.dev/](https://biomejs.dev/)",
+          "description": "`biome lint --write $PATH`",
           "type": "string",
           "enum": ["biome:lint"]
         },
         {
-          "description": "The uncompromising Python code formatter - [https://github.com/psf/black](https://github.com/psf/black)",
+          "description": "`black --quiet $PATH`",
           "type": "string",
           "enum": ["black"]
         },
         {
-          "description": "An opinionated blade template formatter for Laravel that respects readability - [https://github.com/shufo/blade-formatter](https://github.com/shufo/blade-formatter)",
+          "description": "`blade-formatter --write $PATH`",
           "type": "string",
           "enum": ["blade-formatter"]
         },
         {
-          "description": "The slightly less uncompromising Python code formatter - [https://blue.readthedocs.io/en/latest/](https://blue.readthedocs.io/en/latest/)",
+          "description": "`blue --quiet $PATH`",
           "type": "string",
           "enum": ["blue"]
         },
         {
-          "description": "A formatter for Blueprint files - [https://source.android.com/docs/setup/reference/androidbp#formatter](https://source.android.com/docs/setup/reference/androidbp#formatter)",
+          "description": "`bpfmt -w $PATH`",
           "type": "string",
           "enum": ["bpfmt"]
         },
         {
-          "description": "A Haskell source code formatter - [https://github.com/lspitzner/brittany](https://github.com/lspitzner/brittany)",
+          "description": "`brittany --write-mode=inplace $PATH`",
           "type": "string",
           "enum": ["brittany"]
         },
         {
-          "description": "A best practice Python code formatter - [https://github.com/odwyersoftware/brunette](https://github.com/odwyersoftware/brunette)",
+          "description": "`brunette --quiet $PATH`",
           "type": "string",
           "enum": ["brunette"]
         },
         {
-          "description": "A code formatter for BrightScript and BrighterScript - [https://github.com/rokucommunity/brighterscript-formatter](https://github.com/rokucommunity/brighterscript-formatter)",
+          "description": "`bsfmt $PATH --write`",
           "type": "string",
           "enum": ["bsfmt"]
         },
         {
-          "description": "The best way of working with Protocol Buffers - [https://buf.build/docs/reference/cli/buf/format/](https://buf.build/docs/reference/cli/buf/format/)",
+          "description": "`buf format --write $PATH`",
           "type": "string",
           "enum": ["buf:format"]
         },
         {
-          "description": "A bazel BUILD file formatter and - [https://github.com/bazelbuild/buildtools](https://github.com/bazelbuild/buildtools)",
+          "description": "`buildifier $PATH`",
           "type": "string",
           "enum": ["buildifier"]
         },
         {
-          "description": "Cabal is a system for building and packaging Haskell libraries and programs - [https://www.haskell.org/cabal/](https://www.haskell.org/cabal/)",
+          "description": "`cabal format $PATH`",
           "type": "string",
           "enum": ["cabal:format"]
         },
         {
-          "description": "Formatter for the Caramel programming language - [https://caramel.run/](https://caramel.run/)",
+          "description": "`caramel fmt $PATH`",
           "type": "string",
           "enum": ["caramel:fmt"]
         },
         {
-          "description": "A tool to format C/C++/Java/JavaScript/JSON/Objective-C/Protobuf/C# code - [https://clang.llvm.org/docs/ClangFormat.html](https://clang.llvm.org/docs/ClangFormat.html)",
+          "description": "`clang-format -i $PATH`",
           "type": "string",
           "enum": ["clang-format"]
         },
         {
-          "description": "clang-tidy is a clang-based C++ “linter” tool - [https://clang.llvm.org/extra/clang-tidy/](https://clang.llvm.org/extra/clang-tidy/)",
+          "description": "`clang-tidy --fix $PATH`",
           "type": "string",
           "enum": ["clang-tidy"]
         },
         {
-          "description": "A tool for formatting Clojure code - [https://github.com/weavejester/cljfmt](https://github.com/weavejester/cljfmt)",
+          "description": "`cljfmt fix $PATH`",
           "type": "string",
           "enum": ["cljfmt:fix"]
         },
         {
-          "description": "A tool for formatting Clojure code - [https://github.com/greglook/cljstyle](https://github.com/greglook/cljstyle)",
+          "description": "`cljstyle fix $PATH`",
           "type": "string",
           "enum": ["cljstyle"]
         },
         {
-          "description": "Check code for common misspellings - [https://github.com/codespell-project/codespell](https://github.com/codespell-project/codespell)",
+          "description": "`codespell $PATH --check-hidden --write-changes`",
           "type": "string",
           "enum": ["codespell"]
         },
         {
-          "description": "Formatter for CockroachDB's additions to the Go style guide - [https://github.com/cockroachdb/crlfmt](https://github.com/cockroachdb/crlfmt)",
+          "description": "`crlfmt -w $PATH`",
           "type": "string",
           "enum": ["crlfmt"]
         },
         {
-          "description": "Tools for the Crystal programming language - [https://crystal-lang.org/](https://crystal-lang.org/)",
+          "description": "`crystal tool format $PATH`",
           "type": "string",
           "enum": ["crystal:format"]
         },
         {
-          "description": "An Opinionated Code Formatter for C# - [https://csharpier.com/](https://csharpier.com/)",
+          "description": "`dotnet csharpier $PATH`",
           "type": "string",
           "enum": ["csharpier"]
         },
         {
-          "description": "A css formatter - [https://github.com/beautifier/js-beautify?tab=readme-ov-file#css--html](https://github.com/beautifier/js-beautify?tab=readme-ov-file#css--html)",
+          "description": "`css-beautify -r --type css -f $PATH`",
           "type": "string",
           "enum": ["css-beautify"]
         },
         {
-          "description": "CSS coding style formatter - [https://github.com/csscomb/csscomb.js](https://github.com/csscomb/csscomb.js)",
+          "description": "`csscomb -t $PATH`",
           "type": "string",
           "enum": ["csscomb"]
         },
         {
-          "description": "Formatter for the d2 language - [https://d2lang.com/](https://d2lang.com/)",
+          "description": "`d2 fmt $PATH`",
           "type": "string",
           "enum": ["d2:fmt"]
         },
         {
-          "description": "Formatter and linter for Dart - [https://dart.dev/tools](https://dart.dev/tools)",
+          "description": "`dart fix --apply $PATH`",
           "type": "string",
           "enum": ["dart:fix"]
         },
         {
-          "description": "Formatter and linter for Dart - [https://dart.dev/tools](https://dart.dev/tools)",
+          "description": "`dart format $PATH`",
           "type": "string",
           "enum": ["dart:format"]
         },
         {
-          "description": "Code Quality Tool for Flutter Developers - [https://dcm.dev/](https://dcm.dev/)",
+          "description": "`dcm fix $PATH`",
           "type": "string",
           "enum": ["dcm:fix"]
         },
         {
-          "description": "Code Quality Tool for Flutter Developers - [https://dcm.dev/](https://dcm.dev/)",
+          "description": "`dcm format $PATH`",
           "type": "string",
           "enum": ["dcm:format"]
         },
         {
-          "description": "Formatter and linter for JavaScript and TypeScript - [https://docs.deno.com/runtime/reference/cli/](https://docs.deno.com/runtime/reference/cli/)",
+          "description": "`deno fmt --quiet $PATH`",
           "type": "string",
           "enum": ["deno:fmt"]
         },
         {
-          "description": "Formatter and linter for JavaScript and TypeScript - [https://docs.deno.com/runtime/reference/cli/](https://docs.deno.com/runtime/reference/cli/)",
+          "description": "`deno lint --fix $PATH`",
           "type": "string",
           "enum": ["deno:lint"]
         },
         {
-          "description": "Dfmt is a formatter for D source code - [https://github.com/dlang-community/dfmt](https://github.com/dlang-community/dfmt)",
+          "description": "`dfmt -i $PATH`",
           "type": "string",
           "enum": ["dfmt"]
         },
         {
-          "description": "Format Dhall files - [https://dhall-lang.org/](https://dhall-lang.org/)",
+          "description": "`dhall format $PATH`",
           "type": "string",
           "enum": ["dhall"]
         },
         {
-          "description": "Lint & Format HTML Templates - [https://www.djlint.com/](https://www.djlint.com/)",
+          "description": "`djlint $PATH --reformat`",
           "type": "string",
           "enum": ["djlint"]
         },
         {
-          "description": "Formats docstrings to follow PEP 257 - [https://pypi.org/project/docformatter/](https://pypi.org/project/docformatter/)",
+          "description": "`docformatter --in-place $PATH`",
           "type": "string",
           "enum": ["docformatter"]
         },
         {
-          "description": "A formatter for Sphinx flavored reStructuredText - [https://pypi.org/project/docstrfmt/](https://pypi.org/project/docstrfmt/)",
+          "description": "`docstrfmt $PATH`",
           "type": "string",
           "enum": ["docstrfmt"]
         },
         {
-          "description": "Lightning-fast linter for .env files - [https://github.com/dotenv-linter/dotenv-linter](https://github.com/dotenv-linter/dotenv-linter)",
+          "description": "`dotenv-linter fix $PATH`",
           "type": "string",
           "enum": ["dotenv-linter:fix"]
         },
         {
-          "description": "A pluggable and configurable code formatting platform written in Rust - [https://dprint.dev/](https://dprint.dev/)",
+          "description": "`dprint fmt $PATH`",
           "type": "string",
           "enum": ["dprint:fmt"]
         },
         {
-          "description": "The Easiest way to add coding standard to your PHP project - [https://github.com/easy-coding-standard/easy-coding-standard](https://github.com/easy-coding-standard/easy-coding-standard)",
+          "description": "`ecs check $PATH --fix --no-interaction`",
           "type": "string",
           "enum": ["easy-coding-standard"]
         },
         {
-          "description": "Erlang code formatter - [https://github.com/sile/efmt](https://github.com/sile/efmt)",
+          "description": "`efmt -w $PATH`",
           "type": "string",
           "enum": ["efmt"]
         },
         {
-          "description": "elm-format formats Elm source code according to a standard set of rules based on the official Elm Style Guide - [https://github.com/avh4/elm-format](https://github.com/avh4/elm-format)",
+          "description": "`elm-format --elm-version=0.19 --yes $PATH`",
           "type": "string",
           "enum": ["elm-format"]
         },
         {
-          "description": "Format ERB files with speed and precision - [https://github.com/nebulab/erb-formatter](https://github.com/nebulab/erb-formatter)",
+          "description": "`erb-format $PATH --write`",
           "type": "string",
           "enum": ["erb-formatter"]
         },
         {
-          "description": "An automated code formatter for Erlang - [https://github.com/WhatsApp/erlfmt](https://github.com/WhatsApp/erlfmt)",
+          "description": "`erlfmt -w $PATH_STRING`",
           "type": "string",
           "enum": ["erlfmt"]
         },
         {
-          "description": "Find and fix problems in your JavaScript code - [https://github.com/eslint/eslint/](https://github.com/eslint/eslint/)",
+          "description": "`eslint --fix $PATH`",
           "type": "string",
           "enum": ["eslint"]
         },
         {
-          "description": "FSharp source code formatter - [https://github.com/fsprojects/fantomas](https://github.com/fsprojects/fantomas)",
+          "description": "`fantomas $PATH`",
           "type": "string",
           "enum": ["fantomas"]
         },
         {
-          "description": "Fish indenter and prettifier - [https://fishshell.com/docs/current/cmds/fish_indent.html](https://fishshell.com/docs/current/cmds/fish_indent.html)",
+          "description": "`fish_indent -w $PATH`",
           "type": "string",
           "enum": ["fish_indent"]
         },
         {
-          "description": "JSON Fixer for Humans using (relaxed) JSON5 - [https://github.com/rhysd/fixjson](https://github.com/rhysd/fixjson)",
+          "description": "`fixjson -w $PATH`",
           "type": "string",
           "enum": ["fixjson"]
         },
         {
-          "description": "Floskell is a flexible Haskell source code pretty printer - [https://github.com/ennocramer/floskell](https://github.com/ennocramer/floskell)",
+          "description": "`floskell $PATH`",
           "type": "string",
           "enum": ["floskell"]
         },
         {
-          "description": "A formatter for Fennel code - [https://git.sr.ht/~technomancy/fnlfmt](https://git.sr.ht/~technomancy/fnlfmt)",
+          "description": "`fnlfmt $PATH`",
           "type": "string",
           "enum": ["fnlfmt"]
         },
         {
-          "description": "A Solidity formatter - [https://github.com/foundry-rs/foundry](https://github.com/foundry-rs/foundry)",
+          "description": "`forge fmt $PATH`",
           "type": "string",
           "enum": ["forge:fmt"]
         },
         {
-          "description": "A formatter for Haskell source code - [https://hackage.haskell.org/package/fourmolu](https://hackage.haskell.org/package/fourmolu)",
+          "description": "`fourmolu -i $PATH`",
           "type": "string",
           "enum": ["fourmolu"]
         },
         {
-          "description": "Auto-formatter for modern Fortran source code - [https://github.com/fortran-lang/fprettify](https://github.com/fortran-lang/fprettify)",
+          "description": "`fprettify $PATH`",
           "type": "string",
           "enum": ["fprettify"]
         },
         {
-          "description": "GCI, a tool that control golang package import order and make it always deterministic - [https://github.com/daixiang0/gci](https://github.com/daixiang0/gci)",
+          "description": "`gci write --skip-generated --skip-vender $PATH`",
           "type": "string",
           "enum": ["gci"]
         },
         {
-          "description": "https://github.com/scony/godot-gdscript-toolkit - [GDScript linter](GDScript linter)",
+          "description": "`gdformat $PATH`",
           "type": "string",
           "enum": ["gdformat"]
         },
         {
-          "description": "A formatter to make your CMake code the real treasure - [https://github.com/blankspruce/gersemi](https://github.com/blankspruce/gersemi)",
+          "description": "`gersemi -i -q $PATH`",
           "type": "string",
           "enum": ["gersemi"]
         },
         {
-          "description": "Format Gleam source code - [https://gleam.run](https://gleam.run)",
+          "description": "`gleam format $PATH`",
           "type": "string",
           "enum": ["gleam:format"]
         },
         {
-          "description": "Code formatting for the gluon programming language - [https://github.com/gluon-lang/gluon](https://github.com/gluon-lang/gluon)",
+          "description": "`gluon fmt $PATH`",
           "type": "string",
           "enum": ["gluon:fmt"]
         },
         {
-          "description": "Gofmt formats Go programs - [https://pkg.go.dev/cmd/gofmt](https://pkg.go.dev/cmd/gofmt)",
+          "description": "`gofmt -w $PATH`",
           "type": "string",
           "enum": ["gofmt"]
         },
         {
-          "description": "A stricter gofmt - [https://github.com/mvdan/gofumpt](https://github.com/mvdan/gofumpt)",
+          "description": "`gofumpt -w $PATH`",
           "type": "string",
           "enum": ["gofumpt"]
         },
         {
-          "description": "goimports updates your Go import lines, adding missing ones and removing unreferenced ones - [https://pkg.go.dev/golang.org/x/tools/cmd/goimports](https://pkg.go.dev/golang.org/x/tools/cmd/goimports)",
+          "description": "`goimports -w $PATH`",
           "type": "string",
           "enum": ["goimports"]
         },
         {
-          "description": "Right imports sorting & code formatting tool (goimports alternative) - [https://github.com/incu6us/goimports-reviser](https://github.com/incu6us/goimports-reviser)",
+          "description": "`goimports-reviser -format $PATH`",
           "type": "string",
           "enum": ["goimports-reviser"]
         },
         {
-          "description": "A golang formatter that fixes long lines - [https://github.com/segmentio/golines](https://github.com/segmentio/golines)",
+          "description": "`golines -w $PATH`",
           "type": "string",
           "enum": ["golines"]
         },
         {
-          "description": "Reformats Java source code to comply with Google Java Style - [https://github.com/google/google-java-format](https://github.com/google/google-java-format)",
+          "description": "`google-java-format -i $PATH`",
           "type": "string",
           "enum": ["google-java-format"]
         },
         {
-          "description": "Code formatter for the Grain programming language - [https://grain-lang.org/docs/tooling/grain_cli](https://grain-lang.org/docs/tooling/grain_cli)",
+          "description": "`grain format $PATH -o $PATH`",
           "type": "string",
           "enum": ["grain:format"]
         },
         {
-          "description": "Tool for writing clean and consistent HAML - [https://github.com/sds/haml-lint](https://github.com/sds/haml-lint)",
+          "description": "`haml-lint --auto-correct $PATH`",
           "type": "string",
           "enum": ["haml-lint"]
         },
         {
-          "description": "Format Haskell programs. Inspired by the gofmt utility - [https://github.com/danstiner/hfmt](https://github.com/danstiner/hfmt)",
+          "description": "`hfmt -w $PATH`",
           "type": "string",
           "enum": ["hfmt"]
         },
         {
-          "description": "Extensible Haskell pretty printer - [https://github.com/mihaimaruseac/hindent](https://github.com/mihaimaruseac/hindent)",
+          "description": "`hindent $PATH`",
           "type": "string",
           "enum": ["hindent"]
         },
         {
-          "description": "A html formatter - [https://github.com/beautifier/js-beautify?tab=readme-ov-file#css--html](https://github.com/beautifier/js-beautify?tab=readme-ov-file#css--html)",
+          "description": "`html-beautify -r --type html -f $PATH`",
           "type": "string",
           "enum": ["html-beautify"]
         },
         {
-          "description": "A normaliser/beautifier for HTML that also understands embedded Ruby. Ideal for tidying up Rails templates - [https://github.com/threedaymonk/htmlbeautifier](https://github.com/threedaymonk/htmlbeautifier)",
+          "description": "`htmlbeautifier $PATH`",
           "type": "string",
           "enum": ["htmlbeautifier"]
         },
         {
-          "description": "A formatter for Imba - [https://imba.io/](https://imba.io/)",
+          "description": "`imba fmt -f $PATH`",
           "type": "string",
           "enum": ["imba:fmt"]
         },
         {
-          "description": "A Python utility to sort imports - [https://github.com/timothycrosley/isort](https://github.com/timothycrosley/isort)",
+          "description": "`isort --quiet $PATH`",
           "type": "string",
           "enum": ["isort"]
         },
         {
-          "description": "Small Clojure interpreter, linter and formatter - [https://github.com/candid82/joker](https://github.com/candid82/joker)",
+          "description": "`joker --format --write $PATH`",
           "type": "string",
           "enum": ["joker"]
         },
         {
-          "description": "A JavaScript formatter - [https://github.com/beautifier/js-beautify](https://github.com/beautifier/js-beautify)",
+          "description": "`js-beautify -r --type js -f $PATH`",
           "type": "string",
           "enum": ["js-beautify"]
         },
         {
-          "description": "JSONA linter and formatter - [https://github.com/jsona/jsona](https://github.com/jsona/jsona)",
+          "description": "`jsona format $PATH`",
           "type": "string",
           "enum": ["jsona:format"]
         },
         {
-          "description": "JSONA linter and formatter - [https://github.com/jsona/jsona](https://github.com/jsona/jsona)",
+          "description": "`jsona lint $PATH`",
           "type": "string",
           "enum": ["jsona:lint"]
         },
         {
-          "description": "Formatter for automatically fixing jsonnet stylistic problems - [https://jsonnet.org/learning/tools.html](https://jsonnet.org/learning/tools.html)",
+          "description": "`jsonnetfmt -i $PATH`",
           "type": "string",
           "enum": ["jsonnetfmt"]
         },
         {
-          "description": "An opinionated code formatter for Julia. Plot twist - the opinion is your own - [https://github.com/domluna/JuliaFormatter.jl](https://github.com/domluna/JuliaFormatter.jl)",
+          "description": "`julia -E using JuliaFormatter;format_file(\\\"{$PATH_STRING}\\\")`",
           "type": "string",
           "enum": ["juliaformatter.jl"]
         },
         {
-          "description": "A formatter for justfiles - [https://github.com/casey/just](https://github.com/casey/just)",
+          "description": "`just --fmt --unstable --justfile $PATH`",
           "type": "string",
           "enum": ["just"]
         },
         {
-          "description": "KCL Format tool supports reformatting KCL files to the standard code style - [https://www.kcl-lang.io/docs/tools/cli/kcl/fmt](https://www.kcl-lang.io/docs/tools/cli/kcl/fmt)",
+          "description": "`kcl fmt $PATH`",
           "type": "string",
           "enum": ["kcl:fmt"]
         },
         {
-          "description": "A formatter for kdl documents - [https://github.com/hougesen/kdlfmt](https://github.com/hougesen/kdlfmt)",
+          "description": "`kdlfmt format $PATH`",
           "type": "string",
           "enum": ["kdlfmt"]
         },
         {
-          "description": "program that reformats Kotlin source code to comply with the common community standard for Kotlin code conventions - [https://github.com/facebook/ktfmt](https://github.com/facebook/ktfmt)",
+          "description": "`ktfmt --format --log-level=error $PATH`",
           "type": "string",
           "enum": ["ktfmt"]
         },
         {
-          "description": "An anti-bikeshedding Kotlin linter with built-in formatter - [https://github.com/pinterest/ktlint](https://github.com/pinterest/ktlint)",
+          "description": "`ktlint --format --log-level=error $PATH`",
           "type": "string",
           "enum": ["ktlint"]
         },
         {
-          "description": "An opinionated 🦄 .http and .rest 🐼 files linter 💄 and formatter ⚡. - [https://github.com/mistweaverco/kulala-fmt](https://github.com/mistweaverco/kulala-fmt)",
+          "description": "`kulala-fmt $PATH`",
           "type": "string",
           "enum": ["kulala-fmt"]
         },
         {
-          "description": "A formatter for the leptos view! macro - [https://github.com/bram209/leptosfmt](https://github.com/bram209/leptosfmt)",
+          "description": "`leptosfmt --quiet $PATH`",
           "type": "string",
           "enum": ["leptosfmt"]
         },
         {
-          "description": "Prettier plugin for liquidsoap script - [https://github.com/savonet/liquidsoap-prettier](https://github.com/savonet/liquidsoap-prettier)",
+          "description": "`liquidsoap-prettier --write $PATH`",
           "type": "string",
           "enum": ["liquidsoap-prettier"]
         },
         {
-          "description": "Code formatter for Lua - [https://github.com/Koihik/LuaFormatter](https://github.com/Koihik/LuaFormatter)",
+          "description": "`lua-format -i $PATH`",
           "type": "string",
           "enum": ["luaformatter"]
         },
         {
-          "description": "Like gofmt, but for Markdown - [https://github.com/shurcooL/markdownfmt](https://github.com/shurcooL/markdownfmt)",
+          "description": "`markdownfmt -w $PATH`",
           "type": "string",
           "enum": ["markdownfmt"]
         },
         {
-          "description": "A Node.js style checker and lint tool for Markdown/CommonMark files - [https://github.com/davidanson/markdownlint](https://github.com/davidanson/markdownlint)",
+          "description": "`markdownlint --fix $PATH`",
           "type": "string",
           "enum": ["markdownlint"]
         },
         {
-          "description": "An HTML linter for all markup developers - [https://markuplint.dev/](https://markuplint.dev/)",
+          "description": "`markuplint --fix $PATH`",
           "type": "string",
           "enum": ["markuplint"]
         },
         {
-          "description": "CommonMark compliant Markdown formatter - [https://github.com/executablebooks/mdformat](https://github.com/executablebooks/mdformat)",
+          "description": "`mdformat $PATH`",
           "type": "string",
           "enum": ["mdformat"]
         },
         {
-          "description": "Correct commonly misspelled English words in source files - [https://github.com/client9/misspell/](https://github.com/client9/misspell/)",
+          "description": "`misspell -w $PATH`",
           "type": "string",
           "enum": ["misspell"]
         },
         {
-          "description": "Code formatter for Elixir - [https://hexdocs.pm/mix/main/Mix.Tasks.Format.html](https://hexdocs.pm/mix/main/Mix.Tasks.Format.html)",
+          "description": "`mix format $PATH`",
           "type": "string",
           "enum": ["mix:format"]
         },
         {
-          "description": "Formats Mojo source files - [https://docs.modular.com/mojo/cli/format](https://docs.modular.com/mojo/cli/format)",
+          "description": "`mojo format -q $PATH`",
           "type": "string",
           "enum": ["mojo:format"]
         },
         {
-          "description": "Better configuration for less - [https://nickel-lang.org/](https://nickel-lang.org/)",
+          "description": "`nickel format $PATH`",
           "type": "string",
           "enum": ["nickel:format"]
         },
         {
-          "description": "Code formatter for the Nim programming language - [https://github.com/nim-lang/nim](https://github.com/nim-lang/nim)",
+          "description": "`nimpretty $PATH`",
           "type": "string",
           "enum": ["nimpretty"]
         },
         {
-          "description": "The official (but not yet stable) formatter for Nix code - [https://github.com/serokell/nixfmt](https://github.com/serokell/nixfmt)",
+          "description": "`nixfmt $PATH`",
           "type": "string",
           "enum": ["nixfmt"]
         },
         {
-          "description": "Nix code formatter for nixpkgs - [https://github.com/nix-community/nixpkgs-fmt](https://github.com/nix-community/nixpkgs-fmt)",
+          "description": "`nixpkgs-fmt $PATH`",
           "type": "string",
           "enum": ["nixpkgs-fmt"]
         },
         {
-          "description": "An opinionated code formatter for Nim - [https://github.com/arnetheduck/nph](https://github.com/arnetheduck/nph)",
+          "description": "`nph $PATH`",
           "type": "string",
           "enum": ["nph"]
         },
         {
-          "description": "Lint, format and auto-fix your Groovy / Jenkinsfile / Gradle files - [https://github.com/nvuillam/npm-groovy-lint](https://github.com/nvuillam/npm-groovy-lint)",
+          "description": "`npm-groovy-lint --format $PATH`",
           "type": "string",
           "enum": ["npm-groovy-lint"]
         },
         {
-          "description": "Auto-formatter for OCaml code - [https://github.com/ocaml-ppx/ocamlformat](https://github.com/ocaml-ppx/ocamlformat)",
+          "description": "`ocamlformat --ignore-invalid-option --inplace --enable-outside-detected-project $PATH`",
           "type": "string",
           "enum": ["ocamlformat"]
         },
         {
-          "description": "Indentation tool for OCaml - [https://github.com/OCamlPro/ocp-indent](https://github.com/OCamlPro/ocp-indent)",
+          "description": "`ocp-indent --inplace $PATH`",
           "type": "string",
           "enum": ["ocp-indent"]
         },
         {
-          "description": "A formatter for Haskell source code - [https://github.com/tweag/ormolu](https://github.com/tweag/ormolu)",
+          "description": "`ormolu --mode inplace $PATH`",
           "type": "string",
           "enum": ["ormolu"]
         },
         {
-          "description": "Oxlint is designed to catch erroneous or useless code without requiring any configurations by default - [https://oxc.rs/docs/guide/usage/linter.html](https://oxc.rs/docs/guide/usage/linter.html)",
+          "description": "`oxlint --fix $PATH`",
           "type": "string",
           "enum": ["oxlint"]
         },
         {
-          "description": "Packer is used to format HCL2 configuration files - [https://developer.hashicorp.com/packer/docs/commands/fmt](https://developer.hashicorp.com/packer/docs/commands/fmt)",
+          "description": "`packer fmt $PATH`",
           "type": "string",
           "enum": ["packer:fmt"]
         },
         {
-          "description": "Perl::Tidy, a source code formatter for Perl - [https://github.com/perltidy/perltidy](https://github.com/perltidy/perltidy)",
+          "description": "`perltidy -b $PATH`",
           "type": "string",
           "enum": ["perltidy"]
         },
         {
-          "description": "A PostgreSQL SQL syntax beautifier - [https://github.com/darold/pgFormatter](https://github.com/darold/pgFormatter)",
+          "description": "`pg_format --inplace $PATH`",
           "type": "string",
           "enum": ["pg_format"]
         },
         {
-          "description": "A tool to automatically fix PHP Coding Standards issues - [https://github.com/PHP-CS-Fixer/PHP-CS-Fixer](https://github.com/PHP-CS-Fixer/PHP-CS-Fixer)",
+          "description": "`php-cs-fixer fix $PATH`",
           "type": "string",
           "enum": ["php-cs-fixer:fix"]
         },
         {
-          "description": "PHP Code Beautifier and Fixer fixes violations of a defined coding standard - [https://phpqa.io/projects/phpcbf.html](https://phpqa.io/projects/phpcbf.html)",
+          "description": "`phpcbf $PATH`",
           "type": "string",
           "enum": ["phpcbf"]
         },
         {
-          "description": "Instant PHP quality checks from your console - [https://github.com/nunomaduro/phpinsights](https://github.com/nunomaduro/phpinsights)",
+          "description": "`phpinsights fix $PATH --no-interaction --quiet`",
           "type": "string",
           "enum": ["phpinsights:fix"]
         },
         {
-          "description": "Laravel Pint is an opinionated PHP code style fixer for minimalists - [https://github.com/laravel/pint](https://github.com/laravel/pint)",
+          "description": "`pint $PATH`",
           "type": "string",
           "enum": ["pint"]
         },
         {
-          "description": "Prettier is an opinionated code formatter - [https://github.com/prettier/prettier](https://github.com/prettier/prettier)",
+          "description": "`prettier --embedded-language-formatting off --log-level error --write $PATH`",
           "type": "string",
           "enum": ["prettier"]
         },
         {
-          "description": "The opinionated PHP code formatter - [https://github.com/lkrms/pretty-php](https://github.com/lkrms/pretty-php)",
+          "description": "`pretty-php $PATH`",
           "type": "string",
           "enum": ["pretty-php"]
         },
         {
-          "description": "Formatter for Typst - [https://github.com/antonWetzel/prettypst](https://github.com/antonWetzel/prettypst)",
+          "description": "`prettypst $PATH`",
           "type": "string",
           "enum": ["prettypst"]
         },
         {
-          "description": "Check that your Puppet manifests conform to the style guide - [https://github.com/puppetlabs/puppet-lint](https://github.com/puppetlabs/puppet-lint)",
+          "description": "`puppet-lint --fix $PATH`",
           "type": "string",
           "enum": ["puppet-lint"]
         },
         {
-          "description": "PureScript code formatter - [https://github.com/natefaubion/purescript-tidy](https://github.com/natefaubion/purescript-tidy)",
+          "description": "`purs-tidy format-in-place $PATH`",
           "type": "string",
           "enum": ["purs-tidy"]
         },
         {
-          "description": "A formatter for finding and removing unused import statements - [https://github.com/hadialqattan/pycln](https://github.com/hadialqattan/pycln)",
+          "description": "`pycln --no-gitignore --quiet $PATH`",
           "type": "string",
           "enum": ["pycln"]
         },
         {
-          "description": "Pyink is a Python formatter, forked from Black with a few different formatting behaviors - [https://github.com/google/pyink](https://github.com/google/pyink)",
+          "description": "`pyink --quiet $PATH`",
           "type": "string",
           "enum": ["pyink"]
         },
         {
-          "description": "qmlfmt - command line application that formats QML files - [https://github.com/jesperhh/qmlfmt](https://github.com/jesperhh/qmlfmt)",
+          "description": "`qmlfmt -w $PATH`",
           "type": "string",
           "enum": ["qmlfmt"]
         },
         {
-          "description": "An extensible code formatter for Racket - [https://docs.racket-lang.org/fmt/](https://docs.racket-lang.org/fmt/)",
+          "description": "`raco fmt -i $PATH`",
           "type": "string",
           "enum": ["raco:fmt"]
         },
         {
-          "description": "refmt stands by Reason Formatter and it formats Reason programs, is a parser and pretty-printer for Reason - [https://reasonml.github.io/docs/en/refmt](https://reasonml.github.io/docs/en/refmt)",
+          "description": "`refmt --in-place $PATH`",
           "type": "string",
           "enum": ["refmt"]
         },
         {
-          "description": "Formatter for ReScript - [https://rescript-lang.org/](https://rescript-lang.org/)",
+          "description": "`rescript format $PATH`",
           "type": "string",
           "enum": ["rescript:format"]
         },
         {
-          "description": "Tools for the roc programming language - [https://github.com/roc-lang/roc](https://github.com/roc-lang/roc)",
+          "description": "`roc format $PATH`",
           "type": "string",
           "enum": ["roc:format"]
         },
         {
-          "description": "A formatter for reStructuredText - [https://github.com/dzhu/rstfmt](https://github.com/dzhu/rstfmt)",
+          "description": "`rstfmt $PATH`",
           "type": "string",
           "enum": ["rstfmt"]
         },
         {
-          "description": "A Ruby static code analyzer and formatter, based on the community Ruby style guide - [https://github.com/rubocop/rubocop](https://github.com/rubocop/rubocop)",
+          "description": "`rubocop --fix-layout --autocorrect --format quiet $PATH`",
           "type": "string",
           "enum": ["rubocop"]
         },
         {
-          "description": "Ruby Autoformatter - [https://github.com/fables-tales/rubyfmt](https://github.com/fables-tales/rubyfmt)",
+          "description": "`rubyfmt -i $PATH`",
           "type": "string",
           "enum": ["rubyfmt"]
         },
         {
-          "description": "An extremely fast Python linter and code formatter, written in Rust - [https://docs.astral.sh/ruff](https://docs.astral.sh/ruff)",
+          "description": "`ruff check --fix --quiet $PATH`",
           "type": "string",
           "enum": ["ruff:check"]
         },
         {
-          "description": "An extremely fast Python linter and code formatter, written in Rust - [https://docs.astral.sh/ruff](https://docs.astral.sh/ruff)",
+          "description": "`ruff format --quiet $PATH`",
           "type": "string",
           "enum": ["ruff:format"]
         },
         {
-          "description": "The Ruby Formatter - [https://github.com/ruby-formatter/rufo](https://github.com/ruby-formatter/rufo)",
+          "description": "`rufo --simple-exit $PATH`",
           "type": "string",
           "enum": ["rufo"]
         },
         {
-          "description": "Tools for the Rune programming language - [https://github.com/rune-rs/rune](https://github.com/rune-rs/rune)",
+          "description": "`rune fmt $PATH`",
           "type": "string",
           "enum": ["rune:fmt"]
         },
         {
-          "description": "The official code formatter for Rust - [https://github.com/rust-lang/rustfmt](https://github.com/rust-lang/rustfmt)",
+          "description": "`rustfmt --edition 2021 --quiet $PATH`",
           "type": "string",
           "enum": ["rustfmt"]
         },
         {
-          "description": "CLI for organizing Tailwind CSS classes - [https://github.com/avencera/rustywind](https://github.com/avencera/rustywind)",
+          "description": "`rustywind --write $PATH`",
           "type": "string",
           "enum": ["rustywind"]
         },
         {
-          "description": "Code formatter for Scala - [https://github.com/scalameta/scalafmt](https://github.com/scalameta/scalafmt)",
+          "description": "`scalafmt --quiet --mode any $PATH`",
           "type": "string",
           "enum": ["scalafmt"]
         },
         {
-          "description": "Scala source code formatter - [https://github.com/scala-ide/scalariform](https://github.com/scala-ide/scalariform)",
+          "description": "`scalariform $PATH`",
           "type": "string",
           "enum": ["scalariform"]
         },
         {
-          "description": "Shell script formatter - [https://github.com/mvdan/sh](https://github.com/mvdan/sh)",
+          "description": "`shfmt --write $PATH`",
           "type": "string",
           "enum": ["shfmt"]
         },
         {
-          "description": "Sleek is a CLI tool for formatting SQL. It helps you maintain a consistent style across your SQL code, enhancing readability and productivity - [https://github.com/nrempel/sleek](https://github.com/nrempel/sleek)",
+          "description": "`sleek $PATH`",
           "type": "string",
           "enum": ["sleek"]
         },
         {
-          "description": "A custom parser/auto-formatter for Standard ML - [https://github.com/shwestrick/smlfmt](https://github.com/shwestrick/smlfmt)",
+          "description": "`smlfmt --force $PATH`",
           "type": "string",
           "enum": ["smlfmt"]
         },
         {
-          "description": "The uncompromising Snakemake code formatter - [https://github.com/snakemake/snakefmt](https://github.com/snakemake/snakefmt)",
+          "description": "`snakefmt $PATH`",
           "type": "string",
           "enum": ["snakefmt"]
         },
         {
-          "description": "A whitespace formatter for different query languages - [https://github.com/sql-formatter-org/sql-formatter](https://github.com/sql-formatter-org/sql-formatter)",
+          "description": "`sql-formatter --fix $PATH`",
           "type": "string",
           "enum": ["sql-formatter"]
         },
         {
-          "description": "A modular SQL linter and auto-formatter with support for multiple dialects and templated code - [https://github.com/sqlfluff/sqlfluff](https://github.com/sqlfluff/sqlfluff)",
+          "description": "`sqlfluff fix --dialect ansi $PATH`",
           "type": "string",
           "enum": ["sqlfluff:fix"]
         },
         {
-          "description": "A modular SQL linter and auto-formatter with support for multiple dialects and templated code - [https://github.com/sqlfluff/sqlfluff](https://github.com/sqlfluff/sqlfluff)",
+          "description": "`sqlfluff format --dialect ansi $PATH`",
           "type": "string",
           "enum": ["sqlfluff:format"]
         },
         {
-          "description": "sqlfmt formats your dbt SQL files so you don't have to - [https://github.com/tconbeer/sqlfmt](https://github.com/tconbeer/sqlfmt)",
+          "description": "`sqlfmt $PATH`",
           "type": "string",
           "enum": ["sqlfmt"]
         },
         {
-          "description": "JavaScript style guide, linter, and formatter - [https://github.com/standard/standard](https://github.com/standard/standard)",
+          "description": "`standard --fix $PATH`",
           "type": "string",
           "enum": ["standardjs"]
         },
         {
-          "description": "Ruby's bikeshed-proof linter and formatter - [https://github.com/standardrb/standard](https://github.com/standardrb/standard)",
+          "description": "`standardrb --fix $PATH`",
           "type": "string",
           "enum": ["standardrb"]
         },
         {
-          "description": "stylefmt is a tool that automatically formats stylesheets - [https://github.com/matype/stylefmt](https://github.com/matype/stylefmt)",
+          "description": "`stylefmt $PATH`",
           "type": "string",
           "enum": ["stylefmt"]
         },
         {
-          "description": "A mighty CSS linter that helps you avoid errors and enforce conventions - [https://github.com/stylelint/stylelint](https://github.com/stylelint/stylelint)",
+          "description": "`stylelint --fix $PATH`",
           "type": "string",
           "enum": ["stylelint"]
         },
         {
-          "description": "Haskell code prettifier - [https://github.com/haskell/stylish-haskell](https://github.com/haskell/stylish-haskell)",
+          "description": "`stylish-haskell --inplace $PATH`",
           "type": "string",
           "enum": ["stylish-haskell"]
         },
         {
-          "description": "An opinionated Lua code formatter - [https://github.com/JohnnyMorganz/StyLua](https://github.com/JohnnyMorganz/StyLua)",
+          "description": "`stylua --verify $PATH`",
           "type": "string",
           "enum": ["stylua"]
         },
         {
-          "description": "HTML Language Server & Templating Language Library - [https://github.com/kristoff-it/superhtml](https://github.com/kristoff-it/superhtml)",
+          "description": "`superhtml fmt $PATH`",
           "type": "string",
           "enum": ["superhtml:fmt"]
         },
         {
-          "description": "Formatting technology for Swift source code - [https://github.com/apple/swift-format](https://github.com/apple/swift-format)",
+          "description": "`swift-format --in-place $PATH`",
           "type": "string",
           "enum": ["swift-format"]
         },
         {
-          "description": "A command-line tool and Xcode Extension for formatting Swift code - [https://github.com/nicklockwood/SwiftFormat](https://github.com/nicklockwood/SwiftFormat)",
+          "description": "`swiftformat --quiet $PATH`",
           "type": "string",
           "enum": ["swiftformat"]
         },
         {
-          "description": "A TOML toolkit written in Rust - [https://github.com/tamasfe/taplo](https://github.com/tamasfe/taplo)",
+          "description": "`taplo format $PATH`",
           "type": "string",
           "enum": ["taplo"]
         },
         {
-          "description": "Tooling for the Templ template language - [https://templ.guide/](https://templ.guide/)",
+          "description": "`templ fmt $PATH`",
           "type": "string",
           "enum": ["templ:fmt"]
         },
         {
-          "description": "The terraform fmt command is used to rewrite Terraform configuration files to a canonical format and style - [https://www.terraform.io/docs/cli/commands/fmt.html](https://www.terraform.io/docs/cli/commands/fmt.html)",
+          "description": "`terraform fmt -write=true $PATH`",
           "type": "string",
           "enum": ["terraform:fmt"]
         },
         {
-          "description": "Tighten linter for Laravel conventions - [https://github.com/tighten/tlint](https://github.com/tighten/tlint)",
+          "description": "`tlint format $PATH`",
           "type": "string",
           "enum": ["tlint:format"]
         },
         {
-          "description": "The tofu fmt command is used to rewrite OpenTofu configuration files to a canonical format and style - [https://opentofu.org/docs/cli/commands/fmt/](https://opentofu.org/docs/cli/commands/fmt/)",
+          "description": "`tofu fmt -write=true $PATH`",
           "type": "string",
           "enum": ["tofu:fmt"]
         },
         {
-          "description": "Topiary aims to be a uniform formatter for simple languages, as part of the Tree-sitter ecosystem - [https://github.com/tweag/topiary](https://github.com/tweag/topiary)",
+          "description": "`topiary format $PATH`",
           "type": "string",
           "enum": ["topiary"]
         },
         {
-          "description": "Typescript style guide, linter, and formatter using StandardJS - [https://github.com/standard/ts-standard](https://github.com/standard/ts-standard)",
+          "description": "`ts-standard --fix $PATH`",
           "type": "string",
           "enum": ["ts-standard"]
         },
         {
-          "description": "A tool to automatically fix Twig Coding Standards issues - [https://github.com/VincentLanglet/Twig-CS-Fixer](https://github.com/VincentLanglet/Twig-CS-Fixer)",
+          "description": "`twig-cs-fixer lint $PATH --fix --no-interaction --quiet`",
           "type": "string",
           "enum": ["twig-cs-fixer:lint"]
         },
         {
-          "description": "Source code spell checker - [https://github.com/crate-ci/typos](https://github.com/crate-ci/typos)",
+          "description": "`typos -w --no-ignore --hidden $PATH`",
           "type": "string",
           "enum": ["typos"]
         },
         {
-          "description": "Basic formatter for the Typst language - [https://github.com/astrale-sharp/typstfmt](https://github.com/astrale-sharp/typstfmt)",
+          "description": "`typstfmt $PATH`",
           "type": "string",
           "enum": ["typstfmt"]
         },
         {
-          "description": "Beautiful and reliable typst code formatter - [https://github.com/Enter-tainer/typstyle](https://github.com/Enter-tainer/typstyle)",
+          "description": "`typstyle -i $PATH`",
           "type": "string",
           "enum": ["typstyle"]
         },
         {
-          "description": "Safe, atomic formatting with black and usort - [https://github.com/omnilib/ufmt](https://github.com/omnilib/ufmt)",
+          "description": "`ufmt format $PATH`",
           "type": "string",
           "enum": ["ufmt"]
         },
         {
-          "description": "A stack-based array programming language - [https://github.com/uiua-lang/uiua](https://github.com/uiua-lang/uiua)",
+          "description": "`uiua fmt $PATH`",
           "type": "string",
           "enum": ["uiua:fmt"]
         },
         {
-          "description": "Safe, minimal import sorting for Python projects - [https://github.com/facebook/usort](https://github.com/facebook/usort)",
+          "description": "`usort format $PATH`",
           "type": "string",
           "enum": ["usort"]
         },
         {
-          "description": "Tooling for V lang - [https://vlang.io/](https://vlang.io/)",
+          "description": "`v fmt -w $PATH`",
           "type": "string",
           "enum": ["v:fmt"]
         },
         {
-          "description": "Veryl: A Modern Hardware Description Language - [https://github.com/veryl-lang/veryl](https://github.com/veryl-lang/veryl)",
+          "description": "`veryl fmt $PATH`",
           "type": "string",
           "enum": ["veryl:fmt"]
         },
         {
-          "description": "Style guide enforcement for VHDL - [https://github.com/jeremiah-c-leary/vhdl-style-guide](https://github.com/jeremiah-c-leary/vhdl-style-guide)",
+          "description": "`vsg -f $PATH --fix`",
           "type": "string",
           "enum": ["vhdl-style-guide"]
         },
         {
-          "description": "Indents and optionally converts Fortran program sources - [https://github.com/wvermin/findent](https://github.com/wvermin/findent)",
+          "description": "`wfindent $PATH`",
           "type": "string",
           "enum": ["wfindent"]
         },
         {
-          "description": "Format and compress XML documents - [https://github.com/pamoller/xmlformatter](https://github.com/pamoller/xmlformatter)",
+          "description": "`xmlformat --overwrite $PATH`",
           "type": "string",
           "enum": ["xmlformat"]
         },
         {
-          "description": "XML linter - [https://gnome.pages.gitlab.gnome.org/libxml2/xmllint.html](https://gnome.pages.gitlab.gnome.org/libxml2/xmllint.html)",
+          "description": "`xmllint --format $PATH --output $PATH`",
           "type": "string",
           "enum": ["xmllint"]
         },
         {
-          "description": "JavaScript/TypeScript linter (ESLint wrapper) with great defaults - [http://github.com/xojs/xo](http://github.com/xojs/xo)",
+          "description": "`xo --fix $PATH`",
           "type": "string",
           "enum": ["xo"]
         },
         {
-          "description": "A simple opinionated yaml formatter that keeps your comments - [https://github.com/lyz-code/yamlfix](https://github.com/lyz-code/yamlfix)",
+          "description": "`yamlfix $PATH`",
           "type": "string",
           "enum": ["yamlfix"]
         },
         {
-          "description": "An extensible command line tool or library to format yaml files - [https://github.com/google/yamlfmt](https://github.com/google/yamlfmt)",
+          "description": "`yamlfmt -quiet $PATH`",
           "type": "string",
           "enum": ["yamlfmt"]
         },
         {
-          "description": "A formatter for Python files - [https://github.com/google/yapf](https://github.com/google/yapf)",
+          "description": "`yapf --in-place $PATH`",
           "type": "string",
           "enum": ["yapf"]
         },
         {
-          "description": "Code formatter for the Yew framework - [https://github.com/its-the-shrimp/yew-fmt](https://github.com/its-the-shrimp/yew-fmt)",
+          "description": "`yew-fmt --edition 2021 --quiet $PATH`",
           "type": "string",
           "enum": ["yew-fmt"]
         },
         {
-          "description": "Reformat Zig source into canonical form - [https://ziglang.org/](https://ziglang.org/)",
+          "description": "`zig fmt $PATH`",
           "type": "string",
           "enum": ["zig:fmt"]
         },
         {
-          "description": "Formats Ziggy documents and Ziggy schemas - [https://ziggy-lang.io/documentation/ziggy-fmt/](https://ziggy-lang.io/documentation/ziggy-fmt/)",
+          "description": "`ziggy fmt $PATH`",
           "type": "string",
           "enum": ["ziggy:fmt"]
         },
         {
-          "description": "Executables, uberjar, and library to beautifully format Clojure and Clojurescript source code and s-expressions - [https://github.com/kkinnear/zprint](https://github.com/kkinnear/zprint)",
+          "description": "`zprint -w $PATH`",
           "type": "string",
           "enum": ["zprint"]
         }

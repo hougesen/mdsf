@@ -3,8 +3,8 @@
   "binary": "dart",
   "categories": ["formatter", "linter"],
   "commands": {
-    "fix": ["fix", "$PATH"],
-    "format": ["format", "--apply", "$PATH"]
+    "fix": ["fix", "--apply", "$PATH"],
+    "format": ["format", "$PATH"]
   },
   "description": "Formatter and linter for Dart",
   "homepage": "https://dart.dev/tools",

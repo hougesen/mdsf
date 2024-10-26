@@ -5,6 +5,7 @@ use crate::{error::MdsfError, execution::execute_command, runners::CommandType};
 #[inline]
 fn set_dart_fix_args(mut cmd: Command, file_path: &std::path::Path) -> Command {
     cmd.arg("fix");
+    cmd.arg("--apply");
     cmd.arg(file_path);
     cmd
 }

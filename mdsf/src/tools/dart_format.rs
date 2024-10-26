@@ -5,7 +5,6 @@ use crate::{error::MdsfError, execution::execute_command, runners::CommandType};
 #[inline]
 fn set_dart_format_args(mut cmd: Command, file_path: &std::path::Path) -> Command {
     cmd.arg("format");
-    cmd.arg("--apply");
     cmd.arg(file_path);
     cmd
 }

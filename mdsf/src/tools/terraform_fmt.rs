@@ -35,7 +35,7 @@ pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfEr
 #[cfg(test)]
 mod test_terraform_fmt {
     #[test_with::executable(terraform)]
-    fn test_terraform_fmt_terraform_35979ec99d0c4a75() {
+    fn test_terraform_fmt_tf_9c8301e7bcb0dc4e() {
         let input = r#"resource "aws_instance" "example" {
                 ami   = "abc123"
 
@@ -50,7 +50,7 @@ mod test_terraform_fmt {
   }
 }
 "#;
-        let file_ext = crate::fttype::get_file_extension("terraform");
+        let file_ext = crate::fttype::get_file_extension("tf");
         let snippet =
             crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
         let result = crate::tools::terraform_fmt::run(snippet.path())

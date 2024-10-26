@@ -193,759 +193,759 @@ pub mod zprint;
 #[cfg_attr(feature = "json-schema", derive(schemars::JsonSchema))]
 pub enum Tooling {
     #[serde(rename = "alejandra")]
-    #[doc = "The Uncompromising Nix Code Formatter - [https://github.com/kamadorueda/alejandra](https://github.com/kamadorueda/alejandra)"]
+    /// `alejandra --quiet $PATH`
     Alejandra,
 
     #[serde(rename = "ameba")]
-    #[doc = "A static code analysis tool for Crystal - [https://github.com/crystal-ameba/ameba](https://github.com/crystal-ameba/ameba)"]
+    /// `ameba --fix $PATH`
     Ameba,
 
     #[serde(rename = "asmfmt")]
-    #[doc = "Go Assembler Formatter - [https://github.com/klauspost/asmfmt](https://github.com/klauspost/asmfmt)"]
+    /// `asmfmt -w $PATH`
     Asmfmt,
 
     #[serde(rename = "astyle")]
-    #[doc = "A Free, Fast, and Small Automatic Formatter for C, C++, C++/CLI, Objective-C, C#, and Java Source Code - [https://gitlab.com/saalen/astyle](https://gitlab.com/saalen/astyle)"]
+    /// `astyle --quiet $PATH`
     Astyle,
 
     #[serde(rename = "auto-optional")]
-    #[doc = "Adds the Optional type-hint to arguments where the default value is None - [https://pypi.org/project/auto-optional/](https://pypi.org/project/auto-optional/)"]
+    /// `auto-optional $PATH`
     AutoOptional,
 
     #[serde(rename = "autocorrect")]
-    #[doc = "A linter and formatter to help you to improve copywriting, correct spaces, words, and punctuations between CJK (Chinese, Japanese, Korean) - [https://github.com/huacnlee/autocorrect](https://github.com/huacnlee/autocorrect)"]
+    /// `autocorrect --fix $PATH`
     Autocorrect,
 
     #[serde(rename = "autoflake")]
-    #[doc = "Removes unused imports and unused variables as reported by pyflakes - [https://github.com/pycqa/autoflake](https://github.com/pycqa/autoflake)"]
+    /// `autoflake --quiet --in-place $PATH`
     Autoflake,
 
     #[serde(rename = "autopep8")]
-    #[doc = "A tool that automatically formats Python code to conform to the PEP 8 style guid - [https://pypi.org/project/autopep8/](https://pypi.org/project/autopep8/)"]
+    /// `autopep8 --in-place $PATH`
     Autopep8,
 
     #[serde(rename = "beancount-black")]
-    #[doc = "Opinionated code formatter, just like Python's black code formatter but for Beancount - [https://github.com/LaunchPlatform/beancount-black](https://github.com/LaunchPlatform/beancount-black)"]
+    /// `bean-black $PATH`
     BeancountBlack,
 
     #[serde(rename = "beautysh")]
-    #[doc = "A Bash beautifier for the masses - [https://pypi.org/project/beautysh/](https://pypi.org/project/beautysh/)"]
+    /// `beautysh $PATH`
     Beautysh,
 
     #[serde(rename = "bicep:format")]
-    #[doc = "Bicep is a declarative language for describing and deploying Azure resources - [https://github.com/Azure/bicep](https://github.com/Azure/bicep)"]
+    /// `bicep format $PATH`
     BicepFormat,
 
     #[serde(rename = "biome:check")]
-    #[doc = "One toolchain for your web project - [https://biomejs.dev/](https://biomejs.dev/)"]
+    /// `biome check --write $PATH`
     BiomeCheck,
 
     #[serde(rename = "biome:format")]
-    #[doc = "One toolchain for your web project - [https://biomejs.dev/](https://biomejs.dev/)"]
+    /// `biome format --write $PATH`
     BiomeFormat,
 
     #[serde(rename = "biome:lint")]
-    #[doc = "One toolchain for your web project - [https://biomejs.dev/](https://biomejs.dev/)"]
+    /// `biome lint --write $PATH`
     BiomeLint,
 
     #[serde(rename = "black")]
-    #[doc = "The uncompromising Python code formatter - [https://github.com/psf/black](https://github.com/psf/black)"]
+    /// `black --quiet $PATH`
     Black,
 
     #[serde(rename = "blade-formatter")]
-    #[doc = "An opinionated blade template formatter for Laravel that respects readability - [https://github.com/shufo/blade-formatter](https://github.com/shufo/blade-formatter)"]
+    /// `blade-formatter --write $PATH`
     BladeFormatter,
 
     #[serde(rename = "blue")]
-    #[doc = "The slightly less uncompromising Python code formatter - [https://blue.readthedocs.io/en/latest/](https://blue.readthedocs.io/en/latest/)"]
+    /// `blue --quiet $PATH`
     Blue,
 
     #[serde(rename = "bpfmt")]
-    #[doc = "A formatter for Blueprint files - [https://source.android.com/docs/setup/reference/androidbp#formatter](https://source.android.com/docs/setup/reference/androidbp#formatter)"]
+    /// `bpfmt -w $PATH`
     Bpfmt,
 
     #[serde(rename = "brittany")]
-    #[doc = "A Haskell source code formatter - [https://github.com/lspitzner/brittany](https://github.com/lspitzner/brittany)"]
+    /// `brittany --write-mode=inplace $PATH`
     Brittany,
 
     #[serde(rename = "brunette")]
-    #[doc = "A best practice Python code formatter - [https://github.com/odwyersoftware/brunette](https://github.com/odwyersoftware/brunette)"]
+    /// `brunette --quiet $PATH`
     Brunette,
 
     #[serde(rename = "bsfmt")]
-    #[doc = "A code formatter for BrightScript and BrighterScript - [https://github.com/rokucommunity/brighterscript-formatter](https://github.com/rokucommunity/brighterscript-formatter)"]
+    /// `bsfmt $PATH --write`
     Bsfmt,
 
     #[serde(rename = "buf:format")]
-    #[doc = "The best way of working with Protocol Buffers - [https://buf.build/docs/reference/cli/buf/format/](https://buf.build/docs/reference/cli/buf/format/)"]
+    /// `buf format --write $PATH`
     BufFormat,
 
     #[serde(rename = "buildifier")]
-    #[doc = "A bazel BUILD file formatter and - [https://github.com/bazelbuild/buildtools](https://github.com/bazelbuild/buildtools)"]
+    /// `buildifier $PATH`
     Buildifier,
 
     #[serde(rename = "cabal:format")]
-    #[doc = "Cabal is a system for building and packaging Haskell libraries and programs - [https://www.haskell.org/cabal/](https://www.haskell.org/cabal/)"]
+    /// `cabal format $PATH`
     CabalFormat,
 
     #[serde(rename = "caramel:fmt")]
-    #[doc = "Formatter for the Caramel programming language - [https://caramel.run/](https://caramel.run/)"]
+    /// `caramel fmt $PATH`
     CaramelFmt,
 
     #[serde(rename = "clang-format")]
-    #[doc = "A tool to format C/C++/Java/JavaScript/JSON/Objective-C/Protobuf/C# code - [https://clang.llvm.org/docs/ClangFormat.html](https://clang.llvm.org/docs/ClangFormat.html)"]
+    /// `clang-format -i $PATH`
     ClangFormat,
 
     #[serde(rename = "clang-tidy")]
-    #[doc = "clang-tidy is a clang-based C++ “linter” tool - [https://clang.llvm.org/extra/clang-tidy/](https://clang.llvm.org/extra/clang-tidy/)"]
+    /// `clang-tidy --fix $PATH`
     ClangTidy,
 
     #[serde(rename = "cljfmt:fix")]
-    #[doc = "A tool for formatting Clojure code - [https://github.com/weavejester/cljfmt](https://github.com/weavejester/cljfmt)"]
+    /// `cljfmt fix $PATH`
     CljfmtFix,
 
     #[serde(rename = "cljstyle")]
-    #[doc = "A tool for formatting Clojure code - [https://github.com/greglook/cljstyle](https://github.com/greglook/cljstyle)"]
+    /// `cljstyle fix $PATH`
     Cljstyle,
 
     #[serde(rename = "codespell")]
-    #[doc = "Check code for common misspellings - [https://github.com/codespell-project/codespell](https://github.com/codespell-project/codespell)"]
+    /// `codespell $PATH --check-hidden --write-changes`
     Codespell,
 
     #[serde(rename = "crlfmt")]
-    #[doc = "Formatter for CockroachDB's additions to the Go style guide - [https://github.com/cockroachdb/crlfmt](https://github.com/cockroachdb/crlfmt)"]
+    /// `crlfmt -w $PATH`
     Crlfmt,
 
     #[serde(rename = "crystal:format")]
-    #[doc = "Tools for the Crystal programming language - [https://crystal-lang.org/](https://crystal-lang.org/)"]
+    /// `crystal tool format $PATH`
     CrystalFormat,
 
     #[serde(rename = "csharpier")]
-    #[doc = "An Opinionated Code Formatter for C# - [https://csharpier.com/](https://csharpier.com/)"]
+    /// `dotnet csharpier $PATH`
     Csharpier,
 
     #[serde(rename = "css-beautify")]
-    #[doc = "A css formatter - [https://github.com/beautifier/js-beautify?tab=readme-ov-file#css--html](https://github.com/beautifier/js-beautify?tab=readme-ov-file#css--html)"]
+    /// `css-beautify -r --type css -f $PATH`
     CssBeautify,
 
     #[serde(rename = "csscomb")]
-    #[doc = "CSS coding style formatter - [https://github.com/csscomb/csscomb.js](https://github.com/csscomb/csscomb.js)"]
+    /// `csscomb -t $PATH`
     Csscomb,
 
     #[serde(rename = "d2:fmt")]
-    #[doc = "Formatter for the d2 language - [https://d2lang.com/](https://d2lang.com/)"]
+    /// `d2 fmt $PATH`
     D2Fmt,
 
     #[serde(rename = "dart:fix")]
-    #[doc = "Formatter and linter for Dart - [https://dart.dev/tools](https://dart.dev/tools)"]
+    /// `dart fix --apply $PATH`
     DartFix,
 
     #[serde(rename = "dart:format")]
-    #[doc = "Formatter and linter for Dart - [https://dart.dev/tools](https://dart.dev/tools)"]
+    /// `dart format $PATH`
     DartFormat,
 
     #[serde(rename = "dcm:fix")]
-    #[doc = "Code Quality Tool for Flutter Developers - [https://dcm.dev/](https://dcm.dev/)"]
+    /// `dcm fix $PATH`
     DcmFix,
 
     #[serde(rename = "dcm:format")]
-    #[doc = "Code Quality Tool for Flutter Developers - [https://dcm.dev/](https://dcm.dev/)"]
+    /// `dcm format $PATH`
     DcmFormat,
 
     #[serde(rename = "deno:fmt")]
-    #[doc = "Formatter and linter for JavaScript and TypeScript - [https://docs.deno.com/runtime/reference/cli/](https://docs.deno.com/runtime/reference/cli/)"]
+    /// `deno fmt --quiet $PATH`
     DenoFmt,
 
     #[serde(rename = "deno:lint")]
-    #[doc = "Formatter and linter for JavaScript and TypeScript - [https://docs.deno.com/runtime/reference/cli/](https://docs.deno.com/runtime/reference/cli/)"]
+    /// `deno lint --fix $PATH`
     DenoLint,
 
     #[serde(rename = "dfmt")]
-    #[doc = "Dfmt is a formatter for D source code - [https://github.com/dlang-community/dfmt](https://github.com/dlang-community/dfmt)"]
+    /// `dfmt -i $PATH`
     Dfmt,
 
     #[serde(rename = "dhall")]
-    #[doc = "Format Dhall files - [https://dhall-lang.org/](https://dhall-lang.org/)"]
+    /// `dhall format $PATH`
     Dhall,
 
     #[serde(rename = "djlint")]
-    #[doc = "Lint & Format HTML Templates - [https://www.djlint.com/](https://www.djlint.com/)"]
+    /// `djlint $PATH --reformat`
     Djlint,
 
     #[serde(rename = "docformatter")]
-    #[doc = "Formats docstrings to follow PEP 257 - [https://pypi.org/project/docformatter/](https://pypi.org/project/docformatter/)"]
+    /// `docformatter --in-place $PATH`
     Docformatter,
 
     #[serde(rename = "docstrfmt")]
-    #[doc = "A formatter for Sphinx flavored reStructuredText - [https://pypi.org/project/docstrfmt/](https://pypi.org/project/docstrfmt/)"]
+    /// `docstrfmt $PATH`
     Docstrfmt,
 
     #[serde(rename = "dotenv-linter:fix")]
-    #[doc = "Lightning-fast linter for .env files - [https://github.com/dotenv-linter/dotenv-linter](https://github.com/dotenv-linter/dotenv-linter)"]
+    /// `dotenv-linter fix $PATH`
     DotenvLinterFix,
 
     #[serde(rename = "dprint:fmt")]
-    #[doc = "A pluggable and configurable code formatting platform written in Rust - [https://dprint.dev/](https://dprint.dev/)"]
+    /// `dprint fmt $PATH`
     DprintFmt,
 
     #[serde(rename = "easy-coding-standard")]
-    #[doc = "The Easiest way to add coding standard to your PHP project - [https://github.com/easy-coding-standard/easy-coding-standard](https://github.com/easy-coding-standard/easy-coding-standard)"]
+    /// `ecs check $PATH --fix --no-interaction`
     EasyCodingStandard,
 
     #[serde(rename = "efmt")]
-    #[doc = "Erlang code formatter - [https://github.com/sile/efmt](https://github.com/sile/efmt)"]
+    /// `efmt -w $PATH`
     Efmt,
 
     #[serde(rename = "elm-format")]
-    #[doc = "elm-format formats Elm source code according to a standard set of rules based on the official Elm Style Guide - [https://github.com/avh4/elm-format](https://github.com/avh4/elm-format)"]
+    /// `elm-format --elm-version=0.19 --yes $PATH`
     ElmFormat,
 
     #[serde(rename = "erb-formatter")]
-    #[doc = "Format ERB files with speed and precision - [https://github.com/nebulab/erb-formatter](https://github.com/nebulab/erb-formatter)"]
+    /// `erb-format $PATH --write`
     ErbFormatter,
 
     #[serde(rename = "erlfmt")]
-    #[doc = "An automated code formatter for Erlang - [https://github.com/WhatsApp/erlfmt](https://github.com/WhatsApp/erlfmt)"]
+    /// `erlfmt -w $PATH_STRING`
     Erlfmt,
 
     #[serde(rename = "eslint")]
-    #[doc = "Find and fix problems in your JavaScript code - [https://github.com/eslint/eslint/](https://github.com/eslint/eslint/)"]
+    /// `eslint --fix $PATH`
     Eslint,
 
     #[serde(rename = "fantomas")]
-    #[doc = "FSharp source code formatter - [https://github.com/fsprojects/fantomas](https://github.com/fsprojects/fantomas)"]
+    /// `fantomas $PATH`
     Fantomas,
 
     #[serde(rename = "fish_indent")]
-    #[doc = "Fish indenter and prettifier - [https://fishshell.com/docs/current/cmds/fish_indent.html](https://fishshell.com/docs/current/cmds/fish_indent.html)"]
+    /// `fish_indent -w $PATH`
     FishIndent,
 
     #[serde(rename = "fixjson")]
-    #[doc = "JSON Fixer for Humans using (relaxed) JSON5 - [https://github.com/rhysd/fixjson](https://github.com/rhysd/fixjson)"]
+    /// `fixjson -w $PATH`
     Fixjson,
 
     #[serde(rename = "floskell")]
-    #[doc = "Floskell is a flexible Haskell source code pretty printer - [https://github.com/ennocramer/floskell](https://github.com/ennocramer/floskell)"]
+    /// `floskell $PATH`
     Floskell,
 
     #[serde(rename = "fnlfmt")]
-    #[doc = "A formatter for Fennel code - [https://git.sr.ht/~technomancy/fnlfmt](https://git.sr.ht/~technomancy/fnlfmt)"]
+    /// `fnlfmt $PATH`
     Fnlfmt,
 
     #[serde(rename = "forge:fmt")]
-    #[doc = "A Solidity formatter - [https://github.com/foundry-rs/foundry](https://github.com/foundry-rs/foundry)"]
+    /// `forge fmt $PATH`
     ForgeFmt,
 
     #[serde(rename = "fourmolu")]
-    #[doc = "A formatter for Haskell source code - [https://hackage.haskell.org/package/fourmolu](https://hackage.haskell.org/package/fourmolu)"]
+    /// `fourmolu -i $PATH`
     Fourmolu,
 
     #[serde(rename = "fprettify")]
-    #[doc = "Auto-formatter for modern Fortran source code - [https://github.com/fortran-lang/fprettify](https://github.com/fortran-lang/fprettify)"]
+    /// `fprettify $PATH`
     Fprettify,
 
     #[serde(rename = "gci")]
-    #[doc = "GCI, a tool that control golang package import order and make it always deterministic - [https://github.com/daixiang0/gci](https://github.com/daixiang0/gci)"]
+    /// `gci write --skip-generated --skip-vender $PATH`
     Gci,
 
     #[serde(rename = "gdformat")]
-    #[doc = "https://github.com/scony/godot-gdscript-toolkit - [GDScript linter](GDScript linter)"]
+    /// `gdformat $PATH`
     Gdformat,
 
     #[serde(rename = "gersemi")]
-    #[doc = "A formatter to make your CMake code the real treasure - [https://github.com/blankspruce/gersemi](https://github.com/blankspruce/gersemi)"]
+    /// `gersemi -i -q $PATH`
     Gersemi,
 
     #[serde(rename = "gleam:format")]
-    #[doc = "Format Gleam source code - [https://gleam.run](https://gleam.run)"]
+    /// `gleam format $PATH`
     GleamFormat,
 
     #[serde(rename = "gluon:fmt")]
-    #[doc = "Code formatting for the gluon programming language - [https://github.com/gluon-lang/gluon](https://github.com/gluon-lang/gluon)"]
+    /// `gluon fmt $PATH`
     GluonFmt,
 
     #[serde(rename = "gofmt")]
-    #[doc = "Gofmt formats Go programs - [https://pkg.go.dev/cmd/gofmt](https://pkg.go.dev/cmd/gofmt)"]
+    /// `gofmt -w $PATH`
     Gofmt,
 
     #[serde(rename = "gofumpt")]
-    #[doc = "A stricter gofmt - [https://github.com/mvdan/gofumpt](https://github.com/mvdan/gofumpt)"]
+    /// `gofumpt -w $PATH`
     Gofumpt,
 
     #[serde(rename = "goimports")]
-    #[doc = "goimports updates your Go import lines, adding missing ones and removing unreferenced ones - [https://pkg.go.dev/golang.org/x/tools/cmd/goimports](https://pkg.go.dev/golang.org/x/tools/cmd/goimports)"]
+    /// `goimports -w $PATH`
     Goimports,
 
     #[serde(rename = "goimports-reviser")]
-    #[doc = "Right imports sorting & code formatting tool (goimports alternative) - [https://github.com/incu6us/goimports-reviser](https://github.com/incu6us/goimports-reviser)"]
+    /// `goimports-reviser -format $PATH`
     GoimportsReviser,
 
     #[serde(rename = "golines")]
-    #[doc = "A golang formatter that fixes long lines - [https://github.com/segmentio/golines](https://github.com/segmentio/golines)"]
+    /// `golines -w $PATH`
     Golines,
 
     #[serde(rename = "google-java-format")]
-    #[doc = "Reformats Java source code to comply with Google Java Style - [https://github.com/google/google-java-format](https://github.com/google/google-java-format)"]
+    /// `google-java-format -i $PATH`
     GoogleJavaFormat,
 
     #[serde(rename = "grain:format")]
-    #[doc = "Code formatter for the Grain programming language - [https://grain-lang.org/docs/tooling/grain_cli](https://grain-lang.org/docs/tooling/grain_cli)"]
+    /// `grain format $PATH -o $PATH`
     GrainFormat,
 
     #[serde(rename = "haml-lint")]
-    #[doc = "Tool for writing clean and consistent HAML - [https://github.com/sds/haml-lint](https://github.com/sds/haml-lint)"]
+    /// `haml-lint --auto-correct $PATH`
     HamlLint,
 
     #[serde(rename = "hfmt")]
-    #[doc = "Format Haskell programs. Inspired by the gofmt utility - [https://github.com/danstiner/hfmt](https://github.com/danstiner/hfmt)"]
+    /// `hfmt -w $PATH`
     Hfmt,
 
     #[serde(rename = "hindent")]
-    #[doc = "Extensible Haskell pretty printer - [https://github.com/mihaimaruseac/hindent](https://github.com/mihaimaruseac/hindent)"]
+    /// `hindent $PATH`
     Hindent,
 
     #[serde(rename = "html-beautify")]
-    #[doc = "A html formatter - [https://github.com/beautifier/js-beautify?tab=readme-ov-file#css--html](https://github.com/beautifier/js-beautify?tab=readme-ov-file#css--html)"]
+    /// `html-beautify -r --type html -f $PATH`
     HtmlBeautify,
 
     #[serde(rename = "htmlbeautifier")]
-    #[doc = "A normaliser/beautifier for HTML that also understands embedded Ruby. Ideal for tidying up Rails templates - [https://github.com/threedaymonk/htmlbeautifier](https://github.com/threedaymonk/htmlbeautifier)"]
+    /// `htmlbeautifier $PATH`
     Htmlbeautifier,
 
     #[serde(rename = "imba:fmt")]
-    #[doc = "A formatter for Imba - [https://imba.io/](https://imba.io/)"]
+    /// `imba fmt -f $PATH`
     ImbaFmt,
 
     #[serde(rename = "isort")]
-    #[doc = "A Python utility to sort imports - [https://github.com/timothycrosley/isort](https://github.com/timothycrosley/isort)"]
+    /// `isort --quiet $PATH`
     Isort,
 
     #[serde(rename = "joker")]
-    #[doc = "Small Clojure interpreter, linter and formatter - [https://github.com/candid82/joker](https://github.com/candid82/joker)"]
+    /// `joker --format --write $PATH`
     Joker,
 
     #[serde(rename = "js-beautify")]
-    #[doc = "A JavaScript formatter - [https://github.com/beautifier/js-beautify](https://github.com/beautifier/js-beautify)"]
+    /// `js-beautify -r --type js -f $PATH`
     JsBeautify,
 
     #[serde(rename = "jsona:format")]
-    #[doc = "JSONA linter and formatter - [https://github.com/jsona/jsona](https://github.com/jsona/jsona)"]
+    /// `jsona format $PATH`
     JsonaFormat,
 
     #[serde(rename = "jsona:lint")]
-    #[doc = "JSONA linter and formatter - [https://github.com/jsona/jsona](https://github.com/jsona/jsona)"]
+    /// `jsona lint $PATH`
     JsonaLint,
 
     #[serde(rename = "jsonnetfmt")]
-    #[doc = "Formatter for automatically fixing jsonnet stylistic problems - [https://jsonnet.org/learning/tools.html](https://jsonnet.org/learning/tools.html)"]
+    /// `jsonnetfmt -i $PATH`
     Jsonnetfmt,
 
     #[serde(rename = "juliaformatter.jl")]
-    #[doc = "An opinionated code formatter for Julia. Plot twist - the opinion is your own - [https://github.com/domluna/JuliaFormatter.jl](https://github.com/domluna/JuliaFormatter.jl)"]
+    /// `julia -E using JuliaFormatter;format_file(\"{$PATH_STRING}\")`
     JuliaformatterJl,
 
     #[serde(rename = "just")]
-    #[doc = "A formatter for justfiles - [https://github.com/casey/just](https://github.com/casey/just)"]
+    /// `just --fmt --unstable --justfile $PATH`
     Just,
 
     #[serde(rename = "kcl:fmt")]
-    #[doc = "KCL Format tool supports reformatting KCL files to the standard code style - [https://www.kcl-lang.io/docs/tools/cli/kcl/fmt](https://www.kcl-lang.io/docs/tools/cli/kcl/fmt)"]
+    /// `kcl fmt $PATH`
     KclFmt,
 
     #[serde(rename = "kdlfmt")]
-    #[doc = "A formatter for kdl documents - [https://github.com/hougesen/kdlfmt](https://github.com/hougesen/kdlfmt)"]
+    /// `kdlfmt format $PATH`
     Kdlfmt,
 
     #[serde(rename = "ktfmt")]
-    #[doc = "program that reformats Kotlin source code to comply with the common community standard for Kotlin code conventions - [https://github.com/facebook/ktfmt](https://github.com/facebook/ktfmt)"]
+    /// `ktfmt --format --log-level=error $PATH`
     Ktfmt,
 
     #[serde(rename = "ktlint")]
-    #[doc = "An anti-bikeshedding Kotlin linter with built-in formatter - [https://github.com/pinterest/ktlint](https://github.com/pinterest/ktlint)"]
+    /// `ktlint --format --log-level=error $PATH`
     Ktlint,
 
     #[serde(rename = "kulala-fmt")]
-    #[doc = "An opinionated 🦄 .http and .rest 🐼 files linter 💄 and formatter ⚡. - [https://github.com/mistweaverco/kulala-fmt](https://github.com/mistweaverco/kulala-fmt)"]
+    /// `kulala-fmt $PATH`
     KulalaFmt,
 
     #[serde(rename = "leptosfmt")]
-    #[doc = "A formatter for the leptos view! macro - [https://github.com/bram209/leptosfmt](https://github.com/bram209/leptosfmt)"]
+    /// `leptosfmt --quiet $PATH`
     Leptosfmt,
 
     #[serde(rename = "liquidsoap-prettier")]
-    #[doc = "Prettier plugin for liquidsoap script - [https://github.com/savonet/liquidsoap-prettier](https://github.com/savonet/liquidsoap-prettier)"]
+    /// `liquidsoap-prettier --write $PATH`
     LiquidsoapPrettier,
 
     #[serde(rename = "luaformatter")]
-    #[doc = "Code formatter for Lua - [https://github.com/Koihik/LuaFormatter](https://github.com/Koihik/LuaFormatter)"]
+    /// `lua-format -i $PATH`
     Luaformatter,
 
     #[serde(rename = "markdownfmt")]
-    #[doc = "Like gofmt, but for Markdown - [https://github.com/shurcooL/markdownfmt](https://github.com/shurcooL/markdownfmt)"]
+    /// `markdownfmt -w $PATH`
     Markdownfmt,
 
     #[serde(rename = "markdownlint")]
-    #[doc = "A Node.js style checker and lint tool for Markdown/CommonMark files - [https://github.com/davidanson/markdownlint](https://github.com/davidanson/markdownlint)"]
+    /// `markdownlint --fix $PATH`
     Markdownlint,
 
     #[serde(rename = "markuplint")]
-    #[doc = "An HTML linter for all markup developers - [https://markuplint.dev/](https://markuplint.dev/)"]
+    /// `markuplint --fix $PATH`
     Markuplint,
 
     #[serde(rename = "mdformat")]
-    #[doc = "CommonMark compliant Markdown formatter - [https://github.com/executablebooks/mdformat](https://github.com/executablebooks/mdformat)"]
+    /// `mdformat $PATH`
     Mdformat,
 
     #[serde(rename = "misspell")]
-    #[doc = "Correct commonly misspelled English words in source files - [https://github.com/client9/misspell/](https://github.com/client9/misspell/)"]
+    /// `misspell -w $PATH`
     Misspell,
 
     #[serde(rename = "mix:format")]
-    #[doc = "Code formatter for Elixir - [https://hexdocs.pm/mix/main/Mix.Tasks.Format.html](https://hexdocs.pm/mix/main/Mix.Tasks.Format.html)"]
+    /// `mix format $PATH`
     MixFormat,
 
     #[serde(rename = "mojo:format")]
-    #[doc = "Formats Mojo source files - [https://docs.modular.com/mojo/cli/format](https://docs.modular.com/mojo/cli/format)"]
+    /// `mojo format -q $PATH`
     MojoFormat,
 
     #[serde(rename = "nickel:format")]
-    #[doc = "Better configuration for less - [https://nickel-lang.org/](https://nickel-lang.org/)"]
+    /// `nickel format $PATH`
     NickelFormat,
 
     #[serde(rename = "nimpretty")]
-    #[doc = "Code formatter for the Nim programming language - [https://github.com/nim-lang/nim](https://github.com/nim-lang/nim)"]
+    /// `nimpretty $PATH`
     Nimpretty,
 
     #[serde(rename = "nixfmt")]
-    #[doc = "The official (but not yet stable) formatter for Nix code - [https://github.com/serokell/nixfmt](https://github.com/serokell/nixfmt)"]
+    /// `nixfmt $PATH`
     Nixfmt,
 
     #[serde(rename = "nixpkgs-fmt")]
-    #[doc = "Nix code formatter for nixpkgs - [https://github.com/nix-community/nixpkgs-fmt](https://github.com/nix-community/nixpkgs-fmt)"]
+    /// `nixpkgs-fmt $PATH`
     NixpkgsFmt,
 
     #[serde(rename = "nph")]
-    #[doc = "An opinionated code formatter for Nim - [https://github.com/arnetheduck/nph](https://github.com/arnetheduck/nph)"]
+    /// `nph $PATH`
     Nph,
 
     #[serde(rename = "npm-groovy-lint")]
-    #[doc = "Lint, format and auto-fix your Groovy / Jenkinsfile / Gradle files - [https://github.com/nvuillam/npm-groovy-lint](https://github.com/nvuillam/npm-groovy-lint)"]
+    /// `npm-groovy-lint --format $PATH`
     NpmGroovyLint,
 
     #[serde(rename = "ocamlformat")]
-    #[doc = "Auto-formatter for OCaml code - [https://github.com/ocaml-ppx/ocamlformat](https://github.com/ocaml-ppx/ocamlformat)"]
+    /// `ocamlformat --ignore-invalid-option --inplace --enable-outside-detected-project $PATH`
     Ocamlformat,
 
     #[serde(rename = "ocp-indent")]
-    #[doc = "Indentation tool for OCaml - [https://github.com/OCamlPro/ocp-indent](https://github.com/OCamlPro/ocp-indent)"]
+    /// `ocp-indent --inplace $PATH`
     OcpIndent,
 
     #[serde(rename = "ormolu")]
-    #[doc = "A formatter for Haskell source code - [https://github.com/tweag/ormolu](https://github.com/tweag/ormolu)"]
+    /// `ormolu --mode inplace $PATH`
     Ormolu,
 
     #[serde(rename = "oxlint")]
-    #[doc = "Oxlint is designed to catch erroneous or useless code without requiring any configurations by default - [https://oxc.rs/docs/guide/usage/linter.html](https://oxc.rs/docs/guide/usage/linter.html)"]
+    /// `oxlint --fix $PATH`
     Oxlint,
 
     #[serde(rename = "packer:fmt")]
-    #[doc = "Packer is used to format HCL2 configuration files - [https://developer.hashicorp.com/packer/docs/commands/fmt](https://developer.hashicorp.com/packer/docs/commands/fmt)"]
+    /// `packer fmt $PATH`
     PackerFmt,
 
     #[serde(rename = "perltidy")]
-    #[doc = "Perl::Tidy, a source code formatter for Perl - [https://github.com/perltidy/perltidy](https://github.com/perltidy/perltidy)"]
+    /// `perltidy -b $PATH`
     Perltidy,
 
     #[serde(rename = "pg_format")]
-    #[doc = "A PostgreSQL SQL syntax beautifier - [https://github.com/darold/pgFormatter](https://github.com/darold/pgFormatter)"]
+    /// `pg_format --inplace $PATH`
     PgFormat,
 
     #[serde(rename = "php-cs-fixer:fix")]
-    #[doc = "A tool to automatically fix PHP Coding Standards issues - [https://github.com/PHP-CS-Fixer/PHP-CS-Fixer](https://github.com/PHP-CS-Fixer/PHP-CS-Fixer)"]
+    /// `php-cs-fixer fix $PATH`
     PhpCsFixerFix,
 
     #[serde(rename = "phpcbf")]
-    #[doc = "PHP Code Beautifier and Fixer fixes violations of a defined coding standard - [https://phpqa.io/projects/phpcbf.html](https://phpqa.io/projects/phpcbf.html)"]
+    /// `phpcbf $PATH`
     Phpcbf,
 
     #[serde(rename = "phpinsights:fix")]
-    #[doc = "Instant PHP quality checks from your console - [https://github.com/nunomaduro/phpinsights](https://github.com/nunomaduro/phpinsights)"]
+    /// `phpinsights fix $PATH --no-interaction --quiet`
     PhpinsightsFix,
 
     #[serde(rename = "pint")]
-    #[doc = "Laravel Pint is an opinionated PHP code style fixer for minimalists - [https://github.com/laravel/pint](https://github.com/laravel/pint)"]
+    /// `pint $PATH`
     Pint,
 
     #[serde(rename = "prettier")]
-    #[doc = "Prettier is an opinionated code formatter - [https://github.com/prettier/prettier](https://github.com/prettier/prettier)"]
+    /// `prettier --embedded-language-formatting off --log-level error --write $PATH`
     Prettier,
 
     #[serde(rename = "pretty-php")]
-    #[doc = "The opinionated PHP code formatter - [https://github.com/lkrms/pretty-php](https://github.com/lkrms/pretty-php)"]
+    /// `pretty-php $PATH`
     PrettyPhp,
 
     #[serde(rename = "prettypst")]
-    #[doc = "Formatter for Typst - [https://github.com/antonWetzel/prettypst](https://github.com/antonWetzel/prettypst)"]
+    /// `prettypst $PATH`
     Prettypst,
 
     #[serde(rename = "puppet-lint")]
-    #[doc = "Check that your Puppet manifests conform to the style guide - [https://github.com/puppetlabs/puppet-lint](https://github.com/puppetlabs/puppet-lint)"]
+    /// `puppet-lint --fix $PATH`
     PuppetLint,
 
     #[serde(rename = "purs-tidy")]
-    #[doc = "PureScript code formatter - [https://github.com/natefaubion/purescript-tidy](https://github.com/natefaubion/purescript-tidy)"]
+    /// `purs-tidy format-in-place $PATH`
     PursTidy,
 
     #[serde(rename = "pycln")]
-    #[doc = "A formatter for finding and removing unused import statements - [https://github.com/hadialqattan/pycln](https://github.com/hadialqattan/pycln)"]
+    /// `pycln --no-gitignore --quiet $PATH`
     Pycln,
 
     #[serde(rename = "pyink")]
-    #[doc = "Pyink is a Python formatter, forked from Black with a few different formatting behaviors - [https://github.com/google/pyink](https://github.com/google/pyink)"]
+    /// `pyink --quiet $PATH`
     Pyink,
 
     #[serde(rename = "qmlfmt")]
-    #[doc = "qmlfmt - command line application that formats QML files - [https://github.com/jesperhh/qmlfmt](https://github.com/jesperhh/qmlfmt)"]
+    /// `qmlfmt -w $PATH`
     Qmlfmt,
 
     #[serde(rename = "raco:fmt")]
-    #[doc = "An extensible code formatter for Racket - [https://docs.racket-lang.org/fmt/](https://docs.racket-lang.org/fmt/)"]
+    /// `raco fmt -i $PATH`
     RacoFmt,
 
     #[serde(rename = "refmt")]
-    #[doc = "refmt stands by Reason Formatter and it formats Reason programs, is a parser and pretty-printer for Reason - [https://reasonml.github.io/docs/en/refmt](https://reasonml.github.io/docs/en/refmt)"]
+    /// `refmt --in-place $PATH`
     Refmt,
 
     #[serde(rename = "rescript:format")]
-    #[doc = "Formatter for ReScript - [https://rescript-lang.org/](https://rescript-lang.org/)"]
+    /// `rescript format $PATH`
     RescriptFormat,
 
     #[serde(rename = "roc:format")]
-    #[doc = "Tools for the roc programming language - [https://github.com/roc-lang/roc](https://github.com/roc-lang/roc)"]
+    /// `roc format $PATH`
     RocFormat,
 
     #[serde(rename = "rstfmt")]
-    #[doc = "A formatter for reStructuredText - [https://github.com/dzhu/rstfmt](https://github.com/dzhu/rstfmt)"]
+    /// `rstfmt $PATH`
     Rstfmt,
 
     #[serde(rename = "rubocop")]
-    #[doc = "A Ruby static code analyzer and formatter, based on the community Ruby style guide - [https://github.com/rubocop/rubocop](https://github.com/rubocop/rubocop)"]
+    /// `rubocop --fix-layout --autocorrect --format quiet $PATH`
     Rubocop,
 
     #[serde(rename = "rubyfmt")]
-    #[doc = "Ruby Autoformatter - [https://github.com/fables-tales/rubyfmt](https://github.com/fables-tales/rubyfmt)"]
+    /// `rubyfmt -i $PATH`
     Rubyfmt,
 
     #[serde(rename = "ruff:check")]
-    #[doc = "An extremely fast Python linter and code formatter, written in Rust - [https://docs.astral.sh/ruff](https://docs.astral.sh/ruff)"]
+    /// `ruff check --fix --quiet $PATH`
     RuffCheck,
 
     #[serde(rename = "ruff:format")]
-    #[doc = "An extremely fast Python linter and code formatter, written in Rust - [https://docs.astral.sh/ruff](https://docs.astral.sh/ruff)"]
+    /// `ruff format --quiet $PATH`
     RuffFormat,
 
     #[serde(rename = "rufo")]
-    #[doc = "The Ruby Formatter - [https://github.com/ruby-formatter/rufo](https://github.com/ruby-formatter/rufo)"]
+    /// `rufo --simple-exit $PATH`
     Rufo,
 
     #[serde(rename = "rune:fmt")]
-    #[doc = "Tools for the Rune programming language - [https://github.com/rune-rs/rune](https://github.com/rune-rs/rune)"]
+    /// `rune fmt $PATH`
     RuneFmt,
 
     #[serde(rename = "rustfmt")]
-    #[doc = "The official code formatter for Rust - [https://github.com/rust-lang/rustfmt](https://github.com/rust-lang/rustfmt)"]
+    /// `rustfmt --edition 2021 --quiet $PATH`
     Rustfmt,
 
     #[serde(rename = "rustywind")]
-    #[doc = "CLI for organizing Tailwind CSS classes - [https://github.com/avencera/rustywind](https://github.com/avencera/rustywind)"]
+    /// `rustywind --write $PATH`
     Rustywind,
 
     #[serde(rename = "scalafmt")]
-    #[doc = "Code formatter for Scala - [https://github.com/scalameta/scalafmt](https://github.com/scalameta/scalafmt)"]
+    /// `scalafmt --quiet --mode any $PATH`
     Scalafmt,
 
     #[serde(rename = "scalariform")]
-    #[doc = "Scala source code formatter - [https://github.com/scala-ide/scalariform](https://github.com/scala-ide/scalariform)"]
+    /// `scalariform $PATH`
     Scalariform,
 
     #[serde(rename = "shfmt")]
-    #[doc = "Shell script formatter - [https://github.com/mvdan/sh](https://github.com/mvdan/sh)"]
+    /// `shfmt --write $PATH`
     Shfmt,
 
     #[serde(rename = "sleek")]
-    #[doc = "Sleek is a CLI tool for formatting SQL. It helps you maintain a consistent style across your SQL code, enhancing readability and productivity - [https://github.com/nrempel/sleek](https://github.com/nrempel/sleek)"]
+    /// `sleek $PATH`
     Sleek,
 
     #[serde(rename = "smlfmt")]
-    #[doc = "A custom parser/auto-formatter for Standard ML - [https://github.com/shwestrick/smlfmt](https://github.com/shwestrick/smlfmt)"]
+    /// `smlfmt --force $PATH`
     Smlfmt,
 
     #[serde(rename = "snakefmt")]
-    #[doc = "The uncompromising Snakemake code formatter - [https://github.com/snakemake/snakefmt](https://github.com/snakemake/snakefmt)"]
+    /// `snakefmt $PATH`
     Snakefmt,
 
     #[serde(rename = "sql-formatter")]
-    #[doc = "A whitespace formatter for different query languages - [https://github.com/sql-formatter-org/sql-formatter](https://github.com/sql-formatter-org/sql-formatter)"]
+    /// `sql-formatter --fix $PATH`
     SqlFormatter,
 
     #[serde(rename = "sqlfluff:fix")]
-    #[doc = "A modular SQL linter and auto-formatter with support for multiple dialects and templated code - [https://github.com/sqlfluff/sqlfluff](https://github.com/sqlfluff/sqlfluff)"]
+    /// `sqlfluff fix --dialect ansi $PATH`
     SqlfluffFix,
 
     #[serde(rename = "sqlfluff:format")]
-    #[doc = "A modular SQL linter and auto-formatter with support for multiple dialects and templated code - [https://github.com/sqlfluff/sqlfluff](https://github.com/sqlfluff/sqlfluff)"]
+    /// `sqlfluff format --dialect ansi $PATH`
     SqlfluffFormat,
 
     #[serde(rename = "sqlfmt")]
-    #[doc = "sqlfmt formats your dbt SQL files so you don't have to - [https://github.com/tconbeer/sqlfmt](https://github.com/tconbeer/sqlfmt)"]
+    /// `sqlfmt $PATH`
     Sqlfmt,
 
     #[serde(rename = "standardjs")]
-    #[doc = "JavaScript style guide, linter, and formatter - [https://github.com/standard/standard](https://github.com/standard/standard)"]
+    /// `standard --fix $PATH`
     Standardjs,
 
     #[serde(rename = "standardrb")]
-    #[doc = "Ruby's bikeshed-proof linter and formatter - [https://github.com/standardrb/standard](https://github.com/standardrb/standard)"]
+    /// `standardrb --fix $PATH`
     Standardrb,
 
     #[serde(rename = "stylefmt")]
-    #[doc = "stylefmt is a tool that automatically formats stylesheets - [https://github.com/matype/stylefmt](https://github.com/matype/stylefmt)"]
+    /// `stylefmt $PATH`
     Stylefmt,
 
     #[serde(rename = "stylelint")]
-    #[doc = "A mighty CSS linter that helps you avoid errors and enforce conventions - [https://github.com/stylelint/stylelint](https://github.com/stylelint/stylelint)"]
+    /// `stylelint --fix $PATH`
     Stylelint,
 
     #[serde(rename = "stylish-haskell")]
-    #[doc = "Haskell code prettifier - [https://github.com/haskell/stylish-haskell](https://github.com/haskell/stylish-haskell)"]
+    /// `stylish-haskell --inplace $PATH`
     StylishHaskell,
 
     #[serde(rename = "stylua")]
-    #[doc = "An opinionated Lua code formatter - [https://github.com/JohnnyMorganz/StyLua](https://github.com/JohnnyMorganz/StyLua)"]
+    /// `stylua --verify $PATH`
     Stylua,
 
     #[serde(rename = "superhtml:fmt")]
-    #[doc = "HTML Language Server & Templating Language Library - [https://github.com/kristoff-it/superhtml](https://github.com/kristoff-it/superhtml)"]
+    /// `superhtml fmt $PATH`
     SuperhtmlFmt,
 
     #[serde(rename = "swift-format")]
-    #[doc = "Formatting technology for Swift source code - [https://github.com/apple/swift-format](https://github.com/apple/swift-format)"]
+    /// `swift-format --in-place $PATH`
     SwiftFormat,
 
     #[serde(rename = "swiftformat")]
-    #[doc = "A command-line tool and Xcode Extension for formatting Swift code - [https://github.com/nicklockwood/SwiftFormat](https://github.com/nicklockwood/SwiftFormat)"]
+    /// `swiftformat --quiet $PATH`
     Swiftformat,
 
     #[serde(rename = "taplo")]
-    #[doc = "A TOML toolkit written in Rust - [https://github.com/tamasfe/taplo](https://github.com/tamasfe/taplo)"]
+    /// `taplo format $PATH`
     Taplo,
 
     #[serde(rename = "templ:fmt")]
-    #[doc = "Tooling for the Templ template language - [https://templ.guide/](https://templ.guide/)"]
+    /// `templ fmt $PATH`
     TemplFmt,
 
     #[serde(rename = "terraform:fmt")]
-    #[doc = "The terraform fmt command is used to rewrite Terraform configuration files to a canonical format and style - [https://www.terraform.io/docs/cli/commands/fmt.html](https://www.terraform.io/docs/cli/commands/fmt.html)"]
+    /// `terraform fmt -write=true $PATH`
     TerraformFmt,
 
     #[serde(rename = "tlint:format")]
-    #[doc = "Tighten linter for Laravel conventions - [https://github.com/tighten/tlint](https://github.com/tighten/tlint)"]
+    /// `tlint format $PATH`
     TlintFormat,
 
     #[serde(rename = "tofu:fmt")]
-    #[doc = "The tofu fmt command is used to rewrite OpenTofu configuration files to a canonical format and style - [https://opentofu.org/docs/cli/commands/fmt/](https://opentofu.org/docs/cli/commands/fmt/)"]
+    /// `tofu fmt -write=true $PATH`
     TofuFmt,
 
     #[serde(rename = "topiary")]
-    #[doc = "Topiary aims to be a uniform formatter for simple languages, as part of the Tree-sitter ecosystem - [https://github.com/tweag/topiary](https://github.com/tweag/topiary)"]
+    /// `topiary format $PATH`
     Topiary,
 
     #[serde(rename = "ts-standard")]
-    #[doc = "Typescript style guide, linter, and formatter using StandardJS - [https://github.com/standard/ts-standard](https://github.com/standard/ts-standard)"]
+    /// `ts-standard --fix $PATH`
     TsStandard,
 
     #[serde(rename = "twig-cs-fixer:lint")]
-    #[doc = "A tool to automatically fix Twig Coding Standards issues - [https://github.com/VincentLanglet/Twig-CS-Fixer](https://github.com/VincentLanglet/Twig-CS-Fixer)"]
+    /// `twig-cs-fixer lint $PATH --fix --no-interaction --quiet`
     TwigCsFixerLint,
 
     #[serde(rename = "typos")]
-    #[doc = "Source code spell checker - [https://github.com/crate-ci/typos](https://github.com/crate-ci/typos)"]
+    /// `typos -w --no-ignore --hidden $PATH`
     Typos,
 
     #[serde(rename = "typstfmt")]
-    #[doc = "Basic formatter for the Typst language - [https://github.com/astrale-sharp/typstfmt](https://github.com/astrale-sharp/typstfmt)"]
+    /// `typstfmt $PATH`
     Typstfmt,
 
     #[serde(rename = "typstyle")]
-    #[doc = "Beautiful and reliable typst code formatter - [https://github.com/Enter-tainer/typstyle](https://github.com/Enter-tainer/typstyle)"]
+    /// `typstyle -i $PATH`
     Typstyle,
 
     #[serde(rename = "ufmt")]
-    #[doc = "Safe, atomic formatting with black and usort - [https://github.com/omnilib/ufmt](https://github.com/omnilib/ufmt)"]
+    /// `ufmt format $PATH`
     Ufmt,
 
     #[serde(rename = "uiua:fmt")]
-    #[doc = "A stack-based array programming language - [https://github.com/uiua-lang/uiua](https://github.com/uiua-lang/uiua)"]
+    /// `uiua fmt $PATH`
     UiuaFmt,
 
     #[serde(rename = "usort")]
-    #[doc = "Safe, minimal import sorting for Python projects - [https://github.com/facebook/usort](https://github.com/facebook/usort)"]
+    /// `usort format $PATH`
     Usort,
 
     #[serde(rename = "v:fmt")]
-    #[doc = "Tooling for V lang - [https://vlang.io/](https://vlang.io/)"]
+    /// `v fmt -w $PATH`
     VFmt,
 
     #[serde(rename = "veryl:fmt")]
-    #[doc = "Veryl: A Modern Hardware Description Language - [https://github.com/veryl-lang/veryl](https://github.com/veryl-lang/veryl)"]
+    /// `veryl fmt $PATH`
     VerylFmt,
 
     #[serde(rename = "vhdl-style-guide")]
-    #[doc = "Style guide enforcement for VHDL - [https://github.com/jeremiah-c-leary/vhdl-style-guide](https://github.com/jeremiah-c-leary/vhdl-style-guide)"]
+    /// `vsg -f $PATH --fix`
     VhdlStyleGuide,
 
     #[serde(rename = "wfindent")]
-    #[doc = "Indents and optionally converts Fortran program sources - [https://github.com/wvermin/findent](https://github.com/wvermin/findent)"]
+    /// `wfindent $PATH`
     Wfindent,
 
     #[serde(rename = "xmlformat")]
-    #[doc = "Format and compress XML documents - [https://github.com/pamoller/xmlformatter](https://github.com/pamoller/xmlformatter)"]
+    /// `xmlformat --overwrite $PATH`
     Xmlformat,
 
     #[serde(rename = "xmllint")]
-    #[doc = "XML linter - [https://gnome.pages.gitlab.gnome.org/libxml2/xmllint.html](https://gnome.pages.gitlab.gnome.org/libxml2/xmllint.html)"]
+    /// `xmllint --format $PATH --output $PATH`
     Xmllint,
 
     #[serde(rename = "xo")]
-    #[doc = "JavaScript/TypeScript linter (ESLint wrapper) with great defaults - [http://github.com/xojs/xo](http://github.com/xojs/xo)"]
+    /// `xo --fix $PATH`
     Xo,
 
     #[serde(rename = "yamlfix")]
-    #[doc = "A simple opinionated yaml formatter that keeps your comments - [https://github.com/lyz-code/yamlfix](https://github.com/lyz-code/yamlfix)"]
+    /// `yamlfix $PATH`
     Yamlfix,
 
     #[serde(rename = "yamlfmt")]
-    #[doc = "An extensible command line tool or library to format yaml files - [https://github.com/google/yamlfmt](https://github.com/google/yamlfmt)"]
+    /// `yamlfmt -quiet $PATH`
     Yamlfmt,
 
     #[serde(rename = "yapf")]
-    #[doc = "A formatter for Python files - [https://github.com/google/yapf](https://github.com/google/yapf)"]
+    /// `yapf --in-place $PATH`
     Yapf,
 
     #[serde(rename = "yew-fmt")]
-    #[doc = "Code formatter for the Yew framework - [https://github.com/its-the-shrimp/yew-fmt](https://github.com/its-the-shrimp/yew-fmt)"]
+    /// `yew-fmt --edition 2021 --quiet $PATH`
     YewFmt,
 
     #[serde(rename = "zig:fmt")]
-    #[doc = "Reformat Zig source into canonical form - [https://ziglang.org/](https://ziglang.org/)"]
+    /// `zig fmt $PATH`
     ZigFmt,
 
     #[serde(rename = "ziggy:fmt")]
-    #[doc = "Formats Ziggy documents and Ziggy schemas - [https://ziggy-lang.io/documentation/ziggy-fmt/](https://ziggy-lang.io/documentation/ziggy-fmt/)"]
+    /// `ziggy fmt $PATH`
     ZiggyFmt,
 
     #[serde(rename = "zprint")]
-    #[doc = "Executables, uberjar, and library to beautifully format Clojure and Clojurescript source code and s-expressions - [https://github.com/kkinnear/zprint](https://github.com/kkinnear/zprint)"]
+    /// `zprint -w $PATH`
     Zprint,
 }
 

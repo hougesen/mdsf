@@ -51,9 +51,11 @@
       "type": ["string", "null"]
     },
     "npm": {
+      "description": "Name of package on npm, if published there.",
       "type": ["string", "null"]
     },
     "php": {
+      "description": "Binary name if installed through composer",
       "type": ["string", "null"]
     },
     "tests": {
@@ -73,6 +75,7 @@
           "type": "string"
         },
         "language": {
+          "description": "Codeblock language used when generating tests",
           "type": "string"
         },
         "test_input": {
