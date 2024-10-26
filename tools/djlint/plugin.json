@@ -1,7 +1,7 @@
 {
   "$schema": "../tool.schema.json",
   "binary": "djlint",
-  "categories": ["linter", "formatter"],
+  "categories": ["formatter", "linter"],
   "commands": {
     "": ["$PATH", "--reformat"]
   },

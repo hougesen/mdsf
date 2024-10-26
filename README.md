@@ -184,7 +184,7 @@ mdsf init
 
 <!-- START_SECTION:supported-tools -->
 
-`mdsf` currently supports 194 commands. Feel free to open an issue/pull-request if your favorite tool is missing! 😃
+`mdsf` currently supports 195 commands. Feel free to open an issue/pull-request if your favorite tool is missing! 😃
 
 | Name                     | Command                                                                                |
 | ------------------------ | -------------------------------------------------------------------------------------- |
@@ -337,6 +337,7 @@ mdsf init
 | `rustywind`              | `rustywind --write PATH`                                                               |
 | `scalafmt`               | `scalafmt --quiet --mode any PATH`                                                     |
 | `scalariform`            | `scalariform PATH`                                                                     |
+| `shellharden`            | `shellharden --transform --replace PATH`                                               |
 | `shfmt`                  | `shfmt --write PATH`                                                                   |
 | `sleek`                  | `sleek PATH`                                                                           |
 | `smlfmt`                 | `smlfmt --force PATH`                                                                  |

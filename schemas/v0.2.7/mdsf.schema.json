@@ -804,6 +804,11 @@
           "enum": ["scalariform"]
         },
         {
+          "description": "`shellharden --transform --replace $PATH`",
+          "type": "string",
+          "enum": ["shellharden"]
+        },
+        {
           "description": "`shfmt --write $PATH`",
           "type": "string",
           "enum": ["shfmt"]

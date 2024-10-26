@@ -1,0 +1,17 @@
+{
+  "$schema": "../tool.schema.json",
+
+  "binary": "shellharden",
+
+  "commands": {
+    "": ["--transform", "--replace", "$PATH"]
+  },
+  "languages": ["bash", "shell"],
+  "categories": ["linter"],
+  "description": "The corrective bash syntax highlighter",
+  "homepage": "https://github.com/anordal/shellharden",
+  "name": null,
+  "tests": [],
+  "npm": null,
+  "php": null
+}
