@@ -3,22 +3,17 @@ use std::process::Command;
 use crate::{error::MdsfError, execution::execute_command, runners::CommandType};
 
 #[inline]
-fn set_markdownlint_args(mut cmd: Command, file_path: &std::path::Path) -> Command {
-    cmd.arg("--fix");
+fn set_mdslw_args(mut cmd: Command, file_path: &std::path::Path) -> Command {
     cmd.arg(file_path);
     cmd
 }
 
 #[inline]
 pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfError> {
-    let commands = [
-        CommandType::NodeModules("markdownlint"),
-        CommandType::Direct("markdownlint"),
-        CommandType::Npm("markdownlint"),
-    ];
+    let commands = [CommandType::Direct("mdslw")];
 
     for (index, cmd) in commands.iter().enumerate() {
-        let cmd = set_markdownlint_args(cmd.build(), file_path);
+        let cmd = set_mdslw_args(cmd.build(), file_path);
         let execution_result = execute_command(cmd, file_path);
 
         if index == commands.len() - 1 {
@@ -36,4 +31,4 @@ pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfEr
 }
 
 #[cfg(test)]
-mod test_markdownlint {}
+mod test_mdslw {}

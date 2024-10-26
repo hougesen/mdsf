@@ -9,7 +9,7 @@
   "homepage": "https://github.com/davidanson/markdownlint",
   "languages": [],
   "name": null,
-  "npm": null,
+  "npm": "markdownlint",
   "php": null,
   "tests": []
 }

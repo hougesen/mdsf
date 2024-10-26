@@ -184,7 +184,7 @@ mdsf init
 
 <!-- START_SECTION:supported-tools -->
 
-`mdsf` currently supports 189 commands. Feel free to open an issue/pull-request if your favorite tool is missing! 😃
+`mdsf` currently supports 192 commands. Feel free to open an issue/pull-request if your favorite tool is missing! 😃
 
 | Name                   | Command                                                                                |
 | ---------------------- | -------------------------------------------------------------------------------------- |
@@ -235,6 +235,7 @@ mdsf init
 | `djlint`               | `djlint PATH --reformat`                                                               |
 | `docformatter`         | `docformatter --in-place PATH`                                                         |
 | `docstrfmt`            | `docstrfmt PATH`                                                                       |
+| `doctoc`               | `doctoc PATH`                                                                          |
 | `dotenv-linter:fix`    | `dotenv-linter fix PATH`                                                               |
 | `dprint:fmt`           | `dprint fmt PATH`                                                                      |
 | `easy-coding-standard` | `ecs check PATH --fix --no-interaction`                                                |
@@ -286,9 +287,11 @@ mdsf init
 | `liquidsoap-prettier`  | `liquidsoap-prettier --write PATH`                                                     |
 | `luaformatter`         | `lua-format -i PATH`                                                                   |
 | `markdownfmt`          | `markdownfmt -w PATH`                                                                  |
+| `markdownlint-cli2`    | `markdownlint-cli2 --fix PATH`                                                         |
 | `markdownlint`         | `markdownlint --fix PATH`                                                              |
 | `markuplint`           | `markuplint --fix PATH`                                                                |
 | `mdformat`             | `mdformat PATH`                                                                        |
+| `mdslw`                | `mdslw PATH`                                                                           |
 | `misspell`             | `misspell -w PATH`                                                                     |
 | `mix:format`           | `mix format PATH`                                                                      |
 | `mojo:format`          | `mojo format -q PATH`                                                                  |

@@ -45,6 +45,7 @@ pub mod dhall;
 pub mod djlint;
 pub mod docformatter;
 pub mod docstrfmt;
+pub mod doctoc;
 pub mod dotenv_linter_fix;
 pub mod dprint_fmt;
 pub mod easy_coding_standard;
@@ -97,8 +98,10 @@ pub mod liquidsoap_prettier;
 pub mod luaformatter;
 pub mod markdownfmt;
 pub mod markdownlint;
+pub mod markdownlint_cli_2;
 pub mod markuplint;
 pub mod mdformat;
+pub mod mdslw;
 pub mod misspell;
 pub mod mix_format;
 pub mod mojo_format;
@@ -380,6 +383,10 @@ pub enum Tooling {
     /// `docstrfmt $PATH`
     Docstrfmt,
 
+    #[serde(rename = "doctoc")]
+    /// `doctoc $PATH`
+    Doctoc,
+
     #[serde(rename = "dotenv-linter:fix")]
     /// `dotenv-linter fix $PATH`
     DotenvLinterFix,
@@ -588,6 +595,10 @@ pub enum Tooling {
     /// `markdownlint --fix $PATH`
     Markdownlint,
 
+    #[serde(rename = "markdownlint-cli2")]
+    /// `markdownlint-cli2 --fix $PATH`
+    MarkdownlintCli2,
+
     #[serde(rename = "markuplint")]
     /// `markuplint --fix $PATH`
     Markuplint,
@@ -595,6 +606,10 @@ pub enum Tooling {
     #[serde(rename = "mdformat")]
     /// `mdformat $PATH`
     Mdformat,
+
+    #[serde(rename = "mdslw")]
+    /// `mdslw $PATH`
+    Mdslw,
 
     #[serde(rename = "misspell")]
     /// `misspell -w $PATH`
@@ -1004,6 +1019,7 @@ impl Tooling {
             Self::Djlint => djlint::run(snippet_path),
             Self::Docformatter => docformatter::run(snippet_path),
             Self::Docstrfmt => docstrfmt::run(snippet_path),
+            Self::Doctoc => doctoc::run(snippet_path),
             Self::DotenvLinterFix => dotenv_linter_fix::run(snippet_path),
             Self::DprintFmt => dprint_fmt::run(snippet_path),
             Self::EasyCodingStandard => easy_coding_standard::run(snippet_path),
@@ -1056,8 +1072,10 @@ impl Tooling {
             Self::Luaformatter => luaformatter::run(snippet_path),
             Self::Markdownfmt => markdownfmt::run(snippet_path),
             Self::Markdownlint => markdownlint::run(snippet_path),
+            Self::MarkdownlintCli2 => markdownlint_cli_2::run(snippet_path),
             Self::Markuplint => markuplint::run(snippet_path),
             Self::Mdformat => mdformat::run(snippet_path),
+            Self::Mdslw => mdslw::run(snippet_path),
             Self::Misspell => misspell::run(snippet_path),
             Self::MixFormat => mix_format::run(snippet_path),
             Self::MojoFormat => mojo_format::run(snippet_path),
@@ -1202,6 +1220,7 @@ impl AsRef<str> for Tooling {
             Self::Djlint => "djlint",
             Self::Docformatter => "docformatter",
             Self::Docstrfmt => "docstrfmt",
+            Self::Doctoc => "doctoc",
             Self::DotenvLinterFix => "dotenv_linter_fix",
             Self::DprintFmt => "dprint_fmt",
             Self::EasyCodingStandard => "easy_coding_standard",
@@ -1254,8 +1273,10 @@ impl AsRef<str> for Tooling {
             Self::Luaformatter => "luaformatter",
             Self::Markdownfmt => "markdownfmt",
             Self::Markdownlint => "markdownlint",
+            Self::MarkdownlintCli2 => "markdownlint_cli_2",
             Self::Markuplint => "markuplint",
             Self::Mdformat => "mdformat",
+            Self::Mdslw => "mdslw",
             Self::Misspell => "misspell",
             Self::MixFormat => "mix_format",
             Self::MojoFormat => "mojo_format",

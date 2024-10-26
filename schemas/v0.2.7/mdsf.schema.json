@@ -294,6 +294,11 @@
           "enum": ["docstrfmt"]
         },
         {
+          "description": "`doctoc $PATH`",
+          "type": "string",
+          "enum": ["doctoc"]
+        },
+        {
           "description": "`dotenv-linter fix $PATH`",
           "type": "string",
           "enum": ["dotenv-linter:fix"]
@@ -554,6 +559,11 @@
           "enum": ["markdownlint"]
         },
         {
+          "description": "`markdownlint-cli2 --fix $PATH`",
+          "type": "string",
+          "enum": ["markdownlint-cli2"]
+        },
+        {
           "description": "`markuplint --fix $PATH`",
           "type": "string",
           "enum": ["markuplint"]
@@ -562,6 +572,11 @@
           "description": "`mdformat $PATH`",
           "type": "string",
           "enum": ["mdformat"]
+        },
+        {
+          "description": "`mdslw $PATH`",
+          "type": "string",
+          "enum": ["mdslw"]
         },
         {
           "description": "`misspell -w $PATH`",
