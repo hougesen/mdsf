@@ -184,7 +184,7 @@ mdsf init
 
 <!-- START_SECTION:supported-tools -->
 
-`mdsf` currently supports 197 commands. Feel free to open an issue/pull-request if your favorite tool is missing! 😃
+`mdsf` currently supports 198 commands. Feel free to open an issue/pull-request if your favorite tool is missing! 😃
 
 | Name                     | Command                                                                                |
 | ------------------------ | -------------------------------------------------------------------------------------- |
@@ -268,6 +268,7 @@ mdsf init
 | `haml-lint`              | `haml-lint --auto-correct PATH`                                                        |
 | `hfmt`                   | `hfmt -w PATH`                                                                         |
 | `hindent`                | `hindent PATH`                                                                         |
+| `hlint`                  | `hlint --refactor -i PATH`                                                             |
 | `html-beautify`          | `html-beautify -r --type html -f PATH`                                                 |
 | `htmlbeautifier`         | `htmlbeautifier PATH`                                                                  |
 | `imba:fmt`               | `imba fmt -f PATH`                                                                     |

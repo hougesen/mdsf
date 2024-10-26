@@ -459,6 +459,11 @@
           "enum": ["hindent"]
         },
         {
+          "description": "`hlint --refactor -i $PATH`",
+          "type": "string",
+          "enum": ["hlint"]
+        },
+        {
           "description": "`html-beautify -r --type html -f $PATH`",
           "type": "string",
           "enum": ["html-beautify"]
