@@ -769,6 +769,11 @@
           "enum": ["pyink"]
         },
         {
+          "description": "`pyment -w $PATH`",
+          "type": "string",
+          "enum": ["pyment"]
+        },
+        {
           "description": "`qmlfmt -w $PATH`",
           "type": "string",
           "enum": ["qmlfmt"]

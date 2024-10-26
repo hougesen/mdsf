@@ -140,6 +140,7 @@ pub mod purs_tidy;
 pub mod purty;
 pub mod pycln;
 pub mod pyink;
+pub mod pyment;
 pub mod qmlfmt;
 pub mod raco_fmt;
 pub mod refmt;
@@ -779,6 +780,10 @@ pub enum Tooling {
     /// `pyink --quiet $PATH`
     Pyink,
 
+    #[serde(rename = "pyment")]
+    /// `pyment -w $PATH`
+    Pyment,
+
     #[serde(rename = "qmlfmt")]
     /// `qmlfmt -w $PATH`
     Qmlfmt,
@@ -1194,6 +1199,7 @@ impl Tooling {
             Self::Purty => purty::run(snippet_path),
             Self::Pycln => pycln::run(snippet_path),
             Self::Pyink => pyink::run(snippet_path),
+            Self::Pyment => pyment::run(snippet_path),
             Self::Qmlfmt => qmlfmt::run(snippet_path),
             Self::RacoFmt => raco_fmt::run(snippet_path),
             Self::Refmt => refmt::run(snippet_path),
@@ -1411,6 +1417,7 @@ impl AsRef<str> for Tooling {
             Self::Purty => "purty",
             Self::Pycln => "pycln",
             Self::Pyink => "pyink",
+            Self::Pyment => "pyment",
             Self::Qmlfmt => "qmlfmt",
             Self::RacoFmt => "raco_fmt",
             Self::Refmt => "refmt",

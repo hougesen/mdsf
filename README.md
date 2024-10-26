@@ -184,7 +184,7 @@ mdsf init
 
 <!-- START_SECTION:supported-tools -->
 
-`mdsf` currently supports 208 commands. Feel free to open an issue/pull-request if your favorite tool is missing! 😃
+`mdsf` currently supports 209 commands. Feel free to open an issue/pull-request if your favorite tool is missing! 😃
 
 | Name                     | Command                                                                                |
 | ------------------------ | -------------------------------------------------------------------------------------- |
@@ -330,6 +330,7 @@ mdsf init
 | `purty`                  | `purty --write PATH`                                                                   |
 | `pycln`                  | `pycln --no-gitignore --quiet PATH`                                                    |
 | `pyink`                  | `pyink --quiet PATH`                                                                   |
+| `pyment`                 | `pyment -w PATH`                                                                       |
 | `qmlfmt`                 | `qmlfmt -w PATH`                                                                       |
 | `raco:fmt`               | `raco fmt -i PATH`                                                                     |
 | `refmt`                  | `refmt --in-place PATH`                                                                |
