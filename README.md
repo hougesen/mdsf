@@ -184,7 +184,7 @@ mdsf init
 
 <!-- START_SECTION:supported-tools -->
 
-`mdsf` currently supports 207 commands. Feel free to open an issue/pull-request if your favorite tool is missing! 😃
+`mdsf` currently supports 208 commands. Feel free to open an issue/pull-request if your favorite tool is missing! 😃
 
 | Name                     | Command                                                                                |
 | ------------------------ | -------------------------------------------------------------------------------------- |
@@ -357,6 +357,7 @@ mdsf init
 | `sqlfluff:fix`           | `sqlfluff fix --dialect ansi PATH`                                                     |
 | `sqlfluff:format`        | `sqlfluff format --dialect ansi PATH`                                                  |
 | `sqlfmt`                 | `sqlfmt PATH`                                                                          |
+| `sqruff`                 | `sqruff fix PATH`                                                                      |
 | `standardjs`             | `standard --fix PATH`                                                                  |
 | `standardrb`             | `standardrb --fix PATH`                                                                |
 | `stylefmt`               | `stylefmt PATH`                                                                        |

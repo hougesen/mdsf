@@ -904,6 +904,11 @@
           "enum": ["sqlfmt"]
         },
         {
+          "description": "`sqruff fix $PATH`",
+          "type": "string",
+          "enum": ["sqruff"]
+        },
+        {
           "description": "`standard --fix $PATH`",
           "type": "string",
           "enum": ["standardjs"]
