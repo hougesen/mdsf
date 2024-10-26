@@ -14,7 +14,7 @@ exclude = []
 
 [workspace.dependencies]
 anyhow = "1.0.91"
-clap = { version = "4.5.19", features = ["derive"] }
+clap = { version = "4.5.20", features = ["derive"] }
 clap_complete = "4.5.35"
 console = "0.15.8"
 convert_case = "0.6.0"
