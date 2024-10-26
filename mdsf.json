@@ -1,5 +1,5 @@
 {
-  "$schema": "https://raw.githubusercontent.com/hougesen/mdsf/main/schemas/v0.2.5/mdsf.schema.json",
+  "$schema": "https://raw.githubusercontent.com/hougesen/mdsf/main/schemas/v0.2.7/mdsf.schema.json",
   "custom_file_extensions": {},
   "format_finished_document": false,
   "javascript_runtime": "node",
@@ -8,46 +8,46 @@
     "c": "clang-format",
     "clojure": [["cljstyle", "joker"]],
     "cpp": "clang-format",
-    "crystal": "crystal_format",
+    "crystal": "crystal:format",
     "csharp": [["csharpier", "clang-format"]],
     "css": [["prettier", "stylelint"]],
     "d": "dfmt",
-    "dart": "dart_format",
-    "elixir": "mix_format",
+    "dart": "dart:format",
+    "elixir": "mix:format",
     "elm": "elm-format",
     "erlang": [["erlfmt", "efmt"]],
-    "gleam": "gleam_format",
+    "gleam": "gleam:format",
     "go": [
       ["gci", "goimports-reviser", "goimports"],
       ["gofumpt", "gofmt", "crlfmt"]
     ],
-    "grain": "grain_format",
+    "grain": "grain:format",
     "haskell": [["fourmolu", "ormolu", "hindent", "stylish-haskell"]],
     "html": [["prettier", "djlint"]],
     "java": [["google-java-format", "clang-format"]],
     "javascript": [
-      ["prettier", "biome", "deno_fmt", "clang-format", "standardjs"]
+      ["prettier", "biome:format", "deno:fmt", "clang-format", "standardjs"]
     ],
-    "json": [["prettier", "biome", "deno_fmt", "clang-format"]],
-    "kcl": "kcl_fmt",
+    "json": [["prettier", "biome:format", "deno:fmt", "clang-format"]],
+    "kcl": "kcl:fmt",
     "kotlin": "ktfmt",
     "lua": [["stylua", "luaformatter"]],
     "nim": "nimpretty",
     "ocaml": [["ocamlformat", "ocp-indent"]],
     "python": [
       ["usort", "isort"],
-      ["ruff", "blue", "black", "yapf", "autopep8", "pyink"]
+      ["ruff:format", "blue", "black", "yapf", "autopep8", "pyink"]
     ],
-    "roc": "roc_format",
+    "roc": "roc:format",
     "ruby": [["rubocop", "rufo", "rubyfmt", "standardrb"]],
     "rust": "rustfmt",
     "shell": [["shfmt", "beautysh"]],
-    "sql": [["sql-formatter", "sqlfluff"]],
+    "sql": [["sql-formatter", "sqlfluff:format", "sqlfmt"]],
     "swift": [["swift-format", "swiftformat"]],
     "toml": "taplo",
-    "typescript": [["prettier", "biome", "deno_fmt"]],
+    "typescript": [["prettier", "biome:format", "deno:fmt"]],
     "vue": "prettier",
     "yaml": [["prettier", "yamlfmt", "yamlfix"]],
-    "zig": "zigfmt"
+    "zig": "zig:fmt"
   }
 }
