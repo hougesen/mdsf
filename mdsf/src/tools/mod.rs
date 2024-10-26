@@ -167,6 +167,7 @@ pub mod sql_formatter;
 pub mod sqlfluff_fix;
 pub mod sqlfluff_format;
 pub mod sqlfmt;
+pub mod sqruff;
 pub mod standardjs;
 pub mod standardrb;
 pub mod stylefmt;
@@ -886,6 +887,10 @@ pub enum Tooling {
     /// `sqlfmt $PATH`
     Sqlfmt,
 
+    #[serde(rename = "sqruff")]
+    /// `sqruff fix $PATH`
+    Sqruff,
+
     #[serde(rename = "standardjs")]
     /// `standard --fix $PATH`
     Standardjs,
@@ -1216,6 +1221,7 @@ impl Tooling {
             Self::SqlfluffFix => sqlfluff_fix::run(snippet_path),
             Self::SqlfluffFormat => sqlfluff_format::run(snippet_path),
             Self::Sqlfmt => sqlfmt::run(snippet_path),
+            Self::Sqruff => sqruff::run(snippet_path),
             Self::Standardjs => standardjs::run(snippet_path),
             Self::Standardrb => standardrb::run(snippet_path),
             Self::Stylefmt => stylefmt::run(snippet_path),
@@ -1432,6 +1438,7 @@ impl AsRef<str> for Tooling {
             Self::SqlfluffFix => "sqlfluff_fix",
             Self::SqlfluffFormat => "sqlfluff_format",
             Self::Sqlfmt => "sqlfmt",
+            Self::Sqruff => "sqruff",
             Self::Standardjs => "standardjs",
             Self::Standardrb => "standardrb",
             Self::Stylefmt => "stylefmt",
