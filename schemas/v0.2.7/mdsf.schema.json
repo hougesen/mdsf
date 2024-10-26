@@ -749,6 +749,11 @@
           "enum": ["purs-tidy"]
         },
         {
+          "description": "`purty --write $PATH`",
+          "type": "string",
+          "enum": ["purty"]
+        },
+        {
           "description": "`pycln --no-gitignore --quiet $PATH`",
           "type": "string",
           "enum": ["pycln"]

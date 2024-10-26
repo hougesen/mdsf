@@ -184,7 +184,7 @@ mdsf init
 
 <!-- START_SECTION:supported-tools -->
 
-`mdsf` currently supports 205 commands. Feel free to open an issue/pull-request if your favorite tool is missing! 😃
+`mdsf` currently supports 206 commands. Feel free to open an issue/pull-request if your favorite tool is missing! 😃
 
 | Name                     | Command                                                                                |
 | ------------------------ | -------------------------------------------------------------------------------------- |
@@ -326,6 +326,7 @@ mdsf init
 | `protolint`              | `protolint lint -fix PATH`                                                             |
 | `puppet-lint`            | `puppet-lint --fix PATH`                                                               |
 | `purs-tidy`              | `purs-tidy format-in-place PATH`                                                       |
+| `purty`                  | `purty --write PATH`                                                                   |
 | `pycln`                  | `pycln --no-gitignore --quiet PATH`                                                    |
 | `pyink`                  | `pyink --quiet PATH`                                                                   |
 | `qmlfmt`                 | `qmlfmt -w PATH`                                                                       |

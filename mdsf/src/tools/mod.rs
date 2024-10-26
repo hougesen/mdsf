@@ -136,6 +136,7 @@ pub mod prettypst;
 pub mod protolint;
 pub mod puppet_lint;
 pub mod purs_tidy;
+pub mod purty;
 pub mod pycln;
 pub mod pyink;
 pub mod qmlfmt;
@@ -760,6 +761,10 @@ pub enum Tooling {
     /// `purs-tidy format-in-place $PATH`
     PursTidy,
 
+    #[serde(rename = "purty")]
+    /// `purty --write $PATH`
+    Purty,
+
     #[serde(rename = "pycln")]
     /// `pycln --no-gitignore --quiet $PATH`
     Pycln,
@@ -1175,6 +1180,7 @@ impl Tooling {
             Self::Protolint => protolint::run(snippet_path),
             Self::PuppetLint => puppet_lint::run(snippet_path),
             Self::PursTidy => purs_tidy::run(snippet_path),
+            Self::Purty => purty::run(snippet_path),
             Self::Pycln => pycln::run(snippet_path),
             Self::Pyink => pyink::run(snippet_path),
             Self::Qmlfmt => qmlfmt::run(snippet_path),
@@ -1389,6 +1395,7 @@ impl AsRef<str> for Tooling {
             Self::Protolint => "protolint",
             Self::PuppetLint => "puppet_lint",
             Self::PursTidy => "purs_tidy",
+            Self::Purty => "purty",
             Self::Pycln => "pycln",
             Self::Pyink => "pyink",
             Self::Qmlfmt => "qmlfmt",
