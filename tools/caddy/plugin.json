@@ -1,0 +1,15 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "caddy",
+  "categories": ["formatter"],
+  "commands": {
+    "fmt": ["fmt", "$PATH", "-w"]
+  },
+  "description": "Formats or prettifies a Caddyfile",
+  "homepage": "https://caddyserver.com/docs/command-line#caddy-fmt",
+  "languages": ["caddy"],
+  "name": null,
+  "npm": null,
+  "php": null,
+  "tests": []
+}
