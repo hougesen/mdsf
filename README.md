@@ -184,7 +184,7 @@ mdsf init
 
 <!-- START_SECTION:supported-tools -->
 
-`mdsf` currently supports 204 commands. Feel free to open an issue/pull-request if your favorite tool is missing! 😃
+`mdsf` currently supports 205 commands. Feel free to open an issue/pull-request if your favorite tool is missing! 😃
 
 | Name                     | Command                                                                                |
 | ------------------------ | -------------------------------------------------------------------------------------- |
@@ -302,6 +302,7 @@ mdsf init
 | `misspell`               | `misspell -w PATH`                                                                     |
 | `mix:format`             | `mix format PATH`                                                                      |
 | `mojo:format`            | `mojo format -q PATH`                                                                  |
+| `nginxbeautifier`        | `nginxbeautifier PATH`                                                                 |
 | `nickel:format`          | `nickel format PATH`                                                                   |
 | `nimpretty`              | `nimpretty PATH`                                                                       |
 | `nixfmt`                 | `nixfmt PATH`                                                                          |

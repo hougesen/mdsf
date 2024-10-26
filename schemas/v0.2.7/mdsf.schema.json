@@ -629,6 +629,11 @@
           "enum": ["mojo:format"]
         },
         {
+          "description": "`nginxbeautifier $PATH`",
+          "type": "string",
+          "enum": ["nginxbeautifier"]
+        },
+        {
           "description": "`nickel format $PATH`",
           "type": "string",
           "enum": ["nickel:format"]
