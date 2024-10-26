@@ -1,0 +1,15 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "purty",
+  "categories": ["formatter"],
+  "commands": {
+    "": ["--write", "$PATH"]
+  },
+  "description": "PureScript pretty-printer",
+  "homepage": "https://gitlab.com/joneshf/purty",
+  "languages": ["purescript"],
+  "name": null,
+  "npm": "purty",
+  "php": null,
+  "tests": []
+}
