@@ -1,0 +1,15 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "protolint",
+  "categories": ["linter"],
+  "commands": {
+    "": ["lint", "-fix", "$PATH"]
+  },
+  "description": "A pluggable linter and fixer to enforce Protocol Buffer style and conventions",
+  "homepage": "https://github.com/yoheimuta/protolint",
+  "languages": ["protobuf"],
+  "name": null,
+  "npm": null,
+  "php": null,
+  "tests": []
+}
