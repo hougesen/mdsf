@@ -1,0 +1,15 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "hlint",
+  "categories": ["linter"],
+  "commands": {
+    "": ["--refactor", "-i", "$PATH"]
+  },
+  "description": "Haskell source code suggestions",
+  "homepage": "https://github.com/ndmitchell/hlint",
+  "languages": ["haskell"],
+  "name": null,
+  "npm": null,
+  "php": null,
+  "tests": []
+}

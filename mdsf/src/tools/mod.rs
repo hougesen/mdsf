@@ -78,6 +78,7 @@ pub mod grain_format;
 pub mod haml_lint;
 pub mod hfmt;
 pub mod hindent;
+pub mod hlint;
 pub mod html_beautify;
 pub mod htmlbeautifier;
 pub mod imba_fmt;
@@ -519,6 +520,10 @@ pub enum Tooling {
     #[serde(rename = "hindent")]
     /// `hindent $PATH`
     Hindent,
+
+    #[serde(rename = "hlint")]
+    /// `hlint --refactor -i $PATH`
+    Hlint,
 
     #[serde(rename = "html-beautify")]
     /// `html-beautify -r --type html -f $PATH`
@@ -1077,6 +1082,7 @@ impl Tooling {
             Self::HamlLint => haml_lint::run(snippet_path),
             Self::Hfmt => hfmt::run(snippet_path),
             Self::Hindent => hindent::run(snippet_path),
+            Self::Hlint => hlint::run(snippet_path),
             Self::HtmlBeautify => html_beautify::run(snippet_path),
             Self::Htmlbeautifier => htmlbeautifier::run(snippet_path),
             Self::ImbaFmt => imba_fmt::run(snippet_path),
@@ -1283,6 +1289,7 @@ impl AsRef<str> for Tooling {
             Self::HamlLint => "haml_lint",
             Self::Hfmt => "hfmt",
             Self::Hindent => "hindent",
+            Self::Hlint => "hlint",
             Self::HtmlBeautify => "html_beautify",
             Self::Htmlbeautifier => "htmlbeautifier",
             Self::ImbaFmt => "imba_fmt",
