@@ -4,7 +4,7 @@
   "categories": ["formatter", "linter"],
   "commands": {
     "check": ["check", "--fix", "--quiet", "$PATH"],
-    "format": ["check", "--fix", "$PATH"]
+    "format": ["format", "--quiet", "$PATH"]
   },
   "description": "An extremely fast Python linter and code formatter, written in Rust",
   "homepage": "https://docs.astral.sh/ruff",

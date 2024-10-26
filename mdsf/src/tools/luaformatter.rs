@@ -30,3 +30,34 @@ pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfEr
 
     Ok((true, None))
 }
+
+#[cfg(test)]
+mod test_luaformatter {
+    #[test_with::executable(lua-format)]
+    fn test_luaformatter_lua_acabd7c8fbe45244() {
+        let input = r#"
+
+        local               function        add (                                       a , b
+)
+local c=a+b
+return    c
+
+
+end
+    "#;
+        let output = r#"local function add(a, b)
+    local c = a + b
+    return c
+
+end
+"#;
+        let file_ext = crate::fttype::get_file_extension("lua");
+        let snippet =
+            crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
+        let result = crate::tools::luaformatter::run(snippet.path())
+            .expect("it to be successful")
+            .1
+            .expect("it to be some");
+        assert_eq!(result, output);
+    }
+}

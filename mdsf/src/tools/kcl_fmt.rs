@@ -30,3 +30,52 @@ pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfEr
 
     Ok((true, None))
 }
+
+#[cfg(test)]
+mod test_kcl_fmt {
+    #[test_with::executable(kcl)]
+    fn test_kcl_fmt_kcl_3716a11e97bc80e() {
+        let input = r#"apiVersion = "apps/v1"
+kind = "Deployment"
+metadata = {
+    name =  "nginx"
+                   labels.app = "nginx"
+}
+spec = {
+    replicas    = 3
+    selector.matchLabels = metadata.labels
+    template.metadata.labels =                  metadata.labels
+    template.spec.containers = [     {
+        name = metadata.name
+        image = "${metadata.name}:1.14.2"
+        ports = [{                                                  containerPort = 80}]
+    }]
+}
+"#;
+        let output = r#"apiVersion = "apps/v1"
+kind = "Deployment"
+metadata = {
+    name = "nginx"
+    labels.app = "nginx"
+}
+spec = {
+    replicas = 3
+    selector.matchLabels = metadata.labels
+    template.metadata.labels = metadata.labels
+    template.spec.containers = [{
+        name = metadata.name
+        image = "${metadata.name}:1.14.2"
+        ports = [{containerPort = 80}]
+    }]
+}
+"#;
+        let file_ext = crate::fttype::get_file_extension("kcl");
+        let snippet =
+            crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
+        let result = crate::tools::kcl_fmt::run(snippet.path())
+            .expect("it to be successful")
+            .1
+            .expect("it to be some");
+        assert_eq!(result, output);
+    }
+}

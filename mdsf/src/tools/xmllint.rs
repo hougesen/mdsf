@@ -32,3 +32,33 @@ pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfEr
 
     Ok((true, None))
 }
+
+#[cfg(test)]
+mod test_xmllint {
+    #[test_with::executable(xmllint)]
+    fn test_xmllint_xml_fac728c35ade6967() {
+        let input = r#"
+<note>
+  <to>Tove</to>
+          <from>Jani</from>
+      <heading>Reminder</heading>
+        <body>Don't forget me this weekend!</body>
+   </note>"#;
+        let output = r#"<?xml version="1.0"?>
+<note>
+  <to>Tove</to>
+  <from>Jani</from>
+  <heading>Reminder</heading>
+  <body>Don't forget me this weekend!</body>
+</note>
+"#;
+        let file_ext = crate::fttype::get_file_extension("xml");
+        let snippet =
+            crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
+        let result = crate::tools::xmllint::run(snippet.path())
+            .expect("it to be successful")
+            .1
+            .expect("it to be some");
+        assert_eq!(result, output);
+    }
+}

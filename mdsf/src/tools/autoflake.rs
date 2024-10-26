@@ -31,3 +31,48 @@ pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfEr
 
     Ok((true, None))
 }
+
+#[cfg(test)]
+mod test_autoflake {
+    #[test_with::executable(autoflake)]
+    fn test_autoflake_python_a7a00a63bb271a62() {
+        let input = r#"import math
+import re
+import os
+import random
+import multiprocessing
+import grp, pwd, platform
+import subprocess, sys
+
+
+def foo():
+    from abc import ABCMeta, WeakSet
+    try:
+        import multiprocessing
+        print(multiprocessing.cpu_count())
+    except ImportError as exception:
+        print(sys.version)
+    return math.pi
+"#;
+        let output = r#"import math
+import sys
+
+
+def foo():
+    try:
+        import multiprocessing
+        print(multiprocessing.cpu_count())
+    except ImportError as exception:
+        print(sys.version)
+    return math.pi
+"#;
+        let file_ext = crate::fttype::get_file_extension("python");
+        let snippet =
+            crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
+        let result = crate::tools::autoflake::run(snippet.path())
+            .expect("it to be successful")
+            .1
+            .expect("it to be some");
+        assert_eq!(result, output);
+    }
+}

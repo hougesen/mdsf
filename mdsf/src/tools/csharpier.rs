@@ -30,3 +30,38 @@ pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfEr
 
     Ok((true, None))
 }
+
+#[cfg(test)]
+mod test_csharpier {
+    #[test_with::executable(dotnet)]
+    fn test_csharpier_csharp_257c6494c2fdb601() {
+        let input = r#"namespace Mdsf {
+                        class Adder {
+                                                    public static int add(int a,int b) {
+                                var c=a+b ;
+                                                        return c ;
+                                                    }
+                                                 }
+                                                 } "#;
+        let output = r#"namespace Mdsf
+{
+    class Adder
+    {
+        public static int add(int a, int b)
+        {
+            var c = a + b;
+            return c;
+        }
+    }
+}
+"#;
+        let file_ext = crate::fttype::get_file_extension("csharp");
+        let snippet =
+            crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
+        let result = crate::tools::csharpier::run(snippet.path())
+            .expect("it to be successful")
+            .1
+            .expect("it to be some");
+        assert_eq!(result, output);
+    }
+}

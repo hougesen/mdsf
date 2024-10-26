@@ -33,3 +33,25 @@ pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfEr
 
     Ok((true, None))
 }
+
+#[cfg(test)]
+mod test_rubocop {
+    #[test_with::executable(rubocop)]
+    fn test_rubocop_ruby_1ad1609b5c92bd46() {
+        let input = r#"def   add(  a ,                                                          b )
+                        return a + b
+                end"#;
+        let output = r#"def add(a, b)
+  return a + b
+end
+"#;
+        let file_ext = crate::fttype::get_file_extension("ruby");
+        let snippet =
+            crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
+        let result = crate::tools::rubocop::run(snippet.path())
+            .expect("it to be successful")
+            .1
+            .expect("it to be some");
+        assert_eq!(result, output);
+    }
+}

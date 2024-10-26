@@ -9,8 +9,7 @@
     "commands",
     "description",
     "homepage",
-    "languages",
-    "tests"
+    "languages"
   ],
   "properties": {
     "$schema": {
@@ -58,7 +57,7 @@
       "type": ["string", "null"]
     },
     "tests": {
-      "type": "array",
+      "type": ["array", "null"],
       "items": {
         "$ref": "#/definitions/ToolTest"
       }

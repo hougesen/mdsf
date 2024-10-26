@@ -32,3 +32,29 @@ pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfEr
 
     Ok((true, None))
 }
+
+#[cfg(test)]
+mod test_scalafmt {
+    #[test_with::executable(scalafmt)]
+    fn test_scalafmt_scala_f3726f9b9a0f9066() {
+        let input = r#"object Addition {
+             def main() = {
+                 println(1 + 3)
+             }
+    }"#;
+        let output = r#"object Addition {
+  def main() = {
+    println(1 + 3)
+  }
+}
+"#;
+        let file_ext = crate::fttype::get_file_extension("scala");
+        let snippet =
+            crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
+        let result = crate::tools::scalafmt::run(snippet.path())
+            .expect("it to be successful")
+            .1
+            .expect("it to be some");
+        assert_eq!(result, output);
+    }
+}

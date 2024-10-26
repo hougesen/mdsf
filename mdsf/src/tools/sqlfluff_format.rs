@@ -32,3 +32,23 @@ pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfEr
 
     Ok((true, None))
 }
+
+#[cfg(test)]
+mod test_sqlfluff_format {
+    #[test_with::executable(sqlfluff)]
+    fn test_sqlfluff_format_sql_7d0d03aa13961f14() {
+        let input = r#"SELECT  *                  FROM  tbl
+                        WHERE                      foo   = 'bar';         "#;
+        let output = r#"SELECT * FROM tbl
+WHERE foo = 'bar';
+"#;
+        let file_ext = crate::fttype::get_file_extension("sql");
+        let snippet =
+            crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
+        let result = crate::tools::sqlfluff_format::run(snippet.path())
+            .expect("it to be successful")
+            .1
+            .expect("it to be some");
+        assert_eq!(result, output);
+    }
+}

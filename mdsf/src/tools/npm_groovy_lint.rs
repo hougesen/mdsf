@@ -34,3 +34,29 @@ pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfEr
 
     Ok((true, None))
 }
+
+#[cfg(test)]
+mod test_npm_groovy_lint {
+    #[test_with::executable(npx)]
+    fn test_npm_groovy_lint_groovy_9484173186968a23() {
+        let input = r#"                  def add(a, b) {
+            return a + b
+        }
+
+        assert add(1,2) == 3 "#;
+        let output = r#"def add(a, b) {
+    return a + b
+}
+
+assert add(1, 2) == 3
+"#;
+        let file_ext = crate::fttype::get_file_extension("groovy");
+        let snippet =
+            crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
+        let result = crate::tools::npm_groovy_lint::run(snippet.path())
+            .expect("it to be successful")
+            .1
+            .expect("it to be some");
+        assert_eq!(result, output);
+    }
+}

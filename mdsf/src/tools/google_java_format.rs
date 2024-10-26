@@ -30,3 +30,31 @@ pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfEr
 
     Ok((true, None))
 }
+
+#[cfg(test)]
+mod test_google_java_format {
+    #[test_with::executable(google-java-format)]
+    fn test_google_java_format_java_a4b164e8d054f296() {
+        let input = r#"class HelloWorld {
+    public static void main(String[] args) {
+                System.out.println("Hello");
+                System.out.println("World!");
+                 }
+}"#;
+        let output = r#"class HelloWorld {
+  public static void main(String[] args) {
+    System.out.println("Hello");
+    System.out.println("World!");
+  }
+}
+"#;
+        let file_ext = crate::fttype::get_file_extension("java");
+        let snippet =
+            crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
+        let result = crate::tools::google_java_format::run(snippet.path())
+            .expect("it to be successful")
+            .1
+            .expect("it to be some");
+        assert_eq!(result, output);
+    }
+}

@@ -32,3 +32,26 @@ pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfEr
 
     Ok((true, None))
 }
+
+#[cfg(test)]
+mod test_grain_format {
+    #[test_with::executable(grain)]
+    fn test_grain_format_grain_e559d211c80bb5e9() {
+        let input = r#"module Hello
+
+                                print("Hello, world!")
+"#;
+        let output = r#"module Hello
+
+print("Hello, world!")
+"#;
+        let file_ext = crate::fttype::get_file_extension("grain");
+        let snippet =
+            crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
+        let result = crate::tools::grain_format::run(snippet.path())
+            .expect("it to be successful")
+            .1
+            .expect("it to be some");
+        assert_eq!(result, output);
+    }
+}

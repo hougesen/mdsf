@@ -24,6 +24,7 @@ fn setup_temp_dir() -> std::io::Result<()> {
         "Automatically created by mdsf.
 .gitignore
 caches
+*
 ",
     )?;
 

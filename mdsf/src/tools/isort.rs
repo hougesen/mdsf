@@ -30,3 +30,36 @@ pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfEr
 
     Ok((true, None))
 }
+
+#[cfg(test)]
+mod test_isort {
+    #[test_with::executable(isort)]
+    fn test_isort_python_7be36b03fc0282f6() {
+        let input = r#"from q import d
+import b
+import a
+import c
+
+
+def add(a: int, b: int) -> int:
+  return a + b
+"#;
+        let output = r#"import a
+import b
+import c
+from q import d
+
+
+def add(a: int, b: int) -> int:
+  return a + b
+"#;
+        let file_ext = crate::fttype::get_file_extension("python");
+        let snippet =
+            crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
+        let result = crate::tools::isort::run(snippet.path())
+            .expect("it to be successful")
+            .1
+            .expect("it to be some");
+        assert_eq!(result, output);
+    }
+}

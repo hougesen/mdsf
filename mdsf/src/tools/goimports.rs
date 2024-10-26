@@ -30,3 +30,43 @@ pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfEr
 
     Ok((true, None))
 }
+
+#[cfg(test)]
+mod test_goimports {
+    #[test_with::executable(goimports)]
+    fn test_goimports_go_5a6f7904f97fef89() {
+        let input = r#"package main
+
+import (
+	"os"
+	"fmt"
+)
+
+func add(a int, b int) int {
+	fmt.Print(a)
+	fmt.Print(b)
+	return a + b
+}
+"#;
+        let output = r#"package main
+
+import (
+	"fmt"
+)
+
+func add(a int, b int) int {
+	fmt.Print(a)
+	fmt.Print(b)
+	return a + b
+}
+"#;
+        let file_ext = crate::fttype::get_file_extension("go");
+        let snippet =
+            crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
+        let result = crate::tools::goimports::run(snippet.path())
+            .expect("it to be successful")
+            .1
+            .expect("it to be some");
+        assert_eq!(result, output);
+    }
+}

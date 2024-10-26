@@ -29,3 +29,23 @@ pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfEr
 
     Ok((true, None))
 }
+
+#[cfg(test)]
+mod test_nimpretty {
+    #[test_with::executable(nimpretty)]
+    fn test_nimpretty_nim_8bff7df4f0c46bbe() {
+        let input = r#"proc           add( a         :int , b:int )        : int =
+  return a +          b  "#;
+        let output = r#"proc add(a: int, b: int): int =
+  return a + b
+"#;
+        let file_ext = crate::fttype::get_file_extension("nim");
+        let snippet =
+            crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
+        let result = crate::tools::nimpretty::run(snippet.path())
+            .expect("it to be successful")
+            .1
+            .expect("it to be some");
+        assert_eq!(result, output);
+    }
+}

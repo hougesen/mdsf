@@ -30,3 +30,28 @@ pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfEr
 
     Ok((true, None))
 }
+
+#[cfg(test)]
+mod test_zig_fmt {
+    #[test_with::executable(zig)]
+    fn test_zig_fmt_zig_c392cb7c52bb9cc8() {
+        let input = r#"
+    fn     add   (a : i32    , b :   i32 )             i32 {
+        return a + b ;
+
+    }
+    "#;
+        let output = r#"fn add(a: i32, b: i32) i32 {
+    return a + b;
+}
+"#;
+        let file_ext = crate::fttype::get_file_extension("zig");
+        let snippet =
+            crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
+        let result = crate::tools::zig_fmt::run(snippet.path())
+            .expect("it to be successful")
+            .1
+            .expect("it to be some");
+        assert_eq!(result, output);
+    }
+}

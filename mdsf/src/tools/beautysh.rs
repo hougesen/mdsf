@@ -29,3 +29,54 @@ pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfEr
 
     Ok((true, None))
 }
+
+#[cfg(test)]
+mod test_beautysh {
+    #[test_with::executable(beautysh)]
+    fn test_beautysh_shell_cb36b80a8b253f58() {
+        let input = r#"#!/bin/shell
+
+       add() {
+    echo "$1" + "$2"
+             }
+"#;
+        let output = r#"#!/bin/shell
+
+add() {
+    echo "$1" + "$2"
+}
+"#;
+        let file_ext = crate::fttype::get_file_extension("shell");
+        let snippet =
+            crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
+        let result = crate::tools::beautysh::run(snippet.path())
+            .expect("it to be successful")
+            .1
+            .expect("it to be some");
+        assert_eq!(result, output);
+    }
+
+    #[test_with::executable(beautysh)]
+    fn test_beautysh_bash_256eb200f416406f() {
+        let input = r#"#!/bin/bash
+
+       add() {
+    echo "$1" + "$2"
+             }
+"#;
+        let output = r#"#!/bin/bash
+
+add() {
+    echo "$1" + "$2"
+}
+"#;
+        let file_ext = crate::fttype::get_file_extension("bash");
+        let snippet =
+            crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
+        let result = crate::tools::beautysh::run(snippet.path())
+            .expect("it to be successful")
+            .1
+            .expect("it to be some");
+        assert_eq!(result, output);
+    }
+}

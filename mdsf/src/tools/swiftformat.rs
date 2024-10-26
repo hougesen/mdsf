@@ -30,3 +30,25 @@ pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfEr
 
     Ok((true, None))
 }
+
+#[cfg(test)]
+mod test_swiftformat {
+    #[test_with::executable(swiftformat)]
+    fn test_swiftformat_swift_dd49f5b0939c875() {
+        let input = r#" func add(a:Int ,b:Int)->Int {
+    return a + b
+    }"#;
+        let output = r#"func add(a: Int, b: Int) -> Int {
+    return a + b
+}
+"#;
+        let file_ext = crate::fttype::get_file_extension("swift");
+        let snippet =
+            crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
+        let result = crate::tools::swiftformat::run(snippet.path())
+            .expect("it to be successful")
+            .1
+            .expect("it to be some");
+        assert_eq!(result, output);
+    }
+}

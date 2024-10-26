@@ -30,3 +30,41 @@ pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfEr
 
     Ok((true, None))
 }
+
+#[cfg(test)]
+mod test_roc_format {
+    #[test_with::executable(roc)]
+    fn test_roc_format_roc_4560f2fcd4696027() {
+        let input = r#"app "helloWorld"
+    packages { pf: "https://github.com/roc-lang/" }
+    imports [pf.Stdout]
+    provides [main] to pf
+
+
+
+
+
+
+main =
+    Stdout.line "Hello, World!"
+
+
+    "#;
+        let output = r#"app [main] { pf: platform "https://github.com/roc-lang/" }
+
+import pf.Stdout
+
+main =
+    Stdout.line "Hello, World!"
+
+"#;
+        let file_ext = crate::fttype::get_file_extension("roc");
+        let snippet =
+            crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
+        let result = crate::tools::roc_format::run(snippet.path())
+            .expect("it to be successful")
+            .1
+            .expect("it to be some");
+        assert_eq!(result, output);
+    }
+}

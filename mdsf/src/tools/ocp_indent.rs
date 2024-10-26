@@ -30,3 +30,26 @@ pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfEr
 
     Ok((true, None))
 }
+
+#[cfg(test)]
+mod test_ocp_indent {
+    #[test_with::executable(ocp-indent)]
+    fn test_ocp_indent_ocaml_5904945f3cb9a254() {
+        let input = r#"
+let add a b
+                             = a + b
+            "#;
+        let output = r#"
+let add a b
+  = a + b
+"#;
+        let file_ext = crate::fttype::get_file_extension("ocaml");
+        let snippet =
+            crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
+        let result = crate::tools::ocp_indent::run(snippet.path())
+            .expect("it to be successful")
+            .1
+            .expect("it to be some");
+        assert_eq!(result, output);
+    }
+}

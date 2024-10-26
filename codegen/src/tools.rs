@@ -1,20 +1,18 @@
+use std::hash::{DefaultHasher, Hash, Hasher};
+
 use convert_case::{Case, Casing};
 
 const INDENT: &str = "    ";
 
-#[derive(Debug, serde::Deserialize, schemars::JsonSchema)]
+#[derive(Debug, serde::Deserialize, schemars::JsonSchema, Hash)]
 #[schemars(deny_unknown_fields)]
 struct ToolTest {
-    #[expect(unused)]
     language: String,
 
-    #[expect(unused)]
     command: String,
 
-    #[expect(unused)]
     test_input: String,
 
-    #[expect(unused)]
     test_output: String,
 }
 
@@ -45,8 +43,7 @@ pub struct Tool {
     #[expect(unused)]
     languages: std::collections::HashSet<String>,
 
-    #[expect(unused)]
-    tests: Vec<ToolTest>,
+    tests: Option<Vec<ToolTest>>,
 }
 
 #[derive(Debug)]
@@ -63,24 +60,76 @@ struct GeneratedCommand {
 }
 
 impl Tool {
-    fn generate(&self) -> Vec<GeneratedCommand> {
-        let fn_prefix = if let Some(name) = &self.name {
-            name.replace(".", "_").to_case(Case::Snake)
-        } else {
-            self.binary.replace(".", "_").to_case(Case::Snake)
-        };
+    fn get_command_name(&self, cmd: &str) -> String {
+        let fn_prefix = self.name.as_ref().map_or_else(
+            || self.binary.replace('.', "_").to_case(Case::Snake),
+            |name| name.replace('.', "_").to_case(Case::Snake),
+        );
 
+        format!(
+            "{fn_prefix}{}",
+            if cmd.is_empty() {
+                String::new()
+            } else {
+                format!("_{}", cmd.replace('.', "_").to_case(Case::Snake))
+            }
+        )
+    }
+
+    fn generate_test(&self, test: &ToolTest) -> (String, String) {
+        let mut hasher = DefaultHasher::new();
+        test.hash(&mut hasher);
+        let id = format!("{:x}", hasher.finish());
+
+        let module_name = self.get_command_name(&test.command).to_case(Case::Snake);
+
+        let language = test.language.to_case(Case::Snake);
+
+        let test_fn_name = format!("test_{module_name}_{language}_{id}",);
+
+        let test_code = format!(
+            "{INDENT}#[test_with::executable({bin})]
+{INDENT}fn {test_fn_name}() {{
+{INDENT}{INDENT}let input = r#\"{input}\"#;
+{INDENT}{INDENT}let output = r#\"{output}\"#;
+{INDENT}{INDENT}let file_ext = crate::fttype::get_file_extension(\"{language}\");
+{INDENT}{INDENT}let snippet =
+{INDENT}{INDENT}{INDENT}crate::execution::setup_snippet(input, &file_ext).expect(\"it to create a snippet file\");
+{INDENT}{INDENT}let result = crate::tools::{module_name}::run(snippet.path())
+{INDENT}{INDENT}{INDENT}.expect(\"it to be successful\")
+{INDENT}{INDENT}{INDENT}.1
+{INDENT}{INDENT}{INDENT}.expect(\"it to be some\");
+{INDENT}{INDENT}assert_eq!(result, output);
+{INDENT}}}",
+            bin = if self.npm.is_some() {
+                "npx"
+            } else {
+                &self.binary
+            },
+            input = test.test_input,
+            output = test.test_output,
+            language = test.language,
+        );
+
+        (module_name, test_code)
+    }
+
+    fn generate(&self) -> Vec<GeneratedCommand> {
         let mut all_commands = Vec::new();
 
+        let mut generated_tests: std::collections::HashMap<String, Vec<String>> =
+            std::collections::HashMap::new();
+
+        if let Some(tests) = &self.tests {
+            for test in tests {
+                let (module, code) = self.generate_test(test);
+
+                generated_tests.entry(module).or_default().push(code);
+            }
+        }
+
         for (cmd, args) in &self.commands {
-            let command_name = format!(
-                "{fn_prefix}{}",
-                if cmd.is_empty() {
-                    String::new()
-                } else {
-                    format!("_{}", cmd.replace(".", "_").to_case(Case::Snake))
-                }
-            );
+            let command_name = self.get_command_name(cmd);
 
             let set_args_fn_name = format!("set_{command_name}_args");
 
@@ -93,7 +142,7 @@ impl Tool {
                 };
 
                 if let Some(php) = &self.php {
-                    command_types.push(format!("CommandType::PhpVendor(\"{}\")", php));
+                    command_types.push(format!("CommandType::PhpVendor(\"{php}\")"));
                 };
 
                 command_types.push(format!("CommandType::Direct(\"{}\")", self.binary));
@@ -143,6 +192,19 @@ impl Tool {
 
             assert!(args_includes_path);
 
+            let module_name = command_name.to_case(Case::Snake);
+
+            let tests = generated_tests
+                .remove(&module_name)
+                .unwrap_or_default()
+                .join("\n\n");
+
+            let tests = if tests.is_empty() {
+                String::new()
+            } else {
+                format!("\n{tests}\n")
+            };
+
             let code = format!(
                 "use std::process::Command;
 
@@ -175,26 +237,27 @@ pub fn {run_fn_name}(file_path: &std::path::Path) -> Result<(bool, Option<String
 
 {INDENT}Ok((true, None))
 }}
+
+#[cfg(test)]
+mod test_{module_name} {{{tests}}}
 ",
             );
 
             all_commands.push(GeneratedCommand {
                 enum_value: command_name.to_case(Case::Pascal),
-                module_name: command_name.to_case(Case::Snake),
+                module_name,
                 fn_name: run_fn_name,
                 code,
                 serde_rename: format!(
                     "{}{}{}",
-                    if let Some(n) = &self.name {
-                        n
-                    } else {
-                        &self.binary
-                    },
+                    self.name.as_ref().map_or(&self.binary, |n| n),
                     if cmd.is_empty() { "" } else { ":" },
                     cmd
                 ),
             });
         }
+
+        assert!(generated_tests.is_empty());
 
         all_commands
     }
@@ -245,7 +308,8 @@ impl AsRef<str> for Tooling {
 
     for entry in walker {
         if entry.file_name() == "plugin.json" {
-            println!("{entry:?}");
+            println!("{}", entry.path().display());
+
             let content = std::fs::read_to_string(entry.path())?;
 
             let parsed = serde_json::from_str::<Tool>(&content)?;

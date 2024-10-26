@@ -13,7 +13,7 @@
   "php": null,
   "tests": [
     {
-      "command": "",
+      "command": "fmt",
       "language": "html",
       "test_input": "<div>\n                    <p>\n                    Mads was here\n                    </p>\n        </div>",
       "test_output": "<div>\n  <p>\n    Mads was here\n  </p>\n</div>"

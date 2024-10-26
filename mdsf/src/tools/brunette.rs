@@ -30,3 +30,22 @@ pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfEr
 
     Ok((true, None))
 }
+
+#[cfg(test)]
+mod test_brunette {
+    #[test_with::executable(brunette)]
+    fn test_brunette_python_8156ff26fe126797() {
+        let input = r#"def add( a: int ,  b:int)->int: return a+b"#;
+        let output = r#"def add(a: int, b: int) -> int:
+    return a + b
+"#;
+        let file_ext = crate::fttype::get_file_extension("python");
+        let snippet =
+            crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
+        let result = crate::tools::brunette::run(snippet.path())
+            .expect("it to be successful")
+            .1
+            .expect("it to be some");
+        assert_eq!(result, output);
+    }
+}

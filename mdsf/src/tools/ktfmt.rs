@@ -31,3 +31,26 @@ pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfEr
 
     Ok((true, None))
 }
+
+#[cfg(test)]
+mod test_ktfmt {
+    #[test_with::executable(ktfmt)]
+    fn test_ktfmt_kotlin_7d325e7993e3e956() {
+        let input = r#"            fun add(a:Int ,b:Int ):Int {
+                    return a + b
+                }
+            "#;
+        let output = r#"fun add(a: Int, b: Int): Int {
+    return a + b
+}
+"#;
+        let file_ext = crate::fttype::get_file_extension("kotlin");
+        let snippet =
+            crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
+        let result = crate::tools::ktfmt::run(snippet.path())
+            .expect("it to be successful")
+            .1
+            .expect("it to be some");
+        assert_eq!(result, output);
+    }
+}

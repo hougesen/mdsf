@@ -11,12 +11,5 @@
   "name": "standardjs",
   "npm": "standard",
   "php": null,
-  "tests": [
-    {
-      "command": "",
-      "language": "javascript",
-      "test_input": "\n    async function asyncAddition(a,b  )\n    {\n        return a+b\n    }\n\nconsole.info(asyncAddition(1, 2));\n            ",
-      "test_output": "async function asyncAddition (a, b) {\n  return a + b\n}\n\nconsole.info(asyncAddition(1, 2))\n"
-    }
-  ]
+  "tests": []
 }

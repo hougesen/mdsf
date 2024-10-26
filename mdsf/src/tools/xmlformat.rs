@@ -30,3 +30,31 @@ pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfEr
 
     Ok((true, None))
 }
+
+#[cfg(test)]
+mod test_xmlformat {
+    #[test_with::executable(xmlformat)]
+    fn test_xmlformat_xml_58da858506aaf78() {
+        let input = r#"
+<note>
+  <to>Tove</to>
+          <from>Jani</from>
+      <heading>Reminder</heading>
+        <body>Don't forget me this weekend!</body>
+   </note>"#;
+        let output = r#"<note>
+  <to>Tove</to>
+  <from>Jani</from>
+  <heading>Reminder</heading>
+  <body>Don't forget me this weekend!</body>
+</note>"#;
+        let file_ext = crate::fttype::get_file_extension("xml");
+        let snippet =
+            crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
+        let result = crate::tools::xmlformat::run(snippet.path())
+            .expect("it to be successful")
+            .1
+            .expect("it to be some");
+        assert_eq!(result, output);
+    }
+}

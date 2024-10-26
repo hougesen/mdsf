@@ -34,3 +34,38 @@ pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfEr
 
     Ok((true, None))
 }
+
+#[cfg(test)]
+mod test_purs_tidy {
+    #[test_with::executable(npx)]
+    fn test_purs_tidy_purescript_810f9c067d5daeae() {
+        let input = r#"module       Test.Main   where
+
+import Prelude
+
+import   Effect   (Effect)
+import                  Effect.Class.Console  (log)
+
+main     ::   Effect Unit
+main   =    do
+  log          "You should add some tests.""#;
+        let output = r#"module Test.Main where
+
+import Prelude
+
+import Effect (Effect)
+import Effect.Class.Console (log)
+
+main :: Effect Unit
+main = do
+  log "You should add some tests.""#;
+        let file_ext = crate::fttype::get_file_extension("purescript");
+        let snippet =
+            crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
+        let result = crate::tools::purs_tidy::run(snippet.path())
+            .expect("it to be successful")
+            .1
+            .expect("it to be some");
+        assert_eq!(result, output);
+    }
+}

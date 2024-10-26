@@ -15,7 +15,7 @@ pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfEr
     let commands = [
         CommandType::NodeModules("biome"),
         CommandType::Direct("biome"),
-        CommandType::Npm("@biome/biomejs"),
+        CommandType::Npm("@biomejs/biome"),
     ];
 
     for (index, cmd) in commands.iter().enumerate() {
@@ -35,3 +35,6 @@ pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfEr
 
     Ok((true, None))
 }
+
+#[cfg(test)]
+mod test_biome_check {}

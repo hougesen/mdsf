@@ -31,3 +31,32 @@ pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfEr
 
     Ok((true, None))
 }
+
+#[cfg(test)]
+mod test_terraform_fmt {
+    #[test_with::executable(terraform)]
+    fn test_terraform_fmt_terraform_35979ec99d0c4a75() {
+        let input = r#"resource "aws_instance" "example" {
+                ami   = "abc123"
+
+           network_interface  {
+             }
+}
+"#;
+        let output = r#"resource "aws_instance" "example" {
+  ami = "abc123"
+
+  network_interface {
+  }
+}
+"#;
+        let file_ext = crate::fttype::get_file_extension("terraform");
+        let snippet =
+            crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
+        let result = crate::tools::terraform_fmt::run(snippet.path())
+            .expect("it to be successful")
+            .1
+            .expect("it to be some");
+        assert_eq!(result, output);
+    }
+}

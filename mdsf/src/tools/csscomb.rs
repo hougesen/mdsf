@@ -34,3 +34,29 @@ pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfEr
 
     Ok((true, None))
 }
+
+#[cfg(test)]
+mod test_csscomb {
+    #[test_with::executable(npx)]
+    fn test_csscomb_css_b8e303ad59d84518() {
+        let input = r#"h1   {color: blue;}
+p {color: red;}"#;
+        let output = r#"h1
+{
+    color: blue;
+}
+p
+{
+    color: red;
+}
+"#;
+        let file_ext = crate::fttype::get_file_extension("css");
+        let snippet =
+            crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
+        let result = crate::tools::csscomb::run(snippet.path())
+            .expect("it to be successful")
+            .1
+            .expect("it to be some");
+        assert_eq!(result, output);
+    }
+}

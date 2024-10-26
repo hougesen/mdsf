@@ -30,3 +30,31 @@ pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfEr
 
     Ok((true, None))
 }
+
+#[cfg(test)]
+mod test_gofumpt {
+    #[test_with::executable(gofumpt)]
+    fn test_gofumpt_go_55cb48704ff9049a() {
+        let input = r#"package main
+
+   func add(a int , b int  ) int {
+                return a + b
+       }
+
+    "#;
+        let output = r#"package main
+
+func add(a int, b int) int {
+	return a + b
+}
+"#;
+        let file_ext = crate::fttype::get_file_extension("go");
+        let snippet =
+            crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
+        let result = crate::tools::gofumpt::run(snippet.path())
+            .expect("it to be successful")
+            .1
+            .expect("it to be some");
+        assert_eq!(result, output);
+    }
+}

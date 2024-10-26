@@ -30,3 +30,108 @@ pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfEr
 
     Ok((true, None))
 }
+
+#[cfg(test)]
+mod test_shfmt {
+    #[test_with::executable(shfmt)]
+    fn test_shfmt_shell_748705c22ee4696f() {
+        let input = r#"
+
+#!/bin/sh
+
+       add      ()   {
+    echo "$1"                 +          "$2"
+             }
+
+
+
+
+
+
+
+
+"#;
+        let output = r#"#!/bin/sh
+
+add() {
+	echo "$1" + "$2"
+}
+"#;
+        let file_ext = crate::fttype::get_file_extension("shell");
+        let snippet =
+            crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
+        let result = crate::tools::shfmt::run(snippet.path())
+            .expect("it to be successful")
+            .1
+            .expect("it to be some");
+        assert_eq!(result, output);
+    }
+
+    #[test_with::executable(shfmt)]
+    fn test_shfmt_bash_32fda4fa46e3b132() {
+        let input = r#"
+
+#!/bin/bash
+
+       add      ()   {
+    echo "$1"                 +          "$2"
+             }
+
+
+
+
+
+
+
+
+"#;
+        let output = r#"#!/bin/bash
+
+add() {
+	echo "$1" + "$2"
+}
+"#;
+        let file_ext = crate::fttype::get_file_extension("bash");
+        let snippet =
+            crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
+        let result = crate::tools::shfmt::run(snippet.path())
+            .expect("it to be successful")
+            .1
+            .expect("it to be some");
+        assert_eq!(result, output);
+    }
+
+    #[test_with::executable(shfmt)]
+    fn test_shfmt_zsh_69eb75793ed195db() {
+        let input = r#"
+
+#!/bin/zsh
+
+       add      ()   {
+    echo "$1"                 +          "$2"
+             }
+
+
+
+
+
+
+
+
+"#;
+        let output = r#"#!/bin/zsh
+
+add() {
+	echo "$1" + "$2"
+}
+"#;
+        let file_ext = crate::fttype::get_file_extension("zsh");
+        let snippet =
+            crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
+        let result = crate::tools::shfmt::run(snippet.path())
+            .expect("it to be successful")
+            .1
+            .expect("it to be some");
+        assert_eq!(result, output);
+    }
+}

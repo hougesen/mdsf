@@ -11,7 +11,7 @@
   "homepage": "https://biomejs.dev/",
   "languages": ["javascript", "typescript", "vue", "json"],
   "name": null,
-  "npm": "@biome/biomejs",
+  "npm": "@biomejs/biome",
   "php": null,
   "tests": [
     {

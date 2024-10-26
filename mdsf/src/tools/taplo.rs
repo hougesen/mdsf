@@ -34,3 +34,24 @@ pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfEr
 
     Ok((true, None))
 }
+
+#[cfg(test)]
+mod test_taplo {
+    #[test_with::executable(npx)]
+    fn test_taplo_toml_6676000e3e397416() {
+        let input = r#"          package         =              "mdsf"
+  author   = "Mads Hougesen"
+  "#;
+        let output = r#"package = "mdsf"
+author = "Mads Hougesen"
+"#;
+        let file_ext = crate::fttype::get_file_extension("toml");
+        let snippet =
+            crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
+        let result = crate::tools::taplo::run(snippet.path())
+            .expect("it to be successful")
+            .1
+            .expect("it to be some");
+        assert_eq!(result, output);
+    }
+}
