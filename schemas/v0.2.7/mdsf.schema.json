@@ -109,6 +109,11 @@
           "enum": ["beautysh"]
         },
         {
+          "description": "`bibtex-tidy -m $PATH`",
+          "type": "string",
+          "enum": ["bibtex-tidy"]
+        },
+        {
           "description": "`bicep format $PATH`",
           "type": "string",
           "enum": ["bicep:format"]

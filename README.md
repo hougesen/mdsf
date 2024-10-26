@@ -184,7 +184,7 @@ mdsf init
 
 <!-- START_SECTION:supported-tools -->
 
-`mdsf` currently supports 201 commands. Feel free to open an issue/pull-request if your favorite tool is missing! 😃
+`mdsf` currently supports 202 commands. Feel free to open an issue/pull-request if your favorite tool is missing! 😃
 
 | Name                     | Command                                                                                |
 | ------------------------ | -------------------------------------------------------------------------------------- |
@@ -198,6 +198,7 @@ mdsf init
 | `autopep8`               | `autopep8 --in-place PATH`                                                             |
 | `beancount-black`        | `bean-black PATH`                                                                      |
 | `beautysh`               | `beautysh PATH`                                                                        |
+| `bibtex-tidy`            | `bibtex-tidy -m PATH`                                                                  |
 | `bicep:format`           | `bicep format PATH`                                                                    |
 | `biome:check`            | `biome check --write PATH`                                                             |
 | `biome:format`           | `biome format --write PATH`                                                            |

@@ -8,6 +8,7 @@ pub mod autoflake;
 pub mod autopep_8;
 pub mod beancount_black;
 pub mod beautysh;
+pub mod bibtex_tidy;
 pub mod bicep_format;
 pub mod biome_check;
 pub mod biome_format;
@@ -243,6 +244,10 @@ pub enum Tooling {
     #[serde(rename = "beautysh")]
     /// `beautysh $PATH`
     Beautysh,
+
+    #[serde(rename = "bibtex-tidy")]
+    /// `bibtex-tidy -m $PATH`
+    BibtexTidy,
 
     #[serde(rename = "bicep:format")]
     /// `bicep format $PATH`
@@ -1027,6 +1032,7 @@ impl Tooling {
             Self::Autopep8 => autopep_8::run(snippet_path),
             Self::BeancountBlack => beancount_black::run(snippet_path),
             Self::Beautysh => beautysh::run(snippet_path),
+            Self::BibtexTidy => bibtex_tidy::run(snippet_path),
             Self::BicepFormat => bicep_format::run(snippet_path),
             Self::BiomeCheck => biome_check::run(snippet_path),
             Self::BiomeFormat => biome_format::run(snippet_path),
@@ -1237,6 +1243,7 @@ impl AsRef<str> for Tooling {
             Self::Autopep8 => "autopep_8",
             Self::BeancountBlack => "beancount_black",
             Self::Beautysh => "beautysh",
+            Self::BibtexTidy => "bibtex_tidy",
             Self::BicepFormat => "bicep_format",
             Self::BiomeCheck => "biome_check",
             Self::BiomeFormat => "biome_format",

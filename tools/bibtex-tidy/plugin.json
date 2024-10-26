@@ -1,0 +1,15 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "bibtex-tidy",
+  "categories": ["formatter"],
+  "commands": {
+    "": ["-m", "$PATH"]
+  },
+  "description": "Cleaner and Formatter for BibTeX files",
+  "homepage": "https://github.com/FlamingTempura/bibtex-tidy",
+  "languages": ["bibtex"],
+  "name": null,
+  "npm": null,
+  "php": null,
+  "tests": []
+}
