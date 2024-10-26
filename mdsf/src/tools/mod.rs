@@ -132,6 +132,7 @@ pub mod pyink;
 pub mod qmlfmt;
 pub mod raco_fmt;
 pub mod refmt;
+pub mod reformat_gherkin;
 pub mod rescript_format;
 pub mod roc_format;
 pub mod rstfmt;
@@ -731,6 +732,10 @@ pub enum Tooling {
     /// `refmt --in-place $PATH`
     Refmt,
 
+    #[serde(rename = "reformat-gherkin")]
+    /// `reformat-gherkin $PATH`
+    ReformatGherkin,
+
     #[serde(rename = "rescript:format")]
     /// `rescript format $PATH`
     RescriptFormat,
@@ -1106,6 +1111,7 @@ impl Tooling {
             Self::Qmlfmt => qmlfmt::run(snippet_path),
             Self::RacoFmt => raco_fmt::run(snippet_path),
             Self::Refmt => refmt::run(snippet_path),
+            Self::ReformatGherkin => reformat_gherkin::run(snippet_path),
             Self::RescriptFormat => rescript_format::run(snippet_path),
             Self::RocFormat => roc_format::run(snippet_path),
             Self::Rstfmt => rstfmt::run(snippet_path),
@@ -1307,6 +1313,7 @@ impl AsRef<str> for Tooling {
             Self::Qmlfmt => "qmlfmt",
             Self::RacoFmt => "raco_fmt",
             Self::Refmt => "refmt",
+            Self::ReformatGherkin => "reformat_gherkin",
             Self::RescriptFormat => "rescript_format",
             Self::RocFormat => "roc_format",
             Self::Rstfmt => "rstfmt",
