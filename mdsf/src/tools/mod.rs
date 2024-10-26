@@ -168,6 +168,7 @@ pub mod swiftformat;
 pub mod taplo;
 pub mod templ_fmt;
 pub mod terraform_fmt;
+pub mod terragrunt_hclfmt;
 pub mod tlint_format;
 pub mod tofu_fmt;
 pub mod topiary;
@@ -878,6 +879,10 @@ pub enum Tooling {
     /// `terraform fmt -write=true $PATH`
     TerraformFmt,
 
+    #[serde(rename = "terragrunt:hclfmt")]
+    /// `terragrunt hclfmt --terragrunt-hclfmt-file $PATH`
+    TerragruntHclfmt,
+
     #[serde(rename = "tlint:format")]
     /// `tlint format $PATH`
     TlintFormat,
@@ -1157,6 +1162,7 @@ impl Tooling {
             Self::Taplo => taplo::run(snippet_path),
             Self::TemplFmt => templ_fmt::run(snippet_path),
             Self::TerraformFmt => terraform_fmt::run(snippet_path),
+            Self::TerragruntHclfmt => terragrunt_hclfmt::run(snippet_path),
             Self::TlintFormat => tlint_format::run(snippet_path),
             Self::TofuFmt => tofu_fmt::run(snippet_path),
             Self::Topiary => topiary::run(snippet_path),
@@ -1361,6 +1367,7 @@ impl AsRef<str> for Tooling {
             Self::Taplo => "taplo",
             Self::TemplFmt => "templ_fmt",
             Self::TerraformFmt => "terraform_fmt",
+            Self::TerragruntHclfmt => "terragrunt_hclfmt",
             Self::TlintFormat => "tlint_format",
             Self::TofuFmt => "tofu_fmt",
             Self::Topiary => "topiary",
