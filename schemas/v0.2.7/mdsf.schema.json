@@ -909,6 +909,11 @@
           "enum": ["terraform:fmt"]
         },
         {
+          "description": "`terragrunt hclfmt --terragrunt-hclfmt-file $PATH`",
+          "type": "string",
+          "enum": ["terragrunt:hclfmt"]
+        },
+        {
           "description": "`tlint format $PATH`",
           "type": "string",
           "enum": ["tlint:format"]

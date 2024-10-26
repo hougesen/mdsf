@@ -184,7 +184,7 @@ mdsf init
 
 <!-- START_SECTION:supported-tools -->
 
-`mdsf` currently supports 195 commands. Feel free to open an issue/pull-request if your favorite tool is missing! 😃
+`mdsf` currently supports 196 commands. Feel free to open an issue/pull-request if your favorite tool is missing! 😃
 
 | Name                     | Command                                                                                |
 | ------------------------ | -------------------------------------------------------------------------------------- |
@@ -358,6 +358,7 @@ mdsf init
 | `taplo`                  | `taplo format PATH`                                                                    |
 | `templ:fmt`              | `templ fmt PATH`                                                                       |
 | `terraform:fmt`          | `terraform fmt -write=true PATH`                                                       |
+| `terragrunt:hclfmt`      | `terragrunt hclfmt --terragrunt-hclfmt-file PATH`                                      |
 | `tlint:format`           | `tlint format PATH`                                                                    |
 | `tofu:fmt`               | `tofu fmt -write=true PATH`                                                            |
 | `topiary`                | `topiary format PATH`                                                                  |
