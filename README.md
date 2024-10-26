@@ -184,7 +184,7 @@ mdsf init
 
 <!-- START_SECTION:supported-tools -->
 
-`mdsf` currently supports 202 commands. Feel free to open an issue/pull-request if your favorite tool is missing! 😃
+`mdsf` currently supports 204 commands. Feel free to open an issue/pull-request if your favorite tool is missing! 😃
 
 | Name                     | Command                                                                                |
 | ------------------------ | -------------------------------------------------------------------------------------- |
@@ -213,6 +213,8 @@ mdsf init
 | `bslint`                 | `bslint --fix PATH`                                                                    |
 | `buf:format`             | `buf format --write PATH`                                                              |
 | `buildifier`             | `buildifier PATH`                                                                      |
+| `cabal-fmt`              | `cabal-fmt --inplace PATH`                                                             |
+| `cabal-prettify`         | `cabal-prettify PATH`                                                                  |
 | `cabal:format`           | `cabal format PATH`                                                                    |
 | `caddy:fmt`              | `caddy fmt PATH -w`                                                                    |
 | `caramel:fmt`            | `caramel fmt PATH`                                                                     |

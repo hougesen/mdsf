@@ -1,0 +1,15 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "cabal-fmt",
+  "categories": ["formatter"],
+  "commands": {
+    "": ["--inplace", "$PATH"]
+  },
+  "description": "An experiment of formatting .cabal files",
+  "homepage": "https://github.com/phadej/cabal-fmt",
+  "languages": ["cabal"],
+  "name": null,
+  "npm": null,
+  "php": null,
+  "tests": []
+}

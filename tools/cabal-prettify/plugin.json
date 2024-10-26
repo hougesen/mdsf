@@ -1,0 +1,15 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "cabal-prettify",
+  "categories": ["formatter"],
+  "commands": {
+    "": ["$PATH"]
+  },
+  "description": "Prettify your Cabal package configuration files",
+  "homepage": "https://github.com/kindaro/cabal-prettify",
+  "languages": ["cabal"],
+  "name": null,
+  "npm": null,
+  "php": null,
+  "tests": []
+}
