@@ -1,0 +1,15 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "nginxbeautifier",
+  "categories": ["formatter"],
+  "commands": {
+    "": ["$PATH"]
+  },
+  "description": "Format and beautify nginx config files",
+  "homepage": "https://github.com/vasilevich/nginxbeautifier",
+  "languages": ["nginx"],
+  "name": null,
+  "npm": "nginxbeautifier",
+  "php": null,
+  "tests": []
+}

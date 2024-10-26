@@ -112,6 +112,7 @@ pub mod mdslw;
 pub mod misspell;
 pub mod mix_format;
 pub mod mojo_format;
+pub mod nginxbeautifier;
 pub mod nickel_format;
 pub mod nimpretty;
 pub mod nixfmt;
@@ -663,6 +664,10 @@ pub enum Tooling {
     /// `mojo format -q $PATH`
     MojoFormat,
 
+    #[serde(rename = "nginxbeautifier")]
+    /// `nginxbeautifier $PATH`
+    Nginxbeautifier,
+
     #[serde(rename = "nickel:format")]
     /// `nickel format $PATH`
     NickelFormat,
@@ -1146,6 +1151,7 @@ impl Tooling {
             Self::Misspell => misspell::run(snippet_path),
             Self::MixFormat => mix_format::run(snippet_path),
             Self::MojoFormat => mojo_format::run(snippet_path),
+            Self::Nginxbeautifier => nginxbeautifier::run(snippet_path),
             Self::NickelFormat => nickel_format::run(snippet_path),
             Self::Nimpretty => nimpretty::run(snippet_path),
             Self::Nixfmt => nixfmt::run(snippet_path),
@@ -1359,6 +1365,7 @@ impl AsRef<str> for Tooling {
             Self::Misspell => "misspell",
             Self::MixFormat => "mix_format",
             Self::MojoFormat => "mojo_format",
+            Self::Nginxbeautifier => "nginxbeautifier",
             Self::NickelFormat => "nickel_format",
             Self::Nimpretty => "nimpretty",
             Self::Nixfmt => "nixfmt",
