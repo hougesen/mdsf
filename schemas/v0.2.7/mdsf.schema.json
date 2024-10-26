@@ -734,6 +734,11 @@
           "enum": ["reformat-gherkin"]
         },
         {
+          "description": "`reorder-python-imports $PATH`",
+          "type": "string",
+          "enum": ["reorder-python-imports"]
+        },
+        {
           "description": "`rescript format $PATH`",
           "type": "string",
           "enum": ["rescript:format"]

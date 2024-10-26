@@ -1,0 +1,15 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "reorder-python-imports",
+  "categories": ["formatter"],
+  "commands": {
+    "": ["$PATH"]
+  },
+  "description": "Rewrites source to reorder python imports",
+  "homepage": "https://github.com/asottile/reorder-python-imports",
+  "languages": ["python"],
+  "name": null,
+  "npm": null,
+  "php": null,
+  "tests": []
+}
