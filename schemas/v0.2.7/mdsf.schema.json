@@ -184,6 +184,16 @@
           "enum": ["buildifier"]
         },
         {
+          "description": "`cabal-fmt --inplace $PATH`",
+          "type": "string",
+          "enum": ["cabal-fmt"]
+        },
+        {
+          "description": "`cabal-prettify $PATH`",
+          "type": "string",
+          "enum": ["cabal-prettify"]
+        },
+        {
           "description": "`cabal format $PATH`",
           "type": "string",
           "enum": ["cabal:format"]

@@ -6,7 +6,7 @@
     "": ["$PATH"]
   },
   "description": "Adds the Optional type-hint to arguments where the default value is None",
-  "homepage": "https://pypi.org/project/auto-optional/",
+  "homepage": "https://github.com/Luttik/auto-optional",
   "languages": ["python"],
   "name": null,
   "npm": null,

@@ -6,7 +6,7 @@
     "": ["--fix", "$PATH"]
   },
   "description": "JavaScript/TypeScript linter (ESLint wrapper) with great defaults",
-  "homepage": "http://github.com/xojs/xo",
+  "homepage": "https://github.com/xojs/xo",
   "languages": ["javascript", "typescript"],
   "name": null,
   "npm": "xo",

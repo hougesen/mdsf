@@ -8,7 +8,7 @@
     "lint": ["lint", "--write", "$PATH"]
   },
   "description": "One toolchain for your web project",
-  "homepage": "https://biomejs.dev/",
+  "homepage": "https://github.com/biomejs/biome",
   "languages": ["javascript", "typescript", "vue", "json"],
   "name": null,
   "npm": "@biomejs/biome",

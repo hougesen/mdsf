@@ -6,7 +6,7 @@
     "": ["--quiet", "$PATH"]
   },
   "description": "The slightly less uncompromising Python code formatter",
-  "homepage": "https://blue.readthedocs.io/en/latest/",
+  "homepage": "https://github.com/grantjenks/blue",
   "languages": ["python"],
   "name": null,
   "npm": null,
