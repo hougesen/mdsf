@@ -184,7 +184,7 @@ mdsf init
 
 <!-- START_SECTION:supported-tools -->
 
-`mdsf` currently supports 198 commands. Feel free to open an issue/pull-request if your favorite tool is missing! 😃
+`mdsf` currently supports 199 commands. Feel free to open an issue/pull-request if your favorite tool is missing! 😃
 
 | Name                     | Command                                                                                |
 | ------------------------ | -------------------------------------------------------------------------------------- |
@@ -277,6 +277,7 @@ mdsf init
 | `js-beautify`            | `js-beautify -r --type js -f PATH`                                                     |
 | `jsona:format`           | `jsona format PATH`                                                                    |
 | `jsona:lint`             | `jsona lint PATH`                                                                      |
+| `jsonlint`               | `jsonlint -i PATH`                                                                     |
 | `jsonnetfmt`             | `jsonnetfmt -i PATH`                                                                   |
 | `juliaformatter.jl`      | `julia -E using JuliaFormatter;format_file(\"\")`                                      |
 | `just`                   | `just --fmt --unstable --justfile PATH`                                                |

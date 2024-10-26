@@ -1,0 +1,15 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "jsonlint",
+  "categories": ["formatter", "linter"],
+  "commands": {
+    "": ["-i", "$PATH"]
+  },
+  "description": "A JSON parser and validator with a CLI",
+  "homepage": "https://github.com/zaach/jsonlint",
+  "languages": ["json"],
+  "name": null,
+  "npm": "jsonlint",
+  "php": null,
+  "tests": []
+}

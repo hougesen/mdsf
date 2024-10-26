@@ -87,6 +87,7 @@ pub mod joker;
 pub mod js_beautify;
 pub mod jsona_format;
 pub mod jsona_lint;
+pub mod jsonlint;
 pub mod jsonnetfmt;
 pub mod juliaformatter_jl;
 pub mod just;
@@ -556,6 +557,10 @@ pub enum Tooling {
     #[serde(rename = "jsona:lint")]
     /// `jsona lint $PATH`
     JsonaLint,
+
+    #[serde(rename = "jsonlint")]
+    /// `jsonlint -i $PATH`
+    Jsonlint,
 
     #[serde(rename = "jsonnetfmt")]
     /// `jsonnetfmt -i $PATH`
@@ -1091,6 +1096,7 @@ impl Tooling {
             Self::JsBeautify => js_beautify::run(snippet_path),
             Self::JsonaFormat => jsona_format::run(snippet_path),
             Self::JsonaLint => jsona_lint::run(snippet_path),
+            Self::Jsonlint => jsonlint::run(snippet_path),
             Self::Jsonnetfmt => jsonnetfmt::run(snippet_path),
             Self::JuliaformatterJl => juliaformatter_jl::run(snippet_path),
             Self::Just => just::run(snippet_path),
@@ -1298,6 +1304,7 @@ impl AsRef<str> for Tooling {
             Self::JsBeautify => "js_beautify",
             Self::JsonaFormat => "jsona_format",
             Self::JsonaLint => "jsona_lint",
+            Self::Jsonlint => "jsonlint",
             Self::Jsonnetfmt => "jsonnetfmt",
             Self::JuliaformatterJl => "juliaformatter_jl",
             Self::Just => "just",
