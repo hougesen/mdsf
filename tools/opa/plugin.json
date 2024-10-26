@@ -1,0 +1,15 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "opa",
+  "categories": ["formatter"],
+  "commands": {
+    "fmt": ["fmt", "$PATH", "-w"]
+  },
+  "description": "Format Rego source files",
+  "homepage": "https://www.openpolicyagent.org/docs/latest/cli/",
+  "languages": ["rego"],
+  "name": null,
+  "npm": null,
+  "php": null,
+  "tests": []
+}

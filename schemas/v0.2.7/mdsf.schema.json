@@ -674,6 +674,11 @@
           "enum": ["ocp-indent"]
         },
         {
+          "description": "`opa fmt $PATH -w`",
+          "type": "string",
+          "enum": ["opa:fmt"]
+        },
+        {
           "description": "`ormolu --mode inplace $PATH`",
           "type": "string",
           "enum": ["ormolu"]
