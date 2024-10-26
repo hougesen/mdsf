@@ -13,7 +13,7 @@ repository = "https://github.com/hougesen/mdsf"
 exclude = []
 
 [workspace.dependencies]
-anyhow = "1.0.89"
+anyhow = "1.0.91"
 clap = { version = "4.5.19", features = ["derive"] }
 clap_complete = "4.5.29"
 console = "0.15.8"
