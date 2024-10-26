@@ -19,6 +19,7 @@ pub mod bpfmt;
 pub mod brittany;
 pub mod brunette;
 pub mod bsfmt;
+pub mod bslint;
 pub mod buf_format;
 pub mod buildifier;
 pub mod cabal_format;
@@ -282,6 +283,10 @@ pub enum Tooling {
     #[serde(rename = "bsfmt")]
     /// `bsfmt $PATH --write`
     Bsfmt,
+
+    #[serde(rename = "bslint")]
+    /// `bslint --fix $PATH`
+    Bslint,
 
     #[serde(rename = "buf:format")]
     /// `buf format --write $PATH`
@@ -1013,6 +1018,7 @@ impl Tooling {
             Self::Brittany => brittany::run(snippet_path),
             Self::Brunette => brunette::run(snippet_path),
             Self::Bsfmt => bsfmt::run(snippet_path),
+            Self::Bslint => bslint::run(snippet_path),
             Self::BufFormat => buf_format::run(snippet_path),
             Self::Buildifier => buildifier::run(snippet_path),
             Self::CabalFormat => cabal_format::run(snippet_path),
@@ -1218,6 +1224,7 @@ impl AsRef<str> for Tooling {
             Self::Brittany => "brittany",
             Self::Brunette => "brunette",
             Self::Bsfmt => "bsfmt",
+            Self::Bslint => "bslint",
             Self::BufFormat => "buf_format",
             Self::Buildifier => "buildifier",
             Self::CabalFormat => "cabal_format",

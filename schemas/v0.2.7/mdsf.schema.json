@@ -164,6 +164,11 @@
           "enum": ["bsfmt"]
         },
         {
+          "description": "`bslint --fix $PATH`",
+          "type": "string",
+          "enum": ["bslint"]
+        },
+        {
           "description": "`buf format --write $PATH`",
           "type": "string",
           "enum": ["buf:format"]

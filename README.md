@@ -184,7 +184,7 @@ mdsf init
 
 <!-- START_SECTION:supported-tools -->
 
-`mdsf` currently supports 196 commands. Feel free to open an issue/pull-request if your favorite tool is missing! 😃
+`mdsf` currently supports 197 commands. Feel free to open an issue/pull-request if your favorite tool is missing! 😃
 
 | Name                     | Command                                                                                |
 | ------------------------ | -------------------------------------------------------------------------------------- |
@@ -209,6 +209,7 @@ mdsf init
 | `brittany`               | `brittany --write-mode=inplace PATH`                                                   |
 | `brunette`               | `brunette --quiet PATH`                                                                |
 | `bsfmt`                  | `bsfmt PATH --write`                                                                   |
+| `bslint`                 | `bslint --fix PATH`                                                                    |
 | `buf:format`             | `buf format --write PATH`                                                              |
 | `buildifier`             | `buildifier PATH`                                                                      |
 | `cabal:format`           | `cabal format PATH`                                                                    |
