@@ -1,7 +1,7 @@
 {
   "$schema": "../tool.schema.json",
   "binary": "joker",
-  "categories": ["linter", "formatter"],
+  "categories": ["formatter", "linter"],
   "commands": {
     "": ["--format", "--write", "$PATH"]
   },
