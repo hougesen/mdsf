@@ -184,7 +184,7 @@ mdsf init
 
 <!-- START_SECTION:supported-tools -->
 
-`mdsf` currently supports 211 commands. Feel free to open an issue/pull-request if your favorite tool is missing! 😃
+`mdsf` currently supports 212 commands. Feel free to open an issue/pull-request if your favorite tool is missing! 😃
 
 | Name                     | Command                                                                                |
 | ------------------------ | -------------------------------------------------------------------------------------- |
@@ -288,6 +288,7 @@ mdsf init
 | `just`                   | `just --fmt --unstable --justfile PATH`                                                |
 | `kcl:fmt`                | `kcl fmt PATH`                                                                         |
 | `kdlfmt`                 | `kdlfmt format PATH`                                                                   |
+| `kdoc-formatter`         | `kdoc-formatter --quiet PATH`                                                          |
 | `ktfmt`                  | `ktfmt --format --log-level=error PATH`                                                |
 | `ktlint`                 | `ktlint --format --log-level=error PATH`                                               |
 | `kulala-fmt`             | `kulala-fmt PATH`                                                                      |
