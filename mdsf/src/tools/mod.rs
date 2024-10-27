@@ -50,6 +50,7 @@ pub mod dhall;
 pub mod djade;
 pub mod djlint;
 pub mod docformatter;
+pub mod dockfmt;
 pub mod docstrfmt;
 pub mod doctoc;
 pub mod dotenv_linter_fix;
@@ -423,6 +424,10 @@ pub enum Tooling {
     #[serde(rename = "docformatter")]
     /// `docformatter --in-place $PATH`
     Docformatter,
+
+    #[serde(rename = "dockfmt")]
+    /// `dockfmt fmt -w $PATH`
+    Dockfmt,
 
     #[serde(rename = "docstrfmt")]
     /// `docstrfmt $PATH`
@@ -1129,6 +1134,7 @@ impl Tooling {
             Self::Djade => djade::run(snippet_path),
             Self::Djlint => djlint::run(snippet_path),
             Self::Docformatter => docformatter::run(snippet_path),
+            Self::Dockfmt => dockfmt::run(snippet_path),
             Self::Docstrfmt => docstrfmt::run(snippet_path),
             Self::Doctoc => doctoc::run(snippet_path),
             Self::DotenvLinterFix => dotenv_linter_fix::run(snippet_path),
@@ -1351,6 +1357,7 @@ impl AsRef<str> for Tooling {
             Self::Djade => "djade",
             Self::Djlint => "djlint",
             Self::Docformatter => "docformatter",
+            Self::Dockfmt => "dockfmt",
             Self::Docstrfmt => "docstrfmt",
             Self::Doctoc => "doctoc",
             Self::DotenvLinterFix => "dotenv_linter_fix",
