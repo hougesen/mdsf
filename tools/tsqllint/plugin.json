@@ -1,0 +1,15 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "tsqllint",
+  "categories": ["linter"],
+  "commands": {
+    "": ["--fix", "$PATH"]
+  },
+  "description": "Configurable linting for TSQL",
+  "homepage": "https://github.com/tsqllint/tsqllint",
+  "languages": ["sql"],
+  "name": null,
+  "npm": "tsqllint",
+  "php": null,
+  "tests": []
+}

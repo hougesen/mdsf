@@ -999,6 +999,11 @@
           "enum": ["ts-standard"]
         },
         {
+          "description": "`tsqllint --fix $PATH`",
+          "type": "string",
+          "enum": ["tsqllint"]
+        },
+        {
           "description": "`twig-cs-fixer lint $PATH --fix --no-interaction --quiet`",
           "type": "string",
           "enum": ["twig-cs-fixer:lint"]
