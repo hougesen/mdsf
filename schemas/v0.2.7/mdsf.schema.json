@@ -304,6 +304,11 @@
           "enum": ["dhall"]
         },
         {
+          "description": "`djade $PATH`",
+          "type": "string",
+          "enum": ["djade"]
+        },
+        {
           "description": "`djlint $PATH --reformat`",
           "type": "string",
           "enum": ["djlint"]

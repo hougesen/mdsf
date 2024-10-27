@@ -47,6 +47,7 @@ pub mod deno_fmt;
 pub mod deno_lint;
 pub mod dfmt;
 pub mod dhall;
+pub mod djade;
 pub mod djlint;
 pub mod docformatter;
 pub mod docstrfmt;
@@ -408,6 +409,10 @@ pub enum Tooling {
     #[serde(rename = "dhall")]
     /// `dhall format $PATH`
     Dhall,
+
+    #[serde(rename = "djade")]
+    /// `djade $PATH`
+    Djade,
 
     #[serde(rename = "djlint")]
     /// `djlint $PATH --reformat`
@@ -1111,6 +1116,7 @@ impl Tooling {
             Self::DenoLint => deno_lint::run(snippet_path),
             Self::Dfmt => dfmt::run(snippet_path),
             Self::Dhall => dhall::run(snippet_path),
+            Self::Djade => djade::run(snippet_path),
             Self::Djlint => djlint::run(snippet_path),
             Self::Docformatter => docformatter::run(snippet_path),
             Self::Docstrfmt => docstrfmt::run(snippet_path),
@@ -1330,6 +1336,7 @@ impl AsRef<str> for Tooling {
             Self::DenoLint => "deno_lint",
             Self::Dfmt => "dfmt",
             Self::Dhall => "dhall",
+            Self::Djade => "djade",
             Self::Djlint => "djlint",
             Self::Docformatter => "docformatter",
             Self::Docstrfmt => "docstrfmt",

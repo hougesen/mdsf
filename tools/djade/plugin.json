@@ -1,0 +1,15 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "djade",
+  "categories": ["formatter"],
+  "commands": {
+    "": ["$PATH"]
+  },
+  "description": "A Django template formatter",
+  "homepage": "https://github.com/adamchainz/djade",
+  "languages": ["python", "django"],
+  "name": null,
+  "npm": null,
+  "php": null,
+  "tests": []
+}
