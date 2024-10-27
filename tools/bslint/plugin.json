@@ -1,15 +1,15 @@
 {
-  "binary": "bslint",
-  "homepage": "https://github.com/rokucommunity/bslint",
   "$schema": "../tool.schema.json",
+  "binary": "bslint",
   "categories": ["linter"],
-  "languages": ["brightscript", "brightscripter"],
-  "npm": "bslint",
-  "php": null,
-  "name": null,
-  "tests": [],
   "commands": {
     "": ["--fix", "$PATH"]
   },
-  "description": "A linter for BrightScript and BrighterScript"
+  "description": "A linter for BrightScript and BrighterScript",
+  "homepage": "https://github.com/rokucommunity/bslint",
+  "languages": ["brightscript", "brightscripter"],
+  "name": null,
+  "npm": "bslint",
+  "php": null,
+  "tests": []
 }

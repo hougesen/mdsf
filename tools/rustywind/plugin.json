@@ -1,13 +1,13 @@
 {
+  "$schema": "../tool.schema.json",
   "binary": "rustywind",
+  "categories": ["formatter"],
   "commands": {
     "": ["--write", "$PATH"]
   },
-  "$schema": "../tool.schema.json",
-  "languages": ["html"],
-  "categories": ["formatter"],
   "description": "CLI for organizing Tailwind CSS classes",
   "homepage": "https://github.com/avencera/rustywind",
+  "languages": ["html"],
   "name": null,
   "npm": null,
   "php": null,

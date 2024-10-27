@@ -184,7 +184,7 @@ mdsf init
 
 <!-- START_SECTION:supported-tools -->
 
-`mdsf` currently supports 215 commands. Feel free to open an issue/pull-request if your favorite tool is missing! 😃
+`mdsf` currently supports 216 commands. Feel free to open an issue/pull-request if your favorite tool is missing! 😃
 
 | Name                     | Command                                                                                |
 | ------------------------ | -------------------------------------------------------------------------------------- |
@@ -388,6 +388,7 @@ mdsf init
 | `typstyle`               | `typstyle -i PATH`                                                                     |
 | `ufmt`                   | `ufmt format PATH`                                                                     |
 | `uiua:fmt`               | `uiua fmt PATH`                                                                        |
+| `unimport`               | `unimport -r PATH`                                                                     |
 | `usort`                  | `usort format PATH`                                                                    |
 | `v:fmt`                  | `v fmt -w PATH`                                                                        |
 | `veryl:fmt`              | `veryl fmt PATH`                                                                       |

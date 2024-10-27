@@ -20,7 +20,6 @@
       ["gci", "goimports-reviser", "goimports"],
       ["gofumpt", "gofmt", "crlfmt"]
     ],
-    "grain": "grain:format",
     "haskell": [["fourmolu", "ormolu", "hindent", "stylish-haskell"]],
     "html": [["prettier", "djlint"]],
     "java": [["google-java-format", "clang-format"]],
@@ -28,7 +27,6 @@
       ["prettier", "biome:format", "deno:fmt", "clang-format", "standardjs"]
     ],
     "json": [["prettier", "biome:format", "deno:fmt", "clang-format"]],
-    "kcl": "kcl:fmt",
     "kotlin": "ktfmt",
     "lua": [["stylua", "luaformatter"]],
     "nim": "nimpretty",
@@ -45,7 +43,6 @@
     "swift": [["swift-format", "swiftformat"]],
     "toml": "taplo",
     "typescript": [["prettier", "biome:format", "deno:fmt"]],
-    "vue": "prettier",
     "yaml": [["prettier", "yamlfmt", "yamlfix"]],
     "zig": "zig:fmt"
   }
