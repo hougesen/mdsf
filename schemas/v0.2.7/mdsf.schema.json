@@ -319,6 +319,11 @@
           "enum": ["docformatter"]
         },
         {
+          "description": "`dockfmt fmt -w $PATH`",
+          "type": "string",
+          "enum": ["dockfmt"]
+        },
+        {
           "description": "`docstrfmt $PATH`",
           "type": "string",
           "enum": ["docstrfmt"]

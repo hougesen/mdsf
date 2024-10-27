@@ -184,7 +184,7 @@ mdsf init
 
 <!-- START_SECTION:supported-tools -->
 
-`mdsf` currently supports 213 commands. Feel free to open an issue/pull-request if your favorite tool is missing! 😃
+`mdsf` currently supports 214 commands. Feel free to open an issue/pull-request if your favorite tool is missing! 😃
 
 | Name                     | Command                                                                                |
 | ------------------------ | -------------------------------------------------------------------------------------- |
@@ -240,6 +240,7 @@ mdsf init
 | `djade`                  | `djade PATH`                                                                           |
 | `djlint`                 | `djlint PATH --reformat`                                                               |
 | `docformatter`           | `docformatter --in-place PATH`                                                         |
+| `dockfmt`                | `dockfmt fmt -w PATH`                                                                  |
 | `docstrfmt`              | `docstrfmt PATH`                                                                       |
 | `doctoc`                 | `doctoc PATH`                                                                          |
 | `dotenv-linter:fix`      | `dotenv-linter fix PATH`                                                               |
