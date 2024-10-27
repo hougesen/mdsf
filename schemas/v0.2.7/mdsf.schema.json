@@ -519,6 +519,11 @@
           "enum": ["js-beautify"]
         },
         {
+          "description": "`json5format -r $PATH`",
+          "type": "string",
+          "enum": ["json5format"]
+        },
+        {
           "description": "`jsona format $PATH`",
           "type": "string",
           "enum": ["jsona:format"]

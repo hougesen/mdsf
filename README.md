@@ -184,7 +184,7 @@ mdsf init
 
 <!-- START_SECTION:supported-tools -->
 
-`mdsf` currently supports 212 commands. Feel free to open an issue/pull-request if your favorite tool is missing! 😃
+`mdsf` currently supports 213 commands. Feel free to open an issue/pull-request if your favorite tool is missing! 😃
 
 | Name                     | Command                                                                                |
 | ------------------------ | -------------------------------------------------------------------------------------- |
@@ -280,6 +280,7 @@ mdsf init
 | `isort`                  | `isort --quiet PATH`                                                                   |
 | `joker`                  | `joker --format --write PATH`                                                          |
 | `js-beautify`            | `js-beautify -r --type js -f PATH`                                                     |
+| `json5format`            | `json5format -r PATH`                                                                  |
 | `jsona:format`           | `jsona format PATH`                                                                    |
 | `jsona:lint`             | `jsona lint PATH`                                                                      |
 | `jsonlint`               | `jsonlint -i PATH`                                                                     |

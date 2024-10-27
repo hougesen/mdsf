@@ -90,6 +90,7 @@ pub mod imba_fmt;
 pub mod isort;
 pub mod joker;
 pub mod js_beautify;
+pub mod json_5_format;
 pub mod jsona_format;
 pub mod jsona_lint;
 pub mod jsonlint;
@@ -582,6 +583,10 @@ pub enum Tooling {
     #[serde(rename = "js-beautify")]
     /// `js-beautify -r --type js -f $PATH`
     JsBeautify,
+
+    #[serde(rename = "json5format")]
+    /// `json5format -r $PATH`
+    Json5Format,
 
     #[serde(rename = "jsona:format")]
     /// `jsona format $PATH`
@@ -1164,6 +1169,7 @@ impl Tooling {
             Self::Isort => isort::run(snippet_path),
             Self::Joker => joker::run(snippet_path),
             Self::JsBeautify => js_beautify::run(snippet_path),
+            Self::Json5Format => json_5_format::run(snippet_path),
             Self::JsonaFormat => jsona_format::run(snippet_path),
             Self::JsonaLint => jsona_lint::run(snippet_path),
             Self::Jsonlint => jsonlint::run(snippet_path),
@@ -1385,6 +1391,7 @@ impl AsRef<str> for Tooling {
             Self::Isort => "isort",
             Self::Joker => "joker",
             Self::JsBeautify => "js_beautify",
+            Self::Json5Format => "json_5_format",
             Self::JsonaFormat => "jsona_format",
             Self::JsonaLint => "jsona_lint",
             Self::Jsonlint => "jsonlint",
