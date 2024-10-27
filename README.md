@@ -10,7 +10,7 @@ Format markdown code snippets using your favorite code formatters.
 <!-- START_SECTION:base-command-help -->
 
 ```
-mdsf 0.3.0
+mdsf 0.3.1-dev
 Format markdown code snippets using your favorite code formatters
 Mads Hougesen <mads@mhouge.dk>
 
@@ -160,7 +160,7 @@ mdsf init
 {
   "languages": {
     // Only run `ruff` on Python snippets,
-    "python": "ruff",
+    "python": "ruff:format",
     // Run `usort` on file and then `black`
     "python": ["usort", "black"],
     // Run `usort`, if that fails run `isort`, finally run `black`

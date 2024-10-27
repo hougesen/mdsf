@@ -1,8 +1,4 @@
 ```toml
-
-
-name =          "mdsf"
-        author = "Mads Hougesen"
-
-
+name = "mdsf"
+author = "Mads Hougesen"
 ```

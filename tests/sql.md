@@ -1,11 +1,8 @@
 ```sql
-
-
-
-            SELECT * FROM
-            tbl WHERE foo =
-
-                        'bar';
-
-
+SELECT
+  *
+FROM
+  tbl
+WHERE
+  foo = 'bar';
 ```
