@@ -186,6 +186,7 @@ pub mod tlint_format;
 pub mod tofu_fmt;
 pub mod topiary;
 pub mod ts_standard;
+pub mod tsqllint;
 pub mod twig_cs_fixer_lint;
 pub mod typos;
 pub mod typstfmt;
@@ -964,6 +965,10 @@ pub enum Tooling {
     /// `ts-standard --fix $PATH`
     TsStandard,
 
+    #[serde(rename = "tsqllint")]
+    /// `tsqllint --fix $PATH`
+    Tsqllint,
+
     #[serde(rename = "twig-cs-fixer:lint")]
     /// `twig-cs-fixer lint $PATH --fix --no-interaction --quiet`
     TwigCsFixerLint,
@@ -1245,6 +1250,7 @@ impl Tooling {
             Self::TofuFmt => tofu_fmt::run(snippet_path),
             Self::Topiary => topiary::run(snippet_path),
             Self::TsStandard => ts_standard::run(snippet_path),
+            Self::Tsqllint => tsqllint::run(snippet_path),
             Self::TwigCsFixerLint => twig_cs_fixer_lint::run(snippet_path),
             Self::Typos => typos::run(snippet_path),
             Self::Typstfmt => typstfmt::run(snippet_path),
@@ -1463,6 +1469,7 @@ impl AsRef<str> for Tooling {
             Self::TofuFmt => "tofu_fmt",
             Self::Topiary => "topiary",
             Self::TsStandard => "ts_standard",
+            Self::Tsqllint => "tsqllint",
             Self::TwigCsFixerLint => "twig_cs_fixer_lint",
             Self::Typos => "typos",
             Self::Typstfmt => "typstfmt",

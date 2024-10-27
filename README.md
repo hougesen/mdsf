@@ -184,7 +184,7 @@ mdsf init
 
 <!-- START_SECTION:supported-tools -->
 
-`mdsf` currently supports 209 commands. Feel free to open an issue/pull-request if your favorite tool is missing! 😃
+`mdsf` currently supports 210 commands. Feel free to open an issue/pull-request if your favorite tool is missing! 😃
 
 | Name                     | Command                                                                                |
 | ------------------------ | -------------------------------------------------------------------------------------- |
@@ -376,6 +376,7 @@ mdsf init
 | `tofu:fmt`               | `tofu fmt -write=true PATH`                                                            |
 | `topiary`                | `topiary format PATH`                                                                  |
 | `ts-standard`            | `ts-standard --fix PATH`                                                               |
+| `tsqllint`               | `tsqllint --fix PATH`                                                                  |
 | `twig-cs-fixer:lint`     | `twig-cs-fixer lint PATH --fix --no-interaction --quiet`                               |
 | `typos`                  | `typos -w --no-ignore --hidden PATH`                                                   |
 | `typstfmt`               | `typstfmt PATH`                                                                        |
