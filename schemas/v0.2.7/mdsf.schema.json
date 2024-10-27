@@ -559,6 +559,11 @@
           "enum": ["kdlfmt"]
         },
         {
+          "description": "`kdoc-formatter --quiet $PATH`",
+          "type": "string",
+          "enum": ["kdoc-formatter"]
+        },
+        {
           "description": "`ktfmt --format --log-level=error $PATH`",
           "type": "string",
           "enum": ["ktfmt"]

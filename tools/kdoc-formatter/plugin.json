@@ -1,0 +1,15 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "kdoc-formatter",
+  "categories": ["formatter"],
+  "commands": {
+    "": ["--quiet", "$PATH"]
+  },
+  "description": "Reformats Kotlin KDoc comments, reflowing text and other cleanup",
+  "homepage": "https://github.com/tnorbye/kdoc-formatter",
+  "languages": ["kotlin"],
+  "name": null,
+  "npm": null,
+  "php": null,
+  "tests": []
+}
