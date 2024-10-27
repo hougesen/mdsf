@@ -34,14 +34,17 @@ codegen:
     npx --yes prettier@latest --write --cache schemas/ README.md tools/tool.schema.json
     just format
 
+sort-json:
+    npx jsonlint -s -i mdsf.json
+    find ./tools -type f -name "*.json" -exec npx jsonlint -s -i {} \;
+
 format:
     taplo format
     cargo fmt
     just --fmt --unstable .
     npx --yes prettier@latest --write --cache .
-    cargo run -- format tests
+    cargo run -- format .
     cargo dist init --yes
-    git restore tests/
 
 precommit:
     cargo clean

@@ -198,6 +198,7 @@ pub mod typstfmt;
 pub mod typstyle;
 pub mod ufmt;
 pub mod uiua_fmt;
+pub mod unimport;
 pub mod usort;
 pub mod v_fmt;
 pub mod veryl_fmt;
@@ -1018,6 +1019,10 @@ pub enum Tooling {
     /// `uiua fmt $PATH`
     UiuaFmt,
 
+    #[serde(rename = "unimport")]
+    /// `unimport -r $PATH`
+    Unimport,
+
     #[serde(rename = "usort")]
     /// `usort format $PATH`
     Usort,
@@ -1287,6 +1292,7 @@ impl Tooling {
             Self::Typstyle => typstyle::run(snippet_path),
             Self::Ufmt => ufmt::run(snippet_path),
             Self::UiuaFmt => uiua_fmt::run(snippet_path),
+            Self::Unimport => unimport::run(snippet_path),
             Self::Usort => usort::run(snippet_path),
             Self::VFmt => v_fmt::run(snippet_path),
             Self::VerylFmt => veryl_fmt::run(snippet_path),
@@ -1511,6 +1517,7 @@ impl AsRef<str> for Tooling {
             Self::Typstyle => "typstyle",
             Self::Ufmt => "ufmt",
             Self::UiuaFmt => "uiua_fmt",
+            Self::Unimport => "unimport",
             Self::Usort => "usort",
             Self::VFmt => "v_fmt",
             Self::VerylFmt => "veryl_fmt",

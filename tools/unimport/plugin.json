@@ -1,0 +1,16 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "unimport",
+  "categories": ["formatter"],
+  "commands": {
+    "": ["-r", "$PATH"]
+  },
+  "description": "The ultimate linter and formatter for removing unused import statements in your code",
+  "homepage": "https://github.com/hakancelikdev/unimport",
+  "languages": ["python"],
+  "name": null,
+  "npm": null,
+  "php": null,
+  "pypi": "unimport",
+  "tests": []
+}

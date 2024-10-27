@@ -1059,6 +1059,11 @@
           "enum": ["uiua:fmt"]
         },
         {
+          "description": "`unimport -r $PATH`",
+          "type": "string",
+          "enum": ["unimport"]
+        },
+        {
           "description": "`usort format $PATH`",
           "type": "string",
           "enum": ["usort"]

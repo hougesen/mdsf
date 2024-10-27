@@ -1,15 +1,15 @@
 {
+  "$schema": "../tool.schema.json",
   "binary": "pint",
+  "categories": ["formatter", "linter"],
   "commands": {
     "": ["$PATH"]
   },
-  "languages": ["php"],
-  "php": "pint",
-  "$schema": "../tool.schema.json",
-  "homepage": "https://github.com/laravel/pint",
-  "npm": null,
-  "name": null,
-  "tests": [],
   "description": "Laravel Pint is an opinionated PHP code style fixer for minimalists",
-  "categories": ["formatter", "linter"]
+  "homepage": "https://github.com/laravel/pint",
+  "languages": ["php"],
+  "name": null,
+  "npm": null,
+  "php": "pint",
+  "tests": []
 }
