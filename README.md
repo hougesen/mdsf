@@ -184,7 +184,7 @@ mdsf init
 
 <!-- START_SECTION:supported-tools -->
 
-`mdsf` currently supports 214 commands. Feel free to open an issue/pull-request if your favorite tool is missing! 😃
+`mdsf` currently supports 215 commands. Feel free to open an issue/pull-request if your favorite tool is missing! 😃
 
 | Name                     | Command                                                                                |
 | ------------------------ | -------------------------------------------------------------------------------------- |
@@ -329,6 +329,7 @@ mdsf init
 | `pretty-php`             | `pretty-php PATH`                                                                      |
 | `prettypst`              | `prettypst PATH`                                                                       |
 | `protolint`              | `protolint lint -fix PATH`                                                             |
+| `ptop`                   | `ptop PATH PATH`                                                                       |
 | `puppet-lint`            | `puppet-lint --fix PATH`                                                               |
 | `purs-tidy`              | `purs-tidy format-in-place PATH`                                                       |
 | `purty`                  | `purty --write PATH`                                                                   |
