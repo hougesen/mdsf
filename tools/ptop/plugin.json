@@ -1,0 +1,15 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "ptop",
+  "categories": ["formatter"],
+  "commands": {
+    "": ["$PATH", "$PATH"]
+  },
+  "description": "Free Pascal source formatter",
+  "homepage": "https://www.freepascal.org/tools/ptop.html",
+  "languages": ["pascal"],
+  "name": null,
+  "npm": null,
+  "php": null,
+  "tests": []
+}

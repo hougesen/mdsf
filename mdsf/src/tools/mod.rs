@@ -139,6 +139,7 @@ pub mod prettier;
 pub mod pretty_php;
 pub mod prettypst;
 pub mod protolint;
+pub mod ptop;
 pub mod puppet_lint;
 pub mod purs_tidy;
 pub mod purty;
@@ -781,6 +782,10 @@ pub enum Tooling {
     /// `protolint lint -fix $PATH`
     Protolint,
 
+    #[serde(rename = "ptop")]
+    /// `ptop $PATH $PATH`
+    Ptop,
+
     #[serde(rename = "puppet-lint")]
     /// `puppet-lint --fix $PATH`
     PuppetLint,
@@ -1223,6 +1228,7 @@ impl Tooling {
             Self::PrettyPhp => pretty_php::run(snippet_path),
             Self::Prettypst => prettypst::run(snippet_path),
             Self::Protolint => protolint::run(snippet_path),
+            Self::Ptop => ptop::run(snippet_path),
             Self::PuppetLint => puppet_lint::run(snippet_path),
             Self::PursTidy => purs_tidy::run(snippet_path),
             Self::Purty => purty::run(snippet_path),
@@ -1446,6 +1452,7 @@ impl AsRef<str> for Tooling {
             Self::PrettyPhp => "pretty_php",
             Self::Prettypst => "prettypst",
             Self::Protolint => "protolint",
+            Self::Ptop => "ptop",
             Self::PuppetLint => "puppet_lint",
             Self::PursTidy => "purs_tidy",
             Self::Purty => "purty",

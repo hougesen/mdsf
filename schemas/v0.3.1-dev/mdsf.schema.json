@@ -764,6 +764,11 @@
           "enum": ["protolint"]
         },
         {
+          "description": "`ptop $PATH $PATH`",
+          "type": "string",
+          "enum": ["ptop"]
+        },
+        {
           "description": "`puppet-lint --fix $PATH`",
           "type": "string",
           "enum": ["puppet-lint"]
