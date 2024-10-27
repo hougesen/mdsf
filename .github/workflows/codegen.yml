@@ -13,7 +13,7 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest]
-        node: [20]
+        node: [22]
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v4
@@ -23,6 +23,8 @@ jobs:
           node-version: ${{ matrix.node }}
       - name: Generate stuff
         run: cargo run --package mdsf-codegen
+        # A second run is needed until the readme generation is decoupled from the json-schema
+      - run: cargo run --package mdsf-codegen
       - name: Format stuff
         run: npx prettier@latest --write schemas mdsf.json README.md && cargo run -- format README.md
       - uses: EndBug/add-and-commit@v9
