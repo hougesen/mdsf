@@ -59,1072 +59,937 @@
     "Tooling": {
       "oneOf": [
         {
-          "description": "`alejandra --quiet $PATH`",
+          "description": "https://github.com/kamadorueda/alejandra",
           "type": "string",
           "enum": ["alejandra"]
         },
         {
-          "description": "`ameba --fix $PATH`",
+          "description": "https://github.com/crystal-ameba/ameba",
           "type": "string",
           "enum": ["ameba"]
         },
         {
-          "description": "`asmfmt -w $PATH`",
+          "description": "https://github.com/klauspost/asmfmt",
           "type": "string",
           "enum": ["asmfmt"]
         },
         {
-          "description": "`astyle --quiet $PATH`",
+          "description": "https://astyle.sourceforge.net",
           "type": "string",
           "enum": ["astyle"]
         },
         {
-          "description": "`auto-optional $PATH`",
+          "description": "https://pypi.org/project/auto-optional/",
           "type": "string",
           "enum": ["auto-optional"]
         },
         {
-          "description": "`autocorrect --fix $PATH`",
+          "description": "https://github.com/huacnlee/autocorrect",
           "type": "string",
           "enum": ["autocorrect"]
         },
         {
-          "description": "`autoflake --quiet --in-place $PATH`",
+          "description": "https://github.com/pycqa/autoflake",
           "type": "string",
           "enum": ["autoflake"]
         },
         {
-          "description": "`autopep8 --in-place $PATH`",
+          "description": "https://pypi.org/project/autopep8/",
           "type": "string",
           "enum": ["autopep8"]
         },
         {
-          "description": "`bean-black $PATH`",
+          "description": "https://github.com/LaunchPlatform/beancount-black",
           "type": "string",
           "enum": ["beancount-black"]
         },
         {
-          "description": "`beautysh $PATH`",
+          "description": "https://pypi.org/project/beautysh/",
           "type": "string",
           "enum": ["beautysh"]
         },
         {
-          "description": "`bibtex-tidy -m $PATH`",
+          "description": "https://github.com/Azure/bicep",
           "type": "string",
-          "enum": ["bibtex-tidy"]
+          "enum": ["bicep_format"]
         },
         {
-          "description": "`bicep format $PATH`",
+          "description": "https://biomejs.dev",
           "type": "string",
-          "enum": ["bicep:format"]
+          "enum": ["biome"]
         },
         {
-          "description": "`biome check --write $PATH`",
+          "description": "https://biomejs.dev",
           "type": "string",
-          "enum": ["biome:check"]
+          "enum": ["biome_lint"]
         },
         {
-          "description": "`biome format --write $PATH`",
+          "description": "https://biomejs.dev",
           "type": "string",
-          "enum": ["biome:format"]
+          "enum": ["biome_check"]
         },
         {
-          "description": "`biome lint --write $PATH`",
-          "type": "string",
-          "enum": ["biome:lint"]
-        },
-        {
-          "description": "`black --quiet $PATH`",
+          "description": "https://github.com/psf/black",
           "type": "string",
           "enum": ["black"]
         },
         {
-          "description": "`blade-formatter --write $PATH`",
+          "description": "https://github.com/shufo/blade-formatter",
           "type": "string",
           "enum": ["blade-formatter"]
         },
         {
-          "description": "`blue --quiet $PATH`",
+          "description": "https://blue.readthedocs.io/en/latest/",
           "type": "string",
           "enum": ["blue"]
         },
         {
-          "description": "`bpfmt -w $PATH`",
+          "description": "https://source.android.com/docs/setup/reference/androidbp",
           "type": "string",
           "enum": ["bpfmt"]
         },
         {
-          "description": "`brittany --write-mode=inplace $PATH`",
-          "type": "string",
-          "enum": ["brittany"]
-        },
-        {
-          "description": "`brunette --quiet $PATH`",
-          "type": "string",
-          "enum": ["brunette"]
-        },
-        {
-          "description": "`bsfmt $PATH --write`",
+          "description": "https://github.com/rokucommunity/brighterscript-formatter",
           "type": "string",
           "enum": ["bsfmt"]
         },
         {
-          "description": "`bslint --fix $PATH`",
+          "description": "https://buf.build/docs/reference/cli/buf/format",
           "type": "string",
-          "enum": ["bslint"]
+          "enum": ["buf"]
         },
         {
-          "description": "`buf format --write $PATH`",
-          "type": "string",
-          "enum": ["buf:format"]
-        },
-        {
-          "description": "`buildifier $PATH`",
+          "description": "https://github.com/bazelbuild/buildtools",
           "type": "string",
           "enum": ["buildifier"]
         },
         {
-          "description": "`cabal-fmt --inplace $PATH`",
+          "description": "https://github.com/lspitzner/brittany",
           "type": "string",
-          "enum": ["cabal-fmt"]
+          "enum": ["brittany"]
         },
         {
-          "description": "`cabal-prettify $PATH`",
+          "description": "https://github.com/odwyersoftware/brunette",
           "type": "string",
-          "enum": ["cabal-prettify"]
+          "enum": ["brunette"]
         },
         {
-          "description": "`cabal format $PATH`",
+          "description": "https://www.haskell.org/cabal/",
           "type": "string",
-          "enum": ["cabal:format"]
+          "enum": ["cabal_format"]
         },
         {
-          "description": "`caddy fmt $PATH -w`",
+          "description": "https://caramel.run",
           "type": "string",
-          "enum": ["caddy:fmt"]
+          "enum": ["caramel_fmt"]
         },
         {
-          "description": "`caramel fmt $PATH`",
-          "type": "string",
-          "enum": ["caramel:fmt"]
-        },
-        {
-          "description": "`clang-format -i $PATH`",
+          "description": "https://docs.kernel.org/process/clang-format.html",
           "type": "string",
           "enum": ["clang-format"]
         },
         {
-          "description": "`clang-tidy --fix $PATH`",
+          "description": "https://clang.llvm.org/extra/clang-tidy",
           "type": "string",
           "enum": ["clang-tidy"]
         },
         {
-          "description": "`cljfmt fix $PATH`",
+          "description": "https://github.com/weavejester/cljfmt",
           "type": "string",
-          "enum": ["cljfmt:fix"]
+          "enum": ["cljfmt"]
         },
         {
-          "description": "`cljstyle fix $PATH`",
+          "description": "https://github.com/greglook/cljstyle",
           "type": "string",
           "enum": ["cljstyle"]
         },
         {
-          "description": "`codespell $PATH --check-hidden --write-changes`",
+          "description": "https://github.com/codespell-project/codespell",
           "type": "string",
           "enum": ["codespell"]
         },
         {
-          "description": "`crlfmt -w $PATH`",
+          "description": "https://github.com/cockroachdb/crlfmt",
           "type": "string",
           "enum": ["crlfmt"]
         },
         {
-          "description": "`crystal tool format $PATH`",
+          "description": "https://crystal-lang.org/",
           "type": "string",
-          "enum": ["crystal:format"]
+          "enum": ["crystal_format"]
         },
         {
-          "description": "`dotnet csharpier $PATH`",
+          "description": "https://csharpier.com/",
           "type": "string",
           "enum": ["csharpier"]
         },
         {
-          "description": "`css-beautify -r --type css -f $PATH`",
+          "description": "https://github.com/beautifier/js-beautify",
           "type": "string",
           "enum": ["css-beautify"]
         },
         {
-          "description": "`csscomb -t $PATH`",
+          "description": "https://github.com/csscomb/csscomb.js",
           "type": "string",
           "enum": ["csscomb"]
         },
         {
-          "description": "`d2 fmt $PATH`",
+          "description": "https://d2lang.com/",
           "type": "string",
-          "enum": ["d2:fmt"]
+          "enum": ["d2"]
         },
         {
-          "description": "`dart fix --apply $PATH`",
+          "description": "https://dart.dev/tools/dart-format",
           "type": "string",
-          "enum": ["dart:fix"]
+          "enum": ["dart_format"]
         },
         {
-          "description": "`dart format $PATH`",
+          "description": "https://dart.dev/tools/dart-fix",
           "type": "string",
-          "enum": ["dart:format"]
+          "enum": ["dart_fix"]
         },
         {
-          "description": "`dcm fix $PATH`",
+          "description": "https://dcm.dev/docs/cli/fix/",
           "type": "string",
-          "enum": ["dcm:fix"]
+          "enum": ["dcm_fix"]
         },
         {
-          "description": "`dcm format $PATH`",
+          "description": "https://dcm.dev/docs/cli/format/",
           "type": "string",
-          "enum": ["dcm:format"]
+          "enum": ["dcm_format"]
         },
         {
-          "description": "`deno fmt --quiet $PATH`",
+          "description": "https://docs.deno.com/runtime/manual/tools/formatter",
           "type": "string",
-          "enum": ["deno:fmt"]
+          "enum": ["deno_fmt"]
         },
         {
-          "description": "`deno lint --fix $PATH`",
+          "description": "https://docs.deno.com/runtime/manual/tools/linter",
           "type": "string",
-          "enum": ["deno:lint"]
+          "enum": ["deno_lint"]
         },
         {
-          "description": "`dfmt -i $PATH`",
+          "description": "https://github.com/dlang-community/dfmt",
           "type": "string",
           "enum": ["dfmt"]
         },
         {
-          "description": "`dhall format $PATH`",
+          "description": "https://dhall-lang.org/",
           "type": "string",
           "enum": ["dhall"]
         },
         {
-          "description": "`djade $PATH`",
-          "type": "string",
-          "enum": ["djade"]
-        },
-        {
-          "description": "`djlint $PATH --reformat`",
+          "description": "https://www.djlint.com/",
           "type": "string",
           "enum": ["djlint"]
         },
         {
-          "description": "`docformatter --in-place $PATH`",
+          "description": "https://pypi.org/project/docformatter/",
           "type": "string",
           "enum": ["docformatter"]
         },
         {
-          "description": "`dockfmt fmt -w $PATH`",
-          "type": "string",
-          "enum": ["dockfmt"]
-        },
-        {
-          "description": "`docstrfmt $PATH`",
+          "description": "https://pypi.org/project/docstrfmt/",
           "type": "string",
           "enum": ["docstrfmt"]
         },
         {
-          "description": "`doctoc $PATH`",
+          "description": "https://github.com/dotenv-linter/dotenv-linter",
           "type": "string",
-          "enum": ["doctoc"]
+          "enum": ["dotenv-linter"]
         },
         {
-          "description": "`dotenv-linter fix $PATH`",
+          "description": "https://dprint.dev",
           "type": "string",
-          "enum": ["dotenv-linter:fix"]
+          "enum": ["dprint"]
         },
         {
-          "description": "`dprint fmt $PATH`",
+          "description": "https://github.com/easy-coding-standard/easy-coding-standard",
           "type": "string",
-          "enum": ["dprint:fmt"]
+          "enum": ["easy-cofing-standard"]
         },
         {
-          "description": "`ecs check $PATH --fix --no-interaction`",
-          "type": "string",
-          "enum": ["easy-coding-standard"]
-        },
-        {
-          "description": "`efmt -w $PATH`",
+          "description": "https://github.com/sile/efmt",
           "type": "string",
           "enum": ["efmt"]
         },
         {
-          "description": "`elm-format --elm-version=0.19 --yes $PATH`",
+          "description": "https://github.com/avh4/elm-format",
           "type": "string",
           "enum": ["elm-format"]
         },
         {
-          "description": "`erb-format $PATH --write`",
+          "description": "https://github.com/nebulab/erb-formatter",
           "type": "string",
           "enum": ["erb-formatter"]
         },
         {
-          "description": "`erlfmt -w $PATH_STRING`",
+          "description": "https://github.com/WhatsApp/erlfmt",
           "type": "string",
           "enum": ["erlfmt"]
         },
         {
-          "description": "`eslint --fix $PATH`",
+          "description": "https://eslint.org",
           "type": "string",
           "enum": ["eslint"]
         },
         {
-          "description": "`fantomas $PATH`",
+          "description": "https://github.com/fsprojects/fantomas",
           "type": "string",
           "enum": ["fantomas"]
         },
         {
-          "description": "`fish_indent -w $PATH`",
+          "description": "https://pypi.org/project/findent/",
+          "type": "string",
+          "enum": ["findent"]
+        },
+        {
+          "description": "https://fishshell.com/docs/current/cmds/fish_indent.html",
           "type": "string",
           "enum": ["fish_indent"]
         },
         {
-          "description": "`fixjson -w $PATH`",
+          "description": "https://github.com/rhysd/fixjson",
           "type": "string",
           "enum": ["fixjson"]
         },
         {
-          "description": "`floskell $PATH`",
-          "type": "string",
-          "enum": ["floskell"]
-        },
-        {
-          "description": "`fnlfmt $PATH`",
+          "description": "https://git.sr.ht/~technomancy/fnlfmt",
           "type": "string",
           "enum": ["fnlfmt"]
         },
         {
-          "description": "`forge fmt $PATH`",
+          "description": "https://docs.rs/forge-fmt/latest/forge_fmt/",
           "type": "string",
-          "enum": ["forge:fmt"]
+          "enum": ["forge_fmt"]
         },
         {
-          "description": "`fourmolu -i $PATH`",
+          "description": "https://hackage.haskell.org/package/fourmolu",
           "type": "string",
           "enum": ["fourmolu"]
         },
         {
-          "description": "`fprettify $PATH`",
+          "description": "https://github.com/fortran-lang/fprettify",
           "type": "string",
           "enum": ["fprettify"]
         },
         {
-          "description": "`gci write --skip-generated --skip-vender $PATH`",
+          "description": "https://github.com/ennocramer/floskell",
+          "type": "string",
+          "enum": ["floskell"]
+        },
+        {
+          "description": "https://github.com/daixiang0/gci",
           "type": "string",
           "enum": ["gci"]
         },
         {
-          "description": "`gdformat $PATH`",
+          "description": "https://github.com/scony/godot-gdscript-toolkit",
           "type": "string",
           "enum": ["gdformat"]
         },
         {
-          "description": "`gersemi -i -q $PATH`",
+          "description": "https://github.com/blankspruce/gersemi",
           "type": "string",
           "enum": ["gersemi"]
         },
         {
-          "description": "`gleam format $PATH`",
+          "description": "https://gleam.run/",
           "type": "string",
-          "enum": ["gleam:format"]
+          "enum": ["gleam_format"]
         },
         {
-          "description": "`gluon fmt $PATH`",
+          "description": "https://github.com/gluon-lang/gluon",
           "type": "string",
-          "enum": ["gluon:fmt"]
+          "enum": ["gluon_fmt"]
         },
         {
-          "description": "`gofmt -w $PATH`",
+          "description": "https://pkg.go.dev/cmd/gofmt",
           "type": "string",
           "enum": ["gofmt"]
         },
         {
-          "description": "`gofumpt -w $PATH`",
+          "description": "https://github.com/mvdan/gofumpt",
           "type": "string",
           "enum": ["gofumpt"]
         },
         {
-          "description": "`goimports -w $PATH`",
+          "description": "https://pkg.go.dev/golang.org/x/tools/cmd/goimports",
           "type": "string",
           "enum": ["goimports"]
         },
         {
-          "description": "`goimports-reviser -format $PATH`",
+          "description": "https://github.com/incu6us/goimports-reviser",
           "type": "string",
           "enum": ["goimports-reviser"]
         },
         {
-          "description": "`golines -w $PATH`",
+          "description": "https://github.com/segmentio/golines",
           "type": "string",
           "enum": ["golines"]
         },
         {
-          "description": "`google-java-format -i $PATH`",
+          "description": "https://github.com/google/google-java-format",
           "type": "string",
           "enum": ["google-java-format"]
         },
         {
-          "description": "`grain format $PATH -o $PATH`",
+          "description": "https://grain-lang.org",
           "type": "string",
-          "enum": ["grain:format"]
+          "enum": ["grain_format"]
         },
         {
-          "description": "`haml-lint --auto-correct $PATH`",
+          "description": "https://github.com/sds/haml-lint",
           "type": "string",
           "enum": ["haml-lint"]
         },
         {
-          "description": "`hfmt -w $PATH`",
-          "type": "string",
-          "enum": ["hfmt"]
-        },
-        {
-          "description": "`hindent $PATH`",
+          "description": "https://hackage.haskell.org/package/hindent",
           "type": "string",
           "enum": ["hindent"]
         },
         {
-          "description": "`hlint --refactor -i $PATH`",
+          "description": "https://github.com/danstiner/hfmt",
           "type": "string",
-          "enum": ["hlint"]
+          "enum": ["hfmt"]
         },
         {
-          "description": "`html-beautify -r --type html -f $PATH`",
-          "type": "string",
-          "enum": ["html-beautify"]
-        },
-        {
-          "description": "`htmlbeautifier $PATH`",
+          "description": "https://github.com/threedaymonk/htmlbeautifier",
           "type": "string",
           "enum": ["htmlbeautifier"]
         },
         {
-          "description": "`imba fmt -f $PATH`",
+          "description": "https://github.com/beautifier/js-beautify",
           "type": "string",
-          "enum": ["imba:fmt"]
+          "enum": ["html-beautify"]
         },
         {
-          "description": "`isort --quiet $PATH`",
+          "description": "https://github.com/imba/imba",
+          "type": "string",
+          "enum": ["imba_fmt"]
+        },
+        {
+          "description": "https://pycqa.github.io/isort/",
           "type": "string",
           "enum": ["isort"]
         },
         {
-          "description": "`joker --format --write $PATH`",
+          "description": "https://github.com/candid82/joker",
           "type": "string",
           "enum": ["joker"]
         },
         {
-          "description": "`js-beautify -r --type js -f $PATH`",
-          "type": "string",
-          "enum": ["js-beautify"]
-        },
-        {
-          "description": "`json5format -r $PATH`",
-          "type": "string",
-          "enum": ["json5format"]
-        },
-        {
-          "description": "`jsona format $PATH`",
-          "type": "string",
-          "enum": ["jsona:format"]
-        },
-        {
-          "description": "`jsona lint $PATH`",
-          "type": "string",
-          "enum": ["jsona:lint"]
-        },
-        {
-          "description": "`jsonlint -i $PATH`",
-          "type": "string",
-          "enum": ["jsonlint"]
-        },
-        {
-          "description": "`jsonnetfmt -i $PATH`",
-          "type": "string",
-          "enum": ["jsonnetfmt"]
-        },
-        {
-          "description": "`julia -E using JuliaFormatter;format_file(\\\"{$PATH_STRING}\\\")`",
+          "description": "https://github.com/domluna/JuliaFormatter.jl",
           "type": "string",
           "enum": ["juliaformatter.jl"]
         },
         {
-          "description": "`just --fmt --unstable --justfile $PATH`",
+          "description": "https://github.com/casey/just",
           "type": "string",
-          "enum": ["just"]
+          "enum": ["just_fmt"]
         },
         {
-          "description": "`kcl fmt $PATH`",
+          "description": "https://github.com/beautifier/js-beautify",
           "type": "string",
-          "enum": ["kcl:fmt"]
+          "enum": ["js-beautify"]
         },
         {
-          "description": "`kdlfmt format $PATH`",
+          "description": "https://github.com/jsona/jsona",
+          "type": "string",
+          "enum": ["jsona_format"]
+        },
+        {
+          "description": "https://jsonnet.org/learning/tools.html",
+          "type": "string",
+          "enum": ["jsonnetfmt"]
+        },
+        {
+          "description": "https://www.kcl-lang.io/docs/tools/cli/kcl/fmt",
+          "type": "string",
+          "enum": ["kcl_fmt"]
+        },
+        {
+          "description": "https://github.com/hougesen/kdlfmt",
           "type": "string",
           "enum": ["kdlfmt"]
         },
         {
-          "description": "`kdoc-formatter --quiet $PATH`",
-          "type": "string",
-          "enum": ["kdoc-formatter"]
-        },
-        {
-          "description": "`ktfmt --format --log-level=error $PATH`",
+          "description": "https://github.com/facebook/ktfmt",
           "type": "string",
           "enum": ["ktfmt"]
         },
         {
-          "description": "`ktlint --format --log-level=error $PATH`",
+          "description": "https://github.com/pinterest/ktlint",
           "type": "string",
           "enum": ["ktlint"]
         },
         {
-          "description": "`kulala-fmt $PATH`",
+          "description": "https://github.com/mistweaverco/kulala-fmt",
           "type": "string",
           "enum": ["kulala-fmt"]
         },
         {
-          "description": "`leptosfmt --quiet $PATH`",
+          "description": "https://github.com/bram209/leptosfmt",
           "type": "string",
           "enum": ["leptosfmt"]
         },
         {
-          "description": "`liquidsoap-prettier --write $PATH`",
+          "description": "https://github.com/savonet/liquidsoap-prettier",
           "type": "string",
           "enum": ["liquidsoap-prettier"]
         },
         {
-          "description": "`lua-format -i $PATH`",
+          "description": "https://github.com/Koihik/LuaFormatter",
           "type": "string",
           "enum": ["luaformatter"]
         },
         {
-          "description": "`markdownfmt -w $PATH`",
+          "description": "https://github.com/shurcooL/markdownfmt",
           "type": "string",
           "enum": ["markdownfmt"]
         },
         {
-          "description": "`markdownlint --fix $PATH`",
+          "description": "https://github.com/davidanson/markdownlint",
           "type": "string",
           "enum": ["markdownlint"]
         },
         {
-          "description": "`markdownlint-cli2 --fix $PATH`",
-          "type": "string",
-          "enum": ["markdownlint-cli2"]
-        },
-        {
-          "description": "`markuplint --fix $PATH`",
+          "description": "https://markuplint.dev",
           "type": "string",
           "enum": ["markuplint"]
         },
         {
-          "description": "`mdformat $PATH`",
+          "description": "https://github.com/executablebooks/mdformat",
           "type": "string",
           "enum": ["mdformat"]
         },
         {
-          "description": "`mdslw $PATH`",
-          "type": "string",
-          "enum": ["mdslw"]
-        },
-        {
-          "description": "`misspell -w $PATH`",
+          "description": "https://github.com/client9/misspell/",
           "type": "string",
           "enum": ["misspell"]
         },
         {
-          "description": "`mix format $PATH`",
+          "description": "https://hexdocs.pm/mix/main/Mix.Tasks.Format.html",
           "type": "string",
-          "enum": ["mix:format"]
+          "enum": ["mix_format"]
         },
         {
-          "description": "`mojo format -q $PATH`",
+          "description": "https://docs.modular.com/mojo/cli/format",
           "type": "string",
-          "enum": ["mojo:format"]
+          "enum": ["mojo_format"]
         },
         {
-          "description": "`nginxbeautifier $PATH`",
+          "description": "https://nickel-lang.org",
           "type": "string",
-          "enum": ["nginxbeautifier"]
+          "enum": ["nickel_format"]
         },
         {
-          "description": "`nickel format $PATH`",
-          "type": "string",
-          "enum": ["nickel:format"]
-        },
-        {
-          "description": "`nimpretty $PATH`",
+          "description": "https://github.com/nim-lang/nim",
           "type": "string",
           "enum": ["nimpretty"]
         },
         {
-          "description": "`nixfmt $PATH`",
+          "description": "https://github.com/serokell/nixfmt",
           "type": "string",
           "enum": ["nixfmt"]
         },
         {
-          "description": "`nixpkgs-fmt $PATH`",
+          "description": "https://github.com/nix-community/nixpkgs-fmt",
           "type": "string",
           "enum": ["nixpkgs-fmt"]
         },
         {
-          "description": "`nph $PATH`",
+          "description": "https://github.com/arnetheduck/nph",
           "type": "string",
           "enum": ["nph"]
         },
         {
-          "description": "`npm-groovy-lint --format $PATH`",
+          "description": "https://github.com/nvuillam/npm-groovy-lint",
           "type": "string",
           "enum": ["npm-groovy-lint"]
         },
         {
-          "description": "`ocamlformat --ignore-invalid-option --inplace --enable-outside-detected-project $PATH`",
+          "description": "https://github.com/ocaml-ppx/ocamlformat",
           "type": "string",
           "enum": ["ocamlformat"]
         },
         {
-          "description": "`ocp-indent --inplace $PATH`",
+          "description": "https://github.com/OCamlPro/ocp-indent",
           "type": "string",
           "enum": ["ocp-indent"]
         },
         {
-          "description": "`opa fmt $PATH -w`",
-          "type": "string",
-          "enum": ["opa:fmt"]
-        },
-        {
-          "description": "`ormolu --mode inplace $PATH`",
+          "description": "https://hackage.haskell.org/package/ormolu",
           "type": "string",
           "enum": ["ormolu"]
         },
         {
-          "description": "`oxlint --fix $PATH`",
+          "description": "https://oxc.rs",
           "type": "string",
           "enum": ["oxlint"]
         },
         {
-          "description": "`packer fmt $PATH`",
+          "description": "https://developer.hashicorp.com/packer/docs/commands/fmt",
           "type": "string",
-          "enum": ["packer:fmt"]
+          "enum": ["packer_fmt"]
         },
         {
-          "description": "`perltidy -b $PATH`",
+          "description": "https://github.com/perltidy/perltidy",
           "type": "string",
           "enum": ["perltidy"]
         },
         {
-          "description": "`pg_format --inplace $PATH`",
+          "description": "https://github.com/darold/pgFormatter",
           "type": "string",
           "enum": ["pg_format"]
         },
         {
-          "description": "`php-cs-fixer fix $PATH`",
+          "description": "https://github.com/PHP-CS-Fixer/PHP-CS-Fixer",
           "type": "string",
-          "enum": ["php-cs-fixer:fix"]
+          "enum": ["php-cs-fixer"]
         },
         {
-          "description": "`phpcbf $PATH`",
+          "description": "https://phpqa.io/projects/phpcbf.html",
           "type": "string",
           "enum": ["phpcbf"]
         },
         {
-          "description": "`phpinsights fix $PATH --no-interaction --quiet`",
+          "description": "https://phpinsights.com/",
           "type": "string",
-          "enum": ["phpinsights:fix"]
+          "enum": ["phpinsights"]
         },
         {
-          "description": "`pint $PATH`",
+          "description": "https://github.com/laravel/pint",
           "type": "string",
           "enum": ["pint"]
         },
         {
-          "description": "`prettier --embedded-language-formatting off --log-level error --write $PATH`",
+          "description": "https://github.com/prettier/prettier",
           "type": "string",
           "enum": ["prettier"]
         },
         {
-          "description": "`pretty-php $PATH`",
+          "description": "https://github.com/lkrms/pretty-php",
           "type": "string",
           "enum": ["pretty-php"]
         },
         {
-          "description": "`prettypst $PATH`",
+          "description": "https://github.com/antonWetzel/prettypst",
           "type": "string",
           "enum": ["prettypst"]
         },
         {
-          "description": "`protolint lint -fix $PATH`",
+          "description": "https://prisma.io/",
           "type": "string",
-          "enum": ["protolint"]
+          "enum": ["prisma"]
         },
         {
-          "description": "`puppet-lint --fix $PATH`",
+          "description": "https://github.com/puppetlabs/puppet-lint",
           "type": "string",
           "enum": ["puppet-lint"]
         },
         {
-          "description": "`purs-tidy format-in-place $PATH`",
+          "description": "https://github.com/natefaubion/purescript-tidy",
           "type": "string",
           "enum": ["purs-tidy"]
         },
         {
-          "description": "`purty --write $PATH`",
-          "type": "string",
-          "enum": ["purty"]
-        },
-        {
-          "description": "`pycln --no-gitignore --quiet $PATH`",
+          "description": "https://github.com/hadialqattan/pycln",
           "type": "string",
           "enum": ["pycln"]
         },
         {
-          "description": "`pyink --quiet $PATH`",
+          "description": "https://github.com/google/pyink",
           "type": "string",
           "enum": ["pyink"]
         },
         {
-          "description": "`pyment -w $PATH`",
-          "type": "string",
-          "enum": ["pyment"]
-        },
-        {
-          "description": "`qmlfmt -w $PATH`",
+          "description": "https://github.com/jesperhh/qmlfmt",
           "type": "string",
           "enum": ["qmlfmt"]
         },
         {
-          "description": "`raco fmt -i $PATH`",
+          "description": "https://docs.racket-lang.org/fmt/",
           "type": "string",
-          "enum": ["raco:fmt"]
+          "enum": ["raco_fmt"]
         },
         {
-          "description": "`refmt --in-place $PATH`",
+          "description": "https://rescript-lang.org/",
+          "type": "string",
+          "enum": ["rescript_format"]
+        },
+        {
+          "description": "https://reasonml.github.io/docs/en/",
           "type": "string",
           "enum": ["refmt"]
         },
         {
-          "description": "`reformat-gherkin $PATH`",
+          "description": "https://github.com/roc-lang/roc",
           "type": "string",
-          "enum": ["reformat-gherkin"]
+          "enum": ["roc_format"]
         },
         {
-          "description": "`reorder-python-imports $PATH`",
-          "type": "string",
-          "enum": ["reorder-python-imports"]
-        },
-        {
-          "description": "`rescript format $PATH`",
-          "type": "string",
-          "enum": ["rescript:format"]
-        },
-        {
-          "description": "`roc format $PATH`",
-          "type": "string",
-          "enum": ["roc:format"]
-        },
-        {
-          "description": "`rstfmt $PATH`",
+          "description": "https://github.com/dzhu/rstfmt",
           "type": "string",
           "enum": ["rstfmt"]
         },
         {
-          "description": "`rubocop --fix-layout --autocorrect --format quiet $PATH`",
+          "description": "https://github.com/rubocop/rubocop",
           "type": "string",
           "enum": ["rubocop"]
         },
         {
-          "description": "`rubyfmt -i $PATH`",
+          "description": "https://github.com/fables-tales/rubyfmt",
           "type": "string",
           "enum": ["rubyfmt"]
         },
         {
-          "description": "`ruff check --fix --quiet $PATH`",
+          "description": "https://docs.astral.sh/ruff/formatter/",
           "type": "string",
-          "enum": ["ruff:check"]
+          "enum": ["ruff"]
         },
         {
-          "description": "`ruff format --quiet $PATH`",
+          "description": "https://docs.astral.sh/ruff/linter/",
           "type": "string",
-          "enum": ["ruff:format"]
+          "enum": ["ruff_check"]
         },
         {
-          "description": "`rufo --simple-exit $PATH`",
+          "description": "https://github.com/ruby-formatter/rufo",
           "type": "string",
           "enum": ["rufo"]
         },
         {
-          "description": "`rune fmt $PATH`",
+          "description": "https://github.com/rune-rs/rune",
           "type": "string",
-          "enum": ["rune:fmt"]
+          "enum": ["rune_fmt"]
         },
         {
-          "description": "`rustfmt --edition 2021 --quiet $PATH`",
+          "description": "https://github.com/rust-lang/rustfmt",
           "type": "string",
           "enum": ["rustfmt"]
         },
         {
-          "description": "`rustywind --write $PATH`",
+          "description": "https://github.com/avencera/rustywind",
           "type": "string",
           "enum": ["rustywind"]
         },
         {
-          "description": "`scalafmt --quiet --mode any $PATH`",
+          "description": "https://github.com/scalameta/scalafmt",
           "type": "string",
           "enum": ["scalafmt"]
         },
         {
-          "description": "`scalariform $PATH`",
-          "type": "string",
-          "enum": ["scalariform"]
-        },
-        {
-          "description": "`shellharden --transform --replace $PATH`",
-          "type": "string",
-          "enum": ["shellharden"]
-        },
-        {
-          "description": "`shfmt --write $PATH`",
+          "description": "https://github.com/mvdan/sh",
           "type": "string",
           "enum": ["shfmt"]
         },
         {
-          "description": "`sleek $PATH`",
+          "description": "https://github.com/nrempel/sleek",
           "type": "string",
           "enum": ["sleek"]
         },
         {
-          "description": "`smlfmt --force $PATH`",
+          "description": "https://github.com/shwestrick/smlfmt",
           "type": "string",
           "enum": ["smlfmt"]
         },
         {
-          "description": "`snakefmt $PATH`",
+          "description": "https://github.com/snakemake/snakefmt",
           "type": "string",
           "enum": ["snakefmt"]
         },
         {
-          "description": "`sql-formatter --fix $PATH`",
+          "description": "https://github.com/sql-formatter-org/sql-formatter",
           "type": "string",
           "enum": ["sql-formatter"]
         },
         {
-          "description": "`sqlfluff fix --dialect ansi $PATH`",
+          "description": "https://github.com/sqlfluff/sqlfluff",
           "type": "string",
-          "enum": ["sqlfluff:fix"]
+          "enum": ["sqlfluff"]
         },
         {
-          "description": "`sqlfluff format --dialect ansi $PATH`",
-          "type": "string",
-          "enum": ["sqlfluff:format"]
-        },
-        {
-          "description": "`sqlfmt $PATH`",
+          "description": "https://sqlfmt.com",
           "type": "string",
           "enum": ["sqlfmt"]
         },
         {
-          "description": "`sqruff fix $PATH`",
-          "type": "string",
-          "enum": ["sqruff"]
-        },
-        {
-          "description": "`standard --fix $PATH`",
+          "description": "https://standardjs.com/",
           "type": "string",
           "enum": ["standardjs"]
         },
         {
-          "description": "`standardrb --fix $PATH`",
+          "description": "https://github.com/standardrb/standard",
           "type": "string",
           "enum": ["standardrb"]
         },
         {
-          "description": "`stylefmt $PATH`",
+          "description": "https://github.com/matype/stylefmt",
           "type": "string",
           "enum": ["stylefmt"]
         },
         {
-          "description": "`stylelint --fix $PATH`",
+          "description": "https://github.com/stylelint/stylelint",
           "type": "string",
           "enum": ["stylelint"]
         },
         {
-          "description": "`stylish-haskell --inplace $PATH`",
+          "description": "https://github.com/haskell/stylish-haskell",
           "type": "string",
           "enum": ["stylish-haskell"]
         },
         {
-          "description": "`stylua --verify $PATH`",
+          "description": "https://github.com/JohnnyMorganz/StyLua",
           "type": "string",
           "enum": ["stylua"]
         },
         {
-          "description": "`superhtml fmt $PATH`",
+          "description": "https://github.com/kristoff-it/superhtml",
           "type": "string",
-          "enum": ["superhtml:fmt"]
+          "enum": ["superhtml_fmt"]
         },
         {
-          "description": "`swift-format --in-place $PATH`",
+          "description": "https://github.com/apple/swift-format",
           "type": "string",
           "enum": ["swift-format"]
         },
         {
-          "description": "`swiftformat --quiet $PATH`",
+          "description": "https://github.com/nicklockwood/SwiftFormat",
           "type": "string",
           "enum": ["swiftformat"]
         },
         {
-          "description": "`taplo format $PATH`",
+          "description": "https://github.com/tamasfe/taplo",
           "type": "string",
           "enum": ["taplo"]
         },
         {
-          "description": "`templ fmt $PATH`",
+          "description": "https://templ.guide",
           "type": "string",
-          "enum": ["templ:fmt"]
+          "enum": ["templ"]
         },
         {
-          "description": "`terraform fmt -write=true $PATH`",
+          "description": "https://www.terraform.io/docs/cli/commands/fmt.html",
           "type": "string",
-          "enum": ["terraform:fmt"]
+          "enum": ["terraform_fmt"]
         },
         {
-          "description": "`terragrunt hclfmt --terragrunt-hclfmt-file $PATH`",
+          "description": "https://github.com/tighten/tlint",
           "type": "string",
-          "enum": ["terragrunt:hclfmt"]
+          "enum": ["tlint"]
         },
         {
-          "description": "`tlint format $PATH`",
+          "description": "https://opentofu.org/docs/cli/commands/fmt/",
           "type": "string",
-          "enum": ["tlint:format"]
+          "enum": ["tofu_fmt"]
         },
         {
-          "description": "`tofu fmt -write=true $PATH`",
-          "type": "string",
-          "enum": ["tofu:fmt"]
-        },
-        {
-          "description": "`topiary format $PATH`",
+          "description": "https://github.com/tweag/topiary",
           "type": "string",
           "enum": ["topiary"]
         },
         {
-          "description": "`ts-standard --fix $PATH`",
+          "description": "https://github.com/standard/ts-standard",
           "type": "string",
           "enum": ["ts-standard"]
         },
         {
-          "description": "`tsqllint --fix $PATH`",
+          "description": "https://github.com/VincentLanglet/Twig-CS-Fixer",
           "type": "string",
-          "enum": ["tsqllint"]
+          "enum": ["twig-cs-fixer"]
         },
         {
-          "description": "`twig-cs-fixer lint $PATH --fix --no-interaction --quiet`",
-          "type": "string",
-          "enum": ["twig-cs-fixer:lint"]
-        },
-        {
-          "description": "`typos -w --no-ignore --hidden $PATH`",
+          "description": "https://github.com/crate-ci/typos",
           "type": "string",
           "enum": ["typos"]
         },
         {
-          "description": "`typstfmt $PATH`",
+          "description": "https://github.com/astrale-sharp/typstfmt",
           "type": "string",
           "enum": ["typstfmt"]
         },
         {
-          "description": "`typstyle -i $PATH`",
+          "description": "https://github.com/Enter-tainer/typstyle",
           "type": "string",
           "enum": ["typstyle"]
         },
         {
-          "description": "`ufmt format $PATH`",
+          "description": "https://github.com/omnilib/ufmt",
           "type": "string",
           "enum": ["ufmt"]
         },
         {
-          "description": "`uiua fmt $PATH`",
+          "description": "https://github.com/uiua-lang/uiua",
           "type": "string",
-          "enum": ["uiua:fmt"]
+          "enum": ["uiua_fmt"]
         },
         {
-          "description": "`usort format $PATH`",
+          "description": "https://github.com/facebook/usort",
           "type": "string",
           "enum": ["usort"]
         },
         {
-          "description": "`v fmt -w $PATH`",
+          "description": "https://vlang.io",
           "type": "string",
-          "enum": ["v:fmt"]
+          "enum": ["vlang_fmt"]
         },
         {
-          "description": "`veryl fmt $PATH`",
+          "description": "https://github.com/veryl-lang/veryl",
           "type": "string",
-          "enum": ["veryl:fmt"]
+          "enum": ["veryl_fmt"]
         },
         {
-          "description": "`vsg -f $PATH --fix`",
+          "description": "https://github.com/jeremiah-c-leary/vhdl-style-guide",
           "type": "string",
           "enum": ["vhdl-style-guide"]
         },
         {
-          "description": "`wfindent $PATH`",
-          "type": "string",
-          "enum": ["wfindent"]
-        },
-        {
-          "description": "`xmlformat --overwrite $PATH`",
+          "description": "https://github.com/pamoller/xmlformatter",
           "type": "string",
           "enum": ["xmlformat"]
         },
         {
-          "description": "`xmllint --format $PATH --output $PATH`",
+          "description": "http://xmlsoft.org/xmllint.html",
           "type": "string",
           "enum": ["xmllint"]
         },
         {
-          "description": "`xo --fix $PATH`",
+          "description": "http://github.com/xojs/xo",
           "type": "string",
           "enum": ["xo"]
         },
         {
-          "description": "`yamlfix $PATH`",
+          "description": "https://github.com/lyz-code/yamlfix",
           "type": "string",
           "enum": ["yamlfix"]
         },
         {
-          "description": "`yamlfmt -quiet $PATH`",
+          "description": "https://github.com/google/yamlfmt",
           "type": "string",
           "enum": ["yamlfmt"]
         },
         {
-          "description": "`yapf --in-place $PATH`",
+          "description": "https://github.com/google/yapf",
           "type": "string",
           "enum": ["yapf"]
         },
         {
-          "description": "`yew-fmt --edition 2021 --quiet $PATH`",
+          "description": "https://github.com/its-the-shrimp/yew-fmt",
           "type": "string",
           "enum": ["yew-fmt"]
         },
         {
-          "description": "`zig fmt $PATH`",
+          "description": "https://ziglang.org/",
           "type": "string",
-          "enum": ["zig:fmt"]
+          "enum": ["zigfmt"]
         },
         {
-          "description": "`ziggy fmt $PATH`",
+          "description": "https://ziggy-lang.io/documentation/ziggy-fmt/",
           "type": "string",
-          "enum": ["ziggy:fmt"]
+          "enum": ["ziggy_fmt"]
         },
         {
-          "description": "`zprint -w $PATH`",
+          "description": "https://github.com/kkinnear/zprint",
           "type": "string",
           "enum": ["zprint"]
         }
