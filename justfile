@@ -30,7 +30,7 @@ changelog:
 codegen:
     just changelog
     cargo run --package mdsf-codegen
-    cargo dist init --yes
+    dist init --yes
     npx --yes prettier@latest --write --cache schemas/ README.md tools/tool.schema.json
     just format
 
@@ -44,7 +44,7 @@ format:
     just --fmt --unstable .
     npx --yes prettier@latest --write --cache .
     cargo run -- format .
-    cargo dist init --yes
+    dist init --yes
 
 precommit:
     cargo clean
