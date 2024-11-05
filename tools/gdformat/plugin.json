@@ -5,8 +5,8 @@
   "commands": {
     "": ["$PATH"]
   },
-  "description": "https://github.com/scony/godot-gdscript-toolkit",
-  "homepage": "GDScript linter",
+  "description": "GDScript linter",
+  "homepage": "https://github.com/scony/godot-gdscript-toolkit",
   "languages": ["gdscript"],
   "name": null,
   "npm": null,

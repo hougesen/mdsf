@@ -1,7 +1,7 @@
 {
   "$schema": "../tool.schema.json",
   "binary": "stylua",
-  "categories": ["lua"],
+  "categories": ["formatter"],
   "commands": {
     "": ["--verify", "$PATH"]
   },
