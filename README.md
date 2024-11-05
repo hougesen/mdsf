@@ -182,7 +182,7 @@ mdsf init
 >
 > Only tools that are already installed will be used.
 
-<!-- START_SECTION:supported-tools -->
+<!-- START_SECTION:supported-commands -->
 
 `mdsf` currently supports 216 commands. Feel free to open an issue/pull-request if your favorite tool is missing! 😃
 
@@ -286,7 +286,7 @@ mdsf init
 | `jsona:lint`             | `jsona lint $PATH`                                                                      |
 | `jsonlint`               | `jsonlint -i $PATH`                                                                     |
 | `jsonnetfmt`             | `jsonnetfmt -i $PATH`                                                                   |
-| `juliaformatter.jl`      | `julia -E using JuliaFormatter;format_file(\"$PATH_STRING\")`                           |
+| `juliaformatter.jl`      | `julia -E using JuliaFormatter;format_file(\"{$PATH_STRING}\")`                         |
 | `just`                   | `just --fmt --unstable --justfile $PATH`                                                |
 | `kcl:fmt`                | `kcl fmt $PATH`                                                                         |
 | `kdlfmt`                 | `kdlfmt format $PATH`                                                                   |
@@ -405,7 +405,7 @@ mdsf init
 | `ziggy:fmt`              | `ziggy fmt $PATH`                                                                       |
 | `zprint`                 | `zprint -w $PATH`                                                                       |
 
-<!-- END_SECTION:supported-tools -->
+<!-- END_SECTION:supported-commands -->
 
 ## Shell completions
 
