@@ -60,7 +60,7 @@ pub fn generate_command_table(commands: Vec<crate::tools::GeneratedCommand>) -> 
 
     lines.insert(
         0,
-        format!("`mdsf` currently supports {command_count} commands. Feel free to open an issue/pull-request if your favorite tool is missing! 😃" ),
+        format!("`mdsf` currently supports {command_count} commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃" ),
     );
 
     lines.join("\n")

@@ -1,7 +1,7 @@
 {
   "$schema": "../tool.schema.json",
   "binary": "twig-cs-fixer",
-  "categories": ["A tool to automatically fix Twig Coding Standards issues"],
+  "categories": ["linter", "formatter"],
   "commands": {
     "lint": ["lint", "$PATH", "--fix", "--no-interaction", "--quiet"]
   },

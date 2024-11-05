@@ -36,16 +36,12 @@ pub struct Tool {
 
     pub commands: std::collections::HashMap<String, Vec<String>>,
 
-    #[expect(unused)]
     pub description: String,
 
-    #[expect(unused)]
     pub homepage: String,
 
-    #[expect(unused)]
     pub categories: std::collections::HashSet<String>,
 
-    #[expect(unused)]
     pub languages: std::collections::HashSet<String>,
 
     pub tests: Option<Vec<ToolTest>>,
