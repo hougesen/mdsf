@@ -4,6 +4,7 @@ use crate::tools::{GeneratedCommand, Tool};
 
 mod command_help;
 mod command_table;
+mod table_of_contents;
 mod tool_table;
 
 pub fn pad_right(mut input: String, len: usize, update: char) -> String {
@@ -48,6 +49,14 @@ pub fn generate(plugins: Vec<Tool>, commands: Vec<GeneratedCommand>) -> anyhow::
         let tool_table = tool_table::generate(&plugins);
 
         readme = update_readme(&readme, "supported-tools", &tool_table)?;
+    }
+
+    std::fs::write("./README.md", &readme)?;
+
+    {
+        let t = table_of_contents::generate()?;
+
+        readme = update_readme(&readme, "toc", &t)?;
     }
 
     std::fs::write("./README.md", readme)?;

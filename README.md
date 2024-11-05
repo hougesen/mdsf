@@ -7,6 +7,34 @@ Format markdown code snippets using your favorite code formatters.
 
 <!-- <a href="https://codecov.io/gh/hougesen/mdsf"><img src="https://codecov.io/gh/hougesen/mdsf/branch/main/graph/badge.svg"/></a> -->
 
+## Table of contents
+
+<!-- START_SECTION:toc -->
+
+- [mdsf](#mdsf)
+  - [Table of contents](#table-of-contents)
+  - [Installation](#installation)
+    - [Linux & MacOS](#linux--macos)
+    - [Windows](#windows)
+    - [Cargo](#cargo)
+    - [npm/npx](#npmnpx)
+    - [Homebrew](#homebrew)
+  - [Usage](#usage)
+    - [Verify code is formatted](#verify-code-is-formatted)
+  - [Configuration](#configuration)
+    - [Tools](#tools)
+    - [Commands](#commands)
+  - [Shell completions](#shell-completions)
+    - [Bash](#bash)
+    - [Bash](#bash-1)
+    - [Fish](#fish)
+    - [PowerShell](#powershell)
+    - [Elvish](#elvish)
+  - [Acknowledgement](#acknowledgement)
+  - [Alternatives to mdsf](#alternatives-to-mdsf)
+
+<!-- END_SECTION:toc -->
+
 <!-- START_SECTION:base-command-help -->
 
 ```
