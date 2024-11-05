@@ -6,15 +6,15 @@ const INDENT: &str = "    ";
 
 #[derive(Debug, serde::Deserialize, schemars::JsonSchema, Hash)]
 #[schemars(deny_unknown_fields)]
-struct ToolTest {
+pub struct ToolTest {
     /// Codeblock language used when generating tests
-    language: String,
+    pub language: String,
 
-    command: String,
+    pub command: String,
 
-    test_input: String,
+    pub test_input: String,
 
-    test_output: String,
+    pub test_output: String,
 }
 
 #[derive(Debug, serde::Deserialize, schemars::JsonSchema)]
@@ -22,48 +22,50 @@ struct ToolTest {
 pub struct Tool {
     #[expect(unused)]
     #[serde(rename = "$schema")]
-    schema: String,
+    pub schema: String,
 
-    name: Option<String>,
+    pub name: Option<String>,
 
-    binary: String,
+    pub binary: String,
 
     /// Name of package on npm, if published there.
-    npm: Option<String>,
+    pub npm: Option<String>,
 
     /// Binary name if installed through composer
-    php: Option<String>,
+    pub php: Option<String>,
 
-    commands: std::collections::HashMap<String, Vec<String>>,
-
-    #[expect(unused)]
-    description: String,
+    pub commands: std::collections::HashMap<String, Vec<String>>,
 
     #[expect(unused)]
-    homepage: String,
+    pub description: String,
 
     #[expect(unused)]
-    categories: std::collections::HashSet<String>,
+    pub homepage: String,
 
     #[expect(unused)]
-    languages: std::collections::HashSet<String>,
+    pub categories: std::collections::HashSet<String>,
 
-    tests: Option<Vec<ToolTest>>,
+    #[expect(unused)]
+    pub languages: std::collections::HashSet<String>,
+
+    pub tests: Option<Vec<ToolTest>>,
 }
 
 #[derive(Debug)]
-struct GeneratedCommand {
-    enum_value: String,
+pub struct GeneratedCommand {
+    pub enum_value: String,
 
-    module_name: String,
+    pub module_name: String,
 
-    fn_name: String,
+    pub fn_name: String,
 
-    code: String,
+    pub code: String,
 
-    serde_rename: String,
+    pub serde_rename: String,
 
-    args: Vec<String>,
+    pub binary: String,
+
+    pub args: Vec<String>,
 }
 
 impl Tool {
@@ -262,6 +264,7 @@ mod test_{module_name} {{{tests}}}
                     cmd
                 ),
                 args: args.clone(),
+                binary: self.binary.clone(),
             });
         }
 
@@ -271,9 +274,7 @@ mod test_{module_name} {{{tests}}}
     }
 }
 
-pub fn generate() -> anyhow::Result<()> {
-    let walker = ignore::WalkBuilder::new("tools").build().flatten();
-
+pub fn generate(plugins: &[Tool]) -> anyhow::Result<Vec<GeneratedCommand>> {
     let folder = "mdsf/src/tools";
 
     std::fs::remove_dir_all(folder)?;
@@ -314,39 +315,38 @@ impl AsRef<str> for Tooling {
         std::collections::HashSet::new();
     let mut as_ref_values: std::collections::HashSet<String> = std::collections::HashSet::new();
 
-    for entry in walker {
-        if entry.file_name() == "plugin.json" {
-            println!("{}", entry.path().display());
+    let mut all_commands = Vec::new();
 
-            let content = std::fs::read_to_string(entry.path())?;
+    for plugin in plugins {
+        let converted = plugin.generate();
 
-            let parsed = serde_json::from_str::<Tool>(&content)?;
+        for command in converted {
+            std::fs::write(
+                format!("{folder}/{}.rs", command.module_name),
+                &command.code,
+            )?;
 
-            let converted = parsed.generate();
-
-            for command in converted {
-                std::fs::write(format!("{folder}/{}.rs", command.module_name), command.code)?;
-
-                files.insert(command.module_name.clone());
-                enum_values.insert(format!(
-                    "{INDENT}#[serde(rename = \"{rename}\")]
+            files.insert(command.module_name.clone());
+            enum_values.insert(format!(
+                "{INDENT}#[serde(rename = \"{rename}\")]
 {INDENT}/// `{bin} {args}`
 {INDENT}{enum_name},",
-                    rename = command.serde_rename,
-                    enum_name = command.enum_value,
-                    bin = parsed.binary,
-                    args = command.args.join(" ")
-                ));
-                format_snippet_values.insert(format!(
-                    "{INDENT}{INDENT}{INDENT}Self::{} => {}::{}(snippet_path),",
-                    command.enum_value, command.module_name, command.fn_name
-                ));
+                rename = command.serde_rename,
+                enum_name = command.enum_value,
+                bin = plugin.binary,
+                args = command.args.join(" ")
+            ));
+            format_snippet_values.insert(format!(
+                "{INDENT}{INDENT}{INDENT}Self::{} => {}::{}(snippet_path),",
+                command.enum_value, command.module_name, command.fn_name
+            ));
 
-                as_ref_values.insert(format!(
-                    "{INDENT}{INDENT}{INDENT}Self::{} => \"{}\",",
-                    command.enum_value, command.module_name,
-                ));
-            }
+            as_ref_values.insert(format!(
+                "{INDENT}{INDENT}{INDENT}Self::{} => \"{}\",",
+                command.enum_value, command.module_name,
+            ));
+
+            all_commands.push(command);
         }
     }
 
@@ -406,5 +406,5 @@ impl AsRef<str> for Tooling {{
 
     std::fs::write(format!("{folder}/mod.rs"), mod_file_contents)?;
 
-    Ok(())
+    Ok(all_commands)
 }

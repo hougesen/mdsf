@@ -31,7 +31,6 @@ codegen:
     just changelog
     cargo run --package mdsf-codegen
     dist init --yes
-    npx --yes prettier@latest --write --cache schemas/ README.md tools/tool.schema.json
     just format
 
 sort-json:
