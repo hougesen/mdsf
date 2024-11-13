@@ -1,6 +1,6 @@
 [package]
 name = "mdsf"
-version = "0.3.1"
+version = "0.3.2-dev"
 edition.workspace = true
 description = "Format markdown code snippets using your favorite code formatters"
 authors.workspace = true
