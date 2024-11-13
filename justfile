@@ -30,6 +30,7 @@ changelog:
 codegen:
     just changelog
     cargo run --package mdsf-codegen
+    cargo run --package mdsf-codegen
     dist init --yes
     just format
 

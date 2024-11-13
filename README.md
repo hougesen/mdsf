@@ -20,7 +20,8 @@ Format markdown code snippets using your favorite code formatters.
     - [npm/npx](#npmnpx)
     - [Homebrew](#homebrew)
   - [Usage](#usage)
-    - [Verify code is formatted](#verify-code-is-formatted)
+    - [Formatting code](#formatting-code)
+    - [Verifying code](#verifying-code)
   - [Configuration](#configuration)
     - [Tools](#tools)
     - [Commands](#commands)
@@ -34,30 +35,6 @@ Format markdown code snippets using your favorite code formatters.
   - [Alternatives to mdsf](#alternatives-to-mdsf)
 
 <!-- END_SECTION:toc -->
-
-<!-- START_SECTION:base-command-help -->
-
-```
-mdsf 0.3.1-dev
-Format markdown code snippets using your favorite code formatters
-Mads Hougesen <mads@mhouge.dk>
-
-Usage: mdsf <COMMAND>
-
-Commands:
-  format       Run formatters on input files
-  verify       Verify files are formatted
-  init         Create a new mdsf config
-  completions  Generate shell completion
-  cache-prune  Remove old caches
-  help         Print this message or the help of the given subcommand(s)
-
-Options:
-  -h, --help     Print help
-  -V, --version  Print version
-```
-
-<!-- END_SECTION:base-command-help -->
 
 ## Installation
 
@@ -117,6 +94,32 @@ brew install hougesen/tap/mdsf
 
 ## Usage
 
+<!-- START_SECTION:base-command-help -->
+
+```
+mdsf 0.3.1-dev
+Format markdown code snippets using your favorite code formatters
+Mads Hougesen <mads@mhouge.dk>
+
+Usage: mdsf <COMMAND>
+
+Commands:
+  format       Run formatters on input files
+  verify       Verify files are formatted
+  init         Create a new mdsf config
+  completions  Generate shell completion
+  cache-prune  Remove old caches
+  help         Print this message or the help of the given subcommand(s)
+
+Options:
+  -h, --help     Print help
+  -V, --version  Print version
+```
+
+<!-- END_SECTION:base-command-help -->
+
+### Formatting code
+
 ```shell
 mdsf format file.md
 ```
@@ -143,7 +146,7 @@ Options:
 
 <!-- END_SECTION:format-command-help -->
 
-### Verify code is formatted
+### Verifying code
 
 ```shell
 mdsf verify docs/
@@ -210,13 +213,13 @@ mdsf init
 
 <!-- START_SECTION:supported-tools -->
 
-`mdsf` currently supports 208 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 209 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                                                                                    | Description                                                                                                                                   | Categories            | Languages                                                                 |
 | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- | ------------------------------------------------------------------------- |
 | [alejandra](https://github.com/kamadorueda/alejandra)                                   | The Uncompromising Nix Code Formatter                                                                                                         | `formatter`           | `nix`                                                                     |
 | [ameba](https://github.com/crystal-ameba/ameba)                                         | A static code analysis tool for Crystal                                                                                                       | `linter`              | `crystal`                                                                 |
-| [asmfmt](https://github.com/klauspost/asmfmt)                                           | Go Assembler Formatter                                                                                                                        | `formatter`           |                                                                           |
+| [asmfmt](https://github.com/klauspost/asmfmt)                                           | Go Assembler Formatter                                                                                                                        | `formatter`           | `go`                                                                      |
 | [astyle](https://gitlab.com/saalen/astyle)                                              | A Free, Fast, and Small Automatic Formatter for C, C++, C++/CLI, Objective-C, C#, and Java Source Code                                        | `formatter`           | `c#`, `c++`, `c`, `java`, `objective-c`                                   |
 | [auto-optional](https://github.com/Luttik/auto-optional)                                | Adds the Optional type-hint to arguments where the default value is None                                                                      | `formatter`           | `python`                                                                  |
 | [autocorrect](https://github.com/huacnlee/autocorrect)                                  | A linter and formatter to help you to improve copywriting, correct spaces, words, and punctuations between CJK (Chinese, Japanese, Korean)    | `autocorrection`      |                                                                           |
@@ -319,7 +322,7 @@ mdsf init
 | [luaformatter](https://github.com/Koihik/LuaFormatter)                                  | Code formatter for Lua                                                                                                                        | `formatter`           | `lua`                                                                     |
 | [markdownfmt](https://github.com/shurcooL/markdownfmt)                                  | Like gofmt, but for Markdown                                                                                                                  | `formatter`           | `markdown`                                                                |
 | [markdownlint-cli2](https://github.com/davidanson/markdownlint-cli2)                    | A fast, flexible, configuration-based command-line interface for linting Markdown/CommonMark files with the markdownlint library              | `linter`              | `markdown`                                                                |
-| [markdownlint](https://github.com/davidanson/markdownlint)                              | A Node.js style checker and lint tool for Markdown/CommonMark files                                                                           | `linter`              |                                                                           |
+| [markdownlint](https://github.com/davidanson/markdownlint)                              | A Node.js style checker and lint tool for Markdown/CommonMark files                                                                           | `linter`              | `markdown`                                                                |
 | [markuplint](https://markuplint.dev/)                                                   | An HTML linter for all markup developers                                                                                                      | `linter`              | `html`                                                                    |
 | [mdformat](https://github.com/executablebooks/mdformat)                                 | CommonMark compliant Markdown formatter                                                                                                       | `formatter`           | `markdwon`                                                                |
 | [mdslw](https://github.com/razziel89/mdslw)                                             | Prepare your markdown for easy diff'ing!                                                                                                      | `formatter`           | `markdown`                                                                |
@@ -348,6 +351,7 @@ mdsf init
 | [prettier](https://github.com/prettier/prettier)                                        | Prettier is an opinionated code formatter                                                                                                     | `formatter`           | `css`, `html`, `javascript`, `json`, `typescript`                         |
 | [pretty-php](https://github.com/lkrms/pretty-php)                                       | The opinionated PHP code formatter                                                                                                            | `formatter`           | `php`                                                                     |
 | [prettypst](https://github.com/antonWetzel/prettypst)                                   | Formatter for Typst                                                                                                                           | `formatter`           | `typst`                                                                   |
+| [prisma](https://www.prisma.io)                                                         | Commands for interacting with the prisma ORM                                                                                                  | `formatter`           | `prisma`                                                                  |
 | [protolint](https://github.com/yoheimuta/protolint)                                     | A pluggable linter and fixer to enforce Protocol Buffer style and conventions                                                                 | `linter`              | `protobuf`                                                                |
 | [ptop](https://www.freepascal.org/tools/ptop.html)                                      | Free Pascal source formatter                                                                                                                  | `formatter`           | `pascal`                                                                  |
 | [puppet-lint](https://github.com/puppetlabs/puppet-lint)                                | Check that your Puppet manifests conform to the style guide                                                                                   | `linter`              | `puppet`                                                                  |

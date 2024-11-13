@@ -759,6 +759,11 @@
           "enum": ["prettypst"]
         },
         {
+          "description": "`prisma format --schema={$PATH_STRING}`",
+          "type": "string",
+          "enum": ["prisma:format"]
+        },
+        {
           "description": "`protolint lint -fix $PATH`",
           "type": "string",
           "enum": ["protolint"]
