@@ -138,6 +138,7 @@ pub mod pint;
 pub mod prettier;
 pub mod pretty_php;
 pub mod prettypst;
+pub mod prisma_format;
 pub mod protolint;
 pub mod ptop;
 pub mod puppet_lint;
@@ -779,6 +780,10 @@ pub enum Tooling {
     /// `prettypst $PATH`
     Prettypst,
 
+    #[serde(rename = "prisma:format")]
+    /// `prisma format --schema={$PATH_STRING}`
+    PrismaFormat,
+
     #[serde(rename = "protolint")]
     /// `protolint lint -fix $PATH`
     Protolint,
@@ -1232,6 +1237,7 @@ impl Tooling {
             Self::Prettier => prettier::run(snippet_path),
             Self::PrettyPhp => pretty_php::run(snippet_path),
             Self::Prettypst => prettypst::run(snippet_path),
+            Self::PrismaFormat => prisma_format::run(snippet_path),
             Self::Protolint => protolint::run(snippet_path),
             Self::Ptop => ptop::run(snippet_path),
             Self::PuppetLint => puppet_lint::run(snippet_path),
@@ -1457,6 +1463,7 @@ impl AsRef<str> for Tooling {
             Self::Prettier => "prettier",
             Self::PrettyPhp => "pretty_php",
             Self::Prettypst => "prettypst",
+            Self::PrismaFormat => "prisma_format",
             Self::Protolint => "protolint",
             Self::Ptop => "ptop",
             Self::PuppetLint => "puppet_lint",

@@ -7,7 +7,7 @@
   },
   "description": "Go Assembler Formatter",
   "homepage": "https://github.com/klauspost/asmfmt",
-  "languages": [],
+  "languages": ["go"],
   "name": null,
   "npm": null,
   "php": null,
