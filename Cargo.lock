@@ -888,7 +888,7 @@ dependencies = [
  "terminal_size",
  "test-with",
  "threadpool",
- "which 6.0.3",
+ "which",
 ]
 
 [[package]]
@@ -1555,7 +1555,7 @@ dependencies = [
  "quote",
  "regex",
  "syn",
- "which 7.0.0",
+ "which",
 ]
 
 [[package]]
@@ -1920,18 +1920,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "841c67bff177718f1d4dfefde8d8f0e78f9b6589319ba88312f567fc5841a958"
 dependencies = [
  "rustls-pki-types",
-]
-
-[[package]]
-name = "which"
-version = "6.0.3"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "b4ee928febd44d98f2f459a4a79bd4d928591333a494a10a868418ac1b39cf1f"
-dependencies = [
- "either",
- "home",
- "rustix",
- "winsafe",
 ]
 
 [[package]]
