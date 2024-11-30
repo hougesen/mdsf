@@ -654,6 +654,11 @@
           "enum": ["nginxbeautifier"]
         },
         {
+          "description": "`nginxfmt $PATH`",
+          "type": "string",
+          "enum": ["nginxfmt"]
+        },
+        {
           "description": "`nickel format $PATH`",
           "type": "string",
           "enum": ["nickel:format"]

@@ -213,7 +213,7 @@ mdsf init
 
 <!-- START_SECTION:supported-tools -->
 
-`mdsf` currently supports 209 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 210 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                                                                                    | Description                                                                                                                                   | Categories            | Languages                                                                 |
 | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- | ------------------------------------------------------------------------- |
@@ -330,6 +330,7 @@ mdsf init
 | [mix](https://hexdocs.pm/mix/main/Mix.Tasks.Format.html)                                | Code formatter for Elixir                                                                                                                     | `formatter`           | `elixir`                                                                  |
 | [mojo](https://docs.modular.com/mojo/cli/format)                                        | Formats Mojo source files                                                                                                                     | `formatter`           | `mojo`                                                                    |
 | [nginxbeautifier](https://github.com/vasilevich/nginxbeautifier)                        | Format and beautify nginx config files                                                                                                        | `formatter`           | `nginx`                                                                   |
+| [nginxfmt](https://github.com/slomkowski/nginx-config-formatter)                        | nginx config file formatter/beautifier written in Python with no additional dependencies                                                      | `formatter`           | `nginx`                                                                   |
 | [nickel](https://nickel-lang.org/)                                                      | Better configuration for less                                                                                                                 | `formatter`           | `nickel`                                                                  |
 | [nimpretty](https://github.com/nim-lang/nim)                                            | Code formatter for the Nim programming language                                                                                               | `formatter`           | `nim`                                                                     |
 | [nixfmt](https://github.com/serokell/nixfmt)                                            | The official (but not yet stable) formatter for Nix code                                                                                      | `formatter`           | `nix`                                                                     |
