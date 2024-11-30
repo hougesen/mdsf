@@ -1,0 +1,15 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "nginxfmt",
+  "categories": ["formatter"],
+  "commands": {
+    "": ["$PATH"]
+  },
+  "description": "nginx config file formatter/beautifier written in Python with no additional dependencies",
+  "homepage": "https://github.com/slomkowski/nginx-config-formatter",
+  "languages": ["nginx"],
+  "name": null,
+  "npm": null,
+  "php": null,
+  "tests": []
+}
