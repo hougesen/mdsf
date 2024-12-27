@@ -25,7 +25,7 @@ pub fn update_readme(readme: &str, key: &str, value: &str) -> Result<String, reg
 
     let first_value = format!("{start}{end}");
 
-    let updated = re.replace(&readme, &first_value);
+    let updated = re.replace(readme, &first_value);
 
     let update = format!("{start}\n\n{value}\n\n{end}");
 

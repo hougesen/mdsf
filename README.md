@@ -213,7 +213,7 @@ mdsf init
 
 <!-- START_SECTION:supported-tools -->
 
-`mdsf` currently supports 210 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 211 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                                                                                    | Description                                                                                                                                   | Categories            | Languages                                                                 |
 | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- | ------------------------------------------------------------------------- |
@@ -337,6 +337,7 @@ mdsf init
 | [nixpkgs-fmt](https://github.com/nix-community/nixpkgs-fmt)                             | Nix code formatter for nixpkgs                                                                                                                | `formatter`           | `nix`                                                                     |
 | [nph](https://github.com/arnetheduck/nph)                                               | An opinionated code formatter for Nim                                                                                                         | `formatter`           | `nim`                                                                     |
 | [npm-groovy-lint](https://github.com/nvuillam/npm-groovy-lint)                          | Lint, format and auto-fix your Groovy / Jenkinsfile / Gradle files                                                                            | `formatter`, `linter` | `groovy`                                                                  |
+| [nufmt](https://github.com/nushell/nufmt)                                               | the nushell formatter                                                                                                                         | `formatter`           | `nushell`                                                                 |
 | [ocamlformat](https://github.com/ocaml-ppx/ocamlformat)                                 | Auto-formatter for OCaml code                                                                                                                 | `formatter`           | `ocaml`                                                                   |
 | [ocp-indent](https://github.com/OCamlPro/ocp-indent)                                    | Indentation tool for OCaml                                                                                                                    | `formatter`           | `ocaml`                                                                   |
 | [opa](https://www.openpolicyagent.org/docs/latest/cli/)                                 | Format Rego source files                                                                                                                      | `formatter`           | `rego`                                                                    |
