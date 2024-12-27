@@ -22,7 +22,7 @@ pub fn generate(plugins: &[Tool]) -> String {
         let name = plugin
             .name
             .as_ref()
-            .unwrap_or_else(|| &plugin.binary)
+            .unwrap_or(&plugin.binary)
             .trim()
             .to_owned();
         let name = if plugin.homepage.is_empty() {

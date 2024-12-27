@@ -124,6 +124,7 @@ pub mod nixfmt;
 pub mod nixpkgs_fmt;
 pub mod nph;
 pub mod npm_groovy_lint;
+pub mod nufmt;
 pub mod ocamlformat;
 pub mod ocp_indent;
 pub mod opa_fmt;
@@ -725,6 +726,10 @@ pub enum Tooling {
     /// `npm-groovy-lint --format $PATH`
     NpmGroovyLint,
 
+    #[serde(rename = "nufmt")]
+    /// `nufmt $PATH`
+    Nufmt,
+
     #[serde(rename = "ocamlformat")]
     /// `ocamlformat --ignore-invalid-option --inplace --enable-outside-detected-project $PATH`
     Ocamlformat,
@@ -1228,6 +1233,7 @@ impl Tooling {
             Self::NixpkgsFmt => nixpkgs_fmt::run(snippet_path),
             Self::Nph => nph::run(snippet_path),
             Self::NpmGroovyLint => npm_groovy_lint::run(snippet_path),
+            Self::Nufmt => nufmt::run(snippet_path),
             Self::Ocamlformat => ocamlformat::run(snippet_path),
             Self::OcpIndent => ocp_indent::run(snippet_path),
             Self::OpaFmt => opa_fmt::run(snippet_path),
@@ -1455,6 +1461,7 @@ impl AsRef<str> for Tooling {
             Self::NixpkgsFmt => "nixpkgs_fmt",
             Self::Nph => "nph",
             Self::NpmGroovyLint => "npm_groovy_lint",
+            Self::Nufmt => "nufmt",
             Self::Ocamlformat => "ocamlformat",
             Self::OcpIndent => "ocp_indent",
             Self::OpaFmt => "opa_fmt",

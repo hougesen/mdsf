@@ -689,6 +689,11 @@
           "enum": ["npm-groovy-lint"]
         },
         {
+          "description": "`nufmt $PATH`",
+          "type": "string",
+          "enum": ["nufmt"]
+        },
+        {
           "description": "`ocamlformat --ignore-invalid-option --inplace --enable-outside-detected-project $PATH`",
           "type": "string",
           "enum": ["ocamlformat"]
