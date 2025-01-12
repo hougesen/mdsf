@@ -131,6 +131,7 @@ pub mod ocp_indent;
 pub mod opa_fmt;
 pub mod ormolu;
 pub mod oxlint;
+pub mod packer_fix;
 pub mod packer_fmt;
 pub mod perltidy;
 pub mod pg_format;
@@ -755,6 +756,10 @@ pub enum Tooling {
     /// `oxlint --fix $PATH`
     Oxlint,
 
+    #[serde(rename = "packer:fix")]
+    /// `packer fix $PATH`
+    PackerFix,
+
     #[serde(rename = "packer:fmt")]
     /// `packer fmt $PATH`
     PackerFmt,
@@ -1245,6 +1250,7 @@ impl Tooling {
             Self::OpaFmt => opa_fmt::run(snippet_path),
             Self::Ormolu => ormolu::run(snippet_path),
             Self::Oxlint => oxlint::run(snippet_path),
+            Self::PackerFix => packer_fix::run(snippet_path),
             Self::PackerFmt => packer_fmt::run(snippet_path),
             Self::Perltidy => perltidy::run(snippet_path),
             Self::PgFormat => pg_format::run(snippet_path),
@@ -1474,6 +1480,7 @@ impl AsRef<str> for Tooling {
             Self::OpaFmt => "opa_fmt",
             Self::Ormolu => "ormolu",
             Self::Oxlint => "oxlint",
+            Self::PackerFix => "packer_fix",
             Self::PackerFmt => "packer_fmt",
             Self::Perltidy => "perltidy",
             Self::PgFormat => "pg_format",
