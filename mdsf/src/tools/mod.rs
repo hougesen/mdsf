@@ -115,6 +115,7 @@ pub mod ktlint;
 pub mod kulala_fmt;
 pub mod leptosfmt;
 pub mod liquidsoap_prettier;
+pub mod luacheck;
 pub mod luaformatter;
 pub mod markdownfmt;
 pub mod markdownlint;
@@ -707,6 +708,10 @@ pub enum Tooling {
     #[serde(rename = "liquidsoap-prettier")]
     /// `liquidsoap-prettier --write $PATH`
     LiquidsoapPrettier,
+
+    #[serde(rename = "luacheck")]
+    /// `luacheck $PATH`
+    Luacheck,
 
     #[serde(rename = "luaformatter")]
     /// `lua-format -i $PATH`
@@ -1314,6 +1319,7 @@ impl Tooling {
             Self::KulalaFmt => kulala_fmt::run(snippet_path),
             Self::Leptosfmt => leptosfmt::run(snippet_path),
             Self::LiquidsoapPrettier => liquidsoap_prettier::run(snippet_path),
+            Self::Luacheck => luacheck::run(snippet_path),
             Self::Luaformatter => luaformatter::run(snippet_path),
             Self::Markdownfmt => markdownfmt::run(snippet_path),
             Self::Markdownlint => markdownlint::run(snippet_path),
@@ -1560,6 +1566,7 @@ impl AsRef<str> for Tooling {
             Self::KulalaFmt => "kulala_fmt",
             Self::Leptosfmt => "leptosfmt",
             Self::LiquidsoapPrettier => "liquidsoap_prettier",
+            Self::Luacheck => "luacheck",
             Self::Luaformatter => "luaformatter",
             Self::Markdownfmt => "markdownfmt",
             Self::Markdownlint => "markdownlint",
