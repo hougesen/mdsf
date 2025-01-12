@@ -1,5 +1,5 @@
 {
-  "$schema": "https://raw.githubusercontent.com/hougesen/mdsf/main/schemas/v0.3.1-dev/mdsf.schema.json",
+  "$schema": "https://raw.githubusercontent.com/hougesen/mdsf/main/schemas/v0.3.3-dev/mdsf.schema.json",
   "custom_file_extensions": {},
   "format_finished_document": false,
   "javascript_runtime": "node",
@@ -30,6 +30,7 @@
     "kotlin": "ktfmt",
     "lua": [["stylua", "luaformatter"]],
     "nim": "nimpretty",
+    "nushell": "nufmt",
     "ocaml": [["ocamlformat", "ocp-indent"]],
     "python": [
       ["usort", "isort"],
