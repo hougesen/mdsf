@@ -192,6 +192,7 @@ pub mod shfmt;
 pub mod sleek;
 pub mod smlfmt;
 pub mod snakefmt;
+pub mod solhint;
 pub mod sql_formatter;
 pub mod sqlfluff_fix;
 pub mod sqlfluff_format;
@@ -1023,6 +1024,10 @@ pub enum Tooling {
     /// `snakefmt $PATH`
     Snakefmt,
 
+    #[serde(rename = "solhint")]
+    /// `solhint --quiet --fix --noPrompt $PATH`
+    Solhint,
+
     #[serde(rename = "sql-formatter")]
     /// `sql-formatter --fix $PATH`
     SqlFormatter,
@@ -1426,6 +1431,7 @@ impl Tooling {
             Self::Sleek => sleek::run(snippet_path),
             Self::Smlfmt => smlfmt::run(snippet_path),
             Self::Snakefmt => snakefmt::run(snippet_path),
+            Self::Solhint => solhint::run(snippet_path),
             Self::SqlFormatter => sql_formatter::run(snippet_path),
             Self::SqlfluffFix => sqlfluff_fix::run(snippet_path),
             Self::SqlfluffFormat => sqlfluff_format::run(snippet_path),
@@ -1679,6 +1685,7 @@ impl AsRef<str> for Tooling {
             Self::Sleek => "sleek",
             Self::Smlfmt => "smlfmt",
             Self::Snakefmt => "snakefmt",
+            Self::Solhint => "solhint",
             Self::SqlFormatter => "sql_formatter",
             Self::SqlfluffFix => "sqlfluff_fix",
             Self::SqlfluffFormat => "sqlfluff_format",

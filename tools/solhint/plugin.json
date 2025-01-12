@@ -1,0 +1,15 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "solhint",
+  "categories": ["linter"],
+  "commands": {
+    "": ["--quiet", "--fix", "--noPrompt", "$PATH"]
+  },
+  "description": "Solhint is an open-source project to provide a linting utility for Solidity code",
+  "homepage": "https://github.com/protofire/solhint",
+  "languages": ["solidity"],
+  "name": null,
+  "npm": "solhint",
+  "php": null,
+  "tests": []
+}
