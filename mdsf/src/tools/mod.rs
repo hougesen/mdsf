@@ -204,6 +204,7 @@ pub mod terragrunt_hclfmt;
 pub mod tex_fmt;
 pub mod tlint_format;
 pub mod tofu_fmt;
+pub mod toml_sort;
 pub mod topiary;
 pub mod ts_standard;
 pub mod tsqllint;
@@ -1058,6 +1059,10 @@ pub enum Tooling {
     /// `tofu fmt -write=true $PATH`
     TofuFmt,
 
+    #[serde(rename = "toml-sort")]
+    /// `toml-sort -i $PATH`
+    TomlSort,
+
     #[serde(rename = "topiary")]
     /// `topiary format $PATH`
     Topiary,
@@ -1373,6 +1378,7 @@ impl Tooling {
             Self::TexFmt => tex_fmt::run(snippet_path),
             Self::TlintFormat => tlint_format::run(snippet_path),
             Self::TofuFmt => tofu_fmt::run(snippet_path),
+            Self::TomlSort => toml_sort::run(snippet_path),
             Self::Topiary => topiary::run(snippet_path),
             Self::TsStandard => ts_standard::run(snippet_path),
             Self::Tsqllint => tsqllint::run(snippet_path),
@@ -1613,6 +1619,7 @@ impl AsRef<str> for Tooling {
             Self::TexFmt => "tex_fmt",
             Self::TlintFormat => "tlint_format",
             Self::TofuFmt => "tofu_fmt",
+            Self::TomlSort => "toml_sort",
             Self::Topiary => "topiary",
             Self::TsStandard => "ts_standard",
             Self::Tsqllint => "tsqllint",
