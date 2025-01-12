@@ -214,7 +214,7 @@ mdsf init
 
 <!-- START_SECTION:supported-tools -->
 
-`mdsf` currently supports 226 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 227 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                                                                                    | Description                                                                                                                                   | Categories            | Languages                                                                 |
 | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- | ------------------------------------------------------------------------- |
@@ -309,6 +309,7 @@ mdsf init
 | [hlint](https://github.com/ndmitchell/hlint)                                            | Haskell source code suggestions                                                                                                               | `linter`              | `haskell`                                                                 |
 | [html-beautify](https://github.com/beautifier/js-beautify?tab=readme-ov-file#css--html) | A html formatter                                                                                                                              | `formatter`           | `html`                                                                    |
 | [htmlbeautifier](https://github.com/threedaymonk/htmlbeautifier)                        | A normaliser/beautifier for HTML that also understands embedded Ruby. Ideal for tidying up Rails templates                                    | `formatter`           | `erb`, `html`, `ruby`                                                     |
+| [htmlhint](https://github.com/HTMLHint/HTMLHint)                                        | The static code analysis tool you need for your HTML                                                                                          | `linter`              | `html`                                                                    |
 | [imba](https://imba.io/)                                                                | A formatter for Imba                                                                                                                          | `formatter`           | `imba`                                                                    |
 | [isort](https://github.com/timothycrosley/isort)                                        | A Python utility to sort imports                                                                                                              | `formatter`           | `python`                                                                  |
 | [joker](https://github.com/candid82/joker)                                              | Small Clojure interpreter, linter and formatter                                                                                               | `formatter`, `linter` | `clojure`                                                                 |
