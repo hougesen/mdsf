@@ -724,6 +724,11 @@
           "enum": ["oxlint"]
         },
         {
+          "description": "`packer fix $PATH`",
+          "type": "string",
+          "enum": ["packer:fix"]
+        },
+        {
           "description": "`packer fmt $PATH`",
           "type": "string",
           "enum": ["packer:fmt"]
