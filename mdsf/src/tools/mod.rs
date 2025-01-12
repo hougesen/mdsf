@@ -122,6 +122,7 @@ pub mod nickel_format;
 pub mod nimpretty;
 pub mod nixfmt;
 pub mod nixpkgs_fmt;
+pub mod nomad_fmt;
 pub mod nph;
 pub mod npm_groovy_lint;
 pub mod nufmt;
@@ -718,6 +719,10 @@ pub enum Tooling {
     /// `nixpkgs-fmt $PATH`
     NixpkgsFmt,
 
+    #[serde(rename = "nomad:fmt")]
+    /// `nomad fmt $PATH`
+    NomadFmt,
+
     #[serde(rename = "nph")]
     /// `nph $PATH`
     Nph,
@@ -1231,6 +1236,7 @@ impl Tooling {
             Self::Nimpretty => nimpretty::run(snippet_path),
             Self::Nixfmt => nixfmt::run(snippet_path),
             Self::NixpkgsFmt => nixpkgs_fmt::run(snippet_path),
+            Self::NomadFmt => nomad_fmt::run(snippet_path),
             Self::Nph => nph::run(snippet_path),
             Self::NpmGroovyLint => npm_groovy_lint::run(snippet_path),
             Self::Nufmt => nufmt::run(snippet_path),
@@ -1459,6 +1465,7 @@ impl AsRef<str> for Tooling {
             Self::Nimpretty => "nimpretty",
             Self::Nixfmt => "nixfmt",
             Self::NixpkgsFmt => "nixpkgs_fmt",
+            Self::NomadFmt => "nomad_fmt",
             Self::Nph => "nph",
             Self::NpmGroovyLint => "npm_groovy_lint",
             Self::Nufmt => "nufmt",
