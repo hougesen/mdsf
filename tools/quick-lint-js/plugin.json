@@ -1,0 +1,15 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "quick-lint-js",
+  "categories": ["linter"],
+  "commands": {
+    "": ["$PATH"]
+  },
+  "description": "quick-lint-js finds bugs in JavaScript programs",
+  "homepage": "https://github.com/quick-lint/quick-lint-js",
+  "languages": ["javascript"],
+  "name": null,
+  "npm": "quick-lint-js",
+  "php": null,
+  "tests": []
+}

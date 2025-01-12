@@ -214,7 +214,7 @@ mdsf init
 
 <!-- START_SECTION:supported-tools -->
 
-`mdsf` currently supports 230 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 231 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                                                                                    | Description                                                                                                                                   | Categories            | Languages                                                                 |
 | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- | ------------------------------------------------------------------------- |
@@ -379,6 +379,7 @@ mdsf init
 | [pyink](https://github.com/google/pyink)                                                | Pyink is a Python formatter, forked from Black with a few different formatting behaviors                                                      | `formatter`           | `python`                                                                  |
 | [pyment](https://github.com/dadadel/pyment)                                             | Format and convert Python docstrings and generates patches                                                                                    | `formatter`           | `python`                                                                  |
 | [qmlfmt](https://github.com/jesperhh/qmlfmt)                                            | qmlfmt - command line application that formats QML files                                                                                      | `formatter`           | `qml`                                                                     |
+| [quick-lint-js](https://github.com/quick-lint/quick-lint-js)                            | quick-lint-js finds bugs in JavaScript programs                                                                                               | `linter`              | `javascript`                                                              |
 | [raco](https://docs.racket-lang.org/fmt/)                                               | An extensible code formatter for Racket                                                                                                       | `formatter`           | `racket`                                                                  |
 | [refmt](https://reasonml.github.io/docs/en/refmt)                                       | refmt stands by Reason Formatter and it formats Reason programs, is a parser and pretty-printer for Reason                                    | `formatter`           | `reason`                                                                  |
 | [reformat-gherkin](https://github.com/ducminh-phan/reformat-gherkin)                    | Reformat-gherkin automatically formats Gherkin files                                                                                          | `formatter`           | `gherkin`                                                                 |
