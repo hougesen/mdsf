@@ -220,6 +220,7 @@ pub mod uiua_fmt;
 pub mod unimport;
 pub mod usort;
 pub mod v_fmt;
+pub mod vacuum_lint;
 pub mod veryl_fmt;
 pub mod vhdl_style_guide;
 pub mod wfindent;
@@ -1126,6 +1127,10 @@ pub enum Tooling {
     /// `v fmt -w $PATH`
     VFmt,
 
+    #[serde(rename = "vacuum:lint")]
+    /// `vacuum lint $PATH`
+    VacuumLint,
+
     #[serde(rename = "veryl:fmt")]
     /// `veryl fmt $PATH`
     VerylFmt,
@@ -1409,6 +1414,7 @@ impl Tooling {
             Self::Unimport => unimport::run(snippet_path),
             Self::Usort => usort::run(snippet_path),
             Self::VFmt => v_fmt::run(snippet_path),
+            Self::VacuumLint => vacuum_lint::run(snippet_path),
             Self::VerylFmt => veryl_fmt::run(snippet_path),
             Self::VhdlStyleGuide => vhdl_style_guide::run(snippet_path),
             Self::Wfindent => wfindent::run(snippet_path),
@@ -1653,6 +1659,7 @@ impl AsRef<str> for Tooling {
             Self::Unimport => "unimport",
             Self::Usort => "usort",
             Self::VFmt => "v_fmt",
+            Self::VacuumLint => "vacuum_lint",
             Self::VerylFmt => "veryl_fmt",
             Self::VhdlStyleGuide => "vhdl_style_guide",
             Self::Wfindent => "wfindent",

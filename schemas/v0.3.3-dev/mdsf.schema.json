@@ -1169,6 +1169,11 @@
           "enum": ["v:fmt"]
         },
         {
+          "description": "`vacuum lint $PATH`",
+          "type": "string",
+          "enum": ["vacuum:lint"]
+        },
+        {
           "description": "`veryl fmt $PATH`",
           "type": "string",
           "enum": ["veryl:fmt"]

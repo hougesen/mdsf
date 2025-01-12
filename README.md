@@ -214,7 +214,7 @@ mdsf init
 
 <!-- START_SECTION:supported-tools -->
 
-`mdsf` currently supports 225 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 226 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                                                                                    | Description                                                                                                                                   | Categories            | Languages                                                                 |
 | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- | ------------------------------------------------------------------------- |
@@ -430,6 +430,7 @@ mdsf init
 | [unimport](https://github.com/hakancelikdev/unimport)                                   | The ultimate linter and formatter for removing unused import statements in your code                                                          | `formatter`           | `python`                                                                  |
 | [usort](https://github.com/facebook/usort)                                              | Safe, minimal import sorting for Python projects                                                                                              | `formatter`           | `python`                                                                  |
 | [v](https://vlang.io/)                                                                  | Tooling for V lang                                                                                                                            | `formatter`           | `v`                                                                       |
+| [vacuum](https://github.com/daveshanley/vacuum)                                         | vacuum is the worlds fastest OpenAPI 3, OpenAPI 2 / Swagger linter and quality analysis tool                                                  | `linter`              | `openapi`                                                                 |
 | [veryl](https://github.com/veryl-lang/veryl)                                            | Veryl: A Modern Hardware Description Language                                                                                                 | `formatter`           | `veryl`                                                                   |
 | [vhdl-style-guide](https://github.com/jeremiah-c-leary/vhdl-style-guide)                | Style guide enforcement for VHDL                                                                                                              | `formatter`           | `vhdl`                                                                    |
 | [wfindent](https://github.com/wvermin/findent)                                          | Indents and optionally converts Fortran program sources                                                                                       | `formatter`           | `fortran`                                                                 |
