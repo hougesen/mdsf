@@ -1,0 +1,15 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "jsonnet-lint",
+  "categories": ["linter"],
+  "commands": {
+    "": ["$PATH"]
+  },
+  "description": "Linter for jsonnet files",
+  "homepage": "https://jsonnet.org/learning/tools.html",
+  "languages": ["jsonnet"],
+  "name": null,
+  "npm": null,
+  "php": null,
+  "tests": []
+}
