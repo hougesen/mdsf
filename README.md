@@ -214,7 +214,7 @@ mdsf init
 
 <!-- START_SECTION:supported-tools -->
 
-`mdsf` currently supports 221 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 222 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                                                                                    | Description                                                                                                                                   | Categories            | Languages                                                                 |
 | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- | ------------------------------------------------------------------------- |
@@ -414,6 +414,7 @@ mdsf init
 | [tex-fmt](https://github.com/WGUNDERWOOD/tex-fmt)                                       | An extremely fast LaTeX formatter written in Rust                                                                                             | `formatter`           | `latex`                                                                   |
 | [tlint](https://github.com/tighten/tlint)                                               | Tighten linter for Laravel conventions                                                                                                        | `linter`              | `php`                                                                     |
 | [tofu](https://opentofu.org/docs/cli/commands/fmt/)                                     | The tofu fmt command is used to rewrite OpenTofu configuration files to a canonical format and style                                          | `formatter`           | `terraform`, `tofu`                                                       |
+| [toml-sort](https://github.com/pappasam/toml-sort)                                      | A command line utility to sort and format toml files                                                                                          | `formatter`           | `toml`                                                                    |
 | [topiary](https://github.com/tweag/topiary)                                             | Topiary aims to be a uniform formatter for simple languages, as part of the Tree-sitter ecosystem                                             | `formatter`           |                                                                           |
 | [ts-standard](https://github.com/standard/ts-standard)                                  | Typescript style guide, linter, and formatter using StandardJS                                                                                | `formatter`, `linter` | `typescript`                                                              |
 | [tsqllint](https://github.com/tsqllint/tsqllint)                                        | Configurable linting for TSQL                                                                                                                 | `linter`              | `sql`                                                                     |

@@ -1089,6 +1089,11 @@
           "enum": ["tofu:fmt"]
         },
         {
+          "description": "`toml-sort -i $PATH`",
+          "type": "string",
+          "enum": ["toml-sort"]
+        },
+        {
           "description": "`topiary format $PATH`",
           "type": "string",
           "enum": ["topiary"]

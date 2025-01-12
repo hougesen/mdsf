@@ -1,0 +1,15 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "toml-sort",
+  "categories": ["formatter"],
+  "commands": {
+    "": ["-i", "$PATH"]
+  },
+  "description": "A command line utility to sort and format toml files",
+  "homepage": "https://github.com/pappasam/toml-sort",
+  "languages": ["toml"],
+  "name": null,
+  "npm": null,
+  "php": null,
+  "tests": []
+}
