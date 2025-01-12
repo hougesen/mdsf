@@ -4,6 +4,7 @@
   "format_finished_document": false,
   "javascript_runtime": "node",
   "languages": {
+    "bash": "shfmt",
     "c": "clang-format",
     "clojure": [["cljstyle", "joker"]],
     "cpp": "clang-format",
@@ -15,6 +16,7 @@
     "elixir": "mix:format",
     "elm": "elm-format",
     "erlang": [["erlfmt", "efmt"]],
+    "fish": "fish_indent",
     "gleam": "gleam:format",
     "go": [
       ["gci", "goimports-reviser", "goimports"],
