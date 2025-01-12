@@ -1,0 +1,15 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "odinfmt",
+  "categories": ["formatter"],
+  "commands": {
+    "": ["-w", "$PATH"]
+  },
+  "description": "Formatter for the Odin programming language",
+  "homepage": "https://github.com/DanielGavin/ols",
+  "languages": ["odin"],
+  "name": null,
+  "npm": null,
+  "php": null,
+  "tests": []
+}

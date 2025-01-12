@@ -214,7 +214,7 @@ mdsf init
 
 <!-- START_SECTION:supported-tools -->
 
-`mdsf` currently supports 219 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 220 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                                                                                    | Description                                                                                                                                   | Categories            | Languages                                                                 |
 | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- | ------------------------------------------------------------------------- |
@@ -348,6 +348,7 @@ mdsf init
 | [nufmt](https://github.com/nushell/nufmt)                                               | the nushell formatter                                                                                                                         | `formatter`           | `nushell`                                                                 |
 | [ocamlformat](https://github.com/ocaml-ppx/ocamlformat)                                 | Auto-formatter for OCaml code                                                                                                                 | `formatter`           | `ocaml`                                                                   |
 | [ocp-indent](https://github.com/OCamlPro/ocp-indent)                                    | Indentation tool for OCaml                                                                                                                    | `formatter`           | `ocaml`                                                                   |
+| [odinfmt](https://github.com/DanielGavin/ols)                                           | Formatter for the Odin programming language                                                                                                   | `formatter`           | `odin`                                                                    |
 | [opa](https://www.openpolicyagent.org/docs/latest/cli/)                                 | Format Rego source files                                                                                                                      | `formatter`           | `rego`                                                                    |
 | [ormolu](https://github.com/tweag/ormolu)                                               | A formatter for Haskell source code                                                                                                           | `formatter`           | `haskell`                                                                 |
 | [oxlint](https://oxc.rs/docs/guide/usage/linter.html)                                   | Oxlint is designed to catch erroneous or useless code without requiring any configurations by default                                         | `linter`              | `javascript`, `typescript`                                                |

@@ -739,6 +739,11 @@
           "enum": ["ocp-indent"]
         },
         {
+          "description": "`odinfmt -w $PATH`",
+          "type": "string",
+          "enum": ["odinfmt"]
+        },
+        {
           "description": "`opa fmt $PATH -w`",
           "type": "string",
           "enum": ["opa:fmt"]
