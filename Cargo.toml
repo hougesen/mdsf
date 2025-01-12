@@ -18,7 +18,7 @@ clap = { version = "4.5.21", features = ["derive"] }
 clap_complete = "4.5.42"
 console = "0.15.8"
 convert_case = "0.6.0"
-env_logger = "0.11.5"
+env_logger = "0.11.6"
 ignore = "0.4.23"
 json_comments = "0.2.2"
 log = "0.4.22"
