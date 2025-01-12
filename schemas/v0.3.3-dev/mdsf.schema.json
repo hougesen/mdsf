@@ -1029,6 +1029,11 @@
           "enum": ["snakefmt"]
         },
         {
+          "description": "`solhint --quiet --fix --noPrompt $PATH`",
+          "type": "string",
+          "enum": ["solhint"]
+        },
+        {
           "description": "`sql-formatter --fix $PATH`",
           "type": "string",
           "enum": ["sql-formatter"]

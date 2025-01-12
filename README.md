@@ -214,7 +214,7 @@ mdsf init
 
 <!-- START_SECTION:supported-tools -->
 
-`mdsf` currently supports 233 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 234 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                                                                                    | Description                                                                                                                                   | Categories            | Languages                                                                 |
 | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- | ------------------------------------------------------------------------- |
@@ -403,6 +403,7 @@ mdsf init
 | [sleek](https://github.com/nrempel/sleek)                                               | Sleek is a CLI tool for formatting SQL. It helps you maintain a consistent style across your SQL code, enhancing readability and productivity | `formatter`           | `sql`                                                                     |
 | [smlfmt](https://github.com/shwestrick/smlfmt)                                          | A custom parser/auto-formatter for Standard ML                                                                                                | `formatter`           | `standard-ml`                                                             |
 | [snakefmt](https://github.com/snakemake/snakefmt)                                       | The uncompromising Snakemake code formatter                                                                                                   | `formatter`           | `snakemake`                                                               |
+| [solhint](https://github.com/protofire/solhint)                                         | Solhint is an open-source project to provide a linting utility for Solidity code                                                              | `linter`              | `solidity`                                                                |
 | [sql-formatter](https://github.com/sql-formatter-org/sql-formatter)                     | A whitespace formatter for different query languages                                                                                          | `formatter`           | `sql`                                                                     |
 | [sqlfluff](https://github.com/sqlfluff/sqlfluff)                                        | A modular SQL linter and auto-formatter with support for multiple dialects and templated code                                                 | `formatter`, `linter` | `sql`                                                                     |
 | [sqlfmt](https://github.com/tconbeer/sqlfmt)                                            | sqlfmt formats your dbt SQL files so you don't have to                                                                                        | `formatter`           | `sql`                                                                     |
