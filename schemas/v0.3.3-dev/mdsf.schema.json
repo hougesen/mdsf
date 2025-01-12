@@ -1009,6 +1009,16 @@
           "enum": ["standardrb"]
         },
         {
+          "description": "`statix check $PATH`",
+          "type": "string",
+          "enum": ["statix:check"]
+        },
+        {
+          "description": "`statix fix $PATH`",
+          "type": "string",
+          "enum": ["statix:fix"]
+        },
+        {
           "description": "`stylefmt $PATH`",
           "type": "string",
           "enum": ["stylefmt"]

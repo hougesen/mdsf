@@ -214,7 +214,7 @@ mdsf init
 
 <!-- START_SECTION:supported-tools -->
 
-`mdsf` currently supports 220 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 221 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                                                                                    | Description                                                                                                                                   | Categories            | Languages                                                                 |
 | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- | ------------------------------------------------------------------------- |
@@ -399,6 +399,7 @@ mdsf init
 | [sqruff](https://github.com/quarylabs/sqruff)                                           | Fast SQL formatter/linter                                                                                                                     | `formatter`, `linter` | `sql`                                                                     |
 | [standardjs](https://github.com/standard/standard)                                      | JavaScript style guide, linter, and formatter                                                                                                 | `formatter`, `linter` | `javascript`                                                              |
 | [standardrb](https://github.com/standardrb/standard)                                    | Ruby's bikeshed-proof linter and formatter                                                                                                    | `formatter`, `linter` | `ruby`                                                                    |
+| [statix](https://github.com/oppiliappan/statix)                                         | lints and suggestions for the nix programming language                                                                                        | `linter`              | `nix`                                                                     |
 | [stylefmt](https://github.com/matype/stylefmt)                                          | stylefmt is a tool that automatically formats stylesheets                                                                                     | `formatter`           | `css`, `scss`                                                             |
 | [stylelint](https://github.com/stylelint/stylelint)                                     | A mighty CSS linter that helps you avoid errors and enforce conventions                                                                       | `linter`              | `css`, `scss`                                                             |
 | [stylish-haskell](https://github.com/haskell/stylish-haskell)                           | Haskell code prettifier                                                                                                                       | `formatter`           | `haskell`                                                                 |

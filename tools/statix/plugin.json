@@ -1,0 +1,16 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "statix",
+  "categories": ["linter"],
+  "commands": {
+    "check": ["check", "$PATH"],
+    "fix": ["fix", "$PATH"]
+  },
+  "description": "lints and suggestions for the nix programming language",
+  "homepage": "https://github.com/oppiliappan/statix",
+  "languages": ["nix"],
+  "name": null,
+  "npm": null,
+  "php": null,
+  "tests": []
+}
