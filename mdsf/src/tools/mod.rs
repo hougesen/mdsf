@@ -88,6 +88,7 @@ pub mod google_java_format;
 pub mod grain_format;
 pub mod hadolint;
 pub mod haml_lint;
+pub mod hclfmt;
 pub mod hfmt;
 pub mod hindent;
 pub mod hlint;
@@ -596,6 +597,10 @@ pub enum Tooling {
     #[serde(rename = "haml-lint")]
     /// `haml-lint --auto-correct $PATH`
     HamlLint,
+
+    #[serde(rename = "hclfmt")]
+    /// `hclfmt -w $PATH`
+    Hclfmt,
 
     #[serde(rename = "hfmt")]
     /// `hfmt -w $PATH`
@@ -1272,6 +1277,7 @@ impl Tooling {
             Self::GrainFormat => grain_format::run(snippet_path),
             Self::Hadolint => hadolint::run(snippet_path),
             Self::HamlLint => haml_lint::run(snippet_path),
+            Self::Hclfmt => hclfmt::run(snippet_path),
             Self::Hfmt => hfmt::run(snippet_path),
             Self::Hindent => hindent::run(snippet_path),
             Self::Hlint => hlint::run(snippet_path),
@@ -1515,6 +1521,7 @@ impl AsRef<str> for Tooling {
             Self::GrainFormat => "grain_format",
             Self::Hadolint => "hadolint",
             Self::HamlLint => "haml_lint",
+            Self::Hclfmt => "hclfmt",
             Self::Hfmt => "hfmt",
             Self::Hindent => "hindent",
             Self::Hlint => "hlint",

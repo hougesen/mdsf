@@ -509,6 +509,11 @@
           "enum": ["haml-lint"]
         },
         {
+          "description": "`hclfmt -w $PATH`",
+          "type": "string",
+          "enum": ["hclfmt"]
+        },
+        {
           "description": "`hfmt -w $PATH`",
           "type": "string",
           "enum": ["hfmt"]

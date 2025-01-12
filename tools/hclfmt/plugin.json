@@ -1,0 +1,15 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "hclfmt",
+  "categories": ["formatter"],
+  "commands": {
+    "": ["-w", "$PATH"]
+  },
+  "description": "Formatter for hcl files",
+  "homepage": "https://github.com/hashicorp/hcl",
+  "languages": ["hcl"],
+  "name": null,
+  "npm": null,
+  "php": null,
+  "tests": []
+}
