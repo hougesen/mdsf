@@ -214,7 +214,7 @@ mdsf init
 
 <!-- START_SECTION:supported-tools -->
 
-`mdsf` currently supports 232 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 233 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                                                                                    | Description                                                                                                                                   | Categories            | Languages                                                                 |
 | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- | ------------------------------------------------------------------------- |
@@ -395,6 +395,7 @@ mdsf init
 | [rune](https://github.com/rune-rs/rune)                                                 | Tools for the Rune programming language                                                                                                       | `formatter`           | `rune`                                                                    |
 | [rustfmt](https://github.com/rust-lang/rustfmt)                                         | The official code formatter for Rust                                                                                                          | `formatter`           | `rust`                                                                    |
 | [rustywind](https://github.com/avencera/rustywind)                                      | CLI for organizing Tailwind CSS classes                                                                                                       | `formatter`           | `html`                                                                    |
+| [salt-lint](https://github.com/warpnet/salt-lint)                                       | A command-line utility that checks for best practices in SaltStack                                                                            | `linter`              | `salt`                                                                    |
 | [scalafmt](https://github.com/scalameta/scalafmt)                                       | Code formatter for Scala                                                                                                                      | `formatter`           | `scala`                                                                   |
 | [scalariform](https://github.com/scala-ide/scalariform)                                 | Scala source code formatter                                                                                                                   | `formatter`           | `scala`                                                                   |
 | [shellharden](https://github.com/anordal/shellharden)                                   | The corrective bash syntax highlighter                                                                                                        | `linter`              | `bash`, `shell`                                                           |
