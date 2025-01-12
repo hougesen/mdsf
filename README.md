@@ -214,7 +214,7 @@ mdsf init
 
 <!-- START_SECTION:supported-tools -->
 
-`mdsf` currently supports 231 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 232 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                                                                                    | Description                                                                                                                                   | Categories            | Languages                                                                 |
 | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- | ------------------------------------------------------------------------- |
@@ -383,6 +383,7 @@ mdsf init
 | [raco](https://docs.racket-lang.org/fmt/)                                               | An extensible code formatter for Racket                                                                                                       | `formatter`           | `racket`                                                                  |
 | [refmt](https://reasonml.github.io/docs/en/refmt)                                       | refmt stands by Reason Formatter and it formats Reason programs, is a parser and pretty-printer for Reason                                    | `formatter`           | `reason`                                                                  |
 | [reformat-gherkin](https://github.com/ducminh-phan/reformat-gherkin)                    | Reformat-gherkin automatically formats Gherkin files                                                                                          | `formatter`           | `gherkin`                                                                 |
+| [regal](https://github.com/styrainc/regal)                                              | Regal is a linter and language server for Rego, bringing your policy development experience to the next level                                 | `linter`              | `rego`                                                                    |
 | [reorder-python-imports](https://github.com/asottile/reorder-python-imports)            | Rewrites source to reorder python imports                                                                                                     | `formatter`           | `python`                                                                  |
 | [rescript](https://rescript-lang.org/)                                                  | Formatter for ReScript                                                                                                                        | `formatter`           | `rescript`                                                                |
 | [roc](https://github.com/roc-lang/roc)                                                  | Tools for the roc programming language                                                                                                        | `formatter`           | `roc`                                                                     |
