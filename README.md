@@ -214,7 +214,7 @@ mdsf init
 
 <!-- START_SECTION:supported-tools -->
 
-`mdsf` currently supports 227 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 228 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                                                                                    | Description                                                                                                                                   | Categories            | Languages                                                                 |
 | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- | ------------------------------------------------------------------------- |
@@ -329,6 +329,7 @@ mdsf init
 | [kulala-fmt](https://github.com/mistweaverco/kulala-fmt)                                | An opinionated 🦄 .http and .rest 🐼 files linter 💄 and formatter ⚡                                                                         | `formatter`           | `http`                                                                    |
 | [leptosfmt](https://github.com/bram209/leptosfmt)                                       | A formatter for the leptos view! macro                                                                                                        | `formatter`           | `rust`                                                                    |
 | [liquidsoap-prettier](https://github.com/savonet/liquidsoap-prettier)                   | Prettier plugin for liquidsoap script                                                                                                         | `formatter`           | `liquidsoap`                                                              |
+| [luacheck](https://github.com/lunarmodules/luacheck)                                    | A tool for linting and static analysis of Lua code                                                                                            | `formatter`           | `lua`                                                                     |
 | [luaformatter](https://github.com/Koihik/LuaFormatter)                                  | Code formatter for Lua                                                                                                                        | `formatter`           | `lua`                                                                     |
 | [markdownfmt](https://github.com/shurcooL/markdownfmt)                                  | Like gofmt, but for Markdown                                                                                                                  | `formatter`           | `markdown`                                                                |
 | [markdownlint-cli2](https://github.com/davidanson/markdownlint-cli2)                    | A fast, flexible, configuration-based command-line interface for linting Markdown/CommonMark files with the markdownlint library              | `linter`              | `markdown`                                                                |

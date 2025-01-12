@@ -644,6 +644,11 @@
           "enum": ["liquidsoap-prettier"]
         },
         {
+          "description": "`luacheck $PATH`",
+          "type": "string",
+          "enum": ["luacheck"]
+        },
+        {
           "description": "`lua-format -i $PATH`",
           "type": "string",
           "enum": ["luaformatter"]
