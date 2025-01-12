@@ -213,10 +213,11 @@ mdsf init
 
 <!-- START_SECTION:supported-tools -->
 
-`mdsf` currently supports 213 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 214 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                                                                                    | Description                                                                                                                                   | Categories            | Languages                                                                 |
 | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- | ------------------------------------------------------------------------- |
+| [actionlint](https://github.com/rhysd/actionlint)                                       | Static checker for GitHub Actions workflow files                                                                                              | `linter`              | `yaml`                                                                    |
 | [alejandra](https://github.com/kamadorueda/alejandra)                                   | The Uncompromising Nix Code Formatter                                                                                                         | `formatter`           | `nix`                                                                     |
 | [ameba](https://github.com/crystal-ameba/ameba)                                         | A static code analysis tool for Crystal                                                                                                       | `linter`              | `crystal`                                                                 |
 | [asmfmt](https://github.com/klauspost/asmfmt)                                           | Go Assembler Formatter                                                                                                                        | `formatter`           | `go`                                                                      |

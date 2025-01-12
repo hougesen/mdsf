@@ -1,3 +1,4 @@
+pub mod actionlint;
 pub mod alejandra;
 pub mod ameba;
 pub mod asmfmt;
@@ -225,6 +226,10 @@ pub mod zprint;
 #[cfg_attr(test, derive(Debug, PartialEq, Eq))]
 #[cfg_attr(feature = "json-schema", derive(schemars::JsonSchema))]
 pub enum Tooling {
+    #[serde(rename = "actionlint")]
+    /// `actionlint $PATH`
+    Actionlint,
+
     #[serde(rename = "alejandra")]
     /// `alejandra --quiet $PATH`
     Alejandra,
@@ -1122,6 +1127,7 @@ impl Tooling {
         snippet_path: &std::path::Path,
     ) -> Result<(bool, Option<String>), crate::error::MdsfError> {
         match self {
+            Self::Actionlint => actionlint::run(snippet_path),
             Self::Alejandra => alejandra::run(snippet_path),
             Self::Ameba => ameba::run(snippet_path),
             Self::Asmfmt => asmfmt::run(snippet_path),
@@ -1353,6 +1359,7 @@ impl AsRef<str> for Tooling {
     #[inline]
     fn as_ref(&self) -> &str {
         match self {
+            Self::Actionlint => "actionlint",
             Self::Alejandra => "alejandra",
             Self::Ameba => "ameba",
             Self::Asmfmt => "asmfmt",

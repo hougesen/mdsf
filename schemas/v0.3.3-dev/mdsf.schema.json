@@ -59,6 +59,11 @@
     "Tooling": {
       "oneOf": [
         {
+          "description": "`actionlint $PATH`",
+          "type": "string",
+          "enum": ["actionlint"]
+        },
+        {
           "description": "`alejandra --quiet $PATH`",
           "type": "string",
           "enum": ["alejandra"]
