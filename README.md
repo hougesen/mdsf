@@ -214,7 +214,7 @@ mdsf init
 
 <!-- START_SECTION:supported-tools -->
 
-`mdsf` currently supports 216 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 217 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                                                                                    | Description                                                                                                                                   | Categories            | Languages                                                                 |
 | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- | ------------------------------------------------------------------------- |
@@ -262,6 +262,7 @@ mdsf init
 | [d2](https://d2lang.com/)                                                               | Formatter for the d2 language                                                                                                                 | `formatter`           | `d2`                                                                      |
 | [dart](https://dart.dev/tools)                                                          | Formatter and linter for Dart                                                                                                                 | `formatter`, `linter` | `dart`, `flutter`                                                         |
 | [dcm](https://dcm.dev/)                                                                 | Code Quality Tool for Flutter Developers                                                                                                      | `formatter`, `linter` | `dart`, `flutter`                                                         |
+| [deadnix](https://github.com/astro/deadnix)                                             | Scan Nix files for dead code                                                                                                                  | `linter`              | `nix`                                                                     |
 | [deno](https://docs.deno.com/runtime/reference/cli/)                                    | Formatter and linter for JavaScript and TypeScript                                                                                            | `formatter`, `linter` | `javascript`, `json`, `typescript`                                        |
 | [dfmt](https://github.com/dlang-community/dfmt)                                         | Dfmt is a formatter for D source code                                                                                                         | `formatter`           | `d`                                                                       |
 | [dhall](https://dhall-lang.org/)                                                        | Format Dhall files                                                                                                                            | `formatter`           | `dhall`                                                                   |

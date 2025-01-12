@@ -1,0 +1,15 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "deadnix",
+  "categories": ["linter"],
+  "commands": {
+    "": ["-q", "--edit", "$PATH"]
+  },
+  "description": "Scan Nix files for dead code",
+  "homepage": "https://github.com/astro/deadnix",
+  "languages": ["nix"],
+  "name": null,
+  "npm": null,
+  "php": null,
+  "tests": []
+}

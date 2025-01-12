@@ -46,6 +46,7 @@ pub mod dart_fix;
 pub mod dart_format;
 pub mod dcm_fix;
 pub mod dcm_format;
+pub mod deadnix;
 pub mod deno_fmt;
 pub mod deno_lint;
 pub mod dfmt;
@@ -419,6 +420,10 @@ pub enum Tooling {
     #[serde(rename = "dcm:format")]
     /// `dcm format $PATH`
     DcmFormat,
+
+    #[serde(rename = "deadnix")]
+    /// `deadnix -q --edit $PATH`
+    Deadnix,
 
     #[serde(rename = "deno:fmt")]
     /// `deno fmt --quiet $PATH`
@@ -1185,6 +1190,7 @@ impl Tooling {
             Self::DartFormat => dart_format::run(snippet_path),
             Self::DcmFix => dcm_fix::run(snippet_path),
             Self::DcmFormat => dcm_format::run(snippet_path),
+            Self::Deadnix => deadnix::run(snippet_path),
             Self::DenoFmt => deno_fmt::run(snippet_path),
             Self::DenoLint => deno_lint::run(snippet_path),
             Self::Dfmt => dfmt::run(snippet_path),
@@ -1419,6 +1425,7 @@ impl AsRef<str> for Tooling {
             Self::DartFormat => "dart_format",
             Self::DcmFix => "dcm_fix",
             Self::DcmFormat => "dcm_format",
+            Self::Deadnix => "deadnix",
             Self::DenoFmt => "deno_fmt",
             Self::DenoLint => "deno_lint",
             Self::Dfmt => "dfmt",

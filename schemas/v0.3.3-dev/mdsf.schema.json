@@ -299,6 +299,11 @@
           "enum": ["dcm:format"]
         },
         {
+          "description": "`deadnix -q --edit $PATH`",
+          "type": "string",
+          "enum": ["deadnix"]
+        },
+        {
           "description": "`deno fmt --quiet $PATH`",
           "type": "string",
           "enum": ["deno:fmt"]
