@@ -1029,6 +1029,11 @@
           "enum": ["terragrunt:hclfmt"]
         },
         {
+          "description": "`tex-fmt $PATH`",
+          "type": "string",
+          "enum": ["tex-fmt"]
+        },
+        {
           "description": "`tlint format $PATH`",
           "type": "string",
           "enum": ["tlint:format"]

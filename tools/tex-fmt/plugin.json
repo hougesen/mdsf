@@ -1,0 +1,15 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "tex-fmt",
+  "categories": ["formatter"],
+  "commands": {
+    "": ["$PATH"]
+  },
+  "description": "An extremely fast LaTeX formatter written in Rust",
+  "homepage": "https://github.com/WGUNDERWOOD/tex-fmt",
+  "languages": ["latex"],
+  "name": null,
+  "npm": null,
+  "php": null,
+  "tests": []
+}

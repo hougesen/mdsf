@@ -213,7 +213,7 @@ mdsf init
 
 <!-- START_SECTION:supported-tools -->
 
-`mdsf` currently supports 212 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 213 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                                                                                    | Description                                                                                                                                   | Categories            | Languages                                                                 |
 | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- | ------------------------------------------------------------------------- |
@@ -402,6 +402,7 @@ mdsf init
 | [templ](https://templ.guide/)                                                           | Tooling for the Templ template language                                                                                                       | `formatter`           | `go`, `templ`                                                             |
 | [terraform](https://www.terraform.io/docs/cli/commands/fmt.html)                        | The terraform fmt command is used to rewrite Terraform configuration files to a canonical format and style                                    | `formatter`           | `terraform`                                                               |
 | [terragrunt](https://terragrunt.gruntwork.io/docs/reference/cli-options/#hclfmt)        | Recursively find hcl files and rewrite them into a canonical format                                                                           | `formatter`           | `hcl`                                                                     |
+| [tex-fmt](https://github.com/WGUNDERWOOD/tex-fmt)                                       | An extremely fast LaTeX formatter written in Rust                                                                                             | `formatter`           | `latex`                                                                   |
 | [tlint](https://github.com/tighten/tlint)                                               | Tighten linter for Laravel conventions                                                                                                        | `linter`              | `php`                                                                     |
 | [tofu](https://opentofu.org/docs/cli/commands/fmt/)                                     | The tofu fmt command is used to rewrite OpenTofu configuration files to a canonical format and style                                          | `formatter`           | `terraform`, `tofu`                                                       |
 | [topiary](https://github.com/tweag/topiary)                                             | Topiary aims to be a uniform formatter for simple languages, as part of the Tree-sitter ecosystem                                             | `formatter`           |                                                                           |
