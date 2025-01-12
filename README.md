@@ -214,7 +214,7 @@ mdsf init
 
 <!-- START_SECTION:supported-tools -->
 
-`mdsf` currently supports 228 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 229 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                                                                                    | Description                                                                                                                                   | Categories            | Languages                                                                 |
 | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- | ------------------------------------------------------------------------- |
@@ -341,6 +341,7 @@ mdsf init
 | [misspell](https://github.com/client9/misspell/)                                        | Correct commonly misspelled English words in source files                                                                                     | `autocorrection`      |                                                                           |
 | [mix](https://hexdocs.pm/mix/main/Mix.Tasks.Format.html)                                | Code formatter for Elixir                                                                                                                     | `formatter`           | `elixir`                                                                  |
 | [mojo](https://docs.modular.com/mojo/cli/format)                                        | Formats Mojo source files                                                                                                                     | `formatter`           | `mojo`                                                                    |
+| [mypy](https://github.com/python/mypy)                                                  | Optional static typing for Python                                                                                                             | `linter`              | `python`                                                                  |
 | [nginxbeautifier](https://github.com/vasilevich/nginxbeautifier)                        | Format and beautify nginx config files                                                                                                        | `formatter`           | `nginx`                                                                   |
 | [nginxfmt](https://github.com/slomkowski/nginx-config-formatter)                        | nginx config file formatter/beautifier written in Python with no additional dependencies                                                      | `formatter`           | `nginx`                                                                   |
 | [nickel](https://nickel-lang.org/)                                                      | Better configuration for less                                                                                                                 | `formatter`           | `nickel`                                                                  |

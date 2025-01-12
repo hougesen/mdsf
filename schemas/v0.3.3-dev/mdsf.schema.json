@@ -704,6 +704,11 @@
           "enum": ["mojo:format"]
         },
         {
+          "description": "`mypy $PATH`",
+          "type": "string",
+          "enum": ["mypy"]
+        },
+        {
           "description": "`nginxbeautifier $PATH`",
           "type": "string",
           "enum": ["nginxbeautifier"]
