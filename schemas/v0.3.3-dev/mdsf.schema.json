@@ -659,6 +659,11 @@
           "enum": ["mdslw"]
         },
         {
+          "description": "`meson fmt -i $PATH`",
+          "type": "string",
+          "enum": ["meson:fmt"]
+        },
+        {
           "description": "`misspell -w $PATH`",
           "type": "string",
           "enum": ["misspell"]

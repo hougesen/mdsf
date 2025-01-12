@@ -118,6 +118,7 @@ pub mod markdownlint_cli_2;
 pub mod markuplint;
 pub mod mdformat;
 pub mod mdslw;
+pub mod meson_fmt;
 pub mod misspell;
 pub mod mix_format;
 pub mod mojo_format;
@@ -710,6 +711,10 @@ pub enum Tooling {
     /// `mdslw $PATH`
     Mdslw,
 
+    #[serde(rename = "meson:fmt")]
+    /// `meson fmt -i $PATH`
+    MesonFmt,
+
     #[serde(rename = "misspell")]
     /// `misspell -w $PATH`
     Misspell,
@@ -1267,6 +1272,7 @@ impl Tooling {
             Self::Markuplint => markuplint::run(snippet_path),
             Self::Mdformat => mdformat::run(snippet_path),
             Self::Mdslw => mdslw::run(snippet_path),
+            Self::MesonFmt => meson_fmt::run(snippet_path),
             Self::Misspell => misspell::run(snippet_path),
             Self::MixFormat => mix_format::run(snippet_path),
             Self::MojoFormat => mojo_format::run(snippet_path),
@@ -1503,6 +1509,7 @@ impl AsRef<str> for Tooling {
             Self::Markuplint => "markuplint",
             Self::Mdformat => "mdformat",
             Self::Mdslw => "mdslw",
+            Self::MesonFmt => "meson_fmt",
             Self::Misspell => "misspell",
             Self::MixFormat => "mix_format",
             Self::MojoFormat => "mojo_format",
