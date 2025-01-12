@@ -919,6 +919,16 @@
           "enum": ["reformat-gherkin"]
         },
         {
+          "description": "`regal fix $PATH`",
+          "type": "string",
+          "enum": ["regal:fix"]
+        },
+        {
+          "description": "`regal lint $PATH`",
+          "type": "string",
+          "enum": ["regal:lint"]
+        },
+        {
           "description": "`reorder-python-imports $PATH`",
           "type": "string",
           "enum": ["reorder-python-imports"]

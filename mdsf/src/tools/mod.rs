@@ -170,6 +170,8 @@ pub mod quick_lint_js;
 pub mod raco_fmt;
 pub mod refmt;
 pub mod reformat_gherkin;
+pub mod regal_fix;
+pub mod regal_lint;
 pub mod reorder_python_imports;
 pub mod rescript_format;
 pub mod roc_format;
@@ -932,6 +934,14 @@ pub enum Tooling {
     /// `reformat-gherkin $PATH`
     ReformatGherkin,
 
+    #[serde(rename = "regal:fix")]
+    /// `regal fix $PATH`
+    RegalFix,
+
+    #[serde(rename = "regal:lint")]
+    /// `regal lint $PATH`
+    RegalLint,
+
     #[serde(rename = "reorder-python-imports")]
     /// `reorder-python-imports $PATH`
     ReorderPythonImports,
@@ -1389,6 +1399,8 @@ impl Tooling {
             Self::RacoFmt => raco_fmt::run(snippet_path),
             Self::Refmt => refmt::run(snippet_path),
             Self::ReformatGherkin => reformat_gherkin::run(snippet_path),
+            Self::RegalFix => regal_fix::run(snippet_path),
+            Self::RegalLint => regal_lint::run(snippet_path),
             Self::ReorderPythonImports => reorder_python_imports::run(snippet_path),
             Self::RescriptFormat => rescript_format::run(snippet_path),
             Self::RocFormat => roc_format::run(snippet_path),
@@ -1639,6 +1651,8 @@ impl AsRef<str> for Tooling {
             Self::RacoFmt => "raco_fmt",
             Self::Refmt => "refmt",
             Self::ReformatGherkin => "reformat_gherkin",
+            Self::RegalFix => "regal_fix",
+            Self::RegalLint => "regal_lint",
             Self::ReorderPythonImports => "reorder_python_imports",
             Self::RescriptFormat => "rescript_format",
             Self::RocFormat => "roc_format",
