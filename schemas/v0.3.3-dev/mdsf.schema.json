@@ -564,6 +564,11 @@
           "enum": ["jsonlint"]
         },
         {
+          "description": "`jsonnet-lint $PATH`",
+          "type": "string",
+          "enum": ["jsonnet-lint"]
+        },
+        {
           "description": "`jsonnetfmt -i $PATH`",
           "type": "string",
           "enum": ["jsonnetfmt"]

@@ -214,7 +214,7 @@ mdsf init
 
 <!-- START_SECTION:supported-tools -->
 
-`mdsf` currently supports 217 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 218 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                                                                                    | Description                                                                                                                                   | Categories            | Languages                                                                 |
 | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- | ------------------------------------------------------------------------- |
@@ -313,6 +313,7 @@ mdsf init
 | [json5format](https://github.com/google/json5format)                                    | JSON5 (a.k.a., "JSON for Humans") formatter that preserves contextual comments                                                                | `formatter`           | `json5`, `json`                                                           |
 | [jsona](https://github.com/jsona/jsona)                                                 | JSONA linter and formatter                                                                                                                    | `formatter`, `linter` | `jsona`                                                                   |
 | [jsonlint](https://github.com/zaach/jsonlint)                                           | A JSON parser and validator with a CLI                                                                                                        | `formatter`, `linter` | `json`                                                                    |
+| [jsonnet-lint](https://jsonnet.org/learning/tools.html)                                 | Linter for jsonnet files                                                                                                                      | `linter`              | `jsonnet`                                                                 |
 | [jsonnetfmt](https://jsonnet.org/learning/tools.html)                                   | Formatter for automatically fixing jsonnet stylistic problems                                                                                 | `formatter`           | `jsonnet`                                                                 |
 | [juliaformatter.jl](https://github.com/domluna/JuliaFormatter.jl)                       | An opinionated code formatter for Julia. Plot twist - the opinion is your own                                                                 | `formatter`           | `julia`                                                                   |
 | [just](https://github.com/casey/just)                                                   | A formatter for justfiles                                                                                                                     | `formatter`           | `just`                                                                    |
