@@ -1,0 +1,15 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "hadolint",
+  "categories": ["linter"],
+  "commands": {
+    "": ["$PATH"]
+  },
+  "description": "Dockerfile linter, validate inline bash, written in Haskell",
+  "homepage": "https://github.com/hadolint/hadolint",
+  "languages": ["dockerfile"],
+  "name": null,
+  "npm": null,
+  "php": null,
+  "tests": []
+}

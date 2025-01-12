@@ -86,6 +86,7 @@ pub mod goimports_reviser;
 pub mod golines;
 pub mod google_java_format;
 pub mod grain_format;
+pub mod hadolint;
 pub mod haml_lint;
 pub mod hfmt;
 pub mod hindent;
@@ -587,6 +588,10 @@ pub enum Tooling {
     #[serde(rename = "grain:format")]
     /// `grain format $PATH -o $PATH`
     GrainFormat,
+
+    #[serde(rename = "hadolint")]
+    /// `hadolint $PATH`
+    Hadolint,
 
     #[serde(rename = "haml-lint")]
     /// `haml-lint --auto-correct $PATH`
@@ -1265,6 +1270,7 @@ impl Tooling {
             Self::Golines => golines::run(snippet_path),
             Self::GoogleJavaFormat => google_java_format::run(snippet_path),
             Self::GrainFormat => grain_format::run(snippet_path),
+            Self::Hadolint => hadolint::run(snippet_path),
             Self::HamlLint => haml_lint::run(snippet_path),
             Self::Hfmt => hfmt::run(snippet_path),
             Self::Hindent => hindent::run(snippet_path),
@@ -1507,6 +1513,7 @@ impl AsRef<str> for Tooling {
             Self::Golines => "golines",
             Self::GoogleJavaFormat => "google_java_format",
             Self::GrainFormat => "grain_format",
+            Self::Hadolint => "hadolint",
             Self::HamlLint => "haml_lint",
             Self::Hfmt => "hfmt",
             Self::Hindent => "hindent",

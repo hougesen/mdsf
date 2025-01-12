@@ -499,6 +499,11 @@
           "enum": ["grain:format"]
         },
         {
+          "description": "`hadolint $PATH`",
+          "type": "string",
+          "enum": ["hadolint"]
+        },
+        {
           "description": "`haml-lint --auto-correct $PATH`",
           "type": "string",
           "enum": ["haml-lint"]
