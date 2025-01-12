@@ -1,0 +1,15 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "vacuum",
+  "categories": ["linter"],
+  "commands": {
+    "lint": ["lint", "$PATH"]
+  },
+  "description": "vacuum is the worlds fastest OpenAPI 3, OpenAPI 2 / Swagger linter and quality analysis tool",
+  "homepage": "https://github.com/daveshanley/vacuum",
+  "languages": ["openapi"],
+  "name": null,
+  "npm": "@quobix/vacuum",
+  "php": null,
+  "tests": []
+}
