@@ -188,6 +188,8 @@ pub mod sqlfmt;
 pub mod sqruff;
 pub mod standardjs;
 pub mod standardrb;
+pub mod statix_check;
+pub mod statix_fix;
 pub mod stylefmt;
 pub mod stylelint;
 pub mod stylish_haskell;
@@ -992,6 +994,14 @@ pub enum Tooling {
     /// `standardrb --fix $PATH`
     Standardrb,
 
+    #[serde(rename = "statix:check")]
+    /// `statix check $PATH`
+    StatixCheck,
+
+    #[serde(rename = "statix:fix")]
+    /// `statix fix $PATH`
+    StatixFix,
+
     #[serde(rename = "stylefmt")]
     /// `stylefmt $PATH`
     Stylefmt,
@@ -1347,6 +1357,8 @@ impl Tooling {
             Self::Sqruff => sqruff::run(snippet_path),
             Self::Standardjs => standardjs::run(snippet_path),
             Self::Standardrb => standardrb::run(snippet_path),
+            Self::StatixCheck => statix_check::run(snippet_path),
+            Self::StatixFix => statix_fix::run(snippet_path),
             Self::Stylefmt => stylefmt::run(snippet_path),
             Self::Stylelint => stylelint::run(snippet_path),
             Self::StylishHaskell => stylish_haskell::run(snippet_path),
@@ -1585,6 +1597,8 @@ impl AsRef<str> for Tooling {
             Self::Sqruff => "sqruff",
             Self::Standardjs => "standardjs",
             Self::Standardrb => "standardrb",
+            Self::StatixCheck => "statix_check",
+            Self::StatixFix => "statix_fix",
             Self::Stylefmt => "stylefmt",
             Self::Stylelint => "stylelint",
             Self::StylishHaskell => "stylish_haskell",
