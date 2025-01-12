@@ -1,0 +1,15 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "oelint-adv",
+  "categories": ["linter"],
+  "commands": {
+    "": ["--fix", "--nobackup", "--quiet", "$PATH"]
+  },
+  "description": "Advanced oelint",
+  "homepage": "https://github.com/priv-kweihmann/oelint-adv",
+  "languages": ["bitbake"],
+  "name": null,
+  "npm": null,
+  "php": null,
+  "tests": []
+}

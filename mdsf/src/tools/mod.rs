@@ -141,6 +141,7 @@ pub mod nufmt;
 pub mod ocamlformat;
 pub mod ocp_indent;
 pub mod odinfmt;
+pub mod oelint_adv;
 pub mod opa_fmt;
 pub mod ormolu;
 pub mod oxlint;
@@ -814,6 +815,10 @@ pub enum Tooling {
     /// `odinfmt -w $PATH`
     Odinfmt,
 
+    #[serde(rename = "oelint-adv")]
+    /// `oelint-adv --fix --nobackup --quiet $PATH`
+    OelintAdv,
+
     #[serde(rename = "opa:fmt")]
     /// `opa fmt $PATH -w`
     OpaFmt,
@@ -1350,6 +1355,7 @@ impl Tooling {
             Self::Ocamlformat => ocamlformat::run(snippet_path),
             Self::OcpIndent => ocp_indent::run(snippet_path),
             Self::Odinfmt => odinfmt::run(snippet_path),
+            Self::OelintAdv => oelint_adv::run(snippet_path),
             Self::OpaFmt => opa_fmt::run(snippet_path),
             Self::Ormolu => ormolu::run(snippet_path),
             Self::Oxlint => oxlint::run(snippet_path),
@@ -1598,6 +1604,7 @@ impl AsRef<str> for Tooling {
             Self::Ocamlformat => "ocamlformat",
             Self::OcpIndent => "ocp_indent",
             Self::Odinfmt => "odinfmt",
+            Self::OelintAdv => "oelint_adv",
             Self::OpaFmt => "opa_fmt",
             Self::Ormolu => "ormolu",
             Self::Oxlint => "oxlint",
