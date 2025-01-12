@@ -34,6 +34,7 @@ pub mod clang_format;
 pub mod clang_tidy;
 pub mod cljfmt_fix;
 pub mod cljstyle;
+pub mod cmake_format;
 pub mod codespell;
 pub mod crlfmt;
 pub mod crystal_format;
@@ -370,6 +371,10 @@ pub enum Tooling {
     #[serde(rename = "cljstyle")]
     /// `cljstyle fix $PATH`
     Cljstyle,
+
+    #[serde(rename = "cmake-format")]
+    /// `cmake-format -i $PATH`
+    CmakeFormat,
 
     #[serde(rename = "codespell")]
     /// `codespell $PATH --check-hidden --write-changes`
@@ -1168,6 +1173,7 @@ impl Tooling {
             Self::ClangTidy => clang_tidy::run(snippet_path),
             Self::CljfmtFix => cljfmt_fix::run(snippet_path),
             Self::Cljstyle => cljstyle::run(snippet_path),
+            Self::CmakeFormat => cmake_format::run(snippet_path),
             Self::Codespell => codespell::run(snippet_path),
             Self::Crlfmt => crlfmt::run(snippet_path),
             Self::CrystalFormat => crystal_format::run(snippet_path),
@@ -1401,6 +1407,7 @@ impl AsRef<str> for Tooling {
             Self::ClangTidy => "clang_tidy",
             Self::CljfmtFix => "cljfmt_fix",
             Self::Cljstyle => "cljstyle",
+            Self::CmakeFormat => "cmake_format",
             Self::Codespell => "codespell",
             Self::Crlfmt => "crlfmt",
             Self::CrystalFormat => "crystal_format",

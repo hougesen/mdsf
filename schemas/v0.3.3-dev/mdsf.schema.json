@@ -239,6 +239,11 @@
           "enum": ["cljstyle"]
         },
         {
+          "description": "`cmake-format -i $PATH`",
+          "type": "string",
+          "enum": ["cmake-format"]
+        },
+        {
           "description": "`codespell $PATH --check-hidden --write-changes`",
           "type": "string",
           "enum": ["codespell"]
