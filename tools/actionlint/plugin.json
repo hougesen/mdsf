@@ -1,0 +1,15 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "actionlint",
+  "categories": ["linter"],
+  "commands": {
+    "": ["$PATH"]
+  },
+  "description": "Static checker for GitHub Actions workflow files",
+  "homepage": "https://github.com/rhysd/actionlint",
+  "languages": ["yaml"],
+  "name": null,
+  "npm": null,
+  "php": null,
+  "tests": []
+}
