@@ -1,0 +1,15 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "curlylint",
+  "categories": ["linter"],
+  "commands": {
+    "": ["-q", "$PATH"]
+  },
+  "description": "Experimental HTML templates linting for Jinja, Nunjucks, Django templates, Twig, Liquid",
+  "homepage": "https://github.com/thibaudcolas/curlylint",
+  "languages": ["nunjucks", "jinja", "django", "twig", "liquid"],
+  "name": null,
+  "npm": null,
+  "php": null,
+  "tests": []
+}
