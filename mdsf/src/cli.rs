@@ -129,23 +129,23 @@ pub enum Shell {
 impl clap::ValueEnum for Shell {
     fn value_variants<'a>() -> &'a [Self] {
         &[
-            Shell::Bash,
-            Shell::Elvish,
-            Shell::Fish,
-            Shell::Nushell,
-            Shell::PowerShell,
-            Shell::Zsh,
+            Self::Bash,
+            Self::Elvish,
+            Self::Fish,
+            Self::Nushell,
+            Self::PowerShell,
+            Self::Zsh,
         ]
     }
 
     fn to_possible_value(&self) -> Option<clap::builder::PossibleValue> {
         Some(match self {
-            Shell::Bash => clap::builder::PossibleValue::new("bash"),
-            Shell::Elvish => clap::builder::PossibleValue::new("elvish"),
-            Shell::Fish => clap::builder::PossibleValue::new("fish"),
-            Shell::Nushell => clap::builder::PossibleValue::new("nushell"),
-            Shell::PowerShell => clap::builder::PossibleValue::new("powershell"),
-            Shell::Zsh => clap::builder::PossibleValue::new("zsh"),
+            Self::Bash => clap::builder::PossibleValue::new("bash"),
+            Self::Elvish => clap::builder::PossibleValue::new("elvish"),
+            Self::Fish => clap::builder::PossibleValue::new("fish"),
+            Self::Nushell => clap::builder::PossibleValue::new("nushell"),
+            Self::PowerShell => clap::builder::PossibleValue::new("powershell"),
+            Self::Zsh => clap::builder::PossibleValue::new("zsh"),
         })
     }
 }
