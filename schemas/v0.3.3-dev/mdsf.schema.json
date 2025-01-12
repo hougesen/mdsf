@@ -989,6 +989,11 @@
           "enum": ["rustywind"]
         },
         {
+          "description": "`salt-lint $PATH`",
+          "type": "string",
+          "enum": ["salt-lint"]
+        },
+        {
           "description": "`scalafmt --quiet --mode any $PATH`",
           "type": "string",
           "enum": ["scalafmt"]

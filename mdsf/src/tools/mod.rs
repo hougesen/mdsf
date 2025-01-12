@@ -184,6 +184,7 @@ pub mod rufo;
 pub mod rune_fmt;
 pub mod rustfmt;
 pub mod rustywind;
+pub mod salt_lint;
 pub mod scalafmt;
 pub mod scalariform;
 pub mod shellharden;
@@ -990,6 +991,10 @@ pub enum Tooling {
     /// `rustywind --write $PATH`
     Rustywind,
 
+    #[serde(rename = "salt-lint")]
+    /// `salt-lint $PATH`
+    SaltLint,
+
     #[serde(rename = "scalafmt")]
     /// `scalafmt --quiet --mode any $PATH`
     Scalafmt,
@@ -1413,6 +1418,7 @@ impl Tooling {
             Self::RuneFmt => rune_fmt::run(snippet_path),
             Self::Rustfmt => rustfmt::run(snippet_path),
             Self::Rustywind => rustywind::run(snippet_path),
+            Self::SaltLint => salt_lint::run(snippet_path),
             Self::Scalafmt => scalafmt::run(snippet_path),
             Self::Scalariform => scalariform::run(snippet_path),
             Self::Shellharden => shellharden::run(snippet_path),
@@ -1665,6 +1671,7 @@ impl AsRef<str> for Tooling {
             Self::RuneFmt => "rune_fmt",
             Self::Rustfmt => "rustfmt",
             Self::Rustywind => "rustywind",
+            Self::SaltLint => "salt_lint",
             Self::Scalafmt => "scalafmt",
             Self::Scalariform => "scalariform",
             Self::Shellharden => "shellharden",

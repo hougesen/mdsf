@@ -1,0 +1,15 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "salt-lint",
+  "categories": ["linter"],
+  "commands": {
+    "": ["$PATH"]
+  },
+  "description": "A command-line utility that checks for best practices in SaltStack",
+  "homepage": "https://github.com/warpnet/salt-lint",
+  "languages": ["salt"],
+  "name": null,
+  "npm": null,
+  "php": null,
+  "tests": []
+}
