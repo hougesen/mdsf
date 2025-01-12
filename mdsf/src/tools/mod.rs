@@ -1,6 +1,7 @@
 pub mod actionlint;
 pub mod alejandra;
 pub mod ameba;
+pub mod ansible_lint;
 pub mod asmfmt;
 pub mod astyle;
 pub mod auto_optional;
@@ -237,6 +238,10 @@ pub enum Tooling {
     #[serde(rename = "ameba")]
     /// `ameba --fix $PATH`
     Ameba,
+
+    #[serde(rename = "ansible-lint")]
+    /// `ansible-lint $PATH`
+    AnsibleLint,
 
     #[serde(rename = "asmfmt")]
     /// `asmfmt -w $PATH`
@@ -1130,6 +1135,7 @@ impl Tooling {
             Self::Actionlint => actionlint::run(snippet_path),
             Self::Alejandra => alejandra::run(snippet_path),
             Self::Ameba => ameba::run(snippet_path),
+            Self::AnsibleLint => ansible_lint::run(snippet_path),
             Self::Asmfmt => asmfmt::run(snippet_path),
             Self::Astyle => astyle::run(snippet_path),
             Self::AutoOptional => auto_optional::run(snippet_path),
@@ -1362,6 +1368,7 @@ impl AsRef<str> for Tooling {
             Self::Actionlint => "actionlint",
             Self::Alejandra => "alejandra",
             Self::Ameba => "ameba",
+            Self::AnsibleLint => "ansible_lint",
             Self::Asmfmt => "asmfmt",
             Self::Astyle => "astyle",
             Self::AutoOptional => "auto_optional",
