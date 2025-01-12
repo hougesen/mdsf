@@ -214,7 +214,7 @@ mdsf init
 
 <!-- START_SECTION:supported-tools -->
 
-`mdsf` currently supports 223 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 224 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                                                                                    | Description                                                                                                                                   | Categories            | Languages                                                                 |
 | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- | ------------------------------------------------------------------------- |
@@ -301,6 +301,7 @@ mdsf init
 | [golines](https://github.com/segmentio/golines)                                         | A golang formatter that fixes long lines                                                                                                      | `formatter`           | `go`                                                                      |
 | [google-java-format](https://github.com/google/google-java-format)                      | Reformats Java source code to comply with Google Java Style                                                                                   | `formatter`           | `java`                                                                    |
 | [grain](https://grain-lang.org/docs/tooling/grain_cli)                                  | Code formatter for the Grain programming language                                                                                             | `formatter`           | `grain`                                                                   |
+| [hadolint](https://github.com/hadolint/hadolint)                                        | Dockerfile linter, validate inline bash, written in Haskell                                                                                   | `linter`              | `dockerfile`                                                              |
 | [haml-lint](https://github.com/sds/haml-lint)                                           | Tool for writing clean and consistent HAML                                                                                                    | `linter`              | `haml`                                                                    |
 | [hfmt](https://github.com/danstiner/hfmt)                                               | Format Haskell programs. Inspired by the gofmt utility                                                                                        | `formatter`           | `haskell`                                                                 |
 | [hindent](https://github.com/mihaimaruseac/hindent)                                     | Extensible Haskell pretty printer                                                                                                             | `formatter`           | `haskell`                                                                 |
