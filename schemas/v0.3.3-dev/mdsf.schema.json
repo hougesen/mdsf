@@ -539,6 +539,11 @@
           "enum": ["htmlbeautifier"]
         },
         {
+          "description": "`htmlhint $PATH`",
+          "type": "string",
+          "enum": ["htmlhint"]
+        },
+        {
           "description": "`imba fmt -f $PATH`",
           "type": "string",
           "enum": ["imba:fmt"]

@@ -1,0 +1,15 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "htmlhint",
+  "categories": ["linter"],
+  "commands": {
+    "": ["$PATH"]
+  },
+  "description": "The static code analysis tool you need for your HTML",
+  "homepage": "https://github.com/HTMLHint/HTMLHint",
+  "languages": ["html"],
+  "name": null,
+  "npm": "htmlhint",
+  "php": null,
+  "tests": []
+}
