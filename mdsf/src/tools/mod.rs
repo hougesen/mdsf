@@ -187,6 +187,7 @@ pub mod rustywind;
 pub mod salt_lint;
 pub mod scalafmt;
 pub mod scalariform;
+pub mod shellcheck;
 pub mod shellharden;
 pub mod shfmt;
 pub mod sleek;
@@ -1004,6 +1005,10 @@ pub enum Tooling {
     /// `scalariform $PATH`
     Scalariform,
 
+    #[serde(rename = "shellcheck")]
+    /// `shellcheck $PATH`
+    Shellcheck,
+
     #[serde(rename = "shellharden")]
     /// `shellharden --transform --replace $PATH`
     Shellharden,
@@ -1426,6 +1431,7 @@ impl Tooling {
             Self::SaltLint => salt_lint::run(snippet_path),
             Self::Scalafmt => scalafmt::run(snippet_path),
             Self::Scalariform => scalariform::run(snippet_path),
+            Self::Shellcheck => shellcheck::run(snippet_path),
             Self::Shellharden => shellharden::run(snippet_path),
             Self::Shfmt => shfmt::run(snippet_path),
             Self::Sleek => sleek::run(snippet_path),
@@ -1680,6 +1686,7 @@ impl AsRef<str> for Tooling {
             Self::SaltLint => "salt_lint",
             Self::Scalafmt => "scalafmt",
             Self::Scalariform => "scalariform",
+            Self::Shellcheck => "shellcheck",
             Self::Shellharden => "shellharden",
             Self::Shfmt => "shfmt",
             Self::Sleek => "sleek",
