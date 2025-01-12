@@ -1,6 +1,6 @@
 # mdsf
 
-Format markdown code snippets using your favorite code formatters.
+Format, and lint, markdown code snippets using your favorite code tools.
 
 <a href="https://crates.io/crates/mdsf"><img src="https://img.shields.io/crates/v/mdsf.svg"></a>
 <a href="https://github.com/hougesen/mdsf/actions/workflows/validate.yml"><img src="https://github.com/hougesen/mdsf/actions/workflows/validate.yml/badge.svg"></a>
@@ -214,7 +214,7 @@ mdsf init
 
 <!-- START_SECTION:supported-tools -->
 
-`mdsf` currently supports 222 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 223 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                                                                                    | Description                                                                                                                                   | Categories            | Languages                                                                 |
 | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- | ------------------------------------------------------------------------- |
@@ -259,6 +259,7 @@ mdsf init
 | [csharpier](https://csharpier.com/)                                                     | An Opinionated Code Formatter for C#                                                                                                          | `formatter`           | `c#`                                                                      |
 | [css-beautify](https://github.com/beautifier/js-beautify?tab=readme-ov-file#css--html)  | A css formatter                                                                                                                               | `formatter`           | `css`                                                                     |
 | [csscomb](https://github.com/csscomb/csscomb.js)                                        | CSS coding style formatter                                                                                                                    | `formatter`           | `css`                                                                     |
+| [curlylint](https://github.com/thibaudcolas/curlylint)                                  | Experimental HTML templates linting for Jinja, Nunjucks, Django templates, Twig, Liquid                                                       | `linter`              | `django`, `jinja`, `liquid`, `nunjucks`, `twig`                           |
 | [d2](https://d2lang.com/)                                                               | Formatter for the d2 language                                                                                                                 | `formatter`           | `d2`                                                                      |
 | [dart](https://dart.dev/tools)                                                          | Formatter and linter for Dart                                                                                                                 | `formatter`, `linter` | `dart`, `flutter`                                                         |
 | [dcm](https://dcm.dev/)                                                                 | Code Quality Tool for Flutter Developers                                                                                                      | `formatter`, `linter` | `dart`, `flutter`                                                         |

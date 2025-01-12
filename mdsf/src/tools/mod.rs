@@ -41,6 +41,7 @@ pub mod crystal_format;
 pub mod csharpier;
 pub mod css_beautify;
 pub mod csscomb;
+pub mod curlylint;
 pub mod d_2_fmt;
 pub mod dart_fix;
 pub mod dart_format;
@@ -406,6 +407,10 @@ pub enum Tooling {
     #[serde(rename = "csscomb")]
     /// `csscomb -t $PATH`
     Csscomb,
+
+    #[serde(rename = "curlylint")]
+    /// `curlylint -q $PATH`
+    Curlylint,
 
     #[serde(rename = "d2:fmt")]
     /// `d2 fmt $PATH`
@@ -1215,6 +1220,7 @@ impl Tooling {
             Self::Csharpier => csharpier::run(snippet_path),
             Self::CssBeautify => css_beautify::run(snippet_path),
             Self::Csscomb => csscomb::run(snippet_path),
+            Self::Curlylint => curlylint::run(snippet_path),
             Self::D2Fmt => d_2_fmt::run(snippet_path),
             Self::DartFix => dart_fix::run(snippet_path),
             Self::DartFormat => dart_format::run(snippet_path),
@@ -1456,6 +1462,7 @@ impl AsRef<str> for Tooling {
             Self::Csharpier => "csharpier",
             Self::CssBeautify => "css_beautify",
             Self::Csscomb => "csscomb",
+            Self::Curlylint => "curlylint",
             Self::D2Fmt => "d_2_fmt",
             Self::DartFix => "dart_fix",
             Self::DartFormat => "dart_format",

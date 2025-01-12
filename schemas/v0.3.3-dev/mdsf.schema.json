@@ -274,6 +274,11 @@
           "enum": ["csscomb"]
         },
         {
+          "description": "`curlylint -q $PATH`",
+          "type": "string",
+          "enum": ["curlylint"]
+        },
+        {
           "description": "`d2 fmt $PATH`",
           "type": "string",
           "enum": ["d2:fmt"]
