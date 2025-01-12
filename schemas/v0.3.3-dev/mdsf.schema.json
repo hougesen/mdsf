@@ -899,6 +899,11 @@
           "enum": ["qmlfmt"]
         },
         {
+          "description": "`quick-lint-js $PATH`",
+          "type": "string",
+          "enum": ["quick-lint-js"]
+        },
+        {
           "description": "`raco fmt -i $PATH`",
           "type": "string",
           "enum": ["raco:fmt"]

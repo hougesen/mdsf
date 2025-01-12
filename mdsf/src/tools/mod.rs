@@ -166,6 +166,7 @@ pub mod pycln;
 pub mod pyink;
 pub mod pyment;
 pub mod qmlfmt;
+pub mod quick_lint_js;
 pub mod raco_fmt;
 pub mod refmt;
 pub mod reformat_gherkin;
@@ -915,6 +916,10 @@ pub enum Tooling {
     /// `qmlfmt -w $PATH`
     Qmlfmt,
 
+    #[serde(rename = "quick-lint-js")]
+    /// `quick-lint-js $PATH`
+    QuickLintJs,
+
     #[serde(rename = "raco:fmt")]
     /// `raco fmt -i $PATH`
     RacoFmt,
@@ -1380,6 +1385,7 @@ impl Tooling {
             Self::Pyink => pyink::run(snippet_path),
             Self::Pyment => pyment::run(snippet_path),
             Self::Qmlfmt => qmlfmt::run(snippet_path),
+            Self::QuickLintJs => quick_lint_js::run(snippet_path),
             Self::RacoFmt => raco_fmt::run(snippet_path),
             Self::Refmt => refmt::run(snippet_path),
             Self::ReformatGherkin => reformat_gherkin::run(snippet_path),
@@ -1629,6 +1635,7 @@ impl AsRef<str> for Tooling {
             Self::Pyink => "pyink",
             Self::Pyment => "pyment",
             Self::Qmlfmt => "qmlfmt",
+            Self::QuickLintJs => "quick_lint_js",
             Self::RacoFmt => "raco_fmt",
             Self::Refmt => "refmt",
             Self::ReformatGherkin => "reformat_gherkin",
