@@ -105,9 +105,54 @@ pub enum LogLevel {
     Off,
 }
 
+#[derive(Clone, Copy, PartialEq, Eq, Debug, Hash)]
+pub enum Shell {
+    /// Bourne Again `SHell` (bash)
+    Bash,
+
+    /// Elvish shell (elvish)
+    Elvish,
+
+    /// Friendly Interactive `SHell` (fish)
+    Fish,
+
+    /// `Nushell` (nushell)
+    Nushell,
+
+    /// `PowerShell` (powershell)
+    PowerShell,
+
+    /// Z `SHell` (zsh)
+    Zsh,
+}
+
+impl clap::ValueEnum for Shell {
+    fn value_variants<'a>() -> &'a [Self] {
+        &[
+            Shell::Bash,
+            Shell::Elvish,
+            Shell::Fish,
+            Shell::Nushell,
+            Shell::PowerShell,
+            Shell::Zsh,
+        ]
+    }
+
+    fn to_possible_value(&self) -> Option<clap::builder::PossibleValue> {
+        Some(match self {
+            Shell::Bash => clap::builder::PossibleValue::new("bash"),
+            Shell::Elvish => clap::builder::PossibleValue::new("elvish"),
+            Shell::Fish => clap::builder::PossibleValue::new("fish"),
+            Shell::Nushell => clap::builder::PossibleValue::new("nushell"),
+            Shell::PowerShell => clap::builder::PossibleValue::new("powershell"),
+            Shell::Zsh => clap::builder::PossibleValue::new("zsh"),
+        })
+    }
+}
+
 #[derive(Args, Debug)]
 pub struct CompletionsCommandArguments {
-    pub shell: clap_complete::Shell,
+    pub shell: Shell,
 }
 
 #[derive(Args, Debug)]

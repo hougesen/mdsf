@@ -31,6 +31,7 @@ Format markdown code snippets using your favorite code formatters.
     - [Fish](#fish)
     - [PowerShell](#powershell)
     - [Elvish](#elvish)
+    - [Nushell](#nushell)
   - [Acknowledgement](#acknowledgement)
   - [Alternatives to mdsf](#alternatives-to-mdsf)
 
@@ -674,7 +675,7 @@ Generate shell completion
 Usage: mdsf completions <SHELL>
 
 Arguments:
-  <SHELL>  [possible values: bash, elvish, fish, powershell, zsh]
+  <SHELL>  [possible values: bash, elvish, fish, nushell, powershell, zsh]
 
 Options:
   -h, --help     Print help
@@ -721,6 +722,14 @@ Add the following to `~/.elvish/rc.elv`.
 
 ```elvish
 eval (mdsf completions elvish)
+```
+
+#### Nushell
+
+Generate completions for [nushell](https://github.com/nushell/nushell).
+
+```nushell
+mdsf completions nushell
 ```
 
 ## Acknowledgement
