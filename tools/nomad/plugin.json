@@ -1,0 +1,15 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "nomad",
+  "categories": ["formatter"],
+  "commands": {
+    "fmt": ["fmt", "$PATH"]
+  },
+  "description": "CLI for HashiCorp Nomad",
+  "homepage": "https://developer.hashicorp.com/nomad/docs/commands",
+  "languages": ["hcl"],
+  "name": null,
+  "npm": null,
+  "php": null,
+  "tests": []
+}

@@ -213,7 +213,7 @@ mdsf init
 
 <!-- START_SECTION:supported-tools -->
 
-`mdsf` currently supports 211 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 212 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                                                                                    | Description                                                                                                                                   | Categories            | Languages                                                                 |
 | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- | ------------------------------------------------------------------------- |
@@ -335,6 +335,7 @@ mdsf init
 | [nimpretty](https://github.com/nim-lang/nim)                                            | Code formatter for the Nim programming language                                                                                               | `formatter`           | `nim`                                                                     |
 | [nixfmt](https://github.com/serokell/nixfmt)                                            | The official (but not yet stable) formatter for Nix code                                                                                      | `formatter`           | `nix`                                                                     |
 | [nixpkgs-fmt](https://github.com/nix-community/nixpkgs-fmt)                             | Nix code formatter for nixpkgs                                                                                                                | `formatter`           | `nix`                                                                     |
+| [nomad](https://developer.hashicorp.com/nomad/docs/commands)                            | CLI for HashiCorp Nomad                                                                                                                       | `formatter`           | `hcl`                                                                     |
 | [nph](https://github.com/arnetheduck/nph)                                               | An opinionated code formatter for Nim                                                                                                         | `formatter`           | `nim`                                                                     |
 | [npm-groovy-lint](https://github.com/nvuillam/npm-groovy-lint)                          | Lint, format and auto-fix your Groovy / Jenkinsfile / Gradle files                                                                            | `formatter`, `linter` | `groovy`                                                                  |
 | [nufmt](https://github.com/nushell/nufmt)                                               | the nushell formatter                                                                                                                         | `formatter`           | `nushell`                                                                 |

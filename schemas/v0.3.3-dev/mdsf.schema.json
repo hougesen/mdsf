@@ -679,6 +679,11 @@
           "enum": ["nixpkgs-fmt"]
         },
         {
+          "description": "`nomad fmt $PATH`",
+          "type": "string",
+          "enum": ["nomad:fmt"]
+        },
+        {
           "description": "`nph $PATH`",
           "type": "string",
           "enum": ["nph"]
