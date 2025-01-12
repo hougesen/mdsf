@@ -774,6 +774,11 @@
           "enum": ["odinfmt"]
         },
         {
+          "description": "`oelint-adv --fix --nobackup --quiet $PATH`",
+          "type": "string",
+          "enum": ["oelint-adv"]
+        },
+        {
           "description": "`opa fmt $PATH -w`",
           "type": "string",
           "enum": ["opa:fmt"]
