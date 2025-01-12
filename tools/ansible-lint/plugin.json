@@ -1,0 +1,15 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "ansible-lint",
+  "categories": ["linter"],
+  "commands": {
+    "": ["$PATH"]
+  },
+  "description": "ansible-lint checks playbooks for practices and behavior that could potentially be improved and can fix some of the most common ones for you",
+  "homepage": "https://github.com/ansible/ansible-lint",
+  "languages": ["ansible"],
+  "name": null,
+  "npm": null,
+  "php": null,
+  "tests": []
+}
