@@ -1,0 +1,15 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "meson",
+  "categories": ["formatter"],
+  "commands": {
+    "fmt": ["fmt", "-i", "$PATH"]
+  },
+  "description": "Meson is an open source build system meant to be both extremely fast, and, even more importantly, as user friendly as possible",
+  "homepage": "https://mesonbuild.com/",
+  "languages": ["meson"],
+  "name": null,
+  "npm": null,
+  "php": null,
+  "tests": []
+}
