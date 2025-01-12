@@ -214,7 +214,7 @@ mdsf init
 
 <!-- START_SECTION:supported-tools -->
 
-`mdsf` currently supports 234 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 235 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                                                                                    | Description                                                                                                                                   | Categories            | Languages                                                                 |
 | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- | ------------------------------------------------------------------------- |
@@ -398,6 +398,7 @@ mdsf init
 | [salt-lint](https://github.com/warpnet/salt-lint)                                       | A command-line utility that checks for best practices in SaltStack                                                                            | `linter`              | `salt`                                                                    |
 | [scalafmt](https://github.com/scalameta/scalafmt)                                       | Code formatter for Scala                                                                                                                      | `formatter`           | `scala`                                                                   |
 | [scalariform](https://github.com/scala-ide/scalariform)                                 | Scala source code formatter                                                                                                                   | `formatter`           | `scala`                                                                   |
+| [shellcheck](https://github.com/koalaman/shellcheck)                                    | ShellCheck, a static analysis tool for shell scripts                                                                                          | `linter`              | `bash`, `shell`                                                           |
 | [shellharden](https://github.com/anordal/shellharden)                                   | The corrective bash syntax highlighter                                                                                                        | `linter`              | `bash`, `shell`                                                           |
 | [shfmt](https://github.com/mvdan/sh)                                                    | Shell script formatter                                                                                                                        | `formatter`           | `shell`                                                                   |
 | [sleek](https://github.com/nrempel/sleek)                                               | Sleek is a CLI tool for formatting SQL. It helps you maintain a consistent style across your SQL code, enhancing readability and productivity | `formatter`           | `sql`                                                                     |
