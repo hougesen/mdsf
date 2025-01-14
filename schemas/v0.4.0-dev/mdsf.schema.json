@@ -274,6 +274,11 @@
           "enum": ["csscomb"]
         },
         {
+          "description": "`csslint --quiet $PATH`",
+          "type": "string",
+          "enum": ["csslint"]
+        },
+        {
           "description": "`curlylint -q $PATH`",
           "type": "string",
           "enum": ["curlylint"]
