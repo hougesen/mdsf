@@ -1,0 +1,15 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "wa",
+  "categories": ["formatter"],
+  "commands": {
+    "fmt": ["$PATH"]
+  },
+  "description": "Formatter for the wa programming language",
+  "homepage": "https://github.com/wa-lang/wa/",
+  "languages": ["wa"],
+  "name": null,
+  "npm": null,
+  "php": null,
+  "tests": []
+}

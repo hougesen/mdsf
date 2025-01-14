@@ -214,7 +214,7 @@ mdsf init
 
 <!-- START_SECTION:supported-tools -->
 
-`mdsf` currently supports 236 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 237 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                                                                                    | Description                                                                                                                                   | Categories            | Languages                                                                 |
 | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- | ------------------------------------------------------------------------- |
@@ -443,6 +443,7 @@ mdsf init
 | [vacuum](https://github.com/daveshanley/vacuum)                                         | vacuum is the worlds fastest OpenAPI 3, OpenAPI 2 / Swagger linter and quality analysis tool                                                  | `linter`              | `openapi`                                                                 |
 | [veryl](https://github.com/veryl-lang/veryl)                                            | Veryl: A Modern Hardware Description Language                                                                                                 | `formatter`           | `veryl`                                                                   |
 | [vhdl-style-guide](https://github.com/jeremiah-c-leary/vhdl-style-guide)                | Style guide enforcement for VHDL                                                                                                              | `formatter`           | `vhdl`                                                                    |
+| [wa](https://github.com/wa-lang/wa/)                                                    | Formatter for the wa programming language                                                                                                     | `formatter`           | `wa`                                                                      |
 | [wfindent](https://github.com/wvermin/findent)                                          | Indents and optionally converts Fortran program sources                                                                                       | `formatter`           | `fortran`                                                                 |
 | [xmlformat](https://github.com/pamoller/xmlformatter)                                   | Format and compress XML documents                                                                                                             | `formatter`           | `xml`                                                                     |
 | [xmllint](https://gnome.pages.gitlab.gnome.org/libxml2/xmllint.html)                    | XML linter                                                                                                                                    | `linter`              | `xml`                                                                     |

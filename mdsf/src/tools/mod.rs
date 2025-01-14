@@ -234,6 +234,7 @@ pub mod v_fmt;
 pub mod vacuum_lint;
 pub mod veryl_fmt;
 pub mod vhdl_style_guide;
+pub mod wa_fmt;
 pub mod wfindent;
 pub mod xmlformat;
 pub mod xmllint;
@@ -1194,6 +1195,10 @@ pub enum Tooling {
     /// `vsg -f $PATH --fix`
     VhdlStyleGuide,
 
+    #[serde(rename = "wa:fmt")]
+    /// `wa $PATH`
+    WaFmt,
+
     #[serde(rename = "wfindent")]
     /// `wfindent $PATH`
     Wfindent,
@@ -1483,6 +1488,7 @@ impl Tooling {
             Self::VacuumLint => vacuum_lint::run(snippet_path),
             Self::VerylFmt => veryl_fmt::run(snippet_path),
             Self::VhdlStyleGuide => vhdl_style_guide::run(snippet_path),
+            Self::WaFmt => wa_fmt::run(snippet_path),
             Self::Wfindent => wfindent::run(snippet_path),
             Self::Xmlformat => xmlformat::run(snippet_path),
             Self::Xmllint => xmllint::run(snippet_path),
@@ -1739,6 +1745,7 @@ impl AsRef<str> for Tooling {
             Self::VacuumLint => "vacuum_lint",
             Self::VerylFmt => "veryl_fmt",
             Self::VhdlStyleGuide => "vhdl_style_guide",
+            Self::WaFmt => "wa_fmt",
             Self::Wfindent => "wfindent",
             Self::Xmlformat => "xmlformat",
             Self::Xmllint => "xmllint",
