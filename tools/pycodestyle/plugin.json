@@ -1,0 +1,15 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "pycodestyle",
+  "categories": ["linter"],
+  "commands": {
+    "": ["$PATH"]
+  },
+  "description": "Simple Python style checker in one Python file",
+  "homepage": "https://github.com/PyCQA/pycodestyle",
+  "languages": ["python"],
+  "name": null,
+  "npm": null,
+  "php": null,
+  "tests": []
+}

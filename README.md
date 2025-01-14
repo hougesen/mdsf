@@ -214,7 +214,7 @@ mdsf init
 
 <!-- START_SECTION:supported-tools -->
 
-`mdsf` currently supports 240 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 241 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                                                                                    | Description                                                                                                                                   | Categories            | Languages                                                                 |
 | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- | ------------------------------------------------------------------------- |
@@ -379,6 +379,7 @@ mdsf init
 | [purs-tidy](https://github.com/natefaubion/purescript-tidy)                             | PureScript code formatter                                                                                                                     | `formatter`           | `purescript`                                                              |
 | [purty](https://gitlab.com/joneshf/purty)                                               | PureScript pretty-printer                                                                                                                     | `formatter`           | `purescript`                                                              |
 | [pycln](https://github.com/hadialqattan/pycln)                                          | A formatter for finding and removing unused import statements                                                                                 | `formatter`           | `python`                                                                  |
+| [pycodestyle](https://github.com/PyCQA/pycodestyle)                                     | Simple Python style checker in one Python file                                                                                                | `linter`              | `python`                                                                  |
 | [pyink](https://github.com/google/pyink)                                                | Pyink is a Python formatter, forked from Black with a few different formatting behaviors                                                      | `formatter`           | `python`                                                                  |
 | [pyment](https://github.com/dadadel/pyment)                                             | Format and convert Python docstrings and generates patches                                                                                    | `formatter`           | `python`                                                                  |
 | [qmlfmt](https://github.com/jesperhh/qmlfmt)                                            | qmlfmt - command line application that formats QML files                                                                                      | `formatter`           | `qml`                                                                     |

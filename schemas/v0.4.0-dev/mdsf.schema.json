@@ -899,6 +899,11 @@
           "enum": ["pycln"]
         },
         {
+          "description": "`pycodestyle $PATH`",
+          "type": "string",
+          "enum": ["pycodestyle"]
+        },
+        {
           "description": "`pyink --quiet $PATH`",
           "type": "string",
           "enum": ["pyink"]
