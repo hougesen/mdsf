@@ -1239,6 +1239,11 @@
           "enum": ["vhdl-style-guide"]
         },
         {
+          "description": "`wa $PATH`",
+          "type": "string",
+          "enum": ["wa:fmt"]
+        },
+        {
           "description": "`wfindent $PATH`",
           "type": "string",
           "enum": ["wfindent"]
