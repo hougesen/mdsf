@@ -166,6 +166,7 @@ pub mod puppet_lint;
 pub mod purs_tidy;
 pub mod purty;
 pub mod pycln;
+pub mod pycodestyle;
 pub mod pyink;
 pub mod pyment;
 pub mod qmlfmt;
@@ -926,6 +927,10 @@ pub enum Tooling {
     /// `pycln --no-gitignore --quiet $PATH`
     Pycln,
 
+    #[serde(rename = "pycodestyle")]
+    /// `pycodestyle $PATH`
+    Pycodestyle,
+
     #[serde(rename = "pyink")]
     /// `pyink --quiet $PATH`
     Pyink,
@@ -1435,6 +1440,7 @@ impl Tooling {
             Self::PursTidy => purs_tidy::run(snippet_path),
             Self::Purty => purty::run(snippet_path),
             Self::Pycln => pycln::run(snippet_path),
+            Self::Pycodestyle => pycodestyle::run(snippet_path),
             Self::Pyink => pyink::run(snippet_path),
             Self::Pyment => pyment::run(snippet_path),
             Self::Qmlfmt => qmlfmt::run(snippet_path),
@@ -1695,6 +1701,7 @@ impl AsRef<str> for Tooling {
             Self::PursTidy => "purs_tidy",
             Self::Purty => "purty",
             Self::Pycln => "pycln",
+            Self::Pycodestyle => "pycodestyle",
             Self::Pyink => "pyink",
             Self::Pyment => "pyment",
             Self::Qmlfmt => "qmlfmt",
