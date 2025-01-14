@@ -554,6 +554,11 @@
           "enum": ["imba:fmt"]
         },
         {
+          "description": "`inko fmt $PATH`",
+          "type": "string",
+          "enum": ["inko:fmt"]
+        },
+        {
           "description": "`isort --quiet $PATH`",
           "type": "string",
           "enum": ["isort"]

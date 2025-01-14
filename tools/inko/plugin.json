@@ -1,0 +1,15 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "inko",
+  "categories": ["formatter"],
+  "commands": {
+    "fmt": ["fmt", "$PATH"]
+  },
+  "description": "Code formatter for the inko programming language",
+  "homepage": "https://github.com/inko-lang/inko",
+  "languages": ["inko"],
+  "name": null,
+  "npm": null,
+  "php": null,
+  "tests": []
+}
