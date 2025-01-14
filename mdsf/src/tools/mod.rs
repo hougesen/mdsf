@@ -97,6 +97,7 @@ pub mod html_beautify;
 pub mod htmlbeautifier;
 pub mod htmlhint;
 pub mod imba_fmt;
+pub mod inko_fmt;
 pub mod isort;
 pub mod joker;
 pub mod js_beautify;
@@ -647,6 +648,10 @@ pub enum Tooling {
     #[serde(rename = "imba:fmt")]
     /// `imba fmt -f $PATH`
     ImbaFmt,
+
+    #[serde(rename = "inko:fmt")]
+    /// `inko fmt $PATH`
+    InkoFmt,
 
     #[serde(rename = "isort")]
     /// `isort --quiet $PATH`
@@ -1356,6 +1361,7 @@ impl Tooling {
             Self::Htmlbeautifier => htmlbeautifier::run(snippet_path),
             Self::Htmlhint => htmlhint::run(snippet_path),
             Self::ImbaFmt => imba_fmt::run(snippet_path),
+            Self::InkoFmt => inko_fmt::run(snippet_path),
             Self::Isort => isort::run(snippet_path),
             Self::Joker => joker::run(snippet_path),
             Self::JsBeautify => js_beautify::run(snippet_path),
@@ -1614,6 +1620,7 @@ impl AsRef<str> for Tooling {
             Self::Htmlbeautifier => "htmlbeautifier",
             Self::Htmlhint => "htmlhint",
             Self::ImbaFmt => "imba_fmt",
+            Self::InkoFmt => "inko_fmt",
             Self::Isort => "isort",
             Self::Joker => "joker",
             Self::JsBeautify => "js_beautify",

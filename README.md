@@ -214,7 +214,7 @@ mdsf init
 
 <!-- START_SECTION:supported-tools -->
 
-`mdsf` currently supports 238 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 239 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                                                                                    | Description                                                                                                                                   | Categories            | Languages                                                                 |
 | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- | ------------------------------------------------------------------------- |
@@ -312,6 +312,7 @@ mdsf init
 | [htmlbeautifier](https://github.com/threedaymonk/htmlbeautifier)                        | A normaliser/beautifier for HTML that also understands embedded Ruby. Ideal for tidying up Rails templates                                    | `formatter`           | `erb`, `html`, `ruby`                                                     |
 | [htmlhint](https://github.com/HTMLHint/HTMLHint)                                        | The static code analysis tool you need for your HTML                                                                                          | `linter`              | `html`                                                                    |
 | [imba](https://imba.io/)                                                                | A formatter for Imba                                                                                                                          | `formatter`           | `imba`                                                                    |
+| [inko](https://github.com/inko-lang/inko)                                               | Code formatter for the inko programming language                                                                                              | `formatter`           | `inko`                                                                    |
 | [isort](https://github.com/timothycrosley/isort)                                        | A Python utility to sort imports                                                                                                              | `formatter`           | `python`                                                                  |
 | [joker](https://github.com/candid82/joker)                                              | Small Clojure interpreter, linter and formatter                                                                                               | `formatter`, `linter` | `clojure`                                                                 |
 | [js-beautify](https://github.com/beautifier/js-beautify)                                | A JavaScript formatter                                                                                                                        | `formatter`           | `javascript`                                                              |
