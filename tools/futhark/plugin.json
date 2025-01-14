@@ -1,0 +1,15 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "futhark",
+  "categories": ["formatter"],
+  "commands": {
+    "fmt": ["fmt", "$PATH"]
+  },
+  "description": "Code formatter for the furhark programming language",
+  "homepage": "https://futhark.readthedocs.io/en/latest/man/futhark-fmt.html",
+  "languages": ["futhark"],
+  "name": null,
+  "npm": null,
+  "php": null,
+  "tests": []
+}
