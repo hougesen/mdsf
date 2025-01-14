@@ -3,7 +3,7 @@ use std::process::Command;
 use crate::{error::MdsfError, execution::execute_command, runners::CommandType};
 
 #[inline]
-fn set_wa_fmt_args(mut cmd: Command, file_path: &std::path::Path) -> Command {
+fn set_futhark_fmt_args(mut cmd: Command, file_path: &std::path::Path) -> Command {
     cmd.arg("fmt");
     cmd.arg(file_path);
     cmd
@@ -11,10 +11,10 @@ fn set_wa_fmt_args(mut cmd: Command, file_path: &std::path::Path) -> Command {
 
 #[inline]
 pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfError> {
-    let commands = [CommandType::Direct("wa")];
+    let commands = [CommandType::Direct("futhark")];
 
     for (index, cmd) in commands.iter().enumerate() {
-        let cmd = set_wa_fmt_args(cmd.build(), file_path);
+        let cmd = set_futhark_fmt_args(cmd.build(), file_path);
         let execution_result = execute_command(cmd, file_path);
 
         if index == commands.len() - 1 {
@@ -32,4 +32,4 @@ pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfEr
 }
 
 #[cfg(test)]
-mod test_wa_fmt {}
+mod test_futhark_fmt {}

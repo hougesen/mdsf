@@ -214,7 +214,7 @@ mdsf init
 
 <!-- START_SECTION:supported-tools -->
 
-`mdsf` currently supports 237 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 238 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                                                                                    | Description                                                                                                                                   | Categories            | Languages                                                                 |
 | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- | ------------------------------------------------------------------------- |
@@ -289,6 +289,7 @@ mdsf init
 | [forge](https://github.com/foundry-rs/foundry)                                          | A Solidity formatter                                                                                                                          | `formatter`           | `solidity`                                                                |
 | [fourmolu](https://hackage.haskell.org/package/fourmolu)                                | A formatter for Haskell source code                                                                                                           | `formatter`           | `haskell`                                                                 |
 | [fprettify](https://github.com/fortran-lang/fprettify)                                  | Auto-formatter for modern Fortran source code                                                                                                 | `formatter`           | `fortran`                                                                 |
+| [futhark](https://futhark.readthedocs.io/en/latest/man/futhark-fmt.html)                | Code formatter for the furhark programming language                                                                                           | `formatter`           | `futhark`                                                                 |
 | [gci](https://github.com/daixiang0/gci)                                                 | GCI, a tool that control golang package import order and make it always deterministic                                                         | `formatter`           | `go`                                                                      |
 | [gdformat](https://github.com/scony/godot-gdscript-toolkit)                             | GDScript linter                                                                                                                               | `formatter`           | `gdscript`                                                                |
 | [gersemi](https://github.com/blankspruce/gersemi)                                       | A formatter to make your CMake code the real treasure                                                                                         | `formatter`           | `cmake`                                                                   |

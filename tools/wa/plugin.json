@@ -3,7 +3,7 @@
   "binary": "wa",
   "categories": ["formatter"],
   "commands": {
-    "fmt": ["$PATH"]
+    "fmt": ["fmt", "$PATH"]
   },
   "description": "Formatter for the wa programming language",
   "homepage": "https://github.com/wa-lang/wa/",

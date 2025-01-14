@@ -74,6 +74,7 @@ pub mod fnlfmt;
 pub mod forge_fmt;
 pub mod fourmolu;
 pub mod fprettify;
+pub mod futhark_fmt;
 pub mod gci;
 pub mod gdformat;
 pub mod gersemi;
@@ -554,6 +555,10 @@ pub enum Tooling {
     #[serde(rename = "fprettify")]
     /// `fprettify $PATH`
     Fprettify,
+
+    #[serde(rename = "futhark:fmt")]
+    /// `futhark fmt $PATH`
+    FutharkFmt,
 
     #[serde(rename = "gci")]
     /// `gci write --skip-generated --skip-vender $PATH`
@@ -1196,7 +1201,7 @@ pub enum Tooling {
     VhdlStyleGuide,
 
     #[serde(rename = "wa:fmt")]
-    /// `wa $PATH`
+    /// `wa fmt $PATH`
     WaFmt,
 
     #[serde(rename = "wfindent")]
@@ -1328,6 +1333,7 @@ impl Tooling {
             Self::ForgeFmt => forge_fmt::run(snippet_path),
             Self::Fourmolu => fourmolu::run(snippet_path),
             Self::Fprettify => fprettify::run(snippet_path),
+            Self::FutharkFmt => futhark_fmt::run(snippet_path),
             Self::Gci => gci::run(snippet_path),
             Self::Gdformat => gdformat::run(snippet_path),
             Self::Gersemi => gersemi::run(snippet_path),
@@ -1585,6 +1591,7 @@ impl AsRef<str> for Tooling {
             Self::ForgeFmt => "forge_fmt",
             Self::Fourmolu => "fourmolu",
             Self::Fprettify => "fprettify",
+            Self::FutharkFmt => "futhark_fmt",
             Self::Gci => "gci",
             Self::Gdformat => "gdformat",
             Self::Gersemi => "gersemi",

@@ -439,6 +439,11 @@
           "enum": ["fprettify"]
         },
         {
+          "description": "`futhark fmt $PATH`",
+          "type": "string",
+          "enum": ["futhark:fmt"]
+        },
+        {
           "description": "`gci write --skip-generated --skip-vender $PATH`",
           "type": "string",
           "enum": ["gci"]
@@ -1239,7 +1244,7 @@
           "enum": ["vhdl-style-guide"]
         },
         {
-          "description": "`wa $PATH`",
+          "description": "`wa fmt $PATH`",
           "type": "string",
           "enum": ["wa:fmt"]
         },
