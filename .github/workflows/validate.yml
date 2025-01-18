@@ -60,7 +60,7 @@ jobs:
           ruby-version: "3.3"
       - uses: dart-lang/setup-dart@v1
       - uses: crystal-lang/install-crystal@v1
-      - uses: hasnep/setup-roc@v0.3.0
+      - uses: hasnep/setup-roc@v0.4.0
       - uses: denoland/setup-deno@v2
         with:
           deno-version: v1.x
