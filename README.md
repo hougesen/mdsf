@@ -214,7 +214,7 @@ mdsf init
 
 <!-- START_SECTION:supported-tools -->
 
-`mdsf` currently supports 241 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 242 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                                                                                    | Description                                                                                                                                   | Categories            | Languages                                                                 |
 | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- | ------------------------------------------------------------------------- |
@@ -334,6 +334,7 @@ mdsf init
 | [liquidsoap-prettier](https://github.com/savonet/liquidsoap-prettier)                   | Prettier plugin for liquidsoap script                                                                                                         | `formatter`           | `liquidsoap`                                                              |
 | [luacheck](https://github.com/lunarmodules/luacheck)                                    | A tool for linting and static analysis of Lua code                                                                                            | `formatter`           | `lua`                                                                     |
 | [luaformatter](https://github.com/Koihik/LuaFormatter)                                  | Code formatter for Lua                                                                                                                        | `formatter`           | `lua`                                                                     |
+| [mado](https://github.com/akiomik/mado)                                                 | A fast Markdown linter written in Rust                                                                                                        | `linter`              | `markdown`                                                                |
 | [markdownfmt](https://github.com/shurcooL/markdownfmt)                                  | Like gofmt, but for Markdown                                                                                                                  | `formatter`           | `markdown`                                                                |
 | [markdownlint-cli2](https://github.com/davidanson/markdownlint-cli2)                    | A fast, flexible, configuration-based command-line interface for linting Markdown/CommonMark files with the markdownlint library              | `linter`              | `markdown`                                                                |
 | [markdownlint](https://github.com/davidanson/markdownlint)                              | A Node.js style checker and lint tool for Markdown/CommonMark files                                                                           | `linter`              | `markdown`                                                                |
