@@ -3,7 +3,13 @@
   "binary": "ufmt",
   "categories": ["formatter"],
   "commands": {
-    "": ["format", "$PATH"]
+    "": {
+      "command": ["format", "$PATH"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "Safe, atomic formatting with black and usort",
   "homepage": "https://github.com/omnilib/ufmt",

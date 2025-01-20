@@ -1,9 +1,15 @@
 {
   "$schema": "../tool.schema.json",
   "binary": "standardrb",
-  "categories": ["formatter", "linter"],
+  "categories": ["linter", "formatter"],
   "commands": {
-    "": ["--fix", "$PATH"]
+    "": {
+      "command": ["--fix", "$PATH"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "Ruby's bikeshed-proof linter and formatter",
   "homepage": "https://github.com/standardrb/standard",

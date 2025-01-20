@@ -3,7 +3,13 @@
   "binary": "kulala-fmt",
   "categories": ["formatter"],
   "commands": {
-    "": ["$PATH"]
+    "": {
+      "command": ["$PATH"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "An opinionated 🦄 .http and .rest 🐼 files linter 💄 and formatter ⚡",
   "homepage": "https://github.com/mistweaverco/kulala-fmt",

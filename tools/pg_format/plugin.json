@@ -3,7 +3,13 @@
   "binary": "pg_format",
   "categories": ["formatter"],
   "commands": {
-    "": ["--inplace", "$PATH"]
+    "": {
+      "command": ["--inplace", "$PATH"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "A PostgreSQL SQL syntax beautifier",
   "homepage": "https://github.com/darold/pgFormatter",

@@ -3,7 +3,13 @@
   "binary": "inko",
   "categories": ["formatter"],
   "commands": {
-    "fmt": ["fmt", "$PATH"]
+    "fmt": {
+      "command": ["fmt", "$PATH"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "Code formatter for the inko programming language",
   "homepage": "https://github.com/inko-lang/inko",

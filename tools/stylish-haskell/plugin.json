@@ -3,7 +3,13 @@
   "binary": "stylish-haskell",
   "categories": ["formatter"],
   "commands": {
-    "": ["--inplace", "$PATH"]
+    "": {
+      "command": ["--inplace", "$PATH"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "Haskell code prettifier",
   "homepage": "https://github.com/haskell/stylish-haskell",

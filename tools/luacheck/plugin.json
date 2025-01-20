@@ -3,7 +3,13 @@
   "binary": "luacheck",
   "categories": ["formatter"],
   "commands": {
-    "": ["$PATH"]
+    "": {
+      "command": ["$PATH"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "A tool for linting and static analysis of Lua code",
   "homepage": "https://github.com/lunarmodules/luacheck",

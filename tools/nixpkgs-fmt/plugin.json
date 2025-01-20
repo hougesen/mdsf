@@ -3,7 +3,13 @@
   "binary": "nixpkgs-fmt",
   "categories": ["formatter"],
   "commands": {
-    "": ["$PATH"]
+    "": {
+      "command": ["$PATH"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "Nix code formatter for nixpkgs",
   "homepage": "https://github.com/nix-community/nixpkgs-fmt",

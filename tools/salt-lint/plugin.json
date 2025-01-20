@@ -3,7 +3,13 @@
   "binary": "salt-lint",
   "categories": ["linter"],
   "commands": {
-    "": ["$PATH"]
+    "": {
+      "command": ["$PATH"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "A command-line utility that checks for best practices in SaltStack",
   "homepage": "https://github.com/warpnet/salt-lint",

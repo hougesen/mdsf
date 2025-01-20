@@ -3,7 +3,13 @@
   "binary": "forge",
   "categories": ["formatter"],
   "commands": {
-    "fmt": ["fmt", "$PATH"]
+    "fmt": {
+      "command": ["fmt", "$PATH"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "A Solidity formatter",
   "homepage": "https://github.com/foundry-rs/foundry",

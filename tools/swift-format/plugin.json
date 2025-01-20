@@ -3,7 +3,13 @@
   "binary": "swift-format",
   "categories": ["formatter"],
   "commands": {
-    "": ["--in-place", "$PATH"]
+    "": {
+      "command": ["--in-place", "$PATH"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "Formatting technology for Swift source code",
   "homepage": "https://github.com/apple/swift-format",

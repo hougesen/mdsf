@@ -3,7 +3,13 @@
   "binary": "gofumpt",
   "categories": ["formatter"],
   "commands": {
-    "": ["-w", "$PATH"]
+    "": {
+      "command": ["-w", "$PATH"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "A stricter gofmt",
   "homepage": "https://github.com/mvdan/gofumpt",

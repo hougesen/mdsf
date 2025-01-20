@@ -3,7 +3,13 @@
   "binary": "dotnet",
   "categories": ["formatter"],
   "commands": {
-    "": ["csharpier", "$PATH"]
+    "": {
+      "command": ["csharpier", "$PATH"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "An Opinionated Code Formatter for C#",
   "homepage": "https://csharpier.com/",

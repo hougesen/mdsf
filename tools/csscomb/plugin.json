@@ -3,7 +3,13 @@
   "binary": "csscomb",
   "categories": ["formatter"],
   "commands": {
-    "": ["-t", "$PATH"]
+    "": {
+      "command": ["-t", "$PATH"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "CSS coding style formatter",
   "homepage": "https://github.com/csscomb/csscomb.js",

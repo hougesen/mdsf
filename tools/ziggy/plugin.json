@@ -3,7 +3,13 @@
   "binary": "ziggy",
   "categories": ["formatter"],
   "commands": {
-    "fmt": ["fmt", "$PATH"]
+    "fmt": {
+      "command": ["fmt", "$PATH"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "Formats Ziggy documents and Ziggy schemas",
   "homepage": "https://ziggy-lang.io/documentation/ziggy-fmt/",

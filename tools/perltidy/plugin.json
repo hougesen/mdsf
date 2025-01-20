@@ -3,7 +3,13 @@
   "binary": "perltidy",
   "categories": ["formatter"],
   "commands": {
-    "": ["-b", "$PATH"]
+    "": {
+      "command": ["-b", "$PATH"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "Perl::Tidy, a source code formatter for Perl",
   "homepage": "https://github.com/perltidy/perltidy",

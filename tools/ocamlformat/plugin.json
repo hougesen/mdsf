@@ -3,12 +3,18 @@
   "binary": "ocamlformat",
   "categories": ["formatter"],
   "commands": {
-    "": [
-      "--ignore-invalid-option",
-      "--inplace",
-      "--enable-outside-detected-project",
-      "$PATH"
-    ]
+    "": {
+      "command": [
+        "--ignore-invalid-option",
+        "--inplace",
+        "--enable-outside-detected-project",
+        "$PATH"
+      ],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "Auto-formatter for OCaml code",
   "homepage": "https://github.com/ocaml-ppx/ocamlformat",

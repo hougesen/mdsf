@@ -3,7 +3,13 @@
   "binary": "imba",
   "categories": ["formatter"],
   "commands": {
-    "fmt": ["fmt", "-f", "$PATH"]
+    "fmt": {
+      "command": ["fmt", "-f", "$PATH"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "A formatter for Imba",
   "homepage": "https://imba.io/",

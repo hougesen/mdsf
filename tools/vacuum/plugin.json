@@ -3,7 +3,13 @@
   "binary": "vacuum",
   "categories": ["linter"],
   "commands": {
-    "lint": ["lint", "$PATH"]
+    "lint": {
+      "command": ["lint", "$PATH"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "vacuum is the worlds fastest OpenAPI 3, OpenAPI 2 / Swagger linter and quality analysis tool",
   "homepage": "https://github.com/daveshanley/vacuum",

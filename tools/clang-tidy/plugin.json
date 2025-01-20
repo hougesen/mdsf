@@ -3,7 +3,13 @@
   "binary": "clang-tidy",
   "categories": ["linter"],
   "commands": {
-    "": ["--fix", "$PATH"]
+    "": {
+      "command": ["--fix", "$PATH"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "clang-tidy is a clang-based C++ “linter” tool",
   "homepage": "https://clang.llvm.org/extra/clang-tidy/",

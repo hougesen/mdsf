@@ -3,7 +3,13 @@
   "binary": "raco",
   "categories": ["formatter"],
   "commands": {
-    "fmt": ["fmt", "-i", "$PATH"]
+    "fmt": {
+      "command": ["fmt", "-i", "$PATH"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "An extensible code formatter for Racket",
   "homepage": "https://docs.racket-lang.org/fmt/",

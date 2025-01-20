@@ -3,7 +3,13 @@
   "binary": "elm-format",
   "categories": ["formatter"],
   "commands": {
-    "": ["--elm-version=0.19", "--yes", "$PATH"]
+    "": {
+      "command": ["--elm-version=0.19", "--yes", "$PATH"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "elm-format formats Elm source code according to a standard set of rules based on the official Elm Style Guide",
   "homepage": "https://github.com/avh4/elm-format",

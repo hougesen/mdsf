@@ -3,7 +3,13 @@
   "binary": "puppet-lint",
   "categories": ["linter"],
   "commands": {
-    "": ["--fix", "$PATH"]
+    "": {
+      "command": ["--fix", "$PATH"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "Check that your Puppet manifests conform to the style guide",
   "homepage": "https://github.com/puppetlabs/puppet-lint",

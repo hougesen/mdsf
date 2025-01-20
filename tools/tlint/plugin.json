@@ -3,7 +3,13 @@
   "binary": "tlint",
   "categories": ["linter"],
   "commands": {
-    "format": ["format", "$PATH"]
+    "format": {
+      "command": ["format", "$PATH"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "Tighten linter for Laravel conventions",
   "homepage": "https://github.com/tighten/tlint",

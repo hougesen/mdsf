@@ -3,7 +3,13 @@
   "binary": "nufmt",
   "categories": ["formatter"],
   "commands": {
-    "": ["$PATH"]
+    "": {
+      "command": ["$PATH"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "the nushell formatter",
   "homepage": "https://github.com/nushell/nufmt",

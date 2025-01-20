@@ -3,7 +3,13 @@
   "binary": "htmlbeautifier",
   "categories": ["formatter"],
   "commands": {
-    "": ["$PATH"]
+    "": {
+      "command": ["$PATH"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "A normaliser/beautifier for HTML that also understands embedded Ruby. Ideal for tidying up Rails templates",
   "homepage": "https://github.com/threedaymonk/htmlbeautifier",

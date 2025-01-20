@@ -3,7 +3,13 @@
   "binary": "fourmolu",
   "categories": ["formatter"],
   "commands": {
-    "": ["-i", "$PATH"]
+    "": {
+      "command": ["-i", "$PATH"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "A formatter for Haskell source code",
   "homepage": "https://hackage.haskell.org/package/fourmolu",

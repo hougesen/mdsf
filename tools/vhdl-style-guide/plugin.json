@@ -3,7 +3,13 @@
   "binary": "vsg",
   "categories": ["formatter"],
   "commands": {
-    "": ["-f", "$PATH", "--fix"]
+    "": {
+      "command": ["-f", "$PATH", "--fix"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "Style guide enforcement for VHDL",
   "homepage": "https://github.com/jeremiah-c-leary/vhdl-style-guide",

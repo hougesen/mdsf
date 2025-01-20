@@ -3,7 +3,13 @@
   "binary": "rustywind",
   "categories": ["formatter"],
   "commands": {
-    "": ["--write", "$PATH"]
+    "": {
+      "command": ["--write", "$PATH"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "CLI for organizing Tailwind CSS classes",
   "homepage": "https://github.com/avencera/rustywind",

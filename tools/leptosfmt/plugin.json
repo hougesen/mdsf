@@ -3,7 +3,13 @@
   "binary": "leptosfmt",
   "categories": ["formatter"],
   "commands": {
-    "": ["--quiet", "$PATH"]
+    "": {
+      "command": ["--quiet", "$PATH"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "A formatter for the leptos view! macro",
   "homepage": "https://github.com/bram209/leptosfmt",

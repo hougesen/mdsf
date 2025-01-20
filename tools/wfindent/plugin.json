@@ -3,7 +3,13 @@
   "binary": "wfindent",
   "categories": ["formatter"],
   "commands": {
-    "": ["$PATH"]
+    "": {
+      "command": ["$PATH"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "Indents and optionally converts Fortran program sources",
   "homepage": "https://github.com/wvermin/findent",

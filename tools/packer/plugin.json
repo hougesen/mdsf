@@ -3,8 +3,20 @@
   "binary": "packer",
   "categories": ["formatter"],
   "commands": {
-    "fix": ["fix", "$PATH"],
-    "fmt": ["fmt", "$PATH"]
+    "fix": {
+      "command": ["fix", "$PATH"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    },
+    "fmt": {
+      "command": ["fmt", "$PATH"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "Packer is used to format HCL2 configuration files",
   "homepage": "https://developer.hashicorp.com/packer/docs/commands",

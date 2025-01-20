@@ -3,7 +3,13 @@
   "binary": "v",
   "categories": ["formatter"],
   "commands": {
-    "fmt": ["fmt", "-w", "$PATH"]
+    "fmt": {
+      "command": ["fmt", "-w", "$PATH"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "Tooling for V lang",
   "homepage": "https://vlang.io/",

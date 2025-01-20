@@ -28,10 +28,7 @@
     "commands": {
       "type": "object",
       "additionalProperties": {
-        "type": "array",
-        "items": {
-          "type": "string"
-        }
+        "$ref": "#/definitions/ToolCommand"
       }
     },
     "description": {
@@ -67,6 +64,40 @@
   },
   "additionalProperties": false,
   "definitions": {
+    "ToolCommand": {
+      "type": "object",
+      "required": [
+        "command",
+        "description",
+        "homepage",
+        "ignore_output",
+        "tests"
+      ],
+      "properties": {
+        "command": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "description": {
+          "type": "string"
+        },
+        "homepage": {
+          "type": "string"
+        },
+        "ignore_output": {
+          "type": "boolean"
+        },
+        "tests": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ToolTest"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
     "ToolTest": {
       "type": "object",
       "required": ["command", "language", "test_input", "test_output"],

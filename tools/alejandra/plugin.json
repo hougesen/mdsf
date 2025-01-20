@@ -3,7 +3,13 @@
   "binary": "alejandra",
   "categories": ["formatter"],
   "commands": {
-    "": ["--quiet", "$PATH"]
+    "": {
+      "command": ["--quiet", "$PATH"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "The Uncompromising Nix Code Formatter",
   "homepage": "https://github.com/kamadorueda/alejandra",

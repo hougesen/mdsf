@@ -3,7 +3,13 @@
   "binary": "fantomas",
   "categories": ["formatter"],
   "commands": {
-    "": ["$PATH"]
+    "": {
+      "command": ["$PATH"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "FSharp source code formatter",
   "homepage": "https://github.com/fsprojects/fantomas",

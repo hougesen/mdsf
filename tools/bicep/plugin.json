@@ -3,7 +3,13 @@
   "binary": "bicep",
   "categories": ["formatter"],
   "commands": {
-    "format": ["format", "$PATH"]
+    "format": {
+      "command": ["format", "$PATH"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "Bicep is a declarative language for describing and deploying Azure resources",
   "homepage": "https://github.com/Azure/bicep",

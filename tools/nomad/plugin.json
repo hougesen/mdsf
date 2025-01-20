@@ -3,7 +3,13 @@
   "binary": "nomad",
   "categories": ["formatter"],
   "commands": {
-    "fmt": ["fmt", "$PATH"]
+    "fmt": {
+      "command": ["fmt", "$PATH"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "CLI for HashiCorp Nomad",
   "homepage": "https://developer.hashicorp.com/nomad/docs/commands",

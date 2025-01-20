@@ -3,7 +3,13 @@
   "binary": "cljstyle",
   "categories": ["formatter"],
   "commands": {
-    "": ["fix", "$PATH"]
+    "": {
+      "command": ["fix", "$PATH"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "A tool for formatting Clojure code",
   "homepage": "https://github.com/greglook/cljstyle",

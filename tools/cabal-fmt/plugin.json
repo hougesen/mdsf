@@ -3,7 +3,13 @@
   "binary": "cabal-fmt",
   "categories": ["formatter"],
   "commands": {
-    "": ["--inplace", "$PATH"]
+    "": {
+      "command": ["--inplace", "$PATH"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "An experiment of formatting .cabal files",
   "homepage": "https://github.com/phadej/cabal-fmt",

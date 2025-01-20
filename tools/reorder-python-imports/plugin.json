@@ -3,7 +3,13 @@
   "binary": "reorder-python-imports",
   "categories": ["formatter"],
   "commands": {
-    "": ["$PATH"]
+    "": {
+      "command": ["$PATH"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "Rewrites source to reorder python imports",
   "homepage": "https://github.com/asottile/reorder-python-imports",

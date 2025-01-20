@@ -3,7 +3,13 @@
   "binary": "black",
   "categories": ["formatter"],
   "commands": {
-    "": ["--quiet", "$PATH"]
+    "": {
+      "command": ["--quiet", "$PATH"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "The uncompromising Python code formatter",
   "homepage": "https://github.com/psf/black",

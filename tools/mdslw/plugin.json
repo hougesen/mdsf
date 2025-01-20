@@ -3,11 +3,18 @@
   "binary": "mdslw",
   "categories": ["formatter"],
   "commands": {
-    "": ["$PATH"]
+    "": {
+      "command": ["$PATH"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "Prepare your markdown for easy diff'ing!",
   "homepage": "https://github.com/razziel89/mdslw",
   "languages": ["markdown"],
+  "name": null,
   "npm": null,
   "php": null,
   "tests": []

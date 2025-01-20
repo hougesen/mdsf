@@ -3,7 +3,13 @@
   "binary": "tsqllint",
   "categories": ["linter"],
   "commands": {
-    "": ["--fix", "$PATH"]
+    "": {
+      "command": ["--fix", "$PATH"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "Configurable linting for TSQL",
   "homepage": "https://github.com/tsqllint/tsqllint",

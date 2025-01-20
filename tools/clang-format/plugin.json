@@ -3,19 +3,25 @@
   "binary": "clang-format",
   "categories": ["formatter"],
   "commands": {
-    "": ["-i", "$PATH"]
+    "": {
+      "command": ["-i", "$PATH"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "A tool to format C/C++/Java/JavaScript/JSON/Objective-C/Protobuf/C# code",
   "homepage": "https://clang.llvm.org/docs/ClangFormat.html",
   "languages": [
-    "c",
+    "protobuf",
     "c#",
-    "c++",
     "java",
-    "javascript",
+    "c++",
     "json",
+    "c",
     "objective-c",
-    "protobuf"
+    "javascript"
   ],
   "name": null,
   "npm": null,

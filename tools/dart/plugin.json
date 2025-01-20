@@ -1,10 +1,22 @@
 {
   "$schema": "../tool.schema.json",
   "binary": "dart",
-  "categories": ["formatter", "linter"],
+  "categories": ["linter", "formatter"],
   "commands": {
-    "fix": ["fix", "--apply", "$PATH"],
-    "format": ["format", "$PATH"]
+    "fix": {
+      "command": ["fix", "--apply", "$PATH"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    },
+    "format": {
+      "command": ["format", "$PATH"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "Formatter and linter for Dart",
   "homepage": "https://dart.dev/tools",

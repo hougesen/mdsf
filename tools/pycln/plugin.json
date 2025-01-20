@@ -3,7 +3,13 @@
   "binary": "pycln",
   "categories": ["formatter"],
   "commands": {
-    "": ["--no-gitignore", "--quiet", "$PATH"]
+    "": {
+      "command": ["--no-gitignore", "--quiet", "$PATH"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "A formatter for finding and removing unused import statements",
   "homepage": "https://github.com/hadialqattan/pycln",

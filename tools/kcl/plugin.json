@@ -3,7 +3,13 @@
   "binary": "kcl",
   "categories": ["formatter"],
   "commands": {
-    "fmt": ["fmt", "$PATH"]
+    "fmt": {
+      "command": ["fmt", "$PATH"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "KCL Format tool supports reformatting KCL files to the standard code style",
   "homepage": "https://www.kcl-lang.io/docs/tools/cli/kcl/fmt",

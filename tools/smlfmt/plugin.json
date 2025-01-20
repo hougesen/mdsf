@@ -3,7 +3,13 @@
   "binary": "smlfmt",
   "categories": ["formatter"],
   "commands": {
-    "": ["--force", "$PATH"]
+    "": {
+      "command": ["--force", "$PATH"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "A custom parser/auto-formatter for Standard ML",
   "homepage": "https://github.com/shwestrick/smlfmt",

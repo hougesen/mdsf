@@ -3,7 +3,13 @@
   "binary": "gleam",
   "categories": ["formatter"],
   "commands": {
-    "format": ["format", "$PATH"]
+    "format": {
+      "command": ["format", "$PATH"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "Format Gleam source code",
   "homepage": "https://gleam.run",

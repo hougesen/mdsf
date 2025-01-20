@@ -3,7 +3,13 @@
   "binary": "pycodestyle",
   "categories": ["linter"],
   "commands": {
-    "": ["$PATH"]
+    "": {
+      "command": ["$PATH"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "Simple Python style checker in one Python file",
   "homepage": "https://github.com/PyCQA/pycodestyle",

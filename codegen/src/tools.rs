@@ -19,6 +19,24 @@ pub struct ToolTest {
 
 #[derive(Debug, serde::Deserialize, schemars::JsonSchema)]
 #[schemars(deny_unknown_fields)]
+pub struct ToolCommand {
+    pub command: Vec<String>,
+
+    #[expect(unused)]
+    pub ignore_output: bool,
+
+    #[expect(unused)]
+    pub description: String,
+
+    #[expect(unused)]
+    pub homepage: String,
+
+    #[expect(unused)]
+    pub tests: Vec<ToolTest>,
+}
+
+#[derive(Debug, serde::Deserialize, schemars::JsonSchema)]
+#[schemars(deny_unknown_fields)]
 pub struct Tool {
     #[expect(unused)]
     #[serde(rename = "$schema")]
@@ -34,7 +52,7 @@ pub struct Tool {
     /// Binary name if installed through composer
     pub php: Option<String>,
 
-    pub commands: std::collections::HashMap<String, Vec<String>>,
+    pub commands: std::collections::HashMap<String, ToolCommand>,
 
     pub description: String,
 
@@ -133,7 +151,7 @@ impl Tool {
             }
         }
 
-        for (cmd, args) in &self.commands {
+        for (cmd, options) in &self.commands {
             let command_name = self.get_command_name(cmd);
 
             let set_args_fn_name = format!("set_{command_name}_args");
@@ -168,7 +186,8 @@ impl Tool {
             };
             let mut args_includes_path = false;
 
-            let string_args = args
+            let string_args = options
+                .command
                 .iter()
                 .map(|arg| {
                     if arg == "$PATH" {
@@ -259,7 +278,7 @@ mod test_{module_name} {{{tests}}}
                     if cmd.is_empty() { "" } else { ":" },
                     cmd
                 ),
-                args: args.clone(),
+                args: options.command.clone(),
                 binary: self.binary.clone(),
             });
         }

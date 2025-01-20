@@ -3,7 +3,13 @@
   "binary": "caramel",
   "categories": ["formatter"],
   "commands": {
-    "fmt": ["fmt", "$PATH"]
+    "fmt": {
+      "command": ["fmt", "$PATH"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "Formatter for the Caramel programming language",
   "homepage": "https://caramel.run/",

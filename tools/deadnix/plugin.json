@@ -3,7 +3,13 @@
   "binary": "deadnix",
   "categories": ["linter"],
   "commands": {
-    "": ["-q", "--edit", "$PATH"]
+    "": {
+      "command": ["-q", "--edit", "$PATH"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "Scan Nix files for dead code",
   "homepage": "https://github.com/astro/deadnix",

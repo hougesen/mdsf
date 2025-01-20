@@ -3,7 +3,13 @@
   "binary": "ktlint",
   "categories": ["linter"],
   "commands": {
-    "": ["--format", "--log-level=error", "$PATH"]
+    "": {
+      "command": ["--format", "--log-level=error", "$PATH"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "An anti-bikeshedding Kotlin linter with built-in formatter",
   "homepage": "https://github.com/pinterest/ktlint",

@@ -3,7 +3,13 @@
   "binary": "dhall",
   "categories": ["formatter"],
   "commands": {
-    "": ["format", "$PATH"]
+    "": {
+      "command": ["format", "$PATH"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "Format Dhall files",
   "homepage": "https://dhall-lang.org/",

@@ -3,7 +3,19 @@
   "binary": "rubocop",
   "categories": ["formatter", "linter"],
   "commands": {
-    "": ["--fix-layout", "--autocorrect", "--format", "quiet", "$PATH"]
+    "": {
+      "command": [
+        "--fix-layout",
+        "--autocorrect",
+        "--format",
+        "quiet",
+        "$PATH"
+      ],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "A Ruby static code analyzer and formatter, based on the community Ruby style guide",
   "homepage": "https://github.com/rubocop/rubocop",

@@ -3,7 +3,13 @@
   "binary": "just",
   "categories": ["formatter"],
   "commands": {
-    "": ["--fmt", "--unstable", "--justfile", "$PATH"]
+    "": {
+      "command": ["--fmt", "--unstable", "--justfile", "$PATH"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "A formatter for justfiles",
   "homepage": "https://github.com/casey/just",

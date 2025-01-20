@@ -3,7 +3,13 @@
   "binary": "rufo",
   "categories": ["formatter"],
   "commands": {
-    "": ["--simple-exit", "$PATH"]
+    "": {
+      "command": ["--simple-exit", "$PATH"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "The Ruby Formatter",
   "homepage": "https://github.com/ruby-formatter/rufo",

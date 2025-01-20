@@ -3,7 +3,13 @@
   "binary": "uiua",
   "categories": ["formatter"],
   "commands": {
-    "fmt": ["fmt", "$PATH"]
+    "fmt": {
+      "command": ["fmt", "$PATH"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "A stack-based array programming language",
   "homepage": "https://github.com/uiua-lang/uiua",

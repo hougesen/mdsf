@@ -3,7 +3,13 @@
   "binary": "usort",
   "categories": ["formatter"],
   "commands": {
-    "": ["format", "$PATH"]
+    "": {
+      "command": ["format", "$PATH"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "Safe, minimal import sorting for Python projects",
   "homepage": "https://github.com/facebook/usort",

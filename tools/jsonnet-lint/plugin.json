@@ -3,7 +3,13 @@
   "binary": "jsonnet-lint",
   "categories": ["linter"],
   "commands": {
-    "": ["$PATH"]
+    "": {
+      "command": ["$PATH"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "Linter for jsonnet files",
   "homepage": "https://jsonnet.org/learning/tools.html",

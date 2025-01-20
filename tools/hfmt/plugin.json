@@ -3,7 +3,13 @@
   "binary": "hfmt",
   "categories": ["formatter"],
   "commands": {
-    "": ["-w", "$PATH"]
+    "": {
+      "command": ["-w", "$PATH"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "Format Haskell programs. Inspired by the gofmt utility",
   "homepage": "https://github.com/danstiner/hfmt",

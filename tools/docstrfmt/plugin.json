@@ -3,11 +3,17 @@
   "binary": "docstrfmt",
   "categories": ["formatter"],
   "commands": {
-    "": ["$PATH"]
+    "": {
+      "command": ["$PATH"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "A formatter for Sphinx flavored reStructuredText",
   "homepage": "https://pypi.org/project/docstrfmt/",
-  "languages": ["python", "reStructuredText", "Sphinx"],
+  "languages": ["reStructuredText", "python", "Sphinx"],
   "name": null,
   "npm": null,
   "php": null,

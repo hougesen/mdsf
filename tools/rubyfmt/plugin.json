@@ -3,7 +3,13 @@
   "binary": "rubyfmt",
   "categories": ["formatter"],
   "commands": {
-    "": ["-i", "$PATH"]
+    "": {
+      "command": ["-i", "$PATH"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "Ruby Autoformatter",
   "homepage": "https://github.com/fables-tales/rubyfmt",

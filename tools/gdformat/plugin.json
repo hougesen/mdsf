@@ -3,7 +3,13 @@
   "binary": "gdformat",
   "categories": ["formatter"],
   "commands": {
-    "": ["$PATH"]
+    "": {
+      "command": ["$PATH"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "GDScript linter",
   "homepage": "https://github.com/scony/godot-gdscript-toolkit",

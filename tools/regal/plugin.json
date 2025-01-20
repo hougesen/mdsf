@@ -3,8 +3,20 @@
   "binary": "regal",
   "categories": ["linter"],
   "commands": {
-    "fix": ["fix", "$PATH"],
-    "lint": ["lint", "$PATH"]
+    "fix": {
+      "command": ["fix", "$PATH"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    },
+    "lint": {
+      "command": ["lint", "$PATH"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "Regal is a linter and language server for Rego, bringing your policy development experience to the next level",
   "homepage": "https://github.com/styrainc/regal",

@@ -3,8 +3,20 @@
   "binary": "sqlfluff",
   "categories": ["formatter", "linter"],
   "commands": {
-    "fix": ["fix", "--dialect", "ansi", "$PATH"],
-    "format": ["format", "--dialect", "ansi", "$PATH"]
+    "fix": {
+      "command": ["fix", "--dialect", "ansi", "$PATH"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    },
+    "format": {
+      "command": ["format", "--dialect", "ansi", "$PATH"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "A modular SQL linter and auto-formatter with support for multiple dialects and templated code",
   "homepage": "https://github.com/sqlfluff/sqlfluff",

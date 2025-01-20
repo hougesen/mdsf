@@ -3,7 +3,13 @@
   "binary": "brittany",
   "categories": ["formatter"],
   "commands": {
-    "": ["--write-mode=inplace", "$PATH"]
+    "": {
+      "command": ["--write-mode=inplace", "$PATH"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "A Haskell source code formatter",
   "homepage": "https://github.com/lspitzner/brittany",

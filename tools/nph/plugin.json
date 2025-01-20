@@ -3,7 +3,13 @@
   "binary": "nph",
   "categories": ["formatter"],
   "commands": {
-    "": ["$PATH"]
+    "": {
+      "command": ["$PATH"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "An opinionated code formatter for Nim",
   "homepage": "https://github.com/arnetheduck/nph",

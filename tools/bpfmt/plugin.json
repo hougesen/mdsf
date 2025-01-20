@@ -3,7 +3,13 @@
   "binary": "bpfmt",
   "categories": ["formatter"],
   "commands": {
-    "": ["-w", "$PATH"]
+    "": {
+      "command": ["-w", "$PATH"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "A formatter for Blueprint files",
   "homepage": "https://source.android.com/docs/setup/reference/androidbp#formatter",

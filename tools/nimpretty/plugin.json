@@ -3,7 +3,13 @@
   "binary": "nimpretty",
   "categories": ["formatter"],
   "commands": {
-    "": ["$PATH"]
+    "": {
+      "command": ["$PATH"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "Code formatter for the Nim programming language",
   "homepage": "https://github.com/nim-lang/nim",

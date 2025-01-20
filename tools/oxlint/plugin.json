@@ -3,7 +3,13 @@
   "binary": "oxlint",
   "categories": ["linter"],
   "commands": {
-    "": ["--fix", "$PATH"]
+    "": {
+      "command": ["--fix", "$PATH"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "Oxlint is designed to catch erroneous or useless code without requiring any configurations by default",
   "homepage": "https://oxc.rs/docs/guide/usage/linter.html",

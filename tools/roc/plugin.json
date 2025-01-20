@@ -3,7 +3,13 @@
   "binary": "roc",
   "categories": ["formatter"],
   "commands": {
-    "format": ["format", "$PATH"]
+    "format": {
+      "command": ["format", "$PATH"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "Tools for the roc programming language",
   "homepage": "https://github.com/roc-lang/roc",

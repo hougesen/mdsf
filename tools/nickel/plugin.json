@@ -3,7 +3,13 @@
   "binary": "nickel",
   "categories": ["formatter"],
   "commands": {
-    "format": ["format", "$PATH"]
+    "format": {
+      "command": ["format", "$PATH"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "Better configuration for less",
   "homepage": "https://nickel-lang.org/",

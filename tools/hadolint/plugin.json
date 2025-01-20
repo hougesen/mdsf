@@ -3,7 +3,13 @@
   "binary": "hadolint",
   "categories": ["linter"],
   "commands": {
-    "": ["$PATH"]
+    "": {
+      "command": ["$PATH"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "Dockerfile linter, validate inline bash, written in Haskell",
   "homepage": "https://github.com/hadolint/hadolint",

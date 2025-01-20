@@ -3,7 +3,13 @@
   "binary": "xmllint",
   "categories": ["linter"],
   "commands": {
-    "": ["--format", "$PATH", "--output", "$PATH"]
+    "": {
+      "command": ["--format", "$PATH", "--output", "$PATH"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "XML linter",
   "homepage": "https://gnome.pages.gitlab.gnome.org/libxml2/xmllint.html",

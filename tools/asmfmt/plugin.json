@@ -3,7 +3,13 @@
   "binary": "asmfmt",
   "categories": ["formatter"],
   "commands": {
-    "": ["-w", "$PATH"]
+    "": {
+      "command": ["-w", "$PATH"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "Go Assembler Formatter",
   "homepage": "https://github.com/klauspost/asmfmt",

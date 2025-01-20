@@ -3,7 +3,13 @@
   "binary": "shellcheck",
   "categories": ["linter"],
   "commands": {
-    "": ["$PATH"]
+    "": {
+      "command": ["$PATH"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "ShellCheck, a static analysis tool for shell scripts",
   "homepage": "https://github.com/koalaman/shellcheck",

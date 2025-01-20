@@ -3,7 +3,13 @@
   "binary": "mdformat",
   "categories": ["formatter"],
   "commands": {
-    "": ["$PATH"]
+    "": {
+      "command": ["$PATH"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "CommonMark compliant Markdown formatter",
   "homepage": "https://github.com/executablebooks/mdformat",

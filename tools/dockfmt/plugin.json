@@ -3,7 +3,13 @@
   "binary": "dockfmt",
   "categories": ["formatter"],
   "commands": {
-    "": ["fmt", "-w", "$PATH"]
+    "": {
+      "command": ["fmt", "-w", "$PATH"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "Dockerfile format and parser. Like `gofmt` but for Dockerfiles",
   "homepage": "https://github.com/jessfraz/dockfmt",

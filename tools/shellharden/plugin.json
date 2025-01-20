@@ -3,7 +3,13 @@
   "binary": "shellharden",
   "categories": ["linter"],
   "commands": {
-    "": ["--transform", "--replace", "$PATH"]
+    "": {
+      "command": ["--transform", "--replace", "$PATH"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "The corrective bash syntax highlighter",
   "homepage": "https://github.com/anordal/shellharden",

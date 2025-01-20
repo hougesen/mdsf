@@ -3,7 +3,13 @@
   "binary": "nginxbeautifier",
   "categories": ["formatter"],
   "commands": {
-    "": ["$PATH"]
+    "": {
+      "command": ["$PATH"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "Format and beautify nginx config files",
   "homepage": "https://github.com/vasilevich/nginxbeautifier",

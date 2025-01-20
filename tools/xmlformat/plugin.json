@@ -3,7 +3,13 @@
   "binary": "xmlformat",
   "categories": ["formatter"],
   "commands": {
-    "": ["--overwrite", "$PATH"]
+    "": {
+      "command": ["--overwrite", "$PATH"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "Format and compress XML documents",
   "homepage": "https://github.com/pamoller/xmlformatter",

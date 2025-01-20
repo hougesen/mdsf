@@ -3,7 +3,13 @@
   "binary": "sql-formatter",
   "categories": ["formatter"],
   "commands": {
-    "": ["--fix", "$PATH"]
+    "": {
+      "command": ["--fix", "$PATH"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "A whitespace formatter for different query languages",
   "homepage": "https://github.com/sql-formatter-org/sql-formatter",

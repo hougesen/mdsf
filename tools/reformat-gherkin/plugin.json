@@ -3,7 +3,13 @@
   "binary": "reformat-gherkin",
   "categories": ["formatter"],
   "commands": {
-    "": ["$PATH"]
+    "": {
+      "command": ["$PATH"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "Reformat-gherkin automatically formats Gherkin files",
   "homepage": "https://github.com/ducminh-phan/reformat-gherkin",

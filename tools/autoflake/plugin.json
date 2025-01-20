@@ -3,7 +3,13 @@
   "binary": "autoflake",
   "categories": ["linter"],
   "commands": {
-    "": ["--quiet", "--in-place", "$PATH"]
+    "": {
+      "command": ["--quiet", "--in-place", "$PATH"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "Removes unused imports and unused variables as reported by pyflakes",
   "homepage": "https://github.com/pycqa/autoflake",

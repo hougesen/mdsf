@@ -3,7 +3,13 @@
   "binary": "grain",
   "categories": ["formatter"],
   "commands": {
-    "format": ["format", "$PATH", "-o", "$PATH"]
+    "format": {
+      "command": ["format", "$PATH", "-o", "$PATH"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "Code formatter for the Grain programming language",
   "homepage": "https://grain-lang.org/docs/tooling/grain_cli",

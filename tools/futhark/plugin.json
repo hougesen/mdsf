@@ -3,7 +3,13 @@
   "binary": "futhark",
   "categories": ["formatter"],
   "commands": {
-    "fmt": ["fmt", "$PATH"]
+    "fmt": {
+      "command": ["fmt", "$PATH"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "Code formatter for the furhark programming language",
   "homepage": "https://futhark.readthedocs.io/en/latest/man/futhark-fmt.html",

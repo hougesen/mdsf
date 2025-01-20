@@ -3,7 +3,13 @@
   "binary": "ormolu",
   "categories": ["formatter"],
   "commands": {
-    "": ["--mode", "inplace", "$PATH"]
+    "": {
+      "command": ["--mode", "inplace", "$PATH"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "A formatter for Haskell source code",
   "homepage": "https://github.com/tweag/ormolu",

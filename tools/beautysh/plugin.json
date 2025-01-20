@@ -3,11 +3,17 @@
   "binary": "beautysh",
   "categories": ["formatter"],
   "commands": {
-    "": ["$PATH"]
+    "": {
+      "command": ["$PATH"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "A Bash beautifier for the masses",
   "homepage": "https://pypi.org/project/beautysh/",
-  "languages": ["shell", "bash"],
+  "languages": ["bash", "shell"],
   "name": null,
   "npm": null,
   "php": null,

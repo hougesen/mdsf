@@ -3,7 +3,13 @@
   "binary": "google-java-format",
   "categories": ["formatter"],
   "commands": {
-    "": ["-i", "$PATH"]
+    "": {
+      "command": ["-i", "$PATH"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "Reformats Java source code to comply with Google Java Style",
   "homepage": "https://github.com/google/google-java-format",

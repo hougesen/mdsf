@@ -3,7 +3,13 @@
   "binary": "kdoc-formatter",
   "categories": ["formatter"],
   "commands": {
-    "": ["--quiet", "$PATH"]
+    "": {
+      "command": ["--quiet", "$PATH"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "Reformats Kotlin KDoc comments, reflowing text and other cleanup",
   "homepage": "https://github.com/tnorbye/kdoc-formatter",

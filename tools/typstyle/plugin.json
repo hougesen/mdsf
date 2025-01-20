@@ -3,7 +3,13 @@
   "binary": "typstyle",
   "categories": ["formatter"],
   "commands": {
-    "": ["-i", "$PATH"]
+    "": {
+      "command": ["-i", "$PATH"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "Beautiful and reliable typst code formatter",
   "homepage": "https://github.com/Enter-tainer/typstyle",

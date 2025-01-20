@@ -3,7 +3,13 @@
   "binary": "pyink",
   "categories": ["formatter"],
   "commands": {
-    "": ["--quiet", "$PATH"]
+    "": {
+      "command": ["--quiet", "$PATH"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "Pyink is a Python formatter, forked from Black with a few different formatting behaviors",
   "homepage": "https://github.com/google/pyink",

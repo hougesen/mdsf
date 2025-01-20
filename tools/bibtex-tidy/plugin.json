@@ -3,7 +3,13 @@
   "binary": "bibtex-tidy",
   "categories": ["formatter"],
   "commands": {
-    "": ["-m", "$PATH"]
+    "": {
+      "command": ["-m", "$PATH"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "Cleaner and Formatter for BibTeX files",
   "homepage": "https://github.com/FlamingTempura/bibtex-tidy",

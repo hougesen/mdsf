@@ -3,7 +3,13 @@
   "binary": "terraform",
   "categories": ["formatter"],
   "commands": {
-    "fmt": ["fmt", "-write=true", "$PATH"]
+    "fmt": {
+      "command": ["fmt", "-write=true", "$PATH"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "The terraform fmt command is used to rewrite Terraform configuration files to a canonical format and style",
   "homepage": "https://www.terraform.io/docs/cli/commands/fmt.html",

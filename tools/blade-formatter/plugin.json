@@ -3,11 +3,17 @@
   "binary": "blade-formatter",
   "categories": ["formatter"],
   "commands": {
-    "": ["--write", "$PATH"]
+    "": {
+      "command": ["--write", "$PATH"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "An opinionated blade template formatter for Laravel that respects readability",
   "homepage": "https://github.com/shufo/blade-formatter",
-  "languages": ["blade", "php", "laravel"],
+  "languages": ["laravel", "blade", "php"],
   "name": null,
   "npm": "blade-formatter",
   "php": null,

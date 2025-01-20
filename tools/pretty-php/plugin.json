@@ -3,7 +3,13 @@
   "binary": "pretty-php",
   "categories": ["formatter"],
   "commands": {
-    "": ["$PATH"]
+    "": {
+      "command": ["$PATH"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "The opinionated PHP code formatter",
   "homepage": "https://github.com/lkrms/pretty-php",

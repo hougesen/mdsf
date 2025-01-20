@@ -3,13 +3,31 @@
   "binary": "biome",
   "categories": ["formatter", "linter"],
   "commands": {
-    "check": ["check", "--write", "$PATH"],
-    "format": ["format", "--write", "$PATH"],
-    "lint": ["lint", "--write", "$PATH"]
+    "check": {
+      "command": ["check", "--write", "$PATH"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    },
+    "format": {
+      "command": ["format", "--write", "$PATH"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    },
+    "lint": {
+      "command": ["lint", "--write", "$PATH"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "One toolchain for your web project",
   "homepage": "https://github.com/biomejs/biome",
-  "languages": ["javascript", "typescript", "vue", "json"],
+  "languages": ["json", "typescript", "javascript", "vue"],
   "name": null,
   "npm": "@biomejs/biome",
   "php": null,

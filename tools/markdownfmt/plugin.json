@@ -3,7 +3,13 @@
   "binary": "markdownfmt",
   "categories": ["formatter"],
   "commands": {
-    "": ["-w", "$PATH"]
+    "": {
+      "command": ["-w", "$PATH"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "Like gofmt, but for Markdown",
   "homepage": "https://github.com/shurcooL/markdownfmt",

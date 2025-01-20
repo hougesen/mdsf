@@ -3,7 +3,13 @@
   "binary": "jsonlint",
   "categories": ["formatter", "linter"],
   "commands": {
-    "": ["-i", "$PATH"]
+    "": {
+      "command": ["-i", "$PATH"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "A JSON parser and validator with a CLI",
   "homepage": "https://github.com/zaach/jsonlint",

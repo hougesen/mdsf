@@ -13,6 +13,7 @@ fn get_plugin_files() -> Vec<Tool> {
     let _ = std::fs::create_dir_all(tool_folder);
 
     let walker = ignore::WalkBuilder::new(tool_folder).build().flatten();
+
     walker
         .filter_map(|entry| {
             if entry.file_name() == "plugin.json" {
@@ -20,7 +21,9 @@ fn get_plugin_files() -> Vec<Tool> {
 
                 let content = std::fs::read_to_string(entry.path()).unwrap();
 
-                Some(serde_json::from_str::<Tool>(&content).unwrap())
+                let plugin = serde_json::from_str::<Tool>(&content).unwrap();
+
+                Some(plugin)
             } else {
                 None
             }

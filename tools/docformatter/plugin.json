@@ -3,7 +3,13 @@
   "binary": "docformatter",
   "categories": ["formatter"],
   "commands": {
-    "": ["--in-place", "$PATH"]
+    "": {
+      "command": ["--in-place", "$PATH"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "Formats docstrings to follow PEP 257",
   "homepage": "https://pypi.org/project/docformatter/",

@@ -3,7 +3,13 @@
   "binary": "prettypst",
   "categories": ["formatter"],
   "commands": {
-    "": ["$PATH"]
+    "": {
+      "command": ["$PATH"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "Formatter for Typst",
   "homepage": "https://github.com/antonWetzel/prettypst",

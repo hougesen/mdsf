@@ -3,7 +3,13 @@
   "binary": "protolint",
   "categories": ["linter"],
   "commands": {
-    "": ["lint", "-fix", "$PATH"]
+    "": {
+      "command": ["lint", "-fix", "$PATH"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "A pluggable linter and fixer to enforce Protocol Buffer style and conventions",
   "homepage": "https://github.com/yoheimuta/protolint",

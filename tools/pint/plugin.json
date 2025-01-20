@@ -3,7 +3,13 @@
   "binary": "pint",
   "categories": ["formatter", "linter"],
   "commands": {
-    "": ["$PATH"]
+    "": {
+      "command": ["$PATH"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "Laravel Pint is an opinionated PHP code style fixer for minimalists",
   "homepage": "https://github.com/laravel/pint",

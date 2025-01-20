@@ -3,7 +3,13 @@
   "binary": "stylua",
   "categories": ["formatter"],
   "commands": {
-    "": ["--verify", "$PATH"]
+    "": {
+      "command": ["--verify", "$PATH"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "An opinionated Lua code formatter",
   "homepage": "https://github.com/JohnnyMorganz/StyLua",

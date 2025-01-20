@@ -3,7 +3,13 @@
   "binary": "rune",
   "categories": ["formatter"],
   "commands": {
-    "fmt": ["fmt", "$PATH"]
+    "fmt": {
+      "command": ["fmt", "$PATH"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "Tools for the Rune programming language",
   "homepage": "https://github.com/rune-rs/rune",

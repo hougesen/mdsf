@@ -3,7 +3,13 @@
   "binary": "typos",
   "categories": ["autocorrection"],
   "commands": {
-    "": ["-w", "--no-ignore", "--hidden", "$PATH"]
+    "": {
+      "command": ["-w", "--no-ignore", "--hidden", "$PATH"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "Source code spell checker",
   "homepage": "https://github.com/crate-ci/typos",

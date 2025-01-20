@@ -3,7 +3,13 @@
   "binary": "rustfmt",
   "categories": ["formatter"],
   "commands": {
-    "": ["--edition", "2021", "--quiet", "$PATH"]
+    "": {
+      "command": ["--edition", "2021", "--quiet", "$PATH"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "The official code formatter for Rust",
   "homepage": "https://github.com/rust-lang/rustfmt",

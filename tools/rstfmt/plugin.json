@@ -3,7 +3,13 @@
   "binary": "rstfmt",
   "categories": ["formatter"],
   "commands": {
-    "": ["$PATH"]
+    "": {
+      "command": ["$PATH"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "A formatter for reStructuredText",
   "homepage": "https://github.com/dzhu/rstfmt",

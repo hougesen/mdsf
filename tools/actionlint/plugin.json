@@ -3,7 +3,13 @@
   "binary": "actionlint",
   "categories": ["linter"],
   "commands": {
-    "": ["$PATH"]
+    "": {
+      "command": ["$PATH"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "Static checker for GitHub Actions workflow files",
   "homepage": "https://github.com/rhysd/actionlint",

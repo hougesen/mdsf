@@ -3,7 +3,13 @@
   "binary": "ktfmt",
   "categories": ["formatter"],
   "commands": {
-    "": ["--format", "--log-level=error", "$PATH"]
+    "": {
+      "command": ["--format", "--log-level=error", "$PATH"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "program that reformats Kotlin source code to comply with the common community standard for Kotlin code conventions",
   "homepage": "https://github.com/facebook/ktfmt",

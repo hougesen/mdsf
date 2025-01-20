@@ -3,7 +3,13 @@
   "binary": "mix",
   "categories": ["formatter"],
   "commands": {
-    "format": ["format", "$PATH"]
+    "format": {
+      "command": ["format", "$PATH"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "Code formatter for Elixir",
   "homepage": "https://hexdocs.pm/mix/main/Mix.Tasks.Format.html",

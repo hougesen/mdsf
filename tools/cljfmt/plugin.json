@@ -3,7 +3,13 @@
   "binary": "cljfmt",
   "categories": ["formatter"],
   "commands": {
-    "fix": ["fix", "$PATH"]
+    "fix": {
+      "command": ["fix", "$PATH"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "A tool for formatting Clojure code",
   "homepage": "https://github.com/weavejester/cljfmt",

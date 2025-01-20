@@ -3,7 +3,13 @@
   "binary": "autopep8",
   "categories": ["formatter"],
   "commands": {
-    "": ["--in-place", "$PATH"]
+    "": {
+      "command": ["--in-place", "$PATH"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "A tool that automatically formats Python code to conform to the PEP 8 style guid",
   "homepage": "https://github.com/hhatto/autopep8",

@@ -3,7 +3,13 @@
   "binary": "purs-tidy",
   "categories": ["formatter"],
   "commands": {
-    "": ["format-in-place", "$PATH"]
+    "": {
+      "command": ["format-in-place", "$PATH"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "PureScript code formatter",
   "homepage": "https://github.com/natefaubion/purescript-tidy",

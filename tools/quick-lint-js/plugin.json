@@ -3,7 +3,13 @@
   "binary": "quick-lint-js",
   "categories": ["linter"],
   "commands": {
-    "": ["$PATH"]
+    "": {
+      "command": ["$PATH"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "quick-lint-js finds bugs in JavaScript programs",
   "homepage": "https://github.com/quick-lint/quick-lint-js",

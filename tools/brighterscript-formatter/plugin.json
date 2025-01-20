@@ -3,11 +3,17 @@
   "binary": "bsfmt",
   "categories": ["formatter"],
   "commands": {
-    "": ["$PATH", "--write"]
+    "": {
+      "command": ["$PATH", "--write"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "A code formatter for BrightScript and BrighterScript",
   "homepage": "https://github.com/rokucommunity/brighterscript-formatter",
-  "languages": ["brightscript", "brighterscript"],
+  "languages": ["brighterscript", "brightscript"],
   "name": null,
   "npm": "brighterscript-formatter",
   "php": null,

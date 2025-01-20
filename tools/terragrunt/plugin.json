@@ -3,7 +3,13 @@
   "binary": "terragrunt",
   "categories": ["formatter"],
   "commands": {
-    "hclfmt": ["hclfmt", "--terragrunt-hclfmt-file", "$PATH"]
+    "hclfmt": {
+      "command": ["hclfmt", "--terragrunt-hclfmt-file", "$PATH"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "Recursively find hcl files and rewrite them into a canonical format",
   "homepage": "https://terragrunt.gruntwork.io/docs/reference/cli-options/#hclfmt",

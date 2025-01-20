@@ -3,7 +3,13 @@
   "binary": "brunette",
   "categories": ["formatter"],
   "commands": {
-    "": ["--quiet", "$PATH"]
+    "": {
+      "command": ["--quiet", "$PATH"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "A best practice Python code formatter",
   "homepage": "https://github.com/odwyersoftware/brunette",

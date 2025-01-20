@@ -3,7 +3,13 @@
   "binary": "kdlfmt",
   "categories": ["formatter"],
   "commands": {
-    "": ["format", "$PATH"]
+    "": {
+      "command": ["format", "$PATH"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "A formatter for kdl documents",
   "homepage": "https://github.com/hougesen/kdlfmt",

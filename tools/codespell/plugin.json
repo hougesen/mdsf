@@ -3,7 +3,13 @@
   "binary": "codespell",
   "categories": ["autocorrection"],
   "commands": {
-    "": ["$PATH", "--check-hidden", "--write-changes"]
+    "": {
+      "command": ["$PATH", "--check-hidden", "--write-changes"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "Check code for common misspellings",
   "homepage": "https://github.com/codespell-project/codespell",

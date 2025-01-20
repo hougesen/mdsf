@@ -1,10 +1,22 @@
 {
   "$schema": "../tool.schema.json",
   "binary": "jsona",
-  "categories": ["formatter", "linter"],
+  "categories": ["linter", "formatter"],
   "commands": {
-    "format": ["format", "$PATH"],
-    "lint": ["lint", "$PATH"]
+    "format": {
+      "command": ["format", "$PATH"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    },
+    "lint": {
+      "command": ["lint", "$PATH"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "JSONA linter and formatter",
   "homepage": "https://github.com/jsona/jsona",

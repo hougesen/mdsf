@@ -3,7 +3,13 @@
   "binary": "hclfmt",
   "categories": ["formatter"],
   "commands": {
-    "": ["-w", "$PATH"]
+    "": {
+      "command": ["-w", "$PATH"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "Formatter for hcl files",
   "homepage": "https://github.com/hashicorp/hcl",

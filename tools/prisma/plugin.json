@@ -3,7 +3,13 @@
   "binary": "prisma",
   "categories": ["formatter"],
   "commands": {
-    "format": ["format", "--schema={$PATH_STRING}"]
+    "format": {
+      "command": ["format", "--schema={$PATH_STRING}"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "Commands for interacting with the prisma ORM",
   "homepage": "https://www.prisma.io",

@@ -3,7 +3,13 @@
   "binary": "rescript",
   "categories": ["formatter"],
   "commands": {
-    "format": ["format", "$PATH"]
+    "format": {
+      "command": ["format", "$PATH"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "Formatter for ReScript",
   "homepage": "https://rescript-lang.org/",

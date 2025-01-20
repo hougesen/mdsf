@@ -3,7 +3,13 @@
   "binary": "css-beautify",
   "categories": ["formatter"],
   "commands": {
-    "": ["-r", "--type", "css", "-f", "$PATH"]
+    "": {
+      "command": ["-r", "--type", "css", "-f", "$PATH"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "A css formatter",
   "homepage": "https://github.com/beautifier/js-beautify?tab=readme-ov-file#css--html",

@@ -3,7 +3,13 @@
   "binary": "phpinsights",
   "categories": ["linter"],
   "commands": {
-    "fix": ["fix", "$PATH", "--no-interaction", "--quiet"]
+    "fix": {
+      "command": ["fix", "$PATH", "--no-interaction", "--quiet"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "Instant PHP quality checks from your console",
   "homepage": "https://github.com/nunomaduro/phpinsights",

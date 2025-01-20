@@ -3,7 +3,13 @@
   "binary": "goimports-reviser",
   "categories": ["formatter"],
   "commands": {
-    "": ["-format", "$PATH"]
+    "": {
+      "command": ["-format", "$PATH"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "Right imports sorting & code formatting tool (goimports alternative)",
   "homepage": "https://github.com/incu6us/goimports-reviser",

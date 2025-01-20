@@ -3,7 +3,13 @@
   "binary": "caddy",
   "categories": ["formatter"],
   "commands": {
-    "fmt": ["fmt", "$PATH", "-w"]
+    "fmt": {
+      "command": ["fmt", "$PATH", "-w"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "Formats or prettifies a Caddyfile",
   "homepage": "https://caddyserver.com/docs/command-line#caddy-fmt",

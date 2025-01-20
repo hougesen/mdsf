@@ -3,7 +3,13 @@
   "binary": "hindent",
   "categories": ["formatter"],
   "commands": {
-    "": ["$PATH"]
+    "": {
+      "command": ["$PATH"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "Extensible Haskell pretty printer",
   "homepage": "https://github.com/mihaimaruseac/hindent",

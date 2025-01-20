@@ -3,7 +3,13 @@
   "binary": "templ",
   "categories": ["formatter"],
   "commands": {
-    "fmt": ["fmt", "$PATH"]
+    "fmt": {
+      "command": ["fmt", "$PATH"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "Tooling for the Templ template language",
   "homepage": "https://templ.guide/",

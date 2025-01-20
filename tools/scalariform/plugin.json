@@ -3,7 +3,13 @@
   "binary": "scalariform",
   "categories": ["formatter"],
   "commands": {
-    "": ["$PATH"]
+    "": {
+      "command": ["$PATH"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "Scala source code formatter",
   "homepage": "https://github.com/scala-ide/scalariform",

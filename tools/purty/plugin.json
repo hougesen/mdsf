@@ -3,7 +3,13 @@
   "binary": "purty",
   "categories": ["formatter"],
   "commands": {
-    "": ["--write", "$PATH"]
+    "": {
+      "command": ["--write", "$PATH"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "PureScript pretty-printer",
   "homepage": "https://gitlab.com/joneshf/purty",

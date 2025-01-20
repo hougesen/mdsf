@@ -3,7 +3,13 @@
   "binary": "selene",
   "categories": ["linter"],
   "commands": {
-    "": ["$PATH"]
+    "": {
+      "command": ["$PATH"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "A blazing-fast modern Lua linter written in Rust",
   "homepage": "https://github.com/Kampfkarren/selene",

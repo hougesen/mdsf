@@ -3,11 +3,17 @@
   "binary": "erb-format",
   "categories": ["formatter"],
   "commands": {
-    "": ["$PATH", "--write"]
+    "": {
+      "command": ["$PATH", "--write"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "Format ERB files with speed and precision",
   "homepage": "https://github.com/nebulab/erb-formatter",
-  "languages": ["erb", "ruby"],
+  "languages": ["ruby", "erb"],
   "name": "erb-formatter",
   "npm": null,
   "php": null,

@@ -3,7 +3,13 @@
   "binary": "shfmt",
   "categories": ["formatter"],
   "commands": {
-    "": ["--write", "$PATH"]
+    "": {
+      "command": ["--write", "$PATH"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "Shell script formatter",
   "homepage": "https://github.com/mvdan/sh",

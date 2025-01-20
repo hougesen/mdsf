@@ -3,7 +3,13 @@
   "binary": "doctoc",
   "categories": ["formatter"],
   "commands": {
-    "": ["$PATH"]
+    "": {
+      "command": ["$PATH"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "Generates table of contents for markdown files",
   "homepage": "https://github.com/thlorenz/doctoc",

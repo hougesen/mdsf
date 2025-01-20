@@ -3,7 +3,13 @@
   "binary": "cabal-prettify",
   "categories": ["formatter"],
   "commands": {
-    "": ["$PATH"]
+    "": {
+      "command": ["$PATH"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "Prettify your Cabal package configuration files",
   "homepage": "https://github.com/kindaro/cabal-prettify",

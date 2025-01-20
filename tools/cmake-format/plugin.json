@@ -3,7 +3,13 @@
   "binary": "cmake-format",
   "categories": ["formatter"],
   "commands": {
-    "": ["-i", "$PATH"]
+    "": {
+      "command": ["-i", "$PATH"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "cmake-format can format your listfiles nicely so that they don’t look like crap",
   "homepage": "https://cmake-format.readthedocs.io/en/latest/cmake-format.html",

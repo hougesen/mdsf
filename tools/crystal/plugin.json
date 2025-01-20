@@ -3,7 +3,13 @@
   "binary": "crystal",
   "categories": ["formatter"],
   "commands": {
-    "format": ["tool", "format", "$PATH"]
+    "format": {
+      "command": ["tool", "format", "$PATH"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "Tools for the Crystal programming language",
   "homepage": "https://crystal-lang.org/",

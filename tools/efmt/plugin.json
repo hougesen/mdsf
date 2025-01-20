@@ -3,7 +3,13 @@
   "binary": "efmt",
   "categories": ["formatter"],
   "commands": {
-    "": ["-w", "$PATH"]
+    "": {
+      "command": ["-w", "$PATH"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "Erlang code formatter",
   "homepage": "https://github.com/sile/efmt",

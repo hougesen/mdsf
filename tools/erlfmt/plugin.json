@@ -3,7 +3,13 @@
   "binary": "erlfmt",
   "categories": ["formatter"],
   "commands": {
-    "": ["-w", "$PATH_STRING"]
+    "": {
+      "command": ["-w", "$PATH_STRING"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "An automated code formatter for Erlang",
   "homepage": "https://github.com/WhatsApp/erlfmt",

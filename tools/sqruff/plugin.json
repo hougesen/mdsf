@@ -1,9 +1,15 @@
 {
   "$schema": "../tool.schema.json",
   "binary": "sqruff",
-  "categories": ["formatter", "linter"],
+  "categories": ["linter", "formatter"],
   "commands": {
-    "": ["fix", "$PATH"]
+    "": {
+      "command": ["fix", "$PATH"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "Fast SQL formatter/linter",
   "homepage": "https://github.com/quarylabs/sqruff",

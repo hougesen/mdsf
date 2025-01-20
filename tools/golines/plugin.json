@@ -3,7 +3,13 @@
   "binary": "golines",
   "categories": ["formatter"],
   "commands": {
-    "": ["-w", "$PATH"]
+    "": {
+      "command": ["-w", "$PATH"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "A golang formatter that fixes long lines",
   "homepage": "https://github.com/segmentio/golines",

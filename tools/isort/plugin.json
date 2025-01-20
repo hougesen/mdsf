@@ -3,7 +3,13 @@
   "binary": "isort",
   "categories": ["formatter"],
   "commands": {
-    "": ["--quiet", "$PATH"]
+    "": {
+      "command": ["--quiet", "$PATH"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "A Python utility to sort imports",
   "homepage": "https://github.com/timothycrosley/isort",

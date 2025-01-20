@@ -3,7 +3,13 @@
   "binary": "nginxfmt",
   "categories": ["formatter"],
   "commands": {
-    "": ["$PATH"]
+    "": {
+      "command": ["$PATH"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "nginx config file formatter/beautifier written in Python with no additional dependencies",
   "homepage": "https://github.com/slomkowski/nginx-config-formatter",

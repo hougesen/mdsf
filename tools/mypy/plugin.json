@@ -3,7 +3,13 @@
   "binary": "mypy",
   "categories": ["linter"],
   "commands": {
-    "": ["$PATH"]
+    "": {
+      "command": ["$PATH"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "Optional static typing for Python",
   "homepage": "https://github.com/python/mypy",

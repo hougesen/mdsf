@@ -3,7 +3,13 @@
   "binary": "ts-standard",
   "categories": ["formatter", "linter"],
   "commands": {
-    "": ["--fix", "$PATH"]
+    "": {
+      "command": ["--fix", "$PATH"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "Typescript style guide, linter, and formatter using StandardJS",
   "homepage": "https://github.com/standard/ts-standard",

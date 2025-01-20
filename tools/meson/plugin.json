@@ -3,7 +3,13 @@
   "binary": "meson",
   "categories": ["formatter"],
   "commands": {
-    "fmt": ["fmt", "-i", "$PATH"]
+    "fmt": {
+      "command": ["fmt", "-i", "$PATH"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "Meson is an open source build system meant to be both extremely fast, and, even more importantly, as user friendly as possible",
   "homepage": "https://mesonbuild.com/",

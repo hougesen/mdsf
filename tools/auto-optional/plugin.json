@@ -3,7 +3,13 @@
   "binary": "auto-optional",
   "categories": ["formatter"],
   "commands": {
-    "": ["$PATH"]
+    "": {
+      "command": ["$PATH"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "Adds the Optional type-hint to arguments where the default value is None",
   "homepage": "https://github.com/Luttik/auto-optional",

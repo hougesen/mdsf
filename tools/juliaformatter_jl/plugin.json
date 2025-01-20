@@ -3,7 +3,16 @@
   "binary": "julia",
   "categories": ["formatter"],
   "commands": {
-    "": ["-E", "using JuliaFormatter;format_file(\\\"{$PATH_STRING}\\\")"]
+    "": {
+      "command": [
+        "-E",
+        "using JuliaFormatter;format_file(\\\"{$PATH_STRING}\\\")"
+      ],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "An opinionated code formatter for Julia. Plot twist - the opinion is your own",
   "homepage": "https://github.com/domluna/JuliaFormatter.jl",

@@ -3,7 +3,13 @@
   "binary": "taplo",
   "categories": ["formatter"],
   "commands": {
-    "": ["format", "$PATH"]
+    "": {
+      "command": ["format", "$PATH"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "A TOML toolkit written in Rust",
   "homepage": "https://github.com/tamasfe/taplo",

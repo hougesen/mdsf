@@ -3,7 +3,13 @@
   "binary": "lua-format",
   "categories": ["formatter"],
   "commands": {
-    "": ["-i", "$PATH"]
+    "": {
+      "command": ["-i", "$PATH"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "Code formatter for Lua",
   "homepage": "https://github.com/Koihik/LuaFormatter",

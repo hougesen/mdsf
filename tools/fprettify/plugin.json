@@ -3,7 +3,13 @@
   "binary": "fprettify",
   "categories": ["formatter"],
   "commands": {
-    "": ["$PATH"]
+    "": {
+      "command": ["$PATH"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "Auto-formatter for modern Fortran source code",
   "homepage": "https://github.com/fortran-lang/fprettify",

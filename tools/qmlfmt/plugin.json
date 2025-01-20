@@ -3,7 +3,13 @@
   "binary": "qmlfmt",
   "categories": ["formatter"],
   "commands": {
-    "": ["-w", "$PATH"]
+    "": {
+      "command": ["-w", "$PATH"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "qmlfmt - command line application that formats QML files",
   "homepage": "https://github.com/jesperhh/qmlfmt",

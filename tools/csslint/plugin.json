@@ -3,7 +3,13 @@
   "binary": "csslint",
   "categories": ["linter"],
   "commands": {
-    "": ["--quiet", "$PATH"]
+    "": {
+      "command": ["--quiet", "$PATH"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "Automated linting of Cascading Stylesheets",
   "homepage": "https://github.com/CSSLint/csslint",

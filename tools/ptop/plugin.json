@@ -3,7 +3,13 @@
   "binary": "ptop",
   "categories": ["formatter"],
   "commands": {
-    "": ["$PATH", "$PATH"]
+    "": {
+      "command": ["$PATH", "$PATH"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "Free Pascal source formatter",
   "homepage": "https://www.freepascal.org/tools/ptop.html",

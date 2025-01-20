@@ -3,7 +3,13 @@
   "binary": "php-cs-fixer",
   "categories": ["formatter", "linter"],
   "commands": {
-    "fix": ["fix", "$PATH"]
+    "fix": {
+      "command": ["fix", "$PATH"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "A tool to automatically fix PHP Coding Standards issues",
   "homepage": "https://github.com/PHP-CS-Fixer/PHP-CS-Fixer",

@@ -3,7 +3,13 @@
   "binary": "yapf",
   "categories": ["formatter"],
   "commands": {
-    "": ["--in-place", "$PATH"]
+    "": {
+      "command": ["--in-place", "$PATH"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "A formatter for Python files",
   "homepage": "https://github.com/google/yapf",

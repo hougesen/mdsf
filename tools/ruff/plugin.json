@@ -1,10 +1,22 @@
 {
   "$schema": "../tool.schema.json",
   "binary": "ruff",
-  "categories": ["formatter", "linter"],
+  "categories": ["linter", "formatter"],
   "commands": {
-    "check": ["check", "--fix", "--quiet", "$PATH"],
-    "format": ["format", "--quiet", "$PATH"]
+    "check": {
+      "command": ["check", "--fix", "--quiet", "$PATH"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    },
+    "format": {
+      "command": ["format", "--quiet", "$PATH"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "An extremely fast Python linter and code formatter, written in Rust",
   "homepage": "https://docs.astral.sh/ruff",

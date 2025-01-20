@@ -3,7 +3,13 @@
   "binary": "htmlhint",
   "categories": ["linter"],
   "commands": {
-    "": ["$PATH"]
+    "": {
+      "command": ["$PATH"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "The static code analysis tool you need for your HTML",
   "homepage": "https://github.com/HTMLHint/HTMLHint",

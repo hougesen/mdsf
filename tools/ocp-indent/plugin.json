@@ -3,7 +3,13 @@
   "binary": "ocp-indent",
   "categories": ["formatter"],
   "commands": {
-    "": ["--inplace", "$PATH"]
+    "": {
+      "command": ["--inplace", "$PATH"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "Indentation tool for OCaml",
   "homepage": "https://github.com/OCamlPro/ocp-indent",

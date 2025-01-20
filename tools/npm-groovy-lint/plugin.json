@@ -3,7 +3,13 @@
   "binary": "npm-groovy-lint",
   "categories": ["formatter", "linter"],
   "commands": {
-    "": ["--format", "$PATH"]
+    "": {
+      "command": ["--format", "$PATH"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "Lint, format and auto-fix your Groovy / Jenkinsfile / Gradle files",
   "homepage": "https://github.com/nvuillam/npm-groovy-lint",

@@ -3,7 +3,13 @@
   "binary": "solhint",
   "categories": ["linter"],
   "commands": {
-    "": ["--quiet", "--fix", "--noPrompt", "$PATH"]
+    "": {
+      "command": ["--quiet", "--fix", "--noPrompt", "$PATH"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "Solhint is an open-source project to provide a linting utility for Solidity code",
   "homepage": "https://github.com/protofire/solhint",

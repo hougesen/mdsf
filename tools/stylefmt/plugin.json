@@ -3,7 +3,13 @@
   "binary": "stylefmt",
   "categories": ["formatter"],
   "commands": {
-    "": ["$PATH"]
+    "": {
+      "command": ["$PATH"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "stylefmt is a tool that automatically formats stylesheets",
   "homepage": "https://github.com/matype/stylefmt",

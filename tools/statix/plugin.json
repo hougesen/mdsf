@@ -3,8 +3,20 @@
   "binary": "statix",
   "categories": ["linter"],
   "commands": {
-    "check": ["check", "$PATH"],
-    "fix": ["fix", "$PATH"]
+    "check": {
+      "command": ["check", "$PATH"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    },
+    "fix": {
+      "command": ["fix", "$PATH"],
+      "description": "",
+      "homepage": "",
+      "ignore_output": false,
+      "tests": []
+    }
   },
   "description": "lints and suggestions for the nix programming language",
   "homepage": "https://github.com/oppiliappan/statix",
