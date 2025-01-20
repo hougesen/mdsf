@@ -4,6 +4,9 @@ use convert_case::{Case, Casing};
 
 const INDENT: &str = "    ";
 
+const GENERATED_FILE_COMMENT: &str =
+    "///\n/// THIS FILE IS GENERATED USING CODE - DO NOT EDIT MANUALLY\n///";
+
 #[derive(Debug, serde::Deserialize, schemars::JsonSchema, Hash, Clone)]
 #[schemars(deny_unknown_fields)]
 pub struct ToolCommandTest {
@@ -225,7 +228,8 @@ impl Tool {
             };
 
             let code = format!(
-                "use std::process::Command;
+                "{GENERATED_FILE_COMMENT}
+use std::process::Command;
 
 use crate::{{error::MdsfError, execution::execute_command, runners::CommandType}};
 
@@ -374,7 +378,8 @@ impl AsRef<str> for Tooling {
     as_ref_content.sort_unstable();
 
     let mod_file_contents = format!(
-        "{}
+        "{GENERATED_FILE_COMMENT}
+{}
 
 #[derive(serde::Serialize, serde::Deserialize, Hash)]
 #[cfg_attr(test, derive(Debug, PartialEq, Eq))]
