@@ -4,18 +4,11 @@
   "categories": ["formatter"],
   "commands": {
     "fmt": {
-      "command": ["fmt", "$PATH"],
-      "description": "",
-      "homepage": "",
-      "ignore_output": false,
-      "tests": []
+      "arguments": ["fmt", "$PATH"],
+      "ignore_output": false
     }
   },
   "description": "CLI for HashiCorp Nomad",
   "homepage": "https://developer.hashicorp.com/nomad/docs/commands",
-  "languages": ["hcl"],
-  "name": null,
-  "npm": null,
-  "php": null,
-  "tests": []
+  "languages": ["hcl"]
 }

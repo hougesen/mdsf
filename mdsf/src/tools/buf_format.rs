@@ -39,7 +39,7 @@ pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfEr
 #[cfg(test)]
 mod test_buf_format {
     #[test_with::executable(npx)]
-    fn test_buf_format_protobuf_a873b41888af5cc8() {
+    fn test_buf_format_protobuf_10af516c8a015ab5() {
         let input = r#"service SearchService {
                               rpc Search (SearchRequest) returns (SearchResponse);
                                }"#;

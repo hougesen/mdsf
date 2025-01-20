@@ -4,18 +4,11 @@
   "categories": ["formatter"],
   "commands": {
     "fmt": {
-      "command": ["fmt", "-i", "$PATH"],
-      "description": "",
-      "homepage": "",
-      "ignore_output": false,
-      "tests": []
+      "arguments": ["fmt", "-i", "$PATH"],
+      "ignore_output": false
     }
   },
   "description": "An extensible code formatter for Racket",
   "homepage": "https://docs.racket-lang.org/fmt/",
-  "languages": ["racket"],
-  "name": null,
-  "npm": null,
-  "php": null,
-  "tests": []
+  "languages": ["racket"]
 }

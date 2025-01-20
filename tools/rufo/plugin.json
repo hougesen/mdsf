@@ -4,25 +4,18 @@
   "categories": ["formatter"],
   "commands": {
     "": {
-      "command": ["--simple-exit", "$PATH"],
-      "description": "",
-      "homepage": "",
+      "arguments": ["--simple-exit", "$PATH"],
       "ignore_output": false,
-      "tests": []
+      "tests": [
+        {
+          "language": "ruby",
+          "test_input": "def   add(  a ,                                                          b )\n                        return a + b\n                end",
+          "test_output": "def add(a, b)\n  return a + b\nend\n"
+        }
+      ]
     }
   },
   "description": "The Ruby Formatter",
   "homepage": "https://github.com/ruby-formatter/rufo",
-  "languages": ["ruby"],
-  "name": null,
-  "npm": null,
-  "php": null,
-  "tests": [
-    {
-      "command": "",
-      "language": "ruby",
-      "test_input": "def   add(  a ,                                                          b )\n                        return a + b\n                end",
-      "test_output": "def add(a, b)\n  return a + b\nend\n"
-    }
-  ]
+  "languages": ["ruby"]
 }

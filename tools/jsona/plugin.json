@@ -4,25 +4,15 @@
   "categories": ["linter", "formatter"],
   "commands": {
     "format": {
-      "command": ["format", "$PATH"],
-      "description": "",
-      "homepage": "",
-      "ignore_output": false,
-      "tests": []
+      "arguments": ["format", "$PATH"],
+      "ignore_output": false
     },
     "lint": {
-      "command": ["lint", "$PATH"],
-      "description": "",
-      "homepage": "",
-      "ignore_output": false,
-      "tests": []
+      "arguments": ["lint", "$PATH"],
+      "ignore_output": false
     }
   },
   "description": "JSONA linter and formatter",
   "homepage": "https://github.com/jsona/jsona",
-  "languages": ["jsona"],
-  "name": null,
-  "npm": null,
-  "php": null,
-  "tests": []
+  "languages": ["jsona"]
 }

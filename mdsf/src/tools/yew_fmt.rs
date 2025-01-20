@@ -36,7 +36,7 @@ pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfEr
 #[cfg(test)]
 mod test_yew_fmt {
     #[test_with::executable(yew-fmt)]
-    fn test_yew_fmt_rust_e83ee9b650ec4907() {
+    fn test_yew_fmt_rust_70ad564760e773e9() {
         let input = r#"pub
                     async
             fn    add( a: i32,

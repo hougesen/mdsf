@@ -34,7 +34,7 @@ pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfEr
 #[cfg(test)]
 mod test_golines {
     #[test_with::executable(golines)]
-    fn test_golines_go_5a6f7904f97fef89() {
+    fn test_golines_go_4af43f410d7fff15() {
         let input = r#"package main
 
 import (

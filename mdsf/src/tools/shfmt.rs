@@ -34,41 +34,7 @@ pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfEr
 #[cfg(test)]
 mod test_shfmt {
     #[test_with::executable(shfmt)]
-    fn test_shfmt_shell_748705c22ee4696f() {
-        let input = r#"
-
-#!/bin/sh
-
-       add      ()   {
-    echo "$1"                 +          "$2"
-             }
-
-
-
-
-
-
-
-
-"#;
-        let output = r#"#!/bin/sh
-
-add() {
-	echo "$1" + "$2"
-}
-"#;
-        let file_ext = crate::fttype::get_file_extension("shell");
-        let snippet =
-            crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
-        let result = crate::tools::shfmt::run(snippet.path())
-            .expect("it to be successful")
-            .1
-            .expect("it to be some");
-        assert_eq!(result, output);
-    }
-
-    #[test_with::executable(shfmt)]
-    fn test_shfmt_bash_32fda4fa46e3b132() {
+    fn test_shfmt_bash_9334f16dadf8ef68() {
         let input = r#"
 
 #!/bin/bash
@@ -102,7 +68,41 @@ add() {
     }
 
     #[test_with::executable(shfmt)]
-    fn test_shfmt_zsh_69eb75793ed195db() {
+    fn test_shfmt_shell_9c24a79abf093e10() {
+        let input = r#"
+
+#!/bin/sh
+
+       add      ()   {
+    echo "$1"                 +          "$2"
+             }
+
+
+
+
+
+
+
+
+"#;
+        let output = r#"#!/bin/sh
+
+add() {
+	echo "$1" + "$2"
+}
+"#;
+        let file_ext = crate::fttype::get_file_extension("shell");
+        let snippet =
+            crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
+        let result = crate::tools::shfmt::run(snippet.path())
+            .expect("it to be successful")
+            .1
+            .expect("it to be some");
+        assert_eq!(result, output);
+    }
+
+    #[test_with::executable(shfmt)]
+    fn test_shfmt_zsh_63d80ef78ac08ee0() {
         let input = r#"
 
 #!/bin/zsh

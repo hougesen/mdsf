@@ -41,7 +41,7 @@ pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfEr
 #[cfg(test)]
 mod test_css_beautify {
     #[test_with::executable(npx)]
-    fn test_css_beautify_css_aab2b2c4580e23ff() {
+    fn test_css_beautify_css_5ad41f26f69aea3e() {
         let input = r#"h1   {color: blue;} p    {color: red;}"#;
         let output = r#"h1 {
     color: blue;

@@ -4,18 +4,11 @@
   "categories": ["formatter"],
   "commands": {
     "": {
-      "command": ["$PATH"],
-      "description": "",
-      "homepage": "",
-      "ignore_output": false,
-      "tests": []
+      "arguments": ["$PATH"],
+      "ignore_output": false
     }
   },
   "description": "A tool for linting and static analysis of Lua code",
   "homepage": "https://github.com/lunarmodules/luacheck",
-  "languages": ["lua"],
-  "name": null,
-  "npm": null,
-  "php": null,
-  "tests": []
+  "languages": ["lua"]
 }

@@ -4,18 +4,11 @@
   "categories": ["formatter"],
   "commands": {
     "fmt": {
-      "command": ["fmt", "$PATH"],
-      "description": "",
-      "homepage": "",
-      "ignore_output": false,
-      "tests": []
+      "arguments": ["fmt", "$PATH"],
+      "ignore_output": false
     }
   },
   "description": "Formatter for the d2 language",
   "homepage": "https://d2lang.com/",
-  "languages": ["d2"],
-  "name": null,
-  "npm": null,
-  "php": null,
-  "tests": []
+  "languages": ["d2"]
 }

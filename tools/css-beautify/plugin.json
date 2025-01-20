@@ -4,25 +4,19 @@
   "categories": ["formatter"],
   "commands": {
     "": {
-      "command": ["-r", "--type", "css", "-f", "$PATH"],
-      "description": "",
-      "homepage": "",
+      "arguments": ["-r", "--type", "css", "-f", "$PATH"],
       "ignore_output": false,
-      "tests": []
+      "tests": [
+        {
+          "language": "css",
+          "test_input": "h1   {color: blue;} p    {color: red;}",
+          "test_output": "h1 {\n    color: blue;\n}\n\np {\n    color: red;\n}"
+        }
+      ]
     }
   },
   "description": "A css formatter",
   "homepage": "https://github.com/beautifier/js-beautify?tab=readme-ov-file#css--html",
   "languages": ["css"],
-  "name": null,
-  "npm": "js-beautify",
-  "php": null,
-  "tests": [
-    {
-      "command": "",
-      "language": "css",
-      "test_input": "h1   {color: blue;} p    {color: red;}",
-      "test_output": "h1 {\n    color: blue;\n}\n\np {\n    color: red;\n}"
-    }
-  ]
+  "npm": "js-beautify"
 }

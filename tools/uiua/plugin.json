@@ -4,18 +4,11 @@
   "categories": ["formatter"],
   "commands": {
     "fmt": {
-      "command": ["fmt", "$PATH"],
-      "description": "",
-      "homepage": "",
-      "ignore_output": false,
-      "tests": []
+      "arguments": ["fmt", "$PATH"],
+      "ignore_output": false
     }
   },
   "description": "A stack-based array programming language",
   "homepage": "https://github.com/uiua-lang/uiua",
-  "languages": ["uiua"],
-  "name": null,
-  "npm": null,
-  "php": null,
-  "tests": []
+  "languages": ["uiua"]
 }

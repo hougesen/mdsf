@@ -4,18 +4,11 @@
   "categories": ["formatter"],
   "commands": {
     "fmt": {
-      "command": ["fmt", "$PATH", "-w"],
-      "description": "",
-      "homepage": "",
-      "ignore_output": false,
-      "tests": []
+      "arguments": ["fmt", "$PATH", "-w"],
+      "ignore_output": false
     }
   },
   "description": "Formats or prettifies a Caddyfile",
   "homepage": "https://caddyserver.com/docs/command-line#caddy-fmt",
-  "languages": ["caddy"],
-  "name": null,
-  "npm": null,
-  "php": null,
-  "tests": []
+  "languages": ["caddy"]
 }

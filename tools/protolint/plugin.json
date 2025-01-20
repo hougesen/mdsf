@@ -4,18 +4,11 @@
   "categories": ["linter"],
   "commands": {
     "": {
-      "command": ["lint", "-fix", "$PATH"],
-      "description": "",
-      "homepage": "",
-      "ignore_output": false,
-      "tests": []
+      "arguments": ["lint", "-fix", "$PATH"],
+      "ignore_output": false
     }
   },
   "description": "A pluggable linter and fixer to enforce Protocol Buffer style and conventions",
   "homepage": "https://github.com/yoheimuta/protolint",
-  "languages": ["protobuf"],
-  "name": null,
-  "npm": null,
-  "php": null,
-  "tests": []
+  "languages": ["protobuf"]
 }

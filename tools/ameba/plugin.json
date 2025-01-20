@@ -4,18 +4,11 @@
   "categories": ["linter"],
   "commands": {
     "": {
-      "command": ["--fix", "$PATH"],
-      "description": "",
-      "homepage": "",
-      "ignore_output": false,
-      "tests": []
+      "arguments": ["--fix", "$PATH"],
+      "ignore_output": false
     }
   },
   "description": "A static code analysis tool for Crystal",
   "homepage": "https://github.com/crystal-ameba/ameba",
-  "languages": ["crystal"],
-  "name": null,
-  "npm": null,
-  "php": null,
-  "tests": []
+  "languages": ["crystal"]
 }

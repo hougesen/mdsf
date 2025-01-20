@@ -34,7 +34,7 @@ pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfEr
 #[cfg(test)]
 mod test_standardrb {
     #[test_with::executable(standardrb)]
-    fn test_standardrb_ruby_76a5c42ce4f02c1e() {
+    fn test_standardrb_ruby_bec6c50c1664b6ed() {
         let input = r#"def   add(  a ,                                                          b )
                         return a + b
                 end"#;

@@ -35,7 +35,7 @@ pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfEr
 #[cfg(test)]
 mod test_ormolu {
     #[test_with::executable(ormolu)]
-    fn test_ormolu_haskell_ac29c367ac432382() {
+    fn test_ormolu_haskell_c34a44cf19c5fdd7() {
         let input = r#"
 addNumbers::Int->Int->Int
 addNumbers a b = do

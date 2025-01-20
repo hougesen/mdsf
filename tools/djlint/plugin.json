@@ -4,18 +4,11 @@
   "categories": ["formatter", "linter"],
   "commands": {
     "": {
-      "command": ["$PATH", "--reformat"],
-      "description": "",
-      "homepage": "",
-      "ignore_output": false,
-      "tests": []
+      "arguments": ["$PATH", "--reformat"],
+      "ignore_output": false
     }
   },
   "description": "Lint & Format HTML Templates",
   "homepage": "https://www.djlint.com/",
-  "languages": ["jinja", "mustache", "twig", "handlebars", "html", "nunjucks"],
-  "name": null,
-  "npm": null,
-  "php": null,
-  "tests": []
+  "languages": ["jinja", "mustache", "twig", "handlebars", "html", "nunjucks"]
 }

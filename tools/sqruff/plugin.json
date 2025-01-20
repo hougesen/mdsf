@@ -4,18 +4,11 @@
   "categories": ["linter", "formatter"],
   "commands": {
     "": {
-      "command": ["fix", "$PATH"],
-      "description": "",
-      "homepage": "",
-      "ignore_output": false,
-      "tests": []
+      "arguments": ["fix", "$PATH"],
+      "ignore_output": false
     }
   },
   "description": "Fast SQL formatter/linter",
   "homepage": "https://github.com/quarylabs/sqruff",
-  "languages": ["sql"],
-  "name": null,
-  "npm": null,
-  "php": null,
-  "tests": []
+  "languages": ["sql"]
 }

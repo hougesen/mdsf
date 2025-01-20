@@ -4,25 +4,19 @@
   "categories": ["formatter"],
   "commands": {
     "": {
-      "command": ["csharpier", "$PATH"],
-      "description": "",
-      "homepage": "",
+      "arguments": ["csharpier", "$PATH"],
       "ignore_output": false,
-      "tests": []
+      "tests": [
+        {
+          "language": "csharp",
+          "test_input": "namespace Mdsf {\n                        class Adder {\n                                                    public static int add(int a,int b) {\n                                var c=a+b ;\n                                                        return c ;\n                                                    }\n                                                 }\n                                                 } ",
+          "test_output": "namespace Mdsf\n{\n    class Adder\n    {\n        public static int add(int a, int b)\n        {\n            var c = a + b;\n            return c;\n        }\n    }\n}\n"
+        }
+      ]
     }
   },
   "description": "An Opinionated Code Formatter for C#",
   "homepage": "https://csharpier.com/",
   "languages": ["c#"],
-  "name": "csharpier",
-  "npm": null,
-  "php": null,
-  "tests": [
-    {
-      "command": "",
-      "language": "csharp",
-      "test_input": "namespace Mdsf {\n                        class Adder {\n                                                    public static int add(int a,int b) {\n                                var c=a+b ;\n                                                        return c ;\n                                                    }\n                                                 }\n                                                 } ",
-      "test_output": "namespace Mdsf\n{\n    class Adder\n    {\n        public static int add(int a, int b)\n        {\n            var c = a + b;\n            return c;\n        }\n    }\n}\n"
-    }
-  ]
+  "name": "csharpier"
 }

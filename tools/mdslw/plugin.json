@@ -4,18 +4,11 @@
   "categories": ["formatter"],
   "commands": {
     "": {
-      "command": ["$PATH"],
-      "description": "",
-      "homepage": "",
-      "ignore_output": false,
-      "tests": []
+      "arguments": ["$PATH"],
+      "ignore_output": false
     }
   },
   "description": "Prepare your markdown for easy diff'ing!",
   "homepage": "https://github.com/razziel89/mdslw",
-  "languages": ["markdown"],
-  "name": null,
-  "npm": null,
-  "php": null,
-  "tests": []
+  "languages": ["markdown"]
 }

@@ -4,25 +4,18 @@
   "categories": ["formatter"],
   "commands": {
     "": {
-      "command": ["-i", "$PATH"],
-      "description": "",
-      "homepage": "",
+      "arguments": ["-i", "$PATH"],
       "ignore_output": false,
-      "tests": []
+      "tests": [
+        {
+          "language": "ruby",
+          "test_input": "def   add(  a ,                                                          b )\n                        return a + b\n                end",
+          "test_output": "def add(a, b)\n  return a + b\nend\n"
+        }
+      ]
     }
   },
   "description": "Ruby Autoformatter",
   "homepage": "https://github.com/fables-tales/rubyfmt",
-  "languages": ["ruby"],
-  "name": null,
-  "npm": null,
-  "php": null,
-  "tests": [
-    {
-      "command": "",
-      "language": "ruby",
-      "test_input": "def   add(  a ,                                                          b )\n                        return a + b\n                end",
-      "test_output": "def add(a, b)\n  return a + b\nend\n"
-    }
-  ]
+  "languages": ["ruby"]
 }

@@ -42,7 +42,31 @@ pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfEr
 #[cfg(test)]
 mod test_prettier {
     #[test_with::executable(npx)]
-    fn test_prettier_json_f5f65734d7c4115b() {
+    fn test_prettier_javascript_f38217e7df306e3e() {
+        let input = r#"
+    async function asyncAddition(
+            a,b
+        ) {
+        return a+b
+    }
+
+            "#;
+        let output = r#"async function asyncAddition(a, b) {
+  return a + b;
+}
+"#;
+        let file_ext = crate::fttype::get_file_extension("javascript");
+        let snippet =
+            crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
+        let result = crate::tools::prettier::run(snippet.path())
+            .expect("it to be successful")
+            .1
+            .expect("it to be some");
+        assert_eq!(result, output);
+    }
+
+    #[test_with::executable(npx)]
+    fn test_prettier_json_8e1e8ed2224fd439() {
         let input = r#"
               {
               "key": "value",
@@ -59,30 +83,6 @@ mod test_prettier {
 }
 "#;
         let file_ext = crate::fttype::get_file_extension("json");
-        let snippet =
-            crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
-        let result = crate::tools::prettier::run(snippet.path())
-            .expect("it to be successful")
-            .1
-            .expect("it to be some");
-        assert_eq!(result, output);
-    }
-
-    #[test_with::executable(npx)]
-    fn test_prettier_javascript_9a43c053e0ec1c29() {
-        let input = r#"
-    async function asyncAddition(
-            a,b
-        ) {
-        return a+b
-    }
-
-            "#;
-        let output = r#"async function asyncAddition(a, b) {
-  return a + b;
-}
-"#;
-        let file_ext = crate::fttype::get_file_extension("javascript");
         let snippet =
             crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
         let result = crate::tools::prettier::run(snippet.path())

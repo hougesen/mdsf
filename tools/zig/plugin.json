@@ -4,25 +4,18 @@
   "categories": ["formatter"],
   "commands": {
     "fmt": {
-      "command": ["fmt", "$PATH"],
-      "description": "",
-      "homepage": "",
+      "arguments": ["fmt", "$PATH"],
       "ignore_output": false,
-      "tests": []
+      "tests": [
+        {
+          "language": "zig",
+          "test_input": "\n    fn     add   (a : i32    , b :   i32 )             i32 {\n        return a + b ;\n\n    }\n    ",
+          "test_output": "fn add(a: i32, b: i32) i32 {\n    return a + b;\n}\n"
+        }
+      ]
     }
   },
   "description": "Reformat Zig source into canonical form",
   "homepage": "https://ziglang.org/",
-  "languages": ["zig"],
-  "name": null,
-  "npm": null,
-  "php": null,
-  "tests": [
-    {
-      "command": "fmt",
-      "language": "zig",
-      "test_input": "\n    fn     add   (a : i32    , b :   i32 )             i32 {\n        return a + b ;\n\n    }\n    ",
-      "test_output": "fn add(a: i32, b: i32) i32 {\n    return a + b;\n}\n"
-    }
-  ]
+  "languages": ["zig"]
 }

@@ -4,18 +4,11 @@
   "categories": ["linter"],
   "commands": {
     "": {
-      "command": ["$PATH"],
-      "description": "",
-      "homepage": "",
-      "ignore_output": false,
-      "tests": []
+      "arguments": ["$PATH"],
+      "ignore_output": false
     }
   },
   "description": "Dockerfile linter, validate inline bash, written in Haskell",
   "homepage": "https://github.com/hadolint/hadolint",
-  "languages": ["dockerfile"],
-  "name": null,
-  "npm": null,
-  "php": null,
-  "tests": []
+  "languages": ["dockerfile"]
 }

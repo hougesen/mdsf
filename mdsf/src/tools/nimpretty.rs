@@ -33,7 +33,7 @@ pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfEr
 #[cfg(test)]
 mod test_nimpretty {
     #[test_with::executable(nimpretty)]
-    fn test_nimpretty_nim_8bff7df4f0c46bbe() {
+    fn test_nimpretty_nim_2c41c79e1d74972a() {
         let input = r#"proc           add( a         :int , b:int )        : int =
   return a +          b  "#;
         let output = r#"proc add(a: int, b: int): int =

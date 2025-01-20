@@ -4,18 +4,11 @@
   "categories": ["formatter"],
   "commands": {
     "": {
-      "command": ["$PATH"],
-      "description": "",
-      "homepage": "",
-      "ignore_output": false,
-      "tests": []
+      "arguments": ["$PATH"],
+      "ignore_output": false
     }
   },
   "description": "sqlfmt formats your dbt SQL files so you don't have to",
   "homepage": "https://github.com/tconbeer/sqlfmt",
-  "languages": ["sql"],
-  "name": null,
-  "npm": null,
-  "php": null,
-  "tests": []
+  "languages": ["sql"]
 }

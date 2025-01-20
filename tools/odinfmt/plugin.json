@@ -4,18 +4,11 @@
   "categories": ["formatter"],
   "commands": {
     "": {
-      "command": ["-w", "$PATH"],
-      "description": "",
-      "homepage": "",
-      "ignore_output": false,
-      "tests": []
+      "arguments": ["-w", "$PATH"],
+      "ignore_output": false
     }
   },
   "description": "Formatter for the Odin programming language",
   "homepage": "https://github.com/DanielGavin/ols",
-  "languages": ["odin"],
-  "name": null,
-  "npm": null,
-  "php": null,
-  "tests": []
+  "languages": ["odin"]
 }

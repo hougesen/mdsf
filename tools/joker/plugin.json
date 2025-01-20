@@ -4,18 +4,11 @@
   "categories": ["formatter", "linter"],
   "commands": {
     "": {
-      "command": ["--format", "--write", "$PATH"],
-      "description": "",
-      "homepage": "",
-      "ignore_output": false,
-      "tests": []
+      "arguments": ["--format", "--write", "$PATH"],
+      "ignore_output": false
     }
   },
   "description": "Small Clojure interpreter, linter and formatter",
   "homepage": "https://github.com/candid82/joker",
-  "languages": ["clojure"],
-  "name": null,
-  "npm": null,
-  "php": null,
-  "tests": []
+  "languages": ["clojure"]
 }

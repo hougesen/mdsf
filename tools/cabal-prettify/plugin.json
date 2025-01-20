@@ -4,18 +4,11 @@
   "categories": ["formatter"],
   "commands": {
     "": {
-      "command": ["$PATH"],
-      "description": "",
-      "homepage": "",
-      "ignore_output": false,
-      "tests": []
+      "arguments": ["$PATH"],
+      "ignore_output": false
     }
   },
   "description": "Prettify your Cabal package configuration files",
   "homepage": "https://github.com/kindaro/cabal-prettify",
-  "languages": ["cabal"],
-  "name": null,
-  "npm": null,
-  "php": null,
-  "tests": []
+  "languages": ["cabal"]
 }

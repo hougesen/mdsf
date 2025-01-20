@@ -36,7 +36,7 @@ pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfEr
 #[cfg(test)]
 mod test_scalafmt {
     #[test_with::executable(scalafmt)]
-    fn test_scalafmt_scala_f3726f9b9a0f9066() {
+    fn test_scalafmt_scala_cbd61c065383c05b() {
         let input = r#"object Addition {
              def main() = {
                  println(1 + 3)

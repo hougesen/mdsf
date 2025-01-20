@@ -4,25 +4,19 @@
   "categories": ["formatter"],
   "commands": {
     "format": {
-      "command": ["format", "$PATH"],
-      "description": "",
-      "homepage": "",
+      "arguments": ["format", "$PATH"],
       "ignore_output": false,
-      "tests": []
+      "tests": [
+        {
+          "language": "rescript",
+          "test_input": "module Button = {\n  @react.component\n  let make = (~count) =>   {\n    let times = switch    count {\n            | 1          =>   \"once\"\n    | 2  =>         \"twice\"\n    |   n =>      n->Int.toString ++ \" times\"\n     }\n     let text =                           `Click me ${times}`\n\n    <button> {text->React.string} </button>\n  }\n}",
+          "test_output": "module Button = {\n  @react.component\n  let make = (~count) => {\n    let times = switch count {\n    | 1 => \"once\"\n    | 2 => \"twice\"\n    | n => n->Int.toString ++ \" times\"\n    }\n    let text = `Click me ${times}`\n\n    <button> {text->React.string} </button>\n  }\n}\n"
+        }
+      ]
     }
   },
   "description": "Formatter for ReScript",
   "homepage": "https://rescript-lang.org/",
   "languages": ["rescript"],
-  "name": null,
-  "npm": "rescript",
-  "php": null,
-  "tests": [
-    {
-      "command": "format",
-      "language": "rescript",
-      "test_input": "module Button = {\n  @react.component\n  let make = (~count) =>   {\n    let times = switch    count {\n            | 1          =>   \"once\"\n    | 2  =>         \"twice\"\n    |   n =>      n->Int.toString ++ \" times\"\n     }\n     let text =                           `Click me ${times}`\n\n    <button> {text->React.string} </button>\n  }\n}",
-      "test_output": "module Button = {\n  @react.component\n  let make = (~count) => {\n    let times = switch count {\n    | 1 => \"once\"\n    | 2 => \"twice\"\n    | n => n->Int.toString ++ \" times\"\n    }\n    let text = `Click me ${times}`\n\n    <button> {text->React.string} </button>\n  }\n}\n"
-    }
-  ]
+  "npm": "rescript"
 }

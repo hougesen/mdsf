@@ -4,18 +4,13 @@
   "categories": ["linter", "formatter"],
   "commands": {
     "": {
-      "command": ["--fix", "$PATH"],
-      "description": "",
-      "homepage": "",
-      "ignore_output": false,
-      "tests": []
+      "arguments": ["--fix", "$PATH"],
+      "ignore_output": false
     }
   },
   "description": "JavaScript style guide, linter, and formatter",
   "homepage": "https://github.com/standard/standard",
   "languages": ["javascript"],
   "name": "standardjs",
-  "npm": "standard",
-  "php": null,
-  "tests": []
+  "npm": "standard"
 }

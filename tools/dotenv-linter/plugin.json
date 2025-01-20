@@ -4,18 +4,11 @@
   "categories": ["linter"],
   "commands": {
     "fix": {
-      "command": ["fix", "$PATH"],
-      "description": "",
-      "homepage": "",
-      "ignore_output": false,
-      "tests": []
+      "arguments": ["fix", "$PATH"],
+      "ignore_output": false
     }
   },
   "description": "Lightning-fast linter for .env files",
   "homepage": "https://github.com/dotenv-linter/dotenv-linter",
-  "languages": ["env"],
-  "name": null,
-  "npm": null,
-  "php": null,
-  "tests": []
+  "languages": ["env"]
 }

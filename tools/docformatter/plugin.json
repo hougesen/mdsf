@@ -4,18 +4,11 @@
   "categories": ["formatter"],
   "commands": {
     "": {
-      "command": ["--in-place", "$PATH"],
-      "description": "",
-      "homepage": "",
-      "ignore_output": false,
-      "tests": []
+      "arguments": ["--in-place", "$PATH"],
+      "ignore_output": false
     }
   },
   "description": "Formats docstrings to follow PEP 257",
   "homepage": "https://pypi.org/project/docformatter/",
-  "languages": ["python"],
-  "name": null,
-  "npm": null,
-  "php": null,
-  "tests": []
+  "languages": ["python"]
 }

@@ -34,7 +34,7 @@ pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfEr
 #[cfg(test)]
 mod test_swift_format {
     #[test_with::executable(swift-format)]
-    fn test_swift_format_swift_dd49f5b0939c875() {
+    fn test_swift_format_swift_5717762df3975151() {
         let input = r#" func add(a:Int ,b:Int)->Int {
     return a + b
     }"#;

@@ -4,18 +4,11 @@
   "categories": ["formatter"],
   "commands": {
     "": {
-      "command": ["-w", "$PATH"],
-      "description": "",
-      "homepage": "",
-      "ignore_output": false,
-      "tests": []
+      "arguments": ["-w", "$PATH"],
+      "ignore_output": false
     }
   },
   "description": "Fish indenter and prettifier",
   "homepage": "https://fishshell.com/docs/current/cmds/fish_indent.html",
-  "languages": ["fish"],
-  "name": null,
-  "npm": null,
-  "php": null,
-  "tests": []
+  "languages": ["fish"]
 }

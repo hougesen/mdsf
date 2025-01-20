@@ -4,18 +4,11 @@
   "categories": ["linter"],
   "commands": {
     "": {
-      "command": ["--fix", "--nobackup", "--quiet", "$PATH"],
-      "description": "",
-      "homepage": "",
-      "ignore_output": false,
-      "tests": []
+      "arguments": ["--fix", "--nobackup", "--quiet", "$PATH"],
+      "ignore_output": false
     }
   },
   "description": "Advanced oelint",
   "homepage": "https://github.com/priv-kweihmann/oelint-adv",
-  "languages": ["bitbake"],
-  "name": null,
-  "npm": null,
-  "php": null,
-  "tests": []
+  "languages": ["bitbake"]
 }

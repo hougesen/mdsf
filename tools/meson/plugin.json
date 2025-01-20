@@ -4,18 +4,11 @@
   "categories": ["formatter"],
   "commands": {
     "fmt": {
-      "command": ["fmt", "-i", "$PATH"],
-      "description": "",
-      "homepage": "",
-      "ignore_output": false,
-      "tests": []
+      "arguments": ["fmt", "-i", "$PATH"],
+      "ignore_output": false
     }
   },
   "description": "Meson is an open source build system meant to be both extremely fast, and, even more importantly, as user friendly as possible",
   "homepage": "https://mesonbuild.com/",
-  "languages": ["meson"],
-  "name": null,
-  "npm": null,
-  "php": null,
-  "tests": []
+  "languages": ["meson"]
 }

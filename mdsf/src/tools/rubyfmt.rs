@@ -34,7 +34,7 @@ pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfEr
 #[cfg(test)]
 mod test_rubyfmt {
     #[test_with::executable(rubyfmt)]
-    fn test_rubyfmt_ruby_1ad1609b5c92bd46() {
+    fn test_rubyfmt_ruby_d2b8a6db3c8eee1c() {
         let input = r#"def   add(  a ,                                                          b )
                         return a + b
                 end"#;

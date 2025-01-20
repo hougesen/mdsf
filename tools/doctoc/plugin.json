@@ -4,18 +4,12 @@
   "categories": ["formatter"],
   "commands": {
     "": {
-      "command": ["$PATH"],
-      "description": "",
-      "homepage": "",
-      "ignore_output": false,
-      "tests": []
+      "arguments": ["$PATH"],
+      "ignore_output": false
     }
   },
   "description": "Generates table of contents for markdown files",
   "homepage": "https://github.com/thlorenz/doctoc",
   "languages": ["markdown"],
-  "name": null,
-  "npm": "doctoc",
-  "php": null,
-  "tests": []
+  "npm": "doctoc"
 }

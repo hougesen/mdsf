@@ -4,18 +4,11 @@
   "categories": ["formatter"],
   "commands": {
     "": {
-      "command": ["-w", "$PATH"],
-      "description": "",
-      "homepage": "",
-      "ignore_output": false,
-      "tests": []
+      "arguments": ["-w", "$PATH"],
+      "ignore_output": false
     }
   },
   "description": "Go Assembler Formatter",
   "homepage": "https://github.com/klauspost/asmfmt",
-  "languages": ["go"],
-  "name": null,
-  "npm": null,
-  "php": null,
-  "tests": []
+  "languages": ["go"]
 }

@@ -4,25 +4,18 @@
   "categories": ["formatter"],
   "commands": {
     "": {
-      "command": ["--overwrite", "$PATH"],
-      "description": "",
-      "homepage": "",
+      "arguments": ["--overwrite", "$PATH"],
       "ignore_output": false,
-      "tests": []
+      "tests": [
+        {
+          "language": "xml",
+          "test_input": "\n<note>\n  <to>Tove</to>\n          <from>Jani</from>\n      <heading>Reminder</heading>\n        <body>Don't forget me this weekend!</body>\n   </note>",
+          "test_output": "<note>\n  <to>Tove</to>\n  <from>Jani</from>\n  <heading>Reminder</heading>\n  <body>Don't forget me this weekend!</body>\n</note>"
+        }
+      ]
     }
   },
   "description": "Format and compress XML documents",
   "homepage": "https://github.com/pamoller/xmlformatter",
-  "languages": ["xml"],
-  "name": null,
-  "npm": null,
-  "php": null,
-  "tests": [
-    {
-      "command": "",
-      "language": "xml",
-      "test_input": "\n<note>\n  <to>Tove</to>\n          <from>Jani</from>\n      <heading>Reminder</heading>\n        <body>Don't forget me this weekend!</body>\n   </note>",
-      "test_output": "<note>\n  <to>Tove</to>\n  <from>Jani</from>\n  <heading>Reminder</heading>\n  <body>Don't forget me this weekend!</body>\n</note>"
-    }
-  ]
+  "languages": ["xml"]
 }

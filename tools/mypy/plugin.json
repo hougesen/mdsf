@@ -4,18 +4,11 @@
   "categories": ["linter"],
   "commands": {
     "": {
-      "command": ["$PATH"],
-      "description": "",
-      "homepage": "",
-      "ignore_output": false,
-      "tests": []
+      "arguments": ["$PATH"],
+      "ignore_output": false
     }
   },
   "description": "Optional static typing for Python",
   "homepage": "https://github.com/python/mypy",
-  "languages": ["python"],
-  "name": null,
-  "npm": null,
-  "php": null,
-  "tests": []
+  "languages": ["python"]
 }

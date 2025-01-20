@@ -4,18 +4,11 @@
   "categories": ["formatter"],
   "commands": {
     "": {
-      "command": ["$PATH"],
-      "description": "",
-      "homepage": "",
-      "ignore_output": false,
-      "tests": []
+      "arguments": ["$PATH"],
+      "ignore_output": false
     }
   },
   "description": "An opinionated 🦄 .http and .rest 🐼 files linter 💄 and formatter ⚡",
   "homepage": "https://github.com/mistweaverco/kulala-fmt",
-  "languages": ["http"],
-  "name": null,
-  "npm": null,
-  "php": null,
-  "tests": []
+  "languages": ["http"]
 }

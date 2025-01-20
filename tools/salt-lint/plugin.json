@@ -4,18 +4,11 @@
   "categories": ["linter"],
   "commands": {
     "": {
-      "command": ["$PATH"],
-      "description": "",
-      "homepage": "",
-      "ignore_output": false,
-      "tests": []
+      "arguments": ["$PATH"],
+      "ignore_output": false
     }
   },
   "description": "A command-line utility that checks for best practices in SaltStack",
   "homepage": "https://github.com/warpnet/salt-lint",
-  "languages": ["salt"],
-  "name": null,
-  "npm": null,
-  "php": null,
-  "tests": []
+  "languages": ["salt"]
 }

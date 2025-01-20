@@ -4,25 +4,18 @@
   "categories": ["formatter"],
   "commands": {
     "": {
-      "command": ["-w", "$PATH"],
-      "description": "",
-      "homepage": "",
+      "arguments": ["-w", "$PATH"],
       "ignore_output": false,
-      "tests": []
+      "tests": [
+        {
+          "language": "erlang",
+          "test_input": "what_is(Erlang) ->\ncase Erlang of movie->[hello(mike,joe,robert),credits]; language->formatting_arguments end\n.",
+          "test_output": "what_is(Erlang) ->\n    case Erlang of movie -> [hello(mike, joe, robert), credits]; language -> formatting_arguments end.\n"
+        }
+      ]
     }
   },
   "description": "Erlang code formatter",
   "homepage": "https://github.com/sile/efmt",
-  "languages": ["erlang"],
-  "name": null,
-  "npm": null,
-  "php": null,
-  "tests": [
-    {
-      "command": "",
-      "language": "erlang",
-      "test_input": "what_is(Erlang) ->\ncase Erlang of movie->[hello(mike,joe,robert),credits]; language->formatting_arguments end\n.",
-      "test_output": "what_is(Erlang) ->\n    case Erlang of movie -> [hello(mike, joe, robert), credits]; language -> formatting_arguments end.\n"
-    }
-  ]
+  "languages": ["erlang"]
 }

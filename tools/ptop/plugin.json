@@ -4,18 +4,11 @@
   "categories": ["formatter"],
   "commands": {
     "": {
-      "command": ["$PATH", "$PATH"],
-      "description": "",
-      "homepage": "",
-      "ignore_output": false,
-      "tests": []
+      "arguments": ["$PATH", "$PATH"],
+      "ignore_output": false
     }
   },
   "description": "Free Pascal source formatter",
   "homepage": "https://www.freepascal.org/tools/ptop.html",
-  "languages": ["pascal"],
-  "name": null,
-  "npm": null,
-  "php": null,
-  "tests": []
+  "languages": ["pascal"]
 }

@@ -4,18 +4,12 @@
   "categories": ["formatter"],
   "commands": {
     "": {
-      "command": ["$PATH"],
-      "description": "",
-      "homepage": "",
-      "ignore_output": false,
-      "tests": []
+      "arguments": ["$PATH"],
+      "ignore_output": false
     }
   },
   "description": "Format and beautify nginx config files",
   "homepage": "https://github.com/vasilevich/nginxbeautifier",
   "languages": ["nginx"],
-  "name": null,
-  "npm": "nginxbeautifier",
-  "php": null,
-  "tests": []
+  "npm": "nginxbeautifier"
 }

@@ -33,7 +33,7 @@ pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfEr
 #[cfg(test)]
 mod test_fprettify {
     #[test_with::executable(fprettify)]
-    fn test_fprettify_fortran_7ba994e3a8ec6fb9() {
+    fn test_fprettify_fortran_e500b54621ef1a7a() {
         let input = r#"program demo
 integer :: endif,if,elseif
 integer,DIMENSION(2) :: function

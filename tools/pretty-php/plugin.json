@@ -4,18 +4,12 @@
   "categories": ["formatter"],
   "commands": {
     "": {
-      "command": ["$PATH"],
-      "description": "",
-      "homepage": "",
-      "ignore_output": false,
-      "tests": []
+      "arguments": ["$PATH"],
+      "ignore_output": false
     }
   },
   "description": "The opinionated PHP code formatter",
   "homepage": "https://github.com/lkrms/pretty-php",
   "languages": ["php"],
-  "name": null,
-  "npm": null,
-  "php": "pretty-php",
-  "tests": []
+  "php": "pretty-php"
 }

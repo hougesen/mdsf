@@ -4,38 +4,35 @@ use convert_case::{Case, Casing};
 
 const INDENT: &str = "    ";
 
-#[derive(Debug, serde::Deserialize, schemars::JsonSchema, Hash)]
+#[derive(Debug, serde::Deserialize, schemars::JsonSchema, Hash, Clone)]
 #[schemars(deny_unknown_fields)]
-pub struct ToolTest {
+pub struct ToolCommandTest {
     /// Codeblock language used when generating tests
     pub language: String,
-
-    pub command: String,
 
     pub test_input: String,
 
     pub test_output: String,
 }
 
-#[derive(Debug, serde::Deserialize, schemars::JsonSchema)]
+#[derive(Debug, serde::Deserialize, schemars::JsonSchema, Clone)]
 #[schemars(deny_unknown_fields)]
 pub struct ToolCommand {
-    pub command: Vec<String>,
+    pub arguments: Vec<String>,
 
     #[expect(unused)]
     pub ignore_output: bool,
 
     #[expect(unused)]
-    pub description: String,
+    pub description: Option<String>,
 
     #[expect(unused)]
-    pub homepage: String,
+    pub homepage: Option<String>,
 
-    #[expect(unused)]
-    pub tests: Vec<ToolTest>,
+    pub tests: Option<Vec<ToolCommandTest>>,
 }
 
-#[derive(Debug, serde::Deserialize, schemars::JsonSchema)]
+#[derive(Debug, serde::Deserialize, schemars::JsonSchema, Clone)]
 #[schemars(deny_unknown_fields)]
 pub struct Tool {
     #[expect(unused)]
@@ -61,8 +58,6 @@ pub struct Tool {
     pub categories: std::collections::HashSet<String>,
 
     pub languages: std::collections::HashSet<String>,
-
-    pub tests: Option<Vec<ToolTest>>,
 }
 
 #[derive(Debug)]
@@ -99,12 +94,14 @@ impl Tool {
         )
     }
 
-    fn generate_test(&self, test: &ToolTest) -> (String, String) {
+    fn generate_test(&self, command: &str, test: &ToolCommandTest) -> (String, String) {
         let mut hasher = DefaultHasher::new();
+
         test.hash(&mut hasher);
+
         let id = format!("{:x}", hasher.finish());
 
-        let module_name = self.get_command_name(&test.command).to_case(Case::Snake);
+        let module_name = self.get_command_name(command).to_case(Case::Snake);
 
         let language = test.language.to_case(Case::Snake);
 
@@ -139,17 +136,6 @@ impl Tool {
 
     fn generate(&self) -> Vec<GeneratedCommand> {
         let mut all_commands = Vec::new();
-
-        let mut generated_tests: std::collections::HashMap<String, Vec<String>> =
-            std::collections::HashMap::new();
-
-        if let Some(tests) = &self.tests {
-            for test in tests {
-                let (module, code) = self.generate_test(test);
-
-                generated_tests.entry(module).or_default().push(code);
-            }
-        }
 
         for (cmd, options) in &self.commands {
             let command_name = self.get_command_name(cmd);
@@ -187,7 +173,7 @@ impl Tool {
             let mut args_includes_path = false;
 
             let string_args = options
-                .command
+                .arguments
                 .iter()
                 .map(|arg| {
                     if arg == "$PATH" {
@@ -218,15 +204,20 @@ impl Tool {
 
             let module_name = command_name.to_case(Case::Snake);
 
-            let tests = generated_tests
-                .remove(&module_name)
+            let mut tests = options
+                .tests
+                .clone()
                 .unwrap_or_default()
-                .join("\n\n");
+                .iter()
+                .map(|test| self.generate_test(cmd, test).1)
+                .collect::<Vec<_>>();
 
             let tests = if tests.is_empty() {
                 String::new()
             } else {
-                format!("\n{tests}\n")
+                tests.sort_unstable();
+
+                format!("\n{}\n", tests.join("\n\n"))
             };
 
             let code = format!(
@@ -278,12 +269,10 @@ mod test_{module_name} {{{tests}}}
                     if cmd.is_empty() { "" } else { ":" },
                     cmd
                 ),
-                args: options.command.clone(),
+                args: options.arguments.clone(),
                 binary: self.binary.clone(),
             });
         }
-
-        assert!(generated_tests.is_empty());
 
         all_commands
     }

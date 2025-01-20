@@ -4,18 +4,12 @@
   "categories": ["linter"],
   "commands": {
     "lint": {
-      "command": ["lint", "$PATH"],
-      "description": "",
-      "homepage": "",
-      "ignore_output": false,
-      "tests": []
+      "arguments": ["lint", "$PATH"],
+      "ignore_output": false
     }
   },
   "description": "vacuum is the worlds fastest OpenAPI 3, OpenAPI 2 / Swagger linter and quality analysis tool",
   "homepage": "https://github.com/daveshanley/vacuum",
   "languages": ["openapi"],
-  "name": null,
-  "npm": "@quobix/vacuum",
-  "php": null,
-  "tests": []
+  "npm": "@quobix/vacuum"
 }

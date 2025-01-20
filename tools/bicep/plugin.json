@@ -4,18 +4,11 @@
   "categories": ["formatter"],
   "commands": {
     "format": {
-      "command": ["format", "$PATH"],
-      "description": "",
-      "homepage": "",
-      "ignore_output": false,
-      "tests": []
+      "arguments": ["format", "$PATH"],
+      "ignore_output": false
     }
   },
   "description": "Bicep is a declarative language for describing and deploying Azure resources",
   "homepage": "https://github.com/Azure/bicep",
-  "languages": ["bicep"],
-  "name": null,
-  "npm": null,
-  "php": null,
-  "tests": []
+  "languages": ["bicep"]
 }

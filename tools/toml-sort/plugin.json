@@ -4,18 +4,11 @@
   "categories": ["formatter"],
   "commands": {
     "": {
-      "command": ["-i", "$PATH"],
-      "description": "",
-      "homepage": "",
-      "ignore_output": false,
-      "tests": []
+      "arguments": ["-i", "$PATH"],
+      "ignore_output": false
     }
   },
   "description": "A command line utility to sort and format toml files",
   "homepage": "https://github.com/pappasam/toml-sort",
-  "languages": ["toml"],
-  "name": null,
-  "npm": null,
-  "php": null,
-  "tests": []
+  "languages": ["toml"]
 }

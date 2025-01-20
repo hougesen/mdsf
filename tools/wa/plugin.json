@@ -4,18 +4,11 @@
   "categories": ["formatter"],
   "commands": {
     "fmt": {
-      "command": ["fmt", "$PATH"],
-      "description": "",
-      "homepage": "",
-      "ignore_output": false,
-      "tests": []
+      "arguments": ["fmt", "$PATH"],
+      "ignore_output": false
     }
   },
   "description": "Formatter for the wa programming language",
   "homepage": "https://github.com/wa-lang/wa/",
-  "languages": ["wa"],
-  "name": null,
-  "npm": null,
-  "php": null,
-  "tests": []
+  "languages": ["wa"]
 }

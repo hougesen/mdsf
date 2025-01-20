@@ -4,18 +4,13 @@
   "categories": ["linter", "formatter"],
   "commands": {
     "": {
-      "command": ["check", "$PATH", "--fix", "--no-interaction"],
-      "description": "",
-      "homepage": "",
-      "ignore_output": false,
-      "tests": []
+      "arguments": ["check", "$PATH", "--fix", "--no-interaction"],
+      "ignore_output": false
     }
   },
   "description": "The Easiest way to add coding standard to your PHP project",
   "homepage": "https://github.com/easy-coding-standard/easy-coding-standard",
   "languages": ["php"],
   "name": "easy-coding-standard",
-  "npm": null,
-  "php": "ecs",
-  "tests": []
+  "php": "ecs"
 }

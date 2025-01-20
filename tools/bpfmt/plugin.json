@@ -4,18 +4,11 @@
   "categories": ["formatter"],
   "commands": {
     "": {
-      "command": ["-w", "$PATH"],
-      "description": "",
-      "homepage": "",
-      "ignore_output": false,
-      "tests": []
+      "arguments": ["-w", "$PATH"],
+      "ignore_output": false
     }
   },
   "description": "A formatter for Blueprint files",
   "homepage": "https://source.android.com/docs/setup/reference/androidbp#formatter",
-  "languages": ["blueprint"],
-  "name": null,
-  "npm": null,
-  "php": null,
-  "tests": []
+  "languages": ["blueprint"]
 }

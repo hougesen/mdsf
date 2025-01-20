@@ -4,18 +4,11 @@
   "categories": ["formatter"],
   "commands": {
     "": {
-      "command": ["--in-place", "$PATH"],
-      "description": "",
-      "homepage": "",
-      "ignore_output": false,
-      "tests": []
+      "arguments": ["--in-place", "$PATH"],
+      "ignore_output": false
     }
   },
   "description": "refmt stands by Reason Formatter and it formats Reason programs, is a parser and pretty-printer for Reason",
   "homepage": "https://reasonml.github.io/docs/en/refmt",
-  "languages": ["reason"],
-  "name": null,
-  "npm": null,
-  "php": null,
-  "tests": []
+  "languages": ["reason"]
 }

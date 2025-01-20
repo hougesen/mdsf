@@ -4,18 +4,11 @@
   "categories": ["formatter"],
   "commands": {
     "fix": {
-      "command": ["fix", "$PATH"],
-      "description": "",
-      "homepage": "",
-      "ignore_output": false,
-      "tests": []
+      "arguments": ["fix", "$PATH"],
+      "ignore_output": false
     }
   },
   "description": "A tool for formatting Clojure code",
   "homepage": "https://github.com/weavejester/cljfmt",
-  "languages": ["clojure"],
-  "name": null,
-  "npm": null,
-  "php": null,
-  "tests": []
+  "languages": ["clojure"]
 }

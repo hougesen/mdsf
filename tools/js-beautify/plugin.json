@@ -4,18 +4,12 @@
   "categories": ["formatter"],
   "commands": {
     "": {
-      "command": ["-r", "--type", "js", "-f", "$PATH"],
-      "description": "",
-      "homepage": "",
-      "ignore_output": false,
-      "tests": []
+      "arguments": ["-r", "--type", "js", "-f", "$PATH"],
+      "ignore_output": false
     }
   },
   "description": "A JavaScript formatter",
   "homepage": "https://github.com/beautifier/js-beautify",
   "languages": ["javascript"],
-  "name": null,
-  "npm": "js-beautify",
-  "php": null,
-  "tests": []
+  "npm": "js-beautify"
 }

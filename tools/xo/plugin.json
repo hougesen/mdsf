@@ -4,18 +4,12 @@
   "categories": ["linter"],
   "commands": {
     "": {
-      "command": ["--fix", "$PATH"],
-      "description": "",
-      "homepage": "",
-      "ignore_output": false,
-      "tests": []
+      "arguments": ["--fix", "$PATH"],
+      "ignore_output": false
     }
   },
   "description": "JavaScript/TypeScript linter (ESLint wrapper) with great defaults",
   "homepage": "https://github.com/xojs/xo",
   "languages": ["javascript", "typescript"],
-  "name": null,
-  "npm": "xo",
-  "php": null,
-  "tests": []
+  "npm": "xo"
 }

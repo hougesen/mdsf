@@ -34,7 +34,7 @@ pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfEr
 #[cfg(test)]
 mod test_efmt {
     #[test_with::executable(efmt)]
-    fn test_efmt_erlang_cf3d86b4ee700703() {
+    fn test_efmt_erlang_d4d88e49805fdb39() {
         let input = r#"what_is(Erlang) ->
 case Erlang of movie->[hello(mike,joe,robert),credits]; language->formatting_arguments end
 ."#;

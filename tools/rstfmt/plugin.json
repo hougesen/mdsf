@@ -4,18 +4,11 @@
   "categories": ["formatter"],
   "commands": {
     "": {
-      "command": ["$PATH"],
-      "description": "",
-      "homepage": "",
-      "ignore_output": false,
-      "tests": []
+      "arguments": ["$PATH"],
+      "ignore_output": false
     }
   },
   "description": "A formatter for reStructuredText",
   "homepage": "https://github.com/dzhu/rstfmt",
-  "languages": ["restructuredtext"],
-  "name": null,
-  "npm": null,
-  "php": null,
-  "tests": []
+  "languages": ["restructuredtext"]
 }

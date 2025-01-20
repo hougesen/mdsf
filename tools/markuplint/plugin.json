@@ -4,18 +4,12 @@
   "categories": ["linter"],
   "commands": {
     "": {
-      "command": ["--fix", "$PATH"],
-      "description": "",
-      "homepage": "",
-      "ignore_output": false,
-      "tests": []
+      "arguments": ["--fix", "$PATH"],
+      "ignore_output": false
     }
   },
   "description": "An HTML linter for all markup developers",
   "homepage": "https://markuplint.dev/",
   "languages": ["html"],
-  "name": null,
-  "npm": "markuplint",
-  "php": null,
-  "tests": []
+  "npm": "markuplint"
 }

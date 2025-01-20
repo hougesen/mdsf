@@ -4,18 +4,11 @@
   "categories": ["linter"],
   "commands": {
     "": {
-      "command": ["--fix", "$PATH"],
-      "description": "",
-      "homepage": "",
-      "ignore_output": false,
-      "tests": []
+      "arguments": ["--fix", "$PATH"],
+      "ignore_output": false
     }
   },
   "description": "Check that your Puppet manifests conform to the style guide",
   "homepage": "https://github.com/puppetlabs/puppet-lint",
-  "languages": ["puppet"],
-  "name": null,
-  "npm": null,
-  "php": null,
-  "tests": []
+  "languages": ["puppet"]
 }

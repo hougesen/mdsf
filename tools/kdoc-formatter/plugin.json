@@ -4,18 +4,11 @@
   "categories": ["formatter"],
   "commands": {
     "": {
-      "command": ["--quiet", "$PATH"],
-      "description": "",
-      "homepage": "",
-      "ignore_output": false,
-      "tests": []
+      "arguments": ["--quiet", "$PATH"],
+      "ignore_output": false
     }
   },
   "description": "Reformats Kotlin KDoc comments, reflowing text and other cleanup",
   "homepage": "https://github.com/tnorbye/kdoc-formatter",
-  "languages": ["kotlin"],
-  "name": null,
-  "npm": null,
-  "php": null,
-  "tests": []
+  "languages": ["kotlin"]
 }

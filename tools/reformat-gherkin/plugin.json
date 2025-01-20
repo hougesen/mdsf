@@ -4,18 +4,11 @@
   "categories": ["formatter"],
   "commands": {
     "": {
-      "command": ["$PATH"],
-      "description": "",
-      "homepage": "",
-      "ignore_output": false,
-      "tests": []
+      "arguments": ["$PATH"],
+      "ignore_output": false
     }
   },
   "description": "Reformat-gherkin automatically formats Gherkin files",
   "homepage": "https://github.com/ducminh-phan/reformat-gherkin",
-  "languages": ["gherkin"],
-  "name": null,
-  "npm": null,
-  "php": null,
-  "tests": []
+  "languages": ["gherkin"]
 }

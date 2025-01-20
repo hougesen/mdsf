@@ -4,25 +4,15 @@
   "categories": ["linter", "formatter"],
   "commands": {
     "fix": {
-      "command": ["fix", "$PATH"],
-      "description": "",
-      "homepage": "",
-      "ignore_output": false,
-      "tests": []
+      "arguments": ["fix", "$PATH"],
+      "ignore_output": false
     },
     "format": {
-      "command": ["format", "$PATH"],
-      "description": "",
-      "homepage": "",
-      "ignore_output": false,
-      "tests": []
+      "arguments": ["format", "$PATH"],
+      "ignore_output": false
     }
   },
   "description": "Code Quality Tool for Flutter Developers",
   "homepage": "https://dcm.dev/",
-  "languages": ["flutter", "dart"],
-  "name": null,
-  "npm": null,
-  "php": null,
-  "tests": []
+  "languages": ["flutter", "dart"]
 }

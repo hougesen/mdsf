@@ -34,7 +34,7 @@ pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfEr
 #[cfg(test)]
 mod test_markdownfmt {
     #[test_with::executable(markdownfmt)]
-    fn test_markdownfmt_markdown_671fb185b2d76b82() {
+    fn test_markdownfmt_markdown_9b495bc15a7833bc() {
         let input = r#"# hello w   world
 
 this   text has      weird spacing

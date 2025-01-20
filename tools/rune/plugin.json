@@ -4,18 +4,11 @@
   "categories": ["formatter"],
   "commands": {
     "fmt": {
-      "command": ["fmt", "$PATH"],
-      "description": "",
-      "homepage": "",
-      "ignore_output": false,
-      "tests": []
+      "arguments": ["fmt", "$PATH"],
+      "ignore_output": false
     }
   },
   "description": "Tools for the Rune programming language",
   "homepage": "https://github.com/rune-rs/rune",
-  "languages": ["rune"],
-  "name": null,
-  "npm": null,
-  "php": null,
-  "tests": []
+  "languages": ["rune"]
 }

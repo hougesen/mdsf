@@ -4,25 +4,19 @@
   "categories": ["formatter"],
   "commands": {
     "": {
-      "command": ["format", "$PATH"],
-      "description": "",
-      "homepage": "",
+      "arguments": ["format", "$PATH"],
       "ignore_output": false,
-      "tests": []
+      "tests": [
+        {
+          "language": "toml",
+          "test_input": "          package         =              \"mdsf\"\n  author   = \"Mads Hougesen\"\n  ",
+          "test_output": "package = \"mdsf\"\nauthor = \"Mads Hougesen\"\n"
+        }
+      ]
     }
   },
   "description": "A TOML toolkit written in Rust",
   "homepage": "https://github.com/tamasfe/taplo",
   "languages": ["toml"],
-  "name": null,
-  "npm": "@taplo/cli",
-  "php": null,
-  "tests": [
-    {
-      "command": "",
-      "language": "toml",
-      "test_input": "          package         =              \"mdsf\"\n  author   = \"Mads Hougesen\"\n  ",
-      "test_output": "package = \"mdsf\"\nauthor = \"Mads Hougesen\"\n"
-    }
-  ]
+  "npm": "@taplo/cli"
 }

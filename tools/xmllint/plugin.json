@@ -4,25 +4,18 @@
   "categories": ["linter"],
   "commands": {
     "": {
-      "command": ["--format", "$PATH", "--output", "$PATH"],
-      "description": "",
-      "homepage": "",
+      "arguments": ["--format", "$PATH", "--output", "$PATH"],
       "ignore_output": false,
-      "tests": []
+      "tests": [
+        {
+          "language": "xml",
+          "test_input": "\n<note>\n  <to>Tove</to>\n          <from>Jani</from>\n      <heading>Reminder</heading>\n        <body>Don't forget me this weekend!</body>\n   </note>",
+          "test_output": "<?xml version=\"1.0\"?>\n<note>\n  <to>Tove</to>\n  <from>Jani</from>\n  <heading>Reminder</heading>\n  <body>Don't forget me this weekend!</body>\n</note>\n"
+        }
+      ]
     }
   },
   "description": "XML linter",
   "homepage": "https://gnome.pages.gitlab.gnome.org/libxml2/xmllint.html",
-  "languages": ["xml"],
-  "name": null,
-  "npm": null,
-  "php": null,
-  "tests": [
-    {
-      "command": "",
-      "language": "xml",
-      "test_input": "\n<note>\n  <to>Tove</to>\n          <from>Jani</from>\n      <heading>Reminder</heading>\n        <body>Don't forget me this weekend!</body>\n   </note>",
-      "test_output": "<?xml version=\"1.0\"?>\n<note>\n  <to>Tove</to>\n  <from>Jani</from>\n  <heading>Reminder</heading>\n  <body>Don't forget me this weekend!</body>\n</note>\n"
-    }
-  ]
+  "languages": ["xml"]
 }

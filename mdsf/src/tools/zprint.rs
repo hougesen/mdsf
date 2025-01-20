@@ -34,7 +34,7 @@ pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfEr
 #[cfg(test)]
 mod test_zprint {
     #[test_with::executable(zprint)]
-    fn test_zprint_clojure_34d0f9927a4f588d() {
+    fn test_zprint_clojure_81eb4a785de214e8() {
         let input = r#"(defn change-start-column [new-start-column style-vec [inline-comment-index
   start-column spaces-before :as comment-vec]] (if (zero? inline-comment-index)
   style-vec (let [delta-spaces (- new-start-column start-column) new-spaces

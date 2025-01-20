@@ -34,7 +34,7 @@ pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfEr
 #[cfg(test)]
 mod test_veryl_fmt {
     #[test_with::executable(veryl)]
-    fn test_veryl_fmt_veryl_cc7688e3f0f92902() {
+    fn test_veryl_fmt_veryl_529de9cf882c5a00() {
         let input = r#"/// documentation comment by markdown format
 /// * list item1
 /// * list item2

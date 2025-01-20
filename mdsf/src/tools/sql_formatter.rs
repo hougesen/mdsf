@@ -38,7 +38,7 @@ pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfEr
 #[cfg(test)]
 mod test_sql_formatter {
     #[test_with::executable(npx)]
-    fn test_sql_formatter_sql_ff38558c05531d22() {
+    fn test_sql_formatter_sql_85ac36a4bf14f957() {
         let input = r#"SELECT * FROM tbl WHERE foo = 'bar';"#;
         let output = r#"SELECT
   *

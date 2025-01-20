@@ -4,18 +4,11 @@
   "categories": ["formatter"],
   "commands": {
     "fmt": {
-      "command": ["fmt", "$PATH", "-w"],
-      "description": "",
-      "homepage": "",
-      "ignore_output": false,
-      "tests": []
+      "arguments": ["fmt", "$PATH", "-w"],
+      "ignore_output": false
     }
   },
   "description": "Format Rego source files",
   "homepage": "https://www.openpolicyagent.org/docs/latest/cli/",
-  "languages": ["rego"],
-  "name": null,
-  "npm": null,
-  "php": null,
-  "tests": []
+  "languages": ["rego"]
 }

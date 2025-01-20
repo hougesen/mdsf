@@ -38,7 +38,7 @@ pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfEr
 #[cfg(test)]
 mod test_csscomb {
     #[test_with::executable(npx)]
-    fn test_csscomb_css_b8e303ad59d84518() {
+    fn test_csscomb_css_bed67a883a4a1aae() {
         let input = r#"h1   {color: blue;}
 p {color: red;}"#;
         let output = r#"h1

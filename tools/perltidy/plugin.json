@@ -4,18 +4,11 @@
   "categories": ["formatter"],
   "commands": {
     "": {
-      "command": ["-b", "$PATH"],
-      "description": "",
-      "homepage": "",
-      "ignore_output": false,
-      "tests": []
+      "arguments": ["-b", "$PATH"],
+      "ignore_output": false
     }
   },
   "description": "Perl::Tidy, a source code formatter for Perl",
   "homepage": "https://github.com/perltidy/perltidy",
-  "languages": ["perl"],
-  "name": null,
-  "npm": null,
-  "php": null,
-  "tests": []
+  "languages": ["perl"]
 }

@@ -4,25 +4,18 @@
   "categories": ["formatter"],
   "commands": {
     "fmt": {
-      "command": ["fmt", "$PATH"],
-      "description": "",
-      "homepage": "",
+      "arguments": ["fmt", "$PATH"],
       "ignore_output": false,
-      "tests": []
+      "tests": [
+        {
+          "language": "html",
+          "test_input": "<div>\n                    <p>\n                    Mads was here\n                    </p>\n        </div>",
+          "test_output": "<div>\n  <p>\n    Mads was here\n  </p>\n</div>"
+        }
+      ]
     }
   },
   "description": "HTML Language Server & Templating Language Library",
   "homepage": "https://github.com/kristoff-it/superhtml",
-  "languages": ["html"],
-  "name": null,
-  "npm": null,
-  "php": null,
-  "tests": [
-    {
-      "command": "fmt",
-      "language": "html",
-      "test_input": "<div>\n                    <p>\n                    Mads was here\n                    </p>\n        </div>",
-      "test_output": "<div>\n  <p>\n    Mads was here\n  </p>\n</div>"
-    }
-  ]
+  "languages": ["html"]
 }

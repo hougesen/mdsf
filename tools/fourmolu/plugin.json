@@ -4,25 +4,18 @@
   "categories": ["formatter"],
   "commands": {
     "": {
-      "command": ["-i", "$PATH"],
-      "description": "",
-      "homepage": "",
+      "arguments": ["-i", "$PATH"],
       "ignore_output": false,
-      "tests": []
+      "tests": [
+        {
+          "language": "haskell",
+          "test_input": "\naddNumbers::Int->Int->Int\naddNumbers a b = do\n        a + b\n        ",
+          "test_output": "addNumbers :: Int -> Int -> Int\naddNumbers a b = do\n    a + b\n"
+        }
+      ]
     }
   },
   "description": "A formatter for Haskell source code",
   "homepage": "https://hackage.haskell.org/package/fourmolu",
-  "languages": ["haskell"],
-  "name": null,
-  "npm": null,
-  "php": null,
-  "tests": [
-    {
-      "command": "",
-      "language": "haskell",
-      "test_input": "\naddNumbers::Int->Int->Int\naddNumbers a b = do\n        a + b\n        ",
-      "test_output": "addNumbers :: Int -> Int -> Int\naddNumbers a b = do\n    a + b\n"
-    }
-  ]
+  "languages": ["haskell"]
 }

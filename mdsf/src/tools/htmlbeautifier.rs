@@ -33,7 +33,7 @@ pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfEr
 #[cfg(test)]
 mod test_htmlbeautifier {
     #[test_with::executable(htmlbeautifier)]
-    fn test_htmlbeautifier_html_14e9e2f8775d3c5f() {
+    fn test_htmlbeautifier_html_7e86d833d3fbf4e3() {
         let input = r#"<div>
                     <p>
                     Mads was here

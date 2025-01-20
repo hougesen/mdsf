@@ -4,18 +4,11 @@
   "categories": ["formatter"],
   "commands": {
     "": {
-      "command": ["--quiet", "$PATH"],
-      "description": "",
-      "homepage": "",
-      "ignore_output": false,
-      "tests": []
+      "arguments": ["--quiet", "$PATH"],
+      "ignore_output": false
     }
   },
   "description": "A formatter for the leptos view! macro",
   "homepage": "https://github.com/bram209/leptosfmt",
-  "languages": ["rust"],
-  "name": null,
-  "npm": null,
-  "php": null,
-  "tests": []
+  "languages": ["rust"]
 }

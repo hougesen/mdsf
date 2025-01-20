@@ -4,18 +4,12 @@
   "categories": ["linter"],
   "commands": {
     "": {
-      "command": ["--quiet", "$PATH"],
-      "description": "",
-      "homepage": "",
-      "ignore_output": false,
-      "tests": []
+      "arguments": ["--quiet", "$PATH"],
+      "ignore_output": false
     }
   },
   "description": "Automated linting of Cascading Stylesheets",
   "homepage": "https://github.com/CSSLint/csslint",
   "languages": ["css"],
-  "name": null,
-  "npm": "csslint",
-  "php": null,
-  "tests": []
+  "npm": "csslint"
 }

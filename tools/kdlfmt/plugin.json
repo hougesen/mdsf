@@ -4,18 +4,11 @@
   "categories": ["formatter"],
   "commands": {
     "": {
-      "command": ["format", "$PATH"],
-      "description": "",
-      "homepage": "",
-      "ignore_output": false,
-      "tests": []
+      "arguments": ["format", "$PATH"],
+      "ignore_output": false
     }
   },
   "description": "A formatter for kdl documents",
   "homepage": "https://github.com/hougesen/kdlfmt",
-  "languages": ["kdl"],
-  "name": null,
-  "npm": null,
-  "php": null,
-  "tests": []
+  "languages": ["kdl"]
 }

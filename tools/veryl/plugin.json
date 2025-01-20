@@ -4,25 +4,18 @@
   "categories": ["formatter"],
   "commands": {
     "fmt": {
-      "command": ["fmt", "$PATH"],
-      "description": "",
-      "homepage": "",
+      "arguments": ["fmt", "$PATH"],
       "ignore_output": false,
-      "tests": []
+      "tests": [
+        {
+          "language": "veryl",
+          "test_input": "/// documentation comment by markdown format\n/// * list item1\n/// * list item2\npub module Delay #( // visibility control by `pub` keyword\n              param WIDTH:                 u32 = 1, // trailing comma is allowed\n) (\n    i_clk : input clock       ,\n              i_rst : input reset       ,\n    i_data: input logic<WIDTH>,\n     o_data: input logic<WIDTH>,\n)            {\n    // unused variable which is not started with `_` are warned\n              var _unused_variable: logic;\n\n    // clock and reset signals can be omitted\n    // because Veryl can infer these signals\n                      always_ff              {\n        // abstraction syntax of reset polarity and synchronicity\n        if_reset {\n            o_data = '0;\n        } else {\n            o_data = i_data;\n        }\n    }\n}\n",
+          "test_output": "/// documentation comment by markdown format\n/// * list item1\n/// * list item2\npub module Delay #( // visibility control by `pub` keyword\n    param WIDTH: u32 = 1, // trailing comma is allowed\n) (\n    i_clk : input clock       ,\n    i_rst : input reset       ,\n    i_data: input logic<WIDTH>,\n    o_data: input logic<WIDTH>,\n) {\n    // unused variable which is not started with `_` are warned\n    var _unused_variable: logic;\n\n    // clock and reset signals can be omitted\n    // because Veryl can infer these signals\n    always_ff {\n        // abstraction syntax of reset polarity and synchronicity\n        if_reset {\n            o_data = '0;\n        } else {\n            o_data = i_data;\n        }\n    }\n}\n"
+        }
+      ]
     }
   },
   "description": "Veryl: A Modern Hardware Description Language",
   "homepage": "https://github.com/veryl-lang/veryl",
-  "languages": ["veryl"],
-  "name": null,
-  "npm": null,
-  "php": null,
-  "tests": [
-    {
-      "command": "fmt",
-      "language": "veryl",
-      "test_input": "/// documentation comment by markdown format\n/// * list item1\n/// * list item2\npub module Delay #( // visibility control by `pub` keyword\n              param WIDTH:                 u32 = 1, // trailing comma is allowed\n) (\n    i_clk : input clock       ,\n              i_rst : input reset       ,\n    i_data: input logic<WIDTH>,\n     o_data: input logic<WIDTH>,\n)            {\n    // unused variable which is not started with `_` are warned\n              var _unused_variable: logic;\n\n    // clock and reset signals can be omitted\n    // because Veryl can infer these signals\n                      always_ff              {\n        // abstraction syntax of reset polarity and synchronicity\n        if_reset {\n            o_data = '0;\n        } else {\n            o_data = i_data;\n        }\n    }\n}\n",
-      "test_output": "/// documentation comment by markdown format\n/// * list item1\n/// * list item2\npub module Delay #( // visibility control by `pub` keyword\n    param WIDTH: u32 = 1, // trailing comma is allowed\n) (\n    i_clk : input clock       ,\n    i_rst : input reset       ,\n    i_data: input logic<WIDTH>,\n    o_data: input logic<WIDTH>,\n) {\n    // unused variable which is not started with `_` are warned\n    var _unused_variable: logic;\n\n    // clock and reset signals can be omitted\n    // because Veryl can infer these signals\n    always_ff {\n        // abstraction syntax of reset polarity and synchronicity\n        if_reset {\n            o_data = '0;\n        } else {\n            o_data = i_data;\n        }\n    }\n}\n"
-    }
-  ]
+  "languages": ["veryl"]
 }

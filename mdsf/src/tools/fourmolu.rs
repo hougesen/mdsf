@@ -34,7 +34,7 @@ pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfEr
 #[cfg(test)]
 mod test_fourmolu {
     #[test_with::executable(fourmolu)]
-    fn test_fourmolu_haskell_17266c3830e2881f() {
+    fn test_fourmolu_haskell_718612a8aa064d19() {
         let input = r#"
 addNumbers::Int->Int->Int
 addNumbers a b = do

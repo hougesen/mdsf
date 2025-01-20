@@ -4,18 +4,11 @@
   "categories": ["formatter"],
   "commands": {
     "": {
-      "command": ["fmt", "-w", "$PATH"],
-      "description": "",
-      "homepage": "",
-      "ignore_output": false,
-      "tests": []
+      "arguments": ["fmt", "-w", "$PATH"],
+      "ignore_output": false
     }
   },
   "description": "Dockerfile format and parser. Like `gofmt` but for Dockerfiles",
   "homepage": "https://github.com/jessfraz/dockfmt",
-  "languages": ["docker"],
-  "name": null,
-  "npm": null,
-  "php": null,
-  "tests": []
+  "languages": ["docker"]
 }

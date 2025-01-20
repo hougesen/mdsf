@@ -4,25 +4,18 @@
   "categories": ["formatter"],
   "commands": {
     "": {
-      "command": ["-w", "$PATH"],
-      "description": "",
-      "homepage": "",
+      "arguments": ["-w", "$PATH"],
       "ignore_output": false,
-      "tests": []
+      "tests": [
+        {
+          "language": "clojure",
+          "test_input": "(defn change-start-column [new-start-column style-vec [inline-comment-index\n  start-column spaces-before :as comment-vec]] (if (zero? inline-comment-index)\n  style-vec (let [delta-spaces (- new-start-column start-column) new-spaces\n  (+ spaces-before delta-spaces) previous-element-index (dec\n  inline-comment-index) [s c e :as previous-element] (nth style-vec\n  previous-element-index) new-previous-element (cond (= e :indent) [(str \"\n\"\n  (blanks new-spaces)) c e] (= e :whitespace) [(str (blanks new-spaces))\n  c e 26] :else nil)] (assoc style-vec previous-element-index\n  new-previous-element))))",
+          "test_output": "(defn change-start-column\n  [new-start-column style-vec\n   [inline-comment-index start-column spaces-before :as comment-vec]]\n  (if (zero? inline-comment-index)\n    style-vec\n    (let [delta-spaces (- new-start-column start-column)\n          new-spaces (+ spaces-before delta-spaces)\n          previous-element-index (dec inline-comment-index)\n          [s c e :as previous-element] (nth style-vec previous-element-index)\n          new-previous-element\n            (cond (= e :indent) [(str \"\n\" (blanks new-spaces)) c e]\n                  (= e :whitespace) [(str (blanks new-spaces)) c e 26]\n                  :else nil)]\n      (assoc style-vec previous-element-index new-previous-element))))"
+        }
+      ]
     }
   },
   "description": "Executables, uberjar, and library to beautifully format Clojure and Clojurescript source code and s-expressions",
   "homepage": "https://github.com/kkinnear/zprint",
-  "languages": ["clojure", "clojurescript"],
-  "name": null,
-  "npm": null,
-  "php": null,
-  "tests": [
-    {
-      "command": "",
-      "language": "clojure",
-      "test_input": "(defn change-start-column [new-start-column style-vec [inline-comment-index\n  start-column spaces-before :as comment-vec]] (if (zero? inline-comment-index)\n  style-vec (let [delta-spaces (- new-start-column start-column) new-spaces\n  (+ spaces-before delta-spaces) previous-element-index (dec\n  inline-comment-index) [s c e :as previous-element] (nth style-vec\n  previous-element-index) new-previous-element (cond (= e :indent) [(str \"\n\"\n  (blanks new-spaces)) c e] (= e :whitespace) [(str (blanks new-spaces))\n  c e 26] :else nil)] (assoc style-vec previous-element-index\n  new-previous-element))))",
-      "test_output": "(defn change-start-column\n  [new-start-column style-vec\n   [inline-comment-index start-column spaces-before :as comment-vec]]\n  (if (zero? inline-comment-index)\n    style-vec\n    (let [delta-spaces (- new-start-column start-column)\n          new-spaces (+ spaces-before delta-spaces)\n          previous-element-index (dec inline-comment-index)\n          [s c e :as previous-element] (nth style-vec previous-element-index)\n          new-previous-element\n            (cond (= e :indent) [(str \"\n\" (blanks new-spaces)) c e]\n                  (= e :whitespace) [(str (blanks new-spaces)) c e 26]\n                  :else nil)]\n      (assoc style-vec previous-element-index new-previous-element))))"
-    }
-  ]
+  "languages": ["clojure", "clojurescript"]
 }

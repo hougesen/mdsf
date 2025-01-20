@@ -4,18 +4,12 @@
   "categories": ["formatter", "linter"],
   "commands": {
     "": {
-      "command": ["$PATH"],
-      "description": "",
-      "homepage": "",
-      "ignore_output": false,
-      "tests": []
+      "arguments": ["$PATH"],
+      "ignore_output": false
     }
   },
   "description": "Laravel Pint is an opinionated PHP code style fixer for minimalists",
   "homepage": "https://github.com/laravel/pint",
   "languages": ["php"],
-  "name": null,
-  "npm": null,
-  "php": "pint",
-  "tests": []
+  "php": "pint"
 }

@@ -4,25 +4,18 @@
   "categories": ["formatter"],
   "commands": {
     "": {
-      "command": ["-w", "$PATH"],
-      "description": "",
-      "homepage": "",
+      "arguments": ["-w", "$PATH"],
       "ignore_output": false,
-      "tests": []
+      "tests": [
+        {
+          "language": "go",
+          "test_input": "package main\n\n   func add(a int , b int  ) int {\n                return a + b\n       }\n\n    ",
+          "test_output": "package main\n\nfunc add(a int, b int) int {\n\treturn a + b\n}\n"
+        }
+      ]
     }
   },
   "description": "A stricter gofmt",
   "homepage": "https://github.com/mvdan/gofumpt",
-  "languages": ["go"],
-  "name": null,
-  "npm": null,
-  "php": null,
-  "tests": [
-    {
-      "command": "",
-      "language": "go",
-      "test_input": "package main\n\n   func add(a int , b int  ) int {\n                return a + b\n       }\n\n    ",
-      "test_output": "package main\n\nfunc add(a int, b int) int {\n\treturn a + b\n}\n"
-    }
-  ]
+  "languages": ["go"]
 }

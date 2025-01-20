@@ -4,18 +4,11 @@
   "categories": ["formatter"],
   "commands": {
     "fmt": {
-      "command": ["fmt", "$PATH"],
-      "description": "",
-      "homepage": "",
-      "ignore_output": false,
-      "tests": []
+      "arguments": ["fmt", "$PATH"],
+      "ignore_output": false
     }
   },
   "description": "Formatter for the Caramel programming language",
   "homepage": "https://caramel.run/",
-  "languages": ["caramel"],
-  "name": null,
-  "npm": null,
-  "php": null,
-  "tests": []
+  "languages": ["caramel"]
 }

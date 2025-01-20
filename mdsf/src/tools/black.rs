@@ -34,7 +34,7 @@ pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfEr
 #[cfg(test)]
 mod test_black {
     #[test_with::executable(black)]
-    fn test_black_python_8156ff26fe126797() {
+    fn test_black_python_229ec2b01c2bfe3c() {
         let input = r#"def add( a: int ,  b:int)->int: return a+b"#;
         let output = r#"def add(a: int, b: int) -> int:
     return a + b

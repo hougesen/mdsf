@@ -4,18 +4,12 @@
   "categories": ["formatter"],
   "commands": {
     "": {
-      "command": ["-f", "$PATH", "--fix"],
-      "description": "",
-      "homepage": "",
-      "ignore_output": false,
-      "tests": []
+      "arguments": ["-f", "$PATH", "--fix"],
+      "ignore_output": false
     }
   },
   "description": "Style guide enforcement for VHDL",
   "homepage": "https://github.com/jeremiah-c-leary/vhdl-style-guide",
   "languages": ["vhdl"],
-  "name": "vhdl-style-guide",
-  "npm": null,
-  "php": null,
-  "tests": []
+  "name": "vhdl-style-guide"
 }

@@ -4,18 +4,12 @@
   "categories": ["linter"],
   "commands": {
     "": {
-      "command": ["$PATH"],
-      "description": "",
-      "homepage": "",
-      "ignore_output": false,
-      "tests": []
+      "arguments": ["$PATH"],
+      "ignore_output": false
     }
   },
   "description": "quick-lint-js finds bugs in JavaScript programs",
   "homepage": "https://github.com/quick-lint/quick-lint-js",
   "languages": ["javascript"],
-  "name": null,
-  "npm": "quick-lint-js",
-  "php": null,
-  "tests": []
+  "npm": "quick-lint-js"
 }

@@ -4,25 +4,18 @@
   "categories": ["formatter"],
   "commands": {
     "": {
-      "command": ["--inplace", "$PATH"],
-      "description": "",
-      "homepage": "",
+      "arguments": ["--inplace", "$PATH"],
       "ignore_output": false,
-      "tests": []
+      "tests": [
+        {
+          "language": "ocaml",
+          "test_input": "\nlet add a b\n                             = a + b\n            ",
+          "test_output": "\nlet add a b\n  = a + b\n"
+        }
+      ]
     }
   },
   "description": "Indentation tool for OCaml",
   "homepage": "https://github.com/OCamlPro/ocp-indent",
-  "languages": ["ocaml"],
-  "name": null,
-  "npm": null,
-  "php": null,
-  "tests": [
-    {
-      "command": "",
-      "language": "ocaml",
-      "test_input": "\nlet add a b\n                             = a + b\n            ",
-      "test_output": "\nlet add a b\n  = a + b\n"
-    }
-  ]
+  "languages": ["ocaml"]
 }

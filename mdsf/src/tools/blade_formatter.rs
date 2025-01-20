@@ -38,7 +38,7 @@ pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfEr
 #[cfg(test)]
 mod test_blade_formatter {
     #[test_with::executable(npx)]
-    fn test_blade_formatter_blade_9d6620376a93202f() {
+    fn test_blade_formatter_blade_9ddeaf972bfb08c1() {
         let input = r#"@extends('frontend.layouts.app')
 @section('title') foo
 @endsection

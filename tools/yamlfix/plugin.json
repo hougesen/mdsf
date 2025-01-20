@@ -4,25 +4,18 @@
   "categories": ["formatter"],
   "commands": {
     "": {
-      "command": ["$PATH"],
-      "description": "",
-      "homepage": "",
+      "arguments": ["$PATH"],
       "ignore_output": false,
-      "tests": []
+      "tests": [
+        {
+          "language": "yaml",
+          "test_input": "\n\n\nversion:                                                                             2\nupdates:\n  - package-ecosystem:                    \"cargo\"\n    directory:  \"/\"\n    schedule:\n      interval:     \"monthly\"\n    assignees:\n      -     \"hougesen\"\n    open-pull-requests-limit:       25\n\n  - package-ecosystem:                              \"github-actions\"\n    directory:          \"/\"\n    schedule:\n        interval:          \"monthly\"\n    assignees:\n        - \"hougesen\"\n    open-pull-requests-limit: 25\n\n\n        ",
+          "test_output": "---\nversion: 2\nupdates:\n  - package-ecosystem: cargo\n    directory: /\n    schedule:\n      interval: monthly\n    assignees: [hougesen]\n    open-pull-requests-limit: 25\n  - package-ecosystem: github-actions\n    directory: /\n    schedule:\n      interval: monthly\n    assignees: [hougesen]\n    open-pull-requests-limit: 25\n"
+        }
+      ]
     }
   },
   "description": "A simple opinionated yaml formatter that keeps your comments",
   "homepage": "https://github.com/lyz-code/yamlfix",
-  "languages": ["yaml"],
-  "name": null,
-  "npm": null,
-  "php": null,
-  "tests": [
-    {
-      "command": "",
-      "language": "yaml",
-      "test_input": "\n\n\nversion:                                                                             2\nupdates:\n  - package-ecosystem:                    \"cargo\"\n    directory:  \"/\"\n    schedule:\n      interval:     \"monthly\"\n    assignees:\n      -     \"hougesen\"\n    open-pull-requests-limit:       25\n\n  - package-ecosystem:                              \"github-actions\"\n    directory:          \"/\"\n    schedule:\n        interval:          \"monthly\"\n    assignees:\n        - \"hougesen\"\n    open-pull-requests-limit: 25\n\n\n        ",
-      "test_output": "---\nversion: 2\nupdates:\n  - package-ecosystem: cargo\n    directory: /\n    schedule:\n      interval: monthly\n    assignees: [hougesen]\n    open-pull-requests-limit: 25\n  - package-ecosystem: github-actions\n    directory: /\n    schedule:\n      interval: monthly\n    assignees: [hougesen]\n    open-pull-requests-limit: 25\n"
-    }
-  ]
+  "languages": ["yaml"]
 }

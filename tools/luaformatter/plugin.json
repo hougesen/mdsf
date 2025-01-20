@@ -4,25 +4,19 @@
   "categories": ["formatter"],
   "commands": {
     "": {
-      "command": ["-i", "$PATH"],
-      "description": "",
-      "homepage": "",
+      "arguments": ["-i", "$PATH"],
       "ignore_output": false,
-      "tests": []
+      "tests": [
+        {
+          "language": "lua",
+          "test_input": "\n\n        local               function        add (                                       a , b\n)\nlocal c=a+b\nreturn    c\n\n\nend\n    ",
+          "test_output": "local function add(a, b)\n    local c = a + b\n    return c\n\nend\n"
+        }
+      ]
     }
   },
   "description": "Code formatter for Lua",
   "homepage": "https://github.com/Koihik/LuaFormatter",
   "languages": ["lua"],
-  "name": "luaformatter",
-  "npm": null,
-  "php": null,
-  "tests": [
-    {
-      "command": "",
-      "language": "lua",
-      "test_input": "\n\n        local               function        add (                                       a , b\n)\nlocal c=a+b\nreturn    c\n\n\nend\n    ",
-      "test_output": "local function add(a, b)\n    local c = a + b\n    return c\n\nend\n"
-    }
-  ]
+  "name": "luaformatter"
 }

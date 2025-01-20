@@ -39,7 +39,31 @@ pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfEr
 #[cfg(test)]
 mod test_biome_format {
     #[test_with::executable(npx)]
-    fn test_biome_format_json_844b1c8732d73ac3() {
+    fn test_biome_format_javascript_4845e9b01c23667f() {
+        let input = r#"
+    async function asyncAddition(
+            a,b
+        ) {
+        return a+b
+    }
+
+            "#;
+        let output = r#"async function asyncAddition(a, b) {
+	return a + b;
+}
+"#;
+        let file_ext = crate::fttype::get_file_extension("javascript");
+        let snippet =
+            crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
+        let result = crate::tools::biome_format::run(snippet.path())
+            .expect("it to be successful")
+            .1
+            .expect("it to be some");
+        assert_eq!(result, output);
+    }
+
+    #[test_with::executable(npx)]
+    fn test_biome_format_json_90a326e29048e3cd() {
         let input = r#"
               {
               "key": "value",
@@ -66,31 +90,7 @@ mod test_biome_format {
     }
 
     #[test_with::executable(npx)]
-    fn test_biome_format_javascript_8a9233d85bad9eb0() {
-        let input = r#"
-    async function asyncAddition(
-            a,b
-        ) {
-        return a+b
-    }
-
-            "#;
-        let output = r#"async function asyncAddition(a, b) {
-	return a + b;
-}
-"#;
-        let file_ext = crate::fttype::get_file_extension("javascript");
-        let snippet =
-            crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
-        let result = crate::tools::biome_format::run(snippet.path())
-            .expect("it to be successful")
-            .1
-            .expect("it to be some");
-        assert_eq!(result, output);
-    }
-
-    #[test_with::executable(npx)]
-    fn test_biome_format_typescript_5d686094d584dd57() {
+    fn test_biome_format_typescript_8154bfdbd3b72275() {
         let input = r#"
     async function asyncAddition(
             a:number,b:number

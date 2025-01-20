@@ -33,7 +33,7 @@ pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfEr
 #[cfg(test)]
 mod test_nixpkgs_fmt {
     #[test_with::executable(nixpkgs-fmt)]
-    fn test_nixpkgs_fmt_nix_80e79e7e2446f823() {
+    fn test_nixpkgs_fmt_nix_36a22e30dae799c5() {
         let input = r#"{
             lib, buildPythonPackage, fetchFromGitHub, redis }:
 

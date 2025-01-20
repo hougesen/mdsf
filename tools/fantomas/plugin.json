@@ -4,25 +4,18 @@
   "categories": ["formatter"],
   "commands": {
     "": {
-      "command": ["$PATH"],
-      "description": "",
-      "homepage": "",
+      "arguments": ["$PATH"],
       "ignore_output": false,
-      "tests": []
+      "tests": [
+        {
+          "language": "fsharp",
+          "test_input": "\nlet add a b  =  a +  b\n            ",
+          "test_output": "let add a b = a + b\n"
+        }
+      ]
     }
   },
   "description": "FSharp source code formatter",
   "homepage": "https://github.com/fsprojects/fantomas",
-  "languages": ["fsharp"],
-  "name": null,
-  "npm": null,
-  "php": null,
-  "tests": [
-    {
-      "command": "",
-      "language": "fsharp",
-      "test_input": "\nlet add a b  =  a +  b\n            ",
-      "test_output": "let add a b = a + b\n"
-    }
-  ]
+  "languages": ["fsharp"]
 }

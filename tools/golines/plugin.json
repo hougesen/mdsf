@@ -4,25 +4,18 @@
   "categories": ["formatter"],
   "commands": {
     "": {
-      "command": ["-w", "$PATH"],
-      "description": "",
-      "homepage": "",
+      "arguments": ["-w", "$PATH"],
       "ignore_output": false,
-      "tests": []
+      "tests": [
+        {
+          "language": "go",
+          "test_input": "package main\n\nimport (\n\t\"os\"\n\t\"fmt\"\n)\n\nfunc add(a int, b int) int {\n\tfmt.Print(a)\n\tfmt.Print(b)\n\treturn a + b\n}\n",
+          "test_output": "package main\n\nimport (\n\t\"fmt\"\n)\n\nfunc add(a int, b int) int {\n\tfmt.Print(a)\n\tfmt.Print(b)\n\treturn a + b\n}\n"
+        }
+      ]
     }
   },
   "description": "A golang formatter that fixes long lines",
   "homepage": "https://github.com/segmentio/golines",
-  "languages": ["go"],
-  "name": null,
-  "npm": null,
-  "php": null,
-  "tests": [
-    {
-      "command": "",
-      "language": "go",
-      "test_input": "package main\n\nimport (\n\t\"os\"\n\t\"fmt\"\n)\n\nfunc add(a int, b int) int {\n\tfmt.Print(a)\n\tfmt.Print(b)\n\treturn a + b\n}\n",
-      "test_output": "package main\n\nimport (\n\t\"fmt\"\n)\n\nfunc add(a int, b int) int {\n\tfmt.Print(a)\n\tfmt.Print(b)\n\treturn a + b\n}\n"
-    }
-  ]
+  "languages": ["go"]
 }

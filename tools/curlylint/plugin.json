@@ -4,18 +4,11 @@
   "categories": ["linter"],
   "commands": {
     "": {
-      "command": ["-q", "$PATH"],
-      "description": "",
-      "homepage": "",
-      "ignore_output": false,
-      "tests": []
+      "arguments": ["-q", "$PATH"],
+      "ignore_output": false
     }
   },
   "description": "Experimental HTML templates linting for Jinja, Nunjucks, Django templates, Twig, Liquid",
   "homepage": "https://github.com/thibaudcolas/curlylint",
-  "languages": ["nunjucks", "django", "jinja", "liquid", "twig"],
-  "name": null,
-  "npm": null,
-  "php": null,
-  "tests": []
+  "languages": ["nunjucks", "django", "jinja", "liquid", "twig"]
 }

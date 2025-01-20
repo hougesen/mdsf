@@ -4,25 +4,18 @@
   "categories": ["formatter"],
   "commands": {
     "": {
-      "command": ["$PATH"],
-      "description": "",
-      "homepage": "",
+      "arguments": ["$PATH"],
       "ignore_output": false,
-      "tests": []
+      "tests": [
+        {
+          "language": "haskell",
+          "test_input": "\naddNumbers::Int->Int->Int\naddNumbers a b = do\n        a + b\n        ",
+          "test_output": "addNumbers :: Int -> Int -> Int\naddNumbers a b = do\n  a + b\n"
+        }
+      ]
     }
   },
   "description": "Extensible Haskell pretty printer",
   "homepage": "https://github.com/mihaimaruseac/hindent",
-  "languages": ["haskell"],
-  "name": null,
-  "npm": null,
-  "php": null,
-  "tests": [
-    {
-      "command": "",
-      "language": "haskell",
-      "test_input": "\naddNumbers::Int->Int->Int\naddNumbers a b = do\n        a + b\n        ",
-      "test_output": "addNumbers :: Int -> Int -> Int\naddNumbers a b = do\n  a + b\n"
-    }
-  ]
+  "languages": ["haskell"]
 }

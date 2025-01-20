@@ -34,7 +34,7 @@ pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfEr
 #[cfg(test)]
 mod test_zig_fmt {
     #[test_with::executable(zig)]
-    fn test_zig_fmt_zig_c392cb7c52bb9cc8() {
+    fn test_zig_fmt_zig_8151c333113cef41() {
         let input = r#"
     fn     add   (a : i32    , b :   i32 )             i32 {
         return a + b ;

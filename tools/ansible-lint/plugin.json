@@ -4,18 +4,11 @@
   "categories": ["linter"],
   "commands": {
     "": {
-      "command": ["$PATH"],
-      "description": "",
-      "homepage": "",
-      "ignore_output": false,
-      "tests": []
+      "arguments": ["$PATH"],
+      "ignore_output": false
     }
   },
   "description": "ansible-lint checks playbooks for practices and behavior that could potentially be improved and can fix some of the most common ones for you",
   "homepage": "https://github.com/ansible/ansible-lint",
-  "languages": ["ansible"],
-  "name": null,
-  "npm": null,
-  "php": null,
-  "tests": []
+  "languages": ["ansible"]
 }

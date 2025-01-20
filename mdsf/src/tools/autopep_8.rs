@@ -34,7 +34,7 @@ pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfEr
 #[cfg(test)]
 mod test_autopep_8 {
     #[test_with::executable(autopep8)]
-    fn test_autopep_8_python_32e3f57971ad5635() {
+    fn test_autopep_8_python_a868b5ad9905fc3f() {
         let input = r#"def add( a: int ,  b:int)->int: return a+b"#;
         let output = r#"def add(a: int,  b: int) -> int: return a+b
 "#;

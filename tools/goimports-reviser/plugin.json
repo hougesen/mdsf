@@ -4,18 +4,11 @@
   "categories": ["formatter"],
   "commands": {
     "": {
-      "command": ["-format", "$PATH"],
-      "description": "",
-      "homepage": "",
-      "ignore_output": false,
-      "tests": []
+      "arguments": ["-format", "$PATH"],
+      "ignore_output": false
     }
   },
   "description": "Right imports sorting & code formatting tool (goimports alternative)",
   "homepage": "https://github.com/incu6us/goimports-reviser",
-  "languages": ["go"],
-  "name": null,
-  "npm": null,
-  "php": null,
-  "tests": []
+  "languages": ["go"]
 }

@@ -4,18 +4,12 @@
   "categories": ["linter"],
   "commands": {
     "": {
-      "command": ["$PATH"],
-      "description": "",
-      "homepage": "",
-      "ignore_output": false,
-      "tests": []
+      "arguments": ["$PATH"],
+      "ignore_output": false
     }
   },
   "description": "The static code analysis tool you need for your HTML",
   "homepage": "https://github.com/HTMLHint/HTMLHint",
   "languages": ["html"],
-  "name": null,
-  "npm": "htmlhint",
-  "php": null,
-  "tests": []
+  "npm": "htmlhint"
 }

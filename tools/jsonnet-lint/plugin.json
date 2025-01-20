@@ -4,18 +4,11 @@
   "categories": ["linter"],
   "commands": {
     "": {
-      "command": ["$PATH"],
-      "description": "",
-      "homepage": "",
-      "ignore_output": false,
-      "tests": []
+      "arguments": ["$PATH"],
+      "ignore_output": false
     }
   },
   "description": "Linter for jsonnet files",
   "homepage": "https://jsonnet.org/learning/tools.html",
-  "languages": ["jsonnet"],
-  "name": null,
-  "npm": null,
-  "php": null,
-  "tests": []
+  "languages": ["jsonnet"]
 }

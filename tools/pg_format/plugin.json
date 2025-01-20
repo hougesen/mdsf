@@ -4,18 +4,11 @@
   "categories": ["formatter"],
   "commands": {
     "": {
-      "command": ["--inplace", "$PATH"],
-      "description": "",
-      "homepage": "",
-      "ignore_output": false,
-      "tests": []
+      "arguments": ["--inplace", "$PATH"],
+      "ignore_output": false
     }
   },
   "description": "A PostgreSQL SQL syntax beautifier",
   "homepage": "https://github.com/darold/pgFormatter",
-  "languages": ["sql"],
-  "name": null,
-  "npm": null,
-  "php": null,
-  "tests": []
+  "languages": ["sql"]
 }

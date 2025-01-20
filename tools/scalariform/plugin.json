@@ -4,18 +4,11 @@
   "categories": ["formatter"],
   "commands": {
     "": {
-      "command": ["$PATH"],
-      "description": "",
-      "homepage": "",
-      "ignore_output": false,
-      "tests": []
+      "arguments": ["$PATH"],
+      "ignore_output": false
     }
   },
   "description": "Scala source code formatter",
   "homepage": "https://github.com/scala-ide/scalariform",
-  "languages": ["scala"],
-  "name": null,
-  "npm": null,
-  "php": null,
-  "tests": []
+  "languages": ["scala"]
 }

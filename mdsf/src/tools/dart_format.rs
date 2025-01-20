@@ -34,7 +34,7 @@ pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfEr
 #[cfg(test)]
 mod test_dart_format {
     #[test_with::executable(dart)]
-    fn test_dart_format_dart_495c80b98b2895d1() {
+    fn test_dart_format_dart_1e68d7619b4be391() {
         let input = r#"class Adder {   int add(int a, int b) {     return a + b;   } }    "#;
         let output = r#"class Adder {
   int add(int a, int b) {

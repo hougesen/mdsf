@@ -35,7 +35,7 @@ pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfEr
 #[cfg(test)]
 mod test_juliaformatter_jl {
     #[test_with::executable(julia)]
-    fn test_juliaformatter_jl_julia_8a1deea7a4602ffc() {
+    fn test_juliaformatter_jl_julia_6775294e3dc9244() {
         let input = r#"function add( a:: Int32,  b::Int32 )
             c = a+ b
             return c

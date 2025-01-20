@@ -38,7 +38,7 @@ pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfEr
 #[cfg(test)]
 mod test_purs_tidy {
     #[test_with::executable(npx)]
-    fn test_purs_tidy_purescript_810f9c067d5daeae() {
+    fn test_purs_tidy_purescript_c9e6831b630f7f08() {
         let input = r#"module       Test.Main   where
 
 import Prelude

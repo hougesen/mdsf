@@ -4,18 +4,11 @@
   "categories": ["linter"],
   "commands": {
     "": {
-      "command": ["$PATH"],
-      "description": "",
-      "homepage": "",
-      "ignore_output": false,
-      "tests": []
+      "arguments": ["$PATH"],
+      "ignore_output": false
     }
   },
   "description": "ShellCheck, a static analysis tool for shell scripts",
   "homepage": "https://github.com/koalaman/shellcheck",
-  "languages": ["shell", "bash"],
-  "name": null,
-  "npm": null,
-  "php": null,
-  "tests": []
+  "languages": ["shell", "bash"]
 }

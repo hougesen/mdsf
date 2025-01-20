@@ -34,7 +34,7 @@ pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfEr
 #[cfg(test)]
 mod test_gofmt {
     #[test_with::executable(gofmt)]
-    fn test_gofmt_go_55cb48704ff9049a() {
+    fn test_gofmt_go_3b56f602fe22977b() {
         let input = r#"package main
 
    func add(a int , b int  ) int {

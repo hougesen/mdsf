@@ -4,18 +4,11 @@
   "categories": ["formatter"],
   "commands": {
     "": {
-      "command": ["--write-mode=inplace", "$PATH"],
-      "description": "",
-      "homepage": "",
-      "ignore_output": false,
-      "tests": []
+      "arguments": ["--write-mode=inplace", "$PATH"],
+      "ignore_output": false
     }
   },
   "description": "A Haskell source code formatter",
   "homepage": "https://github.com/lspitzner/brittany",
-  "languages": ["haskell"],
-  "name": null,
-  "npm": null,
-  "php": null,
-  "tests": []
+  "languages": ["haskell"]
 }

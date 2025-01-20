@@ -4,18 +4,11 @@
   "categories": ["formatter"],
   "commands": {
     "": {
-      "command": ["-w", "$PATH"],
-      "description": "",
-      "homepage": "",
-      "ignore_output": false,
-      "tests": []
+      "arguments": ["-w", "$PATH"],
+      "ignore_output": false
     }
   },
   "description": "Formatter for hcl files",
   "homepage": "https://github.com/hashicorp/hcl",
-  "languages": ["hcl"],
-  "name": null,
-  "npm": null,
-  "php": null,
-  "tests": []
+  "languages": ["hcl"]
 }

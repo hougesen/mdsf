@@ -4,25 +4,19 @@
   "categories": ["formatter"],
   "commands": {
     "format": {
-      "command": ["format", "--write", "$PATH"],
-      "description": "",
-      "homepage": "",
+      "arguments": ["format", "--write", "$PATH"],
       "ignore_output": false,
-      "tests": []
+      "tests": [
+        {
+          "language": "protobuf",
+          "test_input": "service SearchService {\n                              rpc Search (SearchRequest) returns (SearchResponse);\n                               }",
+          "test_output": "service SearchService {\n  rpc Search(SearchRequest) returns (SearchResponse);\n}\n"
+        }
+      ]
     }
   },
   "description": "The best way of working with Protocol Buffers",
   "homepage": "https://buf.build/docs/reference/cli/buf/format/",
   "languages": ["protobuf"],
-  "name": null,
-  "npm": "@bufbuild/buf",
-  "php": null,
-  "tests": [
-    {
-      "command": "format",
-      "language": "protobuf",
-      "test_input": "service SearchService {\n                              rpc Search (SearchRequest) returns (SearchResponse);\n                               }",
-      "test_output": "service SearchService {\n  rpc Search(SearchRequest) returns (SearchResponse);\n}\n"
-    }
-  ]
+  "npm": "@bufbuild/buf"
 }

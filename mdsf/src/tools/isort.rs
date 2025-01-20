@@ -34,7 +34,7 @@ pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfEr
 #[cfg(test)]
 mod test_isort {
     #[test_with::executable(isort)]
-    fn test_isort_python_7be36b03fc0282f6() {
+    fn test_isort_python_e2ac93e0195d9bc1() {
         let input = r#"from q import d
 import b
 import a

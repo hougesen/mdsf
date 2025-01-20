@@ -34,7 +34,7 @@ pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfEr
 #[cfg(test)]
 mod test_alejandra {
     #[test_with::executable(alejandra)]
-    fn test_alejandra_nix_7414a8a930f85473() {
+    fn test_alejandra_nix_f38bff8f20c2aa02() {
         let input = r#"{
             lib, buildPythonPackage, fetchFromGitHub, redis }:
 

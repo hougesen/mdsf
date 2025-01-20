@@ -4,32 +4,22 @@
   "categories": ["linter", "formatter"],
   "commands": {
     "check": {
-      "command": ["check", "--fix", "--quiet", "$PATH"],
-      "description": "",
-      "homepage": "",
-      "ignore_output": false,
-      "tests": []
+      "arguments": ["check", "--fix", "--quiet", "$PATH"],
+      "ignore_output": false
     },
     "format": {
-      "command": ["format", "--quiet", "$PATH"],
-      "description": "",
-      "homepage": "",
+      "arguments": ["format", "--quiet", "$PATH"],
       "ignore_output": false,
-      "tests": []
+      "tests": [
+        {
+          "language": "python",
+          "test_input": "def add( a: int ,  b:int)->int: return a+b",
+          "test_output": "def add(a: int, b: int) -> int:\n    return a + b\n"
+        }
+      ]
     }
   },
   "description": "An extremely fast Python linter and code formatter, written in Rust",
   "homepage": "https://docs.astral.sh/ruff",
-  "languages": ["python"],
-  "name": null,
-  "npm": null,
-  "php": null,
-  "tests": [
-    {
-      "command": "format",
-      "language": "python",
-      "test_input": "def add( a: int ,  b:int)->int: return a+b",
-      "test_output": "def add(a: int, b: int) -> int:\n    return a + b\n"
-    }
-  ]
+  "languages": ["python"]
 }

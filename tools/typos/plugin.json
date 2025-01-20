@@ -4,25 +4,18 @@
   "categories": ["autocorrection"],
   "commands": {
     "": {
-      "command": ["-w", "--no-ignore", "--hidden", "$PATH"],
-      "description": "",
-      "homepage": "",
+      "arguments": ["-w", "--no-ignore", "--hidden", "$PATH"],
       "ignore_output": false,
-      "tests": []
+      "tests": [
+        {
+          "language": "python",
+          "test_input": "anouncement",
+          "test_output": "announcement"
+        }
+      ]
     }
   },
   "description": "Source code spell checker",
   "homepage": "https://github.com/crate-ci/typos",
-  "languages": [],
-  "name": null,
-  "npm": null,
-  "php": null,
-  "tests": [
-    {
-      "command": "",
-      "language": "python",
-      "test_input": "anouncement",
-      "test_output": "announcement"
-    }
-  ]
+  "languages": []
 }

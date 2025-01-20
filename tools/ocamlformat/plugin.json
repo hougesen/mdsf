@@ -4,30 +4,23 @@
   "categories": ["formatter"],
   "commands": {
     "": {
-      "command": [
+      "arguments": [
         "--ignore-invalid-option",
         "--inplace",
         "--enable-outside-detected-project",
         "$PATH"
       ],
-      "description": "",
-      "homepage": "",
       "ignore_output": false,
-      "tests": []
+      "tests": [
+        {
+          "language": "ocaml",
+          "test_input": "\nlet add a b  =  a +  b\n            ",
+          "test_output": "let add a b = a + b\n"
+        }
+      ]
     }
   },
   "description": "Auto-formatter for OCaml code",
   "homepage": "https://github.com/ocaml-ppx/ocamlformat",
-  "languages": ["ocaml"],
-  "name": null,
-  "npm": null,
-  "php": null,
-  "tests": [
-    {
-      "command": "",
-      "language": "ocaml",
-      "test_input": "\nlet add a b  =  a +  b\n            ",
-      "test_output": "let add a b = a + b\n"
-    }
-  ]
+  "languages": ["ocaml"]
 }

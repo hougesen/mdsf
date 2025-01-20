@@ -54,57 +54,42 @@
     "php": {
       "description": "Binary name if installed through composer",
       "type": ["string", "null"]
-    },
-    "tests": {
-      "type": ["array", "null"],
-      "items": {
-        "$ref": "#/definitions/ToolTest"
-      }
     }
   },
   "additionalProperties": false,
   "definitions": {
     "ToolCommand": {
       "type": "object",
-      "required": [
-        "command",
-        "description",
-        "homepage",
-        "ignore_output",
-        "tests"
-      ],
+      "required": ["arguments", "ignore_output"],
       "properties": {
-        "command": {
+        "arguments": {
           "type": "array",
           "items": {
             "type": "string"
           }
         },
         "description": {
-          "type": "string"
+          "type": ["string", "null"]
         },
         "homepage": {
-          "type": "string"
+          "type": ["string", "null"]
         },
         "ignore_output": {
           "type": "boolean"
         },
         "tests": {
-          "type": "array",
+          "type": ["array", "null"],
           "items": {
-            "$ref": "#/definitions/ToolTest"
+            "$ref": "#/definitions/ToolCommandTest"
           }
         }
       },
       "additionalProperties": false
     },
-    "ToolTest": {
+    "ToolCommandTest": {
       "type": "object",
-      "required": ["command", "language", "test_input", "test_output"],
+      "required": ["language", "test_input", "test_output"],
       "properties": {
-        "command": {
-          "type": "string"
-        },
         "language": {
           "description": "Codeblock language used when generating tests",
           "type": "string"

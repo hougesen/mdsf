@@ -4,18 +4,12 @@
   "categories": ["formatter", "linter"],
   "commands": {
     "lint": {
-      "command": ["lint", "$PATH", "--fix", "--no-interaction", "--quiet"],
-      "description": "",
-      "homepage": "",
-      "ignore_output": false,
-      "tests": []
+      "arguments": ["lint", "$PATH", "--fix", "--no-interaction", "--quiet"],
+      "ignore_output": false
     }
   },
   "description": "A tool to automatically fix Twig Coding Standards issues",
   "homepage": "https://github.com/VincentLanglet/Twig-CS-Fixer",
   "languages": ["twig"],
-  "name": null,
-  "npm": null,
-  "php": "twig-cs-fixer",
-  "tests": []
+  "php": "twig-cs-fixer"
 }

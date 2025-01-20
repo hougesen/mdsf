@@ -4,18 +4,11 @@
   "categories": ["formatter"],
   "commands": {
     "": {
-      "command": ["--write", "$PATH"],
-      "description": "",
-      "homepage": "",
-      "ignore_output": false,
-      "tests": []
+      "arguments": ["--write", "$PATH"],
+      "ignore_output": false
     }
   },
   "description": "CLI for organizing Tailwind CSS classes",
   "homepage": "https://github.com/avencera/rustywind",
-  "languages": ["html"],
-  "name": null,
-  "npm": null,
-  "php": null,
-  "tests": []
+  "languages": ["html"]
 }

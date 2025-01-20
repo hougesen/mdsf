@@ -4,18 +4,11 @@
   "categories": ["linter"],
   "commands": {
     "": {
-      "command": ["-q", "--edit", "$PATH"],
-      "description": "",
-      "homepage": "",
-      "ignore_output": false,
-      "tests": []
+      "arguments": ["-q", "--edit", "$PATH"],
+      "ignore_output": false
     }
   },
   "description": "Scan Nix files for dead code",
   "homepage": "https://github.com/astro/deadnix",
-  "languages": ["nix"],
-  "name": null,
-  "npm": null,
-  "php": null,
-  "tests": []
+  "languages": ["nix"]
 }

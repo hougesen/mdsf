@@ -4,25 +4,18 @@
   "categories": ["formatter"],
   "commands": {
     "": {
-      "command": ["--inplace", "$PATH"],
-      "description": "",
-      "homepage": "",
+      "arguments": ["--inplace", "$PATH"],
       "ignore_output": false,
-      "tests": []
+      "tests": [
+        {
+          "language": "haskell",
+          "test_input": "addNumbers::Int->Int->Int\naddNumbers a b = do\n        a + b\n        ",
+          "test_output": "addNumbers::Int->Int->Int\naddNumbers a b = do\n        a + b\n\n"
+        }
+      ]
     }
   },
   "description": "Haskell code prettifier",
   "homepage": "https://github.com/haskell/stylish-haskell",
-  "languages": ["haskell"],
-  "name": null,
-  "npm": null,
-  "php": null,
-  "tests": [
-    {
-      "command": "",
-      "language": "haskell",
-      "test_input": "addNumbers::Int->Int->Int\naddNumbers a b = do\n        a + b\n        ",
-      "test_output": "addNumbers::Int->Int->Int\naddNumbers a b = do\n        a + b\n\n"
-    }
-  ]
+  "languages": ["haskell"]
 }

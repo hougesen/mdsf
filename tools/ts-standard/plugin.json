@@ -4,18 +4,12 @@
   "categories": ["formatter", "linter"],
   "commands": {
     "": {
-      "command": ["--fix", "$PATH"],
-      "description": "",
-      "homepage": "",
-      "ignore_output": false,
-      "tests": []
+      "arguments": ["--fix", "$PATH"],
+      "ignore_output": false
     }
   },
   "description": "Typescript style guide, linter, and formatter using StandardJS",
   "homepage": "https://github.com/standard/ts-standard",
   "languages": ["typescript"],
-  "name": null,
-  "npm": "ts-standard",
-  "php": null,
-  "tests": []
+  "npm": "ts-standard"
 }

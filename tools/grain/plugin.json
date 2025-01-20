@@ -4,25 +4,18 @@
   "categories": ["formatter"],
   "commands": {
     "format": {
-      "command": ["format", "$PATH", "-o", "$PATH"],
-      "description": "",
-      "homepage": "",
+      "arguments": ["format", "$PATH", "-o", "$PATH"],
       "ignore_output": false,
-      "tests": []
+      "tests": [
+        {
+          "language": "grain",
+          "test_input": "module Hello\n\n                                print(\"Hello, world!\")\n",
+          "test_output": "module Hello\n\nprint(\"Hello, world!\")\n"
+        }
+      ]
     }
   },
   "description": "Code formatter for the Grain programming language",
   "homepage": "https://grain-lang.org/docs/tooling/grain_cli",
-  "languages": ["grain"],
-  "name": null,
-  "npm": null,
-  "php": null,
-  "tests": [
-    {
-      "command": "format",
-      "language": "grain",
-      "test_input": "module Hello\n\n                                print(\"Hello, world!\")\n",
-      "test_output": "module Hello\n\nprint(\"Hello, world!\")\n"
-    }
-  ]
+  "languages": ["grain"]
 }

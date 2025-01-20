@@ -4,18 +4,11 @@
   "categories": ["formatter"],
   "commands": {
     "fmt": {
-      "command": ["fmt", "-w", "$PATH"],
-      "description": "",
-      "homepage": "",
-      "ignore_output": false,
-      "tests": []
+      "arguments": ["fmt", "-w", "$PATH"],
+      "ignore_output": false
     }
   },
   "description": "Tooling for V lang",
   "homepage": "https://vlang.io/",
-  "languages": ["v"],
-  "name": null,
-  "npm": null,
-  "php": null,
-  "tests": []
+  "languages": ["v"]
 }

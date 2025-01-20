@@ -4,18 +4,11 @@
   "categories": ["autocorrection"],
   "commands": {
     "": {
-      "command": ["$PATH", "--check-hidden", "--write-changes"],
-      "description": "",
-      "homepage": "",
-      "ignore_output": false,
-      "tests": []
+      "arguments": ["$PATH", "--check-hidden", "--write-changes"],
+      "ignore_output": false
     }
   },
   "description": "Check code for common misspellings",
   "homepage": "https://github.com/codespell-project/codespell",
-  "languages": [],
-  "name": null,
-  "npm": null,
-  "php": null,
-  "tests": []
+  "languages": []
 }

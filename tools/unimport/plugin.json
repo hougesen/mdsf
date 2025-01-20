@@ -4,18 +4,11 @@
   "categories": ["formatter"],
   "commands": {
     "": {
-      "command": ["-r", "$PATH"],
-      "description": "",
-      "homepage": "",
-      "ignore_output": false,
-      "tests": []
+      "arguments": ["-r", "$PATH"],
+      "ignore_output": false
     }
   },
   "description": "The ultimate linter and formatter for removing unused import statements in your code",
   "homepage": "https://github.com/hakancelikdev/unimport",
-  "languages": ["python"],
-  "name": null,
-  "npm": null,
-  "php": null,
-  "tests": []
+  "languages": ["python"]
 }

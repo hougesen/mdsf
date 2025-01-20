@@ -34,7 +34,7 @@ pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfEr
 #[cfg(test)]
 mod test_gleam_format {
     #[test_with::executable(gleam)]
-    fn test_gleam_format_gleam_9c5e4d5beea89da5() {
+    fn test_gleam_format_gleam_d23656d11ef3a81d() {
         let input = r#"pub fn add(a:Int,b:Int)->Int{a+b}"#;
         let output = r#"pub fn add(a: Int, b: Int) -> Int {
   a + b

@@ -34,68 +34,7 @@ pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfEr
 #[cfg(test)]
 mod test_clang_format {
     #[test_with::executable(clang-format)]
-    fn test_clang_format_java_56a62ce0f4293397() {
-        let input = r#"class HelloWorld {
-    public static void main(String[] args) {
-                System.out.println("Hello");
-                System.out.println("World!");
-                 }
-}"#;
-        let output = r#"class HelloWorld {
-  public static void main(String[] args) {
-    System.out.println("Hello");
-    System.out.println("World!");
-  }
-}"#;
-        let file_ext = crate::fttype::get_file_extension("java");
-        let snippet =
-            crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
-        let result = crate::tools::clang_format::run(snippet.path())
-            .expect("it to be successful")
-            .1
-            .expect("it to be some");
-        assert_eq!(result, output);
-    }
-
-    #[test_with::executable(clang-format)]
-    fn test_clang_format_protobuf_8967048ff2c45c73() {
-        let input = r#"service SearchService {
-                              rpc Search (SearchRequest) returns (SearchResponse);
-                               }"#;
-        let output =
-            r#"service SearchService { rpc Search(SearchRequest) returns (SearchResponse); }"#;
-        let file_ext = crate::fttype::get_file_extension("protobuf");
-        let snippet =
-            crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
-        let result = crate::tools::clang_format::run(snippet.path())
-            .expect("it to be successful")
-            .1
-            .expect("it to be some");
-        assert_eq!(result, output);
-    }
-
-    #[test_with::executable(clang-format)]
-    fn test_clang_format_objective_c_77f568b4af5fdd33() {
-        let input = r#"int add(int a,int b){
-            a - a ;
-       return a + b;
-    }"#;
-        let output = r#"int add(int a, int b) {
-  a - a;
-  return a + b;
-}"#;
-        let file_ext = crate::fttype::get_file_extension("objective-c");
-        let snippet =
-            crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
-        let result = crate::tools::clang_format::run(snippet.path())
-            .expect("it to be successful")
-            .1
-            .expect("it to be some");
-        assert_eq!(result, output);
-    }
-
-    #[test_with::executable(clang-format)]
-    fn test_clang_format_c_ebcda1b4a3453a22() {
+    fn test_clang_format_c_bb10810bd7d8a71() {
         let input = r#"int add(int a,int b){
                 a-b;
        return a + b;
@@ -115,7 +54,7 @@ mod test_clang_format {
     }
 
     #[test_with::executable(clang-format)]
-    fn test_clang_format_cpp_aa26ef5d3b486fa3() {
+    fn test_clang_format_cpp_8a39c61364dbbe50() {
         let input = r#"int add(int a,int b){
                  a-b;
        return a + b;
@@ -135,7 +74,7 @@ mod test_clang_format {
     }
 
     #[test_with::executable(clang-format)]
-    fn test_clang_format_csharp_4b24af46e6e7e5b1() {
+    fn test_clang_format_csharp_8ebf20c1ddcd1aeb() {
         let input = r#"namespace Mdsf {
                         class Adder {
                                                     public static int add(int a,int b) {
@@ -163,7 +102,51 @@ class Adder {
     }
 
     #[test_with::executable(clang-format)]
-    fn test_clang_format_json_796eb2fbbe25c660() {
+    fn test_clang_format_java_c4fcc280a3a8aac0() {
+        let input = r#"class HelloWorld {
+    public static void main(String[] args) {
+                System.out.println("Hello");
+                System.out.println("World!");
+                 }
+}"#;
+        let output = r#"class HelloWorld {
+  public static void main(String[] args) {
+    System.out.println("Hello");
+    System.out.println("World!");
+  }
+}"#;
+        let file_ext = crate::fttype::get_file_extension("java");
+        let snippet =
+            crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
+        let result = crate::tools::clang_format::run(snippet.path())
+            .expect("it to be successful")
+            .1
+            .expect("it to be some");
+        assert_eq!(result, output);
+    }
+
+    #[test_with::executable(clang-format)]
+    fn test_clang_format_javascript_d6184d76490772e9() {
+        let input = r#"    async function asyncAddition(  a,b) {
+            a * b;
+        return a+b
+    }            "#;
+        let output = r#"async function asyncAddition(a, b) {
+  a * b;
+  return a + b
+}"#;
+        let file_ext = crate::fttype::get_file_extension("javascript");
+        let snippet =
+            crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
+        let result = crate::tools::clang_format::run(snippet.path())
+            .expect("it to be successful")
+            .1
+            .expect("it to be some");
+        assert_eq!(result, output);
+    }
+
+    #[test_with::executable(clang-format)]
+    fn test_clang_format_json_574b008e140f1be6() {
         let input = r#"              {
               "key": "value",
   "key2": ["value2", "value3", 1            , null]
@@ -188,16 +171,33 @@ class Adder {
     }
 
     #[test_with::executable(clang-format)]
-    fn test_clang_format_javascript_f95471d07b1cc14a() {
-        let input = r#"    async function asyncAddition(  a,b) {
-            a * b;
-        return a+b
-    }            "#;
-        let output = r#"async function asyncAddition(a, b) {
-  a * b;
-  return a + b
+    fn test_clang_format_objective_c_3d56455568c6e83f() {
+        let input = r#"int add(int a,int b){
+            a - a ;
+       return a + b;
+    }"#;
+        let output = r#"int add(int a, int b) {
+  a - a;
+  return a + b;
 }"#;
-        let file_ext = crate::fttype::get_file_extension("javascript");
+        let file_ext = crate::fttype::get_file_extension("objective-c");
+        let snippet =
+            crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
+        let result = crate::tools::clang_format::run(snippet.path())
+            .expect("it to be successful")
+            .1
+            .expect("it to be some");
+        assert_eq!(result, output);
+    }
+
+    #[test_with::executable(clang-format)]
+    fn test_clang_format_protobuf_7be6def196942f83() {
+        let input = r#"service SearchService {
+                              rpc Search (SearchRequest) returns (SearchResponse);
+                               }"#;
+        let output =
+            r#"service SearchService { rpc Search(SearchRequest) returns (SearchResponse); }"#;
+        let file_ext = crate::fttype::get_file_extension("protobuf");
         let snippet =
             crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
         let result = crate::tools::clang_format::run(snippet.path())

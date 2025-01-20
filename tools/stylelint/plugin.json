@@ -4,18 +4,12 @@
   "categories": ["linter"],
   "commands": {
     "": {
-      "command": ["--fix", "$PATH"],
-      "description": "",
-      "homepage": "",
-      "ignore_output": false,
-      "tests": []
+      "arguments": ["--fix", "$PATH"],
+      "ignore_output": false
     }
   },
   "description": "A mighty CSS linter that helps you avoid errors and enforce conventions",
   "homepage": "https://github.com/stylelint/stylelint",
   "languages": ["css", "scss"],
-  "name": null,
-  "npm": "stylelint",
-  "php": null,
-  "tests": []
+  "npm": "stylelint"
 }

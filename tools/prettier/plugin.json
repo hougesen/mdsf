@@ -4,7 +4,7 @@
   "categories": ["formatter"],
   "commands": {
     "": {
-      "command": [
+      "arguments": [
         "--embedded-language-formatting",
         "off",
         "--log-level",
@@ -12,30 +12,23 @@
         "--write",
         "$PATH"
       ],
-      "description": "",
-      "homepage": "",
       "ignore_output": false,
-      "tests": []
+      "tests": [
+        {
+          "language": "json",
+          "test_input": "\n              {\n              \"key\": \"value\",\n  \"key2\": [\n      \"value2\",\n      \"value3\",\n      1\n            , null]\n }\n  ",
+          "test_output": "{\n  \"key\": \"value\",\n  \"key2\": [\"value2\", \"value3\", 1, null]\n}\n"
+        },
+        {
+          "language": "javascript",
+          "test_input": "\n    async function asyncAddition(\n            a,b\n        ) {\n        return a+b\n    }\n\n            ",
+          "test_output": "async function asyncAddition(a, b) {\n  return a + b;\n}\n"
+        }
+      ]
     }
   },
   "description": "Prettier is an opinionated code formatter",
   "homepage": "https://github.com/prettier/prettier",
   "languages": ["json", "css", "typescript", "html", "javascript"],
-  "name": null,
-  "npm": "prettier",
-  "php": null,
-  "tests": [
-    {
-      "command": "",
-      "language": "json",
-      "test_input": "\n              {\n              \"key\": \"value\",\n  \"key2\": [\n      \"value2\",\n      \"value3\",\n      1\n            , null]\n }\n  ",
-      "test_output": "{\n  \"key\": \"value\",\n  \"key2\": [\"value2\", \"value3\", 1, null]\n}\n"
-    },
-    {
-      "command": "",
-      "language": "javascript",
-      "test_input": "\n    async function asyncAddition(\n            a,b\n        ) {\n        return a+b\n    }\n\n            ",
-      "test_output": "async function asyncAddition(a, b) {\n  return a + b;\n}\n"
-    }
-  ]
+  "npm": "prettier"
 }

@@ -4,18 +4,12 @@
   "categories": ["linter"],
   "commands": {
     "": {
-      "command": ["--fix", "$PATH"],
-      "description": "",
-      "homepage": "",
-      "ignore_output": false,
-      "tests": []
+      "arguments": ["--fix", "$PATH"],
+      "ignore_output": false
     }
   },
   "description": "Oxlint is designed to catch erroneous or useless code without requiring any configurations by default",
   "homepage": "https://oxc.rs/docs/guide/usage/linter.html",
   "languages": ["javascript", "typescript"],
-  "name": null,
-  "npm": "oxlint",
-  "php": null,
-  "tests": []
+  "npm": "oxlint"
 }

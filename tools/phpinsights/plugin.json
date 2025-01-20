@@ -4,18 +4,12 @@
   "categories": ["linter"],
   "commands": {
     "fix": {
-      "command": ["fix", "$PATH", "--no-interaction", "--quiet"],
-      "description": "",
-      "homepage": "",
-      "ignore_output": false,
-      "tests": []
+      "arguments": ["fix", "$PATH", "--no-interaction", "--quiet"],
+      "ignore_output": false
     }
   },
   "description": "Instant PHP quality checks from your console",
   "homepage": "https://github.com/nunomaduro/phpinsights",
   "languages": ["php"],
-  "name": null,
-  "npm": null,
-  "php": "phpinsights",
-  "tests": []
+  "php": "phpinsights"
 }

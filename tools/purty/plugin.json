@@ -4,18 +4,12 @@
   "categories": ["formatter"],
   "commands": {
     "": {
-      "command": ["--write", "$PATH"],
-      "description": "",
-      "homepage": "",
-      "ignore_output": false,
-      "tests": []
+      "arguments": ["--write", "$PATH"],
+      "ignore_output": false
     }
   },
   "description": "PureScript pretty-printer",
   "homepage": "https://gitlab.com/joneshf/purty",
   "languages": ["purescript"],
-  "name": null,
-  "npm": "purty",
-  "php": null,
-  "tests": []
+  "npm": "purty"
 }

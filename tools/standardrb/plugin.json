@@ -4,25 +4,18 @@
   "categories": ["linter", "formatter"],
   "commands": {
     "": {
-      "command": ["--fix", "$PATH"],
-      "description": "",
-      "homepage": "",
+      "arguments": ["--fix", "$PATH"],
       "ignore_output": false,
-      "tests": []
+      "tests": [
+        {
+          "language": "ruby",
+          "test_input": "def   add(  a ,                                                          b )\n                        return a + b\n                end",
+          "test_output": "def add(a, b)\n  a + b\nend\n"
+        }
+      ]
     }
   },
   "description": "Ruby's bikeshed-proof linter and formatter",
   "homepage": "https://github.com/standardrb/standard",
-  "languages": ["ruby"],
-  "name": null,
-  "npm": null,
-  "php": null,
-  "tests": [
-    {
-      "command": "",
-      "language": "ruby",
-      "test_input": "def   add(  a ,                                                          b )\n                        return a + b\n                end",
-      "test_output": "def add(a, b)\n  a + b\nend\n"
-    }
-  ]
+  "languages": ["ruby"]
 }

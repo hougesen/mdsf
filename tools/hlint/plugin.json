@@ -4,18 +4,11 @@
   "categories": ["linter"],
   "commands": {
     "": {
-      "command": ["--refactor", "-i", "$PATH"],
-      "description": "",
-      "homepage": "",
-      "ignore_output": false,
-      "tests": []
+      "arguments": ["--refactor", "-i", "$PATH"],
+      "ignore_output": false
     }
   },
   "description": "Haskell source code suggestions",
   "homepage": "https://github.com/ndmitchell/hlint",
-  "languages": ["haskell"],
-  "name": null,
-  "npm": null,
-  "php": null,
-  "tests": []
+  "languages": ["haskell"]
 }

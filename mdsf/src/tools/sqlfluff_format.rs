@@ -36,7 +36,7 @@ pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfEr
 #[cfg(test)]
 mod test_sqlfluff_format {
     #[test_with::executable(sqlfluff)]
-    fn test_sqlfluff_format_sql_7d0d03aa13961f14() {
+    fn test_sqlfluff_format_sql_55c68b000536eccf() {
         let input = r#"SELECT  *                  FROM  tbl
                         WHERE                      foo   = 'bar';         "#;
         let output = r#"SELECT * FROM tbl

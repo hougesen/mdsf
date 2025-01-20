@@ -4,18 +4,11 @@
   "categories": ["formatter"],
   "commands": {
     "": {
-      "command": ["-w", "$PATH"],
-      "description": "",
-      "homepage": "",
-      "ignore_output": false,
-      "tests": []
+      "arguments": ["-w", "$PATH"],
+      "ignore_output": false
     }
   },
   "description": "qmlfmt - command line application that formats QML files",
   "homepage": "https://github.com/jesperhh/qmlfmt",
-  "languages": ["qml"],
-  "name": null,
-  "npm": null,
-  "php": null,
-  "tests": []
+  "languages": ["qml"]
 }

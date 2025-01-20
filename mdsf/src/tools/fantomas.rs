@@ -33,7 +33,7 @@ pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfEr
 #[cfg(test)]
 mod test_fantomas {
     #[test_with::executable(fantomas)]
-    fn test_fantomas_fsharp_d8e0eb8709917550() {
+    fn test_fantomas_fsharp_f3cb7f290d0660d3() {
         let input = r#"
 let add a b  =  a +  b
             "#;

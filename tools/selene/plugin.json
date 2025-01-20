@@ -4,18 +4,11 @@
   "categories": ["linter"],
   "commands": {
     "": {
-      "command": ["$PATH"],
-      "description": "",
-      "homepage": "",
-      "ignore_output": false,
-      "tests": []
+      "arguments": ["$PATH"],
+      "ignore_output": false
     }
   },
   "description": "A blazing-fast modern Lua linter written in Rust",
   "homepage": "https://github.com/Kampfkarren/selene",
-  "languages": ["lua"],
-  "name": null,
-  "npm": null,
-  "php": null,
-  "tests": []
+  "languages": ["lua"]
 }

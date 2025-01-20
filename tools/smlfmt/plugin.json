@@ -4,18 +4,11 @@
   "categories": ["formatter"],
   "commands": {
     "": {
-      "command": ["--force", "$PATH"],
-      "description": "",
-      "homepage": "",
-      "ignore_output": false,
-      "tests": []
+      "arguments": ["--force", "$PATH"],
+      "ignore_output": false
     }
   },
   "description": "A custom parser/auto-formatter for Standard ML",
   "homepage": "https://github.com/shwestrick/smlfmt",
-  "languages": ["standard-ml"],
-  "name": null,
-  "npm": null,
-  "php": null,
-  "tests": []
+  "languages": ["standard-ml"]
 }

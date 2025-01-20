@@ -4,18 +4,11 @@
   "categories": ["formatter"],
   "commands": {
     "fmt": {
-      "command": ["fmt", "$PATH"],
-      "description": "",
-      "homepage": "",
-      "ignore_output": false,
-      "tests": []
+      "arguments": ["fmt", "$PATH"],
+      "ignore_output": false
     }
   },
   "description": "Code formatter for the furhark programming language",
   "homepage": "https://futhark.readthedocs.io/en/latest/man/futhark-fmt.html",
-  "languages": ["futhark"],
-  "name": null,
-  "npm": null,
-  "php": null,
-  "tests": []
+  "languages": ["futhark"]
 }

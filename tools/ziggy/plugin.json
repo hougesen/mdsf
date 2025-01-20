@@ -4,18 +4,11 @@
   "categories": ["formatter"],
   "commands": {
     "fmt": {
-      "command": ["fmt", "$PATH"],
-      "description": "",
-      "homepage": "",
-      "ignore_output": false,
-      "tests": []
+      "arguments": ["fmt", "$PATH"],
+      "ignore_output": false
     }
   },
   "description": "Formats Ziggy documents and Ziggy schemas",
   "homepage": "https://ziggy-lang.io/documentation/ziggy-fmt/",
-  "languages": ["ziggy"],
-  "name": null,
-  "npm": null,
-  "php": null,
-  "tests": []
+  "languages": ["ziggy"]
 }

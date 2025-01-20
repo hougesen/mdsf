@@ -4,25 +4,18 @@
   "categories": ["formatter"],
   "commands": {
     "": {
-      "command": ["--edition", "2021", "--quiet", "$PATH"],
-      "description": "",
-      "homepage": "",
+      "arguments": ["--edition", "2021", "--quiet", "$PATH"],
       "ignore_output": false,
-      "tests": []
+      "tests": [
+        {
+          "language": "rust",
+          "test_input": "pub\n                    async\n            fn    add( a: i32,\n                            b:i32 )->                   i32 {a+b}\n    ",
+          "test_output": "pub async fn add(a: i32, b: i32) -> i32 {\n    a + b\n}\n"
+        }
+      ]
     }
   },
   "description": "The official code formatter for Rust",
   "homepage": "https://github.com/rust-lang/rustfmt",
-  "languages": ["rust"],
-  "name": null,
-  "npm": null,
-  "php": null,
-  "tests": [
-    {
-      "command": "",
-      "language": "rust",
-      "test_input": "pub\n                    async\n            fn    add( a: i32,\n                            b:i32 )->                   i32 {a+b}\n    ",
-      "test_output": "pub async fn add(a: i32, b: i32) -> i32 {\n    a + b\n}\n"
-    }
-  ]
+  "languages": ["rust"]
 }

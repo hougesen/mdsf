@@ -4,18 +4,11 @@
   "categories": ["linter"],
   "commands": {
     "": {
-      "command": ["$PATH"],
-      "description": "",
-      "homepage": "",
-      "ignore_output": false,
-      "tests": []
+      "arguments": ["$PATH"],
+      "ignore_output": false
     }
   },
   "description": "Static checker for GitHub Actions workflow files",
   "homepage": "https://github.com/rhysd/actionlint",
-  "languages": ["yaml"],
-  "name": null,
-  "npm": null,
-  "php": null,
-  "tests": []
+  "languages": ["yaml"]
 }
