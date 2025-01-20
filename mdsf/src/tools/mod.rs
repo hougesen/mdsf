@@ -123,6 +123,7 @@ pub mod leptosfmt;
 pub mod liquidsoap_prettier;
 pub mod luacheck;
 pub mod luaformatter;
+pub mod mado_check;
 pub mod markdownfmt;
 pub mod markdownlint;
 pub mod markdownlint_cli_2;
@@ -745,6 +746,10 @@ pub enum Tooling {
     #[serde(rename = "luaformatter")]
     /// `lua-format -i $PATH`
     Luaformatter,
+
+    #[serde(rename = "mado:check")]
+    /// `mado check $PATH`
+    MadoCheck,
 
     #[serde(rename = "markdownfmt")]
     /// `markdownfmt -w $PATH`
@@ -1397,6 +1402,7 @@ impl Tooling {
             Self::LiquidsoapPrettier => liquidsoap_prettier::run(snippet_path),
             Self::Luacheck => luacheck::run(snippet_path),
             Self::Luaformatter => luaformatter::run(snippet_path),
+            Self::MadoCheck => mado_check::run(snippet_path),
             Self::Markdownfmt => markdownfmt::run(snippet_path),
             Self::Markdownlint => markdownlint::run(snippet_path),
             Self::MarkdownlintCli2 => markdownlint_cli_2::run(snippet_path),
@@ -1658,6 +1664,7 @@ impl AsRef<str> for Tooling {
             Self::LiquidsoapPrettier => "liquidsoap_prettier",
             Self::Luacheck => "luacheck",
             Self::Luaformatter => "luaformatter",
+            Self::MadoCheck => "mado_check",
             Self::Markdownfmt => "markdownfmt",
             Self::Markdownlint => "markdownlint",
             Self::MarkdownlintCli2 => "markdownlint_cli_2",

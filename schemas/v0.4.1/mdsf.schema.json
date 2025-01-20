@@ -669,6 +669,11 @@
           "enum": ["luaformatter"]
         },
         {
+          "description": "`mado check $PATH`",
+          "type": "string",
+          "enum": ["mado:check"]
+        },
+        {
           "description": "`markdownfmt -w $PATH`",
           "type": "string",
           "enum": ["markdownfmt"]
