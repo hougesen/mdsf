@@ -31,5 +31,5 @@
   },
   "description": "Formatter and linter for JavaScript and TypeScript",
   "homepage": "https://docs.deno.com/runtime/reference/cli/",
-  "languages": ["typescript", "javascript", "json"]
+  "languages": ["javascript", "json", "typescript"]
 }

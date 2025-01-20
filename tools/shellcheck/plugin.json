@@ -5,10 +5,10 @@
   "commands": {
     "": {
       "arguments": ["$PATH"],
-      "ignore_output": false
+      "ignore_output": true
     }
   },
   "description": "ShellCheck, a static analysis tool for shell scripts",
   "homepage": "https://github.com/koalaman/shellcheck",
-  "languages": ["shell", "bash"]
+  "languages": ["bash", "shell"]
 }

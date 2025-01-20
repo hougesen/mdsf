@@ -21,13 +21,13 @@ pub struct ToolCommand {
     pub arguments: Vec<String>,
 
     #[expect(unused)]
-    pub ignore_output: bool,
-
-    #[expect(unused)]
     pub description: Option<String>,
 
     #[expect(unused)]
     pub homepage: Option<String>,
+
+    /// Whether to ignore the output of the command execution
+    pub ignore_output: bool,
 
     pub tests: Option<Vec<ToolCommandTest>>,
 }
@@ -39,25 +39,25 @@ pub struct Tool {
     #[serde(rename = "$schema")]
     pub schema: String,
 
-    pub name: Option<String>,
-
     pub binary: String,
+
+    pub categories: std::collections::BTreeSet<String>,
+
+    pub commands: std::collections::BTreeMap<String, ToolCommand>,
+
+    pub description: String,
+
+    pub homepage: String,
+
+    pub languages: std::collections::BTreeSet<String>,
+
+    pub name: Option<String>,
 
     /// Name of package on npm, if published there.
     pub npm: Option<String>,
 
     /// Binary name if installed through composer
     pub php: Option<String>,
-
-    pub commands: std::collections::HashMap<String, ToolCommand>,
-
-    pub description: String,
-
-    pub homepage: String,
-
-    pub categories: std::collections::HashSet<String>,
-
-    pub languages: std::collections::HashSet<String>,
 }
 
 #[derive(Debug)]
@@ -204,7 +204,7 @@ impl Tool {
 
             let module_name = command_name.to_case(Case::Snake);
 
-            let mut tests = options
+            let tests = options
                 .tests
                 .clone()
                 .unwrap_or_default()
@@ -215,9 +215,13 @@ impl Tool {
             let tests = if tests.is_empty() {
                 String::new()
             } else {
-                tests.sort_unstable();
-
                 format!("\n{}\n", tests.join("\n\n"))
+            };
+
+            let map_execution_result = if options.ignore_output {
+                ".map(|value| (value.0, None))"
+            } else {
+                ""
             };
 
             let code = format!(
@@ -237,7 +241,7 @@ pub fn {run_fn_name}(file_path: &std::path::Path) -> Result<(bool, Option<String
 
 {INDENT}for (index, cmd) in commands.iter().enumerate() {{
 {INDENT}{INDENT}let cmd = {set_args_fn_name}(cmd.build(), file_path);
-{INDENT}{INDENT}let execution_result = execute_command(cmd, file_path);
+{INDENT}{INDENT}let execution_result = execute_command(cmd, file_path){map_execution_result};
 
 {INDENT}{INDENT}if index == commands.len() - 1 {{
 {INDENT}{INDENT}{INDENT}return execution_result;

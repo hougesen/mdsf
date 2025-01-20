@@ -75,6 +75,7 @@
           "type": ["string", "null"]
         },
         "ignore_output": {
+          "description": "Whether to ignore the output of the command execution",
           "type": "boolean"
         },
         "tests": {

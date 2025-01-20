@@ -10,5 +10,5 @@
   },
   "description": "A formatter for Sphinx flavored reStructuredText",
   "homepage": "https://pypi.org/project/docstrfmt/",
-  "languages": ["reStructuredText", "python", "Sphinx"]
+  "languages": ["Sphinx", "python", "reStructuredText"]
 }

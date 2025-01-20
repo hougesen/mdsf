@@ -5,7 +5,7 @@
   "commands": {
     "": {
       "arguments": ["$PATH"],
-      "ignore_output": false
+      "ignore_output": true
     }
   },
   "description": "Dockerfile linter, validate inline bash, written in Haskell",

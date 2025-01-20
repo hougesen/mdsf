@@ -10,5 +10,5 @@
   },
   "description": "Tooling for the Templ template language",
   "homepage": "https://templ.guide/",
-  "languages": ["templ", "go"]
+  "languages": ["go", "templ"]
 }

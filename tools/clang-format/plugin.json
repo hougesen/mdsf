@@ -53,13 +53,13 @@
   "description": "A tool to format C/C++/Java/JavaScript/JSON/Objective-C/Protobuf/C# code",
   "homepage": "https://clang.llvm.org/docs/ClangFormat.html",
   "languages": [
-    "protobuf",
-    "c#",
-    "java",
-    "c++",
-    "json",
     "c",
+    "c#",
+    "c++",
+    "java",
+    "javascript",
+    "json",
     "objective-c",
-    "javascript"
+    "protobuf"
   ]
 }

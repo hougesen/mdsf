@@ -5,7 +5,7 @@
   "commands": {
     "": {
       "arguments": ["$PATH"],
-      "ignore_output": false
+      "ignore_output": true
     }
   },
   "description": "Static checker for GitHub Actions workflow files",

@@ -1,7 +1,7 @@
 {
   "$schema": "../tool.schema.json",
   "binary": "fixjson",
-  "categories": ["linter", "formatter"],
+  "categories": ["formatter", "linter"],
   "commands": {
     "": {
       "arguments": ["-w", "$PATH"],
@@ -10,6 +10,6 @@
   },
   "description": "JSON Fixer for Humans using (relaxed) JSON5",
   "homepage": "https://github.com/rhysd/fixjson",
-  "languages": ["json5", "json"],
+  "languages": ["json", "json5"],
   "npm": "fixjson"
 }

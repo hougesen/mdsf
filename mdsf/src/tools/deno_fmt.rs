@@ -57,6 +57,29 @@ mod test_deno_fmt {
     }
 
     #[test_with::executable(deno)]
+    fn test_deno_fmt_typescript_857476c85438ce71() {
+        let input = r#"
+    async function asyncAddition(                                a:       	number,b:number ) :Promise< number>
+    {
+        return a+b
+    }
+
+            "#;
+        let output = r#"async function asyncAddition(a: number, b: number): Promise<number> {
+  return a + b;
+}
+"#;
+        let file_ext = crate::fttype::get_file_extension("typescript");
+        let snippet =
+            crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
+        let result = crate::tools::deno_fmt::run(snippet.path())
+            .expect("it to be successful")
+            .1
+            .expect("it to be some");
+        assert_eq!(result, output);
+    }
+
+    #[test_with::executable(deno)]
     fn test_deno_fmt_json_d426a9ade74002d2() {
         let input = r#"
               {
@@ -79,29 +102,6 @@ mod test_deno_fmt {
 }
 "#;
         let file_ext = crate::fttype::get_file_extension("json");
-        let snippet =
-            crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
-        let result = crate::tools::deno_fmt::run(snippet.path())
-            .expect("it to be successful")
-            .1
-            .expect("it to be some");
-        assert_eq!(result, output);
-    }
-
-    #[test_with::executable(deno)]
-    fn test_deno_fmt_typescript_857476c85438ce71() {
-        let input = r#"
-    async function asyncAddition(                                a:       	number,b:number ) :Promise< number>
-    {
-        return a+b
-    }
-
-            "#;
-        let output = r#"async function asyncAddition(a: number, b: number): Promise<number> {
-  return a + b;
-}
-"#;
-        let file_ext = crate::fttype::get_file_extension("typescript");
         let snippet =
             crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
         let result = crate::tools::deno_fmt::run(snippet.path())

@@ -10,6 +10,6 @@
   },
   "description": "Format ERB files with speed and precision",
   "homepage": "https://github.com/nebulab/erb-formatter",
-  "languages": ["ruby", "erb"],
+  "languages": ["erb", "ruby"],
   "name": "erb-formatter"
 }

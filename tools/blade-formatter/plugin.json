@@ -17,6 +17,6 @@
   },
   "description": "An opinionated blade template formatter for Laravel that respects readability",
   "homepage": "https://github.com/shufo/blade-formatter",
-  "languages": ["laravel", "blade", "php"],
+  "languages": ["blade", "laravel", "php"],
   "npm": "blade-formatter"
 }

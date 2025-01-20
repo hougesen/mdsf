@@ -5,7 +5,7 @@
   "commands": {
     "": {
       "arguments": ["--quiet", "$PATH"],
-      "ignore_output": false
+      "ignore_output": true
     }
   },
   "description": "Automated linting of Cascading Stylesheets",

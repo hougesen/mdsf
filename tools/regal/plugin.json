@@ -9,7 +9,7 @@
     },
     "lint": {
       "arguments": ["lint", "$PATH"],
-      "ignore_output": false
+      "ignore_output": true
     }
   },
   "description": "Regal is a linter and language server for Rego, bringing your policy development experience to the next level",

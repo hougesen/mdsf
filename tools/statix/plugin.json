@@ -5,7 +5,7 @@
   "commands": {
     "check": {
       "arguments": ["check", "$PATH"],
-      "ignore_output": false
+      "ignore_output": true
     },
     "fix": {
       "arguments": ["fix", "$PATH"],

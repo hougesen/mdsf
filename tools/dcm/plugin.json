@@ -1,7 +1,7 @@
 {
   "$schema": "../tool.schema.json",
   "binary": "dcm",
-  "categories": ["linter", "formatter"],
+  "categories": ["formatter", "linter"],
   "commands": {
     "fix": {
       "arguments": ["fix", "$PATH"],
@@ -14,5 +14,5 @@
   },
   "description": "Code Quality Tool for Flutter Developers",
   "homepage": "https://dcm.dev/",
-  "languages": ["flutter", "dart"]
+  "languages": ["dart", "flutter"]
 }

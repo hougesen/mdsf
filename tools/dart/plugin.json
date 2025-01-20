@@ -1,7 +1,7 @@
 {
   "$schema": "../tool.schema.json",
   "binary": "dart",
-  "categories": ["linter", "formatter"],
+  "categories": ["formatter", "linter"],
   "commands": {
     "fix": {
       "arguments": ["fix", "--apply", "$PATH"],

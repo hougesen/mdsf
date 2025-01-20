@@ -5,7 +5,7 @@
   "commands": {
     "": {
       "arguments": ["$PATH"],
-      "ignore_output": false
+      "ignore_output": true
     }
   },
   "description": "A command-line utility that checks for best practices in SaltStack",

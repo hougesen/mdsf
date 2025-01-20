@@ -1,7 +1,7 @@
 {
   "$schema": "../tool.schema.json",
   "binary": "sqruff",
-  "categories": ["linter", "formatter"],
+  "categories": ["formatter", "linter"],
   "commands": {
     "": {
       "arguments": ["fix", "$PATH"],

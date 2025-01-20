@@ -5,10 +5,10 @@
   "commands": {
     "": {
       "arguments": ["-q", "$PATH"],
-      "ignore_output": false
+      "ignore_output": true
     }
   },
   "description": "Experimental HTML templates linting for Jinja, Nunjucks, Django templates, Twig, Liquid",
   "homepage": "https://github.com/thibaudcolas/curlylint",
-  "languages": ["nunjucks", "django", "jinja", "liquid", "twig"]
+  "languages": ["django", "jinja", "liquid", "nunjucks", "twig"]
 }

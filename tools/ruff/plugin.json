@@ -1,7 +1,7 @@
 {
   "$schema": "../tool.schema.json",
   "binary": "ruff",
-  "categories": ["linter", "formatter"],
+  "categories": ["formatter", "linter"],
   "commands": {
     "check": {
       "arguments": ["check", "--fix", "--quiet", "$PATH"],
