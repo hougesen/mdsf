@@ -3,13 +3,12 @@
   "binary": "jsonnetfmt",
   "categories": ["formatter"],
   "commands": {
-    "": ["-i", "$PATH"]
+    "": {
+      "arguments": ["-i", "$PATH"],
+      "ignore_output": false
+    }
   },
   "description": "Formatter for automatically fixing jsonnet stylistic problems",
   "homepage": "https://jsonnet.org/learning/tools.html",
-  "languages": ["jsonnet"],
-  "name": null,
-  "npm": null,
-  "php": null,
-  "tests": []
+  "languages": ["jsonnet"]
 }

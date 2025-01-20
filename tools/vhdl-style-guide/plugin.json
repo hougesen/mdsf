@@ -3,13 +3,13 @@
   "binary": "vsg",
   "categories": ["formatter"],
   "commands": {
-    "": ["-f", "$PATH", "--fix"]
+    "": {
+      "arguments": ["-f", "$PATH", "--fix"],
+      "ignore_output": false
+    }
   },
   "description": "Style guide enforcement for VHDL",
   "homepage": "https://github.com/jeremiah-c-leary/vhdl-style-guide",
   "languages": ["vhdl"],
-  "name": "vhdl-style-guide",
-  "npm": null,
-  "php": null,
-  "tests": []
+  "name": "vhdl-style-guide"
 }

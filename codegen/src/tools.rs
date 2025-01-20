@@ -4,47 +4,63 @@ use convert_case::{Case, Casing};
 
 const INDENT: &str = "    ";
 
-#[derive(Debug, serde::Deserialize, schemars::JsonSchema, Hash)]
+const GENERATED_FILE_COMMENT: &str =
+    "///\n/// THIS FILE IS GENERATED USING CODE - DO NOT EDIT MANUALLY\n///";
+
+#[derive(Debug, serde::Deserialize, schemars::JsonSchema, Hash, Clone)]
 #[schemars(deny_unknown_fields)]
-pub struct ToolTest {
+pub struct ToolCommandTest {
     /// Codeblock language used when generating tests
     pub language: String,
-
-    pub command: String,
 
     pub test_input: String,
 
     pub test_output: String,
 }
 
-#[derive(Debug, serde::Deserialize, schemars::JsonSchema)]
+#[derive(Debug, serde::Deserialize, schemars::JsonSchema, Clone)]
+#[schemars(deny_unknown_fields)]
+pub struct ToolCommand {
+    pub arguments: Vec<String>,
+
+    #[expect(unused)]
+    pub description: Option<String>,
+
+    #[expect(unused)]
+    pub homepage: Option<String>,
+
+    /// Whether to ignore the output of the command execution
+    pub ignore_output: bool,
+
+    pub tests: Option<Vec<ToolCommandTest>>,
+}
+
+#[derive(Debug, serde::Deserialize, schemars::JsonSchema, Clone)]
 #[schemars(deny_unknown_fields)]
 pub struct Tool {
     #[expect(unused)]
     #[serde(rename = "$schema")]
     pub schema: String,
 
-    pub name: Option<String>,
-
     pub binary: String,
+
+    pub categories: std::collections::BTreeSet<String>,
+
+    pub commands: std::collections::BTreeMap<String, ToolCommand>,
+
+    pub description: String,
+
+    pub homepage: String,
+
+    pub languages: std::collections::BTreeSet<String>,
+
+    pub name: Option<String>,
 
     /// Name of package on npm, if published there.
     pub npm: Option<String>,
 
     /// Binary name if installed through composer
     pub php: Option<String>,
-
-    pub commands: std::collections::HashMap<String, Vec<String>>,
-
-    pub description: String,
-
-    pub homepage: String,
-
-    pub categories: std::collections::HashSet<String>,
-
-    pub languages: std::collections::HashSet<String>,
-
-    pub tests: Option<Vec<ToolTest>>,
 }
 
 #[derive(Debug)]
@@ -81,12 +97,14 @@ impl Tool {
         )
     }
 
-    fn generate_test(&self, test: &ToolTest) -> (String, String) {
+    fn generate_test(&self, command: &str, test: &ToolCommandTest) -> (String, String) {
         let mut hasher = DefaultHasher::new();
+
         test.hash(&mut hasher);
+
         let id = format!("{:x}", hasher.finish());
 
-        let module_name = self.get_command_name(&test.command).to_case(Case::Snake);
+        let module_name = self.get_command_name(command).to_case(Case::Snake);
 
         let language = test.language.to_case(Case::Snake);
 
@@ -122,18 +140,7 @@ impl Tool {
     fn generate(&self) -> Vec<GeneratedCommand> {
         let mut all_commands = Vec::new();
 
-        let mut generated_tests: std::collections::HashMap<String, Vec<String>> =
-            std::collections::HashMap::new();
-
-        if let Some(tests) = &self.tests {
-            for test in tests {
-                let (module, code) = self.generate_test(test);
-
-                generated_tests.entry(module).or_default().push(code);
-            }
-        }
-
-        for (cmd, args) in &self.commands {
+        for (cmd, options) in &self.commands {
             let command_name = self.get_command_name(cmd);
 
             let set_args_fn_name = format!("set_{command_name}_args");
@@ -168,7 +175,8 @@ impl Tool {
             };
             let mut args_includes_path = false;
 
-            let string_args = args
+            let string_args = options
+                .arguments
                 .iter()
                 .map(|arg| {
                     if arg == "$PATH" {
@@ -199,19 +207,29 @@ impl Tool {
 
             let module_name = command_name.to_case(Case::Snake);
 
-            let tests = generated_tests
-                .remove(&module_name)
+            let tests = options
+                .tests
+                .clone()
                 .unwrap_or_default()
-                .join("\n\n");
+                .iter()
+                .map(|test| self.generate_test(cmd, test).1)
+                .collect::<Vec<_>>();
 
             let tests = if tests.is_empty() {
                 String::new()
             } else {
-                format!("\n{tests}\n")
+                format!("\n{}\n", tests.join("\n\n"))
+            };
+
+            let map_execution_result = if options.ignore_output {
+                ".map(|value| (value.0, None))"
+            } else {
+                ""
             };
 
             let code = format!(
-                "use std::process::Command;
+                "{GENERATED_FILE_COMMENT}
+use std::process::Command;
 
 use crate::{{error::MdsfError, execution::execute_command, runners::CommandType}};
 
@@ -227,7 +245,7 @@ pub fn {run_fn_name}(file_path: &std::path::Path) -> Result<(bool, Option<String
 
 {INDENT}for (index, cmd) in commands.iter().enumerate() {{
 {INDENT}{INDENT}let cmd = {set_args_fn_name}(cmd.build(), file_path);
-{INDENT}{INDENT}let execution_result = execute_command(cmd, file_path);
+{INDENT}{INDENT}let execution_result = execute_command(cmd, file_path){map_execution_result};
 
 {INDENT}{INDENT}if index == commands.len() - 1 {{
 {INDENT}{INDENT}{INDENT}return execution_result;
@@ -259,12 +277,10 @@ mod test_{module_name} {{{tests}}}
                     if cmd.is_empty() { "" } else { ":" },
                     cmd
                 ),
-                args: args.clone(),
+                args: options.arguments.clone(),
                 binary: self.binary.clone(),
             });
         }
-
-        assert!(generated_tests.is_empty());
 
         all_commands
     }
@@ -362,7 +378,8 @@ impl AsRef<str> for Tooling {
     as_ref_content.sort_unstable();
 
     let mod_file_contents = format!(
-        "{}
+        "{GENERATED_FILE_COMMENT}
+{}
 
 #[derive(serde::Serialize, serde::Deserialize, Hash)]
 #[cfg_attr(test, derive(Debug, PartialEq, Eq))]

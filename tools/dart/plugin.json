@@ -3,21 +3,23 @@
   "binary": "dart",
   "categories": ["formatter", "linter"],
   "commands": {
-    "fix": ["fix", "--apply", "$PATH"],
-    "format": ["format", "$PATH"]
+    "fix": {
+      "arguments": ["fix", "--apply", "$PATH"],
+      "ignore_output": false
+    },
+    "format": {
+      "arguments": ["format", "$PATH"],
+      "ignore_output": false,
+      "tests": [
+        {
+          "language": "dart",
+          "test_input": "class Adder {   int add(int a, int b) {     return a + b;   } }    ",
+          "test_output": "class Adder {\n  int add(int a, int b) {\n    return a + b;\n  }\n}\n"
+        }
+      ]
+    }
   },
   "description": "Formatter and linter for Dart",
   "homepage": "https://dart.dev/tools",
-  "languages": ["dart", "flutter"],
-  "name": null,
-  "npm": null,
-  "php": null,
-  "tests": [
-    {
-      "command": "format",
-      "language": "dart",
-      "test_input": "class Adder {   int add(int a, int b) {     return a + b;   } }    ",
-      "test_output": "class Adder {\n  int add(int a, int b) {\n    return a + b;\n  }\n}\n"
-    }
-  ]
+  "languages": ["dart", "flutter"]
 }

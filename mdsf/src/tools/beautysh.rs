@@ -1,3 +1,6 @@
+///
+/// THIS FILE IS GENERATED USING CODE - DO NOT EDIT MANUALLY
+///
 use std::process::Command;
 
 use crate::{error::MdsfError, execution::execute_command, runners::CommandType};
@@ -33,7 +36,7 @@ pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfEr
 #[cfg(test)]
 mod test_beautysh {
     #[test_with::executable(beautysh)]
-    fn test_beautysh_shell_cb36b80a8b253f58() {
+    fn test_beautysh_shell_f8c934ee37e2888() {
         let input = r#"#!/bin/shell
 
        add() {
@@ -57,7 +60,7 @@ add() {
     }
 
     #[test_with::executable(beautysh)]
-    fn test_beautysh_bash_256eb200f416406f() {
+    fn test_beautysh_bash_a6831a7ad31bd0a6() {
         let input = r#"#!/bin/bash
 
        add() {

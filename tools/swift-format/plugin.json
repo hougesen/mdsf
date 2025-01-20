@@ -3,20 +3,19 @@
   "binary": "swift-format",
   "categories": ["formatter"],
   "commands": {
-    "": ["--in-place", "$PATH"]
+    "": {
+      "arguments": ["--in-place", "$PATH"],
+      "ignore_output": false,
+      "tests": [
+        {
+          "language": "swift",
+          "test_input": " func add(a:Int ,b:Int)->Int {\n    return a + b\n    }",
+          "test_output": "func add(a: Int, b: Int) -> Int {\n    return a + b\n}\n"
+        }
+      ]
+    }
   },
   "description": "Formatting technology for Swift source code",
   "homepage": "https://github.com/apple/swift-format",
-  "languages": ["swift"],
-  "name": null,
-  "npm": null,
-  "php": null,
-  "tests": [
-    {
-      "command": "",
-      "language": "swift",
-      "test_input": " func add(a:Int ,b:Int)->Int {\n    return a + b\n    }",
-      "test_output": "func add(a: Int, b: Int) -> Int {\n    return a + b\n}\n"
-    }
-  ]
+  "languages": ["swift"]
 }

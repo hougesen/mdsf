@@ -3,13 +3,12 @@
   "binary": "dfmt",
   "categories": ["formatter"],
   "commands": {
-    "": ["-i", "$PATH"]
+    "": {
+      "arguments": ["-i", "$PATH"],
+      "ignore_output": false
+    }
   },
   "description": "Dfmt is a formatter for D source code",
   "homepage": "https://github.com/dlang-community/dfmt",
-  "languages": ["d"],
-  "name": null,
-  "npm": null,
-  "php": null,
-  "tests": []
+  "languages": ["d"]
 }

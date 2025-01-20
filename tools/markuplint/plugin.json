@@ -3,13 +3,13 @@
   "binary": "markuplint",
   "categories": ["linter"],
   "commands": {
-    "": ["--fix", "$PATH"]
+    "": {
+      "arguments": ["--fix", "$PATH"],
+      "ignore_output": false
+    }
   },
   "description": "An HTML linter for all markup developers",
   "homepage": "https://markuplint.dev/",
   "languages": ["html"],
-  "name": null,
-  "npm": "markuplint",
-  "php": null,
-  "tests": []
+  "npm": "markuplint"
 }

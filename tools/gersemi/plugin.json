@@ -3,13 +3,12 @@
   "binary": "gersemi",
   "categories": ["formatter"],
   "commands": {
-    "": ["-i", "-q", "$PATH"]
+    "": {
+      "arguments": ["-i", "-q", "$PATH"],
+      "ignore_output": false
+    }
   },
   "description": "A formatter to make your CMake code the real treasure",
   "homepage": "https://github.com/blankspruce/gersemi",
-  "languages": ["cmake"],
-  "name": null,
-  "npm": null,
-  "php": null,
-  "tests": []
+  "languages": ["cmake"]
 }

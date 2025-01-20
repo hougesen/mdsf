@@ -1,3 +1,6 @@
+///
+/// THIS FILE IS GENERATED USING CODE - DO NOT EDIT MANUALLY
+///
 use std::process::Command;
 
 use crate::{error::MdsfError, execution::execute_command, runners::CommandType};
@@ -34,7 +37,7 @@ pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfEr
 #[cfg(test)]
 mod test_cljstyle {
     #[test_with::executable(cljstyle)]
-    fn test_cljstyle_clojure_26e7059ba406f68a() {
+    fn test_cljstyle_clojure_92fbb2f42ebeeb2e() {
         let input = r#"(  ns
  foo.bar.baz  "some doc"
     (:require (foo.bar [abc :as abc]

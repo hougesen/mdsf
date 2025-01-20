@@ -3,20 +3,19 @@
   "binary": "pycln",
   "categories": ["formatter"],
   "commands": {
-    "": ["--no-gitignore", "--quiet", "$PATH"]
+    "": {
+      "arguments": ["--no-gitignore", "--quiet", "$PATH"],
+      "ignore_output": false,
+      "tests": [
+        {
+          "language": "python",
+          "test_input": "import math",
+          "test_output": ""
+        }
+      ]
+    }
   },
   "description": "A formatter for finding and removing unused import statements",
   "homepage": "https://github.com/hadialqattan/pycln",
-  "languages": ["python"],
-  "name": null,
-  "npm": null,
-  "php": null,
-  "tests": [
-    {
-      "command": "",
-      "language": "python",
-      "test_input": "import math",
-      "test_output": ""
-    }
-  ]
+  "languages": ["python"]
 }

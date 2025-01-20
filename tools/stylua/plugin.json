@@ -3,20 +3,20 @@
   "binary": "stylua",
   "categories": ["formatter"],
   "commands": {
-    "": ["--verify", "$PATH"]
+    "": {
+      "arguments": ["--verify", "$PATH"],
+      "ignore_output": false,
+      "tests": [
+        {
+          "language": "lua",
+          "test_input": "\n\n        local               function        add (                                       a , b\n)\n\nreturn              a +b\n\n\nend\n\n    ",
+          "test_output": "local function add(a, b)\n\treturn a + b\nend\n"
+        }
+      ]
+    }
   },
   "description": "An opinionated Lua code formatter",
   "homepage": "https://github.com/JohnnyMorganz/StyLua",
   "languages": ["lua"],
-  "name": null,
-  "npm": "@johnnymorganz/stylua-bin",
-  "php": null,
-  "tests": [
-    {
-      "command": "",
-      "language": "lua",
-      "test_input": "\n\n        local               function        add (                                       a , b\n)\n\nreturn              a +b\n\n\nend\n\n    ",
-      "test_output": "local function add(a, b)\n\treturn a + b\nend\n"
-    }
-  ]
+  "npm": "@johnnymorganz/stylua-bin"
 }

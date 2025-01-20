@@ -3,13 +3,12 @@
   "binary": "fnlfmt",
   "categories": ["formatter"],
   "commands": {
-    "": ["$PATH"]
+    "": {
+      "arguments": ["$PATH"],
+      "ignore_output": false
+    }
   },
   "description": "A formatter for Fennel code",
   "homepage": "https://git.sr.ht/~technomancy/fnlfmt",
-  "languages": ["fennel"],
-  "name": null,
-  "npm": null,
-  "php": null,
-  "tests": []
+  "languages": ["fennel"]
 }

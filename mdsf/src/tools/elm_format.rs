@@ -1,3 +1,6 @@
+///
+/// THIS FILE IS GENERATED USING CODE - DO NOT EDIT MANUALLY
+///
 use std::process::Command;
 
 use crate::{error::MdsfError, execution::execute_command, runners::CommandType};
@@ -39,7 +42,7 @@ pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfEr
 #[cfg(test)]
 mod test_elm_format {
     #[test_with::executable(npx)]
-    fn test_elm_format_elm_9f391a2c84be9c5d() {
+    fn test_elm_format_elm_4e120501af0177c4() {
         let input = r#"import   Html       exposing   (text)
 
 

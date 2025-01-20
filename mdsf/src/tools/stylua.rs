@@ -1,3 +1,6 @@
+///
+/// THIS FILE IS GENERATED USING CODE - DO NOT EDIT MANUALLY
+///
 use std::process::Command;
 
 use crate::{error::MdsfError, execution::execute_command, runners::CommandType};
@@ -38,7 +41,7 @@ pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfEr
 #[cfg(test)]
 mod test_stylua {
     #[test_with::executable(npx)]
-    fn test_stylua_lua_b52fd6a9ff258ae5() {
+    fn test_stylua_lua_ab45775f0dc2fcca() {
         let input = r#"
 
         local               function        add (                                       a , b

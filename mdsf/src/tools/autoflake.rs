@@ -1,3 +1,6 @@
+///
+/// THIS FILE IS GENERATED USING CODE - DO NOT EDIT MANUALLY
+///
 use std::process::Command;
 
 use crate::{error::MdsfError, execution::execute_command, runners::CommandType};
@@ -35,7 +38,7 @@ pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfEr
 #[cfg(test)]
 mod test_autoflake {
     #[test_with::executable(autoflake)]
-    fn test_autoflake_python_a7a00a63bb271a62() {
+    fn test_autoflake_python_27cfd9b948e80d7f() {
         let input = r#"import math
 import re
 import os

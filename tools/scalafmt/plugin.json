@@ -3,21 +3,19 @@
   "binary": "scalafmt",
   "categories": ["formatter"],
   "commands": {
-    "": ["--quiet", "--mode", "any", "$PATH"]
+    "": {
+      "arguments": ["--quiet", "--mode", "any", "$PATH"],
+      "ignore_output": false,
+      "tests": [
+        {
+          "language": "scala",
+          "test_input": "object Addition {\n             def main() = {\n                 println(1 + 3)\n             }\n    }",
+          "test_output": "object Addition {\n  def main() = {\n    println(1 + 3)\n  }\n}\n"
+        }
+      ]
+    }
   },
   "description": "Code formatter for Scala",
   "homepage": "https://github.com/scalameta/scalafmt",
-  "languages": ["scala"],
-  "name": null,
-  "npm": null,
-  "php": null,
-  "tests": [
-    {
-      "command": "",
-      "extra_arguments": ["--config-str", "\"version=3.8.0\"", "--debug"],
-      "language": "scala",
-      "test_input": "object Addition {\n             def main() = {\n                 println(1 + 3)\n             }\n    }",
-      "test_output": "object Addition {\n  def main() = {\n    println(1 + 3)\n  }\n}\n"
-    }
-  ]
+  "languages": ["scala"]
 }

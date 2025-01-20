@@ -3,24 +3,19 @@
   "binary": "topiary",
   "categories": ["formatter"],
   "commands": {
-    "": ["format", "$PATH"]
+    "": {
+      "arguments": ["format", "$PATH"],
+      "ignore_output": false,
+      "tests": [
+        {
+          "language": "json",
+          "test_input": "\n              {\n              \"key\": \"value\",\n  \"key2\": [\n      \"value2\",\n      \"value3\",\n      1\n            , null]\n }\n  ",
+          "test_output": "{\n  \"key\": \"value\",\n  \"key2\": [\n    \"value2\",\n    \"value3\",\n    1,\n    null\n  ]\n}\n"
+        }
+      ]
+    }
   },
   "description": "Topiary aims to be a uniform formatter for simple languages, as part of the Tree-sitter ecosystem",
-  "documentation": [
-    "NOTE: queries must be setup locally",
-    "export TOPIARY_LANGUAGE_DIR=/home/houge/Desktop/github/tweag/topiary/topiary-queries/queries/"
-  ],
   "homepage": "https://github.com/tweag/topiary",
-  "languages": [],
-  "name": null,
-  "npm": null,
-  "php": null,
-  "tests": [
-    {
-      "command": "",
-      "language": "json",
-      "test_input": "\n              {\n              \"key\": \"value\",\n  \"key2\": [\n      \"value2\",\n      \"value3\",\n      1\n            , null]\n }\n  ",
-      "test_output": "{\n  \"key\": \"value\",\n  \"key2\": [\n    \"value2\",\n    \"value3\",\n    1,\n    null\n  ]\n}\n"
-    }
-  ]
+  "languages": []
 }

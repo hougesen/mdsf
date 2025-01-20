@@ -1,3 +1,6 @@
+///
+/// THIS FILE IS GENERATED USING CODE - DO NOT EDIT MANUALLY
+///
 use std::process::Command;
 
 use crate::{error::MdsfError, execution::execute_command, runners::CommandType};
@@ -34,7 +37,7 @@ pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfEr
 #[cfg(test)]
 mod test_stylish_haskell {
     #[test_with::executable(stylish-haskell)]
-    fn test_stylish_haskell_haskell_4a3c9bc0988c66ac() {
+    fn test_stylish_haskell_haskell_9589647c4239e2dd() {
         let input = r#"addNumbers::Int->Int->Int
 addNumbers a b = do
         a + b

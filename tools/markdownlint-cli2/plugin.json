@@ -3,13 +3,13 @@
   "binary": "markdownlint-cli2",
   "categories": ["linter"],
   "commands": {
-    "": ["--fix", "$PATH"]
+    "": {
+      "arguments": ["--fix", "$PATH"],
+      "ignore_output": false
+    }
   },
   "description": "A fast, flexible, configuration-based command-line interface for linting Markdown/CommonMark files with the markdownlint library",
   "homepage": "https://github.com/davidanson/markdownlint-cli2",
   "languages": ["markdown"],
-  "name": null,
-  "npm": "markdownlint-cli2",
-  "php": null,
-  "tests": []
+  "npm": "markdownlint-cli2"
 }

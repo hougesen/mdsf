@@ -1,3 +1,6 @@
+///
+/// THIS FILE IS GENERATED USING CODE - DO NOT EDIT MANUALLY
+///
 pub mod actionlint;
 pub mod alejandra;
 pub mod ameba;

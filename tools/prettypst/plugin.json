@@ -3,13 +3,12 @@
   "binary": "prettypst",
   "categories": ["formatter"],
   "commands": {
-    "": ["$PATH"]
+    "": {
+      "arguments": ["$PATH"],
+      "ignore_output": false
+    }
   },
   "description": "Formatter for Typst",
   "homepage": "https://github.com/antonWetzel/prettypst",
-  "languages": ["typst"],
-  "name": null,
-  "npm": null,
-  "php": null,
-  "tests": []
+  "languages": ["typst"]
 }

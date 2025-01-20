@@ -3,33 +3,33 @@
   "binary": "deno",
   "categories": ["formatter", "linter"],
   "commands": {
-    "fmt": ["fmt", "--quiet", "$PATH"],
-    "lint": ["lint", "--fix", "$PATH"]
+    "fmt": {
+      "arguments": ["fmt", "--quiet", "$PATH"],
+      "ignore_output": false,
+      "tests": [
+        {
+          "language": "javascript",
+          "test_input": "\n    async function asyncAddition(a,b){\n        return a+b\n    }\n\n            ",
+          "test_output": "async function asyncAddition(a, b) {\n  return a + b;\n}\n"
+        },
+        {
+          "language": "typescript",
+          "test_input": "\n    async function asyncAddition(                                a:       \tnumber,b:number ) :Promise< number>\n    {\n        return a+b\n    }\n\n            ",
+          "test_output": "async function asyncAddition(a: number, b: number): Promise<number> {\n  return a + b;\n}\n"
+        },
+        {
+          "language": "json",
+          "test_input": "\n              {\n              \"key\": \"value\",\n  \"key2\": [\n      \"value2\",\n      \"value3\",\n      1\n            , null]\n }\n  ",
+          "test_output": "{\n  \"key\": \"value\",\n  \"key2\": [\n    \"value2\",\n    \"value3\",\n    1,\n    null\n  ]\n}\n"
+        }
+      ]
+    },
+    "lint": {
+      "arguments": ["lint", "--fix", "$PATH"],
+      "ignore_output": false
+    }
   },
   "description": "Formatter and linter for JavaScript and TypeScript",
   "homepage": "https://docs.deno.com/runtime/reference/cli/",
-  "languages": ["javascript", "typescript", "json"],
-  "name": null,
-  "npm": null,
-  "php": null,
-  "tests": [
-    {
-      "command": "fmt",
-      "language": "javascript",
-      "test_input": "\n    async function asyncAddition(a,b){\n        return a+b\n    }\n\n            ",
-      "test_output": "async function asyncAddition(a, b) {\n  return a + b;\n}\n"
-    },
-    {
-      "command": "fmt",
-      "language": "typescript",
-      "test_input": "\n    async function asyncAddition(                                a:       \tnumber,b:number ) :Promise< number>\n    {\n        return a+b\n    }\n\n            ",
-      "test_output": "async function asyncAddition(a: number, b: number): Promise<number> {\n  return a + b;\n}\n"
-    },
-    {
-      "command": "fmt",
-      "language": "json",
-      "test_input": "\n              {\n              \"key\": \"value\",\n  \"key2\": [\n      \"value2\",\n      \"value3\",\n      1\n            , null]\n }\n  ",
-      "test_output": "{\n  \"key\": \"value\",\n  \"key2\": [\n    \"value2\",\n    \"value3\",\n    1,\n    null\n  ]\n}\n"
-    }
-  ]
+  "languages": ["javascript", "json", "typescript"]
 }

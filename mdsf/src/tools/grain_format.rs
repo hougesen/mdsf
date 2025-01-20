@@ -1,3 +1,6 @@
+///
+/// THIS FILE IS GENERATED USING CODE - DO NOT EDIT MANUALLY
+///
 use std::process::Command;
 
 use crate::{error::MdsfError, execution::execute_command, runners::CommandType};
@@ -36,7 +39,7 @@ pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfEr
 #[cfg(test)]
 mod test_grain_format {
     #[test_with::executable(grain)]
-    fn test_grain_format_grain_e559d211c80bb5e9() {
+    fn test_grain_format_grain_68b6e8ad56bbb476() {
         let input = r#"module Hello
 
                                 print("Hello, world!")

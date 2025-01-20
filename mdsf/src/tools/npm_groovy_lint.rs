@@ -1,3 +1,6 @@
+///
+/// THIS FILE IS GENERATED USING CODE - DO NOT EDIT MANUALLY
+///
 use std::process::Command;
 
 use crate::{error::MdsfError, execution::execute_command, runners::CommandType};
@@ -38,7 +41,7 @@ pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfEr
 #[cfg(test)]
 mod test_npm_groovy_lint {
     #[test_with::executable(npx)]
-    fn test_npm_groovy_lint_groovy_9484173186968a23() {
+    fn test_npm_groovy_lint_groovy_2dc2be09d8013576() {
         let input = r#"                  def add(a, b) {
             return a + b
         }

@@ -3,14 +3,16 @@
   "binary": "dcm",
   "categories": ["formatter", "linter"],
   "commands": {
-    "fix": ["fix", "$PATH"],
-    "format": ["format", "$PATH"]
+    "fix": {
+      "arguments": ["fix", "$PATH"],
+      "ignore_output": false
+    },
+    "format": {
+      "arguments": ["format", "$PATH"],
+      "ignore_output": false
+    }
   },
   "description": "Code Quality Tool for Flutter Developers",
   "homepage": "https://dcm.dev/",
-  "languages": ["dart", "flutter"],
-  "name": null,
-  "npm": null,
-  "php": null,
-  "tests": []
+  "languages": ["dart", "flutter"]
 }

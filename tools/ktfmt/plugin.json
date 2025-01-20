@@ -3,20 +3,19 @@
   "binary": "ktfmt",
   "categories": ["formatter"],
   "commands": {
-    "": ["--format", "--log-level=error", "$PATH"]
+    "": {
+      "arguments": ["--format", "--log-level=error", "$PATH"],
+      "ignore_output": false,
+      "tests": [
+        {
+          "language": "kotlin",
+          "test_input": "            fun add(a:Int ,b:Int ):Int {\n                    return a + b\n                }\n            ",
+          "test_output": "fun add(a: Int, b: Int): Int {\n    return a + b\n}\n"
+        }
+      ]
+    }
   },
   "description": "program that reformats Kotlin source code to comply with the common community standard for Kotlin code conventions",
   "homepage": "https://github.com/facebook/ktfmt",
-  "languages": ["kotlin"],
-  "name": null,
-  "npm": null,
-  "php": null,
-  "tests": [
-    {
-      "command": "",
-      "language": "kotlin",
-      "test_input": "            fun add(a:Int ,b:Int ):Int {\n                    return a + b\n                }\n            ",
-      "test_output": "fun add(a: Int, b: Int): Int {\n    return a + b\n}\n"
-    }
-  ]
+  "languages": ["kotlin"]
 }

@@ -3,13 +3,12 @@
   "binary": "mojo",
   "categories": ["formatter"],
   "commands": {
-    "format": ["format", "-q", "$PATH"]
+    "format": {
+      "arguments": ["format", "-q", "$PATH"],
+      "ignore_output": false
+    }
   },
   "description": "Formats Mojo source files",
   "homepage": "https://docs.modular.com/mojo/cli/format",
-  "languages": ["mojo"],
-  "name": null,
-  "npm": null,
-  "php": null,
-  "tests": []
+  "languages": ["mojo"]
 }

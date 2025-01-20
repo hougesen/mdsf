@@ -3,13 +3,12 @@
   "binary": "opa",
   "categories": ["formatter"],
   "commands": {
-    "fmt": ["fmt", "$PATH", "-w"]
+    "fmt": {
+      "arguments": ["fmt", "$PATH", "-w"],
+      "ignore_output": false
+    }
   },
   "description": "Format Rego source files",
   "homepage": "https://www.openpolicyagent.org/docs/latest/cli/",
-  "languages": ["rego"],
-  "name": null,
-  "npm": null,
-  "php": null,
-  "tests": []
+  "languages": ["rego"]
 }

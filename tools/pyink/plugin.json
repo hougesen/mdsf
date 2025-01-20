@@ -3,20 +3,19 @@
   "binary": "pyink",
   "categories": ["formatter"],
   "commands": {
-    "": ["--quiet", "$PATH"]
+    "": {
+      "arguments": ["--quiet", "$PATH"],
+      "ignore_output": false,
+      "tests": [
+        {
+          "language": "python",
+          "test_input": "def add( a: int ,  b:int)->int: return a+b",
+          "test_output": "def add(a: int, b: int) -> int:\n    return a + b\n"
+        }
+      ]
+    }
   },
   "description": "Pyink is a Python formatter, forked from Black with a few different formatting behaviors",
   "homepage": "https://github.com/google/pyink",
-  "languages": ["python"],
-  "name": null,
-  "npm": null,
-  "php": null,
-  "tests": [
-    {
-      "command": "",
-      "language": "python",
-      "test_input": "def add( a: int ,  b:int)->int: return a+b",
-      "test_output": "def add(a: int, b: int) -> int:\n    return a + b\n"
-    }
-  ]
+  "languages": ["python"]
 }

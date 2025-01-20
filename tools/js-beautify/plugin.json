@@ -3,13 +3,13 @@
   "binary": "js-beautify",
   "categories": ["formatter"],
   "commands": {
-    "": ["-r", "--type", "js", "-f", "$PATH"]
+    "": {
+      "arguments": ["-r", "--type", "js", "-f", "$PATH"],
+      "ignore_output": false
+    }
   },
   "description": "A JavaScript formatter",
   "homepage": "https://github.com/beautifier/js-beautify",
   "languages": ["javascript"],
-  "name": null,
-  "npm": "js-beautify",
-  "php": null,
-  "tests": []
+  "npm": "js-beautify"
 }

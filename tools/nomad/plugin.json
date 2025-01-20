@@ -3,13 +3,12 @@
   "binary": "nomad",
   "categories": ["formatter"],
   "commands": {
-    "fmt": ["fmt", "$PATH"]
+    "fmt": {
+      "arguments": ["fmt", "$PATH"],
+      "ignore_output": false
+    }
   },
   "description": "CLI for HashiCorp Nomad",
   "homepage": "https://developer.hashicorp.com/nomad/docs/commands",
-  "languages": ["hcl"],
-  "name": null,
-  "npm": null,
-  "php": null,
-  "tests": []
+  "languages": ["hcl"]
 }

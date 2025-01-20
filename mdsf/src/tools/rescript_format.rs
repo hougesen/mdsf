@@ -1,3 +1,6 @@
+///
+/// THIS FILE IS GENERATED USING CODE - DO NOT EDIT MANUALLY
+///
 use std::process::Command;
 
 use crate::{error::MdsfError, execution::execute_command, runners::CommandType};
@@ -38,7 +41,7 @@ pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfEr
 #[cfg(test)]
 mod test_rescript_format {
     #[test_with::executable(npx)]
-    fn test_rescript_format_rescript_e6b1178b0353559b() {
+    fn test_rescript_format_rescript_59c7490e2a041de3() {
         let input = r#"module Button = {
   @react.component
   let make = (~count) =>   {

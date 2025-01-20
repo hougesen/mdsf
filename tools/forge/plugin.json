@@ -3,13 +3,12 @@
   "binary": "forge",
   "categories": ["formatter"],
   "commands": {
-    "fmt": ["fmt", "$PATH"]
+    "fmt": {
+      "arguments": ["fmt", "$PATH"],
+      "ignore_output": false
+    }
   },
   "description": "A Solidity formatter",
   "homepage": "https://github.com/foundry-rs/foundry",
-  "languages": ["solidity"],
-  "name": null,
-  "npm": null,
-  "php": null,
-  "tests": []
+  "languages": ["solidity"]
 }

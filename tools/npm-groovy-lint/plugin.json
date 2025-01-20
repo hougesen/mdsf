@@ -3,20 +3,20 @@
   "binary": "npm-groovy-lint",
   "categories": ["formatter", "linter"],
   "commands": {
-    "": ["--format", "$PATH"]
+    "": {
+      "arguments": ["--format", "$PATH"],
+      "ignore_output": false,
+      "tests": [
+        {
+          "language": "groovy",
+          "test_input": "                  def add(a, b) {\n            return a + b\n        }\n\n        assert add(1,2) == 3 ",
+          "test_output": "def add(a, b) {\n    return a + b\n}\n\nassert add(1, 2) == 3\n"
+        }
+      ]
+    }
   },
   "description": "Lint, format and auto-fix your Groovy / Jenkinsfile / Gradle files",
   "homepage": "https://github.com/nvuillam/npm-groovy-lint",
   "languages": ["groovy"],
-  "name": null,
-  "npm": "npm-groovy-lint",
-  "php": null,
-  "tests": [
-    {
-      "command": "",
-      "language": "groovy",
-      "test_input": "                  def add(a, b) {\n            return a + b\n        }\n\n        assert add(1,2) == 3 ",
-      "test_output": "def add(a, b) {\n    return a + b\n}\n\nassert add(1, 2) == 3\n"
-    }
-  ]
+  "npm": "npm-groovy-lint"
 }

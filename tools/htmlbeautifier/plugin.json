@@ -3,20 +3,19 @@
   "binary": "htmlbeautifier",
   "categories": ["formatter"],
   "commands": {
-    "": ["$PATH"]
+    "": {
+      "arguments": ["$PATH"],
+      "ignore_output": false,
+      "tests": [
+        {
+          "language": "html",
+          "test_input": "<div>\n                    <p>\n                    Mads was here\n                    </p>\n        </div>",
+          "test_output": "<div>\n  <p>\n    Mads was here\n  </p>\n</div>\n"
+        }
+      ]
+    }
   },
   "description": "A normaliser/beautifier for HTML that also understands embedded Ruby. Ideal for tidying up Rails templates",
   "homepage": "https://github.com/threedaymonk/htmlbeautifier",
-  "languages": ["html", "erb", "ruby"],
-  "name": null,
-  "npm": null,
-  "php": null,
-  "tests": [
-    {
-      "command": "",
-      "language": "html",
-      "test_input": "<div>\n                    <p>\n                    Mads was here\n                    </p>\n        </div>",
-      "test_output": "<div>\n  <p>\n    Mads was here\n  </p>\n</div>\n"
-    }
-  ]
+  "languages": ["erb", "html", "ruby"]
 }

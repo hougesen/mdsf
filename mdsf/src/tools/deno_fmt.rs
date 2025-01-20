@@ -1,3 +1,6 @@
+///
+/// THIS FILE IS GENERATED USING CODE - DO NOT EDIT MANUALLY
+///
 use std::process::Command;
 
 use crate::{error::MdsfError, execution::execute_command, runners::CommandType};
@@ -35,7 +38,7 @@ pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfEr
 #[cfg(test)]
 mod test_deno_fmt {
     #[test_with::executable(deno)]
-    fn test_deno_fmt_javascript_6af09f449da7b713() {
+    fn test_deno_fmt_javascript_d7445fa122fcd5cc() {
         let input = r#"
     async function asyncAddition(a,b){
         return a+b
@@ -57,7 +60,7 @@ mod test_deno_fmt {
     }
 
     #[test_with::executable(deno)]
-    fn test_deno_fmt_typescript_ffa7d1d3b3f83061() {
+    fn test_deno_fmt_typescript_857476c85438ce71() {
         let input = r#"
     async function asyncAddition(                                a:       	number,b:number ) :Promise< number>
     {
@@ -80,7 +83,7 @@ mod test_deno_fmt {
     }
 
     #[test_with::executable(deno)]
-    fn test_deno_fmt_json_b43d30c1ef02ddc5() {
+    fn test_deno_fmt_json_d426a9ade74002d2() {
         let input = r#"
               {
               "key": "value",

@@ -3,13 +3,13 @@
   "binary": "purty",
   "categories": ["formatter"],
   "commands": {
-    "": ["--write", "$PATH"]
+    "": {
+      "arguments": ["--write", "$PATH"],
+      "ignore_output": false
+    }
   },
   "description": "PureScript pretty-printer",
   "homepage": "https://gitlab.com/joneshf/purty",
   "languages": ["purescript"],
-  "name": null,
-  "npm": "purty",
-  "php": null,
-  "tests": []
+  "npm": "purty"
 }

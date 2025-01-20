@@ -1,3 +1,6 @@
+///
+/// THIS FILE IS GENERATED USING CODE - DO NOT EDIT MANUALLY
+///
 use std::process::Command;
 
 use crate::{error::MdsfError, execution::execute_command, runners::CommandType};
@@ -34,7 +37,7 @@ pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfEr
 #[cfg(test)]
 mod test_luaformatter {
     #[test_with::executable(lua-format)]
-    fn test_luaformatter_lua_acabd7c8fbe45244() {
+    fn test_luaformatter_lua_df0e81b2c9a1a835() {
         let input = r#"
 
         local               function        add (                                       a , b

@@ -1,3 +1,6 @@
+///
+/// THIS FILE IS GENERATED USING CODE - DO NOT EDIT MANUALLY
+///
 use std::process::Command;
 
 use crate::{error::MdsfError, execution::execute_command, runners::CommandType};
@@ -34,7 +37,7 @@ pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfEr
 #[cfg(test)]
 mod test_csharpier {
     #[test_with::executable(dotnet)]
-    fn test_csharpier_csharp_257c6494c2fdb601() {
+    fn test_csharpier_csharp_a79aa94ad2d86b6c() {
         let input = r#"namespace Mdsf {
                         class Adder {
                                                     public static int add(int a,int b) {

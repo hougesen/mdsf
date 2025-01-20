@@ -3,13 +3,12 @@
   "binary": "misspell",
   "categories": ["autocorrection"],
   "commands": {
-    "": ["-w", "$PATH"]
+    "": {
+      "arguments": ["-w", "$PATH"],
+      "ignore_output": false
+    }
   },
   "description": "Correct commonly misspelled English words in source files",
   "homepage": "https://github.com/client9/misspell/",
-  "languages": [],
-  "name": null,
-  "npm": null,
-  "php": null,
-  "tests": []
+  "languages": []
 }

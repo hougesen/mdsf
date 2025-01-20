@@ -3,13 +3,13 @@
   "binary": "markdownlint",
   "categories": ["linter"],
   "commands": {
-    "": ["--fix", "$PATH"]
+    "": {
+      "arguments": ["--fix", "$PATH"],
+      "ignore_output": false
+    }
   },
   "description": "A Node.js style checker and lint tool for Markdown/CommonMark files",
   "homepage": "https://github.com/davidanson/markdownlint",
   "languages": ["markdown"],
-  "name": null,
-  "npm": "markdownlint",
-  "php": null,
-  "tests": []
+  "npm": "markdownlint"
 }

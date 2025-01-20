@@ -3,13 +3,12 @@
   "binary": "pyment",
   "categories": ["formatter"],
   "commands": {
-    "": ["-w", "$PATH"]
+    "": {
+      "arguments": ["-w", "$PATH"],
+      "ignore_output": false
+    }
   },
   "description": "Format and convert Python docstrings and generates patches",
   "homepage": "https://github.com/dadadel/pyment",
-  "languages": ["python"],
-  "name": null,
-  "npm": null,
-  "php": null,
-  "tests": []
+  "languages": ["python"]
 }

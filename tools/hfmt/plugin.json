@@ -3,13 +3,12 @@
   "binary": "hfmt",
   "categories": ["formatter"],
   "commands": {
-    "": ["-w", "$PATH"]
+    "": {
+      "arguments": ["-w", "$PATH"],
+      "ignore_output": false
+    }
   },
   "description": "Format Haskell programs. Inspired by the gofmt utility",
   "homepage": "https://github.com/danstiner/hfmt",
-  "languages": ["haskell"],
-  "name": null,
-  "npm": null,
-  "php": null,
-  "tests": []
+  "languages": ["haskell"]
 }

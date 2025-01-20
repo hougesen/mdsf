@@ -28,10 +28,7 @@
     "commands": {
       "type": "object",
       "additionalProperties": {
-        "type": "array",
-        "items": {
-          "type": "string"
-        }
+        "$ref": "#/definitions/ToolCommand"
       }
     },
     "description": {
@@ -57,23 +54,43 @@
     "php": {
       "description": "Binary name if installed through composer",
       "type": ["string", "null"]
-    },
-    "tests": {
-      "type": ["array", "null"],
-      "items": {
-        "$ref": "#/definitions/ToolTest"
-      }
     }
   },
   "additionalProperties": false,
   "definitions": {
-    "ToolTest": {
+    "ToolCommand": {
       "type": "object",
-      "required": ["command", "language", "test_input", "test_output"],
+      "required": ["arguments", "ignore_output"],
       "properties": {
-        "command": {
-          "type": "string"
+        "arguments": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
         },
+        "description": {
+          "type": ["string", "null"]
+        },
+        "homepage": {
+          "type": ["string", "null"]
+        },
+        "ignore_output": {
+          "description": "Whether to ignore the output of the command execution",
+          "type": "boolean"
+        },
+        "tests": {
+          "type": ["array", "null"],
+          "items": {
+            "$ref": "#/definitions/ToolCommandTest"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "ToolCommandTest": {
+      "type": "object",
+      "required": ["language", "test_input", "test_output"],
+      "properties": {
         "language": {
           "description": "Codeblock language used when generating tests",
           "type": "string"

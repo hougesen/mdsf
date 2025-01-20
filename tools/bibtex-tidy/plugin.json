@@ -3,13 +3,12 @@
   "binary": "bibtex-tidy",
   "categories": ["formatter"],
   "commands": {
-    "": ["-m", "$PATH"]
+    "": {
+      "arguments": ["-m", "$PATH"],
+      "ignore_output": false
+    }
   },
   "description": "Cleaner and Formatter for BibTeX files",
   "homepage": "https://github.com/FlamingTempura/bibtex-tidy",
-  "languages": ["bibtex"],
-  "name": null,
-  "npm": null,
-  "php": null,
-  "tests": []
+  "languages": ["bibtex"]
 }

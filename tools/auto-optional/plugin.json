@@ -3,20 +3,19 @@
   "binary": "auto-optional",
   "categories": ["formatter"],
   "commands": {
-    "": ["$PATH"]
+    "": {
+      "arguments": ["$PATH"],
+      "ignore_output": false,
+      "tests": [
+        {
+          "language": "python",
+          "test_input": "def foo(bar: str = None):\n    pass\n",
+          "test_output": "from typing import Optional\ndef foo(bar: Optional[str] = None):\n    pass\n"
+        }
+      ]
+    }
   },
   "description": "Adds the Optional type-hint to arguments where the default value is None",
   "homepage": "https://github.com/Luttik/auto-optional",
-  "languages": ["python"],
-  "name": null,
-  "npm": null,
-  "php": null,
-  "tests": [
-    {
-      "command": "",
-      "language": "python",
-      "test_input": "def foo(bar: str = None):\n    pass\n",
-      "test_output": "from typing import Optional\ndef foo(bar: Optional[str] = None):\n    pass\n"
-    }
-  ]
+  "languages": ["python"]
 }

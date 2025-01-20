@@ -3,13 +3,12 @@
   "binary": "typstfmt",
   "categories": ["formatter"],
   "commands": {
-    "": ["$PATH"]
+    "": {
+      "arguments": ["$PATH"],
+      "ignore_output": false
+    }
   },
   "description": "Basic formatter for the Typst language",
   "homepage": "https://github.com/astrale-sharp/typstfmt",
-  "languages": ["typst"],
-  "name": null,
-  "npm": null,
-  "php": null,
-  "tests": []
+  "languages": ["typst"]
 }

@@ -1,3 +1,6 @@
+///
+/// THIS FILE IS GENERATED USING CODE - DO NOT EDIT MANUALLY
+///
 use std::process::Command;
 
 use crate::{error::MdsfError, execution::execute_command, runners::CommandType};
@@ -35,7 +38,7 @@ pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfEr
 #[cfg(test)]
 mod test_tofu_fmt {
     #[test_with::executable(tofu)]
-    fn test_tofu_fmt_terraform_35979ec99d0c4a75() {
+    fn test_tofu_fmt_terraform_ad45c247a9c563a1() {
         let input = r#"resource "aws_instance" "example" {
                 ami   = "abc123"
 

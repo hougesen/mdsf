@@ -3,13 +3,13 @@
   "binary": "jsonlint",
   "categories": ["formatter", "linter"],
   "commands": {
-    "": ["-i", "$PATH"]
+    "": {
+      "arguments": ["-i", "$PATH"],
+      "ignore_output": false
+    }
   },
   "description": "A JSON parser and validator with a CLI",
   "homepage": "https://github.com/zaach/jsonlint",
   "languages": ["json"],
-  "name": null,
-  "npm": "jsonlint",
-  "php": null,
-  "tests": []
+  "npm": "jsonlint"
 }

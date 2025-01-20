@@ -1,3 +1,6 @@
+///
+/// THIS FILE IS GENERATED USING CODE - DO NOT EDIT MANUALLY
+///
 use std::process::Command;
 
 use crate::{error::MdsfError, execution::execute_command, runners::CommandType};
@@ -34,7 +37,7 @@ pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfEr
 #[cfg(test)]
 mod test_usort {
     #[test_with::executable(usort)]
-    fn test_usort_python_7be36b03fc0282f6() {
+    fn test_usort_python_e2ac93e0195d9bc1() {
         let input = r#"from q import d
 import b
 import a

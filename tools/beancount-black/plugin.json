@@ -3,13 +3,13 @@
   "binary": "bean-black",
   "categories": ["formatter"],
   "commands": {
-    "": ["$PATH"]
+    "": {
+      "arguments": ["$PATH"],
+      "ignore_output": false
+    }
   },
   "description": "Opinionated code formatter, just like Python's black code formatter but for Beancount",
   "homepage": "https://github.com/LaunchPlatform/beancount-black",
   "languages": ["beancount"],
-  "name": "beancount-black",
-  "npm": null,
-  "php": null,
-  "tests": []
+  "name": "beancount-black"
 }

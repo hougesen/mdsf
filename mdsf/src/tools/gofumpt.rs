@@ -1,3 +1,6 @@
+///
+/// THIS FILE IS GENERATED USING CODE - DO NOT EDIT MANUALLY
+///
 use std::process::Command;
 
 use crate::{error::MdsfError, execution::execute_command, runners::CommandType};
@@ -34,7 +37,7 @@ pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfEr
 #[cfg(test)]
 mod test_gofumpt {
     #[test_with::executable(gofumpt)]
-    fn test_gofumpt_go_55cb48704ff9049a() {
+    fn test_gofumpt_go_3b56f602fe22977b() {
         let input = r#"package main
 
    func add(a int , b int  ) int {

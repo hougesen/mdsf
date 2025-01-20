@@ -3,13 +3,13 @@
   "binary": "dprint",
   "categories": ["formatter"],
   "commands": {
-    "fmt": ["fmt", "$PATH"]
+    "fmt": {
+      "arguments": ["fmt", "$PATH"],
+      "ignore_output": false
+    }
   },
   "description": "A pluggable and configurable code formatting platform written in Rust",
   "homepage": "https://dprint.dev/",
   "languages": [],
-  "name": null,
-  "npm": "dprint",
-  "php": null,
-  "tests": []
+  "npm": "dprint"
 }

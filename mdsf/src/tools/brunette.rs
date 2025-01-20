@@ -1,3 +1,6 @@
+///
+/// THIS FILE IS GENERATED USING CODE - DO NOT EDIT MANUALLY
+///
 use std::process::Command;
 
 use crate::{error::MdsfError, execution::execute_command, runners::CommandType};
@@ -34,7 +37,7 @@ pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfEr
 #[cfg(test)]
 mod test_brunette {
     #[test_with::executable(brunette)]
-    fn test_brunette_python_8156ff26fe126797() {
+    fn test_brunette_python_229ec2b01c2bfe3c() {
         let input = r#"def add( a: int ,  b:int)->int: return a+b"#;
         let output = r#"def add(a: int, b: int) -> int:
     return a + b

@@ -3,20 +3,20 @@
   "binary": "purs-tidy",
   "categories": ["formatter"],
   "commands": {
-    "": ["format-in-place", "$PATH"]
+    "": {
+      "arguments": ["format-in-place", "$PATH"],
+      "ignore_output": false,
+      "tests": [
+        {
+          "language": "purescript",
+          "test_input": "module       Test.Main   where\n\nimport Prelude\n\nimport   Effect   (Effect)\nimport                  Effect.Class.Console  (log)\n\nmain     ::   Effect Unit\nmain   =    do\n  log          \"You should add some tests.\"",
+          "test_output": "module Test.Main where\n\nimport Prelude\n\nimport Effect (Effect)\nimport Effect.Class.Console (log)\n\nmain :: Effect Unit\nmain = do\n  log \"You should add some tests.\""
+        }
+      ]
+    }
   },
   "description": "PureScript code formatter",
   "homepage": "https://github.com/natefaubion/purescript-tidy",
   "languages": ["purescript"],
-  "name": null,
-  "npm": "purs-tidy",
-  "php": null,
-  "tests": [
-    {
-      "command": "",
-      "language": "purescript",
-      "test_input": "module       Test.Main   where\n\nimport Prelude\n\nimport   Effect   (Effect)\nimport                  Effect.Class.Console  (log)\n\nmain     ::   Effect Unit\nmain   =    do\n  log          \"You should add some tests.\"",
-      "test_output": "module Test.Main where\n\nimport Prelude\n\nimport Effect (Effect)\nimport Effect.Class.Console (log)\n\nmain :: Effect Unit\nmain = do\n  log \"You should add some tests.\""
-    }
-  ]
+  "npm": "purs-tidy"
 }

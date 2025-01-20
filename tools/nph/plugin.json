@@ -3,13 +3,12 @@
   "binary": "nph",
   "categories": ["formatter"],
   "commands": {
-    "": ["$PATH"]
+    "": {
+      "arguments": ["$PATH"],
+      "ignore_output": false
+    }
   },
   "description": "An opinionated code formatter for Nim",
   "homepage": "https://github.com/arnetheduck/nph",
-  "languages": ["nim"],
-  "name": null,
-  "npm": null,
-  "php": null,
-  "tests": []
+  "languages": ["nim"]
 }

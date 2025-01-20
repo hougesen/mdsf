@@ -3,13 +3,13 @@
   "binary": "bslint",
   "categories": ["linter"],
   "commands": {
-    "": ["--fix", "$PATH"]
+    "": {
+      "arguments": ["--fix", "$PATH"],
+      "ignore_output": false
+    }
   },
   "description": "A linter for BrightScript and BrighterScript",
   "homepage": "https://github.com/rokucommunity/bslint",
   "languages": ["brightscript", "brightscripter"],
-  "name": null,
-  "npm": "bslint",
-  "php": null,
-  "tests": []
+  "npm": "bslint"
 }

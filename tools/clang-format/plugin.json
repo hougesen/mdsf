@@ -3,7 +3,52 @@
   "binary": "clang-format",
   "categories": ["formatter"],
   "commands": {
-    "": ["-i", "$PATH"]
+    "": {
+      "arguments": ["-i", "$PATH"],
+      "ignore_output": false,
+      "tests": [
+        {
+          "language": "java",
+          "test_input": "class HelloWorld {\n    public static void main(String[] args) {\n                System.out.println(\"Hello\");\n                System.out.println(\"World!\");\n                 }\n}",
+          "test_output": "class HelloWorld {\n  public static void main(String[] args) {\n    System.out.println(\"Hello\");\n    System.out.println(\"World!\");\n  }\n}"
+        },
+        {
+          "language": "protobuf",
+          "test_input": "service SearchService {\n                              rpc Search (SearchRequest) returns (SearchResponse);\n                               }",
+          "test_output": "service SearchService { rpc Search(SearchRequest) returns (SearchResponse); }"
+        },
+        {
+          "language": "objective-c",
+          "test_input": "int add(int a,int b){\n            a - a ;\n       return a + b;\n    }",
+          "test_output": "int add(int a, int b) {\n  a - a;\n  return a + b;\n}"
+        },
+        {
+          "language": "c",
+          "test_input": "int add(int a,int b){\n                a-b;\n       return a + b;\n    }",
+          "test_output": "int add(int a, int b) {\n  a - b;\n  return a + b;\n}"
+        },
+        {
+          "language": "cpp",
+          "test_input": "int add(int a,int b){\n                 a-b;\n       return a + b;\n    }",
+          "test_output": "int add(int a, int b) {\n  a - b;\n  return a + b;\n}"
+        },
+        {
+          "language": "csharp",
+          "test_input": "namespace Mdsf {\n                        class Adder {\n                                                    public static int add(int a,int b) {\n                                a-b ;\n                                                        return a + b;\n                                                    }\n                                                 }\n                                                 } ",
+          "test_output": "namespace Mdsf {\nclass Adder {\n  public static int add(int a, int b) {\n    a - b;\n    return a + b;\n  }\n}\n}"
+        },
+        {
+          "language": "json",
+          "test_input": "              {\n              \"key\": \"value\",\n  \"key2\": [\"value2\", \"value3\", 1            , null]\n }  ",
+          "test_output": "{\n  \"key\": \"value\",\n  \"key2\": [\n    \"value2\",\n    \"value3\",\n    1,\n    null\n  ]\n}"
+        },
+        {
+          "language": "javascript",
+          "test_input": "    async function asyncAddition(  a,b) {\n            a * b;\n        return a+b\n    }            ",
+          "test_output": "async function asyncAddition(a, b) {\n  a * b;\n  return a + b\n}"
+        }
+      ]
+    }
   },
   "description": "A tool to format C/C++/Java/JavaScript/JSON/Objective-C/Protobuf/C# code",
   "homepage": "https://clang.llvm.org/docs/ClangFormat.html",
@@ -16,58 +61,5 @@
     "json",
     "objective-c",
     "protobuf"
-  ],
-  "name": null,
-  "npm": null,
-  "php": null,
-  "tests": [
-    {
-      "command": "",
-      "language": "java",
-      "test_input": "class HelloWorld {\n    public static void main(String[] args) {\n                System.out.println(\"Hello\");\n                System.out.println(\"World!\");\n                 }\n}",
-      "test_output": "class HelloWorld {\n  public static void main(String[] args) {\n    System.out.println(\"Hello\");\n    System.out.println(\"World!\");\n  }\n}"
-    },
-    {
-      "command": "",
-      "language": "protobuf",
-      "test_input": "service SearchService {\n                              rpc Search (SearchRequest) returns (SearchResponse);\n                               }",
-      "test_output": "service SearchService { rpc Search(SearchRequest) returns (SearchResponse); }"
-    },
-    {
-      "command": "",
-      "language": "objective-c",
-      "test_input": "int add(int a,int b){\n            a - a ;\n       return a + b;\n    }",
-      "test_output": "int add(int a, int b) {\n  a - a;\n  return a + b;\n}"
-    },
-    {
-      "command": "",
-      "language": "c",
-      "test_input": "int add(int a,int b){\n                a-b;\n       return a + b;\n    }",
-      "test_output": "int add(int a, int b) {\n  a - b;\n  return a + b;\n}"
-    },
-    {
-      "command": "",
-      "language": "cpp",
-      "test_input": "int add(int a,int b){\n                 a-b;\n       return a + b;\n    }",
-      "test_output": "int add(int a, int b) {\n  a - b;\n  return a + b;\n}"
-    },
-    {
-      "command": "",
-      "language": "csharp",
-      "test_input": "namespace Mdsf {\n                        class Adder {\n                                                    public static int add(int a,int b) {\n                                a-b ;\n                                                        return a + b;\n                                                    }\n                                                 }\n                                                 } ",
-      "test_output": "namespace Mdsf {\nclass Adder {\n  public static int add(int a, int b) {\n    a - b;\n    return a + b;\n  }\n}\n}"
-    },
-    {
-      "command": "",
-      "language": "json",
-      "test_input": "              {\n              \"key\": \"value\",\n  \"key2\": [\"value2\", \"value3\", 1            , null]\n }  ",
-      "test_output": "{\n  \"key\": \"value\",\n  \"key2\": [\n    \"value2\",\n    \"value3\",\n    1,\n    null\n  ]\n}"
-    },
-    {
-      "command": "",
-      "language": "javascript",
-      "test_input": "    async function asyncAddition(  a,b) {\n            a * b;\n        return a+b\n    }            ",
-      "test_output": "async function asyncAddition(a, b) {\n  a * b;\n  return a + b\n}"
-    }
   ]
 }

@@ -3,13 +3,12 @@
   "binary": "tex-fmt",
   "categories": ["formatter"],
   "commands": {
-    "": ["$PATH"]
+    "": {
+      "arguments": ["$PATH"],
+      "ignore_output": false
+    }
   },
   "description": "An extremely fast LaTeX formatter written in Rust",
   "homepage": "https://github.com/WGUNDERWOOD/tex-fmt",
-  "languages": ["latex"],
-  "name": null,
-  "npm": null,
-  "php": null,
-  "tests": []
+  "languages": ["latex"]
 }

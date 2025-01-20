@@ -3,20 +3,19 @@
   "binary": "erlfmt",
   "categories": ["formatter"],
   "commands": {
-    "": ["-w", "$PATH_STRING"]
+    "": {
+      "arguments": ["-w", "$PATH_STRING"],
+      "ignore_output": false,
+      "tests": [
+        {
+          "language": "erlang",
+          "test_input": "what_is(Erlang) ->\ncase Erlang of movie->[hello(mike,joe,robert),credits]; language->formatting_arguments end\n.",
+          "test_output": "what_is(Erlang) ->\n    case Erlang of\n        movie -> [hello(mike, joe, robert), credits];\n        language -> no_more_formatting_arguments\n    end."
+        }
+      ]
+    }
   },
   "description": "An automated code formatter for Erlang",
   "homepage": "https://github.com/WhatsApp/erlfmt",
-  "languages": ["erlang"],
-  "name": null,
-  "npm": null,
-  "php": null,
-  "tests": [
-    {
-      "command": "",
-      "language": "erlang",
-      "test_input": "what_is(Erlang) ->\ncase Erlang of movie->[hello(mike,joe,robert),credits]; language->formatting_arguments end\n.",
-      "test_output": "what_is(Erlang) ->\n    case Erlang of\n        movie -> [hello(mike, joe, robert), credits];\n        language -> no_more_formatting_arguments\n    end."
-    }
-  ]
+  "languages": ["erlang"]
 }

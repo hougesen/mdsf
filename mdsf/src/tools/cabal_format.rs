@@ -1,3 +1,6 @@
+///
+/// THIS FILE IS GENERATED USING CODE - DO NOT EDIT MANUALLY
+///
 use std::process::Command;
 
 use crate::{error::MdsfError, execution::execute_command, runners::CommandType};
@@ -34,7 +37,7 @@ pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfEr
 #[cfg(test)]
 mod test_cabal_format {
     #[test_with::executable(cabal)]
-    fn test_cabal_format_cabal_6118c31ea8b76f3b() {
+    fn test_cabal_format_cabal_38e9e2aad5619a6a() {
         let input = r#"cabal-version: 2.4
 name: mdsf
 version: 0

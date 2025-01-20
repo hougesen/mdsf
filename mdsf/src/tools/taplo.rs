@@ -1,3 +1,6 @@
+///
+/// THIS FILE IS GENERATED USING CODE - DO NOT EDIT MANUALLY
+///
 use std::process::Command;
 
 use crate::{error::MdsfError, execution::execute_command, runners::CommandType};
@@ -38,7 +41,7 @@ pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfEr
 #[cfg(test)]
 mod test_taplo {
     #[test_with::executable(npx)]
-    fn test_taplo_toml_6676000e3e397416() {
+    fn test_taplo_toml_f9c7870e88d1963c() {
         let input = r#"          package         =              "mdsf"
   author   = "Mads Hougesen"
   "#;

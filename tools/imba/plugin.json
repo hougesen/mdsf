@@ -3,13 +3,13 @@
   "binary": "imba",
   "categories": ["formatter"],
   "commands": {
-    "fmt": ["fmt", "-f", "$PATH"]
+    "fmt": {
+      "arguments": ["fmt", "-f", "$PATH"],
+      "ignore_output": false
+    }
   },
   "description": "A formatter for Imba",
   "homepage": "https://imba.io/",
   "languages": ["imba"],
-  "name": null,
-  "npm": "imba",
-  "php": null,
-  "tests": []
+  "npm": "imba"
 }

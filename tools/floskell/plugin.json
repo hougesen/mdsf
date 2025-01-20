@@ -3,13 +3,12 @@
   "binary": "floskell",
   "categories": ["formatter"],
   "commands": {
-    "": ["$PATH"]
+    "": {
+      "arguments": ["$PATH"],
+      "ignore_output": false
+    }
   },
   "description": "Floskell is a flexible Haskell source code pretty printer",
   "homepage": "https://github.com/ennocramer/floskell",
-  "languages": ["haskell"],
-  "name": null,
-  "npm": null,
-  "php": null,
-  "tests": []
+  "languages": ["haskell"]
 }

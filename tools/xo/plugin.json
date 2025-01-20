@@ -3,13 +3,13 @@
   "binary": "xo",
   "categories": ["linter"],
   "commands": {
-    "": ["--fix", "$PATH"]
+    "": {
+      "arguments": ["--fix", "$PATH"],
+      "ignore_output": false
+    }
   },
   "description": "JavaScript/TypeScript linter (ESLint wrapper) with great defaults",
   "homepage": "https://github.com/xojs/xo",
   "languages": ["javascript", "typescript"],
-  "name": null,
-  "npm": "xo",
-  "php": null,
-  "tests": []
+  "npm": "xo"
 }

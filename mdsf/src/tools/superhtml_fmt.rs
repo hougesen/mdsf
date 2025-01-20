@@ -1,3 +1,6 @@
+///
+/// THIS FILE IS GENERATED USING CODE - DO NOT EDIT MANUALLY
+///
 use std::process::Command;
 
 use crate::{error::MdsfError, execution::execute_command, runners::CommandType};
@@ -34,7 +37,7 @@ pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfEr
 #[cfg(test)]
 mod test_superhtml_fmt {
     #[test_with::executable(superhtml)]
-    fn test_superhtml_fmt_html_f02aafa10348b00e() {
+    fn test_superhtml_fmt_html_8183dae6d1f190e1() {
         let input = r#"<div>
                     <p>
                     Mads was here

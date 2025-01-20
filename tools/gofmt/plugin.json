@@ -3,20 +3,19 @@
   "binary": "gofmt",
   "categories": ["formatter"],
   "commands": {
-    "": ["-w", "$PATH"]
+    "": {
+      "arguments": ["-w", "$PATH"],
+      "ignore_output": false,
+      "tests": [
+        {
+          "language": "go",
+          "test_input": "package main\n\n   func add(a int , b int  ) int {\n                return a + b\n       }\n\n    ",
+          "test_output": "package main\n\nfunc add(a int, b int) int {\n\treturn a + b\n}\n"
+        }
+      ]
+    }
   },
   "description": "Gofmt formats Go programs",
   "homepage": "https://pkg.go.dev/cmd/gofmt",
-  "languages": ["go"],
-  "name": null,
-  "npm": null,
-  "php": null,
-  "tests": [
-    {
-      "command": "",
-      "language": "go",
-      "test_input": "package main\n\n   func add(a int , b int  ) int {\n                return a + b\n       }\n\n    ",
-      "test_output": "package main\n\nfunc add(a int, b int) int {\n\treturn a + b\n}\n"
-    }
-  ]
+  "languages": ["go"]
 }

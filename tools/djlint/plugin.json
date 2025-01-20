@@ -3,12 +3,12 @@
   "binary": "djlint",
   "categories": ["formatter", "linter"],
   "commands": {
-    "": ["$PATH", "--reformat"]
+    "": {
+      "arguments": ["$PATH", "--reformat"],
+      "ignore_output": false
+    }
   },
   "description": "Lint & Format HTML Templates",
   "homepage": "https://www.djlint.com/",
-  "languages": ["html", "jinja", "nunjucks", "twig", "handlebars", "mustache"],
-  "npm": null,
-  "php": null,
-  "tests": []
+  "languages": ["handlebars", "html", "jinja", "mustache", "nunjucks", "twig"]
 }

@@ -3,13 +3,12 @@
   "binary": "hlint",
   "categories": ["linter"],
   "commands": {
-    "": ["--refactor", "-i", "$PATH"]
+    "": {
+      "arguments": ["--refactor", "-i", "$PATH"],
+      "ignore_output": false
+    }
   },
   "description": "Haskell source code suggestions",
   "homepage": "https://github.com/ndmitchell/hlint",
-  "languages": ["haskell"],
-  "name": null,
-  "npm": null,
-  "php": null,
-  "tests": []
+  "languages": ["haskell"]
 }

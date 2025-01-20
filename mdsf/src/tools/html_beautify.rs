@@ -1,3 +1,6 @@
+///
+/// THIS FILE IS GENERATED USING CODE - DO NOT EDIT MANUALLY
+///
 use std::process::Command;
 
 use crate::{error::MdsfError, execution::execute_command, runners::CommandType};
@@ -41,7 +44,7 @@ pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfEr
 #[cfg(test)]
 mod test_html_beautify {
     #[test_with::executable(npx)]
-    fn test_html_beautify_html_c5f5b2c7987f4c83() {
+    fn test_html_beautify_html_63850f31f2ef5caf() {
         let input = r#"<div>
                     <p>
                     Mads was here

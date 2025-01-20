@@ -3,20 +3,19 @@
   "binary": "autoflake",
   "categories": ["linter"],
   "commands": {
-    "": ["--quiet", "--in-place", "$PATH"]
+    "": {
+      "arguments": ["--quiet", "--in-place", "$PATH"],
+      "ignore_output": false,
+      "tests": [
+        {
+          "language": "python",
+          "test_input": "import math\nimport re\nimport os\nimport random\nimport multiprocessing\nimport grp, pwd, platform\nimport subprocess, sys\n\n\ndef foo():\n    from abc import ABCMeta, WeakSet\n    try:\n        import multiprocessing\n        print(multiprocessing.cpu_count())\n    except ImportError as exception:\n        print(sys.version)\n    return math.pi\n",
+          "test_output": "import math\nimport sys\n\n\ndef foo():\n    try:\n        import multiprocessing\n        print(multiprocessing.cpu_count())\n    except ImportError as exception:\n        print(sys.version)\n    return math.pi\n"
+        }
+      ]
+    }
   },
   "description": "Removes unused imports and unused variables as reported by pyflakes",
   "homepage": "https://github.com/pycqa/autoflake",
-  "languages": ["python"],
-  "name": null,
-  "npm": null,
-  "php": null,
-  "tests": [
-    {
-      "command": "",
-      "language": "python",
-      "test_input": "import math\nimport re\nimport os\nimport random\nimport multiprocessing\nimport grp, pwd, platform\nimport subprocess, sys\n\n\ndef foo():\n    from abc import ABCMeta, WeakSet\n    try:\n        import multiprocessing\n        print(multiprocessing.cpu_count())\n    except ImportError as exception:\n        print(sys.version)\n    return math.pi\n",
-      "test_output": "import math\nimport sys\n\n\ndef foo():\n    try:\n        import multiprocessing\n        print(multiprocessing.cpu_count())\n    except ImportError as exception:\n        print(sys.version)\n    return math.pi\n"
-    }
-  ]
+  "languages": ["python"]
 }

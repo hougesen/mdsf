@@ -3,13 +3,12 @@
   "binary": "haml-lint",
   "categories": ["linter"],
   "commands": {
-    "": ["--auto-correct", "$PATH"]
+    "": {
+      "arguments": ["--auto-correct", "$PATH"],
+      "ignore_output": false
+    }
   },
   "description": "Tool for writing clean and consistent HAML",
   "homepage": "https://github.com/sds/haml-lint",
-  "languages": ["haml"],
-  "name": null,
-  "npm": null,
-  "php": null,
-  "tests": []
+  "languages": ["haml"]
 }

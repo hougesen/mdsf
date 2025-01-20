@@ -1,3 +1,6 @@
+///
+/// THIS FILE IS GENERATED USING CODE - DO NOT EDIT MANUALLY
+///
 use std::process::Command;
 
 use crate::{error::MdsfError, execution::execute_command, runners::CommandType};
@@ -39,7 +42,7 @@ pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfEr
 #[cfg(test)]
 mod test_prisma_format {
     #[test_with::executable(npx)]
-    fn test_prisma_format_schema_f14c422420ff523a() {
+    fn test_prisma_format_schema_b6e70b1b6bb7472e() {
         let input = r#"datasource          db             {
   provider                  = "postgresql"
   url      =          env("DATABASE_URL")

@@ -1,3 +1,6 @@
+///
+/// THIS FILE IS GENERATED USING CODE - DO NOT EDIT MANUALLY
+///
 use std::process::Command;
 
 use crate::{error::MdsfError, execution::execute_command, runners::CommandType};
@@ -33,7 +36,7 @@ pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfEr
 #[cfg(test)]
 mod test_hindent {
     #[test_with::executable(hindent)]
-    fn test_hindent_haskell_ac29c367ac432382() {
+    fn test_hindent_haskell_c34a44cf19c5fdd7() {
         let input = r#"
 addNumbers::Int->Int->Int
 addNumbers a b = do

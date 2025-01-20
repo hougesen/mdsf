@@ -1,3 +1,6 @@
+///
+/// THIS FILE IS GENERATED USING CODE - DO NOT EDIT MANUALLY
+///
 use std::process::Command;
 
 use crate::{error::MdsfError, execution::execute_command, runners::CommandType};
@@ -34,7 +37,7 @@ pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfEr
 #[cfg(test)]
 mod test_google_java_format {
     #[test_with::executable(google-java-format)]
-    fn test_google_java_format_java_a4b164e8d054f296() {
+    fn test_google_java_format_java_9d3ffaedafc37e65() {
         let input = r#"class HelloWorld {
     public static void main(String[] args) {
                 System.out.println("Hello");

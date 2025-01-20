@@ -1,3 +1,6 @@
+///
+/// THIS FILE IS GENERATED USING CODE - DO NOT EDIT MANUALLY
+///
 use std::process::Command;
 
 use crate::{error::MdsfError, execution::execute_command, runners::CommandType};
@@ -36,7 +39,7 @@ pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfEr
 #[cfg(test)]
 mod test_just {
     #[test_with::executable(just)]
-    fn test_just_just_9b41f21e8fb1339f() {
+    fn test_just_just_ef70afaf3ede68b9() {
         let input = r#"build:
                 cargo build
                 cargo build --release

@@ -3,13 +3,13 @@
   "binary": "liquidsoap-prettier",
   "categories": ["formatter"],
   "commands": {
-    "": ["--write", "$PATH"]
+    "": {
+      "arguments": ["--write", "$PATH"],
+      "ignore_output": false
+    }
   },
   "description": "Prettier plugin for liquidsoap script",
   "homepage": "https://github.com/savonet/liquidsoap-prettier",
   "languages": ["liquidsoap"],
-  "name": null,
-  "npm": "liquidsoap-prettier",
-  "php": null,
-  "tests": []
+  "npm": "liquidsoap-prettier"
 }

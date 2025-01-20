@@ -1,15 +1,15 @@
 {
   "$schema": "../tool.schema.json",
   "binary": "twig-cs-fixer",
-  "categories": ["linter", "formatter"],
+  "categories": ["formatter", "linter"],
   "commands": {
-    "lint": ["lint", "$PATH", "--fix", "--no-interaction", "--quiet"]
+    "lint": {
+      "arguments": ["lint", "$PATH", "--fix", "--no-interaction", "--quiet"],
+      "ignore_output": false
+    }
   },
   "description": "A tool to automatically fix Twig Coding Standards issues",
   "homepage": "https://github.com/VincentLanglet/Twig-CS-Fixer",
   "languages": ["twig"],
-  "name": null,
-  "npm": null,
-  "php": "twig-cs-fixer",
-  "tests": []
+  "php": "twig-cs-fixer"
 }

@@ -1,3 +1,6 @@
+///
+/// THIS FILE IS GENERATED USING CODE - DO NOT EDIT MANUALLY
+///
 use std::process::Command;
 
 use crate::{error::MdsfError, execution::execute_command, runners::CommandType};
@@ -34,7 +37,7 @@ pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfEr
 #[cfg(test)]
 mod test_kcl_fmt {
     #[test_with::executable(kcl)]
-    fn test_kcl_fmt_kcl_3716a11e97bc80e() {
+    fn test_kcl_fmt_kcl_83078615f65197d1() {
         let input = r#"apiVersion = "apps/v1"
 kind = "Deployment"
 metadata = {

@@ -1,3 +1,6 @@
+///
+/// THIS FILE IS GENERATED USING CODE - DO NOT EDIT MANUALLY
+///
 use std::process::Command;
 
 use crate::{error::MdsfError, execution::execute_command, runners::CommandType};
@@ -33,7 +36,7 @@ pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfEr
 #[cfg(test)]
 mod test_auto_optional {
     #[test_with::executable(auto-optional)]
-    fn test_auto_optional_python_8164e93f38554b33() {
+    fn test_auto_optional_python_c43199b18f48026d() {
         let input = r#"def foo(bar: str = None):
     pass
 "#;

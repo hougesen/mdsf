@@ -3,20 +3,20 @@
   "binary": "sql-formatter",
   "categories": ["formatter"],
   "commands": {
-    "": ["--fix", "$PATH"]
+    "": {
+      "arguments": ["--fix", "$PATH"],
+      "ignore_output": false,
+      "tests": [
+        {
+          "language": "sql",
+          "test_input": "SELECT * FROM tbl WHERE foo = 'bar';",
+          "test_output": "SELECT\n  *\nFROM\n  tbl\nWHERE\n  foo = 'bar';\n"
+        }
+      ]
+    }
   },
   "description": "A whitespace formatter for different query languages",
   "homepage": "https://github.com/sql-formatter-org/sql-formatter",
   "languages": ["sql"],
-  "name": null,
-  "npm": "sql-formatter",
-  "php": null,
-  "tests": [
-    {
-      "command": "",
-      "language": "sql",
-      "test_input": "SELECT * FROM tbl WHERE foo = 'bar';",
-      "test_output": "SELECT\n  *\nFROM\n  tbl\nWHERE\n  foo = 'bar';\n"
-    }
-  ]
+  "npm": "sql-formatter"
 }

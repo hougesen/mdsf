@@ -3,13 +3,13 @@
   "binary": "phpcbf",
   "categories": ["formatter"],
   "commands": {
-    "": ["$PATH"]
+    "": {
+      "arguments": ["$PATH"],
+      "ignore_output": false
+    }
   },
   "description": "PHP Code Beautifier and Fixer fixes violations of a defined coding standard",
   "homepage": "https://phpqa.io/projects/phpcbf.html",
   "languages": ["php"],
-  "name": null,
-  "npm": null,
-  "php": "phpcbf",
-  "tests": []
+  "php": "phpcbf"
 }

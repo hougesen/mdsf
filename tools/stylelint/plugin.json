@@ -3,13 +3,13 @@
   "binary": "stylelint",
   "categories": ["linter"],
   "commands": {
-    "": ["--fix", "$PATH"]
+    "": {
+      "arguments": ["--fix", "$PATH"],
+      "ignore_output": false
+    }
   },
   "description": "A mighty CSS linter that helps you avoid errors and enforce conventions",
   "homepage": "https://github.com/stylelint/stylelint",
   "languages": ["css", "scss"],
-  "name": null,
-  "npm": "stylelint",
-  "php": null,
-  "tests": []
+  "npm": "stylelint"
 }

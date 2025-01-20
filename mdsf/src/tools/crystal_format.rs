@@ -1,3 +1,6 @@
+///
+/// THIS FILE IS GENERATED USING CODE - DO NOT EDIT MANUALLY
+///
 use std::process::Command;
 
 use crate::{error::MdsfError, execution::execute_command, runners::CommandType};
@@ -35,7 +38,7 @@ pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfEr
 #[cfg(test)]
 mod test_crystal_format {
     #[test_with::executable(crystal)]
-    fn test_crystal_format_crystal_b07d827cb202b868() {
+    fn test_crystal_format_crystal_e0f2d532cd984bee() {
         let input = r#"def add(a, b)  return a + b end"#;
         let output = r#"def add(a, b)
   return a + b

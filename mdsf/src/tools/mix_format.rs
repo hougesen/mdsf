@@ -1,3 +1,6 @@
+///
+/// THIS FILE IS GENERATED USING CODE - DO NOT EDIT MANUALLY
+///
 use std::process::Command;
 
 use crate::{error::MdsfError, execution::execute_command, runners::CommandType};
@@ -34,7 +37,7 @@ pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfEr
 #[cfg(test)]
 mod test_mix_format {
     #[test_with::executable(mix)]
-    fn test_mix_format_elixir_54691abaa0a6996f() {
+    fn test_mix_format_elixir_ab535c627dfb140() {
         let input = r#"
         def              add(a  ,      b   )   do    a   +   b                 end
 

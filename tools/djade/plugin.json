@@ -3,13 +3,12 @@
   "binary": "djade",
   "categories": ["formatter"],
   "commands": {
-    "": ["$PATH"]
+    "": {
+      "arguments": ["$PATH"],
+      "ignore_output": false
+    }
   },
   "description": "A Django template formatter",
   "homepage": "https://github.com/adamchainz/djade",
-  "languages": ["python", "django"],
-  "name": null,
-  "npm": null,
-  "php": null,
-  "tests": []
+  "languages": ["django", "python"]
 }

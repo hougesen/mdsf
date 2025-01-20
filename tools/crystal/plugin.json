@@ -3,20 +3,19 @@
   "binary": "crystal",
   "categories": ["formatter"],
   "commands": {
-    "format": ["tool", "format", "$PATH"]
+    "format": {
+      "arguments": ["tool", "format", "$PATH"],
+      "ignore_output": false,
+      "tests": [
+        {
+          "language": "crystal",
+          "test_input": "def add(a, b)  return a + b end",
+          "test_output": "def add(a, b)\n  return a + b\nend\n"
+        }
+      ]
+    }
   },
   "description": "Tools for the Crystal programming language",
   "homepage": "https://crystal-lang.org/",
-  "languages": ["crystal"],
-  "name": null,
-  "npm": null,
-  "php": null,
-  "tests": [
-    {
-      "command": "format",
-      "language": "crystal",
-      "test_input": "def add(a, b)  return a + b end",
-      "test_output": "def add(a, b)\n  return a + b\nend\n"
-    }
-  ]
+  "languages": ["crystal"]
 }

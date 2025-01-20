@@ -3,20 +3,20 @@
   "binary": "prisma",
   "categories": ["formatter"],
   "commands": {
-    "format": ["format", "--schema={$PATH_STRING}"]
+    "format": {
+      "arguments": ["format", "--schema={$PATH_STRING}"],
+      "ignore_output": false,
+      "tests": [
+        {
+          "language": "schema",
+          "test_input": "datasource          db             {\n  provider                  = \"postgresql\"\n  url      =          env(\"DATABASE_URL\")\n  directUrl =                       env(\"DIRECT_DATABASE_URL\")\n}\n\n\n",
+          "test_output": "datasource db {\n  provider  = \"postgresql\"\n  url       = env(\"DATABASE_URL\")\n  directUrl = env(\"DIRECT_DATABASE_URL\")\n}\n"
+        }
+      ]
+    }
   },
   "description": "Commands for interacting with the prisma ORM",
   "homepage": "https://www.prisma.io",
   "languages": ["prisma"],
-  "name": null,
-  "npm": "prisma",
-  "php": null,
-  "tests": [
-    {
-      "command": "format",
-      "language": "schema",
-      "test_input": "datasource          db             {\n  provider                  = \"postgresql\"\n  url      =          env(\"DATABASE_URL\")\n  directUrl =                       env(\"DIRECT_DATABASE_URL\")\n}\n\n\n",
-      "test_output": "datasource db {\n  provider  = \"postgresql\"\n  url       = env(\"DATABASE_URL\")\n  directUrl = env(\"DIRECT_DATABASE_URL\")\n}\n"
-    }
-  ]
+  "npm": "prisma"
 }

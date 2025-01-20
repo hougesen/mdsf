@@ -3,13 +3,12 @@
   "binary": "json5format",
   "categories": ["formatter"],
   "commands": {
-    "": ["-r", "$PATH"]
+    "": {
+      "arguments": ["-r", "$PATH"],
+      "ignore_output": false
+    }
   },
   "description": "JSON5 (a.k.a., \"JSON for Humans\") formatter that preserves contextual comments",
   "homepage": "https://github.com/google/json5format",
-  "languages": ["json", "json5"],
-  "name": null,
-  "npm": null,
-  "php": null,
-  "tests": []
+  "languages": ["json", "json5"]
 }

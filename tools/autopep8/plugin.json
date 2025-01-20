@@ -3,20 +3,19 @@
   "binary": "autopep8",
   "categories": ["formatter"],
   "commands": {
-    "": ["--in-place", "$PATH"]
+    "": {
+      "arguments": ["--in-place", "$PATH"],
+      "ignore_output": false,
+      "tests": [
+        {
+          "language": "python",
+          "test_input": "def add( a: int ,  b:int)->int: return a+b",
+          "test_output": "def add(a: int,  b: int) -> int: return a+b\n"
+        }
+      ]
+    }
   },
   "description": "A tool that automatically formats Python code to conform to the PEP 8 style guid",
   "homepage": "https://github.com/hhatto/autopep8",
-  "languages": ["python"],
-  "name": null,
-  "npm": null,
-  "php": null,
-  "tests": [
-    {
-      "command": "",
-      "language": "python",
-      "test_input": "def add( a: int ,  b:int)->int: return a+b",
-      "test_output": "def add(a: int,  b: int) -> int: return a+b\n"
-    }
-  ]
+  "languages": ["python"]
 }

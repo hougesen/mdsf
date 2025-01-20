@@ -1,3 +1,6 @@
+///
+/// THIS FILE IS GENERATED USING CODE - DO NOT EDIT MANUALLY
+///
 use std::process::Command;
 
 use crate::{error::MdsfError, execution::execute_command, runners::CommandType};
@@ -37,7 +40,7 @@ pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfEr
 #[cfg(test)]
 mod test_stylefmt {
     #[test_with::executable(npx)]
-    fn test_stylefmt_scss_5380282054996922() {
+    fn test_stylefmt_scss_d3c6918bf17af7f3() {
         let input = r#"// mixin for clearfix
 
 
@@ -116,7 +119,7 @@ padding: 12px
     }
 
     #[test_with::executable(npx)]
-    fn test_stylefmt_css_81da43099ca5b775() {
+    fn test_stylefmt_css_ed4f8407afa6d974() {
         let input = r#"/* custom properties */
 :root{--fontSize: 1rem;
   --mainColor       :#12345678;

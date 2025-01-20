@@ -1,3 +1,6 @@
+///
+/// THIS FILE IS GENERATED USING CODE - DO NOT EDIT MANUALLY
+///
 use std::process::Command;
 
 use crate::{error::MdsfError, execution::execute_command, runners::CommandType};
@@ -34,7 +37,7 @@ pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfEr
 #[cfg(test)]
 mod test_roc_format {
     #[test_with::executable(roc)]
-    fn test_roc_format_roc_4560f2fcd4696027() {
+    fn test_roc_format_roc_1204aa2d8186919d() {
         let input = r#"app "helloWorld"
     packages { pf: "https://github.com/roc-lang/" }
     imports [pf.Stdout]

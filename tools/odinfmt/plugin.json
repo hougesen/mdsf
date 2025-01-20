@@ -3,13 +3,12 @@
   "binary": "odinfmt",
   "categories": ["formatter"],
   "commands": {
-    "": ["-w", "$PATH"]
+    "": {
+      "arguments": ["-w", "$PATH"],
+      "ignore_output": false
+    }
   },
   "description": "Formatter for the Odin programming language",
   "homepage": "https://github.com/DanielGavin/ols",
-  "languages": ["odin"],
-  "name": null,
-  "npm": null,
-  "php": null,
-  "tests": []
+  "languages": ["odin"]
 }

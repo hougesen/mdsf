@@ -3,13 +3,12 @@
   "binary": "buildifier",
   "categories": ["formatter"],
   "commands": {
-    "": ["$PATH"]
+    "": {
+      "arguments": ["$PATH"],
+      "ignore_output": false
+    }
   },
   "description": "A bazel BUILD file formatter and",
   "homepage": "https://github.com/bazelbuild/buildtools",
-  "languages": ["bazel"],
-  "name": null,
-  "npm": null,
-  "php": null,
-  "tests": []
+  "languages": ["bazel"]
 }

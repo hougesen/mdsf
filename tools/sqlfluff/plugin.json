@@ -3,21 +3,23 @@
   "binary": "sqlfluff",
   "categories": ["formatter", "linter"],
   "commands": {
-    "fix": ["fix", "--dialect", "ansi", "$PATH"],
-    "format": ["format", "--dialect", "ansi", "$PATH"]
+    "fix": {
+      "arguments": ["fix", "--dialect", "ansi", "$PATH"],
+      "ignore_output": false
+    },
+    "format": {
+      "arguments": ["format", "--dialect", "ansi", "$PATH"],
+      "ignore_output": false,
+      "tests": [
+        {
+          "language": "sql",
+          "test_input": "SELECT  *                  FROM  tbl\n                        WHERE                      foo   = 'bar';         ",
+          "test_output": "SELECT * FROM tbl\nWHERE foo = 'bar';\n"
+        }
+      ]
+    }
   },
   "description": "A modular SQL linter and auto-formatter with support for multiple dialects and templated code",
   "homepage": "https://github.com/sqlfluff/sqlfluff",
-  "languages": ["sql"],
-  "name": null,
-  "npm": null,
-  "php": null,
-  "tests": [
-    {
-      "command": "format",
-      "language": "sql",
-      "test_input": "SELECT  *                  FROM  tbl\n                        WHERE                      foo   = 'bar';         ",
-      "test_output": "SELECT * FROM tbl\nWHERE foo = 'bar';\n"
-    }
-  ]
+  "languages": ["sql"]
 }

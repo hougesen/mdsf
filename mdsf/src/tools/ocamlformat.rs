@@ -1,3 +1,6 @@
+///
+/// THIS FILE IS GENERATED USING CODE - DO NOT EDIT MANUALLY
+///
 use std::process::Command;
 
 use crate::{error::MdsfError, execution::execute_command, runners::CommandType};
@@ -36,7 +39,7 @@ pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfEr
 #[cfg(test)]
 mod test_ocamlformat {
     #[test_with::executable(ocamlformat)]
-    fn test_ocamlformat_ocaml_a4abcc4d5c3404c0() {
+    fn test_ocamlformat_ocaml_5f599d285848218() {
         let input = r#"
 let add a b  =  a +  b
             "#;

@@ -1,3 +1,6 @@
+///
+/// THIS FILE IS GENERATED USING CODE - DO NOT EDIT MANUALLY
+///
 use std::process::Command;
 
 use crate::{error::MdsfError, execution::execute_command, runners::CommandType};
@@ -42,7 +45,7 @@ pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfEr
 #[cfg(test)]
 mod test_prettier {
     #[test_with::executable(npx)]
-    fn test_prettier_json_f5f65734d7c4115b() {
+    fn test_prettier_json_8e1e8ed2224fd439() {
         let input = r#"
               {
               "key": "value",
@@ -69,7 +72,7 @@ mod test_prettier {
     }
 
     #[test_with::executable(npx)]
-    fn test_prettier_javascript_9a43c053e0ec1c29() {
+    fn test_prettier_javascript_f38217e7df306e3e() {
         let input = r#"
     async function asyncAddition(
             a,b

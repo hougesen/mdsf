@@ -1,3 +1,6 @@
+///
+/// THIS FILE IS GENERATED USING CODE - DO NOT EDIT MANUALLY
+///
 use std::process::Command;
 
 use crate::{error::MdsfError, execution::execute_command, runners::CommandType};
@@ -34,7 +37,7 @@ pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfEr
 #[cfg(test)]
 mod test_xmlformat {
     #[test_with::executable(xmlformat)]
-    fn test_xmlformat_xml_58da858506aaf78() {
+    fn test_xmlformat_xml_5e39abb678e63c0b() {
         let input = r#"
 <note>
   <to>Tove</to>

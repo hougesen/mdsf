@@ -3,20 +3,19 @@
   "binary": "cljstyle",
   "categories": ["formatter"],
   "commands": {
-    "": ["fix", "$PATH"]
+    "": {
+      "arguments": ["fix", "$PATH"],
+      "ignore_output": false,
+      "tests": [
+        {
+          "language": "clojure",
+          "test_input": "(  ns\n foo.bar.baz  \"some doc\"\n    (:require (foo.bar [abc :as abc]\n        def))\n    (:use foo.bar.qux)\n    (:import foo.bar.qux.Foo\n      ;; Need this for the thing\n      foo.bar.qux.Bar)\n    )\n\n(defn hello \"says hi\" (\n      [] (hello \"world\")\n  ) ([name]\n  ( println \"Hello,\" name  )\n  ))",
+          "test_output": "(ns foo.bar.baz\n  \"some doc\"\n  (:require\n    [foo.bar.abc :as abc]\n    [foo.bar.def]\n    [foo.bar.qux :refer :all])\n  (:import\n    (foo.bar.qux\n      ;; Need this for the thing\n      Bar\n      Foo)))\n\n\n(defn hello\n  \"says hi\"\n  ([] (hello \"world\"))\n  ([name]\n   (println \"Hello,\" name)))\n"
+        }
+      ]
+    }
   },
   "description": "A tool for formatting Clojure code",
   "homepage": "https://github.com/greglook/cljstyle",
-  "languages": ["clojure"],
-  "name": null,
-  "npm": null,
-  "php": null,
-  "tests": [
-    {
-      "command": "",
-      "language": "clojure",
-      "test_input": "(  ns\n foo.bar.baz  \"some doc\"\n    (:require (foo.bar [abc :as abc]\n        def))\n    (:use foo.bar.qux)\n    (:import foo.bar.qux.Foo\n      ;; Need this for the thing\n      foo.bar.qux.Bar)\n    )\n\n(defn hello \"says hi\" (\n      [] (hello \"world\")\n  ) ([name]\n  ( println \"Hello,\" name  )\n  ))",
-      "test_output": "(ns foo.bar.baz\n  \"some doc\"\n  (:require\n    [foo.bar.abc :as abc]\n    [foo.bar.def]\n    [foo.bar.qux :refer :all])\n  (:import\n    (foo.bar.qux\n      ;; Need this for the thing\n      Bar\n      Foo)))\n\n\n(defn hello\n  \"says hi\"\n  ([] (hello \"world\"))\n  ([name]\n   (println \"Hello,\" name)))\n"
-    }
-  ]
+  "languages": ["clojure"]
 }

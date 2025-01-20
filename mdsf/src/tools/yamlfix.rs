@@ -1,3 +1,6 @@
+///
+/// THIS FILE IS GENERATED USING CODE - DO NOT EDIT MANUALLY
+///
 use std::process::Command;
 
 use crate::{error::MdsfError, execution::execute_command, runners::CommandType};
@@ -33,7 +36,7 @@ pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfEr
 #[cfg(test)]
 mod test_yamlfix {
     #[test_with::executable(yamlfix)]
-    fn test_yamlfix_yaml_8eb4e8fae2581384() {
+    fn test_yamlfix_yaml_9fcbc943bcaf9d7f() {
         let input = r#"
 
 

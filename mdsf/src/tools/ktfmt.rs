@@ -1,3 +1,6 @@
+///
+/// THIS FILE IS GENERATED USING CODE - DO NOT EDIT MANUALLY
+///
 use std::process::Command;
 
 use crate::{error::MdsfError, execution::execute_command, runners::CommandType};
@@ -35,7 +38,7 @@ pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfEr
 #[cfg(test)]
 mod test_ktfmt {
     #[test_with::executable(ktfmt)]
-    fn test_ktfmt_kotlin_7d325e7993e3e956() {
+    fn test_ktfmt_kotlin_396c64cb15f3d642() {
         let input = r#"            fun add(a:Int ,b:Int ):Int {
                     return a + b
                 }

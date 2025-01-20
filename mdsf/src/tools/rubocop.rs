@@ -1,3 +1,6 @@
+///
+/// THIS FILE IS GENERATED USING CODE - DO NOT EDIT MANUALLY
+///
 use std::process::Command;
 
 use crate::{error::MdsfError, execution::execute_command, runners::CommandType};
@@ -37,7 +40,7 @@ pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfEr
 #[cfg(test)]
 mod test_rubocop {
     #[test_with::executable(rubocop)]
-    fn test_rubocop_ruby_1ad1609b5c92bd46() {
+    fn test_rubocop_ruby_d2b8a6db3c8eee1c() {
         let input = r#"def   add(  a ,                                                          b )
                         return a + b
                 end"#;

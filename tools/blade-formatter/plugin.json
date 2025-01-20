@@ -3,20 +3,20 @@
   "binary": "blade-formatter",
   "categories": ["formatter"],
   "commands": {
-    "": ["--write", "$PATH"]
+    "": {
+      "arguments": ["--write", "$PATH"],
+      "ignore_output": false,
+      "tests": [
+        {
+          "language": "blade",
+          "test_input": "@extends('frontend.layouts.app')\n@section('title') foo\n@endsection\n@section('content')\n<section id=\"content\">\n<div class=\"container mod-users-pd-h\">\n    <div class=\"pf-user-header\">\n    <div></div>\n    <p>@lang('users.index')</p>\n    </div>\n        <div class=\"pf-users-branch\">\n            <ul class=\"pf-users-branch__list\">\n                @foreach($users as $user)\n        <li>\n            <img src=\"{{ asset('img/frontend/icon/branch-arrow.svg') }}\" alt=\"branch_arrow\">\n            {{ link_to_route(\"frontend.users.user.show\",$users[\"name\"],$users['_id']) }}\n        </li>\n        @endforeach\n      </ul>\n      <div class=\"pf-users-branch__btn\">\n      @can('create', App\\Models\\User::class)\n            {!! link_to_route(\"frontend.users.user.create\",__('users.create'),[1,2,3],['class' => 'btn']) !!}\n            @endcan\n        </div>\n  </div>\n    </div>\n</section>\n@endsection\n@section('footer')\n@stop",
+          "test_output": "@extends('frontend.layouts.app')\n@section('title') foo\n@endsection\n@section('content')\n    <section id=\"content\">\n        <div class=\"container mod-users-pd-h\">\n            <div class=\"pf-user-header\">\n                <div></div>\n                <p>@lang('users.index')</p>\n            </div>\n            <div class=\"pf-users-branch\">\n                <ul class=\"pf-users-branch__list\">\n                    @foreach ($users as $user)\n                        <li>\n                            <img src=\"{{ asset('img/frontend/icon/branch-arrow.svg') }}\" alt=\"branch_arrow\">\n                            {{ link_to_route('frontend.users.user.show', $users['name'], $users['_id']) }}\n                        </li>\n                    @endforeach\n                </ul>\n                <div class=\"pf-users-branch__btn\">\n                    @can('create', App\\Models\\User::class)\n                        {!! link_to_route('frontend.users.user.create', __('users.create'), [1, 2, 3], ['class' => 'btn']) !!}\n                    @endcan\n                </div>\n            </div>\n        </div>\n    </section>\n@endsection\n@section('footer')\n@stop\n"
+        }
+      ]
+    }
   },
   "description": "An opinionated blade template formatter for Laravel that respects readability",
   "homepage": "https://github.com/shufo/blade-formatter",
-  "languages": ["blade", "php", "laravel"],
-  "name": null,
-  "npm": "blade-formatter",
-  "php": null,
-  "tests": [
-    {
-      "command": "",
-      "language": "blade",
-      "test_input": "@extends('frontend.layouts.app')\n@section('title') foo\n@endsection\n@section('content')\n<section id=\"content\">\n<div class=\"container mod-users-pd-h\">\n    <div class=\"pf-user-header\">\n    <div></div>\n    <p>@lang('users.index')</p>\n    </div>\n        <div class=\"pf-users-branch\">\n            <ul class=\"pf-users-branch__list\">\n                @foreach($users as $user)\n        <li>\n            <img src=\"{{ asset('img/frontend/icon/branch-arrow.svg') }}\" alt=\"branch_arrow\">\n            {{ link_to_route(\"frontend.users.user.show\",$users[\"name\"],$users['_id']) }}\n        </li>\n        @endforeach\n      </ul>\n      <div class=\"pf-users-branch__btn\">\n      @can('create', App\\Models\\User::class)\n            {!! link_to_route(\"frontend.users.user.create\",__('users.create'),[1,2,3],['class' => 'btn']) !!}\n            @endcan\n        </div>\n  </div>\n    </div>\n</section>\n@endsection\n@section('footer')\n@stop",
-      "test_output": "@extends('frontend.layouts.app')\n@section('title') foo\n@endsection\n@section('content')\n    <section id=\"content\">\n        <div class=\"container mod-users-pd-h\">\n            <div class=\"pf-user-header\">\n                <div></div>\n                <p>@lang('users.index')</p>\n            </div>\n            <div class=\"pf-users-branch\">\n                <ul class=\"pf-users-branch__list\">\n                    @foreach ($users as $user)\n                        <li>\n                            <img src=\"{{ asset('img/frontend/icon/branch-arrow.svg') }}\" alt=\"branch_arrow\">\n                            {{ link_to_route('frontend.users.user.show', $users['name'], $users['_id']) }}\n                        </li>\n                    @endforeach\n                </ul>\n                <div class=\"pf-users-branch__btn\">\n                    @can('create', App\\Models\\User::class)\n                        {!! link_to_route('frontend.users.user.create', __('users.create'), [1, 2, 3], ['class' => 'btn']) !!}\n                    @endcan\n                </div>\n            </div>\n        </div>\n    </section>\n@endsection\n@section('footer')\n@stop\n"
-    }
-  ]
+  "languages": ["blade", "laravel", "php"],
+  "npm": "blade-formatter"
 }

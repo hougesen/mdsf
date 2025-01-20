@@ -3,13 +3,12 @@
   "binary": "leptosfmt",
   "categories": ["formatter"],
   "commands": {
-    "": ["--quiet", "$PATH"]
+    "": {
+      "arguments": ["--quiet", "$PATH"],
+      "ignore_output": false
+    }
   },
   "description": "A formatter for the leptos view! macro",
   "homepage": "https://github.com/bram209/leptosfmt",
-  "languages": ["rust"],
-  "name": null,
-  "npm": null,
-  "php": null,
-  "tests": []
+  "languages": ["rust"]
 }

@@ -3,13 +3,12 @@
   "binary": "shellharden",
   "categories": ["linter"],
   "commands": {
-    "": ["--transform", "--replace", "$PATH"]
+    "": {
+      "arguments": ["--transform", "--replace", "$PATH"],
+      "ignore_output": false
+    }
   },
   "description": "The corrective bash syntax highlighter",
   "homepage": "https://github.com/anordal/shellharden",
-  "languages": ["bash", "shell"],
-  "name": null,
-  "npm": null,
-  "php": null,
-  "tests": []
+  "languages": ["bash", "shell"]
 }

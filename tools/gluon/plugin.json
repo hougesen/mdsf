@@ -3,13 +3,12 @@
   "binary": "gluon",
   "categories": ["formatter"],
   "commands": {
-    "fmt": ["fmt", "$PATH"]
+    "fmt": {
+      "arguments": ["fmt", "$PATH"],
+      "ignore_output": false
+    }
   },
   "description": "Code formatting for the gluon programming language",
   "homepage": "https://github.com/gluon-lang/gluon",
-  "languages": ["gluon"],
-  "name": null,
-  "npm": null,
-  "php": null,
-  "tests": []
+  "languages": ["gluon"]
 }
