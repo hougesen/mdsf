@@ -44,24 +44,26 @@ pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfEr
 #[cfg(test)]
 mod test_html_beautify {
     #[test_with::executable(npx)]
-    fn test_html_beautify_html_63850f31f2ef5caf() {
+    fn test_html_beautify_html_11e43869538b61e8() {
         let input = r#"<div>
                     <p>
                     Mads was here
                     </p>
         </div>"#;
-        let output = r#"<div>
+        let output = Some(
+            r#"<div>
     <p>
         Mads was here
     </p>
-</div>"#;
+</div>"#
+                .to_owned(),
+        );
         let file_ext = crate::fttype::get_file_extension("html");
         let snippet =
             crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
         let result = crate::tools::html_beautify::run(snippet.path())
             .expect("it to be successful")
-            .1
-            .expect("it to be some");
+            .1;
         assert_eq!(result, output);
     }
 }

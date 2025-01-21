@@ -42,7 +42,7 @@ pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfEr
 #[cfg(test)]
 mod test_elm_format {
     #[test_with::executable(npx)]
-    fn test_elm_format_elm_4e120501af0177c4() {
+    fn test_elm_format_elm_41c70725416bd82a() {
         let input = r#"import   Html       exposing   (text)
 
 
@@ -51,21 +51,23 @@ main =
 
 
   "#;
-        let output = r#"module Main exposing (main)
+        let output = Some(
+            r#"module Main exposing (main)
 
 import Html exposing (text)
 
 
 main =
     text "Hello!"
-"#;
+"#
+            .to_owned(),
+        );
         let file_ext = crate::fttype::get_file_extension("elm");
         let snippet =
             crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
         let result = crate::tools::elm_format::run(snippet.path())
             .expect("it to be successful")
-            .1
-            .expect("it to be some");
+            .1;
         assert_eq!(result, output);
     }
 }

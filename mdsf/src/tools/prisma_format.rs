@@ -42,7 +42,7 @@ pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfEr
 #[cfg(test)]
 mod test_prisma_format {
     #[test_with::executable(npx)]
-    fn test_prisma_format_schema_b6e70b1b6bb7472e() {
+    fn test_prisma_format_schema_9e1c2cd6551f36db() {
         let input = r#"datasource          db             {
   provider                  = "postgresql"
   url      =          env("DATABASE_URL")
@@ -51,19 +51,21 @@ mod test_prisma_format {
 
 
 "#;
-        let output = r#"datasource db {
+        let output = Some(
+            r#"datasource db {
   provider  = "postgresql"
   url       = env("DATABASE_URL")
   directUrl = env("DIRECT_DATABASE_URL")
 }
-"#;
+"#
+            .to_owned(),
+        );
         let file_ext = crate::fttype::get_file_extension("schema");
         let snippet =
             crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
         let result = crate::tools::prisma_format::run(snippet.path())
             .expect("it to be successful")
-            .1
-            .expect("it to be some");
+            .1;
         assert_eq!(result, output);
     }
 }

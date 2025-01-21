@@ -38,23 +38,25 @@ pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfEr
 #[cfg(test)]
 mod test_juliaformatter_jl {
     #[test_with::executable(julia)]
-    fn test_juliaformatter_jl_julia_6775294e3dc9244() {
+    fn test_juliaformatter_jl_julia_e931702b0e807c52() {
         let input = r#"function add( a:: Int32,  b::Int32 )
             c = a+ b
             return c
             end "#;
-        let output = r#"function add(a::Int32, b::Int32)
+        let output = Some(
+            r#"function add(a::Int32, b::Int32)
     c = a + b
     return c
 end
-"#;
+"#
+            .to_owned(),
+        );
         let file_ext = crate::fttype::get_file_extension("julia");
         let snippet =
             crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
         let result = crate::tools::juliaformatter_jl::run(snippet.path())
             .expect("it to be successful")
-            .1
-            .expect("it to be some");
+            .1;
         assert_eq!(result, output);
     }
 }

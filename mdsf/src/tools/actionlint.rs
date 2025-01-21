@@ -34,4 +34,24 @@ pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfEr
 }
 
 #[cfg(test)]
-mod test_actionlint {}
+mod test_actionlint {
+    #[test_with::executable(actionlint)]
+    fn test_actionlint_yaml_e8ea2c4c1494f1e5() {
+        let input = r#"name: action
+on: push
+jobs:
+  format:
+    runs-on: ubuntu-latest
+    steps:
+      - run: mdsf format .
+"#;
+        let output = None;
+        let file_ext = crate::fttype::get_file_extension("yaml");
+        let snippet =
+            crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
+        let result = crate::tools::actionlint::run(snippet.path())
+            .expect("it to be successful")
+            .1;
+        assert_eq!(result, output);
+    }
+}

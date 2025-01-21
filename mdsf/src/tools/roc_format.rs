@@ -37,7 +37,7 @@ pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfEr
 #[cfg(test)]
 mod test_roc_format {
     #[test_with::executable(roc)]
-    fn test_roc_format_roc_1204aa2d8186919d() {
+    fn test_roc_format_roc_8201b2f4943b5b12() {
         let input = r#"app "helloWorld"
     packages { pf: "https://github.com/roc-lang/" }
     imports [pf.Stdout]
@@ -53,21 +53,23 @@ main =
 
 
     "#;
-        let output = r#"app [main] { pf: platform "https://github.com/roc-lang/" }
+        let output = Some(
+            r#"app [main] { pf: platform "https://github.com/roc-lang/" }
 
 import pf.Stdout
 
 main =
     Stdout.line "Hello, World!"
 
-"#;
+"#
+            .to_owned(),
+        );
         let file_ext = crate::fttype::get_file_extension("roc");
         let snippet =
             crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
         let result = crate::tools::roc_format::run(snippet.path())
             .expect("it to be successful")
-            .1
-            .expect("it to be some");
+            .1;
         assert_eq!(result, output);
     }
 }

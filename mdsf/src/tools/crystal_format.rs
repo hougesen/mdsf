@@ -38,19 +38,21 @@ pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfEr
 #[cfg(test)]
 mod test_crystal_format {
     #[test_with::executable(crystal)]
-    fn test_crystal_format_crystal_e0f2d532cd984bee() {
+    fn test_crystal_format_crystal_2cc833585f9c0931() {
         let input = r#"def add(a, b)  return a + b end"#;
-        let output = r#"def add(a, b)
+        let output = Some(
+            r#"def add(a, b)
   return a + b
 end
-"#;
+"#
+            .to_owned(),
+        );
         let file_ext = crate::fttype::get_file_extension("crystal");
         let snippet =
             crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
         let result = crate::tools::crystal_format::run(snippet.path())
             .expect("it to be successful")
-            .1
-            .expect("it to be some");
+            .1;
         assert_eq!(result, output);
     }
 }

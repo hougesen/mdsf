@@ -37,23 +37,25 @@ pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfEr
 #[cfg(test)]
 mod test_fourmolu {
     #[test_with::executable(fourmolu)]
-    fn test_fourmolu_haskell_718612a8aa064d19() {
+    fn test_fourmolu_haskell_53dde041426fce49() {
         let input = r#"
 addNumbers::Int->Int->Int
 addNumbers a b = do
         a + b
         "#;
-        let output = r#"addNumbers :: Int -> Int -> Int
+        let output = Some(
+            r#"addNumbers :: Int -> Int -> Int
 addNumbers a b = do
     a + b
-"#;
+"#
+            .to_owned(),
+        );
         let file_ext = crate::fttype::get_file_extension("haskell");
         let snippet =
             crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
         let result = crate::tools::fourmolu::run(snippet.path())
             .expect("it to be successful")
-            .1
-            .expect("it to be some");
+            .1;
         assert_eq!(result, output);
     }
 }

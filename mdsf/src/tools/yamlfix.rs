@@ -36,7 +36,7 @@ pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfEr
 #[cfg(test)]
 mod test_yamlfix {
     #[test_with::executable(yamlfix)]
-    fn test_yamlfix_yaml_9fcbc943bcaf9d7f() {
+    fn test_yamlfix_yaml_61bdc66d3f74b746() {
         let input = r#"
 
 
@@ -60,7 +60,8 @@ updates:
 
 
         "#;
-        let output = r#"---
+        let output = Some(
+            r#"---
 version: 2
 updates:
   - package-ecosystem: cargo
@@ -75,14 +76,15 @@ updates:
       interval: monthly
     assignees: [hougesen]
     open-pull-requests-limit: 25
-"#;
+"#
+            .to_owned(),
+        );
         let file_ext = crate::fttype::get_file_extension("yaml");
         let snippet =
             crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
         let result = crate::tools::yamlfix::run(snippet.path())
             .expect("it to be successful")
-            .1
-            .expect("it to be some");
+            .1;
         assert_eq!(result, output);
     }
 }

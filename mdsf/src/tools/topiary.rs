@@ -37,7 +37,7 @@ pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfEr
 #[cfg(test)]
 mod test_topiary {
     #[test_with::executable(topiary)]
-    fn test_topiary_json_d426a9ade74002d2() {
+    fn test_topiary_json_9cf77f718b7f7e0c() {
         let input = r#"
               {
               "key": "value",
@@ -48,7 +48,8 @@ mod test_topiary {
             , null]
  }
   "#;
-        let output = r#"{
+        let output = Some(
+            r#"{
   "key": "value",
   "key2": [
     "value2",
@@ -57,14 +58,15 @@ mod test_topiary {
     null
   ]
 }
-"#;
+"#
+            .to_owned(),
+        );
         let file_ext = crate::fttype::get_file_extension("json");
         let snippet =
             crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
         let result = crate::tools::topiary::run(snippet.path())
             .expect("it to be successful")
-            .1
-            .expect("it to be some");
+            .1;
         assert_eq!(result, output);
     }
 }

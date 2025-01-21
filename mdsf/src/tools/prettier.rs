@@ -45,7 +45,7 @@ pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfEr
 #[cfg(test)]
 mod test_prettier {
     #[test_with::executable(npx)]
-    fn test_prettier_json_8e1e8ed2224fd439() {
+    fn test_prettier_json_3694f4bf312c36fa() {
         let input = r#"
               {
               "key": "value",
@@ -56,23 +56,25 @@ mod test_prettier {
             , null]
  }
   "#;
-        let output = r#"{
+        let output = Some(
+            r#"{
   "key": "value",
   "key2": ["value2", "value3", 1, null]
 }
-"#;
+"#
+            .to_owned(),
+        );
         let file_ext = crate::fttype::get_file_extension("json");
         let snippet =
             crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
         let result = crate::tools::prettier::run(snippet.path())
             .expect("it to be successful")
-            .1
-            .expect("it to be some");
+            .1;
         assert_eq!(result, output);
     }
 
     #[test_with::executable(npx)]
-    fn test_prettier_javascript_f38217e7df306e3e() {
+    fn test_prettier_javascript_e4047d8692b0d84a() {
         let input = r#"
     async function asyncAddition(
             a,b
@@ -81,17 +83,19 @@ mod test_prettier {
     }
 
             "#;
-        let output = r#"async function asyncAddition(a, b) {
+        let output = Some(
+            r#"async function asyncAddition(a, b) {
   return a + b;
 }
-"#;
+"#
+            .to_owned(),
+        );
         let file_ext = crate::fttype::get_file_extension("javascript");
         let snippet =
             crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
         let result = crate::tools::prettier::run(snippet.path())
             .expect("it to be successful")
-            .1
-            .expect("it to be some");
+            .1;
         assert_eq!(result, output);
     }
 }

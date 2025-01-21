@@ -37,7 +37,7 @@ pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfEr
 #[cfg(test)]
 mod test_golines {
     #[test_with::executable(golines)]
-    fn test_golines_go_4af43f410d7fff15() {
+    fn test_golines_go_581afd5c8f294d82() {
         let input = r#"package main
 
 import (
@@ -51,7 +51,8 @@ func add(a int, b int) int {
 	return a + b
 }
 "#;
-        let output = r#"package main
+        let output = Some(
+            r#"package main
 
 import (
 	"fmt"
@@ -62,14 +63,15 @@ func add(a int, b int) int {
 	fmt.Print(b)
 	return a + b
 }
-"#;
+"#
+            .to_owned(),
+        );
         let file_ext = crate::fttype::get_file_extension("go");
         let snippet =
             crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
         let result = crate::tools::golines::run(snippet.path())
             .expect("it to be successful")
-            .1
-            .expect("it to be some");
+            .1;
         assert_eq!(result, output);
     }
 }

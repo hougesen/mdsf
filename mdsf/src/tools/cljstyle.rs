@@ -37,7 +37,7 @@ pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfEr
 #[cfg(test)]
 mod test_cljstyle {
     #[test_with::executable(cljstyle)]
-    fn test_cljstyle_clojure_92fbb2f42ebeeb2e() {
+    fn test_cljstyle_clojure_958a889bbccbb51b() {
         let input = r#"(  ns
  foo.bar.baz  "some doc"
     (:require (foo.bar [abc :as abc]
@@ -53,7 +53,8 @@ mod test_cljstyle {
   ) ([name]
   ( println "Hello," name  )
   ))"#;
-        let output = r#"(ns foo.bar.baz
+        let output = Some(
+            r#"(ns foo.bar.baz
   "some doc"
   (:require
     [foo.bar.abc :as abc]
@@ -71,14 +72,15 @@ mod test_cljstyle {
   ([] (hello "world"))
   ([name]
    (println "Hello," name)))
-"#;
+"#
+            .to_owned(),
+        );
         let file_ext = crate::fttype::get_file_extension("clojure");
         let snippet =
             crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
         let result = crate::tools::cljstyle::run(snippet.path())
             .expect("it to be successful")
-            .1
-            .expect("it to be some");
+            .1;
         assert_eq!(result, output);
     }
 }

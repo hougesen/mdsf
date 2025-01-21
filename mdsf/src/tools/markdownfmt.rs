@@ -37,28 +37,30 @@ pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfEr
 #[cfg(test)]
 mod test_markdownfmt {
     #[test_with::executable(markdownfmt)]
-    fn test_markdownfmt_markdown_9b495bc15a7833bc() {
+    fn test_markdownfmt_markdown_d1dd1e80b6688046() {
         let input = r#"# hello w   world
 
 this   text has      weird spacing
 
 - first
 * second"#;
-        let output = r#"hello w world
+        let output = Some(
+            r#"hello w world
 =============
 
 this text has weird spacing
 
 -	first
 -	second
-"#;
+"#
+            .to_owned(),
+        );
         let file_ext = crate::fttype::get_file_extension("markdown");
         let snippet =
             crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
         let result = crate::tools::markdownfmt::run(snippet.path())
             .expect("it to be successful")
-            .1
-            .expect("it to be some");
+            .1;
         assert_eq!(result, output);
     }
 }

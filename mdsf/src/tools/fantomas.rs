@@ -36,19 +36,21 @@ pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfEr
 #[cfg(test)]
 mod test_fantomas {
     #[test_with::executable(fantomas)]
-    fn test_fantomas_fsharp_f3cb7f290d0660d3() {
+    fn test_fantomas_fsharp_ab29154716f5fe8a() {
         let input = r#"
 let add a b  =  a +  b
             "#;
-        let output = r#"let add a b = a + b
-"#;
+        let output = Some(
+            r#"let add a b = a + b
+"#
+            .to_owned(),
+        );
         let file_ext = crate::fttype::get_file_extension("fsharp");
         let snippet =
             crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
         let result = crate::tools::fantomas::run(snippet.path())
             .expect("it to be successful")
-            .1
-            .expect("it to be some");
+            .1;
         assert_eq!(result, output);
     }
 }

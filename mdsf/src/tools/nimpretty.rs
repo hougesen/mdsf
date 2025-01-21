@@ -36,19 +36,21 @@ pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfEr
 #[cfg(test)]
 mod test_nimpretty {
     #[test_with::executable(nimpretty)]
-    fn test_nimpretty_nim_2c41c79e1d74972a() {
+    fn test_nimpretty_nim_904d741f6111f585() {
         let input = r#"proc           add( a         :int , b:int )        : int =
   return a +          b  "#;
-        let output = r#"proc add(a: int, b: int): int =
+        let output = Some(
+            r#"proc add(a: int, b: int): int =
   return a + b
-"#;
+"#
+            .to_owned(),
+        );
         let file_ext = crate::fttype::get_file_extension("nim");
         let snippet =
             crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
         let result = crate::tools::nimpretty::run(snippet.path())
             .expect("it to be successful")
-            .1
-            .expect("it to be some");
+            .1;
         assert_eq!(result, output);
     }
 }

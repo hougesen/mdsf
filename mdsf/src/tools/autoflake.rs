@@ -38,7 +38,7 @@ pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfEr
 #[cfg(test)]
 mod test_autoflake {
     #[test_with::executable(autoflake)]
-    fn test_autoflake_python_27cfd9b948e80d7f() {
+    fn test_autoflake_python_a676d36968f04ba0() {
         let input = r#"import math
 import re
 import os
@@ -57,7 +57,8 @@ def foo():
         print(sys.version)
     return math.pi
 "#;
-        let output = r#"import math
+        let output = Some(
+            r#"import math
 import sys
 
 
@@ -68,14 +69,15 @@ def foo():
     except ImportError as exception:
         print(sys.version)
     return math.pi
-"#;
+"#
+            .to_owned(),
+        );
         let file_ext = crate::fttype::get_file_extension("python");
         let snippet =
             crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
         let result = crate::tools::autoflake::run(snippet.path())
             .expect("it to be successful")
-            .1
-            .expect("it to be some");
+            .1;
         assert_eq!(result, output);
     }
 }

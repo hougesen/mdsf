@@ -36,7 +36,7 @@ pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfEr
 #[cfg(test)]
 mod test_nixpkgs_fmt {
     #[test_with::executable(nixpkgs-fmt)]
-    fn test_nixpkgs_fmt_nix_36a22e30dae799c5() {
+    fn test_nixpkgs_fmt_nix_80c626451e90fe4a() {
         let input = r#"{
             lib, buildPythonPackage, fetchFromGitHub, redis }:
 
@@ -64,7 +64,8 @@ buildPythonPackage rec {
   };
 }
 "#;
-        let output = r#"{ lib
+        let output = Some(
+            r#"{ lib
 , buildPythonPackage
 , fetchFromGitHub
 , redis
@@ -93,14 +94,15 @@ buildPythonPackage rec {
     maintainers = [ maintainers.globin ];
   };
 }
-"#;
+"#
+            .to_owned(),
+        );
         let file_ext = crate::fttype::get_file_extension("nix");
         let snippet =
             crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
         let result = crate::tools::nixpkgs_fmt::run(snippet.path())
             .expect("it to be successful")
-            .1
-            .expect("it to be some");
+            .1;
         assert_eq!(result, output);
     }
 }

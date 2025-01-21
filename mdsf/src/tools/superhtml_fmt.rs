@@ -37,24 +37,26 @@ pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfEr
 #[cfg(test)]
 mod test_superhtml_fmt {
     #[test_with::executable(superhtml)]
-    fn test_superhtml_fmt_html_8183dae6d1f190e1() {
+    fn test_superhtml_fmt_html_5c8e18802f77154a() {
         let input = r#"<div>
                     <p>
                     Mads was here
                     </p>
         </div>"#;
-        let output = r#"<div>
+        let output = Some(
+            r#"<div>
   <p>
     Mads was here
   </p>
-</div>"#;
+</div>"#
+                .to_owned(),
+        );
         let file_ext = crate::fttype::get_file_extension("html");
         let snippet =
             crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
         let result = crate::tools::superhtml_fmt::run(snippet.path())
             .expect("it to be successful")
-            .1
-            .expect("it to be some");
+            .1;
         assert_eq!(result, output);
     }
 }

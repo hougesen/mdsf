@@ -6,7 +6,13 @@
     "check": {
       "arguments": ["check", "$PATH"],
       "ignore_output": true,
-      "tests": []
+      "tests": [
+        {
+          "language": "markdown",
+          "test_input": "# Hello world\n\n- Hello\n- world\n\n",
+          "test_output": null
+        }
+      ]
     }
   },
   "description": "A fast Markdown linter written in Rust",

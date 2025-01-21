@@ -37,22 +37,24 @@ pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfEr
 #[cfg(test)]
 mod test_erlfmt {
     #[test_with::executable(erlfmt)]
-    fn test_erlfmt_erlang_61f4ac26ad7484d2() {
+    fn test_erlfmt_erlang_90fa4b828bc9873() {
         let input = r#"what_is(Erlang) ->
 case Erlang of movie->[hello(mike,joe,robert),credits]; language->formatting_arguments end
 ."#;
-        let output = r#"what_is(Erlang) ->
+        let output = Some(
+            r#"what_is(Erlang) ->
     case Erlang of
         movie -> [hello(mike, joe, robert), credits];
         language -> no_more_formatting_arguments
-    end."#;
+    end."#
+                .to_owned(),
+        );
         let file_ext = crate::fttype::get_file_extension("erlang");
         let snippet =
             crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
         let result = crate::tools::erlfmt::run(snippet.path())
             .expect("it to be successful")
-            .1
-            .expect("it to be some");
+            .1;
         assert_eq!(result, output);
     }
 }
