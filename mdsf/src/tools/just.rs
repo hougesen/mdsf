@@ -39,22 +39,24 @@ pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfEr
 #[cfg(test)]
 mod test_just {
     #[test_with::executable(just)]
-    fn test_just_just_ef70afaf3ede68b9() {
+    fn test_just_just_9737c58292992524() {
         let input = r#"build:
                 cargo build
                 cargo build --release
             "#;
-        let output = r#"build:
+        let output = Some(
+            r#"build:
     cargo build
     cargo build --release
-"#;
+"#
+            .to_owned(),
+        );
         let file_ext = crate::fttype::get_file_extension("just");
         let snippet =
             crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
         let result = crate::tools::just::run(snippet.path())
             .expect("it to be successful")
-            .1
-            .expect("it to be some");
+            .1;
         assert_eq!(result, output);
     }
 }

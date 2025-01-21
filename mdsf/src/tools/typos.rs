@@ -39,16 +39,15 @@ pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfEr
 #[cfg(test)]
 mod test_typos {
     #[test_with::executable(typos)]
-    fn test_typos_python_cba663e4f5e54b7f() {
+    fn test_typos_python_45f392211f741c27() {
         let input = r#"anouncement"#;
-        let output = r#"announcement"#;
+        let output = Some(r#"announcement"#.to_owned());
         let file_ext = crate::fttype::get_file_extension("python");
         let snippet =
             crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
         let result = crate::tools::typos::run(snippet.path())
             .expect("it to be successful")
-            .1
-            .expect("it to be some");
+            .1;
         assert_eq!(result, output);
     }
 }

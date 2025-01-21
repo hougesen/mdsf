@@ -38,18 +38,20 @@ pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfEr
 #[cfg(test)]
 mod test_ruff_format {
     #[test_with::executable(ruff)]
-    fn test_ruff_format_python_229ec2b01c2bfe3c() {
+    fn test_ruff_format_python_fb3e2d124e8bebbb() {
         let input = r#"def add( a: int ,  b:int)->int: return a+b"#;
-        let output = r#"def add(a: int, b: int) -> int:
+        let output = Some(
+            r#"def add(a: int, b: int) -> int:
     return a + b
-"#;
+"#
+            .to_owned(),
+        );
         let file_ext = crate::fttype::get_file_extension("python");
         let snippet =
             crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
         let result = crate::tools::ruff_format::run(snippet.path())
             .expect("it to be successful")
-            .1
-            .expect("it to be some");
+            .1;
         assert_eq!(result, output);
     }
 }

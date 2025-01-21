@@ -38,16 +38,15 @@ pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfEr
 #[cfg(test)]
 mod test_pycln {
     #[test_with::executable(pycln)]
-    fn test_pycln_python_21e4539a9b183542() {
+    fn test_pycln_python_303d0fea3e20b822() {
         let input = r#"import math"#;
-        let output = r#""#;
+        let output = Some(r#""#.to_owned());
         let file_ext = crate::fttype::get_file_extension("python");
         let snippet =
             crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
         let result = crate::tools::pycln::run(snippet.path())
             .expect("it to be successful")
-            .1
-            .expect("it to be some");
+            .1;
         assert_eq!(result, output);
     }
 }

@@ -37,7 +37,7 @@ pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfEr
 #[cfg(test)]
 mod test_veryl_fmt {
     #[test_with::executable(veryl)]
-    fn test_veryl_fmt_veryl_529de9cf882c5a00() {
+    fn test_veryl_fmt_veryl_f906da5df20d5b35() {
         let input = r#"/// documentation comment by markdown format
 /// * list item1
 /// * list item2
@@ -64,7 +64,8 @@ pub module Delay #( // visibility control by `pub` keyword
     }
 }
 "#;
-        let output = r#"/// documentation comment by markdown format
+        let output = Some(
+            r#"/// documentation comment by markdown format
 /// * list item1
 /// * list item2
 pub module Delay #( // visibility control by `pub` keyword
@@ -89,14 +90,15 @@ pub module Delay #( // visibility control by `pub` keyword
         }
     }
 }
-"#;
+"#
+            .to_owned(),
+        );
         let file_ext = crate::fttype::get_file_extension("veryl");
         let snippet =
             crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
         let result = crate::tools::veryl_fmt::run(snippet.path())
             .expect("it to be successful")
-            .1
-            .expect("it to be some");
+            .1;
         assert_eq!(result, output);
     }
 }

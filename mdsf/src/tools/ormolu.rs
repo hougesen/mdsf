@@ -38,23 +38,25 @@ pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfEr
 #[cfg(test)]
 mod test_ormolu {
     #[test_with::executable(ormolu)]
-    fn test_ormolu_haskell_c34a44cf19c5fdd7() {
+    fn test_ormolu_haskell_45197b0621b034d0() {
         let input = r#"
 addNumbers::Int->Int->Int
 addNumbers a b = do
         a + b
         "#;
-        let output = r#"addNumbers :: Int -> Int -> Int
+        let output = Some(
+            r#"addNumbers :: Int -> Int -> Int
 addNumbers a b = do
   a + b
-"#;
+"#
+            .to_owned(),
+        );
         let file_ext = crate::fttype::get_file_extension("haskell");
         let snippet =
             crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
         let result = crate::tools::ormolu::run(snippet.path())
             .expect("it to be successful")
-            .1
-            .expect("it to be some");
+            .1;
         assert_eq!(result, output);
     }
 }

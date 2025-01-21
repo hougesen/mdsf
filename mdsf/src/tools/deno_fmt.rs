@@ -38,29 +38,31 @@ pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfEr
 #[cfg(test)]
 mod test_deno_fmt {
     #[test_with::executable(deno)]
-    fn test_deno_fmt_javascript_d7445fa122fcd5cc() {
+    fn test_deno_fmt_javascript_7a64a04e758eecef() {
         let input = r#"
     async function asyncAddition(a,b){
         return a+b
     }
 
             "#;
-        let output = r#"async function asyncAddition(a, b) {
+        let output = Some(
+            r#"async function asyncAddition(a, b) {
   return a + b;
 }
-"#;
+"#
+            .to_owned(),
+        );
         let file_ext = crate::fttype::get_file_extension("javascript");
         let snippet =
             crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
         let result = crate::tools::deno_fmt::run(snippet.path())
             .expect("it to be successful")
-            .1
-            .expect("it to be some");
+            .1;
         assert_eq!(result, output);
     }
 
     #[test_with::executable(deno)]
-    fn test_deno_fmt_typescript_857476c85438ce71() {
+    fn test_deno_fmt_typescript_7f6a42002496954d() {
         let input = r#"
     async function asyncAddition(                                a:       	number,b:number ) :Promise< number>
     {
@@ -68,22 +70,24 @@ mod test_deno_fmt {
     }
 
             "#;
-        let output = r#"async function asyncAddition(a: number, b: number): Promise<number> {
+        let output = Some(
+            r#"async function asyncAddition(a: number, b: number): Promise<number> {
   return a + b;
 }
-"#;
+"#
+            .to_owned(),
+        );
         let file_ext = crate::fttype::get_file_extension("typescript");
         let snippet =
             crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
         let result = crate::tools::deno_fmt::run(snippet.path())
             .expect("it to be successful")
-            .1
-            .expect("it to be some");
+            .1;
         assert_eq!(result, output);
     }
 
     #[test_with::executable(deno)]
-    fn test_deno_fmt_json_d426a9ade74002d2() {
+    fn test_deno_fmt_json_9cf77f718b7f7e0c() {
         let input = r#"
               {
               "key": "value",
@@ -94,7 +98,8 @@ mod test_deno_fmt {
             , null]
  }
   "#;
-        let output = r#"{
+        let output = Some(
+            r#"{
   "key": "value",
   "key2": [
     "value2",
@@ -103,14 +108,15 @@ mod test_deno_fmt {
     null
   ]
 }
-"#;
+"#
+            .to_owned(),
+        );
         let file_ext = crate::fttype::get_file_extension("json");
         let snippet =
             crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
         let result = crate::tools::deno_fmt::run(snippet.path())
             .expect("it to be successful")
-            .1
-            .expect("it to be some");
+            .1;
         assert_eq!(result, output);
     }
 }

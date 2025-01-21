@@ -38,22 +38,24 @@ pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfEr
 #[cfg(test)]
 mod test_ktfmt {
     #[test_with::executable(ktfmt)]
-    fn test_ktfmt_kotlin_396c64cb15f3d642() {
+    fn test_ktfmt_kotlin_ad9f04d28e9a08c() {
         let input = r#"            fun add(a:Int ,b:Int ):Int {
                     return a + b
                 }
             "#;
-        let output = r#"fun add(a: Int, b: Int): Int {
+        let output = Some(
+            r#"fun add(a: Int, b: Int): Int {
     return a + b
 }
-"#;
+"#
+            .to_owned(),
+        );
         let file_ext = crate::fttype::get_file_extension("kotlin");
         let snippet =
             crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
         let result = crate::tools::ktfmt::run(snippet.path())
             .expect("it to be successful")
-            .1
-            .expect("it to be some");
+            .1;
         assert_eq!(result, output);
     }
 }

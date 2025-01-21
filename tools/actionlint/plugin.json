@@ -5,7 +5,14 @@
   "commands": {
     "": {
       "arguments": ["$PATH"],
-      "ignore_output": true
+      "ignore_output": true,
+      "tests": [
+        {
+          "language": "yaml",
+          "test_input": "name: action\non: push\njobs:\n  format:\n    runs-on: ubuntu-latest\n    steps:\n      - run: mdsf format .\n",
+          "test_output": null
+        }
+      ]
     }
   },
   "description": "Static checker for GitHub Actions workflow files",

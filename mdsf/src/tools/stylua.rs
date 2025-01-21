@@ -41,7 +41,7 @@ pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfEr
 #[cfg(test)]
 mod test_stylua {
     #[test_with::executable(npx)]
-    fn test_stylua_lua_ab45775f0dc2fcca() {
+    fn test_stylua_lua_aaecbc44cc18ece0() {
         let input = r#"
 
         local               function        add (                                       a , b
@@ -53,17 +53,19 @@ return              a +b
 end
 
     "#;
-        let output = r#"local function add(a, b)
+        let output = Some(
+            r#"local function add(a, b)
 	return a + b
 end
-"#;
+"#
+            .to_owned(),
+        );
         let file_ext = crate::fttype::get_file_extension("lua");
         let snippet =
             crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
         let result = crate::tools::stylua::run(snippet.path())
             .expect("it to be successful")
-            .1
-            .expect("it to be some");
+            .1;
         assert_eq!(result, output);
     }
 }

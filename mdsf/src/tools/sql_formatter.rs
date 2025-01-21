@@ -41,22 +41,24 @@ pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfEr
 #[cfg(test)]
 mod test_sql_formatter {
     #[test_with::executable(npx)]
-    fn test_sql_formatter_sql_85ac36a4bf14f957() {
+    fn test_sql_formatter_sql_3d92b902cf65ff90() {
         let input = r#"SELECT * FROM tbl WHERE foo = 'bar';"#;
-        let output = r#"SELECT
+        let output = Some(
+            r#"SELECT
   *
 FROM
   tbl
 WHERE
   foo = 'bar';
-"#;
+"#
+            .to_owned(),
+        );
         let file_ext = crate::fttype::get_file_extension("sql");
         let snippet =
             crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
         let result = crate::tools::sql_formatter::run(snippet.path())
             .expect("it to be successful")
-            .1
-            .expect("it to be some");
+            .1;
         assert_eq!(result, output);
     }
 }

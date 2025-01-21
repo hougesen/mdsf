@@ -42,7 +42,7 @@ pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfEr
 #[cfg(test)]
 mod test_biome_format {
     #[test_with::executable(npx)]
-    fn test_biome_format_json_90a326e29048e3cd() {
+    fn test_biome_format_json_3bf561a65ea19c27() {
         let input = r#"
               {
               "key": "value",
@@ -53,23 +53,25 @@ mod test_biome_format {
             , null]
  }
   "#;
-        let output = r#"{
+        let output = Some(
+            r#"{
 	"key": "value",
 	"key2": ["value2", "value3", 1, null]
 }
-"#;
+"#
+            .to_owned(),
+        );
         let file_ext = crate::fttype::get_file_extension("json");
         let snippet =
             crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
         let result = crate::tools::biome_format::run(snippet.path())
             .expect("it to be successful")
-            .1
-            .expect("it to be some");
+            .1;
         assert_eq!(result, output);
     }
 
     #[test_with::executable(npx)]
-    fn test_biome_format_javascript_4845e9b01c23667f() {
+    fn test_biome_format_javascript_8b78b3bf4549dcd5() {
         let input = r#"
     async function asyncAddition(
             a,b
@@ -78,22 +80,24 @@ mod test_biome_format {
     }
 
             "#;
-        let output = r#"async function asyncAddition(a, b) {
+        let output = Some(
+            r#"async function asyncAddition(a, b) {
 	return a + b;
 }
-"#;
+"#
+            .to_owned(),
+        );
         let file_ext = crate::fttype::get_file_extension("javascript");
         let snippet =
             crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
         let result = crate::tools::biome_format::run(snippet.path())
             .expect("it to be successful")
-            .1
-            .expect("it to be some");
+            .1;
         assert_eq!(result, output);
     }
 
     #[test_with::executable(npx)]
-    fn test_biome_format_typescript_8154bfdbd3b72275() {
+    fn test_biome_format_typescript_4c7d2a2ce681e640() {
         let input = r#"
     async function asyncAddition(
             a:number,b:number
@@ -104,17 +108,19 @@ number>
     }
 
             "#;
-        let output = r#"async function asyncAddition(a: number, b: number): Promise<number> {
+        let output = Some(
+            r#"async function asyncAddition(a: number, b: number): Promise<number> {
 	return a + b;
 }
-"#;
+"#
+            .to_owned(),
+        );
         let file_ext = crate::fttype::get_file_extension("typescript");
         let snippet =
             crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
         let result = crate::tools::biome_format::run(snippet.path())
             .expect("it to be successful")
-            .1
-            .expect("it to be some");
+            .1;
         assert_eq!(result, output);
     }
 }

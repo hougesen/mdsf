@@ -37,7 +37,7 @@ pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfEr
 #[cfg(test)]
 mod test_kcl_fmt {
     #[test_with::executable(kcl)]
-    fn test_kcl_fmt_kcl_83078615f65197d1() {
+    fn test_kcl_fmt_kcl_9e5edc166801bc78() {
         let input = r#"apiVersion = "apps/v1"
 kind = "Deployment"
 metadata = {
@@ -55,7 +55,8 @@ spec = {
     }]
 }
 "#;
-        let output = r#"apiVersion = "apps/v1"
+        let output = Some(
+            r#"apiVersion = "apps/v1"
 kind = "Deployment"
 metadata = {
     name = "nginx"
@@ -71,14 +72,15 @@ spec = {
         ports = [{containerPort = 80}]
     }]
 }
-"#;
+"#
+            .to_owned(),
+        );
         let file_ext = crate::fttype::get_file_extension("kcl");
         let snippet =
             crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
         let result = crate::tools::kcl_fmt::run(snippet.path())
             .expect("it to be successful")
-            .1
-            .expect("it to be some");
+            .1;
         assert_eq!(result, output);
     }
 }

@@ -41,10 +41,11 @@ pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfEr
 #[cfg(test)]
 mod test_csscomb {
     #[test_with::executable(npx)]
-    fn test_csscomb_css_bed67a883a4a1aae() {
+    fn test_csscomb_css_6d95484404a0a4f3() {
         let input = r#"h1   {color: blue;}
 p {color: red;}"#;
-        let output = r#"h1
+        let output = Some(
+            r#"h1
 {
     color: blue;
 }
@@ -52,14 +53,15 @@ p
 {
     color: red;
 }
-"#;
+"#
+            .to_owned(),
+        );
         let file_ext = crate::fttype::get_file_extension("css");
         let snippet =
             crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
         let result = crate::tools::csscomb::run(snippet.path())
             .expect("it to be successful")
-            .1
-            .expect("it to be some");
+            .1;
         assert_eq!(result, output);
     }
 }

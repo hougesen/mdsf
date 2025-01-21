@@ -37,7 +37,7 @@ pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfEr
 #[cfg(test)]
 mod test_zprint {
     #[test_with::executable(zprint)]
-    fn test_zprint_clojure_81eb4a785de214e8() {
+    fn test_zprint_clojure_c7eb78c2d8154947() {
         let input = r#"(defn change-start-column [new-start-column style-vec [inline-comment-index
   start-column spaces-before :as comment-vec]] (if (zero? inline-comment-index)
   style-vec (let [delta-spaces (- new-start-column start-column) new-spaces
@@ -48,7 +48,8 @@ mod test_zprint {
   (blanks new-spaces)) c e] (= e :whitespace) [(str (blanks new-spaces))
   c e 26] :else nil)] (assoc style-vec previous-element-index
   new-previous-element))))"#;
-        let output = r#"(defn change-start-column
+        let output = Some(
+            r#"(defn change-start-column
   [new-start-column style-vec
    [inline-comment-index start-column spaces-before :as comment-vec]]
   (if (zero? inline-comment-index)
@@ -62,14 +63,15 @@ mod test_zprint {
 " (blanks new-spaces)) c e]
                   (= e :whitespace) [(str (blanks new-spaces)) c e 26]
                   :else nil)]
-      (assoc style-vec previous-element-index new-previous-element))))"#;
+      (assoc style-vec previous-element-index new-previous-element))))"#
+                .to_owned(),
+        );
         let file_ext = crate::fttype::get_file_extension("clojure");
         let snippet =
             crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
         let result = crate::tools::zprint::run(snippet.path())
             .expect("it to be successful")
-            .1
-            .expect("it to be some");
+            .1;
         assert_eq!(result, output);
     }
 }

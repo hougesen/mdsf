@@ -35,4 +35,22 @@ pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfEr
 }
 
 #[cfg(test)]
-mod test_mado_check {}
+mod test_mado_check {
+    #[test_with::executable(mado)]
+    fn test_mado_check_markdown_dec3c84890502a43() {
+        let input = r#"# Hello world
+
+- Hello
+- world
+
+"#;
+        let output = None;
+        let file_ext = crate::fttype::get_file_extension("markdown");
+        let snippet =
+            crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
+        let result = crate::tools::mado_check::run(snippet.path())
+            .expect("it to be successful")
+            .1;
+        assert_eq!(result, output);
+    }
+}

@@ -41,7 +41,7 @@ pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfEr
 #[cfg(test)]
 mod test_blade_formatter {
     #[test_with::executable(npx)]
-    fn test_blade_formatter_blade_9ddeaf972bfb08c1() {
+    fn test_blade_formatter_blade_3c9d381f117ad59b() {
         let input = r#"@extends('frontend.layouts.app')
 @section('title') foo
 @endsection
@@ -72,7 +72,7 @@ mod test_blade_formatter {
 @endsection
 @section('footer')
 @stop"#;
-        let output = r#"@extends('frontend.layouts.app')
+        let output = Some(r#"@extends('frontend.layouts.app')
 @section('title') foo
 @endsection
 @section('content')
@@ -102,14 +102,13 @@ mod test_blade_formatter {
 @endsection
 @section('footer')
 @stop
-"#;
+"#.to_owned());
         let file_ext = crate::fttype::get_file_extension("blade");
         let snippet =
             crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
         let result = crate::tools::blade_formatter::run(snippet.path())
             .expect("it to be successful")
-            .1
-            .expect("it to be some");
+            .1;
         assert_eq!(result, output);
     }
 }

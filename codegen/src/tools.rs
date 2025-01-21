@@ -15,7 +15,7 @@ pub struct ToolCommandTest {
 
     pub test_input: String,
 
-    pub test_output: String,
+    pub test_output: Option<String>,
 }
 
 #[derive(Debug, serde::Deserialize, schemars::JsonSchema, Clone)]
@@ -110,18 +110,23 @@ impl Tool {
 
         let test_fn_name = format!("test_{module_name}_{language}_{id}",);
 
+        let test_output = if let Some(output) = &test.test_output {
+            format!("Some(r#\"{output}\"#.to_owned())")
+        } else {
+            "None".to_owned()
+        };
+
         let test_code = format!(
             "{INDENT}#[test_with::executable({bin})]
 {INDENT}fn {test_fn_name}() {{
 {INDENT}{INDENT}let input = r#\"{input}\"#;
-{INDENT}{INDENT}let output = r#\"{output}\"#;
+{INDENT}{INDENT}let output = {test_output};
 {INDENT}{INDENT}let file_ext = crate::fttype::get_file_extension(\"{language}\");
 {INDENT}{INDENT}let snippet =
 {INDENT}{INDENT}{INDENT}crate::execution::setup_snippet(input, &file_ext).expect(\"it to create a snippet file\");
 {INDENT}{INDENT}let result = crate::tools::{module_name}::run(snippet.path())
 {INDENT}{INDENT}{INDENT}.expect(\"it to be successful\")
-{INDENT}{INDENT}{INDENT}.1
-{INDENT}{INDENT}{INDENT}.expect(\"it to be some\");
+{INDENT}{INDENT}{INDENT}.1;
 {INDENT}{INDENT}assert_eq!(result, output);
 {INDENT}}}",
             bin = if self.npm.is_some() {
@@ -130,7 +135,6 @@ impl Tool {
                 &self.binary
             },
             input = test.test_input,
-            output = test.test_output,
             language = test.language,
         );
 

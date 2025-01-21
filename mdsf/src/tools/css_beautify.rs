@@ -44,22 +44,24 @@ pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfEr
 #[cfg(test)]
 mod test_css_beautify {
     #[test_with::executable(npx)]
-    fn test_css_beautify_css_5ad41f26f69aea3e() {
+    fn test_css_beautify_css_9037e3781d1e74dd() {
         let input = r#"h1   {color: blue;} p    {color: red;}"#;
-        let output = r#"h1 {
+        let output = Some(
+            r#"h1 {
     color: blue;
 }
 
 p {
     color: red;
-}"#;
+}"#
+            .to_owned(),
+        );
         let file_ext = crate::fttype::get_file_extension("css");
         let snippet =
             crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
         let result = crate::tools::css_beautify::run(snippet.path())
             .expect("it to be successful")
-            .1
-            .expect("it to be some");
+            .1;
         assert_eq!(result, output);
     }
 }

@@ -38,7 +38,7 @@ pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfEr
 #[cfg(test)]
 mod test_tofu_fmt {
     #[test_with::executable(tofu)]
-    fn test_tofu_fmt_terraform_ad45c247a9c563a1() {
+    fn test_tofu_fmt_terraform_d0328fd989abae6d() {
         let input = r#"resource "aws_instance" "example" {
                 ami   = "abc123"
 
@@ -46,20 +46,22 @@ mod test_tofu_fmt {
              }
 }
 "#;
-        let output = r#"resource "aws_instance" "example" {
+        let output = Some(
+            r#"resource "aws_instance" "example" {
   ami = "abc123"
 
   network_interface {
   }
 }
-"#;
+"#
+            .to_owned(),
+        );
         let file_ext = crate::fttype::get_file_extension("terraform");
         let snippet =
             crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
         let result = crate::tools::tofu_fmt::run(snippet.path())
             .expect("it to be successful")
-            .1
-            .expect("it to be some");
+            .1;
         assert_eq!(result, output);
     }
 }

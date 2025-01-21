@@ -89,7 +89,7 @@
     },
     "ToolCommandTest": {
       "type": "object",
-      "required": ["language", "test_input", "test_output"],
+      "required": ["language", "test_input"],
       "properties": {
         "language": {
           "description": "Codeblock language used when generating tests",
@@ -99,7 +99,7 @@
           "type": "string"
         },
         "test_output": {
-          "type": "string"
+          "type": ["string", "null"]
         }
       },
       "additionalProperties": false

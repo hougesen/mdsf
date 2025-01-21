@@ -41,7 +41,7 @@ pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfEr
 #[cfg(test)]
 mod test_rescript_format {
     #[test_with::executable(npx)]
-    fn test_rescript_format_rescript_59c7490e2a041de3() {
+    fn test_rescript_format_rescript_30add3bd800dbeaa() {
         let input = r#"module Button = {
   @react.component
   let make = (~count) =>   {
@@ -55,7 +55,8 @@ mod test_rescript_format {
     <button> {text->React.string} </button>
   }
 }"#;
-        let output = r#"module Button = {
+        let output = Some(
+            r#"module Button = {
   @react.component
   let make = (~count) => {
     let times = switch count {
@@ -68,14 +69,15 @@ mod test_rescript_format {
     <button> {text->React.string} </button>
   }
 }
-"#;
+"#
+            .to_owned(),
+        );
         let file_ext = crate::fttype::get_file_extension("rescript");
         let snippet =
             crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
         let result = crate::tools::rescript_format::run(snippet.path())
             .expect("it to be successful")
-            .1
-            .expect("it to be some");
+            .1;
         assert_eq!(result, output);
     }
 }

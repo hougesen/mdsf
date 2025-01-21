@@ -39,7 +39,7 @@ pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfEr
 #[cfg(test)]
 mod test_xmllint {
     #[test_with::executable(xmllint)]
-    fn test_xmllint_xml_29dedc18db9d2e97() {
+    fn test_xmllint_xml_8a39bd2662133a88() {
         let input = r#"
 <note>
   <to>Tove</to>
@@ -47,21 +47,23 @@ mod test_xmllint {
       <heading>Reminder</heading>
         <body>Don't forget me this weekend!</body>
    </note>"#;
-        let output = r#"<?xml version="1.0"?>
+        let output = Some(
+            r#"<?xml version="1.0"?>
 <note>
   <to>Tove</to>
   <from>Jani</from>
   <heading>Reminder</heading>
   <body>Don't forget me this weekend!</body>
 </note>
-"#;
+"#
+            .to_owned(),
+        );
         let file_ext = crate::fttype::get_file_extension("xml");
         let snippet =
             crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
         let result = crate::tools::xmllint::run(snippet.path())
             .expect("it to be successful")
-            .1
-            .expect("it to be some");
+            .1;
         assert_eq!(result, output);
     }
 }

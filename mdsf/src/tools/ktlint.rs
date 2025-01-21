@@ -38,12 +38,13 @@ pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfEr
 #[cfg(test)]
 mod test_ktlint {
     #[test_with::executable(ktlint)]
-    fn test_ktlint_kotlin_65d99b8b0b9bf8e1() {
+    fn test_ktlint_kotlin_6b60db8bc8c2a271() {
         let input = r#"            fun add(a:Int ,b:Int ):Int {
                     return a + b
                 }
             "#;
-        let output = r#"
+        let output = Some(
+            r#"
 
 fun add(
     a: Int,
@@ -51,14 +52,15 @@ fun add(
 ): Int {
     return a + b
 }
-"#;
+"#
+            .to_owned(),
+        );
         let file_ext = crate::fttype::get_file_extension("kotlin");
         let snippet =
             crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
         let result = crate::tools::ktlint::run(snippet.path())
             .expect("it to be successful")
-            .1
-            .expect("it to be some");
+            .1;
         assert_eq!(result, output);
     }
 }

@@ -37,7 +37,7 @@ pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfEr
 #[cfg(test)]
 mod test_usort {
     #[test_with::executable(usort)]
-    fn test_usort_python_e2ac93e0195d9bc1() {
+    fn test_usort_python_60a4eb49e083b28f() {
         let input = r#"from q import d
 import b
 import a
@@ -47,7 +47,8 @@ import c
 def add(a: int, b: int) -> int:
   return a + b
 "#;
-        let output = r#"import a
+        let output = Some(
+            r#"import a
 import b
 import c
 from q import d
@@ -55,14 +56,15 @@ from q import d
 
 def add(a: int, b: int) -> int:
   return a + b
-"#;
+"#
+            .to_owned(),
+        );
         let file_ext = crate::fttype::get_file_extension("python");
         let snippet =
             crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
         let result = crate::tools::usort::run(snippet.path())
             .expect("it to be successful")
-            .1
-            .expect("it to be some");
+            .1;
         assert_eq!(result, output);
     }
 }

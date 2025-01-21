@@ -42,21 +42,23 @@ pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfEr
 #[cfg(test)]
 mod test_buf_format {
     #[test_with::executable(npx)]
-    fn test_buf_format_protobuf_10af516c8a015ab5() {
+    fn test_buf_format_protobuf_bbae42b1d9a7bf36() {
         let input = r#"service SearchService {
                               rpc Search (SearchRequest) returns (SearchResponse);
                                }"#;
-        let output = r#"service SearchService {
+        let output = Some(
+            r#"service SearchService {
   rpc Search(SearchRequest) returns (SearchResponse);
 }
-"#;
+"#
+            .to_owned(),
+        );
         let file_ext = crate::fttype::get_file_extension("protobuf");
         let snippet =
             crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
         let result = crate::tools::buf_format::run(snippet.path())
             .expect("it to be successful")
-            .1
-            .expect("it to be some");
+            .1;
         assert_eq!(result, output);
     }
 }

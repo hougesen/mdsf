@@ -37,21 +37,23 @@ pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfEr
 #[cfg(test)]
 mod test_dart_format {
     #[test_with::executable(dart)]
-    fn test_dart_format_dart_1e68d7619b4be391() {
+    fn test_dart_format_dart_d00f785063b3cede() {
         let input = r#"class Adder {   int add(int a, int b) {     return a + b;   } }    "#;
-        let output = r#"class Adder {
+        let output = Some(
+            r#"class Adder {
   int add(int a, int b) {
     return a + b;
   }
 }
-"#;
+"#
+            .to_owned(),
+        );
         let file_ext = crate::fttype::get_file_extension("dart");
         let snippet =
             crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
         let result = crate::tools::dart_format::run(snippet.path())
             .expect("it to be successful")
-            .1
-            .expect("it to be some");
+            .1;
         assert_eq!(result, output);
     }
 }

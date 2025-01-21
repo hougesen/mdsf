@@ -37,21 +37,23 @@ pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfEr
 #[cfg(test)]
 mod test_rufo {
     #[test_with::executable(rufo)]
-    fn test_rufo_ruby_d2b8a6db3c8eee1c() {
+    fn test_rufo_ruby_abe6af1ec08931cd() {
         let input = r#"def   add(  a ,                                                          b )
                         return a + b
                 end"#;
-        let output = r#"def add(a, b)
+        let output = Some(
+            r#"def add(a, b)
   return a + b
 end
-"#;
+"#
+            .to_owned(),
+        );
         let file_ext = crate::fttype::get_file_extension("ruby");
         let snippet =
             crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
         let result = crate::tools::rufo::run(snippet.path())
             .expect("it to be successful")
-            .1
-            .expect("it to be some");
+            .1;
         assert_eq!(result, output);
     }
 }

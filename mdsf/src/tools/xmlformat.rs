@@ -37,7 +37,7 @@ pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfEr
 #[cfg(test)]
 mod test_xmlformat {
     #[test_with::executable(xmlformat)]
-    fn test_xmlformat_xml_5e39abb678e63c0b() {
+    fn test_xmlformat_xml_34659067ca1d8b7c() {
         let input = r#"
 <note>
   <to>Tove</to>
@@ -45,19 +45,21 @@ mod test_xmlformat {
       <heading>Reminder</heading>
         <body>Don't forget me this weekend!</body>
    </note>"#;
-        let output = r#"<note>
+        let output = Some(
+            r#"<note>
   <to>Tove</to>
   <from>Jani</from>
   <heading>Reminder</heading>
   <body>Don't forget me this weekend!</body>
-</note>"#;
+</note>"#
+                .to_owned(),
+        );
         let file_ext = crate::fttype::get_file_extension("xml");
         let snippet =
             crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
         let result = crate::tools::xmlformat::run(snippet.path())
             .expect("it to be successful")
-            .1
-            .expect("it to be some");
+            .1;
         assert_eq!(result, output);
     }
 }
