@@ -5,7 +5,14 @@
   "commands": {
     "": {
       "arguments": ["--fix", "$PATH"],
-      "ignore_output": false
+      "ignore_output": false,
+      "tests": [
+        {
+          "language": "markdown",
+          "test_input": "# Hello world\n\n- asd \n* vasd\n",
+          "test_output": "# Hello world\n\n- asd\n- vasd\n"
+        }
+      ]
     }
   },
   "description": "A fast, flexible, configuration-based command-line interface for linting Markdown/CommonMark files with the markdownlint library",

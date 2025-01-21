@@ -17,7 +17,7 @@ pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfEr
     let commands = [
         CommandType::NodeModules("markdownlint"),
         CommandType::Direct("markdownlint"),
-        CommandType::Npm("markdownlint"),
+        CommandType::Npm("markdownlint-cli"),
     ];
 
     for (index, cmd) in commands.iter().enumerate() {
@@ -39,4 +39,26 @@ pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfEr
 }
 
 #[cfg(test)]
-mod test_markdownlint {}
+mod test_markdownlint {
+    #[test_with::executable(npx)]
+    fn test_markdownlint_markdown_1f615768d8e575c5() {
+        let input = r#"# Hello world
+
+- asd 
+* vasd
+"#;
+        let output = r#"# Hello world
+
+- asd
+- vasd
+"#;
+        let file_ext = crate::fttype::get_file_extension("markdown");
+        let snippet =
+            crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
+        let result = crate::tools::markdownlint::run(snippet.path())
+            .expect("it to be successful")
+            .1
+            .expect("it to be some");
+        assert_eq!(result, output);
+    }
+}

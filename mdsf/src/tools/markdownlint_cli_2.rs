@@ -39,4 +39,26 @@ pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfEr
 }
 
 #[cfg(test)]
-mod test_markdownlint_cli_2 {}
+mod test_markdownlint_cli_2 {
+    #[test_with::executable(npx)]
+    fn test_markdownlint_cli_2_markdown_1f615768d8e575c5() {
+        let input = r#"# Hello world
+
+- asd 
+* vasd
+"#;
+        let output = r#"# Hello world
+
+- asd
+- vasd
+"#;
+        let file_ext = crate::fttype::get_file_extension("markdown");
+        let snippet =
+            crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
+        let result = crate::tools::markdownlint_cli_2::run(snippet.path())
+            .expect("it to be successful")
+            .1
+            .expect("it to be some");
+        assert_eq!(result, output);
+    }
+}
