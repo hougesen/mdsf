@@ -5,11 +5,18 @@
   "commands": {
     "": {
       "arguments": ["--fix", "$PATH"],
-      "ignore_output": false
+      "ignore_output": false,
+      "tests": [
+        {
+          "language": "markdown",
+          "test_input": "# Hello world\n\n- asd \n* vasd\n",
+          "test_output": "# Hello world\n\n- asd\n- vasd\n"
+        }
+      ]
     }
   },
   "description": "A Node.js style checker and lint tool for Markdown/CommonMark files",
   "homepage": "https://github.com/davidanson/markdownlint",
   "languages": ["markdown"],
-  "npm": "markdownlint"
+  "npm": "markdownlint-cli"
 }
