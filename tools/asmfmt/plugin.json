@@ -10,5 +10,8 @@
   },
   "description": "Go Assembler Formatter",
   "homepage": "https://github.com/klauspost/asmfmt",
-  "languages": ["go"]
+  "languages": ["go"],
+  "packages": {
+    "go": "github.com/klauspost/asmfmt/cmd/asmfmt@latest"
+  }
 }

@@ -11,5 +11,8 @@
   "description": "Opinionated code formatter, just like Python's black code formatter but for Beancount",
   "homepage": "https://github.com/LaunchPlatform/beancount-black",
   "languages": ["beancount"],
-  "name": "beancount-black"
+  "name": "beancount-black",
+  "packages": {
+    "pip": "beancount-black"
+  }
 }

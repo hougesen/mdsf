@@ -11,5 +11,8 @@
   "description": "Format ERB files with speed and precision",
   "homepage": "https://github.com/nebulab/erb-formatter",
   "languages": ["erb", "ruby"],
-  "name": "erb-formatter"
+  "name": "erb-formatter",
+  "packages": {
+    "gem": "erb-formatter"
+  }
 }

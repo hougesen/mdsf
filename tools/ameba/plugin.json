@@ -10,5 +10,11 @@
   },
   "description": "A static code analysis tool for Crystal",
   "homepage": "https://github.com/crystal-ameba/ameba",
-  "languages": ["crystal"]
+  "languages": ["crystal"],
+  "packages": {
+    "brew": {
+      "name": "ameba",
+      "tap": "crystal-ameba/ameba"
+    }
+  }
 }

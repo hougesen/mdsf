@@ -10,5 +10,8 @@
   },
   "description": "Dockerfile format and parser. Like `gofmt` but for Dockerfiles",
   "homepage": "https://github.com/jessfraz/dockfmt",
-  "languages": ["docker"]
+  "languages": ["docker"],
+  "packages": {
+    "go": "github.com/jessfraz/dockfmt"
+  }
 }

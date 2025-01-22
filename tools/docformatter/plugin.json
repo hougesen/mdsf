@@ -10,5 +10,8 @@
   },
   "description": "Formats docstrings to follow PEP 257",
   "homepage": "https://pypi.org/project/docformatter/",
-  "languages": ["python"]
+  "languages": ["python"],
+  "packages": {
+    "pip": "docformatter"
+  }
 }

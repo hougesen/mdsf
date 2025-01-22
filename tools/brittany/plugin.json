@@ -9,6 +9,10 @@
     }
   },
   "description": "A Haskell source code formatter",
+  "disable_ci_tests": true,
   "homepage": "https://github.com/lspitzner/brittany",
-  "languages": ["haskell"]
+  "languages": ["haskell"],
+  "packages": {
+    "stack": "brittany"
+  }
 }

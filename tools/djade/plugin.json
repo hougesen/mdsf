@@ -10,5 +10,8 @@
   },
   "description": "A Django template formatter",
   "homepage": "https://github.com/adamchainz/djade",
-  "languages": ["django", "python"]
+  "languages": ["django", "python"],
+  "packages": {
+    "pip": "djade"
+  }
 }

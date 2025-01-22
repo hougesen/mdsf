@@ -58,6 +58,8 @@ jobs:
           ghc-version: latest
       - uses: julia-actions/cache@v2
       - uses: cargo-bins/cargo-binstall@main
+      - name: Install cargo-llvm-cov
+        uses: taiki-e/install-action@cargo-llvm-cov
       - run: rustup toolchain install stable --profile minimal
       - run: rustup component add rustfmt clippy
       - name: pyink
@@ -196,8 +198,6 @@ jobs:
         run: ( ( ( which gem && gem install htmlbeautifier ) ) || echo "Unable to install tool" )
       - name: Run tests
         run: cargo test
-      - name: Install cargo-llvm-cov
-        uses: taiki-e/install-action@cargo-llvm-cov
       - name: Generate code coverage
         run: cargo llvm-cov --all-features --locked --lcov --output-path lcov.info
       - name: Upload code coverage
