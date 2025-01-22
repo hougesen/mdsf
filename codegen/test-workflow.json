@@ -67,7 +67,8 @@
         "cabal-version": "latest"
       }
     },
-    { "uses": "julia-actions/cache@v2" }
+    { "uses": "julia-actions/cache@v2" },
+    { "uses": "cargo-bins/cargo-binstall@main" }
   ],
   "post:uses": [
     { "run": "rustup toolchain install stable --profile minimal" },

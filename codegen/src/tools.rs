@@ -105,7 +105,7 @@ pub struct Tool {
     /// Binary name if installed through composer
     pub php: Option<String>,
 
-    pub testing_disable: Option<bool>,
+    pub disable_ci_tests: Option<bool>,
 }
 
 #[derive(Debug)]
@@ -155,11 +155,10 @@ impl Tool {
 
         let test_fn_name = format!("test_{module_name}_{language}_{id}",);
 
-        let test_output = if let Some(output) = &test.test_output {
-            format!("Some(r#\"{output}\"#.to_owned())")
-        } else {
-            "None".to_owned()
-        };
+        let test_output = test.test_output.as_ref().map_or_else(
+            || "None".to_owned(),
+            |output| format!("Some(r#\"{output}\"#.to_owned())"),
+        );
 
         let test_code = format!(
             "{INDENT}#[test_with::executable({bin})]
@@ -186,6 +185,7 @@ impl Tool {
         (module_name, test_code)
     }
 
+    #[allow(clippy::too_many_lines)]
     fn generate(&self) -> Vec<GeneratedCommand> {
         let mut all_commands = Vec::new();
 
@@ -335,6 +335,7 @@ mod test_{module_name} {{{tests}}}
     }
 }
 
+#[allow(clippy::too_many_lines)]
 pub fn generate(plugins: &[Tool]) -> anyhow::Result<Vec<GeneratedCommand>> {
     let folder = "mdsf/src/tools";
 

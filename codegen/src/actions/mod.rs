@@ -36,7 +36,7 @@ pub fn generate(plugins: &Vec<Tool>) -> anyhow::Result<()> {
 
     steps.append(&mut base_steps.post_uses);
 
-    steps.append(&mut packages::generate_install_steps(plugins)?);
+    steps.append(&mut packages::generate_install_steps(plugins));
 
     steps.append(&mut base_steps.post_packages);
 

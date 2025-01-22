@@ -144,6 +144,9 @@
     "description": {
       "type": "string"
     },
+    "disable_ci_tests": {
+      "type": ["boolean", "null"]
+    },
     "homepage": {
       "type": "string"
     },
@@ -163,9 +166,6 @@
     "php": {
       "description": "Binary name if installed through composer",
       "type": ["string", "null"]
-    },
-    "testing_disable": {
-      "type": ["boolean", "null"]
     }
   },
   "required": [

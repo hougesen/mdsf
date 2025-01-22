@@ -2,7 +2,7 @@ use super::workflow::WorkflowJobsStep;
 use crate::tools::{Tool, ToolPackagesBrew};
 
 fn generate_cargo(tool: &str) -> String {
-    format!("( which cargo && cargo install {tool} )")
+    format!("( which cargo && ( cargo binstall {tool} || cargo install {tool} ) )")
 }
 
 fn generate_gem(tool: &str) -> String {
@@ -67,7 +67,7 @@ fn generate_nimble(tool: &str) -> String {
     format!("( which nimble && nibmle install {tool} )")
 }
 
-pub fn generate_install_steps(tools: &Vec<Tool>) -> anyhow::Result<Vec<WorkflowJobsStep>> {
+pub fn generate_install_steps(tools: &Vec<Tool>) -> Vec<WorkflowJobsStep> {
     let mut steps = Vec::new();
 
     for tool in tools {
@@ -88,7 +88,7 @@ pub fn generate_install_steps(tools: &Vec<Tool>) -> anyhow::Result<Vec<WorkflowJ
             continue;
         }
 
-        if matches!(tool.testing_disable, Some(true)) {
+        if matches!(tool.disable_ci_tests, Some(true)) {
             continue;
         }
 
@@ -171,5 +171,5 @@ pub fn generate_install_steps(tools: &Vec<Tool>) -> anyhow::Result<Vec<WorkflowJ
         }
     }
 
-    Ok(steps)
+    steps
 }

@@ -16,11 +16,11 @@
     }
   },
   "description": "The official (but not yet stable) formatter for Nix code",
+  "disable_ci_tests": true,
   "homepage": "https://github.com/serokell/nixfmt",
   "languages": ["nix"],
   "packages": {
     "cabal": "nixfmt",
     "stack": "nixfmt"
-  },
-  "testing_disable": true
+  }
 }

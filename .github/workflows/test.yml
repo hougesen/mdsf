@@ -57,6 +57,7 @@ jobs:
           cabal-version: latest
           ghc-version: latest
       - uses: julia-actions/cache@v2
+      - uses: cargo-bins/cargo-binstall@main
       - run: rustup toolchain install stable --profile minimal
       - run: rustup component add rustfmt clippy
       - name: pyink
@@ -78,11 +79,11 @@ jobs:
       - name: autoflake
         run: ( ( ( which pipx && pipx install autoflake ) ) || echo "Unable to install tool" )
       - name: stylua
-        run: ( ( ( which npm && npm i -g @johnnymorganz/stylua-bin ) || ( which cargo && cargo install stylua ) ) || echo "Unable to install tool" )
+        run: ( ( ( which npm && npm i -g @johnnymorganz/stylua-bin ) || ( which cargo && ( cargo binstall stylua || cargo install stylua ) ) ) || echo "Unable to install tool" )
       - name: tofu
         run: ( ( ( which brew &&  brew install opentofu ) ) || echo "Unable to install tool" )
       - name: alejandra
-        run: ( ( ( which cargo && cargo install alejandra ) ) || echo "Unable to install tool" )
+        run: ( ( ( which cargo && ( cargo binstall alejandra || cargo install alejandra ) ) ) || echo "Unable to install tool" )
       - name: scalafmt
         run: ( ( ( which cs && cs install scalafmt ) ) || echo "Unable to install tool" )
       - name: sql-formatter
@@ -116,7 +117,7 @@ jobs:
       - name: ktlint
         run: ( ( ( which brew &&  brew install ktlint ) ) || echo "Unable to install tool" )
       - name: just
-        run: ( ( ( which npm && npm i -g rust-just ) || ( which cargo && cargo install just ) || ( which brew &&  brew install just ) || ( which pipx && pipx install rust-just ) ) || echo "Unable to install tool" )
+        run: ( ( ( which npm && npm i -g rust-just ) || ( which cargo && ( cargo binstall just || cargo install just ) ) || ( which brew &&  brew install just ) || ( which pipx && pipx install rust-just ) ) || echo "Unable to install tool" )
       - name: css-beautify
         run: ( ( ( which npm && npm i -g js-beautify ) ) || echo "Unable to install tool" )
       - name: yamlfmt
@@ -128,7 +129,7 @@ jobs:
       - name: markdownlint
         run: ( ( ( which npm && npm i -g markdownlint-cli ) ) || echo "Unable to install tool" )
       - name: efmt
-        run: ( ( ( which cargo && cargo install efmt ) ) || echo "Unable to install tool" )
+        run: ( ( ( which cargo && ( cargo binstall efmt || cargo install efmt ) ) ) || echo "Unable to install tool" )
       - name: shfmt
         run: ( ( ( which go && go install mvdan.cc/sh/v3/cmd/shfmt@latest ) ) || echo "Unable to install tool" )
       - name: terraform
@@ -158,9 +159,9 @@ jobs:
       - name: rescript
         run: ( ( ( which npm && npm i -g rescript ) ) || echo "Unable to install tool" )
       - name: veryl
-        run: ( ( ( which cargo && cargo install veryl ) ) || echo "Unable to install tool" )
+        run: ( ( ( which cargo && ( cargo binstall veryl || cargo install veryl ) ) ) || echo "Unable to install tool" )
       - name: yew-fmt
-        run: ( ( ( which cargo && cargo install yew-fmt ) ) || echo "Unable to install tool" )
+        run: ( ( ( which cargo && ( cargo binstall yew-fmt || cargo install yew-fmt ) ) ) || echo "Unable to install tool" )
       - name: yapf
         run: ( ( ( which pipx && pipx install yapf ) ) || echo "Unable to install tool" )
       - name: autopep8
@@ -168,7 +169,7 @@ jobs:
       - name: usort
         run: ( ( ( which pipx && pipx install usort ) ) || echo "Unable to install tool" )
       - name: nixpkgs-fmt
-        run: ( ( ( which cargo && cargo install nixpkgs-fmt ) ) || echo "Unable to install tool" )
+        run: ( ( ( which cargo && ( cargo binstall nixpkgs-fmt || cargo install nixpkgs-fmt ) ) ) || echo "Unable to install tool" )
       - name: xmlformat
         run: ( ( ( which pipx && pipx install xmlformatter ) ) || echo "Unable to install tool" )
       - name: buf
@@ -180,7 +181,7 @@ jobs:
       - name: brunette
         run: ( ( ( which pipx && pipx install brunette ) ) || echo "Unable to install tool" )
       - name: topiary
-        run: ( ( ( which cargo && cargo install topiary-cli ) ) || echo "Unable to install tool" )
+        run: ( ( ( which cargo && ( cargo binstall topiary-cli || cargo install topiary-cli ) ) ) || echo "Unable to install tool" )
       - name: gofumpt
         run: ( ( ( which go && go install mvdan.cc/gofumpt@latest ) ) || echo "Unable to install tool" )
       - name: npm-groovy-lint
@@ -188,7 +189,7 @@ jobs:
       - name: elm-format
         run: ( ( ( which npm && npm i -g elm-format ) ) || echo "Unable to install tool" )
       - name: typos
-        run: ( ( ( which cargo && cargo install typos-cli ) ) || echo "Unable to install tool" )
+        run: ( ( ( which cargo && ( cargo binstall typos-cli || cargo install typos-cli ) ) ) || echo "Unable to install tool" )
       - name: blade-formatter
         run: ( ( ( which npm && npm i -g blade-formatter ) ) || echo "Unable to install tool" )
       - name: golines
