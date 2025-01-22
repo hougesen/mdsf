@@ -39,6 +39,9 @@ pub struct MdsfConfig {
     #[serde(default)]
     pub javascript_runtime: JavaScriptRuntime,
 
+    #[serde(default)]
+    pub language_aliases: std::collections::BTreeMap<String, std::collections::BTreeSet<String>>,
+
     ///  Defines which formatter is used by the language.
     /// ```json
     /// {
@@ -50,9 +53,6 @@ pub struct MdsfConfig {
     /// ```
     #[serde(default)]
     pub languages: std::collections::BTreeMap<String, MdsfFormatter<Tooling>>,
-
-    #[serde(default)]
-    pub language_aliases: std::collections::BTreeMap<String, std::collections::BTreeSet<String>>,
 }
 
 impl Default for MdsfConfig {
