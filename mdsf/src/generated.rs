@@ -436,6 +436,7 @@ pub fn language_to_ext(language: &str) -> Option<&'static str> {
         "irc" => Some(".irclog"),
         "isabelle" => Some(".thy"),
         "j" => Some(".ijs"),
+        "jai" => Some(".jai"),
         "janet" => Some(".janet"),
         "jasmin" => Some(".j"),
         "java properties" => Some(".properties"),

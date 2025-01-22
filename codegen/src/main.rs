@@ -1,6 +1,7 @@
 use anyhow::{Ok, Result};
 use tools::Tool;
 
+mod actions;
 mod cargo;
 mod language_to_filetype;
 mod readme;
@@ -40,7 +41,9 @@ fn main() -> Result<()> {
 
     language_to_filetype::generate()?;
 
-    readme::generate(plugins, generated_commands)?;
+    readme::generate(&plugins, generated_commands)?;
+
+    actions::generate(&plugins)?;
 
     Ok(())
 }

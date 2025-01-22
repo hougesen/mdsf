@@ -114,6 +114,7 @@ pub mod jsonnetfmt;
 pub mod juliaformatter_jl;
 pub mod just;
 pub mod kcl_fmt;
+pub mod kcl_lint;
 pub mod kdlfmt;
 pub mod kdoc_formatter;
 pub mod ktfmt;
@@ -710,6 +711,10 @@ pub enum Tooling {
     #[serde(rename = "kcl:fmt")]
     /// `kcl fmt $PATH`
     KclFmt,
+
+    #[serde(rename = "kcl:lint")]
+    /// `kcl lint $PATH`
+    KclLint,
 
     #[serde(rename = "kdlfmt")]
     /// `kdlfmt format $PATH`
@@ -1393,6 +1398,7 @@ impl Tooling {
             Self::JuliaformatterJl => juliaformatter_jl::run(snippet_path),
             Self::Just => just::run(snippet_path),
             Self::KclFmt => kcl_fmt::run(snippet_path),
+            Self::KclLint => kcl_lint::run(snippet_path),
             Self::Kdlfmt => kdlfmt::run(snippet_path),
             Self::KdocFormatter => kdoc_formatter::run(snippet_path),
             Self::Ktfmt => ktfmt::run(snippet_path),
@@ -1655,6 +1661,7 @@ impl AsRef<str> for Tooling {
             Self::JuliaformatterJl => "juliaformatter_jl",
             Self::Just => "just",
             Self::KclFmt => "kcl_fmt",
+            Self::KclLint => "kcl_lint",
             Self::Kdlfmt => "kdlfmt",
             Self::KdocFormatter => "kdoc_formatter",
             Self::Ktfmt => "ktfmt",

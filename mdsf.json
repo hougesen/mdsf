@@ -1,5 +1,5 @@
 {
-  "$schema": "https://raw.githubusercontent.com/hougesen/mdsf/main/schemas/v0.4.0/mdsf.schema.json",
+  "$schema": "https://raw.githubusercontent.com/hougesen/mdsf/main/schemas/v0.4.2-dev/mdsf.schema.json",
   "custom_file_extensions": {},
   "format_finished_document": false,
   "javascript_runtime": "node",

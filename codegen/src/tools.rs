@@ -8,7 +8,7 @@ const GENERATED_FILE_COMMENT: &str =
     "///\n/// THIS FILE IS GENERATED USING CODE - DO NOT EDIT MANUALLY\n///";
 
 #[derive(Debug, serde::Deserialize, schemars::JsonSchema, Hash, Clone)]
-#[schemars(deny_unknown_fields)]
+#[serde(deny_unknown_fields)]
 pub struct ToolCommandTest {
     /// Codeblock language used when generating tests
     pub language: String,
@@ -19,7 +19,7 @@ pub struct ToolCommandTest {
 }
 
 #[derive(Debug, serde::Deserialize, schemars::JsonSchema, Clone)]
-#[schemars(deny_unknown_fields)]
+#[serde(deny_unknown_fields)]
 pub struct ToolCommand {
     pub arguments: Vec<String>,
 
@@ -35,8 +35,49 @@ pub struct ToolCommand {
     pub tests: Option<Vec<ToolCommandTest>>,
 }
 
+#[derive(Debug, serde::Deserialize, schemars::JsonSchema, Clone, Default)]
+#[serde(deny_unknown_fields)]
+pub struct ToolPackagesBrew {
+    pub name: String,
+
+    pub tap: Option<String>,
+}
+
+#[derive(Debug, serde::Deserialize, schemars::JsonSchema, Clone, Default)]
+#[serde(deny_unknown_fields)]
+pub struct ToolPackages {
+    pub apt: Option<String>,
+
+    pub brew: Option<ToolPackagesBrew>,
+
+    pub cabal: Option<String>,
+
+    pub cargo: Option<String>,
+
+    pub coursier: Option<String>,
+
+    pub dotnet: Option<String>,
+
+    pub gem: Option<String>,
+
+    pub go: Option<String>,
+
+    pub julia: Option<String>,
+
+    pub luarocks: Option<String>,
+
+    /// Name of package on npm, if published there.
+    pub npm: Option<String>,
+
+    pub opam: Option<String>,
+
+    pub pip: Option<String>,
+
+    pub stack: Option<String>,
+}
+
 #[derive(Debug, serde::Deserialize, schemars::JsonSchema, Clone)]
-#[schemars(deny_unknown_fields)]
+#[serde(deny_unknown_fields)]
 pub struct Tool {
     #[expect(unused)]
     #[serde(rename = "$schema")]
@@ -56,11 +97,13 @@ pub struct Tool {
 
     pub name: Option<String>,
 
-    /// Name of package on npm, if published there.
-    pub npm: Option<String>,
+    #[serde(default)]
+    pub packages: ToolPackages,
 
     /// Binary name if installed through composer
     pub php: Option<String>,
+
+    pub testing_disable: Option<bool>,
 }
 
 #[derive(Debug)]
@@ -129,7 +172,7 @@ impl Tool {
 {INDENT}{INDENT}{INDENT}.1;
 {INDENT}{INDENT}assert_eq!(result, output);
 {INDENT}}}",
-            bin = if self.npm.is_some() {
+            bin = if self.packages.npm.is_some() {
                 "npx"
             } else {
                 &self.binary
@@ -153,7 +196,7 @@ impl Tool {
 
             let mut command_types: Vec<String> = Vec::new();
             {
-                if self.npm.is_some() {
+                if self.packages.npm.is_some() {
                     command_types.push(format!("CommandType::NodeModules(\"{}\")", self.binary));
                 };
 
@@ -163,7 +206,7 @@ impl Tool {
 
                 command_types.push(format!("CommandType::Direct(\"{}\")", self.binary));
 
-                if let Some(npm) = &self.npm {
+                if let Some(npm) = &self.packages.npm {
                     command_types.push(format!("CommandType::Npm(\"{npm}\")"));
                 };
             };

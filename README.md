@@ -98,7 +98,7 @@ brew install hougesen/tap/mdsf
 <!-- START_SECTION:base-command-help -->
 
 ```
-mdsf 0.4.1
+mdsf 0.4.2-dev
 Format markdown code snippets using your favorite code formatters
 Mads Hougesen <mads@mhouge.dk>
 
@@ -426,7 +426,7 @@ mdsf init
 | [swift-format](https://github.com/apple/swift-format)                                   | Formatting technology for Swift source code                                                                                                   | `formatter`           | `swift`                                                                   |
 | [swiftformat](https://github.com/nicklockwood/SwiftFormat)                              | A command-line tool and Xcode Extension for formatting Swift code                                                                             | `formatter`           | `swift`                                                                   |
 | [taplo](https://github.com/tamasfe/taplo)                                               | A TOML toolkit written in Rust                                                                                                                | `formatter`           | `toml`                                                                    |
-| [templ](https://templ.guide/)                                                           | Tooling for the Templ template language                                                                                                       | `formatter`           | `go`, `templ`                                                             |
+| [templ](https://github.com/a-h/templ)                                                   | Tooling for the Templ template language                                                                                                       | `formatter`           | `go`, `templ`                                                             |
 | [terraform](https://www.terraform.io/docs/cli/commands/fmt.html)                        | The terraform fmt command is used to rewrite Terraform configuration files to a canonical format and style                                    | `formatter`           | `terraform`                                                               |
 | [terragrunt](https://terragrunt.gruntwork.io/docs/reference/cli-options/#hclfmt)        | Recursively find hcl files and rewrite them into a canonical format                                                                           | `formatter`           | `hcl`                                                                     |
 | [tex-fmt](https://github.com/WGUNDERWOOD/tex-fmt)                                       | An extremely fast LaTeX formatter written in Rust                                                                                             | `formatter`           | `latex`                                                                   |
