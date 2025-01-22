@@ -16,6 +16,7 @@
     }
   },
   "description": "Nix code formatter for nixpkgs",
+  "disable_ci_tests": true,
   "homepage": "https://github.com/nix-community/nixpkgs-fmt",
   "languages": ["nix"],
   "packages": {

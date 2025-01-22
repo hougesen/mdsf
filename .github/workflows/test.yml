@@ -164,8 +164,6 @@ jobs:
         run: ( ( ( which pipx && pipx install autopep8 ) ) || echo "Unable to install tool" )
       - name: usort
         run: ( ( ( which pipx && pipx install usort ) ) || echo "Unable to install tool" )
-      - name: nixpkgs-fmt
-        run: ( ( ( which cargo && ( cargo binstall nixpkgs-fmt || cargo install nixpkgs-fmt ) ) ) || echo "Unable to install tool" )
       - name: xmlformat
         run: ( ( ( which pipx && pipx install xmlformatter ) ) || echo "Unable to install tool" )
       - name: buf
