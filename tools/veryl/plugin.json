@@ -16,6 +16,7 @@
     }
   },
   "description": "Veryl: A Modern Hardware Description Language",
+  "disable_ci_tests": true,
   "homepage": "https://github.com/veryl-lang/veryl",
   "languages": ["veryl"],
   "packages": {

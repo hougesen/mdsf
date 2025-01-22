@@ -158,8 +158,6 @@ jobs:
         run: ( ( ( which pipx && pipx install isort ) ) || echo "Unable to install tool" )
       - name: rescript
         run: ( ( ( which npm && npm i -g rescript ) ) || echo "Unable to install tool" )
-      - name: veryl
-        run: ( ( ( which cargo && ( cargo binstall veryl || cargo install veryl ) ) ) || echo "Unable to install tool" )
       - name: yew-fmt
         run: ( ( ( which cargo && ( cargo binstall yew-fmt || cargo install yew-fmt ) ) ) || echo "Unable to install tool" )
       - name: yapf

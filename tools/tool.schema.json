@@ -1,15 +1,74 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Tool",
+  "type": "object",
+  "required": [
+    "$schema",
+    "binary",
+    "categories",
+    "commands",
+    "description",
+    "homepage",
+    "languages"
+  ],
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "binary": {
+      "type": "string"
+    },
+    "categories": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    },
+    "commands": {
+      "type": "object",
+      "additionalProperties": {
+        "$ref": "#/definitions/ToolCommand"
+      }
+    },
+    "description": {
+      "type": "string"
+    },
+    "disable_ci_tests": {
+      "type": ["boolean", "null"]
+    },
+    "homepage": {
+      "type": "string"
+    },
+    "languages": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    },
+    "name": {
+      "type": ["string", "null"]
+    },
+    "packages": {
+      "$ref": "#/definitions/ToolPackages"
+    },
+    "php": {
+      "description": "Binary name if installed through composer",
+      "type": ["string", "null"]
+    }
+  },
   "additionalProperties": false,
   "definitions": {
     "ToolCommand": {
-      "additionalProperties": false,
+      "type": "object",
+      "required": ["arguments", "ignore_output"],
       "properties": {
         "arguments": {
+          "type": "array",
           "items": {
             "type": "string"
-          },
-          "type": "array"
+          }
         },
         "description": {
           "type": ["string", "null"]
@@ -22,17 +81,17 @@
           "type": "boolean"
         },
         "tests": {
+          "type": ["array", "null"],
           "items": {
             "$ref": "#/definitions/ToolCommandTest"
-          },
-          "type": ["array", "null"]
+          }
         }
       },
-      "required": ["arguments", "ignore_output"],
-      "type": "object"
+      "additionalProperties": false
     },
     "ToolCommandTest": {
-      "additionalProperties": false,
+      "type": "object",
+      "required": ["language", "test_input"],
       "properties": {
         "language": {
           "description": "Codeblock language used when generating tests",
@@ -45,11 +104,10 @@
           "type": ["string", "null"]
         }
       },
-      "required": ["language", "test_input"],
-      "type": "object"
+      "additionalProperties": false
     },
     "ToolPackages": {
-      "additionalProperties": false,
+      "type": "object",
       "properties": {
         "apt": {
           "type": ["string", "null"]
@@ -105,10 +163,11 @@
           "type": ["string", "null"]
         }
       },
-      "type": "object"
+      "additionalProperties": false
     },
     "ToolPackagesBrew": {
-      "additionalProperties": false,
+      "type": "object",
+      "required": ["name"],
       "properties": {
         "name": {
           "type": "string"
@@ -117,66 +176,7 @@
           "type": ["string", "null"]
         }
       },
-      "required": ["name"],
-      "type": "object"
+      "additionalProperties": false
     }
-  },
-  "properties": {
-    "$schema": {
-      "type": "string"
-    },
-    "binary": {
-      "type": "string"
-    },
-    "categories": {
-      "items": {
-        "type": "string"
-      },
-      "type": "array",
-      "uniqueItems": true
-    },
-    "commands": {
-      "additionalProperties": {
-        "$ref": "#/definitions/ToolCommand"
-      },
-      "type": "object"
-    },
-    "description": {
-      "type": "string"
-    },
-    "disable_ci_tests": {
-      "type": ["boolean", "null"]
-    },
-    "homepage": {
-      "type": "string"
-    },
-    "languages": {
-      "items": {
-        "type": "string"
-      },
-      "type": "array",
-      "uniqueItems": true
-    },
-    "name": {
-      "type": ["string", "null"]
-    },
-    "packages": {
-      "$ref": "#/definitions/ToolPackages"
-    },
-    "php": {
-      "description": "Binary name if installed through composer",
-      "type": ["string", "null"]
-    }
-  },
-  "required": [
-    "$schema",
-    "binary",
-    "categories",
-    "commands",
-    "description",
-    "homepage",
-    "languages"
-  ],
-  "title": "Tool",
-  "type": "object"
+  }
 }
