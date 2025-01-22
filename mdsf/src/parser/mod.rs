@@ -16,7 +16,7 @@ pub fn parse_generic_codeblock(lines: &mut Enumerate<Lines>) -> (bool, String, u
     for (_, subline) in lines.by_ref() {
         snippet_lines += 1;
 
-        if subline.trim_end() == "```" {
+        if subline.trim() == "```" {
             is_snippet = true;
             break;
         }
