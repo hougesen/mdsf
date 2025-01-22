@@ -98,7 +98,7 @@ brew install hougesen/tap/mdsf
 <!-- START_SECTION:base-command-help -->
 
 ```
-mdsf 0.4.1
+mdsf 0.4.2-dev
 Format markdown code snippets using your favorite code formatters
 Mads Hougesen <mads@mhouge.dk>
 

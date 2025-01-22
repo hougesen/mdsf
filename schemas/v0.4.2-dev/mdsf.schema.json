@@ -4,7 +4,7 @@
   "type": "object",
   "properties": {
     "$schema": {
-      "default": "https://raw.githubusercontent.com/hougesen/mdsf/main/schemas/v0.4.1/mdsf.schema.json",
+      "default": "https://raw.githubusercontent.com/hougesen/mdsf/main/schemas/v0.4.2-dev/mdsf.schema.json",
       "type": "string"
     },
     "custom_file_extensions": {
@@ -667,6 +667,11 @@
           "description": "`lua-format -i $PATH`",
           "type": "string",
           "enum": ["luaformatter"]
+        },
+        {
+          "description": "`mado check $PATH`",
+          "type": "string",
+          "enum": ["mado:check"]
         },
         {
           "description": "`markdownfmt -w $PATH`",

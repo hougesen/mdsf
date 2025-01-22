@@ -77,6 +77,7 @@ jobs:
           ghc-version: latest
           cabal-version: latest
           cabal-update: true
+      - uses: cargo-bins/cargo-binstall@main
       - uses: julia-actions/cache@v2
       - run: rustup toolchain install stable --profile minimal
       - run: rustup component add rustfmt clippy
@@ -86,7 +87,7 @@ jobs:
       - name: taplo
         run: taplo --version
       - name: ruff
-        run: pipx install ruff && ruff --version
+        run: curl -LsSf https://astral.sh/ruff/install.sh | sh
       - name: sqlfluff
         run: pipx install sqlfluff && sqlfluff format --version
       - name: biome
@@ -104,7 +105,7 @@ jobs:
       - name: rubocop
         run: gem install rubocop && rubocop --version
       - name: stylua
-        run: cargo install stylua && stylua --version
+        run: cargo binstall stylua && stylua --version
       - name: shfmt
         run: go install mvdan.cc/sh/v3/cmd/shfmt@latest && shfmt --version
       - name: gofumpt
@@ -139,8 +140,8 @@ jobs:
         run: sudo apt-get install -y perltidy && perltidy --version
       - name: goimports
         run: go install golang.org/x/tools/cmd/goimports@latest && which goimports
-      #- name: beautysh
-      #  run: pipx install beautysh && beautysh --version
+      - name: beautysh
+        run: pipx install beautysh && beautysh --version
       - name: cljstyle
         run: curl -sLO https://raw.githubusercontent.com/greglook/cljstyle/main/util/install-cljstyle && chmod +x install-cljstyle && sudo ./install-cljstyle && cljstyle version
       - name: fourmolu
@@ -183,7 +184,7 @@ jobs:
       - name: html-beautify
         run: html-beautify --version
       - name: efmt
-        run: cargo install efmt && efmt --version
+        run: cargo binstall efmt && efmt --version
       - name: golines
         run: go install github.com/segmentio/golines@latest
       - name: grain
@@ -191,19 +192,25 @@ jobs:
       - name: htmlbeautifier
         run: gem install htmlbeautifier
       - name: kdlfmt
-        run: cargo install kdlfmt
+        run: cargo binstall kdlfmt
       - name: kcl
         run: go install kcl-lang.io/cli/cmd/kcl@latest
       - name: typos
-        run: cargo install typos-cli
+        run: cargo binstall typos-cli
       - name: xmllint
         run: sudo apt-get install -y libxml2-utils && xmllint --version
       - name: rubyfmt
         run: (which brew && brew install rubyfmt) || echo "Brew is not setup"
       - name: ormolu
         run: sudo apt-get install -y ormolu && ormolu --version
-      # - name: ocp-indent
-      #   run: sudo apt-get install -y ocp-indent && ocp-indent --version && wget https://raw.githubusercontent.com/OCamlPro/ocp-indent/master/.ocp-indent -O .ocp-indent
+      - name: veryl
+        run: cargo binstall verylup
+      - name: nixpkgs-fmt
+        run: cargo binstall nixpkgs-fmt
+      - name: yew-fmt
+        run: cargo binstall yew-fmt
+      - name: ocp-indent
+        run: sudo apt-get install -y ocp-indent && ocp-indent --version && wget https://raw.githubusercontent.com/OCamlPro/ocp-indent/master/.ocp-indent -O .ocp-indent
       - name: run tests
         run: cargo test
 
