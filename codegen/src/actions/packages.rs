@@ -157,9 +157,14 @@ pub fn generate_install_steps(tools: &Vec<Tool>) -> Vec<WorkflowJobsStep> {
         if install_options.is_empty() {
             println!("Missing install options for {}", tool.binary);
         } else {
+            let binary_name = if ["dotnet", "julia"].contains(&tool.binary.as_str()) {
+                tool.name.as_ref().unwrap_or(&tool.binary)
+            } else {
+                &tool.binary
+            };
+
             let run = format!(
-                "( ( which {} ) || ( {} ) || ( echo \"Unable to install tool\" ) )",
-                tool.binary,
+                "( ( which {binary_name} ) || ( {} ) || ( echo \"Unable to install tool\" ) )",
                 install_options.join(" || ")
             );
 

@@ -111,7 +111,7 @@ jobs:
       - name: pycln
         run: ( ( which pycln ) || ( ( which pipx && pipx install pycln ) ) || ( echo "Unable to install tool" ) )
       - name: dotnet
-        run: ( ( which dotnet ) || ( ( which dotnet && dotnet tool install -g csharpier ) ) || ( echo "Unable to install tool" ) )
+        run: ( ( which csharpier ) || ( ( which dotnet && dotnet tool install -g csharpier ) ) || ( echo "Unable to install tool" ) )
       - name: black
         run: ( ( which black ) || ( ( which pipx && pipx install black ) ) || ( echo "Unable to install tool" ) )
       - name: goimports
@@ -143,7 +143,7 @@ jobs:
       - name: clang-format
         run: ( ( which clang-format ) || ( ( which pipx && pipx install clang-format ) ) || ( echo "Unable to install tool" ) )
       - name: julia
-        run: ( ( which julia ) || ( ( which julia && julia  -e 'import Pkg; Pkg.add("JuliaFormatter")' ) ) || ( echo "Unable to install tool" ) )
+        run: ( ( which juliaformatter.jl ) || ( ( which julia && julia  -e 'import Pkg; Pkg.add("JuliaFormatter")' ) ) || ( echo "Unable to install tool" ) )
       - name: ruff
         run: ( ( which ruff ) || ( ( which pipx && pipx install ruff ) ) || ( echo "Unable to install tool" ) )
       - name: kcl
