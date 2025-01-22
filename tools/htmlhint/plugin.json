@@ -11,5 +11,7 @@
   "description": "The static code analysis tool you need for your HTML",
   "homepage": "https://github.com/HTMLHint/HTMLHint",
   "languages": ["html"],
-  "npm": "htmlhint"
+  "packages": {
+    "npm": "htmlhint"
+  }
 }

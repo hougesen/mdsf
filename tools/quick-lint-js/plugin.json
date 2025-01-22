@@ -11,5 +11,7 @@
   "description": "quick-lint-js finds bugs in JavaScript programs",
   "homepage": "https://github.com/quick-lint/quick-lint-js",
   "languages": ["javascript"],
-  "npm": "quick-lint-js"
+  "packages": {
+    "npm": "quick-lint-js"
+  }
 }

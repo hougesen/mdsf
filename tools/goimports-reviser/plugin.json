@@ -10,5 +10,12 @@
   },
   "description": "Right imports sorting & code formatting tool (goimports alternative)",
   "homepage": "https://github.com/incu6us/goimports-reviser",
-  "languages": ["go"]
+  "languages": ["go"],
+  "packages": {
+    "brew": {
+      "name": "incu6us/homebrew-tap/goimports-reviser",
+      "tap": "incu6us/homebrew-tap"
+    },
+    "go": "github.com/incu6us/goimports-reviser/v3@latest"
+  }
 }

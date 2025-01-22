@@ -18,5 +18,8 @@
   "description": "An Opinionated Code Formatter for C#",
   "homepage": "https://csharpier.com/",
   "languages": ["c#"],
-  "name": "csharpier"
+  "name": "csharpier",
+  "packages": {
+    "dotnet": "csharpier"
+  }
 }

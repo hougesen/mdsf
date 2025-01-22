@@ -36,5 +36,7 @@
   "description": "One toolchain for your web project",
   "homepage": "https://github.com/biomejs/biome",
   "languages": ["javascript", "json", "typescript", "vue"],
-  "npm": "@biomejs/biome"
+  "packages": {
+    "npm": "@biomejs/biome"
+  }
 }

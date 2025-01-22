@@ -17,5 +17,8 @@
   },
   "description": "Pyink is a Python formatter, forked from Black with a few different formatting behaviors",
   "homepage": "https://github.com/google/pyink",
-  "languages": ["python"]
+  "languages": ["python"],
+  "packages": {
+    "pip": "pyink"
+  }
 }

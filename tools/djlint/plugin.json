@@ -10,5 +10,8 @@
   },
   "description": "Lint & Format HTML Templates",
   "homepage": "https://www.djlint.com/",
-  "languages": ["handlebars", "html", "jinja", "mustache", "nunjucks", "twig"]
+  "languages": ["handlebars", "html", "jinja", "mustache", "nunjucks", "twig"],
+  "packages": {
+    "pip": "djlint"
+  }
 }

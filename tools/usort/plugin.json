@@ -17,5 +17,8 @@
   },
   "description": "Safe, minimal import sorting for Python projects",
   "homepage": "https://github.com/facebook/usort",
-  "languages": ["python"]
+  "languages": ["python"],
+  "packages": {
+    "pip": "usort"
+  }
 }

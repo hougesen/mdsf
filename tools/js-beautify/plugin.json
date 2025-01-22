@@ -11,5 +11,7 @@
   "description": "A JavaScript formatter",
   "homepage": "https://github.com/beautifier/js-beautify",
   "languages": ["javascript"],
-  "npm": "js-beautify"
+  "packages": {
+    "npm": "js-beautify"
+  }
 }

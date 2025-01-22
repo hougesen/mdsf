@@ -17,5 +17,8 @@
   },
   "description": "Static checker for GitHub Actions workflow files",
   "homepage": "https://github.com/rhysd/actionlint",
-  "languages": ["yaml"]
+  "languages": ["yaml"],
+  "packages": {
+    "go": "github.com/rhysd/actionlint/cmd/actionlint@latest"
+  }
 }

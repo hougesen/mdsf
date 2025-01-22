@@ -17,5 +17,8 @@
   },
   "description": "goimports updates your Go import lines, adding missing ones and removing unreferenced ones",
   "homepage": "https://pkg.go.dev/golang.org/x/tools/cmd/goimports",
-  "languages": ["go"]
+  "languages": ["go"],
+  "packages": {
+    "go": "golang.org/x/tools/cmd/goimports@latest"
+  }
 }

@@ -11,5 +11,7 @@
   "description": "Find and fix problems in your JavaScript code",
   "homepage": "https://github.com/eslint/eslint/",
   "languages": ["javascript", "typescript"],
-  "npm": "eslint"
+  "packages": {
+    "npm": "eslint"
+  }
 }

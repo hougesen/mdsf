@@ -17,5 +17,8 @@
   },
   "description": "Like gofmt, but for Markdown",
   "homepage": "https://github.com/shurcooL/markdownfmt",
-  "languages": ["markdown"]
+  "languages": ["markdown"],
+  "packages": {
+    "go": "github.com/shurcooL/markdownfmt@latest"
+  }
 }

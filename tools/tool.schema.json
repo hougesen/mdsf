@@ -34,6 +34,9 @@
     "description": {
       "type": "string"
     },
+    "disable_ci_tests": {
+      "type": ["boolean", "null"]
+    },
     "homepage": {
       "type": "string"
     },
@@ -47,9 +50,8 @@
     "name": {
       "type": ["string", "null"]
     },
-    "npm": {
-      "description": "Name of package on npm, if published there.",
-      "type": ["string", "null"]
+    "packages": {
+      "$ref": "#/definitions/ToolPackages"
     },
     "php": {
       "description": "Binary name if installed through composer",
@@ -99,6 +101,78 @@
           "type": "string"
         },
         "test_output": {
+          "type": ["string", "null"]
+        }
+      },
+      "additionalProperties": false
+    },
+    "ToolPackages": {
+      "type": "object",
+      "properties": {
+        "apt": {
+          "type": ["string", "null"]
+        },
+        "brew": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/ToolPackagesBrew"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "cabal": {
+          "type": ["string", "null"]
+        },
+        "cargo": {
+          "type": ["string", "null"]
+        },
+        "coursier": {
+          "type": ["string", "null"]
+        },
+        "dotnet": {
+          "type": ["string", "null"]
+        },
+        "gem": {
+          "type": ["string", "null"]
+        },
+        "go": {
+          "type": ["string", "null"]
+        },
+        "julia": {
+          "type": ["string", "null"]
+        },
+        "luarocks": {
+          "type": ["string", "null"]
+        },
+        "nimble": {
+          "type": ["string", "null"]
+        },
+        "npm": {
+          "description": "Name of package on npm, if published there.",
+          "type": ["string", "null"]
+        },
+        "opam": {
+          "type": ["string", "null"]
+        },
+        "pip": {
+          "type": ["string", "null"]
+        },
+        "stack": {
+          "type": ["string", "null"]
+        }
+      },
+      "additionalProperties": false
+    },
+    "ToolPackagesBrew": {
+      "type": "object",
+      "required": ["name"],
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "tap": {
           "type": ["string", "null"]
         }
       },

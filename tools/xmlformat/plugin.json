@@ -17,5 +17,8 @@
   },
   "description": "Format and compress XML documents",
   "homepage": "https://github.com/pamoller/xmlformatter",
-  "languages": ["xml"]
+  "languages": ["xml"],
+  "packages": {
+    "pip": "xmlformatter"
+  }
 }

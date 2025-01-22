@@ -18,5 +18,8 @@
   "description": "An opinionated Lua code formatter",
   "homepage": "https://github.com/JohnnyMorganz/StyLua",
   "languages": ["lua"],
-  "npm": "@johnnymorganz/stylua-bin"
+  "packages": {
+    "cargo": "stylua",
+    "npm": "@johnnymorganz/stylua-bin"
+  }
 }

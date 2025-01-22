@@ -17,5 +17,10 @@
   },
   "description": "Ruby Autoformatter",
   "homepage": "https://github.com/fables-tales/rubyfmt",
-  "languages": ["ruby"]
+  "languages": ["ruby"],
+  "packages": {
+    "brew": {
+      "name": "rubyfmt"
+    }
+  }
 }

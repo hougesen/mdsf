@@ -18,5 +18,7 @@
   "description": "CSS coding style formatter",
   "homepage": "https://github.com/csscomb/csscomb.js",
   "languages": ["css"],
-  "npm": "csscomb"
+  "packages": {
+    "npm": "csscomb"
+  }
 }

@@ -17,5 +17,8 @@
   },
   "description": "Erlang code formatter",
   "homepage": "https://github.com/sile/efmt",
-  "languages": ["erlang"]
+  "languages": ["erlang"],
+  "packages": {
+    "cargo": "efmt"
+  }
 }

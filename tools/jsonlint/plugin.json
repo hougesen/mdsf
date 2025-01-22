@@ -11,5 +11,7 @@
   "description": "A JSON parser and validator with a CLI",
   "homepage": "https://github.com/zaach/jsonlint",
   "languages": ["json"],
-  "npm": "jsonlint"
+  "packages": {
+    "npm": "jsonlint"
+  }
 }

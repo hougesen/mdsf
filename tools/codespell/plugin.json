@@ -10,5 +10,8 @@
   },
   "description": "Check code for common misspellings",
   "homepage": "https://github.com/codespell-project/codespell",
-  "languages": []
+  "languages": [],
+  "packages": {
+    "pip": "codespell"
+  }
 }

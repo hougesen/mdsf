@@ -1,0 +1,17 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "gdlint",
+  "categories": ["linter"],
+  "commands": {
+    "": {
+      "arguments": ["$PATH"],
+      "ignore_output": false
+    }
+  },
+  "description": "GDScript linter",
+  "homepage": "https://github.com/scony/godot-gdscript-toolkit",
+  "languages": ["gdscript"],
+  "packages": {
+    "pip": "gdtoolkit"
+  }
+}

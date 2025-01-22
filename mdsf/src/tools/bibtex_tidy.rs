@@ -14,7 +14,11 @@ fn set_bibtex_tidy_args(mut cmd: Command, file_path: &std::path::Path) -> Comman
 
 #[inline]
 pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfError> {
-    let commands = [CommandType::Direct("bibtex-tidy")];
+    let commands = [
+        CommandType::NodeModules("bibtex-tidy"),
+        CommandType::Direct("bibtex-tidy"),
+        CommandType::Npm("bibtex-tidy"),
+    ];
 
     for (index, cmd) in commands.iter().enumerate() {
         let cmd = set_bibtex_tidy_args(cmd.build(), file_path);

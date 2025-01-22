@@ -32,7 +32,7 @@ pub fn update_readme(readme: &str, key: &str, value: &str) -> Result<String, reg
     Ok(updated.replace(&first_value, &update))
 }
 
-pub fn generate(plugins: Vec<Tool>, commands: Vec<GeneratedCommand>) -> anyhow::Result<()> {
+pub fn generate(plugins: &[Tool], commands: Vec<GeneratedCommand>) -> anyhow::Result<()> {
     let mut readme = std::fs::read_to_string("./README.md")?;
 
     {
@@ -46,7 +46,7 @@ pub fn generate(plugins: Vec<Tool>, commands: Vec<GeneratedCommand>) -> anyhow::
     }
 
     {
-        let tool_table = tool_table::generate(&plugins);
+        let tool_table = tool_table::generate(plugins);
 
         readme = update_readme(&readme, "supported-tools", &tool_table)?;
     }

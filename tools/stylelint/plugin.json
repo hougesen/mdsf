@@ -11,5 +11,7 @@
   "description": "A mighty CSS linter that helps you avoid errors and enforce conventions",
   "homepage": "https://github.com/stylelint/stylelint",
   "languages": ["css", "scss"],
-  "npm": "stylelint"
+  "packages": {
+    "npm": "stylelint"
+  }
 }

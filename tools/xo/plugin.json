@@ -11,5 +11,7 @@
   "description": "JavaScript/TypeScript linter (ESLint wrapper) with great defaults",
   "homepage": "https://github.com/xojs/xo",
   "languages": ["javascript", "typescript"],
-  "npm": "xo"
+  "packages": {
+    "npm": "xo"
+  }
 }

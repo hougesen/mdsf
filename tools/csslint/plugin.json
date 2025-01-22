@@ -11,5 +11,7 @@
   "description": "Automated linting of Cascading Stylesheets",
   "homepage": "https://github.com/CSSLint/csslint",
   "languages": ["css"],
-  "npm": "csslint"
+  "packages": {
+    "npm": "csslint"
+  }
 }

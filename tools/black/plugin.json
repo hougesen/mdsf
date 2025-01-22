@@ -17,5 +17,8 @@
   },
   "description": "The uncompromising Python code formatter",
   "homepage": "https://github.com/psf/black",
-  "languages": ["python"]
+  "languages": ["python"],
+  "packages": {
+    "pip": "black"
+  }
 }

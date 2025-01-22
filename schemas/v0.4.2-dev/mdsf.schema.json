@@ -1,0 +1,1334 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "MdsfConfig",
+  "type": "object",
+  "properties": {
+    "$schema": {
+      "default": "https://raw.githubusercontent.com/hougesen/mdsf/main/schemas/v0.4.2-dev/mdsf.schema.json",
+      "type": "string"
+    },
+    "custom_file_extensions": {
+      "description": "Used for settings custom file extensions for a given language. ```json { \"custom_file_extensions\": { \"rust\": \".rust\" } } ```",
+      "default": {},
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      }
+    },
+    "format_finished_document": {
+      "description": "Format the processed document with the selected markdown formatter.",
+      "default": false,
+      "type": "boolean"
+    },
+    "javascript_runtime": {
+      "description": "Set npm script runner runtime.\n\nShould be considered experimental since not all tools support being run using Bun/Deno.\n\n`node -> npx`\n\n`bun -> bunx`\n\n`deno -> deno run`",
+      "default": "node",
+      "allOf": [
+        {
+          "$ref": "#/definitions/JavaScriptRuntime"
+        }
+      ]
+    },
+    "languages": {
+      "description": "Defines which formatter is used by the language. ```json { \"languages\": { \"rust\": \"rustfmt\", \"js\": \"prettier\" } } ```",
+      "default": {},
+      "type": "object",
+      "additionalProperties": {
+        "$ref": "#/definitions/MdsfFormatter_for_Tooling"
+      }
+    }
+  },
+  "definitions": {
+    "JavaScriptRuntime": {
+      "type": "string",
+      "enum": ["bun", "deno", "node", "pnpm"]
+    },
+    "MdsfFormatter_for_Tooling": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/Tooling"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MdsfFormatter_for_Tooling"
+          }
+        }
+      ]
+    },
+    "Tooling": {
+      "oneOf": [
+        {
+          "description": "`actionlint $PATH`",
+          "type": "string",
+          "enum": ["actionlint"]
+        },
+        {
+          "description": "`alejandra --quiet $PATH`",
+          "type": "string",
+          "enum": ["alejandra"]
+        },
+        {
+          "description": "`ameba --fix $PATH`",
+          "type": "string",
+          "enum": ["ameba"]
+        },
+        {
+          "description": "`ansible-lint $PATH`",
+          "type": "string",
+          "enum": ["ansible-lint"]
+        },
+        {
+          "description": "`asmfmt -w $PATH`",
+          "type": "string",
+          "enum": ["asmfmt"]
+        },
+        {
+          "description": "`astyle --quiet $PATH`",
+          "type": "string",
+          "enum": ["astyle"]
+        },
+        {
+          "description": "`auto-optional $PATH`",
+          "type": "string",
+          "enum": ["auto-optional"]
+        },
+        {
+          "description": "`autocorrect --fix $PATH`",
+          "type": "string",
+          "enum": ["autocorrect"]
+        },
+        {
+          "description": "`autoflake --quiet --in-place $PATH`",
+          "type": "string",
+          "enum": ["autoflake"]
+        },
+        {
+          "description": "`autopep8 --in-place $PATH`",
+          "type": "string",
+          "enum": ["autopep8"]
+        },
+        {
+          "description": "`bean-black $PATH`",
+          "type": "string",
+          "enum": ["beancount-black"]
+        },
+        {
+          "description": "`beautysh $PATH`",
+          "type": "string",
+          "enum": ["beautysh"]
+        },
+        {
+          "description": "`bibtex-tidy -m $PATH`",
+          "type": "string",
+          "enum": ["bibtex-tidy"]
+        },
+        {
+          "description": "`bicep format $PATH`",
+          "type": "string",
+          "enum": ["bicep:format"]
+        },
+        {
+          "description": "`biome check --write $PATH`",
+          "type": "string",
+          "enum": ["biome:check"]
+        },
+        {
+          "description": "`biome format --write $PATH`",
+          "type": "string",
+          "enum": ["biome:format"]
+        },
+        {
+          "description": "`biome lint --write $PATH`",
+          "type": "string",
+          "enum": ["biome:lint"]
+        },
+        {
+          "description": "`black --quiet $PATH`",
+          "type": "string",
+          "enum": ["black"]
+        },
+        {
+          "description": "`blade-formatter --write $PATH`",
+          "type": "string",
+          "enum": ["blade-formatter"]
+        },
+        {
+          "description": "`blue --quiet $PATH`",
+          "type": "string",
+          "enum": ["blue"]
+        },
+        {
+          "description": "`bpfmt -w $PATH`",
+          "type": "string",
+          "enum": ["bpfmt"]
+        },
+        {
+          "description": "`brittany --write-mode=inplace $PATH`",
+          "type": "string",
+          "enum": ["brittany"]
+        },
+        {
+          "description": "`brunette --quiet $PATH`",
+          "type": "string",
+          "enum": ["brunette"]
+        },
+        {
+          "description": "`bsfmt $PATH --write`",
+          "type": "string",
+          "enum": ["bsfmt"]
+        },
+        {
+          "description": "`bslint --fix $PATH`",
+          "type": "string",
+          "enum": ["bslint"]
+        },
+        {
+          "description": "`buf format --write $PATH`",
+          "type": "string",
+          "enum": ["buf:format"]
+        },
+        {
+          "description": "`buildifier $PATH`",
+          "type": "string",
+          "enum": ["buildifier"]
+        },
+        {
+          "description": "`cabal-fmt --inplace $PATH`",
+          "type": "string",
+          "enum": ["cabal-fmt"]
+        },
+        {
+          "description": "`cabal-prettify $PATH`",
+          "type": "string",
+          "enum": ["cabal-prettify"]
+        },
+        {
+          "description": "`cabal format $PATH`",
+          "type": "string",
+          "enum": ["cabal:format"]
+        },
+        {
+          "description": "`caddy fmt $PATH -w`",
+          "type": "string",
+          "enum": ["caddy:fmt"]
+        },
+        {
+          "description": "`caramel fmt $PATH`",
+          "type": "string",
+          "enum": ["caramel:fmt"]
+        },
+        {
+          "description": "`clang-format -i $PATH`",
+          "type": "string",
+          "enum": ["clang-format"]
+        },
+        {
+          "description": "`clang-tidy --fix $PATH`",
+          "type": "string",
+          "enum": ["clang-tidy"]
+        },
+        {
+          "description": "`cljfmt fix $PATH`",
+          "type": "string",
+          "enum": ["cljfmt:fix"]
+        },
+        {
+          "description": "`cljstyle fix $PATH`",
+          "type": "string",
+          "enum": ["cljstyle"]
+        },
+        {
+          "description": "`cmake-format -i $PATH`",
+          "type": "string",
+          "enum": ["cmake-format"]
+        },
+        {
+          "description": "`codespell $PATH --check-hidden --write-changes`",
+          "type": "string",
+          "enum": ["codespell"]
+        },
+        {
+          "description": "`crlfmt -w $PATH`",
+          "type": "string",
+          "enum": ["crlfmt"]
+        },
+        {
+          "description": "`crystal tool format $PATH`",
+          "type": "string",
+          "enum": ["crystal:format"]
+        },
+        {
+          "description": "`dotnet csharpier $PATH`",
+          "type": "string",
+          "enum": ["csharpier"]
+        },
+        {
+          "description": "`css-beautify -r --type css -f $PATH`",
+          "type": "string",
+          "enum": ["css-beautify"]
+        },
+        {
+          "description": "`csscomb -t $PATH`",
+          "type": "string",
+          "enum": ["csscomb"]
+        },
+        {
+          "description": "`csslint --quiet $PATH`",
+          "type": "string",
+          "enum": ["csslint"]
+        },
+        {
+          "description": "`curlylint -q $PATH`",
+          "type": "string",
+          "enum": ["curlylint"]
+        },
+        {
+          "description": "`d2 fmt $PATH`",
+          "type": "string",
+          "enum": ["d2:fmt"]
+        },
+        {
+          "description": "`dart fix --apply $PATH`",
+          "type": "string",
+          "enum": ["dart:fix"]
+        },
+        {
+          "description": "`dart format $PATH`",
+          "type": "string",
+          "enum": ["dart:format"]
+        },
+        {
+          "description": "`dcm fix $PATH`",
+          "type": "string",
+          "enum": ["dcm:fix"]
+        },
+        {
+          "description": "`dcm format $PATH`",
+          "type": "string",
+          "enum": ["dcm:format"]
+        },
+        {
+          "description": "`deadnix -q --edit $PATH`",
+          "type": "string",
+          "enum": ["deadnix"]
+        },
+        {
+          "description": "`deno fmt --quiet $PATH`",
+          "type": "string",
+          "enum": ["deno:fmt"]
+        },
+        {
+          "description": "`deno lint --fix $PATH`",
+          "type": "string",
+          "enum": ["deno:lint"]
+        },
+        {
+          "description": "`dfmt -i $PATH`",
+          "type": "string",
+          "enum": ["dfmt"]
+        },
+        {
+          "description": "`dhall format $PATH`",
+          "type": "string",
+          "enum": ["dhall"]
+        },
+        {
+          "description": "`djade $PATH`",
+          "type": "string",
+          "enum": ["djade"]
+        },
+        {
+          "description": "`djlint $PATH --reformat`",
+          "type": "string",
+          "enum": ["djlint"]
+        },
+        {
+          "description": "`docformatter --in-place $PATH`",
+          "type": "string",
+          "enum": ["docformatter"]
+        },
+        {
+          "description": "`dockfmt fmt -w $PATH`",
+          "type": "string",
+          "enum": ["dockfmt"]
+        },
+        {
+          "description": "`docstrfmt $PATH`",
+          "type": "string",
+          "enum": ["docstrfmt"]
+        },
+        {
+          "description": "`doctoc $PATH`",
+          "type": "string",
+          "enum": ["doctoc"]
+        },
+        {
+          "description": "`dotenv-linter fix $PATH`",
+          "type": "string",
+          "enum": ["dotenv-linter:fix"]
+        },
+        {
+          "description": "`dprint fmt $PATH`",
+          "type": "string",
+          "enum": ["dprint:fmt"]
+        },
+        {
+          "description": "`ecs check $PATH --fix --no-interaction`",
+          "type": "string",
+          "enum": ["easy-coding-standard"]
+        },
+        {
+          "description": "`efmt -w $PATH`",
+          "type": "string",
+          "enum": ["efmt"]
+        },
+        {
+          "description": "`elm-format --elm-version=0.19 --yes $PATH`",
+          "type": "string",
+          "enum": ["elm-format"]
+        },
+        {
+          "description": "`erb-format $PATH --write`",
+          "type": "string",
+          "enum": ["erb-formatter"]
+        },
+        {
+          "description": "`erlfmt -w $PATH_STRING`",
+          "type": "string",
+          "enum": ["erlfmt"]
+        },
+        {
+          "description": "`eslint --fix $PATH`",
+          "type": "string",
+          "enum": ["eslint"]
+        },
+        {
+          "description": "`fantomas $PATH`",
+          "type": "string",
+          "enum": ["fantomas"]
+        },
+        {
+          "description": "`fish_indent -w $PATH`",
+          "type": "string",
+          "enum": ["fish_indent"]
+        },
+        {
+          "description": "`fixjson -w $PATH`",
+          "type": "string",
+          "enum": ["fixjson"]
+        },
+        {
+          "description": "`floskell $PATH`",
+          "type": "string",
+          "enum": ["floskell"]
+        },
+        {
+          "description": "`fnlfmt $PATH`",
+          "type": "string",
+          "enum": ["fnlfmt"]
+        },
+        {
+          "description": "`forge fmt $PATH`",
+          "type": "string",
+          "enum": ["forge:fmt"]
+        },
+        {
+          "description": "`fourmolu -i $PATH`",
+          "type": "string",
+          "enum": ["fourmolu"]
+        },
+        {
+          "description": "`fprettify $PATH`",
+          "type": "string",
+          "enum": ["fprettify"]
+        },
+        {
+          "description": "`futhark fmt $PATH`",
+          "type": "string",
+          "enum": ["futhark:fmt"]
+        },
+        {
+          "description": "`gci write --skip-generated --skip-vender $PATH`",
+          "type": "string",
+          "enum": ["gci"]
+        },
+        {
+          "description": "`gdformat $PATH`",
+          "type": "string",
+          "enum": ["gdformat"]
+        },
+        {
+          "description": "`gersemi -i -q $PATH`",
+          "type": "string",
+          "enum": ["gersemi"]
+        },
+        {
+          "description": "`gleam format $PATH`",
+          "type": "string",
+          "enum": ["gleam:format"]
+        },
+        {
+          "description": "`gluon fmt $PATH`",
+          "type": "string",
+          "enum": ["gluon:fmt"]
+        },
+        {
+          "description": "`gofmt -w $PATH`",
+          "type": "string",
+          "enum": ["gofmt"]
+        },
+        {
+          "description": "`gofumpt -w $PATH`",
+          "type": "string",
+          "enum": ["gofumpt"]
+        },
+        {
+          "description": "`goimports -w $PATH`",
+          "type": "string",
+          "enum": ["goimports"]
+        },
+        {
+          "description": "`goimports-reviser -format $PATH`",
+          "type": "string",
+          "enum": ["goimports-reviser"]
+        },
+        {
+          "description": "`golines -w $PATH`",
+          "type": "string",
+          "enum": ["golines"]
+        },
+        {
+          "description": "`google-java-format -i $PATH`",
+          "type": "string",
+          "enum": ["google-java-format"]
+        },
+        {
+          "description": "`grain format $PATH -o $PATH`",
+          "type": "string",
+          "enum": ["grain:format"]
+        },
+        {
+          "description": "`hadolint $PATH`",
+          "type": "string",
+          "enum": ["hadolint"]
+        },
+        {
+          "description": "`haml-lint --auto-correct $PATH`",
+          "type": "string",
+          "enum": ["haml-lint"]
+        },
+        {
+          "description": "`hclfmt -w $PATH`",
+          "type": "string",
+          "enum": ["hclfmt"]
+        },
+        {
+          "description": "`hfmt -w $PATH`",
+          "type": "string",
+          "enum": ["hfmt"]
+        },
+        {
+          "description": "`hindent $PATH`",
+          "type": "string",
+          "enum": ["hindent"]
+        },
+        {
+          "description": "`hlint --refactor -i $PATH`",
+          "type": "string",
+          "enum": ["hlint"]
+        },
+        {
+          "description": "`html-beautify -r --type html -f $PATH`",
+          "type": "string",
+          "enum": ["html-beautify"]
+        },
+        {
+          "description": "`htmlbeautifier $PATH`",
+          "type": "string",
+          "enum": ["htmlbeautifier"]
+        },
+        {
+          "description": "`htmlhint $PATH`",
+          "type": "string",
+          "enum": ["htmlhint"]
+        },
+        {
+          "description": "`imba fmt -f $PATH`",
+          "type": "string",
+          "enum": ["imba:fmt"]
+        },
+        {
+          "description": "`inko fmt $PATH`",
+          "type": "string",
+          "enum": ["inko:fmt"]
+        },
+        {
+          "description": "`isort --quiet $PATH`",
+          "type": "string",
+          "enum": ["isort"]
+        },
+        {
+          "description": "`joker --format --write $PATH`",
+          "type": "string",
+          "enum": ["joker"]
+        },
+        {
+          "description": "`js-beautify -r --type js -f $PATH`",
+          "type": "string",
+          "enum": ["js-beautify"]
+        },
+        {
+          "description": "`json5format -r $PATH`",
+          "type": "string",
+          "enum": ["json5format"]
+        },
+        {
+          "description": "`jsona format $PATH`",
+          "type": "string",
+          "enum": ["jsona:format"]
+        },
+        {
+          "description": "`jsona lint $PATH`",
+          "type": "string",
+          "enum": ["jsona:lint"]
+        },
+        {
+          "description": "`jsonlint -i $PATH`",
+          "type": "string",
+          "enum": ["jsonlint"]
+        },
+        {
+          "description": "`jsonnet-lint $PATH`",
+          "type": "string",
+          "enum": ["jsonnet-lint"]
+        },
+        {
+          "description": "`jsonnetfmt -i $PATH`",
+          "type": "string",
+          "enum": ["jsonnetfmt"]
+        },
+        {
+          "description": "`julia -E using JuliaFormatter;format_file(\\\"{$PATH_STRING}\\\")`",
+          "type": "string",
+          "enum": ["juliaformatter.jl"]
+        },
+        {
+          "description": "`just --fmt --unstable --justfile $PATH`",
+          "type": "string",
+          "enum": ["just"]
+        },
+        {
+          "description": "`kcl fmt $PATH`",
+          "type": "string",
+          "enum": ["kcl:fmt"]
+        },
+        {
+          "description": "`kcl lint $PATH`",
+          "type": "string",
+          "enum": ["kcl:lint"]
+        },
+        {
+          "description": "`kdlfmt format $PATH`",
+          "type": "string",
+          "enum": ["kdlfmt"]
+        },
+        {
+          "description": "`kdoc-formatter --quiet $PATH`",
+          "type": "string",
+          "enum": ["kdoc-formatter"]
+        },
+        {
+          "description": "`ktfmt --format --log-level=error $PATH`",
+          "type": "string",
+          "enum": ["ktfmt"]
+        },
+        {
+          "description": "`ktlint --format --log-level=error $PATH`",
+          "type": "string",
+          "enum": ["ktlint"]
+        },
+        {
+          "description": "`kulala-fmt $PATH`",
+          "type": "string",
+          "enum": ["kulala-fmt"]
+        },
+        {
+          "description": "`leptosfmt --quiet $PATH`",
+          "type": "string",
+          "enum": ["leptosfmt"]
+        },
+        {
+          "description": "`liquidsoap-prettier --write $PATH`",
+          "type": "string",
+          "enum": ["liquidsoap-prettier"]
+        },
+        {
+          "description": "`luacheck $PATH`",
+          "type": "string",
+          "enum": ["luacheck"]
+        },
+        {
+          "description": "`lua-format -i $PATH`",
+          "type": "string",
+          "enum": ["luaformatter"]
+        },
+        {
+          "description": "`mado check $PATH`",
+          "type": "string",
+          "enum": ["mado:check"]
+        },
+        {
+          "description": "`markdownfmt -w $PATH`",
+          "type": "string",
+          "enum": ["markdownfmt"]
+        },
+        {
+          "description": "`markdownlint --fix $PATH`",
+          "type": "string",
+          "enum": ["markdownlint"]
+        },
+        {
+          "description": "`markdownlint-cli2 --fix $PATH`",
+          "type": "string",
+          "enum": ["markdownlint-cli2"]
+        },
+        {
+          "description": "`markuplint --fix $PATH`",
+          "type": "string",
+          "enum": ["markuplint"]
+        },
+        {
+          "description": "`mdformat $PATH`",
+          "type": "string",
+          "enum": ["mdformat"]
+        },
+        {
+          "description": "`mdslw $PATH`",
+          "type": "string",
+          "enum": ["mdslw"]
+        },
+        {
+          "description": "`meson fmt -i $PATH`",
+          "type": "string",
+          "enum": ["meson:fmt"]
+        },
+        {
+          "description": "`misspell -w $PATH`",
+          "type": "string",
+          "enum": ["misspell"]
+        },
+        {
+          "description": "`mix format $PATH`",
+          "type": "string",
+          "enum": ["mix:format"]
+        },
+        {
+          "description": "`mojo format -q $PATH`",
+          "type": "string",
+          "enum": ["mojo:format"]
+        },
+        {
+          "description": "`mypy $PATH`",
+          "type": "string",
+          "enum": ["mypy"]
+        },
+        {
+          "description": "`nginxbeautifier $PATH`",
+          "type": "string",
+          "enum": ["nginxbeautifier"]
+        },
+        {
+          "description": "`nginxfmt $PATH`",
+          "type": "string",
+          "enum": ["nginxfmt"]
+        },
+        {
+          "description": "`nickel format $PATH`",
+          "type": "string",
+          "enum": ["nickel:format"]
+        },
+        {
+          "description": "`nimpretty $PATH`",
+          "type": "string",
+          "enum": ["nimpretty"]
+        },
+        {
+          "description": "`nixfmt $PATH`",
+          "type": "string",
+          "enum": ["nixfmt"]
+        },
+        {
+          "description": "`nixpkgs-fmt $PATH`",
+          "type": "string",
+          "enum": ["nixpkgs-fmt"]
+        },
+        {
+          "description": "`nomad fmt $PATH`",
+          "type": "string",
+          "enum": ["nomad:fmt"]
+        },
+        {
+          "description": "`nph $PATH`",
+          "type": "string",
+          "enum": ["nph"]
+        },
+        {
+          "description": "`npm-groovy-lint --format $PATH`",
+          "type": "string",
+          "enum": ["npm-groovy-lint"]
+        },
+        {
+          "description": "`nufmt $PATH`",
+          "type": "string",
+          "enum": ["nufmt"]
+        },
+        {
+          "description": "`ocamlformat --ignore-invalid-option --inplace --enable-outside-detected-project $PATH`",
+          "type": "string",
+          "enum": ["ocamlformat"]
+        },
+        {
+          "description": "`ocp-indent --inplace $PATH`",
+          "type": "string",
+          "enum": ["ocp-indent"]
+        },
+        {
+          "description": "`odinfmt -w $PATH`",
+          "type": "string",
+          "enum": ["odinfmt"]
+        },
+        {
+          "description": "`oelint-adv --fix --nobackup --quiet $PATH`",
+          "type": "string",
+          "enum": ["oelint-adv"]
+        },
+        {
+          "description": "`opa fmt $PATH -w`",
+          "type": "string",
+          "enum": ["opa:fmt"]
+        },
+        {
+          "description": "`ormolu --mode inplace $PATH`",
+          "type": "string",
+          "enum": ["ormolu"]
+        },
+        {
+          "description": "`oxlint --fix $PATH`",
+          "type": "string",
+          "enum": ["oxlint"]
+        },
+        {
+          "description": "`packer fix $PATH`",
+          "type": "string",
+          "enum": ["packer:fix"]
+        },
+        {
+          "description": "`packer fmt $PATH`",
+          "type": "string",
+          "enum": ["packer:fmt"]
+        },
+        {
+          "description": "`perltidy -b $PATH`",
+          "type": "string",
+          "enum": ["perltidy"]
+        },
+        {
+          "description": "`pg_format --inplace $PATH`",
+          "type": "string",
+          "enum": ["pg_format"]
+        },
+        {
+          "description": "`php-cs-fixer fix $PATH`",
+          "type": "string",
+          "enum": ["php-cs-fixer:fix"]
+        },
+        {
+          "description": "`phpcbf $PATH`",
+          "type": "string",
+          "enum": ["phpcbf"]
+        },
+        {
+          "description": "`phpinsights fix $PATH --no-interaction --quiet`",
+          "type": "string",
+          "enum": ["phpinsights:fix"]
+        },
+        {
+          "description": "`pint $PATH`",
+          "type": "string",
+          "enum": ["pint"]
+        },
+        {
+          "description": "`prettier --embedded-language-formatting off --log-level error --write $PATH`",
+          "type": "string",
+          "enum": ["prettier"]
+        },
+        {
+          "description": "`pretty-php $PATH`",
+          "type": "string",
+          "enum": ["pretty-php"]
+        },
+        {
+          "description": "`prettypst $PATH`",
+          "type": "string",
+          "enum": ["prettypst"]
+        },
+        {
+          "description": "`prisma format --schema={$PATH_STRING}`",
+          "type": "string",
+          "enum": ["prisma:format"]
+        },
+        {
+          "description": "`protolint lint -fix $PATH`",
+          "type": "string",
+          "enum": ["protolint"]
+        },
+        {
+          "description": "`ptop $PATH $PATH`",
+          "type": "string",
+          "enum": ["ptop"]
+        },
+        {
+          "description": "`puppet-lint --fix $PATH`",
+          "type": "string",
+          "enum": ["puppet-lint"]
+        },
+        {
+          "description": "`purs-tidy format-in-place $PATH`",
+          "type": "string",
+          "enum": ["purs-tidy"]
+        },
+        {
+          "description": "`purty --write $PATH`",
+          "type": "string",
+          "enum": ["purty"]
+        },
+        {
+          "description": "`pycln --no-gitignore --quiet $PATH`",
+          "type": "string",
+          "enum": ["pycln"]
+        },
+        {
+          "description": "`pycodestyle $PATH`",
+          "type": "string",
+          "enum": ["pycodestyle"]
+        },
+        {
+          "description": "`pyink --quiet $PATH`",
+          "type": "string",
+          "enum": ["pyink"]
+        },
+        {
+          "description": "`pyment -w $PATH`",
+          "type": "string",
+          "enum": ["pyment"]
+        },
+        {
+          "description": "`qmlfmt -w $PATH`",
+          "type": "string",
+          "enum": ["qmlfmt"]
+        },
+        {
+          "description": "`quick-lint-js $PATH`",
+          "type": "string",
+          "enum": ["quick-lint-js"]
+        },
+        {
+          "description": "`raco fmt -i $PATH`",
+          "type": "string",
+          "enum": ["raco:fmt"]
+        },
+        {
+          "description": "`refmt --in-place $PATH`",
+          "type": "string",
+          "enum": ["refmt"]
+        },
+        {
+          "description": "`reformat-gherkin $PATH`",
+          "type": "string",
+          "enum": ["reformat-gherkin"]
+        },
+        {
+          "description": "`regal fix $PATH`",
+          "type": "string",
+          "enum": ["regal:fix"]
+        },
+        {
+          "description": "`regal lint $PATH`",
+          "type": "string",
+          "enum": ["regal:lint"]
+        },
+        {
+          "description": "`reorder-python-imports $PATH`",
+          "type": "string",
+          "enum": ["reorder-python-imports"]
+        },
+        {
+          "description": "`rescript format $PATH`",
+          "type": "string",
+          "enum": ["rescript:format"]
+        },
+        {
+          "description": "`roc format $PATH`",
+          "type": "string",
+          "enum": ["roc:format"]
+        },
+        {
+          "description": "`rstfmt $PATH`",
+          "type": "string",
+          "enum": ["rstfmt"]
+        },
+        {
+          "description": "`rubocop --fix-layout --autocorrect --format quiet $PATH`",
+          "type": "string",
+          "enum": ["rubocop"]
+        },
+        {
+          "description": "`rubyfmt -i $PATH`",
+          "type": "string",
+          "enum": ["rubyfmt"]
+        },
+        {
+          "description": "`ruff check --fix --quiet $PATH`",
+          "type": "string",
+          "enum": ["ruff:check"]
+        },
+        {
+          "description": "`ruff format --quiet $PATH`",
+          "type": "string",
+          "enum": ["ruff:format"]
+        },
+        {
+          "description": "`rufo --simple-exit $PATH`",
+          "type": "string",
+          "enum": ["rufo"]
+        },
+        {
+          "description": "`rune fmt $PATH`",
+          "type": "string",
+          "enum": ["rune:fmt"]
+        },
+        {
+          "description": "`rustfmt --edition 2021 --quiet $PATH`",
+          "type": "string",
+          "enum": ["rustfmt"]
+        },
+        {
+          "description": "`rustywind --write $PATH`",
+          "type": "string",
+          "enum": ["rustywind"]
+        },
+        {
+          "description": "`salt-lint $PATH`",
+          "type": "string",
+          "enum": ["salt-lint"]
+        },
+        {
+          "description": "`scalafmt --quiet --mode any $PATH`",
+          "type": "string",
+          "enum": ["scalafmt"]
+        },
+        {
+          "description": "`scalariform $PATH`",
+          "type": "string",
+          "enum": ["scalariform"]
+        },
+        {
+          "description": "`selene $PATH`",
+          "type": "string",
+          "enum": ["selene"]
+        },
+        {
+          "description": "`shellcheck $PATH`",
+          "type": "string",
+          "enum": ["shellcheck"]
+        },
+        {
+          "description": "`shellharden --transform --replace $PATH`",
+          "type": "string",
+          "enum": ["shellharden"]
+        },
+        {
+          "description": "`shfmt --write $PATH`",
+          "type": "string",
+          "enum": ["shfmt"]
+        },
+        {
+          "description": "`sleek $PATH`",
+          "type": "string",
+          "enum": ["sleek"]
+        },
+        {
+          "description": "`smlfmt --force $PATH`",
+          "type": "string",
+          "enum": ["smlfmt"]
+        },
+        {
+          "description": "`snakefmt $PATH`",
+          "type": "string",
+          "enum": ["snakefmt"]
+        },
+        {
+          "description": "`solhint --quiet --fix --noPrompt $PATH`",
+          "type": "string",
+          "enum": ["solhint"]
+        },
+        {
+          "description": "`sql-formatter --fix $PATH`",
+          "type": "string",
+          "enum": ["sql-formatter"]
+        },
+        {
+          "description": "`sqlfluff fix --dialect ansi $PATH`",
+          "type": "string",
+          "enum": ["sqlfluff:fix"]
+        },
+        {
+          "description": "`sqlfluff format --dialect ansi $PATH`",
+          "type": "string",
+          "enum": ["sqlfluff:format"]
+        },
+        {
+          "description": "`sqlfmt $PATH`",
+          "type": "string",
+          "enum": ["sqlfmt"]
+        },
+        {
+          "description": "`sqruff fix $PATH`",
+          "type": "string",
+          "enum": ["sqruff"]
+        },
+        {
+          "description": "`standard --fix $PATH`",
+          "type": "string",
+          "enum": ["standardjs"]
+        },
+        {
+          "description": "`standardrb --fix $PATH`",
+          "type": "string",
+          "enum": ["standardrb"]
+        },
+        {
+          "description": "`statix check $PATH`",
+          "type": "string",
+          "enum": ["statix:check"]
+        },
+        {
+          "description": "`statix fix $PATH`",
+          "type": "string",
+          "enum": ["statix:fix"]
+        },
+        {
+          "description": "`stylefmt $PATH`",
+          "type": "string",
+          "enum": ["stylefmt"]
+        },
+        {
+          "description": "`stylelint --fix $PATH`",
+          "type": "string",
+          "enum": ["stylelint"]
+        },
+        {
+          "description": "`stylish-haskell --inplace $PATH`",
+          "type": "string",
+          "enum": ["stylish-haskell"]
+        },
+        {
+          "description": "`stylua --verify $PATH`",
+          "type": "string",
+          "enum": ["stylua"]
+        },
+        {
+          "description": "`superhtml fmt $PATH`",
+          "type": "string",
+          "enum": ["superhtml:fmt"]
+        },
+        {
+          "description": "`swift-format --in-place $PATH`",
+          "type": "string",
+          "enum": ["swift-format"]
+        },
+        {
+          "description": "`swiftformat --quiet $PATH`",
+          "type": "string",
+          "enum": ["swiftformat"]
+        },
+        {
+          "description": "`taplo format $PATH`",
+          "type": "string",
+          "enum": ["taplo"]
+        },
+        {
+          "description": "`templ fmt $PATH`",
+          "type": "string",
+          "enum": ["templ:fmt"]
+        },
+        {
+          "description": "`terraform fmt -write=true $PATH`",
+          "type": "string",
+          "enum": ["terraform:fmt"]
+        },
+        {
+          "description": "`terragrunt hclfmt --terragrunt-hclfmt-file $PATH`",
+          "type": "string",
+          "enum": ["terragrunt:hclfmt"]
+        },
+        {
+          "description": "`tex-fmt $PATH`",
+          "type": "string",
+          "enum": ["tex-fmt"]
+        },
+        {
+          "description": "`tlint format $PATH`",
+          "type": "string",
+          "enum": ["tlint:format"]
+        },
+        {
+          "description": "`tofu fmt -write=true $PATH`",
+          "type": "string",
+          "enum": ["tofu:fmt"]
+        },
+        {
+          "description": "`toml-sort -i $PATH`",
+          "type": "string",
+          "enum": ["toml-sort"]
+        },
+        {
+          "description": "`topiary format $PATH`",
+          "type": "string",
+          "enum": ["topiary"]
+        },
+        {
+          "description": "`ts-standard --fix $PATH`",
+          "type": "string",
+          "enum": ["ts-standard"]
+        },
+        {
+          "description": "`tsqllint --fix $PATH`",
+          "type": "string",
+          "enum": ["tsqllint"]
+        },
+        {
+          "description": "`twig-cs-fixer lint $PATH --fix --no-interaction --quiet`",
+          "type": "string",
+          "enum": ["twig-cs-fixer:lint"]
+        },
+        {
+          "description": "`typos -w --no-ignore --hidden $PATH`",
+          "type": "string",
+          "enum": ["typos"]
+        },
+        {
+          "description": "`typstfmt $PATH`",
+          "type": "string",
+          "enum": ["typstfmt"]
+        },
+        {
+          "description": "`typstyle -i $PATH`",
+          "type": "string",
+          "enum": ["typstyle"]
+        },
+        {
+          "description": "`ufmt format $PATH`",
+          "type": "string",
+          "enum": ["ufmt"]
+        },
+        {
+          "description": "`uiua fmt $PATH`",
+          "type": "string",
+          "enum": ["uiua:fmt"]
+        },
+        {
+          "description": "`unimport -r $PATH`",
+          "type": "string",
+          "enum": ["unimport"]
+        },
+        {
+          "description": "`usort format $PATH`",
+          "type": "string",
+          "enum": ["usort"]
+        },
+        {
+          "description": "`v fmt -w $PATH`",
+          "type": "string",
+          "enum": ["v:fmt"]
+        },
+        {
+          "description": "`vacuum lint $PATH`",
+          "type": "string",
+          "enum": ["vacuum:lint"]
+        },
+        {
+          "description": "`veryl fmt $PATH`",
+          "type": "string",
+          "enum": ["veryl:fmt"]
+        },
+        {
+          "description": "`vsg -f $PATH --fix`",
+          "type": "string",
+          "enum": ["vhdl-style-guide"]
+        },
+        {
+          "description": "`wa fmt $PATH`",
+          "type": "string",
+          "enum": ["wa:fmt"]
+        },
+        {
+          "description": "`wfindent $PATH`",
+          "type": "string",
+          "enum": ["wfindent"]
+        },
+        {
+          "description": "`xmlformat --overwrite $PATH`",
+          "type": "string",
+          "enum": ["xmlformat"]
+        },
+        {
+          "description": "`xmllint --format $PATH --output $PATH`",
+          "type": "string",
+          "enum": ["xmllint"]
+        },
+        {
+          "description": "`xo --fix $PATH`",
+          "type": "string",
+          "enum": ["xo"]
+        },
+        {
+          "description": "`yamlfix $PATH`",
+          "type": "string",
+          "enum": ["yamlfix"]
+        },
+        {
+          "description": "`yamlfmt -quiet $PATH`",
+          "type": "string",
+          "enum": ["yamlfmt"]
+        },
+        {
+          "description": "`yapf --in-place $PATH`",
+          "type": "string",
+          "enum": ["yapf"]
+        },
+        {
+          "description": "`yew-fmt --edition 2021 --quiet $PATH`",
+          "type": "string",
+          "enum": ["yew-fmt"]
+        },
+        {
+          "description": "`zig fmt $PATH`",
+          "type": "string",
+          "enum": ["zig:fmt"]
+        },
+        {
+          "description": "`ziggy fmt $PATH`",
+          "type": "string",
+          "enum": ["ziggy:fmt"]
+        },
+        {
+          "description": "`zprint -w $PATH`",
+          "type": "string",
+          "enum": ["zprint"]
+        }
+      ]
+    }
+  }
+}

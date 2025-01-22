@@ -10,5 +10,11 @@
   },
   "description": "Lightning-fast linter for .env files",
   "homepage": "https://github.com/dotenv-linter/dotenv-linter",
-  "languages": ["env"]
+  "languages": ["env"],
+  "packages": {
+    "brew": {
+      "name": "dotenv-linter"
+    },
+    "cargo": "dotenv-linter"
+  }
 }

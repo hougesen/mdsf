@@ -11,5 +11,8 @@
   "description": "A pluggable and configurable code formatting platform written in Rust",
   "homepage": "https://dprint.dev/",
   "languages": [],
-  "npm": "dprint"
+  "packages": {
+    "cargo": "dprint",
+    "npm": "dprint"
+  }
 }

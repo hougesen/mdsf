@@ -11,5 +11,7 @@
   "description": "An HTML linter for all markup developers",
   "homepage": "https://markuplint.dev/",
   "languages": ["html"],
-  "npm": "markuplint"
+  "packages": {
+    "npm": "markuplint"
+  }
 }

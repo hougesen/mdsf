@@ -22,5 +22,8 @@
   },
   "description": "Auto-formatter for OCaml code",
   "homepage": "https://github.com/ocaml-ppx/ocamlformat",
-  "languages": ["ocaml"]
+  "languages": ["ocaml"],
+  "packages": {
+    "opam": "ocamlformat"
+  }
 }

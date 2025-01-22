@@ -11,5 +11,7 @@
   "description": "Oxlint is designed to catch erroneous or useless code without requiring any configurations by default",
   "homepage": "https://oxc.rs/docs/guide/usage/linter.html",
   "languages": ["javascript", "typescript"],
-  "npm": "oxlint"
+  "packages": {
+    "npm": "oxlint"
+  }
 }

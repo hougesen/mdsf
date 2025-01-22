@@ -18,5 +18,7 @@
   "description": "Lint, format and auto-fix your Groovy / Jenkinsfile / Gradle files",
   "homepage": "https://github.com/nvuillam/npm-groovy-lint",
   "languages": ["groovy"],
-  "npm": "npm-groovy-lint"
+  "packages": {
+    "npm": "npm-groovy-lint"
+  }
 }

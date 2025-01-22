@@ -10,5 +10,8 @@
   },
   "description": "A tool for linting and static analysis of Lua code",
   "homepage": "https://github.com/lunarmodules/luacheck",
-  "languages": ["lua"]
+  "languages": ["lua"],
+  "packages": {
+    "luarocks": "luacheck"
+  }
 }

@@ -10,5 +10,8 @@
   },
   "description": "A formatter to make your CMake code the real treasure",
   "homepage": "https://github.com/blankspruce/gersemi",
-  "languages": ["cmake"]
+  "languages": ["cmake"],
+  "packages": {
+    "pip": "gersemi"
+  }
 }

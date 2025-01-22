@@ -10,5 +10,8 @@
   },
   "description": "Cleaner and Formatter for BibTeX files",
   "homepage": "https://github.com/FlamingTempura/bibtex-tidy",
-  "languages": ["bibtex"]
+  "languages": ["bibtex"],
+  "packages": {
+    "npm": "bibtex-tidy"
+  }
 }

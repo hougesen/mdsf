@@ -17,5 +17,8 @@
   },
   "description": "A formatter for Python files",
   "homepage": "https://github.com/google/yapf",
-  "languages": ["python"]
+  "languages": ["python"],
+  "packages": {
+    "pip": "yapf"
+  }
 }

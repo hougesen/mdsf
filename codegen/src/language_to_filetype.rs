@@ -40,6 +40,7 @@ fn build_mapping(languages: std::collections::HashMap<String, LinguishLanguage>)
     let mut seen_languages = std::collections::HashSet::<String>::new();
 
     for (language, ext) in primary.into_iter().chain(secondary.into_iter()) {
+        #[allow(clippy::set_contains_or_insert)]
         if !seen_languages.contains(&language) {
             mappings.push(format!(
                 "{WHITESPACE}{WHITESPACE}\"{language}\" => Some(\"{ext}\"),",

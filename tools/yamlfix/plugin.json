@@ -17,5 +17,8 @@
   },
   "description": "A simple opinionated yaml formatter that keeps your comments",
   "homepage": "https://github.com/lyz-code/yamlfix",
-  "languages": ["yaml"]
+  "languages": ["yaml"],
+  "packages": {
+    "pip": "yamlfix"
+  }
 }

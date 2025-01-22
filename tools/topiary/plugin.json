@@ -17,5 +17,8 @@
   },
   "description": "Topiary aims to be a uniform formatter for simple languages, as part of the Tree-sitter ecosystem",
   "homepage": "https://github.com/tweag/topiary",
-  "languages": []
+  "languages": [],
+  "packages": {
+    "cargo": "topiary-cli"
+  }
 }

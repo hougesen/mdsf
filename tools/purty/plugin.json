@@ -11,5 +11,7 @@
   "description": "PureScript pretty-printer",
   "homepage": "https://gitlab.com/joneshf/purty",
   "languages": ["purescript"],
-  "npm": "purty"
+  "packages": {
+    "npm": "purty"
+  }
 }

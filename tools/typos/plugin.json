@@ -17,5 +17,8 @@
   },
   "description": "Source code spell checker",
   "homepage": "https://github.com/crate-ci/typos",
-  "languages": []
+  "languages": [],
+  "packages": {
+    "cargo": "typos-cli"
+  }
 }

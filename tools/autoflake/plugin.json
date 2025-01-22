@@ -17,5 +17,8 @@
   },
   "description": "Removes unused imports and unused variables as reported by pyflakes",
   "homepage": "https://github.com/pycqa/autoflake",
-  "languages": ["python"]
+  "languages": ["python"],
+  "packages": {
+    "pip": "autoflake"
+  }
 }

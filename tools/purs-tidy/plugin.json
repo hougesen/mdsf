@@ -18,5 +18,7 @@
   "description": "PureScript code formatter",
   "homepage": "https://github.com/natefaubion/purescript-tidy",
   "languages": ["purescript"],
-  "npm": "purs-tidy"
+  "packages": {
+    "npm": "purs-tidy"
+  }
 }

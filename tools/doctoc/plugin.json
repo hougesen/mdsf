@@ -11,5 +11,7 @@
   "description": "Generates table of contents for markdown files",
   "homepage": "https://github.com/thlorenz/doctoc",
   "languages": ["markdown"],
-  "npm": "doctoc"
+  "packages": {
+    "npm": "doctoc"
+  }
 }

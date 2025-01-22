@@ -5,6 +5,8 @@
   "commands": {
     "fmt": {
       "arguments": ["fmt", "$PATH"],
+      "description": "The KCL Format tool supports reformatting KCL files to the standard code style",
+      "homepage": "https://www.kcl-lang.io/docs/tools/cli/kcl/fmt",
       "ignore_output": false,
       "tests": [
         {
@@ -13,9 +15,19 @@
           "test_output": "apiVersion = \"apps/v1\"\r\nkind = \"Deployment\"\r\nmetadata = {\r\n    name = \"nginx\"\r\n    labels.app = \"nginx\"\r\n}\r\nspec = {\r\n    replicas = 3\r\n    selector.matchLabels = metadata.labels\r\n    template.metadata.labels = metadata.labels\r\n    template.spec.containers = [{\r\n        name = metadata.name\r\n        image = \"${metadata.name}:1.14.2\"\r\n        ports = [{containerPort = 80}]\r\n    }]\r\n}\r\n"
         }
       ]
+    },
+    "lint": {
+      "arguments": ["lint", "$PATH"],
+      "description": "The KCL Lint tool supports checking some warning-level defects in KCL code and supports multiple output formats",
+      "homepage": "https://www.kcl-lang.io/docs/tools/cli/kcl/lint",
+      "ignore_output": false,
+      "tests": []
     }
   },
   "description": "KCL Format tool supports reformatting KCL files to the standard code style",
   "homepage": "https://www.kcl-lang.io/docs/tools/cli/kcl/fmt",
-  "languages": ["kcl"]
+  "languages": ["kcl"],
+  "packages": {
+    "go": "kcl-lang.io/cli/cmd/kcl@latest"
+  }
 }

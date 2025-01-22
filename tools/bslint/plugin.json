@@ -11,5 +11,7 @@
   "description": "A linter for BrightScript and BrighterScript",
   "homepage": "https://github.com/rokucommunity/bslint",
   "languages": ["brightscript", "brightscripter"],
-  "npm": "bslint"
+  "packages": {
+    "npm": "bslint"
+  }
 }

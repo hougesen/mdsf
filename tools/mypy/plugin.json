@@ -10,5 +10,8 @@
   },
   "description": "Optional static typing for Python",
   "homepage": "https://github.com/python/mypy",
-  "languages": ["python"]
+  "languages": ["python"],
+  "packages": {
+    "pip": "mypy"
+  }
 }

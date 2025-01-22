@@ -17,5 +17,8 @@
   },
   "description": "A formatter for Haskell source code",
   "homepage": "https://github.com/tweag/ormolu",
-  "languages": ["haskell"]
+  "languages": ["haskell"],
+  "packages": {
+    "apt": "ormolu"
+  }
 }

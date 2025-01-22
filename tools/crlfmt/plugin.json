@@ -10,5 +10,8 @@
   },
   "description": "Formatter for CockroachDB's additions to the Go style guide",
   "homepage": "https://github.com/cockroachdb/crlfmt",
-  "languages": ["go"]
+  "languages": ["go"],
+  "packages": {
+    "go": "github.com/cockroachdb/crlfmt"
+  }
 }

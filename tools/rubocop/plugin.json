@@ -23,5 +23,8 @@
   },
   "description": "A Ruby static code analyzer and formatter, based on the community Ruby style guide",
   "homepage": "https://github.com/rubocop/rubocop",
-  "languages": ["ruby"]
+  "languages": ["ruby"],
+  "packages": {
+    "gem": "rubocop"
+  }
 }

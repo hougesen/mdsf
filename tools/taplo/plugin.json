@@ -18,5 +18,7 @@
   "description": "A TOML toolkit written in Rust",
   "homepage": "https://github.com/tamasfe/taplo",
   "languages": ["toml"],
-  "npm": "@taplo/cli"
+  "packages": {
+    "npm": "@taplo/cli"
+  }
 }

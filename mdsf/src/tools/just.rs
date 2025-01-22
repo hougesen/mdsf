@@ -16,7 +16,11 @@ fn set_just_args(mut cmd: Command, file_path: &std::path::Path) -> Command {
 
 #[inline]
 pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfError> {
-    let commands = [CommandType::Direct("just")];
+    let commands = [
+        CommandType::NodeModules("just"),
+        CommandType::Direct("just"),
+        CommandType::Npm("rust-just"),
+    ];
 
     for (index, cmd) in commands.iter().enumerate() {
         let cmd = set_just_args(cmd.build(), file_path);
@@ -38,7 +42,7 @@ pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfEr
 
 #[cfg(test)]
 mod test_just {
-    #[test_with::executable(just)]
+    #[test_with::executable(npx)]
     fn test_just_just_9737c58292992524() {
         let input = r#"build:
                 cargo build

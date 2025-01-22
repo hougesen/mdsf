@@ -17,5 +17,8 @@
   },
   "description": "A best practice Python code formatter",
   "homepage": "https://github.com/odwyersoftware/brunette",
-  "languages": ["python"]
+  "languages": ["python"],
+  "packages": {
+    "pip": "brunette"
+  }
 }
