@@ -37,7 +37,7 @@ fn generate_brew(tool: &ToolPackagesBrew) -> String {
     let tap = tool
         .tap
         .as_ref()
-        .map(|tap| format!("brew tap {tap} && "))
+        .map(|tap| format!("brew tap {tap} &&"))
         .unwrap_or_default();
 
     format!("( which brew && {} brew install {} )", tap, tool.name)
@@ -64,7 +64,7 @@ fn generate_coursier(tool: &str) -> String {
 }
 
 fn generate_nimble(tool: &str) -> String {
-    format!("( which nimble && nibmle install {tool} )")
+    format!("( which nimble && nimble install {tool} )")
 }
 
 pub fn generate_install_steps(tools: &Vec<Tool>) -> Vec<WorkflowJobsStep> {
@@ -158,7 +158,8 @@ pub fn generate_install_steps(tools: &Vec<Tool>) -> Vec<WorkflowJobsStep> {
             println!("Missing install options for {}", tool.binary);
         } else {
             let run = format!(
-                "( ( {} ) || echo \"Unable to install tool\" )",
+                "( ( which {} ) || ( {} ) || ( echo \"Unable to install tool\" ) )",
+                tool.binary,
                 install_options.join(" || ")
             );
 
