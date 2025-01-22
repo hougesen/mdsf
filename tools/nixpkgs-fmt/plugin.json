@@ -18,5 +18,7 @@
   "description": "Nix code formatter for nixpkgs",
   "homepage": "https://github.com/nix-community/nixpkgs-fmt",
   "languages": ["nix"],
-  "packages": { "cargo": "nixpkgs-fmt" }
+  "packages": {
+    "cargo": "nixpkgs-fmt"
+  }
 }

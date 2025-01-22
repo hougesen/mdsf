@@ -11,5 +11,7 @@
   "description": "nginx config file formatter/beautifier written in Python with no additional dependencies",
   "homepage": "https://github.com/slomkowski/nginx-config-formatter",
   "languages": ["nginx"],
-  "packages": { "pip": "nginxfmt" }
+  "packages": {
+    "pip": "nginxfmt"
+  }
 }

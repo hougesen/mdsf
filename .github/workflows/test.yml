@@ -60,153 +60,153 @@ jobs:
       - run: rustup toolchain install stable --profile minimal
       - run: rustup component add rustfmt clippy
       - name: pyink
-        run: ( which pipx && pipx install pyink )
+        run: ( ( ( which pipx && pipx install pyink ) ) || echo "Unable to install tool" )
       - name: fourmolu
-        run: ( which stack && stack install fourmolu )
+        run: ( ( ( which stack && stack install fourmolu ) || ( which cabal && cabal install fourmolu ) ) || echo "Unable to install tool" )
       - name: purs-tidy
-        run: ( which npm && npm i -g purs-tidy )
+        run: ( ( ( which npm && npm i -g purs-tidy ) ) || echo "Unable to install tool" )
       - name: mado
-        run: ( which brew && brew tap akiomik/mado https://github.com/akiomik/mado.git &&  brew install mado )
+        run: ( ( ( which brew && brew tap akiomik/mado https://github.com/akiomik/mado.git &&  brew install mado ) ) || echo "Unable to install tool" )
       - name: fprettify
-        run: ( which pipx && pipx install fprettify )
+        run: ( ( ( which pipx && pipx install fprettify ) ) || echo "Unable to install tool" )
       - name: fantomas
-        run: ( which dotnet && dotnet tool install -g fantomas )
+        run: ( ( ( which dotnet && dotnet tool install -g fantomas ) ) || echo "Unable to install tool" )
       - name: ocp-indent
-        run: ( which apt-get && sudo apt-get install -y ocp-indent )
+        run: ( ( ( which apt-get && sudo apt-get install -y ocp-indent ) ) || echo "Unable to install tool" )
       - name: csscomb
-        run: ( which npm && npm i -g csscomb )
+        run: ( ( ( which npm && npm i -g csscomb ) ) || echo "Unable to install tool" )
       - name: yamlfix
-        run: ( which pipx && pipx install yamlfix )
+        run: ( ( ( which pipx && pipx install yamlfix ) ) || echo "Unable to install tool" )
       - name: autoflake
-        run: ( which pipx && pipx install autoflake )
+        run: ( ( ( which pipx && pipx install autoflake ) ) || echo "Unable to install tool" )
       - name: stylua
-        run: ( which npm && npm i -g @johnnymorganz/stylua-bin )
+        run: ( ( ( which npm && npm i -g @johnnymorganz/stylua-bin ) || ( which cargo && cargo install stylua ) ) || echo "Unable to install tool" )
       - name: tofu
-        run: ( which brew &&  brew install opentofu )
+        run: ( ( ( which brew &&  brew install opentofu ) ) || echo "Unable to install tool" )
       - name: alejandra
-        run: ( which cargo && cargo install alejandra )
+        run: ( ( ( which cargo && cargo install alejandra ) ) || echo "Unable to install tool" )
       - name: scalafmt
-        run: " (which cs && cs install scalafmt )"
+        run: ( ( ( which cs && cs install scalafmt ) ) || echo "Unable to install tool" )
       - name: sql-formatter
-        run: ( which npm && npm i -g sql-formatter )
+        run: ( ( ( which npm && npm i -g sql-formatter ) ) || echo "Unable to install tool" )
       - name: ormolu
-        run: ( which apt-get && sudo apt-get install -y ormolu )
+        run: ( ( ( which apt-get && sudo apt-get install -y ormolu ) ) || echo "Unable to install tool" )
       - name: prisma
-        run: ( which npm && npm i -g prisma )
+        run: ( ( ( which npm && npm i -g prisma ) ) || echo "Unable to install tool" )
       - name: markdownlint-cli2
-        run: ( which npm && npm i -g markdownlint-cli2 )
+        run: ( ( ( which npm && npm i -g markdownlint-cli2 ) ) || echo "Unable to install tool" )
       - name: blue
-        run: ( which pipx && pipx install blue )
+        run: ( ( ( which pipx && pipx install blue ) ) || echo "Unable to install tool" )
       - name: markdownfmt
-        run: ( which go && go install github.com/shurcooL/markdownfmt@latest )
+        run: ( ( ( which go && go install github.com/shurcooL/markdownfmt@latest ) ) || echo "Unable to install tool" )
       - name: html-beautify
-        run: ( which npm && npm i -g js-beautify )
+        run: ( ( ( which npm && npm i -g js-beautify ) ) || echo "Unable to install tool" )
       - name: rubyfmt
-        run: ( which brew &&  brew install rubyfmt )
+        run: ( ( ( which brew &&  brew install rubyfmt ) ) || echo "Unable to install tool" )
       - name: biome
-        run: ( which npm && npm i -g @biomejs/biome )
+        run: ( ( ( which npm && npm i -g @biomejs/biome ) ) || echo "Unable to install tool" )
       - name: xmllint
-        run: ( which apt-get && sudo apt-get install -y libxml2-utils )
+        run: ( ( ( which apt-get && sudo apt-get install -y libxml2-utils ) ) || echo "Unable to install tool" )
       - name: pycln
-        run: ( which pipx && pipx install pycln )
+        run: ( ( ( which pipx && pipx install pycln ) ) || echo "Unable to install tool" )
       - name: dotnet
-        run: ( which dotnet && dotnet tool install -g csharpier )
+        run: ( ( ( which dotnet && dotnet tool install -g csharpier ) ) || echo "Unable to install tool" )
       - name: black
-        run: ( which pipx && pipx install black )
+        run: ( ( ( which pipx && pipx install black ) ) || echo "Unable to install tool" )
       - name: goimports
-        run: ( which go && go install golang.org/x/tools/cmd/goimports@latest )
+        run: ( ( ( which go && go install golang.org/x/tools/cmd/goimports@latest ) ) || echo "Unable to install tool" )
       - name: ktlint
-        run: ( which brew &&  brew install ktlint )
+        run: ( ( ( which brew &&  brew install ktlint ) ) || echo "Unable to install tool" )
       - name: stylish-haskell
-        run: ( which stack && stack install stylish-haskell )
+        run: ( ( ( which stack && stack install stylish-haskell ) || ( which cabal && cabal install stylish-haskell ) ) || echo "Unable to install tool" )
       - name: just
-        run: ( which npm && npm i -g rust-just )
+        run: ( ( ( which npm && npm i -g rust-just ) || ( which cargo && cargo install just ) || ( which brew &&  brew install just ) || ( which pipx && pipx install rust-just ) ) || echo "Unable to install tool" )
       - name: css-beautify
-        run: ( which npm && npm i -g js-beautify )
+        run: ( ( ( which npm && npm i -g js-beautify ) ) || echo "Unable to install tool" )
       - name: yamlfmt
-        run: ( which go && go install github.com/google/yamlfmt/cmd/yamlfmt@latest )
+        run: ( ( ( which go && go install github.com/google/yamlfmt/cmd/yamlfmt@latest ) ) || echo "Unable to install tool" )
       - name: ktfmt
-        run: ( which brew &&  brew install ktfmt )
+        run: ( ( ( which brew &&  brew install ktfmt ) ) || echo "Unable to install tool" )
       - name: standardrb
-        run: ( which gem && gem install standardrb )
+        run: ( ( ( which gem && gem install standardrb ) ) || echo "Unable to install tool" )
       - name: markdownlint
-        run: ( which npm && npm i -g markdownlint-cli )
+        run: ( ( ( which npm && npm i -g markdownlint-cli ) ) || echo "Unable to install tool" )
       - name: efmt
-        run: ( which cargo && cargo install efmt )
+        run: ( ( ( which cargo && cargo install efmt ) ) || echo "Unable to install tool" )
       - name: shfmt
-        run: ( which go && go install mvdan.cc/sh/v3/cmd/shfmt@latest )
+        run: ( ( ( which go && go install mvdan.cc/sh/v3/cmd/shfmt@latest ) ) || echo "Unable to install tool" )
       - name: terraform
-        run: ( which brew && brew tap hashicorp/tap &&  brew install hashicorp/tap/terraform )
+        run: ( ( ( which brew && brew tap hashicorp/tap &&  brew install hashicorp/tap/terraform ) ) || echo "Unable to install tool" )
       - name: actionlint
-        run: ( which go && go install github.com/rhysd/actionlint/cmd/actionlint@latest )
+        run: ( ( ( which go && go install github.com/rhysd/actionlint/cmd/actionlint@latest ) ) || echo "Unable to install tool" )
       - name: ocamlformat
-        run: ( which opam && eval $(opam env) && opam install ocamlformat )
+        run: ( ( ( which opam && eval $(opam env) && opam install ocamlformat ) ) || echo "Unable to install tool" )
       - name: clang-format
-        run: ( which pipx && pipx install clang-format )
+        run: ( ( ( which pipx && pipx install clang-format ) ) || echo "Unable to install tool" )
       - name: julia
-        run: ( which julia && julia  -e 'import Pkg; Pkg.add("JuliaFormatter")' )
+        run: ( ( ( which julia && julia  -e 'import Pkg; Pkg.add("JuliaFormatter")' ) ) || echo "Unable to install tool" )
       - name: ruff
-        run: ( which pipx && pipx install ruff )
+        run: ( ( ( which pipx && pipx install ruff ) ) || echo "Unable to install tool" )
       - name: kcl
-        run: ( which go && go install kcl-lang.io/cli/cmd/kcl@latest )
+        run: ( ( ( which go && go install kcl-lang.io/cli/cmd/kcl@latest ) ) || echo "Unable to install tool" )
       - name: sqlfluff
-        run: ( which pipx && pipx install sqlfluff )
+        run: ( ( ( which pipx && pipx install sqlfluff ) ) || echo "Unable to install tool" )
       - name: swiftformat
-        run: ( which brew &&  brew install swiftformat )
+        run: ( ( ( which brew &&  brew install swiftformat ) ) || echo "Unable to install tool" )
       - name: auto-optional
-        run: ( which pipx && pipx install auto-optional )
+        run: ( ( ( which pipx && pipx install auto-optional ) ) || echo "Unable to install tool" )
       - name: taplo
-        run: ( which npm && npm i -g @taplo/cli )
+        run: ( ( ( which npm && npm i -g @taplo/cli ) ) || echo "Unable to install tool" )
       - name: nixfmt
-        run: ( which stack && stack install nixfmt )
+        run: ( ( ( which stack && stack install nixfmt ) || ( which cabal && cabal install nixfmt ) ) || echo "Unable to install tool" )
       - name: isort
-        run: ( which pipx && pipx install isort )
+        run: ( ( ( which pipx && pipx install isort ) ) || echo "Unable to install tool" )
       - name: rescript
-        run: ( which npm && npm i -g rescript )
+        run: ( ( ( which npm && npm i -g rescript ) ) || echo "Unable to install tool" )
       - name: veryl
-        run: ( which cargo && cargo install veryl )
+        run: ( ( ( which cargo && cargo install veryl ) ) || echo "Unable to install tool" )
       - name: yew-fmt
-        run: ( which cargo && cargo install yew-fmt )
+        run: ( ( ( which cargo && cargo install yew-fmt ) ) || echo "Unable to install tool" )
       - name: yapf
-        run: ( which pipx && pipx install yapf )
+        run: ( ( ( which pipx && pipx install yapf ) ) || echo "Unable to install tool" )
       - name: autopep8
-        run: ( which pipx && pipx install autopep8 )
+        run: ( ( ( which pipx && pipx install autopep8 ) ) || echo "Unable to install tool" )
       - name: usort
-        run: ( which pipx && pipx install usort )
+        run: ( ( ( which pipx && pipx install usort ) ) || echo "Unable to install tool" )
       - name: nixpkgs-fmt
-        run: ( which cargo && cargo install nixpkgs-fmt )
+        run: ( ( ( which cargo && cargo install nixpkgs-fmt ) ) || echo "Unable to install tool" )
       - name: xmlformat
-        run: ( which pipx && pipx install xmlformatter )
+        run: ( ( ( which pipx && pipx install xmlformatter ) ) || echo "Unable to install tool" )
       - name: hindent
-        run: ( which stack && stack install hindent )
+        run: ( ( ( which stack && stack install hindent ) ) || echo "Unable to install tool" )
       - name: buf
-        run: ( which npm && npm i -g @bufbuild/buf )
+        run: ( ( ( which npm && npm i -g @bufbuild/buf ) ) || echo "Unable to install tool" )
       - name: prettier
-        run: ( which npm && npm i -g prettier )
+        run: ( ( ( which npm && npm i -g prettier ) ) || echo "Unable to install tool" )
       - name: rufo
-        run: ( which gem && gem install rufo )
+        run: ( ( ( which gem && gem install rufo ) ) || echo "Unable to install tool" )
       - name: brunette
-        run: ( which pipx && pipx install brunette )
+        run: ( ( ( which pipx && pipx install brunette ) ) || echo "Unable to install tool" )
       - name: topiary
-        run: ( which cargo && cargo install topiary-cli )
+        run: ( ( ( which cargo && cargo install topiary-cli ) ) || echo "Unable to install tool" )
       - name: gofumpt
-        run: ( which go && go install mvdan.cc/gofumpt@latest )
+        run: ( ( ( which go && go install mvdan.cc/gofumpt@latest ) ) || echo "Unable to install tool" )
       - name: npm-groovy-lint
-        run: ( which npm && npm i -g npm-groovy-lint )
+        run: ( ( ( which npm && npm i -g npm-groovy-lint ) ) || echo "Unable to install tool" )
       - name: elm-format
-        run: ( which npm && npm i -g elm-format )
+        run: ( ( ( which npm && npm i -g elm-format ) ) || echo "Unable to install tool" )
       - name: typos
-        run: ( which cargo && cargo install typos-cli )
+        run: ( ( ( which cargo && cargo install typos-cli ) ) || echo "Unable to install tool" )
       - name: blade-formatter
-        run: ( which npm && npm i -g blade-formatter )
+        run: ( ( ( which npm && npm i -g blade-formatter ) ) || echo "Unable to install tool" )
       - name: golines
-        run: ( which go && go install github.com/segmentio/golines@latest )
+        run: ( ( ( which go && go install github.com/segmentio/golines@latest ) ) || echo "Unable to install tool" )
       - name: stylefmt
-        run: ( which npm && npm i -g stylefmt )
+        run: ( ( ( which npm && npm i -g stylefmt ) ) || echo "Unable to install tool" )
       - name: rubocop
-        run: ( which gem && gem install rubocop )
+        run: ( ( ( which gem && gem install rubocop ) ) || echo "Unable to install tool" )
       - name: htmlbeautifier
-        run: ( which gem && gem install htmlbeautifier )
+        run: ( ( ( which gem && gem install htmlbeautifier ) ) || echo "Unable to install tool" )
       - name: Run tests
         run: cargo test
       - name: Install cargo-llvm-cov

@@ -1,81 +1,66 @@
 use super::workflow::WorkflowJobsStep;
 use crate::tools::{Tool, ToolPackagesBrew};
 
-fn generate_cargo(tool: &Option<String>) -> Option<String> {
-    tool.as_ref()
-        .map(|tool| format!("( which cargo && cargo install {tool} )"))
+fn generate_cargo(tool: &str) -> String {
+    format!("( which cargo && cargo install {tool} )")
 }
 
-fn generate_gem(tool: &Option<String>) -> Option<String> {
-    tool.as_ref()
-        .map(|tool| format!("( which gem && gem install {tool} )"))
+fn generate_gem(tool: &str) -> String {
+    format!("( which gem && gem install {tool} )")
 }
 
-fn generate_julia(tool: &Option<String>) -> Option<String> {
-    tool.as_ref()
-        .map(|tool| format!("( which julia && julia  -e 'import Pkg; Pkg.add(\"{tool}\")' )"))
+fn generate_julia(tool: &str) -> String {
+    format!("( which julia && julia  -e 'import Pkg; Pkg.add(\"{tool}\")' )")
 }
 
-fn generate_apt(tool: &Option<String>) -> Option<String> {
-    tool.as_ref()
-        .map(|tool| format!("( which apt-get && sudo apt-get install -y {tool} )"))
+fn generate_apt(tool: &str) -> String {
+    format!("( which apt-get && sudo apt-get install -y {tool} )")
 }
 
-fn generate_go(tool: &Option<String>) -> Option<String> {
-    tool.as_ref()
-        .map(|tool| format!("( which go && go install {tool} )"))
+fn generate_go(tool: &str) -> String {
+    format!("( which go && go install {tool} )")
 }
 
-fn generate_pip(tool: &Option<String>) -> Option<String> {
-    tool.as_ref()
-        .map(|tool| format!("( which pipx && pipx install {tool} )"))
+fn generate_pip(tool: &str) -> String {
+    format!("( which pipx && pipx install {tool} )")
 }
 
-fn generate_opam(tool: &Option<String>) -> Option<String> {
-    tool.as_ref()
-        .map(|tool| format!("( which opam && eval $(opam env) && opam install {tool} )"))
+fn generate_opam(tool: &str) -> String {
+    format!("( which opam && eval $(opam env) && opam install {tool} )")
 }
 
-fn generate_dotnet(tool: &Option<String>) -> Option<String> {
-    tool.as_ref()
-        .map(|tool| format!("( which dotnet && dotnet tool install -g {tool} )"))
+fn generate_dotnet(tool: &str) -> String {
+    format!("( which dotnet && dotnet tool install -g {tool} )")
 }
 
-fn generate_brew(tool: &Option<ToolPackagesBrew>) -> Option<String> {
-    tool.as_ref().map(|tool| {
-        let tap = tool
-            .tap
-            .as_ref()
-            .map(|tap| format!("brew tap {tap} && "))
-            .unwrap_or_default();
+fn generate_brew(tool: &ToolPackagesBrew) -> String {
+    let tap = tool
+        .tap
+        .as_ref()
+        .map(|tap| format!("brew tap {tap} && "))
+        .unwrap_or_default();
 
-        format!("( which brew && {} brew install {} )", tap, tool.name)
-    })
+    format!("( which brew && {} brew install {} )", tap, tool.name)
 }
 
-fn generate_luarocks(tool: &Option<String>) -> Option<String> {
-    tool.as_ref()
-        .map(|tool| format!("( which luarocks && luarocks install {tool} )"))
+fn generate_luarocks(tool: &str) -> String {
+    format!("( which luarocks && luarocks install {tool} )")
 }
 
-fn generate_cabal(tool: &Option<String>) -> Option<String> {
-    tool.as_ref()
-        .map(|tool| format!("( which cabal && cabal install {tool} )"))
+fn generate_cabal(tool: &str) -> String {
+    format!("( which cabal && cabal install {tool} )")
 }
 
-fn generate_stack(tool: &Option<String>) -> Option<String> {
-    tool.as_ref()
-        .map(|tool| format!("( which stack && stack install {tool} )"))
+fn generate_stack(tool: &str) -> String {
+    format!("( which stack && stack install {tool} )")
 }
 
-fn generate_npm(tool: &Option<String>) -> Option<String> {
-    tool.as_ref()
-        .map(|tool| format!("( which npm && npm i -g {tool} )"))
+fn generate_npm(tool: &str) -> String {
+    format!("( which npm && npm i -g {tool} )")
 }
 
-fn generate_coursier(tool: &Option<String>) -> Option<String> {
-    tool.as_ref()
-        .map(|tool| format!(" (which cs && cs install {tool} )"))
+fn generate_coursier(tool: &str) -> String {
+    format!("( which cs && cs install {tool} )")
 }
 
 pub fn generate_install_steps(tools: &Vec<Tool>) -> anyhow::Result<Vec<WorkflowJobsStep>> {
@@ -103,30 +88,71 @@ pub fn generate_install_steps(tools: &Vec<Tool>) -> anyhow::Result<Vec<WorkflowJ
             continue;
         }
 
-        let run = generate_npm(&tool.packages.npm)
-            .or_else(|| generate_go(&tool.packages.go))
-            .or_else(|| generate_cargo(&tool.packages.cargo))
-            .or_else(|| generate_brew(&tool.packages.brew))
-            .or_else(|| generate_apt(&tool.packages.apt))
-            .or_else(|| generate_gem(&tool.packages.gem))
-            .or_else(|| generate_pip(&tool.packages.pip))
-            .or_else(|| generate_dotnet(&tool.packages.dotnet))
-            .or_else(|| generate_luarocks(&tool.packages.luarocks))
-            .or_else(|| generate_stack(&tool.packages.stack))
-            .or_else(|| generate_cabal(&tool.packages.cabal))
-            .or_else(|| generate_opam(&tool.packages.opam))
-            .or_else(|| generate_coursier(&tool.packages.coursier))
-            .or_else(|| generate_julia(&tool.packages.julia));
+        let mut install_options = Vec::new();
 
-        if run.is_none() {
-            println!("Missing package for {}", tool.binary);
+        if let Some(npm) = &tool.packages.npm {
+            install_options.push(generate_npm(npm));
         }
 
-        if let Some(run) = run {
-            if run.starts_with("npm") {
-                // We are skipping npm for now
-                continue;
-            }
+        if let Some(go) = &tool.packages.go {
+            install_options.push(generate_go(go));
+        }
+
+        if let Some(cargo) = &tool.packages.cargo {
+            install_options.push(generate_cargo(cargo));
+        }
+
+        if let Some(brew) = &tool.packages.brew {
+            install_options.push(generate_brew(brew));
+        }
+
+        if let Some(apt) = &tool.packages.apt {
+            install_options.push(generate_apt(apt));
+        }
+
+        if let Some(gem) = &tool.packages.gem {
+            install_options.push(generate_gem(gem));
+        }
+
+        if let Some(pip) = &tool.packages.pip {
+            install_options.push(generate_pip(pip));
+        }
+
+        if let Some(dotnet) = &tool.packages.dotnet {
+            install_options.push(generate_dotnet(dotnet));
+        }
+
+        if let Some(luarocks) = &tool.packages.luarocks {
+            install_options.push(generate_luarocks(luarocks));
+        }
+
+        if let Some(stack) = &tool.packages.stack {
+            install_options.push(generate_stack(stack));
+        }
+
+        if let Some(cabal) = &tool.packages.cabal {
+            install_options.push(generate_cabal(cabal));
+        }
+
+        if let Some(opam) = &tool.packages.opam {
+            install_options.push(generate_opam(opam));
+        }
+
+        if let Some(coursier) = &tool.packages.coursier {
+            install_options.push(generate_coursier(coursier));
+        }
+
+        if let Some(julia) = &tool.packages.julia {
+            install_options.push(generate_julia(julia));
+        }
+
+        if install_options.is_empty() {
+            println!("Missing install options for {}", tool.binary);
+        } else {
+            let run = format!(
+                "( ( {} ) || echo \"Unable to install tool\" )",
+                install_options.join(" || ")
+            );
 
             steps.push(WorkflowJobsStep {
                 name: Some(tool.binary.clone()),

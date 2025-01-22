@@ -19,7 +19,7 @@
   "homepage": "https://github.com/haskell/stylish-haskell",
   "languages": ["haskell"],
   "packages": {
-    "stack": "stylish-haskell",
-    "cabal": "stylish-haskell"
+    "cabal": "stylish-haskell",
+    "stack": "stylish-haskell"
   }
 }

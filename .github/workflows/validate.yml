@@ -27,4 +27,3 @@ jobs:
       - run: cargo fetch
       - run: cargo fmt -- --check --color always
       - run: cargo clippy
-      - run: cargo test

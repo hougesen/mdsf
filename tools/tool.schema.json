@@ -1,74 +1,15 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "title": "Tool",
-  "type": "object",
-  "required": [
-    "$schema",
-    "binary",
-    "categories",
-    "commands",
-    "description",
-    "homepage",
-    "languages"
-  ],
-  "properties": {
-    "$schema": {
-      "type": "string"
-    },
-    "binary": {
-      "type": "string"
-    },
-    "categories": {
-      "type": "array",
-      "items": {
-        "type": "string"
-      },
-      "uniqueItems": true
-    },
-    "commands": {
-      "type": "object",
-      "additionalProperties": {
-        "$ref": "#/definitions/ToolCommand"
-      }
-    },
-    "description": {
-      "type": "string"
-    },
-    "homepage": {
-      "type": "string"
-    },
-    "languages": {
-      "type": "array",
-      "items": {
-        "type": "string"
-      },
-      "uniqueItems": true
-    },
-    "name": {
-      "type": ["string", "null"]
-    },
-    "packages": {
-      "$ref": "#/definitions/ToolPackages"
-    },
-    "php": {
-      "description": "Binary name if installed through composer",
-      "type": ["string", "null"]
-    },
-    "testing_disable": {
-      "type": ["boolean", "null"]
-    }
-  },
   "additionalProperties": false,
   "definitions": {
     "ToolCommand": {
-      "type": "object",
-      "required": ["arguments", "ignore_output"],
+      "additionalProperties": false,
       "properties": {
         "arguments": {
-          "type": "array",
           "items": {
             "type": "string"
-          }
+          },
+          "type": "array"
         },
         "description": {
           "type": ["string", "null"]
@@ -81,17 +22,17 @@
           "type": "boolean"
         },
         "tests": {
-          "type": ["array", "null"],
           "items": {
             "$ref": "#/definitions/ToolCommandTest"
-          }
+          },
+          "type": ["array", "null"]
         }
       },
-      "additionalProperties": false
+      "required": ["arguments", "ignore_output"],
+      "type": "object"
     },
     "ToolCommandTest": {
-      "type": "object",
-      "required": ["language", "test_input"],
+      "additionalProperties": false,
       "properties": {
         "language": {
           "description": "Codeblock language used when generating tests",
@@ -104,10 +45,11 @@
           "type": ["string", "null"]
         }
       },
-      "additionalProperties": false
+      "required": ["language", "test_input"],
+      "type": "object"
     },
     "ToolPackages": {
-      "type": "object",
+      "additionalProperties": false,
       "properties": {
         "apt": {
           "type": ["string", "null"]
@@ -160,11 +102,10 @@
           "type": ["string", "null"]
         }
       },
-      "additionalProperties": false
+      "type": "object"
     },
     "ToolPackagesBrew": {
-      "type": "object",
-      "required": ["name"],
+      "additionalProperties": false,
       "properties": {
         "name": {
           "type": "string"
@@ -173,7 +114,66 @@
           "type": ["string", "null"]
         }
       },
-      "additionalProperties": false
+      "required": ["name"],
+      "type": "object"
     }
-  }
+  },
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "binary": {
+      "type": "string"
+    },
+    "categories": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array",
+      "uniqueItems": true
+    },
+    "commands": {
+      "additionalProperties": {
+        "$ref": "#/definitions/ToolCommand"
+      },
+      "type": "object"
+    },
+    "description": {
+      "type": "string"
+    },
+    "homepage": {
+      "type": "string"
+    },
+    "languages": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array",
+      "uniqueItems": true
+    },
+    "name": {
+      "type": ["string", "null"]
+    },
+    "packages": {
+      "$ref": "#/definitions/ToolPackages"
+    },
+    "php": {
+      "description": "Binary name if installed through composer",
+      "type": ["string", "null"]
+    },
+    "testing_disable": {
+      "type": ["boolean", "null"]
+    }
+  },
+  "required": [
+    "$schema",
+    "binary",
+    "categories",
+    "commands",
+    "description",
+    "homepage",
+    "languages"
+  ],
+  "title": "Tool",
+  "type": "object"
 }
