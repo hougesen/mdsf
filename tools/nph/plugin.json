@@ -10,5 +10,8 @@
   },
   "description": "An opinionated code formatter for Nim",
   "homepage": "https://github.com/arnetheduck/nph",
-  "languages": ["nim"]
+  "languages": ["nim"],
+  "packages": {
+    "nimble": "nph"
+  }
 }

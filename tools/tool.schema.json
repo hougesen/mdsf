@@ -88,6 +88,9 @@
         "luarocks": {
           "type": ["string", "null"]
         },
+        "nimble": {
+          "type": ["string", "null"]
+        },
         "npm": {
           "description": "Name of package on npm, if published there.",
           "type": ["string", "null"]

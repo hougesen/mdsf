@@ -10,5 +10,8 @@
   },
   "description": "Rewrites source to reorder python imports",
   "homepage": "https://github.com/asottile/reorder-python-imports",
-  "languages": ["python"]
+  "languages": ["python"],
+  "packages": {
+    "pip": "reorder-python-imports"
+  }
 }

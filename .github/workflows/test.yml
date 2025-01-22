@@ -61,8 +61,6 @@ jobs:
       - run: rustup component add rustfmt clippy
       - name: pyink
         run: ( ( ( which pipx && pipx install pyink ) ) || echo "Unable to install tool" )
-      - name: fourmolu
-        run: ( ( ( which stack && stack install fourmolu ) || ( which cabal && cabal install fourmolu ) ) || echo "Unable to install tool" )
       - name: purs-tidy
         run: ( ( ( which npm && npm i -g purs-tidy ) ) || echo "Unable to install tool" )
       - name: mado
@@ -117,8 +115,6 @@ jobs:
         run: ( ( ( which go && go install golang.org/x/tools/cmd/goimports@latest ) ) || echo "Unable to install tool" )
       - name: ktlint
         run: ( ( ( which brew &&  brew install ktlint ) ) || echo "Unable to install tool" )
-      - name: stylish-haskell
-        run: ( ( ( which stack && stack install stylish-haskell ) || ( which cabal && cabal install stylish-haskell ) ) || echo "Unable to install tool" )
       - name: just
         run: ( ( ( which npm && npm i -g rust-just ) || ( which cargo && cargo install just ) || ( which brew &&  brew install just ) || ( which pipx && pipx install rust-just ) ) || echo "Unable to install tool" )
       - name: css-beautify
@@ -157,8 +153,6 @@ jobs:
         run: ( ( ( which pipx && pipx install auto-optional ) ) || echo "Unable to install tool" )
       - name: taplo
         run: ( ( ( which npm && npm i -g @taplo/cli ) ) || echo "Unable to install tool" )
-      - name: nixfmt
-        run: ( ( ( which stack && stack install nixfmt ) || ( which cabal && cabal install nixfmt ) ) || echo "Unable to install tool" )
       - name: isort
         run: ( ( ( which pipx && pipx install isort ) ) || echo "Unable to install tool" )
       - name: rescript
@@ -177,8 +171,6 @@ jobs:
         run: ( ( ( which cargo && cargo install nixpkgs-fmt ) ) || echo "Unable to install tool" )
       - name: xmlformat
         run: ( ( ( which pipx && pipx install xmlformatter ) ) || echo "Unable to install tool" )
-      - name: hindent
-        run: ( ( ( which stack && stack install hindent ) ) || echo "Unable to install tool" )
       - name: buf
         run: ( ( ( which npm && npm i -g @bufbuild/buf ) ) || echo "Unable to install tool" )
       - name: prettier

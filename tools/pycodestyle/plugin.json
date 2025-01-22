@@ -10,5 +10,8 @@
   },
   "description": "Simple Python style checker in one Python file",
   "homepage": "https://github.com/PyCQA/pycodestyle",
-  "languages": ["python"]
+  "languages": ["python"],
+  "packages": {
+    "pip": "pycodestyle"
+  }
 }

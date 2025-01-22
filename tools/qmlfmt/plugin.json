@@ -10,5 +10,10 @@
   },
   "description": "qmlfmt - command line application that formats QML files",
   "homepage": "https://github.com/jesperhh/qmlfmt",
-  "languages": ["qml"]
+  "languages": ["qml"],
+  "packages": {
+    "brew": {
+      "name": "martindelille/tap/qmlfmt"
+    }
+  }
 }

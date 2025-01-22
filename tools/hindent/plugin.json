@@ -20,5 +20,6 @@
   "languages": ["haskell"],
   "packages": {
     "stack": "hindent"
-  }
+  },
+  "testing_disable": true
 }

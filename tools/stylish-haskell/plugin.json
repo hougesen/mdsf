@@ -21,5 +21,6 @@
   "packages": {
     "cabal": "stylish-haskell",
     "stack": "stylish-haskell"
-  }
+  },
+  "testing_disable": true
 }

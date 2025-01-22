@@ -66,6 +66,8 @@ pub struct ToolPackages {
 
     pub luarocks: Option<String>,
 
+    pub nimble: Option<String>,
+
     /// Name of package on npm, if published there.
     pub npm: Option<String>,
 

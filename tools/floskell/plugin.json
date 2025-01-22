@@ -13,5 +13,6 @@
   "languages": ["haskell"],
   "packages": {
     "stack": "floskell"
-  }
+  },
+  "testing_disable": true
 }

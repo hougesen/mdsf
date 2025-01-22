@@ -10,5 +10,8 @@
   },
   "description": "A formatter for the leptos view! macro",
   "homepage": "https://github.com/bram209/leptosfmt",
-  "languages": ["rust"]
+  "languages": ["rust"],
+  "packages": {
+    "cargo": "leptosfmt"
+  }
 }

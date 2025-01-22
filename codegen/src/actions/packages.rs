@@ -63,6 +63,10 @@ fn generate_coursier(tool: &str) -> String {
     format!("( which cs && cs install {tool} )")
 }
 
+fn generate_nimble(tool: &str) -> String {
+    format!("( which nimble && nibmle install {tool} )")
+}
+
 pub fn generate_install_steps(tools: &Vec<Tool>) -> anyhow::Result<Vec<WorkflowJobsStep>> {
     let mut steps = Vec::new();
 
@@ -140,6 +144,10 @@ pub fn generate_install_steps(tools: &Vec<Tool>) -> anyhow::Result<Vec<WorkflowJ
 
         if let Some(coursier) = &tool.packages.coursier {
             install_options.push(generate_coursier(coursier));
+        }
+
+        if let Some(nimble) = &tool.packages.nimble {
+            install_options.push(generate_nimble(nimble));
         }
 
         if let Some(julia) = &tool.packages.julia {

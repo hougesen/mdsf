@@ -16,7 +16,7 @@
     }
   },
   "description": "Commands for interacting with the prisma ORM",
-  "homepage": "https://www.prisma.io",
+  "homepage": "https://www.prisma.io/docs/orm/tools/prisma-cli",
   "languages": ["prisma"],
   "packages": {
     "npm": "prisma"

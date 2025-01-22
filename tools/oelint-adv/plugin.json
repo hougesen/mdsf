@@ -10,5 +10,8 @@
   },
   "description": "Advanced oelint",
   "homepage": "https://github.com/priv-kweihmann/oelint-adv",
-  "languages": ["bitbake"]
+  "languages": ["bitbake"],
+  "packages": {
+    "pip": "oelint_adv"
+  }
 }
