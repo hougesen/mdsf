@@ -12,6 +12,17 @@ pub struct MdsfConfig {
     #[serde(rename = "$schema", default = "default_schema_location")]
     pub schema: String,
 
+    /// Used for settings custom file extensions for a given language.
+    /// ```json
+    /// {
+    ///   "custom_file_extensions": {
+    ///     "rust": ".rust"
+    ///   }
+    /// }
+    /// ```
+    #[serde(default)]
+    pub custom_file_extensions: std::collections::BTreeMap<String, String>,
+
     /// Format the processed document with the selected markdown formatter.
     #[serde(default)]
     pub format_finished_document: bool,
@@ -40,16 +51,8 @@ pub struct MdsfConfig {
     #[serde(default)]
     pub languages: std::collections::BTreeMap<String, MdsfFormatter<Tooling>>,
 
-    /// Used for settings custom file extensions for a given language.
-    /// ```json
-    /// {
-    ///   "custom_file_extensions": {
-    ///     "rust": ".rust"
-    ///   }
-    /// }
-    /// ```
     #[serde(default)]
-    pub custom_file_extensions: std::collections::BTreeMap<String, String>,
+    pub language_aliases: std::collections::BTreeMap<String, std::collections::BTreeSet<String>>,
 }
 
 impl Default for MdsfConfig {
@@ -57,10 +60,10 @@ impl Default for MdsfConfig {
     fn default() -> Self {
         Self {
             schema: default_schema_location(),
+            custom_file_extensions: Default::default(),
             format_finished_document: false,
             javascript_runtime: JavaScriptRuntime::default(),
-            custom_file_extensions: std::collections::BTreeMap::default(),
-
+            language_aliases: Default::default(),
             languages: default_tools(),
         }
     }
@@ -87,6 +90,46 @@ impl MdsfConfig {
         let stripped = StripComments::with_settings(CommentSettings::c_style(), input.as_bytes());
 
         serde_json::from_reader(stripped)
+    }
+
+    #[inline]
+    pub fn setup_language_aliases(&mut self) -> Result<(), MdsfError> {
+        // TODO: reduce the amount of cloning
+
+        if !self.language_aliases.is_empty() {
+            println!("has alias");
+
+            let mut seen_languages: std::collections::HashMap<String, String> =
+                std::collections::HashMap::new();
+
+            for (alias, languages) in &self.language_aliases {
+                for language in languages {
+                    if let Some(already_set_by) = seen_languages.get(language) {
+                        return Err(MdsfError::LanguageAliasClash(
+                            language.to_owned(),
+                            alias.to_owned(),
+                            already_set_by.to_owned(),
+                        ));
+                    }
+
+                    if self.languages.contains_key(language) {
+                        return Err(MdsfError::LanguageAliasLanguagesContainsLanguage(
+                            language.to_owned(),
+                        ));
+                    }
+
+                    if let Some(tools) = self.languages.get(alias) {
+                        self.languages.insert(language.to_owned(), tools.clone());
+
+                        seen_languages.insert(language.to_owned(), alias.to_owned());
+                    } else {
+                        return Err(MdsfError::LanguageAliasMissingTools(alias.to_owned()));
+                    }
+                }
+            }
+        }
+
+        Ok(())
     }
 }
 

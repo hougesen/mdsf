@@ -47,6 +47,8 @@
     "toml": "taplo",
     "typescript": [["prettier", "biome:format", "deno:fmt"]],
     "yaml": [["prettier", "yamlfmt", "yamlfix"]],
-    "zig": "zig:fmt"
-  }
+    "zig": "zig:fmt",
+    "shellx": "prettier"
+  },
+  "language_aliases": {}
 }

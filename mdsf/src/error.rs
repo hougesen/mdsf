@@ -10,6 +10,12 @@ pub enum MdsfError {
     // TODO: use &str
     MissingBinary(String),
     CheckModeChanges(u32),
+    // TODO: rename 😅
+    /// `languages` contains the language
+    LanguageAliasLanguagesContainsLanguage(String),
+    /// Another alias clashes
+    LanguageAliasClash(String, String, String),
+    LanguageAliasMissingTools(String),
 }
 
 impl std::error::Error for MdsfError {}
@@ -46,6 +52,17 @@ impl core::fmt::Display for MdsfError {
                     "Found changes while running in check mode ({file_count} {file_or_files})"
                 )
             }
+            Self::LanguageAliasLanguagesContainsLanguage(language) => write!(
+                f,
+                "'{language}' cannot be used with an alias since it already has tools specified"
+            ),
+            Self::LanguageAliasClash(language, alias, already_set_by) => {
+                write!(f, "'{language}' cannot be aliases to '{alias}' since it is already an alias of '{already_set_by}'")
+            }
+            Self::LanguageAliasMissingTools(alias) => write!(
+                f,
+                "'{alias}' cannot be used as an alias since it has no tools specified"
+            ),
         }
     }
 }

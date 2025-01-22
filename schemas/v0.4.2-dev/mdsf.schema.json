@@ -29,6 +29,17 @@
         }
       ]
     },
+    "language_aliases": {
+      "default": {},
+      "type": "object",
+      "additionalProperties": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "uniqueItems": true
+      }
+    },
     "languages": {
       "description": "Defines which formatter is used by the language. ```json { \"languages\": { \"rust\": \"rustfmt\", \"js\": \"prettier\" } } ```",
       "default": {},
