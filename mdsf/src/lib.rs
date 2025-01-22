@@ -33,6 +33,29 @@ pub static DEBUG: AtomicBool = AtomicBool::new(false);
 const GO_TEMPORARY_PACKAGE_NAME: &str = "package mdsfformattertemporarynamespace\n";
 
 #[inline]
+fn remove_go_package(snippet: String) -> String {
+    if snippet.contains(GO_TEMPORARY_PACKAGE_NAME) {
+        snippet.replace(GO_TEMPORARY_PACKAGE_NAME, "")
+    } else {
+        snippet
+    }
+}
+
+#[inline]
+fn indent_codeblock(indentation: &str, snippet: String) -> String {
+    if indentation.is_empty() {
+        snippet
+    } else {
+        snippet
+            .lines()
+            .map(|line| format!("{indentation}{line}"))
+            .collect::<Vec<_>>()
+            // TODO: keep original line endings
+            .join("\n")
+    }
+}
+
+#[inline]
 fn format_file(config: &MdsfConfig, filename: &std::path::Path, input: &str) -> (bool, String) {
     let mut output = String::with_capacity(input.len() + 128);
 
@@ -42,8 +65,15 @@ fn format_file(config: &MdsfConfig, filename: &std::path::Path, input: &str) -> 
 
     while let Some((line_index, line)) = lines.next() {
         // TODO: implement support for code blocks with 4 `
-        if line.starts_with("```") {
-            let language = line.strip_prefix("```").map(str::trim).unwrap_or_default();
+        let trimmed_line = line.trim_start();
+
+        if trimmed_line.starts_with("```") {
+            let indentation = line.replace(trimmed_line, "");
+
+            let language = trimmed_line
+                .strip_prefix("```")
+                .map(str::trim)
+                .unwrap_or_default();
 
             // "*" is always ran
             // "_" is fallback formatters
@@ -71,16 +101,23 @@ fn format_file(config: &MdsfConfig, filename: &std::path::Path, input: &str) -> 
                         &code_snippet,
                     );
 
+                    let formatted = if is_go {
+                        remove_go_package(formatted)
+                    } else {
+                        formatted
+                    };
+
+                    let formatted = formatted.trim().to_owned();
+
+                    let formatted = indent_codeblock(&indentation, formatted);
+
                     output.push_str(line);
+
                     output.push('\n');
 
-                    if is_go && formatted.contains(GO_TEMPORARY_PACKAGE_NAME) {
-                        output.push_str(formatted.replace(GO_TEMPORARY_PACKAGE_NAME, "").trim());
-                    } else {
-                        output.push_str(formatted.trim());
-                    }
+                    output.push_str(&formatted);
 
-                    output.push_str("\n```");
+                    output.push_str(&format!("\n{indentation}```"));
 
                     if formatted != code_snippet {
                         modified = true;
@@ -277,6 +314,63 @@ fn add(a: i32, b: i32) -> i32 {
 
             assert_eq!(output, expected_output);
         };
+    }
+
+    #[test]
+    fn it_should_format_the_codeblocks_that_start_with_whitespace() {
+        let mut whitespaces = std::collections::HashSet::new();
+
+        let mut spaces = String::new();
+        let mut tabs = String::new();
+
+        for _ in 0..10 {
+            spaces.push(' ');
+            tabs.push('\t');
+            whitespaces.insert(spaces.clone());
+            whitespaces.insert(tabs.clone());
+        }
+
+        for whitespace in whitespaces {
+            let input = format!(
+                "{whitespace}```rust
+fn           add(
+     a:
+      i32, b: i32) -> i32 {{
+    a + b
+}}
+{whitespace}```"
+            );
+
+            let expected_output = format!(
+                "{whitespace}```rust
+{whitespace}fn add(a: i32, b: i32) -> i32 {{
+{whitespace}    a + b
+{whitespace}}}
+{whitespace}```
+"
+            );
+
+            let config = MdsfConfig::default();
+
+            {
+                let (modified, output) = format_file(&config, std::path::Path::new("."), &input);
+
+                assert!(modified);
+
+                assert_eq!(output, expected_output);
+            };
+
+            {
+                let file = setup_snippet(&input, &get_file_extension("markdown"))
+                    .expect("it to create a file");
+
+                assert!(handle_file(&config, file.path(), false, None));
+
+                let output = std::fs::read_to_string(file.path()).expect("it to return the string");
+
+                assert_eq!(output, expected_output);
+            };
+        }
     }
 
     #[test]
