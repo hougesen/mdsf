@@ -11,5 +11,7 @@
   "description": "A code formatter for BrightScript and BrighterScript",
   "homepage": "https://github.com/rokucommunity/brighterscript-formatter",
   "languages": ["brighterscript", "brightscript"],
-  "npm": "brighterscript-formatter"
+  "packages": {
+    "npm": "brighterscript-formatter"
+  }
 }

@@ -11,5 +11,7 @@
   "description": "Format and beautify nginx config files",
   "homepage": "https://github.com/vasilevich/nginxbeautifier",
   "languages": ["nginx"],
-  "npm": "nginxbeautifier"
+  "packages": {
+    "npm": "nginxbeautifier"
+  }
 }

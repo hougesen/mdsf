@@ -10,5 +10,8 @@
   },
   "description": "Floskell is a flexible Haskell source code pretty printer",
   "homepage": "https://github.com/ennocramer/floskell",
-  "languages": ["haskell"]
+  "languages": ["haskell"],
+  "packages": {
+    "stack": "floskell"
+  }
 }

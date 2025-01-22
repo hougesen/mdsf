@@ -21,5 +21,8 @@
   },
   "description": "A modular SQL linter and auto-formatter with support for multiple dialects and templated code",
   "homepage": "https://github.com/sqlfluff/sqlfluff",
-  "languages": ["sql"]
+  "languages": ["sql"],
+  "packages": {
+    "pip": "sqlfluff"
+  }
 }

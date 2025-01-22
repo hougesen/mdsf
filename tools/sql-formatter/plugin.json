@@ -18,5 +18,7 @@
   "description": "A whitespace formatter for different query languages",
   "homepage": "https://github.com/sql-formatter-org/sql-formatter",
   "languages": ["sql"],
-  "npm": "sql-formatter"
+  "packages": {
+    "npm": "sql-formatter"
+  }
 }

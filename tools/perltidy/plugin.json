@@ -10,5 +10,8 @@
   },
   "description": "Perl::Tidy, a source code formatter for Perl",
   "homepage": "https://github.com/perltidy/perltidy",
-  "languages": ["perl"]
+  "languages": ["perl"],
+  "packages": {
+    "apt": "perltidy"
+  }
 }

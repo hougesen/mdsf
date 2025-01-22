@@ -17,5 +17,8 @@
   },
   "description": "A tool that automatically formats Python code to conform to the PEP 8 style guid",
   "homepage": "https://github.com/hhatto/autopep8",
-  "languages": ["python"]
+  "languages": ["python"],
+  "packages": {
+    "pip": "autopep8"
+  }
 }

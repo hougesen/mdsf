@@ -11,5 +11,7 @@
   "description": "Configurable linting for TSQL",
   "homepage": "https://github.com/tsqllint/tsqllint",
   "languages": ["sql"],
-  "npm": "tsqllint"
+  "packages": {
+    "npm": "tsqllint"
+  }
 }

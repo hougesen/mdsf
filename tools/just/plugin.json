@@ -17,5 +17,13 @@
   },
   "description": "A formatter for justfiles",
   "homepage": "https://github.com/casey/just",
-  "languages": ["just"]
+  "languages": ["just"],
+  "packages": {
+    "brew": {
+      "name": "just"
+    },
+    "cargo": "just",
+    "npm": "rust-just",
+    "pip": "rust-just"
+  }
 }

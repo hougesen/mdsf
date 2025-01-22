@@ -17,5 +17,8 @@
   },
   "description": "A formatter for finding and removing unused import statements",
   "homepage": "https://github.com/hadialqattan/pycln",
-  "languages": ["python"]
+  "languages": ["python"],
+  "packages": {
+    "pip": "pycln"
+  }
 }

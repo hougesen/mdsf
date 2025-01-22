@@ -17,5 +17,8 @@
   },
   "description": "Auto-formatter for modern Fortran source code",
   "homepage": "https://github.com/fortran-lang/fprettify",
-  "languages": ["fortran"]
+  "languages": ["fortran"],
+  "packages": {
+    "pip": "fprettify"
+  }
 }

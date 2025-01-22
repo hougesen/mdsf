@@ -11,5 +11,7 @@
   "description": "JSON Fixer for Humans using (relaxed) JSON5",
   "homepage": "https://github.com/rhysd/fixjson",
   "languages": ["json", "json5"],
-  "npm": "fixjson"
+  "packages": {
+    "npm": "fixjson"
+  }
 }

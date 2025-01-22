@@ -17,5 +17,8 @@
   },
   "description": "A Python utility to sort imports",
   "homepage": "https://github.com/timothycrosley/isort",
-  "languages": ["python"]
+  "languages": ["python"],
+  "packages": {
+    "pip": "isort"
+  }
 }

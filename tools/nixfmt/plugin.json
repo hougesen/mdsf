@@ -17,5 +17,9 @@
   },
   "description": "The official (but not yet stable) formatter for Nix code",
   "homepage": "https://github.com/serokell/nixfmt",
-  "languages": ["nix"]
+  "languages": ["nix"],
+  "packages": {
+    "cabal": "nixfmt",
+    "stack": "nixfmt"
+  }
 }

@@ -9,6 +9,7 @@
     }
   },
   "description": "Tooling for the Templ template language",
-  "homepage": "https://templ.guide/",
-  "languages": ["go", "templ"]
+  "homepage": "https://github.com/a-h/templ",
+  "languages": ["go", "templ"],
+  "packages": { "go": "github.com/a-h/templ/cmd/templ@latest" }
 }

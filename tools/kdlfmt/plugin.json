@@ -10,5 +10,8 @@
   },
   "description": "A formatter for kdl documents",
   "homepage": "https://github.com/hougesen/kdlfmt",
-  "languages": ["kdl"]
+  "languages": ["kdl"],
+  "packages": {
+    "cargo": "kdlfmt"
+  }
 }

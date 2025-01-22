@@ -17,5 +17,9 @@
   },
   "description": "A formatter for Haskell source code",
   "homepage": "https://hackage.haskell.org/package/fourmolu",
-  "languages": ["haskell"]
+  "languages": ["haskell"],
+  "packages": {
+    "cabal": "fourmolu",
+    "stack": "fourmolu"
+  }
 }

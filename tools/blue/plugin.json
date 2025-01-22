@@ -17,5 +17,8 @@
   },
   "description": "The slightly less uncompromising Python code formatter",
   "homepage": "https://github.com/grantjenks/blue",
-  "languages": ["python"]
+  "languages": ["python"],
+  "packages": {
+    "pip": "blue"
+  }
 }

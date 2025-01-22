@@ -18,5 +18,7 @@
   "description": "The best way of working with Protocol Buffers",
   "homepage": "https://buf.build/docs/reference/cli/buf/format/",
   "languages": ["protobuf"],
-  "npm": "@bufbuild/buf"
+  "packages": {
+    "npm": "@bufbuild/buf"
+  }
 }

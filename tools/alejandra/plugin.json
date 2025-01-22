@@ -17,5 +17,8 @@
   },
   "description": "The Uncompromising Nix Code Formatter",
   "homepage": "https://github.com/kamadorueda/alejandra",
-  "languages": ["nix"]
+  "languages": ["nix"],
+  "packages": {
+    "cargo": "alejandra"
+  }
 }

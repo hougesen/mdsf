@@ -11,5 +11,7 @@
   "description": "A formatter for Imba",
   "homepage": "https://imba.io/",
   "languages": ["imba"],
-  "npm": "imba"
+  "packages": {
+    "npm": "imba"
+  }
 }

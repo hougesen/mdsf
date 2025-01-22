@@ -18,5 +18,7 @@
   "description": "elm-format formats Elm source code according to a standard set of rules based on the official Elm Style Guide",
   "homepage": "https://github.com/avh4/elm-format",
   "languages": ["elm"],
-  "npm": "elm-format"
+  "packages": {
+    "npm": "elm-format"
+  }
 }

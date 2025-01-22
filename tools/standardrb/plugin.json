@@ -17,5 +17,8 @@
   },
   "description": "Ruby's bikeshed-proof linter and formatter",
   "homepage": "https://github.com/standardrb/standard",
-  "languages": ["ruby"]
+  "languages": ["ruby"],
+  "packages": {
+    "gem": "standardrb"
+  }
 }

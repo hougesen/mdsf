@@ -17,5 +17,8 @@
   },
   "description": "The Ruby Formatter",
   "homepage": "https://github.com/ruby-formatter/rufo",
-  "languages": ["ruby"]
+  "languages": ["ruby"],
+  "packages": {
+    "gem": "rufo"
+  }
 }

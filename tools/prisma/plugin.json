@@ -18,5 +18,7 @@
   "description": "Commands for interacting with the prisma ORM",
   "homepage": "https://www.prisma.io",
   "languages": ["prisma"],
-  "npm": "prisma"
+  "packages": {
+    "npm": "prisma"
+  }
 }

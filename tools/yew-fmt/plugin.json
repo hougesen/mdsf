@@ -17,5 +17,8 @@
   },
   "description": "Code formatter for the Yew framework",
   "homepage": "https://github.com/its-the-shrimp/yew-fmt",
-  "languages": ["rust"]
+  "languages": ["rust"],
+  "packages": {
+    "cargo": "yew-fmt"
+  }
 }

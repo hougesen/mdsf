@@ -21,5 +21,8 @@
   "description": "An opinionated code formatter for Julia. Plot twist - the opinion is your own",
   "homepage": "https://github.com/domluna/JuliaFormatter.jl",
   "languages": ["julia"],
-  "name": "juliaformatter.jl"
+  "name": "juliaformatter.jl",
+  "packages": {
+    "julia": "JuliaFormatter"
+  }
 }

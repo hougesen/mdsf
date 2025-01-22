@@ -23,5 +23,7 @@
   "description": "stylefmt is a tool that automatically formats stylesheets",
   "homepage": "https://github.com/matype/stylefmt",
   "languages": ["css", "scss"],
-  "npm": "stylefmt"
+  "packages": {
+    "npm": "stylefmt"
+  }
 }

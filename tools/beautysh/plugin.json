@@ -22,5 +22,9 @@
   },
   "description": "A Bash beautifier for the masses",
   "homepage": "https://pypi.org/project/beautysh/",
-  "languages": ["bash", "shell"]
+  "languages": ["bash", "shell"],
+  "packages": {
+    "pip": "beautysh"
+  },
+  "testing_disable": true
 }

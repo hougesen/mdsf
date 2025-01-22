@@ -17,5 +17,11 @@
   },
   "description": "The terraform fmt command is used to rewrite Terraform configuration files to a canonical format and style",
   "homepage": "https://www.terraform.io/docs/cli/commands/fmt.html",
-  "languages": ["terraform"]
+  "languages": ["terraform"],
+  "packages": {
+    "brew": {
+      "name": "hashicorp/tap/terraform",
+      "tap": "hashicorp/tap"
+    }
+  }
 }

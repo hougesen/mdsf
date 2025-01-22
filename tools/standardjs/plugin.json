@@ -12,5 +12,7 @@
   "homepage": "https://github.com/standard/standard",
   "languages": ["javascript"],
   "name": "standardjs",
-  "npm": "standard"
+  "packages": {
+    "npm": "standard"
+  }
 }

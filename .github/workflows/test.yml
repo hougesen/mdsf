@@ -1,0 +1,221 @@
+name: test
+on:
+  - push
+concurrency:
+  group: ${{ github.workflow }}-${{ github.head_ref || github.run_id }}
+  cancel-in-progress: true
+env:
+  CARGO_TERM_COLOR: always
+  RUST_BACKTRACE: full
+jobs:
+  tools:
+    name: tools
+    strategy:
+      matrix:
+        os:
+          - ubuntu-latest
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: Swatinem/rust-cache@v2
+      - uses: erlef/setup-beam@v1
+        with:
+          elixir-version: 1.16.1
+          gleam-version: 1.0.0
+          otp-version: "26"
+      - uses: actions/setup-python@v5
+        with:
+          cache: pip
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - uses: jiro4989/setup-nim-action@v2
+      - uses: goto-bus-stop/setup-zig@v2
+      - uses: uncenter/setup-taplo@v1
+      - uses: actions/setup-go@v5
+        with:
+          go-version: stable
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.3"
+      - uses: dart-lang/setup-dart@v1
+      - uses: crystal-lang/install-crystal@v1
+      - uses: hasnep/setup-roc@v0.4.0
+      - uses: denoland/setup-deno@v2
+        with:
+          deno-version: v1.x
+      - uses: taiki-e/install-action@just
+      - uses: ocaml/setup-ocaml@v3
+        with:
+          ocaml-compiler: "5.1"
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "21"
+      - uses: haskell-actions/setup@v2
+        with:
+          cabal-version: latest
+          ghc-version: latest
+      - uses: julia-actions/cache@v2
+      - run: rustup toolchain install stable --profile minimal
+      - run: rustup component add rustfmt clippy
+      - name: pyink
+        run: ( which pipx && pipx install pyink )
+      - name: fourmolu
+        run: ( which stack && stack install fourmolu )
+      - name: purs-tidy
+        run: ( which npm && npm i -g purs-tidy )
+      - name: mado
+        run: ( which brew && brew tap akiomik/mado https://github.com/akiomik/mado.git &&  brew install mado )
+      - name: fprettify
+        run: ( which pipx && pipx install fprettify )
+      - name: fantomas
+        run: ( which dotnet && dotnet tool install -g fantomas )
+      - name: ocp-indent
+        run: ( which apt-get && sudo apt-get install -y ocp-indent )
+      - name: csscomb
+        run: ( which npm && npm i -g csscomb )
+      - name: yamlfix
+        run: ( which pipx && pipx install yamlfix )
+      - name: autoflake
+        run: ( which pipx && pipx install autoflake )
+      - name: stylua
+        run: ( which npm && npm i -g @johnnymorganz/stylua-bin )
+      - name: tofu
+        run: ( which brew &&  brew install opentofu )
+      - name: alejandra
+        run: ( which cargo && cargo install alejandra )
+      - name: scalafmt
+        run: " (which cs && cs install scalafmt )"
+      - name: sql-formatter
+        run: ( which npm && npm i -g sql-formatter )
+      - name: ormolu
+        run: ( which apt-get && sudo apt-get install -y ormolu )
+      - name: prisma
+        run: ( which npm && npm i -g prisma )
+      - name: markdownlint-cli2
+        run: ( which npm && npm i -g markdownlint-cli2 )
+      - name: blue
+        run: ( which pipx && pipx install blue )
+      - name: markdownfmt
+        run: ( which go && go install github.com/shurcooL/markdownfmt@latest )
+      - name: html-beautify
+        run: ( which npm && npm i -g js-beautify )
+      - name: rubyfmt
+        run: ( which brew &&  brew install rubyfmt )
+      - name: biome
+        run: ( which npm && npm i -g @biomejs/biome )
+      - name: xmllint
+        run: ( which apt-get && sudo apt-get install -y libxml2-utils )
+      - name: pycln
+        run: ( which pipx && pipx install pycln )
+      - name: dotnet
+        run: ( which dotnet && dotnet tool install -g csharpier )
+      - name: black
+        run: ( which pipx && pipx install black )
+      - name: goimports
+        run: ( which go && go install golang.org/x/tools/cmd/goimports@latest )
+      - name: ktlint
+        run: ( which brew &&  brew install ktlint )
+      - name: stylish-haskell
+        run: ( which stack && stack install stylish-haskell )
+      - name: just
+        run: ( which npm && npm i -g rust-just )
+      - name: css-beautify
+        run: ( which npm && npm i -g js-beautify )
+      - name: yamlfmt
+        run: ( which go && go install github.com/google/yamlfmt/cmd/yamlfmt@latest )
+      - name: ktfmt
+        run: ( which brew &&  brew install ktfmt )
+      - name: standardrb
+        run: ( which gem && gem install standardrb )
+      - name: markdownlint
+        run: ( which npm && npm i -g markdownlint-cli )
+      - name: efmt
+        run: ( which cargo && cargo install efmt )
+      - name: shfmt
+        run: ( which go && go install mvdan.cc/sh/v3/cmd/shfmt@latest )
+      - name: terraform
+        run: ( which brew && brew tap hashicorp/tap &&  brew install hashicorp/tap/terraform )
+      - name: actionlint
+        run: ( which go && go install github.com/rhysd/actionlint/cmd/actionlint@latest )
+      - name: ocamlformat
+        run: ( which opam && eval $(opam env) && opam install ocamlformat )
+      - name: clang-format
+        run: ( which pipx && pipx install clang-format )
+      - name: julia
+        run: ( which julia && julia  -e 'import Pkg; Pkg.add("JuliaFormatter")' )
+      - name: ruff
+        run: ( which pipx && pipx install ruff )
+      - name: kcl
+        run: ( which go && go install kcl-lang.io/cli/cmd/kcl@latest )
+      - name: sqlfluff
+        run: ( which pipx && pipx install sqlfluff )
+      - name: swiftformat
+        run: ( which brew &&  brew install swiftformat )
+      - name: auto-optional
+        run: ( which pipx && pipx install auto-optional )
+      - name: taplo
+        run: ( which npm && npm i -g @taplo/cli )
+      - name: nixfmt
+        run: ( which stack && stack install nixfmt )
+      - name: isort
+        run: ( which pipx && pipx install isort )
+      - name: rescript
+        run: ( which npm && npm i -g rescript )
+      - name: veryl
+        run: ( which cargo && cargo install veryl )
+      - name: yew-fmt
+        run: ( which cargo && cargo install yew-fmt )
+      - name: yapf
+        run: ( which pipx && pipx install yapf )
+      - name: autopep8
+        run: ( which pipx && pipx install autopep8 )
+      - name: usort
+        run: ( which pipx && pipx install usort )
+      - name: nixpkgs-fmt
+        run: ( which cargo && cargo install nixpkgs-fmt )
+      - name: xmlformat
+        run: ( which pipx && pipx install xmlformatter )
+      - name: hindent
+        run: ( which stack && stack install hindent )
+      - name: buf
+        run: ( which npm && npm i -g @bufbuild/buf )
+      - name: prettier
+        run: ( which npm && npm i -g prettier )
+      - name: rufo
+        run: ( which gem && gem install rufo )
+      - name: brunette
+        run: ( which pipx && pipx install brunette )
+      - name: topiary
+        run: ( which cargo && cargo install topiary-cli )
+      - name: gofumpt
+        run: ( which go && go install mvdan.cc/gofumpt@latest )
+      - name: npm-groovy-lint
+        run: ( which npm && npm i -g npm-groovy-lint )
+      - name: elm-format
+        run: ( which npm && npm i -g elm-format )
+      - name: typos
+        run: ( which cargo && cargo install typos-cli )
+      - name: blade-formatter
+        run: ( which npm && npm i -g blade-formatter )
+      - name: golines
+        run: ( which go && go install github.com/segmentio/golines@latest )
+      - name: stylefmt
+        run: ( which npm && npm i -g stylefmt )
+      - name: rubocop
+        run: ( which gem && gem install rubocop )
+      - name: htmlbeautifier
+        run: ( which gem && gem install htmlbeautifier )
+      - name: Run tests
+        run: cargo test
+      - name: Install cargo-llvm-cov
+        uses: taiki-e/install-action@cargo-llvm-cov
+      - name: Generate code coverage
+        run: cargo llvm-cov --all-features --locked --lcov --output-path lcov.info
+      - name: Upload code coverage
+        uses: codecov/codecov-action@v5
+        with:
+          files: lcov.info
+          slug: hougesen/mdsf
+          token: ${{ secrets.CODECOV_TOKEN }}

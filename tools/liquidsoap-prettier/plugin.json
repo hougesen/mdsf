@@ -11,5 +11,7 @@
   "description": "Prettier plugin for liquidsoap script",
   "homepage": "https://github.com/savonet/liquidsoap-prettier",
   "languages": ["liquidsoap"],
-  "npm": "liquidsoap-prettier"
+  "packages": {
+    "npm": "liquidsoap-prettier"
+  }
 }

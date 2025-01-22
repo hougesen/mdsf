@@ -61,5 +61,8 @@
     "json",
     "objective-c",
     "protobuf"
-  ]
+  ],
+  "packages": {
+    "pip": "clang-format"
+  }
 }

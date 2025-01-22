@@ -17,5 +17,8 @@
   },
   "description": "Code formatter for Scala",
   "homepage": "https://github.com/scalameta/scalafmt",
-  "languages": ["scala"]
+  "languages": ["scala"],
+  "packages": {
+    "coursier": "scalafmt"
+  }
 }

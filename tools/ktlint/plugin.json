@@ -17,5 +17,10 @@
   },
   "description": "An anti-bikeshedding Kotlin linter with built-in formatter",
   "homepage": "https://github.com/pinterest/ktlint",
-  "languages": ["kotlin"]
+  "languages": ["kotlin"],
+  "packages": {
+    "brew": {
+      "name": "ktlint"
+    }
+  }
 }

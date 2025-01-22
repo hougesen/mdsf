@@ -10,5 +10,6 @@
   },
   "description": "Beautiful and reliable typst code formatter",
   "homepage": "https://github.com/Enter-tainer/typstyle",
-  "languages": ["typst"]
+  "languages": ["typst"],
+  "packages": { "cargo": "typstyle" }
 }
