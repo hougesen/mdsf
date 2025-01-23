@@ -1,38 +1,14 @@
 name: mdsf
-
 on: push
-
 jobs:
-  # Job that formats and the commits the changes
-  format:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Install mdsf
-        uses: taiki-e/install-action@v2
-        with:
-          tool: mdsf
-
-      - name: Run mdsf
-        run: mdsf format .
-
-      - name: Commit changes
-        uses: EndBug/add-and-commit@v9
-        message: "style: formatted markdown code blocks"
-
-  # Job that verifies the formatting
   verify:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-
       - name: Install mdsf
         uses: taiki-e/install-action@v2
         with:
           tool: mdsf
-
       - name: Run mdsf
-        run: mdsf verify .
+        run: mdsf verify --log-level warn .

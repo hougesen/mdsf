@@ -1,6 +1,6 @@
 # mdsf
 
-Format, and lint, markdown code snippets using your favorite code tools.
+Format, and lint, markdown code snippets using your favorite tools.
 
 <a href="https://crates.io/crates/mdsf"><img src="https://img.shields.io/crates/v/mdsf.svg"></a>
 <a href="https://github.com/hougesen/mdsf/actions/workflows/validate.yml"><img src="https://github.com/hougesen/mdsf/actions/workflows/validate.yml/badge.svg"></a>
@@ -22,7 +22,9 @@ Format, and lint, markdown code snippets using your favorite code tools.
   - [Usage](#usage)
     - [Formatting code](#formatting-code)
     - [Verifying code](#verifying-code)
-    - [Running using GitHub workflows](#running-using-github-workflows)
+    - [GitHub workflow examples](#github-workflow-examples)
+      - [Format and commit](#format-and-commit)
+      - [Verify](#verify)
   - [Configuration](#configuration)
     - [Tools](#tools)
     - [Commands](#commands)
@@ -74,7 +76,7 @@ If you do not have Cargo installed, you need to [install it first](https://www.r
 
 ### npm/npx
 
-You can install mdsf using [npm](https://www.npmjs.com/package/mdsf-cli):
+You can install `mdsf` using [npm](https://www.npmjs.com/package/mdsf-cli):
 
 ```shell
 npm install -g mdsf-cli
@@ -100,7 +102,7 @@ brew install hougesen/tap/mdsf
 
 ```
 mdsf 0.4.2-dev
-Format markdown code snippets using your favorite code formatters
+Format, and lint, markdown code snippets using your favorite tools
 Mads Hougesen <mads@mhouge.dk>
 
 Usage: mdsf <COMMAND>
@@ -175,7 +177,17 @@ Options:
 
 <!-- END_SECTION:verify-command-help -->
 
-### Running using GitHub workflows
+### GitHub workflow examples
+
+There are a lot of different ways to run `mdsf` using GitHub actions.
+
+The easiest way, in my opinion, is to use an action like [taiki-e/install-action](https://github.com/taiki-e/install-action) to install `mdsf`.
+
+After that you can simply run the binary like you would in your terminal.
+
+#### Format and commit
+
+This workflow formats your repository using `mdsf` and the commits the changes.
 
 ```yaml
 name: mdsf
@@ -183,7 +195,6 @@ name: mdsf
 on: push
 
 jobs:
-  # Job that formats and the commits the changes
   format:
     runs-on: ubuntu-latest
     steps:
@@ -196,13 +207,24 @@ jobs:
           tool: mdsf
 
       - name: Run mdsf
-        run: mdsf format .
+        run: mdsf format --log-level warn .
 
       - name: Commit changes
         uses: EndBug/add-and-commit@v9
-        message: "style: formatted markdown code blocks"
+        with:
+          message: "style: formatted markdown code blocks"
+```
 
-  # Job that verifies the formatting
+#### Verify
+
+This workflow verifies your repository .
+
+```yaml
+name: mdsf
+
+on: push
+
+jobs:
   verify:
     runs-on: ubuntu-latest
     steps:
@@ -215,7 +237,7 @@ jobs:
           tool: mdsf
 
       - name: Run mdsf
-        run: mdsf verify .
+        run: mdsf verify --log-level warn .
 ```
 
 ## Configuration
