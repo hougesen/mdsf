@@ -39,8 +39,17 @@ pub struct MdsfConfig {
     #[serde(default)]
     pub javascript_runtime: JavaScriptRuntime,
 
+    /// Aliases for tools
+    ///
+    /// ```json
+    /// {
+    ///   "language_aliases": {
+    ///     "language": "is_alias_of"
+    ///   }
+    /// }
+    /// ```
     #[serde(default)]
-    pub language_aliases: std::collections::BTreeMap<String, std::collections::BTreeSet<String>>,
+    pub language_aliases: std::collections::BTreeMap<String, String>,
 
     ///  Defines which formatter is used by the language.
     /// ```json
@@ -102,29 +111,27 @@ impl MdsfConfig {
             let mut seen_languages: std::collections::HashMap<String, String> =
                 std::collections::HashMap::new();
 
-            for (alias, languages) in &self.language_aliases {
-                for language in languages {
-                    if let Some(already_set_by) = seen_languages.get(language) {
-                        return Err(MdsfError::LanguageAliasClash(
-                            language.to_owned(),
-                            alias.to_owned(),
-                            already_set_by.to_owned(),
-                        ));
-                    }
+            for (language, alias) in &self.language_aliases {
+                if let Some(already_set_by) = seen_languages.get(language) {
+                    return Err(MdsfError::LanguageAliasClash(
+                        language.to_owned(),
+                        alias.to_owned(),
+                        already_set_by.to_owned(),
+                    ));
+                }
 
-                    if self.languages.contains_key(language) {
-                        return Err(MdsfError::LanguageAliasLanguagesContainsLanguage(
-                            language.to_owned(),
-                        ));
-                    }
+                if self.languages.contains_key(language) {
+                    return Err(MdsfError::LanguageAliasLanguagesContainsLanguage(
+                        language.to_owned(),
+                    ));
+                }
 
-                    if let Some(tools) = self.languages.get(alias) {
-                        self.languages.insert(language.to_owned(), tools.clone());
+                if let Some(tools) = self.languages.get(alias) {
+                    self.languages.insert(language.to_owned(), tools.clone());
 
-                        seen_languages.insert(language.to_owned(), alias.to_owned());
-                    } else {
-                        return Err(MdsfError::LanguageAliasMissingTools(alias.to_owned()));
-                    }
+                    seen_languages.insert(language.to_owned(), alias.to_owned());
+                } else {
+                    return Err(MdsfError::LanguageAliasMissingTools(alias.to_owned()));
                 }
             }
         }

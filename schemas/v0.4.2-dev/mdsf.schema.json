@@ -30,14 +30,11 @@
       ]
     },
     "language_aliases": {
+      "description": "Aliases for tools\n\n```json { \"language_aliases\": { \"language\": \"is_alias_of\" } } ```",
       "default": {},
       "type": "object",
       "additionalProperties": {
-        "type": "array",
-        "items": {
-          "type": "string"
-        },
-        "uniqueItems": true
+        "type": "string"
       }
     },
     "languages": {
