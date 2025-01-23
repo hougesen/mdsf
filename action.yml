@@ -1,0 +1,16 @@
+name: mdsf-action
+description: "GitHub action for running mdsf, a markdown codeblock formatter and linter"
+author: "hougesen"
+inputs:
+  command:
+    description: 'Command to run: "verify" | "format"'
+    default: verify
+    required: true
+runs:
+  using: "composite"
+  steps:
+    - uses: taiki-e/install-action@v2
+      with:
+        tool: mdsf
+    - name: Run mdsf
+      run: mdsf ${{ input.command }} .
