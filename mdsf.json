@@ -9,6 +9,7 @@
     "fish": "fish_indent",
     "json": "prettier",
     "nushell": "nufmt",
-    "shell": "shfmt"
+    "shell": "shfmt",
+    "yaml": "prettier"
   }
 }

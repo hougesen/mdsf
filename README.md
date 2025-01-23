@@ -174,6 +174,56 @@ Options:
 
 <!-- END_SECTION:verify-command-help -->
 
+### Running using GitHub workflows
+
+```yaml
+name: mdsf
+
+
+
+
+
+on: push
+
+
+
+
+jobs:
+  # Job that formats and the commits the changes
+  format:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install mdsf
+        uses: taiki-e/install-action@v2
+        with:
+          tool: mdsf
+
+      - name: Run mdsf
+        run: mdsf format .
+
+      - name: Commit changes
+        uses: EndBug/add-and-commit@v9
+        message: "style: formatted markdown code blocks"
+
+  # Job that verifies the formatting
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install mdsf
+        uses: taiki-e/install-action@v2
+        with:
+          tool: mdsf
+
+      - name: Run mdsf
+        run: mdsf verify .
+```
+
 ## Configuration
 
 The default configuration of `mdsf` aims to as sane as possible. For that reason the default formatter for each language is the one most people have installed.
