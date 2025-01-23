@@ -1,0 +1,10 @@
+name: mdsf
+jobs:
+  verify:
+    steps:
+      - name: Install mdsf
+        uses: taiki-e/install-action@v2
+        with:
+          tool: mdsf
+      - name: Run mdsf
+        run: mdsf verify .
