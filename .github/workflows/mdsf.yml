@@ -4,9 +4,13 @@ jobs:
   verify:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
       - name: Install mdsf
         uses: taiki-e/install-action@v2
         with:
           tool: mdsf
+
       - name: Run mdsf
         run: mdsf verify .
