@@ -95,9 +95,10 @@ impl From<VerifyCommandArguments> for FormatCommandArguments {
     }
 }
 
-#[derive(clap::ValueEnum, Clone, Copy, PartialEq, Eq, Debug)]
+#[derive(clap::ValueEnum, Clone, Copy, PartialEq, Eq, Debug, Default)]
 pub enum LogLevel {
     Trace,
+    #[default]
     Debug,
     Info,
     Warn,
