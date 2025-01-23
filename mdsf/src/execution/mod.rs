@@ -168,7 +168,7 @@ pub fn format_snippet(config: &MdsfConfig, info: &LineInfo, code: &str) -> Strin
     code.to_owned()
 }
 
-#[derive(Debug, serde::Serialize, serde::Deserialize, Hash)]
+#[derive(Debug, serde::Serialize, serde::Deserialize, Hash, Clone)]
 #[cfg_attr(test, derive(PartialEq, Eq))]
 #[cfg_attr(feature = "json-schema", derive(schemars::JsonSchema))]
 #[serde(untagged)]

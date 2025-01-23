@@ -3,50 +3,12 @@
   "custom_file_extensions": {},
   "format_finished_document": false,
   "javascript_runtime": "node",
+  "language_aliases": {},
   "languages": {
     "bash": "shfmt",
-    "c": "clang-format",
-    "clojure": [["cljstyle", "joker"]],
-    "cpp": "clang-format",
-    "crystal": "crystal:format",
-    "csharp": [["csharpier", "clang-format"]],
-    "css": [["prettier", "stylelint"]],
-    "d": "dfmt",
-    "dart": "dart:format",
-    "elixir": "mix:format",
-    "elm": "elm-format",
-    "erlang": [["erlfmt", "efmt"]],
     "fish": "fish_indent",
-    "gleam": "gleam:format",
-    "go": [
-      ["gci", "goimports-reviser", "goimports"],
-      ["gofumpt", "gofmt", "crlfmt"]
-    ],
-    "haskell": [["fourmolu", "ormolu", "hindent", "stylish-haskell"]],
-    "html": [["prettier", "djlint"]],
-    "java": [["google-java-format", "clang-format"]],
-    "javascript": [
-      ["prettier", "biome:format", "deno:fmt", "clang-format", "standardjs"]
-    ],
-    "json": [["prettier", "biome:format", "deno:fmt", "clang-format"]],
-    "kotlin": "ktfmt",
-    "lua": [["stylua", "luaformatter"]],
-    "nim": "nimpretty",
+    "json": "prettier",
     "nushell": "nufmt",
-    "ocaml": [["ocamlformat", "ocp-indent"]],
-    "python": [
-      ["usort", "isort"],
-      ["ruff:format", "blue", "black", "yapf", "autopep8", "pyink"]
-    ],
-    "roc": "roc:format",
-    "ruby": [["rubocop", "rufo", "rubyfmt", "standardrb"]],
-    "rust": "rustfmt",
-    "shell": [["shfmt", "beautysh"]],
-    "sql": [["sql-formatter", "sqlfluff:format", "sqlfmt"]],
-    "swift": [["swift-format", "swiftformat"]],
-    "toml": "taplo",
-    "typescript": [["prettier", "biome:format", "deno:fmt"]],
-    "yaml": [["prettier", "yamlfmt", "yamlfix"]],
-    "zig": "zig:fmt"
+    "shell": "shfmt"
   }
 }
