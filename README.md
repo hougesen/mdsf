@@ -22,6 +22,7 @@ Format, and lint, markdown code snippets using your favorite code tools.
   - [Usage](#usage)
     - [Formatting code](#formatting-code)
     - [Verifying code](#verifying-code)
+    - [Running using GitHub workflows](#running-using-github-workflows)
   - [Configuration](#configuration)
     - [Tools](#tools)
     - [Commands](#commands)
@@ -179,14 +180,7 @@ Options:
 ```yaml
 name: mdsf
 
-
-
-
-
 on: push
-
-
-
 
 jobs:
   # Job that formats and the commits the changes
