@@ -1,6 +1,9 @@
 import { spawn } from "node:child_process";
 import * as vscode from "vscode";
 
+// This extension is loosely based on the vscode extension created by JohnnyMorganz for Stylua
+// https://github.com/JohnnyMorganz/StyLua/blob/main/stylua-vscode
+
 const SUPPORTED_DOCUMENT_TYPES = ["markdown"];
 
 const COMMAND_SHOW_TERMINAL_OUTPUT = "mdsf-vscode.showTerminalOutput";
