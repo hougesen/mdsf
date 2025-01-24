@@ -1,28 +1,139 @@
-// The module 'vscode' contains the VS Code extensibility API
-// Import the module and reference it with the alias vscode in your code below
+import { spawn } from "node:child_process";
 import * as vscode from "vscode";
 
-// This method is called when your extension is activated
-// Your extension is activated the very first time the command is executed
-export function activate(context: vscode.ExtensionContext) {
-  // Use the console to output diagnostic information (console.log) and errors (console.error)
-  // This line of code will only be executed once when your extension is activated
-  console.log('Congratulations, your extension "mdsf-vscode" is now active!');
+const SUPPORTED_DOCUMENT_TYPES = ["markdown"];
 
-  // The command has been defined in the package.json file
-  // Now provide the implementation of the command with registerCommand
-  // The commandId parameter must match the command field in package.json
-  const disposable = vscode.commands.registerCommand(
-    "mdsf-vscode.helloWorld",
-    () => {
-      // The code you place here will be executed every time your command is executed
-      // Display a message box to the user
-      vscode.window.showInformationMessage("Hello World from mdsf-vscode!");
+const COMMAND_SHOW_TERMINAL_OUTPUT = "mdsf-vscode.showTerminalOutput";
+
+enum Status {
+  Ready = 0,
+  Running = 1,
+  Error = 2,
+}
+
+class StatusItem implements vscode.Disposable {
+  statusItem!: vscode.LanguageStatusItem;
+
+  constructor() {
+    this.statusItem = vscode.languages.createLanguageStatusItem(
+      "mdsf",
+      SUPPORTED_DOCUMENT_TYPES,
+    );
+
+    this.statusItem.name = "mdsf";
+    this.statusItem.text = "mdsf";
+
+    this.statusItem.command = {
+      title: "Show mdsf output",
+      command: COMMAND_SHOW_TERMINAL_OUTPUT,
+    };
+
+    this.setFormattingStatus(Status.Ready);
+  }
+
+  setFormattingStatus(state: Status) {
+    switch (state) {
+      case Status.Running: {
+        this.statusItem.detail = "Running mdsf";
+        this.statusItem.severity = vscode.LanguageStatusSeverity.Information;
+        break;
+      }
+
+      case Status.Ready: {
+        this.statusItem.detail = "Ready to format";
+        this.statusItem.severity = vscode.LanguageStatusSeverity.Information;
+        break;
+      }
+
+      case Status.Error: {
+        this.statusItem.detail = "Failed to format file";
+        this.statusItem.severity = vscode.LanguageStatusSeverity.Error;
+        break;
+      }
+    }
+  }
+
+  dispose() {
+    this.statusItem.dispose();
+  }
+}
+
+async function formatFile(filePath: string, cwd?: string | URL | undefined) {
+  return new Promise<string>((resolve, reject) => {
+    const p = spawn("mdsf", ["format", filePath], { cwd });
+
+    let output = "";
+
+    p.stdout.on("data", (data) => {
+      output += data.toString();
+    });
+
+    p.stdout.on("close", () => {
+      resolve(output);
+    });
+
+    p.stderr.on("data", (data) => {
+      output += data.toString();
+    });
+
+    p.on("err", (err) => {
+      console.error("format error", err);
+
+      reject("Failed to start mdsf");
+    });
+  });
+}
+
+export function activate(context: vscode.ExtensionContext) {
+  console.log("mdsf activated");
+
+  const statusItem = new StatusItem();
+
+  const outputChannel = vscode.window.createOutputChannel("mdsf", {
+    log: true,
+  });
+  outputChannel.info("mdsf activated");
+
+  context.subscriptions.push(
+    vscode.commands.registerCommand(COMMAND_SHOW_TERMINAL_OUTPUT, async () => {
+      outputChannel.show();
+    }),
+  );
+
+  const disposable = vscode.languages.registerDocumentFormattingEditProvider(
+    SUPPORTED_DOCUMENT_TYPES,
+    {
+      async provideDocumentFormattingEdits(document, _options, _token) {
+        statusItem.setFormattingStatus(Status.Running);
+
+        await formatFile(
+          document.fileName,
+          vscode.workspace.getWorkspaceFolder(document.uri)?.uri?.fsPath,
+        )
+          .then((stdout) => {
+            console.info("stdout", stdout);
+            outputChannel.info(stdout);
+            statusItem.setFormattingStatus(Status.Ready);
+          })
+          .catch((error) => {
+            console.info("error", error);
+
+            outputChannel.error(error);
+            statusItem.setFormattingStatus(Status.Error);
+          });
+
+        return [];
+      },
     },
   );
 
+  context.subscriptions.push(statusItem);
+
   context.subscriptions.push(disposable);
+
+  vscode.window.onDidChangeActiveTextEditor((_editor) => {
+    statusItem.setFormattingStatus(Status.Ready);
+  });
 }
 
-// This method is called when your extension is deactivated
 export function deactivate() {}

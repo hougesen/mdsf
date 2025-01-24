@@ -46,11 +46,13 @@ format:
     cargo run -- format .
     dist init --yes
 
-vscode-lint:
-    cd mdsf-vscode && pnpm lint:fix
+vscode-precommit:
+    cd mdsf-vscode && pnpm i
+    cd mdsf-vscode && pnpm lint:biome:fix
+    cd mdsf-vscode && pnpm lint:eslint:fix
 
 precommit:
-    just vscode-lint
+    just vscode-precommit
 
     just format
     just codegen
