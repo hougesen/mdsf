@@ -20,3 +20,8 @@ updates:
     schedule:
       interval: monthly
     open-pull-requests-limit: 100
+  - package-ecosystem: npm
+    directory: /mdsf-vscode
+    schedule:
+      interval: monthly
+    open-pull-requests-limit: 100
