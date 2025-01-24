@@ -69,7 +69,7 @@
 
         <Package Id='*'
             Keywords='Installer'
-            Description='Format markdown code snippets using your favorite code formatters'
+            Description='Format, and lint, markdown code snippets using your favorite tools'
             Manufacturer='Mads Hougesen'
             InstallerVersion='450'
             Languages='1033'

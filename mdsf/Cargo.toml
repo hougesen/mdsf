@@ -2,7 +2,7 @@
 name = "mdsf"
 version = "0.4.2-dev"
 edition.workspace = true
-description = "Format markdown code snippets using your favorite code formatters"
+description = "Format, and lint, markdown code snippets using your favorite tools"
 authors.workspace = true
 license.workspace = true
 repository.workspace = true
