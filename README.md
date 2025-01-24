@@ -185,6 +185,11 @@ The easiest way, in my opinion, is to use an action like [taiki-e/install-action
 
 After that you can simply run the binary like you would in your terminal.
 
+> \[!NOTE\]
+> mdsf is not a package manager.
+>
+> You must also install the tools you wish to use in your GitHub action.
+
 #### Format and commit
 
 This workflow formats your repository using `mdsf` and the commits the changes.
