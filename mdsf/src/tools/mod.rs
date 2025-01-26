@@ -573,7 +573,7 @@ pub enum Tooling {
     FutharkFmt,
 
     #[serde(rename = "gci")]
-    /// `gci write --skip-generated --skip-vender $PATH`
+    /// `gci write --skip-generated --skip-vendor $PATH`
     Gci,
 
     #[serde(rename = "gdformat")]
