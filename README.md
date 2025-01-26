@@ -613,7 +613,7 @@ mdsf init
 | `forge:fmt`              | `forge fmt $PATH`                                                                       |
 | `fourmolu`               | `fourmolu -i $PATH`                                                                     |
 | `fprettify`              | `fprettify $PATH`                                                                       |
-| `gci`                    | `gci write --skip-generated --skip-vender $PATH`                                        |
+| `gci`                    | `gci write --skip-generated --skip-vendor $PATH`                                        |
 | `gdformat`               | `gdformat $PATH`                                                                        |
 | `gersemi`                | `gersemi -i -q $PATH`                                                                   |
 | `gleam:format`           | `gleam format $PATH`                                                                    |

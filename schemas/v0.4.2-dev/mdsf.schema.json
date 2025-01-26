@@ -457,7 +457,7 @@
           "enum": ["futhark:fmt"]
         },
         {
-          "description": "`gci write --skip-generated --skip-vender $PATH`",
+          "description": "`gci write --skip-generated --skip-vendor $PATH`",
           "type": "string",
           "enum": ["gci"]
         },

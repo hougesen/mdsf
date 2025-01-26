@@ -9,7 +9,7 @@ use crate::{error::MdsfError, execution::execute_command, runners::CommandType};
 fn set_gci_args(mut cmd: Command, file_path: &std::path::Path) -> Command {
     cmd.arg("write");
     cmd.arg("--skip-generated");
-    cmd.arg("--skip-vender");
+    cmd.arg("--skip-vendor");
     cmd.arg(file_path);
     cmd
 }
