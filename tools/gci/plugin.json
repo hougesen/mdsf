@@ -4,7 +4,7 @@
   "categories": ["formatter"],
   "commands": {
     "": {
-      "arguments": ["write", "--skip-generated", "--skip-vender", "$PATH"],
+      "arguments": ["write", "--skip-generated", "--skip-vendor", "$PATH"],
       "ignore_output": false
     }
   },
