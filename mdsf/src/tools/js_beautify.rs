@@ -1,12 +1,13 @@
 ///
 /// THIS FILE IS GENERATED USING CODE - DO NOT EDIT MANUALLY
 ///
-use std::process::Command;
-
-use crate::{error::MdsfError, execution::execute_command, runners::CommandType};
+use crate::runners::CommandType;
 
 #[inline]
-fn set_js_beautify_args(mut cmd: Command, file_path: &std::path::Path) -> Command {
+pub fn set_args(
+    mut cmd: std::process::Command,
+    file_path: &std::path::Path,
+) -> std::process::Command {
     cmd.arg("-r");
     cmd.arg("--type");
     cmd.arg("js");
@@ -15,31 +16,11 @@ fn set_js_beautify_args(mut cmd: Command, file_path: &std::path::Path) -> Comman
     cmd
 }
 
-#[inline]
-pub fn run(file_path: &std::path::Path, timeout: u64) -> Result<(bool, Option<String>), MdsfError> {
-    let commands = [
-        CommandType::NodeModules("js-beautify"),
-        CommandType::Direct("js-beautify"),
-        CommandType::Npm("js-beautify"),
-    ];
-
-    for (index, cmd) in commands.iter().enumerate() {
-        let cmd = set_js_beautify_args(cmd.build(), file_path);
-        let execution_result = execute_command(cmd, file_path, timeout);
-
-        if index == commands.len() - 1 {
-            return execution_result;
-        }
-
-        if let Ok(r) = execution_result {
-            if !r.0 {
-                return Ok(r);
-            }
-        }
-    }
-
-    Ok((true, None))
-}
+pub const COMMANDS: [CommandType; 3] = [
+    CommandType::NodeModules("js-beautify"),
+    CommandType::Direct("js-beautify"),
+    CommandType::Npm("js-beautify"),
+];
 
 #[cfg(test)]
 mod test_js_beautify {}

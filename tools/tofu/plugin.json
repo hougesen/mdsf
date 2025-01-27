@@ -5,7 +5,6 @@
   "commands": {
     "fmt": {
       "arguments": ["fmt", "-write=true", "$PATH"],
-      "ignore_output": false,
       "tests": [
         {
           "language": "terraform",

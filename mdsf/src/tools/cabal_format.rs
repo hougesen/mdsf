@@ -1,43 +1,24 @@
 ///
 /// THIS FILE IS GENERATED USING CODE - DO NOT EDIT MANUALLY
 ///
-use std::process::Command;
-
-use crate::{error::MdsfError, execution::execute_command, runners::CommandType};
+use crate::runners::CommandType;
 
 #[inline]
-fn set_cabal_format_args(mut cmd: Command, file_path: &std::path::Path) -> Command {
+pub fn set_args(
+    mut cmd: std::process::Command,
+    file_path: &std::path::Path,
+) -> std::process::Command {
     cmd.arg("format");
     cmd.arg(file_path);
     cmd
 }
 
-#[inline]
-pub fn run(file_path: &std::path::Path, timeout: u64) -> Result<(bool, Option<String>), MdsfError> {
-    let commands = [CommandType::Direct("cabal")];
-
-    for (index, cmd) in commands.iter().enumerate() {
-        let cmd = set_cabal_format_args(cmd.build(), file_path);
-        let execution_result = execute_command(cmd, file_path, timeout);
-
-        if index == commands.len() - 1 {
-            return execution_result;
-        }
-
-        if let Ok(r) = execution_result {
-            if !r.0 {
-                return Ok(r);
-            }
-        }
-    }
-
-    Ok((true, None))
-}
+pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("cabal")];
 
 #[cfg(test)]
 mod test_cabal_format {
     #[test_with::executable(cabal)]
-    fn test_cabal_format_cabal_8f11b5df65ea57bd() {
+    fn test_cabal_format_cabal_38e9e2aad5619a6a() {
         let input = r#"cabal-version: 2.4
 name: mdsf
 version: 0
@@ -50,8 +31,8 @@ executable msdf
     other-extensions:
       DeriveFunctor FlexibleContexts ExistentialQuantification OverloadedStrings
       RankNTypes"#;
-        let output = Some(
-            r#"cabal-version: 2.4
+
+        let output = r#"cabal-version: 2.4
 name:          mdsf
 version:       0
 
@@ -69,15 +50,19 @@ executable msdf
         bytestring,
         Cabal ^>=2.5,
         containers ^>=0.5.11.0 || ^>=0.6.0.1
-"#
-            .to_owned(),
-        );
+"#;
+
         let file_ext = crate::fttype::get_file_extension("cabal");
+
         let snippet =
             crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
-        let result = crate::tools::cabal_format::run(snippet.path(), 0)
-            .expect("it to be successful")
-            .1;
+
+        let result =
+            crate::execution::run_tools(&super::COMMANDS, snippet.path(), super::set_args, 0)
+                .expect("it to be successful")
+                .1
+                .expect("it to be some");
+
         assert_eq!(result, output);
     }
 }

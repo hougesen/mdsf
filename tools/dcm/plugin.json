@@ -4,12 +4,10 @@
   "categories": ["formatter", "linter"],
   "commands": {
     "fix": {
-      "arguments": ["fix", "$PATH"],
-      "ignore_output": false
+      "arguments": ["fix", "$PATH"]
     },
     "format": {
-      "arguments": ["format", "$PATH"],
-      "ignore_output": false
+      "arguments": ["format", "$PATH"]
     }
   },
   "description": "Code Quality Tool for Flutter Developers",

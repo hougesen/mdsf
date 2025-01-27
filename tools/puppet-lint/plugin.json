@@ -4,8 +4,7 @@
   "categories": ["linter"],
   "commands": {
     "": {
-      "arguments": ["--fix", "$PATH"],
-      "ignore_output": false
+      "arguments": ["--fix", "$PATH"]
     }
   },
   "description": "Check that your Puppet manifests conform to the style guide",

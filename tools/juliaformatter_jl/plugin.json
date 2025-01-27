@@ -8,7 +8,6 @@
         "-E",
         "using JuliaFormatter;format_file(\\\"{$PATH_STRING}\\\")"
       ],
-      "ignore_output": false,
       "tests": [
         {
           "language": "julia",

@@ -4,8 +4,7 @@
   "categories": ["formatter"],
   "commands": {
     "": {
-      "arguments": ["--write", "$PATH"],
-      "ignore_output": false
+      "arguments": ["--write", "$PATH"]
     }
   },
   "description": "Prettier plugin for liquidsoap script",

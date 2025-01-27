@@ -4,8 +4,7 @@
   "categories": ["formatter"],
   "commands": {
     "fmt": {
-      "arguments": ["fmt", "$PATH"],
-      "ignore_output": false
+      "arguments": ["fmt", "$PATH"]
     }
   },
   "description": "Code formatter for the inko programming language",

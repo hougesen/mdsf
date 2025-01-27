@@ -4,8 +4,7 @@
   "categories": ["linter"],
   "commands": {
     "": {
-      "arguments": ["-q", "$PATH"],
-      "ignore_output": true
+      "arguments": ["-q", "$PATH"]
     }
   },
   "description": "Experimental HTML templates linting for Jinja, Nunjucks, Django templates, Twig, Liquid",

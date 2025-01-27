@@ -4,8 +4,7 @@
   "categories": ["formatter"],
   "commands": {
     "": {
-      "arguments": ["--inplace", "$PATH"],
-      "ignore_output": false
+      "arguments": ["--inplace", "$PATH"]
     }
   },
   "description": "An experiment of formatting .cabal files",

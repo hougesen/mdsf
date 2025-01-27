@@ -4,8 +4,7 @@
   "categories": ["linter"],
   "commands": {
     "": {
-      "arguments": ["$PATH"],
-      "ignore_output": true
+      "arguments": ["$PATH"]
     }
   },
   "description": "A command-line utility that checks for best practices in SaltStack",

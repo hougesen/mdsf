@@ -4,8 +4,7 @@
   "categories": ["autocorrection"],
   "commands": {
     "": {
-      "arguments": ["$PATH", "--check-hidden", "--write-changes"],
-      "ignore_output": false
+      "arguments": ["$PATH", "--check-hidden", "--write-changes"]
     }
   },
   "description": "Check code for common misspellings",

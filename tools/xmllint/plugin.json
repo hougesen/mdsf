@@ -5,7 +5,6 @@
   "commands": {
     "": {
       "arguments": ["--format", "$PATH", "--output", "$PATH"],
-      "ignore_output": false,
       "tests": [
         {
           "language": "xml",

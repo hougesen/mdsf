@@ -4,8 +4,7 @@
   "categories": ["linter"],
   "commands": {
     "": {
-      "arguments": ["$PATH"],
-      "ignore_output": true
+      "arguments": ["$PATH"]
     }
   },
   "description": "quick-lint-js finds bugs in JavaScript programs",

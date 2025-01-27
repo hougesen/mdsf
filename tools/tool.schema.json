@@ -62,7 +62,7 @@
   "definitions": {
     "ToolCommand": {
       "type": "object",
-      "required": ["arguments", "ignore_output"],
+      "required": ["arguments"],
       "properties": {
         "arguments": {
           "type": "array",
@@ -76,10 +76,6 @@
         "homepage": {
           "type": ["string", "null"]
         },
-        "ignore_output": {
-          "description": "Whether to ignore the output of the command execution",
-          "type": "boolean"
-        },
         "tests": {
           "type": ["array", "null"],
           "items": {
@@ -91,7 +87,7 @@
     },
     "ToolCommandTest": {
       "type": "object",
-      "required": ["language", "test_input"],
+      "required": ["language", "test_input", "test_output"],
       "properties": {
         "language": {
           "description": "Codeblock language used when generating tests",
@@ -101,7 +97,7 @@
           "type": "string"
         },
         "test_output": {
-          "type": ["string", "null"]
+          "type": "string"
         }
       },
       "additionalProperties": false

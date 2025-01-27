@@ -4,8 +4,7 @@
   "categories": ["formatter"],
   "commands": {
     "": {
-      "arguments": ["$PATH"],
-      "ignore_output": false
+      "arguments": ["$PATH"]
     }
   },
   "description": "PHP Code Beautifier and Fixer fixes violations of a defined coding standard",

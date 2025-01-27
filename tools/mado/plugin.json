@@ -5,12 +5,11 @@
   "commands": {
     "check": {
       "arguments": ["check", "$PATH"],
-      "ignore_output": true,
       "tests": [
         {
           "language": "markdown",
           "test_input": "# Hello world\n\n- Hello\n- world\n\n",
-          "test_output": null
+          "test_output": "# Hello world\n\n- Hello\n- world\n\n"
         }
       ]
     }

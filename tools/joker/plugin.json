@@ -4,8 +4,7 @@
   "categories": ["formatter", "linter"],
   "commands": {
     "": {
-      "arguments": ["--format", "--write", "$PATH"],
-      "ignore_output": false
+      "arguments": ["--format", "--write", "$PATH"]
     }
   },
   "description": "Small Clojure interpreter, linter and formatter",

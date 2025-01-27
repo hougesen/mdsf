@@ -5,7 +5,6 @@
   "commands": {
     "fmt": {
       "arguments": ["fmt", "--quiet", "$PATH"],
-      "ignore_output": false,
       "tests": [
         {
           "language": "javascript",
@@ -25,8 +24,7 @@
       ]
     },
     "lint": {
-      "arguments": ["lint", "--fix", "$PATH"],
-      "ignore_output": false
+      "arguments": ["lint", "--fix", "$PATH"]
     }
   },
   "description": "Formatter and linter for JavaScript and TypeScript",

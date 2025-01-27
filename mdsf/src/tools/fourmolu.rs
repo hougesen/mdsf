@@ -1,61 +1,46 @@
 ///
 /// THIS FILE IS GENERATED USING CODE - DO NOT EDIT MANUALLY
 ///
-use std::process::Command;
-
-use crate::{error::MdsfError, execution::execute_command, runners::CommandType};
+use crate::runners::CommandType;
 
 #[inline]
-fn set_fourmolu_args(mut cmd: Command, file_path: &std::path::Path) -> Command {
+pub fn set_args(
+    mut cmd: std::process::Command,
+    file_path: &std::path::Path,
+) -> std::process::Command {
     cmd.arg("-i");
     cmd.arg(file_path);
     cmd
 }
 
-#[inline]
-pub fn run(file_path: &std::path::Path, timeout: u64) -> Result<(bool, Option<String>), MdsfError> {
-    let commands = [CommandType::Direct("fourmolu")];
-
-    for (index, cmd) in commands.iter().enumerate() {
-        let cmd = set_fourmolu_args(cmd.build(), file_path);
-        let execution_result = execute_command(cmd, file_path, timeout);
-
-        if index == commands.len() - 1 {
-            return execution_result;
-        }
-
-        if let Ok(r) = execution_result {
-            if !r.0 {
-                return Ok(r);
-            }
-        }
-    }
-
-    Ok((true, None))
-}
+pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("fourmolu")];
 
 #[cfg(test)]
 mod test_fourmolu {
     #[test_with::executable(fourmolu)]
-    fn test_fourmolu_haskell_53dde041426fce49() {
+    fn test_fourmolu_haskell_718612a8aa064d19() {
         let input = r#"
 addNumbers::Int->Int->Int
 addNumbers a b = do
         a + b
         "#;
-        let output = Some(
-            r#"addNumbers :: Int -> Int -> Int
+
+        let output = r#"addNumbers :: Int -> Int -> Int
 addNumbers a b = do
     a + b
-"#
-            .to_owned(),
-        );
+"#;
+
         let file_ext = crate::fttype::get_file_extension("haskell");
+
         let snippet =
             crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
-        let result = crate::tools::fourmolu::run(snippet.path(), 0)
-            .expect("it to be successful")
-            .1;
+
+        let result =
+            crate::execution::run_tools(&super::COMMANDS, snippet.path(), super::set_args, 0)
+                .expect("it to be successful")
+                .1
+                .expect("it to be some");
+
         assert_eq!(result, output);
     }
 }

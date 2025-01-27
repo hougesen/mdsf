@@ -5,7 +5,6 @@
   "commands": {
     "": {
       "arguments": ["--fmt", "--unstable", "--justfile", "$PATH"],
-      "ignore_output": false,
       "tests": [
         {
           "language": "just",

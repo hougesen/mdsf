@@ -4,8 +4,7 @@
   "categories": ["formatter", "linter"],
   "commands": {
     "": {
-      "arguments": ["$PATH", "--reformat"],
-      "ignore_output": false
+      "arguments": ["$PATH", "--reformat"]
     }
   },
   "description": "Lint & Format HTML Templates",

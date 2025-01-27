@@ -4,8 +4,7 @@
   "categories": ["linter"],
   "commands": {
     "": {
-      "arguments": ["$PATH"],
-      "ignore_output": true
+      "arguments": ["$PATH"]
     }
   },
   "description": "The static code analysis tool you need for your HTML",

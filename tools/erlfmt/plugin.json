@@ -5,7 +5,6 @@
   "commands": {
     "": {
       "arguments": ["-w", "$PATH_STRING"],
-      "ignore_output": false,
       "tests": [
         {
           "language": "erlang",

@@ -1,48 +1,29 @@
 ///
 /// THIS FILE IS GENERATED USING CODE - DO NOT EDIT MANUALLY
 ///
-use std::process::Command;
-
-use crate::{error::MdsfError, execution::execute_command, runners::CommandType};
+use crate::runners::CommandType;
 
 #[inline]
-fn set_biome_format_args(mut cmd: Command, file_path: &std::path::Path) -> Command {
+pub fn set_args(
+    mut cmd: std::process::Command,
+    file_path: &std::path::Path,
+) -> std::process::Command {
     cmd.arg("format");
     cmd.arg("--write");
     cmd.arg(file_path);
     cmd
 }
 
-#[inline]
-pub fn run(file_path: &std::path::Path, timeout: u64) -> Result<(bool, Option<String>), MdsfError> {
-    let commands = [
-        CommandType::NodeModules("biome"),
-        CommandType::Direct("biome"),
-        CommandType::Npm("@biomejs/biome"),
-    ];
-
-    for (index, cmd) in commands.iter().enumerate() {
-        let cmd = set_biome_format_args(cmd.build(), file_path);
-        let execution_result = execute_command(cmd, file_path, timeout);
-
-        if index == commands.len() - 1 {
-            return execution_result;
-        }
-
-        if let Ok(r) = execution_result {
-            if !r.0 {
-                return Ok(r);
-            }
-        }
-    }
-
-    Ok((true, None))
-}
+pub const COMMANDS: [CommandType; 3] = [
+    CommandType::NodeModules("biome"),
+    CommandType::Direct("biome"),
+    CommandType::Npm("@biomejs/biome"),
+];
 
 #[cfg(test)]
 mod test_biome_format {
     #[test_with::executable(npx)]
-    fn test_biome_format_json_3bf561a65ea19c27() {
+    fn test_biome_format_json_90a326e29048e3cd() {
         let input = r#"
               {
               "key": "value",
@@ -53,25 +34,29 @@ mod test_biome_format {
             , null]
  }
   "#;
-        let output = Some(
-            r#"{
+
+        let output = r#"{
 	"key": "value",
 	"key2": ["value2", "value3", 1, null]
 }
-"#
-            .to_owned(),
-        );
+"#;
+
         let file_ext = crate::fttype::get_file_extension("json");
+
         let snippet =
             crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
-        let result = crate::tools::biome_format::run(snippet.path(), 0)
-            .expect("it to be successful")
-            .1;
+
+        let result =
+            crate::execution::run_tools(&super::COMMANDS, snippet.path(), super::set_args, 0)
+                .expect("it to be successful")
+                .1
+                .expect("it to be some");
+
         assert_eq!(result, output);
     }
 
     #[test_with::executable(npx)]
-    fn test_biome_format_javascript_8b78b3bf4549dcd5() {
+    fn test_biome_format_javascript_4845e9b01c23667f() {
         let input = r#"
     async function asyncAddition(
             a,b
@@ -80,24 +65,28 @@ mod test_biome_format {
     }
 
             "#;
-        let output = Some(
-            r#"async function asyncAddition(a, b) {
+
+        let output = r#"async function asyncAddition(a, b) {
 	return a + b;
 }
-"#
-            .to_owned(),
-        );
+"#;
+
         let file_ext = crate::fttype::get_file_extension("javascript");
+
         let snippet =
             crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
-        let result = crate::tools::biome_format::run(snippet.path(), 0)
-            .expect("it to be successful")
-            .1;
+
+        let result =
+            crate::execution::run_tools(&super::COMMANDS, snippet.path(), super::set_args, 0)
+                .expect("it to be successful")
+                .1
+                .expect("it to be some");
+
         assert_eq!(result, output);
     }
 
     #[test_with::executable(npx)]
-    fn test_biome_format_typescript_4c7d2a2ce681e640() {
+    fn test_biome_format_typescript_8154bfdbd3b72275() {
         let input = r#"
     async function asyncAddition(
             a:number,b:number
@@ -108,19 +97,23 @@ number>
     }
 
             "#;
-        let output = Some(
-            r#"async function asyncAddition(a: number, b: number): Promise<number> {
+
+        let output = r#"async function asyncAddition(a: number, b: number): Promise<number> {
 	return a + b;
 }
-"#
-            .to_owned(),
-        );
+"#;
+
         let file_ext = crate::fttype::get_file_extension("typescript");
+
         let snippet =
             crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
-        let result = crate::tools::biome_format::run(snippet.path(), 0)
-            .expect("it to be successful")
-            .1;
+
+        let result =
+            crate::execution::run_tools(&super::COMMANDS, snippet.path(), super::set_args, 0)
+                .expect("it to be successful")
+                .1
+                .expect("it to be some");
+
         assert_eq!(result, output);
     }
 }

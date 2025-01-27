@@ -1,60 +1,45 @@
 ///
 /// THIS FILE IS GENERATED USING CODE - DO NOT EDIT MANUALLY
 ///
-use std::process::Command;
-
-use crate::{error::MdsfError, execution::execute_command, runners::CommandType};
+use crate::runners::CommandType;
 
 #[inline]
-fn set_erlfmt_args(mut cmd: Command, file_path: &std::path::Path) -> Command {
+pub fn set_args(
+    mut cmd: std::process::Command,
+    file_path: &std::path::Path,
+) -> std::process::Command {
     cmd.arg("-w");
     cmd.arg(format!("'{}'", file_path.to_string_lossy()));
     cmd
 }
 
-#[inline]
-pub fn run(file_path: &std::path::Path, timeout: u64) -> Result<(bool, Option<String>), MdsfError> {
-    let commands = [CommandType::Direct("erlfmt")];
-
-    for (index, cmd) in commands.iter().enumerate() {
-        let cmd = set_erlfmt_args(cmd.build(), file_path);
-        let execution_result = execute_command(cmd, file_path, timeout);
-
-        if index == commands.len() - 1 {
-            return execution_result;
-        }
-
-        if let Ok(r) = execution_result {
-            if !r.0 {
-                return Ok(r);
-            }
-        }
-    }
-
-    Ok((true, None))
-}
+pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("erlfmt")];
 
 #[cfg(test)]
 mod test_erlfmt {
     #[test_with::executable(erlfmt)]
-    fn test_erlfmt_erlang_90fa4b828bc9873() {
+    fn test_erlfmt_erlang_61f4ac26ad7484d2() {
         let input = r#"what_is(Erlang) ->
 case Erlang of movie->[hello(mike,joe,robert),credits]; language->formatting_arguments end
 ."#;
-        let output = Some(
-            r#"what_is(Erlang) ->
+
+        let output = r#"what_is(Erlang) ->
     case Erlang of
         movie -> [hello(mike, joe, robert), credits];
         language -> no_more_formatting_arguments
-    end."#
-                .to_owned(),
-        );
+    end."#;
+
         let file_ext = crate::fttype::get_file_extension("erlang");
+
         let snippet =
             crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
-        let result = crate::tools::erlfmt::run(snippet.path(), 0)
-            .expect("it to be successful")
-            .1;
+
+        let result =
+            crate::execution::run_tools(&super::COMMANDS, snippet.path(), super::set_args, 0)
+                .expect("it to be successful")
+                .1
+                .expect("it to be some");
+
         assert_eq!(result, output);
     }
 }

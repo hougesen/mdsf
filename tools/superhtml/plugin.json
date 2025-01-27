@@ -5,7 +5,6 @@
   "commands": {
     "fmt": {
       "arguments": ["fmt", "$PATH"],
-      "ignore_output": false,
       "tests": [
         {
           "language": "html",

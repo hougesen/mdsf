@@ -4,8 +4,7 @@
   "categories": ["linter"],
   "commands": {
     "": {
-      "arguments": ["--auto-correct", "$PATH"],
-      "ignore_output": false
+      "arguments": ["--auto-correct", "$PATH"]
     }
   },
   "description": "Tool for writing clean and consistent HAML",

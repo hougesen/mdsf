@@ -4,8 +4,7 @@
   "categories": ["linter"],
   "commands": {
     "": {
-      "arguments": ["-q", "--edit", "$PATH"],
-      "ignore_output": false
+      "arguments": ["-q", "--edit", "$PATH"]
     }
   },
   "description": "Scan Nix files for dead code",

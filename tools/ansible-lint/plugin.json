@@ -4,8 +4,7 @@
   "categories": ["linter"],
   "commands": {
     "": {
-      "arguments": ["$PATH"],
-      "ignore_output": true
+      "arguments": ["$PATH"]
     }
   },
   "description": "ansible-lint checks playbooks for practices and behavior that could potentially be improved and can fix some of the most common ones for you",

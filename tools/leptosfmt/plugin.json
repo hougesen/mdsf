@@ -4,8 +4,7 @@
   "categories": ["formatter"],
   "commands": {
     "": {
-      "arguments": ["--quiet", "$PATH"],
-      "ignore_output": false
+      "arguments": ["--quiet", "$PATH"]
     }
   },
   "description": "A formatter for the leptos view! macro",

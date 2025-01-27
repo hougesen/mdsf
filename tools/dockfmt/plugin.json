@@ -4,8 +4,7 @@
   "categories": ["formatter"],
   "commands": {
     "": {
-      "arguments": ["fmt", "-w", "$PATH"],
-      "ignore_output": false
+      "arguments": ["fmt", "-w", "$PATH"]
     }
   },
   "description": "Dockerfile format and parser. Like `gofmt` but for Dockerfiles",

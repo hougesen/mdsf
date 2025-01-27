@@ -5,7 +5,6 @@
   "commands": {
     "": {
       "arguments": ["--in-place", "$PATH"],
-      "ignore_output": false,
       "tests": [
         {
           "language": "swift",

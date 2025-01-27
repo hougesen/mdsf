@@ -15,7 +15,7 @@ pub struct ToolCommandTest {
 
     pub test_input: String,
 
-    pub test_output: Option<String>,
+    pub test_output: String,
 }
 
 #[derive(Debug, serde::Deserialize, schemars::JsonSchema, Clone)]
@@ -28,9 +28,6 @@ pub struct ToolCommand {
 
     #[expect(unused)]
     pub homepage: Option<String>,
-
-    /// Whether to ignore the output of the command execution
-    pub ignore_output: bool,
 
     pub tests: Option<Vec<ToolCommandTest>>,
 }
@@ -114,8 +111,6 @@ pub struct GeneratedCommand {
 
     pub module_name: String,
 
-    pub fn_name: String,
-
     pub code: String,
 
     pub serde_rename: String,
@@ -155,29 +150,26 @@ impl Tool {
 
         let test_fn_name = format!("test_{module_name}_{language}_{id}",);
 
-        let test_output = test.test_output.as_ref().map_or_else(
-            || "None".to_owned(),
-            |output| {
-                format!(
-                    "Some(
-{INDENT}{INDENT}{INDENT}r#\"{output}\"#
-{INDENT}{INDENT}{INDENT}.to_owned(),
-{INDENT}{INDENT})"
-                )
-            },
-        );
+        let test_output = &test.test_output;
 
         let test_code = format!(
             "{INDENT}#[test_with::executable({bin})]
 {INDENT}fn {test_fn_name}() {{
 {INDENT}{INDENT}let input = r#\"{input}\"#;
-{INDENT}{INDENT}let output = {test_output};
+
+{INDENT}{INDENT}let output = r#\"{test_output}\"#;
+
 {INDENT}{INDENT}let file_ext = crate::fttype::get_file_extension(\"{language}\");
+
 {INDENT}{INDENT}let snippet =
 {INDENT}{INDENT}{INDENT}crate::execution::setup_snippet(input, &file_ext).expect(\"it to create a snippet file\");
-{INDENT}{INDENT}let result = crate::tools::{module_name}::run(snippet.path(), 0)
-{INDENT}{INDENT}{INDENT}.expect(\"it to be successful\")
-{INDENT}{INDENT}{INDENT}.1;
+
+{INDENT}{INDENT}let result =
+{INDENT}{INDENT}{INDENT}crate::execution::run_tools(&super::COMMANDS, snippet.path(), super::set_args, 0)
+{INDENT}{INDENT}{INDENT}{INDENT}.expect(\"it to be successful\")
+{INDENT}{INDENT}{INDENT}{INDENT}.1
+{INDENT}{INDENT}{INDENT}{INDENT}.expect(\"it to be some\");
+
 {INDENT}{INDENT}assert_eq!(result, output);
 {INDENT}}}",
             bin = if self.packages.npm.is_some() {
@@ -196,14 +188,8 @@ impl Tool {
     fn generate(&self) -> Vec<GeneratedCommand> {
         let mut all_commands = Vec::new();
 
-        let map_execution_result_whitespace = format!("\n{INDENT}{INDENT}{INDENT}");
-
         for (cmd, options) in &self.commands {
             let command_name = self.get_command_name(cmd);
-
-            let set_args_fn_name = format!("set_{command_name}_args");
-
-            let run_fn_name = "run".to_string();
 
             let mut command_types: Vec<String> = Vec::new();
             {
@@ -225,8 +211,8 @@ impl Tool {
             // TODO: generate if statements instead of array
             let command_arr = if command_types.len() > 1 {
                 format!(
-                    "\n{INDENT}{INDENT}{},\n{INDENT}",
-                    command_types.join(format!(",\n{INDENT}{INDENT}").as_str())
+                    "\n{INDENT}{},\n",
+                    command_types.join(format!(",\n{INDENT}").as_str())
                 )
             } else {
                 command_types.join(", ")
@@ -279,51 +265,22 @@ impl Tool {
                 format!("\n{}\n", tests.join("\n\n"))
             };
 
-            let map_execution_result = if options.ignore_output {
-                ".map(|value| (value.0, None))"
-            } else {
-                ""
-            };
-
-            let execution_result_whitespace = if map_execution_result.is_empty() {
-                " "
-            } else {
-                map_execution_result_whitespace.as_str()
-            };
+            let command_type_count = command_types.len();
 
             let code = format!(
                 "{GENERATED_FILE_COMMENT}
-use std::process::Command;
-
-use crate::{{error::MdsfError, execution::execute_command, runners::CommandType}};
+use crate::runners::CommandType;
 
 #[inline]
-fn {set_args_fn_name}(mut cmd: Command, file_path: &std::path::Path) -> Command {{
+pub fn set_args(
+{INDENT}mut cmd: std::process::Command,
+{INDENT}file_path: &std::path::Path,
+) -> std::process::Command {{
 {string_args}
 {INDENT}cmd
 }}
 
-#[inline]
-pub fn {run_fn_name}(file_path: &std::path::Path, timeout: u64) -> Result<(bool, Option<String>), MdsfError> {{
-{INDENT}let commands = [{command_arr}];
-
-{INDENT}for (index, cmd) in commands.iter().enumerate() {{
-{INDENT}{INDENT}let cmd = {set_args_fn_name}(cmd.build(), file_path);
-{INDENT}{INDENT}let execution_result ={execution_result_whitespace}execute_command(cmd, file_path, timeout){map_execution_result};
-
-{INDENT}{INDENT}if index == commands.len() - 1 {{
-{INDENT}{INDENT}{INDENT}return execution_result;
-{INDENT}{INDENT}}}
-
-{INDENT}{INDENT}if let Ok(r) = execution_result {{
-{INDENT}{INDENT}{INDENT}if !r.0 {{
-{INDENT}{INDENT}{INDENT}{INDENT}return Ok(r);
-{INDENT}{INDENT}{INDENT}}}
-{INDENT}{INDENT}}}
-{INDENT}}}
-
-{INDENT}Ok((true, None))
-}}
+pub const COMMANDS: [CommandType; {command_type_count}] = [{command_arr}];
 
 #[cfg(test)]
 mod test_{module_name} {{{tests}}}
@@ -333,7 +290,6 @@ mod test_{module_name} {{{tests}}}
             all_commands.push(GeneratedCommand {
                 enum_value: command_name.to_case(Case::Pascal),
                 module_name,
-                fn_name: run_fn_name,
                 code,
                 serde_rename: format!(
                     "{}{}{}",
@@ -404,19 +360,22 @@ impl AsRef<str> for Tooling {
             )?;
 
             files.insert(command.module_name.clone());
+
+            let enum_value = &command.enum_value;
+            let module_name = &command.module_name;
+
             enum_values.insert(format!(
                 "{INDENT}#[serde(rename = \"{rename}\")]
 {INDENT}/// `{bin} {args}`
-{INDENT}{enum_name},",
+{INDENT}{enum_value},",
                 rename = command.serde_rename,
-                enum_name = command.enum_value,
                 bin = plugin.binary,
                 args = command.args.join(" ")
             ));
+
             format_snippet_values.insert(format!(
-                "{INDENT}{INDENT}{INDENT}Self::{} => {}::{}(snippet_path, timeout),",
-                command.enum_value, command.module_name, command.fn_name
-            ));
+                "{INDENT}{INDENT}{INDENT}Self::{enum_value} => (&{module_name}::COMMANDS, {module_name}::set_args),"
+             ));
 
             as_ref_values.insert(format!(
                 "{INDENT}{INDENT}{INDENT}Self::{} => \"{}\",",
@@ -461,9 +420,14 @@ impl Tooling {{
 {INDENT}{INDENT}snippet_path: &std::path::Path,
 {INDENT}{INDENT}timeout: u64,
 {INDENT}) -> Result<(bool, Option<String>), crate::error::MdsfError> {{
-{INDENT}{INDENT}match self {{
+{INDENT}{INDENT}let (commands, set_args_fn): (
+{INDENT}{INDENT}{INDENT}&[crate::runners::CommandType],
+{INDENT}{INDENT}{INDENT}fn(std::process::Command, &std::path::Path) -> std::process::Command,
+{INDENT}{INDENT}) = match self {{
 {}
-{INDENT}{INDENT}}}
+{INDENT}{INDENT}}};
+
+{INDENT}{INDENT}crate::execution::run_tools(commands, snippet_path, set_args_fn, timeout)
 {INDENT}}}
 }}
 

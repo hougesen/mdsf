@@ -5,7 +5,6 @@
   "commands": {
     "": {
       "arguments": ["--overwrite", "$PATH"],
-      "ignore_output": false,
       "tests": [
         {
           "language": "xml",

@@ -4,8 +4,7 @@
   "categories": ["linter"],
   "commands": {
     "fix": {
-      "arguments": ["fix", "$PATH", "--no-interaction", "--quiet"],
-      "ignore_output": false
+      "arguments": ["fix", "$PATH", "--no-interaction", "--quiet"]
     }
   },
   "description": "Instant PHP quality checks from your console",

@@ -1,52 +1,40 @@
 ///
 /// THIS FILE IS GENERATED USING CODE - DO NOT EDIT MANUALLY
 ///
-use std::process::Command;
-
-use crate::{error::MdsfError, execution::execute_command, runners::CommandType};
+use crate::runners::CommandType;
 
 #[inline]
-fn set_pycln_args(mut cmd: Command, file_path: &std::path::Path) -> Command {
+pub fn set_args(
+    mut cmd: std::process::Command,
+    file_path: &std::path::Path,
+) -> std::process::Command {
     cmd.arg("--no-gitignore");
     cmd.arg("--quiet");
     cmd.arg(file_path);
     cmd
 }
 
-#[inline]
-pub fn run(file_path: &std::path::Path, timeout: u64) -> Result<(bool, Option<String>), MdsfError> {
-    let commands = [CommandType::Direct("pycln")];
-
-    for (index, cmd) in commands.iter().enumerate() {
-        let cmd = set_pycln_args(cmd.build(), file_path);
-        let execution_result = execute_command(cmd, file_path, timeout);
-
-        if index == commands.len() - 1 {
-            return execution_result;
-        }
-
-        if let Ok(r) = execution_result {
-            if !r.0 {
-                return Ok(r);
-            }
-        }
-    }
-
-    Ok((true, None))
-}
+pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("pycln")];
 
 #[cfg(test)]
 mod test_pycln {
     #[test_with::executable(pycln)]
-    fn test_pycln_python_303d0fea3e20b822() {
+    fn test_pycln_python_21e4539a9b183542() {
         let input = r#"import math"#;
-        let output = Some(r#""#.to_owned());
+
+        let output = r#""#;
+
         let file_ext = crate::fttype::get_file_extension("python");
+
         let snippet =
             crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
-        let result = crate::tools::pycln::run(snippet.path(), 0)
-            .expect("it to be successful")
-            .1;
+
+        let result =
+            crate::execution::run_tools(&super::COMMANDS, snippet.path(), super::set_args, 0)
+                .expect("it to be successful")
+                .1
+                .expect("it to be some");
+
         assert_eq!(result, output);
     }
 }

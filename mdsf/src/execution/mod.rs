@@ -8,6 +8,7 @@ use crate::{
     config::MdsfConfig,
     error::MdsfError,
     fttype::get_file_extension,
+    runners::CommandType,
     terminal::{
         print_binary_not_in_path, print_error_formatting, print_formatter_info,
         print_formatter_time,
@@ -129,7 +130,9 @@ pub fn execute_command(
         }
     }
 
-    handle_post_execution(spawn_command(cmd, timeout), snippet_path)
+    let output = spawn_command(cmd, timeout);
+
+    handle_post_execution(output, snippet_path)
 }
 
 #[inline]
@@ -285,4 +288,30 @@ impl MdsfFormatter<Tooling> {
             }
         }
     }
+}
+
+#[inline]
+pub fn run_tools(
+    commands: &[CommandType],
+    file_path: &std::path::Path,
+    set_args_fn: fn(std::process::Command, &std::path::Path) -> std::process::Command,
+    timeout: u64,
+) -> Result<(bool, Option<String>), MdsfError> {
+    for (index, cmd) in commands.iter().enumerate() {
+        let cmd = set_args_fn(cmd.build(), file_path);
+
+        let execution_result = execute_command(cmd, file_path, timeout);
+
+        if index == commands.len() - 1 {
+            return execution_result;
+        }
+
+        if let Ok(r) = execution_result {
+            if !r.0 {
+                return Ok(r);
+            }
+        }
+    }
+
+    Ok((true, None))
 }

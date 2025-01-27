@@ -4,8 +4,7 @@
   "categories": ["formatter"],
   "commands": {
     "fmt": {
-      "arguments": ["fmt", "$PATH", "-w"],
-      "ignore_output": false
+      "arguments": ["fmt", "$PATH", "-w"]
     }
   },
   "description": "Format Rego source files",

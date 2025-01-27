@@ -5,7 +5,6 @@
   "commands": {
     "": {
       "arguments": ["-r", "--type", "css", "-f", "$PATH"],
-      "ignore_output": false,
       "tests": [
         {
           "language": "css",

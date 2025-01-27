@@ -4,8 +4,7 @@
   "categories": ["formatter"],
   "commands": {
     "": {
-      "arguments": ["-w", "$PATH"],
-      "ignore_output": false
+      "arguments": ["-w", "$PATH"]
     }
   },
   "description": "qmlfmt - command line application that formats QML files",

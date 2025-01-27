@@ -5,12 +5,11 @@
   "commands": {
     "": {
       "arguments": ["$PATH"],
-      "ignore_output": true,
       "tests": [
         {
           "language": "yaml",
           "test_input": "name: action\non: push\njobs:\n  format:\n    runs-on: ubuntu-latest\n    steps:\n      - run: mdsf format .\n",
-          "test_output": null
+          "test_output": "name: action\non: push\njobs:\n  format:\n    runs-on: ubuntu-latest\n    steps:\n      - run: mdsf format .\n"
         }
       ]
     }

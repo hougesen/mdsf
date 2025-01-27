@@ -1,12 +1,13 @@
 ///
 /// THIS FILE IS GENERATED USING CODE - DO NOT EDIT MANUALLY
 ///
-use std::process::Command;
-
-use crate::{error::MdsfError, execution::execute_command, runners::CommandType};
+use crate::runners::CommandType;
 
 #[inline]
-fn set_sqlfluff_format_args(mut cmd: Command, file_path: &std::path::Path) -> Command {
+pub fn set_args(
+    mut cmd: std::process::Command,
+    file_path: &std::path::Path,
+) -> std::process::Command {
     cmd.arg("format");
     cmd.arg("--dialect");
     cmd.arg("ansi");
@@ -14,46 +15,30 @@ fn set_sqlfluff_format_args(mut cmd: Command, file_path: &std::path::Path) -> Co
     cmd
 }
 
-#[inline]
-pub fn run(file_path: &std::path::Path, timeout: u64) -> Result<(bool, Option<String>), MdsfError> {
-    let commands = [CommandType::Direct("sqlfluff")];
-
-    for (index, cmd) in commands.iter().enumerate() {
-        let cmd = set_sqlfluff_format_args(cmd.build(), file_path);
-        let execution_result = execute_command(cmd, file_path, timeout);
-
-        if index == commands.len() - 1 {
-            return execution_result;
-        }
-
-        if let Ok(r) = execution_result {
-            if !r.0 {
-                return Ok(r);
-            }
-        }
-    }
-
-    Ok((true, None))
-}
+pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("sqlfluff")];
 
 #[cfg(test)]
 mod test_sqlfluff_format {
     #[test_with::executable(sqlfluff)]
-    fn test_sqlfluff_format_sql_16c512917bb843b9() {
+    fn test_sqlfluff_format_sql_55c68b000536eccf() {
         let input = r#"SELECT  *                  FROM  tbl
                         WHERE                      foo   = 'bar';         "#;
-        let output = Some(
-            r#"SELECT * FROM tbl
+
+        let output = r#"SELECT * FROM tbl
 WHERE foo = 'bar';
-"#
-            .to_owned(),
-        );
+"#;
+
         let file_ext = crate::fttype::get_file_extension("sql");
+
         let snippet =
             crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
-        let result = crate::tools::sqlfluff_format::run(snippet.path(), 0)
-            .expect("it to be successful")
-            .1;
+
+        let result =
+            crate::execution::run_tools(&super::COMMANDS, snippet.path(), super::set_args, 0)
+                .expect("it to be successful")
+                .1
+                .expect("it to be some");
+
         assert_eq!(result, output);
     }
 }

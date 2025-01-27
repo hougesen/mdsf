@@ -4,8 +4,7 @@
   "categories": ["linter"],
   "commands": {
     "": {
-      "arguments": ["--fix", "$PATH"],
-      "ignore_output": false
+      "arguments": ["--fix", "$PATH"]
     }
   },
   "description": "clang-tidy is a clang-based C++ “linter” tool",

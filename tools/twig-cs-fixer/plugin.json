@@ -4,8 +4,7 @@
   "categories": ["formatter", "linter"],
   "commands": {
     "lint": {
-      "arguments": ["lint", "$PATH", "--fix", "--no-interaction", "--quiet"],
-      "ignore_output": false
+      "arguments": ["lint", "$PATH", "--fix", "--no-interaction", "--quiet"]
     }
   },
   "description": "A tool to automatically fix Twig Coding Standards issues",

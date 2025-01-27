@@ -4,8 +4,7 @@
   "categories": ["formatter", "linter"],
   "commands": {
     "": {
-      "arguments": ["fix", "$PATH"],
-      "ignore_output": false
+      "arguments": ["fix", "$PATH"]
     }
   },
   "description": "Fast SQL formatter/linter",

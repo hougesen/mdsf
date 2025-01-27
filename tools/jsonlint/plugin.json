@@ -4,8 +4,7 @@
   "categories": ["formatter", "linter"],
   "commands": {
     "": {
-      "arguments": ["-i", "$PATH"],
-      "ignore_output": false
+      "arguments": ["-i", "$PATH"]
     }
   },
   "description": "A JSON parser and validator with a CLI",

@@ -5,7 +5,6 @@
   "commands": {
     "": {
       "arguments": ["--elm-version=0.19", "--yes", "$PATH"],
-      "ignore_output": false,
       "tests": [
         {
           "language": "elm",

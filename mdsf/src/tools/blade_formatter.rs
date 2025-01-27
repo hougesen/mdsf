@@ -1,47 +1,28 @@
 ///
 /// THIS FILE IS GENERATED USING CODE - DO NOT EDIT MANUALLY
 ///
-use std::process::Command;
-
-use crate::{error::MdsfError, execution::execute_command, runners::CommandType};
+use crate::runners::CommandType;
 
 #[inline]
-fn set_blade_formatter_args(mut cmd: Command, file_path: &std::path::Path) -> Command {
+pub fn set_args(
+    mut cmd: std::process::Command,
+    file_path: &std::path::Path,
+) -> std::process::Command {
     cmd.arg("--write");
     cmd.arg(file_path);
     cmd
 }
 
-#[inline]
-pub fn run(file_path: &std::path::Path, timeout: u64) -> Result<(bool, Option<String>), MdsfError> {
-    let commands = [
-        CommandType::NodeModules("blade-formatter"),
-        CommandType::Direct("blade-formatter"),
-        CommandType::Npm("blade-formatter"),
-    ];
-
-    for (index, cmd) in commands.iter().enumerate() {
-        let cmd = set_blade_formatter_args(cmd.build(), file_path);
-        let execution_result = execute_command(cmd, file_path, timeout);
-
-        if index == commands.len() - 1 {
-            return execution_result;
-        }
-
-        if let Ok(r) = execution_result {
-            if !r.0 {
-                return Ok(r);
-            }
-        }
-    }
-
-    Ok((true, None))
-}
+pub const COMMANDS: [CommandType; 3] = [
+    CommandType::NodeModules("blade-formatter"),
+    CommandType::Direct("blade-formatter"),
+    CommandType::Npm("blade-formatter"),
+];
 
 #[cfg(test)]
 mod test_blade_formatter {
     #[test_with::executable(npx)]
-    fn test_blade_formatter_blade_3c9d381f117ad59b() {
+    fn test_blade_formatter_blade_9ddeaf972bfb08c1() {
         let input = r#"@extends('frontend.layouts.app')
 @section('title') foo
 @endsection
@@ -72,8 +53,8 @@ mod test_blade_formatter {
 @endsection
 @section('footer')
 @stop"#;
-        let output = Some(
-            r#"@extends('frontend.layouts.app')
+
+        let output = r#"@extends('frontend.layouts.app')
 @section('title') foo
 @endsection
 @section('content')
@@ -103,15 +84,19 @@ mod test_blade_formatter {
 @endsection
 @section('footer')
 @stop
-"#
-            .to_owned(),
-        );
+"#;
+
         let file_ext = crate::fttype::get_file_extension("blade");
+
         let snippet =
             crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
-        let result = crate::tools::blade_formatter::run(snippet.path(), 0)
-            .expect("it to be successful")
-            .1;
+
+        let result =
+            crate::execution::run_tools(&super::COMMANDS, snippet.path(), super::set_args, 0)
+                .expect("it to be successful")
+                .1
+                .expect("it to be some");
+
         assert_eq!(result, output);
     }
 }
