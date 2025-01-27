@@ -136,16 +136,37 @@ Run formatters on input files
 Usage: mdsf format [OPTIONS] [INPUT]...
 
 Arguments:
-  [INPUT]...  Path to files and/or directories
+  [INPUT]...
+          Path to files and/or directories
 
 Options:
-      --config <CONFIG>        Path to config
-      --debug                  Log stdout and stderr of formatters
-      --log-level <LOG_LEVEL>  [possible values: trace, debug, info, warn, error, off]
-      --threads <THREADS>      Amount of threads to use. Defaults to 0 (auto)
-      --cache                  Only format changed codeblocks
-  -h, --help                   Print help
-  -V, --version                Print version
+      --config <CONFIG>
+          Path to config
+
+      --debug
+          Log stdout and stderr of formatters
+
+      --log-level <LOG_LEVEL>
+          [possible values: trace, debug, info, warn, error, off]
+
+      --threads <THREADS>
+          Amount of threads to use.
+
+          Defaults to 0 (auto).
+
+      --cache
+          Only format changed codeblocks
+
+      --timeout <TIMEOUT>
+          Tool timeout in seconds
+
+          Defaults to no timeout
+
+  -h, --help
+          Print help (see a summary with '-h')
+
+  -V, --version
+          Print version
 ```
 
 <!-- END_SECTION:format-command-help -->
@@ -164,15 +185,34 @@ Verify files are formatted
 Usage: mdsf verify [OPTIONS] [INPUT]...
 
 Arguments:
-  [INPUT]...  Path to files and/or directories
+  [INPUT]...
+          Path to files and/or directories
 
 Options:
-      --config <CONFIG>        Path to config
-      --debug                  Log stdout and stderr of formatters
-      --log-level <LOG_LEVEL>  [possible values: trace, debug, info, warn, error, off]
-      --threads <THREADS>      Amount of threads to use. Defaults to 0 (auto)
-  -h, --help                   Print help
-  -V, --version                Print version
+      --config <CONFIG>
+          Path to config
+
+      --debug
+          Log stdout and stderr of formatters
+
+      --log-level <LOG_LEVEL>
+          [possible values: trace, debug, info, warn, error, off]
+
+      --threads <THREADS>
+          Amount of threads to use.
+
+          Defaults to 0 (auto).
+
+      --timeout <TIMEOUT>
+          Tool timeout in seconds
+
+          Defaults to no timeout
+
+  -h, --help
+          Print help (see a summary with '-h')
+
+  -V, --version
+          Print version
 ```
 
 <!-- END_SECTION:verify-command-help -->

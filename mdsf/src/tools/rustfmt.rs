@@ -15,12 +15,12 @@ fn set_rustfmt_args(mut cmd: Command, file_path: &std::path::Path) -> Command {
 }
 
 #[inline]
-pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfError> {
+pub fn run(file_path: &std::path::Path, timeout: u64) -> Result<(bool, Option<String>), MdsfError> {
     let commands = [CommandType::Direct("rustfmt")];
 
     for (index, cmd) in commands.iter().enumerate() {
         let cmd = set_rustfmt_args(cmd.build(), file_path);
-        let execution_result = execute_command(cmd, file_path);
+        let execution_result = execute_command(cmd, file_path, timeout);
 
         if index == commands.len() - 1 {
             return execution_result;
@@ -55,7 +55,7 @@ mod test_rustfmt {
         let file_ext = crate::fttype::get_file_extension("rust");
         let snippet =
             crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
-        let result = crate::tools::rustfmt::run(snippet.path())
+        let result = crate::tools::rustfmt::run(snippet.path(), 0)
             .expect("it to be successful")
             .1;
         assert_eq!(result, output);

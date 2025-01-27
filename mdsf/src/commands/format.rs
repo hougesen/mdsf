@@ -85,8 +85,13 @@ pub fn run(args: FormatCommandArguments, dry_run: bool) -> Result<(), MdsfError>
                 let config_cache_key_ref = config_cache_key.clone();
 
                 pool.execute(move || {
-                    let was_formatted =
-                        handle_file(&config_ref, &file_path, dry_run, config_cache_key_ref);
+                    let was_formatted = handle_file(
+                        &config_ref,
+                        &file_path,
+                        dry_run,
+                        config_cache_key_ref,
+                        args.timeout.unwrap_or_default(),
+                    );
 
                     if was_formatted {
                         changed_file_count_ref.fetch_add(1, std::sync::atomic::Ordering::SeqCst);

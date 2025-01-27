@@ -13,7 +13,7 @@ fn set_npm_groovy_lint_args(mut cmd: Command, file_path: &std::path::Path) -> Co
 }
 
 #[inline]
-pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfError> {
+pub fn run(file_path: &std::path::Path, timeout: u64) -> Result<(bool, Option<String>), MdsfError> {
     let commands = [
         CommandType::NodeModules("npm-groovy-lint"),
         CommandType::Direct("npm-groovy-lint"),
@@ -22,7 +22,7 @@ pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfEr
 
     for (index, cmd) in commands.iter().enumerate() {
         let cmd = set_npm_groovy_lint_args(cmd.build(), file_path);
-        let execution_result = execute_command(cmd, file_path);
+        let execution_result = execute_command(cmd, file_path, timeout);
 
         if index == commands.len() - 1 {
             return execution_result;
@@ -59,7 +59,7 @@ assert add(1, 2) == 3
         let file_ext = crate::fttype::get_file_extension("groovy");
         let snippet =
             crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
-        let result = crate::tools::npm_groovy_lint::run(snippet.path())
+        let result = crate::tools::npm_groovy_lint::run(snippet.path(), 0)
             .expect("it to be successful")
             .1;
         assert_eq!(result, output);

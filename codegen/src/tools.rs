@@ -157,7 +157,14 @@ impl Tool {
 
         let test_output = test.test_output.as_ref().map_or_else(
             || "None".to_owned(),
-            |output| format!("Some(r#\"{output}\"#.to_owned())"),
+            |output| {
+                format!(
+                    "Some(
+{INDENT}{INDENT}{INDENT}r#\"{output}\"#
+{INDENT}{INDENT}{INDENT}.to_owned(),
+{INDENT}{INDENT})"
+                )
+            },
         );
 
         let test_code = format!(
@@ -168,7 +175,7 @@ impl Tool {
 {INDENT}{INDENT}let file_ext = crate::fttype::get_file_extension(\"{language}\");
 {INDENT}{INDENT}let snippet =
 {INDENT}{INDENT}{INDENT}crate::execution::setup_snippet(input, &file_ext).expect(\"it to create a snippet file\");
-{INDENT}{INDENT}let result = crate::tools::{module_name}::run(snippet.path())
+{INDENT}{INDENT}let result = crate::tools::{module_name}::run(snippet.path(), 0)
 {INDENT}{INDENT}{INDENT}.expect(\"it to be successful\")
 {INDENT}{INDENT}{INDENT}.1;
 {INDENT}{INDENT}assert_eq!(result, output);
@@ -188,6 +195,8 @@ impl Tool {
     #[allow(clippy::too_many_lines)]
     fn generate(&self) -> Vec<GeneratedCommand> {
         let mut all_commands = Vec::new();
+
+        let map_execution_result_whitespace = format!("\n{INDENT}{INDENT}{INDENT}");
 
         for (cmd, options) in &self.commands {
             let command_name = self.get_command_name(cmd);
@@ -276,6 +285,12 @@ impl Tool {
                 ""
             };
 
+            let execution_result_whitespace = if map_execution_result.is_empty() {
+                " "
+            } else {
+                map_execution_result_whitespace.as_str()
+            };
+
             let code = format!(
                 "{GENERATED_FILE_COMMENT}
 use std::process::Command;
@@ -289,12 +304,12 @@ fn {set_args_fn_name}(mut cmd: Command, file_path: &std::path::Path) -> Command 
 }}
 
 #[inline]
-pub fn {run_fn_name}(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfError> {{
+pub fn {run_fn_name}(file_path: &std::path::Path, timeout: u64) -> Result<(bool, Option<String>), MdsfError> {{
 {INDENT}let commands = [{command_arr}];
 
 {INDENT}for (index, cmd) in commands.iter().enumerate() {{
 {INDENT}{INDENT}let cmd = {set_args_fn_name}(cmd.build(), file_path);
-{INDENT}{INDENT}let execution_result = execute_command(cmd, file_path){map_execution_result};
+{INDENT}{INDENT}let execution_result ={execution_result_whitespace}execute_command(cmd, file_path, timeout){map_execution_result};
 
 {INDENT}{INDENT}if index == commands.len() - 1 {{
 {INDENT}{INDENT}{INDENT}return execution_result;
@@ -399,7 +414,7 @@ impl AsRef<str> for Tooling {
                 args = command.args.join(" ")
             ));
             format_snippet_values.insert(format!(
-                "{INDENT}{INDENT}{INDENT}Self::{} => {}::{}(snippet_path),",
+                "{INDENT}{INDENT}{INDENT}Self::{} => {}::{}(snippet_path, timeout),",
                 command.enum_value, command.module_name, command.fn_name
             ));
 
@@ -444,6 +459,7 @@ impl Tooling {{
 {INDENT}pub fn format_snippet(
 {INDENT}{INDENT}&self,
 {INDENT}{INDENT}snippet_path: &std::path::Path,
+{INDENT}{INDENT}timeout: u64,
 {INDENT}) -> Result<(bool, Option<String>), crate::error::MdsfError> {{
 {INDENT}{INDENT}match self {{
 {}
