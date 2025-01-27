@@ -13,12 +13,12 @@ fn set_clang_format_args(mut cmd: Command, file_path: &std::path::Path) -> Comma
 }
 
 #[inline]
-pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfError> {
+pub fn run(file_path: &std::path::Path, timeout: u64) -> Result<(bool, Option<String>), MdsfError> {
     let commands = [CommandType::Direct("clang-format")];
 
     for (index, cmd) in commands.iter().enumerate() {
         let cmd = set_clang_format_args(cmd.build(), file_path);
-        let execution_result = execute_command(cmd, file_path);
+        let execution_result = execute_command(cmd, file_path, timeout);
 
         if index == commands.len() - 1 {
             return execution_result;
@@ -56,7 +56,7 @@ mod test_clang_format {
         let file_ext = crate::fttype::get_file_extension("java");
         let snippet =
             crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
-        let result = crate::tools::clang_format::run(snippet.path())
+        let result = crate::tools::clang_format::run(snippet.path(), 0)
             .expect("it to be successful")
             .1;
         assert_eq!(result, output);
@@ -74,7 +74,7 @@ mod test_clang_format {
         let file_ext = crate::fttype::get_file_extension("protobuf");
         let snippet =
             crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
-        let result = crate::tools::clang_format::run(snippet.path())
+        let result = crate::tools::clang_format::run(snippet.path(), 0)
             .expect("it to be successful")
             .1;
         assert_eq!(result, output);
@@ -96,7 +96,7 @@ mod test_clang_format {
         let file_ext = crate::fttype::get_file_extension("objective-c");
         let snippet =
             crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
-        let result = crate::tools::clang_format::run(snippet.path())
+        let result = crate::tools::clang_format::run(snippet.path(), 0)
             .expect("it to be successful")
             .1;
         assert_eq!(result, output);
@@ -118,7 +118,7 @@ mod test_clang_format {
         let file_ext = crate::fttype::get_file_extension("c");
         let snippet =
             crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
-        let result = crate::tools::clang_format::run(snippet.path())
+        let result = crate::tools::clang_format::run(snippet.path(), 0)
             .expect("it to be successful")
             .1;
         assert_eq!(result, output);
@@ -140,7 +140,7 @@ mod test_clang_format {
         let file_ext = crate::fttype::get_file_extension("cpp");
         let snippet =
             crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
-        let result = crate::tools::clang_format::run(snippet.path())
+        let result = crate::tools::clang_format::run(snippet.path(), 0)
             .expect("it to be successful")
             .1;
         assert_eq!(result, output);
@@ -170,7 +170,7 @@ class Adder {
         let file_ext = crate::fttype::get_file_extension("csharp");
         let snippet =
             crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
-        let result = crate::tools::clang_format::run(snippet.path())
+        let result = crate::tools::clang_format::run(snippet.path(), 0)
             .expect("it to be successful")
             .1;
         assert_eq!(result, output);
@@ -197,7 +197,7 @@ class Adder {
         let file_ext = crate::fttype::get_file_extension("json");
         let snippet =
             crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
-        let result = crate::tools::clang_format::run(snippet.path())
+        let result = crate::tools::clang_format::run(snippet.path(), 0)
             .expect("it to be successful")
             .1;
         assert_eq!(result, output);
@@ -219,7 +219,7 @@ class Adder {
         let file_ext = crate::fttype::get_file_extension("javascript");
         let snippet =
             crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
-        let result = crate::tools::clang_format::run(snippet.path())
+        let result = crate::tools::clang_format::run(snippet.path(), 0)
             .expect("it to be successful")
             .1;
         assert_eq!(result, output);

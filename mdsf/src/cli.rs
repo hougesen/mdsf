@@ -50,13 +50,21 @@ pub struct FormatCommandArguments {
     #[arg(long, value_enum)]
     pub log_level: Option<LogLevel>,
 
-    /// Amount of threads to use. Defaults to 0 (auto).
+    /// Amount of threads to use.
+    ///
+    /// Defaults to 0 (auto).
     #[arg(long)]
     pub threads: Option<usize>,
 
     /// Only format changed codeblocks
     #[arg(long, default_value_t = false)]
     pub cache: bool,
+
+    /// Tool timeout in seconds
+    ///
+    /// Defaults to no timeout
+    #[arg(long)]
+    pub timeout: Option<u64>,
 }
 
 #[derive(Args, Debug)]
@@ -76,9 +84,17 @@ pub struct VerifyCommandArguments {
     #[arg(long, value_enum)]
     pub log_level: Option<LogLevel>,
 
-    /// Amount of threads to use. Defaults to 0 (auto).
+    /// Amount of threads to use.
+    ///
+    /// Defaults to 0 (auto).
     #[arg(long)]
     pub threads: Option<usize>,
+
+    /// Tool timeout in seconds
+    ///
+    /// Defaults to no timeout
+    #[arg(long)]
+    pub timeout: Option<u64>,
 }
 
 impl From<VerifyCommandArguments> for FormatCommandArguments {
@@ -90,6 +106,7 @@ impl From<VerifyCommandArguments> for FormatCommandArguments {
             debug: value.debug,
             log_level: value.log_level,
             threads: value.threads,
+            timeout: value.timeout,
             cache: false,
         }
     }

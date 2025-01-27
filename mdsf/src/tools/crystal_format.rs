@@ -14,12 +14,12 @@ fn set_crystal_format_args(mut cmd: Command, file_path: &std::path::Path) -> Com
 }
 
 #[inline]
-pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfError> {
+pub fn run(file_path: &std::path::Path, timeout: u64) -> Result<(bool, Option<String>), MdsfError> {
     let commands = [CommandType::Direct("crystal")];
 
     for (index, cmd) in commands.iter().enumerate() {
         let cmd = set_crystal_format_args(cmd.build(), file_path);
-        let execution_result = execute_command(cmd, file_path);
+        let execution_result = execute_command(cmd, file_path, timeout);
 
         if index == commands.len() - 1 {
             return execution_result;
@@ -50,7 +50,7 @@ end
         let file_ext = crate::fttype::get_file_extension("crystal");
         let snippet =
             crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
-        let result = crate::tools::crystal_format::run(snippet.path())
+        let result = crate::tools::crystal_format::run(snippet.path(), 0)
             .expect("it to be successful")
             .1;
         assert_eq!(result, output);

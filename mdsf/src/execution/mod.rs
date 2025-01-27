@@ -1,5 +1,6 @@
 use std::{ffi::OsStr, io::Write, str::FromStr};
 
+use process_control::{ChildExt, Control};
 use tempfile::NamedTempFile;
 use which::which;
 
@@ -90,19 +91,33 @@ fn handle_post_execution(
     }
 }
 
-fn spawn_command(mut cmd: std::process::Command) -> std::io::Result<std::process::Output> {
+fn spawn_command(
+    mut cmd: std::process::Command,
+    timeout: u64,
+) -> std::io::Result<std::process::Output> {
     if !DEBUG.load(core::sync::atomic::Ordering::Relaxed) {
         cmd.stdout(std::process::Stdio::null());
         cmd.stderr(std::process::Stdio::null());
     }
 
-    cmd.output()
+    if timeout == 0 {
+        cmd.output()
+    } else {
+        cmd.spawn()?
+            .controlled_with_output()
+            .time_limit(std::time::Duration::from_secs(timeout))
+            .terminate_for_timeout()
+            .wait()?
+            .ok_or_else(|| std::io::Error::new(std::io::ErrorKind::TimedOut, "Process timed out"))
+            .map(process_control::Output::into_std_lossy)
+    }
 }
 
 #[inline]
 pub fn execute_command(
     cmd: std::process::Command,
     snippet_path: &std::path::Path,
+    timeout: u64,
 ) -> Result<(bool, Option<String>), MdsfError> {
     if cmd.get_current_dir().is_none() {
         let binary_name = cmd.get_program();
@@ -114,11 +129,11 @@ pub fn execute_command(
         }
     }
 
-    handle_post_execution(spawn_command(cmd), snippet_path)
+    handle_post_execution(spawn_command(cmd, timeout), snippet_path)
 }
 
 #[inline]
-pub fn format_snippet(config: &MdsfConfig, info: &LineInfo, code: &str) -> String {
+pub fn format_snippet(config: &MdsfConfig, info: &LineInfo, code: &str, timeout: u64) -> String {
     let always_ran = config.languages.get("*");
 
     let language_formatters = config.languages.get(info.language).or_else(|| {
@@ -142,7 +157,7 @@ pub fn format_snippet(config: &MdsfConfig, info: &LineInfo, code: &str) -> Strin
             let snippet_path = snippet.path();
 
             if let Some(formatters) = always_ran {
-                if let Ok(Some(formatted_code)) = formatters.format(snippet_path, info) {
+                if let Ok(Some(formatted_code)) = formatters.format(snippet_path, info, timeout) {
                     if language_formatters.is_none() {
                         let mut f = formatted_code.trim().to_owned();
 
@@ -154,7 +169,7 @@ pub fn format_snippet(config: &MdsfConfig, info: &LineInfo, code: &str) -> Strin
             }
 
             if let Some(formatters) = language_formatters {
-                if let Ok(Some(formatted_code)) = formatters.format(snippet_path, info) {
+                if let Ok(Some(formatted_code)) = formatters.format(snippet_path, info, timeout) {
                     let mut f = formatted_code.trim().to_owned();
 
                     f.push('\n');
@@ -204,8 +219,9 @@ impl MdsfFormatter<Tooling> {
         &self,
         snippet_path: &std::path::Path,
         info: &LineInfo,
+        timeout: u64,
     ) -> Result<Option<String>, MdsfError> {
-        Self::format_multiple(self, snippet_path, info, false)
+        Self::format_multiple(self, snippet_path, info, false, timeout)
             .map(|(_should_continue, output)| output)
     }
 
@@ -215,6 +231,7 @@ impl MdsfFormatter<Tooling> {
         snippet_path: &std::path::Path,
         info: &LineInfo,
         nested: bool,
+        timeout: u64,
     ) -> Result<(bool, Option<String>), MdsfError> {
         match formatter {
             Self::Single(f) => {
@@ -224,7 +241,7 @@ impl MdsfFormatter<Tooling> {
 
                 let time = std::time::Instant::now();
 
-                let r = f.format_snippet(snippet_path);
+                let r = f.format_snippet(snippet_path, timeout);
 
                 print_formatter_time(formatter_name, info, time.elapsed());
 
@@ -254,7 +271,7 @@ impl MdsfFormatter<Tooling> {
                 let mut r = Ok((true, None));
 
                 for f in formatters {
-                    r = Self::format_multiple(f, snippet_path, info, true);
+                    r = Self::format_multiple(f, snippet_path, info, true, timeout);
 
                     if r.as_ref()
                         .is_ok_and(|(should_continue, _code)| !should_continue)

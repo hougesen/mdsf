@@ -13,7 +13,7 @@ fn set_blade_formatter_args(mut cmd: Command, file_path: &std::path::Path) -> Co
 }
 
 #[inline]
-pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfError> {
+pub fn run(file_path: &std::path::Path, timeout: u64) -> Result<(bool, Option<String>), MdsfError> {
     let commands = [
         CommandType::NodeModules("blade-formatter"),
         CommandType::Direct("blade-formatter"),
@@ -22,7 +22,7 @@ pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfEr
 
     for (index, cmd) in commands.iter().enumerate() {
         let cmd = set_blade_formatter_args(cmd.build(), file_path);
-        let execution_result = execute_command(cmd, file_path);
+        let execution_result = execute_command(cmd, file_path, timeout);
 
         if index == commands.len() - 1 {
             return execution_result;
@@ -72,7 +72,8 @@ mod test_blade_formatter {
 @endsection
 @section('footer')
 @stop"#;
-        let output = Some(r#"@extends('frontend.layouts.app')
+        let output = Some(
+            r#"@extends('frontend.layouts.app')
 @section('title') foo
 @endsection
 @section('content')
@@ -102,11 +103,13 @@ mod test_blade_formatter {
 @endsection
 @section('footer')
 @stop
-"#.to_owned());
+"#
+            .to_owned(),
+        );
         let file_ext = crate::fttype::get_file_extension("blade");
         let snippet =
             crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
-        let result = crate::tools::blade_formatter::run(snippet.path())
+        let result = crate::tools::blade_formatter::run(snippet.path(), 0)
             .expect("it to be successful")
             .1;
         assert_eq!(result, output);

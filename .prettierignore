@@ -1,2 +1,4 @@
 .github/workflows/release.yml
+mdsf-vscode/pnpm-lock.yaml
 mdsf/wix/main.wxs
+pnpm-lock.yaml

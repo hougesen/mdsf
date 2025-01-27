@@ -16,7 +16,7 @@ fn set_twig_cs_fixer_lint_args(mut cmd: Command, file_path: &std::path::Path) ->
 }
 
 #[inline]
-pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfError> {
+pub fn run(file_path: &std::path::Path, timeout: u64) -> Result<(bool, Option<String>), MdsfError> {
     let commands = [
         CommandType::PhpVendor("twig-cs-fixer"),
         CommandType::Direct("twig-cs-fixer"),
@@ -24,7 +24,7 @@ pub fn run(file_path: &std::path::Path) -> Result<(bool, Option<String>), MdsfEr
 
     for (index, cmd) in commands.iter().enumerate() {
         let cmd = set_twig_cs_fixer_lint_args(cmd.build(), file_path);
-        let execution_result = execute_command(cmd, file_path);
+        let execution_result = execute_command(cmd, file_path, timeout);
 
         if index == commands.len() - 1 {
             return execution_result;
