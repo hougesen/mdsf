@@ -4,7 +4,7 @@
 use crate::runners::CommandType;
 
 #[inline]
-fn set_erlfmt_args(
+pub fn set_arguments(
     mut cmd: std::process::Command,
     file_path: &std::path::Path,
 ) -> std::process::Command {
@@ -13,37 +13,33 @@ fn set_erlfmt_args(
     cmd
 }
 
-const COMMANDS: [CommandType; 1] = [CommandType::Direct("erlfmt")];
-
-#[inline]
-pub fn run(
-    file_path: &std::path::Path,
-    timeout: u64,
-) -> Result<(bool, Option<String>), crate::error::MdsfError> {
-    crate::execution::run_tools(&COMMANDS, file_path, timeout, set_erlfmt_args)
-}
+pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("erlfmt")];
 
 #[cfg(test)]
 mod test_erlfmt {
     #[test_with::executable(erlfmt)]
-    fn test_erlfmt_erlang_90fa4b828bc9873() {
+    fn test_erlfmt_erlang_61f4ac26ad7484d2() {
         let input = r#"what_is(Erlang) ->
 case Erlang of movie->[hello(mike,joe,robert),credits]; language->formatting_arguments end
 ."#;
-        let output = Some(
-            r#"what_is(Erlang) ->
+
+        let output = r#"what_is(Erlang) ->
     case Erlang of
         movie -> [hello(mike, joe, robert), credits];
         language -> no_more_formatting_arguments
-    end."#
-                .to_owned(),
-        );
+    end."#;
+
         let file_ext = crate::fttype::get_file_extension("erlang");
+
         let snippet =
             crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
-        let result = crate::tools::erlfmt::run(snippet.path(), 0)
-            .expect("it to be successful")
-            .1;
+
+        let result =
+            crate::execution::run_tools(&super::COMMANDS, snippet.path(), super::set_arguments, 0)
+                .expect("it to be successful")
+                .1
+                .expect("it to be some");
+
         assert_eq!(result, output);
     }
 }

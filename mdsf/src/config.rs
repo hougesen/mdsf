@@ -106,8 +106,6 @@ impl MdsfConfig {
         // TODO: reduce the amount of cloning
 
         if !self.language_aliases.is_empty() {
-            println!("has alias");
-
             let mut seen_languages: std::collections::HashMap<String, String> =
                 std::collections::HashMap::new();
 

@@ -4,7 +4,7 @@
 use crate::runners::CommandType;
 
 #[inline]
-fn set_prettier_args(
+pub fn set_arguments(
     mut cmd: std::process::Command,
     file_path: &std::path::Path,
 ) -> std::process::Command {
@@ -17,24 +17,16 @@ fn set_prettier_args(
     cmd
 }
 
-const COMMANDS: [CommandType; 3] = [
+pub const COMMANDS: [CommandType; 3] = [
     CommandType::NodeModules("prettier"),
     CommandType::Direct("prettier"),
     CommandType::Npm("prettier"),
 ];
 
-#[inline]
-pub fn run(
-    file_path: &std::path::Path,
-    timeout: u64,
-) -> Result<(bool, Option<String>), crate::error::MdsfError> {
-    crate::execution::run_tools(&COMMANDS, file_path, timeout, set_prettier_args)
-}
-
 #[cfg(test)]
 mod test_prettier {
     #[test_with::executable(npx)]
-    fn test_prettier_json_3694f4bf312c36fa() {
+    fn test_prettier_json_8e1e8ed2224fd439() {
         let input = r#"
               {
               "key": "value",
@@ -45,25 +37,29 @@ mod test_prettier {
             , null]
  }
   "#;
-        let output = Some(
-            r#"{
+
+        let output = r#"{
   "key": "value",
   "key2": ["value2", "value3", 1, null]
 }
-"#
-            .to_owned(),
-        );
+"#;
+
         let file_ext = crate::fttype::get_file_extension("json");
+
         let snippet =
             crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
-        let result = crate::tools::prettier::run(snippet.path(), 0)
-            .expect("it to be successful")
-            .1;
+
+        let result =
+            crate::execution::run_tools(&super::COMMANDS, snippet.path(), super::set_arguments, 0)
+                .expect("it to be successful")
+                .1
+                .expect("it to be some");
+
         assert_eq!(result, output);
     }
 
     #[test_with::executable(npx)]
-    fn test_prettier_javascript_e4047d8692b0d84a() {
+    fn test_prettier_javascript_f38217e7df306e3e() {
         let input = r#"
     async function asyncAddition(
             a,b
@@ -72,19 +68,23 @@ mod test_prettier {
     }
 
             "#;
-        let output = Some(
-            r#"async function asyncAddition(a, b) {
+
+        let output = r#"async function asyncAddition(a, b) {
   return a + b;
 }
-"#
-            .to_owned(),
-        );
+"#;
+
         let file_ext = crate::fttype::get_file_extension("javascript");
+
         let snippet =
             crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
-        let result = crate::tools::prettier::run(snippet.path(), 0)
-            .expect("it to be successful")
-            .1;
+
+        let result =
+            crate::execution::run_tools(&super::COMMANDS, snippet.path(), super::set_arguments, 0)
+                .expect("it to be successful")
+                .1
+                .expect("it to be some");
+
         assert_eq!(result, output);
     }
 }

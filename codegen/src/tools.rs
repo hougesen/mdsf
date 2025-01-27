@@ -15,7 +15,7 @@ pub struct ToolCommandTest {
 
     pub test_input: String,
 
-    pub test_output: Option<String>,
+    pub test_output: String,
 }
 
 #[derive(Debug, serde::Deserialize, schemars::JsonSchema, Clone)]
@@ -111,8 +111,6 @@ pub struct GeneratedCommand {
 
     pub module_name: String,
 
-    pub fn_name: String,
-
     pub code: String,
 
     pub serde_rename: String,
@@ -152,29 +150,26 @@ impl Tool {
 
         let test_fn_name = format!("test_{module_name}_{language}_{id}",);
 
-        let test_output = test.test_output.as_ref().map_or_else(
-            || "None".to_owned(),
-            |output| {
-                format!(
-                    "Some(
-{INDENT}{INDENT}{INDENT}r#\"{output}\"#
-{INDENT}{INDENT}{INDENT}.to_owned(),
-{INDENT}{INDENT})"
-                )
-            },
-        );
+        let test_output = &test.test_output;
 
         let test_code = format!(
             "{INDENT}#[test_with::executable({bin})]
 {INDENT}fn {test_fn_name}() {{
 {INDENT}{INDENT}let input = r#\"{input}\"#;
-{INDENT}{INDENT}let output = {test_output};
+
+{INDENT}{INDENT}let output = r#\"{test_output}\"#;
+
 {INDENT}{INDENT}let file_ext = crate::fttype::get_file_extension(\"{language}\");
+
 {INDENT}{INDENT}let snippet =
 {INDENT}{INDENT}{INDENT}crate::execution::setup_snippet(input, &file_ext).expect(\"it to create a snippet file\");
-{INDENT}{INDENT}let result = crate::tools::{module_name}::run(snippet.path(), 0)
-{INDENT}{INDENT}{INDENT}.expect(\"it to be successful\")
-{INDENT}{INDENT}{INDENT}.1;
+
+{INDENT}{INDENT}let result =
+{INDENT}{INDENT}{INDENT}crate::execution::run_tools(&super::COMMANDS, snippet.path(), super::set_arguments, 0)
+{INDENT}{INDENT}{INDENT}{INDENT}.expect(\"it to be successful\")
+{INDENT}{INDENT}{INDENT}{INDENT}.1
+{INDENT}{INDENT}{INDENT}{INDENT}.expect(\"it to be some\");
+
 {INDENT}{INDENT}assert_eq!(result, output);
 {INDENT}}}",
             bin = if self.packages.npm.is_some() {
@@ -195,10 +190,6 @@ impl Tool {
 
         for (cmd, options) in &self.commands {
             let command_name = self.get_command_name(cmd);
-
-            let set_args_fn_name = format!("set_{command_name}_args");
-
-            let run_fn_name = "run".to_string();
 
             let mut command_types: Vec<String> = Vec::new();
             {
@@ -281,7 +272,7 @@ impl Tool {
 use crate::runners::CommandType;
 
 #[inline]
-fn {set_args_fn_name}(
+pub fn set_arguments(
 {INDENT}mut cmd: std::process::Command,
 {INDENT}file_path: &std::path::Path,
 ) -> std::process::Command {{
@@ -289,15 +280,7 @@ fn {set_args_fn_name}(
 {INDENT}cmd
 }}
 
-const COMMANDS: [CommandType; {command_type_count}] = [{command_arr}];
-
-#[inline]
-pub fn {run_fn_name}(
-{INDENT}file_path: &std::path::Path,
-{INDENT}timeout: u64,
-) -> Result<(bool, Option<String>), crate::error::MdsfError> {{
-{INDENT}crate::execution::run_tools(&COMMANDS, file_path, timeout, {set_args_fn_name})
-}}
+pub const COMMANDS: [CommandType; {command_type_count}] = [{command_arr}];
 
 #[cfg(test)]
 mod test_{module_name} {{{tests}}}
@@ -307,7 +290,6 @@ mod test_{module_name} {{{tests}}}
             all_commands.push(GeneratedCommand {
                 enum_value: command_name.to_case(Case::Pascal),
                 module_name,
-                fn_name: run_fn_name,
                 code,
                 serde_rename: format!(
                     "{}{}{}",
@@ -378,19 +360,22 @@ impl AsRef<str> for Tooling {
             )?;
 
             files.insert(command.module_name.clone());
+
+            let enum_value = &command.enum_value;
+            let module_name = &command.module_name;
+
             enum_values.insert(format!(
                 "{INDENT}#[serde(rename = \"{rename}\")]
 {INDENT}/// `{bin} {args}`
-{INDENT}{enum_name},",
+{INDENT}{enum_value},",
                 rename = command.serde_rename,
-                enum_name = command.enum_value,
                 bin = plugin.binary,
                 args = command.args.join(" ")
             ));
+
             format_snippet_values.insert(format!(
-                "{INDENT}{INDENT}{INDENT}Self::{} => {}::{}(snippet_path, timeout),",
-                command.enum_value, command.module_name, command.fn_name
-            ));
+                "{INDENT}{INDENT}{INDENT}Self::{enum_value} => run_tools(&{module_name}::COMMANDS, snippet_path, {module_name}::set_arguments, timeout),"
+             ));
 
             as_ref_values.insert(format!(
                 "{INDENT}{INDENT}{INDENT}Self::{} => \"{}\",",
@@ -418,6 +403,8 @@ impl AsRef<str> for Tooling {
 
     let mod_file_contents = format!(
         "{GENERATED_FILE_COMMENT}
+use crate::execution::run_tools;
+
 {}
 
 #[derive(serde::Serialize, serde::Deserialize, Hash, Clone, Copy)]

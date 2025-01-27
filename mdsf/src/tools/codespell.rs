@@ -4,7 +4,7 @@
 use crate::runners::CommandType;
 
 #[inline]
-fn set_codespell_args(
+pub fn set_arguments(
     mut cmd: std::process::Command,
     file_path: &std::path::Path,
 ) -> std::process::Command {
@@ -14,15 +14,7 @@ fn set_codespell_args(
     cmd
 }
 
-const COMMANDS: [CommandType; 1] = [CommandType::Direct("codespell")];
-
-#[inline]
-pub fn run(
-    file_path: &std::path::Path,
-    timeout: u64,
-) -> Result<(bool, Option<String>), crate::error::MdsfError> {
-    crate::execution::run_tools(&COMMANDS, file_path, timeout, set_codespell_args)
-}
+pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("codespell")];
 
 #[cfg(test)]
 mod test_codespell {}

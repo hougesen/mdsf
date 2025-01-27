@@ -4,7 +4,7 @@
 use crate::runners::CommandType;
 
 #[inline]
-fn set_prisma_format_args(
+pub fn set_arguments(
     mut cmd: std::process::Command,
     file_path: &std::path::Path,
 ) -> std::process::Command {
@@ -14,24 +14,16 @@ fn set_prisma_format_args(
     cmd
 }
 
-const COMMANDS: [CommandType; 3] = [
+pub const COMMANDS: [CommandType; 3] = [
     CommandType::NodeModules("prisma"),
     CommandType::Direct("prisma"),
     CommandType::Npm("prisma"),
 ];
 
-#[inline]
-pub fn run(
-    file_path: &std::path::Path,
-    timeout: u64,
-) -> Result<(bool, Option<String>), crate::error::MdsfError> {
-    crate::execution::run_tools(&COMMANDS, file_path, timeout, set_prisma_format_args)
-}
-
 #[cfg(test)]
 mod test_prisma_format {
     #[test_with::executable(npx)]
-    fn test_prisma_format_schema_9e1c2cd6551f36db() {
+    fn test_prisma_format_schema_b6e70b1b6bb7472e() {
         let input = r#"datasource          db             {
   provider                  = "postgresql"
   url      =          env("DATABASE_URL")
@@ -40,21 +32,25 @@ mod test_prisma_format {
 
 
 "#;
-        let output = Some(
-            r#"datasource db {
+
+        let output = r#"datasource db {
   provider  = "postgresql"
   url       = env("DATABASE_URL")
   directUrl = env("DIRECT_DATABASE_URL")
 }
-"#
-            .to_owned(),
-        );
+"#;
+
         let file_ext = crate::fttype::get_file_extension("schema");
+
         let snippet =
             crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
-        let result = crate::tools::prisma_format::run(snippet.path(), 0)
-            .expect("it to be successful")
-            .1;
+
+        let result =
+            crate::execution::run_tools(&super::COMMANDS, snippet.path(), super::set_arguments, 0)
+                .expect("it to be successful")
+                .1
+                .expect("it to be some");
+
         assert_eq!(result, output);
     }
 }

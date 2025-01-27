@@ -4,7 +4,7 @@
 use crate::runners::CommandType;
 
 #[inline]
-fn set_cljstyle_args(
+pub fn set_arguments(
     mut cmd: std::process::Command,
     file_path: &std::path::Path,
 ) -> std::process::Command {
@@ -13,20 +13,12 @@ fn set_cljstyle_args(
     cmd
 }
 
-const COMMANDS: [CommandType; 1] = [CommandType::Direct("cljstyle")];
-
-#[inline]
-pub fn run(
-    file_path: &std::path::Path,
-    timeout: u64,
-) -> Result<(bool, Option<String>), crate::error::MdsfError> {
-    crate::execution::run_tools(&COMMANDS, file_path, timeout, set_cljstyle_args)
-}
+pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("cljstyle")];
 
 #[cfg(test)]
 mod test_cljstyle {
     #[test_with::executable(cljstyle)]
-    fn test_cljstyle_clojure_958a889bbccbb51b() {
+    fn test_cljstyle_clojure_92fbb2f42ebeeb2e() {
         let input = r#"(  ns
  foo.bar.baz  "some doc"
     (:require (foo.bar [abc :as abc]
@@ -42,8 +34,8 @@ mod test_cljstyle {
   ) ([name]
   ( println "Hello," name  )
   ))"#;
-        let output = Some(
-            r#"(ns foo.bar.baz
+
+        let output = r#"(ns foo.bar.baz
   "some doc"
   (:require
     [foo.bar.abc :as abc]
@@ -61,15 +53,19 @@ mod test_cljstyle {
   ([] (hello "world"))
   ([name]
    (println "Hello," name)))
-"#
-            .to_owned(),
-        );
+"#;
+
         let file_ext = crate::fttype::get_file_extension("clojure");
+
         let snippet =
             crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
-        let result = crate::tools::cljstyle::run(snippet.path(), 0)
-            .expect("it to be successful")
-            .1;
+
+        let result =
+            crate::execution::run_tools(&super::COMMANDS, snippet.path(), super::set_arguments, 0)
+                .expect("it to be successful")
+                .1
+                .expect("it to be some");
+
         assert_eq!(result, output);
     }
 }

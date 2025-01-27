@@ -4,7 +4,7 @@
 use crate::runners::CommandType;
 
 #[inline]
-fn set_xmlformat_args(
+pub fn set_arguments(
     mut cmd: std::process::Command,
     file_path: &std::path::Path,
 ) -> std::process::Command {
@@ -13,20 +13,12 @@ fn set_xmlformat_args(
     cmd
 }
 
-const COMMANDS: [CommandType; 1] = [CommandType::Direct("xmlformat")];
-
-#[inline]
-pub fn run(
-    file_path: &std::path::Path,
-    timeout: u64,
-) -> Result<(bool, Option<String>), crate::error::MdsfError> {
-    crate::execution::run_tools(&COMMANDS, file_path, timeout, set_xmlformat_args)
-}
+pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("xmlformat")];
 
 #[cfg(test)]
 mod test_xmlformat {
     #[test_with::executable(xmlformat)]
-    fn test_xmlformat_xml_34659067ca1d8b7c() {
+    fn test_xmlformat_xml_5e39abb678e63c0b() {
         let input = r#"
 <note>
   <to>Tove</to>
@@ -34,21 +26,25 @@ mod test_xmlformat {
       <heading>Reminder</heading>
         <body>Don't forget me this weekend!</body>
    </note>"#;
-        let output = Some(
-            r#"<note>
+
+        let output = r#"<note>
   <to>Tove</to>
   <from>Jani</from>
   <heading>Reminder</heading>
   <body>Don't forget me this weekend!</body>
-</note>"#
-                .to_owned(),
-        );
+</note>"#;
+
         let file_ext = crate::fttype::get_file_extension("xml");
+
         let snippet =
             crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
-        let result = crate::tools::xmlformat::run(snippet.path(), 0)
-            .expect("it to be successful")
-            .1;
+
+        let result =
+            crate::execution::run_tools(&super::COMMANDS, snippet.path(), super::set_arguments, 0)
+                .expect("it to be successful")
+                .1
+                .expect("it to be some");
+
         assert_eq!(result, output);
     }
 }

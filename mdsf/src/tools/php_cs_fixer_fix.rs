@@ -4,7 +4,7 @@
 use crate::runners::CommandType;
 
 #[inline]
-fn set_php_cs_fixer_fix_args(
+pub fn set_arguments(
     mut cmd: std::process::Command,
     file_path: &std::path::Path,
 ) -> std::process::Command {
@@ -13,18 +13,10 @@ fn set_php_cs_fixer_fix_args(
     cmd
 }
 
-const COMMANDS: [CommandType; 2] = [
+pub const COMMANDS: [CommandType; 2] = [
     CommandType::PhpVendor("php-cs-fixer"),
     CommandType::Direct("php-cs-fixer"),
 ];
-
-#[inline]
-pub fn run(
-    file_path: &std::path::Path,
-    timeout: u64,
-) -> Result<(bool, Option<String>), crate::error::MdsfError> {
-    crate::execution::run_tools(&COMMANDS, file_path, timeout, set_php_cs_fixer_fix_args)
-}
 
 #[cfg(test)]
 mod test_php_cs_fixer_fix {}

@@ -4,7 +4,7 @@
 use crate::runners::CommandType;
 
 #[inline]
-fn set_twig_cs_fixer_lint_args(
+pub fn set_arguments(
     mut cmd: std::process::Command,
     file_path: &std::path::Path,
 ) -> std::process::Command {
@@ -16,18 +16,10 @@ fn set_twig_cs_fixer_lint_args(
     cmd
 }
 
-const COMMANDS: [CommandType; 2] = [
+pub const COMMANDS: [CommandType; 2] = [
     CommandType::PhpVendor("twig-cs-fixer"),
     CommandType::Direct("twig-cs-fixer"),
 ];
-
-#[inline]
-pub fn run(
-    file_path: &std::path::Path,
-    timeout: u64,
-) -> Result<(bool, Option<String>), crate::error::MdsfError> {
-    crate::execution::run_tools(&COMMANDS, file_path, timeout, set_twig_cs_fixer_lint_args)
-}
 
 #[cfg(test)]
 mod test_twig_cs_fixer_lint {}

@@ -4,7 +4,7 @@
 use crate::runners::CommandType;
 
 #[inline]
-fn set_veryl_fmt_args(
+pub fn set_arguments(
     mut cmd: std::process::Command,
     file_path: &std::path::Path,
 ) -> std::process::Command {
@@ -13,20 +13,12 @@ fn set_veryl_fmt_args(
     cmd
 }
 
-const COMMANDS: [CommandType; 1] = [CommandType::Direct("veryl")];
-
-#[inline]
-pub fn run(
-    file_path: &std::path::Path,
-    timeout: u64,
-) -> Result<(bool, Option<String>), crate::error::MdsfError> {
-    crate::execution::run_tools(&COMMANDS, file_path, timeout, set_veryl_fmt_args)
-}
+pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("veryl")];
 
 #[cfg(test)]
 mod test_veryl_fmt {
     #[test_with::executable(veryl)]
-    fn test_veryl_fmt_veryl_f906da5df20d5b35() {
+    fn test_veryl_fmt_veryl_529de9cf882c5a00() {
         let input = r#"/// documentation comment by markdown format
 /// * list item1
 /// * list item2
@@ -53,8 +45,8 @@ pub module Delay #( // visibility control by `pub` keyword
     }
 }
 "#;
-        let output = Some(
-            r#"/// documentation comment by markdown format
+
+        let output = r#"/// documentation comment by markdown format
 /// * list item1
 /// * list item2
 pub module Delay #( // visibility control by `pub` keyword
@@ -79,15 +71,19 @@ pub module Delay #( // visibility control by `pub` keyword
         }
     }
 }
-"#
-            .to_owned(),
-        );
+"#;
+
         let file_ext = crate::fttype::get_file_extension("veryl");
+
         let snippet =
             crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
-        let result = crate::tools::veryl_fmt::run(snippet.path(), 0)
-            .expect("it to be successful")
-            .1;
+
+        let result =
+            crate::execution::run_tools(&super::COMMANDS, snippet.path(), super::set_arguments, 0)
+                .expect("it to be successful")
+                .1
+                .expect("it to be some");
+
         assert_eq!(result, output);
     }
 }

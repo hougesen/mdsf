@@ -4,7 +4,7 @@
 use crate::runners::CommandType;
 
 #[inline]
-fn set_rubocop_args(
+pub fn set_arguments(
     mut cmd: std::process::Command,
     file_path: &std::path::Path,
 ) -> std::process::Command {
@@ -16,36 +16,32 @@ fn set_rubocop_args(
     cmd
 }
 
-const COMMANDS: [CommandType; 1] = [CommandType::Direct("rubocop")];
-
-#[inline]
-pub fn run(
-    file_path: &std::path::Path,
-    timeout: u64,
-) -> Result<(bool, Option<String>), crate::error::MdsfError> {
-    crate::execution::run_tools(&COMMANDS, file_path, timeout, set_rubocop_args)
-}
+pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("rubocop")];
 
 #[cfg(test)]
 mod test_rubocop {
     #[test_with::executable(rubocop)]
-    fn test_rubocop_ruby_abe6af1ec08931cd() {
+    fn test_rubocop_ruby_d2b8a6db3c8eee1c() {
         let input = r#"def   add(  a ,                                                          b )
                         return a + b
                 end"#;
-        let output = Some(
-            r#"def add(a, b)
+
+        let output = r#"def add(a, b)
   return a + b
 end
-"#
-            .to_owned(),
-        );
+"#;
+
         let file_ext = crate::fttype::get_file_extension("ruby");
+
         let snippet =
             crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
-        let result = crate::tools::rubocop::run(snippet.path(), 0)
-            .expect("it to be successful")
-            .1;
+
+        let result =
+            crate::execution::run_tools(&super::COMMANDS, snippet.path(), super::set_arguments, 0)
+                .expect("it to be successful")
+                .1
+                .expect("it to be some");
+
         assert_eq!(result, output);
     }
 }

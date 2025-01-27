@@ -4,7 +4,7 @@
 use crate::runners::CommandType;
 
 #[inline]
-fn set_yamlfmt_args(
+pub fn set_arguments(
     mut cmd: std::process::Command,
     file_path: &std::path::Path,
 ) -> std::process::Command {
@@ -13,20 +13,12 @@ fn set_yamlfmt_args(
     cmd
 }
 
-const COMMANDS: [CommandType; 1] = [CommandType::Direct("yamlfmt")];
-
-#[inline]
-pub fn run(
-    file_path: &std::path::Path,
-    timeout: u64,
-) -> Result<(bool, Option<String>), crate::error::MdsfError> {
-    crate::execution::run_tools(&COMMANDS, file_path, timeout, set_yamlfmt_args)
-}
+pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("yamlfmt")];
 
 #[cfg(test)]
 mod test_yamlfmt {
     #[test_with::executable(yamlfmt)]
-    fn test_yamlfmt_yaml_f383efd52f3fcc71() {
+    fn test_yamlfmt_yaml_5f37046bfdc59220() {
         let input = r#"
 
 
@@ -50,8 +42,8 @@ updates:
 
 
         "#;
-        let output = Some(
-            r#"version: 2
+
+        let output = r#"version: 2
 updates:
   - package-ecosystem: "cargo"
     directory: "/"
@@ -67,15 +59,19 @@ updates:
     assignees:
       - "hougesen"
     open-pull-requests-limit: 25
-"#
-            .to_owned(),
-        );
+"#;
+
         let file_ext = crate::fttype::get_file_extension("yaml");
+
         let snippet =
             crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
-        let result = crate::tools::yamlfmt::run(snippet.path(), 0)
-            .expect("it to be successful")
-            .1;
+
+        let result =
+            crate::execution::run_tools(&super::COMMANDS, snippet.path(), super::set_arguments, 0)
+                .expect("it to be successful")
+                .1
+                .expect("it to be some");
+
         assert_eq!(result, output);
     }
 }

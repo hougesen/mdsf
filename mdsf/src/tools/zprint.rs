@@ -4,7 +4,7 @@
 use crate::runners::CommandType;
 
 #[inline]
-fn set_zprint_args(
+pub fn set_arguments(
     mut cmd: std::process::Command,
     file_path: &std::path::Path,
 ) -> std::process::Command {
@@ -13,20 +13,12 @@ fn set_zprint_args(
     cmd
 }
 
-const COMMANDS: [CommandType; 1] = [CommandType::Direct("zprint")];
-
-#[inline]
-pub fn run(
-    file_path: &std::path::Path,
-    timeout: u64,
-) -> Result<(bool, Option<String>), crate::error::MdsfError> {
-    crate::execution::run_tools(&COMMANDS, file_path, timeout, set_zprint_args)
-}
+pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("zprint")];
 
 #[cfg(test)]
 mod test_zprint {
     #[test_with::executable(zprint)]
-    fn test_zprint_clojure_c7eb78c2d8154947() {
+    fn test_zprint_clojure_81eb4a785de214e8() {
         let input = r#"(defn change-start-column [new-start-column style-vec [inline-comment-index
   start-column spaces-before :as comment-vec]] (if (zero? inline-comment-index)
   style-vec (let [delta-spaces (- new-start-column start-column) new-spaces
@@ -37,8 +29,8 @@ mod test_zprint {
   (blanks new-spaces)) c e] (= e :whitespace) [(str (blanks new-spaces))
   c e 26] :else nil)] (assoc style-vec previous-element-index
   new-previous-element))))"#;
-        let output = Some(
-            r#"(defn change-start-column
+
+        let output = r#"(defn change-start-column
   [new-start-column style-vec
    [inline-comment-index start-column spaces-before :as comment-vec]]
   (if (zero? inline-comment-index)
@@ -52,15 +44,19 @@ mod test_zprint {
 " (blanks new-spaces)) c e]
                   (= e :whitespace) [(str (blanks new-spaces)) c e 26]
                   :else nil)]
-      (assoc style-vec previous-element-index new-previous-element))))"#
-                .to_owned(),
-        );
+      (assoc style-vec previous-element-index new-previous-element))))"#;
+
         let file_ext = crate::fttype::get_file_extension("clojure");
+
         let snippet =
             crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
-        let result = crate::tools::zprint::run(snippet.path(), 0)
-            .expect("it to be successful")
-            .1;
+
+        let result =
+            crate::execution::run_tools(&super::COMMANDS, snippet.path(), super::set_arguments, 0)
+                .expect("it to be successful")
+                .1
+                .expect("it to be some");
+
         assert_eq!(result, output);
     }
 }

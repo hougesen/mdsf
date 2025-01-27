@@ -4,7 +4,7 @@
 use crate::runners::CommandType;
 
 #[inline]
-fn set_stylefmt_args(
+pub fn set_arguments(
     mut cmd: std::process::Command,
     file_path: &std::path::Path,
 ) -> std::process::Command {
@@ -12,24 +12,16 @@ fn set_stylefmt_args(
     cmd
 }
 
-const COMMANDS: [CommandType; 3] = [
+pub const COMMANDS: [CommandType; 3] = [
     CommandType::NodeModules("stylefmt"),
     CommandType::Direct("stylefmt"),
     CommandType::Npm("stylefmt"),
 ];
 
-#[inline]
-pub fn run(
-    file_path: &std::path::Path,
-    timeout: u64,
-) -> Result<(bool, Option<String>), crate::error::MdsfError> {
-    crate::execution::run_tools(&COMMANDS, file_path, timeout, set_stylefmt_args)
-}
-
 #[cfg(test)]
 mod test_stylefmt {
     #[test_with::executable(npx)]
-    fn test_stylefmt_scss_d2c143e65006b912() {
+    fn test_stylefmt_scss_d3c6918bf17af7f3() {
         let input = r#"// mixin for clearfix
 
 
@@ -60,8 +52,8 @@ padding: 12px
 
 }
 "#;
-        let output = Some(
-            r#"// mixin for clearfix
+
+        let output = r#"// mixin for clearfix
 
 
 @mixin clearfix() {
@@ -97,20 +89,24 @@ padding: 12px
 .bar {
   @extend %base;
 }
-"#
-            .to_owned(),
-        );
+"#;
+
         let file_ext = crate::fttype::get_file_extension("scss");
+
         let snippet =
             crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
-        let result = crate::tools::stylefmt::run(snippet.path(), 0)
-            .expect("it to be successful")
-            .1;
+
+        let result =
+            crate::execution::run_tools(&super::COMMANDS, snippet.path(), super::set_arguments, 0)
+                .expect("it to be successful")
+                .1
+                .expect("it to be some");
+
         assert_eq!(result, output);
     }
 
     #[test_with::executable(npx)]
-    fn test_stylefmt_css_d98446828f359199() {
+    fn test_stylefmt_css_ed4f8407afa6d974() {
         let input = r#"/* custom properties */
 :root{--fontSize: 1rem;
   --mainColor       :#12345678;
@@ -155,8 +151,8 @@ h2 {font-variant-caps:small-caps;
 .blur{filter:blur(4px)}.sepia{
 filter: sepia(.8);}
 "#;
-        let output = Some(
-            r#"/* custom properties */
+
+        let output = r#"/* custom properties */
 :root {
   --fontSize: 1rem;
   --mainColor: #12345678;
@@ -223,15 +219,19 @@ table {
 .sepia {
   filter: sepia(.8);
 }
-"#
-            .to_owned(),
-        );
+"#;
+
         let file_ext = crate::fttype::get_file_extension("css");
+
         let snippet =
             crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
-        let result = crate::tools::stylefmt::run(snippet.path(), 0)
-            .expect("it to be successful")
-            .1;
+
+        let result =
+            crate::execution::run_tools(&super::COMMANDS, snippet.path(), super::set_arguments, 0)
+                .expect("it to be successful")
+                .1
+                .expect("it to be some");
+
         assert_eq!(result, output);
     }
 }

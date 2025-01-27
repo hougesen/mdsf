@@ -4,7 +4,7 @@
 use crate::runners::CommandType;
 
 #[inline]
-fn set_js_beautify_args(
+pub fn set_arguments(
     mut cmd: std::process::Command,
     file_path: &std::path::Path,
 ) -> std::process::Command {
@@ -16,19 +16,11 @@ fn set_js_beautify_args(
     cmd
 }
 
-const COMMANDS: [CommandType; 3] = [
+pub const COMMANDS: [CommandType; 3] = [
     CommandType::NodeModules("js-beautify"),
     CommandType::Direct("js-beautify"),
     CommandType::Npm("js-beautify"),
 ];
-
-#[inline]
-pub fn run(
-    file_path: &std::path::Path,
-    timeout: u64,
-) -> Result<(bool, Option<String>), crate::error::MdsfError> {
-    crate::execution::run_tools(&COMMANDS, file_path, timeout, set_js_beautify_args)
-}
 
 #[cfg(test)]
 mod test_js_beautify {}

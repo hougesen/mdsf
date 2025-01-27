@@ -4,7 +4,7 @@
 use crate::runners::CommandType;
 
 #[inline]
-fn set_beautysh_args(
+pub fn set_arguments(
     mut cmd: std::process::Command,
     file_path: &std::path::Path,
 ) -> std::process::Command {
@@ -12,67 +12,67 @@ fn set_beautysh_args(
     cmd
 }
 
-const COMMANDS: [CommandType; 1] = [CommandType::Direct("beautysh")];
-
-#[inline]
-pub fn run(
-    file_path: &std::path::Path,
-    timeout: u64,
-) -> Result<(bool, Option<String>), crate::error::MdsfError> {
-    crate::execution::run_tools(&COMMANDS, file_path, timeout, set_beautysh_args)
-}
+pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("beautysh")];
 
 #[cfg(test)]
 mod test_beautysh {
     #[test_with::executable(beautysh)]
-    fn test_beautysh_shell_8e9f54ab33ca6912() {
+    fn test_beautysh_shell_f8c934ee37e2888() {
         let input = r#"#!/bin/shell
 
        add() {
     echo "$1" + "$2"
              }
 "#;
-        let output = Some(
-            r#"#!/bin/shell
+
+        let output = r#"#!/bin/shell
 
 add() {
     echo "$1" + "$2"
 }
-"#
-            .to_owned(),
-        );
+"#;
+
         let file_ext = crate::fttype::get_file_extension("shell");
+
         let snippet =
             crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
-        let result = crate::tools::beautysh::run(snippet.path(), 0)
-            .expect("it to be successful")
-            .1;
+
+        let result =
+            crate::execution::run_tools(&super::COMMANDS, snippet.path(), super::set_arguments, 0)
+                .expect("it to be successful")
+                .1
+                .expect("it to be some");
+
         assert_eq!(result, output);
     }
 
     #[test_with::executable(beautysh)]
-    fn test_beautysh_bash_6cff8bc2ed5fa12f() {
+    fn test_beautysh_bash_a6831a7ad31bd0a6() {
         let input = r#"#!/bin/bash
 
        add() {
     echo "$1" + "$2"
              }
 "#;
-        let output = Some(
-            r#"#!/bin/bash
+
+        let output = r#"#!/bin/bash
 
 add() {
     echo "$1" + "$2"
 }
-"#
-            .to_owned(),
-        );
+"#;
+
         let file_ext = crate::fttype::get_file_extension("bash");
+
         let snippet =
             crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
-        let result = crate::tools::beautysh::run(snippet.path(), 0)
-            .expect("it to be successful")
-            .1;
+
+        let result =
+            crate::execution::run_tools(&super::COMMANDS, snippet.path(), super::set_arguments, 0)
+                .expect("it to be successful")
+                .1
+                .expect("it to be some");
+
         assert_eq!(result, output);
     }
 }

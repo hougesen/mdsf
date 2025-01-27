@@ -4,7 +4,7 @@
 use crate::runners::CommandType;
 
 #[inline]
-fn set_phpcbf_args(
+pub fn set_arguments(
     mut cmd: std::process::Command,
     file_path: &std::path::Path,
 ) -> std::process::Command {
@@ -12,18 +12,10 @@ fn set_phpcbf_args(
     cmd
 }
 
-const COMMANDS: [CommandType; 2] = [
+pub const COMMANDS: [CommandType; 2] = [
     CommandType::PhpVendor("phpcbf"),
     CommandType::Direct("phpcbf"),
 ];
-
-#[inline]
-pub fn run(
-    file_path: &std::path::Path,
-    timeout: u64,
-) -> Result<(bool, Option<String>), crate::error::MdsfError> {
-    crate::execution::run_tools(&COMMANDS, file_path, timeout, set_phpcbf_args)
-}
 
 #[cfg(test)]
 mod test_phpcbf {}

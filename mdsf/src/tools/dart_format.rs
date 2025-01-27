@@ -4,7 +4,7 @@
 use crate::runners::CommandType;
 
 #[inline]
-fn set_dart_format_args(
+pub fn set_arguments(
     mut cmd: std::process::Command,
     file_path: &std::path::Path,
 ) -> std::process::Command {
@@ -13,36 +13,32 @@ fn set_dart_format_args(
     cmd
 }
 
-const COMMANDS: [CommandType; 1] = [CommandType::Direct("dart")];
-
-#[inline]
-pub fn run(
-    file_path: &std::path::Path,
-    timeout: u64,
-) -> Result<(bool, Option<String>), crate::error::MdsfError> {
-    crate::execution::run_tools(&COMMANDS, file_path, timeout, set_dart_format_args)
-}
+pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("dart")];
 
 #[cfg(test)]
 mod test_dart_format {
     #[test_with::executable(dart)]
-    fn test_dart_format_dart_d00f785063b3cede() {
+    fn test_dart_format_dart_1e68d7619b4be391() {
         let input = r#"class Adder {   int add(int a, int b) {     return a + b;   } }    "#;
-        let output = Some(
-            r#"class Adder {
+
+        let output = r#"class Adder {
   int add(int a, int b) {
     return a + b;
   }
 }
-"#
-            .to_owned(),
-        );
+"#;
+
         let file_ext = crate::fttype::get_file_extension("dart");
+
         let snippet =
             crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
-        let result = crate::tools::dart_format::run(snippet.path(), 0)
-            .expect("it to be successful")
-            .1;
+
+        let result =
+            crate::execution::run_tools(&super::COMMANDS, snippet.path(), super::set_arguments, 0)
+                .expect("it to be successful")
+                .1
+                .expect("it to be some");
+
         assert_eq!(result, output);
     }
 }
