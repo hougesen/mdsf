@@ -15,7 +15,7 @@ exclude = []
 [workspace.dependencies]
 anyhow = "1.0.95"
 clap = { version = "4.5.27", features = ["derive"] }
-clap_complete = "4.5.42"
+clap_complete = "4.5.43"
 clap_complete_nushell = "4.5.5"
 console = "0.15.10"
 convert_case = "0.6.0"
