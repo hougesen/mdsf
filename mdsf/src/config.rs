@@ -69,10 +69,10 @@ impl Default for MdsfConfig {
     fn default() -> Self {
         Self {
             schema: default_schema_location(),
-            custom_file_extensions: Default::default(),
+            custom_file_extensions: std::collections::BTreeMap::default(),
             format_finished_document: false,
             javascript_runtime: JavaScriptRuntime::default(),
-            language_aliases: Default::default(),
+            language_aliases: std::collections::BTreeMap::default(),
             languages: default_tools(),
         }
     }

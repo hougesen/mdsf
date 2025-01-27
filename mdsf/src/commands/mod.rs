@@ -1,6 +1,6 @@
 use clap::Parser;
 use mdsf::{
-    cli::{Cli, Commands, FormatCommandArguments, LogLevel},
+    cli::{Cli, Commands, FormatCommandArguments},
     error::MdsfError,
     terminal::logging::setup_logger,
 };
@@ -14,13 +14,13 @@ mod prune_cache;
 pub fn execute_command() -> Result<(), MdsfError> {
     match Cli::parse().command {
         Commands::Format(args) => {
-            setup_logger(args.log_level.unwrap_or(LogLevel::default()));
+            setup_logger(args.log_level.unwrap_or_default());
 
             format::run(args, false)
         }
 
         Commands::Verify(args) => {
-            setup_logger(args.log_level.unwrap_or(LogLevel::default()));
+            setup_logger(args.log_level.unwrap_or_default());
 
             format::run(FormatCommandArguments::from(args), true)
         }
