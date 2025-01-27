@@ -1,12 +1,13 @@
 ///
 /// THIS FILE IS GENERATED USING CODE - DO NOT EDIT MANUALLY
 ///
-use std::process::Command;
-
-use crate::{error::MdsfError, runners::CommandType};
+use crate::runners::CommandType;
 
 #[inline]
-fn set_easy_coding_standard_args(mut cmd: Command, file_path: &std::path::Path) -> Command {
+fn set_easy_coding_standard_args(
+    mut cmd: std::process::Command,
+    file_path: &std::path::Path,
+) -> std::process::Command {
     cmd.arg("check");
     cmd.arg(file_path);
     cmd.arg("--fix");
@@ -14,11 +15,14 @@ fn set_easy_coding_standard_args(mut cmd: Command, file_path: &std::path::Path) 
     cmd
 }
 
-#[inline]
-pub fn run(file_path: &std::path::Path, timeout: u64) -> Result<(bool, Option<String>), MdsfError> {
-    let commands = [CommandType::PhpVendor("ecs"), CommandType::Direct("ecs")];
+const COMMANDS: [CommandType; 2] = [CommandType::PhpVendor("ecs"), CommandType::Direct("ecs")];
 
-    crate::execution::run_tools(&commands, file_path, timeout, set_easy_coding_standard_args)
+#[inline]
+pub fn run(
+    file_path: &std::path::Path,
+    timeout: u64,
+) -> Result<(bool, Option<String>), crate::error::MdsfError> {
+    crate::execution::run_tools(&COMMANDS, file_path, timeout, set_easy_coding_standard_args)
 }
 
 #[cfg(test)]

@@ -220,8 +220,8 @@ impl Tool {
             // TODO: generate if statements instead of array
             let command_arr = if command_types.len() > 1 {
                 format!(
-                    "\n{INDENT}{INDENT}{},\n{INDENT}",
-                    command_types.join(format!(",\n{INDENT}{INDENT}").as_str())
+                    "\n{INDENT}{},\n",
+                    command_types.join(format!(",\n{INDENT}").as_str())
                 )
             } else {
                 command_types.join(", ")
@@ -274,23 +274,29 @@ impl Tool {
                 format!("\n{}\n", tests.join("\n\n"))
             };
 
+            let command_type_count = command_types.len();
+
             let code = format!(
                 "{GENERATED_FILE_COMMENT}
-use std::process::Command;
-
-use crate::{{error::MdsfError, runners::CommandType}};
+use crate::runners::CommandType;
 
 #[inline]
-fn {set_args_fn_name}(mut cmd: Command, file_path: &std::path::Path) -> Command {{
+fn {set_args_fn_name}(
+{INDENT}mut cmd: std::process::Command,
+{INDENT}file_path: &std::path::Path,
+) -> std::process::Command {{
 {string_args}
 {INDENT}cmd
 }}
 
-#[inline]
-pub fn {run_fn_name}(file_path: &std::path::Path, timeout: u64) -> Result<(bool, Option<String>), MdsfError> {{
-{INDENT}let commands = [{command_arr}];
+const COMMANDS: [CommandType; {command_type_count}] = [{command_arr}];
 
-{INDENT}crate::execution::run_tools(&commands, file_path, timeout, {set_args_fn_name})
+#[inline]
+pub fn {run_fn_name}(
+{INDENT}file_path: &std::path::Path,
+{INDENT}timeout: u64,
+) -> Result<(bool, Option<String>), crate::error::MdsfError> {{
+{INDENT}crate::execution::run_tools(&COMMANDS, file_path, timeout, {set_args_fn_name})
 }}
 
 #[cfg(test)]

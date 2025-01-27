@@ -1,27 +1,31 @@
 ///
 /// THIS FILE IS GENERATED USING CODE - DO NOT EDIT MANUALLY
 ///
-use std::process::Command;
-
-use crate::{error::MdsfError, runners::CommandType};
+use crate::runners::CommandType;
 
 #[inline]
-fn set_buf_format_args(mut cmd: Command, file_path: &std::path::Path) -> Command {
+fn set_buf_format_args(
+    mut cmd: std::process::Command,
+    file_path: &std::path::Path,
+) -> std::process::Command {
     cmd.arg("format");
     cmd.arg("--write");
     cmd.arg(file_path);
     cmd
 }
 
-#[inline]
-pub fn run(file_path: &std::path::Path, timeout: u64) -> Result<(bool, Option<String>), MdsfError> {
-    let commands = [
-        CommandType::NodeModules("buf"),
-        CommandType::Direct("buf"),
-        CommandType::Npm("@bufbuild/buf"),
-    ];
+const COMMANDS: [CommandType; 3] = [
+    CommandType::NodeModules("buf"),
+    CommandType::Direct("buf"),
+    CommandType::Npm("@bufbuild/buf"),
+];
 
-    crate::execution::run_tools(&commands, file_path, timeout, set_buf_format_args)
+#[inline]
+pub fn run(
+    file_path: &std::path::Path,
+    timeout: u64,
+) -> Result<(bool, Option<String>), crate::error::MdsfError> {
+    crate::execution::run_tools(&COMMANDS, file_path, timeout, set_buf_format_args)
 }
 
 #[cfg(test)]

@@ -1,22 +1,26 @@
 ///
 /// THIS FILE IS GENERATED USING CODE - DO NOT EDIT MANUALLY
 ///
-use std::process::Command;
-
-use crate::{error::MdsfError, runners::CommandType};
+use crate::runners::CommandType;
 
 #[inline]
-fn set_reorder_python_imports_args(mut cmd: Command, file_path: &std::path::Path) -> Command {
+fn set_reorder_python_imports_args(
+    mut cmd: std::process::Command,
+    file_path: &std::path::Path,
+) -> std::process::Command {
     cmd.arg(file_path);
     cmd
 }
 
-#[inline]
-pub fn run(file_path: &std::path::Path, timeout: u64) -> Result<(bool, Option<String>), MdsfError> {
-    let commands = [CommandType::Direct("reorder-python-imports")];
+const COMMANDS: [CommandType; 1] = [CommandType::Direct("reorder-python-imports")];
 
+#[inline]
+pub fn run(
+    file_path: &std::path::Path,
+    timeout: u64,
+) -> Result<(bool, Option<String>), crate::error::MdsfError> {
     crate::execution::run_tools(
-        &commands,
+        &COMMANDS,
         file_path,
         timeout,
         set_reorder_python_imports_args,

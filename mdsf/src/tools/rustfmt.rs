@@ -1,12 +1,13 @@
 ///
 /// THIS FILE IS GENERATED USING CODE - DO NOT EDIT MANUALLY
 ///
-use std::process::Command;
-
-use crate::{error::MdsfError, runners::CommandType};
+use crate::runners::CommandType;
 
 #[inline]
-fn set_rustfmt_args(mut cmd: Command, file_path: &std::path::Path) -> Command {
+fn set_rustfmt_args(
+    mut cmd: std::process::Command,
+    file_path: &std::path::Path,
+) -> std::process::Command {
     cmd.arg("--edition");
     cmd.arg("2021");
     cmd.arg("--quiet");
@@ -14,11 +15,14 @@ fn set_rustfmt_args(mut cmd: Command, file_path: &std::path::Path) -> Command {
     cmd
 }
 
-#[inline]
-pub fn run(file_path: &std::path::Path, timeout: u64) -> Result<(bool, Option<String>), MdsfError> {
-    let commands = [CommandType::Direct("rustfmt")];
+const COMMANDS: [CommandType; 1] = [CommandType::Direct("rustfmt")];
 
-    crate::execution::run_tools(&commands, file_path, timeout, set_rustfmt_args)
+#[inline]
+pub fn run(
+    file_path: &std::path::Path,
+    timeout: u64,
+) -> Result<(bool, Option<String>), crate::error::MdsfError> {
+    crate::execution::run_tools(&COMMANDS, file_path, timeout, set_rustfmt_args)
 }
 
 #[cfg(test)]
