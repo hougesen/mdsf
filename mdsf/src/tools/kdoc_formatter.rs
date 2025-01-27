@@ -4,7 +4,7 @@
 use crate::runners::CommandType;
 
 #[inline]
-pub fn set_arguments(
+pub fn set_args(
     mut cmd: std::process::Command,
     file_path: &std::path::Path,
 ) -> std::process::Command {

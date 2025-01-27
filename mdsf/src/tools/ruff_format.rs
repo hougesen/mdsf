@@ -4,7 +4,7 @@
 use crate::runners::CommandType;
 
 #[inline]
-pub fn set_arguments(
+pub fn set_args(
     mut cmd: std::process::Command,
     file_path: &std::path::Path,
 ) -> std::process::Command {
@@ -32,7 +32,7 @@ mod test_ruff_format {
             crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
 
         let result =
-            crate::execution::run_tools(&super::COMMANDS, snippet.path(), super::set_arguments, 0)
+            crate::execution::run_tools(&super::COMMANDS, snippet.path(), super::set_args, 0)
                 .expect("it to be successful")
                 .1
                 .expect("it to be some");

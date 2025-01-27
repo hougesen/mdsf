@@ -165,7 +165,7 @@ impl Tool {
 {INDENT}{INDENT}{INDENT}crate::execution::setup_snippet(input, &file_ext).expect(\"it to create a snippet file\");
 
 {INDENT}{INDENT}let result =
-{INDENT}{INDENT}{INDENT}crate::execution::run_tools(&super::COMMANDS, snippet.path(), super::set_arguments, 0)
+{INDENT}{INDENT}{INDENT}crate::execution::run_tools(&super::COMMANDS, snippet.path(), super::set_args, 0)
 {INDENT}{INDENT}{INDENT}{INDENT}.expect(\"it to be successful\")
 {INDENT}{INDENT}{INDENT}{INDENT}.1
 {INDENT}{INDENT}{INDENT}{INDENT}.expect(\"it to be some\");
@@ -272,7 +272,7 @@ impl Tool {
 use crate::runners::CommandType;
 
 #[inline]
-pub fn set_arguments(
+pub fn set_args(
 {INDENT}mut cmd: std::process::Command,
 {INDENT}file_path: &std::path::Path,
 ) -> std::process::Command {{
@@ -374,7 +374,7 @@ impl AsRef<str> for Tooling {
             ));
 
             format_snippet_values.insert(format!(
-                "{INDENT}{INDENT}{INDENT}Self::{enum_value} => run_tools(&{module_name}::COMMANDS, snippet_path, {module_name}::set_arguments, timeout),"
+                "{INDENT}{INDENT}{INDENT}Self::{enum_value} => (&{module_name}::COMMANDS, {module_name}::set_args),"
              ));
 
             as_ref_values.insert(format!(
@@ -403,8 +403,6 @@ impl AsRef<str> for Tooling {
 
     let mod_file_contents = format!(
         "{GENERATED_FILE_COMMENT}
-use crate::execution::run_tools;
-
 {}
 
 #[derive(serde::Serialize, serde::Deserialize, Hash, Clone, Copy)]
@@ -422,9 +420,14 @@ impl Tooling {{
 {INDENT}{INDENT}snippet_path: &std::path::Path,
 {INDENT}{INDENT}timeout: u64,
 {INDENT}) -> Result<(bool, Option<String>), crate::error::MdsfError> {{
-{INDENT}{INDENT}match self {{
+{INDENT}{INDENT}let (commands, set_args_fn): (
+{INDENT}{INDENT}{INDENT}&[crate::runners::CommandType],
+{INDENT}{INDENT}{INDENT}fn(std::process::Command, &std::path::Path) -> std::process::Command,
+{INDENT}{INDENT}) = match self {{
 {}
-{INDENT}{INDENT}}}
+{INDENT}{INDENT}}};
+
+{INDENT}{INDENT}crate::execution::run_tools(commands, snippet_path, set_args_fn, timeout)
 {INDENT}}}
 }}
 
