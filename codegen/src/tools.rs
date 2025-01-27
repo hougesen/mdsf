@@ -29,9 +29,6 @@ pub struct ToolCommand {
     #[expect(unused)]
     pub homepage: Option<String>,
 
-    /// Whether to ignore the output of the command execution
-    pub ignore_output: bool,
-
     pub tests: Option<Vec<ToolCommandTest>>,
 }
 
@@ -196,8 +193,6 @@ impl Tool {
     fn generate(&self) -> Vec<GeneratedCommand> {
         let mut all_commands = Vec::new();
 
-        let map_execution_result_whitespace = format!("\n{INDENT}{INDENT}{INDENT}");
-
         for (cmd, options) in &self.commands {
             let command_name = self.get_command_name(cmd);
 
@@ -279,23 +274,11 @@ impl Tool {
                 format!("\n{}\n", tests.join("\n\n"))
             };
 
-            let map_execution_result = if options.ignore_output {
-                ".map(|value| (value.0, None))"
-            } else {
-                ""
-            };
-
-            let execution_result_whitespace = if map_execution_result.is_empty() {
-                " "
-            } else {
-                map_execution_result_whitespace.as_str()
-            };
-
             let code = format!(
                 "{GENERATED_FILE_COMMENT}
 use std::process::Command;
 
-use crate::{{error::MdsfError, execution::execute_command, runners::CommandType}};
+use crate::{{error::MdsfError, runners::CommandType}};
 
 #[inline]
 fn {set_args_fn_name}(mut cmd: Command, file_path: &std::path::Path) -> Command {{
@@ -307,22 +290,7 @@ fn {set_args_fn_name}(mut cmd: Command, file_path: &std::path::Path) -> Command 
 pub fn {run_fn_name}(file_path: &std::path::Path, timeout: u64) -> Result<(bool, Option<String>), MdsfError> {{
 {INDENT}let commands = [{command_arr}];
 
-{INDENT}for (index, cmd) in commands.iter().enumerate() {{
-{INDENT}{INDENT}let cmd = {set_args_fn_name}(cmd.build(), file_path);
-{INDENT}{INDENT}let execution_result ={execution_result_whitespace}execute_command(cmd, file_path, timeout){map_execution_result};
-
-{INDENT}{INDENT}if index == commands.len() - 1 {{
-{INDENT}{INDENT}{INDENT}return execution_result;
-{INDENT}{INDENT}}}
-
-{INDENT}{INDENT}if let Ok(r) = execution_result {{
-{INDENT}{INDENT}{INDENT}if !r.0 {{
-{INDENT}{INDENT}{INDENT}{INDENT}return Ok(r);
-{INDENT}{INDENT}{INDENT}}}
-{INDENT}{INDENT}}}
-{INDENT}}}
-
-{INDENT}Ok((true, None))
+{INDENT}crate::execution::run_tools(&commands, file_path, timeout, {set_args_fn_name})
 }}
 
 #[cfg(test)]
