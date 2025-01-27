@@ -4,8 +4,7 @@
   "categories": ["formatter"],
   "commands": {
     "": {
-      "arguments": ["--write-mode=inplace", "$PATH"],
-      "ignore_output": false
+      "arguments": ["--write-mode=inplace", "$PATH"]
     }
   },
   "description": "A Haskell source code formatter",

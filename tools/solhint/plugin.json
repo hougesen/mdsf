@@ -4,8 +4,7 @@
   "categories": ["linter"],
   "commands": {
     "": {
-      "arguments": ["--quiet", "--fix", "--noPrompt", "$PATH"],
-      "ignore_output": false
+      "arguments": ["--quiet", "--fix", "--noPrompt", "$PATH"]
     }
   },
   "description": "Solhint is an open-source project to provide a linting utility for Solidity code",

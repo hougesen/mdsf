@@ -4,8 +4,7 @@
   "categories": ["autocorrection"],
   "commands": {
     "": {
-      "arguments": ["-w", "$PATH"],
-      "ignore_output": false
+      "arguments": ["-w", "$PATH"]
     }
   },
   "description": "Correct commonly misspelled English words in source files",

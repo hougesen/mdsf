@@ -4,8 +4,7 @@
   "categories": ["formatter", "linter"],
   "commands": {
     "": {
-      "arguments": ["-w", "$PATH"],
-      "ignore_output": false
+      "arguments": ["-w", "$PATH"]
     }
   },
   "description": "JSON Fixer for Humans using (relaxed) JSON5",

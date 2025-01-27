@@ -4,8 +4,7 @@
   "categories": ["linter"],
   "commands": {
     "": {
-      "arguments": ["$PATH"],
-      "ignore_output": true
+      "arguments": ["$PATH"]
     }
   },
   "description": "ShellCheck, a static analysis tool for shell scripts",

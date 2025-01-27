@@ -4,8 +4,7 @@
   "categories": ["linter"],
   "commands": {
     "": {
-      "arguments": ["--quiet", "$PATH"],
-      "ignore_output": true
+      "arguments": ["--quiet", "$PATH"]
     }
   },
   "description": "Automated linting of Cascading Stylesheets",

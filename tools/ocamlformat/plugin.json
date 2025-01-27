@@ -10,7 +10,6 @@
         "--enable-outside-detected-project",
         "$PATH"
       ],
-      "ignore_output": false,
       "tests": [
         {
           "language": "ocaml",

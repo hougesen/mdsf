@@ -4,12 +4,10 @@
   "categories": ["formatter", "linter"],
   "commands": {
     "fix": {
-      "arguments": ["fix", "--apply", "$PATH"],
-      "ignore_output": false
+      "arguments": ["fix", "--apply", "$PATH"]
     },
     "format": {
       "arguments": ["format", "$PATH"],
-      "ignore_output": false,
       "tests": [
         {
           "language": "dart",

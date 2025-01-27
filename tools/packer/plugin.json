@@ -4,12 +4,10 @@
   "categories": ["formatter"],
   "commands": {
     "fix": {
-      "arguments": ["fix", "$PATH"],
-      "ignore_output": false
+      "arguments": ["fix", "$PATH"]
     },
     "fmt": {
-      "arguments": ["fmt", "$PATH"],
-      "ignore_output": false
+      "arguments": ["fmt", "$PATH"]
     }
   },
   "description": "Packer is used to format HCL2 configuration files",

@@ -5,7 +5,6 @@
   "commands": {
     "": {
       "arguments": ["--quiet", "--mode", "any", "$PATH"],
-      "ignore_output": false,
       "tests": [
         {
           "language": "scala",

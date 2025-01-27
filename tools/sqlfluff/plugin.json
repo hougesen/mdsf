@@ -4,12 +4,10 @@
   "categories": ["formatter", "linter"],
   "commands": {
     "fix": {
-      "arguments": ["fix", "--dialect", "ansi", "$PATH"],
-      "ignore_output": false
+      "arguments": ["fix", "--dialect", "ansi", "$PATH"]
     },
     "format": {
       "arguments": ["format", "--dialect", "ansi", "$PATH"],
-      "ignore_output": false,
       "tests": [
         {
           "language": "sql",

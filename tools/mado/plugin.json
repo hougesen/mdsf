@@ -5,7 +5,6 @@
   "commands": {
     "check": {
       "arguments": ["check", "$PATH"],
-      "ignore_output": true,
       "tests": [
         {
           "language": "markdown",

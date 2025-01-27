@@ -4,12 +4,10 @@
   "categories": ["formatter", "linter"],
   "commands": {
     "check": {
-      "arguments": ["check", "--write", "$PATH"],
-      "ignore_output": false
+      "arguments": ["check", "--write", "$PATH"]
     },
     "format": {
       "arguments": ["format", "--write", "$PATH"],
-      "ignore_output": false,
       "tests": [
         {
           "language": "json",
@@ -29,8 +27,7 @@
       ]
     },
     "lint": {
-      "arguments": ["lint", "--write", "$PATH"],
-      "ignore_output": false
+      "arguments": ["lint", "--write", "$PATH"]
     }
   },
   "description": "One toolchain for your web project",

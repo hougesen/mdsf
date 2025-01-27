@@ -4,8 +4,7 @@
   "categories": ["linter"],
   "commands": {
     "format": {
-      "arguments": ["format", "$PATH"],
-      "ignore_output": false
+      "arguments": ["format", "$PATH"]
     }
   },
   "description": "Tighten linter for Laravel conventions",

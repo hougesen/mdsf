@@ -4,8 +4,7 @@
   "categories": ["formatter"],
   "commands": {
     "": {
-      "arguments": ["-i", "$PATH"],
-      "ignore_output": false
+      "arguments": ["-i", "$PATH"]
     }
   },
   "description": "Beautiful and reliable typst code formatter",

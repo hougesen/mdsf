@@ -4,8 +4,7 @@
   "categories": ["formatter"],
   "commands": {
     "": {
-      "arguments": ["--inplace", "$PATH"],
-      "ignore_output": false
+      "arguments": ["--inplace", "$PATH"]
     }
   },
   "description": "A PostgreSQL SQL syntax beautifier",

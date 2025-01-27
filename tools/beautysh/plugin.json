@@ -5,7 +5,6 @@
   "commands": {
     "": {
       "arguments": ["$PATH"],
-      "ignore_output": false,
       "tests": [
         {
           "language": "shell",

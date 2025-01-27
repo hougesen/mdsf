@@ -4,8 +4,7 @@
   "categories": ["formatter"],
   "commands": {
     "": {
-      "arguments": ["-i", "-q", "$PATH"],
-      "ignore_output": false
+      "arguments": ["-i", "-q", "$PATH"]
     }
   },
   "description": "A formatter to make your CMake code the real treasure",

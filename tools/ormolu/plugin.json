@@ -5,7 +5,6 @@
   "commands": {
     "": {
       "arguments": ["--mode", "inplace", "$PATH"],
-      "ignore_output": false,
       "tests": [
         {
           "language": "haskell",

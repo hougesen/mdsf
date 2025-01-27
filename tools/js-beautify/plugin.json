@@ -4,8 +4,7 @@
   "categories": ["formatter"],
   "commands": {
     "": {
-      "arguments": ["-r", "--type", "js", "-f", "$PATH"],
-      "ignore_output": false
+      "arguments": ["-r", "--type", "js", "-f", "$PATH"]
     }
   },
   "description": "A JavaScript formatter",

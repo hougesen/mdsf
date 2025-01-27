@@ -4,8 +4,7 @@
   "categories": ["formatter"],
   "commands": {
     "": {
-      "arguments": ["format", "$PATH"],
-      "ignore_output": false
+      "arguments": ["format", "$PATH"]
     }
   },
   "description": "Safe, atomic formatting with black and usort",

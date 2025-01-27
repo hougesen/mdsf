@@ -4,8 +4,7 @@
   "categories": ["formatter"],
   "commands": {
     "": {
-      "arguments": ["$PATH"],
-      "ignore_output": false
+      "arguments": ["$PATH"]
     }
   },
   "description": "Floskell is a flexible Haskell source code pretty printer",

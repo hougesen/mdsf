@@ -4,8 +4,7 @@
   "categories": ["formatter"],
   "commands": {
     "fix": {
-      "arguments": ["fix", "$PATH"],
-      "ignore_output": false
+      "arguments": ["fix", "$PATH"]
     }
   },
   "description": "A tool for formatting Clojure code",

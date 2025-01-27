@@ -4,8 +4,7 @@
   "categories": ["formatter"],
   "commands": {
     "": {
-      "arguments": ["-w", "$PATH"],
-      "ignore_output": false
+      "arguments": ["-w", "$PATH"]
     }
   },
   "description": "Formatter for CockroachDB's additions to the Go style guide",

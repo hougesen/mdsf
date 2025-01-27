@@ -4,8 +4,7 @@
   "categories": ["linter"],
   "commands": {
     "": {
-      "arguments": ["$PATH"],
-      "ignore_output": false
+      "arguments": ["$PATH"]
     }
   },
   "description": "Simple Python style checker in one Python file",

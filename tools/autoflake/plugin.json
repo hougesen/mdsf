@@ -5,7 +5,6 @@
   "commands": {
     "": {
       "arguments": ["--quiet", "--in-place", "$PATH"],
-      "ignore_output": false,
       "tests": [
         {
           "language": "python",

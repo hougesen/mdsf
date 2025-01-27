@@ -4,12 +4,10 @@
   "categories": ["linter"],
   "commands": {
     "check": {
-      "arguments": ["check", "$PATH"],
-      "ignore_output": true
+      "arguments": ["check", "$PATH"]
     },
     "fix": {
-      "arguments": ["fix", "$PATH"],
-      "ignore_output": false
+      "arguments": ["fix", "$PATH"]
     }
   },
   "description": "lints and suggestions for the nix programming language",

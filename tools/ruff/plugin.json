@@ -4,12 +4,10 @@
   "categories": ["formatter", "linter"],
   "commands": {
     "check": {
-      "arguments": ["check", "--fix", "--quiet", "$PATH"],
-      "ignore_output": false
+      "arguments": ["check", "--fix", "--quiet", "$PATH"]
     },
     "format": {
       "arguments": ["format", "--quiet", "$PATH"],
-      "ignore_output": false,
       "tests": [
         {
           "language": "python",

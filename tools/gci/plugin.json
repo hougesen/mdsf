@@ -4,8 +4,7 @@
   "categories": ["formatter"],
   "commands": {
     "": {
-      "arguments": ["write", "--skip-generated", "--skip-vendor", "$PATH"],
-      "ignore_output": false
+      "arguments": ["write", "--skip-generated", "--skip-vendor", "$PATH"]
     }
   },
   "description": "GCI, a tool that control golang package import order and make it always deterministic",
