@@ -1,22 +1,38 @@
 pub mod table_of_contents;
 
-pub fn update_markdown_section(
-    readme: &str,
-    key: &str,
-    value: &str,
-) -> Result<String, regex::Error> {
+pub fn update_markdown_section(readme: &str, key: &str, value: &str) -> String {
     let start = format!("<!-- START_SECTION:{key} -->");
     let end = format!("<!-- END_SECTION:{key} -->");
 
-    let re = regex::RegexBuilder::new(format!(r"({start})[^{{}}]*?{end}").as_str())
-        .multi_line(true)
-        .build()?;
+    let mut lines = Vec::new();
 
-    let first_value = format!("{start}{end}");
+    let mut inside = false;
+    let mut start_seen = false;
+    let mut end_seen = false;
 
-    let updated = re.replace(readme, &first_value);
+    for line in readme.lines() {
+        if inside {
+            if line == end {
+                lines.push(line.to_string());
 
-    let update = format!("{start}\n\n{value}\n\n{end}");
+                inside = false;
+                end_seen = true;
+            }
+        } else if line == start {
+            lines.push(line.to_string());
 
-    Ok(updated.replace(&first_value, &update))
+            lines.push(format!("\n{value}\n"));
+
+            inside = true;
+            start_seen = true;
+        } else {
+            lines.push(line.to_string());
+        }
+    }
+
+    if start_seen && end_seen {
+        lines.join("\n")
+    } else {
+        value.to_string()
+    }
 }

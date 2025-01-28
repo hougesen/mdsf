@@ -23,7 +23,7 @@ pub fn generate(plugins: &[Tool], commands: Vec<GeneratedCommand>) -> anyhow::Re
     {
         let content = command_table::generate_command_table(commands);
 
-        contents = update_markdown_section(&contents, "supported-commands", &content)?;
+        contents = update_markdown_section(&contents, "supported-commands", &content);
     };
 
     {
@@ -33,7 +33,7 @@ pub fn generate(plugins: &[Tool], commands: Vec<GeneratedCommand>) -> anyhow::Re
     {
         let tool_table = tool_table::generate(plugins);
 
-        contents = update_markdown_section(&contents, "supported-tools", &tool_table)?;
+        contents = update_markdown_section(&contents, "supported-tools", &tool_table);
     }
 
     std::fs::write(&path, &contents)?;
@@ -41,8 +41,11 @@ pub fn generate(plugins: &[Tool], commands: Vec<GeneratedCommand>) -> anyhow::Re
     {
         let t = table_of_contents::generate(&path)?;
 
-        contents = update_markdown_section(&contents, "toc", &t)?;
+        contents = update_markdown_section(&contents, "toc", &t);
     }
+
+    let mut contents = contents.trim().to_owned();
+    contents.push('\n');
 
     std::fs::write(path, contents)?;
 

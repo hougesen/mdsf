@@ -579,12 +579,14 @@ mdsf init
 
 <!-- START_SECTION:supported-commands -->
 
-`mdsf` currently supports 216 commands. Feel free to open an issue/pull-request if your favorite tool is missing! 😃
+`mdsf` currently supports 255 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                     | Command                                                                                 |
 | ------------------------ | --------------------------------------------------------------------------------------- |
+| `actionlint`             | `actionlint $PATH`                                                                      |
 | `alejandra`              | `alejandra --quiet $PATH`                                                               |
 | `ameba`                  | `ameba --fix $PATH`                                                                     |
+| `ansible-lint`           | `ansible-lint $PATH`                                                                    |
 | `asmfmt`                 | `asmfmt -w $PATH`                                                                       |
 | `astyle`                 | `astyle --quiet $PATH`                                                                  |
 | `auto-optional`          | `auto-optional $PATH`                                                                   |
@@ -617,17 +619,21 @@ mdsf init
 | `clang-tidy`             | `clang-tidy --fix $PATH`                                                                |
 | `cljfmt:fix`             | `cljfmt fix $PATH`                                                                      |
 | `cljstyle`               | `cljstyle fix $PATH`                                                                    |
+| `cmake-format`           | `cmake-format -i $PATH`                                                                 |
 | `codespell`              | `codespell $PATH --check-hidden --write-changes`                                        |
 | `crlfmt`                 | `crlfmt -w $PATH`                                                                       |
 | `crystal:format`         | `crystal tool format $PATH`                                                             |
 | `csharpier`              | `dotnet csharpier $PATH`                                                                |
 | `css-beautify`           | `css-beautify -r --type css -f $PATH`                                                   |
 | `csscomb`                | `csscomb -t $PATH`                                                                      |
+| `csslint`                | `csslint --quiet $PATH`                                                                 |
+| `curlylint`              | `curlylint -q $PATH`                                                                    |
 | `d2:fmt`                 | `d2 fmt $PATH`                                                                          |
 | `dart:fix`               | `dart fix --apply $PATH`                                                                |
 | `dart:format`            | `dart format $PATH`                                                                     |
 | `dcm:fix`                | `dcm fix $PATH`                                                                         |
 | `dcm:format`             | `dcm format $PATH`                                                                      |
+| `deadnix`                | `deadnix -q --edit $PATH`                                                               |
 | `deno:fmt`               | `deno fmt --quiet $PATH`                                                                |
 | `deno:lint`              | `deno lint --fix $PATH`                                                                 |
 | `dfmt`                   | `dfmt -i $PATH`                                                                         |
@@ -654,6 +660,7 @@ mdsf init
 | `forge:fmt`              | `forge fmt $PATH`                                                                       |
 | `fourmolu`               | `fourmolu -i $PATH`                                                                     |
 | `fprettify`              | `fprettify $PATH`                                                                       |
+| `futhark:fmt`            | `futhark fmt $PATH`                                                                     |
 | `gci`                    | `gci write --skip-generated --skip-vendor $PATH`                                        |
 | `gdformat`               | `gdformat $PATH`                                                                        |
 | `gersemi`                | `gersemi -i -q $PATH`                                                                   |
@@ -666,13 +673,18 @@ mdsf init
 | `golines`                | `golines -w $PATH`                                                                      |
 | `google-java-format`     | `google-java-format -i $PATH`                                                           |
 | `grain:format`           | `grain format $PATH -o $PATH`                                                           |
+| `hadolint`               | `hadolint $PATH`                                                                        |
 | `haml-lint`              | `haml-lint --auto-correct $PATH`                                                        |
+| `hclfmt`                 | `hclfmt -w $PATH`                                                                       |
 | `hfmt`                   | `hfmt -w $PATH`                                                                         |
 | `hindent`                | `hindent $PATH`                                                                         |
 | `hlint`                  | `hlint --refactor -i $PATH`                                                             |
 | `html-beautify`          | `html-beautify -r --type html -f $PATH`                                                 |
 | `htmlbeautifier`         | `htmlbeautifier $PATH`                                                                  |
+| `htmlhint`               | `htmlhint $PATH`                                                                        |
+| `hurlfmt`                | `hurlfmt --in-place $PATH`                                                              |
 | `imba:fmt`               | `imba fmt -f $PATH`                                                                     |
+| `inko:fmt`               | `inko fmt $PATH`                                                                        |
 | `isort`                  | `isort --quiet $PATH`                                                                   |
 | `joker`                  | `joker --format --write $PATH`                                                          |
 | `js-beautify`            | `js-beautify -r --type js -f $PATH`                                                     |
@@ -680,10 +692,12 @@ mdsf init
 | `jsona:format`           | `jsona format $PATH`                                                                    |
 | `jsona:lint`             | `jsona lint $PATH`                                                                      |
 | `jsonlint`               | `jsonlint -i $PATH`                                                                     |
+| `jsonnet-lint`           | `jsonnet-lint $PATH`                                                                    |
 | `jsonnetfmt`             | `jsonnetfmt -i $PATH`                                                                   |
 | `juliaformatter.jl`      | `julia -E using JuliaFormatter;format_file(\"{$PATH_STRING}\")`                         |
 | `just`                   | `just --fmt --unstable --justfile $PATH`                                                |
 | `kcl:fmt`                | `kcl fmt $PATH`                                                                         |
+| `kcl:lint`               | `kcl lint $PATH`                                                                        |
 | `kdlfmt`                 | `kdlfmt format $PATH`                                                                   |
 | `kdoc-formatter`         | `kdoc-formatter --quiet $PATH`                                                          |
 | `ktfmt`                  | `ktfmt --format --log-level=error $PATH`                                                |
@@ -691,28 +705,38 @@ mdsf init
 | `kulala-fmt`             | `kulala-fmt $PATH`                                                                      |
 | `leptosfmt`              | `leptosfmt --quiet $PATH`                                                               |
 | `liquidsoap-prettier`    | `liquidsoap-prettier --write $PATH`                                                     |
+| `luacheck`               | `luacheck $PATH`                                                                        |
 | `luaformatter`           | `lua-format -i $PATH`                                                                   |
+| `mado:check`             | `mado check $PATH`                                                                      |
 | `markdownfmt`            | `markdownfmt -w $PATH`                                                                  |
 | `markdownlint-cli2`      | `markdownlint-cli2 --fix $PATH`                                                         |
 | `markdownlint`           | `markdownlint --fix $PATH`                                                              |
 | `markuplint`             | `markuplint --fix $PATH`                                                                |
 | `mdformat`               | `mdformat $PATH`                                                                        |
 | `mdslw`                  | `mdslw $PATH`                                                                           |
+| `meson:fmt`              | `meson fmt -i $PATH`                                                                    |
 | `misspell`               | `misspell -w $PATH`                                                                     |
 | `mix:format`             | `mix format $PATH`                                                                      |
 | `mojo:format`            | `mojo format -q $PATH`                                                                  |
+| `mypy`                   | `mypy $PATH`                                                                            |
 | `nginxbeautifier`        | `nginxbeautifier $PATH`                                                                 |
+| `nginxfmt`               | `nginxfmt $PATH`                                                                        |
 | `nickel:format`          | `nickel format $PATH`                                                                   |
 | `nimpretty`              | `nimpretty $PATH`                                                                       |
 | `nixfmt`                 | `nixfmt $PATH`                                                                          |
 | `nixpkgs-fmt`            | `nixpkgs-fmt $PATH`                                                                     |
+| `nomad:fmt`              | `nomad fmt $PATH`                                                                       |
 | `nph`                    | `nph $PATH`                                                                             |
 | `npm-groovy-lint`        | `npm-groovy-lint --format $PATH`                                                        |
+| `nufmt`                  | `nufmt $PATH`                                                                           |
 | `ocamlformat`            | `ocamlformat --ignore-invalid-option --inplace --enable-outside-detected-project $PATH` |
 | `ocp-indent`             | `ocp-indent --inplace $PATH`                                                            |
+| `odinfmt`                | `odinfmt -w $PATH`                                                                      |
+| `oelint-adv`             | `oelint-adv --fix --nobackup --quiet $PATH`                                             |
 | `opa:fmt`                | `opa fmt $PATH -w`                                                                      |
 | `ormolu`                 | `ormolu --mode inplace $PATH`                                                           |
 | `oxlint`                 | `oxlint --fix $PATH`                                                                    |
+| `packer:fix`             | `packer fix $PATH`                                                                      |
 | `packer:fmt`             | `packer fmt $PATH`                                                                      |
 | `perltidy`               | `perltidy -b $PATH`                                                                     |
 | `pg_format`              | `pg_format --inplace $PATH`                                                             |
@@ -723,18 +747,23 @@ mdsf init
 | `prettier`               | `prettier --embedded-language-formatting off --log-level error --write $PATH`           |
 | `pretty-php`             | `pretty-php $PATH`                                                                      |
 | `prettypst`              | `prettypst $PATH`                                                                       |
+| `prisma:format`          | `prisma format --schema={$PATH_STRING}`                                                 |
 | `protolint`              | `protolint lint -fix $PATH`                                                             |
 | `ptop`                   | `ptop $PATH $PATH`                                                                      |
 | `puppet-lint`            | `puppet-lint --fix $PATH`                                                               |
 | `purs-tidy`              | `purs-tidy format-in-place $PATH`                                                       |
 | `purty`                  | `purty --write $PATH`                                                                   |
 | `pycln`                  | `pycln --no-gitignore --quiet $PATH`                                                    |
+| `pycodestyle`            | `pycodestyle $PATH`                                                                     |
 | `pyink`                  | `pyink --quiet $PATH`                                                                   |
 | `pyment`                 | `pyment -w $PATH`                                                                       |
 | `qmlfmt`                 | `qmlfmt -w $PATH`                                                                       |
+| `quick-lint-js`          | `quick-lint-js $PATH`                                                                   |
 | `raco:fmt`               | `raco fmt -i $PATH`                                                                     |
 | `refmt`                  | `refmt --in-place $PATH`                                                                |
 | `reformat-gherkin`       | `reformat-gherkin $PATH`                                                                |
+| `regal:fix`              | `regal fix $PATH`                                                                       |
+| `regal:lint`             | `regal lint $PATH`                                                                      |
 | `reorder-python-imports` | `reorder-python-imports $PATH`                                                          |
 | `rescript:format`        | `rescript format $PATH`                                                                 |
 | `roc:format`             | `roc format $PATH`                                                                      |
@@ -747,13 +776,17 @@ mdsf init
 | `rune:fmt`               | `rune fmt $PATH`                                                                        |
 | `rustfmt`                | `rustfmt --edition 2021 --quiet $PATH`                                                  |
 | `rustywind`              | `rustywind --write $PATH`                                                               |
+| `salt-lint`              | `salt-lint $PATH`                                                                       |
 | `scalafmt`               | `scalafmt --quiet --mode any $PATH`                                                     |
 | `scalariform`            | `scalariform $PATH`                                                                     |
+| `selene`                 | `selene $PATH`                                                                          |
+| `shellcheck`             | `shellcheck $PATH`                                                                      |
 | `shellharden`            | `shellharden --transform --replace $PATH`                                               |
 | `shfmt`                  | `shfmt --write $PATH`                                                                   |
 | `sleek`                  | `sleek $PATH`                                                                           |
 | `smlfmt`                 | `smlfmt --force $PATH`                                                                  |
 | `snakefmt`               | `snakefmt $PATH`                                                                        |
+| `solhint`                | `solhint --quiet --fix --noPrompt $PATH`                                                |
 | `sql-formatter`          | `sql-formatter --fix $PATH`                                                             |
 | `sqlfluff:fix`           | `sqlfluff fix --dialect ansi $PATH`                                                     |
 | `sqlfluff:format`        | `sqlfluff format --dialect ansi $PATH`                                                  |
@@ -761,6 +794,8 @@ mdsf init
 | `sqruff`                 | `sqruff fix $PATH`                                                                      |
 | `standardjs`             | `standard --fix $PATH`                                                                  |
 | `standardrb`             | `standardrb --fix $PATH`                                                                |
+| `statix:check`           | `statix check $PATH`                                                                    |
+| `statix:fix`             | `statix fix $PATH`                                                                      |
 | `stylefmt`               | `stylefmt $PATH`                                                                        |
 | `stylelint`              | `stylelint --fix $PATH`                                                                 |
 | `stylish-haskell`        | `stylish-haskell --inplace $PATH`                                                       |
@@ -772,8 +807,10 @@ mdsf init
 | `templ:fmt`              | `templ fmt $PATH`                                                                       |
 | `terraform:fmt`          | `terraform fmt -write=true $PATH`                                                       |
 | `terragrunt:hclfmt`      | `terragrunt hclfmt --terragrunt-hclfmt-file $PATH`                                      |
+| `tex-fmt`                | `tex-fmt $PATH`                                                                         |
 | `tlint:format`           | `tlint format $PATH`                                                                    |
 | `tofu:fmt`               | `tofu fmt -write=true $PATH`                                                            |
+| `toml-sort`              | `toml-sort -i $PATH`                                                                    |
 | `topiary`                | `topiary format $PATH`                                                                  |
 | `ts-standard`            | `ts-standard --fix $PATH`                                                               |
 | `tsqllint`               | `tsqllint --fix $PATH`                                                                  |
@@ -786,8 +823,10 @@ mdsf init
 | `unimport`               | `unimport -r $PATH`                                                                     |
 | `usort`                  | `usort format $PATH`                                                                    |
 | `v:fmt`                  | `v fmt -w $PATH`                                                                        |
+| `vacuum:lint`            | `vacuum lint $PATH`                                                                     |
 | `veryl:fmt`              | `veryl fmt $PATH`                                                                       |
 | `vhdl-style-guide`       | `vsg -f $PATH --fix`                                                                    |
+| `wa:fmt`                 | `wa fmt $PATH`                                                                          |
 | `wfindent`               | `wfindent $PATH`                                                                        |
 | `xmlformat`              | `xmlformat --overwrite $PATH`                                                           |
 | `xmllint`                | `xmllint --format $PATH --output $PATH`                                                 |

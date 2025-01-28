@@ -26,7 +26,7 @@ pub fn generate(mut readme: String) -> anyhow::Result<String> {
         let help = String::from_utf8(execute_command(command)?.stdout)?;
 
         readme =
-            update_markdown_section(&readme, section_name, &format!("```\n{}\n```", help.trim()))?;
+            update_markdown_section(&readme, section_name, &format!("```\n{}\n```", help.trim()));
     }
 
     anyhow::Ok(readme)
