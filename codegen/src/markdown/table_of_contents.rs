@@ -1,8 +1,8 @@
-pub fn generate() -> anyhow::Result<String> {
+pub fn generate(path: &std::path::Path) -> anyhow::Result<String> {
     let output = std::process::Command::new("npx")
         .arg("--yes")
         .arg("markdown-toc")
-        .arg("README.md")
+        .arg(path)
         .output()?;
 
     let toc = String::from_utf8(output.stdout)?;

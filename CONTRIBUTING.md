@@ -7,7 +7,9 @@ Thank you for considering contributing to mdsf. It is greatly appreciated! ‚ù§Ô∏
 <!-- START_SECTION:toc -->
 
 - [Contributing to mdsf](#contributing-to-mdsf)
+  - [Table of contents](#table-of-contents)
   - [Adding support for a new tool](#adding-support-for-a-new-tool)
+    - [Tool metadata](#tool-metadata)
 
 <!-- END_SECTION:toc -->
 
@@ -21,7 +23,7 @@ Inside the folder you create a new file called `plugin.json`.
 
 The file must include _at least_ 2 keys, `binary`, which, as the key suggest, is the name of the binary, and `commands`, which is a nested map of all the commands for the tool.
 
-If we wanted to add support for mdsf that would look like the following:
+If we wanted to add support for mdsf (`mdsf format PATH_TO_FILE`) that would look like the following:
 
 ```json
 // tools/mdsf/plugin.json
@@ -37,7 +39,7 @@ If we wanted to add support for mdsf that would look like the following:
 }
 ```
 
-As seen in the example above we used the argument `$PATH`. That is a special keyword that is automatically replaced with the path to the file.
+As seen in the example above we used the argument `$PATH`. That is a special keyword that is automatically replaced with the actual path to the file.
 
 If you wish to test the tool locally you can generate the code for the new tool by running `just codegen`. Otherwise the code will automatically be generated when the `plugin.json` files is committed.
 
