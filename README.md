@@ -579,7 +579,7 @@ mdsf init
 
 <!-- START_SECTION:supported-commands -->
 
-`mdsf` currently supports 255 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 257 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                     | Command                                                                                 |
 | ------------------------ | --------------------------------------------------------------------------------------- |
@@ -597,8 +597,10 @@ mdsf init
 | `beautysh`               | `beautysh $PATH`                                                                        |
 | `bibtex-tidy`            | `bibtex-tidy -m $PATH`                                                                  |
 | `bicep:format`           | `bicep format $PATH`                                                                    |
+| `biome:check:unsafe`     | `biome check --write --unsafe $PATH`                                                    |
 | `biome:check`            | `biome check --write $PATH`                                                             |
 | `biome:format`           | `biome format --write $PATH`                                                            |
+| `biome:lint:unsafe`      | `biome lint --write --unsafe $PATH`                                                     |
 | `biome:lint`             | `biome lint --write $PATH`                                                              |
 | `black`                  | `black --quiet $PATH`                                                                   |
 | `blade-formatter`        | `blade-formatter --write $PATH`                                                         |

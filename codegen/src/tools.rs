@@ -168,7 +168,10 @@ impl Tool {
             if cmd.is_empty() {
                 String::new()
             } else {
-                format!("_{}", cmd.replace('.', "_").to_case(Case::Snake))
+                format!(
+                    "_{}",
+                    cmd.replace('.', "_").replace(":", "_").to_case(Case::Snake)
+                )
             }
         )
     }

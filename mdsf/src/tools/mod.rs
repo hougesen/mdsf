@@ -16,8 +16,10 @@ pub mod beautysh;
 pub mod bibtex_tidy;
 pub mod bicep_format;
 pub mod biome_check;
+pub mod biome_check_unsafe;
 pub mod biome_format;
 pub mod biome_lint;
+pub mod biome_lint_unsafe;
 pub mod black;
 pub mod blade_formatter;
 pub mod blue;
@@ -321,6 +323,10 @@ pub enum Tooling {
     /// `biome check --write $PATH`
     BiomeCheck,
 
+    #[serde(rename = "biome:check:unsafe")]
+    /// `biome check --write --unsafe $PATH`
+    BiomeCheckUnsafe,
+
     #[serde(rename = "biome:format")]
     /// `biome format --write $PATH`
     BiomeFormat,
@@ -328,6 +334,10 @@ pub enum Tooling {
     #[serde(rename = "biome:lint")]
     /// `biome lint --write $PATH`
     BiomeLint,
+
+    #[serde(rename = "biome:lint:unsafe")]
+    /// `biome lint --write --unsafe $PATH`
+    BiomeLintUnsafe,
 
     #[serde(rename = "black")]
     /// `black --quiet $PATH`
@@ -1309,8 +1319,10 @@ impl Tooling {
             Self::BibtexTidy => (&bibtex_tidy::COMMANDS, bibtex_tidy::set_args),
             Self::BicepFormat => (&bicep_format::COMMANDS, bicep_format::set_args),
             Self::BiomeCheck => (&biome_check::COMMANDS, biome_check::set_args),
+            Self::BiomeCheckUnsafe => (&biome_check_unsafe::COMMANDS, biome_check_unsafe::set_args),
             Self::BiomeFormat => (&biome_format::COMMANDS, biome_format::set_args),
             Self::BiomeLint => (&biome_lint::COMMANDS, biome_lint::set_args),
+            Self::BiomeLintUnsafe => (&biome_lint_unsafe::COMMANDS, biome_lint_unsafe::set_args),
             Self::Black => (&black::COMMANDS, black::set_args),
             Self::BladeFormatter => (&blade_formatter::COMMANDS, blade_formatter::set_args),
             Self::Blue => (&blue::COMMANDS, blue::set_args),
@@ -1584,8 +1596,10 @@ impl AsRef<str> for Tooling {
             Self::BibtexTidy => "bibtex_tidy",
             Self::BicepFormat => "bicep_format",
             Self::BiomeCheck => "biome_check",
+            Self::BiomeCheckUnsafe => "biome_check_unsafe",
             Self::BiomeFormat => "biome_format",
             Self::BiomeLint => "biome_lint",
+            Self::BiomeLintUnsafe => "biome_lint_unsafe",
             Self::Black => "black",
             Self::BladeFormatter => "blade_formatter",
             Self::Blue => "blue",
