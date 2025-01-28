@@ -10,5 +10,10 @@
   "description": "Instant PHP quality checks from your console",
   "homepage": "https://github.com/nunomaduro/phpinsights",
   "languages": ["php"],
-  "php": "phpinsights"
+  "packages": {
+    "composer": {
+      "binary": "phpinsights",
+      "package": "nunomaduro/phpinsights"
+    }
+  }
 }

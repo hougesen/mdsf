@@ -10,5 +10,10 @@
   "description": "Laravel Pint is an opinionated PHP code style fixer for minimalists",
   "homepage": "https://github.com/laravel/pint",
   "languages": ["php"],
-  "php": "pint"
+  "packages": {
+    "composer": {
+      "binary": "pint",
+      "package": "laravel/pint"
+    }
+  }
 }
