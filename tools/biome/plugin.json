@@ -6,6 +6,9 @@
     "check": {
       "arguments": ["check", "--write", "$PATH"]
     },
+    "check:unsafe": {
+      "arguments": ["check", "--write", "--unsafe", "$PATH"]
+    },
     "format": {
       "arguments": ["format", "--write", "$PATH"],
       "tests": [
@@ -28,6 +31,9 @@
     },
     "lint": {
       "arguments": ["lint", "--write", "$PATH"]
+    },
+    "lint:unsafe": {
+      "arguments": ["lint", "--write", "--unsafe", "$PATH"]
     }
   },
   "description": "One toolchain for your web project",

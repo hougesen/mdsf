@@ -142,6 +142,11 @@
           "enum": ["biome:check"]
         },
         {
+          "description": "`biome check --write --unsafe $PATH`",
+          "type": "string",
+          "enum": ["biome:check:unsafe"]
+        },
+        {
           "description": "`biome format --write $PATH`",
           "type": "string",
           "enum": ["biome:format"]
@@ -150,6 +155,11 @@
           "description": "`biome lint --write $PATH`",
           "type": "string",
           "enum": ["biome:lint"]
+        },
+        {
+          "description": "`biome lint --write --unsafe $PATH`",
+          "type": "string",
+          "enum": ["biome:lint:unsafe"]
         },
         {
           "description": "`black --quiet $PATH`",
