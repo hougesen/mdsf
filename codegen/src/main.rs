@@ -3,7 +3,9 @@ use tools::Tool;
 
 mod actions;
 mod cargo;
+mod contributing;
 mod language_to_filetype;
+pub mod markdown;
 mod readme;
 mod schema;
 mod tools;
@@ -44,6 +46,8 @@ fn main() -> Result<()> {
     readme::generate(&plugins, generated_commands)?;
 
     actions::generate(&plugins)?;
+
+    contributing::generate()?;
 
     Ok(())
 }

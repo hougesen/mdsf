@@ -1,4 +1,4 @@
-use crate::readme::update_readme;
+use crate::readme::update_markdown_section;
 
 fn execute_command(name: &str) -> std::io::Result<std::process::Output> {
     std::process::Command::new("cargo").arg("build").output()?;
@@ -25,7 +25,8 @@ pub fn generate(mut readme: String) -> anyhow::Result<String> {
 
         let help = String::from_utf8(execute_command(command)?.stdout)?;
 
-        readme = update_readme(&readme, section_name, &format!("```\n{}\n```", help.trim()))?;
+        readme =
+            update_markdown_section(&readme, section_name, &format!("```\n{}\n```", help.trim()))?;
     }
 
     anyhow::Ok(readme)
