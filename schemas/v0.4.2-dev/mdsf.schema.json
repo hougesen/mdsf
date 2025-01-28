@@ -562,6 +562,11 @@
           "enum": ["htmlhint"]
         },
         {
+          "description": "`hurlfmt --in-place $PATH`",
+          "type": "string",
+          "enum": ["hurlfmt"]
+        },
+        {
           "description": "`imba fmt -f $PATH`",
           "type": "string",
           "enum": ["imba:fmt"]

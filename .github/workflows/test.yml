@@ -74,6 +74,8 @@ jobs:
         run: ( ( which fantomas ) || ( ( which dotnet && dotnet tool install -g fantomas ) ) || ( echo "Unable to install tool" ) )
       - name: ocp-indent
         run: ( ( which ocp-indent ) || ( ( which apt-get && sudo apt-get install -y ocp-indent ) ) || ( echo "Unable to install tool" ) )
+      - name: hurlfmt
+        run: ( ( which hurlfmt ) || ( ( which cargo && ( cargo binstall hurlfmt || cargo install hurlfmt ) ) ) || ( echo "Unable to install tool" ) )
       - name: csscomb
         run: ( ( which csscomb ) || ( ( which npm && npm i -g csscomb ) ) || ( echo "Unable to install tool" ) )
       - name: yamlfix

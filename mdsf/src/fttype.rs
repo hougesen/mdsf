@@ -23,8 +23,9 @@ pub fn get_file_extension(language: &str) -> String {
 fn fallback_file_extension(language: &str) -> Option<&'static str> {
     match language {
         "bean" | "beancount" | "beanhub" => Some(".bean"),
-        "kcl" => Some(".k"),
         "htm" => Some(".htm"),
+        "hurl" => Some(".hurl"),
+        "kcl" => Some(".k"),
         "shtml" | "superhtml" => Some(".shtml"),
         _ => None,
     }

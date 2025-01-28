@@ -100,6 +100,7 @@ pub mod hlint;
 pub mod html_beautify;
 pub mod htmlbeautifier;
 pub mod htmlhint;
+pub mod hurlfmt;
 pub mod imba_fmt;
 pub mod inko_fmt;
 pub mod isort;
@@ -655,6 +656,10 @@ pub enum Tooling {
     #[serde(rename = "htmlhint")]
     /// `htmlhint $PATH`
     Htmlhint,
+
+    #[serde(rename = "hurlfmt")]
+    /// `hurlfmt --in-place $PATH`
+    Hurlfmt,
 
     #[serde(rename = "imba:fmt")]
     /// `imba fmt -f $PATH`
@@ -1391,6 +1396,7 @@ impl Tooling {
             Self::HtmlBeautify => (&html_beautify::COMMANDS, html_beautify::set_args),
             Self::Htmlbeautifier => (&htmlbeautifier::COMMANDS, htmlbeautifier::set_args),
             Self::Htmlhint => (&htmlhint::COMMANDS, htmlhint::set_args),
+            Self::Hurlfmt => (&hurlfmt::COMMANDS, hurlfmt::set_args),
             Self::ImbaFmt => (&imba_fmt::COMMANDS, imba_fmt::set_args),
             Self::InkoFmt => (&inko_fmt::COMMANDS, inko_fmt::set_args),
             Self::Isort => (&isort::COMMANDS, isort::set_args),
@@ -1662,6 +1668,7 @@ impl AsRef<str> for Tooling {
             Self::HtmlBeautify => "html_beautify",
             Self::Htmlbeautifier => "htmlbeautifier",
             Self::Htmlhint => "htmlhint",
+            Self::Hurlfmt => "hurlfmt",
             Self::ImbaFmt => "imba_fmt",
             Self::InkoFmt => "inko_fmt",
             Self::Isort => "isort",
