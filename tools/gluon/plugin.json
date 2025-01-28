@@ -9,5 +9,6 @@
   },
   "description": "Code formatting for the gluon programming language",
   "homepage": "https://github.com/gluon-lang/gluon",
-  "languages": ["gluon"]
+  "languages": ["gluon"],
+  "packages": {}
 }

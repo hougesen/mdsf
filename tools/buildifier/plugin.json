@@ -9,5 +9,6 @@
   },
   "description": "A bazel BUILD file formatter and",
   "homepage": "https://github.com/bazelbuild/buildtools",
-  "languages": ["bazel"]
+  "languages": ["bazel"],
+  "packages": {}
 }

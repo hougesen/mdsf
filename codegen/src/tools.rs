@@ -7,7 +7,7 @@ const INDENT: &str = "    ";
 const GENERATED_FILE_COMMENT: &str =
     "///\n/// THIS FILE IS GENERATED USING CODE - DO NOT EDIT MANUALLY\n///";
 
-#[derive(Debug, serde::Deserialize, schemars::JsonSchema, Hash, Clone)]
+#[derive(Debug, serde::Deserialize, schemars::JsonSchema, Hash, Clone, serde::Serialize)]
 #[serde(deny_unknown_fields)]
 pub struct ToolCommandTest {
     /// Codeblock language used when generating tests
@@ -18,99 +18,127 @@ pub struct ToolCommandTest {
     pub test_output: String,
 }
 
-#[derive(Debug, serde::Deserialize, schemars::JsonSchema, Clone)]
+#[derive(Debug, serde::Deserialize, schemars::JsonSchema, Clone, serde::Serialize)]
 #[serde(deny_unknown_fields)]
 pub struct ToolCommand {
     pub arguments: Vec<String>,
 
-    #[expect(unused)]
+    #[serde(default, skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
 
-    #[expect(unused)]
+    #[serde(default, skip_serializing_if = "Option::is_none")]
     pub homepage: Option<String>,
 
-    pub tests: Option<Vec<ToolCommandTest>>,
+    #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    pub tests: Vec<ToolCommandTest>,
 }
 
-#[derive(Debug, serde::Deserialize, schemars::JsonSchema, Clone, Default)]
+#[derive(Debug, serde::Deserialize, schemars::JsonSchema, Clone, Default, serde::Serialize)]
 #[serde(deny_unknown_fields)]
 pub struct ToolPackagesBrew {
     pub name: String,
 
+    #[serde(default, skip_serializing_if = "Option::is_none")]
     pub tap: Option<String>,
 }
 
-#[derive(Debug, serde::Deserialize, schemars::JsonSchema, Clone, Default)]
+#[derive(Debug, serde::Deserialize, schemars::JsonSchema, Clone, Default, serde::Serialize)]
 #[serde(deny_unknown_fields)]
 pub struct ToolPackagesComposer {
     pub binary: String,
 
+    #[serde(default, skip_serializing_if = "Option::is_none")]
     pub package: Option<String>,
 }
 
-#[derive(Debug, serde::Deserialize, schemars::JsonSchema, Clone, Default)]
+#[derive(Debug, serde::Deserialize, schemars::JsonSchema, Clone, Default, serde::Serialize)]
 #[serde(deny_unknown_fields)]
 pub struct ToolPackages {
+    #[serde(default, skip_serializing_if = "Option::is_none")]
     pub apt: Option<String>,
 
+    #[serde(default, skip_serializing_if = "Option::is_none")]
     pub brew: Option<ToolPackagesBrew>,
 
+    #[serde(default, skip_serializing_if = "Option::is_none")]
     pub cabal: Option<String>,
 
+    #[serde(default, skip_serializing_if = "Option::is_none")]
     pub cargo: Option<String>,
 
+    #[serde(default, skip_serializing_if = "Option::is_none")]
     pub coursier: Option<String>,
 
+    #[serde(default, skip_serializing_if = "Option::is_none")]
     pub dotnet: Option<String>,
 
+    #[serde(default, skip_serializing_if = "Option::is_none")]
     pub gem: Option<String>,
 
+    #[serde(default, skip_serializing_if = "Option::is_none")]
     pub go: Option<String>,
 
+    #[serde(default, skip_serializing_if = "Option::is_none")]
     pub julia: Option<String>,
 
+    #[serde(default, skip_serializing_if = "Option::is_none")]
     pub luarocks: Option<String>,
 
+    #[serde(default, skip_serializing_if = "Option::is_none")]
     pub nimble: Option<String>,
 
     /// Name of package on npm, if published there.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
     pub npm: Option<String>,
 
+    #[serde(default, skip_serializing_if = "Option::is_none")]
     pub opam: Option<String>,
 
     /// Binary name if installed through composer
+    #[serde(default, skip_serializing_if = "Option::is_none")]
     pub composer: Option<ToolPackagesComposer>,
 
+    #[serde(default, skip_serializing_if = "Option::is_none")]
     pub pip: Option<String>,
 
+    #[serde(default, skip_serializing_if = "Option::is_none")]
     pub stack: Option<String>,
 }
 
-#[derive(Debug, serde::Deserialize, schemars::JsonSchema, Clone)]
+fn default_tool_schema() -> String {
+    "../tool.schema.json".to_owned()
+}
+
+#[derive(Debug, serde::Deserialize, schemars::JsonSchema, Clone, serde::Serialize)]
 #[serde(deny_unknown_fields)]
 pub struct Tool {
-    #[expect(unused)]
-    #[serde(rename = "$schema")]
+    #[serde(rename = "$schema", default = "default_tool_schema")]
     pub schema: String,
 
     pub binary: String,
 
+    #[serde(default)]
     pub categories: std::collections::BTreeSet<String>,
 
     pub commands: std::collections::BTreeMap<String, ToolCommand>,
 
+    #[serde(default)]
     pub description: String,
 
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub disable_ci_tests: Option<bool>,
+
+    #[serde(default)]
     pub homepage: String,
 
+    #[serde(default)]
     pub languages: std::collections::BTreeSet<String>,
 
+    #[serde(default, skip_serializing_if = "Option::is_none")]
     pub name: Option<String>,
 
     #[serde(default)]
     pub packages: ToolPackages,
-
-    pub disable_ci_tests: Option<bool>,
 }
 
 #[derive(Debug)]
@@ -261,8 +289,6 @@ impl Tool {
 
             let tests = options
                 .tests
-                .clone()
-                .unwrap_or_default()
                 .iter()
                 .map(|test| self.generate_test(cmd, test).1)
                 .collect::<Vec<_>>();
@@ -331,7 +357,7 @@ impl Tooling {
     #[allow(clippy::too_many_lines)]
     #[inline]
     pub fn format_snippet(
-        &self,
+        self,
         _snippet_path: &std::path::Path,
     ) -> Result<(bool, Option<String>), crate::error::MdsfError> {
         todo!()
@@ -424,7 +450,7 @@ impl Tooling {{
 {INDENT}#[allow(clippy::too_many_lines)]
 {INDENT}#[inline]
 {INDENT}pub fn format_snippet(
-{INDENT}{INDENT}&self,
+{INDENT}{INDENT}self,
 {INDENT}{INDENT}snippet_path: &std::path::Path,
 {INDENT}{INDENT}timeout: u64,
 {INDENT}) -> Result<(bool, Option<String>), crate::error::MdsfError> {{

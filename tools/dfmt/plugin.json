@@ -9,5 +9,6 @@
   },
   "description": "Dfmt is a formatter for D source code",
   "homepage": "https://github.com/dlang-community/dfmt",
-  "languages": ["d"]
+  "languages": ["d"],
+  "packages": {}
 }

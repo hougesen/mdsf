@@ -16,5 +16,6 @@
   },
   "description": "The official code formatter for Rust",
   "homepage": "https://github.com/rust-lang/rustfmt",
-  "languages": ["rust"]
+  "languages": ["rust"],
+  "packages": {}
 }

@@ -9,5 +9,6 @@
   },
   "description": "Tooling for V lang",
   "homepage": "https://vlang.io/",
-  "languages": ["v"]
+  "languages": ["v"],
+  "packages": {}
 }

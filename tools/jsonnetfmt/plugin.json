@@ -9,5 +9,6 @@
   },
   "description": "Formatter for automatically fixing jsonnet stylistic problems",
   "homepage": "https://jsonnet.org/learning/tools.html",
-  "languages": ["jsonnet"]
+  "languages": ["jsonnet"],
+  "packages": {}
 }

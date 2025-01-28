@@ -9,5 +9,6 @@
   },
   "description": "Free Pascal source formatter",
   "homepage": "https://www.freepascal.org/tools/ptop.html",
-  "languages": ["pascal"]
+  "languages": ["pascal"],
+  "packages": {}
 }

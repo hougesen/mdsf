@@ -9,5 +9,6 @@
   },
   "description": "A Solidity formatter",
   "homepage": "https://github.com/foundry-rs/foundry",
-  "languages": ["solidity"]
+  "languages": ["solidity"],
+  "packages": {}
 }

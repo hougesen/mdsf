@@ -9,5 +9,6 @@
   },
   "description": "Better configuration for less",
   "homepage": "https://nickel-lang.org/",
-  "languages": ["nickel"]
+  "languages": ["nickel"],
+  "packages": {}
 }

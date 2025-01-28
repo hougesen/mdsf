@@ -9,5 +9,6 @@
   },
   "description": "A formatter for Fennel code",
   "homepage": "https://git.sr.ht/~technomancy/fnlfmt",
-  "languages": ["fennel"]
+  "languages": ["fennel"],
+  "packages": {}
 }

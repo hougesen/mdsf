@@ -9,5 +9,6 @@
   },
   "description": "the nushell formatter",
   "homepage": "https://github.com/nushell/nufmt",
-  "languages": ["nushell"]
+  "languages": ["nushell"],
+  "packages": {}
 }

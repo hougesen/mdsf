@@ -16,5 +16,6 @@
   },
   "description": "Executables, uberjar, and library to beautifully format Clojure and Clojurescript source code and s-expressions",
   "homepage": "https://github.com/kkinnear/zprint",
-  "languages": ["clojure", "clojurescript"]
+  "languages": ["clojure", "clojurescript"],
+  "packages": {}
 }

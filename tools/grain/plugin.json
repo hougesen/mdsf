@@ -16,5 +16,6 @@
   },
   "description": "Code formatter for the Grain programming language",
   "homepage": "https://grain-lang.org/docs/tooling/grain_cli",
-  "languages": ["grain"]
+  "languages": ["grain"],
+  "packages": {}
 }

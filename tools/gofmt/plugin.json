@@ -16,5 +16,6 @@
   },
   "description": "Gofmt formats Go programs",
   "homepage": "https://pkg.go.dev/cmd/gofmt",
-  "languages": ["go"]
+  "languages": ["go"],
+  "packages": {}
 }

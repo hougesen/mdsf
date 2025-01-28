@@ -16,5 +16,6 @@
   },
   "description": "An automated code formatter for Erlang",
   "homepage": "https://github.com/WhatsApp/erlfmt",
-  "languages": ["erlang"]
+  "languages": ["erlang"],
+  "packages": {}
 }

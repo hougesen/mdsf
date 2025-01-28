@@ -9,5 +9,6 @@
   },
   "description": "The corrective bash syntax highlighter",
   "homepage": "https://github.com/anordal/shellharden",
-  "languages": ["bash", "shell"]
+  "languages": ["bash", "shell"],
+  "packages": {}
 }

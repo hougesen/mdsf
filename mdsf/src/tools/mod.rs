@@ -1286,7 +1286,7 @@ impl Tooling {
     #[allow(clippy::too_many_lines)]
     #[inline]
     pub fn format_snippet(
-        &self,
+        self,
         snippet_path: &std::path::Path,
         timeout: u64,
     ) -> Result<(bool, Option<String>), crate::error::MdsfError> {

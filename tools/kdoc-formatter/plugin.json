@@ -9,5 +9,6 @@
   },
   "description": "Reformats Kotlin KDoc comments, reflowing text and other cleanup",
   "homepage": "https://github.com/tnorbye/kdoc-formatter",
-  "languages": ["kotlin"]
+  "languages": ["kotlin"],
+  "packages": {}
 }

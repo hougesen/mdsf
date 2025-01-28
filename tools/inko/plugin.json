@@ -9,5 +9,6 @@
   },
   "description": "Code formatter for the inko programming language",
   "homepage": "https://github.com/inko-lang/inko",
-  "languages": ["inko"]
+  "languages": ["inko"],
+  "packages": {}
 }

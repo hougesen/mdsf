@@ -2,23 +2,17 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "title": "Tool",
   "type": "object",
-  "required": [
-    "$schema",
-    "binary",
-    "categories",
-    "commands",
-    "description",
-    "homepage",
-    "languages"
-  ],
+  "required": ["binary", "commands"],
   "properties": {
     "$schema": {
+      "default": "../tool.schema.json",
       "type": "string"
     },
     "binary": {
       "type": "string"
     },
     "categories": {
+      "default": [],
       "type": "array",
       "items": {
         "type": "string"
@@ -32,15 +26,18 @@
       }
     },
     "description": {
+      "default": "",
       "type": "string"
     },
     "disable_ci_tests": {
       "type": ["boolean", "null"]
     },
     "homepage": {
+      "default": "",
       "type": "string"
     },
     "languages": {
+      "default": [],
       "type": "array",
       "items": {
         "type": "string"
@@ -51,7 +48,12 @@
       "type": ["string", "null"]
     },
     "packages": {
-      "$ref": "#/definitions/ToolPackages"
+      "default": {},
+      "allOf": [
+        {
+          "$ref": "#/definitions/ToolPackages"
+        }
+      ]
     }
   },
   "additionalProperties": false,
@@ -73,7 +75,7 @@
           "type": ["string", "null"]
         },
         "tests": {
-          "type": ["array", "null"],
+          "type": "array",
           "items": {
             "$ref": "#/definitions/ToolCommandTest"
           }

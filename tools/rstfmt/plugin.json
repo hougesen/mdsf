@@ -9,5 +9,6 @@
   },
   "description": "A formatter for reStructuredText",
   "homepage": "https://github.com/dzhu/rstfmt",
-  "languages": ["restructuredtext"]
+  "languages": ["restructuredtext"],
+  "packages": {}
 }

@@ -9,5 +9,6 @@
   },
   "description": "Format Haskell programs. Inspired by the gofmt utility",
   "homepage": "https://github.com/danstiner/hfmt",
-  "languages": ["haskell"]
+  "languages": ["haskell"],
+  "packages": {}
 }

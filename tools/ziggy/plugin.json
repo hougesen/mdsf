@@ -9,5 +9,6 @@
   },
   "description": "Formats Ziggy documents and Ziggy schemas",
   "homepage": "https://ziggy-lang.io/documentation/ziggy-fmt/",
-  "languages": ["ziggy"]
+  "languages": ["ziggy"],
+  "packages": {}
 }
