@@ -21,6 +21,5 @@
   "name": null,
   "packages": {
     "cargo": "hurlfmt"
-  },
-  "php": null
+  }
 }

@@ -1,5 +1,5 @@
 use super::workflow::WorkflowJobsStep;
-use crate::tools::{Tool, ToolPackagesBrew};
+use crate::tools::{Tool, ToolPackagesBrew, ToolPackagesComposer};
 
 fn generate_cargo(tool: &str) -> String {
     format!("( which cargo && ( cargo binstall {tool} || cargo install {tool} ) )")
@@ -65,6 +65,13 @@ fn generate_coursier(tool: &str) -> String {
 
 fn generate_nimble(tool: &str) -> String {
     format!("( which nimble && nimble install {tool} )")
+}
+
+fn generate_composer(tool: &ToolPackagesComposer) -> String {
+    format!(
+        "( which composer && composer require {} )",
+        tool.package.as_ref().unwrap_or(&tool.binary)
+    )
 }
 
 pub fn generate_install_steps(tools: &Vec<Tool>) -> Vec<WorkflowJobsStep> {
@@ -148,6 +155,10 @@ pub fn generate_install_steps(tools: &Vec<Tool>) -> Vec<WorkflowJobsStep> {
 
         if let Some(nimble) = &tool.packages.nimble {
             install_options.push(generate_nimble(nimble));
+        }
+
+        if let Some(composer) = &tool.packages.composer {
+            install_options.push(generate_composer(composer));
         }
 
         if let Some(julia) = &tool.packages.julia {

@@ -10,5 +10,10 @@
   "description": "PHP Code Beautifier and Fixer fixes violations of a defined coding standard",
   "homepage": "https://phpqa.io/projects/phpcbf.html",
   "languages": ["php"],
-  "php": "phpcbf"
+  "packages": {
+    "composer": {
+      "binary": "phpcbf",
+      "package": "squizlabs/php_codesniffer"
+    }
+  }
 }

@@ -10,5 +10,12 @@
   "description": "The opinionated PHP code formatter",
   "homepage": "https://github.com/lkrms/pretty-php",
   "languages": ["php"],
-  "php": "pretty-php"
+  "packages": {
+    "brew": {
+      "name": "lkrms/misc/pretty-php"
+    },
+    "composer": {
+      "binary": "pretty-php"
+    }
+  }
 }

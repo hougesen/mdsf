@@ -52,10 +52,6 @@
     },
     "packages": {
       "$ref": "#/definitions/ToolPackages"
-    },
-    "php": {
-      "description": "Binary name if installed through composer",
-      "type": ["string", "null"]
     }
   },
   "additionalProperties": false,
@@ -124,6 +120,17 @@
         "cargo": {
           "type": ["string", "null"]
         },
+        "composer": {
+          "description": "Binary name if installed through composer",
+          "anyOf": [
+            {
+              "$ref": "#/definitions/ToolPackagesComposer"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
         "coursier": {
           "type": ["string", "null"]
         },
@@ -169,6 +176,19 @@
           "type": "string"
         },
         "tap": {
+          "type": ["string", "null"]
+        }
+      },
+      "additionalProperties": false
+    },
+    "ToolPackagesComposer": {
+      "type": "object",
+      "required": ["binary"],
+      "properties": {
+        "binary": {
+          "type": "string"
+        },
+        "package": {
           "type": ["string", "null"]
         }
       },

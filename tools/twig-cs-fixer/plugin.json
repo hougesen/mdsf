@@ -10,5 +10,10 @@
   "description": "A tool to automatically fix Twig Coding Standards issues",
   "homepage": "https://github.com/VincentLanglet/Twig-CS-Fixer",
   "languages": ["twig"],
-  "php": "twig-cs-fixer"
+  "packages": {
+    "composer": {
+      "binary": "twig-cs-fixer",
+      "package": "vincentlanglet/twig-cs-fixer"
+    }
+  }
 }

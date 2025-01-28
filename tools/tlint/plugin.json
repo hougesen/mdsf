@@ -10,5 +10,10 @@
   "description": "Tighten linter for Laravel conventions",
   "homepage": "https://github.com/tighten/tlint",
   "languages": ["php"],
-  "php": "tlint"
+  "packages": {
+    "composer": {
+      "binary": "tlint",
+      "package": "tightenco/tlint"
+    }
+  }
 }

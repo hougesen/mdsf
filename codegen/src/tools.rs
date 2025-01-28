@@ -42,6 +42,14 @@ pub struct ToolPackagesBrew {
 
 #[derive(Debug, serde::Deserialize, schemars::JsonSchema, Clone, Default)]
 #[serde(deny_unknown_fields)]
+pub struct ToolPackagesComposer {
+    pub binary: String,
+
+    pub package: Option<String>,
+}
+
+#[derive(Debug, serde::Deserialize, schemars::JsonSchema, Clone, Default)]
+#[serde(deny_unknown_fields)]
 pub struct ToolPackages {
     pub apt: Option<String>,
 
@@ -69,6 +77,9 @@ pub struct ToolPackages {
     pub npm: Option<String>,
 
     pub opam: Option<String>,
+
+    /// Binary name if installed through composer
+    pub composer: Option<ToolPackagesComposer>,
 
     pub pip: Option<String>,
 
@@ -98,9 +109,6 @@ pub struct Tool {
 
     #[serde(default)]
     pub packages: ToolPackages,
-
-    /// Binary name if installed through composer
-    pub php: Option<String>,
 
     pub disable_ci_tests: Option<bool>,
 }
@@ -197,8 +205,8 @@ impl Tool {
                     command_types.push(format!("CommandType::NodeModules(\"{}\")", self.binary));
                 };
 
-                if let Some(php) = &self.php {
-                    command_types.push(format!("CommandType::PhpVendor(\"{php}\")"));
+                if let Some(php) = &self.packages.composer {
+                    command_types.push(format!("CommandType::PhpVendor(\"{}\")", php.binary));
                 };
 
                 command_types.push(format!("CommandType::Direct(\"{}\")", self.binary));

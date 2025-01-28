@@ -11,5 +11,10 @@
   "homepage": "https://github.com/easy-coding-standard/easy-coding-standard",
   "languages": ["php"],
   "name": "easy-coding-standard",
-  "php": "ecs"
+  "packages": {
+    "composer": {
+      "binary": "ecs",
+      "package": "symplify/easy-coding-standard"
+    }
+  }
 }

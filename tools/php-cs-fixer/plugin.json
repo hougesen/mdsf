@@ -10,5 +10,10 @@
   "description": "A tool to automatically fix PHP Coding Standards issues",
   "homepage": "https://github.com/PHP-CS-Fixer/PHP-CS-Fixer",
   "languages": ["php"],
-  "php": "php-cs-fixer"
+  "packages": {
+    "composer": {
+      "binary": "php-cs-fixer",
+      "package": "friendsofphp/php-cs-fixer"
+    }
+  }
 }
