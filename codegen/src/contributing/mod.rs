@@ -8,7 +8,7 @@ pub fn generate() -> anyhow::Result<()> {
     {
         let t = table_of_contents::generate(&path)?;
 
-        contents = update_markdown_section(&contents, "toc", &t)?;
+        contents = update_markdown_section(&contents, "toc", &t);
 
         std::fs::write(&path, contents)?;
     };

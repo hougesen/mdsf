@@ -1064,7 +1064,6 @@ dependencies = [
  "convert_case",
  "ignore",
  "mdsf",
- "regex",
  "reqwest",
  "schemars",
  "serde",

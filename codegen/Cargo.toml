@@ -17,7 +17,6 @@ anyhow = { workspace = true }
 convert_case = { workspace = true }
 ignore.workspace = true
 mdsf = { workspace = true }
-regex = { workspace = true }
 reqwest = { workspace = true }
 schemars = { workspace = true }
 serde = { workspace = true }
