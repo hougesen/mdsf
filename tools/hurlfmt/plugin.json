@@ -1,0 +1,26 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "hurlfmt",
+  "categories": ["formatter"],
+  "commands": {
+    "": {
+      "arguments": ["--in-place", "$PATH"],
+      "tests": [
+        {
+          "language": "hurl",
+          "test_input": "  GET        https://example.ord/cats/123           ",
+          "test_output": "GET https://example.ord/cats/123\n"
+        }
+      ]
+    }
+  },
+  "description": "Formatter for hurl files",
+  "disable_ci_tests": false,
+  "homepage": "https://hurl.dev",
+  "languages": ["hurl"],
+  "name": null,
+  "packages": {
+    "cargo": "hurlfmt"
+  },
+  "php": null
+}
