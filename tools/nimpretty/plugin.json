@@ -16,5 +16,6 @@
   },
   "description": "Code formatter for the Nim programming language",
   "homepage": "https://github.com/nim-lang/nim",
-  "languages": ["nim"]
+  "languages": ["nim"],
+  "packages": {}
 }

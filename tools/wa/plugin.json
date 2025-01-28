@@ -9,5 +9,6 @@
   },
   "description": "Formatter for the wa programming language",
   "homepage": "https://github.com/wa-lang/wa/",
-  "languages": ["wa"]
+  "languages": ["wa"],
+  "packages": {}
 }

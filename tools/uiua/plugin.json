@@ -9,5 +9,6 @@
   },
   "description": "A stack-based array programming language",
   "homepage": "https://github.com/uiua-lang/uiua",
-  "languages": ["uiua"]
+  "languages": ["uiua"],
+  "packages": {}
 }

@@ -9,5 +9,6 @@
   },
   "description": "An extensible code formatter for Racket",
   "homepage": "https://docs.racket-lang.org/fmt/",
-  "languages": ["racket"]
+  "languages": ["racket"],
+  "packages": {}
 }

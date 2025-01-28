@@ -9,5 +9,6 @@
   },
   "description": "Basic formatter for the Typst language",
   "homepage": "https://github.com/astrale-sharp/typstfmt",
-  "languages": ["typst"]
+  "languages": ["typst"],
+  "packages": {}
 }

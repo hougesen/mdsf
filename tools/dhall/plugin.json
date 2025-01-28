@@ -9,5 +9,6 @@
   },
   "description": "Format Dhall files",
   "homepage": "https://dhall-lang.org/",
-  "languages": ["dhall"]
+  "languages": ["dhall"],
+  "packages": {}
 }

@@ -9,5 +9,6 @@
   },
   "description": "Linter for jsonnet files",
   "homepage": "https://jsonnet.org/learning/tools.html",
-  "languages": ["jsonnet"]
+  "languages": ["jsonnet"],
+  "packages": {}
 }

@@ -9,5 +9,6 @@
   },
   "description": "Formatter for hcl files",
   "homepage": "https://github.com/hashicorp/hcl",
-  "languages": ["hcl"]
+  "languages": ["hcl"],
+  "packages": {}
 }

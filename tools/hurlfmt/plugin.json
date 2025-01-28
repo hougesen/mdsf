@@ -18,7 +18,6 @@
   "disable_ci_tests": false,
   "homepage": "https://hurl.dev",
   "languages": ["hurl"],
-  "name": null,
   "packages": {
     "cargo": "hurlfmt"
   }

@@ -9,5 +9,6 @@
   },
   "description": "Scan Nix files for dead code",
   "homepage": "https://github.com/astro/deadnix",
-  "languages": ["nix"]
+  "languages": ["nix"],
+  "packages": {}
 }

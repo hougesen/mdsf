@@ -9,5 +9,6 @@
   },
   "description": "CLI for HashiCorp Nomad",
   "homepage": "https://developer.hashicorp.com/nomad/docs/commands",
-  "languages": ["hcl"]
+  "languages": ["hcl"],
+  "packages": {}
 }

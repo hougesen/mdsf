@@ -9,5 +9,6 @@
   },
   "description": "Safe, atomic formatting with black and usort",
   "homepage": "https://github.com/omnilib/ufmt",
-  "languages": ["python"]
+  "languages": ["python"],
+  "packages": {}
 }

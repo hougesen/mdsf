@@ -9,5 +9,6 @@
   },
   "description": "Tools for the Rune programming language",
   "homepage": "https://github.com/rune-rs/rune",
-  "languages": ["rune"]
+  "languages": ["rune"],
+  "packages": {}
 }

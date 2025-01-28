@@ -16,5 +16,6 @@
   },
   "description": "Tools for the roc programming language",
   "homepage": "https://github.com/roc-lang/roc",
-  "languages": ["roc"]
+  "languages": ["roc"],
+  "packages": {}
 }

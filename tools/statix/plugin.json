@@ -12,5 +12,6 @@
   },
   "description": "lints and suggestions for the nix programming language",
   "homepage": "https://github.com/oppiliappan/statix",
-  "languages": ["nix"]
+  "languages": ["nix"],
+  "packages": {}
 }

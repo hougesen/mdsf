@@ -10,5 +10,6 @@
   "description": "Style guide enforcement for VHDL",
   "homepage": "https://github.com/jeremiah-c-leary/vhdl-style-guide",
   "languages": ["vhdl"],
-  "name": "vhdl-style-guide"
+  "name": "vhdl-style-guide",
+  "packages": {}
 }

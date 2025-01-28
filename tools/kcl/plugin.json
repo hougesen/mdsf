@@ -18,8 +18,7 @@
     "lint": {
       "arguments": ["lint", "$PATH"],
       "description": "The KCL Lint tool supports checking some warning-level defects in KCL code and supports multiple output formats",
-      "homepage": "https://www.kcl-lang.io/docs/tools/cli/kcl/lint",
-      "tests": []
+      "homepage": "https://www.kcl-lang.io/docs/tools/cli/kcl/lint"
     }
   },
   "description": "KCL Format tool supports reformatting KCL files to the standard code style",

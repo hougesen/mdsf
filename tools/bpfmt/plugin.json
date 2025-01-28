@@ -9,5 +9,6 @@
   },
   "description": "A formatter for Blueprint files",
   "homepage": "https://source.android.com/docs/setup/reference/androidbp#formatter",
-  "languages": ["blueprint"]
+  "languages": ["blueprint"],
+  "packages": {}
 }

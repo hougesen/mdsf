@@ -9,5 +9,6 @@
   },
   "description": "Code formatter for the furhark programming language",
   "homepage": "https://futhark.readthedocs.io/en/latest/man/futhark-fmt.html",
-  "languages": ["futhark"]
+  "languages": ["futhark"],
+  "packages": {}
 }

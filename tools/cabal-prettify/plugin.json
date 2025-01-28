@@ -9,5 +9,6 @@
   },
   "description": "Prettify your Cabal package configuration files",
   "homepage": "https://github.com/kindaro/cabal-prettify",
-  "languages": ["cabal"]
+  "languages": ["cabal"],
+  "packages": {}
 }

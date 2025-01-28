@@ -81,11 +81,7 @@ pub fn generate_install_steps(tools: &Vec<Tool>) -> Vec<WorkflowJobsStep> {
         let mut has_tests = false;
 
         for options in tool.commands.values() {
-            if options
-                .tests
-                .as_ref()
-                .is_some_and(|tests| !tests.is_empty())
-            {
+            if !options.tests.is_empty() {
                 has_tests = true;
                 break;
             }

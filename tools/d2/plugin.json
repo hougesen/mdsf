@@ -9,5 +9,6 @@
   },
   "description": "Formatter for the d2 language",
   "homepage": "https://d2lang.com/",
-  "languages": ["d2"]
+  "languages": ["d2"],
+  "packages": {}
 }

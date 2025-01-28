@@ -26,6 +26,9 @@ fn get_plugin_files() -> Vec<Tool> {
 
                 let plugin = serde_json::from_str::<Tool>(&content).unwrap();
 
+                std::fs::write(entry.path(), serde_json::to_string_pretty(&plugin).unwrap())
+                    .unwrap();
+
                 Some(plugin)
             } else {
                 None

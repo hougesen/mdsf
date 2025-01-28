@@ -16,5 +16,6 @@
   },
   "description": "Code formatter for Elixir",
   "homepage": "https://hexdocs.pm/mix/main/Mix.Tasks.Format.html",
-  "languages": ["elixir"]
+  "languages": ["elixir"],
+  "packages": {}
 }

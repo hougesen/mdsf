@@ -9,5 +9,6 @@
   },
   "description": "A command line utility to sort and format toml files",
   "homepage": "https://github.com/pappasam/toml-sort",
-  "languages": ["toml"]
+  "languages": ["toml"],
+  "packages": {}
 }

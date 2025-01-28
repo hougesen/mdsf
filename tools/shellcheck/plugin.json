@@ -9,5 +9,6 @@
   },
   "description": "ShellCheck, a static analysis tool for shell scripts",
   "homepage": "https://github.com/koalaman/shellcheck",
-  "languages": ["bash", "shell"]
+  "languages": ["bash", "shell"],
+  "packages": {}
 }

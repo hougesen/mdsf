@@ -9,5 +9,6 @@
   },
   "description": "Haskell source code suggestions",
   "homepage": "https://github.com/ndmitchell/hlint",
-  "languages": ["haskell"]
+  "languages": ["haskell"],
+  "packages": {}
 }
