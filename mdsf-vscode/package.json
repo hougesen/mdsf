@@ -1,6 +1,7 @@
 {
   "name": "mdsf-vscode",
   "displayName": "mdsf",
+  "publisher": "hougesen",
   "description": "Format markdown code blocks using mdsf",
   "version": "0.0.1",
   "engines": {
@@ -22,6 +23,35 @@
         "category": "mdsf"
       }
     ]
+  },
+  "languages": [
+    {
+      "id": "ignore",
+      "extensions": [
+        ".mdsfignore"
+      ]
+    }
+  ],
+  "homepage": "https://github.com/hougesen/mdsf",
+  "author": {
+    "email": "mads@mhouge.dk",
+    "name": "Mads Hougesen",
+    "url": "https://mhouge.dk"
+  },
+  "license": "MIT",
+  "keywords": [
+    "formatter",
+    "linter",
+    "markdown",
+    "mdsf"
+  ],
+  "bugs": {
+    "url": "https://github.com/hougesen/mdsf/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hougesen/mdsf.git",
+    "directory": "mdsf-vscode"
   },
   "scripts": {
     "vscode:prepublish": "pnpm run package",
