@@ -8,7 +8,7 @@ This extension requires mdsf to already be installed . That can be done by follo
 
 ### Setting mdsf as default formatter
 
-```jsonc
+```json
 {
   // settings.json
   // ...

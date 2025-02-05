@@ -47,9 +47,9 @@ format:
     dist init --yes
 
 vscode-precommit:
-    cd mdsf-vscode && pnpm i
-    cd mdsf-vscode && pnpm lint:biome:fix
-    cd mdsf-vscode && pnpm lint:eslint:fix
+    cd mdsf-vscode && npm i
+    cd mdsf-vscode && npm run lint:biome:fix
+    cd mdsf-vscode && npm run lint:eslint:fix
 
 precommit:
     just vscode-precommit

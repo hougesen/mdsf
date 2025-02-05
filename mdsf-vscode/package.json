@@ -54,22 +54,22 @@
     "directory": "mdsf"
   },
   "scripts": {
-    "vscode:prepublish": "pnpm run package",
-    "compile": "pnpm run check-types && pnpm run lint && node esbuild.js",
+    "vscode:prepublish": "npm run package",
+    "compile": "npm run check-types && npm run lint && node esbuild.js",
     "watch": "npm-run-all -p watch:*",
     "watch:esbuild": "node esbuild.js --watch",
     "watch:tsc": "tsc --noEmit --watch --project tsconfig.json",
-    "package": "pnpm run check-types && pnpm run lint && node esbuild.js --production",
+    "package": "npm run check-types && npm run lint && node esbuild.js --production",
     "compile-tests": "tsc -p . --outDir out",
     "watch-tests": "tsc -p . -w --outDir out",
-    "pretest": "pnpm run compile-tests && pnpm run compile && pnpm run lint",
+    "pretest": "npm run compile-tests && npm run compile && npm run lint",
     "check-types": "tsc --noEmit",
     "lint:eslint": "eslint .",
     "lint:eslint:fix": "eslint --fix .",
     "lint:biome": "biome check",
     "lint:biome:fix": "biome check --write",
-    "lint": "pnpm run lint:biome && pnpm run lint:eslint",
-    "lint:fix": "pnpm run lint:biome:fix && pnpm run lint:eslint:fix",
+    "lint": "npm run lint:biome && npm run lint:eslint",
+    "lint:fix": "npm run lint:biome:fix && npm run lint:eslint:fix",
     "test": "vscode-test"
   },
   "devDependencies": {
@@ -87,6 +87,5 @@
     "globals": "^15.14.0",
     "npm-run-all": "^4.1.5",
     "typescript": "^5.7.2"
-  },
-  "packageManager": "pnpm@9.15.4+sha512.b2dc20e2fc72b3e18848459b37359a32064663e5627a51e4c74b2c29dd8e8e0491483c3abb40789cfd578bf362fb6ba8261b05f0387d76792ed6e23ea3b1b6a0"
+  }
 }
