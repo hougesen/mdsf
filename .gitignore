@@ -1,3 +1,4 @@
+.env
 /codegen/target
 /target
 node_modules
