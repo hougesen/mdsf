@@ -1,5 +1,5 @@
 {
-  "name": "mdsf-vscode",
+  "name": "mdsf",
   "displayName": "mdsf",
   "publisher": "hougesen",
   "description": "Format markdown code blocks using mdsf",
@@ -18,7 +18,7 @@
   "contributes": {
     "commands": [
       {
-        "command": "mdsf-vscode.showTerminalOutput",
+        "command": "mdsf.showTerminalOutput",
         "title": "Show mdsf output",
         "category": "mdsf"
       }
@@ -51,7 +51,7 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/hougesen/mdsf.git",
-    "directory": "mdsf-vscode"
+    "directory": "mdsf"
   },
   "scripts": {
     "vscode:prepublish": "pnpm run package",
