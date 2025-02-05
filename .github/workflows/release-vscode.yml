@@ -12,9 +12,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Copy license
-        run: cp LICENSE mdsf-vscode/
-
       - run: npm ci
         working-directory: mdsf-vscode
 
