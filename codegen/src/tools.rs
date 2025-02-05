@@ -168,10 +168,7 @@ impl Tool {
             if cmd.is_empty() {
                 String::new()
             } else {
-                format!(
-                    "_{}",
-                    cmd.replace('.', "_").replace(":", "_").to_case(Case::Snake)
-                )
+                format!("_{}", cmd.replace(['.', ':'], "_").to_case(Case::Snake))
             }
         )
     }
@@ -234,17 +231,17 @@ impl Tool {
             {
                 if self.packages.npm.is_some() {
                     command_types.push(format!("CommandType::NodeModules(\"{}\")", self.binary));
-                };
+                }
 
                 if let Some(php) = &self.packages.composer {
                     command_types.push(format!("CommandType::PhpVendor(\"{}\")", php.binary));
-                };
+                }
 
                 command_types.push(format!("CommandType::Direct(\"{}\")", self.binary));
 
                 if let Some(npm) = &self.packages.npm {
                     command_types.push(format!("CommandType::Npm(\"{npm}\")"));
-                };
+                }
             };
 
             // TODO: generate if statements instead of array

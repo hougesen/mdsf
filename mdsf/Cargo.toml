@@ -38,7 +38,6 @@ env_logger = { workspace = true }
 ignore = { workspace = true }
 json_comments = { workspace = true }
 log = { workspace = true }
-once_cell = { workspace = true }
 process_control = { workspace = true }
 regex = { workspace = true }
 schemars = { workspace = true, optional = true }

@@ -49,5 +49,5 @@ pub fn run(args: &CompletionsCommandArguments) {
             cmd_name,
             &mut std::io::stdout(),
         ),
-    };
+    }
 }
