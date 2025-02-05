@@ -1,0 +1,16 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "coffeelint",
+  "categories": ["linter"],
+  "commands": {
+    "": {
+      "arguments": ["-q", "-f", "$PATH"]
+    }
+  },
+  "description": "Lint your CoffeeScript",
+  "homepage": "https://github.com/coffeelint/coffeelint",
+  "languages": ["coffeescript"],
+  "packages": {
+    "npm": "@coffeelint/cli"
+  }
+}

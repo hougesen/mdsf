@@ -325,7 +325,7 @@ mdsf init
 
 <!-- START_SECTION:supported-tools -->
 
-`mdsf` currently supports 243 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 244 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                                                                                    | Description                                                                                                                                   | Categories            | Languages                                                                 |
 | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- | ------------------------------------------------------------------------- |
@@ -365,6 +365,7 @@ mdsf init
 | [cljstyle](https://github.com/greglook/cljstyle)                                        | A tool for formatting Clojure code                                                                                                            | `formatter`           | `clojure`                                                                 |
 | [cmake-format](https://cmake-format.readthedocs.io/en/latest/cmake-format.html)         | cmake-format can format your listfiles nicely so that they don't look like crap                                                               | `formatter`           | `cmake`                                                                   |
 | [codespell](https://github.com/codespell-project/codespell)                             | Check code for common misspellings                                                                                                            | `autocorrection`      |                                                                           |
+| [coffeelint](https://github.com/coffeelint/coffeelint)                                  | Lint your CoffeeScript                                                                                                                        | `linter`              | `coffeescript`                                                            |
 | [crlfmt](https://github.com/cockroachdb/crlfmt)                                         | Formatter for CockroachDB's additions to the Go style guide                                                                                   | `formatter`           | `go`                                                                      |
 | [crystal](https://crystal-lang.org/)                                                    | Tools for the Crystal programming language                                                                                                    | `formatter`           | `crystal`                                                                 |
 | [csharpier](https://csharpier.com/)                                                     | An Opinionated Code Formatter for C#                                                                                                          | `formatter`           | `c#`                                                                      |
@@ -579,7 +580,7 @@ mdsf init
 
 <!-- START_SECTION:supported-commands -->
 
-`mdsf` currently supports 257 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 258 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                     | Command                                                                                 |
 | ------------------------ | --------------------------------------------------------------------------------------- |
@@ -623,6 +624,7 @@ mdsf init
 | `cljstyle`               | `cljstyle fix $PATH`                                                                    |
 | `cmake-format`           | `cmake-format -i $PATH`                                                                 |
 | `codespell`              | `codespell $PATH --check-hidden --write-changes`                                        |
+| `coffeelint`             | `coffeelint -q -f $PATH`                                                                |
 | `crlfmt`                 | `crlfmt -w $PATH`                                                                       |
 | `crystal:format`         | `crystal tool format $PATH`                                                             |
 | `csharpier`              | `dotnet csharpier $PATH`                                                                |

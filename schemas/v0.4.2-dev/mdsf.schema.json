@@ -267,6 +267,11 @@
           "enum": ["codespell"]
         },
         {
+          "description": "`coffeelint -q -f $PATH`",
+          "type": "string",
+          "enum": ["coffeelint"]
+        },
+        {
           "description": "`crlfmt -w $PATH`",
           "type": "string",
           "enum": ["crlfmt"]
