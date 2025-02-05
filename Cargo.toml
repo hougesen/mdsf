@@ -51,7 +51,7 @@ test-with = { version = "0.14.7", default-features = false, features = [
   "executable",
 ] }
 threadpool = "1.8.1"
-toml = { version = "0.8.19" }
+toml = { version = "0.8.20" }
 which = "7.0.1"
 
 # The profile that 'cargo dist' will build with
