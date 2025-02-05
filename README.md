@@ -19,6 +19,8 @@ Format, and lint, markdown code snippets using your favorite tools.
     - [Cargo](#cargo)
     - [npm/npx](#npmnpx)
     - [Homebrew](#homebrew)
+      - [Editors](#editors)
+        - [Visual Studio Code](#visual-studio-code)
   - [Usage](#usage)
     - [Formatting code](#formatting-code)
     - [Verifying code](#verifying-code)
@@ -95,6 +97,19 @@ npx mdsf-cli format .
 ```shell
 brew install hougesen/tap/mdsf
 ```
+
+#### Editors
+
+##### Visual Studio Code
+
+[![](https://img.shields.io/visual-studio-marketplace/v/hougesen.mdsf?color=374151&label=Visual%20Studio%20Marketplace&labelColor=000&logo=visual-studio-code&logoColor=0098FF)](https://marketplace.visualstudio.com/items?itemName=hougesen.mdsf)
+[![](https://img.shields.io/visual-studio-marketplace/v/hougesen.mdsf?color=374151&label=Open%20VSX%20Registry&labelColor=000&logo=data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPHN2ZyB2aWV3Qm94PSI0LjYgNSA5Ni4yIDEyMi43IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgogIDxwYXRoIGQ9Ik0zMCA0NC4yTDUyLjYgNUg3LjN6TTQuNiA4OC41aDQ1LjNMMjcuMiA0OS40em01MSAwbDIyLjYgMzkuMiAyMi42LTM5LjJ6IiBmaWxsPSIjYzE2MGVmIi8+CiAgPHBhdGggZD0iTTUyLjYgNUwzMCA0NC4yaDQ1LjJ6TTI3LjIgNDkuNGwyMi43IDM5LjEgMjIuNi0zOS4xem01MSAwTDU1LjYgODguNWg0NS4yeiIgZmlsbD0iI2E2MGVlNSIvPgo8L3N2Zz4=&logoColor=0098FF)](https://open-vsx.org/extension/hougesen/mdsf)
+
+mdsf can be run easily using the VSCode extension.
+
+> \[!NOTE\]
+> The mdsf VS Code extension does currently not support installing mdsf.
+> Which means mdsf must be installed using other means.
 
 ## Usage
 
