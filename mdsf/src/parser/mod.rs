@@ -1,6 +1,5 @@
 use core::{iter::Enumerate, str::Lines};
 
-use once_cell::sync::Lazy;
 use regex::Regex;
 
 use crate::GO_TEMPORARY_PACKAGE_NAME;
@@ -41,7 +40,8 @@ pub fn parse_go_codeblock(lines: &mut Enumerate<Lines>) -> (bool, String, usize)
 }
 
 // TODO: check for multiline comments
-pub static GO_PACKAGE_RE: Lazy<Regex> = Lazy::new(|| Regex::new(r"^\s*package\s+\w").unwrap());
+pub static GO_PACKAGE_RE: std::sync::LazyLock<Regex> =
+    std::sync::LazyLock::new(|| Regex::new(r"^\s*package\s+\w").unwrap());
 
 #[cfg(test)]
 mod test_go_package_re {

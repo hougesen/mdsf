@@ -1054,7 +1054,6 @@ dependencies = [
  "ignore",
  "json_comments",
  "log",
- "once_cell",
  "process_control",
  "regex",
  "schemars",
