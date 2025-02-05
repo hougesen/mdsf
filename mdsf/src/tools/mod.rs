@@ -41,6 +41,7 @@ pub mod cljfmt_fix;
 pub mod cljstyle;
 pub mod cmake_format;
 pub mod codespell;
+pub mod coffeelint;
 pub mod crlfmt;
 pub mod crystal_format;
 pub mod csharpier;
@@ -422,6 +423,10 @@ pub enum Tooling {
     #[serde(rename = "codespell")]
     /// `codespell $PATH --check-hidden --write-changes`
     Codespell,
+
+    #[serde(rename = "coffeelint")]
+    /// `coffeelint -q -f $PATH`
+    Coffeelint,
 
     #[serde(rename = "crlfmt")]
     /// `crlfmt -w $PATH`
@@ -1344,6 +1349,7 @@ impl Tooling {
             Self::Cljstyle => (&cljstyle::COMMANDS, cljstyle::set_args),
             Self::CmakeFormat => (&cmake_format::COMMANDS, cmake_format::set_args),
             Self::Codespell => (&codespell::COMMANDS, codespell::set_args),
+            Self::Coffeelint => (&coffeelint::COMMANDS, coffeelint::set_args),
             Self::Crlfmt => (&crlfmt::COMMANDS, crlfmt::set_args),
             Self::CrystalFormat => (&crystal_format::COMMANDS, crystal_format::set_args),
             Self::Csharpier => (&csharpier::COMMANDS, csharpier::set_args),
@@ -1621,6 +1627,7 @@ impl AsRef<str> for Tooling {
             Self::Cljstyle => "cljstyle",
             Self::CmakeFormat => "cmake_format",
             Self::Codespell => "codespell",
+            Self::Coffeelint => "coffeelint",
             Self::Crlfmt => "crlfmt",
             Self::CrystalFormat => "crystal_format",
             Self::Csharpier => "csharpier",
