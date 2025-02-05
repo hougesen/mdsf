@@ -6,7 +6,7 @@ import * as vscode from "vscode";
 
 const SUPPORTED_DOCUMENT_TYPES = ["markdown"];
 
-const COMMAND_SHOW_TERMINAL_OUTPUT = "mdsf-vscode.showTerminalOutput";
+const COMMAND_SHOW_TERMINAL_OUTPUT = "mdsf.showTerminalOutput";
 
 enum Status {
   Ready = 0,
