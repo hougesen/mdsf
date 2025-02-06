@@ -41,5 +41,5 @@ export default [
       semi: "warn",
     },
   },
-  { ignores: ["dist", "./dist/*"] },
+  { ignores: ["dist", "./dist/*", "out"] },
 ];
