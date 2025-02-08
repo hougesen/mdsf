@@ -1,0 +1,16 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "codeql",
+  "categories": ["formatter"],
+  "commands": {
+    "query:format": {
+      "arguments": ["query", "format", "-i", "$PATH"],
+      "description": "Format queries and libraries with CodeQL",
+      "homepage": "https://docs.github.com/en/code-security/codeql-cli/codeql-cli-manual/query-format"
+    }
+  },
+  "description": "Format queries and libraries with CodeQL",
+  "homepage": "https://docs.github.com/en/code-security/codeql-cli/codeql-cli-manual",
+  "languages": ["codeql"],
+  "packages": {}
+}

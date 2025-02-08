@@ -262,6 +262,11 @@
           "enum": ["cmake-format"]
         },
         {
+          "description": "`codeql query format -i $PATH`",
+          "type": "string",
+          "enum": ["codeql:query:format"]
+        },
+        {
           "description": "`codespell $PATH --check-hidden --write-changes`",
           "type": "string",
           "enum": ["codespell"]

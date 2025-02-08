@@ -40,6 +40,7 @@ pub mod clang_tidy;
 pub mod cljfmt_fix;
 pub mod cljstyle;
 pub mod cmake_format;
+pub mod codeql_query_format;
 pub mod codespell;
 pub mod coffeelint;
 pub mod crlfmt;
@@ -419,6 +420,10 @@ pub enum Tooling {
     #[serde(rename = "cmake-format")]
     /// `cmake-format -i $PATH`
     CmakeFormat,
+
+    #[serde(rename = "codeql:query:format")]
+    /// `codeql query format -i $PATH`
+    CodeqlQueryFormat,
 
     #[serde(rename = "codespell")]
     /// `codespell $PATH --check-hidden --write-changes`
@@ -1348,6 +1353,10 @@ impl Tooling {
             Self::CljfmtFix => (&cljfmt_fix::COMMANDS, cljfmt_fix::set_args),
             Self::Cljstyle => (&cljstyle::COMMANDS, cljstyle::set_args),
             Self::CmakeFormat => (&cmake_format::COMMANDS, cmake_format::set_args),
+            Self::CodeqlQueryFormat => (
+                &codeql_query_format::COMMANDS,
+                codeql_query_format::set_args,
+            ),
             Self::Codespell => (&codespell::COMMANDS, codespell::set_args),
             Self::Coffeelint => (&coffeelint::COMMANDS, coffeelint::set_args),
             Self::Crlfmt => (&crlfmt::COMMANDS, crlfmt::set_args),
@@ -1626,6 +1635,7 @@ impl AsRef<str> for Tooling {
             Self::CljfmtFix => "cljfmt_fix",
             Self::Cljstyle => "cljstyle",
             Self::CmakeFormat => "cmake_format",
+            Self::CodeqlQueryFormat => "codeql_query_format",
             Self::Codespell => "codespell",
             Self::Coffeelint => "coffeelint",
             Self::Crlfmt => "crlfmt",

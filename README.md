@@ -340,7 +340,7 @@ mdsf init
 
 <!-- START_SECTION:supported-tools -->
 
-`mdsf` currently supports 244 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 245 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                                                                                    | Description                                                                                                                                   | Categories            | Languages                                                                 |
 | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- | ------------------------------------------------------------------------- |
@@ -379,6 +379,7 @@ mdsf init
 | [cljfmt](https://github.com/weavejester/cljfmt)                                         | A tool for formatting Clojure code                                                                                                            | `formatter`           | `clojure`                                                                 |
 | [cljstyle](https://github.com/greglook/cljstyle)                                        | A tool for formatting Clojure code                                                                                                            | `formatter`           | `clojure`                                                                 |
 | [cmake-format](https://cmake-format.readthedocs.io/en/latest/cmake-format.html)         | cmake-format can format your listfiles nicely so that they don't look like crap                                                               | `formatter`           | `cmake`                                                                   |
+| [codeql](https://docs.github.com/en/code-security/codeql-cli/codeql-cli-manual)         | Format queries and libraries with CodeQL                                                                                                      | `formatter`           | `codeql`                                                                  |
 | [codespell](https://github.com/codespell-project/codespell)                             | Check code for common misspellings                                                                                                            | `autocorrection`      |                                                                           |
 | [coffeelint](https://github.com/coffeelint/coffeelint)                                  | Lint your CoffeeScript                                                                                                                        | `linter`              | `coffeescript`                                                            |
 | [crlfmt](https://github.com/cockroachdb/crlfmt)                                         | Formatter for CockroachDB's additions to the Go style guide                                                                                   | `formatter`           | `go`                                                                      |
@@ -445,7 +446,7 @@ mdsf init
 | [isort](https://github.com/timothycrosley/isort)                                        | A Python utility to sort imports                                                                                                              | `formatter`           | `python`                                                                  |
 | [joker](https://github.com/candid82/joker)                                              | Small Clojure interpreter, linter and formatter                                                                                               | `formatter`, `linter` | `clojure`                                                                 |
 | [js-beautify](https://github.com/beautifier/js-beautify)                                | A JavaScript formatter                                                                                                                        | `formatter`           | `javascript`                                                              |
-| [json5format](https://github.com/google/json5format)                                    | JSON5 (a.k.a., "JSON for Humans") formatter that preserves contextual comments                                                                | `formatter`           | `json5`, `json`                                                           |
+| [json5format](https://github.com/google/json5format)                                    | JSON5 (a.k.a., JSON for Humans) formatter that preserves contextual comments                                                                  | `formatter`           | `json5`, `json`                                                           |
 | [jsona](https://github.com/jsona/jsona)                                                 | JSONA linter and formatter                                                                                                                    | `formatter`, `linter` | `jsona`                                                                   |
 | [jsonlint](https://github.com/zaach/jsonlint)                                           | A JSON parser and validator with a CLI                                                                                                        | `formatter`, `linter` | `json`                                                                    |
 | [jsonnet-lint](https://jsonnet.org/learning/tools.html)                                 | Linter for jsonnet files                                                                                                                      | `linter`              | `jsonnet`                                                                 |
@@ -595,7 +596,7 @@ mdsf init
 
 <!-- START_SECTION:supported-commands -->
 
-`mdsf` currently supports 258 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 259 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                     | Command                                                                                 |
 | ------------------------ | --------------------------------------------------------------------------------------- |
@@ -638,6 +639,7 @@ mdsf init
 | `cljfmt:fix`             | `cljfmt fix $PATH`                                                                      |
 | `cljstyle`               | `cljstyle fix $PATH`                                                                    |
 | `cmake-format`           | `cmake-format -i $PATH`                                                                 |
+| `codeql:query:format`    | `codeql query format -i $PATH`                                                          |
 | `codespell`              | `codespell $PATH --check-hidden --write-changes`                                        |
 | `coffeelint`             | `coffeelint -q -f $PATH`                                                                |
 | `crlfmt`                 | `crlfmt -w $PATH`                                                                       |
