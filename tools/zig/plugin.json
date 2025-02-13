@@ -5,6 +5,7 @@
   "commands": {
     "fmt": {
       "arguments": ["fmt", "$PATH"],
+      "description": "Reformat Zig source into canonical form",
       "tests": [
         {
           "language": "zig",

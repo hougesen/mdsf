@@ -4,7 +4,8 @@
   "categories": ["formatter"],
   "commands": {
     "fmt": {
-      "arguments": ["fmt", "$PATH"]
+      "arguments": ["fmt", "$PATH"],
+      "description": "Format Wa source code"
     }
   },
   "description": "Formatter for the wa programming language",

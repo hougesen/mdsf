@@ -161,6 +161,7 @@ pub mod ormolu;
 pub mod oxlint;
 pub mod packer_fix;
 pub mod packer_fmt;
+pub mod packer_validate;
 pub mod perltidy;
 pub mod pg_format;
 pub mod php_cs_fixer_fix;
@@ -213,6 +214,7 @@ pub mod solhint;
 pub mod sql_formatter;
 pub mod sqlfluff_fix;
 pub mod sqlfluff_format;
+pub mod sqlfluff_lint;
 pub mod sqlfmt;
 pub mod sqruff;
 pub mod standardjs;
@@ -387,41 +389,41 @@ pub enum Tooling {
     BicepFormat,
 
     #[serde(rename = "biome:check")]
-    /// One toolchain for your web project
+    /// Runs biome formatter, linter and import sorting with unsafe fixes on the input
     ///
-    /// [https://github.com/biomejs/biome](https://github.com/biomejs/biome)
+    /// [https://biomejs.dev/reference/cli/#biome-check](https://biomejs.dev/reference/cli/#biome-check)
     ///
     /// `biome check --write $PATH`
     BiomeCheck,
 
     #[serde(rename = "biome:check:unsafe")]
-    /// One toolchain for your web project
+    /// Runs biome formatter, linter and import sorting on the input
     ///
-    /// [https://github.com/biomejs/biome](https://github.com/biomejs/biome)
+    /// [https://biomejs.dev/reference/cli/#biome-check](https://biomejs.dev/reference/cli/#biome-check)
     ///
     /// `biome check --write --unsafe $PATH`
     BiomeCheckUnsafe,
 
     #[serde(rename = "biome:format")]
-    /// One toolchain for your web project
+    /// Runs the biome formatter on input
     ///
-    /// [https://github.com/biomejs/biome](https://github.com/biomejs/biome)
+    /// [https://biomejs.dev/reference/cli/#biome-format](https://biomejs.dev/reference/cli/#biome-format)
     ///
     /// `biome format --write $PATH`
     BiomeFormat,
 
     #[serde(rename = "biome:lint")]
-    /// One toolchain for your web project
+    /// Runs the biome linter on input
     ///
-    /// [https://github.com/biomejs/biome](https://github.com/biomejs/biome)
+    /// [https://biomejs.dev/reference/cli/#biome-lint](https://biomejs.dev/reference/cli/#biome-lint)
     ///
     /// `biome lint --write $PATH`
     BiomeLint,
 
     #[serde(rename = "biome:lint:unsafe")]
-    /// One toolchain for your web project
+    /// Runs the biome linter with unsafe fixes enable
     ///
-    /// [https://github.com/biomejs/biome](https://github.com/biomejs/biome)
+    /// [https://biomejs.dev/reference/cli/#biome-format](https://biomejs.dev/reference/cli/#biome-format)
     ///
     /// `biome lint --write --unsafe $PATH`
     BiomeLintUnsafe,
@@ -491,9 +493,9 @@ pub enum Tooling {
     Bslint,
 
     #[serde(rename = "buf:format")]
-    /// The best way of working with Protocol Buffers
+    /// Format Protobuf files
     ///
-    /// [https://buf.build/docs/reference/cli/buf/format/](https://buf.build/docs/reference/cli/buf/format/)
+    /// [https://buf.build/docs/format/style/](https://buf.build/docs/format/style/)
     ///
     /// `buf format --write $PATH`
     BufFormat,
@@ -523,7 +525,7 @@ pub enum Tooling {
     CabalPrettify,
 
     #[serde(rename = "cabal:format")]
-    /// Cabal is a system for building and packaging Haskell libraries and programs
+    /// Reformat the .cabal file using the standard style
     ///
     /// [https://www.haskell.org/cabal/](https://www.haskell.org/cabal/)
     ///
@@ -539,7 +541,7 @@ pub enum Tooling {
     CaddyFmt,
 
     #[serde(rename = "caramel:fmt")]
-    /// Formatter for the Caramel programming language
+    /// Format Caramel code
     ///
     /// [https://caramel.run/](https://caramel.run/)
     ///
@@ -619,9 +621,9 @@ pub enum Tooling {
     Crlfmt,
 
     #[serde(rename = "crystal:format")]
-    /// Tools for the Crystal programming language
+    /// Formats Crystal code
     ///
-    /// [https://crystal-lang.org/](https://crystal-lang.org/)
+    /// [https://crystal-lang.org/reference/1.15/man/crystal/index.html#crystal-tool-format](https://crystal-lang.org/reference/1.15/man/crystal/index.html#crystal-tool-format)
     ///
     /// `crystal tool format $PATH`
     CrystalFormat,
@@ -667,7 +669,7 @@ pub enum Tooling {
     Curlylint,
 
     #[serde(rename = "d2:fmt")]
-    /// Formatter for the d2 language
+    /// Format d2 code
     ///
     /// [https://d2lang.com/](https://d2lang.com/)
     ///
@@ -675,33 +677,33 @@ pub enum Tooling {
     D2Fmt,
 
     #[serde(rename = "dart:fix")]
-    /// Formatter and linter for Dart
+    /// Fixes errors in dart code
     ///
-    /// [https://dart.dev/tools](https://dart.dev/tools)
+    /// [https://dart.dev/tools/dart-fix](https://dart.dev/tools/dart-fix)
     ///
     /// `dart fix --apply $PATH`
     DartFix,
 
     #[serde(rename = "dart:format")]
-    /// Formatter and linter for Dart
+    /// Formats dart code
     ///
-    /// [https://dart.dev/tools](https://dart.dev/tools)
+    /// [https://dart.dev/tools/dart-format](https://dart.dev/tools/dart-format)
     ///
     /// `dart format $PATH`
     DartFormat,
 
     #[serde(rename = "dcm:fix")]
-    /// Code Quality Tool for Flutter Developers
+    /// Fixes issues produced by dcm analyze, dcm check-unused-code, dcm check-unused-files or dcm check-dependencies commands
     ///
-    /// [https://dcm.dev/](https://dcm.dev/)
+    /// [https://dcm.dev/docs/cli/formatting/fix/](https://dcm.dev/docs/cli/formatting/fix/)
     ///
     /// `dcm fix $PATH`
     DcmFix,
 
     #[serde(rename = "dcm:format")]
-    /// Code Quality Tool for Flutter Developers
+    /// Formats dart files
     ///
-    /// [https://dcm.dev/](https://dcm.dev/)
+    /// [https://dcm.dev/docs/cli/formatting/format/](https://dcm.dev/docs/cli/formatting/format/)
     ///
     /// `dcm format $PATH`
     DcmFormat,
@@ -717,7 +719,7 @@ pub enum Tooling {
     #[serde(rename = "deno:fmt")]
     /// Formatter and linter for JavaScript and TypeScript
     ///
-    /// [https://docs.deno.com/runtime/reference/cli/](https://docs.deno.com/runtime/reference/cli/)
+    /// [https://docs.deno.com/runtime/reference/cli/fmt/](https://docs.deno.com/runtime/reference/cli/fmt/)
     ///
     /// `deno fmt --quiet $PATH`
     DenoFmt,
@@ -725,7 +727,7 @@ pub enum Tooling {
     #[serde(rename = "deno:lint")]
     /// Formatter and linter for JavaScript and TypeScript
     ///
-    /// [https://docs.deno.com/runtime/reference/cli/](https://docs.deno.com/runtime/reference/cli/)
+    /// [https://docs.deno.com/runtime/reference/cli/lint/](https://docs.deno.com/runtime/reference/cli/lint/)
     ///
     /// `deno lint --fix $PATH`
     DenoLint,
@@ -1531,20 +1533,28 @@ pub enum Tooling {
     Oxlint,
 
     #[serde(rename = "packer:fix")]
-    /// Packer is used to format HCL2 configuration files
+    /// Takes a template and finds backwards incompatible parts of it and brings it up to date so it can be used with the latest version of Packer
     ///
-    /// [https://developer.hashicorp.com/packer/docs/commands](https://developer.hashicorp.com/packer/docs/commands)
+    /// [https://developer.hashicorp.com/packer/docs/commands/fix](https://developer.hashicorp.com/packer/docs/commands/fix)
     ///
     /// `packer fix $PATH`
     PackerFix,
 
     #[serde(rename = "packer:fmt")]
-    /// Packer is used to format HCL2 configuration files
+    /// Used to format HCL2 configuration files to a canonical format and style
     ///
     /// [https://developer.hashicorp.com/packer/docs/commands](https://developer.hashicorp.com/packer/docs/commands)
     ///
     /// `packer fmt $PATH`
     PackerFmt,
+
+    #[serde(rename = "packer:validate")]
+    /// Used to validate the syntax and configuration of a template
+    ///
+    /// [https://developer.hashicorp.com/packer/docs/commands](https://developer.hashicorp.com/packer/docs/commands)
+    ///
+    /// `packer validate $PATH`
+    PackerValidate,
 
     #[serde(rename = "perltidy")]
     /// Perl::Tidy, a source code formatter for Perl
@@ -1739,7 +1749,7 @@ pub enum Tooling {
     ReformatGherkin,
 
     #[serde(rename = "regal:fix")]
-    /// Regal is a linter and language server for Rego, bringing your policy development experience to the next level
+    /// Lint and fix Rego code errors
     ///
     /// [https://github.com/styrainc/regal](https://github.com/styrainc/regal)
     ///
@@ -1747,7 +1757,7 @@ pub enum Tooling {
     RegalFix,
 
     #[serde(rename = "regal:lint")]
-    /// Regal is a linter and language server for Rego, bringing your policy development experience to the next level
+    /// Lint Rego code
     ///
     /// [https://github.com/styrainc/regal](https://github.com/styrainc/regal)
     ///
@@ -1947,20 +1957,28 @@ pub enum Tooling {
     SqlFormatter,
 
     #[serde(rename = "sqlfluff:fix")]
-    /// A modular SQL linter and auto-formatter with support for multiple dialects and templated code
+    /// Fix SQL errors
     ///
-    /// [https://github.com/sqlfluff/sqlfluff](https://github.com/sqlfluff/sqlfluff)
+    /// [https://docs.sqlfluff.com/en/stable/reference/cli.html#sqlfluff-fix](https://docs.sqlfluff.com/en/stable/reference/cli.html#sqlfluff-fix)
     ///
     /// `sqlfluff fix --dialect ansi $PATH`
     SqlfluffFix,
 
     #[serde(rename = "sqlfluff:format")]
-    /// A modular SQL linter and auto-formatter with support for multiple dialects and templated code
+    /// Format SQL
     ///
-    /// [https://github.com/sqlfluff/sqlfluff](https://github.com/sqlfluff/sqlfluff)
+    /// [https://docs.sqlfluff.com/en/stable/reference/cli.html#sqlfluff-format](https://docs.sqlfluff.com/en/stable/reference/cli.html#sqlfluff-format)
     ///
     /// `sqlfluff format --dialect ansi $PATH`
     SqlfluffFormat,
+
+    #[serde(rename = "sqlfluff:lint")]
+    /// Lint SQL
+    ///
+    /// [https://docs.sqlfluff.com/en/stable/reference/cli.html#sqlfluff-lint](https://docs.sqlfluff.com/en/stable/reference/cli.html#sqlfluff-lint)
+    ///
+    /// `sqlfluff lint --dialect ansi $PATH`
+    SqlfluffLint,
 
     #[serde(rename = "sqlfmt")]
     /// sqlfmt formats your dbt SQL files so you don't have to
@@ -1995,7 +2013,7 @@ pub enum Tooling {
     Standardrb,
 
     #[serde(rename = "statix:check")]
-    /// lints and suggestions for the nix programming language
+    /// Finds errors in Nix code
     ///
     /// [https://github.com/oppiliappan/statix](https://github.com/oppiliappan/statix)
     ///
@@ -2003,7 +2021,7 @@ pub enum Tooling {
     StatixCheck,
 
     #[serde(rename = "statix:fix")]
-    /// lints and suggestions for the nix programming language
+    /// Fixes errors in Nix code
     ///
     /// [https://github.com/oppiliappan/statix](https://github.com/oppiliappan/statix)
     ///
@@ -2219,9 +2237,9 @@ pub enum Tooling {
     Usort,
 
     #[serde(rename = "v:fmt")]
-    /// Tooling for V lang
+    /// Format V code
     ///
-    /// [https://vlang.io/](https://vlang.io/)
+    /// [https://docs.vlang.io/tools.html#v-fmt](https://docs.vlang.io/tools.html#v-fmt)
     ///
     /// `v fmt -w $PATH`
     VFmt,
@@ -2235,9 +2253,9 @@ pub enum Tooling {
     VacuumLint,
 
     #[serde(rename = "veryl:fmt")]
-    /// Veryl: A Modern Hardware Description Language
+    /// Format veryl code
     ///
-    /// [https://github.com/veryl-lang/veryl](https://github.com/veryl-lang/veryl)
+    /// [https://doc.veryl-lang.org/book/06_development_environment/05_formatter.html](https://doc.veryl-lang.org/book/06_development_environment/05_formatter.html)
     ///
     /// `veryl fmt $PATH`
     VerylFmt,
@@ -2251,7 +2269,7 @@ pub enum Tooling {
     VhdlStyleGuide,
 
     #[serde(rename = "wa:fmt")]
-    /// Formatter for the wa programming language
+    /// Format Wa source code
     ///
     /// [https://github.com/wa-lang/wa/](https://github.com/wa-lang/wa/)
     ///
@@ -2528,6 +2546,7 @@ impl Tooling {
             Self::Oxlint => (&oxlint::COMMANDS, oxlint::set_args),
             Self::PackerFix => (&packer_fix::COMMANDS, packer_fix::set_args),
             Self::PackerFmt => (&packer_fmt::COMMANDS, packer_fmt::set_args),
+            Self::PackerValidate => (&packer_validate::COMMANDS, packer_validate::set_args),
             Self::Perltidy => (&perltidy::COMMANDS, perltidy::set_args),
             Self::PgFormat => (&pg_format::COMMANDS, pg_format::set_args),
             Self::PhpCsFixerFix => (&php_cs_fixer_fix::COMMANDS, php_cs_fixer_fix::set_args),
@@ -2583,6 +2602,7 @@ impl Tooling {
             Self::SqlFormatter => (&sql_formatter::COMMANDS, sql_formatter::set_args),
             Self::SqlfluffFix => (&sqlfluff_fix::COMMANDS, sqlfluff_fix::set_args),
             Self::SqlfluffFormat => (&sqlfluff_format::COMMANDS, sqlfluff_format::set_args),
+            Self::SqlfluffLint => (&sqlfluff_lint::COMMANDS, sqlfluff_lint::set_args),
             Self::Sqlfmt => (&sqlfmt::COMMANDS, sqlfmt::set_args),
             Self::Sqruff => (&sqruff::COMMANDS, sqruff::set_args),
             Self::Standardjs => (&standardjs::COMMANDS, standardjs::set_args),
@@ -2802,6 +2822,7 @@ impl AsRef<str> for Tooling {
             Self::Oxlint => "oxlint",
             Self::PackerFix => "packer_fix",
             Self::PackerFmt => "packer_fmt",
+            Self::PackerValidate => "packer_validate",
             Self::Perltidy => "perltidy",
             Self::PgFormat => "pg_format",
             Self::PhpCsFixerFix => "php_cs_fixer_fix",
@@ -2854,6 +2875,7 @@ impl AsRef<str> for Tooling {
             Self::SqlFormatter => "sql_formatter",
             Self::SqlfluffFix => "sqlfluff_fix",
             Self::SqlfluffFormat => "sqlfluff_format",
+            Self::SqlfluffLint => "sqlfluff_lint",
             Self::Sqlfmt => "sqlfmt",
             Self::Sqruff => "sqruff",
             Self::Standardjs => "standardjs",

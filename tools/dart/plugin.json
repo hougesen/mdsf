@@ -4,10 +4,14 @@
   "categories": ["formatter", "linter"],
   "commands": {
     "fix": {
-      "arguments": ["fix", "--apply", "$PATH"]
+      "arguments": ["fix", "--apply", "$PATH"],
+      "description": "Fixes errors in dart code",
+      "homepage": "https://dart.dev/tools/dart-fix"
     },
     "format": {
       "arguments": ["format", "$PATH"],
+      "description": "Formats dart code",
+      "homepage": "https://dart.dev/tools/dart-format",
       "tests": [
         {
           "language": "dart",

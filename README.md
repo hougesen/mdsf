@@ -588,7 +588,7 @@ mdsf init
 | [yapf](https://github.com/google/yapf)                                                  | A formatter for Python files                                                                                                                  | `formatter`           | `python`                                                                  |
 | [yew-fmt](https://github.com/its-the-shrimp/yew-fmt)                                    | Code formatter for the Yew framework                                                                                                          | `formatter`           | `rust`                                                                    |
 | [zig](https://ziglang.org/)                                                             | Reformat Zig source into canonical form                                                                                                       | `formatter`           | `zig`                                                                     |
-| [ziggy](https://ziggy-lang.io/documentation/ziggy-fmt/)                                 | Formats Ziggy documents and Ziggy schemas                                                                                                     | `formatter`           | `ziggy`                                                                   |
+| [ziggy](https://ziggy-lang.io/)                                                         | Formats Ziggy documents and Ziggy schemas                                                                                                     | `formatter`           | `ziggy`                                                                   |
 | [zprint](https://github.com/kkinnear/zprint)                                            | Executables, uberjar, and library to beautifully format Clojure and Clojurescript source code and s-expressions                               | `formatter`           | `clojure`, `clojurescript`                                                |
 
 <!-- END_SECTION:supported-tools -->
@@ -597,7 +597,7 @@ mdsf init
 
 <!-- START_SECTION:supported-commands -->
 
-`mdsf` currently supports 260 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 262 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                     | Command                                                                                 |
 | ------------------------ | --------------------------------------------------------------------------------------- |
@@ -761,6 +761,7 @@ mdsf init
 | `oxlint`                 | `oxlint --fix $PATH`                                                                    |
 | `packer:fix`             | `packer fix $PATH`                                                                      |
 | `packer:fmt`             | `packer fmt $PATH`                                                                      |
+| `packer:validate`        | `packer validate $PATH`                                                                 |
 | `perltidy`               | `perltidy -b $PATH`                                                                     |
 | `pg_format`              | `pg_format --inplace $PATH`                                                             |
 | `php-cs-fixer:fix`       | `php-cs-fixer fix $PATH`                                                                |
@@ -813,6 +814,7 @@ mdsf init
 | `sql-formatter`          | `sql-formatter --fix $PATH`                                                             |
 | `sqlfluff:fix`           | `sqlfluff fix --dialect ansi $PATH`                                                     |
 | `sqlfluff:format`        | `sqlfluff format --dialect ansi $PATH`                                                  |
+| `sqlfluff:lint`          | `sqlfluff lint --dialect ansi $PATH`                                                    |
 | `sqlfmt`                 | `sqlfmt $PATH`                                                                          |
 | `sqruff`                 | `sqruff fix $PATH`                                                                      |
 | `standardjs`             | `standard --fix $PATH`                                                                  |

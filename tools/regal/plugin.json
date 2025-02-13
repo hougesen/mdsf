@@ -4,10 +4,12 @@
   "categories": ["linter"],
   "commands": {
     "fix": {
-      "arguments": ["fix", "$PATH"]
+      "arguments": ["fix", "$PATH"],
+      "description": "Lint and fix Rego code errors"
     },
     "lint": {
-      "arguments": ["lint", "$PATH"]
+      "arguments": ["lint", "$PATH"],
+      "description": "Lint Rego code"
     }
   },
   "description": "Regal is a linter and language server for Rego, bringing your policy development experience to the next level",

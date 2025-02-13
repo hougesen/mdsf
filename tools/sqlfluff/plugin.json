@@ -4,10 +4,14 @@
   "categories": ["formatter", "linter"],
   "commands": {
     "fix": {
-      "arguments": ["fix", "--dialect", "ansi", "$PATH"]
+      "arguments": ["fix", "--dialect", "ansi", "$PATH"],
+      "description": "Fix SQL errors",
+      "homepage": "https://docs.sqlfluff.com/en/stable/reference/cli.html#sqlfluff-fix"
     },
     "format": {
       "arguments": ["format", "--dialect", "ansi", "$PATH"],
+      "description": "Format SQL",
+      "homepage": "https://docs.sqlfluff.com/en/stable/reference/cli.html#sqlfluff-format",
       "tests": [
         {
           "language": "sql",
@@ -15,6 +19,11 @@
           "test_output": "SELECT * FROM tbl\nWHERE foo = 'bar';\n"
         }
       ]
+    },
+    "lint": {
+      "arguments": ["lint", "--dialect", "ansi", "$PATH"],
+      "description": "Lint SQL",
+      "homepage": "https://docs.sqlfluff.com/en/stable/reference/cli.html#sqlfluff-lint"
     }
   },
   "description": "A modular SQL linter and auto-formatter with support for multiple dialects and templated code",

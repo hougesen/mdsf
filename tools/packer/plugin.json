@@ -4,10 +4,17 @@
   "categories": ["formatter"],
   "commands": {
     "fix": {
-      "arguments": ["fix", "$PATH"]
+      "arguments": ["fix", "$PATH"],
+      "description": "Takes a template and finds backwards incompatible parts of it and brings it up to date so it can be used with the latest version of Packer",
+      "homepage": "https://developer.hashicorp.com/packer/docs/commands/fix"
     },
     "fmt": {
-      "arguments": ["fmt", "$PATH"]
+      "arguments": ["fmt", "$PATH"],
+      "description": "Used to format HCL2 configuration files to a canonical format and style"
+    },
+    "validate": {
+      "arguments": ["validate", "$PATH"],
+      "description": "Used to validate the syntax and configuration of a template"
     }
   },
   "description": "Packer is used to format HCL2 configuration files",

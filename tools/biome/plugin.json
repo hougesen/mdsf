@@ -4,13 +4,19 @@
   "categories": ["formatter", "linter"],
   "commands": {
     "check": {
-      "arguments": ["check", "--write", "$PATH"]
+      "arguments": ["check", "--write", "$PATH"],
+      "description": "Runs biome formatter, linter and import sorting with unsafe fixes on the input",
+      "homepage": "https://biomejs.dev/reference/cli/#biome-check"
     },
     "check:unsafe": {
-      "arguments": ["check", "--write", "--unsafe", "$PATH"]
+      "arguments": ["check", "--write", "--unsafe", "$PATH"],
+      "description": "Runs biome formatter, linter and import sorting on the input",
+      "homepage": "https://biomejs.dev/reference/cli/#biome-check"
     },
     "format": {
       "arguments": ["format", "--write", "$PATH"],
+      "description": "Runs the biome formatter on input",
+      "homepage": "https://biomejs.dev/reference/cli/#biome-format",
       "tests": [
         {
           "language": "json",
@@ -30,10 +36,14 @@
       ]
     },
     "lint": {
-      "arguments": ["lint", "--write", "$PATH"]
+      "arguments": ["lint", "--write", "$PATH"],
+      "description": "Runs the biome linter on input",
+      "homepage": "https://biomejs.dev/reference/cli/#biome-lint"
     },
     "lint:unsafe": {
-      "arguments": ["lint", "--write", "--unsafe", "$PATH"]
+      "arguments": ["lint", "--write", "--unsafe", "$PATH"],
+      "description": "Runs the biome linter with unsafe fixes enable",
+      "homepage": "https://biomejs.dev/reference/cli/#biome-format"
     }
   },
   "description": "One toolchain for your web project",

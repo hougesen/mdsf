@@ -5,6 +5,7 @@
   "commands": {
     "format": {
       "arguments": ["format", "$PATH"],
+      "description": "Reformat the .cabal file using the standard style",
       "tests": [
         {
           "language": "cabal",

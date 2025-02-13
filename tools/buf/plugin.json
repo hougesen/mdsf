@@ -5,6 +5,8 @@
   "commands": {
     "format": {
       "arguments": ["format", "--write", "$PATH"],
+      "description": "Format Protobuf files",
+      "homepage": "https://buf.build/docs/format/style/",
       "tests": [
         {
           "language": "protobuf",

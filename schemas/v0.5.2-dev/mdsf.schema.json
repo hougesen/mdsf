@@ -142,27 +142,27 @@
           "enum": ["bicep:format"]
         },
         {
-          "description": "One toolchain for your web project\n\n[https://github.com/biomejs/biome](https://github.com/biomejs/biome)\n\n`biome check --write $PATH`",
+          "description": "Runs biome formatter, linter and import sorting with unsafe fixes on the input\n\n[https://biomejs.dev/reference/cli/#biome-check](https://biomejs.dev/reference/cli/#biome-check)\n\n`biome check --write $PATH`",
           "type": "string",
           "enum": ["biome:check"]
         },
         {
-          "description": "One toolchain for your web project\n\n[https://github.com/biomejs/biome](https://github.com/biomejs/biome)\n\n`biome check --write --unsafe $PATH`",
+          "description": "Runs biome formatter, linter and import sorting on the input\n\n[https://biomejs.dev/reference/cli/#biome-check](https://biomejs.dev/reference/cli/#biome-check)\n\n`biome check --write --unsafe $PATH`",
           "type": "string",
           "enum": ["biome:check:unsafe"]
         },
         {
-          "description": "One toolchain for your web project\n\n[https://github.com/biomejs/biome](https://github.com/biomejs/biome)\n\n`biome format --write $PATH`",
+          "description": "Runs the biome formatter on input\n\n[https://biomejs.dev/reference/cli/#biome-format](https://biomejs.dev/reference/cli/#biome-format)\n\n`biome format --write $PATH`",
           "type": "string",
           "enum": ["biome:format"]
         },
         {
-          "description": "One toolchain for your web project\n\n[https://github.com/biomejs/biome](https://github.com/biomejs/biome)\n\n`biome lint --write $PATH`",
+          "description": "Runs the biome linter on input\n\n[https://biomejs.dev/reference/cli/#biome-lint](https://biomejs.dev/reference/cli/#biome-lint)\n\n`biome lint --write $PATH`",
           "type": "string",
           "enum": ["biome:lint"]
         },
         {
-          "description": "One toolchain for your web project\n\n[https://github.com/biomejs/biome](https://github.com/biomejs/biome)\n\n`biome lint --write --unsafe $PATH`",
+          "description": "Runs the biome linter with unsafe fixes enable\n\n[https://biomejs.dev/reference/cli/#biome-format](https://biomejs.dev/reference/cli/#biome-format)\n\n`biome lint --write --unsafe $PATH`",
           "type": "string",
           "enum": ["biome:lint:unsafe"]
         },
@@ -207,7 +207,7 @@
           "enum": ["bslint"]
         },
         {
-          "description": "The best way of working with Protocol Buffers\n\n[https://buf.build/docs/reference/cli/buf/format/](https://buf.build/docs/reference/cli/buf/format/)\n\n`buf format --write $PATH`",
+          "description": "Format Protobuf files\n\n[https://buf.build/docs/format/style/](https://buf.build/docs/format/style/)\n\n`buf format --write $PATH`",
           "type": "string",
           "enum": ["buf:format"]
         },
@@ -227,7 +227,7 @@
           "enum": ["cabal-prettify"]
         },
         {
-          "description": "Cabal is a system for building and packaging Haskell libraries and programs\n\n[https://www.haskell.org/cabal/](https://www.haskell.org/cabal/)\n\n`cabal format $PATH`",
+          "description": "Reformat the .cabal file using the standard style\n\n[https://www.haskell.org/cabal/](https://www.haskell.org/cabal/)\n\n`cabal format $PATH`",
           "type": "string",
           "enum": ["cabal:format"]
         },
@@ -237,7 +237,7 @@
           "enum": ["caddy:fmt"]
         },
         {
-          "description": "Formatter for the Caramel programming language\n\n[https://caramel.run/](https://caramel.run/)\n\n`caramel fmt $PATH`",
+          "description": "Format Caramel code\n\n[https://caramel.run/](https://caramel.run/)\n\n`caramel fmt $PATH`",
           "type": "string",
           "enum": ["caramel:fmt"]
         },
@@ -287,7 +287,7 @@
           "enum": ["crlfmt"]
         },
         {
-          "description": "Tools for the Crystal programming language\n\n[https://crystal-lang.org/](https://crystal-lang.org/)\n\n`crystal tool format $PATH`",
+          "description": "Formats Crystal code\n\n[https://crystal-lang.org/reference/1.15/man/crystal/index.html#crystal-tool-format](https://crystal-lang.org/reference/1.15/man/crystal/index.html#crystal-tool-format)\n\n`crystal tool format $PATH`",
           "type": "string",
           "enum": ["crystal:format"]
         },
@@ -317,27 +317,27 @@
           "enum": ["curlylint"]
         },
         {
-          "description": "Formatter for the d2 language\n\n[https://d2lang.com/](https://d2lang.com/)\n\n`d2 fmt $PATH`",
+          "description": "Format d2 code\n\n[https://d2lang.com/](https://d2lang.com/)\n\n`d2 fmt $PATH`",
           "type": "string",
           "enum": ["d2:fmt"]
         },
         {
-          "description": "Formatter and linter for Dart\n\n[https://dart.dev/tools](https://dart.dev/tools)\n\n`dart fix --apply $PATH`",
+          "description": "Fixes errors in dart code\n\n[https://dart.dev/tools/dart-fix](https://dart.dev/tools/dart-fix)\n\n`dart fix --apply $PATH`",
           "type": "string",
           "enum": ["dart:fix"]
         },
         {
-          "description": "Formatter and linter for Dart\n\n[https://dart.dev/tools](https://dart.dev/tools)\n\n`dart format $PATH`",
+          "description": "Formats dart code\n\n[https://dart.dev/tools/dart-format](https://dart.dev/tools/dart-format)\n\n`dart format $PATH`",
           "type": "string",
           "enum": ["dart:format"]
         },
         {
-          "description": "Code Quality Tool for Flutter Developers\n\n[https://dcm.dev/](https://dcm.dev/)\n\n`dcm fix $PATH`",
+          "description": "Fixes issues produced by dcm analyze, dcm check-unused-code, dcm check-unused-files or dcm check-dependencies commands\n\n[https://dcm.dev/docs/cli/formatting/fix/](https://dcm.dev/docs/cli/formatting/fix/)\n\n`dcm fix $PATH`",
           "type": "string",
           "enum": ["dcm:fix"]
         },
         {
-          "description": "Code Quality Tool for Flutter Developers\n\n[https://dcm.dev/](https://dcm.dev/)\n\n`dcm format $PATH`",
+          "description": "Formats dart files\n\n[https://dcm.dev/docs/cli/formatting/format/](https://dcm.dev/docs/cli/formatting/format/)\n\n`dcm format $PATH`",
           "type": "string",
           "enum": ["dcm:format"]
         },
@@ -347,12 +347,12 @@
           "enum": ["deadnix"]
         },
         {
-          "description": "Formatter and linter for JavaScript and TypeScript\n\n[https://docs.deno.com/runtime/reference/cli/](https://docs.deno.com/runtime/reference/cli/)\n\n`deno fmt --quiet $PATH`",
+          "description": "Formatter and linter for JavaScript and TypeScript\n\n[https://docs.deno.com/runtime/reference/cli/fmt/](https://docs.deno.com/runtime/reference/cli/fmt/)\n\n`deno fmt --quiet $PATH`",
           "type": "string",
           "enum": ["deno:fmt"]
         },
         {
-          "description": "Formatter and linter for JavaScript and TypeScript\n\n[https://docs.deno.com/runtime/reference/cli/](https://docs.deno.com/runtime/reference/cli/)\n\n`deno lint --fix $PATH`",
+          "description": "Formatter and linter for JavaScript and TypeScript\n\n[https://docs.deno.com/runtime/reference/cli/lint/](https://docs.deno.com/runtime/reference/cli/lint/)\n\n`deno lint --fix $PATH`",
           "type": "string",
           "enum": ["deno:lint"]
         },
@@ -857,14 +857,19 @@
           "enum": ["oxlint"]
         },
         {
-          "description": "Packer is used to format HCL2 configuration files\n\n[https://developer.hashicorp.com/packer/docs/commands](https://developer.hashicorp.com/packer/docs/commands)\n\n`packer fix $PATH`",
+          "description": "Takes a template and finds backwards incompatible parts of it and brings it up to date so it can be used with the latest version of Packer\n\n[https://developer.hashicorp.com/packer/docs/commands/fix](https://developer.hashicorp.com/packer/docs/commands/fix)\n\n`packer fix $PATH`",
           "type": "string",
           "enum": ["packer:fix"]
         },
         {
-          "description": "Packer is used to format HCL2 configuration files\n\n[https://developer.hashicorp.com/packer/docs/commands](https://developer.hashicorp.com/packer/docs/commands)\n\n`packer fmt $PATH`",
+          "description": "Used to format HCL2 configuration files to a canonical format and style\n\n[https://developer.hashicorp.com/packer/docs/commands](https://developer.hashicorp.com/packer/docs/commands)\n\n`packer fmt $PATH`",
           "type": "string",
           "enum": ["packer:fmt"]
+        },
+        {
+          "description": "Used to validate the syntax and configuration of a template\n\n[https://developer.hashicorp.com/packer/docs/commands](https://developer.hashicorp.com/packer/docs/commands)\n\n`packer validate $PATH`",
+          "type": "string",
+          "enum": ["packer:validate"]
         },
         {
           "description": "Perl::Tidy, a source code formatter for Perl\n\n[https://github.com/perltidy/perltidy](https://github.com/perltidy/perltidy)\n\n`perltidy -b $PATH`",
@@ -987,12 +992,12 @@
           "enum": ["reformat-gherkin"]
         },
         {
-          "description": "Regal is a linter and language server for Rego, bringing your policy development experience to the next level\n\n[https://github.com/styrainc/regal](https://github.com/styrainc/regal)\n\n`regal fix $PATH`",
+          "description": "Lint and fix Rego code errors\n\n[https://github.com/styrainc/regal](https://github.com/styrainc/regal)\n\n`regal fix $PATH`",
           "type": "string",
           "enum": ["regal:fix"]
         },
         {
-          "description": "Regal is a linter and language server for Rego, bringing your policy development experience to the next level\n\n[https://github.com/styrainc/regal](https://github.com/styrainc/regal)\n\n`regal lint $PATH`",
+          "description": "Lint Rego code\n\n[https://github.com/styrainc/regal](https://github.com/styrainc/regal)\n\n`regal lint $PATH`",
           "type": "string",
           "enum": ["regal:lint"]
         },
@@ -1117,14 +1122,19 @@
           "enum": ["sql-formatter"]
         },
         {
-          "description": "A modular SQL linter and auto-formatter with support for multiple dialects and templated code\n\n[https://github.com/sqlfluff/sqlfluff](https://github.com/sqlfluff/sqlfluff)\n\n`sqlfluff fix --dialect ansi $PATH`",
+          "description": "Fix SQL errors\n\n[https://docs.sqlfluff.com/en/stable/reference/cli.html#sqlfluff-fix](https://docs.sqlfluff.com/en/stable/reference/cli.html#sqlfluff-fix)\n\n`sqlfluff fix --dialect ansi $PATH`",
           "type": "string",
           "enum": ["sqlfluff:fix"]
         },
         {
-          "description": "A modular SQL linter and auto-formatter with support for multiple dialects and templated code\n\n[https://github.com/sqlfluff/sqlfluff](https://github.com/sqlfluff/sqlfluff)\n\n`sqlfluff format --dialect ansi $PATH`",
+          "description": "Format SQL\n\n[https://docs.sqlfluff.com/en/stable/reference/cli.html#sqlfluff-format](https://docs.sqlfluff.com/en/stable/reference/cli.html#sqlfluff-format)\n\n`sqlfluff format --dialect ansi $PATH`",
           "type": "string",
           "enum": ["sqlfluff:format"]
+        },
+        {
+          "description": "Lint SQL\n\n[https://docs.sqlfluff.com/en/stable/reference/cli.html#sqlfluff-lint](https://docs.sqlfluff.com/en/stable/reference/cli.html#sqlfluff-lint)\n\n`sqlfluff lint --dialect ansi $PATH`",
+          "type": "string",
+          "enum": ["sqlfluff:lint"]
         },
         {
           "description": "sqlfmt formats your dbt SQL files so you don't have to\n\n[https://github.com/tconbeer/sqlfmt](https://github.com/tconbeer/sqlfmt)\n\n`sqlfmt $PATH`",
@@ -1147,12 +1157,12 @@
           "enum": ["standardrb"]
         },
         {
-          "description": "lints and suggestions for the nix programming language\n\n[https://github.com/oppiliappan/statix](https://github.com/oppiliappan/statix)\n\n`statix check $PATH`",
+          "description": "Finds errors in Nix code\n\n[https://github.com/oppiliappan/statix](https://github.com/oppiliappan/statix)\n\n`statix check $PATH`",
           "type": "string",
           "enum": ["statix:check"]
         },
         {
-          "description": "lints and suggestions for the nix programming language\n\n[https://github.com/oppiliappan/statix](https://github.com/oppiliappan/statix)\n\n`statix fix $PATH`",
+          "description": "Fixes errors in Nix code\n\n[https://github.com/oppiliappan/statix](https://github.com/oppiliappan/statix)\n\n`statix fix $PATH`",
           "type": "string",
           "enum": ["statix:fix"]
         },
@@ -1287,7 +1297,7 @@
           "enum": ["usort"]
         },
         {
-          "description": "Tooling for V lang\n\n[https://vlang.io/](https://vlang.io/)\n\n`v fmt -w $PATH`",
+          "description": "Format V code\n\n[https://docs.vlang.io/tools.html#v-fmt](https://docs.vlang.io/tools.html#v-fmt)\n\n`v fmt -w $PATH`",
           "type": "string",
           "enum": ["v:fmt"]
         },
@@ -1297,7 +1307,7 @@
           "enum": ["vacuum:lint"]
         },
         {
-          "description": "Veryl: A Modern Hardware Description Language\n\n[https://github.com/veryl-lang/veryl](https://github.com/veryl-lang/veryl)\n\n`veryl fmt $PATH`",
+          "description": "Format veryl code\n\n[https://doc.veryl-lang.org/book/06_development_environment/05_formatter.html](https://doc.veryl-lang.org/book/06_development_environment/05_formatter.html)\n\n`veryl fmt $PATH`",
           "type": "string",
           "enum": ["veryl:fmt"]
         },
@@ -1307,7 +1317,7 @@
           "enum": ["vhdl-style-guide"]
         },
         {
-          "description": "Formatter for the wa programming language\n\n[https://github.com/wa-lang/wa/](https://github.com/wa-lang/wa/)\n\n`wa fmt $PATH`",
+          "description": "Format Wa source code\n\n[https://github.com/wa-lang/wa/](https://github.com/wa-lang/wa/)\n\n`wa fmt $PATH`",
           "type": "string",
           "enum": ["wa:fmt"]
         },

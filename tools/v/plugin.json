@@ -4,7 +4,9 @@
   "categories": ["formatter"],
   "commands": {
     "fmt": {
-      "arguments": ["fmt", "-w", "$PATH"]
+      "arguments": ["fmt", "-w", "$PATH"],
+      "description": "Format V code",
+      "homepage": "https://docs.vlang.io/tools.html#v-fmt"
     }
   },
   "description": "Tooling for V lang",
