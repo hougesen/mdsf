@@ -4,7 +4,7 @@
   "type": "object",
   "properties": {
     "$schema": {
-      "default": "https://raw.githubusercontent.com/hougesen/mdsf/main/schemas/v0.5.1-dev/mdsf.schema.json",
+      "default": "https://raw.githubusercontent.com/hougesen/mdsf/main/schemas/v0.5.1/mdsf.schema.json",
       "type": "string"
     },
     "custom_file_extensions": {

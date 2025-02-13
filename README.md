@@ -116,7 +116,7 @@ mdsf can be run easily using the VSCode extension.
 <!-- START_SECTION:base-command-help -->
 
 ```
-mdsf 0.5.1-dev
+mdsf 0.5.1
 Format, and lint, markdown code snippets using your favorite tools
 Mads Hougesen <mads@mhouge.dk>
 
@@ -345,7 +345,7 @@ mdsf init
 | Name                                                                                    | Description                                                                                                                                   | Categories            | Languages                                                                 |
 | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- | ------------------------------------------------------------------------- |
 | [actionlint](https://github.com/rhysd/actionlint)                                       | Static checker for GitHub Actions workflow files                                                                                              | `linter`              | `yaml`                                                                    |
-| [air](https://github.com/posit-dev/air)                                                 | R formatter and language server                                                                                                               | `formatter`, `lsp`    | `r`                                                                       |
+| [air](https://github.com/posit-dev/air)                                                 | R formatter and language server                                                                                                               | `formatter`           | `r`                                                                       |
 | [alejandra](https://github.com/kamadorueda/alejandra)                                   | The Uncompromising Nix Code Formatter                                                                                                         | `formatter`           | `nix`                                                                     |
 | [ameba](https://github.com/crystal-ameba/ameba)                                         | A static code analysis tool for Crystal                                                                                                       | `linter`              | `crystal`                                                                 |
 | [ansible-lint](https://github.com/ansible/ansible-lint)                                 | ansible-lint checks playbooks for practices and behavior that could potentially be improved and can fix some of the most common ones for you  | `linter`              | `ansible`                                                                 |

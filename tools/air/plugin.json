@@ -1,7 +1,7 @@
 {
   "$schema": "../tool.schema.json",
   "binary": "air",
-  "categories": ["formatter", "lsp"],
+  "categories": ["formatter"],
   "commands": {
     "format": {
       "arguments": ["format", "$PATH"],
