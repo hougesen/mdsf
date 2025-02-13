@@ -340,7 +340,7 @@ mdsf init
 
 <!-- START_SECTION:supported-tools -->
 
-`mdsf` currently supports 246 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 247 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                                                                                    | Description                                                                                                                                   | Categories            | Languages                                                                 |
 | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- | ------------------------------------------------------------------------- |
@@ -383,6 +383,7 @@ mdsf init
 | [codeql](https://docs.github.com/en/code-security/codeql-cli/codeql-cli-manual)         | Format queries and libraries with CodeQL                                                                                                      | `formatter`           | `codeql`                                                                  |
 | [codespell](https://github.com/codespell-project/codespell)                             | Check code for common misspellings                                                                                                            | `autocorrection`      |                                                                           |
 | [coffeelint](https://github.com/coffeelint/coffeelint)                                  | Lint your CoffeeScript                                                                                                                        | `linter`              | `coffeescript`                                                            |
+| [cpplint](https://github.com/cpplint/cpplint)                                           | Static code checker for C++                                                                                                                   | `linter`              | `c++`                                                                     |
 | [crlfmt](https://github.com/cockroachdb/crlfmt)                                         | Formatter for CockroachDB's additions to the Go style guide                                                                                   | `formatter`           | `go`                                                                      |
 | [crystal](https://crystal-lang.org/)                                                    | Tools for the Crystal programming language                                                                                                    | `formatter`           | `crystal`                                                                 |
 | [csharpier](https://csharpier.com/)                                                     | An Opinionated Code Formatter for C#                                                                                                          | `formatter`           | `c#`                                                                      |
@@ -597,7 +598,7 @@ mdsf init
 
 <!-- START_SECTION:supported-commands -->
 
-`mdsf` currently supports 262 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 263 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                     | Command                                                                                 |
 | ------------------------ | --------------------------------------------------------------------------------------- |
@@ -644,6 +645,7 @@ mdsf init
 | `codeql:query:format`    | `codeql query format -i $PATH`                                                          |
 | `codespell`              | `codespell $PATH --check-hidden --write-changes`                                        |
 | `coffeelint`             | `coffeelint -q -f $PATH`                                                                |
+| `cpplint`                | `cpplint --quiet $PATH`                                                                 |
 | `crlfmt`                 | `crlfmt -w $PATH`                                                                       |
 | `crystal:format`         | `crystal tool format $PATH`                                                             |
 | `csharpier`              | `dotnet csharpier $PATH`                                                                |

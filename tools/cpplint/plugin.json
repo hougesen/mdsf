@@ -1,0 +1,16 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "cpplint",
+  "categories": ["linter"],
+  "commands": {
+    "": {
+      "arguments": ["--quiet", "$PATH"]
+    }
+  },
+  "description": "Static code checker for C++",
+  "homepage": "https://github.com/cpplint/cpplint",
+  "languages": ["c++"],
+  "packages": {
+    "apt": "cpplint"
+  }
+}
