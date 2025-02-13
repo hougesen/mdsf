@@ -4,10 +4,12 @@
   "categories": ["formatter", "linter"],
   "commands": {
     "check": {
-      "arguments": ["check", "--fix", "--quiet", "$PATH"]
+      "arguments": ["check", "--fix", "--quiet", "$PATH"],
+      "description": "Run the Ruff linter on the input"
     },
     "format": {
       "arguments": ["format", "--quiet", "$PATH"],
+      "description": "Run the Ruff formatter on the input",
       "tests": [
         {
           "language": "python",
