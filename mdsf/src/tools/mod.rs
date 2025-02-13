@@ -2,6 +2,7 @@
 /// THIS FILE IS GENERATED USING CODE - DO NOT EDIT MANUALLY
 ///
 pub mod actionlint;
+pub mod air_format;
 pub mod alejandra;
 pub mod ameba;
 pub mod ansible_lint;
@@ -268,6 +269,10 @@ pub enum Tooling {
     #[serde(rename = "actionlint")]
     /// `actionlint $PATH`
     Actionlint,
+
+    #[serde(rename = "air:format")]
+    /// `air format $PATH`
+    AirFormat,
 
     #[serde(rename = "alejandra")]
     /// `alejandra --quiet $PATH`
@@ -1315,6 +1320,7 @@ impl Tooling {
             fn(std::process::Command, &std::path::Path) -> std::process::Command,
         ) = match self {
             Self::Actionlint => (&actionlint::COMMANDS, actionlint::set_args),
+            Self::AirFormat => (&air_format::COMMANDS, air_format::set_args),
             Self::Alejandra => (&alejandra::COMMANDS, alejandra::set_args),
             Self::Ameba => (&ameba::COMMANDS, ameba::set_args),
             Self::AnsibleLint => (&ansible_lint::COMMANDS, ansible_lint::set_args),
@@ -1597,6 +1603,7 @@ impl AsRef<str> for Tooling {
     fn as_ref(&self) -> &str {
         match self {
             Self::Actionlint => "actionlint",
+            Self::AirFormat => "air_format",
             Self::Alejandra => "alejandra",
             Self::Ameba => "ameba",
             Self::AnsibleLint => "ansible_lint",

@@ -340,11 +340,12 @@ mdsf init
 
 <!-- START_SECTION:supported-tools -->
 
-`mdsf` currently supports 245 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 246 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                                                                                    | Description                                                                                                                                   | Categories            | Languages                                                                 |
 | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- | ------------------------------------------------------------------------- |
 | [actionlint](https://github.com/rhysd/actionlint)                                       | Static checker for GitHub Actions workflow files                                                                                              | `linter`              | `yaml`                                                                    |
+| [air](https://github.com/posit-dev/air)                                                 | R formatter and language server                                                                                                               | `formatter`, `lsp`    | `r`                                                                       |
 | [alejandra](https://github.com/kamadorueda/alejandra)                                   | The Uncompromising Nix Code Formatter                                                                                                         | `formatter`           | `nix`                                                                     |
 | [ameba](https://github.com/crystal-ameba/ameba)                                         | A static code analysis tool for Crystal                                                                                                       | `linter`              | `crystal`                                                                 |
 | [ansible-lint](https://github.com/ansible/ansible-lint)                                 | ansible-lint checks playbooks for practices and behavior that could potentially be improved and can fix some of the most common ones for you  | `linter`              | `ansible`                                                                 |
@@ -596,11 +597,12 @@ mdsf init
 
 <!-- START_SECTION:supported-commands -->
 
-`mdsf` currently supports 259 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 260 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                     | Command                                                                                 |
 | ------------------------ | --------------------------------------------------------------------------------------- |
 | `actionlint`             | `actionlint $PATH`                                                                      |
+| `air:format`             | `air format $PATH`                                                                      |
 | `alejandra`              | `alejandra --quiet $PATH`                                                               |
 | `ameba`                  | `ameba --fix $PATH`                                                                     |
 | `ansible-lint`           | `ansible-lint $PATH`                                                                    |
