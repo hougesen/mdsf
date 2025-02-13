@@ -1,0 +1,16 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "air",
+  "categories": ["formatter", "lsp"],
+  "commands": {
+    "format": {
+      "arguments": ["format", "$PATH"],
+      "description": "A code formatter for R",
+      "homepage": "https://posit-dev.github.io/air/formatter.html"
+    }
+  },
+  "description": "R formatter and language server",
+  "homepage": "https://github.com/posit-dev/air",
+  "languages": ["r"],
+  "packages": {}
+}

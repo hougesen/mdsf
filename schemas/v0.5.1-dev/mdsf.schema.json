@@ -72,6 +72,11 @@
           "enum": ["actionlint"]
         },
         {
+          "description": "`air format $PATH`",
+          "type": "string",
+          "enum": ["air:format"]
+        },
+        {
           "description": "`alejandra --quiet $PATH`",
           "type": "string",
           "enum": ["alejandra"]
