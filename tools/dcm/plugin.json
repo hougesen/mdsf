@@ -4,10 +4,14 @@
   "categories": ["formatter", "linter"],
   "commands": {
     "fix": {
-      "arguments": ["fix", "$PATH"]
+      "arguments": ["fix", "$PATH"],
+      "description": "Fixes issues produced by dcm analyze, dcm check-unused-code, dcm check-unused-files or dcm check-dependencies commands",
+      "homepage": "https://dcm.dev/docs/cli/formatting/fix/"
     },
     "format": {
-      "arguments": ["format", "$PATH"]
+      "arguments": ["format", "$PATH"],
+      "description": "Formats dart files",
+      "homepage": "https://dcm.dev/docs/cli/formatting/format/"
     }
   },
   "description": "Code Quality Tool for Flutter Developers",

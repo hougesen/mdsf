@@ -4,11 +4,13 @@
   "categories": ["formatter"],
   "commands": {
     "fmt": {
-      "arguments": ["fmt", "$PATH"]
+      "arguments": ["fmt", "$PATH"],
+      "description": "Formats Ziggy documents and Ziggy schemas",
+      "homepage": "https://ziggy-lang.io/documentation/ziggy-fmt/"
     }
   },
   "description": "Formats Ziggy documents and Ziggy schemas",
-  "homepage": "https://ziggy-lang.io/documentation/ziggy-fmt/",
+  "homepage": "https://ziggy-lang.io/",
   "languages": ["ziggy"],
   "packages": {}
 }

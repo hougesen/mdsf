@@ -5,6 +5,8 @@
   "commands": {
     "format": {
       "arguments": ["tool", "format", "$PATH"],
+      "description": "Formats Crystal code",
+      "homepage": "https://crystal-lang.org/reference/1.15/man/crystal/index.html#crystal-tool-format",
       "tests": [
         {
           "language": "crystal",

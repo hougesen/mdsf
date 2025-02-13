@@ -5,6 +5,8 @@
   "commands": {
     "fmt": {
       "arguments": ["fmt", "$PATH"],
+      "description": "Format veryl code",
+      "homepage": "https://doc.veryl-lang.org/book/06_development_environment/05_formatter.html",
       "tests": [
         {
           "language": "veryl",

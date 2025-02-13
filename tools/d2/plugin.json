@@ -4,7 +4,8 @@
   "categories": ["formatter"],
   "commands": {
     "fmt": {
-      "arguments": ["fmt", "$PATH"]
+      "arguments": ["fmt", "$PATH"],
+      "description": "Format d2 code"
     }
   },
   "description": "Formatter for the d2 language",

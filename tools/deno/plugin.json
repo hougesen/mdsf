@@ -5,6 +5,7 @@
   "commands": {
     "fmt": {
       "arguments": ["fmt", "--quiet", "$PATH"],
+      "homepage": "https://docs.deno.com/runtime/reference/cli/fmt/",
       "tests": [
         {
           "language": "javascript",
@@ -24,7 +25,8 @@
       ]
     },
     "lint": {
-      "arguments": ["lint", "--fix", "$PATH"]
+      "arguments": ["lint", "--fix", "$PATH"],
+      "homepage": "https://docs.deno.com/runtime/reference/cli/lint/"
     }
   },
   "description": "Formatter and linter for JavaScript and TypeScript",
