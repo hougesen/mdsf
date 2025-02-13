@@ -154,6 +154,10 @@ pub struct GeneratedCommand {
     pub binary: String,
 
     pub args: Vec<String>,
+
+    pub description: String,
+
+    pub homepage: String,
 }
 
 impl Tool {
@@ -321,6 +325,10 @@ mod test_{module_name} {{{tests}}}
 ",
             );
 
+            let homepage = options.homepage.clone().unwrap_or_default();
+
+            let description = options.description.clone().unwrap_or_default();
+
             all_commands.push(GeneratedCommand {
                 enum_value: command_name.to_case(Case::Pascal),
                 module_name,
@@ -333,6 +341,16 @@ mod test_{module_name} {{{tests}}}
                 ),
                 args: options.arguments.clone(),
                 binary: self.binary.clone(),
+                homepage: if homepage.is_empty() {
+                    self.homepage.clone()
+                } else {
+                    homepage
+                },
+                description: if description.is_empty() {
+                    self.description.clone()
+                } else {
+                    description
+                },
             });
         }
 
@@ -398,8 +416,30 @@ impl AsRef<str> for Tooling {
             let enum_value = &command.enum_value;
             let module_name = &command.module_name;
 
+            let homepage = if command.homepage.is_empty() {
+                String::new()
+            } else {
+                format!(
+                    "{INDENT}/// [{}]({})
+{INDENT}///",
+                    command.homepage, command.homepage
+                )
+            };
+
+            let description = if command.description.is_empty() {
+                String::new()
+            } else {
+                format!(
+                    "{INDENT}/// {}
+{INDENT}///",
+                    command.description.trim()
+                )
+            };
+
             enum_values.insert(format!(
                 "{INDENT}#[serde(rename = \"{rename}\")]
+{description}
+{homepage}
 {INDENT}/// `{bin} {args}`
 {INDENT}{enum_value},",
                 rename = command.serde_rename,
