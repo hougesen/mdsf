@@ -136,6 +136,7 @@ pub mod markdownfmt;
 pub mod markdownlint;
 pub mod markdownlint_cli_2;
 pub mod markuplint;
+pub mod md_padding;
 pub mod mdformat;
 pub mod mdslw;
 pub mod meson_fmt;
@@ -1349,6 +1350,14 @@ pub enum Tooling {
     /// `markuplint --fix $PATH`
     Markuplint,
 
+    #[serde(rename = "md-padding")]
+    /// Fix mixed spaces in Markdown: Chinese and English, numbers, links
+    ///
+    /// [https://github.com/harttle/md-padding](https://github.com/harttle/md-padding)
+    ///
+    /// `md-padding -i $PATH`
+    MdPadding,
+
     #[serde(rename = "mdformat")]
     /// CommonMark compliant Markdown formatter
     ///
@@ -2530,6 +2539,7 @@ impl Tooling {
             Self::Markdownlint => (&markdownlint::COMMANDS, markdownlint::set_args),
             Self::MarkdownlintCli2 => (&markdownlint_cli_2::COMMANDS, markdownlint_cli_2::set_args),
             Self::Markuplint => (&markuplint::COMMANDS, markuplint::set_args),
+            Self::MdPadding => (&md_padding::COMMANDS, md_padding::set_args),
             Self::Mdformat => (&mdformat::COMMANDS, mdformat::set_args),
             Self::Mdslw => (&mdslw::COMMANDS, mdslw::set_args),
             Self::MesonFmt => (&meson_fmt::COMMANDS, meson_fmt::set_args),
@@ -2807,6 +2817,7 @@ impl AsRef<str> for Tooling {
             Self::Markdownlint => "markdownlint",
             Self::MarkdownlintCli2 => "markdownlint_cli_2",
             Self::Markuplint => "markuplint",
+            Self::MdPadding => "md_padding",
             Self::Mdformat => "mdformat",
             Self::Mdslw => "mdslw",
             Self::MesonFmt => "meson_fmt",

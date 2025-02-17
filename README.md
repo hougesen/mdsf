@@ -340,7 +340,7 @@ mdsf init
 
 <!-- START_SECTION:supported-tools -->
 
-`mdsf` currently supports 247 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 248 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                                                                                    | Description                                                                                                                                   | Categories            | Languages                                                                 |
 | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- | ------------------------------------------------------------------------- |
@@ -470,6 +470,7 @@ mdsf init
 | [markdownlint-cli2](https://github.com/davidanson/markdownlint-cli2)                    | A fast, flexible, configuration-based command-line interface for linting Markdown/CommonMark files with the markdownlint library              | `linter`              | `markdown`                                                                |
 | [markdownlint](https://github.com/davidanson/markdownlint)                              | A Node.js style checker and lint tool for Markdown/CommonMark files                                                                           | `linter`              | `markdown`                                                                |
 | [markuplint](https://markuplint.dev/)                                                   | An HTML linter for all markup developers                                                                                                      | `linter`              | `html`                                                                    |
+| [md-padding](https://github.com/harttle/md-padding)                                     | Fix mixed spaces in Markdown: Chinese and English, numbers, links                                                                             | `formatter`           | `markdown`                                                                |
 | [mdformat](https://github.com/executablebooks/mdformat)                                 | CommonMark compliant Markdown formatter                                                                                                       | `formatter`           | `markdwon`                                                                |
 | [mdslw](https://github.com/razziel89/mdslw)                                             | Prepare your markdown for easy diff'ing!                                                                                                      | `formatter`           | `markdown`                                                                |
 | [meson](https://mesonbuild.com/)                                                        | Meson is an open source build system meant to be both extremely fast, and, even more importantly, as user friendly as possible                | `formatter`           | `meson`                                                                   |
@@ -598,7 +599,7 @@ mdsf init
 
 <!-- START_SECTION:supported-commands -->
 
-`mdsf` currently supports 263 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 264 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                     | Command                                                                                 |
 | ------------------------ | --------------------------------------------------------------------------------------- |
@@ -737,6 +738,7 @@ mdsf init
 | `markdownlint-cli2`      | `markdownlint-cli2 --fix $PATH`                                                         |
 | `markdownlint`           | `markdownlint --fix $PATH`                                                              |
 | `markuplint`             | `markuplint --fix $PATH`                                                                |
+| `md-padding`             | `md-padding -i $PATH`                                                                   |
 | `mdformat`               | `mdformat $PATH`                                                                        |
 | `mdslw`                  | `mdslw $PATH`                                                                           |
 | `meson:fmt`              | `meson fmt -i $PATH`                                                                    |
