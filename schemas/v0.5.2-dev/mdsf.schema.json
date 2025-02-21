@@ -1067,6 +1067,11 @@
           "enum": ["rune:fmt"]
         },
         {
+          "description": "Julia code formatter\n\n[https://github.com/fredrikekre/Runic.jl](https://github.com/fredrikekre/Runic.jl)\n\n`runic --inplace $PATH`",
+          "type": "string",
+          "enum": ["runic"]
+        },
+        {
           "description": "The official code formatter for Rust\n\n[https://github.com/rust-lang/rustfmt](https://github.com/rust-lang/rustfmt)\n\n`rustfmt --edition 2021 --quiet $PATH`",
           "type": "string",
           "enum": ["rustfmt"]
