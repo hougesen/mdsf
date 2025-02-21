@@ -96,6 +96,7 @@ pub mod goimports;
 pub mod goimports_reviser;
 pub mod golines;
 pub mod google_java_format;
+pub mod gospel;
 pub mod grain_format;
 pub mod hadolint;
 pub mod haml_lint;
@@ -1029,6 +1030,14 @@ pub enum Tooling {
     ///
     /// `google-java-format -i $PATH`
     GoogleJavaFormat,
+
+    #[serde(rename = "gospel")]
+    /// Misspelled word linter for Go comments, string literals and embedded files
+    ///
+    /// [https://github.com/kortschak/gospel](https://github.com/kortschak/gospel)
+    ///
+    /// `gospel $PATH`
+    Gospel,
 
     #[serde(rename = "grain:format")]
     /// Code formatter for the Grain programming language
@@ -2496,6 +2505,7 @@ impl Tooling {
             Self::GoimportsReviser => (&goimports_reviser::COMMANDS, goimports_reviser::set_args),
             Self::Golines => (&golines::COMMANDS, golines::set_args),
             Self::GoogleJavaFormat => (&google_java_format::COMMANDS, google_java_format::set_args),
+            Self::Gospel => (&gospel::COMMANDS, gospel::set_args),
             Self::GrainFormat => (&grain_format::COMMANDS, grain_format::set_args),
             Self::Hadolint => (&hadolint::COMMANDS, hadolint::set_args),
             Self::HamlLint => (&haml_lint::COMMANDS, haml_lint::set_args),
@@ -2777,6 +2787,7 @@ impl AsRef<str> for Tooling {
             Self::GoimportsReviser => "goimports_reviser",
             Self::Golines => "golines",
             Self::GoogleJavaFormat => "google_java_format",
+            Self::Gospel => "gospel",
             Self::GrainFormat => "grain_format",
             Self::Hadolint => "hadolint",
             Self::HamlLint => "haml_lint",

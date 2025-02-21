@@ -542,6 +542,11 @@
           "enum": ["google-java-format"]
         },
         {
+          "description": "Misspelled word linter for Go comments, string literals and embedded files\n\n[https://github.com/kortschak/gospel](https://github.com/kortschak/gospel)\n\n`gospel $PATH`",
+          "type": "string",
+          "enum": ["gospel"]
+        },
+        {
           "description": "Code formatter for the Grain programming language\n\n[https://grain-lang.org/docs/tooling/grain_cli](https://grain-lang.org/docs/tooling/grain_cli)\n\n`grain format $PATH -o $PATH`",
           "type": "string",
           "enum": ["grain:format"]
