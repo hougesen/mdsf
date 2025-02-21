@@ -340,7 +340,7 @@ mdsf init
 
 <!-- START_SECTION:supported-tools -->
 
-`mdsf` currently supports 248 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 249 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                                                                                    | Description                                                                                                                                   | Categories            | Languages                                                                 |
 | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- | ------------------------------------------------------------------------- |
@@ -432,6 +432,7 @@ mdsf init
 | [goimports](https://pkg.go.dev/golang.org/x/tools/cmd/goimports)                        | goimports updates your Go import lines, adding missing ones and removing unreferenced ones                                                    | `formatter`           | `go`                                                                      |
 | [golines](https://github.com/segmentio/golines)                                         | A golang formatter that fixes long lines                                                                                                      | `formatter`           | `go`                                                                      |
 | [google-java-format](https://github.com/google/google-java-format)                      | Reformats Java source code to comply with Google Java Style                                                                                   | `formatter`           | `java`                                                                    |
+| [gospel](https://github.com/kortschak/gospel)                                           | Misspelled word linter for Go comments, string literals and embedded files                                                                    |                       | `go`                                                                      |
 | [grain](https://grain-lang.org/docs/tooling/grain_cli)                                  | Code formatter for the Grain programming language                                                                                             | `formatter`           | `grain`                                                                   |
 | [hadolint](https://github.com/hadolint/hadolint)                                        | Dockerfile linter, validate inline bash, written in Haskell                                                                                   | `linter`              | `dockerfile`                                                              |
 | [haml-lint](https://github.com/sds/haml-lint)                                           | Tool for writing clean and consistent HAML                                                                                                    | `linter`              | `haml`                                                                    |
@@ -599,7 +600,7 @@ mdsf init
 
 <!-- START_SECTION:supported-commands -->
 
-`mdsf` currently supports 264 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 265 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                     | Command                                                                                 |
 | ------------------------ | --------------------------------------------------------------------------------------- |
@@ -698,6 +699,7 @@ mdsf init
 | `goimports`              | `goimports -w $PATH`                                                                    |
 | `golines`                | `golines -w $PATH`                                                                      |
 | `google-java-format`     | `google-java-format -i $PATH`                                                           |
+| `gospel`                 | `gospel $PATH`                                                                          |
 | `grain:format`           | `grain format $PATH -o $PATH`                                                           |
 | `hadolint`               | `hadolint $PATH`                                                                        |
 | `haml-lint`              | `haml-lint --auto-correct $PATH`                                                        |

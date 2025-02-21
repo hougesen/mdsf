@@ -1,0 +1,16 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "gospel",
+  "categories": [],
+  "commands": {
+    "": {
+      "arguments": ["$PATH"]
+    }
+  },
+  "description": "Misspelled word linter for Go comments, string literals and embedded files",
+  "homepage": "https://github.com/kortschak/gospel",
+  "languages": ["go"],
+  "packages": {
+    "go": "github.com/kortschak/gospel"
+  }
+}
