@@ -1,0 +1,14 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "nasmfmt",
+  "categories": ["formatter"],
+  "commands": {
+    "": {
+      "arguments": ["$PATH"]
+    }
+  },
+  "description": "Formatter for NASM source files",
+  "homepage": "https://github.com/yamnikov-oleg/nasmfmt",
+  "languages": ["assembly"],
+  "packages": {}
+}
