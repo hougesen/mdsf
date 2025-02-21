@@ -1,0 +1,16 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "runic",
+  "categories": ["formatter"],
+  "commands": {
+    "": {
+      "arguments": ["--inplace", "$PATH"]
+    }
+  },
+  "description": "Julia code formatter",
+  "homepage": "https://github.com/fredrikekre/Runic.jl",
+  "languages": ["julia"],
+  "packages": {
+    "julia": "Runic"
+  }
+}
