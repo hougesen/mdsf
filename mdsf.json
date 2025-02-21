@@ -1,5 +1,5 @@
 {
-  "$schema": "./schemas/v0.5.2-dev/mdsf.schema.json",
+  "$schema": "./schemas/v0.5.2/mdsf.schema.json",
   "custom_file_extensions": {},
   "format_finished_document": false,
   "javascript_runtime": "node",
