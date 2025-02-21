@@ -8,6 +8,8 @@ concurrency:
 env:
   CARGO_TERM_COLOR: always
   RUST_BACKTRACE: full
+permissions:
+  contents: write
 jobs:
   update-readme:
     strategy:
