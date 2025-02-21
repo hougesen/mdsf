@@ -340,7 +340,7 @@ mdsf init
 
 <!-- START_SECTION:supported-tools -->
 
-`mdsf` currently supports 249 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 250 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                                                                                    | Description                                                                                                                                   | Categories            | Languages                                                                 |
 | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- | ------------------------------------------------------------------------- |
@@ -531,6 +531,7 @@ mdsf init
 | [ruff](https://docs.astral.sh/ruff)                                                     | An extremely fast Python linter and code formatter, written in Rust                                                                           | `formatter`, `linter` | `python`                                                                  |
 | [rufo](https://github.com/ruby-formatter/rufo)                                          | The Ruby Formatter                                                                                                                            | `formatter`           | `ruby`                                                                    |
 | [rune](https://github.com/rune-rs/rune)                                                 | Tools for the Rune programming language                                                                                                       | `formatter`           | `rune`                                                                    |
+| [runic](https://github.com/fredrikekre/Runic.jl)                                        | Julia code formatter                                                                                                                          | `formatter`           | `julia`                                                                   |
 | [rustfmt](https://github.com/rust-lang/rustfmt)                                         | The official code formatter for Rust                                                                                                          | `formatter`           | `rust`                                                                    |
 | [rustywind](https://github.com/avencera/rustywind)                                      | CLI for organizing Tailwind CSS classes                                                                                                       | `formatter`           | `html`                                                                    |
 | [salt-lint](https://github.com/warpnet/salt-lint)                                       | A command-line utility that checks for best practices in SaltStack                                                                            | `linter`              | `salt`                                                                    |
@@ -600,7 +601,7 @@ mdsf init
 
 <!-- START_SECTION:supported-commands -->
 
-`mdsf` currently supports 265 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 266 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                     | Command                                                                                 |
 | ------------------------ | --------------------------------------------------------------------------------------- |
@@ -804,6 +805,7 @@ mdsf init
 | `ruff:format`            | `ruff format --quiet $PATH`                                                             |
 | `rufo`                   | `rufo --simple-exit $PATH`                                                              |
 | `rune:fmt`               | `rune fmt $PATH`                                                                        |
+| `runic`                  | `runic --inplace $PATH`                                                                 |
 | `rustfmt`                | `rustfmt --edition 2021 --quiet $PATH`                                                  |
 | `rustywind`              | `rustywind --write $PATH`                                                               |
 | `salt-lint`              | `salt-lint $PATH`                                                                       |
