@@ -145,6 +145,7 @@ pub mod misspell;
 pub mod mix_format;
 pub mod mojo_format;
 pub mod mypy;
+pub mod nasmfmt;
 pub mod nginxbeautifier;
 pub mod nginxfmt;
 pub mod nickel_format;
@@ -201,6 +202,7 @@ pub mod ruff_check;
 pub mod ruff_format;
 pub mod rufo;
 pub mod rune_fmt;
+pub mod runic;
 pub mod rustfmt;
 pub mod rustywind;
 pub mod salt_lint;
@@ -1423,6 +1425,14 @@ pub enum Tooling {
     /// `mypy $PATH`
     Mypy,
 
+    #[serde(rename = "nasmfmt")]
+    /// Formatter for NASM source files
+    ///
+    /// [https://github.com/yamnikov-oleg/nasmfmt](https://github.com/yamnikov-oleg/nasmfmt)
+    ///
+    /// `nasmfmt $PATH`
+    Nasmfmt,
+
     #[serde(rename = "nginxbeautifier")]
     /// Format and beautify nginx config files
     ///
@@ -1870,6 +1880,14 @@ pub enum Tooling {
     ///
     /// `rune fmt $PATH`
     RuneFmt,
+
+    #[serde(rename = "runic")]
+    /// Julia code formatter
+    ///
+    /// [https://github.com/fredrikekre/Runic.jl](https://github.com/fredrikekre/Runic.jl)
+    ///
+    /// `runic --inplace $PATH`
+    Runic,
 
     #[serde(rename = "rustfmt")]
     /// The official code formatter for Rust
@@ -2557,6 +2575,7 @@ impl Tooling {
             Self::MixFormat => (&mix_format::COMMANDS, mix_format::set_args),
             Self::MojoFormat => (&mojo_format::COMMANDS, mojo_format::set_args),
             Self::Mypy => (&mypy::COMMANDS, mypy::set_args),
+            Self::Nasmfmt => (&nasmfmt::COMMANDS, nasmfmt::set_args),
             Self::Nginxbeautifier => (&nginxbeautifier::COMMANDS, nginxbeautifier::set_args),
             Self::Nginxfmt => (&nginxfmt::COMMANDS, nginxfmt::set_args),
             Self::NickelFormat => (&nickel_format::COMMANDS, nickel_format::set_args),
@@ -2616,6 +2635,7 @@ impl Tooling {
             Self::RuffFormat => (&ruff_format::COMMANDS, ruff_format::set_args),
             Self::Rufo => (&rufo::COMMANDS, rufo::set_args),
             Self::RuneFmt => (&rune_fmt::COMMANDS, rune_fmt::set_args),
+            Self::Runic => (&runic::COMMANDS, runic::set_args),
             Self::Rustfmt => (&rustfmt::COMMANDS, rustfmt::set_args),
             Self::Rustywind => (&rustywind::COMMANDS, rustywind::set_args),
             Self::SaltLint => (&salt_lint::COMMANDS, salt_lint::set_args),
@@ -2836,6 +2856,7 @@ impl AsRef<str> for Tooling {
             Self::MixFormat => "mix_format",
             Self::MojoFormat => "mojo_format",
             Self::Mypy => "mypy",
+            Self::Nasmfmt => "nasmfmt",
             Self::Nginxbeautifier => "nginxbeautifier",
             Self::Nginxfmt => "nginxfmt",
             Self::NickelFormat => "nickel_format",
@@ -2892,6 +2913,7 @@ impl AsRef<str> for Tooling {
             Self::RuffFormat => "ruff_format",
             Self::Rufo => "rufo",
             Self::RuneFmt => "rune_fmt",
+            Self::Runic => "runic",
             Self::Rustfmt => "rustfmt",
             Self::Rustywind => "rustywind",
             Self::SaltLint => "salt_lint",

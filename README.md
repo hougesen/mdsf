@@ -340,7 +340,7 @@ mdsf init
 
 <!-- START_SECTION:supported-tools -->
 
-`mdsf` currently supports 250 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 251 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                                                                                    | Description                                                                                                                                   | Categories            | Languages                                                                 |
 | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- | ------------------------------------------------------------------------- |
@@ -479,6 +479,7 @@ mdsf init
 | [mix](https://hexdocs.pm/mix/main/Mix.Tasks.Format.html)                                | Code formatter for Elixir                                                                                                                     | `formatter`           | `elixir`                                                                  |
 | [mojo](https://docs.modular.com/mojo/cli/format)                                        | Formats Mojo source files                                                                                                                     | `formatter`           | `mojo`                                                                    |
 | [mypy](https://github.com/python/mypy)                                                  | Optional static typing for Python                                                                                                             | `linter`              | `python`                                                                  |
+| [nasmfmt](https://github.com/yamnikov-oleg/nasmfmt)                                     | Formatter for NASM source files                                                                                                               | `formatter`           | `assembly`                                                                |
 | [nginxbeautifier](https://github.com/vasilevich/nginxbeautifier)                        | Format and beautify nginx config files                                                                                                        | `formatter`           | `nginx`                                                                   |
 | [nginxfmt](https://github.com/slomkowski/nginx-config-formatter)                        | nginx config file formatter/beautifier written in Python with no additional dependencies                                                      | `formatter`           | `nginx`                                                                   |
 | [nickel](https://nickel-lang.org/)                                                      | Better configuration for less                                                                                                                 | `formatter`           | `nickel`                                                                  |
@@ -601,7 +602,7 @@ mdsf init
 
 <!-- START_SECTION:supported-commands -->
 
-`mdsf` currently supports 266 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 267 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                     | Command                                                                                 |
 | ------------------------ | --------------------------------------------------------------------------------------- |
@@ -749,6 +750,7 @@ mdsf init
 | `mix:format`             | `mix format $PATH`                                                                      |
 | `mojo:format`            | `mojo format -q $PATH`                                                                  |
 | `mypy`                   | `mypy $PATH`                                                                            |
+| `nasmfmt`                | `nasmfmt $PATH`                                                                         |
 | `nginxbeautifier`        | `nginxbeautifier $PATH`                                                                 |
 | `nginxfmt`               | `nginxfmt $PATH`                                                                        |
 | `nickel:format`          | `nickel format $PATH`                                                                   |

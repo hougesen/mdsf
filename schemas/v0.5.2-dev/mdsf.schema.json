@@ -787,6 +787,11 @@
           "enum": ["mypy"]
         },
         {
+          "description": "Formatter for NASM source files\n\n[https://github.com/yamnikov-oleg/nasmfmt](https://github.com/yamnikov-oleg/nasmfmt)\n\n`nasmfmt $PATH`",
+          "type": "string",
+          "enum": ["nasmfmt"]
+        },
+        {
           "description": "Format and beautify nginx config files\n\n[https://github.com/vasilevich/nginxbeautifier](https://github.com/vasilevich/nginxbeautifier)\n\n`nginxbeautifier $PATH`",
           "type": "string",
           "enum": ["nginxbeautifier"]

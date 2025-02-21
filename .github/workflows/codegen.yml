@@ -30,5 +30,4 @@ jobs:
       - run: npx prettier@latest --write schemas mdsf.json README.md
       - uses: EndBug/add-and-commit@v9
         with:
-          add: schemas mdsf.json README.md
           message: "chore: updated generated code"
