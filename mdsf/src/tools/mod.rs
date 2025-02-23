@@ -135,6 +135,9 @@ pub mod liquidsoap_prettier;
 pub mod luacheck;
 pub mod luaformatter;
 pub mod mado_check;
+pub mod mago_fix;
+pub mod mago_format;
+pub mod mago_lint;
 pub mod markdownfmt;
 pub mod markdownlint;
 pub mod markdownlint_cli_2;
@@ -1349,6 +1352,30 @@ pub enum Tooling {
     ///
     /// `mado check $PATH`
     MadoCheck,
+
+    #[serde(rename = "mago:fix")]
+    /// The fix command is used to automatically fix issues identified during linting
+    ///
+    /// [https://mago.carthage.software/#/getting-started/cli?id=mago-fix](https://mago.carthage.software/#/getting-started/cli?id=mago-fix)
+    ///
+    /// `mago fix $PATH`
+    MagoFix,
+
+    #[serde(rename = "mago:format")]
+    /// The format command is used to format PHP files in your project according to the rules defined in your mago.toml configuration file
+    ///
+    /// [https://mago.carthage.software/#/getting-started/cli?id=mago-format](https://mago.carthage.software/#/getting-started/cli?id=mago-format)
+    ///
+    /// `mago format $PATH`
+    MagoFormat,
+
+    #[serde(rename = "mago:lint")]
+    /// The lint command is used to analyze PHP files in your project and report any issues found by the linter
+    ///
+    /// [https://mago.carthage.software/#/getting-started/cli?id=mago-lint](https://mago.carthage.software/#/getting-started/cli?id=mago-lint)
+    ///
+    /// `mago lint $PATH`
+    MagoLint,
 
     #[serde(rename = "markdownfmt")]
     /// Like gofmt, but for Markdown
@@ -2610,6 +2637,9 @@ impl Tooling {
             Self::Luacheck => (&luacheck::COMMANDS, luacheck::set_args),
             Self::Luaformatter => (&luaformatter::COMMANDS, luaformatter::set_args),
             Self::MadoCheck => (&mado_check::COMMANDS, mado_check::set_args),
+            Self::MagoFix => (&mago_fix::COMMANDS, mago_fix::set_args),
+            Self::MagoFormat => (&mago_format::COMMANDS, mago_format::set_args),
+            Self::MagoLint => (&mago_lint::COMMANDS, mago_lint::set_args),
             Self::Markdownfmt => (&markdownfmt::COMMANDS, markdownfmt::set_args),
             Self::Markdownlint => (&markdownlint::COMMANDS, markdownlint::set_args),
             Self::MarkdownlintCli2 => (&markdownlint_cli_2::COMMANDS, markdownlint_cli_2::set_args),
@@ -2896,6 +2926,9 @@ impl AsRef<str> for Tooling {
             Self::Luacheck => "luacheck",
             Self::Luaformatter => "luaformatter",
             Self::MadoCheck => "mado_check",
+            Self::MagoFix => "mago_fix",
+            Self::MagoFormat => "mago_format",
+            Self::MagoLint => "mago_lint",
             Self::Markdownfmt => "markdownfmt",
             Self::Markdownlint => "markdownlint",
             Self::MarkdownlintCli2 => "markdownlint_cli_2",

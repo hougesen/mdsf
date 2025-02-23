@@ -1,0 +1,35 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "mago",
+  "categories": ["formatter", "linter"],
+  "commands": {
+    "fix": {
+      "arguments": ["fix", "$PATH"],
+      "description": "The fix command is used to automatically fix issues identified during linting",
+      "homepage": "https://mago.carthage.software/#/getting-started/cli?id=mago-fix"
+    },
+    "format": {
+      "arguments": ["format", "$PATH"],
+      "description": "The format command is used to format PHP files in your project according to the rules defined in your mago.toml configuration file",
+      "homepage": "https://mago.carthage.software/#/getting-started/cli?id=mago-format"
+    },
+    "lint": {
+      "arguments": ["lint", "$PATH"],
+      "description": "The lint command is used to analyze PHP files in your project and report any issues found by the linter",
+      "homepage": "https://mago.carthage.software/#/getting-started/cli?id=mago-lint"
+    }
+  },
+  "description": "A fast linter and formatter for PHP",
+  "homepage": "https://github.com/carthage-software/mago",
+  "languages": ["php"],
+  "packages": {
+    "brew": {
+      "name": "mago"
+    },
+    "cargo": "mago",
+    "composer": {
+      "binary": "mago",
+      "package": "carthage-software/mago"
+    }
+  }
+}
