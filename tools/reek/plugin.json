@@ -1,0 +1,16 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "reek",
+  "categories": ["linter"],
+  "commands": {
+    "": {
+      "arguments": ["$PATH"]
+    }
+  },
+  "description": "Code smell detector for Ruby",
+  "homepage": "https://github.com/troessner/reek",
+  "languages": ["ruby"],
+  "packages": {
+    "gem": "reek"
+  }
+}

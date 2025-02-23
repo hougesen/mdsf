@@ -340,7 +340,7 @@ mdsf init
 
 <!-- START_SECTION:supported-tools -->
 
-`mdsf` currently supports 254 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 255 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                                                                                    | Description                                                                                                                                   | Categories            | Languages                                                                 |
 | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- | ------------------------------------------------------------------------- |
@@ -523,6 +523,7 @@ mdsf init
 | [qmlfmt](https://github.com/jesperhh/qmlfmt)                                            | qmlfmt - command line application that formats QML files                                                                                      | `formatter`           | `qml`                                                                     |
 | [quick-lint-js](https://github.com/quick-lint/quick-lint-js)                            | quick-lint-js finds bugs in JavaScript programs                                                                                               | `linter`              | `javascript`                                                              |
 | [raco](https://docs.racket-lang.org/fmt/)                                               | An extensible code formatter for Racket                                                                                                       | `formatter`           | `racket`                                                                  |
+| [reek](https://github.com/troessner/reek)                                               | Code smell detector for Ruby                                                                                                                  | `linter`              | `ruby`                                                                    |
 | [refmt](https://reasonml.github.io/docs/en/refmt)                                       | refmt stands by Reason Formatter and it formats Reason programs, is a parser and pretty-printer for Reason                                    | `formatter`           | `reason`                                                                  |
 | [reformat-gherkin](https://github.com/ducminh-phan/reformat-gherkin)                    | Reformat-gherkin automatically formats Gherkin files                                                                                          | `formatter`           | `gherkin`                                                                 |
 | [regal](https://github.com/styrainc/regal)                                              | Regal is a linter and language server for Rego, bringing your policy development experience to the next level                                 | `linter`              | `rego`                                                                    |
@@ -605,7 +606,7 @@ mdsf init
 
 <!-- START_SECTION:supported-commands -->
 
-`mdsf` currently supports 270 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 271 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                     | Command                                                                                 |
 | ------------------------ | --------------------------------------------------------------------------------------- |
@@ -799,6 +800,7 @@ mdsf init
 | `qmlfmt`                 | `qmlfmt -w $PATH`                                                                       |
 | `quick-lint-js`          | `quick-lint-js $PATH`                                                                   |
 | `raco:fmt`               | `raco fmt -i $PATH`                                                                     |
+| `reek`                   | `reek $PATH`                                                                            |
 | `refmt`                  | `refmt --in-place $PATH`                                                                |
 | `reformat-gherkin`       | `reformat-gherkin $PATH`                                                                |
 | `regal:fix`              | `regal fix $PATH`                                                                       |
