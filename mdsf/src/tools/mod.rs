@@ -12,6 +12,7 @@ pub mod auto_optional;
 pub mod autocorrect;
 pub mod autoflake;
 pub mod autopep_8;
+pub mod bashate;
 pub mod beancount_black;
 pub mod beautysh;
 pub mod bibtex_tidy;
@@ -360,6 +361,14 @@ pub enum Tooling {
     ///
     /// `autopep8 --in-place $PATH`
     Autopep8,
+
+    #[serde(rename = "bashate")]
+    /// Code style enforcement for bash programs
+    ///
+    /// [https://github.com/openstack/bashate](https://github.com/openstack/bashate)
+    ///
+    /// `bashate $PATH`
+    Bashate,
 
     #[serde(rename = "beancount-black")]
     /// Opinionated code formatter, just like Python's black code formatter but for Beancount
@@ -2433,6 +2442,7 @@ impl Tooling {
             Self::Autocorrect => (&autocorrect::COMMANDS, autocorrect::set_args),
             Self::Autoflake => (&autoflake::COMMANDS, autoflake::set_args),
             Self::Autopep8 => (&autopep_8::COMMANDS, autopep_8::set_args),
+            Self::Bashate => (&bashate::COMMANDS, bashate::set_args),
             Self::BeancountBlack => (&beancount_black::COMMANDS, beancount_black::set_args),
             Self::Beautysh => (&beautysh::COMMANDS, beautysh::set_args),
             Self::BibtexTidy => (&bibtex_tidy::COMMANDS, bibtex_tidy::set_args),
@@ -2723,6 +2733,7 @@ impl AsRef<str> for Tooling {
             Self::Autocorrect => "autocorrect",
             Self::Autoflake => "autoflake",
             Self::Autopep8 => "autopep_8",
+            Self::Bashate => "bashate",
             Self::BeancountBlack => "beancount_black",
             Self::Beautysh => "beautysh",
             Self::BibtexTidy => "bibtex_tidy",

@@ -116,7 +116,7 @@ mdsf can be run easily using the VSCode extension.
 <!-- START_SECTION:base-command-help -->
 
 ```
-mdsf 0.5.2
+mdsf 0.5.3-dev
 Format, and lint, markdown code snippets using your favorite tools
 Mads Hougesen <mads@mhouge.dk>
 
@@ -340,7 +340,7 @@ mdsf init
 
 <!-- START_SECTION:supported-tools -->
 
-`mdsf` currently supports 251 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 252 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                                                                                    | Description                                                                                                                                   | Categories            | Languages                                                                 |
 | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- | ------------------------------------------------------------------------- |
@@ -355,6 +355,7 @@ mdsf init
 | [autocorrect](https://github.com/huacnlee/autocorrect)                                  | A linter and formatter to help you to improve copywriting, correct spaces, words, and punctuations between CJK (Chinese, Japanese, Korean)    | `autocorrection`      |                                                                           |
 | [autoflake](https://github.com/pycqa/autoflake)                                         | Removes unused imports and unused variables as reported by pyflakes                                                                           | `linter`              | `python`                                                                  |
 | [autopep8](https://github.com/hhatto/autopep8)                                          | A tool that automatically formats Python code to conform to the PEP 8 style guid                                                              | `formatter`           | `python`                                                                  |
+| [bashate](https://github.com/openstack/bashate)                                         | Code style enforcement for bash programs                                                                                                      | `formatter`           | `bash`                                                                    |
 | [beancount-black](https://github.com/LaunchPlatform/beancount-black)                    | Opinionated code formatter, just like Python's black code formatter but for Beancount                                                         | `formatter`           | `beancount`                                                               |
 | [beautysh](https://pypi.org/project/beautysh/)                                          | A Bash beautifier for the masses                                                                                                              | `formatter`           | `bash`, `shell`                                                           |
 | [bibtex-tidy](https://github.com/FlamingTempura/bibtex-tidy)                            | Cleaner and Formatter for BibTeX files                                                                                                        | `formatter`           | `bibtex`                                                                  |
@@ -602,7 +603,7 @@ mdsf init
 
 <!-- START_SECTION:supported-commands -->
 
-`mdsf` currently supports 267 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 268 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                     | Command                                                                                 |
 | ------------------------ | --------------------------------------------------------------------------------------- |
@@ -617,6 +618,7 @@ mdsf init
 | `autocorrect`            | `autocorrect --fix $PATH`                                                               |
 | `autoflake`              | `autoflake --quiet --in-place $PATH`                                                    |
 | `autopep8`               | `autopep8 --in-place $PATH`                                                             |
+| `bashate`                | `bashate $PATH`                                                                         |
 | `beancount-black`        | `bean-black $PATH`                                                                      |
 | `beautysh`               | `beautysh $PATH`                                                                        |
 | `bibtex-tidy`            | `bibtex-tidy -m $PATH`                                                                  |

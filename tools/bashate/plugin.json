@@ -1,0 +1,14 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "bashate",
+  "categories": ["formatter"],
+  "commands": {
+    "": {
+      "arguments": ["$PATH"]
+    }
+  },
+  "description": "Code style enforcement for bash programs",
+  "homepage": "https://github.com/openstack/bashate",
+  "languages": ["bash"],
+  "packages": {}
+}
