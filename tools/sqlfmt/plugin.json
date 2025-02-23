@@ -10,5 +10,7 @@
   "description": "sqlfmt formats your dbt SQL files so you don't have to",
   "homepage": "https://github.com/tconbeer/sqlfmt",
   "languages": ["sql"],
-  "packages": {}
+  "packages": {
+    "pip": "shandy-sqlfmt[jinjafmt]"
+  }
 }
