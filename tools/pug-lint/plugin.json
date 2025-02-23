@@ -1,0 +1,14 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "pug-lint",
+  "categories": ["linter"],
+  "commands": {
+    "": {
+      "arguments": ["$PATH"]
+    }
+  },
+  "description": "An unopinionated and configurable linter and style checker for Pug",
+  "homepage": "https://github.com/pugjs/pug-lint",
+  "languages": ["pug"],
+  "packages": {}
+}

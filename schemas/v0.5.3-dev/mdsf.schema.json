@@ -962,6 +962,11 @@
           "enum": ["ptop"]
         },
         {
+          "description": "An unopinionated and configurable linter and style checker for Pug\n\n[https://github.com/pugjs/pug-lint](https://github.com/pugjs/pug-lint)\n\n`pug-lint $PATH`",
+          "type": "string",
+          "enum": ["pug-lint"]
+        },
+        {
           "description": "Check that your Puppet manifests conform to the style guide\n\n[https://github.com/puppetlabs/puppet-lint](https://github.com/puppetlabs/puppet-lint)\n\n`puppet-lint --fix $PATH`",
           "type": "string",
           "enum": ["puppet-lint"]
