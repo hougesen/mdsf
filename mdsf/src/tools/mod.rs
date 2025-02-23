@@ -180,6 +180,7 @@ pub mod prettypst;
 pub mod prisma_format;
 pub mod protolint;
 pub mod ptop;
+pub mod pug_lint;
 pub mod puppet_lint;
 pub mod purs_tidy;
 pub mod purty;
@@ -1707,6 +1708,14 @@ pub enum Tooling {
     /// `ptop $PATH $PATH`
     Ptop,
 
+    #[serde(rename = "pug-lint")]
+    /// An unopinionated and configurable linter and style checker for Pug
+    ///
+    /// [https://github.com/pugjs/pug-lint](https://github.com/pugjs/pug-lint)
+    ///
+    /// `pug-lint $PATH`
+    PugLint,
+
     #[serde(rename = "puppet-lint")]
     /// Check that your Puppet manifests conform to the style guide
     ///
@@ -2628,6 +2637,7 @@ impl Tooling {
             Self::PrismaFormat => (&prisma_format::COMMANDS, prisma_format::set_args),
             Self::Protolint => (&protolint::COMMANDS, protolint::set_args),
             Self::Ptop => (&ptop::COMMANDS, ptop::set_args),
+            Self::PugLint => (&pug_lint::COMMANDS, pug_lint::set_args),
             Self::PuppetLint => (&puppet_lint::COMMANDS, puppet_lint::set_args),
             Self::PursTidy => (&purs_tidy::COMMANDS, purs_tidy::set_args),
             Self::Purty => (&purty::COMMANDS, purty::set_args),
@@ -2911,6 +2921,7 @@ impl AsRef<str> for Tooling {
             Self::PrismaFormat => "prisma_format",
             Self::Protolint => "protolint",
             Self::Ptop => "ptop",
+            Self::PugLint => "pug_lint",
             Self::PuppetLint => "puppet_lint",
             Self::PursTidy => "purs_tidy",
             Self::Purty => "purty",

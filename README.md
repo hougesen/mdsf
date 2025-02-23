@@ -340,7 +340,7 @@ mdsf init
 
 <!-- START_SECTION:supported-tools -->
 
-`mdsf` currently supports 253 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 254 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                                                                                    | Description                                                                                                                                   | Categories            | Languages                                                                 |
 | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- | ------------------------------------------------------------------------- |
@@ -512,6 +512,7 @@ mdsf init
 | [prisma](https://www.prisma.io/docs/orm/tools/prisma-cli)                               | Commands for interacting with the prisma ORM                                                                                                  | `formatter`           | `prisma`                                                                  |
 | [protolint](https://github.com/yoheimuta/protolint)                                     | A pluggable linter and fixer to enforce Protocol Buffer style and conventions                                                                 | `linter`              | `protobuf`                                                                |
 | [ptop](https://www.freepascal.org/tools/ptop.html)                                      | Free Pascal source formatter                                                                                                                  | `formatter`           | `pascal`                                                                  |
+| [pug-lint](https://github.com/pugjs/pug-lint)                                           | An unopinionated and configurable linter and style checker for Pug                                                                            | `linter`              | `pug`                                                                     |
 | [puppet-lint](https://github.com/puppetlabs/puppet-lint)                                | Check that your Puppet manifests conform to the style guide                                                                                   | `linter`              | `puppet`                                                                  |
 | [purs-tidy](https://github.com/natefaubion/purescript-tidy)                             | PureScript code formatter                                                                                                                     | `formatter`           | `purescript`                                                              |
 | [purty](https://gitlab.com/joneshf/purty)                                               | PureScript pretty-printer                                                                                                                     | `formatter`           | `purescript`                                                              |
@@ -604,7 +605,7 @@ mdsf init
 
 <!-- START_SECTION:supported-commands -->
 
-`mdsf` currently supports 269 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 270 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                     | Command                                                                                 |
 | ------------------------ | --------------------------------------------------------------------------------------- |
@@ -787,6 +788,7 @@ mdsf init
 | `prisma:format`          | `prisma format --schema={$PATH_STRING}`                                                 |
 | `protolint`              | `protolint lint -fix $PATH`                                                             |
 | `ptop`                   | `ptop $PATH $PATH`                                                                      |
+| `pug-lint`               | `pug-lint $PATH`                                                                        |
 | `puppet-lint`            | `puppet-lint --fix $PATH`                                                               |
 | `purs-tidy`              | `purs-tidy format-in-place $PATH`                                                       |
 | `purty`                  | `purty --write $PATH`                                                                   |
