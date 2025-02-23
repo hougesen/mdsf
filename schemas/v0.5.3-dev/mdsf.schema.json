@@ -917,6 +917,11 @@
           "enum": ["packer:validate"]
         },
         {
+          "description": "Delphi code formatter\n\n[https://github.com/integrated-application-development/pasfmt](https://github.com/integrated-application-development/pasfmt)\n\n`pasfmt $PATH`",
+          "type": "string",
+          "enum": ["pasfmt"]
+        },
+        {
           "description": "Perl::Tidy, a source code formatter for Perl\n\n[https://github.com/perltidy/perltidy](https://github.com/perltidy/perltidy)\n\n`perltidy -b $PATH`",
           "type": "string",
           "enum": ["perltidy"]
