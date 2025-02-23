@@ -340,7 +340,7 @@ mdsf init
 
 <!-- START_SECTION:supported-tools -->
 
-`mdsf` currently supports 255 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 256 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                                                                                    | Description                                                                                                                                   | Categories            | Languages                                                                 |
 | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- | ------------------------------------------------------------------------- |
@@ -547,6 +547,7 @@ mdsf init
 | [shellharden](https://github.com/anordal/shellharden)                                   | The corrective bash syntax highlighter                                                                                                        | `linter`              | `bash`, `shell`                                                           |
 | [shfmt](https://github.com/mvdan/sh)                                                    | Shell script formatter                                                                                                                        | `formatter`           | `shell`                                                                   |
 | [sleek](https://github.com/nrempel/sleek)                                               | Sleek is a CLI tool for formatting SQL. It helps you maintain a consistent style across your SQL code, enhancing readability and productivity | `formatter`           | `sql`                                                                     |
+| [slim-lint](https://github.com/sds/slim-lint)                                           | Tool for analyzing Slim templates                                                                                                             | `linter`              | `slim`                                                                    |
 | [smlfmt](https://github.com/shwestrick/smlfmt)                                          | A custom parser/auto-formatter for Standard ML                                                                                                | `formatter`           | `standard-ml`                                                             |
 | [snakefmt](https://github.com/snakemake/snakefmt)                                       | The uncompromising Snakemake code formatter                                                                                                   | `formatter`           | `snakemake`                                                               |
 | [solhint](https://github.com/protofire/solhint)                                         | Solhint is an open-source project to provide a linting utility for Solidity code                                                              | `linter`              | `solidity`                                                                |
@@ -606,7 +607,7 @@ mdsf init
 
 <!-- START_SECTION:supported-commands -->
 
-`mdsf` currently supports 271 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 272 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                     | Command                                                                                 |
 | ------------------------ | --------------------------------------------------------------------------------------- |
@@ -826,6 +827,7 @@ mdsf init
 | `shellharden`            | `shellharden --transform --replace $PATH`                                               |
 | `shfmt`                  | `shfmt --write $PATH`                                                                   |
 | `sleek`                  | `sleek $PATH`                                                                           |
+| `slim-lint`              | `slim-lint $PATH`                                                                       |
 | `smlfmt`                 | `smlfmt --force $PATH`                                                                  |
 | `snakefmt`               | `snakefmt $PATH`                                                                        |
 | `solhint`                | `solhint --quiet --fix --noPrompt $PATH`                                                |

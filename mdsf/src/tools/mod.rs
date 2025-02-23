@@ -217,6 +217,7 @@ pub mod shellcheck;
 pub mod shellharden;
 pub mod shfmt;
 pub mod sleek;
+pub mod slim_lint;
 pub mod smlfmt;
 pub mod snakefmt;
 pub mod solhint;
@@ -2005,6 +2006,14 @@ pub enum Tooling {
     /// `sleek $PATH`
     Sleek,
 
+    #[serde(rename = "slim-lint")]
+    /// Tool for analyzing Slim templates
+    ///
+    /// [https://github.com/sds/slim-lint](https://github.com/sds/slim-lint)
+    ///
+    /// `slim-lint $PATH`
+    SlimLint,
+
     #[serde(rename = "smlfmt")]
     /// A custom parser/auto-formatter for Standard ML
     ///
@@ -2686,6 +2695,7 @@ impl Tooling {
             Self::Shellharden => (&shellharden::COMMANDS, shellharden::set_args),
             Self::Shfmt => (&shfmt::COMMANDS, shfmt::set_args),
             Self::Sleek => (&sleek::COMMANDS, sleek::set_args),
+            Self::SlimLint => (&slim_lint::COMMANDS, slim_lint::set_args),
             Self::Smlfmt => (&smlfmt::COMMANDS, smlfmt::set_args),
             Self::Snakefmt => (&snakefmt::COMMANDS, snakefmt::set_args),
             Self::Solhint => (&solhint::COMMANDS, solhint::set_args),
@@ -2968,6 +2978,7 @@ impl AsRef<str> for Tooling {
             Self::Shellharden => "shellharden",
             Self::Shfmt => "shfmt",
             Self::Sleek => "sleek",
+            Self::SlimLint => "slim_lint",
             Self::Smlfmt => "smlfmt",
             Self::Snakefmt => "snakefmt",
             Self::Solhint => "solhint",
