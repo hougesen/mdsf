@@ -11,6 +11,9 @@
   "homepage": "https://github.com/Enter-tainer/typstyle",
   "languages": ["typst"],
   "packages": {
+    "brew": {
+      "name": "typstyle"
+    },
     "cargo": "typstyle"
   }
 }
