@@ -340,7 +340,7 @@ mdsf init
 
 <!-- START_SECTION:supported-tools -->
 
-`mdsf` currently supports 257 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 258 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                                                                                    | Description                                                                                                                                   | Categories            | Languages                                                                 |
 | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- | ------------------------------------------------------------------------- |
@@ -501,6 +501,7 @@ mdsf init
 | [ormolu](https://github.com/tweag/ormolu)                                               | A formatter for Haskell source code                                                                                                           | `formatter`           | `haskell`                                                                 |
 | [oxlint](https://oxc.rs/docs/guide/usage/linter.html)                                   | Oxlint is designed to catch erroneous or useless code without requiring any configurations by default                                         | `linter`              | `javascript`, `typescript`                                                |
 | [packer](https://developer.hashicorp.com/packer/docs/commands)                          | Packer is used to format HCL2 configuration files                                                                                             | `formatter`           | `hcl`                                                                     |
+| [pasfmt](https://github.com/integrated-application-development/pasfmt)                  | Delphi code formatter                                                                                                                         | `formatter`           | `delphi`, `pascal`                                                        |
 | [perltidy](https://github.com/perltidy/perltidy)                                        | Perl::Tidy, a source code formatter for Perl                                                                                                  | `formatter`           | `perl`                                                                    |
 | [pg_format](https://github.com/darold/pgFormatter)                                      | A PostgreSQL SQL syntax beautifier                                                                                                            | `formatter`           | `sql`                                                                     |
 | [php-cs-fixer](https://github.com/PHP-CS-Fixer/PHP-CS-Fixer)                            | A tool to automatically fix PHP Coding Standards issues                                                                                       | `formatter`, `linter` | `php`                                                                     |
@@ -608,7 +609,7 @@ mdsf init
 
 <!-- START_SECTION:supported-commands -->
 
-`mdsf` currently supports 275 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 276 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                     | Command                                                                                 |
 | ------------------------ | --------------------------------------------------------------------------------------- |
@@ -782,6 +783,7 @@ mdsf init
 | `packer:fix`             | `packer fix $PATH`                                                                      |
 | `packer:fmt`             | `packer fmt $PATH`                                                                      |
 | `packer:validate`        | `packer validate $PATH`                                                                 |
+| `pasfmt`                 | `pasfmt $PATH`                                                                          |
 | `perltidy`               | `perltidy -b $PATH`                                                                     |
 | `pg_format`              | `pg_format --inplace $PATH`                                                             |
 | `php-cs-fixer:fix`       | `php-cs-fixer fix $PATH`                                                                |

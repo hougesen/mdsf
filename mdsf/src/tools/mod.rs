@@ -171,6 +171,7 @@ pub mod oxlint;
 pub mod packer_fix;
 pub mod packer_fmt;
 pub mod packer_validate;
+pub mod pasfmt;
 pub mod perltidy;
 pub mod pg_format;
 pub mod php_cs_fixer_fix;
@@ -1641,6 +1642,14 @@ pub enum Tooling {
     /// `packer validate $PATH`
     PackerValidate,
 
+    #[serde(rename = "pasfmt")]
+    /// Delphi code formatter
+    ///
+    /// [https://github.com/integrated-application-development/pasfmt](https://github.com/integrated-application-development/pasfmt)
+    ///
+    /// `pasfmt $PATH`
+    Pasfmt,
+
     #[serde(rename = "perltidy")]
     /// Perl::Tidy, a source code formatter for Perl
     ///
@@ -2673,6 +2682,7 @@ impl Tooling {
             Self::PackerFix => (&packer_fix::COMMANDS, packer_fix::set_args),
             Self::PackerFmt => (&packer_fmt::COMMANDS, packer_fmt::set_args),
             Self::PackerValidate => (&packer_validate::COMMANDS, packer_validate::set_args),
+            Self::Pasfmt => (&pasfmt::COMMANDS, pasfmt::set_args),
             Self::Perltidy => (&perltidy::COMMANDS, perltidy::set_args),
             Self::PgFormat => (&pg_format::COMMANDS, pg_format::set_args),
             Self::PhpCsFixerFix => (&php_cs_fixer_fix::COMMANDS, php_cs_fixer_fix::set_args),
@@ -2962,6 +2972,7 @@ impl AsRef<str> for Tooling {
             Self::PackerFix => "packer_fix",
             Self::PackerFmt => "packer_fmt",
             Self::PackerValidate => "packer_validate",
+            Self::Pasfmt => "pasfmt",
             Self::Perltidy => "perltidy",
             Self::PgFormat => "pg_format",
             Self::PhpCsFixerFix => "php_cs_fixer_fix",
