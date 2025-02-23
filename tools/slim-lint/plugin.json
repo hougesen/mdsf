@@ -1,0 +1,16 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "slim-lint",
+  "categories": ["linter"],
+  "commands": {
+    "": {
+      "arguments": ["$PATH"]
+    }
+  },
+  "description": "Tool for analyzing Slim templates",
+  "homepage": "https://github.com/sds/slim-lint",
+  "languages": ["slim"],
+  "packages": {
+    "gem": "slim_lint"
+  }
+}
