@@ -191,6 +191,7 @@ pub mod pyment;
 pub mod qmlfmt;
 pub mod quick_lint_js;
 pub mod raco_fmt;
+pub mod reek;
 pub mod refmt;
 pub mod reformat_gherkin;
 pub mod regal_fix;
@@ -1796,6 +1797,14 @@ pub enum Tooling {
     /// `raco fmt -i $PATH`
     RacoFmt,
 
+    #[serde(rename = "reek")]
+    /// Code smell detector for Ruby
+    ///
+    /// [https://github.com/troessner/reek](https://github.com/troessner/reek)
+    ///
+    /// `reek $PATH`
+    Reek,
+
     #[serde(rename = "refmt")]
     /// refmt stands by Reason Formatter and it formats Reason programs, is a parser and pretty-printer for Reason
     ///
@@ -2648,6 +2657,7 @@ impl Tooling {
             Self::Qmlfmt => (&qmlfmt::COMMANDS, qmlfmt::set_args),
             Self::QuickLintJs => (&quick_lint_js::COMMANDS, quick_lint_js::set_args),
             Self::RacoFmt => (&raco_fmt::COMMANDS, raco_fmt::set_args),
+            Self::Reek => (&reek::COMMANDS, reek::set_args),
             Self::Refmt => (&refmt::COMMANDS, refmt::set_args),
             Self::ReformatGherkin => (&reformat_gherkin::COMMANDS, reformat_gherkin::set_args),
             Self::RegalFix => (&regal_fix::COMMANDS, regal_fix::set_args),
@@ -2932,6 +2942,7 @@ impl AsRef<str> for Tooling {
             Self::Qmlfmt => "qmlfmt",
             Self::QuickLintJs => "quick_lint_js",
             Self::RacoFmt => "raco_fmt",
+            Self::Reek => "reek",
             Self::Refmt => "refmt",
             Self::ReformatGherkin => "reformat_gherkin",
             Self::RegalFix => "regal_fix",

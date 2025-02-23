@@ -1017,6 +1017,11 @@
           "enum": ["raco:fmt"]
         },
         {
+          "description": "Code smell detector for Ruby\n\n[https://github.com/troessner/reek](https://github.com/troessner/reek)\n\n`reek $PATH`",
+          "type": "string",
+          "enum": ["reek"]
+        },
+        {
           "description": "refmt stands by Reason Formatter and it formats Reason programs, is a parser and pretty-printer for Reason\n\n[https://reasonml.github.io/docs/en/refmt](https://reasonml.github.io/docs/en/refmt)\n\n`refmt --in-place $PATH`",
           "type": "string",
           "enum": ["refmt"]
