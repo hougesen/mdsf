@@ -287,6 +287,11 @@
           "enum": ["coffeelint"]
         },
         {
+          "description": "Cppcheck is a static analysis tool for C/C++ code\n\n[https://cppcheck.sourceforge.io/](https://cppcheck.sourceforge.io/)\n\n`cppcheck $PATH`",
+          "type": "string",
+          "enum": ["cppcheck"]
+        },
+        {
           "description": "Static code checker for C++\n\n[https://github.com/cpplint/cpplint](https://github.com/cpplint/cpplint)\n\n`cpplint --quiet $PATH`",
           "type": "string",
           "enum": ["cpplint"]

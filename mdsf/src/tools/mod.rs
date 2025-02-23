@@ -45,6 +45,7 @@ pub mod cmake_format;
 pub mod codeql_query_format;
 pub mod codespell;
 pub mod coffeelint;
+pub mod cppcheck;
 pub mod cpplint;
 pub mod crlfmt;
 pub mod crystal_format;
@@ -625,6 +626,14 @@ pub enum Tooling {
     ///
     /// `coffeelint -q -f $PATH`
     Coffeelint,
+
+    #[serde(rename = "cppcheck")]
+    /// Cppcheck is a static analysis tool for C/C++ code
+    ///
+    /// [https://cppcheck.sourceforge.io/](https://cppcheck.sourceforge.io/)
+    ///
+    /// `cppcheck $PATH`
+    Cppcheck,
 
     #[serde(rename = "cpplint")]
     /// Static code checker for C++
@@ -2478,6 +2487,7 @@ impl Tooling {
             ),
             Self::Codespell => (&codespell::COMMANDS, codespell::set_args),
             Self::Coffeelint => (&coffeelint::COMMANDS, coffeelint::set_args),
+            Self::Cppcheck => (&cppcheck::COMMANDS, cppcheck::set_args),
             Self::Cpplint => (&cpplint::COMMANDS, cpplint::set_args),
             Self::Crlfmt => (&crlfmt::COMMANDS, crlfmt::set_args),
             Self::CrystalFormat => (&crystal_format::COMMANDS, crystal_format::set_args),
@@ -2766,6 +2776,7 @@ impl AsRef<str> for Tooling {
             Self::CodeqlQueryFormat => "codeql_query_format",
             Self::Codespell => "codespell",
             Self::Coffeelint => "coffeelint",
+            Self::Cppcheck => "cppcheck",
             Self::Cpplint => "cpplint",
             Self::Crlfmt => "crlfmt",
             Self::CrystalFormat => "crystal_format",
