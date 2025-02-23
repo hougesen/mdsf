@@ -340,7 +340,7 @@ mdsf init
 
 <!-- START_SECTION:supported-tools -->
 
-`mdsf` currently supports 256 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 257 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                                                                                    | Description                                                                                                                                   | Categories            | Languages                                                                 |
 | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- | ------------------------------------------------------------------------- |
@@ -469,6 +469,7 @@ mdsf init
 | [luacheck](https://github.com/lunarmodules/luacheck)                                    | A tool for linting and static analysis of Lua code                                                                                            | `formatter`           | `lua`                                                                     |
 | [luaformatter](https://github.com/Koihik/LuaFormatter)                                  | Code formatter for Lua                                                                                                                        | `formatter`           | `lua`                                                                     |
 | [mado](https://github.com/akiomik/mado)                                                 | A fast Markdown linter written in Rust                                                                                                        | `linter`              | `markdown`                                                                |
+| [mago](https://github.com/carthage-software/mago)                                       | A fast linter and formatter for PHP                                                                                                           | `formatter`, `linter` | `php`                                                                     |
 | [markdownfmt](https://github.com/shurcooL/markdownfmt)                                  | Like gofmt, but for Markdown                                                                                                                  | `formatter`           | `markdown`                                                                |
 | [markdownlint-cli2](https://github.com/davidanson/markdownlint-cli2)                    | A fast, flexible, configuration-based command-line interface for linting Markdown/CommonMark files with the markdownlint library              | `linter`              | `markdown`                                                                |
 | [markdownlint](https://github.com/davidanson/markdownlint)                              | A Node.js style checker and lint tool for Markdown/CommonMark files                                                                           | `linter`              | `markdown`                                                                |
@@ -607,7 +608,7 @@ mdsf init
 
 <!-- START_SECTION:supported-commands -->
 
-`mdsf` currently supports 272 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 275 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                     | Command                                                                                 |
 | ------------------------ | --------------------------------------------------------------------------------------- |
@@ -745,6 +746,9 @@ mdsf init
 | `luacheck`               | `luacheck $PATH`                                                                        |
 | `luaformatter`           | `lua-format -i $PATH`                                                                   |
 | `mado:check`             | `mado check $PATH`                                                                      |
+| `mago:fix`               | `mago fix $PATH`                                                                        |
+| `mago:format`            | `mago format $PATH`                                                                     |
+| `mago:lint`              | `mago lint $PATH`                                                                       |
 | `markdownfmt`            | `markdownfmt -w $PATH`                                                                  |
 | `markdownlint-cli2`      | `markdownlint-cli2 --fix $PATH`                                                         |
 | `markdownlint`           | `markdownlint --fix $PATH`                                                              |
