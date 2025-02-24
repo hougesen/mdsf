@@ -277,6 +277,11 @@
           "enum": ["clang-tidy"]
         },
         {
+          "description": "Static analyzer and linter for Clojure code that sparks joy\n\n[https://github.com/clj-kondo/clj-kondo](https://github.com/clj-kondo/clj-kondo)\n\n`clj-kondo --lint $PATH`",
+          "type": "string",
+          "enum": ["clj-kondo"]
+        },
+        {
           "description": "A tool for formatting Clojure code\n\n[https://github.com/weavejester/cljfmt](https://github.com/weavejester/cljfmt)\n\n`cljfmt fix $PATH`",
           "type": "string",
           "enum": ["cljfmt:fix"]

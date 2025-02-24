@@ -340,7 +340,7 @@ mdsf init
 
 <!-- START_SECTION:supported-tools -->
 
-`mdsf` currently supports 261 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 262 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                                                                                    | Description                                                                                                                                   | Categories            | Languages                                                                 |
 | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- | ------------------------------------------------------------------------- |
@@ -381,6 +381,7 @@ mdsf init
 | [checkmake](https://github.com/mrtazz/checkmake)                                        | Experimental linter/analyzer for Makefiles                                                                                                    | `linter`              | `makefile`                                                                |
 | [clang-format](https://clang.llvm.org/docs/ClangFormat.html)                            | A tool to format C/C++/Java/JavaScript/JSON/Objective-C/Protobuf/C# code                                                                      | `formatter`           | `c#`, `c++`, `c`, `java`, `javascript`, `json`, `objective-c`, `protobuf` |
 | [clang-tidy](https://clang.llvm.org/extra/clang-tidy/)                                  | clang-tidy is a clang-based C++ “linter” tool                                                                                                 | `linter`              | `c++`                                                                     |
+| [clj-kondo](https://github.com/clj-kondo/clj-kondo)                                     | Static analyzer and linter for Clojure code that sparks joy                                                                                   | `linter`              | `clojure`, `clojurescript`                                                |
 | [cljfmt](https://github.com/weavejester/cljfmt)                                         | A tool for formatting Clojure code                                                                                                            | `formatter`           | `clojure`                                                                 |
 | [cljstyle](https://github.com/greglook/cljstyle)                                        | A tool for formatting Clojure code                                                                                                            | `formatter`           | `clojure`                                                                 |
 | [cmake-format](https://cmake-format.readthedocs.io/en/latest/cmake-format.html)         | cmake-format can format your listfiles nicely so that they don't look like crap                                                               | `formatter`           | `cmake`                                                                   |
@@ -612,7 +613,7 @@ mdsf init
 
 <!-- START_SECTION:supported-commands -->
 
-`mdsf` currently supports 281 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 282 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                     | Command                                                                                 |
 | ------------------------ | --------------------------------------------------------------------------------------- |
@@ -658,6 +659,7 @@ mdsf init
 | `checkmake`              | `checkmake $PATH`                                                                       |
 | `clang-format`           | `clang-format -i $PATH`                                                                 |
 | `clang-tidy`             | `clang-tidy --fix $PATH`                                                                |
+| `clj-kondo`              | `clj-kondo --lint $PATH`                                                                |
 | `cljfmt:fix`             | `cljfmt fix $PATH`                                                                      |
 | `cljstyle`               | `cljstyle fix $PATH`                                                                    |
 | `cmake-format`           | `cmake-format -i $PATH`                                                                 |

@@ -43,6 +43,7 @@ pub mod cfn_lint;
 pub mod checkmake;
 pub mod clang_format;
 pub mod clang_tidy;
+pub mod clj_kondo;
 pub mod cljfmt_fix;
 pub mod cljstyle;
 pub mod cmake_format;
@@ -622,6 +623,14 @@ pub enum Tooling {
     ///
     /// `clang-tidy --fix $PATH`
     ClangTidy,
+
+    #[serde(rename = "clj-kondo")]
+    /// Static analyzer and linter for Clojure code that sparks joy
+    ///
+    /// [https://github.com/clj-kondo/clj-kondo](https://github.com/clj-kondo/clj-kondo)
+    ///
+    /// `clj-kondo --lint $PATH`
+    CljKondo,
 
     #[serde(rename = "cljfmt:fix")]
     /// A tool for formatting Clojure code
@@ -2590,6 +2599,7 @@ impl Tooling {
             Self::Checkmake => (&checkmake::COMMANDS, checkmake::set_args),
             Self::ClangFormat => (&clang_format::COMMANDS, clang_format::set_args),
             Self::ClangTidy => (&clang_tidy::COMMANDS, clang_tidy::set_args),
+            Self::CljKondo => (&clj_kondo::COMMANDS, clj_kondo::set_args),
             Self::CljfmtFix => (&cljfmt_fix::COMMANDS, cljfmt_fix::set_args),
             Self::Cljstyle => (&cljstyle::COMMANDS, cljstyle::set_args),
             Self::CmakeFormat => (&cmake_format::COMMANDS, cmake_format::set_args),
@@ -2894,6 +2904,7 @@ impl AsRef<str> for Tooling {
             Self::Checkmake => "checkmake",
             Self::ClangFormat => "clang_format",
             Self::ClangTidy => "clang_tidy",
+            Self::CljKondo => "clj_kondo",
             Self::CljfmtFix => "cljfmt_fix",
             Self::Cljstyle => "cljstyle",
             Self::CmakeFormat => "cmake_format",
