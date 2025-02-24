@@ -273,6 +273,7 @@ pub mod veryl_fmt;
 pub mod vhdl_style_guide;
 pub mod wa_fmt;
 pub mod wfindent;
+pub mod write_good;
 pub mod xmlformat;
 pub mod xmllint;
 pub mod xo;
@@ -2464,6 +2465,14 @@ pub enum Tooling {
     /// `wfindent $PATH`
     Wfindent,
 
+    #[serde(rename = "write-good")]
+    /// Naive linter for English prose
+    ///
+    /// [https://github.com/btford/write-good](https://github.com/btford/write-good)
+    ///
+    /// `write-good $PATH`
+    WriteGood,
+
     #[serde(rename = "xmlformat")]
     /// Format and compress XML documents
     ///
@@ -2841,6 +2850,7 @@ impl Tooling {
             Self::VhdlStyleGuide => (&vhdl_style_guide::COMMANDS, vhdl_style_guide::set_args),
             Self::WaFmt => (&wa_fmt::COMMANDS, wa_fmt::set_args),
             Self::Wfindent => (&wfindent::COMMANDS, wfindent::set_args),
+            Self::WriteGood => (&write_good::COMMANDS, write_good::set_args),
             Self::Xmlformat => (&xmlformat::COMMANDS, xmlformat::set_args),
             Self::Xmllint => (&xmllint::COMMANDS, xmllint::set_args),
             Self::Xo => (&xo::COMMANDS, xo::set_args),
@@ -3134,6 +3144,7 @@ impl AsRef<str> for Tooling {
             Self::VhdlStyleGuide => "vhdl_style_guide",
             Self::WaFmt => "wa_fmt",
             Self::Wfindent => "wfindent",
+            Self::WriteGood => "write_good",
             Self::Xmlformat => "xmlformat",
             Self::Xmllint => "xmllint",
             Self::Xo => "xo",

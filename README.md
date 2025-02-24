@@ -340,7 +340,7 @@ mdsf init
 
 <!-- START_SECTION:supported-tools -->
 
-`mdsf` currently supports 262 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 263 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                                                                                    | Description                                                                                                                                   | Categories            | Languages                                                                 |
 | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- | ------------------------------------------------------------------------- |
@@ -596,6 +596,7 @@ mdsf init
 | [vhdl-style-guide](https://github.com/jeremiah-c-leary/vhdl-style-guide)                | Style guide enforcement for VHDL                                                                                                              | `formatter`           | `vhdl`                                                                    |
 | [wa](https://github.com/wa-lang/wa/)                                                    | Formatter for the wa programming language                                                                                                     | `formatter`           | `wa`                                                                      |
 | [wfindent](https://github.com/wvermin/findent)                                          | Indents and optionally converts Fortran program sources                                                                                       | `formatter`           | `fortran`                                                                 |
+| [write-good](https://github.com/btford/write-good)                                      | Naive linter for English prose                                                                                                                | `linter`              |                                                                           |
 | [xmlformat](https://github.com/pamoller/xmlformatter)                                   | Format and compress XML documents                                                                                                             | `formatter`           | `xml`                                                                     |
 | [xmllint](https://gnome.pages.gitlab.gnome.org/libxml2/xmllint.html)                    | XML linter                                                                                                                                    | `linter`              | `xml`                                                                     |
 | [xo](https://github.com/xojs/xo)                                                        | JavaScript/TypeScript linter (ESLint wrapper) with great defaults                                                                             | `linter`              | `javascript`, `typescript`                                                |
@@ -613,7 +614,7 @@ mdsf init
 
 <!-- START_SECTION:supported-commands -->
 
-`mdsf` currently supports 282 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 283 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                     | Command                                                                                 |
 | ------------------------ | --------------------------------------------------------------------------------------- |
@@ -889,6 +890,7 @@ mdsf init
 | `vhdl-style-guide`       | `vsg -f $PATH --fix`                                                                    |
 | `wa:fmt`                 | `wa fmt $PATH`                                                                          |
 | `wfindent`               | `wfindent $PATH`                                                                        |
+| `write-good`             | `write-good $PATH`                                                                      |
 | `xmlformat`              | `xmlformat --overwrite $PATH`                                                           |
 | `xmllint`                | `xmllint --format $PATH --output $PATH`                                                 |
 | `xo`                     | `xo --fix $PATH`                                                                        |

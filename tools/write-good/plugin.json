@@ -1,0 +1,16 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "write-good",
+  "categories": ["linter"],
+  "commands": {
+    "": {
+      "arguments": ["$PATH"]
+    }
+  },
+  "description": "Naive linter for English prose",
+  "homepage": "https://github.com/btford/write-good",
+  "languages": [],
+  "packages": {
+    "npm": "write-good"
+  }
+}
