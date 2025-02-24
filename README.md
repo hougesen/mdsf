@@ -116,7 +116,7 @@ mdsf can be run using the VSCode extension.
 <!-- START_SECTION:base-command-help -->
 
 ```
-mdsf 0.5.3-dev
+mdsf 0.5.3
 Format, and lint, markdown code snippets using your favorite tools
 Mads Hougesen <mads@mhouge.dk>
 
