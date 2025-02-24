@@ -222,6 +222,11 @@
           "enum": ["buf:format"]
         },
         {
+          "description": "Lint Protobuf files\n\n[https://buf.build/docs/lint/overview/](https://buf.build/docs/lint/overview/)\n\n`buf lint $PATH`",
+          "type": "string",
+          "enum": ["buf:lint"]
+        },
+        {
           "description": "A bazel BUILD file formatter and\n\n[https://github.com/bazelbuild/buildtools](https://github.com/bazelbuild/buildtools)\n\n`buildifier $PATH`",
           "type": "string",
           "enum": ["buildifier"]
