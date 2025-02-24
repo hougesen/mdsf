@@ -260,6 +260,7 @@ pub mod topiary;
 pub mod ts_standard;
 pub mod tsqllint;
 pub mod twig_cs_fixer_lint;
+pub mod twigcs;
 pub mod typos;
 pub mod typstfmt;
 pub mod typstyle;
@@ -2363,6 +2364,14 @@ pub enum Tooling {
     /// `twig-cs-fixer lint $PATH --fix --no-interaction --quiet`
     TwigCsFixerLint,
 
+    #[serde(rename = "twigcs")]
+    /// The missing checkstyle for twig
+    ///
+    /// [https://github.com/friendsoftwig/twigcs](https://github.com/friendsoftwig/twigcs)
+    ///
+    /// `twigcs $PATH`
+    Twigcs,
+
     #[serde(rename = "typos")]
     /// Source code spell checker
     ///
@@ -2855,6 +2864,7 @@ impl Tooling {
             Self::TsStandard => (&ts_standard::COMMANDS, ts_standard::set_args),
             Self::Tsqllint => (&tsqllint::COMMANDS, tsqllint::set_args),
             Self::TwigCsFixerLint => (&twig_cs_fixer_lint::COMMANDS, twig_cs_fixer_lint::set_args),
+            Self::Twigcs => (&twigcs::COMMANDS, twigcs::set_args),
             Self::Typos => (&typos::COMMANDS, typos::set_args),
             Self::Typstfmt => (&typstfmt::COMMANDS, typstfmt::set_args),
             Self::Typstyle => (&typstyle::COMMANDS, typstyle::set_args),
@@ -3151,6 +3161,7 @@ impl AsRef<str> for Tooling {
             Self::TsStandard => "ts_standard",
             Self::Tsqllint => "tsqllint",
             Self::TwigCsFixerLint => "twig_cs_fixer_lint",
+            Self::Twigcs => "twigcs",
             Self::Typos => "typos",
             Self::Typstfmt => "typstfmt",
             Self::Typstyle => "typstyle",
