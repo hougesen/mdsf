@@ -40,6 +40,7 @@ pub mod cabal_prettify;
 pub mod caddy_fmt;
 pub mod caramel_fmt;
 pub mod cfn_lint;
+pub mod checkmake;
 pub mod clang_format;
 pub mod clang_tidy;
 pub mod cljfmt_fix;
@@ -597,6 +598,14 @@ pub enum Tooling {
     ///
     /// `cfn-lint $PATH`
     CfnLint,
+
+    #[serde(rename = "checkmake")]
+    /// Experimental linter/analyzer for Makefiles
+    ///
+    /// [https://github.com/mrtazz/checkmake](https://github.com/mrtazz/checkmake)
+    ///
+    /// `checkmake $PATH`
+    Checkmake,
 
     #[serde(rename = "clang-format")]
     /// A tool to format C/C++/Java/JavaScript/JSON/Objective-C/Protobuf/C# code
@@ -2578,6 +2587,7 @@ impl Tooling {
             Self::CaddyFmt => (&caddy_fmt::COMMANDS, caddy_fmt::set_args),
             Self::CaramelFmt => (&caramel_fmt::COMMANDS, caramel_fmt::set_args),
             Self::CfnLint => (&cfn_lint::COMMANDS, cfn_lint::set_args),
+            Self::Checkmake => (&checkmake::COMMANDS, checkmake::set_args),
             Self::ClangFormat => (&clang_format::COMMANDS, clang_format::set_args),
             Self::ClangTidy => (&clang_tidy::COMMANDS, clang_tidy::set_args),
             Self::CljfmtFix => (&cljfmt_fix::COMMANDS, cljfmt_fix::set_args),
@@ -2881,6 +2891,7 @@ impl AsRef<str> for Tooling {
             Self::CaddyFmt => "caddy_fmt",
             Self::CaramelFmt => "caramel_fmt",
             Self::CfnLint => "cfn_lint",
+            Self::Checkmake => "checkmake",
             Self::ClangFormat => "clang_format",
             Self::ClangTidy => "clang_tidy",
             Self::CljfmtFix => "cljfmt_fix",

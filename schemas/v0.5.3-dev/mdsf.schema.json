@@ -262,6 +262,11 @@
           "enum": ["cfn-lint"]
         },
         {
+          "description": "Experimental linter/analyzer for Makefiles\n\n[https://github.com/mrtazz/checkmake](https://github.com/mrtazz/checkmake)\n\n`checkmake $PATH`",
+          "type": "string",
+          "enum": ["checkmake"]
+        },
+        {
           "description": "A tool to format C/C++/Java/JavaScript/JSON/Objective-C/Protobuf/C# code\n\n[https://clang.llvm.org/docs/ClangFormat.html](https://clang.llvm.org/docs/ClangFormat.html)\n\n`clang-format -i $PATH`",
           "type": "string",
           "enum": ["clang-format"]

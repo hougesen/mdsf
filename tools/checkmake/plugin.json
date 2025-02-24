@@ -1,0 +1,16 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "checkmake",
+  "categories": ["linter"],
+  "commands": {
+    "": {
+      "arguments": ["$PATH"]
+    }
+  },
+  "description": "Experimental linter/analyzer for Makefiles",
+  "homepage": "https://github.com/mrtazz/checkmake",
+  "languages": ["makefile"],
+  "packages": {
+    "go": "github.com/mrtazz/checkmake/cmd/checkmake@latest"
+  }
+}
