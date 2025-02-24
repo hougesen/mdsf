@@ -25,6 +25,9 @@
         "$ref": "#/definitions/ToolCommand"
       }
     },
+    "deprecated": {
+      "type": "boolean"
+    },
     "description": {
       "default": "",
       "type": "string"
@@ -67,6 +70,9 @@
           "items": {
             "type": "string"
           }
+        },
+        "deprecated": {
+          "type": "boolean"
         },
         "description": {
           "type": ["string", "null"]

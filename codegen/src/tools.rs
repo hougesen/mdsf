@@ -7,6 +7,11 @@ const INDENT: &str = "    ";
 const GENERATED_FILE_COMMENT: &str =
     "///\n/// THIS FILE IS GENERATED USING CODE - DO NOT EDIT MANUALLY\n///";
 
+#[inline]
+const fn is_false(b: &bool) -> bool {
+    !(*b)
+}
+
 #[derive(Debug, serde::Deserialize, schemars::JsonSchema, Hash, Clone, serde::Serialize)]
 #[serde(deny_unknown_fields)]
 pub struct ToolCommandTest {
@@ -25,6 +30,9 @@ pub struct ToolCommand {
 
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
+
+    #[serde(default, skip_serializing_if = "is_false")]
+    pub deprecated: bool,
 
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub homepage: Option<String>,
@@ -125,6 +133,9 @@ pub struct Tool {
     #[serde(default)]
     pub description: String,
 
+    #[serde(default, skip_serializing_if = "is_false")]
+    pub deprecated: bool,
+
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub disable_ci_tests: Option<bool>,
 
@@ -158,7 +169,11 @@ pub struct GeneratedCommand {
     pub description: String,
 
     pub homepage: String,
+
+    pub deprecated: bool,
 }
+
+const DEPRECATED_ATTRIBUTE: &str = "\n    #[deprecated]\n";
 
 impl Tool {
     fn get_command_name(&self, cmd: &str) -> String {
@@ -351,6 +366,7 @@ mod test_{module_name} {{{tests}}}
                 } else {
                     description
                 },
+                deprecated: options.deprecated || self.deprecated,
             });
         }
 
@@ -437,12 +453,17 @@ impl AsRef<str> for Tooling {
             };
 
             enum_values.insert(format!(
-                "{INDENT}#[serde(rename = \"{rename}\")]
+                "{INDENT}#[serde(rename = \"{rename}\")]{maybe_deprecated}
 {description}
 {homepage}
 {INDENT}/// `{bin} {args}`
 {INDENT}{enum_value},",
                 rename = command.serde_rename,
+                maybe_deprecated = if command.deprecated {
+                    DEPRECATED_ATTRIBUTE
+                } else {
+                    ""
+                },
                 bin = plugin.binary,
                 args = command.args.join(" ")
             ));
