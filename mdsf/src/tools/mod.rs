@@ -231,6 +231,7 @@ pub mod slim_lint;
 pub mod smlfmt;
 pub mod snakefmt;
 pub mod solhint;
+pub mod sphinx_lint;
 pub mod sql_formatter;
 pub mod sqlfluff_fix;
 pub mod sqlfluff_format;
@@ -2132,6 +2133,14 @@ pub enum Tooling {
     /// `solhint --quiet --fix --noPrompt $PATH`
     Solhint,
 
+    #[serde(rename = "sphinx-lint")]
+    /// Check for stylistic and formal issues in .rst and .py files included in the documentation
+    ///
+    /// [https://github.com/sphinx-contrib/sphinx-lint](https://github.com/sphinx-contrib/sphinx-lint)
+    ///
+    /// `sphinx-lint $PATH`
+    SphinxLint,
+
     #[serde(rename = "sql-formatter")]
     /// A whitespace formatter for different query languages
     ///
@@ -2835,6 +2844,7 @@ impl Tooling {
             Self::Smlfmt => (&smlfmt::COMMANDS, smlfmt::set_args),
             Self::Snakefmt => (&snakefmt::COMMANDS, snakefmt::set_args),
             Self::Solhint => (&solhint::COMMANDS, solhint::set_args),
+            Self::SphinxLint => (&sphinx_lint::COMMANDS, sphinx_lint::set_args),
             Self::SqlFormatter => (&sql_formatter::COMMANDS, sql_formatter::set_args),
             Self::SqlfluffFix => (&sqlfluff_fix::COMMANDS, sqlfluff_fix::set_args),
             Self::SqlfluffFormat => (&sqlfluff_format::COMMANDS, sqlfluff_format::set_args),
@@ -3132,6 +3142,7 @@ impl AsRef<str> for Tooling {
             Self::Smlfmt => "smlfmt",
             Self::Snakefmt => "snakefmt",
             Self::Solhint => "solhint",
+            Self::SphinxLint => "sphinx_lint",
             Self::SqlFormatter => "sql_formatter",
             Self::SqlfluffFix => "sqlfluff_fix",
             Self::SqlfluffFormat => "sqlfluff_format",

@@ -1,0 +1,16 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "sphinx-lint",
+  "categories": ["linter"],
+  "commands": {
+    "": {
+      "arguments": ["$PATH"]
+    }
+  },
+  "description": "Check for stylistic and formal issues in .rst and .py files included in the documentation",
+  "homepage": "https://github.com/sphinx-contrib/sphinx-lint",
+  "languages": ["python", "restructredtext"],
+  "packages": {
+    "pip": "sphinx-lint"
+  }
+}
