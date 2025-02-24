@@ -257,6 +257,11 @@
           "enum": ["caramel:fmt"]
         },
         {
+          "description": "CloudFormation Linter\n\n[https://github.com/aws-cloudformation/cfn-lint](https://github.com/aws-cloudformation/cfn-lint)\n\n`cfn-lint $PATH`",
+          "type": "string",
+          "enum": ["cfn-lint"]
+        },
+        {
           "description": "A tool to format C/C++/Java/JavaScript/JSON/Objective-C/Protobuf/C# code\n\n[https://clang.llvm.org/docs/ClangFormat.html](https://clang.llvm.org/docs/ClangFormat.html)\n\n`clang-format -i $PATH`",
           "type": "string",
           "enum": ["clang-format"]
