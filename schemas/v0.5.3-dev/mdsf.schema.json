@@ -1362,6 +1362,11 @@
           "enum": ["twig-cs-fixer:lint"]
         },
         {
+          "description": "The missing checkstyle for twig\n\n[https://github.com/friendsoftwig/twigcs](https://github.com/friendsoftwig/twigcs)\n\n`twigcs $PATH`",
+          "type": "string",
+          "enum": ["twigcs"]
+        },
+        {
           "description": "Source code spell checker\n\n[https://github.com/crate-ci/typos](https://github.com/crate-ci/typos)\n\n`typos -w --no-ignore --hidden $PATH`",
           "type": "string",
           "enum": ["typos"]

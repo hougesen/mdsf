@@ -340,7 +340,7 @@ mdsf init
 
 <!-- START_SECTION:supported-tools -->
 
-`mdsf` currently supports 264 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 265 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                                                                                    | Description                                                                                                                                   | Categories            | Languages                                                                 |
 | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- | ------------------------------------------------------------------------- |
@@ -583,6 +583,7 @@ mdsf init
 | [ts-standard](https://github.com/standard/ts-standard)                                  | Typescript style guide, linter, and formatter using StandardJS                                                                                | `formatter`, `linter` | `typescript`                                                              |
 | [tsqllint](https://github.com/tsqllint/tsqllint)                                        | Configurable linting for TSQL                                                                                                                 | `linter`              | `sql`                                                                     |
 | [twig-cs-fixer](https://github.com/VincentLanglet/Twig-CS-Fixer)                        | A tool to automatically fix Twig Coding Standards issues                                                                                      | `formatter`, `linter` | `twig`                                                                    |
+| [twigcs](https://github.com/friendsoftwig/twigcs)                                       | The missing checkstyle for twig                                                                                                               | `linter`              | `php`, `twig`                                                             |
 | [typos](https://github.com/crate-ci/typos)                                              | Source code spell checker                                                                                                                     | `autocorrection`      |                                                                           |
 | [typstfmt](https://github.com/astrale-sharp/typstfmt)                                   | Basic formatter for the Typst language                                                                                                        | `formatter`           | `typst`                                                                   |
 | [typstyle](https://github.com/Enter-tainer/typstyle)                                    | Beautiful and reliable typst code formatter                                                                                                   | `formatter`           | `typst`                                                                   |
@@ -591,7 +592,7 @@ mdsf init
 | [unimport](https://github.com/hakancelikdev/unimport)                                   | The ultimate linter and formatter for removing unused import statements in your code                                                          | `formatter`           | `python`                                                                  |
 | [usort](https://github.com/facebook/usort)                                              | Safe, minimal import sorting for Python projects                                                                                              | `formatter`           | `python`                                                                  |
 | [v](https://vlang.io/)                                                                  | Tooling for V lang                                                                                                                            | `formatter`           | `v`                                                                       |
-| [vacuum](https://github.com/daveshanley/vacuum)                                         | vacuum is the worlds fastest OpenAPI 3, OpenAPI 2 / Swagger linter and quality analysis tool                                                  | `linter`              | `openapi`                                                                 |
+| [vacuum](https://github.com/daveshanley/vacuum)                                         | vacuum is the worlds fastest OpenAPI 3, OpenAPI 2 / Swagger linter and quality analysis tool                                                  | `linter`              | `json`, `openapi`, `yaml`                                                 |
 | [veryl](https://github.com/veryl-lang/veryl)                                            | Veryl: A Modern Hardware Description Language                                                                                                 | `formatter`           | `veryl`                                                                   |
 | [vhdl-style-guide](https://github.com/jeremiah-c-leary/vhdl-style-guide)                | Style guide enforcement for VHDL                                                                                                              | `formatter`           | `vhdl`                                                                    |
 | [vint](https://github.com/vimjas/vint)                                                  | Lint Vim script                                                                                                                               | `linter`              | `vimscript`                                                               |
@@ -615,7 +616,7 @@ mdsf init
 
 <!-- START_SECTION:supported-commands -->
 
-`mdsf` currently supports 285 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 286 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                     | Command                                                                                 |
 | ------------------------ | --------------------------------------------------------------------------------------- |
@@ -878,6 +879,7 @@ mdsf init
 | `ts-standard`            | `ts-standard --fix $PATH`                                                               |
 | `tsqllint`               | `tsqllint --fix $PATH`                                                                  |
 | `twig-cs-fixer:lint`     | `twig-cs-fixer lint $PATH --fix --no-interaction --quiet`                               |
+| `twigcs`                 | `twigcs $PATH`                                                                          |
 | `typos`                  | `typos -w --no-ignore --hidden $PATH`                                                   |
 | `typstfmt`               | `typstfmt $PATH`                                                                        |
 | `typstyle`               | `typstyle -i $PATH`                                                                     |

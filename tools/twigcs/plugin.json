@@ -1,0 +1,19 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "twigcs",
+  "categories": ["linter"],
+  "commands": {
+    "": {
+      "arguments": ["$PATH"]
+    }
+  },
+  "description": "The missing checkstyle for twig",
+  "homepage": "https://github.com/friendsoftwig/twigcs",
+  "languages": ["php", "twig"],
+  "packages": {
+    "composer": {
+      "binary": "twigcs",
+      "package": "friendsoftwig/twigcs"
+    }
+  }
+}
