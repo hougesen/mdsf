@@ -10,5 +10,7 @@
   "description": "A command-line utility that checks for best practices in SaltStack",
   "homepage": "https://github.com/warpnet/salt-lint",
   "languages": ["salt"],
-  "packages": {}
+  "packages": {
+    "pip": "salt-lint"
+  }
 }

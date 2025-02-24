@@ -1102,6 +1102,11 @@
           "enum": ["rescript:format"]
         },
         {
+          "description": "~6x faster, stricter, configurable, extensible, and beautiful drop-in replacement for golint\n\n[https://github.com/mgechev/revive](https://github.com/mgechev/revive)\n\n`revive $PATH`",
+          "type": "string",
+          "enum": ["revive"]
+        },
+        {
           "description": "Tools for the roc programming language\n\n[https://github.com/roc-lang/roc](https://github.com/roc-lang/roc)\n\n`roc format $PATH`",
           "type": "string",
           "enum": ["roc:format"]
