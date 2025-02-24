@@ -340,7 +340,7 @@ mdsf init
 
 <!-- START_SECTION:supported-tools -->
 
-`mdsf` currently supports 260 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 261 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                                                                                    | Description                                                                                                                                   | Categories            | Languages                                                                 |
 | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- | ------------------------------------------------------------------------- |
@@ -378,6 +378,7 @@ mdsf init
 | [caddy](https://caddyserver.com/docs/command-line#caddy-fmt)                            | Formats or prettifies a Caddyfile                                                                                                             | `formatter`           | `caddy`                                                                   |
 | [caramel](https://caramel.run/)                                                         | Formatter for the Caramel programming language                                                                                                | `formatter`           | `caramel`                                                                 |
 | [cfn-lint](https://github.com/aws-cloudformation/cfn-lint)                              | CloudFormation Linter                                                                                                                         | `linter`              | `cloudformation`, `json`, `yaml`                                          |
+| [checkmake](https://github.com/mrtazz/checkmake)                                        | Experimental linter/analyzer for Makefiles                                                                                                    | `linter`              | `makefile`                                                                |
 | [clang-format](https://clang.llvm.org/docs/ClangFormat.html)                            | A tool to format C/C++/Java/JavaScript/JSON/Objective-C/Protobuf/C# code                                                                      | `formatter`           | `c#`, `c++`, `c`, `java`, `javascript`, `json`, `objective-c`, `protobuf` |
 | [clang-tidy](https://clang.llvm.org/extra/clang-tidy/)                                  | clang-tidy is a clang-based C++ “linter” tool                                                                                                 | `linter`              | `c++`                                                                     |
 | [cljfmt](https://github.com/weavejester/cljfmt)                                         | A tool for formatting Clojure code                                                                                                            | `formatter`           | `clojure`                                                                 |
@@ -611,7 +612,7 @@ mdsf init
 
 <!-- START_SECTION:supported-commands -->
 
-`mdsf` currently supports 280 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 281 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                     | Command                                                                                 |
 | ------------------------ | --------------------------------------------------------------------------------------- |
@@ -654,6 +655,7 @@ mdsf init
 | `caddy:fmt`              | `caddy fmt $PATH -w`                                                                    |
 | `caramel:fmt`            | `caramel fmt $PATH`                                                                     |
 | `cfn-lint`               | `cfn-lint $PATH`                                                                        |
+| `checkmake`              | `checkmake $PATH`                                                                       |
 | `clang-format`           | `clang-format -i $PATH`                                                                 |
 | `clang-tidy`             | `clang-tidy --fix $PATH`                                                                |
 | `cljfmt:fix`             | `cljfmt fix $PATH`                                                                      |
