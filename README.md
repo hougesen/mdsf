@@ -463,7 +463,7 @@ mdsf init
 | [kdoc-formatter](https://github.com/tnorbye/kdoc-formatter)                             | Reformats Kotlin KDoc comments, reflowing text and other cleanup                                                                              | `formatter`           | `kotlin`                                                                  |
 | [ktfmt](https://github.com/facebook/ktfmt)                                              | program that reformats Kotlin source code to comply with the common community standard for Kotlin code conventions                            | `formatter`           | `kotlin`                                                                  |
 | [ktlint](https://github.com/pinterest/ktlint)                                           | An anti-bikeshedding Kotlin linter with built-in formatter                                                                                    | `linter`              | `kotlin`                                                                  |
-| [kulala-fmt](https://github.com/mistweaverco/kulala-fmt)                                | An opinionated 🦄 .http and .rest 🐼 files linter 💄 and formatter ⚡                                                                         | `formatter`           | `http`                                                                    |
+| [kulala-fmt](https://github.com/mistweaverco/kulala-fmt)                                | An opinionated .http and .rest file linter and formatter                                                                                      | `formatter`           | `http`                                                                    |
 | [leptosfmt](https://github.com/bram209/leptosfmt)                                       | A formatter for the leptos view! macro                                                                                                        | `formatter`           | `rust`                                                                    |
 | [liquidsoap-prettier](https://github.com/savonet/liquidsoap-prettier)                   | Prettier plugin for liquidsoap script                                                                                                         | `formatter`           | `liquidsoap`                                                              |
 | [luacheck](https://github.com/lunarmodules/luacheck)                                    | A tool for linting and static analysis of Lua code                                                                                            | `formatter`           | `lua`                                                                     |
@@ -609,7 +609,7 @@ mdsf init
 
 <!-- START_SECTION:supported-commands -->
 
-`mdsf` currently supports 276 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 277 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                     | Command                                                                                 |
 | ------------------------ | --------------------------------------------------------------------------------------- |
@@ -741,7 +741,8 @@ mdsf init
 | `kdoc-formatter`         | `kdoc-formatter --quiet $PATH`                                                          |
 | `ktfmt`                  | `ktfmt --format --log-level=error $PATH`                                                |
 | `ktlint`                 | `ktlint --format --log-level=error $PATH`                                               |
-| `kulala-fmt`             | `kulala-fmt $PATH`                                                                      |
+| `kulala-fmt:check`       | `kulala-fmt check $PATH`                                                                |
+| `kulala-fmt:format`      | `kulala-fmt format $PATH`                                                               |
 | `leptosfmt`              | `leptosfmt --quiet $PATH`                                                               |
 | `liquidsoap-prettier`    | `liquidsoap-prettier --write $PATH`                                                     |
 | `luacheck`               | `luacheck $PATH`                                                                        |

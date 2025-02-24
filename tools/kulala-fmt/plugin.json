@@ -3,11 +3,16 @@
   "binary": "kulala-fmt",
   "categories": ["formatter"],
   "commands": {
-    "": {
-      "arguments": ["$PATH"]
+    "check": {
+      "arguments": ["check", "$PATH"],
+      "description": "Check if .http and .rest code is formatted"
+    },
+    "format": {
+      "arguments": ["format", "$PATH"],
+      "description": "Format .http and .rest code"
     }
   },
-  "description": "An opinionated 🦄 .http and .rest 🐼 files linter 💄 and formatter ⚡",
+  "description": "An opinionated .http and .rest file linter and formatter",
   "homepage": "https://github.com/mistweaverco/kulala-fmt",
   "languages": ["http"],
   "packages": {

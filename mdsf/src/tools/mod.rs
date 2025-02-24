@@ -129,7 +129,8 @@ pub mod kdlfmt;
 pub mod kdoc_formatter;
 pub mod ktfmt;
 pub mod ktlint;
-pub mod kulala_fmt;
+pub mod kulala_fmt_check;
+pub mod kulala_fmt_format;
 pub mod leptosfmt;
 pub mod liquidsoap_prettier;
 pub mod luacheck;
@@ -1306,13 +1307,21 @@ pub enum Tooling {
     /// `ktlint --format --log-level=error $PATH`
     Ktlint,
 
-    #[serde(rename = "kulala-fmt")]
-    /// An opinionated 🦄 .http and .rest 🐼 files linter 💄 and formatter ⚡
+    #[serde(rename = "kulala-fmt:check")]
+    /// Check if .http and .rest code is formatted
     ///
     /// [https://github.com/mistweaverco/kulala-fmt](https://github.com/mistweaverco/kulala-fmt)
     ///
-    /// `kulala-fmt $PATH`
-    KulalaFmt,
+    /// `kulala-fmt check $PATH`
+    KulalaFmtCheck,
+
+    #[serde(rename = "kulala-fmt:format")]
+    /// Format .http and .rest code
+    ///
+    /// [https://github.com/mistweaverco/kulala-fmt](https://github.com/mistweaverco/kulala-fmt)
+    ///
+    /// `kulala-fmt format $PATH`
+    KulalaFmtFormat,
 
     #[serde(rename = "leptosfmt")]
     /// A formatter for the leptos view! macro
@@ -2637,7 +2646,8 @@ impl Tooling {
             Self::KdocFormatter => (&kdoc_formatter::COMMANDS, kdoc_formatter::set_args),
             Self::Ktfmt => (&ktfmt::COMMANDS, ktfmt::set_args),
             Self::Ktlint => (&ktlint::COMMANDS, ktlint::set_args),
-            Self::KulalaFmt => (&kulala_fmt::COMMANDS, kulala_fmt::set_args),
+            Self::KulalaFmtCheck => (&kulala_fmt_check::COMMANDS, kulala_fmt_check::set_args),
+            Self::KulalaFmtFormat => (&kulala_fmt_format::COMMANDS, kulala_fmt_format::set_args),
             Self::Leptosfmt => (&leptosfmt::COMMANDS, leptosfmt::set_args),
             Self::LiquidsoapPrettier => (
                 &liquidsoap_prettier::COMMANDS,
@@ -2930,7 +2940,8 @@ impl AsRef<str> for Tooling {
             Self::KdocFormatter => "kdoc_formatter",
             Self::Ktfmt => "ktfmt",
             Self::Ktlint => "ktlint",
-            Self::KulalaFmt => "kulala_fmt",
+            Self::KulalaFmtCheck => "kulala_fmt_check",
+            Self::KulalaFmtFormat => "kulala_fmt_format",
             Self::Leptosfmt => "leptosfmt",
             Self::LiquidsoapPrettier => "liquidsoap_prettier",
             Self::Luacheck => "luacheck",
