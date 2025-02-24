@@ -707,9 +707,14 @@
           "enum": ["ktlint"]
         },
         {
-          "description": "An opinionated 🦄 .http and .rest 🐼 files linter 💄 and formatter ⚡\n\n[https://github.com/mistweaverco/kulala-fmt](https://github.com/mistweaverco/kulala-fmt)\n\n`kulala-fmt $PATH`",
+          "description": "Check if .http and .rest code is formatted\n\n[https://github.com/mistweaverco/kulala-fmt](https://github.com/mistweaverco/kulala-fmt)\n\n`kulala-fmt check $PATH`",
           "type": "string",
-          "enum": ["kulala-fmt"]
+          "enum": ["kulala-fmt:check"]
+        },
+        {
+          "description": "Format .http and .rest code\n\n[https://github.com/mistweaverco/kulala-fmt](https://github.com/mistweaverco/kulala-fmt)\n\n`kulala-fmt format $PATH`",
+          "type": "string",
+          "enum": ["kulala-fmt:format"]
         },
         {
           "description": "A formatter for the leptos view! macro\n\n[https://github.com/bram209/leptosfmt](https://github.com/bram209/leptosfmt)\n\n`leptosfmt --quiet $PATH`",

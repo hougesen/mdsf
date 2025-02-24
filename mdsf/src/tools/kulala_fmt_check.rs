@@ -8,6 +8,7 @@ pub fn set_args(
     mut cmd: std::process::Command,
     file_path: &std::path::Path,
 ) -> std::process::Command {
+    cmd.arg("check");
     cmd.arg(file_path);
     cmd
 }
@@ -19,4 +20,4 @@ pub const COMMANDS: [CommandType; 3] = [
 ];
 
 #[cfg(test)]
-mod test_kulala_fmt {}
+mod test_kulala_fmt_check {}
