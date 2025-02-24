@@ -1,0 +1,16 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "cfn-lint",
+  "categories": ["linter"],
+  "commands": {
+    "": {
+      "arguments": ["$PATH"]
+    }
+  },
+  "description": "CloudFormation Linter",
+  "homepage": "https://github.com/aws-cloudformation/cfn-lint",
+  "languages": ["cloudformation", "json", "yaml"],
+  "packages": {
+    "pip": "cfn-lint[full]"
+  }
+}
