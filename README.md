@@ -340,7 +340,7 @@ mdsf init
 
 <!-- START_SECTION:supported-tools -->
 
-`mdsf` currently supports 266 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 267 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                                                                                    | Description                                                                                                                                   | Categories            | Languages                                                                 |
 | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- | ------------------------------------------------------------------------- |
@@ -535,6 +535,7 @@ mdsf init
 | [regal](https://github.com/styrainc/regal)                                              | Regal is a linter and language server for Rego, bringing your policy development experience to the next level                                 | `linter`              | `rego`                                                                    |
 | [reorder-python-imports](https://github.com/asottile/reorder-python-imports)            | Rewrites source to reorder python imports                                                                                                     | `formatter`           | `python`                                                                  |
 | [rescript](https://rescript-lang.org/)                                                  | Formatter for ReScript                                                                                                                        | `formatter`           | `rescript`                                                                |
+| [revive](https://github.com/mgechev/revive)                                             | ~6x faster, stricter, configurable, extensible, and beautiful drop-in replacement for golint                                                  | `linter`              | `go`                                                                      |
 | [roc](https://github.com/roc-lang/roc)                                                  | Tools for the roc programming language                                                                                                        | `formatter`           | `roc`                                                                     |
 | [rstfmt](https://github.com/dzhu/rstfmt)                                                | A formatter for reStructuredText                                                                                                              | `formatter`           | `restructuredtext`                                                        |
 | [rubocop](https://github.com/rubocop/rubocop)                                           | A Ruby static code analyzer and formatter, based on the community Ruby style guide                                                            | `formatter`, `linter` | `ruby`                                                                    |
@@ -617,7 +618,7 @@ mdsf init
 
 <!-- START_SECTION:supported-commands -->
 
-`mdsf` currently supports 287 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 288 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                     | Command                                                                                 |
 | ------------------------ | --------------------------------------------------------------------------------------- |
@@ -828,6 +829,7 @@ mdsf init
 | `regal:lint`             | `regal lint $PATH`                                                                      |
 | `reorder-python-imports` | `reorder-python-imports $PATH`                                                          |
 | `rescript:format`        | `rescript format $PATH`                                                                 |
+| `revive`                 | `revive $PATH`                                                                          |
 | `roc:format`             | `roc format $PATH`                                                                      |
 | `rstfmt`                 | `rstfmt $PATH`                                                                          |
 | `rubocop`                | `rubocop --fix-layout --autocorrect --format quiet $PATH`                               |

@@ -1,0 +1,16 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "revive",
+  "categories": ["linter"],
+  "commands": {
+    "": {
+      "arguments": ["$PATH"]
+    }
+  },
+  "description": "~6x faster, stricter, configurable, extensible, and beautiful drop-in replacement for golint",
+  "homepage": "https://github.com/mgechev/revive",
+  "languages": ["go"],
+  "packages": {
+    "go": "github.com/mgechev/revive@latest"
+  }
+}

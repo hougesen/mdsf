@@ -10,5 +10,12 @@
   "description": "ShellCheck, a static analysis tool for shell scripts",
   "homepage": "https://github.com/koalaman/shellcheck",
   "languages": ["bash", "shell"],
-  "packages": {}
+  "packages": {
+    "apt": "shellcheck",
+    "brew": {
+      "name": "shellcheck"
+    },
+    "cabal": "ShellCheck",
+    "stack": "ShellCheck"
+  }
 }

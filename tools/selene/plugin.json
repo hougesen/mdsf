@@ -10,5 +10,7 @@
   "description": "A blazing-fast modern Lua linter written in Rust",
   "homepage": "https://github.com/Kampfkarren/selene",
   "languages": ["lua"],
-  "packages": {}
+  "packages": {
+    "cargo": "selene"
+  }
 }

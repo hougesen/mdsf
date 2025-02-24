@@ -208,6 +208,7 @@ pub mod regal_fix;
 pub mod regal_lint;
 pub mod reorder_python_imports;
 pub mod rescript_format;
+pub mod revive;
 pub mod roc_format;
 pub mod rstfmt;
 pub mod rubocop;
@@ -1949,6 +1950,14 @@ pub enum Tooling {
     /// `rescript format $PATH`
     RescriptFormat,
 
+    #[serde(rename = "revive")]
+    /// ~6x faster, stricter, configurable, extensible, and beautiful drop-in replacement for golint
+    ///
+    /// [https://github.com/mgechev/revive](https://github.com/mgechev/revive)
+    ///
+    /// `revive $PATH`
+    Revive,
+
     #[serde(rename = "roc:format")]
     /// Tools for the roc programming language
     ///
@@ -2821,6 +2830,7 @@ impl Tooling {
                 reorder_python_imports::set_args,
             ),
             Self::RescriptFormat => (&rescript_format::COMMANDS, rescript_format::set_args),
+            Self::Revive => (&revive::COMMANDS, revive::set_args),
             Self::RocFormat => (&roc_format::COMMANDS, roc_format::set_args),
             Self::Rstfmt => (&rstfmt::COMMANDS, rstfmt::set_args),
             Self::Rubocop => (&rubocop::COMMANDS, rubocop::set_args),
@@ -3119,6 +3129,7 @@ impl AsRef<str> for Tooling {
             Self::RegalLint => "regal_lint",
             Self::ReorderPythonImports => "reorder_python_imports",
             Self::RescriptFormat => "rescript_format",
+            Self::Revive => "revive",
             Self::RocFormat => "roc_format",
             Self::Rstfmt => "rstfmt",
             Self::Rubocop => "rubocop",
