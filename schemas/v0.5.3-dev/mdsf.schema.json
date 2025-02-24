@@ -9,7 +9,6 @@
     },
     "custom_file_extensions": {
       "description": "Used for settings custom file extensions for a given language. ```json { \"custom_file_extensions\": { \"rust\": \".rust\" } } ```",
-      "default": {},
       "type": "object",
       "additionalProperties": {
         "type": "string"
@@ -17,12 +16,10 @@
     },
     "format_finished_document": {
       "description": "Format the processed document with the selected markdown formatter.",
-      "default": false,
       "type": "boolean"
     },
     "javascript_runtime": {
       "description": "Set npm script runner runtime.\n\nShould be considered experimental since not all tools support being run using Bun/Deno.\n\n`node -> npx`\n\n`bun -> bunx`\n\n`deno -> deno run`",
-      "default": "node",
       "allOf": [
         {
           "$ref": "#/definitions/JavaScriptRuntime"
@@ -31,7 +28,6 @@
     },
     "language_aliases": {
       "description": "Aliases for tools\n\n```json { \"language_aliases\": { \"language\": \"is_alias_of\" } } ```",
-      "default": {},
       "type": "object",
       "additionalProperties": {
         "type": "string"

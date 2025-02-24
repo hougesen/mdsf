@@ -1,9 +1,5 @@
 {
   "$schema": "./schemas/v0.5.3-dev/mdsf.schema.json",
-  "custom_file_extensions": {},
-  "format_finished_document": false,
-  "javascript_runtime": "node",
-  "language_aliases": {},
   "languages": {
     "bash": "shfmt",
     "fish": "fish_indent",
