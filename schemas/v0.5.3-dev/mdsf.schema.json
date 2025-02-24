@@ -1217,6 +1217,11 @@
           "enum": ["solhint"]
         },
         {
+          "description": "Check for stylistic and formal issues in .rst and .py files included in the documentation\n\n[https://github.com/sphinx-contrib/sphinx-lint](https://github.com/sphinx-contrib/sphinx-lint)\n\n`sphinx-lint $PATH`",
+          "type": "string",
+          "enum": ["sphinx-lint"]
+        },
+        {
           "description": "A whitespace formatter for different query languages\n\n[https://github.com/sql-formatter-org/sql-formatter](https://github.com/sql-formatter-org/sql-formatter)\n\n`sql-formatter --fix $PATH`",
           "type": "string",
           "enum": ["sql-formatter"]

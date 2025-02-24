@@ -340,7 +340,7 @@ mdsf init
 
 <!-- START_SECTION:supported-tools -->
 
-`mdsf` currently supports 265 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 266 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                                                                                    | Description                                                                                                                                   | Categories            | Languages                                                                 |
 | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- | ------------------------------------------------------------------------- |
@@ -557,6 +557,7 @@ mdsf init
 | [smlfmt](https://github.com/shwestrick/smlfmt)                                          | A custom parser/auto-formatter for Standard ML                                                                                                | `formatter`           | `standard-ml`                                                             |
 | [snakefmt](https://github.com/snakemake/snakefmt)                                       | The uncompromising Snakemake code formatter                                                                                                   | `formatter`           | `snakemake`                                                               |
 | [solhint](https://github.com/protofire/solhint)                                         | Solhint is an open-source project to provide a linting utility for Solidity code                                                              | `linter`              | `solidity`                                                                |
+| [sphinx-lint](https://github.com/sphinx-contrib/sphinx-lint)                            | Check for stylistic and formal issues in .rst and .py files included in the documentation                                                     | `linter`              | `python`, `restructredtext`                                               |
 | [sql-formatter](https://github.com/sql-formatter-org/sql-formatter)                     | A whitespace formatter for different query languages                                                                                          | `formatter`           | `sql`                                                                     |
 | [sqlfluff](https://github.com/sqlfluff/sqlfluff)                                        | A modular SQL linter and auto-formatter with support for multiple dialects and templated code                                                 | `formatter`, `linter` | `sql`                                                                     |
 | [sqlfmt](https://github.com/tconbeer/sqlfmt)                                            | sqlfmt formats your dbt SQL files so you don't have to                                                                                        | `formatter`           | `sql`                                                                     |
@@ -616,7 +617,7 @@ mdsf init
 
 <!-- START_SECTION:supported-commands -->
 
-`mdsf` currently supports 286 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 287 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                     | Command                                                                                 |
 | ------------------------ | --------------------------------------------------------------------------------------- |
@@ -850,6 +851,7 @@ mdsf init
 | `smlfmt`                 | `smlfmt --force $PATH`                                                                  |
 | `snakefmt`               | `snakefmt $PATH`                                                                        |
 | `solhint`                | `solhint --quiet --fix --noPrompt $PATH`                                                |
+| `sphinx-lint`            | `sphinx-lint $PATH`                                                                     |
 | `sql-formatter`          | `sql-formatter --fix $PATH`                                                             |
 | `sqlfluff:fix`           | `sqlfluff fix --dialect ansi $PATH`                                                     |
 | `sqlfluff:format`        | `sqlfluff format --dialect ansi $PATH`                                                  |
