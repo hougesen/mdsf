@@ -1,0 +1,19 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "vint",
+  "categories": ["linter"],
+  "commands": {
+    "": {
+      "arguments": ["$PATH"]
+    },
+    "neovim": {
+      "arguments": ["--enable-neovim", "$PATH"]
+    }
+  },
+  "description": "Lint Vim script",
+  "homepage": "https://github.com/vimjas/vint",
+  "languages": ["vimscript"],
+  "packages": {
+    "pip": "vim-vint"
+  }
+}

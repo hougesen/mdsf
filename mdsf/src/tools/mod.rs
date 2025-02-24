@@ -271,6 +271,8 @@ pub mod v_fmt;
 pub mod vacuum_lint;
 pub mod veryl_fmt;
 pub mod vhdl_style_guide;
+pub mod vint;
+pub mod vint_neovim;
 pub mod wa_fmt;
 pub mod wfindent;
 pub mod write_good;
@@ -2449,6 +2451,22 @@ pub enum Tooling {
     /// `vsg -f $PATH --fix`
     VhdlStyleGuide,
 
+    #[serde(rename = "vint")]
+    /// Lint Vim script
+    ///
+    /// [https://github.com/vimjas/vint](https://github.com/vimjas/vint)
+    ///
+    /// `vint $PATH`
+    Vint,
+
+    #[serde(rename = "vint:neovim")]
+    /// Lint Vim script
+    ///
+    /// [https://github.com/vimjas/vint](https://github.com/vimjas/vint)
+    ///
+    /// `vint --enable-neovim $PATH`
+    VintNeovim,
+
     #[serde(rename = "wa:fmt")]
     /// Format Wa source code
     ///
@@ -2848,6 +2866,8 @@ impl Tooling {
             Self::VacuumLint => (&vacuum_lint::COMMANDS, vacuum_lint::set_args),
             Self::VerylFmt => (&veryl_fmt::COMMANDS, veryl_fmt::set_args),
             Self::VhdlStyleGuide => (&vhdl_style_guide::COMMANDS, vhdl_style_guide::set_args),
+            Self::Vint => (&vint::COMMANDS, vint::set_args),
+            Self::VintNeovim => (&vint_neovim::COMMANDS, vint_neovim::set_args),
             Self::WaFmt => (&wa_fmt::COMMANDS, wa_fmt::set_args),
             Self::Wfindent => (&wfindent::COMMANDS, wfindent::set_args),
             Self::WriteGood => (&write_good::COMMANDS, write_good::set_args),
@@ -3142,6 +3162,8 @@ impl AsRef<str> for Tooling {
             Self::VacuumLint => "vacuum_lint",
             Self::VerylFmt => "veryl_fmt",
             Self::VhdlStyleGuide => "vhdl_style_guide",
+            Self::Vint => "vint",
+            Self::VintNeovim => "vint_neovim",
             Self::WaFmt => "wa_fmt",
             Self::Wfindent => "wfindent",
             Self::WriteGood => "write_good",
