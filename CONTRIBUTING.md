@@ -26,7 +26,6 @@ The file must include _at least_ 2 keys, `binary`, which, as the key suggest, is
 If we wanted to add support for mdsf (`mdsf format PATH_TO_FILE`) that would look like the following:
 
 ```json
-// tools/mdsf/plugin.json
 {
   "$schema": "../tool.schema.json",
 

@@ -5,6 +5,11 @@ use crate::{
     runners::JavaScriptRuntime, terminal::print_config_not_found, tools::Tooling,
 };
 
+#[inline]
+const fn is_false(b: &bool) -> bool {
+    !(*b)
+}
+
 #[derive(serde::Serialize, serde::Deserialize, Hash)]
 #[cfg_attr(test, derive(Debug, PartialEq, Eq))]
 #[cfg_attr(feature = "json-schema", derive(schemars::JsonSchema))]
@@ -20,11 +25,11 @@ pub struct MdsfConfig {
     ///   }
     /// }
     /// ```
-    #[serde(default)]
+    #[serde(default, skip_serializing_if = "std::collections::BTreeMap::is_empty")]
     pub custom_file_extensions: std::collections::BTreeMap<String, String>,
 
     /// Format the processed document with the selected markdown formatter.
-    #[serde(default)]
+    #[serde(default, skip_serializing_if = "is_false")]
     pub format_finished_document: bool,
 
     /// Set npm script runner runtime.
@@ -36,7 +41,7 @@ pub struct MdsfConfig {
     /// `bun -> bunx`
     ///
     /// `deno -> deno run`
-    #[serde(default)]
+    #[serde(default, skip_serializing_if = "JavaScriptRuntime::is_default")]
     pub javascript_runtime: JavaScriptRuntime,
 
     /// Aliases for tools
@@ -48,7 +53,7 @@ pub struct MdsfConfig {
     ///   }
     /// }
     /// ```
-    #[serde(default)]
+    #[serde(default, skip_serializing_if = "std::collections::BTreeMap::is_empty")]
     pub language_aliases: std::collections::BTreeMap<String, String>,
 
     ///  Defines which formatter is used by the language.

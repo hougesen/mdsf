@@ -12,8 +12,9 @@ mod deno;
 mod node;
 mod pnpm;
 
-#[derive(Debug, Default, serde::Serialize, serde::Deserialize, Clone, Copy, Hash)]
-#[cfg_attr(test, derive(PartialEq, Eq))]
+#[derive(
+    Debug, Default, serde::Serialize, serde::Deserialize, Clone, Copy, Hash, PartialEq, Eq,
+)]
 #[cfg_attr(feature = "json-schema", derive(schemars::JsonSchema))]
 pub enum JavaScriptRuntime {
     #[serde(rename = "bun")]
@@ -25,6 +26,13 @@ pub enum JavaScriptRuntime {
     Node,
     #[serde(rename = "pnpm")]
     Pnpm,
+}
+
+impl JavaScriptRuntime {
+    #[inline]
+    pub fn is_default(&self) -> bool {
+        *self == JavaScriptRuntime::default()
+    }
 }
 
 impl core::fmt::Display for JavaScriptRuntime {
