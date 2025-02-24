@@ -1,0 +1,14 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "clj-kondo",
+  "categories": ["linter"],
+  "commands": {
+    "": {
+      "arguments": ["--lint", "$PATH"]
+    }
+  },
+  "description": "Static analyzer and linter for Clojure code that sparks joy",
+  "homepage": "https://github.com/clj-kondo/clj-kondo",
+  "languages": ["clojure", "clojurescript"],
+  "packages": {}
+}
