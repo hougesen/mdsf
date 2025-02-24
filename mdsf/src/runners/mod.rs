@@ -31,7 +31,7 @@ pub enum JavaScriptRuntime {
 impl JavaScriptRuntime {
     #[inline]
     pub fn is_default(&self) -> bool {
-        *self == JavaScriptRuntime::default()
+        *self == Self::default()
     }
 }
 
