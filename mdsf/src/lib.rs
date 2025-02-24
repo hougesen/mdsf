@@ -64,8 +64,6 @@ fn format_file(
 ) -> (bool, String) {
     let mut output = String::with_capacity(input.len() + 128);
 
-    let mut modified = false;
-
     let mut lines = input.lines().enumerate();
 
     while let Some((line_index, line)) = lines.next() {
@@ -124,10 +122,6 @@ fn format_file(
                     output.push_str(&formatted);
 
                     output.push_str(&format!("\n{indentation}```"));
-
-                    if formatted != code_snippet {
-                        modified = true;
-                    }
                 } else {
                     output.push_str(line);
                     output.push_str(&code_snippet);
@@ -158,10 +152,9 @@ fn format_file(
             &output,
             timeout,
         );
-        modified = true;
     }
 
-    (modified, output)
+    (output != input, output)
 }
 
 #[inline]
