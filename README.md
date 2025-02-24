@@ -340,7 +340,7 @@ mdsf init
 
 <!-- START_SECTION:supported-tools -->
 
-`mdsf` currently supports 263 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 264 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                                                                                    | Description                                                                                                                                   | Categories            | Languages                                                                 |
 | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- | ------------------------------------------------------------------------- |
@@ -594,6 +594,7 @@ mdsf init
 | [vacuum](https://github.com/daveshanley/vacuum)                                         | vacuum is the worlds fastest OpenAPI 3, OpenAPI 2 / Swagger linter and quality analysis tool                                                  | `linter`              | `openapi`                                                                 |
 | [veryl](https://github.com/veryl-lang/veryl)                                            | Veryl: A Modern Hardware Description Language                                                                                                 | `formatter`           | `veryl`                                                                   |
 | [vhdl-style-guide](https://github.com/jeremiah-c-leary/vhdl-style-guide)                | Style guide enforcement for VHDL                                                                                                              | `formatter`           | `vhdl`                                                                    |
+| [vint](https://github.com/vimjas/vint)                                                  | Lint Vim script                                                                                                                               | `linter`              | `vimscript`                                                               |
 | [wa](https://github.com/wa-lang/wa/)                                                    | Formatter for the wa programming language                                                                                                     | `formatter`           | `wa`                                                                      |
 | [wfindent](https://github.com/wvermin/findent)                                          | Indents and optionally converts Fortran program sources                                                                                       | `formatter`           | `fortran`                                                                 |
 | [write-good](https://github.com/btford/write-good)                                      | Naive linter for English prose                                                                                                                | `linter`              |                                                                           |
@@ -614,7 +615,7 @@ mdsf init
 
 <!-- START_SECTION:supported-commands -->
 
-`mdsf` currently supports 283 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 285 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                     | Command                                                                                 |
 | ------------------------ | --------------------------------------------------------------------------------------- |
@@ -888,6 +889,8 @@ mdsf init
 | `vacuum:lint`            | `vacuum lint $PATH`                                                                     |
 | `veryl:fmt`              | `veryl fmt $PATH`                                                                       |
 | `vhdl-style-guide`       | `vsg -f $PATH --fix`                                                                    |
+| `vint:neovim`            | `vint --enable-neovim $PATH`                                                            |
+| `vint`                   | `vint $PATH`                                                                            |
 | `wa:fmt`                 | `wa fmt $PATH`                                                                          |
 | `wfindent`               | `wfindent $PATH`                                                                        |
 | `write-good`             | `write-good $PATH`                                                                      |

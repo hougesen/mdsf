@@ -1417,6 +1417,16 @@
           "enum": ["vhdl-style-guide"]
         },
         {
+          "description": "Lint Vim script\n\n[https://github.com/vimjas/vint](https://github.com/vimjas/vint)\n\n`vint $PATH`",
+          "type": "string",
+          "enum": ["vint"]
+        },
+        {
+          "description": "Lint Vim script\n\n[https://github.com/vimjas/vint](https://github.com/vimjas/vint)\n\n`vint --enable-neovim $PATH`",
+          "type": "string",
+          "enum": ["vint:neovim"]
+        },
+        {
           "description": "Format Wa source code\n\n[https://github.com/wa-lang/wa/](https://github.com/wa-lang/wa/)\n\n`wa fmt $PATH`",
           "type": "string",
           "enum": ["wa:fmt"]
