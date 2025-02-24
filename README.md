@@ -105,7 +105,7 @@ brew install hougesen/tap/mdsf
 [![](https://img.shields.io/visual-studio-marketplace/v/hougesen.mdsf?color=374151&label=Visual%20Studio%20Marketplace&labelColor=000&logo=visual-studio-code&logoColor=0098FF)](https://marketplace.visualstudio.com/items?itemName=hougesen.mdsf)
 [![](https://img.shields.io/visual-studio-marketplace/v/hougesen.mdsf?color=374151&label=Open%20VSX%20Registry&labelColor=000&logo=data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPHN2ZyB2aWV3Qm94PSI0LjYgNSA5Ni4yIDEyMi43IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgogIDxwYXRoIGQ9Ik0zMCA0NC4yTDUyLjYgNUg3LjN6TTQuNiA4OC41aDQ1LjNMMjcuMiA0OS40em01MSAwbDIyLjYgMzkuMiAyMi42LTM5LjJ6IiBmaWxsPSIjYzE2MGVmIi8+CiAgPHBhdGggZD0iTTUyLjYgNUwzMCA0NC4yaDQ1LjJ6TTI3LjIgNDkuNGwyMi43IDM5LjEgMjIuNi0zOS4xem01MSAwTDU1LjYgODguNWg0NS4yeiIgZmlsbD0iI2E2MGVlNSIvPgo8L3N2Zz4=&logoColor=0098FF)](https://open-vsx.org/extension/hougesen/mdsf)
 
-mdsf can be run easily using the VSCode extension.
+mdsf can be run using the VSCode extension.
 
 > \[!NOTE\]
 > The mdsf VS Code extension does currently not support installing mdsf.
@@ -238,7 +238,7 @@ There are a lot of different ways to run `mdsf` using GitHub actions.
 
 The easiest way, in my opinion, is to use an action like [taiki-e/install-action](https://github.com/taiki-e/install-action) to install `mdsf`.
 
-After that you can simply run the binary like you would in your terminal.
+After that you can run the binary like you would in your terminal.
 
 > \[!NOTE\]
 > mdsf is not a package manager.
@@ -302,7 +302,7 @@ jobs:
 
 ## Configuration
 
-The default configuration of `mdsf` aims to as sane as possible. For that reason the default formatter for each language is the one most people have installed.
+The default configuration of `mdsf` aims to as simple as possible. For that reason the default formatter for each language is the one most people have installed.
 
 If you are interested in customizing which formatter is run, you can create a new `mdsf` configuration file by running
 
@@ -340,13 +340,14 @@ mdsf init
 
 <!-- START_SECTION:supported-tools -->
 
-`mdsf` currently supports 258 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 259 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                                                                                    | Description                                                                                                                                   | Categories            | Languages                                                                 |
 | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- | ------------------------------------------------------------------------- |
 | [actionlint](https://github.com/rhysd/actionlint)                                       | Static checker for GitHub Actions workflow files                                                                                              | `linter`              | `yaml`                                                                    |
 | [air](https://github.com/posit-dev/air)                                                 | R formatter and language server                                                                                                               | `formatter`           | `r`                                                                       |
 | [alejandra](https://github.com/kamadorueda/alejandra)                                   | The Uncompromising Nix Code Formatter                                                                                                         | `formatter`           | `nix`                                                                     |
+| [alex](https://github.com/get-alex/alex)                                                | Catch insensitive, inconsiderate writing                                                                                                      |                       | `markdown`                                                                |
 | [ameba](https://github.com/crystal-ameba/ameba)                                         | A static code analysis tool for Crystal                                                                                                       | `linter`              | `crystal`                                                                 |
 | [ansible-lint](https://github.com/ansible/ansible-lint)                                 | ansible-lint checks playbooks for practices and behavior that could potentially be improved and can fix some of the most common ones for you  | `linter`              | `ansible`                                                                 |
 | [asmfmt](https://github.com/klauspost/asmfmt)                                           | Go Assembler Formatter                                                                                                                        | `formatter`           | `go`                                                                      |
@@ -609,13 +610,14 @@ mdsf init
 
 <!-- START_SECTION:supported-commands -->
 
-`mdsf` currently supports 277 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 278 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                     | Command                                                                                 |
 | ------------------------ | --------------------------------------------------------------------------------------- |
 | `actionlint`             | `actionlint $PATH`                                                                      |
 | `air:format`             | `air format $PATH`                                                                      |
 | `alejandra`              | `alejandra --quiet $PATH`                                                               |
+| `alex`                   | `alex $PATH`                                                                            |
 | `ameba`                  | `ameba --fix $PATH`                                                                     |
 | `ansible-lint`           | `ansible-lint $PATH`                                                                    |
 | `asmfmt`                 | `asmfmt -w $PATH`                                                                       |

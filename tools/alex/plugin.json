@@ -1,0 +1,16 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "alex",
+  "categories": [],
+  "commands": {
+    "": {
+      "arguments": ["$PATH"]
+    }
+  },
+  "description": "Catch insensitive, inconsiderate writing",
+  "homepage": "https://github.com/get-alex/alex",
+  "languages": ["markdown"],
+  "packages": {
+    "npm": "alex"
+  }
+}

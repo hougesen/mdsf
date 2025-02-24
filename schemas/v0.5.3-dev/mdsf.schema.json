@@ -82,6 +82,11 @@
           "enum": ["alejandra"]
         },
         {
+          "description": "Catch insensitive, inconsiderate writing\n\n[https://github.com/get-alex/alex](https://github.com/get-alex/alex)\n\n`alex $PATH`",
+          "type": "string",
+          "enum": ["alex"]
+        },
+        {
           "description": "A static code analysis tool for Crystal\n\n[https://github.com/crystal-ameba/ameba](https://github.com/crystal-ameba/ameba)\n\n`ameba --fix $PATH`",
           "type": "string",
           "enum": ["ameba"]

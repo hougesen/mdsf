@@ -4,6 +4,7 @@
 pub mod actionlint;
 pub mod air_format;
 pub mod alejandra;
+pub mod alex;
 pub mod ameba;
 pub mod ansible_lint;
 pub mod asmfmt;
@@ -306,6 +307,14 @@ pub enum Tooling {
     ///
     /// `alejandra --quiet $PATH`
     Alejandra,
+
+    #[serde(rename = "alex")]
+    /// Catch insensitive, inconsiderate writing
+    ///
+    /// [https://github.com/get-alex/alex](https://github.com/get-alex/alex)
+    ///
+    /// `alex $PATH`
+    Alex,
 
     #[serde(rename = "ameba")]
     /// A static code analysis tool for Crystal
@@ -2515,6 +2524,7 @@ impl Tooling {
             Self::Actionlint => (&actionlint::COMMANDS, actionlint::set_args),
             Self::AirFormat => (&air_format::COMMANDS, air_format::set_args),
             Self::Alejandra => (&alejandra::COMMANDS, alejandra::set_args),
+            Self::Alex => (&alex::COMMANDS, alex::set_args),
             Self::Ameba => (&ameba::COMMANDS, ameba::set_args),
             Self::AnsibleLint => (&ansible_lint::COMMANDS, ansible_lint::set_args),
             Self::Asmfmt => (&asmfmt::COMMANDS, asmfmt::set_args),
@@ -2815,6 +2825,7 @@ impl AsRef<str> for Tooling {
             Self::Actionlint => "actionlint",
             Self::AirFormat => "air_format",
             Self::Alejandra => "alejandra",
+            Self::Alex => "alex",
             Self::Ameba => "ameba",
             Self::AnsibleLint => "ansible_lint",
             Self::Asmfmt => "asmfmt",
