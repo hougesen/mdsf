@@ -32,6 +32,7 @@ pub mod brunette;
 pub mod bsfmt;
 pub mod bslint;
 pub mod buf_format;
+pub mod buf_lint;
 pub mod buildifier;
 pub mod cabal_fmt;
 pub mod cabal_format;
@@ -531,6 +532,14 @@ pub enum Tooling {
     ///
     /// `buf format --write $PATH`
     BufFormat,
+
+    #[serde(rename = "buf:lint")]
+    /// Lint Protobuf files
+    ///
+    /// [https://buf.build/docs/lint/overview/](https://buf.build/docs/lint/overview/)
+    ///
+    /// `buf lint $PATH`
+    BufLint,
 
     #[serde(rename = "buildifier")]
     /// A bazel BUILD file formatter and
@@ -2552,6 +2561,7 @@ impl Tooling {
             Self::Bsfmt => (&bsfmt::COMMANDS, bsfmt::set_args),
             Self::Bslint => (&bslint::COMMANDS, bslint::set_args),
             Self::BufFormat => (&buf_format::COMMANDS, buf_format::set_args),
+            Self::BufLint => (&buf_lint::COMMANDS, buf_lint::set_args),
             Self::Buildifier => (&buildifier::COMMANDS, buildifier::set_args),
             Self::CabalFmt => (&cabal_fmt::COMMANDS, cabal_fmt::set_args),
             Self::CabalFormat => (&cabal_format::COMMANDS, cabal_format::set_args),
@@ -2853,6 +2863,7 @@ impl AsRef<str> for Tooling {
             Self::Bsfmt => "bsfmt",
             Self::Bslint => "bslint",
             Self::BufFormat => "buf_format",
+            Self::BufLint => "buf_lint",
             Self::Buildifier => "buildifier",
             Self::CabalFmt => "cabal_fmt",
             Self::CabalFormat => "cabal_format",

@@ -610,7 +610,7 @@ mdsf init
 
 <!-- START_SECTION:supported-commands -->
 
-`mdsf` currently supports 278 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 279 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                     | Command                                                                                 |
 | ------------------------ | --------------------------------------------------------------------------------------- |
@@ -645,6 +645,7 @@ mdsf init
 | `bsfmt`                  | `bsfmt $PATH --write`                                                                   |
 | `bslint`                 | `bslint --fix $PATH`                                                                    |
 | `buf:format`             | `buf format --write $PATH`                                                              |
+| `buf:lint`               | `buf lint $PATH`                                                                        |
 | `buildifier`             | `buildifier $PATH`                                                                      |
 | `cabal-fmt`              | `cabal-fmt --inplace $PATH`                                                             |
 | `cabal-prettify`         | `cabal-prettify $PATH`                                                                  |
