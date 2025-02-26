@@ -10,5 +10,10 @@
   "description": "The corrective bash syntax highlighter",
   "homepage": "https://github.com/anordal/shellharden",
   "languages": ["bash", "shell"],
-  "packages": {}
+  "packages": {
+    "brew": {
+      "name": "shellharden"
+    },
+    "cargo": "shellharden"
+  }
 }

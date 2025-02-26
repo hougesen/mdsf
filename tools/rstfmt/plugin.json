@@ -10,5 +10,7 @@
   "description": "A formatter for reStructuredText",
   "homepage": "https://github.com/dzhu/rstfmt",
   "languages": ["restructuredtext"],
-  "packages": {}
+  "packages": {
+    "pip": "rstfmt"
+  }
 }

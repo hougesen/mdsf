@@ -10,5 +10,8 @@
   "description": "CLI for organizing Tailwind CSS classes",
   "homepage": "https://github.com/avencera/rustywind",
   "languages": ["html"],
-  "packages": {}
+  "packages": {
+    "cargo": "rustywind",
+    "npm": "rustywind"
+  }
 }

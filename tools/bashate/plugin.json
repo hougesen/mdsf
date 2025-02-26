@@ -10,5 +10,7 @@
   "description": "Code style enforcement for bash programs",
   "homepage": "https://github.com/openstack/bashate",
   "languages": ["bash"],
-  "packages": {}
+  "packages": {
+    "pip": "bashate"
+  }
 }

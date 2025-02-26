@@ -37,7 +37,8 @@
     },
     "homepage": {
       "default": "",
-      "type": "string"
+      "type": "string",
+      "format": "uri"
     },
     "languages": {
       "default": [],
@@ -78,7 +79,8 @@
           "type": ["string", "null"]
         },
         "homepage": {
-          "type": ["string", "null"]
+          "type": ["string", "null"],
+          "format": "uri"
         },
         "tests": {
           "type": "array",

@@ -8,7 +8,7 @@
     }
   },
   "description": "Formatter for Typst",
-  "homepage": "https://github.com/antonWetzel/prettypst",
+  "homepage": "https://github.com/antonwetzel/prettypst",
   "languages": ["typst"],
   "packages": {}
 }

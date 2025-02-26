@@ -10,5 +10,7 @@
   "description": "The uncompromising Snakemake code formatter",
   "homepage": "https://github.com/snakemake/snakefmt",
   "languages": ["snakemake"],
-  "packages": {}
+  "packages": {
+    "pip": "snakefmt"
+  }
 }

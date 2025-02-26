@@ -10,5 +10,7 @@
   "description": "refmt stands by Reason Formatter and it formats Reason programs, is a parser and pretty-printer for Reason",
   "homepage": "https://reasonml.github.io/docs/en/refmt",
   "languages": ["reason"],
-  "packages": {}
+  "packages": {
+    "opam": "reason"
+  }
 }

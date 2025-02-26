@@ -12,5 +12,9 @@
   "description": "Formats or prettifies a Caddyfile",
   "homepage": "https://caddyserver.com/docs/command-line#caddy-fmt",
   "languages": ["caddy"],
-  "packages": {}
+  "packages": {
+    "brew": {
+      "name": "caddy"
+    }
+  }
 }

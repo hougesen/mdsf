@@ -8,7 +8,13 @@
     }
   },
   "description": "An extremely fast LaTeX formatter written in Rust",
-  "homepage": "https://github.com/WGUNDERWOOD/tex-fmt",
+  "homepage": "https://github.com/wgunderwood/tex-fmt",
   "languages": ["latex"],
-  "packages": {}
+  "packages": {
+    "apt": "tex-fmt",
+    "brew": {
+      "name": "tex-fmt"
+    },
+    "cargo": "tex-fmt"
+  }
 }

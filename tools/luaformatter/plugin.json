@@ -15,7 +15,7 @@
     }
   },
   "description": "Code formatter for Lua",
-  "homepage": "https://github.com/Koihik/LuaFormatter",
+  "homepage": "https://github.com/koihik/luaformatter",
   "languages": ["lua"],
   "name": "luaformatter",
   "packages": {}

@@ -15,7 +15,7 @@
     }
   },
   "description": "Adds the Optional type-hint to arguments where the default value is None",
-  "homepage": "https://github.com/Luttik/auto-optional",
+  "homepage": "https://github.com/luttik/auto-optional",
   "languages": ["python"],
   "packages": {
     "pip": "auto-optional"

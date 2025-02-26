@@ -17,5 +17,10 @@
   "description": "Code Quality Tool for Flutter Developers",
   "homepage": "https://dcm.dev/",
   "languages": ["dart", "flutter"],
-  "packages": {}
+  "packages": {
+    "brew": {
+      "name": "dcm",
+      "tap": "CQLabs/dcm"
+    }
+  }
 }

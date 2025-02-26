@@ -8,7 +8,7 @@
     }
   },
   "description": "A PostgreSQL SQL syntax beautifier",
-  "homepage": "https://github.com/darold/pgFormatter",
+  "homepage": "https://github.com/darold/pgformatter",
   "languages": ["sql"],
   "packages": {}
 }

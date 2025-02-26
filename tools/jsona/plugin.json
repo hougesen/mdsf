@@ -13,5 +13,7 @@
   "description": "JSONA linter and formatter",
   "homepage": "https://github.com/jsona/jsona",
   "languages": ["jsona"],
-  "packages": {}
+  "packages": {
+    "cargo": "jsona-cli"
+  }
 }

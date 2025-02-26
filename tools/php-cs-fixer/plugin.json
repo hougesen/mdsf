@@ -8,7 +8,7 @@
     }
   },
   "description": "A tool to automatically fix PHP Coding Standards issues",
-  "homepage": "https://github.com/PHP-CS-Fixer/PHP-CS-Fixer",
+  "homepage": "https://github.com/php-cs-fixer/php-cs-fixer",
   "languages": ["php"],
   "packages": {
     "composer": {

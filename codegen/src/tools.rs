@@ -28,13 +28,14 @@ pub struct ToolCommandTest {
 pub struct ToolCommand {
     pub arguments: Vec<String>,
 
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub description: Option<String>,
-
     #[serde(default, skip_serializing_if = "is_false")]
     pub deprecated: bool,
 
     #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub description: Option<String>,
+
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    #[schemars(url)]
     pub homepage: Option<String>,
 
     #[serde(default, skip_serializing_if = "Vec::is_empty")]
@@ -130,16 +131,17 @@ pub struct Tool {
 
     pub commands: std::collections::BTreeMap<String, ToolCommand>,
 
-    #[serde(default)]
-    pub description: String,
-
     #[serde(default, skip_serializing_if = "is_false")]
     pub deprecated: bool,
+
+    #[serde(default)]
+    pub description: String,
 
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub disable_ci_tests: Option<bool>,
 
     #[serde(default)]
+    #[schemars(url)]
     pub homepage: String,
 
     #[serde(default)]
@@ -173,7 +175,7 @@ pub struct GeneratedCommand {
     pub deprecated: bool,
 }
 
-const DEPRECATED_ATTRIBUTE: &str = "\n    #[deprecated]\n";
+const DEPRECATED_ATTRIBUTE: &str = "\n    #[deprecated]";
 
 impl Tool {
     fn get_command_name(&self, cmd: &str) -> String {

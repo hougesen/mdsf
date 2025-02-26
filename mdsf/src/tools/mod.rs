@@ -361,7 +361,7 @@ pub enum Tooling {
     #[serde(rename = "auto-optional")]
     /// Adds the Optional type-hint to arguments where the default value is None
     ///
-    /// [https://github.com/Luttik/auto-optional](https://github.com/Luttik/auto-optional)
+    /// [https://github.com/luttik/auto-optional](https://github.com/luttik/auto-optional)
     ///
     /// `auto-optional $PATH`
     AutoOptional,
@@ -401,7 +401,7 @@ pub enum Tooling {
     #[serde(rename = "beancount-black")]
     /// Opinionated code formatter, just like Python's black code formatter but for Beancount
     ///
-    /// [https://github.com/LaunchPlatform/beancount-black](https://github.com/LaunchPlatform/beancount-black)
+    /// [https://github.com/launchplatform/beancount-black](https://github.com/launchplatform/beancount-black)
     ///
     /// `bean-black $PATH`
     BeancountBlack,
@@ -417,7 +417,7 @@ pub enum Tooling {
     #[serde(rename = "bibtex-tidy")]
     /// Cleaner and Formatter for BibTeX files
     ///
-    /// [https://github.com/FlamingTempura/bibtex-tidy](https://github.com/FlamingTempura/bibtex-tidy)
+    /// [https://github.com/flamingtempura/bibtex-tidy](https://github.com/flamingtempura/bibtex-tidy)
     ///
     /// `bibtex-tidy -m $PATH`
     BibtexTidy,
@@ -425,7 +425,7 @@ pub enum Tooling {
     #[serde(rename = "bicep:format")]
     /// Bicep is a declarative language for describing and deploying Azure resources
     ///
-    /// [https://github.com/Azure/bicep](https://github.com/Azure/bicep)
+    /// [https://github.com/azure/bicep](https://github.com/azure/bicep)
     ///
     /// `bicep format $PATH`
     BicepFormat,
@@ -729,7 +729,7 @@ pub enum Tooling {
     #[serde(rename = "css-beautify")]
     /// A css formatter
     ///
-    /// [https://github.com/beautifier/js-beautify?tab=readme-ov-file#css--html](https://github.com/beautifier/js-beautify?tab=readme-ov-file#css--html)
+    /// [https://github.com/beautifier/js-beautify](https://github.com/beautifier/js-beautify)
     ///
     /// `css-beautify -r --type css -f $PATH`
     CssBeautify,
@@ -745,7 +745,7 @@ pub enum Tooling {
     #[serde(rename = "csslint")]
     /// Automated linting of Cascading Stylesheets
     ///
-    /// [https://github.com/CSSLint/csslint](https://github.com/CSSLint/csslint)
+    /// [https://github.com/csslint/csslint](https://github.com/csslint/csslint)
     ///
     /// `csslint --quiet $PATH`
     Csslint,
@@ -937,7 +937,7 @@ pub enum Tooling {
     #[serde(rename = "erlfmt")]
     /// An automated code formatter for Erlang
     ///
-    /// [https://github.com/WhatsApp/erlfmt](https://github.com/WhatsApp/erlfmt)
+    /// [https://github.com/whatsapp/erlfmt](https://github.com/whatsapp/erlfmt)
     ///
     /// `erlfmt -w $PATH_STRING`
     Erlfmt,
@@ -1177,7 +1177,7 @@ pub enum Tooling {
     #[serde(rename = "html-beautify")]
     /// A html formatter
     ///
-    /// [https://github.com/beautifier/js-beautify?tab=readme-ov-file#css--html](https://github.com/beautifier/js-beautify?tab=readme-ov-file#css--html)
+    /// [https://github.com/beautifier/js-beautify](https://github.com/beautifier/js-beautify)
     ///
     /// `html-beautify -r --type html -f $PATH`
     HtmlBeautify,
@@ -1193,7 +1193,7 @@ pub enum Tooling {
     #[serde(rename = "htmlhint")]
     /// The static code analysis tool you need for your HTML
     ///
-    /// [https://github.com/HTMLHint/HTMLHint](https://github.com/HTMLHint/HTMLHint)
+    /// [https://github.com/htmlhint/htmlhint](https://github.com/htmlhint/htmlhint)
     ///
     /// `htmlhint $PATH`
     Htmlhint,
@@ -1297,7 +1297,7 @@ pub enum Tooling {
     #[serde(rename = "juliaformatter.jl")]
     /// An opinionated code formatter for Julia. Plot twist - the opinion is your own
     ///
-    /// [https://github.com/domluna/JuliaFormatter.jl](https://github.com/domluna/JuliaFormatter.jl)
+    /// [https://github.com/domluna/juliaformatter.jl](https://github.com/domluna/juliaformatter.jl)
     ///
     /// `julia -E using JuliaFormatter;format_file(\"{$PATH_STRING}\")`
     JuliaformatterJl,
@@ -1401,7 +1401,7 @@ pub enum Tooling {
     #[serde(rename = "luaformatter")]
     /// Code formatter for Lua
     ///
-    /// [https://github.com/Koihik/LuaFormatter](https://github.com/Koihik/LuaFormatter)
+    /// [https://github.com/koihik/luaformatter](https://github.com/koihik/luaformatter)
     ///
     /// `lua-format -i $PATH`
     Luaformatter,
@@ -1441,7 +1441,7 @@ pub enum Tooling {
     #[serde(rename = "markdownfmt")]
     /// Like gofmt, but for Markdown
     ///
-    /// [https://github.com/shurcooL/markdownfmt](https://github.com/shurcooL/markdownfmt)
+    /// [https://github.com/shurcool/markdownfmt](https://github.com/shurcool/markdownfmt)
     ///
     /// `markdownfmt -w $PATH`
     Markdownfmt,
@@ -1633,7 +1633,7 @@ pub enum Tooling {
     #[serde(rename = "ocp-indent")]
     /// Indentation tool for OCaml
     ///
-    /// [https://github.com/OCamlPro/ocp-indent](https://github.com/OCamlPro/ocp-indent)
+    /// [https://github.com/ocamlpro/ocp-indent](https://github.com/ocamlpro/ocp-indent)
     ///
     /// `ocp-indent --inplace $PATH`
     OcpIndent,
@@ -1641,7 +1641,7 @@ pub enum Tooling {
     #[serde(rename = "odinfmt")]
     /// Formatter for the Odin programming language
     ///
-    /// [https://github.com/DanielGavin/ols](https://github.com/DanielGavin/ols)
+    /// [https://github.com/danielgavin/ols](https://github.com/danielgavin/ols)
     ///
     /// `odinfmt -w $PATH`
     Odinfmt,
@@ -1721,7 +1721,7 @@ pub enum Tooling {
     #[serde(rename = "pg_format")]
     /// A PostgreSQL SQL syntax beautifier
     ///
-    /// [https://github.com/darold/pgFormatter](https://github.com/darold/pgFormatter)
+    /// [https://github.com/darold/pgformatter](https://github.com/darold/pgformatter)
     ///
     /// `pg_format --inplace $PATH`
     PgFormat,
@@ -1729,7 +1729,7 @@ pub enum Tooling {
     #[serde(rename = "php-cs-fixer:fix")]
     /// A tool to automatically fix PHP Coding Standards issues
     ///
-    /// [https://github.com/PHP-CS-Fixer/PHP-CS-Fixer](https://github.com/PHP-CS-Fixer/PHP-CS-Fixer)
+    /// [https://github.com/php-cs-fixer/php-cs-fixer](https://github.com/php-cs-fixer/php-cs-fixer)
     ///
     /// `php-cs-fixer fix $PATH`
     PhpCsFixerFix,
@@ -1777,7 +1777,7 @@ pub enum Tooling {
     #[serde(rename = "prettypst")]
     /// Formatter for Typst
     ///
-    /// [https://github.com/antonWetzel/prettypst](https://github.com/antonWetzel/prettypst)
+    /// [https://github.com/antonwetzel/prettypst](https://github.com/antonwetzel/prettypst)
     ///
     /// `prettypst $PATH`
     Prettypst,
@@ -1849,7 +1849,7 @@ pub enum Tooling {
     #[serde(rename = "pycodestyle")]
     /// Simple Python style checker in one Python file
     ///
-    /// [https://github.com/PyCQA/pycodestyle](https://github.com/PyCQA/pycodestyle)
+    /// [https://github.com/pycqa/pycodestyle](https://github.com/pycqa/pycodestyle)
     ///
     /// `pycodestyle $PATH`
     Pycodestyle,
@@ -2025,7 +2025,7 @@ pub enum Tooling {
     #[serde(rename = "runic")]
     /// Julia code formatter
     ///
-    /// [https://github.com/fredrikekre/Runic.jl](https://github.com/fredrikekre/Runic.jl)
+    /// [https://github.com/fredrikekre/runic.jl](https://github.com/fredrikekre/runic.jl)
     ///
     /// `runic --inplace $PATH`
     Runic,
@@ -2073,7 +2073,7 @@ pub enum Tooling {
     #[serde(rename = "selene")]
     /// A blazing-fast modern Lua linter written in Rust
     ///
-    /// [https://github.com/Kampfkarren/selene](https://github.com/Kampfkarren/selene)
+    /// [https://github.com/kampfkarren/selene](https://github.com/kampfkarren/selene)
     ///
     /// `selene $PATH`
     Selene,
@@ -2257,7 +2257,7 @@ pub enum Tooling {
     #[serde(rename = "stylua")]
     /// An opinionated Lua code formatter
     ///
-    /// [https://github.com/JohnnyMorganz/StyLua](https://github.com/JohnnyMorganz/StyLua)
+    /// [https://github.com/johnnymorganz/stylua](https://github.com/johnnymorganz/stylua)
     ///
     /// `stylua --verify $PATH`
     Stylua,
@@ -2281,7 +2281,7 @@ pub enum Tooling {
     #[serde(rename = "swiftformat")]
     /// A command-line tool and Xcode Extension for formatting Swift code
     ///
-    /// [https://github.com/nicklockwood/SwiftFormat](https://github.com/nicklockwood/SwiftFormat)
+    /// [https://github.com/nicklockwood/swiftformat](https://github.com/nicklockwood/swiftformat)
     ///
     /// `swiftformat --quiet $PATH`
     Swiftformat,
@@ -2321,7 +2321,7 @@ pub enum Tooling {
     #[serde(rename = "tex-fmt")]
     /// An extremely fast LaTeX formatter written in Rust
     ///
-    /// [https://github.com/WGUNDERWOOD/tex-fmt](https://github.com/WGUNDERWOOD/tex-fmt)
+    /// [https://github.com/wgunderwood/tex-fmt](https://github.com/wgunderwood/tex-fmt)
     ///
     /// `tex-fmt $PATH`
     TexFmt,
@@ -2377,7 +2377,7 @@ pub enum Tooling {
     #[serde(rename = "twig-cs-fixer:lint")]
     /// A tool to automatically fix Twig Coding Standards issues
     ///
-    /// [https://github.com/VincentLanglet/Twig-CS-Fixer](https://github.com/VincentLanglet/Twig-CS-Fixer)
+    /// [https://github.com/vincentlanglet/twig-cs-fixer](https://github.com/vincentlanglet/twig-cs-fixer)
     ///
     /// `twig-cs-fixer lint $PATH --fix --no-interaction --quiet`
     TwigCsFixerLint,
@@ -2409,7 +2409,7 @@ pub enum Tooling {
     #[serde(rename = "typstyle")]
     /// Beautiful and reliable typst code formatter
     ///
-    /// [https://github.com/Enter-tainer/typstyle](https://github.com/Enter-tainer/typstyle)
+    /// [https://github.com/enter-tainer/typstyle](https://github.com/enter-tainer/typstyle)
     ///
     /// `typstyle -i $PATH`
     Typstyle,

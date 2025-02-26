@@ -8,7 +8,7 @@
     }
   },
   "description": "Bicep is a declarative language for describing and deploying Azure resources",
-  "homepage": "https://github.com/Azure/bicep",
+  "homepage": "https://github.com/azure/bicep",
   "languages": ["bicep"],
   "packages": {
     "brew": {

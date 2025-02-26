@@ -12,7 +12,11 @@ pub fn set_args(
     cmd
 }
 
-pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("pug-lint")];
+pub const COMMANDS: [CommandType; 3] = [
+    CommandType::NodeModules("pug-lint"),
+    CommandType::Direct("pug-lint"),
+    CommandType::Npm("pug-lint"),
+];
 
 #[cfg(test)]
 mod test_pug_lint {}
