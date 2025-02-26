@@ -17,6 +17,7 @@ pub enum MdsfError {
     LanguageAliasClash(String, String, String),
     LanguageAliasMissingTools(String),
     ReadStdinError(std::io::Error),
+    MissingInput,
 }
 
 impl std::error::Error for MdsfError {}
@@ -65,6 +66,7 @@ impl core::fmt::Display for MdsfError {
                 f,
                 "'{alias}' cannot be used as an alias since it has no tools specified"
             ),
+            Self::MissingInput => write!(f, "No input was provided to mdsf"),
         }
     }
 }
