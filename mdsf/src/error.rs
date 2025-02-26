@@ -16,6 +16,7 @@ pub enum MdsfError {
     /// Another alias clashes
     LanguageAliasClash(String, String, String),
     LanguageAliasMissingTools(String),
+    ReadStdinError(std::io::Error),
 }
 
 impl std::error::Error for MdsfError {}
@@ -34,6 +35,7 @@ impl core::fmt::Display for MdsfError {
                 "No file or directory with the name '{}' found",
                 path.display()
             ),
+            Self::ReadStdinError(error) => write!(f, "Error reading from stdin: {error}"),
             Self::FormatterError(stderr) => {
                 let trimmed_stderr = stderr.trim();
 
