@@ -67,50 +67,80 @@ pub fn read_snippet(file_path: &std::path::Path) -> std::io::Result<String> {
 
 #[inline]
 fn handle_post_execution(
-    result: std::io::Result<std::process::Output>,
+    result: Result<std::process::Output, MdsfError>,
     snippet_path: &std::path::Path,
+    is_stdin: bool,
 ) -> Result<(bool, Option<String>), MdsfError> {
     match result {
         Ok(output) => {
             if output.status.success() {
-                read_snippet(snippet_path)
-                    .map(|code| (false, Some(code)))
-                    .map_err(MdsfError::from)
+                if is_stdin {
+                    let code = String::from_utf8_lossy(&output.stdout).to_string();
+
+                    Ok((false, Some(code)))
+                } else {
+                    read_snippet(snippet_path)
+                        .map(|code| (false, Some(code)))
+                        .map_err(MdsfError::from)
+                }
             } else {
                 Err(MdsfError::FormatterError(
                     String::from_utf8_lossy(&output.stderr).to_string(),
                 ))
             }
         }
-        Err(err) => {
+        Err(MdsfError::Io(err)) => {
             if err.kind() == std::io::ErrorKind::NotFound {
                 Ok((true, None))
             } else {
                 Err(MdsfError::from(err))
             }
         }
+        Err(err) => Err(err),
     }
 }
 
 fn spawn_command(
     mut cmd: std::process::Command,
     timeout: u64,
-) -> std::io::Result<std::process::Output> {
+    is_stdin: bool,
+    snippet_path: &std::path::Path,
+) -> Result<std::process::Output, MdsfError> {
     if !DEBUG.load(core::sync::atomic::Ordering::Relaxed) {
         cmd.stdout(std::process::Stdio::null());
         cmd.stderr(std::process::Stdio::null());
     }
 
-    if timeout == 0 {
-        cmd.output()
+    let spawned = if is_stdin {
+        let file_content = std::fs::read(snippet_path)?;
+
+        let mut handle = cmd
+            .stdin(std::process::Stdio::piped())
+            .stdout(std::process::Stdio::piped())
+            .spawn()?;
+
+        let child_stdin = handle.stdin.as_mut().ok_or(MdsfError::StdinWriteError)?;
+
+        child_stdin.write_all(&file_content)?;
+        child_stdin.flush()?;
+
+        handle
     } else {
         cmd.spawn()?
+    };
+
+    if timeout == 0 {
+        spawned.wait_with_output().map_err(MdsfError::Io)
+    } else {
+        spawned
             .controlled_with_output()
             .time_limit(std::time::Duration::from_secs(timeout))
             .terminate_for_timeout()
-            .wait()?
+            .wait()
+            .map_err(MdsfError::Io)?
             .ok_or_else(|| std::io::Error::new(std::io::ErrorKind::TimedOut, "Process timed out"))
             .map(process_control::Output::into_std_lossy)
+            .map_err(MdsfError::Io)
     }
 }
 
@@ -119,6 +149,7 @@ pub fn execute_command(
     cmd: std::process::Command,
     snippet_path: &std::path::Path,
     timeout: u64,
+    is_stdin: bool,
 ) -> Result<(bool, Option<String>), MdsfError> {
     if cmd.get_current_dir().is_none() {
         let binary_name = cmd.get_program();
@@ -130,9 +161,9 @@ pub fn execute_command(
         }
     }
 
-    let output = spawn_command(cmd, timeout);
+    let output = spawn_command(cmd, timeout, is_stdin, snippet_path);
 
-    handle_post_execution(output, snippet_path)
+    handle_post_execution(output, snippet_path, is_stdin)
 }
 
 #[inline]
@@ -292,17 +323,18 @@ impl MdsfFormatter<Tooling> {
 
 #[inline]
 pub fn run_tools(
-    commands: &[CommandType],
+    command_types: &[CommandType],
     file_path: &std::path::Path,
     set_args_fn: fn(std::process::Command, &std::path::Path) -> std::process::Command,
     timeout: u64,
+    is_stdin: bool,
 ) -> Result<(bool, Option<String>), MdsfError> {
-    for (index, cmd) in commands.iter().enumerate() {
+    for (index, cmd) in command_types.iter().enumerate() {
         let cmd = set_args_fn(cmd.build(), file_path);
 
-        let execution_result = execute_command(cmd, file_path, timeout);
+        let execution_result = execute_command(cmd, file_path, timeout, is_stdin);
 
-        if index == commands.len() - 1 {
+        if index == command_types.len() - 1 {
             return execution_result;
         }
 

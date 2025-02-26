@@ -82,6 +82,9 @@
           "type": ["string", "null"],
           "format": "uri"
         },
+        "stdin": {
+          "type": "boolean"
+        },
         "tests": {
           "type": "array",
           "items": {

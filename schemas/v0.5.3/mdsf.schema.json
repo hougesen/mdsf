@@ -653,6 +653,16 @@
           "enum": ["joker"]
         },
         {
+          "description": "JSON processor\n\n[https://github.com/jqlang/jq](https://github.com/jqlang/jq)\n\n`jq `",
+          "type": "string",
+          "enum": ["jq"]
+        },
+        {
+          "description": "like gofmt, but for jq\n\n[https://github.com/noperator/jqfmt](https://github.com/noperator/jqfmt)\n\n`jqfmt `",
+          "type": "string",
+          "enum": ["jqfmt"]
+        },
+        {
           "description": "A JavaScript formatter\n\n[https://github.com/beautifier/js-beautify](https://github.com/beautifier/js-beautify)\n\n`js-beautify -r --type js -f $PATH`",
           "type": "string",
           "enum": ["js-beautify"]
@@ -1468,6 +1478,16 @@
           "enum": ["xo"]
         },
         {
+          "description": "Format XML\n\n[https://github.com/sibprogrammer/xq](https://github.com/sibprogrammer/xq)\n\n`xq `",
+          "type": "string",
+          "enum": ["xq"]
+        },
+        {
+          "description": "Format HTML\n\n[https://github.com/sibprogrammer/xq](https://github.com/sibprogrammer/xq)\n\n`xq --html`",
+          "type": "string",
+          "enum": ["xq:html"]
+        },
+        {
           "description": "A simple opinionated yaml formatter that keeps your comments\n\n[https://github.com/lyz-code/yamlfix](https://github.com/lyz-code/yamlfix)\n\n`yamlfix $PATH`",
           "type": "string",
           "enum": ["yamlfix"]
@@ -1486,6 +1506,11 @@
           "description": "Code formatter for the Yew framework\n\n[https://github.com/its-the-shrimp/yew-fmt](https://github.com/its-the-shrimp/yew-fmt)\n\n`yew-fmt --edition 2021 --quiet $PATH`",
           "type": "string",
           "enum": ["yew-fmt"]
+        },
+        {
+          "description": "yq is a portable command-line YAML, JSON, XML, CSV, TOML and properties processor\n\n[https://github.com/mikefarah/yq](https://github.com/mikefarah/yq)\n\n`yq --inplace $PATH`",
+          "type": "string",
+          "enum": ["yq"]
         },
         {
           "description": "Reformat Zig source into canonical form\n\n[https://ziglang.org/](https://ziglang.org/)\n\n`zig fmt $PATH`",
