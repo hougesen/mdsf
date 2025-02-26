@@ -19,6 +19,7 @@ Format, and lint, markdown code snippets using your favorite tools.
     - [Cargo](#cargo)
     - [npm/npx](#npmnpx)
     - [Homebrew](#homebrew)
+    - [Conda](#conda)
   - [Editor Support](#editor-support)
     - [Visual Studio Code](#visual-studio-code)
     - [Vim / NeoVim](#vim--neovim)
@@ -99,6 +100,14 @@ npx mdsf-cli format .
 
 ```shell
 brew install hougesen/tap/mdsf
+```
+
+### Conda
+
+An _unofficial_ (and unsupported) Conda package can be found at [https://anaconda.org/conda-forge/mdsf](https://anaconda.org/conda-forge/mdsf).
+
+```shell
+conda install conda-forge::mdsf
 ```
 
 ## Editor Support
