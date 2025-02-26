@@ -120,6 +120,7 @@ pub mod inko_fmt;
 pub mod isort;
 pub mod joker;
 pub mod jq;
+pub mod jqfmt;
 pub mod js_beautify;
 pub mod json_5_format;
 pub mod jsona_format;
@@ -1249,6 +1250,14 @@ pub enum Tooling {
     ///
     /// `jq `
     Jq,
+
+    #[serde(rename = "jqfmt")]
+    /// like gofmt, but for jq
+    ///
+    /// [https://github.com/noperator/jqfmt](https://github.com/noperator/jqfmt)
+    ///
+    /// `jqfmt `
+    Jqfmt,
 
     #[serde(rename = "js-beautify")]
     /// A JavaScript formatter
@@ -2795,6 +2804,7 @@ impl Tooling {
             Self::Isort => (&isort::COMMANDS, isort::set_args, false),
             Self::Joker => (&joker::COMMANDS, joker::set_args, false),
             Self::Jq => (&jq::COMMANDS, jq::set_args, true),
+            Self::Jqfmt => (&jqfmt::COMMANDS, jqfmt::set_args, true),
             Self::JsBeautify => (&js_beautify::COMMANDS, js_beautify::set_args, false),
             Self::Json5Format => (&json_5_format::COMMANDS, json_5_format::set_args, false),
             Self::JsonaFormat => (&jsona_format::COMMANDS, jsona_format::set_args, false),
@@ -3142,6 +3152,7 @@ impl AsRef<str> for Tooling {
             Self::Isort => "isort",
             Self::Joker => "joker",
             Self::Jq => "jq",
+            Self::Jqfmt => "jqfmt",
             Self::JsBeautify => "js_beautify",
             Self::Json5Format => "json_5_format",
             Self::JsonaFormat => "jsona_format",

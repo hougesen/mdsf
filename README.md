@@ -389,7 +389,7 @@ mdsf init
 
 <!-- START_SECTION:supported-tools -->
 
-`mdsf` currently supports 270 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 271 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                                                                                 | Description                                                                                                                                   | Categories            | Languages                                                                 |
 | ------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- | ------------------------------------------------------------------------- |
@@ -504,6 +504,7 @@ mdsf init
 | [isort](https://github.com/timothycrosley/isort)                                     | A Python utility to sort imports                                                                                                              | `formatter`           | `python`                                                                  |
 | [joker](https://github.com/candid82/joker)                                           | Small Clojure interpreter, linter and formatter                                                                                               | `formatter`, `linter` | `clojure`                                                                 |
 | [jq](https://github.com/jqlang/jq)                                                   | JSON processor                                                                                                                                | `formatter`           | `json`                                                                    |
+| [jqfmt](https://github.com/noperator/jqfmt)                                          | like gofmt, but for jq                                                                                                                        | `formatter`           | `jq`                                                                      |
 | [js-beautify](https://github.com/beautifier/js-beautify)                             | A JavaScript formatter                                                                                                                        | `formatter`           | `javascript`                                                              |
 | [json5format](https://github.com/google/json5format)                                 | JSON5 (a.k.a., JSON for Humans) formatter that preserves contextual comments                                                                  | `formatter`           | `json5`, `json`                                                           |
 | [jsona](https://github.com/jsona/jsona)                                              | JSONA linter and formatter                                                                                                                    | `formatter`, `linter` | `jsona`                                                                   |
@@ -670,7 +671,7 @@ mdsf init
 
 <!-- START_SECTION:supported-commands -->
 
-`mdsf` currently supports 292 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 293 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                     | Command                                                                                 |
 | ------------------------ | --------------------------------------------------------------------------------------- |
@@ -793,6 +794,7 @@ mdsf init
 | `isort`                  | `isort --quiet $PATH`                                                                   |
 | `joker`                  | `joker --format --write $PATH`                                                          |
 | `jq`                     | `jq `                                                                                   |
+| `jqfmt`                  | `jqfmt `                                                                                |
 | `js-beautify`            | `js-beautify -r --type js -f $PATH`                                                     |
 | `json5format`            | `json5format -r $PATH`                                                                  |
 | `jsona:format`           | `jsona format $PATH`                                                                    |

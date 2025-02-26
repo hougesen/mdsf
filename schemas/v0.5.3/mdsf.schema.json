@@ -658,6 +658,11 @@
           "enum": ["jq"]
         },
         {
+          "description": "like gofmt, but for jq\n\n[https://github.com/noperator/jqfmt](https://github.com/noperator/jqfmt)\n\n`jqfmt `",
+          "type": "string",
+          "enum": ["jqfmt"]
+        },
+        {
           "description": "A JavaScript formatter\n\n[https://github.com/beautifier/js-beautify](https://github.com/beautifier/js-beautify)\n\n`js-beautify -r --type js -f $PATH`",
           "type": "string",
           "enum": ["js-beautify"]

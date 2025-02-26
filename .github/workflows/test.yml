@@ -154,6 +154,8 @@ jobs:
         run: ( ( which sqlfluff ) || ( ( which pipx && pipx install sqlfluff ) ) || ( echo "Unable to install tool" ) )
       - name: swiftformat
         run: ( ( which swiftformat ) || ( ( which brew &&  brew install swiftformat ) ) || ( echo "Unable to install tool" ) )
+      - name: jqfmt
+        run: ( ( which jqfmt ) || ( ( which go && go install github.com/noperator/jqfmt/cmd/jqfmt@latest ) ) || ( echo "Unable to install tool" ) )
       - name: auto-optional
         run: ( ( which auto-optional ) || ( ( which pipx && pipx install auto-optional ) ) || ( echo "Unable to install tool" ) )
       - name: taplo

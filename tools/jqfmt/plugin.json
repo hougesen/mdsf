@@ -1,0 +1,24 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "jqfmt",
+  "categories": ["formatter"],
+  "commands": {
+    "": {
+      "arguments": [],
+      "stdin": true,
+      "tests": [
+        {
+          "language": "jq",
+          "test_input": "{one: .two, three: [.four, .five, [.fivetwo, .fivethree]], six: map(select((.seven | .eight | .nine)))}",
+          "test_output": "{ one: .two, three: [.four, .five, [.fivetwo, .fivethree]], six: map(select((.seven | .eight | .nine))) }"
+        }
+      ]
+    }
+  },
+  "description": "like gofmt, but for jq",
+  "homepage": "https://github.com/noperator/jqfmt",
+  "languages": ["jq"],
+  "packages": {
+    "go": "github.com/noperator/jqfmt/cmd/jqfmt@latest"
+  }
+}
