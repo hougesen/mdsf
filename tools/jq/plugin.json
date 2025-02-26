@@ -1,0 +1,24 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "jq",
+  "categories": ["formatter"],
+  "commands": {
+    "": {
+      "arguments": [],
+      "stdin": true,
+      "tests": [
+        {
+          "language": "json",
+          "test_input": "{\"key\":1}",
+          "test_output": "{\n  \"key\": 1\n}\n"
+        }
+      ]
+    }
+  },
+  "description": "JSON processor",
+  "homepage": "https://github.com/jqlang/jq",
+  "languages": ["json"],
+  "packages": {
+    "apt": "jq"
+  }
+}

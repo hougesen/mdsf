@@ -389,7 +389,7 @@ mdsf init
 
 <!-- START_SECTION:supported-tools -->
 
-`mdsf` currently supports 267 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 269 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                                                                                 | Description                                                                                                                                   | Categories            | Languages                                                                 |
 | ------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- | ------------------------------------------------------------------------- |
@@ -503,6 +503,7 @@ mdsf init
 | [inko](https://github.com/inko-lang/inko)                                            | Code formatter for the inko programming language                                                                                              | `formatter`           | `inko`                                                                    |
 | [isort](https://github.com/timothycrosley/isort)                                     | A Python utility to sort imports                                                                                                              | `formatter`           | `python`                                                                  |
 | [joker](https://github.com/candid82/joker)                                           | Small Clojure interpreter, linter and formatter                                                                                               | `formatter`, `linter` | `clojure`                                                                 |
+| [jq](https://github.com/jqlang/jq)                                                   | JSON processor                                                                                                                                | `formatter`           | `json`                                                                    |
 | [js-beautify](https://github.com/beautifier/js-beautify)                             | A JavaScript formatter                                                                                                                        | `formatter`           | `javascript`                                                              |
 | [json5format](https://github.com/google/json5format)                                 | JSON5 (a.k.a., JSON for Humans) formatter that preserves contextual comments                                                                  | `formatter`           | `json5`, `json`                                                           |
 | [jsona](https://github.com/jsona/jsona)                                              | JSONA linter and formatter                                                                                                                    | `formatter`, `linter` | `jsona`                                                                   |
@@ -657,6 +658,7 @@ mdsf init
 | [yamlfmt](https://github.com/google/yamlfmt)                                         | An extensible command line tool or library to format yaml files                                                                               | `formatter`           | `yaml`                                                                    |
 | [yapf](https://github.com/google/yapf)                                               | A formatter for Python files                                                                                                                  | `formatter`           | `python`                                                                  |
 | [yew-fmt](https://github.com/its-the-shrimp/yew-fmt)                                 | Code formatter for the Yew framework                                                                                                          | `formatter`           | `rust`                                                                    |
+| [yq](https://github.com/mikefarah/yq)                                                | yq is a portable command-line YAML, JSON, XML, CSV, TOML and properties processor                                                             | `formatter`           | `yaml`                                                                    |
 | [zig](https://ziglang.org/)                                                          | Reformat Zig source into canonical form                                                                                                       | `formatter`           | `zig`                                                                     |
 | [ziggy](https://ziggy-lang.io/)                                                      | Formats Ziggy documents and Ziggy schemas                                                                                                     | `formatter`           | `ziggy`                                                                   |
 | [zprint](https://github.com/kkinnear/zprint)                                         | Executables, uberjar, and library to beautifully format Clojure and Clojurescript source code and s-expressions                               | `formatter`           | `clojure`, `clojurescript`                                                |
@@ -667,7 +669,7 @@ mdsf init
 
 <!-- START_SECTION:supported-commands -->
 
-`mdsf` currently supports 288 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 290 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                     | Command                                                                                 |
 | ------------------------ | --------------------------------------------------------------------------------------- |
@@ -789,6 +791,7 @@ mdsf init
 | `inko:fmt`               | `inko fmt $PATH`                                                                        |
 | `isort`                  | `isort --quiet $PATH`                                                                   |
 | `joker`                  | `joker --format --write $PATH`                                                          |
+| `jq`                     | `jq `                                                                                   |
 | `js-beautify`            | `js-beautify -r --type js -f $PATH`                                                     |
 | `json5format`            | `json5format -r $PATH`                                                                  |
 | `jsona:format`           | `jsona format $PATH`                                                                    |
@@ -956,6 +959,7 @@ mdsf init
 | `yamlfmt`                | `yamlfmt -quiet $PATH`                                                                  |
 | `yapf`                   | `yapf --in-place $PATH`                                                                 |
 | `yew-fmt`                | `yew-fmt --edition 2021 --quiet $PATH`                                                  |
+| `yq`                     | `yq --inplace $PATH`                                                                    |
 | `zig:fmt`                | `zig fmt $PATH`                                                                         |
 | `ziggy:fmt`              | `ziggy fmt $PATH`                                                                       |
 | `zprint`                 | `zprint -w $PATH`                                                                       |

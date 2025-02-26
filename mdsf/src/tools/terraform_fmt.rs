@@ -41,11 +41,16 @@ mod test_terraform_fmt {
         let snippet =
             crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
 
-        let result =
-            crate::execution::run_tools(&super::COMMANDS, snippet.path(), super::set_args, 0)
-                .expect("it to be successful")
-                .1
-                .expect("it to be some");
+        let result = crate::execution::run_tools(
+            &super::COMMANDS,
+            snippet.path(),
+            super::set_args,
+            0,
+            false,
+        )
+        .expect("it to be successful")
+        .1
+        .expect("it to be some");
 
         assert_eq!(result, output);
     }

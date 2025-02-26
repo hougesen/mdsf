@@ -164,6 +164,8 @@ jobs:
         run: ( ( which rescript ) || ( ( which npm && npm i -g rescript ) ) || ( echo "Unable to install tool" ) )
       - name: yapf
         run: ( ( which yapf ) || ( ( which pipx && pipx install yapf ) ) || ( echo "Unable to install tool" ) )
+      - name: jq
+        run: ( ( which jq ) || ( ( which apt-get && sudo apt-get install -y jq ) ) || ( echo "Unable to install tool" ) )
       - name: autopep8
         run: ( ( which autopep8 ) || ( ( which pipx && pipx install autopep8 ) ) || ( echo "Unable to install tool" ) )
       - name: usort

@@ -1,0 +1,20 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "yq",
+  "categories": ["formatter"],
+  "commands": {
+    "": {
+      "arguments": ["--inplace", "$PATH"]
+    }
+  },
+  "description": "yq is a portable command-line YAML, JSON, XML, CSV, TOML and properties processor",
+  "homepage": "https://github.com/mikefarah/yq",
+  "languages": ["yaml"],
+  "packages": {
+    "apt": "yq",
+    "brew": {
+      "name": "yq"
+    },
+    "go": "github.com/mikefarah/yq/v4@latest"
+  }
+}
