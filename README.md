@@ -21,6 +21,8 @@ Format, and lint, markdown code snippets using your favorite tools.
     - [Homebrew](#homebrew)
   - [Editor Support](#editor-support)
     - [Visual Studio Code](#visual-studio-code)
+    - [Vim / NeoVim](#vim--neovim)
+      - [conform.nvim](#conformnvim)
   - [Usage](#usage)
     - [Formatting code](#formatting-code)
     - [Verifying code](#verifying-code)
@@ -110,6 +112,24 @@ mdsf can be run using the VSCode extension.
 > \[!NOTE\]
 > The mdsf VS Code extension does currently not support installing mdsf.
 > Which means mdsf must be installed using other means.
+
+### Vim / NeoVim
+
+#### conform.nvim
+
+[conform.nvim](https://github.com/stevearc/conform.nvim) has native support for running mdsf.
+
+```lua
+local conform = require("conform")
+
+conform.setup({
+	formatters_by_ft = {
+		markdown = { "mdsf" },
+		-- ...
+	},
+	-- ...
+})
+```
 
 ## Usage
 

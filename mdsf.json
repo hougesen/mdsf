@@ -4,6 +4,7 @@
     "bash": "shfmt",
     "fish": "fish_indent",
     "json": "prettier",
+    "lua": "stylua",
     "nushell": "nufmt",
     "shell": "shfmt",
     "yaml": "prettier"
