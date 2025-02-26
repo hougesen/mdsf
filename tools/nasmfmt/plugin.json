@@ -10,5 +10,7 @@
   "description": "Formatter for NASM source files",
   "homepage": "https://github.com/yamnikov-oleg/nasmfmt",
   "languages": ["assembly"],
-  "packages": {}
+  "packages": {
+    "go": "github.com/yamnikov-oleg/nasmfmt@latest"
+  }
 }

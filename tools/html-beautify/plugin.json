@@ -15,7 +15,7 @@
     }
   },
   "description": "A html formatter",
-  "homepage": "https://github.com/beautifier/js-beautify?tab=readme-ov-file#css--html",
+  "homepage": "https://github.com/beautifier/js-beautify",
   "languages": ["html"],
   "packages": {
     "npm": "js-beautify"

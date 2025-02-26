@@ -10,5 +10,8 @@
   "description": "Fast SQL formatter/linter",
   "homepage": "https://github.com/quarylabs/sqruff",
   "languages": ["sql"],
-  "packages": {}
+  "packages": {
+    "cargo": "sqruff",
+    "pip": "sqruff"
+  }
 }

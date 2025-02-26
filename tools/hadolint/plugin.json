@@ -10,5 +10,9 @@
   "description": "Dockerfile linter, validate inline bash, written in Haskell",
   "homepage": "https://github.com/hadolint/hadolint",
   "languages": ["dockerfile"],
-  "packages": {}
+  "packages": {
+    "brew": {
+      "name": "hadolint"
+    }
+  }
 }

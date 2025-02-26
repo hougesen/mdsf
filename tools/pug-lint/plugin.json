@@ -10,5 +10,7 @@
   "description": "An unopinionated and configurable linter and style checker for Pug",
   "homepage": "https://github.com/pugjs/pug-lint",
   "languages": ["pug"],
-  "packages": {}
+  "packages": {
+    "npm": "pug-lint"
+  }
 }

@@ -8,7 +8,7 @@
     }
   },
   "description": "A tool to automatically fix Twig Coding Standards issues",
-  "homepage": "https://github.com/VincentLanglet/Twig-CS-Fixer",
+  "homepage": "https://github.com/vincentlanglet/twig-cs-fixer",
   "languages": ["twig"],
   "packages": {
     "composer": {

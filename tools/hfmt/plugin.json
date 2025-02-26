@@ -10,5 +10,8 @@
   "description": "Format Haskell programs. Inspired by the gofmt utility",
   "homepage": "https://github.com/danstiner/hfmt",
   "languages": ["haskell"],
-  "packages": {}
+  "packages": {
+    "cabal": "hfmt",
+    "stack": "hfmt"
+  }
 }

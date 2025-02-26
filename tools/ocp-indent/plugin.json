@@ -15,7 +15,7 @@
     }
   },
   "description": "Indentation tool for OCaml",
-  "homepage": "https://github.com/OCamlPro/ocp-indent",
+  "homepage": "https://github.com/ocamlpro/ocp-indent",
   "languages": ["ocaml"],
   "packages": {
     "apt": "ocp-indent"

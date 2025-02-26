@@ -8,7 +8,7 @@
     }
   },
   "description": "Formatter for the Odin programming language",
-  "homepage": "https://github.com/DanielGavin/ols",
+  "homepage": "https://github.com/danielgavin/ols",
   "languages": ["odin"],
   "packages": {}
 }

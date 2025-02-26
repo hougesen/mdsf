@@ -15,7 +15,7 @@
     }
   },
   "description": "A command-line tool and Xcode Extension for formatting Swift code",
-  "homepage": "https://github.com/nicklockwood/SwiftFormat",
+  "homepage": "https://github.com/nicklockwood/swiftformat",
   "languages": ["swift"],
   "packages": {
     "brew": {

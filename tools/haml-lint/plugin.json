@@ -10,5 +10,7 @@
   "description": "Tool for writing clean and consistent HAML",
   "homepage": "https://github.com/sds/haml-lint",
   "languages": ["haml"],
-  "packages": {}
+  "packages": {
+    "gem": "haml_lint"
+  }
 }

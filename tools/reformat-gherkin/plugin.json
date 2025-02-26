@@ -10,5 +10,7 @@
   "description": "Reformat-gherkin automatically formats Gherkin files",
   "homepage": "https://github.com/ducminh-phan/reformat-gherkin",
   "languages": ["gherkin"],
-  "packages": {}
+  "packages": {
+    "pip": "reformat-gherkin"
+  }
 }

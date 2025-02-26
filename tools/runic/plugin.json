@@ -8,7 +8,7 @@
     }
   },
   "description": "Julia code formatter",
-  "homepage": "https://github.com/fredrikekre/Runic.jl",
+  "homepage": "https://github.com/fredrikekre/runic.jl",
   "languages": ["julia"],
   "packages": {
     "julia": "Runic"

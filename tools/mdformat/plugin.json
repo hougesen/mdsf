@@ -10,5 +10,7 @@
   "description": "CommonMark compliant Markdown formatter",
   "homepage": "https://github.com/executablebooks/mdformat",
   "languages": ["markdwon"],
-  "packages": {}
+  "packages": {
+    "pip": "mdformat"
+  }
 }

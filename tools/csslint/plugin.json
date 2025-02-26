@@ -8,7 +8,7 @@
     }
   },
   "description": "Automated linting of Cascading Stylesheets",
-  "homepage": "https://github.com/CSSLint/csslint",
+  "homepage": "https://github.com/csslint/csslint",
   "languages": ["css"],
   "packages": {
     "npm": "csslint"

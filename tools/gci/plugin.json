@@ -10,5 +10,7 @@
   "description": "GCI, a tool that control golang package import order and make it always deterministic",
   "homepage": "https://github.com/daixiang0/gci",
   "languages": ["go"],
-  "packages": {}
+  "packages": {
+    "go": "github.com/daixiang0/gci@latest"
+  }
 }

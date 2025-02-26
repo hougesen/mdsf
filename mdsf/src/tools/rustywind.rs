@@ -13,7 +13,11 @@ pub fn set_args(
     cmd
 }
 
-pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("rustywind")];
+pub const COMMANDS: [CommandType; 3] = [
+    CommandType::NodeModules("rustywind"),
+    CommandType::Direct("rustywind"),
+    CommandType::Npm("rustywind"),
+];
 
 #[cfg(test)]
 mod test_rustywind {}

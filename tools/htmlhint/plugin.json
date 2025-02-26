@@ -8,7 +8,7 @@
     }
   },
   "description": "The static code analysis tool you need for your HTML",
-  "homepage": "https://github.com/HTMLHint/HTMLHint",
+  "homepage": "https://github.com/htmlhint/htmlhint",
   "languages": ["html"],
   "packages": {
     "npm": "htmlhint"
