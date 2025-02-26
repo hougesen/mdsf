@@ -56,7 +56,7 @@ fn indent_codeblock(indentation: &str, snippet: String) -> String {
 }
 
 #[inline]
-fn format_file(
+pub fn format_file(
     config: &MdsfConfig,
     filename: &std::path::Path,
     input: &str,

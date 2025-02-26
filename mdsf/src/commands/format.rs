@@ -5,8 +5,11 @@ use std::{
 
 use clap::builder::OsStr;
 use mdsf::{
-    caching::get_config_hash, cli::FormatCommandArguments, config::MdsfConfig, error::MdsfError,
-    handle_file,
+    caching::get_config_hash,
+    cli::{read_stdin, FormatCommandArguments},
+    config::MdsfConfig,
+    error::MdsfError,
+    format_file, handle_file,
 };
 use threadpool::ThreadPool;
 
@@ -53,7 +56,24 @@ pub fn run(args: FormatCommandArguments, dry_run: bool) -> Result<(), MdsfError>
 
     let changed_file_count = Arc::new(AtomicU32::new(0));
 
-    if let Some(first_path) = args.input.first() {
+    if args.stdin {
+        let stdin_input = read_stdin().map_err(MdsfError::ReadStdinError)?;
+
+        let (was_formatted, output) = format_file(
+            &conf,
+            std::path::PathBuf::new().as_path(),
+            &stdin_input,
+            args.timeout.unwrap_or_default(),
+        );
+
+        if was_formatted {
+            changed_file_count.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+        }
+
+        if !dry_run {
+            println!("{output}");
+        }
+    } else if let Some(first_path) = args.input.first() {
         let mut walk_builder = ignore::WalkBuilder::new(first_path);
 
         walk_builder

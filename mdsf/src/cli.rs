@@ -1,3 +1,5 @@
+use std::io::Read;
+
 use clap::{Args, Parser, Subcommand};
 
 const HELP_TEMPLATE: &str = "\
@@ -39,6 +41,10 @@ pub struct FormatCommandArguments {
     #[arg()]
     pub input: Vec<std::path::PathBuf>,
 
+    /// Read input from stdin and write output to stdout  
+    #[arg(long, default_value_t = false)]
+    pub stdin: bool,
+
     /// Path to config
     #[arg(long)]
     pub config: Option<std::path::PathBuf>,
@@ -73,6 +79,10 @@ pub struct VerifyCommandArguments {
     #[arg()]
     pub input: Vec<std::path::PathBuf>,
 
+    /// Read input from stdin and write output to stdout  
+    #[arg(long, default_value_t = false)]
+    pub stdin: bool,
+
     /// Path to config
     #[arg(long)]
     pub config: Option<std::path::PathBuf>,
@@ -102,6 +112,7 @@ impl From<VerifyCommandArguments> for FormatCommandArguments {
     fn from(value: VerifyCommandArguments) -> Self {
         Self {
             input: value.input,
+            stdin: value.stdin,
             config: value.config,
             debug: value.debug,
             log_level: value.log_level,
@@ -178,4 +189,15 @@ pub struct CachePruneArguments {
     /// Remove caches that aren't state (based on config).
     #[arg(long, default_value_t = false)]
     pub all: bool,
+}
+
+#[inline]
+pub fn read_stdin() -> std::io::Result<String> {
+    let stdin = std::io::stdin();
+
+    let mut input = String::new();
+
+    stdin.lock().read_to_string(&mut input)?;
+
+    Ok(input)
 }
