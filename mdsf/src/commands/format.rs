@@ -9,6 +9,7 @@ use mdsf::{
     cli::{read_stdin, FormatCommandArguments},
     config::MdsfConfig,
     error::MdsfError,
+    execution::setup_snippet,
     format_file, handle_file,
 };
 use threadpool::ThreadPool;
@@ -59,9 +60,11 @@ pub fn run(args: FormatCommandArguments, dry_run: bool) -> Result<(), MdsfError>
     if args.stdin {
         let stdin_input = read_stdin().map_err(MdsfError::ReadStdinError)?;
 
+        let f = setup_snippet(&stdin_input, "md")?;
+
         let (was_formatted, output) = format_file(
             &conf,
-            std::path::PathBuf::new().as_path(),
+            f.path(),
             &stdin_input,
             args.timeout.unwrap_or_default(),
         );
@@ -121,6 +124,8 @@ pub fn run(args: FormatCommandArguments, dry_run: bool) -> Result<(), MdsfError>
         }
 
         pool.join();
+    } else {
+        return Err(MdsfError::MissingInput);
     }
 
     let total_changed_files = changed_file_count.load(std::sync::atomic::Ordering::SeqCst);
