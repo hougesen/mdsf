@@ -7,6 +7,7 @@
     "lua": "stylua",
     "nushell": "nufmt",
     "shell": "shfmt",
+    "toml": ["taplo", "prettier"],
     "yaml": "prettier"
   }
 }

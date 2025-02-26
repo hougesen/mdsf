@@ -29,6 +29,7 @@ Format, and lint, markdown code snippets using your favorite tools.
     - [GitHub workflow examples](#github-workflow-examples)
       - [Format and commit](#format-and-commit)
       - [Verify](#verify)
+    - [treefmt](#treefmt)
   - [Configuration](#configuration)
     - [Tools](#tools)
     - [Commands](#commands)
@@ -273,7 +274,7 @@ After that you can run the binary like you would in your terminal.
 
 #### Format and commit
 
-This workflow formats your repository using `mdsf` and the commits the changes.
+This workflow formats your repository using `mdsf` and then commits the changes.
 
 ```yaml
 name: mdsf
@@ -303,7 +304,7 @@ jobs:
 
 #### Verify
 
-This workflow verifies your repository .
+This workflow verifies your repository is formatted.
 
 ```yaml
 name: mdsf
@@ -324,6 +325,19 @@ jobs:
 
       - name: Run mdsf
         run: mdsf verify --log-level warn .
+```
+
+### treefmt
+
+Add the following to your `treefmt.toml` to run mdsf using [treefmt](https://github.com/numtide/treefmt).
+
+```toml
+# treefmt.toml
+
+[formatter.mdsf]
+command = "mdsf"
+options = ["format"]
+includes = ["*.md"]
 ```
 
 ## Configuration
