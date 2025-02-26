@@ -1473,6 +1473,16 @@
           "enum": ["xo"]
         },
         {
+          "description": "Format XML\n\n[https://github.com/sibprogrammer/xq](https://github.com/sibprogrammer/xq)\n\n`xq `",
+          "type": "string",
+          "enum": ["xq"]
+        },
+        {
+          "description": "Format HTML\n\n[https://github.com/sibprogrammer/xq](https://github.com/sibprogrammer/xq)\n\n`xq --html`",
+          "type": "string",
+          "enum": ["xq:html"]
+        },
+        {
           "description": "A simple opinionated yaml formatter that keeps your comments\n\n[https://github.com/lyz-code/yamlfix](https://github.com/lyz-code/yamlfix)\n\n`yamlfix $PATH`",
           "type": "string",
           "enum": ["yamlfix"]

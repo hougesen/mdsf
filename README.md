@@ -389,7 +389,7 @@ mdsf init
 
 <!-- START_SECTION:supported-tools -->
 
-`mdsf` currently supports 269 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 270 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                                                                                 | Description                                                                                                                                   | Categories            | Languages                                                                 |
 | ------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- | ------------------------------------------------------------------------- |
@@ -654,6 +654,7 @@ mdsf init
 | [xmlformat](https://github.com/pamoller/xmlformatter)                                | Format and compress XML documents                                                                                                             | `formatter`           | `xml`                                                                     |
 | [xmllint](https://gnome.pages.gitlab.gnome.org/libxml2/xmllint.html)                 | XML linter                                                                                                                                    | `linter`              | `xml`                                                                     |
 | [xo](https://github.com/xojs/xo)                                                     | JavaScript/TypeScript linter (ESLint wrapper) with great defaults                                                                             | `linter`              | `javascript`, `typescript`                                                |
+| [xq](https://github.com/sibprogrammer/xq)                                            | Command-line XML and HTML beautifier and content extractor                                                                                    | `formatter`           | `html`, `xml`                                                             |
 | [yamlfix](https://github.com/lyz-code/yamlfix)                                       | A simple opinionated yaml formatter that keeps your comments                                                                                  | `formatter`           | `yaml`                                                                    |
 | [yamlfmt](https://github.com/google/yamlfmt)                                         | An extensible command line tool or library to format yaml files                                                                               | `formatter`           | `yaml`                                                                    |
 | [yapf](https://github.com/google/yapf)                                               | A formatter for Python files                                                                                                                  | `formatter`           | `python`                                                                  |
@@ -669,7 +670,7 @@ mdsf init
 
 <!-- START_SECTION:supported-commands -->
 
-`mdsf` currently supports 290 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 292 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                     | Command                                                                                 |
 | ------------------------ | --------------------------------------------------------------------------------------- |
@@ -955,6 +956,8 @@ mdsf init
 | `xmlformat`              | `xmlformat --overwrite $PATH`                                                           |
 | `xmllint`                | `xmllint --format $PATH --output $PATH`                                                 |
 | `xo`                     | `xo --fix $PATH`                                                                        |
+| `xq:html`                | `xq --html`                                                                             |
+| `xq`                     | `xq `                                                                                   |
 | `yamlfix`                | `yamlfix $PATH`                                                                         |
 | `yamlfmt`                | `yamlfmt -quiet $PATH`                                                                  |
 | `yapf`                   | `yapf --in-place $PATH`                                                                 |

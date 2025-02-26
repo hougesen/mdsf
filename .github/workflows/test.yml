@@ -198,6 +198,8 @@ jobs:
         run: ( ( which stylefmt ) || ( ( which npm && npm i -g stylefmt ) ) || ( echo "Unable to install tool" ) )
       - name: rubocop
         run: ( ( which rubocop ) || ( ( which gem && gem install rubocop ) ) || ( echo "Unable to install tool" ) )
+      - name: xq
+        run: ( ( which xq ) || ( ( which brew &&  brew install xq ) || ( which apt-get && sudo apt-get install -y xq ) ) || ( echo "Unable to install tool" ) )
       - name: htmlbeautifier
         run: ( ( which htmlbeautifier ) || ( ( which gem && gem install htmlbeautifier ) ) || ( echo "Unable to install tool" ) )
       - name: Run tests

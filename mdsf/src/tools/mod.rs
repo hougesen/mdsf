@@ -283,6 +283,8 @@ pub mod write_good;
 pub mod xmlformat;
 pub mod xmllint;
 pub mod xo;
+pub mod xq;
+pub mod xq_html;
 pub mod yamlfix;
 pub mod yamlfmt;
 pub mod yapf;
@@ -2552,6 +2554,22 @@ pub enum Tooling {
     /// `xo --fix $PATH`
     Xo,
 
+    #[serde(rename = "xq")]
+    /// Format XML
+    ///
+    /// [https://github.com/sibprogrammer/xq](https://github.com/sibprogrammer/xq)
+    ///
+    /// `xq `
+    Xq,
+
+    #[serde(rename = "xq:html")]
+    /// Format HTML
+    ///
+    /// [https://github.com/sibprogrammer/xq](https://github.com/sibprogrammer/xq)
+    ///
+    /// `xq --html`
+    XqHtml,
+
     #[serde(rename = "yamlfix")]
     /// A simple opinionated yaml formatter that keeps your comments
     ///
@@ -2984,6 +3002,8 @@ impl Tooling {
             Self::Xmlformat => (&xmlformat::COMMANDS, xmlformat::set_args, false),
             Self::Xmllint => (&xmllint::COMMANDS, xmllint::set_args, false),
             Self::Xo => (&xo::COMMANDS, xo::set_args, false),
+            Self::Xq => (&xq::COMMANDS, xq::set_args, true),
+            Self::XqHtml => (&xq_html::COMMANDS, xq_html::set_args, true),
             Self::Yamlfix => (&yamlfix::COMMANDS, yamlfix::set_args, false),
             Self::Yamlfmt => (&yamlfmt::COMMANDS, yamlfmt::set_args, false),
             Self::Yapf => (&yapf::COMMANDS, yapf::set_args, false),
@@ -3285,6 +3305,8 @@ impl AsRef<str> for Tooling {
             Self::Xmlformat => "xmlformat",
             Self::Xmllint => "xmllint",
             Self::Xo => "xo",
+            Self::Xq => "xq",
+            Self::XqHtml => "xq_html",
             Self::Yamlfix => "yamlfix",
             Self::Yamlfmt => "yamlfmt",
             Self::Yapf => "yapf",

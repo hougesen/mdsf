@@ -1,0 +1,33 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "xq",
+  "categories": ["formatter"],
+  "commands": {
+    "": {
+      "arguments": [],
+      "description": "Format XML",
+      "stdin": true,
+      "tests": [
+        {
+          "language": "xml",
+          "test_input": "<?xml version=\"1.0\"?> <catalog>    <book id=\"bk112\">       <author>Galos, Mike</author>       <title>Visual Studio 7: A Comprehensive Guide</title>       <genre>Computer</genre>       <price>49.95</price>       <publish_date>2001-04-16</publish_date>       <description>Microsoft Visual Studio 7 is explored in depth,       looking at how Visual Basic, Visual C++, C#, and ASP+ are        integrated into a comprehensive development        environment.</description>    </book> </catalog>",
+          "test_output": "<?xml version=\"1.0\"?>\n<catalog>\n  <book id=\"bk112\">\n    <author>Galos, Mike</author>\n    <title>Visual Studio 7: A Comprehensive Guide</title>\n    <genre>Computer</genre>\n    <price>49.95</price>\n    <publish_date>2001-04-16</publish_date>\n    <description>Microsoft Visual Studio 7 is explored in depth,       looking at how Visual Basic, Visual C++, C#, and ASP+ are        integrated into a comprehensive development        environment.</description>\n  </book>\n</catalog>\n"
+        }
+      ]
+    },
+    "html": {
+      "arguments": ["--html"],
+      "description": "Format HTML",
+      "stdin": true
+    }
+  },
+  "description": "Command-line XML and HTML beautifier and content extractor",
+  "homepage": "https://github.com/sibprogrammer/xq",
+  "languages": ["html", "xml"],
+  "packages": {
+    "apt": "xq",
+    "brew": {
+      "name": "xq"
+    }
+  }
+}
