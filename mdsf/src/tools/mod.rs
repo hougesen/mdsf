@@ -157,6 +157,8 @@ pub mod meson_fmt;
 pub mod misspell;
 pub mod mix_format;
 pub mod mojo_format;
+pub mod muon_fmt;
+pub mod muon_lint;
 pub mod mypy;
 pub mod nasmfmt;
 pub mod nginxbeautifier;
@@ -1547,6 +1549,22 @@ pub enum Tooling {
     /// `mojo format -q $PATH`
     MojoFormat,
 
+    #[serde(rename = "muon:fmt")]
+    /// An implementation of the meson build system
+    ///
+    /// [https://github.com/muon-build/muon](https://github.com/muon-build/muon)
+    ///
+    /// `muon fmt -i $PATH`
+    MuonFmt,
+
+    #[serde(rename = "muon:lint")]
+    /// An implementation of the meson build system
+    ///
+    /// [https://github.com/muon-build/muon](https://github.com/muon-build/muon)
+    ///
+    /// `muon lint -i $PATH`
+    MuonLint,
+
     #[serde(rename = "mypy")]
     /// Optional static typing for Python
     ///
@@ -2861,6 +2879,8 @@ impl Tooling {
             Self::Misspell => (&misspell::COMMANDS, misspell::set_args, false),
             Self::MixFormat => (&mix_format::COMMANDS, mix_format::set_args, false),
             Self::MojoFormat => (&mojo_format::COMMANDS, mojo_format::set_args, false),
+            Self::MuonFmt => (&muon_fmt::COMMANDS, muon_fmt::set_args, false),
+            Self::MuonLint => (&muon_lint::COMMANDS, muon_lint::set_args, false),
             Self::Mypy => (&mypy::COMMANDS, mypy::set_args, false),
             Self::Nasmfmt => (&nasmfmt::COMMANDS, nasmfmt::set_args, false),
             Self::Nginxbeautifier => (&nginxbeautifier::COMMANDS, nginxbeautifier::set_args, false),
@@ -3189,6 +3209,8 @@ impl AsRef<str> for Tooling {
             Self::Misspell => "misspell",
             Self::MixFormat => "mix_format",
             Self::MojoFormat => "mojo_format",
+            Self::MuonFmt => "muon_fmt",
+            Self::MuonLint => "muon_lint",
             Self::Mypy => "mypy",
             Self::Nasmfmt => "nasmfmt",
             Self::Nginxbeautifier => "nginxbeautifier",

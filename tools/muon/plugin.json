@@ -1,0 +1,17 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "muon",
+  "categories": ["formatter", "linter"],
+  "commands": {
+    "fmt": {
+      "arguments": ["fmt", "-i", "$PATH"]
+    },
+    "lint": {
+      "arguments": ["lint", "-i", "$PATH"]
+    }
+  },
+  "description": "An implementation of the meson build system",
+  "homepage": "https://github.com/muon-build/muon",
+  "languages": ["meson"],
+  "packages": {}
+}
