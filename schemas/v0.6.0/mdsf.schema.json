@@ -4,7 +4,7 @@
   "type": "object",
   "properties": {
     "$schema": {
-      "default": "https://raw.githubusercontent.com/hougesen/mdsf/main/schemas/v0.5.3/mdsf.schema.json",
+      "default": "https://raw.githubusercontent.com/hougesen/mdsf/main/schemas/v0.6.0/mdsf.schema.json",
       "type": "string"
     },
     "custom_file_extensions": {
@@ -103,7 +103,7 @@
           "enum": ["astyle"]
         },
         {
-          "description": "Adds the Optional type-hint to arguments where the default value is None\n\n[https://github.com/Luttik/auto-optional](https://github.com/Luttik/auto-optional)\n\n`auto-optional $PATH`",
+          "description": "Adds the Optional type-hint to arguments where the default value is None\n\n[https://github.com/luttik/auto-optional](https://github.com/luttik/auto-optional)\n\n`auto-optional $PATH`",
           "type": "string",
           "enum": ["auto-optional"]
         },
@@ -128,7 +128,7 @@
           "enum": ["bashate"]
         },
         {
-          "description": "Opinionated code formatter, just like Python's black code formatter but for Beancount\n\n[https://github.com/LaunchPlatform/beancount-black](https://github.com/LaunchPlatform/beancount-black)\n\n`bean-black $PATH`",
+          "description": "Opinionated code formatter, just like Python's black code formatter but for Beancount\n\n[https://github.com/launchplatform/beancount-black](https://github.com/launchplatform/beancount-black)\n\n`bean-black $PATH`",
           "type": "string",
           "enum": ["beancount-black"]
         },
@@ -138,12 +138,12 @@
           "enum": ["beautysh"]
         },
         {
-          "description": "Cleaner and Formatter for BibTeX files\n\n[https://github.com/FlamingTempura/bibtex-tidy](https://github.com/FlamingTempura/bibtex-tidy)\n\n`bibtex-tidy -m $PATH`",
+          "description": "Cleaner and Formatter for BibTeX files\n\n[https://github.com/flamingtempura/bibtex-tidy](https://github.com/flamingtempura/bibtex-tidy)\n\n`bibtex-tidy -m $PATH`",
           "type": "string",
           "enum": ["bibtex-tidy"]
         },
         {
-          "description": "Bicep is a declarative language for describing and deploying Azure resources\n\n[https://github.com/Azure/bicep](https://github.com/Azure/bicep)\n\n`bicep format $PATH`",
+          "description": "Bicep is a declarative language for describing and deploying Azure resources\n\n[https://github.com/azure/bicep](https://github.com/azure/bicep)\n\n`bicep format $PATH`",
           "type": "string",
           "enum": ["bicep:format"]
         },
@@ -333,7 +333,7 @@
           "enum": ["csharpier"]
         },
         {
-          "description": "A css formatter\n\n[https://github.com/beautifier/js-beautify?tab=readme-ov-file#css--html](https://github.com/beautifier/js-beautify?tab=readme-ov-file#css--html)\n\n`css-beautify -r --type css -f $PATH`",
+          "description": "A css formatter\n\n[https://github.com/beautifier/js-beautify](https://github.com/beautifier/js-beautify)\n\n`css-beautify -r --type css -f $PATH`",
           "type": "string",
           "enum": ["css-beautify"]
         },
@@ -343,7 +343,7 @@
           "enum": ["csscomb"]
         },
         {
-          "description": "Automated linting of Cascading Stylesheets\n\n[https://github.com/CSSLint/csslint](https://github.com/CSSLint/csslint)\n\n`csslint --quiet $PATH`",
+          "description": "Automated linting of Cascading Stylesheets\n\n[https://github.com/csslint/csslint](https://github.com/csslint/csslint)\n\n`csslint --quiet $PATH`",
           "type": "string",
           "enum": ["csslint"]
         },
@@ -463,7 +463,7 @@
           "enum": ["erb-formatter"]
         },
         {
-          "description": "An automated code formatter for Erlang\n\n[https://github.com/WhatsApp/erlfmt](https://github.com/WhatsApp/erlfmt)\n\n`erlfmt -w $PATH_STRING`",
+          "description": "An automated code formatter for Erlang\n\n[https://github.com/whatsapp/erlfmt](https://github.com/whatsapp/erlfmt)\n\n`erlfmt -w $PATH_STRING`",
           "type": "string",
           "enum": ["erlfmt"]
         },
@@ -613,7 +613,7 @@
           "enum": ["hlint"]
         },
         {
-          "description": "A html formatter\n\n[https://github.com/beautifier/js-beautify?tab=readme-ov-file#css--html](https://github.com/beautifier/js-beautify?tab=readme-ov-file#css--html)\n\n`html-beautify -r --type html -f $PATH`",
+          "description": "A html formatter\n\n[https://github.com/beautifier/js-beautify](https://github.com/beautifier/js-beautify)\n\n`html-beautify -r --type html -f $PATH`",
           "type": "string",
           "enum": ["html-beautify"]
         },
@@ -623,7 +623,7 @@
           "enum": ["htmlbeautifier"]
         },
         {
-          "description": "The static code analysis tool you need for your HTML\n\n[https://github.com/HTMLHint/HTMLHint](https://github.com/HTMLHint/HTMLHint)\n\n`htmlhint $PATH`",
+          "description": "The static code analysis tool you need for your HTML\n\n[https://github.com/htmlhint/htmlhint](https://github.com/htmlhint/htmlhint)\n\n`htmlhint $PATH`",
           "type": "string",
           "enum": ["htmlhint"]
         },
@@ -651,6 +651,16 @@
           "description": "Small Clojure interpreter, linter and formatter\n\n[https://github.com/candid82/joker](https://github.com/candid82/joker)\n\n`joker --format --write $PATH`",
           "type": "string",
           "enum": ["joker"]
+        },
+        {
+          "description": "JSON processor\n\n[https://github.com/jqlang/jq](https://github.com/jqlang/jq)\n\n`jq `",
+          "type": "string",
+          "enum": ["jq"]
+        },
+        {
+          "description": "like gofmt, but for jq\n\n[https://github.com/noperator/jqfmt](https://github.com/noperator/jqfmt)\n\n`jqfmt `",
+          "type": "string",
+          "enum": ["jqfmt"]
         },
         {
           "description": "A JavaScript formatter\n\n[https://github.com/beautifier/js-beautify](https://github.com/beautifier/js-beautify)\n\n`js-beautify -r --type js -f $PATH`",
@@ -688,7 +698,7 @@
           "enum": ["jsonnetfmt"]
         },
         {
-          "description": "An opinionated code formatter for Julia. Plot twist - the opinion is your own\n\n[https://github.com/domluna/JuliaFormatter.jl](https://github.com/domluna/JuliaFormatter.jl)\n\n`julia -E using JuliaFormatter;format_file(\\\"{$PATH_STRING}\\\")`",
+          "description": "An opinionated code formatter for Julia. Plot twist - the opinion is your own\n\n[https://github.com/domluna/juliaformatter.jl](https://github.com/domluna/juliaformatter.jl)\n\n`julia -E using JuliaFormatter;format_file(\\\"{$PATH_STRING}\\\")`",
           "type": "string",
           "enum": ["juliaformatter.jl"]
         },
@@ -753,7 +763,7 @@
           "enum": ["luacheck"]
         },
         {
-          "description": "Code formatter for Lua\n\n[https://github.com/Koihik/LuaFormatter](https://github.com/Koihik/LuaFormatter)\n\n`lua-format -i $PATH`",
+          "description": "Code formatter for Lua\n\n[https://github.com/koihik/luaformatter](https://github.com/koihik/luaformatter)\n\n`lua-format -i $PATH`",
           "type": "string",
           "enum": ["luaformatter"]
         },
@@ -778,7 +788,7 @@
           "enum": ["mago:lint"]
         },
         {
-          "description": "Like gofmt, but for Markdown\n\n[https://github.com/shurcooL/markdownfmt](https://github.com/shurcooL/markdownfmt)\n\n`markdownfmt -w $PATH`",
+          "description": "Like gofmt, but for Markdown\n\n[https://github.com/shurcool/markdownfmt](https://github.com/shurcool/markdownfmt)\n\n`markdownfmt -w $PATH`",
           "type": "string",
           "enum": ["markdownfmt"]
         },
@@ -898,12 +908,12 @@
           "enum": ["ocamlformat"]
         },
         {
-          "description": "Indentation tool for OCaml\n\n[https://github.com/OCamlPro/ocp-indent](https://github.com/OCamlPro/ocp-indent)\n\n`ocp-indent --inplace $PATH`",
+          "description": "Indentation tool for OCaml\n\n[https://github.com/ocamlpro/ocp-indent](https://github.com/ocamlpro/ocp-indent)\n\n`ocp-indent --inplace $PATH`",
           "type": "string",
           "enum": ["ocp-indent"]
         },
         {
-          "description": "Formatter for the Odin programming language\n\n[https://github.com/DanielGavin/ols](https://github.com/DanielGavin/ols)\n\n`odinfmt -w $PATH`",
+          "description": "Formatter for the Odin programming language\n\n[https://github.com/danielgavin/ols](https://github.com/danielgavin/ols)\n\n`odinfmt -w $PATH`",
           "type": "string",
           "enum": ["odinfmt"]
         },
@@ -953,12 +963,12 @@
           "enum": ["perltidy"]
         },
         {
-          "description": "A PostgreSQL SQL syntax beautifier\n\n[https://github.com/darold/pgFormatter](https://github.com/darold/pgFormatter)\n\n`pg_format --inplace $PATH`",
+          "description": "A PostgreSQL SQL syntax beautifier\n\n[https://github.com/darold/pgformatter](https://github.com/darold/pgformatter)\n\n`pg_format --inplace $PATH`",
           "type": "string",
           "enum": ["pg_format"]
         },
         {
-          "description": "A tool to automatically fix PHP Coding Standards issues\n\n[https://github.com/PHP-CS-Fixer/PHP-CS-Fixer](https://github.com/PHP-CS-Fixer/PHP-CS-Fixer)\n\n`php-cs-fixer fix $PATH`",
+          "description": "A tool to automatically fix PHP Coding Standards issues\n\n[https://github.com/php-cs-fixer/php-cs-fixer](https://github.com/php-cs-fixer/php-cs-fixer)\n\n`php-cs-fixer fix $PATH`",
           "type": "string",
           "enum": ["php-cs-fixer:fix"]
         },
@@ -988,7 +998,7 @@
           "enum": ["pretty-php"]
         },
         {
-          "description": "Formatter for Typst\n\n[https://github.com/antonWetzel/prettypst](https://github.com/antonWetzel/prettypst)\n\n`prettypst $PATH`",
+          "description": "Formatter for Typst\n\n[https://github.com/antonwetzel/prettypst](https://github.com/antonwetzel/prettypst)\n\n`prettypst $PATH`",
           "type": "string",
           "enum": ["prettypst"]
         },
@@ -1033,7 +1043,7 @@
           "enum": ["pycln"]
         },
         {
-          "description": "Simple Python style checker in one Python file\n\n[https://github.com/PyCQA/pycodestyle](https://github.com/PyCQA/pycodestyle)\n\n`pycodestyle $PATH`",
+          "description": "Simple Python style checker in one Python file\n\n[https://github.com/pycqa/pycodestyle](https://github.com/pycqa/pycodestyle)\n\n`pycodestyle $PATH`",
           "type": "string",
           "enum": ["pycodestyle"]
         },
@@ -1143,7 +1153,7 @@
           "enum": ["rune:fmt"]
         },
         {
-          "description": "Julia code formatter\n\n[https://github.com/fredrikekre/Runic.jl](https://github.com/fredrikekre/Runic.jl)\n\n`runic --inplace $PATH`",
+          "description": "Julia code formatter\n\n[https://github.com/fredrikekre/runic.jl](https://github.com/fredrikekre/runic.jl)\n\n`runic --inplace $PATH`",
           "type": "string",
           "enum": ["runic"]
         },
@@ -1173,7 +1183,7 @@
           "enum": ["scalariform"]
         },
         {
-          "description": "A blazing-fast modern Lua linter written in Rust\n\n[https://github.com/Kampfkarren/selene](https://github.com/Kampfkarren/selene)\n\n`selene $PATH`",
+          "description": "A blazing-fast modern Lua linter written in Rust\n\n[https://github.com/kampfkarren/selene](https://github.com/kampfkarren/selene)\n\n`selene $PATH`",
           "type": "string",
           "enum": ["selene"]
         },
@@ -1288,7 +1298,7 @@
           "enum": ["stylish-haskell"]
         },
         {
-          "description": "An opinionated Lua code formatter\n\n[https://github.com/JohnnyMorganz/StyLua](https://github.com/JohnnyMorganz/StyLua)\n\n`stylua --verify $PATH`",
+          "description": "An opinionated Lua code formatter\n\n[https://github.com/johnnymorganz/stylua](https://github.com/johnnymorganz/stylua)\n\n`stylua --verify $PATH`",
           "type": "string",
           "enum": ["stylua"]
         },
@@ -1303,7 +1313,7 @@
           "enum": ["swift-format"]
         },
         {
-          "description": "A command-line tool and Xcode Extension for formatting Swift code\n\n[https://github.com/nicklockwood/SwiftFormat](https://github.com/nicklockwood/SwiftFormat)\n\n`swiftformat --quiet $PATH`",
+          "description": "A command-line tool and Xcode Extension for formatting Swift code\n\n[https://github.com/nicklockwood/swiftformat](https://github.com/nicklockwood/swiftformat)\n\n`swiftformat --quiet $PATH`",
           "type": "string",
           "enum": ["swiftformat"]
         },
@@ -1328,7 +1338,7 @@
           "enum": ["terragrunt:hclfmt"]
         },
         {
-          "description": "An extremely fast LaTeX formatter written in Rust\n\n[https://github.com/WGUNDERWOOD/tex-fmt](https://github.com/WGUNDERWOOD/tex-fmt)\n\n`tex-fmt $PATH`",
+          "description": "An extremely fast LaTeX formatter written in Rust\n\n[https://github.com/wgunderwood/tex-fmt](https://github.com/wgunderwood/tex-fmt)\n\n`tex-fmt $PATH`",
           "type": "string",
           "enum": ["tex-fmt"]
         },
@@ -1363,7 +1373,7 @@
           "enum": ["tsqllint"]
         },
         {
-          "description": "A tool to automatically fix Twig Coding Standards issues\n\n[https://github.com/VincentLanglet/Twig-CS-Fixer](https://github.com/VincentLanglet/Twig-CS-Fixer)\n\n`twig-cs-fixer lint $PATH --fix --no-interaction --quiet`",
+          "description": "A tool to automatically fix Twig Coding Standards issues\n\n[https://github.com/vincentlanglet/twig-cs-fixer](https://github.com/vincentlanglet/twig-cs-fixer)\n\n`twig-cs-fixer lint $PATH --fix --no-interaction --quiet`",
           "type": "string",
           "enum": ["twig-cs-fixer:lint"]
         },
@@ -1383,7 +1393,7 @@
           "enum": ["typstfmt"]
         },
         {
-          "description": "Beautiful and reliable typst code formatter\n\n[https://github.com/Enter-tainer/typstyle](https://github.com/Enter-tainer/typstyle)\n\n`typstyle -i $PATH`",
+          "description": "Beautiful and reliable typst code formatter\n\n[https://github.com/enter-tainer/typstyle](https://github.com/enter-tainer/typstyle)\n\n`typstyle -i $PATH`",
           "type": "string",
           "enum": ["typstyle"]
         },
@@ -1468,6 +1478,16 @@
           "enum": ["xo"]
         },
         {
+          "description": "Format XML\n\n[https://github.com/sibprogrammer/xq](https://github.com/sibprogrammer/xq)\n\n`xq `",
+          "type": "string",
+          "enum": ["xq"]
+        },
+        {
+          "description": "Format HTML\n\n[https://github.com/sibprogrammer/xq](https://github.com/sibprogrammer/xq)\n\n`xq --html`",
+          "type": "string",
+          "enum": ["xq:html"]
+        },
+        {
           "description": "A simple opinionated yaml formatter that keeps your comments\n\n[https://github.com/lyz-code/yamlfix](https://github.com/lyz-code/yamlfix)\n\n`yamlfix $PATH`",
           "type": "string",
           "enum": ["yamlfix"]
@@ -1486,6 +1506,11 @@
           "description": "Code formatter for the Yew framework\n\n[https://github.com/its-the-shrimp/yew-fmt](https://github.com/its-the-shrimp/yew-fmt)\n\n`yew-fmt --edition 2021 --quiet $PATH`",
           "type": "string",
           "enum": ["yew-fmt"]
+        },
+        {
+          "description": "yq is a portable command-line YAML, JSON, XML, CSV, TOML and properties processor\n\n[https://github.com/mikefarah/yq](https://github.com/mikefarah/yq)\n\n`yq --inplace $PATH`",
+          "type": "string",
+          "enum": ["yq"]
         },
         {
           "description": "Reformat Zig source into canonical form\n\n[https://ziglang.org/](https://ziglang.org/)\n\n`zig fmt $PATH`",
