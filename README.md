@@ -146,7 +146,7 @@ conform.setup({
 <!-- START_SECTION:base-command-help -->
 
 ```
-mdsf 0.6.0
+mdsf 0.6.0-dev
 Format, and lint, markdown code snippets using your favorite tools
 Mads Hougesen <mads@mhouge.dk>
 
@@ -389,7 +389,7 @@ mdsf init
 
 <!-- START_SECTION:supported-tools -->
 
-`mdsf` currently supports 271 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 272 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                                                                                 | Description                                                                                                                                   | Categories            | Languages                                                                 |
 | ------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- | ------------------------------------------------------------------------- |
@@ -536,6 +536,7 @@ mdsf init
 | [misspell](https://github.com/client9/misspell/)                                     | Correct commonly misspelled English words in source files                                                                                     | `autocorrection`      |                                                                           |
 | [mix](https://hexdocs.pm/mix/main/Mix.Tasks.Format.html)                             | Code formatter for Elixir                                                                                                                     | `formatter`           | `elixir`                                                                  |
 | [mojo](https://docs.modular.com/mojo/cli/format)                                     | Formats Mojo source files                                                                                                                     | `formatter`           | `mojo`                                                                    |
+| [muon](https://github.com/muon-build/muon)                                           | An implementation of the meson build system                                                                                                   | `formatter`, `linter` | `meson`                                                                   |
 | [mypy](https://github.com/python/mypy)                                               | Optional static typing for Python                                                                                                             | `linter`              | `python`                                                                  |
 | [nasmfmt](https://github.com/yamnikov-oleg/nasmfmt)                                  | Formatter for NASM source files                                                                                                               | `formatter`           | `assembly`                                                                |
 | [nginxbeautifier](https://github.com/vasilevich/nginxbeautifier)                     | Format and beautify nginx config files                                                                                                        | `formatter`           | `nginx`                                                                   |
@@ -671,7 +672,7 @@ mdsf init
 
 <!-- START_SECTION:supported-commands -->
 
-`mdsf` currently supports 293 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 295 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                     | Command                                                                                 |
 | ------------------------ | --------------------------------------------------------------------------------------- |
@@ -831,6 +832,8 @@ mdsf init
 | `misspell`               | `misspell -w $PATH`                                                                     |
 | `mix:format`             | `mix format $PATH`                                                                      |
 | `mojo:format`            | `mojo format -q $PATH`                                                                  |
+| `muon:fmt`               | `muon fmt -i $PATH`                                                                     |
+| `muon:lint`              | `muon lint -i $PATH`                                                                    |
 | `mypy`                   | `mypy $PATH`                                                                            |
 | `nasmfmt`                | `nasmfmt $PATH`                                                                         |
 | `nginxbeautifier`        | `nginxbeautifier $PATH`                                                                 |
