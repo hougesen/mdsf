@@ -21,6 +21,3 @@ pub const COMMANDS: [CommandType; 3] = [
     CommandType::Direct("js-beautify"),
     CommandType::Npm("js-beautify"),
 ];
-
-#[cfg(test)]
-mod test_js_beautify {}

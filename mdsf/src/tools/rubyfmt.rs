@@ -17,6 +17,9 @@ pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("rubyfmt")];
 
 #[cfg(test)]
 mod test_rubyfmt {
+    const TIMEOUT: u64 = 0;
+    const DEBUG_ENABLED: bool = true;
+
     #[test_with::executable(rubyfmt)]
     fn test_rubyfmt_ruby_d2b8a6db3c8eee1c() {
         let input = r#"def   add(  a ,                                                          b )
@@ -37,8 +40,9 @@ end
             &super::COMMANDS,
             snippet.path(),
             super::set_args,
-            0,
+            TIMEOUT,
             false,
+            DEBUG_ENABLED,
         )
         .expect("it to be successful")
         .1

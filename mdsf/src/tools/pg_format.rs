@@ -14,6 +14,3 @@ pub fn set_args(
 }
 
 pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("pg_format")];
-
-#[cfg(test)]
-mod test_pg_format {}

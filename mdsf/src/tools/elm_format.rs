@@ -22,6 +22,9 @@ pub const COMMANDS: [CommandType; 3] = [
 
 #[cfg(test)]
 mod test_elm_format {
+    const TIMEOUT: u64 = 0;
+    const DEBUG_ENABLED: bool = true;
+
     #[test_with::executable(npx)]
     fn test_elm_format_elm_4e120501af0177c4() {
         let input = r#"import   Html       exposing   (text)
@@ -51,8 +54,9 @@ main =
             &super::COMMANDS,
             snippet.path(),
             super::set_args,
-            0,
+            TIMEOUT,
             false,
+            DEBUG_ENABLED,
         )
         .expect("it to be successful")
         .1

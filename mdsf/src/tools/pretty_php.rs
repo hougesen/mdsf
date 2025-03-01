@@ -16,6 +16,3 @@ pub const COMMANDS: [CommandType; 2] = [
     CommandType::PhpVendor("pretty-php"),
     CommandType::Direct("pretty-php"),
 ];
-
-#[cfg(test)]
-mod test_pretty_php {}

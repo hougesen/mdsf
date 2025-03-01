@@ -14,6 +14,3 @@ pub fn set_args(
 }
 
 pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("cmake-format")];
-
-#[cfg(test)]
-mod test_cmake_format {}

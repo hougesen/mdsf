@@ -25,6 +25,9 @@ pub const COMMANDS: [CommandType; 3] = [
 
 #[cfg(test)]
 mod test_prettier {
+    const TIMEOUT: u64 = 0;
+    const DEBUG_ENABLED: bool = true;
+
     #[test_with::executable(npx)]
     fn test_prettier_json_8e1e8ed2224fd439() {
         let input = r#"
@@ -53,8 +56,9 @@ mod test_prettier {
             &super::COMMANDS,
             snippet.path(),
             super::set_args,
-            0,
+            TIMEOUT,
             false,
+            DEBUG_ENABLED,
         )
         .expect("it to be successful")
         .1
@@ -88,8 +92,9 @@ mod test_prettier {
             &super::COMMANDS,
             snippet.path(),
             super::set_args,
-            0,
+            TIMEOUT,
             false,
+            DEBUG_ENABLED,
         )
         .expect("it to be successful")
         .1

@@ -17,6 +17,3 @@ pub const COMMANDS: [CommandType; 2] = [
     CommandType::PhpVendor("php-cs-fixer"),
     CommandType::Direct("php-cs-fixer"),
 ];
-
-#[cfg(test)]
-mod test_php_cs_fixer_fix {}

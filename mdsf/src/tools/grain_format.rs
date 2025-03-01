@@ -19,6 +19,9 @@ pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("grain")];
 
 #[cfg(test)]
 mod test_grain_format {
+    const TIMEOUT: u64 = 0;
+    const DEBUG_ENABLED: bool = true;
+
     #[test_with::executable(grain)]
     fn test_grain_format_grain_68b6e8ad56bbb476() {
         let input = r#"module Hello
@@ -40,8 +43,9 @@ print("Hello, world!")
             &super::COMMANDS,
             snippet.path(),
             super::set_args,
-            0,
+            TIMEOUT,
             false,
+            DEBUG_ENABLED,
         )
         .expect("it to be successful")
         .1

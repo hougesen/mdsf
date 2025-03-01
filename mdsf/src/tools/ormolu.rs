@@ -18,6 +18,9 @@ pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("ormolu")];
 
 #[cfg(test)]
 mod test_ormolu {
+    const TIMEOUT: u64 = 0;
+    const DEBUG_ENABLED: bool = true;
+
     #[test_with::executable(ormolu)]
     fn test_ormolu_haskell_c34a44cf19c5fdd7() {
         let input = r#"
@@ -40,8 +43,9 @@ addNumbers a b = do
             &super::COMMANDS,
             snippet.path(),
             super::set_args,
-            0,
+            TIMEOUT,
             false,
+            DEBUG_ENABLED,
         )
         .expect("it to be successful")
         .1

@@ -17,6 +17,9 @@ pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("mix")];
 
 #[cfg(test)]
 mod test_mix_format {
+    const TIMEOUT: u64 = 0;
+    const DEBUG_ENABLED: bool = true;
+
     #[test_with::executable(mix)]
     fn test_mix_format_elixir_ab535c627dfb140() {
         let input = r#"
@@ -38,8 +41,9 @@ end
             &super::COMMANDS,
             snippet.path(),
             super::set_args,
-            0,
+            TIMEOUT,
             false,
+            DEBUG_ENABLED,
         )
         .expect("it to be successful")
         .1

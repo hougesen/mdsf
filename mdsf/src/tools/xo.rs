@@ -18,6 +18,3 @@ pub const COMMANDS: [CommandType; 3] = [
     CommandType::Direct("xo"),
     CommandType::Npm("xo"),
 ];
-
-#[cfg(test)]
-mod test_xo {}

@@ -17,6 +17,9 @@ pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("cljstyle")];
 
 #[cfg(test)]
 mod test_cljstyle {
+    const TIMEOUT: u64 = 0;
+    const DEBUG_ENABLED: bool = true;
+
     #[test_with::executable(cljstyle)]
     fn test_cljstyle_clojure_92fbb2f42ebeeb2e() {
         let input = r#"(  ns
@@ -64,8 +67,9 @@ mod test_cljstyle {
             &super::COMMANDS,
             snippet.path(),
             super::set_args,
-            0,
+            TIMEOUT,
             false,
+            DEBUG_ENABLED,
         )
         .expect("it to be successful")
         .1

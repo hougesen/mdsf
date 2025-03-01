@@ -2669,6 +2669,7 @@ impl Tooling {
         self,
         snippet_path: &std::path::Path,
         timeout: u64,
+        debug_enabled: bool,
     ) -> Result<(bool, Option<String>), crate::error::MdsfError> {
         let (commands, set_args_fn, is_stdin): (
             &[crate::runners::CommandType],
@@ -3044,7 +3045,14 @@ impl Tooling {
             Self::Zprint => (&zprint::COMMANDS, zprint::set_args, false),
         };
 
-        crate::execution::run_tools(commands, snippet_path, set_args_fn, timeout, is_stdin)
+        crate::execution::run_tools(
+            commands,
+            snippet_path,
+            set_args_fn,
+            timeout,
+            is_stdin,
+            debug_enabled,
+        )
     }
 }
 

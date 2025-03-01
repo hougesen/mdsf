@@ -18,6 +18,3 @@ pub const COMMANDS: [CommandType; 3] = [
     CommandType::Direct("liquidsoap-prettier"),
     CommandType::Npm("liquidsoap-prettier"),
 ];
-
-#[cfg(test)]
-mod test_liquidsoap_prettier {}

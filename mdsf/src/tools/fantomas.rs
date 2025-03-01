@@ -16,6 +16,9 @@ pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("fantomas")];
 
 #[cfg(test)]
 mod test_fantomas {
+    const TIMEOUT: u64 = 0;
+    const DEBUG_ENABLED: bool = true;
+
     #[test_with::executable(fantomas)]
     fn test_fantomas_fsharp_f3cb7f290d0660d3() {
         let input = r#"
@@ -34,8 +37,9 @@ let add a b  =  a +  b
             &super::COMMANDS,
             snippet.path(),
             super::set_args,
-            0,
+            TIMEOUT,
             false,
+            DEBUG_ENABLED,
         )
         .expect("it to be successful")
         .1

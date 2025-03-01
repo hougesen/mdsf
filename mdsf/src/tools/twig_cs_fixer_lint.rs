@@ -20,6 +20,3 @@ pub const COMMANDS: [CommandType; 2] = [
     CommandType::PhpVendor("twig-cs-fixer"),
     CommandType::Direct("twig-cs-fixer"),
 ];
-
-#[cfg(test)]
-mod test_twig_cs_fixer_lint {}

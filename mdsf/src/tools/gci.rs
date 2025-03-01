@@ -16,6 +16,3 @@ pub fn set_args(
 }
 
 pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("gci")];
-
-#[cfg(test)]
-mod test_gci {}

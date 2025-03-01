@@ -17,6 +17,9 @@ pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("erlfmt")];
 
 #[cfg(test)]
 mod test_erlfmt {
+    const TIMEOUT: u64 = 0;
+    const DEBUG_ENABLED: bool = true;
+
     #[test_with::executable(erlfmt)]
     fn test_erlfmt_erlang_61f4ac26ad7484d2() {
         let input = r#"what_is(Erlang) ->
@@ -38,8 +41,9 @@ case Erlang of movie->[hello(mike,joe,robert),credits]; language->formatting_arg
             &super::COMMANDS,
             snippet.path(),
             super::set_args,
-            0,
+            TIMEOUT,
             false,
+            DEBUG_ENABLED,
         )
         .expect("it to be successful")
         .1

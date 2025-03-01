@@ -16,6 +16,9 @@ pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("beautysh")];
 
 #[cfg(test)]
 mod test_beautysh {
+    const TIMEOUT: u64 = 0;
+    const DEBUG_ENABLED: bool = true;
+
     #[test_with::executable(beautysh)]
     fn test_beautysh_shell_f8c934ee37e2888() {
         let input = r#"#!/bin/shell
@@ -41,8 +44,9 @@ add() {
             &super::COMMANDS,
             snippet.path(),
             super::set_args,
-            0,
+            TIMEOUT,
             false,
+            DEBUG_ENABLED,
         )
         .expect("it to be successful")
         .1
@@ -76,8 +80,9 @@ add() {
             &super::COMMANDS,
             snippet.path(),
             super::set_args,
-            0,
+            TIMEOUT,
             false,
+            DEBUG_ENABLED,
         )
         .expect("it to be successful")
         .1

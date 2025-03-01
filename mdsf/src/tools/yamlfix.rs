@@ -16,6 +16,9 @@ pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("yamlfix")];
 
 #[cfg(test)]
 mod test_yamlfix {
+    const TIMEOUT: u64 = 0;
+    const DEBUG_ENABLED: bool = true;
+
     #[test_with::executable(yamlfix)]
     fn test_yamlfix_yaml_9fcbc943bcaf9d7f() {
         let input = r#"
@@ -68,8 +71,9 @@ updates:
             &super::COMMANDS,
             snippet.path(),
             super::set_args,
-            0,
+            TIMEOUT,
             false,
+            DEBUG_ENABLED,
         )
         .expect("it to be successful")
         .1

@@ -1,5 +1,3 @@
-use core::sync::atomic::AtomicBool;
-
 use caching::hash_text_block;
 use terminal::{print_error_reading_file, print_error_saving_file};
 
@@ -24,11 +22,6 @@ mod parser;
 pub mod runners;
 pub mod terminal;
 mod tools;
-
-#[cfg(test)]
-pub static DEBUG: AtomicBool = AtomicBool::new(true);
-#[cfg(not(test))]
-pub static DEBUG: AtomicBool = AtomicBool::new(false);
 
 const GO_TEMPORARY_PACKAGE_NAME: &str = "package mdsfformattertemporarynamespace\n";
 
@@ -61,6 +54,7 @@ pub fn format_file(
     filename: &std::path::Path,
     input: &str,
     timeout: u64,
+    debug_enabled: bool,
 ) -> (bool, String) {
     let mut output = String::with_capacity(input.len() + 128);
 
@@ -103,6 +97,7 @@ pub fn format_file(
                         },
                         &code_snippet,
                         timeout,
+                        debug_enabled,
                     );
 
                     let formatted = if is_go {
@@ -151,6 +146,7 @@ pub fn format_file(
             },
             &output,
             timeout,
+            debug_enabled,
         );
     }
 
@@ -173,6 +169,7 @@ fn format_or_use_cache(
     input: &str,
     cache_key: Option<(String, String)>,
     timeout: u64,
+    debug_enabled: bool,
 ) -> (String, bool, bool) {
     if let Some((config, file)) = &cache_key {
         let dir = std::path::PathBuf::from(format!(".mdsf-cache/caches/{config}/"));
@@ -186,7 +183,7 @@ fn format_or_use_cache(
         }
     }
 
-    let (modified, output) = format_file(config, path, input, timeout);
+    let (modified, output) = format_file(config, path, input, timeout, debug_enabled);
 
     if let Some((config_key, file_key)) = cache_key {
         // We do not (currently) care if saving the cache fails.
@@ -203,6 +200,7 @@ pub fn handle_file(
     dry_run: bool,
     cache_key: Option<String>,
     timeout: u64,
+    debug_enabled: bool,
 ) -> bool {
     let time = std::time::Instant::now();
 
@@ -217,7 +215,7 @@ pub fn handle_file(
             let cache_key = cache_key.map(|key| (key, hash_text_block(&input)));
 
             let (output, modified, cached) =
-                format_or_use_cache(config, path, &input, cache_key, timeout);
+                format_or_use_cache(config, path, &input, cache_key, timeout, debug_enabled);
 
             if modified && output != input {
                 if dry_run {
@@ -280,6 +278,12 @@ mod tests {
         tools::Tooling,
     };
 
+    const DEBUG_ENABLED: bool = true;
+
+    const TIMEOUT: u64 = 0;
+
+    const DRY_RUN: bool = false;
+
     #[test]
     fn it_should_format_the_code() {
         let input = "```rust
@@ -300,7 +304,13 @@ fn add(a: i32, b: i32) -> i32 {
         let config = MdsfConfig::default();
 
         {
-            let (modified, output) = format_file(&config, std::path::Path::new("."), input, 0);
+            let (modified, output) = format_file(
+                &config,
+                std::path::Path::new("."),
+                input,
+                TIMEOUT,
+                DEBUG_ENABLED,
+            );
 
             assert!(modified);
 
@@ -311,7 +321,14 @@ fn add(a: i32, b: i32) -> i32 {
             let file =
                 setup_snippet(input, &get_file_extension("markdown")).expect("it to create a file");
 
-            assert!(handle_file(&config, file.path(), false, None, 0));
+            assert!(handle_file(
+                &config,
+                file.path(),
+                DRY_RUN,
+                None,
+                TIMEOUT,
+                DEBUG_ENABLED
+            ));
 
             let output = std::fs::read_to_string(file.path()).expect("it to return the string");
 
@@ -356,7 +373,13 @@ fn           add(
             let config = MdsfConfig::default();
 
             {
-                let (modified, output) = format_file(&config, std::path::Path::new("."), &input, 0);
+                let (modified, output) = format_file(
+                    &config,
+                    std::path::Path::new("."),
+                    &input,
+                    TIMEOUT,
+                    DEBUG_ENABLED,
+                );
 
                 assert!(modified);
 
@@ -367,7 +390,14 @@ fn           add(
                 let file = setup_snippet(&input, &get_file_extension("markdown"))
                     .expect("it to create a file");
 
-                assert!(handle_file(&config, file.path(), false, None, 0));
+                assert!(handle_file(
+                    &config,
+                    file.path(),
+                    DRY_RUN,
+                    None,
+                    TIMEOUT,
+                    DEBUG_ENABLED
+                ));
 
                 let output = std::fs::read_to_string(file.path()).expect("it to return the string");
 
@@ -426,7 +456,13 @@ fn add(a: i32, b: i32) -> i32 {
 
         let config = MdsfConfig::default();
 
-        let (modified, output) = format_file(&config, std::path::Path::new("."), input, 0);
+        let (modified, output) = format_file(
+            &config,
+            std::path::Path::new("."),
+            input,
+            TIMEOUT,
+            DEBUG_ENABLED,
+        );
 
         assert!(modified);
 
@@ -475,7 +511,13 @@ type Whatever struct {
             let config = MdsfConfig::default();
 
             {
-                let (modified, output) = format_file(&config, std::path::Path::new("."), input, 0);
+                let (modified, output) = format_file(
+                    &config,
+                    std::path::Path::new("."),
+                    input,
+                    TIMEOUT,
+                    DEBUG_ENABLED,
+                );
 
                 assert!(modified);
 
@@ -486,7 +528,14 @@ type Whatever struct {
                 let file = setup_snippet(input, &get_file_extension("markdown"))
                     .expect("it to create a file");
 
-                assert!(handle_file(&config, file.path(), false, None, 0));
+                assert!(handle_file(
+                    &config,
+                    file.path(),
+                    DRY_RUN,
+                    None,
+                    TIMEOUT,
+                    DEBUG_ENABLED
+                ));
 
                 let output = std::fs::read_to_string(file.path()).expect("it to return the string");
 
@@ -504,7 +553,13 @@ type Whatever struct {
             };
 
             {
-                let (modified, output) = format_file(&config, std::path::Path::new("."), input, 0);
+                let (modified, output) = format_file(
+                    &config,
+                    std::path::Path::new("."),
+                    input,
+                    TIMEOUT,
+                    DEBUG_ENABLED,
+                );
 
                 assert!(modified);
 
@@ -515,7 +570,14 @@ type Whatever struct {
                 let file = setup_snippet(input, &get_file_extension("markdown"))
                     .expect("it to create a file");
 
-                assert!(handle_file(&config, file.path(), false, None, 0));
+                assert!(handle_file(
+                    &config,
+                    file.path(),
+                    DRY_RUN,
+                    None,
+                    TIMEOUT,
+                    DEBUG_ENABLED
+                ));
 
                 let output = std::fs::read_to_string(file.path()).expect("it to return the string");
 
@@ -561,7 +623,13 @@ type Whatever struct {
             let config = MdsfConfig::default();
 
             {
-                let (modified, output) = format_file(&config, std::path::Path::new("."), input, 0);
+                let (modified, output) = format_file(
+                    &config,
+                    std::path::Path::new("."),
+                    input,
+                    TIMEOUT,
+                    DEBUG_ENABLED,
+                );
 
                 assert!(modified);
 
@@ -572,7 +640,14 @@ type Whatever struct {
                 let file = setup_snippet(input, &get_file_extension("markdown"))
                     .expect("it to create a file");
 
-                assert!(handle_file(&config, file.path(), false, None, 0));
+                assert!(handle_file(
+                    &config,
+                    file.path(),
+                    DRY_RUN,
+                    None,
+                    TIMEOUT,
+                    DEBUG_ENABLED
+                ));
 
                 let output = std::fs::read_to_string(file.path()).expect("it to return the string");
 
@@ -591,7 +666,13 @@ type Whatever struct {
             };
 
             {
-                let (modified, output) = format_file(&config, std::path::Path::new("."), input, 0);
+                let (modified, output) = format_file(
+                    &config,
+                    std::path::Path::new("."),
+                    input,
+                    TIMEOUT,
+                    DEBUG_ENABLED,
+                );
 
                 assert!(modified);
 
@@ -602,7 +683,14 @@ type Whatever struct {
                 let file = setup_snippet(input, &get_file_extension("markdown"))
                     .expect("it to create a file");
 
-                assert!(handle_file(&config, file.path(), false, None, 0));
+                assert!(handle_file(
+                    &config,
+                    file.path(),
+                    DRY_RUN,
+                    None,
+                    TIMEOUT,
+                    DEBUG_ENABLED
+                ));
 
                 let output = std::fs::read_to_string(file.path()).expect("it to return the string");
 
@@ -678,7 +766,13 @@ func add(a int, b int) int {
             };
 
             {
-                let (modified, output) = format_file(&config, std::path::Path::new("."), input, 0);
+                let (modified, output) = format_file(
+                    &config,
+                    std::path::Path::new("."),
+                    input,
+                    TIMEOUT,
+                    DEBUG_ENABLED,
+                );
 
                 assert!(modified);
 
@@ -689,7 +783,14 @@ func add(a int, b int) int {
                 let file = setup_snippet(input, &get_file_extension("markdown"))
                     .expect("it to create a file");
 
-                assert!(handle_file(&config, file.path(), false, None, 0));
+                assert!(handle_file(
+                    &config,
+                    file.path(),
+                    DRY_RUN,
+                    None,
+                    TIMEOUT,
+                    DEBUG_ENABLED
+                ));
 
                 let output = std::fs::read_to_string(file.path()).expect("it to return the string");
 
@@ -707,7 +808,13 @@ func add(a int, b int) int {
             };
 
             {
-                let (modified, output) = format_file(&config, std::path::Path::new("."), input, 0);
+                let (modified, output) = format_file(
+                    &config,
+                    std::path::Path::new("."),
+                    input,
+                    TIMEOUT,
+                    DEBUG_ENABLED,
+                );
 
                 assert!(modified);
 
@@ -718,7 +825,14 @@ func add(a int, b int) int {
                 let file = setup_snippet(input, &get_file_extension("markdown"))
                     .expect("it to create a file");
 
-                assert!(handle_file(&config, file.path(), false, None, 0));
+                assert!(handle_file(
+                    &config,
+                    file.path(),
+                    DRY_RUN,
+                    None,
+                    TIMEOUT,
+                    DEBUG_ENABLED
+                ));
 
                 let output = std::fs::read_to_string(file.path()).expect("it to return the string");
 

@@ -17,6 +17,9 @@ pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("usort")];
 
 #[cfg(test)]
 mod test_usort {
+    const TIMEOUT: u64 = 0;
+    const DEBUG_ENABLED: bool = true;
+
     #[test_with::executable(usort)]
     fn test_usort_python_e2ac93e0195d9bc1() {
         let input = r#"from q import d
@@ -48,8 +51,9 @@ def add(a: int, b: int) -> int:
             &super::COMMANDS,
             snippet.path(),
             super::set_args,
-            0,
+            TIMEOUT,
             false,
+            DEBUG_ENABLED,
         )
         .expect("it to be successful")
         .1

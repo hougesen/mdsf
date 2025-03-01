@@ -19,6 +19,3 @@ pub const COMMANDS: [CommandType; 3] = [
     CommandType::Direct("imba"),
     CommandType::Npm("imba"),
 ];
-
-#[cfg(test)]
-mod test_imba_fmt {}

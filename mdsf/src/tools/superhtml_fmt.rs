@@ -17,6 +17,9 @@ pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("superhtml")];
 
 #[cfg(test)]
 mod test_superhtml_fmt {
+    const TIMEOUT: u64 = 0;
+    const DEBUG_ENABLED: bool = true;
+
     #[test_with::executable(superhtml)]
     fn test_superhtml_fmt_html_8183dae6d1f190e1() {
         let input = r#"<div>
@@ -40,8 +43,9 @@ mod test_superhtml_fmt {
             &super::COMMANDS,
             snippet.path(),
             super::set_args,
-            0,
+            TIMEOUT,
             false,
+            DEBUG_ENABLED,
         )
         .expect("it to be successful")
         .1

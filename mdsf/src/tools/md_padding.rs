@@ -18,6 +18,3 @@ pub const COMMANDS: [CommandType; 3] = [
     CommandType::Direct("md-padding"),
     CommandType::Npm("md-padding"),
 ];
-
-#[cfg(test)]
-mod test_md_padding {}

@@ -17,6 +17,3 @@ pub const COMMANDS: [CommandType; 3] = [
     CommandType::Direct("nginxbeautifier"),
     CommandType::Npm("nginxbeautifier"),
 ];
-
-#[cfg(test)]
-mod test_nginxbeautifier {}

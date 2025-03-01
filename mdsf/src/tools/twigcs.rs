@@ -16,6 +16,3 @@ pub const COMMANDS: [CommandType; 2] = [
     CommandType::PhpVendor("twigcs"),
     CommandType::Direct("twigcs"),
 ];
-
-#[cfg(test)]
-mod test_twigcs {}

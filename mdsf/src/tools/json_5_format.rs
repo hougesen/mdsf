@@ -14,6 +14,3 @@ pub fn set_args(
 }
 
 pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("json5format")];
-
-#[cfg(test)]
-mod test_json_5_format {}

@@ -13,6 +13,3 @@ pub fn set_args(
 }
 
 pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("cfn-lint")];
-
-#[cfg(test)]
-mod test_cfn_lint {}

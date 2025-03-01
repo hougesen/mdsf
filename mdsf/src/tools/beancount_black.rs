@@ -13,6 +13,3 @@ pub fn set_args(
 }
 
 pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("bean-black")];
-
-#[cfg(test)]
-mod test_beancount_black {}

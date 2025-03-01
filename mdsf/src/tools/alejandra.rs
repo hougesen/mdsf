@@ -17,6 +17,9 @@ pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("alejandra")];
 
 #[cfg(test)]
 mod test_alejandra {
+    const TIMEOUT: u64 = 0;
+    const DEBUG_ENABLED: bool = true;
+
     #[test_with::executable(alejandra)]
     fn test_alejandra_nix_f38bff8f20c2aa02() {
         let input = r#"{
@@ -87,8 +90,9 @@ buildPythonPackage rec {
             &super::COMMANDS,
             snippet.path(),
             super::set_args,
-            0,
+            TIMEOUT,
             false,
+            DEBUG_ENABLED,
         )
         .expect("it to be successful")
         .1

@@ -24,6 +24,9 @@ pub const COMMANDS: [CommandType; 3] = [
 
 #[cfg(test)]
 mod test_css_beautify {
+    const TIMEOUT: u64 = 0;
+    const DEBUG_ENABLED: bool = true;
+
     #[test_with::executable(npx)]
     fn test_css_beautify_css_5ad41f26f69aea3e() {
         let input = r#"h1   {color: blue;} p    {color: red;}"#;
@@ -45,8 +48,9 @@ p {
             &super::COMMANDS,
             snippet.path(),
             super::set_args,
-            0,
+            TIMEOUT,
             false,
+            DEBUG_ENABLED,
         )
         .expect("it to be successful")
         .1

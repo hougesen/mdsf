@@ -17,6 +17,9 @@ pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("cabal")];
 
 #[cfg(test)]
 mod test_cabal_format {
+    const TIMEOUT: u64 = 0;
+    const DEBUG_ENABLED: bool = true;
+
     #[test_with::executable(cabal)]
     fn test_cabal_format_cabal_38e9e2aad5619a6a() {
         let input = r#"cabal-version: 2.4
@@ -61,8 +64,9 @@ executable msdf
             &super::COMMANDS,
             snippet.path(),
             super::set_args,
-            0,
+            TIMEOUT,
             false,
+            DEBUG_ENABLED,
         )
         .expect("it to be successful")
         .1

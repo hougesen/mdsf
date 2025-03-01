@@ -14,6 +14,3 @@ pub fn set_args(
 }
 
 pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("rune")];
-
-#[cfg(test)]
-mod test_rune_fmt {}

@@ -18,6 +18,3 @@ pub const COMMANDS: [CommandType; 3] = [
     CommandType::Direct("eslint"),
     CommandType::Npm("eslint"),
 ];
-
-#[cfg(test)]
-mod test_eslint {}

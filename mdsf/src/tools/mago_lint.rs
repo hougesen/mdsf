@@ -15,6 +15,3 @@ pub fn set_args(
 
 pub const COMMANDS: [CommandType; 2] =
     [CommandType::PhpVendor("mago"), CommandType::Direct("mago")];
-
-#[cfg(test)]
-mod test_mago_lint {}

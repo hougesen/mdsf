@@ -14,6 +14,3 @@ pub fn set_args(
 }
 
 pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("dotenv-linter")];
-
-#[cfg(test)]
-mod test_dotenv_linter_fix {}

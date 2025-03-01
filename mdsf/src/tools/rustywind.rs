@@ -18,6 +18,3 @@ pub const COMMANDS: [CommandType; 3] = [
     CommandType::Direct("rustywind"),
     CommandType::Npm("rustywind"),
 ];
-
-#[cfg(test)]
-mod test_rustywind {}

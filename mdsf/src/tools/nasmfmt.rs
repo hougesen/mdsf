@@ -13,6 +13,3 @@ pub fn set_args(
 }
 
 pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("nasmfmt")];
-
-#[cfg(test)]
-mod test_nasmfmt {}

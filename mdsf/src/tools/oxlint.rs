@@ -18,6 +18,3 @@ pub const COMMANDS: [CommandType; 3] = [
     CommandType::Direct("oxlint"),
     CommandType::Npm("oxlint"),
 ];
-
-#[cfg(test)]
-mod test_oxlint {}

@@ -17,6 +17,9 @@ pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("xmlformat")];
 
 #[cfg(test)]
 mod test_xmlformat {
+    const TIMEOUT: u64 = 0;
+    const DEBUG_ENABLED: bool = true;
+
     #[test_with::executable(xmlformat)]
     fn test_xmlformat_xml_5e39abb678e63c0b() {
         let input = r#"
@@ -43,8 +46,9 @@ mod test_xmlformat {
             &super::COMMANDS,
             snippet.path(),
             super::set_args,
-            0,
+            TIMEOUT,
             false,
+            DEBUG_ENABLED,
         )
         .expect("it to be successful")
         .1

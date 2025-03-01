@@ -19,6 +19,9 @@ pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("yew-fmt")];
 
 #[cfg(test)]
 mod test_yew_fmt {
+    const TIMEOUT: u64 = 0;
+    const DEBUG_ENABLED: bool = true;
+
     #[test_with::executable(yew-fmt)]
     fn test_yew_fmt_rust_70ad564760e773e9() {
         let input = r#"pub
@@ -41,8 +44,9 @@ mod test_yew_fmt {
             &super::COMMANDS,
             snippet.path(),
             super::set_args,
-            0,
+            TIMEOUT,
             false,
+            DEBUG_ENABLED,
         )
         .expect("it to be successful")
         .1

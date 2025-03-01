@@ -17,6 +17,9 @@ pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("yamlfmt")];
 
 #[cfg(test)]
 mod test_yamlfmt {
+    const TIMEOUT: u64 = 0;
+    const DEBUG_ENABLED: bool = true;
+
     #[test_with::executable(yamlfmt)]
     fn test_yamlfmt_yaml_5f37046bfdc59220() {
         let input = r#"
@@ -70,8 +73,9 @@ updates:
             &super::COMMANDS,
             snippet.path(),
             super::set_args,
-            0,
+            TIMEOUT,
             false,
+            DEBUG_ENABLED,
         )
         .expect("it to be successful")
         .1

@@ -17,6 +17,3 @@ pub const COMMANDS: [CommandType; 3] = [
     CommandType::Direct("write-good"),
     CommandType::Npm("write-good"),
 ];
-
-#[cfg(test)]
-mod test_write_good {}

@@ -17,6 +17,9 @@ pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("golines")];
 
 #[cfg(test)]
 mod test_golines {
+    const TIMEOUT: u64 = 0;
+    const DEBUG_ENABLED: bool = true;
+
     #[test_with::executable(golines)]
     fn test_golines_go_4af43f410d7fff15() {
         let input = r#"package main
@@ -55,8 +58,9 @@ func add(a int, b int) int {
             &super::COMMANDS,
             snippet.path(),
             super::set_args,
-            0,
+            TIMEOUT,
             false,
+            DEBUG_ENABLED,
         )
         .expect("it to be successful")
         .1

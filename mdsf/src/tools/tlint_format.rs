@@ -17,6 +17,3 @@ pub const COMMANDS: [CommandType; 2] = [
     CommandType::PhpVendor("tlint"),
     CommandType::Direct("tlint"),
 ];
-
-#[cfg(test)]
-mod test_tlint_format {}

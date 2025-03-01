@@ -19,6 +19,3 @@ pub const COMMANDS: [CommandType; 2] = [
     CommandType::PhpVendor("phpinsights"),
     CommandType::Direct("phpinsights"),
 ];
-
-#[cfg(test)]
-mod test_phpinsights_fix {}

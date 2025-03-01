@@ -19,6 +19,3 @@ pub const COMMANDS: [CommandType; 3] = [
     CommandType::Direct("coffeelint"),
     CommandType::Npm("@coffeelint/cli"),
 ];
-
-#[cfg(test)]
-mod test_coffeelint {}

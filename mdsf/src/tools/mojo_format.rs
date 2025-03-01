@@ -15,6 +15,3 @@ pub fn set_args(
 }
 
 pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("mojo")];
-
-#[cfg(test)]
-mod test_mojo_format {}

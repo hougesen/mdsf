@@ -22,6 +22,9 @@ pub const COMMANDS: [CommandType; 3] = [
 
 #[cfg(test)]
 mod test_buf_format {
+    const TIMEOUT: u64 = 0;
+    const DEBUG_ENABLED: bool = true;
+
     #[test_with::executable(npx)]
     fn test_buf_format_protobuf_10af516c8a015ab5() {
         let input = r#"service SearchService {
@@ -42,8 +45,9 @@ mod test_buf_format {
             &super::COMMANDS,
             snippet.path(),
             super::set_args,
-            0,
+            TIMEOUT,
             false,
+            DEBUG_ENABLED,
         )
         .expect("it to be successful")
         .1

@@ -18,6 +18,3 @@ pub const COMMANDS: [CommandType; 3] = [
     CommandType::Direct("markuplint"),
     CommandType::Npm("markuplint"),
 ];
-
-#[cfg(test)]
-mod test_markuplint {}

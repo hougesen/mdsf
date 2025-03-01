@@ -18,6 +18,9 @@ pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("pycln")];
 
 #[cfg(test)]
 mod test_pycln {
+    const TIMEOUT: u64 = 0;
+    const DEBUG_ENABLED: bool = true;
+
     #[test_with::executable(pycln)]
     fn test_pycln_python_21e4539a9b183542() {
         let input = r#"import math"#;
@@ -33,8 +36,9 @@ mod test_pycln {
             &super::COMMANDS,
             snippet.path(),
             super::set_args,
-            0,
+            TIMEOUT,
             false,
+            DEBUG_ENABLED,
         )
         .expect("it to be successful")
         .1

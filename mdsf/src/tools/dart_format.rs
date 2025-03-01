@@ -17,6 +17,9 @@ pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("dart")];
 
 #[cfg(test)]
 mod test_dart_format {
+    const TIMEOUT: u64 = 0;
+    const DEBUG_ENABLED: bool = true;
+
     #[test_with::executable(dart)]
     fn test_dart_format_dart_1e68d7619b4be391() {
         let input = r#"class Adder {   int add(int a, int b) {     return a + b;   } }    "#;
@@ -37,8 +40,9 @@ mod test_dart_format {
             &super::COMMANDS,
             snippet.path(),
             super::set_args,
-            0,
+            TIMEOUT,
             false,
+            DEBUG_ENABLED,
         )
         .expect("it to be successful")
         .1

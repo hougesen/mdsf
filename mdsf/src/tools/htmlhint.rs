@@ -17,6 +17,3 @@ pub const COMMANDS: [CommandType; 3] = [
     CommandType::Direct("htmlhint"),
     CommandType::Npm("htmlhint"),
 ];
-
-#[cfg(test)]
-mod test_htmlhint {}

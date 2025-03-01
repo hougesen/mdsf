@@ -18,6 +18,3 @@ pub const COMMANDS: [CommandType; 3] = [
     CommandType::Direct("bibtex-tidy"),
     CommandType::Npm("bibtex-tidy"),
 ];
-
-#[cfg(test)]
-mod test_bibtex_tidy {}

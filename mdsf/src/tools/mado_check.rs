@@ -17,6 +17,9 @@ pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("mado")];
 
 #[cfg(test)]
 mod test_mado_check {
+    const TIMEOUT: u64 = 0;
+    const DEBUG_ENABLED: bool = true;
+
     #[test_with::executable(mado)]
     fn test_mado_check_markdown_664925a21a5aec00() {
         let input = r#"# Hello world
@@ -42,8 +45,9 @@ mod test_mado_check {
             &super::COMMANDS,
             snippet.path(),
             super::set_args,
-            0,
+            TIMEOUT,
             false,
+            DEBUG_ENABLED,
         )
         .expect("it to be successful")
         .1

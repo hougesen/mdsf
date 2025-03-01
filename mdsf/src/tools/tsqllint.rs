@@ -18,6 +18,3 @@ pub const COMMANDS: [CommandType; 3] = [
     CommandType::Direct("tsqllint"),
     CommandType::Npm("tsqllint"),
 ];
-
-#[cfg(test)]
-mod test_tsqllint {}

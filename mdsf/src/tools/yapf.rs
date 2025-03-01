@@ -17,6 +17,9 @@ pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("yapf")];
 
 #[cfg(test)]
 mod test_yapf {
+    const TIMEOUT: u64 = 0;
+    const DEBUG_ENABLED: bool = true;
+
     #[test_with::executable(yapf)]
     fn test_yapf_python_229ec2b01c2bfe3c() {
         let input = r#"def add( a: int ,  b:int)->int: return a+b"#;
@@ -34,8 +37,9 @@ mod test_yapf {
             &super::COMMANDS,
             snippet.path(),
             super::set_args,
-            0,
+            TIMEOUT,
             false,
+            DEBUG_ENABLED,
         )
         .expect("it to be successful")
         .1

@@ -20,6 +20,9 @@ pub const COMMANDS: [CommandType; 3] = [
 
 #[cfg(test)]
 mod test_stylefmt {
+    const TIMEOUT: u64 = 0;
+    const DEBUG_ENABLED: bool = true;
+
     #[test_with::executable(npx)]
     fn test_stylefmt_scss_d3c6918bf17af7f3() {
         let input = r#"// mixin for clearfix
@@ -100,8 +103,9 @@ padding: 12px
             &super::COMMANDS,
             snippet.path(),
             super::set_args,
-            0,
+            TIMEOUT,
             false,
+            DEBUG_ENABLED,
         )
         .expect("it to be successful")
         .1
@@ -235,8 +239,9 @@ table {
             &super::COMMANDS,
             snippet.path(),
             super::set_args,
-            0,
+            TIMEOUT,
             false,
+            DEBUG_ENABLED,
         )
         .expect("it to be successful")
         .1

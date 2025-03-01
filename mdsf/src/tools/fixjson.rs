@@ -18,6 +18,3 @@ pub const COMMANDS: [CommandType; 3] = [
     CommandType::Direct("fixjson"),
     CommandType::Npm("fixjson"),
 ];
-
-#[cfg(test)]
-mod test_fixjson {}

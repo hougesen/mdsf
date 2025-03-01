@@ -13,6 +13,3 @@ pub fn set_args(
 }
 
 pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("slim-lint")];
-
-#[cfg(test)]
-mod test_slim_lint {}

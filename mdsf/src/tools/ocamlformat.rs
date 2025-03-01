@@ -19,6 +19,9 @@ pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("ocamlformat")];
 
 #[cfg(test)]
 mod test_ocamlformat {
+    const TIMEOUT: u64 = 0;
+    const DEBUG_ENABLED: bool = true;
+
     #[test_with::executable(ocamlformat)]
     fn test_ocamlformat_ocaml_5f599d285848218() {
         let input = r#"
@@ -37,8 +40,9 @@ let add a b  =  a +  b
             &super::COMMANDS,
             snippet.path(),
             super::set_args,
-            0,
+            TIMEOUT,
             false,
+            DEBUG_ENABLED,
         )
         .expect("it to be successful")
         .1

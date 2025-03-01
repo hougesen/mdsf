@@ -18,6 +18,3 @@ pub const COMMANDS: [CommandType; 3] = [
     CommandType::Direct("bslint"),
     CommandType::Npm("bslint"),
 ];
-
-#[cfg(test)]
-mod test_bslint {}

@@ -18,6 +18,3 @@ pub const COMMANDS: [CommandType; 3] = [
     CommandType::Direct("stylelint"),
     CommandType::Npm("stylelint"),
 ];
-
-#[cfg(test)]
-mod test_stylelint {}

@@ -17,6 +17,9 @@ pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("roc")];
 
 #[cfg(test)]
 mod test_roc_format {
+    const TIMEOUT: u64 = 0;
+    const DEBUG_ENABLED: bool = true;
+
     #[test_with::executable(roc)]
     fn test_roc_format_roc_1204aa2d8186919d() {
         let input = r#"app "helloWorld"
@@ -53,8 +56,9 @@ main =
             &super::COMMANDS,
             snippet.path(),
             super::set_args,
-            0,
+            TIMEOUT,
             false,
+            DEBUG_ENABLED,
         )
         .expect("it to be successful")
         .1

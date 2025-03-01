@@ -20,6 +20,9 @@ pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("rubocop")];
 
 #[cfg(test)]
 mod test_rubocop {
+    const TIMEOUT: u64 = 0;
+    const DEBUG_ENABLED: bool = true;
+
     #[test_with::executable(rubocop)]
     fn test_rubocop_ruby_d2b8a6db3c8eee1c() {
         let input = r#"def   add(  a ,                                                          b )
@@ -40,8 +43,9 @@ end
             &super::COMMANDS,
             snippet.path(),
             super::set_args,
-            0,
+            TIMEOUT,
             false,
+            DEBUG_ENABLED,
         )
         .expect("it to be successful")
         .1

@@ -16,6 +16,9 @@ pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("nixfmt")];
 
 #[cfg(test)]
 mod test_nixfmt {
+    const TIMEOUT: u64 = 0;
+    const DEBUG_ENABLED: bool = true;
+
     #[test_with::executable(nixfmt)]
     fn test_nixfmt_nix_c01c4e4dcc81ab28() {
         let input = r#"{ lib, buildPythonPackage, fetchFromGitHub, redis }:
@@ -81,8 +84,9 @@ buildPythonPackage rec {
             &super::COMMANDS,
             snippet.path(),
             super::set_args,
-            0,
+            TIMEOUT,
             false,
+            DEBUG_ENABLED,
         )
         .expect("it to be successful")
         .1

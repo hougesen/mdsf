@@ -18,6 +18,3 @@ pub const COMMANDS: [CommandType; 3] = [
     CommandType::Direct("kulala-fmt"),
     CommandType::Npm("@mistweaverco/kulala-fmt"),
 ];
-
-#[cfg(test)]
-mod test_kulala_fmt_format {}

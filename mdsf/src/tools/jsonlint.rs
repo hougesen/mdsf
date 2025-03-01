@@ -18,6 +18,3 @@ pub const COMMANDS: [CommandType; 3] = [
     CommandType::Direct("jsonlint"),
     CommandType::Npm("jsonlint"),
 ];
-
-#[cfg(test)]
-mod test_jsonlint {}

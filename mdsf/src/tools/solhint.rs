@@ -20,6 +20,3 @@ pub const COMMANDS: [CommandType; 3] = [
     CommandType::Direct("solhint"),
     CommandType::Npm("solhint"),
 ];
-
-#[cfg(test)]
-mod test_solhint {}

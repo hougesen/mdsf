@@ -14,6 +14,3 @@ pub fn set_args(
 }
 
 pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("regal")];
-
-#[cfg(test)]
-mod test_regal_lint {}

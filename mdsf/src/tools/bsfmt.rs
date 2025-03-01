@@ -18,6 +18,3 @@ pub const COMMANDS: [CommandType; 3] = [
     CommandType::Direct("bsfmt"),
     CommandType::Npm("brighterscript-formatter"),
 ];
-
-#[cfg(test)]
-mod test_bsfmt {}

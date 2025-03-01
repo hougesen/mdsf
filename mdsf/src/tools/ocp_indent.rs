@@ -17,6 +17,9 @@ pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("ocp-indent")];
 
 #[cfg(test)]
 mod test_ocp_indent {
+    const TIMEOUT: u64 = 0;
+    const DEBUG_ENABLED: bool = true;
+
     #[test_with::executable(ocp-indent)]
     fn test_ocp_indent_ocaml_87a2cd7557f7a90b() {
         let input = r#"
@@ -38,8 +41,9 @@ let add a b
             &super::COMMANDS,
             snippet.path(),
             super::set_args,
-            0,
+            TIMEOUT,
             false,
+            DEBUG_ENABLED,
         )
         .expect("it to be successful")
         .1

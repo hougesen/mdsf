@@ -17,6 +17,9 @@ pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("dotnet")];
 
 #[cfg(test)]
 mod test_csharpier {
+    const TIMEOUT: u64 = 0;
+    const DEBUG_ENABLED: bool = true;
+
     #[test_with::executable(dotnet)]
     fn test_csharpier_csharp_a79aa94ad2d86b6c() {
         let input = r#"namespace Mdsf {
@@ -50,8 +53,9 @@ mod test_csharpier {
             &super::COMMANDS,
             snippet.path(),
             super::set_args,
-            0,
+            TIMEOUT,
             false,
+            DEBUG_ENABLED,
         )
         .expect("it to be successful")
         .1

@@ -16,6 +16,3 @@ pub const COMMANDS: [CommandType; 2] = [
     CommandType::PhpVendor("phpcbf"),
     CommandType::Direct("phpcbf"),
 ];
-
-#[cfg(test)]
-mod test_phpcbf {}

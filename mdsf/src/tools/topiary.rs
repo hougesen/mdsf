@@ -17,6 +17,9 @@ pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("topiary")];
 
 #[cfg(test)]
 mod test_topiary {
+    const TIMEOUT: u64 = 0;
+    const DEBUG_ENABLED: bool = true;
+
     #[test_with::executable(topiary)]
     fn test_topiary_json_d426a9ade74002d2() {
         let input = r#"
@@ -50,8 +53,9 @@ mod test_topiary {
             &super::COMMANDS,
             snippet.path(),
             super::set_args,
-            0,
+            TIMEOUT,
             false,
+            DEBUG_ENABLED,
         )
         .expect("it to be successful")
         .1

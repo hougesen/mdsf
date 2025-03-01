@@ -15,6 +15,3 @@ pub fn set_args(
 }
 
 pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("caddy")];
-
-#[cfg(test)]
-mod test_caddy_fmt {}

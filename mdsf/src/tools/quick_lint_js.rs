@@ -17,6 +17,3 @@ pub const COMMANDS: [CommandType; 3] = [
     CommandType::Direct("quick-lint-js"),
     CommandType::Npm("quick-lint-js"),
 ];
-
-#[cfg(test)]
-mod test_quick_lint_js {}

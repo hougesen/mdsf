@@ -18,6 +18,3 @@ pub const COMMANDS: [CommandType; 3] = [
     CommandType::Direct("purty"),
     CommandType::Npm("purty"),
 ];
-
-#[cfg(test)]
-mod test_purty {}

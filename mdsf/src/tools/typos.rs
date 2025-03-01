@@ -19,6 +19,9 @@ pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("typos")];
 
 #[cfg(test)]
 mod test_typos {
+    const TIMEOUT: u64 = 0;
+    const DEBUG_ENABLED: bool = true;
+
     #[test_with::executable(typos)]
     fn test_typos_python_cba663e4f5e54b7f() {
         let input = r#"anouncement"#;
@@ -34,8 +37,9 @@ mod test_typos {
             &super::COMMANDS,
             snippet.path(),
             super::set_args,
-            0,
+            TIMEOUT,
             false,
+            DEBUG_ENABLED,
         )
         .expect("it to be successful")
         .1

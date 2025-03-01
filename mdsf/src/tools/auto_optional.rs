@@ -16,6 +16,9 @@ pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("auto-optional")];
 
 #[cfg(test)]
 mod test_auto_optional {
+    const TIMEOUT: u64 = 0;
+    const DEBUG_ENABLED: bool = true;
+
     #[test_with::executable(auto-optional)]
     fn test_auto_optional_python_c43199b18f48026d() {
         let input = r#"def foo(bar: str = None):
@@ -36,8 +39,9 @@ def foo(bar: Optional[str] = None):
             &super::COMMANDS,
             snippet.path(),
             super::set_args,
-            0,
+            TIMEOUT,
             false,
+            DEBUG_ENABLED,
         )
         .expect("it to be successful")
         .1

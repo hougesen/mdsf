@@ -14,6 +14,3 @@ pub fn set_args(
 }
 
 pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("gluon")];
-
-#[cfg(test)]
-mod test_gluon_fmt {}

@@ -17,6 +17,9 @@ pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("kcl")];
 
 #[cfg(test)]
 mod test_kcl_fmt {
+    const TIMEOUT: u64 = 0;
+    const DEBUG_ENABLED: bool = true;
+
     #[test_with::executable(kcl)]
     fn test_kcl_fmt_kcl_83078615f65197d1() {
         let input = r#"apiVersion = "apps/v1"
@@ -64,8 +67,9 @@ spec = {
             &super::COMMANDS,
             snippet.path(),
             super::set_args,
-            0,
+            TIMEOUT,
             false,
+            DEBUG_ENABLED,
         )
         .expect("it to be successful")
         .1

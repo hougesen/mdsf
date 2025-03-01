@@ -18,6 +18,3 @@ pub const COMMANDS: [CommandType; 3] = [
     CommandType::Direct("buf"),
     CommandType::Npm("@bufbuild/buf"),
 ];
-
-#[cfg(test)]
-mod test_buf_lint {}

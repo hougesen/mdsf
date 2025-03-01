@@ -21,6 +21,9 @@ pub const COMMANDS: [CommandType; 3] = [
 
 #[cfg(test)]
 mod test_blade_formatter {
+    const TIMEOUT: u64 = 0;
+    const DEBUG_ENABLED: bool = true;
+
     #[test_with::executable(npx)]
     fn test_blade_formatter_blade_9ddeaf972bfb08c1() {
         let input = r#"@extends('frontend.layouts.app')
@@ -95,8 +98,9 @@ mod test_blade_formatter {
             &super::COMMANDS,
             snippet.path(),
             super::set_args,
-            0,
+            TIMEOUT,
             false,
+            DEBUG_ENABLED,
         )
         .expect("it to be successful")
         .1

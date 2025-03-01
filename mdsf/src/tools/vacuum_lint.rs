@@ -18,6 +18,3 @@ pub const COMMANDS: [CommandType; 3] = [
     CommandType::Direct("vacuum"),
     CommandType::Npm("@quobix/vacuum"),
 ];
-
-#[cfg(test)]
-mod test_vacuum_lint {}

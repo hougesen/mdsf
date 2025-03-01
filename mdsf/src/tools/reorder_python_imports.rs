@@ -13,6 +13,3 @@ pub fn set_args(
 }
 
 pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("reorder-python-imports")];
-
-#[cfg(test)]
-mod test_reorder_python_imports {}

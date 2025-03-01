@@ -20,6 +20,3 @@ pub const COMMANDS: [CommandType; 3] = [
     CommandType::Direct("biome"),
     CommandType::Npm("@biomejs/biome"),
 ];
-
-#[cfg(test)]
-mod test_biome_check_unsafe {}

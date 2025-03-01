@@ -17,6 +17,9 @@ pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("markdownfmt")];
 
 #[cfg(test)]
 mod test_markdownfmt {
+    const TIMEOUT: u64 = 0;
+    const DEBUG_ENABLED: bool = true;
+
     #[test_with::executable(markdownfmt)]
     fn test_markdownfmt_markdown_9b495bc15a7833bc() {
         let input = r#"# hello w   world
@@ -44,8 +47,9 @@ this text has weird spacing
             &super::COMMANDS,
             snippet.path(),
             super::set_args,
-            0,
+            TIMEOUT,
             false,
+            DEBUG_ENABLED,
         )
         .expect("it to be successful")
         .1

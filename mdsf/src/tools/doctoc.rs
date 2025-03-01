@@ -17,6 +17,3 @@ pub const COMMANDS: [CommandType; 3] = [
     CommandType::Direct("doctoc"),
     CommandType::Npm("doctoc"),
 ];
-
-#[cfg(test)]
-mod test_doctoc {}

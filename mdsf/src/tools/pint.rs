@@ -14,6 +14,3 @@ pub fn set_args(
 
 pub const COMMANDS: [CommandType; 2] =
     [CommandType::PhpVendor("pint"), CommandType::Direct("pint")];
-
-#[cfg(test)]
-mod test_pint {}

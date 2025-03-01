@@ -17,6 +17,9 @@ pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("standardrb")];
 
 #[cfg(test)]
 mod test_standardrb {
+    const TIMEOUT: u64 = 0;
+    const DEBUG_ENABLED: bool = true;
+
     #[test_with::executable(standardrb)]
     fn test_standardrb_ruby_bec6c50c1664b6ed() {
         let input = r#"def   add(  a ,                                                          b )
@@ -37,8 +40,9 @@ end
             &super::COMMANDS,
             snippet.path(),
             super::set_args,
-            0,
+            TIMEOUT,
             false,
+            DEBUG_ENABLED,
         )
         .expect("it to be successful")
         .1
