@@ -9,6 +9,9 @@ jobs:
       matrix:
         os: [ubuntu-latest]
         node: [20]
+    defaults:
+      run:
+        working-directory: ./mdsf-vscode
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
