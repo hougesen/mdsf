@@ -11,6 +11,10 @@
   "homepage": "https://github.com/hougesen/kdlfmt",
   "languages": ["kdl"],
   "packages": {
-    "cargo": "kdlfmt"
+    "brew": {
+      "name": "hougesen/tap/kdlfmt"
+    },
+    "cargo": "kdlfmt",
+    "npm": "kdlfmt"
   }
 }

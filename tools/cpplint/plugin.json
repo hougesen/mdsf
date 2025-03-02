@@ -11,6 +11,7 @@
   "homepage": "https://github.com/cpplint/cpplint",
   "languages": ["c++"],
   "packages": {
-    "apt": "cpplint"
+    "apt": "cpplint",
+    "pip": "cpplint"
   }
 }

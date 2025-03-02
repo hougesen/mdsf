@@ -1,5 +1,5 @@
 {
-  "$schema": "./schemas/v0.6.1/mdsf.schema.json",
+  "$schema": "./schemas/development/mdsf.schema.json",
   "languages": {
     "bash": "shfmt",
     "fish": "fish_indent",

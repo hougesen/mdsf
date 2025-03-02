@@ -22,9 +22,12 @@
     }
   },
   "description": "The best way of working with Protocol Buffers",
-  "homepage": "https://buf.build/docs/reference/cli/buf/format/",
+  "homepage": "https://buf.build/docs/reference/cli/buf/",
   "languages": ["protobuf"],
   "packages": {
+    "brew": {
+      "name": "bufbuild/buf/buf"
+    },
     "npm": "@bufbuild/buf"
   }
 }

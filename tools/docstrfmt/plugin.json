@@ -8,8 +8,8 @@
     }
   },
   "description": "A formatter for Sphinx flavored reStructuredText",
-  "homepage": "https://pypi.org/project/docstrfmt/",
-  "languages": ["Sphinx", "python", "reStructuredText"],
+  "homepage": "https://github.com/LilSpazJoekp/docstrfmt",
+  "languages": ["python", "restructuredtext", "sphinx"],
   "packages": {
     "pip": "docstrfmt"
   }

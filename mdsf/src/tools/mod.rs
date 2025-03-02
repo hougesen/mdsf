@@ -47,6 +47,7 @@ pub mod clj_kondo;
 pub mod cljfmt_fix;
 pub mod cljstyle;
 pub mod cmake_format;
+pub mod cmake_lint;
 pub mod codeql_query_format;
 pub mod codespell;
 pub mod coffeelint;
@@ -418,7 +419,7 @@ pub enum Tooling {
     #[serde(rename = "beautysh")]
     /// A Bash beautifier for the masses
     ///
-    /// [https://pypi.org/project/beautysh/](https://pypi.org/project/beautysh/)
+    /// [https://github.com/lovesegfault/beautysh](https://github.com/lovesegfault/beautysh)
     ///
     /// `beautysh $PATH`
     Beautysh,
@@ -671,6 +672,14 @@ pub enum Tooling {
     /// `cmake-format -i $PATH`
     CmakeFormat,
 
+    #[serde(rename = "cmake-lint")]
+    /// Lint CMake files
+    ///
+    /// [https://cmake-format.readthedocs.io/en/latest/lint-usage.html](https://cmake-format.readthedocs.io/en/latest/lint-usage.html)
+    ///
+    /// `cmake-lint $PATH`
+    CmakeLint,
+
     #[serde(rename = "codeql:query:format")]
     /// Format queries and libraries with CodeQL
     ///
@@ -866,7 +875,7 @@ pub enum Tooling {
     #[serde(rename = "docformatter")]
     /// Formats docstrings to follow PEP 257
     ///
-    /// [https://pypi.org/project/docformatter/](https://pypi.org/project/docformatter/)
+    /// [https://github.com/PyCQA/docformatter](https://github.com/PyCQA/docformatter)
     ///
     /// `docformatter --in-place $PATH`
     Docformatter,
@@ -882,7 +891,7 @@ pub enum Tooling {
     #[serde(rename = "docstrfmt")]
     /// A formatter for Sphinx flavored reStructuredText
     ///
-    /// [https://pypi.org/project/docstrfmt/](https://pypi.org/project/docstrfmt/)
+    /// [https://github.com/LilSpazJoekp/docstrfmt](https://github.com/LilSpazJoekp/docstrfmt)
     ///
     /// `docstrfmt $PATH`
     Docstrfmt,
@@ -1010,7 +1019,7 @@ pub enum Tooling {
     #[serde(rename = "fourmolu")]
     /// A formatter for Haskell source code
     ///
-    /// [https://hackage.haskell.org/package/fourmolu](https://hackage.haskell.org/package/fourmolu)
+    /// [https://github.com/fourmolu/fourmolu](https://github.com/fourmolu/fourmolu)
     ///
     /// `fourmolu -i $PATH`
     Fourmolu,
@@ -1058,7 +1067,7 @@ pub enum Tooling {
     #[serde(rename = "gleam:format")]
     /// Format Gleam source code
     ///
-    /// [https://gleam.run](https://gleam.run)
+    /// [https://gleam.run/](https://gleam.run/)
     ///
     /// `gleam format $PATH`
     GleamFormat,
@@ -1210,7 +1219,7 @@ pub enum Tooling {
     #[serde(rename = "hurlfmt")]
     /// Formatter for hurl files
     ///
-    /// [https://hurl.dev](https://hurl.dev)
+    /// [https://hurl.dev/](https://hurl.dev/)
     ///
     /// `hurlfmt --in-place $PATH`
     Hurlfmt,
@@ -1912,7 +1921,7 @@ pub enum Tooling {
     Pyment,
 
     #[serde(rename = "qmlfmt")]
-    /// qmlfmt - command line application that formats QML files
+    /// Command line application that formats QML files
     ///
     /// [https://github.com/jesperhh/qmlfmt](https://github.com/jesperhh/qmlfmt)
     ///
@@ -1986,7 +1995,7 @@ pub enum Tooling {
     #[serde(rename = "rescript:format")]
     /// Formatter for ReScript
     ///
-    /// [https://rescript-lang.org/](https://rescript-lang.org/)
+    /// [https://github.com/rescript-lang/rescript](https://github.com/rescript-lang/rescript)
     ///
     /// `rescript format $PATH`
     RescriptFormat,
@@ -2034,7 +2043,7 @@ pub enum Tooling {
     #[serde(rename = "ruff:check")]
     /// Run the Ruff linter on the input
     ///
-    /// [https://docs.astral.sh/ruff](https://docs.astral.sh/ruff)
+    /// [https://github.com/astral-sh/ruff](https://github.com/astral-sh/ruff)
     ///
     /// `ruff check --fix --quiet $PATH`
     RuffCheck,
@@ -2042,7 +2051,7 @@ pub enum Tooling {
     #[serde(rename = "ruff:format")]
     /// Run the Ruff formatter on the input
     ///
-    /// [https://docs.astral.sh/ruff](https://docs.astral.sh/ruff)
+    /// [https://github.com/astral-sh/ruff](https://github.com/astral-sh/ruff)
     ///
     /// `ruff format --quiet $PATH`
     RuffFormat,
@@ -2860,6 +2869,11 @@ impl Tooling {
                 cmake_format::set_args,
                 cmake_format::IS_STDIN,
             ),
+            Self::CmakeLint => (
+                &cmake_lint::COMMANDS,
+                cmake_lint::set_args,
+                cmake_lint::IS_STDIN,
+            ),
             Self::CodeqlQueryFormat => (
                 &codeql_query_format::COMMANDS,
                 codeql_query_format::set_args,
@@ -3659,6 +3673,7 @@ impl AsRef<str> for Tooling {
             Self::CljfmtFix => "cljfmt_fix",
             Self::Cljstyle => "cljstyle",
             Self::CmakeFormat => "cmake_format",
+            Self::CmakeLint => "cmake_lint",
             Self::CodeqlQueryFormat => "codeql_query_format",
             Self::Codespell => "codespell",
             Self::Coffeelint => "coffeelint",

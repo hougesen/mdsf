@@ -10,5 +10,10 @@
   "description": "Better configuration for less",
   "homepage": "https://nickel-lang.org/",
   "languages": ["nickel"],
-  "packages": {}
+  "packages": {
+    "brew": {
+      "name": "nickel"
+    },
+    "cargo": "nickel-lang-cli"
+  }
 }

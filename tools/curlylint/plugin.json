@@ -9,7 +9,7 @@
   },
   "description": "Experimental HTML templates linting for Jinja, Nunjucks, Django templates, Twig, Liquid",
   "homepage": "https://github.com/thibaudcolas/curlylint",
-  "languages": ["django", "jinja", "liquid", "nunjucks", "twig"],
+  "languages": ["django", "html", "jinja", "liquid", "nunjucks", "twig"],
   "packages": {
     "pip": "curlylint"
   }

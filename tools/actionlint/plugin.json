@@ -18,6 +18,9 @@
   "homepage": "https://github.com/rhysd/actionlint",
   "languages": ["yaml"],
   "packages": {
+    "brew": {
+      "name": "actionlint"
+    },
     "go": "github.com/rhysd/actionlint/cmd/actionlint@latest"
   }
 }

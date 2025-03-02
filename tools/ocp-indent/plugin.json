@@ -18,6 +18,7 @@
   "homepage": "https://github.com/ocamlpro/ocp-indent",
   "languages": ["ocaml"],
   "packages": {
-    "apt": "ocp-indent"
+    "apt": "ocp-indent",
+    "opam": "ocp-indent"
   }
 }

@@ -7,7 +7,7 @@
       "arguments": ["-w", "$PATH"]
     }
   },
-  "description": "qmlfmt - command line application that formats QML files",
+  "description": "Command line application that formats QML files",
   "homepage": "https://github.com/jesperhh/qmlfmt",
   "languages": ["qml"],
   "packages": {

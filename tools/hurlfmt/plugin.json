@@ -16,7 +16,7 @@
   },
   "description": "Formatter for hurl files",
   "disable_ci_tests": false,
-  "homepage": "https://hurl.dev",
+  "homepage": "https://hurl.dev/",
   "languages": ["hurl"],
   "packages": {
     "cargo": "hurlfmt"

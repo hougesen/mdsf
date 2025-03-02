@@ -10,14 +10,22 @@ pub fn generate() -> Result<()> {
 
     let package_version = get_package_version()?;
 
-    let p = std::path::PathBuf::from_str(&format!("./schemas/v{package_version}"))?;
-
-    std::fs::create_dir_all(&p)?;
+    let schema = serde_json::to_string_pretty(&schemars::schema_for!(MdsfConfig))?;
 
     {
-        let schema = serde_json::to_string_pretty(&schemars::schema_for!(MdsfConfig))?;
+        let version_dir = std::path::PathBuf::from_str(&format!("./schemas/v{package_version}"))?;
 
-        std::fs::write(p.join("mdsf.schema.json"), schema)?;
+        std::fs::create_dir_all(&version_dir)?;
+
+        std::fs::write(version_dir.join("mdsf.schema.json"), &schema)?;
+    };
+
+    {
+        let dev_dir = std::path::PathBuf::from_str("./schemas/development")?;
+
+        std::fs::create_dir_all(&dev_dir)?;
+
+        std::fs::write(dev_dir.join("mdsf.schema.json"), schema)?;
     };
 
     {

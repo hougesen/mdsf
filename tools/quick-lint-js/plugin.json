@@ -11,6 +11,9 @@
   "homepage": "https://github.com/quick-lint/quick-lint-js",
   "languages": ["javascript"],
   "packages": {
+    "brew": {
+      "name": "quick-lint-js"
+    },
     "npm": "quick-lint-js"
   }
 }

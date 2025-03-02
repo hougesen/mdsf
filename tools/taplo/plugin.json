@@ -18,6 +18,10 @@
   "homepage": "https://github.com/tamasfe/taplo",
   "languages": ["toml"],
   "packages": {
+    "brew": {
+      "name": "taplo"
+    },
+    "cargo": "taplo-cli",
     "npm": "@taplo/cli"
   }
 }

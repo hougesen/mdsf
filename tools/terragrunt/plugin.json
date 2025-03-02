@@ -10,5 +10,9 @@
   "description": "Recursively find hcl files and rewrite them into a canonical format",
   "homepage": "https://terragrunt.gruntwork.io/docs/reference/cli-options/#hclfmt",
   "languages": ["hcl"],
-  "packages": {}
+  "packages": {
+    "brew": {
+      "name": "terragrunt"
+    }
+  }
 }
