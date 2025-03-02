@@ -17,3 +17,5 @@ pub const COMMANDS: [CommandType; 2] = [
     CommandType::PhpVendor("php-cs-fixer"),
     CommandType::Direct("php-cs-fixer"),
 ];
+
+pub const IS_STDIN: bool = false;

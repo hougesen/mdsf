@@ -19,9 +19,12 @@ pub const COMMANDS: [CommandType; 3] = [
     CommandType::Npm("sql-formatter"),
 ];
 
+pub const IS_STDIN: bool = false;
+
 #[cfg(test)]
 mod test_sql_formatter {
     const TIMEOUT: u64 = 0;
+
     const DEBUG_ENABLED: bool = true;
 
     #[test_with::executable(npx)]
@@ -46,7 +49,7 @@ WHERE
             snippet.path(),
             super::set_args,
             TIMEOUT,
-            false,
+            super::IS_STDIN,
             DEBUG_ENABLED,
         )
         .expect("it to be successful")

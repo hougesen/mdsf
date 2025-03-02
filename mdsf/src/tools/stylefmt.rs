@@ -18,9 +18,12 @@ pub const COMMANDS: [CommandType; 3] = [
     CommandType::Npm("stylefmt"),
 ];
 
+pub const IS_STDIN: bool = false;
+
 #[cfg(test)]
 mod test_stylefmt {
     const TIMEOUT: u64 = 0;
+
     const DEBUG_ENABLED: bool = true;
 
     #[test_with::executable(npx)]
@@ -104,7 +107,7 @@ padding: 12px
             snippet.path(),
             super::set_args,
             TIMEOUT,
-            false,
+            super::IS_STDIN,
             DEBUG_ENABLED,
         )
         .expect("it to be successful")
@@ -240,7 +243,7 @@ table {
             snippet.path(),
             super::set_args,
             TIMEOUT,
-            false,
+            super::IS_STDIN,
             DEBUG_ENABLED,
         )
         .expect("it to be successful")

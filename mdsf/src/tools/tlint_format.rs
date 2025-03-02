@@ -17,3 +17,5 @@ pub const COMMANDS: [CommandType; 2] = [
     CommandType::PhpVendor("tlint"),
     CommandType::Direct("tlint"),
 ];
+
+pub const IS_STDIN: bool = false;

@@ -18,3 +18,5 @@ pub const COMMANDS: [CommandType; 3] = [
     CommandType::Direct("csslint"),
     CommandType::Npm("csslint"),
 ];
+
+pub const IS_STDIN: bool = false;

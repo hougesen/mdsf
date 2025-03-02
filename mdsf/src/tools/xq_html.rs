@@ -13,3 +13,5 @@ pub fn set_args(
 }
 
 pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("xq")];
+
+pub const IS_STDIN: bool = true;

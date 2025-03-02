@@ -18,3 +18,5 @@ pub const COMMANDS: [CommandType; 3] = [
     CommandType::Direct("liquidsoap-prettier"),
     CommandType::Npm("liquidsoap-prettier"),
 ];
+
+pub const IS_STDIN: bool = false;

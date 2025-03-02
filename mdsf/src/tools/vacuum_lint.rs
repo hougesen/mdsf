@@ -18,3 +18,5 @@ pub const COMMANDS: [CommandType; 3] = [
     CommandType::Direct("vacuum"),
     CommandType::Npm("@quobix/vacuum"),
 ];
+
+pub const IS_STDIN: bool = false;

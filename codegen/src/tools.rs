@@ -176,8 +176,6 @@ pub struct GeneratedCommand {
     pub homepage: String,
 
     pub deprecated: bool,
-
-    pub stdin: bool,
 }
 
 const DEPRECATED_ATTRIBUTE: &str = "\n    #[deprecated]";
@@ -199,12 +197,7 @@ impl Tool {
         )
     }
 
-    fn generate_test(
-        &self,
-        command: &str,
-        test: &ToolCommandTest,
-        is_stdin: bool,
-    ) -> (String, String) {
+    fn generate_test(&self, command: &str, test: &ToolCommandTest) -> (String, String) {
         let mut hasher = DefaultHasher::new();
 
         test.hash(&mut hasher);
@@ -236,7 +229,7 @@ impl Tool {
 {INDENT}{INDENT}{INDENT}snippet.path(),
 {INDENT}{INDENT}{INDENT}super::set_args,
 {INDENT}{INDENT}{INDENT}TIMEOUT,
-{INDENT}{INDENT}{INDENT}{is_stdin},
+{INDENT}{INDENT}{INDENT}super::IS_STDIN,
 {INDENT}{INDENT}{INDENT}DEBUG_ENABLED,
 {INDENT}{INDENT})
 {INDENT}{INDENT}.expect(\"it to be successful\")
@@ -334,25 +327,26 @@ impl Tool {
                 let tests = options
                     .tests
                     .iter()
-                    .map(|test| self.generate_test(cmd, test, options.stdin).1)
+                    .map(|test| self.generate_test(cmd, test).1)
                     .collect::<Vec<_>>();
 
-                let tests = if tests.is_empty() {
+                if tests.is_empty() {
                     String::new()
                 } else {
-                    format!("\n{}", tests.join("\n\n"))
-                };
-
-                format!(
-                    "
+                    format!(
+                        "
 #[cfg(test)]
 mod test_{module_name} {{
 {INDENT}const TIMEOUT: u64 = 0;
+
 {INDENT}const DEBUG_ENABLED: bool = true;
+
 {tests}
 }}
-"
-                )
+",
+                        tests = tests.join("\n\n")
+                    )
+                }
             };
 
             let code = format!(
@@ -369,9 +363,12 @@ pub fn set_args(
 }}
 
 pub const COMMANDS: [CommandType; {command_type_count}] = [{command_arr}];
+
+pub const IS_STDIN: bool = {is_stdin};
 {test_mod}",
                 unused_prefix = if options.stdin { "_" } else { "" },
-                is_mut = if string_args.is_empty() { "" } else { "mut " }
+                is_mut = if string_args.is_empty() { "" } else { "mut " },
+                is_stdin = if options.stdin { "true" } else { "false" }
             );
 
             let homepage = options.homepage.clone().unwrap_or_default();
@@ -401,7 +398,6 @@ pub const COMMANDS: [CommandType; {command_type_count}] = [{command_arr}];
                     description
                 },
                 deprecated: options.deprecated || self.deprecated,
-                stdin: options.stdin,
             });
         }
 
@@ -503,10 +499,8 @@ impl AsRef<str> for Tooling {
                 args = command.args.join(" ")
             ));
 
-            let is_stdin = command.stdin;
-
             format_snippet_values.insert(format!(
-                "{INDENT}{INDENT}{INDENT}Self::{enum_value} => (&{module_name}::COMMANDS, {module_name}::set_args, {is_stdin}),",
+                "{INDENT}{INDENT}{INDENT}Self::{enum_value} => (&{module_name}::COMMANDS, {module_name}::set_args, {module_name}::IS_STDIN),",
              ));
 
             as_ref_values.insert(format!(

@@ -17,3 +17,5 @@ pub const COMMANDS: [CommandType; 3] = [
     CommandType::Direct("pug-lint"),
     CommandType::Npm("pug-lint"),
 ];
+
+pub const IS_STDIN: bool = false;

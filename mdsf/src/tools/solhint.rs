@@ -20,3 +20,5 @@ pub const COMMANDS: [CommandType; 3] = [
     CommandType::Direct("solhint"),
     CommandType::Npm("solhint"),
 ];
+
+pub const IS_STDIN: bool = false;

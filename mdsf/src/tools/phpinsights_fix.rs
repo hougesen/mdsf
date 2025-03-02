@@ -19,3 +19,5 @@ pub const COMMANDS: [CommandType; 2] = [
     CommandType::PhpVendor("phpinsights"),
     CommandType::Direct("phpinsights"),
 ];
+
+pub const IS_STDIN: bool = false;

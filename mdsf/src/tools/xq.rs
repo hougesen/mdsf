@@ -10,9 +10,12 @@ pub fn set_args(cmd: std::process::Command, _file_path: &std::path::Path) -> std
 
 pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("xq")];
 
+pub const IS_STDIN: bool = true;
+
 #[cfg(test)]
 mod test_xq {
     const TIMEOUT: u64 = 0;
+
     const DEBUG_ENABLED: bool = true;
 
     #[test_with::executable(xq)]
@@ -42,7 +45,7 @@ mod test_xq {
             snippet.path(),
             super::set_args,
             TIMEOUT,
-            true,
+            super::IS_STDIN,
             DEBUG_ENABLED,
         )
         .expect("it to be successful")

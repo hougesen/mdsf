@@ -20,3 +20,5 @@ pub const COMMANDS: [CommandType; 3] = [
     CommandType::Direct("biome"),
     CommandType::Npm("@biomejs/biome"),
 ];
+
+pub const IS_STDIN: bool = false;

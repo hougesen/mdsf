@@ -16,3 +16,5 @@ pub const COMMANDS: [CommandType; 2] = [
     CommandType::PhpVendor("pretty-php"),
     CommandType::Direct("pretty-php"),
 ];
+
+pub const IS_STDIN: bool = false;

@@ -15,9 +15,12 @@ pub fn set_args(
 
 pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("veryl")];
 
+pub const IS_STDIN: bool = false;
+
 #[cfg(test)]
 mod test_veryl_fmt {
     const TIMEOUT: u64 = 0;
+
     const DEBUG_ENABLED: bool = true;
 
     #[test_with::executable(veryl)]
@@ -86,7 +89,7 @@ pub module Delay #( // visibility control by `pub` keyword
             snippet.path(),
             super::set_args,
             TIMEOUT,
-            false,
+            super::IS_STDIN,
             DEBUG_ENABLED,
         )
         .expect("it to be successful")

@@ -18,3 +18,5 @@ pub const COMMANDS: [CommandType; 3] = [
     CommandType::Direct("buf"),
     CommandType::Npm("@bufbuild/buf"),
 ];
+
+pub const IS_STDIN: bool = false;

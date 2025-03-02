@@ -15,9 +15,12 @@ pub fn set_args(
 
 pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("zig")];
 
+pub const IS_STDIN: bool = false;
+
 #[cfg(test)]
 mod test_zig_fmt {
     const TIMEOUT: u64 = 0;
+
     const DEBUG_ENABLED: bool = true;
 
     #[test_with::executable(zig)]
@@ -44,7 +47,7 @@ mod test_zig_fmt {
             snippet.path(),
             super::set_args,
             TIMEOUT,
-            false,
+            super::IS_STDIN,
             DEBUG_ENABLED,
         )
         .expect("it to be successful")

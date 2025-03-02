@@ -15,9 +15,12 @@ pub fn set_args(
 
 pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("erlfmt")];
 
+pub const IS_STDIN: bool = false;
+
 #[cfg(test)]
 mod test_erlfmt {
     const TIMEOUT: u64 = 0;
+
     const DEBUG_ENABLED: bool = true;
 
     #[test_with::executable(erlfmt)]
@@ -42,7 +45,7 @@ case Erlang of movie->[hello(mike,joe,robert),credits]; language->formatting_arg
             snippet.path(),
             super::set_args,
             TIMEOUT,
-            false,
+            super::IS_STDIN,
             DEBUG_ENABLED,
         )
         .expect("it to be successful")

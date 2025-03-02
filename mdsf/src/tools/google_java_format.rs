@@ -15,9 +15,12 @@ pub fn set_args(
 
 pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("google-java-format")];
 
+pub const IS_STDIN: bool = false;
+
 #[cfg(test)]
 mod test_google_java_format {
     const TIMEOUT: u64 = 0;
+
     const DEBUG_ENABLED: bool = true;
 
     #[test_with::executable(google-java-format)]
@@ -47,7 +50,7 @@ mod test_google_java_format {
             snippet.path(),
             super::set_args,
             TIMEOUT,
-            false,
+            super::IS_STDIN,
             DEBUG_ENABLED,
         )
         .expect("it to be successful")

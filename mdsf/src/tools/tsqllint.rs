@@ -18,3 +18,5 @@ pub const COMMANDS: [CommandType; 3] = [
     CommandType::Direct("tsqllint"),
     CommandType::Npm("tsqllint"),
 ];
+
+pub const IS_STDIN: bool = false;

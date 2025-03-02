@@ -17,3 +17,5 @@ pub const COMMANDS: [CommandType; 3] = [
     CommandType::Direct("alex"),
     CommandType::Npm("alex"),
 ];
+
+pub const IS_STDIN: bool = false;

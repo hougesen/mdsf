@@ -15,3 +15,5 @@ pub fn set_args(
 }
 
 pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("deno")];
+
+pub const IS_STDIN: bool = false;

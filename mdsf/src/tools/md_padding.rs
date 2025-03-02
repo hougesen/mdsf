@@ -18,3 +18,5 @@ pub const COMMANDS: [CommandType; 3] = [
     CommandType::Direct("md-padding"),
     CommandType::Npm("md-padding"),
 ];
+
+pub const IS_STDIN: bool = false;

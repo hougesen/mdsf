@@ -19,3 +19,5 @@ pub const COMMANDS: [CommandType; 3] = [
     CommandType::Direct("imba"),
     CommandType::Npm("imba"),
 ];
+
+pub const IS_STDIN: bool = false;

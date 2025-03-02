@@ -14,3 +14,5 @@ pub fn set_args(
 
 pub const COMMANDS: [CommandType; 2] =
     [CommandType::PhpVendor("pint"), CommandType::Direct("pint")];
+
+pub const IS_STDIN: bool = false;

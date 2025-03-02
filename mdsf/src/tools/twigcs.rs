@@ -16,3 +16,5 @@ pub const COMMANDS: [CommandType; 2] = [
     CommandType::PhpVendor("twigcs"),
     CommandType::Direct("twigcs"),
 ];
+
+pub const IS_STDIN: bool = false;

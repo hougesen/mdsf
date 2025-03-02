@@ -16,3 +16,5 @@ pub const COMMANDS: [CommandType; 2] = [
     CommandType::PhpVendor("phpcbf"),
     CommandType::Direct("phpcbf"),
 ];
+
+pub const IS_STDIN: bool = false;

@@ -18,3 +18,5 @@ pub const COMMANDS: [CommandType; 3] = [
     CommandType::Direct("bibtex-tidy"),
     CommandType::Npm("bibtex-tidy"),
 ];
+
+pub const IS_STDIN: bool = false;
