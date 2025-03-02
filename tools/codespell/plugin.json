@@ -1,7 +1,7 @@
 {
   "$schema": "../tool.schema.json",
   "binary": "codespell",
-  "categories": ["autocorrection"],
+  "categories": ["spell-check"],
   "commands": {
     "": {
       "arguments": ["$PATH", "--check-hidden", "--write-changes"]

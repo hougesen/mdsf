@@ -259,6 +259,8 @@ pub mod templ_fmt;
 pub mod terraform_fmt;
 pub mod terragrunt_hclfmt;
 pub mod tex_fmt;
+pub mod textlint;
+pub mod textlint_fix;
 pub mod tlint_format;
 pub mod tofu_fmt;
 pub mod toml_sort;
@@ -2365,6 +2367,22 @@ pub enum Tooling {
     /// `tex-fmt $PATH`
     TexFmt,
 
+    #[serde(rename = "textlint")]
+    /// Check input for prose errors
+    ///
+    /// [https://github.com/textlint/textlint](https://github.com/textlint/textlint)
+    ///
+    /// `textlint $PATH`
+    Textlint,
+
+    #[serde(rename = "textlint:fix")]
+    /// Tries to fix prose errors
+    ///
+    /// [https://github.com/textlint/textlint](https://github.com/textlint/textlint)
+    ///
+    /// `textlint --fix $PATH`
+    TextlintFix,
+
     #[serde(rename = "tlint:format")]
     /// Tighten linter for Laravel conventions
     ///
@@ -3490,6 +3508,12 @@ impl Tooling {
                 terragrunt_hclfmt::IS_STDIN,
             ),
             Self::TexFmt => (&tex_fmt::COMMANDS, tex_fmt::set_args, tex_fmt::IS_STDIN),
+            Self::Textlint => (&textlint::COMMANDS, textlint::set_args, textlint::IS_STDIN),
+            Self::TextlintFix => (
+                &textlint_fix::COMMANDS,
+                textlint_fix::set_args,
+                textlint_fix::IS_STDIN,
+            ),
             Self::TlintFormat => (
                 &tlint_format::COMMANDS,
                 tlint_format::set_args,
@@ -3847,6 +3871,8 @@ impl AsRef<str> for Tooling {
             Self::TerraformFmt => "terraform_fmt",
             Self::TerragruntHclfmt => "terragrunt_hclfmt",
             Self::TexFmt => "tex_fmt",
+            Self::Textlint => "textlint",
+            Self::TextlintFix => "textlint_fix",
             Self::TlintFormat => "tlint_format",
             Self::TofuFmt => "tofu_fmt",
             Self::TomlSort => "toml_sort",
