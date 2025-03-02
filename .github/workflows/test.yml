@@ -191,7 +191,7 @@ jobs:
       - name: elm-format
         run: ( ( which elm-format ) || ( ( which npm && npm i -g elm-format ) ) || ( echo "Unable to install tool" ) )
       - name: typos
-        run: ( ( which typos ) || ( ( which cargo && ( cargo binstall typos-cli || cargo install typos-cli ) ) ) || ( echo "Unable to install tool" ) )
+        run: ( ( which typos ) || ( ( which cargo && ( cargo binstall typos-cli || cargo install typos-cli ) ) || ( which brew &&  brew install typos-cli ) ) || ( echo "Unable to install tool" ) )
       - name: blade-formatter
         run: ( ( which blade-formatter ) || ( ( which npm && npm i -g blade-formatter ) ) || ( echo "Unable to install tool" ) )
       - name: golines

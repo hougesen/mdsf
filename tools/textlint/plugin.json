@@ -1,0 +1,21 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "textlint",
+  "categories": ["spell-check"],
+  "commands": {
+    "": {
+      "arguments": ["$PATH"],
+      "description": "Check input for prose errors"
+    },
+    "fix": {
+      "arguments": ["--fix", "$PATH"],
+      "description": "Tries to fix prose errors"
+    }
+  },
+  "description": "The pluggable natural language linter for text and markdown",
+  "homepage": "https://github.com/textlint/textlint",
+  "languages": [],
+  "packages": {
+    "npm": "textlint"
+  }
+}

@@ -1,7 +1,7 @@
 {
   "$schema": "../tool.schema.json",
   "binary": "typos",
-  "categories": ["autocorrection"],
+  "categories": ["spell-check"],
   "commands": {
     "": {
       "arguments": ["-w", "--no-ignore", "--hidden", "$PATH"],
@@ -18,6 +18,9 @@
   "homepage": "https://github.com/crate-ci/typos",
   "languages": [],
   "packages": {
+    "brew": {
+      "name": "typos-cli"
+    },
     "cargo": "typos-cli"
   }
 }

@@ -14,9 +14,9 @@ pub fn set_args(
 }
 
 pub const COMMANDS: [CommandType; 3] = [
-    CommandType::NodeModules("autocorrect"),
-    CommandType::Direct("autocorrect"),
-    CommandType::Npm("autocorrect-node"),
+    CommandType::NodeModules("textlint"),
+    CommandType::Direct("textlint"),
+    CommandType::Npm("textlint"),
 ];
 
 pub const IS_STDIN: bool = false;

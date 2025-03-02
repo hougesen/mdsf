@@ -1353,6 +1353,16 @@
           "enum": ["tex-fmt"]
         },
         {
+          "description": "Check input for prose errors\n\n[https://github.com/textlint/textlint](https://github.com/textlint/textlint)\n\n`textlint $PATH`",
+          "type": "string",
+          "enum": ["textlint"]
+        },
+        {
+          "description": "Tries to fix prose errors\n\n[https://github.com/textlint/textlint](https://github.com/textlint/textlint)\n\n`textlint --fix $PATH`",
+          "type": "string",
+          "enum": ["textlint:fix"]
+        },
+        {
           "description": "Tighten linter for Laravel conventions\n\n[https://github.com/tighten/tlint](https://github.com/tighten/tlint)\n\n`tlint format $PATH`",
           "type": "string",
           "enum": ["tlint:format"]
