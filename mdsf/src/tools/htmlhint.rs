@@ -18,5 +18,4 @@ pub const COMMANDS: [CommandType; 3] = [
     CommandType::Npm("htmlhint"),
 ];
 
-#[cfg(test)]
-mod test_htmlhint {}
+pub const IS_STDIN: bool = false;

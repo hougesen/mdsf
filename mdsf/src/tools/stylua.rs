@@ -19,8 +19,14 @@ pub const COMMANDS: [CommandType; 3] = [
     CommandType::Npm("@johnnymorganz/stylua-bin"),
 ];
 
+pub const IS_STDIN: bool = false;
+
 #[cfg(test)]
 mod test_stylua {
+    const TIMEOUT: u64 = 0;
+
+    const DEBUG_ENABLED: bool = true;
+
     #[test_with::executable(npx)]
     fn test_stylua_lua_ab45775f0dc2fcca() {
         let input = r#"
@@ -49,8 +55,9 @@ end
             &super::COMMANDS,
             snippet.path(),
             super::set_args,
-            0,
-            false,
+            TIMEOUT,
+            super::IS_STDIN,
+            DEBUG_ENABLED,
         )
         .expect("it to be successful")
         .1

@@ -15,5 +15,4 @@ pub fn set_args(
 
 pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("puppet-lint")];
 
-#[cfg(test)]
-mod test_puppet_lint {}
+pub const IS_STDIN: bool = false;

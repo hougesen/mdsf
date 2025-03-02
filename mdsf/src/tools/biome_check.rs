@@ -20,5 +20,4 @@ pub const COMMANDS: [CommandType; 3] = [
     CommandType::Npm("@biomejs/biome"),
 ];
 
-#[cfg(test)]
-mod test_biome_check {}
+pub const IS_STDIN: bool = false;

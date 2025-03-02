@@ -16,5 +16,4 @@ pub fn set_args(
 
 pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("shellharden")];
 
-#[cfg(test)]
-mod test_shellharden {}
+pub const IS_STDIN: bool = false;

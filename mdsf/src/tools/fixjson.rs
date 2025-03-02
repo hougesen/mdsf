@@ -19,5 +19,4 @@ pub const COMMANDS: [CommandType; 3] = [
     CommandType::Npm("fixjson"),
 ];
 
-#[cfg(test)]
-mod test_fixjson {}
+pub const IS_STDIN: bool = false;

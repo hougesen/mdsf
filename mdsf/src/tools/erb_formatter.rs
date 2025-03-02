@@ -15,5 +15,4 @@ pub fn set_args(
 
 pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("erb-format")];
 
-#[cfg(test)]
-mod test_erb_formatter {}
+pub const IS_STDIN: bool = false;

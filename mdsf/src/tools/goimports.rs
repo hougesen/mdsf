@@ -15,8 +15,14 @@ pub fn set_args(
 
 pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("goimports")];
 
+pub const IS_STDIN: bool = false;
+
 #[cfg(test)]
 mod test_goimports {
+    const TIMEOUT: u64 = 0;
+
+    const DEBUG_ENABLED: bool = true;
+
     #[test_with::executable(goimports)]
     fn test_goimports_go_4af43f410d7fff15() {
         let input = r#"package main
@@ -55,8 +61,9 @@ func add(a int, b int) int {
             &super::COMMANDS,
             snippet.path(),
             super::set_args,
-            0,
-            false,
+            TIMEOUT,
+            super::IS_STDIN,
+            DEBUG_ENABLED,
         )
         .expect("it to be successful")
         .1

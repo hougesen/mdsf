@@ -16,8 +16,14 @@ pub fn set_args(
 
 pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("ruff")];
 
+pub const IS_STDIN: bool = false;
+
 #[cfg(test)]
 mod test_ruff_format {
+    const TIMEOUT: u64 = 0;
+
+    const DEBUG_ENABLED: bool = true;
+
     #[test_with::executable(ruff)]
     fn test_ruff_format_python_229ec2b01c2bfe3c() {
         let input = r#"def add( a: int ,  b:int)->int: return a+b"#;
@@ -35,8 +41,9 @@ mod test_ruff_format {
             &super::COMMANDS,
             snippet.path(),
             super::set_args,
-            0,
-            false,
+            TIMEOUT,
+            super::IS_STDIN,
+            DEBUG_ENABLED,
         )
         .expect("it to be successful")
         .1

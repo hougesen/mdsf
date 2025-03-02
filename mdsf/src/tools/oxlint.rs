@@ -19,5 +19,4 @@ pub const COMMANDS: [CommandType; 3] = [
     CommandType::Npm("oxlint"),
 ];
 
-#[cfg(test)]
-mod test_oxlint {}
+pub const IS_STDIN: bool = false;

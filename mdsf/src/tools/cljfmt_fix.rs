@@ -15,5 +15,4 @@ pub fn set_args(
 
 pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("cljfmt")];
 
-#[cfg(test)]
-mod test_cljfmt_fix {}
+pub const IS_STDIN: bool = false;

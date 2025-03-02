@@ -18,5 +18,4 @@ pub const COMMANDS: [CommandType; 3] = [
     CommandType::Npm("alex"),
 ];
 
-#[cfg(test)]
-mod test_alex {}
+pub const IS_STDIN: bool = false;

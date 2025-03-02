@@ -19,8 +19,14 @@ pub const COMMANDS: [CommandType; 3] = [
     CommandType::Npm("csscomb"),
 ];
 
+pub const IS_STDIN: bool = false;
+
 #[cfg(test)]
 mod test_csscomb {
+    const TIMEOUT: u64 = 0;
+
+    const DEBUG_ENABLED: bool = true;
+
     #[test_with::executable(npx)]
     fn test_csscomb_css_bed67a883a4a1aae() {
         let input = r#"h1   {color: blue;}
@@ -45,8 +51,9 @@ p
             &super::COMMANDS,
             snippet.path(),
             super::set_args,
-            0,
-            false,
+            TIMEOUT,
+            super::IS_STDIN,
+            DEBUG_ENABLED,
         )
         .expect("it to be successful")
         .1

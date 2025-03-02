@@ -176,8 +176,6 @@ pub struct GeneratedCommand {
     pub homepage: String,
 
     pub deprecated: bool,
-
-    pub stdin: bool,
 }
 
 const DEPRECATED_ATTRIBUTE: &str = "\n    #[deprecated]";
@@ -199,12 +197,7 @@ impl Tool {
         )
     }
 
-    fn generate_test(
-        &self,
-        command: &str,
-        test: &ToolCommandTest,
-        is_stdin: bool,
-    ) -> (String, String) {
+    fn generate_test(&self, command: &str, test: &ToolCommandTest) -> (String, String) {
         let mut hasher = DefaultHasher::new();
 
         test.hash(&mut hasher);
@@ -231,11 +224,17 @@ impl Tool {
 {INDENT}{INDENT}let snippet =
 {INDENT}{INDENT}{INDENT}crate::execution::setup_snippet(input, &file_ext).expect(\"it to create a snippet file\");
 
-{INDENT}{INDENT}let result =
-{INDENT}{INDENT}{INDENT}crate::execution::run_tools(&super::COMMANDS, snippet.path(), super::set_args, 0, {is_stdin})
-{INDENT}{INDENT}{INDENT}{INDENT}.expect(\"it to be successful\")
-{INDENT}{INDENT}{INDENT}{INDENT}.1
-{INDENT}{INDENT}{INDENT}{INDENT}.expect(\"it to be some\");
+{INDENT}{INDENT}let result = crate::execution::run_tools(
+{INDENT}{INDENT}{INDENT}&super::COMMANDS,
+{INDENT}{INDENT}{INDENT}snippet.path(),
+{INDENT}{INDENT}{INDENT}super::set_args,
+{INDENT}{INDENT}{INDENT}TIMEOUT,
+{INDENT}{INDENT}{INDENT}super::IS_STDIN,
+{INDENT}{INDENT}{INDENT}DEBUG_ENABLED,
+{INDENT}{INDENT})
+{INDENT}{INDENT}.expect(\"it to be successful\")
+{INDENT}{INDENT}.1
+{INDENT}{INDENT}.expect(\"it to be some\");
 
 {INDENT}{INDENT}assert_eq!(result, output);
 {INDENT}}}",
@@ -320,19 +319,35 @@ impl Tool {
 
             let module_name = command_name.to_case(Case::Snake);
 
-            let tests = options
-                .tests
-                .iter()
-                .map(|test| self.generate_test(cmd, test, options.stdin).1)
-                .collect::<Vec<_>>();
+            let command_type_count = command_types.len();
 
-            let tests = if tests.is_empty() {
+            let test_mod = if options.tests.is_empty() {
                 String::new()
             } else {
-                format!("\n{}\n", tests.join("\n\n"))
-            };
+                let tests = options
+                    .tests
+                    .iter()
+                    .map(|test| self.generate_test(cmd, test).1)
+                    .collect::<Vec<_>>();
 
-            let command_type_count = command_types.len();
+                if tests.is_empty() {
+                    String::new()
+                } else {
+                    format!(
+                        "
+#[cfg(test)]
+mod test_{module_name} {{
+{INDENT}const TIMEOUT: u64 = 0;
+
+{INDENT}const DEBUG_ENABLED: bool = true;
+
+{tests}
+}}
+",
+                        tests = tests.join("\n\n")
+                    )
+                }
+            };
 
             let code = format!(
                 "{GENERATED_FILE_COMMENT}
@@ -340,7 +355,7 @@ use crate::runners::CommandType;
 
 #[inline]
 pub fn set_args(
-{INDENT}mut cmd: std::process::Command,
+{INDENT}{is_mut}cmd: std::process::Command,
 {INDENT}{unused_prefix}file_path: &std::path::Path,
 ) -> std::process::Command {{
 {string_args}
@@ -349,10 +364,11 @@ pub fn set_args(
 
 pub const COMMANDS: [CommandType; {command_type_count}] = [{command_arr}];
 
-#[cfg(test)]
-mod test_{module_name} {{{tests}}}
-",
+pub const IS_STDIN: bool = {is_stdin};
+{test_mod}",
                 unused_prefix = if options.stdin { "_" } else { "" },
+                is_mut = if string_args.is_empty() { "" } else { "mut " },
+                is_stdin = if options.stdin { "true" } else { "false" }
             );
 
             let homepage = options.homepage.clone().unwrap_or_default();
@@ -382,7 +398,6 @@ mod test_{module_name} {{{tests}}}
                     description
                 },
                 deprecated: options.deprecated || self.deprecated,
-                stdin: options.stdin,
             });
         }
 
@@ -484,10 +499,8 @@ impl AsRef<str> for Tooling {
                 args = command.args.join(" ")
             ));
 
-            let is_stdin = command.stdin;
-
             format_snippet_values.insert(format!(
-                "{INDENT}{INDENT}{INDENT}Self::{enum_value} => (&{module_name}::COMMANDS, {module_name}::set_args, {is_stdin}),",  
+                "{INDENT}{INDENT}{INDENT}Self::{enum_value} => (&{module_name}::COMMANDS, {module_name}::set_args, {module_name}::IS_STDIN),",
              ));
 
             as_ref_values.insert(format!(
@@ -532,6 +545,7 @@ impl Tooling {{
 {INDENT}{INDENT}self,
 {INDENT}{INDENT}snippet_path: &std::path::Path,
 {INDENT}{INDENT}timeout: u64,
+{INDENT}{INDENT}debug_enabled: bool,
 {INDENT}) -> Result<(bool, Option<String>), crate::error::MdsfError> {{
 {INDENT}{INDENT}let (commands, set_args_fn, is_stdin): (
 {INDENT}{INDENT}{INDENT}&[crate::runners::CommandType],
@@ -541,7 +555,14 @@ impl Tooling {{
 {}
 {INDENT}{INDENT}}};
 
-{INDENT}{INDENT}crate::execution::run_tools(commands, snippet_path, set_args_fn, timeout, is_stdin)
+{INDENT}{INDENT}crate::execution::run_tools(
+{INDENT}{INDENT}{INDENT}commands,
+{INDENT}{INDENT}{INDENT}snippet_path,
+{INDENT}{INDENT}{INDENT}set_args_fn,
+{INDENT}{INDENT}{INDENT}timeout,
+{INDENT}{INDENT}{INDENT}is_stdin,
+{INDENT}{INDENT}{INDENT}debug_enabled,
+{INDENT}{INDENT})
 {INDENT}}}
 }}
 

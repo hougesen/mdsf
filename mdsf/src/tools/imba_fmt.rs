@@ -20,5 +20,4 @@ pub const COMMANDS: [CommandType; 3] = [
     CommandType::Npm("imba"),
 ];
 
-#[cfg(test)]
-mod test_imba_fmt {}
+pub const IS_STDIN: bool = false;

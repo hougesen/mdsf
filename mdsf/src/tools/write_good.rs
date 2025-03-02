@@ -18,5 +18,4 @@ pub const COMMANDS: [CommandType; 3] = [
     CommandType::Npm("write-good"),
 ];
 
-#[cfg(test)]
-mod test_write_good {}
+pub const IS_STDIN: bool = false;

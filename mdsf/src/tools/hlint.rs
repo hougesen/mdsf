@@ -16,5 +16,4 @@ pub fn set_args(
 
 pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("hlint")];
 
-#[cfg(test)]
-mod test_hlint {}
+pub const IS_STDIN: bool = false;

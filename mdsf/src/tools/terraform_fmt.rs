@@ -16,8 +16,14 @@ pub fn set_args(
 
 pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("terraform")];
 
+pub const IS_STDIN: bool = false;
+
 #[cfg(test)]
 mod test_terraform_fmt {
+    const TIMEOUT: u64 = 0;
+
+    const DEBUG_ENABLED: bool = true;
+
     #[test_with::executable(terraform)]
     fn test_terraform_fmt_tf_2c1d9f26008080c1() {
         let input = r#"resource "aws_instance" "example" {
@@ -45,8 +51,9 @@ mod test_terraform_fmt {
             &super::COMMANDS,
             snippet.path(),
             super::set_args,
-            0,
-            false,
+            TIMEOUT,
+            super::IS_STDIN,
+            DEBUG_ENABLED,
         )
         .expect("it to be successful")
         .1

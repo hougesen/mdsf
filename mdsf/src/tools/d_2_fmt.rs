@@ -15,5 +15,4 @@ pub fn set_args(
 
 pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("d2")];
 
-#[cfg(test)]
-mod test_d_2_fmt {}
+pub const IS_STDIN: bool = false;

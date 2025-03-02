@@ -16,8 +16,14 @@ pub fn set_args(
 
 pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("deno")];
 
+pub const IS_STDIN: bool = false;
+
 #[cfg(test)]
 mod test_deno_fmt {
+    const TIMEOUT: u64 = 0;
+
+    const DEBUG_ENABLED: bool = true;
+
     #[test_with::executable(deno)]
     fn test_deno_fmt_javascript_d7445fa122fcd5cc() {
         let input = r#"
@@ -41,8 +47,9 @@ mod test_deno_fmt {
             &super::COMMANDS,
             snippet.path(),
             super::set_args,
-            0,
-            false,
+            TIMEOUT,
+            super::IS_STDIN,
+            DEBUG_ENABLED,
         )
         .expect("it to be successful")
         .1
@@ -75,8 +82,9 @@ mod test_deno_fmt {
             &super::COMMANDS,
             snippet.path(),
             super::set_args,
-            0,
-            false,
+            TIMEOUT,
+            super::IS_STDIN,
+            DEBUG_ENABLED,
         )
         .expect("it to be successful")
         .1
@@ -118,8 +126,9 @@ mod test_deno_fmt {
             &super::COMMANDS,
             snippet.path(),
             super::set_args,
-            0,
-            false,
+            TIMEOUT,
+            super::IS_STDIN,
+            DEBUG_ENABLED,
         )
         .expect("it to be successful")
         .1

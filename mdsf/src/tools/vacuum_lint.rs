@@ -19,5 +19,4 @@ pub const COMMANDS: [CommandType; 3] = [
     CommandType::Npm("@quobix/vacuum"),
 ];
 
-#[cfg(test)]
-mod test_vacuum_lint {}
+pub const IS_STDIN: bool = false;

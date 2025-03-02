@@ -16,8 +16,14 @@ pub fn set_args(
 
 pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("crystal")];
 
+pub const IS_STDIN: bool = false;
+
 #[cfg(test)]
 mod test_crystal_format {
+    const TIMEOUT: u64 = 0;
+
+    const DEBUG_ENABLED: bool = true;
+
     #[test_with::executable(crystal)]
     fn test_crystal_format_crystal_e0f2d532cd984bee() {
         let input = r#"def add(a, b)  return a + b end"#;
@@ -36,8 +42,9 @@ end
             &super::COMMANDS,
             snippet.path(),
             super::set_args,
-            0,
-            false,
+            TIMEOUT,
+            super::IS_STDIN,
+            DEBUG_ENABLED,
         )
         .expect("it to be successful")
         .1

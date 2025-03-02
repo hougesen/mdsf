@@ -15,5 +15,4 @@ pub fn set_args(
 
 pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("clj-kondo")];
 
-#[cfg(test)]
-mod test_clj_kondo {}
+pub const IS_STDIN: bool = false;

@@ -17,8 +17,14 @@ pub fn set_args(
 
 pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("rustfmt")];
 
+pub const IS_STDIN: bool = false;
+
 #[cfg(test)]
 mod test_rustfmt {
+    const TIMEOUT: u64 = 0;
+
+    const DEBUG_ENABLED: bool = true;
+
     #[test_with::executable(rustfmt)]
     fn test_rustfmt_rust_70ad564760e773e9() {
         let input = r#"pub
@@ -41,8 +47,9 @@ mod test_rustfmt {
             &super::COMMANDS,
             snippet.path(),
             super::set_args,
-            0,
-            false,
+            TIMEOUT,
+            super::IS_STDIN,
+            DEBUG_ENABLED,
         )
         .expect("it to be successful")
         .1

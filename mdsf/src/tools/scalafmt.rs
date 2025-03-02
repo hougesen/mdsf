@@ -17,8 +17,14 @@ pub fn set_args(
 
 pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("scalafmt")];
 
+pub const IS_STDIN: bool = false;
+
 #[cfg(test)]
 mod test_scalafmt {
+    const TIMEOUT: u64 = 0;
+
+    const DEBUG_ENABLED: bool = true;
+
     #[test_with::executable(scalafmt)]
     fn test_scalafmt_scala_cbd61c065383c05b() {
         let input = r#"object Addition {
@@ -43,8 +49,9 @@ mod test_scalafmt {
             &super::COMMANDS,
             snippet.path(),
             super::set_args,
-            0,
-            false,
+            TIMEOUT,
+            super::IS_STDIN,
+            DEBUG_ENABLED,
         )
         .expect("it to be successful")
         .1

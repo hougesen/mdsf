@@ -15,5 +15,4 @@ pub fn set_args(
 
 pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("bpfmt")];
 
-#[cfg(test)]
-mod test_bpfmt {}
+pub const IS_STDIN: bool = false;

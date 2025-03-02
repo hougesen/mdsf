@@ -20,8 +20,14 @@ pub const COMMANDS: [CommandType; 3] = [
     CommandType::Npm("@biomejs/biome"),
 ];
 
+pub const IS_STDIN: bool = false;
+
 #[cfg(test)]
 mod test_biome_format {
+    const TIMEOUT: u64 = 0;
+
+    const DEBUG_ENABLED: bool = true;
+
     #[test_with::executable(npx)]
     fn test_biome_format_json_90a326e29048e3cd() {
         let input = r#"
@@ -50,8 +56,9 @@ mod test_biome_format {
             &super::COMMANDS,
             snippet.path(),
             super::set_args,
-            0,
-            false,
+            TIMEOUT,
+            super::IS_STDIN,
+            DEBUG_ENABLED,
         )
         .expect("it to be successful")
         .1
@@ -85,8 +92,9 @@ mod test_biome_format {
             &super::COMMANDS,
             snippet.path(),
             super::set_args,
-            0,
-            false,
+            TIMEOUT,
+            super::IS_STDIN,
+            DEBUG_ENABLED,
         )
         .expect("it to be successful")
         .1
@@ -122,8 +130,9 @@ number>
             &super::COMMANDS,
             snippet.path(),
             super::set_args,
-            0,
-            false,
+            TIMEOUT,
+            super::IS_STDIN,
+            DEBUG_ENABLED,
         )
         .expect("it to be successful")
         .1

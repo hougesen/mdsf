@@ -15,5 +15,4 @@ pub fn set_args(
 
 pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("fish_indent")];
 
-#[cfg(test)]
-mod test_fish_indent {}
+pub const IS_STDIN: bool = false;

@@ -15,5 +15,4 @@ pub fn set_args(
 
 pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("yq")];
 
-#[cfg(test)]
-mod test_yq {}
+pub const IS_STDIN: bool = false;

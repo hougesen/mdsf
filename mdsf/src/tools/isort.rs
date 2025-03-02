@@ -15,8 +15,14 @@ pub fn set_args(
 
 pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("isort")];
 
+pub const IS_STDIN: bool = false;
+
 #[cfg(test)]
 mod test_isort {
+    const TIMEOUT: u64 = 0;
+
+    const DEBUG_ENABLED: bool = true;
+
     #[test_with::executable(isort)]
     fn test_isort_python_e2ac93e0195d9bc1() {
         let input = r#"from q import d
@@ -48,8 +54,9 @@ def add(a: int, b: int) -> int:
             &super::COMMANDS,
             snippet.path(),
             super::set_args,
-            0,
-            false,
+            TIMEOUT,
+            super::IS_STDIN,
+            DEBUG_ENABLED,
         )
         .expect("it to be successful")
         .1

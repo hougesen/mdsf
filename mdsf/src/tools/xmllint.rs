@@ -17,8 +17,14 @@ pub fn set_args(
 
 pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("xmllint")];
 
+pub const IS_STDIN: bool = false;
+
 #[cfg(test)]
 mod test_xmllint {
+    const TIMEOUT: u64 = 0;
+
+    const DEBUG_ENABLED: bool = true;
+
     #[test_with::executable(xmllint)]
     fn test_xmllint_xml_29dedc18db9d2e97() {
         let input = r#"
@@ -47,8 +53,9 @@ mod test_xmllint {
             &super::COMMANDS,
             snippet.path(),
             super::set_args,
-            0,
-            false,
+            TIMEOUT,
+            super::IS_STDIN,
+            DEBUG_ENABLED,
         )
         .expect("it to be successful")
         .1

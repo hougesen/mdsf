@@ -17,5 +17,4 @@ pub const COMMANDS: [CommandType; 2] = [
     CommandType::Direct("pretty-php"),
 ];
 
-#[cfg(test)]
-mod test_pretty_php {}
+pub const IS_STDIN: bool = false;

@@ -18,5 +18,4 @@ pub const COMMANDS: [CommandType; 3] = [
     CommandType::Npm("nginxbeautifier"),
 ];
 
-#[cfg(test)]
-mod test_nginxbeautifier {}
+pub const IS_STDIN: bool = false;

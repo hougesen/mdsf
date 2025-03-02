@@ -15,8 +15,14 @@ pub fn set_args(
 
 pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("alejandra")];
 
+pub const IS_STDIN: bool = false;
+
 #[cfg(test)]
 mod test_alejandra {
+    const TIMEOUT: u64 = 0;
+
+    const DEBUG_ENABLED: bool = true;
+
     #[test_with::executable(alejandra)]
     fn test_alejandra_nix_f38bff8f20c2aa02() {
         let input = r#"{
@@ -87,8 +93,9 @@ buildPythonPackage rec {
             &super::COMMANDS,
             snippet.path(),
             super::set_args,
-            0,
-            false,
+            TIMEOUT,
+            super::IS_STDIN,
+            DEBUG_ENABLED,
         )
         .expect("it to be successful")
         .1

@@ -15,5 +15,4 @@ pub fn set_args(
 
 pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("refmt")];
 
-#[cfg(test)]
-mod test_refmt {}
+pub const IS_STDIN: bool = false;

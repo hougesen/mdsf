@@ -16,5 +16,4 @@ pub fn set_args(
 
 pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("dart")];
 
-#[cfg(test)]
-mod test_dart_fix {}
+pub const IS_STDIN: bool = false;

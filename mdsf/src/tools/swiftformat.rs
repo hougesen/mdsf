@@ -15,8 +15,14 @@ pub fn set_args(
 
 pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("swiftformat")];
 
+pub const IS_STDIN: bool = false;
+
 #[cfg(test)]
 mod test_swiftformat {
+    const TIMEOUT: u64 = 0;
+
+    const DEBUG_ENABLED: bool = true;
+
     #[test_with::executable(swiftformat)]
     fn test_swiftformat_swift_5717762df3975151() {
         let input = r#" func add(a:Int ,b:Int)->Int {
@@ -37,8 +43,9 @@ mod test_swiftformat {
             &super::COMMANDS,
             snippet.path(),
             super::set_args,
-            0,
-            false,
+            TIMEOUT,
+            super::IS_STDIN,
+            DEBUG_ENABLED,
         )
         .expect("it to be successful")
         .1

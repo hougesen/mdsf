@@ -19,5 +19,4 @@ pub const COMMANDS: [CommandType; 3] = [
     CommandType::Npm("dprint"),
 ];
 
-#[cfg(test)]
-mod test_dprint_fmt {}
+pub const IS_STDIN: bool = false;

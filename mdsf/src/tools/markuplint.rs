@@ -19,5 +19,4 @@ pub const COMMANDS: [CommandType; 3] = [
     CommandType::Npm("markuplint"),
 ];
 
-#[cfg(test)]
-mod test_markuplint {}
+pub const IS_STDIN: bool = false;

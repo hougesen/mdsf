@@ -17,5 +17,4 @@ pub fn set_args(
 
 pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("oelint-adv")];
 
-#[cfg(test)]
-mod test_oelint_adv {}
+pub const IS_STDIN: bool = false;

@@ -16,8 +16,14 @@ pub fn set_args(
 
 pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("ormolu")];
 
+pub const IS_STDIN: bool = false;
+
 #[cfg(test)]
 mod test_ormolu {
+    const TIMEOUT: u64 = 0;
+
+    const DEBUG_ENABLED: bool = true;
+
     #[test_with::executable(ormolu)]
     fn test_ormolu_haskell_c34a44cf19c5fdd7() {
         let input = r#"
@@ -40,8 +46,9 @@ addNumbers a b = do
             &super::COMMANDS,
             snippet.path(),
             super::set_args,
-            0,
-            false,
+            TIMEOUT,
+            super::IS_STDIN,
+            DEBUG_ENABLED,
         )
         .expect("it to be successful")
         .1

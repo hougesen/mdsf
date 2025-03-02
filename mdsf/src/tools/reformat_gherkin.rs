@@ -14,5 +14,4 @@ pub fn set_args(
 
 pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("reformat-gherkin")];
 
-#[cfg(test)]
-mod test_reformat_gherkin {}
+pub const IS_STDIN: bool = false;

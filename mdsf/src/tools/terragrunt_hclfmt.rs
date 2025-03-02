@@ -16,5 +16,4 @@ pub fn set_args(
 
 pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("terragrunt")];
 
-#[cfg(test)]
-mod test_terragrunt_hclfmt {}
+pub const IS_STDIN: bool = false;

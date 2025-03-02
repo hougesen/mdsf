@@ -19,8 +19,14 @@ pub const COMMANDS: [CommandType; 3] = [
     CommandType::Npm("@taplo/cli"),
 ];
 
+pub const IS_STDIN: bool = false;
+
 #[cfg(test)]
 mod test_taplo {
+    const TIMEOUT: u64 = 0;
+
+    const DEBUG_ENABLED: bool = true;
+
     #[test_with::executable(npx)]
     fn test_taplo_toml_f9c7870e88d1963c() {
         let input = r#"          package         =              "mdsf"
@@ -40,8 +46,9 @@ author = "Mads Hougesen"
             &super::COMMANDS,
             snippet.path(),
             super::set_args,
-            0,
-            false,
+            TIMEOUT,
+            super::IS_STDIN,
+            DEBUG_ENABLED,
         )
         .expect("it to be successful")
         .1

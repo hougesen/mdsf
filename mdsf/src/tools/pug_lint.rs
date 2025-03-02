@@ -18,5 +18,4 @@ pub const COMMANDS: [CommandType; 3] = [
     CommandType::Npm("pug-lint"),
 ];
 
-#[cfg(test)]
-mod test_pug_lint {}
+pub const IS_STDIN: bool = false;

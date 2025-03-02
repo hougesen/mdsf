@@ -15,5 +15,4 @@ pub fn set_args(
 
 pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("smlfmt")];
 
-#[cfg(test)]
-mod test_smlfmt {}
+pub const IS_STDIN: bool = false;

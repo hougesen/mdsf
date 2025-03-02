@@ -15,8 +15,14 @@ pub fn set_args(
 
 pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("autopep8")];
 
+pub const IS_STDIN: bool = false;
+
 #[cfg(test)]
 mod test_autopep_8 {
+    const TIMEOUT: u64 = 0;
+
+    const DEBUG_ENABLED: bool = true;
+
     #[test_with::executable(autopep8)]
     fn test_autopep_8_python_a868b5ad9905fc3f() {
         let input = r#"def add( a: int ,  b:int)->int: return a+b"#;
@@ -33,8 +39,9 @@ mod test_autopep_8 {
             &super::COMMANDS,
             snippet.path(),
             super::set_args,
-            0,
-            false,
+            TIMEOUT,
+            super::IS_STDIN,
+            DEBUG_ENABLED,
         )
         .expect("it to be successful")
         .1

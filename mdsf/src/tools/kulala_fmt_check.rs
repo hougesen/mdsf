@@ -19,5 +19,4 @@ pub const COMMANDS: [CommandType; 3] = [
     CommandType::Npm("@mistweaverco/kulala-fmt"),
 ];
 
-#[cfg(test)]
-mod test_kulala_fmt_check {}
+pub const IS_STDIN: bool = false;

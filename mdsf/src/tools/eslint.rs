@@ -19,5 +19,4 @@ pub const COMMANDS: [CommandType; 3] = [
     CommandType::Npm("eslint"),
 ];
 
-#[cfg(test)]
-mod test_eslint {}
+pub const IS_STDIN: bool = false;

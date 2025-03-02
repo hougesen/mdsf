@@ -17,5 +17,4 @@ pub fn set_args(
 
 pub const COMMANDS: [CommandType; 2] = [CommandType::PhpVendor("ecs"), CommandType::Direct("ecs")];
 
-#[cfg(test)]
-mod test_easy_coding_standard {}
+pub const IS_STDIN: bool = false;

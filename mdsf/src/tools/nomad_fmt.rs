@@ -15,5 +15,4 @@ pub fn set_args(
 
 pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("nomad")];
 
-#[cfg(test)]
-mod test_nomad_fmt {}
+pub const IS_STDIN: bool = false;

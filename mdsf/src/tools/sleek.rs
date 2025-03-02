@@ -14,5 +14,4 @@ pub fn set_args(
 
 pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("sleek")];
 
-#[cfg(test)]
-mod test_sleek {}
+pub const IS_STDIN: bool = false;

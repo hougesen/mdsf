@@ -19,5 +19,4 @@ pub const COMMANDS: [CommandType; 3] = [
     CommandType::Npm("liquidsoap-prettier"),
 ];
 
-#[cfg(test)]
-mod test_liquidsoap_prettier {}
+pub const IS_STDIN: bool = false;

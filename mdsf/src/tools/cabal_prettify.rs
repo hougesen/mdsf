@@ -14,5 +14,4 @@ pub fn set_args(
 
 pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("cabal-prettify")];
 
-#[cfg(test)]
-mod test_cabal_prettify {}
+pub const IS_STDIN: bool = false;

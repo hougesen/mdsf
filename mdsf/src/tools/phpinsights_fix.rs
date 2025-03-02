@@ -20,5 +20,4 @@ pub const COMMANDS: [CommandType; 2] = [
     CommandType::Direct("phpinsights"),
 ];
 
-#[cfg(test)]
-mod test_phpinsights_fix {}
+pub const IS_STDIN: bool = false;

@@ -15,8 +15,14 @@ pub fn set_args(
 
 pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("zprint")];
 
+pub const IS_STDIN: bool = false;
+
 #[cfg(test)]
 mod test_zprint {
+    const TIMEOUT: u64 = 0;
+
+    const DEBUG_ENABLED: bool = true;
+
     #[test_with::executable(zprint)]
     fn test_zprint_clojure_81eb4a785de214e8() {
         let input = r#"(defn change-start-column [new-start-column style-vec [inline-comment-index
@@ -55,8 +61,9 @@ mod test_zprint {
             &super::COMMANDS,
             snippet.path(),
             super::set_args,
-            0,
-            false,
+            TIMEOUT,
+            super::IS_STDIN,
+            DEBUG_ENABLED,
         )
         .expect("it to be successful")
         .1

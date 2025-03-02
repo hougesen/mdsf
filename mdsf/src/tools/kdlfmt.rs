@@ -15,5 +15,4 @@ pub fn set_args(
 
 pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("kdlfmt")];
 
-#[cfg(test)]
-mod test_kdlfmt {}
+pub const IS_STDIN: bool = false;

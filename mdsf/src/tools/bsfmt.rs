@@ -19,5 +19,4 @@ pub const COMMANDS: [CommandType; 3] = [
     CommandType::Npm("brighterscript-formatter"),
 ];
 
-#[cfg(test)]
-mod test_bsfmt {}
+pub const IS_STDIN: bool = false;

@@ -15,8 +15,14 @@ pub fn set_args(
 
 pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("mado")];
 
+pub const IS_STDIN: bool = false;
+
 #[cfg(test)]
 mod test_mado_check {
+    const TIMEOUT: u64 = 0;
+
+    const DEBUG_ENABLED: bool = true;
+
     #[test_with::executable(mado)]
     fn test_mado_check_markdown_664925a21a5aec00() {
         let input = r#"# Hello world
@@ -42,8 +48,9 @@ mod test_mado_check {
             &super::COMMANDS,
             snippet.path(),
             super::set_args,
-            0,
-            false,
+            TIMEOUT,
+            super::IS_STDIN,
+            DEBUG_ENABLED,
         )
         .expect("it to be successful")
         .1

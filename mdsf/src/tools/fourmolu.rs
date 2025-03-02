@@ -15,8 +15,14 @@ pub fn set_args(
 
 pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("fourmolu")];
 
+pub const IS_STDIN: bool = false;
+
 #[cfg(test)]
 mod test_fourmolu {
+    const TIMEOUT: u64 = 0;
+
+    const DEBUG_ENABLED: bool = true;
+
     #[test_with::executable(fourmolu)]
     fn test_fourmolu_haskell_718612a8aa064d19() {
         let input = r#"
@@ -39,8 +45,9 @@ addNumbers a b = do
             &super::COMMANDS,
             snippet.path(),
             super::set_args,
-            0,
-            false,
+            TIMEOUT,
+            super::IS_STDIN,
+            DEBUG_ENABLED,
         )
         .expect("it to be successful")
         .1

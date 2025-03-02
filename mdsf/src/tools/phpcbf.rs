@@ -17,5 +17,4 @@ pub const COMMANDS: [CommandType; 2] = [
     CommandType::Direct("phpcbf"),
 ];
 
-#[cfg(test)]
-mod test_phpcbf {}
+pub const IS_STDIN: bool = false;

@@ -15,5 +15,4 @@ pub fn set_args(
 
 pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("nickel")];
 
-#[cfg(test)]
-mod test_nickel_format {}
+pub const IS_STDIN: bool = false;

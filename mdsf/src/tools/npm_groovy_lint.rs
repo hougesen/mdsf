@@ -19,8 +19,14 @@ pub const COMMANDS: [CommandType; 3] = [
     CommandType::Npm("npm-groovy-lint"),
 ];
 
+pub const IS_STDIN: bool = false;
+
 #[cfg(test)]
 mod test_npm_groovy_lint {
+    const TIMEOUT: u64 = 0;
+
+    const DEBUG_ENABLED: bool = true;
+
     #[test_with::executable(npx)]
     fn test_npm_groovy_lint_groovy_2dc2be09d8013576() {
         let input = r#"                  def add(a, b) {
@@ -45,8 +51,9 @@ assert add(1, 2) == 3
             &super::COMMANDS,
             snippet.path(),
             super::set_args,
-            0,
-            false,
+            TIMEOUT,
+            super::IS_STDIN,
+            DEBUG_ENABLED,
         )
         .expect("it to be successful")
         .1

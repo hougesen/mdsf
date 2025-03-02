@@ -19,8 +19,14 @@ pub const COMMANDS: [CommandType; 3] = [
     CommandType::Npm("markdownlint-cli"),
 ];
 
+pub const IS_STDIN: bool = false;
+
 #[cfg(test)]
 mod test_markdownlint {
+    const TIMEOUT: u64 = 0;
+
+    const DEBUG_ENABLED: bool = true;
+
     #[test_with::executable(npx)]
     fn test_markdownlint_markdown_1f615768d8e575c5() {
         let input = r#"# Hello world
@@ -44,8 +50,9 @@ mod test_markdownlint {
             &super::COMMANDS,
             snippet.path(),
             super::set_args,
-            0,
-            false,
+            TIMEOUT,
+            super::IS_STDIN,
+            DEBUG_ENABLED,
         )
         .expect("it to be successful")
         .1

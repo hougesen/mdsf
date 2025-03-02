@@ -16,8 +16,14 @@ pub fn set_args(
 
 pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("ktlint")];
 
+pub const IS_STDIN: bool = false;
+
 #[cfg(test)]
 mod test_ktlint {
+    const TIMEOUT: u64 = 0;
+
+    const DEBUG_ENABLED: bool = true;
+
     #[test_with::executable(ktlint)]
     fn test_ktlint_kotlin_65d99b8b0b9bf8e1() {
         let input = r#"            fun add(a:Int ,b:Int ):Int {
@@ -44,8 +50,9 @@ fun add(
             &super::COMMANDS,
             snippet.path(),
             super::set_args,
-            0,
-            false,
+            TIMEOUT,
+            super::IS_STDIN,
+            DEBUG_ENABLED,
         )
         .expect("it to be successful")
         .1

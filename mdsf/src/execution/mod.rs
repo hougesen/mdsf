@@ -14,7 +14,7 @@ use crate::{
         print_formatter_time,
     },
     tools::Tooling,
-    LineInfo, DEBUG,
+    LineInfo,
 };
 
 #[inline]
@@ -105,8 +105,9 @@ fn spawn_command(
     timeout: u64,
     is_stdin: bool,
     snippet_path: &std::path::Path,
+    debug_enabled: bool,
 ) -> Result<std::process::Output, MdsfError> {
-    if !DEBUG.load(core::sync::atomic::Ordering::Relaxed) {
+    if debug_enabled {
         cmd.stdout(std::process::Stdio::null());
         cmd.stderr(std::process::Stdio::null());
     }
@@ -150,6 +151,7 @@ pub fn execute_command(
     snippet_path: &std::path::Path,
     timeout: u64,
     is_stdin: bool,
+    debug_enabled: bool,
 ) -> Result<(bool, Option<String>), MdsfError> {
     if cmd.get_current_dir().is_none() {
         let binary_name = cmd.get_program();
@@ -161,13 +163,19 @@ pub fn execute_command(
         }
     }
 
-    let output = spawn_command(cmd, timeout, is_stdin, snippet_path);
+    let output = spawn_command(cmd, timeout, is_stdin, snippet_path, debug_enabled);
 
     handle_post_execution(output, snippet_path, is_stdin)
 }
 
 #[inline]
-pub fn format_snippet(config: &MdsfConfig, info: &LineInfo, code: &str, timeout: u64) -> String {
+pub fn format_snippet(
+    config: &MdsfConfig,
+    info: &LineInfo,
+    code: &str,
+    timeout: u64,
+    debug_enabled: bool,
+) -> String {
     let always_ran = config.languages.get("*");
 
     let language_formatters = config.languages.get(info.language).or_else(|| {
@@ -191,7 +199,9 @@ pub fn format_snippet(config: &MdsfConfig, info: &LineInfo, code: &str, timeout:
             let snippet_path = snippet.path();
 
             if let Some(formatters) = always_ran {
-                if let Ok(Some(formatted_code)) = formatters.format(snippet_path, info, timeout) {
+                if let Ok(Some(formatted_code)) =
+                    formatters.format(snippet_path, info, timeout, debug_enabled)
+                {
                     if language_formatters.is_none() {
                         let mut f = formatted_code.trim().to_owned();
 
@@ -203,7 +213,9 @@ pub fn format_snippet(config: &MdsfConfig, info: &LineInfo, code: &str, timeout:
             }
 
             if let Some(formatters) = language_formatters {
-                if let Ok(Some(formatted_code)) = formatters.format(snippet_path, info, timeout) {
+                if let Ok(Some(formatted_code)) =
+                    formatters.format(snippet_path, info, timeout, debug_enabled)
+                {
                     let mut f = formatted_code.trim().to_owned();
 
                     f.push('\n');
@@ -254,8 +266,9 @@ impl MdsfFormatter<Tooling> {
         snippet_path: &std::path::Path,
         info: &LineInfo,
         timeout: u64,
+        debug_enabled: bool,
     ) -> Result<Option<String>, MdsfError> {
-        Self::format_multiple(self, snippet_path, info, false, timeout)
+        Self::format_multiple(self, snippet_path, info, false, timeout, debug_enabled)
             .map(|(_should_continue, output)| output)
     }
 
@@ -266,6 +279,7 @@ impl MdsfFormatter<Tooling> {
         info: &LineInfo,
         nested: bool,
         timeout: u64,
+        debug_enabled: bool,
     ) -> Result<(bool, Option<String>), MdsfError> {
         match formatter {
             Self::Single(f) => {
@@ -275,7 +289,7 @@ impl MdsfFormatter<Tooling> {
 
                 let time = std::time::Instant::now();
 
-                let r = f.format_snippet(snippet_path, timeout);
+                let r = f.format_snippet(snippet_path, timeout, debug_enabled);
 
                 print_formatter_time(formatter_name, info, time.elapsed());
 
@@ -305,7 +319,7 @@ impl MdsfFormatter<Tooling> {
                 let mut r = Ok((true, None));
 
                 for f in formatters {
-                    r = Self::format_multiple(f, snippet_path, info, true, timeout);
+                    r = Self::format_multiple(f, snippet_path, info, true, timeout, debug_enabled);
 
                     if r.as_ref()
                         .is_ok_and(|(should_continue, _code)| !should_continue)
@@ -328,11 +342,12 @@ pub fn run_tools(
     set_args_fn: fn(std::process::Command, &std::path::Path) -> std::process::Command,
     timeout: u64,
     is_stdin: bool,
+    debug_enabled: bool,
 ) -> Result<(bool, Option<String>), MdsfError> {
     for (index, cmd) in command_types.iter().enumerate() {
         let cmd = set_args_fn(cmd.build(), file_path);
 
-        let execution_result = execute_command(cmd, file_path, timeout, is_stdin);
+        let execution_result = execute_command(cmd, file_path, timeout, is_stdin, debug_enabled);
 
         if index == command_types.len() - 1 {
             return execution_result;

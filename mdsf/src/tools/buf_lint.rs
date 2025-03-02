@@ -19,5 +19,4 @@ pub const COMMANDS: [CommandType; 3] = [
     CommandType::Npm("@bufbuild/buf"),
 ];
 
-#[cfg(test)]
-mod test_buf_lint {}
+pub const IS_STDIN: bool = false;

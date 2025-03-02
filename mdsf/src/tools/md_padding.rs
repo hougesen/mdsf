@@ -19,5 +19,4 @@ pub const COMMANDS: [CommandType; 3] = [
     CommandType::Npm("md-padding"),
 ];
 
-#[cfg(test)]
-mod test_md_padding {}
+pub const IS_STDIN: bool = false;

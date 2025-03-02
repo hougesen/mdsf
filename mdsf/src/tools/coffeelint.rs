@@ -20,5 +20,4 @@ pub const COMMANDS: [CommandType; 3] = [
     CommandType::Npm("@coffeelint/cli"),
 ];
 
-#[cfg(test)]
-mod test_coffeelint {}
+pub const IS_STDIN: bool = false;

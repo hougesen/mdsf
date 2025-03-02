@@ -19,5 +19,4 @@ pub const COMMANDS: [CommandType; 3] = [
     CommandType::Npm("csslint"),
 ];
 
-#[cfg(test)]
-mod test_csslint {}
+pub const IS_STDIN: bool = false;

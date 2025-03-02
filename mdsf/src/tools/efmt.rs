@@ -15,8 +15,14 @@ pub fn set_args(
 
 pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("efmt")];
 
+pub const IS_STDIN: bool = false;
+
 #[cfg(test)]
 mod test_efmt {
+    const TIMEOUT: u64 = 0;
+
+    const DEBUG_ENABLED: bool = true;
+
     #[test_with::executable(efmt)]
     fn test_efmt_erlang_d4d88e49805fdb39() {
         let input = r#"what_is(Erlang) ->
@@ -36,8 +42,9 @@ case Erlang of movie->[hello(mike,joe,robert),credits]; language->formatting_arg
             &super::COMMANDS,
             snippet.path(),
             super::set_args,
-            0,
-            false,
+            TIMEOUT,
+            super::IS_STDIN,
+            DEBUG_ENABLED,
         )
         .expect("it to be successful")
         .1

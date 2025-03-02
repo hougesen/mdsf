@@ -15,8 +15,14 @@ pub fn set_args(
 
 pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("google-java-format")];
 
+pub const IS_STDIN: bool = false;
+
 #[cfg(test)]
 mod test_google_java_format {
+    const TIMEOUT: u64 = 0;
+
+    const DEBUG_ENABLED: bool = true;
+
     #[test_with::executable(google-java-format)]
     fn test_google_java_format_java_9d3ffaedafc37e65() {
         let input = r#"class HelloWorld {
@@ -43,8 +49,9 @@ mod test_google_java_format {
             &super::COMMANDS,
             snippet.path(),
             super::set_args,
-            0,
-            false,
+            TIMEOUT,
+            super::IS_STDIN,
+            DEBUG_ENABLED,
         )
         .expect("it to be successful")
         .1

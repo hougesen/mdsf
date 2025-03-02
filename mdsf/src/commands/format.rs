@@ -35,8 +35,6 @@ fn determine_threads_to_use(argument: Option<usize>) -> usize {
 
 #[inline]
 pub fn run(args: FormatCommandArguments, dry_run: bool) -> Result<(), MdsfError> {
-    mdsf::DEBUG.swap(args.debug, core::sync::atomic::Ordering::Relaxed);
-
     let mut conf = if let Some(config_path) = args.config {
         MdsfConfig::load(config_path)
     } else {
@@ -67,6 +65,7 @@ pub fn run(args: FormatCommandArguments, dry_run: bool) -> Result<(), MdsfError>
             f.path(),
             &stdin_input,
             args.timeout.unwrap_or_default(),
+            args.debug,
         );
 
         if was_formatted {
@@ -114,6 +113,7 @@ pub fn run(args: FormatCommandArguments, dry_run: bool) -> Result<(), MdsfError>
                         dry_run,
                         config_cache_key_ref,
                         args.timeout.unwrap_or_default(),
+                        args.debug,
                     );
 
                     if was_formatted {

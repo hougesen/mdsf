@@ -15,5 +15,4 @@ pub fn set_args(
 
 pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("unimport")];
 
-#[cfg(test)]
-mod test_unimport {}
+pub const IS_STDIN: bool = false;

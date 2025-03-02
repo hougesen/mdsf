@@ -15,8 +15,14 @@ pub fn set_args(
 
 pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("hurlfmt")];
 
+pub const IS_STDIN: bool = false;
+
 #[cfg(test)]
 mod test_hurlfmt {
+    const TIMEOUT: u64 = 0;
+
+    const DEBUG_ENABLED: bool = true;
+
     #[test_with::executable(hurlfmt)]
     fn test_hurlfmt_hurl_854a543be0e12a7f() {
         let input = r#"  GET        https://example.ord/cats/123           "#;
@@ -33,8 +39,9 @@ mod test_hurlfmt {
             &super::COMMANDS,
             snippet.path(),
             super::set_args,
-            0,
-            false,
+            TIMEOUT,
+            super::IS_STDIN,
+            DEBUG_ENABLED,
         )
         .expect("it to be successful")
         .1

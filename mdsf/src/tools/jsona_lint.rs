@@ -15,5 +15,4 @@ pub fn set_args(
 
 pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("jsona")];
 
-#[cfg(test)]
-mod test_jsona_lint {}
+pub const IS_STDIN: bool = false;

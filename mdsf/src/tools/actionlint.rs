@@ -14,8 +14,14 @@ pub fn set_args(
 
 pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("actionlint")];
 
+pub const IS_STDIN: bool = false;
+
 #[cfg(test)]
 mod test_actionlint {
+    const TIMEOUT: u64 = 0;
+
+    const DEBUG_ENABLED: bool = true;
+
     #[test_with::executable(actionlint)]
     fn test_actionlint_yaml_da8378e9384e0b1f() {
         let input = r#"name: action
@@ -45,8 +51,9 @@ jobs:
             &super::COMMANDS,
             snippet.path(),
             super::set_args,
-            0,
-            false,
+            TIMEOUT,
+            super::IS_STDIN,
+            DEBUG_ENABLED,
         )
         .expect("it to be successful")
         .1

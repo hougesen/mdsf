@@ -17,8 +17,14 @@ pub fn set_args(
 
 pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("typos")];
 
+pub const IS_STDIN: bool = false;
+
 #[cfg(test)]
 mod test_typos {
+    const TIMEOUT: u64 = 0;
+
+    const DEBUG_ENABLED: bool = true;
+
     #[test_with::executable(typos)]
     fn test_typos_python_cba663e4f5e54b7f() {
         let input = r#"anouncement"#;
@@ -34,8 +40,9 @@ mod test_typos {
             &super::COMMANDS,
             snippet.path(),
             super::set_args,
-            0,
-            false,
+            TIMEOUT,
+            super::IS_STDIN,
+            DEBUG_ENABLED,
         )
         .expect("it to be successful")
         .1

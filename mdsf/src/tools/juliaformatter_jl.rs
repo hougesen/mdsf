@@ -16,8 +16,14 @@ pub fn set_args(
 
 pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("julia")];
 
+pub const IS_STDIN: bool = false;
+
 #[cfg(test)]
 mod test_juliaformatter_jl {
+    const TIMEOUT: u64 = 0;
+
+    const DEBUG_ENABLED: bool = true;
+
     #[test_with::executable(julia)]
     fn test_juliaformatter_jl_julia_6775294e3dc9244() {
         let input = r#"function add( a:: Int32,  b::Int32 )
@@ -40,8 +46,9 @@ end
             &super::COMMANDS,
             snippet.path(),
             super::set_args,
-            0,
-            false,
+            TIMEOUT,
+            super::IS_STDIN,
+            DEBUG_ENABLED,
         )
         .expect("it to be successful")
         .1

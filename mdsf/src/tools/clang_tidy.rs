@@ -15,5 +15,4 @@ pub fn set_args(
 
 pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("clang-tidy")];
 
-#[cfg(test)]
-mod test_clang_tidy {}
+pub const IS_STDIN: bool = false;

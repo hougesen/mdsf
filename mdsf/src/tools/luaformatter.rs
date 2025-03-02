@@ -15,8 +15,14 @@ pub fn set_args(
 
 pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("lua-format")];
 
+pub const IS_STDIN: bool = false;
+
 #[cfg(test)]
 mod test_luaformatter {
+    const TIMEOUT: u64 = 0;
+
+    const DEBUG_ENABLED: bool = true;
+
     #[test_with::executable(lua-format)]
     fn test_luaformatter_lua_df0e81b2c9a1a835() {
         let input = r#"
@@ -46,8 +52,9 @@ end
             &super::COMMANDS,
             snippet.path(),
             super::set_args,
-            0,
-            false,
+            TIMEOUT,
+            super::IS_STDIN,
+            DEBUG_ENABLED,
         )
         .expect("it to be successful")
         .1

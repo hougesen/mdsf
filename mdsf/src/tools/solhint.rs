@@ -21,5 +21,4 @@ pub const COMMANDS: [CommandType; 3] = [
     CommandType::Npm("solhint"),
 ];
 
-#[cfg(test)]
-mod test_solhint {}
+pub const IS_STDIN: bool = false;

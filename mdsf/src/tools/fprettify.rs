@@ -14,8 +14,14 @@ pub fn set_args(
 
 pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("fprettify")];
 
+pub const IS_STDIN: bool = false;
+
 #[cfg(test)]
 mod test_fprettify {
+    const TIMEOUT: u64 = 0;
+
+    const DEBUG_ENABLED: bool = true;
+
     #[test_with::executable(fprettify)]
     fn test_fprettify_fortran_e500b54621ef1a7a() {
         let input = r#"program demo
@@ -56,8 +62,9 @@ end program
             &super::COMMANDS,
             snippet.path(),
             super::set_args,
-            0,
-            false,
+            TIMEOUT,
+            super::IS_STDIN,
+            DEBUG_ENABLED,
         )
         .expect("it to be successful")
         .1

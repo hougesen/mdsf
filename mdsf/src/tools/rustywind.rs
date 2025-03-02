@@ -19,5 +19,4 @@ pub const COMMANDS: [CommandType; 3] = [
     CommandType::Npm("rustywind"),
 ];
 
-#[cfg(test)]
-mod test_rustywind {}
+pub const IS_STDIN: bool = false;

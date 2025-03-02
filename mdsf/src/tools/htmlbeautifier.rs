@@ -14,8 +14,14 @@ pub fn set_args(
 
 pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("htmlbeautifier")];
 
+pub const IS_STDIN: bool = false;
+
 #[cfg(test)]
 mod test_htmlbeautifier {
+    const TIMEOUT: u64 = 0;
+
+    const DEBUG_ENABLED: bool = true;
+
     #[test_with::executable(htmlbeautifier)]
     fn test_htmlbeautifier_html_7e86d833d3fbf4e3() {
         let input = r#"<div>
@@ -40,8 +46,9 @@ mod test_htmlbeautifier {
             &super::COMMANDS,
             snippet.path(),
             super::set_args,
-            0,
-            false,
+            TIMEOUT,
+            super::IS_STDIN,
+            DEBUG_ENABLED,
         )
         .expect("it to be successful")
         .1

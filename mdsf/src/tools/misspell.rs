@@ -15,5 +15,4 @@ pub fn set_args(
 
 pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("misspell")];
 
-#[cfg(test)]
-mod test_misspell {}
+pub const IS_STDIN: bool = false;

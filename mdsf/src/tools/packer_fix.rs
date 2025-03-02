@@ -15,5 +15,4 @@ pub fn set_args(
 
 pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("packer")];
 
-#[cfg(test)]
-mod test_packer_fix {}
+pub const IS_STDIN: bool = false;

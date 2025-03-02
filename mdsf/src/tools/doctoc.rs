@@ -18,5 +18,4 @@ pub const COMMANDS: [CommandType; 3] = [
     CommandType::Npm("doctoc"),
 ];
 
-#[cfg(test)]
-mod test_doctoc {}
+pub const IS_STDIN: bool = false;

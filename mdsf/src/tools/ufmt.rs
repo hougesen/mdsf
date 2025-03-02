@@ -15,5 +15,4 @@ pub fn set_args(
 
 pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("ufmt")];
 
-#[cfg(test)]
-mod test_ufmt {}
+pub const IS_STDIN: bool = false;

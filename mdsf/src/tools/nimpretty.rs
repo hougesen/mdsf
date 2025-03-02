@@ -14,8 +14,14 @@ pub fn set_args(
 
 pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("nimpretty")];
 
+pub const IS_STDIN: bool = false;
+
 #[cfg(test)]
 mod test_nimpretty {
+    const TIMEOUT: u64 = 0;
+
+    const DEBUG_ENABLED: bool = true;
+
     #[test_with::executable(nimpretty)]
     fn test_nimpretty_nim_2c41c79e1d74972a() {
         let input = r#"proc           add( a         :int , b:int )        : int =
@@ -34,8 +40,9 @@ mod test_nimpretty {
             &super::COMMANDS,
             snippet.path(),
             super::set_args,
-            0,
-            false,
+            TIMEOUT,
+            super::IS_STDIN,
+            DEBUG_ENABLED,
         )
         .expect("it to be successful")
         .1

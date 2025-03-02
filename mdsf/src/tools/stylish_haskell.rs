@@ -15,8 +15,14 @@ pub fn set_args(
 
 pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("stylish-haskell")];
 
+pub const IS_STDIN: bool = false;
+
 #[cfg(test)]
 mod test_stylish_haskell {
+    const TIMEOUT: u64 = 0;
+
+    const DEBUG_ENABLED: bool = true;
+
     #[test_with::executable(stylish-haskell)]
     fn test_stylish_haskell_haskell_9589647c4239e2dd() {
         let input = r#"addNumbers::Int->Int->Int
@@ -39,8 +45,9 @@ addNumbers a b = do
             &super::COMMANDS,
             snippet.path(),
             super::set_args,
-            0,
-            false,
+            TIMEOUT,
+            super::IS_STDIN,
+            DEBUG_ENABLED,
         )
         .expect("it to be successful")
         .1

@@ -16,5 +16,4 @@ pub fn set_args(
 
 pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("protolint")];
 
-#[cfg(test)]
-mod test_protolint {}
+pub const IS_STDIN: bool = false;

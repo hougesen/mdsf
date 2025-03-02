@@ -16,8 +16,14 @@ pub fn set_args(
 
 pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("ktfmt")];
 
+pub const IS_STDIN: bool = false;
+
 #[cfg(test)]
 mod test_ktfmt {
+    const TIMEOUT: u64 = 0;
+
+    const DEBUG_ENABLED: bool = true;
+
     #[test_with::executable(ktfmt)]
     fn test_ktfmt_kotlin_396c64cb15f3d642() {
         let input = r#"            fun add(a:Int ,b:Int ):Int {
@@ -39,8 +45,9 @@ mod test_ktfmt {
             &super::COMMANDS,
             snippet.path(),
             super::set_args,
-            0,
-            false,
+            TIMEOUT,
+            super::IS_STDIN,
+            DEBUG_ENABLED,
         )
         .expect("it to be successful")
         .1

@@ -16,5 +16,4 @@ pub fn set_args(
 
 pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("v")];
 
-#[cfg(test)]
-mod test_v_fmt {}
+pub const IS_STDIN: bool = false;

@@ -18,5 +18,4 @@ pub const COMMANDS: [CommandType; 2] = [
     CommandType::Direct("php-cs-fixer"),
 ];
 
-#[cfg(test)]
-mod test_php_cs_fixer_fix {}
+pub const IS_STDIN: bool = false;

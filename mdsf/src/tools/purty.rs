@@ -19,5 +19,4 @@ pub const COMMANDS: [CommandType; 3] = [
     CommandType::Npm("purty"),
 ];
 
-#[cfg(test)]
-mod test_purty {}
+pub const IS_STDIN: bool = false;

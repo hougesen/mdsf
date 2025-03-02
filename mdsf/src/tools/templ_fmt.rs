@@ -15,5 +15,4 @@ pub fn set_args(
 
 pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("templ")];
 
-#[cfg(test)]
-mod test_templ_fmt {}
+pub const IS_STDIN: bool = false;

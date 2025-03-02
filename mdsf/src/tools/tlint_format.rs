@@ -18,5 +18,4 @@ pub const COMMANDS: [CommandType; 2] = [
     CommandType::Direct("tlint"),
 ];
 
-#[cfg(test)]
-mod test_tlint_format {}
+pub const IS_STDIN: bool = false;

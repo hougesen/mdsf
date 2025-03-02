@@ -15,5 +15,4 @@ pub fn set_args(
 
 pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("sqruff")];
 
-#[cfg(test)]
-mod test_sqruff {}
+pub const IS_STDIN: bool = false;

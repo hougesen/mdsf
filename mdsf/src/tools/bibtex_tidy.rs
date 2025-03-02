@@ -19,5 +19,4 @@ pub const COMMANDS: [CommandType; 3] = [
     CommandType::Npm("bibtex-tidy"),
 ];
 
-#[cfg(test)]
-mod test_bibtex_tidy {}
+pub const IS_STDIN: bool = false;

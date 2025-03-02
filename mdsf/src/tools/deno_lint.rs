@@ -16,5 +16,4 @@ pub fn set_args(
 
 pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("deno")];
 
-#[cfg(test)]
-mod test_deno_lint {}
+pub const IS_STDIN: bool = false;

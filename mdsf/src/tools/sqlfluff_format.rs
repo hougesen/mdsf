@@ -17,8 +17,14 @@ pub fn set_args(
 
 pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("sqlfluff")];
 
+pub const IS_STDIN: bool = false;
+
 #[cfg(test)]
 mod test_sqlfluff_format {
+    const TIMEOUT: u64 = 0;
+
+    const DEBUG_ENABLED: bool = true;
+
     #[test_with::executable(sqlfluff)]
     fn test_sqlfluff_format_sql_55c68b000536eccf() {
         let input = r#"SELECT  *                  FROM  tbl
@@ -37,8 +43,9 @@ WHERE foo = 'bar';
             &super::COMMANDS,
             snippet.path(),
             super::set_args,
-            0,
-            false,
+            TIMEOUT,
+            super::IS_STDIN,
+            DEBUG_ENABLED,
         )
         .expect("it to be successful")
         .1

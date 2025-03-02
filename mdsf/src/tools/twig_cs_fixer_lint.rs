@@ -21,5 +21,4 @@ pub const COMMANDS: [CommandType; 2] = [
     CommandType::Direct("twig-cs-fixer"),
 ];
 
-#[cfg(test)]
-mod test_twig_cs_fixer_lint {}
+pub const IS_STDIN: bool = false;

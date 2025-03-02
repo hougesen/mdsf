@@ -17,5 +17,4 @@ pub const COMMANDS: [CommandType; 2] = [
     CommandType::Direct("twigcs"),
 ];
 
-#[cfg(test)]
-mod test_twigcs {}
+pub const IS_STDIN: bool = false;
