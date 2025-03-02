@@ -18,6 +18,9 @@
   "homepage": "https://github.com/davidanson/markdownlint-cli2",
   "languages": ["markdown"],
   "packages": {
+    "brew": {
+      "name": "markdownlint-cli2"
+    },
     "npm": "markdownlint-cli2"
   }
 }

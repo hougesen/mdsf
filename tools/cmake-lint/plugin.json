@@ -1,0 +1,16 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "cmake-lint",
+  "categories": ["linter"],
+  "commands": {
+    "": {
+      "arguments": ["$PATH"]
+    }
+  },
+  "description": "Lint CMake files",
+  "homepage": "https://cmake-format.readthedocs.io/en/latest/lint-usage.html",
+  "languages": ["cmake"],
+  "packages": {
+    "pip": "cmakelang"
+  }
+}

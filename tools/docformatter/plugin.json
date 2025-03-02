@@ -8,7 +8,7 @@
     }
   },
   "description": "Formats docstrings to follow PEP 257",
-  "homepage": "https://pypi.org/project/docformatter/",
+  "homepage": "https://github.com/PyCQA/docformatter",
   "languages": ["python"],
   "packages": {
     "pip": "docformatter"

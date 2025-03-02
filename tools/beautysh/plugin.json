@@ -21,7 +21,7 @@
   },
   "description": "A Bash beautifier for the masses",
   "disable_ci_tests": true,
-  "homepage": "https://pypi.org/project/beautysh/",
+  "homepage": "https://github.com/lovesegfault/beautysh",
   "languages": ["bash", "shell"],
   "packages": {
     "pip": "beautysh"

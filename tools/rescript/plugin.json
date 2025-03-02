@@ -15,7 +15,7 @@
     }
   },
   "description": "Formatter for ReScript",
-  "homepage": "https://rescript-lang.org/",
+  "homepage": "https://github.com/rescript-lang/rescript",
   "languages": ["rescript"],
   "packages": {
     "npm": "rescript"

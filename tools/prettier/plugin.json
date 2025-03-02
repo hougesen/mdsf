@@ -28,7 +28,21 @@
   },
   "description": "Prettier is an opinionated code formatter",
   "homepage": "https://github.com/prettier/prettier",
-  "languages": ["css", "html", "javascript", "json", "typescript"],
+  "languages": [
+    "angular",
+    "css",
+    "ember",
+    "graphql",
+    "handlebars",
+    "html",
+    "javascript",
+    "json",
+    "less",
+    "markdown",
+    "scss",
+    "typescript",
+    "vue"
+  ],
   "packages": {
     "npm": "prettier"
   }

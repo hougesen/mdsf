@@ -8,8 +8,10 @@
       "description": "Format d2 code"
     }
   },
-  "description": "Formatter for the d2 language",
+  "description": "A modern language that turns text to diagrams",
   "homepage": "https://d2lang.com/",
   "languages": ["d2"],
-  "packages": {}
+  "packages": {
+    "go": "oss.terrastruct.com/d2@latest"
+  }
 }

@@ -11,6 +11,9 @@
   "homepage": "https://dprint.dev/",
   "languages": [],
   "packages": {
+    "brew": {
+      "name": "dprint"
+    },
     "cargo": "dprint",
     "npm": "dprint"
   }

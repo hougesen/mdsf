@@ -14,6 +14,8 @@
     "brew": {
       "name": "protolint",
       "tap": "yoheimuta/protolint"
-    }
+    },
+    "go": "github.com/yoheimuta/protolint/cmd/protolint@latest",
+    "npm": "protolint"
   }
 }

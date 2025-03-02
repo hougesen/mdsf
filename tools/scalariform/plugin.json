@@ -10,5 +10,9 @@
   "description": "Scala source code formatter",
   "homepage": "https://github.com/scala-ide/scalariform",
   "languages": ["scala"],
-  "packages": {}
+  "packages": {
+    "brew": {
+      "name": "scalariform"
+    }
+  }
 }

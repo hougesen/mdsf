@@ -10,5 +10,10 @@
   "description": "CLI for HashiCorp Nomad",
   "homepage": "https://developer.hashicorp.com/nomad/docs/commands",
   "languages": ["hcl"],
-  "packages": {}
+  "packages": {
+    "brew": {
+      "name": "hashicorp/tap/nomad",
+      "tap": "hashicorp/tap"
+    }
+  }
 }

@@ -10,5 +10,9 @@
   "description": "Format Rego source files",
   "homepage": "https://www.openpolicyagent.org/docs/latest/cli/",
   "languages": ["rego"],
-  "packages": {}
+  "packages": {
+    "brew": {
+      "name": "opa"
+    }
+  }
 }

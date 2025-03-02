@@ -20,9 +20,12 @@
     }
   },
   "description": "An extremely fast Python linter and code formatter, written in Rust",
-  "homepage": "https://docs.astral.sh/ruff",
+  "homepage": "https://github.com/astral-sh/ruff",
   "languages": ["python"],
   "packages": {
+    "brew": {
+      "name": "ruff"
+    },
     "pip": "ruff"
   }
 }

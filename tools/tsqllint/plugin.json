@@ -11,6 +11,11 @@
   "homepage": "https://github.com/tsqllint/tsqllint",
   "languages": ["sql"],
   "packages": {
+    "brew": {
+      "name": "tsqllint",
+      "tap": "tsqllint/homebrew-tsqllint"
+    },
+    "dotnet": "TSQLLint",
     "npm": "tsqllint"
   }
 }
