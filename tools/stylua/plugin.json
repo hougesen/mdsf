@@ -18,6 +18,9 @@
   "homepage": "https://github.com/johnnymorganz/stylua",
   "languages": ["lua"],
   "packages": {
+    "brew": {
+      "name": "stylua"
+    },
     "cargo": "stylua",
     "npm": "@johnnymorganz/stylua-bin"
   }

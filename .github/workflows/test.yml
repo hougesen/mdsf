@@ -83,7 +83,7 @@ jobs:
       - name: autoflake
         run: ( ( which autoflake ) || ( ( which pipx && pipx install autoflake ) ) || ( echo "Unable to install tool" ) )
       - name: stylua
-        run: ( ( which stylua ) || ( ( which npm && npm i -g @johnnymorganz/stylua-bin ) || ( which cargo && ( cargo binstall stylua || cargo install stylua ) ) ) || ( echo "Unable to install tool" ) )
+        run: ( ( which stylua ) || ( ( which npm && npm i -g @johnnymorganz/stylua-bin ) || ( which cargo && ( cargo binstall stylua || cargo install stylua ) ) || ( which brew &&  brew install stylua ) ) || ( echo "Unable to install tool" ) )
       - name: tofu
         run: ( ( which tofu ) || ( ( which brew &&  brew install opentofu ) ) || ( echo "Unable to install tool" ) )
       - name: alejandra
