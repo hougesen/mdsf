@@ -1533,7 +1533,7 @@
           "enum": ["ziggy:fmt"]
         },
         {
-          "description": "Executables, uberjar, and library to beautifully format Clojure and Clojurescript source code and s-expressions\n\n[https://github.com/kkinnear/zprint](https://github.com/kkinnear/zprint)\n\n`zprint -w $PATH`",
+          "description": "Executables beautifully format Clojure and Clojurescript source code and s-expressions\n\n[https://github.com/kkinnear/zprint](https://github.com/kkinnear/zprint)\n\n`zprint -w $PATH`",
           "type": "string",
           "enum": ["zprint"]
         }

@@ -664,7 +664,7 @@ mdsf init
 | [yq](https://github.com/mikefarah/yq)                                                | yq is a portable command-line YAML, JSON, XML, CSV, TOML and properties processor                                                             | `formatter`           | `yaml`                                                                    |
 | [zig](https://ziglang.org/)                                                          | Reformat Zig source into canonical form                                                                                                       | `formatter`           | `zig`                                                                     |
 | [ziggy](https://ziggy-lang.io/)                                                      | Formats Ziggy documents and Ziggy schemas                                                                                                     | `formatter`           | `ziggy`                                                                   |
-| [zprint](https://github.com/kkinnear/zprint)                                         | Executables, uberjar, and library to beautifully format Clojure and Clojurescript source code and s-expressions                               | `formatter`           | `clojure`, `clojurescript`                                                |
+| [zprint](https://github.com/kkinnear/zprint)                                         | Executables beautifully format Clojure and Clojurescript source code and s-expressions                                                        | `formatter`           | `clojure`, `clojurescript`                                                |
 
 <!-- END_SECTION:supported-tools -->
 

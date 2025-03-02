@@ -2654,7 +2654,7 @@ pub enum Tooling {
     ZiggyFmt,
 
     #[serde(rename = "zprint")]
-    /// Executables, uberjar, and library to beautifully format Clojure and Clojurescript source code and s-expressions
+    /// Executables beautifully format Clojure and Clojurescript source code and s-expressions
     ///
     /// [https://github.com/kkinnear/zprint](https://github.com/kkinnear/zprint)
     ///

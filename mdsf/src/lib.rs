@@ -116,7 +116,9 @@ pub fn format_file(
 
                     output.push_str(&formatted);
 
-                    output.push_str(&format!("\n{indentation}```"));
+                    output.push('\n');
+                    output.push_str(&indentation);
+                    output.push_str("```");
                 } else {
                     output.push_str(line);
                     output.push_str(&code_snippet);
