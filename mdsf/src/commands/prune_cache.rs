@@ -1,6 +1,9 @@
 use std::env::current_dir;
 
-use mdsf::{caching::get_config_hash, cli::CachePruneArguments, config::MdsfConfig};
+use mdsf::{
+    caching::get_config_hash, cli::CachePruneArguments, config::MdsfConfig, get_project_dir,
+    CACHE_DIR,
+};
 
 #[inline]
 fn get_config() -> MdsfConfig {
@@ -12,7 +15,7 @@ fn get_config() -> MdsfConfig {
 
 #[inline]
 pub fn run(args: &CachePruneArguments) {
-    let cache_dir = std::path::PathBuf::from(".mdsf-cache/caches");
+    let cache_dir = get_project_dir().join(CACHE_DIR);
 
     if cache_dir.try_exists().is_ok_and(|exists| exists) {
         if args.all {

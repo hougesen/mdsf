@@ -203,7 +203,7 @@ Options:
           Defaults to 0 (auto).
 
       --cache
-          Only format changed codeblocks
+          Cache results
 
       --timeout <TIMEOUT>
           Tool timeout in seconds

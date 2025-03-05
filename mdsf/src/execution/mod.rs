@@ -1,4 +1,4 @@
-use std::{ffi::OsStr, io::Write, str::FromStr};
+use std::{ffi::OsStr, io::Write};
 
 use process_control::{ChildExt, Control};
 use tempfile::NamedTempFile;
@@ -8,6 +8,7 @@ use crate::{
     config::MdsfConfig,
     error::MdsfError,
     fttype::get_file_extension,
+    get_project_dir,
     runners::CommandType,
     terminal::{
         print_binary_not_in_path, print_error_formatting, print_formatter_info,
@@ -19,10 +20,10 @@ use crate::{
 
 #[inline]
 fn setup_temp_dir() -> std::io::Result<()> {
-    std::fs::create_dir_all(".mdsf-cache/caches")?;
+    let dir = get_project_dir();
 
     std::fs::write(
-        ".mdsf-cache/.gitignore",
+        dir.join(".gitignore"),
         "Automatically created by mdsf.
 .gitignore
 caches
@@ -37,6 +38,8 @@ caches
 pub fn setup_snippet(code: &str, file_ext: &str) -> std::io::Result<NamedTempFile> {
     let mut b = tempfile::Builder::new();
 
+    let dir = get_project_dir();
+
     b.rand_bytes(12).suffix(file_ext).prefix(
         // ktlint wants PascalCase file names
         if file_ext == get_file_extension("kotlin") {
@@ -46,13 +49,11 @@ pub fn setup_snippet(code: &str, file_ext: &str) -> std::io::Result<NamedTempFil
         },
     );
 
-    if !std::path::PathBuf::from_str(".mdsf-cache/.gitignore")
-        .is_ok_and(|p| p.try_exists().unwrap_or_default())
-    {
+    if !dir.join(".gitignore").try_exists().unwrap_or_default() {
         setup_temp_dir()?;
     }
 
-    let mut f = b.tempfile_in(".mdsf-cache")?;
+    let mut f = b.tempfile_in(&dir)?;
 
     f.write_all(code.as_bytes())?;
     f.flush()?;

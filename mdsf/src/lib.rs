@@ -25,6 +25,24 @@ mod tools;
 
 const GO_TEMPORARY_PACKAGE_NAME: &str = "package mdsfformattertemporarynamespace\n";
 
+pub const CACHE_DIR: &str = "caches/";
+
+#[inline]
+pub fn get_project_dir() -> std::path::PathBuf {
+    let project_dir = directories::ProjectDirs::from("dk.mhouge.mdsf", "mdsf", "mdsf").map_or_else(
+        || std::path::PathBuf::from(".mdsf/"),
+        |dir| dir.cache_dir().to_path_buf(),
+    );
+
+    let _ = std::fs::create_dir_all(&project_dir);
+
+    let cache_dir = project_dir.join(CACHE_DIR);
+
+    let _ = std::fs::create_dir_all(&cache_dir);
+
+    project_dir
+}
+
 #[inline]
 fn remove_go_package(snippet: String) -> String {
     if snippet.contains(GO_TEMPORARY_PACKAGE_NAME) {
@@ -157,7 +175,9 @@ pub fn format_file(
 
 #[inline]
 fn save_file_cache(config_key: &str, file_key: &str, contents: &str) -> std::io::Result<()> {
-    let dir = std::path::PathBuf::from(format!(".mdsf-cache/caches/{config_key}"));
+    let dir = get_project_dir()
+        .join(CACHE_DIR)
+        .join(format!("{config_key}/"));
 
     std::fs::create_dir_all(&dir)?;
 
@@ -174,7 +194,7 @@ fn format_or_use_cache(
     debug_enabled: bool,
 ) -> (String, bool, bool) {
     if let Some((config, file)) = &cache_key {
-        let dir = std::path::PathBuf::from(format!(".mdsf-cache/caches/{config}/"));
+        let dir = get_project_dir().join(CACHE_DIR).join(format!("{config}/"));
 
         let _ = std::fs::create_dir_all(&dir);
 

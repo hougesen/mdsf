@@ -62,7 +62,7 @@ pub struct FormatCommandArguments {
     #[arg(long)]
     pub threads: Option<usize>,
 
-    /// Only format changed codeblocks
+    /// Cache results
     #[arg(long, default_value_t = false)]
     pub cache: bool,
 
