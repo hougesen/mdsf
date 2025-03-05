@@ -31,7 +31,7 @@ pub enum Commands {
     /// Generate shell completion.
     Completions(CompletionsCommandArguments),
 
-    /// Remove old caches.
+    /// Remove stale caches.
     CachePrune(CachePruneArguments),
 }
 
@@ -41,7 +41,7 @@ pub struct FormatCommandArguments {
     #[arg()]
     pub input: Vec<std::path::PathBuf>,
 
-    /// Read input from stdin and write output to stdout  
+    /// Read input from stdin and write output to stdout
     #[arg(long, default_value_t = false)]
     pub stdin: bool,
 
@@ -79,7 +79,7 @@ pub struct VerifyCommandArguments {
     #[arg()]
     pub input: Vec<std::path::PathBuf>,
 
-    /// Read input from stdin and write output to stdout  
+    /// Read input from stdin and write output to stdout
     #[arg(long, default_value_t = false)]
     pub stdin: bool,
 
@@ -186,7 +186,7 @@ pub struct CompletionsCommandArguments {
 
 #[derive(Args, Debug)]
 pub struct CachePruneArguments {
-    /// Remove caches that aren't state (based on config).
+    /// Remove all caches
     #[arg(long, default_value_t = false)]
     pub all: bool,
 }

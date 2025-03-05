@@ -9,9 +9,9 @@ pub const CACHE_DIR: &str = "caches/";
 pub struct CacheEntry {
     config_key: String,
 
-    file_path_key: String,
+    file_key: String,
 
-    file_data: String,
+    content_ky: String,
 }
 
 impl CacheEntry {
@@ -19,8 +19,8 @@ impl CacheEntry {
     pub fn new(config_key: String, file_path: &std::path::Path, file_content: &str) -> Self {
         Self {
             config_key,
-            file_path_key: hash_text_block(&file_path.to_string_lossy()),
-            file_data: hash_text_block(file_content),
+            file_key: hash_text_block(&file_path.to_string_lossy()),
+            content_ky: hash_text_block(file_content),
         }
     }
 
@@ -28,19 +28,23 @@ impl CacheEntry {
     fn to_path(&self) -> std::path::PathBuf {
         get_project_dir().join(CACHE_DIR).join(format!(
             "{}/{}/{}",
-            self.config_key, self.file_path_key, self.file_data
+            self.config_key, self.file_key, self.content_ky
         ))
     }
 
     #[inline]
     pub fn get(&self) -> Option<String> {
-        std::fs::read_to_string(self.to_path()).ok()
+        let read = std::fs::read_to_string(self.to_path());
+
+        read.ok()
     }
 
     pub fn set(&self, content: &str) -> std::io::Result<()> {
         let p = self.to_path();
 
-        std::fs::create_dir_all(&p)?;
+        if let Some(parent) = p.parent() {
+            std::fs::create_dir_all(parent)?;
+        }
 
         std::fs::write(p, content)
     }
