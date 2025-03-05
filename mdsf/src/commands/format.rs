@@ -51,8 +51,6 @@ pub fn run(args: FormatCommandArguments, dry_run: bool) -> Result<(), MdsfError>
         None
     };
 
-    mdsf::runners::set_javascript_runtime(conf.javascript_runtime);
-
     let changed_file_count = Arc::new(AtomicU32::new(0));
 
     if args.stdin {

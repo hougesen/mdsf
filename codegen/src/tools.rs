@@ -231,6 +231,7 @@ impl Tool {
 {INDENT}{INDENT}{INDENT}TIMEOUT,
 {INDENT}{INDENT}{INDENT}super::IS_STDIN,
 {INDENT}{INDENT}{INDENT}DEBUG_ENABLED,
+{INDENT}{INDENT}{INDENT}crate::runners::JavaScriptRuntime::default(),
 {INDENT}{INDENT})
 {INDENT}{INDENT}.expect(\"it to be successful\")
 {INDENT}{INDENT}.1
@@ -423,7 +424,10 @@ impl Tooling {
     #[inline]
     pub fn format_snippet(
         self,
-        _snippet_path: &std::path::Path,
+        snippet_path: &std::path::Path,
+        timeout: u64,
+        debug_enabled: bool,
+        javascript_runtime: crate::runners::JavaScriptRuntime,
     ) -> Result<(bool, Option<String>), crate::error::MdsfError> {
         todo!()
     }
@@ -545,10 +549,11 @@ impl Tooling {{
 {INDENT}{INDENT}snippet_path: &std::path::Path,
 {INDENT}{INDENT}timeout: u64,
 {INDENT}{INDENT}debug_enabled: bool,
+{INDENT}{INDENT}javascript_runtime: crate::runners::JavaScriptRuntime,
 {INDENT}) -> Result<(bool, Option<String>), crate::error::MdsfError> {{
 {INDENT}{INDENT}let (commands, set_args_fn, is_stdin): (
 {INDENT}{INDENT}{INDENT}&[crate::runners::CommandType],
-{INDENT}{INDENT}{INDENT}fn(std::process::Command, &std::path::Path) -> std::process::Command,
+{INDENT}{INDENT}{INDENT}crate::execution::SetArgsFn,
 {INDENT}{INDENT}{INDENT}bool,
 {INDENT}{INDENT}) = match self {{
 {}
@@ -561,6 +566,7 @@ impl Tooling {{
 {INDENT}{INDENT}{INDENT}timeout,
 {INDENT}{INDENT}{INDENT}is_stdin,
 {INDENT}{INDENT}{INDENT}debug_enabled,
+{INDENT}{INDENT}{INDENT}javascript_runtime,
 {INDENT}{INDENT})
 {INDENT}}}
 }}

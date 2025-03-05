@@ -1,11 +1,7 @@
-use core::sync::atomic::{AtomicU8, Ordering};
-
 use bun::new_bunx_cmd;
 use deno::new_deno_cmd;
 use node::new_npx_cmd;
 use pnpm::new_pnpm_dlx_cmd;
-
-use crate::terminal::print_unknown_javascript_runtime;
 
 mod bun;
 mod deno;
@@ -47,60 +43,8 @@ impl core::fmt::Display for JavaScriptRuntime {
     }
 }
 
-static RUNTIME_FLAG: AtomicU8 = AtomicU8::new(0);
-
-const JAVASCRIPT_RUNTIME_NODE: u8 = 0;
-const JAVASCRIPT_RUNTIME_BUN: u8 = 1;
-const JAVASCRIPT_RUNTIME_DENO: u8 = 2;
-const JAVASCRIPT_RUNTIME_PNPM: u8 = 3;
-
-impl From<JavaScriptRuntime> for u8 {
-    #[inline]
-    fn from(value: JavaScriptRuntime) -> Self {
-        match value {
-            JavaScriptRuntime::Bun => JAVASCRIPT_RUNTIME_BUN,
-            JavaScriptRuntime::Deno => JAVASCRIPT_RUNTIME_DENO,
-            JavaScriptRuntime::Node => JAVASCRIPT_RUNTIME_NODE,
-            JavaScriptRuntime::Pnpm => JAVASCRIPT_RUNTIME_PNPM,
-        }
-    }
-}
-
-impl TryFrom<u8> for JavaScriptRuntime {
-    type Error = ();
-
-    #[inline]
-    fn try_from(value: u8) -> Result<Self, Self::Error> {
-        match value {
-            JAVASCRIPT_RUNTIME_BUN => Ok(Self::Bun),
-            JAVASCRIPT_RUNTIME_DENO => Ok(Self::Deno),
-            JAVASCRIPT_RUNTIME_NODE => Ok(Self::Node),
-            JAVASCRIPT_RUNTIME_PNPM => Ok(Self::Pnpm),
-            _ => Err(()),
-        }
-    }
-}
-
 #[inline]
-pub fn set_javascript_runtime(runtime: JavaScriptRuntime) {
-    RUNTIME_FLAG.store(runtime.into(), Ordering::Relaxed);
-}
-
-#[inline]
-fn get_javascript_runtime() -> JavaScriptRuntime {
-    let value = RUNTIME_FLAG.load(Ordering::Relaxed);
-
-    JavaScriptRuntime::try_from(value).unwrap_or_else(|()| {
-        let fallback = JavaScriptRuntime::default();
-        print_unknown_javascript_runtime(value, fallback);
-        fallback
-    })
-}
-
-#[inline]
-fn setup_npm_script(package_name: &str) -> std::process::Command {
-    let runtime = get_javascript_runtime();
-
+fn setup_npm_script(runtime: JavaScriptRuntime, package_name: &str) -> std::process::Command {
     match runtime {
         JavaScriptRuntime::Bun => new_bunx_cmd(package_name),
         JavaScriptRuntime::Deno => new_deno_cmd(package_name),
@@ -140,12 +84,12 @@ pub enum CommandType {
 
 impl CommandType {
     #[inline]
-    pub fn build(&self) -> std::process::Command {
+    pub fn build(&self, javascript_runtime: JavaScriptRuntime) -> std::process::Command {
         match self {
             Self::BinaryPath(path, binary_name) => setup_command_from_path(path, binary_name),
             Self::Direct(binary_name) => std::process::Command::new(binary_name),
             Self::NodeModules(binary_name) => setup_node_modules_command(binary_name),
-            Self::Npm(package_name) => setup_npm_script(package_name),
+            Self::Npm(package_name) => setup_npm_script(javascript_runtime, package_name),
             Self::PhpVendor(binary_name) => setup_php_vender_bin_command(binary_name),
         }
     }

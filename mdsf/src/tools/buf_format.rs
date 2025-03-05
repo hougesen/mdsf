@@ -51,6 +51,7 @@ mod test_buf_format {
             TIMEOUT,
             super::IS_STDIN,
             DEBUG_ENABLED,
+            crate::runners::JavaScriptRuntime::default(),
         )
         .expect("it to be successful")
         .1

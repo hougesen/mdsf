@@ -91,6 +91,7 @@ pub module Delay #( // visibility control by `pub` keyword
             TIMEOUT,
             super::IS_STDIN,
             DEBUG_ENABLED,
+            crate::runners::JavaScriptRuntime::default(),
         )
         .expect("it to be successful")
         .1
