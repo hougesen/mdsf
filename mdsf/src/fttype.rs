@@ -30,3 +30,15 @@ fn fallback_file_extension(language: &str) -> Option<&'static str> {
         _ => None,
     }
 }
+
+#[cfg(test)]
+mod test_get_file_extension {
+    use crate::fttype::get_file_extension;
+
+    #[test]
+    fn test_input_starts_with_dot() {
+        let input = ".custom_file_extension";
+
+        assert_eq!(input, get_file_extension(input));
+    }
+}
