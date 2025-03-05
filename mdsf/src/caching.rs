@@ -27,16 +27,17 @@ impl CacheEntry {
     #[inline]
     fn to_path(&self) -> std::path::PathBuf {
         get_project_dir().join(CACHE_DIR).join(format!(
-            "{}/{}/{}",
-            self.config_key, self.file_key, self.content_ky
+            "{}/{}/{}/{}",
+            env!("CARGO_PKG_VERSION"),
+            self.config_key,
+            self.file_key,
+            self.content_ky
         ))
     }
 
     #[inline]
     pub fn get(&self) -> Option<String> {
-        let read = std::fs::read_to_string(self.to_path());
-
-        read.ok()
+        std::fs::read_to_string(self.to_path()).ok()
     }
 
     pub fn set(&self, content: &str) -> std::io::Result<()> {
