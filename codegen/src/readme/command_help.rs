@@ -1,4 +1,4 @@
-use crate::readme::update_markdown_section;
+use crate::markdown::update_markdown_section;
 
 fn execute_command(name: &str) -> std::io::Result<std::process::Output> {
     std::process::Command::new("cargo").arg("build").output()?;

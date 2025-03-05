@@ -10,8 +10,7 @@ const fn is_false(b: &bool) -> bool {
     !(*b)
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Hash)]
-#[cfg_attr(test, derive(Debug, PartialEq, Eq))]
+#[derive(serde::Serialize, serde::Deserialize, Hash, Debug, PartialEq, Eq)]
 #[cfg_attr(feature = "json-schema", derive(schemars::JsonSchema))]
 pub struct MdsfConfig {
     #[serde(rename = "$schema", default = "default_schema_location")]

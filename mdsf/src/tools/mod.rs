@@ -300,8 +300,7 @@ pub mod zig_fmt;
 pub mod ziggy_fmt;
 pub mod zprint;
 
-#[derive(serde::Serialize, serde::Deserialize, Hash, Clone, Copy)]
-#[cfg_attr(test, derive(Debug, PartialEq, Eq))]
+#[derive(serde::Serialize, serde::Deserialize, Hash, Clone, Copy, Debug, PartialEq, Eq)]
 #[cfg_attr(feature = "json-schema", derive(schemars::JsonSchema))]
 pub enum Tooling {
     #[serde(rename = "actionlint")]

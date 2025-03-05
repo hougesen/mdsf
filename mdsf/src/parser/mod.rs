@@ -2,7 +2,7 @@ use core::{iter::Enumerate, str::Lines};
 
 use regex::Regex;
 
-use crate::GO_TEMPORARY_PACKAGE_NAME;
+const GO_TEMPORARY_PACKAGE_NAME: &str = "package mdsfformattertemporarynamespace\n";
 
 #[inline]
 pub fn parse_generic_codeblock(lines: &mut Enumerate<Lines>) -> (bool, String, usize) {
@@ -42,6 +42,29 @@ pub fn parse_go_codeblock(lines: &mut Enumerate<Lines>) -> (bool, String, usize)
 // TODO: check for multiline comments
 pub static GO_PACKAGE_RE: std::sync::LazyLock<Regex> =
     std::sync::LazyLock::new(|| Regex::new(r"^\s*package\s+\w").unwrap());
+
+#[inline]
+pub fn remove_go_package(snippet: String) -> String {
+    if snippet.contains(GO_TEMPORARY_PACKAGE_NAME) {
+        snippet.replace(GO_TEMPORARY_PACKAGE_NAME, "")
+    } else {
+        snippet
+    }
+}
+
+#[inline]
+pub fn indent_codeblock(indentation: &str, snippet: String) -> String {
+    if indentation.is_empty() {
+        snippet
+    } else {
+        snippet
+            .lines()
+            .map(|line| format!("{indentation}{line}"))
+            .collect::<Vec<_>>()
+            // TODO: keep original line endings
+            .join("\n")
+    }
+}
 
 #[cfg(test)]
 mod test_go_package_re {
