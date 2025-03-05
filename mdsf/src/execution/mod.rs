@@ -362,11 +362,13 @@ impl MdsfFormatter<Tooling> {
     }
 }
 
+pub type SetArgsFn = fn(std::process::Command, &std::path::Path) -> std::process::Command;
+
 #[inline]
 pub fn run_tools(
     command_types: &[CommandType],
     file_path: &std::path::Path,
-    set_args_fn: fn(std::process::Command, &std::path::Path) -> std::process::Command,
+    set_args_fn: SetArgsFn,
     timeout: u64,
     is_stdin: bool,
     debug_enabled: bool,

@@ -2700,7 +2700,7 @@ impl Tooling {
     ) -> Result<(bool, Option<String>), crate::error::MdsfError> {
         let (commands, set_args_fn, is_stdin): (
             &[crate::runners::CommandType],
-            fn(std::process::Command, &std::path::Path) -> std::process::Command,
+            crate::execution::SetArgsFn,
             bool,
         ) = match self {
             Self::Actionlint => (

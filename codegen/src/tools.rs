@@ -553,7 +553,7 @@ impl Tooling {{
 {INDENT}) -> Result<(bool, Option<String>), crate::error::MdsfError> {{
 {INDENT}{INDENT}let (commands, set_args_fn, is_stdin): (
 {INDENT}{INDENT}{INDENT}&[crate::runners::CommandType],
-{INDENT}{INDENT}{INDENT}fn(std::process::Command, &std::path::Path) -> std::process::Command,
+{INDENT}{INDENT}{INDENT}crate::execution::SetArgsFn,
 {INDENT}{INDENT}{INDENT}bool,
 {INDENT}{INDENT}) = match self {{
 {}
