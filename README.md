@@ -157,7 +157,7 @@ Commands:
   verify       Verify files are formatted
   init         Create a new mdsf config
   completions  Generate shell completion
-  cache-prune  Remove stale caches
+  cache-prune  Remove caches
   help         Print this message or the help of the given subcommand(s)
 
 Options:

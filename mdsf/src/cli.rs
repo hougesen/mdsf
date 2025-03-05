@@ -31,8 +31,8 @@ pub enum Commands {
     /// Generate shell completion.
     Completions(CompletionsCommandArguments),
 
-    /// Remove stale caches.
-    CachePrune(CachePruneArguments),
+    /// Remove caches.
+    CachePrune,
 }
 
 #[derive(Args, Debug)]
@@ -185,11 +185,7 @@ pub struct CompletionsCommandArguments {
 }
 
 #[derive(Args, Debug)]
-pub struct CachePruneArguments {
-    /// Remove all caches
-    #[arg(long, default_value_t = false)]
-    pub all: bool,
-}
+pub struct CachePruneArguments {}
 
 #[inline]
 pub fn read_stdin() -> std::io::Result<String> {
