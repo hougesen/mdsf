@@ -3618,7 +3618,7 @@ impl Tooling {
             timeout,
             is_stdin,
             debug_enabled,
-            crate::runners::JavaScriptRuntime::default(),
+            javascript_runtime,
         )
     }
 }

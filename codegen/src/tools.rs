@@ -231,6 +231,7 @@ impl Tool {
 {INDENT}{INDENT}{INDENT}TIMEOUT,
 {INDENT}{INDENT}{INDENT}super::IS_STDIN,
 {INDENT}{INDENT}{INDENT}DEBUG_ENABLED,
+{INDENT}{INDENT}{INDENT}crate::runners::JavaScriptRuntime::default(),
 {INDENT}{INDENT})
 {INDENT}{INDENT}.expect(\"it to be successful\")
 {INDENT}{INDENT}.1

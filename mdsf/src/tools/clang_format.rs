@@ -51,6 +51,7 @@ mod test_clang_format {
             TIMEOUT,
             super::IS_STDIN,
             DEBUG_ENABLED,
+            crate::runners::JavaScriptRuntime::default(),
         )
         .expect("it to be successful")
         .1
@@ -80,6 +81,7 @@ mod test_clang_format {
             TIMEOUT,
             super::IS_STDIN,
             DEBUG_ENABLED,
+            crate::runners::JavaScriptRuntime::default(),
         )
         .expect("it to be successful")
         .1
@@ -112,6 +114,7 @@ mod test_clang_format {
             TIMEOUT,
             super::IS_STDIN,
             DEBUG_ENABLED,
+            crate::runners::JavaScriptRuntime::default(),
         )
         .expect("it to be successful")
         .1
@@ -144,6 +147,7 @@ mod test_clang_format {
             TIMEOUT,
             super::IS_STDIN,
             DEBUG_ENABLED,
+            crate::runners::JavaScriptRuntime::default(),
         )
         .expect("it to be successful")
         .1
@@ -176,6 +180,7 @@ mod test_clang_format {
             TIMEOUT,
             super::IS_STDIN,
             DEBUG_ENABLED,
+            crate::runners::JavaScriptRuntime::default(),
         )
         .expect("it to be successful")
         .1
@@ -216,6 +221,7 @@ class Adder {
             TIMEOUT,
             super::IS_STDIN,
             DEBUG_ENABLED,
+            crate::runners::JavaScriptRuntime::default(),
         )
         .expect("it to be successful")
         .1
@@ -253,6 +259,7 @@ class Adder {
             TIMEOUT,
             super::IS_STDIN,
             DEBUG_ENABLED,
+            crate::runners::JavaScriptRuntime::default(),
         )
         .expect("it to be successful")
         .1
@@ -285,6 +292,7 @@ class Adder {
             TIMEOUT,
             super::IS_STDIN,
             DEBUG_ENABLED,
+            crate::runners::JavaScriptRuntime::default(),
         )
         .expect("it to be successful")
         .1
