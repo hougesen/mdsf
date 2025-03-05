@@ -1,3 +1,5 @@
+use std::sync::OnceLock;
+
 use caching::hash_text_block;
 use terminal::{print_error_reading_file, print_error_saving_file};
 
@@ -27,12 +29,16 @@ const GO_TEMPORARY_PACKAGE_NAME: &str = "package mdsfformattertemporarynamespace
 
 pub const CACHE_DIR: &str = "caches/";
 
+static MDSF_PROJECT_DIR: OnceLock<std::path::PathBuf> = OnceLock::new();
+
 #[inline]
-pub fn get_project_dir() -> std::path::PathBuf {
-    let project_dir = directories::ProjectDirs::from("dk.mhouge.mdsf", "mdsf", "mdsf").map_or_else(
-        || std::path::PathBuf::from(".mdsf/"),
-        |dir| dir.cache_dir().to_path_buf(),
-    );
+pub fn get_project_dir() -> &'static std::path::Path {
+    let project_dir = MDSF_PROJECT_DIR.get_or_init(|| {
+        directories::ProjectDirs::from("dk.mhouge.mdsf", "mdsf", "mdsf").map_or_else(
+            || std::path::PathBuf::from(".mdsf/"),
+            |dir| dir.cache_dir().to_path_buf(),
+        )
+    });
 
     let _ = std::fs::create_dir_all(&project_dir);
 
@@ -40,7 +46,7 @@ pub fn get_project_dir() -> std::path::PathBuf {
 
     let _ = std::fs::create_dir_all(&cache_dir);
 
-    project_dir
+    &project_dir
 }
 
 #[inline]
