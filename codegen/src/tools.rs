@@ -413,8 +413,8 @@ pub fn generate(plugins: &[Tool]) -> anyhow::Result<Vec<GeneratedCommand>> {
 
     let _ = std::fs::create_dir_all(folder);
 
-    let clean_mod_file = "#[derive(serde::Serialize, serde::Deserialize, Hash, Clone, Copy)]
-#[cfg_attr(test, derive(Debug, PartialEq, Eq))]
+    let clean_mod_file =
+        "#[derive(serde::Serialize, serde::Deserialize, Hash, Clone, Copy, Debug, PartialEq, Eq)]
 #[cfg_attr(feature = \"json-schema\", derive(schemars::JsonSchema))]
 pub enum Tooling {}
 
@@ -531,8 +531,7 @@ impl AsRef<str> for Tooling {
         "{GENERATED_FILE_COMMENT}
 {}
 
-#[derive(serde::Serialize, serde::Deserialize, Hash, Clone, Copy)]
-#[cfg_attr(test, derive(Debug, PartialEq, Eq))]
+#[derive(serde::Serialize, serde::Deserialize, Hash, Clone, Copy, Debug, PartialEq, Eq)]
 #[cfg_attr(feature = \"json-schema\", derive(schemars::JsonSchema))]
 pub enum Tooling {{
 {}

@@ -7,20 +7,20 @@ use crate::{config::MdsfConfig, get_project_dir};
 pub const CACHE_DIR: &str = "caches/";
 
 pub struct CacheEntry {
-    config_key: String,
+    config_hash: String,
 
-    file_key: String,
+    file_path_hash: String,
 
-    content_ky: String,
+    file_content_hash: String,
 }
 
 impl CacheEntry {
     #[inline]
-    pub fn new(config_key: String, file_path: &std::path::Path, file_content: &str) -> Self {
+    pub fn new(config_hash: String, file_path: &std::path::Path, file_content: &str) -> Self {
         Self {
-            config_key,
-            file_key: hash_text_block(&file_path.to_string_lossy()),
-            content_ky: hash_text_block(file_content),
+            config_hash,
+            file_path_hash: hash_text_block(&file_path.to_string_lossy()),
+            file_content_hash: hash_text_block(file_content),
         }
     }
 
@@ -29,9 +29,9 @@ impl CacheEntry {
         get_project_dir().join(CACHE_DIR).join(format!(
             "{}/{}/{}/{}",
             env!("CARGO_PKG_VERSION"),
-            self.config_key,
-            self.file_key,
-            self.content_ky
+            self.config_hash,
+            self.file_path_hash,
+            self.file_content_hash
         ))
     }
 
@@ -52,7 +52,7 @@ impl CacheEntry {
 }
 
 #[inline]
-pub fn get_config_hash(config: &MdsfConfig) -> String {
+pub fn hash_config(config: &MdsfConfig) -> String {
     serde_json::to_string(config).map_or_else(
         |_error| {
             let mut hasher = DefaultHasher::new();
@@ -66,14 +66,14 @@ pub fn get_config_hash(config: &MdsfConfig) -> String {
 }
 
 #[cfg(test)]
-mod test_get_config_hash {
-    use crate::{caching::get_config_hash, config::MdsfConfig};
+mod test_hash_config {
+    use crate::{caching::hash_config, config::MdsfConfig};
 
     #[test]
     fn it_should_be_deterministic() {
         assert_eq!(
-            get_config_hash(&MdsfConfig::default()),
-            get_config_hash(&MdsfConfig::default()),
+            hash_config(&MdsfConfig::default()),
+            hash_config(&MdsfConfig::default()),
         );
     }
 }

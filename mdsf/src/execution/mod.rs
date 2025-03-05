@@ -230,8 +230,7 @@ pub fn format_snippet(
     code.to_owned()
 }
 
-#[derive(Debug, serde::Serialize, serde::Deserialize, Hash, Clone)]
-#[cfg_attr(test, derive(PartialEq, Eq))]
+#[derive(Debug, serde::Serialize, serde::Deserialize, Hash, Clone, PartialEq, Eq)]
 #[cfg_attr(feature = "json-schema", derive(schemars::JsonSchema))]
 #[serde(untagged)]
 pub enum MdsfFormatter<T>

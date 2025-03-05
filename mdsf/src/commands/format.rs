@@ -5,7 +5,7 @@ use std::{
 
 use clap::builder::OsStr;
 use mdsf::{
-    caching::get_config_hash,
+    caching::hash_config,
     cli::{read_stdin, FormatCommandArguments},
     config::MdsfConfig,
     error::MdsfError,
@@ -45,8 +45,8 @@ pub fn run(args: FormatCommandArguments, dry_run: bool) -> Result<(), MdsfError>
 
     conf.setup_language_aliases()?;
 
-    let config_cache_key = if args.cache {
-        Some(get_config_hash(&conf))
+    let config_hash = if args.cache {
+        Some(hash_config(&conf))
     } else {
         None
     };
@@ -104,14 +104,14 @@ pub fn run(args: FormatCommandArguments, dry_run: bool) -> Result<(), MdsfError>
 
                 let changed_file_count_ref = changed_file_count.clone();
 
-                let config_cache_key_ref = config_cache_key.clone();
+                let config_hash_clone = config_hash.clone();
 
                 pool.execute(move || {
                     let was_formatted = handle_file(
                         &config_ref,
                         &file_path,
                         dry_run,
-                        config_cache_key_ref,
+                        config_hash_clone,
                         args.timeout.unwrap_or_default(),
                         args.debug,
                     );

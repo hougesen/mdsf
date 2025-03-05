@@ -173,7 +173,7 @@ pub fn handle_file(
     config: &MdsfConfig,
     path: &std::path::Path,
     dry_run: bool,
-    cache_key: Option<String>,
+    config_hash: Option<String>,
     timeout: u64,
     debug_enabled: bool,
 ) -> bool {
@@ -187,10 +187,10 @@ pub fn handle_file(
                 return false;
             }
 
-            let cache_key = cache_key.map(|key| CacheEntry::new(key, path, &input));
+            let cache_entry = config_hash.map(|conf| CacheEntry::new(conf, path, &input));
 
             let (output, modified, cached) =
-                format_or_use_cache(config, path, &input, cache_key, timeout, debug_enabled);
+                format_or_use_cache(config, path, &input, cache_entry, timeout, debug_enabled);
 
             if modified && output != input {
                 if dry_run {
