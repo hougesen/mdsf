@@ -9,7 +9,7 @@ use crate::{
     error::MdsfError,
     fttype::get_file_extension,
     get_project_dir,
-    runners::CommandType,
+    runners::{CommandType, JavaScriptRuntime},
     terminal::{
         print_binary_not_in_path, print_error_formatting, print_formatter_info,
         print_formatter_time,
@@ -200,9 +200,13 @@ pub fn format_snippet(
             let snippet_path = snippet.path();
 
             if let Some(formatters) = always_ran {
-                if let Ok(Some(formatted_code)) =
-                    formatters.format(snippet_path, info, timeout, debug_enabled)
-                {
+                if let Ok(Some(formatted_code)) = formatters.format(
+                    snippet_path,
+                    info,
+                    timeout,
+                    debug_enabled,
+                    config.javascript_runtime,
+                ) {
                     if language_formatters.is_none() {
                         let mut f = formatted_code.trim().to_owned();
 
@@ -214,9 +218,13 @@ pub fn format_snippet(
             }
 
             if let Some(formatters) = language_formatters {
-                if let Ok(Some(formatted_code)) =
-                    formatters.format(snippet_path, info, timeout, debug_enabled)
-                {
+                if let Ok(Some(formatted_code)) = formatters.format(
+                    snippet_path,
+                    info,
+                    timeout,
+                    debug_enabled,
+                    config.javascript_runtime,
+                ) {
                     let mut f = formatted_code.trim().to_owned();
 
                     f.push('\n');
@@ -267,9 +275,18 @@ impl MdsfFormatter<Tooling> {
         info: &LineInfo,
         timeout: u64,
         debug_enabled: bool,
+        javascript_runtime: JavaScriptRuntime,
     ) -> Result<Option<String>, MdsfError> {
-        Self::format_multiple(self, snippet_path, info, false, timeout, debug_enabled)
-            .map(|(_should_continue, output)| output)
+        Self::format_multiple(
+            self,
+            snippet_path,
+            info,
+            false,
+            timeout,
+            debug_enabled,
+            javascript_runtime,
+        )
+        .map(|(_should_continue, output)| output)
     }
 
     #[inline]
@@ -280,6 +297,7 @@ impl MdsfFormatter<Tooling> {
         nested: bool,
         timeout: u64,
         debug_enabled: bool,
+        javascript_runtime: JavaScriptRuntime,
     ) -> Result<(bool, Option<String>), MdsfError> {
         match formatter {
             Self::Single(f) => {
@@ -289,7 +307,7 @@ impl MdsfFormatter<Tooling> {
 
                 let time = std::time::Instant::now();
 
-                let r = f.format_snippet(snippet_path, timeout, debug_enabled);
+                let r = f.format_snippet(snippet_path, timeout, debug_enabled, javascript_runtime);
 
                 print_formatter_time(formatter_name, info, time.elapsed());
 
@@ -320,7 +338,15 @@ impl MdsfFormatter<Tooling> {
                 let mut r = Ok((true, None));
 
                 for f in formatters {
-                    r = Self::format_multiple(f, snippet_path, info, true, timeout, debug_enabled);
+                    r = Self::format_multiple(
+                        f,
+                        snippet_path,
+                        info,
+                        true,
+                        timeout,
+                        debug_enabled,
+                        javascript_runtime,
+                    );
 
                     if r.as_ref()
                         .is_ok_and(|(should_continue, _code)| !should_continue)
@@ -344,9 +370,10 @@ pub fn run_tools(
     timeout: u64,
     is_stdin: bool,
     debug_enabled: bool,
+    javascript_runtime: JavaScriptRuntime,
 ) -> Result<(bool, Option<String>), MdsfError> {
     for (index, cmd) in command_types.iter().enumerate() {
-        let cmd = set_args_fn(cmd.build(), file_path);
+        let cmd = set_args_fn(cmd.build(javascript_runtime), file_path);
 
         let execution_result = execute_command(cmd, file_path, timeout, is_stdin, debug_enabled);
 

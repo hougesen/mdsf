@@ -423,7 +423,10 @@ impl Tooling {
     #[inline]
     pub fn format_snippet(
         self,
-        _snippet_path: &std::path::Path,
+        snippet_path: &std::path::Path,
+        timeout: u64,
+        debug_enabled: bool,
+        javascript_runtime: crate::runners::JavaScriptRuntime,
     ) -> Result<(bool, Option<String>), crate::error::MdsfError> {
         todo!()
     }
@@ -545,6 +548,7 @@ impl Tooling {{
 {INDENT}{INDENT}snippet_path: &std::path::Path,
 {INDENT}{INDENT}timeout: u64,
 {INDENT}{INDENT}debug_enabled: bool,
+{INDENT}{INDENT}javascript_runtime: crate::runners::JavaScriptRuntime,
 {INDENT}) -> Result<(bool, Option<String>), crate::error::MdsfError> {{
 {INDENT}{INDENT}let (commands, set_args_fn, is_stdin): (
 {INDENT}{INDENT}{INDENT}&[crate::runners::CommandType],
@@ -561,6 +565,7 @@ impl Tooling {{
 {INDENT}{INDENT}{INDENT}timeout,
 {INDENT}{INDENT}{INDENT}is_stdin,
 {INDENT}{INDENT}{INDENT}debug_enabled,
+{INDENT}{INDENT}{INDENT}javascript_runtime,
 {INDENT}{INDENT})
 {INDENT}}}
 }}

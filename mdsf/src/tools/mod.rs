@@ -2696,6 +2696,7 @@ impl Tooling {
         snippet_path: &std::path::Path,
         timeout: u64,
         debug_enabled: bool,
+        javascript_runtime: crate::runners::JavaScriptRuntime,
     ) -> Result<(bool, Option<String>), crate::error::MdsfError> {
         let (commands, set_args_fn, is_stdin): (
             &[crate::runners::CommandType],
@@ -3617,6 +3618,7 @@ impl Tooling {
             timeout,
             is_stdin,
             debug_enabled,
+            crate::runners::JavaScriptRuntime::default(),
         )
     }
 }
