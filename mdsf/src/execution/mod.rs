@@ -53,7 +53,7 @@ pub fn setup_snippet(code: &str, file_ext: &str) -> std::io::Result<NamedTempFil
         setup_temp_dir()?;
     }
 
-    let mut f = b.tempfile_in(&dir)?;
+    let mut f = b.tempfile_in(dir)?;
 
     f.write_all(code.as_bytes())?;
     f.flush()?;
@@ -309,6 +309,7 @@ impl MdsfFormatter<Tooling> {
                         return Ok((false, None));
                     } else if let MdsfError::FormatterError(stderr) = e {
                         print_error_formatting(formatter_name, info, stderr);
+
                         return Ok((false, None));
                     }
                 }

@@ -1,8 +1,10 @@
 use std::env::current_dir;
 
 use mdsf::{
-    caching::get_config_hash, cli::CachePruneArguments, config::MdsfConfig, get_project_dir,
-    CACHE_DIR,
+    caching::{get_config_hash, CACHE_DIR},
+    cli::CachePruneArguments,
+    config::MdsfConfig,
+    get_project_dir,
 };
 
 #[inline]

@@ -1,15 +1,10 @@
-use std::sync::OnceLock;
-
-use caching::hash_text_block;
-use terminal::{print_error_reading_file, print_error_saving_file};
-
-use crate::{
-    config::MdsfConfig,
-    execution::format_snippet,
-    parser::{parse_generic_codeblock, parse_go_codeblock},
-    terminal::{
-        print_changed_file, print_changed_file_error, print_unchanged_file, warn_unknown_language,
-    },
+use caching::CacheEntry;
+use config::MdsfConfig;
+use execution::format_snippet;
+use parser::{indent_codeblock, parse_generic_codeblock, parse_go_codeblock, remove_go_package};
+use terminal::{
+    print_changed_file, print_changed_file_error, print_error_reading_file,
+    print_error_saving_file, print_unchanged_file, warn_unknown_language,
 };
 
 pub mod caching;
@@ -25,11 +20,7 @@ pub mod runners;
 pub mod terminal;
 mod tools;
 
-const GO_TEMPORARY_PACKAGE_NAME: &str = "package mdsfformattertemporarynamespace\n";
-
-pub const CACHE_DIR: &str = "caches/";
-
-static MDSF_PROJECT_DIR: OnceLock<std::path::PathBuf> = OnceLock::new();
+static MDSF_PROJECT_DIR: std::sync::OnceLock<std::path::PathBuf> = std::sync::OnceLock::new();
 
 #[inline]
 pub fn get_project_dir() -> &'static std::path::Path {
@@ -40,36 +31,9 @@ pub fn get_project_dir() -> &'static std::path::Path {
         )
     });
 
-    let _ = std::fs::create_dir_all(&project_dir);
+    let _ = std::fs::create_dir_all(project_dir);
 
-    let cache_dir = project_dir.join(CACHE_DIR);
-
-    let _ = std::fs::create_dir_all(&cache_dir);
-
-    &project_dir
-}
-
-#[inline]
-fn remove_go_package(snippet: String) -> String {
-    if snippet.contains(GO_TEMPORARY_PACKAGE_NAME) {
-        snippet.replace(GO_TEMPORARY_PACKAGE_NAME, "")
-    } else {
-        snippet
-    }
-}
-
-#[inline]
-fn indent_codeblock(indentation: &str, snippet: String) -> String {
-    if indentation.is_empty() {
-        snippet
-    } else {
-        snippet
-            .lines()
-            .map(|line| format!("{indentation}{line}"))
-            .collect::<Vec<_>>()
-            // TODO: keep original line endings
-            .join("\n")
-    }
+    project_dir
 }
 
 #[inline]
@@ -180,42 +144,25 @@ pub fn format_file(
 }
 
 #[inline]
-fn save_file_cache(config_key: &str, file_key: &str, contents: &str) -> std::io::Result<()> {
-    let dir = get_project_dir()
-        .join(CACHE_DIR)
-        .join(format!("{config_key}/"));
-
-    std::fs::create_dir_all(&dir)?;
-
-    std::fs::write(dir.join(file_key), contents)
-}
-
-#[inline]
 fn format_or_use_cache(
     config: &MdsfConfig,
     path: &std::path::Path,
     input: &str,
-    cache_key: Option<(String, String)>,
+    cache_entry: Option<CacheEntry>,
     timeout: u64,
     debug_enabled: bool,
 ) -> (String, bool, bool) {
-    if let Some((config, file)) = &cache_key {
-        let dir = get_project_dir().join(CACHE_DIR).join(format!("{config}/"));
+    if let Some(cached_value) = cache_entry.as_ref().and_then(caching::CacheEntry::get) {
+        let modified = cached_value != input;
 
-        let _ = std::fs::create_dir_all(&dir);
-
-        if let Ok(cached_value) = std::fs::read_to_string(dir.join(file)) {
-            let modified = cached_value != input;
-
-            return (cached_value, modified, true);
-        }
+        return (cached_value, modified, true);
     }
 
     let (modified, output) = format_file(config, path, input, timeout, debug_enabled);
 
-    if let Some((config_key, file_key)) = cache_key {
+    if let Some(cache) = cache_entry {
         // We do not (currently) care if saving the cache fails.
-        let _ = save_file_cache(&config_key, &file_key, &output);
+        let _ = cache.set(&output);
     }
 
     (output, modified, false)
@@ -240,7 +187,7 @@ pub fn handle_file(
                 return false;
             }
 
-            let cache_key = cache_key.map(|key| (key, hash_text_block(&input)));
+            let cache_key = cache_key.map(|key| CacheEntry::new(key, path, &input));
 
             let (output, modified, cached) =
                 format_or_use_cache(config, path, &input, cache_key, timeout, debug_enabled);
