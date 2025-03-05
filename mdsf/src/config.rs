@@ -154,6 +154,7 @@ fn default_schema_location() -> String {
 #[cfg(test)]
 mod test_config {
     use super::MdsfConfig;
+    use crate::error::MdsfError;
 
     #[test]
     fn schema_should_be_serializable() {
@@ -189,5 +190,27 @@ mod test_config {
 }"#;
 
         MdsfConfig::parse(r).expect("it to parse the config");
+    }
+
+    #[test]
+    fn test_config_load_works() {
+        let f = tempfile::Builder::new().rand_bytes(24).tempfile().unwrap();
+
+        let default_config = MdsfConfig::default();
+        std::fs::write(f.path(), serde_json::to_string(&default_config).unwrap()).unwrap();
+
+        let loaded = MdsfConfig::load(f.path()).expect("it to return the config");
+
+        assert_eq!(default_config, loaded);
+    }
+
+    #[test]
+    fn test_config_load_return_error_if_not_found() {
+        let before = MdsfConfig::load(std::path::PathBuf::from(
+            "ifthispathexiststhereissomethingwrong",
+        ))
+        .expect_err("Expect it to return file not found");
+
+        assert!(matches!(before, MdsfError::Io(_)));
     }
 }
