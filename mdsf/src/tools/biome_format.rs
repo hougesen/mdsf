@@ -24,6 +24,8 @@ pub const IS_STDIN: bool = false;
 
 #[cfg(test)]
 mod test_biome_format {
+    use crate::tools::Tooling;
+
     const TIMEOUT: u64 = 0;
 
     const DEBUG_ENABLED: bool = true;
@@ -51,6 +53,13 @@ mod test_biome_format {
 
         let snippet =
             crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
+
+        crate::tools::Tooling::BiomeCheck.format_snippet(
+            snippet_path,
+            timeout,
+            debug_enabled,
+            javascript_runtime,
+        );
 
         let result = crate::execution::run_tools(
             &super::COMMANDS,
