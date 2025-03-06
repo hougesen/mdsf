@@ -101,10 +101,6 @@ pub fn generate_install_steps(tools: &Vec<Tool>) -> Vec<WorkflowJobsStep> {
             install_options.push(generate_npm(npm));
         }
 
-        if let Some(go) = &tool.packages.go {
-            install_options.push(generate_go(go));
-        }
-
         if let Some(cargo) = &tool.packages.cargo {
             install_options.push(generate_cargo(cargo));
         }
@@ -115,6 +111,10 @@ pub fn generate_install_steps(tools: &Vec<Tool>) -> Vec<WorkflowJobsStep> {
 
         if let Some(apt) = &tool.packages.apt {
             install_options.push(generate_apt(apt));
+        }
+
+        if let Some(go) = &tool.packages.go {
+            install_options.push(generate_go(go));
         }
 
         if let Some(gem) = &tool.packages.gem {
