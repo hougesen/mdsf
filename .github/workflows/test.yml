@@ -174,6 +174,8 @@ jobs:
         run: ( ( which semistandard ) || ( ( which npm && npm i -g semistandard ) ) || ( echo "Unable to install tool" ) )
       - name: shfmt
         run: ( ( which shfmt ) || ( ( which go && go install mvdan.cc/sh/v3/cmd/shfmt@latest ) ) || ( echo "Unable to install tool" ) )
+      - name: sleek
+        run: ( ( which sleek ) || ( ( which cargo && ( cargo binstall sleek || cargo install sleek ) ) ) || ( echo "Unable to install tool" ) )
       - name: sql-formatter
         run: ( ( which sql-formatter ) || ( ( which npm && npm i -g sql-formatter ) ) || ( echo "Unable to install tool" ) )
       - name: sqlfluff
