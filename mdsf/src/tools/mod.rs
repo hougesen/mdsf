@@ -2631,7 +2631,7 @@ pub enum Tooling {
     ///
     /// [https://github.com/xojs/xo](https://github.com/xojs/xo)
     ///
-    /// `xo --fix $PATH`
+    /// `xo --fix --stdin`
     Xo,
 
     #[serde(rename = "xq")]

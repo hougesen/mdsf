@@ -204,6 +204,8 @@ jobs:
         run: ( ( which xmlformat ) || ( ( which pipx && pipx install xmlformatter ) ) || ( echo "Unable to install tool" ) )
       - name: xmllint
         run: ( ( which xmllint ) || ( ( which apt-get && sudo apt-get install -y libxml2-utils ) ) || ( echo "Unable to install tool" ) )
+      - name: xo
+        run: ( ( which xo ) || ( ( which npm && npm i -g xo ) ) || ( echo "Unable to install tool" ) )
       - name: xq
         run: ( ( which xq ) || ( ( which brew &&  brew install xq ) || ( which apt-get && sudo apt-get install -y xq ) ) || ( echo "Unable to install tool" ) )
       - name: yamlfix

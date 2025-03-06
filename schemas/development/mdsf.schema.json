@@ -1513,7 +1513,7 @@
           "enum": ["xmllint"]
         },
         {
-          "description": "JavaScript/TypeScript linter (ESLint wrapper) with great defaults\n\n[https://github.com/xojs/xo](https://github.com/xojs/xo)\n\n`xo --fix $PATH`",
+          "description": "JavaScript/TypeScript linter (ESLint wrapper) with great defaults\n\n[https://github.com/xojs/xo](https://github.com/xojs/xo)\n\n`xo --fix --stdin`",
           "type": "string",
           "enum": ["xo"]
         },

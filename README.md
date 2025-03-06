@@ -970,7 +970,7 @@ mdsf init
 | `write-good`             | `write-good $PATH`                                                                      |
 | `xmlformat`              | `xmlformat --overwrite $PATH`                                                           |
 | `xmllint`                | `xmllint --format $PATH --output $PATH`                                                 |
-| `xo`                     | `xo --fix $PATH`                                                                        |
+| `xo`                     | `xo --fix --stdin`                                                                      |
 | `xq:html`                | `xq --html`                                                                             |
 | `xq`                     | `xq `                                                                                   |
 | `yamlfix`                | `yamlfix $PATH`                                                                         |
