@@ -139,7 +139,7 @@ jobs:
       - name: terraform
         run: ( ( which terraform ) || ( ( which brew && brew tap hashicorp/tap && brew install hashicorp/tap/terraform ) ) || ( echo "Unable to install tool" ) )
       - name: actionlint
-        run: ( ( which actionlint ) || ( ( which go && go install github.com/rhysd/actionlint/cmd/actionlint@latest ) || ( which brew &&  brew install actionlint ) ) || ( echo "Unable to install tool" ) )
+        run: ( ( which actionlint ) || ( ( which brew &&  brew install actionlint ) || ( which go && go install github.com/rhysd/actionlint/cmd/actionlint@latest ) ) || ( echo "Unable to install tool" ) )
       - name: ocamlformat
         run: ( ( which ocamlformat ) || ( ( which opam && eval $(opam env) && opam install ocamlformat ) ) || ( echo "Unable to install tool" ) )
       - name: clang-format
