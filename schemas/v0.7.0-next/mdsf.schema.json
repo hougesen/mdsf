@@ -78,7 +78,7 @@
           "enum": ["alejandra"]
         },
         {
-          "description": "Catch insensitive, inconsiderate writing\n\n[https://github.com/get-alex/alex](https://github.com/get-alex/alex)\n\n`alex $PATH`",
+          "description": "Catch insensitive, inconsiderate writing\n\n[https://github.com/get-alex/alex](https://github.com/get-alex/alex)\n\n`alex --quiet $PATH`",
           "type": "string",
           "enum": ["alex"]
         },

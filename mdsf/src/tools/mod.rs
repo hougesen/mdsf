@@ -335,7 +335,7 @@ pub enum Tooling {
     ///
     /// [https://github.com/get-alex/alex](https://github.com/get-alex/alex)
     ///
-    /// `alex $PATH`
+    /// `alex --quiet $PATH`
     Alex,
 
     #[serde(rename = "ameba")]

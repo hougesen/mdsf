@@ -683,7 +683,7 @@ mdsf init
 | `actionlint`             | `actionlint $PATH`                                                                      |
 | `air:format`             | `air format $PATH`                                                                      |
 | `alejandra`              | `alejandra --quiet $PATH`                                                               |
-| `alex`                   | `alex $PATH`                                                                            |
+| `alex`                   | `alex --quiet $PATH`                                                                    |
 | `ameba`                  | `ameba --fix $PATH`                                                                     |
 | `ansible-lint`           | `ansible-lint $PATH`                                                                    |
 | `asmfmt`                 | `asmfmt -w $PATH`                                                                       |
