@@ -6,12 +6,26 @@
     "check": {
       "arguments": ["check", "--write", "$PATH"],
       "description": "Runs biome formatter, linter and import sorting with unsafe fixes on the input",
-      "homepage": "https://biomejs.dev/reference/cli/#biome-check"
+      "homepage": "https://biomejs.dev/reference/cli/#biome-check",
+      "tests": [
+        {
+          "language": "typescript",
+          "test_input": "\n    async function asyncAddition(\n            a:number,b:number\n        ) :Promise<\nnumber>\n    {\n        return a+b\n    }\n\n            ",
+          "test_output": "async function asyncAddition(a: number, b: number): Promise<number> {\n\treturn a + b;\n}\n"
+        }
+      ]
     },
     "check:unsafe": {
       "arguments": ["check", "--write", "--unsafe", "$PATH"],
       "description": "Runs biome formatter, linter and import sorting on the input",
-      "homepage": "https://biomejs.dev/reference/cli/#biome-check"
+      "homepage": "https://biomejs.dev/reference/cli/#biome-check",
+      "tests": [
+        {
+          "language": "typescript",
+          "test_input": "\n    async function asyncAddition(\n            a:number,b:number\n        ) :Promise<\nnumber>\n    {\n        return a+b\n    }\n\n            ",
+          "test_output": "async function asyncAddition(a: number, b: number): Promise<number> {\n\treturn a + b;\n}\n"
+        }
+      ]
     },
     "format": {
       "arguments": ["format", "--write", "$PATH"],
