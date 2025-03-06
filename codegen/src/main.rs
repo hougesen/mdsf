@@ -17,7 +17,7 @@ fn get_plugin_files() -> Vec<Tool> {
 
     let walker = ignore::WalkBuilder::new(tool_folder).build().flatten();
 
-    walker
+    let mut tools = walker
         .filter_map(|entry| {
             if entry.file_name() == "plugin.json" {
                 println!("{}", entry.path().display());
@@ -34,7 +34,11 @@ fn get_plugin_files() -> Vec<Tool> {
                 None
             }
         })
-        .collect()
+        .collect::<Vec<_>>();
+
+    tools.sort_unstable_by(|a, b| a.binary.cmp(&b.binary));
+
+    tools
 }
 
 fn main() -> Result<()> {
