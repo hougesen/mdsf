@@ -108,7 +108,7 @@ fn spawn_command(
     snippet_path: &std::path::Path,
     debug_enabled: bool,
 ) -> Result<std::process::Output, MdsfError> {
-    if debug_enabled {
+    if !debug_enabled {
         cmd.stdout(std::process::Stdio::null());
         cmd.stderr(std::process::Stdio::null());
     }
