@@ -231,6 +231,7 @@ pub mod salt_lint;
 pub mod scalafmt;
 pub mod scalariform;
 pub mod selene;
+pub mod semistandard;
 pub mod shellcheck;
 pub mod shellharden;
 pub mod shfmt;
@@ -2145,6 +2146,14 @@ pub enum Tooling {
     /// `selene $PATH`
     Selene,
 
+    #[serde(rename = "semistandard")]
+    /// All the goodness of standardjs with semicolons sprinkled on top
+    ///
+    /// [https://github.com/standard/semistandard](https://github.com/standard/semistandard)
+    ///
+    /// `semistandard --fix --stdin`
+    Semistandard,
+
     #[serde(rename = "shellcheck")]
     /// ShellCheck, a static analysis tool for shell scripts
     ///
@@ -3439,6 +3448,11 @@ impl Tooling {
                 scalariform::IS_STDIN,
             ),
             Self::Selene => (&selene::COMMANDS, selene::set_args, selene::IS_STDIN),
+            Self::Semistandard => (
+                &semistandard::COMMANDS,
+                semistandard::set_args,
+                semistandard::IS_STDIN,
+            ),
             Self::Shellcheck => (
                 &shellcheck::COMMANDS,
                 shellcheck::set_args,
@@ -3886,6 +3900,7 @@ impl AsRef<str> for Tooling {
             Self::Scalafmt => "scalafmt",
             Self::Scalariform => "scalariform",
             Self::Selene => "selene",
+            Self::Semistandard => "semistandard",
             Self::Shellcheck => "shellcheck",
             Self::Shellharden => "shellharden",
             Self::Shfmt => "shfmt",
