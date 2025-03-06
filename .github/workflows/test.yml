@@ -73,6 +73,8 @@ jobs:
         run: ( ( which fprettify ) || ( ( which pipx && pipx install fprettify ) ) || ( echo "Unable to install tool" ) )
       - name: fantomas
         run: ( ( which fantomas ) || ( ( which dotnet && dotnet tool install -g fantomas ) ) || ( echo "Unable to install tool" ) )
+      - name: alex
+        run: ( ( which alex ) || ( ( which npm && npm i -g alex ) ) || ( echo "Unable to install tool" ) )
       - name: ocp-indent
         run: ( ( which ocp-indent ) || ( ( which apt-get && sudo apt-get install -y ocp-indent ) || ( which opam && eval $(opam env) && opam install ocp-indent ) ) || ( echo "Unable to install tool" ) )
       - name: hurlfmt

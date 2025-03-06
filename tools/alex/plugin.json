@@ -4,7 +4,14 @@
   "categories": ["spell-check"],
   "commands": {
     "": {
-      "arguments": ["$PATH"]
+      "arguments": ["--quiet", "$PATH"],
+      "tests": [
+        {
+          "language": "markdown",
+          "test_input": "hello",
+          "test_output": "hello"
+        }
+      ]
     }
   },
   "description": "Catch insensitive, inconsiderate writing",
