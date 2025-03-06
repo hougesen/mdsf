@@ -4,7 +4,14 @@
   "categories": ["formatter"],
   "commands": {
     "": {
-      "arguments": ["$PATH"]
+      "arguments": ["$PATH"],
+      "tests": [
+        {
+          "language": "sql",
+          "test_input": "SELECT  *                  FROM  tbl\n                        WHERE                      foo   = 'bar';         ",
+          "test_output": "SELECT\n    *\nFROM\n    tbl\nWHERE\n    foo = 'bar';"
+        }
+      ]
     }
   },
   "description": "Sleek is a CLI tool for formatting SQL. It helps you maintain a consistent style across your SQL code, enhancing readability and productivity",
