@@ -4,7 +4,15 @@
   "categories": ["linter"],
   "commands": {
     "": {
-      "arguments": ["--fix", "$PATH"]
+      "arguments": ["--fix", "--stdin"],
+      "stdin": true,
+      "tests": [
+        {
+          "language": "javascript",
+          "test_input": "    function asyncAddition(a,b  )\n    {\n        return a+b\n    }\n\n                    console.info(asyncAddition(1, 2));",
+          "test_output": "function asyncAddition(a, b) {\n\treturn a + b;\n}\n\nconsole.info(asyncAddition(1, 2));\n"
+        }
+      ]
     }
   },
   "description": "JavaScript/TypeScript linter (ESLint wrapper) with great defaults",
