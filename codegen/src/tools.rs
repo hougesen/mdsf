@@ -197,7 +197,7 @@ impl Tool {
         )
     }
 
-    fn generate_test(&self, command: &str, test: &ToolCommandTest) -> (String, String) {
+    fn generate_test(&self, command: &str, test: &ToolCommandTest) -> String {
         let mut hasher = DefaultHasher::new();
 
         test.hash(&mut hasher);
@@ -205,6 +205,7 @@ impl Tool {
         let id = format!("{:x}", hasher.finish());
 
         let module_name = self.get_command_name(command).to_case(Case::Snake);
+        let enum_value = self.get_command_name(command).to_case(Case::Pascal);
 
         let language = test.language.to_case(Case::Snake);
 
@@ -224,18 +225,16 @@ impl Tool {
 {INDENT}{INDENT}let snippet =
 {INDENT}{INDENT}{INDENT}crate::execution::setup_snippet(input, &file_ext).expect(\"it to create a snippet file\");
 
-{INDENT}{INDENT}let result = crate::execution::run_tools(
-{INDENT}{INDENT}{INDENT}&super::COMMANDS,
-{INDENT}{INDENT}{INDENT}snippet.path(),
-{INDENT}{INDENT}{INDENT}super::set_args,
-{INDENT}{INDENT}{INDENT}TIMEOUT,
-{INDENT}{INDENT}{INDENT}super::IS_STDIN,
-{INDENT}{INDENT}{INDENT}DEBUG_ENABLED,
-{INDENT}{INDENT}{INDENT}crate::runners::JavaScriptRuntime::default(),
-{INDENT}{INDENT})
-{INDENT}{INDENT}.expect(\"it to be successful\")
-{INDENT}{INDENT}.1
-{INDENT}{INDENT}.expect(\"it to be some\");
+{INDENT}{INDENT}let result = crate::tools::Tooling::{enum_value}
+{INDENT}{INDENT}{INDENT}.format_snippet(
+{INDENT}{INDENT}{INDENT}{INDENT}snippet.path(),
+{INDENT}{INDENT}{INDENT}{INDENT}crate::testing::DEFAULT_TEST_FORMATTER_TIMEOUT,
+{INDENT}{INDENT}{INDENT}{INDENT}crate::testing::DEFAULT_TEST_DEBUG_ENABLED,
+{INDENT}{INDENT}{INDENT}{INDENT}crate::runners::JavaScriptRuntime::default(),
+{INDENT}{INDENT}{INDENT})
+{INDENT}{INDENT}{INDENT}.expect(\"it to be successful\")
+{INDENT}{INDENT}{INDENT}.1
+{INDENT}{INDENT}{INDENT}.expect(\"it to be some\");
 
 {INDENT}{INDENT}assert_eq!(result, output);
 {INDENT}}}",
@@ -248,7 +247,7 @@ impl Tool {
             language = test.language,
         );
 
-        (module_name, test_code)
+        test_code
     }
 
     #[allow(clippy::too_many_lines)]
@@ -328,7 +327,7 @@ impl Tool {
                 let tests = options
                     .tests
                     .iter()
-                    .map(|test| self.generate_test(cmd, test).1)
+                    .map(|test| self.generate_test(cmd, test))
                     .collect::<Vec<_>>();
 
                 if tests.is_empty() {
@@ -338,10 +337,6 @@ impl Tool {
                         "
 #[cfg(test)]
 mod test_{module_name} {{
-{INDENT}const TIMEOUT: u64 = 0;
-
-{INDENT}const DEBUG_ENABLED: bool = true;
-
 {tests}
 }}
 ",

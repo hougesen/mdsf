@@ -18,10 +18,6 @@ pub const IS_STDIN: bool = false;
 
 #[cfg(test)]
 mod test_auto_optional {
-    const TIMEOUT: u64 = 0;
-
-    const DEBUG_ENABLED: bool = true;
-
     #[test_with::executable(auto-optional)]
     fn test_auto_optional_python_c43199b18f48026d() {
         let input = r#"def foo(bar: str = None):
@@ -38,18 +34,16 @@ def foo(bar: Optional[str] = None):
         let snippet =
             crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
 
-        let result = crate::execution::run_tools(
-            &super::COMMANDS,
-            snippet.path(),
-            super::set_args,
-            TIMEOUT,
-            super::IS_STDIN,
-            DEBUG_ENABLED,
-            crate::runners::JavaScriptRuntime::default(),
-        )
-        .expect("it to be successful")
-        .1
-        .expect("it to be some");
+        let result = crate::tools::Tooling::AutoOptional
+            .format_snippet(
+                snippet.path(),
+                crate::testing::DEFAULT_TEST_FORMATTER_TIMEOUT,
+                crate::testing::DEFAULT_TEST_DEBUG_ENABLED,
+                crate::runners::JavaScriptRuntime::default(),
+            )
+            .expect("it to be successful")
+            .1
+            .expect("it to be some");
 
         assert_eq!(result, output);
     }

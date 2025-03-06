@@ -14,10 +14,6 @@ pub const IS_STDIN: bool = true;
 
 #[cfg(test)]
 mod test_xq {
-    const TIMEOUT: u64 = 0;
-
-    const DEBUG_ENABLED: bool = true;
-
     #[test_with::executable(xq)]
     fn test_xq_xml_1289078d9c0aa8a3() {
         let input = r#"<?xml version="1.0"?> <catalog>    <book id="bk112">       <author>Galos, Mike</author>       <title>Visual Studio 7: A Comprehensive Guide</title>       <genre>Computer</genre>       <price>49.95</price>       <publish_date>2001-04-16</publish_date>       <description>Microsoft Visual Studio 7 is explored in depth,       looking at how Visual Basic, Visual C++, C#, and ASP+ are        integrated into a comprehensive development        environment.</description>    </book> </catalog>"#;
@@ -40,18 +36,16 @@ mod test_xq {
         let snippet =
             crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
 
-        let result = crate::execution::run_tools(
-            &super::COMMANDS,
-            snippet.path(),
-            super::set_args,
-            TIMEOUT,
-            super::IS_STDIN,
-            DEBUG_ENABLED,
-            crate::runners::JavaScriptRuntime::default(),
-        )
-        .expect("it to be successful")
-        .1
-        .expect("it to be some");
+        let result = crate::tools::Tooling::Xq
+            .format_snippet(
+                snippet.path(),
+                crate::testing::DEFAULT_TEST_FORMATTER_TIMEOUT,
+                crate::testing::DEFAULT_TEST_DEBUG_ENABLED,
+                crate::runners::JavaScriptRuntime::default(),
+            )
+            .expect("it to be successful")
+            .1
+            .expect("it to be some");
 
         assert_eq!(result, output);
     }

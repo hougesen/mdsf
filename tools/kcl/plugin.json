@@ -10,8 +10,8 @@
       "tests": [
         {
           "language": "kcl",
-          "test_input": "apiVersion = \"apps/v1\"\r\nkind = \"Deployment\"\r\nmetadata = {\r\n    name =  \"nginx\"\r\n                   labels.app = \"nginx\"\r\n}\r\nspec = {\r\n    replicas    = 3\r\n    selector.matchLabels = metadata.labels\r\n    template.metadata.labels =                  metadata.labels\r\n    template.spec.containers = [     {\r\n        name = metadata.name\r\n        image = \"${metadata.name}:1.14.2\"\r\n        ports = [{                                                  containerPort = 80}]\r\n    }]\r\n}\r\n",
-          "test_output": "apiVersion = \"apps/v1\"\r\nkind = \"Deployment\"\r\nmetadata = {\r\n    name = \"nginx\"\r\n    labels.app = \"nginx\"\r\n}\r\nspec = {\r\n    replicas = 3\r\n    selector.matchLabels = metadata.labels\r\n    template.metadata.labels = metadata.labels\r\n    template.spec.containers = [{\r\n        name = metadata.name\r\n        image = \"${metadata.name}:1.14.2\"\r\n        ports = [{containerPort = 80}]\r\n    }]\r\n}\r\n"
+          "test_input": "apiVersion = \"apps/v1\"\nkind = \"Deployment\"\nmetadata = {\n    name =  \"nginx\"\n                   labels.app = \"nginx\"\n}\nspec = {\n    replicas    = 3\n    selector.matchLabels = metadata.labels\n    template.metadata.labels =                  metadata.labels\n    template.spec.containers = [     {\n        name = metadata.name\n        image = \"${metadata.name}:1.14.2\"\n        ports = [{                                                  containerPort = 80}]\n    }]\n}\n",
+          "test_output": "apiVersion = \"apps/v1\"\nkind = \"Deployment\"\nmetadata = {\n    name = \"nginx\"\n    labels.app = \"nginx\"\n}\nspec = {\n    replicas = 3\n    selector.matchLabels = metadata.labels\n    template.metadata.labels = metadata.labels\n    template.spec.containers = [{\n        name = metadata.name\n        image = \"${metadata.name}:1.14.2\"\n        ports = [{containerPort = 80}]\n    }]\n}\n"
         }
       ]
     },
