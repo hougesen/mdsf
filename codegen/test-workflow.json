@@ -50,6 +50,7 @@
     {
       "uses": "ocaml/setup-ocaml@v3",
       "with": {
+        "dune-cache": true,
         "ocaml-compiler": "5.1"
       }
     },
