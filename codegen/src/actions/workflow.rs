@@ -32,7 +32,7 @@ pub struct WorkflowJobsStep {
     pub uses: Option<String>,
 
     #[serde(skip_serializing_if = "Option::is_none")]
-    pub with: Option<std::collections::BTreeMap<String, String>>,
+    pub with: Option<std::collections::BTreeMap<String, serde_json::Value>>,
 
     #[serde(skip_serializing_if = "Option::is_none")]
     pub run: Option<String>,
