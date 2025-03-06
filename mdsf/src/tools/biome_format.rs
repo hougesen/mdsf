@@ -24,12 +24,6 @@ pub const IS_STDIN: bool = false;
 
 #[cfg(test)]
 mod test_biome_format {
-    use crate::tools::Tooling;
-
-    const TIMEOUT: u64 = 0;
-
-    const DEBUG_ENABLED: bool = true;
-
     #[test_with::executable(npx)]
     fn test_biome_format_json_90a326e29048e3cd() {
         let input = r#"
@@ -54,25 +48,16 @@ mod test_biome_format {
         let snippet =
             crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
 
-        crate::tools::Tooling::BiomeCheck.format_snippet(
-            snippet_path,
-            timeout,
-            debug_enabled,
-            javascript_runtime,
-        );
-
-        let result = crate::execution::run_tools(
-            &super::COMMANDS,
-            snippet.path(),
-            super::set_args,
-            TIMEOUT,
-            super::IS_STDIN,
-            DEBUG_ENABLED,
-            crate::runners::JavaScriptRuntime::default(),
-        )
-        .expect("it to be successful")
-        .1
-        .expect("it to be some");
+        let result = crate::tools::Tooling::BiomeFormat
+            .format_snippet(
+                snippet.path(),
+                crate::testing::DEFAULT_TEST_FORMATTER_TIMEOUT,
+                crate::testing::DEFAULT_TEST_DEBUG_ENABLED,
+                crate::runners::JavaScriptRuntime::default(),
+            )
+            .expect("it to be successful")
+            .1
+            .expect("it to be some");
 
         assert_eq!(result, output);
     }
@@ -98,18 +83,16 @@ mod test_biome_format {
         let snippet =
             crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
 
-        let result = crate::execution::run_tools(
-            &super::COMMANDS,
-            snippet.path(),
-            super::set_args,
-            TIMEOUT,
-            super::IS_STDIN,
-            DEBUG_ENABLED,
-            crate::runners::JavaScriptRuntime::default(),
-        )
-        .expect("it to be successful")
-        .1
-        .expect("it to be some");
+        let result = crate::tools::Tooling::BiomeFormat
+            .format_snippet(
+                snippet.path(),
+                crate::testing::DEFAULT_TEST_FORMATTER_TIMEOUT,
+                crate::testing::DEFAULT_TEST_DEBUG_ENABLED,
+                crate::runners::JavaScriptRuntime::default(),
+            )
+            .expect("it to be successful")
+            .1
+            .expect("it to be some");
 
         assert_eq!(result, output);
     }
@@ -137,18 +120,16 @@ number>
         let snippet =
             crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
 
-        let result = crate::execution::run_tools(
-            &super::COMMANDS,
-            snippet.path(),
-            super::set_args,
-            TIMEOUT,
-            super::IS_STDIN,
-            DEBUG_ENABLED,
-            crate::runners::JavaScriptRuntime::default(),
-        )
-        .expect("it to be successful")
-        .1
-        .expect("it to be some");
+        let result = crate::tools::Tooling::BiomeFormat
+            .format_snippet(
+                snippet.path(),
+                crate::testing::DEFAULT_TEST_FORMATTER_TIMEOUT,
+                crate::testing::DEFAULT_TEST_DEBUG_ENABLED,
+                crate::runners::JavaScriptRuntime::default(),
+            )
+            .expect("it to be successful")
+            .1
+            .expect("it to be some");
 
         assert_eq!(result, output);
     }

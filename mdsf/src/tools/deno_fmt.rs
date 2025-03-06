@@ -20,10 +20,6 @@ pub const IS_STDIN: bool = false;
 
 #[cfg(test)]
 mod test_deno_fmt {
-    const TIMEOUT: u64 = 0;
-
-    const DEBUG_ENABLED: bool = true;
-
     #[test_with::executable(deno)]
     fn test_deno_fmt_javascript_d7445fa122fcd5cc() {
         let input = r#"
@@ -43,18 +39,16 @@ mod test_deno_fmt {
         let snippet =
             crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
 
-        let result = crate::execution::run_tools(
-            &super::COMMANDS,
-            snippet.path(),
-            super::set_args,
-            TIMEOUT,
-            super::IS_STDIN,
-            DEBUG_ENABLED,
-            crate::runners::JavaScriptRuntime::default(),
-        )
-        .expect("it to be successful")
-        .1
-        .expect("it to be some");
+        let result = crate::tools::Tooling::DenoFmt
+            .format_snippet(
+                snippet.path(),
+                crate::testing::DEFAULT_TEST_FORMATTER_TIMEOUT,
+                crate::testing::DEFAULT_TEST_DEBUG_ENABLED,
+                crate::runners::JavaScriptRuntime::default(),
+            )
+            .expect("it to be successful")
+            .1
+            .expect("it to be some");
 
         assert_eq!(result, output);
     }
@@ -79,18 +73,16 @@ mod test_deno_fmt {
         let snippet =
             crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
 
-        let result = crate::execution::run_tools(
-            &super::COMMANDS,
-            snippet.path(),
-            super::set_args,
-            TIMEOUT,
-            super::IS_STDIN,
-            DEBUG_ENABLED,
-            crate::runners::JavaScriptRuntime::default(),
-        )
-        .expect("it to be successful")
-        .1
-        .expect("it to be some");
+        let result = crate::tools::Tooling::DenoFmt
+            .format_snippet(
+                snippet.path(),
+                crate::testing::DEFAULT_TEST_FORMATTER_TIMEOUT,
+                crate::testing::DEFAULT_TEST_DEBUG_ENABLED,
+                crate::runners::JavaScriptRuntime::default(),
+            )
+            .expect("it to be successful")
+            .1
+            .expect("it to be some");
 
         assert_eq!(result, output);
     }
@@ -124,18 +116,16 @@ mod test_deno_fmt {
         let snippet =
             crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
 
-        let result = crate::execution::run_tools(
-            &super::COMMANDS,
-            snippet.path(),
-            super::set_args,
-            TIMEOUT,
-            super::IS_STDIN,
-            DEBUG_ENABLED,
-            crate::runners::JavaScriptRuntime::default(),
-        )
-        .expect("it to be successful")
-        .1
-        .expect("it to be some");
+        let result = crate::tools::Tooling::DenoFmt
+            .format_snippet(
+                snippet.path(),
+                crate::testing::DEFAULT_TEST_FORMATTER_TIMEOUT,
+                crate::testing::DEFAULT_TEST_DEBUG_ENABLED,
+                crate::runners::JavaScriptRuntime::default(),
+            )
+            .expect("it to be successful")
+            .1
+            .expect("it to be some");
 
         assert_eq!(result, output);
     }

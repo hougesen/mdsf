@@ -225,15 +225,16 @@ impl Tool {
 {INDENT}{INDENT}let snippet =
 {INDENT}{INDENT}{INDENT}crate::execution::setup_snippet(input, &file_ext).expect(\"it to create a snippet file\");
 
-{INDENT}{INDENT}let result = crate::tools::Tooling::{enum_value}.format_snippet(
-{INDENT}{INDENT}{INDENT}snippet.path(),
-{INDENT}{INDENT}{INDENT}TIMEOUT,
-{INDENT}{INDENT}{INDENT}DEBUG_ENABLED,
-{INDENT}{INDENT}{INDENT}crate::runners::JavaScriptRuntime::default(),
-{INDENT}{INDENT})
-{INDENT}{INDENT}.expect(\"it to be successful\")
-{INDENT}{INDENT}.1
-{INDENT}{INDENT}.expect(\"it to be some\");
+{INDENT}{INDENT}let result = crate::tools::Tooling::{enum_value}
+{INDENT}{INDENT}{INDENT}.format_snippet(
+{INDENT}{INDENT}{INDENT}{INDENT}snippet.path(),
+{INDENT}{INDENT}{INDENT}{INDENT}crate::testing::DEFAULT_TEST_FORMATTER_TIMEOUT,
+{INDENT}{INDENT}{INDENT}{INDENT}crate::testing::DEFAULT_TEST_DEBUG_ENABLED,
+{INDENT}{INDENT}{INDENT}{INDENT}crate::runners::JavaScriptRuntime::default(),
+{INDENT}{INDENT}{INDENT})
+{INDENT}{INDENT}{INDENT}.expect(\"it to be successful\")
+{INDENT}{INDENT}{INDENT}.1
+{INDENT}{INDENT}{INDENT}.expect(\"it to be some\");
 
 {INDENT}{INDENT}assert_eq!(result, output);
 {INDENT}}}",
@@ -336,10 +337,6 @@ impl Tool {
                         "
 #[cfg(test)]
 mod test_{module_name} {{
-{INDENT}const TIMEOUT: u64 = 0;
-
-{INDENT}const DEBUG_ENABLED: bool = true;
-
 {tests}
 }}
 ",
