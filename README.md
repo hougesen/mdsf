@@ -389,7 +389,7 @@ mdsf init
 
 <!-- START_SECTION:supported-tools -->
 
-`mdsf` currently supports 275 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 276 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                                                                                 | Description                                                                                                                                   | Categories            | Languages                                                                                                                         |
 | ------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
@@ -604,6 +604,7 @@ mdsf init
 | [scalafmt](https://github.com/scalameta/scalafmt)                                    | Code formatter for Scala                                                                                                                      | `formatter`           | `scala`                                                                                                                           |
 | [scalariform](https://github.com/scala-ide/scalariform)                              | Scala source code formatter                                                                                                                   | `formatter`           | `scala`                                                                                                                           |
 | [selene](https://github.com/kampfkarren/selene)                                      | A blazing-fast modern Lua linter written in Rust                                                                                              | `linter`              | `lua`                                                                                                                             |
+| [semistandard](https://github.com/standard/semistandard)                             | All the goodness of standardjs with semicolons sprinkled on top                                                                               | `formatter`, `linter` | `javascript`                                                                                                                      |
 | [shellcheck](https://github.com/koalaman/shellcheck)                                 | ShellCheck, a static analysis tool for shell scripts                                                                                          | `linter`              | `bash`, `shell`                                                                                                                   |
 | [shellharden](https://github.com/anordal/shellharden)                                | The corrective bash syntax highlighter                                                                                                        | `linter`              | `bash`, `shell`                                                                                                                   |
 | [shfmt](https://github.com/mvdan/sh)                                                 | Shell script formatter                                                                                                                        | `formatter`           | `shell`                                                                                                                           |
@@ -675,7 +676,7 @@ mdsf init
 
 <!-- START_SECTION:supported-commands -->
 
-`mdsf` currently supports 300 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 301 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                     | Command                                                                                 |
 | ------------------------ | --------------------------------------------------------------------------------------- |
@@ -909,6 +910,7 @@ mdsf init
 | `scalafmt`               | `scalafmt --quiet --mode any $PATH`                                                     |
 | `scalariform`            | `scalariform $PATH`                                                                     |
 | `selene`                 | `selene $PATH`                                                                          |
+| `semistandard`           | `semistandard --fix --stdin`                                                            |
 | `shellcheck`             | `shellcheck $PATH`                                                                      |
 | `shellharden`            | `shellharden --transform --replace $PATH`                                               |
 | `shfmt`                  | `shfmt --write $PATH`                                                                   |

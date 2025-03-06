@@ -114,6 +114,8 @@ jobs:
         run: ( ( which xmllint ) || ( ( which apt-get && sudo apt-get install -y libxml2-utils ) ) || ( echo "Unable to install tool" ) )
       - name: pycln
         run: ( ( which pycln ) || ( ( which pipx && pipx install pycln ) ) || ( echo "Unable to install tool" ) )
+      - name: semistandard
+        run: ( ( which semistandard ) || ( ( which npm && npm i -g semistandard ) ) || ( echo "Unable to install tool" ) )
       - name: dotnet
         run: ( ( which csharpier ) || ( ( which dotnet && dotnet tool install -g csharpier ) ) || ( echo "Unable to install tool" ) )
       - name: black

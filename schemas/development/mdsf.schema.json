@@ -1213,6 +1213,11 @@
           "enum": ["selene"]
         },
         {
+          "description": "All the goodness of standardjs with semicolons sprinkled on top\n\n[https://github.com/standard/semistandard](https://github.com/standard/semistandard)\n\n`semistandard --fix --stdin`",
+          "type": "string",
+          "enum": ["semistandard"]
+        },
+        {
           "description": "ShellCheck, a static analysis tool for shell scripts\n\n[https://github.com/koalaman/shellcheck](https://github.com/koalaman/shellcheck)\n\n`shellcheck $PATH`",
           "type": "string",
           "enum": ["shellcheck"]

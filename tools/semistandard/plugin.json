@@ -1,0 +1,24 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "semistandard",
+  "categories": ["formatter", "linter"],
+  "commands": {
+    "": {
+      "arguments": ["--fix", "--stdin"],
+      "stdin": true,
+      "tests": [
+        {
+          "language": "javascript",
+          "test_input": "    async function asyncAddition(a,b  )\n    {\n        return a+b\n    }\n\nconsole.info(asyncAddition(1, 2));\n            ",
+          "test_output": "async function asyncAddition (a, b) {\n  return a + b;\n}\n\nconsole.info(asyncAddition(1, 2));\n"
+        }
+      ]
+    }
+  },
+  "description": "All the goodness of standardjs with semicolons sprinkled on top",
+  "homepage": "https://github.com/standard/semistandard",
+  "languages": ["javascript"],
+  "packages": {
+    "npm": "semistandard"
+  }
+}
