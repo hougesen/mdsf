@@ -389,7 +389,7 @@ mdsf init
 
 <!-- START_SECTION:supported-tools -->
 
-`mdsf` currently supports 274 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 275 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                                                                                 | Description                                                                                                                                   | Categories            | Languages                                                                                                                         |
 | ------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
@@ -532,6 +532,7 @@ mdsf init
 | [markuplint](https://markuplint.dev/)                                                | An HTML linter for all markup developers                                                                                                      | `linter`              | `html`                                                                                                                            |
 | [md-padding](https://github.com/harttle/md-padding)                                  | Fix mixed spaces in Markdown: Chinese and English, numbers, links                                                                             | `formatter`           | `markdown`                                                                                                                        |
 | [mdformat](https://github.com/executablebooks/mdformat)                              | CommonMark compliant Markdown formatter                                                                                                       | `formatter`           | `markdwon`                                                                                                                        |
+| [mdsf](https://github.com/hougesen/mdsf)                                             | Run mdsf inside mdsf                                                                                                                          | `formatter`           | `markdown`                                                                                                                        |
 | [mdslw](https://github.com/razziel89/mdslw)                                          | Prepare your markdown for easy diff'ing!                                                                                                      | `formatter`           | `markdown`                                                                                                                        |
 | [meson](https://mesonbuild.com/)                                                     | Meson is an open source build system meant to be both extremely fast, and, even more importantly, as user friendly as possible                | `formatter`           | `meson`                                                                                                                           |
 | [misspell](https://github.com/client9/misspell/)                                     | Correct commonly misspelled English words in source files                                                                                     | `spell-check`         |                                                                                                                                   |
@@ -674,7 +675,7 @@ mdsf init
 
 <!-- START_SECTION:supported-commands -->
 
-`mdsf` currently supports 298 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 300 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                     | Command                                                                                 |
 | ------------------------ | --------------------------------------------------------------------------------------- |
@@ -830,6 +831,8 @@ mdsf init
 | `markuplint`             | `markuplint --fix $PATH`                                                                |
 | `md-padding`             | `md-padding -i $PATH`                                                                   |
 | `mdformat`               | `mdformat $PATH`                                                                        |
+| `mdsf:check`             | `mdsf check $PATH`                                                                      |
+| `mdsf:format`            | `mdsf format $PATH`                                                                     |
 | `mdslw`                  | `mdslw $PATH`                                                                           |
 | `meson:fmt`              | `meson fmt -i $PATH`                                                                    |
 | `misspell`               | `misspell -w $PATH`                                                                     |

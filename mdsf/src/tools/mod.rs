@@ -153,6 +153,8 @@ pub mod markdownlint_cli_2;
 pub mod markuplint;
 pub mod md_padding;
 pub mod mdformat;
+pub mod mdsf_check;
+pub mod mdsf_format;
 pub mod mdslw;
 pub mod meson_fmt;
 pub mod misspell;
@@ -1518,6 +1520,22 @@ pub enum Tooling {
     ///
     /// `mdformat $PATH`
     Mdformat,
+
+    #[serde(rename = "mdsf:check")]
+    /// Run mdsf inside mdsf
+    ///
+    /// [https://github.com/hougesen/mdsf](https://github.com/hougesen/mdsf)
+    ///
+    /// `mdsf check $PATH`
+    MdsfCheck,
+
+    #[serde(rename = "mdsf:format")]
+    /// Run mdsf inside mdsf
+    ///
+    /// [https://github.com/hougesen/mdsf](https://github.com/hougesen/mdsf)
+    ///
+    /// `mdsf format $PATH`
+    MdsfFormat,
 
     #[serde(rename = "mdslw")]
     /// Prepare your markdown for easy diff'ing!
@@ -3183,6 +3201,16 @@ impl Tooling {
                 md_padding::IS_STDIN,
             ),
             Self::Mdformat => (&mdformat::COMMANDS, mdformat::set_args, mdformat::IS_STDIN),
+            Self::MdsfCheck => (
+                &mdsf_check::COMMANDS,
+                mdsf_check::set_args,
+                mdsf_check::IS_STDIN,
+            ),
+            Self::MdsfFormat => (
+                &mdsf_format::COMMANDS,
+                mdsf_format::set_args,
+                mdsf_format::IS_STDIN,
+            ),
             Self::Mdslw => (&mdslw::COMMANDS, mdslw::set_args, mdslw::IS_STDIN),
             Self::MesonFmt => (
                 &meson_fmt::COMMANDS,
@@ -3780,6 +3808,8 @@ impl AsRef<str> for Tooling {
             Self::Markuplint => "markuplint",
             Self::MdPadding => "md-padding",
             Self::Mdformat => "mdformat",
+            Self::MdsfCheck => "mdsf:check",
+            Self::MdsfFormat => "mdsf:format",
             Self::Mdslw => "mdslw",
             Self::MesonFmt => "meson:fmt",
             Self::Misspell => "misspell",
