@@ -62,6 +62,7 @@ jobs:
         uses: taiki-e/install-action@cargo-llvm-cov
       - run: rustup toolchain install stable --profile minimal
       - run: rustup component add rustfmt clippy
+      - run: curl -LsSf https://github.com/posit-dev/air/releases/latest/download/air-installer.sh | sh
       - name: pyink
         run: ( ( which pyink ) || ( ( which pipx && pipx install pyink ) ) || ( echo "Unable to install tool" ) )
       - name: purs-tidy

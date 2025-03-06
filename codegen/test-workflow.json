@@ -76,7 +76,10 @@
   ],
   "post:uses": [
     { "run": "rustup toolchain install stable --profile minimal" },
-    { "run": "rustup component add rustfmt clippy" }
+    { "run": "rustup component add rustfmt clippy" },
+    {
+      "run": "curl -LsSf https://github.com/posit-dev/air/releases/latest/download/air-installer.sh | sh"
+    }
   ],
   "post:packages": [
     { "name": "Run tests", "run": "cargo test" },
