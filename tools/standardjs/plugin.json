@@ -4,7 +4,15 @@
   "categories": ["formatter", "linter"],
   "commands": {
     "": {
-      "arguments": ["--fix", "$PATH"]
+      "arguments": ["--fix", "--stdin"],
+      "stdin": true,
+      "tests": [
+        {
+          "language": "javascript",
+          "test_input": "\n    async function asyncAddition(a,b  )\n    {\n        return a+b\n    }\n\nconsole.info(asyncAddition(1, 2));\n            ",
+          "test_output": "async function asyncAddition (a, b) {\n  return a + b\n}\n\nconsole.info(asyncAddition(1, 2))\n"
+        }
+      ]
     }
   },
   "description": "JavaScript style guide, linter, and formatter",

@@ -924,7 +924,7 @@ mdsf init
 | `sqlfluff:lint`          | `sqlfluff lint --dialect ansi $PATH`                                                    |
 | `sqlfmt`                 | `sqlfmt $PATH`                                                                          |
 | `sqruff`                 | `sqruff fix $PATH`                                                                      |
-| `standardjs`             | `standard --fix $PATH`                                                                  |
+| `standardjs`             | `standard --fix --stdin`                                                                |
 | `standardrb`             | `standardrb --fix $PATH`                                                                |
 | `statix:check`           | `statix check $PATH`                                                                    |
 | `statix:fix`             | `statix fix $PATH`                                                                      |

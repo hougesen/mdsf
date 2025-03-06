@@ -1288,7 +1288,7 @@
           "enum": ["sqruff"]
         },
         {
-          "description": "JavaScript style guide, linter, and formatter\n\n[https://github.com/standard/standard](https://github.com/standard/standard)\n\n`standard --fix $PATH`",
+          "description": "JavaScript style guide, linter, and formatter\n\n[https://github.com/standard/standard](https://github.com/standard/standard)\n\n`standard --fix --stdin`",
           "type": "string",
           "enum": ["standardjs"]
         },
