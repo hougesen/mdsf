@@ -25,6 +25,9 @@
   "homepage": "https://www.kcl-lang.io/docs/tools/cli/kcl/fmt",
   "languages": ["kcl"],
   "packages": {
+    "brew": {
+      "name": "kcl-lang/tap/kcl"
+    },
     "go": "kcl-lang.io/cli/cmd/kcl@latest"
   }
 }
