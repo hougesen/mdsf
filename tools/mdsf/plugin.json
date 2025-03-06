@@ -1,0 +1,24 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "mdsf",
+  "categories": ["formatter"],
+  "commands": {
+    "check": {
+      "arguments": ["check", "$PATH"]
+    },
+    "format": {
+      "arguments": ["format", "$PATH"]
+    }
+  },
+  "description": "Run mdsf inside mdsf",
+  "disable_ci_tests": true,
+  "homepage": "https://github.com/hougesen/mdsf",
+  "languages": ["markdown"],
+  "packages": {
+    "brew": {
+      "name": "hougesen/tap/mdsf"
+    },
+    "cargo": "mdsf",
+    "npm": "mdsf-cli"
+  }
+}
