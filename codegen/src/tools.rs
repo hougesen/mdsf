@@ -504,7 +504,7 @@ impl AsRef<str> for Tooling {
 
             as_ref_values.insert(format!(
                 "{INDENT}{INDENT}{INDENT}Self::{} => \"{}\",",
-                command.enum_value, command.module_name,
+                command.enum_value, command.serde_rename,
             ));
 
             all_commands.push(command);
