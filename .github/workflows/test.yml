@@ -156,7 +156,7 @@ jobs:
       - name: ruff
         run: ( ( which ruff ) || ( ( which brew &&  brew install ruff ) || ( which pipx && pipx install ruff ) ) || ( echo "Unable to install tool" ) )
       - name: kcl
-        run: ( ( which kcl ) || ( ( which go && go install kcl-lang.io/cli/cmd/kcl@latest ) ) || ( echo "Unable to install tool" ) )
+        run: ( ( which kcl ) || ( ( which brew &&  brew install kcl-lang/tap/kcl ) || ( which go && go install kcl-lang.io/cli/cmd/kcl@latest ) ) || ( echo "Unable to install tool" ) )
       - name: sqlfluff
         run: ( ( which sqlfluff ) || ( ( which pipx && pipx install sqlfluff ) ) || ( echo "Unable to install tool" ) )
       - name: swiftformat
