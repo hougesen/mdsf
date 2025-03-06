@@ -2270,7 +2270,7 @@ pub enum Tooling {
     ///
     /// [https://github.com/standard/standard](https://github.com/standard/standard)
     ///
-    /// `standard --fix $PATH`
+    /// `standard --fix --stdin`
     Standardjs,
 
     #[serde(rename = "standardrb")]
