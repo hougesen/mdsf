@@ -753,7 +753,7 @@
           "enum": ["kulala-fmt:format"]
         },
         {
-          "description": "A formatter for the leptos view! macro\n\n[https://github.com/bram209/leptosfmt](https://github.com/bram209/leptosfmt)\n\n`leptosfmt --quiet $PATH`",
+          "description": "A formatter for the leptos view! macro\n\n[https://github.com/bram209/leptosfmt](https://github.com/bram209/leptosfmt)\n\n`leptosfmt $PATH`",
           "type": "string",
           "enum": ["leptosfmt"]
         },
@@ -898,7 +898,7 @@
           "enum": ["nimpretty"]
         },
         {
-          "description": "The official (but not yet stable) formatter for Nix code\n\n[https://github.com/serokell/nixfmt](https://github.com/serokell/nixfmt)\n\n`nixfmt $PATH`",
+          "description": "The official (but not yet stable) formatter for Nix code\n\n[https://github.com/nixos/nixfmt](https://github.com/nixos/nixfmt)\n\n`nixfmt $PATH`",
           "type": "string",
           "enum": ["nixfmt"]
         },
@@ -1543,7 +1543,7 @@
           "enum": ["yapf"]
         },
         {
-          "description": "Code formatter for the Yew framework\n\n[https://github.com/its-the-shrimp/yew-fmt](https://github.com/its-the-shrimp/yew-fmt)\n\n`yew-fmt --edition 2021 --quiet $PATH`",
+          "description": "Code formatter for the Yew framework\n\n[https://github.com/its-the-shrimp/yew-fmt](https://github.com/its-the-shrimp/yew-fmt)\n\n`yew-fmt --edition 2021 $PATH`",
           "type": "string",
           "enum": ["yew-fmt"]
         },

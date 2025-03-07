@@ -15,10 +15,10 @@
     }
   },
   "description": "Extensible Haskell pretty printer",
-  "disable_ci_tests": true,
   "homepage": "https://github.com/mihaimaruseac/hindent",
   "languages": ["haskell"],
   "packages": {
+    "apt": "hindent",
     "stack": "hindent"
   }
 }

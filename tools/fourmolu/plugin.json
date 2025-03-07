@@ -15,10 +15,13 @@
     }
   },
   "description": "A formatter for Haskell source code",
-  "disable_ci_tests": true,
+  "disable_ci_package_install": true,
   "homepage": "https://github.com/fourmolu/fourmolu",
   "languages": ["haskell"],
   "packages": {
+    "brew": {
+      "name": "fourmolu"
+    },
     "cabal": "fourmolu",
     "stack": "fourmolu"
   }

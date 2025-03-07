@@ -140,8 +140,8 @@ pub struct Tool {
     #[serde(default)]
     pub description: String,
 
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub disable_ci_tests: Option<bool>,
+    #[serde(default, skip_serializing_if = "is_false")]
+    pub disable_ci_package_install: bool,
 
     #[serde(default)]
     #[schemars(url)]

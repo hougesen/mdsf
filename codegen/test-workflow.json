@@ -62,11 +62,7 @@
       }
     },
     {
-      "uses": "haskell-actions/setup@v2",
-      "with": {
-        "ghc-version": "latest",
-        "cabal-version": "latest"
-      }
+      "uses": "haskell-actions/setup@v2"
     },
     { "uses": "julia-actions/cache@v2" },
     { "uses": "cargo-bins/cargo-binstall@main" },

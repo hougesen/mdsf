@@ -1415,7 +1415,7 @@ pub enum Tooling {
     ///
     /// [https://github.com/bram209/leptosfmt](https://github.com/bram209/leptosfmt)
     ///
-    /// `leptosfmt --quiet $PATH`
+    /// `leptosfmt $PATH`
     Leptosfmt,
 
     #[serde(rename = "liquidsoap-prettier")]
@@ -1645,7 +1645,7 @@ pub enum Tooling {
     #[serde(rename = "nixfmt")]
     /// The official (but not yet stable) formatter for Nix code
     ///
-    /// [https://github.com/serokell/nixfmt](https://github.com/serokell/nixfmt)
+    /// [https://github.com/nixos/nixfmt](https://github.com/nixos/nixfmt)
     ///
     /// `nixfmt $PATH`
     Nixfmt,
@@ -2679,7 +2679,7 @@ pub enum Tooling {
     ///
     /// [https://github.com/its-the-shrimp/yew-fmt](https://github.com/its-the-shrimp/yew-fmt)
     ///
-    /// `yew-fmt --edition 2021 --quiet $PATH`
+    /// `yew-fmt --edition 2021 $PATH`
     YewFmt,
 
     #[serde(rename = "yq")]

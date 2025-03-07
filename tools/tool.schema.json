@@ -32,8 +32,8 @@
       "default": "",
       "type": "string"
     },
-    "disable_ci_tests": {
-      "type": ["boolean", "null"]
+    "disable_ci_package_install": {
+      "type": "boolean"
     },
     "homepage": {
       "default": "",

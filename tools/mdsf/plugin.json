@@ -11,7 +11,7 @@
     }
   },
   "description": "Run mdsf inside mdsf",
-  "disable_ci_tests": true,
+  "disable_ci_package_install": true,
   "homepage": "https://github.com/hougesen/mdsf",
   "languages": ["markdown"],
   "packages": {
