@@ -54,9 +54,6 @@ jobs:
           distribution: temurin
           java-version: "21"
       - uses: haskell-actions/setup@v2
-        with:
-          cabal-version: latest
-          ghc-version: latest
       - uses: julia-actions/cache@v2
       - uses: cargo-bins/cargo-binstall@main
       - name: Install cargo-llvm-cov
@@ -76,6 +73,8 @@ jobs:
         run: ( ( which autoflake ) || ( ( which pipx && pipx install autoflake ) ) || ( echo "Unable to install tool" ) )
       - name: autopep8
         run: ( ( which autopep8 ) || ( ( which pipx && pipx install autopep8 ) ) || ( echo "Unable to install tool" ) )
+      - name: beautysh
+        run: ( ( which beautysh ) || ( ( which brew &&  brew install beautysh ) || ( which pipx && pipx install beautysh ) ) || ( echo "Unable to install tool" ) )
       - name: biome
         run: ( ( which biome ) || ( ( which npm && npm i -g @biomejs/biome ) ) || ( echo "Unable to install tool" ) )
       - name: black
@@ -102,6 +101,8 @@ jobs:
         run: ( ( which elm-format ) || ( ( which npm && npm i -g elm-format ) ) || ( echo "Unable to install tool" ) )
       - name: fantomas
         run: ( ( which fantomas ) || ( ( which dotnet && dotnet tool install -g fantomas ) ) || ( echo "Unable to install tool" ) )
+      - name: fourmolu
+        run: ( ( which fourmolu ) || ( ( which brew &&  brew install fourmolu ) || ( which stack && stack install fourmolu ) || ( which cabal && cabal install fourmolu ) ) || ( echo "Unable to install tool" ) )
       - name: fprettify
         run: ( ( which fprettify ) || ( ( which pipx && pipx install fprettify ) ) || ( echo "Unable to install tool" ) )
       - name: gofumpt
@@ -110,6 +111,8 @@ jobs:
         run: ( ( which goimports ) || ( ( which go && go install golang.org/x/tools/cmd/goimports@latest ) ) || ( echo "Unable to install tool" ) )
       - name: golines
         run: ( ( which golines ) || ( ( which go && go install github.com/segmentio/golines@latest ) ) || ( echo "Unable to install tool" ) )
+      - name: hindent
+        run: ( ( which hindent ) || ( ( which apt-get && sudo apt-get install -y hindent ) || ( which stack && stack install hindent ) ) || ( echo "Unable to install tool" ) )
       - name: html-beautify
         run: ( ( which html-beautify ) || ( ( which npm && npm i -g js-beautify ) ) || ( echo "Unable to install tool" ) )
       - name: htmlbeautifier
@@ -186,6 +189,8 @@ jobs:
         run: ( ( which standardrb ) || ( ( which gem && gem install standardrb ) ) || ( echo "Unable to install tool" ) )
       - name: stylefmt
         run: ( ( which stylefmt ) || ( ( which npm && npm i -g stylefmt ) ) || ( echo "Unable to install tool" ) )
+      - name: stylish-haskell
+        run: ( ( which stylish-haskell ) || ( ( which apt-get && sudo apt-get install -y stylish-haskell ) || ( which stack && stack install stylish-haskell ) || ( which cabal && cabal install stylish-haskell ) ) || ( echo "Unable to install tool" ) )
       - name: stylua
         run: ( ( which stylua ) || ( ( which npm && npm i -g @johnnymorganz/stylua-bin ) || ( which cargo && ( cargo binstall stylua || cargo install stylua ) ) || ( which brew &&  brew install stylua ) ) || ( echo "Unable to install tool" ) )
       - name: swiftformat
@@ -216,6 +221,8 @@ jobs:
         run: ( ( which yamlfmt ) || ( ( which go && go install github.com/google/yamlfmt/cmd/yamlfmt@latest ) ) || ( echo "Unable to install tool" ) )
       - name: yapf
         run: ( ( which yapf ) || ( ( which pipx && pipx install yapf ) ) || ( echo "Unable to install tool" ) )
+      - name: yew-fmt
+        run: ( ( which yew-fmt ) || ( ( which cargo && ( cargo binstall yew-fmt || cargo install yew-fmt ) ) ) || ( echo "Unable to install tool" ) )
       - name: Run tests
         run: cargo test
       - name: Generate code coverage

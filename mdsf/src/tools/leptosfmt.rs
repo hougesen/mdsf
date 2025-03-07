@@ -8,7 +8,6 @@ pub fn set_args(
     mut cmd: std::process::Command,
     file_path: &std::path::Path,
 ) -> std::process::Command {
-    cmd.arg("--quiet");
     cmd.arg(file_path);
     cmd
 }

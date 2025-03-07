@@ -8,7 +8,6 @@
     }
   },
   "description": "An experiment of formatting .cabal files",
-  "disable_ci_tests": true,
   "homepage": "https://github.com/phadej/cabal-fmt",
   "languages": ["cabal"],
   "packages": {

@@ -4,7 +4,7 @@
   "categories": ["formatter"],
   "commands": {
     "": {
-      "arguments": ["--edition", "2021", "--quiet", "$PATH"],
+      "arguments": ["--edition", "2021", "$PATH"],
       "tests": [
         {
           "language": "rust",
@@ -15,7 +15,6 @@
     }
   },
   "description": "Code formatter for the Yew framework",
-  "disable_ci_tests": true,
   "homepage": "https://github.com/its-the-shrimp/yew-fmt",
   "languages": ["rust"],
   "packages": {

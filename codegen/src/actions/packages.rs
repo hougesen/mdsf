@@ -91,7 +91,7 @@ pub fn generate_install_steps(tools: &Vec<Tool>) -> Vec<WorkflowJobsStep> {
             continue;
         }
 
-        if matches!(tool.disable_ci_tests, Some(true)) {
+        if tool.disable_ci_package_install {
             continue;
         }
 

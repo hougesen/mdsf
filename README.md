@@ -545,7 +545,7 @@ mdsf init
 | [nginxfmt](https://github.com/slomkowski/nginx-config-formatter)                     | nginx config file formatter/beautifier written in Python with no additional dependencies                                                      | `formatter`           | `nginx`                                                                                                                           |
 | [nickel](https://nickel-lang.org/)                                                   | Better configuration for less                                                                                                                 | `formatter`           | `nickel`                                                                                                                          |
 | [nimpretty](https://github.com/nim-lang/nim)                                         | Code formatter for the Nim programming language                                                                                               | `formatter`           | `nim`                                                                                                                             |
-| [nixfmt](https://github.com/serokell/nixfmt)                                         | The official (but not yet stable) formatter for Nix code                                                                                      | `formatter`           | `nix`                                                                                                                             |
+| [nixfmt](https://github.com/nixos/nixfmt)                                            | The official (but not yet stable) formatter for Nix code                                                                                      | `formatter`           | `nix`                                                                                                                             |
 | [nixpkgs-fmt](https://github.com/nix-community/nixpkgs-fmt)                          | Nix code formatter for nixpkgs                                                                                                                | `formatter`           | `nix`                                                                                                                             |
 | [nomad](https://developer.hashicorp.com/nomad/docs/commands)                         | CLI for HashiCorp Nomad                                                                                                                       | `formatter`           | `hcl`                                                                                                                             |
 | [nph](https://github.com/arnetheduck/nph)                                            | An opinionated code formatter for Nim                                                                                                         | `formatter`           | `nim`                                                                                                                             |
@@ -818,7 +818,7 @@ mdsf init
 | `ktlint`                 | `ktlint --format --log-level=error $PATH`                                               |
 | `kulala-fmt:check`       | `kulala-fmt check $PATH`                                                                |
 | `kulala-fmt:format`      | `kulala-fmt format $PATH`                                                               |
-| `leptosfmt`              | `leptosfmt --quiet $PATH`                                                               |
+| `leptosfmt`              | `leptosfmt $PATH`                                                                       |
 | `liquidsoap-prettier`    | `liquidsoap-prettier --write $PATH`                                                     |
 | `luacheck`               | `luacheck $PATH`                                                                        |
 | `luaformatter`           | `lua-format -i $PATH`                                                                   |
@@ -976,7 +976,7 @@ mdsf init
 | `yamlfix`                | `yamlfix $PATH`                                                                         |
 | `yamlfmt`                | `yamlfmt -quiet $PATH`                                                                  |
 | `yapf`                   | `yapf --in-place $PATH`                                                                 |
-| `yew-fmt`                | `yew-fmt --edition 2021 --quiet $PATH`                                                  |
+| `yew-fmt`                | `yew-fmt --edition 2021 $PATH`                                                          |
 | `yq`                     | `yq --inplace $PATH`                                                                    |
 | `zig:fmt`                | `zig fmt $PATH`                                                                         |
 | `ziggy:fmt`              | `ziggy fmt $PATH`                                                                       |
