@@ -10,5 +10,10 @@
   "description": "Indents and optionally converts Fortran program sources",
   "homepage": "https://github.com/wvermin/findent",
   "languages": ["fortran"],
-  "packages": {}
+  "packages": {
+    "apt": "findent",
+    "brew": {
+      "name": "findent"
+    }
+  }
 }
