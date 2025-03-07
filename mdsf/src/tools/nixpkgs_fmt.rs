@@ -19,7 +19,7 @@ pub const IS_STDIN: bool = false;
 #[cfg(test)]
 mod test_nixpkgs_fmt {
     #[test_with::executable(nixpkgs-fmt)]
-    fn test_nixpkgs_fmt_nix_36a22e30dae799c5() {
+    fn test_nixpkgs_fmt_nix_c2c7561cdeb3702() {
         let input = r#"{
             lib, buildPythonPackage, fetchFromGitHub, redis }:
 
@@ -55,7 +55,7 @@ buildPythonPackage rec {
 }:
 
 buildPythonPackage rec {
-  pname =   "huey";
+  pname = "huey";
   version = "2.4.2";
 
   src = fetchFromGitHub {
