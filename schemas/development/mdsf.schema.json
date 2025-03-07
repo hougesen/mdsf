@@ -508,6 +508,21 @@
           "enum": ["forge:fmt"]
         },
         {
+          "description": "A Fortran linter, written in Rust\n\n[https://github.com/plasmafair/fortitude](https://github.com/plasmafair/fortitude)\n\n`fortitude check --quiet --no-respect-gitignore $PATH`",
+          "type": "string",
+          "enum": ["fortitude:check"]
+        },
+        {
+          "description": "A Fortran linter, written in Rust\n\n[https://github.com/plasmafair/fortitude](https://github.com/plasmafair/fortitude)\n\n`fortitude check --quiet --no-respect-gitignore --fix $PATH`",
+          "type": "string",
+          "enum": ["fortitude:check:fix"]
+        },
+        {
+          "description": "A Fortran linter, written in Rust\n\n[https://github.com/plasmafair/fortitude](https://github.com/plasmafair/fortitude)\n\n`fortitude check --quiet --no-respect-gitignore --fix --unsafe-fixes $PATH`",
+          "type": "string",
+          "enum": ["fortitude:check:fix:unsafe"]
+        },
+        {
           "description": "A formatter for Haskell source code\n\n[https://github.com/fourmolu/fourmolu](https://github.com/fourmolu/fourmolu)\n\n`fourmolu -i $PATH`",
           "type": "string",
           "enum": ["fourmolu"]

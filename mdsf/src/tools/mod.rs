@@ -90,6 +90,9 @@ pub mod fixjson;
 pub mod floskell;
 pub mod fnlfmt;
 pub mod forge_fmt;
+pub mod fortitude_check;
+pub mod fortitude_check_fix;
+pub mod fortitude_check_fix_unsafe;
 pub mod fourmolu;
 pub mod fprettify;
 pub mod futhark_fmt;
@@ -1017,6 +1020,30 @@ pub enum Tooling {
     ///
     /// `forge fmt $PATH`
     ForgeFmt,
+
+    #[serde(rename = "fortitude:check")]
+    /// A Fortran linter, written in Rust
+    ///
+    /// [https://github.com/plasmafair/fortitude](https://github.com/plasmafair/fortitude)
+    ///
+    /// `fortitude check --quiet --no-respect-gitignore $PATH`
+    FortitudeCheck,
+
+    #[serde(rename = "fortitude:check:fix")]
+    /// A Fortran linter, written in Rust
+    ///
+    /// [https://github.com/plasmafair/fortitude](https://github.com/plasmafair/fortitude)
+    ///
+    /// `fortitude check --quiet --no-respect-gitignore --fix $PATH`
+    FortitudeCheckFix,
+
+    #[serde(rename = "fortitude:check:fix:unsafe")]
+    /// A Fortran linter, written in Rust
+    ///
+    /// [https://github.com/plasmafair/fortitude](https://github.com/plasmafair/fortitude)
+    ///
+    /// `fortitude check --quiet --no-respect-gitignore --fix --unsafe-fixes $PATH`
+    FortitudeCheckFixUnsafe,
 
     #[serde(rename = "fourmolu")]
     /// A formatter for Haskell source code
@@ -3019,6 +3046,21 @@ impl Tooling {
                 forge_fmt::set_args,
                 forge_fmt::IS_STDIN,
             ),
+            Self::FortitudeCheck => (
+                &fortitude_check::COMMANDS,
+                fortitude_check::set_args,
+                fortitude_check::IS_STDIN,
+            ),
+            Self::FortitudeCheckFix => (
+                &fortitude_check_fix::COMMANDS,
+                fortitude_check_fix::set_args,
+                fortitude_check_fix::IS_STDIN,
+            ),
+            Self::FortitudeCheckFixUnsafe => (
+                &fortitude_check_fix_unsafe::COMMANDS,
+                fortitude_check_fix_unsafe::set_args,
+                fortitude_check_fix_unsafe::IS_STDIN,
+            ),
             Self::Fourmolu => (&fourmolu::COMMANDS, fourmolu::set_args, fourmolu::IS_STDIN),
             Self::Fprettify => (
                 &fprettify::COMMANDS,
@@ -3759,6 +3801,9 @@ impl AsRef<str> for Tooling {
             Self::Floskell => "floskell",
             Self::Fnlfmt => "fnlfmt",
             Self::ForgeFmt => "forge:fmt",
+            Self::FortitudeCheck => "fortitude:check",
+            Self::FortitudeCheckFix => "fortitude:check:fix",
+            Self::FortitudeCheckFixUnsafe => "fortitude:check:fix:unsafe",
             Self::Fourmolu => "fourmolu",
             Self::Fprettify => "fprettify",
             Self::FutharkFmt => "futhark:fmt",

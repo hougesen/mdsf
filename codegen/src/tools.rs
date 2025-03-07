@@ -207,9 +207,10 @@ impl Tool {
         let module_name = self.get_command_name(command).to_case(Case::Snake);
         let enum_value = self.get_command_name(command).to_case(Case::Pascal);
 
-        let language = test.language.to_case(Case::Snake);
-
-        let test_fn_name = format!("test_{module_name}_{language}_{id}",);
+        let test_fn_name = format!(
+            "test_{module_name}_{}_{id}",
+            test.language.to_case(Case::Snake).replace(".", "")
+        );
 
         let test_output = &test.test_output;
 
