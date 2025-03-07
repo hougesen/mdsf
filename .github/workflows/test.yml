@@ -74,7 +74,7 @@ jobs:
       - name: autopep8
         run: ( ( which autopep8 ) || ( ( which pipx && pipx install autopep8 ) ) || ( echo "Unable to install tool" ) )
       - name: beautysh
-        run: ( ( which beautysh ) || ( ( which brew &&  brew install beautysh ) || ( which pipx && pipx install beautysh ) ) || ( echo "Unable to install tool" ) )
+        run: ( ( which beautysh ) || ( ( which brew &&  brew install beautysh ) ) || ( echo "Unable to install tool" ) )
       - name: biome
         run: ( ( which biome ) || ( ( which npm && npm i -g @biomejs/biome ) ) || ( echo "Unable to install tool" ) )
       - name: black
