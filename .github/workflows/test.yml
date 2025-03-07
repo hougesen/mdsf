@@ -101,8 +101,6 @@ jobs:
         run: ( ( which elm-format ) || ( ( which npm && npm i -g elm-format ) ) || ( echo "Unable to install tool" ) )
       - name: fantomas
         run: ( ( which fantomas ) || ( ( which dotnet && dotnet tool install -g fantomas ) ) || ( echo "Unable to install tool" ) )
-      - name: fourmolu
-        run: ( ( which fourmolu ) || ( ( which brew &&  brew install fourmolu ) || ( which stack && stack install fourmolu ) || ( which cabal && cabal install fourmolu ) ) || ( echo "Unable to install tool" ) )
       - name: fprettify
         run: ( ( which fprettify ) || ( ( which pipx && pipx install fprettify ) ) || ( echo "Unable to install tool" ) )
       - name: gofumpt
