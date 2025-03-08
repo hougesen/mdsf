@@ -26,7 +26,7 @@ pub const IS_STDIN: bool = false;
 
 #[cfg(test)]
 mod test_alex {
-    #[test_with::executable(npx)]
+    #[test_with::executable(alex || npx || pnpm || deno || bunx)]
     fn test_alex_markdown_114ca1bc58b35aef() {
         let input = r#"hello"#;
 

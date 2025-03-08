@@ -26,7 +26,7 @@ pub const IS_STDIN: bool = false;
 
 #[cfg(test)]
 mod test_fortitude_check_fix {
-    #[test_with::executable(fortitude)]
+    #[test_with::executable(fortitude || pipx || uv)]
     fn test_fortitude_check_fix_f_90_3b0b8d0e32ad7855() {
         let input = r#"program example
     implicit none (type, external)

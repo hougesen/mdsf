@@ -26,7 +26,7 @@ pub const IS_STDIN: bool = true;
 
 #[cfg(test)]
 mod test_semistandard {
-    #[test_with::executable(npx)]
+    #[test_with::executable(semistandard || npx || pnpm || deno || bunx)]
     fn test_semistandard_javascript_dd13bf6b8d6e09a1() {
         let input = r#"    async function asyncAddition(a,b  )
     {

@@ -22,7 +22,7 @@ pub const IS_STDIN: bool = false;
 
 #[cfg(test)]
 mod test_auto_optional {
-    #[test_with::executable(auto-optional)]
+    #[test_with::executable(auto-optional || pipx || uv)]
     fn test_auto_optional_python_c43199b18f48026d() {
         let input = r#"def foo(bar: str = None):
     pass

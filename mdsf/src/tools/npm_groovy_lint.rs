@@ -26,7 +26,7 @@ pub const IS_STDIN: bool = false;
 
 #[cfg(test)]
 mod test_npm_groovy_lint {
-    #[test_with::executable(npx)]
+    #[test_with::executable(npm-groovy-lint || npx || pnpm || deno || bunx)]
     fn test_npm_groovy_lint_groovy_2dc2be09d8013576() {
         let input = r#"                  def add(a, b) {
             return a + b

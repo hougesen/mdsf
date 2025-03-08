@@ -25,7 +25,7 @@ pub const IS_STDIN: bool = false;
 
 #[cfg(test)]
 mod test_stylefmt {
-    #[test_with::executable(npx)]
+    #[test_with::executable(stylefmt || npx || pnpm || deno || bunx)]
     fn test_stylefmt_scss_d3c6918bf17af7f3() {
         let input = r#"// mixin for clearfix
 
@@ -115,7 +115,7 @@ padding: 12px
         assert_eq!(result, output);
     }
 
-    #[test_with::executable(npx)]
+    #[test_with::executable(stylefmt || npx || pnpm || deno || bunx)]
     fn test_stylefmt_css_ed4f8407afa6d974() {
         let input = r#"/* custom properties */
 :root{--fontSize: 1rem;

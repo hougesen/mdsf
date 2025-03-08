@@ -23,7 +23,7 @@ pub const IS_STDIN: bool = false;
 
 #[cfg(test)]
 mod test_blue {
-    #[test_with::executable(blue)]
+    #[test_with::executable(blue || pipx || uv)]
     fn test_blue_python_229ec2b01c2bfe3c() {
         let input = r#"def add( a: int ,  b:int)->int: return a+b"#;
 

@@ -24,7 +24,7 @@ pub const IS_STDIN: bool = false;
 
 #[cfg(test)]
 mod test_pycln {
-    #[test_with::executable(pycln)]
+    #[test_with::executable(pycln || pipx || uv)]
     fn test_pycln_python_21e4539a9b183542() {
         let input = r#"import math"#;
 

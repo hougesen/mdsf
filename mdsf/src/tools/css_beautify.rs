@@ -29,7 +29,7 @@ pub const IS_STDIN: bool = false;
 
 #[cfg(test)]
 mod test_css_beautify {
-    #[test_with::executable(npx)]
+    #[test_with::executable(css-beautify || npx || pnpm || deno || bunx)]
     fn test_css_beautify_css_5ad41f26f69aea3e() {
         let input = r#"h1   {color: blue;} p    {color: red;}"#;
 

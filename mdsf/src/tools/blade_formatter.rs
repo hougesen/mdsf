@@ -26,7 +26,7 @@ pub const IS_STDIN: bool = false;
 
 #[cfg(test)]
 mod test_blade_formatter {
-    #[test_with::executable(npx)]
+    #[test_with::executable(blade-formatter || npx || pnpm || deno || bunx)]
     fn test_blade_formatter_blade_9ddeaf972bfb08c1() {
         let input = r#"@extends('frontend.layouts.app')
 @section('title') foo

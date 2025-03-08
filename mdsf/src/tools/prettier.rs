@@ -30,7 +30,7 @@ pub const IS_STDIN: bool = false;
 
 #[cfg(test)]
 mod test_prettier {
-    #[test_with::executable(npx)]
+    #[test_with::executable(prettier || npx || pnpm || deno || bunx)]
     fn test_prettier_json_8e1e8ed2224fd439() {
         let input = r#"
               {
@@ -68,7 +68,7 @@ mod test_prettier {
         assert_eq!(result, output);
     }
 
-    #[test_with::executable(npx)]
+    #[test_with::executable(prettier || npx || pnpm || deno || bunx)]
     fn test_prettier_javascript_f38217e7df306e3e() {
         let input = r#"
     async function asyncAddition(

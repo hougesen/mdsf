@@ -26,7 +26,7 @@ pub const IS_STDIN: bool = false;
 
 #[cfg(test)]
 mod test_stylua {
-    #[test_with::executable(npx)]
+    #[test_with::executable(stylua || npx || pnpm || deno || bunx)]
     fn test_stylua_lua_ab45775f0dc2fcca() {
         let input = r#"
 

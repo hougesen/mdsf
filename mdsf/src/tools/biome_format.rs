@@ -27,7 +27,7 @@ pub const IS_STDIN: bool = false;
 
 #[cfg(test)]
 mod test_biome_format {
-    #[test_with::executable(npx)]
+    #[test_with::executable(biome || npx || pnpm || deno || bunx)]
     fn test_biome_format_json_90a326e29048e3cd() {
         let input = r#"
               {
@@ -65,7 +65,7 @@ mod test_biome_format {
         assert_eq!(result, output);
     }
 
-    #[test_with::executable(npx)]
+    #[test_with::executable(biome || npx || pnpm || deno || bunx)]
     fn test_biome_format_javascript_4845e9b01c23667f() {
         let input = r#"
     async function asyncAddition(
@@ -100,7 +100,7 @@ mod test_biome_format {
         assert_eq!(result, output);
     }
 
-    #[test_with::executable(npx)]
+    #[test_with::executable(biome || npx || pnpm || deno || bunx)]
     fn test_biome_format_typescript_8154bfdbd3b72275() {
         let input = r#"
     async function asyncAddition(

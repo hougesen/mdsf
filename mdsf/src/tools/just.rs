@@ -30,7 +30,7 @@ pub const IS_STDIN: bool = false;
 
 #[cfg(test)]
 mod test_just {
-    #[test_with::executable(npx)]
+    #[test_with::executable(just || npx || pnpm || deno || bunx || pipx || uv)]
     fn test_just_just_ef70afaf3ede68b9() {
         let input = r#"build:
                 cargo build

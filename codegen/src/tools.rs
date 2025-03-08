@@ -217,8 +217,28 @@ impl Tool {
 
         let test_output = &test.test_output;
 
+        let mut test_with_binaries = vec![self.binary.as_str()];
+
+        if self.packages.npm.is_some() {
+            test_with_binaries.push("npx");
+            test_with_binaries.push("pnpm");
+            test_with_binaries.push("deno");
+            test_with_binaries.push("bunx");
+        }
+
+        if self.packages.pip.is_some() {
+            test_with_binaries.push("pipx");
+            test_with_binaries.push("uv");
+        }
+
+        if self.packages.dub.is_some() {
+            test_with_binaries.push("dub");
+        }
+
+        let executable = test_with_binaries.join(" || ");
+
         let test_code = format!(
-            "{INDENT}#[test_with::executable({bin})]
+            "{INDENT}#[test_with::executable({executable})]
 {INDENT}fn {test_fn_name}() {{
 {INDENT}{INDENT}let input = r#\"{input}\"#;
 
@@ -242,11 +262,6 @@ impl Tool {
 
 {INDENT}{INDENT}assert_eq!(result, output);
 {INDENT}}}",
-            bin = if self.packages.npm.is_some() {
-                "npx"
-            } else {
-                &self.binary
-            },
             input = test.test_input,
             language = test.language,
         );
