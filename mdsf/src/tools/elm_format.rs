@@ -14,10 +14,13 @@ pub fn set_args(
     cmd
 }
 
-pub const COMMANDS: [CommandType; 3] = [
+pub const COMMANDS: [CommandType; 6] = [
     CommandType::NodeModules("elm-format"),
     CommandType::Direct("elm-format"),
     CommandType::Npm("elm-format"),
+    CommandType::Pnpm("elm-format"),
+    CommandType::Bun("elm-format"),
+    CommandType::Deno("elm-format"),
 ];
 
 pub const IS_STDIN: bool = false;
@@ -54,7 +57,7 @@ main =
                 snippet.path(),
                 crate::testing::DEFAULT_TEST_FORMATTER_TIMEOUT,
                 crate::testing::DEFAULT_TEST_DEBUG_ENABLED,
-                crate::runners::JavaScriptRuntime::default(),
+                &crate::config::MdsfConfigRunners::all(),
             )
             .expect("it to be successful")
             .1

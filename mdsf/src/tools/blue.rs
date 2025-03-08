@@ -13,7 +13,11 @@ pub fn set_args(
     cmd
 }
 
-pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("blue")];
+pub const COMMANDS: [CommandType; 3] = [
+    CommandType::Direct("blue"),
+    CommandType::Uv("blue"),
+    CommandType::Pipx("blue"),
+];
 
 pub const IS_STDIN: bool = false;
 
@@ -37,7 +41,7 @@ mod test_blue {
                 snippet.path(),
                 crate::testing::DEFAULT_TEST_FORMATTER_TIMEOUT,
                 crate::testing::DEFAULT_TEST_DEBUG_ENABLED,
-                crate::runners::JavaScriptRuntime::default(),
+                &crate::config::MdsfConfigRunners::all(),
             )
             .expect("it to be successful")
             .1

@@ -14,10 +14,13 @@ pub fn set_args(
     cmd
 }
 
-pub const COMMANDS: [CommandType; 3] = [
+pub const COMMANDS: [CommandType; 6] = [
     CommandType::NodeModules("protolint"),
     CommandType::Direct("protolint"),
     CommandType::Npm("protolint"),
+    CommandType::Pnpm("protolint"),
+    CommandType::Bun("protolint"),
+    CommandType::Deno("protolint"),
 ];
 
 pub const IS_STDIN: bool = false;

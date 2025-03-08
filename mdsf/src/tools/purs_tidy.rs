@@ -13,10 +13,13 @@ pub fn set_args(
     cmd
 }
 
-pub const COMMANDS: [CommandType; 3] = [
+pub const COMMANDS: [CommandType; 6] = [
     CommandType::NodeModules("purs-tidy"),
     CommandType::Direct("purs-tidy"),
     CommandType::Npm("purs-tidy"),
+    CommandType::Pnpm("purs-tidy"),
+    CommandType::Bun("purs-tidy"),
+    CommandType::Deno("purs-tidy"),
 ];
 
 pub const IS_STDIN: bool = false;
@@ -57,7 +60,7 @@ main = do
                 snippet.path(),
                 crate::testing::DEFAULT_TEST_FORMATTER_TIMEOUT,
                 crate::testing::DEFAULT_TEST_DEBUG_ENABLED,
-                crate::runners::JavaScriptRuntime::default(),
+                &crate::config::MdsfConfigRunners::all(),
             )
             .expect("it to be successful")
             .1

@@ -15,10 +15,15 @@ pub fn set_args(
     cmd
 }
 
-pub const COMMANDS: [CommandType; 3] = [
+pub const COMMANDS: [CommandType; 8] = [
     CommandType::NodeModules("just"),
     CommandType::Direct("just"),
     CommandType::Npm("rust-just"),
+    CommandType::Pnpm("rust-just"),
+    CommandType::Bun("rust-just"),
+    CommandType::Deno("rust-just"),
+    CommandType::Uv("rust-just"),
+    CommandType::Pipx("rust-just"),
 ];
 
 pub const IS_STDIN: bool = false;
@@ -47,7 +52,7 @@ mod test_just {
                 snippet.path(),
                 crate::testing::DEFAULT_TEST_FORMATTER_TIMEOUT,
                 crate::testing::DEFAULT_TEST_DEBUG_ENABLED,
-                crate::runners::JavaScriptRuntime::default(),
+                &crate::config::MdsfConfigRunners::all(),
             )
             .expect("it to be successful")
             .1

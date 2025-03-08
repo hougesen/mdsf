@@ -2275,7 +2275,7 @@ pub enum Tooling {
     ///
     /// [https://docs.sqlfluff.com/en/stable/reference/cli.html#sqlfluff-fix](https://docs.sqlfluff.com/en/stable/reference/cli.html#sqlfluff-fix)
     ///
-    /// `sqlfluff fix --dialect ansi $PATH`
+    /// `sqlfluff fix --disable-progress-bar --nocolor --dialect ansi $PATH`
     SqlfluffFix,
 
     #[serde(rename = "sqlfluff:format")]
@@ -2283,7 +2283,7 @@ pub enum Tooling {
     ///
     /// [https://docs.sqlfluff.com/en/stable/reference/cli.html#sqlfluff-format](https://docs.sqlfluff.com/en/stable/reference/cli.html#sqlfluff-format)
     ///
-    /// `sqlfluff format --dialect ansi $PATH`
+    /// `sqlfluff format --disable-progress-bar --nocolor --dialect ansi $PATH`
     SqlfluffFormat,
 
     #[serde(rename = "sqlfluff:lint")]
@@ -2291,7 +2291,7 @@ pub enum Tooling {
     ///
     /// [https://docs.sqlfluff.com/en/stable/reference/cli.html#sqlfluff-lint](https://docs.sqlfluff.com/en/stable/reference/cli.html#sqlfluff-lint)
     ///
-    /// `sqlfluff lint --dialect ansi $PATH`
+    /// `sqlfluff lint --disable-progress-bar --nocolor --dialect ansi $PATH`
     SqlfluffLint,
 
     #[serde(rename = "sqlfmt")]
@@ -2759,7 +2759,7 @@ impl Tooling {
         snippet_path: &std::path::Path,
         timeout: u64,
         debug_enabled: bool,
-        javascript_runtime: crate::runners::JavaScriptRuntime,
+        config_runners: &crate::config::MdsfConfigRunners,
     ) -> Result<(bool, Option<String>), crate::error::MdsfError> {
         let (commands, set_args_fn, is_stdin): (
             &[crate::runners::CommandType],
@@ -3716,7 +3716,7 @@ impl Tooling {
             timeout,
             is_stdin,
             debug_enabled,
-            javascript_runtime,
+            config_runners,
         )
     }
 }

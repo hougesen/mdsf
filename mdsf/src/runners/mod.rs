@@ -1,98 +1,61 @@
 mod bun;
+mod composer;
 mod deno;
+mod dub;
 mod node;
+mod path;
 mod pipx;
 mod pnpm;
 mod uv;
 
-#[derive(
-    Debug, Default, serde::Serialize, serde::Deserialize, Clone, Copy, Hash, PartialEq, Eq,
-)]
-#[cfg_attr(feature = "json-schema", derive(schemars::JsonSchema))]
-pub enum JavaScriptRuntime {
-    #[serde(rename = "bun")]
-    Bun,
-    #[serde(rename = "deno")]
-    Deno,
-    #[default]
-    #[serde(rename = "node")]
-    Node,
-    #[serde(rename = "pnpm")]
-    Pnpm,
-}
-
-impl JavaScriptRuntime {
-    #[inline]
-    pub fn is_default(&self) -> bool {
-        *self == Self::default()
-    }
-}
-
-impl core::fmt::Display for JavaScriptRuntime {
-    #[inline]
-    fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
-        match self {
-            Self::Bun => f.write_str("bun"),
-            Self::Deno => f.write_str("deno"),
-            Self::Node => f.write_str("node"),
-            Self::Pnpm => f.write_str("pnpm"),
-        }
-    }
-}
-
-#[inline]
-fn setup_npm_script(runtime: JavaScriptRuntime, package_name: &str) -> std::process::Command {
-    match runtime {
-        JavaScriptRuntime::Bun => bun::setup_command(package_name),
-        JavaScriptRuntime::Deno => deno::setup_command(package_name),
-        JavaScriptRuntime::Node => node::setup_command(package_name),
-        JavaScriptRuntime::Pnpm => pnpm::setup_command(package_name),
-    }
-}
-
-#[inline]
-fn setup_command_from_path(path: &str, binary_name: &str) -> std::process::Command {
-    // TODO: logic to determine if binary in parent/sub folder
-    let mut cmd = std::process::Command::new(format!("./{binary_name}"));
-
-    // TODO: when running tests they are executed from the ./mdsf/ folder which means everything is out of sync with local node_modules
-    cmd.current_dir(path);
-
-    cmd
-}
-
-#[inline]
-fn setup_node_modules_command(binary_name: &str) -> std::process::Command {
-    setup_command_from_path("./node_modules/.bin/", binary_name)
-}
-
-#[inline]
-fn setup_php_vender_bin_command(binary_name: &str) -> std::process::Command {
-    setup_command_from_path("./vendor/bin/", binary_name)
-}
-
 #[derive(Debug)]
 pub enum CommandType {
     BinaryPath(&'static str, &'static str),
+    Bun(&'static str),
+    Deno(&'static str),
     Direct(&'static str),
+    Dub(&'static str),
     NodeModules(&'static str),
     Npm(&'static str),
     PhpVendor(&'static str),
-    PipxRun(&'static str),
+    Pipx(&'static str),
+    Pnpm(&'static str),
     Uv(&'static str),
 }
 
 impl CommandType {
     #[inline]
-    pub fn build(&self, javascript_runtime: JavaScriptRuntime) -> std::process::Command {
+    pub const fn is_enabled(&self, config_runners: &crate::config::MdsfConfigRunners) -> bool {
+        #[allow(clippy::match_same_arms)]
         match self {
-            Self::BinaryPath(path, binary_name) => setup_command_from_path(path, binary_name),
+            Self::BinaryPath(_, _) => true,
+            Self::Bun(_) => config_runners.bunx,
+            Self::Deno(_) => config_runners.deno,
+            Self::Direct(_) => true,
+            Self::Dub(_) => config_runners.dub,
+            Self::NodeModules(_) => true,
+            Self::Npm(_) => config_runners.npx,
+            Self::PhpVendor(_) => true,
+            Self::Pipx(_) => config_runners.pipx,
+            Self::Pnpm(_) => config_runners.pnpm,
+            Self::Uv(_) => config_runners.uv,
+        }
+    }
+
+    #[inline]
+    pub fn build(&self) -> std::process::Command {
+        match self {
+            Self::BinaryPath(path, binary_name) => path::setup_command_from_path(path, binary_name),
+            Self::Bun(package_name) => bun::setup_bunx_command(package_name),
+            Self::Deno(package_name) => deno::setup_deno_run_command(package_name),
             Self::Direct(binary_name) => std::process::Command::new(binary_name),
-            Self::NodeModules(binary_name) => setup_node_modules_command(binary_name),
-            Self::Npm(package_name) => setup_npm_script(javascript_runtime, package_name),
-            Self::PhpVendor(binary_name) => setup_php_vender_bin_command(binary_name),
-            Self::PipxRun(package_name) => pipx::setup_command(package_name),
-            Self::Uv(package_name) => uv::setup_command(package_name),
+            Self::Dub(package_name) => dub::setup_dub_run_command(package_name),
+            Self::NodeModules(binary_name) => node::setup_node_modules_command(binary_name),
+            Self::Npm(package_name) => node::setup_npx_command(package_name),
+            Self::PhpVendor(binary_name) => composer::setup_php_vender_bin_command(binary_name),
+            Self::Pipx(package_name) => pipx::setup_pipx_run_command(package_name),
+            Self::Pnpm(package_name) => pnpm::setup_pnpm_dlx_command(package_name),
+            Self::Uv(package_name) => uv::setup_uv_run_command(package_name),
         }
     }
 }

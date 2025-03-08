@@ -13,10 +13,13 @@ pub fn set_args(
     cmd
 }
 
-pub const COMMANDS: [CommandType; 3] = [
+pub const COMMANDS: [CommandType; 6] = [
     CommandType::NodeModules("markdownlint"),
     CommandType::Direct("markdownlint"),
     CommandType::Npm("markdownlint-cli"),
+    CommandType::Pnpm("markdownlint-cli"),
+    CommandType::Bun("markdownlint-cli"),
+    CommandType::Deno("markdownlint-cli"),
 ];
 
 pub const IS_STDIN: bool = false;
@@ -47,7 +50,7 @@ mod test_markdownlint {
                 snippet.path(),
                 crate::testing::DEFAULT_TEST_FORMATTER_TIMEOUT,
                 crate::testing::DEFAULT_TEST_DEBUG_ENABLED,
-                crate::runners::JavaScriptRuntime::default(),
+                &crate::config::MdsfConfigRunners::all(),
             )
             .expect("it to be successful")
             .1

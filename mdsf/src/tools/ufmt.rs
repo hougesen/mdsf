@@ -13,6 +13,10 @@ pub fn set_args(
     cmd
 }
 
-pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("ufmt")];
+pub const COMMANDS: [CommandType; 3] = [
+    CommandType::Direct("ufmt"),
+    CommandType::Uv("ufmt"),
+    CommandType::Pipx("ufmt"),
+];
 
 pub const IS_STDIN: bool = false;

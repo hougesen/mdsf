@@ -14,6 +14,10 @@ pub fn set_args(
     cmd
 }
 
-pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("meson")];
+pub const COMMANDS: [CommandType; 3] = [
+    CommandType::Direct("meson"),
+    CommandType::Uv("meson"),
+    CommandType::Pipx("meson"),
+];
 
 pub const IS_STDIN: bool = false;

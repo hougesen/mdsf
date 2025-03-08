@@ -12,7 +12,11 @@ pub fn set_args(
     cmd
 }
 
-pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("auto-optional")];
+pub const COMMANDS: [CommandType; 3] = [
+    CommandType::Direct("auto-optional"),
+    CommandType::Uv("auto-optional"),
+    CommandType::Pipx("auto-optional"),
+];
 
 pub const IS_STDIN: bool = false;
 
@@ -39,7 +43,7 @@ def foo(bar: Optional[str] = None):
                 snippet.path(),
                 crate::testing::DEFAULT_TEST_FORMATTER_TIMEOUT,
                 crate::testing::DEFAULT_TEST_DEBUG_ENABLED,
-                crate::runners::JavaScriptRuntime::default(),
+                &crate::config::MdsfConfigRunners::all(),
             )
             .expect("it to be successful")
             .1

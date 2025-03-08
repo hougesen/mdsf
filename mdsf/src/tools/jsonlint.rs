@@ -13,10 +13,13 @@ pub fn set_args(
     cmd
 }
 
-pub const COMMANDS: [CommandType; 3] = [
+pub const COMMANDS: [CommandType; 6] = [
     CommandType::NodeModules("jsonlint"),
     CommandType::Direct("jsonlint"),
     CommandType::Npm("jsonlint"),
+    CommandType::Pnpm("jsonlint"),
+    CommandType::Bun("jsonlint"),
+    CommandType::Deno("jsonlint"),
 ];
 
 pub const IS_STDIN: bool = false;

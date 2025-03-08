@@ -4,12 +4,26 @@
   "categories": ["formatter", "linter"],
   "commands": {
     "fix": {
-      "arguments": ["fix", "--dialect", "ansi", "$PATH"],
+      "arguments": [
+        "fix",
+        "--disable-progress-bar",
+        "--nocolor",
+        "--dialect",
+        "ansi",
+        "$PATH"
+      ],
       "description": "Fix SQL errors",
       "homepage": "https://docs.sqlfluff.com/en/stable/reference/cli.html#sqlfluff-fix"
     },
     "format": {
-      "arguments": ["format", "--dialect", "ansi", "$PATH"],
+      "arguments": [
+        "format",
+        "--disable-progress-bar",
+        "--nocolor",
+        "--dialect",
+        "ansi",
+        "$PATH"
+      ],
       "description": "Format SQL",
       "homepage": "https://docs.sqlfluff.com/en/stable/reference/cli.html#sqlfluff-format",
       "tests": [
@@ -21,7 +35,14 @@
       ]
     },
     "lint": {
-      "arguments": ["lint", "--dialect", "ansi", "$PATH"],
+      "arguments": [
+        "lint",
+        "--disable-progress-bar",
+        "--nocolor",
+        "--dialect",
+        "ansi",
+        "$PATH"
+      ],
       "description": "Lint SQL",
       "homepage": "https://docs.sqlfluff.com/en/stable/reference/cli.html#sqlfluff-lint"
     }

@@ -13,7 +13,11 @@ pub fn set_args(
     cmd
 }
 
-pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("autopep8")];
+pub const COMMANDS: [CommandType; 3] = [
+    CommandType::Direct("autopep8"),
+    CommandType::Uv("autopep8"),
+    CommandType::Pipx("autopep8"),
+];
 
 pub const IS_STDIN: bool = false;
 
@@ -36,7 +40,7 @@ mod test_autopep_8 {
                 snippet.path(),
                 crate::testing::DEFAULT_TEST_FORMATTER_TIMEOUT,
                 crate::testing::DEFAULT_TEST_DEBUG_ENABLED,
-                crate::runners::JavaScriptRuntime::default(),
+                &crate::config::MdsfConfigRunners::all(),
             )
             .expect("it to be successful")
             .1

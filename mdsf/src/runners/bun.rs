@@ -1,5 +1,5 @@
 #[inline]
-pub fn setup_command(package_name: &str) -> std::process::Command {
+pub fn setup_bunx_command(package_name: &str) -> std::process::Command {
     let mut cmd = std::process::Command::new("bunx");
 
     // Auto install package
@@ -12,8 +12,6 @@ pub fn setup_command(package_name: &str) -> std::process::Command {
 
 #[cfg(test)]
 mod test_bun {
-    use crate::tools::Tooling;
-
     #[test_with::executable(bunx)]
     #[test]
     fn it_can_execute_an_npm_package_script() {
@@ -31,7 +29,10 @@ mod test_bun {
             crate::testing::DEFAULT_TEST_FORMATTER_TIMEOUT,
             crate::tools::prettier::IS_STDIN,
             crate::testing::DEFAULT_TEST_DEBUG_ENABLED,
-            crate::runners::JavaScriptRuntime::Bun,
+            &crate::config::MdsfConfigRunners {
+                bunx: true,
+                ..Default::default()
+            },
         )
         .expect("it to succeed");
     }

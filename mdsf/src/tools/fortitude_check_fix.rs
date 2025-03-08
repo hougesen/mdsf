@@ -16,7 +16,11 @@ pub fn set_args(
     cmd
 }
 
-pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("fortitude")];
+pub const COMMANDS: [CommandType; 3] = [
+    CommandType::Direct("fortitude"),
+    CommandType::Uv("fortitude-lint"),
+    CommandType::Pipx("fortitude-lint"),
+];
 
 pub const IS_STDIN: bool = false;
 
@@ -58,7 +62,7 @@ end program example
                 snippet.path(),
                 crate::testing::DEFAULT_TEST_FORMATTER_TIMEOUT,
                 crate::testing::DEFAULT_TEST_DEBUG_ENABLED,
-                crate::runners::JavaScriptRuntime::default(),
+                &crate::config::MdsfConfigRunners::all(),
             )
             .expect("it to be successful")
             .1

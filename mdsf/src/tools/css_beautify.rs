@@ -16,10 +16,13 @@ pub fn set_args(
     cmd
 }
 
-pub const COMMANDS: [CommandType; 3] = [
+pub const COMMANDS: [CommandType; 6] = [
     CommandType::NodeModules("css-beautify"),
     CommandType::Direct("css-beautify"),
     CommandType::Npm("js-beautify"),
+    CommandType::Pnpm("js-beautify"),
+    CommandType::Bun("js-beautify"),
+    CommandType::Deno("js-beautify"),
 ];
 
 pub const IS_STDIN: bool = false;
@@ -48,7 +51,7 @@ p {
                 snippet.path(),
                 crate::testing::DEFAULT_TEST_FORMATTER_TIMEOUT,
                 crate::testing::DEFAULT_TEST_DEBUG_ENABLED,
-                crate::runners::JavaScriptRuntime::default(),
+                &crate::config::MdsfConfigRunners::all(),
             )
             .expect("it to be successful")
             .1

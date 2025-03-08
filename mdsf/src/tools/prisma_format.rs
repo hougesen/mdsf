@@ -14,10 +14,13 @@ pub fn set_args(
     cmd
 }
 
-pub const COMMANDS: [CommandType; 3] = [
+pub const COMMANDS: [CommandType; 6] = [
     CommandType::NodeModules("prisma"),
     CommandType::Direct("prisma"),
     CommandType::Npm("prisma"),
+    CommandType::Pnpm("prisma"),
+    CommandType::Bun("prisma"),
+    CommandType::Deno("prisma"),
 ];
 
 pub const IS_STDIN: bool = false;
@@ -52,7 +55,7 @@ mod test_prisma_format {
                 snippet.path(),
                 crate::testing::DEFAULT_TEST_FORMATTER_TIMEOUT,
                 crate::testing::DEFAULT_TEST_DEBUG_ENABLED,
-                crate::runners::JavaScriptRuntime::default(),
+                &crate::config::MdsfConfigRunners::all(),
             )
             .expect("it to be successful")
             .1

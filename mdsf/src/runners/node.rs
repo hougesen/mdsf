@@ -1,5 +1,12 @@
+use super::path::setup_command_from_path;
+
 #[inline]
-pub fn setup_command(package_name: &str) -> std::process::Command {
+pub fn setup_node_modules_command(binary_name: &str) -> std::process::Command {
+    setup_command_from_path("./node_modules/.bin/", binary_name)
+}
+
+#[inline]
+pub fn setup_npx_command(package_name: &str) -> std::process::Command {
     let mut cmd = std::process::Command::new("npx");
 
     // Auto install package
@@ -29,7 +36,10 @@ mod test_node {
             crate::testing::DEFAULT_TEST_FORMATTER_TIMEOUT,
             crate::tools::prettier::IS_STDIN,
             crate::testing::DEFAULT_TEST_DEBUG_ENABLED,
-            crate::runners::JavaScriptRuntime::Node,
+            &crate::config::MdsfConfigRunners {
+                npx: true,
+                ..Default::default()
+            },
         )
         .expect("it to succeed");
     }

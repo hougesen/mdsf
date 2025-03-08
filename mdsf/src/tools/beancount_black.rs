@@ -12,6 +12,10 @@ pub fn set_args(
     cmd
 }
 
-pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("bean-black")];
+pub const COMMANDS: [CommandType; 3] = [
+    CommandType::Direct("bean-black"),
+    CommandType::Uv("beancount-black"),
+    CommandType::Pipx("beancount-black"),
+];
 
 pub const IS_STDIN: bool = false;

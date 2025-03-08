@@ -14,6 +14,10 @@ pub fn set_args(
     cmd
 }
 
-pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("gersemi")];
+pub const COMMANDS: [CommandType; 3] = [
+    CommandType::Direct("gersemi"),
+    CommandType::Uv("gersemi"),
+    CommandType::Pipx("gersemi"),
+];
 
 pub const IS_STDIN: bool = false;

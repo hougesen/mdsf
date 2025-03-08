@@ -150,6 +150,9 @@
         "dotnet": {
           "type": ["string", "null"]
         },
+        "dub": {
+          "type": ["string", "null"]
+        },
         "gem": {
           "type": ["string", "null"]
         },

@@ -12,6 +12,10 @@ pub fn set_args(
     cmd
 }
 
-pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("djade")];
+pub const COMMANDS: [CommandType; 3] = [
+    CommandType::Direct("djade"),
+    CommandType::Uv("djade"),
+    CommandType::Pipx("djade"),
+];
 
 pub const IS_STDIN: bool = false;

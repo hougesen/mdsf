@@ -9,12 +9,18 @@ pub fn set_args(
     file_path: &std::path::Path,
 ) -> std::process::Command {
     cmd.arg("lint");
+    cmd.arg("--disable-progress-bar");
+    cmd.arg("--nocolor");
     cmd.arg("--dialect");
     cmd.arg("ansi");
     cmd.arg(file_path);
     cmd
 }
 
-pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("sqlfluff")];
+pub const COMMANDS: [CommandType; 3] = [
+    CommandType::Direct("sqlfluff"),
+    CommandType::Uv("sqlfluff"),
+    CommandType::Pipx("sqlfluff"),
+];
 
 pub const IS_STDIN: bool = false;

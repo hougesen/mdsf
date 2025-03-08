@@ -13,10 +13,13 @@ pub fn set_args(
     cmd
 }
 
-pub const COMMANDS: [CommandType; 3] = [
+pub const COMMANDS: [CommandType; 6] = [
     CommandType::NodeModules("sql-formatter"),
     CommandType::Direct("sql-formatter"),
     CommandType::Npm("sql-formatter"),
+    CommandType::Pnpm("sql-formatter"),
+    CommandType::Bun("sql-formatter"),
+    CommandType::Deno("sql-formatter"),
 ];
 
 pub const IS_STDIN: bool = false;
@@ -45,7 +48,7 @@ WHERE
                 snippet.path(),
                 crate::testing::DEFAULT_TEST_FORMATTER_TIMEOUT,
                 crate::testing::DEFAULT_TEST_DEBUG_ENABLED,
-                crate::runners::JavaScriptRuntime::default(),
+                &crate::config::MdsfConfigRunners::all(),
             )
             .expect("it to be successful")
             .1

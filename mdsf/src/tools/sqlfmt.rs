@@ -12,6 +12,10 @@ pub fn set_args(
     cmd
 }
 
-pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("sqlfmt")];
+pub const COMMANDS: [CommandType; 3] = [
+    CommandType::Direct("sqlfmt"),
+    CommandType::Uv("shandy-sqlfmt[jinjafmt]"),
+    CommandType::Pipx("shandy-sqlfmt[jinjafmt]"),
+];
 
 pub const IS_STDIN: bool = false;

@@ -13,10 +13,13 @@ pub fn set_args(
     cmd
 }
 
-pub const COMMANDS: [CommandType; 3] = [
+pub const COMMANDS: [CommandType; 6] = [
     CommandType::NodeModules("fixjson"),
     CommandType::Direct("fixjson"),
     CommandType::Npm("fixjson"),
+    CommandType::Pnpm("fixjson"),
+    CommandType::Bun("fixjson"),
+    CommandType::Deno("fixjson"),
 ];
 
 pub const IS_STDIN: bool = false;

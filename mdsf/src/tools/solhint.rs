@@ -15,10 +15,13 @@ pub fn set_args(
     cmd
 }
 
-pub const COMMANDS: [CommandType; 3] = [
+pub const COMMANDS: [CommandType; 6] = [
     CommandType::NodeModules("solhint"),
     CommandType::Direct("solhint"),
     CommandType::Npm("solhint"),
+    CommandType::Pnpm("solhint"),
+    CommandType::Bun("solhint"),
+    CommandType::Deno("solhint"),
 ];
 
 pub const IS_STDIN: bool = false;

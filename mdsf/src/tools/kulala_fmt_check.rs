@@ -13,10 +13,13 @@ pub fn set_args(
     cmd
 }
 
-pub const COMMANDS: [CommandType; 3] = [
+pub const COMMANDS: [CommandType; 6] = [
     CommandType::NodeModules("kulala-fmt"),
     CommandType::Direct("kulala-fmt"),
     CommandType::Npm("@mistweaverco/kulala-fmt"),
+    CommandType::Pnpm("@mistweaverco/kulala-fmt"),
+    CommandType::Bun("@mistweaverco/kulala-fmt"),
+    CommandType::Deno("@mistweaverco/kulala-fmt"),
 ];
 
 pub const IS_STDIN: bool = false;

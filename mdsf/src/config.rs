@@ -2,12 +2,64 @@ use json_comments::{CommentSettings, StripComments};
 
 use crate::{
     error::MdsfError, execution::MdsfFormatter, languages::default_tools,
-    runners::JavaScriptRuntime, terminal::print_config_not_found, tools::Tooling,
+    terminal::print_config_not_found, tools::Tooling,
 };
 
 #[inline]
 const fn is_false(b: &bool) -> bool {
     !(*b)
+}
+
+#[derive(serde::Serialize, serde::Deserialize, Hash, Debug, PartialEq, Eq, Default)]
+#[cfg_attr(feature = "json-schema", derive(schemars::JsonSchema))]
+pub struct MdsfConfigRunners {
+    /// Whether to support running npm packages using `bunx $PACKAGE_NAME`
+    #[serde(default, skip_serializing_if = "is_false")]
+    pub bunx: bool,
+
+    /// Whether to support running npm packages using `deno run -A npm:$PACKAGE_NAME`
+    #[serde(default, skip_serializing_if = "is_false")]
+    pub deno: bool,
+
+    /// Whether to support running dub packages using `dub run $PACKAGE_NAME`
+    #[serde(default, skip_serializing_if = "is_false")]
+    pub dub: bool,
+
+    /// Whether to support running npm packages using `npx $PACKAGE_NAME`
+    #[serde(default, skip_serializing_if = "is_false")]
+    pub npx: bool,
+
+    /// Whether to support running pypi packages using `pipx run $PACKAGE_NAME`
+    #[serde(default, skip_serializing_if = "is_false")]
+    pub pipx: bool,
+
+    /// Whether to support running npm packages using `pnpm dlx $PACKAGE_NAME`
+    #[serde(default, skip_serializing_if = "is_false")]
+    pub pnpm: bool,
+
+    /// Whether to support running pypi packages using `uv run $PACKAGE_NAME`
+    #[serde(default, skip_serializing_if = "is_false")]
+    pub uv: bool,
+}
+
+impl MdsfConfigRunners {
+    #[inline]
+    fn is_default(&self) -> bool {
+        *self == Self::default()
+    }
+
+    #[inline]
+    pub const fn all() -> Self {
+        Self {
+            bunx: true,
+            deno: true,
+            dub: false,
+            npx: true,
+            pipx: true,
+            pnpm: true,
+            uv: true,
+        }
+    }
 }
 
 #[derive(serde::Serialize, serde::Deserialize, Hash, Debug, PartialEq, Eq)]
@@ -30,18 +82,6 @@ pub struct MdsfConfig {
     /// Format the processed document with the selected markdown formatter.
     #[serde(default, skip_serializing_if = "is_false")]
     pub format_finished_document: bool,
-
-    /// Set npm script runner runtime.
-    ///
-    /// Should be considered experimental since not all tools support being run using Bun/Deno.
-    ///
-    /// `node -> npx`
-    ///
-    /// `bun -> bunx`
-    ///
-    /// `deno -> deno run`
-    #[serde(default, skip_serializing_if = "JavaScriptRuntime::is_default")]
-    pub javascript_runtime: JavaScriptRuntime,
 
     /// Aliases for tools
     ///
@@ -66,6 +106,12 @@ pub struct MdsfConfig {
     /// ```
     #[serde(default)]
     pub languages: std::collections::BTreeMap<String, MdsfFormatter<Tooling>>,
+
+    /// List of package registry script runners that should be enabled.
+    ///
+    /// Should be considered experimental since not all tools support being run that way.
+    #[serde(default, skip_serializing_if = "MdsfConfigRunners::is_default")]
+    pub runners: MdsfConfigRunners,
 }
 
 impl Default for MdsfConfig {
@@ -75,9 +121,9 @@ impl Default for MdsfConfig {
             schema: default_schema_location(),
             custom_file_extensions: std::collections::BTreeMap::default(),
             format_finished_document: false,
-            javascript_runtime: JavaScriptRuntime::default(),
             language_aliases: std::collections::BTreeMap::default(),
             languages: default_tools(),
+            runners: MdsfConfigRunners::default(),
         }
     }
 }

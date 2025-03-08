@@ -12,6 +12,10 @@ pub fn set_args(
     cmd
 }
 
-pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("cfn-lint")];
+pub const COMMANDS: [CommandType; 3] = [
+    CommandType::Direct("cfn-lint"),
+    CommandType::Uv("cfn-lint[full]"),
+    CommandType::Pipx("cfn-lint[full]"),
+];
 
 pub const IS_STDIN: bool = false;

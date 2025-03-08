@@ -17,10 +17,13 @@ pub fn set_args(
     cmd
 }
 
-pub const COMMANDS: [CommandType; 3] = [
+pub const COMMANDS: [CommandType; 6] = [
     CommandType::NodeModules("prettier"),
     CommandType::Direct("prettier"),
     CommandType::Npm("prettier"),
+    CommandType::Pnpm("prettier"),
+    CommandType::Bun("prettier"),
+    CommandType::Deno("prettier"),
 ];
 
 pub const IS_STDIN: bool = false;
@@ -56,7 +59,7 @@ mod test_prettier {
                 snippet.path(),
                 crate::testing::DEFAULT_TEST_FORMATTER_TIMEOUT,
                 crate::testing::DEFAULT_TEST_DEBUG_ENABLED,
-                crate::runners::JavaScriptRuntime::default(),
+                &crate::config::MdsfConfigRunners::all(),
             )
             .expect("it to be successful")
             .1
@@ -91,7 +94,7 @@ mod test_prettier {
                 snippet.path(),
                 crate::testing::DEFAULT_TEST_FORMATTER_TIMEOUT,
                 crate::testing::DEFAULT_TEST_DEBUG_ENABLED,
-                crate::runners::JavaScriptRuntime::default(),
+                &crate::config::MdsfConfigRunners::all(),
             )
             .expect("it to be successful")
             .1

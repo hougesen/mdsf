@@ -13,6 +13,10 @@ pub fn set_args(
     cmd
 }
 
-pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("curlylint")];
+pub const COMMANDS: [CommandType; 3] = [
+    CommandType::Direct("curlylint"),
+    CommandType::Uv("curlylint"),
+    CommandType::Pipx("curlylint"),
+];
 
 pub const IS_STDIN: bool = false;

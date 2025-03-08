@@ -18,14 +18,6 @@
       "description": "Format the processed document with the selected markdown formatter.",
       "type": "boolean"
     },
-    "javascript_runtime": {
-      "description": "Set npm script runner runtime.\n\nShould be considered experimental since not all tools support being run using Bun/Deno.\n\n`node -> npx`\n\n`bun -> bunx`\n\n`deno -> deno run`",
-      "allOf": [
-        {
-          "$ref": "#/definitions/JavaScriptRuntime"
-        }
-      ]
-    },
     "language_aliases": {
       "description": "Aliases for tools\n\n```json { \"language_aliases\": { \"language\": \"is_alias_of\" } } ```",
       "type": "object",
@@ -40,12 +32,49 @@
       "additionalProperties": {
         "$ref": "#/definitions/MdsfFormatter_for_Tooling"
       }
+    },
+    "runners": {
+      "description": "List of package registry script runners that should be enabled.\n\nShould be considered experimental since not all tools support being run that way.",
+      "allOf": [
+        {
+          "$ref": "#/definitions/MdsfConfigRunners"
+        }
+      ]
     }
   },
   "definitions": {
-    "JavaScriptRuntime": {
-      "type": "string",
-      "enum": ["bun", "deno", "node", "pnpm"]
+    "MdsfConfigRunners": {
+      "type": "object",
+      "properties": {
+        "bunx": {
+          "description": "Whether to support running npm packages using `bunx $PACKAGE_NAME`",
+          "type": "boolean"
+        },
+        "deno": {
+          "description": "Whether to support running npm packages using `deno run -A npm:$PACKAGE_NAME`",
+          "type": "boolean"
+        },
+        "dub": {
+          "description": "Whether to support running dub packages using `dub run $PACKAGE_NAME`",
+          "type": "boolean"
+        },
+        "npx": {
+          "description": "Whether to support running npm packages using `npx $PACKAGE_NAME`",
+          "type": "boolean"
+        },
+        "pipx": {
+          "description": "Whether to support running pypi packages using `pipx run $PACKAGE_NAME`",
+          "type": "boolean"
+        },
+        "pnpm": {
+          "description": "Whether to support running npm packages using `pnpm dlx $PACKAGE_NAME`",
+          "type": "boolean"
+        },
+        "uv": {
+          "description": "Whether to support running pypi packages using `uv run $PACKAGE_NAME`",
+          "type": "boolean"
+        }
+      }
     },
     "MdsfFormatter_for_Tooling": {
       "anyOf": [
@@ -1288,17 +1317,17 @@
           "enum": ["sql-formatter"]
         },
         {
-          "description": "Fix SQL errors\n\n[https://docs.sqlfluff.com/en/stable/reference/cli.html#sqlfluff-fix](https://docs.sqlfluff.com/en/stable/reference/cli.html#sqlfluff-fix)\n\n`sqlfluff fix --dialect ansi $PATH`",
+          "description": "Fix SQL errors\n\n[https://docs.sqlfluff.com/en/stable/reference/cli.html#sqlfluff-fix](https://docs.sqlfluff.com/en/stable/reference/cli.html#sqlfluff-fix)\n\n`sqlfluff fix --disable-progress-bar --nocolor --dialect ansi $PATH`",
           "type": "string",
           "enum": ["sqlfluff:fix"]
         },
         {
-          "description": "Format SQL\n\n[https://docs.sqlfluff.com/en/stable/reference/cli.html#sqlfluff-format](https://docs.sqlfluff.com/en/stable/reference/cli.html#sqlfluff-format)\n\n`sqlfluff format --dialect ansi $PATH`",
+          "description": "Format SQL\n\n[https://docs.sqlfluff.com/en/stable/reference/cli.html#sqlfluff-format](https://docs.sqlfluff.com/en/stable/reference/cli.html#sqlfluff-format)\n\n`sqlfluff format --disable-progress-bar --nocolor --dialect ansi $PATH`",
           "type": "string",
           "enum": ["sqlfluff:format"]
         },
         {
-          "description": "Lint SQL\n\n[https://docs.sqlfluff.com/en/stable/reference/cli.html#sqlfluff-lint](https://docs.sqlfluff.com/en/stable/reference/cli.html#sqlfluff-lint)\n\n`sqlfluff lint --dialect ansi $PATH`",
+          "description": "Lint SQL\n\n[https://docs.sqlfluff.com/en/stable/reference/cli.html#sqlfluff-lint](https://docs.sqlfluff.com/en/stable/reference/cli.html#sqlfluff-lint)\n\n`sqlfluff lint --disable-progress-bar --nocolor --dialect ansi $PATH`",
           "type": "string",
           "enum": ["sqlfluff:lint"]
         },

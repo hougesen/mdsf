@@ -15,10 +15,13 @@ pub fn set_args(
     cmd
 }
 
-pub const COMMANDS: [CommandType; 3] = [
+pub const COMMANDS: [CommandType; 6] = [
     CommandType::NodeModules("biome"),
     CommandType::Direct("biome"),
     CommandType::Npm("@biomejs/biome"),
+    CommandType::Pnpm("@biomejs/biome"),
+    CommandType::Bun("@biomejs/biome"),
+    CommandType::Deno("@biomejs/biome"),
 ];
 
 pub const IS_STDIN: bool = false;
@@ -53,7 +56,7 @@ number>
                 snippet.path(),
                 crate::testing::DEFAULT_TEST_FORMATTER_TIMEOUT,
                 crate::testing::DEFAULT_TEST_DEBUG_ENABLED,
-                crate::runners::JavaScriptRuntime::default(),
+                &crate::config::MdsfConfigRunners::all(),
             )
             .expect("it to be successful")
             .1

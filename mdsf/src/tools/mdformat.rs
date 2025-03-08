@@ -12,6 +12,10 @@ pub fn set_args(
     cmd
 }
 
-pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("mdformat")];
+pub const COMMANDS: [CommandType; 3] = [
+    CommandType::Direct("mdformat"),
+    CommandType::Uv("mdformat"),
+    CommandType::Pipx("mdformat"),
+];
 
 pub const IS_STDIN: bool = false;

@@ -1,5 +1,5 @@
 #[inline]
-pub fn setup_command(package_name: &str) -> std::process::Command {
+pub fn setup_pipx_run_command(package_name: &str) -> std::process::Command {
     let mut cmd = std::process::Command::new("pipx");
 
     cmd.arg("run");
@@ -42,13 +42,16 @@ end program example
             crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
 
         let result = crate::execution::run_tools(
-            &[crate::runners::CommandType::PipxRun("fortran-linter")],
+            &[crate::runners::CommandType::Pipx("fortran-linter")],
             snippet.path(),
             crate::tools::fortran_linter::set_args,
             crate::testing::DEFAULT_TEST_FORMATTER_TIMEOUT,
             crate::tools::fortran_linter::IS_STDIN,
             crate::testing::DEFAULT_TEST_DEBUG_ENABLED,
-            crate::runners::JavaScriptRuntime::default(),
+            &crate::config::MdsfConfigRunners {
+                pipx: true,
+                ..Default::default()
+            },
         )
         .expect("it to be successful")
         .1

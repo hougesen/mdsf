@@ -13,10 +13,13 @@ pub fn set_args(
     cmd
 }
 
-pub const COMMANDS: [CommandType; 3] = [
+pub const COMMANDS: [CommandType; 6] = [
     CommandType::NodeModules("blade-formatter"),
     CommandType::Direct("blade-formatter"),
     CommandType::Npm("blade-formatter"),
+    CommandType::Pnpm("blade-formatter"),
+    CommandType::Bun("blade-formatter"),
+    CommandType::Deno("blade-formatter"),
 ];
 
 pub const IS_STDIN: bool = false;
@@ -98,7 +101,7 @@ mod test_blade_formatter {
                 snippet.path(),
                 crate::testing::DEFAULT_TEST_FORMATTER_TIMEOUT,
                 crate::testing::DEFAULT_TEST_DEBUG_ENABLED,
-                crate::runners::JavaScriptRuntime::default(),
+                &crate::config::MdsfConfigRunners::all(),
             )
             .expect("it to be successful")
             .1

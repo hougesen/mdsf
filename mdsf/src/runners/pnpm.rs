@@ -1,5 +1,5 @@
 #[inline]
-pub fn setup_command(package_name: &str) -> std::process::Command {
+pub fn setup_pnpm_dlx_command(package_name: &str) -> std::process::Command {
     let mut cmd = std::process::Command::new("pnpm");
 
     cmd.arg("dlx").arg(package_name);
@@ -20,13 +20,16 @@ mod test_pnpm {
             crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
 
         crate::execution::run_tools(
-            &[crate::runners::CommandType::Npm("prettier")],
+            &[crate::runners::CommandType::Pnpm("prettier")],
             snippet.path(),
             crate::tools::prettier::set_args,
             crate::testing::DEFAULT_TEST_FORMATTER_TIMEOUT,
             crate::tools::prettier::IS_STDIN,
             crate::testing::DEFAULT_TEST_DEBUG_ENABLED,
-            crate::runners::JavaScriptRuntime::Pnpm,
+            &crate::config::MdsfConfigRunners {
+                pnpm: true,
+                ..Default::default()
+            },
         )
         .expect("it to succeed");
     }
