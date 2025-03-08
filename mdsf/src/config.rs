@@ -37,7 +37,7 @@ pub struct MdsfConfigRunners {
     #[serde(default, skip_serializing_if = "is_false")]
     pub pnpm: bool,
 
-    /// Whether to support running pypi packages using `uv run $PACKAGE_NAME`
+    /// Whether to support running pypi packages using `uv tool run $PACKAGE_NAME`
     #[serde(default, skip_serializing_if = "is_false")]
     pub uv: bool,
 }
