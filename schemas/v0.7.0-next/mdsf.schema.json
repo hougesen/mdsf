@@ -1351,17 +1351,17 @@
           "enum": ["sql-formatter"]
         },
         {
-          "description": "Fix SQL errors\n\n[https://docs.sqlfluff.com/en/stable/reference/cli.html#sqlfluff-fix](https://docs.sqlfluff.com/en/stable/reference/cli.html#sqlfluff-fix)\n\n`sqlfluff fix --dialect ansi $PATH`",
+          "description": "Fix SQL errors\n\n[https://docs.sqlfluff.com/en/stable/reference/cli.html#sqlfluff-fix](https://docs.sqlfluff.com/en/stable/reference/cli.html#sqlfluff-fix)\n\n`sqlfluff fix --disable-progress-bar --nocolor --dialect ansi $PATH`",
           "type": "string",
           "enum": ["sqlfluff:fix"]
         },
         {
-          "description": "Format SQL\n\n[https://docs.sqlfluff.com/en/stable/reference/cli.html#sqlfluff-format](https://docs.sqlfluff.com/en/stable/reference/cli.html#sqlfluff-format)\n\n`sqlfluff format --dialect ansi $PATH`",
+          "description": "Format SQL\n\n[https://docs.sqlfluff.com/en/stable/reference/cli.html#sqlfluff-format](https://docs.sqlfluff.com/en/stable/reference/cli.html#sqlfluff-format)\n\n`sqlfluff format --disable-progress-bar --nocolor --dialect ansi $PATH`",
           "type": "string",
           "enum": ["sqlfluff:format"]
         },
         {
-          "description": "Lint SQL\n\n[https://docs.sqlfluff.com/en/stable/reference/cli.html#sqlfluff-lint](https://docs.sqlfluff.com/en/stable/reference/cli.html#sqlfluff-lint)\n\n`sqlfluff lint --dialect ansi $PATH`",
+          "description": "Lint SQL\n\n[https://docs.sqlfluff.com/en/stable/reference/cli.html#sqlfluff-lint](https://docs.sqlfluff.com/en/stable/reference/cli.html#sqlfluff-lint)\n\n`sqlfluff lint --disable-progress-bar --nocolor --dialect ansi $PATH`",
           "type": "string",
           "enum": ["sqlfluff:lint"]
         },

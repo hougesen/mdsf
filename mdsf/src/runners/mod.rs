@@ -42,28 +42,28 @@ impl CommandType {
     #[inline]
     pub fn is_enabled(&self, config_runners: &MdsfConfigRunners) -> bool {
         match self {
-            CommandType::BinaryPath(_, _) => true,
-            CommandType::Direct(_) => true,
-            CommandType::NodeModules(_) => true,
-            CommandType::PhpVendor(_) => true,
-            CommandType::Pipx(_) => config_runners
+            Self::BinaryPath(_, _) => true,
+            Self::Direct(_) => true,
+            Self::NodeModules(_) => true,
+            Self::PhpVendor(_) => true,
+            Self::Pipx(_) => config_runners
                 .pypi
                 .as_ref()
                 .is_some_and(|python| python.pipx),
-            CommandType::Uv(_) => config_runners.pypi.as_ref().is_some_and(|python| python.uv),
-            CommandType::Deno(_) => config_runners
+            Self::Uv(_) => config_runners.pypi.as_ref().is_some_and(|python| python.uv),
+            Self::Deno(_) => config_runners
                 .npm
                 .as_ref()
                 .is_some_and(|javascript| javascript.deno),
-            CommandType::Bun(_) => config_runners
+            Self::Bun(_) => config_runners
                 .npm
                 .as_ref()
                 .is_some_and(|javascript| javascript.bunx),
-            CommandType::Npm(_) => config_runners
+            Self::Npm(_) => config_runners
                 .npm
                 .as_ref()
                 .is_some_and(|javascript| javascript.npx),
-            CommandType::Pnpm(_) => config_runners
+            Self::Pnpm(_) => config_runners
                 .npm
                 .as_ref()
                 .is_some_and(|javascript| javascript.pnpm),

@@ -369,7 +369,7 @@ pub fn run_tools(
     for (index, cmd) in command_types.iter().enumerate() {
         if !cmd.is_enabled(config_runners) {
             continue;
-        };
+        }
 
         let cmd = set_args_fn(cmd.build(), file_path);
 

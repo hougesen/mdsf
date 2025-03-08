@@ -209,7 +209,7 @@ impl Tool {
 
         let test_fn_name = format!(
             "test_{module_name}_{}_{id}",
-            test.language.to_case(Case::Snake).replace(".", "")
+            test.language.to_case(Case::Snake).replace('.', "")
         );
 
         let test_output = &test.test_output;

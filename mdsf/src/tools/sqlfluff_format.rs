@@ -9,6 +9,8 @@ pub fn set_args(
     file_path: &std::path::Path,
 ) -> std::process::Command {
     cmd.arg("format");
+    cmd.arg("--disable-progress-bar");
+    cmd.arg("--nocolor");
     cmd.arg("--dialect");
     cmd.arg("ansi");
     cmd.arg(file_path);

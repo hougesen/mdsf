@@ -927,9 +927,9 @@ mdsf init
 | `solhint`                    | `solhint --quiet --fix --noPrompt $PATH`                                                |
 | `sphinx-lint`                | `sphinx-lint $PATH`                                                                     |
 | `sql-formatter`              | `sql-formatter --fix $PATH`                                                             |
-| `sqlfluff:fix`               | `sqlfluff fix --dialect ansi $PATH`                                                     |
-| `sqlfluff:format`            | `sqlfluff format --dialect ansi $PATH`                                                  |
-| `sqlfluff:lint`              | `sqlfluff lint --dialect ansi $PATH`                                                    |
+| `sqlfluff:fix`               | `sqlfluff fix --disable-progress-bar --nocolor --dialect ansi $PATH`                    |
+| `sqlfluff:format`            | `sqlfluff format --disable-progress-bar --nocolor --dialect ansi $PATH`                 |
+| `sqlfluff:lint`              | `sqlfluff lint --disable-progress-bar --nocolor --dialect ansi $PATH`                   |
 | `sqlfmt`                     | `sqlfmt $PATH`                                                                          |
 | `sqruff`                     | `sqruff fix $PATH`                                                                      |
 | `standardjs`                 | `standard --fix --stdin`                                                                |

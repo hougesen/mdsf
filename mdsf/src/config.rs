@@ -55,11 +55,11 @@ pub struct MdsfConfigRunners {
 impl MdsfConfigRunners {
     #[inline]
     fn is_default(&self) -> bool {
-        *self == MdsfConfigRunners::default()
+        *self == Self::default()
     }
 
     #[inline]
-    pub fn all() -> Self {
+    pub const fn all() -> Self {
         Self {
             npm: Some(MdsfConfigRunnersNpm {
                 bunx: true,
