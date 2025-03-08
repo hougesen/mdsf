@@ -1,5 +1,5 @@
 #[inline]
-pub fn new_npx_cmd(package_name: &str) -> std::process::Command {
+pub fn setup_command(package_name: &str) -> std::process::Command {
     let mut cmd = std::process::Command::new("npx");
 
     // Auto install package
@@ -12,8 +12,6 @@ pub fn new_npx_cmd(package_name: &str) -> std::process::Command {
 
 #[cfg(test)]
 mod test_node {
-    use crate::tools::Tooling;
-
     #[test_with::executable(npx)]
     #[test]
     fn it_can_execute_an_npm_package_script() {
@@ -24,13 +22,15 @@ mod test_node {
         let snippet =
             crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
 
-        Tooling::Prettier
-            .format_snippet(
-                snippet.path(),
-                crate::testing::DEFAULT_TEST_FORMATTER_TIMEOUT,
-                crate::testing::DEFAULT_TEST_DEBUG_ENABLED,
-                crate::runners::JavaScriptRuntime::Node,
-            )
-            .expect("it to succeed");
+        crate::execution::run_tools(
+            &[crate::runners::CommandType::Npm("prettier")],
+            snippet.path(),
+            crate::tools::prettier::set_args,
+            crate::testing::DEFAULT_TEST_FORMATTER_TIMEOUT,
+            crate::tools::prettier::IS_STDIN,
+            crate::testing::DEFAULT_TEST_DEBUG_ENABLED,
+            crate::runners::JavaScriptRuntime::Node,
+        )
+        .expect("it to succeed");
     }
 }
