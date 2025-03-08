@@ -3,6 +3,7 @@ mod deno;
 mod node;
 mod pipx;
 mod pnpm;
+mod uv;
 
 #[derive(
     Debug, Default, serde::Serialize, serde::Deserialize, Clone, Copy, Hash, PartialEq, Eq,
@@ -78,6 +79,7 @@ pub enum CommandType {
     Npm(&'static str),
     PhpVendor(&'static str),
     PipxRun(&'static str),
+    Uv(&'static str),
 }
 
 impl CommandType {
@@ -90,6 +92,7 @@ impl CommandType {
             Self::Npm(package_name) => setup_npm_script(javascript_runtime, package_name),
             Self::PhpVendor(binary_name) => setup_php_vender_bin_command(binary_name),
             Self::PipxRun(package_name) => pipx::setup_command(package_name),
+            Self::Uv(package_name) => uv::setup_command(package_name),
         }
     }
 }
