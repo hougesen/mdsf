@@ -46,22 +46,22 @@
     "MdsfConfigRunners": {
       "type": "object",
       "properties": {
-        "javascript": {
+        "npm": {
           "default": null,
           "anyOf": [
             {
-              "$ref": "#/definitions/MdsfConfigRunnersJavaScript"
+              "$ref": "#/definitions/MdsfConfigRunnersNpm"
             },
             {
               "type": "null"
             }
           ]
         },
-        "python": {
+        "pypi": {
           "default": null,
           "anyOf": [
             {
-              "$ref": "#/definitions/MdsfConfigRunnersPython"
+              "$ref": "#/definitions/MdsfConfigRunnersPypi"
             },
             {
               "type": "null"
@@ -70,7 +70,7 @@
         }
       }
     },
-    "MdsfConfigRunnersJavaScript": {
+    "MdsfConfigRunnersNpm": {
       "type": "object",
       "properties": {
         "bunx": {
@@ -95,7 +95,7 @@
         }
       }
     },
-    "MdsfConfigRunnersPython": {
+    "MdsfConfigRunnersPypi": {
       "type": "object",
       "properties": {
         "pipx": {

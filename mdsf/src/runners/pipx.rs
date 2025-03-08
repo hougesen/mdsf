@@ -49,7 +49,7 @@ end program example
             crate::tools::fortran_linter::IS_STDIN,
             crate::testing::DEFAULT_TEST_DEBUG_ENABLED,
             &crate::config::MdsfConfigRunners {
-                python: Some(crate::config::MdsfConfigRunnersPython {
+                pypi: Some(crate::config::MdsfConfigRunnersPypi {
                     pipx: true,
                     ..Default::default()
                 }),
