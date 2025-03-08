@@ -37,10 +37,7 @@ mod test_node {
             crate::tools::prettier::IS_STDIN,
             crate::testing::DEFAULT_TEST_DEBUG_ENABLED,
             &crate::config::MdsfConfigRunners {
-                npm: Some(crate::config::MdsfConfigRunnersNpm {
-                    npx: true,
-                    ..Default::default()
-                }),
+                npx: true,
                 ..Default::default()
             },
         )

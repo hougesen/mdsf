@@ -1,5 +1,3 @@
-use crate::config::MdsfConfigRunners;
-
 mod bun;
 mod composer;
 mod deno;
@@ -27,34 +25,20 @@ pub enum CommandType {
 
 impl CommandType {
     #[inline]
-    pub fn is_enabled(&self, config_runners: &MdsfConfigRunners) -> bool {
+    pub const fn is_enabled(&self, config_runners: &crate::config::MdsfConfigRunners) -> bool {
+        #[allow(clippy::match_same_arms)]
         match self {
             Self::BinaryPath(_, _) => true,
+            Self::Bun(_) => config_runners.bunx,
+            Self::Deno(_) => config_runners.deno,
             Self::Direct(_) => true,
             Self::Dub(_) => config_runners.dub,
             Self::NodeModules(_) => true,
+            Self::Npm(_) => config_runners.npx,
             Self::PhpVendor(_) => true,
-            Self::Pipx(_) => config_runners
-                .pypi
-                .as_ref()
-                .is_some_and(|python| python.pipx),
-            Self::Uv(_) => config_runners.pypi.as_ref().is_some_and(|python| python.uv),
-            Self::Deno(_) => config_runners
-                .npm
-                .as_ref()
-                .is_some_and(|javascript| javascript.deno),
-            Self::Bun(_) => config_runners
-                .npm
-                .as_ref()
-                .is_some_and(|javascript| javascript.bunx),
-            Self::Npm(_) => config_runners
-                .npm
-                .as_ref()
-                .is_some_and(|javascript| javascript.npx),
-            Self::Pnpm(_) => config_runners
-                .npm
-                .as_ref()
-                .is_some_and(|javascript| javascript.pnpm),
+            Self::Pipx(_) => config_runners.pipx,
+            Self::Pnpm(_) => config_runners.pnpm,
+            Self::Uv(_) => config_runners.uv,
         }
     }
 

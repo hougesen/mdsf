@@ -29,10 +29,7 @@ mod test_deno {
             crate::tools::prettier::IS_STDIN,
             crate::testing::DEFAULT_TEST_DEBUG_ENABLED,
             &crate::config::MdsfConfigRunners {
-                npm: Some(crate::config::MdsfConfigRunnersNpm {
-                    deno: true,
-                    ..Default::default()
-                }),
+                deno: true,
                 ..Default::default()
             },
         )

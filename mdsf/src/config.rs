@@ -12,7 +12,7 @@ const fn is_false(b: &bool) -> bool {
 
 #[derive(serde::Serialize, serde::Deserialize, Hash, Debug, PartialEq, Eq, Default)]
 #[cfg_attr(feature = "json-schema", derive(schemars::JsonSchema))]
-pub struct MdsfConfigRunnersNpm {
+pub struct MdsfConfigRunners {
     /// Whether to support running npm packages using `bunx $PACKAGE_NAME`
     #[serde(default, skip_serializing_if = "is_false")]
     pub bunx: bool,
@@ -21,39 +21,25 @@ pub struct MdsfConfigRunnersNpm {
     #[serde(default, skip_serializing_if = "is_false")]
     pub deno: bool,
 
+    /// Whether to support running dub packages using `dub run $PACKAGE_NAME`
+    #[serde(default, skip_serializing_if = "is_false")]
+    pub dub: bool,
+
     /// Whether to support running npm packages using `npx $PACKAGE_NAME`
     #[serde(default, skip_serializing_if = "is_false")]
     pub npx: bool,
 
-    /// Whether to support running npm packages using `pnpm dlx $PACKAGE_NAME`
-    #[serde(default, skip_serializing_if = "is_false")]
-    pub pnpm: bool,
-}
-
-#[derive(serde::Serialize, serde::Deserialize, Hash, Debug, PartialEq, Eq, Default)]
-#[cfg_attr(feature = "json-schema", derive(schemars::JsonSchema))]
-pub struct MdsfConfigRunnersPypi {
     /// Whether to support running pypi packages using `pipx run $PACKAGE_NAME`
     #[serde(default, skip_serializing_if = "is_false")]
     pub pipx: bool,
 
+    /// Whether to support running npm packages using `pnpm dlx $PACKAGE_NAME`
+    #[serde(default, skip_serializing_if = "is_false")]
+    pub pnpm: bool,
+
     /// Whether to support running pypi packages using `uv run $PACKAGE_NAME`
     #[serde(default, skip_serializing_if = "is_false")]
     pub uv: bool,
-}
-
-#[derive(serde::Serialize, serde::Deserialize, Hash, Debug, PartialEq, Eq, Default)]
-#[cfg_attr(feature = "json-schema", derive(schemars::JsonSchema))]
-pub struct MdsfConfigRunners {
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub npm: Option<MdsfConfigRunnersNpm>,
-
-    #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub pypi: Option<MdsfConfigRunnersPypi>,
-
-    /// Whether to support running dub packages using `dub run $PACKAGE_NAME`
-    #[serde(default, skip_serializing_if = "is_false")]
-    pub dub: bool,
 }
 
 impl MdsfConfigRunners {
@@ -65,17 +51,13 @@ impl MdsfConfigRunners {
     #[inline]
     pub const fn all() -> Self {
         Self {
+            bunx: true,
+            deno: true,
             dub: false,
-            npm: Some(MdsfConfigRunnersNpm {
-                bunx: true,
-                deno: true,
-                npx: true,
-                pnpm: true,
-            }),
-            pypi: Some(MdsfConfigRunnersPypi {
-                pipx: true,
-                uv: true,
-            }),
+            npx: true,
+            pipx: true,
+            pnpm: true,
+            uv: true,
         }
     }
 }

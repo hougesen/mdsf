@@ -27,10 +27,7 @@ mod test_pnpm {
             crate::tools::prettier::IS_STDIN,
             crate::testing::DEFAULT_TEST_DEBUG_ENABLED,
             &crate::config::MdsfConfigRunners {
-                npm: Some(crate::config::MdsfConfigRunnersNpm {
-                    pnpm: true,
-                    ..Default::default()
-                }),
+                pnpm: true,
                 ..Default::default()
             },
         )

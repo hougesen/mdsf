@@ -30,10 +30,7 @@ mod test_bun {
             crate::tools::prettier::IS_STDIN,
             crate::testing::DEFAULT_TEST_DEBUG_ENABLED,
             &crate::config::MdsfConfigRunners {
-                npm: Some(crate::config::MdsfConfigRunnersNpm {
-                    bunx: true,
-                    ..Default::default()
-                }),
+                bunx: true,
                 ..Default::default()
             },
         )
