@@ -13,10 +13,13 @@ pub fn set_args(
     cmd
 }
 
-pub const COMMANDS: [CommandType; 3] = [
+pub const COMMANDS: [CommandType; 6] = [
     CommandType::NodeModules("xo"),
     CommandType::Direct("xo"),
     CommandType::Npm("xo"),
+    CommandType::Pnpm("xo"),
+    CommandType::Bun("xo"),
+    CommandType::Deno("xo"),
 ];
 
 pub const IS_STDIN: bool = true;

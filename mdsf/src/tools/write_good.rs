@@ -12,10 +12,13 @@ pub fn set_args(
     cmd
 }
 
-pub const COMMANDS: [CommandType; 3] = [
+pub const COMMANDS: [CommandType; 6] = [
     CommandType::NodeModules("write-good"),
     CommandType::Direct("write-good"),
     CommandType::Npm("write-good"),
+    CommandType::Pnpm("write-good"),
+    CommandType::Bun("write-good"),
+    CommandType::Deno("write-good"),
 ];
 
 pub const IS_STDIN: bool = false;

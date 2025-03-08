@@ -13,10 +13,13 @@ pub fn set_args(
     cmd
 }
 
-pub const COMMANDS: [CommandType; 3] = [
+pub const COMMANDS: [CommandType; 6] = [
     CommandType::NodeModules("bsfmt"),
     CommandType::Direct("bsfmt"),
     CommandType::Npm("brighterscript-formatter"),
+    CommandType::Pnpm("brighterscript-formatter"),
+    CommandType::Bun("brighterscript-formatter"),
+    CommandType::Deno("brighterscript-formatter"),
 ];
 
 pub const IS_STDIN: bool = false;

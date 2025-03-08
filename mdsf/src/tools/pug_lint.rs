@@ -12,10 +12,13 @@ pub fn set_args(
     cmd
 }
 
-pub const COMMANDS: [CommandType; 3] = [
+pub const COMMANDS: [CommandType; 6] = [
     CommandType::NodeModules("pug-lint"),
     CommandType::Direct("pug-lint"),
     CommandType::Npm("pug-lint"),
+    CommandType::Pnpm("pug-lint"),
+    CommandType::Bun("pug-lint"),
+    CommandType::Deno("pug-lint"),
 ];
 
 pub const IS_STDIN: bool = false;

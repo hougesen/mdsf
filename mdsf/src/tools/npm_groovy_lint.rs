@@ -13,10 +13,13 @@ pub fn set_args(
     cmd
 }
 
-pub const COMMANDS: [CommandType; 3] = [
+pub const COMMANDS: [CommandType; 6] = [
     CommandType::NodeModules("npm-groovy-lint"),
     CommandType::Direct("npm-groovy-lint"),
     CommandType::Npm("npm-groovy-lint"),
+    CommandType::Pnpm("npm-groovy-lint"),
+    CommandType::Bun("npm-groovy-lint"),
+    CommandType::Deno("npm-groovy-lint"),
 ];
 
 pub const IS_STDIN: bool = false;

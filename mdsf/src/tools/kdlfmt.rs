@@ -13,10 +13,13 @@ pub fn set_args(
     cmd
 }
 
-pub const COMMANDS: [CommandType; 3] = [
+pub const COMMANDS: [CommandType; 6] = [
     CommandType::NodeModules("kdlfmt"),
     CommandType::Direct("kdlfmt"),
     CommandType::Npm("kdlfmt"),
+    CommandType::Pnpm("kdlfmt"),
+    CommandType::Bun("kdlfmt"),
+    CommandType::Deno("kdlfmt"),
 ];
 
 pub const IS_STDIN: bool = false;

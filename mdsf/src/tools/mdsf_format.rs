@@ -13,10 +13,13 @@ pub fn set_args(
     cmd
 }
 
-pub const COMMANDS: [CommandType; 3] = [
+pub const COMMANDS: [CommandType; 6] = [
     CommandType::NodeModules("mdsf"),
     CommandType::Direct("mdsf"),
     CommandType::Npm("mdsf-cli"),
+    CommandType::Pnpm("mdsf-cli"),
+    CommandType::Bun("mdsf-cli"),
+    CommandType::Deno("mdsf-cli"),
 ];
 
 pub const IS_STDIN: bool = false;

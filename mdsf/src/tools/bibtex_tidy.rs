@@ -13,10 +13,13 @@ pub fn set_args(
     cmd
 }
 
-pub const COMMANDS: [CommandType; 3] = [
+pub const COMMANDS: [CommandType; 6] = [
     CommandType::NodeModules("bibtex-tidy"),
     CommandType::Direct("bibtex-tidy"),
     CommandType::Npm("bibtex-tidy"),
+    CommandType::Pnpm("bibtex-tidy"),
+    CommandType::Bun("bibtex-tidy"),
+    CommandType::Deno("bibtex-tidy"),
 ];
 
 pub const IS_STDIN: bool = false;

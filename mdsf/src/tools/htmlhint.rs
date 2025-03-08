@@ -12,10 +12,13 @@ pub fn set_args(
     cmd
 }
 
-pub const COMMANDS: [CommandType; 3] = [
+pub const COMMANDS: [CommandType; 6] = [
     CommandType::NodeModules("htmlhint"),
     CommandType::Direct("htmlhint"),
     CommandType::Npm("htmlhint"),
+    CommandType::Pnpm("htmlhint"),
+    CommandType::Bun("htmlhint"),
+    CommandType::Deno("htmlhint"),
 ];
 
 pub const IS_STDIN: bool = false;

@@ -272,6 +272,12 @@ impl Tool {
 
                 if let Some(npm) = &self.packages.npm {
                     command_types.push(format!("CommandType::Npm(\"{npm}\")"));
+
+                    command_types.push(format!("CommandType::Pnpm(\"{npm}\")"));
+
+                    command_types.push(format!("CommandType::Bun(\"{npm}\")"));
+
+                    command_types.push(format!("CommandType::Deno(\"{npm}\")"));
                 }
             };
 

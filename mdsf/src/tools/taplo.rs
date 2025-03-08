@@ -13,10 +13,13 @@ pub fn set_args(
     cmd
 }
 
-pub const COMMANDS: [CommandType; 3] = [
+pub const COMMANDS: [CommandType; 6] = [
     CommandType::NodeModules("taplo"),
     CommandType::Direct("taplo"),
     CommandType::Npm("@taplo/cli"),
+    CommandType::Pnpm("@taplo/cli"),
+    CommandType::Bun("@taplo/cli"),
+    CommandType::Deno("@taplo/cli"),
 ];
 
 pub const IS_STDIN: bool = false;

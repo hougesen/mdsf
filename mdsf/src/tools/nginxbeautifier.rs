@@ -12,10 +12,13 @@ pub fn set_args(
     cmd
 }
 
-pub const COMMANDS: [CommandType; 3] = [
+pub const COMMANDS: [CommandType; 6] = [
     CommandType::NodeModules("nginxbeautifier"),
     CommandType::Direct("nginxbeautifier"),
     CommandType::Npm("nginxbeautifier"),
+    CommandType::Pnpm("nginxbeautifier"),
+    CommandType::Bun("nginxbeautifier"),
+    CommandType::Deno("nginxbeautifier"),
 ];
 
 pub const IS_STDIN: bool = false;

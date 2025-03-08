@@ -14,10 +14,13 @@ pub fn set_args(
     cmd
 }
 
-pub const COMMANDS: [CommandType; 3] = [
+pub const COMMANDS: [CommandType; 6] = [
     CommandType::NodeModules("imba"),
     CommandType::Direct("imba"),
     CommandType::Npm("imba"),
+    CommandType::Pnpm("imba"),
+    CommandType::Bun("imba"),
+    CommandType::Deno("imba"),
 ];
 
 pub const IS_STDIN: bool = false;

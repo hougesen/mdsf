@@ -13,10 +13,13 @@ pub fn set_args(
     cmd
 }
 
-pub const COMMANDS: [CommandType; 3] = [
+pub const COMMANDS: [CommandType; 6] = [
     CommandType::NodeModules("md-padding"),
     CommandType::Direct("md-padding"),
     CommandType::Npm("md-padding"),
+    CommandType::Pnpm("md-padding"),
+    CommandType::Bun("md-padding"),
+    CommandType::Deno("md-padding"),
 ];
 
 pub const IS_STDIN: bool = false;
