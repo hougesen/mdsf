@@ -41,7 +41,7 @@ case Erlang of movie->[hello(mike,joe,robert),credits]; language->formatting_arg
                 snippet.path(),
                 crate::testing::DEFAULT_TEST_FORMATTER_TIMEOUT,
                 crate::testing::DEFAULT_TEST_DEBUG_ENABLED,
-                crate::runners::JavaScriptRuntime::default(),
+                &crate::config::MdsfConfigRunners::all(),
             )
             .expect("it to be successful")
             .1

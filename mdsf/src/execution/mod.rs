@@ -9,7 +9,7 @@ use crate::{
     error::MdsfError,
     fttype::get_file_extension,
     get_project_dir,
-    runners::{CommandType, JavaScriptRuntime},
+    runners::CommandType,
     terminal::{
         print_binary_not_in_path, print_error_formatting, print_formatter_info,
         print_formatter_time,

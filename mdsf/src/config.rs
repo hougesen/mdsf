@@ -2,7 +2,7 @@ use json_comments::{CommentSettings, StripComments};
 
 use crate::{
     error::MdsfError, execution::MdsfFormatter, languages::default_tools,
-    runners::JavaScriptRuntime, terminal::print_config_not_found, tools::Tooling,
+    terminal::print_config_not_found, tools::Tooling,
 };
 
 #[inline]
@@ -96,18 +96,6 @@ pub struct MdsfConfig {
     #[serde(default, skip_serializing_if = "is_false")]
     pub format_finished_document: bool,
 
-    /// Set npm script runner runtime.
-    ///
-    /// Should be considered experimental since not all tools support being run using Bun/Deno.
-    ///
-    /// `node -> npx`
-    ///
-    /// `bun -> bunx`
-    ///
-    /// `deno -> deno run`
-    #[serde(default, skip_serializing_if = "JavaScriptRuntime::is_default")]
-    pub javascript_runtime: JavaScriptRuntime,
-
     /// Aliases for tools
     ///
     /// ```json
@@ -132,6 +120,9 @@ pub struct MdsfConfig {
     #[serde(default)]
     pub languages: std::collections::BTreeMap<String, MdsfFormatter<Tooling>>,
 
+    /// List of package registry script runners that should be enabled.
+    ///
+    /// Should be considered experimental since not all tools support being run that way.
     #[serde(default, skip_serializing_if = "MdsfConfigRunners::is_default")]
     pub runners: MdsfConfigRunners,
 }
@@ -143,7 +134,6 @@ impl Default for MdsfConfig {
             schema: default_schema_location(),
             custom_file_extensions: std::collections::BTreeMap::default(),
             format_finished_document: false,
-            javascript_runtime: JavaScriptRuntime::default(),
             language_aliases: std::collections::BTreeMap::default(),
             languages: default_tools(),
             runners: MdsfConfigRunners::default(),

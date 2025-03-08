@@ -1,5 +1,3 @@
-use crate::config::MdsfConfigRunners;
-
 ///
 /// THIS FILE IS GENERATED USING CODE - DO NOT EDIT MANUALLY
 ///
@@ -2761,7 +2759,7 @@ impl Tooling {
         snippet_path: &std::path::Path,
         timeout: u64,
         debug_enabled: bool,
-        config_runners: &MdsfConfigRunners,
+        config_runners: &crate::config::MdsfConfigRunners,
     ) -> Result<(bool, Option<String>), crate::error::MdsfError> {
         let (commands, set_args_fn, is_stdin): (
             &[crate::runners::CommandType],

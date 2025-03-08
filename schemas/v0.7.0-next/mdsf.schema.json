@@ -18,14 +18,6 @@
       "description": "Format the processed document with the selected markdown formatter.",
       "type": "boolean"
     },
-    "javascript_runtime": {
-      "description": "Set npm script runner runtime.\n\nShould be considered experimental since not all tools support being run using Bun/Deno.\n\n`node -> npx`\n\n`bun -> bunx`\n\n`deno -> deno run`",
-      "allOf": [
-        {
-          "$ref": "#/definitions/JavaScriptRuntime"
-        }
-      ]
-    },
     "language_aliases": {
       "description": "Aliases for tools\n\n```json { \"language_aliases\": { \"language\": \"is_alias_of\" } } ```",
       "type": "object",
@@ -42,14 +34,15 @@
       }
     },
     "runners": {
-      "$ref": "#/definitions/MdsfConfigRunners"
+      "description": "List of package registry script runners that should be enabled.\n\nShould be considered experimental since not all tools support being run that way.",
+      "allOf": [
+        {
+          "$ref": "#/definitions/MdsfConfigRunners"
+        }
+      ]
     }
   },
   "definitions": {
-    "JavaScriptRuntime": {
-      "type": "string",
-      "enum": ["bun", "deno", "node", "pnpm"]
-    },
     "MdsfConfigRunners": {
       "type": "object",
       "properties": {

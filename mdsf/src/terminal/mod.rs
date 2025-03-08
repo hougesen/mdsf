@@ -1,7 +1,7 @@
 use console::style;
 use log::{debug, error, info, trace, warn};
 
-use crate::{error::MdsfError, runners::JavaScriptRuntime, LineInfo};
+use crate::{error::MdsfError, LineInfo};
 
 pub mod logging;
 
@@ -65,11 +65,6 @@ pub fn print_changed_file_error(path: &std::path::Path) {
 #[inline]
 pub fn print_config_not_found(path: &std::path::Path) {
     warn!("No config was found at {}", path.display());
-}
-
-#[inline]
-pub fn print_unknown_javascript_runtime(value: u8, fallback: JavaScriptRuntime) {
-    warn!("Unknown JavaScript runtime value '{value}'; Using {fallback:?} instead");
 }
 
 #[inline]
