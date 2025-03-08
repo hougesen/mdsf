@@ -26,7 +26,7 @@ pub const IS_STDIN: bool = true;
 
 #[cfg(test)]
 mod test_xo {
-    #[test_with::executable(npx)]
+    #[test_with::executable(xo || npx || pnpm || deno || bunx)]
     fn test_xo_javascript_77a8cbfa8cbcea9d() {
         let input = r#"    function asyncAddition(a,b  )
     {

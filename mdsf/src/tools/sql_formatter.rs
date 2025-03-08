@@ -26,7 +26,7 @@ pub const IS_STDIN: bool = false;
 
 #[cfg(test)]
 mod test_sql_formatter {
-    #[test_with::executable(npx)]
+    #[test_with::executable(sql-formatter || npx || pnpm || deno || bunx)]
     fn test_sql_formatter_sql_85ac36a4bf14f957() {
         let input = r#"SELECT * FROM tbl WHERE foo = 'bar';"#;
 

@@ -23,7 +23,7 @@ pub const IS_STDIN: bool = false;
 
 #[cfg(test)]
 mod test_isort {
-    #[test_with::executable(isort)]
+    #[test_with::executable(isort || pipx || uv)]
     fn test_isort_python_e2ac93e0195d9bc1() {
         let input = r#"from q import d
 import b

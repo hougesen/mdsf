@@ -22,7 +22,7 @@ pub const IS_STDIN: bool = false;
 
 #[cfg(test)]
 mod test_fprettify {
-    #[test_with::executable(fprettify)]
+    #[test_with::executable(fprettify || pipx || uv)]
     fn test_fprettify_fortran_e500b54621ef1a7a() {
         let input = r#"program demo
 integer :: endif,if,elseif

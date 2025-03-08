@@ -27,7 +27,7 @@ pub const IS_STDIN: bool = false;
 
 #[cfg(test)]
 mod test_sqlfluff_format {
-    #[test_with::executable(sqlfluff)]
+    #[test_with::executable(sqlfluff || pipx || uv)]
     fn test_sqlfluff_format_sql_55c68b000536eccf() {
         let input = r#"SELECT  *                  FROM  tbl
                         WHERE                      foo   = 'bar';         "#;

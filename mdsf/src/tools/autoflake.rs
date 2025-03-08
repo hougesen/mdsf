@@ -24,7 +24,7 @@ pub const IS_STDIN: bool = false;
 
 #[cfg(test)]
 mod test_autoflake {
-    #[test_with::executable(autoflake)]
+    #[test_with::executable(autoflake || pipx || uv)]
     fn test_autoflake_python_27cfd9b948e80d7f() {
         let input = r#"import math
 import re

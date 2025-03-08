@@ -23,7 +23,7 @@ pub const IS_STDIN: bool = false;
 
 #[cfg(test)]
 mod test_fortran_linter {
-    #[test_with::executable(fortran-linter)]
+    #[test_with::executable(fortran-linter || pipx || uv)]
     fn test_fortran_linter_f_90_a4a8950ee39644a8() {
         let input = r#"program example
     implicit none (type, external)

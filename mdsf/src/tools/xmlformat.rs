@@ -23,7 +23,7 @@ pub const IS_STDIN: bool = false;
 
 #[cfg(test)]
 mod test_xmlformat {
-    #[test_with::executable(xmlformat)]
+    #[test_with::executable(xmlformat || pipx || uv)]
     fn test_xmlformat_xml_5e39abb678e63c0b() {
         let input = r#"
 <note>

@@ -24,7 +24,7 @@ pub const IS_STDIN: bool = false;
 
 #[cfg(test)]
 mod test_ruff_format {
-    #[test_with::executable(ruff)]
+    #[test_with::executable(ruff || pipx || uv)]
     fn test_ruff_format_python_229ec2b01c2bfe3c() {
         let input = r#"def add( a: int ,  b:int)->int: return a+b"#;
 

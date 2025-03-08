@@ -26,7 +26,7 @@ pub const IS_STDIN: bool = false;
 
 #[cfg(test)]
 mod test_taplo {
-    #[test_with::executable(npx)]
+    #[test_with::executable(taplo || npx || pnpm || deno || bunx)]
     fn test_taplo_toml_f9c7870e88d1963c() {
         let input = r#"          package         =              "mdsf"
   author   = "Mads Hougesen"

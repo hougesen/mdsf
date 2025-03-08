@@ -23,7 +23,7 @@ pub const IS_STDIN: bool = false;
 
 #[cfg(test)]
 mod test_brunette {
-    #[test_with::executable(brunette)]
+    #[test_with::executable(brunette || pipx || uv)]
     fn test_brunette_python_229ec2b01c2bfe3c() {
         let input = r#"def add( a: int ,  b:int)->int: return a+b"#;
 

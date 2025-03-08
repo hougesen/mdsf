@@ -26,7 +26,7 @@ pub const IS_STDIN: bool = false;
 
 #[cfg(test)]
 mod test_rescript_format {
-    #[test_with::executable(npx)]
+    #[test_with::executable(rescript || npx || pnpm || deno || bunx)]
     fn test_rescript_format_rescript_59c7490e2a041de3() {
         let input = r#"module Button = {
   @react.component

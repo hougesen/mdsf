@@ -27,7 +27,7 @@ pub const IS_STDIN: bool = false;
 
 #[cfg(test)]
 mod test_elm_format {
-    #[test_with::executable(npx)]
+    #[test_with::executable(elm-format || npx || pnpm || deno || bunx)]
     fn test_elm_format_elm_4e120501af0177c4() {
         let input = r#"import   Html       exposing   (text)
 

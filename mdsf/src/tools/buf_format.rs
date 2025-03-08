@@ -27,7 +27,7 @@ pub const IS_STDIN: bool = false;
 
 #[cfg(test)]
 mod test_buf_format {
-    #[test_with::executable(npx)]
+    #[test_with::executable(buf || npx || pnpm || deno || bunx)]
     fn test_buf_format_protobuf_10af516c8a015ab5() {
         let input = r#"service SearchService {
                               rpc Search (SearchRequest) returns (SearchResponse);

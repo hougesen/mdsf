@@ -22,7 +22,7 @@ pub const IS_STDIN: bool = false;
 
 #[cfg(test)]
 mod test_yamlfix {
-    #[test_with::executable(yamlfix)]
+    #[test_with::executable(yamlfix || pipx || uv)]
     fn test_yamlfix_yaml_9fcbc943bcaf9d7f() {
         let input = r#"
 

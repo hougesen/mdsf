@@ -27,7 +27,7 @@ pub const IS_STDIN: bool = false;
 
 #[cfg(test)]
 mod test_biome_check {
-    #[test_with::executable(npx)]
+    #[test_with::executable(biome || npx || pnpm || deno || bunx)]
     fn test_biome_check_typescript_8154bfdbd3b72275() {
         let input = r#"
     async function asyncAddition(

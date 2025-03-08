@@ -26,7 +26,7 @@ pub const IS_STDIN: bool = false;
 
 #[cfg(test)]
 mod test_markdownlint {
-    #[test_with::executable(npx)]
+    #[test_with::executable(markdownlint || npx || pnpm || deno || bunx)]
     fn test_markdownlint_markdown_1f615768d8e575c5() {
         let input = r#"# Hello world
 

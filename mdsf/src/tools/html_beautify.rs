@@ -29,7 +29,7 @@ pub const IS_STDIN: bool = false;
 
 #[cfg(test)]
 mod test_html_beautify {
-    #[test_with::executable(npx)]
+    #[test_with::executable(html-beautify || npx || pnpm || deno || bunx)]
     fn test_html_beautify_html_63850f31f2ef5caf() {
         let input = r#"<div>
                     <p>
