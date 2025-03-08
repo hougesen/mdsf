@@ -1,0 +1,10 @@
+#[inline]
+pub fn setup_command(package_name: &str) -> std::process::Command {
+    let mut command = std::process::Command::new("uv");
+
+    command.arg("run");
+    command.arg("--no-progress");
+    command.arg(package_name);
+
+    command
+}

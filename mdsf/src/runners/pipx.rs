@@ -3,6 +3,7 @@ pub fn setup_command(package_name: &str) -> std::process::Command {
     let mut cmd = std::process::Command::new("pipx");
 
     cmd.arg("run");
+    cmd.arg("--quiet");
     cmd.arg(package_name);
 
     cmd
