@@ -18,5 +18,7 @@
   "homepage": "https://github.com/koihik/luaformatter",
   "languages": ["lua"],
   "name": "luaformatter",
-  "packages": {}
+  "packages": {
+    "luarocks": "luaformatter"
+  }
 }

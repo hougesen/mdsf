@@ -1,3 +1,10 @@
+use super::path::setup_command_from_path;
+
+#[inline]
+pub fn setup_node_modules_command(binary_name: &str) -> std::process::Command {
+    setup_command_from_path("./node_modules/.bin/", binary_name)
+}
+
 #[inline]
 pub fn setup_npx_command(package_name: &str) -> std::process::Command {
     let mut cmd = std::process::Command::new("npx");

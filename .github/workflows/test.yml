@@ -137,6 +137,8 @@ jobs:
         run: ( ( which ktfmt ) || ( ( which brew &&  brew install ktfmt ) ) || ( echo "Unable to install tool" ) )
       - name: ktlint
         run: ( ( which ktlint ) || ( ( which brew &&  brew install ktlint ) ) || ( echo "Unable to install tool" ) )
+      - name: lua-format
+        run: ( ( which lua-format ) || ( ( which luarocks && luarocks install luaformatter ) ) || ( echo "Unable to install tool" ) )
       - name: mado
         run: ( ( which mado ) || ( ( which brew && brew tap akiomik/mado https://github.com/akiomik/mado.git && brew install mado ) ) || ( echo "Unable to install tool" ) )
       - name: markdownfmt
