@@ -13,7 +13,11 @@ pub fn set_args(
     cmd
 }
 
-pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("autopep8")];
+pub const COMMANDS: [CommandType; 3] = [
+    CommandType::Direct("autopep8"),
+    CommandType::Uv("autopep8"),
+    CommandType::Pipx("autopep8"),
+];
 
 pub const IS_STDIN: bool = false;
 

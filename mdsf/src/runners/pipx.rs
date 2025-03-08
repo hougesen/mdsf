@@ -42,7 +42,7 @@ end program example
             crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
 
         let result = crate::execution::run_tools(
-            &[crate::runners::CommandType::PipxRun("fortran-linter")],
+            &[crate::runners::CommandType::Pipx("fortran-linter")],
             snippet.path(),
             crate::tools::fortran_linter::set_args,
             crate::testing::DEFAULT_TEST_FORMATTER_TIMEOUT,

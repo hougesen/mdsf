@@ -12,6 +12,10 @@ pub fn set_args(
     cmd
 }
 
-pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("salt-lint")];
+pub const COMMANDS: [CommandType; 3] = [
+    CommandType::Direct("salt-lint"),
+    CommandType::Uv("salt-lint"),
+    CommandType::Pipx("salt-lint"),
+];
 
 pub const IS_STDIN: bool = false;

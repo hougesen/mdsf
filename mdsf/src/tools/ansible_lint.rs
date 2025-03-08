@@ -12,6 +12,10 @@ pub fn set_args(
     cmd
 }
 
-pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("ansible-lint")];
+pub const COMMANDS: [CommandType; 3] = [
+    CommandType::Direct("ansible-lint"),
+    CommandType::Uv("ansible-dev-tools"),
+    CommandType::Pipx("ansible-dev-tools"),
+];
 
 pub const IS_STDIN: bool = false;

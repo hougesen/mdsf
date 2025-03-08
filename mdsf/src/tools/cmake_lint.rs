@@ -12,6 +12,10 @@ pub fn set_args(
     cmd
 }
 
-pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("cmake-lint")];
+pub const COMMANDS: [CommandType; 3] = [
+    CommandType::Direct("cmake-lint"),
+    CommandType::Uv("cmakelang"),
+    CommandType::Pipx("cmakelang"),
+];
 
 pub const IS_STDIN: bool = false;

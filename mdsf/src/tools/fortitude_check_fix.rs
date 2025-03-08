@@ -16,7 +16,11 @@ pub fn set_args(
     cmd
 }
 
-pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("fortitude")];
+pub const COMMANDS: [CommandType; 3] = [
+    CommandType::Direct("fortitude"),
+    CommandType::Uv("fortitude-lint"),
+    CommandType::Pipx("fortitude-lint"),
+];
 
 pub const IS_STDIN: bool = false;
 

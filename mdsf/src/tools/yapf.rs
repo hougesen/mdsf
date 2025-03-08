@@ -13,7 +13,11 @@ pub fn set_args(
     cmd
 }
 
-pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("yapf")];
+pub const COMMANDS: [CommandType; 3] = [
+    CommandType::Direct("yapf"),
+    CommandType::Uv("yapf"),
+    CommandType::Pipx("yapf"),
+];
 
 pub const IS_STDIN: bool = false;
 

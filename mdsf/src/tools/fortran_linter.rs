@@ -13,7 +13,11 @@ pub fn set_args(
     cmd
 }
 
-pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("fortran-linter")];
+pub const COMMANDS: [CommandType; 3] = [
+    CommandType::Direct("fortran-linter"),
+    CommandType::Uv("fortran-linter"),
+    CommandType::Pipx("fortran-linter"),
+];
 
 pub const IS_STDIN: bool = false;
 

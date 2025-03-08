@@ -33,7 +33,7 @@ pub enum CommandType {
     NodeModules(&'static str),
     Npm(&'static str),
     PhpVendor(&'static str),
-    PipxRun(&'static str),
+    Pipx(&'static str),
     Pnpm(&'static str),
     Uv(&'static str),
 }
@@ -46,7 +46,7 @@ impl CommandType {
             CommandType::Direct(_) => true,
             CommandType::NodeModules(_) => true,
             CommandType::PhpVendor(_) => true,
-            CommandType::PipxRun(_) => config_runners
+            CommandType::Pipx(_) => config_runners
                 .pypi
                 .as_ref()
                 .is_some_and(|python| python.pipx),
@@ -82,7 +82,7 @@ impl CommandType {
             Self::NodeModules(binary_name) => setup_node_modules_command(binary_name),
             Self::Npm(package_name) => node::setup_npx_command(package_name),
             Self::PhpVendor(binary_name) => composer::setup_php_vender_bin_command(binary_name),
-            Self::PipxRun(package_name) => pipx::setup_command(package_name),
+            Self::Pipx(package_name) => pipx::setup_command(package_name),
             Self::Pnpm(package_name) => pnpm::setup_pnpm_dlx_command(package_name),
             Self::Uv(package_name) => uv::setup_command(package_name),
         }

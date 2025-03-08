@@ -12,6 +12,10 @@ pub fn set_args(
     cmd
 }
 
-pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("gdformat")];
+pub const COMMANDS: [CommandType; 3] = [
+    CommandType::Direct("gdformat"),
+    CommandType::Uv("gdtoolkit"),
+    CommandType::Pipx("gdtoolkit"),
+];
 
 pub const IS_STDIN: bool = false;

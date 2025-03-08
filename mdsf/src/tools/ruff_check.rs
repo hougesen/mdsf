@@ -15,6 +15,10 @@ pub fn set_args(
     cmd
 }
 
-pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("ruff")];
+pub const COMMANDS: [CommandType; 3] = [
+    CommandType::Direct("ruff"),
+    CommandType::Uv("ruff"),
+    CommandType::Pipx("ruff"),
+];
 
 pub const IS_STDIN: bool = false;

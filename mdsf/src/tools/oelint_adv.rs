@@ -15,6 +15,10 @@ pub fn set_args(
     cmd
 }
 
-pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("oelint-adv")];
+pub const COMMANDS: [CommandType; 3] = [
+    CommandType::Direct("oelint-adv"),
+    CommandType::Uv("oelint_adv"),
+    CommandType::Pipx("oelint_adv"),
+];
 
 pub const IS_STDIN: bool = false;

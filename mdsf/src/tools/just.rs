@@ -15,13 +15,15 @@ pub fn set_args(
     cmd
 }
 
-pub const COMMANDS: [CommandType; 6] = [
+pub const COMMANDS: [CommandType; 8] = [
     CommandType::NodeModules("just"),
     CommandType::Direct("just"),
     CommandType::Npm("rust-just"),
     CommandType::Pnpm("rust-just"),
     CommandType::Bun("rust-just"),
     CommandType::Deno("rust-just"),
+    CommandType::Uv("rust-just"),
+    CommandType::Pipx("rust-just"),
 ];
 
 pub const IS_STDIN: bool = false;

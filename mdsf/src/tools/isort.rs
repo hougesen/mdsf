@@ -13,7 +13,11 @@ pub fn set_args(
     cmd
 }
 
-pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("isort")];
+pub const COMMANDS: [CommandType; 3] = [
+    CommandType::Direct("isort"),
+    CommandType::Uv("isort"),
+    CommandType::Pipx("isort"),
+];
 
 pub const IS_STDIN: bool = false;
 

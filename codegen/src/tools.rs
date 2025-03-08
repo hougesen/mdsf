@@ -279,6 +279,12 @@ impl Tool {
 
                     command_types.push(format!("CommandType::Deno(\"{npm}\")"));
                 }
+
+                if let Some(pip) = &self.packages.pip {
+                    command_types.push(format!("CommandType::Uv(\"{pip}\")"));
+
+                    command_types.push(format!("CommandType::Pipx(\"{pip}\")"));
+                }
             };
 
             // TODO: generate if statements instead of array

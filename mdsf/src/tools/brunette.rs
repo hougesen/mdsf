@@ -13,7 +13,11 @@ pub fn set_args(
     cmd
 }
 
-pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("brunette")];
+pub const COMMANDS: [CommandType; 3] = [
+    CommandType::Direct("brunette"),
+    CommandType::Uv("brunette"),
+    CommandType::Pipx("brunette"),
+];
 
 pub const IS_STDIN: bool = false;
 

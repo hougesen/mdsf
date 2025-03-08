@@ -13,7 +13,11 @@ pub fn set_args(
     cmd
 }
 
-pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("blue")];
+pub const COMMANDS: [CommandType; 3] = [
+    CommandType::Direct("blue"),
+    CommandType::Uv("blue"),
+    CommandType::Pipx("blue"),
+];
 
 pub const IS_STDIN: bool = false;
 

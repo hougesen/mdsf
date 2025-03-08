@@ -13,7 +13,11 @@ pub fn set_args(
     cmd
 }
 
-pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("clang-format")];
+pub const COMMANDS: [CommandType; 3] = [
+    CommandType::Direct("clang-format"),
+    CommandType::Uv("clang-format"),
+    CommandType::Pipx("clang-format"),
+];
 
 pub const IS_STDIN: bool = false;
 

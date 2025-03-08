@@ -12,6 +12,10 @@ pub fn set_args(
     cmd
 }
 
-pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("bashate")];
+pub const COMMANDS: [CommandType; 3] = [
+    CommandType::Direct("bashate"),
+    CommandType::Uv("bashate"),
+    CommandType::Pipx("bashate"),
+];
 
 pub const IS_STDIN: bool = false;

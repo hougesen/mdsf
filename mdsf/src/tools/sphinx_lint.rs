@@ -12,6 +12,10 @@ pub fn set_args(
     cmd
 }
 
-pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("sphinx-lint")];
+pub const COMMANDS: [CommandType; 3] = [
+    CommandType::Direct("sphinx-lint"),
+    CommandType::Uv("sphinx-lint"),
+    CommandType::Pipx("sphinx-lint"),
+];
 
 pub const IS_STDIN: bool = false;

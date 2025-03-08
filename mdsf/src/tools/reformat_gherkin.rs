@@ -12,6 +12,10 @@ pub fn set_args(
     cmd
 }
 
-pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("reformat-gherkin")];
+pub const COMMANDS: [CommandType; 3] = [
+    CommandType::Direct("reformat-gherkin"),
+    CommandType::Uv("reformat-gherkin"),
+    CommandType::Pipx("reformat-gherkin"),
+];
 
 pub const IS_STDIN: bool = false;

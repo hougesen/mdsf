@@ -14,7 +14,11 @@ pub fn set_args(
     cmd
 }
 
-pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("autoflake")];
+pub const COMMANDS: [CommandType; 3] = [
+    CommandType::Direct("autoflake"),
+    CommandType::Uv("autoflake"),
+    CommandType::Pipx("autoflake"),
+];
 
 pub const IS_STDIN: bool = false;
 

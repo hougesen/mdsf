@@ -12,6 +12,10 @@ pub fn set_args(
     cmd
 }
 
-pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("reorder-python-imports")];
+pub const COMMANDS: [CommandType; 3] = [
+    CommandType::Direct("reorder-python-imports"),
+    CommandType::Uv("reorder-python-imports"),
+    CommandType::Pipx("reorder-python-imports"),
+];
 
 pub const IS_STDIN: bool = false;

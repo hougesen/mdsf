@@ -13,6 +13,10 @@ pub fn set_args(
     cmd
 }
 
-pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("djlint")];
+pub const COMMANDS: [CommandType; 3] = [
+    CommandType::Direct("djlint"),
+    CommandType::Uv("djlint"),
+    CommandType::Pipx("djlint"),
+];
 
 pub const IS_STDIN: bool = false;

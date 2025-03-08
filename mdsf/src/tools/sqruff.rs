@@ -13,6 +13,10 @@ pub fn set_args(
     cmd
 }
 
-pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("sqruff")];
+pub const COMMANDS: [CommandType; 3] = [
+    CommandType::Direct("sqruff"),
+    CommandType::Uv("sqruff"),
+    CommandType::Pipx("sqruff"),
+];
 
 pub const IS_STDIN: bool = false;
