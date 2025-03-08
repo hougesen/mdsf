@@ -1,0 +1,26 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "fortran-linter",
+  "categories": ["formatter", "linter"],
+  "commands": {
+    "": {
+      "arguments": ["-i", "$PATH"],
+      "tests": [
+        {
+          "language": ".f90",
+          "test_input": "program example\n    implicit none (type, external)\n\n    contains\n        integer function addnum(a, b)\n            integer, intent(in) :: a, b\n            return a + b\n        end function addnum\n\nend program example",
+          "test_output": "program example\nimplicit none (type, external)\n\ncontains\ninteger function addnum(a, b)\n    integer, intent(in) :: a, b\n    return a + b\nend function addnum\n\nend program example\n"
+        }
+      ]
+    }
+  },
+  "description": "A simple fortran syntax checker, including automatic fixing of the code",
+  "homepage": "https://github.com/cphyc/fortran-linter",
+  "languages": ["fortran"],
+  "packages": {
+    "brew": {
+      "name": "fprettify"
+    },
+    "pip": "fortran-linter"
+  }
+}

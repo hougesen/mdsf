@@ -103,6 +103,8 @@ jobs:
         run: ( ( which fantomas ) || ( ( which dotnet && dotnet tool install -g fantomas ) ) || ( echo "Unable to install tool" ) )
       - name: fortitude
         run: ( ( which fortitude ) || ( ( which pipx && pipx install fortitude-lint ) ) || ( echo "Unable to install tool" ) )
+      - name: fortran-linter
+        run: ( ( which fortran-linter ) || ( ( which brew &&  brew install fprettify ) || ( which pipx && pipx install fortran-linter ) ) || ( echo "Unable to install tool" ) )
       - name: fprettify
         run: ( ( which fprettify ) || ( ( which pipx && pipx install fprettify ) ) || ( echo "Unable to install tool" ) )
       - name: gofumpt

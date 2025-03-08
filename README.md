@@ -389,7 +389,7 @@ mdsf init
 
 <!-- START_SECTION:supported-tools -->
 
-`mdsf` currently supports 277 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 278 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                                                                                 | Description                                                                                                                                   | Categories            | Languages                                                                                                                         |
 | ------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
@@ -475,6 +475,7 @@ mdsf init
 | [fnlfmt](https://git.sr.ht/~technomancy/fnlfmt)                                      | A formatter for Fennel code                                                                                                                   | `formatter`           | `fennel`                                                                                                                          |
 | [forge](https://github.com/foundry-rs/foundry)                                       | A Solidity formatter                                                                                                                          | `formatter`           | `solidity`                                                                                                                        |
 | [fortitude](https://github.com/plasmafair/fortitude)                                 | A Fortran linter, written in Rust                                                                                                             | `linter`              |                                                                                                                                   |
+| [fortran-linter](https://github.com/cphyc/fortran-linter)                            | A simple fortran syntax checker, including automatic fixing of the code                                                                       | `formatter`, `linter` | `fortran`                                                                                                                         |
 | [fourmolu](https://github.com/fourmolu/fourmolu)                                     | A formatter for Haskell source code                                                                                                           | `formatter`           | `haskell`                                                                                                                         |
 | [fprettify](https://github.com/fortran-lang/fprettify)                               | Auto-formatter for modern Fortran source code                                                                                                 | `formatter`           | `fortran`                                                                                                                         |
 | [futhark](https://futhark.readthedocs.io/en/latest/man/futhark-fmt.html)             | Code formatter for the furhark programming language                                                                                           | `formatter`           | `futhark`                                                                                                                         |
@@ -677,7 +678,7 @@ mdsf init
 
 <!-- START_SECTION:supported-commands -->
 
-`mdsf` currently supports 304 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 305 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                         | Command                                                                                 |
 | ---------------------------- | --------------------------------------------------------------------------------------- |
@@ -773,6 +774,7 @@ mdsf init
 | `fortitude:check:fix:unsafe` | `fortitude check --quiet --no-respect-gitignore --fix --unsafe-fixes $PATH`             |
 | `fortitude:check:fix`        | `fortitude check --quiet --no-respect-gitignore --fix $PATH`                            |
 | `fortitude:check`            | `fortitude check --quiet --no-respect-gitignore $PATH`                                  |
+| `fortran-linter`             | `fortran-linter -i $PATH`                                                               |
 | `fourmolu`                   | `fourmolu -i $PATH`                                                                     |
 | `fprettify`                  | `fprettify $PATH`                                                                       |
 | `futhark:fmt`                | `futhark fmt $PATH`                                                                     |

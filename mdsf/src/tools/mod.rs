@@ -93,6 +93,7 @@ pub mod forge_fmt;
 pub mod fortitude_check;
 pub mod fortitude_check_fix;
 pub mod fortitude_check_fix_unsafe;
+pub mod fortran_linter;
 pub mod fourmolu;
 pub mod fprettify;
 pub mod futhark_fmt;
@@ -1044,6 +1045,14 @@ pub enum Tooling {
     ///
     /// `fortitude check --quiet --no-respect-gitignore --fix --unsafe-fixes $PATH`
     FortitudeCheckFixUnsafe,
+
+    #[serde(rename = "fortran-linter")]
+    /// A simple fortran syntax checker, including automatic fixing of the code
+    ///
+    /// [https://github.com/cphyc/fortran-linter](https://github.com/cphyc/fortran-linter)
+    ///
+    /// `fortran-linter -i $PATH`
+    FortranLinter,
 
     #[serde(rename = "fourmolu")]
     /// A formatter for Haskell source code
@@ -3061,6 +3070,11 @@ impl Tooling {
                 fortitude_check_fix_unsafe::set_args,
                 fortitude_check_fix_unsafe::IS_STDIN,
             ),
+            Self::FortranLinter => (
+                &fortran_linter::COMMANDS,
+                fortran_linter::set_args,
+                fortran_linter::IS_STDIN,
+            ),
             Self::Fourmolu => (&fourmolu::COMMANDS, fourmolu::set_args, fourmolu::IS_STDIN),
             Self::Fprettify => (
                 &fprettify::COMMANDS,
@@ -3804,6 +3818,7 @@ impl AsRef<str> for Tooling {
             Self::FortitudeCheck => "fortitude:check",
             Self::FortitudeCheckFix => "fortitude:check:fix",
             Self::FortitudeCheckFixUnsafe => "fortitude:check:fix:unsafe",
+            Self::FortranLinter => "fortran-linter",
             Self::Fourmolu => "fourmolu",
             Self::Fprettify => "fprettify",
             Self::FutharkFmt => "futhark:fmt",
