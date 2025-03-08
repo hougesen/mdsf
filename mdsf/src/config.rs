@@ -10,7 +10,7 @@ const fn is_false(b: &bool) -> bool {
     !(*b)
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Hash, Debug, PartialEq, Eq)]
+#[derive(serde::Serialize, serde::Deserialize, Hash, Debug, PartialEq, Eq, Default)]
 #[cfg_attr(feature = "json-schema", derive(schemars::JsonSchema))]
 pub struct MdsfConfigRunnersJavaScript {
     /// Whether to support running npm packages using `bunx $PACKAGE_NAME`
@@ -30,7 +30,7 @@ pub struct MdsfConfigRunnersJavaScript {
     pub pnpm: bool,
 }
 
-#[derive(serde::Serialize, serde::Deserialize, Hash, Debug, PartialEq, Eq)]
+#[derive(serde::Serialize, serde::Deserialize, Hash, Debug, PartialEq, Eq, Default)]
 #[cfg_attr(feature = "json-schema", derive(schemars::JsonSchema))]
 pub struct MdsfConfigRunnersPython {
     /// Whether to support running pypi packages using `pipx run $PACKAGE_NAME`
@@ -56,6 +56,22 @@ impl MdsfConfigRunners {
     #[inline]
     fn is_default(&self) -> bool {
         *self == MdsfConfigRunners::default()
+    }
+
+    #[inline]
+    pub fn all() -> Self {
+        Self {
+            javascript: Some(MdsfConfigRunnersJavaScript {
+                bunx: true,
+                deno: true,
+                npx: true,
+                pnpm: true,
+            }),
+            python: Some(MdsfConfigRunnersPython {
+                pipx: true,
+                uv: true,
+            }),
+        }
     }
 }
 

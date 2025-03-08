@@ -48,7 +48,13 @@ end program example
             crate::testing::DEFAULT_TEST_FORMATTER_TIMEOUT,
             crate::tools::fortran_linter::IS_STDIN,
             crate::testing::DEFAULT_TEST_DEBUG_ENABLED,
-            crate::runners::JavaScriptRuntime::default(),
+            &crate::config::MdsfConfigRunners {
+                python: Some(crate::config::MdsfConfigRunnersPython {
+                    pipx: true,
+                    ..Default::default()
+                }),
+                ..Default::default()
+            },
         )
         .expect("it to be successful")
         .1

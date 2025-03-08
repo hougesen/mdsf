@@ -1,5 +1,5 @@
 #[inline]
-pub fn setup_command(package_name: &str) -> std::process::Command {
+pub fn setup_npx_command(package_name: &str) -> std::process::Command {
     let mut cmd = std::process::Command::new("npx");
 
     // Auto install package
@@ -29,7 +29,13 @@ mod test_node {
             crate::testing::DEFAULT_TEST_FORMATTER_TIMEOUT,
             crate::tools::prettier::IS_STDIN,
             crate::testing::DEFAULT_TEST_DEBUG_ENABLED,
-            crate::runners::JavaScriptRuntime::Node,
+            &crate::config::MdsfConfigRunners {
+                javascript: Some(crate::config::MdsfConfigRunnersJavaScript {
+                    npx: true,
+                    ..Default::default()
+                }),
+                ..Default::default()
+            },
         )
         .expect("it to succeed");
     }

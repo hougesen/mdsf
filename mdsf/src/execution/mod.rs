@@ -5,7 +5,7 @@ use tempfile::NamedTempFile;
 use which::which;
 
 use crate::{
-    config::MdsfConfig,
+    config::{MdsfConfig, MdsfConfigRunners},
     error::MdsfError,
     fttype::get_file_extension,
     get_project_dir,
@@ -200,13 +200,9 @@ pub fn format_snippet(
             let snippet_path = snippet.path();
 
             if let Some(formatters) = always_ran {
-                if let Ok(Some(formatted_code)) = formatters.format(
-                    snippet_path,
-                    info,
-                    timeout,
-                    debug_enabled,
-                    config.javascript_runtime,
-                ) {
+                if let Ok(Some(formatted_code)) =
+                    formatters.format(snippet_path, info, timeout, debug_enabled, &config.runners)
+                {
                     if language_formatters.is_none() {
                         let mut f = formatted_code.trim().to_owned();
 
@@ -218,13 +214,9 @@ pub fn format_snippet(
             }
 
             if let Some(formatters) = language_formatters {
-                if let Ok(Some(formatted_code)) = formatters.format(
-                    snippet_path,
-                    info,
-                    timeout,
-                    debug_enabled,
-                    config.javascript_runtime,
-                ) {
+                if let Ok(Some(formatted_code)) =
+                    formatters.format(snippet_path, info, timeout, debug_enabled, &config.runners)
+                {
                     let mut f = formatted_code.trim().to_owned();
 
                     f.push('\n');
@@ -275,7 +267,7 @@ impl MdsfFormatter<Tooling> {
         info: &LineInfo,
         timeout: u64,
         debug_enabled: bool,
-        javascript_runtime: JavaScriptRuntime,
+        config_runners: &MdsfConfigRunners,
     ) -> Result<Option<String>, MdsfError> {
         Self::format_multiple(
             self,
@@ -284,7 +276,7 @@ impl MdsfFormatter<Tooling> {
             false,
             timeout,
             debug_enabled,
-            javascript_runtime,
+            config_runners,
         )
         .map(|(_should_continue, output)| output)
     }
@@ -297,7 +289,7 @@ impl MdsfFormatter<Tooling> {
         nested: bool,
         timeout: u64,
         debug_enabled: bool,
-        javascript_runtime: JavaScriptRuntime,
+        config_runners: &MdsfConfigRunners,
     ) -> Result<(bool, Option<String>), MdsfError> {
         match formatter {
             Self::Single(f) => {
@@ -307,7 +299,7 @@ impl MdsfFormatter<Tooling> {
 
                 let time = std::time::Instant::now();
 
-                let r = f.format_snippet(snippet_path, timeout, debug_enabled, javascript_runtime);
+                let r = f.format_snippet(snippet_path, timeout, debug_enabled, config_runners);
 
                 print_formatter_time(formatter_name, info, time.elapsed());
 
@@ -345,7 +337,7 @@ impl MdsfFormatter<Tooling> {
                         true,
                         timeout,
                         debug_enabled,
-                        javascript_runtime,
+                        config_runners,
                     );
 
                     if r.as_ref()
@@ -372,10 +364,14 @@ pub fn run_tools(
     timeout: u64,
     is_stdin: bool,
     debug_enabled: bool,
-    javascript_runtime: JavaScriptRuntime,
+    config_runners: &MdsfConfigRunners,
 ) -> Result<(bool, Option<String>), MdsfError> {
     for (index, cmd) in command_types.iter().enumerate() {
-        let cmd = set_args_fn(cmd.build(javascript_runtime), file_path);
+        if !cmd.is_enabled(config_runners) {
+            continue;
+        };
+
+        let cmd = set_args_fn(cmd.build(), file_path);
 
         let execution_result = execute_command(cmd, file_path, timeout, is_stdin, debug_enabled);
 

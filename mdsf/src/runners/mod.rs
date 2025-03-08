@@ -1,4 +1,7 @@
+use crate::config::MdsfConfigRunners;
+
 mod bun;
+mod composer;
 mod deno;
 mod node;
 mod pipx;
@@ -43,10 +46,10 @@ impl core::fmt::Display for JavaScriptRuntime {
 #[inline]
 fn setup_npm_script(runtime: JavaScriptRuntime, package_name: &str) -> std::process::Command {
     match runtime {
-        JavaScriptRuntime::Bun => bun::setup_command(package_name),
-        JavaScriptRuntime::Deno => deno::setup_command(package_name),
-        JavaScriptRuntime::Node => node::setup_command(package_name),
-        JavaScriptRuntime::Pnpm => pnpm::setup_command(package_name),
+        JavaScriptRuntime::Bun => bun::setup_bunx_command(package_name),
+        JavaScriptRuntime::Deno => deno::setup_deno_run_command(package_name),
+        JavaScriptRuntime::Node => node::setup_npx_command(package_name),
+        JavaScriptRuntime::Pnpm => pnpm::setup_pnpm_dlx_command(package_name),
     }
 }
 
@@ -66,32 +69,69 @@ fn setup_node_modules_command(binary_name: &str) -> std::process::Command {
     setup_command_from_path("./node_modules/.bin/", binary_name)
 }
 
-#[inline]
-fn setup_php_vender_bin_command(binary_name: &str) -> std::process::Command {
-    setup_command_from_path("./vendor/bin/", binary_name)
-}
-
 #[derive(Debug)]
 pub enum CommandType {
     BinaryPath(&'static str, &'static str),
+    Bun(&'static str),
+    Deno(&'static str),
     Direct(&'static str),
     NodeModules(&'static str),
     Npm(&'static str),
     PhpVendor(&'static str),
     PipxRun(&'static str),
+    Pnpm(&'static str),
     Uv(&'static str),
 }
 
 impl CommandType {
     #[inline]
-    pub fn build(&self, javascript_runtime: JavaScriptRuntime) -> std::process::Command {
+    pub fn is_enabled(&self, config_runners: &MdsfConfigRunners) -> bool {
+        match self {
+            CommandType::BinaryPath(_, _) => true,
+            CommandType::Direct(_) => true,
+            CommandType::NodeModules(_) => true,
+            CommandType::PhpVendor(_) => true,
+            CommandType::PipxRun(_) => config_runners
+                .python
+                .as_ref()
+                .is_some_and(|python| python.pipx),
+            CommandType::Uv(_) => config_runners
+                .python
+                .as_ref()
+                .is_some_and(|python| python.uv),
+            CommandType::Deno(_) => config_runners
+                .javascript
+                .as_ref()
+                .is_some_and(|javascript| javascript.deno),
+            CommandType::Bun(_) => config_runners
+                .javascript
+                .as_ref()
+                .is_some_and(|javascript| javascript.bunx),
+            CommandType::Npm(_) => config_runners
+                .javascript
+                .as_ref()
+                .is_some_and(|javascript| javascript.npx),
+            CommandType::Pnpm(_) => config_runners
+                .javascript
+                .as_ref()
+                .is_some_and(|javascript| javascript.pnpm),
+        }
+    }
+}
+
+impl CommandType {
+    #[inline]
+    pub fn build(&self) -> std::process::Command {
         match self {
             Self::BinaryPath(path, binary_name) => setup_command_from_path(path, binary_name),
+            Self::Bun(package_name) => bun::setup_bunx_command(package_name),
+            Self::Deno(package_name) => deno::setup_deno_run_command(package_name),
             Self::Direct(binary_name) => std::process::Command::new(binary_name),
             Self::NodeModules(binary_name) => setup_node_modules_command(binary_name),
-            Self::Npm(package_name) => setup_npm_script(javascript_runtime, package_name),
-            Self::PhpVendor(binary_name) => setup_php_vender_bin_command(binary_name),
+            Self::Npm(package_name) => node::setup_npx_command(package_name),
+            Self::PhpVendor(binary_name) => composer::setup_php_vender_bin_command(binary_name),
             Self::PipxRun(package_name) => pipx::setup_command(package_name),
+            Self::Pnpm(package_name) => pnpm::setup_pnpm_dlx_command(package_name),
             Self::Uv(package_name) => uv::setup_command(package_name),
         }
     }

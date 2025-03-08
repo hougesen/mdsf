@@ -231,7 +231,7 @@ impl Tool {
 {INDENT}{INDENT}{INDENT}{INDENT}snippet.path(),
 {INDENT}{INDENT}{INDENT}{INDENT}crate::testing::DEFAULT_TEST_FORMATTER_TIMEOUT,
 {INDENT}{INDENT}{INDENT}{INDENT}crate::testing::DEFAULT_TEST_DEBUG_ENABLED,
-{INDENT}{INDENT}{INDENT}{INDENT}crate::runners::JavaScriptRuntime::default(),
+{INDENT}{INDENT}{INDENT}{INDENT}&crate::config::MdsfConfigRunners::all(),
 {INDENT}{INDENT}{INDENT})
 {INDENT}{INDENT}{INDENT}.expect(\"it to be successful\")
 {INDENT}{INDENT}{INDENT}.1
@@ -423,7 +423,7 @@ impl Tooling {
         snippet_path: &std::path::Path,
         timeout: u64,
         debug_enabled: bool,
-        javascript_runtime: crate::runners::JavaScriptRuntime,
+        config_runners: &crate::config::MdsfConfigRunners,
     ) -> Result<(bool, Option<String>), crate::error::MdsfError> {
         todo!()
     }
@@ -545,7 +545,7 @@ impl Tooling {{
 {INDENT}{INDENT}snippet_path: &std::path::Path,
 {INDENT}{INDENT}timeout: u64,
 {INDENT}{INDENT}debug_enabled: bool,
-{INDENT}{INDENT}javascript_runtime: crate::runners::JavaScriptRuntime,
+{INDENT}{INDENT}config_runners: &crate::config::MdsfConfigRunners,
 {INDENT}) -> Result<(bool, Option<String>), crate::error::MdsfError> {{
 {INDENT}{INDENT}let (commands, set_args_fn, is_stdin): (
 {INDENT}{INDENT}{INDENT}&[crate::runners::CommandType],
@@ -562,7 +562,7 @@ impl Tooling {{
 {INDENT}{INDENT}{INDENT}timeout,
 {INDENT}{INDENT}{INDENT}is_stdin,
 {INDENT}{INDENT}{INDENT}debug_enabled,
-{INDENT}{INDENT}{INDENT}javascript_runtime,
+{INDENT}{INDENT}{INDENT}config_runners,
 {INDENT}{INDENT})
 {INDENT}}}
 }}
