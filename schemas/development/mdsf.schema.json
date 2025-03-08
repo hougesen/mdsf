@@ -4,7 +4,7 @@
   "type": "object",
   "properties": {
     "$schema": {
-      "default": "https://raw.githubusercontent.com/hougesen/mdsf/main/schemas/v0.7.0-next/mdsf.schema.json",
+      "default": "https://raw.githubusercontent.com/hougesen/mdsf/main/schemas/v0.8.0/mdsf.schema.json",
       "type": "string"
     },
     "custom_file_extensions": {
@@ -71,7 +71,7 @@
           "type": "boolean"
         },
         "uv": {
-          "description": "Whether to support running pypi packages using `uv run $PACKAGE_NAME`",
+          "description": "Whether to support running pypi packages using `uv tool run $PACKAGE_NAME`",
           "type": "boolean"
         }
       }
