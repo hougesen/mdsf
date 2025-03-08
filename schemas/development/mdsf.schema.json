@@ -46,8 +46,11 @@
     "MdsfConfigRunners": {
       "type": "object",
       "properties": {
+        "dub": {
+          "description": "Whether to support running dub packages using `dub run $PACKAGE_NAME`",
+          "type": "boolean"
+        },
         "npm": {
-          "default": null,
           "anyOf": [
             {
               "$ref": "#/definitions/MdsfConfigRunnersNpm"
@@ -58,7 +61,6 @@
           ]
         },
         "pypi": {
-          "default": null,
           "anyOf": [
             {
               "$ref": "#/definitions/MdsfConfigRunnersPypi"
@@ -75,22 +77,18 @@
       "properties": {
         "bunx": {
           "description": "Whether to support running npm packages using `bunx $PACKAGE_NAME`",
-          "default": false,
           "type": "boolean"
         },
         "deno": {
           "description": "Whether to support running npm packages using `deno run -A npm:$PACKAGE_NAME`",
-          "default": false,
           "type": "boolean"
         },
         "npx": {
           "description": "Whether to support running npm packages using `npx $PACKAGE_NAME`",
-          "default": false,
           "type": "boolean"
         },
         "pnpm": {
           "description": "Whether to support running npm packages using `pnpm dlx $PACKAGE_NAME`",
-          "default": false,
           "type": "boolean"
         }
       }
@@ -100,12 +98,10 @@
       "properties": {
         "pipx": {
           "description": "Whether to support running pypi packages using `pipx run $PACKAGE_NAME`",
-          "default": false,
           "type": "boolean"
         },
         "uv": {
           "description": "Whether to support running pypi packages using `uv run $PACKAGE_NAME`",
-          "default": false,
           "type": "boolean"
         }
       }

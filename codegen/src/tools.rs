@@ -85,6 +85,9 @@ pub struct ToolPackages {
     pub dotnet: Option<String>,
 
     #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub dub: Option<String>,
+
+    #[serde(default, skip_serializing_if = "Option::is_none")]
     pub gem: Option<String>,
 
     #[serde(default, skip_serializing_if = "Option::is_none")]
@@ -284,6 +287,10 @@ impl Tool {
                     command_types.push(format!("CommandType::Uv(\"{pip}\")"));
 
                     command_types.push(format!("CommandType::Pipx(\"{pip}\")"));
+                }
+
+                if let Some(dub) = &self.packages.dub {
+                    command_types.push(format!("CommandType::Dub(\"{dub}\")"));
                 }
             };
 

@@ -1,5 +1,5 @@
 #[inline]
-pub fn setup_command(package_name: &str) -> std::process::Command {
+pub fn setup_pipx_run_command(package_name: &str) -> std::process::Command {
     let mut cmd = std::process::Command::new("pipx");
 
     cmd.arg("run");

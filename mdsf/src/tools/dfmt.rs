@@ -13,6 +13,6 @@ pub fn set_args(
     cmd
 }
 
-pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("dfmt")];
+pub const COMMANDS: [CommandType; 2] = [CommandType::Direct("dfmt"), CommandType::Dub("dfmt")];
 
 pub const IS_STDIN: bool = false;
