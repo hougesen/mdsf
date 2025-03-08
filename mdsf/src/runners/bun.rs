@@ -1,5 +1,5 @@
 #[inline]
-pub fn new_bunx_cmd(package_name: &str) -> std::process::Command {
+pub fn setup_command(package_name: &str) -> std::process::Command {
     let mut cmd = std::process::Command::new("bunx");
 
     // Auto install package
@@ -24,13 +24,15 @@ mod test_bun {
         let snippet =
             crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
 
-        Tooling::Prettier
-            .format_snippet(
-                snippet.path(),
-                crate::testing::DEFAULT_TEST_FORMATTER_TIMEOUT,
-                crate::testing::DEFAULT_TEST_DEBUG_ENABLED,
-                crate::runners::JavaScriptRuntime::Bun,
-            )
-            .expect("it to succeed");
+        crate::execution::run_tools(
+            &[crate::runners::CommandType::Npm("prettier")],
+            snippet.path(),
+            crate::tools::prettier::set_args,
+            crate::testing::DEFAULT_TEST_FORMATTER_TIMEOUT,
+            crate::tools::prettier::IS_STDIN,
+            crate::testing::DEFAULT_TEST_DEBUG_ENABLED,
+            crate::runners::JavaScriptRuntime::Bun,
+        )
+        .expect("it to succeed");
     }
 }

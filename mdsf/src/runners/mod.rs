@@ -1,11 +1,7 @@
-use bun::new_bunx_cmd;
-use deno::new_deno_cmd;
-use node::new_npx_cmd;
-use pnpm::new_pnpm_dlx_cmd;
-
 mod bun;
 mod deno;
 mod node;
+mod pipx;
 mod pnpm;
 
 #[derive(
@@ -46,10 +42,10 @@ impl core::fmt::Display for JavaScriptRuntime {
 #[inline]
 fn setup_npm_script(runtime: JavaScriptRuntime, package_name: &str) -> std::process::Command {
     match runtime {
-        JavaScriptRuntime::Bun => new_bunx_cmd(package_name),
-        JavaScriptRuntime::Deno => new_deno_cmd(package_name),
-        JavaScriptRuntime::Node => new_npx_cmd(package_name),
-        JavaScriptRuntime::Pnpm => new_pnpm_dlx_cmd(package_name),
+        JavaScriptRuntime::Bun => bun::setup_command(package_name),
+        JavaScriptRuntime::Deno => deno::setup_command(package_name),
+        JavaScriptRuntime::Node => node::setup_command(package_name),
+        JavaScriptRuntime::Pnpm => pnpm::setup_command(package_name),
     }
 }
 
@@ -81,6 +77,7 @@ pub enum CommandType {
     NodeModules(&'static str),
     Npm(&'static str),
     PhpVendor(&'static str),
+    PipxRun(&'static str),
 }
 
 impl CommandType {
@@ -92,6 +89,7 @@ impl CommandType {
             Self::NodeModules(binary_name) => setup_node_modules_command(binary_name),
             Self::Npm(package_name) => setup_npm_script(javascript_runtime, package_name),
             Self::PhpVendor(binary_name) => setup_php_vender_bin_command(binary_name),
+            Self::PipxRun(package_name) => pipx::setup_command(package_name),
         }
     }
 }
