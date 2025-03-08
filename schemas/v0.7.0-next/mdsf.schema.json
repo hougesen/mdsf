@@ -40,12 +40,82 @@
       "additionalProperties": {
         "$ref": "#/definitions/MdsfFormatter_for_Tooling"
       }
+    },
+    "runners": {
+      "$ref": "#/definitions/MdsfConfigRunners"
     }
   },
   "definitions": {
     "JavaScriptRuntime": {
       "type": "string",
       "enum": ["bun", "deno", "node", "pnpm"]
+    },
+    "MdsfConfigRunners": {
+      "type": "object",
+      "properties": {
+        "javascript": {
+          "default": null,
+          "anyOf": [
+            {
+              "$ref": "#/definitions/MdsfConfigRunnersJavaScript"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "python": {
+          "default": null,
+          "anyOf": [
+            {
+              "$ref": "#/definitions/MdsfConfigRunnersPython"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      }
+    },
+    "MdsfConfigRunnersJavaScript": {
+      "type": "object",
+      "properties": {
+        "bunx": {
+          "description": "Whether to support running npm packages using `bunx $PACKAGE_NAME`",
+          "default": false,
+          "type": "boolean"
+        },
+        "deno": {
+          "description": "Whether to support running npm packages using `deno run -A npm:$PACKAGE_NAME`",
+          "default": false,
+          "type": "boolean"
+        },
+        "npx": {
+          "description": "Whether to support running npm packages using `npx $PACKAGE_NAME`",
+          "default": false,
+          "type": "boolean"
+        },
+        "pnpm": {
+          "description": "Whether to support running npm packages using `pnpm dlx $PACKAGE_NAME`",
+          "default": false,
+          "type": "boolean"
+        }
+      }
+    },
+    "MdsfConfigRunnersPython": {
+      "type": "object",
+      "properties": {
+        "pipx": {
+          "description": "Whether to support running pypi packages using `pipx run $PACKAGE_NAME`",
+          "default": false,
+          "type": "boolean"
+        },
+        "uv": {
+          "description": "Whether to support running pypi packages using `uv run $PACKAGE_NAME`",
+          "default": false,
+          "type": "boolean"
+        }
+      }
     },
     "MdsfFormatter_for_Tooling": {
       "anyOf": [

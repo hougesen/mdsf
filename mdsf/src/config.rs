@@ -12,6 +12,55 @@ const fn is_false(b: &bool) -> bool {
 
 #[derive(serde::Serialize, serde::Deserialize, Hash, Debug, PartialEq, Eq)]
 #[cfg_attr(feature = "json-schema", derive(schemars::JsonSchema))]
+pub struct MdsfConfigRunnersJavaScript {
+    /// Whether to support running npm packages using `bunx $PACKAGE_NAME`
+    #[serde(default)]
+    pub bunx: bool,
+
+    /// Whether to support running npm packages using `deno run -A npm:$PACKAGE_NAME`
+    #[serde(default)]
+    pub deno: bool,
+
+    /// Whether to support running npm packages using `npx $PACKAGE_NAME`
+    #[serde(default)]
+    pub npx: bool,
+
+    /// Whether to support running npm packages using `pnpm dlx $PACKAGE_NAME`
+    #[serde(default)]
+    pub pnpm: bool,
+}
+
+#[derive(serde::Serialize, serde::Deserialize, Hash, Debug, PartialEq, Eq)]
+#[cfg_attr(feature = "json-schema", derive(schemars::JsonSchema))]
+pub struct MdsfConfigRunnersPython {
+    /// Whether to support running pypi packages using `pipx run $PACKAGE_NAME`
+    #[serde(default)]
+    pub pipx: bool,
+
+    /// Whether to support running pypi packages using `uv run $PACKAGE_NAME`
+    #[serde(default)]
+    pub uv: bool,
+}
+
+#[derive(serde::Serialize, serde::Deserialize, Hash, Debug, PartialEq, Eq, Default)]
+#[cfg_attr(feature = "json-schema", derive(schemars::JsonSchema))]
+pub struct MdsfConfigRunners {
+    #[serde(default)]
+    pub javascript: Option<MdsfConfigRunnersJavaScript>,
+
+    #[serde(default)]
+    pub python: Option<MdsfConfigRunnersPython>,
+}
+
+impl MdsfConfigRunners {
+    #[inline]
+    fn is_default(&self) -> bool {
+        *self == MdsfConfigRunners::default()
+    }
+}
+
+#[derive(serde::Serialize, serde::Deserialize, Hash, Debug, PartialEq, Eq)]
+#[cfg_attr(feature = "json-schema", derive(schemars::JsonSchema))]
 pub struct MdsfConfig {
     #[serde(rename = "$schema", default = "default_schema_location")]
     pub schema: String,
@@ -66,6 +115,9 @@ pub struct MdsfConfig {
     /// ```
     #[serde(default)]
     pub languages: std::collections::BTreeMap<String, MdsfFormatter<Tooling>>,
+
+    #[serde(default, skip_serializing_if = "MdsfConfigRunners::is_default")]
+    pub runners: MdsfConfigRunners,
 }
 
 impl Default for MdsfConfig {
@@ -78,6 +130,7 @@ impl Default for MdsfConfig {
             javascript_runtime: JavaScriptRuntime::default(),
             language_aliases: std::collections::BTreeMap::default(),
             languages: default_tools(),
+            runners: MdsfConfigRunners::default(),
         }
     }
 }
