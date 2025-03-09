@@ -11,6 +11,9 @@
   "homepage": "https://github.com/scony/godot-gdscript-toolkit",
   "languages": ["gdscript"],
   "packages": {
+    "brew": {
+      "name": "gdtoolkit"
+    },
     "pip": "gdtoolkit"
   }
 }

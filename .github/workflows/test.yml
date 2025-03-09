@@ -106,13 +106,15 @@ jobs:
       - name: fortran-linter
         run: ( ( which fortran-linter ) || ( ( which brew &&  brew install fprettify ) || ( which pipx && pipx install fortran-linter ) ) || ( echo "Unable to install tool" ) )
       - name: fprettify
-        run: ( ( which fprettify ) || ( ( which pipx && pipx install fprettify ) ) || ( echo "Unable to install tool" ) )
+        run: ( ( which fprettify ) || ( ( which brew &&  brew install fprettify ) || ( which pipx && pipx install fprettify ) ) || ( echo "Unable to install tool" ) )
       - name: gofumpt
         run: ( ( which gofumpt ) || ( ( which go && go install mvdan.cc/gofumpt@latest ) ) || ( echo "Unable to install tool" ) )
       - name: goimports
         run: ( ( which goimports ) || ( ( which go && go install golang.org/x/tools/cmd/goimports@latest ) ) || ( echo "Unable to install tool" ) )
       - name: golines
         run: ( ( which golines ) || ( ( which go && go install github.com/segmentio/golines@latest ) ) || ( echo "Unable to install tool" ) )
+      - name: google-java-format
+        run: ( ( which google-java-format ) || ( ( which brew &&  brew install google-java-format ) ) || ( echo "Unable to install tool" ) )
       - name: hindent
         run: ( ( which hindent ) || ( ( which apt-get && sudo apt-get install -y hindent ) || ( which stack && stack install hindent ) ) || ( echo "Unable to install tool" ) )
       - name: html-beautify
@@ -156,7 +158,7 @@ jobs:
       - name: ocp-indent
         run: ( ( which ocp-indent ) || ( ( which apt-get && sudo apt-get install -y ocp-indent ) || ( which opam && eval $(opam env) && opam install ocp-indent ) ) || ( echo "Unable to install tool" ) )
       - name: ormolu
-        run: ( ( which ormolu ) || ( ( which apt-get && sudo apt-get install -y ormolu ) || ( which stack && stack install ormolu ) || ( which cabal && cabal install ormolu ) ) || ( echo "Unable to install tool" ) )
+        run: ( ( which ormolu ) || ( ( which brew &&  brew install ormolu ) || ( which apt-get && sudo apt-get install -y ormolu ) || ( which stack && stack install ormolu ) || ( which cabal && cabal install ormolu ) ) || ( echo "Unable to install tool" ) )
       - name: prettier
         run: ( ( which prettier ) || ( ( which npm && npm i -g prettier ) ) || ( echo "Unable to install tool" ) )
       - name: prisma
@@ -182,9 +184,9 @@ jobs:
       - name: semistandard
         run: ( ( which semistandard ) || ( ( which npm && npm i -g semistandard ) ) || ( echo "Unable to install tool" ) )
       - name: shfmt
-        run: ( ( which shfmt ) || ( ( which go && go install mvdan.cc/sh/v3/cmd/shfmt@latest ) ) || ( echo "Unable to install tool" ) )
+        run: ( ( which shfmt ) || ( ( which brew &&  brew install shfmt ) || ( which go && go install mvdan.cc/sh/v3/cmd/shfmt@latest ) ) || ( echo "Unable to install tool" ) )
       - name: sleek
-        run: ( ( which sleek ) || ( ( which cargo && ( cargo binstall sleek || cargo install sleek ) ) ) || ( echo "Unable to install tool" ) )
+        run: ( ( which sleek ) || ( ( which cargo && ( cargo binstall sleek || cargo install sleek ) ) || ( which brew &&  brew install sleek ) ) || ( echo "Unable to install tool" ) )
       - name: sql-formatter
         run: ( ( which sql-formatter ) || ( ( which npm && npm i -g sql-formatter ) ) || ( echo "Unable to install tool" ) )
       - name: sqlfluff

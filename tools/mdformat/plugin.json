@@ -11,6 +11,9 @@
   "homepage": "https://github.com/executablebooks/mdformat",
   "languages": ["markdwon"],
   "packages": {
+    "brew": {
+      "name": "mdformat"
+    },
     "pip": "mdformat"
   }
 }

@@ -10,5 +10,9 @@
   "description": "A formatter for Fennel code",
   "homepage": "https://git.sr.ht/~technomancy/fnlfmt",
   "languages": ["fennel"],
-  "packages": {}
+  "packages": {
+    "brew": {
+      "name": "fnlfmt"
+    }
+  }
 }

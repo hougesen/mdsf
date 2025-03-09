@@ -11,6 +11,9 @@
   "homepage": "https://github.com/snakemake/snakefmt",
   "languages": ["snakemake"],
   "packages": {
+    "brew": {
+      "name": "snakefmt"
+    },
     "pip": "snakefmt"
   }
 }

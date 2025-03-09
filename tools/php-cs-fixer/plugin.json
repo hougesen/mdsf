@@ -11,6 +11,9 @@
   "homepage": "https://github.com/php-cs-fixer/php-cs-fixer",
   "languages": ["php"],
   "packages": {
+    "brew": {
+      "name": "php-cs-fixer"
+    },
     "composer": {
       "binary": "php-cs-fixer",
       "package": "friendsofphp/php-cs-fixer"

@@ -10,5 +10,9 @@
   "description": "A PostgreSQL SQL syntax beautifier",
   "homepage": "https://github.com/darold/pgformatter",
   "languages": ["sql"],
-  "packages": {}
+  "packages": {
+    "brew": {
+      "name": "pgformatter"
+    }
+  }
 }

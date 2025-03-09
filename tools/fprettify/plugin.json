@@ -18,6 +18,9 @@
   "homepage": "https://github.com/fortran-lang/fprettify",
   "languages": ["fortran"],
   "packages": {
+    "brew": {
+      "name": "fprettify"
+    },
     "pip": "fprettify"
   }
 }

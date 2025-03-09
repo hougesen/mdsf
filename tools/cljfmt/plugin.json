@@ -10,5 +10,9 @@
   "description": "A tool for formatting Clojure code",
   "homepage": "https://github.com/weavejester/cljfmt",
   "languages": ["clojure"],
-  "packages": {}
+  "packages": {
+    "brew": {
+      "name": "cljfmt"
+    }
+  }
 }
