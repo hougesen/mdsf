@@ -481,6 +481,16 @@
           "enum": ["dprint:fmt"]
         },
         {
+          "description": "Swiss-army knife for D source code\n\n[https://github.com/dlang-community/d-scanner](https://github.com/dlang-community/d-scanner)\n\n`dscanner fix $PATH`",
+          "type": "string",
+          "enum": ["dscanner:fix"]
+        },
+        {
+          "description": "Swiss-army knife for D source code\n\n[https://github.com/dlang-community/d-scanner](https://github.com/dlang-community/d-scanner)\n\n`dscanner lint $PATH`",
+          "type": "string",
+          "enum": ["dscanner:lint"]
+        },
+        {
           "description": "The Easiest way to add coding standard to your PHP project\n\n[https://github.com/easy-coding-standard/easy-coding-standard](https://github.com/easy-coding-standard/easy-coding-standard)\n\n`ecs check $PATH --fix --no-interaction`",
           "type": "string",
           "enum": ["easy-coding-standard"]

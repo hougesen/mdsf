@@ -389,7 +389,7 @@ mdsf init
 
 <!-- START_SECTION:supported-tools -->
 
-`mdsf` currently supports 280 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 281 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                                                                                 | Description                                                                                                                                   | Categories            | Languages                                                                                                                         |
 | ------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
@@ -462,6 +462,7 @@ mdsf init
 | [doctoc](https://github.com/thlorenz/doctoc)                                         | Generates table of contents for markdown files                                                                                                | `formatter`           | `markdown`                                                                                                                        |
 | [dotenv-linter](https://github.com/dotenv-linter/dotenv-linter)                      | Lightning-fast linter for .env files                                                                                                          | `linter`              | `env`                                                                                                                             |
 | [dprint](https://dprint.dev/)                                                        | A pluggable and configurable code formatting platform written in Rust                                                                         | `formatter`           |                                                                                                                                   |
+| [dscanner](https://github.com/dlang-community/d-scanner)                             | Swiss-army knife for D source code                                                                                                            | `linter`              | `d`                                                                                                                               |
 | [easy-coding-standard](https://github.com/easy-coding-standard/easy-coding-standard) | The Easiest way to add coding standard to your PHP project                                                                                    | `formatter`, `linter` | `php`                                                                                                                             |
 | [efmt](https://github.com/sile/efmt)                                                 | Erlang code formatter                                                                                                                         | `formatter`           | `erlang`                                                                                                                          |
 | [elm-format](https://github.com/avh4/elm-format)                                     | elm-format formats Elm source code according to a standard set of rules based on the official Elm Style Guide                                 | `formatter`           | `elm`                                                                                                                             |
@@ -680,7 +681,7 @@ mdsf init
 
 <!-- START_SECTION:supported-commands -->
 
-`mdsf` currently supports 307 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 309 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                         | Command                                                                                 |
 | ---------------------------- | --------------------------------------------------------------------------------------- |
@@ -761,6 +762,8 @@ mdsf init
 | `doctoc`                     | `doctoc $PATH`                                                                          |
 | `dotenv-linter:fix`          | `dotenv-linter fix $PATH`                                                               |
 | `dprint:fmt`                 | `dprint fmt $PATH`                                                                      |
+| `dscanner:fix`               | `dscanner fix $PATH`                                                                    |
+| `dscanner:lint`              | `dscanner lint $PATH`                                                                   |
 | `easy-coding-standard`       | `ecs check $PATH --fix --no-interaction`                                                |
 | `efmt`                       | `efmt -w $PATH`                                                                         |
 | `elm-format`                 | `elm-format --elm-version=0.19 --yes $PATH`                                             |
