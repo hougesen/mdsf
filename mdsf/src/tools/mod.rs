@@ -78,6 +78,8 @@ pub mod docstrfmt;
 pub mod doctoc;
 pub mod dotenv_linter_fix;
 pub mod dprint_fmt;
+pub mod dscanner_fix;
+pub mod dscanner_lint;
 pub mod easy_coding_standard;
 pub mod efmt;
 pub mod elm_format;
@@ -927,6 +929,22 @@ pub enum Tooling {
     ///
     /// `dprint fmt $PATH`
     DprintFmt,
+
+    #[serde(rename = "dscanner:fix")]
+    /// Swiss-army knife for D source code
+    ///
+    /// [https://github.com/dlang-community/d-scanner](https://github.com/dlang-community/d-scanner)
+    ///
+    /// `dscanner fix $PATH`
+    DscannerFix,
+
+    #[serde(rename = "dscanner:lint")]
+    /// Swiss-army knife for D source code
+    ///
+    /// [https://github.com/dlang-community/d-scanner](https://github.com/dlang-community/d-scanner)
+    ///
+    /// `dscanner lint $PATH`
+    DscannerLint,
 
     #[serde(rename = "easy-coding-standard")]
     /// The Easiest way to add coding standard to your PHP project
@@ -3041,6 +3059,16 @@ impl Tooling {
                 dprint_fmt::set_args,
                 dprint_fmt::IS_STDIN,
             ),
+            Self::DscannerFix => (
+                &dscanner_fix::COMMANDS,
+                dscanner_fix::set_args,
+                dscanner_fix::IS_STDIN,
+            ),
+            Self::DscannerLint => (
+                &dscanner_lint::COMMANDS,
+                dscanner_lint::set_args,
+                dscanner_lint::IS_STDIN,
+            ),
             Self::EasyCodingStandard => (
                 &easy_coding_standard::COMMANDS,
                 easy_coding_standard::set_args,
@@ -3823,6 +3851,8 @@ impl AsRef<str> for Tooling {
             Self::Doctoc => "doctoc",
             Self::DotenvLinterFix => "dotenv-linter:fix",
             Self::DprintFmt => "dprint:fmt",
+            Self::DscannerFix => "dscanner:fix",
+            Self::DscannerLint => "dscanner:lint",
             Self::EasyCodingStandard => "easy-coding-standard",
             Self::Efmt => "efmt",
             Self::ElmFormat => "elm-format",

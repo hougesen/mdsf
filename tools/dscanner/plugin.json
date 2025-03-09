@@ -1,0 +1,22 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "dscanner",
+  "categories": ["linter"],
+  "commands": {
+    "fix": {
+      "arguments": ["fix", "$PATH"]
+    },
+    "lint": {
+      "arguments": ["lint", "$PATH"]
+    }
+  },
+  "description": "Swiss-army knife for D source code",
+  "homepage": "https://github.com/dlang-community/d-scanner",
+  "languages": ["d"],
+  "packages": {
+    "brew": {
+      "name": "dscanner"
+    },
+    "dub": "dscanner"
+  }
+}
