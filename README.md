@@ -389,7 +389,7 @@ mdsf init
 
 <!-- START_SECTION:supported-tools -->
 
-`mdsf` currently supports 279 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 280 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                                                                                 | Description                                                                                                                                   | Categories            | Languages                                                                                                                         |
 | ------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
@@ -514,6 +514,7 @@ mdsf init
 | [jsonlint](https://github.com/zaach/jsonlint)                                        | A JSON parser and validator with a CLI                                                                                                        | `formatter`, `linter` | `json`                                                                                                                            |
 | [jsonnet-lint](https://jsonnet.org/learning/tools.html)                              | Linter for jsonnet files                                                                                                                      | `linter`              | `jsonnet`                                                                                                                         |
 | [jsonnetfmt](https://jsonnet.org/learning/tools.html)                                | Formatter for automatically fixing jsonnet stylistic problems                                                                                 | `formatter`           | `jsonnet`                                                                                                                         |
+| [jsonpp](https://github.com/jmhodges/jsonpp)                                         | A fast command line JSON pretty printer                                                                                                       | `formatter`           | `json`                                                                                                                            |
 | [juliaformatter.jl](https://github.com/domluna/juliaformatter.jl)                    | An opinionated code formatter for Julia. Plot twist - the opinion is your own                                                                 | `formatter`           | `julia`                                                                                                                           |
 | [just](https://github.com/casey/just)                                                | A formatter for justfiles                                                                                                                     | `formatter`           | `just`                                                                                                                            |
 | [kcl](https://www.kcl-lang.io/docs/tools/cli/kcl/fmt)                                | KCL Format tool supports reformatting KCL files to the standard code style                                                                    | `formatter`           | `kcl`                                                                                                                             |
@@ -679,7 +680,7 @@ mdsf init
 
 <!-- START_SECTION:supported-commands -->
 
-`mdsf` currently supports 306 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 307 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                         | Command                                                                                 |
 | ---------------------------- | --------------------------------------------------------------------------------------- |
@@ -815,6 +816,7 @@ mdsf init
 | `jsonlint`                   | `jsonlint -i $PATH`                                                                     |
 | `jsonnet-lint`               | `jsonnet-lint $PATH`                                                                    |
 | `jsonnetfmt`                 | `jsonnetfmt -i $PATH`                                                                   |
+| `jsonpp`                     | `jsonpp -s`                                                                             |
 | `juliaformatter.jl`          | `julia -E using JuliaFormatter;format_file(\"{$PATH_STRING}\")`                         |
 | `just`                       | `just --fmt --unstable --justfile $PATH`                                                |
 | `kcl:fmt`                    | `kcl fmt $PATH`                                                                         |
