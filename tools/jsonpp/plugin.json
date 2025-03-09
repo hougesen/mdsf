@@ -1,0 +1,26 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "jsonpp",
+  "categories": ["formatter"],
+  "commands": {
+    "": {
+      "arguments": ["-s"],
+      "stdin": true,
+      "tests": [
+        {
+          "language": "json",
+          "test_input": "{\n              \"key\": \"value\",\n  \"key2\": [\"value2\", \"value3\", 1            , null]\n }",
+          "test_output": "{\n  \"key\": \"value\",\n  \"key2\": [\n    \"value2\",\n    \"value3\",\n    1,\n    null\n  ]\n}"
+        }
+      ]
+    }
+  },
+  "description": "A fast command line JSON pretty printer",
+  "homepage": "https://github.com/jmhodges/jsonpp",
+  "languages": ["json"],
+  "packages": {
+    "brew": {
+      "name": "jsonpp"
+    }
+  }
+}

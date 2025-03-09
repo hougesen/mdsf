@@ -756,6 +756,11 @@
           "enum": ["jsonnetfmt"]
         },
         {
+          "description": "A fast command line JSON pretty printer\n\n[https://github.com/jmhodges/jsonpp](https://github.com/jmhodges/jsonpp)\n\n`jsonpp -s`",
+          "type": "string",
+          "enum": ["jsonpp"]
+        },
+        {
           "description": "An opinionated code formatter for Julia. Plot twist - the opinion is your own\n\n[https://github.com/domluna/juliaformatter.jl](https://github.com/domluna/juliaformatter.jl)\n\n`julia -E using JuliaFormatter;format_file(\\\"{$PATH_STRING}\\\")`",
           "type": "string",
           "enum": ["juliaformatter.jl"]

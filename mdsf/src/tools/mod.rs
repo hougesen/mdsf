@@ -133,6 +133,7 @@ pub mod jsona_lint;
 pub mod jsonlint;
 pub mod jsonnet_lint;
 pub mod jsonnetfmt;
+pub mod jsonpp;
 pub mod juliaformatter_jl;
 pub mod just;
 pub mod kcl_fmt;
@@ -1366,6 +1367,14 @@ pub enum Tooling {
     ///
     /// `jsonnetfmt -i $PATH`
     Jsonnetfmt,
+
+    #[serde(rename = "jsonpp")]
+    /// A fast command line JSON pretty printer
+    ///
+    /// [https://github.com/jmhodges/jsonpp](https://github.com/jmhodges/jsonpp)
+    ///
+    /// `jsonpp -s`
+    Jsonpp,
 
     #[serde(rename = "juliaformatter.jl")]
     /// An opinionated code formatter for Julia. Plot twist - the opinion is your own
@@ -3191,6 +3200,7 @@ impl Tooling {
                 jsonnetfmt::set_args,
                 jsonnetfmt::IS_STDIN,
             ),
+            Self::Jsonpp => (&jsonpp::COMMANDS, jsonpp::set_args, jsonpp::IS_STDIN),
             Self::JuliaformatterJl => (
                 &juliaformatter_jl::COMMANDS,
                 juliaformatter_jl::set_args,
@@ -3868,6 +3878,7 @@ impl AsRef<str> for Tooling {
             Self::Jsonlint => "jsonlint",
             Self::JsonnetLint => "jsonnet-lint",
             Self::Jsonnetfmt => "jsonnetfmt",
+            Self::Jsonpp => "jsonpp",
             Self::JuliaformatterJl => "juliaformatter.jl",
             Self::Just => "just",
             Self::KclFmt => "kcl:fmt",

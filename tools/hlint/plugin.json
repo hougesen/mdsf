@@ -11,6 +11,9 @@
   "homepage": "https://github.com/ndmitchell/hlint",
   "languages": ["haskell"],
   "packages": {
+    "brew": {
+      "name": "hlint"
+    },
     "cabal": "hlint",
     "stack": "hlint"
   }
