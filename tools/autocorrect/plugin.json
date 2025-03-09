@@ -11,6 +11,9 @@
   "homepage": "https://github.com/huacnlee/autocorrect",
   "languages": [],
   "packages": {
+    "brew": {
+      "name": "autocorrect"
+    },
     "cargo": "autocorrect",
     "npm": "autocorrect-node"
   }

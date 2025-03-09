@@ -1591,6 +1591,11 @@
           "enum": ["yamlfmt"]
         },
         {
+          "description": "A linter for YAML files\n\n[https://github.com/adrienverge/yamllint](https://github.com/adrienverge/yamllint)\n\n`yamllint $PATH`",
+          "type": "string",
+          "enum": ["yamllint"]
+        },
+        {
           "description": "A formatter for Python files\n\n[https://github.com/google/yapf](https://github.com/google/yapf)\n\n`yapf --in-place $PATH`",
           "type": "string",
           "enum": ["yapf"]

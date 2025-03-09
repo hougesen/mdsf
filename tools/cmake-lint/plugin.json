@@ -11,6 +11,9 @@
   "homepage": "https://cmake-format.readthedocs.io/en/latest/lint-usage.html",
   "languages": ["cmake"],
   "packages": {
+    "brew": {
+      "name": "cmake-lint"
+    },
     "pip": "cmakelang"
   }
 }

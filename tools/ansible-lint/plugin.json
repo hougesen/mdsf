@@ -12,6 +12,9 @@
   "languages": ["ansible"],
   "packages": {
     "apt": "ansible-lint",
+    "brew": {
+      "name": "ansible-lint"
+    },
     "pip": "ansible-dev-tools"
   }
 }

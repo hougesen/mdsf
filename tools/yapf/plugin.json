@@ -18,6 +18,9 @@
   "homepage": "https://github.com/google/yapf",
   "languages": ["python"],
   "packages": {
+    "brew": {
+      "name": "yapf"
+    },
     "pip": "yapf"
   }
 }

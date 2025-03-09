@@ -1,0 +1,26 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "yamllint",
+  "categories": ["linter"],
+  "commands": {
+    "": {
+      "arguments": ["$PATH"],
+      "tests": [
+        {
+          "language": "yaml",
+          "test_input": "---\nname: action\non: [push]\njobs:\n  format:\n    runs-on: ubuntu-latest\n    steps:\n      - run: mdsf format .\n",
+          "test_output": "---\nname: action\non: [push]\njobs:\n  format:\n    runs-on: ubuntu-latest\n    steps:\n      - run: mdsf format .\n"
+        }
+      ]
+    }
+  },
+  "description": "A linter for YAML files",
+  "homepage": "https://github.com/adrienverge/yamllint",
+  "languages": ["yaml"],
+  "packages": {
+    "brew": {
+      "name": "yamllint"
+    },
+    "pip": "yamllint"
+  }
+}

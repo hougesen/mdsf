@@ -62,6 +62,9 @@
     "protobuf"
   ],
   "packages": {
+    "brew": {
+      "name": "clang-format"
+    },
     "pip": "clang-format"
   }
 }

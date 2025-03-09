@@ -300,6 +300,7 @@ pub mod xq;
 pub mod xq_html;
 pub mod yamlfix;
 pub mod yamlfmt;
+pub mod yamllint;
 pub mod yapf;
 pub mod yew_fmt;
 pub mod yq;
@@ -2702,6 +2703,14 @@ pub enum Tooling {
     /// `yamlfmt -quiet $PATH`
     Yamlfmt,
 
+    #[serde(rename = "yamllint")]
+    /// A linter for YAML files
+    ///
+    /// [https://github.com/adrienverge/yamllint](https://github.com/adrienverge/yamllint)
+    ///
+    /// `yamllint $PATH`
+    Yamllint,
+
     #[serde(rename = "yapf")]
     /// A formatter for Python files
     ///
@@ -3697,6 +3706,7 @@ impl Tooling {
             Self::XqHtml => (&xq_html::COMMANDS, xq_html::set_args, xq_html::IS_STDIN),
             Self::Yamlfix => (&yamlfix::COMMANDS, yamlfix::set_args, yamlfix::IS_STDIN),
             Self::Yamlfmt => (&yamlfmt::COMMANDS, yamlfmt::set_args, yamlfmt::IS_STDIN),
+            Self::Yamllint => (&yamllint::COMMANDS, yamllint::set_args, yamllint::IS_STDIN),
             Self::Yapf => (&yapf::COMMANDS, yapf::set_args, yapf::IS_STDIN),
             Self::YewFmt => (&yew_fmt::COMMANDS, yew_fmt::set_args, yew_fmt::IS_STDIN),
             Self::Yq => (&yq::COMMANDS, yq::set_args, yq::IS_STDIN),
@@ -4025,6 +4035,7 @@ impl AsRef<str> for Tooling {
             Self::XqHtml => "xq:html",
             Self::Yamlfix => "yamlfix",
             Self::Yamlfmt => "yamlfmt",
+            Self::Yamllint => "yamllint",
             Self::Yapf => "yapf",
             Self::YewFmt => "yew-fmt",
             Self::Yq => "yq",

@@ -12,6 +12,9 @@
   "languages": ["c++"],
   "packages": {
     "apt": "cpplint",
+    "brew": {
+      "name": "cpplint"
+    },
     "pip": "cpplint"
   }
 }
