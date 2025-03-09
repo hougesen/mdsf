@@ -12,7 +12,7 @@
   "languages": ["clojure"],
   "packages": {
     "brew": {
-      "name": "candid82/brew/joker"
+      "name": "joker"
     }
   }
 }

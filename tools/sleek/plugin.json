@@ -18,6 +18,9 @@
   "homepage": "https://github.com/nrempel/sleek",
   "languages": ["sql"],
   "packages": {
+    "brew": {
+      "name": "sleek"
+    },
     "cargo": "sleek"
   }
 }

@@ -11,6 +11,9 @@
   "homepage": "https://github.com/dlang-community/dfmt",
   "languages": ["d"],
   "packages": {
+    "brew": {
+      "name": "dfmt"
+    },
     "dub": "dfmt"
   }
 }

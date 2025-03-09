@@ -10,5 +10,9 @@
   "description": "A custom parser/auto-formatter for Standard ML",
   "homepage": "https://github.com/shwestrick/smlfmt",
   "languages": ["standard-ml"],
-  "packages": {}
+  "packages": {
+    "brew": {
+      "name": "smlfmt"
+    }
+  }
 }

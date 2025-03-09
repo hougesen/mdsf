@@ -11,6 +11,9 @@
   "homepage": "https://github.com/aws-cloudformation/cfn-lint",
   "languages": ["cloudformation", "json", "yaml"],
   "packages": {
+    "brew": {
+      "name": "cfn-lint"
+    },
     "pip": "cfn-lint[full]"
   }
 }

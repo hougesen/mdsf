@@ -19,6 +19,9 @@
   "languages": ["haskell"],
   "packages": {
     "apt": "ormolu",
+    "brew": {
+      "name": "ormolu"
+    },
     "cabal": "ormolu",
     "stack": "ormolu"
   }

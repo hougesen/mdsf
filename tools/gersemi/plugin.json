@@ -11,6 +11,9 @@
   "homepage": "https://github.com/blankspruce/gersemi",
   "languages": ["cmake"],
   "packages": {
+    "brew": {
+      "name": "gersemi"
+    },
     "pip": "gersemi"
   }
 }

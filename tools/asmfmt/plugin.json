@@ -11,6 +11,9 @@
   "homepage": "https://github.com/klauspost/asmfmt",
   "languages": ["go"],
   "packages": {
+    "brew": {
+      "name": "asmfmt"
+    },
     "go": "github.com/klauspost/asmfmt/cmd/asmfmt@latest"
   }
 }
