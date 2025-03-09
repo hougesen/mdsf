@@ -73,6 +73,8 @@ jobs:
         run: ( ( which autoflake ) || ( ( which pipx && pipx install autoflake ) ) || ( echo "Unable to install tool" ) )
       - name: autopep8
         run: ( ( which autopep8 ) || ( ( which pipx && pipx install autopep8 ) ) || ( echo "Unable to install tool" ) )
+      - name: bashate
+        run: ( ( which bashate ) || ( ( which brew &&  brew install bashate ) || ( which pipx && pipx install bashate ) ) || ( echo "Unable to install tool" ) )
       - name: beautysh
         run: ( ( which beautysh ) || ( ( which brew &&  brew install beautysh ) ) || ( echo "Unable to install tool" ) )
       - name: biome
