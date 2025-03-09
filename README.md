@@ -389,7 +389,7 @@ mdsf init
 
 <!-- START_SECTION:supported-tools -->
 
-`mdsf` currently supports 278 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 279 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                                                                                 | Description                                                                                                                                   | Categories            | Languages                                                                                                                         |
 | ------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
@@ -665,6 +665,7 @@ mdsf init
 | [xq](https://github.com/sibprogrammer/xq)                                            | Command-line XML and HTML beautifier and content extractor                                                                                    | `formatter`           | `html`, `xml`                                                                                                                     |
 | [yamlfix](https://github.com/lyz-code/yamlfix)                                       | A simple opinionated yaml formatter that keeps your comments                                                                                  | `formatter`           | `yaml`                                                                                                                            |
 | [yamlfmt](https://github.com/google/yamlfmt)                                         | An extensible command line tool or library to format yaml files                                                                               | `formatter`           | `yaml`                                                                                                                            |
+| [yamllint](https://github.com/adrienverge/yamllint)                                  | A linter for YAML files                                                                                                                       | `linter`              | `yaml`                                                                                                                            |
 | [yapf](https://github.com/google/yapf)                                               | A formatter for Python files                                                                                                                  | `formatter`           | `python`                                                                                                                          |
 | [yew-fmt](https://github.com/its-the-shrimp/yew-fmt)                                 | Code formatter for the Yew framework                                                                                                          | `formatter`           | `rust`                                                                                                                            |
 | [yq](https://github.com/mikefarah/yq)                                                | yq is a portable command-line YAML, JSON, XML, CSV, TOML and properties processor                                                             | `formatter`           | `yaml`                                                                                                                            |
@@ -678,7 +679,7 @@ mdsf init
 
 <!-- START_SECTION:supported-commands -->
 
-`mdsf` currently supports 305 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 306 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                         | Command                                                                                 |
 | ---------------------------- | --------------------------------------------------------------------------------------- |
@@ -981,6 +982,7 @@ mdsf init
 | `xq`                         | `xq `                                                                                   |
 | `yamlfix`                    | `yamlfix $PATH`                                                                         |
 | `yamlfmt`                    | `yamlfmt -quiet $PATH`                                                                  |
+| `yamllint`                   | `yamllint $PATH`                                                                        |
 | `yapf`                       | `yapf --in-place $PATH`                                                                 |
 | `yew-fmt`                    | `yew-fmt --edition 2021 $PATH`                                                          |
 | `yq`                         | `yq --inplace $PATH`                                                                    |

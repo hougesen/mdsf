@@ -18,6 +18,9 @@
   "homepage": "https://github.com/google/yamlfmt",
   "languages": ["yaml"],
   "packages": {
+    "brew": {
+      "name": "yamlfmt"
+    },
     "go": "github.com/google/yamlfmt/cmd/yamlfmt@latest"
   }
 }

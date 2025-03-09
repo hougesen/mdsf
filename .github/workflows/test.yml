@@ -78,7 +78,7 @@ jobs:
       - name: biome
         run: ( ( which biome ) || ( ( which npm && npm i -g @biomejs/biome ) ) || ( echo "Unable to install tool" ) )
       - name: black
-        run: ( ( which black ) || ( ( which pipx && pipx install black ) ) || ( echo "Unable to install tool" ) )
+        run: ( ( which black ) || ( ( which brew &&  brew install black ) || ( which pipx && pipx install black ) ) || ( echo "Unable to install tool" ) )
       - name: blade-formatter
         run: ( ( which blade-formatter ) || ( ( which npm && npm i -g blade-formatter ) ) || ( echo "Unable to install tool" ) )
       - name: blue
@@ -88,7 +88,7 @@ jobs:
       - name: buf
         run: ( ( which buf ) || ( ( which npm && npm i -g @bufbuild/buf ) || ( which brew &&  brew install bufbuild/buf/buf ) ) || ( echo "Unable to install tool" ) )
       - name: clang-format
-        run: ( ( which clang-format ) || ( ( which pipx && pipx install clang-format ) ) || ( echo "Unable to install tool" ) )
+        run: ( ( which clang-format ) || ( ( which brew &&  brew install clang-format ) || ( which pipx && pipx install clang-format ) ) || ( echo "Unable to install tool" ) )
       - name: css-beautify
         run: ( ( which css-beautify ) || ( ( which npm && npm i -g js-beautify ) ) || ( echo "Unable to install tool" ) )
       - name: csscomb
@@ -102,7 +102,7 @@ jobs:
       - name: fantomas
         run: ( ( which fantomas ) || ( ( which dotnet && dotnet tool install -g fantomas ) ) || ( echo "Unable to install tool" ) )
       - name: fortitude
-        run: ( ( which fortitude ) || ( ( which pipx && pipx install fortitude-lint ) ) || ( echo "Unable to install tool" ) )
+        run: ( ( which fortitude ) || ( ( which brew &&  brew install fortitude ) || ( which pipx && pipx install fortitude-lint ) ) || ( echo "Unable to install tool" ) )
       - name: fortran-linter
         run: ( ( which fortran-linter ) || ( ( which brew &&  brew install fprettify ) || ( which pipx && pipx install fortran-linter ) ) || ( echo "Unable to install tool" ) )
       - name: fprettify
@@ -220,11 +220,13 @@ jobs:
       - name: xq
         run: ( ( which xq ) || ( ( which brew &&  brew install xq ) || ( which apt-get && sudo apt-get install -y xq ) ) || ( echo "Unable to install tool" ) )
       - name: yamlfix
-        run: ( ( which yamlfix ) || ( ( which pipx && pipx install yamlfix ) ) || ( echo "Unable to install tool" ) )
+        run: ( ( which yamlfix ) || ( ( which brew &&  brew install yamlfix ) || ( which pipx && pipx install yamlfix ) ) || ( echo "Unable to install tool" ) )
       - name: yamlfmt
-        run: ( ( which yamlfmt ) || ( ( which go && go install github.com/google/yamlfmt/cmd/yamlfmt@latest ) ) || ( echo "Unable to install tool" ) )
+        run: ( ( which yamlfmt ) || ( ( which brew &&  brew install yamlfmt ) || ( which go && go install github.com/google/yamlfmt/cmd/yamlfmt@latest ) ) || ( echo "Unable to install tool" ) )
+      - name: yamllint
+        run: ( ( which yamllint ) || ( ( which brew &&  brew install yamllint ) || ( which pipx && pipx install yamllint ) ) || ( echo "Unable to install tool" ) )
       - name: yapf
-        run: ( ( which yapf ) || ( ( which pipx && pipx install yapf ) ) || ( echo "Unable to install tool" ) )
+        run: ( ( which yapf ) || ( ( which brew &&  brew install yapf ) || ( which pipx && pipx install yapf ) ) || ( echo "Unable to install tool" ) )
       - name: yew-fmt
         run: ( ( which yew-fmt ) || ( ( which cargo && ( cargo binstall yew-fmt || cargo install yew-fmt ) ) ) || ( echo "Unable to install tool" ) )
       - name: Run tests

@@ -13,6 +13,10 @@ pub fn set_args(
     cmd
 }
 
-pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("clang-tidy")];
+pub const COMMANDS: [CommandType; 3] = [
+    CommandType::Direct("clang-tidy"),
+    CommandType::Uv("clang-tidy"),
+    CommandType::Pipx("clang-tidy"),
+];
 
 pub const IS_STDIN: bool = false;

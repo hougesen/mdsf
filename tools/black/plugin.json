@@ -18,6 +18,9 @@
   "homepage": "https://github.com/psf/black",
   "languages": ["python"],
   "packages": {
+    "brew": {
+      "name": "black"
+    },
     "pip": "black"
   }
 }

@@ -11,6 +11,9 @@
   "homepage": "https://github.com/mrtazz/checkmake",
   "languages": ["makefile"],
   "packages": {
+    "brew": {
+      "name": "checkmake"
+    },
     "go": "github.com/mrtazz/checkmake/cmd/checkmake@latest"
   }
 }

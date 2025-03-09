@@ -10,5 +10,10 @@
   "description": "A bazel BUILD file formatter and",
   "homepage": "https://github.com/bazelbuild/buildtools",
   "languages": ["bazel"],
-  "packages": {}
+  "packages": {
+    "brew": {
+      "name": "buildifier"
+    },
+    "go": "github.com/bazelbuild/buildtools/buildifier@latest"
+  }
 }

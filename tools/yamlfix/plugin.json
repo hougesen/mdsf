@@ -18,6 +18,9 @@
   "homepage": "https://github.com/lyz-code/yamlfix",
   "languages": ["yaml"],
   "packages": {
+    "brew": {
+      "name": "yamlfix"
+    },
     "pip": "yamlfix"
   }
 }
