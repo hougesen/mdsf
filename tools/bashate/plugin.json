@@ -4,13 +4,23 @@
   "categories": ["formatter"],
   "commands": {
     "": {
-      "arguments": ["$PATH"]
+      "arguments": ["$PATH"],
+      "tests": [
+        {
+          "language": "bash",
+          "test_input": "# for loop examples\n\n# pass\nfor i in $(seq 1 5); do\n    echo $i\ndone\n\n# pass\nfor (( i = 0 ; i < 5 ; i++ )); do\n    echo $i\ndone\n\n# fail E010\nfor i in $(seq 1 5); do\n    echo $i\ndone\n\n# fail E010\nfor (( i = 0 ; i < 5 ; i++ )); do\n    echo $i\ndone\n\nawk '{\n    for (i = 1; i < 5; i++)\n        print $i\n}' < /dev/null\n",
+          "test_output": "# for loop examples\n\n# pass\nfor i in $(seq 1 5); do\n    echo $i\ndone\n\n# pass\nfor (( i = 0 ; i < 5 ; i++ )); do\n    echo $i\ndone\n\n# fail E010\nfor i in $(seq 1 5); do\n    echo $i\ndone\n\n# fail E010\nfor (( i = 0 ; i < 5 ; i++ )); do\n    echo $i\ndone\n\nawk '{\n    for (i = 1; i < 5; i++)\n        print $i\n}' < /dev/null\n"
+        }
+      ]
     }
   },
   "description": "Code style enforcement for bash programs",
   "homepage": "https://github.com/openstack/bashate",
   "languages": ["bash"],
   "packages": {
+    "brew": {
+      "name": "bashate"
+    },
     "pip": "bashate"
   }
 }
