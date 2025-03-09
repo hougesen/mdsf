@@ -17,13 +17,14 @@ pub fn set_args(
     cmd
 }
 
-pub const COMMANDS: [CommandType; 6] = [
+pub const COMMANDS: [CommandType; 7] = [
     CommandType::NodeModules("prettier"),
     CommandType::Direct("prettier"),
     CommandType::Npm("prettier"),
     CommandType::Pnpm("prettier"),
     CommandType::Bun("prettier"),
     CommandType::Deno("prettier"),
+    CommandType::Yarn("prettier"),
 ];
 
 pub const IS_STDIN: bool = false;

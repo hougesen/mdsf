@@ -16,13 +16,14 @@ pub fn set_args(
     cmd
 }
 
-pub const COMMANDS: [CommandType; 6] = [
+pub const COMMANDS: [CommandType; 7] = [
     CommandType::NodeModules("css-beautify"),
     CommandType::Direct("css-beautify"),
     CommandType::Npm("js-beautify"),
     CommandType::Pnpm("js-beautify"),
     CommandType::Bun("js-beautify"),
     CommandType::Deno("js-beautify"),
+    CommandType::Yarn("js-beautify"),
 ];
 
 pub const IS_STDIN: bool = false;

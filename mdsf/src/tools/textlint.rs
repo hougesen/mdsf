@@ -12,13 +12,14 @@ pub fn set_args(
     cmd
 }
 
-pub const COMMANDS: [CommandType; 6] = [
+pub const COMMANDS: [CommandType; 7] = [
     CommandType::NodeModules("textlint"),
     CommandType::Direct("textlint"),
     CommandType::Npm("textlint"),
     CommandType::Pnpm("textlint"),
     CommandType::Bun("textlint"),
     CommandType::Deno("textlint"),
+    CommandType::Yarn("textlint"),
 ];
 
 pub const IS_STDIN: bool = false;

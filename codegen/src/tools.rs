@@ -296,6 +296,8 @@ impl Tool {
                     command_types.push(format!("CommandType::Bun(\"{npm}\")"));
 
                     command_types.push(format!("CommandType::Deno(\"{npm}\")"));
+
+                    command_types.push(format!("CommandType::Yarn(\"{npm}\")"));
                 }
 
                 if let Some(pip) = &self.packages.pip {

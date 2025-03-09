@@ -7,6 +7,7 @@ mod path;
 mod pipx;
 mod pnpm;
 mod uv;
+mod yarn;
 
 #[derive(Debug)]
 pub enum CommandType {
@@ -21,6 +22,7 @@ pub enum CommandType {
     Pipx(&'static str),
     Pnpm(&'static str),
     Uv(&'static str),
+    Yarn(&'static str),
 }
 
 impl CommandType {
@@ -39,6 +41,7 @@ impl CommandType {
             Self::Pipx(_) => config_runners.pipx,
             Self::Pnpm(_) => config_runners.pnpm,
             Self::Uv(_) => config_runners.uv,
+            Self::Yarn(_) => config_runners.yarn,
         }
     }
 
@@ -56,6 +59,7 @@ impl CommandType {
             Self::Pipx(package_name) => pipx::setup_pipx_run_command(package_name),
             Self::Pnpm(package_name) => pnpm::setup_pnpm_dlx_command(package_name),
             Self::Uv(package_name) => uv::setup_uv_run_command(package_name),
+            Self::Yarn(package_name) => yarn::setup_yarn_dlx_command(package_name),
         }
     }
 }

@@ -40,6 +40,10 @@ pub struct MdsfConfigRunners {
     /// Whether to support running pypi packages using `uv tool run $PACKAGE_NAME`
     #[serde(default, skip_serializing_if = "is_false")]
     pub uv: bool,
+
+    /// Whether to support running npm packages using `yarn dlx $PACKAGE_NAME`
+    #[serde(default, skip_serializing_if = "is_false")]
+    pub yarn: bool,
 }
 
 impl MdsfConfigRunners {
@@ -53,11 +57,12 @@ impl MdsfConfigRunners {
         Self {
             bunx: true,
             deno: true,
-            dub: false,
+            dub: true,
             npx: true,
             pipx: true,
             pnpm: true,
             uv: true,
+            yarn: true,
         }
     }
 }

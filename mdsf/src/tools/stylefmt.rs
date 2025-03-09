@@ -12,13 +12,14 @@ pub fn set_args(
     cmd
 }
 
-pub const COMMANDS: [CommandType; 6] = [
+pub const COMMANDS: [CommandType; 7] = [
     CommandType::NodeModules("stylefmt"),
     CommandType::Direct("stylefmt"),
     CommandType::Npm("stylefmt"),
     CommandType::Pnpm("stylefmt"),
     CommandType::Bun("stylefmt"),
     CommandType::Deno("stylefmt"),
+    CommandType::Yarn("stylefmt"),
 ];
 
 pub const IS_STDIN: bool = false;

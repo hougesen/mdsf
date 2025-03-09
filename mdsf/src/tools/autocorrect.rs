@@ -13,13 +13,14 @@ pub fn set_args(
     cmd
 }
 
-pub const COMMANDS: [CommandType; 6] = [
+pub const COMMANDS: [CommandType; 7] = [
     CommandType::NodeModules("autocorrect"),
     CommandType::Direct("autocorrect"),
     CommandType::Npm("autocorrect-node"),
     CommandType::Pnpm("autocorrect-node"),
     CommandType::Bun("autocorrect-node"),
     CommandType::Deno("autocorrect-node"),
+    CommandType::Yarn("autocorrect-node"),
 ];
 
 pub const IS_STDIN: bool = false;

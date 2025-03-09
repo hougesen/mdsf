@@ -13,13 +13,14 @@ pub fn set_args(
     cmd
 }
 
-pub const COMMANDS: [CommandType; 6] = [
+pub const COMMANDS: [CommandType; 7] = [
     CommandType::NodeModules("liquidsoap-prettier"),
     CommandType::Direct("liquidsoap-prettier"),
     CommandType::Npm("liquidsoap-prettier"),
     CommandType::Pnpm("liquidsoap-prettier"),
     CommandType::Bun("liquidsoap-prettier"),
     CommandType::Deno("liquidsoap-prettier"),
+    CommandType::Yarn("liquidsoap-prettier"),
 ];
 
 pub const IS_STDIN: bool = false;

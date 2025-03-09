@@ -13,13 +13,14 @@ pub fn set_args(
     cmd
 }
 
-pub const COMMANDS: [CommandType; 6] = [
+pub const COMMANDS: [CommandType; 7] = [
     CommandType::NodeModules("tsqllint"),
     CommandType::Direct("tsqllint"),
     CommandType::Npm("tsqllint"),
     CommandType::Pnpm("tsqllint"),
     CommandType::Bun("tsqllint"),
     CommandType::Deno("tsqllint"),
+    CommandType::Yarn("tsqllint"),
 ];
 
 pub const IS_STDIN: bool = false;

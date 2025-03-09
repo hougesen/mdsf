@@ -13,13 +13,14 @@ pub fn set_args(
     cmd
 }
 
-pub const COMMANDS: [CommandType; 6] = [
+pub const COMMANDS: [CommandType; 7] = [
     CommandType::NodeModules("csscomb"),
     CommandType::Direct("csscomb"),
     CommandType::Npm("csscomb"),
     CommandType::Pnpm("csscomb"),
     CommandType::Bun("csscomb"),
     CommandType::Deno("csscomb"),
+    CommandType::Yarn("csscomb"),
 ];
 
 pub const IS_STDIN: bool = false;
