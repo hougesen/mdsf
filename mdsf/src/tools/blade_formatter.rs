@@ -13,13 +13,14 @@ pub fn set_args(
     cmd
 }
 
-pub const COMMANDS: [CommandType; 6] = [
+pub const COMMANDS: [CommandType; 7] = [
     CommandType::NodeModules("blade-formatter"),
     CommandType::Direct("blade-formatter"),
     CommandType::Npm("blade-formatter"),
     CommandType::Pnpm("blade-formatter"),
     CommandType::Bun("blade-formatter"),
     CommandType::Deno("blade-formatter"),
+    CommandType::Yarn("blade-formatter"),
 ];
 
 pub const IS_STDIN: bool = false;

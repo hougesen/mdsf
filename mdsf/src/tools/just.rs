@@ -15,13 +15,14 @@ pub fn set_args(
     cmd
 }
 
-pub const COMMANDS: [CommandType; 8] = [
+pub const COMMANDS: [CommandType; 9] = [
     CommandType::NodeModules("just"),
     CommandType::Direct("just"),
     CommandType::Npm("rust-just"),
     CommandType::Pnpm("rust-just"),
     CommandType::Bun("rust-just"),
     CommandType::Deno("rust-just"),
+    CommandType::Yarn("rust-just"),
     CommandType::Uv("rust-just"),
     CommandType::Pipx("rust-just"),
 ];

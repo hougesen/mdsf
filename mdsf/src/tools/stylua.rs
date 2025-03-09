@@ -13,13 +13,14 @@ pub fn set_args(
     cmd
 }
 
-pub const COMMANDS: [CommandType; 6] = [
+pub const COMMANDS: [CommandType; 7] = [
     CommandType::NodeModules("stylua"),
     CommandType::Direct("stylua"),
     CommandType::Npm("@johnnymorganz/stylua-bin"),
     CommandType::Pnpm("@johnnymorganz/stylua-bin"),
     CommandType::Bun("@johnnymorganz/stylua-bin"),
     CommandType::Deno("@johnnymorganz/stylua-bin"),
+    CommandType::Yarn("@johnnymorganz/stylua-bin"),
 ];
 
 pub const IS_STDIN: bool = false;

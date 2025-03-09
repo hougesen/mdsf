@@ -13,13 +13,14 @@ pub fn set_args(
     cmd
 }
 
-pub const COMMANDS: [CommandType; 6] = [
+pub const COMMANDS: [CommandType; 7] = [
     CommandType::NodeModules("vacuum"),
     CommandType::Direct("vacuum"),
     CommandType::Npm("@quobix/vacuum"),
     CommandType::Pnpm("@quobix/vacuum"),
     CommandType::Bun("@quobix/vacuum"),
     CommandType::Deno("@quobix/vacuum"),
+    CommandType::Yarn("@quobix/vacuum"),
 ];
 
 pub const IS_STDIN: bool = false;

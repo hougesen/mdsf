@@ -12,13 +12,14 @@ pub fn set_args(
     cmd
 }
 
-pub const COMMANDS: [CommandType; 6] = [
+pub const COMMANDS: [CommandType; 7] = [
     CommandType::NodeModules("doctoc"),
     CommandType::Direct("doctoc"),
     CommandType::Npm("doctoc"),
     CommandType::Pnpm("doctoc"),
     CommandType::Bun("doctoc"),
     CommandType::Deno("doctoc"),
+    CommandType::Yarn("doctoc"),
 ];
 
 pub const IS_STDIN: bool = false;

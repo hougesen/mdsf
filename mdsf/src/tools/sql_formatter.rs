@@ -13,13 +13,14 @@ pub fn set_args(
     cmd
 }
 
-pub const COMMANDS: [CommandType; 6] = [
+pub const COMMANDS: [CommandType; 7] = [
     CommandType::NodeModules("sql-formatter"),
     CommandType::Direct("sql-formatter"),
     CommandType::Npm("sql-formatter"),
     CommandType::Pnpm("sql-formatter"),
     CommandType::Bun("sql-formatter"),
     CommandType::Deno("sql-formatter"),
+    CommandType::Yarn("sql-formatter"),
 ];
 
 pub const IS_STDIN: bool = false;

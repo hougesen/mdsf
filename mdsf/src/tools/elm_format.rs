@@ -14,13 +14,14 @@ pub fn set_args(
     cmd
 }
 
-pub const COMMANDS: [CommandType; 6] = [
+pub const COMMANDS: [CommandType; 7] = [
     CommandType::NodeModules("elm-format"),
     CommandType::Direct("elm-format"),
     CommandType::Npm("elm-format"),
     CommandType::Pnpm("elm-format"),
     CommandType::Bun("elm-format"),
     CommandType::Deno("elm-format"),
+    CommandType::Yarn("elm-format"),
 ];
 
 pub const IS_STDIN: bool = false;

@@ -13,13 +13,14 @@ pub fn set_args(
     cmd
 }
 
-pub const COMMANDS: [CommandType; 6] = [
+pub const COMMANDS: [CommandType; 7] = [
     CommandType::NodeModules("markdownlint-cli2"),
     CommandType::Direct("markdownlint-cli2"),
     CommandType::Npm("markdownlint-cli2"),
     CommandType::Pnpm("markdownlint-cli2"),
     CommandType::Bun("markdownlint-cli2"),
     CommandType::Deno("markdownlint-cli2"),
+    CommandType::Yarn("markdownlint-cli2"),
 ];
 
 pub const IS_STDIN: bool = false;
