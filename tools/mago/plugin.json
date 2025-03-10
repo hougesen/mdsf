@@ -3,11 +3,6 @@
   "binary": "mago",
   "categories": ["formatter", "linter"],
   "commands": {
-    "fix": {
-      "arguments": ["fix", "$PATH"],
-      "description": "The fix command is used to automatically fix issues identified during linting",
-      "homepage": "https://mago.carthage.software/#/getting-started/cli?id=mago-fix"
-    },
     "format": {
       "arguments": ["format", "$PATH"],
       "description": "The format command is used to format PHP files in your project according to the rules defined in your mago.toml configuration file",
