@@ -13,13 +13,16 @@ pub fn set_args(
     cmd
 }
 
-pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("standardrb")];
+pub const COMMANDS: [CommandType; 2] = [
+    CommandType::Direct("standardrb"),
+    CommandType::GemExec("standardrb"),
+];
 
 pub const IS_STDIN: bool = false;
 
 #[cfg(test)]
 mod test_standardrb {
-    #[test_with::executable(standardrb)]
+    #[test_with::executable(standardrb || gem)]
     fn test_standardrb_ruby_bec6c50c1664b6ed() {
         let input = r#"def   add(  a ,                                                          b )
                         return a + b

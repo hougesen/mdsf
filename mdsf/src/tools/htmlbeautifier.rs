@@ -12,13 +12,16 @@ pub fn set_args(
     cmd
 }
 
-pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("htmlbeautifier")];
+pub const COMMANDS: [CommandType; 2] = [
+    CommandType::Direct("htmlbeautifier"),
+    CommandType::GemExec("htmlbeautifier"),
+];
 
 pub const IS_STDIN: bool = false;
 
 #[cfg(test)]
 mod test_htmlbeautifier {
-    #[test_with::executable(htmlbeautifier)]
+    #[test_with::executable(htmlbeautifier || gem)]
     fn test_htmlbeautifier_html_7e86d833d3fbf4e3() {
         let input = r#"<div>
                     <p>

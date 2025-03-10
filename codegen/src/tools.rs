@@ -235,6 +235,10 @@ impl Tool {
             test_with_binaries.push("dub");
         }
 
+        if self.packages.gem.is_some() {
+            test_with_binaries.push("gem");
+        }
+
         let executable = test_with_binaries.join(" || ");
 
         let test_code = format!(
@@ -308,6 +312,10 @@ impl Tool {
 
                 if let Some(dub) = &self.packages.dub {
                     command_types.push(format!("CommandType::Dub(\"{dub}\")"));
+                }
+
+                if let Some(gem) = &self.packages.gem {
+                    command_types.push(format!("CommandType::GemExec(\"{gem}\")"));
                 }
             };
 

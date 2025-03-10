@@ -12,6 +12,6 @@ pub fn set_args(
     cmd
 }
 
-pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("reek")];
+pub const COMMANDS: [CommandType; 2] = [CommandType::Direct("reek"), CommandType::GemExec("reek")];
 
 pub const IS_STDIN: bool = false;
