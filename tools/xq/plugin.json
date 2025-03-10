@@ -25,7 +25,9 @@
   "homepage": "https://github.com/sibprogrammer/xq",
   "languages": ["html", "xml"],
   "packages": {
-    "apt": "xq",
+    "apt": {
+      "package": "xq"
+    },
     "brew": {
       "package": "xq"
     }

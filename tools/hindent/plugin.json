@@ -18,7 +18,9 @@
   "homepage": "https://github.com/mihaimaruseac/hindent",
   "languages": ["haskell"],
   "packages": {
-    "apt": "hindent",
+    "apt": {
+      "package": "hindent"
+    },
     "stack": "hindent"
   }
 }

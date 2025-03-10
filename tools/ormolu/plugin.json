@@ -18,7 +18,9 @@
   "homepage": "https://github.com/tweag/ormolu",
   "languages": ["haskell"],
   "packages": {
-    "apt": "ormolu",
+    "apt": {
+      "package": "ormolu"
+    },
     "brew": {
       "package": "ormolu"
     },

@@ -115,7 +115,14 @@
       "type": "object",
       "properties": {
         "apt": {
-          "type": ["string", "null"]
+          "anyOf": [
+            {
+              "$ref": "#/definitions/ToolPackagesApt"
+            },
+            {
+              "type": "null"
+            }
+          ]
         },
         "brew": {
           "anyOf": [
@@ -194,6 +201,16 @@
         },
         "stack": {
           "type": ["string", "null"]
+        }
+      },
+      "additionalProperties": false
+    },
+    "ToolPackagesApt": {
+      "type": "object",
+      "required": ["package"],
+      "properties": {
+        "package": {
+          "type": "string"
         }
       },
       "additionalProperties": false

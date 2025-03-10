@@ -110,7 +110,7 @@ pub fn generate_install_steps(tools: &Vec<Tool>) -> Vec<WorkflowJobsStep> {
         }
 
         if let Some(apt) = &tool.packages.apt {
-            install_options.push(generate_apt(apt));
+            install_options.push(generate_apt(&apt.package));
         }
 
         if let Some(go) = &tool.packages.go {

@@ -11,7 +11,9 @@
   "homepage": "https://github.com/mikefarah/yq",
   "languages": ["yaml"],
   "packages": {
-    "apt": "yq",
+    "apt": {
+      "package": "yq"
+    },
     "brew": {
       "package": "yq"
     },

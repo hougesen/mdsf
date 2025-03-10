@@ -11,7 +11,9 @@
   "homepage": "https://github.com/ansible/ansible-lint",
   "languages": ["ansible"],
   "packages": {
-    "apt": "ansible-lint",
+    "apt": {
+      "package": "ansible-lint"
+    },
     "brew": {
       "package": "ansible-lint"
     },

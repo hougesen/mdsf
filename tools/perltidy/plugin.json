@@ -11,7 +11,9 @@
   "homepage": "https://github.com/perltidy/perltidy",
   "languages": ["perl"],
   "packages": {
-    "apt": "perltidy",
+    "apt": {
+      "package": "perltidy"
+    },
     "brew": {
       "package": "perltidy"
     }

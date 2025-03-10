@@ -11,6 +11,11 @@
   "homepage": "https://gitlab.com/saalen/astyle",
   "languages": ["c", "c#", "c++", "java", "objective-c"],
   "packages": {
-    "apt": "astyle"
+    "apt": {
+      "package": "astyle"
+    },
+    "brew": {
+      "package": "astyle"
+    }
   }
 }

@@ -66,7 +66,7 @@ pub struct ToolPackagesComposer {
 #[derive(Debug, serde::Deserialize, schemars::JsonSchema, Clone, Default, serde::Serialize)]
 #[serde(deny_unknown_fields)]
 pub struct ToolPackagesGem {
-    #[serde(default, skip_serializing_if = "is_false ")]
+    #[serde(default, skip_serializing_if = "is_false")]
     pub disable_gem_exec: bool,
 
     pub package: String,
@@ -80,9 +80,15 @@ pub struct ToolPackagesPip {
 
 #[derive(Debug, serde::Deserialize, schemars::JsonSchema, Clone, Default, serde::Serialize)]
 #[serde(deny_unknown_fields)]
+pub struct ToolPackagesApt {
+    pub package: String,
+}
+
+#[derive(Debug, serde::Deserialize, schemars::JsonSchema, Clone, Default, serde::Serialize)]
+#[serde(deny_unknown_fields)]
 pub struct ToolPackages {
     #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub apt: Option<String>,
+    pub apt: Option<ToolPackagesApt>,
 
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub brew: Option<ToolPackagesBrew>,
