@@ -2,8 +2,14 @@
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
-#### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.8.0...HEAD)
+#### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.8.1...HEAD)
 
+#### [v0.8.1](https://github.com/hougesen/mdsf/compare/v0.8.0...v0.8.1)
+
+> 10 March 2025
+
+- build(deps): bump clap from 4.5.31 to 4.5.32 [`#837`](https://github.com/hougesen/mdsf/pull/837)
+- test(tools): validate toml-sort [`#836`](https://github.com/hougesen/mdsf/pull/836)
 - test(tools): validate yq [`#835`](https://github.com/hougesen/mdsf/pull/835)
 - test(tools): validate ufmt works [`#834`](https://github.com/hougesen/mdsf/pull/834)
 - build(deps-dev): bump @typescript-eslint/parser in /mdsf-vscode [`#830`](https://github.com/hougesen/mdsf/pull/830)
