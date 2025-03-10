@@ -147,6 +147,8 @@ jobs:
         run: ( ( which lua-format ) || ( ( which luarocks && luarocks install luaformatter ) ) || ( echo "Unable to install tool" ) )
       - name: mado
         run: ( ( which mado ) || ( ( which brew && brew tap akiomik/mado https://github.com/akiomik/mado.git && brew install mado ) ) || ( echo "Unable to install tool" ) )
+      - name: mago
+        run: ( ( which mago ) || ( ( which cargo && ( cargo binstall mago || cargo install mago ) ) || ( which brew &&  brew install mago ) || ( which composer && composer require carthage-software/mago ) ) || ( echo "Unable to install tool" ) )
       - name: markdownfmt
         run: ( ( which markdownfmt ) || ( ( which go && go install github.com/shurcooL/markdownfmt@latest ) ) || ( echo "Unable to install tool" ) )
       - name: markdownlint
