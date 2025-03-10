@@ -103,6 +103,8 @@ jobs:
         run: ( ( which elm-format ) || ( ( which npm && npm i -g elm-format ) ) || ( echo "Unable to install tool" ) )
       - name: fantomas
         run: ( ( which fantomas ) || ( ( which dotnet && dotnet tool install -g fantomas ) ) || ( echo "Unable to install tool" ) )
+      - name: fixjson
+        run: ( ( which fixjson ) || ( ( which npm && npm i -g fixjson ) ) || ( echo "Unable to install tool" ) )
       - name: fortitude
         run: ( ( which fortitude ) || ( ( which brew &&  brew install fortitude ) || ( which pipx && pipx install fortitude-lint ) ) || ( echo "Unable to install tool" ) )
       - name: fortran-linter
