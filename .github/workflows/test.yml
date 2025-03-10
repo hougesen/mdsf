@@ -219,6 +219,8 @@ jobs:
         run: ( ( which topiary ) || ( ( which cargo && ( cargo binstall topiary-cli || cargo install topiary-cli ) ) ) || ( echo "Unable to install tool" ) )
       - name: typos
         run: ( ( which typos ) || ( ( which cargo && ( cargo binstall typos-cli || cargo install typos-cli ) ) || ( which brew &&  brew install typos-cli ) ) || ( echo "Unable to install tool" ) )
+      - name: ufmt
+        run: ( ( which ufmt ) || ( ( which pipx && pipx install ufmt ) ) || ( echo "Unable to install tool" ) )
       - name: usort
         run: ( ( which usort ) || ( ( which pipx && pipx install usort ) ) || ( echo "Unable to install tool" ) )
       - name: xmlformat

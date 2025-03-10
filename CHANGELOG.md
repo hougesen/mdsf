@@ -4,6 +4,8 @@ All notable changes to this project will be documented in this file. Dates are d
 
 #### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.8.0...HEAD)
 
+- test(tools): validate ufmt works [`#834`](https://github.com/hougesen/mdsf/pull/834)
+- build(deps-dev): bump @typescript-eslint/parser in /mdsf-vscode [`#830`](https://github.com/hougesen/mdsf/pull/830)
 - test(tools): validate jsonfix works [`#833`](https://github.com/hougesen/mdsf/pull/833)
 - build(deps-dev): bump @typescript-eslint/eslint-plugin in /mdsf-vscode [`#832`](https://github.com/hougesen/mdsf/pull/832)
 - build(deps-dev): bump esbuild from 0.25.0 to 0.25.1 in /mdsf-vscode [`#831`](https://github.com/hougesen/mdsf/pull/831)
