@@ -15,6 +15,7 @@
       "package": "gdtoolkit"
     },
     "pip": {
+      "executable": "gdformat",
       "package": "gdtoolkit"
     }
   }

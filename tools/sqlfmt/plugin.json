@@ -12,6 +12,7 @@
   "languages": ["sql"],
   "packages": {
     "pip": {
+      "executable": "sqlfmt",
       "package": "shandy-sqlfmt[jinjafmt]"
     }
   }

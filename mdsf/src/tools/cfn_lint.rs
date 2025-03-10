@@ -14,8 +14,8 @@ pub fn set_args(
 
 pub const COMMANDS: [CommandType; 3] = [
     CommandType::Direct("cfn-lint"),
-    CommandType::Uv("cfn-lint[full]"),
-    CommandType::Pipx("cfn-lint[full]"),
+    CommandType::Uv("cfn-lint", "cfn-lint"),
+    CommandType::Pipx("cfn-lint"),
 ];
 
 pub const IS_STDIN: bool = false;

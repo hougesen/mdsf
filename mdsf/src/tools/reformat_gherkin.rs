@@ -14,7 +14,7 @@ pub fn set_args(
 
 pub const COMMANDS: [CommandType; 3] = [
     CommandType::Direct("reformat-gherkin"),
-    CommandType::Uv("reformat-gherkin"),
+    CommandType::Uv("reformat-gherkin", "reformat-gherkin"),
     CommandType::Pipx("reformat-gherkin"),
 ];
 

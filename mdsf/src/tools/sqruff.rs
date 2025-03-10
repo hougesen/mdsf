@@ -15,7 +15,7 @@ pub fn set_args(
 
 pub const COMMANDS: [CommandType; 3] = [
     CommandType::Direct("sqruff"),
-    CommandType::Uv("sqruff"),
+    CommandType::Uv("sqruff", "sqruff"),
     CommandType::Pipx("sqruff"),
 ];
 

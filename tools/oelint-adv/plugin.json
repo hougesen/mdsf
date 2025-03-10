@@ -12,6 +12,7 @@
   "languages": ["bitbake"],
   "packages": {
     "pip": {
+      "executable": "oelint-adv",
       "package": "oelint_adv"
     }
   }

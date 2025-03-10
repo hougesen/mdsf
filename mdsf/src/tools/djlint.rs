@@ -15,7 +15,7 @@ pub fn set_args(
 
 pub const COMMANDS: [CommandType; 3] = [
     CommandType::Direct("djlint"),
-    CommandType::Uv("djlint"),
+    CommandType::Uv("djlint", "djlint"),
     CommandType::Pipx("djlint"),
 ];
 

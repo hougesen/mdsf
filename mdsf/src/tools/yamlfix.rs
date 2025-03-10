@@ -14,7 +14,7 @@ pub fn set_args(
 
 pub const COMMANDS: [CommandType; 3] = [
     CommandType::Direct("yamlfix"),
-    CommandType::Uv("yamlfix"),
+    CommandType::Uv("yamlfix", "yamlfix"),
     CommandType::Pipx("yamlfix"),
 ];
 

@@ -452,6 +452,15 @@
       "type": "object",
       "required": ["package"],
       "properties": {
+        "disable_pipx_run": {
+          "type": "boolean"
+        },
+        "disable_uv_tool_run": {
+          "type": "boolean"
+        },
+        "executable": {
+          "type": ["string", "null"]
+        },
         "package": {
           "type": "string"
         }

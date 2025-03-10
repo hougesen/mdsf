@@ -16,7 +16,7 @@ pub fn set_args(
 
 pub const COMMANDS: [CommandType; 3] = [
     CommandType::Direct("meson"),
-    CommandType::Uv("meson"),
+    CommandType::Uv("meson", "meson"),
     CommandType::Pipx("meson"),
 ];
 

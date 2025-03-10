@@ -15,7 +15,7 @@
       "package": "cfn-lint"
     },
     "pip": {
-      "package": "cfn-lint[full]"
+      "package": "cfn-lint"
     }
   }
 }

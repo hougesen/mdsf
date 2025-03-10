@@ -14,7 +14,7 @@ pub fn set_args(
 
 pub const COMMANDS: [CommandType; 3] = [
     CommandType::Direct("sqlfmt"),
-    CommandType::Uv("shandy-sqlfmt[jinjafmt]"),
+    CommandType::Uv("shandy-sqlfmt[jinjafmt]", "sqlfmt"),
     CommandType::Pipx("shandy-sqlfmt[jinjafmt]"),
 ];
 

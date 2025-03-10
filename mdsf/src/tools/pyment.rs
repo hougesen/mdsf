@@ -15,7 +15,7 @@ pub fn set_args(
 
 pub const COMMANDS: [CommandType; 3] = [
     CommandType::Direct("pyment"),
-    CommandType::Uv("pyment"),
+    CommandType::Uv("pyment", "pyment"),
     CommandType::Pipx("pyment"),
 ];
 

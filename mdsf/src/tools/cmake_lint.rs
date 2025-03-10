@@ -14,7 +14,7 @@ pub fn set_args(
 
 pub const COMMANDS: [CommandType; 3] = [
     CommandType::Direct("cmake-lint"),
-    CommandType::Uv("cmakelang"),
+    CommandType::Uv("cmakelang", "cmake-lint"),
     CommandType::Pipx("cmakelang"),
 ];
 

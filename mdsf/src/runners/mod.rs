@@ -23,7 +23,7 @@ pub enum CommandType {
     PhpVendor(&'static str),
     Pipx(&'static str),
     Pnpm(&'static str),
-    Uv(&'static str),
+    Uv(&'static str, &'static str),
     Yarn(&'static str),
 }
 
@@ -43,7 +43,7 @@ impl CommandType {
             Self::PhpVendor(_) => true,
             Self::Pipx(_) => config_runners.pipx,
             Self::Pnpm(_) => config_runners.pnpm,
-            Self::Uv(_) => config_runners.uv,
+            Self::Uv(_, _) => config_runners.uv,
             Self::Yarn(_) => config_runners.yarn,
         }
     }
@@ -62,7 +62,9 @@ impl CommandType {
             Self::PhpVendor(binary_name) => composer::setup_php_vender_bin_command(binary_name),
             Self::Pipx(package_name) => pipx::setup_pipx_run_command(package_name),
             Self::Pnpm(package_name) => pnpm::setup_pnpm_dlx_command(package_name),
-            Self::Uv(package_name) => uv::setup_uv_run_command(package_name),
+            Self::Uv(package_name, executable_name) => {
+                uv::setup_uv_run_command(package_name, executable_name)
+            }
             Self::Yarn(package_name) => yarn::setup_yarn_dlx_command(package_name),
         }
     }

@@ -19,6 +19,7 @@
   "languages": ["xml"],
   "packages": {
     "pip": {
+      "executable": "xmlformat",
       "package": "xmlformatter"
     }
   }

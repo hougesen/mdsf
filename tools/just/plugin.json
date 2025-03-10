@@ -28,6 +28,7 @@
       "package": "rust-just"
     },
     "pip": {
+      "executable": "just",
       "package": "rust-just"
     }
   }

@@ -14,7 +14,7 @@ pub fn set_args(
 
 pub const COMMANDS: [CommandType; 3] = [
     CommandType::Direct("fprettify"),
-    CommandType::Uv("fprettify"),
+    CommandType::Uv("fprettify", "fprettify"),
     CommandType::Pipx("fprettify"),
 ];
 

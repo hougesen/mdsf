@@ -4,6 +4,8 @@ All notable changes to this project will be documented in this file. Dates are d
 
 #### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.8.0...HEAD)
 
+- fix(runners): uv run packages with different executable_name [`#828`](https://github.com/hougesen/mdsf/pull/828)
+- refactor(codegen): streamline tool package options [`#827`](https://github.com/hougesen/mdsf/pull/827)
 - feat(runners): support running packages using gem exec [`#826`](https://github.com/hougesen/mdsf/pull/826)
 - feat(tools): add mago:lint:fix and mago:lint:fix:unsafe [`#825`](https://github.com/hougesen/mdsf/pull/825)
 - refactor(tools): remove mago:fix command [`#824`](https://github.com/hougesen/mdsf/pull/824)
@@ -16,9 +18,6 @@ All notable changes to this project will be documented in this file. Dates are d
 - chore(tools): add missing brew package names [`#817`](https://github.com/hougesen/mdsf/pull/817)
 - feat(tools): add support for yamllint [`#816`](https://github.com/hougesen/mdsf/pull/816)
 - feat: support running packages using yarn dlx [`#815`](https://github.com/hougesen/mdsf/pull/815)
-- refactor(codegen): convert packages.pip to struct [`b0f07cf`](https://github.com/hougesen/mdsf/commit/b0f07cf7413e4501eee569efcc003c59309213da)
-- refactor(codegen): change packages.brew.name to packages.brew.package [`603a55d`](https://github.com/hougesen/mdsf/commit/603a55dc0ee16a202ae2be69bb64e7a15ff84a44)
-- refactor(codegen): convert packages.apt to struct [`d2b9125`](https://github.com/hougesen/mdsf/commit/d2b9125c04dc52ae9d965e838c5e57b86f9ca95d)
 
 #### [v0.8.0](https://github.com/hougesen/mdsf/compare/v0.7.0...v0.8.0)
 
