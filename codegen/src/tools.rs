@@ -48,7 +48,7 @@ pub struct ToolCommand {
 #[derive(Debug, serde::Deserialize, schemars::JsonSchema, Clone, Default, serde::Serialize)]
 #[serde(deny_unknown_fields)]
 pub struct ToolPackagesBrew {
-    pub name: String,
+    pub package: String,
 
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub tap: Option<String>,
@@ -66,10 +66,10 @@ pub struct ToolPackagesComposer {
 #[derive(Debug, serde::Deserialize, schemars::JsonSchema, Clone, Default, serde::Serialize)]
 #[serde(deny_unknown_fields)]
 pub struct ToolPackagesGem {
-    pub package: String,
-
     #[serde(default, skip_serializing_if = "is_false ")]
     pub disable_gem_exec: bool,
+
+    pub package: String,
 }
 
 #[derive(Debug, serde::Deserialize, schemars::JsonSchema, Clone, Default, serde::Serialize)]

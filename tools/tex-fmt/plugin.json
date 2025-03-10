@@ -13,7 +13,7 @@
   "packages": {
     "apt": "tex-fmt",
     "brew": {
-      "name": "tex-fmt"
+      "package": "tex-fmt"
     },
     "cargo": "tex-fmt"
   }

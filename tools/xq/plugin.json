@@ -27,7 +27,7 @@
   "packages": {
     "apt": "xq",
     "brew": {
-      "name": "xq"
+      "package": "xq"
     }
   }
 }

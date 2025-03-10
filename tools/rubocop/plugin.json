@@ -25,8 +25,8 @@
   "languages": ["ruby"],
   "packages": {
     "gem": {
-      "package": "rubocop",
-      "disable_gem_exec": true
+      "disable_gem_exec": true,
+      "package": "rubocop"
     }
   }
 }

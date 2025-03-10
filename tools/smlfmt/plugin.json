@@ -12,7 +12,7 @@
   "languages": ["standard-ml"],
   "packages": {
     "brew": {
-      "name": "smlfmt"
+      "package": "smlfmt"
     }
   }
 }

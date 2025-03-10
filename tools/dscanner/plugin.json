@@ -15,7 +15,7 @@
   "languages": ["d"],
   "packages": {
     "brew": {
-      "name": "dscanner"
+      "package": "dscanner"
     },
     "dub": "dscanner"
   }

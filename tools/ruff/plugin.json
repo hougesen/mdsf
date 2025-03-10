@@ -24,7 +24,7 @@
   "languages": ["python"],
   "packages": {
     "brew": {
-      "name": "ruff"
+      "package": "ruff"
     },
     "pip": "ruff"
   }

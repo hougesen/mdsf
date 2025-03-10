@@ -12,7 +12,7 @@
   "languages": ["bicep"],
   "packages": {
     "brew": {
-      "name": "bicep",
+      "package": "bicep",
       "tap": "azure/bicep"
     }
   }

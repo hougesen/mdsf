@@ -19,7 +19,7 @@
   "languages": ["swift"],
   "packages": {
     "brew": {
-      "name": "swiftformat"
+      "package": "swiftformat"
     }
   }
 }

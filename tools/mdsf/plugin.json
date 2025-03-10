@@ -16,7 +16,7 @@
   "languages": ["markdown"],
   "packages": {
     "brew": {
-      "name": "hougesen/tap/mdsf"
+      "package": "hougesen/tap/mdsf"
     },
     "cargo": "mdsf",
     "npm": "mdsf-cli"

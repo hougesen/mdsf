@@ -12,7 +12,7 @@
   "languages": ["makefile"],
   "packages": {
     "brew": {
-      "name": "checkmake"
+      "package": "checkmake"
     },
     "go": "github.com/mrtazz/checkmake/cmd/checkmake@latest"
   }

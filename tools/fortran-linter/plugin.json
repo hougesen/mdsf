@@ -19,7 +19,7 @@
   "languages": ["fortran"],
   "packages": {
     "brew": {
-      "name": "fprettify"
+      "package": "fprettify"
     },
     "pip": "fortran-linter"
   }

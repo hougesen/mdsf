@@ -12,7 +12,7 @@
   "languages": ["qml"],
   "packages": {
     "brew": {
-      "name": "martindelille/tap/qmlfmt"
+      "package": "martindelille/tap/qmlfmt"
     }
   }
 }

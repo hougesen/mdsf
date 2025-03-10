@@ -24,7 +24,7 @@
   "languages": ["bash", "shell"],
   "packages": {
     "brew": {
-      "name": "beautysh"
+      "package": "beautysh"
     }
   }
 }

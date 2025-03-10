@@ -19,7 +19,7 @@
   "languages": [],
   "packages": {
     "brew": {
-      "name": "typos-cli"
+      "package": "typos-cli"
     },
     "cargo": "typos-cli"
   }

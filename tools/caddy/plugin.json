@@ -14,7 +14,7 @@
   "languages": ["caddy"],
   "packages": {
     "brew": {
-      "name": "caddy"
+      "package": "caddy"
     }
   }
 }

@@ -13,7 +13,7 @@
   "packages": {
     "apt": "yq",
     "brew": {
-      "name": "yq"
+      "package": "yq"
     },
     "go": "github.com/mikefarah/yq/v4@latest"
   }

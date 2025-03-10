@@ -12,7 +12,7 @@
   "languages": ["kdl"],
   "packages": {
     "brew": {
-      "name": "hougesen/tap/kdlfmt"
+      "package": "hougesen/tap/kdlfmt"
     },
     "cargo": "kdlfmt",
     "npm": "kdlfmt"

@@ -19,7 +19,7 @@
   "languages": ["bash"],
   "packages": {
     "brew": {
-      "name": "bashate"
+      "package": "bashate"
     },
     "pip": "bashate"
   }

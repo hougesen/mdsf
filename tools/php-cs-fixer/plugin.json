@@ -12,7 +12,7 @@
   "languages": ["php"],
   "packages": {
     "brew": {
-      "name": "php-cs-fixer"
+      "package": "php-cs-fixer"
     },
     "composer": {
       "binary": "php-cs-fixer",

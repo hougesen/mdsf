@@ -12,7 +12,7 @@
   "languages": ["go"],
   "packages": {
     "brew": {
-      "name": "incu6us/homebrew-tap/goimports-reviser",
+      "package": "incu6us/homebrew-tap/goimports-reviser",
       "tap": "incu6us/homebrew-tap"
     },
     "go": "github.com/incu6us/goimports-reviser/v3@latest"

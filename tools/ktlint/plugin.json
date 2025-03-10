@@ -19,7 +19,7 @@
   "languages": ["kotlin"],
   "packages": {
     "brew": {
-      "name": "ktlint"
+      "package": "ktlint"
     }
   }
 }

@@ -13,7 +13,7 @@
   "packages": {
     "apt": "findent",
     "brew": {
-      "name": "findent"
+      "package": "findent"
     }
   }
 }

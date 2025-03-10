@@ -19,7 +19,7 @@
   "languages": ["just"],
   "packages": {
     "brew": {
-      "name": "just"
+      "package": "just"
     },
     "cargo": "just",
     "npm": "rust-just",

@@ -20,7 +20,7 @@
   "packages": {
     "apt": "ormolu",
     "brew": {
-      "name": "ormolu"
+      "package": "ormolu"
     },
     "cabal": "ormolu",
     "stack": "ormolu"

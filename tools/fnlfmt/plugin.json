@@ -12,7 +12,7 @@
   "languages": ["fennel"],
   "packages": {
     "brew": {
-      "name": "fnlfmt"
+      "package": "fnlfmt"
     }
   }
 }

@@ -13,7 +13,7 @@
   "packages": {
     "apt": "ansible-lint",
     "brew": {
-      "name": "ansible-lint"
+      "package": "ansible-lint"
     },
     "pip": "ansible-dev-tools"
   }

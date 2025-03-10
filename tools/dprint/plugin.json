@@ -12,7 +12,7 @@
   "languages": [],
   "packages": {
     "brew": {
-      "name": "dprint"
+      "package": "dprint"
     },
     "cargo": "dprint",
     "npm": "dprint"

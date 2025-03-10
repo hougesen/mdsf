@@ -12,7 +12,7 @@
   "languages": ["dockerfile"],
   "packages": {
     "brew": {
-      "name": "hadolint"
+      "package": "hadolint"
     }
   }
 }

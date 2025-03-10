@@ -19,7 +19,7 @@
   "languages": ["toml"],
   "packages": {
     "brew": {
-      "name": "taplo"
+      "package": "taplo"
     },
     "cargo": "taplo-cli",
     "npm": "@taplo/cli"

@@ -20,7 +20,7 @@
   "languages": ["haskell"],
   "packages": {
     "brew": {
-      "name": "fourmolu"
+      "package": "fourmolu"
     },
     "cabal": "fourmolu",
     "stack": "fourmolu"

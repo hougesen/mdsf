@@ -19,7 +19,7 @@
   "languages": ["python"],
   "packages": {
     "brew": {
-      "name": "black"
+      "package": "black"
     },
     "pip": "black"
   }

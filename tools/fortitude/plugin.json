@@ -52,7 +52,7 @@
   "languages": [],
   "packages": {
     "brew": {
-      "name": "fortitude"
+      "package": "fortitude"
     },
     "pip": "fortitude-lint"
   }

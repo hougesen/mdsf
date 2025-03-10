@@ -12,7 +12,7 @@
   "languages": ["bash", "shell"],
   "packages": {
     "brew": {
-      "name": "shellharden"
+      "package": "shellharden"
     },
     "cargo": "shellharden"
   }

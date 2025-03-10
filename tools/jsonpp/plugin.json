@@ -20,7 +20,7 @@
   "languages": ["json"],
   "packages": {
     "brew": {
-      "name": "jsonpp"
+      "package": "jsonpp"
     }
   }
 }

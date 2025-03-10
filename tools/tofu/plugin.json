@@ -19,7 +19,7 @@
   "languages": ["terraform", "tofu"],
   "packages": {
     "brew": {
-      "name": "opentofu"
+      "package": "opentofu"
     }
   }
 }

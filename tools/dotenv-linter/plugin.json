@@ -12,7 +12,7 @@
   "languages": ["env"],
   "packages": {
     "brew": {
-      "name": "dotenv-linter"
+      "package": "dotenv-linter"
     },
     "cargo": "dotenv-linter"
   }

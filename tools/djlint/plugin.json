@@ -12,7 +12,7 @@
   "languages": ["handlebars", "html", "jinja", "mustache", "nunjucks", "twig"],
   "packages": {
     "brew": {
-      "name": "djlint"
+      "package": "djlint"
     },
     "pip": "djlint"
   }

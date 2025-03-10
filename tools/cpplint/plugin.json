@@ -13,7 +13,7 @@
   "packages": {
     "apt": "cpplint",
     "brew": {
-      "name": "cpplint"
+      "package": "cpplint"
     },
     "pip": "cpplint"
   }

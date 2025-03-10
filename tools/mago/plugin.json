@@ -63,7 +63,7 @@
   "languages": ["php"],
   "packages": {
     "brew": {
-      "name": "mago"
+      "package": "mago"
     },
     "cargo": "mago",
     "composer": {

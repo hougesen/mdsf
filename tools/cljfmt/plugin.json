@@ -12,7 +12,7 @@
   "languages": ["clojure"],
   "packages": {
     "brew": {
-      "name": "cljfmt"
+      "package": "cljfmt"
     }
   }
 }

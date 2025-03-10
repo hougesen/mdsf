@@ -12,7 +12,7 @@
   "languages": ["scala"],
   "packages": {
     "brew": {
-      "name": "scalariform"
+      "package": "scalariform"
     }
   }
 }

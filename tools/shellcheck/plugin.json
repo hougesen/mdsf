@@ -13,7 +13,7 @@
   "packages": {
     "apt": "shellcheck",
     "brew": {
-      "name": "shellcheck"
+      "package": "shellcheck"
     },
     "cabal": "ShellCheck",
     "stack": "ShellCheck"

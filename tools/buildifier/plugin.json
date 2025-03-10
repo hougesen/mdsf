@@ -12,7 +12,7 @@
   "languages": ["bazel"],
   "packages": {
     "brew": {
-      "name": "buildifier"
+      "package": "buildifier"
     },
     "go": "github.com/bazelbuild/buildtools/buildifier@latest"
   }

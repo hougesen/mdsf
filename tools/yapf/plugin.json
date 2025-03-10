@@ -19,7 +19,7 @@
   "languages": ["python"],
   "packages": {
     "brew": {
-      "name": "yapf"
+      "package": "yapf"
     },
     "pip": "yapf"
   }

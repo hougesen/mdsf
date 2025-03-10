@@ -12,7 +12,7 @@
   "languages": ["gdscript"],
   "packages": {
     "brew": {
-      "name": "gdtoolkit"
+      "package": "gdtoolkit"
     },
     "pip": "gdtoolkit"
   }

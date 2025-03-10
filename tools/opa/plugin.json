@@ -12,7 +12,7 @@
   "languages": ["rego"],
   "packages": {
     "brew": {
-      "name": "opa"
+      "package": "opa"
     }
   }
 }
