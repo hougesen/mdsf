@@ -856,6 +856,16 @@
           "enum": ["mago:lint"]
         },
         {
+          "description": "Fix linting errors found by mago lint\n\n[https://mago.carthage.software/#/getting-started/cli?id=mago-lint](https://mago.carthage.software/#/getting-started/cli?id=mago-lint)\n\n`mago lint --fix $PATH`",
+          "type": "string",
+          "enum": ["mago:lint:fix"]
+        },
+        {
+          "description": "Fix unsafe linting errors found by mago lint\n\n[https://mago.carthage.software/#/getting-started/cli?id=mago-lint](https://mago.carthage.software/#/getting-started/cli?id=mago-lint)\n\n`mago lint --fix --potentially-unsafe --unsafe $PATH`",
+          "type": "string",
+          "enum": ["mago:lint:fix:unsafe"]
+        },
+        {
           "description": "Like gofmt, but for Markdown\n\n[https://github.com/shurcool/markdownfmt](https://github.com/shurcool/markdownfmt)\n\n`markdownfmt -w $PATH`",
           "type": "string",
           "enum": ["markdownfmt"]
