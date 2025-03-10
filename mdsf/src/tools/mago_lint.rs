@@ -17,3 +17,35 @@ pub const COMMANDS: [CommandType; 2] =
     [CommandType::PhpVendor("mago"), CommandType::Direct("mago")];
 
 pub const IS_STDIN: bool = false;
+
+#[cfg(test)]
+mod test_mago_lint {
+    #[test_with::executable(mago)]
+    fn test_mago_lint_php_513b2cc3a1e145ed() {
+        let input = r#"<?php
+echo 'Hello World!';
+"#;
+
+        let output = r#"<?php
+echo 'Hello World!';
+"#;
+
+        let file_ext = crate::fttype::get_file_extension("php");
+
+        let snippet =
+            crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
+
+        let result = crate::tools::Tooling::MagoLint
+            .format_snippet(
+                snippet.path(),
+                crate::testing::DEFAULT_TEST_FORMATTER_TIMEOUT,
+                crate::testing::DEFAULT_TEST_DEBUG_ENABLED,
+                &crate::config::MdsfConfigRunners::all(),
+            )
+            .expect("it to be successful")
+            .1
+            .expect("it to be some");
+
+        assert_eq!(result, output);
+    }
+}

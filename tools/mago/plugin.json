@@ -23,7 +23,14 @@
     "lint": {
       "arguments": ["lint", "$PATH"],
       "description": "The lint command is used to analyze PHP files in your project and report any issues found by the linter",
-      "homepage": "https://mago.carthage.software/#/getting-started/cli?id=mago-lint"
+      "homepage": "https://mago.carthage.software/#/getting-started/cli?id=mago-lint",
+      "tests": [
+        {
+          "language": "php",
+          "test_input": "<?php\necho 'Hello World!';\n",
+          "test_output": "<?php\necho 'Hello World!';\n"
+        }
+      ]
     }
   },
   "description": "A fast linter and formatter for PHP",
