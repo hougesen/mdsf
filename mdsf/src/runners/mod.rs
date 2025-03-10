@@ -2,6 +2,7 @@ mod bun;
 mod composer;
 mod deno;
 mod dub;
+mod gem;
 mod node;
 mod path;
 mod pipx;
@@ -16,6 +17,7 @@ pub enum CommandType {
     Deno(&'static str),
     Direct(&'static str),
     Dub(&'static str),
+    GemExec(&'static str),
     NodeModules(&'static str),
     Npm(&'static str),
     PhpVendor(&'static str),
@@ -35,6 +37,7 @@ impl CommandType {
             Self::Deno(_) => config_runners.deno,
             Self::Direct(_) => true,
             Self::Dub(_) => config_runners.dub,
+            Self::GemExec(_) => config_runners.gem_exec,
             Self::NodeModules(_) => true,
             Self::Npm(_) => config_runners.npx,
             Self::PhpVendor(_) => true,
@@ -53,6 +56,7 @@ impl CommandType {
             Self::Deno(package_name) => deno::setup_deno_run_command(package_name),
             Self::Direct(binary_name) => std::process::Command::new(binary_name),
             Self::Dub(package_name) => dub::setup_dub_run_command(package_name),
+            Self::GemExec(package_name) => gem::setup_gem_exec_command(package_name),
             Self::NodeModules(binary_name) => node::setup_node_modules_command(binary_name),
             Self::Npm(package_name) => node::setup_npx_command(package_name),
             Self::PhpVendor(binary_name) => composer::setup_php_vender_bin_command(binary_name),

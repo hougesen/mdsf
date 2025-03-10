@@ -58,6 +58,10 @@
           "description": "Whether to support running dub packages using `dub run $PACKAGE_NAME`",
           "type": "boolean"
         },
+        "gem_exec": {
+          "description": "Whether to support running ruby packages using `gem exec $PACKAGE_NAME`",
+          "type": "boolean"
+        },
         "npx": {
           "description": "Whether to support running npm packages using `npx $PACKAGE_NAME`",
           "type": "boolean"

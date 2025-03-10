@@ -25,6 +25,10 @@ pub struct MdsfConfigRunners {
     #[serde(default, skip_serializing_if = "is_false")]
     pub dub: bool,
 
+    /// Whether to support running ruby packages using `gem exec $PACKAGE_NAME`
+    #[serde(default, skip_serializing_if = "is_false")]
+    pub gem_exec: bool,
+
     /// Whether to support running npm packages using `npx $PACKAGE_NAME`
     #[serde(default, skip_serializing_if = "is_false")]
     pub npx: bool,
@@ -58,6 +62,7 @@ impl MdsfConfigRunners {
             bunx: true,
             deno: true,
             dub: true,
+            gem_exec: true,
             npx: true,
             pipx: true,
             pnpm: true,
