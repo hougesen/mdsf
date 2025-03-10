@@ -846,11 +846,6 @@
           "enum": ["mado:check"]
         },
         {
-          "description": "The fix command is used to automatically fix issues identified during linting\n\n[https://mago.carthage.software/#/getting-started/cli?id=mago-fix](https://mago.carthage.software/#/getting-started/cli?id=mago-fix)\n\n`mago fix $PATH`",
-          "type": "string",
-          "enum": ["mago:fix"]
-        },
-        {
           "description": "The format command is used to format PHP files in your project according to the rules defined in your mago.toml configuration file\n\n[https://mago.carthage.software/#/getting-started/cli?id=mago-format](https://mago.carthage.software/#/getting-started/cli?id=mago-format)\n\n`mago format $PATH`",
           "type": "string",
           "enum": ["mago:format"]

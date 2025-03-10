@@ -151,7 +151,6 @@ pub mod liquidsoap_prettier;
 pub mod luacheck;
 pub mod luaformatter;
 pub mod mado_check;
-pub mod mago_fix;
 pub mod mago_format;
 pub mod mago_lint;
 pub mod markdownfmt;
@@ -1513,14 +1512,6 @@ pub enum Tooling {
     ///
     /// `mado check $PATH`
     MadoCheck,
-
-    #[serde(rename = "mago:fix")]
-    /// The fix command is used to automatically fix issues identified during linting
-    ///
-    /// [https://mago.carthage.software/#/getting-started/cli?id=mago-fix](https://mago.carthage.software/#/getting-started/cli?id=mago-fix)
-    ///
-    /// `mago fix $PATH`
-    MagoFix,
 
     #[serde(rename = "mago:format")]
     /// The format command is used to format PHP files in your project according to the rules defined in your mago.toml configuration file
@@ -3276,7 +3267,6 @@ impl Tooling {
                 mado_check::set_args,
                 mado_check::IS_STDIN,
             ),
-            Self::MagoFix => (&mago_fix::COMMANDS, mago_fix::set_args, mago_fix::IS_STDIN),
             Self::MagoFormat => (
                 &mago_format::COMMANDS,
                 mago_format::set_args,
@@ -3924,7 +3914,6 @@ impl AsRef<str> for Tooling {
             Self::Luacheck => "luacheck",
             Self::Luaformatter => "luaformatter",
             Self::MadoCheck => "mado:check",
-            Self::MagoFix => "mago:fix",
             Self::MagoFormat => "mago:format",
             Self::MagoLint => "mago:lint",
             Self::Markdownfmt => "markdownfmt",

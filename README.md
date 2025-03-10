@@ -681,7 +681,7 @@ mdsf init
 
 <!-- START_SECTION:supported-commands -->
 
-`mdsf` currently supports 309 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 308 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                         | Command                                                                                 |
 | ---------------------------- | --------------------------------------------------------------------------------------- |
@@ -835,7 +835,6 @@ mdsf init
 | `luacheck`                   | `luacheck $PATH`                                                                        |
 | `luaformatter`               | `lua-format -i $PATH`                                                                   |
 | `mado:check`                 | `mado check $PATH`                                                                      |
-| `mago:fix`                   | `mago fix $PATH`                                                                        |
 | `mago:format`                | `mago format $PATH`                                                                     |
 | `mago:lint`                  | `mago lint $PATH`                                                                       |
 | `markdownfmt`                | `markdownfmt -w $PATH`                                                                  |
