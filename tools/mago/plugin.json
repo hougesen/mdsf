@@ -26,6 +26,36 @@
           "test_output": "<?php\necho 'Hello World!';\n"
         }
       ]
+    },
+    "lint:fix": {
+      "arguments": ["lint", "--fix", "$PATH"],
+      "description": "Fix linting errors found by mago lint",
+      "homepage": "https://mago.carthage.software/#/getting-started/cli?id=mago-lint",
+      "tests": [
+        {
+          "language": "php",
+          "test_input": "<?php\necho 'Hello World!';\n",
+          "test_output": "<?php\necho 'Hello World!';\n"
+        }
+      ]
+    },
+    "lint:fix:unsafe": {
+      "arguments": [
+        "lint",
+        "--fix",
+        "--potentially-unsafe",
+        "--unsafe",
+        "$PATH"
+      ],
+      "description": "Fix unsafe linting errors found by mago lint",
+      "homepage": "https://mago.carthage.software/#/getting-started/cli?id=mago-lint",
+      "tests": [
+        {
+          "language": "php",
+          "test_input": "<?php\necho 'Hello World!';\n",
+          "test_output": "<?php\necho 'Hello World!';\n"
+        }
+      ]
     }
   },
   "description": "A fast linter and formatter for PHP",

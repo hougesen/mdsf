@@ -153,6 +153,8 @@ pub mod luaformatter;
 pub mod mado_check;
 pub mod mago_format;
 pub mod mago_lint;
+pub mod mago_lint_fix;
+pub mod mago_lint_fix_unsafe;
 pub mod markdownfmt;
 pub mod markdownlint;
 pub mod markdownlint_cli_2;
@@ -1528,6 +1530,22 @@ pub enum Tooling {
     ///
     /// `mago lint $PATH`
     MagoLint,
+
+    #[serde(rename = "mago:lint:fix")]
+    /// Fix linting errors found by mago lint
+    ///
+    /// [https://mago.carthage.software/#/getting-started/cli?id=mago-lint](https://mago.carthage.software/#/getting-started/cli?id=mago-lint)
+    ///
+    /// `mago lint --fix $PATH`
+    MagoLintFix,
+
+    #[serde(rename = "mago:lint:fix:unsafe")]
+    /// Fix unsafe linting errors found by mago lint
+    ///
+    /// [https://mago.carthage.software/#/getting-started/cli?id=mago-lint](https://mago.carthage.software/#/getting-started/cli?id=mago-lint)
+    ///
+    /// `mago lint --fix --potentially-unsafe --unsafe $PATH`
+    MagoLintFixUnsafe,
 
     #[serde(rename = "markdownfmt")]
     /// Like gofmt, but for Markdown
@@ -3277,6 +3295,16 @@ impl Tooling {
                 mago_lint::set_args,
                 mago_lint::IS_STDIN,
             ),
+            Self::MagoLintFix => (
+                &mago_lint_fix::COMMANDS,
+                mago_lint_fix::set_args,
+                mago_lint_fix::IS_STDIN,
+            ),
+            Self::MagoLintFixUnsafe => (
+                &mago_lint_fix_unsafe::COMMANDS,
+                mago_lint_fix_unsafe::set_args,
+                mago_lint_fix_unsafe::IS_STDIN,
+            ),
             Self::Markdownfmt => (
                 &markdownfmt::COMMANDS,
                 markdownfmt::set_args,
@@ -3916,6 +3944,8 @@ impl AsRef<str> for Tooling {
             Self::MadoCheck => "mado:check",
             Self::MagoFormat => "mago:format",
             Self::MagoLint => "mago:lint",
+            Self::MagoLintFix => "mago:lint:fix",
+            Self::MagoLintFixUnsafe => "mago:lint:fix:unsafe",
             Self::Markdownfmt => "markdownfmt",
             Self::Markdownlint => "markdownlint",
             Self::MarkdownlintCli2 => "markdownlint-cli2",
