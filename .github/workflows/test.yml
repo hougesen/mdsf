@@ -215,6 +215,8 @@ jobs:
         run: ( ( which terraform ) || ( ( which brew && brew tap hashicorp/tap && brew install hashicorp/tap/terraform ) ) || ( echo "Unable to install tool" ) )
       - name: tofu
         run: ( ( which tofu ) || ( ( which brew &&  brew install opentofu ) ) || ( echo "Unable to install tool" ) )
+      - name: toml-sort
+        run: ( ( which toml-sort ) || ( ( which pipx && pipx install toml-sort ) ) || ( echo "Unable to install tool" ) )
       - name: topiary
         run: ( ( which topiary ) || ( ( which cargo && ( cargo binstall topiary-cli || cargo install topiary-cli ) ) ) || ( echo "Unable to install tool" ) )
       - name: typos
