@@ -11,7 +11,14 @@
     "format": {
       "arguments": ["format", "$PATH"],
       "description": "The format command is used to format PHP files in your project according to the rules defined in your mago.toml configuration file",
-      "homepage": "https://mago.carthage.software/#/getting-started/cli?id=mago-format"
+      "homepage": "https://mago.carthage.software/#/getting-started/cli?id=mago-format",
+      "tests": [
+        {
+          "language": "php",
+          "test_input": "<?php\necho \"Hello World!\";\n?>",
+          "test_output": "<?php\necho 'Hello World!';\n"
+        }
+      ]
     },
     "lint": {
       "arguments": ["lint", "$PATH"],
