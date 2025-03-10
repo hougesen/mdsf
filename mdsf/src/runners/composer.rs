@@ -28,9 +28,7 @@ echo 'Hello World!';
             crate::testing::DEFAULT_TEST_FORMATTER_TIMEOUT,
             crate::tools::mago_format::IS_STDIN,
             crate::testing::DEFAULT_TEST_DEBUG_ENABLED,
-            &crate::config::MdsfConfigRunners {
-                ..Default::default()
-            },
+            &crate::config::MdsfConfigRunners::default(),
         )
         .expect("it to be successful")
         .1

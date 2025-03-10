@@ -219,12 +219,12 @@
     },
     "ToolPackagesGem": {
       "type": "object",
-      "required": ["name"],
+      "required": ["package"],
       "properties": {
         "disable_gem_exec": {
           "type": "boolean"
         },
-        "name": {
+        "package": {
           "type": "string"
         }
       },

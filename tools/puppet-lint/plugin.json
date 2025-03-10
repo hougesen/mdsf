@@ -12,7 +12,7 @@
   "languages": ["puppet"],
   "packages": {
     "gem": {
-      "name": "puppet-lint"
+      "package": "puppet-lint"
     }
   }
 }

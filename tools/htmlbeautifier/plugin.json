@@ -19,7 +19,7 @@
   "languages": ["erb", "html", "ruby"],
   "packages": {
     "gem": {
-      "name": "htmlbeautifier"
+      "package": "htmlbeautifier"
     }
   }
 }

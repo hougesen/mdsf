@@ -12,7 +12,7 @@
   "languages": ["ruby"],
   "packages": {
     "gem": {
-      "name": "reek"
+      "package": "reek"
     }
   }
 }

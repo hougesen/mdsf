@@ -12,7 +12,7 @@
   "languages": ["haml"],
   "packages": {
     "gem": {
-      "name": "haml_lint"
+      "package": "haml_lint"
     }
   }
 }

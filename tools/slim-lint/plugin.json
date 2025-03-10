@@ -12,7 +12,7 @@
   "languages": ["slim"],
   "packages": {
     "gem": {
-      "name": "slim_lint"
+      "package": "slim_lint"
     }
   }
 }

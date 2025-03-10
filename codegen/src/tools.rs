@@ -66,7 +66,7 @@ pub struct ToolPackagesComposer {
 #[derive(Debug, serde::Deserialize, schemars::JsonSchema, Clone, Default, serde::Serialize)]
 #[serde(deny_unknown_fields)]
 pub struct ToolPackagesGem {
-    pub name: String,
+    pub package: String,
 
     #[serde(default, skip_serializing_if = "is_false ")]
     pub disable_gem_exec: bool,
@@ -330,7 +330,7 @@ impl Tool {
 
                 if let Some(gem) = &self.packages.gem {
                     if !gem.disable_gem_exec {
-                        command_types.push(format!("CommandType::GemExec(\"{}\")", &gem.name));
+                        command_types.push(format!("CommandType::GemExec(\"{}\")", &gem.package));
                     }
                 }
             };
