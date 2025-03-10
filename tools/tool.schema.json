@@ -183,7 +183,14 @@
           "type": ["string", "null"]
         },
         "pip": {
-          "type": ["string", "null"]
+          "anyOf": [
+            {
+              "$ref": "#/definitions/ToolPackagesPip"
+            },
+            {
+              "type": "null"
+            }
+          ]
         },
         "stack": {
           "type": ["string", "null"]
@@ -224,6 +231,16 @@
         "disable_gem_exec": {
           "type": "boolean"
         },
+        "package": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "ToolPackagesPip": {
+      "type": "object",
+      "required": ["package"],
+      "properties": {
         "package": {
           "type": "string"
         }

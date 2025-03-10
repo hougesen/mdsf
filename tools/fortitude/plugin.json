@@ -54,6 +54,8 @@
     "brew": {
       "package": "fortitude"
     },
-    "pip": "fortitude-lint"
+    "pip": {
+      "package": "fortitude-lint"
+    }
   }
 }

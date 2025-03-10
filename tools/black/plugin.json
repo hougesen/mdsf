@@ -21,6 +21,8 @@
     "brew": {
       "package": "black"
     },
-    "pip": "black"
+    "pip": {
+      "package": "black"
+    }
   }
 }

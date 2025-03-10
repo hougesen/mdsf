@@ -21,6 +21,8 @@
     "brew": {
       "package": "yamlfix"
     },
-    "pip": "yamlfix"
+    "pip": {
+      "package": "yamlfix"
+    }
   }
 }

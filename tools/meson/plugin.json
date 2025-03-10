@@ -11,6 +11,8 @@
   "homepage": "https://mesonbuild.com/",
   "languages": ["meson"],
   "packages": {
-    "pip": "meson"
+    "pip": {
+      "package": "meson"
+    }
   }
 }

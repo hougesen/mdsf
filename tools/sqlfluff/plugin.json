@@ -51,6 +51,8 @@
   "homepage": "https://github.com/sqlfluff/sqlfluff",
   "languages": ["sql"],
   "packages": {
-    "pip": "sqlfluff"
+    "pip": {
+      "package": "sqlfluff"
+    }
   }
 }

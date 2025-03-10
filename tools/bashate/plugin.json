@@ -21,6 +21,8 @@
     "brew": {
       "package": "bashate"
     },
-    "pip": "bashate"
+    "pip": {
+      "package": "bashate"
+    }
   }
 }

@@ -14,6 +14,8 @@
     "brew": {
       "package": "snakefmt"
     },
-    "pip": "snakefmt"
+    "pip": {
+      "package": "snakefmt"
+    }
   }
 }

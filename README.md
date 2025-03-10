@@ -389,7 +389,7 @@ mdsf init
 
 <!-- START_SECTION:supported-tools -->
 
-`mdsf` currently supports 281 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 282 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                                                                                 | Description                                                                                                                                   | Categories            | Languages                                                                                                                         |
 | ------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
@@ -482,6 +482,7 @@ mdsf init
 | [futhark](https://futhark.readthedocs.io/en/latest/man/futhark-fmt.html)             | Code formatter for the furhark programming language                                                                                           | `formatter`           | `futhark`                                                                                                                         |
 | [gci](https://github.com/daixiang0/gci)                                              | GCI, a tool that control golang package import order and make it always deterministic                                                         | `formatter`           | `go`                                                                                                                              |
 | [gdformat](https://github.com/scony/godot-gdscript-toolkit)                          | GDScript formatter                                                                                                                            | `formatter`           | `gdscript`                                                                                                                        |
+| [gdlint](https://github.com/scony/godot-gdscript-toolkit)                            | GDScript linter                                                                                                                               | `linter`              | `gdscript`                                                                                                                        |
 | [gersemi](https://github.com/blankspruce/gersemi)                                    | A formatter to make your CMake code the real treasure                                                                                         | `formatter`           | `cmake`                                                                                                                           |
 | [gleam](https://gleam.run/)                                                          | Format Gleam source code                                                                                                                      | `formatter`           | `gleam`                                                                                                                           |
 | [gluon](https://github.com/gluon-lang/gluon)                                         | Code formatting for the gluon programming language                                                                                            | `formatter`           | `gluon`                                                                                                                           |
@@ -681,7 +682,7 @@ mdsf init
 
 <!-- START_SECTION:supported-commands -->
 
-`mdsf` currently supports 310 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 311 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                         | Command                                                                                 |
 | ---------------------------- | --------------------------------------------------------------------------------------- |
@@ -785,6 +786,7 @@ mdsf init
 | `futhark:fmt`                | `futhark fmt $PATH`                                                                     |
 | `gci`                        | `gci write --skip-generated --skip-vendor $PATH`                                        |
 | `gdformat`                   | `gdformat $PATH`                                                                        |
+| `gdlint`                     | `gdlint $PATH`                                                                          |
 | `gersemi`                    | `gersemi -i -q $PATH`                                                                   |
 | `gleam:format`               | `gleam format $PATH`                                                                    |
 | `gluon:fmt`                  | `gluon fmt $PATH`                                                                       |

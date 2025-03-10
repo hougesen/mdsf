@@ -18,6 +18,8 @@
   "homepage": "https://github.com/facebook/usort",
   "languages": ["python"],
   "packages": {
-    "pip": "usort"
+    "pip": {
+      "package": "usort"
+    }
   }
 }

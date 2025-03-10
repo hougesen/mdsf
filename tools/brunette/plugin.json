@@ -18,6 +18,8 @@
   "homepage": "https://github.com/odwyersoftware/brunette",
   "languages": ["python"],
   "packages": {
-    "pip": "brunette"
+    "pip": {
+      "package": "brunette"
+    }
   }
 }

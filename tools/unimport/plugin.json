@@ -11,6 +11,8 @@
   "homepage": "https://github.com/hakancelikdev/unimport",
   "languages": ["python"],
   "packages": {
-    "pip": "unimport"
+    "pip": {
+      "package": "unimport"
+    }
   }
 }

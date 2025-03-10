@@ -12,6 +12,8 @@
   "languages": ["sql"],
   "packages": {
     "cargo": "sqruff",
-    "pip": "sqruff"
+    "pip": {
+      "package": "sqruff"
+    }
   }
 }

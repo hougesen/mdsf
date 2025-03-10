@@ -122,7 +122,7 @@ pub fn generate_install_steps(tools: &Vec<Tool>) -> Vec<WorkflowJobsStep> {
         }
 
         if let Some(pip) = &tool.packages.pip {
-            install_options.push(generate_pip(pip));
+            install_options.push(generate_pip(&pip.package));
         }
 
         if let Some(dotnet) = &tool.packages.dotnet {

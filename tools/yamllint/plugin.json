@@ -21,6 +21,8 @@
     "brew": {
       "package": "yamllint"
     },
-    "pip": "yamllint"
+    "pip": {
+      "package": "yamllint"
+    }
   }
 }

@@ -11,6 +11,8 @@
   "homepage": "https://github.com/ducminh-phan/reformat-gherkin",
   "languages": ["gherkin"],
   "packages": {
-    "pip": "reformat-gherkin"
+    "pip": {
+      "package": "reformat-gherkin"
+    }
   }
 }

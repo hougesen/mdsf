@@ -14,6 +14,8 @@
     "brew": {
       "package": "gersemi"
     },
-    "pip": "gersemi"
+    "pip": {
+      "package": "gersemi"
+    }
   }
 }

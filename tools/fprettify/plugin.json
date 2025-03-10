@@ -21,6 +21,8 @@
     "brew": {
       "package": "fprettify"
     },
-    "pip": "fprettify"
+    "pip": {
+      "package": "fprettify"
+    }
   }
 }

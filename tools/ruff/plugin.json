@@ -26,6 +26,8 @@
     "brew": {
       "package": "ruff"
     },
-    "pip": "ruff"
+    "pip": {
+      "package": "ruff"
+    }
   }
 }

@@ -11,6 +11,8 @@
   "homepage": "https://github.com/python/mypy",
   "languages": ["python"],
   "packages": {
-    "pip": "mypy"
+    "pip": {
+      "package": "mypy"
+    }
   }
 }

@@ -14,6 +14,8 @@
     "brew": {
       "package": "cmake-lint"
     },
-    "pip": "cmakelang"
+    "pip": {
+      "package": "cmakelang"
+    }
   }
 }

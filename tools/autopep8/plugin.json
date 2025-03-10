@@ -18,6 +18,8 @@
   "homepage": "https://github.com/hhatto/autopep8",
   "languages": ["python"],
   "packages": {
-    "pip": "autopep8"
+    "pip": {
+      "package": "autopep8"
+    }
   }
 }

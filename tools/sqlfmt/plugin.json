@@ -11,6 +11,8 @@
   "homepage": "https://github.com/tconbeer/sqlfmt",
   "languages": ["sql"],
   "packages": {
-    "pip": "shandy-sqlfmt[jinjafmt]"
+    "pip": {
+      "package": "shandy-sqlfmt[jinjafmt]"
+    }
   }
 }

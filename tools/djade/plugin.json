@@ -11,6 +11,8 @@
   "homepage": "https://github.com/adamchainz/djade",
   "languages": ["django", "python"],
   "packages": {
-    "pip": "djade"
+    "pip": {
+      "package": "djade"
+    }
   }
 }

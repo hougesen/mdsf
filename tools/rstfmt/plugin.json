@@ -11,6 +11,8 @@
   "homepage": "https://github.com/dzhu/rstfmt",
   "languages": ["restructuredtext"],
   "packages": {
-    "pip": "rstfmt"
+    "pip": {
+      "package": "rstfmt"
+    }
   }
 }

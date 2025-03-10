@@ -65,6 +65,8 @@
     "brew": {
       "package": "clang-format"
     },
-    "pip": "clang-format"
+    "pip": {
+      "package": "clang-format"
+    }
   }
 }

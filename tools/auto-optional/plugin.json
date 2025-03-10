@@ -18,6 +18,8 @@
   "homepage": "https://github.com/luttik/auto-optional",
   "languages": ["python"],
   "packages": {
-    "pip": "auto-optional"
+    "pip": {
+      "package": "auto-optional"
+    }
   }
 }

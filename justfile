@@ -25,7 +25,7 @@ test-coverage:
     cargo llvm-cov --all-features --open
 
 changelog:
-    npx auto-changelog -u
+    npx auto-changelog --hide-credit -u
 
 codegen:
     just changelog

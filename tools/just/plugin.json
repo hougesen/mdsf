@@ -23,6 +23,8 @@
     },
     "cargo": "just",
     "npm": "rust-just",
-    "pip": "rust-just"
+    "pip": {
+      "package": "rust-just"
+    }
   }
 }

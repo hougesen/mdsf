@@ -11,6 +11,8 @@
   "homepage": "https://github.com/warpnet/salt-lint",
   "languages": ["salt"],
   "packages": {
-    "pip": "salt-lint"
+    "pip": {
+      "package": "salt-lint"
+    }
   }
 }

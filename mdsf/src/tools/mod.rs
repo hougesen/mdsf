@@ -101,6 +101,7 @@ pub mod fprettify;
 pub mod futhark_fmt;
 pub mod gci;
 pub mod gdformat;
+pub mod gdlint;
 pub mod gersemi;
 pub mod gleam_format;
 pub mod gluon_fmt;
@@ -1114,6 +1115,14 @@ pub enum Tooling {
     ///
     /// `gdformat $PATH`
     Gdformat,
+
+    #[serde(rename = "gdlint")]
+    /// GDScript linter
+    ///
+    /// [https://github.com/scony/godot-gdscript-toolkit](https://github.com/scony/godot-gdscript-toolkit)
+    ///
+    /// `gdlint $PATH`
+    Gdlint,
 
     #[serde(rename = "gersemi")]
     /// A formatter to make your CMake code the real treasure
@@ -3143,6 +3152,7 @@ impl Tooling {
             ),
             Self::Gci => (&gci::COMMANDS, gci::set_args, gci::IS_STDIN),
             Self::Gdformat => (&gdformat::COMMANDS, gdformat::set_args, gdformat::IS_STDIN),
+            Self::Gdlint => (&gdlint::COMMANDS, gdlint::set_args, gdlint::IS_STDIN),
             Self::Gersemi => (&gersemi::COMMANDS, gersemi::set_args, gersemi::IS_STDIN),
             Self::GleamFormat => (
                 &gleam_format::COMMANDS,
@@ -3892,6 +3902,7 @@ impl AsRef<str> for Tooling {
             Self::FutharkFmt => "futhark:fmt",
             Self::Gci => "gci",
             Self::Gdformat => "gdformat",
+            Self::Gdlint => "gdlint",
             Self::Gersemi => "gersemi",
             Self::GleamFormat => "gleam:format",
             Self::GluonFmt => "gluon:fmt",

@@ -11,6 +11,8 @@
   "homepage": "https://github.com/LilSpazJoekp/docstrfmt",
   "languages": ["python", "restructuredtext", "sphinx"],
   "packages": {
-    "pip": "docstrfmt"
+    "pip": {
+      "package": "docstrfmt"
+    }
   }
 }

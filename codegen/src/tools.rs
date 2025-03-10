@@ -74,6 +74,12 @@ pub struct ToolPackagesGem {
 
 #[derive(Debug, serde::Deserialize, schemars::JsonSchema, Clone, Default, serde::Serialize)]
 #[serde(deny_unknown_fields)]
+pub struct ToolPackagesPip {
+    pub package: String,
+}
+
+#[derive(Debug, serde::Deserialize, schemars::JsonSchema, Clone, Default, serde::Serialize)]
+#[serde(deny_unknown_fields)]
 pub struct ToolPackages {
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub apt: Option<String>,
@@ -123,7 +129,7 @@ pub struct ToolPackages {
     pub composer: Option<ToolPackagesComposer>,
 
     #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub pip: Option<String>,
+    pub pip: Option<ToolPackagesPip>,
 
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub stack: Option<String>,
@@ -319,9 +325,9 @@ impl Tool {
                 }
 
                 if let Some(pip) = &self.packages.pip {
-                    command_types.push(format!("CommandType::Uv(\"{pip}\")"));
+                    command_types.push(format!("CommandType::Uv(\"{}\")", &pip.package));
 
-                    command_types.push(format!("CommandType::Pipx(\"{pip}\")"));
+                    command_types.push(format!("CommandType::Pipx(\"{}\")", &pip.package));
                 }
 
                 if let Some(dub) = &self.packages.dub {

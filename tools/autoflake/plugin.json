@@ -18,6 +18,8 @@
   "homepage": "https://github.com/pycqa/autoflake",
   "languages": ["python"],
   "packages": {
-    "pip": "autoflake"
+    "pip": {
+      "package": "autoflake"
+    }
   }
 }

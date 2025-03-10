@@ -21,6 +21,8 @@
     "brew": {
       "package": "yapf"
     },
-    "pip": "yapf"
+    "pip": {
+      "package": "yapf"
+    }
   }
 }
