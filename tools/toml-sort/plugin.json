@@ -4,7 +4,14 @@
   "categories": ["formatter"],
   "commands": {
     "": {
-      "arguments": ["-i", "$PATH"]
+      "arguments": ["-i", "$PATH"],
+      "tests": [
+        {
+          "language": "toml",
+          "test_input": "\n\n[c]\nkey = \"something\"\n\n\n[a]\nkey = \"something\"\n\n[b]\nkey = \"something\"\n\n",
+          "test_output": "[a]\nkey = \"something\"\n\n[b]\nkey = \"something\"\n\n[c]\nkey = \"something\"\n"
+        }
+      ]
     }
   },
   "description": "A command line utility to sort and format toml files",
