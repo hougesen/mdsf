@@ -4,6 +4,7 @@ All notable changes to this project will be documented in this file. Dates are d
 
 #### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.8.0...HEAD)
 
+- fix(runners): uv run packages with different executable_name [`#828`](https://github.com/hougesen/mdsf/pull/828)
 - refactor(codegen): streamline tool package options [`#827`](https://github.com/hougesen/mdsf/pull/827)
 - feat(runners): support running packages using gem exec [`#826`](https://github.com/hougesen/mdsf/pull/826)
 - feat(tools): add mago:lint:fix and mago:lint:fix:unsafe [`#825`](https://github.com/hougesen/mdsf/pull/825)

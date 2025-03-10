@@ -147,6 +147,12 @@ pub struct ToolPackagesOpam {
 #[derive(Debug, serde::Deserialize, schemars::JsonSchema, Clone, Default, serde::Serialize)]
 #[serde(deny_unknown_fields)]
 pub struct ToolPackagesPip {
+    #[serde(default, skip_serializing_if = "is_false")]
+    pub disable_pipx_run: bool,
+
+    #[serde(default, skip_serializing_if = "is_false")]
+    pub disable_uv_tool_run: bool,
+
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub executable: Option<String>,
 
@@ -322,9 +328,14 @@ impl Tool {
             test_with_binaries.push("bunx");
         }
 
-        if self.packages.pip.is_some() {
-            test_with_binaries.push("pipx");
-            test_with_binaries.push("uv");
+        if let Some(pip) = self.packages.pip.as_ref() {
+            if !pip.disable_pipx_run {
+                test_with_binaries.push("pipx");
+            }
+
+            if !pip.disable_uv_tool_run {
+                test_with_binaries.push("uv");
+            }
         }
 
         if self.packages.dub.is_some() {
@@ -406,13 +417,17 @@ impl Tool {
                 }
 
                 if let Some(pip) = &self.packages.pip {
-                    command_types.push(format!(
-                        "CommandType::Uv(\"{}\", \"{}\")",
-                        &pip.package,
-                        &pip.executable.clone().as_ref().unwrap_or(&pip.package)
-                    ));
+                    if !pip.disable_uv_tool_run {
+                        command_types.push(format!(
+                            "CommandType::Uv(\"{}\", \"{}\")",
+                            &pip.package,
+                            &pip.executable.clone().as_ref().unwrap_or(&pip.package)
+                        ));
+                    }
 
-                    command_types.push(format!("CommandType::Pipx(\"{}\")", &pip.package));
+                    if !pip.disable_pipx_run {
+                        command_types.push(format!("CommandType::Pipx(\"{}\")", &pip.package));
+                    }
                 }
 
                 if let Some(dub) = &self.packages.dub {

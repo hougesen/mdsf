@@ -15,6 +15,7 @@
       "package": "cmake-lint"
     },
     "pip": {
+      "executable": "cmake-lint",
       "package": "cmakelang"
     }
   }

@@ -15,6 +15,9 @@
   "languages": ["vimscript"],
   "packages": {
     "pip": {
+      "disable_pipx_run": true,
+      "disable_uv_tool_run": true,
+      "executable": "vint",
       "package": "vim-vint"
     }
   }

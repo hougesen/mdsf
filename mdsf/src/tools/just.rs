@@ -23,7 +23,7 @@ pub const COMMANDS: [CommandType; 9] = [
     CommandType::Bun("rust-just"),
     CommandType::Deno("rust-just"),
     CommandType::Yarn("rust-just"),
-    CommandType::Uv("rust-just", "rust-just"),
+    CommandType::Uv("rust-just", "just"),
     CommandType::Pipx("rust-just"),
 ];
 

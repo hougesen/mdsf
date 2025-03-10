@@ -18,7 +18,7 @@
       "package": "ansible-lint"
     },
     "pip": {
-      "package": "ansible-dev-tools"
+      "package": "ansible-lint"
     }
   }
 }

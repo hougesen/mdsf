@@ -12,10 +12,6 @@ pub fn set_args(
     cmd
 }
 
-pub const COMMANDS: [CommandType; 3] = [
-    CommandType::Direct("vint"),
-    CommandType::Uv("vim-vint", "vim-vint"),
-    CommandType::Pipx("vim-vint"),
-];
+pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("vint")];
 
 pub const IS_STDIN: bool = false;

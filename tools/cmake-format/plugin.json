@@ -12,6 +12,7 @@
   "languages": ["cmake"],
   "packages": {
     "pip": {
+      "executable": "cmake-format",
       "package": "cmakelang"
     }
   }

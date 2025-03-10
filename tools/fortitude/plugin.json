@@ -55,6 +55,7 @@
       "package": "fortitude"
     },
     "pip": {
+      "executable": "fortitude",
       "package": "fortitude-lint"
     }
   }
