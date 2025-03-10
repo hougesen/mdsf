@@ -11,6 +11,8 @@
   "homepage": "https://github.com/vasilevich/nginxbeautifier",
   "languages": ["nginx"],
   "packages": {
-    "npm": "nginxbeautifier"
+    "npm": {
+      "package": "nginxbeautifier"
+    }
   }
 }

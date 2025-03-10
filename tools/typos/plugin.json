@@ -21,6 +21,8 @@
     "brew": {
       "package": "typos-cli"
     },
-    "cargo": "typos-cli"
+    "cargo": {
+      "package": "typos-cli"
+    }
   }
 }

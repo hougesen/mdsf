@@ -19,6 +19,8 @@
   "languages": ["lua"],
   "name": "luaformatter",
   "packages": {
-    "luarocks": "luaformatter"
+    "luarocks": {
+      "package": "luaformatter"
+    }
   }
 }

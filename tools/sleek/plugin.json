@@ -21,6 +21,8 @@
     "brew": {
       "package": "sleek"
     },
-    "cargo": "sleek"
+    "cargo": {
+      "package": "sleek"
+    }
   }
 }

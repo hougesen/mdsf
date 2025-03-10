@@ -11,6 +11,8 @@
   "homepage": "https://github.com/zaach/jsonlint",
   "languages": ["json"],
   "packages": {
-    "npm": "jsonlint"
+    "npm": {
+      "package": "jsonlint"
+    }
   }
 }

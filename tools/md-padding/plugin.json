@@ -11,6 +11,8 @@
   "homepage": "https://github.com/harttle/md-padding",
   "languages": ["markdown"],
   "packages": {
-    "npm": "md-padding"
+    "npm": {
+      "package": "md-padding"
+    }
   }
 }

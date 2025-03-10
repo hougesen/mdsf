@@ -21,8 +21,12 @@
     "brew": {
       "package": "just"
     },
-    "cargo": "just",
-    "npm": "rust-just",
+    "cargo": {
+      "package": "just"
+    },
+    "npm": {
+      "package": "rust-just"
+    },
     "pip": {
       "package": "rust-just"
     }

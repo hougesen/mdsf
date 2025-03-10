@@ -18,6 +18,8 @@
   "homepage": "https://github.com/shurcool/markdownfmt",
   "languages": ["markdown"],
   "packages": {
-    "go": "github.com/shurcooL/markdownfmt@latest"
+    "go": {
+      "package": "github.com/shurcooL/markdownfmt@latest"
+    }
   }
 }

@@ -11,6 +11,8 @@
   "homepage": "https://github.com/lspitzner/brittany",
   "languages": ["haskell"],
   "packages": {
-    "stack": "brittany"
+    "stack": {
+      "package": "brittany"
+    }
   }
 }

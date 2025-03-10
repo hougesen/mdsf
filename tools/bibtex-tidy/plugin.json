@@ -11,6 +11,8 @@
   "homepage": "https://github.com/flamingtempura/bibtex-tidy",
   "languages": ["bibtex"],
   "packages": {
-    "npm": "bibtex-tidy"
+    "npm": {
+      "package": "bibtex-tidy"
+    }
   }
 }

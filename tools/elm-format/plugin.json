@@ -18,6 +18,8 @@
   "homepage": "https://github.com/avh4/elm-format",
   "languages": ["elm"],
   "packages": {
-    "npm": "elm-format"
+    "npm": {
+      "package": "elm-format"
+    }
   }
 }

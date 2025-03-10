@@ -14,6 +14,8 @@
     "brew": {
       "package": "daveshanley/vacuum/vacuum"
     },
-    "npm": "@quobix/vacuum"
+    "npm": {
+      "package": "@quobix/vacuum"
+    }
   }
 }

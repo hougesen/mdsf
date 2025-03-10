@@ -17,6 +17,8 @@
     "brew": {
       "package": "dscanner"
     },
-    "dub": "dscanner"
+    "dub": {
+      "package": "dscanner"
+    }
   }
 }

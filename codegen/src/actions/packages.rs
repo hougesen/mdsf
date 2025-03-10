@@ -98,11 +98,11 @@ pub fn generate_install_steps(tools: &Vec<Tool>) -> Vec<WorkflowJobsStep> {
         let mut install_options = Vec::new();
 
         if let Some(npm) = &tool.packages.npm {
-            install_options.push(generate_npm(npm));
+            install_options.push(generate_npm(&npm.package));
         }
 
         if let Some(cargo) = &tool.packages.cargo {
-            install_options.push(generate_cargo(cargo));
+            install_options.push(generate_cargo(&cargo.package));
         }
 
         if let Some(brew) = &tool.packages.brew {
@@ -114,7 +114,7 @@ pub fn generate_install_steps(tools: &Vec<Tool>) -> Vec<WorkflowJobsStep> {
         }
 
         if let Some(go) = &tool.packages.go {
-            install_options.push(generate_go(go));
+            install_options.push(generate_go(&go.package));
         }
 
         if let Some(gem) = &tool.packages.gem {
@@ -126,31 +126,31 @@ pub fn generate_install_steps(tools: &Vec<Tool>) -> Vec<WorkflowJobsStep> {
         }
 
         if let Some(dotnet) = &tool.packages.dotnet {
-            install_options.push(generate_dotnet(dotnet));
+            install_options.push(generate_dotnet(&dotnet.package));
         }
 
         if let Some(luarocks) = &tool.packages.luarocks {
-            install_options.push(generate_luarocks(luarocks));
+            install_options.push(generate_luarocks(&luarocks.package));
         }
 
         if let Some(stack) = &tool.packages.stack {
-            install_options.push(generate_stack(stack));
+            install_options.push(generate_stack(&stack.package));
         }
 
         if let Some(cabal) = &tool.packages.cabal {
-            install_options.push(generate_cabal(cabal));
+            install_options.push(generate_cabal(&cabal.package));
         }
 
         if let Some(opam) = &tool.packages.opam {
-            install_options.push(generate_opam(opam));
+            install_options.push(generate_opam(&opam.package));
         }
 
         if let Some(coursier) = &tool.packages.coursier {
-            install_options.push(generate_coursier(coursier));
+            install_options.push(generate_coursier(&coursier.package));
         }
 
         if let Some(nimble) = &tool.packages.nimble {
-            install_options.push(generate_nimble(nimble));
+            install_options.push(generate_nimble(&nimble.package));
         }
 
         if let Some(composer) = &tool.packages.composer {
@@ -158,7 +158,7 @@ pub fn generate_install_steps(tools: &Vec<Tool>) -> Vec<WorkflowJobsStep> {
         }
 
         if let Some(julia) = &tool.packages.julia {
-            install_options.push(generate_julia(julia));
+            install_options.push(generate_julia(&julia.package));
         }
 
         if install_options.is_empty() {

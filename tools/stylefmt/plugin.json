@@ -23,6 +23,8 @@
   "homepage": "https://github.com/matype/stylefmt",
   "languages": ["css", "scss"],
   "packages": {
-    "npm": "stylefmt"
+    "npm": {
+      "package": "stylefmt"
+    }
   }
 }

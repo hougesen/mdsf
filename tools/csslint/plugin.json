@@ -11,6 +11,8 @@
   "homepage": "https://github.com/csslint/csslint",
   "languages": ["css"],
   "packages": {
-    "npm": "csslint"
+    "npm": {
+      "package": "csslint"
+    }
   }
 }

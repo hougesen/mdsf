@@ -11,6 +11,8 @@
   "homepage": "https://github.com/rokucommunity/brighterscript-formatter",
   "languages": ["brighterscript", "brightscript"],
   "packages": {
-    "npm": "brighterscript-formatter"
+    "npm": {
+      "package": "brighterscript-formatter"
+    }
   }
 }

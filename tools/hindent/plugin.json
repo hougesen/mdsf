@@ -21,6 +21,8 @@
     "apt": {
       "package": "hindent"
     },
-    "stack": "hindent"
+    "stack": {
+      "package": "hindent"
+    }
   }
 }

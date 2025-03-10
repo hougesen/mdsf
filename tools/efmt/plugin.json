@@ -18,6 +18,8 @@
   "homepage": "https://github.com/sile/efmt",
   "languages": ["erlang"],
   "packages": {
-    "cargo": "efmt"
+    "cargo": {
+      "package": "efmt"
+    }
   }
 }

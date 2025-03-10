@@ -11,6 +11,8 @@
   "homepage": "https://github.com/lunarmodules/luacheck",
   "languages": ["lua"],
   "packages": {
-    "luarocks": "luacheck"
+    "luarocks": {
+      "package": "luacheck"
+    }
   }
 }

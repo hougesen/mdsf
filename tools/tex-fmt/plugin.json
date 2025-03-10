@@ -17,6 +17,8 @@
     "brew": {
       "package": "tex-fmt"
     },
-    "cargo": "tex-fmt"
+    "cargo": {
+      "package": "tex-fmt"
+    }
   }
 }

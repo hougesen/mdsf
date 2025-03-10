@@ -21,7 +21,11 @@
     "brew": {
       "package": "stylua"
     },
-    "cargo": "stylua",
-    "npm": "@johnnymorganz/stylua-bin"
+    "cargo": {
+      "package": "stylua"
+    },
+    "npm": {
+      "package": "@johnnymorganz/stylua-bin"
+    }
   }
 }

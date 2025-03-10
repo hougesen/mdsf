@@ -11,7 +11,9 @@
   "homepage": "https://github.com/quarylabs/sqruff",
   "languages": ["sql"],
   "packages": {
-    "cargo": "sqruff",
+    "cargo": {
+      "package": "sqruff"
+    },
     "pip": {
       "package": "sqruff"
     }

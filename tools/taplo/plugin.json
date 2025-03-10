@@ -21,7 +21,11 @@
     "brew": {
       "package": "taplo"
     },
-    "cargo": "taplo-cli",
-    "npm": "@taplo/cli"
+    "cargo": {
+      "package": "taplo-cli"
+    },
+    "npm": {
+      "package": "@taplo/cli"
+    }
   }
 }

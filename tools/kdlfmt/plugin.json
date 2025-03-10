@@ -14,7 +14,11 @@
     "brew": {
       "package": "hougesen/tap/kdlfmt"
     },
-    "cargo": "kdlfmt",
-    "npm": "kdlfmt"
+    "cargo": {
+      "package": "kdlfmt"
+    },
+    "npm": {
+      "package": "kdlfmt"
+    }
   }
 }

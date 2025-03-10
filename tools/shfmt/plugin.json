@@ -31,6 +31,8 @@
     "brew": {
       "package": "shfmt"
     },
-    "go": "mvdan.cc/sh/v3/cmd/shfmt@latest"
+    "go": {
+      "package": "mvdan.cc/sh/v3/cmd/shfmt@latest"
+    }
   }
 }

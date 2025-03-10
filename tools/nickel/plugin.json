@@ -14,6 +14,8 @@
     "brew": {
       "package": "nickel"
     },
-    "cargo": "nickel-lang-cli"
+    "cargo": {
+      "package": "nickel-lang-cli"
+    }
   }
 }

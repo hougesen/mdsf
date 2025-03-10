@@ -11,6 +11,8 @@
   "homepage": "https://github.com/kortschak/gospel",
   "languages": ["go"],
   "packages": {
-    "go": "github.com/kortschak/gospel"
+    "go": {
+      "package": "github.com/kortschak/gospel@latest"
+    }
   }
 }

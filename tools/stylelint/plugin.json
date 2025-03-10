@@ -11,6 +11,8 @@
   "homepage": "https://github.com/stylelint/stylelint",
   "languages": ["css", "scss"],
   "packages": {
-    "npm": "stylelint"
+    "npm": {
+      "package": "stylelint"
+    }
   }
 }

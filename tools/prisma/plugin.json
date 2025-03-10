@@ -18,6 +18,8 @@
   "homepage": "https://www.prisma.io/docs/orm/tools/prisma-cli",
   "languages": ["prisma"],
   "packages": {
-    "npm": "prisma"
+    "npm": {
+      "package": "prisma"
+    }
   }
 }

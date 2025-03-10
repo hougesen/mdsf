@@ -23,6 +23,8 @@
   "homepage": "https://github.com/ocaml-ppx/ocamlformat",
   "languages": ["ocaml"],
   "packages": {
-    "opam": "ocamlformat"
+    "opam": {
+      "package": "ocamlformat"
+    }
   }
 }

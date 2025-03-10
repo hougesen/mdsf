@@ -11,6 +11,8 @@
   "homepage": "https://markuplint.dev/",
   "languages": ["html"],
   "packages": {
-    "npm": "markuplint"
+    "npm": {
+      "package": "markuplint"
+    }
   }
 }

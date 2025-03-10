@@ -65,7 +65,9 @@
     "brew": {
       "package": "mago"
     },
-    "cargo": "mago",
+    "cargo": {
+      "package": "mago"
+    },
     "composer": {
       "binary": "mago",
       "package": "carthage-software/mago"

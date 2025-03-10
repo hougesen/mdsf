@@ -22,7 +22,11 @@
     "brew": {
       "package": "fourmolu"
     },
-    "cabal": "fourmolu",
-    "stack": "fourmolu"
+    "cabal": {
+      "package": "fourmolu"
+    },
+    "stack": {
+      "package": "fourmolu"
+    }
   }
 }

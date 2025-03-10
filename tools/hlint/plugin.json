@@ -14,7 +14,11 @@
     "brew": {
       "package": "hlint"
     },
-    "cabal": "hlint",
-    "stack": "hlint"
+    "cabal": {
+      "package": "hlint"
+    },
+    "stack": {
+      "package": "hlint"
+    }
   }
 }

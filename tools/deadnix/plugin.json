@@ -11,6 +11,8 @@
   "homepage": "https://github.com/astro/deadnix",
   "languages": ["nix"],
   "packages": {
-    "cargo": "deadnix"
+    "cargo": {
+      "package": "deadnix"
+    }
   }
 }

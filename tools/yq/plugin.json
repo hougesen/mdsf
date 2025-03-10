@@ -17,6 +17,8 @@
     "brew": {
       "package": "yq"
     },
-    "go": "github.com/mikefarah/yq/v4@latest"
+    "go": {
+      "package": "github.com/mikefarah/yq/v4@latest"
+    }
   }
 }

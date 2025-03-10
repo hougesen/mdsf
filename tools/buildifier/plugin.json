@@ -14,6 +14,8 @@
     "brew": {
       "package": "buildifier"
     },
-    "go": "github.com/bazelbuild/buildtools/buildifier@latest"
+    "go": {
+      "package": "github.com/bazelbuild/buildtools/buildifier@latest"
+    }
   }
 }

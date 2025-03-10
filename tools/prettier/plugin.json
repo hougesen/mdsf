@@ -44,6 +44,8 @@
     "vue"
   ],
   "packages": {
-    "npm": "prettier"
+    "npm": {
+      "package": "prettier"
+    }
   }
 }

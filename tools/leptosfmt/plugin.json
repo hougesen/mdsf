@@ -11,6 +11,8 @@
   "homepage": "https://github.com/bram209/leptosfmt",
   "languages": ["rust"],
   "packages": {
-    "cargo": "leptosfmt"
+    "cargo": {
+      "package": "leptosfmt"
+    }
   }
 }

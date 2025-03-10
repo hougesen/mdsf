@@ -11,6 +11,8 @@
   "homepage": "https://github.com/a-h/templ",
   "languages": ["go", "templ"],
   "packages": {
-    "go": "github.com/a-h/templ/cmd/templ@latest"
+    "go": {
+      "package": "github.com/a-h/templ/cmd/templ@latest"
+    }
   }
 }

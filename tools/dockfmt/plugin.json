@@ -11,6 +11,8 @@
   "homepage": "https://github.com/jessfraz/dockfmt",
   "languages": ["docker"],
   "packages": {
-    "go": "github.com/jessfraz/dockfmt"
+    "go": {
+      "package": "github.com/jessfraz/dockfmt"
+    }
   }
 }

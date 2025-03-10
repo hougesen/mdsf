@@ -16,6 +16,8 @@
   "homepage": "https://github.com/mistweaverco/kulala-fmt",
   "languages": ["http"],
   "packages": {
-    "npm": "@mistweaverco/kulala-fmt"
+    "npm": {
+      "package": "@mistweaverco/kulala-fmt"
+    }
   }
 }

@@ -11,6 +11,8 @@
   "homepage": "https://github.com/pugjs/pug-lint",
   "languages": ["pug"],
   "packages": {
-    "npm": "pug-lint"
+    "npm": {
+      "package": "pug-lint"
+    }
   }
 }

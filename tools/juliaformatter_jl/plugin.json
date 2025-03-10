@@ -22,6 +22,8 @@
   "languages": ["julia"],
   "name": "juliaformatter.jl",
   "packages": {
-    "julia": "JuliaFormatter"
+    "julia": {
+      "package": "JuliaFormatter"
+    }
   }
 }

@@ -22,7 +22,11 @@
     "brew": {
       "package": "stylish-haskell"
     },
-    "cabal": "stylish-haskell",
-    "stack": "stylish-haskell"
+    "cabal": {
+      "package": "stylish-haskell"
+    },
+    "stack": {
+      "package": "stylish-haskell"
+    }
   }
 }

@@ -18,6 +18,8 @@
   "homepage": "https://github.com/scalameta/scalafmt",
   "languages": ["scala"],
   "packages": {
-    "coursier": "scalafmt"
+    "coursier": {
+      "package": "scalafmt"
+    }
   }
 }

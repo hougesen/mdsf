@@ -14,6 +14,8 @@
     "brew": {
       "package": "quick-lint-js"
     },
-    "npm": "quick-lint-js"
+    "npm": {
+      "package": "quick-lint-js"
+    }
   }
 }

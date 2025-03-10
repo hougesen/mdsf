@@ -16,6 +16,8 @@
   "homepage": "https://github.com/textlint/textlint",
   "languages": [],
   "packages": {
-    "npm": "textlint"
+    "npm": {
+      "package": "textlint"
+    }
   }
 }

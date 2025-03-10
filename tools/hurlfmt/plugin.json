@@ -18,6 +18,8 @@
   "homepage": "https://hurl.dev/",
   "languages": ["hurl"],
   "packages": {
-    "cargo": "hurlfmt"
+    "cargo": {
+      "package": "hurlfmt"
+    }
   }
 }

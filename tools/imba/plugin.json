@@ -11,6 +11,8 @@
   "homepage": "https://imba.io/",
   "languages": ["imba"],
   "packages": {
-    "npm": "imba"
+    "npm": {
+      "package": "imba"
+    }
   }
 }

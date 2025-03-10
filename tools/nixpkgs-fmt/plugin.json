@@ -18,6 +18,8 @@
   "homepage": "https://github.com/nix-community/nixpkgs-fmt",
   "languages": ["nix"],
   "packages": {
-    "cargo": "nixpkgs-fmt"
+    "cargo": {
+      "package": "nixpkgs-fmt"
+    }
   }
 }

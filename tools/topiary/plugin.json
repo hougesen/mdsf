@@ -18,6 +18,8 @@
   "homepage": "https://github.com/tweag/topiary",
   "languages": [],
   "packages": {
-    "cargo": "topiary-cli"
+    "cargo": {
+      "package": "topiary-cli"
+    }
   }
 }

@@ -18,6 +18,8 @@
   "homepage": "https://github.com/segmentio/golines",
   "languages": ["go"],
   "packages": {
-    "go": "github.com/segmentio/golines@latest"
+    "go": {
+      "package": "github.com/segmentio/golines@latest"
+    }
   }
 }

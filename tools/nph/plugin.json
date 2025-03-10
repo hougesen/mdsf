@@ -11,6 +11,8 @@
   "homepage": "https://github.com/arnetheduck/nph",
   "languages": ["nim"],
   "packages": {
-    "nimble": "nph"
+    "nimble": {
+      "package": "nph"
+    }
   }
 }

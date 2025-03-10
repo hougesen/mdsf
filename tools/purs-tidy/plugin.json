@@ -18,6 +18,8 @@
   "homepage": "https://github.com/natefaubion/purescript-tidy",
   "languages": ["purescript"],
   "packages": {
-    "npm": "purs-tidy"
+    "npm": {
+      "package": "purs-tidy"
+    }
   }
 }

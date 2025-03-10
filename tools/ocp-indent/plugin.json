@@ -21,6 +21,8 @@
     "apt": {
       "package": "ocp-indent"
     },
-    "opam": "ocp-indent"
+    "opam": {
+      "package": "ocp-indent"
+    }
   }
 }

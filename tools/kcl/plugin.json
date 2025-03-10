@@ -28,6 +28,8 @@
     "brew": {
       "package": "kcl-lang/tap/kcl"
     },
-    "go": "kcl-lang.io/cli/cmd/kcl@latest"
+    "go": {
+      "package": "kcl-lang.io/cli/cmd/kcl@latest"
+    }
   }
 }

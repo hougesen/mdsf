@@ -18,6 +18,8 @@
   "homepage": "https://github.com/davidanson/markdownlint",
   "languages": ["markdown"],
   "packages": {
-    "npm": "markdownlint-cli"
+    "npm": {
+      "package": "markdownlint-cli"
+    }
   }
 }

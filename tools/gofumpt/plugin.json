@@ -18,6 +18,8 @@
   "homepage": "https://github.com/mvdan/gofumpt",
   "languages": ["go"],
   "packages": {
-    "go": "mvdan.cc/gofumpt@latest"
+    "go": {
+      "package": "mvdan.cc/gofumpt@latest"
+    }
   }
 }

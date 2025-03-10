@@ -28,6 +28,8 @@
     "brew": {
       "package": "bufbuild/buf/buf"
     },
-    "npm": "@bufbuild/buf"
+    "npm": {
+      "package": "@bufbuild/buf"
+    }
   }
 }

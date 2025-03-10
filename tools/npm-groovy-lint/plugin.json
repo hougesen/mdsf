@@ -18,6 +18,8 @@
   "homepage": "https://github.com/nvuillam/npm-groovy-lint",
   "languages": ["groovy"],
   "packages": {
-    "npm": "npm-groovy-lint"
+    "npm": {
+      "package": "npm-groovy-lint"
+    }
   }
 }

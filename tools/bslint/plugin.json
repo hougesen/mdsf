@@ -11,6 +11,8 @@
   "homepage": "https://github.com/rokucommunity/bslint",
   "languages": ["brightscript", "brightscripter"],
   "packages": {
-    "npm": "bslint"
+    "npm": {
+      "package": "bslint"
+    }
   }
 }
