@@ -18,6 +18,8 @@
   "homepage": "https://github.com/threedaymonk/htmlbeautifier",
   "languages": ["erb", "html", "ruby"],
   "packages": {
-    "gem": "htmlbeautifier"
+    "gem": {
+      "name": "htmlbeautifier"
+    }
   }
 }

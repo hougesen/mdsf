@@ -118,7 +118,7 @@ pub fn generate_install_steps(tools: &Vec<Tool>) -> Vec<WorkflowJobsStep> {
         }
 
         if let Some(gem) = &tool.packages.gem {
-            install_options.push(generate_gem(gem));
+            install_options.push(generate_gem(&gem.name));
         }
 
         if let Some(pip) = &tool.packages.pip {

@@ -12,6 +12,9 @@ pub fn set_args(
     cmd
 }
 
-pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("slim-lint")];
+pub const COMMANDS: [CommandType; 2] = [
+    CommandType::Direct("slim-lint"),
+    CommandType::GemExec("slim_lint"),
+];
 
 pub const IS_STDIN: bool = false;

@@ -13,6 +13,9 @@ pub fn set_args(
     cmd
 }
 
-pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("puppet-lint")];
+pub const COMMANDS: [CommandType; 2] = [
+    CommandType::Direct("puppet-lint"),
+    CommandType::GemExec("puppet-lint"),
+];
 
 pub const IS_STDIN: bool = false;

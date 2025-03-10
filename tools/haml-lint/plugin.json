@@ -11,6 +11,8 @@
   "homepage": "https://github.com/sds/haml-lint",
   "languages": ["haml"],
   "packages": {
-    "gem": "haml_lint"
+    "gem": {
+      "name": "haml_lint"
+    }
   }
 }

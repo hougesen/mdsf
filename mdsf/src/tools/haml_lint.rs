@@ -13,6 +13,9 @@ pub fn set_args(
     cmd
 }
 
-pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("haml-lint")];
+pub const COMMANDS: [CommandType; 2] = [
+    CommandType::Direct("haml-lint"),
+    CommandType::GemExec("haml_lint"),
+];
 
 pub const IS_STDIN: bool = false;

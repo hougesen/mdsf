@@ -11,6 +11,8 @@
   "homepage": "https://github.com/troessner/reek",
   "languages": ["ruby"],
   "packages": {
-    "gem": "reek"
+    "gem": {
+      "name": "reek"
+    }
   }
 }

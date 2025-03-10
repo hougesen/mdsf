@@ -13,6 +13,9 @@ pub fn set_args(
     cmd
 }
 
-pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("erb-format")];
+pub const COMMANDS: [CommandType; 2] = [
+    CommandType::Direct("erb-format"),
+    CommandType::GemExec("erb-formatter"),
+];
 
 pub const IS_STDIN: bool = false;

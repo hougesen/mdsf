@@ -154,7 +154,14 @@
           "type": ["string", "null"]
         },
         "gem": {
-          "type": ["string", "null"]
+          "anyOf": [
+            {
+              "$ref": "#/definitions/ToolPackagesGem"
+            },
+            {
+              "type": "null"
+            }
+          ]
         },
         "go": {
           "type": ["string", "null"]
@@ -206,6 +213,19 @@
         },
         "package": {
           "type": ["string", "null"]
+        }
+      },
+      "additionalProperties": false
+    },
+    "ToolPackagesGem": {
+      "type": "object",
+      "required": ["name"],
+      "properties": {
+        "disable_gem_exec": {
+          "type": "boolean"
+        },
+        "name": {
+          "type": "string"
         }
       },
       "additionalProperties": false

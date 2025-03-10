@@ -12,6 +12,8 @@
   "languages": ["erb", "ruby"],
   "name": "erb-formatter",
   "packages": {
-    "gem": "erb-formatter"
+    "gem": {
+      "name": "erb-formatter"
+    }
   }
 }

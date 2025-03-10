@@ -18,6 +18,8 @@
   "homepage": "https://github.com/standardrb/standard",
   "languages": ["ruby"],
   "packages": {
-    "gem": "standardrb"
+    "gem": {
+      "name": "standardrb"
+    }
   }
 }

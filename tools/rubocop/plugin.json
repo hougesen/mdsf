@@ -24,6 +24,9 @@
   "homepage": "https://github.com/rubocop/rubocop",
   "languages": ["ruby"],
   "packages": {
-    "gem": "rubocop"
+    "gem": {
+      "name": "rubocop",
+      "disable_gem_exec": true
+    }
   }
 }

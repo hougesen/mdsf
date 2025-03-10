@@ -11,6 +11,8 @@
   "homepage": "https://github.com/puppetlabs/puppet-lint",
   "languages": ["puppet"],
   "packages": {
-    "gem": "puppet-lint"
+    "gem": {
+      "name": "puppet-lint"
+    }
   }
 }
