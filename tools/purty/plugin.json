@@ -11,6 +11,8 @@
   "homepage": "https://gitlab.com/joneshf/purty",
   "languages": ["purescript"],
   "packages": {
-    "npm": "purty"
+    "npm": {
+      "package": "purty"
+    }
   }
 }

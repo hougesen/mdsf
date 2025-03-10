@@ -11,6 +11,8 @@
   "homepage": "https://github.com/protofire/solhint",
   "languages": ["solidity"],
   "packages": {
-    "npm": "solhint"
+    "npm": {
+      "package": "solhint"
+    }
   }
 }

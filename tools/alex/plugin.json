@@ -18,6 +18,8 @@
   "homepage": "https://github.com/get-alex/alex",
   "languages": ["markdown"],
   "packages": {
-    "npm": "alex"
+    "npm": {
+      "package": "alex"
+    }
   }
 }

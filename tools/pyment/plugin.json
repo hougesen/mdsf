@@ -11,6 +11,8 @@
   "homepage": "https://github.com/dadadel/pyment",
   "languages": ["python"],
   "packages": {
-    "pip": "pyment"
+    "pip": {
+      "package": "pyment"
+    }
   }
 }

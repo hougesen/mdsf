@@ -63,8 +63,10 @@
   ],
   "packages": {
     "brew": {
-      "name": "clang-format"
+      "package": "clang-format"
     },
-    "pip": "clang-format"
+    "pip": {
+      "package": "clang-format"
+    }
   }
 }

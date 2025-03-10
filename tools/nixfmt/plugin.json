@@ -19,7 +19,11 @@
   "homepage": "https://github.com/nixos/nixfmt",
   "languages": ["nix"],
   "packages": {
-    "cabal": "nixfmt",
-    "stack": "nixfmt"
+    "cabal": {
+      "package": "nixfmt"
+    },
+    "stack": {
+      "package": "nixfmt"
+    }
   }
 }

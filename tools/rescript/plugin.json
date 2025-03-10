@@ -18,6 +18,8 @@
   "homepage": "https://github.com/rescript-lang/rescript",
   "languages": ["rescript"],
   "packages": {
-    "npm": "rescript"
+    "npm": {
+      "package": "rescript"
+    }
   }
 }

@@ -11,7 +11,11 @@
   "homepage": "https://github.com/danstiner/hfmt",
   "languages": ["haskell"],
   "packages": {
-    "cabal": "hfmt",
-    "stack": "hfmt"
+    "cabal": {
+      "package": "hfmt"
+    },
+    "stack": {
+      "package": "hfmt"
+    }
   }
 }

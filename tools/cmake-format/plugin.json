@@ -11,6 +11,8 @@
   "homepage": "https://cmake-format.readthedocs.io/en/latest/cmake-format.html",
   "languages": ["cmake"],
   "packages": {
-    "pip": "cmakelang"
+    "pip": {
+      "package": "cmakelang"
+    }
   }
 }

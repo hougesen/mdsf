@@ -22,7 +22,7 @@
   "languages": ["hcl"],
   "packages": {
     "brew": {
-      "name": "hashicorp/tap/packer",
+      "package": "hashicorp/tap/packer",
       "tap": "hashicorp/tap"
     }
   }

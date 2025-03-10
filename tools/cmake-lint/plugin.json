@@ -12,8 +12,10 @@
   "languages": ["cmake"],
   "packages": {
     "brew": {
-      "name": "cmake-lint"
+      "package": "cmake-lint"
     },
-    "pip": "cmakelang"
+    "pip": {
+      "package": "cmakelang"
+    }
   }
 }

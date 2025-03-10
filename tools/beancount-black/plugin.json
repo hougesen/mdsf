@@ -12,6 +12,8 @@
   "languages": ["beancount"],
   "name": "beancount-black",
   "packages": {
-    "pip": "beancount-black"
+    "pip": {
+      "package": "beancount-black"
+    }
   }
 }

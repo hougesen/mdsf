@@ -11,6 +11,8 @@
   "homepage": "https://github.com/btford/write-good",
   "languages": [],
   "packages": {
-    "npm": "write-good"
+    "npm": {
+      "package": "write-good"
+    }
   }
 }

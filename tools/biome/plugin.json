@@ -64,6 +64,8 @@
   "homepage": "https://github.com/biomejs/biome",
   "languages": ["javascript", "json", "typescript", "vue"],
   "packages": {
-    "npm": "@biomejs/biome"
+    "npm": {
+      "package": "@biomejs/biome"
+    }
   }
 }

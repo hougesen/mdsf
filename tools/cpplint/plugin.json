@@ -11,10 +11,14 @@
   "homepage": "https://github.com/cpplint/cpplint",
   "languages": ["c++"],
   "packages": {
-    "apt": "cpplint",
-    "brew": {
-      "name": "cpplint"
+    "apt": {
+      "package": "cpplint"
     },
-    "pip": "cpplint"
+    "brew": {
+      "package": "cpplint"
+    },
+    "pip": {
+      "package": "cpplint"
+    }
   }
 }

@@ -19,6 +19,8 @@
   "homepage": "https://github.com/xojs/xo",
   "languages": ["javascript", "typescript"],
   "packages": {
-    "npm": "xo"
+    "npm": {
+      "package": "xo"
+    }
   }
 }

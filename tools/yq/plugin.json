@@ -11,10 +11,14 @@
   "homepage": "https://github.com/mikefarah/yq",
   "languages": ["yaml"],
   "packages": {
-    "apt": "yq",
-    "brew": {
-      "name": "yq"
+    "apt": {
+      "package": "yq"
     },
-    "go": "github.com/mikefarah/yq/v4@latest"
+    "brew": {
+      "package": "yq"
+    },
+    "go": {
+      "package": "github.com/mikefarah/yq/v4@latest"
+    }
   }
 }

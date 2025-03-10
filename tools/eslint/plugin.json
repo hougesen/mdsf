@@ -11,6 +11,8 @@
   "homepage": "https://github.com/eslint/eslint/",
   "languages": ["javascript", "typescript"],
   "packages": {
-    "npm": "eslint"
+    "npm": {
+      "package": "eslint"
+    }
   }
 }

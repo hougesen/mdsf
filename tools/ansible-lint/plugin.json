@@ -11,10 +11,14 @@
   "homepage": "https://github.com/ansible/ansible-lint",
   "languages": ["ansible"],
   "packages": {
-    "apt": "ansible-lint",
-    "brew": {
-      "name": "ansible-lint"
+    "apt": {
+      "package": "ansible-lint"
     },
-    "pip": "ansible-dev-tools"
+    "brew": {
+      "package": "ansible-lint"
+    },
+    "pip": {
+      "package": "ansible-dev-tools"
+    }
   }
 }

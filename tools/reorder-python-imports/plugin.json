@@ -11,6 +11,8 @@
   "homepage": "https://github.com/asottile/reorder-python-imports",
   "languages": ["python"],
   "packages": {
-    "pip": "reorder-python-imports"
+    "pip": {
+      "package": "reorder-python-imports"
+    }
   }
 }

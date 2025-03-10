@@ -11,6 +11,8 @@
   "homepage": "https://github.com/yamnikov-oleg/nasmfmt",
   "languages": ["assembly"],
   "packages": {
-    "go": "github.com/yamnikov-oleg/nasmfmt@latest"
+    "go": {
+      "package": "github.com/yamnikov-oleg/nasmfmt@latest"
+    }
   }
 }

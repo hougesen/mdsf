@@ -63,9 +63,11 @@
   "languages": ["php"],
   "packages": {
     "brew": {
-      "name": "mago"
+      "package": "mago"
     },
-    "cargo": "mago",
+    "cargo": {
+      "package": "mago"
+    },
     "composer": {
       "binary": "mago",
       "package": "carthage-software/mago"

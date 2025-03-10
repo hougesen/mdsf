@@ -11,6 +11,8 @@
   "homepage": "https://github.com/sphinx-contrib/sphinx-lint",
   "languages": ["python", "restructredtext"],
   "packages": {
-    "pip": "sphinx-lint"
+    "pip": {
+      "package": "sphinx-lint"
+    }
   }
 }

@@ -12,8 +12,10 @@
   "languages": ["typst"],
   "packages": {
     "brew": {
-      "name": "typstyle"
+      "package": "typstyle"
     },
-    "cargo": "typstyle"
+    "cargo": {
+      "package": "typstyle"
+    }
   }
 }

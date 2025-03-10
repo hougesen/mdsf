@@ -19,7 +19,7 @@
   "languages": ["markdown"],
   "packages": {
     "brew": {
-      "name": "mado",
+      "package": "mado",
       "tap": "akiomik/mado https://github.com/akiomik/mado.git"
     }
   }

@@ -18,6 +18,8 @@
   "homepage": "https://github.com/timothycrosley/isort",
   "languages": ["python"],
   "packages": {
-    "pip": "isort"
+    "pip": {
+      "package": "isort"
+    }
   }
 }

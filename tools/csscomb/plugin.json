@@ -18,6 +18,8 @@
   "homepage": "https://github.com/csscomb/csscomb.js",
   "languages": ["css"],
   "packages": {
-    "npm": "csscomb"
+    "npm": {
+      "package": "csscomb"
+    }
   }
 }

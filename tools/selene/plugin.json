@@ -11,6 +11,8 @@
   "homepage": "https://github.com/kampfkarren/selene",
   "languages": ["lua"],
   "packages": {
-    "cargo": "selene"
+    "cargo": {
+      "package": "selene"
+    }
   }
 }

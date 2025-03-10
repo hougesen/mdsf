@@ -18,6 +18,8 @@
   "homepage": "https://github.com/its-the-shrimp/yew-fmt",
   "languages": ["rust"],
   "packages": {
-    "cargo": "yew-fmt"
+    "cargo": {
+      "package": "yew-fmt"
+    }
   }
 }

@@ -11,6 +11,8 @@
   "homepage": "https://github.com/pycqa/pycodestyle",
   "languages": ["python"],
   "packages": {
-    "pip": "pycodestyle"
+    "pip": {
+      "package": "pycodestyle"
+    }
   }
 }

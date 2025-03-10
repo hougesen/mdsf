@@ -19,7 +19,7 @@
   "languages": ["java"],
   "packages": {
     "brew": {
-      "name": "google-java-format"
+      "package": "google-java-format"
     }
   }
 }

@@ -19,9 +19,13 @@
   "languages": ["lua"],
   "packages": {
     "brew": {
-      "name": "stylua"
+      "package": "stylua"
     },
-    "cargo": "stylua",
-    "npm": "@johnnymorganz/stylua-bin"
+    "cargo": {
+      "package": "stylua"
+    },
+    "npm": {
+      "package": "@johnnymorganz/stylua-bin"
+    }
   }
 }

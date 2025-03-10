@@ -14,6 +14,8 @@
   "homepage": "https://github.com/vimjas/vint",
   "languages": ["vimscript"],
   "packages": {
-    "pip": "vim-vint"
+    "pip": {
+      "package": "vim-vint"
+    }
   }
 }

@@ -11,6 +11,8 @@
   "homepage": "https://github.com/pappasam/toml-sort",
   "languages": ["toml"],
   "packages": {
-    "pip": "toml-sort"
+    "pip": {
+      "package": "toml-sort"
+    }
   }
 }

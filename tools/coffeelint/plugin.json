@@ -11,6 +11,8 @@
   "homepage": "https://github.com/coffeelint/coffeelint",
   "languages": ["coffeescript"],
   "packages": {
-    "npm": "@coffeelint/cli"
+    "npm": {
+      "package": "@coffeelint/cli"
+    }
   }
 }

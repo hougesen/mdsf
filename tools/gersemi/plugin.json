@@ -12,8 +12,10 @@
   "languages": ["cmake"],
   "packages": {
     "brew": {
-      "name": "gersemi"
+      "package": "gersemi"
     },
-    "pip": "gersemi"
+    "pip": {
+      "package": "gersemi"
+    }
   }
 }

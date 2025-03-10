@@ -26,8 +26,10 @@
   "languages": ["protobuf"],
   "packages": {
     "brew": {
-      "name": "bufbuild/buf/buf"
+      "package": "bufbuild/buf/buf"
     },
-    "npm": "@bufbuild/buf"
+    "npm": {
+      "package": "@bufbuild/buf"
+    }
   }
 }

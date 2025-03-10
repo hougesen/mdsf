@@ -18,6 +18,8 @@
   "homepage": "https://github.com/shufo/blade-formatter",
   "languages": ["blade", "laravel", "php"],
   "packages": {
-    "npm": "blade-formatter"
+    "npm": {
+      "package": "blade-formatter"
+    }
   }
 }

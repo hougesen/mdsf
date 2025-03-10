@@ -600,6 +600,11 @@
           "enum": ["gdformat"]
         },
         {
+          "description": "GDScript linter\n\n[https://github.com/scony/godot-gdscript-toolkit](https://github.com/scony/godot-gdscript-toolkit)\n\n`gdlint $PATH`",
+          "type": "string",
+          "enum": ["gdlint"]
+        },
+        {
           "description": "A formatter to make your CMake code the real treasure\n\n[https://github.com/blankspruce/gersemi](https://github.com/blankspruce/gersemi)\n\n`gersemi -i -q $PATH`",
           "type": "string",
           "enum": ["gersemi"]

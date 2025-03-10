@@ -12,9 +12,13 @@
   "languages": ["haskell"],
   "packages": {
     "brew": {
-      "name": "hlint"
+      "package": "hlint"
     },
-    "cabal": "hlint",
-    "stack": "hlint"
+    "cabal": {
+      "package": "hlint"
+    },
+    "stack": {
+      "package": "hlint"
+    }
   }
 }

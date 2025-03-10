@@ -12,8 +12,10 @@
   "languages": ["cloudformation", "json", "yaml"],
   "packages": {
     "brew": {
-      "name": "cfn-lint"
+      "package": "cfn-lint"
     },
-    "pip": "cfn-lint[full]"
+    "pip": {
+      "package": "cfn-lint[full]"
+    }
   }
 }

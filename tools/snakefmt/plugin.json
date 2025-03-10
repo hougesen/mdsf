@@ -12,8 +12,10 @@
   "languages": ["snakemake"],
   "packages": {
     "brew": {
-      "name": "snakefmt"
+      "package": "snakefmt"
     },
-    "pip": "snakefmt"
+    "pip": {
+      "package": "snakefmt"
+    }
   }
 }

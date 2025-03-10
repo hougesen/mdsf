@@ -19,7 +19,7 @@
   "languages": ["ruby"],
   "packages": {
     "gem": {
-      "name": "standardrb"
+      "package": "standardrb"
     }
   }
 }

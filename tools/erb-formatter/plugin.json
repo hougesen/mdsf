@@ -13,7 +13,7 @@
   "name": "erb-formatter",
   "packages": {
     "gem": {
-      "name": "erb-formatter"
+      "package": "erb-formatter"
     }
   }
 }

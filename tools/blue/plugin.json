@@ -18,6 +18,8 @@
   "homepage": "https://github.com/grantjenks/blue",
   "languages": ["python"],
   "packages": {
-    "pip": "blue"
+    "pip": {
+      "package": "blue"
+    }
   }
 }

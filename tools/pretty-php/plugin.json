@@ -12,7 +12,7 @@
   "languages": ["php"],
   "packages": {
     "brew": {
-      "name": "lkrms/misc/pretty-php"
+      "package": "lkrms/misc/pretty-php"
     },
     "composer": {
       "binary": "pretty-php"

@@ -11,6 +11,8 @@
   "homepage": "https://github.com/thibaudcolas/curlylint",
   "languages": ["django", "html", "jinja", "liquid", "nunjucks", "twig"],
   "packages": {
-    "pip": "curlylint"
+    "pip": {
+      "package": "curlylint"
+    }
   }
 }

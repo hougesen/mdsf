@@ -18,6 +18,8 @@
   "homepage": "https://github.com/google/pyink",
   "languages": ["python"],
   "packages": {
-    "pip": "pyink"
+    "pip": {
+      "package": "pyink"
+    }
   }
 }

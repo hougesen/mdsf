@@ -11,6 +11,8 @@
   "homepage": "https://github.com/codespell-project/codespell",
   "languages": [],
   "packages": {
-    "pip": "codespell"
+    "pip": {
+      "package": "codespell"
+    }
   }
 }

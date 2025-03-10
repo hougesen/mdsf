@@ -12,8 +12,10 @@
   "languages": ["d"],
   "packages": {
     "brew": {
-      "name": "dfmt"
+      "package": "dfmt"
     },
-    "dub": "dfmt"
+    "dub": {
+      "package": "dfmt"
+    }
   }
 }

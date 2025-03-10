@@ -11,6 +11,8 @@
   "homepage": "https://github.com/fredrikekre/runic.jl",
   "languages": ["julia"],
   "packages": {
-    "julia": "Runic"
+    "julia": {
+      "package": "Runic"
+    }
   }
 }

@@ -19,7 +19,7 @@
   "languages": ["dart", "flutter"],
   "packages": {
     "brew": {
-      "name": "dcm",
+      "package": "dcm",
       "tap": "CQLabs/dcm"
     }
   }

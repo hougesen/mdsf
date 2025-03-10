@@ -12,8 +12,10 @@
   "languages": ["json", "openapi", "yaml"],
   "packages": {
     "brew": {
-      "name": "daveshanley/vacuum/vacuum"
+      "package": "daveshanley/vacuum/vacuum"
     },
-    "npm": "@quobix/vacuum"
+    "npm": {
+      "package": "@quobix/vacuum"
+    }
   }
 }

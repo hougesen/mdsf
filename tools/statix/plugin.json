@@ -17,7 +17,7 @@
   "languages": ["nix"],
   "packages": {
     "brew": {
-      "name": "statix"
+      "package": "statix"
     }
   }
 }

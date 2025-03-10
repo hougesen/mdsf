@@ -18,6 +18,8 @@
   "homepage": "https://github.com/pamoller/xmlformatter",
   "languages": ["xml"],
   "packages": {
-    "pip": "xmlformatter"
+    "pip": {
+      "package": "xmlformatter"
+    }
   }
 }

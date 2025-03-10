@@ -12,8 +12,10 @@
   "languages": ["go"],
   "packages": {
     "brew": {
-      "name": "asmfmt"
+      "package": "asmfmt"
     },
-    "go": "github.com/klauspost/asmfmt/cmd/asmfmt@latest"
+    "go": {
+      "package": "github.com/klauspost/asmfmt/cmd/asmfmt@latest"
+    }
   }
 }

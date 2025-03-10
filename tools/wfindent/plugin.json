@@ -11,9 +11,11 @@
   "homepage": "https://github.com/wvermin/findent",
   "languages": ["fortran"],
   "packages": {
-    "apt": "findent",
+    "apt": {
+      "package": "findent"
+    },
     "brew": {
-      "name": "findent"
+      "package": "findent"
     }
   }
 }

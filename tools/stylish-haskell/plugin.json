@@ -20,9 +20,13 @@
   "languages": ["haskell"],
   "packages": {
     "brew": {
-      "name": "stylish-haskell"
+      "package": "stylish-haskell"
     },
-    "cabal": "stylish-haskell",
-    "stack": "stylish-haskell"
+    "cabal": {
+      "package": "stylish-haskell"
+    },
+    "stack": {
+      "package": "stylish-haskell"
+    }
   }
 }

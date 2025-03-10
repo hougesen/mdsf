@@ -12,7 +12,7 @@
   "languages": ["crystal"],
   "packages": {
     "brew": {
-      "name": "ameba",
+      "package": "ameba",
       "tap": "crystal-ameba/ameba"
     }
   }

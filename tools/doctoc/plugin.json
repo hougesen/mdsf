@@ -11,6 +11,8 @@
   "homepage": "https://github.com/thlorenz/doctoc",
   "languages": ["markdown"],
   "packages": {
-    "npm": "doctoc"
+    "npm": {
+      "package": "doctoc"
+    }
   }
 }

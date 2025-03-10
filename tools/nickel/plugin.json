@@ -12,8 +12,10 @@
   "languages": ["nickel"],
   "packages": {
     "brew": {
-      "name": "nickel"
+      "package": "nickel"
     },
-    "cargo": "nickel-lang-cli"
+    "cargo": {
+      "package": "nickel-lang-cli"
+    }
   }
 }

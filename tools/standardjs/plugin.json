@@ -20,6 +20,8 @@
   "languages": ["javascript"],
   "name": "standardjs",
   "packages": {
-    "npm": "standard"
+    "npm": {
+      "package": "standard"
+    }
   }
 }

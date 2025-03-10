@@ -12,6 +12,8 @@
   "homepage": "https://d2lang.com/",
   "languages": ["d2"],
   "packages": {
-    "go": "oss.terrastruct.com/d2@latest"
+    "go": {
+      "package": "oss.terrastruct.com/d2@latest"
+    }
   }
 }

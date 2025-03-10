@@ -115,7 +115,14 @@
       "type": "object",
       "properties": {
         "apt": {
-          "type": ["string", "null"]
+          "anyOf": [
+            {
+              "$ref": "#/definitions/ToolPackagesApt"
+            },
+            {
+              "type": "null"
+            }
+          ]
         },
         "brew": {
           "anyOf": [
@@ -128,10 +135,24 @@
           ]
         },
         "cabal": {
-          "type": ["string", "null"]
+          "anyOf": [
+            {
+              "$ref": "#/definitions/ToolPackagesCabal"
+            },
+            {
+              "type": "null"
+            }
+          ]
         },
         "cargo": {
-          "type": ["string", "null"]
+          "anyOf": [
+            {
+              "$ref": "#/definitions/ToolPackagesCargo"
+            },
+            {
+              "type": "null"
+            }
+          ]
         },
         "composer": {
           "description": "Binary name if installed through composer",
@@ -145,13 +166,34 @@
           ]
         },
         "coursier": {
-          "type": ["string", "null"]
+          "anyOf": [
+            {
+              "$ref": "#/definitions/ToolPackagesCoursier"
+            },
+            {
+              "type": "null"
+            }
+          ]
         },
         "dotnet": {
-          "type": ["string", "null"]
+          "anyOf": [
+            {
+              "$ref": "#/definitions/ToolPackagesDotnet"
+            },
+            {
+              "type": "null"
+            }
+          ]
         },
         "dub": {
-          "type": ["string", "null"]
+          "anyOf": [
+            {
+              "$ref": "#/definitions/ToolPackagesDub"
+            },
+            {
+              "type": "null"
+            }
+          ]
         },
         "gem": {
           "anyOf": [
@@ -164,42 +206,128 @@
           ]
         },
         "go": {
-          "type": ["string", "null"]
+          "anyOf": [
+            {
+              "$ref": "#/definitions/ToolPackagesGo"
+            },
+            {
+              "type": "null"
+            }
+          ]
         },
         "julia": {
-          "type": ["string", "null"]
+          "anyOf": [
+            {
+              "$ref": "#/definitions/ToolPackagesJulia"
+            },
+            {
+              "type": "null"
+            }
+          ]
         },
         "luarocks": {
-          "type": ["string", "null"]
+          "anyOf": [
+            {
+              "$ref": "#/definitions/ToolPackagesLuarocks"
+            },
+            {
+              "type": "null"
+            }
+          ]
         },
         "nimble": {
-          "type": ["string", "null"]
+          "anyOf": [
+            {
+              "$ref": "#/definitions/ToolPackagesNimble"
+            },
+            {
+              "type": "null"
+            }
+          ]
         },
         "npm": {
           "description": "Name of package on npm, if published there.",
-          "type": ["string", "null"]
+          "anyOf": [
+            {
+              "$ref": "#/definitions/ToolPackagesNpm"
+            },
+            {
+              "type": "null"
+            }
+          ]
         },
         "opam": {
-          "type": ["string", "null"]
+          "anyOf": [
+            {
+              "$ref": "#/definitions/ToolPackagesOpam"
+            },
+            {
+              "type": "null"
+            }
+          ]
         },
         "pip": {
-          "type": ["string", "null"]
+          "anyOf": [
+            {
+              "$ref": "#/definitions/ToolPackagesPip"
+            },
+            {
+              "type": "null"
+            }
+          ]
         },
         "stack": {
-          "type": ["string", "null"]
+          "anyOf": [
+            {
+              "$ref": "#/definitions/ToolPackagesStack"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "ToolPackagesApt": {
+      "type": "object",
+      "required": ["package"],
+      "properties": {
+        "package": {
+          "type": "string"
         }
       },
       "additionalProperties": false
     },
     "ToolPackagesBrew": {
       "type": "object",
-      "required": ["name"],
+      "required": ["package"],
       "properties": {
-        "name": {
+        "package": {
           "type": "string"
         },
         "tap": {
           "type": ["string", "null"]
+        }
+      },
+      "additionalProperties": false
+    },
+    "ToolPackagesCabal": {
+      "type": "object",
+      "required": ["package"],
+      "properties": {
+        "package": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "ToolPackagesCargo": {
+      "type": "object",
+      "required": ["package"],
+      "properties": {
+        "package": {
+          "type": "string"
         }
       },
       "additionalProperties": false
@@ -217,14 +345,124 @@
       },
       "additionalProperties": false
     },
+    "ToolPackagesCoursier": {
+      "type": "object",
+      "required": ["package"],
+      "properties": {
+        "package": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "ToolPackagesDotnet": {
+      "type": "object",
+      "required": ["package"],
+      "properties": {
+        "package": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "ToolPackagesDub": {
+      "type": "object",
+      "required": ["package"],
+      "properties": {
+        "package": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
     "ToolPackagesGem": {
       "type": "object",
-      "required": ["name"],
+      "required": ["package"],
       "properties": {
         "disable_gem_exec": {
           "type": "boolean"
         },
-        "name": {
+        "package": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "ToolPackagesGo": {
+      "type": "object",
+      "required": ["package"],
+      "properties": {
+        "package": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "ToolPackagesJulia": {
+      "type": "object",
+      "required": ["package"],
+      "properties": {
+        "package": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "ToolPackagesLuarocks": {
+      "type": "object",
+      "required": ["package"],
+      "properties": {
+        "package": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "ToolPackagesNimble": {
+      "type": "object",
+      "required": ["package"],
+      "properties": {
+        "package": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "ToolPackagesNpm": {
+      "type": "object",
+      "required": ["package"],
+      "properties": {
+        "package": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "ToolPackagesOpam": {
+      "type": "object",
+      "required": ["package"],
+      "properties": {
+        "package": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "ToolPackagesPip": {
+      "type": "object",
+      "required": ["package"],
+      "properties": {
+        "package": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "ToolPackagesStack": {
+      "type": "object",
+      "required": ["package"],
+      "properties": {
+        "package": {
           "type": "string"
         }
       },

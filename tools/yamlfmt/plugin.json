@@ -19,8 +19,10 @@
   "languages": ["yaml"],
   "packages": {
     "brew": {
-      "name": "yamlfmt"
+      "package": "yamlfmt"
     },
-    "go": "github.com/google/yamlfmt/cmd/yamlfmt@latest"
+    "go": {
+      "package": "github.com/google/yamlfmt/cmd/yamlfmt@latest"
+    }
   }
 }

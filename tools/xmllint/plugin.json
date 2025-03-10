@@ -18,6 +18,8 @@
   "homepage": "https://gnome.pages.gitlab.gnome.org/libxml2/xmllint.html",
   "languages": ["xml"],
   "packages": {
-    "apt": "libxml2-utils"
+    "apt": {
+      "package": "libxml2-utils"
+    }
   }
 }

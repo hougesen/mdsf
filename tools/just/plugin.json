@@ -19,10 +19,16 @@
   "languages": ["just"],
   "packages": {
     "brew": {
-      "name": "just"
+      "package": "just"
     },
-    "cargo": "just",
-    "npm": "rust-just",
-    "pip": "rust-just"
+    "cargo": {
+      "package": "just"
+    },
+    "npm": {
+      "package": "rust-just"
+    },
+    "pip": {
+      "package": "rust-just"
+    }
   }
 }

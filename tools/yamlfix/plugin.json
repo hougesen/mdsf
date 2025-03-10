@@ -19,8 +19,10 @@
   "languages": ["yaml"],
   "packages": {
     "brew": {
-      "name": "yamlfix"
+      "package": "yamlfix"
     },
-    "pip": "yamlfix"
+    "pip": {
+      "package": "yamlfix"
+    }
   }
 }

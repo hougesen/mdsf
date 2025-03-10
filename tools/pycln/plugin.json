@@ -18,6 +18,8 @@
   "homepage": "https://github.com/hadialqattan/pycln",
   "languages": ["python"],
   "packages": {
-    "pip": "pycln"
+    "pip": {
+      "package": "pycln"
+    }
   }
 }

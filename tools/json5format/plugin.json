@@ -11,6 +11,8 @@
   "homepage": "https://github.com/google/json5format",
   "languages": ["json", "json5"],
   "packages": {
-    "cargo": "json5format"
+    "cargo": {
+      "package": "json5format"
+    }
   }
 }

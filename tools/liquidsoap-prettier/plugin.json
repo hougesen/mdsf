@@ -11,6 +11,8 @@
   "homepage": "https://github.com/savonet/liquidsoap-prettier",
   "languages": ["liquidsoap"],
   "packages": {
-    "npm": "liquidsoap-prettier"
+    "npm": {
+      "package": "liquidsoap-prettier"
+    }
   }
 }

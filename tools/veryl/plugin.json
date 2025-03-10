@@ -21,6 +21,8 @@
   "homepage": "https://github.com/veryl-lang/veryl",
   "languages": ["veryl"],
   "packages": {
-    "cargo": "veryl"
+    "cargo": {
+      "package": "veryl"
+    }
   }
 }

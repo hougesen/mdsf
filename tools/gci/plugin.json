@@ -11,6 +11,8 @@
   "homepage": "https://github.com/daixiang0/gci",
   "languages": ["go"],
   "packages": {
-    "go": "github.com/daixiang0/gci@latest"
+    "go": {
+      "package": "github.com/daixiang0/gci@latest"
+    }
   }
 }

@@ -17,7 +17,7 @@
   "languages": ["rego"],
   "packages": {
     "brew": {
-      "name": "styrainc/packages/regal"
+      "package": "styrainc/packages/regal"
     }
   }
 }

@@ -11,6 +11,8 @@
   "homepage": "https://github.com/phadej/cabal-fmt",
   "languages": ["cabal"],
   "packages": {
-    "cabal": "cabal-fmt"
+    "cabal": {
+      "package": "cabal-fmt"
+    }
   }
 }

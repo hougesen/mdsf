@@ -19,7 +19,7 @@
   "languages": ["ruby"],
   "packages": {
     "brew": {
-      "name": "rubyfmt"
+      "package": "rubyfmt"
     }
   }
 }

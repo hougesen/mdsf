@@ -11,6 +11,8 @@
   "homepage": "https://github.com/rhysd/fixjson",
   "languages": ["json", "json5"],
   "packages": {
-    "npm": "fixjson"
+    "npm": {
+      "package": "fixjson"
+    }
   }
 }

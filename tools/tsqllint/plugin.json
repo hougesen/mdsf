@@ -12,10 +12,14 @@
   "languages": ["sql"],
   "packages": {
     "brew": {
-      "name": "tsqllint",
+      "package": "tsqllint",
       "tap": "tsqllint/homebrew-tsqllint"
     },
-    "dotnet": "TSQLLint",
-    "npm": "tsqllint"
+    "dotnet": {
+      "package": "TSQLLint"
+    },
+    "npm": {
+      "package": "tsqllint"
+    }
   }
 }

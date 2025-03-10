@@ -11,6 +11,8 @@
   "homepage": "https://clang.llvm.org/extra/clang-tidy/",
   "languages": ["c++"],
   "packages": {
-    "pip": "clang-tidy"
+    "pip": {
+      "package": "clang-tidy"
+    }
   }
 }

@@ -19,6 +19,8 @@
   "homepage": "https://github.com/noperator/jqfmt",
   "languages": ["jq"],
   "packages": {
-    "go": "github.com/noperator/jqfmt/cmd/jqfmt@latest"
+    "go": {
+      "package": "github.com/noperator/jqfmt/cmd/jqfmt@latest"
+    }
   }
 }

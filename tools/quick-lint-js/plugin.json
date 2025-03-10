@@ -12,8 +12,10 @@
   "languages": ["javascript"],
   "packages": {
     "brew": {
-      "name": "quick-lint-js"
+      "package": "quick-lint-js"
     },
-    "npm": "quick-lint-js"
+    "npm": {
+      "package": "quick-lint-js"
+    }
   }
 }

@@ -11,6 +11,8 @@
   "homepage": "https://github.com/PyCQA/docformatter",
   "languages": ["python"],
   "packages": {
-    "pip": "docformatter"
+    "pip": {
+      "package": "docformatter"
+    }
   }
 }

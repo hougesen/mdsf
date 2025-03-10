@@ -11,6 +11,8 @@
   "homepage": "https://github.com/standard/ts-standard",
   "languages": ["typescript"],
   "packages": {
-    "npm": "ts-standard"
+    "npm": {
+      "package": "ts-standard"
+    }
   }
 }

@@ -11,6 +11,8 @@
   "homepage": "https://reasonml.github.io/docs/en/refmt",
   "languages": ["reason"],
   "packages": {
-    "opam": "reason"
+    "opam": {
+      "package": "reason"
+    }
   }
 }

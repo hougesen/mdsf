@@ -12,9 +12,13 @@
   "languages": [],
   "packages": {
     "brew": {
-      "name": "dprint"
+      "package": "dprint"
     },
-    "cargo": "dprint",
-    "npm": "dprint"
+    "cargo": {
+      "package": "dprint"
+    },
+    "npm": {
+      "package": "dprint"
+    }
   }
 }

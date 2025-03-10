@@ -18,6 +18,8 @@
   "homepage": "https://github.com/beautifier/js-beautify",
   "languages": ["css"],
   "packages": {
-    "npm": "js-beautify"
+    "npm": {
+      "package": "js-beautify"
+    }
   }
 }

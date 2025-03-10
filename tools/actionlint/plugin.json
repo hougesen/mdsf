@@ -19,8 +19,10 @@
   "languages": ["yaml"],
   "packages": {
     "brew": {
-      "name": "actionlint"
+      "package": "actionlint"
     },
-    "go": "github.com/rhysd/actionlint/cmd/actionlint@latest"
+    "go": {
+      "package": "github.com/rhysd/actionlint/cmd/actionlint@latest"
+    }
   }
 }

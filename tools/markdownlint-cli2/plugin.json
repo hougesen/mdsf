@@ -19,8 +19,10 @@
   "languages": ["markdown"],
   "packages": {
     "brew": {
-      "name": "markdownlint-cli2"
+      "package": "markdownlint-cli2"
     },
-    "npm": "markdownlint-cli2"
+    "npm": {
+      "package": "markdownlint-cli2"
+    }
   }
 }

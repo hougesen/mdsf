@@ -11,11 +11,17 @@
   "homepage": "https://github.com/koalaman/shellcheck",
   "languages": ["bash", "shell"],
   "packages": {
-    "apt": "shellcheck",
-    "brew": {
-      "name": "shellcheck"
+    "apt": {
+      "package": "shellcheck"
     },
-    "cabal": "ShellCheck",
-    "stack": "ShellCheck"
+    "brew": {
+      "package": "shellcheck"
+    },
+    "cabal": {
+      "package": "ShellCheck"
+    },
+    "stack": {
+      "package": "ShellCheck"
+    }
   }
 }

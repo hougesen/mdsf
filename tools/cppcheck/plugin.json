@@ -11,9 +11,11 @@
   "homepage": "https://cppcheck.sourceforge.io/",
   "languages": ["c", "c++"],
   "packages": {
-    "apt": "cppcheck",
+    "apt": {
+      "package": "cppcheck"
+    },
     "brew": {
-      "name": "cppcheck"
+      "package": "cppcheck"
     }
   }
 }

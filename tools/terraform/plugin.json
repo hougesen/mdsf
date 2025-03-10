@@ -19,7 +19,7 @@
   "languages": ["terraform"],
   "packages": {
     "brew": {
-      "name": "hashicorp/tap/terraform",
+      "package": "hashicorp/tap/terraform",
       "tap": "hashicorp/tap"
     }
   }

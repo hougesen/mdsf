@@ -11,6 +11,8 @@
   "homepage": "https://github.com/cockroachdb/crlfmt",
   "languages": ["go"],
   "packages": {
-    "go": "github.com/cockroachdb/crlfmt"
+    "go": {
+      "package": "github.com/cockroachdb/crlfmt"
+    }
   }
 }

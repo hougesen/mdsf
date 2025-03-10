@@ -11,6 +11,8 @@
   "homepage": "https://github.com/priv-kweihmann/oelint-adv",
   "languages": ["bitbake"],
   "packages": {
-    "pip": "oelint_adv"
+    "pip": {
+      "package": "oelint_adv"
+    }
   }
 }

@@ -12,9 +12,13 @@
   "languages": [],
   "packages": {
     "brew": {
-      "name": "autocorrect"
+      "package": "autocorrect"
     },
-    "cargo": "autocorrect",
-    "npm": "autocorrect-node"
+    "cargo": {
+      "package": "autocorrect"
+    },
+    "npm": {
+      "package": "autocorrect-node"
+    }
   }
 }

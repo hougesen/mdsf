@@ -18,6 +18,8 @@
   "homepage": "https://github.com/fsprojects/fantomas",
   "languages": ["fsharp"],
   "packages": {
-    "dotnet": "fantomas"
+    "dotnet": {
+      "package": "fantomas"
+    }
   }
 }

@@ -12,7 +12,7 @@
   "languages": ["hcl"],
   "packages": {
     "brew": {
-      "name": "terragrunt"
+      "package": "terragrunt"
     }
   }
 }

@@ -12,7 +12,7 @@
   "languages": ["hcl"],
   "packages": {
     "brew": {
-      "name": "hashicorp/tap/nomad",
+      "package": "hashicorp/tap/nomad",
       "tap": "hashicorp/tap"
     }
   }

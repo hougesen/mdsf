@@ -12,7 +12,7 @@
   "languages": ["inko"],
   "packages": {
     "brew": {
-      "name": "inko"
+      "package": "inko"
     }
   }
 }

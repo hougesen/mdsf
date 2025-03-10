@@ -11,10 +11,14 @@
   "homepage": "https://github.com/wgunderwood/tex-fmt",
   "languages": ["latex"],
   "packages": {
-    "apt": "tex-fmt",
-    "brew": {
-      "name": "tex-fmt"
+    "apt": {
+      "package": "tex-fmt"
     },
-    "cargo": "tex-fmt"
+    "brew": {
+      "package": "tex-fmt"
+    },
+    "cargo": {
+      "package": "tex-fmt"
+    }
   }
 }

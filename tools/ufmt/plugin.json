@@ -11,6 +11,8 @@
   "homepage": "https://github.com/omnilib/ufmt",
   "languages": ["python"],
   "packages": {
-    "pip": "ufmt"
+    "pip": {
+      "package": "ufmt"
+    }
   }
 }

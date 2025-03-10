@@ -47,11 +47,29 @@ pub struct ToolCommand {
 
 #[derive(Debug, serde::Deserialize, schemars::JsonSchema, Clone, Default, serde::Serialize)]
 #[serde(deny_unknown_fields)]
+pub struct ToolPackagesApt {
+    pub package: String,
+}
+
+#[derive(Debug, serde::Deserialize, schemars::JsonSchema, Clone, Default, serde::Serialize)]
+#[serde(deny_unknown_fields)]
 pub struct ToolPackagesBrew {
-    pub name: String,
+    pub package: String,
 
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub tap: Option<String>,
+}
+
+#[derive(Debug, serde::Deserialize, schemars::JsonSchema, Clone, Default, serde::Serialize)]
+#[serde(deny_unknown_fields)]
+pub struct ToolPackagesCabal {
+    pub package: String,
+}
+
+#[derive(Debug, serde::Deserialize, schemars::JsonSchema, Clone, Default, serde::Serialize)]
+#[serde(deny_unknown_fields)]
+pub struct ToolPackagesCargo {
+    pub package: String,
 }
 
 #[derive(Debug, serde::Deserialize, schemars::JsonSchema, Clone, Default, serde::Serialize)]
@@ -65,68 +83,134 @@ pub struct ToolPackagesComposer {
 
 #[derive(Debug, serde::Deserialize, schemars::JsonSchema, Clone, Default, serde::Serialize)]
 #[serde(deny_unknown_fields)]
-pub struct ToolPackagesGem {
-    pub name: String,
+pub struct ToolPackagesCoursier {
+    pub package: String,
+}
 
-    #[serde(default, skip_serializing_if = "is_false ")]
+#[derive(Debug, serde::Deserialize, schemars::JsonSchema, Clone, Default, serde::Serialize)]
+#[serde(deny_unknown_fields)]
+pub struct ToolPackagesDotnet {
+    pub package: String,
+}
+
+#[derive(Debug, serde::Deserialize, schemars::JsonSchema, Clone, Default, serde::Serialize)]
+#[serde(deny_unknown_fields)]
+pub struct ToolPackagesDub {
+    pub package: String,
+}
+
+#[derive(Debug, serde::Deserialize, schemars::JsonSchema, Clone, Default, serde::Serialize)]
+#[serde(deny_unknown_fields)]
+pub struct ToolPackagesGem {
+    #[serde(default, skip_serializing_if = "is_false")]
     pub disable_gem_exec: bool,
+
+    pub package: String,
+}
+
+#[derive(Debug, serde::Deserialize, schemars::JsonSchema, Clone, Default, serde::Serialize)]
+#[serde(deny_unknown_fields)]
+pub struct ToolPackagesGo {
+    pub package: String,
+}
+
+#[derive(Debug, serde::Deserialize, schemars::JsonSchema, Clone, Default, serde::Serialize)]
+#[serde(deny_unknown_fields)]
+pub struct ToolPackagesJulia {
+    pub package: String,
+}
+
+#[derive(Debug, serde::Deserialize, schemars::JsonSchema, Clone, Default, serde::Serialize)]
+#[serde(deny_unknown_fields)]
+pub struct ToolPackagesLuarocks {
+    pub package: String,
+}
+
+#[derive(Debug, serde::Deserialize, schemars::JsonSchema, Clone, Default, serde::Serialize)]
+#[serde(deny_unknown_fields)]
+pub struct ToolPackagesNimble {
+    pub package: String,
+}
+
+#[derive(Debug, serde::Deserialize, schemars::JsonSchema, Clone, Default, serde::Serialize)]
+#[serde(deny_unknown_fields)]
+pub struct ToolPackagesNpm {
+    pub package: String,
+}
+
+#[derive(Debug, serde::Deserialize, schemars::JsonSchema, Clone, Default, serde::Serialize)]
+#[serde(deny_unknown_fields)]
+pub struct ToolPackagesOpam {
+    pub package: String,
+}
+
+#[derive(Debug, serde::Deserialize, schemars::JsonSchema, Clone, Default, serde::Serialize)]
+#[serde(deny_unknown_fields)]
+pub struct ToolPackagesPip {
+    pub package: String,
+}
+
+#[derive(Debug, serde::Deserialize, schemars::JsonSchema, Clone, Default, serde::Serialize)]
+#[serde(deny_unknown_fields)]
+pub struct ToolPackagesStack {
+    pub package: String,
 }
 
 #[derive(Debug, serde::Deserialize, schemars::JsonSchema, Clone, Default, serde::Serialize)]
 #[serde(deny_unknown_fields)]
 pub struct ToolPackages {
     #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub apt: Option<String>,
+    pub apt: Option<ToolPackagesApt>,
 
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub brew: Option<ToolPackagesBrew>,
 
     #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub cabal: Option<String>,
+    pub cabal: Option<ToolPackagesCabal>,
 
     #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub cargo: Option<String>,
+    pub cargo: Option<ToolPackagesCargo>,
 
     #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub coursier: Option<String>,
+    pub coursier: Option<ToolPackagesCoursier>,
 
     #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub dotnet: Option<String>,
+    pub dotnet: Option<ToolPackagesDotnet>,
 
     #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub dub: Option<String>,
+    pub dub: Option<ToolPackagesDub>,
 
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub gem: Option<ToolPackagesGem>,
 
     #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub go: Option<String>,
+    pub go: Option<ToolPackagesGo>,
 
     #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub julia: Option<String>,
+    pub julia: Option<ToolPackagesJulia>,
 
     #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub luarocks: Option<String>,
+    pub luarocks: Option<ToolPackagesLuarocks>,
 
     #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub nimble: Option<String>,
+    pub nimble: Option<ToolPackagesNimble>,
 
     /// Name of package on npm, if published there.
     #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub npm: Option<String>,
+    pub npm: Option<ToolPackagesNpm>,
 
     #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub opam: Option<String>,
+    pub opam: Option<ToolPackagesOpam>,
 
     /// Binary name if installed through composer
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub composer: Option<ToolPackagesComposer>,
 
     #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub pip: Option<String>,
+    pub pip: Option<ToolPackagesPip>,
 
     #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub stack: Option<String>,
+    pub stack: Option<ToolPackagesStack>,
 }
 
 fn default_tool_schema() -> String {
@@ -307,30 +391,30 @@ impl Tool {
                 command_types.push(format!("CommandType::Direct(\"{}\")", self.binary));
 
                 if let Some(npm) = &self.packages.npm {
-                    command_types.push(format!("CommandType::Npm(\"{npm}\")"));
+                    command_types.push(format!("CommandType::Npm(\"{}\")", &npm.package));
 
-                    command_types.push(format!("CommandType::Pnpm(\"{npm}\")"));
+                    command_types.push(format!("CommandType::Pnpm(\"{}\")", &npm.package));
 
-                    command_types.push(format!("CommandType::Bun(\"{npm}\")"));
+                    command_types.push(format!("CommandType::Bun(\"{}\")", &npm.package));
 
-                    command_types.push(format!("CommandType::Deno(\"{npm}\")"));
+                    command_types.push(format!("CommandType::Deno(\"{}\")", &npm.package));
 
-                    command_types.push(format!("CommandType::Yarn(\"{npm}\")"));
+                    command_types.push(format!("CommandType::Yarn(\"{}\")", &npm.package));
                 }
 
                 if let Some(pip) = &self.packages.pip {
-                    command_types.push(format!("CommandType::Uv(\"{pip}\")"));
+                    command_types.push(format!("CommandType::Uv(\"{}\")", &pip.package));
 
-                    command_types.push(format!("CommandType::Pipx(\"{pip}\")"));
+                    command_types.push(format!("CommandType::Pipx(\"{}\")", &pip.package));
                 }
 
                 if let Some(dub) = &self.packages.dub {
-                    command_types.push(format!("CommandType::Dub(\"{dub}\")"));
+                    command_types.push(format!("CommandType::Dub(\"{}\")", &dub.package));
                 }
 
                 if let Some(gem) = &self.packages.gem {
                     if !gem.disable_gem_exec {
-                        command_types.push(format!("CommandType::GemExec(\"{}\")", &gem.name));
+                        command_types.push(format!("CommandType::GemExec(\"{}\")", &gem.package));
                     }
                 }
             };

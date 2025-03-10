@@ -11,6 +11,8 @@
   "homepage": "https://github.com/mgechev/revive",
   "languages": ["go"],
   "packages": {
-    "go": "github.com/mgechev/revive@latest"
+    "go": {
+      "package": "github.com/mgechev/revive@latest"
+    }
   }
 }

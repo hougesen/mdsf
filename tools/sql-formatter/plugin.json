@@ -18,6 +18,8 @@
   "homepage": "https://github.com/sql-formatter-org/sql-formatter",
   "languages": ["sql"],
   "packages": {
-    "npm": "sql-formatter"
+    "npm": {
+      "package": "sql-formatter"
+    }
   }
 }

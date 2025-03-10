@@ -12,10 +12,14 @@
   "languages": ["protobuf"],
   "packages": {
     "brew": {
-      "name": "protolint",
+      "package": "protolint",
       "tap": "yoheimuta/protolint"
     },
-    "go": "github.com/yoheimuta/protolint/cmd/protolint@latest",
-    "npm": "protolint"
+    "go": {
+      "package": "github.com/yoheimuta/protolint/cmd/protolint@latest"
+    },
+    "npm": {
+      "package": "protolint"
+    }
   }
 }

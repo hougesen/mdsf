@@ -19,8 +19,10 @@
   "languages": ["yaml"],
   "packages": {
     "brew": {
-      "name": "yamllint"
+      "package": "yamllint"
     },
-    "pip": "yamllint"
+    "pip": {
+      "package": "yamllint"
+    }
   }
 }

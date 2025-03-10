@@ -11,7 +11,11 @@
   "homepage": "https://github.com/avencera/rustywind",
   "languages": ["html"],
   "packages": {
-    "cargo": "rustywind",
-    "npm": "rustywind"
+    "cargo": {
+      "package": "rustywind"
+    },
+    "npm": {
+      "package": "rustywind"
+    }
   }
 }

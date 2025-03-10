@@ -14,6 +14,8 @@
   "homepage": "https://github.com/jsona/jsona",
   "languages": ["jsona"],
   "packages": {
-    "cargo": "jsona-cli"
+    "cargo": {
+      "package": "jsona-cli"
+    }
   }
 }

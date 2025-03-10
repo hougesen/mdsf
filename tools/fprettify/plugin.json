@@ -19,8 +19,10 @@
   "languages": ["fortran"],
   "packages": {
     "brew": {
-      "name": "fprettify"
+      "package": "fprettify"
     },
-    "pip": "fprettify"
+    "pip": {
+      "package": "fprettify"
+    }
   }
 }

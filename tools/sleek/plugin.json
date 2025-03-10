@@ -19,8 +19,10 @@
   "languages": ["sql"],
   "packages": {
     "brew": {
-      "name": "sleek"
+      "package": "sleek"
     },
-    "cargo": "sleek"
+    "cargo": {
+      "package": "sleek"
+    }
   }
 }

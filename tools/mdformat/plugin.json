@@ -12,8 +12,10 @@
   "languages": ["markdwon"],
   "packages": {
     "brew": {
-      "name": "mdformat"
+      "package": "mdformat"
     },
-    "pip": "mdformat"
+    "pip": {
+      "package": "mdformat"
+    }
   }
 }

@@ -19,6 +19,8 @@
   "homepage": "https://github.com/standard/semistandard",
   "languages": ["javascript"],
   "packages": {
-    "npm": "semistandard"
+    "npm": {
+      "package": "semistandard"
+    }
   }
 }

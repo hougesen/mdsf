@@ -19,6 +19,8 @@
   "homepage": "https://github.com/jqlang/jq",
   "languages": ["json"],
   "packages": {
-    "apt": "jq"
+    "apt": {
+      "package": "jq"
+    }
   }
 }
