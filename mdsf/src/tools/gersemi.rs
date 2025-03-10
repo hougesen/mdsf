@@ -16,7 +16,7 @@ pub fn set_args(
 
 pub const COMMANDS: [CommandType; 3] = [
     CommandType::Direct("gersemi"),
-    CommandType::Uv("gersemi"),
+    CommandType::Uv("gersemi", "gersemi"),
     CommandType::Pipx("gersemi"),
 ];
 

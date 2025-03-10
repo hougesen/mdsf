@@ -14,7 +14,7 @@ pub fn set_args(
 
 pub const COMMANDS: [CommandType; 3] = [
     CommandType::Direct("nginxfmt"),
-    CommandType::Uv("nginxfmt"),
+    CommandType::Uv("nginxfmt", "nginxfmt"),
     CommandType::Pipx("nginxfmt"),
 ];
 

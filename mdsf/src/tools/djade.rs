@@ -14,7 +14,7 @@ pub fn set_args(
 
 pub const COMMANDS: [CommandType; 3] = [
     CommandType::Direct("djade"),
-    CommandType::Uv("djade"),
+    CommandType::Uv("djade", "djade"),
     CommandType::Pipx("djade"),
 ];
 

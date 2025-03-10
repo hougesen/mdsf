@@ -18,7 +18,7 @@ pub fn set_args(
 
 pub const COMMANDS: [CommandType; 3] = [
     CommandType::Direct("fortitude"),
-    CommandType::Uv("fortitude-lint"),
+    CommandType::Uv("fortitude-lint", "fortitude-lint"),
     CommandType::Pipx("fortitude-lint"),
 ];
 

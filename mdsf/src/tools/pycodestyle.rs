@@ -14,7 +14,7 @@ pub fn set_args(
 
 pub const COMMANDS: [CommandType; 3] = [
     CommandType::Direct("pycodestyle"),
-    CommandType::Uv("pycodestyle"),
+    CommandType::Uv("pycodestyle", "pycodestyle"),
     CommandType::Pipx("pycodestyle"),
 ];
 

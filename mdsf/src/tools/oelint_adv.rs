@@ -17,7 +17,7 @@ pub fn set_args(
 
 pub const COMMANDS: [CommandType; 3] = [
     CommandType::Direct("oelint-adv"),
-    CommandType::Uv("oelint_adv"),
+    CommandType::Uv("oelint_adv", "oelint_adv"),
     CommandType::Pipx("oelint_adv"),
 ];
 

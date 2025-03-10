@@ -14,7 +14,7 @@ pub fn set_args(
 
 pub const COMMANDS: [CommandType; 3] = [
     CommandType::Direct("ansible-lint"),
-    CommandType::Uv("ansible-dev-tools"),
+    CommandType::Uv("ansible-dev-tools", "ansible-dev-tools"),
     CommandType::Pipx("ansible-dev-tools"),
 ];
 

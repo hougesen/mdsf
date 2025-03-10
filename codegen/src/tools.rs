@@ -147,6 +147,9 @@ pub struct ToolPackagesOpam {
 #[derive(Debug, serde::Deserialize, schemars::JsonSchema, Clone, Default, serde::Serialize)]
 #[serde(deny_unknown_fields)]
 pub struct ToolPackagesPip {
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub executable: Option<String>,
+
     pub package: String,
 }
 
@@ -403,7 +406,11 @@ impl Tool {
                 }
 
                 if let Some(pip) = &self.packages.pip {
-                    command_types.push(format!("CommandType::Uv(\"{}\")", &pip.package));
+                    command_types.push(format!(
+                        "CommandType::Uv(\"{}\", \"{}\")",
+                        &pip.package,
+                        &pip.executable.clone().as_ref().unwrap_or(&pip.package)
+                    ));
 
                     command_types.push(format!("CommandType::Pipx(\"{}\")", &pip.package));
                 }

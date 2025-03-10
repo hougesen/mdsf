@@ -14,7 +14,7 @@ pub fn set_args(
 
 pub const COMMANDS: [CommandType; 3] = [
     CommandType::Direct("mypy"),
-    CommandType::Uv("mypy"),
+    CommandType::Uv("mypy", "mypy"),
     CommandType::Pipx("mypy"),
 ];
 

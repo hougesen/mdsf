@@ -15,7 +15,7 @@ pub fn set_args(
 
 pub const COMMANDS: [CommandType; 3] = [
     CommandType::Direct("fortran-linter"),
-    CommandType::Uv("fortran-linter"),
+    CommandType::Uv("fortran-linter", "fortran-linter"),
     CommandType::Pipx("fortran-linter"),
 ];
 

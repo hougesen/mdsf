@@ -15,7 +15,7 @@ pub fn set_args(
 
 pub const COMMANDS: [CommandType; 3] = [
     CommandType::Direct("blue"),
-    CommandType::Uv("blue"),
+    CommandType::Uv("blue", "blue"),
     CommandType::Pipx("blue"),
 ];
 

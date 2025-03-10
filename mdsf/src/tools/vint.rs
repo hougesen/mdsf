@@ -14,7 +14,7 @@ pub fn set_args(
 
 pub const COMMANDS: [CommandType; 3] = [
     CommandType::Direct("vint"),
-    CommandType::Uv("vim-vint"),
+    CommandType::Uv("vim-vint", "vim-vint"),
     CommandType::Pipx("vim-vint"),
 ];
 

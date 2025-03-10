@@ -15,7 +15,7 @@ pub fn set_args(
 
 pub const COMMANDS: [CommandType; 3] = [
     CommandType::Direct("pyink"),
-    CommandType::Uv("pyink"),
+    CommandType::Uv("pyink", "pyink"),
     CommandType::Pipx("pyink"),
 ];
 

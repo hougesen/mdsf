@@ -16,7 +16,7 @@ pub fn set_args(
 
 pub const COMMANDS: [CommandType; 3] = [
     CommandType::Direct("pycln"),
-    CommandType::Uv("pycln"),
+    CommandType::Uv("pycln", "pycln"),
     CommandType::Pipx("pycln"),
 ];
 

@@ -14,7 +14,7 @@ pub fn set_args(
 
 pub const COMMANDS: [CommandType; 3] = [
     CommandType::Direct("auto-optional"),
-    CommandType::Uv("auto-optional"),
+    CommandType::Uv("auto-optional", "auto-optional"),
     CommandType::Pipx("auto-optional"),
 ];
 

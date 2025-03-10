@@ -15,7 +15,7 @@ pub fn set_args(
 
 pub const COMMANDS: [CommandType; 3] = [
     CommandType::Direct("cpplint"),
-    CommandType::Uv("cpplint"),
+    CommandType::Uv("cpplint", "cpplint"),
     CommandType::Pipx("cpplint"),
 ];
 

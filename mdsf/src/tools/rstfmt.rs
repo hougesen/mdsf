@@ -14,7 +14,7 @@ pub fn set_args(
 
 pub const COMMANDS: [CommandType; 3] = [
     CommandType::Direct("rstfmt"),
-    CommandType::Uv("rstfmt"),
+    CommandType::Uv("rstfmt", "rstfmt"),
     CommandType::Pipx("rstfmt"),
 ];
 

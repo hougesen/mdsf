@@ -15,7 +15,7 @@ pub fn set_args(
 
 pub const COMMANDS: [CommandType; 3] = [
     CommandType::Direct("ufmt"),
-    CommandType::Uv("ufmt"),
+    CommandType::Uv("ufmt", "ufmt"),
     CommandType::Pipx("ufmt"),
 ];
 
