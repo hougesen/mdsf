@@ -18,6 +18,8 @@
   "homepage": "https://github.com/ruby-formatter/rufo",
   "languages": ["ruby"],
   "packages": {
-    "gem": "rufo"
+    "gem": {
+      "name": "rufo"
+    }
   }
 }

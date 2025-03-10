@@ -11,6 +11,8 @@
   "homepage": "https://github.com/sds/slim-lint",
   "languages": ["slim"],
   "packages": {
-    "gem": "slim_lint"
+    "gem": {
+      "name": "slim_lint"
+    }
   }
 }

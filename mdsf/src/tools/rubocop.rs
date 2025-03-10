@@ -16,16 +16,13 @@ pub fn set_args(
     cmd
 }
 
-pub const COMMANDS: [CommandType; 2] = [
-    CommandType::Direct("rubocop"),
-    CommandType::GemExec("rubocop"),
-];
+pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("rubocop")];
 
 pub const IS_STDIN: bool = false;
 
 #[cfg(test)]
 mod test_rubocop {
-    #[test_with::executable(rubocop || gem)]
+    #[test_with::executable(rubocop)]
     fn test_rubocop_ruby_d2b8a6db3c8eee1c() {
         let input = r#"def   add(  a ,                                                          b )
                         return a + b

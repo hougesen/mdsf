@@ -65,6 +65,15 @@ pub struct ToolPackagesComposer {
 
 #[derive(Debug, serde::Deserialize, schemars::JsonSchema, Clone, Default, serde::Serialize)]
 #[serde(deny_unknown_fields)]
+pub struct ToolPackagesGem {
+    pub name: String,
+
+    #[serde(default, skip_serializing_if = "is_false ")]
+    pub disable_gem_exec: bool,
+}
+
+#[derive(Debug, serde::Deserialize, schemars::JsonSchema, Clone, Default, serde::Serialize)]
+#[serde(deny_unknown_fields)]
 pub struct ToolPackages {
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub apt: Option<String>,
@@ -88,7 +97,7 @@ pub struct ToolPackages {
     pub dub: Option<String>,
 
     #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub gem: Option<String>,
+    pub gem: Option<ToolPackagesGem>,
 
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub go: Option<String>,
@@ -235,7 +244,12 @@ impl Tool {
             test_with_binaries.push("dub");
         }
 
-        if self.packages.gem.is_some() {
+        if self
+            .packages
+            .gem
+            .as_ref()
+            .is_some_and(|gem| !gem.disable_gem_exec)
+        {
             test_with_binaries.push("gem");
         }
 
@@ -315,7 +329,9 @@ impl Tool {
                 }
 
                 if let Some(gem) = &self.packages.gem {
-                    command_types.push(format!("CommandType::GemExec(\"{gem}\")"));
+                    if !gem.disable_gem_exec {
+                        command_types.push(format!("CommandType::GemExec(\"{}\")", &gem.name));
+                    }
                 }
             };
 
