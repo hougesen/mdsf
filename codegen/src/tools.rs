@@ -488,7 +488,16 @@ impl Tool {
 
             let command_type_count = command_types.len();
 
+            let serde_rename = format!(
+                "{}{}{}",
+                self.name.as_ref().map_or(&self.binary, |n| n),
+                if cmd.is_empty() { "" } else { ":" },
+                cmd
+            );
+
             let test_mod = if options.tests.is_empty() {
+                println!("Missing tests for: '{serde_rename}'");
+
                 String::new()
             } else {
                 let tests = options
@@ -542,12 +551,7 @@ pub const IS_STDIN: bool = {is_stdin};
                 enum_value: command_name.to_case(Case::Pascal),
                 module_name,
                 code,
-                serde_rename: format!(
-                    "{}{}{}",
-                    self.name.as_ref().map_or(&self.binary, |n| n),
-                    if cmd.is_empty() { "" } else { ":" },
-                    cmd
-                ),
+                serde_rename,
                 args: options.arguments.clone(),
                 binary: self.binary.clone(),
                 homepage: if homepage.is_empty() {

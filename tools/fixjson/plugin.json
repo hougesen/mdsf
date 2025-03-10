@@ -4,7 +4,14 @@
   "categories": ["formatter", "linter"],
   "commands": {
     "": {
-      "arguments": ["-w", "$PATH"]
+      "arguments": ["-w", "$PATH"],
+      "tests": [
+        {
+          "language": "json",
+          "test_input": "{     \"fixjson\": \"fixjson\"  }",
+          "test_output": "{\n  \"fixjson\": \"fixjson\"\n}\n"
+        }
+      ]
     }
   },
   "description": "JSON Fixer for Humans using (relaxed) JSON5",
