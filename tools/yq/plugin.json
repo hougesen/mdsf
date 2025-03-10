@@ -4,7 +4,14 @@
   "categories": ["formatter"],
   "commands": {
     "": {
-      "arguments": ["--inplace", "$PATH"]
+      "arguments": ["--inplace", "$PATH"],
+      "tests": [
+        {
+          "language": "json",
+          "test_input": "{ \"yq\": \"yq\"  }",
+          "test_output": "{\n  \"yq\": \"yq\"\n}\n"
+        }
+      ]
     }
   },
   "description": "yq is a portable command-line YAML, JSON, XML, CSV, TOML and properties processor",
