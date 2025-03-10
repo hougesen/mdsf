@@ -5,23 +5,28 @@ updates:
     schedule:
       interval: weekly
     open-pull-requests-limit: 100
+    assignees: [hougesen]
   - package-ecosystem: cargo
     directory: /mdsf
     schedule:
       interval: weekly
     open-pull-requests-limit: 100
+    assignees: [hougesen]
   - package-ecosystem: cargo
     directory: /codegen
     schedule:
       interval: weekly
     open-pull-requests-limit: 100
+    assignees: [hougesen]
   - package-ecosystem: github-actions
     directory: /
     schedule:
       interval: monthly
     open-pull-requests-limit: 100
+    assignees: [hougesen]
   - package-ecosystem: npm
     directory: /mdsf-vscode
     schedule:
       interval: monthly
     open-pull-requests-limit: 100
+    assignees: [hougesen]
