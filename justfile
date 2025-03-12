@@ -17,8 +17,7 @@ lint-aggressive:
     cargo clean
 
 test:
-    just lint
-    RUST_BACKTRACE=full cargo test --release
+    RUST_BACKTRACE=full cargo nextest run --all-targets --all-features --release
 
 test-coverage:
     cargo llvm-cov clean
@@ -60,9 +59,3 @@ precommit:
     just lint
     just test
     just format
-
-publish:
-    just build
-    just lint
-    cargo clean
-    cargo publish -p mdsf

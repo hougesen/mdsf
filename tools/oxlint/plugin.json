@@ -4,7 +4,14 @@
   "categories": ["linter"],
   "commands": {
     "": {
-      "arguments": ["--fix", "$PATH"]
+      "arguments": ["--fix", "$PATH"],
+      "tests": [
+        {
+          "language": "typescript",
+          "test_input": "debugger;",
+          "test_output": ""
+        }
+      ]
     }
   },
   "description": "Oxlint is designed to catch erroneous or useless code without requiring any configurations by default",

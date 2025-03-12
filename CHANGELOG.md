@@ -4,10 +4,13 @@ All notable changes to this project will be documented in this file. Dates are d
 
 #### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.8.1...HEAD)
 
+- build(deps): bump reqwest from 0.12.12 to 0.12.13 [`#839`](https://github.com/hougesen/mdsf/pull/839)
+
 #### [v0.8.1](https://github.com/hougesen/mdsf/compare/v0.8.0...v0.8.1)
 
 > 10 March 2025
 
+- chore: release v0.8.1 [`#838`](https://github.com/hougesen/mdsf/pull/838)
 - build(deps): bump clap from 4.5.31 to 4.5.32 [`#837`](https://github.com/hougesen/mdsf/pull/837)
 - test(tools): validate toml-sort [`#836`](https://github.com/hougesen/mdsf/pull/836)
 - test(tools): validate yq [`#835`](https://github.com/hougesen/mdsf/pull/835)
