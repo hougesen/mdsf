@@ -17,7 +17,7 @@ lint-aggressive:
     cargo clean
 
 test:
-    RUST_BACKTRACE=full cargo nextest run --all-targets --all-features --release
+    RUST_BACKTRACE=full cargo nextest run --all-targets --all-features --no-fail-fast --release
 
 test-coverage:
     cargo llvm-cov clean

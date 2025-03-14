@@ -11,7 +11,7 @@
         {
           "language": "php",
           "test_input": "<?php\necho \"Hello World!\";\n?>",
-          "test_output": "<?php\necho 'Hello World!';\n"
+          "test_output": "<?php\n\necho 'Hello World!';\n"
         }
       ]
     },

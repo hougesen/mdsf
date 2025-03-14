@@ -21,12 +21,13 @@ pub const IS_STDIN: bool = false;
 #[cfg(test)]
 mod test_mago_format {
     #[test_with::executable(mago)]
-    fn test_mago_format_php_b59dd7491a008d86() {
+    fn test_mago_format_php_17cf4527911d3cc9() {
         let input = r#"<?php
 echo "Hello World!";
 ?>"#;
 
         let output = r#"<?php
+
 echo 'Hello World!';
 "#;
 

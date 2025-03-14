@@ -9,7 +9,7 @@
         {
           "language": "hurl",
           "test_input": "  GET        https://example.ord/cats/123           ",
-          "test_output": "GET https://example.ord/cats/123\n"
+          "test_output": "GET https://example.ord/cats/123"
         }
       ]
     }

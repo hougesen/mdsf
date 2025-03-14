@@ -20,11 +20,10 @@ pub const IS_STDIN: bool = false;
 #[cfg(test)]
 mod test_hurlfmt {
     #[test_with::executable(hurlfmt)]
-    fn test_hurlfmt_hurl_854a543be0e12a7f() {
+    fn test_hurlfmt_hurl_cc8490154955ef91() {
         let input = r#"  GET        https://example.ord/cats/123           "#;
 
-        let output = r#"GET https://example.ord/cats/123
-"#;
+        let output = r#"GET https://example.ord/cats/123"#;
 
         let file_ext = crate::fttype::get_file_extension("hurl");
 
