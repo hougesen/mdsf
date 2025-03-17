@@ -96,6 +96,7 @@ pub fn language_to_ext(language: &str) -> Option<&'static str> {
         "befunge" => Some(".befunge"),
         "berry" => Some(".be"),
         "bh" => Some(".bs"),
+        "bibtex style" => Some(".bst"),
         "bibtex" => Some(".bib"),
         "bicep" => Some(".bicep"),
         "bikeshed" => Some(".bs"),

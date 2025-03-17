@@ -5,6 +5,7 @@ use tempfile::NamedTempFile;
 use which::which;
 
 use crate::{
+    LineInfo,
     config::{MdsfConfig, MdsfConfigRunners},
     error::MdsfError,
     fttype::get_file_extension,
@@ -15,7 +16,6 @@ use crate::{
         print_formatter_time,
     },
     tools::Tooling,
-    LineInfo,
 };
 
 #[inline]

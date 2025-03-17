@@ -4,6 +4,7 @@ All notable changes to this project will be documented in this file. Dates are d
 
 #### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.8.1...HEAD)
 
+- build: upgrade to Rust edition 2024 [`#843`](https://github.com/hougesen/mdsf/pull/843)
 - build(deps): bump tempfile from 3.18.0 to 3.19.0 [`#842`](https://github.com/hougesen/mdsf/pull/842)
 - build(deps): bump reqwest from 0.12.13 to 0.12.14 [`#841`](https://github.com/hougesen/mdsf/pull/841)
 - test(tools): add test for oxlint [`#840`](https://github.com/hougesen/mdsf/pull/840)
