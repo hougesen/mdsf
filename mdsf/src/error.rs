@@ -61,7 +61,10 @@ impl core::fmt::Display for MdsfError {
                 "'{language}' cannot be used with an alias since it already has tools specified"
             ),
             Self::LanguageAliasClash(language, alias, already_set_by) => {
-                write!(f, "'{language}' cannot be aliases to '{alias}' since it is already an alias of '{already_set_by}'")
+                write!(
+                    f,
+                    "'{language}' cannot be aliases to '{alias}' since it is already an alias of '{already_set_by}'"
+                )
             }
             Self::LanguageAliasMissingTools(alias) => write!(
                 f,

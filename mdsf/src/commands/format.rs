@@ -1,12 +1,12 @@
 use std::{
     env::current_dir,
-    sync::{atomic::AtomicU32, Arc},
+    sync::{Arc, atomic::AtomicU32},
 };
 
 use clap::builder::OsStr;
 use mdsf::{
     caching::hash_config,
-    cli::{read_stdin, FormatCommandArguments},
+    cli::{FormatCommandArguments, read_stdin},
     config::MdsfConfig,
     error::MdsfError,
     execution::setup_snippet,

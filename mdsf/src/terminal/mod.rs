@@ -1,7 +1,7 @@
 use console::style;
 use log::{debug, error, info, trace, warn};
 
-use crate::{error::MdsfError, LineInfo};
+use crate::{LineInfo, error::MdsfError};
 
 pub mod logging;
 

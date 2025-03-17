@@ -248,7 +248,7 @@ impl LineInfo<'_> {
 mod tests {
     use crate::{
         config::MdsfConfig,
-        execution::{setup_snippet, MdsfFormatter},
+        execution::{MdsfFormatter, setup_snippet},
         format_file,
         fttype::get_file_extension,
         handle_file,
