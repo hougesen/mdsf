@@ -1,0 +1,34 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "mise",
+  "categories": [],
+  "commands": {
+    "fmt": {
+      "arguments": ["fmt", "--stdin"],
+      "description": "Formats mise.toml",
+      "homepage": "https://mise.jdx.dev/cli/fmt.html",
+      "stdin": true,
+      "tests": [
+        {
+          "language": "toml",
+          "test_input": "[env]\nNODE_ENV = 'production'\n\n\n[tools]\nerlang                = ['23.3', '24.0']\nterraform = '1.0.0'\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n[tasks.build]\nrun = 'echo \"running build tasks\"'\n",
+          "test_output": "[env]\nNODE_ENV = 'production'\n\n\n[tools]\nerlang = ['23.3', '24.0']\nterraform = '1.0.0'\n\n\n[tasks.build]\nrun = 'echo \"running build tasks\"'\n"
+        }
+      ]
+    }
+  },
+  "description": "The front-end to your dev env",
+  "homepage": "https://github.com/jdx/mise",
+  "languages": [],
+  "packages": {
+    "brew": {
+      "package": "mise"
+    },
+    "cargo": {
+      "package": "mise"
+    },
+    "npm": {
+      "package": "@jdxcode/mise"
+    }
+  }
+}

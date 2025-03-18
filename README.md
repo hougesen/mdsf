@@ -389,7 +389,7 @@ mdsf init
 
 <!-- START_SECTION:supported-tools -->
 
-`mdsf` currently supports 282 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 283 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                                                                                 | Description                                                                                                                                   | Categories            | Languages                                                                                                                         |
 | ------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
@@ -540,6 +540,7 @@ mdsf init
 | [mdsf](https://github.com/hougesen/mdsf)                                             | Run mdsf inside mdsf                                                                                                                          | `formatter`           | `markdown`                                                                                                                        |
 | [mdslw](https://github.com/razziel89/mdslw)                                          | Prepare your markdown for easy diff'ing!                                                                                                      | `formatter`           | `markdown`                                                                                                                        |
 | [meson](https://mesonbuild.com/)                                                     | Meson is an open source build system meant to be both extremely fast, and, even more importantly, as user friendly as possible                | `formatter`           | `meson`                                                                                                                           |
+| [mise](https://github.com/jdx/mise)                                                  | The front-end to your dev env                                                                                                                 |                       |                                                                                                                                   |
 | [misspell](https://github.com/client9/misspell/)                                     | Correct commonly misspelled English words in source files                                                                                     | `spell-check`         |                                                                                                                                   |
 | [mix](https://hexdocs.pm/mix/main/Mix.Tasks.Format.html)                             | Code formatter for Elixir                                                                                                                     | `formatter`           | `elixir`                                                                                                                          |
 | [mojo](https://docs.modular.com/mojo/cli/format)                                     | Formats Mojo source files                                                                                                                     | `formatter`           | `mojo`                                                                                                                            |
@@ -682,7 +683,7 @@ mdsf init
 
 <!-- START_SECTION:supported-commands -->
 
-`mdsf` currently supports 311 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 312 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                         | Command                                                                                 |
 | ---------------------------- | --------------------------------------------------------------------------------------- |
@@ -851,6 +852,7 @@ mdsf init
 | `mdsf:format`                | `mdsf format $PATH`                                                                     |
 | `mdslw`                      | `mdslw $PATH`                                                                           |
 | `meson:fmt`                  | `meson fmt -i $PATH`                                                                    |
+| `mise:fmt`                   | `mise fmt --stdin`                                                                      |
 | `misspell`                   | `misspell -w $PATH`                                                                     |
 | `mix:format`                 | `mix format $PATH`                                                                      |
 | `mojo:format`                | `mojo format -q $PATH`                                                                  |

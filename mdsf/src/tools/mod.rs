@@ -166,6 +166,7 @@ pub mod mdsf_check;
 pub mod mdsf_format;
 pub mod mdslw;
 pub mod meson_fmt;
+pub mod mise_fmt;
 pub mod misspell;
 pub mod mix_format;
 pub mod mojo_format;
@@ -1635,6 +1636,14 @@ pub enum Tooling {
     ///
     /// `meson fmt -i $PATH`
     MesonFmt,
+
+    #[serde(rename = "mise:fmt")]
+    /// Formats mise.toml
+    ///
+    /// [https://mise.jdx.dev/cli/fmt.html](https://mise.jdx.dev/cli/fmt.html)
+    ///
+    /// `mise fmt --stdin`
+    MiseFmt,
 
     #[serde(rename = "misspell")]
     /// Correct commonly misspelled English words in source files
@@ -3357,6 +3366,7 @@ impl Tooling {
                 meson_fmt::set_args,
                 meson_fmt::IS_STDIN,
             ),
+            Self::MiseFmt => (&mise_fmt::COMMANDS, mise_fmt::set_args, mise_fmt::IS_STDIN),
             Self::Misspell => (&misspell::COMMANDS, misspell::set_args, misspell::IS_STDIN),
             Self::MixFormat => (
                 &mix_format::COMMANDS,
@@ -3967,6 +3977,7 @@ impl AsRef<str> for Tooling {
             Self::MdsfFormat => "mdsf:format",
             Self::Mdslw => "mdslw",
             Self::MesonFmt => "meson:fmt",
+            Self::MiseFmt => "mise:fmt",
             Self::Misspell => "misspell",
             Self::MixFormat => "mix:format",
             Self::MojoFormat => "mojo:format",
