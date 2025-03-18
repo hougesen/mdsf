@@ -157,6 +157,8 @@ jobs:
         run: ( ( which markdownlint ) || ( ( which npm && npm i -g markdownlint-cli ) ) || ( echo "Unable to install tool" ) )
       - name: markdownlint-cli2
         run: ( ( which markdownlint-cli2 ) || ( ( which npm && npm i -g markdownlint-cli2 ) || ( which brew &&  brew install markdownlint-cli2 ) ) || ( echo "Unable to install tool" ) )
+      - name: mise
+        run: ( ( which mise ) || ( ( which npm && npm i -g @jdxcode/mise ) || ( which cargo && ( cargo binstall mise || cargo install mise ) ) || ( which brew &&  brew install mise ) ) || ( echo "Unable to install tool" ) )
       - name: nixpkgs-fmt
         run: ( ( which nixpkgs-fmt ) || ( ( which cargo && ( cargo binstall nixpkgs-fmt || cargo install nixpkgs-fmt ) ) ) || ( echo "Unable to install tool" ) )
       - name: npm-groovy-lint

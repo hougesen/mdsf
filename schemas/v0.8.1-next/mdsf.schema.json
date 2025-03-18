@@ -925,6 +925,11 @@
           "enum": ["meson:fmt"]
         },
         {
+          "description": "Formats mise.toml\n\n[https://mise.jdx.dev/cli/fmt.html](https://mise.jdx.dev/cli/fmt.html)\n\n`mise fmt --stdin`",
+          "type": "string",
+          "enum": ["mise:fmt"]
+        },
+        {
           "description": "Correct commonly misspelled English words in source files\n\n[https://github.com/client9/misspell/](https://github.com/client9/misspell/)\n\n`misspell -w $PATH`",
           "type": "string",
           "enum": ["misspell"]
