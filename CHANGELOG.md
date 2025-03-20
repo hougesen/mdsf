@@ -2,8 +2,18 @@
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
-#### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.8.1...HEAD)
+#### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.8.2...HEAD)
 
+#### [v0.8.2](https://github.com/hougesen/mdsf/compare/v0.8.1...v0.8.2)
+
+> 20 March 2025
+
+- chore: release v0.8.2 [`#850`](https://github.com/hougesen/mdsf/pull/850)
+- build(deps-dev): bump @typescript-eslint/eslint-plugin in /mdsf-vscode [`#849`](https://github.com/hougesen/mdsf/pull/849)
+- build(deps): bump clap_complete from 4.5.46 to 4.5.47 [`#848`](https://github.com/hougesen/mdsf/pull/848)
+- build(deps-dev): bump @typescript-eslint/parser in /mdsf-vscode [`#847`](https://github.com/hougesen/mdsf/pull/847)
+- build(deps): bump tempfile from 3.19.0 to 3.19.1 [`#845`](https://github.com/hougesen/mdsf/pull/845)
+- build(deps): bump reqwest from 0.12.14 to 0.12.15 [`#846`](https://github.com/hougesen/mdsf/pull/846)
 - feat(tools): add support for mise fmt [`#844`](https://github.com/hougesen/mdsf/pull/844)
 - build: upgrade to Rust edition 2024 [`#843`](https://github.com/hougesen/mdsf/pull/843)
 - build(deps): bump tempfile from 3.18.0 to 3.19.0 [`#842`](https://github.com/hougesen/mdsf/pull/842)
@@ -539,6 +549,10 @@ All notable changes to this project will be documented in this file. Dates are d
 - chore: bump development version to v0.2.2 [`15c76b0`](https://github.com/hougesen/mdsf/commit/15c76b06604110b1970012c8578d2660dc3b6160)
 - chore: update sub deps [`1dcd988`](https://github.com/hougesen/mdsf/commit/1dcd9884d06558fbd8a94c3be4f0a4797353428b)
 - chore: update changelog [`df58b5a`](https://github.com/hougesen/mdsf/commit/df58b5ab273a46519a0966ab95455468a96366ce)
+- test: From&lt;LogLevel&gt; for LevelFilter [`549c92c`](https://github.com/hougesen/mdsf/commit/549c92c7bd550b58506262154a020f95cfeed028)
+- test/dummy-ocp-indent-config [`63df9de`](https://github.com/hougesen/mdsf/commit/63df9de7a8ffd0c416911d74e846261eb5482f85)
+- fix: install typos-cli [`ab59f66`](https://github.com/hougesen/mdsf/commit/ab59f662e2ac497f756f59f00d22074c1bb3a4b3)
+- fix: correct command order [`1fcfac6`](https://github.com/hougesen/mdsf/commit/1fcfac6521458e7a687286e7342dc505e247b4ea)
 
 #### [v0.2.1](https://github.com/hougesen/mdsf/compare/v0.2.0...v0.2.1)
 
@@ -910,6 +924,7 @@ All notable changes to this project will be documented in this file. Dates are d
 - chore: prepare v0.0.1 [`a832e5d`](https://github.com/hougesen/mdsf/commit/a832e5d37d9a2efaebbda71ed0bdb2e5f1130f1d)
 - refactor: only map result once [`1c45e59`](https://github.com/hougesen/mdsf/commit/1c45e59dd2ca20ac38269618dd21d9912dc031ed)
 - chore: update deps [`64a6ebd`](https://github.com/hougesen/mdsf/commit/64a6ebd662090dd84a25a5707891db9e07116b4b)
+- fix: install correct gleam version [`e7a8fd4`](https://github.com/hougesen/mdsf/commit/e7a8fd4bafa53f2a39dbb40d3e91e7fbcdde7a05)
 
 #### v0.0.0
 
@@ -958,3 +973,12 @@ All notable changes to this project will be documented in this file. Dates are d
 - feat: add support for rustfmt [`006a73b`](https://github.com/hougesen/mdsf/commit/006a73bff93903831a0afb838f43a22d299ec8eb)
 - refactor: rename bash to shell [`82b8b4b`](https://github.com/hougesen/mdsf/commit/82b8b4b07643d0984ee533044050166451b8943a)
 - chore: setup project structure [`2703498`](https://github.com/hougesen/mdsf/commit/270349852d61761272112004255d8b10bd45c93d)
+- refactor: move schema generator back to bin [`cdab153`](https://github.com/hougesen/mdsf/commit/cdab1532e6f6d964788b0fa083762c390838f9a2)
+- chore: make commands [`3d7e3ce`](https://github.com/hougesen/mdsf/commit/3d7e3cee478b83c8db9fabca80541032d60d3bc0)
+- fix: typos [`ad01c66`](https://github.com/hougesen/mdsf/commit/ad01c6640c0031d7efb01b20a7be1e007a9c6ba7)
+- feat: add support for stylua [`4ae43ab`](https://github.com/hougesen/mdsf/commit/4ae43abb2d03ed84caa0f98d9e7817a83d77ebce)
+- feat: add support for ruff [`c4f6909`](https://github.com/hougesen/mdsf/commit/c4f6909eeefe3cc0796bd7fac43825a9d1e8b87d)
+- refactor: rename folder to formatters instead of languages [`3fd97e5`](https://github.com/hougesen/mdsf/commit/3fd97e57edc451192afbcae90141979321a327e0)
+- chore: set markdown as disabled by default [`6b9cb31`](https://github.com/hougesen/mdsf/commit/6b9cb310d84f6a97e13df0f266ee1202526e3dfe)
+- chore: rename config.rs to cli.rs [`ea47823`](https://github.com/hougesen/mdsf/commit/ea478232a7fd18dc1f56de57288a64e5eef61da6)
+- docs: add explanation for init command [`7094106`](https://github.com/hougesen/mdsf/commit/70941060b30638aca13e260d6ccf2173b967385f)
