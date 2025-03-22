@@ -6,7 +6,8 @@
     "fmt": {
       "arguments": ["fmt", "$PATH"],
       "description": "Formats Ziggy documents and Ziggy schemas",
-      "homepage": "https://ziggy-lang.io/documentation/ziggy-fmt/"
+      "homepage": "https://ziggy-lang.io/documentation/ziggy-fmt/",
+      "tests": []
     }
   },
   "description": "Formats Ziggy documents and Ziggy schemas",

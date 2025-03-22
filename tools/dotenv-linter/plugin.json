@@ -4,7 +4,8 @@
   "categories": ["linter"],
   "commands": {
     "fix": {
-      "arguments": ["fix", "$PATH"]
+      "arguments": ["fix", "$PATH"],
+      "tests": []
     }
   },
   "description": "Lightning-fast linter for .env files",

@@ -6,7 +6,8 @@
     "query:format": {
       "arguments": ["query", "format", "-i", "$PATH"],
       "description": "Format queries and libraries with CodeQL",
-      "homepage": "https://docs.github.com/en/code-security/codeql-cli/codeql-cli-manual/query-format"
+      "homepage": "https://docs.github.com/en/code-security/codeql-cli/codeql-cli-manual/query-format",
+      "tests": []
     }
   },
   "description": "Format queries and libraries with CodeQL",

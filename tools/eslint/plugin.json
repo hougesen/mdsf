@@ -4,7 +4,8 @@
   "categories": ["linter"],
   "commands": {
     "": {
-      "arguments": ["--fix", "$PATH"]
+      "arguments": ["--fix", "$PATH"],
+      "tests": []
     }
   },
   "description": "Find and fix problems in your JavaScript code",

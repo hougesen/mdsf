@@ -4,7 +4,8 @@
   "categories": ["formatter", "linter"],
   "commands": {
     "": {
-      "arguments": ["$PATH"]
+      "arguments": ["$PATH"],
+      "tests": []
     }
   },
   "description": "Laravel Pint is an opinionated PHP code style fixer for minimalists",

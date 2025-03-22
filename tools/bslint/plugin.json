@@ -4,7 +4,8 @@
   "categories": ["linter"],
   "commands": {
     "": {
-      "arguments": ["--fix", "$PATH"]
+      "arguments": ["--fix", "$PATH"],
+      "tests": []
     }
   },
   "description": "A linter for BrightScript and BrighterScript",

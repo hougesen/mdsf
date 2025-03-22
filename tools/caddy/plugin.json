@@ -6,7 +6,8 @@
     "fmt": {
       "arguments": ["fmt", "$PATH", "-w"],
       "description": "Formats or prettifies a Caddyfile",
-      "homepage": "https://caddyserver.com/docs/command-line#caddy-fmt"
+      "homepage": "https://caddyserver.com/docs/command-line#caddy-fmt",
+      "tests": []
     }
   },
   "description": "Formats or prettifies a Caddyfile",

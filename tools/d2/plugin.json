@@ -5,7 +5,8 @@
   "commands": {
     "fmt": {
       "arguments": ["fmt", "$PATH"],
-      "description": "Format d2 code"
+      "description": "Format d2 code",
+      "tests": []
     }
   },
   "description": "A modern language that turns text to diagrams",

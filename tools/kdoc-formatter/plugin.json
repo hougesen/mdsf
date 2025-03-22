@@ -4,7 +4,8 @@
   "categories": ["formatter"],
   "commands": {
     "": {
-      "arguments": ["--quiet", "$PATH"]
+      "arguments": ["--quiet", "$PATH"],
+      "tests": []
     }
   },
   "description": "Reformats Kotlin KDoc comments, reflowing text and other cleanup",

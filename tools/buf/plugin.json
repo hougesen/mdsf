@@ -18,7 +18,8 @@
     "lint": {
       "arguments": ["lint", "$PATH"],
       "description": "Lint Protobuf files",
-      "homepage": "https://buf.build/docs/lint/overview/"
+      "homepage": "https://buf.build/docs/lint/overview/",
+      "tests": []
     }
   },
   "description": "The best way of working with Protocol Buffers",

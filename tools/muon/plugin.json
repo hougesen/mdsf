@@ -4,10 +4,12 @@
   "categories": ["formatter", "linter"],
   "commands": {
     "fmt": {
-      "arguments": ["fmt", "-i", "$PATH"]
+      "arguments": ["fmt", "-i", "$PATH"],
+      "tests": []
     },
     "lint": {
-      "arguments": ["lint", "-i", "$PATH"]
+      "arguments": ["lint", "-i", "$PATH"],
+      "tests": []
     }
   },
   "description": "An implementation of the meson build system",

@@ -4,10 +4,12 @@
   "categories": ["linter"],
   "commands": {
     "": {
-      "arguments": ["$PATH"]
+      "arguments": ["$PATH"],
+      "tests": []
     },
     "neovim": {
-      "arguments": ["--enable-neovim", "$PATH"]
+      "arguments": ["--enable-neovim", "$PATH"],
+      "tests": []
     }
   },
   "description": "Lint Vim script",

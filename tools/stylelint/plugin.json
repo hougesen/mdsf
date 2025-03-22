@@ -4,7 +4,8 @@
   "categories": ["linter"],
   "commands": {
     "": {
-      "arguments": ["--fix", "$PATH"]
+      "arguments": ["--fix", "$PATH"],
+      "tests": []
     }
   },
   "description": "A mighty CSS linter that helps you avoid errors and enforce conventions",

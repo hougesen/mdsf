@@ -5,11 +5,13 @@
   "commands": {
     "": {
       "arguments": ["$PATH"],
-      "description": "Check input for prose errors"
+      "description": "Check input for prose errors",
+      "tests": []
     },
     "fix": {
       "arguments": ["--fix", "$PATH"],
-      "description": "Tries to fix prose errors"
+      "description": "Tries to fix prose errors",
+      "tests": []
     }
   },
   "description": "The pluggable natural language linter for text and markdown",

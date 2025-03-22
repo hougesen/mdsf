@@ -4,7 +4,8 @@
   "categories": ["linter"],
   "commands": {
     "": {
-      "arguments": ["--refactor", "-i", "$PATH"]
+      "arguments": ["--refactor", "-i", "$PATH"],
+      "tests": []
     }
   },
   "description": "Haskell source code suggestions",

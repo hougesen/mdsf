@@ -4,7 +4,8 @@
   "categories": ["linter"],
   "commands": {
     "": {
-      "arguments": ["--lint", "$PATH"]
+      "arguments": ["--lint", "$PATH"],
+      "tests": []
     }
   },
   "description": "Static analyzer and linter for Clojure code that sparks joy",

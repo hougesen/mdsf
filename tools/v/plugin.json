@@ -6,7 +6,8 @@
     "fmt": {
       "arguments": ["fmt", "-w", "$PATH"],
       "description": "Format V code",
-      "homepage": "https://docs.vlang.io/tools.html#v-fmt"
+      "homepage": "https://docs.vlang.io/tools.html#v-fmt",
+      "tests": []
     }
   },
   "description": "Tooling for V lang",

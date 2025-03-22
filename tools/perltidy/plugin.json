@@ -4,7 +4,8 @@
   "categories": ["formatter"],
   "commands": {
     "": {
-      "arguments": ["-b", "$PATH"]
+      "arguments": ["-b", "$PATH"],
+      "tests": []
     }
   },
   "description": "Perl::Tidy, a source code formatter for Perl",

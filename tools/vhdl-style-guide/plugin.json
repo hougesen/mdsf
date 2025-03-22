@@ -4,7 +4,8 @@
   "categories": ["formatter"],
   "commands": {
     "": {
-      "arguments": ["-f", "$PATH", "--fix"]
+      "arguments": ["-f", "$PATH", "--fix"],
+      "tests": []
     }
   },
   "description": "Style guide enforcement for VHDL",

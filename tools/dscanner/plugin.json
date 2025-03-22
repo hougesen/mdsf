@@ -4,10 +4,12 @@
   "categories": ["linter"],
   "commands": {
     "fix": {
-      "arguments": ["fix", "$PATH"]
+      "arguments": ["fix", "$PATH"],
+      "tests": []
     },
     "lint": {
-      "arguments": ["lint", "$PATH"]
+      "arguments": ["lint", "$PATH"],
+      "tests": []
     }
   },
   "description": "Swiss-army knife for D source code",

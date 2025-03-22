@@ -4,7 +4,8 @@
   "categories": ["formatter"],
   "commands": {
     "fmt": {
-      "arguments": ["fmt", "$PATH"]
+      "arguments": ["fmt", "$PATH"],
+      "tests": []
     }
   },
   "description": "A pluggable and configurable code formatting platform written in Rust",

@@ -4,7 +4,8 @@
   "categories": ["linter"],
   "commands": {
     "": {
-      "arguments": ["lint", "-fix", "$PATH"]
+      "arguments": ["lint", "-fix", "$PATH"],
+      "tests": []
     }
   },
   "description": "A pluggable linter and fixer to enforce Protocol Buffer style and conventions",

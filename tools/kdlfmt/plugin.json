@@ -4,7 +4,8 @@
   "categories": ["formatter"],
   "commands": {
     "": {
-      "arguments": ["format", "$PATH"]
+      "arguments": ["format", "$PATH"],
+      "tests": []
     }
   },
   "description": "A formatter for kdl documents",

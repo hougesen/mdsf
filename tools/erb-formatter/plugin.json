@@ -4,7 +4,8 @@
   "categories": ["formatter"],
   "commands": {
     "": {
-      "arguments": ["$PATH", "--write"]
+      "arguments": ["$PATH", "--write"],
+      "tests": []
     }
   },
   "description": "Format ERB files with speed and precision",

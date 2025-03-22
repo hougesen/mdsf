@@ -4,7 +4,8 @@
   "categories": ["formatter", "linter"],
   "commands": {
     "": {
-      "arguments": ["check", "$PATH", "--fix", "--no-interaction"]
+      "arguments": ["check", "$PATH", "--fix", "--no-interaction"],
+      "tests": []
     }
   },
   "description": "The Easiest way to add coding standard to your PHP project",

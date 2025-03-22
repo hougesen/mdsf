@@ -4,7 +4,8 @@
   "categories": ["formatter"],
   "commands": {
     "": {
-      "arguments": ["--in-place", "$PATH"]
+      "arguments": ["--in-place", "$PATH"],
+      "tests": []
     }
   },
   "description": "refmt stands by Reason Formatter and it formats Reason programs, is a parser and pretty-printer for Reason",

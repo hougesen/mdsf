@@ -5,7 +5,8 @@
   "commands": {
     "fmt": {
       "arguments": ["fmt", "$PATH"],
-      "description": "Format Wa source code"
+      "description": "Format Wa source code",
+      "tests": []
     }
   },
   "description": "Formatter for the wa programming language",

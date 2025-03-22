@@ -4,6 +4,7 @@ All notable changes to this project will be documented in this file. Dates are d
 
 #### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.8.2...HEAD)
 
+- test(tools): add test for misspell [`#864`](https://github.com/hougesen/mdsf/pull/864)
 - test(tools): add test for nginxfmt [`#863`](https://github.com/hougesen/mdsf/pull/863)
 - test(tools): validate nginxbeautifier [`#862`](https://github.com/hougesen/mdsf/pull/862)
 - test: validate coffeelint [`#861`](https://github.com/hougesen/mdsf/pull/861)

@@ -4,7 +4,8 @@
   "categories": ["spell-check"],
   "commands": {
     "": {
-      "arguments": ["$PATH"]
+      "arguments": ["$PATH"],
+      "tests": []
     }
   },
   "description": "Misspelled word linter for Go comments, string literals and embedded files",

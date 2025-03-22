@@ -13,7 +13,8 @@
         "$PATH"
       ],
       "description": "Fix SQL errors",
-      "homepage": "https://docs.sqlfluff.com/en/stable/reference/cli.html#sqlfluff-fix"
+      "homepage": "https://docs.sqlfluff.com/en/stable/reference/cli.html#sqlfluff-fix",
+      "tests": []
     },
     "format": {
       "arguments": [
@@ -44,7 +45,8 @@
         "$PATH"
       ],
       "description": "Lint SQL",
-      "homepage": "https://docs.sqlfluff.com/en/stable/reference/cli.html#sqlfluff-lint"
+      "homepage": "https://docs.sqlfluff.com/en/stable/reference/cli.html#sqlfluff-lint",
+      "tests": []
     }
   },
   "description": "A modular SQL linter and auto-formatter with support for multiple dialects and templated code",

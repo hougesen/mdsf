@@ -26,7 +26,8 @@
     },
     "lint": {
       "arguments": ["lint", "--fix", "$PATH"],
-      "homepage": "https://docs.deno.com/runtime/reference/cli/lint/"
+      "homepage": "https://docs.deno.com/runtime/reference/cli/lint/",
+      "tests": []
     }
   },
   "description": "Formatter and linter for JavaScript and TypeScript",

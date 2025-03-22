@@ -4,7 +4,8 @@
   "categories": ["linter"],
   "commands": {
     "": {
-      "arguments": ["--transform", "--replace", "$PATH"]
+      "arguments": ["--transform", "--replace", "$PATH"],
+      "tests": []
     }
   },
   "description": "The corrective bash syntax highlighter",

@@ -4,7 +4,8 @@
   "categories": ["formatter"],
   "commands": {
     "": {
-      "arguments": ["$PATH", "--write"]
+      "arguments": ["$PATH", "--write"],
+      "tests": []
     }
   },
   "description": "A code formatter for BrightScript and BrighterScript",
