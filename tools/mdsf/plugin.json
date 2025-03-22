@@ -3,15 +3,28 @@
   "binary": "mdsf",
   "categories": ["formatter"],
   "commands": {
-    "check": {
-      "arguments": ["check", "$PATH"]
-    },
     "format": {
-      "arguments": ["format", "$PATH"]
+      "arguments": ["format", "$PATH"],
+      "tests": [
+        {
+          "language": "markdown",
+          "test_input": "",
+          "test_output": ""
+        }
+      ]
+    },
+    "verify": {
+      "arguments": ["verify", "$PATH"],
+      "tests": [
+        {
+          "language": "markdown",
+          "test_input": "",
+          "test_output": ""
+        }
+      ]
     }
   },
   "description": "Run mdsf inside mdsf",
-  "disable_ci_package_install": true,
   "homepage": "https://github.com/hougesen/mdsf",
   "languages": ["markdown"],
   "packages": {

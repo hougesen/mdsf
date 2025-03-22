@@ -8,7 +8,7 @@ pub fn set_args(
     mut cmd: std::process::Command,
     file_path: &std::path::Path,
 ) -> std::process::Command {
-    cmd.arg("format");
+    cmd.arg("verify");
     cmd.arg(file_path);
     cmd
 }
@@ -26,9 +26,9 @@ pub const COMMANDS: [CommandType; 7] = [
 pub const IS_STDIN: bool = false;
 
 #[cfg(test)]
-mod test_mdsf_format {
+mod test_mdsf_verify {
     #[test_with::executable(mdsf || npx || pnpm || deno || bunx)]
-    fn test_mdsf_format_markdown_1e1586f943958589() {
+    fn test_mdsf_verify_markdown_1e1586f943958589() {
         let input = r#""#;
 
         let output = r#""#;
@@ -38,7 +38,7 @@ mod test_mdsf_format {
         let snippet =
             crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
 
-        let result = crate::tools::Tooling::MdsfFormat
+        let result = crate::tools::Tooling::MdsfVerify
             .format_snippet(
                 snippet.path(),
                 crate::testing::DEFAULT_TEST_FORMATTER_TIMEOUT,
