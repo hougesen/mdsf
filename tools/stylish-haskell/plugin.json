@@ -15,7 +15,6 @@
     }
   },
   "description": "Haskell code prettifier",
-  "disable_ci_package_install": true,
   "homepage": "https://github.com/haskell/stylish-haskell",
   "languages": ["haskell"],
   "packages": {

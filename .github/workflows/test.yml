@@ -216,6 +216,8 @@ jobs:
         run: ( ( which standardrb ) || ( ( which gem && gem install standardrb ) ) || ( echo "Unable to install tool" ) )
       - name: stylefmt
         run: ( ( which stylefmt ) || ( ( which npm && npm i -g stylefmt ) ) || ( echo "Unable to install tool" ) )
+      - name: stylish-haskell
+        run: ( ( which stylish-haskell ) || ( ( which brew &&  brew install stylish-haskell ) || ( which stack && stack install stylish-haskell ) || ( which cabal && cabal install stylish-haskell ) ) || ( echo "Unable to install tool" ) )
       - name: stylua
         run: ( ( which stylua ) || ( ( which npm && npm i -g @johnnymorganz/stylua-bin ) || ( which cargo && ( cargo binstall stylua || cargo install stylua ) ) || ( which brew &&  brew install stylua ) ) || ( echo "Unable to install tool" ) )
       - name: swiftformat
