@@ -4,7 +4,8 @@
   "categories": ["linter"],
   "commands": {
     "": {
-      "arguments": ["--fix", "$PATH"]
+      "arguments": ["--fix", "$PATH"],
+      "tests": []
     }
   },
   "description": "An HTML linter for all markup developers",

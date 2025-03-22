@@ -18,7 +18,8 @@
     "html": {
       "arguments": ["--html"],
       "description": "Format HTML",
-      "stdin": true
+      "stdin": true,
+      "tests": []
     }
   },
   "description": "Command-line XML and HTML beautifier and content extractor",

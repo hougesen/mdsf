@@ -4,7 +4,8 @@
   "categories": ["formatter"],
   "commands": {
     "format": {
-      "arguments": ["format", "-q", "$PATH"]
+      "arguments": ["format", "-q", "$PATH"],
+      "tests": []
     }
   },
   "description": "Formats Mojo source files",

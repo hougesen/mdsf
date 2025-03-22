@@ -6,12 +6,14 @@
     "fix": {
       "arguments": ["fix", "$PATH"],
       "description": "Fixes issues produced by dcm analyze, dcm check-unused-code, dcm check-unused-files or dcm check-dependencies commands",
-      "homepage": "https://dcm.dev/docs/cli/formatting/fix/"
+      "homepage": "https://dcm.dev/docs/cli/formatting/fix/",
+      "tests": []
     },
     "format": {
       "arguments": ["format", "$PATH"],
       "description": "Formats dart files",
-      "homepage": "https://dcm.dev/docs/cli/formatting/format/"
+      "homepage": "https://dcm.dev/docs/cli/formatting/format/",
+      "tests": []
     }
   },
   "description": "Code Quality Tool for Flutter Developers",

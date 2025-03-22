@@ -4,7 +4,8 @@
   "categories": ["linter"],
   "commands": {
     "": {
-      "arguments": ["$PATH"]
+      "arguments": ["$PATH"],
+      "tests": []
     }
   },
   "description": "ansible-lint checks playbooks for practices and behavior that could potentially be improved and can fix some of the most common ones for you",

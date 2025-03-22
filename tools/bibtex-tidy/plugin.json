@@ -4,7 +4,8 @@
   "categories": ["formatter"],
   "commands": {
     "": {
-      "arguments": ["-m", "$PATH"]
+      "arguments": ["-m", "$PATH"],
+      "tests": []
     }
   },
   "description": "Cleaner and Formatter for BibTeX files",

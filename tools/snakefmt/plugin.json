@@ -4,7 +4,8 @@
   "categories": ["formatter"],
   "commands": {
     "": {
-      "arguments": ["$PATH"]
+      "arguments": ["$PATH"],
+      "tests": []
     }
   },
   "description": "The uncompromising Snakemake code formatter",

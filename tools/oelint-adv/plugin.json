@@ -4,7 +4,8 @@
   "categories": ["linter"],
   "commands": {
     "": {
-      "arguments": ["--fix", "--nobackup", "--quiet", "$PATH"]
+      "arguments": ["--fix", "--nobackup", "--quiet", "$PATH"],
+      "tests": []
     }
   },
   "description": "Advanced oelint",

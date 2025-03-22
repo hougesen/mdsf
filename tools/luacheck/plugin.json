@@ -4,7 +4,8 @@
   "categories": ["formatter"],
   "commands": {
     "": {
-      "arguments": ["$PATH"]
+      "arguments": ["$PATH"],
+      "tests": []
     }
   },
   "description": "A tool for linting and static analysis of Lua code",

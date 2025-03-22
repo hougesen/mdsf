@@ -4,7 +4,8 @@
   "categories": ["spell-check"],
   "commands": {
     "": {
-      "arguments": ["$PATH", "--check-hidden", "--write-changes"]
+      "arguments": ["$PATH", "--check-hidden", "--write-changes"],
+      "tests": []
     }
   },
   "description": "Check code for common misspellings",

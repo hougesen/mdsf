@@ -4,7 +4,8 @@
   "categories": ["formatter"],
   "commands": {
     "": {
-      "arguments": ["$PATH", "$PATH"]
+      "arguments": ["$PATH", "$PATH"],
+      "tests": []
     }
   },
   "description": "Free Pascal source formatter",

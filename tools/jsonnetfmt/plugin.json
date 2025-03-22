@@ -4,7 +4,8 @@
   "categories": ["formatter"],
   "commands": {
     "": {
-      "arguments": ["-i", "$PATH"]
+      "arguments": ["-i", "$PATH"],
+      "tests": []
     }
   },
   "description": "Formatter for automatically fixing jsonnet stylistic problems",

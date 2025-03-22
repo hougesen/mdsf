@@ -4,7 +4,8 @@
   "categories": ["linter"],
   "commands": {
     "": {
-      "arguments": ["--quiet", "$PATH"]
+      "arguments": ["--quiet", "$PATH"],
+      "tests": []
     }
   },
   "description": "Static code checker for C++",

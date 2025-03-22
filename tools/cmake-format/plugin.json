@@ -4,7 +4,8 @@
   "categories": ["formatter"],
   "commands": {
     "": {
-      "arguments": ["-i", "$PATH"]
+      "arguments": ["-i", "$PATH"],
+      "tests": []
     }
   },
   "description": "cmake-format can format your listfiles nicely so that they don't look like crap",

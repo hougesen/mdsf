@@ -4,7 +4,8 @@
   "categories": ["formatter"],
   "commands": {
     "": {
-      "arguments": ["--force", "$PATH"]
+      "arguments": ["--force", "$PATH"],
+      "tests": []
     }
   },
   "description": "A custom parser/auto-formatter for Standard ML",

@@ -5,7 +5,8 @@
   "commands": {
     "check": {
       "arguments": ["check", "--fix", "--quiet", "$PATH"],
-      "description": "Run the Ruff linter on the input"
+      "description": "Run the Ruff linter on the input",
+      "tests": []
     },
     "format": {
       "arguments": ["format", "--quiet", "$PATH"],

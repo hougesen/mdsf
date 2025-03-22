@@ -4,10 +4,12 @@
   "categories": ["formatter", "linter"],
   "commands": {
     "format": {
-      "arguments": ["format", "$PATH"]
+      "arguments": ["format", "$PATH"],
+      "tests": []
     },
     "lint": {
-      "arguments": ["lint", "$PATH"]
+      "arguments": ["lint", "$PATH"],
+      "tests": []
     }
   },
   "description": "JSONA linter and formatter",

@@ -5,11 +5,13 @@
   "commands": {
     "check": {
       "arguments": ["check", "$PATH"],
-      "description": "Finds errors in Nix code"
+      "description": "Finds errors in Nix code",
+      "tests": []
     },
     "fix": {
       "arguments": ["fix", "$PATH"],
-      "description": "Fixes errors in Nix code"
+      "description": "Fixes errors in Nix code",
+      "tests": []
     }
   },
   "description": "lints and suggestions for the nix programming language",

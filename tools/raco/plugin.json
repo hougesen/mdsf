@@ -4,7 +4,8 @@
   "categories": ["formatter"],
   "commands": {
     "fmt": {
-      "arguments": ["fmt", "-i", "$PATH"]
+      "arguments": ["fmt", "-i", "$PATH"],
+      "tests": []
     }
   },
   "description": "An extensible code formatter for Racket",

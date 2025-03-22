@@ -4,7 +4,8 @@
   "categories": ["formatter"],
   "commands": {
     "": {
-      "arguments": ["-w", "$PATH"]
+      "arguments": ["-w", "$PATH"],
+      "tests": []
     }
   },
   "description": "Go Assembler Formatter",

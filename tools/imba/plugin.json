@@ -4,7 +4,8 @@
   "categories": ["formatter"],
   "commands": {
     "fmt": {
-      "arguments": ["fmt", "-f", "$PATH"]
+      "arguments": ["fmt", "-f", "$PATH"],
+      "tests": []
     }
   },
   "description": "A formatter for Imba",

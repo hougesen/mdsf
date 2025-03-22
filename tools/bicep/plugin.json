@@ -4,7 +4,8 @@
   "categories": ["formatter"],
   "commands": {
     "format": {
-      "arguments": ["format", "$PATH"]
+      "arguments": ["format", "$PATH"],
+      "tests": []
     }
   },
   "description": "Bicep is a declarative language for describing and deploying Azure resources",

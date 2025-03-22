@@ -5,7 +5,8 @@
   "commands": {
     "fmt": {
       "arguments": ["fmt", "$PATH"],
-      "description": "Format Caramel code"
+      "description": "Format Caramel code",
+      "tests": []
     }
   },
   "description": "Formatter for the Caramel programming language",

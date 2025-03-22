@@ -44,7 +44,7 @@ pub struct ToolCommand {
     #[serde(default, skip_serializing_if = "is_false")]
     pub stdin: bool,
 
-    #[serde(default, skip_serializing_if = "Vec::is_empty")]
+    #[serde(default)]
     pub tests: Vec<ToolCommandTest>,
 }
 

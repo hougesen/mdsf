@@ -4,7 +4,8 @@
   "categories": ["formatter"],
   "commands": {
     "": {
-      "arguments": ["--in-place", "$PATH"]
+      "arguments": ["--in-place", "$PATH"],
+      "tests": []
     }
   },
   "description": "Formats docstrings to follow PEP 257",

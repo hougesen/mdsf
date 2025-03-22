@@ -6,7 +6,8 @@
     "fix": {
       "arguments": ["fix", "--apply", "$PATH"],
       "description": "Fixes errors in dart code",
-      "homepage": "https://dart.dev/tools/dart-fix"
+      "homepage": "https://dart.dev/tools/dart-fix",
+      "tests": []
     },
     "format": {
       "arguments": ["format", "$PATH"],
