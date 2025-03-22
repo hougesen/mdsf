@@ -736,7 +736,7 @@ mdsf init
 | `cmake-lint`                 | `cmake-lint $PATH`                                                                      |
 | `codeql:query:format`        | `codeql query format -i $PATH`                                                          |
 | `codespell`                  | `codespell $PATH --check-hidden --write-changes`                                        |
-| `coffeelint`                 | `coffeelint -q -f $PATH`                                                                |
+| `coffeelint`                 | `coffeelint -q $PATH`                                                                   |
 | `cppcheck`                   | `cppcheck $PATH`                                                                        |
 | `cpplint`                    | `cpplint --quiet $PATH`                                                                 |
 | `crlfmt`                     | `crlfmt -w $PATH`                                                                       |
