@@ -145,6 +145,8 @@ jobs:
         run: ( ( which ktfmt ) || ( ( which brew &&  brew install ktfmt ) ) || ( echo "Unable to install tool" ) )
       - name: ktlint
         run: ( ( which ktlint ) || ( ( which brew &&  brew install ktlint ) ) || ( echo "Unable to install tool" ) )
+      - name: kulala-fmt
+        run: ( ( which kulala-fmt ) || ( ( which npm && npm i -g @mistweaverco/kulala-fmt ) ) || ( echo "Unable to install tool" ) )
       - name: lua-format
         run: ( ( which lua-format ) || ( ( which luarocks && luarocks install luaformatter ) ) || ( echo "Unable to install tool" ) )
       - name: mado

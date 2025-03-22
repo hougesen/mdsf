@@ -24,3 +24,40 @@ pub const COMMANDS: [CommandType; 7] = [
 ];
 
 pub const IS_STDIN: bool = false;
+
+#[cfg(test)]
+mod test_kulala_fmt_check {
+    #[ignore]
+    #[test_with::executable(kulala-fmt || npx || pnpm || deno || bunx)]
+    fn test_kulala_fmt_check_http_411ecc2948e745cf() {
+        let input = r#"###
+
+
+GET https://mhouge.dk HTTP/1.1
+"#;
+
+        let output = r#"###
+
+
+GET https://mhouge.dk HTTP/1.1
+"#;
+
+        let file_ext = crate::fttype::get_file_extension("http");
+
+        let snippet =
+            crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
+
+        let result = crate::tools::Tooling::KulalaFmtCheck
+            .format_snippet(
+                snippet.path(),
+                crate::testing::DEFAULT_TEST_FORMATTER_TIMEOUT,
+                crate::testing::DEFAULT_TEST_DEBUG_ENABLED,
+                &crate::config::MdsfConfigRunners::all(),
+            )
+            .expect("it to be successful")
+            .1
+            .expect("it to be some");
+
+        assert_eq!(result, output);
+    }
+}
