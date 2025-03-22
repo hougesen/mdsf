@@ -345,7 +345,7 @@
           "enum": ["codespell"]
         },
         {
-          "description": "Lint your CoffeeScript\n\n[https://github.com/coffeelint/coffeelint](https://github.com/coffeelint/coffeelint)\n\n`coffeelint -q -f $PATH`",
+          "description": "Lint your CoffeeScript\n\n[https://github.com/coffeelint/coffeelint](https://github.com/coffeelint/coffeelint)\n\n`coffeelint -q $PATH`",
           "type": "string",
           "enum": ["coffeelint"]
         },

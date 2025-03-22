@@ -714,7 +714,7 @@ pub enum Tooling {
     ///
     /// [https://github.com/coffeelint/coffeelint](https://github.com/coffeelint/coffeelint)
     ///
-    /// `coffeelint -q -f $PATH`
+    /// `coffeelint -q $PATH`
     Coffeelint,
 
     #[serde(rename = "cppcheck")]
