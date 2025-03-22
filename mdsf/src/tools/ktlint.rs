@@ -21,7 +21,7 @@ pub const IS_STDIN: bool = false;
 #[cfg(test)]
 mod test_ktlint {
     #[test_with::executable(ktlint)]
-    fn test_ktlint_kotlin_65d99b8b0b9bf8e1() {
+    fn test_ktlint_kotlin_3421435c9e766a31() {
         let input = r#"            fun add(a:Int ,b:Int ):Int {
                     return a + b
                 }
@@ -32,9 +32,7 @@ mod test_ktlint {
 fun add(
     a: Int,
     b: Int,
-): Int {
-    return a + b
-}
+): Int = a + b
 "#;
 
         let file_ext = crate::fttype::get_file_extension("kotlin");

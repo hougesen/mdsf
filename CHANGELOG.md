@@ -4,7 +4,11 @@ All notable changes to this project will be documented in this file. Dates are d
 
 #### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.8.2...HEAD)
 
+- test(tools): validate biome:lint and biome:lint:unsafe [`#852`](https://github.com/hougesen/mdsf/pull/852)
 - test(tools): support disabling tool tests [`#851`](https://github.com/hougesen/mdsf/pull/851)
+- test(tools): update ktlint expected output [`f26586c`](https://github.com/hougesen/mdsf/commit/f26586c08a3e926884e93dac32731a29f12c3da4)
+- test(tools): change tofu:fmt test language [`bb9d2d2`](https://github.com/hougesen/mdsf/commit/bb9d2d200f814ade07ab4fae5592fdf9fe0f7101)
+- ci: install homebrew [`d892f7d`](https://github.com/hougesen/mdsf/commit/d892f7dde2e293ccc25d0ca5a5b0a8e7e03ed239)
 
 #### [v0.8.2](https://github.com/hougesen/mdsf/compare/v0.8.1...v0.8.2)
 

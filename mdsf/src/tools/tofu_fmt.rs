@@ -21,7 +21,7 @@ pub const IS_STDIN: bool = false;
 #[cfg(test)]
 mod test_tofu_fmt {
     #[test_with::executable(tofu)]
-    fn test_tofu_fmt_terraform_ad45c247a9c563a1() {
+    fn test_tofu_fmt_tf_4ed0c1fa5333c037() {
         let input = r#"resource "aws_instance" "example" {
                 ami   = "abc123"
 
@@ -38,7 +38,7 @@ mod test_tofu_fmt {
 }
 "#;
 
-        let file_ext = crate::fttype::get_file_extension("terraform");
+        let file_ext = crate::fttype::get_file_extension(".tf");
 
         let snippet =
             crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");

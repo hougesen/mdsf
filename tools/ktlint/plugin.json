@@ -9,7 +9,7 @@
         {
           "language": "kotlin",
           "test_input": "            fun add(a:Int ,b:Int ):Int {\n                    return a + b\n                }\n            ",
-          "test_output": "\n\nfun add(\n    a: Int,\n    b: Int,\n): Int {\n    return a + b\n}\n"
+          "test_output": "\n\nfun add(\n    a: Int,\n    b: Int,\n): Int = a + b\n"
         }
       ]
     }

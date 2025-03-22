@@ -829,7 +829,7 @@ mdsf init
 | `kcl:lint`                   | `kcl lint $PATH`                                                                        |
 | `kdlfmt`                     | `kdlfmt format $PATH`                                                                   |
 | `kdoc-formatter`             | `kdoc-formatter --quiet $PATH`                                                          |
-| `ktfmt`                      | `ktfmt --format --log-level=error $PATH`                                                |
+| `ktfmt`                      | `ktfmt $PATH`                                                                           |
 | `ktlint`                     | `ktlint --format --log-level=error $PATH`                                               |
 | `kulala-fmt:check`           | `kulala-fmt check $PATH`                                                                |
 | `kulala-fmt:format`          | `kulala-fmt format $PATH`                                                               |
