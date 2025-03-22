@@ -7,7 +7,7 @@
       "arguments": ["fmt", "-write=true", "$PATH"],
       "tests": [
         {
-          "language": "terraform",
+          "language": ".tf",
           "test_input": "resource \"aws_instance\" \"example\" {\n                ami   = \"abc123\"\n\n           network_interface  {\n             }\n}\n",
           "test_output": "resource \"aws_instance\" \"example\" {\n  ami = \"abc123\"\n\n  network_interface {\n  }\n}\n"
         }
