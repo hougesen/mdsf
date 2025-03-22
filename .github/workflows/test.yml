@@ -170,6 +170,8 @@ jobs:
         run: ( ( which mise ) || ( ( which npm && npm i -g @jdxcode/mise ) || ( which cargo && ( cargo binstall mise || cargo install mise ) ) || ( which brew &&  brew install mise ) ) || ( echo "Unable to install tool" ) )
       - name: nginxbeautifier
         run: ( ( which nginxbeautifier ) || ( ( which npm && npm i -g nginxbeautifier ) ) || ( echo "Unable to install tool" ) )
+      - name: nginxfmt
+        run: ( ( which nginxfmt ) || ( ( which pipx && pipx install nginxfmt ) ) || ( echo "Unable to install tool" ) )
       - name: nixpkgs-fmt
         run: ( ( which nixpkgs-fmt ) || ( ( which cargo && ( cargo binstall nixpkgs-fmt || cargo install nixpkgs-fmt ) ) ) || ( echo "Unable to install tool" ) )
       - name: npm-groovy-lint
