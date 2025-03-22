@@ -585,6 +585,38 @@ pub const IS_STDIN: bool = {is_stdin};
     }
 }
 
+fn generate_reversible_tooling_test(values: std::collections::BTreeSet<String>) -> String {
+    let mut asserts = values
+        .into_iter()
+        .map(|value| {
+            format!("{INDENT}{INDENT}assert_eq!(Tooling::{value}, reverse(Tooling::{value})?);")
+        })
+        .collect::<Vec<_>>();
+    asserts.sort_unstable();
+
+    let asserts = asserts.join("\n");
+
+    format!(
+        "#[cfg(test)]
+mod test_tooling {{
+{INDENT}use super::Tooling;
+
+{INDENT}fn reverse(tooling: Tooling) -> Result<Tooling, serde_json::Error> {{
+{INDENT}{INDENT}serde_json::from_str::<Tooling>(&format!(\"\\\"{{}}\\\"\", tooling.as_ref()))
+{INDENT}}}
+
+{INDENT}#[allow(clippy::cognitive_complexity)]
+{INDENT}#[test]
+{INDENT}fn value_is_reversible() -> Result<(), serde_json::Error> {{
+{asserts}
+
+{INDENT}{INDENT}Ok(())
+{INDENT}}}
+}}
+"
+    )
+}
+
 #[allow(clippy::too_many_lines)]
 pub fn generate(plugins: &[Tool]) -> anyhow::Result<Vec<GeneratedCommand>> {
     let folder = "mdsf/src/tools";
@@ -632,6 +664,8 @@ impl AsRef<str> for Tooling {
 
     let mut all_commands = Vec::new();
 
+    let mut enum_value_names = std::collections::BTreeSet::new();
+
     for plugin in plugins {
         let converted = plugin.generate();
 
@@ -645,6 +679,8 @@ impl AsRef<str> for Tooling {
 
             let enum_value = &command.enum_value;
             let module_name = &command.module_name;
+
+            enum_value_names.insert(enum_value.to_string());
 
             let homepage = if command.homepage.is_empty() {
                 String::new()
@@ -710,6 +746,8 @@ impl AsRef<str> for Tooling {
     let mut as_ref_content = as_ref_values.into_iter().collect::<Vec<_>>();
     as_ref_content.sort_unstable();
 
+    let reversible_enum_test = generate_reversible_tooling_test(enum_value_names);
+
     let mod_file_contents = format!(
         "{GENERATED_FILE_COMMENT}
 {}
@@ -759,7 +797,8 @@ impl AsRef<str> for Tooling {{
 {INDENT}{INDENT}}}
 {INDENT}}}
 }}
-",
+
+{reversible_enum_test}",
         modules.join("\n"),
         tooling_enum_content.join("\n\n"),
         format_snippet_content.join("\n"),

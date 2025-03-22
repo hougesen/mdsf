@@ -4,6 +4,7 @@ All notable changes to this project will be documented in this file. Dates are d
 
 #### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.8.2...HEAD)
 
+- test(tools): enable stylish-haskell again [`#859`](https://github.com/hougesen/mdsf/pull/859)
 - test(tools): validate embedded mdsf can run [`#858`](https://github.com/hougesen/mdsf/pull/858)
 - test(tools): enable fourmolu in ci [`#857`](https://github.com/hougesen/mdsf/pull/857)
 - test: validate completion command writes to stdout [`#856`](https://github.com/hougesen/mdsf/pull/856)
