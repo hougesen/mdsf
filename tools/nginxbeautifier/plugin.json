@@ -4,7 +4,14 @@
   "categories": ["formatter"],
   "commands": {
     "": {
-      "arguments": ["$PATH"]
+      "arguments": ["$PATH"],
+      "tests": [
+        {
+          "language": ".conf",
+          "test_input": "server {\n    listen 80;\n        listen [::]:80;\n       server_name example.com;\n    }\n",
+          "test_output": "server {\n\tlisten 80;\n\tlisten [::]:80;\n\tserver_name example.com;\n}\n"
+        }
+      ]
     }
   },
   "description": "Format and beautify nginx config files",
