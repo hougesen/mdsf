@@ -98,6 +98,9 @@
       "type": "object",
       "required": ["language", "test_input", "test_output"],
       "properties": {
+        "disabled": {
+          "type": "boolean"
+        },
         "language": {
           "description": "Codeblock language used when generating tests",
           "type": "string"

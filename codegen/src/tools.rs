@@ -15,6 +15,9 @@ const fn is_false(b: &bool) -> bool {
 #[derive(Debug, serde::Deserialize, schemars::JsonSchema, Hash, Clone, serde::Serialize)]
 #[serde(deny_unknown_fields)]
 pub struct ToolCommandTest {
+    #[serde(default, skip_serializing_if = "is_false")]
+    pub disabled: bool,
+
     /// Codeblock language used when generating tests
     pub language: String,
 
@@ -305,7 +308,9 @@ impl Tool {
     fn generate_test(&self, command: &str, test: &ToolCommandTest) -> String {
         let mut hasher = DefaultHasher::new();
 
-        test.hash(&mut hasher);
+        test.language.hash(&mut hasher);
+        test.test_input.hash(&mut hasher);
+        test.test_output.hash(&mut hasher);
 
         let id = format!("{:x}", hasher.finish());
 
@@ -316,8 +321,6 @@ impl Tool {
             "test_{module_name}_{}_{id}",
             test.language.to_case(Case::Snake).replace('.', "")
         );
-
-        let test_output = &test.test_output;
 
         let mut test_with_binaries = vec![self.binary.as_str()];
 
@@ -353,14 +356,26 @@ impl Tool {
 
         let executable = test_with_binaries.join(" || ");
 
+        let disable_attribute = if test.disabled {
+            format!("{INDENT}#[ignore]\n")
+        } else {
+            String::new()
+        };
+
+        let test_input = &test.test_input;
+
+        let test_output = &test.test_output;
+
+        let test_language = &test.language;
+
         let test_code = format!(
-            "{INDENT}#[test_with::executable({executable})]
+            "{disable_attribute}{INDENT}#[test_with::executable({executable})]
 {INDENT}fn {test_fn_name}() {{
-{INDENT}{INDENT}let input = r#\"{input}\"#;
+{INDENT}{INDENT}let input = r#\"{test_input}\"#;
 
 {INDENT}{INDENT}let output = r#\"{test_output}\"#;
 
-{INDENT}{INDENT}let file_ext = crate::fttype::get_file_extension(\"{language}\");
+{INDENT}{INDENT}let file_ext = crate::fttype::get_file_extension(\"{test_language}\");
 
 {INDENT}{INDENT}let snippet =
 {INDENT}{INDENT}{INDENT}crate::execution::setup_snippet(input, &file_ext).expect(\"it to create a snippet file\");
@@ -378,8 +393,6 @@ impl Tool {
 
 {INDENT}{INDENT}assert_eq!(result, output);
 {INDENT}}}",
-            input = test.test_input,
-            language = test.language,
         );
 
         test_code

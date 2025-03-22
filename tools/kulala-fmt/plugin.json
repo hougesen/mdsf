@@ -5,11 +5,27 @@
   "commands": {
     "check": {
       "arguments": ["check", "$PATH"],
-      "description": "Check if .http and .rest code is formatted"
+      "description": "Check if .http and .rest code is formatted",
+      "tests": [
+        {
+          "disabled": true,
+          "language": "http",
+          "test_input": "###\n\n\nGET https://mhouge.dk HTTP/1.1\n",
+          "test_output": "###\n\n\nGET https://mhouge.dk HTTP/1.1\n"
+        }
+      ]
     },
     "format": {
       "arguments": ["format", "$PATH"],
-      "description": "Format .http and .rest code"
+      "description": "Format .http and .rest code",
+      "tests": [
+        {
+          "disabled": true,
+          "language": "http",
+          "test_input": "GET          https://mhouge.dk          ",
+          "test_output": "###\n\n\nGET https://mhouge.dk HTTP/1.1\n"
+        }
+      ]
     }
   },
   "description": "An opinionated .http and .rest file linter and formatter",
