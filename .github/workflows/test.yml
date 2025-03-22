@@ -110,6 +110,8 @@ jobs:
         run: ( ( which fortitude ) || ( ( which brew &&  brew install fortitude ) || ( which pipx && pipx install fortitude-lint ) ) || ( echo "Unable to install tool" ) )
       - name: fortran-linter
         run: ( ( which fortran-linter ) || ( ( which brew &&  brew install fprettify ) || ( which pipx && pipx install fortran-linter ) ) || ( echo "Unable to install tool" ) )
+      - name: fourmolu
+        run: ( ( which fourmolu ) || ( ( which brew &&  brew install fourmolu ) || ( which stack && stack install fourmolu ) || ( which cabal && cabal install fourmolu ) ) || ( echo "Unable to install tool" ) )
       - name: fprettify
         run: ( ( which fprettify ) || ( ( which brew &&  brew install fprettify ) || ( which pipx && pipx install fprettify ) ) || ( echo "Unable to install tool" ) )
       - name: gofumpt
