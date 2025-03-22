@@ -49,6 +49,52 @@ impl CacheEntry {
 
         std::fs::write(p, content)
     }
+
+    #[cfg(test)]
+    pub fn delete(&self) -> std::io::Result<()> {
+        let p = self.to_path();
+
+        let exists = p.try_exists()?;
+
+        if exists {
+            std::fs::remove_file(p)
+        } else {
+            Ok(())
+        }
+    }
+}
+
+#[cfg(test)]
+mod test_cache_entry {
+    use crate::config::MdsfConfig;
+
+    use super::{CacheEntry, hash_config};
+
+    #[test]
+    fn it_should_work() {
+        let config = MdsfConfig::default();
+        let file_path = std::path::PathBuf::from("mdsf");
+
+        let original_content = "Mads was here";
+
+        let cache_entry = CacheEntry::new(hash_config(&config), &file_path, original_content);
+
+        cache_entry
+            .delete()
+            .expect("it to delete any existing cache entry");
+
+        assert!(cache_entry.get().is_none());
+
+        let updated_content = "This is the content after being set";
+
+        cache_entry
+            .set(updated_content)
+            .expect("it to update the cache");
+
+        let cached_content = cache_entry.get().expect("it to return the update content");
+
+        assert_eq!(updated_content, cached_content);
+    }
 }
 
 #[inline]
