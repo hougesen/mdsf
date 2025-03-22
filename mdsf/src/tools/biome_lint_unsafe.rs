@@ -26,3 +26,39 @@ pub const COMMANDS: [CommandType; 7] = [
 ];
 
 pub const IS_STDIN: bool = false;
+
+#[cfg(test)]
+mod test_biome_lint_unsafe {
+    #[test_with::executable(biome || npx || pnpm || deno || bunx)]
+    fn test_biome_lint_unsafe_javascript_9165f2e512bbc53f() {
+        let input = r#"const hello = "hello";
+const world = "world";
+
+console.log("" + hello + world);
+"#;
+
+        let output = r#"const hello = "hello";
+const world = "world";
+
+console.log(`${hello}${world}`);
+"#;
+
+        let file_ext = crate::fttype::get_file_extension("javascript");
+
+        let snippet =
+            crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
+
+        let result = crate::tools::Tooling::BiomeLintUnsafe
+            .format_snippet(
+                snippet.path(),
+                crate::testing::DEFAULT_TEST_FORMATTER_TIMEOUT,
+                crate::testing::DEFAULT_TEST_DEBUG_ENABLED,
+                &crate::config::MdsfConfigRunners::all(),
+            )
+            .expect("it to be successful")
+            .1
+            .expect("it to be some");
+
+        assert_eq!(result, output);
+    }
+}

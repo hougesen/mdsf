@@ -52,12 +52,26 @@
     "lint": {
       "arguments": ["lint", "--write", "$PATH"],
       "description": "Runs the biome linter on input",
-      "homepage": "https://biomejs.dev/reference/cli/#biome-lint"
+      "homepage": "https://biomejs.dev/reference/cli/#biome-lint",
+      "tests": [
+        {
+          "language": "javascript",
+          "test_input": "let variable = 0;\n",
+          "test_output": "const variable = 0;\n"
+        }
+      ]
     },
     "lint:unsafe": {
       "arguments": ["lint", "--write", "--unsafe", "$PATH"],
       "description": "Runs the biome linter with unsafe fixes enable",
-      "homepage": "https://biomejs.dev/reference/cli/#biome-format"
+      "homepage": "https://biomejs.dev/reference/cli/#biome-format",
+      "tests": [
+        {
+          "language": "javascript",
+          "test_input": "const hello = \"hello\";\nconst world = \"world\";\n\nconsole.log(\"\" + hello + world);\n",
+          "test_output": "const hello = \"hello\";\nconst world = \"world\";\n\nconsole.log(`${hello}${world}`);\n"
+        }
+      ]
     }
   },
   "description": "One toolchain for your web project",
