@@ -848,8 +848,8 @@ mdsf init
 | `markuplint`                 | `markuplint --fix $PATH`                                                                |
 | `md-padding`                 | `md-padding -i $PATH`                                                                   |
 | `mdformat`                   | `mdformat $PATH`                                                                        |
-| `mdsf:check`                 | `mdsf check $PATH`                                                                      |
 | `mdsf:format`                | `mdsf format $PATH`                                                                     |
+| `mdsf:verify`                | `mdsf verify $PATH`                                                                     |
 | `mdslw`                      | `mdslw $PATH`                                                                           |
 | `meson:fmt`                  | `meson fmt -i $PATH`                                                                    |
 | `mise:fmt`                   | `mise fmt --stdin`                                                                      |

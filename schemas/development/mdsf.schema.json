@@ -905,14 +905,14 @@
           "enum": ["mdformat"]
         },
         {
-          "description": "Run mdsf inside mdsf\n\n[https://github.com/hougesen/mdsf](https://github.com/hougesen/mdsf)\n\n`mdsf check $PATH`",
-          "type": "string",
-          "enum": ["mdsf:check"]
-        },
-        {
           "description": "Run mdsf inside mdsf\n\n[https://github.com/hougesen/mdsf](https://github.com/hougesen/mdsf)\n\n`mdsf format $PATH`",
           "type": "string",
           "enum": ["mdsf:format"]
+        },
+        {
+          "description": "Run mdsf inside mdsf\n\n[https://github.com/hougesen/mdsf](https://github.com/hougesen/mdsf)\n\n`mdsf verify $PATH`",
+          "type": "string",
+          "enum": ["mdsf:verify"]
         },
         {
           "description": "Prepare your markdown for easy diff'ing!\n\n[https://github.com/razziel89/mdslw](https://github.com/razziel89/mdslw)\n\n`mdslw $PATH`",
