@@ -4127,3 +4127,370 @@ impl AsRef<str> for Tooling {
         }
     }
 }
+
+#[cfg(test)]
+mod test_tooling {
+    use super::Tooling;
+
+    fn reverse(tooling: Tooling) -> Result<Tooling, serde_json::Error> {
+        serde_json::from_str::<Tooling>(&format!("\"{}\"", tooling.as_ref()))
+    }
+
+    #[allow(clippy::cognitive_complexity)]
+    #[test]
+    fn value_is_reversible() -> Result<(), serde_json::Error> {
+        assert_eq!(Tooling::Actionlint, reverse(Tooling::Actionlint)?);
+        assert_eq!(Tooling::AirFormat, reverse(Tooling::AirFormat)?);
+        assert_eq!(Tooling::Alejandra, reverse(Tooling::Alejandra)?);
+        assert_eq!(Tooling::Alex, reverse(Tooling::Alex)?);
+        assert_eq!(Tooling::Ameba, reverse(Tooling::Ameba)?);
+        assert_eq!(Tooling::AnsibleLint, reverse(Tooling::AnsibleLint)?);
+        assert_eq!(Tooling::Asmfmt, reverse(Tooling::Asmfmt)?);
+        assert_eq!(Tooling::Astyle, reverse(Tooling::Astyle)?);
+        assert_eq!(Tooling::AutoOptional, reverse(Tooling::AutoOptional)?);
+        assert_eq!(Tooling::Autocorrect, reverse(Tooling::Autocorrect)?);
+        assert_eq!(Tooling::Autoflake, reverse(Tooling::Autoflake)?);
+        assert_eq!(Tooling::Autopep8, reverse(Tooling::Autopep8)?);
+        assert_eq!(Tooling::Bashate, reverse(Tooling::Bashate)?);
+        assert_eq!(Tooling::BeancountBlack, reverse(Tooling::BeancountBlack)?);
+        assert_eq!(Tooling::Beautysh, reverse(Tooling::Beautysh)?);
+        assert_eq!(Tooling::BibtexTidy, reverse(Tooling::BibtexTidy)?);
+        assert_eq!(Tooling::BicepFormat, reverse(Tooling::BicepFormat)?);
+        assert_eq!(Tooling::BiomeCheck, reverse(Tooling::BiomeCheck)?);
+        assert_eq!(
+            Tooling::BiomeCheckUnsafe,
+            reverse(Tooling::BiomeCheckUnsafe)?
+        );
+        assert_eq!(Tooling::BiomeFormat, reverse(Tooling::BiomeFormat)?);
+        assert_eq!(Tooling::BiomeLint, reverse(Tooling::BiomeLint)?);
+        assert_eq!(Tooling::BiomeLintUnsafe, reverse(Tooling::BiomeLintUnsafe)?);
+        assert_eq!(Tooling::Black, reverse(Tooling::Black)?);
+        assert_eq!(Tooling::BladeFormatter, reverse(Tooling::BladeFormatter)?);
+        assert_eq!(Tooling::Blue, reverse(Tooling::Blue)?);
+        assert_eq!(Tooling::Bpfmt, reverse(Tooling::Bpfmt)?);
+        assert_eq!(Tooling::Brittany, reverse(Tooling::Brittany)?);
+        assert_eq!(Tooling::Brunette, reverse(Tooling::Brunette)?);
+        assert_eq!(Tooling::Bsfmt, reverse(Tooling::Bsfmt)?);
+        assert_eq!(Tooling::Bslint, reverse(Tooling::Bslint)?);
+        assert_eq!(Tooling::BufFormat, reverse(Tooling::BufFormat)?);
+        assert_eq!(Tooling::BufLint, reverse(Tooling::BufLint)?);
+        assert_eq!(Tooling::Buildifier, reverse(Tooling::Buildifier)?);
+        assert_eq!(Tooling::CabalFmt, reverse(Tooling::CabalFmt)?);
+        assert_eq!(Tooling::CabalFormat, reverse(Tooling::CabalFormat)?);
+        assert_eq!(Tooling::CabalPrettify, reverse(Tooling::CabalPrettify)?);
+        assert_eq!(Tooling::CaddyFmt, reverse(Tooling::CaddyFmt)?);
+        assert_eq!(Tooling::CaramelFmt, reverse(Tooling::CaramelFmt)?);
+        assert_eq!(Tooling::CfnLint, reverse(Tooling::CfnLint)?);
+        assert_eq!(Tooling::Checkmake, reverse(Tooling::Checkmake)?);
+        assert_eq!(Tooling::ClangFormat, reverse(Tooling::ClangFormat)?);
+        assert_eq!(Tooling::ClangTidy, reverse(Tooling::ClangTidy)?);
+        assert_eq!(Tooling::CljKondo, reverse(Tooling::CljKondo)?);
+        assert_eq!(Tooling::CljfmtFix, reverse(Tooling::CljfmtFix)?);
+        assert_eq!(Tooling::Cljstyle, reverse(Tooling::Cljstyle)?);
+        assert_eq!(Tooling::CmakeFormat, reverse(Tooling::CmakeFormat)?);
+        assert_eq!(Tooling::CmakeLint, reverse(Tooling::CmakeLint)?);
+        assert_eq!(
+            Tooling::CodeqlQueryFormat,
+            reverse(Tooling::CodeqlQueryFormat)?
+        );
+        assert_eq!(Tooling::Codespell, reverse(Tooling::Codespell)?);
+        assert_eq!(Tooling::Coffeelint, reverse(Tooling::Coffeelint)?);
+        assert_eq!(Tooling::Cppcheck, reverse(Tooling::Cppcheck)?);
+        assert_eq!(Tooling::Cpplint, reverse(Tooling::Cpplint)?);
+        assert_eq!(Tooling::Crlfmt, reverse(Tooling::Crlfmt)?);
+        assert_eq!(Tooling::CrystalFormat, reverse(Tooling::CrystalFormat)?);
+        assert_eq!(Tooling::Csharpier, reverse(Tooling::Csharpier)?);
+        assert_eq!(Tooling::CssBeautify, reverse(Tooling::CssBeautify)?);
+        assert_eq!(Tooling::Csscomb, reverse(Tooling::Csscomb)?);
+        assert_eq!(Tooling::Csslint, reverse(Tooling::Csslint)?);
+        assert_eq!(Tooling::Curlylint, reverse(Tooling::Curlylint)?);
+        assert_eq!(Tooling::D2Fmt, reverse(Tooling::D2Fmt)?);
+        assert_eq!(Tooling::DartFix, reverse(Tooling::DartFix)?);
+        assert_eq!(Tooling::DartFormat, reverse(Tooling::DartFormat)?);
+        assert_eq!(Tooling::DcmFix, reverse(Tooling::DcmFix)?);
+        assert_eq!(Tooling::DcmFormat, reverse(Tooling::DcmFormat)?);
+        assert_eq!(Tooling::Deadnix, reverse(Tooling::Deadnix)?);
+        assert_eq!(Tooling::DenoFmt, reverse(Tooling::DenoFmt)?);
+        assert_eq!(Tooling::DenoLint, reverse(Tooling::DenoLint)?);
+        assert_eq!(Tooling::Dfmt, reverse(Tooling::Dfmt)?);
+        assert_eq!(Tooling::Dhall, reverse(Tooling::Dhall)?);
+        assert_eq!(Tooling::Djade, reverse(Tooling::Djade)?);
+        assert_eq!(Tooling::Djlint, reverse(Tooling::Djlint)?);
+        assert_eq!(Tooling::Docformatter, reverse(Tooling::Docformatter)?);
+        assert_eq!(Tooling::Dockfmt, reverse(Tooling::Dockfmt)?);
+        assert_eq!(Tooling::Docstrfmt, reverse(Tooling::Docstrfmt)?);
+        assert_eq!(Tooling::Doctoc, reverse(Tooling::Doctoc)?);
+        assert_eq!(Tooling::DotenvLinterFix, reverse(Tooling::DotenvLinterFix)?);
+        assert_eq!(Tooling::DprintFmt, reverse(Tooling::DprintFmt)?);
+        assert_eq!(Tooling::DscannerFix, reverse(Tooling::DscannerFix)?);
+        assert_eq!(Tooling::DscannerLint, reverse(Tooling::DscannerLint)?);
+        assert_eq!(
+            Tooling::EasyCodingStandard,
+            reverse(Tooling::EasyCodingStandard)?
+        );
+        assert_eq!(Tooling::Efmt, reverse(Tooling::Efmt)?);
+        assert_eq!(Tooling::ElmFormat, reverse(Tooling::ElmFormat)?);
+        assert_eq!(Tooling::ErbFormatter, reverse(Tooling::ErbFormatter)?);
+        assert_eq!(Tooling::Erlfmt, reverse(Tooling::Erlfmt)?);
+        assert_eq!(Tooling::Eslint, reverse(Tooling::Eslint)?);
+        assert_eq!(Tooling::Fantomas, reverse(Tooling::Fantomas)?);
+        assert_eq!(Tooling::FishIndent, reverse(Tooling::FishIndent)?);
+        assert_eq!(Tooling::Fixjson, reverse(Tooling::Fixjson)?);
+        assert_eq!(Tooling::Floskell, reverse(Tooling::Floskell)?);
+        assert_eq!(Tooling::Fnlfmt, reverse(Tooling::Fnlfmt)?);
+        assert_eq!(Tooling::ForgeFmt, reverse(Tooling::ForgeFmt)?);
+        assert_eq!(Tooling::FortitudeCheck, reverse(Tooling::FortitudeCheck)?);
+        assert_eq!(
+            Tooling::FortitudeCheckFix,
+            reverse(Tooling::FortitudeCheckFix)?
+        );
+        assert_eq!(
+            Tooling::FortitudeCheckFixUnsafe,
+            reverse(Tooling::FortitudeCheckFixUnsafe)?
+        );
+        assert_eq!(Tooling::FortranLinter, reverse(Tooling::FortranLinter)?);
+        assert_eq!(Tooling::Fourmolu, reverse(Tooling::Fourmolu)?);
+        assert_eq!(Tooling::Fprettify, reverse(Tooling::Fprettify)?);
+        assert_eq!(Tooling::FutharkFmt, reverse(Tooling::FutharkFmt)?);
+        assert_eq!(Tooling::Gci, reverse(Tooling::Gci)?);
+        assert_eq!(Tooling::Gdformat, reverse(Tooling::Gdformat)?);
+        assert_eq!(Tooling::Gdlint, reverse(Tooling::Gdlint)?);
+        assert_eq!(Tooling::Gersemi, reverse(Tooling::Gersemi)?);
+        assert_eq!(Tooling::GleamFormat, reverse(Tooling::GleamFormat)?);
+        assert_eq!(Tooling::GluonFmt, reverse(Tooling::GluonFmt)?);
+        assert_eq!(Tooling::Gofmt, reverse(Tooling::Gofmt)?);
+        assert_eq!(Tooling::Gofumpt, reverse(Tooling::Gofumpt)?);
+        assert_eq!(Tooling::Goimports, reverse(Tooling::Goimports)?);
+        assert_eq!(
+            Tooling::GoimportsReviser,
+            reverse(Tooling::GoimportsReviser)?
+        );
+        assert_eq!(Tooling::Golines, reverse(Tooling::Golines)?);
+        assert_eq!(
+            Tooling::GoogleJavaFormat,
+            reverse(Tooling::GoogleJavaFormat)?
+        );
+        assert_eq!(Tooling::Gospel, reverse(Tooling::Gospel)?);
+        assert_eq!(Tooling::GrainFormat, reverse(Tooling::GrainFormat)?);
+        assert_eq!(Tooling::Hadolint, reverse(Tooling::Hadolint)?);
+        assert_eq!(Tooling::HamlLint, reverse(Tooling::HamlLint)?);
+        assert_eq!(Tooling::Hclfmt, reverse(Tooling::Hclfmt)?);
+        assert_eq!(Tooling::Hfmt, reverse(Tooling::Hfmt)?);
+        assert_eq!(Tooling::Hindent, reverse(Tooling::Hindent)?);
+        assert_eq!(Tooling::Hlint, reverse(Tooling::Hlint)?);
+        assert_eq!(Tooling::HtmlBeautify, reverse(Tooling::HtmlBeautify)?);
+        assert_eq!(Tooling::Htmlbeautifier, reverse(Tooling::Htmlbeautifier)?);
+        assert_eq!(Tooling::Htmlhint, reverse(Tooling::Htmlhint)?);
+        assert_eq!(Tooling::Hurlfmt, reverse(Tooling::Hurlfmt)?);
+        assert_eq!(Tooling::ImbaFmt, reverse(Tooling::ImbaFmt)?);
+        assert_eq!(Tooling::InkoFmt, reverse(Tooling::InkoFmt)?);
+        assert_eq!(Tooling::Isort, reverse(Tooling::Isort)?);
+        assert_eq!(Tooling::Joker, reverse(Tooling::Joker)?);
+        assert_eq!(Tooling::Jq, reverse(Tooling::Jq)?);
+        assert_eq!(Tooling::Jqfmt, reverse(Tooling::Jqfmt)?);
+        assert_eq!(Tooling::JsBeautify, reverse(Tooling::JsBeautify)?);
+        assert_eq!(Tooling::Json5Format, reverse(Tooling::Json5Format)?);
+        assert_eq!(Tooling::JsonaFormat, reverse(Tooling::JsonaFormat)?);
+        assert_eq!(Tooling::JsonaLint, reverse(Tooling::JsonaLint)?);
+        assert_eq!(Tooling::Jsonlint, reverse(Tooling::Jsonlint)?);
+        assert_eq!(Tooling::JsonnetLint, reverse(Tooling::JsonnetLint)?);
+        assert_eq!(Tooling::Jsonnetfmt, reverse(Tooling::Jsonnetfmt)?);
+        assert_eq!(Tooling::Jsonpp, reverse(Tooling::Jsonpp)?);
+        assert_eq!(
+            Tooling::JuliaformatterJl,
+            reverse(Tooling::JuliaformatterJl)?
+        );
+        assert_eq!(Tooling::Just, reverse(Tooling::Just)?);
+        assert_eq!(Tooling::KclFmt, reverse(Tooling::KclFmt)?);
+        assert_eq!(Tooling::KclLint, reverse(Tooling::KclLint)?);
+        assert_eq!(Tooling::Kdlfmt, reverse(Tooling::Kdlfmt)?);
+        assert_eq!(Tooling::KdocFormatter, reverse(Tooling::KdocFormatter)?);
+        assert_eq!(Tooling::Ktfmt, reverse(Tooling::Ktfmt)?);
+        assert_eq!(Tooling::Ktlint, reverse(Tooling::Ktlint)?);
+        assert_eq!(Tooling::KulalaFmtCheck, reverse(Tooling::KulalaFmtCheck)?);
+        assert_eq!(Tooling::KulalaFmtFormat, reverse(Tooling::KulalaFmtFormat)?);
+        assert_eq!(Tooling::Leptosfmt, reverse(Tooling::Leptosfmt)?);
+        assert_eq!(
+            Tooling::LiquidsoapPrettier,
+            reverse(Tooling::LiquidsoapPrettier)?
+        );
+        assert_eq!(Tooling::Luacheck, reverse(Tooling::Luacheck)?);
+        assert_eq!(Tooling::Luaformatter, reverse(Tooling::Luaformatter)?);
+        assert_eq!(Tooling::MadoCheck, reverse(Tooling::MadoCheck)?);
+        assert_eq!(Tooling::MagoFormat, reverse(Tooling::MagoFormat)?);
+        assert_eq!(Tooling::MagoLint, reverse(Tooling::MagoLint)?);
+        assert_eq!(Tooling::MagoLintFix, reverse(Tooling::MagoLintFix)?);
+        assert_eq!(
+            Tooling::MagoLintFixUnsafe,
+            reverse(Tooling::MagoLintFixUnsafe)?
+        );
+        assert_eq!(Tooling::Markdownfmt, reverse(Tooling::Markdownfmt)?);
+        assert_eq!(Tooling::Markdownlint, reverse(Tooling::Markdownlint)?);
+        assert_eq!(
+            Tooling::MarkdownlintCli2,
+            reverse(Tooling::MarkdownlintCli2)?
+        );
+        assert_eq!(Tooling::Markuplint, reverse(Tooling::Markuplint)?);
+        assert_eq!(Tooling::MdPadding, reverse(Tooling::MdPadding)?);
+        assert_eq!(Tooling::Mdformat, reverse(Tooling::Mdformat)?);
+        assert_eq!(Tooling::MdsfFormat, reverse(Tooling::MdsfFormat)?);
+        assert_eq!(Tooling::MdsfVerify, reverse(Tooling::MdsfVerify)?);
+        assert_eq!(Tooling::Mdslw, reverse(Tooling::Mdslw)?);
+        assert_eq!(Tooling::MesonFmt, reverse(Tooling::MesonFmt)?);
+        assert_eq!(Tooling::MiseFmt, reverse(Tooling::MiseFmt)?);
+        assert_eq!(Tooling::Misspell, reverse(Tooling::Misspell)?);
+        assert_eq!(Tooling::MixFormat, reverse(Tooling::MixFormat)?);
+        assert_eq!(Tooling::MojoFormat, reverse(Tooling::MojoFormat)?);
+        assert_eq!(Tooling::MuonFmt, reverse(Tooling::MuonFmt)?);
+        assert_eq!(Tooling::MuonLint, reverse(Tooling::MuonLint)?);
+        assert_eq!(Tooling::Mypy, reverse(Tooling::Mypy)?);
+        assert_eq!(Tooling::Nasmfmt, reverse(Tooling::Nasmfmt)?);
+        assert_eq!(Tooling::Nginxbeautifier, reverse(Tooling::Nginxbeautifier)?);
+        assert_eq!(Tooling::Nginxfmt, reverse(Tooling::Nginxfmt)?);
+        assert_eq!(Tooling::NickelFormat, reverse(Tooling::NickelFormat)?);
+        assert_eq!(Tooling::Nimpretty, reverse(Tooling::Nimpretty)?);
+        assert_eq!(Tooling::Nixfmt, reverse(Tooling::Nixfmt)?);
+        assert_eq!(Tooling::NixpkgsFmt, reverse(Tooling::NixpkgsFmt)?);
+        assert_eq!(Tooling::NomadFmt, reverse(Tooling::NomadFmt)?);
+        assert_eq!(Tooling::Nph, reverse(Tooling::Nph)?);
+        assert_eq!(Tooling::NpmGroovyLint, reverse(Tooling::NpmGroovyLint)?);
+        assert_eq!(Tooling::Nufmt, reverse(Tooling::Nufmt)?);
+        assert_eq!(Tooling::Ocamlformat, reverse(Tooling::Ocamlformat)?);
+        assert_eq!(Tooling::OcpIndent, reverse(Tooling::OcpIndent)?);
+        assert_eq!(Tooling::Odinfmt, reverse(Tooling::Odinfmt)?);
+        assert_eq!(Tooling::OelintAdv, reverse(Tooling::OelintAdv)?);
+        assert_eq!(Tooling::OpaFmt, reverse(Tooling::OpaFmt)?);
+        assert_eq!(Tooling::Ormolu, reverse(Tooling::Ormolu)?);
+        assert_eq!(Tooling::Oxlint, reverse(Tooling::Oxlint)?);
+        assert_eq!(Tooling::PackerFix, reverse(Tooling::PackerFix)?);
+        assert_eq!(Tooling::PackerFmt, reverse(Tooling::PackerFmt)?);
+        assert_eq!(Tooling::PackerValidate, reverse(Tooling::PackerValidate)?);
+        assert_eq!(Tooling::Pasfmt, reverse(Tooling::Pasfmt)?);
+        assert_eq!(Tooling::Perltidy, reverse(Tooling::Perltidy)?);
+        assert_eq!(Tooling::PgFormat, reverse(Tooling::PgFormat)?);
+        assert_eq!(Tooling::PhpCsFixerFix, reverse(Tooling::PhpCsFixerFix)?);
+        assert_eq!(Tooling::Phpcbf, reverse(Tooling::Phpcbf)?);
+        assert_eq!(Tooling::PhpinsightsFix, reverse(Tooling::PhpinsightsFix)?);
+        assert_eq!(Tooling::Pint, reverse(Tooling::Pint)?);
+        assert_eq!(Tooling::Prettier, reverse(Tooling::Prettier)?);
+        assert_eq!(Tooling::PrettyPhp, reverse(Tooling::PrettyPhp)?);
+        assert_eq!(Tooling::Prettypst, reverse(Tooling::Prettypst)?);
+        assert_eq!(Tooling::PrismaFormat, reverse(Tooling::PrismaFormat)?);
+        assert_eq!(Tooling::Protolint, reverse(Tooling::Protolint)?);
+        assert_eq!(Tooling::Ptop, reverse(Tooling::Ptop)?);
+        assert_eq!(Tooling::PugLint, reverse(Tooling::PugLint)?);
+        assert_eq!(Tooling::PuppetLint, reverse(Tooling::PuppetLint)?);
+        assert_eq!(Tooling::PursTidy, reverse(Tooling::PursTidy)?);
+        assert_eq!(Tooling::Purty, reverse(Tooling::Purty)?);
+        assert_eq!(Tooling::Pycln, reverse(Tooling::Pycln)?);
+        assert_eq!(Tooling::Pycodestyle, reverse(Tooling::Pycodestyle)?);
+        assert_eq!(Tooling::Pyink, reverse(Tooling::Pyink)?);
+        assert_eq!(Tooling::Pyment, reverse(Tooling::Pyment)?);
+        assert_eq!(Tooling::Qmlfmt, reverse(Tooling::Qmlfmt)?);
+        assert_eq!(Tooling::QuickLintJs, reverse(Tooling::QuickLintJs)?);
+        assert_eq!(Tooling::RacoFmt, reverse(Tooling::RacoFmt)?);
+        assert_eq!(Tooling::Reek, reverse(Tooling::Reek)?);
+        assert_eq!(Tooling::Refmt, reverse(Tooling::Refmt)?);
+        assert_eq!(Tooling::ReformatGherkin, reverse(Tooling::ReformatGherkin)?);
+        assert_eq!(Tooling::RegalFix, reverse(Tooling::RegalFix)?);
+        assert_eq!(Tooling::RegalLint, reverse(Tooling::RegalLint)?);
+        assert_eq!(
+            Tooling::ReorderPythonImports,
+            reverse(Tooling::ReorderPythonImports)?
+        );
+        assert_eq!(Tooling::RescriptFormat, reverse(Tooling::RescriptFormat)?);
+        assert_eq!(Tooling::Revive, reverse(Tooling::Revive)?);
+        assert_eq!(Tooling::RocFormat, reverse(Tooling::RocFormat)?);
+        assert_eq!(Tooling::Rstfmt, reverse(Tooling::Rstfmt)?);
+        assert_eq!(Tooling::Rubocop, reverse(Tooling::Rubocop)?);
+        assert_eq!(Tooling::Rubyfmt, reverse(Tooling::Rubyfmt)?);
+        assert_eq!(Tooling::RuffCheck, reverse(Tooling::RuffCheck)?);
+        assert_eq!(Tooling::RuffFormat, reverse(Tooling::RuffFormat)?);
+        assert_eq!(Tooling::Rufo, reverse(Tooling::Rufo)?);
+        assert_eq!(Tooling::RuneFmt, reverse(Tooling::RuneFmt)?);
+        assert_eq!(Tooling::Runic, reverse(Tooling::Runic)?);
+        assert_eq!(Tooling::Rustfmt, reverse(Tooling::Rustfmt)?);
+        assert_eq!(Tooling::Rustywind, reverse(Tooling::Rustywind)?);
+        assert_eq!(Tooling::SaltLint, reverse(Tooling::SaltLint)?);
+        assert_eq!(Tooling::Scalafmt, reverse(Tooling::Scalafmt)?);
+        assert_eq!(Tooling::Scalariform, reverse(Tooling::Scalariform)?);
+        assert_eq!(Tooling::Selene, reverse(Tooling::Selene)?);
+        assert_eq!(Tooling::Semistandard, reverse(Tooling::Semistandard)?);
+        assert_eq!(Tooling::Shellcheck, reverse(Tooling::Shellcheck)?);
+        assert_eq!(Tooling::Shellharden, reverse(Tooling::Shellharden)?);
+        assert_eq!(Tooling::Shfmt, reverse(Tooling::Shfmt)?);
+        assert_eq!(Tooling::Sleek, reverse(Tooling::Sleek)?);
+        assert_eq!(Tooling::SlimLint, reverse(Tooling::SlimLint)?);
+        assert_eq!(Tooling::Smlfmt, reverse(Tooling::Smlfmt)?);
+        assert_eq!(Tooling::Snakefmt, reverse(Tooling::Snakefmt)?);
+        assert_eq!(Tooling::Solhint, reverse(Tooling::Solhint)?);
+        assert_eq!(Tooling::SphinxLint, reverse(Tooling::SphinxLint)?);
+        assert_eq!(Tooling::SqlFormatter, reverse(Tooling::SqlFormatter)?);
+        assert_eq!(Tooling::SqlfluffFix, reverse(Tooling::SqlfluffFix)?);
+        assert_eq!(Tooling::SqlfluffFormat, reverse(Tooling::SqlfluffFormat)?);
+        assert_eq!(Tooling::SqlfluffLint, reverse(Tooling::SqlfluffLint)?);
+        assert_eq!(Tooling::Sqlfmt, reverse(Tooling::Sqlfmt)?);
+        assert_eq!(Tooling::Sqruff, reverse(Tooling::Sqruff)?);
+        assert_eq!(Tooling::Standardjs, reverse(Tooling::Standardjs)?);
+        assert_eq!(Tooling::Standardrb, reverse(Tooling::Standardrb)?);
+        assert_eq!(Tooling::StatixCheck, reverse(Tooling::StatixCheck)?);
+        assert_eq!(Tooling::StatixFix, reverse(Tooling::StatixFix)?);
+        assert_eq!(Tooling::Stylefmt, reverse(Tooling::Stylefmt)?);
+        assert_eq!(Tooling::Stylelint, reverse(Tooling::Stylelint)?);
+        assert_eq!(Tooling::StylishHaskell, reverse(Tooling::StylishHaskell)?);
+        assert_eq!(Tooling::Stylua, reverse(Tooling::Stylua)?);
+        assert_eq!(Tooling::SuperhtmlFmt, reverse(Tooling::SuperhtmlFmt)?);
+        assert_eq!(Tooling::SwiftFormat, reverse(Tooling::SwiftFormat)?);
+        assert_eq!(Tooling::Swiftformat, reverse(Tooling::Swiftformat)?);
+        assert_eq!(Tooling::Taplo, reverse(Tooling::Taplo)?);
+        assert_eq!(Tooling::TemplFmt, reverse(Tooling::TemplFmt)?);
+        assert_eq!(Tooling::TerraformFmt, reverse(Tooling::TerraformFmt)?);
+        assert_eq!(
+            Tooling::TerragruntHclfmt,
+            reverse(Tooling::TerragruntHclfmt)?
+        );
+        assert_eq!(Tooling::TexFmt, reverse(Tooling::TexFmt)?);
+        assert_eq!(Tooling::Textlint, reverse(Tooling::Textlint)?);
+        assert_eq!(Tooling::TextlintFix, reverse(Tooling::TextlintFix)?);
+        assert_eq!(Tooling::TlintFormat, reverse(Tooling::TlintFormat)?);
+        assert_eq!(Tooling::TofuFmt, reverse(Tooling::TofuFmt)?);
+        assert_eq!(Tooling::TomlSort, reverse(Tooling::TomlSort)?);
+        assert_eq!(Tooling::Topiary, reverse(Tooling::Topiary)?);
+        assert_eq!(Tooling::TsStandard, reverse(Tooling::TsStandard)?);
+        assert_eq!(Tooling::Tsqllint, reverse(Tooling::Tsqllint)?);
+        assert_eq!(Tooling::TwigCsFixerLint, reverse(Tooling::TwigCsFixerLint)?);
+        assert_eq!(Tooling::Twigcs, reverse(Tooling::Twigcs)?);
+        assert_eq!(Tooling::Typos, reverse(Tooling::Typos)?);
+        assert_eq!(Tooling::Typstfmt, reverse(Tooling::Typstfmt)?);
+        assert_eq!(Tooling::Typstyle, reverse(Tooling::Typstyle)?);
+        assert_eq!(Tooling::Ufmt, reverse(Tooling::Ufmt)?);
+        assert_eq!(Tooling::UiuaFmt, reverse(Tooling::UiuaFmt)?);
+        assert_eq!(Tooling::Unimport, reverse(Tooling::Unimport)?);
+        assert_eq!(Tooling::Usort, reverse(Tooling::Usort)?);
+        assert_eq!(Tooling::VFmt, reverse(Tooling::VFmt)?);
+        assert_eq!(Tooling::VacuumLint, reverse(Tooling::VacuumLint)?);
+        assert_eq!(Tooling::VerylFmt, reverse(Tooling::VerylFmt)?);
+        assert_eq!(Tooling::VhdlStyleGuide, reverse(Tooling::VhdlStyleGuide)?);
+        assert_eq!(Tooling::Vint, reverse(Tooling::Vint)?);
+        assert_eq!(Tooling::VintNeovim, reverse(Tooling::VintNeovim)?);
+        assert_eq!(Tooling::WaFmt, reverse(Tooling::WaFmt)?);
+        assert_eq!(Tooling::Wfindent, reverse(Tooling::Wfindent)?);
+        assert_eq!(Tooling::WriteGood, reverse(Tooling::WriteGood)?);
+        assert_eq!(Tooling::Xmlformat, reverse(Tooling::Xmlformat)?);
+        assert_eq!(Tooling::Xmllint, reverse(Tooling::Xmllint)?);
+        assert_eq!(Tooling::Xo, reverse(Tooling::Xo)?);
+        assert_eq!(Tooling::Xq, reverse(Tooling::Xq)?);
+        assert_eq!(Tooling::XqHtml, reverse(Tooling::XqHtml)?);
+        assert_eq!(Tooling::Yamlfix, reverse(Tooling::Yamlfix)?);
+        assert_eq!(Tooling::Yamlfmt, reverse(Tooling::Yamlfmt)?);
+        assert_eq!(Tooling::Yamllint, reverse(Tooling::Yamllint)?);
+        assert_eq!(Tooling::Yapf, reverse(Tooling::Yapf)?);
+        assert_eq!(Tooling::YewFmt, reverse(Tooling::YewFmt)?);
+        assert_eq!(Tooling::Yq, reverse(Tooling::Yq)?);
+        assert_eq!(Tooling::ZigFmt, reverse(Tooling::ZigFmt)?);
+        assert_eq!(Tooling::ZiggyFmt, reverse(Tooling::ZiggyFmt)?);
+        assert_eq!(Tooling::Zprint, reverse(Tooling::Zprint)?);
+
+        Ok(())
+    }
+}
