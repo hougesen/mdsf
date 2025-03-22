@@ -810,7 +810,7 @@
           "enum": ["kdoc-formatter"]
         },
         {
-          "description": "program that reformats Kotlin source code to comply with the common community standard for Kotlin code conventions\n\n[https://github.com/facebook/ktfmt](https://github.com/facebook/ktfmt)\n\n`ktfmt --format --log-level=error $PATH`",
+          "description": "program that reformats Kotlin source code to comply with the common community standard for Kotlin code conventions\n\n[https://github.com/facebook/ktfmt](https://github.com/facebook/ktfmt)\n\n`ktfmt $PATH`",
           "type": "string",
           "enum": ["ktfmt"]
         },

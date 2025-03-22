@@ -1458,7 +1458,7 @@ pub enum Tooling {
     ///
     /// [https://github.com/facebook/ktfmt](https://github.com/facebook/ktfmt)
     ///
-    /// `ktfmt --format --log-level=error $PATH`
+    /// `ktfmt $PATH`
     Ktfmt,
 
     #[serde(rename = "ktlint")]

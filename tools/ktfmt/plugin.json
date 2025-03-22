@@ -4,12 +4,12 @@
   "categories": ["formatter"],
   "commands": {
     "": {
-      "arguments": ["--format", "--log-level=error", "$PATH"],
+      "arguments": ["$PATH"],
       "tests": [
         {
           "language": "kotlin",
           "test_input": "            fun add(a:Int ,b:Int ):Int {\n                    return a + b\n                }\n            ",
-          "test_output": "fun add(a: Int, b: Int): Int {\n    return a + b\n}\n"
+          "test_output": "fun add(a: Int, b: Int): Int {\n  return a + b\n}\n"
         }
       ]
     }

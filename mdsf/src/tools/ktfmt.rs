@@ -8,8 +8,6 @@ pub fn set_args(
     mut cmd: std::process::Command,
     file_path: &std::path::Path,
 ) -> std::process::Command {
-    cmd.arg("--format");
-    cmd.arg("--log-level=error");
     cmd.arg(file_path);
     cmd
 }
@@ -21,14 +19,14 @@ pub const IS_STDIN: bool = false;
 #[cfg(test)]
 mod test_ktfmt {
     #[test_with::executable(ktfmt)]
-    fn test_ktfmt_kotlin_396c64cb15f3d642() {
+    fn test_ktfmt_kotlin_434b08006e9b780a() {
         let input = r#"            fun add(a:Int ,b:Int ):Int {
                     return a + b
                 }
             "#;
 
         let output = r#"fun add(a: Int, b: Int): Int {
-    return a + b
+  return a + b
 }
 "#;
 

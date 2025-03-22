@@ -28,8 +28,11 @@ changelog:
 
 codegen:
     just changelog
+    cargo fmt 
     cargo run --package mdsf-codegen
+    cargo fmt 
     cargo run --package mdsf-codegen
+    cargo fmt 
     dist init --yes
     just format
 
