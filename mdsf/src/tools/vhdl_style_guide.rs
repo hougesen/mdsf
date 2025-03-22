@@ -14,6 +14,10 @@ pub fn set_args(
     cmd
 }
 
-pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("vsg")];
+pub const COMMANDS: [CommandType; 3] = [
+    CommandType::Direct("vsg"),
+    CommandType::Uv("vsg", "vsg"),
+    CommandType::Pipx("vsg"),
+];
 
 pub const IS_STDIN: bool = false;
