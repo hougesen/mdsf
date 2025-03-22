@@ -4,11 +4,22 @@
   "categories": ["spell-check"],
   "commands": {
     "": {
-      "arguments": ["-w", "$PATH"]
+      "arguments": ["-w", "$PATH"],
+      "tests": [
+        {
+          "language": "markdown",
+          "test_input": "langauge",
+          "test_output": "language"
+        }
+      ]
     }
   },
   "description": "Correct commonly misspelled English words in source files",
   "homepage": "https://github.com/client9/misspell/",
   "languages": [],
-  "packages": {}
+  "packages": {
+    "go": {
+      "package": "github.com/client9/misspell/cmd/misspell@latest"
+    }
+  }
 }

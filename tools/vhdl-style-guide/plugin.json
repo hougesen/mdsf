@@ -11,5 +11,9 @@
   "homepage": "https://github.com/jeremiah-c-leary/vhdl-style-guide",
   "languages": ["vhdl"],
   "name": "vhdl-style-guide",
-  "packages": {}
+  "packages": {
+    "pip": {
+      "package": "vsg"
+    }
+  }
 }

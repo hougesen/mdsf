@@ -168,6 +168,8 @@ jobs:
         run: ( ( which mdsf ) || ( ( which npm && npm i -g mdsf-cli ) || ( which cargo && ( cargo binstall mdsf || cargo install mdsf ) ) || ( which brew &&  brew install hougesen/tap/mdsf ) ) || ( echo "Unable to install tool" ) )
       - name: mise
         run: ( ( which mise ) || ( ( which npm && npm i -g @jdxcode/mise ) || ( which cargo && ( cargo binstall mise || cargo install mise ) ) || ( which brew &&  brew install mise ) ) || ( echo "Unable to install tool" ) )
+      - name: misspell
+        run: ( ( which misspell ) || ( ( which go && go install github.com/client9/misspell/cmd/misspell@latest ) ) || ( echo "Unable to install tool" ) )
       - name: nginxbeautifier
         run: ( ( which nginxbeautifier ) || ( ( which npm && npm i -g nginxbeautifier ) ) || ( echo "Unable to install tool" ) )
       - name: nginxfmt
