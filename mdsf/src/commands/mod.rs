@@ -39,7 +39,7 @@ pub fn run_command() -> Result<(), MdsfError> {
 
         Commands::Init => init::run().map_err(MdsfError::from),
         Commands::Completions(args) => {
-            completions::run(&args);
+            completions::run(&args, &mut std::io::stdout());
 
             Ok(())
         }
