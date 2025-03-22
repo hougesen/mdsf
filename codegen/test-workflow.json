@@ -66,6 +66,7 @@
     },
     { "uses": "julia-actions/cache@v2" },
     { "uses": "cargo-bins/cargo-binstall@main" },
+    { "uses": "Homebrew/actions/setup-homebrew@master" },
     {
       "name": "Install cargo-llvm-cov",
       "uses": "taiki-e/install-action@cargo-llvm-cov"

@@ -4,6 +4,7 @@ All notable changes to this project will be documented in this file. Dates are d
 
 #### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.8.2...HEAD)
 
+- test(tools): validate biome:lint and biome:lint:unsafe [`#852`](https://github.com/hougesen/mdsf/pull/852)
 - test(tools): support disabling tool tests [`#851`](https://github.com/hougesen/mdsf/pull/851)
 
 #### [v0.8.2](https://github.com/hougesen/mdsf/compare/v0.8.1...v0.8.2)
