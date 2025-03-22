@@ -4,6 +4,7 @@ All notable changes to this project will be documented in this file. Dates are d
 
 #### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.8.2...HEAD)
 
+- test: validate completion command writes to stdout [`#856`](https://github.com/hougesen/mdsf/pull/856)
 - refactor(cache-prune): indicate if command failed [`#855`](https://github.com/hougesen/mdsf/pull/855)
 - ci: install homebrew [`#853`](https://github.com/hougesen/mdsf/pull/853)
 - test: caching works [`#854`](https://github.com/hougesen/mdsf/pull/854)
