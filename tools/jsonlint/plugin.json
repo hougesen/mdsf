@@ -5,7 +5,13 @@
   "commands": {
     "": {
       "arguments": ["-i", "$PATH"],
-      "tests": []
+      "tests": [
+        {
+          "language": "json",
+          "test_input": "{ \"k\": \"v\" }",
+          "test_output": "{\n  \"k\": \"v\"\n}"
+        }
+      ]
     }
   },
   "description": "A JSON parser and validator with a CLI",

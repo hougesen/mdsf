@@ -24,3 +24,33 @@ pub const COMMANDS: [CommandType; 7] = [
 ];
 
 pub const IS_STDIN: bool = false;
+
+#[cfg(test)]
+mod test_jsonlint {
+    #[test_with::executable(jsonlint || npx || pnpm || deno || bunx)]
+    fn test_jsonlint_json_5d1a6be238b35a5c() {
+        let input = r#"{ "k": "v" }"#;
+
+        let output = r#"{
+  "k": "v"
+}"#;
+
+        let file_ext = crate::fttype::get_file_extension("json");
+
+        let snippet =
+            crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
+
+        let result = crate::tools::Tooling::Jsonlint
+            .format_snippet(
+                snippet.path(),
+                crate::testing::DEFAULT_TEST_FORMATTER_TIMEOUT,
+                crate::testing::DEFAULT_TEST_DEBUG_ENABLED,
+                &crate::config::MdsfConfigRunners::all(),
+            )
+            .expect("it to be successful")
+            .1
+            .expect("it to be some");
+
+        assert_eq!(result, output);
+    }
+}
