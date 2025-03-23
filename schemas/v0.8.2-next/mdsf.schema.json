@@ -1070,6 +1070,11 @@
           "enum": ["pasfmt"]
         },
         {
+          "description": "Python Linter for performance anti patterns\n\n[https://github.com/tonybaloney/perflint](https://github.com/tonybaloney/perflint)\n\n`perflint $PATH`",
+          "type": "string",
+          "enum": ["perflint"]
+        },
+        {
           "description": "Perl::Tidy, a source code formatter for Perl\n\n[https://github.com/perltidy/perltidy](https://github.com/perltidy/perltidy)\n\n`perltidy -b $PATH`",
           "type": "string",
           "enum": ["perltidy"]

@@ -389,7 +389,7 @@ mdsf init
 
 <!-- START_SECTION:supported-tools -->
 
-`mdsf` currently supports 283 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 284 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                                                                                 | Description                                                                                                                                   | Categories            | Languages                                                                                                                         |
 | ------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
@@ -566,6 +566,7 @@ mdsf init
 | [oxlint](https://oxc.rs/docs/guide/usage/linter.html)                                | Oxlint is designed to catch erroneous or useless code without requiring any configurations by default                                         | `linter`              | `javascript`, `typescript`                                                                                                        |
 | [packer](https://developer.hashicorp.com/packer/docs/commands)                       | Packer is used to format HCL2 configuration files                                                                                             | `formatter`           | `hcl`                                                                                                                             |
 | [pasfmt](https://github.com/integrated-application-development/pasfmt)               | Delphi code formatter                                                                                                                         | `formatter`           | `delphi`, `pascal`                                                                                                                |
+| [perflint](https://github.com/tonybaloney/perflint)                                  | Python Linter for performance anti patterns                                                                                                   | `linter`              | `python`                                                                                                                          |
 | [perltidy](https://github.com/perltidy/perltidy)                                     | Perl::Tidy, a source code formatter for Perl                                                                                                  | `formatter`           | `perl`                                                                                                                            |
 | [pg_format](https://github.com/darold/pgformatter)                                   | A PostgreSQL SQL syntax beautifier                                                                                                            | `formatter`           | `sql`                                                                                                                             |
 | [php-cs-fixer](https://github.com/php-cs-fixer/php-cs-fixer)                         | A tool to automatically fix PHP Coding Standards issues                                                                                       | `formatter`, `linter` | `php`                                                                                                                             |
@@ -683,7 +684,7 @@ mdsf init
 
 <!-- START_SECTION:supported-commands -->
 
-`mdsf` currently supports 312 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 313 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                         | Command                                                                                 |
 | ---------------------------- | --------------------------------------------------------------------------------------- |
@@ -881,6 +882,7 @@ mdsf init
 | `packer:fmt`                 | `packer fmt $PATH`                                                                      |
 | `packer:validate`            | `packer validate $PATH`                                                                 |
 | `pasfmt`                     | `pasfmt $PATH`                                                                          |
+| `perflint`                   | `perflint $PATH`                                                                        |
 | `perltidy`                   | `perltidy -b $PATH`                                                                     |
 | `pg_format`                  | `pg_format --inplace $PATH`                                                             |
 | `php-cs-fixer:fix`           | `php-cs-fixer fix $PATH`                                                                |
