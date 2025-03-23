@@ -389,7 +389,7 @@ mdsf init
 
 <!-- START_SECTION:supported-tools -->
 
-`mdsf` currently supports 286 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 287 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                                                                                 | Description                                                                                                                                   | Categories            | Languages                                                                                                                         |
 | ------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
@@ -594,6 +594,7 @@ mdsf init
 | [reek](https://github.com/troessner/reek)                                            | Code smell detector for Ruby                                                                                                                  | `linter`              | `ruby`                                                                                                                            |
 | [refmt](https://reasonml.github.io/docs/en/refmt)                                    | refmt stands by Reason Formatter and it formats Reason programs, is a parser and pretty-printer for Reason                                    | `formatter`           | `reason`                                                                                                                          |
 | [reformat-gherkin](https://github.com/ducminh-phan/reformat-gherkin)                 | Reformat-gherkin automatically formats Gherkin files                                                                                          | `formatter`           | `gherkin`                                                                                                                         |
+| [refurb](https://github.com/dosisod/refurb)                                          | A tool for refurbishing and modernizing Python codebases                                                                                      | `linter`              | `python`                                                                                                                          |
 | [regal](https://github.com/styrainc/regal)                                           | Regal is a linter and language server for Rego, bringing your policy development experience to the next level                                 | `linter`              | `rego`                                                                                                                            |
 | [reorder-python-imports](https://github.com/asottile/reorder-python-imports)         | Rewrites source to reorder python imports                                                                                                     | `formatter`           | `python`                                                                                                                          |
 | [rescript](https://github.com/rescript-lang/rescript)                                | Formatter for ReScript                                                                                                                        | `formatter`           | `rescript`                                                                                                                        |
@@ -686,7 +687,7 @@ mdsf init
 
 <!-- START_SECTION:supported-commands -->
 
-`mdsf` currently supports 315 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 316 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                         | Command                                                                                 |
 | ---------------------------- | --------------------------------------------------------------------------------------- |
@@ -912,6 +913,7 @@ mdsf init
 | `reek`                       | `reek $PATH`                                                                            |
 | `refmt`                      | `refmt --in-place $PATH`                                                                |
 | `reformat-gherkin`           | `reformat-gherkin $PATH`                                                                |
+| `refurb`                     | `refurb $PATH`                                                                          |
 | `regal:fix`                  | `regal fix $PATH`                                                                       |
 | `regal:lint`                 | `regal lint $PATH`                                                                      |
 | `reorder-python-imports`     | `reorder-python-imports $PATH`                                                          |

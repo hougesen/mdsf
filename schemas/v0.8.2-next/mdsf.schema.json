@@ -1210,6 +1210,11 @@
           "enum": ["reformat-gherkin"]
         },
         {
+          "description": "A tool for refurbishing and modernizing Python codebases\n\n[https://github.com/dosisod/refurb](https://github.com/dosisod/refurb)\n\n`refurb $PATH`",
+          "type": "string",
+          "enum": ["refurb"]
+        },
+        {
           "description": "Lint and fix Rego code errors\n\n[https://github.com/styrainc/regal](https://github.com/styrainc/regal)\n\n`regal fix $PATH`",
           "type": "string",
           "enum": ["regal:fix"]
