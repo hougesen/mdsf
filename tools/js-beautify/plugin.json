@@ -5,7 +5,13 @@
   "commands": {
     "": {
       "arguments": ["-r", "--type", "js", "-f", "$PATH"],
-      "tests": []
+      "tests": [
+        {
+          "language": "javascript",
+          "test_input": "function add (a,b){return a +b }",
+          "test_output": "function add(a, b) {\n    return a + b\n}"
+        }
+      ]
     }
   },
   "description": "A JavaScript formatter",

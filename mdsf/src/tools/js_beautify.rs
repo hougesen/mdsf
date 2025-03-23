@@ -27,3 +27,33 @@ pub const COMMANDS: [CommandType; 7] = [
 ];
 
 pub const IS_STDIN: bool = false;
+
+#[cfg(test)]
+mod test_js_beautify {
+    #[test_with::executable(js-beautify || npx || pnpm || deno || bunx)]
+    fn test_js_beautify_javascript_151bf21bc63609e8() {
+        let input = r#"function add (a,b){return a +b }"#;
+
+        let output = r#"function add(a, b) {
+    return a + b
+}"#;
+
+        let file_ext = crate::fttype::get_file_extension("javascript");
+
+        let snippet =
+            crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
+
+        let result = crate::tools::Tooling::JsBeautify
+            .format_snippet(
+                snippet.path(),
+                crate::testing::DEFAULT_TEST_FORMATTER_TIMEOUT,
+                crate::testing::DEFAULT_TEST_DEBUG_ENABLED,
+                &crate::config::MdsfConfigRunners::all(),
+            )
+            .expect("it to be successful")
+            .1
+            .expect("it to be some");
+
+        assert_eq!(result, output);
+    }
+}
