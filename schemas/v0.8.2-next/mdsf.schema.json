@@ -1170,6 +1170,11 @@
           "enum": ["pycodestyle"]
         },
         {
+          "description": "Automatically format your Python docstrings to conform with PEP 8 and PEP 257\n\n[https://github.com/danielnoord/pydocstringformatter](https://github.com/danielnoord/pydocstringformatter)\n\n`pydocstringformatter -w $PATH`",
+          "type": "string",
+          "enum": ["pydocstringformatter"]
+        },
+        {
           "description": "Pyink is a Python formatter, forked from Black with a few different formatting behaviors\n\n[https://github.com/google/pyink](https://github.com/google/pyink)\n\n`pyink --quiet $PATH`",
           "type": "string",
           "enum": ["pyink"]

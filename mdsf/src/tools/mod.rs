@@ -215,6 +215,7 @@ pub mod purs_tidy;
 pub mod purty;
 pub mod pycln;
 pub mod pycodestyle;
+pub mod pydocstringformatter;
 pub mod pyink;
 pub mod pyment;
 pub mod qmlfmt;
@@ -2033,6 +2034,14 @@ pub enum Tooling {
     /// `pycodestyle $PATH`
     Pycodestyle,
 
+    #[serde(rename = "pydocstringformatter")]
+    /// Automatically format your Python docstrings to conform with PEP 8 and PEP 257
+    ///
+    /// [https://github.com/danielnoord/pydocstringformatter](https://github.com/danielnoord/pydocstringformatter)
+    ///
+    /// `pydocstringformatter -w $PATH`
+    Pydocstringformatter,
+
     #[serde(rename = "pyink")]
     /// Pyink is a Python formatter, forked from Black with a few different formatting behaviors
     ///
@@ -3551,6 +3560,11 @@ impl Tooling {
                 pycodestyle::set_args,
                 pycodestyle::IS_STDIN,
             ),
+            Self::Pydocstringformatter => (
+                &pydocstringformatter::COMMANDS,
+                pydocstringformatter::set_args,
+                pydocstringformatter::IS_STDIN,
+            ),
             Self::Pyink => (&pyink::COMMANDS, pyink::set_args, pyink::IS_STDIN),
             Self::Pyment => (&pyment::COMMANDS, pyment::set_args, pyment::IS_STDIN),
             Self::Qmlfmt => (&qmlfmt::COMMANDS, qmlfmt::set_args, qmlfmt::IS_STDIN),
@@ -4070,6 +4084,7 @@ impl AsRef<str> for Tooling {
             Self::Purty => "purty",
             Self::Pycln => "pycln",
             Self::Pycodestyle => "pycodestyle",
+            Self::Pydocstringformatter => "pydocstringformatter",
             Self::Pyink => "pyink",
             Self::Pyment => "pyment",
             Self::Qmlfmt => "qmlfmt",
@@ -4434,6 +4449,10 @@ mod test_tooling {
         assert_eq!(Tooling::Purty, reverse(Tooling::Purty)?);
         assert_eq!(Tooling::Pycln, reverse(Tooling::Pycln)?);
         assert_eq!(Tooling::Pycodestyle, reverse(Tooling::Pycodestyle)?);
+        assert_eq!(
+            Tooling::Pydocstringformatter,
+            reverse(Tooling::Pydocstringformatter)?
+        );
         assert_eq!(Tooling::Pyink, reverse(Tooling::Pyink)?);
         assert_eq!(Tooling::Pyment, reverse(Tooling::Pyment)?);
         assert_eq!(Tooling::Qmlfmt, reverse(Tooling::Qmlfmt)?);

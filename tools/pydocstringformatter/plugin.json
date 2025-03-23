@@ -1,0 +1,19 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "pydocstringformatter",
+  "categories": ["formatter"],
+  "commands": {
+    "": {
+      "arguments": ["-w", "$PATH"],
+      "tests": []
+    }
+  },
+  "description": "Automatically format your Python docstrings to conform with PEP 8 and PEP 257",
+  "homepage": "https://github.com/danielnoord/pydocstringformatter",
+  "languages": ["python"],
+  "packages": {
+    "pip": {
+      "package": "pydocstringformatter"
+    }
+  }
+}
