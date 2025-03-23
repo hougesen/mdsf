@@ -389,7 +389,7 @@ mdsf init
 
 <!-- START_SECTION:supported-tools -->
 
-`mdsf` currently supports 285 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 286 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                                                                                 | Description                                                                                                                                   | Categories            | Languages                                                                                                                         |
 | ------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
@@ -646,6 +646,7 @@ mdsf init
 | [tofu](https://opentofu.org/docs/cli/commands/fmt/)                                  | The tofu fmt command is used to rewrite OpenTofu configuration files to a canonical format and style                                          | `formatter`           | `terraform`, `tofu`                                                                                                               |
 | [toml-sort](https://github.com/pappasam/toml-sort)                                   | A command line utility to sort and format toml files                                                                                          | `formatter`           | `toml`                                                                                                                            |
 | [topiary](https://github.com/tweag/topiary)                                          | Topiary aims to be a uniform formatter for simple languages, as part of the Tree-sitter ecosystem                                             | `formatter`           |                                                                                                                                   |
+| [tryceratops](https://github.com/guilatrova/tryceratops)                             | A linter to prevent exception handling antipatterns in Python                                                                                 | `linter`              | `python`                                                                                                                          |
 | [ts-standard](https://github.com/standard/ts-standard)                               | Typescript style guide, linter, and formatter using StandardJS                                                                                | `formatter`, `linter` | `typescript`                                                                                                                      |
 | [tsqllint](https://github.com/tsqllint/tsqllint)                                     | Configurable linting for TSQL                                                                                                                 | `linter`              | `sql`                                                                                                                             |
 | [twig-cs-fixer](https://github.com/vincentlanglet/twig-cs-fixer)                     | A tool to automatically fix Twig Coding Standards issues                                                                                      | `formatter`, `linter` | `twig`                                                                                                                            |
@@ -685,7 +686,7 @@ mdsf init
 
 <!-- START_SECTION:supported-commands -->
 
-`mdsf` currently supports 314 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 315 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                         | Command                                                                                 |
 | ---------------------------- | --------------------------------------------------------------------------------------- |
@@ -969,6 +970,7 @@ mdsf init
 | `tofu:fmt`                   | `tofu fmt -write=true $PATH`                                                            |
 | `toml-sort`                  | `toml-sort -i $PATH`                                                                    |
 | `topiary`                    | `topiary format $PATH`                                                                  |
+| `tryceratops`                | `tryceratops --autofix $PATH`                                                           |
 | `ts-standard`                | `ts-standard --fix $PATH`                                                               |
 | `tsqllint`                   | `tsqllint --fix $PATH`                                                                  |
 | `twig-cs-fixer:lint`         | `twig-cs-fixer lint $PATH --fix --no-interaction --quiet`                               |

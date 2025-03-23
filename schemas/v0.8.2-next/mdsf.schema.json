@@ -1500,6 +1500,11 @@
           "enum": ["topiary"]
         },
         {
+          "description": "A linter to prevent exception handling antipatterns in Python\n\n[https://github.com/guilatrova/tryceratops](https://github.com/guilatrova/tryceratops)\n\n`tryceratops --autofix $PATH`",
+          "type": "string",
+          "enum": ["tryceratops"]
+        },
+        {
           "description": "Typescript style guide, linter, and formatter using StandardJS\n\n[https://github.com/standard/ts-standard](https://github.com/standard/ts-standard)\n\n`ts-standard --fix $PATH`",
           "type": "string",
           "enum": ["ts-standard"]

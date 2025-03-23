@@ -281,6 +281,7 @@ pub mod tlint_format;
 pub mod tofu_fmt;
 pub mod toml_sort;
 pub mod topiary;
+pub mod tryceratops;
 pub mod ts_standard;
 pub mod tsqllint;
 pub mod twig_cs_fixer_lint;
@@ -2559,6 +2560,14 @@ pub enum Tooling {
     /// `topiary format $PATH`
     Topiary,
 
+    #[serde(rename = "tryceratops")]
+    /// A linter to prevent exception handling antipatterns in Python
+    ///
+    /// [https://github.com/guilatrova/tryceratops](https://github.com/guilatrova/tryceratops)
+    ///
+    /// `tryceratops --autofix $PATH`
+    Tryceratops,
+
     #[serde(rename = "ts-standard")]
     /// Typescript style guide, linter, and formatter using StandardJS
     ///
@@ -3743,6 +3752,11 @@ impl Tooling {
                 toml_sort::IS_STDIN,
             ),
             Self::Topiary => (&topiary::COMMANDS, topiary::set_args, topiary::IS_STDIN),
+            Self::Tryceratops => (
+                &tryceratops::COMMANDS,
+                tryceratops::set_args,
+                tryceratops::IS_STDIN,
+            ),
             Self::TsStandard => (
                 &ts_standard::COMMANDS,
                 ts_standard::set_args,
@@ -4112,6 +4126,7 @@ impl AsRef<str> for Tooling {
             Self::TofuFmt => "tofu:fmt",
             Self::TomlSort => "toml-sort",
             Self::Topiary => "topiary",
+            Self::Tryceratops => "tryceratops",
             Self::TsStandard => "ts-standard",
             Self::Tsqllint => "tsqllint",
             Self::TwigCsFixerLint => "twig-cs-fixer:lint",
@@ -4480,6 +4495,7 @@ mod test_tooling {
         assert_eq!(Tooling::TofuFmt, reverse(Tooling::TofuFmt)?);
         assert_eq!(Tooling::TomlSort, reverse(Tooling::TomlSort)?);
         assert_eq!(Tooling::Topiary, reverse(Tooling::Topiary)?);
+        assert_eq!(Tooling::Tryceratops, reverse(Tooling::Tryceratops)?);
         assert_eq!(Tooling::TsStandard, reverse(Tooling::TsStandard)?);
         assert_eq!(Tooling::Tsqllint, reverse(Tooling::Tsqllint)?);
         assert_eq!(Tooling::TwigCsFixerLint, reverse(Tooling::TwigCsFixerLint)?);

@@ -1,0 +1,19 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "tryceratops",
+  "categories": ["linter"],
+  "commands": {
+    "": {
+      "arguments": ["--autofix", "$PATH"],
+      "tests": []
+    }
+  },
+  "description": "A linter to prevent exception handling antipatterns in Python",
+  "homepage": "https://github.com/guilatrova/tryceratops",
+  "languages": ["python"],
+  "packages": {
+    "pip": {
+      "package": "tryceratops"
+    }
+  }
+}
