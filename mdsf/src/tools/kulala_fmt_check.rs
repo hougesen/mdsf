@@ -27,7 +27,6 @@ pub const IS_STDIN: bool = false;
 
 #[cfg(test)]
 mod test_kulala_fmt_check {
-    #[ignore]
     #[test_with::executable(kulala-fmt || npx || pnpm || deno || bunx)]
     fn test_kulala_fmt_check_http_411ecc2948e745cf() {
         let input = r#"###

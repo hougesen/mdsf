@@ -27,7 +27,6 @@ pub const IS_STDIN: bool = false;
 
 #[cfg(test)]
 mod test_kulala_fmt_format {
-    #[ignore]
     #[test_with::executable(kulala-fmt || npx || pnpm || deno || bunx)]
     fn test_kulala_fmt_format_http_51b00899e0a1c815() {
         let input = r#"GET          https://mhouge.dk          "#;
