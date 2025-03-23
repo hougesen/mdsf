@@ -190,6 +190,8 @@ jobs:
         run: ( ( which ormolu ) || ( ( which brew &&  brew install ormolu ) || ( which apt-get && sudo apt-get install -y ormolu ) || ( which stack && stack install ormolu ) || ( which cabal && cabal install ormolu ) ) || ( echo "Unable to install tool" ) )
       - name: oxlint
         run: ( ( which oxlint ) || ( ( which npm && npm i -g oxlint ) ) || ( echo "Unable to install tool" ) )
+      - name: perflint
+        run: ( ( which perflint ) || ( ( which pipx && pipx install perflint ) ) || ( echo "Unable to install tool" ) )
       - name: prettier
         run: ( ( which prettier ) || ( ( which npm && npm i -g prettier ) ) || ( echo "Unable to install tool" ) )
       - name: prisma

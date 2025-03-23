@@ -195,6 +195,7 @@ pub mod packer_fix;
 pub mod packer_fmt;
 pub mod packer_validate;
 pub mod pasfmt;
+pub mod perflint;
 pub mod perltidy;
 pub mod pg_format;
 pub mod php_cs_fixer_fix;
@@ -1869,6 +1870,14 @@ pub enum Tooling {
     /// `pasfmt $PATH`
     Pasfmt,
 
+    #[serde(rename = "perflint")]
+    /// Python Linter for performance anti patterns
+    ///
+    /// [https://github.com/tonybaloney/perflint](https://github.com/tonybaloney/perflint)
+    ///
+    /// `perflint $PATH`
+    Perflint,
+
     #[serde(rename = "perltidy")]
     /// Perl::Tidy, a source code formatter for Perl
     ///
@@ -3455,6 +3464,7 @@ impl Tooling {
                 packer_validate::IS_STDIN,
             ),
             Self::Pasfmt => (&pasfmt::COMMANDS, pasfmt::set_args, pasfmt::IS_STDIN),
+            Self::Perflint => (&perflint::COMMANDS, perflint::set_args, perflint::IS_STDIN),
             Self::Perltidy => (&perltidy::COMMANDS, perltidy::set_args, perltidy::IS_STDIN),
             Self::PgFormat => (
                 &pg_format::COMMANDS,
@@ -4006,6 +4016,7 @@ impl AsRef<str> for Tooling {
             Self::PackerFmt => "packer:fmt",
             Self::PackerValidate => "packer:validate",
             Self::Pasfmt => "pasfmt",
+            Self::Perflint => "perflint",
             Self::Perltidy => "perltidy",
             Self::PgFormat => "pg_format",
             Self::PhpCsFixerFix => "php-cs-fixer:fix",
@@ -4366,6 +4377,7 @@ mod test_tooling {
         assert_eq!(Tooling::PackerFmt, reverse(Tooling::PackerFmt)?);
         assert_eq!(Tooling::PackerValidate, reverse(Tooling::PackerValidate)?);
         assert_eq!(Tooling::Pasfmt, reverse(Tooling::Pasfmt)?);
+        assert_eq!(Tooling::Perflint, reverse(Tooling::Perflint)?);
         assert_eq!(Tooling::Perltidy, reverse(Tooling::Perltidy)?);
         assert_eq!(Tooling::PgFormat, reverse(Tooling::PgFormat)?);
         assert_eq!(Tooling::PhpCsFixerFix, reverse(Tooling::PhpCsFixerFix)?);
