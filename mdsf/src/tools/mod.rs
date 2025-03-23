@@ -218,6 +218,7 @@ pub mod pycln;
 pub mod pycodestyle;
 pub mod pydoclint;
 pub mod pydocstringformatter;
+pub mod pydocstyle;
 pub mod pyink;
 pub mod pyment;
 pub mod qmlfmt;
@@ -2060,6 +2061,14 @@ pub enum Tooling {
     /// `pydocstringformatter -w $PATH`
     Pydocstringformatter,
 
+    #[serde(rename = "pydocstyle")]
+    /// docstring style checker
+    ///
+    /// [https://github.com/PyCQA/pydocstyle](https://github.com/PyCQA/pydocstyle)
+    ///
+    /// `pydocstyle $PATH`
+    Pydocstyle,
+
     #[serde(rename = "pyink")]
     /// Pyink is a Python formatter, forked from Black with a few different formatting behaviors
     ///
@@ -3593,6 +3602,11 @@ impl Tooling {
                 pydocstringformatter::set_args,
                 pydocstringformatter::IS_STDIN,
             ),
+            Self::Pydocstyle => (
+                &pydocstyle::COMMANDS,
+                pydocstyle::set_args,
+                pydocstyle::IS_STDIN,
+            ),
             Self::Pyink => (&pyink::COMMANDS, pyink::set_args, pyink::IS_STDIN),
             Self::Pyment => (&pyment::COMMANDS, pyment::set_args, pyment::IS_STDIN),
             Self::Qmlfmt => (&qmlfmt::COMMANDS, qmlfmt::set_args, qmlfmt::IS_STDIN),
@@ -4115,6 +4129,7 @@ impl AsRef<str> for Tooling {
             Self::Pycodestyle => "pycodestyle",
             Self::Pydoclint => "pydoclint",
             Self::Pydocstringformatter => "pydocstringformatter",
+            Self::Pydocstyle => "pydocstyle",
             Self::Pyink => "pyink",
             Self::Pyment => "pyment",
             Self::Qmlfmt => "qmlfmt",
@@ -4485,6 +4500,7 @@ mod test_tooling {
             Tooling::Pydocstringformatter,
             reverse(Tooling::Pydocstringformatter)?
         );
+        assert_eq!(Tooling::Pydocstyle, reverse(Tooling::Pydocstyle)?);
         assert_eq!(Tooling::Pyink, reverse(Tooling::Pyink)?);
         assert_eq!(Tooling::Pyment, reverse(Tooling::Pyment)?);
         assert_eq!(Tooling::Qmlfmt, reverse(Tooling::Qmlfmt)?);

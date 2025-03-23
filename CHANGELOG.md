@@ -4,6 +4,7 @@ All notable changes to this project will be documented in this file. Dates are d
 
 #### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.8.2...HEAD)
 
+- feat(tools): add support for pydoclint [`#875`](https://github.com/hougesen/mdsf/pull/875)
 - feat(tools): add support for eradicate [`#874`](https://github.com/hougesen/mdsf/pull/874)
 - feat(tools): add support for pydocstringformatter [`#873`](https://github.com/hougesen/mdsf/pull/873)
 - feat(tools): add support for refurb [`#872`](https://github.com/hougesen/mdsf/pull/872)

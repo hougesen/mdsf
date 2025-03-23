@@ -1,0 +1,19 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "pydocstyle",
+  "categories": ["formatter"],
+  "commands": {
+    "": {
+      "arguments": ["$PATH"],
+      "tests": []
+    }
+  },
+  "description": "docstring style checker",
+  "homepage": "https://github.com/PyCQA/pydocstyle",
+  "languages": ["python"],
+  "packages": {
+    "pip": {
+      "package": "pydocstyle"
+    }
+  }
+}
