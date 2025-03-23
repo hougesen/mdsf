@@ -4,6 +4,7 @@ All notable changes to this project will be documented in this file. Dates are d
 
 #### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.8.2...HEAD)
 
+- feat(tools): add support for tryceratops [`#871`](https://github.com/hougesen/mdsf/pull/871)
 - feat(tools): add support for flynt [`#870`](https://github.com/hougesen/mdsf/pull/870)
 - feat(tools): add support for perflint [`#869`](https://github.com/hougesen/mdsf/pull/869)
 - test(tools): validate js-beautify [`#868`](https://github.com/hougesen/mdsf/pull/868)

@@ -223,6 +223,7 @@ pub mod raco_fmt;
 pub mod reek;
 pub mod refmt;
 pub mod reformat_gherkin;
+pub mod refurb;
 pub mod regal_fix;
 pub mod regal_lint;
 pub mod reorder_python_imports;
@@ -2096,6 +2097,14 @@ pub enum Tooling {
     /// `reformat-gherkin $PATH`
     ReformatGherkin,
 
+    #[serde(rename = "refurb")]
+    /// A tool for refurbishing and modernizing Python codebases
+    ///
+    /// [https://github.com/dosisod/refurb](https://github.com/dosisod/refurb)
+    ///
+    /// `refurb $PATH`
+    Refurb,
+
     #[serde(rename = "regal:fix")]
     /// Lint and fix Rego code errors
     ///
@@ -3558,6 +3567,7 @@ impl Tooling {
                 reformat_gherkin::set_args,
                 reformat_gherkin::IS_STDIN,
             ),
+            Self::Refurb => (&refurb::COMMANDS, refurb::set_args, refurb::IS_STDIN),
             Self::RegalFix => (
                 &regal_fix::COMMANDS,
                 regal_fix::set_args,
@@ -4068,6 +4078,7 @@ impl AsRef<str> for Tooling {
             Self::Reek => "reek",
             Self::Refmt => "refmt",
             Self::ReformatGherkin => "reformat-gherkin",
+            Self::Refurb => "refurb",
             Self::RegalFix => "regal:fix",
             Self::RegalLint => "regal:lint",
             Self::ReorderPythonImports => "reorder-python-imports",
@@ -4431,6 +4442,7 @@ mod test_tooling {
         assert_eq!(Tooling::Reek, reverse(Tooling::Reek)?);
         assert_eq!(Tooling::Refmt, reverse(Tooling::Refmt)?);
         assert_eq!(Tooling::ReformatGherkin, reverse(Tooling::ReformatGherkin)?);
+        assert_eq!(Tooling::Refurb, reverse(Tooling::Refurb)?);
         assert_eq!(Tooling::RegalFix, reverse(Tooling::RegalFix)?);
         assert_eq!(Tooling::RegalLint, reverse(Tooling::RegalLint)?);
         assert_eq!(

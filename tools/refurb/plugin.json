@@ -1,0 +1,19 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "refurb",
+  "categories": ["linter"],
+  "commands": {
+    "": {
+      "arguments": ["$PATH"],
+      "tests": []
+    }
+  },
+  "description": "A tool for refurbishing and modernizing Python codebases",
+  "homepage": "https://github.com/dosisod/refurb",
+  "languages": ["python"],
+  "packages": {
+    "pip": {
+      "package": "refurb"
+    }
+  }
+}
