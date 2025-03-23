@@ -246,6 +246,8 @@ jobs:
         run: ( ( which ufmt ) || ( ( which pipx && pipx install ufmt ) ) || ( echo "Unable to install tool" ) )
       - name: usort
         run: ( ( which usort ) || ( ( which pipx && pipx install usort ) ) || ( echo "Unable to install tool" ) )
+      - name: vsg
+        run: ( ( which vsg ) || ( ( which pipx && pipx install vsg ) ) || ( echo "Unable to install tool" ) )
       - name: xmlformat
         run: ( ( which xmlformat ) || ( ( which pipx && pipx install xmlformatter ) ) || ( echo "Unable to install tool" ) )
       - name: xmllint

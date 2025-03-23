@@ -5,7 +5,13 @@
   "commands": {
     "": {
       "arguments": ["-f", "$PATH", "--fix"],
-      "tests": []
+      "tests": [
+        {
+          "language": ".vhd",
+          "test_input": "\narchitecture RTL of FIFO is\n\n  constant c_width : integer := 16;\n  constant c_depth :   integer := 512;\n  constant c_word :integer := 1024;\n\nbegin\n\nend architecture RTL;",
+          "test_output": "\narchitecture rtl of fifo is\n\n  constant c_width : integer := 16;\n  constant c_depth : integer := 512;\n  constant c_word  : integer := 1024;\n\nbegin\n\nend architecture rtl;\n"
+        }
+      ]
     }
   },
   "description": "Style guide enforcement for VHDL",
