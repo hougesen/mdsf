@@ -83,6 +83,7 @@ pub mod dscanner_lint;
 pub mod easy_coding_standard;
 pub mod efmt;
 pub mod elm_format;
+pub mod eradicate;
 pub mod erb_formatter;
 pub mod erlfmt;
 pub mod eslint;
@@ -977,6 +978,14 @@ pub enum Tooling {
     ///
     /// `elm-format --elm-version=0.19 --yes $PATH`
     ElmFormat,
+
+    #[serde(rename = "eradicate")]
+    /// Removes commented-out code from Python files
+    ///
+    /// [https://github.com/PyCQA/eradicate](https://github.com/PyCQA/eradicate)
+    ///
+    /// `eradicate --in-place $PATH`
+    Eradicate,
 
     #[serde(rename = "erb-formatter")]
     /// Format ERB files with speed and precision
@@ -3152,6 +3161,11 @@ impl Tooling {
                 elm_format::set_args,
                 elm_format::IS_STDIN,
             ),
+            Self::Eradicate => (
+                &eradicate::COMMANDS,
+                eradicate::set_args,
+                eradicate::IS_STDIN,
+            ),
             Self::ErbFormatter => (
                 &erb_formatter::COMMANDS,
                 erb_formatter::set_args,
@@ -3952,6 +3966,7 @@ impl AsRef<str> for Tooling {
             Self::EasyCodingStandard => "easy-coding-standard",
             Self::Efmt => "efmt",
             Self::ElmFormat => "elm-format",
+            Self::Eradicate => "eradicate",
             Self::ErbFormatter => "erb-formatter",
             Self::Erlfmt => "erlfmt",
             Self::Eslint => "eslint",
@@ -4293,6 +4308,7 @@ mod test_tooling {
         );
         assert_eq!(Tooling::Efmt, reverse(Tooling::Efmt)?);
         assert_eq!(Tooling::ElmFormat, reverse(Tooling::ElmFormat)?);
+        assert_eq!(Tooling::Eradicate, reverse(Tooling::Eradicate)?);
         assert_eq!(Tooling::ErbFormatter, reverse(Tooling::ErbFormatter)?);
         assert_eq!(Tooling::Erlfmt, reverse(Tooling::Erlfmt)?);
         assert_eq!(Tooling::Eslint, reverse(Tooling::Eslint)?);

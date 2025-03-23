@@ -4,6 +4,7 @@ All notable changes to this project will be documented in this file. Dates are d
 
 #### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.8.2...HEAD)
 
+- feat(tools): add support for pydocstringformatter [`#873`](https://github.com/hougesen/mdsf/pull/873)
 - feat(tools): add support for refurb [`#872`](https://github.com/hougesen/mdsf/pull/872)
 - feat(tools): add support for tryceratops [`#871`](https://github.com/hougesen/mdsf/pull/871)
 - feat(tools): add support for flynt [`#870`](https://github.com/hougesen/mdsf/pull/870)

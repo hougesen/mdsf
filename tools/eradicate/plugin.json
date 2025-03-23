@@ -1,0 +1,19 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "eradicate",
+  "categories": ["linter"],
+  "commands": {
+    "": {
+      "arguments": ["--in-place", "$PATH"],
+      "tests": []
+    }
+  },
+  "description": "Removes commented-out code from Python files",
+  "homepage": "https://github.com/PyCQA/eradicate",
+  "languages": ["python"],
+  "packages": {
+    "pip": {
+      "package": "eradicate"
+    }
+  }
+}
