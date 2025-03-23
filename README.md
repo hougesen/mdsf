@@ -389,7 +389,7 @@ mdsf init
 
 <!-- START_SECTION:supported-tools -->
 
-`mdsf` currently supports 284 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 285 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                                                                                 | Description                                                                                                                                   | Categories            | Languages                                                                                                                         |
 | ------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
@@ -473,6 +473,7 @@ mdsf init
 | [fish_indent](https://fishshell.com/docs/current/cmds/fish_indent.html)              | Fish indenter and prettifier                                                                                                                  | `formatter`           | `fish`                                                                                                                            |
 | [fixjson](https://github.com/rhysd/fixjson)                                          | JSON Fixer for Humans using (relaxed) JSON5                                                                                                   | `formatter`, `linter` | `json5`, `json`                                                                                                                   |
 | [floskell](https://github.com/ennocramer/floskell)                                   | Floskell is a flexible Haskell source code pretty printer                                                                                     | `formatter`           | `haskell`                                                                                                                         |
+| [flynt](https://github.com/ikamensh/flynt)                                           | A tool to automatically convert old string literal formatting to f-strings                                                                    | `formatter`           | `python`                                                                                                                          |
 | [fnlfmt](https://git.sr.ht/~technomancy/fnlfmt)                                      | A formatter for Fennel code                                                                                                                   | `formatter`           | `fennel`                                                                                                                          |
 | [forge](https://github.com/foundry-rs/foundry)                                       | A Solidity formatter                                                                                                                          | `formatter`           | `solidity`                                                                                                                        |
 | [fortitude](https://github.com/plasmafair/fortitude)                                 | A Fortran linter, written in Rust                                                                                                             | `linter`              |                                                                                                                                   |
@@ -684,7 +685,7 @@ mdsf init
 
 <!-- START_SECTION:supported-commands -->
 
-`mdsf` currently supports 313 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 314 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                         | Command                                                                                 |
 | ---------------------------- | --------------------------------------------------------------------------------------- |
@@ -777,6 +778,7 @@ mdsf init
 | `fish_indent`                | `fish_indent -w $PATH`                                                                  |
 | `fixjson`                    | `fixjson -w $PATH`                                                                      |
 | `floskell`                   | `floskell $PATH`                                                                        |
+| `flynt`                      | `flynt $PATH`                                                                           |
 | `fnlfmt`                     | `fnlfmt $PATH`                                                                          |
 | `forge:fmt`                  | `forge fmt $PATH`                                                                       |
 | `fortitude:check:fix:unsafe` | `fortitude check --quiet --no-respect-gitignore --fix --unsafe-fixes $PATH`             |
