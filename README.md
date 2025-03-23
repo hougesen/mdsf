@@ -389,7 +389,7 @@ mdsf init
 
 <!-- START_SECTION:supported-tools -->
 
-`mdsf` currently supports 288 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 289 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                                                                                 | Description                                                                                                                                   | Categories            | Languages                                                                                                                         |
 | ------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
@@ -466,6 +466,7 @@ mdsf init
 | [easy-coding-standard](https://github.com/easy-coding-standard/easy-coding-standard) | The Easiest way to add coding standard to your PHP project                                                                                    | `formatter`, `linter` | `php`                                                                                                                             |
 | [efmt](https://github.com/sile/efmt)                                                 | Erlang code formatter                                                                                                                         | `formatter`           | `erlang`                                                                                                                          |
 | [elm-format](https://github.com/avh4/elm-format)                                     | elm-format formats Elm source code according to a standard set of rules based on the official Elm Style Guide                                 | `formatter`           | `elm`                                                                                                                             |
+| [eradicate](https://github.com/PyCQA/eradicate)                                      | Removes commented-out code from Python files                                                                                                  | `linter`              | `python`                                                                                                                          |
 | [erb-formatter](https://github.com/nebulab/erb-formatter)                            | Format ERB files with speed and precision                                                                                                     | `formatter`           | `erb`, `ruby`                                                                                                                     |
 | [erlfmt](https://github.com/whatsapp/erlfmt)                                         | An automated code formatter for Erlang                                                                                                        | `formatter`           | `erlang`                                                                                                                          |
 | [eslint](https://github.com/eslint/eslint/)                                          | Find and fix problems in your JavaScript code                                                                                                 | `linter`              | `javascript`, `typescript`                                                                                                        |
@@ -688,7 +689,7 @@ mdsf init
 
 <!-- START_SECTION:supported-commands -->
 
-`mdsf` currently supports 317 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 318 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                         | Command                                                                                 |
 | ---------------------------- | --------------------------------------------------------------------------------------- |
@@ -774,6 +775,7 @@ mdsf init
 | `easy-coding-standard`       | `ecs check $PATH --fix --no-interaction`                                                |
 | `efmt`                       | `efmt -w $PATH`                                                                         |
 | `elm-format`                 | `elm-format --elm-version=0.19 --yes $PATH`                                             |
+| `eradicate`                  | `eradicate --in-place $PATH`                                                            |
 | `erb-formatter`              | `erb-format $PATH --write`                                                              |
 | `erlfmt`                     | `erlfmt -w $PATH_STRING`                                                                |
 | `eslint`                     | `eslint --fix $PATH`                                                                    |
