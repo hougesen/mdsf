@@ -545,6 +545,11 @@
           "enum": ["floskell"]
         },
         {
+          "description": "A tool to automatically convert old string literal formatting to f-strings\n\n[https://github.com/ikamensh/flynt](https://github.com/ikamensh/flynt)\n\n`flynt $PATH`",
+          "type": "string",
+          "enum": ["flynt"]
+        },
+        {
           "description": "A formatter for Fennel code\n\n[https://git.sr.ht/~technomancy/fnlfmt](https://git.sr.ht/~technomancy/fnlfmt)\n\n`fnlfmt $PATH`",
           "type": "string",
           "enum": ["fnlfmt"]

@@ -1,0 +1,19 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "flynt",
+  "categories": ["formatter"],
+  "commands": {
+    "": {
+      "arguments": ["$PATH"],
+      "tests": []
+    }
+  },
+  "description": "A tool to automatically convert old string literal formatting to f-strings",
+  "homepage": "https://github.com/ikamensh/flynt",
+  "languages": ["python"],
+  "packages": {
+    "pip": {
+      "package": "flynt"
+    }
+  }
+}

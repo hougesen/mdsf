@@ -4,6 +4,7 @@ All notable changes to this project will be documented in this file. Dates are d
 
 #### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.8.2...HEAD)
 
+- feat(tools): add support for perflint [`#869`](https://github.com/hougesen/mdsf/pull/869)
 - test(tools): validate js-beautify [`#868`](https://github.com/hougesen/mdsf/pull/868)
 - test(tools): validate jsonlint [`#867`](https://github.com/hougesen/mdsf/pull/867)
 - test(tools): validate vhdl-style-guide [`#866`](https://github.com/hougesen/mdsf/pull/866)

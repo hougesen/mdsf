@@ -90,6 +90,7 @@ pub mod fantomas;
 pub mod fish_indent;
 pub mod fixjson;
 pub mod floskell;
+pub mod flynt;
 pub mod fnlfmt;
 pub mod forge_fmt;
 pub mod fortitude_check;
@@ -1029,6 +1030,14 @@ pub enum Tooling {
     ///
     /// `floskell $PATH`
     Floskell,
+
+    #[serde(rename = "flynt")]
+    /// A tool to automatically convert old string literal formatting to f-strings
+    ///
+    /// [https://github.com/ikamensh/flynt](https://github.com/ikamensh/flynt)
+    ///
+    /// `flynt $PATH`
+    Flynt,
 
     #[serde(rename = "fnlfmt")]
     /// A formatter for Fennel code
@@ -3131,6 +3140,7 @@ impl Tooling {
             ),
             Self::Fixjson => (&fixjson::COMMANDS, fixjson::set_args, fixjson::IS_STDIN),
             Self::Floskell => (&floskell::COMMANDS, floskell::set_args, floskell::IS_STDIN),
+            Self::Flynt => (&flynt::COMMANDS, flynt::set_args, flynt::IS_STDIN),
             Self::Fnlfmt => (&fnlfmt::COMMANDS, fnlfmt::set_args, fnlfmt::IS_STDIN),
             Self::ForgeFmt => (
                 &forge_fmt::COMMANDS,
@@ -3911,6 +3921,7 @@ impl AsRef<str> for Tooling {
             Self::FishIndent => "fish_indent",
             Self::Fixjson => "fixjson",
             Self::Floskell => "floskell",
+            Self::Flynt => "flynt",
             Self::Fnlfmt => "fnlfmt",
             Self::ForgeFmt => "forge:fmt",
             Self::FortitudeCheck => "fortitude:check",
@@ -4248,6 +4259,7 @@ mod test_tooling {
         assert_eq!(Tooling::FishIndent, reverse(Tooling::FishIndent)?);
         assert_eq!(Tooling::Fixjson, reverse(Tooling::Fixjson)?);
         assert_eq!(Tooling::Floskell, reverse(Tooling::Floskell)?);
+        assert_eq!(Tooling::Flynt, reverse(Tooling::Flynt)?);
         assert_eq!(Tooling::Fnlfmt, reverse(Tooling::Fnlfmt)?);
         assert_eq!(Tooling::ForgeFmt, reverse(Tooling::ForgeFmt)?);
         assert_eq!(Tooling::FortitudeCheck, reverse(Tooling::FortitudeCheck)?);
