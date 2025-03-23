@@ -216,6 +216,7 @@ pub mod purs_tidy;
 pub mod purty;
 pub mod pycln;
 pub mod pycodestyle;
+pub mod pydoclint;
 pub mod pydocstringformatter;
 pub mod pyink;
 pub mod pyment;
@@ -2043,6 +2044,14 @@ pub enum Tooling {
     /// `pycodestyle $PATH`
     Pycodestyle,
 
+    #[serde(rename = "pydoclint")]
+    /// A Python docstring linter that checks arguments, returns, yields, and raises sections
+    ///
+    /// [https://github.com/jsh9/pydoclint](https://github.com/jsh9/pydoclint)
+    ///
+    /// `pydoclint $PATH`
+    Pydoclint,
+
     #[serde(rename = "pydocstringformatter")]
     /// Automatically format your Python docstrings to conform with PEP 8 and PEP 257
     ///
@@ -3574,6 +3583,11 @@ impl Tooling {
                 pycodestyle::set_args,
                 pycodestyle::IS_STDIN,
             ),
+            Self::Pydoclint => (
+                &pydoclint::COMMANDS,
+                pydoclint::set_args,
+                pydoclint::IS_STDIN,
+            ),
             Self::Pydocstringformatter => (
                 &pydocstringformatter::COMMANDS,
                 pydocstringformatter::set_args,
@@ -4099,6 +4113,7 @@ impl AsRef<str> for Tooling {
             Self::Purty => "purty",
             Self::Pycln => "pycln",
             Self::Pycodestyle => "pycodestyle",
+            Self::Pydoclint => "pydoclint",
             Self::Pydocstringformatter => "pydocstringformatter",
             Self::Pyink => "pyink",
             Self::Pyment => "pyment",
@@ -4465,6 +4480,7 @@ mod test_tooling {
         assert_eq!(Tooling::Purty, reverse(Tooling::Purty)?);
         assert_eq!(Tooling::Pycln, reverse(Tooling::Pycln)?);
         assert_eq!(Tooling::Pycodestyle, reverse(Tooling::Pycodestyle)?);
+        assert_eq!(Tooling::Pydoclint, reverse(Tooling::Pydoclint)?);
         assert_eq!(
             Tooling::Pydocstringformatter,
             reverse(Tooling::Pydocstringformatter)?

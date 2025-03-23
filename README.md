@@ -389,7 +389,7 @@ mdsf init
 
 <!-- START_SECTION:supported-tools -->
 
-`mdsf` currently supports 289 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 290 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                                                                                 | Description                                                                                                                                   | Categories            | Languages                                                                                                                         |
 | ------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
@@ -587,6 +587,7 @@ mdsf init
 | [purty](https://gitlab.com/joneshf/purty)                                            | PureScript pretty-printer                                                                                                                     | `formatter`           | `purescript`                                                                                                                      |
 | [pycln](https://github.com/hadialqattan/pycln)                                       | A formatter for finding and removing unused import statements                                                                                 | `formatter`           | `python`                                                                                                                          |
 | [pycodestyle](https://github.com/pycqa/pycodestyle)                                  | Simple Python style checker in one Python file                                                                                                | `linter`              | `python`                                                                                                                          |
+| [pydoclint](https://github.com/jsh9/pydoclint)                                       | A Python docstring linter that checks arguments, returns, yields, and raises sections                                                         | `linter`              | `python`                                                                                                                          |
 | [pydocstringformatter](https://github.com/danielnoord/pydocstringformatter)          | Automatically format your Python docstrings to conform with PEP 8 and PEP 257                                                                 | `formatter`           | `python`                                                                                                                          |
 | [pyink](https://github.com/google/pyink)                                             | Pyink is a Python formatter, forked from Black with a few different formatting behaviors                                                      | `formatter`           | `python`                                                                                                                          |
 | [pyment](https://github.com/dadadel/pyment)                                          | Format and convert Python docstrings and generates patches                                                                                    | `formatter`           | `python`                                                                                                                          |
@@ -689,7 +690,7 @@ mdsf init
 
 <!-- START_SECTION:supported-commands -->
 
-`mdsf` currently supports 318 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 319 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                         | Command                                                                                 |
 | ---------------------------- | --------------------------------------------------------------------------------------- |
@@ -908,6 +909,7 @@ mdsf init
 | `purty`                      | `purty --write $PATH`                                                                   |
 | `pycln`                      | `pycln --no-gitignore --quiet $PATH`                                                    |
 | `pycodestyle`                | `pycodestyle $PATH`                                                                     |
+| `pydoclint`                  | `pydoclint $PATH`                                                                       |
 | `pydocstringformatter`       | `pydocstringformatter -w $PATH`                                                         |
 | `pyink`                      | `pyink --quiet $PATH`                                                                   |
 | `pyment`                     | `pyment -w $PATH`                                                                       |

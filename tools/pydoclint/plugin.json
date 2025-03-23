@@ -1,0 +1,19 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "pydoclint",
+  "categories": ["linter"],
+  "commands": {
+    "": {
+      "arguments": ["$PATH"],
+      "tests": []
+    }
+  },
+  "description": "A Python docstring linter that checks arguments, returns, yields, and raises sections",
+  "homepage": "https://github.com/jsh9/pydoclint",
+  "languages": ["python"],
+  "packages": {
+    "pip": {
+      "package": "pydoclint"
+    }
+  }
+}

@@ -1175,6 +1175,11 @@
           "enum": ["pycodestyle"]
         },
         {
+          "description": "A Python docstring linter that checks arguments, returns, yields, and raises sections\n\n[https://github.com/jsh9/pydoclint](https://github.com/jsh9/pydoclint)\n\n`pydoclint $PATH`",
+          "type": "string",
+          "enum": ["pydoclint"]
+        },
+        {
           "description": "Automatically format your Python docstrings to conform with PEP 8 and PEP 257\n\n[https://github.com/danielnoord/pydocstringformatter](https://github.com/danielnoord/pydocstringformatter)\n\n`pydocstringformatter -w $PATH`",
           "type": "string",
           "enum": ["pydocstringformatter"]
