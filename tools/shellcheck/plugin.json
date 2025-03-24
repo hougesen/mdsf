@@ -5,7 +5,13 @@
   "commands": {
     "": {
       "arguments": ["$PATH"],
-      "tests": []
+      "tests": [
+        {
+          "language": "shell",
+          "test_input": "#!/bin/sh\n\necho \"Hello World\"\n",
+          "test_output": "#!/bin/sh\n\necho \"Hello World\"\n"
+        }
+      ]
     }
   },
   "description": "ShellCheck, a static analysis tool for shell scripts",

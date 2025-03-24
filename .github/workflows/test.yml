@@ -220,6 +220,8 @@ jobs:
         run: ( ( which scalafmt ) || ( ( which cs && cs install scalafmt ) ) || ( echo "Unable to install tool" ) )
       - name: semistandard
         run: ( ( which semistandard ) || ( ( which npm && npm i -g semistandard ) ) || ( echo "Unable to install tool" ) )
+      - name: shellcheck
+        run: ( ( which shellcheck ) || ( ( which brew &&  brew install shellcheck ) || ( which apt-get && sudo apt-get install -y shellcheck ) || ( which stack && stack install ShellCheck ) || ( which cabal && cabal install ShellCheck ) ) || ( echo "Unable to install tool" ) )
       - name: shfmt
         run: ( ( which shfmt ) || ( ( which brew &&  brew install shfmt ) || ( which go && go install mvdan.cc/sh/v3/cmd/shfmt@latest ) ) || ( echo "Unable to install tool" ) )
       - name: sleek

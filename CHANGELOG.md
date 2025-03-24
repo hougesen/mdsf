@@ -4,6 +4,7 @@ All notable changes to this project will be documented in this file. Dates are d
 
 #### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.8.2...HEAD)
 
+- test(tools): update expected output of mago:lint:fix:unsafe [`#881`](https://github.com/hougesen/mdsf/pull/881)
 - feat(tools): add support for proselint [`#880`](https://github.com/hougesen/mdsf/pull/880)
 - feat(tools): add support for pyflakes [`#879`](https://github.com/hougesen/mdsf/pull/879)
 - feat(tools): add support for pyupgrade [`#878`](https://github.com/hougesen/mdsf/pull/878)
