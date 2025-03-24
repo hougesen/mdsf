@@ -19,7 +19,13 @@
       "arguments": ["--html"],
       "description": "Format HTML",
       "stdin": true,
-      "tests": []
+      "tests": [
+        {
+          "language": "html",
+          "test_input": "<div> \n         </div>",
+          "test_output": "<div>\n</div>\n"
+        }
+      ]
     }
   },
   "description": "Command-line XML and HTML beautifier and content extractor",
