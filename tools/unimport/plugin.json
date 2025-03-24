@@ -5,7 +5,13 @@
   "commands": {
     "": {
       "arguments": ["-r", "$PATH"],
-      "tests": []
+      "tests": [
+        {
+          "language": "python",
+          "test_input": "from typing import Optional\n",
+          "test_output": ""
+        }
+      ]
     }
   },
   "description": "The ultimate linter and formatter for removing unused import statements in your code",
