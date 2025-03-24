@@ -1,4 +1,4 @@
-use crate::markdown::update_markdown_section;
+use crate::{error::CodegenError, markdown::update_markdown_section};
 
 fn execute_command(name: &str) -> std::io::Result<std::process::Output> {
     std::process::Command::new("cargo").arg("build").output()?;
@@ -14,8 +14,8 @@ fn execute_command(name: &str) -> std::io::Result<std::process::Output> {
     help_command.output()
 }
 
-pub fn generate(mut readme: String) -> anyhow::Result<String> {
-    for command in ["", "format", "verify", "completions"] {
+pub fn generate(mut readme: String) -> Result<String, CodegenError> {
+    for command in ["", "format", "verify", "completions", "init", "cache-prune"] {
         let section_name = &format!(
             "{}-command-help",
             if command.is_empty() { "base" } else { command }
@@ -29,5 +29,5 @@ pub fn generate(mut readme: String) -> anyhow::Result<String> {
             update_markdown_section(&readme, section_name, &format!("```\n{}\n```", help.trim()));
     }
 
-    anyhow::Ok(readme)
+    Ok(readme)
 }

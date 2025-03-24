@@ -1,8 +1,9 @@
-use anyhow::{Ok, Result};
+use error::CodegenError;
 use tools::Tool;
 
 mod actions;
 mod contributing;
+mod error;
 mod language_to_filetype;
 pub mod markdown;
 mod readme;
@@ -40,7 +41,7 @@ fn get_plugin_files() -> Vec<Tool> {
     tools
 }
 
-fn main() -> Result<()> {
+fn main() -> Result<(), CodegenError> {
     let plugins = get_plugin_files();
 
     let generated_commands = tools::generate(&plugins)?;

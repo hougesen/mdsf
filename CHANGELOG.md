@@ -4,6 +4,7 @@ All notable changes to this project will be documented in this file. Dates are d
 
 #### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.8.3...HEAD)
 
+- refactor(codegen): remove dependency on toml crate [`#886`](https://github.com/hougesen/mdsf/pull/886)
 - build(deps): bump log from 0.4.26 to 0.4.27 [`#885`](https://github.com/hougesen/mdsf/pull/885)
 - chore: update version to v0.8.3-next [`53b5e5d`](https://github.com/hougesen/mdsf/commit/53b5e5d8fe1a85d37db8290c2bb62c3304939744)
 

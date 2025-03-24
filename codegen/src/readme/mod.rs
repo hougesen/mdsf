@@ -1,4 +1,5 @@
 use crate::{
+    error::CodegenError,
     markdown::{table_of_contents, update_markdown_section},
     tools::{GeneratedCommand, Tool},
 };
@@ -15,7 +16,7 @@ pub fn pad_right(mut input: String, len: usize, update: char) -> String {
     input
 }
 
-pub fn generate(plugins: &[Tool], commands: Vec<GeneratedCommand>) -> anyhow::Result<()> {
+pub fn generate(plugins: &[Tool], commands: Vec<GeneratedCommand>) -> Result<(), CodegenError> {
     let path = std::path::PathBuf::from("./README.md");
 
     let mut contents = std::fs::read_to_string(&path)?;
