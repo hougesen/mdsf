@@ -1,0 +1,25 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "proselint",
+  "categories": ["spell-check"],
+  "commands": {
+    "": {
+      "arguments": ["$PATH"],
+      "tests": []
+    }
+  },
+  "description": "A linter for prose",
+  "homepage": "https://github.com/amperser/proselint",
+  "languages": [],
+  "packages": {
+    "apt": {
+      "package": "proselint"
+    },
+    "brew": {
+      "package": "proselint"
+    },
+    "pip": {
+      "package": "proselint"
+    }
+  }
+}

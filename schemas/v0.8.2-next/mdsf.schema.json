@@ -1135,6 +1135,11 @@
           "enum": ["prisma:format"]
         },
         {
+          "description": "A linter for prose\n\n[https://github.com/amperser/proselint](https://github.com/amperser/proselint)\n\n`proselint $PATH`",
+          "type": "string",
+          "enum": ["proselint"]
+        },
+        {
           "description": "A pluggable linter and fixer to enforce Protocol Buffer style and conventions\n\n[https://github.com/yoheimuta/protolint](https://github.com/yoheimuta/protolint)\n\n`protolint lint -fix $PATH`",
           "type": "string",
           "enum": ["protolint"]
