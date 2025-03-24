@@ -1,0 +1,25 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "pyupgrade",
+  "categories": ["linter"],
+  "commands": {
+    "": {
+      "arguments": ["$PATH"],
+      "tests": [
+        {
+          "language": "python",
+          "test_input": "set([x for x in y])",
+          "test_output": "{x for x in y}"
+        }
+      ]
+    }
+  },
+  "description": "A tool to automatically upgrade Python syntax to newer versions",
+  "homepage": "https://github.com/asottile/pyupgrade",
+  "languages": ["python"],
+  "packages": {
+    "pip": {
+      "package": "pyupgrade"
+    }
+  }
+}
