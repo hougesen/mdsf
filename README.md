@@ -389,7 +389,7 @@ mdsf init
 
 <!-- START_SECTION:supported-tools -->
 
-`mdsf` currently supports 293 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 294 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                                                                                 | Description                                                                                                                                   | Categories            | Languages                                                                                                                         |
 | ------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
@@ -579,6 +579,7 @@ mdsf init
 | [pretty-php](https://github.com/lkrms/pretty-php)                                    | The opinionated PHP code formatter                                                                                                            | `formatter`           | `php`                                                                                                                             |
 | [prettypst](https://github.com/antonwetzel/prettypst)                                | Formatter for Typst                                                                                                                           | `formatter`           | `typst`                                                                                                                           |
 | [prisma](https://www.prisma.io/docs/orm/tools/prisma-cli)                            | Commands for interacting with the prisma ORM                                                                                                  | `formatter`           | `prisma`                                                                                                                          |
+| [proselint](https://github.com/amperser/proselint)                                   | A linter for prose                                                                                                                            | `spell-check`         |                                                                                                                                   |
 | [protolint](https://github.com/yoheimuta/protolint)                                  | A pluggable linter and fixer to enforce Protocol Buffer style and conventions                                                                 | `linter`              | `protobuf`                                                                                                                        |
 | [ptop](https://www.freepascal.org/tools/ptop.html)                                   | Free Pascal source formatter                                                                                                                  | `formatter`           | `pascal`                                                                                                                          |
 | [pug-lint](https://github.com/pugjs/pug-lint)                                        | An unopinionated and configurable linter and style checker for Pug                                                                            | `linter`              | `pug`                                                                                                                             |
@@ -693,7 +694,7 @@ mdsf init
 
 <!-- START_SECTION:supported-commands -->
 
-`mdsf` currently supports 322 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 323 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                         | Command                                                                                 |
 | ---------------------------- | --------------------------------------------------------------------------------------- |
@@ -904,6 +905,7 @@ mdsf init
 | `pretty-php`                 | `pretty-php $PATH`                                                                      |
 | `prettypst`                  | `prettypst $PATH`                                                                       |
 | `prisma:format`              | `prisma format --schema={$PATH_STRING}`                                                 |
+| `proselint`                  | `proselint $PATH`                                                                       |
 | `protolint`                  | `protolint lint -fix $PATH`                                                             |
 | `ptop`                       | `ptop $PATH $PATH`                                                                      |
 | `pug-lint`                   | `pug-lint $PATH`                                                                        |

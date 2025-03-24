@@ -208,6 +208,7 @@ pub mod prettier;
 pub mod pretty_php;
 pub mod prettypst;
 pub mod prisma_format;
+pub mod proselint;
 pub mod protolint;
 pub mod ptop;
 pub mod pug_lint;
@@ -1983,6 +1984,14 @@ pub enum Tooling {
     /// `prisma format --schema={$PATH_STRING}`
     PrismaFormat,
 
+    #[serde(rename = "proselint")]
+    /// A linter for prose
+    ///
+    /// [https://github.com/amperser/proselint](https://github.com/amperser/proselint)
+    ///
+    /// `proselint $PATH`
+    Proselint,
+
     #[serde(rename = "protolint")]
     /// A pluggable linter and fixer to enforce Protocol Buffer style and conventions
     ///
@@ -3586,6 +3595,11 @@ impl Tooling {
                 prisma_format::set_args,
                 prisma_format::IS_STDIN,
             ),
+            Self::Proselint => (
+                &proselint::COMMANDS,
+                proselint::set_args,
+                proselint::IS_STDIN,
+            ),
             Self::Protolint => (
                 &protolint::COMMANDS,
                 protolint::set_args,
@@ -4143,6 +4157,7 @@ impl AsRef<str> for Tooling {
             Self::PrettyPhp => "pretty-php",
             Self::Prettypst => "prettypst",
             Self::PrismaFormat => "prisma:format",
+            Self::Proselint => "proselint",
             Self::Protolint => "protolint",
             Self::Ptop => "ptop",
             Self::PugLint => "pug-lint",
@@ -4513,6 +4528,7 @@ mod test_tooling {
         assert_eq!(Tooling::PrettyPhp, reverse(Tooling::PrettyPhp)?);
         assert_eq!(Tooling::Prettypst, reverse(Tooling::Prettypst)?);
         assert_eq!(Tooling::PrismaFormat, reverse(Tooling::PrismaFormat)?);
+        assert_eq!(Tooling::Proselint, reverse(Tooling::Proselint)?);
         assert_eq!(Tooling::Protolint, reverse(Tooling::Protolint)?);
         assert_eq!(Tooling::Ptop, reverse(Tooling::Ptop)?);
         assert_eq!(Tooling::PugLint, reverse(Tooling::PugLint)?);
