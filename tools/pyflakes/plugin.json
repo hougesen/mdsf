@@ -1,0 +1,25 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "pyflakes",
+  "categories": ["linter"],
+  "commands": {
+    "": {
+      "arguments": ["$PATH"],
+      "tests": [
+        {
+          "language": "python",
+          "test_input": "def add(a: int, b: int) -> int:\n    return a + b",
+          "test_output": "def add(a: int, b: int) -> int:\n    return a + b"
+        }
+      ]
+    }
+  },
+  "description": "A simple program which checks Python source files for errors",
+  "homepage": "https://github.com/pycqa/pyflakes",
+  "languages": ["python"],
+  "packages": {
+    "pip": {
+      "package": "pyflakes"
+    }
+  }
+}

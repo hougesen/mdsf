@@ -219,6 +219,7 @@ pub mod pycodestyle;
 pub mod pydoclint;
 pub mod pydocstringformatter;
 pub mod pydocstyle;
+pub mod pyflakes;
 pub mod pyink;
 pub mod pyment;
 pub mod pyupgrade;
@@ -2070,6 +2071,14 @@ pub enum Tooling {
     /// `pydocstyle $PATH`
     Pydocstyle,
 
+    #[serde(rename = "pyflakes")]
+    /// A simple program which checks Python source files for errors
+    ///
+    /// [https://github.com/pycqa/pyflakes](https://github.com/pycqa/pyflakes)
+    ///
+    /// `pyflakes $PATH`
+    Pyflakes,
+
     #[serde(rename = "pyink")]
     /// Pyink is a Python formatter, forked from Black with a few different formatting behaviors
     ///
@@ -3616,6 +3625,7 @@ impl Tooling {
                 pydocstyle::set_args,
                 pydocstyle::IS_STDIN,
             ),
+            Self::Pyflakes => (&pyflakes::COMMANDS, pyflakes::set_args, pyflakes::IS_STDIN),
             Self::Pyink => (&pyink::COMMANDS, pyink::set_args, pyink::IS_STDIN),
             Self::Pyment => (&pyment::COMMANDS, pyment::set_args, pyment::IS_STDIN),
             Self::Pyupgrade => (
@@ -4144,6 +4154,7 @@ impl AsRef<str> for Tooling {
             Self::Pydoclint => "pydoclint",
             Self::Pydocstringformatter => "pydocstringformatter",
             Self::Pydocstyle => "pydocstyle",
+            Self::Pyflakes => "pyflakes",
             Self::Pyink => "pyink",
             Self::Pyment => "pyment",
             Self::Pyupgrade => "pyupgrade",
@@ -4516,6 +4527,7 @@ mod test_tooling {
             reverse(Tooling::Pydocstringformatter)?
         );
         assert_eq!(Tooling::Pydocstyle, reverse(Tooling::Pydocstyle)?);
+        assert_eq!(Tooling::Pyflakes, reverse(Tooling::Pyflakes)?);
         assert_eq!(Tooling::Pyink, reverse(Tooling::Pyink)?);
         assert_eq!(Tooling::Pyment, reverse(Tooling::Pyment)?);
         assert_eq!(Tooling::Pyupgrade, reverse(Tooling::Pyupgrade)?);

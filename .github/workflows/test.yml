@@ -200,6 +200,8 @@ jobs:
         run: ( ( which purs-tidy ) || ( ( which npm && npm i -g purs-tidy ) ) || ( echo "Unable to install tool" ) )
       - name: pycln
         run: ( ( which pycln ) || ( ( which pipx && pipx install pycln ) ) || ( echo "Unable to install tool" ) )
+      - name: pyflakes
+        run: ( ( which pyflakes ) || ( ( which pipx && pipx install pyflakes ) ) || ( echo "Unable to install tool" ) )
       - name: pyink
         run: ( ( which pyink ) || ( ( which pipx && pipx install pyink ) ) || ( echo "Unable to install tool" ) )
       - name: pyupgrade
