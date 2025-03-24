@@ -19,12 +19,10 @@ pub const IS_STDIN: bool = true;
 #[cfg(test)]
 mod test_xq_html {
     #[test_with::executable(xq)]
-    fn test_xq_html_html_aa297be5c685b338() {
-        let input = r#"<div> 
-         </div>"#;
+    fn test_xq_html_html_a308d301db0ed4af() {
+        let input = r#"<div>          </div>"#;
 
-        let output = r#"<div>
-</div>
+        let output = r#"<div></div>
 "#;
 
         let file_ext = crate::fttype::get_file_extension("html");

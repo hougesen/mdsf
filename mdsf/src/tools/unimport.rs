@@ -24,11 +24,12 @@ pub const IS_STDIN: bool = false;
 #[cfg(test)]
 mod test_unimport {
     #[test_with::executable(unimport || pipx || uv)]
-    fn test_unimport_python_55139008890abff0() {
+    fn test_unimport_python_3940fba56a9a47fc() {
         let input = r#"from typing import Optional
 "#;
 
-        let output = r#""#;
+        let output = r#"
+"#;
 
         let file_ext = crate::fttype::get_file_extension("python");
 

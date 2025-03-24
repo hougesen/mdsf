@@ -259,6 +259,8 @@ jobs:
         run: ( ( which typos ) || ( ( which cargo && ( cargo binstall typos-cli || cargo install typos-cli ) ) || ( which brew &&  brew install typos-cli ) ) || ( echo "Unable to install tool" ) )
       - name: ufmt
         run: ( ( which ufmt ) || ( ( which pipx && pipx install ufmt ) ) || ( echo "Unable to install tool" ) )
+      - name: uiua
+        run: ( ( which uiua ) || ( ( which cargo && ( cargo binstall uiua || cargo install uiua ) ) ) || ( echo "Unable to install tool" ) )
       - name: unimport
         run: ( ( which unimport ) || ( ( which pipx && pipx install unimport ) ) || ( echo "Unable to install tool" ) )
       - name: usort
