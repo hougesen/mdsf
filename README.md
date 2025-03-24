@@ -146,7 +146,7 @@ conform.setup({
 <!-- START_SECTION:base-command-help -->
 
 ```
-mdsf 0.8.3
+mdsf 0.8.3-next
 Format, and lint, markdown code snippets using your favorite tools
 Mads Hougesen <mads@mhouge.dk>
 

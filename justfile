@@ -1,10 +1,9 @@
 build:
     cargo check
     cargo build
-    cargo build --release
 
 build-local:
-    just build
+    cargo build --release
     sudo cp target/release/mdsf /usr/local/bin/mdsf-local
 
 lint:
