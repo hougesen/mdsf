@@ -39,6 +39,34 @@ pub fn get_project_dir() -> &'static std::path::Path {
 }
 
 #[inline]
+fn parse_codeblock_language(text: &str) -> String {
+    text.trim()
+        .strip_prefix("```")
+        .map(str::trim)
+        .and_then(|s| s.split_whitespace().next())
+        .map(std::string::ToString::to_string)
+        .unwrap_or_default()
+}
+
+#[cfg(test)]
+mod test_parse_codeblock_language {
+    use crate::parse_codeblock_language;
+
+    #[test]
+    fn it_should_extract_language() {
+        assert_eq!("go", parse_codeblock_language("```go"));
+
+        assert_eq!("go", parse_codeblock_language("```go     "));
+
+        assert_eq!("go", parse_codeblock_language("```go    "));
+
+        assert_eq!("go", parse_codeblock_language("   ```go"));
+
+        assert_eq!("go", parse_codeblock_language("```go x=1"));
+    }
+}
+
+#[inline]
 pub fn format_file(
     config: &MdsfConfig,
     filename: &std::path::Path,
@@ -57,14 +85,11 @@ pub fn format_file(
         if trimmed_line.starts_with("```") {
             let indentation = line.replace(trimmed_line, "");
 
-            let language = trimmed_line
-                .strip_prefix("```")
-                .map(str::trim)
-                .unwrap_or_default();
+            let language = parse_codeblock_language(trimmed_line);
 
             // "*" is always ran
             // "_" is fallback formatters
-            if config.languages.contains_key(language)
+            if config.languages.contains_key(&language)
                 || config.languages.contains_key("*")
                 || config.languages.contains_key("_")
             {
@@ -81,7 +106,7 @@ pub fn format_file(
                         config,
                         &LineInfo {
                             filename,
-                            language,
+                            language: &language,
                             start: line_index + 1,
                             end: line_index + snippet_lines + 1,
                         },
@@ -115,7 +140,7 @@ pub fn format_file(
                 }
             } else {
                 if !language.is_empty() {
-                    warn_unknown_language(language, filename);
+                    warn_unknown_language(&language, filename);
                 }
 
                 output.push_str(line);
