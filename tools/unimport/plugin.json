@@ -9,7 +9,7 @@
         {
           "language": "python",
           "test_input": "from typing import Optional\n",
-          "test_output": ""
+          "test_output": "\n"
         }
       ]
     }

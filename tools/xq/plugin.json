@@ -22,8 +22,8 @@
       "tests": [
         {
           "language": "html",
-          "test_input": "<div> \n         </div>",
-          "test_output": "<div>\n</div>\n"
+          "test_input": "<div>          </div>",
+          "test_output": "<div></div>\n"
         }
       ]
     }

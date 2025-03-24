@@ -5,7 +5,13 @@
   "commands": {
     "fmt": {
       "arguments": ["fmt", "$PATH"],
-      "tests": []
+      "tests": [
+        {
+          "language": "uiua",
+          "test_input": "∿[1        5     8    2]\n",
+          "test_output": "∿[1 5 8 2]\n"
+        }
+      ]
     }
   },
   "description": "A stack-based array programming language",
