@@ -1,0 +1,25 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "pylint",
+  "categories": ["linter"],
+  "commands": {
+    "": {
+      "arguments": ["--module-naming-style=any", "$PATH"],
+      "tests": [
+        {
+          "language": "python",
+          "test_input": "\"\"\"\nmdsf test module for pylint\n\"\"\"\n\n\ndef add(a: int, b: int) -> int:\n    \"\"\"\n    Add the numbers\n    \"\"\"\n    return a + b\n",
+          "test_output": "\"\"\"\nmdsf test module for pylint\n\"\"\"\n\n\ndef add(a: int, b: int) -> int:\n    \"\"\"\n    Add the numbers\n    \"\"\"\n    return a + b\n"
+        }
+      ]
+    }
+  },
+  "description": "Pylint is a static code analyser for Python 2 or 3",
+  "homepage": "https://github.com/pylint-dev/pylint",
+  "languages": ["python"],
+  "packages": {
+    "pip": {
+      "package": "pylint"
+    }
+  }
+}

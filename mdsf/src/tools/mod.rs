@@ -222,6 +222,7 @@ pub mod pydocstringformatter;
 pub mod pydocstyle;
 pub mod pyflakes;
 pub mod pyink;
+pub mod pylint;
 pub mod pyment;
 pub mod pyupgrade;
 pub mod qmlfmt;
@@ -2096,6 +2097,14 @@ pub enum Tooling {
     /// `pyink --quiet $PATH`
     Pyink,
 
+    #[serde(rename = "pylint")]
+    /// Pylint is a static code analyser for Python 2 or 3
+    ///
+    /// [https://github.com/pylint-dev/pylint](https://github.com/pylint-dev/pylint)
+    ///
+    /// `pylint --module-naming-style=any $PATH`
+    Pylint,
+
     #[serde(rename = "pyment")]
     /// Format and convert Python docstrings and generates patches
     ///
@@ -3641,6 +3650,7 @@ impl Tooling {
             ),
             Self::Pyflakes => (&pyflakes::COMMANDS, pyflakes::set_args, pyflakes::IS_STDIN),
             Self::Pyink => (&pyink::COMMANDS, pyink::set_args, pyink::IS_STDIN),
+            Self::Pylint => (&pylint::COMMANDS, pylint::set_args, pylint::IS_STDIN),
             Self::Pyment => (&pyment::COMMANDS, pyment::set_args, pyment::IS_STDIN),
             Self::Pyupgrade => (
                 &pyupgrade::COMMANDS,
@@ -4171,6 +4181,7 @@ impl AsRef<str> for Tooling {
             Self::Pydocstyle => "pydocstyle",
             Self::Pyflakes => "pyflakes",
             Self::Pyink => "pyink",
+            Self::Pylint => "pylint",
             Self::Pyment => "pyment",
             Self::Pyupgrade => "pyupgrade",
             Self::Qmlfmt => "qmlfmt",
@@ -4545,6 +4556,7 @@ mod test_tooling {
         assert_eq!(Tooling::Pydocstyle, reverse(Tooling::Pydocstyle)?);
         assert_eq!(Tooling::Pyflakes, reverse(Tooling::Pyflakes)?);
         assert_eq!(Tooling::Pyink, reverse(Tooling::Pyink)?);
+        assert_eq!(Tooling::Pylint, reverse(Tooling::Pylint)?);
         assert_eq!(Tooling::Pyment, reverse(Tooling::Pyment)?);
         assert_eq!(Tooling::Pyupgrade, reverse(Tooling::Pyupgrade)?);
         assert_eq!(Tooling::Qmlfmt, reverse(Tooling::Qmlfmt)?);
