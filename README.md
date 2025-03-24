@@ -389,7 +389,7 @@ mdsf init
 
 <!-- START_SECTION:supported-tools -->
 
-`mdsf` currently supports 291 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 292 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                                                                                 | Description                                                                                                                                   | Categories            | Languages                                                                                                                         |
 | ------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
@@ -592,6 +592,7 @@ mdsf init
 | [pydocstyle](https://github.com/PyCQA/pydocstyle)                                    | docstring style checker                                                                                                                       | `formatter`           | `python`                                                                                                                          |
 | [pyink](https://github.com/google/pyink)                                             | Pyink is a Python formatter, forked from Black with a few different formatting behaviors                                                      | `formatter`           | `python`                                                                                                                          |
 | [pyment](https://github.com/dadadel/pyment)                                          | Format and convert Python docstrings and generates patches                                                                                    | `formatter`           | `python`                                                                                                                          |
+| [pyupgrade](https://github.com/asottile/pyupgrade)                                   | A tool to automatically upgrade Python syntax to newer versions                                                                               | `linter`              | `python`                                                                                                                          |
 | [qmlfmt](https://github.com/jesperhh/qmlfmt)                                         | Command line application that formats QML files                                                                                               | `formatter`           | `qml`                                                                                                                             |
 | [quick-lint-js](https://github.com/quick-lint/quick-lint-js)                         | quick-lint-js finds bugs in JavaScript programs                                                                                               | `linter`              | `javascript`                                                                                                                      |
 | [raco](https://docs.racket-lang.org/fmt/)                                            | An extensible code formatter for Racket                                                                                                       | `formatter`           | `racket`                                                                                                                          |
@@ -691,7 +692,7 @@ mdsf init
 
 <!-- START_SECTION:supported-commands -->
 
-`mdsf` currently supports 320 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 321 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                         | Command                                                                                 |
 | ---------------------------- | --------------------------------------------------------------------------------------- |
@@ -915,6 +916,7 @@ mdsf init
 | `pydocstyle`                 | `pydocstyle $PATH`                                                                      |
 | `pyink`                      | `pyink --quiet $PATH`                                                                   |
 | `pyment`                     | `pyment -w $PATH`                                                                       |
+| `pyupgrade`                  | `pyupgrade $PATH`                                                                       |
 | `qmlfmt`                     | `qmlfmt -w $PATH`                                                                       |
 | `quick-lint-js`              | `quick-lint-js $PATH`                                                                   |
 | `raco:fmt`                   | `raco fmt -i $PATH`                                                                     |

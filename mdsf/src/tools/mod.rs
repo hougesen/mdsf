@@ -221,6 +221,7 @@ pub mod pydocstringformatter;
 pub mod pydocstyle;
 pub mod pyink;
 pub mod pyment;
+pub mod pyupgrade;
 pub mod qmlfmt;
 pub mod quick_lint_js;
 pub mod raco_fmt;
@@ -2085,6 +2086,14 @@ pub enum Tooling {
     /// `pyment -w $PATH`
     Pyment,
 
+    #[serde(rename = "pyupgrade")]
+    /// A tool to automatically upgrade Python syntax to newer versions
+    ///
+    /// [https://github.com/asottile/pyupgrade](https://github.com/asottile/pyupgrade)
+    ///
+    /// `pyupgrade $PATH`
+    Pyupgrade,
+
     #[serde(rename = "qmlfmt")]
     /// Command line application that formats QML files
     ///
@@ -3609,6 +3618,11 @@ impl Tooling {
             ),
             Self::Pyink => (&pyink::COMMANDS, pyink::set_args, pyink::IS_STDIN),
             Self::Pyment => (&pyment::COMMANDS, pyment::set_args, pyment::IS_STDIN),
+            Self::Pyupgrade => (
+                &pyupgrade::COMMANDS,
+                pyupgrade::set_args,
+                pyupgrade::IS_STDIN,
+            ),
             Self::Qmlfmt => (&qmlfmt::COMMANDS, qmlfmt::set_args, qmlfmt::IS_STDIN),
             Self::QuickLintJs => (
                 &quick_lint_js::COMMANDS,
@@ -4132,6 +4146,7 @@ impl AsRef<str> for Tooling {
             Self::Pydocstyle => "pydocstyle",
             Self::Pyink => "pyink",
             Self::Pyment => "pyment",
+            Self::Pyupgrade => "pyupgrade",
             Self::Qmlfmt => "qmlfmt",
             Self::QuickLintJs => "quick-lint-js",
             Self::RacoFmt => "raco:fmt",
@@ -4503,6 +4518,7 @@ mod test_tooling {
         assert_eq!(Tooling::Pydocstyle, reverse(Tooling::Pydocstyle)?);
         assert_eq!(Tooling::Pyink, reverse(Tooling::Pyink)?);
         assert_eq!(Tooling::Pyment, reverse(Tooling::Pyment)?);
+        assert_eq!(Tooling::Pyupgrade, reverse(Tooling::Pyupgrade)?);
         assert_eq!(Tooling::Qmlfmt, reverse(Tooling::Qmlfmt)?);
         assert_eq!(Tooling::QuickLintJs, reverse(Tooling::QuickLintJs)?);
         assert_eq!(Tooling::RacoFmt, reverse(Tooling::RacoFmt)?);

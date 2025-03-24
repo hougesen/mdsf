@@ -202,6 +202,8 @@ jobs:
         run: ( ( which pycln ) || ( ( which pipx && pipx install pycln ) ) || ( echo "Unable to install tool" ) )
       - name: pyink
         run: ( ( which pyink ) || ( ( which pipx && pipx install pyink ) ) || ( echo "Unable to install tool" ) )
+      - name: pyupgrade
+        run: ( ( which pyupgrade ) || ( ( which pipx && pipx install pyupgrade ) ) || ( echo "Unable to install tool" ) )
       - name: rescript
         run: ( ( which rescript ) || ( ( which npm && npm i -g rescript ) ) || ( echo "Unable to install tool" ) )
       - name: rubocop

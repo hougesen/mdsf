@@ -1200,6 +1200,11 @@
           "enum": ["pyment"]
         },
         {
+          "description": "A tool to automatically upgrade Python syntax to newer versions\n\n[https://github.com/asottile/pyupgrade](https://github.com/asottile/pyupgrade)\n\n`pyupgrade $PATH`",
+          "type": "string",
+          "enum": ["pyupgrade"]
+        },
+        {
           "description": "Command line application that formats QML files\n\n[https://github.com/jesperhh/qmlfmt](https://github.com/jesperhh/qmlfmt)\n\n`qmlfmt -w $PATH`",
           "type": "string",
           "enum": ["qmlfmt"]
