@@ -42,7 +42,7 @@ pub fn generate(plugins: &Vec<Tool>) -> anyhow::Result<()> {
 
     let workflow = Workflow {
         name: "test".to_owned(),
-        on: vec!["push".to_owned()],
+        on: vec!["push".to_owned(), "workflow_dispatch".to_owned()],
         concurrency: WorkflowConcurrency {
             group: r"${{ github.workflow }}-${{ github.head_ref || github.run_id }}".to_owned(),
             cancel_in_progress: true,

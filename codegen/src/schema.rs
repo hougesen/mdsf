@@ -3,12 +3,12 @@ use std::str::FromStr;
 use anyhow::{Ok, Result};
 use mdsf::config::MdsfConfig;
 
-use crate::{cargo::get_package_version, tools::Tool};
+use crate::tools::Tool;
 
 pub fn generate() -> Result<()> {
     println!("generate schema");
 
-    let package_version = get_package_version()?;
+    let package_version = env!("CARGO_PKG_VERSION");
 
     let schema = serde_json::to_string_pretty(&schemars::schema_for!(MdsfConfig))?;
 

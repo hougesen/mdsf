@@ -20,7 +20,7 @@ test:
 
 test-coverage:
     cargo llvm-cov clean
-    cargo llvm-cov --all-features --open
+    cargo llvm-cov --all-features --all-targets --open
 
 changelog:
     npx auto-changelog --hide-credit -u -l 100 -b 100

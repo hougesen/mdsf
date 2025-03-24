@@ -1,6 +1,7 @@
 name: test
 on:
   - push
+  - workflow_dispatch
 concurrency:
   group: ${{ github.workflow }}-${{ github.head_ref || github.run_id }}
   cancel-in-progress: true
@@ -285,7 +286,7 @@ jobs:
       - name: Run tests
         run: cargo test
       - name: Generate code coverage
-        run: cargo llvm-cov --all-features --locked --lcov --output-path lcov.info
+        run: cargo llvm-cov --all-features --all-targets --locked --lcov --output-path lcov.info
       - name: Upload code coverage
         uses: codecov/codecov-action@v5
         with:

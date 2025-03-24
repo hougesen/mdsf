@@ -1,6 +1,6 @@
 [package]
 name = "mdsf-codegen"
-version = "0.0.0"
+version.workspace = true
 edition.workspace = true
 description = "Code generator for mdsf"
 license.workspace = true
@@ -15,7 +15,7 @@ publish = false
 [dependencies]
 anyhow = { workspace = true }
 convert_case = { workspace = true }
-ignore.workspace = true
+ignore = { workspace = true }
 mdsf = { workspace = true }
 reqwest = { workspace = true }
 schemars = { workspace = true }
@@ -24,4 +24,3 @@ serde_json = { workspace = true }
 # TODO: switch to other yaml library since serde_yaml is deprecated
 # NOTE: since it is just a build dependency it is low priority
 serde_yaml = { workspace = true }
-toml = { workspace = true }

@@ -83,7 +83,7 @@
     { "name": "Run tests", "run": "cargo test" },
     {
       "name": "Generate code coverage",
-      "run": "cargo llvm-cov --all-features --locked --lcov --output-path lcov.info"
+      "run": "cargo llvm-cov --all-features --all-targets --locked --lcov --output-path lcov.info"
     },
     {
       "name": "Upload code coverage",
