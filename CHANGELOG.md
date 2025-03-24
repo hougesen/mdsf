@@ -4,6 +4,8 @@ All notable changes to this project will be documented in this file. Dates are d
 
 #### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.8.3...HEAD)
 
+- docs: add section about caching [`#891`](https://github.com/hougesen/mdsf/pull/891)
+- test(tools): validate uiua:fmt [`#890`](https://github.com/hougesen/mdsf/pull/890)
 - test(tools): validate unimport [`#889`](https://github.com/hougesen/mdsf/pull/889)
 - test(tools): add test for xq:html [`#888`](https://github.com/hougesen/mdsf/pull/888)
 - refactor(codegen): remove dependency on anyhow [`#887`](https://github.com/hougesen/mdsf/pull/887)
