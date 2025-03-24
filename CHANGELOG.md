@@ -2,8 +2,14 @@
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
-#### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.8.2...HEAD)
+#### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.8.3...HEAD)
 
+#### [v0.8.3](https://github.com/hougesen/mdsf/compare/v0.8.2...v0.8.3)
+
+> 24 March 2025
+
+- chore: release v0.8.3 [`#884`](https://github.com/hougesen/mdsf/pull/884)
+- feat(tools): add support for pylint [`#883`](https://github.com/hougesen/mdsf/pull/883)
 - test(tools): validate shellcheck works [`#882`](https://github.com/hougesen/mdsf/pull/882)
 - test(tools): update expected output of mago:lint:fix:unsafe [`#881`](https://github.com/hougesen/mdsf/pull/881)
 - feat(tools): add support for proselint [`#880`](https://github.com/hougesen/mdsf/pull/880)
