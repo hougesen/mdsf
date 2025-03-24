@@ -4,6 +4,7 @@ exclude = []
 resolver = "3"
 
 [workspace.package]
+version = "0.8.3-next"
 readme = "README.md"
 edition = "2024"
 homepage = "https://github.com/hougesen/mdsf"
@@ -51,7 +52,6 @@ test-with = { version = "0.14.8", default-features = false, features = [
   "executable",
 ] }
 threadpool = "1.8.1"
-toml = { version = "0.8.20" }
 which = "7.0.2"
 
 # The profile that 'cargo dist' will build with

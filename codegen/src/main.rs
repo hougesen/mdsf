@@ -2,7 +2,6 @@ use anyhow::{Ok, Result};
 use tools::Tool;
 
 mod actions;
-mod cargo;
 mod contributing;
 mod language_to_filetype;
 pub mod markdown;
