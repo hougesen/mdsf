@@ -618,7 +618,7 @@ mod test_tooling {{
 }
 
 #[allow(clippy::too_many_lines)]
-pub fn generate(plugins: &[Tool]) -> anyhow::Result<Vec<GeneratedCommand>> {
+pub fn generate(plugins: &[Tool]) -> Result<Vec<GeneratedCommand>, std::io::Error> {
     let folder = "mdsf/src/tools";
 
     std::fs::remove_dir_all(folder)?;

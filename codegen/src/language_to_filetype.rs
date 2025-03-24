@@ -1,4 +1,4 @@
-use anyhow::{Ok, Result};
+use crate::error::CodegenError;
 
 #[derive(serde::Deserialize)]
 struct LinguishLanguage {
@@ -6,13 +6,14 @@ struct LinguishLanguage {
     aliases: Option<Vec<String>>,
 }
 
-fn get_linguish_languages() -> Result<std::collections::HashMap<String, LinguishLanguage>> {
+fn get_linguish_languages()
+-> Result<std::collections::HashMap<String, LinguishLanguage>, CodegenError> {
     let url = "https://raw.githubusercontent.com/github-linguist/linguist/master/lib/linguist/languages.yml";
 
     let body = reqwest::blocking::get(url)?.text()?;
 
     serde_yaml::from_str::<std::collections::HashMap<String, LinguishLanguage>>(&body)
-        .map_err(anyhow::Error::from)
+        .map_err(CodegenError::from)
 }
 
 const WHITESPACE: &str = "    ";
@@ -69,7 +70,7 @@ pub fn language_to_ext(language: &str) -> Option<&'static str> {{
     )
 }
 
-pub fn generate() -> Result<()> {
+pub fn generate() -> Result<(), CodegenError> {
     println!("generate language_to_ft");
 
     let languages = get_linguish_languages()?;

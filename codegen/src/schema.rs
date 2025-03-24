@@ -1,11 +1,8 @@
-use std::str::FromStr;
-
-use anyhow::{Ok, Result};
 use mdsf::config::MdsfConfig;
 
-use crate::tools::Tool;
+use crate::{error::CodegenError, tools::Tool};
 
-pub fn generate() -> Result<()> {
+pub fn generate() -> Result<(), CodegenError> {
     println!("generate schema");
 
     let package_version = env!("CARGO_PKG_VERSION");
@@ -13,7 +10,7 @@ pub fn generate() -> Result<()> {
     let schema = serde_json::to_string_pretty(&schemars::schema_for!(MdsfConfig))?;
 
     {
-        let version_dir = std::path::PathBuf::from_str(&format!("./schemas/v{package_version}"))?;
+        let version_dir = std::path::PathBuf::from(&format!("./schemas/v{package_version}"));
 
         std::fs::create_dir_all(&version_dir)?;
 
@@ -21,7 +18,7 @@ pub fn generate() -> Result<()> {
     };
 
     {
-        let dev_dir = std::path::PathBuf::from_str("./schemas/development")?;
+        let dev_dir = std::path::PathBuf::from("./schemas/development");
 
         std::fs::create_dir_all(&dev_dir)?;
 
