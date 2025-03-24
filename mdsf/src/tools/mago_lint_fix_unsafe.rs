@@ -24,12 +24,15 @@ pub const IS_STDIN: bool = false;
 #[cfg(test)]
 mod test_mago_lint_fix_unsafe {
     #[test_with::executable(mago)]
-    fn test_mago_lint_fix_unsafe_php_513b2cc3a1e145ed() {
+    fn test_mago_lint_fix_unsafe_php_8b9097d14e83ef96() {
         let input = r#"<?php
 echo 'Hello World!';
 "#;
 
         let output = r#"<?php
+
+declare(strict_types=1);
+
 echo 'Hello World!';
 "#;
 
