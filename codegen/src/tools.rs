@@ -1,4 +1,5 @@
-use std::hash::{DefaultHasher, Hash, Hasher};
+use core::hash::{Hash, Hasher};
+use std::hash::DefaultHasher;
 
 use convert_case::{Case, Casing};
 

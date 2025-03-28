@@ -1,0 +1,34 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "golangci-lint",
+  "categories": ["formatter", "linter"],
+  "commands": {
+    "fmt": {
+      "arguments": ["fmt", "$PATH"],
+      "description": "Format go source code",
+      "homepage": "https://golangci-lint.run/usage/formatters/",
+      "tests": []
+    },
+    "run": {
+      "arguments": ["run", "$PATH"],
+      "homepage": "https://golangci-lint.run/usage/linters/",
+      "tests": []
+    },
+    "run:fix": {
+      "arguments": ["run", "--fix", "$PATH"],
+      "homepage": "https://golangci-lint.run/usage/linters/",
+      "tests": []
+    }
+  },
+  "description": "Fast linters runner for Go",
+  "homepage": "https://github.com/golangci/golangci-lint",
+  "languages": ["go"],
+  "packages": {
+    "brew": {
+      "package": "golangci-lint"
+    },
+    "go": {
+      "package": "github.com/golangci/golangci-lint/v2/cmd/golangci-lint@v2.0.2"
+    }
+  }
+}
