@@ -111,6 +111,9 @@ pub mod gofmt;
 pub mod gofumpt;
 pub mod goimports;
 pub mod goimports_reviser;
+pub mod golangci_lint_fmt;
+pub mod golangci_lint_run;
+pub mod golangci_lint_run_fix;
 pub mod golines;
 pub mod google_java_format;
 pub mod gospel;
@@ -1208,6 +1211,30 @@ pub enum Tooling {
     ///
     /// `goimports-reviser -format $PATH`
     GoimportsReviser,
+
+    #[serde(rename = "golangci-lint:fmt")]
+    /// Format go source code
+    ///
+    /// [https://golangci-lint.run/usage/formatters/](https://golangci-lint.run/usage/formatters/)
+    ///
+    /// `golangci-lint fmt $PATH`
+    GolangciLintFmt,
+
+    #[serde(rename = "golangci-lint:run")]
+    /// Fast linters runner for Go
+    ///
+    /// [https://golangci-lint.run/usage/linters/](https://golangci-lint.run/usage/linters/)
+    ///
+    /// `golangci-lint run $PATH`
+    GolangciLintRun,
+
+    #[serde(rename = "golangci-lint:run:fix")]
+    /// Fast linters runner for Go
+    ///
+    /// [https://golangci-lint.run/usage/linters/](https://golangci-lint.run/usage/linters/)
+    ///
+    /// `golangci-lint run --fix $PATH`
+    GolangciLintRunFix,
 
     #[serde(rename = "golines")]
     /// A golang formatter that fixes long lines
@@ -3299,6 +3326,21 @@ impl Tooling {
                 goimports_reviser::set_args,
                 goimports_reviser::IS_STDIN,
             ),
+            Self::GolangciLintFmt => (
+                &golangci_lint_fmt::COMMANDS,
+                golangci_lint_fmt::set_args,
+                golangci_lint_fmt::IS_STDIN,
+            ),
+            Self::GolangciLintRun => (
+                &golangci_lint_run::COMMANDS,
+                golangci_lint_run::set_args,
+                golangci_lint_run::IS_STDIN,
+            ),
+            Self::GolangciLintRunFix => (
+                &golangci_lint_run_fix::COMMANDS,
+                golangci_lint_run_fix::set_args,
+                golangci_lint_run_fix::IS_STDIN,
+            ),
             Self::Golines => (&golines::COMMANDS, golines::set_args, golines::IS_STDIN),
             Self::GoogleJavaFormat => (
                 &google_java_format::COMMANDS,
@@ -4070,6 +4112,9 @@ impl AsRef<str> for Tooling {
             Self::Gofumpt => "gofumpt",
             Self::Goimports => "goimports",
             Self::GoimportsReviser => "goimports-reviser",
+            Self::GolangciLintFmt => "golangci-lint:fmt",
+            Self::GolangciLintRun => "golangci-lint:run",
+            Self::GolangciLintRunFix => "golangci-lint:run:fix",
             Self::Golines => "golines",
             Self::GoogleJavaFormat => "google-java-format",
             Self::Gospel => "gospel",
@@ -4426,6 +4471,12 @@ mod test_tooling {
         assert_eq!(
             Tooling::GoimportsReviser,
             reverse(Tooling::GoimportsReviser)?
+        );
+        assert_eq!(Tooling::GolangciLintFmt, reverse(Tooling::GolangciLintFmt)?);
+        assert_eq!(Tooling::GolangciLintRun, reverse(Tooling::GolangciLintRun)?);
+        assert_eq!(
+            Tooling::GolangciLintRunFix,
+            reverse(Tooling::GolangciLintRunFix)?
         );
         assert_eq!(Tooling::Golines, reverse(Tooling::Golines)?);
         assert_eq!(

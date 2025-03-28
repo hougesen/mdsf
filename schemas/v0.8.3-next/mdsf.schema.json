@@ -650,6 +650,21 @@
           "enum": ["goimports-reviser"]
         },
         {
+          "description": "Format go source code\n\n[https://golangci-lint.run/usage/formatters/](https://golangci-lint.run/usage/formatters/)\n\n`golangci-lint fmt $PATH`",
+          "type": "string",
+          "enum": ["golangci-lint:fmt"]
+        },
+        {
+          "description": "Fast linters runner for Go\n\n[https://golangci-lint.run/usage/linters/](https://golangci-lint.run/usage/linters/)\n\n`golangci-lint run $PATH`",
+          "type": "string",
+          "enum": ["golangci-lint:run"]
+        },
+        {
+          "description": "Fast linters runner for Go\n\n[https://golangci-lint.run/usage/linters/](https://golangci-lint.run/usage/linters/)\n\n`golangci-lint run --fix $PATH`",
+          "type": "string",
+          "enum": ["golangci-lint:run:fix"]
+        },
+        {
           "description": "A golang formatter that fixes long lines\n\n[https://github.com/segmentio/golines](https://github.com/segmentio/golines)\n\n`golines -w $PATH`",
           "type": "string",
           "enum": ["golines"]

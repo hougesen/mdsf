@@ -1,7 +1,5 @@
-use std::{
-    env::current_dir,
-    sync::{Arc, atomic::AtomicU32},
-};
+use core::sync::atomic::AtomicU32;
+use std::{env::current_dir, sync::Arc};
 
 use clap::builder::OsStr;
 use mdsf::{
@@ -67,7 +65,7 @@ pub fn run(args: FormatCommandArguments, dry_run: bool) -> Result<(), MdsfError>
         );
 
         if was_formatted {
-            changed_file_count.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+            changed_file_count.fetch_add(1, core::sync::atomic::Ordering::SeqCst);
         }
 
         if !dry_run {
@@ -115,7 +113,7 @@ pub fn run(args: FormatCommandArguments, dry_run: bool) -> Result<(), MdsfError>
                     );
 
                     if was_formatted {
-                        changed_file_count_ref.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+                        changed_file_count_ref.fetch_add(1, core::sync::atomic::Ordering::SeqCst);
                     }
                 });
             }
@@ -126,7 +124,7 @@ pub fn run(args: FormatCommandArguments, dry_run: bool) -> Result<(), MdsfError>
         return Err(MdsfError::MissingInput);
     }
 
-    let total_changed_files = changed_file_count.load(std::sync::atomic::Ordering::SeqCst);
+    let total_changed_files = changed_file_count.load(core::sync::atomic::Ordering::SeqCst);
 
     if dry_run && total_changed_files > 0 {
         Err(MdsfError::CheckModeChanges(total_changed_files))

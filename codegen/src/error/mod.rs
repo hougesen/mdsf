@@ -7,10 +7,10 @@ pub enum CodegenError {
     Reqwest(reqwest::Error),
 }
 
-impl std::error::Error for CodegenError {}
+impl core::error::Error for CodegenError {}
 
 impl core::fmt::Display for CodegenError {
-    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+    fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
         match self {
             Self::Io(e) => e.fmt(f),
             Self::FromUtf8(e) => e.fmt(f),

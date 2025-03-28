@@ -136,7 +136,7 @@ fn spawn_command(
     } else {
         spawned
             .controlled_with_output()
-            .time_limit(std::time::Duration::from_secs(timeout))
+            .time_limit(core::time::Duration::from_secs(timeout))
             .terminate_for_timeout()
             .wait()
             .map_err(MdsfError::Io)?

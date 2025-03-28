@@ -21,7 +21,7 @@ pub enum MdsfError {
     StdinWriteError,
 }
 
-impl std::error::Error for MdsfError {}
+impl core::error::Error for MdsfError {}
 
 impl core::fmt::Display for MdsfError {
     #[inline]

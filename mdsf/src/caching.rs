@@ -1,6 +1,6 @@
-use std::hash::{DefaultHasher, Hash, Hasher};
-
+use core::hash::{Hash, Hasher};
 use sha2::{Digest, Sha256};
+use std::hash::DefaultHasher;
 
 use crate::{config::MdsfConfig, get_project_dir};
 
