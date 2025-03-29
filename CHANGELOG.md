@@ -2,8 +2,15 @@
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
-#### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.8.3...HEAD)
+#### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.8.4...HEAD)
 
+#### [v0.8.4](https://github.com/hougesen/mdsf/compare/v0.8.3...v0.8.4)
+
+> 28 March 2025
+
+- chore: release v0.8.4 [`#895`](https://github.com/hougesen/mdsf/pull/895)
+- build(deps): bump clap from 4.5.32 to 4.5.34 [`#894`](https://github.com/hougesen/mdsf/pull/894)
+- feat(tools): support golangci-lint [`#893`](https://github.com/hougesen/mdsf/pull/893)
 - refactor(parser): ignore codeblock modifiers [`#892`](https://github.com/hougesen/mdsf/pull/892)
 - docs: add section about caching [`#891`](https://github.com/hougesen/mdsf/pull/891)
 - test(tools): validate uiua:fmt [`#890`](https://github.com/hougesen/mdsf/pull/890)
