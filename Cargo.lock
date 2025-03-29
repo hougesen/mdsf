@@ -1075,7 +1075,7 @@ checksum = "13dc2df351e3202783a1fe0d44375f7295ffb4049267b0f3018346dc122a1d94"
 
 [[package]]
 name = "mdsf"
-version = "0.8.3-next"
+version = "0.8.4"
 dependencies = [
  "clap",
  "clap_complete",
@@ -1101,7 +1101,7 @@ dependencies = [
 
 [[package]]
 name = "mdsf-codegen"
-version = "0.8.3-next"
+version = "0.8.4"
 dependencies = [
  "convert_case",
  "ignore",
