@@ -4,9 +4,16 @@ All notable changes to this project will be documented in this file. Dates are d
 
 #### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.8.4...HEAD)
 
+- build(deps-dev): bump @typescript-eslint/parser in /mdsf-vscode [`#900`](https://github.com/hougesen/mdsf/pull/900)
+- build(deps-dev): bump esbuild from 0.25.1 to 0.25.2 in /mdsf-vscode [`#897`](https://github.com/hougesen/mdsf/pull/897)
+- build(deps-dev): bump eslint from 9.22.0 to 9.23.0 in /mdsf-vscode [`#901`](https://github.com/hougesen/mdsf/pull/901)
+- build(deps-dev): bump @eslint/js from 9.22.0 to 9.23.0 in /mdsf-vscode [`#899`](https://github.com/hougesen/mdsf/pull/899)
+- build(deps-dev): bump @typescript-eslint/eslint-plugin in /mdsf-vscode [`#898`](https://github.com/hougesen/mdsf/pull/898)
+- build(deps-dev): bump @types/node in /mdsf-vscode [`#896`](https://github.com/hougesen/mdsf/pull/896)
+
 #### [v0.8.4](https://github.com/hougesen/mdsf/compare/v0.8.3...v0.8.4)
 
-> 28 March 2025
+> 29 March 2025
 
 - chore: release v0.8.4 [`#895`](https://github.com/hougesen/mdsf/pull/895)
 - build(deps): bump clap from 4.5.32 to 4.5.34 [`#894`](https://github.com/hougesen/mdsf/pull/894)
