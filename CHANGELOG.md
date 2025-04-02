@@ -15,6 +15,7 @@ All notable changes to this project will be documented in this file. Dates are d
 - feat: mdsf github action [`f8f6fc2`](https://github.com/hougesen/mdsf/commit/f8f6fc227e4a847e7a4fa11040797c36df6ef403)
 - refactor: use vanilla javascript instead of typescript [`24fb614`](https://github.com/hougesen/mdsf/commit/24fb614f624245255b1008f146c33f2a0524d55e)
 - feat: setup github action.yml [`e2b95c2`](https://github.com/hougesen/mdsf/commit/e2b95c295050d882ba1eaef8c30136bba1c0e57a)
+- chore(action): add author tag [`ba1f094`](https://github.com/hougesen/mdsf/commit/ba1f094c6cc76565186676e6bfdbf770da67d5a0)
 
 #### [v0.8.4](https://github.com/hougesen/mdsf/compare/v0.8.3...v0.8.4)
 

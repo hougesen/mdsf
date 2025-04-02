@@ -47,6 +47,10 @@ format:
     cargo run -- format .
     dist init --yes
 
+version VERSION:
+    cd mdsf-vscode && npm version {{ VERSION }}
+    cd github-action && npm version {{ VERSION }}
+
 precommit-vscode:
     cd mdsf-vscode && npm i
     cd mdsf-vscode && npm run lint:biome:fix
