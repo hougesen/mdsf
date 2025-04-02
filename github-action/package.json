@@ -1,0 +1,28 @@
+{
+  "name": "setup-mdsf",
+  "version": "0.0.0",
+  "description": "Setup mdsf cli in GitHub Actions",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hougesen/mdsf.git",
+    "directory": "github-action"
+  },
+  "author": {
+    "name": "Mads Hougesen",
+    "url": "https://mhouge.dk",
+    "email": "mads@mhouge.dk"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hougesen/mdsf/issues"
+  },
+  "homepage": "https://github.com/hougesen/mdsf#readme",
+  "keywords": [
+    "mdsf",
+    "github-action"
+  ]
+}
