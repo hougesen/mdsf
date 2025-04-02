@@ -12,6 +12,7 @@ All notable changes to this project will be documented in this file. Dates are d
 - build(deps-dev): bump @typescript-eslint/eslint-plugin in /mdsf-vscode [`#898`](https://github.com/hougesen/mdsf/pull/898)
 - build(deps-dev): bump @types/node in /mdsf-vscode [`#896`](https://github.com/hougesen/mdsf/pull/896)
 - chore: bump dev version [`71f0c83`](https://github.com/hougesen/mdsf/commit/71f0c830013ab08141531e5337fc96e2f8856b84)
+- feat: setup github action.yml [`e2b95c2`](https://github.com/hougesen/mdsf/commit/e2b95c295050d882ba1eaef8c30136bba1c0e57a)
 
 #### [v0.8.4](https://github.com/hougesen/mdsf/compare/v0.8.3...v0.8.4)
 

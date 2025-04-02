@@ -54,6 +54,8 @@ precommit-vscode:
 
 precommit-github-action:
     cd github-action && npm i
+    rm -rf github-action/dist
+    cd github-action && npm run build  
 
 precommit-cli:
     just format
