@@ -10,7 +10,7 @@ inputs:
     required: true
     default: ${{ github.token }}
   version:
-    description: The mdsf version to install
+    description: The mdsf version to install. Defaults to latest version.
     required: true
     default: ""
 runs:

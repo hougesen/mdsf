@@ -47,6 +47,7 @@ jobs:
             ${{ runner.os }}-node-
       - run: npm i
       - run: npm run lint:biome
+      - run: npm run lint:eslint
   validate-vscode:
     name: validate-vscode
     runs-on: ${{ matrix.os }}
@@ -70,5 +71,6 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-node-
       - run: npm i
-      - run: npm run lint
+      - run: npm run lint:biome
+      - run: npm run lint:eslint
       - run: npm run compile

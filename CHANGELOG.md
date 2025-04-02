@@ -16,6 +16,7 @@ All notable changes to this project will be documented in this file. Dates are d
 - chore: setup biome [`4b51fbe`](https://github.com/hougesen/mdsf/commit/4b51fbedf3b2cdeccf87e4aa410e8f3f71e85d55)
 - refactor: use vanilla javascript instead of typescript [`24fb614`](https://github.com/hougesen/mdsf/commit/24fb614f624245255b1008f146c33f2a0524d55e)
 - feat: setup github action.yml [`e2b95c2`](https://github.com/hougesen/mdsf/commit/e2b95c295050d882ba1eaef8c30136bba1c0e57a)
+- chore: validate github action works [`c3cdfed`](https://github.com/hougesen/mdsf/commit/c3cdfede064c5c17f2ffdaaa40f57dddbfb1721d)
 - chore(action): add author tag [`ba1f094`](https://github.com/hougesen/mdsf/commit/ba1f094c6cc76565186676e6bfdbf770da67d5a0)
 - chore: set github action version [`859ce9e`](https://github.com/hougesen/mdsf/commit/859ce9e2976687a93030ec5fe69ac4dc5c25d3d8)
 

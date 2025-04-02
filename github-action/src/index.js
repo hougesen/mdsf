@@ -72,7 +72,7 @@ async function getPackageDownloadPath(version) {
   return `https://github.com/hougesen/mdsf/releases/latest/download/${file}`;
 }
 
-export default async function setup() {
+async function setup() {
   const version = core.getInput("version");
 
   const downloadPath = await getPackageDownloadPath(version);
@@ -83,3 +83,5 @@ export default async function setup() {
 
   core.addPath(pathToCLI);
 }
+
+module.exports = setup;
