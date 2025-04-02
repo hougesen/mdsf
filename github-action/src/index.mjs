@@ -1,3 +1,4 @@
+import core from "@actions/core";
 import { addPath, getInput, platform } from "@actions/core";
 import { downloadTool, extractTar } from "@actions/tool-cache";
 
@@ -77,11 +78,19 @@ export async function setup() {
 
   const downloadPath = await getPackageDownloadPath(version);
 
+  core.info(downloadPath);
+
   const pathToTarball = await downloadTool(downloadPath);
+
+  core.info(pathToTarball);
 
   const pathToCLI = await extractTar(pathToTarball);
 
+  core.info(pathToCLI);
+
   addPath(pathToCLI);
+
+  addPath(`${pathToCLI}/mdsf`);
 }
 
 export default setup;
