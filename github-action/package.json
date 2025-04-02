@@ -22,8 +22,15 @@
     "mdsf",
     "github-action"
   ],
+  "scripts": {
+    "lint:biome": "biome check",
+    "lint:biome:fix": "biome check --write"
+  },
   "dependencies": {
     "@actions/core": "^1.11.1",
     "@actions/tool-cache": "^2.0.2"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^1.9.4"
   }
 }

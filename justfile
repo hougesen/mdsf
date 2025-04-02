@@ -58,6 +58,7 @@ precommit-vscode:
 
 precommit-github-action:
     cd github-action && npm i
+    cd github-action && npm run lint:biome:fix
 
 precommit-cli:
     just format
