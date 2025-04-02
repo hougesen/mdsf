@@ -1,4 +1,7 @@
 .github/workflows/release.yml
+github-action/dist
+github-action/package-lock.json
+mdsf-vscode/dist
 mdsf-vscode/package-lock.json
 mdsf/wix/main.wxs
 package-lock.json

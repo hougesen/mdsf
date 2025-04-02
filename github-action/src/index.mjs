@@ -1,9 +1,9 @@
-const core = require("@actions/core");
-const tc = require("@actions/tool-cache");
+import { addPath, getInput, platform } from "@actions/core";
+import { downloadTool, extractTar } from "@actions/tool-cache";
 
 // https://github.com/actions/toolkit/blob/main/packages/core/README.md#platform-helper
 async function getArchInfo() {
-  const details = await core.platform.getDetails();
+  const details = await platform.getDetails();
 
   if (details.isLinux) {
     if (details?.arch === "x64") {
@@ -72,16 +72,16 @@ async function getPackageDownloadPath(version) {
   return `https://github.com/hougesen/mdsf/releases/latest/download/${file}`;
 }
 
-async function setup() {
-  const version = core.getInput("version");
+export async function setup() {
+  const version = getInput("version");
 
   const downloadPath = await getPackageDownloadPath(version);
 
-  const pathToTarball = await tc.downloadTool(downloadPath);
+  const pathToTarball = await downloadTool(downloadPath);
 
-  const pathToCLI = await tc.extractTar(pathToTarball);
+  const pathToCLI = await extractTar(pathToTarball);
 
-  core.addPath(pathToCLI);
+  addPath(pathToCLI);
 }
 
-module.exports = setup;
+export default setup;

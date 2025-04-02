@@ -16,5 +16,8 @@
     "clientKind": "git",
     "enabled": true,
     "useIgnoreFile": true
+  },
+  "files": {
+    "ignore": ["dist"]
   }
 }

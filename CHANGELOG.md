@@ -12,6 +12,7 @@ All notable changes to this project will be documented in this file. Dates are d
 - build(deps-dev): bump @typescript-eslint/eslint-plugin in /mdsf-vscode [`#898`](https://github.com/hougesen/mdsf/pull/898)
 - build(deps-dev): bump @types/node in /mdsf-vscode [`#896`](https://github.com/hougesen/mdsf/pull/896)
 - chore: bump dev version [`71f0c83`](https://github.com/hougesen/mdsf/commit/71f0c830013ab08141531e5337fc96e2f8856b84)
+- chore: setup eslint [`1e02e3a`](https://github.com/hougesen/mdsf/commit/1e02e3a72405ca9fcca308989d446385b22b13e6)
 - feat: mdsf github action [`f8f6fc2`](https://github.com/hougesen/mdsf/commit/f8f6fc227e4a847e7a4fa11040797c36df6ef403)
 - chore: setup biome [`4b51fbe`](https://github.com/hougesen/mdsf/commit/4b51fbedf3b2cdeccf87e4aa410e8f3f71e85d55)
 - refactor: use vanilla javascript instead of typescript [`24fb614`](https://github.com/hougesen/mdsf/commit/24fb614f624245255b1008f146c33f2a0524d55e)
@@ -19,6 +20,7 @@ All notable changes to this project will be documented in this file. Dates are d
 - chore: validate github action works [`c3cdfed`](https://github.com/hougesen/mdsf/commit/c3cdfede064c5c17f2ffdaaa40f57dddbfb1721d)
 - chore(action): add author tag [`ba1f094`](https://github.com/hougesen/mdsf/commit/ba1f094c6cc76565186676e6bfdbf770da67d5a0)
 - chore: set github action version [`859ce9e`](https://github.com/hougesen/mdsf/commit/859ce9e2976687a93030ec5fe69ac4dc5c25d3d8)
+- chore: dogfood github action [`586bc40`](https://github.com/hougesen/mdsf/commit/586bc40d51d95b1b2262d1d56e358e676074d83a)
 
 #### [v0.8.4](https://github.com/hougesen/mdsf/compare/v0.8.3...v0.8.4)
 

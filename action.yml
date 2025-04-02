@@ -15,4 +15,4 @@ inputs:
     default: ""
 runs:
   using: node20
-  main: github-action/src/index.js
+  main: github-action/dist/index.js

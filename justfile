@@ -60,6 +60,7 @@ precommit-github-action:
     cd github-action && npm i
     cd github-action && npm run lint:biome:fix
     cd github-action && npm run lint:eslint:fix
+    cd github-action && npm run build 
 
 precommit-cli:
     just format

@@ -11,4 +11,5 @@ export default defineConfig([
     plugins: { js },
     extends: ["js/recommended"],
   },
+  { ignores: ["dist"] },
 ]);
