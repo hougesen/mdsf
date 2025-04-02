@@ -1,5 +1,5 @@
-import core from "@actions/core";
-import tc from "@actions/tool-cache";
+const core = require("@actions/core");
+const tc = require("@actions/tool-cache");
 
 // https://github.com/actions/toolkit/blob/main/packages/core/README.md#platform-helper
 async function getArchInfo() {
@@ -32,7 +32,10 @@ async function getArchInfo() {
   );
 }
 
-function parseVersion(version: string) {
+/**
+ * @param {string} version
+ */
+function parseVersion(version) {
   const trimmed = version?.trim();
 
   if (!trimmed?.length) {
@@ -50,7 +53,10 @@ function parseVersion(version: string) {
   return `v${version}`;
 }
 
-async function getPackageDownloadPath(version: string) {
+/**
+ * @param {string} version
+ */
+async function getPackageDownloadPath(version) {
   const platformArch = await getArchInfo();
 
   const file = `mdsf-${platformArch}.tar.gz`;
