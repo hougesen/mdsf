@@ -13,6 +13,7 @@ All notable changes to this project will be documented in this file. Dates are d
 - build(deps-dev): bump @types/node in /mdsf-vscode [`#896`](https://github.com/hougesen/mdsf/pull/896)
 - chore: bump dev version [`71f0c83`](https://github.com/hougesen/mdsf/commit/71f0c830013ab08141531e5337fc96e2f8856b84)
 - feat: mdsf github action [`f8f6fc2`](https://github.com/hougesen/mdsf/commit/f8f6fc227e4a847e7a4fa11040797c36df6ef403)
+- refactor: use vanilla javascript instead of typescript [`24fb614`](https://github.com/hougesen/mdsf/commit/24fb614f624245255b1008f146c33f2a0524d55e)
 - feat: setup github action.yml [`e2b95c2`](https://github.com/hougesen/mdsf/commit/e2b95c295050d882ba1eaef8c30136bba1c0e57a)
 
 #### [v0.8.4](https://github.com/hougesen/mdsf/compare/v0.8.3...v0.8.4)
