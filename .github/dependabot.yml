@@ -30,3 +30,9 @@ updates:
       interval: monthly
     open-pull-requests-limit: 100
     assignees: [hougesen]
+  - package-ecosystem: npm
+    directory: /github-action
+    schedule:
+      interval: monthly
+    open-pull-requests-limit: 100
+    assignees: [hougesen]

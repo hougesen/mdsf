@@ -4,13 +4,18 @@ on:
   workflow_dispatch:
 jobs:
   verify:
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os:
+          - ubuntu-latest
+          - macos-latest
+          # disabled because of an issue with crlf
+          # - windows-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
       - name: Install mdsf
-        uses: taiki-e/install-action@v2
-        with:
-          tool: mdsf
+        uses: hougesen/mdsf@main
       - name: Run mdsf
         run: mdsf verify --log-level warn .

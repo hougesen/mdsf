@@ -47,17 +47,30 @@ format:
     cargo run -- format .
     dist init --yes
 
-vscode-precommit:
+version VERSION:
+    cd mdsf-vscode && npm version {{ VERSION }}
+    cd github-action && npm version {{ VERSION }}
+
+precommit-vscode:
     cd mdsf-vscode && npm i
     cd mdsf-vscode && npm run lint:biome:fix
     cd mdsf-vscode && npm run lint:eslint:fix
 
-precommit:
-    just vscode-precommit
+precommit-github-action:
+    cd github-action && npm i
+    cd github-action && npm run lint:biome:fix
+    cd github-action && npm run lint:eslint:fix
+    cd github-action && npm run build 
 
+precommit-cli:
     just format
     just codegen
     just build
     just lint
     just test
     just format
+
+precommit:
+    just precommit-vscode 
+    just precommit-github-action
+    just precommit-cli 
