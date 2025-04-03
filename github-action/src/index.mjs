@@ -1,4 +1,3 @@
-import core from "@actions/core";
 import { addPath, getInput, platform } from "@actions/core";
 import { downloadTool, extractTar } from "@actions/tool-cache";
 
@@ -75,18 +74,19 @@ async function getPackageDownloadPath(version) {
 
 export async function setup() {
   const version = getInput("version");
+  console.log("version", version);
 
   const downloadPath = await getPackageDownloadPath(version);
 
-  core.info(downloadPath);
+  console.log("downloadPath", downloadPath);
 
   const pathToTarball = await downloadTool(downloadPath);
 
-  core.info(pathToTarball);
+  console.log(pathToTarball);
 
   const pathToCLI = await extractTar(pathToTarball);
 
-  core.info(pathToCLI);
+  console.log(pathToCLI);
 
   addPath(pathToCLI);
 
