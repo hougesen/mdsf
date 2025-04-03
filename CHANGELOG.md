@@ -20,6 +20,7 @@ All notable changes to this project will be documented in this file. Dates are d
 - feat: setup github action.yml [`e2b95c2`](https://github.com/hougesen/mdsf/commit/e2b95c295050d882ba1eaef8c30136bba1c0e57a)
 - chore: validate github action works [`c3cdfed`](https://github.com/hougesen/mdsf/commit/c3cdfede064c5c17f2ffdaaa40f57dddbfb1721d)
 - fix: change bin path [`2e8d853`](https://github.com/hougesen/mdsf/commit/2e8d8538a0c2c3946f9ba78e2f285118fe99d350)
+- chore: disable testing setup-mdsf on windows because of crlf [`03487f9`](https://github.com/hougesen/mdsf/commit/03487f9f590a691d08b8a0d5831c6be9c86d3556)
 - fix: remove dev logs [`aca7da9`](https://github.com/hougesen/mdsf/commit/aca7da9db0eb8d4286f0def20c37904588917067)
 - chore(action): add author tag [`ba1f094`](https://github.com/hougesen/mdsf/commit/ba1f094c6cc76565186676e6bfdbf770da67d5a0)
 - chore: set github action version [`859ce9e`](https://github.com/hougesen/mdsf/commit/859ce9e2976687a93030ec5fe69ac4dc5c25d3d8)
