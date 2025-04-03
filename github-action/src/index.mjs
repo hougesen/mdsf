@@ -1,4 +1,4 @@
-import { addPath, getInput, platform } from "@actions/core";
+import { addPath, getInput, platform, setFailed } from "@actions/core";
 import { downloadTool, extractTar } from "@actions/tool-cache";
 
 // https://github.com/actions/toolkit/blob/main/packages/core/README.md#platform-helper
@@ -93,4 +93,6 @@ export async function setup() {
   addPath(`${pathToCLI}/mdsf`);
 }
 
-export default setup;
+setup().catch((error) => {
+  setFailed(error.message);
+});
