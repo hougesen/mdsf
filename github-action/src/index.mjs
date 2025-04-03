@@ -1,3 +1,4 @@
+import path from "node:path";
 import { addPath, getInput, platform, setFailed } from "@actions/core";
 import { downloadTool, extractTar } from "@actions/tool-cache";
 
@@ -55,12 +56,9 @@ function parseVersion(version) {
 
 /**
  * @param {string} version
+ * @param {string} file
  */
-async function getPackageDownloadPath(version) {
-  const platformArch = await getArchInfo();
-
-  const file = `mdsf-${platformArch}.tar.gz`;
-
+async function getPackageDownloadPath(version, file) {
   const parsedVersion = parseVersion(version);
 
   if (parsedVersion?.length) {
@@ -74,23 +72,18 @@ async function getPackageDownloadPath(version) {
 
 export async function setup() {
   const version = getInput("version");
-  console.log("version", version);
 
-  const downloadPath = await getPackageDownloadPath(version);
+  const platformArch = await getArchInfo();
 
-  console.log("downloadPath", downloadPath);
+  const file = `mdsf-${platformArch}.tar.gz`;
+
+  const downloadPath = await getPackageDownloadPath(version, file);
 
   const pathToTarball = await downloadTool(downloadPath);
 
-  console.log(pathToTarball);
-
   const pathToCLI = await extractTar(pathToTarball);
 
-  console.log(pathToCLI);
-
-  addPath(pathToCLI);
-
-  addPath(`${pathToCLI}/mdsf`);
+  addPath(path.join(pathToCLI, file));
 }
 
 setup().catch((error) => {
