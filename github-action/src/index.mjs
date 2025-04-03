@@ -1,4 +1,3 @@
-import fs from "node:fs/promises";
 import path from "node:path";
 import { addPath, getInput, platform, setFailed } from "@actions/core";
 import { downloadTool, extractTar } from "@actions/tool-cache";
@@ -84,20 +83,7 @@ export async function setup() {
 
   const pathToCLI = await extractTar(pathToTarball);
 
-  console.info("pathToCLI", pathToCLI);
-
-  const contents = await fs.readdir(pathToCLI);
-
-  console.info("contents", contents);
-
-  const joined = path.join(pathToCLI, file);
-
-  console.info("joined", joined);
-
-  const joinedContent = await fs.readdir(joined);
-  console.info({ joinedContent });
-
-  addPath(joined);
+  addPath(path.join(pathToCLI, file));
 }
 
 setup().catch((error) => {
