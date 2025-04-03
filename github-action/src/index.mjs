@@ -90,7 +90,14 @@ export async function setup() {
 
   console.info("contents", contents);
 
-  addPath(path.join(pathToCLI, file));
+  const joined = path.join(pathToCLI, file);
+
+  console.info("joined", joined);
+
+  const joinedContent = await fs.readdir(joined);
+  console.info({ joinedContent });
+
+  addPath(joined);
 }
 
 setup().catch((error) => {
