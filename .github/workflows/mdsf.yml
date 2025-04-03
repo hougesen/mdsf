@@ -7,7 +7,11 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [windows-latest, macos-latest, ubuntu-latest]
+        os:
+          - ubuntu-latest
+          - macos-latest
+          # disabled because of an issue with crlf
+          # - windows-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
