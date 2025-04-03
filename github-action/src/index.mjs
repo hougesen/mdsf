@@ -76,9 +76,9 @@ export async function setup() {
 
   const platformArch = await getArchInfo();
 
-  const file = `mdsf-${platformArch}.tar.gz`;
+  const file = `mdsf-${platformArch}`;
 
-  const downloadPath = await getPackageDownloadPath(version, file);
+  const downloadPath = await getPackageDownloadPath(version, `${file}.tar.gz`);
 
   const pathToTarball = await downloadTool(downloadPath);
 
