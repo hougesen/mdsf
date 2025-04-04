@@ -5,7 +5,7 @@
   "description": "Format markdown code blocks using mdsf",
   "version": "0.8.4-next",
   "engines": {
-    "vscode": "^1.96.0"
+    "vscode": "^1.99.0"
   },
   "categories": [
     "Formatters",
