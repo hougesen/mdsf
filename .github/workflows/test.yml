@@ -235,6 +235,8 @@ jobs:
         run: ( ( which sql-formatter ) || ( ( which npm && npm i -g sql-formatter ) ) || ( echo "Unable to install tool" ) )
       - name: sqlfluff
         run: ( ( which sqlfluff ) || ( ( which pipx && pipx install sqlfluff ) ) || ( echo "Unable to install tool" ) )
+      - name: sqruff
+        run: ( ( which sqruff ) || ( ( which cargo && ( cargo binstall sqruff || cargo install sqruff ) ) || ( which pipx && pipx install sqruff ) ) || ( echo "Unable to install tool" ) )
       - name: standard
         run: ( ( which standard ) || ( ( which npm && npm i -g standard ) ) || ( echo "Unable to install tool" ) )
       - name: standardrb

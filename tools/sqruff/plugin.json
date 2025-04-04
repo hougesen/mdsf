@@ -4,8 +4,14 @@
   "categories": ["formatter", "linter"],
   "commands": {
     "": {
-      "arguments": ["fix", "$PATH"],
-      "tests": []
+      "arguments": ["fix", "--force", "$PATH"],
+      "tests": [
+        {
+          "language": "sql",
+          "test_input": "SELECT          * from dummy where Name     > 10\n",
+          "test_output": "SELECT * FROM dummy WHERE name > 10\n"
+        }
+      ]
     }
   },
   "description": "Fast SQL formatter/linter",

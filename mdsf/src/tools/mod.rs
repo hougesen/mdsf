@@ -2489,7 +2489,7 @@ pub enum Tooling {
     ///
     /// [https://github.com/quarylabs/sqruff](https://github.com/quarylabs/sqruff)
     ///
-    /// `sqruff fix $PATH`
+    /// `sqruff fix --force $PATH`
     Sqruff,
 
     #[serde(rename = "standardjs")]
