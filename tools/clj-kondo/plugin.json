@@ -11,5 +11,9 @@
   "description": "Static analyzer and linter for Clojure code that sparks joy",
   "homepage": "https://github.com/clj-kondo/clj-kondo",
   "languages": ["clojure", "clojurescript"],
-  "packages": {}
+  "packages": {
+    "brew": {
+      "package": "borkdude/brew/clj-kondo"
+    }
+  }
 }

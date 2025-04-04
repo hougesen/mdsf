@@ -4,6 +4,7 @@ All notable changes to this project will be documented in this file. Dates are d
 
 #### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.8.4...HEAD)
 
+- test(tools): validate ruff:check [`#910`](https://github.com/hougesen/mdsf/pull/910)
 - test(tools): validate hlint [`#909`](https://github.com/hougesen/mdsf/pull/909)
 - refactor(tools): add --force to sqruff [`#908`](https://github.com/hougesen/mdsf/pull/908)
 - test: validate smlfmt [`#907`](https://github.com/hougesen/mdsf/pull/907)
