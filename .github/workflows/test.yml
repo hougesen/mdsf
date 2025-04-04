@@ -277,6 +277,8 @@ jobs:
         run: ( ( which usort ) || ( ( which pipx && pipx install usort ) ) || ( echo "Unable to install tool" ) )
       - name: vsg
         run: ( ( which vsg ) || ( ( which pipx && pipx install vsg ) ) || ( echo "Unable to install tool" ) )
+      - name: wfindent
+        run: ( ( which wfindent ) || ( ( which brew &&  brew install findent ) || ( which apt-get && sudo apt-get install -y findent ) ) || ( echo "Unable to install tool" ) )
       - name: xmlformat
         run: ( ( which xmlformat ) || ( ( which pipx && pipx install xmlformatter ) ) || ( echo "Unable to install tool" ) )
       - name: xmllint
