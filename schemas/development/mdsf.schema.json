@@ -710,7 +710,7 @@
           "enum": ["hindent"]
         },
         {
-          "description": "Haskell source code suggestions\n\n[https://github.com/ndmitchell/hlint](https://github.com/ndmitchell/hlint)\n\n`hlint --refactor -i $PATH`",
+          "description": "Haskell source code suggestions\n\n[https://github.com/ndmitchell/hlint](https://github.com/ndmitchell/hlint)\n\n`hlint $PATH`",
           "type": "string",
           "enum": ["hlint"]
         },
