@@ -4,6 +4,7 @@ All notable changes to this project will be documented in this file. Dates are d
 
 #### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.8.4...HEAD)
 
+- test(tools): validate hlint [`#909`](https://github.com/hougesen/mdsf/pull/909)
 - refactor(tools): add --force to sqruff [`#908`](https://github.com/hougesen/mdsf/pull/908)
 - test: validate smlfmt [`#907`](https://github.com/hougesen/mdsf/pull/907)
 - build(deps-dev): bump @types/vscode from 1.97.0 to 1.99.0 in /mdsf-vscode [`#906`](https://github.com/hougesen/mdsf/pull/906)

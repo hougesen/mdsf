@@ -6,7 +6,13 @@
     "check": {
       "arguments": ["check", "--fix", "--quiet", "$PATH"],
       "description": "Run the Ruff linter on the input",
-      "tests": []
+      "tests": [
+        {
+          "language": "python",
+          "test_input": "def add(a: int, b: int) -> int:\n    return a + b\n",
+          "test_output": "def add(a: int, b: int) -> int:\n    return a + b\n"
+        }
+      ]
     },
     "format": {
       "arguments": ["format", "--quiet", "$PATH"],
