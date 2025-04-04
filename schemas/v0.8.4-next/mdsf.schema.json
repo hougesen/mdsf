@@ -1445,7 +1445,7 @@
           "enum": ["sqlfmt"]
         },
         {
-          "description": "Fast SQL formatter/linter\n\n[https://github.com/quarylabs/sqruff](https://github.com/quarylabs/sqruff)\n\n`sqruff fix $PATH`",
+          "description": "Fast SQL formatter/linter\n\n[https://github.com/quarylabs/sqruff](https://github.com/quarylabs/sqruff)\n\n`sqruff fix --force $PATH`",
           "type": "string",
           "enum": ["sqruff"]
         },

@@ -4,6 +4,7 @@ All notable changes to this project will be documented in this file. Dates are d
 
 #### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.8.4...HEAD)
 
+- test: validate smlfmt [`#907`](https://github.com/hougesen/mdsf/pull/907)
 - build(deps-dev): bump @types/vscode from 1.97.0 to 1.99.0 in /mdsf-vscode [`#906`](https://github.com/hougesen/mdsf/pull/906)
 - chore: use mise tasks instead of just [`#905`](https://github.com/hougesen/mdsf/pull/905)
 - build(deps-dev): bump @types/node in /mdsf-vscode [`#904`](https://github.com/hougesen/mdsf/pull/904)
