@@ -21,18 +21,18 @@ updates:
   - package-ecosystem: github-actions
     directory: /
     schedule:
-      interval: monthly
+      interval: weekly
     open-pull-requests-limit: 100
     assignees: [hougesen]
   - package-ecosystem: npm
     directory: /mdsf-vscode
     schedule:
-      interval: monthly
+      interval: weekly
     open-pull-requests-limit: 100
     assignees: [hougesen]
   - package-ecosystem: npm
     directory: /github-action
     schedule:
-      interval: monthly
+      interval: weekly
     open-pull-requests-limit: 100
     assignees: [hougesen]

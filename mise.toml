@@ -1,0 +1,89 @@
+[tasks.build]
+run = ["cargo check", "cargo build"]
+
+[tasks.build-local]
+run = [
+  "cargo build --release",
+  "sudo cp target/release/mdsf /usr/local/bin/mdsf-local",
+]
+
+[tasks.changelog]
+run = ["npx auto-changelog --hide-credit -u -l 100 -b 100"]
+
+[tasks.codegen]
+run = [
+  "mise tasks r changelog",
+  "cargo run --package mdsf-codegen",
+  "cargo run --package mdsf-codegen",
+  "mise tasks r format",
+]
+
+[tasks.format]
+run = [
+  "taplo format",
+  "mise fmt",
+  "cargo fmt",
+  "npx --yes prettier@latest --write --cache .",
+  "cargo run -- format .",
+  "dist init --yes",
+]
+
+[tasks.lint]
+run = [
+  "cargo fmt -- --check --color always",
+  "cargo clippy --all-targets --all-features",
+]
+
+[tasks.lint-aggressive]
+run = [
+  "cargo clean",
+  "cargo clippy --fix --allow-staged --all-targets --all-features -- -Dclippy::style -Dclippy::double_neg -Dclippy::perf -Dclippy::pedantic -Dclippy::all -Dclippy::cargo -Dclippy::complexity -Dclippy::nursery -Dclippy::suspicious -Aclippy::module_name_repetitions -Aclippy::missing_errors_doc -Aclippy::must_use_candidate -Aclippy::multiple_crate_versions -Aclippy::needless_raw_strings -Aclippy::needless_raw_string_hashes -Dclippy::std_instead_of_core",
+  "cargo clean",
+]
+
+[tasks.precommit]
+run = [
+  "mise tasks r precommit-vscode",
+  "mise tasks r precommit-github-action",
+  "mise tasks r precommit-cli",
+]
+
+[tasks.precommit-cli]
+run = [
+  "mise tasks r format",
+  "mise tasks r codegen",
+  "mise tasks r build",
+  "mise tasks r lint",
+  "mise tasks r test",
+  "mise tasks r format",
+]
+
+[tasks.precommit-github-action]
+dir = "./github-action"
+run = [
+  "npm i",
+  "npm run lint:biome:fix",
+  "npm run lint:eslint:fix",
+  "npm run build",
+]
+
+[tasks.precommit-vscode]
+dir = "./mdsf-vscode"
+run = ["npm i", "npm run lint:biome:fix", "npm run lint:eslint:fix"]
+
+[tasks.sort-json]
+run = [
+  'npx jsonlint -s -i mdsf.json',
+  'find ./tools -type f -name "*.json" -exec npx jsonlint -s -i {} \;',
+]
+
+[tasks.test]
+run = [
+  "RUST_BACKTRACE=full cargo nextest run --all-targets --all-features --no-fail-fast --release",
+]
+
+[tasks.test-coverage]
+run = [
+  "cargo llvm-cov clean",
+  "cargo llvm-cov --all-features --all-targets --open",
+]
