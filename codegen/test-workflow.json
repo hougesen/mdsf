@@ -82,6 +82,7 @@
     }
   ],
   "post:packages": [
+    { "run": "hash -r" },
     { "name": "Run tests", "run": "cargo test" },
     {
       "name": "Generate code coverage",

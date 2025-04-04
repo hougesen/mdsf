@@ -297,6 +297,7 @@ jobs:
         run: ( ( which yew-fmt ) || ( ( which cargo && ( cargo binstall yew-fmt || cargo install yew-fmt ) ) ) || ( echo "Unable to install tool" ) )
       - name: yq
         run: ( ( which yq ) || ( ( which brew &&  brew install yq ) || ( which apt-get && sudo apt-get install -y yq ) || ( which go && go install github.com/mikefarah/yq/v4@latest ) ) || ( echo "Unable to install tool" ) )
+      - run: hash -r
       - name: Run tests
         run: cargo test
       - name: Generate code coverage
