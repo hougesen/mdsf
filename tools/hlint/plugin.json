@@ -4,8 +4,14 @@
   "categories": ["linter"],
   "commands": {
     "": {
-      "arguments": ["--refactor", "-i", "$PATH"],
-      "tests": []
+      "arguments": ["$PATH"],
+      "tests": [
+        {
+          "language": "haskell",
+          "test_input": "add :: Int -> Int -> Int\nadd a b = a + b",
+          "test_output": "add :: Int -> Int -> Int\nadd a b = a + b"
+        }
+      ]
     }
   },
   "description": "Haskell source code suggestions",

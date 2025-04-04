@@ -1313,7 +1313,7 @@ pub enum Tooling {
     ///
     /// [https://github.com/ndmitchell/hlint](https://github.com/ndmitchell/hlint)
     ///
-    /// `hlint --refactor -i $PATH`
+    /// `hlint $PATH`
     Hlint,
 
     #[serde(rename = "html-beautify")]

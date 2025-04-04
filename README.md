@@ -828,7 +828,7 @@ Options:
 | `hclfmt`                     | `hclfmt -w $PATH`                                                                       |
 | `hfmt`                       | `hfmt -w $PATH`                                                                         |
 | `hindent`                    | `hindent $PATH`                                                                         |
-| `hlint`                      | `hlint --refactor -i $PATH`                                                             |
+| `hlint`                      | `hlint $PATH`                                                                           |
 | `html-beautify`              | `html-beautify -r --type html -f $PATH`                                                 |
 | `htmlbeautifier`             | `htmlbeautifier $PATH`                                                                  |
 | `htmlhint`                   | `htmlhint $PATH`                                                                        |

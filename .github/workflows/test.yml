@@ -127,6 +127,8 @@ jobs:
         run: ( ( which google-java-format ) || ( ( which brew &&  brew install google-java-format ) ) || ( echo "Unable to install tool" ) )
       - name: hindent
         run: ( ( which hindent ) || ( ( which apt-get && sudo apt-get install -y hindent ) || ( which stack && stack install hindent ) ) || ( echo "Unable to install tool" ) )
+      - name: hlint
+        run: ( ( which hlint ) || ( ( which brew &&  brew install hlint ) || ( which stack && stack install hlint ) || ( which cabal && cabal install hlint ) ) || ( echo "Unable to install tool" ) )
       - name: html-beautify
         run: ( ( which html-beautify ) || ( ( which npm && npm i -g js-beautify ) ) || ( echo "Unable to install tool" ) )
       - name: htmlbeautifier
