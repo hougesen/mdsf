@@ -11,5 +11,9 @@
   "description": "the nushell formatter",
   "homepage": "https://github.com/nushell/nufmt",
   "languages": ["nushell"],
-  "packages": {}
+  "packages": {
+    "cargo": {
+      "package": "--git https://github.com/nushell/nufmt"
+    }
+  }
 }

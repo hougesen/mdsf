@@ -11,5 +11,9 @@
   "description": "Formatter for Typst",
   "homepage": "https://github.com/antonwetzel/prettypst",
   "languages": ["typst"],
-  "packages": {}
+  "packages": {
+    "cargo": {
+      "package": "--git=https://github.com/antonWetzel/prettypst.git --locked"
+    }
+  }
 }
