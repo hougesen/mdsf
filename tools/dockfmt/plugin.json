@@ -13,7 +13,7 @@
   "languages": ["docker"],
   "packages": {
     "go": {
-      "package": "github.com/jessfraz/dockfmt"
+      "package": "github.com/jessfraz/dockfmt@latest"
     }
   }
 }

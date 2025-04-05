@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file. Dates are d
 
 #### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.8.4...HEAD)
 
+- test(tools): validate reorder-python-imports [`#920`](https://github.com/hougesen/mdsf/pull/920)
+- test(tools): validate sqlfmt [`#917`](https://github.com/hougesen/mdsf/pull/917)
+- test(tools): validate selene [`#918`](https://github.com/hougesen/mdsf/pull/918)
+- test(tools): validate rustywind [`#919`](https://github.com/hougesen/mdsf/pull/919)
+- test(tools): validate sqlfluff:lint and sqlfluff:fix [`#916`](https://github.com/hougesen/mdsf/pull/916)
 - test(tools): validate tex-fmt [`#915`](https://github.com/hougesen/mdsf/pull/915)
 - test(tools): add test for wfindent [`#914`](https://github.com/hougesen/mdsf/pull/914)
 - fix: clear path cache before testing [`#913`](https://github.com/hougesen/mdsf/pull/913)

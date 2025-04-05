@@ -3,19 +3,19 @@ updates:
   - package-ecosystem: cargo
     directory: /
     schedule:
-      interval: weekly
+      interval: daily
     open-pull-requests-limit: 100
     assignees: [hougesen]
   - package-ecosystem: cargo
     directory: /mdsf
     schedule:
-      interval: weekly
+      interval: daily
     open-pull-requests-limit: 100
     assignees: [hougesen]
   - package-ecosystem: cargo
     directory: /codegen
     schedule:
-      interval: weekly
+      interval: daily
     open-pull-requests-limit: 100
     assignees: [hougesen]
   - package-ecosystem: github-actions
