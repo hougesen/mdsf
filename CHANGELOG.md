@@ -4,6 +4,7 @@ All notable changes to this project will be documented in this file. Dates are d
 
 #### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.8.4...HEAD)
 
+- test(tools): add test for wfindent [`#914`](https://github.com/hougesen/mdsf/pull/914)
 - fix: clear path cache before testing [`#913`](https://github.com/hougesen/mdsf/pull/913)
 - test: setup luarocks in ci [`#912`](https://github.com/hougesen/mdsf/pull/912)
 - test: add test for nph [`#911`](https://github.com/hougesen/mdsf/pull/911)
