@@ -13,7 +13,7 @@
   "languages": ["go"],
   "packages": {
     "go": {
-      "package": "github.com/cockroachdb/crlfmt"
+      "package": "github.com/cockroachdb/crlfmt@latest"
     }
   }
 }

@@ -23,7 +23,7 @@ pub const IS_STDIN: bool = false;
 #[cfg(test)]
 mod test_reorder_python_imports {
     #[test_with::executable(reorder-python-imports || pipx || uv)]
-    fn test_reorder_python_imports_python_27ed7b74e180e8af() {
+    fn test_reorder_python_imports_python_8ddc1587af0094c1() {
         let input = r#"import sys
 import pyramid
 import reorder_python_imports"#;
@@ -31,8 +31,8 @@ import reorder_python_imports"#;
         let output = r#"import sys
 
 import pyramid
-
-import reorder_python_imports"#;
+import reorder_python_imports
+"#;
 
         let file_ext = crate::fttype::get_file_extension("python");
 

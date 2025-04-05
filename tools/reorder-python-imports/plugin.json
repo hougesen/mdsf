@@ -9,7 +9,7 @@
         {
           "language": "python",
           "test_input": "import sys\nimport pyramid\nimport reorder_python_imports",
-          "test_output": "import sys\n\nimport pyramid\n\nimport reorder_python_imports"
+          "test_output": "import sys\n\nimport pyramid\nimport reorder_python_imports\n"
         }
       ]
     }
