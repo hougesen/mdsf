@@ -14,7 +14,13 @@
       ],
       "description": "Fix SQL errors",
       "homepage": "https://docs.sqlfluff.com/en/stable/reference/cli.html#sqlfluff-fix",
-      "tests": []
+      "tests": [
+        {
+          "language": "sql",
+          "test_input": "SELECT  id                  FROM  tbl\n                        WHERE                      foo   = 'bar' LIMIT 10 ;\n",
+          "test_output": "SELECT id FROM tbl\nWHERE foo = 'bar' LIMIT 10;\n"
+        }
+      ]
     },
     "format": {
       "arguments": [
@@ -30,8 +36,8 @@
       "tests": [
         {
           "language": "sql",
-          "test_input": "SELECT  *                  FROM  tbl\n                        WHERE                      foo   = 'bar';         ",
-          "test_output": "SELECT * FROM tbl\nWHERE foo = 'bar';\n"
+          "test_input": "SELECT  id                  FROM  tbl\n                        WHERE                      foo   = 'bar';         ",
+          "test_output": "SELECT id FROM tbl\nWHERE foo = 'bar';\n"
         }
       ]
     },
@@ -46,7 +52,13 @@
       ],
       "description": "Lint SQL",
       "homepage": "https://docs.sqlfluff.com/en/stable/reference/cli.html#sqlfluff-lint",
-      "tests": []
+      "tests": [
+        {
+          "language": "sql",
+          "test_input": "SELECT asd FROM tbl\nWHERE foo = 'bar' LIMIT 10;\n",
+          "test_output": "SELECT asd FROM tbl\nWHERE foo = 'bar' LIMIT 10;\n"
+        }
+      ]
     }
   },
   "description": "A modular SQL linter and auto-formatter with support for multiple dialects and templated code",

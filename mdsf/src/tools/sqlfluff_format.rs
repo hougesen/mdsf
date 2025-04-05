@@ -28,11 +28,11 @@ pub const IS_STDIN: bool = false;
 #[cfg(test)]
 mod test_sqlfluff_format {
     #[test_with::executable(sqlfluff || pipx || uv)]
-    fn test_sqlfluff_format_sql_55c68b000536eccf() {
-        let input = r#"SELECT  *                  FROM  tbl
+    fn test_sqlfluff_format_sql_498b1dc9b48f9b5d() {
+        let input = r#"SELECT  id                  FROM  tbl
                         WHERE                      foo   = 'bar';         "#;
 
-        let output = r#"SELECT * FROM tbl
+        let output = r#"SELECT id FROM tbl
 WHERE foo = 'bar';
 "#;
 
