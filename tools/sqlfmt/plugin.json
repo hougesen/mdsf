@@ -5,7 +5,13 @@
   "commands": {
     "": {
       "arguments": ["$PATH"],
-      "tests": []
+      "tests": [
+        {
+          "language": "sql",
+          "test_input": "SELECT  *                  FROM  tbl                        WHERE                      foo   = 'bar';",
+          "test_output": "select *\nfrom tbl\nwhere foo = 'bar'\n;\n"
+        }
+      ]
     }
   },
   "description": "sqlfmt formats your dbt SQL files so you don't have to",
