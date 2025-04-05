@@ -5,7 +5,13 @@
   "commands": {
     "": {
       "arguments": ["--write", "$PATH"],
-      "tests": []
+      "tests": [
+        {
+          "language": "html",
+          "test_input": "<div class=\"flex-col flex\"></div>\n",
+          "test_output": "<div class=\"flex flex-col\"></div>\n"
+        }
+      ]
     }
   },
   "description": "CLI for organizing Tailwind CSS classes",

@@ -1365,7 +1365,7 @@
           "enum": ["scalariform"]
         },
         {
-          "description": "A blazing-fast modern Lua linter written in Rust\n\n[https://github.com/kampfkarren/selene](https://github.com/kampfkarren/selene)\n\n`selene $PATH`",
+          "description": "A blazing-fast modern Lua linter written in Rust\n\n[https://github.com/kampfkarren/selene](https://github.com/kampfkarren/selene)\n\n`selene --no-summary --quiet $PATH`",
           "type": "string",
           "enum": ["selene"]
         },
