@@ -225,6 +225,8 @@ jobs:
         run: ( ( which ruff ) || ( ( which brew &&  brew install ruff ) || ( which pipx && pipx install ruff ) ) || ( echo "Unable to install tool" ) )
       - name: rufo
         run: ( ( which rufo ) || ( ( which gem && gem install rufo ) ) || ( echo "Unable to install tool" ) )
+      - name: rustywind
+        run: ( ( which rustywind ) || ( ( which npm && npm i -g rustywind ) || ( which cargo && ( cargo binstall rustywind || cargo install rustywind ) ) ) || ( echo "Unable to install tool" ) )
       - name: scalafmt
         run: ( ( which scalafmt ) || ( ( which cs && cs install scalafmt ) ) || ( echo "Unable to install tool" ) )
       - name: semistandard
