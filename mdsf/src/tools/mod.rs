@@ -2361,7 +2361,7 @@ pub enum Tooling {
     ///
     /// [https://github.com/kampfkarren/selene](https://github.com/kampfkarren/selene)
     ///
-    /// `selene $PATH`
+    /// `selene --no-summary --quiet $PATH`
     Selene,
 
     #[serde(rename = "semistandard")]

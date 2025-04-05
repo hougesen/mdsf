@@ -959,7 +959,7 @@ Options:
 | `salt-lint`                  | `salt-lint $PATH`                                                                       |
 | `scalafmt`                   | `scalafmt --quiet --mode any $PATH`                                                     |
 | `scalariform`                | `scalariform $PATH`                                                                     |
-| `selene`                     | `selene $PATH`                                                                          |
+| `selene`                     | `selene --no-summary --quiet $PATH`                                                     |
 | `semistandard`               | `semistandard --fix --stdin`                                                            |
 | `shellcheck`                 | `shellcheck $PATH`                                                                      |
 | `shellharden`                | `shellharden --transform --replace $PATH`                                               |

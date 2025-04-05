@@ -229,6 +229,8 @@ jobs:
         run: ( ( which rustywind ) || ( ( which npm && npm i -g rustywind ) || ( which cargo && ( cargo binstall rustywind || cargo install rustywind ) ) ) || ( echo "Unable to install tool" ) )
       - name: scalafmt
         run: ( ( which scalafmt ) || ( ( which cs && cs install scalafmt ) ) || ( echo "Unable to install tool" ) )
+      - name: selene
+        run: ( ( which selene ) || ( ( which cargo && ( cargo binstall selene || cargo install selene ) ) ) || ( echo "Unable to install tool" ) )
       - name: semistandard
         run: ( ( which semistandard ) || ( ( which npm && npm i -g semistandard ) ) || ( echo "Unable to install tool" ) )
       - name: shellcheck
