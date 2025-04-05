@@ -259,6 +259,8 @@ jobs:
         run: ( ( which taplo ) || ( ( which npm && npm i -g @taplo/cli ) || ( which cargo && ( cargo binstall taplo-cli || cargo install taplo-cli ) ) || ( which brew &&  brew install taplo ) ) || ( echo "Unable to install tool" ) )
       - name: terraform
         run: ( ( which terraform ) || ( ( which brew && brew tap hashicorp/tap && brew install hashicorp/tap/terraform ) ) || ( echo "Unable to install tool" ) )
+      - name: tex-fmt
+        run: ( ( which tex-fmt ) || ( ( which cargo && ( cargo binstall tex-fmt || cargo install tex-fmt ) ) || ( which brew &&  brew install tex-fmt ) || ( which apt-get && sudo apt-get install -y tex-fmt ) ) || ( echo "Unable to install tool" ) )
       - name: tofu
         run: ( ( which tofu ) || ( ( which brew &&  brew install opentofu ) ) || ( echo "Unable to install tool" ) )
       - name: toml-sort
