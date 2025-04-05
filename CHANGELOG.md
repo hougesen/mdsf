@@ -2,8 +2,17 @@
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
-#### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.8.4...HEAD)
+#### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.8.5...HEAD)
 
+#### [v0.8.5](https://github.com/hougesen/mdsf/compare/v0.8.4...v0.8.5)
+
+> 5 April 2025
+
+- chore: release v0.8.5 [`#926`](https://github.com/hougesen/mdsf/pull/926)
+- build(deps-dev): bump eslint from 9.23.0 to 9.24.0 in /mdsf-vscode [`#921`](https://github.com/hougesen/mdsf/pull/921)
+- build(deps-dev): bump eslint from 9.23.0 to 9.24.0 in /github-action [`#924`](https://github.com/hougesen/mdsf/pull/924)
+- build(deps-dev): bump typescript from 5.8.2 to 5.8.3 in /mdsf-vscode [`#925`](https://github.com/hougesen/mdsf/pull/925)
+- build(deps-dev): bump @eslint/js from 9.23.0 to 9.24.0 in /github-action [`#922`](https://github.com/hougesen/mdsf/pull/922)
 - test(tools): validate reorder-python-imports [`#920`](https://github.com/hougesen/mdsf/pull/920)
 - test(tools): validate sqlfmt [`#917`](https://github.com/hougesen/mdsf/pull/917)
 - test(tools): validate selene [`#918`](https://github.com/hougesen/mdsf/pull/918)
