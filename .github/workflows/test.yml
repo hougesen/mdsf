@@ -60,6 +60,9 @@ jobs:
       - uses: Homebrew/actions/setup-homebrew@master
       - uses: leafo/gh-actions-lua@v11
       - uses: leafo/gh-actions-luarocks@v5
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
       - name: Install cargo-llvm-cov
         uses: taiki-e/install-action@cargo-llvm-cov
       - run: rustup toolchain install stable --profile minimal

@@ -22,7 +22,7 @@ mod test_deno {
             crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
 
         crate::execution::run_tools(
-            &[crate::runners::CommandType::Npm("prettier")],
+            &[crate::runners::CommandType::Deno("prettier")],
             snippet.path(),
             crate::tools::prettier::set_args,
             crate::testing::DEFAULT_TEST_FORMATTER_TIMEOUT,
