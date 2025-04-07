@@ -4,6 +4,8 @@ All notable changes to this project will be documented in this file. Dates are d
 
 #### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.8.5...HEAD)
 
+- test: run bun tests in ci [`#930`](https://github.com/hougesen/mdsf/pull/930)
+- test(tools): validate purty [`#929`](https://github.com/hougesen/mdsf/pull/929)
 - test(tools): validate cppcheck and cpplint [`#928`](https://github.com/hougesen/mdsf/pull/928)
 - build(deps): bump test-with from 0.14.8 to 0.14.9 [`#927`](https://github.com/hougesen/mdsf/pull/927)
 - chore: bump version to dev [`3027334`](https://github.com/hougesen/mdsf/commit/30273341945447c37a273c63f97566cc6da8846e)
