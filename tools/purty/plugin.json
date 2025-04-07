@@ -5,7 +5,13 @@
   "commands": {
     "": {
       "arguments": ["--write", "$PATH"],
-      "tests": []
+      "tests": [
+        {
+          "language": "purescript",
+          "test_input": "module Mdsf where\n\n\n\n\nadd   :: Int -> Int  ->    Int\nadd a   b = a +         b\n",
+          "test_output": "module Mdsf where\n\nadd :: Int -> Int -> Int\nadd a b = a + b\n"
+        }
+      ]
     }
   },
   "description": "PureScript pretty-printer",
