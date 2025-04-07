@@ -4,6 +4,9 @@ All notable changes to this project will be documented in this file. Dates are d
 
 #### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.8.5...HEAD)
 
+- build(deps): bump test-with from 0.14.8 to 0.14.9 [`#927`](https://github.com/hougesen/mdsf/pull/927)
+- chore: bump version to dev [`3027334`](https://github.com/hougesen/mdsf/commit/30273341945447c37a273c63f97566cc6da8846e)
+
 #### [v0.8.5](https://github.com/hougesen/mdsf/compare/v0.8.4...v0.8.5)
 
 > 5 April 2025
