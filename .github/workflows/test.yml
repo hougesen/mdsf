@@ -209,6 +209,8 @@ jobs:
         run: ( ( which prisma ) || ( ( which npm && npm i -g prisma ) ) || ( echo "Unable to install tool" ) )
       - name: purs-tidy
         run: ( ( which purs-tidy ) || ( ( which npm && npm i -g purs-tidy ) ) || ( echo "Unable to install tool" ) )
+      - name: purty
+        run: ( ( which purty ) || ( ( which npm && npm i -g purty ) ) || ( echo "Unable to install tool" ) )
       - name: pycln
         run: ( ( which pycln ) || ( ( which pipx && pipx install pycln ) ) || ( echo "Unable to install tool" ) )
       - name: pyflakes
