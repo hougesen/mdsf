@@ -4,7 +4,7 @@ pub enum CodegenError {
     FromUtf8(std::string::FromUtf8Error),
     SerdeJson(serde_json::Error),
     SerdeYaml(serde_yaml::Error),
-    Reqwest(reqwest::Error),
+    Ureq(ureq::Error),
 }
 
 impl core::error::Error for CodegenError {}
@@ -16,7 +16,7 @@ impl core::fmt::Display for CodegenError {
             Self::FromUtf8(e) => e.fmt(f),
             Self::SerdeJson(e) => e.fmt(f),
             Self::SerdeYaml(e) => e.fmt(f),
-            Self::Reqwest(e) => e.fmt(f),
+            Self::Ureq(e) => e.fmt(f),
         }
     }
 }
@@ -45,8 +45,8 @@ impl From<serde_yaml::Error> for CodegenError {
     }
 }
 
-impl From<reqwest::Error> for CodegenError {
-    fn from(value: reqwest::Error) -> Self {
-        Self::Reqwest(value)
+impl From<ureq::Error> for CodegenError {
+    fn from(value: ureq::Error) -> Self {
+        Self::Ureq(value)
     }
 }

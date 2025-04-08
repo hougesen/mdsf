@@ -16,10 +16,10 @@ publish = false
 convert_case = { workspace = true }
 ignore = { workspace = true }
 mdsf = { workspace = true }
-reqwest = { workspace = true }
 schemars = { workspace = true }
 serde = { workspace = true }
 serde_json = { workspace = true }
 # TODO: switch to other yaml library since serde_yaml is deprecated
 # NOTE: since it is just a build dependency it is low priority
 serde_yaml = { workspace = true }
+ureq = { workspace = true }
