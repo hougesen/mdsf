@@ -101,6 +101,7 @@ fn handle_post_execution(
     }
 }
 
+#[inline]
 fn spawn_command(
     mut cmd: std::process::Command,
     timeout: u64,
@@ -254,6 +255,7 @@ impl core::fmt::Display for Tooling {
 }
 
 impl Default for MdsfFormatter<Tooling> {
+    #[inline]
     fn default() -> Self {
         Self::Multiple(Vec::new())
     }

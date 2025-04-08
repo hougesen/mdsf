@@ -1,5 +1,5 @@
 [workspace]
-members = ["mdsf", "codegen"]
+members = ["codegen", "mdsf"]
 exclude = []
 resolver = "3"
 

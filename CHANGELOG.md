@@ -4,6 +4,7 @@ All notable changes to this project will be documented in this file. Dates are d
 
 #### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.8.5...HEAD)
 
+- refactor(codegen): use ureq instead of reqwest [`#933`](https://github.com/hougesen/mdsf/pull/933)
 - build(deps): update transient dependencies [`#932`](https://github.com/hougesen/mdsf/pull/932)
 - build(deps): bump tokio from 1.43.0 to 1.44.2 in the cargo group [`#931`](https://github.com/hougesen/mdsf/pull/931)
 - test: run bun tests in ci [`#930`](https://github.com/hougesen/mdsf/pull/930)
