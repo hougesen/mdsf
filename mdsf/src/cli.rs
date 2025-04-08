@@ -156,6 +156,7 @@ pub enum Shell {
 }
 
 impl clap::ValueEnum for Shell {
+    #[inline]
     fn value_variants<'a>() -> &'a [Self] {
         &[
             Self::Bash,
@@ -167,6 +168,7 @@ impl clap::ValueEnum for Shell {
         ]
     }
 
+    #[inline]
     fn to_possible_value(&self) -> Option<clap::builder::PossibleValue> {
         Some(match self {
             Self::Bash => clap::builder::PossibleValue::new("bash"),

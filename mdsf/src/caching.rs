@@ -40,6 +40,7 @@ impl CacheEntry {
         std::fs::read_to_string(self.to_path()).ok()
     }
 
+    #[inline]
     pub fn set(&self, content: &str) -> std::io::Result<()> {
         let p = self.to_path();
 
