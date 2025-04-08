@@ -10,7 +10,7 @@ fn get_linguish_languages()
 -> Result<std::collections::HashMap<String, LinguishLanguage>, CodegenError> {
     let url = "https://raw.githubusercontent.com/github-linguist/linguist/master/lib/linguist/languages.yml";
 
-    let body = reqwest::blocking::get(url)?.text()?;
+    let body = ureq::get(url).call()?.body_mut().read_to_string()?;
 
     serde_yaml::from_str::<std::collections::HashMap<String, LinguishLanguage>>(&body)
         .map_err(CodegenError::from)
