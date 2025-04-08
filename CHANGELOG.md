@@ -4,6 +4,7 @@ All notable changes to this project will be documented in this file. Dates are d
 
 #### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.8.5...HEAD)
 
+- build(deps): bump tokio from 1.43.0 to 1.44.2 in the cargo group [`#931`](https://github.com/hougesen/mdsf/pull/931)
 - test: run bun tests in ci [`#930`](https://github.com/hougesen/mdsf/pull/930)
 - test(tools): validate purty [`#929`](https://github.com/hougesen/mdsf/pull/929)
 - test(tools): validate cppcheck and cpplint [`#928`](https://github.com/hougesen/mdsf/pull/928)
