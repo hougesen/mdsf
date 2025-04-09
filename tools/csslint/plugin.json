@@ -5,7 +5,13 @@
   "commands": {
     "": {
       "arguments": ["--quiet", "$PATH"],
-      "tests": []
+      "tests": [
+        {
+          "language": "css",
+          "test_input": "body {\n  background: red;\n}\n",
+          "test_output": "body {\n  background: red;\n}\n"
+        }
+      ]
     }
   },
   "description": "Automated linting of Cascading Stylesheets",
