@@ -355,9 +355,10 @@ If you are interested in customizing which formatter is run, you can create a ne
 ```
 Create a new mdsf config
 
-Usage: mdsf init
+Usage: mdsf init [OPTIONS]
 
 Options:
+      --force    Create config even if one already exists in current directory
   -h, --help     Print help
   -V, --version  Print version
 ```
