@@ -268,9 +268,79 @@ fn add(a: i32, b: i32) -> i32 {
         }
 
         #[test]
-        #[ignore]
-        fn accepts_multiple_file_paths() {
-            todo!()
+        fn accepts_multiple_file_paths_formatted() {
+            let dir = tempdir().unwrap();
+
+            mdsf_command(dir.path()).arg("init").assert().success();
+
+            let mut cmd = mdsf_command(dir.path());
+
+            cmd.arg("verify");
+
+            let mut files = Vec::new();
+
+            for _ in 0..5 {
+                let file = setup_test_input(dir.path(), FORMATTED_CODE);
+
+                cmd.arg(file.path());
+
+                files.push(file)
+            }
+
+            cmd.assert().success();
+        }
+
+        #[test]
+        fn accepts_multiple_file_paths_broken() {
+            let dir = tempdir().unwrap();
+
+            mdsf_command(dir.path()).arg("init").assert().success();
+
+            let mut cmd = mdsf_command(dir.path());
+
+            cmd.arg("verify");
+
+            let mut files = Vec::new();
+
+            for _ in 0..5 {
+                let file = setup_test_input(dir.path(), BROKEN_CODE);
+
+                cmd.arg(file.path());
+
+                files.push(file)
+            }
+
+            cmd.assert().failure();
+        }
+
+        #[test]
+        fn accepts_multiple_file_paths_mixed() {
+            let dir = tempdir().unwrap();
+
+            mdsf_command(dir.path()).arg("init").assert().success();
+
+            let mut cmd = mdsf_command(dir.path());
+
+            cmd.arg("verify");
+
+            let mut files = Vec::new();
+
+            for i in 0..5 {
+                let file = setup_test_input(
+                    dir.path(),
+                    if i % 2 == 0 {
+                        FORMATTED_CODE
+                    } else {
+                        BROKEN_CODE
+                    },
+                );
+
+                cmd.arg(file.path());
+
+                files.push(file)
+            }
+
+            cmd.assert().failure();
         }
 
         #[test]
@@ -289,7 +359,6 @@ fn add(a: i32, b: i32) -> i32 {
         use super::{BROKEN_CODE, setup_test_input};
 
         #[test]
-
         fn help_arg_outputs_message() {
             let dir = tempdir().unwrap();
 
