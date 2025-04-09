@@ -122,6 +122,20 @@ fn add(a: i32, b: i32) -> i32 {
     }
 
     #[test]
+    fn validate_check_command_with_broken_input_stdin() {
+        let dir = tempdir().unwrap();
+
+        mdsf_command(dir.path()).arg("init").assert().success();
+
+        mdsf_command(dir.path())
+            .arg("verify")
+            .arg("--stdin")
+            .write_stdin(BROKEN_CODE)
+            .assert()
+            .failure();
+    }
+
+    #[test]
     fn validate_check_command_fails_without_input() {
         let dir = tempdir().unwrap();
 
