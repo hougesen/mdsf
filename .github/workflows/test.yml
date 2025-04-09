@@ -254,6 +254,8 @@ jobs:
         run: ( ( which sleek ) || ( ( which cargo && ( cargo binstall sleek || cargo install sleek ) ) || ( which brew &&  brew install sleek ) ) || ( echo "Unable to install tool" ) )
       - name: smlfmt
         run: ( ( which smlfmt ) || ( ( which brew &&  brew install smlfmt ) ) || ( echo "Unable to install tool" ) )
+      - name: snakefmt
+        run: ( ( which snakefmt ) || ( ( which brew &&  brew install snakefmt ) || ( which pipx && pipx install snakefmt ) ) || ( echo "Unable to install tool" ) )
       - name: sql-formatter
         run: ( ( which sql-formatter ) || ( ( which npm && npm i -g sql-formatter ) ) || ( echo "Unable to install tool" ) )
       - name: sqlfluff
