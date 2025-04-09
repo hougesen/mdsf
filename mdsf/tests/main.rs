@@ -224,6 +224,22 @@ fn add(a: i32, b: i32) -> i32 {
         }
 
         #[test]
+        fn success_with_formatted_input_and_debug_arg() {
+            let dir = tempdir().unwrap();
+
+            mdsf_command(dir.path()).arg("init").assert().success();
+
+            let file = setup_test_input(dir.path(), FORMATTED_CODE);
+
+            mdsf_command(dir.path())
+                .arg("verify")
+                .arg("--debug")
+                .arg(file.path())
+                .assert()
+                .success();
+        }
+
+        #[test]
         fn success_with_formatted_input_stdin() {
             let dir = tempdir().unwrap();
 
@@ -399,6 +415,26 @@ fn add(a: i32, b: i32) -> i32 {
 
             mdsf_command(dir.path())
                 .arg("format")
+                .arg(file.path())
+                .assert()
+                .success();
+
+            let output = std::fs::read_to_string(file.path()).unwrap();
+
+            assert_eq!(output, FORMATTED_CODE);
+        }
+
+        #[test]
+        fn formats_broken_input_with_debug_arg() {
+            let dir = tempdir().unwrap();
+
+            mdsf_command(dir.path()).arg("init").assert().success();
+
+            let file = setup_test_input(dir.path(), BROKEN_CODE);
+
+            mdsf_command(dir.path())
+                .arg("format")
+                .arg("--debug")
                 .arg(file.path())
                 .assert()
                 .success();
