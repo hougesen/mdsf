@@ -5,7 +5,13 @@
   "commands": {
     "": {
       "arguments": ["$PATH"],
-      "tests": []
+      "tests": [
+        {
+          "language": "snakemake",
+          "test_input": "from snakemake.utils import min_version\nmin_version(\"5.14.0\")\nconfigfile: \"config.yaml\"\ninclude: \"rules/foo.smk\"\n",
+          "test_output": "from snakemake.utils import min_version\n\nmin_version(\"5.14.0\")\n\n\nconfigfile: \"config.yaml\"\n\n\ninclude: \"rules/foo.smk\"\n"
+        }
+      ]
     }
   },
   "description": "The uncompromising Snakemake code formatter",
