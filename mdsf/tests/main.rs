@@ -210,7 +210,7 @@ fn add(a: i32, b: i32) -> i32 {
         }
 
         #[test]
-        fn validate_check_command_with_formatted_input() {
+        fn success_with_formatted_input() {
             let dir = tempdir().unwrap();
 
             mdsf_command(dir.path()).arg("init").assert().success();
@@ -225,7 +225,7 @@ fn add(a: i32, b: i32) -> i32 {
         }
 
         #[test]
-        fn validate_check_command_with_formatted_input_stdin() {
+        fn success_with_formatted_input_stdin() {
             let dir = tempdir().unwrap();
 
             mdsf_command(dir.path()).arg("init").assert().success();
@@ -239,7 +239,7 @@ fn add(a: i32, b: i32) -> i32 {
         }
 
         #[test]
-        fn validate_check_command_with_broken_input() {
+        fn fails_with_broken_input() {
             let dir = tempdir().unwrap();
 
             mdsf_command(dir.path()).arg("init").assert().success();
@@ -254,7 +254,7 @@ fn add(a: i32, b: i32) -> i32 {
         }
 
         #[test]
-        fn validate_check_command_with_broken_input_stdin() {
+        fn fails_with_broken_input_stdin() {
             let dir = tempdir().unwrap();
 
             mdsf_command(dir.path()).arg("init").assert().success();
@@ -268,7 +268,13 @@ fn add(a: i32, b: i32) -> i32 {
         }
 
         #[test]
-        fn validate_check_command_fails_without_input() {
+        #[ignore]
+        fn accepts_multiple_file_paths() {
+            todo!()
+        }
+
+        #[test]
+        fn fails_without_input() {
             let dir = tempdir().unwrap();
 
             mdsf_command(dir.path()).arg("verify").assert().failure();
@@ -278,7 +284,9 @@ fn add(a: i32, b: i32) -> i32 {
     mod format {
         use tempfile::tempdir;
 
-        use crate::test_cli::mdsf_command;
+        use crate::test_cli::{FORMATTED_CODE, mdsf_command};
+
+        use super::{BROKEN_CODE, setup_test_input};
 
         #[test]
         fn help_arg_outputs_message() {
@@ -293,6 +301,44 @@ fn add(a: i32, b: i32) -> i32 {
             let output = cmd.get_output();
 
             assert!(!output.stdout.is_empty());
+        }
+
+        #[test]
+        fn formats_broken_input() {
+            let dir = tempdir().unwrap();
+
+            mdsf_command(dir.path()).arg("init").assert().success();
+
+            let file = setup_test_input(dir.path(), BROKEN_CODE);
+
+            mdsf_command(dir.path())
+                .arg("format")
+                .arg(file.path())
+                .assert()
+                .success();
+
+            let output = std::fs::read_to_string(file.path()).unwrap();
+
+            assert_eq!(output, FORMATTED_CODE);
+        }
+
+        #[test]
+        #[ignore]
+        fn formats_broken_input_stdin() {
+            todo!()
+        }
+
+        #[test]
+        #[ignore]
+        fn accepts_multiple_file_paths() {
+            todo!()
+        }
+
+        #[test]
+        fn fails_without_input() {
+            let dir = tempdir().unwrap();
+
+            mdsf_command(dir.path()).arg("verify").assert().failure();
         }
     }
 }
