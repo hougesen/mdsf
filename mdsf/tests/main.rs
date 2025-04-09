@@ -323,9 +323,21 @@ fn add(a: i32, b: i32) -> i32 {
         }
 
         #[test]
-        #[ignore]
         fn formats_broken_input_stdin() {
-            todo!()
+            let dir = tempdir().unwrap();
+
+            mdsf_command(dir.path()).arg("init").assert().success();
+
+            let cmd = mdsf_command(dir.path())
+                .arg("format")
+                .arg("--stdin")
+                .write_stdin(BROKEN_CODE)
+                .assert()
+                .success();
+
+            let stdout_output = String::from_utf8(cmd.get_output().stdout.clone()).unwrap();
+
+            assert_eq!(stdout_output.trim_end(), FORMATTED_CODE.trim_end());
         }
 
         #[test]
