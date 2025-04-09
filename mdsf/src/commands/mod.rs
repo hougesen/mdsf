@@ -37,7 +37,7 @@ pub fn run_command() -> Result<(), MdsfError> {
             format::run(FormatCommandArguments::from(args), true)
         }
 
-        Commands::Init => init::run().map_err(MdsfError::from),
+        Commands::Init => init::run(),
         Commands::Completions(args) => {
             completions::run(&args, &mut std::io::stdout());
 

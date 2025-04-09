@@ -19,6 +19,8 @@ pub enum MdsfError {
     ReadStdinError(std::io::Error),
     MissingInput,
     StdinWriteError,
+    SerializeConfig(serde_json::Error),
+    ConfigAlreadyExist,
 }
 
 impl core::error::Error for MdsfError {}
@@ -72,6 +74,8 @@ impl core::fmt::Display for MdsfError {
             ),
             Self::MissingInput => write!(f, "No input was provided to mdsf"),
             Self::StdinWriteError => write!(f, "Error writing to stdin"),
+            Self::SerializeConfig(e) => write!(f, "Error serializing config: {e}"),
+            Self::ConfigAlreadyExist => write!(f, "A config already exists in this directory"),
         }
     }
 }
