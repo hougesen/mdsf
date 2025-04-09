@@ -148,7 +148,6 @@ fn add(a: i32, b: i32) -> i32 {
         }
 
         #[test]
-        #[ignore]
         fn fails_if_config_exists() {
             let dir = tempdir().unwrap();
 
