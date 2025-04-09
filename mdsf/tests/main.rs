@@ -492,6 +492,36 @@ fn add(a: i32, b: i32) -> i32 {
         }
 
         #[test]
+        fn format_with_cache_arg() {
+            let dir = tempdir().unwrap();
+
+            mdsf_command(dir.path()).arg("init").assert().success();
+
+            let file = setup_test_input(dir.path(), BROKEN_CODE);
+
+            for i in 0..10 {
+                let cmd = mdsf_command(dir.path())
+                    .arg("format")
+                    .arg("--cache")
+                    .arg(file.path())
+                    .assert()
+                    .success();
+
+                let output = std::fs::read_to_string(file.path()).unwrap();
+                assert_eq!(output, FORMATTED_CODE);
+
+                let stderr = String::from_utf8(cmd.get_output().stderr.clone()).unwrap();
+                if i > 0 {
+                    assert!(stderr.contains("(unchanged)"));
+                }
+
+                if i > 1 {
+                    assert!(stderr.contains("(cached)"));
+                }
+            }
+        }
+
+        #[test]
         fn fails_without_input() {
             let dir = tempdir().unwrap();
 
