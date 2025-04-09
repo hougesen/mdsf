@@ -1,6 +1,6 @@
 use clap::Parser;
 use mdsf::{
-    cli::{Cli, Commands, FormatCommandArguments, LogLevel},
+    cli::{Cli, Commands, FormatCommandArguments},
     error::MdsfError,
     terminal::logging::setup_logger,
 };
@@ -12,41 +12,23 @@ mod prune_cache;
 
 #[inline]
 pub fn run_command() -> Result<(), MdsfError> {
-    match Cli::parse().command {
-        Commands::Format(args) => {
-            setup_logger(args.log_level.unwrap_or_else(|| {
-                if args.stdin {
-                    LogLevel::Error
-                } else {
-                    LogLevel::default()
-                }
-            }));
+    let c = Cli::parse();
 
-            format::run(args, false)
-        }
+    setup_logger(c.log_level.unwrap_or_default());
 
-        Commands::Verify(args) => {
-            setup_logger(args.log_level.unwrap_or_else(|| {
-                if args.stdin {
-                    LogLevel::Error
-                } else {
-                    LogLevel::default()
-                }
-            }));
+    match c.command {
+        Commands::CachePrune => prune_cache::run().map_err(MdsfError::from),
 
-            format::run(FormatCommandArguments::from(args), true)
-        }
-
-        Commands::Init(args) => {
-            setup_logger(LogLevel::default());
-
-            init::run(&args)
-        }
         Commands::Completions(args) => {
             completions::run(&args, &mut std::io::stdout());
 
             Ok(())
         }
-        Commands::CachePrune => prune_cache::run().map_err(MdsfError::from),
+
+        Commands::Format(args) => format::run(args, false),
+
+        Commands::Init(args) => init::run(&args),
+
+        Commands::Verify(args) => format::run(FormatCommandArguments::from(args), true),
     }
 }

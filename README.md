@@ -117,7 +117,7 @@ mdsf 0.8.5-next
 Format, and lint, markdown code snippets using your favorite tools
 Mads Hougesen <mads@mhouge.dk>
 
-Usage: mdsf <COMMAND>
+Usage: mdsf [OPTIONS] <COMMAND>
 
 Commands:
   format       Run formatters on input files
@@ -128,8 +128,9 @@ Commands:
   help         Print this message or the help of the given subcommand(s)
 
 Options:
-  -h, --help     Print help
-  -V, --version  Print version
+      --log-level <LOG_LEVEL>  [possible values: trace, debug, info, warn, error, off]
+  -h, --help                   Print help
+  -V, --version                Print version
 ```
 
 <!-- END_SECTION:base-command-help -->
@@ -163,9 +164,6 @@ Options:
       --debug
           Log stdout and stderr of formatters
 
-      --log-level <LOG_LEVEL>
-          [possible values: trace, debug, info, warn, error, off]
-
       --threads <THREADS>
           Amount of threads to use.
 
@@ -173,6 +171,9 @@ Options:
 
       --cache
           Cache results
+
+      --log-level <LOG_LEVEL>
+          [possible values: trace, debug, info, warn, error, off]
 
       --timeout <TIMEOUT>
           Tool timeout in seconds
@@ -205,11 +206,12 @@ Old caches can be removed by running the `mdsf cache-prune` command.
 ```
 Remove caches
 
-Usage: mdsf cache-prune
+Usage: mdsf cache-prune [OPTIONS]
 
 Options:
-  -h, --help     Print help
-  -V, --version  Print version
+      --log-level <LOG_LEVEL>  [possible values: trace, debug, info, warn, error, off]
+  -h, --help                   Print help
+  -V, --version                Print version
 ```
 
 <!-- END_SECTION:cache-prune-command-help -->
@@ -243,9 +245,6 @@ Options:
       --debug
           Log stdout and stderr of formatters
 
-      --log-level <LOG_LEVEL>
-          [possible values: trace, debug, info, warn, error, off]
-
       --threads <THREADS>
           Amount of threads to use.
 
@@ -255,6 +254,9 @@ Options:
           Tool timeout in seconds
 
           Defaults to no timeout
+
+      --log-level <LOG_LEVEL>
+          [possible values: trace, debug, info, warn, error, off]
 
   -h, --help
           Print help (see a summary with '-h')
@@ -358,9 +360,10 @@ Create a new mdsf config
 Usage: mdsf init [OPTIONS]
 
 Options:
-      --force    Create config even if one already exists in current directory
-  -h, --help     Print help
-  -V, --version  Print version
+      --force                  Create config even if one already exists in current directory
+      --log-level <LOG_LEVEL>  [possible values: trace, debug, info, warn, error, off]
+  -h, --help                   Print help
+  -V, --version                Print version
 ```
 
 <!-- END_SECTION:init-command-help -->
@@ -1047,14 +1050,15 @@ Shell completions can be generated using `mdsf completions <SHELL>`.
 ```
 Generate shell completion
 
-Usage: mdsf completions <SHELL>
+Usage: mdsf completions [OPTIONS] <SHELL>
 
 Arguments:
   <SHELL>  [possible values: bash, elvish, fish, nushell, powershell, zsh]
 
 Options:
-  -h, --help     Print help
-  -V, --version  Print version
+      --log-level <LOG_LEVEL>  [possible values: trace, debug, info, warn, error, off]
+  -h, --help                   Print help
+  -V, --version                Print version
 ```
 
 <!-- END_SECTION:completions-command-help -->

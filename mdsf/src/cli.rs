@@ -15,6 +15,9 @@ const HELP_TEMPLATE: &str = "\
 pub struct Cli {
     #[command(subcommand)]
     pub command: Commands,
+
+    #[arg(long, value_enum, global = true)]
+    pub log_level: Option<LogLevel>,
 }
 
 #[derive(Subcommand, Debug)]
@@ -53,9 +56,6 @@ pub struct FormatCommandArguments {
     #[arg(long, default_value_t = false)]
     pub debug: bool,
 
-    #[arg(long, value_enum)]
-    pub log_level: Option<LogLevel>,
-
     /// Amount of threads to use.
     ///
     /// Defaults to 0 (auto).
@@ -91,9 +91,6 @@ pub struct VerifyCommandArguments {
     #[arg(long, default_value_t = false)]
     pub debug: bool,
 
-    #[arg(long, value_enum)]
-    pub log_level: Option<LogLevel>,
-
     /// Amount of threads to use.
     ///
     /// Defaults to 0 (auto).
@@ -115,7 +112,6 @@ impl From<VerifyCommandArguments> for FormatCommandArguments {
             stdin: value.stdin,
             config: value.config,
             debug: value.debug,
-            log_level: value.log_level,
             threads: value.threads,
             timeout: value.timeout,
             cache: false,
