@@ -270,7 +270,7 @@ impl LineInfo<'_> {
 }
 
 #[cfg(test)]
-mod tests {
+mod test_lib {
     use crate::{
         config::MdsfConfig,
         execution::{MdsfFormatter, setup_snippet},

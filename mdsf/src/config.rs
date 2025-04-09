@@ -5,11 +5,13 @@ use crate::{
     terminal::print_config_not_found, tools::Tooling,
 };
 
+#[allow(clippy::trivially_copy_pass_by_ref)]
 #[inline]
 const fn is_false(b: &bool) -> bool {
     !(*b)
 }
 
+#[allow(clippy::struct_excessive_bools)]
 #[derive(serde::Serialize, serde::Deserialize, Hash, Debug, PartialEq, Eq, Default)]
 #[cfg_attr(feature = "json-schema", derive(schemars::JsonSchema))]
 pub struct MdsfConfigRunners {

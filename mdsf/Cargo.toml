@@ -51,4 +51,5 @@ threadpool = { workspace = true }
 which = { workspace = true }
 
 [dev-dependencies]
+assert_cmd = { workspace = true }
 test-with = { workspace = true }

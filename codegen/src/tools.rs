@@ -8,6 +8,7 @@ const INDENT: &str = "    ";
 const GENERATED_FILE_COMMENT: &str =
     "///\n/// THIS FILE IS GENERATED USING CODE - DO NOT EDIT MANUALLY\n///";
 
+#[allow(clippy::trivially_copy_pass_by_ref)]
 #[inline]
 const fn is_false(b: &bool) -> bool {
     !(*b)
@@ -607,6 +608,7 @@ mod test_tooling {{
 {INDENT}}}
 
 {INDENT}#[allow(clippy::cognitive_complexity)]
+{INDENT}#[allow(clippy::too_many_lines)]
 {INDENT}#[test]
 {INDENT}fn value_is_reversible() -> Result<(), serde_json::Error> {{
 {asserts}
