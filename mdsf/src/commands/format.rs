@@ -54,7 +54,7 @@ pub fn run(args: FormatCommandArguments, dry_run: bool) -> Result<(), MdsfError>
     if args.stdin {
         let stdin_input = read_stdin().map_err(MdsfError::ReadStdinError)?;
 
-        let f = setup_snippet(&stdin_input, "md")?;
+        let f = setup_snippet(&stdin_input, ".md")?;
 
         let (was_formatted, output) = format_file(
             &conf,
