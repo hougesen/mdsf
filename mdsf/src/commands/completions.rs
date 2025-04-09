@@ -14,17 +14,17 @@ pub fn run(args: &CompletionsCommandArguments, buffer: &mut impl std::io::Write)
         cli::Shell::Elvish => {
             clap_complete::generate(clap_complete::Shell::Elvish, &mut cmd, cmd_name, buffer);
         }
-        cli::Shell::PowerShell => {
-            clap_complete::generate(clap_complete::Shell::PowerShell, &mut cmd, cmd_name, buffer);
-        }
         cli::Shell::Fish => {
             clap_complete::generate(clap_complete::Shell::Fish, &mut cmd, cmd_name, buffer);
         }
-        cli::Shell::Zsh => {
-            clap_complete::generate(clap_complete::Shell::Zsh, &mut cmd, cmd_name, buffer);
-        }
         cli::Shell::Nushell => {
             clap_complete::generate(clap_complete_nushell::Nushell, &mut cmd, cmd_name, buffer);
+        }
+        cli::Shell::PowerShell => {
+            clap_complete::generate(clap_complete::Shell::PowerShell, &mut cmd, cmd_name, buffer);
+        }
+        cli::Shell::Zsh => {
+            clap_complete::generate(clap_complete::Shell::Zsh, &mut cmd, cmd_name, buffer);
         }
     }
 }
@@ -38,10 +38,10 @@ mod test_run {
         let shells = [
             mdsf::cli::Shell::Bash,
             mdsf::cli::Shell::Elvish,
-            mdsf::cli::Shell::PowerShell,
             mdsf::cli::Shell::Fish,
-            mdsf::cli::Shell::Zsh,
             mdsf::cli::Shell::Nushell,
+            mdsf::cli::Shell::PowerShell,
+            mdsf::cli::Shell::Zsh,
         ];
 
         for shell in shells {

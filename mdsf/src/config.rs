@@ -264,7 +264,7 @@ mod test_config {
 
     #[test]
     fn test_config_load_return_error_if_not_found() {
-        let before = MdsfConfig::load(std::path::PathBuf::from(
+        let before = MdsfConfig::load(std::path::Path::new(
             "ifthispathexiststhereissomethingwrong",
         ))
         .expect_err("Expect it to return file not found");

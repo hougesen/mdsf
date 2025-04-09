@@ -18,17 +18,13 @@ pub fn run_command() -> Result<(), MdsfError> {
 
     match c.command {
         Commands::CachePrune => prune_cache::run().map_err(MdsfError::from),
-
         Commands::Completions(args) => {
             completions::run(&args, &mut std::io::stdout());
 
             Ok(())
         }
-
         Commands::Format(args) => format::run(args, false),
-
         Commands::Init(args) => init::run(&args),
-
         Commands::Verify(args) => format::run(FormatCommandArguments::from(args), true),
     }
 }
