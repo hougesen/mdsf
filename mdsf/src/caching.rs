@@ -74,11 +74,11 @@ mod test_cache_entry {
     #[test]
     fn it_should_work() {
         let config = MdsfConfig::default();
-        let file_path = std::path::PathBuf::from("mdsf");
+        let file_path = std::path::Path::new("mdsf");
 
         let original_content = "Mads was here";
 
-        let cache_entry = CacheEntry::new(hash_config(&config), &file_path, original_content);
+        let cache_entry = CacheEntry::new(hash_config(&config), file_path, original_content);
 
         cache_entry
             .delete()

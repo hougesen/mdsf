@@ -108,13 +108,13 @@ impl From<VerifyCommandArguments> for FormatCommandArguments {
     #[inline]
     fn from(value: VerifyCommandArguments) -> Self {
         Self {
-            input: value.input,
-            stdin: value.stdin,
+            cache: false,
             config: value.config,
             debug: value.debug,
+            input: value.input,
+            stdin: value.stdin,
             threads: value.threads,
             timeout: value.timeout,
-            cache: false,
         }
     }
 }

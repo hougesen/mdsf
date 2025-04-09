@@ -17,9 +17,9 @@ pub fn pad_right(mut input: String, len: usize, update: char) -> String {
 }
 
 pub fn generate(plugins: &[Tool], commands: Vec<GeneratedCommand>) -> Result<(), CodegenError> {
-    let path = std::path::PathBuf::from("./README.md");
+    let path = std::path::Path::new("./README.md");
 
-    let mut contents = std::fs::read_to_string(&path)?;
+    let mut contents = std::fs::read_to_string(path)?;
 
     {
         let content = command_table::generate_command_table(commands);
@@ -37,10 +37,10 @@ pub fn generate(plugins: &[Tool], commands: Vec<GeneratedCommand>) -> Result<(),
         contents = update_markdown_section(&contents, "supported-tools", &tool_table);
     }
 
-    std::fs::write(&path, &contents)?;
+    std::fs::write(path, &contents)?;
 
     {
-        let t = table_of_contents::generate(&path)?;
+        let t = table_of_contents::generate(path)?;
 
         contents = update_markdown_section(&contents, "toc", &t);
     }

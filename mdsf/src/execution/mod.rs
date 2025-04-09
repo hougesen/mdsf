@@ -19,22 +19,6 @@ use crate::{
 };
 
 #[inline]
-fn setup_temp_dir() -> std::io::Result<()> {
-    let dir = get_project_dir();
-
-    std::fs::write(
-        dir.join(".gitignore"),
-        "Automatically created by mdsf.
-.gitignore
-caches
-*
-",
-    )?;
-
-    Ok(())
-}
-
-#[inline]
 pub fn setup_snippet(code: &str, file_ext: &str) -> std::io::Result<NamedTempFile> {
     let mut b = tempfile::Builder::new();
 
@@ -49,8 +33,17 @@ pub fn setup_snippet(code: &str, file_ext: &str) -> std::io::Result<NamedTempFil
         },
     );
 
-    if !dir.join(".gitignore").try_exists().unwrap_or_default() {
-        setup_temp_dir()?;
+    let gitignore_path = dir.join(".gitignore");
+
+    if !gitignore_path.try_exists().unwrap_or_default() {
+        std::fs::write(
+            gitignore_path,
+            "Automatically created by mdsf.
+.gitignore
+caches
+*
+",
+        )?;
     }
 
     let mut f = b.tempfile_in(dir)?;
@@ -389,4 +382,262 @@ pub fn run_tools(
     }
 
     Ok((true, None))
+}
+
+#[cfg(test)]
+mod test_run_tools {
+    use crate::{config::MdsfConfigRunners, runners::CommandType};
+
+    #[test]
+    fn it_should_skip_if_bun_runner_is_disabled() {
+        let (was_not_modified, _) = super::run_tools(
+            &[CommandType::Bun("thisbinarydoesnotexist")],
+            std::path::Path::new("thisdoesnotexist"),
+            |_, _| unreachable!(),
+            crate::testing::DEFAULT_TEST_FORMATTER_TIMEOUT,
+            crate::tools::prettier::IS_STDIN,
+            crate::testing::DEFAULT_TEST_DEBUG_ENABLED,
+            &MdsfConfigRunners {
+                bunx: false,
+
+                deno: true,
+                dub: true,
+                gem_exec: true,
+                npx: true,
+                pipx: true,
+                pnpm: true,
+                uv: true,
+                yarn: true,
+            },
+        )
+        .unwrap();
+
+        assert!(was_not_modified);
+    }
+
+    #[test]
+    fn it_should_skip_if_deno_runner_is_disabled() {
+        let (was_not_modified, _) = super::run_tools(
+            &[CommandType::Deno("thisbinarydoesnotexist")],
+            std::path::Path::new("thisdoesnotexist"),
+            |_, _| unreachable!(),
+            crate::testing::DEFAULT_TEST_FORMATTER_TIMEOUT,
+            crate::tools::prettier::IS_STDIN,
+            crate::testing::DEFAULT_TEST_DEBUG_ENABLED,
+            &MdsfConfigRunners {
+                bunx: true,
+
+                deno: false,
+
+                dub: true,
+                gem_exec: true,
+                npx: true,
+                pipx: true,
+                pnpm: true,
+                uv: true,
+                yarn: true,
+            },
+        )
+        .unwrap();
+
+        assert!(was_not_modified);
+    }
+
+    #[test]
+    fn it_should_skip_if_dub_runner_is_disabled() {
+        let (was_not_modified, _) = super::run_tools(
+            &[CommandType::Dub("thisbinarydoesnotexist")],
+            std::path::Path::new("thisdoesnotexist"),
+            |_, _| unreachable!(),
+            crate::testing::DEFAULT_TEST_FORMATTER_TIMEOUT,
+            crate::tools::prettier::IS_STDIN,
+            crate::testing::DEFAULT_TEST_DEBUG_ENABLED,
+            &MdsfConfigRunners {
+                bunx: true,
+                deno: true,
+
+                dub: false,
+
+                gem_exec: true,
+                npx: true,
+                pipx: true,
+                pnpm: true,
+                uv: true,
+                yarn: true,
+            },
+        )
+        .unwrap();
+
+        assert!(was_not_modified);
+    }
+
+    #[test]
+    fn it_should_skip_if_gem_exec_runner_is_disabled() {
+        let (was_not_modified, _) = super::run_tools(
+            &[CommandType::GemExec("thisbinarydoesnotexist")],
+            std::path::Path::new("thisdoesnotexist"),
+            |_, _| unreachable!(),
+            crate::testing::DEFAULT_TEST_FORMATTER_TIMEOUT,
+            crate::tools::prettier::IS_STDIN,
+            crate::testing::DEFAULT_TEST_DEBUG_ENABLED,
+            &MdsfConfigRunners {
+                bunx: true,
+                deno: true,
+                dub: true,
+
+                gem_exec: false,
+
+                npx: true,
+                pipx: true,
+                pnpm: true,
+                uv: true,
+                yarn: true,
+            },
+        )
+        .unwrap();
+
+        assert!(was_not_modified);
+    }
+
+    #[test]
+    fn it_should_skip_if_npx_runner_is_disabled() {
+        let (was_not_modified, _) = super::run_tools(
+            &[CommandType::Npm("thisbinarydoesnotexist")],
+            std::path::Path::new("thisdoesnotexist"),
+            |_, _| unreachable!(),
+            crate::testing::DEFAULT_TEST_FORMATTER_TIMEOUT,
+            crate::tools::prettier::IS_STDIN,
+            crate::testing::DEFAULT_TEST_DEBUG_ENABLED,
+            &MdsfConfigRunners {
+                bunx: true,
+                deno: true,
+                dub: true,
+                gem_exec: true,
+
+                npx: false,
+
+                pipx: true,
+                pnpm: true,
+                uv: true,
+                yarn: true,
+            },
+        )
+        .unwrap();
+
+        assert!(was_not_modified);
+    }
+
+    #[test]
+    fn it_should_skip_if_pipx_runner_is_disabled() {
+        let (was_not_modified, _) = super::run_tools(
+            &[CommandType::Pipx("thisbinarydoesnotexist")],
+            std::path::Path::new("thisdoesnotexist"),
+            |_, _| unreachable!(),
+            crate::testing::DEFAULT_TEST_FORMATTER_TIMEOUT,
+            crate::tools::prettier::IS_STDIN,
+            crate::testing::DEFAULT_TEST_DEBUG_ENABLED,
+            &MdsfConfigRunners {
+                bunx: true,
+                deno: true,
+                dub: true,
+                gem_exec: true,
+                npx: true,
+
+                pipx: false,
+
+                pnpm: true,
+                uv: true,
+                yarn: true,
+            },
+        )
+        .unwrap();
+
+        assert!(was_not_modified);
+    }
+
+    #[test]
+    fn it_should_skip_if_pnpm_runner_is_disabled() {
+        let (was_not_modified, _) = super::run_tools(
+            &[CommandType::Pnpm("thisbinarydoesnotexist")],
+            std::path::Path::new("thisdoesnotexist"),
+            |_, _| unreachable!(),
+            crate::testing::DEFAULT_TEST_FORMATTER_TIMEOUT,
+            crate::tools::prettier::IS_STDIN,
+            crate::testing::DEFAULT_TEST_DEBUG_ENABLED,
+            &MdsfConfigRunners {
+                bunx: true,
+                deno: true,
+                dub: true,
+                gem_exec: true,
+                npx: true,
+                pipx: true,
+
+                pnpm: false,
+
+                uv: true,
+                yarn: true,
+            },
+        )
+        .unwrap();
+
+        assert!(was_not_modified);
+    }
+
+    #[test]
+    fn it_should_skip_if_uv_runner_is_disabled() {
+        let (was_not_modified, _) = super::run_tools(
+            &[CommandType::Uv(
+                "thisbinarydoesnotexist",
+                "thisbinarydoesnotexist",
+            )],
+            std::path::Path::new("thisdoesnotexist"),
+            |_, _| unreachable!(),
+            crate::testing::DEFAULT_TEST_FORMATTER_TIMEOUT,
+            crate::tools::prettier::IS_STDIN,
+            crate::testing::DEFAULT_TEST_DEBUG_ENABLED,
+            &MdsfConfigRunners {
+                bunx: true,
+                deno: true,
+                dub: true,
+                gem_exec: true,
+                npx: true,
+                pipx: true,
+                pnpm: true,
+
+                uv: false,
+
+                yarn: true,
+            },
+        )
+        .unwrap();
+
+        assert!(was_not_modified);
+    }
+
+    #[test]
+    fn it_should_skip_if_yarn_runner_is_disabled() {
+        let (was_not_modified, _) = super::run_tools(
+            &[CommandType::Yarn("thisbinarydoesnotexist")],
+            std::path::Path::new("thisdoesnotexist"),
+            |_, _| unreachable!(),
+            crate::testing::DEFAULT_TEST_FORMATTER_TIMEOUT,
+            crate::tools::prettier::IS_STDIN,
+            crate::testing::DEFAULT_TEST_DEBUG_ENABLED,
+            &MdsfConfigRunners {
+                bunx: true,
+                deno: true,
+                dub: true,
+                gem_exec: true,
+                npx: true,
+                pipx: true,
+                pnpm: true,
+                uv: true,
+
+                yarn: false,
+            },
+        )
+        .unwrap();
+
+        assert!(was_not_modified);
+    }
 }

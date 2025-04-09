@@ -1,7 +1,7 @@
 #[derive(Debug)]
 pub enum CodegenError {
-    Io(std::io::Error),
     FromUtf8(std::string::FromUtf8Error),
+    Io(std::io::Error),
     SerdeJson(serde_json::Error),
     SerdeYaml(serde_yaml::Error),
     Ureq(ureq::Error),
@@ -12,8 +12,8 @@ impl core::error::Error for CodegenError {}
 impl core::fmt::Display for CodegenError {
     fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
         match self {
-            Self::Io(e) => e.fmt(f),
             Self::FromUtf8(e) => e.fmt(f),
+            Self::Io(e) => e.fmt(f),
             Self::SerdeJson(e) => e.fmt(f),
             Self::SerdeYaml(e) => e.fmt(f),
             Self::Ureq(e) => e.fmt(f),

@@ -18,9 +18,9 @@ pub fn generate() -> Result<(), CodegenError> {
     };
 
     {
-        let dev_dir = std::path::PathBuf::from("./schemas/development");
+        let dev_dir = std::path::Path::new("./schemas/development");
 
-        std::fs::create_dir_all(&dev_dir)?;
+        std::fs::create_dir_all(dev_dir)?;
 
         std::fs::write(dev_dir.join("mdsf.schema.json"), schema)?;
     };
@@ -29,7 +29,7 @@ pub fn generate() -> Result<(), CodegenError> {
         let schema = serde_json::to_string_pretty(&schemars::schema_for!(Tool))?;
 
         std::fs::write(
-            std::path::PathBuf::from("tools").join("tool.schema.json"),
+            std::path::Path::new("tools").join("tool.schema.json"),
             schema,
         )?;
     };
