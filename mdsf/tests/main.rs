@@ -68,6 +68,17 @@ fn add(a: i32, b: i32) -> i32 {
     }
 
     #[test]
+    fn validate_init_command() {
+        let dir = tempdir().unwrap();
+
+        mdsf_command(dir.path()).arg("init").assert().success();
+
+        let config_file_created = dir.path().join("mdsf.json").try_exists().unwrap();
+
+        assert!(config_file_created);
+    }
+
+    #[test]
     fn validate_cache_prune_command() {
         let dir = tempdir().unwrap();
 
