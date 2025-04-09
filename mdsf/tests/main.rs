@@ -1,5 +1,6 @@
+use std::io::Write;
+
 use assert_cmd::{assert::OutputAssertExt, cargo::CommandCargoExt};
-use mdsf::execution::setup_snippet;
 use tempfile::tempdir;
 
 const BROKEN_CODE: &'static str = "```rust
@@ -20,6 +21,19 @@ fn mdsf_command(path: &std::path::Path) -> std::process::Command {
     cmd.current_dir(path);
 
     cmd
+}
+
+fn setup_test_input(dir: &std::path::Path, code: &str) -> tempfile::NamedTempFile {
+    let mut b = tempfile::Builder::new();
+
+    b.rand_bytes(12).suffix(".md");
+
+    let mut f = b.tempfile_in(dir).unwrap();
+
+    f.write_all(code.as_bytes()).unwrap();
+    f.flush().unwrap();
+
+    f
 }
 
 #[test]
@@ -68,11 +82,26 @@ fn validate_check_command_with_formatted_input() {
 
     mdsf_command(dir.path()).arg("init").assert().success();
 
-    let file = setup_snippet(FORMATTED_CODE, ".md").unwrap();
+    let file = setup_test_input(dir.path(), FORMATTED_CODE);
 
     mdsf_command(dir.path())
         .arg("verify")
         .arg(file.path())
         .assert()
         .success();
+}
+
+#[test]
+fn validate_check_command_with_broken_input() {
+    let dir = tempdir().unwrap();
+
+    mdsf_command(dir.path()).arg("init").assert().success();
+
+    let file = setup_test_input(dir.path(), BROKEN_CODE);
+
+    mdsf_command(dir.path())
+        .arg("verify")
+        .arg(file.path())
+        .assert()
+        .failure();
 }
