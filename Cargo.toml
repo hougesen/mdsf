@@ -13,6 +13,7 @@ license = "MIT"
 repository = "https://github.com/hougesen/mdsf"
 
 [workspace.dependencies]
+assert_cmd = "2.0.16"
 clap = { version = "4.5.35", features = ["derive"] }
 clap_complete = "4.5.47"
 clap_complete_nushell = "4.5.5"
