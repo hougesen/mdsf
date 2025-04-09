@@ -312,6 +312,64 @@ fn add(a: i32, b: i32) -> i32 {
         }
 
         #[test]
+        fn accepts_multiple_file_paths_formatted_with_threads_argument() {
+            let dir = tempdir().unwrap();
+
+            mdsf_command(dir.path()).arg("init").assert().success();
+
+            let mut cmd = mdsf_command(dir.path());
+
+            cmd.arg("verify").arg("--threads").arg("4");
+
+            let mut files = Vec::new();
+
+            for _ in 0..5 {
+                let file = setup_test_input(dir.path(), FORMATTED_CODE);
+
+                cmd.arg(file.path());
+
+                files.push(file);
+            }
+
+            cmd.assert().success();
+
+            // Validate the files wasn't changed
+            for file in files {
+                let output = std::fs::read_to_string(file.path()).unwrap();
+                assert_eq!(FORMATTED_CODE, output);
+            }
+        }
+
+        #[test]
+        fn accepts_multiple_file_paths_formatted_with_threads_argument_zero() {
+            let dir = tempdir().unwrap();
+
+            mdsf_command(dir.path()).arg("init").assert().success();
+
+            let mut cmd = mdsf_command(dir.path());
+
+            cmd.arg("verify").arg("--threads").arg("0");
+
+            let mut files = Vec::new();
+
+            for _ in 0..5 {
+                let file = setup_test_input(dir.path(), FORMATTED_CODE);
+
+                cmd.arg(file.path());
+
+                files.push(file);
+            }
+
+            cmd.assert().success();
+
+            // Validate the files wasn't changed
+            for file in files {
+                let output = std::fs::read_to_string(file.path()).unwrap();
+                assert_eq!(FORMATTED_CODE, output);
+            }
+        }
+
+        #[test]
         fn accepts_multiple_file_paths_broken() {
             let dir = tempdir().unwrap();
 
@@ -471,6 +529,64 @@ fn add(a: i32, b: i32) -> i32 {
             let mut cmd = mdsf_command(dir.path());
 
             cmd.arg("format");
+
+            let mut files = Vec::new();
+
+            for _ in 0..5 {
+                let file = setup_test_input(dir.path(), BROKEN_CODE);
+
+                cmd.arg(file.path());
+
+                files.push(file);
+            }
+
+            cmd.assert().success();
+
+            for file in files {
+                let output = std::fs::read_to_string(file.path()).unwrap();
+
+                assert_eq!(output, FORMATTED_CODE);
+            }
+        }
+
+        #[test]
+        fn accepts_multiple_file_paths_with_thread_argument() {
+            let dir = tempdir().unwrap();
+
+            mdsf_command(dir.path()).arg("init").assert().success();
+
+            let mut cmd = mdsf_command(dir.path());
+
+            cmd.arg("format").arg("--threads").arg("4");
+
+            let mut files = Vec::new();
+
+            for _ in 0..5 {
+                let file = setup_test_input(dir.path(), BROKEN_CODE);
+
+                cmd.arg(file.path());
+
+                files.push(file);
+            }
+
+            cmd.assert().success();
+
+            for file in files {
+                let output = std::fs::read_to_string(file.path()).unwrap();
+
+                assert_eq!(output, FORMATTED_CODE);
+            }
+        }
+
+        #[test]
+        fn accepts_multiple_file_paths_with_thread_argument_zero() {
+            let dir = tempdir().unwrap();
+
+            mdsf_command(dir.path()).arg("init").assert().success();
+
+            let mut cmd = mdsf_command(dir.path());
+
+            cmd.arg("format").arg("--threads").arg("0");
 
             let mut files = Vec::new();
 
