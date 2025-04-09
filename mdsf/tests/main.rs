@@ -718,5 +718,26 @@ fn add(a: i32, b: i32) -> i32 {
 
             assert!(cmd.get_output().stderr.is_empty());
         }
+
+        #[test]
+        fn supports_config_path_argument() {
+            let dir = tempdir().unwrap();
+
+            let dir2 = tempdir().unwrap();
+            mdsf_command(dir2.path()).arg("init").assert().success();
+
+            let file = setup_test_input(dir.path(), BROKEN_CODE);
+
+            mdsf_command(dir.path())
+                .arg("format")
+                .arg("--config")
+                .arg(dir2.path().join("mdsf.json"))
+                .arg(file.path())
+                .assert()
+                .success();
+
+            let output = std::fs::read_to_string(file.path()).unwrap();
+            assert_eq!(output, FORMATTED_CODE);
+        }
     }
 }
