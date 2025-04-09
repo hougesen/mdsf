@@ -1,14 +1,17 @@
-use mdsf::config::MdsfConfig;
+use mdsf::{config::MdsfConfig, error::MdsfError};
 
 #[inline]
-pub fn run() -> std::io::Result<()> {
-    let current_dir = std::env::current_dir()?;
+pub fn run() -> Result<(), MdsfError> {
+    let config_path = std::env::current_dir()?.join("mdsf.json");
 
-    let conf = MdsfConfig::default();
+    if config_path.try_exists()? {
+        return Err(MdsfError::ConfigAlreadyExist);
+    }
 
-    let config = serde_json::to_string_pretty(&conf)?;
+    let config =
+        serde_json::to_string_pretty(&MdsfConfig::default()).map_err(MdsfError::SerializeConfig)?;
 
-    std::fs::write(current_dir.join("mdsf.json"), config)?;
+    std::fs::write(config_path, config)?;
 
     Ok(())
 }
