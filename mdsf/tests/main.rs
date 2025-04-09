@@ -105,3 +105,10 @@ fn validate_check_command_with_broken_input() {
         .assert()
         .failure();
 }
+
+#[test]
+fn validate_check_fails_without_input() {
+    let dir = tempdir().unwrap();
+
+    mdsf_command(dir.path()).arg("verify").assert().failure();
+}
