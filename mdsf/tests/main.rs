@@ -170,6 +170,20 @@ fn add(a: i32, b: i32) -> i32 {
                 .assert()
                 .success();
         }
+
+        #[test]
+        fn supports_log_level_argument() {
+            let dir = tempdir().unwrap();
+
+            let cmd = mdsf_command(dir.path())
+                .arg("init")
+                .arg("--log-level")
+                .arg("off")
+                .assert()
+                .success();
+
+            assert!(cmd.get_output().stderr.is_empty());
+        }
     }
 
     mod cache_prune {
@@ -200,6 +214,20 @@ fn add(a: i32, b: i32) -> i32 {
                 .arg("cache-prune")
                 .assert()
                 .success();
+        }
+
+        #[test]
+        fn supports_log_level_argument() {
+            let dir = tempdir().unwrap();
+
+            let cmd = mdsf_command(dir.path())
+                .arg("cache-prune")
+                .arg("--log-level")
+                .arg("off")
+                .assert()
+                .success();
+
+            assert!(cmd.get_output().stderr.is_empty());
         }
     }
 
@@ -454,6 +482,24 @@ fn add(a: i32, b: i32) -> i32 {
 
             mdsf_command(dir.path()).arg("verify").assert().failure();
         }
+
+        #[test]
+        fn supports_log_level_argument() {
+            let dir = tempdir().unwrap();
+
+            mdsf_command(dir.path()).arg("init").assert().success();
+
+            let cmd = mdsf_command(dir.path())
+                .arg("verify")
+                .arg("--stdin")
+                .arg("--log-level")
+                .arg("off")
+                .write_stdin(FORMATTED_CODE)
+                .assert()
+                .success();
+
+            assert!(cmd.get_output().stderr.is_empty());
+        }
     }
 
     mod format {
@@ -468,7 +514,7 @@ fn add(a: i32, b: i32) -> i32 {
             let dir = tempdir().unwrap();
 
             let cmd = mdsf_command(dir.path())
-                .arg("verify")
+                .arg("format")
                 .arg("--help")
                 .assert()
                 .success();
@@ -656,7 +702,21 @@ fn add(a: i32, b: i32) -> i32 {
         fn fails_without_input() {
             let dir = tempdir().unwrap();
 
-            mdsf_command(dir.path()).arg("verify").assert().failure();
+            mdsf_command(dir.path()).arg("format").assert().failure();
+        }
+
+        #[test]
+        fn supports_log_level_argument() {
+            let dir = tempdir().unwrap();
+
+            let cmd = mdsf_command(dir.path())
+                .arg("format")
+                .arg("--log-level")
+                .arg("off")
+                .assert()
+                .failure();
+
+            assert!(cmd.get_output().stderr.is_empty());
         }
     }
 }
