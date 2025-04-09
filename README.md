@@ -394,7 +394,7 @@ Options:
 
 <!-- START_SECTION:supported-tools -->
 
-`mdsf` currently supports 296 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 297 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                                                                                 | Description                                                                                                                                   | Categories            | Languages                                                                                                                         |
 | ------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
@@ -462,6 +462,7 @@ Options:
 | [djade](https://github.com/adamchainz/djade)                                         | A Django template formatter                                                                                                                   | `formatter`           | `django`, `python`                                                                                                                |
 | [djlint](https://www.djlint.com/)                                                    | Lint & Format HTML Templates                                                                                                                  | `formatter`, `linter` | `handlebars`, `html`, `jinja`, `mustache`, `nunjucks`, `twig`                                                                     |
 | [docformatter](https://github.com/PyCQA/docformatter)                                | Formats docstrings to follow PEP 257                                                                                                          | `formatter`           | `python`                                                                                                                          |
+| [dockerfmt](https://github.com/reteps/dockerfmt)                                     | Dockerfile formatter. a modern dockfmt                                                                                                        | `formatter`           | `docker`                                                                                                                          |
 | [dockfmt](https://github.com/jessfraz/dockfmt)                                       | Dockerfile format and parser. Like `gofmt` but for Dockerfiles                                                                                | `formatter`           | `docker`                                                                                                                          |
 | [docstrfmt](https://github.com/LilSpazJoekp/docstrfmt)                               | A formatter for Sphinx flavored reStructuredText                                                                                              | `formatter`           | `python`, `restructuredtext`, `sphinx`                                                                                            |
 | [doctoc](https://github.com/thlorenz/doctoc)                                         | Generates table of contents for markdown files                                                                                                | `formatter`           | `markdown`                                                                                                                        |
@@ -701,7 +702,7 @@ Options:
 
 <!-- START_SECTION:supported-commands -->
 
-`mdsf` currently supports 327 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 328 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                         | Command                                                                                 |
 | ---------------------------- | --------------------------------------------------------------------------------------- |
@@ -777,6 +778,7 @@ Options:
 | `djade`                      | `djade $PATH`                                                                           |
 | `djlint`                     | `djlint $PATH --reformat`                                                               |
 | `docformatter`               | `docformatter --in-place $PATH`                                                         |
+| `dockerfmt`                  | `dockerfmt -w -n $PATH`                                                                 |
 | `dockfmt`                    | `dockfmt fmt -w $PATH`                                                                  |
 | `docstrfmt`                  | `docstrfmt $PATH`                                                                       |
 | `doctoc`                     | `doctoc $PATH`                                                                          |

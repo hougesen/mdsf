@@ -460,6 +460,11 @@
           "enum": ["docformatter"]
         },
         {
+          "description": "Dockerfile formatter. a modern dockfmt\n\n[https://github.com/reteps/dockerfmt](https://github.com/reteps/dockerfmt)\n\n`dockerfmt -w -n $PATH`",
+          "type": "string",
+          "enum": ["dockerfmt"]
+        },
+        {
           "description": "Dockerfile format and parser. Like `gofmt` but for Dockerfiles\n\n[https://github.com/jessfraz/dockfmt](https://github.com/jessfraz/dockfmt)\n\n`dockfmt fmt -w $PATH`",
           "type": "string",
           "enum": ["dockfmt"]

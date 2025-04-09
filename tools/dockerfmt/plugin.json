@@ -1,0 +1,25 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "dockerfmt",
+  "categories": ["formatter"],
+  "commands": {
+    "": {
+      "arguments": ["-w", "-n", "$PATH"],
+      "tests": [
+        {
+          "language": ".Dockerfile",
+          "test_input": "FROM          ubuntu:latest\n RUN   echo   \"Hello world\"\n",
+          "test_output": "FROM ubuntu:latest\nRUN echo \"Hello world\"\n"
+        }
+      ]
+    }
+  },
+  "description": "Dockerfile formatter. a modern dockfmt",
+  "homepage": "https://github.com/reteps/dockerfmt",
+  "languages": ["docker"],
+  "packages": {
+    "go": {
+      "package": "github.com/reteps/dockerfmt@latest"
+    }
+  }
+}

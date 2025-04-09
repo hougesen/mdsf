@@ -73,6 +73,7 @@ pub mod dhall;
 pub mod djade;
 pub mod djlint;
 pub mod docformatter;
+pub mod dockerfmt;
 pub mod dockfmt;
 pub mod docstrfmt;
 pub mod doctoc;
@@ -907,6 +908,14 @@ pub enum Tooling {
     ///
     /// `docformatter --in-place $PATH`
     Docformatter,
+
+    #[serde(rename = "dockerfmt")]
+    /// Dockerfile formatter. a modern dockfmt
+    ///
+    /// [https://github.com/reteps/dockerfmt](https://github.com/reteps/dockerfmt)
+    ///
+    /// `dockerfmt -w -n $PATH`
+    Dockerfmt,
 
     #[serde(rename = "dockfmt")]
     /// Dockerfile format and parser. Like `gofmt` but for Dockerfiles
@@ -3204,6 +3213,11 @@ impl Tooling {
                 docformatter::set_args,
                 docformatter::IS_STDIN,
             ),
+            Self::Dockerfmt => (
+                &dockerfmt::COMMANDS,
+                dockerfmt::set_args,
+                dockerfmt::IS_STDIN,
+            ),
             Self::Dockfmt => (&dockfmt::COMMANDS, dockfmt::set_args, dockfmt::IS_STDIN),
             Self::Docstrfmt => (
                 &docstrfmt::COMMANDS,
@@ -4074,6 +4088,7 @@ impl AsRef<str> for Tooling {
             Self::Djade => "djade",
             Self::Djlint => "djlint",
             Self::Docformatter => "docformatter",
+            Self::Dockerfmt => "dockerfmt",
             Self::Dockfmt => "dockfmt",
             Self::Docstrfmt => "docstrfmt",
             Self::Doctoc => "doctoc",
@@ -4422,6 +4437,7 @@ mod test_tooling {
         assert_eq!(Tooling::Djade, reverse(Tooling::Djade)?);
         assert_eq!(Tooling::Djlint, reverse(Tooling::Djlint)?);
         assert_eq!(Tooling::Docformatter, reverse(Tooling::Docformatter)?);
+        assert_eq!(Tooling::Dockerfmt, reverse(Tooling::Dockerfmt)?);
         assert_eq!(Tooling::Dockfmt, reverse(Tooling::Dockfmt)?);
         assert_eq!(Tooling::Docstrfmt, reverse(Tooling::Docstrfmt)?);
         assert_eq!(Tooling::Doctoc, reverse(Tooling::Doctoc)?);
