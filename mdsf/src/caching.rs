@@ -7,20 +7,20 @@ use crate::{config::MdsfConfig, get_project_dir};
 pub const CACHE_DIR: &str = "caches/";
 
 pub struct CacheEntry {
-    config_hash: String,
+    config: String,
 
-    file_path_hash: String,
+    file_path: String,
 
-    file_content_hash: String,
+    file_content: String,
 }
 
 impl CacheEntry {
     #[inline]
     pub fn new(config_hash: String, file_path: &std::path::Path, file_content: &str) -> Self {
         Self {
-            config_hash,
-            file_path_hash: hash_text_block(&file_path.to_string_lossy()),
-            file_content_hash: hash_text_block(file_content),
+            config: config_hash,
+            file_path: hash_text_block(&file_path.to_string_lossy()),
+            file_content: hash_text_block(file_content),
         }
     }
 
@@ -29,9 +29,9 @@ impl CacheEntry {
         get_project_dir().join(CACHE_DIR).join(format!(
             "{}/{}/{}/{}",
             env!("CARGO_PKG_VERSION"),
-            self.config_hash,
-            self.file_path_hash,
-            self.file_content_hash
+            self.config,
+            self.file_path,
+            self.file_content
         ))
     }
 

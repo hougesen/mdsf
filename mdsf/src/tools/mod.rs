@@ -4357,6 +4357,7 @@ mod test_tooling {
     }
 
     #[allow(clippy::cognitive_complexity)]
+    #[allow(clippy::too_many_lines)]
     #[test]
     fn value_is_reversible() -> Result<(), serde_json::Error> {
         assert_eq!(Tooling::Actionlint, reverse(Tooling::Actionlint)?);

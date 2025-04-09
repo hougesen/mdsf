@@ -4,12 +4,12 @@ mod test_cli {
 
     use tempfile::tempdir;
 
-    const BROKEN_CODE: &'static str = "```rust
+    const BROKEN_CODE: &str = "```rust
 fn add(a:i32,b:i32)->i32{a+b}
 ```
 ";
 
-    const FORMATTED_CODE: &'static str = "```rust
+    const FORMATTED_CODE: &str = "```rust
 fn add(a: i32, b: i32) -> i32 {
     a + b
 }
@@ -283,10 +283,16 @@ fn add(a: i32, b: i32) -> i32 {
 
                 cmd.arg(file.path());
 
-                files.push(file)
+                files.push(file);
             }
 
             cmd.assert().success();
+
+            // Validate the files wasn't changed
+            for file in files {
+                let output = std::fs::read_to_string(file.path()).unwrap();
+                assert_eq!(FORMATTED_CODE, output);
+            }
         }
 
         #[test]
@@ -306,10 +312,16 @@ fn add(a: i32, b: i32) -> i32 {
 
                 cmd.arg(file.path());
 
-                files.push(file)
+                files.push(file);
             }
 
             cmd.assert().failure();
+
+            // Validate the files wasn't changed
+            for file in files {
+                let output = std::fs::read_to_string(file.path()).unwrap();
+                assert_eq!(BROKEN_CODE, output);
+            }
         }
 
         #[test]
@@ -325,21 +337,26 @@ fn add(a: i32, b: i32) -> i32 {
             let mut files = Vec::new();
 
             for i in 0..5 {
-                let file = setup_test_input(
-                    dir.path(),
-                    if i % 2 == 0 {
-                        FORMATTED_CODE
-                    } else {
-                        BROKEN_CODE
-                    },
-                );
+                let input = if i % 2 == 0 {
+                    FORMATTED_CODE
+                } else {
+                    BROKEN_CODE
+                };
+
+                let file = setup_test_input(dir.path(), input);
 
                 cmd.arg(file.path());
 
-                files.push(file)
+                files.push((file, input));
             }
 
             cmd.assert().failure();
+
+            // Validate the files wasn't changed
+            for (file, input) in files {
+                let output = std::fs::read_to_string(file.path()).unwrap();
+                assert_eq!(input, output);
+            }
         }
 
         #[test]
@@ -426,7 +443,7 @@ fn add(a: i32, b: i32) -> i32 {
 
                 cmd.arg(file.path());
 
-                files.push(file)
+                files.push(file);
             }
 
             cmd.assert().success();

@@ -4,6 +4,9 @@ All notable changes to this project will be documented in this file. Dates are d
 
 #### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.8.5...HEAD)
 
+- test: integration test cli [`#940`](https://github.com/hougesen/mdsf/pull/940)
+- refactor(init): error if config in path [`#939`](https://github.com/hougesen/mdsf/pull/939)
+- fix: set .md as file ext for stdin input [`#937`](https://github.com/hougesen/mdsf/pull/937)
 - feat(tools): add support for dockerfmt [`#936`](https://github.com/hougesen/mdsf/pull/936)
 - build(deps): bump which from 7.0.2 to 7.0.3 [`#935`](https://github.com/hougesen/mdsf/pull/935)
 - refactor: add inline to a few small fns [`#934`](https://github.com/hougesen/mdsf/pull/934)
