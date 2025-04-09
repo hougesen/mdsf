@@ -4,6 +4,9 @@ All notable changes to this project will be documented in this file. Dates are d
 
 #### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.8.5...HEAD)
 
+- feat(tools): add support for dockerfmt [`#936`](https://github.com/hougesen/mdsf/pull/936)
+- build(deps): bump which from 7.0.2 to 7.0.3 [`#935`](https://github.com/hougesen/mdsf/pull/935)
+- refactor: add inline to a few small fns [`#934`](https://github.com/hougesen/mdsf/pull/934)
 - refactor(codegen): use ureq instead of reqwest [`#933`](https://github.com/hougesen/mdsf/pull/933)
 - build(deps): update transient dependencies [`#932`](https://github.com/hougesen/mdsf/pull/932)
 - build(deps): bump tokio from 1.43.0 to 1.44.2 in the cargo group [`#931`](https://github.com/hougesen/mdsf/pull/931)
