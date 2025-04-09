@@ -155,6 +155,21 @@ fn add(a: i32, b: i32) -> i32 {
 
             mdsf_command(dir.path()).arg("init").assert().failure();
         }
+
+        #[test]
+        fn force_config_arg() {
+            let dir = tempdir().unwrap();
+
+            mdsf_command(dir.path()).arg("init").assert().success();
+
+            mdsf_command(dir.path()).arg("init").assert().failure();
+
+            mdsf_command(dir.path())
+                .arg("init")
+                .arg("--force")
+                .assert()
+                .success();
+        }
     }
 
     mod cache_prune {

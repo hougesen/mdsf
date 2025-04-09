@@ -26,7 +26,7 @@ pub enum Commands {
     Verify(VerifyCommandArguments),
 
     /// Create a new mdsf config.
-    Init,
+    Init(InitCommandArguments),
 
     /// Generate shell completion.
     Completions(CompletionsCommandArguments),
@@ -121,6 +121,13 @@ impl From<VerifyCommandArguments> for FormatCommandArguments {
             cache: false,
         }
     }
+}
+
+#[derive(Args, Debug)]
+pub struct InitCommandArguments {
+    /// Create config even if one already exists in current directory
+    #[arg(long, default_value_t = false)]
+    pub force: bool,
 }
 
 #[derive(clap::ValueEnum, Clone, Copy, PartialEq, Eq, Debug, Default)]

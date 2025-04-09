@@ -1,10 +1,10 @@
-use mdsf::{config::MdsfConfig, error::MdsfError};
+use mdsf::{cli::InitCommandArguments, config::MdsfConfig, error::MdsfError};
 
 #[inline]
-pub fn run() -> Result<(), MdsfError> {
+pub fn run(args: &InitCommandArguments) -> Result<(), MdsfError> {
     let config_path = std::env::current_dir()?.join("mdsf.json");
 
-    if config_path.try_exists()? {
+    if !args.force && config_path.try_exists()? {
         return Err(MdsfError::ConfigAlreadyExist);
     }
 

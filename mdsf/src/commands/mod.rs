@@ -37,7 +37,11 @@ pub fn run_command() -> Result<(), MdsfError> {
             format::run(FormatCommandArguments::from(args), true)
         }
 
-        Commands::Init => init::run(),
+        Commands::Init(args) => {
+            setup_logger(LogLevel::default());
+
+            init::run(&args)
+        }
         Commands::Completions(args) => {
             completions::run(&args, &mut std::io::stdout());
 
