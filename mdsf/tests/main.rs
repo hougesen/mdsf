@@ -739,5 +739,33 @@ fn add(a: i32, b: i32) -> i32 {
             let output = std::fs::read_to_string(file.path()).unwrap();
             assert_eq!(output, FORMATTED_CODE);
         }
+
+        #[test]
+        fn it_should_error_if_config_is_not_valid_json() {
+            let dir = tempdir().unwrap();
+
+            std::fs::write(dir.path().join("mdsf.json"), "{ this is not valid json }").unwrap();
+
+            mdsf_command(dir.path())
+                .arg("format")
+                .arg("--config")
+                .arg("thisdoesnotexist.json")
+                .arg(".")
+                .assert()
+                .failure();
+        }
+
+        #[test]
+        fn it_should_error_if_config_path_does_not_exist() {
+            let dir = tempdir().unwrap();
+
+            mdsf_command(dir.path())
+                .arg("format")
+                .arg("--config")
+                .arg("thisdoesnotexist.json")
+                .arg(".")
+                .assert()
+                .failure();
+        }
     }
 }
