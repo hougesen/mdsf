@@ -9,6 +9,7 @@ use mdsf::{
     error::MdsfError,
     execution::setup_snippet,
     format_file, handle_file,
+    terminal::print_config_not_found,
 };
 use threadpool::ThreadPool;
 
@@ -36,9 +37,15 @@ pub fn run(args: FormatCommandArguments, dry_run: bool) -> Result<(), MdsfError>
     let mut conf = if let Some(config_path) = args.config {
         MdsfConfig::load(config_path)
     } else {
-        let path = current_dir()?.join("mdsf.json");
+        let c = MdsfConfig::load(current_dir()?.join("mdsf.json"));
 
-        Ok(MdsfConfig::load(path).unwrap_or_default())
+        if let Err(MdsfError::ConfigNotFound(path)) = c {
+            print_config_not_found(&path);
+
+            Ok(MdsfConfig::default())
+        } else {
+            c
+        }
     }?;
 
     conf.setup_language_aliases()?;

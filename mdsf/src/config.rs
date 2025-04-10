@@ -1,9 +1,6 @@
 use json_comments::{CommentSettings, StripComments};
 
-use crate::{
-    error::MdsfError, execution::MdsfFormatter, languages::default_tools,
-    terminal::print_config_not_found, tools::Tooling,
-};
+use crate::{error::MdsfError, execution::MdsfFormatter, languages::default_tools, tools::Tooling};
 
 #[allow(clippy::trivially_copy_pass_by_ref)]
 #[inline]
@@ -143,15 +140,17 @@ impl Default for MdsfConfig {
 impl MdsfConfig {
     #[inline]
     pub fn load(path: impl AsRef<std::path::Path>) -> Result<Self, MdsfError> {
-        match std::fs::read_to_string(path.as_ref()) {
+        let path = path.as_ref();
+
+        match std::fs::read_to_string(path) {
             Ok(raw_config) => Self::parse(&raw_config)
-                .map_err(|_serde_error| MdsfError::ConfigParse(path.as_ref().to_path_buf())),
+                .map_err(|_serde_error| MdsfError::ConfigParse(path.to_path_buf())),
             Err(error) => {
                 if error.kind() == std::io::ErrorKind::NotFound {
-                    print_config_not_found(path.as_ref());
+                    return Err(MdsfError::ConfigNotFound(path.to_path_buf()));
                 }
 
-                Err(MdsfError::from(error))
+                Err(MdsfError::Io(error))
             }
         }
     }
@@ -212,7 +211,7 @@ fn default_schema_location() -> String {
 #[cfg(test)]
 mod test_config {
     use super::MdsfConfig;
-    use crate::error::MdsfError;
+    use crate::{error::MdsfError, execution::setup_snippet};
 
     #[test]
     fn schema_should_be_serializable() {
@@ -269,6 +268,17 @@ mod test_config {
         ))
         .expect_err("Expect it to return file not found");
 
-        assert!(matches!(before, MdsfError::Io(_)));
+        assert!(matches!(before, MdsfError::ConfigNotFound(_)));
+    }
+
+    #[test]
+    fn it_should_error_on_broken_config() {
+        let input = "{thisisnotvalidjson}";
+
+        let file = setup_snippet(input, ".json").unwrap();
+
+        let output = MdsfConfig::load(file.path()).expect_err("it should return an error");
+
+        assert!(matches!(output, MdsfError::ConfigParse(_)));
     }
 }
