@@ -63,6 +63,7 @@ jobs:
       - uses: oven-sh/setup-bun@v2
         with:
           bun-version: latest
+      - uses: dlang-community/setup-dlang@v2
       - name: Install cargo-llvm-cov
         uses: taiki-e/install-action@cargo-llvm-cov
       - run: rustup toolchain install stable --profile minimal
@@ -110,6 +111,8 @@ jobs:
         run: ( ( which csscomb ) || ( ( which npm && npm i -g csscomb ) ) || ( echo "Unable to install tool" ) )
       - name: csslint
         run: ( ( which csslint ) || ( ( which npm && npm i -g csslint ) ) || ( echo "Unable to install tool" ) )
+      - name: dfmt
+        run: ( ( which dfmt ) || ( ( which brew &&  brew install dfmt ) ) || ( echo "Unable to install tool" ) )
       - name: dockerfmt
         run: ( ( which dockerfmt ) || ( ( which go && go install github.com/reteps/dockerfmt@latest ) ) || ( echo "Unable to install tool" ) )
       - name: dotnet

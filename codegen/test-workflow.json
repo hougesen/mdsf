@@ -61,9 +61,7 @@
         "distribution": "temurin"
       }
     },
-    {
-      "uses": "haskell-actions/setup@v2"
-    },
+    { "uses": "haskell-actions/setup@v2" },
     { "uses": "julia-actions/cache@v2" },
     { "uses": "cargo-bins/cargo-binstall@main" },
     { "uses": "Homebrew/actions/setup-homebrew@master" },
@@ -75,6 +73,7 @@
         "bun-version": "latest"
       }
     },
+    { "uses": "dlang-community/setup-dlang@v2" },
     {
       "name": "Install cargo-llvm-cov",
       "uses": "taiki-e/install-action@cargo-llvm-cov"

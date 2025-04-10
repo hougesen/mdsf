@@ -5,7 +5,13 @@
   "commands": {
     "": {
       "arguments": ["-i", "$PATH"],
-      "tests": []
+      "tests": [
+        {
+          "language": "d",
+          "test_input": "int add(int a,int b){return a + b;}\n",
+          "test_output": "int add(int a, int b)\n{\n    return a + b;\n}\n"
+        }
+      ]
     }
   },
   "description": "Dfmt is a formatter for D source code",

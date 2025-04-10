@@ -4,6 +4,8 @@ All notable changes to this project will be documented in this file. Dates are d
 
 #### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.8.5...HEAD)
 
+- test(tools): validate dfmt [`#946`](https://github.com/hougesen/mdsf/pull/946)
+- test(tools): validate csslint [`#945`](https://github.com/hougesen/mdsf/pull/945)
 - test(tools): validate snakefmt [`#944`](https://github.com/hougesen/mdsf/pull/944)
 - test: disabling runners in config works [`#943`](https://github.com/hougesen/mdsf/pull/943)
 - test: format --config path argument [`#942`](https://github.com/hougesen/mdsf/pull/942)
