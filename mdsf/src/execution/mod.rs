@@ -7,7 +7,7 @@ use which::which;
 use crate::{
     LineInfo,
     config::{MdsfConfig, MdsfConfigRunners},
-    error::MdsfError,
+    error::{MdsfError, exit_with_error},
     fttype::get_file_extension,
     get_project_dir,
     runners::CommandType,
@@ -170,6 +170,7 @@ pub fn format_snippet(
     code: &str,
     timeout: u64,
     debug_enabled: bool,
+    error_on_tool_missing: bool,
 ) -> String {
     let always_ran = config.languages.get("*");
 
@@ -194,9 +195,18 @@ pub fn format_snippet(
             let snippet_path = snippet.path();
 
             if let Some(formatters) = always_ran {
-                if let Ok(Some(formatted_code)) =
-                    formatters.format(snippet_path, info, timeout, debug_enabled, &config.runners)
-                {
+                let result = formatters.format(
+                    snippet_path,
+                    info,
+                    timeout,
+                    debug_enabled,
+                    &config.runners,
+                    error_on_tool_missing,
+                );
+
+                if let Err(MdsfError::MissingBinary(binary)) = result {
+                    exit_with_error(MdsfError::MissingBinary(binary));
+                } else if let Ok(Some(formatted_code)) = result {
                     if language_formatters.is_none() {
                         let mut f = formatted_code.trim().to_owned();
 
@@ -208,9 +218,18 @@ pub fn format_snippet(
             }
 
             if let Some(formatters) = language_formatters {
-                if let Ok(Some(formatted_code)) =
-                    formatters.format(snippet_path, info, timeout, debug_enabled, &config.runners)
-                {
+                let result = formatters.format(
+                    snippet_path,
+                    info,
+                    timeout,
+                    debug_enabled,
+                    &config.runners,
+                    error_on_tool_missing,
+                );
+
+                if let Err(MdsfError::MissingBinary(binary)) = result {
+                    exit_with_error(MdsfError::MissingBinary(binary));
+                } else if let Ok(Some(formatted_code)) = result {
                     let mut f = formatted_code.trim().to_owned();
 
                     f.push('\n');
@@ -263,6 +282,7 @@ impl MdsfFormatter<Tooling> {
         timeout: u64,
         debug_enabled: bool,
         config_runners: &MdsfConfigRunners,
+        error_on_tool_missing: bool,
     ) -> Result<Option<String>, MdsfError> {
         Self::format_multiple(
             self,
@@ -272,6 +292,7 @@ impl MdsfFormatter<Tooling> {
             timeout,
             debug_enabled,
             config_runners,
+            error_on_tool_missing,
         )
         .map(|(_should_continue, output)| output)
     }
@@ -285,6 +306,7 @@ impl MdsfFormatter<Tooling> {
         timeout: u64,
         debug_enabled: bool,
         config_runners: &MdsfConfigRunners,
+        error_on_tool_missing: bool,
     ) -> Result<(bool, Option<String>), MdsfError> {
         match formatter {
             Self::Single(f) => {
@@ -298,27 +320,27 @@ impl MdsfFormatter<Tooling> {
 
                 print_formatter_time(formatter_name, info, time.elapsed());
 
-                if let Err(e) = &r {
-                    if let MdsfError::MissingBinary(binary) = e {
-                        print_binary_not_in_path(
-                            info.filename,
-                            if formatter_name == binary {
-                                formatter_name.to_string()
-                            } else {
-                                format!("{binary} ({formatter_name})")
-                            }
-                            .as_str(),
-                        );
+                if let Err(MdsfError::FormatterError(stderr)) = r {
+                    print_error_formatting(formatter_name, info, &stderr);
 
-                        return Ok((false, None));
-                    } else if let MdsfError::FormatterError(stderr) = e {
-                        print_error_formatting(formatter_name, info, stderr);
+                    Ok((false, None))
+                } else if let Err(MdsfError::MissingBinary(binary)) = r {
+                    let pretty_bin = if formatter_name == binary {
+                        binary
+                    } else {
+                        format!("{binary} ({formatter_name})")
+                    };
 
-                        return Ok((false, None));
+                    if error_on_tool_missing {
+                        Err(MdsfError::MissingBinary(pretty_bin))
+                    } else {
+                        print_binary_not_in_path(snippet_path, &pretty_bin);
+
+                        Ok((false, None))
                     }
+                } else {
+                    r
                 }
-
-                r
             }
 
             Self::Multiple(formatters) => {
@@ -333,6 +355,7 @@ impl MdsfFormatter<Tooling> {
                         timeout,
                         debug_enabled,
                         config_runners,
+                        error_on_tool_missing,
                     );
 
                     if r.as_ref()

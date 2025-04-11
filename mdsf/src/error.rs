@@ -1,3 +1,11 @@
+use crate::terminal::print_error;
+
+pub fn exit_with_error(error: MdsfError) {
+    print_error(&error);
+
+    std::process::exit(1);
+}
+
 #[derive(Debug)]
 pub enum MdsfError {
     CheckModeChanges(u32),

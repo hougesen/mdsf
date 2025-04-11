@@ -1,11 +1,9 @@
-use mdsf::terminal::print_error;
+use mdsf::error::exit_with_error;
 
 mod commands;
 
 fn main() {
     if let Err(error) = commands::run_command() {
-        print_error(&error);
-
-        std::process::exit(1);
+        exit_with_error(error);
     }
 }

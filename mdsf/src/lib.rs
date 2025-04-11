@@ -73,6 +73,7 @@ pub fn format_file(
     input: &str,
     timeout: u64,
     debug_enabled: bool,
+    error_on_tool_missing: bool,
 ) -> (bool, String) {
     let mut output = String::with_capacity(input.len() + 128);
 
@@ -113,6 +114,7 @@ pub fn format_file(
                         &code_snippet,
                         timeout,
                         debug_enabled,
+                        error_on_tool_missing,
                     );
 
                     let formatted = if is_go {
@@ -164,6 +166,7 @@ pub fn format_file(
             &output,
             timeout,
             debug_enabled,
+            error_on_tool_missing,
         );
     }
 
@@ -178,6 +181,7 @@ fn format_or_use_cache(
     cache_entry: Option<CacheEntry>,
     timeout: u64,
     debug_enabled: bool,
+    error_on_tool_missing: bool,
 ) -> (String, bool, bool) {
     if let Some(cached_value) = cache_entry.as_ref().and_then(caching::CacheEntry::get) {
         let modified = cached_value != input;
@@ -185,7 +189,14 @@ fn format_or_use_cache(
         return (cached_value, modified, true);
     }
 
-    let (modified, output) = format_file(config, path, input, timeout, debug_enabled);
+    let (modified, output) = format_file(
+        config,
+        path,
+        input,
+        timeout,
+        debug_enabled,
+        error_on_tool_missing,
+    );
 
     if let Some(cache) = cache_entry {
         // We do not (currently) care if saving the cache fails.
@@ -203,6 +214,7 @@ pub fn handle_file(
     config_hash: Option<String>,
     timeout: u64,
     debug_enabled: bool,
+    error_on_tool_missing: bool,
 ) -> bool {
     let time = std::time::Instant::now();
 
@@ -216,8 +228,15 @@ pub fn handle_file(
 
             let cache_entry = config_hash.map(|conf| CacheEntry::new(conf, path, &input));
 
-            let (output, modified, cached) =
-                format_or_use_cache(config, path, &input, cache_entry, timeout, debug_enabled);
+            let (output, modified, cached) = format_or_use_cache(
+                config,
+                path,
+                &input,
+                cache_entry,
+                timeout,
+                debug_enabled,
+                error_on_tool_missing,
+            );
 
             if modified && output != input {
                 if dry_run {
@@ -277,6 +296,7 @@ mod test_lib {
         format_file,
         fttype::get_file_extension,
         handle_file,
+        testing::DEFAULT_ERROR_ON_TOOL_MISSING,
         tools::Tooling,
     };
 
@@ -312,6 +332,7 @@ fn add(a: i32, b: i32) -> i32 {
                 input,
                 TIMEOUT,
                 DEBUG_ENABLED,
+                DEFAULT_ERROR_ON_TOOL_MISSING,
             );
 
             assert!(modified);
@@ -329,7 +350,8 @@ fn add(a: i32, b: i32) -> i32 {
                 DRY_RUN,
                 None,
                 TIMEOUT,
-                DEBUG_ENABLED
+                DEBUG_ENABLED,
+                DEFAULT_ERROR_ON_TOOL_MISSING
             ));
 
             let output = std::fs::read_to_string(file.path()).expect("it to return the string");
@@ -381,6 +403,7 @@ fn           add(
                     &input,
                     TIMEOUT,
                     DEBUG_ENABLED,
+                    DEFAULT_ERROR_ON_TOOL_MISSING,
                 );
 
                 assert!(modified);
@@ -398,7 +421,8 @@ fn           add(
                     DRY_RUN,
                     None,
                     TIMEOUT,
-                    DEBUG_ENABLED
+                    DEBUG_ENABLED,
+                    DEFAULT_ERROR_ON_TOOL_MISSING,
                 ));
 
                 let output = std::fs::read_to_string(file.path()).expect("it to return the string");
@@ -464,6 +488,7 @@ fn add(a: i32, b: i32) -> i32 {
             input,
             TIMEOUT,
             DEBUG_ENABLED,
+            DEFAULT_ERROR_ON_TOOL_MISSING,
         );
 
         assert!(modified);
@@ -519,6 +544,7 @@ type Whatever struct {
                     input,
                     TIMEOUT,
                     DEBUG_ENABLED,
+                    DEFAULT_ERROR_ON_TOOL_MISSING,
                 );
 
                 assert!(modified);
@@ -536,7 +562,8 @@ type Whatever struct {
                     DRY_RUN,
                     None,
                     TIMEOUT,
-                    DEBUG_ENABLED
+                    DEBUG_ENABLED,
+                    DEFAULT_ERROR_ON_TOOL_MISSING
                 ));
 
                 let output = std::fs::read_to_string(file.path()).expect("it to return the string");
@@ -561,6 +588,7 @@ type Whatever struct {
                     input,
                     TIMEOUT,
                     DEBUG_ENABLED,
+                    DEFAULT_ERROR_ON_TOOL_MISSING,
                 );
 
                 assert!(modified);
@@ -578,7 +606,8 @@ type Whatever struct {
                     DRY_RUN,
                     None,
                     TIMEOUT,
-                    DEBUG_ENABLED
+                    DEBUG_ENABLED,
+                    DEFAULT_ERROR_ON_TOOL_MISSING
                 ));
 
                 let output = std::fs::read_to_string(file.path()).expect("it to return the string");
@@ -631,6 +660,7 @@ type Whatever struct {
                     input,
                     TIMEOUT,
                     DEBUG_ENABLED,
+                    DEFAULT_ERROR_ON_TOOL_MISSING,
                 );
 
                 assert!(modified);
@@ -648,7 +678,8 @@ type Whatever struct {
                     DRY_RUN,
                     None,
                     TIMEOUT,
-                    DEBUG_ENABLED
+                    DEBUG_ENABLED,
+                    DEFAULT_ERROR_ON_TOOL_MISSING
                 ));
 
                 let output = std::fs::read_to_string(file.path()).expect("it to return the string");
@@ -674,6 +705,7 @@ type Whatever struct {
                     input,
                     TIMEOUT,
                     DEBUG_ENABLED,
+                    DEFAULT_ERROR_ON_TOOL_MISSING,
                 );
 
                 assert!(modified);
@@ -691,7 +723,8 @@ type Whatever struct {
                     DRY_RUN,
                     None,
                     TIMEOUT,
-                    DEBUG_ENABLED
+                    DEBUG_ENABLED,
+                    DEFAULT_ERROR_ON_TOOL_MISSING,
                 ));
 
                 let output = std::fs::read_to_string(file.path()).expect("it to return the string");
@@ -774,6 +807,7 @@ func add(a int, b int) int {
                     input,
                     TIMEOUT,
                     DEBUG_ENABLED,
+                    DEFAULT_ERROR_ON_TOOL_MISSING,
                 );
 
                 assert!(modified);
@@ -791,7 +825,8 @@ func add(a int, b int) int {
                     DRY_RUN,
                     None,
                     TIMEOUT,
-                    DEBUG_ENABLED
+                    DEBUG_ENABLED,
+                    DEFAULT_ERROR_ON_TOOL_MISSING
                 ));
 
                 let output = std::fs::read_to_string(file.path()).expect("it to return the string");
@@ -816,6 +851,7 @@ func add(a int, b int) int {
                     input,
                     TIMEOUT,
                     DEBUG_ENABLED,
+                    DEFAULT_ERROR_ON_TOOL_MISSING,
                 );
 
                 assert!(modified);
@@ -833,7 +869,8 @@ func add(a int, b int) int {
                     DRY_RUN,
                     None,
                     TIMEOUT,
-                    DEBUG_ENABLED
+                    DEBUG_ENABLED,
+                    DEFAULT_ERROR_ON_TOOL_MISSING,
                 ));
 
                 let output = std::fs::read_to_string(file.path()).expect("it to return the string");

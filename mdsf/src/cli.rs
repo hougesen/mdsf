@@ -71,6 +71,10 @@ pub struct FormatCommandArguments {
     /// Defaults to no timeout
     #[arg(long)]
     pub timeout: Option<u64>,
+
+    /// Fail fast if a defined tool is missing
+    #[arg(long, default_value_t = false)]
+    pub error_on_tool_missing: bool,
 }
 
 #[derive(Args, Debug)]
@@ -102,6 +106,10 @@ pub struct VerifyCommandArguments {
     /// Defaults to no timeout
     #[arg(long)]
     pub timeout: Option<u64>,
+
+    /// Fail fast if a defined tool is missing
+    #[arg(long, default_value_t = false)]
+    pub error_on_tool_missing: bool,
 }
 
 impl From<VerifyCommandArguments> for FormatCommandArguments {
@@ -111,6 +119,7 @@ impl From<VerifyCommandArguments> for FormatCommandArguments {
             cache: false,
             config: value.config,
             debug: value.debug,
+            error_on_tool_missing: value.error_on_tool_missing,
             input: value.input,
             stdin: value.stdin,
             threads: value.threads,
