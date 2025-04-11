@@ -8,8 +8,8 @@
       "tests": [
         {
           "language": "latex",
-          "test_input": "\\documentclass{article}\n\n\\begin{document}\n\n\\begin{itemize}\n\\item Lists with items\nover multiple lines\n\\end{itemize}\n\n\\begin{equation}\nE = m c^2\n\\end{equation}\n\n\\end{document}",
-          "test_output": "\\documentclass{article}\n\n\\begin{document}\n\n\\begin{itemize}\n  \\item Lists with items\n    over multiple lines\n\\end{itemize}\n\n\\begin{equation}\n  E = m c^2\n\\end{equation}\n\n\\end{document}\n"
+          "test_input": "\\documentclass{article}\n\n\begin{document}\n\n\begin{itemize}\n\\item Lists with items\nover multiple lines\n\\end{itemize}\n\n\begin{equation}\nE = m c^2\n\\end{equation}\n\n\\end{document}",
+          "test_output": "\\documentclass{article}\n\n\begin{document}\n\n\begin{itemize}\n  \\item Lists with items\n    over multiple lines\n\\end{itemize}\n\n\begin{equation}\n  E = m c^2\n\\end{equation}\n\n\\end{document}\n"
         }
       ]
     }

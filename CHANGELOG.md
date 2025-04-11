@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file. Dates are d
 
 #### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.8.5...HEAD)
 
+- build(deps-dev): bump @typescript-eslint/parser in /mdsf-vscode [`#950`](https://github.com/hougesen/mdsf/pull/950)
+- build(deps-dev): bump @vscode/test-electron in /mdsf-vscode [`#952`](https://github.com/hougesen/mdsf/pull/952)
+- build(deps-dev): bump @typescript-eslint/eslint-plugin in /mdsf-vscode [`#951`](https://github.com/hougesen/mdsf/pull/951)
+- build(deps): bump clap from 4.5.35 to 4.5.36 [`#949`](https://github.com/hougesen/mdsf/pull/949)
+- feat(tools): support typespec [`#954`](https://github.com/hougesen/mdsf/pull/954)
 - fix: error if config could not be loaded [`#947`](https://github.com/hougesen/mdsf/pull/947)
 - test(tools): validate dfmt [`#946`](https://github.com/hougesen/mdsf/pull/946)
 - test(tools): validate csslint [`#945`](https://github.com/hougesen/mdsf/pull/945)
@@ -26,6 +31,7 @@ All notable changes to this project will be documented in this file. Dates are d
 - test(tools): validate cppcheck and cpplint [`#928`](https://github.com/hougesen/mdsf/pull/928)
 - build(deps): bump test-with from 0.14.8 to 0.14.9 [`#927`](https://github.com/hougesen/mdsf/pull/927)
 - chore: bump version to dev [`3027334`](https://github.com/hougesen/mdsf/commit/30273341945447c37a273c63f97566cc6da8846e)
+- feat(cli): flag for erroring on tool missing [`5998a37`](https://github.com/hougesen/mdsf/commit/5998a372e73ab1dd3b6ddc9895f410a9adbcbdca)
 
 #### [v0.8.5](https://github.com/hougesen/mdsf/compare/v0.8.4...v0.8.5)
 
