@@ -1,0 +1,22 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "tsp",
+  "categories": ["formatter"],
+  "commands": {
+    "format": {
+      "arguments": ["format", "$PATH"],
+      "description": "Format TypeSpec files",
+      "tests": [
+        {
+          "language": "typespec",
+          "test_input": "model Pet {  name: string;  age: int32;kind: \"dog\" | \"cat\" | \"fish\";}\n",
+          "test_output": "model Pet {\n  name: string;\n  age: int32;\n  kind: \"dog\" | \"cat\" | \"fish\";\n}\n"
+        }
+      ]
+    }
+  },
+  "description": "CLI for managing TypeSpec configurations",
+  "homepage": "https://github.com/microsoft/typespec",
+  "languages": ["typespec"],
+  "packages": {}
+}

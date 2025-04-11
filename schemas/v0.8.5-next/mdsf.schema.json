@@ -1575,6 +1575,11 @@
           "enum": ["ts-standard"]
         },
         {
+          "description": "Format TypeSpec files\n\n[https://github.com/microsoft/typespec](https://github.com/microsoft/typespec)\n\n`tsp format $PATH`",
+          "type": "string",
+          "enum": ["tsp:format"]
+        },
+        {
           "description": "Configurable linting for TSQL\n\n[https://github.com/tsqllint/tsqllint](https://github.com/tsqllint/tsqllint)\n\n`tsqllint --fix $PATH`",
           "type": "string",
           "enum": ["tsqllint"]

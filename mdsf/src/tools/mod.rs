@@ -296,6 +296,7 @@ pub mod toml_sort;
 pub mod topiary;
 pub mod tryceratops;
 pub mod ts_standard;
+pub mod tsp_format;
 pub mod tsqllint;
 pub mod twig_cs_fixer_lint;
 pub mod twigcs;
@@ -2693,6 +2694,14 @@ pub enum Tooling {
     /// `ts-standard --fix $PATH`
     TsStandard,
 
+    #[serde(rename = "tsp:format")]
+    /// Format TypeSpec files
+    ///
+    /// [https://github.com/microsoft/typespec](https://github.com/microsoft/typespec)
+    ///
+    /// `tsp format $PATH`
+    TspFormat,
+
     #[serde(rename = "tsqllint")]
     /// Configurable linting for TSQL
     ///
@@ -3932,6 +3941,11 @@ impl Tooling {
                 ts_standard::set_args,
                 ts_standard::IS_STDIN,
             ),
+            Self::TspFormat => (
+                &tsp_format::COMMANDS,
+                tsp_format::set_args,
+                tsp_format::IS_STDIN,
+            ),
             Self::Tsqllint => (&tsqllint::COMMANDS, tsqllint::set_args, tsqllint::IS_STDIN),
             Self::TwigCsFixerLint => (
                 &twig_cs_fixer_lint::COMMANDS,
@@ -4311,6 +4325,7 @@ impl AsRef<str> for Tooling {
             Self::Topiary => "topiary",
             Self::Tryceratops => "tryceratops",
             Self::TsStandard => "ts-standard",
+            Self::TspFormat => "tsp:format",
             Self::Tsqllint => "tsqllint",
             Self::TwigCsFixerLint => "twig-cs-fixer:lint",
             Self::Twigcs => "twigcs",
@@ -4700,6 +4715,7 @@ mod test_tooling {
         assert_eq!(Tooling::Topiary, reverse(Tooling::Topiary)?);
         assert_eq!(Tooling::Tryceratops, reverse(Tooling::Tryceratops)?);
         assert_eq!(Tooling::TsStandard, reverse(Tooling::TsStandard)?);
+        assert_eq!(Tooling::TspFormat, reverse(Tooling::TspFormat)?);
         assert_eq!(Tooling::Tsqllint, reverse(Tooling::Tsqllint)?);
         assert_eq!(Tooling::TwigCsFixerLint, reverse(Tooling::TwigCsFixerLint)?);
         assert_eq!(Tooling::Twigcs, reverse(Tooling::Twigcs)?);
