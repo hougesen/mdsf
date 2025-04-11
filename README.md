@@ -398,7 +398,7 @@ Options:
 
 <!-- START_SECTION:supported-tools -->
 
-`mdsf` currently supports 297 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 298 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                                                                                 | Description                                                                                                                                   | Categories            | Languages                                                                                                                         |
 | ------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
@@ -668,6 +668,7 @@ Options:
 | [topiary](https://github.com/tweag/topiary)                                          | Topiary aims to be a uniform formatter for simple languages, as part of the Tree-sitter ecosystem                                             | `formatter`           |                                                                                                                                   |
 | [tryceratops](https://github.com/guilatrova/tryceratops)                             | A linter to prevent exception handling antipatterns in Python                                                                                 | `linter`              | `python`                                                                                                                          |
 | [ts-standard](https://github.com/standard/ts-standard)                               | Typescript style guide, linter, and formatter using StandardJS                                                                                | `formatter`, `linter` | `typescript`                                                                                                                      |
+| [tsp](https://github.com/microsoft/typespec)                                         | CLI for managing TypeSpec configurations                                                                                                      | `formatter`           | `typespec`                                                                                                                        |
 | [tsqllint](https://github.com/tsqllint/tsqllint)                                     | Configurable linting for TSQL                                                                                                                 | `linter`              | `sql`                                                                                                                             |
 | [twig-cs-fixer](https://github.com/vincentlanglet/twig-cs-fixer)                     | A tool to automatically fix Twig Coding Standards issues                                                                                      | `formatter`, `linter` | `twig`                                                                                                                            |
 | [twigcs](https://github.com/friendsoftwig/twigcs)                                    | The missing checkstyle for twig                                                                                                               | `linter`              | `php`, `twig`                                                                                                                     |
@@ -706,7 +707,7 @@ Options:
 
 <!-- START_SECTION:supported-commands -->
 
-`mdsf` currently supports 328 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 329 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                         | Command                                                                                 |
 | ---------------------------- | --------------------------------------------------------------------------------------- |
@@ -1005,6 +1006,7 @@ Options:
 | `topiary`                    | `topiary format $PATH`                                                                  |
 | `tryceratops`                | `tryceratops --autofix $PATH`                                                           |
 | `ts-standard`                | `ts-standard --fix $PATH`                                                               |
+| `tsp:format`                 | `tsp format $PATH`                                                                      |
 | `tsqllint`                   | `tsqllint --fix $PATH`                                                                  |
 | `twig-cs-fixer:lint`         | `twig-cs-fixer lint $PATH --fix --no-interaction --quiet`                               |
 | `twigcs`                     | `twigcs $PATH`                                                                          |
