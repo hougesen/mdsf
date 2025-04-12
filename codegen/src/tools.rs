@@ -379,21 +379,7 @@ impl Tool {
 
 {INDENT}{INDENT}let file_ext = crate::fttype::get_file_extension(\"{test_language}\");
 
-{INDENT}{INDENT}let snippet =
-{INDENT}{INDENT}{INDENT}crate::execution::setup_snippet(input, &file_ext).expect(\"it to create a snippet file\");
-
-{INDENT}{INDENT}let result = crate::tools::Tooling::{enum_value}
-{INDENT}{INDENT}{INDENT}.format_snippet(
-{INDENT}{INDENT}{INDENT}{INDENT}snippet.path(),
-{INDENT}{INDENT}{INDENT}{INDENT}crate::testing::DEFAULT_TEST_FORMATTER_TIMEOUT,
-{INDENT}{INDENT}{INDENT}{INDENT}crate::testing::DEFAULT_TEST_DEBUG_ENABLED,
-{INDENT}{INDENT}{INDENT}{INDENT}&crate::config::MdsfConfigRunners::all(),
-{INDENT}{INDENT}{INDENT})
-{INDENT}{INDENT}{INDENT}.expect(\"it to be successful\")
-{INDENT}{INDENT}{INDENT}.1
-{INDENT}{INDENT}{INDENT}.expect(\"it to be some\");
-
-{INDENT}{INDENT}assert_eq!(result, output);
+{INDENT}{INDENT}crate::tools::Tooling::{enum_value}.test_format_snippet(input, output, &file_ext);
 {INDENT}}}",
         );
 
