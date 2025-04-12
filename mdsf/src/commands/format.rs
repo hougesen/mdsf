@@ -69,7 +69,7 @@ pub fn run(args: FormatCommandArguments, dry_run: bool) -> Result<(), MdsfError>
             &stdin_input,
             args.timeout.unwrap_or_default(),
             args.debug,
-            args.error_on_tool_missing,
+            args.error_on_missing_tool,
         );
 
         if was_formatted {
@@ -118,7 +118,7 @@ pub fn run(args: FormatCommandArguments, dry_run: bool) -> Result<(), MdsfError>
                         config_hash_clone,
                         args.timeout.unwrap_or_default(),
                         args.debug,
-                        args.error_on_tool_missing,
+                        args.error_on_missing_tool,
                     );
 
                     if was_formatted {

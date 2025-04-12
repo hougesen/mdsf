@@ -180,7 +180,7 @@ Options:
 
           Defaults to no timeout
 
-      --error-on-tool-missing
+      --error-on-missing-tool
           Fail fast if a defined tool is missing
 
   -h, --help
@@ -258,7 +258,7 @@ Options:
 
           Defaults to no timeout
 
-      --error-on-tool-missing
+      --error-on-missing-tool
           Fail fast if a defined tool is missing
 
       --log-level <LOG_LEVEL>

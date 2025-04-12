@@ -74,7 +74,7 @@ pub struct FormatCommandArguments {
 
     /// Fail fast if a defined tool is missing
     #[arg(long, default_value_t = false)]
-    pub error_on_tool_missing: bool,
+    pub error_on_missing_tool: bool,
 }
 
 #[derive(Args, Debug)]
@@ -109,7 +109,7 @@ pub struct VerifyCommandArguments {
 
     /// Fail fast if a defined tool is missing
     #[arg(long, default_value_t = false)]
-    pub error_on_tool_missing: bool,
+    pub error_on_missing_tool: bool,
 }
 
 impl From<VerifyCommandArguments> for FormatCommandArguments {
@@ -119,7 +119,7 @@ impl From<VerifyCommandArguments> for FormatCommandArguments {
             cache: false,
             config: value.config,
             debug: value.debug,
-            error_on_tool_missing: value.error_on_tool_missing,
+            error_on_missing_tool: value.error_on_missing_tool,
             input: value.input,
             stdin: value.stdin,
             threads: value.threads,
