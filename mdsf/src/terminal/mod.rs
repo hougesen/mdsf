@@ -11,9 +11,9 @@ pub fn print_error(error: &MdsfError) {
 }
 
 #[inline]
-pub fn print_formatter_info(formatter: &str, info: &LineInfo) {
+pub fn print_tool_info(tool: &str, info: &LineInfo) {
     debug!(
-        "{}:{} to :{} {} block using {formatter}",
+        "{}:{} to :{} {} block using {tool}",
         info.filename.display(),
         info.start,
         info.end,
@@ -22,9 +22,9 @@ pub fn print_formatter_info(formatter: &str, info: &LineInfo) {
 }
 
 #[inline]
-pub fn print_formatter_time(formatter: &str, info: &LineInfo, duration: core::time::Duration) {
+pub fn print_tool_time(tool: &str, info: &LineInfo, duration: core::time::Duration) {
     trace!(
-        "{}:{} to :{} {} took {}ms to format using {formatter}",
+        "{}:{} to :{} {} took {}ms to run using {tool}",
         info.filename.display(),
         info.start,
         info.end,
@@ -73,9 +73,9 @@ pub fn print_binary_not_in_path(path: &std::path::Path, binary_name: &str) {
 }
 
 #[inline]
-pub fn print_error_formatting(formatter_name: &str, info: &LineInfo, stderr: &str) {
+pub fn print_error_running_tool(tool_name: &str, info: &LineInfo, stderr: &str) {
     warn!(
-        "{}:{} to :{} error formatting using {formatter_name}{}",
+        "{}:{} to :{} error running {tool_name}{}",
         info.filename.display(),
         info.start,
         info.end,
@@ -86,7 +86,7 @@ pub fn print_error_formatting(formatter_name: &str, info: &LineInfo, stderr: &st
 #[inline]
 pub fn warn_unknown_language(language_name: &str, filename: &std::path::Path) {
     warn!(
-        "{} no formatter configured for '{language_name}'",
+        "{} no tool configured for '{language_name}'",
         filename.display()
     );
 }

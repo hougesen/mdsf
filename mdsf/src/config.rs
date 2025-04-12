@@ -107,7 +107,7 @@ pub struct MdsfConfig {
     #[serde(default, skip_serializing_if = "std::collections::BTreeMap::is_empty")]
     pub custom_file_extensions: std::collections::BTreeMap<String, String>,
 
-    /// Format the processed document with the selected markdown formatter.
+    /// Run the selected markdown tools on the finished output.
     ///
     /// Default: `false`
     #[serde(default, skip_serializing_if = "is_false")]
@@ -125,14 +125,24 @@ pub struct MdsfConfig {
     #[serde(default, skip_serializing_if = "std::collections::BTreeMap::is_empty")]
     pub language_aliases: std::collections::BTreeMap<String, String>,
 
-    ///  Defines which formatter is used by the language.
+    ///  Defines which tools are used by the language.
     ///
     /// ```json
     /// {
-    ///   "languages": {
-    ///     "rust": "rustfmt",
-    ///     "js": "prettier"
-    ///   }
+    ///     "languages": {
+    ///       // Only run `ruff` on Python snippets,
+    ///       "python": "ruff:format",
+    ///       // Run `usort` on file and then `black`
+    ///       "python": ["usort", "black"],
+    ///       // Run `usort`, if that fails run `isort`, finally run `black`
+    ///       "python": [["usort", "isort"], "black"],
+    ///
+    ///       // Tools listed under "*" will be run on any snippet.
+    ///       "*": ["typos"],
+    ///
+    ///       // Tools  listed under "_" will only be run when there is not tool configured for the file type OR globally ("*").
+    ///       "_": "prettier"
+    ///     }
     /// }
     /// ```
     #[serde(default)]
@@ -186,8 +196,6 @@ impl MdsfConfig {
 
     #[inline]
     pub fn setup_language_aliases(&mut self) -> Result<(), MdsfError> {
-        // TODO: reduce the amount of cloning
-
         if !self.language_aliases.is_empty() {
             let mut seen_languages: std::collections::HashMap<String, String> =
                 std::collections::HashMap::new();

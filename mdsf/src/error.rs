@@ -13,7 +13,6 @@ pub enum MdsfError {
     ConfigNotFound(std::path::PathBuf),
     // TODO: use &std::path::Path
     ConfigParse(std::path::PathBuf),
-    FormatterError(String),
     Io(std::io::Error),
     /// Another alias clashes
     LanguageAliasClash(String, String, String),
@@ -27,6 +26,7 @@ pub enum MdsfError {
     ReadStdinError(std::io::Error),
     SerializeConfig(serde_json::Error),
     StdinWriteError,
+    ToolError(String),
 }
 
 impl core::error::Error for MdsfError {}
@@ -44,15 +44,6 @@ impl core::fmt::Display for MdsfError {
             Self::ConfigNotFound(path) => write!(f, "No config found at: '{}'", path.display()),
             Self::ConfigParse(path) => {
                 write!(f, "Error parsing config found at '{}'", path.display())
-            }
-            Self::FormatterError(stderr) => {
-                let trimmed_stderr = stderr.trim();
-
-                if trimmed_stderr.is_empty() {
-                    write!(f, "Error formatting codeblock")
-                } else {
-                    write!(f, "Error formatting codeblock\n{trimmed_stderr}")
-                }
             }
             Self::Io(e) => e.fmt(f),
             Self::LanguageAliasClash(language, alias, already_set_by) => {
@@ -74,6 +65,15 @@ impl core::fmt::Display for MdsfError {
             Self::ReadStdinError(error) => write!(f, "Error reading from stdin: {error}"),
             Self::SerializeConfig(e) => write!(f, "Error serializing config: {e}"),
             Self::StdinWriteError => write!(f, "Error writing to stdin"),
+            Self::ToolError(stderr) => {
+                let trimmed_stderr = stderr.trim();
+
+                if trimmed_stderr.is_empty() {
+                    write!(f, "Error running tool on codeblock")
+                } else {
+                    write!(f, "Error running tool on codeblock\n{trimmed_stderr}")
+                }
+            }
         }
     }
 }

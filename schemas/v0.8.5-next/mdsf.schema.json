@@ -15,7 +15,7 @@
       }
     },
     "format_finished_document": {
-      "description": "Format the processed document with the selected markdown formatter.\n\nDefault: `false`",
+      "description": "Run the selected markdown tools on the finished output.\n\nDefault: `false`",
       "type": "boolean"
     },
     "language_aliases": {
@@ -26,7 +26,7 @@
       }
     },
     "languages": {
-      "description": "Defines which formatter is used by the language.\n\n```json { \"languages\": { \"rust\": \"rustfmt\", \"js\": \"prettier\" } } ```",
+      "description": "Defines which tools are used by the language.\n\n```json { \"languages\": { // Only run `ruff` on Python snippets, \"python\": \"ruff:format\", // Run `usort` on file and then `black` \"python\": [\"usort\", \"black\"], // Run `usort`, if that fails run `isort`, finally run `black` \"python\": [[\"usort\", \"isort\"], \"black\"],\n\n// Tools listed under \"*\" will be run on any snippet. \"*\": [\"typos\"],\n\n// Tools  listed under \"_\" will only be run when there is not tool configured for the file type OR globally (\"*\"). \"_\": \"prettier\" } } ```",
       "default": {},
       "type": "object",
       "additionalProperties": {

@@ -12,8 +12,7 @@ use crate::{
     get_project_dir,
     runners::CommandType,
     terminal::{
-        print_binary_not_in_path, print_error_formatting, print_formatter_info,
-        print_formatter_time,
+        print_binary_not_in_path, print_error_running_tool, print_tool_info, print_tool_time,
     },
     tools::Tooling,
 };
@@ -78,7 +77,7 @@ fn handle_post_execution(
                         .map_err(MdsfError::from)
                 }
             } else {
-                Err(MdsfError::FormatterError(
+                Err(MdsfError::ToolError(
                     String::from_utf8_lossy(&output.stderr).to_string(),
                 ))
             }
@@ -312,16 +311,16 @@ impl MdsfFormatter<Tooling> {
             Self::Single(f) => {
                 let formatter_name: &str = f.as_ref();
 
-                print_formatter_info(formatter_name, info);
+                print_tool_info(formatter_name, info);
 
                 let time = std::time::Instant::now();
 
                 let r = f.format_snippet(snippet_path, timeout, debug_enabled, config_runners);
 
-                print_formatter_time(formatter_name, info, time.elapsed());
+                print_tool_time(formatter_name, info, time.elapsed());
 
-                if let Err(MdsfError::FormatterError(stderr)) = r {
-                    print_error_formatting(formatter_name, info, &stderr);
+                if let Err(MdsfError::ToolError(stderr)) = r {
+                    print_error_running_tool(formatter_name, info, &stderr);
 
                     Ok((false, None))
                 } else if let Err(MdsfError::MissingBinary(binary)) = r {
