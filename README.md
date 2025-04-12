@@ -183,7 +183,7 @@ Options:
       --on-missing-tool-binary <ON_MISSING_TOOL_BINARY>
           What to do when the binary of a tool cannot be found
 
-          [possible values: allow, continue, fail-fast]
+          [possible values: ignore, fail, fail-fast]
 
   -h, --help
           Print help (see a summary with '-h')
@@ -266,7 +266,7 @@ Options:
       --on-missing-tool-binary <ON_MISSING_TOOL_BINARY>
           What to do when the binary of a tool cannot be found
 
-          [possible values: allow, continue, fail-fast]
+          [possible values: ignore, fail, fail-fast]
 
   -h, --help
           Print help (see a summary with '-h')

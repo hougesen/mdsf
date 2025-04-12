@@ -333,12 +333,12 @@ impl MdsfFormatter<Tooling> {
                     };
 
                     match on_missing_tool_binary {
-                        OnMissingToolBinary::Allow => {
+                        OnMissingToolBinary::Ignore => {
                             print_binary_not_in_path(snippet_path, &pretty_bin, false);
 
                             Ok((false, None))
                         }
-                        OnMissingToolBinary::Continue => {
+                        OnMissingToolBinary::Fail => {
                             print_binary_not_in_path(snippet_path, &pretty_bin, true);
 
                             set_exit_code_error();

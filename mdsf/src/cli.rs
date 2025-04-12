@@ -45,12 +45,12 @@ pub enum Commands {
 pub enum OnMissingToolBinary {
     /// Allow missing binaries.
     #[default]
-    #[serde(rename = "allow")]
-    Allow,
+    #[serde(rename = "ignore")]
+    Ignore,
 
     /// Exit with status code 1 when finished.
-    #[serde(rename = "continue")]
-    Continue,
+    #[serde(rename = "fail")]
+    Fail,
 
     /// Instantly exit with status code 1.
     #[serde(rename = "fail-fast")]
@@ -60,14 +60,14 @@ pub enum OnMissingToolBinary {
 impl clap::ValueEnum for OnMissingToolBinary {
     #[inline]
     fn value_variants<'a>() -> &'a [Self] {
-        &[Self::Allow, Self::Continue, Self::FailFast]
+        &[Self::Ignore, Self::Fail, Self::FailFast]
     }
 
     #[inline]
     fn to_possible_value(&self) -> Option<clap::builder::PossibleValue> {
         Some(match self {
-            Self::Allow => clap::builder::PossibleValue::new("allow"),
-            Self::Continue => clap::builder::PossibleValue::new("continue"),
+            Self::Ignore => clap::builder::PossibleValue::new("ignore"),
+            Self::Fail => clap::builder::PossibleValue::new("fail"),
             Self::FailFast => clap::builder::PossibleValue::new("fail-fast"),
         })
     }

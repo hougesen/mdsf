@@ -113,12 +113,12 @@
         {
           "description": "Allow missing binaries.",
           "type": "string",
-          "enum": ["allow"]
+          "enum": ["ignore"]
         },
         {
           "description": "Exit with status code 1 when finished.",
           "type": "string",
-          "enum": ["continue"]
+          "enum": ["fail"]
         },
         {
           "description": "Instantly exit with status code 1.",
