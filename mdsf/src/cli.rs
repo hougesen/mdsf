@@ -38,21 +38,56 @@ pub enum Commands {
     CachePrune,
 }
 
+#[derive(
+    Clone, Copy, PartialEq, Eq, Debug, Default, serde::Serialize, serde::Deserialize, Hash,
+)]
+#[cfg_attr(feature = "json-schema", derive(schemars::JsonSchema))]
+pub enum OnMissingToolBinary {
+    /// Allow missing binaries.
+    #[default]
+    #[serde(rename = "ignore")]
+    Ignore,
+
+    /// Exit with status code 1 when finished.
+    #[serde(rename = "fail")]
+    Fail,
+
+    /// Instantly exit with status code 1.
+    #[serde(rename = "fail-fast")]
+    FailFast,
+}
+
+impl clap::ValueEnum for OnMissingToolBinary {
+    #[inline]
+    fn value_variants<'a>() -> &'a [Self] {
+        &[Self::Ignore, Self::Fail, Self::FailFast]
+    }
+
+    #[inline]
+    fn to_possible_value(&self) -> Option<clap::builder::PossibleValue> {
+        Some(match self {
+            Self::Ignore => clap::builder::PossibleValue::new("ignore"),
+            Self::Fail => clap::builder::PossibleValue::new("fail"),
+            Self::FailFast => clap::builder::PossibleValue::new("fail-fast"),
+        })
+    }
+}
+
 #[derive(Args, Debug)]
 pub struct FormatCommandArguments {
     /// Path to files and/or directories.
     #[arg()]
     pub input: Vec<std::path::PathBuf>,
 
-    /// Read input from stdin and write output to stdout
+    /// Read input from stdin and write output to stdout.
     #[arg(long, default_value_t = false)]
     pub stdin: bool,
 
-    /// Path to config
+    /// Path to config file.
     #[arg(long)]
     pub config: Option<std::path::PathBuf>,
 
-    /// Log stdout and stderr of formatters
+    /// Log stdout and stderr of formatters.
     #[arg(long, default_value_t = false)]
     pub debug: bool,
 
@@ -66,11 +101,15 @@ pub struct FormatCommandArguments {
     #[arg(long, default_value_t = false)]
     pub cache: bool,
 
-    /// Tool timeout in seconds
+    /// Tool timeout in seconds.
     ///
-    /// Defaults to no timeout
+    /// Defaults to no timeout.
     #[arg(long)]
     pub timeout: Option<u64>,
+
+    /// What to do when the binary of a tool cannot be found.
+    #[arg(long)]
+    pub on_missing_tool_binary: Option<OnMissingToolBinary>,
 }
 
 #[derive(Args, Debug)]
@@ -79,15 +118,15 @@ pub struct VerifyCommandArguments {
     #[arg()]
     pub input: Vec<std::path::PathBuf>,
 
-    /// Read input from stdin and write output to stdout
+    /// Read input from stdin and write output to stdout.
     #[arg(long, default_value_t = false)]
     pub stdin: bool,
 
-    /// Path to config
+    /// Path to config file.
     #[arg(long)]
     pub config: Option<std::path::PathBuf>,
 
-    /// Log stdout and stderr of formatters
+    /// Log stdout and stderr of formatters.
     #[arg(long, default_value_t = false)]
     pub debug: bool,
 
@@ -97,11 +136,15 @@ pub struct VerifyCommandArguments {
     #[arg(long)]
     pub threads: Option<usize>,
 
-    /// Tool timeout in seconds
+    /// Tool timeout in seconds.
     ///
-    /// Defaults to no timeout
+    /// Defaults to no timeout.
     #[arg(long)]
     pub timeout: Option<u64>,
+
+    /// What to do when the binary of a tool cannot be found.
+    #[arg(long)]
+    pub on_missing_tool_binary: Option<OnMissingToolBinary>,
 }
 
 impl From<VerifyCommandArguments> for FormatCommandArguments {
@@ -111,6 +154,7 @@ impl From<VerifyCommandArguments> for FormatCommandArguments {
             cache: false,
             config: value.config,
             debug: value.debug,
+            on_missing_tool_binary: value.on_missing_tool_binary,
             input: value.input,
             stdin: value.stdin,
             threads: value.threads,
@@ -121,7 +165,7 @@ impl From<VerifyCommandArguments> for FormatCommandArguments {
 
 #[derive(Args, Debug)]
 pub struct InitCommandArguments {
-    /// Create config even if one already exists in current directory
+    /// Create config even if one already exists in current directory.
     #[arg(long, default_value_t = false)]
     pub force: bool,
 }
@@ -139,22 +183,22 @@ pub enum LogLevel {
 
 #[derive(Clone, Copy, PartialEq, Eq, Debug, Hash)]
 pub enum Shell {
-    /// Bourne Again `SHell` (bash)
+    /// Bourne Again `SHell` (bash).
     Bash,
 
-    /// Elvish shell (elvish)
+    /// Elvish shell (elvish).
     Elvish,
 
-    /// Friendly Interactive `SHell` (fish)
+    /// Friendly Interactive `SHell` (fish).
     Fish,
 
-    /// `Nushell` (nushell)
+    /// `Nushell` (nushell).
     Nushell,
 
-    /// `PowerShell` (powershell)
+    /// `PowerShell` (powershell).
     PowerShell,
 
-    /// Z `SHell` (zsh)
+    /// Z `SHell` (zsh).
     Zsh,
 }
 

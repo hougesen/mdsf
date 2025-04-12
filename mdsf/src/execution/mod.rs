@@ -6,14 +6,14 @@ use which::which;
 
 use crate::{
     LineInfo,
+    cli::OnMissingToolBinary,
     config::{MdsfConfig, MdsfConfigRunners},
-    error::MdsfError,
+    error::{MdsfError, exit_with_error, set_exit_code_error},
     fttype::get_file_extension,
     get_project_dir,
     runners::CommandType,
     terminal::{
-        print_binary_not_in_path, print_error_formatting, print_formatter_info,
-        print_formatter_time,
+        print_binary_not_in_path, print_error_running_tool, print_tool_info, print_tool_time,
     },
     tools::Tooling,
 };
@@ -78,7 +78,7 @@ fn handle_post_execution(
                         .map_err(MdsfError::from)
                 }
             } else {
-                Err(MdsfError::FormatterError(
+                Err(MdsfError::ToolError(
                     String::from_utf8_lossy(&output.stderr).to_string(),
                 ))
             }
@@ -170,6 +170,7 @@ pub fn format_snippet(
     code: &str,
     timeout: u64,
     debug_enabled: bool,
+    on_missing_tool_binary: OnMissingToolBinary,
 ) -> String {
     let always_ran = config.languages.get("*");
 
@@ -194,9 +195,18 @@ pub fn format_snippet(
             let snippet_path = snippet.path();
 
             if let Some(formatters) = always_ran {
-                if let Ok(Some(formatted_code)) =
-                    formatters.format(snippet_path, info, timeout, debug_enabled, &config.runners)
-                {
+                let result = formatters.format(
+                    snippet_path,
+                    info,
+                    timeout,
+                    debug_enabled,
+                    &config.runners,
+                    on_missing_tool_binary,
+                );
+
+                if let Err(MdsfError::MissingBinary(binary)) = result {
+                    exit_with_error(&MdsfError::MissingBinary(binary));
+                } else if let Ok(Some(formatted_code)) = result {
                     if language_formatters.is_none() {
                         let mut f = formatted_code.trim().to_owned();
 
@@ -208,9 +218,18 @@ pub fn format_snippet(
             }
 
             if let Some(formatters) = language_formatters {
-                if let Ok(Some(formatted_code)) =
-                    formatters.format(snippet_path, info, timeout, debug_enabled, &config.runners)
-                {
+                let result = formatters.format(
+                    snippet_path,
+                    info,
+                    timeout,
+                    debug_enabled,
+                    &config.runners,
+                    on_missing_tool_binary,
+                );
+
+                if let Err(MdsfError::MissingBinary(binary)) = result {
+                    exit_with_error(&MdsfError::MissingBinary(binary));
+                } else if let Ok(Some(formatted_code)) = result {
                     let mut f = formatted_code.trim().to_owned();
 
                     f.push('\n');
@@ -263,6 +282,7 @@ impl MdsfFormatter<Tooling> {
         timeout: u64,
         debug_enabled: bool,
         config_runners: &MdsfConfigRunners,
+        on_missing_tool_binary: OnMissingToolBinary,
     ) -> Result<Option<String>, MdsfError> {
         Self::format_multiple(
             self,
@@ -272,10 +292,12 @@ impl MdsfFormatter<Tooling> {
             timeout,
             debug_enabled,
             config_runners,
+            on_missing_tool_binary,
         )
         .map(|(_should_continue, output)| output)
     }
 
+    #[allow(clippy::too_many_arguments)]
     #[inline]
     pub fn format_multiple(
         formatter: &Self,
@@ -285,40 +307,49 @@ impl MdsfFormatter<Tooling> {
         timeout: u64,
         debug_enabled: bool,
         config_runners: &MdsfConfigRunners,
+        on_missing_tool_binary: OnMissingToolBinary,
     ) -> Result<(bool, Option<String>), MdsfError> {
         match formatter {
             Self::Single(f) => {
                 let formatter_name: &str = f.as_ref();
 
-                print_formatter_info(formatter_name, info);
+                print_tool_info(formatter_name, info);
 
                 let time = std::time::Instant::now();
 
                 let r = f.format_snippet(snippet_path, timeout, debug_enabled, config_runners);
 
-                print_formatter_time(formatter_name, info, time.elapsed());
+                print_tool_time(formatter_name, info, time.elapsed());
 
-                if let Err(e) = &r {
-                    if let MdsfError::MissingBinary(binary) = e {
-                        print_binary_not_in_path(
-                            info.filename,
-                            if formatter_name == binary {
-                                formatter_name.to_string()
-                            } else {
-                                format!("{binary} ({formatter_name})")
-                            }
-                            .as_str(),
-                        );
+                if let Err(MdsfError::ToolError(stderr)) = r {
+                    print_error_running_tool(formatter_name, info, &stderr);
 
-                        return Ok((false, None));
-                    } else if let MdsfError::FormatterError(stderr) = e {
-                        print_error_formatting(formatter_name, info, stderr);
+                    Ok((false, None))
+                } else if let Err(MdsfError::MissingBinary(binary)) = r {
+                    let pretty_bin = if formatter_name == binary {
+                        binary
+                    } else {
+                        format!("{binary} ({formatter_name})")
+                    };
 
-                        return Ok((false, None));
+                    match on_missing_tool_binary {
+                        OnMissingToolBinary::Ignore => {
+                            print_binary_not_in_path(snippet_path, &pretty_bin, false);
+
+                            Ok((false, None))
+                        }
+                        OnMissingToolBinary::Fail => {
+                            print_binary_not_in_path(snippet_path, &pretty_bin, true);
+
+                            set_exit_code_error();
+
+                            Ok((false, None))
+                        }
+                        OnMissingToolBinary::FailFast => Err(MdsfError::MissingBinary(pretty_bin)),
                     }
+                } else {
+                    r
                 }
-
-                r
             }
 
             Self::Multiple(formatters) => {
@@ -333,6 +364,7 @@ impl MdsfFormatter<Tooling> {
                         timeout,
                         debug_enabled,
                         config_runners,
+                        on_missing_tool_binary,
                     );
 
                     if r.as_ref()

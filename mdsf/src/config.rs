@@ -1,6 +1,9 @@
 use json_comments::{CommentSettings, StripComments};
 
-use crate::{error::MdsfError, execution::MdsfFormatter, languages::default_tools, tools::Tooling};
+use crate::{
+    cli::OnMissingToolBinary, error::MdsfError, execution::MdsfFormatter, languages::default_tools,
+    tools::Tooling,
+};
 
 #[allow(clippy::trivially_copy_pass_by_ref)]
 #[inline]
@@ -13,38 +16,56 @@ const fn is_false(b: &bool) -> bool {
 #[cfg_attr(feature = "json-schema", derive(schemars::JsonSchema))]
 pub struct MdsfConfigRunners {
     /// Whether to support running npm packages using `bunx $PACKAGE_NAME`
+    ///
+    /// Default: `false`
     #[serde(default, skip_serializing_if = "is_false")]
     pub bunx: bool,
 
     /// Whether to support running npm packages using `deno run -A npm:$PACKAGE_NAME`
+    ///
+    /// Default: `false`
     #[serde(default, skip_serializing_if = "is_false")]
     pub deno: bool,
 
     /// Whether to support running dub packages using `dub run $PACKAGE_NAME`
+    ///
+    /// Default: `false`
     #[serde(default, skip_serializing_if = "is_false")]
     pub dub: bool,
 
     /// Whether to support running ruby packages using `gem exec $PACKAGE_NAME`
+    ///
+    /// Default: `false`
     #[serde(default, skip_serializing_if = "is_false")]
     pub gem_exec: bool,
 
     /// Whether to support running npm packages using `npx $PACKAGE_NAME`
+    ///
+    /// Default: `false`
     #[serde(default, skip_serializing_if = "is_false")]
     pub npx: bool,
 
     /// Whether to support running pypi packages using `pipx run $PACKAGE_NAME`
+    ///
+    /// Default: `false`
     #[serde(default, skip_serializing_if = "is_false")]
     pub pipx: bool,
 
     /// Whether to support running npm packages using `pnpm dlx $PACKAGE_NAME`
+    ///
+    /// Default: `false`
     #[serde(default, skip_serializing_if = "is_false")]
     pub pnpm: bool,
 
     /// Whether to support running pypi packages using `uv tool run $PACKAGE_NAME`
+    ///
+    /// Default: `false`
     #[serde(default, skip_serializing_if = "is_false")]
     pub uv: bool,
 
     /// Whether to support running npm packages using `yarn dlx $PACKAGE_NAME`
+    ///
+    /// Default: `false`
     #[serde(default, skip_serializing_if = "is_false")]
     pub yarn: bool,
 }
@@ -78,6 +99,7 @@ pub struct MdsfConfig {
     pub schema: String,
 
     /// Used for settings custom file extensions for a given language.
+    ///
     /// ```json
     /// {
     ///   "custom_file_extensions": {
@@ -88,11 +110,13 @@ pub struct MdsfConfig {
     #[serde(default, skip_serializing_if = "std::collections::BTreeMap::is_empty")]
     pub custom_file_extensions: std::collections::BTreeMap<String, String>,
 
-    /// Format the processed document with the selected markdown formatter.
+    /// Run the selected markdown tools on the finished output.
+    ///
+    /// Default: `false`
     #[serde(default, skip_serializing_if = "is_false")]
     pub format_finished_document: bool,
 
-    /// Aliases for tools
+    /// Aliases for tools.
     ///
     /// ```json
     /// {
@@ -104,17 +128,32 @@ pub struct MdsfConfig {
     #[serde(default, skip_serializing_if = "std::collections::BTreeMap::is_empty")]
     pub language_aliases: std::collections::BTreeMap<String, String>,
 
-    ///  Defines which formatter is used by the language.
+    ///  Defines which tools are used by the language.
+    ///
     /// ```json
     /// {
-    ///   "languages": {
-    ///     "rust": "rustfmt",
-    ///     "js": "prettier"
-    ///   }
+    ///     "languages": {
+    ///       // Only run `ruff` on Python snippets,
+    ///       "python": "ruff:format",
+    ///       // Run `usort` on file and then `black`
+    ///       "python": ["usort", "black"],
+    ///       // Run `usort`, if that fails run `isort`, finally run `black`
+    ///       "python": [["usort", "isort"], "black"],
+    ///
+    ///       // Tools listed under "*" will be run on any snippet.
+    ///       "*": ["typos"],
+    ///
+    ///       // Tools  listed under "_" will only be run when there is not tool configured for the file type OR globally ("*").
+    ///       "_": "prettier"
+    ///     }
     /// }
     /// ```
     #[serde(default)]
     pub languages: std::collections::BTreeMap<String, MdsfFormatter<Tooling>>,
+
+    /// What to do when the binary of a tool cannot be found.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub on_missing_tool_binary: Option<OnMissingToolBinary>,
 
     /// List of package registry script runners that should be enabled.
     ///
@@ -132,6 +171,7 @@ impl Default for MdsfConfig {
             format_finished_document: false,
             language_aliases: std::collections::BTreeMap::default(),
             languages: default_tools(),
+            on_missing_tool_binary: None,
             runners: MdsfConfigRunners::default(),
         }
     }
@@ -164,8 +204,6 @@ impl MdsfConfig {
 
     #[inline]
     pub fn setup_language_aliases(&mut self) -> Result<(), MdsfError> {
-        // TODO: reduce the amount of cloning
-
         if !self.language_aliases.is_empty() {
             let mut seen_languages: std::collections::HashMap<String, String> =
                 std::collections::HashMap::new();

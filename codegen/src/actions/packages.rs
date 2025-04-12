@@ -180,6 +180,7 @@ pub fn generate_install_steps(tools: &Vec<Tool>) -> Vec<WorkflowJobsStep> {
                 run: Some(run),
                 uses: None,
                 with: None,
+                continue_on_error: None,
             });
         }
     }

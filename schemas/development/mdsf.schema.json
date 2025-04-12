@@ -8,30 +8,41 @@
       "type": "string"
     },
     "custom_file_extensions": {
-      "description": "Used for settings custom file extensions for a given language. ```json { \"custom_file_extensions\": { \"rust\": \".rust\" } } ```",
+      "description": "Used for settings custom file extensions for a given language.\n\n```json { \"custom_file_extensions\": { \"rust\": \".rust\" } } ```",
       "type": "object",
       "additionalProperties": {
         "type": "string"
       }
     },
     "format_finished_document": {
-      "description": "Format the processed document with the selected markdown formatter.",
+      "description": "Run the selected markdown tools on the finished output.\n\nDefault: `false`",
       "type": "boolean"
     },
     "language_aliases": {
-      "description": "Aliases for tools\n\n```json { \"language_aliases\": { \"language\": \"is_alias_of\" } } ```",
+      "description": "Aliases for tools.\n\n```json { \"language_aliases\": { \"language\": \"is_alias_of\" } } ```",
       "type": "object",
       "additionalProperties": {
         "type": "string"
       }
     },
     "languages": {
-      "description": "Defines which formatter is used by the language. ```json { \"languages\": { \"rust\": \"rustfmt\", \"js\": \"prettier\" } } ```",
+      "description": "Defines which tools are used by the language.\n\n```json { \"languages\": { // Only run `ruff` on Python snippets, \"python\": \"ruff:format\", // Run `usort` on file and then `black` \"python\": [\"usort\", \"black\"], // Run `usort`, if that fails run `isort`, finally run `black` \"python\": [[\"usort\", \"isort\"], \"black\"],\n\n// Tools listed under \"*\" will be run on any snippet. \"*\": [\"typos\"],\n\n// Tools  listed under \"_\" will only be run when there is not tool configured for the file type OR globally (\"*\"). \"_\": \"prettier\" } } ```",
       "default": {},
       "type": "object",
       "additionalProperties": {
         "$ref": "#/definitions/MdsfFormatter_for_Tooling"
       }
+    },
+    "on_missing_tool_binary": {
+      "description": "What to do when the binary of a tool cannot be found.",
+      "anyOf": [
+        {
+          "$ref": "#/definitions/OnMissingToolBinary"
+        },
+        {
+          "type": "null"
+        }
+      ]
     },
     "runners": {
       "description": "List of package registry script runners that should be enabled.\n\nShould be considered experimental since not all tools support being run that way.",
@@ -47,39 +58,39 @@
       "type": "object",
       "properties": {
         "bunx": {
-          "description": "Whether to support running npm packages using `bunx $PACKAGE_NAME`",
+          "description": "Whether to support running npm packages using `bunx $PACKAGE_NAME`\n\nDefault: `false`",
           "type": "boolean"
         },
         "deno": {
-          "description": "Whether to support running npm packages using `deno run -A npm:$PACKAGE_NAME`",
+          "description": "Whether to support running npm packages using `deno run -A npm:$PACKAGE_NAME`\n\nDefault: `false`",
           "type": "boolean"
         },
         "dub": {
-          "description": "Whether to support running dub packages using `dub run $PACKAGE_NAME`",
+          "description": "Whether to support running dub packages using `dub run $PACKAGE_NAME`\n\nDefault: `false`",
           "type": "boolean"
         },
         "gem_exec": {
-          "description": "Whether to support running ruby packages using `gem exec $PACKAGE_NAME`",
+          "description": "Whether to support running ruby packages using `gem exec $PACKAGE_NAME`\n\nDefault: `false`",
           "type": "boolean"
         },
         "npx": {
-          "description": "Whether to support running npm packages using `npx $PACKAGE_NAME`",
+          "description": "Whether to support running npm packages using `npx $PACKAGE_NAME`\n\nDefault: `false`",
           "type": "boolean"
         },
         "pipx": {
-          "description": "Whether to support running pypi packages using `pipx run $PACKAGE_NAME`",
+          "description": "Whether to support running pypi packages using `pipx run $PACKAGE_NAME`\n\nDefault: `false`",
           "type": "boolean"
         },
         "pnpm": {
-          "description": "Whether to support running npm packages using `pnpm dlx $PACKAGE_NAME`",
+          "description": "Whether to support running npm packages using `pnpm dlx $PACKAGE_NAME`\n\nDefault: `false`",
           "type": "boolean"
         },
         "uv": {
-          "description": "Whether to support running pypi packages using `uv tool run $PACKAGE_NAME`",
+          "description": "Whether to support running pypi packages using `uv tool run $PACKAGE_NAME`\n\nDefault: `false`",
           "type": "boolean"
         },
         "yarn": {
-          "description": "Whether to support running npm packages using `yarn dlx $PACKAGE_NAME`",
+          "description": "Whether to support running npm packages using `yarn dlx $PACKAGE_NAME`\n\nDefault: `false`",
           "type": "boolean"
         }
       }
@@ -94,6 +105,25 @@
           "items": {
             "$ref": "#/definitions/MdsfFormatter_for_Tooling"
           }
+        }
+      ]
+    },
+    "OnMissingToolBinary": {
+      "oneOf": [
+        {
+          "description": "Allow missing binaries.",
+          "type": "string",
+          "enum": ["ignore"]
+        },
+        {
+          "description": "Exit with status code 1 when finished.",
+          "type": "string",
+          "enum": ["fail"]
+        },
+        {
+          "description": "Instantly exit with status code 1.",
+          "type": "string",
+          "enum": ["fail-fast"]
         }
       ]
     },

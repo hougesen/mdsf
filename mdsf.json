@@ -9,5 +9,8 @@
     "shell": "shfmt",
     "toml": "taplo",
     "yaml": "prettier"
+  },
+  "runners": {
+    "npx": true
   }
 }

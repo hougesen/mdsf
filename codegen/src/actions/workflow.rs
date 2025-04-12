@@ -36,6 +36,9 @@ pub struct WorkflowJobsStep {
 
     #[serde(skip_serializing_if = "Option::is_none")]
     pub run: Option<String>,
+
+    #[serde(rename = "continue-on-error", skip_serializing_if = "Option::is_none")]
+    pub continue_on_error: Option<bool>,
 }
 
 #[derive(serde::Serialize)]

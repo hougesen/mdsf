@@ -4,6 +4,13 @@ All notable changes to this project will be documented in this file. Dates are d
 
 #### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.8.5...HEAD)
 
+- refactor: abstract Tooling test code [`#955`](https://github.com/hougesen/mdsf/pull/955)
+- build(deps-dev): bump @typescript-eslint/parser in /mdsf-vscode [`#950`](https://github.com/hougesen/mdsf/pull/950)
+- build(deps-dev): bump @vscode/test-electron in /mdsf-vscode [`#952`](https://github.com/hougesen/mdsf/pull/952)
+- build(deps-dev): bump @typescript-eslint/eslint-plugin in /mdsf-vscode [`#951`](https://github.com/hougesen/mdsf/pull/951)
+- build(deps): bump clap from 4.5.35 to 4.5.36 [`#949`](https://github.com/hougesen/mdsf/pull/949)
+- feat(tools): support typespec [`#954`](https://github.com/hougesen/mdsf/pull/954)
+- fix: error if config could not be loaded [`#947`](https://github.com/hougesen/mdsf/pull/947)
 - test(tools): validate dfmt [`#946`](https://github.com/hougesen/mdsf/pull/946)
 - test(tools): validate csslint [`#945`](https://github.com/hougesen/mdsf/pull/945)
 - test(tools): validate snakefmt [`#944`](https://github.com/hougesen/mdsf/pull/944)
