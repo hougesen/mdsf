@@ -771,6 +771,7 @@ type Whatever struct {
         }
     }
 
+    #[allow(clippy::too_many_lines)]
     #[test]
     fn it_should_not_care_if_go_package_is_set() {
         let input = "With package name
