@@ -232,6 +232,7 @@ fn add(a: i32, b: i32) -> i32 {
     }
 
     mod verify {
+        use mdsf::{cli::OnMissingLanguageDefinition, config::MdsfConfig};
         use tempfile::tempdir;
 
         use super::{BROKEN_CODE, FORMATTED_CODE, mdsf_command, setup_test_input};
@@ -500,9 +501,200 @@ fn add(a: i32, b: i32) -> i32 {
 
             assert!(cmd.get_output().stderr.is_empty());
         }
+
+        #[test]
+        fn on_missing_language_definition_prioritize_cli() {
+            let dir = tempdir().unwrap();
+
+            let config = MdsfConfig {
+                on_missing_language_definition: Some(OnMissingLanguageDefinition::FailFast),
+                languages: std::collections::BTreeMap::new(),
+                ..Default::default()
+            };
+
+            std::fs::write(
+                dir.path().join("mdsf.json"),
+                serde_json::to_string(&config).unwrap(),
+            )
+            .unwrap();
+
+            let file = setup_test_input(dir.path(), BROKEN_CODE);
+
+            mdsf_command(dir.path())
+                .arg("verify")
+                .arg("--on-missing-language-definition")
+                .arg("ignore")
+                .arg(file.path())
+                .assert()
+                .success()
+                .stderr(predicates::str::contains(" no tool configured for 'rust'"));
+        }
+
+        #[test]
+        fn on_missing_language_definition_ignore_cli() {
+            let dir = tempdir().unwrap();
+
+            let config = MdsfConfig {
+                on_missing_language_definition: None,
+                languages: std::collections::BTreeMap::new(),
+                ..Default::default()
+            };
+
+            std::fs::write(
+                dir.path().join("mdsf.json"),
+                serde_json::to_string(&config).unwrap(),
+            )
+            .unwrap();
+
+            let file = setup_test_input(dir.path(), BROKEN_CODE);
+
+            mdsf_command(dir.path())
+                .arg("verify")
+                .arg("--on-missing-language-definition")
+                .arg("ignore")
+                .arg(file.path())
+                .assert()
+                .success()
+                .stderr(predicates::str::contains(" no tool configured for 'rust'"));
+        }
+
+        #[test]
+        fn on_missing_language_definition_ignore_config() {
+            let dir = tempdir().unwrap();
+
+            let config = MdsfConfig {
+                on_missing_language_definition: Some(OnMissingLanguageDefinition::Ignore),
+                languages: std::collections::BTreeMap::new(),
+                ..Default::default()
+            };
+
+            std::fs::write(
+                dir.path().join("mdsf.json"),
+                serde_json::to_string(&config).unwrap(),
+            )
+            .unwrap();
+
+            let file = setup_test_input(dir.path(), BROKEN_CODE);
+
+            mdsf_command(dir.path())
+                .arg("verify")
+                .arg(file.path())
+                .assert()
+                .success()
+                .stderr(predicates::str::contains(" no tool configured for 'rust'"));
+        }
+
+        #[test]
+        fn on_missing_language_definition_fail_cli() {
+            let dir = tempdir().unwrap();
+
+            let config = MdsfConfig {
+                on_missing_language_definition: None,
+                languages: std::collections::BTreeMap::new(),
+                ..Default::default()
+            };
+
+            std::fs::write(
+                dir.path().join("mdsf.json"),
+                serde_json::to_string(&config).unwrap(),
+            )
+            .unwrap();
+
+            let file = setup_test_input(dir.path(), BROKEN_CODE);
+
+            mdsf_command(dir.path())
+                .arg("verify")
+                .arg("--on-missing-language-definition")
+                .arg("fail")
+                .arg(file.path())
+                .assert()
+                .failure()
+                .stderr(predicates::str::contains(" no tool configured for 'rust'"));
+        }
+
+        #[test]
+        fn on_missing_language_definition_fail_config() {
+            let dir = tempdir().unwrap();
+
+            let config = MdsfConfig {
+                on_missing_language_definition: Some(OnMissingLanguageDefinition::Fail),
+                languages: std::collections::BTreeMap::new(),
+                ..Default::default()
+            };
+
+            std::fs::write(
+                dir.path().join("mdsf.json"),
+                serde_json::to_string(&config).unwrap(),
+            )
+            .unwrap();
+
+            let file = setup_test_input(dir.path(), BROKEN_CODE);
+
+            mdsf_command(dir.path())
+                .arg("verify")
+                .arg(file.path())
+                .assert()
+                .failure()
+                .stderr(predicates::str::contains(" no tool configured for 'rust'"));
+        }
+
+        #[test]
+        fn on_missing_language_definition_fail_fast_cli() {
+            let dir = tempdir().unwrap();
+
+            let config = MdsfConfig {
+                on_missing_language_definition: None,
+                languages: std::collections::BTreeMap::new(),
+                ..Default::default()
+            };
+
+            std::fs::write(
+                dir.path().join("mdsf.json"),
+                serde_json::to_string(&config).unwrap(),
+            )
+            .unwrap();
+
+            let file = setup_test_input(dir.path(), BROKEN_CODE);
+
+            mdsf_command(dir.path())
+                .arg("verify")
+                .arg("--on-missing-language-definition")
+                .arg("fail-fast")
+                .arg(file.path())
+                .assert()
+                .failure()
+                .stderr(predicates::str::contains(" no tool configured for 'rust'"));
+        }
+
+        #[test]
+        fn on_missing_language_definition_fail_fast_config() {
+            let dir = tempdir().unwrap();
+
+            let config = MdsfConfig {
+                on_missing_language_definition: Some(OnMissingLanguageDefinition::FailFast),
+                languages: std::collections::BTreeMap::new(),
+                ..Default::default()
+            };
+
+            std::fs::write(
+                dir.path().join("mdsf.json"),
+                serde_json::to_string(&config).unwrap(),
+            )
+            .unwrap();
+
+            let file = setup_test_input(dir.path(), BROKEN_CODE);
+
+            mdsf_command(dir.path())
+                .arg("verify")
+                .arg(file.path())
+                .assert()
+                .failure()
+                .stderr(predicates::str::contains(" no tool configured for 'rust'"));
+        }
     }
 
     mod format {
+        use mdsf::{cli::OnMissingLanguageDefinition, config::MdsfConfig};
         use tempfile::tempdir;
 
         use crate::test_cli::{FORMATTED_CODE, mdsf_command};
@@ -766,6 +958,196 @@ fn add(a: i32, b: i32) -> i32 {
                 .arg(".")
                 .assert()
                 .failure();
+        }
+
+        #[test]
+        fn on_missing_language_definition_prioritize_cli() {
+            let dir = tempdir().unwrap();
+
+            let config = MdsfConfig {
+                on_missing_language_definition: Some(OnMissingLanguageDefinition::FailFast),
+                languages: std::collections::BTreeMap::new(),
+                ..Default::default()
+            };
+
+            std::fs::write(
+                dir.path().join("mdsf.json"),
+                serde_json::to_string(&config).unwrap(),
+            )
+            .unwrap();
+
+            let file = setup_test_input(dir.path(), BROKEN_CODE);
+
+            mdsf_command(dir.path())
+                .arg("format")
+                .arg("--on-missing-language-definition")
+                .arg("ignore")
+                .arg(file.path())
+                .assert()
+                .success()
+                .stderr(predicates::str::contains(" no tool configured for 'rust'"));
+        }
+
+        #[test]
+        fn on_missing_language_definition_ignore_cli() {
+            let dir = tempdir().unwrap();
+
+            let config = MdsfConfig {
+                on_missing_language_definition: None,
+                languages: std::collections::BTreeMap::new(),
+                ..Default::default()
+            };
+
+            std::fs::write(
+                dir.path().join("mdsf.json"),
+                serde_json::to_string(&config).unwrap(),
+            )
+            .unwrap();
+
+            let file = setup_test_input(dir.path(), BROKEN_CODE);
+
+            mdsf_command(dir.path())
+                .arg("format")
+                .arg("--on-missing-language-definition")
+                .arg("ignore")
+                .arg(file.path())
+                .assert()
+                .success()
+                .stderr(predicates::str::contains(" no tool configured for 'rust'"));
+        }
+
+        #[test]
+        fn on_missing_language_definition_ignore_config() {
+            let dir = tempdir().unwrap();
+
+            let config = MdsfConfig {
+                on_missing_language_definition: Some(OnMissingLanguageDefinition::Ignore),
+                languages: std::collections::BTreeMap::new(),
+                ..Default::default()
+            };
+
+            std::fs::write(
+                dir.path().join("mdsf.json"),
+                serde_json::to_string(&config).unwrap(),
+            )
+            .unwrap();
+
+            let file = setup_test_input(dir.path(), BROKEN_CODE);
+
+            mdsf_command(dir.path())
+                .arg("format")
+                .arg(file.path())
+                .assert()
+                .success()
+                .stderr(predicates::str::contains(" no tool configured for 'rust'"));
+        }
+
+        #[test]
+        fn on_missing_language_definition_fail_cli() {
+            let dir = tempdir().unwrap();
+
+            let config = MdsfConfig {
+                on_missing_language_definition: None,
+                languages: std::collections::BTreeMap::new(),
+                ..Default::default()
+            };
+
+            std::fs::write(
+                dir.path().join("mdsf.json"),
+                serde_json::to_string(&config).unwrap(),
+            )
+            .unwrap();
+
+            let file = setup_test_input(dir.path(), BROKEN_CODE);
+
+            mdsf_command(dir.path())
+                .arg("format")
+                .arg("--on-missing-language-definition")
+                .arg("fail")
+                .arg(file.path())
+                .assert()
+                .failure()
+                .stderr(predicates::str::contains(" no tool configured for 'rust'"));
+        }
+
+        #[test]
+        fn on_missing_language_definition_fail_config() {
+            let dir = tempdir().unwrap();
+
+            let config = MdsfConfig {
+                on_missing_language_definition: Some(OnMissingLanguageDefinition::Fail),
+                languages: std::collections::BTreeMap::new(),
+                ..Default::default()
+            };
+
+            std::fs::write(
+                dir.path().join("mdsf.json"),
+                serde_json::to_string(&config).unwrap(),
+            )
+            .unwrap();
+
+            let file = setup_test_input(dir.path(), BROKEN_CODE);
+
+            mdsf_command(dir.path())
+                .arg("format")
+                .arg(file.path())
+                .assert()
+                .failure()
+                .stderr(predicates::str::contains(" no tool configured for 'rust'"));
+        }
+
+        #[test]
+        fn on_missing_language_definition_fail_fast_cli() {
+            let dir = tempdir().unwrap();
+
+            let config = MdsfConfig {
+                on_missing_language_definition: None,
+                languages: std::collections::BTreeMap::new(),
+                ..Default::default()
+            };
+
+            std::fs::write(
+                dir.path().join("mdsf.json"),
+                serde_json::to_string(&config).unwrap(),
+            )
+            .unwrap();
+
+            let file = setup_test_input(dir.path(), BROKEN_CODE);
+
+            mdsf_command(dir.path())
+                .arg("format")
+                .arg("--on-missing-language-definition")
+                .arg("fail-fast")
+                .arg(file.path())
+                .assert()
+                .failure()
+                .stderr(predicates::str::contains(" no tool configured for 'rust'"));
+        }
+
+        #[test]
+        fn on_missing_language_definition_fail_fast_config() {
+            let dir = tempdir().unwrap();
+
+            let config = MdsfConfig {
+                on_missing_language_definition: Some(OnMissingLanguageDefinition::FailFast),
+                languages: std::collections::BTreeMap::new(),
+                ..Default::default()
+            };
+
+            std::fs::write(
+                dir.path().join("mdsf.json"),
+                serde_json::to_string(&config).unwrap(),
+            )
+            .unwrap();
+
+            let file = setup_test_input(dir.path(), BROKEN_CODE);
+
+            mdsf_command(dir.path())
+                .arg("format")
+                .arg(file.path())
+                .assert()
+                .failure()
+                .stderr(predicates::str::contains(" no tool configured for 'rust'"));
         }
     }
 }

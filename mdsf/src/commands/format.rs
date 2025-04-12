@@ -62,6 +62,10 @@ pub fn run(args: FormatCommandArguments, dry_run: bool) -> Result<(), MdsfError>
         .on_missing_tool_binary
         .unwrap_or_else(|| conf.on_missing_tool_binary.unwrap_or_default());
 
+    let on_missing_language_definition = args
+        .on_missing_language_definition
+        .unwrap_or_else(|| conf.on_missing_language_definition.unwrap_or_default());
+
     if args.stdin {
         let stdin_input = read_stdin().map_err(MdsfError::ReadStdinError)?;
 
@@ -74,6 +78,7 @@ pub fn run(args: FormatCommandArguments, dry_run: bool) -> Result<(), MdsfError>
             args.timeout.unwrap_or_default(),
             args.debug,
             on_missing_tool_binary,
+            on_missing_language_definition,
         );
 
         if was_formatted {
@@ -123,6 +128,7 @@ pub fn run(args: FormatCommandArguments, dry_run: bool) -> Result<(), MdsfError>
                         args.timeout.unwrap_or_default(),
                         args.debug,
                         on_missing_tool_binary,
+                        on_missing_language_definition,
                     );
 
                     if was_formatted {

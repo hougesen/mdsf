@@ -33,6 +33,17 @@
         "$ref": "#/definitions/MdsfFormatter_for_Tooling"
       }
     },
+    "on_missing_language_definition": {
+      "description": "What to do when a codeblock language has no tools defined.",
+      "anyOf": [
+        {
+          "$ref": "#/definitions/OnMissingLanguageDefinition"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
     "on_missing_tool_binary": {
       "description": "What to do when the binary of a tool cannot be found.",
       "anyOf": [
@@ -105,6 +116,25 @@
           "items": {
             "$ref": "#/definitions/MdsfFormatter_for_Tooling"
           }
+        }
+      ]
+    },
+    "OnMissingLanguageDefinition": {
+      "oneOf": [
+        {
+          "description": "Allow missing binaries.",
+          "type": "string",
+          "enum": ["ignore"]
+        },
+        {
+          "description": "Exit with status code 1 when finished.",
+          "type": "string",
+          "enum": ["fail"]
+        },
+        {
+          "description": "Instantly exit with status code 1.",
+          "type": "string",
+          "enum": ["fail-fast"]
         }
       ]
     },

@@ -8,10 +8,10 @@ pub fn set_exit_code_error() {
 }
 
 #[inline]
-pub fn exit_with_error(error: &MdsfError) {
+pub fn exit_with_error(error: &MdsfError) -> ! {
     print_error(error);
 
-    std::process::exit(1);
+    std::process::exit(1)
 }
 
 #[derive(Debug)]
@@ -30,6 +30,7 @@ pub enum MdsfError {
     LanguageAliasMissingTools(String),
     // TODO: use &str
     MissingBinary(String),
+    MissingLanguageDefinition(std::path::PathBuf, String),
     MissingInput,
     ReadStdinError(std::io::Error),
     SerializeConfig(serde_json::Error),
@@ -69,6 +70,9 @@ impl core::fmt::Display for MdsfError {
                 "'{alias}' cannot be used as an alias since it has no tools specified"
             ),
             Self::MissingBinary(binary_name) => write!(f, "{binary_name} was not found in path"),
+            Self::MissingLanguageDefinition(path, language) => {
+                write!(f, "{} no tool configured for '{language}'", path.display())
+            }
             Self::MissingInput => write!(f, "No input was provided to mdsf"),
             Self::ReadStdinError(error) => write!(f, "Error reading from stdin: {error}"),
             Self::SerializeConfig(e) => write!(f, "Error serializing config: {e}"),

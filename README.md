@@ -180,6 +180,11 @@ Options:
 
           Defaults to no timeout.
 
+      --on-missing-language-definition <ON_MISSING_LANGUAGE_DEFINITION>
+          What to do when a codeblock language has no tools defined
+
+          [possible values: ignore, fail, fail-fast]
+
       --on-missing-tool-binary <ON_MISSING_TOOL_BINARY>
           What to do when the binary of a tool cannot be found
 
@@ -262,6 +267,11 @@ Options:
 
       --log-level <LOG_LEVEL>
           [possible values: trace, debug, info, warn, error, off]
+
+      --on-missing-language-definition <ON_MISSING_LANGUAGE_DEFINITION>
+          What to do when a codeblock language has no tools defined
+
+          [possible values: ignore, fail, fail-fast]
 
       --on-missing-tool-binary <ON_MISSING_TOOL_BINARY>
           What to do when the binary of a tool cannot be found
