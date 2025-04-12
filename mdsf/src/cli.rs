@@ -22,7 +22,7 @@ pub struct Cli {
 
 #[derive(Subcommand, Debug)]
 pub enum Commands {
-    /// Run formatters on input files.
+    /// Run tools on input files.
     Format(FormatCommandArguments),
 
     /// Verify files are formatted.

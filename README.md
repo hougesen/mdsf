@@ -113,14 +113,14 @@ conda install conda-forge::mdsf
 <!-- START_SECTION:base-command-help -->
 
 ```
-mdsf 0.9.0
+mdsf 0.9.0-next
 Format, and lint, markdown code snippets using your favorite tools
 Mads Hougesen <mads@mhouge.dk>
 
 Usage: mdsf [OPTIONS] <COMMAND>
 
 Commands:
-  format       Run formatters on input files
+  format       Run tools on input files
   verify       Verify files are formatted
   init         Create a new mdsf config
   completions  Generate shell completion
@@ -146,7 +146,7 @@ mdsf format file.md
 <!-- START_SECTION:format-command-help -->
 
 ```
-Run formatters on input files
+Run tools on input files
 
 Usage: mdsf format [OPTIONS] [INPUT]...
 
