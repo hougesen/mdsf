@@ -13,38 +13,56 @@ const fn is_false(b: &bool) -> bool {
 #[cfg_attr(feature = "json-schema", derive(schemars::JsonSchema))]
 pub struct MdsfConfigRunners {
     /// Whether to support running npm packages using `bunx $PACKAGE_NAME`
+    ///
+    /// Default: `false`
     #[serde(default, skip_serializing_if = "is_false")]
     pub bunx: bool,
 
     /// Whether to support running npm packages using `deno run -A npm:$PACKAGE_NAME`
+    ///
+    /// Default: `false`
     #[serde(default, skip_serializing_if = "is_false")]
     pub deno: bool,
 
     /// Whether to support running dub packages using `dub run $PACKAGE_NAME`
+    ///
+    /// Default: `false`
     #[serde(default, skip_serializing_if = "is_false")]
     pub dub: bool,
 
     /// Whether to support running ruby packages using `gem exec $PACKAGE_NAME`
+    ///
+    /// Default: `false`
     #[serde(default, skip_serializing_if = "is_false")]
     pub gem_exec: bool,
 
     /// Whether to support running npm packages using `npx $PACKAGE_NAME`
+    ///
+    /// Default: `false`
     #[serde(default, skip_serializing_if = "is_false")]
     pub npx: bool,
 
     /// Whether to support running pypi packages using `pipx run $PACKAGE_NAME`
+    ///
+    /// Default: `false`
     #[serde(default, skip_serializing_if = "is_false")]
     pub pipx: bool,
 
     /// Whether to support running npm packages using `pnpm dlx $PACKAGE_NAME`
+    ///
+    /// Default: `false`
     #[serde(default, skip_serializing_if = "is_false")]
     pub pnpm: bool,
 
     /// Whether to support running pypi packages using `uv tool run $PACKAGE_NAME`
+    ///
+    /// Default: `false`
     #[serde(default, skip_serializing_if = "is_false")]
     pub uv: bool,
 
     /// Whether to support running npm packages using `yarn dlx $PACKAGE_NAME`
+    ///
+    /// Default: `false`
     #[serde(default, skip_serializing_if = "is_false")]
     pub yarn: bool,
 }
@@ -78,6 +96,7 @@ pub struct MdsfConfig {
     pub schema: String,
 
     /// Used for settings custom file extensions for a given language.
+    ///
     /// ```json
     /// {
     ///   "custom_file_extensions": {
@@ -89,6 +108,8 @@ pub struct MdsfConfig {
     pub custom_file_extensions: std::collections::BTreeMap<String, String>,
 
     /// Format the processed document with the selected markdown formatter.
+    ///
+    /// Default: `false`
     #[serde(default, skip_serializing_if = "is_false")]
     pub format_finished_document: bool,
 
@@ -105,6 +126,7 @@ pub struct MdsfConfig {
     pub language_aliases: std::collections::BTreeMap<String, String>,
 
     ///  Defines which formatter is used by the language.
+    ///
     /// ```json
     /// {
     ///   "languages": {
