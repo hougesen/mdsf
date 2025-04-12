@@ -41,21 +41,7 @@ mod test_clang_format {
 
         let file_ext = crate::fttype::get_file_extension("java");
 
-        let snippet =
-            crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
-
-        let result = crate::tools::Tooling::ClangFormat
-            .format_snippet(
-                snippet.path(),
-                crate::testing::DEFAULT_TEST_FORMATTER_TIMEOUT,
-                crate::testing::DEFAULT_TEST_DEBUG_ENABLED,
-                &crate::config::MdsfConfigRunners::all(),
-            )
-            .expect("it to be successful")
-            .1
-            .expect("it to be some");
-
-        assert_eq!(result, output);
+        crate::tools::Tooling::ClangFormat.test_format_snippet(input, output, &file_ext);
     }
 
     #[test_with::executable(clang-format || pipx || uv)]
@@ -69,21 +55,7 @@ mod test_clang_format {
 
         let file_ext = crate::fttype::get_file_extension("protobuf");
 
-        let snippet =
-            crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
-
-        let result = crate::tools::Tooling::ClangFormat
-            .format_snippet(
-                snippet.path(),
-                crate::testing::DEFAULT_TEST_FORMATTER_TIMEOUT,
-                crate::testing::DEFAULT_TEST_DEBUG_ENABLED,
-                &crate::config::MdsfConfigRunners::all(),
-            )
-            .expect("it to be successful")
-            .1
-            .expect("it to be some");
-
-        assert_eq!(result, output);
+        crate::tools::Tooling::ClangFormat.test_format_snippet(input, output, &file_ext);
     }
 
     #[test_with::executable(clang-format || pipx || uv)]
@@ -100,21 +72,7 @@ mod test_clang_format {
 
         let file_ext = crate::fttype::get_file_extension("objective-c");
 
-        let snippet =
-            crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
-
-        let result = crate::tools::Tooling::ClangFormat
-            .format_snippet(
-                snippet.path(),
-                crate::testing::DEFAULT_TEST_FORMATTER_TIMEOUT,
-                crate::testing::DEFAULT_TEST_DEBUG_ENABLED,
-                &crate::config::MdsfConfigRunners::all(),
-            )
-            .expect("it to be successful")
-            .1
-            .expect("it to be some");
-
-        assert_eq!(result, output);
+        crate::tools::Tooling::ClangFormat.test_format_snippet(input, output, &file_ext);
     }
 
     #[test_with::executable(clang-format || pipx || uv)]
@@ -131,21 +89,7 @@ mod test_clang_format {
 
         let file_ext = crate::fttype::get_file_extension("c");
 
-        let snippet =
-            crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
-
-        let result = crate::tools::Tooling::ClangFormat
-            .format_snippet(
-                snippet.path(),
-                crate::testing::DEFAULT_TEST_FORMATTER_TIMEOUT,
-                crate::testing::DEFAULT_TEST_DEBUG_ENABLED,
-                &crate::config::MdsfConfigRunners::all(),
-            )
-            .expect("it to be successful")
-            .1
-            .expect("it to be some");
-
-        assert_eq!(result, output);
+        crate::tools::Tooling::ClangFormat.test_format_snippet(input, output, &file_ext);
     }
 
     #[test_with::executable(clang-format || pipx || uv)]
@@ -162,21 +106,7 @@ mod test_clang_format {
 
         let file_ext = crate::fttype::get_file_extension("cpp");
 
-        let snippet =
-            crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
-
-        let result = crate::tools::Tooling::ClangFormat
-            .format_snippet(
-                snippet.path(),
-                crate::testing::DEFAULT_TEST_FORMATTER_TIMEOUT,
-                crate::testing::DEFAULT_TEST_DEBUG_ENABLED,
-                &crate::config::MdsfConfigRunners::all(),
-            )
-            .expect("it to be successful")
-            .1
-            .expect("it to be some");
-
-        assert_eq!(result, output);
+        crate::tools::Tooling::ClangFormat.test_format_snippet(input, output, &file_ext);
     }
 
     #[test_with::executable(clang-format || pipx || uv)]
@@ -201,21 +131,7 @@ class Adder {
 
         let file_ext = crate::fttype::get_file_extension("csharp");
 
-        let snippet =
-            crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
-
-        let result = crate::tools::Tooling::ClangFormat
-            .format_snippet(
-                snippet.path(),
-                crate::testing::DEFAULT_TEST_FORMATTER_TIMEOUT,
-                crate::testing::DEFAULT_TEST_DEBUG_ENABLED,
-                &crate::config::MdsfConfigRunners::all(),
-            )
-            .expect("it to be successful")
-            .1
-            .expect("it to be some");
-
-        assert_eq!(result, output);
+        crate::tools::Tooling::ClangFormat.test_format_snippet(input, output, &file_ext);
     }
 
     #[test_with::executable(clang-format || pipx || uv)]
@@ -237,21 +153,7 @@ class Adder {
 
         let file_ext = crate::fttype::get_file_extension("json");
 
-        let snippet =
-            crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
-
-        let result = crate::tools::Tooling::ClangFormat
-            .format_snippet(
-                snippet.path(),
-                crate::testing::DEFAULT_TEST_FORMATTER_TIMEOUT,
-                crate::testing::DEFAULT_TEST_DEBUG_ENABLED,
-                &crate::config::MdsfConfigRunners::all(),
-            )
-            .expect("it to be successful")
-            .1
-            .expect("it to be some");
-
-        assert_eq!(result, output);
+        crate::tools::Tooling::ClangFormat.test_format_snippet(input, output, &file_ext);
     }
 
     #[test_with::executable(clang-format || pipx || uv)]
@@ -268,20 +170,6 @@ class Adder {
 
         let file_ext = crate::fttype::get_file_extension("javascript");
 
-        let snippet =
-            crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
-
-        let result = crate::tools::Tooling::ClangFormat
-            .format_snippet(
-                snippet.path(),
-                crate::testing::DEFAULT_TEST_FORMATTER_TIMEOUT,
-                crate::testing::DEFAULT_TEST_DEBUG_ENABLED,
-                &crate::config::MdsfConfigRunners::all(),
-            )
-            .expect("it to be successful")
-            .1
-            .expect("it to be some");
-
-        assert_eq!(result, output);
+        crate::tools::Tooling::ClangFormat.test_format_snippet(input, output, &file_ext);
     }
 }

@@ -36,21 +36,7 @@ mod test_deno_fmt {
 
         let file_ext = crate::fttype::get_file_extension("javascript");
 
-        let snippet =
-            crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
-
-        let result = crate::tools::Tooling::DenoFmt
-            .format_snippet(
-                snippet.path(),
-                crate::testing::DEFAULT_TEST_FORMATTER_TIMEOUT,
-                crate::testing::DEFAULT_TEST_DEBUG_ENABLED,
-                &crate::config::MdsfConfigRunners::all(),
-            )
-            .expect("it to be successful")
-            .1
-            .expect("it to be some");
-
-        assert_eq!(result, output);
+        crate::tools::Tooling::DenoFmt.test_format_snippet(input, output, &file_ext);
     }
 
     #[test_with::executable(deno)]
@@ -70,21 +56,7 @@ mod test_deno_fmt {
 
         let file_ext = crate::fttype::get_file_extension("typescript");
 
-        let snippet =
-            crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
-
-        let result = crate::tools::Tooling::DenoFmt
-            .format_snippet(
-                snippet.path(),
-                crate::testing::DEFAULT_TEST_FORMATTER_TIMEOUT,
-                crate::testing::DEFAULT_TEST_DEBUG_ENABLED,
-                &crate::config::MdsfConfigRunners::all(),
-            )
-            .expect("it to be successful")
-            .1
-            .expect("it to be some");
-
-        assert_eq!(result, output);
+        crate::tools::Tooling::DenoFmt.test_format_snippet(input, output, &file_ext);
     }
 
     #[test_with::executable(deno)]
@@ -113,20 +85,6 @@ mod test_deno_fmt {
 
         let file_ext = crate::fttype::get_file_extension("json");
 
-        let snippet =
-            crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
-
-        let result = crate::tools::Tooling::DenoFmt
-            .format_snippet(
-                snippet.path(),
-                crate::testing::DEFAULT_TEST_FORMATTER_TIMEOUT,
-                crate::testing::DEFAULT_TEST_DEBUG_ENABLED,
-                &crate::config::MdsfConfigRunners::all(),
-            )
-            .expect("it to be successful")
-            .1
-            .expect("it to be some");
-
-        assert_eq!(result, output);
+        crate::tools::Tooling::DenoFmt.test_format_snippet(input, output, &file_ext);
     }
 }
