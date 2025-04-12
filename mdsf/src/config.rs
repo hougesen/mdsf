@@ -1,6 +1,9 @@
 use json_comments::{CommentSettings, StripComments};
 
-use crate::{error::MdsfError, execution::MdsfFormatter, languages::default_tools, tools::Tooling};
+use crate::{
+    cli::OnMissingToolBinary, error::MdsfError, execution::MdsfFormatter, languages::default_tools,
+    tools::Tooling,
+};
 
 #[allow(clippy::trivially_copy_pass_by_ref)]
 #[inline]
@@ -113,7 +116,7 @@ pub struct MdsfConfig {
     #[serde(default, skip_serializing_if = "is_false")]
     pub format_finished_document: bool,
 
-    /// Aliases for tools
+    /// Aliases for tools.
     ///
     /// ```json
     /// {
@@ -148,6 +151,10 @@ pub struct MdsfConfig {
     #[serde(default)]
     pub languages: std::collections::BTreeMap<String, MdsfFormatter<Tooling>>,
 
+    /// What to do when the binary of a tool cannot be found.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub on_missing_tool_binary: Option<OnMissingToolBinary>,
+
     /// List of package registry script runners that should be enabled.
     ///
     /// Should be considered experimental since not all tools support being run that way.
@@ -164,6 +171,7 @@ impl Default for MdsfConfig {
             format_finished_document: false,
             language_aliases: std::collections::BTreeMap::default(),
             languages: default_tools(),
+            on_missing_tool_binary: None,
             runners: MdsfConfigRunners::default(),
         }
     }

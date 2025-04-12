@@ -19,7 +19,7 @@
       "type": "boolean"
     },
     "language_aliases": {
-      "description": "Aliases for tools\n\n```json { \"language_aliases\": { \"language\": \"is_alias_of\" } } ```",
+      "description": "Aliases for tools.\n\n```json { \"language_aliases\": { \"language\": \"is_alias_of\" } } ```",
       "type": "object",
       "additionalProperties": {
         "type": "string"
@@ -32,6 +32,17 @@
       "additionalProperties": {
         "$ref": "#/definitions/MdsfFormatter_for_Tooling"
       }
+    },
+    "on_missing_tool_binary": {
+      "description": "What to do when the binary of a tool cannot be found.",
+      "anyOf": [
+        {
+          "$ref": "#/definitions/OnMissingToolBinary"
+        },
+        {
+          "type": "null"
+        }
+      ]
     },
     "runners": {
       "description": "List of package registry script runners that should be enabled.\n\nShould be considered experimental since not all tools support being run that way.",
@@ -94,6 +105,25 @@
           "items": {
             "$ref": "#/definitions/MdsfFormatter_for_Tooling"
           }
+        }
+      ]
+    },
+    "OnMissingToolBinary": {
+      "oneOf": [
+        {
+          "description": "Allow missing binaries.",
+          "type": "string",
+          "enum": ["allow"]
+        },
+        {
+          "description": "Exit with status code 1 when finished.",
+          "type": "string",
+          "enum": ["continue"]
+        },
+        {
+          "description": "Instantly exit with status code 1.",
+          "type": "string",
+          "enum": ["fail-fast"]
         }
       ]
     },

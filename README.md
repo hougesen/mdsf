@@ -165,9 +165,9 @@ Options:
           Log stdout and stderr of formatters
 
       --threads <THREADS>
-          Amount of threads to use
+          Amount of threads to use.
 
-          Defaults to 0 (auto)
+          Defaults to 0 (auto).
 
       --cache
           Cache results
@@ -176,9 +176,9 @@ Options:
           [possible values: trace, debug, info, warn, error, off]
 
       --timeout <TIMEOUT>
-          Tool timeout in seconds
+          Tool timeout in seconds.
 
-          Defaults to no timeout
+          Defaults to no timeout.
 
       --on-missing-tool-binary <ON_MISSING_TOOL_BINARY>
           What to do when the binary of a tool cannot be found
@@ -251,14 +251,14 @@ Options:
           Log stdout and stderr of formatters
 
       --threads <THREADS>
-          Amount of threads to use
+          Amount of threads to use.
 
-          Defaults to 0 (auto)
+          Defaults to 0 (auto).
 
       --timeout <TIMEOUT>
-          Tool timeout in seconds
+          Tool timeout in seconds.
 
-          Defaults to no timeout
+          Defaults to no timeout.
 
       --log-level <LOG_LEVEL>
           [possible values: trace, debug, info, warn, error, off]

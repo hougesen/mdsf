@@ -58,7 +58,9 @@ pub fn run(args: FormatCommandArguments, dry_run: bool) -> Result<(), MdsfError>
 
     let changed_file_count = Arc::new(AtomicU32::new(0));
 
-    let on_missing_tool_binary = args.on_missing_tool_binary.unwrap_or_default();
+    let on_missing_tool_binary = args
+        .on_missing_tool_binary
+        .unwrap_or_else(|| conf.on_missing_tool_binary.unwrap_or_default());
 
     if args.stdin {
         let stdin_input = read_stdin().map_err(MdsfError::ReadStdinError)?;

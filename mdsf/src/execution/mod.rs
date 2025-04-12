@@ -205,7 +205,7 @@ pub fn format_snippet(
                 );
 
                 if let Err(MdsfError::MissingBinary(binary)) = result {
-                    exit_with_error(MdsfError::MissingBinary(binary));
+                    exit_with_error(&MdsfError::MissingBinary(binary));
                 } else if let Ok(Some(formatted_code)) = result {
                     if language_formatters.is_none() {
                         let mut f = formatted_code.trim().to_owned();
@@ -228,7 +228,7 @@ pub fn format_snippet(
                 );
 
                 if let Err(MdsfError::MissingBinary(binary)) = result {
-                    exit_with_error(MdsfError::MissingBinary(binary));
+                    exit_with_error(&MdsfError::MissingBinary(binary));
                 } else if let Ok(Some(formatted_code)) = result {
                     let mut f = formatted_code.trim().to_owned();
 

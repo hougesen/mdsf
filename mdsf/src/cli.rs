@@ -22,32 +22,38 @@ pub struct Cli {
 
 #[derive(Subcommand, Debug)]
 pub enum Commands {
-    /// Run formatters on input files
+    /// Run formatters on input files.
     Format(FormatCommandArguments),
 
-    /// Verify files are formatted
+    /// Verify files are formatted.
     Verify(VerifyCommandArguments),
 
-    /// Create a new mdsf config
+    /// Create a new mdsf config.
     Init(InitCommandArguments),
 
-    /// Generate shell completion
+    /// Generate shell completion.
     Completions(CompletionsCommandArguments),
 
-    /// Remove caches
+    /// Remove caches.
     CachePrune,
 }
 
-#[derive(Clone, Copy, PartialEq, Eq, Debug, Default)]
+#[derive(
+    Clone, Copy, PartialEq, Eq, Debug, Default, serde::Serialize, serde::Deserialize, Hash,
+)]
+#[cfg_attr(feature = "json-schema", derive(schemars::JsonSchema))]
 pub enum OnMissingToolBinary {
-    /// Allow missing binaries
+    /// Allow missing binaries.
     #[default]
+    #[serde(rename = "allow")]
     Allow,
 
-    /// Exit with status code 1 when finished
+    /// Exit with status code 1 when finished.
+    #[serde(rename = "continue")]
     Continue,
 
-    /// Instantly exit with status code 1
+    /// Instantly exit with status code 1.
+    #[serde(rename = "fail-fast")]
     FailFast,
 }
 
@@ -60,34 +66,34 @@ impl clap::ValueEnum for OnMissingToolBinary {
     #[inline]
     fn to_possible_value(&self) -> Option<clap::builder::PossibleValue> {
         Some(match self {
-            OnMissingToolBinary::Allow => clap::builder::PossibleValue::new("allow"),
-            OnMissingToolBinary::Continue => clap::builder::PossibleValue::new("continue"),
-            OnMissingToolBinary::FailFast => clap::builder::PossibleValue::new("fail-fast"),
+            Self::Allow => clap::builder::PossibleValue::new("allow"),
+            Self::Continue => clap::builder::PossibleValue::new("continue"),
+            Self::FailFast => clap::builder::PossibleValue::new("fail-fast"),
         })
     }
 }
 
 #[derive(Args, Debug)]
 pub struct FormatCommandArguments {
-    /// Path to files and/or directories
+    /// Path to files and/or directories.
     #[arg()]
     pub input: Vec<std::path::PathBuf>,
 
-    /// Read input from stdin and write output to stdout
+    /// Read input from stdin and write output to stdout.
     #[arg(long, default_value_t = false)]
     pub stdin: bool,
 
-    /// Path to config file
+    /// Path to config file.
     #[arg(long)]
     pub config: Option<std::path::PathBuf>,
 
-    /// Log stdout and stderr of formatters
+    /// Log stdout and stderr of formatters.
     #[arg(long, default_value_t = false)]
     pub debug: bool,
 
-    /// Amount of threads to use
+    /// Amount of threads to use.
     ///
-    /// Defaults to 0 (auto)
+    /// Defaults to 0 (auto).
     #[arg(long)]
     pub threads: Option<usize>,
 
@@ -95,48 +101,48 @@ pub struct FormatCommandArguments {
     #[arg(long, default_value_t = false)]
     pub cache: bool,
 
-    /// Tool timeout in seconds
+    /// Tool timeout in seconds.
     ///
-    /// Defaults to no timeout
+    /// Defaults to no timeout.
     #[arg(long)]
     pub timeout: Option<u64>,
 
-    /// What to do when the binary of a tool cannot be found
+    /// What to do when the binary of a tool cannot be found.
     #[arg(long)]
     pub on_missing_tool_binary: Option<OnMissingToolBinary>,
 }
 
 #[derive(Args, Debug)]
 pub struct VerifyCommandArguments {
-    /// Path to files and/or directories
+    /// Path to files and/or directories.
     #[arg()]
     pub input: Vec<std::path::PathBuf>,
 
-    /// Read input from stdin and write output to stdout
+    /// Read input from stdin and write output to stdout.
     #[arg(long, default_value_t = false)]
     pub stdin: bool,
 
-    /// Path to config file
+    /// Path to config file.
     #[arg(long)]
     pub config: Option<std::path::PathBuf>,
 
-    /// Log stdout and stderr of formatters
+    /// Log stdout and stderr of formatters.
     #[arg(long, default_value_t = false)]
     pub debug: bool,
 
-    /// Amount of threads to use
+    /// Amount of threads to use.
     ///
-    /// Defaults to 0 (auto)
+    /// Defaults to 0 (auto).
     #[arg(long)]
     pub threads: Option<usize>,
 
-    /// Tool timeout in seconds
+    /// Tool timeout in seconds.
     ///
-    /// Defaults to no timeout
+    /// Defaults to no timeout.
     #[arg(long)]
     pub timeout: Option<u64>,
 
-    /// What to do when the binary of a tool cannot be found
+    /// What to do when the binary of a tool cannot be found.
     #[arg(long)]
     pub on_missing_tool_binary: Option<OnMissingToolBinary>,
 }
@@ -159,7 +165,7 @@ impl From<VerifyCommandArguments> for FormatCommandArguments {
 
 #[derive(Args, Debug)]
 pub struct InitCommandArguments {
-    /// Create config even if one already exists in current directory
+    /// Create config even if one already exists in current directory.
     #[arg(long, default_value_t = false)]
     pub force: bool,
 }
@@ -177,22 +183,22 @@ pub enum LogLevel {
 
 #[derive(Clone, Copy, PartialEq, Eq, Debug, Hash)]
 pub enum Shell {
-    /// Bourne Again `SHell` (bash)
+    /// Bourne Again `SHell` (bash).
     Bash,
 
-    /// Elvish shell (elvish)
+    /// Elvish shell (elvish).
     Elvish,
 
-    /// Friendly Interactive `SHell` (fish)
+    /// Friendly Interactive `SHell` (fish).
     Fish,
 
-    /// `Nushell` (nushell)
+    /// `Nushell` (nushell).
     Nushell,
 
-    /// `PowerShell` (powershell)
+    /// `PowerShell` (powershell).
     PowerShell,
 
-    /// Z `SHell` (zsh)
+    /// Z `SHell` (zsh).
     Zsh,
 }
 

@@ -8,8 +8,8 @@ pub fn set_exit_code_error() {
 }
 
 #[inline]
-pub fn exit_with_error(error: MdsfError) {
-    print_error(&error);
+pub fn exit_with_error(error: &MdsfError) {
+    print_error(error);
 
     std::process::exit(1);
 }
