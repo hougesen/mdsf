@@ -68,8 +68,12 @@ pub fn print_config_not_found(path: &std::path::Path) {
 }
 
 #[inline]
-pub fn print_binary_not_in_path(path: &std::path::Path, binary_name: &str) {
-    error!("{} {binary_name} not found in path", path.display());
+pub fn print_binary_not_in_path(path: &std::path::Path, binary_name: &str, error: bool) {
+    if error {
+        error!("{} {binary_name} not found in path", path.display());
+    } else {
+        warn!("{} {binary_name} not found in path", path.display());
+    }
 }
 
 #[inline]
