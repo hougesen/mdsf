@@ -19,17 +19,17 @@ pub const IS_STDIN: bool = false;
 #[cfg(test)]
 mod test_tex_fmt {
     #[test_with::executable(tex-fmt)]
-    fn test_tex_fmt_latex_ce9dd54b3a51a461() {
+    fn test_tex_fmt_latex_1249f3d7d4b15b30() {
         let input = r#"\documentclass{article}
 
-egin{document}
+\begin{document}
 
-egin{itemize}
+\begin{itemize}
 \item Lists with items
 over multiple lines
 \end{itemize}
 
-egin{equation}
+\begin{equation}
 E = m c^2
 \end{equation}
 
@@ -37,14 +37,14 @@ E = m c^2
 
         let output = r#"\documentclass{article}
 
-egin{document}
+\begin{document}
 
-egin{itemize}
+\begin{itemize}
   \item Lists with items
     over multiple lines
 \end{itemize}
 
-egin{equation}
+\begin{equation}
   E = m c^2
 \end{equation}
 

@@ -32,6 +32,7 @@ All notable changes to this project will be documented in this file. Dates are d
 - build(deps): bump test-with from 0.14.8 to 0.14.9 [`#927`](https://github.com/hougesen/mdsf/pull/927)
 - chore: bump version to dev [`3027334`](https://github.com/hougesen/mdsf/commit/30273341945447c37a273c63f97566cc6da8846e)
 - feat(cli): flag for erroring on tool missing [`5998a37`](https://github.com/hougesen/mdsf/commit/5998a372e73ab1dd3b6ddc9895f410a9adbcbdca)
+- chore: update changelog [`dad4cda`](https://github.com/hougesen/mdsf/commit/dad4cdadb5301c8d34062939ed556fd45e3d082e)
 
 #### [v0.8.5](https://github.com/hougesen/mdsf/compare/v0.8.4...v0.8.5)
 
