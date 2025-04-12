@@ -7,7 +7,7 @@ use which::which;
 use crate::{
     LineInfo,
     config::{MdsfConfig, MdsfConfigRunners},
-    error::{MdsfError, exit_with_error},
+    error::{MdsfError, exit_with_error, set_exit_code_error},
     fttype::get_file_extension,
     get_project_dir,
     runners::CommandType,
@@ -296,6 +296,7 @@ impl MdsfFormatter<Tooling> {
         .map(|(_should_continue, output)| output)
     }
 
+    #[allow(clippy::too_many_arguments)]
     #[inline]
     pub fn format_multiple(
         formatter: &Self,
@@ -334,6 +335,8 @@ impl MdsfFormatter<Tooling> {
                         Err(MdsfError::MissingBinary(pretty_bin))
                     } else {
                         print_binary_not_in_path(snippet_path, &pretty_bin);
+
+                        set_exit_code_error();
 
                         Ok((false, None))
                     }
