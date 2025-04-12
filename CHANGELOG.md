@@ -2,8 +2,16 @@
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
-#### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.8.5...HEAD)
+#### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.9.0...HEAD)
 
+#### [v0.9.0](https://github.com/hougesen/mdsf/compare/v0.8.5...v0.9.0)
+
+> 12 April 2025
+
+- chore: release v0.9.0 [`#960`](https://github.com/hougesen/mdsf/pull/960)
+- build(deps-dev): bump @types/node in /mdsf-vscode [`#958`](https://github.com/hougesen/mdsf/pull/958)
+- build(deps-dev): bump @types/node in /github-action [`#959`](https://github.com/hougesen/mdsf/pull/959)
+- refactor(test): use predicates instead of checking stdout/stderr manually [`#957`](https://github.com/hougesen/mdsf/pull/957)
 - feat(cli): argument for erroring on missing language definition [`#956`](https://github.com/hougesen/mdsf/pull/956)
 - feat(cli): argument for erroring on tool binary missing [`#948`](https://github.com/hougesen/mdsf/pull/948)
 - refactor: abstract Tooling test code [`#955`](https://github.com/hougesen/mdsf/pull/955)
