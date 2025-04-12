@@ -4,7 +4,7 @@ All notable changes to this project will be documented in this file. Dates are d
 
 #### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.8.5...HEAD)
 
-- feat(cli): argument for erroring on missing language definition [`#949`](https://github.com/hougesen/mdsf/pull/949)
+- feat(cli): argument for erroring on missing language definition [`#956`](https://github.com/hougesen/mdsf/pull/956)
 - feat(cli): argument for erroring on tool binary missing [`#948`](https://github.com/hougesen/mdsf/pull/948)
 - refactor: abstract Tooling test code [`#955`](https://github.com/hougesen/mdsf/pull/955)
 - build(deps-dev): bump @typescript-eslint/parser in /mdsf-vscode [`#950`](https://github.com/hougesen/mdsf/pull/950)

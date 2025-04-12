@@ -2,6 +2,7 @@
 mod test_cli {
     use std::io::Write;
 
+    use predicates::prelude::PredicateBooleanExt;
     use tempfile::tempdir;
 
     const BROKEN_CODE: &str = "```rust
@@ -41,25 +42,26 @@ fn add(a: i32, b: i32) -> i32 {
     fn help_arg_outputs_message() {
         let dir = tempdir().unwrap();
 
-        let cmd = mdsf_command(dir.path()).arg("--help").assert().success();
-
-        let output = cmd.get_output();
-
-        assert!(!output.stdout.is_empty());
+        mdsf_command(dir.path())
+            .arg("--help")
+            .assert()
+            .success()
+            .stdout(predicates::str::is_empty().not());
     }
 
     #[test]
     fn version_arg_outputs_message() {
         let dir = tempdir().unwrap();
 
-        let cmd = mdsf_command(dir.path()).arg("--version").assert().success();
-
-        let output = cmd.get_output();
-
-        assert!(!output.stdout.is_empty());
+        mdsf_command(dir.path())
+            .arg("--version")
+            .assert()
+            .success()
+            .stdout(predicates::str::is_empty().not());
     }
 
     mod help {
+        use predicates::prelude::PredicateBooleanExt;
         use tempfile::tempdir;
 
         use crate::test_cli::mdsf_command;
@@ -68,15 +70,16 @@ fn add(a: i32, b: i32) -> i32 {
         fn command_outputs_help_message() {
             let dir = tempdir().unwrap();
 
-            let cmd = mdsf_command(dir.path()).arg("help").assert().success();
-
-            let output = cmd.get_output();
-
-            assert!(!output.stdout.is_empty());
+            mdsf_command(dir.path())
+                .arg("help")
+                .assert()
+                .success()
+                .stdout(predicates::str::is_empty().not());
         }
     }
 
     mod completions {
+        use predicates::prelude::PredicateBooleanExt;
         use tempfile::tempdir;
 
         use crate::test_cli::mdsf_command;
@@ -85,15 +88,12 @@ fn add(a: i32, b: i32) -> i32 {
         fn help_arg_outputs_message() {
             let dir = tempdir().unwrap();
 
-            let cmd = mdsf_command(dir.path())
+            mdsf_command(dir.path())
                 .arg("completions")
                 .arg("--help")
                 .assert()
-                .success();
-
-            let output = cmd.get_output();
-
-            assert!(!output.stdout.is_empty());
+                .success()
+                .stdout(predicates::str::is_empty().not());
         }
 
         #[test]
@@ -103,20 +103,18 @@ fn add(a: i32, b: i32) -> i32 {
             let shells = ["bash", "elvish", "fish", "nushell", "powershell", "zsh"];
 
             for shell in shells {
-                let cmd = mdsf_command(dir.path())
+                mdsf_command(dir.path())
                     .arg("completions")
                     .arg(shell)
                     .assert()
-                    .success();
-
-                let output = cmd.get_output();
-
-                assert!(!output.stdout.is_empty());
+                    .success()
+                    .stdout(predicates::str::is_empty().not());
             }
         }
     }
 
     mod init {
+        use predicates::prelude::PredicateBooleanExt;
         use tempfile::tempdir;
 
         use crate::test_cli::mdsf_command;
@@ -125,15 +123,12 @@ fn add(a: i32, b: i32) -> i32 {
         fn help_arg_outputs_message() {
             let dir = tempdir().unwrap();
 
-            let cmd = mdsf_command(dir.path())
+            mdsf_command(dir.path())
                 .arg("init")
                 .arg("--help")
                 .assert()
-                .success();
-
-            let output = cmd.get_output();
-
-            assert!(!output.stdout.is_empty());
+                .success()
+                .stdout(predicates::str::is_empty().not());
         }
 
         #[test]
@@ -175,18 +170,18 @@ fn add(a: i32, b: i32) -> i32 {
         fn supports_log_level_argument() {
             let dir = tempdir().unwrap();
 
-            let cmd = mdsf_command(dir.path())
+            mdsf_command(dir.path())
                 .arg("init")
                 .arg("--log-level")
                 .arg("off")
                 .assert()
-                .success();
-
-            assert!(cmd.get_output().stderr.is_empty());
+                .success()
+                .stderr(predicates::str::is_empty());
         }
     }
 
     mod cache_prune {
+        use predicates::prelude::PredicateBooleanExt;
         use tempfile::tempdir;
 
         use super::mdsf_command;
@@ -195,15 +190,12 @@ fn add(a: i32, b: i32) -> i32 {
         fn help_arg_outputs_message() {
             let dir = tempdir().unwrap();
 
-            let cmd = mdsf_command(dir.path())
+            mdsf_command(dir.path())
                 .arg("cache-prune")
                 .arg("--help")
                 .assert()
-                .success();
-
-            let output = cmd.get_output();
-
-            assert!(!output.stdout.is_empty());
+                .success()
+                .stdout(predicates::str::is_empty().not());
         }
 
         #[test]
@@ -220,19 +212,19 @@ fn add(a: i32, b: i32) -> i32 {
         fn supports_log_level_argument() {
             let dir = tempdir().unwrap();
 
-            let cmd = mdsf_command(dir.path())
+            mdsf_command(dir.path())
                 .arg("cache-prune")
                 .arg("--log-level")
                 .arg("off")
                 .assert()
-                .success();
-
-            assert!(cmd.get_output().stderr.is_empty());
+                .success()
+                .stderr(predicates::str::is_empty());
         }
     }
 
     mod verify {
         use mdsf::{cli::OnMissingLanguageDefinition, config::MdsfConfig};
+        use predicates::prelude::PredicateBooleanExt;
         use tempfile::tempdir;
 
         use super::{BROKEN_CODE, FORMATTED_CODE, mdsf_command, setup_test_input};
@@ -241,15 +233,12 @@ fn add(a: i32, b: i32) -> i32 {
         fn help_arg_outputs_message() {
             let dir = tempdir().unwrap();
 
-            let cmd = mdsf_command(dir.path())
+            mdsf_command(dir.path())
                 .arg("verify")
                 .arg("--help")
                 .assert()
-                .success();
-
-            let output = cmd.get_output();
-
-            assert!(!output.stdout.is_empty());
+                .success()
+                .stdout(predicates::str::is_empty().not());
         }
 
         #[test]
@@ -490,16 +479,15 @@ fn add(a: i32, b: i32) -> i32 {
 
             mdsf_command(dir.path()).arg("init").assert().success();
 
-            let cmd = mdsf_command(dir.path())
+            mdsf_command(dir.path())
                 .arg("verify")
                 .arg("--stdin")
                 .arg("--log-level")
                 .arg("off")
                 .write_stdin(FORMATTED_CODE)
                 .assert()
-                .success();
-
-            assert!(cmd.get_output().stderr.is_empty());
+                .success()
+                .stderr(predicates::str::is_empty());
         }
 
         #[test]
@@ -695,6 +683,7 @@ fn add(a: i32, b: i32) -> i32 {
 
     mod format {
         use mdsf::{cli::OnMissingLanguageDefinition, config::MdsfConfig};
+        use predicates::prelude::PredicateBooleanExt;
         use tempfile::tempdir;
 
         use crate::test_cli::{FORMATTED_CODE, mdsf_command};
@@ -705,15 +694,12 @@ fn add(a: i32, b: i32) -> i32 {
         fn help_arg_outputs_message() {
             let dir = tempdir().unwrap();
 
-            let cmd = mdsf_command(dir.path())
+            mdsf_command(dir.path())
                 .arg("format")
                 .arg("--help")
                 .assert()
-                .success();
-
-            let output = cmd.get_output();
-
-            assert!(!output.stdout.is_empty());
+                .success()
+                .stdout(predicates::str::is_empty().not());
         }
 
         #[test]
@@ -761,16 +747,13 @@ fn add(a: i32, b: i32) -> i32 {
 
             mdsf_command(dir.path()).arg("init").assert().success();
 
-            let cmd = mdsf_command(dir.path())
+            mdsf_command(dir.path())
                 .arg("format")
                 .arg("--stdin")
                 .write_stdin(BROKEN_CODE)
                 .assert()
-                .success();
-
-            let stdout_output = String::from_utf8(cmd.get_output().stdout.clone()).unwrap();
-
-            assert_eq!(stdout_output.trim_end(), FORMATTED_CODE.trim_end());
+                .success()
+                .stdout(predicates::str::contains(FORMATTED_CODE));
         }
 
         #[test]
@@ -869,7 +852,7 @@ fn add(a: i32, b: i32) -> i32 {
             let file = setup_test_input(dir.path(), BROKEN_CODE);
 
             for i in 0..10 {
-                let cmd = mdsf_command(dir.path())
+                let mut cmd = mdsf_command(dir.path())
                     .arg("format")
                     .arg("--cache")
                     .arg(file.path())
@@ -879,13 +862,12 @@ fn add(a: i32, b: i32) -> i32 {
                 let output = std::fs::read_to_string(file.path()).unwrap();
                 assert_eq!(output, FORMATTED_CODE);
 
-                let stderr = String::from_utf8(cmd.get_output().stderr.clone()).unwrap();
                 if i > 0 {
-                    assert!(stderr.contains("(unchanged)"));
+                    cmd = cmd.stderr(predicates::str::contains("(unchanged)"));
                 }
 
                 if i > 1 {
-                    assert!(stderr.contains("(cached)"));
+                    cmd.stderr(predicates::str::contains("(cached)"));
                 }
             }
         }
@@ -901,14 +883,13 @@ fn add(a: i32, b: i32) -> i32 {
         fn supports_log_level_argument() {
             let dir = tempdir().unwrap();
 
-            let cmd = mdsf_command(dir.path())
+            mdsf_command(dir.path())
                 .arg("format")
                 .arg("--log-level")
                 .arg("off")
                 .assert()
-                .failure();
-
-            assert!(cmd.get_output().stderr.is_empty());
+                .failure()
+                .stderr(predicates::str::is_empty());
         }
 
         #[test]

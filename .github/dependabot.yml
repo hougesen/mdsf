@@ -1,38 +1,38 @@
 version: 2
 updates:
   - package-ecosystem: cargo
+    assignees: [hougesen]
     directory: /
+    open-pull-requests-limit: 100
     schedule:
       interval: daily
-    open-pull-requests-limit: 100
-    assignees: [hougesen]
   - package-ecosystem: cargo
+    assignees: [hougesen]
     directory: /mdsf
+    open-pull-requests-limit: 100
     schedule:
       interval: daily
-    open-pull-requests-limit: 100
-    assignees: [hougesen]
   - package-ecosystem: cargo
+    assignees: [hougesen]
     directory: /codegen
+    open-pull-requests-limit: 100
     schedule:
       interval: daily
-    open-pull-requests-limit: 100
-    assignees: [hougesen]
   - package-ecosystem: github-actions
+    assignees: [hougesen]
     directory: /
+    open-pull-requests-limit: 100
     schedule:
       interval: weekly
-    open-pull-requests-limit: 100
-    assignees: [hougesen]
   - package-ecosystem: npm
+    assignees: [hougesen]
     directory: /mdsf-vscode
+    open-pull-requests-limit: 100
     schedule:
       interval: weekly
-    open-pull-requests-limit: 100
-    assignees: [hougesen]
   - package-ecosystem: npm
+    assignees: [hougesen]
     directory: /github-action
+    open-pull-requests-limit: 100
     schedule:
       interval: weekly
-    open-pull-requests-limit: 100
-    assignees: [hougesen]
