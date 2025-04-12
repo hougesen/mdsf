@@ -1,7 +1,10 @@
 use json_comments::{CommentSettings, StripComments};
 
 use crate::{
-    cli::OnMissingToolBinary, error::MdsfError, execution::MdsfFormatter, languages::default_tools,
+    cli::{OnMissingLanguageDefinition, OnMissingToolBinary},
+    error::MdsfError,
+    execution::MdsfFormatter,
+    languages::default_tools,
     tools::Tooling,
 };
 
@@ -151,6 +154,10 @@ pub struct MdsfConfig {
     #[serde(default)]
     pub languages: std::collections::BTreeMap<String, MdsfFormatter<Tooling>>,
 
+    /// What to do when a codeblock language has no tools defined.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub on_missing_language_definition: Option<OnMissingLanguageDefinition>,
+
     /// What to do when the binary of a tool cannot be found.
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub on_missing_tool_binary: Option<OnMissingToolBinary>,
@@ -171,6 +178,7 @@ impl Default for MdsfConfig {
             format_finished_document: false,
             language_aliases: std::collections::BTreeMap::default(),
             languages: default_tools(),
+            on_missing_language_definition: None,
             on_missing_tool_binary: None,
             runners: MdsfConfigRunners::default(),
         }

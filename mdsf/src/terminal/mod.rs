@@ -88,11 +88,12 @@ pub fn print_error_running_tool(tool_name: &str, info: &LineInfo, stderr: &str) 
 }
 
 #[inline]
-pub fn warn_unknown_language(language_name: &str, filename: &std::path::Path) {
-    warn!(
-        "{} no tool configured for '{language_name}'",
-        filename.display()
-    );
+pub fn print_unknown_language(language: &str, path: &std::path::Path, error: bool) {
+    if error {
+        error!("{} no tool configured for '{language}'", path.display());
+    } else {
+        warn!("{} no tool configured for '{language}'", path.display());
+    }
 }
 
 #[inline]

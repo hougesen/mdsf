@@ -1,11 +1,12 @@
 use caching::CacheEntry;
-use cli::OnMissingToolBinary;
+use cli::{OnMissingLanguageDefinition, OnMissingToolBinary};
 use config::MdsfConfig;
+use error::{MdsfError, exit_with_error, set_exit_code_error};
 use execution::format_snippet;
 use parser::{indent_codeblock, parse_generic_codeblock, parse_go_codeblock, remove_go_package};
 use terminal::{
     print_changed_file, print_changed_file_error, print_error_reading_file,
-    print_error_saving_file, print_unchanged_file, warn_unknown_language,
+    print_error_saving_file, print_unchanged_file, print_unknown_language,
 };
 
 pub mod caching;
@@ -75,6 +76,7 @@ pub fn format_file(
     timeout: u64,
     debug_enabled: bool,
     on_missing_tool_binary: OnMissingToolBinary,
+    on_missing_language_definition: OnMissingLanguageDefinition,
 ) -> (bool, String) {
     let mut output = String::with_capacity(input.len() + 128);
 
@@ -143,7 +145,22 @@ pub fn format_file(
                 }
             } else {
                 if !language.is_empty() {
-                    warn_unknown_language(&language, filename);
+                    match on_missing_language_definition {
+                        OnMissingLanguageDefinition::Ignore => {
+                            print_unknown_language(&language, filename, false);
+                        }
+                        OnMissingLanguageDefinition::Fail => {
+                            print_unknown_language(&language, filename, true);
+
+                            set_exit_code_error();
+                        }
+                        OnMissingLanguageDefinition::FailFast => {
+                            exit_with_error(&MdsfError::MissingLanguageDefinition(
+                                filename.to_path_buf(),
+                                language,
+                            ));
+                        }
+                    }
                 }
 
                 output.push_str(line);
@@ -174,6 +191,7 @@ pub fn format_file(
     (output != input, output)
 }
 
+#[allow(clippy::too_many_arguments)]
 #[inline]
 fn format_or_use_cache(
     config: &MdsfConfig,
@@ -183,6 +201,7 @@ fn format_or_use_cache(
     timeout: u64,
     debug_enabled: bool,
     on_missing_tool_binary: OnMissingToolBinary,
+    on_missing_language_definition: OnMissingLanguageDefinition,
 ) -> (String, bool, bool) {
     if let Some(cached_value) = cache_entry.as_ref().and_then(caching::CacheEntry::get) {
         let modified = cached_value != input;
@@ -197,6 +216,7 @@ fn format_or_use_cache(
         timeout,
         debug_enabled,
         on_missing_tool_binary,
+        on_missing_language_definition,
     );
 
     if let Some(cache) = cache_entry {
@@ -207,6 +227,7 @@ fn format_or_use_cache(
     (output, modified, false)
 }
 
+#[allow(clippy::too_many_arguments)]
 #[inline]
 pub fn handle_file(
     config: &MdsfConfig,
@@ -216,6 +237,7 @@ pub fn handle_file(
     timeout: u64,
     debug_enabled: bool,
     on_missing_tool_binary: OnMissingToolBinary,
+    on_missing_language_definition: OnMissingLanguageDefinition,
 ) -> bool {
     let time = std::time::Instant::now();
 
@@ -237,6 +259,7 @@ pub fn handle_file(
                 timeout,
                 debug_enabled,
                 on_missing_tool_binary,
+                on_missing_language_definition,
             );
 
             if modified && output != input {
@@ -297,7 +320,7 @@ mod test_lib {
         format_file,
         fttype::get_file_extension,
         handle_file,
-        testing::DEFAULT_ERROR_ON_MISSING_TOOL,
+        testing::{DEFAULT_ON_MISSING_LANGUAGE_DEFINITION, DEFAULT_ON_MISSING_TOOL_BINARY},
         tools::Tooling,
     };
 
@@ -333,7 +356,8 @@ fn add(a: i32, b: i32) -> i32 {
                 input,
                 TIMEOUT,
                 DEBUG_ENABLED,
-                DEFAULT_ERROR_ON_MISSING_TOOL,
+                DEFAULT_ON_MISSING_TOOL_BINARY,
+                DEFAULT_ON_MISSING_LANGUAGE_DEFINITION,
             );
 
             assert!(modified);
@@ -352,7 +376,8 @@ fn add(a: i32, b: i32) -> i32 {
                 None,
                 TIMEOUT,
                 DEBUG_ENABLED,
-                DEFAULT_ERROR_ON_MISSING_TOOL
+                DEFAULT_ON_MISSING_TOOL_BINARY,
+                DEFAULT_ON_MISSING_LANGUAGE_DEFINITION,
             ));
 
             let output = std::fs::read_to_string(file.path()).expect("it to return the string");
@@ -404,7 +429,8 @@ fn           add(
                     &input,
                     TIMEOUT,
                     DEBUG_ENABLED,
-                    DEFAULT_ERROR_ON_MISSING_TOOL,
+                    DEFAULT_ON_MISSING_TOOL_BINARY,
+                    DEFAULT_ON_MISSING_LANGUAGE_DEFINITION,
                 );
 
                 assert!(modified);
@@ -423,7 +449,8 @@ fn           add(
                     None,
                     TIMEOUT,
                     DEBUG_ENABLED,
-                    DEFAULT_ERROR_ON_MISSING_TOOL,
+                    DEFAULT_ON_MISSING_TOOL_BINARY,
+                    DEFAULT_ON_MISSING_LANGUAGE_DEFINITION,
                 ));
 
                 let output = std::fs::read_to_string(file.path()).expect("it to return the string");
@@ -489,7 +516,8 @@ fn add(a: i32, b: i32) -> i32 {
             input,
             TIMEOUT,
             DEBUG_ENABLED,
-            DEFAULT_ERROR_ON_MISSING_TOOL,
+            DEFAULT_ON_MISSING_TOOL_BINARY,
+            DEFAULT_ON_MISSING_LANGUAGE_DEFINITION,
         );
 
         assert!(modified);
@@ -545,7 +573,8 @@ type Whatever struct {
                     input,
                     TIMEOUT,
                     DEBUG_ENABLED,
-                    DEFAULT_ERROR_ON_MISSING_TOOL,
+                    DEFAULT_ON_MISSING_TOOL_BINARY,
+                    DEFAULT_ON_MISSING_LANGUAGE_DEFINITION,
                 );
 
                 assert!(modified);
@@ -564,7 +593,8 @@ type Whatever struct {
                     None,
                     TIMEOUT,
                     DEBUG_ENABLED,
-                    DEFAULT_ERROR_ON_MISSING_TOOL
+                    DEFAULT_ON_MISSING_TOOL_BINARY,
+                    DEFAULT_ON_MISSING_LANGUAGE_DEFINITION,
                 ));
 
                 let output = std::fs::read_to_string(file.path()).expect("it to return the string");
@@ -589,7 +619,8 @@ type Whatever struct {
                     input,
                     TIMEOUT,
                     DEBUG_ENABLED,
-                    DEFAULT_ERROR_ON_MISSING_TOOL,
+                    DEFAULT_ON_MISSING_TOOL_BINARY,
+                    DEFAULT_ON_MISSING_LANGUAGE_DEFINITION,
                 );
 
                 assert!(modified);
@@ -608,7 +639,8 @@ type Whatever struct {
                     None,
                     TIMEOUT,
                     DEBUG_ENABLED,
-                    DEFAULT_ERROR_ON_MISSING_TOOL
+                    DEFAULT_ON_MISSING_TOOL_BINARY,
+                    DEFAULT_ON_MISSING_LANGUAGE_DEFINITION,
                 ));
 
                 let output = std::fs::read_to_string(file.path()).expect("it to return the string");
@@ -661,7 +693,8 @@ type Whatever struct {
                     input,
                     TIMEOUT,
                     DEBUG_ENABLED,
-                    DEFAULT_ERROR_ON_MISSING_TOOL,
+                    DEFAULT_ON_MISSING_TOOL_BINARY,
+                    DEFAULT_ON_MISSING_LANGUAGE_DEFINITION,
                 );
 
                 assert!(modified);
@@ -680,7 +713,8 @@ type Whatever struct {
                     None,
                     TIMEOUT,
                     DEBUG_ENABLED,
-                    DEFAULT_ERROR_ON_MISSING_TOOL
+                    DEFAULT_ON_MISSING_TOOL_BINARY,
+                    DEFAULT_ON_MISSING_LANGUAGE_DEFINITION,
                 ));
 
                 let output = std::fs::read_to_string(file.path()).expect("it to return the string");
@@ -706,7 +740,8 @@ type Whatever struct {
                     input,
                     TIMEOUT,
                     DEBUG_ENABLED,
-                    DEFAULT_ERROR_ON_MISSING_TOOL,
+                    DEFAULT_ON_MISSING_TOOL_BINARY,
+                    DEFAULT_ON_MISSING_LANGUAGE_DEFINITION,
                 );
 
                 assert!(modified);
@@ -725,7 +760,8 @@ type Whatever struct {
                     None,
                     TIMEOUT,
                     DEBUG_ENABLED,
-                    DEFAULT_ERROR_ON_MISSING_TOOL,
+                    DEFAULT_ON_MISSING_TOOL_BINARY,
+                    DEFAULT_ON_MISSING_LANGUAGE_DEFINITION,
                 ));
 
                 let output = std::fs::read_to_string(file.path()).expect("it to return the string");
@@ -808,7 +844,8 @@ func add(a int, b int) int {
                     input,
                     TIMEOUT,
                     DEBUG_ENABLED,
-                    DEFAULT_ERROR_ON_MISSING_TOOL,
+                    DEFAULT_ON_MISSING_TOOL_BINARY,
+                    DEFAULT_ON_MISSING_LANGUAGE_DEFINITION,
                 );
 
                 assert!(modified);
@@ -827,7 +864,8 @@ func add(a int, b int) int {
                     None,
                     TIMEOUT,
                     DEBUG_ENABLED,
-                    DEFAULT_ERROR_ON_MISSING_TOOL
+                    DEFAULT_ON_MISSING_TOOL_BINARY,
+                    DEFAULT_ON_MISSING_LANGUAGE_DEFINITION,
                 ));
 
                 let output = std::fs::read_to_string(file.path()).expect("it to return the string");
@@ -852,7 +890,8 @@ func add(a int, b int) int {
                     input,
                     TIMEOUT,
                     DEBUG_ENABLED,
-                    DEFAULT_ERROR_ON_MISSING_TOOL,
+                    DEFAULT_ON_MISSING_TOOL_BINARY,
+                    DEFAULT_ON_MISSING_LANGUAGE_DEFINITION,
                 );
 
                 assert!(modified);
@@ -871,7 +910,8 @@ func add(a int, b int) int {
                     None,
                     TIMEOUT,
                     DEBUG_ENABLED,
-                    DEFAULT_ERROR_ON_MISSING_TOOL,
+                    DEFAULT_ON_MISSING_TOOL_BINARY,
+                    DEFAULT_ON_MISSING_LANGUAGE_DEFINITION,
                 ));
 
                 let output = std::fs::read_to_string(file.path()).expect("it to return the string");

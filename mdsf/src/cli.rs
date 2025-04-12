@@ -73,6 +73,41 @@ impl clap::ValueEnum for OnMissingToolBinary {
     }
 }
 
+#[derive(
+    Clone, Copy, PartialEq, Eq, Debug, Default, serde::Serialize, serde::Deserialize, Hash,
+)]
+#[cfg_attr(feature = "json-schema", derive(schemars::JsonSchema))]
+pub enum OnMissingLanguageDefinition {
+    /// Allow missing binaries.
+    #[default]
+    #[serde(rename = "ignore")]
+    Ignore,
+
+    /// Exit with status code 1 when finished.
+    #[serde(rename = "fail")]
+    Fail,
+
+    /// Instantly exit with status code 1.
+    #[serde(rename = "fail-fast")]
+    FailFast,
+}
+
+impl clap::ValueEnum for OnMissingLanguageDefinition {
+    #[inline]
+    fn value_variants<'a>() -> &'a [Self] {
+        &[Self::Ignore, Self::Fail, Self::FailFast]
+    }
+
+    #[inline]
+    fn to_possible_value(&self) -> Option<clap::builder::PossibleValue> {
+        Some(match self {
+            Self::Ignore => clap::builder::PossibleValue::new("ignore"),
+            Self::Fail => clap::builder::PossibleValue::new("fail"),
+            Self::FailFast => clap::builder::PossibleValue::new("fail-fast"),
+        })
+    }
+}
+
 #[derive(Args, Debug)]
 pub struct FormatCommandArguments {
     /// Path to files and/or directories.
@@ -106,6 +141,10 @@ pub struct FormatCommandArguments {
     /// Defaults to no timeout.
     #[arg(long)]
     pub timeout: Option<u64>,
+
+    /// What to do when a codeblock language has no tools defined.
+    #[arg(long)]
+    pub on_missing_language_definition: Option<OnMissingLanguageDefinition>,
 
     /// What to do when the binary of a tool cannot be found.
     #[arg(long)]
@@ -142,6 +181,10 @@ pub struct VerifyCommandArguments {
     #[arg(long)]
     pub timeout: Option<u64>,
 
+    /// What to do when a codeblock language has no tools defined.
+    #[arg(long)]
+    pub on_missing_language_definition: Option<OnMissingLanguageDefinition>,
+
     /// What to do when the binary of a tool cannot be found.
     #[arg(long)]
     pub on_missing_tool_binary: Option<OnMissingToolBinary>,
@@ -154,6 +197,7 @@ impl From<VerifyCommandArguments> for FormatCommandArguments {
             cache: false,
             config: value.config,
             debug: value.debug,
+            on_missing_language_definition: value.on_missing_language_definition,
             on_missing_tool_binary: value.on_missing_tool_binary,
             input: value.input,
             stdin: value.stdin,
