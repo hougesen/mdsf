@@ -1,4 +1,5 @@
 use caching::CacheEntry;
+use cli::OnMissingToolBinary;
 use config::MdsfConfig;
 use execution::format_snippet;
 use parser::{indent_codeblock, parse_generic_codeblock, parse_go_codeblock, remove_go_package};
@@ -73,7 +74,7 @@ pub fn format_file(
     input: &str,
     timeout: u64,
     debug_enabled: bool,
-    error_on_missing_tool: bool,
+    on_missing_tool_binary: OnMissingToolBinary,
 ) -> (bool, String) {
     let mut output = String::with_capacity(input.len() + 128);
 
@@ -114,7 +115,7 @@ pub fn format_file(
                         &code_snippet,
                         timeout,
                         debug_enabled,
-                        error_on_missing_tool,
+                        on_missing_tool_binary,
                     );
 
                     let formatted = if is_go {
@@ -166,7 +167,7 @@ pub fn format_file(
             &output,
             timeout,
             debug_enabled,
-            error_on_missing_tool,
+            on_missing_tool_binary,
         );
     }
 
@@ -181,7 +182,7 @@ fn format_or_use_cache(
     cache_entry: Option<CacheEntry>,
     timeout: u64,
     debug_enabled: bool,
-    error_on_missing_tool: bool,
+    on_missing_tool_binary: OnMissingToolBinary,
 ) -> (String, bool, bool) {
     if let Some(cached_value) = cache_entry.as_ref().and_then(caching::CacheEntry::get) {
         let modified = cached_value != input;
@@ -195,7 +196,7 @@ fn format_or_use_cache(
         input,
         timeout,
         debug_enabled,
-        error_on_missing_tool,
+        on_missing_tool_binary,
     );
 
     if let Some(cache) = cache_entry {
@@ -214,7 +215,7 @@ pub fn handle_file(
     config_hash: Option<String>,
     timeout: u64,
     debug_enabled: bool,
-    error_on_missing_tool: bool,
+    on_missing_tool_binary: OnMissingToolBinary,
 ) -> bool {
     let time = std::time::Instant::now();
 
@@ -235,7 +236,7 @@ pub fn handle_file(
                 cache_entry,
                 timeout,
                 debug_enabled,
-                error_on_missing_tool,
+                on_missing_tool_binary,
             );
 
             if modified && output != input {

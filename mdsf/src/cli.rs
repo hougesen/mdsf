@@ -22,25 +22,54 @@ pub struct Cli {
 
 #[derive(Subcommand, Debug)]
 pub enum Commands {
-    /// Run formatters on input files.
+    /// Run formatters on input files
     Format(FormatCommandArguments),
 
-    /// Verify files are formatted.
+    /// Verify files are formatted
     Verify(VerifyCommandArguments),
 
-    /// Create a new mdsf config.
+    /// Create a new mdsf config
     Init(InitCommandArguments),
 
-    /// Generate shell completion.
+    /// Generate shell completion
     Completions(CompletionsCommandArguments),
 
-    /// Remove caches.
+    /// Remove caches
     CachePrune,
+}
+
+#[derive(Clone, Copy, PartialEq, Eq, Debug, Default)]
+pub enum OnMissingToolBinary {
+    /// Allow missing binaries
+    #[default]
+    Allow,
+
+    /// Exit with status code 1 when finished
+    Continue,
+
+    /// Instantly exit with status code 1
+    FailFast,
+}
+
+impl clap::ValueEnum for OnMissingToolBinary {
+    #[inline]
+    fn value_variants<'a>() -> &'a [Self] {
+        &[Self::Allow, Self::Continue, Self::FailFast]
+    }
+
+    #[inline]
+    fn to_possible_value(&self) -> Option<clap::builder::PossibleValue> {
+        Some(match self {
+            OnMissingToolBinary::Allow => clap::builder::PossibleValue::new("allow"),
+            OnMissingToolBinary::Continue => clap::builder::PossibleValue::new("continue"),
+            OnMissingToolBinary::FailFast => clap::builder::PossibleValue::new("fail-fast"),
+        })
+    }
 }
 
 #[derive(Args, Debug)]
 pub struct FormatCommandArguments {
-    /// Path to files and/or directories.
+    /// Path to files and/or directories
     #[arg()]
     pub input: Vec<std::path::PathBuf>,
 
@@ -48,7 +77,7 @@ pub struct FormatCommandArguments {
     #[arg(long, default_value_t = false)]
     pub stdin: bool,
 
-    /// Path to config
+    /// Path to config file
     #[arg(long)]
     pub config: Option<std::path::PathBuf>,
 
@@ -56,9 +85,9 @@ pub struct FormatCommandArguments {
     #[arg(long, default_value_t = false)]
     pub debug: bool,
 
-    /// Amount of threads to use.
+    /// Amount of threads to use
     ///
-    /// Defaults to 0 (auto).
+    /// Defaults to 0 (auto)
     #[arg(long)]
     pub threads: Option<usize>,
 
@@ -72,14 +101,14 @@ pub struct FormatCommandArguments {
     #[arg(long)]
     pub timeout: Option<u64>,
 
-    /// Fail fast if a defined tool is missing
-    #[arg(long, default_value_t = false)]
-    pub error_on_missing_tool: bool,
+    /// What to do when the binary of a tool cannot be found
+    #[arg(long)]
+    pub on_missing_tool_binary: Option<OnMissingToolBinary>,
 }
 
 #[derive(Args, Debug)]
 pub struct VerifyCommandArguments {
-    /// Path to files and/or directories.
+    /// Path to files and/or directories
     #[arg()]
     pub input: Vec<std::path::PathBuf>,
 
@@ -87,7 +116,7 @@ pub struct VerifyCommandArguments {
     #[arg(long, default_value_t = false)]
     pub stdin: bool,
 
-    /// Path to config
+    /// Path to config file
     #[arg(long)]
     pub config: Option<std::path::PathBuf>,
 
@@ -95,9 +124,9 @@ pub struct VerifyCommandArguments {
     #[arg(long, default_value_t = false)]
     pub debug: bool,
 
-    /// Amount of threads to use.
+    /// Amount of threads to use
     ///
-    /// Defaults to 0 (auto).
+    /// Defaults to 0 (auto)
     #[arg(long)]
     pub threads: Option<usize>,
 
@@ -107,9 +136,9 @@ pub struct VerifyCommandArguments {
     #[arg(long)]
     pub timeout: Option<u64>,
 
-    /// Fail fast if a defined tool is missing
-    #[arg(long, default_value_t = false)]
-    pub error_on_missing_tool: bool,
+    /// What to do when the binary of a tool cannot be found
+    #[arg(long)]
+    pub on_missing_tool_binary: Option<OnMissingToolBinary>,
 }
 
 impl From<VerifyCommandArguments> for FormatCommandArguments {
@@ -119,7 +148,7 @@ impl From<VerifyCommandArguments> for FormatCommandArguments {
             cache: false,
             config: value.config,
             debug: value.debug,
-            error_on_missing_tool: value.error_on_missing_tool,
+            on_missing_tool_binary: value.on_missing_tool_binary,
             input: value.input,
             stdin: value.stdin,
             threads: value.threads,

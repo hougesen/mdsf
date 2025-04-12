@@ -159,15 +159,15 @@ Options:
           Read input from stdin and write output to stdout
 
       --config <CONFIG>
-          Path to config
+          Path to config file
 
       --debug
           Log stdout and stderr of formatters
 
       --threads <THREADS>
-          Amount of threads to use.
+          Amount of threads to use
 
-          Defaults to 0 (auto).
+          Defaults to 0 (auto)
 
       --cache
           Cache results
@@ -180,8 +180,10 @@ Options:
 
           Defaults to no timeout
 
-      --error-on-missing-tool
-          Fail fast if a defined tool is missing
+      --on-missing-tool-binary <ON_MISSING_TOOL_BINARY>
+          What to do when the binary of a tool cannot be found
+
+          [possible values: allow, continue, fail-fast]
 
   -h, --help
           Print help (see a summary with '-h')
@@ -243,26 +245,28 @@ Options:
           Read input from stdin and write output to stdout
 
       --config <CONFIG>
-          Path to config
+          Path to config file
 
       --debug
           Log stdout and stderr of formatters
 
       --threads <THREADS>
-          Amount of threads to use.
+          Amount of threads to use
 
-          Defaults to 0 (auto).
+          Defaults to 0 (auto)
 
       --timeout <TIMEOUT>
           Tool timeout in seconds
 
           Defaults to no timeout
 
-      --error-on-missing-tool
-          Fail fast if a defined tool is missing
-
       --log-level <LOG_LEVEL>
           [possible values: trace, debug, info, warn, error, off]
+
+      --on-missing-tool-binary <ON_MISSING_TOOL_BINARY>
+          What to do when the binary of a tool cannot be found
+
+          [possible values: allow, continue, fail-fast]
 
   -h, --help
           Print help (see a summary with '-h')
