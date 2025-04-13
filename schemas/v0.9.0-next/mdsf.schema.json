@@ -585,6 +585,11 @@
           "enum": ["duster:lint"]
         },
         {
+          "description": "Dioxus cli\n\n[https://github.com/dioxuslabs/dioxus](https://github.com/dioxuslabs/dioxus)\n\n`dx fmt --all-code --file $PATH`",
+          "type": "string",
+          "enum": ["dx:fmt"]
+        },
+        {
           "description": "The Easiest way to add coding standard to your PHP project\n\n[https://github.com/easy-coding-standard/easy-coding-standard](https://github.com/easy-coding-standard/easy-coding-standard)\n\n`ecs check $PATH --fix --no-interaction`",
           "type": "string",
           "enum": ["easy-coding-standard"]

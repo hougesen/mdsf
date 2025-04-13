@@ -117,6 +117,8 @@ jobs:
         run: ( ( which dockerfmt ) || ( ( which go && go install github.com/reteps/dockerfmt@latest ) ) || ( echo "Unable to install tool" ) )
       - name: dotnet
         run: ( ( which csharpier ) || ( ( which dotnet && dotnet tool install -g csharpier ) ) || ( echo "Unable to install tool" ) )
+      - name: dx
+        run: ( ( which dx ) || ( ( which cargo && ( cargo binstall dioxus-cli || cargo install dioxus-cli ) ) ) || ( echo "Unable to install tool" ) )
       - name: efmt
         run: ( ( which efmt ) || ( ( which cargo && ( cargo binstall efmt || cargo install efmt ) ) ) || ( echo "Unable to install tool" ) )
       - name: elm-format

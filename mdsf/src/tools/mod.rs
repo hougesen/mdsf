@@ -86,6 +86,7 @@ pub mod dscanner_fix;
 pub mod dscanner_lint;
 pub mod duster_fix;
 pub mod duster_lint;
+pub mod dx_fmt;
 pub mod easy_coding_standard;
 pub mod efmt;
 pub mod elm_format;
@@ -1018,6 +1019,14 @@ pub enum Tooling {
     ///
     /// `duster lint --quiet --no-interaction $PATH`
     DusterLint,
+
+    #[serde(rename = "dx:fmt")]
+    /// Dioxus cli
+    ///
+    /// [https://github.com/dioxuslabs/dioxus](https://github.com/dioxuslabs/dioxus)
+    ///
+    /// `dx fmt --all-code --file $PATH`
+    DxFmt,
 
     #[serde(rename = "easy-coding-standard")]
     /// The Easiest way to add coding standard to your PHP project
@@ -3320,6 +3329,7 @@ impl Tooling {
                 duster_lint::set_args,
                 duster_lint::IS_STDIN,
             ),
+            Self::DxFmt => (&dx_fmt::COMMANDS, dx_fmt::set_args, dx_fmt::IS_STDIN),
             Self::EasyCodingStandard => (
                 &easy_coding_standard::COMMANDS,
                 easy_coding_standard::set_args,
@@ -4181,6 +4191,7 @@ impl AsRef<str> for Tooling {
             Self::DscannerLint => "dscanner:lint",
             Self::DusterFix => "duster:fix",
             Self::DusterLint => "duster:lint",
+            Self::DxFmt => "dx:fmt",
             Self::EasyCodingStandard => "easy-coding-standard",
             Self::Efmt => "efmt",
             Self::ElmFormat => "elm-format",
@@ -4537,6 +4548,7 @@ mod test_tooling {
         assert_eq!(Tooling::DscannerLint, reverse(Tooling::DscannerLint)?);
         assert_eq!(Tooling::DusterFix, reverse(Tooling::DusterFix)?);
         assert_eq!(Tooling::DusterLint, reverse(Tooling::DusterLint)?);
+        assert_eq!(Tooling::DxFmt, reverse(Tooling::DxFmt)?);
         assert_eq!(
             Tooling::EasyCodingStandard,
             reverse(Tooling::EasyCodingStandard)?
