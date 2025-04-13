@@ -7,6 +7,7 @@ All notable changes to this project will be documented in this file. Dates are d
 - feat(tools): add support for cue [`#962`](https://github.com/hougesen/mdsf/pull/962)
 - feat(tools): add support for atlas [`#961`](https://github.com/hougesen/mdsf/pull/961)
 - chore: update version to dev [`020a67a`](https://github.com/hougesen/mdsf/commit/020a67a65be83dba53c6ac69d68cea3bd9b953a8)
+- feat(tools): add support for cueimports [`1e18778`](https://github.com/hougesen/mdsf/commit/1e1877826b8fb98b976f6a30f0402bfb0e8a27fd)
 
 #### [v0.9.0](https://github.com/hougesen/mdsf/compare/v0.8.5...v0.9.0)
 

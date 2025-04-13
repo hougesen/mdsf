@@ -575,6 +575,16 @@
           "enum": ["dscanner:lint"]
         },
         {
+          "description": "Automatic configuration for Laravel apps to apply Tighten's standard linting & code standards\n\n[https://github.com/tighten/duster](https://github.com/tighten/duster)\n\n`duster fix --quiet --no-interaction $PATH`",
+          "type": "string",
+          "enum": ["duster:fix"]
+        },
+        {
+          "description": "Automatic configuration for Laravel apps to apply Tighten's standard linting & code standards\n\n[https://github.com/tighten/duster](https://github.com/tighten/duster)\n\n`duster lint --quiet --no-interaction $PATH`",
+          "type": "string",
+          "enum": ["duster:lint"]
+        },
+        {
           "description": "The Easiest way to add coding standard to your PHP project\n\n[https://github.com/easy-coding-standard/easy-coding-standard](https://github.com/easy-coding-standard/easy-coding-standard)\n\n`ecs check $PATH --fix --no-interaction`",
           "type": "string",
           "enum": ["easy-coding-standard"]

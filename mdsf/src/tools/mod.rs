@@ -84,6 +84,8 @@ pub mod dotenv_linter_fix;
 pub mod dprint_fmt;
 pub mod dscanner_fix;
 pub mod dscanner_lint;
+pub mod duster_fix;
+pub mod duster_lint;
 pub mod easy_coding_standard;
 pub mod efmt;
 pub mod elm_format;
@@ -1000,6 +1002,22 @@ pub enum Tooling {
     ///
     /// `dscanner lint $PATH`
     DscannerLint,
+
+    #[serde(rename = "duster:fix")]
+    /// Automatic configuration for Laravel apps to apply Tighten's standard linting & code standards
+    ///
+    /// [https://github.com/tighten/duster](https://github.com/tighten/duster)
+    ///
+    /// `duster fix --quiet --no-interaction $PATH`
+    DusterFix,
+
+    #[serde(rename = "duster:lint")]
+    /// Automatic configuration for Laravel apps to apply Tighten's standard linting & code standards
+    ///
+    /// [https://github.com/tighten/duster](https://github.com/tighten/duster)
+    ///
+    /// `duster lint --quiet --no-interaction $PATH`
+    DusterLint,
 
     #[serde(rename = "easy-coding-standard")]
     /// The Easiest way to add coding standard to your PHP project
@@ -3292,6 +3310,16 @@ impl Tooling {
                 dscanner_lint::set_args,
                 dscanner_lint::IS_STDIN,
             ),
+            Self::DusterFix => (
+                &duster_fix::COMMANDS,
+                duster_fix::set_args,
+                duster_fix::IS_STDIN,
+            ),
+            Self::DusterLint => (
+                &duster_lint::COMMANDS,
+                duster_lint::set_args,
+                duster_lint::IS_STDIN,
+            ),
             Self::EasyCodingStandard => (
                 &easy_coding_standard::COMMANDS,
                 easy_coding_standard::set_args,
@@ -4151,6 +4179,8 @@ impl AsRef<str> for Tooling {
             Self::DprintFmt => "dprint:fmt",
             Self::DscannerFix => "dscanner:fix",
             Self::DscannerLint => "dscanner:lint",
+            Self::DusterFix => "duster:fix",
+            Self::DusterLint => "duster:lint",
             Self::EasyCodingStandard => "easy-coding-standard",
             Self::Efmt => "efmt",
             Self::ElmFormat => "elm-format",
@@ -4505,6 +4535,8 @@ mod test_tooling {
         assert_eq!(Tooling::DprintFmt, reverse(Tooling::DprintFmt)?);
         assert_eq!(Tooling::DscannerFix, reverse(Tooling::DscannerFix)?);
         assert_eq!(Tooling::DscannerLint, reverse(Tooling::DscannerLint)?);
+        assert_eq!(Tooling::DusterFix, reverse(Tooling::DusterFix)?);
+        assert_eq!(Tooling::DusterLint, reverse(Tooling::DusterLint)?);
         assert_eq!(
             Tooling::EasyCodingStandard,
             reverse(Tooling::EasyCodingStandard)?
