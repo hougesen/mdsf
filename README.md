@@ -10,37 +10,36 @@ Format, and lint, markdown code snippets using your favorite tools.
 
 <!-- START_SECTION:toc -->
 
-- [mdsf](#mdsf)
-  - [Table of contents](#table-of-contents)
-  - [Installation](#installation)
-    - [Linux & MacOS](#linux--macos)
-    - [Windows](#windows)
-    - [Cargo](#cargo)
-    - [npm/npx](#npmnpx)
-    - [Homebrew](#homebrew)
-    - [Conda](#conda)
-  - [Usage](#usage)
-    - [Formatting code](#formatting-code)
-      - [Caching formatting results](#caching-formatting-results)
-        - [Removing old caches](#removing-old-caches)
-    - [Verifying code](#verifying-code)
-    - [GitHub Action](#github-action)
-    - [Visual Studio Code](#visual-studio-code)
-    - [Vim / NeoVim](#vim--neovim)
-      - [conform.nvim](#conformnvim)
-    - [treefmt](#treefmt)
-  - [Configuration](#configuration)
-    - [Tools](#tools)
-    - [Commands](#commands)
-  - [Shell completions](#shell-completions)
-    - [Bash](#bash)
-    - [Bash](#bash-1)
-    - [Fish](#fish)
-    - [PowerShell](#powershell)
-    - [Elvish](#elvish)
-    - [Nushell](#nushell)
-  - [Acknowledgement](#acknowledgement)
-  - [Alternatives to mdsf](#alternatives-to-mdsf)
+- [Table of contents](#table-of-contents)
+- [Installation](#installation)
+  - [Linux & MacOS](#linux--macos)
+  - [Windows](#windows)
+  - [Cargo](#cargo)
+  - [npm/npx](#npmnpx)
+  - [Homebrew](#homebrew)
+  - [Conda](#conda)
+- [Usage](#usage)
+  - [Formatting code](#formatting-code)
+    - [Caching formatting results](#caching-formatting-results)
+      - [Removing old caches](#removing-old-caches)
+  - [Verifying code](#verifying-code)
+  - [GitHub Action](#github-action)
+  - [Visual Studio Code](#visual-studio-code)
+  - [Vim / NeoVim](#vim--neovim)
+    - [conform.nvim](#conformnvim)
+  - [treefmt](#treefmt)
+- [Configuration](#configuration)
+  - [Tools](#tools)
+  - [Commands](#commands)
+- [Shell completions](#shell-completions)
+  - [Bash](#bash)
+  - [Zsh](#zsh)
+  - [Fish](#fish)
+  - [PowerShell](#powershell)
+  - [Elvish](#elvish)
+  - [Nushell](#nushell)
+- [Acknowledgement](#acknowledgement)
+- [Alternatives to mdsf](#alternatives-to-mdsf)
 
 <!-- END_SECTION:toc -->
 
@@ -418,7 +417,7 @@ Options:
 
 <!-- START_SECTION:supported-tools -->
 
-`mdsf` currently supports 298 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 299 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                                                                                 | Description                                                                                                                                   | Categories            | Languages                                                                                                                         |
 | ------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
@@ -430,6 +429,7 @@ Options:
 | [ansible-lint](https://github.com/ansible/ansible-lint)                              | ansible-lint checks playbooks for practices and behavior that could potentially be improved and can fix some of the most common ones for you  | `linter`              | `ansible`                                                                                                                         |
 | [asmfmt](https://github.com/klauspost/asmfmt)                                        | Go Assembler Formatter                                                                                                                        | `formatter`           | `go`                                                                                                                              |
 | [astyle](https://gitlab.com/saalen/astyle)                                           | A Free, Fast, and Small Automatic Formatter for C, C++, C++/CLI, Objective-C, C#, and Java Source Code                                        | `formatter`           | `c#`, `c++`, `c`, `java`, `objective-c`                                                                                           |
+| [atlas](https://github.com/ariga/atlas)                                              | Manage your database schema as code                                                                                                           | `formatter`           | `hcl`                                                                                                                             |
 | [auto-optional](https://github.com/luttik/auto-optional)                             | Adds the Optional type-hint to arguments where the default value is None                                                                      | `formatter`           | `python`                                                                                                                          |
 | [autocorrect](https://github.com/huacnlee/autocorrect)                               | A linter and formatter to help you to improve copywriting, correct spaces, words, and punctuations between CJK (Chinese, Japanese, Korean)    | `spell-check`         |                                                                                                                                   |
 | [autoflake](https://github.com/pycqa/autoflake)                                      | Removes unused imports and unused variables as reported by pyflakes                                                                           | `linter`              | `python`                                                                                                                          |
@@ -727,7 +727,7 @@ Options:
 
 <!-- START_SECTION:supported-commands -->
 
-`mdsf` currently supports 329 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 330 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                         | Command                                                                                 |
 | ---------------------------- | --------------------------------------------------------------------------------------- |
@@ -739,6 +739,7 @@ Options:
 | `ansible-lint`               | `ansible-lint $PATH`                                                                    |
 | `asmfmt`                     | `asmfmt -w $PATH`                                                                       |
 | `astyle`                     | `astyle --quiet $PATH`                                                                  |
+| `atlas:fmt`                  | `atlas schema fmt $PATH`                                                                |
 | `auto-optional`              | `auto-optional $PATH`                                                                   |
 | `autocorrect`                | `autocorrect --fix $PATH`                                                               |
 | `autoflake`                  | `autoflake --quiet --in-place $PATH`                                                    |
@@ -1085,7 +1086,7 @@ Options:
 
 <!-- END_SECTION:completions-command-help -->
 
-#### Bash
+### Bash
 
 Add the following to your `.bashrc`.
 
@@ -1093,7 +1094,7 @@ Add the following to your `.bashrc`.
 eval "$(mdsf completions bash)"
 ```
 
-#### Bash
+### Zsh
 
 Add the following to your `.zshrc`.
 
@@ -1101,7 +1102,7 @@ Add the following to your `.zshrc`.
 eval "$(mdsf completions zsh)"
 ```
 
-#### Fish
+### Fish
 
 Add the following to `~/.config/fish/config.fish`.
 
@@ -1109,7 +1110,7 @@ Add the following to `~/.config/fish/config.fish`.
 mdsf completions fish | source
 ```
 
-#### PowerShell
+### PowerShell
 
 Add the following to your PowerShell configuration (Can be found by running `$PROFILE`).
 
@@ -1117,7 +1118,7 @@ Add the following to your PowerShell configuration (Can be found by running `$PR
 Invoke-Expression (&mdsf completions powershell)
 ```
 
-#### Elvish
+### Elvish
 
 Add the following to `~/.elvish/rc.elv`.
 
@@ -1125,7 +1126,7 @@ Add the following to `~/.elvish/rc.elv`.
 eval (mdsf completions elvish)
 ```
 
-#### Nushell
+### Nushell
 
 Generate completions for [nushell](https://github.com/nushell/nushell).
 

@@ -9,6 +9,7 @@ pub mod ameba;
 pub mod ansible_lint;
 pub mod asmfmt;
 pub mod astyle;
+pub mod atlas_fmt;
 pub mod auto_optional;
 pub mod autocorrect;
 pub mod autoflake;
@@ -397,6 +398,14 @@ pub enum Tooling {
     ///
     /// `astyle --quiet $PATH`
     Astyle,
+
+    #[serde(rename = "atlas:fmt")]
+    /// Formats Atlas HCL files
+    ///
+    /// [https://atlasgo.io/cli-reference#atlas-schema-fmt](https://atlasgo.io/cli-reference#atlas-schema-fmt)
+    ///
+    /// `atlas schema fmt $PATH`
+    AtlasFmt,
 
     #[serde(rename = "auto-optional")]
     /// Adds the Optional type-hint to arguments where the default value is None
@@ -3006,6 +3015,11 @@ impl Tooling {
             ),
             Self::Asmfmt => (&asmfmt::COMMANDS, asmfmt::set_args, asmfmt::IS_STDIN),
             Self::Astyle => (&astyle::COMMANDS, astyle::set_args, astyle::IS_STDIN),
+            Self::AtlasFmt => (
+                &atlas_fmt::COMMANDS,
+                atlas_fmt::set_args,
+                atlas_fmt::IS_STDIN,
+            ),
             Self::AutoOptional => (
                 &auto_optional::COMMANDS,
                 auto_optional::set_args,
@@ -4038,6 +4052,7 @@ impl AsRef<str> for Tooling {
             Self::AnsibleLint => "ansible-lint",
             Self::Asmfmt => "asmfmt",
             Self::Astyle => "astyle",
+            Self::AtlasFmt => "atlas:fmt",
             Self::AutoOptional => "auto-optional",
             Self::Autocorrect => "autocorrect",
             Self::Autoflake => "autoflake",
@@ -4383,6 +4398,7 @@ mod test_tooling {
         assert_eq!(Tooling::AnsibleLint, reverse(Tooling::AnsibleLint)?);
         assert_eq!(Tooling::Asmfmt, reverse(Tooling::Asmfmt)?);
         assert_eq!(Tooling::Astyle, reverse(Tooling::Astyle)?);
+        assert_eq!(Tooling::AtlasFmt, reverse(Tooling::AtlasFmt)?);
         assert_eq!(Tooling::AutoOptional, reverse(Tooling::AutoOptional)?);
         assert_eq!(Tooling::Autocorrect, reverse(Tooling::Autocorrect)?);
         assert_eq!(Tooling::Autoflake, reverse(Tooling::Autoflake)?);
