@@ -2,8 +2,14 @@
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
-#### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.9.0...HEAD)
+#### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.9.1...HEAD)
 
+#### [v0.9.1](https://github.com/hougesen/mdsf/compare/v0.9.0...v0.9.1)
+
+> 13 April 2025
+
+- chore: release v0.9.1 [`#965`](https://github.com/hougesen/mdsf/pull/965)
+- feat(tools): add support for dioxus [`#964`](https://github.com/hougesen/mdsf/pull/964)
 - feat(tools): add support for duster [`#963`](https://github.com/hougesen/mdsf/pull/963)
 - feat(tools): add support for cue [`#962`](https://github.com/hougesen/mdsf/pull/962)
 - feat(tools): add support for atlas [`#961`](https://github.com/hougesen/mdsf/pull/961)
