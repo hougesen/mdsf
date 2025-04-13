@@ -455,6 +455,11 @@
           "enum": ["csslint"]
         },
         {
+          "description": "Validate and define text-based and dynamic configuration\n\n[https://cuelang.org/docs/reference/command/cue-help-fmt/](https://cuelang.org/docs/reference/command/cue-help-fmt/)\n\n`cue fmt $PATH`",
+          "type": "string",
+          "enum": ["cue:fmt"]
+        },
+        {
           "description": "Experimental HTML templates linting for Jinja, Nunjucks, Django templates, Twig, Liquid\n\n[https://github.com/thibaudcolas/curlylint](https://github.com/thibaudcolas/curlylint)\n\n`curlylint -q $PATH`",
           "type": "string",
           "enum": ["curlylint"]
