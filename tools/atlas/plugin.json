@@ -1,0 +1,21 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "atlas",
+  "categories": ["formatter"],
+  "commands": {
+    "fmt": {
+      "arguments": ["schema", "fmt", "$PATH"],
+      "description": "Formats Atlas HCL files",
+      "homepage": "https://atlasgo.io/cli-reference#atlas-schema-fmt",
+      "tests": []
+    }
+  },
+  "description": "Manage your database schema as code",
+  "homepage": "https://github.com/ariga/atlas",
+  "languages": ["hcl"],
+  "packages": {
+    "brew": {
+      "package": "ariga/tap/atlas"
+    }
+  }
+}

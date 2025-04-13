@@ -6,10 +6,9 @@ Thank you for considering contributing to mdsf. It is greatly appreciated! ‚ù§Ô∏
 
 <!-- START_SECTION:toc -->
 
-- [Contributing to mdsf](#contributing-to-mdsf)
-  - [Table of contents](#table-of-contents)
-  - [Adding support for a new tool](#adding-support-for-a-new-tool)
-    - [Tool metadata](#tool-metadata)
+- [Table of contents](#table-of-contents)
+- [Adding support for a new tool](#adding-support-for-a-new-tool)
+  - [Tool metadata](#tool-metadata)
 
 <!-- END_SECTION:toc -->
 

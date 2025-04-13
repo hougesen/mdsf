@@ -200,6 +200,11 @@
           "enum": ["astyle"]
         },
         {
+          "description": "Formats Atlas HCL files\n\n[https://atlasgo.io/cli-reference#atlas-schema-fmt](https://atlasgo.io/cli-reference#atlas-schema-fmt)\n\n`atlas schema fmt $PATH`",
+          "type": "string",
+          "enum": ["atlas:fmt"]
+        },
+        {
           "description": "Adds the Optional type-hint to arguments where the default value is None\n\n[https://github.com/luttik/auto-optional](https://github.com/luttik/auto-optional)\n\n`auto-optional $PATH`",
           "type": "string",
           "enum": ["auto-optional"]
