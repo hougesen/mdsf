@@ -1,0 +1,25 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "dx",
+  "categories": ["formatter"],
+  "commands": {
+    "fmt": {
+      "arguments": ["fmt", "--all-code", "--file", "$PATH"],
+      "tests": [
+        {
+          "language": "rust",
+          "test_input": "fn add(a:i32,b:i32)->i32{a+b}",
+          "test_output": "fn add(a: i32, b: i32) -> i32 {\n    a + b\n}\n"
+        }
+      ]
+    }
+  },
+  "description": "Dioxus cli",
+  "homepage": "https://github.com/dioxuslabs/dioxus",
+  "languages": ["rsx", "rust"],
+  "packages": {
+    "cargo": {
+      "package": "dioxus-cli"
+    }
+  }
+}
