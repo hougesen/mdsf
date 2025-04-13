@@ -60,6 +60,7 @@ pub mod csharpier;
 pub mod css_beautify;
 pub mod csscomb;
 pub mod csslint;
+pub mod cue_fmt;
 pub mod curlylint;
 pub mod d_2_fmt;
 pub mod dart_fix;
@@ -806,6 +807,14 @@ pub enum Tooling {
     ///
     /// `csslint --quiet $PATH`
     Csslint,
+
+    #[serde(rename = "cue:fmt")]
+    /// Validate and define text-based and dynamic configuration
+    ///
+    /// [https://cuelang.org/docs/reference/command/cue-help-fmt/](https://cuelang.org/docs/reference/command/cue-help-fmt/)
+    ///
+    /// `cue fmt $PATH`
+    CueFmt,
 
     #[serde(rename = "curlylint")]
     /// Experimental HTML templates linting for Jinja, Nunjucks, Django templates, Twig, Liquid
@@ -3202,6 +3211,7 @@ impl Tooling {
             ),
             Self::Csscomb => (&csscomb::COMMANDS, csscomb::set_args, csscomb::IS_STDIN),
             Self::Csslint => (&csslint::COMMANDS, csslint::set_args, csslint::IS_STDIN),
+            Self::CueFmt => (&cue_fmt::COMMANDS, cue_fmt::set_args, cue_fmt::IS_STDIN),
             Self::Curlylint => (
                 &curlylint::COMMANDS,
                 curlylint::set_args,
@@ -4103,6 +4113,7 @@ impl AsRef<str> for Tooling {
             Self::CssBeautify => "css-beautify",
             Self::Csscomb => "csscomb",
             Self::Csslint => "csslint",
+            Self::CueFmt => "cue:fmt",
             Self::Curlylint => "curlylint",
             Self::D2Fmt => "d2:fmt",
             Self::DartFix => "dart:fix",
@@ -4455,6 +4466,7 @@ mod test_tooling {
         assert_eq!(Tooling::CssBeautify, reverse(Tooling::CssBeautify)?);
         assert_eq!(Tooling::Csscomb, reverse(Tooling::Csscomb)?);
         assert_eq!(Tooling::Csslint, reverse(Tooling::Csslint)?);
+        assert_eq!(Tooling::CueFmt, reverse(Tooling::CueFmt)?);
         assert_eq!(Tooling::Curlylint, reverse(Tooling::Curlylint)?);
         assert_eq!(Tooling::D2Fmt, reverse(Tooling::D2Fmt)?);
         assert_eq!(Tooling::DartFix, reverse(Tooling::DartFix)?);

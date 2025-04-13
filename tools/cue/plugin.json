@@ -1,0 +1,23 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "cue",
+  "categories": ["formatter"],
+  "commands": {
+    "fmt": {
+      "arguments": ["fmt", "$PATH"],
+      "homepage": "https://cuelang.org/docs/reference/command/cue-help-fmt/",
+      "tests": []
+    }
+  },
+  "description": "Validate and define text-based and dynamic configuration",
+  "homepage": "https://github.com/cue-lang/cue",
+  "languages": ["cue"],
+  "packages": {
+    "brew": {
+      "package": "cue-lang/tap/cue"
+    },
+    "go": {
+      "package": "cuelang.org/go/cmd/cue@latest"
+    }
+  }
+}
