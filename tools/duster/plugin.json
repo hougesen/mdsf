@@ -1,0 +1,24 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "duster",
+  "categories": ["formatter", "linter"],
+  "commands": {
+    "fix": {
+      "arguments": ["fix", "--quiet", "--no-interaction", "$PATH"],
+      "tests": []
+    },
+    "lint": {
+      "arguments": ["lint", "--quiet", "--no-interaction", "$PATH"],
+      "tests": []
+    }
+  },
+  "description": "Automatic configuration for Laravel apps to apply Tighten's standard linting & code standards",
+  "homepage": "https://github.com/tighten/duster",
+  "languages": ["php"],
+  "packages": {
+    "composer": {
+      "binary": "duster",
+      "package": "tightenco/duster"
+    }
+  }
+}

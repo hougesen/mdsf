@@ -417,7 +417,7 @@ Options:
 
 <!-- START_SECTION:supported-tools -->
 
-`mdsf` currently supports 301 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 302 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                                                                                 | Description                                                                                                                                   | Categories            | Languages                                                                                                                         |
 | ------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
@@ -495,6 +495,7 @@ Options:
 | [dotenv-linter](https://github.com/dotenv-linter/dotenv-linter)                      | Lightning-fast linter for .env files                                                                                                          | `linter`              | `env`                                                                                                                             |
 | [dprint](https://dprint.dev/)                                                        | A pluggable and configurable code formatting platform written in Rust                                                                         | `formatter`           |                                                                                                                                   |
 | [dscanner](https://github.com/dlang-community/d-scanner)                             | Swiss-army knife for D source code                                                                                                            | `linter`              | `d`                                                                                                                               |
+| [duster](https://github.com/tighten/duster)                                          | Automatic configuration for Laravel apps to apply Tighten's standard linting & code standards                                                 | `formatter`, `linter` | `php`                                                                                                                             |
 | [easy-coding-standard](https://github.com/easy-coding-standard/easy-coding-standard) | The Easiest way to add coding standard to your PHP project                                                                                    | `formatter`, `linter` | `php`                                                                                                                             |
 | [efmt](https://github.com/sile/efmt)                                                 | Erlang code formatter                                                                                                                         | `formatter`           | `erlang`                                                                                                                          |
 | [elm-format](https://github.com/avh4/elm-format)                                     | elm-format formats Elm source code according to a standard set of rules based on the official Elm Style Guide                                 | `formatter`           | `elm`                                                                                                                             |
@@ -729,7 +730,7 @@ Options:
 
 <!-- START_SECTION:supported-commands -->
 
-`mdsf` currently supports 332 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 334 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                         | Command                                                                                 |
 | ---------------------------- | --------------------------------------------------------------------------------------- |
@@ -816,6 +817,8 @@ Options:
 | `dprint:fmt`                 | `dprint fmt $PATH`                                                                      |
 | `dscanner:fix`               | `dscanner fix $PATH`                                                                    |
 | `dscanner:lint`              | `dscanner lint $PATH`                                                                   |
+| `duster:fix`                 | `duster fix --quiet --no-interaction $PATH`                                             |
+| `duster:lint`                | `duster lint --quiet --no-interaction $PATH`                                            |
 | `easy-coding-standard`       | `ecs check $PATH --fix --no-interaction`                                                |
 | `efmt`                       | `efmt -w $PATH`                                                                         |
 | `elm-format`                 | `elm-format --elm-version=0.19 --yes $PATH`                                             |
