@@ -1,0 +1,20 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "cueimports",
+  "categories": ["formatter"],
+  "commands": {
+    "": {
+      "arguments": [],
+      "stdin": true,
+      "tests": []
+    }
+  },
+  "description": "CUE tool that updates your import lines, adding missing ones and removing unused ones",
+  "homepage": "https://github.com/asdine/cueimports",
+  "languages": ["cue"],
+  "packages": {
+    "brew": {
+      "package": "github.com/asdine/cueimports/cmd/cueimports@latest"
+    }
+  }
+}

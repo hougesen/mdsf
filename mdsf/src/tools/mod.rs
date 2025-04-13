@@ -61,6 +61,7 @@ pub mod css_beautify;
 pub mod csscomb;
 pub mod csslint;
 pub mod cue_fmt;
+pub mod cueimports;
 pub mod curlylint;
 pub mod d_2_fmt;
 pub mod dart_fix;
@@ -815,6 +816,14 @@ pub enum Tooling {
     ///
     /// `cue fmt $PATH`
     CueFmt,
+
+    #[serde(rename = "cueimports")]
+    /// CUE tool that updates your import lines, adding missing ones and removing unused ones
+    ///
+    /// [https://github.com/asdine/cueimports](https://github.com/asdine/cueimports)
+    ///
+    /// `cueimports `
+    Cueimports,
 
     #[serde(rename = "curlylint")]
     /// Experimental HTML templates linting for Jinja, Nunjucks, Django templates, Twig, Liquid
@@ -3212,6 +3221,11 @@ impl Tooling {
             Self::Csscomb => (&csscomb::COMMANDS, csscomb::set_args, csscomb::IS_STDIN),
             Self::Csslint => (&csslint::COMMANDS, csslint::set_args, csslint::IS_STDIN),
             Self::CueFmt => (&cue_fmt::COMMANDS, cue_fmt::set_args, cue_fmt::IS_STDIN),
+            Self::Cueimports => (
+                &cueimports::COMMANDS,
+                cueimports::set_args,
+                cueimports::IS_STDIN,
+            ),
             Self::Curlylint => (
                 &curlylint::COMMANDS,
                 curlylint::set_args,
@@ -4114,6 +4128,7 @@ impl AsRef<str> for Tooling {
             Self::Csscomb => "csscomb",
             Self::Csslint => "csslint",
             Self::CueFmt => "cue:fmt",
+            Self::Cueimports => "cueimports",
             Self::Curlylint => "curlylint",
             Self::D2Fmt => "d2:fmt",
             Self::DartFix => "dart:fix",
@@ -4467,6 +4482,7 @@ mod test_tooling {
         assert_eq!(Tooling::Csscomb, reverse(Tooling::Csscomb)?);
         assert_eq!(Tooling::Csslint, reverse(Tooling::Csslint)?);
         assert_eq!(Tooling::CueFmt, reverse(Tooling::CueFmt)?);
+        assert_eq!(Tooling::Cueimports, reverse(Tooling::Cueimports)?);
         assert_eq!(Tooling::Curlylint, reverse(Tooling::Curlylint)?);
         assert_eq!(Tooling::D2Fmt, reverse(Tooling::D2Fmt)?);
         assert_eq!(Tooling::DartFix, reverse(Tooling::DartFix)?);

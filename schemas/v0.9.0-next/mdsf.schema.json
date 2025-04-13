@@ -460,6 +460,11 @@
           "enum": ["cue:fmt"]
         },
         {
+          "description": "CUE tool that updates your import lines, adding missing ones and removing unused ones\n\n[https://github.com/asdine/cueimports](https://github.com/asdine/cueimports)\n\n`cueimports `",
+          "type": "string",
+          "enum": ["cueimports"]
+        },
+        {
           "description": "Experimental HTML templates linting for Jinja, Nunjucks, Django templates, Twig, Liquid\n\n[https://github.com/thibaudcolas/curlylint](https://github.com/thibaudcolas/curlylint)\n\n`curlylint -q $PATH`",
           "type": "string",
           "enum": ["curlylint"]

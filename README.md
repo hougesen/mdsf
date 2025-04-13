@@ -417,7 +417,7 @@ Options:
 
 <!-- START_SECTION:supported-tools -->
 
-`mdsf` currently supports 300 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 301 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                                                                                 | Description                                                                                                                                   | Categories            | Languages                                                                                                                         |
 | ------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
@@ -476,6 +476,7 @@ Options:
 | [csscomb](https://github.com/csscomb/csscomb.js)                                     | CSS coding style formatter                                                                                                                    | `formatter`           | `css`                                                                                                                             |
 | [csslint](https://github.com/csslint/csslint)                                        | Automated linting of Cascading Stylesheets                                                                                                    | `linter`              | `css`                                                                                                                             |
 | [cue](https://github.com/cue-lang/cue)                                               | Validate and define text-based and dynamic configuration                                                                                      | `formatter`           | `cue`                                                                                                                             |
+| [cueimports](https://github.com/asdine/cueimports)                                   | CUE tool that updates your import lines, adding missing ones and removing unused ones                                                         | `formatter`           | `cue`                                                                                                                             |
 | [curlylint](https://github.com/thibaudcolas/curlylint)                               | Experimental HTML templates linting for Jinja, Nunjucks, Django templates, Twig, Liquid                                                       | `linter`              | `django`, `html`, `jinja`, `liquid`, `nunjucks`, `twig`                                                                           |
 | [d2](https://d2lang.com/)                                                            | A modern language that turns text to diagrams                                                                                                 | `formatter`           | `d2`                                                                                                                              |
 | [dart](https://dart.dev/tools)                                                       | Formatter and linter for Dart                                                                                                                 | `formatter`, `linter` | `dart`, `flutter`                                                                                                                 |
@@ -728,7 +729,7 @@ Options:
 
 <!-- START_SECTION:supported-commands -->
 
-`mdsf` currently supports 331 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 332 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                         | Command                                                                                 |
 | ---------------------------- | --------------------------------------------------------------------------------------- |
@@ -792,6 +793,7 @@ Options:
 | `csscomb`                    | `csscomb -t $PATH`                                                                      |
 | `csslint`                    | `csslint --quiet $PATH`                                                                 |
 | `cue:fmt`                    | `cue fmt $PATH`                                                                         |
+| `cueimports`                 | `cueimports `                                                                           |
 | `curlylint`                  | `curlylint -q $PATH`                                                                    |
 | `d2:fmt`                     | `d2 fmt $PATH`                                                                          |
 | `dart:fix`                   | `dart fix --apply $PATH`                                                                |
