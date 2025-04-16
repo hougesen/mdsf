@@ -4,6 +4,9 @@ All notable changes to this project will be documented in this file. Dates are d
 
 #### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.9.1...HEAD)
 
+- feat(tools): add support for verusfmt [`#969`](https://github.com/hougesen/mdsf/pull/969)
+- build(deps): bump ureq from 3.0.10 to 3.0.11 [`#966`](https://github.com/hougesen/mdsf/pull/966)
+- fix(cargo-dist): manually set ubuntu version to latest [`#967`](https://github.com/hougesen/mdsf/pull/967)
 - chore: update version to dev [`aa8aa43`](https://github.com/hougesen/mdsf/commit/aa8aa4338208017675170de9ec614c2329fec35c)
 
 #### [v0.9.1](https://github.com/hougesen/mdsf/compare/v0.9.0...v0.9.1)

@@ -305,6 +305,8 @@ jobs:
         run: ( ( which unimport ) || ( ( which pipx && pipx install unimport ) ) || ( echo "Unable to install tool" ) )
       - name: usort
         run: ( ( which usort ) || ( ( which pipx && pipx install usort ) ) || ( echo "Unable to install tool" ) )
+      - name: verusfmt
+        run: ( ( which verusfmt ) || ( ( which cargo && ( cargo binstall verusfmt || cargo install verusfmt ) ) ) || ( echo "Unable to install tool" ) )
       - name: vsg
         run: ( ( which vsg ) || ( ( which pipx && pipx install vsg ) ) || ( echo "Unable to install tool" ) )
       - name: wfindent

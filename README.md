@@ -417,7 +417,7 @@ Options:
 
 <!-- START_SECTION:supported-tools -->
 
-`mdsf` currently supports 303 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 304 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                                                                                 | Description                                                                                                                                   | Categories            | Languages                                                                                                                         |
 | ------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
@@ -705,6 +705,7 @@ Options:
 | [usort](https://github.com/facebook/usort)                                           | Safe, minimal import sorting for Python projects                                                                                              | `formatter`           | `python`                                                                                                                          |
 | [v](https://vlang.io/)                                                               | Tooling for V lang                                                                                                                            | `formatter`           | `v`                                                                                                                               |
 | [vacuum](https://github.com/daveshanley/vacuum)                                      | vacuum is the worlds fastest OpenAPI 3, OpenAPI 2 / Swagger linter and quality analysis tool                                                  | `linter`              | `json`, `openapi`, `yaml`                                                                                                         |
+| [verusfmt](https://github.com/verus-lang/verusfmt)                                   | An Opinionated Formatter for Verus                                                                                                            | `formatter`           | `rust`, `verus`                                                                                                                   |
 | [veryl](https://github.com/veryl-lang/veryl)                                         | Veryl: A Modern Hardware Description Language                                                                                                 | `formatter`           | `veryl`                                                                                                                           |
 | [vhdl-style-guide](https://github.com/jeremiah-c-leary/vhdl-style-guide)             | Style guide enforcement for VHDL                                                                                                              | `formatter`           | `vhdl`                                                                                                                            |
 | [vint](https://github.com/vimjas/vint)                                               | Lint Vim script                                                                                                                               | `linter`              | `vimscript`                                                                                                                       |
@@ -731,7 +732,7 @@ Options:
 
 <!-- START_SECTION:supported-commands -->
 
-`mdsf` currently supports 335 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 336 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                         | Command                                                                                 |
 | ---------------------------- | --------------------------------------------------------------------------------------- |
@@ -1049,6 +1050,7 @@ Options:
 | `usort`                      | `usort format $PATH`                                                                    |
 | `v:fmt`                      | `v fmt -w $PATH`                                                                        |
 | `vacuum:lint`                | `vacuum lint $PATH`                                                                     |
+| `verusfmt`                   | `verusfmt $PATH`                                                                        |
 | `veryl:fmt`                  | `veryl fmt $PATH`                                                                       |
 | `vhdl-style-guide`           | `vsg -f $PATH --fix`                                                                    |
 | `vint:neovim`                | `vint --enable-neovim $PATH`                                                            |

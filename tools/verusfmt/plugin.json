@@ -1,0 +1,25 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "verusfmt",
+  "categories": ["formatter"],
+  "commands": {
+    "": {
+      "arguments": ["$PATH"],
+      "tests": [
+        {
+          "language": "rust",
+          "test_input": "pub\n                    async\n            fn    add( a: i32,\n                            b:i32 )->                   i32 {a+b}\n    ",
+          "test_output": "pub async fn add(a: i32, b: i32) -> i32 {\n    a + b\n}\n"
+        }
+      ]
+    }
+  },
+  "description": "An Opinionated Formatter for Verus",
+  "homepage": "https://github.com/verus-lang/verusfmt",
+  "languages": ["rust", "verus"],
+  "packages": {
+    "cargo": {
+      "package": "verusfmt"
+    }
+  }
+}
