@@ -1730,6 +1730,11 @@
           "enum": ["vacuum:lint"]
         },
         {
+          "description": "An Opinionated Formatter for Verus\n\n[https://github.com/verus-lang/verusfmt](https://github.com/verus-lang/verusfmt)\n\n`verusfmt $PATH`",
+          "type": "string",
+          "enum": ["verusfmt"]
+        },
+        {
           "description": "Format veryl code\n\n[https://doc.veryl-lang.org/book/06_development_environment/05_formatter.html](https://doc.veryl-lang.org/book/06_development_environment/05_formatter.html)\n\n`veryl fmt $PATH`",
           "type": "string",
           "enum": ["veryl:fmt"]

@@ -315,6 +315,7 @@ pub mod unimport;
 pub mod usort;
 pub mod v_fmt;
 pub mod vacuum_lint;
+pub mod verusfmt;
 pub mod veryl_fmt;
 pub mod vhdl_style_guide;
 pub mod vint;
@@ -2852,6 +2853,14 @@ pub enum Tooling {
     /// `vacuum lint $PATH`
     VacuumLint,
 
+    #[serde(rename = "verusfmt")]
+    /// An Opinionated Formatter for Verus
+    ///
+    /// [https://github.com/verus-lang/verusfmt](https://github.com/verus-lang/verusfmt)
+    ///
+    /// `verusfmt $PATH`
+    Verusfmt,
+
     #[serde(rename = "veryl:fmt")]
     /// Format veryl code
     ///
@@ -4042,6 +4051,7 @@ impl Tooling {
                 vacuum_lint::set_args,
                 vacuum_lint::IS_STDIN,
             ),
+            Self::Verusfmt => (&verusfmt::COMMANDS, verusfmt::set_args, verusfmt::IS_STDIN),
             Self::VerylFmt => (
                 &veryl_fmt::COMMANDS,
                 veryl_fmt::set_args,
@@ -4420,6 +4430,7 @@ impl AsRef<str> for Tooling {
             Self::Usort => "usort",
             Self::VFmt => "v:fmt",
             Self::VacuumLint => "vacuum:lint",
+            Self::Verusfmt => "verusfmt",
             Self::VerylFmt => "veryl:fmt",
             Self::VhdlStyleGuide => "vhdl-style-guide",
             Self::Vint => "vint",
@@ -4816,6 +4827,7 @@ mod test_tooling {
         assert_eq!(Tooling::Usort, reverse(Tooling::Usort)?);
         assert_eq!(Tooling::VFmt, reverse(Tooling::VFmt)?);
         assert_eq!(Tooling::VacuumLint, reverse(Tooling::VacuumLint)?);
+        assert_eq!(Tooling::Verusfmt, reverse(Tooling::Verusfmt)?);
         assert_eq!(Tooling::VerylFmt, reverse(Tooling::VerylFmt)?);
         assert_eq!(Tooling::VhdlStyleGuide, reverse(Tooling::VhdlStyleGuide)?);
         assert_eq!(Tooling::Vint, reverse(Tooling::Vint)?);
