@@ -4,6 +4,7 @@ All notable changes to this project will be documented in this file. Dates are d
 
 #### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.9.1...HEAD)
 
+- build(deps): bump assert_cmd from 2.0.16 to 2.0.17 [`#970`](https://github.com/hougesen/mdsf/pull/970)
 - feat(tools): add support for verusfmt [`#969`](https://github.com/hougesen/mdsf/pull/969)
 - build(deps): bump ureq from 3.0.10 to 3.0.11 [`#966`](https://github.com/hougesen/mdsf/pull/966)
 - fix(cargo-dist): manually set ubuntu version to latest [`#967`](https://github.com/hougesen/mdsf/pull/967)
