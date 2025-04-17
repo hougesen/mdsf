@@ -67,6 +67,7 @@
     { "uses": "Homebrew/actions/setup-homebrew@master" },
     { "uses": "leafo/gh-actions-lua@v11" },
     { "uses": "leafo/gh-actions-luarocks@v5", "continue-on-error": true },
+    { "uses": "dlang-community/setup-dlang@v2" },
     {
       "uses": "oven-sh/setup-bun@v2",
       "with": {
