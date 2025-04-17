@@ -682,7 +682,12 @@ fn add(a: i32, b: i32) -> i32 {
     }
 
     mod format {
-        use mdsf::{cli::OnMissingLanguageDefinition, config::MdsfConfig};
+        use mdsf::{
+            cli::{OnMissingLanguageDefinition, OnMissingToolBinary},
+            config::MdsfConfig,
+            execution::MdsfFormatter,
+            tools::Tooling,
+        };
         use predicates::prelude::PredicateBooleanExt;
         use tempfile::tempdir;
 
@@ -1129,6 +1134,231 @@ fn add(a: i32, b: i32) -> i32 {
                 .assert()
                 .failure()
                 .stderr(predicates::str::contains(" no tool configured for 'rust'"));
+        }
+
+        #[test]
+        fn on_missing_tool_binary_prioritize_cli() {
+            let dir = tempdir().unwrap();
+
+            let config = MdsfConfig {
+                on_missing_tool_binary: Some(OnMissingToolBinary::FailFast),
+                languages: std::collections::BTreeMap::from_iter([(
+                    "rust".to_string(),
+                    MdsfFormatter::Single(Tooling::VerylFmt),
+                )]),
+                ..Default::default()
+            };
+
+            std::fs::write(
+                dir.path().join("mdsf.json"),
+                serde_json::to_string(&config).unwrap(),
+            )
+            .unwrap();
+
+            let file = setup_test_input(dir.path(), BROKEN_CODE);
+
+            mdsf_command(dir.path())
+                .arg("format")
+                .arg("--on-missing-tool-binary")
+                .arg("ignore")
+                .arg(file.path())
+                .assert()
+                .success()
+                .stderr(predicates::str::contains(
+                    "veryl (veryl:fmt) not found in path",
+                ));
+        }
+
+        #[test]
+        fn on_missing_tool_binary_ignore_cli() {
+            let dir = tempdir().unwrap();
+
+            let config = MdsfConfig {
+                on_missing_tool_binary: None,
+                languages: std::collections::BTreeMap::from_iter([(
+                    "rust".to_string(),
+                    MdsfFormatter::Single(Tooling::VerylFmt),
+                )]),
+                ..Default::default()
+            };
+
+            std::fs::write(
+                dir.path().join("mdsf.json"),
+                serde_json::to_string(&config).unwrap(),
+            )
+            .unwrap();
+
+            let file = setup_test_input(dir.path(), BROKEN_CODE);
+
+            mdsf_command(dir.path())
+                .arg("format")
+                .arg("--on-missing-tool-binary")
+                .arg("ignore")
+                .arg(file.path())
+                .assert()
+                .success()
+                .stderr(predicates::str::contains(
+                    "veryl (veryl:fmt) not found in path",
+                ));
+        }
+
+        #[test]
+        fn on_missing_tool_binary_ignore_config() {
+            let dir = tempdir().unwrap();
+
+            let config = MdsfConfig {
+                on_missing_tool_binary: Some(OnMissingToolBinary::Ignore),
+                languages: std::collections::BTreeMap::from_iter([(
+                    "rust".to_string(),
+                    MdsfFormatter::Single(Tooling::VerylFmt),
+                )]),
+                ..Default::default()
+            };
+
+            std::fs::write(
+                dir.path().join("mdsf.json"),
+                serde_json::to_string(&config).unwrap(),
+            )
+            .unwrap();
+
+            let file = setup_test_input(dir.path(), BROKEN_CODE);
+
+            mdsf_command(dir.path())
+                .arg("format")
+                .arg(file.path())
+                .assert()
+                .success()
+                .stderr(predicates::str::contains(
+                    "veryl (veryl:fmt) not found in path",
+                ));
+        }
+
+        #[test]
+        fn on_missing_tool_binary_fail_cli() {
+            let dir = tempdir().unwrap();
+
+            let config = MdsfConfig {
+                on_missing_tool_binary: None,
+                languages: std::collections::BTreeMap::from_iter([(
+                    "rust".to_string(),
+                    MdsfFormatter::Single(Tooling::VerylFmt),
+                )]),
+                ..Default::default()
+            };
+
+            std::fs::write(
+                dir.path().join("mdsf.json"),
+                serde_json::to_string(&config).unwrap(),
+            )
+            .unwrap();
+
+            let file = setup_test_input(dir.path(), BROKEN_CODE);
+
+            mdsf_command(dir.path())
+                .arg("format")
+                .arg("--on-missing-tool-binary")
+                .arg("fail")
+                .arg(file.path())
+                .assert()
+                .failure()
+                .stderr(predicates::str::contains(
+                    "veryl (veryl:fmt) not found in path",
+                ));
+        }
+
+        #[test]
+        fn on_missing_tool_binary_fail_config() {
+            let dir = tempdir().unwrap();
+
+            let config = MdsfConfig {
+                on_missing_tool_binary: Some(OnMissingToolBinary::Fail),
+                languages: std::collections::BTreeMap::from_iter([(
+                    "rust".to_string(),
+                    MdsfFormatter::Single(Tooling::VerylFmt),
+                )]),
+                ..Default::default()
+            };
+
+            std::fs::write(
+                dir.path().join("mdsf.json"),
+                serde_json::to_string(&config).unwrap(),
+            )
+            .unwrap();
+
+            let file = setup_test_input(dir.path(), BROKEN_CODE);
+
+            mdsf_command(dir.path())
+                .arg("format")
+                .arg(file.path())
+                .assert()
+                .failure()
+                .stderr(predicates::str::contains(
+                    "veryl (veryl:fmt) not found in path",
+                ));
+        }
+
+        #[test]
+        fn on_missing_tool_binary_fail_fast_cli() {
+            let dir = tempdir().unwrap();
+
+            let config = MdsfConfig {
+                on_missing_tool_binary: None,
+                languages: std::collections::BTreeMap::from_iter([(
+                    "rust".to_string(),
+                    MdsfFormatter::Single(Tooling::VerylFmt),
+                )]),
+                ..Default::default()
+            };
+
+            std::fs::write(
+                dir.path().join("mdsf.json"),
+                serde_json::to_string(&config).unwrap(),
+            )
+            .unwrap();
+
+            let file = setup_test_input(dir.path(), BROKEN_CODE);
+
+            mdsf_command(dir.path())
+                .arg("format")
+                .arg("--on-missing-tool-binary")
+                .arg("fail-fast")
+                .arg(file.path())
+                .assert()
+                .failure()
+                .stderr(predicates::str::contains(
+                    "veryl (veryl:fmt) not found in path",
+                ));
+        }
+
+        #[test]
+        fn on_missing_tool_binary_fail_fast_config() {
+            let dir = tempdir().unwrap();
+
+            let config = MdsfConfig {
+                on_missing_tool_binary: Some(OnMissingToolBinary::FailFast),
+                languages: std::collections::BTreeMap::from_iter([(
+                    "rust".to_string(),
+                    MdsfFormatter::Single(Tooling::VerylFmt),
+                )]),
+                ..Default::default()
+            };
+
+            std::fs::write(
+                dir.path().join("mdsf.json"),
+                serde_json::to_string(&config).unwrap(),
+            )
+            .unwrap();
+
+            let file = setup_test_input(dir.path(), BROKEN_CODE);
+
+            mdsf_command(dir.path())
+                .arg("format")
+                .arg(file.path())
+                .assert()
+                .failure()
+                .stderr(predicates::str::contains(
+                    "veryl (veryl:fmt) not found in path",
+                ));
         }
     }
 }

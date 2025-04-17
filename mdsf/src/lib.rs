@@ -22,7 +22,7 @@ pub mod runners;
 pub mod terminal;
 #[cfg(test)]
 mod testing;
-mod tools;
+pub mod tools;
 
 static MDSF_PROJECT_DIR: std::sync::OnceLock<std::path::PathBuf> = std::sync::OnceLock::new();
 
