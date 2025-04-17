@@ -69,7 +69,7 @@ impl core::fmt::Display for MdsfError {
                 f,
                 "'{alias}' cannot be used as an alias since it has no tools specified"
             ),
-            Self::MissingBinary(binary_name) => write!(f, "{binary_name} was not found in path"),
+            Self::MissingBinary(binary_name) => write!(f, "{binary_name} not found in path"),
             Self::MissingLanguageDefinition(path, language) => {
                 write!(f, "{} no tool configured for '{language}'", path.display())
             }
