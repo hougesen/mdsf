@@ -4,6 +4,7 @@ All notable changes to this project will be documented in this file. Dates are d
 
 #### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.9.1...HEAD)
 
+- test(cli): --on-missing-tool-binary [`#972`](https://github.com/hougesen/mdsf/pull/972)
 - ci: setup d in tests [`#971`](https://github.com/hougesen/mdsf/pull/971)
 - build(deps): bump assert_cmd from 2.0.16 to 2.0.17 [`#970`](https://github.com/hougesen/mdsf/pull/970)
 - feat(tools): add support for verusfmt [`#969`](https://github.com/hougesen/mdsf/pull/969)
