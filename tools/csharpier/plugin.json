@@ -18,7 +18,6 @@
   "description": "An Opinionated Code Formatter for C#",
   "homepage": "https://github.com/belav/csharpier",
   "languages": ["c#"],
-  "name": "csharpier",
   "packages": {
     "dotnet": {
       "package": "csharpier"
