@@ -17,7 +17,7 @@
       "tap": "tsqllint/homebrew-tsqllint"
     },
     "dotnet": {
-      "package": "TSQLLint"
+      "package": "tsqllint"
     },
     "npm": {
       "package": "tsqllint"

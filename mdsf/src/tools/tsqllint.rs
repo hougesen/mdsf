@@ -13,8 +13,9 @@ pub fn set_args(
     cmd
 }
 
-pub const COMMANDS: [CommandType; 7] = [
+pub const COMMANDS: [CommandType; 8] = [
     CommandType::NodeModules("tsqllint"),
+    CommandType::Dotnet("tsqllint"),
     CommandType::Direct("tsqllint"),
     CommandType::Npm("tsqllint"),
     CommandType::Pnpm("tsqllint"),

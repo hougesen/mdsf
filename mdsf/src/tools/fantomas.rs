@@ -12,7 +12,10 @@ pub fn set_args(
     cmd
 }
 
-pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("fantomas")];
+pub const COMMANDS: [CommandType; 2] = [
+    CommandType::Dotnet("fantomas"),
+    CommandType::Direct("fantomas"),
+];
 
 pub const IS_STDIN: bool = false;
 

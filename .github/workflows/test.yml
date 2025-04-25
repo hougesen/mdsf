@@ -106,6 +106,8 @@ jobs:
         run: ( ( which cppcheck ) || ( ( which brew &&  brew install cppcheck ) || ( which apt-get && sudo apt-get install -y cppcheck ) ) || ( echo "Unable to install tool" ) )
       - name: cpplint
         run: ( ( which cpplint ) || ( ( which brew &&  brew install cpplint ) || ( which apt-get && sudo apt-get install -y cpplint ) || ( which pipx && pipx install cpplint ) ) || ( echo "Unable to install tool" ) )
+      - name: csharpier
+        run: ( ( which csharpier ) || ( ( which dotnet && dotnet tool install -g csharpier ) ) || ( echo "Unable to install tool" ) )
       - name: css-beautify
         run: ( ( which css-beautify ) || ( ( which npm && npm i -g js-beautify ) ) || ( echo "Unable to install tool" ) )
       - name: csscomb
@@ -116,8 +118,6 @@ jobs:
         run: ( ( which dfmt ) || ( ( which brew &&  brew install dfmt ) ) || ( echo "Unable to install tool" ) )
       - name: dockerfmt
         run: ( ( which dockerfmt ) || ( ( which go && go install github.com/reteps/dockerfmt@latest ) ) || ( echo "Unable to install tool" ) )
-      - name: dotnet
-        run: ( ( which csharpier ) || ( ( which dotnet && dotnet tool install -g csharpier ) ) || ( echo "Unable to install tool" ) )
       - name: dx
         run: ( ( which dx ) || ( ( which cargo && ( cargo binstall dioxus-cli || cargo install dioxus-cli ) ) ) || ( echo "Unable to install tool" ) )
       - name: efmt

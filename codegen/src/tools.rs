@@ -403,6 +403,10 @@ impl Tool {
                     command_types.push(format!("CommandType::PhpVendor(\"{}\")", php.binary));
                 }
 
+                if let Some(dotnet) = &self.packages.dotnet {
+                    command_types.push(format!("CommandType::Dotnet(\"{}\")", &dotnet.package));
+                }
+
                 command_types.push(format!("CommandType::Direct(\"{}\")", self.binary));
 
                 if let Some(npm) = &self.packages.npm {

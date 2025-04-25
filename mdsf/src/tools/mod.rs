@@ -784,9 +784,9 @@ pub enum Tooling {
     #[serde(rename = "csharpier")]
     /// An Opinionated Code Formatter for C#
     ///
-    /// [https://csharpier.com/](https://csharpier.com/)
+    /// [https://github.com/belav/csharpier](https://github.com/belav/csharpier)
     ///
-    /// `dotnet csharpier $PATH`
+    /// `csharpier format --write-stdout`
     Csharpier,
 
     #[serde(rename = "css-beautify")]
