@@ -76,6 +76,10 @@
           "description": "Whether to support running npm packages using `deno run -A npm:$PACKAGE_NAME`\n\nDefault: `false`",
           "type": "boolean"
         },
+        "dotnet": {
+          "description": "Whether to support running dub packages using `dotnet $PACKAGE_NAME`\n\nDefault: `false`",
+          "type": "boolean"
+        },
         "dub": {
           "description": "Whether to support running dub packages using `dub run $PACKAGE_NAME`\n\nDefault: `false`",
           "type": "boolean"
@@ -435,7 +439,7 @@
           "enum": ["crystal:format"]
         },
         {
-          "description": "An Opinionated Code Formatter for C#\n\n[https://csharpier.com/](https://csharpier.com/)\n\n`dotnet csharpier $PATH`",
+          "description": "An Opinionated Code Formatter for C#\n\n[https://github.com/belav/csharpier](https://github.com/belav/csharpier)\n\n`csharpier format --write-stdout`",
           "type": "string",
           "enum": ["csharpier"]
         },

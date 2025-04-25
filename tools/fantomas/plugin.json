@@ -16,7 +16,7 @@
   },
   "description": "FSharp source code formatter",
   "homepage": "https://github.com/fsprojects/fantomas",
-  "languages": ["fsharp"],
+  "languages": ["f#"],
   "packages": {
     "dotnet": {
       "package": "fantomas"

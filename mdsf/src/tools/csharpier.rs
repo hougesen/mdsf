@@ -6,20 +6,23 @@ use crate::runners::CommandType;
 #[inline]
 pub fn set_args(
     mut cmd: std::process::Command,
-    file_path: &std::path::Path,
+    _file_path: &std::path::Path,
 ) -> std::process::Command {
-    cmd.arg("csharpier");
-    cmd.arg(file_path);
+    cmd.arg("format");
+    cmd.arg("--write-stdout");
     cmd
 }
 
-pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("dotnet")];
+pub const COMMANDS: [CommandType; 2] = [
+    CommandType::Dotnet("csharpier"),
+    CommandType::Direct("csharpier"),
+];
 
-pub const IS_STDIN: bool = false;
+pub const IS_STDIN: bool = true;
 
 #[cfg(test)]
 mod test_csharpier {
-    #[test_with::executable(dotnet)]
+    #[test_with::executable(csharpier)]
     fn test_csharpier_csharp_a79aa94ad2d86b6c() {
         let input = r#"namespace Mdsf {
                         class Adder {

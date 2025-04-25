@@ -4,6 +4,13 @@ All notable changes to this project will be documented in this file. Dates are d
 
 #### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.9.1...HEAD)
 
+- build(deps-dev): bump eslint from 9.24.0 to 9.25.0 in /github-action [`#975`](https://github.com/hougesen/mdsf/pull/975)
+- build(deps-dev): bump eslint from 9.24.0 to 9.25.0 in /mdsf-vscode [`#979`](https://github.com/hougesen/mdsf/pull/979)
+- build(deps-dev): bump @typescript-eslint/eslint-plugin in /mdsf-vscode [`#973`](https://github.com/hougesen/mdsf/pull/973)
+- build(deps-dev): bump @eslint/js from 9.24.0 to 9.25.0 in /mdsf-vscode [`#978`](https://github.com/hougesen/mdsf/pull/978)
+- build(deps-dev): bump @typescript-eslint/parser in /mdsf-vscode [`#977`](https://github.com/hougesen/mdsf/pull/977)
+- build(deps): bump clap from 4.5.36 to 4.5.37 [`#974`](https://github.com/hougesen/mdsf/pull/974)
+- build(deps-dev): bump @eslint/js from 9.24.0 to 9.25.0 in /github-action [`#976`](https://github.com/hougesen/mdsf/pull/976)
 - test(cli): --on-missing-tool-binary [`#972`](https://github.com/hougesen/mdsf/pull/972)
 - ci: setup d in tests [`#971`](https://github.com/hougesen/mdsf/pull/971)
 - build(deps): bump assert_cmd from 2.0.16 to 2.0.17 [`#970`](https://github.com/hougesen/mdsf/pull/970)
@@ -11,6 +18,7 @@ All notable changes to this project will be documented in this file. Dates are d
 - build(deps): bump ureq from 3.0.10 to 3.0.11 [`#966`](https://github.com/hougesen/mdsf/pull/966)
 - fix(cargo-dist): manually set ubuntu version to latest [`#967`](https://github.com/hougesen/mdsf/pull/967)
 - chore: update version to dev [`aa8aa43`](https://github.com/hougesen/mdsf/commit/aa8aa4338208017675170de9ec614c2329fec35c)
+- chore: update generated file bindings [`9b55de8`](https://github.com/hougesen/mdsf/commit/9b55de8ea14ceadc7eee2ef6cc28178f60b41867)
 
 #### [v0.9.1](https://github.com/hougesen/mdsf/compare/v0.9.0...v0.9.1)
 

@@ -1,6 +1,7 @@
 mod bun;
 mod composer;
 mod deno;
+mod dotnet;
 mod dub;
 mod gem;
 mod node;
@@ -16,6 +17,7 @@ pub enum CommandType {
     Bun(&'static str),
     Deno(&'static str),
     Direct(&'static str),
+    Dotnet(&'static str),
     Dub(&'static str),
     GemExec(&'static str),
     NodeModules(&'static str),
@@ -36,6 +38,7 @@ impl CommandType {
             Self::Bun(_) => config_runners.bunx,
             Self::Deno(_) => config_runners.deno,
             Self::Direct(_) => true,
+            Self::Dotnet(_) => config_runners.dotnet,
             Self::Dub(_) => config_runners.dub,
             Self::GemExec(_) => config_runners.gem_exec,
             Self::NodeModules(_) => true,
@@ -55,6 +58,7 @@ impl CommandType {
             Self::Bun(package_name) => bun::setup_bunx_command(package_name),
             Self::Deno(package_name) => deno::setup_deno_run_command(package_name),
             Self::Direct(binary_name) => std::process::Command::new(binary_name),
+            Self::Dotnet(package_name) => dotnet::setup_dotnet_command(package_name),
             Self::Dub(package_name) => dub::setup_dub_run_command(package_name),
             Self::GemExec(package_name) => gem::setup_gem_exec_command(package_name),
             Self::NodeModules(binary_name) => node::setup_node_modules_command(binary_name),

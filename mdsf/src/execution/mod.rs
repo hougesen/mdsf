@@ -433,6 +433,7 @@ mod test_run_tools {
                 bunx: false,
 
                 deno: true,
+                dotnet: true,
                 dub: true,
                 gem_exec: true,
                 npx: true,
@@ -461,6 +462,36 @@ mod test_run_tools {
 
                 deno: false,
 
+                dotnet: true,
+                dub: true,
+                gem_exec: true,
+                npx: true,
+                pipx: true,
+                pnpm: true,
+                uv: true,
+                yarn: true,
+            },
+        )
+        .unwrap();
+
+        assert!(was_not_modified);
+    }
+
+    #[test]
+    fn it_should_skip_if_dotnet_runner_is_disabled() {
+        let (was_not_modified, _) = super::run_tools(
+            &[CommandType::Dotnet("thisbinarydoesnotexist")],
+            std::path::Path::new("thisdoesnotexist"),
+            |_, _| unreachable!(),
+            crate::testing::DEFAULT_TEST_FORMATTER_TIMEOUT,
+            crate::tools::prettier::IS_STDIN,
+            crate::testing::DEFAULT_TEST_DEBUG_ENABLED,
+            &MdsfConfigRunners {
+                bunx: true,
+                deno: true,
+
+                dotnet: false,
+
                 dub: true,
                 gem_exec: true,
                 npx: true,
@@ -487,6 +518,7 @@ mod test_run_tools {
             &MdsfConfigRunners {
                 bunx: true,
                 deno: true,
+                dotnet: true,
 
                 dub: false,
 
@@ -515,6 +547,7 @@ mod test_run_tools {
             &MdsfConfigRunners {
                 bunx: true,
                 deno: true,
+                dotnet: true,
                 dub: true,
 
                 gem_exec: false,
@@ -543,6 +576,7 @@ mod test_run_tools {
             &MdsfConfigRunners {
                 bunx: true,
                 deno: true,
+                dotnet: true,
                 dub: true,
                 gem_exec: true,
 
@@ -571,6 +605,7 @@ mod test_run_tools {
             &MdsfConfigRunners {
                 bunx: true,
                 deno: true,
+                dotnet: true,
                 dub: true,
                 gem_exec: true,
                 npx: true,
@@ -599,6 +634,7 @@ mod test_run_tools {
             &MdsfConfigRunners {
                 bunx: true,
                 deno: true,
+                dotnet: true,
                 dub: true,
                 gem_exec: true,
                 npx: true,
@@ -630,6 +666,7 @@ mod test_run_tools {
             &MdsfConfigRunners {
                 bunx: true,
                 deno: true,
+                dotnet: true,
                 dub: true,
                 gem_exec: true,
                 npx: true,
@@ -658,6 +695,7 @@ mod test_run_tools {
             &MdsfConfigRunners {
                 bunx: true,
                 deno: true,
+                dotnet: true,
                 dub: true,
                 gem_exec: true,
                 npx: true,

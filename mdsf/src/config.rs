@@ -30,6 +30,12 @@ pub struct MdsfConfigRunners {
     #[serde(default, skip_serializing_if = "is_false")]
     pub deno: bool,
 
+    /// Whether to support running dub packages using `dotnet $PACKAGE_NAME`
+    ///
+    /// Default: `false`
+    #[serde(default, skip_serializing_if = "is_false")]
+    pub dotnet: bool,
+
     /// Whether to support running dub packages using `dub run $PACKAGE_NAME`
     ///
     /// Default: `false`
@@ -84,6 +90,7 @@ impl MdsfConfigRunners {
         Self {
             bunx: true,
             deno: true,
+            dotnet: true,
             dub: true,
             gem_exec: true,
             npx: true,
