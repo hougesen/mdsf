@@ -4,6 +4,16 @@ All notable changes to this project will be documented in this file. Dates are d
 
 #### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.9.1...HEAD)
 
+- build(deps-dev): bump eslint from 9.25.0 to 9.25.1 in /mdsf-vscode [`#995`](https://github.com/hougesen/mdsf/pull/995)
+- build(deps-dev): bump @types/node in /github-action [`#989`](https://github.com/hougesen/mdsf/pull/989)
+- build(deps-dev): bump esbuild from 0.25.2 to 0.25.3 in /mdsf-vscode [`#993`](https://github.com/hougesen/mdsf/pull/993)
+- build(deps-dev): bump @typescript-eslint/eslint-plugin in /mdsf-vscode [`#990`](https://github.com/hougesen/mdsf/pull/990)
+- build(deps-dev): bump @eslint/js from 9.25.0 to 9.25.1 in /mdsf-vscode [`#994`](https://github.com/hougesen/mdsf/pull/994)
+- build(deps-dev): bump eslint from 9.25.0 to 9.25.1 in /github-action [`#991`](https://github.com/hougesen/mdsf/pull/991)
+- build(deps-dev): bump @eslint/js from 9.25.0 to 9.25.1 in /github-action [`#986`](https://github.com/hougesen/mdsf/pull/986)
+- build(deps-dev): bump esbuild from 0.25.2 to 0.25.3 in /github-action [`#988`](https://github.com/hougesen/mdsf/pull/988)
+- build(deps-dev): bump @typescript-eslint/parser in /mdsf-vscode [`#987`](https://github.com/hougesen/mdsf/pull/987)
+- build(deps-dev): bump @types/node in /mdsf-vscode [`#992`](https://github.com/hougesen/mdsf/pull/992)
 - docs: usage of config.language_aliases [`#985`](https://github.com/hougesen/mdsf/pull/985)
 - feat: config option for setting line endings [`#984`](https://github.com/hougesen/mdsf/pull/984)
 - feat(runners): run commands using dotnet [`#983`](https://github.com/hougesen/mdsf/pull/983)

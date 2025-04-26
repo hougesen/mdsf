@@ -210,7 +210,7 @@ pub fn format_snippet(
                     if language_formatters.is_none() {
                         let mut f = formatted_code.trim().to_owned();
 
-                        f.push(crate::config::LF_LINE_ENDING_CHAR);
+                        f.push(crate::config::LF_NEWLINE_CHAR);
 
                         return f;
                     }
@@ -232,7 +232,7 @@ pub fn format_snippet(
                 } else if let Ok(Some(formatted_code)) = result {
                     let mut f = formatted_code.trim().to_owned();
 
-                    f.push(crate::config::LF_LINE_ENDING_CHAR);
+                    f.push(crate::config::LF_NEWLINE_CHAR);
 
                     return f;
                 }

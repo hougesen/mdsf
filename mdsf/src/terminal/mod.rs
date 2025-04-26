@@ -136,7 +136,7 @@ fn wrap_text(input: &str) -> String {
     lines.insert(0, "");
     lines.push(&break_line);
 
-    lines.join(crate::config::LineEnding::Lf.as_str())
+    lines.join(crate::config::Newline::Lf.as_str())
 }
 
 #[cfg(test)]

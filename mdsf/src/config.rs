@@ -106,7 +106,7 @@ impl MdsfConfigRunners {
     Clone, Copy, PartialEq, Eq, Debug, serde::Serialize, serde::Deserialize, Hash, Default,
 )]
 #[cfg_attr(feature = "json-schema", derive(schemars::JsonSchema))]
-pub enum LineEnding {
+pub enum Newline {
     #[default]
     #[serde(rename = "lf")]
     Lf,
@@ -114,9 +114,9 @@ pub enum LineEnding {
     CrLf,
 }
 
-pub const LF_LINE_ENDING_CHAR: char = '\n';
+pub const LF_NEWLINE_CHAR: char = '\n';
 
-impl LineEnding {
+impl Newline {
     #[inline]
     pub const fn as_str(&self) -> &'static str {
         match self {
@@ -201,11 +201,11 @@ pub struct MdsfConfig {
     #[serde(default)]
     pub languages: std::collections::BTreeMap<String, MdsfFormatter<Tooling>>,
 
-    /// The line endings used for the output.
+    /// The newline used for the output.
     ///
     /// Default: `lf`
-    #[serde(default, skip_serializing_if = "LineEnding::is_default")]
-    pub line_endings: LineEnding,
+    #[serde(default, skip_serializing_if = "Newline::is_default")]
+    pub newline: Newline,
 
     /// What to do when a codeblock language has no tools defined.
     #[serde(default, skip_serializing_if = "Option::is_none")]
@@ -231,7 +231,7 @@ impl Default for MdsfConfig {
             format_finished_document: false,
             language_aliases: std::collections::BTreeMap::default(),
             languages: default_tools(),
-            line_endings: Default::default(),
+            newline: Default::default(),
             on_missing_language_definition: None,
             on_missing_tool_binary: None,
             runners: MdsfConfigRunners::default(),

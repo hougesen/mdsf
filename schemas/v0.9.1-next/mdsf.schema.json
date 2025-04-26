@@ -33,11 +33,11 @@
         "$ref": "#/definitions/MdsfFormatter_for_Tooling"
       }
     },
-    "line_endings": {
-      "description": "The line endings used for the output.\n\nDefault: `lf`",
+    "newline": {
+      "description": "The newline used for the output.\n\nDefault: `lf`",
       "allOf": [
         {
-          "$ref": "#/definitions/LineEnding"
+          "$ref": "#/definitions/Newline"
         }
       ]
     },
@@ -73,10 +73,6 @@
     }
   },
   "definitions": {
-    "LineEnding": {
-      "type": "string",
-      "enum": ["lf", "crlf"]
-    },
     "MdsfConfigRunners": {
       "type": "object",
       "properties": {
@@ -134,6 +130,10 @@
           }
         }
       ]
+    },
+    "Newline": {
+      "type": "string",
+      "enum": ["lf", "crlf"]
     },
     "OnMissingLanguageDefinition": {
       "oneOf": [
