@@ -2,8 +2,13 @@
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
-#### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.9.1...HEAD)
+#### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.9.2...HEAD)
 
+#### [v0.9.2](https://github.com/hougesen/mdsf/compare/v0.9.1...v0.9.2)
+
+> 26 April 2025
+
+- refactor(init): remove default tools for uncommon languages [`#998`](https://github.com/hougesen/mdsf/pull/998)
 - feat(config): add support for CR newlines [`#997`](https://github.com/hougesen/mdsf/pull/997)
 - refactor(config): rename line_endings to newline [`#996`](https://github.com/hougesen/mdsf/pull/996)
 - build(deps-dev): bump eslint from 9.25.0 to 9.25.1 in /mdsf-vscode [`#995`](https://github.com/hougesen/mdsf/pull/995)
