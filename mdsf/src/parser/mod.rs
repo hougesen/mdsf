@@ -22,7 +22,7 @@ pub fn parse_generic_codeblock(lines: &mut Enumerate<Lines>) -> (bool, String, u
 
         code_snippet.push_str(subline);
 
-        code_snippet.push(crate::config::LF_LINE_ENDING_CHAR);
+        code_snippet.push(crate::config::LF_NEWLINE_CHAR);
     }
 
     (is_snippet, code_snippet, snippet_lines)
@@ -61,8 +61,7 @@ pub fn indent_codeblock(indentation: &str, snippet: String) -> String {
             .lines()
             .map(|line| format!("{indentation}{line}"))
             .collect::<Vec<_>>()
-            // TODO: keep original line endings
-            .join(crate::config::LineEnding::Lf.as_str())
+            .join(crate::config::Newline::Lf.as_str())
     }
 }
 

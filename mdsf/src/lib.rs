@@ -132,11 +132,11 @@ pub fn format_file(
 
                     output.push_str(line);
 
-                    output.push(crate::config::LF_LINE_ENDING_CHAR);
+                    output.push(crate::config::LF_NEWLINE_CHAR);
 
                     output.push_str(&formatted);
 
-                    output.push(crate::config::LF_LINE_ENDING_CHAR);
+                    output.push(crate::config::LF_NEWLINE_CHAR);
                     output.push_str(&indentation);
                     output.push_str("```");
                 } else {
@@ -169,7 +169,7 @@ pub fn format_file(
             output.push_str(line);
         }
 
-        output.push(crate::config::LF_LINE_ENDING_CHAR);
+        output.push(crate::config::LF_NEWLINE_CHAR);
     }
 
     if config.format_finished_document && !output.is_empty() {
@@ -188,7 +188,7 @@ pub fn format_file(
         );
     }
 
-    output = config.line_endings.normalize(output);
+    output = config.newline.normalize(output);
 
     (output != input, output)
 }
