@@ -30,6 +30,7 @@ Format, and lint, markdown code snippets using your favorite tools.
   - [treefmt](#treefmt)
 - [Configuration](#configuration)
   - [Language aliases](#language-aliases)
+  - [Newlines](#newlines)
   - [Tools](#tools)
   - [Commands](#commands)
 - [Shell completions](#shell-completions)
@@ -432,6 +433,18 @@ In the example below `bash` and `zsh` would use the tools defined under `languag
     "bash": "shell",
     "zsh": "shell"
   }
+}
+```
+
+### Newlines
+
+By default LF (`\n`) is used for newlines.
+
+That can be changed by specifying the `newline` config option.
+
+```json
+{
+  "newline": "lf" // "lf" | "cr" | "crlf"
 }
 ```
 
