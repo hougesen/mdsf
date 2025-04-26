@@ -4,6 +4,7 @@ All notable changes to this project will be documented in this file. Dates are d
 
 #### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.9.1...HEAD)
 
+- feat(config): add support for CR newlines [`#997`](https://github.com/hougesen/mdsf/pull/997)
 - refactor(config): rename line_endings to newline [`#996`](https://github.com/hougesen/mdsf/pull/996)
 - build(deps-dev): bump eslint from 9.25.0 to 9.25.1 in /mdsf-vscode [`#995`](https://github.com/hougesen/mdsf/pull/995)
 - build(deps-dev): bump @types/node in /github-action [`#989`](https://github.com/hougesen/mdsf/pull/989)

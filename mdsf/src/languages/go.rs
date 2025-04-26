@@ -13,7 +13,6 @@ pub fn default_config() -> (String, MdsfFormatter<Tooling>) {
             MdsfFormatter::Multiple(vec![
                 MdsfFormatter::Single(Tooling::Gofumpt),
                 MdsfFormatter::Single(Tooling::Gofmt),
-                MdsfFormatter::Single(Tooling::Crlfmt),
             ]),
         ]),
     )

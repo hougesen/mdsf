@@ -349,7 +349,13 @@ fn add(a: i32, b: i32) -> i32 {
 ```
 ";
 
-        let config = MdsfConfig::default();
+        let config = MdsfConfig {
+            languages: std::collections::BTreeMap::from_iter([(
+                "rust".to_string(),
+                MdsfFormatter::Single(Tooling::Rustfmt),
+            )]),
+            ..Default::default()
+        };
 
         {
             let (modified, output) = format_file(
@@ -404,7 +410,7 @@ fn add(a: i32, b: i32) -> i32 {
 
         for whitespace in whitespaces {
             let input = format!(
-                "{whitespace}```rust
+                "{whitespace}```rs
 fn           add(
      a:
       i32, b: i32) -> i32 {{
@@ -414,7 +420,7 @@ fn           add(
             );
 
             let expected_output = format!(
-                "{whitespace}```rust
+                "{whitespace}```rs
 {whitespace}fn add(a: i32, b: i32) -> i32 {{
 {whitespace}    a + b
 {whitespace}}}
@@ -422,7 +428,19 @@ fn           add(
 "
             );
 
-            let config = MdsfConfig::default();
+            let mut config = MdsfConfig {
+                languages: std::collections::BTreeMap::from_iter([(
+                    "rust".to_string(),
+                    MdsfFormatter::Single(Tooling::Rustfmt),
+                )]),
+                language_aliases: std::collections::BTreeMap::from_iter([(
+                    "rs".to_string(),
+                    "rust".to_string(),
+                )]),
+                ..Default::default()
+            };
+
+            config.setup_language_aliases().unwrap();
 
             {
                 let (modified, output) = format_file(
@@ -510,7 +528,19 @@ fn add(a: i32, b: i32) -> i32 {
 
 ";
 
-        let config = MdsfConfig::default();
+        let mut config = MdsfConfig {
+            languages: std::collections::BTreeMap::from_iter([(
+                "rs".to_string(),
+                MdsfFormatter::Single(Tooling::Rustfmt),
+            )]),
+            language_aliases: std::collections::BTreeMap::from_iter([(
+                "rust".to_string(),
+                "rs".to_string(),
+            )]),
+            ..Default::default()
+        };
+
+        config.setup_language_aliases().unwrap();
 
         let (modified, output) = format_file(
             &config,
@@ -566,7 +596,24 @@ type Whatever struct {
 ";
 
         {
-            let config = MdsfConfig::default();
+            let config = MdsfConfig {
+                languages: std::collections::BTreeMap::from_iter([(
+                    "go".to_string(),
+                    MdsfFormatter::Multiple(vec![
+                        MdsfFormatter::Multiple(vec![
+                            MdsfFormatter::Single(Tooling::Gci),
+                            MdsfFormatter::Single(Tooling::GoimportsReviser),
+                            MdsfFormatter::Single(Tooling::Goimports),
+                        ]),
+                        MdsfFormatter::Multiple(vec![
+                            MdsfFormatter::Single(Tooling::Gofumpt),
+                            MdsfFormatter::Single(Tooling::Gofmt),
+                            MdsfFormatter::Single(Tooling::Crlfmt),
+                        ]),
+                    ]),
+                )]),
+                ..Default::default()
+            };
 
             {
                 let (modified, output) = format_file(
@@ -686,7 +733,24 @@ type Whatever struct {
 ";
 
         {
-            let config = MdsfConfig::default();
+            let config = MdsfConfig {
+                languages: std::collections::BTreeMap::from_iter([(
+                    "go".to_string(),
+                    MdsfFormatter::Multiple(vec![
+                        MdsfFormatter::Multiple(vec![
+                            MdsfFormatter::Single(Tooling::Gci),
+                            MdsfFormatter::Single(Tooling::GoimportsReviser),
+                            MdsfFormatter::Single(Tooling::Goimports),
+                        ]),
+                        MdsfFormatter::Multiple(vec![
+                            MdsfFormatter::Single(Tooling::Gofumpt),
+                            MdsfFormatter::Single(Tooling::Gofmt),
+                            MdsfFormatter::Single(Tooling::Crlfmt),
+                        ]),
+                    ]),
+                )]),
+                ..Default::default()
+            };
 
             {
                 let (modified, output) = format_file(
