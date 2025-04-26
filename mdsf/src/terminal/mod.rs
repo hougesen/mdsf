@@ -1,17 +1,14 @@
-use console::style;
 use log::{debug, error, info, trace, warn};
-
-use crate::{LineInfo, error::MdsfError};
 
 pub mod logging;
 
 #[inline]
-pub fn print_error(error: &MdsfError) {
+pub fn print_error(error: &crate::error::MdsfError) {
     error!("{error}");
 }
 
 #[inline]
-pub fn print_tool_info(tool: &str, info: &LineInfo) {
+pub fn print_tool_info(tool: &str, info: &crate::LineInfo) {
     debug!(
         "{}:{} to :{} {} block using {tool}",
         info.filename.display(),
@@ -22,7 +19,7 @@ pub fn print_tool_info(tool: &str, info: &LineInfo) {
 }
 
 #[inline]
-pub fn print_tool_time(tool: &str, info: &LineInfo, duration: core::time::Duration) {
+pub fn print_tool_time(tool: &str, info: &crate::LineInfo, duration: core::time::Duration) {
     trace!(
         "{}:{} to :{} {} took {}ms to run using {tool}",
         info.filename.display(),
@@ -37,7 +34,7 @@ pub fn print_tool_time(tool: &str, info: &LineInfo, duration: core::time::Durati
 pub fn print_unchanged_file(path: &std::path::Path, dur: core::time::Duration, cached: bool) {
     info!(
         "{}",
-        style(format!(
+        console::style(format!(
             "{} finished in {}ms (unchanged){}",
             path.display(),
             dur.as_millis(),
@@ -77,7 +74,7 @@ pub fn print_binary_not_in_path(path: &std::path::Path, binary_name: &str, error
 }
 
 #[inline]
-pub fn print_error_running_tool(tool_name: &str, info: &LineInfo, stderr: &str) {
+pub fn print_error_running_tool(tool_name: &str, info: &crate::LineInfo, stderr: &str) {
     warn!(
         "{}:{} to :{} error running {tool_name}{}",
         info.filename.display(),
@@ -139,7 +136,7 @@ fn wrap_text(input: &str) -> String {
     lines.insert(0, "");
     lines.push(&break_line);
 
-    lines.join("\n")
+    lines.join(crate::config::LineEnding::Lf.as_str())
 }
 
 #[cfg(test)]

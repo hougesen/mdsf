@@ -102,6 +102,46 @@ impl MdsfConfigRunners {
     }
 }
 
+#[derive(
+    Clone, Copy, PartialEq, Eq, Debug, serde::Serialize, serde::Deserialize, Hash, Default,
+)]
+#[cfg_attr(feature = "json-schema", derive(schemars::JsonSchema))]
+pub enum LineEnding {
+    #[default]
+    #[serde(rename = "lf")]
+    Lf,
+    #[serde(rename = "crlf")]
+    CrLf,
+}
+
+pub const LF_LINE_ENDING_CHAR: char = '\n';
+
+impl LineEnding {
+    #[inline]
+    pub const fn as_str(&self) -> &'static str {
+        match self {
+            Self::Lf => "\n",
+            Self::CrLf => "\r\n",
+        }
+    }
+
+    #[inline]
+    fn is_default(&self) -> bool {
+        *self == Self::default()
+    }
+
+    #[inline]
+    pub fn normalize(self, input: String) -> String {
+        // We could most likely optimize this, but I am not sure if the added complexity is worth it
+
+        if self == Self::Lf && !input.contains(Self::CrLf.as_str()) {
+            input
+        } else {
+            input.lines().collect::<Vec<_>>().join(self.as_str())
+        }
+    }
+}
+
 #[derive(serde::Serialize, serde::Deserialize, Hash, Debug, PartialEq, Eq)]
 #[cfg_attr(feature = "json-schema", derive(schemars::JsonSchema))]
 pub struct MdsfConfig {
@@ -161,6 +201,12 @@ pub struct MdsfConfig {
     #[serde(default)]
     pub languages: std::collections::BTreeMap<String, MdsfFormatter<Tooling>>,
 
+    /// The line endings used for the output.
+    ///
+    /// Default: `lf`
+    #[serde(default, skip_serializing_if = "LineEnding::is_default")]
+    pub line_endings: LineEnding,
+
     /// What to do when a codeblock language has no tools defined.
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub on_missing_language_definition: Option<OnMissingLanguageDefinition>,
@@ -185,6 +231,7 @@ impl Default for MdsfConfig {
             format_finished_document: false,
             language_aliases: std::collections::BTreeMap::default(),
             languages: default_tools(),
+            line_endings: Default::default(),
             on_missing_language_definition: None,
             on_missing_tool_binary: None,
             runners: MdsfConfigRunners::default(),

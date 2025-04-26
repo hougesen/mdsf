@@ -4,6 +4,7 @@ All notable changes to this project will be documented in this file. Dates are d
 
 #### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.9.1...HEAD)
 
+- feat(runners): run commands using dotnet [`#983`](https://github.com/hougesen/mdsf/pull/983)
 - build(deps-dev): bump eslint from 9.24.0 to 9.25.0 in /github-action [`#975`](https://github.com/hougesen/mdsf/pull/975)
 - build(deps-dev): bump eslint from 9.24.0 to 9.25.0 in /mdsf-vscode [`#979`](https://github.com/hougesen/mdsf/pull/979)
 - build(deps-dev): bump @typescript-eslint/eslint-plugin in /mdsf-vscode [`#973`](https://github.com/hougesen/mdsf/pull/973)
