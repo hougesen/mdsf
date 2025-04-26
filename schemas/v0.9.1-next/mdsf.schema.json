@@ -33,6 +33,14 @@
         "$ref": "#/definitions/MdsfFormatter_for_Tooling"
       }
     },
+    "line_endings": {
+      "description": "The line endings used for the output.\n\nDefault: `lf`",
+      "allOf": [
+        {
+          "$ref": "#/definitions/LineEnding"
+        }
+      ]
+    },
     "on_missing_language_definition": {
       "description": "What to do when a codeblock language has no tools defined.",
       "anyOf": [
@@ -65,6 +73,10 @@
     }
   },
   "definitions": {
+    "LineEnding": {
+      "type": "string",
+      "enum": ["lf", "crlf"]
+    },
     "MdsfConfigRunners": {
       "type": "object",
       "properties": {
