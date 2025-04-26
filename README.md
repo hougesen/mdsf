@@ -29,6 +29,7 @@ Format, and lint, markdown code snippets using your favorite tools.
     - [conform.nvim](#conformnvim)
   - [treefmt](#treefmt)
 - [Configuration](#configuration)
+  - [Language aliases](#language-aliases)
   - [Tools](#tools)
   - [Commands](#commands)
 - [Shell completions](#shell-completions)
@@ -404,6 +405,32 @@ Options:
 
     // Formatters listed under "_" will only be run when there is not formatter configured for the file type OR globally ("*").
     "_": "prettier"
+  }
+}
+```
+
+### Language aliases
+
+Multiple languages can easily be mapped to the same tools using the `language_aliases` option.
+
+```json
+{
+  "language_aliases": {
+    "language": "is_alias_of"
+  }
+}
+```
+
+In the example below `bash` and `zsh` would use the tools defined under `languages.shell`.
+
+```json
+{
+  "languages": {
+    "shell": "shfmt"
+  },
+  "language_aliases": {
+    "bash": "shell",
+    "zsh": "shell"
   }
 }
 ```
