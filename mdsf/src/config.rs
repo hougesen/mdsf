@@ -110,6 +110,8 @@ pub enum Newline {
     #[default]
     #[serde(rename = "lf")]
     Lf,
+    #[serde(rename = "cr")]
+    Cr,
     #[serde(rename = "crlf")]
     CrLf,
 }
@@ -121,6 +123,7 @@ impl Newline {
     pub const fn as_str(&self) -> &'static str {
         match self {
             Self::Lf => "\n",
+            Self::Cr => "\r",
             Self::CrLf => "\r\n",
         }
     }
@@ -134,7 +137,7 @@ impl Newline {
     pub fn normalize(self, input: String) -> String {
         // We could most likely optimize this, but I am not sure if the added complexity is worth it
 
-        if self == Self::Lf && !input.contains(Self::CrLf.as_str()) {
+        if self == Self::Lf && !input.contains('\r') {
             input
         } else {
             input.lines().collect::<Vec<_>>().join(self.as_str())

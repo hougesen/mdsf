@@ -133,7 +133,7 @@
     },
     "Newline": {
       "type": "string",
-      "enum": ["lf", "crlf"]
+      "enum": ["lf", "cr", "crlf"]
     },
     "OnMissingLanguageDefinition": {
       "oneOf": [
