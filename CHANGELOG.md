@@ -4,6 +4,8 @@ All notable changes to this project will be documented in this file. Dates are d
 
 #### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.9.1...HEAD)
 
+- docs: usage of config.language_aliases [`#985`](https://github.com/hougesen/mdsf/pull/985)
+- feat: config option for setting line endings [`#984`](https://github.com/hougesen/mdsf/pull/984)
 - feat(runners): run commands using dotnet [`#983`](https://github.com/hougesen/mdsf/pull/983)
 - build(deps-dev): bump eslint from 9.24.0 to 9.25.0 in /github-action [`#975`](https://github.com/hougesen/mdsf/pull/975)
 - build(deps-dev): bump eslint from 9.24.0 to 9.25.0 in /mdsf-vscode [`#979`](https://github.com/hougesen/mdsf/pull/979)
