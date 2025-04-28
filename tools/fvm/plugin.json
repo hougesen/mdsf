@@ -1,0 +1,29 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "fvm",
+  "categories": ["formatter", "linter"],
+  "commands": {
+    "dart:fix": {
+      "arguments": ["dart", "fix", "--apply", "$PATH"],
+      "description": "Fixes errors in dart code",
+      "homepage": "https://dart.dev/tools/dart-fix",
+      "tests": []
+    },
+    "dart:format": {
+      "arguments": ["dart", "format", "$PATH"],
+      "description": "Formats dart code",
+      "homepage": "https://dart.dev/tools/dart-format",
+      "tests": [
+        {
+          "language": "dart",
+          "test_input": "class Adder {   int add(int a, int b) {     return a + b;   } }    ",
+          "test_output": "class Adder {\n  int add(int a, int b) {\n    return a + b;\n  }\n}\n"
+        }
+      ]
+    }
+  },
+  "description": "Run Dart and Flutter commands through fvm",
+  "homepage": "https://github.com/leoafarias/fvm",
+  "languages": ["dart", "flutter"],
+  "packages": {}
+}

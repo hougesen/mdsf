@@ -8,6 +8,7 @@ All notable changes to this project will be documented in this file. Dates are d
 
 > 26 April 2025
 
+- chore: release v0.9.2 [`#999`](https://github.com/hougesen/mdsf/pull/999)
 - refactor(init): remove default tools for uncommon languages [`#998`](https://github.com/hougesen/mdsf/pull/998)
 - feat(config): add support for CR newlines [`#997`](https://github.com/hougesen/mdsf/pull/997)
 - refactor(config): rename line_endings to newline [`#996`](https://github.com/hougesen/mdsf/pull/996)
