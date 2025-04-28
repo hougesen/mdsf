@@ -114,7 +114,7 @@ conda install conda-forge::mdsf
 <!-- START_SECTION:base-command-help -->
 
 ```
-mdsf 0.9.2
+mdsf 0.9.2-next
 Format, and lint, markdown code snippets using your favorite tools
 Mads Hougesen <mads@mhouge.dk>
 
@@ -457,7 +457,7 @@ That can be changed by specifying the `newline` config option.
 
 <!-- START_SECTION:supported-tools -->
 
-`mdsf` currently supports 304 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 305 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                                                                                 | Description                                                                                                                                   | Categories            | Languages                                                                                                                         |
 | ------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
@@ -556,6 +556,7 @@ That can be changed by specifying the `newline` config option.
 | [fourmolu](https://github.com/fourmolu/fourmolu)                                     | A formatter for Haskell source code                                                                                                           | `formatter`           | `haskell`                                                                                                                         |
 | [fprettify](https://github.com/fortran-lang/fprettify)                               | Auto-formatter for modern Fortran source code                                                                                                 | `formatter`           | `fortran`                                                                                                                         |
 | [futhark](https://futhark.readthedocs.io/en/latest/man/futhark-fmt.html)             | Code formatter for the furhark programming language                                                                                           | `formatter`           | `futhark`                                                                                                                         |
+| [fvm](https://github.com/leoafarias/fvm)                                             | Run Dart and Flutter commands through fvm                                                                                                     | `formatter`, `linter` | `dart`, `flutter`                                                                                                                 |
 | [gci](https://github.com/daixiang0/gci)                                              | GCI, a tool that control golang package import order and make it always deterministic                                                         | `formatter`           | `go`                                                                                                                              |
 | [gdformat](https://github.com/scony/godot-gdscript-toolkit)                          | GDScript formatter                                                                                                                            | `formatter`           | `gdscript`                                                                                                                        |
 | [gdlint](https://github.com/scony/godot-gdscript-toolkit)                            | GDScript linter                                                                                                                               | `linter`              | `gdscript`                                                                                                                        |
@@ -772,7 +773,7 @@ That can be changed by specifying the `newline` config option.
 
 <!-- START_SECTION:supported-commands -->
 
-`mdsf` currently supports 336 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 338 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                         | Command                                                                                 |
 | ---------------------------- | --------------------------------------------------------------------------------------- |
@@ -883,6 +884,8 @@ That can be changed by specifying the `newline` config option.
 | `fourmolu`                   | `fourmolu -i $PATH`                                                                     |
 | `fprettify`                  | `fprettify $PATH`                                                                       |
 | `futhark:fmt`                | `futhark fmt $PATH`                                                                     |
+| `fvm:dart:fix`               | `fvm dart fix --apply $PATH`                                                            |
+| `fvm:dart:format`            | `fvm dart format $PATH`                                                                 |
 | `gci`                        | `gci write --skip-generated --skip-vendor $PATH`                                        |
 | `gdformat`                   | `gdformat $PATH`                                                                        |
 | `gdlint`                     | `gdlint $PATH`                                                                          |

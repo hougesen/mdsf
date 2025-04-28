@@ -108,6 +108,8 @@ pub mod fortran_linter;
 pub mod fourmolu;
 pub mod fprettify;
 pub mod futhark_fmt;
+pub mod fvm_dart_fix;
+pub mod fvm_dart_format;
 pub mod gci;
 pub mod gdformat;
 pub mod gdlint;
@@ -1196,6 +1198,22 @@ pub enum Tooling {
     ///
     /// `futhark fmt $PATH`
     FutharkFmt,
+
+    #[serde(rename = "fvm:dart:fix")]
+    /// Fixes errors in dart code
+    ///
+    /// [https://dart.dev/tools/dart-fix](https://dart.dev/tools/dart-fix)
+    ///
+    /// `fvm dart fix --apply $PATH`
+    FvmDartFix,
+
+    #[serde(rename = "fvm:dart:format")]
+    /// Formats dart code
+    ///
+    /// [https://dart.dev/tools/dart-format](https://dart.dev/tools/dart-format)
+    ///
+    /// `fvm dart format $PATH`
+    FvmDartFormat,
 
     #[serde(rename = "gci")]
     /// GCI, a tool that control golang package import order and make it always deterministic
@@ -3408,6 +3426,16 @@ impl Tooling {
                 futhark_fmt::set_args,
                 futhark_fmt::IS_STDIN,
             ),
+            Self::FvmDartFix => (
+                &fvm_dart_fix::COMMANDS,
+                fvm_dart_fix::set_args,
+                fvm_dart_fix::IS_STDIN,
+            ),
+            Self::FvmDartFormat => (
+                &fvm_dart_format::COMMANDS,
+                fvm_dart_format::set_args,
+                fvm_dart_format::IS_STDIN,
+            ),
             Self::Gci => (&gci::COMMANDS, gci::set_args, gci::IS_STDIN),
             Self::Gdformat => (&gdformat::COMMANDS, gdformat::set_args, gdformat::IS_STDIN),
             Self::Gdlint => (&gdlint::COMMANDS, gdlint::set_args, gdlint::IS_STDIN),
@@ -4223,6 +4251,8 @@ impl AsRef<str> for Tooling {
             Self::Fourmolu => "fourmolu",
             Self::Fprettify => "fprettify",
             Self::FutharkFmt => "futhark:fmt",
+            Self::FvmDartFix => "fvm:dart:fix",
+            Self::FvmDartFormat => "fvm:dart:format",
             Self::Gci => "gci",
             Self::Gdformat => "gdformat",
             Self::Gdlint => "gdlint",
@@ -4590,6 +4620,8 @@ mod test_tooling {
         assert_eq!(Tooling::Fourmolu, reverse(Tooling::Fourmolu)?);
         assert_eq!(Tooling::Fprettify, reverse(Tooling::Fprettify)?);
         assert_eq!(Tooling::FutharkFmt, reverse(Tooling::FutharkFmt)?);
+        assert_eq!(Tooling::FvmDartFix, reverse(Tooling::FvmDartFix)?);
+        assert_eq!(Tooling::FvmDartFormat, reverse(Tooling::FvmDartFormat)?);
         assert_eq!(Tooling::Gci, reverse(Tooling::Gci)?);
         assert_eq!(Tooling::Gdformat, reverse(Tooling::Gdformat)?);
         assert_eq!(Tooling::Gdlint, reverse(Tooling::Gdlint)?);
