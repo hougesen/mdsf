@@ -140,6 +140,7 @@ pub mod hurlfmt;
 pub mod imba_fmt;
 pub mod inko_fmt;
 pub mod isort;
+pub mod janet_format;
 pub mod joker;
 pub mod jq;
 pub mod jqfmt;
@@ -1024,7 +1025,7 @@ pub enum Tooling {
     DusterLint,
 
     #[serde(rename = "dx:fmt")]
-    /// Dioxus cli
+    /// Format `rsx!` snippets in Rust files.
     ///
     /// [https://github.com/dioxuslabs/dioxus](https://github.com/dioxuslabs/dioxus)
     ///
@@ -1454,6 +1455,14 @@ pub enum Tooling {
     ///
     /// `isort --quiet $PATH`
     Isort,
+
+    #[serde(rename = "janet-format")]
+    /// A formatter for Janet code.
+    ///
+    /// [https://github.com/janet-lang/spork](https://github.com/janet-lang/spork)
+    ///
+    /// `janet-format `
+    JanetFormat,
 
     #[serde(rename = "joker")]
     /// Small Clojure interpreter, linter and formatter
@@ -3514,6 +3523,11 @@ impl Tooling {
             Self::ImbaFmt => (&imba_fmt::COMMANDS, imba_fmt::set_args, imba_fmt::IS_STDIN),
             Self::InkoFmt => (&inko_fmt::COMMANDS, inko_fmt::set_args, inko_fmt::IS_STDIN),
             Self::Isort => (&isort::COMMANDS, isort::set_args, isort::IS_STDIN),
+            Self::JanetFormat => (
+                &janet_format::COMMANDS,
+                janet_format::set_args,
+                janet_format::IS_STDIN,
+            ),
             Self::Joker => (&joker::COMMANDS, joker::set_args, joker::IS_STDIN),
             Self::Jq => (&jq::COMMANDS, jq::set_args, jq::IS_STDIN),
             Self::Jqfmt => (&jqfmt::COMMANDS, jqfmt::set_args, jqfmt::IS_STDIN),
@@ -4283,6 +4297,7 @@ impl AsRef<str> for Tooling {
             Self::ImbaFmt => "imba:fmt",
             Self::InkoFmt => "inko:fmt",
             Self::Isort => "isort",
+            Self::JanetFormat => "janet-format",
             Self::Joker => "joker",
             Self::Jq => "jq",
             Self::Jqfmt => "jqfmt",
@@ -4661,6 +4676,7 @@ mod test_tooling {
         assert_eq!(Tooling::ImbaFmt, reverse(Tooling::ImbaFmt)?);
         assert_eq!(Tooling::InkoFmt, reverse(Tooling::InkoFmt)?);
         assert_eq!(Tooling::Isort, reverse(Tooling::Isort)?);
+        assert_eq!(Tooling::JanetFormat, reverse(Tooling::JanetFormat)?);
         assert_eq!(Tooling::Joker, reverse(Tooling::Joker)?);
         assert_eq!(Tooling::Jq, reverse(Tooling::Jq)?);
         assert_eq!(Tooling::Jqfmt, reverse(Tooling::Jqfmt)?);

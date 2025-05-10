@@ -15,6 +15,7 @@ keywords = [
 ]
 homepage = { workspace = true }
 readme = { workspace = true }
+documentation = { workspace = true }
 categories = ["development-tools", "command-line-utilities"]
 exclude = ["codegen/**"]
 default-run = "mdsf"

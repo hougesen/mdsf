@@ -601,7 +601,7 @@
           "enum": ["duster:lint"]
         },
         {
-          "description": "Dioxus cli\n\n[https://github.com/dioxuslabs/dioxus](https://github.com/dioxuslabs/dioxus)\n\n`dx fmt --all-code --file $PATH`",
+          "description": "Format `rsx!` snippets in Rust files.\n\n[https://github.com/dioxuslabs/dioxus](https://github.com/dioxuslabs/dioxus)\n\n`dx fmt --all-code --file $PATH`",
           "type": "string",
           "enum": ["dx:fmt"]
         },
@@ -869,6 +869,11 @@
           "description": "A Python utility to sort imports\n\n[https://github.com/timothycrosley/isort](https://github.com/timothycrosley/isort)\n\n`isort --quiet $PATH`",
           "type": "string",
           "enum": ["isort"]
+        },
+        {
+          "description": "A formatter for Janet code.\n\n[https://github.com/janet-lang/spork](https://github.com/janet-lang/spork)\n\n`janet-format `",
+          "type": "string",
+          "enum": ["janet-format"]
         },
         {
           "description": "Small Clojure interpreter, linter and formatter\n\n[https://github.com/candid82/joker](https://github.com/candid82/joker)\n\n`joker --format --write $PATH`",

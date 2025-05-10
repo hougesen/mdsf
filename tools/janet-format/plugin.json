@@ -1,0 +1,16 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "janet-format",
+  "categories": ["formatter"],
+  "commands": {
+    "": {
+      "arguments": [],
+      "stdin": true,
+      "tests": []
+    }
+  },
+  "description": "A formatter for Janet code.",
+  "homepage": "https://github.com/janet-lang/spork",
+  "languages": ["janet"],
+  "packages": {}
+}

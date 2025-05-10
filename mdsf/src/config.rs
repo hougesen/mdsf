@@ -234,7 +234,7 @@ impl Default for MdsfConfig {
             format_finished_document: false,
             language_aliases: std::collections::BTreeMap::default(),
             languages: default_tools(),
-            newline: Default::default(),
+            newline: Newline::default(),
             on_missing_language_definition: None,
             on_missing_tool_binary: None,
             runners: MdsfConfigRunners::default(),
