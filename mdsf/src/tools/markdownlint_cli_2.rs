@@ -28,10 +28,10 @@ pub const IS_STDIN: bool = false;
 #[cfg(test)]
 mod test_markdownlint_cli_2 {
     #[test_with::executable(markdownlint-cli2 || npx || pnpm || deno || bunx)]
-    fn test_markdownlint_cli_2_markdown_1f615768d8e575c5() {
+    fn test_markdownlint_cli_2_markdown_27f5778fc1db5182() {
         let input = r#"# Hello world
 
-- asd 
+- asd
 * vasd
 "#;
 

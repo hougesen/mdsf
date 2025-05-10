@@ -10,7 +10,7 @@
       "tests": [
         {
           "language": "r",
-          "test_input": "data            |>\n                  select(foo)\n \n foo         <- function(bar         =                               1, baz=2)                                 {\n   list(bar,                 baz)\n }\n \n",
+          "test_input": "data            |>\n                  select(foo)\n\n  foo         <- function(bar         =                               1, baz=2)                                 {\n   list(bar,                 baz)\n }\n\n",
           "test_output": "data |>\n  select(foo)\n\nfoo <- function(bar = 1, baz = 2) {\n  list(bar, baz)\n}\n"
         }
       ]

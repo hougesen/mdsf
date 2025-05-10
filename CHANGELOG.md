@@ -4,6 +4,9 @@ All notable changes to this project will be documented in this file. Dates are d
 
 #### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.9.2...HEAD)
 
+- build(deps-dev): bump globals from 16.0.0 to 16.1.0 in /github-action [`#1018`](https://github.com/hougesen/mdsf/pull/1018)
+- build(deps-dev): bump @types/node in /mdsf-vscode [`#1019`](https://github.com/hougesen/mdsf/pull/1019)
+- feat(tools): add support for janet-format [`#1023`](https://github.com/hougesen/mdsf/pull/1023)
 - build(deps): bump clap_complete from 4.5.49 to 4.5.50 [`#1015`](https://github.com/hougesen/mdsf/pull/1015)
 - build(deps): bump clap_complete from 4.5.48 to 4.5.49 [`#1014`](https://github.com/hougesen/mdsf/pull/1014)
 - build(deps-dev): bump @typescript-eslint/eslint-plugin in /mdsf-vscode [`#1013`](https://github.com/hougesen/mdsf/pull/1013)
