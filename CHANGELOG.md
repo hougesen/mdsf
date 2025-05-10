@@ -2,8 +2,18 @@
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
-#### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.9.2...HEAD)
+#### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.9.3...HEAD)
 
+#### [v0.9.3](https://github.com/hougesen/mdsf/compare/v0.9.2...v0.9.3)
+
+> 10 May 2025
+
+- chore: release v0.9.3 [`#1025`](https://github.com/hougesen/mdsf/pull/1025)
+- build(deps-dev): bump @types/node in /github-action [`#1016`](https://github.com/hougesen/mdsf/pull/1016)
+- build(deps-dev): bump esbuild from 0.25.3 to 0.25.4 in /mdsf-vscode [`#1021`](https://github.com/hougesen/mdsf/pull/1021)
+- test(tools): test kdlfmt [`#1024`](https://github.com/hougesen/mdsf/pull/1024)
+- build(deps-dev): bump globals from 16.0.0 to 16.1.0 in /mdsf-vscode [`#1017`](https://github.com/hougesen/mdsf/pull/1017)
+- build(deps-dev): bump esbuild from 0.25.3 to 0.25.4 in /github-action [`#1020`](https://github.com/hougesen/mdsf/pull/1020)
 - build(deps-dev): bump globals from 16.0.0 to 16.1.0 in /github-action [`#1018`](https://github.com/hougesen/mdsf/pull/1018)
 - build(deps-dev): bump @types/node in /mdsf-vscode [`#1019`](https://github.com/hougesen/mdsf/pull/1019)
 - feat(tools): add support for janet-format [`#1023`](https://github.com/hougesen/mdsf/pull/1023)
