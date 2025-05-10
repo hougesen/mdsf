@@ -37,7 +37,7 @@
     "@biomejs/biome": "^1.9.4",
     "@eslint/js": "^9.25.1",
     "@types/node": "^22.15.3",
-    "esbuild": "^0.25.3",
+    "esbuild": "^0.25.4",
     "eslint": "^9.26.0",
     "globals": "^16.1.0"
   }
