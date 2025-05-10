@@ -5,7 +5,33 @@
   "commands": {
     "": {
       "arguments": ["format", "$PATH"],
-      "tests": []
+      "tests": [
+        {
+          "language": "kdl",
+          "test_input": "world {    child \"1\"\nchild \"2\"   }\n",
+          "test_output": "world {\n    child \"1\"\n    child \"2\"\n}\n"
+        }
+      ]
+    },
+    "v1": {
+      "arguments": ["format", "--kdl-version", "v1", "$PATH"],
+      "tests": [
+        {
+          "language": "kdl",
+          "test_input": "world {\n    child \"1\"\nchild \"2\"\n     }\n",
+          "test_output": "world {\n    child \"1\"\n    child \"2\"\n}\n"
+        }
+      ]
+    },
+    "v2": {
+      "arguments": ["format", "--kdl-version", "v2", "$PATH"],
+      "tests": [
+        {
+          "language": "kdl",
+          "test_input": "world {    child \"1\"\nchild \"2\"   }\n",
+          "test_output": "world {\n    child \"1\"\n    child \"2\"\n}\n"
+        }
+      ]
     }
   },
   "description": "A formatter for kdl documents",

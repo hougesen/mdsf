@@ -172,6 +172,8 @@ jobs:
         run: ( ( which just ) || ( ( which npm && npm i -g rust-just ) || ( which cargo && ( cargo binstall just || cargo install just ) ) || ( which brew &&  brew install just ) || ( which pipx && pipx install rust-just ) ) || ( echo "Unable to install tool" ) )
       - name: kcl
         run: ( ( which kcl ) || ( ( which brew &&  brew install kcl-lang/tap/kcl ) || ( which go && go install kcl-lang.io/cli/cmd/kcl@latest ) ) || ( echo "Unable to install tool" ) )
+      - name: kdlfmt
+        run: ( ( which kdlfmt ) || ( ( which npm && npm i -g kdlfmt ) || ( which cargo && ( cargo binstall kdlfmt || cargo install kdlfmt ) ) || ( which brew &&  brew install hougesen/tap/kdlfmt ) ) || ( echo "Unable to install tool" ) )
       - name: ktfmt
         run: ( ( which ktfmt ) || ( ( which brew &&  brew install ktfmt ) ) || ( echo "Unable to install tool" ) )
       - name: ktlint

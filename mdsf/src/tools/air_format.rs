@@ -20,14 +20,14 @@ pub const IS_STDIN: bool = false;
 #[cfg(test)]
 mod test_air_format {
     #[test_with::executable(air)]
-    fn test_air_format_r_51e31783d5946a25() {
+    fn test_air_format_r_b395a8aabbe68c56() {
         let input = r#"data            |>
                   select(foo)
- 
- foo         <- function(bar         =                               1, baz=2)                                 {
+
+  foo         <- function(bar         =                               1, baz=2)                                 {
    list(bar,                 baz)
  }
- 
+
 "#;
 
         let output = r#"data |>

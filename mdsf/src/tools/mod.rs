@@ -157,6 +157,8 @@ pub mod just;
 pub mod kcl_fmt;
 pub mod kcl_lint;
 pub mod kdlfmt;
+pub mod kdlfmt_v_1;
+pub mod kdlfmt_v_2;
 pub mod kdoc_formatter;
 pub mod ktfmt;
 pub mod ktlint;
@@ -1591,6 +1593,22 @@ pub enum Tooling {
     ///
     /// `kdlfmt format $PATH`
     Kdlfmt,
+
+    #[serde(rename = "kdlfmt:v1")]
+    /// A formatter for kdl documents
+    ///
+    /// [https://github.com/hougesen/kdlfmt](https://github.com/hougesen/kdlfmt)
+    ///
+    /// `kdlfmt format --kdl-version v1 $PATH`
+    KdlfmtV1,
+
+    #[serde(rename = "kdlfmt:v2")]
+    /// A formatter for kdl documents
+    ///
+    /// [https://github.com/hougesen/kdlfmt](https://github.com/hougesen/kdlfmt)
+    ///
+    /// `kdlfmt format --kdl-version v2 $PATH`
+    KdlfmtV2,
 
     #[serde(rename = "kdoc-formatter")]
     /// Reformats Kotlin KDoc comments, reflowing text and other cleanup
@@ -3572,6 +3590,16 @@ impl Tooling {
             Self::KclFmt => (&kcl_fmt::COMMANDS, kcl_fmt::set_args, kcl_fmt::IS_STDIN),
             Self::KclLint => (&kcl_lint::COMMANDS, kcl_lint::set_args, kcl_lint::IS_STDIN),
             Self::Kdlfmt => (&kdlfmt::COMMANDS, kdlfmt::set_args, kdlfmt::IS_STDIN),
+            Self::KdlfmtV1 => (
+                &kdlfmt_v_1::COMMANDS,
+                kdlfmt_v_1::set_args,
+                kdlfmt_v_1::IS_STDIN,
+            ),
+            Self::KdlfmtV2 => (
+                &kdlfmt_v_2::COMMANDS,
+                kdlfmt_v_2::set_args,
+                kdlfmt_v_2::IS_STDIN,
+            ),
             Self::KdocFormatter => (
                 &kdoc_formatter::COMMANDS,
                 kdoc_formatter::set_args,
@@ -4314,6 +4342,8 @@ impl AsRef<str> for Tooling {
             Self::KclFmt => "kcl:fmt",
             Self::KclLint => "kcl:lint",
             Self::Kdlfmt => "kdlfmt",
+            Self::KdlfmtV1 => "kdlfmt:v1",
+            Self::KdlfmtV2 => "kdlfmt:v2",
             Self::KdocFormatter => "kdoc-formatter",
             Self::Ktfmt => "ktfmt",
             Self::Ktlint => "ktlint",
@@ -4696,6 +4726,8 @@ mod test_tooling {
         assert_eq!(Tooling::KclFmt, reverse(Tooling::KclFmt)?);
         assert_eq!(Tooling::KclLint, reverse(Tooling::KclLint)?);
         assert_eq!(Tooling::Kdlfmt, reverse(Tooling::Kdlfmt)?);
+        assert_eq!(Tooling::KdlfmtV1, reverse(Tooling::KdlfmtV1)?);
+        assert_eq!(Tooling::KdlfmtV2, reverse(Tooling::KdlfmtV2)?);
         assert_eq!(Tooling::KdocFormatter, reverse(Tooling::KdocFormatter)?);
         assert_eq!(Tooling::Ktfmt, reverse(Tooling::Ktfmt)?);
         assert_eq!(Tooling::Ktlint, reverse(Tooling::Ktlint)?);

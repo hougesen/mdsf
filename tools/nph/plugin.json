@@ -8,7 +8,7 @@
       "tests": [
         {
           "language": "nim",
-          "test_input": "proc add(a:int,b:int):int = \n            return a+b\n",
+          "test_input": "proc add(a:int,b:int):int =\n            return a+b\n",
           "test_output": "proc add(a: int, b: int): int =\n  return a + b\n"
         }
       ]

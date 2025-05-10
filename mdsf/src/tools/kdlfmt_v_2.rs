@@ -9,6 +9,8 @@ pub fn set_args(
     file_path: &std::path::Path,
 ) -> std::process::Command {
     cmd.arg("format");
+    cmd.arg("--kdl-version");
+    cmd.arg("v2");
     cmd.arg(file_path);
     cmd
 }
@@ -26,9 +28,9 @@ pub const COMMANDS: [CommandType; 7] = [
 pub const IS_STDIN: bool = false;
 
 #[cfg(test)]
-mod test_kdlfmt {
+mod test_kdlfmt_v_2 {
     #[test_with::executable(kdlfmt || npx || pnpm || deno || bunx)]
-    fn test_kdlfmt_kdl_3d75351f7ec84869() {
+    fn test_kdlfmt_v_2_kdl_3d75351f7ec84869() {
         let input = r#"world {    child "1"
 child "2"   }
 "#;
@@ -41,6 +43,6 @@ child "2"   }
 
         let file_ext = crate::fttype::get_file_extension("kdl");
 
-        crate::tools::Tooling::Kdlfmt.test_format_snippet(input, output, &file_ext);
+        crate::tools::Tooling::KdlfmtV2.test_format_snippet(input, output, &file_ext);
     }
 }

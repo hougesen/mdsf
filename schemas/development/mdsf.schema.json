@@ -956,6 +956,16 @@
           "enum": ["kdlfmt"]
         },
         {
+          "description": "A formatter for kdl documents\n\n[https://github.com/hougesen/kdlfmt](https://github.com/hougesen/kdlfmt)\n\n`kdlfmt format --kdl-version v1 $PATH`",
+          "type": "string",
+          "enum": ["kdlfmt:v1"]
+        },
+        {
+          "description": "A formatter for kdl documents\n\n[https://github.com/hougesen/kdlfmt](https://github.com/hougesen/kdlfmt)\n\n`kdlfmt format --kdl-version v2 $PATH`",
+          "type": "string",
+          "enum": ["kdlfmt:v2"]
+        },
+        {
           "description": "Reformats Kotlin KDoc comments, reflowing text and other cleanup\n\n[https://github.com/tnorbye/kdoc-formatter](https://github.com/tnorbye/kdoc-formatter)\n\n`kdoc-formatter --quiet $PATH`",
           "type": "string",
           "enum": ["kdoc-formatter"]

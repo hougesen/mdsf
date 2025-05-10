@@ -774,7 +774,7 @@ That can be changed by specifying the `newline` config option.
 
 <!-- START_SECTION:supported-commands -->
 
-`mdsf` currently supports 339 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 341 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                         | Command                                                                                 |
 | ---------------------------- | --------------------------------------------------------------------------------------- |
@@ -933,6 +933,8 @@ That can be changed by specifying the `newline` config option.
 | `just`                       | `just --fmt --unstable --justfile $PATH`                                                |
 | `kcl:fmt`                    | `kcl fmt $PATH`                                                                         |
 | `kcl:lint`                   | `kcl lint $PATH`                                                                        |
+| `kdlfmt:v1`                  | `kdlfmt format --kdl-version v1 $PATH`                                                  |
+| `kdlfmt:v2`                  | `kdlfmt format --kdl-version v2 $PATH`                                                  |
 | `kdlfmt`                     | `kdlfmt format $PATH`                                                                   |
 | `kdoc-formatter`             | `kdoc-formatter --quiet $PATH`                                                          |
 | `ktfmt`                      | `ktfmt $PATH`                                                                           |

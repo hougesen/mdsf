@@ -19,8 +19,8 @@ pub const IS_STDIN: bool = false;
 #[cfg(test)]
 mod test_nph {
     #[test_with::executable(nph)]
-    fn test_nph_nim_4f0f6867e821c18d() {
-        let input = r#"proc add(a:int,b:int):int = 
+    fn test_nph_nim_b53c066cb1d15828() {
+        let input = r#"proc add(a:int,b:int):int =
             return a+b
 "#;
 
