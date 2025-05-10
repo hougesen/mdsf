@@ -457,7 +457,7 @@ That can be changed by specifying the `newline` config option.
 
 <!-- START_SECTION:supported-tools -->
 
-`mdsf` currently supports 305 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 306 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                                                                                 | Description                                                                                                                                   | Categories            | Languages                                                                                                                         |
 | ------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
@@ -585,6 +585,7 @@ That can be changed by specifying the `newline` config option.
 | [imba](https://imba.io/)                                                             | A formatter for Imba                                                                                                                          | `formatter`           | `imba`                                                                                                                            |
 | [inko](https://github.com/inko-lang/inko)                                            | Code formatter for the inko programming language                                                                                              | `formatter`           | `inko`                                                                                                                            |
 | [isort](https://github.com/timothycrosley/isort)                                     | A Python utility to sort imports                                                                                                              | `formatter`           | `python`                                                                                                                          |
+| [janet-format](https://github.com/janet-lang/spork)                                  | A formatter for Janet code.                                                                                                                   | `formatter`           | `janet`                                                                                                                           |
 | [joker](https://github.com/candid82/joker)                                           | Small Clojure interpreter, linter and formatter                                                                                               | `formatter`, `linter` | `clojure`                                                                                                                         |
 | [jq](https://github.com/jqlang/jq)                                                   | JSON processor                                                                                                                                | `formatter`           | `json`                                                                                                                            |
 | [jqfmt](https://github.com/noperator/jqfmt)                                          | like gofmt, but for jq                                                                                                                        | `formatter`           | `jq`                                                                                                                              |
@@ -773,7 +774,7 @@ That can be changed by specifying the `newline` config option.
 
 <!-- START_SECTION:supported-commands -->
 
-`mdsf` currently supports 338 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 339 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                         | Command                                                                                 |
 | ---------------------------- | --------------------------------------------------------------------------------------- |
@@ -916,6 +917,7 @@ That can be changed by specifying the `newline` config option.
 | `imba:fmt`                   | `imba fmt -f $PATH`                                                                     |
 | `inko:fmt`                   | `inko fmt $PATH`                                                                        |
 | `isort`                      | `isort --quiet $PATH`                                                                   |
+| `janet-format`               | `janet-format `                                                                         |
 | `joker`                      | `joker --format --write $PATH`                                                          |
 | `jq`                         | `jq `                                                                                   |
 | `jqfmt`                      | `jqfmt `                                                                                |

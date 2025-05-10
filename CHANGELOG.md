@@ -4,6 +4,22 @@ All notable changes to this project will be documented in this file. Dates are d
 
 #### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.9.2...HEAD)
 
+- build(deps): bump clap_complete from 4.5.49 to 4.5.50 [`#1015`](https://github.com/hougesen/mdsf/pull/1015)
+- build(deps): bump clap_complete from 4.5.48 to 4.5.49 [`#1014`](https://github.com/hougesen/mdsf/pull/1014)
+- build(deps-dev): bump @typescript-eslint/eslint-plugin in /mdsf-vscode [`#1013`](https://github.com/hougesen/mdsf/pull/1013)
+- build(deps-dev): bump @typescript-eslint/parser in /mdsf-vscode [`#1012`](https://github.com/hougesen/mdsf/pull/1012)
+- build(deps-dev): bump @eslint/js from 9.25.1 to 9.26.0 in /mdsf-vscode [`#1008`](https://github.com/hougesen/mdsf/pull/1008)
+- build(deps-dev): bump eslint from 9.25.1 to 9.26.0 in /github-action [`#1011`](https://github.com/hougesen/mdsf/pull/1011)
+- build(deps-dev): bump @typescript-eslint/eslint-plugin in /mdsf-vscode [`#1009`](https://github.com/hougesen/mdsf/pull/1009)
+- build(deps-dev): bump eslint from 9.25.1 to 9.26.0 in /mdsf-vscode [`#1006`](https://github.com/hougesen/mdsf/pull/1006)
+- build(deps-dev): bump @typescript-eslint/parser in /mdsf-vscode [`#1007`](https://github.com/hougesen/mdsf/pull/1007)
+- build(deps): bump test-with from 0.14.9 to 0.14.10 [`#1005`](https://github.com/hougesen/mdsf/pull/1005)
+- build(deps): bump sha2 from 0.10.8 to 0.10.9 [`#1004`](https://github.com/hougesen/mdsf/pull/1004)
+- build(deps): bump clap_complete from 4.5.47 to 4.5.48 [`#1003`](https://github.com/hougesen/mdsf/pull/1003)
+- build(deps-dev): bump @types/node in /github-action [`#1001`](https://github.com/hougesen/mdsf/pull/1001)
+- build(deps-dev): bump @types/node in /mdsf-vscode [`#1002`](https://github.com/hougesen/mdsf/pull/1002)
+- feat(tools): support running dart through fvm [`#1000`](https://github.com/hougesen/mdsf/pull/1000)
+
 #### [v0.9.2](https://github.com/hougesen/mdsf/compare/v0.9.1...v0.9.2)
 
 > 26 April 2025
