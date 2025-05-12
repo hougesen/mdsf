@@ -7,14 +7,14 @@
       "arguments": ["$PATH"],
       "tests": [
         {
-          "language": "shell",
-          "test_input": "#!/bin/shell\n\n       add() {\n    echo \"$1\" + \"$2\"\n             }\n",
-          "test_output": "#!/bin/shell\n\nadd() {\n    echo \"$1\" + \"$2\"\n}\n"
-        },
-        {
           "language": "bash",
           "test_input": "#!/bin/bash\n\n       add() {\n    echo \"$1\" + \"$2\"\n             }\n",
           "test_output": "#!/bin/bash\n\nadd() {\n    echo \"$1\" + \"$2\"\n}\n"
+        },
+        {
+          "language": "shell",
+          "test_input": "#!/bin/shell\n\n       add() {\n    echo \"$1\" + \"$2\"\n             }\n",
+          "test_output": "#!/bin/shell\n\nadd() {\n    echo \"$1\" + \"$2\"\n}\n"
         }
       ]
     }

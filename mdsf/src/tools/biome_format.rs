@@ -29,6 +29,27 @@ pub const IS_STDIN: bool = false;
 #[cfg(test)]
 mod test_biome_format {
     #[test_with::executable(biome || npx || pnpm || deno || bunx)]
+    fn test_biome_format_javascript_4845e9b01c23667f() {
+        let input = r#"
+    async function asyncAddition(
+            a,b
+        ) {
+        return a+b
+    }
+
+            "#;
+
+        let output = r#"async function asyncAddition(a, b) {
+	return a + b;
+}
+"#;
+
+        let file_ext = crate::fttype::get_file_extension("javascript");
+
+        crate::tools::Tooling::BiomeFormat.test_format_snippet(input, output, &file_ext);
+    }
+
+    #[test_with::executable(biome || npx || pnpm || deno || bunx)]
     fn test_biome_format_json_90a326e29048e3cd() {
         let input = r#"
               {
@@ -48,27 +69,6 @@ mod test_biome_format {
 "#;
 
         let file_ext = crate::fttype::get_file_extension("json");
-
-        crate::tools::Tooling::BiomeFormat.test_format_snippet(input, output, &file_ext);
-    }
-
-    #[test_with::executable(biome || npx || pnpm || deno || bunx)]
-    fn test_biome_format_javascript_4845e9b01c23667f() {
-        let input = r#"
-    async function asyncAddition(
-            a,b
-        ) {
-        return a+b
-    }
-
-            "#;
-
-        let output = r#"async function asyncAddition(a, b) {
-	return a + b;
-}
-"#;
-
-        let file_ext = crate::fttype::get_file_extension("javascript");
 
         crate::tools::Tooling::BiomeFormat.test_format_snippet(input, output, &file_ext);
     }

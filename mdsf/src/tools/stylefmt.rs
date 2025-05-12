@@ -27,82 +27,6 @@ pub const IS_STDIN: bool = false;
 #[cfg(test)]
 mod test_stylefmt {
     #[test_with::executable(stylefmt || npx || pnpm || deno || bunx)]
-    fn test_stylefmt_scss_d3c6918bf17af7f3() {
-        let input = r#"// mixin for clearfix
-
-
-        @mixin      clearfix    ()      { &:before,
-  &:after {
-                content:" ";
-    display              : table;  }
-
-  &:after        {clear: both;}
-   }.class
-{
-       padding:10px;@include        clearfix();}
-     .base {  color: red;  }
-
-// placeholder
-%base
-{
-
-
-padding: 12px
-}
-
-.foo{
-@extend      .base;}
-
-.bar
-      {     @extend            %base;
-
-}
-"#;
-
-        let output = r#"// mixin for clearfix
-
-
-@mixin clearfix() {
-  &:before,
-  &:after {
-    content: " ";
-    display: table;
-  }
-
-  &:after {
-    clear: both;
-  }
-}
-
-.class {
-  padding: 10px;
-  @include clearfix();
-}
-
-.base {
-  color: red;
-}
-
-// placeholder
-%base {
-  padding: 12px;
-}
-
-.foo {
-  @extend .base;
-}
-
-.bar {
-  @extend %base;
-}
-"#;
-
-        let file_ext = crate::fttype::get_file_extension("scss");
-
-        crate::tools::Tooling::Stylefmt.test_format_snippet(input, output, &file_ext);
-    }
-
-    #[test_with::executable(stylefmt || npx || pnpm || deno || bunx)]
     fn test_stylefmt_css_ed4f8407afa6d974() {
         let input = r#"/* custom properties */
 :root{--fontSize: 1rem;
@@ -219,6 +143,82 @@ table {
 "#;
 
         let file_ext = crate::fttype::get_file_extension("css");
+
+        crate::tools::Tooling::Stylefmt.test_format_snippet(input, output, &file_ext);
+    }
+
+    #[test_with::executable(stylefmt || npx || pnpm || deno || bunx)]
+    fn test_stylefmt_scss_d3c6918bf17af7f3() {
+        let input = r#"// mixin for clearfix
+
+
+        @mixin      clearfix    ()      { &:before,
+  &:after {
+                content:" ";
+    display              : table;  }
+
+  &:after        {clear: both;}
+   }.class
+{
+       padding:10px;@include        clearfix();}
+     .base {  color: red;  }
+
+// placeholder
+%base
+{
+
+
+padding: 12px
+}
+
+.foo{
+@extend      .base;}
+
+.bar
+      {     @extend            %base;
+
+}
+"#;
+
+        let output = r#"// mixin for clearfix
+
+
+@mixin clearfix() {
+  &:before,
+  &:after {
+    content: " ";
+    display: table;
+  }
+
+  &:after {
+    clear: both;
+  }
+}
+
+.class {
+  padding: 10px;
+  @include clearfix();
+}
+
+.base {
+  color: red;
+}
+
+// placeholder
+%base {
+  padding: 12px;
+}
+
+.foo {
+  @extend .base;
+}
+
+.bar {
+  @extend %base;
+}
+"#;
+
+        let file_ext = crate::fttype::get_file_extension("scss");
 
         crate::tools::Tooling::Stylefmt.test_format_snippet(input, output, &file_ext);
     }

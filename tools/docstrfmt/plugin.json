@@ -9,7 +9,7 @@
     }
   },
   "description": "A formatter for Sphinx flavored reStructuredText",
-  "homepage": "https://github.com/LilSpazJoekp/docstrfmt",
+  "homepage": "https://github.com/lilspazjoekp/docstrfmt",
   "languages": ["python", "restructuredtext", "sphinx"],
   "packages": {
     "pip": {

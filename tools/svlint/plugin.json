@@ -1,0 +1,19 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "svlint",
+  "categories": ["linter"],
+  "commands": {
+    "": {
+      "arguments": ["$PATH"],
+      "tests": []
+    }
+  },
+  "description": "SystemVerilog linter",
+  "homepage": "https://github.com/dalance/svlint",
+  "languages": ["systemverilog"],
+  "packages": {
+    "cargo": {
+      "package": "svlint"
+    }
+  }
+}

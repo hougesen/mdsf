@@ -40,26 +40,6 @@ mod test_deno_fmt {
     }
 
     #[test_with::executable(deno)]
-    fn test_deno_fmt_typescript_857476c85438ce71() {
-        let input = r#"
-    async function asyncAddition(                                a:       	number,b:number ) :Promise< number>
-    {
-        return a+b
-    }
-
-            "#;
-
-        let output = r#"async function asyncAddition(a: number, b: number): Promise<number> {
-  return a + b;
-}
-"#;
-
-        let file_ext = crate::fttype::get_file_extension("typescript");
-
-        crate::tools::Tooling::DenoFmt.test_format_snippet(input, output, &file_ext);
-    }
-
-    #[test_with::executable(deno)]
     fn test_deno_fmt_json_d426a9ade74002d2() {
         let input = r#"
               {
@@ -84,6 +64,26 @@ mod test_deno_fmt {
 "#;
 
         let file_ext = crate::fttype::get_file_extension("json");
+
+        crate::tools::Tooling::DenoFmt.test_format_snippet(input, output, &file_ext);
+    }
+
+    #[test_with::executable(deno)]
+    fn test_deno_fmt_typescript_857476c85438ce71() {
+        let input = r#"
+    async function asyncAddition(                                a:       	number,b:number ) :Promise< number>
+    {
+        return a+b
+    }
+
+            "#;
+
+        let output = r#"async function asyncAddition(a: number, b: number): Promise<number> {
+  return a + b;
+}
+"#;
+
+        let file_ext = crate::fttype::get_file_extension("typescript");
 
         crate::tools::Tooling::DenoFmt.test_format_snippet(input, output, &file_ext);
     }

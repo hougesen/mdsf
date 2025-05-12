@@ -1,5 +1,6 @@
 #[cfg(test)]
 impl crate::tools::Tooling {
+    #[cfg(test)]
     pub fn test_format_snippet(self, input: &str, output: &str, file_ext: &str) {
         let snippet =
             crate::execution::setup_snippet(input, file_ext).expect("it to create a snippet file");

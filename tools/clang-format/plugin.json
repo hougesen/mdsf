@@ -7,21 +7,6 @@
       "arguments": ["-i", "$PATH"],
       "tests": [
         {
-          "language": "java",
-          "test_input": "class HelloWorld {\n    public static void main(String[] args) {\n                System.out.println(\"Hello\");\n                System.out.println(\"World!\");\n                 }\n}",
-          "test_output": "class HelloWorld {\n  public static void main(String[] args) {\n    System.out.println(\"Hello\");\n    System.out.println(\"World!\");\n  }\n}"
-        },
-        {
-          "language": "protobuf",
-          "test_input": "service SearchService {\n                              rpc Search (SearchRequest) returns (SearchResponse);\n                               }",
-          "test_output": "service SearchService { rpc Search(SearchRequest) returns (SearchResponse); }"
-        },
-        {
-          "language": "objective-c",
-          "test_input": "int add(int a,int b){\n            a - a ;\n       return a + b;\n    }",
-          "test_output": "int add(int a, int b) {\n  a - a;\n  return a + b;\n}"
-        },
-        {
           "language": "c",
           "test_input": "int add(int a,int b){\n                a-b;\n       return a + b;\n    }",
           "test_output": "int add(int a, int b) {\n  a - b;\n  return a + b;\n}"
@@ -37,14 +22,29 @@
           "test_output": "namespace Mdsf {\nclass Adder {\n  public static int add(int a, int b) {\n    a - b;\n    return a + b;\n  }\n}\n}"
         },
         {
-          "language": "json",
-          "test_input": "              {\n              \"key\": \"value\",\n  \"key2\": [\"value2\", \"value3\", 1            , null]\n }  ",
-          "test_output": "{\n  \"key\": \"value\",\n  \"key2\": [\n    \"value2\",\n    \"value3\",\n    1,\n    null\n  ]\n}"
+          "language": "java",
+          "test_input": "class HelloWorld {\n    public static void main(String[] args) {\n                System.out.println(\"Hello\");\n                System.out.println(\"World!\");\n                 }\n}",
+          "test_output": "class HelloWorld {\n  public static void main(String[] args) {\n    System.out.println(\"Hello\");\n    System.out.println(\"World!\");\n  }\n}"
         },
         {
           "language": "javascript",
           "test_input": "    async function asyncAddition(  a,b) {\n            a * b;\n        return a+b\n    }            ",
           "test_output": "async function asyncAddition(a, b) {\n  a * b;\n  return a + b\n}"
+        },
+        {
+          "language": "json",
+          "test_input": "              {\n              \"key\": \"value\",\n  \"key2\": [\"value2\", \"value3\", 1            , null]\n }  ",
+          "test_output": "{\n  \"key\": \"value\",\n  \"key2\": [\n    \"value2\",\n    \"value3\",\n    1,\n    null\n  ]\n}"
+        },
+        {
+          "language": "objective-c",
+          "test_input": "int add(int a,int b){\n            a - a ;\n       return a + b;\n    }",
+          "test_output": "int add(int a, int b) {\n  a - a;\n  return a + b;\n}"
+        },
+        {
+          "language": "protobuf",
+          "test_input": "service SearchService {\n                              rpc Search (SearchRequest) returns (SearchResponse);\n                               }",
+          "test_output": "service SearchService { rpc Search(SearchRequest) returns (SearchResponse); }"
         }
       ]
     }

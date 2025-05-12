@@ -32,6 +32,27 @@ pub const IS_STDIN: bool = false;
 #[cfg(test)]
 mod test_prettier {
     #[test_with::executable(prettier || npx || pnpm || deno || bunx)]
+    fn test_prettier_javascript_f38217e7df306e3e() {
+        let input = r#"
+    async function asyncAddition(
+            a,b
+        ) {
+        return a+b
+    }
+
+            "#;
+
+        let output = r#"async function asyncAddition(a, b) {
+  return a + b;
+}
+"#;
+
+        let file_ext = crate::fttype::get_file_extension("javascript");
+
+        crate::tools::Tooling::Prettier.test_format_snippet(input, output, &file_ext);
+    }
+
+    #[test_with::executable(prettier || npx || pnpm || deno || bunx)]
     fn test_prettier_json_8e1e8ed2224fd439() {
         let input = r#"
               {
@@ -51,27 +72,6 @@ mod test_prettier {
 "#;
 
         let file_ext = crate::fttype::get_file_extension("json");
-
-        crate::tools::Tooling::Prettier.test_format_snippet(input, output, &file_ext);
-    }
-
-    #[test_with::executable(prettier || npx || pnpm || deno || bunx)]
-    fn test_prettier_javascript_f38217e7df306e3e() {
-        let input = r#"
-    async function asyncAddition(
-            a,b
-        ) {
-        return a+b
-    }
-
-            "#;
-
-        let output = r#"async function asyncAddition(a, b) {
-  return a + b;
-}
-"#;
-
-        let file_ext = crate::fttype::get_file_extension("javascript");
 
         crate::tools::Tooling::Prettier.test_format_snippet(input, output, &file_ext);
     }

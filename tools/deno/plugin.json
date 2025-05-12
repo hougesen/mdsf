@@ -13,14 +13,14 @@
           "test_output": "async function asyncAddition(a, b) {\n  return a + b;\n}\n"
         },
         {
-          "language": "typescript",
-          "test_input": "\n    async function asyncAddition(                                a:       \tnumber,b:number ) :Promise< number>\n    {\n        return a+b\n    }\n\n            ",
-          "test_output": "async function asyncAddition(a: number, b: number): Promise<number> {\n  return a + b;\n}\n"
-        },
-        {
           "language": "json",
           "test_input": "\n              {\n              \"key\": \"value\",\n  \"key2\": [\n      \"value2\",\n      \"value3\",\n      1\n            , null]\n }\n  ",
           "test_output": "{\n  \"key\": \"value\",\n  \"key2\": [\n    \"value2\",\n    \"value3\",\n    1,\n    null\n  ]\n}\n"
+        },
+        {
+          "language": "typescript",
+          "test_input": "\n    async function asyncAddition(                                a:       \tnumber,b:number ) :Promise< number>\n    {\n        return a+b\n    }\n\n            ",
+          "test_output": "async function asyncAddition(a: number, b: number): Promise<number> {\n  return a + b;\n}\n"
         }
       ]
     },

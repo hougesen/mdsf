@@ -7,14 +7,14 @@
       "arguments": ["--write", "$PATH"],
       "tests": [
         {
-          "language": "shell",
-          "test_input": "\n\n#!/bin/sh\n\n       add      ()   {\n    echo \"$1\"                 +          \"$2\"\n             }\n\n\n\n\n\n\n\n\n",
-          "test_output": "#!/bin/sh\n\nadd() {\n\techo \"$1\" + \"$2\"\n}\n"
-        },
-        {
           "language": "bash",
           "test_input": "\n\n#!/bin/bash\n\n       add      ()   {\n    echo \"$1\"                 +          \"$2\"\n             }\n\n\n\n\n\n\n\n\n",
           "test_output": "#!/bin/bash\n\nadd() {\n\techo \"$1\" + \"$2\"\n}\n"
+        },
+        {
+          "language": "shell",
+          "test_input": "\n\n#!/bin/sh\n\n       add      ()   {\n    echo \"$1\"                 +          \"$2\"\n             }\n\n\n\n\n\n\n\n\n",
+          "test_output": "#!/bin/sh\n\nadd() {\n\techo \"$1\" + \"$2\"\n}\n"
         },
         {
           "language": "zsh",
