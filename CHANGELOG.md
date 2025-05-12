@@ -2,8 +2,13 @@
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
-#### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.9.3...HEAD)
+#### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.9.4...HEAD)
 
+#### [v0.9.4](https://github.com/hougesen/mdsf/compare/v0.9.3...v0.9.4)
+
+> 12 May 2025
+
+- chore: release v0.9.4 [`#1031`](https://github.com/hougesen/mdsf/pull/1031)
 - fix(build): revert artifact back to using .tar.gz [`#1030`](https://github.com/hougesen/mdsf/pull/1030)
 - build(deps): bump clap from 4.5.37 to 4.5.38 [`#1026`](https://github.com/hougesen/mdsf/pull/1026)
 - build(deps): bump tempfile from 3.19.1 to 3.20.0 [`#1027`](https://github.com/hougesen/mdsf/pull/1027)
