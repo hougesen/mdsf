@@ -141,7 +141,7 @@ function extractTool(downloadPath, archiveFormat) {
 
     case ".tar.xz":
     case ".tar.gz":
-      return extractTar(archiveFormat);
+      return extractTar(downloadPath);
   }
 }
 
