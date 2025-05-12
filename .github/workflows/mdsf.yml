@@ -16,6 +16,6 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
       - name: Install mdsf
-        uses: hougesen/mdsf@main
+        uses: hougesen/mdsf@fix/github-action/change-default-archive-format
       - name: Run mdsf
         run: mdsf verify --log-level warn .
