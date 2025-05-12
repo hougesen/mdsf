@@ -114,7 +114,7 @@ conda install conda-forge::mdsf
 <!-- START_SECTION:base-command-help -->
 
 ```
-mdsf 0.9.4
+mdsf 0.9.4-next
 Format, and lint, markdown code snippets using your favorite tools
 Mads Hougesen <mads@mhouge.dk>
 
@@ -457,7 +457,7 @@ That can be changed by specifying the `newline` config option.
 
 <!-- START_SECTION:supported-tools -->
 
-`mdsf` currently supports 307 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 308 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                                                                                 | Description                                                                                                                                   | Categories            | Languages                                                                                                                         |
 | ------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
@@ -712,6 +712,7 @@ That can be changed by specifying the `newline` config option.
 | [sqlfluff](https://github.com/sqlfluff/sqlfluff)                                     | A modular SQL linter and auto-formatter with support for multiple dialects and templated code                                                 | `formatter`, `linter` | `sql`                                                                                                                             |
 | [sqlfmt](https://github.com/tconbeer/sqlfmt)                                         | sqlfmt formats your dbt SQL files so you don't have to                                                                                        | `formatter`           | `sql`                                                                                                                             |
 | [sqruff](https://github.com/quarylabs/sqruff)                                        | Fast SQL formatter/linter                                                                                                                     | `formatter`, `linter` | `sql`                                                                                                                             |
+| [squawk](https://github.com/sbdchd/squawk)                                           | Linter for Postgres migrations & SQL                                                                                                          | `linter`              | `postgresql`, `sql`                                                                                                               |
 | [standardjs](https://github.com/standard/standard)                                   | JavaScript style guide, linter, and formatter                                                                                                 | `formatter`, `linter` | `javascript`                                                                                                                      |
 | [standardrb](https://github.com/standardrb/standard)                                 | Ruby's bikeshed-proof linter and formatter                                                                                                    | `formatter`, `linter` | `ruby`                                                                                                                            |
 | [statix](https://github.com/oppiliappan/statix)                                      | lints and suggestions for the nix programming language                                                                                        | `linter`              | `nix`                                                                                                                             |
@@ -775,7 +776,7 @@ That can be changed by specifying the `newline` config option.
 
 <!-- START_SECTION:supported-commands -->
 
-`mdsf` currently supports 342 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 343 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                         | Command                                                                                 |
 | ---------------------------- | --------------------------------------------------------------------------------------- |
@@ -1061,6 +1062,7 @@ That can be changed by specifying the `newline` config option.
 | `sqlfluff:lint`              | `sqlfluff lint --disable-progress-bar --nocolor --dialect ansi $PATH`                   |
 | `sqlfmt`                     | `sqlfmt $PATH`                                                                          |
 | `sqruff`                     | `sqruff fix --force $PATH`                                                              |
+| `squawk`                     | `squawk $PATH`                                                                          |
 | `standardjs`                 | `standard --fix --stdin`                                                                |
 | `standardrb`                 | `standardrb --fix $PATH`                                                                |
 | `statix:check`               | `statix check $PATH`                                                                    |

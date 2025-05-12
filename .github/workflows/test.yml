@@ -274,6 +274,8 @@ jobs:
         run: ( ( which sqlfmt ) || ( ( which pipx && pipx install shandy-sqlfmt[jinjafmt] ) ) || ( echo "Unable to install tool" ) )
       - name: sqruff
         run: ( ( which sqruff ) || ( ( which cargo && ( cargo binstall sqruff || cargo install sqruff ) ) || ( which pipx && pipx install sqruff ) ) || ( echo "Unable to install tool" ) )
+      - name: squawk
+        run: ( ( which squawk ) || ( ( which npm && npm i -g squawk-cli ) || ( which pipx && pipx install squawk-cli ) ) || ( echo "Unable to install tool" ) )
       - name: standard
         run: ( ( which standard ) || ( ( which npm && npm i -g standard ) ) || ( echo "Unable to install tool" ) )
       - name: standardrb
