@@ -126,6 +126,7 @@ pub mod golangci_lint_run_fix;
 pub mod golines;
 pub mod google_java_format;
 pub mod gospel;
+pub mod grafbase_lint;
 pub mod grain_format;
 pub mod hadolint;
 pub mod haml_lint;
@@ -1347,6 +1348,14 @@ pub enum Tooling {
     ///
     /// `gospel $PATH`
     Gospel,
+
+    #[serde(rename = "grafbase:lint")]
+    /// Lint a GraphQL schema
+    ///
+    /// [https://grafbase.com/docs/reference/grafbase-cli/lint](https://grafbase.com/docs/reference/grafbase-cli/lint)
+    ///
+    /// `grafbase lint $PATH`
+    GrafbaseLint,
 
     #[serde(rename = "grain:format")]
     /// Code formatter for the Grain programming language
@@ -3529,6 +3538,11 @@ impl Tooling {
                 google_java_format::IS_STDIN,
             ),
             Self::Gospel => (&gospel::COMMANDS, gospel::set_args, gospel::IS_STDIN),
+            Self::GrafbaseLint => (
+                &grafbase_lint::COMMANDS,
+                grafbase_lint::set_args,
+                grafbase_lint::IS_STDIN,
+            ),
             Self::GrainFormat => (
                 &grain_format::COMMANDS,
                 grain_format::set_args,
@@ -4331,6 +4345,7 @@ impl AsRef<str> for Tooling {
             Self::Golines => "golines",
             Self::GoogleJavaFormat => "google-java-format",
             Self::Gospel => "gospel",
+            Self::GrafbaseLint => "grafbase:lint",
             Self::GrainFormat => "grain:format",
             Self::Hadolint => "hadolint",
             Self::HamlLint => "haml-lint",
@@ -4714,6 +4729,7 @@ mod test_tooling {
             reverse(Tooling::GoogleJavaFormat)?
         );
         assert_eq!(Tooling::Gospel, reverse(Tooling::Gospel)?);
+        assert_eq!(Tooling::GrafbaseLint, reverse(Tooling::GrafbaseLint)?);
         assert_eq!(Tooling::GrainFormat, reverse(Tooling::GrainFormat)?);
         assert_eq!(Tooling::Hadolint, reverse(Tooling::Hadolint)?);
         assert_eq!(Tooling::HamlLint, reverse(Tooling::HamlLint)?);

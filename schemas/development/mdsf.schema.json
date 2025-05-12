@@ -801,6 +801,11 @@
           "enum": ["gospel"]
         },
         {
+          "description": "Lint a GraphQL schema\n\n[https://grafbase.com/docs/reference/grafbase-cli/lint](https://grafbase.com/docs/reference/grafbase-cli/lint)\n\n`grafbase lint $PATH`",
+          "type": "string",
+          "enum": ["grafbase:lint"]
+        },
+        {
           "description": "Code formatter for the Grain programming language\n\n[https://grain-lang.org/docs/tooling/grain_cli](https://grain-lang.org/docs/tooling/grain_cli)\n\n`grain format $PATH -o $PATH`",
           "type": "string",
           "enum": ["grain:format"]

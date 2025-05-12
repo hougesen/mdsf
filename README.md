@@ -457,7 +457,7 @@ That can be changed by specifying the `newline` config option.
 
 <!-- START_SECTION:supported-tools -->
 
-`mdsf` currently supports 308 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 309 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                                                                                 | Description                                                                                                                                   | Categories            | Languages                                                                                                                         |
 | ------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
@@ -571,6 +571,7 @@ That can be changed by specifying the `newline` config option.
 | [golines](https://github.com/segmentio/golines)                                      | A golang formatter that fixes long lines                                                                                                      | `formatter`           | `go`                                                                                                                              |
 | [google-java-format](https://github.com/google/google-java-format)                   | Reformats Java source code to comply with Google Java Style                                                                                   | `formatter`           | `java`                                                                                                                            |
 | [gospel](https://github.com/kortschak/gospel)                                        | Misspelled word linter for Go comments, string literals and embedded files                                                                    | `spell-check`         | `go`                                                                                                                              |
+| [grafbase](https://github.com/grafbase/grafbase)                                     | The Grafbase command line interface                                                                                                           | `linter`              | `graphql`                                                                                                                         |
 | [grain](https://grain-lang.org/docs/tooling/grain_cli)                               | Code formatter for the Grain programming language                                                                                             | `formatter`           | `grain`                                                                                                                           |
 | [hadolint](https://github.com/hadolint/hadolint)                                     | Dockerfile linter, validate inline bash, written in Haskell                                                                                   | `linter`              | `dockerfile`                                                                                                                      |
 | [haml-lint](https://github.com/sds/haml-lint)                                        | Tool for writing clean and consistent HAML                                                                                                    | `linter`              | `haml`                                                                                                                            |
@@ -776,7 +777,7 @@ That can be changed by specifying the `newline` config option.
 
 <!-- START_SECTION:supported-commands -->
 
-`mdsf` currently supports 343 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 344 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                         | Command                                                                                 |
 | ---------------------------- | --------------------------------------------------------------------------------------- |
@@ -905,6 +906,7 @@ That can be changed by specifying the `newline` config option.
 | `golines`                    | `golines -w $PATH`                                                                      |
 | `google-java-format`         | `google-java-format -i $PATH`                                                           |
 | `gospel`                     | `gospel $PATH`                                                                          |
+| `grafbase:lint`              | `grafbase lint $PATH`                                                                   |
 | `grain:format`               | `grain format $PATH -o $PATH`                                                           |
 | `hadolint`                   | `hadolint $PATH`                                                                        |
 | `haml-lint`                  | `haml-lint --auto-correct $PATH`                                                        |
