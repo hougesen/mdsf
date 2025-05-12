@@ -140,6 +140,8 @@ function extractTool(downloadPath, archiveFormat) {
       return extractZip(downloadPath);
 
     case ".tar.xz":
+      return extractTar(downloadPath, undefined, "xf");
+
     case ".tar.gz":
       return extractTar(downloadPath);
   }
