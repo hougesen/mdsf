@@ -295,6 +295,7 @@ pub mod stylelint;
 pub mod stylish_haskell;
 pub mod stylua;
 pub mod superhtml_fmt;
+pub mod svlint;
 pub mod swift_format;
 pub mod swiftformat;
 pub mod taplo;
@@ -945,7 +946,7 @@ pub enum Tooling {
     #[serde(rename = "docformatter")]
     /// Formats docstrings to follow PEP 257
     ///
-    /// [https://github.com/PyCQA/docformatter](https://github.com/PyCQA/docformatter)
+    /// [https://github.com/pycqa/docformatter](https://github.com/pycqa/docformatter)
     ///
     /// `docformatter --in-place $PATH`
     Docformatter,
@@ -969,7 +970,7 @@ pub enum Tooling {
     #[serde(rename = "docstrfmt")]
     /// A formatter for Sphinx flavored reStructuredText
     ///
-    /// [https://github.com/LilSpazJoekp/docstrfmt](https://github.com/LilSpazJoekp/docstrfmt)
+    /// [https://github.com/lilspazjoekp/docstrfmt](https://github.com/lilspazjoekp/docstrfmt)
     ///
     /// `docstrfmt $PATH`
     Docstrfmt,
@@ -1065,7 +1066,7 @@ pub enum Tooling {
     #[serde(rename = "eradicate")]
     /// Removes commented-out code from Python files
     ///
-    /// [https://github.com/PyCQA/eradicate](https://github.com/PyCQA/eradicate)
+    /// [https://github.com/pycqa/eradicate](https://github.com/pycqa/eradicate)
     ///
     /// `eradicate --in-place $PATH`
     Eradicate,
@@ -2233,7 +2234,7 @@ pub enum Tooling {
     #[serde(rename = "pydocstyle")]
     /// docstring style checker
     ///
-    /// [https://github.com/PyCQA/pydocstyle](https://github.com/PyCQA/pydocstyle)
+    /// [https://github.com/pycqa/pydocstyle](https://github.com/pycqa/pydocstyle)
     ///
     /// `pydocstyle $PATH`
     Pydocstyle,
@@ -2701,6 +2702,14 @@ pub enum Tooling {
     ///
     /// `superhtml fmt $PATH`
     SuperhtmlFmt,
+
+    #[serde(rename = "svlint")]
+    /// SystemVerilog linter
+    ///
+    /// [https://github.com/dalance/svlint](https://github.com/dalance/svlint)
+    ///
+    /// `svlint $PATH`
+    Svlint,
 
     #[serde(rename = "swift-format")]
     /// Formatting technology for Swift source code
@@ -4084,6 +4093,7 @@ impl Tooling {
                 superhtml_fmt::set_args,
                 superhtml_fmt::IS_STDIN,
             ),
+            Self::Svlint => (&svlint::COMMANDS, svlint::set_args, svlint::IS_STDIN),
             Self::SwiftFormat => (
                 &swift_format::COMMANDS,
                 swift_format::set_args,
@@ -4524,6 +4534,7 @@ impl AsRef<str> for Tooling {
             Self::StylishHaskell => "stylish-haskell",
             Self::Stylua => "stylua",
             Self::SuperhtmlFmt => "superhtml:fmt",
+            Self::Svlint => "svlint",
             Self::SwiftFormat => "swift-format",
             Self::Swiftformat => "swiftformat",
             Self::Taplo => "taplo",
@@ -4927,6 +4938,7 @@ mod test_tooling {
         assert_eq!(Tooling::StylishHaskell, reverse(Tooling::StylishHaskell)?);
         assert_eq!(Tooling::Stylua, reverse(Tooling::Stylua)?);
         assert_eq!(Tooling::SuperhtmlFmt, reverse(Tooling::SuperhtmlFmt)?);
+        assert_eq!(Tooling::Svlint, reverse(Tooling::Svlint)?);
         assert_eq!(Tooling::SwiftFormat, reverse(Tooling::SwiftFormat)?);
         assert_eq!(Tooling::Swiftformat, reverse(Tooling::Swiftformat)?);
         assert_eq!(Tooling::Taplo, reverse(Tooling::Taplo)?);

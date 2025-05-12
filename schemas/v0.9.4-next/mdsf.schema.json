@@ -546,7 +546,7 @@
           "enum": ["djlint"]
         },
         {
-          "description": "Formats docstrings to follow PEP 257\n\n[https://github.com/PyCQA/docformatter](https://github.com/PyCQA/docformatter)\n\n`docformatter --in-place $PATH`",
+          "description": "Formats docstrings to follow PEP 257\n\n[https://github.com/pycqa/docformatter](https://github.com/pycqa/docformatter)\n\n`docformatter --in-place $PATH`",
           "type": "string",
           "enum": ["docformatter"]
         },
@@ -561,7 +561,7 @@
           "enum": ["dockfmt"]
         },
         {
-          "description": "A formatter for Sphinx flavored reStructuredText\n\n[https://github.com/LilSpazJoekp/docstrfmt](https://github.com/LilSpazJoekp/docstrfmt)\n\n`docstrfmt $PATH`",
+          "description": "A formatter for Sphinx flavored reStructuredText\n\n[https://github.com/lilspazjoekp/docstrfmt](https://github.com/lilspazjoekp/docstrfmt)\n\n`docstrfmt $PATH`",
           "type": "string",
           "enum": ["docstrfmt"]
         },
@@ -621,7 +621,7 @@
           "enum": ["elm-format"]
         },
         {
-          "description": "Removes commented-out code from Python files\n\n[https://github.com/PyCQA/eradicate](https://github.com/PyCQA/eradicate)\n\n`eradicate --in-place $PATH`",
+          "description": "Removes commented-out code from Python files\n\n[https://github.com/pycqa/eradicate](https://github.com/pycqa/eradicate)\n\n`eradicate --in-place $PATH`",
           "type": "string",
           "enum": ["eradicate"]
         },
@@ -1351,7 +1351,7 @@
           "enum": ["pydocstringformatter"]
         },
         {
-          "description": "docstring style checker\n\n[https://github.com/PyCQA/pydocstyle](https://github.com/PyCQA/pydocstyle)\n\n`pydocstyle $PATH`",
+          "description": "docstring style checker\n\n[https://github.com/pycqa/pydocstyle](https://github.com/pycqa/pydocstyle)\n\n`pydocstyle $PATH`",
           "type": "string",
           "enum": ["pydocstyle"]
         },
@@ -1644,6 +1644,11 @@
           "description": "HTML Language Server & Templating Language Library\n\n[https://github.com/kristoff-it/superhtml](https://github.com/kristoff-it/superhtml)\n\n`superhtml fmt $PATH`",
           "type": "string",
           "enum": ["superhtml:fmt"]
+        },
+        {
+          "description": "SystemVerilog linter\n\n[https://github.com/dalance/svlint](https://github.com/dalance/svlint)\n\n`svlint $PATH`",
+          "type": "string",
+          "enum": ["svlint"]
         },
         {
           "description": "Formatting technology for Swift source code\n\n[https://github.com/apple/swift-format](https://github.com/apple/swift-format)\n\n`swift-format --in-place $PATH`",

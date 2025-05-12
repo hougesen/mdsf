@@ -10,6 +10,55 @@ mod readme;
 mod schema;
 mod tools;
 
+fn normalize_homepage(s: String) -> String {
+    if s.starts_with("https://github.com/") || s.starts_with("https://gitlab.com/") {
+        return s.to_lowercase();
+    }
+
+    s
+}
+
+fn normalize_plugin(mut plugin: Tool) -> Tool {
+    plugin.homepage = normalize_homepage(plugin.homepage);
+    plugin.description = plugin.description.trim().to_string();
+
+    for info in plugin.commands.values_mut() {
+        info.homepage = info.homepage.clone().map(normalize_homepage);
+
+        info.description = info.description.clone().map(|d| d.trim().to_string());
+
+        info.tests.sort_by(|a, b| {
+            if a.language != b.language {
+                a.language.cmp(&b.language)
+            } else if a.test_input != b.test_input {
+                a.test_input.cmp(&b.test_input)
+            } else if a.test_output != b.test_output {
+                a.test_output.cmp(&b.test_output)
+            } else if a.disabled {
+                core::cmp::Ordering::Greater
+            } else if b.disabled {
+                core::cmp::Ordering::Less
+            } else {
+                core::cmp::Ordering::Equal
+            }
+        });
+    }
+
+    plugin.languages = plugin
+        .languages
+        .into_iter()
+        .map(|l| l.trim().to_lowercase())
+        .collect();
+
+    plugin.categories = plugin
+        .categories
+        .into_iter()
+        .map(|l| l.trim().to_lowercase())
+        .collect();
+
+    plugin
+}
+
 fn get_plugin_files() -> Vec<Tool> {
     let tool_folder = "tools";
 
@@ -24,7 +73,7 @@ fn get_plugin_files() -> Vec<Tool> {
 
                 let content = std::fs::read_to_string(entry.path()).unwrap();
 
-                let plugin = serde_json::from_str::<Tool>(&content).unwrap();
+                let plugin = normalize_plugin(serde_json::from_str::<Tool>(&content).unwrap());
 
                 std::fs::write(entry.path(), serde_json::to_string_pretty(&plugin).unwrap())
                     .unwrap();

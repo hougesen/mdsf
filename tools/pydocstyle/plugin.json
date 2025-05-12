@@ -9,7 +9,7 @@
     }
   },
   "description": "docstring style checker",
-  "homepage": "https://github.com/PyCQA/pydocstyle",
+  "homepage": "https://github.com/pycqa/pydocstyle",
   "languages": ["python"],
   "packages": {
     "pip": {
