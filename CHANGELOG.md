@@ -4,6 +4,8 @@ All notable changes to this project will be documented in this file. Dates are d
 
 #### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.9.3...HEAD)
 
+- feat(tools): add support for ty [`#1028`](https://github.com/hougesen/mdsf/pull/1028)
+
 #### [v0.9.3](https://github.com/hougesen/mdsf/compare/v0.9.2...v0.9.3)
 
 > 10 May 2025

@@ -1,6 +1,6 @@
 import path from "node:path";
 import { addPath, getInput, platform, setFailed } from "@actions/core";
-import { downloadTool, extractTar } from "@actions/tool-cache";
+import { downloadTool, extractTar, extractZip } from "@actions/tool-cache";
 
 // https://github.com/actions/toolkit/blob/main/packages/core/README.md#platform-helper
 async function getArchInfo() {
@@ -70,6 +70,81 @@ async function getPackageDownloadPath(version, file) {
   return `https://github.com/hougesen/mdsf/releases/latest/download/${file}`;
 }
 
+/**
+ * @param {string} version
+ * @param {string} arch
+ */
+function getPackageArchiveFormatFromVersion(version, arch) {
+  if (
+    [
+      "v0.0.0",
+      "v0.0.1",
+      "v0.0.2",
+      "v0.0.3",
+      "v0.0.4",
+      "v0.0.5",
+      "v0.0.6",
+      "v0.0.7",
+      "v0.0.8",
+      "v0.1.0",
+      "v0.1.1",
+      "v0.1.2",
+      "v0.2.0",
+      "v0.2.1",
+      "v0.2.2",
+      "v0.2.3",
+      "v0.2.4",
+      "v0.2.5",
+      "v0.2.6",
+      "v0.2.7",
+      "v0.3.0",
+      "v0.3.1",
+      "v0.3.2",
+      "v0.4.0",
+      "v0.4.1",
+      "v0.5.0",
+      "v0.5.1",
+      "v0.5.2",
+      "v0.5.3",
+      "v0.6.0",
+      "v0.6.1",
+      "v0.7.0",
+      "v0.8.0",
+      "v0.8.1",
+      "v0.8.2",
+      "v0.8.3",
+      "v0.8.4",
+      "v0.8.5",
+      "v0.9.0",
+      "v0.9.1",
+      "v0.9.2",
+    ].includes(version)
+  ) {
+    return ".tar.gz";
+  }
+
+  if (arch.includes("windows")) {
+    return ".zip";
+  }
+
+  return ".tar.xz";
+}
+
+/**
+ * @param {string} downloadPath
+ * @param {ReturnType<typeof getPackageArchiveFormatFromVersion >} archiveFormat
+ */
+function extractTool(downloadPath, archiveFormat) {
+  switch (archiveFormat) {
+    case ".zip":
+      return extractZip(downloadPath);
+
+    case ".tar.xz":
+    case ".tar.gz":
+      return extractTar(archiveFormat);
+  }
+}
+
 export async function setup() {
   const version = getInput("version");
 
@@ -77,11 +152,19 @@ export async function setup() {
 
   const file = `mdsf-${platformArch}`;
 
-  const downloadPath = await getPackageDownloadPath(version, `${file}.tar.gz`);
+  const archiveFormat = getPackageArchiveFormatFromVersion(
+    version,
+    platformArch,
+  );
 
-  const pathToTarball = await downloadTool(downloadPath);
+  const downloadPath = await getPackageDownloadPath(
+    version,
+    `${file}${archiveFormat}`,
+  );
 
-  const pathToCLI = await extractTar(pathToTarball);
+  const pathToArchive = await downloadTool(downloadPath);
+
+  const pathToCLI = await extractTool(pathToArchive, archiveFormat);
 
   addPath(path.join(pathToCLI, file));
 }
