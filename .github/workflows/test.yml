@@ -124,6 +124,8 @@ jobs:
         run: ( ( which efmt ) || ( ( which cargo && ( cargo binstall efmt || cargo install efmt ) ) ) || ( echo "Unable to install tool" ) )
       - name: elm-format
         run: ( ( which elm-format ) || ( ( which npm && npm i -g elm-format ) ) || ( echo "Unable to install tool" ) )
+      - name: erg
+        run: ( ( which erg ) || ( ( which cargo && ( cargo binstall erg || cargo install erg ) ) ) || ( echo "Unable to install tool" ) )
       - name: fantomas
         run: ( ( which fantomas ) || ( ( which dotnet && dotnet tool install -g fantomas ) ) || ( echo "Unable to install tool" ) )
       - name: fixjson

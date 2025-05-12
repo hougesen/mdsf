@@ -1,0 +1,25 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "erg",
+  "categories": ["linter"],
+  "commands": {
+    "lint": {
+      "arguments": ["lint", "$PATH"],
+      "tests": [
+        {
+          "language": ".erg",
+          "test_input": "add(a, b) = a + b\n\nprint!(add(1, 2))\n",
+          "test_output": "add(a, b) = a + b\n\nprint!(add(1, 2))\n"
+        }
+      ]
+    }
+  },
+  "description": "A statically typed language compatible with Python",
+  "homepage": "https://github.com/erg-lang/erg",
+  "languages": ["erg"],
+  "packages": {
+    "cargo": {
+      "package": "erg"
+    }
+  }
+}

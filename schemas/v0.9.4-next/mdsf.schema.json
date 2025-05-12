@@ -631,6 +631,11 @@
           "enum": ["erb-formatter"]
         },
         {
+          "description": "A statically typed language compatible with Python\n\n[https://github.com/erg-lang/erg](https://github.com/erg-lang/erg)\n\n`erg lint $PATH`",
+          "type": "string",
+          "enum": ["erg:lint"]
+        },
+        {
           "description": "An automated code formatter for Erlang\n\n[https://github.com/whatsapp/erlfmt](https://github.com/whatsapp/erlfmt)\n\n`erlfmt -w $PATH_STRING`",
           "type": "string",
           "enum": ["erlfmt"]

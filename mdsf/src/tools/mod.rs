@@ -92,6 +92,7 @@ pub mod efmt;
 pub mod elm_format;
 pub mod eradicate;
 pub mod erb_formatter;
+pub mod erg_lint;
 pub mod erlfmt;
 pub mod eslint;
 pub mod fantomas;
@@ -1076,6 +1077,14 @@ pub enum Tooling {
     ///
     /// `erb-format $PATH --write`
     ErbFormatter,
+
+    #[serde(rename = "erg:lint")]
+    /// A statically typed language compatible with Python
+    ///
+    /// [https://github.com/erg-lang/erg](https://github.com/erg-lang/erg)
+    ///
+    /// `erg lint $PATH`
+    ErgLint,
 
     #[serde(rename = "erlfmt")]
     /// An automated code formatter for Erlang
@@ -3432,6 +3441,7 @@ impl Tooling {
                 erb_formatter::set_args,
                 erb_formatter::IS_STDIN,
             ),
+            Self::ErgLint => (&erg_lint::COMMANDS, erg_lint::set_args, erg_lint::IS_STDIN),
             Self::Erlfmt => (&erlfmt::COMMANDS, erlfmt::set_args, erlfmt::IS_STDIN),
             Self::Eslint => (&eslint::COMMANDS, eslint::set_args, eslint::IS_STDIN),
             Self::Fantomas => (&fantomas::COMMANDS, fantomas::set_args, fantomas::IS_STDIN),
@@ -4311,6 +4321,7 @@ impl AsRef<str> for Tooling {
             Self::ElmFormat => "elm-format",
             Self::Eradicate => "eradicate",
             Self::ErbFormatter => "erb-formatter",
+            Self::ErgLint => "erg:lint",
             Self::Erlfmt => "erlfmt",
             Self::Eslint => "eslint",
             Self::Fantomas => "fantomas",
@@ -4680,6 +4691,7 @@ mod test_tooling {
         assert_eq!(Tooling::ElmFormat, reverse(Tooling::ElmFormat)?);
         assert_eq!(Tooling::Eradicate, reverse(Tooling::Eradicate)?);
         assert_eq!(Tooling::ErbFormatter, reverse(Tooling::ErbFormatter)?);
+        assert_eq!(Tooling::ErgLint, reverse(Tooling::ErgLint)?);
         assert_eq!(Tooling::Erlfmt, reverse(Tooling::Erlfmt)?);
         assert_eq!(Tooling::Eslint, reverse(Tooling::Eslint)?);
         assert_eq!(Tooling::Fantomas, reverse(Tooling::Fantomas)?);
