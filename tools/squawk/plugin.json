@@ -1,0 +1,28 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "squawk",
+  "categories": ["linter"],
+  "commands": {
+    "": {
+      "arguments": ["$PATH"],
+      "tests": [
+        {
+          "language": "sql",
+          "test_input": "SELECT username FROM users;",
+          "test_output": "SELECT username FROM users;"
+        }
+      ]
+    }
+  },
+  "description": "Linter for Postgres migrations & SQL",
+  "homepage": "https://github.com/sbdchd/squawk",
+  "languages": ["postgresql", "sql"],
+  "packages": {
+    "npm": {
+      "package": "squawk-cli"
+    },
+    "pip": {
+      "package": "squawk-cli"
+    }
+  }
+}

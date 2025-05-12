@@ -283,6 +283,7 @@ pub mod sqlfluff_format;
 pub mod sqlfluff_lint;
 pub mod sqlfmt;
 pub mod sqruff;
+pub mod squawk;
 pub mod standardjs;
 pub mod standardrb;
 pub mod statix_check;
@@ -2603,6 +2604,14 @@ pub enum Tooling {
     /// `sqruff fix --force $PATH`
     Sqruff,
 
+    #[serde(rename = "squawk")]
+    /// Linter for Postgres migrations & SQL
+    ///
+    /// [https://github.com/sbdchd/squawk](https://github.com/sbdchd/squawk)
+    ///
+    /// `squawk $PATH`
+    Squawk,
+
     #[serde(rename = "standardjs")]
     /// JavaScript style guide, linter, and formatter
     ///
@@ -4013,6 +4022,7 @@ impl Tooling {
             ),
             Self::Sqlfmt => (&sqlfmt::COMMANDS, sqlfmt::set_args, sqlfmt::IS_STDIN),
             Self::Sqruff => (&sqruff::COMMANDS, sqruff::set_args, sqruff::IS_STDIN),
+            Self::Squawk => (&squawk::COMMANDS, squawk::set_args, squawk::IS_STDIN),
             Self::Standardjs => (
                 &standardjs::COMMANDS,
                 standardjs::set_args,
@@ -4478,6 +4488,7 @@ impl AsRef<str> for Tooling {
             Self::SqlfluffLint => "sqlfluff:lint",
             Self::Sqlfmt => "sqlfmt",
             Self::Sqruff => "sqruff",
+            Self::Squawk => "squawk",
             Self::Standardjs => "standardjs",
             Self::Standardrb => "standardrb",
             Self::StatixCheck => "statix:check",
@@ -4878,6 +4889,7 @@ mod test_tooling {
         assert_eq!(Tooling::SqlfluffLint, reverse(Tooling::SqlfluffLint)?);
         assert_eq!(Tooling::Sqlfmt, reverse(Tooling::Sqlfmt)?);
         assert_eq!(Tooling::Sqruff, reverse(Tooling::Sqruff)?);
+        assert_eq!(Tooling::Squawk, reverse(Tooling::Squawk)?);
         assert_eq!(Tooling::Standardjs, reverse(Tooling::Standardjs)?);
         assert_eq!(Tooling::Standardrb, reverse(Tooling::Standardrb)?);
         assert_eq!(Tooling::StatixCheck, reverse(Tooling::StatixCheck)?);

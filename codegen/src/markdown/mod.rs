@@ -21,7 +21,13 @@ pub fn update_markdown_section(readme: &str, key: &str, value: &str) -> String {
         } else if line == start {
             lines.push(line.to_string());
 
-            lines.push(format!("\n{value}\n"));
+            lines.push("\n".to_string());
+
+            for value_line in value.lines() {
+                lines.push(value_line.trim_end().to_owned());
+            }
+
+            lines.push("\n".to_string());
 
             inside = true;
             start_seen = true;
