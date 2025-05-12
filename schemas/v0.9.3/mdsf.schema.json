@@ -1726,11 +1726,6 @@
           "enum": ["twigcs"]
         },
         {
-          "description": "An extremely fast Python type checker written in Rust\n\n[https://github.com/astral-sh/ty](https://github.com/astral-sh/ty)\n\n`ty check $PATH`",
-          "type": "string",
-          "enum": ["ty"]
-        },
-        {
           "description": "Source code spell checker\n\n[https://github.com/crate-ci/typos](https://github.com/crate-ci/typos)\n\n`typos -w --no-ignore --hidden $PATH`",
           "type": "string",
           "enum": ["typos"]
