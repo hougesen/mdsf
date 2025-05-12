@@ -4,6 +4,7 @@ All notable changes to this project will be documented in this file. Dates are d
 
 #### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.9.4...HEAD)
 
+- feat(tools): support grafbase lint [`#1033`](https://github.com/hougesen/mdsf/pull/1033)
 - feat(tools): support squawk [`#1032`](https://github.com/hougesen/mdsf/pull/1032)
 
 #### [v0.9.4](https://github.com/hougesen/mdsf/compare/v0.9.3...v0.9.4)

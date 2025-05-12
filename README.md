@@ -457,7 +457,7 @@ That can be changed by specifying the `newline` config option.
 
 <!-- START_SECTION:supported-tools -->
 
-`mdsf` currently supports 309 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 310 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                                                                                 | Description                                                                                                                                   | Categories            | Languages                                                                                                                         |
 | ------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
@@ -542,6 +542,7 @@ That can be changed by specifying the `newline` config option.
 | [elm-format](https://github.com/avh4/elm-format)                                     | elm-format formats Elm source code according to a standard set of rules based on the official Elm Style Guide                                 | `formatter`           | `elm`                                                                                                                             |
 | [eradicate](https://github.com/PyCQA/eradicate)                                      | Removes commented-out code from Python files                                                                                                  | `linter`              | `python`                                                                                                                          |
 | [erb-formatter](https://github.com/nebulab/erb-formatter)                            | Format ERB files with speed and precision                                                                                                     | `formatter`           | `erb`, `ruby`                                                                                                                     |
+| [erg](https://github.com/erg-lang/erg)                                               | A statically typed language compatible with Python                                                                                            | `linter`              | `erg`                                                                                                                             |
 | [erlfmt](https://github.com/whatsapp/erlfmt)                                         | An automated code formatter for Erlang                                                                                                        | `formatter`           | `erlang`                                                                                                                          |
 | [eslint](https://github.com/eslint/eslint/)                                          | Find and fix problems in your JavaScript code                                                                                                 | `linter`              | `javascript`, `typescript`                                                                                                        |
 | [fantomas](https://github.com/fsprojects/fantomas)                                   | FSharp source code formatter                                                                                                                  | `formatter`           | `f#`                                                                                                                              |
@@ -777,7 +778,7 @@ That can be changed by specifying the `newline` config option.
 
 <!-- START_SECTION:supported-commands -->
 
-`mdsf` currently supports 344 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 345 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                         | Command                                                                                 |
 | ---------------------------- | --------------------------------------------------------------------------------------- |
@@ -872,6 +873,7 @@ That can be changed by specifying the `newline` config option.
 | `elm-format`                 | `elm-format --elm-version=0.19 --yes $PATH`                                             |
 | `eradicate`                  | `eradicate --in-place $PATH`                                                            |
 | `erb-formatter`              | `erb-format $PATH --write`                                                              |
+| `erg:lint`                   | `erg lint $PATH`                                                                        |
 | `erlfmt`                     | `erlfmt -w $PATH_STRING`                                                                |
 | `eslint`                     | `eslint --fix $PATH`                                                                    |
 | `fantomas`                   | `fantomas $PATH`                                                                        |
