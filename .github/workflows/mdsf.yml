@@ -13,8 +13,7 @@ jobs:
         os:
           - ubuntu-latest
           - macos-latest
-          # disabled because of an issue with crlf
-          # - windows-latest
+          - windows-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4

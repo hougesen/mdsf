@@ -127,7 +127,11 @@ function getPackageArchiveFormatFromVersion(version, arch) {
     return ".zip";
   }
 
-  return ".tar.xz";
+  if (version === "v0.9.3") {
+    return ".tar.xz";
+  }
+
+  return ".tar.gz";
 }
 
 /**
@@ -140,8 +144,6 @@ function extractTool(downloadPath, archiveFormat) {
       return extractZip(downloadPath);
 
     case ".tar.xz":
-      return extractTar(downloadPath, undefined, "xf");
-
     case ".tar.gz":
       return extractTar(downloadPath);
   }
