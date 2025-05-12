@@ -298,6 +298,8 @@ jobs:
         run: ( ( which toml-sort ) || ( ( which pipx && pipx install toml-sort ) ) || ( echo "Unable to install tool" ) )
       - name: topiary
         run: ( ( which topiary ) || ( ( which cargo && ( cargo binstall topiary-cli || cargo install topiary-cli ) ) ) || ( echo "Unable to install tool" ) )
+      - name: ty
+        run: ( ( which ty ) || ( ( which pipx && pipx install ty ) ) || ( echo "Unable to install tool" ) )
       - name: typos
         run: ( ( which typos ) || ( ( which cargo && ( cargo binstall typos-cli || cargo install typos-cli ) ) || ( which brew &&  brew install typos-cli ) ) || ( echo "Unable to install tool" ) )
       - name: ufmt
@@ -338,10 +340,10 @@ jobs:
       - name: Run tests
         run: cargo test
       - name: Generate code coverage
-        run: cargo llvm-cov --all-features --all-targets --locked --lcov --output-path lcov.info
+        run: cargo llvm-cov --all-features --all-targets --workspace --codecov --output-path codecov.json
       - name: Upload code coverage
         uses: codecov/codecov-action@v5
         with:
-          files: lcov.info
+          files: codecov.json
           slug: hougesen/mdsf
           token: ${{ secrets.CODECOV_TOKEN }}

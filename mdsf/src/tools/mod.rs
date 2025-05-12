@@ -311,6 +311,7 @@ pub mod tsp_format;
 pub mod tsqllint;
 pub mod twig_cs_fixer_lint;
 pub mod twigcs;
+pub mod ty;
 pub mod typos;
 pub mod typstfmt;
 pub mod typstyle;
@@ -2826,6 +2827,14 @@ pub enum Tooling {
     /// `twigcs $PATH`
     Twigcs,
 
+    #[serde(rename = "ty")]
+    /// An extremely fast Python type checker written in Rust
+    ///
+    /// [https://github.com/astral-sh/ty](https://github.com/astral-sh/ty)
+    ///
+    /// `ty check $PATH`
+    Ty,
+
     #[serde(rename = "typos")]
     /// Source code spell checker
     ///
@@ -4108,6 +4117,7 @@ impl Tooling {
                 twig_cs_fixer_lint::IS_STDIN,
             ),
             Self::Twigcs => (&twigcs::COMMANDS, twigcs::set_args, twigcs::IS_STDIN),
+            Self::Ty => (&ty::COMMANDS, ty::set_args, ty::IS_STDIN),
             Self::Typos => (&typos::COMMANDS, typos::set_args, typos::IS_STDIN),
             Self::Typstfmt => (&typstfmt::COMMANDS, typstfmt::set_args, typstfmt::IS_STDIN),
             Self::Typstyle => (&typstyle::COMMANDS, typstyle::set_args, typstyle::IS_STDIN),
@@ -4496,6 +4506,7 @@ impl AsRef<str> for Tooling {
             Self::Tsqllint => "tsqllint",
             Self::TwigCsFixerLint => "twig-cs-fixer:lint",
             Self::Twigcs => "twigcs",
+            Self::Ty => "ty",
             Self::Typos => "typos",
             Self::Typstfmt => "typstfmt",
             Self::Typstyle => "typstyle",
@@ -4898,6 +4909,7 @@ mod test_tooling {
         assert_eq!(Tooling::Tsqllint, reverse(Tooling::Tsqllint)?);
         assert_eq!(Tooling::TwigCsFixerLint, reverse(Tooling::TwigCsFixerLint)?);
         assert_eq!(Tooling::Twigcs, reverse(Tooling::Twigcs)?);
+        assert_eq!(Tooling::Ty, reverse(Tooling::Ty)?);
         assert_eq!(Tooling::Typos, reverse(Tooling::Typos)?);
         assert_eq!(Tooling::Typstfmt, reverse(Tooling::Typstfmt)?);
         assert_eq!(Tooling::Typstyle, reverse(Tooling::Typstyle)?);

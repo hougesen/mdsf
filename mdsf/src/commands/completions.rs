@@ -34,7 +34,7 @@ mod test_run {
     use mdsf::cli::CompletionsCommandArguments;
 
     #[test]
-    fn it_should_write_bash_completions() {
+    fn it_should_write_shell_completions() {
         let shells = [
             mdsf::cli::Shell::Bash,
             mdsf::cli::Shell::Elvish,

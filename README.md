@@ -457,7 +457,7 @@ That can be changed by specifying the `newline` config option.
 
 <!-- START_SECTION:supported-tools -->
 
-`mdsf` currently supports 306 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 307 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                                                                                 | Description                                                                                                                                   | Categories            | Languages                                                                                                                         |
 | ------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
@@ -738,6 +738,7 @@ That can be changed by specifying the `newline` config option.
 | [tsqllint](https://github.com/tsqllint/tsqllint)                                     | Configurable linting for TSQL                                                                                                                 | `linter`              | `sql`                                                                                                                             |
 | [twig-cs-fixer](https://github.com/vincentlanglet/twig-cs-fixer)                     | A tool to automatically fix Twig Coding Standards issues                                                                                      | `formatter`, `linter` | `twig`                                                                                                                            |
 | [twigcs](https://github.com/friendsoftwig/twigcs)                                    | The missing checkstyle for twig                                                                                                               | `linter`              | `php`, `twig`                                                                                                                     |
+| [ty](https://github.com/astral-sh/ty)                                                | An extremely fast Python type checker written in Rust                                                                                         | `linter`              | `python`                                                                                                                          |
 | [typos](https://github.com/crate-ci/typos)                                           | Source code spell checker                                                                                                                     | `spell-check`         |                                                                                                                                   |
 | [typstfmt](https://github.com/astrale-sharp/typstfmt)                                | Basic formatter for the Typst language                                                                                                        | `formatter`           | `typst`                                                                                                                           |
 | [typstyle](https://github.com/enter-tainer/typstyle)                                 | Beautiful and reliable typst code formatter                                                                                                   | `formatter`           | `typst`                                                                                                                           |
@@ -774,7 +775,7 @@ That can be changed by specifying the `newline` config option.
 
 <!-- START_SECTION:supported-commands -->
 
-`mdsf` currently supports 341 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 342 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                         | Command                                                                                 |
 | ---------------------------- | --------------------------------------------------------------------------------------- |
@@ -1088,6 +1089,7 @@ That can be changed by specifying the `newline` config option.
 | `tsqllint`                   | `tsqllint --fix $PATH`                                                                  |
 | `twig-cs-fixer:lint`         | `twig-cs-fixer lint $PATH --fix --no-interaction --quiet`                               |
 | `twigcs`                     | `twigcs $PATH`                                                                          |
+| `ty`                         | `ty check $PATH`                                                                        |
 | `typos`                      | `typos -w --no-ignore --hidden $PATH`                                                   |
 | `typstfmt`                   | `typstfmt $PATH`                                                                        |
 | `typstyle`                   | `typstyle -i $PATH`                                                                     |

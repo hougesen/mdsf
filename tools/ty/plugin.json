@@ -1,0 +1,25 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "ty",
+  "categories": ["linter"],
+  "commands": {
+    "": {
+      "arguments": ["check", "$PATH"],
+      "tests": [
+        {
+          "language": "python",
+          "test_input": "def add(a: int, b: int) -> int:\n    return a + b\n\n\nadd(1, 2)\n",
+          "test_output": "def add(a: int, b: int) -> int:\n    return a + b\n\n\nadd(1, 2)\n"
+        }
+      ]
+    }
+  },
+  "description": "An extremely fast Python type checker written in Rust",
+  "homepage": "https://github.com/astral-sh/ty",
+  "languages": ["python"],
+  "packages": {
+    "pip": {
+      "package": "ty"
+    }
+  }
+}
