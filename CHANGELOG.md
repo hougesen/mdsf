@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file. Dates are d
 
 #### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.9.3...HEAD)
 
+- fix(build): revert artifact back to using .tar.gz [`#1030`](https://github.com/hougesen/mdsf/pull/1030)
+- build(deps): bump clap from 4.5.37 to 4.5.38 [`#1026`](https://github.com/hougesen/mdsf/pull/1026)
+- build(deps): bump tempfile from 3.19.1 to 3.20.0 [`#1027`](https://github.com/hougesen/mdsf/pull/1027)
+- feat(tools): add support for ty [`#1028`](https://github.com/hougesen/mdsf/pull/1028)
+
 #### [v0.9.3](https://github.com/hougesen/mdsf/compare/v0.9.2...v0.9.3)
 
 > 10 May 2025
