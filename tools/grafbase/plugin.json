@@ -1,0 +1,21 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "grafbase",
+  "categories": ["linter"],
+  "commands": {
+    "lint": {
+      "arguments": ["lint", "$PATH"],
+      "description": "Lint a GraphQL schema",
+      "homepage": "https://grafbase.com/docs/reference/grafbase-cli/lint",
+      "tests": []
+    }
+  },
+  "description": "The Grafbase command line interface",
+  "homepage": "https://github.com/grafbase/grafbase",
+  "languages": ["graphql"],
+  "packages": {
+    "npm": {
+      "package": "grafbase"
+    }
+  }
+}
