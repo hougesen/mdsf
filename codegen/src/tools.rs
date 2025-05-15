@@ -515,8 +515,7 @@ impl Tool {
                     String::new()
                 } else {
                     format!(
-                        "
-#[cfg(test)]
+                        "#[cfg(test)]
 mod test_{module_name} {{
 {tests}
 }}
@@ -525,6 +524,16 @@ mod test_{module_name} {{
                     )
                 }
             };
+
+            let test_path = std::path::PathBuf::from(format!("mdsf/tests/tools/"));
+
+            std::fs::create_dir_all(&test_path).unwrap();
+
+            std::fs::write(
+                test_path.join(format!("{module_name}.generated.rs")),
+                test_mod,
+            )
+            .unwrap();
 
             let code = format!(
                 "{GENERATED_FILE_COMMENT}
@@ -542,7 +551,7 @@ pub fn set_args(
 pub const COMMANDS: [CommandType; {command_type_count}] = [{command_arr}];
 
 pub const IS_STDIN: bool = {is_stdin};
-{test_mod}",
+",
                 unused_prefix = if options.stdin { "_" } else { "" },
                 is_mut = if string_args.is_empty() { "" } else { "mut " },
                 is_stdin = if options.stdin { "true" } else { "false" }
