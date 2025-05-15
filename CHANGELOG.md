@@ -4,6 +4,7 @@ All notable changes to this project will be documented in this file. Dates are d
 
 #### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.9.4...HEAD)
 
+- build(deps): bump convert_case to 0.8.0 [`#1036`](https://github.com/hougesen/mdsf/pull/1036)
 - refactor(codegen): normalize plugin files [`#1035`](https://github.com/hougesen/mdsf/pull/1035)
 - feat(tools): support erg [`#1034`](https://github.com/hougesen/mdsf/pull/1034)
 - feat(tools): support grafbase lint [`#1033`](https://github.com/hougesen/mdsf/pull/1033)
