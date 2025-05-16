@@ -374,14 +374,14 @@ impl Tool {
 
         let test_code = format!(
             "{disable_attribute}{INDENT}#[test_with::executable({executable})]
-{INDENT}fn {test_fn_name}() {{
+{INDENT}fn {test_fn_name}() -> Result<(), Box<dyn core::error::Error>> {{
 {INDENT}{INDENT}let input = r#\"{test_input}\"#;
 
 {INDENT}{INDENT}let output = r#\"{test_output}\"#;
 
-{INDENT}{INDENT}let file_ext = mdsf::fttype::get_file_extension(\"{test_language}\");
+{INDENT}{INDENT}let ft = \"{test_language}\";
 
-{INDENT}{INDENT}crate::common::run_tooling_test(mdsf::tools::Tooling::{enum_value}, input, output, &file_ext);
+{INDENT}{INDENT}crate::common::run_tooling_test(mdsf::tools::Tooling::{enum_value}, input, output, ft)
 {INDENT}}}",
         );
 

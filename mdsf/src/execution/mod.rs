@@ -427,7 +427,7 @@ mod test_run_tools {
             std::path::Path::new("thisdoesnotexist"),
             |_, _| unreachable!(),
             crate::testing::DEFAULT_TEST_FORMATTER_TIMEOUT,
-            crate::tools::prettier::IS_STDIN,
+            false,
             crate::testing::DEFAULT_TEST_DEBUG_ENABLED,
             &MdsfConfigRunners {
                 bunx: false,
@@ -455,7 +455,7 @@ mod test_run_tools {
             std::path::Path::new("thisdoesnotexist"),
             |_, _| unreachable!(),
             crate::testing::DEFAULT_TEST_FORMATTER_TIMEOUT,
-            crate::tools::prettier::IS_STDIN,
+            false,
             crate::testing::DEFAULT_TEST_DEBUG_ENABLED,
             &MdsfConfigRunners {
                 bunx: true,
@@ -484,7 +484,7 @@ mod test_run_tools {
             std::path::Path::new("thisdoesnotexist"),
             |_, _| unreachable!(),
             crate::testing::DEFAULT_TEST_FORMATTER_TIMEOUT,
-            crate::tools::prettier::IS_STDIN,
+            false,
             crate::testing::DEFAULT_TEST_DEBUG_ENABLED,
             &MdsfConfigRunners {
                 bunx: true,
@@ -513,7 +513,7 @@ mod test_run_tools {
             std::path::Path::new("thisdoesnotexist"),
             |_, _| unreachable!(),
             crate::testing::DEFAULT_TEST_FORMATTER_TIMEOUT,
-            crate::tools::prettier::IS_STDIN,
+            false,
             crate::testing::DEFAULT_TEST_DEBUG_ENABLED,
             &MdsfConfigRunners {
                 bunx: true,
@@ -542,7 +542,7 @@ mod test_run_tools {
             std::path::Path::new("thisdoesnotexist"),
             |_, _| unreachable!(),
             crate::testing::DEFAULT_TEST_FORMATTER_TIMEOUT,
-            crate::tools::prettier::IS_STDIN,
+            false,
             crate::testing::DEFAULT_TEST_DEBUG_ENABLED,
             &MdsfConfigRunners {
                 bunx: true,
@@ -571,7 +571,7 @@ mod test_run_tools {
             std::path::Path::new("thisdoesnotexist"),
             |_, _| unreachable!(),
             crate::testing::DEFAULT_TEST_FORMATTER_TIMEOUT,
-            crate::tools::prettier::IS_STDIN,
+            false,
             crate::testing::DEFAULT_TEST_DEBUG_ENABLED,
             &MdsfConfigRunners {
                 bunx: true,
@@ -600,7 +600,7 @@ mod test_run_tools {
             std::path::Path::new("thisdoesnotexist"),
             |_, _| unreachable!(),
             crate::testing::DEFAULT_TEST_FORMATTER_TIMEOUT,
-            crate::tools::prettier::IS_STDIN,
+            false,
             crate::testing::DEFAULT_TEST_DEBUG_ENABLED,
             &MdsfConfigRunners {
                 bunx: true,
@@ -629,7 +629,7 @@ mod test_run_tools {
             std::path::Path::new("thisdoesnotexist"),
             |_, _| unreachable!(),
             crate::testing::DEFAULT_TEST_FORMATTER_TIMEOUT,
-            crate::tools::prettier::IS_STDIN,
+            false,
             crate::testing::DEFAULT_TEST_DEBUG_ENABLED,
             &MdsfConfigRunners {
                 bunx: true,
@@ -661,7 +661,7 @@ mod test_run_tools {
             std::path::Path::new("thisdoesnotexist"),
             |_, _| unreachable!(),
             crate::testing::DEFAULT_TEST_FORMATTER_TIMEOUT,
-            crate::tools::prettier::IS_STDIN,
+            false,
             crate::testing::DEFAULT_TEST_DEBUG_ENABLED,
             &MdsfConfigRunners {
                 bunx: true,
@@ -690,7 +690,7 @@ mod test_run_tools {
             std::path::Path::new("thisdoesnotexist"),
             |_, _| unreachable!(),
             crate::testing::DEFAULT_TEST_FORMATTER_TIMEOUT,
-            crate::tools::prettier::IS_STDIN,
+            false,
             crate::testing::DEFAULT_TEST_DEBUG_ENABLED,
             &MdsfConfigRunners {
                 bunx: true,

@@ -10,7 +10,9 @@ All notable changes to this project will be documented in this file. Dates are d
 - feat(tools): support erg [`#1034`](https://github.com/hougesen/mdsf/pull/1034)
 - feat(tools): support grafbase lint [`#1033`](https://github.com/hougesen/mdsf/pull/1033)
 - feat(tools): support squawk [`#1032`](https://github.com/hougesen/mdsf/pull/1032)
+- refactor(test): working standalone tests for Tooling [`1125b3a`](https://github.com/hougesen/mdsf/commit/1125b3a7baaa067bc8de32e9bddd589f07631071)
 - refactor(test): move tool tests to standalone files [`203a35c`](https://github.com/hougesen/mdsf/commit/203a35cf4747bc66c1ffd5bd7dd1166a211cb06d)
+- chore(codecov): ignore codegen/ folder [`8b5b43f`](https://github.com/hougesen/mdsf/commit/8b5b43fb82245e83e179c38f8a0dd5a7435d1c5c)
 
 #### [v0.9.4](https://github.com/hougesen/mdsf/compare/v0.9.3...v0.9.4)
 
