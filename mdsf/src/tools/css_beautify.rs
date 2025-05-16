@@ -1,6 +1,7 @@
-///
-/// THIS FILE IS GENERATED USING CODE - DO NOT EDIT MANUALLY
-///
+//!
+//! THIS FILE IS GENERATED USING CODE - DO NOT EDIT MANUALLY
+//!
+
 use crate::runners::CommandType;
 
 #[inline]
@@ -27,23 +28,3 @@ pub const COMMANDS: [CommandType; 7] = [
 ];
 
 pub const IS_STDIN: bool = false;
-
-#[cfg(test)]
-mod test_css_beautify {
-    #[test_with::executable(css-beautify || npx || pnpm || deno || bunx)]
-    fn test_css_beautify_css_5ad41f26f69aea3e() {
-        let input = r#"h1   {color: blue;} p    {color: red;}"#;
-
-        let output = r#"h1 {
-    color: blue;
-}
-
-p {
-    color: red;
-}"#;
-
-        let file_ext = crate::fttype::get_file_extension("css");
-
-        crate::tools::Tooling::CssBeautify.test_format_snippet(input, output, &file_ext);
-    }
-}

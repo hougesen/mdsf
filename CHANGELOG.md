@@ -4,6 +4,8 @@ All notable changes to this project will be documented in this file. Dates are d
 
 #### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.9.4...HEAD)
 
+- refactor(test): test tools using cli [`#1039`](https://github.com/hougesen/mdsf/pull/1039)
+- build(deps): bump terminal_size to v0.4.2 [`#1038`](https://github.com/hougesen/mdsf/pull/1038)
 - build(deps): bump env_logger to v0.11.8 [`#1037`](https://github.com/hougesen/mdsf/pull/1037)
 - build(deps): bump convert_case to 0.8.0 [`#1036`](https://github.com/hougesen/mdsf/pull/1036)
 - refactor(codegen): normalize plugin files [`#1035`](https://github.com/hougesen/mdsf/pull/1035)

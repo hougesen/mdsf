@@ -1,6 +1,7 @@
-///
-/// THIS FILE IS GENERATED USING CODE - DO NOT EDIT MANUALLY
-///
+//!
+//! THIS FILE IS GENERATED USING CODE - DO NOT EDIT MANUALLY
+//!
+
 use crate::runners::CommandType;
 
 #[inline]
@@ -24,29 +25,3 @@ pub const COMMANDS: [CommandType; 7] = [
 ];
 
 pub const IS_STDIN: bool = true;
-
-#[cfg(test)]
-mod test_standardjs {
-    #[test_with::executable(standard || npx || pnpm || deno || bunx)]
-    fn test_standardjs_javascript_548a80949cde541f() {
-        let input = r#"
-    async function asyncAddition(a,b  )
-    {
-        return a+b
-    }
-
-console.info(asyncAddition(1, 2));
-            "#;
-
-        let output = r#"async function asyncAddition (a, b) {
-  return a + b
-}
-
-console.info(asyncAddition(1, 2))
-"#;
-
-        let file_ext = crate::fttype::get_file_extension("javascript");
-
-        crate::tools::Tooling::Standardjs.test_format_snippet(input, output, &file_ext);
-    }
-}

@@ -1,6 +1,7 @@
-///
-/// THIS FILE IS GENERATED USING CODE - DO NOT EDIT MANUALLY
-///
+//!
+//! THIS FILE IS GENERATED USING CODE - DO NOT EDIT MANUALLY
+//!
+
 use crate::runners::CommandType;
 
 #[inline]
@@ -19,21 +20,3 @@ pub const COMMANDS: [CommandType; 3] = [
 ];
 
 pub const IS_STDIN: bool = false;
-
-#[cfg(test)]
-mod test_sqlfmt {
-    #[test_with::executable(sqlfmt || pipx || uv)]
-    fn test_sqlfmt_sql_7933045821741e3() {
-        let input = r#"SELECT  *                  FROM  tbl                        WHERE                      foo   = 'bar';"#;
-
-        let output = r#"select *
-from tbl
-where foo = 'bar'
-;
-"#;
-
-        let file_ext = crate::fttype::get_file_extension("sql");
-
-        crate::tools::Tooling::Sqlfmt.test_format_snippet(input, output, &file_ext);
-    }
-}

@@ -3,10 +3,9 @@ use std::hash::DefaultHasher;
 
 use convert_case::{Case, Casing};
 
-const INDENT: &str = "    ";
+use crate::GENERATED_FILE_COMMENT;
 
-const GENERATED_FILE_COMMENT: &str =
-    "///\n/// THIS FILE IS GENERATED USING CODE - DO NOT EDIT MANUALLY\n///";
+const INDENT: &str = "    ";
 
 #[allow(clippy::trivially_copy_pass_by_ref)]
 #[inline]
@@ -286,6 +285,8 @@ pub struct GeneratedCommand {
     pub homepage: String,
 
     pub deprecated: bool,
+
+    pub tests: String,
 }
 
 const DEPRECATED_ATTRIBUTE: &str = "\n    #[deprecated]";
@@ -372,14 +373,14 @@ impl Tool {
 
         let test_code = format!(
             "{disable_attribute}{INDENT}#[test_with::executable({executable})]
-{INDENT}fn {test_fn_name}() {{
+{INDENT}fn {test_fn_name}() -> Result<(), Box<dyn core::error::Error>> {{
 {INDENT}{INDENT}let input = r#\"{test_input}\"#;
 
 {INDENT}{INDENT}let output = r#\"{test_output}\"#;
 
-{INDENT}{INDENT}let file_ext = crate::fttype::get_file_extension(\"{test_language}\");
+{INDENT}{INDENT}let ft = \"{test_language}\";
 
-{INDENT}{INDENT}crate::tools::Tooling::{enum_value}.test_format_snippet(input, output, &file_ext);
+{INDENT}{INDENT}crate::common::run_tooling_test(mdsf::tools::Tooling::{enum_value}, input, output, ft)
 {INDENT}}}",
         );
 
@@ -500,34 +501,26 @@ impl Tool {
                 cmd
             );
 
-            let test_mod = if options.tests.is_empty() {
+            if options.tests.is_empty() {
                 println!("Missing tests for: '{serde_rename}'");
+            }
 
-                String::new()
-            } else {
-                let tests = options
+            let test_mod = format!(
+                "#[cfg(test)]
+mod test_{module_name} {{{maybe_line_break}{tests}{maybe_line_break}}}
+",
+                maybe_line_break = if options.tests.is_empty() { "" } else { "\n" },
+                tests = options
                     .tests
                     .iter()
                     .map(|test| self.generate_test(cmd, test))
-                    .collect::<Vec<_>>();
-
-                if tests.is_empty() {
-                    String::new()
-                } else {
-                    format!(
-                        "
-#[cfg(test)]
-mod test_{module_name} {{
-{tests}
-}}
-",
-                        tests = tests.join("\n\n")
-                    )
-                }
-            };
+                    .collect::<Vec<_>>()
+                    .join("\n\n")
+            );
 
             let code = format!(
                 "{GENERATED_FILE_COMMENT}
+
 use crate::runners::CommandType;
 
 #[inline]
@@ -542,7 +535,7 @@ pub fn set_args(
 pub const COMMANDS: [CommandType; {command_type_count}] = [{command_arr}];
 
 pub const IS_STDIN: bool = {is_stdin};
-{test_mod}",
+",
                 unused_prefix = if options.stdin { "_" } else { "" },
                 is_mut = if string_args.is_empty() { "" } else { "mut " },
                 is_stdin = if options.stdin { "true" } else { "false" }
@@ -570,6 +563,7 @@ pub const IS_STDIN: bool = {is_stdin};
                     description
                 },
                 deprecated: options.deprecated || self.deprecated,
+                tests: test_mod,
             });
         }
 
@@ -659,10 +653,14 @@ impl AsRef<str> for Tooling {
 
     let mut enum_value_names = std::collections::BTreeSet::new();
 
+    let mut all_tests = Vec::new();
+
     for plugin in plugins {
         let converted = plugin.generate();
 
         for command in converted {
+            all_tests.push(command.tests.clone());
+
             std::fs::write(
                 format!("{folder}/{}.rs", command.module_name),
                 &command.code,
@@ -724,6 +722,20 @@ impl AsRef<str> for Tooling {
         }
     }
 
+    std::fs::write(
+        "mdsf/tests/tooling.rs",
+        format!(
+            "{GENERATED_FILE_COMMENT}
+
+mod common;
+
+{}
+",
+            all_tests.join("\n")
+        ),
+    )
+    .unwrap();
+
     let mut modules = files
         .iter()
         .map(|module_name| format!("pub mod {module_name};"))
@@ -743,6 +755,7 @@ impl AsRef<str> for Tooling {
 
     let mod_file_contents = format!(
         "{GENERATED_FILE_COMMENT}
+
 {}
 
 #[derive(serde::Serialize, serde::Deserialize, Hash, Clone, Copy, Debug, PartialEq, Eq)]

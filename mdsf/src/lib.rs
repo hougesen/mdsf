@@ -14,8 +14,7 @@ pub mod cli;
 pub mod config;
 pub mod error;
 pub mod execution;
-pub mod fttype;
-pub mod generated;
+pub mod filetype;
 pub mod languages;
 mod parser;
 pub mod runners;
@@ -318,10 +317,10 @@ impl LineInfo<'_> {
 mod test_lib {
     use crate::{
         config::MdsfConfig,
+        error::MdsfError,
         execution::{MdsfFormatter, setup_snippet},
-        format_file,
-        fttype::get_file_extension,
-        handle_file,
+        filetype::get_file_extension,
+        format_file, handle_file,
         testing::{DEFAULT_ON_MISSING_LANGUAGE_DEFINITION, DEFAULT_ON_MISSING_TOOL_BINARY},
         tools::Tooling,
     };
@@ -395,7 +394,7 @@ fn add(a: i32, b: i32) -> i32 {
     }
 
     #[test]
-    fn it_should_format_the_codeblocks_that_start_with_whitespace() {
+    fn it_should_format_the_codeblocks_that_start_with_whitespace() -> Result<(), MdsfError> {
         let mut whitespaces = std::collections::HashSet::new();
 
         let mut spaces = String::new();
@@ -440,7 +439,7 @@ fn           add(
                 ..Default::default()
             };
 
-            config.setup_language_aliases().unwrap();
+            config.setup_language_aliases()?;
 
             {
                 let (modified, output) = format_file(
@@ -478,10 +477,12 @@ fn           add(
                 assert_eq!(output, expected_output);
             };
         }
+
+        Ok(())
     }
 
     #[test]
-    fn it_should_not_modify_outside_blocks() {
+    fn it_should_not_modify_outside_blocks() -> Result<(), MdsfError> {
         let input = "# title
 
 Let's play!
@@ -540,7 +541,7 @@ fn add(a: i32, b: i32) -> i32 {
             ..Default::default()
         };
 
-        config.setup_language_aliases().unwrap();
+        config.setup_language_aliases()?;
 
         let (modified, output) = format_file(
             &config,
@@ -555,8 +556,11 @@ fn add(a: i32, b: i32) -> i32 {
         assert!(modified);
 
         assert_eq!(output, expected_output);
+
+        Ok(())
     }
 
+    #[allow(clippy::too_many_lines)]
     #[test_with::executable(gofmt)]
     #[test]
     fn it_should_support_go_with_package() {
@@ -699,6 +703,7 @@ type Whatever struct {
         }
     }
 
+    #[allow(clippy::too_many_lines)]
     #[test]
     fn it_should_add_go_package_if_missing() {
         let input = "```go

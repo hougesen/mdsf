@@ -10,6 +10,9 @@ mod readme;
 mod schema;
 mod tools;
 
+pub const GENERATED_FILE_COMMENT: &str =
+    "//!\n//! THIS FILE IS GENERATED USING CODE - DO NOT EDIT MANUALLY\n//!";
+
 fn normalize_homepage(s: String) -> String {
     if s.starts_with("https://github.com/") || s.starts_with("https://gitlab.com/") {
         return s.to_lowercase();

@@ -1,6 +1,7 @@
-///
-/// THIS FILE IS GENERATED USING CODE - DO NOT EDIT MANUALLY
-///
+//!
+//! THIS FILE IS GENERATED USING CODE - DO NOT EDIT MANUALLY
+//!
+
 use crate::runners::CommandType;
 
 #[inline]
@@ -24,17 +25,3 @@ pub const COMMANDS: [CommandType; 7] = [
 ];
 
 pub const IS_STDIN: bool = false;
-
-#[cfg(test)]
-mod test_alex {
-    #[test_with::executable(alex || npx || pnpm || deno || bunx)]
-    fn test_alex_markdown_114ca1bc58b35aef() {
-        let input = r#"hello"#;
-
-        let output = r#"hello"#;
-
-        let file_ext = crate::fttype::get_file_extension("markdown");
-
-        crate::tools::Tooling::Alex.test_format_snippet(input, output, &file_ext);
-    }
-}

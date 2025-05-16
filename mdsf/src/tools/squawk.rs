@@ -1,6 +1,7 @@
-///
-/// THIS FILE IS GENERATED USING CODE - DO NOT EDIT MANUALLY
-///
+//!
+//! THIS FILE IS GENERATED USING CODE - DO NOT EDIT MANUALLY
+//!
+
 use crate::runners::CommandType;
 
 #[inline]
@@ -25,17 +26,3 @@ pub const COMMANDS: [CommandType; 9] = [
 ];
 
 pub const IS_STDIN: bool = false;
-
-#[cfg(test)]
-mod test_squawk {
-    #[test_with::executable(squawk || npx || pnpm || deno || bunx || pipx || uv)]
-    fn test_squawk_sql_640a48e4cd6b38bb() {
-        let input = r#"SELECT username FROM users;"#;
-
-        let output = r#"SELECT username FROM users;"#;
-
-        let file_ext = crate::fttype::get_file_extension("sql");
-
-        crate::tools::Tooling::Squawk.test_format_snippet(input, output, &file_ext);
-    }
-}

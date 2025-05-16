@@ -1,6 +1,7 @@
-///
-/// THIS FILE IS GENERATED USING CODE - DO NOT EDIT MANUALLY
-///
+//!
+//! THIS FILE IS GENERATED USING CODE - DO NOT EDIT MANUALLY
+//!
+
 use crate::runners::CommandType;
 
 #[inline]
@@ -24,42 +25,3 @@ pub const COMMANDS: [CommandType; 7] = [
 ];
 
 pub const IS_STDIN: bool = false;
-
-#[cfg(test)]
-mod test_rescript_format {
-    #[test_with::executable(rescript || npx || pnpm || deno || bunx)]
-    fn test_rescript_format_rescript_59c7490e2a041de3() {
-        let input = r#"module Button = {
-  @react.component
-  let make = (~count) =>   {
-    let times = switch    count {
-            | 1          =>   "once"
-    | 2  =>         "twice"
-    |   n =>      n->Int.toString ++ " times"
-     }
-     let text =                           `Click me ${times}`
-
-    <button> {text->React.string} </button>
-  }
-}"#;
-
-        let output = r#"module Button = {
-  @react.component
-  let make = (~count) => {
-    let times = switch count {
-    | 1 => "once"
-    | 2 => "twice"
-    | n => n->Int.toString ++ " times"
-    }
-    let text = `Click me ${times}`
-
-    <button> {text->React.string} </button>
-  }
-}
-"#;
-
-        let file_ext = crate::fttype::get_file_extension("rescript");
-
-        crate::tools::Tooling::RescriptFormat.test_format_snippet(input, output, &file_ext);
-    }
-}

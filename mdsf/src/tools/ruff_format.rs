@@ -1,6 +1,7 @@
-///
-/// THIS FILE IS GENERATED USING CODE - DO NOT EDIT MANUALLY
-///
+//!
+//! THIS FILE IS GENERATED USING CODE - DO NOT EDIT MANUALLY
+//!
+
 use crate::runners::CommandType;
 
 #[inline]
@@ -21,19 +22,3 @@ pub const COMMANDS: [CommandType; 3] = [
 ];
 
 pub const IS_STDIN: bool = false;
-
-#[cfg(test)]
-mod test_ruff_format {
-    #[test_with::executable(ruff || pipx || uv)]
-    fn test_ruff_format_python_229ec2b01c2bfe3c() {
-        let input = r#"def add( a: int ,  b:int)->int: return a+b"#;
-
-        let output = r#"def add(a: int, b: int) -> int:
-    return a + b
-"#;
-
-        let file_ext = crate::fttype::get_file_extension("python");
-
-        crate::tools::Tooling::RuffFormat.test_format_snippet(input, output, &file_ext);
-    }
-}

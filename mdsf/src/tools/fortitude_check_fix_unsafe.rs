@@ -1,6 +1,7 @@
-///
-/// THIS FILE IS GENERATED USING CODE - DO NOT EDIT MANUALLY
-///
+//!
+//! THIS FILE IS GENERATED USING CODE - DO NOT EDIT MANUALLY
+//!
+
 use crate::runners::CommandType;
 
 #[inline]
@@ -24,38 +25,3 @@ pub const COMMANDS: [CommandType; 3] = [
 ];
 
 pub const IS_STDIN: bool = false;
-
-#[cfg(test)]
-mod test_fortitude_check_fix_unsafe {
-    #[test_with::executable(fortitude || pipx || uv)]
-    fn test_fortitude_check_fix_unsafe_f_90_4107850c5b247cb5() {
-        let input = r#"program example
-    implicit none
-
-    contains
-        integer function addnum(a, b)
-            integer, intent(in) :: a, b
-            return a + b
-        end function addnum
-
-end program example
-"#;
-
-        let output = r#"program example
-    implicit none (type, external)
-
-    contains
-        integer function addnum(a, b)
-            integer, intent(in) :: a, b
-            return a + b
-        end function addnum
-
-end program example
-"#;
-
-        let file_ext = crate::fttype::get_file_extension(".f90");
-
-        crate::tools::Tooling::FortitudeCheckFixUnsafe
-            .test_format_snippet(input, output, &file_ext);
-    }
-}

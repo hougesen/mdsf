@@ -44,7 +44,7 @@ end function addnum
 end program example
 "#;
 
-        let file_ext = crate::fttype::get_file_extension(".f90");
+        let file_ext = crate::filetype::get_file_extension(".f90");
 
         let snippet =
             crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
@@ -88,7 +88,7 @@ end program example
   <body>Don't forget me this weekend!</body>
 </note>"#;
 
-        let file_ext = crate::fttype::get_file_extension("xml");
+        let file_ext = crate::filetype::get_file_extension("xml");
 
         let snippet =
             crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");

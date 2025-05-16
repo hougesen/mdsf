@@ -1,6 +1,7 @@
-///
-/// THIS FILE IS GENERATED USING CODE - DO NOT EDIT MANUALLY
-///
+//!
+//! THIS FILE IS GENERATED USING CODE - DO NOT EDIT MANUALLY
+//!
+
 use crate::runners::CommandType;
 
 #[inline]
@@ -26,25 +27,3 @@ pub const COMMANDS: [CommandType; 7] = [
 ];
 
 pub const IS_STDIN: bool = false;
-
-#[cfg(test)]
-mod test_biome_lint_unsafe {
-    #[test_with::executable(biome || npx || pnpm || deno || bunx)]
-    fn test_biome_lint_unsafe_javascript_9165f2e512bbc53f() {
-        let input = r#"const hello = "hello";
-const world = "world";
-
-console.log("" + hello + world);
-"#;
-
-        let output = r#"const hello = "hello";
-const world = "world";
-
-console.log(`${hello}${world}`);
-"#;
-
-        let file_ext = crate::fttype::get_file_extension("javascript");
-
-        crate::tools::Tooling::BiomeLintUnsafe.test_format_snippet(input, output, &file_ext);
-    }
-}

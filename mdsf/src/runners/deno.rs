@@ -16,7 +16,7 @@ mod test_deno {
     fn it_can_execute_an_npm_package_script() {
         let input = "";
 
-        let file_ext = crate::fttype::get_file_extension("json");
+        let file_ext = crate::filetype::get_file_extension("json");
 
         let snippet =
             crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");

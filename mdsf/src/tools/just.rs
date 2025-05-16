@@ -1,6 +1,7 @@
-///
-/// THIS FILE IS GENERATED USING CODE - DO NOT EDIT MANUALLY
-///
+//!
+//! THIS FILE IS GENERATED USING CODE - DO NOT EDIT MANUALLY
+//!
+
 use crate::runners::CommandType;
 
 #[inline]
@@ -28,23 +29,3 @@ pub const COMMANDS: [CommandType; 9] = [
 ];
 
 pub const IS_STDIN: bool = false;
-
-#[cfg(test)]
-mod test_just {
-    #[test_with::executable(just || npx || pnpm || deno || bunx || pipx || uv)]
-    fn test_just_just_ef70afaf3ede68b9() {
-        let input = r#"build:
-                cargo build
-                cargo build --release
-            "#;
-
-        let output = r#"build:
-    cargo build
-    cargo build --release
-"#;
-
-        let file_ext = crate::fttype::get_file_extension("just");
-
-        crate::tools::Tooling::Just.test_format_snippet(input, output, &file_ext);
-    }
-}

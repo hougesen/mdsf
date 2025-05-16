@@ -1,6 +1,7 @@
-///
-/// THIS FILE IS GENERATED USING CODE - DO NOT EDIT MANUALLY
-///
+//!
+//! THIS FILE IS GENERATED USING CODE - DO NOT EDIT MANUALLY
+//!
+
 use crate::runners::CommandType;
 
 #[inline]
@@ -24,17 +25,3 @@ pub const COMMANDS: [CommandType; 7] = [
 ];
 
 pub const IS_STDIN: bool = false;
-
-#[cfg(test)]
-mod test_mdsf_format {
-    #[test_with::executable(mdsf || npx || pnpm || deno || bunx)]
-    fn test_mdsf_format_markdown_1e1586f943958589() {
-        let input = r#""#;
-
-        let output = r#""#;
-
-        let file_ext = crate::fttype::get_file_extension("markdown");
-
-        crate::tools::Tooling::MdsfFormat.test_format_snippet(input, output, &file_ext);
-    }
-}

@@ -8,8 +8,8 @@
       "tests": [
         {
           "language": "markdown",
-          "test_input": "# Hello world\n\n- Hello\n- world\n\n",
-          "test_output": "# Hello world\n\n- Hello\n- world\n\n"
+          "test_input": "# Hello world\n\n- Hello\n- world\n",
+          "test_output": "# Hello world\n\n- Hello\n- world\n"
         }
       ]
     }

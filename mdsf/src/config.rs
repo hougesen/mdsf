@@ -128,6 +128,7 @@ impl Newline {
         }
     }
 
+    #[allow(clippy::trivially_copy_pass_by_ref)]
     #[inline]
     fn is_default(&self) -> bool {
         *self == Self::default()
@@ -353,15 +354,18 @@ mod test_config {
     }
 
     #[test]
-    fn test_config_load_works() {
-        let f = tempfile::Builder::new().rand_bytes(24).tempfile().unwrap();
+    fn test_config_load_works() -> Result<(), Box<dyn core::error::Error>> {
+        let f = tempfile::Builder::new().rand_bytes(24).tempfile()?;
 
         let default_config = MdsfConfig::default();
-        std::fs::write(f.path(), serde_json::to_string(&default_config).unwrap()).unwrap();
+
+        std::fs::write(f.path(), serde_json::to_string(&default_config)?)?;
 
         let loaded = MdsfConfig::load(f.path()).expect("it to return the config");
 
         assert_eq!(default_config, loaded);
+
+        Ok(())
     }
 
     #[test]
@@ -375,13 +379,15 @@ mod test_config {
     }
 
     #[test]
-    fn it_should_error_on_broken_config() {
+    fn it_should_error_on_broken_config() -> std::io::Result<()> {
         let input = "{thisisnotvalidjson}";
 
-        let file = setup_snippet(input, ".json").unwrap();
+        let file = setup_snippet(input, ".json")?;
 
         let output = MdsfConfig::load(file.path()).expect_err("it should return an error");
 
         assert!(matches!(output, MdsfError::ConfigParse(_)));
+
+        Ok(())
     }
 }

@@ -8,8 +8,8 @@
       "tests": [
         {
           "language": "markdown",
-          "test_input": "hello",
-          "test_output": "hello"
+          "test_input": "hello\n",
+          "test_output": "hello\n"
         }
       ]
     }

@@ -1,6 +1,7 @@
-///
-/// THIS FILE IS GENERATED USING CODE - DO NOT EDIT MANUALLY
-///
+//!
+//! THIS FILE IS GENERATED USING CODE - DO NOT EDIT MANUALLY
+//!
+
 use crate::runners::CommandType;
 
 #[inline]
@@ -24,30 +25,3 @@ pub const COMMANDS: [CommandType; 7] = [
 ];
 
 pub const IS_STDIN: bool = false;
-
-#[cfg(test)]
-mod test_stylua {
-    #[test_with::executable(stylua || npx || pnpm || deno || bunx)]
-    fn test_stylua_lua_ab45775f0dc2fcca() {
-        let input = r#"
-
-        local               function        add (                                       a , b
-)
-
-return              a +b
-
-
-end
-
-    "#;
-
-        let output = r#"local function add(a, b)
-	return a + b
-end
-"#;
-
-        let file_ext = crate::fttype::get_file_extension("lua");
-
-        crate::tools::Tooling::Stylua.test_format_snippet(input, output, &file_ext);
-    }
-}

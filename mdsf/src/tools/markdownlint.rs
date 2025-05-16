@@ -1,6 +1,7 @@
-///
-/// THIS FILE IS GENERATED USING CODE - DO NOT EDIT MANUALLY
-///
+//!
+//! THIS FILE IS GENERATED USING CODE - DO NOT EDIT MANUALLY
+//!
+
 use crate::runners::CommandType;
 
 #[inline]
@@ -24,25 +25,3 @@ pub const COMMANDS: [CommandType; 7] = [
 ];
 
 pub const IS_STDIN: bool = false;
-
-#[cfg(test)]
-mod test_markdownlint {
-    #[test_with::executable(markdownlint || npx || pnpm || deno || bunx)]
-    fn test_markdownlint_markdown_27f5778fc1db5182() {
-        let input = r#"# Hello world
-
-- asd
-* vasd
-"#;
-
-        let output = r#"# Hello world
-
-- asd
-- vasd
-"#;
-
-        let file_ext = crate::fttype::get_file_extension("markdown");
-
-        crate::tools::Tooling::Markdownlint.test_format_snippet(input, output, &file_ext);
-    }
-}

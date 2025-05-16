@@ -8,8 +8,8 @@
       "tests": [
         {
           "language": "markdown",
-          "test_input": "langauge",
-          "test_output": "language"
+          "test_input": "langauge\n",
+          "test_output": "language\n"
         }
       ]
     }

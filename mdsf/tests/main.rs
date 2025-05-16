@@ -3,7 +3,6 @@ mod test_cli {
     use std::io::Write;
 
     use predicates::prelude::PredicateBooleanExt;
-    use tempfile::tempdir;
 
     const BROKEN_CODE: &str = "```rust
 fn add(a:i32,b:i32)->i32{a+b}
@@ -17,318 +16,364 @@ fn add(a: i32, b: i32) -> i32 {
 ```
 ";
 
-    fn mdsf_command(path: &std::path::Path) -> assert_cmd::Command {
-        let mut cmd = assert_cmd::Command::cargo_bin("mdsf").unwrap();
+    fn mdsf_command(
+        path: &std::path::Path,
+    ) -> Result<assert_cmd::Command, assert_cmd::cargo::CargoError> {
+        let mut cmd = assert_cmd::Command::cargo_bin("mdsf")?;
 
         cmd.current_dir(path);
 
-        cmd
+        Ok(cmd)
     }
 
-    fn setup_test_input(dir: &std::path::Path, code: &str) -> tempfile::NamedTempFile {
+    fn setup_test_dir() -> Result<tempfile::TempDir, std::io::Error> {
+        tempfile::TempDir::with_prefix("mdsf")
+    }
+
+    fn setup_test_input(
+        dir: &std::path::Path,
+        code: &str,
+    ) -> std::io::Result<tempfile::NamedTempFile> {
         let mut b = tempfile::Builder::new();
 
         b.rand_bytes(12).suffix(".md");
 
-        let mut f = b.tempfile_in(dir).unwrap();
+        let mut f = b.tempfile_in(dir)?;
 
-        f.write_all(code.as_bytes()).unwrap();
-        f.flush().unwrap();
+        f.write_all(code.as_bytes())?;
+        f.flush()?;
 
-        f
+        Ok(f)
     }
 
     #[test]
-    fn help_arg_outputs_message() {
-        let dir = tempdir().unwrap();
+    fn help_arg_outputs_message() -> Result<(), Box<dyn core::error::Error>> {
+        let dir = setup_test_dir()?;
 
-        mdsf_command(dir.path())
+        mdsf_command(dir.path())?
             .arg("--help")
             .assert()
             .success()
             .stdout(predicates::str::is_empty().not());
+
+        Ok(())
     }
 
     #[test]
-    fn version_arg_outputs_message() {
-        let dir = tempdir().unwrap();
+    fn version_arg_outputs_message() -> Result<(), Box<dyn core::error::Error>> {
+        let dir = setup_test_dir()?;
 
-        mdsf_command(dir.path())
+        mdsf_command(dir.path())?
             .arg("--version")
             .assert()
             .success()
             .stdout(predicates::str::is_empty().not());
+
+        Ok(())
     }
 
     mod help {
         use predicates::prelude::PredicateBooleanExt;
-        use tempfile::tempdir;
 
         use crate::test_cli::mdsf_command;
 
-        #[test]
-        fn command_outputs_help_message() {
-            let dir = tempdir().unwrap();
+        use super::setup_test_dir;
 
-            mdsf_command(dir.path())
+        #[test]
+        fn command_outputs_help_message() -> Result<(), Box<dyn core::error::Error>> {
+            let dir = setup_test_dir()?;
+
+            mdsf_command(dir.path())?
                 .arg("help")
                 .assert()
                 .success()
                 .stdout(predicates::str::is_empty().not());
+
+            Ok(())
         }
     }
 
     mod completions {
         use predicates::prelude::PredicateBooleanExt;
-        use tempfile::tempdir;
 
         use crate::test_cli::mdsf_command;
 
-        #[test]
-        fn help_arg_outputs_message() {
-            let dir = tempdir().unwrap();
+        use super::setup_test_dir;
 
-            mdsf_command(dir.path())
+        #[test]
+        fn help_arg_outputs_message() -> Result<(), Box<dyn core::error::Error>> {
+            let dir = setup_test_dir()?;
+
+            mdsf_command(dir.path())?
                 .arg("completions")
                 .arg("--help")
                 .assert()
                 .success()
                 .stdout(predicates::str::is_empty().not());
+
+            Ok(())
         }
 
         #[test]
-        fn outputs_shell_completions() {
-            let dir = tempdir().unwrap();
+        fn outputs_shell_completions() -> Result<(), Box<dyn core::error::Error>> {
+            let dir = setup_test_dir()?;
 
             let shells = ["bash", "elvish", "fish", "nushell", "powershell", "zsh"];
 
             for shell in shells {
-                mdsf_command(dir.path())
+                mdsf_command(dir.path())?
                     .arg("completions")
                     .arg(shell)
                     .assert()
                     .success()
                     .stdout(predicates::str::is_empty().not());
             }
+
+            Ok(())
         }
     }
 
     mod init {
         use predicates::prelude::PredicateBooleanExt;
-        use tempfile::tempdir;
 
-        use crate::test_cli::mdsf_command;
+        use crate::test_cli::{mdsf_command, setup_test_dir};
 
         #[test]
-        fn help_arg_outputs_message() {
-            let dir = tempdir().unwrap();
+        fn help_arg_outputs_message() -> Result<(), Box<dyn core::error::Error>> {
+            let dir = setup_test_dir()?;
 
-            mdsf_command(dir.path())
+            mdsf_command(dir.path())?
                 .arg("init")
                 .arg("--help")
                 .assert()
                 .success()
                 .stdout(predicates::str::is_empty().not());
+
+            Ok(())
         }
 
         #[test]
-        fn creates_a_config_file() {
-            let dir = tempdir().unwrap();
+        fn creates_a_config_file() -> Result<(), Box<dyn core::error::Error>> {
+            let dir = setup_test_dir()?;
 
-            mdsf_command(dir.path()).arg("init").assert().success();
+            mdsf_command(dir.path())?.arg("init").assert().success();
 
-            let config_file_created = dir.path().join("mdsf.json").try_exists().unwrap();
+            let config_file_created = dir.path().join("mdsf.json").try_exists()?;
 
             assert!(config_file_created);
+
+            Ok(())
         }
 
         #[test]
-        fn fails_if_config_exists() {
-            let dir = tempdir().unwrap();
+        fn fails_if_config_exists() -> Result<(), Box<dyn core::error::Error>> {
+            let dir = setup_test_dir()?;
 
-            mdsf_command(dir.path()).arg("init").assert().success();
+            mdsf_command(dir.path())?.arg("init").assert().success();
 
-            mdsf_command(dir.path()).arg("init").assert().failure();
+            mdsf_command(dir.path())?.arg("init").assert().failure();
+
+            Ok(())
         }
 
         #[test]
-        fn force_config_arg() {
-            let dir = tempdir().unwrap();
+        fn force_config_arg() -> Result<(), Box<dyn core::error::Error>> {
+            let dir = setup_test_dir()?;
 
-            mdsf_command(dir.path()).arg("init").assert().success();
+            mdsf_command(dir.path())?.arg("init").assert().success();
 
-            mdsf_command(dir.path()).arg("init").assert().failure();
+            mdsf_command(dir.path())?.arg("init").assert().failure();
 
-            mdsf_command(dir.path())
+            mdsf_command(dir.path())?
                 .arg("init")
                 .arg("--force")
                 .assert()
                 .success();
+
+            Ok(())
         }
 
         #[test]
-        fn supports_log_level_argument() {
-            let dir = tempdir().unwrap();
+        fn supports_log_level_argument() -> Result<(), Box<dyn core::error::Error>> {
+            let dir = setup_test_dir()?;
 
-            mdsf_command(dir.path())
+            mdsf_command(dir.path())?
                 .arg("init")
                 .arg("--log-level")
                 .arg("off")
                 .assert()
                 .success()
                 .stderr(predicates::str::is_empty());
+
+            Ok(())
         }
     }
 
     mod cache_prune {
         use predicates::prelude::PredicateBooleanExt;
-        use tempfile::tempdir;
 
-        use super::mdsf_command;
+        use super::{mdsf_command, setup_test_dir};
 
         #[test]
-        fn help_arg_outputs_message() {
-            let dir = tempdir().unwrap();
+        fn help_arg_outputs_message() -> Result<(), Box<dyn core::error::Error>> {
+            let dir = setup_test_dir()?;
 
-            mdsf_command(dir.path())
+            mdsf_command(dir.path())?
                 .arg("cache-prune")
                 .arg("--help")
                 .assert()
                 .success()
                 .stdout(predicates::str::is_empty().not());
+
+            Ok(())
         }
 
         #[test]
-        fn removes_existing_caches() {
-            let dir = tempdir().unwrap();
+        fn removes_existing_caches() -> Result<(), Box<dyn core::error::Error>> {
+            let dir = setup_test_dir()?;
 
-            mdsf_command(dir.path())
+            mdsf_command(dir.path())?
                 .arg("cache-prune")
                 .assert()
                 .success();
+
+            Ok(())
         }
 
         #[test]
-        fn supports_log_level_argument() {
-            let dir = tempdir().unwrap();
+        fn supports_log_level_argument() -> Result<(), Box<dyn core::error::Error>> {
+            let dir = setup_test_dir()?;
 
-            mdsf_command(dir.path())
+            mdsf_command(dir.path())?
                 .arg("cache-prune")
                 .arg("--log-level")
                 .arg("off")
                 .assert()
                 .success()
                 .stderr(predicates::str::is_empty());
+
+            Ok(())
         }
     }
 
     mod verify {
         use mdsf::{cli::OnMissingLanguageDefinition, config::MdsfConfig};
         use predicates::prelude::PredicateBooleanExt;
-        use tempfile::tempdir;
 
-        use super::{BROKEN_CODE, FORMATTED_CODE, mdsf_command, setup_test_input};
+        use super::{BROKEN_CODE, FORMATTED_CODE, mdsf_command, setup_test_dir, setup_test_input};
 
         #[test]
-        fn help_arg_outputs_message() {
-            let dir = tempdir().unwrap();
+        fn help_arg_outputs_message() -> Result<(), Box<dyn core::error::Error>> {
+            let dir = setup_test_dir()?;
 
-            mdsf_command(dir.path())
+            mdsf_command(dir.path())?
                 .arg("verify")
                 .arg("--help")
                 .assert()
                 .success()
                 .stdout(predicates::str::is_empty().not());
+
+            Ok(())
         }
 
         #[test]
-        fn success_with_formatted_input() {
-            let dir = tempdir().unwrap();
+        fn success_with_formatted_input() -> Result<(), Box<dyn core::error::Error>> {
+            let dir = setup_test_dir()?;
 
-            mdsf_command(dir.path()).arg("init").assert().success();
+            mdsf_command(dir.path())?.arg("init").assert().success();
 
-            let file = setup_test_input(dir.path(), FORMATTED_CODE);
+            let file = setup_test_input(dir.path(), FORMATTED_CODE)?;
 
-            mdsf_command(dir.path())
+            mdsf_command(dir.path())?
                 .arg("verify")
                 .arg(file.path())
                 .assert()
                 .success();
+
+            Ok(())
         }
 
         #[test]
-        fn success_with_formatted_input_and_debug_arg() {
-            let dir = tempdir().unwrap();
+        fn success_with_formatted_input_and_debug_arg() -> Result<(), Box<dyn core::error::Error>> {
+            let dir = setup_test_dir()?;
 
-            mdsf_command(dir.path()).arg("init").assert().success();
+            mdsf_command(dir.path())?.arg("init").assert().success();
 
-            let file = setup_test_input(dir.path(), FORMATTED_CODE);
+            let file = setup_test_input(dir.path(), FORMATTED_CODE)?;
 
-            mdsf_command(dir.path())
+            mdsf_command(dir.path())?
                 .arg("verify")
                 .arg("--debug")
                 .arg(file.path())
                 .assert()
                 .success();
+
+            Ok(())
         }
 
         #[test]
-        fn success_with_formatted_input_stdin() {
-            let dir = tempdir().unwrap();
+        fn success_with_formatted_input_stdin() -> Result<(), Box<dyn core::error::Error>> {
+            let dir = setup_test_dir()?;
 
-            mdsf_command(dir.path()).arg("init").assert().success();
+            mdsf_command(dir.path())?.arg("init").assert().success();
 
-            mdsf_command(dir.path())
+            mdsf_command(dir.path())?
                 .arg("verify")
                 .arg("--stdin")
                 .write_stdin(FORMATTED_CODE)
                 .assert()
                 .success();
+
+            Ok(())
         }
 
         #[test]
-        fn fails_with_broken_input() {
-            let dir = tempdir().unwrap();
+        fn fails_with_broken_input() -> Result<(), Box<dyn core::error::Error>> {
+            let dir = setup_test_dir()?;
 
-            mdsf_command(dir.path()).arg("init").assert().success();
+            mdsf_command(dir.path())?.arg("init").assert().success();
 
-            let file = setup_test_input(dir.path(), BROKEN_CODE);
+            let file = setup_test_input(dir.path(), BROKEN_CODE)?;
 
-            mdsf_command(dir.path())
+            mdsf_command(dir.path())?
                 .arg("verify")
                 .arg(file.path())
                 .assert()
                 .failure();
+
+            Ok(())
         }
 
         #[test]
-        fn fails_with_broken_input_stdin() {
-            let dir = tempdir().unwrap();
+        fn fails_with_broken_input_stdin() -> Result<(), Box<dyn core::error::Error>> {
+            let dir = setup_test_dir()?;
 
-            mdsf_command(dir.path()).arg("init").assert().success();
+            mdsf_command(dir.path())?.arg("init").assert().success();
 
-            mdsf_command(dir.path())
+            mdsf_command(dir.path())?
                 .arg("verify")
                 .arg("--stdin")
                 .write_stdin(BROKEN_CODE)
                 .assert()
                 .failure();
+
+            Ok(())
         }
 
         #[test]
-        fn accepts_multiple_file_paths_formatted() {
-            let dir = tempdir().unwrap();
+        fn accepts_multiple_file_paths_formatted() -> Result<(), Box<dyn core::error::Error>> {
+            let dir = setup_test_dir()?;
 
-            mdsf_command(dir.path()).arg("init").assert().success();
+            mdsf_command(dir.path())?.arg("init").assert().success();
 
-            let mut cmd = mdsf_command(dir.path());
+            let mut cmd = mdsf_command(dir.path())?;
 
             cmd.arg("verify");
 
             let mut files = Vec::new();
 
             for _ in 0..5 {
-                let file = setup_test_input(dir.path(), FORMATTED_CODE);
+                let file = setup_test_input(dir.path(), FORMATTED_CODE)?;
 
                 cmd.arg(file.path());
 
@@ -339,25 +384,28 @@ fn add(a: i32, b: i32) -> i32 {
 
             // Validate the files wasn't changed
             for file in files {
-                let output = std::fs::read_to_string(file.path()).unwrap();
+                let output = std::fs::read_to_string(file.path())?;
                 assert_eq!(FORMATTED_CODE, output);
             }
+
+            Ok(())
         }
 
         #[test]
-        fn accepts_multiple_file_paths_formatted_with_threads_argument() {
-            let dir = tempdir().unwrap();
+        fn accepts_multiple_file_paths_formatted_with_threads_argument()
+        -> Result<(), Box<dyn core::error::Error>> {
+            let dir = setup_test_dir()?;
 
-            mdsf_command(dir.path()).arg("init").assert().success();
+            mdsf_command(dir.path())?.arg("init").assert().success();
 
-            let mut cmd = mdsf_command(dir.path());
+            let mut cmd = mdsf_command(dir.path())?;
 
             cmd.arg("verify").arg("--threads").arg("4");
 
             let mut files = Vec::new();
 
             for _ in 0..5 {
-                let file = setup_test_input(dir.path(), FORMATTED_CODE);
+                let file = setup_test_input(dir.path(), FORMATTED_CODE)?;
 
                 cmd.arg(file.path());
 
@@ -368,25 +416,28 @@ fn add(a: i32, b: i32) -> i32 {
 
             // Validate the files wasn't changed
             for file in files {
-                let output = std::fs::read_to_string(file.path()).unwrap();
+                let output = std::fs::read_to_string(file.path())?;
                 assert_eq!(FORMATTED_CODE, output);
             }
+
+            Ok(())
         }
 
         #[test]
-        fn accepts_multiple_file_paths_formatted_with_threads_argument_zero() {
-            let dir = tempdir().unwrap();
+        fn accepts_multiple_file_paths_formatted_with_threads_argument_zero()
+        -> Result<(), Box<dyn core::error::Error>> {
+            let dir = setup_test_dir()?;
 
-            mdsf_command(dir.path()).arg("init").assert().success();
+            mdsf_command(dir.path())?.arg("init").assert().success();
 
-            let mut cmd = mdsf_command(dir.path());
+            let mut cmd = mdsf_command(dir.path())?;
 
             cmd.arg("verify").arg("--threads").arg("0");
 
             let mut files = Vec::new();
 
             for _ in 0..5 {
-                let file = setup_test_input(dir.path(), FORMATTED_CODE);
+                let file = setup_test_input(dir.path(), FORMATTED_CODE)?;
 
                 cmd.arg(file.path());
 
@@ -397,25 +448,27 @@ fn add(a: i32, b: i32) -> i32 {
 
             // Validate the files wasn't changed
             for file in files {
-                let output = std::fs::read_to_string(file.path()).unwrap();
+                let output = std::fs::read_to_string(file.path())?;
                 assert_eq!(FORMATTED_CODE, output);
             }
+
+            Ok(())
         }
 
         #[test]
-        fn accepts_multiple_file_paths_broken() {
-            let dir = tempdir().unwrap();
+        fn accepts_multiple_file_paths_broken() -> Result<(), Box<dyn core::error::Error>> {
+            let dir = setup_test_dir()?;
 
-            mdsf_command(dir.path()).arg("init").assert().success();
+            mdsf_command(dir.path())?.arg("init").assert().success();
 
-            let mut cmd = mdsf_command(dir.path());
+            let mut cmd = mdsf_command(dir.path())?;
 
             cmd.arg("verify");
 
             let mut files = Vec::new();
 
             for _ in 0..5 {
-                let file = setup_test_input(dir.path(), BROKEN_CODE);
+                let file = setup_test_input(dir.path(), BROKEN_CODE)?;
 
                 cmd.arg(file.path());
 
@@ -426,18 +479,20 @@ fn add(a: i32, b: i32) -> i32 {
 
             // Validate the files wasn't changed
             for file in files {
-                let output = std::fs::read_to_string(file.path()).unwrap();
+                let output = std::fs::read_to_string(file.path())?;
                 assert_eq!(BROKEN_CODE, output);
             }
+
+            Ok(())
         }
 
         #[test]
-        fn accepts_multiple_file_paths_mixed() {
-            let dir = tempdir().unwrap();
+        fn accepts_multiple_file_paths_mixed() -> Result<(), Box<dyn core::error::Error>> {
+            let dir = setup_test_dir()?;
 
-            mdsf_command(dir.path()).arg("init").assert().success();
+            mdsf_command(dir.path())?.arg("init").assert().success();
 
-            let mut cmd = mdsf_command(dir.path());
+            let mut cmd = mdsf_command(dir.path())?;
 
             cmd.arg("verify");
 
@@ -450,7 +505,7 @@ fn add(a: i32, b: i32) -> i32 {
                     BROKEN_CODE
                 };
 
-                let file = setup_test_input(dir.path(), input);
+                let file = setup_test_input(dir.path(), input)?;
 
                 cmd.arg(file.path());
 
@@ -461,25 +516,29 @@ fn add(a: i32, b: i32) -> i32 {
 
             // Validate the files wasn't changed
             for (file, input) in files {
-                let output = std::fs::read_to_string(file.path()).unwrap();
+                let output = std::fs::read_to_string(file.path())?;
                 assert_eq!(input, output);
             }
+
+            Ok(())
         }
 
         #[test]
-        fn fails_without_input() {
-            let dir = tempdir().unwrap();
+        fn fails_without_input() -> Result<(), Box<dyn core::error::Error>> {
+            let dir = setup_test_dir()?;
 
-            mdsf_command(dir.path()).arg("verify").assert().failure();
+            mdsf_command(dir.path())?.arg("verify").assert().failure();
+
+            Ok(())
         }
 
         #[test]
-        fn supports_log_level_argument() {
-            let dir = tempdir().unwrap();
+        fn supports_log_level_argument() -> Result<(), Box<dyn core::error::Error>> {
+            let dir = setup_test_dir()?;
 
-            mdsf_command(dir.path()).arg("init").assert().success();
+            mdsf_command(dir.path())?.arg("init").assert().success();
 
-            mdsf_command(dir.path())
+            mdsf_command(dir.path())?
                 .arg("verify")
                 .arg("--stdin")
                 .arg("--log-level")
@@ -488,11 +547,14 @@ fn add(a: i32, b: i32) -> i32 {
                 .assert()
                 .success()
                 .stderr(predicates::str::is_empty());
+
+            Ok(())
         }
 
         #[test]
-        fn on_missing_language_definition_prioritize_cli() {
-            let dir = tempdir().unwrap();
+        fn on_missing_language_definition_prioritize_cli() -> Result<(), Box<dyn core::error::Error>>
+        {
+            let dir = setup_test_dir()?;
 
             let config = MdsfConfig {
                 on_missing_language_definition: Some(OnMissingLanguageDefinition::FailFast),
@@ -502,13 +564,12 @@ fn add(a: i32, b: i32) -> i32 {
 
             std::fs::write(
                 dir.path().join("mdsf.json"),
-                serde_json::to_string(&config).unwrap(),
-            )
-            .unwrap();
+                serde_json::to_string(&config)?,
+            )?;
 
-            let file = setup_test_input(dir.path(), BROKEN_CODE);
+            let file = setup_test_input(dir.path(), BROKEN_CODE)?;
 
-            mdsf_command(dir.path())
+            mdsf_command(dir.path())?
                 .arg("verify")
                 .arg("--on-missing-language-definition")
                 .arg("ignore")
@@ -516,11 +577,13 @@ fn add(a: i32, b: i32) -> i32 {
                 .assert()
                 .success()
                 .stderr(predicates::str::contains(" no tool configured for 'rust'"));
+
+            Ok(())
         }
 
         #[test]
-        fn on_missing_language_definition_ignore_cli() {
-            let dir = tempdir().unwrap();
+        fn on_missing_language_definition_ignore_cli() -> Result<(), Box<dyn core::error::Error>> {
+            let dir = setup_test_dir()?;
 
             let config = MdsfConfig {
                 on_missing_language_definition: None,
@@ -530,13 +593,12 @@ fn add(a: i32, b: i32) -> i32 {
 
             std::fs::write(
                 dir.path().join("mdsf.json"),
-                serde_json::to_string(&config).unwrap(),
-            )
-            .unwrap();
+                serde_json::to_string(&config)?,
+            )?;
 
-            let file = setup_test_input(dir.path(), BROKEN_CODE);
+            let file = setup_test_input(dir.path(), BROKEN_CODE)?;
 
-            mdsf_command(dir.path())
+            mdsf_command(dir.path())?
                 .arg("verify")
                 .arg("--on-missing-language-definition")
                 .arg("ignore")
@@ -544,11 +606,14 @@ fn add(a: i32, b: i32) -> i32 {
                 .assert()
                 .success()
                 .stderr(predicates::str::contains(" no tool configured for 'rust'"));
+
+            Ok(())
         }
 
         #[test]
-        fn on_missing_language_definition_ignore_config() {
-            let dir = tempdir().unwrap();
+        fn on_missing_language_definition_ignore_config() -> Result<(), Box<dyn core::error::Error>>
+        {
+            let dir = setup_test_dir()?;
 
             let config = MdsfConfig {
                 on_missing_language_definition: Some(OnMissingLanguageDefinition::Ignore),
@@ -558,23 +623,24 @@ fn add(a: i32, b: i32) -> i32 {
 
             std::fs::write(
                 dir.path().join("mdsf.json"),
-                serde_json::to_string(&config).unwrap(),
-            )
-            .unwrap();
+                serde_json::to_string(&config)?,
+            )?;
 
-            let file = setup_test_input(dir.path(), BROKEN_CODE);
+            let file = setup_test_input(dir.path(), BROKEN_CODE)?;
 
-            mdsf_command(dir.path())
+            mdsf_command(dir.path())?
                 .arg("verify")
                 .arg(file.path())
                 .assert()
                 .success()
                 .stderr(predicates::str::contains(" no tool configured for 'rust'"));
+
+            Ok(())
         }
 
         #[test]
-        fn on_missing_language_definition_fail_cli() {
-            let dir = tempdir().unwrap();
+        fn on_missing_language_definition_fail_cli() -> Result<(), Box<dyn core::error::Error>> {
+            let dir = setup_test_dir()?;
 
             let config = MdsfConfig {
                 on_missing_language_definition: None,
@@ -584,13 +650,12 @@ fn add(a: i32, b: i32) -> i32 {
 
             std::fs::write(
                 dir.path().join("mdsf.json"),
-                serde_json::to_string(&config).unwrap(),
-            )
-            .unwrap();
+                serde_json::to_string(&config)?,
+            )?;
 
-            let file = setup_test_input(dir.path(), BROKEN_CODE);
+            let file = setup_test_input(dir.path(), BROKEN_CODE)?;
 
-            mdsf_command(dir.path())
+            mdsf_command(dir.path())?
                 .arg("verify")
                 .arg("--on-missing-language-definition")
                 .arg("fail")
@@ -598,11 +663,13 @@ fn add(a: i32, b: i32) -> i32 {
                 .assert()
                 .failure()
                 .stderr(predicates::str::contains(" no tool configured for 'rust'"));
+
+            Ok(())
         }
 
         #[test]
-        fn on_missing_language_definition_fail_config() {
-            let dir = tempdir().unwrap();
+        fn on_missing_language_definition_fail_config() -> Result<(), Box<dyn core::error::Error>> {
+            let dir = setup_test_dir()?;
 
             let config = MdsfConfig {
                 on_missing_language_definition: Some(OnMissingLanguageDefinition::Fail),
@@ -612,23 +679,25 @@ fn add(a: i32, b: i32) -> i32 {
 
             std::fs::write(
                 dir.path().join("mdsf.json"),
-                serde_json::to_string(&config).unwrap(),
-            )
-            .unwrap();
+                serde_json::to_string(&config)?,
+            )?;
 
-            let file = setup_test_input(dir.path(), BROKEN_CODE);
+            let file = setup_test_input(dir.path(), BROKEN_CODE)?;
 
-            mdsf_command(dir.path())
+            mdsf_command(dir.path())?
                 .arg("verify")
                 .arg(file.path())
                 .assert()
                 .failure()
                 .stderr(predicates::str::contains(" no tool configured for 'rust'"));
+
+            Ok(())
         }
 
         #[test]
-        fn on_missing_language_definition_fail_fast_cli() {
-            let dir = tempdir().unwrap();
+        fn on_missing_language_definition_fail_fast_cli() -> Result<(), Box<dyn core::error::Error>>
+        {
+            let dir = setup_test_dir()?;
 
             let config = MdsfConfig {
                 on_missing_language_definition: None,
@@ -638,13 +707,12 @@ fn add(a: i32, b: i32) -> i32 {
 
             std::fs::write(
                 dir.path().join("mdsf.json"),
-                serde_json::to_string(&config).unwrap(),
-            )
-            .unwrap();
+                serde_json::to_string(&config)?,
+            )?;
 
-            let file = setup_test_input(dir.path(), BROKEN_CODE);
+            let file = setup_test_input(dir.path(), BROKEN_CODE)?;
 
-            mdsf_command(dir.path())
+            mdsf_command(dir.path())?
                 .arg("verify")
                 .arg("--on-missing-language-definition")
                 .arg("fail-fast")
@@ -652,11 +720,14 @@ fn add(a: i32, b: i32) -> i32 {
                 .assert()
                 .failure()
                 .stderr(predicates::str::contains(" no tool configured for 'rust'"));
+
+            Ok(())
         }
 
         #[test]
-        fn on_missing_language_definition_fail_fast_config() {
-            let dir = tempdir().unwrap();
+        fn on_missing_language_definition_fail_fast_config()
+        -> Result<(), Box<dyn core::error::Error>> {
+            let dir = setup_test_dir()?;
 
             let config = MdsfConfig {
                 on_missing_language_definition: Some(OnMissingLanguageDefinition::FailFast),
@@ -666,18 +737,19 @@ fn add(a: i32, b: i32) -> i32 {
 
             std::fs::write(
                 dir.path().join("mdsf.json"),
-                serde_json::to_string(&config).unwrap(),
-            )
-            .unwrap();
+                serde_json::to_string(&config)?,
+            )?;
 
-            let file = setup_test_input(dir.path(), BROKEN_CODE);
+            let file = setup_test_input(dir.path(), BROKEN_CODE)?;
 
-            mdsf_command(dir.path())
+            mdsf_command(dir.path())?
                 .arg("verify")
                 .arg(file.path())
                 .assert()
                 .failure()
                 .stderr(predicates::str::contains(" no tool configured for 'rust'"));
+
+            Ok(())
         }
     }
 
@@ -689,92 +761,99 @@ fn add(a: i32, b: i32) -> i32 {
             tools::Tooling,
         };
         use predicates::prelude::PredicateBooleanExt;
-        use tempfile::tempdir;
 
         use crate::test_cli::{FORMATTED_CODE, mdsf_command};
 
-        use super::{BROKEN_CODE, setup_test_input};
+        use super::{BROKEN_CODE, setup_test_dir, setup_test_input};
 
         #[test]
-        fn help_arg_outputs_message() {
-            let dir = tempdir().unwrap();
+        fn help_arg_outputs_message() -> Result<(), Box<dyn core::error::Error>> {
+            let dir = setup_test_dir()?;
 
-            mdsf_command(dir.path())
+            mdsf_command(dir.path())?
                 .arg("format")
                 .arg("--help")
                 .assert()
                 .success()
                 .stdout(predicates::str::is_empty().not());
+
+            Ok(())
         }
 
         #[test]
-        fn formats_broken_input() {
-            let dir = tempdir().unwrap();
+        fn formats_broken_input() -> Result<(), Box<dyn core::error::Error>> {
+            let dir = setup_test_dir()?;
 
-            mdsf_command(dir.path()).arg("init").assert().success();
+            mdsf_command(dir.path())?.arg("init").assert().success();
 
-            let file = setup_test_input(dir.path(), BROKEN_CODE);
+            let file = setup_test_input(dir.path(), BROKEN_CODE)?;
 
-            mdsf_command(dir.path())
+            mdsf_command(dir.path())?
                 .arg("format")
                 .arg(file.path())
                 .assert()
                 .success();
 
-            let output = std::fs::read_to_string(file.path()).unwrap();
+            let output = std::fs::read_to_string(file.path())?;
 
             assert_eq!(output, FORMATTED_CODE);
+
+            Ok(())
         }
 
         #[test]
-        fn formats_broken_input_with_debug_arg() {
-            let dir = tempdir().unwrap();
+        fn formats_broken_input_with_debug_arg() -> Result<(), Box<dyn core::error::Error>> {
+            let dir = setup_test_dir()?;
 
-            mdsf_command(dir.path()).arg("init").assert().success();
+            mdsf_command(dir.path())?.arg("init").assert().success();
 
-            let file = setup_test_input(dir.path(), BROKEN_CODE);
+            let file = setup_test_input(dir.path(), BROKEN_CODE)?;
 
-            mdsf_command(dir.path())
+            mdsf_command(dir.path())?
                 .arg("format")
                 .arg("--debug")
                 .arg(file.path())
                 .assert()
                 .success();
 
-            let output = std::fs::read_to_string(file.path()).unwrap();
+            let output = std::fs::read_to_string(file.path())?;
 
             assert_eq!(output, FORMATTED_CODE);
+
+            Ok(())
         }
 
         #[test]
-        fn formats_broken_input_stdin() {
-            let dir = tempdir().unwrap();
+        fn formats_broken_input_stdin() -> Result<(), Box<dyn core::error::Error>> {
+            let dir = setup_test_dir()?;
 
-            mdsf_command(dir.path()).arg("init").assert().success();
+            mdsf_command(dir.path())?.arg("init").assert().success();
 
-            mdsf_command(dir.path())
+            mdsf_command(dir.path())?
                 .arg("format")
                 .arg("--stdin")
                 .write_stdin(BROKEN_CODE)
                 .assert()
                 .success()
                 .stdout(predicates::str::contains(FORMATTED_CODE));
+
+            Ok(())
         }
 
         #[test]
-        fn accepts_multiple_file_paths() {
-            let dir = tempdir().unwrap();
+        fn accepts_multiple_file_paths() -> Result<(), Box<dyn core::error::Error>> {
+            let dir = setup_test_dir()?;
 
-            mdsf_command(dir.path()).arg("init").assert().success();
+            mdsf_command(dir.path())?.arg("init").assert().success();
 
-            let mut cmd = mdsf_command(dir.path());
+            let mut cmd = mdsf_command(dir.path())?;
 
             cmd.arg("format");
 
             let mut files = Vec::new();
 
             for _ in 0..5 {
-                let file = setup_test_input(dir.path(), BROKEN_CODE);
+                let file = setup_test_input(dir.path(), BROKEN_CODE)?;
 
                 cmd.arg(file.path());
 
@@ -784,26 +863,29 @@ fn add(a: i32, b: i32) -> i32 {
             cmd.assert().success();
 
             for file in files {
-                let output = std::fs::read_to_string(file.path()).unwrap();
+                let output = std::fs::read_to_string(file.path())?;
 
                 assert_eq!(output, FORMATTED_CODE);
             }
+
+            Ok(())
         }
 
         #[test]
-        fn accepts_multiple_file_paths_with_thread_argument() {
-            let dir = tempdir().unwrap();
+        fn accepts_multiple_file_paths_with_thread_argument()
+        -> Result<(), Box<dyn core::error::Error>> {
+            let dir = setup_test_dir()?;
 
-            mdsf_command(dir.path()).arg("init").assert().success();
+            mdsf_command(dir.path())?.arg("init").assert().success();
 
-            let mut cmd = mdsf_command(dir.path());
+            let mut cmd = mdsf_command(dir.path())?;
 
             cmd.arg("format").arg("--threads").arg("4");
 
             let mut files = Vec::new();
 
             for _ in 0..5 {
-                let file = setup_test_input(dir.path(), BROKEN_CODE);
+                let file = setup_test_input(dir.path(), BROKEN_CODE)?;
 
                 cmd.arg(file.path());
 
@@ -813,26 +895,29 @@ fn add(a: i32, b: i32) -> i32 {
             cmd.assert().success();
 
             for file in files {
-                let output = std::fs::read_to_string(file.path()).unwrap();
+                let output = std::fs::read_to_string(file.path())?;
 
                 assert_eq!(output, FORMATTED_CODE);
             }
+
+            Ok(())
         }
 
         #[test]
-        fn accepts_multiple_file_paths_with_thread_argument_zero() {
-            let dir = tempdir().unwrap();
+        fn accepts_multiple_file_paths_with_thread_argument_zero()
+        -> Result<(), Box<dyn core::error::Error>> {
+            let dir = setup_test_dir()?;
 
-            mdsf_command(dir.path()).arg("init").assert().success();
+            mdsf_command(dir.path())?.arg("init").assert().success();
 
-            let mut cmd = mdsf_command(dir.path());
+            let mut cmd = mdsf_command(dir.path())?;
 
             cmd.arg("format").arg("--threads").arg("0");
 
             let mut files = Vec::new();
 
             for _ in 0..5 {
-                let file = setup_test_input(dir.path(), BROKEN_CODE);
+                let file = setup_test_input(dir.path(), BROKEN_CODE)?;
 
                 cmd.arg(file.path());
 
@@ -842,29 +927,31 @@ fn add(a: i32, b: i32) -> i32 {
             cmd.assert().success();
 
             for file in files {
-                let output = std::fs::read_to_string(file.path()).unwrap();
+                let output = std::fs::read_to_string(file.path())?;
 
                 assert_eq!(output, FORMATTED_CODE);
             }
+
+            Ok(())
         }
 
         #[test]
-        fn format_with_cache_arg() {
-            let dir = tempdir().unwrap();
+        fn format_with_cache_arg() -> Result<(), Box<dyn core::error::Error>> {
+            let dir = setup_test_dir()?;
 
-            mdsf_command(dir.path()).arg("init").assert().success();
+            mdsf_command(dir.path())?.arg("init").assert().success();
 
-            let file = setup_test_input(dir.path(), BROKEN_CODE);
+            let file = setup_test_input(dir.path(), BROKEN_CODE)?;
 
             for i in 0..10 {
-                let mut cmd = mdsf_command(dir.path())
+                let mut cmd = mdsf_command(dir.path())?
                     .arg("format")
                     .arg("--cache")
                     .arg(file.path())
                     .assert()
                     .success();
 
-                let output = std::fs::read_to_string(file.path()).unwrap();
+                let output = std::fs::read_to_string(file.path())?;
                 assert_eq!(output, FORMATTED_CODE);
 
                 if i > 0 {
@@ -875,38 +962,44 @@ fn add(a: i32, b: i32) -> i32 {
                     cmd.stderr(predicates::str::contains("(cached)"));
                 }
             }
+
+            Ok(())
         }
 
         #[test]
-        fn fails_without_input() {
-            let dir = tempdir().unwrap();
+        fn fails_without_input() -> Result<(), Box<dyn core::error::Error>> {
+            let dir = setup_test_dir()?;
 
-            mdsf_command(dir.path()).arg("format").assert().failure();
+            mdsf_command(dir.path())?.arg("format").assert().failure();
+
+            Ok(())
         }
 
         #[test]
-        fn supports_log_level_argument() {
-            let dir = tempdir().unwrap();
+        fn supports_log_level_argument() -> Result<(), Box<dyn core::error::Error>> {
+            let dir = setup_test_dir()?;
 
-            mdsf_command(dir.path())
+            mdsf_command(dir.path())?
                 .arg("format")
                 .arg("--log-level")
                 .arg("off")
                 .assert()
                 .failure()
                 .stderr(predicates::str::is_empty());
+
+            Ok(())
         }
 
         #[test]
-        fn supports_config_path_argument() {
-            let dir = tempdir().unwrap();
+        fn supports_config_path_argument() -> Result<(), Box<dyn core::error::Error>> {
+            let dir = setup_test_dir()?;
 
-            let dir2 = tempdir().unwrap();
-            mdsf_command(dir2.path()).arg("init").assert().success();
+            let dir2 = tempfile::TempDir::with_prefix("mdsf")?;
+            mdsf_command(dir2.path())?.arg("init").assert().success();
 
-            let file = setup_test_input(dir.path(), BROKEN_CODE);
+            let file = setup_test_input(dir.path(), BROKEN_CODE)?;
 
-            mdsf_command(dir.path())
+            mdsf_command(dir.path())?
                 .arg("format")
                 .arg("--config")
                 .arg(dir2.path().join("mdsf.json"))
@@ -914,41 +1007,50 @@ fn add(a: i32, b: i32) -> i32 {
                 .assert()
                 .success();
 
-            let output = std::fs::read_to_string(file.path()).unwrap();
+            let output = std::fs::read_to_string(file.path())?;
             assert_eq!(output, FORMATTED_CODE);
+
+            Ok(())
         }
 
         #[test]
-        fn it_should_error_if_config_is_not_valid_json() {
-            let dir = tempdir().unwrap();
+        fn it_should_error_if_config_is_not_valid_json() -> Result<(), Box<dyn core::error::Error>>
+        {
+            let dir = setup_test_dir()?;
 
-            std::fs::write(dir.path().join("mdsf.json"), "{ this is not valid json }").unwrap();
+            std::fs::write(dir.path().join("mdsf.json"), "{ this is not valid json }")?;
 
-            mdsf_command(dir.path())
+            mdsf_command(dir.path())?
                 .arg("format")
                 .arg("--config")
                 .arg("thisdoesnotexist.json")
                 .arg(".")
                 .assert()
                 .failure();
+
+            Ok(())
         }
 
         #[test]
-        fn it_should_error_if_config_path_does_not_exist() {
-            let dir = tempdir().unwrap();
+        fn it_should_error_if_config_path_does_not_exist() -> Result<(), Box<dyn core::error::Error>>
+        {
+            let dir = setup_test_dir()?;
 
-            mdsf_command(dir.path())
+            mdsf_command(dir.path())?
                 .arg("format")
                 .arg("--config")
                 .arg("thisdoesnotexist.json")
                 .arg(".")
                 .assert()
                 .failure();
+
+            Ok(())
         }
 
         #[test]
-        fn on_missing_language_definition_prioritize_cli() {
-            let dir = tempdir().unwrap();
+        fn on_missing_language_definition_prioritize_cli() -> Result<(), Box<dyn core::error::Error>>
+        {
+            let dir = setup_test_dir()?;
 
             let config = MdsfConfig {
                 on_missing_language_definition: Some(OnMissingLanguageDefinition::FailFast),
@@ -958,13 +1060,12 @@ fn add(a: i32, b: i32) -> i32 {
 
             std::fs::write(
                 dir.path().join("mdsf.json"),
-                serde_json::to_string(&config).unwrap(),
-            )
-            .unwrap();
+                serde_json::to_string(&config)?,
+            )?;
 
-            let file = setup_test_input(dir.path(), BROKEN_CODE);
+            let file = setup_test_input(dir.path(), BROKEN_CODE)?;
 
-            mdsf_command(dir.path())
+            mdsf_command(dir.path())?
                 .arg("format")
                 .arg("--on-missing-language-definition")
                 .arg("ignore")
@@ -972,11 +1073,13 @@ fn add(a: i32, b: i32) -> i32 {
                 .assert()
                 .success()
                 .stderr(predicates::str::contains(" no tool configured for 'rust'"));
+
+            Ok(())
         }
 
         #[test]
-        fn on_missing_language_definition_ignore_cli() {
-            let dir = tempdir().unwrap();
+        fn on_missing_language_definition_ignore_cli() -> Result<(), Box<dyn core::error::Error>> {
+            let dir = setup_test_dir()?;
 
             let config = MdsfConfig {
                 on_missing_language_definition: None,
@@ -986,13 +1089,12 @@ fn add(a: i32, b: i32) -> i32 {
 
             std::fs::write(
                 dir.path().join("mdsf.json"),
-                serde_json::to_string(&config).unwrap(),
-            )
-            .unwrap();
+                serde_json::to_string(&config)?,
+            )?;
 
-            let file = setup_test_input(dir.path(), BROKEN_CODE);
+            let file = setup_test_input(dir.path(), BROKEN_CODE)?;
 
-            mdsf_command(dir.path())
+            mdsf_command(dir.path())?
                 .arg("format")
                 .arg("--on-missing-language-definition")
                 .arg("ignore")
@@ -1000,11 +1102,14 @@ fn add(a: i32, b: i32) -> i32 {
                 .assert()
                 .success()
                 .stderr(predicates::str::contains(" no tool configured for 'rust'"));
+
+            Ok(())
         }
 
         #[test]
-        fn on_missing_language_definition_ignore_config() {
-            let dir = tempdir().unwrap();
+        fn on_missing_language_definition_ignore_config() -> Result<(), Box<dyn core::error::Error>>
+        {
+            let dir = setup_test_dir()?;
 
             let config = MdsfConfig {
                 on_missing_language_definition: Some(OnMissingLanguageDefinition::Ignore),
@@ -1014,23 +1119,24 @@ fn add(a: i32, b: i32) -> i32 {
 
             std::fs::write(
                 dir.path().join("mdsf.json"),
-                serde_json::to_string(&config).unwrap(),
-            )
-            .unwrap();
+                serde_json::to_string(&config)?,
+            )?;
 
-            let file = setup_test_input(dir.path(), BROKEN_CODE);
+            let file = setup_test_input(dir.path(), BROKEN_CODE)?;
 
-            mdsf_command(dir.path())
+            mdsf_command(dir.path())?
                 .arg("format")
                 .arg(file.path())
                 .assert()
                 .success()
                 .stderr(predicates::str::contains(" no tool configured for 'rust'"));
+
+            Ok(())
         }
 
         #[test]
-        fn on_missing_language_definition_fail_cli() {
-            let dir = tempdir().unwrap();
+        fn on_missing_language_definition_fail_cli() -> Result<(), Box<dyn core::error::Error>> {
+            let dir = setup_test_dir()?;
 
             let config = MdsfConfig {
                 on_missing_language_definition: None,
@@ -1040,13 +1146,12 @@ fn add(a: i32, b: i32) -> i32 {
 
             std::fs::write(
                 dir.path().join("mdsf.json"),
-                serde_json::to_string(&config).unwrap(),
-            )
-            .unwrap();
+                serde_json::to_string(&config)?,
+            )?;
 
-            let file = setup_test_input(dir.path(), BROKEN_CODE);
+            let file = setup_test_input(dir.path(), BROKEN_CODE)?;
 
-            mdsf_command(dir.path())
+            mdsf_command(dir.path())?
                 .arg("format")
                 .arg("--on-missing-language-definition")
                 .arg("fail")
@@ -1054,11 +1159,13 @@ fn add(a: i32, b: i32) -> i32 {
                 .assert()
                 .failure()
                 .stderr(predicates::str::contains(" no tool configured for 'rust'"));
+
+            Ok(())
         }
 
         #[test]
-        fn on_missing_language_definition_fail_config() {
-            let dir = tempdir().unwrap();
+        fn on_missing_language_definition_fail_config() -> Result<(), Box<dyn core::error::Error>> {
+            let dir = setup_test_dir()?;
 
             let config = MdsfConfig {
                 on_missing_language_definition: Some(OnMissingLanguageDefinition::Fail),
@@ -1068,23 +1175,25 @@ fn add(a: i32, b: i32) -> i32 {
 
             std::fs::write(
                 dir.path().join("mdsf.json"),
-                serde_json::to_string(&config).unwrap(),
-            )
-            .unwrap();
+                serde_json::to_string(&config)?,
+            )?;
 
-            let file = setup_test_input(dir.path(), BROKEN_CODE);
+            let file = setup_test_input(dir.path(), BROKEN_CODE)?;
 
-            mdsf_command(dir.path())
+            mdsf_command(dir.path())?
                 .arg("format")
                 .arg(file.path())
                 .assert()
                 .failure()
                 .stderr(predicates::str::contains(" no tool configured for 'rust'"));
+
+            Ok(())
         }
 
         #[test]
-        fn on_missing_language_definition_fail_fast_cli() {
-            let dir = tempdir().unwrap();
+        fn on_missing_language_definition_fail_fast_cli() -> Result<(), Box<dyn core::error::Error>>
+        {
+            let dir = setup_test_dir()?;
 
             let config = MdsfConfig {
                 on_missing_language_definition: None,
@@ -1094,13 +1203,12 @@ fn add(a: i32, b: i32) -> i32 {
 
             std::fs::write(
                 dir.path().join("mdsf.json"),
-                serde_json::to_string(&config).unwrap(),
-            )
-            .unwrap();
+                serde_json::to_string(&config)?,
+            )?;
 
-            let file = setup_test_input(dir.path(), BROKEN_CODE);
+            let file = setup_test_input(dir.path(), BROKEN_CODE)?;
 
-            mdsf_command(dir.path())
+            mdsf_command(dir.path())?
                 .arg("format")
                 .arg("--on-missing-language-definition")
                 .arg("fail-fast")
@@ -1108,11 +1216,14 @@ fn add(a: i32, b: i32) -> i32 {
                 .assert()
                 .failure()
                 .stderr(predicates::str::contains(" no tool configured for 'rust'"));
+
+            Ok(())
         }
 
         #[test]
-        fn on_missing_language_definition_fail_fast_config() {
-            let dir = tempdir().unwrap();
+        fn on_missing_language_definition_fail_fast_config()
+        -> Result<(), Box<dyn core::error::Error>> {
+            let dir = setup_test_dir()?;
 
             let config = MdsfConfig {
                 on_missing_language_definition: Some(OnMissingLanguageDefinition::FailFast),
@@ -1122,23 +1233,24 @@ fn add(a: i32, b: i32) -> i32 {
 
             std::fs::write(
                 dir.path().join("mdsf.json"),
-                serde_json::to_string(&config).unwrap(),
-            )
-            .unwrap();
+                serde_json::to_string(&config)?,
+            )?;
 
-            let file = setup_test_input(dir.path(), BROKEN_CODE);
+            let file = setup_test_input(dir.path(), BROKEN_CODE)?;
 
-            mdsf_command(dir.path())
+            mdsf_command(dir.path())?
                 .arg("format")
                 .arg(file.path())
                 .assert()
                 .failure()
                 .stderr(predicates::str::contains(" no tool configured for 'rust'"));
+
+            Ok(())
         }
 
         #[test]
-        fn on_missing_tool_binary_prioritize_cli() {
-            let dir = tempdir().unwrap();
+        fn on_missing_tool_binary_prioritize_cli() -> Result<(), Box<dyn core::error::Error>> {
+            let dir = setup_test_dir()?;
 
             let config = MdsfConfig {
                 on_missing_tool_binary: Some(OnMissingToolBinary::FailFast),
@@ -1151,13 +1263,12 @@ fn add(a: i32, b: i32) -> i32 {
 
             std::fs::write(
                 dir.path().join("mdsf.json"),
-                serde_json::to_string(&config).unwrap(),
-            )
-            .unwrap();
+                serde_json::to_string(&config)?,
+            )?;
 
-            let file = setup_test_input(dir.path(), BROKEN_CODE);
+            let file = setup_test_input(dir.path(), BROKEN_CODE)?;
 
-            mdsf_command(dir.path())
+            mdsf_command(dir.path())?
                 .arg("format")
                 .arg("--on-missing-tool-binary")
                 .arg("ignore")
@@ -1167,11 +1278,13 @@ fn add(a: i32, b: i32) -> i32 {
                 .stderr(predicates::str::contains(
                     "veryl (veryl:fmt) not found in path",
                 ));
+
+            Ok(())
         }
 
         #[test]
-        fn on_missing_tool_binary_ignore_cli() {
-            let dir = tempdir().unwrap();
+        fn on_missing_tool_binary_ignore_cli() -> Result<(), Box<dyn core::error::Error>> {
+            let dir = setup_test_dir()?;
 
             let config = MdsfConfig {
                 on_missing_tool_binary: None,
@@ -1184,13 +1297,12 @@ fn add(a: i32, b: i32) -> i32 {
 
             std::fs::write(
                 dir.path().join("mdsf.json"),
-                serde_json::to_string(&config).unwrap(),
-            )
-            .unwrap();
+                serde_json::to_string(&config)?,
+            )?;
 
-            let file = setup_test_input(dir.path(), BROKEN_CODE);
+            let file = setup_test_input(dir.path(), BROKEN_CODE)?;
 
-            mdsf_command(dir.path())
+            mdsf_command(dir.path())?
                 .arg("format")
                 .arg("--on-missing-tool-binary")
                 .arg("ignore")
@@ -1200,11 +1312,13 @@ fn add(a: i32, b: i32) -> i32 {
                 .stderr(predicates::str::contains(
                     "veryl (veryl:fmt) not found in path",
                 ));
+
+            Ok(())
         }
 
         #[test]
-        fn on_missing_tool_binary_ignore_config() {
-            let dir = tempdir().unwrap();
+        fn on_missing_tool_binary_ignore_config() -> Result<(), Box<dyn core::error::Error>> {
+            let dir = setup_test_dir()?;
 
             let config = MdsfConfig {
                 on_missing_tool_binary: Some(OnMissingToolBinary::Ignore),
@@ -1217,13 +1331,12 @@ fn add(a: i32, b: i32) -> i32 {
 
             std::fs::write(
                 dir.path().join("mdsf.json"),
-                serde_json::to_string(&config).unwrap(),
-            )
-            .unwrap();
+                serde_json::to_string(&config)?,
+            )?;
 
-            let file = setup_test_input(dir.path(), BROKEN_CODE);
+            let file = setup_test_input(dir.path(), BROKEN_CODE)?;
 
-            mdsf_command(dir.path())
+            mdsf_command(dir.path())?
                 .arg("format")
                 .arg(file.path())
                 .assert()
@@ -1231,11 +1344,13 @@ fn add(a: i32, b: i32) -> i32 {
                 .stderr(predicates::str::contains(
                     "veryl (veryl:fmt) not found in path",
                 ));
+
+            Ok(())
         }
 
         #[test]
-        fn on_missing_tool_binary_fail_cli() {
-            let dir = tempdir().unwrap();
+        fn on_missing_tool_binary_fail_cli() -> Result<(), Box<dyn core::error::Error>> {
+            let dir = setup_test_dir()?;
 
             let config = MdsfConfig {
                 on_missing_tool_binary: None,
@@ -1248,13 +1363,12 @@ fn add(a: i32, b: i32) -> i32 {
 
             std::fs::write(
                 dir.path().join("mdsf.json"),
-                serde_json::to_string(&config).unwrap(),
-            )
-            .unwrap();
+                serde_json::to_string(&config)?,
+            )?;
 
-            let file = setup_test_input(dir.path(), BROKEN_CODE);
+            let file = setup_test_input(dir.path(), BROKEN_CODE)?;
 
-            mdsf_command(dir.path())
+            mdsf_command(dir.path())?
                 .arg("format")
                 .arg("--on-missing-tool-binary")
                 .arg("fail")
@@ -1264,11 +1378,13 @@ fn add(a: i32, b: i32) -> i32 {
                 .stderr(predicates::str::contains(
                     "veryl (veryl:fmt) not found in path",
                 ));
+
+            Ok(())
         }
 
         #[test]
-        fn on_missing_tool_binary_fail_config() {
-            let dir = tempdir().unwrap();
+        fn on_missing_tool_binary_fail_config() -> Result<(), Box<dyn core::error::Error>> {
+            let dir = setup_test_dir()?;
 
             let config = MdsfConfig {
                 on_missing_tool_binary: Some(OnMissingToolBinary::Fail),
@@ -1281,13 +1397,12 @@ fn add(a: i32, b: i32) -> i32 {
 
             std::fs::write(
                 dir.path().join("mdsf.json"),
-                serde_json::to_string(&config).unwrap(),
-            )
-            .unwrap();
+                serde_json::to_string(&config)?,
+            )?;
 
-            let file = setup_test_input(dir.path(), BROKEN_CODE);
+            let file = setup_test_input(dir.path(), BROKEN_CODE)?;
 
-            mdsf_command(dir.path())
+            mdsf_command(dir.path())?
                 .arg("format")
                 .arg(file.path())
                 .assert()
@@ -1295,11 +1410,13 @@ fn add(a: i32, b: i32) -> i32 {
                 .stderr(predicates::str::contains(
                     "veryl (veryl:fmt) not found in path",
                 ));
+
+            Ok(())
         }
 
         #[test]
-        fn on_missing_tool_binary_fail_fast_cli() {
-            let dir = tempdir().unwrap();
+        fn on_missing_tool_binary_fail_fast_cli() -> Result<(), Box<dyn core::error::Error>> {
+            let dir = setup_test_dir()?;
 
             let config = MdsfConfig {
                 on_missing_tool_binary: None,
@@ -1312,13 +1429,12 @@ fn add(a: i32, b: i32) -> i32 {
 
             std::fs::write(
                 dir.path().join("mdsf.json"),
-                serde_json::to_string(&config).unwrap(),
-            )
-            .unwrap();
+                serde_json::to_string(&config)?,
+            )?;
 
-            let file = setup_test_input(dir.path(), BROKEN_CODE);
+            let file = setup_test_input(dir.path(), BROKEN_CODE)?;
 
-            mdsf_command(dir.path())
+            mdsf_command(dir.path())?
                 .arg("format")
                 .arg("--on-missing-tool-binary")
                 .arg("fail-fast")
@@ -1328,11 +1444,13 @@ fn add(a: i32, b: i32) -> i32 {
                 .stderr(predicates::str::contains(
                     "veryl (veryl:fmt) not found in path",
                 ));
+
+            Ok(())
         }
 
         #[test]
-        fn on_missing_tool_binary_fail_fast_config() {
-            let dir = tempdir().unwrap();
+        fn on_missing_tool_binary_fail_fast_config() -> Result<(), Box<dyn core::error::Error>> {
+            let dir = setup_test_dir()?;
 
             let config = MdsfConfig {
                 on_missing_tool_binary: Some(OnMissingToolBinary::FailFast),
@@ -1345,13 +1463,12 @@ fn add(a: i32, b: i32) -> i32 {
 
             std::fs::write(
                 dir.path().join("mdsf.json"),
-                serde_json::to_string(&config).unwrap(),
-            )
-            .unwrap();
+                serde_json::to_string(&config)?,
+            )?;
 
-            let file = setup_test_input(dir.path(), BROKEN_CODE);
+            let file = setup_test_input(dir.path(), BROKEN_CODE)?;
 
-            mdsf_command(dir.path())
+            mdsf_command(dir.path())?
                 .arg("format")
                 .arg(file.path())
                 .assert()
@@ -1359,6 +1476,8 @@ fn add(a: i32, b: i32) -> i32 {
                 .stderr(predicates::str::contains(
                     "veryl (veryl:fmt) not found in path",
                 ));
+
+            Ok(())
         }
     }
 }

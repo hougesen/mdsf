@@ -1,6 +1,7 @@
-///
-/// THIS FILE IS GENERATED USING CODE - DO NOT EDIT MANUALLY
-///
+//!
+//! THIS FILE IS GENERATED USING CODE - DO NOT EDIT MANUALLY
+//!
+
 use crate::runners::CommandType;
 
 #[inline]
@@ -19,35 +20,3 @@ pub const COMMANDS: [CommandType; 2] = [
 ];
 
 pub const IS_STDIN: bool = true;
-
-#[cfg(test)]
-mod test_csharpier {
-    #[test_with::executable(csharpier)]
-    fn test_csharpier_csharp_a79aa94ad2d86b6c() {
-        let input = r#"namespace Mdsf {
-                        class Adder {
-                                                    public static int add(int a,int b) {
-                                var c=a+b ;
-                                                        return c ;
-                                                    }
-                                                 }
-                                                 } "#;
-
-        let output = r#"namespace Mdsf
-{
-    class Adder
-    {
-        public static int add(int a, int b)
-        {
-            var c = a + b;
-            return c;
-        }
-    }
-}
-"#;
-
-        let file_ext = crate::fttype::get_file_extension("csharp");
-
-        crate::tools::Tooling::Csharpier.test_format_snippet(input, output, &file_ext);
-    }
-}

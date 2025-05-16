@@ -1,6 +1,7 @@
-///
-/// THIS FILE IS GENERATED USING CODE - DO NOT EDIT MANUALLY
-///
+//!
+//! THIS FILE IS GENERATED USING CODE - DO NOT EDIT MANUALLY
+//!
+
 use crate::runners::CommandType;
 
 #[inline]
@@ -19,22 +20,3 @@ pub const COMMANDS: [CommandType; 3] = [
 ];
 
 pub const IS_STDIN: bool = false;
-
-#[cfg(test)]
-mod test_auto_optional {
-    #[test_with::executable(auto-optional || pipx || uv)]
-    fn test_auto_optional_python_c43199b18f48026d() {
-        let input = r#"def foo(bar: str = None):
-    pass
-"#;
-
-        let output = r#"from typing import Optional
-def foo(bar: Optional[str] = None):
-    pass
-"#;
-
-        let file_ext = crate::fttype::get_file_extension("python");
-
-        crate::tools::Tooling::AutoOptional.test_format_snippet(input, output, &file_ext);
-    }
-}

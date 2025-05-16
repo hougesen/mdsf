@@ -1,6 +1,7 @@
-///
-/// THIS FILE IS GENERATED USING CODE - DO NOT EDIT MANUALLY
-///
+//!
+//! THIS FILE IS GENERATED USING CODE - DO NOT EDIT MANUALLY
+//!
+
 use crate::runners::CommandType;
 
 #[inline]
@@ -25,29 +26,3 @@ pub const COMMANDS: [CommandType; 7] = [
 ];
 
 pub const IS_STDIN: bool = false;
-
-#[cfg(test)]
-mod test_prisma_format {
-    #[test_with::executable(prisma || npx || pnpm || deno || bunx)]
-    fn test_prisma_format_schema_b6e70b1b6bb7472e() {
-        let input = r#"datasource          db             {
-  provider                  = "postgresql"
-  url      =          env("DATABASE_URL")
-  directUrl =                       env("DIRECT_DATABASE_URL")
-}
-
-
-"#;
-
-        let output = r#"datasource db {
-  provider  = "postgresql"
-  url       = env("DATABASE_URL")
-  directUrl = env("DIRECT_DATABASE_URL")
-}
-"#;
-
-        let file_ext = crate::fttype::get_file_extension("schema");
-
-        crate::tools::Tooling::PrismaFormat.test_format_snippet(input, output, &file_ext);
-    }
-}
