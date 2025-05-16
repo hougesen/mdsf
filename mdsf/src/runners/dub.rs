@@ -23,7 +23,7 @@ mod test_dub {
 }
 "#;
 
-        let file_ext = crate::fttype::get_file_extension("d");
+        let file_ext = crate::filetype::get_file_extension("d");
 
         let snippet =
             crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");

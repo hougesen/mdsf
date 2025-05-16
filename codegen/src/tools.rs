@@ -3,10 +3,9 @@ use std::hash::DefaultHasher;
 
 use convert_case::{Case, Casing};
 
-const INDENT: &str = "    ";
+use crate::GENERATED_FILE_COMMENT;
 
-const GENERATED_FILE_COMMENT: &str =
-    "///\n/// THIS FILE IS GENERATED USING CODE - DO NOT EDIT MANUALLY\n///";
+const INDENT: &str = "    ";
 
 #[allow(clippy::trivially_copy_pass_by_ref)]
 #[inline]
@@ -521,6 +520,7 @@ mod test_{module_name} {{{maybe_line_break}{tests}{maybe_line_break}}}
 
             let code = format!(
                 "{GENERATED_FILE_COMMENT}
+
 use crate::runners::CommandType;
 
 #[inline]
@@ -725,7 +725,9 @@ impl AsRef<str> for Tooling {
     std::fs::write(
         "mdsf/tests/tooling.rs",
         format!(
-            "mod common;
+            "{GENERATED_FILE_COMMENT}
+
+mod common;
 
 {}
 ",
@@ -753,6 +755,7 @@ impl AsRef<str> for Tooling {
 
     let mod_file_contents = format!(
         "{GENERATED_FILE_COMMENT}
+
 {}
 
 #[derive(serde::Serialize, serde::Deserialize, Hash, Clone, Copy, Debug, PartialEq, Eq)]

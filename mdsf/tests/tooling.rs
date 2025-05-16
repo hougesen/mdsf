@@ -1,3 +1,7 @@
+//!
+//! THIS FILE IS GENERATED USING CODE - DO NOT EDIT MANUALLY
+//!
+
 mod common;
 
 #[cfg(test)]

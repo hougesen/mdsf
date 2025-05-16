@@ -1,10 +1,10 @@
-use crate::generated;
+mod generated_file_types;
 
 #[inline]
 pub fn get_file_extension(language: &str) -> String {
     let lowercase = language.to_lowercase();
 
-    if let Some(s) = generated::language_to_ext(&lowercase) {
+    if let Some(s) = generated_file_types::language_to_ext(&lowercase) {
         return s.to_string();
     }
 
@@ -33,7 +33,7 @@ fn fallback_file_extension(language: &str) -> Option<&'static str> {
 
 #[cfg(test)]
 mod test_get_file_extension {
-    use crate::fttype::get_file_extension;
+    use crate::filetype::get_file_extension;
 
     #[test]
     fn test_input_starts_with_dot() {

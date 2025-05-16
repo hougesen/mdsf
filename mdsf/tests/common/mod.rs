@@ -4,7 +4,7 @@ use assert_cmd::cargo::CargoError;
 use mdsf::{
     config::{MdsfConfig, MdsfConfigRunners},
     execution::MdsfFormatter,
-    fttype::get_file_extension,
+    filetype::get_file_extension,
     tools::Tooling,
 };
 

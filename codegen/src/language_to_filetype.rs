@@ -1,4 +1,4 @@
-use crate::error::CodegenError;
+use crate::{GENERATED_FILE_COMMENT, error::CodegenError};
 
 #[derive(serde::Deserialize)]
 struct LinguishLanguage {
@@ -55,7 +55,7 @@ fn build_mapping(languages: std::collections::HashMap<String, LinguishLanguage>)
     mappings.push(format!("{WHITESPACE}{WHITESPACE}_ => None,"));
 
     format!(
-        "// THIS CODE WAS GENERATED AND SHOULD NOT BE EDITED MANUALLY
+        "{GENERATED_FILE_COMMENT}
 
 #[allow(clippy::too_many_lines)]
 #[inline]
@@ -77,7 +77,7 @@ pub fn generate() -> Result<(), CodegenError> {
 
     let result = build_mapping(languages);
 
-    std::fs::write("./mdsf/src/generated.rs", result)?;
+    std::fs::write("./mdsf/src/filetype/generated_file_types.rs", result)?;
 
     Ok(())
 }

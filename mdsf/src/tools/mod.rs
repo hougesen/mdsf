@@ -1,6 +1,7 @@
-///
-/// THIS FILE IS GENERATED USING CODE - DO NOT EDIT MANUALLY
-///
+//!
+//! THIS FILE IS GENERATED USING CODE - DO NOT EDIT MANUALLY
+//!
+
 pub mod actionlint;
 pub mod air_format;
 pub mod alejandra;
