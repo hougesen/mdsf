@@ -41,13 +41,13 @@ fn wrap_codeblock(ft: &str, code: &str) -> String {
     )
 }
 
-fn build_input_output(file_type: &str, input: &str, output: &str) -> (String, String) {
-    if file_type == ".md" || get_file_extension(file_type) == ".md" {
+fn build_input_output(filetype: &str, input: &str, output: &str) -> (String, String) {
+    if filetype == ".md" || get_file_extension(filetype) == ".md" {
         (input.to_string(), output.to_string())
     } else {
         (
-            wrap_codeblock(file_type, input.trim()),
-            wrap_codeblock(file_type, output.trim()),
+            wrap_codeblock(filetype, input.trim()),
+            wrap_codeblock(filetype, output.trim()),
         )
     }
 }
@@ -84,22 +84,61 @@ fn run_format_command(
     Ok(cmd)
 }
 
+fn run_verify_command(
+    dir: &std::path::Path,
+    file: &std::path::Path,
+) -> Result<assert_cmd::Command, CargoError> {
+    let mut cmd = assert_cmd::Command::cargo_bin("mdsf")?;
+
+    cmd.current_dir(dir)
+        .arg("verify")
+        .arg("--debug")
+        .arg("--log-level")
+        .arg("trace")
+        .arg(file);
+
+    Ok(cmd)
+}
+
 pub fn run_tooling_test(
     tool: Tooling,
     input: &str,
     expected_output: &str,
-    file_ext: &str,
+    filetype: &str,
 ) -> Result<(), Box<dyn core::error::Error>> {
-    let (input, expected_output) = build_input_output(file_ext, input, expected_output);
+    let (input, expected_output) = build_input_output(filetype, input, expected_output);
 
     let dir = tempfile::TempDir::with_prefix("mdsf-tool-test")?;
 
-    setup_config_file(dir.path(), file_ext, tool)?;
+    setup_config_file(dir.path(), filetype, tool)?;
 
     let file = setup_markdown_file(dir.path(), &input)?;
 
     // Validate input is correct
     assert_eq!(std::fs::read_to_string(file.path())?, input);
+
+    {
+        let cmd = run_verify_command(dir.path(), file.path())?.assert();
+
+        dbg!(&cmd);
+
+        if input == expected_output {
+            cmd.success()
+                .stderr(predicates::str::contains(" (unchanged)"));
+        } else {
+            cmd.failure()
+                .stderr(predicates::str::contains(format!(
+                    "{} has changes",
+                    file.path().display(),
+                )))
+                .stderr(predicates::str::contains(
+                    "Found changes while running in check mode (1 file)",
+                ));
+        }
+
+        // Validate input was not changed
+        assert_eq!(std::fs::read_to_string(file.path())?, input);
+    };
 
     {
         run_format_command(dir.path(), file.path())?

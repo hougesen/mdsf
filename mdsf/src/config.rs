@@ -128,6 +128,7 @@ impl Newline {
         }
     }
 
+    #[allow(clippy::trivially_copy_pass_by_ref)]
     #[inline]
     fn is_default(&self) -> bool {
         *self == Self::default()

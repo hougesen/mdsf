@@ -7,7 +7,7 @@
       "arguments": ["-w", "-n", "$PATH"],
       "tests": [
         {
-          "language": ".Dockerfile",
+          "language": "dockerfile",
           "test_input": "FROM          ubuntu:latest\n RUN   echo   \"Hello world\"\n",
           "test_output": "FROM ubuntu:latest\nRUN echo \"Hello world\"\n"
         }

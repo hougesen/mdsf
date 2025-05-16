@@ -557,6 +557,7 @@ fn add(a: i32, b: i32) -> i32 {
         assert_eq!(output, expected_output);
     }
 
+    #[allow(clippy::too_many_lines)]
     #[test_with::executable(gofmt)]
     #[test]
     fn it_should_support_go_with_package() {
@@ -699,6 +700,7 @@ type Whatever struct {
         }
     }
 
+    #[allow(clippy::too_many_lines)]
     #[test]
     fn it_should_add_go_package_if_missing() {
         let input = "```go

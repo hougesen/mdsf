@@ -127,10 +127,12 @@ buildPythonPackage rec {
 #[cfg(test)]
 mod test_alex {
     #[test_with::executable(alex || npx || pnpm || deno || bunx)]
-    fn test_alex_markdown_114ca1bc58b35aef() -> Result<(), Box<dyn core::error::Error>> {
-        let input = r#"hello"#;
+    fn test_alex_markdown_33c15403c156c629() -> Result<(), Box<dyn core::error::Error>> {
+        let input = r#"hello
+"#;
 
-        let output = r#"hello"#;
+        let output = r#"hello
+"#;
 
         let ft = "markdown";
 
@@ -1268,7 +1270,7 @@ mod test_docformatter {}
 #[cfg(test)]
 mod test_dockerfmt {
     #[test_with::executable(dockerfmt)]
-    fn test_dockerfmt_dockerfile_bb70f2ad30df0302() -> Result<(), Box<dyn core::error::Error>> {
+    fn test_dockerfmt_dockerfile_39458badf1770ecf() -> Result<(), Box<dyn core::error::Error>> {
         let input = r#"FROM          ubuntu:latest
  RUN   echo   "Hello world"
 "#;
@@ -1277,7 +1279,7 @@ mod test_dockerfmt {
 RUN echo "Hello world"
 "#;
 
-        let ft = ".Dockerfile";
+        let ft = "dockerfile";
 
         crate::common::run_tooling_test(mdsf::tools::Tooling::Dockerfmt, input, output, ft)
     }
@@ -2455,19 +2457,17 @@ mod test_luacheck {}
 #[cfg(test)]
 mod test_mado_check {
     #[test_with::executable(mado)]
-    fn test_mado_check_markdown_664925a21a5aec00() -> Result<(), Box<dyn core::error::Error>> {
+    fn test_mado_check_markdown_2eeb10259aff4747() -> Result<(), Box<dyn core::error::Error>> {
         let input = r#"# Hello world
 
 - Hello
 - world
-
 "#;
 
         let output = r#"# Hello world
 
 - Hello
 - world
-
 "#;
 
         let ft = "markdown";
@@ -2717,10 +2717,12 @@ run = 'echo "running build tasks"'
 #[cfg(test)]
 mod test_misspell {
     #[test_with::executable(misspell)]
-    fn test_misspell_markdown_bf3aae6887d87bbc() -> Result<(), Box<dyn core::error::Error>> {
-        let input = r#"langauge"#;
+    fn test_misspell_markdown_1e37d19484d12443() -> Result<(), Box<dyn core::error::Error>> {
+        let input = r#"langauge
+"#;
 
-        let output = r#"language"#;
+        let output = r#"language
+"#;
 
         let ft = "markdown";
 
@@ -4868,7 +4870,7 @@ mod test_vint_neovim {}
 #[cfg(test)]
 mod test_vhdl_style_guide {
     #[test_with::executable(vsg || pipx || uv)]
-    fn test_vhdl_style_guide_vhd_7fa09a07176ec6() -> Result<(), Box<dyn core::error::Error>> {
+    fn test_vhdl_style_guide_vhdl_a9606d208e8f0a57() -> Result<(), Box<dyn core::error::Error>> {
         let input = r#"
 architecture RTL of FIFO is
 
@@ -4892,7 +4894,7 @@ begin
 end architecture rtl;
 "#;
 
-        let ft = ".vhd";
+        let ft = "vhdl";
 
         crate::common::run_tooling_test(mdsf::tools::Tooling::VhdlStyleGuide, input, output, ft)
     }
