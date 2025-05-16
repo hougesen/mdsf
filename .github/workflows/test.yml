@@ -236,6 +236,8 @@ jobs:
         run: ( ( which pyink ) || ( ( which pipx && pipx install pyink ) ) || ( echo "Unable to install tool" ) )
       - name: pylint
         run: ( ( which pylint ) || ( ( which pipx && pipx install pylint ) ) || ( echo "Unable to install tool" ) )
+      - name: pyrefly
+        run: ( ( which pyrefly ) || ( ( which pipx && pipx install pyrefly ) ) || ( echo "Unable to install tool" ) )
       - name: pyupgrade
         run: ( ( which pyupgrade ) || ( ( which pipx && pipx install pyupgrade ) ) || ( echo "Unable to install tool" ) )
       - name: reorder-python-imports

@@ -457,7 +457,7 @@ That can be changed by specifying the `newline` config option.
 
 <!-- START_SECTION:supported-tools -->
 
-`mdsf` currently supports 311 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 312 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                                                                                 | Description                                                                                                                                   | Categories            | Languages                                                                                                                         |
 | ------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
@@ -674,6 +674,7 @@ That can be changed by specifying the `newline` config option.
 | [pyink](https://github.com/google/pyink)                                             | Pyink is a Python formatter, forked from Black with a few different formatting behaviors                                                      | `formatter`           | `python`                                                                                                                          |
 | [pylint](https://github.com/pylint-dev/pylint)                                       | Pylint is a static code analyser for Python 2 or 3                                                                                            | `linter`              | `python`                                                                                                                          |
 | [pyment](https://github.com/dadadel/pyment)                                          | Format and convert Python docstrings and generates patches                                                                                    | `formatter`           | `python`                                                                                                                          |
+| [pyrefly](https://github.com/facebook/pyrefly)                                       | A fast type checker for Python                                                                                                                | `linter`              | `python`                                                                                                                          |
 | [pyupgrade](https://github.com/asottile/pyupgrade)                                   | A tool to automatically upgrade Python syntax to newer versions                                                                               | `linter`              | `python`                                                                                                                          |
 | [qmlfmt](https://github.com/jesperhh/qmlfmt)                                         | Command line application that formats QML files                                                                                               | `formatter`           | `qml`                                                                                                                             |
 | [quick-lint-js](https://github.com/quick-lint/quick-lint-js)                         | quick-lint-js finds bugs in JavaScript programs                                                                                               | `linter`              | `javascript`                                                                                                                      |
@@ -779,7 +780,7 @@ That can be changed by specifying the `newline` config option.
 
 <!-- START_SECTION:supported-commands -->
 
-`mdsf` currently supports 346 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 347 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                         | Command                                                                                 |
 | ---------------------------- | --------------------------------------------------------------------------------------- |
@@ -1023,6 +1024,7 @@ That can be changed by specifying the `newline` config option.
 | `pyink`                      | `pyink --quiet $PATH`                                                                   |
 | `pylint`                     | `pylint --module-naming-style=any $PATH`                                                |
 | `pyment`                     | `pyment -w $PATH`                                                                       |
+| `pyrefly`                    | `pyrefly check $PATH`                                                                   |
 | `pyupgrade`                  | `pyupgrade $PATH`                                                                       |
 | `qmlfmt`                     | `qmlfmt -w $PATH`                                                                       |
 | `quick-lint-js`              | `quick-lint-js $PATH`                                                                   |

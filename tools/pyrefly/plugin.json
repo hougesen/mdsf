@@ -1,0 +1,25 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "pyrefly",
+  "categories": ["linter"],
+  "commands": {
+    "": {
+      "arguments": ["check", "$PATH"],
+      "tests": [
+        {
+          "language": "python",
+          "test_input": "def add(a: int, b: int) -> int:\n    return a + b\n\n\nadd(1, 2)\n",
+          "test_output": "def add(a: int, b: int) -> int:\n    return a + b\n\n\nadd(1, 2)\n"
+        }
+      ]
+    }
+  },
+  "description": "A fast type checker for Python",
+  "homepage": "https://github.com/facebook/pyrefly",
+  "languages": ["python"],
+  "packages": {
+    "pip": {
+      "package": "pyrefly"
+    }
+  }
+}

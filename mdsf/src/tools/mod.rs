@@ -242,6 +242,7 @@ pub mod pyflakes;
 pub mod pyink;
 pub mod pylint;
 pub mod pyment;
+pub mod pyrefly;
 pub mod pyupgrade;
 pub mod qmlfmt;
 pub mod quick_lint_js;
@@ -2272,6 +2273,14 @@ pub enum Tooling {
     /// `pyment -w $PATH`
     Pyment,
 
+    #[serde(rename = "pyrefly")]
+    /// A fast type checker for Python
+    ///
+    /// [https://github.com/facebook/pyrefly](https://github.com/facebook/pyrefly)
+    ///
+    /// `pyrefly check $PATH`
+    Pyrefly,
+
     #[serde(rename = "pyupgrade")]
     /// A tool to automatically upgrade Python syntax to newer versions
     ///
@@ -3924,6 +3933,7 @@ impl Tooling {
             Self::Pyink => (&pyink::COMMANDS, pyink::set_args, pyink::IS_STDIN),
             Self::Pylint => (&pylint::COMMANDS, pylint::set_args, pylint::IS_STDIN),
             Self::Pyment => (&pyment::COMMANDS, pyment::set_args, pyment::IS_STDIN),
+            Self::Pyrefly => (&pyrefly::COMMANDS, pyrefly::set_args, pyrefly::IS_STDIN),
             Self::Pyupgrade => (
                 &pyupgrade::COMMANDS,
                 pyupgrade::set_args,
@@ -4481,6 +4491,7 @@ impl AsRef<str> for Tooling {
             Self::Pyink => "pyink",
             Self::Pylint => "pylint",
             Self::Pyment => "pyment",
+            Self::Pyrefly => "pyrefly",
             Self::Pyupgrade => "pyupgrade",
             Self::Qmlfmt => "qmlfmt",
             Self::QuickLintJs => "quick-lint-js",
@@ -4882,6 +4893,7 @@ mod test_tooling {
         assert_eq!(Tooling::Pyink, reverse(Tooling::Pyink)?);
         assert_eq!(Tooling::Pylint, reverse(Tooling::Pylint)?);
         assert_eq!(Tooling::Pyment, reverse(Tooling::Pyment)?);
+        assert_eq!(Tooling::Pyrefly, reverse(Tooling::Pyrefly)?);
         assert_eq!(Tooling::Pyupgrade, reverse(Tooling::Pyupgrade)?);
         assert_eq!(Tooling::Qmlfmt, reverse(Tooling::Qmlfmt)?);
         assert_eq!(Tooling::QuickLintJs, reverse(Tooling::QuickLintJs)?);

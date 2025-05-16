@@ -3390,6 +3390,30 @@ def add(a: int, b: int) -> int:
 mod test_pyment {}
 
 #[cfg(test)]
+mod test_pyrefly {
+    #[test_with::executable(pyrefly || pipx || uv)]
+    fn test_pyrefly_python_13af245604aaa0cd() -> Result<(), Box<dyn core::error::Error>> {
+        let input = r#"def add(a: int, b: int) -> int:
+    return a + b
+
+
+add(1, 2)
+"#;
+
+        let output = r#"def add(a: int, b: int) -> int:
+    return a + b
+
+
+add(1, 2)
+"#;
+
+        let ft = "python";
+
+        crate::common::run_tooling_test(mdsf::tools::Tooling::Pyrefly, input, output, ft)
+    }
+}
+
+#[cfg(test)]
 mod test_pyupgrade {
     #[test_with::executable(pyupgrade || pipx || uv)]
     fn test_pyupgrade_python_efcc3b576317ef09() -> Result<(), Box<dyn core::error::Error>> {
