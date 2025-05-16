@@ -19,27 +19,3 @@ pub const COMMANDS: [CommandType; 3] = [
 ];
 
 pub const IS_STDIN: bool = false;
-
-#[cfg(test)]
-mod test_nginxfmt {
-    #[test_with::executable(nginxfmt || pipx || uv)]
-    fn test_nginxfmt_conf_2e651ac1789b7182() {
-        let input = r#"server {
-    listen 80;
-        listen [::]:80;
-       server_name example.com;
-    }
-"#;
-
-        let output = r#"server {
-    listen 80;
-    listen [::]:80;
-    server_name example.com;
-}
-"#;
-
-        let file_ext = crate::fttype::get_file_extension(".conf");
-
-        crate::tools::Tooling::Nginxfmt.test_format_snippet(input, output, &file_ext);
-    }
-}

@@ -20,37 +20,3 @@ pub const COMMANDS: [CommandType; 3] = [
 ];
 
 pub const IS_STDIN: bool = false;
-
-#[cfg(test)]
-mod test_pylint {
-    #[test_with::executable(pylint || pipx || uv)]
-    fn test_pylint_python_826209940b0fafbc() {
-        let input = r#""""
-mdsf test module for pylint
-"""
-
-
-def add(a: int, b: int) -> int:
-    """
-    Add the numbers
-    """
-    return a + b
-"#;
-
-        let output = r#""""
-mdsf test module for pylint
-"""
-
-
-def add(a: int, b: int) -> int:
-    """
-    Add the numbers
-    """
-    return a + b
-"#;
-
-        let file_ext = crate::fttype::get_file_extension("python");
-
-        crate::tools::Tooling::Pylint.test_format_snippet(input, output, &file_ext);
-    }
-}

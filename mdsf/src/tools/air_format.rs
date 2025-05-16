@@ -16,30 +16,3 @@ pub fn set_args(
 pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("air")];
 
 pub const IS_STDIN: bool = false;
-
-#[cfg(test)]
-mod test_air_format {
-    #[test_with::executable(air)]
-    fn test_air_format_r_b395a8aabbe68c56() {
-        let input = r#"data            |>
-                  select(foo)
-
-  foo         <- function(bar         =                               1, baz=2)                                 {
-   list(bar,                 baz)
- }
-
-"#;
-
-        let output = r#"data |>
-  select(foo)
-
-foo <- function(bar = 1, baz = 2) {
-  list(bar, baz)
-}
-"#;
-
-        let file_ext = crate::fttype::get_file_extension("r");
-
-        crate::tools::Tooling::AirFormat.test_format_snippet(input, output, &file_ext);
-    }
-}

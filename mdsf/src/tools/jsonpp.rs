@@ -15,28 +15,3 @@ pub fn set_args(
 pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("jsonpp")];
 
 pub const IS_STDIN: bool = true;
-
-#[cfg(test)]
-mod test_jsonpp {
-    #[test_with::executable(jsonpp)]
-    fn test_jsonpp_json_d19292d79f47b2c7() {
-        let input = r#"{
-              "key": "value",
-  "key2": ["value2", "value3", 1            , null]
- }"#;
-
-        let output = r#"{
-  "key": "value",
-  "key2": [
-    "value2",
-    "value3",
-    1,
-    null
-  ]
-}"#;
-
-        let file_ext = crate::fttype::get_file_extension("json");
-
-        crate::tools::Tooling::Jsonpp.test_format_snippet(input, output, &file_ext);
-    }
-}

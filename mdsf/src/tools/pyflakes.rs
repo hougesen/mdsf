@@ -19,19 +19,3 @@ pub const COMMANDS: [CommandType; 3] = [
 ];
 
 pub const IS_STDIN: bool = false;
-
-#[cfg(test)]
-mod test_pyflakes {
-    #[test_with::executable(pyflakes || pipx || uv)]
-    fn test_pyflakes_python_8c5d8d3b8d3870d1() {
-        let input = r#"def add(a: int, b: int) -> int:
-    return a + b"#;
-
-        let output = r#"def add(a: int, b: int) -> int:
-    return a + b"#;
-
-        let file_ext = crate::fttype::get_file_extension("python");
-
-        crate::tools::Tooling::Pyflakes.test_format_snippet(input, output, &file_ext);
-    }
-}

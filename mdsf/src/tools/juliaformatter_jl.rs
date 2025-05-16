@@ -17,24 +17,3 @@ pub fn set_args(
 pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("julia")];
 
 pub const IS_STDIN: bool = false;
-
-#[cfg(test)]
-mod test_juliaformatter_jl {
-    #[test_with::executable(julia)]
-    fn test_juliaformatter_jl_julia_6775294e3dc9244() {
-        let input = r#"function add( a:: Int32,  b::Int32 )
-            c = a+ b
-            return c
-            end "#;
-
-        let output = r#"function add(a::Int32, b::Int32)
-    c = a + b
-    return c
-end
-"#;
-
-        let file_ext = crate::fttype::get_file_extension("julia");
-
-        crate::tools::Tooling::JuliaformatterJl.test_format_snippet(input, output, &file_ext);
-    }
-}

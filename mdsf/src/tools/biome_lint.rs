@@ -25,19 +25,3 @@ pub const COMMANDS: [CommandType; 7] = [
 ];
 
 pub const IS_STDIN: bool = false;
-
-#[cfg(test)]
-mod test_biome_lint {
-    #[test_with::executable(biome || npx || pnpm || deno || bunx)]
-    fn test_biome_lint_javascript_3b1c1d6fd9c2e176() {
-        let input = r#"let variable = 0;
-"#;
-
-        let output = r#"const variable = 0;
-"#;
-
-        let file_ext = crate::fttype::get_file_extension("javascript");
-
-        crate::tools::Tooling::BiomeLint.test_format_snippet(input, output, &file_ext);
-    }
-}

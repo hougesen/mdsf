@@ -15,24 +15,3 @@ pub fn set_args(
 pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("hindent")];
 
 pub const IS_STDIN: bool = false;
-
-#[cfg(test)]
-mod test_hindent {
-    #[test_with::executable(hindent)]
-    fn test_hindent_haskell_c34a44cf19c5fdd7() {
-        let input = r#"
-addNumbers::Int->Int->Int
-addNumbers a b = do
-        a + b
-        "#;
-
-        let output = r#"addNumbers :: Int -> Int -> Int
-addNumbers a b = do
-  a + b
-"#;
-
-        let file_ext = crate::fttype::get_file_extension("haskell");
-
-        crate::tools::Tooling::Hindent.test_format_snippet(input, output, &file_ext);
-    }
-}

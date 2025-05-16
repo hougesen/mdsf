@@ -27,25 +27,3 @@ pub const COMMANDS: [CommandType; 7] = [
 ];
 
 pub const IS_STDIN: bool = false;
-
-#[cfg(test)]
-mod test_html_beautify {
-    #[test_with::executable(html-beautify || npx || pnpm || deno || bunx)]
-    fn test_html_beautify_html_63850f31f2ef5caf() {
-        let input = r#"<div>
-                    <p>
-                    Mads was here
-                    </p>
-        </div>"#;
-
-        let output = r#"<div>
-    <p>
-        Mads was here
-    </p>
-</div>"#;
-
-        let file_ext = crate::fttype::get_file_extension("html");
-
-        crate::tools::Tooling::HtmlBeautify.test_format_snippet(input, output, &file_ext);
-    }
-}

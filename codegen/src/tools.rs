@@ -286,6 +286,8 @@ pub struct GeneratedCommand {
     pub homepage: String,
 
     pub deprecated: bool,
+
+    pub tests: String,
 }
 
 const DEPRECATED_ATTRIBUTE: &str = "\n    #[deprecated]";
@@ -377,9 +379,9 @@ impl Tool {
 
 {INDENT}{INDENT}let output = r#\"{test_output}\"#;
 
-{INDENT}{INDENT}let file_ext = crate::fttype::get_file_extension(\"{test_language}\");
+{INDENT}{INDENT}let file_ext = mdsf::fttype::get_file_extension(\"{test_language}\");
 
-{INDENT}{INDENT}crate::tools::Tooling::{enum_value}.test_format_snippet(input, output, &file_ext);
+{INDENT}{INDENT}crate::common::run_tooling_test(mdsf::tools::Tooling::{enum_value}, input, output, &file_ext);
 {INDENT}}}",
         );
 
@@ -500,40 +502,22 @@ impl Tool {
                 cmd
             );
 
-            let test_mod = if options.tests.is_empty() {
+            if options.tests.is_empty() {
                 println!("Missing tests for: '{serde_rename}'");
+            }
 
-                String::new()
-            } else {
-                let tests = options
+            let test_mod = format!(
+                "#[cfg(test)]
+mod test_{module_name} {{{maybe_line_break}{tests}{maybe_line_break}}}
+",
+                maybe_line_break = if options.tests.is_empty() { "" } else { "\n" },
+                tests = options
                     .tests
                     .iter()
                     .map(|test| self.generate_test(cmd, test))
-                    .collect::<Vec<_>>();
-
-                if tests.is_empty() {
-                    String::new()
-                } else {
-                    format!(
-                        "#[cfg(test)]
-mod test_{module_name} {{
-{tests}
-}}
-",
-                        tests = tests.join("\n\n")
-                    )
-                }
-            };
-
-            let test_path = std::path::PathBuf::from(format!("mdsf/tests/tools/"));
-
-            std::fs::create_dir_all(&test_path).unwrap();
-
-            std::fs::write(
-                test_path.join(format!("{module_name}.generated.rs")),
-                test_mod,
-            )
-            .unwrap();
+                    .collect::<Vec<_>>()
+                    .join("\n\n")
+            );
 
             let code = format!(
                 "{GENERATED_FILE_COMMENT}
@@ -579,6 +563,7 @@ pub const IS_STDIN: bool = {is_stdin};
                     description
                 },
                 deprecated: options.deprecated || self.deprecated,
+                tests: test_mod,
             });
         }
 
@@ -668,10 +653,14 @@ impl AsRef<str> for Tooling {
 
     let mut enum_value_names = std::collections::BTreeSet::new();
 
+    let mut all_tests = Vec::new();
+
     for plugin in plugins {
         let converted = plugin.generate();
 
         for command in converted {
+            all_tests.push(command.tests.clone());
+
             std::fs::write(
                 format!("{folder}/{}.rs", command.module_name),
                 &command.code,
@@ -732,6 +721,18 @@ impl AsRef<str> for Tooling {
             all_commands.push(command);
         }
     }
+
+    std::fs::write(
+        "mdsf/tests/tooling.rs",
+        format!(
+            "mod common;
+
+{}
+",
+            all_tests.join("\n")
+        ),
+    )
+    .unwrap();
 
     let mut modules = files
         .iter()

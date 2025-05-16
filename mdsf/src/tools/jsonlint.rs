@@ -24,19 +24,3 @@ pub const COMMANDS: [CommandType; 7] = [
 ];
 
 pub const IS_STDIN: bool = false;
-
-#[cfg(test)]
-mod test_jsonlint {
-    #[test_with::executable(jsonlint || npx || pnpm || deno || bunx)]
-    fn test_jsonlint_json_5d1a6be238b35a5c() {
-        let input = r#"{ "k": "v" }"#;
-
-        let output = r#"{
-  "k": "v"
-}"#;
-
-        let file_ext = crate::fttype::get_file_extension("json");
-
-        crate::tools::Tooling::Jsonlint.test_format_snippet(input, output, &file_ext);
-    }
-}

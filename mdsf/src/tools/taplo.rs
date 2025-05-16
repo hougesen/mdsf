@@ -24,21 +24,3 @@ pub const COMMANDS: [CommandType; 7] = [
 ];
 
 pub const IS_STDIN: bool = false;
-
-#[cfg(test)]
-mod test_taplo {
-    #[test_with::executable(taplo || npx || pnpm || deno || bunx)]
-    fn test_taplo_toml_f9c7870e88d1963c() {
-        let input = r#"          package         =              "mdsf"
-  author   = "Mads Hougesen"
-  "#;
-
-        let output = r#"package = "mdsf"
-author = "Mads Hougesen"
-"#;
-
-        let file_ext = crate::fttype::get_file_extension("toml");
-
-        crate::tools::Tooling::Taplo.test_format_snippet(input, output, &file_ext);
-    }
-}

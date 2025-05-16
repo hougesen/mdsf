@@ -16,22 +16,3 @@ pub fn set_args(
 pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("dart")];
 
 pub const IS_STDIN: bool = false;
-
-#[cfg(test)]
-mod test_dart_format {
-    #[test_with::executable(dart)]
-    fn test_dart_format_dart_1e68d7619b4be391() {
-        let input = r#"class Adder {   int add(int a, int b) {     return a + b;   } }    "#;
-
-        let output = r#"class Adder {
-  int add(int a, int b) {
-    return a + b;
-  }
-}
-"#;
-
-        let file_ext = crate::fttype::get_file_extension("dart");
-
-        crate::tools::Tooling::DartFormat.test_format_snippet(input, output, &file_ext);
-    }
-}

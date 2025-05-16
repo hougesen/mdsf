@@ -24,23 +24,3 @@ pub const COMMANDS: [CommandType; 7] = [
 ];
 
 pub const IS_STDIN: bool = false;
-
-#[cfg(test)]
-mod test_sql_formatter {
-    #[test_with::executable(sql-formatter || npx || pnpm || deno || bunx)]
-    fn test_sql_formatter_sql_85ac36a4bf14f957() {
-        let input = r#"SELECT * FROM tbl WHERE foo = 'bar';"#;
-
-        let output = r#"SELECT
-  *
-FROM
-  tbl
-WHERE
-  foo = 'bar';
-"#;
-
-        let file_ext = crate::fttype::get_file_extension("sql");
-
-        crate::tools::Tooling::SqlFormatter.test_format_snippet(input, output, &file_ext);
-    }
-}

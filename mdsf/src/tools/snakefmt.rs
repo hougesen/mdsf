@@ -19,30 +19,3 @@ pub const COMMANDS: [CommandType; 3] = [
 ];
 
 pub const IS_STDIN: bool = false;
-
-#[cfg(test)]
-mod test_snakefmt {
-    #[test_with::executable(snakefmt || pipx || uv)]
-    fn test_snakefmt_snakemake_cdccd086422a6b0a() {
-        let input = r#"from snakemake.utils import min_version
-min_version("5.14.0")
-configfile: "config.yaml"
-include: "rules/foo.smk"
-"#;
-
-        let output = r#"from snakemake.utils import min_version
-
-min_version("5.14.0")
-
-
-configfile: "config.yaml"
-
-
-include: "rules/foo.smk"
-"#;
-
-        let file_ext = crate::fttype::get_file_extension("snakemake");
-
-        crate::tools::Tooling::Snakefmt.test_format_snippet(input, output, &file_ext);
-    }
-}

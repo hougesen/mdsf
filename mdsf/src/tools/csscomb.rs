@@ -24,26 +24,3 @@ pub const COMMANDS: [CommandType; 7] = [
 ];
 
 pub const IS_STDIN: bool = false;
-
-#[cfg(test)]
-mod test_csscomb {
-    #[test_with::executable(csscomb || npx || pnpm || deno || bunx)]
-    fn test_csscomb_css_bed67a883a4a1aae() {
-        let input = r#"h1   {color: blue;}
-p {color: red;}"#;
-
-        let output = r#"h1
-{
-    color: blue;
-}
-p
-{
-    color: red;
-}
-"#;
-
-        let file_ext = crate::fttype::get_file_extension("css");
-
-        crate::tools::Tooling::Csscomb.test_format_snippet(input, output, &file_ext);
-    }
-}

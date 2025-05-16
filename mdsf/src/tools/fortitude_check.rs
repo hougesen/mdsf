@@ -22,37 +22,3 @@ pub const COMMANDS: [CommandType; 3] = [
 ];
 
 pub const IS_STDIN: bool = false;
-
-#[cfg(test)]
-mod test_fortitude_check {
-    #[test_with::executable(fortitude || pipx || uv)]
-    fn test_fortitude_check_f_90_3b0b8d0e32ad7855() {
-        let input = r#"program example
-    implicit none (type, external)
-
-    contains
-        integer function addnum(a, b)
-            integer, intent(in) :: a, b
-            return a + b
-        end function addnum
-
-end program example
-"#;
-
-        let output = r#"program example
-    implicit none (type, external)
-
-    contains
-        integer function addnum(a, b)
-            integer, intent(in) :: a, b
-            return a + b
-        end function addnum
-
-end program example
-"#;
-
-        let file_ext = crate::fttype::get_file_extension(".f90");
-
-        crate::tools::Tooling::FortitudeCheck.test_format_snippet(input, output, &file_ext);
-    }
-}

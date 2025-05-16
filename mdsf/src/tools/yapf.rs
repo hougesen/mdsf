@@ -20,19 +20,3 @@ pub const COMMANDS: [CommandType; 3] = [
 ];
 
 pub const IS_STDIN: bool = false;
-
-#[cfg(test)]
-mod test_yapf {
-    #[test_with::executable(yapf || pipx || uv)]
-    fn test_yapf_python_229ec2b01c2bfe3c() {
-        let input = r#"def add( a: int ,  b:int)->int: return a+b"#;
-
-        let output = r#"def add(a: int, b: int) -> int:
-    return a + b
-"#;
-
-        let file_ext = crate::fttype::get_file_extension("python");
-
-        crate::tools::Tooling::Yapf.test_format_snippet(input, output, &file_ext);
-    }
-}

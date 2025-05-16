@@ -15,21 +15,3 @@ pub fn set_args(
 pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("nph")];
 
 pub const IS_STDIN: bool = false;
-
-#[cfg(test)]
-mod test_nph {
-    #[test_with::executable(nph)]
-    fn test_nph_nim_b53c066cb1d15828() {
-        let input = r#"proc add(a:int,b:int):int =
-            return a+b
-"#;
-
-        let output = r#"proc add(a: int, b: int): int =
-  return a + b
-"#;
-
-        let file_ext = crate::fttype::get_file_extension("nim");
-
-        crate::tools::Tooling::Nph.test_format_snippet(input, output, &file_ext);
-    }
-}

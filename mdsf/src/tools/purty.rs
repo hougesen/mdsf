@@ -24,28 +24,3 @@ pub const COMMANDS: [CommandType; 7] = [
 ];
 
 pub const IS_STDIN: bool = false;
-
-#[cfg(test)]
-mod test_purty {
-    #[test_with::executable(purty || npx || pnpm || deno || bunx)]
-    fn test_purty_purescript_37730dad0a7f9fbd() {
-        let input = r#"module Mdsf where
-
-
-
-
-add   :: Int -> Int  ->    Int
-add a   b = a +         b
-"#;
-
-        let output = r#"module Mdsf where
-
-add :: Int -> Int -> Int
-add a b = a + b
-"#;
-
-        let file_ext = crate::fttype::get_file_extension("purescript");
-
-        crate::tools::Tooling::Purty.test_format_snippet(input, output, &file_ext);
-    }
-}

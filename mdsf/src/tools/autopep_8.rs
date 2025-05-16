@@ -20,18 +20,3 @@ pub const COMMANDS: [CommandType; 3] = [
 ];
 
 pub const IS_STDIN: bool = false;
-
-#[cfg(test)]
-mod test_autopep_8 {
-    #[test_with::executable(autopep8 || pipx || uv)]
-    fn test_autopep_8_python_a868b5ad9905fc3f() {
-        let input = r#"def add( a: int ,  b:int)->int: return a+b"#;
-
-        let output = r#"def add(a: int,  b: int) -> int: return a+b
-"#;
-
-        let file_ext = crate::fttype::get_file_extension("python");
-
-        crate::tools::Tooling::Autopep8.test_format_snippet(input, output, &file_ext);
-    }
-}

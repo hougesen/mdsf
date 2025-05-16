@@ -27,19 +27,3 @@ pub const COMMANDS: [CommandType; 7] = [
 ];
 
 pub const IS_STDIN: bool = false;
-
-#[cfg(test)]
-mod test_js_beautify {
-    #[test_with::executable(js-beautify || npx || pnpm || deno || bunx)]
-    fn test_js_beautify_javascript_151bf21bc63609e8() {
-        let input = r#"function add (a,b){return a +b }"#;
-
-        let output = r#"function add(a, b) {
-    return a + b
-}"#;
-
-        let file_ext = crate::fttype::get_file_extension("javascript");
-
-        crate::tools::Tooling::JsBeautify.test_format_snippet(input, output, &file_ext);
-    }
-}

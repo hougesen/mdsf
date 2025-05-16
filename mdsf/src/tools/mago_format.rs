@@ -17,22 +17,3 @@ pub const COMMANDS: [CommandType; 2] =
     [CommandType::PhpVendor("mago"), CommandType::Direct("mago")];
 
 pub const IS_STDIN: bool = false;
-
-#[cfg(test)]
-mod test_mago_format {
-    #[test_with::executable(mago)]
-    fn test_mago_format_php_17cf4527911d3cc9() {
-        let input = r#"<?php
-echo "Hello World!";
-?>"#;
-
-        let output = r#"<?php
-
-echo 'Hello World!';
-"#;
-
-        let file_ext = crate::fttype::get_file_extension("php");
-
-        crate::tools::Tooling::MagoFormat.test_format_snippet(input, output, &file_ext);
-    }
-}

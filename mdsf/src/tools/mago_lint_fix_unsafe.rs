@@ -20,24 +20,3 @@ pub const COMMANDS: [CommandType; 2] =
     [CommandType::PhpVendor("mago"), CommandType::Direct("mago")];
 
 pub const IS_STDIN: bool = false;
-
-#[cfg(test)]
-mod test_mago_lint_fix_unsafe {
-    #[test_with::executable(mago)]
-    fn test_mago_lint_fix_unsafe_php_8b9097d14e83ef96() {
-        let input = r#"<?php
-echo 'Hello World!';
-"#;
-
-        let output = r#"<?php
-
-declare(strict_types=1);
-
-echo 'Hello World!';
-"#;
-
-        let file_ext = crate::fttype::get_file_extension("php");
-
-        crate::tools::Tooling::MagoLintFixUnsafe.test_format_snippet(input, output, &file_ext);
-    }
-}

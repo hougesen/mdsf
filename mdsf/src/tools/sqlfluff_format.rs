@@ -24,20 +24,3 @@ pub const COMMANDS: [CommandType; 3] = [
 ];
 
 pub const IS_STDIN: bool = false;
-
-#[cfg(test)]
-mod test_sqlfluff_format {
-    #[test_with::executable(sqlfluff || pipx || uv)]
-    fn test_sqlfluff_format_sql_498b1dc9b48f9b5d() {
-        let input = r#"SELECT  id                  FROM  tbl
-                        WHERE                      foo   = 'bar';         "#;
-
-        let output = r#"SELECT id FROM tbl
-WHERE foo = 'bar';
-"#;
-
-        let file_ext = crate::fttype::get_file_extension("sql");
-
-        crate::tools::Tooling::SqlfluffFormat.test_format_snippet(input, output, &file_ext);
-    }
-}

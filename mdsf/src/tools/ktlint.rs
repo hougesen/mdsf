@@ -17,26 +17,3 @@ pub fn set_args(
 pub const COMMANDS: [CommandType; 1] = [CommandType::Direct("ktlint")];
 
 pub const IS_STDIN: bool = false;
-
-#[cfg(test)]
-mod test_ktlint {
-    #[test_with::executable(ktlint)]
-    fn test_ktlint_kotlin_3421435c9e766a31() {
-        let input = r#"            fun add(a:Int ,b:Int ):Int {
-                    return a + b
-                }
-            "#;
-
-        let output = r#"
-
-fun add(
-    a: Int,
-    b: Int,
-): Int = a + b
-"#;
-
-        let file_ext = crate::fttype::get_file_extension("kotlin");
-
-        crate::tools::Tooling::Ktlint.test_format_snippet(input, output, &file_ext);
-    }
-}

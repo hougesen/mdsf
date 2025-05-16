@@ -25,31 +25,3 @@ pub const COMMANDS: [CommandType; 7] = [
 ];
 
 pub const IS_STDIN: bool = false;
-
-#[cfg(test)]
-mod test_elm_format {
-    #[test_with::executable(elm-format || npx || pnpm || deno || bunx)]
-    fn test_elm_format_elm_4e120501af0177c4() {
-        let input = r#"import   Html       exposing   (text)
-
-
-main =
-      text              "Hello!"
-
-
-  "#;
-
-        let output = r#"module Main exposing (main)
-
-import Html exposing (text)
-
-
-main =
-    text "Hello!"
-"#;
-
-        let file_ext = crate::fttype::get_file_extension("elm");
-
-        crate::tools::Tooling::ElmFormat.test_format_snippet(input, output, &file_ext);
-    }
-}
