@@ -70,7 +70,8 @@
     "lint:biome:fix": "biome check --write",
     "lint": "npm run lint:biome && npm run lint:eslint",
     "lint:fix": "npm run lint:biome:fix && npm run lint:eslint:fix",
-    "test": "vscode-test"
+    "test": "vscode-test",
+    "test:coverage": "vscode-test --coverage --coverage-reporter codecov"
   },
   "devDependencies": {
     "@biomejs/biome": "^1.9.4",

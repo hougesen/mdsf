@@ -4576,6 +4576,41 @@ mod test_tofu_fmt {
 }
 
 #[cfg(test)]
+mod test_tombi_format {
+    #[test_with::executable(tombi || pipx || uv)]
+    fn test_tombi_format_toml_fa35f0f5766ac557() -> Result<(), Box<dyn core::error::Error>> {
+        let input = r#"[project ]
+name =     "hello""#;
+
+        let output = r#"[project]
+name = "hello"
+"#;
+
+        let ft = "toml";
+
+        crate::common::run_tooling_test(mdsf::tools::Tooling::TombiFormat, input, output, ft)
+    }
+}
+
+#[cfg(test)]
+mod test_tombi_lint {
+    #[test_with::executable(tombi || pipx || uv)]
+    fn test_tombi_lint_toml_249ef29da68d9e6d() -> Result<(), Box<dyn core::error::Error>> {
+        let input = r#"[project]
+name = "hello"
+"#;
+
+        let output = r#"[project]
+name = "hello"
+"#;
+
+        let ft = "toml";
+
+        crate::common::run_tooling_test(mdsf::tools::Tooling::TombiLint, input, output, ft)
+    }
+}
+
+#[cfg(test)]
 mod test_toml_sort {
     #[test_with::executable(toml-sort || pipx || uv)]
     fn test_toml_sort_toml_8c2b58a6580e9412() -> Result<(), Box<dyn core::error::Error>> {
