@@ -457,7 +457,7 @@ That can be changed by specifying the `newline` config option.
 
 <!-- START_SECTION:supported-tools -->
 
-`mdsf` currently supports 312 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 313 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                                                                                 | Description                                                                                                                                   | Categories            | Languages                                                                                                                         |
 | ------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
@@ -735,6 +735,7 @@ That can be changed by specifying the `newline` config option.
 | [textlint](https://github.com/textlint/textlint)                                     | The pluggable natural language linter for text and markdown                                                                                   | `spell-check`         |                                                                                                                                   |
 | [tlint](https://github.com/tighten/tlint)                                            | Tighten linter for Laravel conventions                                                                                                        | `linter`              | `php`                                                                                                                             |
 | [tofu](https://opentofu.org/docs/cli/commands/fmt/)                                  | The tofu fmt command is used to rewrite OpenTofu configuration files to a canonical format and style                                          | `formatter`           | `terraform`, `tofu`                                                                                                               |
+| [tombi](https://github.com/tombi-toml/tombi)                                         | TOML Formatter / Linter                                                                                                                       | `formatter`, `linter` | `toml`                                                                                                                            |
 | [toml-sort](https://github.com/pappasam/toml-sort)                                   | A command line utility to sort and format toml files                                                                                          | `formatter`           | `toml`                                                                                                                            |
 | [topiary](https://github.com/tweag/topiary)                                          | Topiary aims to be a uniform formatter for simple languages, as part of the Tree-sitter ecosystem                                             | `formatter`           |                                                                                                                                   |
 | [tryceratops](https://github.com/guilatrova/tryceratops)                             | A linter to prevent exception handling antipatterns in Python                                                                                 | `linter`              | `python`                                                                                                                          |
@@ -780,7 +781,7 @@ That can be changed by specifying the `newline` config option.
 
 <!-- START_SECTION:supported-commands -->
 
-`mdsf` currently supports 347 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 349 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                         | Command                                                                                 |
 | ---------------------------- | --------------------------------------------------------------------------------------- |
@@ -1091,6 +1092,8 @@ That can be changed by specifying the `newline` config option.
 | `textlint`                   | `textlint $PATH`                                                                        |
 | `tlint:format`               | `tlint format $PATH`                                                                    |
 | `tofu:fmt`                   | `tofu fmt -write=true $PATH`                                                            |
+| `tombi:format`               | `tombi format $PATH`                                                                    |
+| `tombi:lint`                 | `tombi lint $PATH`                                                                      |
 | `toml-sort`                  | `toml-sort -i $PATH`                                                                    |
 | `topiary`                    | `topiary format $PATH`                                                                  |
 | `tryceratops`                | `tryceratops --autofix $PATH`                                                           |

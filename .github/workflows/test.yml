@@ -300,6 +300,8 @@ jobs:
         run: ( ( which tex-fmt ) || ( ( which cargo && ( cargo binstall tex-fmt || cargo install tex-fmt ) ) || ( which brew &&  brew install tex-fmt ) || ( which apt-get && sudo apt-get install -y tex-fmt ) ) || ( echo "Unable to install tool" ) )
       - name: tofu
         run: ( ( which tofu ) || ( ( which brew &&  brew install opentofu ) ) || ( echo "Unable to install tool" ) )
+      - name: tombi
+        run: ( ( which tombi ) || ( ( which pipx && pipx install tombi ) ) || ( echo "Unable to install tool" ) )
       - name: toml-sort
         run: ( ( which toml-sort ) || ( ( which pipx && pipx install toml-sort ) ) || ( echo "Unable to install tool" ) )
       - name: topiary

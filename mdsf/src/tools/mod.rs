@@ -309,6 +309,8 @@ pub mod textlint;
 pub mod textlint_fix;
 pub mod tlint_format;
 pub mod tofu_fmt;
+pub mod tombi_format;
+pub mod tombi_lint;
 pub mod toml_sort;
 pub mod topiary;
 pub mod tryceratops;
@@ -2809,6 +2811,22 @@ pub enum Tooling {
     /// `tofu fmt -write=true $PATH`
     TofuFmt,
 
+    #[serde(rename = "tombi:format")]
+    /// TOML Formatter / Linter
+    ///
+    /// [https://github.com/tombi-toml/tombi](https://github.com/tombi-toml/tombi)
+    ///
+    /// `tombi format $PATH`
+    TombiFormat,
+
+    #[serde(rename = "tombi:lint")]
+    /// TOML Formatter / Linter
+    ///
+    /// [https://github.com/tombi-toml/tombi](https://github.com/tombi-toml/tombi)
+    ///
+    /// `tombi lint $PATH`
+    TombiLint,
+
     #[serde(rename = "toml-sort")]
     /// A command line utility to sort and format toml files
     ///
@@ -4144,6 +4162,16 @@ impl Tooling {
                 tlint_format::IS_STDIN,
             ),
             Self::TofuFmt => (&tofu_fmt::COMMANDS, tofu_fmt::set_args, tofu_fmt::IS_STDIN),
+            Self::TombiFormat => (
+                &tombi_format::COMMANDS,
+                tombi_format::set_args,
+                tombi_format::IS_STDIN,
+            ),
+            Self::TombiLint => (
+                &tombi_lint::COMMANDS,
+                tombi_lint::set_args,
+                tombi_lint::IS_STDIN,
+            ),
             Self::TomlSort => (
                 &toml_sort::COMMANDS,
                 toml_sort::set_args,
@@ -4558,6 +4586,8 @@ impl AsRef<str> for Tooling {
             Self::TextlintFix => "textlint:fix",
             Self::TlintFormat => "tlint:format",
             Self::TofuFmt => "tofu:fmt",
+            Self::TombiFormat => "tombi:format",
+            Self::TombiLint => "tombi:lint",
             Self::TomlSort => "toml-sort",
             Self::Topiary => "topiary",
             Self::Tryceratops => "tryceratops",
@@ -4966,6 +4996,8 @@ mod test_tooling {
         assert_eq!(Tooling::TextlintFix, reverse(Tooling::TextlintFix)?);
         assert_eq!(Tooling::TlintFormat, reverse(Tooling::TlintFormat)?);
         assert_eq!(Tooling::TofuFmt, reverse(Tooling::TofuFmt)?);
+        assert_eq!(Tooling::TombiFormat, reverse(Tooling::TombiFormat)?);
+        assert_eq!(Tooling::TombiLint, reverse(Tooling::TombiLint)?);
         assert_eq!(Tooling::TomlSort, reverse(Tooling::TomlSort)?);
         assert_eq!(Tooling::Topiary, reverse(Tooling::Topiary)?);
         assert_eq!(Tooling::Tryceratops, reverse(Tooling::Tryceratops)?);
