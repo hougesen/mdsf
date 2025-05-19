@@ -124,6 +124,7 @@ pub fn language_to_ext(language: &str) -> Option<&'static str> {
         "bro" => Some(".zeek"),
         "bsdmake" => Some(".mak"),
         "bsv" => Some(".bsv"),
+        "buildstream" => Some(".bst"),
         "byond" => Some(".dm"),
         "bzl" => Some(".bzl"),
         "c" => Some(".c"),
