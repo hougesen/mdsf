@@ -23,14 +23,14 @@ fn build_mapping(languages: std::collections::HashMap<String, LinguishLanguage>)
     let mut secondary = std::collections::HashMap::<String, String>::new();
 
     for (language, context) in languages {
-        if let Some(extensions) = context.extensions {
-            if let Some(extension) = extensions.first() {
-                primary.insert(language.trim().to_lowercase(), extension.to_owned());
+        if let Some(extensions) = context.extensions
+            && let Some(extension) = extensions.first()
+        {
+            primary.insert(language.trim().to_lowercase(), extension.to_owned());
 
-                if let Some(aliases) = context.aliases {
-                    for alias in aliases {
-                        secondary.insert(alias.trim().to_lowercase(), extension.to_owned());
-                    }
+            if let Some(aliases) = context.aliases {
+                for alias in aliases {
+                    secondary.insert(alias.trim().to_lowercase(), extension.to_owned());
                 }
             }
         }

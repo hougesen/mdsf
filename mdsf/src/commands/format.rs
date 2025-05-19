@@ -17,16 +17,16 @@ const MDSF_IGNORE_FILE_NAME: &str = ".mdsfignore";
 
 #[inline]
 fn determine_threads_to_use(argument: Option<usize>) -> usize {
-    if let Some(thread_arg) = argument {
-        if thread_arg > 0 {
-            return thread_arg.to_owned();
-        }
+    if let Some(thread_arg) = argument
+        && thread_arg > 0
+    {
+        return thread_arg.to_owned();
     }
 
-    if let Ok(available_threads) = std::thread::available_parallelism().map(usize::from) {
-        if available_threads > 0 {
-            return available_threads;
-        }
+    if let Ok(available_threads) = std::thread::available_parallelism().map(usize::from)
+        && available_threads > 0
+    {
+        return available_threads;
     }
 
     1

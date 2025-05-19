@@ -206,14 +206,14 @@ pub fn format_snippet(
 
                 if let Err(MdsfError::MissingBinary(binary)) = result {
                     exit_with_error(&MdsfError::MissingBinary(binary));
-                } else if let Ok(Some(formatted_code)) = result {
-                    if language_formatters.is_none() {
-                        let mut f = formatted_code.trim().to_owned();
+                } else if let Ok(Some(formatted_code)) = result
+                    && language_formatters.is_none()
+                {
+                    let mut f = formatted_code.trim().to_owned();
 
-                        f.push(crate::config::LF_NEWLINE_CHAR);
+                    f.push(crate::config::LF_NEWLINE_CHAR);
 
-                        return f;
-                    }
+                    return f;
                 }
             }
 
@@ -406,10 +406,10 @@ pub fn run_tools(
             return execution_result;
         }
 
-        if let Ok(r) = execution_result {
-            if !r.0 {
-                return Ok(r);
-            }
+        if let Ok(r) = execution_result
+            && !r.0
+        {
+            return Ok(r);
         }
     }
 

@@ -4,6 +4,7 @@ All notable changes to this project will be documented in this file. Dates are d
 
 #### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.9.4...HEAD)
 
+- feat(tools): add support for tombi [`#1051`](https://github.com/hougesen/mdsf/pull/1051)
 - build(deps): bump process_control from 5.0.0 to 5.1.0 [`#1049`](https://github.com/hougesen/mdsf/pull/1049)
 - build(deps-dev): bump @types/node in /mdsf-vscode [`#1048`](https://github.com/hougesen/mdsf/pull/1048)
 - build(deps-dev): bump @typescript-eslint/eslint-plugin in /mdsf-vscode [`#1045`](https://github.com/hougesen/mdsf/pull/1045)
@@ -20,6 +21,7 @@ All notable changes to this project will be documented in this file. Dates are d
 - feat(tools): support erg [`#1034`](https://github.com/hougesen/mdsf/pull/1034)
 - feat(tools): support grafbase lint [`#1033`](https://github.com/hougesen/mdsf/pull/1033)
 - feat(tools): support squawk [`#1032`](https://github.com/hougesen/mdsf/pull/1032)
+- feat(tools): add support for tombi (#1051) [`#1050`](https://github.com/hougesen/mdsf/issues/1050)
 
 #### [v0.9.4](https://github.com/hougesen/mdsf/compare/v0.9.3...v0.9.4)
 
