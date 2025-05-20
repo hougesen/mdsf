@@ -2,8 +2,16 @@
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
-#### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.9.4...HEAD)
+#### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.9.5...HEAD)
 
+#### [v0.9.5](https://github.com/hougesen/mdsf/compare/v0.9.4...v0.9.5)
+
+> 19 May 2025
+
+- chore: release v0.9.5 [`#1056`](https://github.com/hougesen/mdsf/pull/1056)
+- build(deps-dev): bump @types/node in /github-action [`#1052`](https://github.com/hougesen/mdsf/pull/1052)
+- build(deps-dev): bump @types/node in /mdsf-vscode [`#1053`](https://github.com/hougesen/mdsf/pull/1053)
+- build: use Rust stable [`#1055`](https://github.com/hougesen/mdsf/pull/1055)
 - feat(tools): add support for tombi [`#1051`](https://github.com/hougesen/mdsf/pull/1051)
 - build(deps): bump process_control from 5.0.0 to 5.1.0 [`#1049`](https://github.com/hougesen/mdsf/pull/1049)
 - build(deps-dev): bump @types/node in /mdsf-vscode [`#1048`](https://github.com/hougesen/mdsf/pull/1048)
