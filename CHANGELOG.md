@@ -6,7 +6,7 @@ All notable changes to this project will be documented in this file. Dates are d
 
 #### [v0.9.5](https://github.com/hougesen/mdsf/compare/v0.9.4...v0.9.5)
 
-> 19 May 2025
+> 20 May 2025
 
 - chore: release v0.9.5 [`#1056`](https://github.com/hougesen/mdsf/pull/1056)
 - build(deps-dev): bump @types/node in /github-action [`#1052`](https://github.com/hougesen/mdsf/pull/1052)

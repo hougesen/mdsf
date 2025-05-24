@@ -289,13 +289,14 @@ impl MdsfConfig {
                     ));
                 }
 
-                if let Some(tools) = self.languages.get(alias) {
-                    self.languages.insert(language.to_owned(), tools.clone());
+                let tools = self
+                    .languages
+                    .get(alias)
+                    .ok_or_else(|| MdsfError::LanguageAliasMissingTools(alias.to_owned()))?;
 
-                    seen_languages.insert(language.to_owned(), alias.to_owned());
-                } else {
-                    return Err(MdsfError::LanguageAliasMissingTools(alias.to_owned()));
-                }
+                self.languages.insert(language.to_owned(), tools.clone());
+
+                seen_languages.insert(language.to_owned(), alias.to_owned());
             }
         }
 

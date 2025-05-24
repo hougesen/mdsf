@@ -604,7 +604,7 @@ checksum = "13dc2df351e3202783a1fe0d44375f7295ffb4049267b0f3018346dc122a1d94"
 
 [[package]]
 name = "mdsf"
-version = "0.9.5"
+version = "0.9.5-next"
 dependencies = [
  "assert_cmd",
  "clap",
@@ -632,7 +632,7 @@ dependencies = [
 
 [[package]]
 name = "mdsf-codegen"
-version = "0.9.5"
+version = "0.9.5-next"
 dependencies = [
  "convert_case",
  "ignore",
