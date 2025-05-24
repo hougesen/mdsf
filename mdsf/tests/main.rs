@@ -75,9 +75,8 @@ fn add(a: i32, b: i32) -> i32 {
     mod help {
         use predicates::prelude::PredicateBooleanExt;
 
-        use crate::test_cli::mdsf_command;
-
         use super::setup_test_dir;
+        use crate::test_cli::mdsf_command;
 
         #[test]
         fn command_outputs_help_message() -> Result<(), Box<dyn core::error::Error>> {
@@ -96,9 +95,8 @@ fn add(a: i32, b: i32) -> i32 {
     mod completions {
         use predicates::prelude::PredicateBooleanExt;
 
-        use crate::test_cli::mdsf_command;
-
         use super::setup_test_dir;
+        use crate::test_cli::mdsf_command;
 
         #[test]
         fn help_arg_outputs_message() -> Result<(), Box<dyn core::error::Error>> {
@@ -762,9 +760,8 @@ fn add(a: i32, b: i32) -> i32 {
         };
         use predicates::prelude::PredicateBooleanExt;
 
-        use crate::test_cli::{FORMATTED_CODE, mdsf_command};
-
         use super::{BROKEN_CODE, setup_test_dir, setup_test_input};
+        use crate::test_cli::{FORMATTED_CODE, mdsf_command};
 
         #[test]
         fn help_arg_outputs_message() -> Result<(), Box<dyn core::error::Error>> {

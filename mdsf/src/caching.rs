@@ -1,6 +1,7 @@
 use core::hash::{Hash, Hasher};
-use sha2::{Digest, Sha256};
 use std::hash::DefaultHasher;
+
+use sha2::{Digest, Sha256};
 
 use crate::{config::MdsfConfig, get_project_dir};
 
@@ -67,9 +68,8 @@ impl CacheEntry {
 
 #[cfg(test)]
 mod test_cache_entry {
-    use crate::config::MdsfConfig;
-
     use super::{CacheEntry, hash_config};
+    use crate::config::MdsfConfig;
 
     #[test]
     fn it_should_work() {
