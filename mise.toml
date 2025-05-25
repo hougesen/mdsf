@@ -22,7 +22,7 @@ run = [
 run = [
   "taplo format",
   "mise fmt",
-  "cargo fmt",
+  "cargo +nightly fmt",
   "npx --yes prettier@latest --write --cache .",
   "cargo run -- format .",
   "dist init --yes",

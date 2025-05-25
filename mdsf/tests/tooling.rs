@@ -2,6 +2,7 @@
 //! THIS FILE IS GENERATED USING CODE - DO NOT EDIT MANUALLY
 //!
 
+#[allow(dead_code)]
 mod common;
 
 #[cfg(test)]
