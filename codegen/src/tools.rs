@@ -727,6 +727,7 @@ impl AsRef<str> for Tooling {
         format!(
             "{GENERATED_FILE_COMMENT}
 
+#[allow(dead_code)]
 mod common;
 
 {}
