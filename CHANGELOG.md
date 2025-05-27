@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file. Dates are d
 
 #### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.9.5...HEAD)
 
+- build(deps-dev): bump @types/node in /mdsf-vscode [`#1062`](https://github.com/hougesen/mdsf/pull/1062)
+- build(deps-dev): bump globals from 16.1.0 to 16.2.0 in /mdsf-vscode [`#1063`](https://github.com/hougesen/mdsf/pull/1063)
+- build(deps-dev): bump @types/node in /github-action [`#1060`](https://github.com/hougesen/mdsf/pull/1060)
+- build(deps-dev): bump globals from 16.1.0 to 16.2.0 in /github-action [`#1061`](https://github.com/hougesen/mdsf/pull/1061)
+- refactor(test): separate cli e2e tests [`#1059`](https://github.com/hougesen/mdsf/pull/1059)
 - chore: change version to dev [`#1058`](https://github.com/hougesen/mdsf/pull/1058)
 
 #### [v0.9.5](https://github.com/hougesen/mdsf/compare/v0.9.4...v0.9.5)
