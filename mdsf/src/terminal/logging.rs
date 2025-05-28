@@ -20,7 +20,16 @@ impl From<LogLevel> for LevelFilter {
 }
 
 #[inline]
+fn force_colors() -> bool {
+    std::env::var("GITHUB_ACTIONS").is_ok()
+}
+
+#[inline]
 pub fn setup_logger(log_level: LogLevel) {
+    if force_colors() {
+        owo_colors::set_override(true);
+    }
+
     env_logger::Builder::from_env("MDSF_LOG")
         .filter(None, LevelFilter::Off)
         .filter_module("mdsf::terminal", log_level.into())
@@ -46,15 +55,13 @@ pub fn setup_logger(log_level: LogLevel) {
                         .style(owo_colors::Style::new().yellow().bold()))
             ),
             log::Level::Info => writeln!(buf, "{}", record.args()),
-            log::Level::Debug | log::Level::Trace => {
-                writeln!(
-                    buf,
-                    "{}",
-                    format!("{}", record.args())
-                        .if_supports_color(owo_colors::Stream::Stdout, |text| text
-                            .style(owo_colors::Style::new().dimmed()))
-                )
-            }
+            log::Level::Debug | log::Level::Trace => writeln!(
+                buf,
+                "{}",
+                format!("{}", record.args())
+                    .if_supports_color(owo_colors::Stream::Stdout, |text| text
+                        .style(owo_colors::Style::new().dimmed()))
+            ),
         })
         .init();
 }
