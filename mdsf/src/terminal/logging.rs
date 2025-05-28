@@ -34,7 +34,7 @@ pub fn setup_logger(log_level: LogLevel) {
                     buf,
                     "{}",
                     format!("{}", record.args())
-                        .if_supports_color(owo_colors::Stream::Stderr, |text| text
+                        .if_supports_color(owo_colors::Stream::Stdout, |text| text
                             .style(owo_colors::Style::new().bold().red()))
                 )
             }
@@ -42,7 +42,7 @@ pub fn setup_logger(log_level: LogLevel) {
                 buf,
                 "{}",
                 format!("{}", record.args())
-                    .if_supports_color(owo_colors::Stream::Stderr, |text| text
+                    .if_supports_color(owo_colors::Stream::Stdout, |text| text
                         .style(owo_colors::Style::new().yellow().bold()))
             ),
             log::Level::Info => writeln!(buf, "{}", record.args()),
@@ -51,7 +51,7 @@ pub fn setup_logger(log_level: LogLevel) {
                     buf,
                     "{}",
                     format!("{}", record.args())
-                        .if_supports_color(owo_colors::Stream::Stderr, |text| text
+                        .if_supports_color(owo_colors::Stream::Stdout, |text| text
                             .style(owo_colors::Style::new().dimmed()))
                 )
             }
@@ -67,16 +67,16 @@ mod test_level_filter {
 
     #[test]
     fn they_should_be_two_way() {
-        assert_eq!(LevelFilter::from(LogLevel::Off), LevelFilter::Off,);
+        assert_eq!(LevelFilter::from(LogLevel::Off), LevelFilter::Off);
 
-        assert_eq!(LevelFilter::from(LogLevel::Error), LevelFilter::Error,);
+        assert_eq!(LevelFilter::from(LogLevel::Error), LevelFilter::Error);
 
-        assert_eq!(LevelFilter::from(LogLevel::Warn), LevelFilter::Warn,);
+        assert_eq!(LevelFilter::from(LogLevel::Warn), LevelFilter::Warn);
 
-        assert_eq!(LevelFilter::from(LogLevel::Info), LevelFilter::Info,);
+        assert_eq!(LevelFilter::from(LogLevel::Info), LevelFilter::Info);
 
-        assert_eq!(LevelFilter::from(LogLevel::Debug), LevelFilter::Debug,);
+        assert_eq!(LevelFilter::from(LogLevel::Debug), LevelFilter::Debug);
 
-        assert_eq!(LevelFilter::from(LogLevel::Trace), LevelFilter::Trace,);
+        assert_eq!(LevelFilter::from(LogLevel::Trace), LevelFilter::Trace);
     }
 }
