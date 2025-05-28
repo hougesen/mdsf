@@ -1,7 +1,7 @@
 use std::io::Write;
 
-use console::style;
 use log::LevelFilter;
+use owo_colors::OwoColorize as _;
 
 use crate::cli::LogLevel;
 
@@ -30,16 +30,30 @@ pub fn setup_logger(log_level: LogLevel) {
         .format_level(false)
         .format(move |buf, record| match record.level() {
             log::Level::Error => {
-                writeln!(buf, "{}", style(format!("{}", record.args())).red().bold())
+                writeln!(
+                    buf,
+                    "{}",
+                    format!("{}", record.args())
+                        .if_supports_color(owo_colors::Stream::Stderr, |text| text
+                            .style(owo_colors::Style::new().bold().red()))
+                )
             }
             log::Level::Warn => writeln!(
                 buf,
                 "{}",
-                style(format!("{}", record.args())).yellow().bold()
+                format!("{}", record.args())
+                    .if_supports_color(owo_colors::Stream::Stderr, |text| text
+                        .style(owo_colors::Style::new().yellow().bold()))
             ),
             log::Level::Info => writeln!(buf, "{}", record.args()),
             log::Level::Debug | log::Level::Trace => {
-                writeln!(buf, "{}", style(format!("{}", record.args())).dim())
+                writeln!(
+                    buf,
+                    "{}",
+                    format!("{}", record.args())
+                        .if_supports_color(owo_colors::Stream::Stderr, |text| text
+                            .style(owo_colors::Style::new().dimmed()))
+                )
             }
         })
         .init();
