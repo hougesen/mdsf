@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file. Dates are d
 
 #### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.9.5...HEAD)
 
+- build(deps): bump clap_complete_nushell from 4.5.5 to 4.5.6 [`#1068`](https://github.com/hougesen/mdsf/pull/1068)
+- build(deps): bump clap from 4.5.38 to 4.5.39 [`#1066`](https://github.com/hougesen/mdsf/pull/1066)
+- build(deps): bump clap_complete from 4.5.50 to 4.5.51 [`#1067`](https://github.com/hougesen/mdsf/pull/1067)
+- build(deps): bump schemars to v0.9.0 [`#1064`](https://github.com/hougesen/mdsf/pull/1064)
 - build(deps-dev): bump @types/node in /mdsf-vscode [`#1062`](https://github.com/hougesen/mdsf/pull/1062)
 - build(deps-dev): bump globals from 16.1.0 to 16.2.0 in /mdsf-vscode [`#1063`](https://github.com/hougesen/mdsf/pull/1063)
 - build(deps-dev): bump @types/node in /github-action [`#1060`](https://github.com/hougesen/mdsf/pull/1060)

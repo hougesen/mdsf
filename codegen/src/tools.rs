@@ -480,7 +480,7 @@ impl Tool {
                             arg.replace("$PATH_STRING", "fps")
                         )
                     } else {
-                        format!("{INDENT}cmd.arg(\"{arg}\");",)
+                        format!("{INDENT}cmd.arg(\"{arg}\");")
                     }
                 })
                 .collect::<Vec<_>>()

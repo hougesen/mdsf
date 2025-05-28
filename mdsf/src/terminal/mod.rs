@@ -1,4 +1,5 @@
 use log::{debug, error, info, trace, warn};
+use owo_colors::OwoColorize;
 
 pub mod logging;
 
@@ -34,13 +35,13 @@ pub fn print_tool_time(tool: &str, info: &crate::LineInfo, duration: core::time:
 pub fn print_unchanged_file(path: &std::path::Path, dur: core::time::Duration, cached: bool) {
     info!(
         "{}",
-        console::style(format!(
+        format!(
             "{} finished in {}ms (unchanged){}",
             path.display(),
             dur.as_millis(),
             if cached { " (cached)" } else { "" }
-        ))
-        .dim()
+        )
+        .if_supports_color(owo_colors::Stream::Stderr, |text| text.dimmed())
     );
 }
 
