@@ -4,6 +4,15 @@ All notable changes to this project will be documented in this file. Dates are d
 
 #### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.9.5...HEAD)
 
+- build(deps-dev): bump esbuild from 0.25.4 to 0.25.5 in /mdsf-vscode [`#1077`](https://github.com/hougesen/mdsf/pull/1077)
+- build(deps-dev): bump eslint from 9.27.0 to 9.28.0 in /github-action [`#1081`](https://github.com/hougesen/mdsf/pull/1081)
+- build(deps-dev): bump @typescript-eslint/eslint-plugin in /mdsf-vscode [`#1080`](https://github.com/hougesen/mdsf/pull/1080)
+- build(deps-dev): bump esbuild from 0.25.4 to 0.25.5 in /github-action [`#1078`](https://github.com/hougesen/mdsf/pull/1078)
+- build(deps-dev): bump @types/node in /mdsf-vscode [`#1073`](https://github.com/hougesen/mdsf/pull/1073)
+- build(deps-dev): bump @vscode/test-cli in /mdsf-vscode [`#1074`](https://github.com/hougesen/mdsf/pull/1074)
+- build(deps-dev): bump eslint from 9.27.0 to 9.28.0 in /mdsf-vscode [`#1076`](https://github.com/hougesen/mdsf/pull/1076)
+- build(deps): bump clap_complete from 4.5.51 to 4.5.52 [`#1071`](https://github.com/hougesen/mdsf/pull/1071)
+- refactor: use owo-colors instead of console [`#1069`](https://github.com/hougesen/mdsf/pull/1069)
 - build(deps): bump clap_complete_nushell from 4.5.5 to 4.5.6 [`#1068`](https://github.com/hougesen/mdsf/pull/1068)
 - build(deps): bump clap from 4.5.38 to 4.5.39 [`#1066`](https://github.com/hougesen/mdsf/pull/1066)
 - build(deps): bump clap_complete from 4.5.50 to 4.5.51 [`#1067`](https://github.com/hougesen/mdsf/pull/1067)

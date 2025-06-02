@@ -17,5 +17,9 @@
   "description": "HTML Language Server & Templating Language Library",
   "homepage": "https://github.com/kristoff-it/superhtml",
   "languages": ["html"],
-  "packages": {}
+  "packages": {
+    "brew": {
+      "package": "superhtml"
+    }
+  }
 }
