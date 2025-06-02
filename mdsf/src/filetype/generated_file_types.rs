@@ -229,6 +229,7 @@ pub fn language_to_ext(language: &str) -> Option<&'static str> {
         "dafny" => Some(".dfy"),
         "darcs patch" => Some(".darcspatch"),
         "dart" => Some(".dart"),
+        "daslang" => Some(".das"),
         "dataweave" => Some(".dwl"),
         "dcl" => Some(".com"),
         "debian package control file" => Some(".dsc"),
@@ -1090,6 +1091,7 @@ pub fn language_to_ext(language: &str) -> Option<&'static str> {
         "zig" => Some(".zig"),
         "zil" => Some(".zil"),
         "zimpl" => Some(".zimpl"),
+        "zmodel" => Some(".zmodel"),
         "zsh" => Some(".sh"),
         _ => None,
     }
