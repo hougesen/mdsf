@@ -4,6 +4,8 @@ All notable changes to this project will be documented in this file. Dates are d
 
 #### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.9.5...HEAD)
 
+- build(deps-dev): bump @types/node in /github-action [`#1079`](https://github.com/hougesen/mdsf/pull/1079)
+- chore(tools): add brew package name to superhtml [`#1083`](https://github.com/hougesen/mdsf/pull/1083)
 - build(deps-dev): bump esbuild from 0.25.4 to 0.25.5 in /mdsf-vscode [`#1077`](https://github.com/hougesen/mdsf/pull/1077)
 - build(deps-dev): bump eslint from 9.27.0 to 9.28.0 in /github-action [`#1081`](https://github.com/hougesen/mdsf/pull/1081)
 - build(deps-dev): bump @typescript-eslint/eslint-plugin in /mdsf-vscode [`#1080`](https://github.com/hougesen/mdsf/pull/1080)
