@@ -31,7 +31,7 @@ jobs:
         with:
           node-version: "22"
       - uses: jiro4989/setup-nim-action@v2
-      - uses: goto-bus-stop/setup-zig@v2
+      - uses: mlugg/setup-zig@v2
       - uses: uncenter/setup-taplo@v1
       - uses: actions/setup-go@v5
         with:
