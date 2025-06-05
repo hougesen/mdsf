@@ -2460,6 +2460,9 @@ end
 mod test_luacheck {}
 
 #[cfg(test)]
+mod test_luau_analyze {}
+
+#[cfg(test)]
 mod test_mado_check {
     #[test_with::executable(mado)]
     fn test_mado_check_markdown_2eeb10259aff4747() -> Result<(), Box<dyn core::error::Error>> {

@@ -1013,6 +1013,11 @@
           "const": "luaformatter"
         },
         {
+          "description": "Typecheck and lint luau files\n\n [https://luau.org](https://luau.org)\n\n `luau-analyze $PATH`",
+          "type": "string",
+          "const": "luau-analyze"
+        },
+        {
           "description": "A fast Markdown linter written in Rust\n\n [https://github.com/akiomik/mado](https://github.com/akiomik/mado)\n\n `mado check $PATH`",
           "type": "string",
           "const": "mado:check"

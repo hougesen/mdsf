@@ -457,7 +457,7 @@ That can be changed by specifying the `newline` config option.
 
 <!-- START_SECTION:supported-tools -->
 
-`mdsf` currently supports 313 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 314 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                                                                                 | Description                                                                                                                                   | Categories            | Languages                                                                                                                         |
 | ------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
@@ -610,6 +610,7 @@ That can be changed by specifying the `newline` config option.
 | [liquidsoap-prettier](https://github.com/savonet/liquidsoap-prettier)                | Prettier plugin for liquidsoap script                                                                                                         | `formatter`           | `liquidsoap`                                                                                                                      |
 | [luacheck](https://github.com/lunarmodules/luacheck)                                 | A tool for linting and static analysis of Lua code                                                                                            | `formatter`           | `lua`                                                                                                                             |
 | [luaformatter](https://github.com/koihik/luaformatter)                               | Code formatter for Lua                                                                                                                        | `formatter`           | `lua`                                                                                                                             |
+| [luau-analyze](https://luau.org)                                                     | Typecheck and lint luau files                                                                                                                 | `linter`              | `luau`                                                                                                                            |
 | [mado](https://github.com/akiomik/mado)                                              | A fast Markdown linter written in Rust                                                                                                        | `linter`              | `markdown`                                                                                                                        |
 | [mago](https://github.com/carthage-software/mago)                                    | A fast linter and formatter for PHP                                                                                                           | `formatter`, `linter` | `php`                                                                                                                             |
 | [markdownfmt](https://github.com/shurcool/markdownfmt)                               | Like gofmt, but for Markdown                                                                                                                  | `formatter`           | `markdown`                                                                                                                        |
@@ -781,7 +782,7 @@ That can be changed by specifying the `newline` config option.
 
 <!-- START_SECTION:supported-commands -->
 
-`mdsf` currently supports 349 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 350 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                         | Command                                                                                 |
 | ---------------------------- | --------------------------------------------------------------------------------------- |
@@ -954,6 +955,7 @@ That can be changed by specifying the `newline` config option.
 | `liquidsoap-prettier`        | `liquidsoap-prettier --write $PATH`                                                     |
 | `luacheck`                   | `luacheck $PATH`                                                                        |
 | `luaformatter`               | `lua-format -i $PATH`                                                                   |
+| `luau-analyze`               | `luau-analyze $PATH`                                                                    |
 | `mado:check`                 | `mado check $PATH`                                                                      |
 | `mago:format`                | `mago format $PATH`                                                                     |
 | `mago:lint:fix:unsafe`       | `mago lint --fix --potentially-unsafe --unsafe $PATH`                                   |
