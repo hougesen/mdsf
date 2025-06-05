@@ -1,9 +1,9 @@
 {
   "$schema": "../tool.schema.json",
-  "binary": "swift-format",
+  "binary": "swift",
   "categories": ["formatter"],
   "commands": {
-    "": {
+    "format": {
       "arguments": ["--in-place", "$PATH"],
       "tests": [
         {
@@ -11,11 +11,15 @@
           "test_input": " func add(a:Int ,b:Int)->Int {\n    return a + b\n    }",
           "test_output": "func add(a: Int, b: Int) -> Int {\n    return a + b\n}\n"
         }
-      ]
+      ],
+
+      "description": "Formatting technology for Swift source code",
+
+      "homepage": "https://github.com/swiftlang/swift-format"
     }
   },
-  "description": "Formatting technology for Swift source code",
-  "homepage": "https://github.com/swiftlang/swift-format",
+  "description": "The Swift Programming Language",
+  "homepage": "https://github.com/swiftlang/swift",
   "languages": ["swift"],
   "packages": {}
 }

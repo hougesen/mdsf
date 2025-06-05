@@ -1648,7 +1648,7 @@
           "const": "svlint"
         },
         {
-          "description": "Formatting technology for Swift source code\n\n [https://github.com/apple/swift-format](https://github.com/apple/swift-format)\n\n `swift-format --in-place $PATH`",
+          "description": "Formatting technology for Swift source code\n\n [https://github.com/swiftlang/swift-format](https://github.com/swiftlang/swift-format)\n\n `swift-format --in-place $PATH`",
           "type": "string",
           "const": "swift-format"
         },
