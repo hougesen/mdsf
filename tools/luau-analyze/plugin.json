@@ -1,0 +1,15 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "luau-analyze",
+  "categories": ["linter"],
+  "commands": {
+    "": {
+      "arguments": ["$PATH"],
+      "tests": []
+    }
+  },
+  "description": "Typecheck and lint luau files",
+  "homepage": "https://luau.org",
+  "languages": ["luau"],
+  "packages": {}
+}

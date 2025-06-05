@@ -22,11 +22,9 @@ pub fn get_file_extension(language: &str) -> String {
 #[inline]
 fn fallback_file_extension(language: &str) -> Option<&'static str> {
     match language {
-        "bean" | "beancount" | "beanhub" => Some(".bean"),
-        "htm" => Some(".htm"),
-        "hurl" => Some(".hurl"),
+        "beancount" | "beanhub" => Some(".bean"),
         "kcl" => Some(".k"),
-        "shtml" | "superhtml" => Some(".shtml"),
+        "superhtml" => Some(".shtml"),
         _ => None,
     }
 }
@@ -34,6 +32,33 @@ fn fallback_file_extension(language: &str) -> Option<&'static str> {
 #[cfg(test)]
 mod test_get_file_extension {
     use crate::filetype::get_file_extension;
+
+    #[test]
+    fn test_non_generated_fallback() {
+        for (output, inputs) in [
+            (".bean", vec!["beancount", "beanhub"]),
+            (".k", vec!["kcl"]),
+            (".shtml", vec!["superhtml"]),
+        ] {
+            for input in inputs {
+                assert_eq!(output, get_file_extension(input));
+            }
+        }
+    }
+
+    #[test]
+    fn test_generated_file_type() {
+        let input = "rust";
+
+        assert_eq!(".rs", get_file_extension(input));
+    }
+
+    #[test]
+    fn test_input_starts_without_dot() {
+        let input = "custom_file_extension";
+
+        assert_eq!(format!(".{input}"), get_file_extension(input));
+    }
 
     #[test]
     fn test_input_starts_with_dot() {

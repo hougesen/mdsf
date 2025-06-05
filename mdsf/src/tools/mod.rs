@@ -171,6 +171,7 @@ pub mod leptosfmt;
 pub mod liquidsoap_prettier;
 pub mod luacheck;
 pub mod luaformatter;
+pub mod luau_analyze;
 pub mod mado_check;
 pub mod mago_format;
 pub mod mago_lint;
@@ -1706,6 +1707,14 @@ pub enum Tooling {
     ///
     /// `lua-format -i $PATH`
     Luaformatter,
+
+    #[serde(rename = "luau-analyze")]
+    /// Typecheck and lint luau files
+    ///
+    /// [https://luau.org](https://luau.org)
+    ///
+    /// `luau-analyze $PATH`
+    LuauAnalyze,
 
     #[serde(rename = "mado:check")]
     /// A fast Markdown linter written in Rust
@@ -3712,6 +3721,11 @@ impl Tooling {
                 luaformatter::set_args,
                 luaformatter::IS_STDIN,
             ),
+            Self::LuauAnalyze => (
+                &luau_analyze::COMMANDS,
+                luau_analyze::set_args,
+                luau_analyze::IS_STDIN,
+            ),
             Self::MadoCheck => (
                 &mado_check::COMMANDS,
                 mado_check::set_args,
@@ -4448,6 +4462,7 @@ impl AsRef<str> for Tooling {
             Self::LiquidsoapPrettier => "liquidsoap-prettier",
             Self::Luacheck => "luacheck",
             Self::Luaformatter => "luaformatter",
+            Self::LuauAnalyze => "luau-analyze",
             Self::MadoCheck => "mado:check",
             Self::MagoFormat => "mago:format",
             Self::MagoLint => "mago:lint",
@@ -4843,6 +4858,7 @@ mod test_tooling {
         );
         assert_eq!(Tooling::Luacheck, reverse(Tooling::Luacheck)?);
         assert_eq!(Tooling::Luaformatter, reverse(Tooling::Luaformatter)?);
+        assert_eq!(Tooling::LuauAnalyze, reverse(Tooling::LuauAnalyze)?);
         assert_eq!(Tooling::MadoCheck, reverse(Tooling::MadoCheck)?);
         assert_eq!(Tooling::MagoFormat, reverse(Tooling::MagoFormat)?);
         assert_eq!(Tooling::MagoLint, reverse(Tooling::MagoLint)?);
