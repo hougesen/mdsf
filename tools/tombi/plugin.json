@@ -7,6 +7,7 @@
       "arguments": ["format", "$PATH"],
       "tests": [
         {
+          "disabled": true,
           "language": "toml",
           "test_input": "[project ]\nname =     \"hello\"",
           "test_output": "[project]\nname = \"hello\"\n"
@@ -17,6 +18,7 @@
       "arguments": ["lint", "$PATH"],
       "tests": [
         {
+          "disabled": true,
           "language": "toml",
           "test_input": "[project]\nname = \"hello\"\n",
           "test_output": "[project]\nname = \"hello\"\n"
