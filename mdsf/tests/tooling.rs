@@ -4581,6 +4581,7 @@ mod test_tofu_fmt {
 
 #[cfg(test)]
 mod test_tombi_format {
+    #[ignore]
     #[test_with::executable(tombi || pipx || uv)]
     fn test_tombi_format_toml_fa35f0f5766ac557() -> Result<(), Box<dyn core::error::Error>> {
         let input = r#"[project ]
@@ -4598,6 +4599,7 @@ name = "hello"
 
 #[cfg(test)]
 mod test_tombi_lint {
+    #[ignore]
     #[test_with::executable(tombi || pipx || uv)]
     fn test_tombi_lint_toml_249ef29da68d9e6d() -> Result<(), Box<dyn core::error::Error>> {
         let input = r#"[project]

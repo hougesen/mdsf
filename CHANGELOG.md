@@ -4,6 +4,7 @@ All notable changes to this project will be documented in this file. Dates are d
 
 #### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.9.5...HEAD)
 
+- feat(tools): add support for luau-analyze [`#1086`](https://github.com/hougesen/mdsf/pull/1086)
 - feat(tools): add support for the official swift cli [`#1085`](https://github.com/hougesen/mdsf/pull/1085)
 - ci: use mlugg/setup-zig instead of goto-bus-stop/setup-zig [`#1084`](https://github.com/hougesen/mdsf/pull/1084)
 - build(deps-dev): bump @types/node in /github-action [`#1079`](https://github.com/hougesen/mdsf/pull/1079)
