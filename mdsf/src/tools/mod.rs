@@ -2726,7 +2726,7 @@ pub enum Tooling {
     #[serde(rename = "swift-format")]
     /// Formatting technology for Swift source code
     ///
-    /// [https://github.com/apple/swift-format](https://github.com/apple/swift-format)
+    /// [https://github.com/swiftlang/swift-format](https://github.com/swiftlang/swift-format)
     ///
     /// `swift-format --in-place $PATH`
     SwiftFormat,
