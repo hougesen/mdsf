@@ -4,6 +4,7 @@ All notable changes to this project will be documented in this file. Dates are d
 
 #### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.9.5...HEAD)
 
+- test(tools): enable tombi tests again [`#1089`](https://github.com/hougesen/mdsf/pull/1089)
 - build(deps): bump which to v8.0.0 [`#1088`](https://github.com/hougesen/mdsf/pull/1088)
 - ci: setup pnpm for testing [`#1087`](https://github.com/hougesen/mdsf/pull/1087)
 - feat(tools): add support for luau-analyze [`#1086`](https://github.com/hougesen/mdsf/pull/1086)
