@@ -77,6 +77,9 @@ jobs:
       - uses: oven-sh/setup-bun@v2
         with:
           bun-version: latest
+      - uses: astral-sh/setup-uv@v5
+        with:
+          enable-cache: true
       - name: Install cargo-llvm-cov
         uses: taiki-e/install-action@cargo-llvm-cov
       - run: rustup toolchain install stable --profile minimal
