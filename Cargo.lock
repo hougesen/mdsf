@@ -325,12 +325,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "1c7a8fb8a9fbf66c1f703fe16184d10ca0ee9d23be5b4436400408ba54a95005"
 
 [[package]]
-name = "either"
-version = "1.15.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "48c757948c5ede0e46177b7add2e67155f70e33c07fea8284df6576da70b3719"
-
-[[package]]
 name = "env_filter"
 version = "0.1.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -631,7 +625,7 @@ dependencies = [
  "terminal_size",
  "test-with",
  "threadpool",
- "which 8.0.0",
+ "which",
 ]
 
 [[package]]
@@ -1155,16 +1149,16 @@ checksum = "8f50febec83f5ee1df3015341d8bd429f2d1cc62bcba7ea2076759d315084683"
 
 [[package]]
 name = "test-with"
-version = "0.14.10"
+version = "0.14.11"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "99ede0159d14173a6362219475c776e889bd35f486afdfeaf8a000e72947d12f"
+checksum = "d75791778b593ea6d76454886a69cd37245c4c9af6fee37c42f024593bf1fb03"
 dependencies = [
  "proc-macro-error2",
  "proc-macro2",
  "quote",
  "regex",
  "syn",
- "which 7.0.3",
+ "which",
 ]
 
 [[package]]
@@ -1324,18 +1318,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "2853738d1cc4f2da3a225c18ec6c3721abb31961096e9dbf5ab35fa88b19cfdb"
 dependencies = [
  "rustls-pki-types",
-]
-
-[[package]]
-name = "which"
-version = "7.0.3"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "24d643ce3fd3e5b54854602a080f34fb10ab75e0b813ee32d00ca2b44fa74762"
-dependencies = [
- "either",
- "env_home",
- "rustix",
- "winsafe",
 ]
 
 [[package]]
