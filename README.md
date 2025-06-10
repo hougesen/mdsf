@@ -457,7 +457,7 @@ That can be changed by specifying the `newline` config option.
 
 <!-- START_SECTION:supported-tools -->
 
-`mdsf` currently supports 314 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 315 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                                                                                 | Description                                                                                                                                   | Categories            | Languages                                                                                                                         |
 | ------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
@@ -495,6 +495,7 @@ That can be changed by specifying the `newline` config option.
 | [cabal](https://www.haskell.org/cabal/)                                              | Cabal is a system for building and packaging Haskell libraries and programs                                                                   | `formatter`           | `cabal`                                                                                                                           |
 | [caddy](https://caddyserver.com/docs/command-line#caddy-fmt)                         | Formats or prettifies a Caddyfile                                                                                                             | `formatter`           | `caddy`                                                                                                                           |
 | [caramel](https://caramel.run/)                                                      | Formatter for the Caramel programming language                                                                                                | `formatter`           | `caramel`                                                                                                                         |
+| [cedar](https://github.com/cedar-policy/cedar)                                       | Command Line Interface for Cedar                                                                                                              | `formatter`           | `cedar`                                                                                                                           |
 | [cfn-lint](https://github.com/aws-cloudformation/cfn-lint)                           | CloudFormation Linter                                                                                                                         | `linter`              | `cloudformation`, `json`, `yaml`                                                                                                  |
 | [checkmake](https://github.com/mrtazz/checkmake)                                     | Experimental linter/analyzer for Makefiles                                                                                                    | `linter`              | `makefile`                                                                                                                        |
 | [clang-format](https://clang.llvm.org/docs/ClangFormat.html)                         | A tool to format C/C++/Java/JavaScript/JSON/Objective-C/Protobuf/C# code                                                                      | `formatter`           | `c#`, `c++`, `c`, `java`, `javascript`, `json`, `objective-c`, `protobuf`                                                         |
@@ -782,7 +783,7 @@ That can be changed by specifying the `newline` config option.
 
 <!-- START_SECTION:supported-commands -->
 
-`mdsf` currently supports 350 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 351 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                         | Command                                                                                 |
 | ---------------------------- | --------------------------------------------------------------------------------------- |
@@ -825,6 +826,7 @@ That can be changed by specifying the `newline` config option.
 | `cabal:format`               | `cabal format $PATH`                                                                    |
 | `caddy:fmt`                  | `caddy fmt $PATH -w`                                                                    |
 | `caramel:fmt`                | `caramel fmt $PATH`                                                                     |
+| `cedar:format`               | `cedar format`                                                                          |
 | `cfn-lint`                   | `cfn-lint $PATH`                                                                        |
 | `checkmake`                  | `checkmake $PATH`                                                                       |
 | `clang-format`               | `clang-format -i $PATH`                                                                 |

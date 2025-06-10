@@ -736,6 +736,9 @@ mod test_caddy_fmt {}
 mod test_caramel_fmt {}
 
 #[cfg(test)]
+mod test_cedar_format {}
+
+#[cfg(test)]
 mod test_cfn_lint {}
 
 #[cfg(test)]

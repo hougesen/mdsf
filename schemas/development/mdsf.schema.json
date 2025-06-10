@@ -363,6 +363,11 @@
           "const": "caramel:fmt"
         },
         {
+          "description": "Format a cedar policy set\n\n [https://github.com/cedar-policy/cedar](https://github.com/cedar-policy/cedar)\n\n `cedar format`",
+          "type": "string",
+          "const": "cedar:format"
+        },
+        {
           "description": "CloudFormation Linter\n\n [https://github.com/aws-cloudformation/cfn-lint](https://github.com/aws-cloudformation/cfn-lint)\n\n `cfn-lint $PATH`",
           "type": "string",
           "const": "cfn-lint"

@@ -41,6 +41,7 @@ pub mod cabal_format;
 pub mod cabal_prettify;
 pub mod caddy_fmt;
 pub mod caramel_fmt;
+pub mod cedar_format;
 pub mod cfn_lint;
 pub mod checkmake;
 pub mod clang_format;
@@ -667,6 +668,14 @@ pub enum Tooling {
     ///
     /// `caramel fmt $PATH`
     CaramelFmt,
+
+    #[serde(rename = "cedar:format")]
+    /// Format a cedar policy set
+    ///
+    /// [https://github.com/cedar-policy/cedar](https://github.com/cedar-policy/cedar)
+    ///
+    /// `cedar format`
+    CedarFormat,
 
     #[serde(rename = "cfn-lint")]
     /// CloudFormation Linter
@@ -3311,6 +3320,11 @@ impl Tooling {
                 caramel_fmt::set_args,
                 caramel_fmt::IS_STDIN,
             ),
+            Self::CedarFormat => (
+                &cedar_format::COMMANDS,
+                cedar_format::set_args,
+                cedar_format::IS_STDIN,
+            ),
             Self::CfnLint => (&cfn_lint::COMMANDS, cfn_lint::set_args, cfn_lint::IS_STDIN),
             Self::Checkmake => (
                 &checkmake::COMMANDS,
@@ -4332,6 +4346,7 @@ impl AsRef<str> for Tooling {
             Self::CabalPrettify => "cabal-prettify",
             Self::CaddyFmt => "caddy:fmt",
             Self::CaramelFmt => "caramel:fmt",
+            Self::CedarFormat => "cedar:format",
             Self::CfnLint => "cfn-lint",
             Self::Checkmake => "checkmake",
             Self::ClangFormat => "clang-format",
@@ -4701,6 +4716,7 @@ mod test_tooling {
         assert_eq!(Tooling::CabalPrettify, reverse(Tooling::CabalPrettify)?);
         assert_eq!(Tooling::CaddyFmt, reverse(Tooling::CaddyFmt)?);
         assert_eq!(Tooling::CaramelFmt, reverse(Tooling::CaramelFmt)?);
+        assert_eq!(Tooling::CedarFormat, reverse(Tooling::CedarFormat)?);
         assert_eq!(Tooling::CfnLint, reverse(Tooling::CfnLint)?);
         assert_eq!(Tooling::Checkmake, reverse(Tooling::Checkmake)?);
         assert_eq!(Tooling::ClangFormat, reverse(Tooling::ClangFormat)?);

@@ -1,0 +1,21 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "cedar",
+  "categories": ["formatter"],
+  "commands": {
+    "format": {
+      "arguments": ["format"],
+      "description": "Format a cedar policy set",
+      "stdin": true,
+      "tests": []
+    }
+  },
+  "description": "Command Line Interface for Cedar",
+  "homepage": "https://github.com/cedar-policy/cedar",
+  "languages": ["cedar"],
+  "packages": {
+    "cargo": {
+      "package": "cedar-policy-cli"
+    }
+  }
+}
