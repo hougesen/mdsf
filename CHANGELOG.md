@@ -4,6 +4,15 @@ All notable changes to this project will be documented in this file. Dates are d
 
 #### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.9.5...HEAD)
 
+- build(deps): bump clap from 4.5.39 to 4.5.40 [`#1099`](https://github.com/hougesen/mdsf/pull/1099)
+- build(deps): bump clap_complete_nushell from 4.5.6 to 4.5.7 [`#1098`](https://github.com/hougesen/mdsf/pull/1098)
+- build(deps-dev): bump @typescript-eslint/eslint-plugin in /mdsf-vscode [`#1093`](https://github.com/hougesen/mdsf/pull/1093)
+- build(deps): bump clap_complete from 4.5.52 to 4.5.54 [`#1097`](https://github.com/hougesen/mdsf/pull/1097)
+- build(deps-dev): bump @types/node in /github-action [`#1092`](https://github.com/hougesen/mdsf/pull/1092)
+- build(deps-dev): bump @typescript-eslint/parser in /mdsf-vscode [`#1094`](https://github.com/hougesen/mdsf/pull/1094)
+- build(deps-dev): bump @types/node in /mdsf-vscode [`#1095`](https://github.com/hougesen/mdsf/pull/1095)
+- build(deps): bump test-with from 0.14.10 to 0.14.11 [`#1096`](https://github.com/hougesen/mdsf/pull/1096)
+- ci: setup uv for testing [`#1090`](https://github.com/hougesen/mdsf/pull/1090)
 - test(tools): enable tombi tests again [`#1089`](https://github.com/hougesen/mdsf/pull/1089)
 - build(deps): bump which to v8.0.0 [`#1088`](https://github.com/hougesen/mdsf/pull/1088)
 - ci: setup pnpm for testing [`#1087`](https://github.com/hougesen/mdsf/pull/1087)
