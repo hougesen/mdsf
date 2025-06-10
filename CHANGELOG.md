@@ -2,8 +2,14 @@
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
-#### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.9.5...HEAD)
+#### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.9.6...HEAD)
 
+#### [v0.9.6](https://github.com/hougesen/mdsf/compare/v0.9.5...v0.9.6)
+
+> 10 June 2025
+
+- chore: release v0.9.6 [`#1103`](https://github.com/hougesen/mdsf/pull/1103)
+- feat(tools): support cedar [`#1100`](https://github.com/hougesen/mdsf/pull/1100)
 - build(deps): bump clap from 4.5.39 to 4.5.40 [`#1099`](https://github.com/hougesen/mdsf/pull/1099)
 - build(deps): bump clap_complete_nushell from 4.5.6 to 4.5.7 [`#1098`](https://github.com/hougesen/mdsf/pull/1098)
 - build(deps-dev): bump @typescript-eslint/eslint-plugin in /mdsf-vscode [`#1093`](https://github.com/hougesen/mdsf/pull/1093)
