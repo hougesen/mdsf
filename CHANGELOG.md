@@ -4,6 +4,9 @@ All notable changes to this project will be documented in this file. Dates are d
 
 #### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.9.6...HEAD)
 
+- build(deps): bump ureq from 3.0.11 to 3.0.12 [`#1105`](https://github.com/hougesen/mdsf/pull/1105)
+- build(deps): bump process_control from 5.1.0 to 5.1.1 [`f528090`](https://github.com/hougesen/mdsf/commit/f52809091aca85d7f426cea9d18d2395f065deca)
+
 #### [v0.9.6](https://github.com/hougesen/mdsf/compare/v0.9.5...v0.9.6)
 
 > 10 June 2025
