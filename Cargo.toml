@@ -27,7 +27,7 @@ log = "0.4.27"
 mdsf = { path = "./mdsf", features = ["json-schema"] }
 owo-colors = { version = "4.2.1", features = ["supports-colors"] }
 predicates = "3.1.3"
-process_control = { version = "5.1.0" }
+process_control = { version = "5.1.1" }
 regex = "1.11.1"
 schemars = { version = "0.9.0" }
 serde = { version = "1.0.219", features = ["derive"] }
