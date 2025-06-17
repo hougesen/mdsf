@@ -3,14 +3,9 @@
   "assist": {
     "actions": {
       "source": {
-        "organizeImports": "on",
-        "recommended": true
+        "organizeImports": "on"
       }
-    },
-    "enabled": true
-  },
-  "files": {
-    "ignoreUnknown": true
+    }
   },
   "formatter": {
     "enabled": false
