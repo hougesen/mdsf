@@ -388,7 +388,7 @@ number>
 #[cfg(test)]
 mod test_biome_check_unsafe {
     #[test_with::executable(biome || npx || pnpm || deno || bunx)]
-    fn test_biome_check_unsafe_typescript_8154bfdbd3b72275()
+    fn test_biome_check_unsafe_typescript_6cf769686a46e14b()
     -> Result<(), Box<dyn core::error::Error>> {
         let input = r#"
     async function asyncAddition(
@@ -401,7 +401,7 @@ number>
 
             "#;
 
-        let output = r#"async function asyncAddition(a: number, b: number): Promise<number> {
+        let output = r#"async function _asyncAddition(a: number, b: number): Promise<number> {
 	return a + b;
 }
 "#;

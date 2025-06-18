@@ -23,7 +23,7 @@
         {
           "language": "typescript",
           "test_input": "\n    async function asyncAddition(\n            a:number,b:number\n        ) :Promise<\nnumber>\n    {\n        return a+b\n    }\n\n            ",
-          "test_output": "async function asyncAddition(a: number, b: number): Promise<number> {\n\treturn a + b;\n}\n"
+          "test_output": "async function _asyncAddition(a: number, b: number): Promise<number> {\n\treturn a + b;\n}\n"
         }
       ]
     },
