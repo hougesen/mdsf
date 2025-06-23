@@ -1,0 +1,15 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "ghokin",
+  "categories": ["formatter"],
+  "commands": {
+    "fmt": {
+      "arguments": ["fmt", "replace", "$PATH"],
+      "tests": []
+    }
+  },
+  "description": "Parallelized formatter with no external dependencies for gherkin (cucumber, behat)",
+  "homepage": "https://github.com/antham/ghokin",
+  "languages": ["behat", "cucumber", "gherkin"],
+  "packages": {}
+}

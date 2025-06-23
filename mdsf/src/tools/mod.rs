@@ -117,6 +117,7 @@ pub mod gci;
 pub mod gdformat;
 pub mod gdlint;
 pub mod gersemi;
+pub mod ghokin_fmt;
 pub mod gleam_format;
 pub mod gluon_fmt;
 pub mod gofmt;
@@ -1276,6 +1277,14 @@ pub enum Tooling {
     ///
     /// `gersemi -i -q $PATH`
     Gersemi,
+
+    #[serde(rename = "ghokin:fmt")]
+    /// Parallelized formatter with no external dependencies for gherkin (cucumber, behat)
+    ///
+    /// [https://github.com/antham/ghokin](https://github.com/antham/ghokin)
+    ///
+    /// `ghokin fmt replace $PATH`
+    GhokinFmt,
 
     #[serde(rename = "gleam:format")]
     /// Format Gleam source code
@@ -3564,6 +3573,11 @@ impl Tooling {
             Self::Gdformat => (&gdformat::COMMANDS, gdformat::set_args, gdformat::IS_STDIN),
             Self::Gdlint => (&gdlint::COMMANDS, gdlint::set_args, gdlint::IS_STDIN),
             Self::Gersemi => (&gersemi::COMMANDS, gersemi::set_args, gersemi::IS_STDIN),
+            Self::GhokinFmt => (
+                &ghokin_fmt::COMMANDS,
+                ghokin_fmt::set_args,
+                ghokin_fmt::IS_STDIN,
+            ),
             Self::GleamFormat => (
                 &gleam_format::COMMANDS,
                 gleam_format::set_args,
@@ -4422,6 +4436,7 @@ impl AsRef<str> for Tooling {
             Self::Gdformat => "gdformat",
             Self::Gdlint => "gdlint",
             Self::Gersemi => "gersemi",
+            Self::GhokinFmt => "ghokin:fmt",
             Self::GleamFormat => "gleam:format",
             Self::GluonFmt => "gluon:fmt",
             Self::Gofmt => "gofmt",
@@ -4804,6 +4819,7 @@ mod test_tooling {
         assert_eq!(Tooling::Gdformat, reverse(Tooling::Gdformat)?);
         assert_eq!(Tooling::Gdlint, reverse(Tooling::Gdlint)?);
         assert_eq!(Tooling::Gersemi, reverse(Tooling::Gersemi)?);
+        assert_eq!(Tooling::GhokinFmt, reverse(Tooling::GhokinFmt)?);
         assert_eq!(Tooling::GleamFormat, reverse(Tooling::GleamFormat)?);
         assert_eq!(Tooling::GluonFmt, reverse(Tooling::GluonFmt)?);
         assert_eq!(Tooling::Gofmt, reverse(Tooling::Gofmt)?);

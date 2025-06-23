@@ -457,7 +457,7 @@ That can be changed by specifying the `newline` config option.
 
 <!-- START_SECTION:supported-tools -->
 
-`mdsf` currently supports 315 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 316 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                                                                                 | Description                                                                                                                                   | Categories            | Languages                                                                                                                         |
 | ------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
@@ -563,6 +563,7 @@ That can be changed by specifying the `newline` config option.
 | [gdformat](https://github.com/scony/godot-gdscript-toolkit)                          | GDScript formatter                                                                                                                            | `formatter`           | `gdscript`                                                                                                                        |
 | [gdlint](https://github.com/scony/godot-gdscript-toolkit)                            | GDScript linter                                                                                                                               | `linter`              | `gdscript`                                                                                                                        |
 | [gersemi](https://github.com/blankspruce/gersemi)                                    | A formatter to make your CMake code the real treasure                                                                                         | `formatter`           | `cmake`                                                                                                                           |
+| [ghokin](https://github.com/antham/ghokin)                                           | Parallelized formatter with no external dependencies for gherkin (cucumber, behat)                                                            | `formatter`           | `behat`, `cucumber`, `gherkin`                                                                                                    |
 | [gleam](https://gleam.run/)                                                          | Format Gleam source code                                                                                                                      | `formatter`           | `gleam`                                                                                                                           |
 | [gluon](https://github.com/gluon-lang/gluon)                                         | Code formatting for the gluon programming language                                                                                            | `formatter`           | `gluon`                                                                                                                           |
 | [gofmt](https://pkg.go.dev/cmd/gofmt)                                                | Gofmt formats Go programs                                                                                                                     | `formatter`           | `go`                                                                                                                              |
@@ -783,7 +784,7 @@ That can be changed by specifying the `newline` config option.
 
 <!-- START_SECTION:supported-commands -->
 
-`mdsf` currently supports 351 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 352 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                         | Command                                                                                 |
 | ---------------------------- | --------------------------------------------------------------------------------------- |
@@ -902,6 +903,7 @@ That can be changed by specifying the `newline` config option.
 | `gdformat`                   | `gdformat $PATH`                                                                        |
 | `gdlint`                     | `gdlint $PATH`                                                                          |
 | `gersemi`                    | `gersemi -i -q $PATH`                                                                   |
+| `ghokin:fmt`                 | `ghokin fmt replace $PATH`                                                              |
 | `gleam:format`               | `gleam format $PATH`                                                                    |
 | `gluon:fmt`                  | `gluon fmt $PATH`                                                                       |
 | `gofmt`                      | `gofmt -w $PATH`                                                                        |

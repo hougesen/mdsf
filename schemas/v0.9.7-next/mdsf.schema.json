@@ -743,6 +743,11 @@
           "const": "gersemi"
         },
         {
+          "description": "Parallelized formatter with no external dependencies for gherkin (cucumber, behat)\n\n [https://github.com/antham/ghokin](https://github.com/antham/ghokin)\n\n `ghokin fmt replace $PATH`",
+          "type": "string",
+          "const": "ghokin:fmt"
+        },
+        {
           "description": "Format Gleam source code\n\n [https://gleam.run/](https://gleam.run/)\n\n `gleam format $PATH`",
           "type": "string",
           "const": "gleam:format"
