@@ -1,0 +1,19 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "keep-sorted",
+  "categories": ["formatter"],
+  "commands": {
+    "": {
+      "arguments": ["$PATH"],
+      "tests": []
+    }
+  },
+  "description": "keep-sorted is a language-agnostic formatter that sorts lines between two markers in a larger file",
+  "homepage": "https://github.com/google/keep-sorted",
+  "languages": [],
+  "packages": {
+    "go": {
+      "package": "github.com/google/keep-sorted@v0.6.1"
+    }
+  }
+}

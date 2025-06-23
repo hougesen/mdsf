@@ -165,6 +165,7 @@ pub mod kdlfmt;
 pub mod kdlfmt_v_1;
 pub mod kdlfmt_v_2;
 pub mod kdoc_formatter;
+pub mod keep_sorted;
 pub mod ktfmt;
 pub mod ktlint;
 pub mod kulala_fmt_check;
@@ -1661,6 +1662,14 @@ pub enum Tooling {
     ///
     /// `kdoc-formatter --quiet $PATH`
     KdocFormatter,
+
+    #[serde(rename = "keep-sorted")]
+    /// keep-sorted is a language-agnostic formatter that sorts lines between two markers in a larger file
+    ///
+    /// [https://github.com/google/keep-sorted](https://github.com/google/keep-sorted)
+    ///
+    /// `keep-sorted $PATH`
+    KeepSorted,
 
     #[serde(rename = "ktfmt")]
     /// program that reformats Kotlin source code to comply with the common community standard for Kotlin code conventions
@@ -3721,6 +3730,11 @@ impl Tooling {
                 kdoc_formatter::set_args,
                 kdoc_formatter::IS_STDIN,
             ),
+            Self::KeepSorted => (
+                &keep_sorted::COMMANDS,
+                keep_sorted::set_args,
+                keep_sorted::IS_STDIN,
+            ),
             Self::Ktfmt => (&ktfmt::COMMANDS, ktfmt::set_args, ktfmt::IS_STDIN),
             Self::Ktlint => (&ktlint::COMMANDS, ktlint::set_args, ktlint::IS_STDIN),
             Self::KulalaFmtCheck => (
@@ -4484,6 +4498,7 @@ impl AsRef<str> for Tooling {
             Self::KdlfmtV1 => "kdlfmt:v1",
             Self::KdlfmtV2 => "kdlfmt:v2",
             Self::KdocFormatter => "kdoc-formatter",
+            Self::KeepSorted => "keep-sorted",
             Self::Ktfmt => "ktfmt",
             Self::Ktlint => "ktlint",
             Self::KulalaFmtCheck => "kulala-fmt:check",
@@ -4879,6 +4894,7 @@ mod test_tooling {
         assert_eq!(Tooling::KdlfmtV1, reverse(Tooling::KdlfmtV1)?);
         assert_eq!(Tooling::KdlfmtV2, reverse(Tooling::KdlfmtV2)?);
         assert_eq!(Tooling::KdocFormatter, reverse(Tooling::KdocFormatter)?);
+        assert_eq!(Tooling::KeepSorted, reverse(Tooling::KeepSorted)?);
         assert_eq!(Tooling::Ktfmt, reverse(Tooling::Ktfmt)?);
         assert_eq!(Tooling::Ktlint, reverse(Tooling::Ktlint)?);
         assert_eq!(Tooling::KulalaFmtCheck, reverse(Tooling::KulalaFmtCheck)?);
