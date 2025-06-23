@@ -2,7 +2,7 @@ version: 2
 updates:
   - package-ecosystem: cargo
     assignees: [hougesen]
-    directories: ["*"]
+    directories: [/, /codegen, /mdsf]
     open-pull-requests-limit: 100
     schedule:
       interval: daily
@@ -14,7 +14,7 @@ updates:
       interval: weekly
   - package-ecosystem: npm
     assignees: [hougesen]
-    directories: ["*"]
+    directories: [/mdsf-vscode, /github-action]
     open-pull-requests-limit: 100
     schedule:
       interval: weekly

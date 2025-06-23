@@ -18,6 +18,7 @@ All notable changes to this project will be documented in this file. Dates are d
 - build(deps): bump ureq from 3.0.11 to 3.0.12 [`#1105`](https://github.com/hougesen/mdsf/pull/1105)
 - test(tools): update biome test data [`edca6ce`](https://github.com/hougesen/mdsf/commit/edca6ce4d72f0a92797f58801bcaccfc40b86160)
 - fix: migrate biome.json config [`3f75763`](https://github.com/hougesen/mdsf/commit/3f757638bcaebd76087cfa65077a40da5edbfd23)
+- fix(dependabot): make directories value array [`f4c2bf1`](https://github.com/hougesen/mdsf/commit/f4c2bf19d9d71b74c38228173b9efb03d8200e86)
 
 #### [v0.9.6](https://github.com/hougesen/mdsf/compare/v0.9.5...v0.9.6)
 
