@@ -1723,6 +1723,9 @@ mod test_gdlint {}
 mod test_gersemi {}
 
 #[cfg(test)]
+mod test_ghokin_fmt {}
+
+#[cfg(test)]
 mod test_gleam_format {
     #[test_with::executable(gleam)]
     fn test_gleam_format_gleam_d23656d11ef3a81d() -> Result<(), Box<dyn core::error::Error>> {

@@ -4,6 +4,9 @@ All notable changes to this project will be documented in this file. Dates are d
 
 #### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.9.6...HEAD)
 
+- build(deps-dev): bump @biomejs/biome from 2.0.4 to 2.0.5 in /mdsf-vscode [`#1124`](https://github.com/hougesen/mdsf/pull/1124)
+- build(deps-dev): bump @typescript-eslint/eslint-plugin in /mdsf-vscode [`#1121`](https://github.com/hougesen/mdsf/pull/1121)
+- build(deps-dev): bump @biomejs/biome in /github-action [`#1120`](https://github.com/hougesen/mdsf/pull/1120)
 - chore(dependabot): match everything using glob [`#1119`](https://github.com/hougesen/mdsf/pull/1119)
 - build(deps-dev): bump @biomejs/biome from 2.0.0 to 2.0.4 in /mdsf-vscode [`#1118`](https://github.com/hougesen/mdsf/pull/1118)
 - build(deps-dev): bump @biomejs/biome in /github-action [`#1117`](https://github.com/hougesen/mdsf/pull/1117)
@@ -18,6 +21,7 @@ All notable changes to this project will be documented in this file. Dates are d
 - build(deps): bump ureq from 3.0.11 to 3.0.12 [`#1105`](https://github.com/hougesen/mdsf/pull/1105)
 - test(tools): update biome test data [`edca6ce`](https://github.com/hougesen/mdsf/commit/edca6ce4d72f0a92797f58801bcaccfc40b86160)
 - fix: migrate biome.json config [`3f75763`](https://github.com/hougesen/mdsf/commit/3f757638bcaebd76087cfa65077a40da5edbfd23)
+- chore(dependabot): explicit dependency file paths [`1178102`](https://github.com/hougesen/mdsf/commit/1178102cdf37980a6dd1eed1b38fb2590a5a6f68)
 - fix(dependabot): make directories value array [`f4c2bf1`](https://github.com/hougesen/mdsf/commit/f4c2bf19d9d71b74c38228173b9efb03d8200e86)
 
 #### [v0.9.6](https://github.com/hougesen/mdsf/compare/v0.9.5...v0.9.6)
