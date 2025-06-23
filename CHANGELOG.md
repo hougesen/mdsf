@@ -4,10 +4,18 @@ All notable changes to this project will be documented in this file. Dates are d
 
 #### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.9.6...HEAD)
 
+- build(deps-dev): bump @biomejs/biome from 2.0.0 to 2.0.4 in /mdsf-vscode [`#1118`](https://github.com/hougesen/mdsf/pull/1118)
+- build(deps-dev): bump @biomejs/biome in /github-action [`#1117`](https://github.com/hougesen/mdsf/pull/1117)
+- build(deps-dev): bump eslint from 9.28.0 to 9.29.0 in /mdsf-vscode [`#1107`](https://github.com/hougesen/mdsf/pull/1107)
+- build(deps-dev): bump @eslint/js from 9.28.0 to 9.29.0 in /mdsf-vscode [`#1109`](https://github.com/hougesen/mdsf/pull/1109)
+- build(deps-dev): bump @typescript-eslint/eslint-plugin in /mdsf-vscode [`#1115`](https://github.com/hougesen/mdsf/pull/1115)
+- build(deps-dev): bump eslint from 9.28.0 to 9.29.0 in /github-action [`#1111`](https://github.com/hougesen/mdsf/pull/1111)
+- build(deps-dev): bump @typescript-eslint/parser in /mdsf-vscode [`#1116`](https://github.com/hougesen/mdsf/pull/1116)
 - build(deps-dev): bump @biomejs/biome from 1.9.4 to 2.0.0 in /github-action [`#1113`](https://github.com/hougesen/mdsf/pull/1113)
 - build(deps-dev): bump @biomejs/biome from 1.9.4 to 2.0.0 in /mdsf-vscode [`#1114`](https://github.com/hougesen/mdsf/pull/1114)
 - build(deps): bump process_control from 5.1.0 to 5.1.1 [`#1104`](https://github.com/hougesen/mdsf/pull/1104)
 - build(deps): bump ureq from 3.0.11 to 3.0.12 [`#1105`](https://github.com/hougesen/mdsf/pull/1105)
+- test(tools): update biome test data [`edca6ce`](https://github.com/hougesen/mdsf/commit/edca6ce4d72f0a92797f58801bcaccfc40b86160)
 - fix: migrate biome.json config [`3f75763`](https://github.com/hougesen/mdsf/commit/3f757638bcaebd76087cfa65077a40da5edbfd23)
 
 #### [v0.9.6](https://github.com/hougesen/mdsf/compare/v0.9.5...v0.9.6)

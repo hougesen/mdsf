@@ -82,7 +82,7 @@ mod test_language_to_ext {{
 {WHITESPACE}#[allow(clippy::too_many_lines)]
 {WHITESPACE}#[test]
 {WHITESPACE}fn test_pairings() {{
-{WHITESPACE}{WHITESPACE}let cases = [
+{WHITESPACE}{WHITESPACE}let cases = vec![
 {}
 {WHITESPACE}{WHITESPACE}];
 
