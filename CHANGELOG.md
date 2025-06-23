@@ -4,6 +4,7 @@ All notable changes to this project will be documented in this file. Dates are d
 
 #### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.9.6...HEAD)
 
+- chore(dependabot): match everything using glob [`#1119`](https://github.com/hougesen/mdsf/pull/1119)
 - build(deps-dev): bump @biomejs/biome from 2.0.0 to 2.0.4 in /mdsf-vscode [`#1118`](https://github.com/hougesen/mdsf/pull/1118)
 - build(deps-dev): bump @biomejs/biome in /github-action [`#1117`](https://github.com/hougesen/mdsf/pull/1117)
 - build(deps-dev): bump eslint from 9.28.0 to 9.29.0 in /mdsf-vscode [`#1107`](https://github.com/hougesen/mdsf/pull/1107)
