@@ -983,6 +983,11 @@
           "const": "kdoc-formatter"
         },
         {
+          "description": "keep-sorted is a language-agnostic formatter that sorts lines between two markers in a larger file\n\n [https://github.com/google/keep-sorted](https://github.com/google/keep-sorted)\n\n `keep-sorted $PATH`",
+          "type": "string",
+          "const": "keep-sorted"
+        },
+        {
           "description": "program that reformats Kotlin source code to comply with the common community standard for Kotlin code conventions\n\n [https://github.com/facebook/ktfmt](https://github.com/facebook/ktfmt)\n\n `ktfmt $PATH`",
           "type": "string",
           "const": "ktfmt"

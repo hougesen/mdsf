@@ -4,6 +4,7 @@ All notable changes to this project will be documented in this file. Dates are d
 
 #### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.9.6...HEAD)
 
+- feat(tools): add support for ghokin [`#1131`](https://github.com/hougesen/mdsf/pull/1131)
 - build(deps-dev): bump @biomejs/biome from 2.0.4 to 2.0.5 in /mdsf-vscode [`#1124`](https://github.com/hougesen/mdsf/pull/1124)
 - build(deps-dev): bump @typescript-eslint/eslint-plugin in /mdsf-vscode [`#1121`](https://github.com/hougesen/mdsf/pull/1121)
 - build(deps-dev): bump @biomejs/biome in /github-action [`#1120`](https://github.com/hougesen/mdsf/pull/1120)

@@ -457,7 +457,7 @@ That can be changed by specifying the `newline` config option.
 
 <!-- START_SECTION:supported-tools -->
 
-`mdsf` currently supports 316 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 317 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                                                                                 | Description                                                                                                                                   | Categories            | Languages                                                                                                                         |
 | ------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
@@ -605,6 +605,7 @@ That can be changed by specifying the `newline` config option.
 | [kcl](https://www.kcl-lang.io/docs/tools/cli/kcl/fmt)                                | KCL Format tool supports reformatting KCL files to the standard code style                                                                    | `formatter`           | `kcl`                                                                                                                             |
 | [kdlfmt](https://github.com/hougesen/kdlfmt)                                         | A formatter for kdl documents                                                                                                                 | `formatter`           | `kdl`                                                                                                                             |
 | [kdoc-formatter](https://github.com/tnorbye/kdoc-formatter)                          | Reformats Kotlin KDoc comments, reflowing text and other cleanup                                                                              | `formatter`           | `kotlin`                                                                                                                          |
+| [keep-sorted](https://github.com/google/keep-sorted)                                 | keep-sorted is a language-agnostic formatter that sorts lines between two markers in a larger file                                            | `formatter`           |                                                                                                                                   |
 | [ktfmt](https://github.com/facebook/ktfmt)                                           | program that reformats Kotlin source code to comply with the common community standard for Kotlin code conventions                            | `formatter`           | `kotlin`                                                                                                                          |
 | [ktlint](https://github.com/pinterest/ktlint)                                        | An anti-bikeshedding Kotlin linter with built-in formatter                                                                                    | `linter`              | `kotlin`                                                                                                                          |
 | [kulala-fmt](https://github.com/mistweaverco/kulala-fmt)                             | An opinionated .http and .rest file linter and formatter                                                                                      | `formatter`           | `http`                                                                                                                            |
@@ -784,7 +785,7 @@ That can be changed by specifying the `newline` config option.
 
 <!-- START_SECTION:supported-commands -->
 
-`mdsf` currently supports 352 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 353 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                         | Command                                                                                 |
 | ---------------------------- | --------------------------------------------------------------------------------------- |
@@ -951,6 +952,7 @@ That can be changed by specifying the `newline` config option.
 | `kdlfmt:v2`                  | `kdlfmt format --kdl-version v2 $PATH`                                                  |
 | `kdlfmt`                     | `kdlfmt format $PATH`                                                                   |
 | `kdoc-formatter`             | `kdoc-formatter --quiet $PATH`                                                          |
+| `keep-sorted`                | `keep-sorted $PATH`                                                                     |
 | `ktfmt`                      | `ktfmt $PATH`                                                                           |
 | `ktlint`                     | `ktlint --format --log-level=error $PATH`                                               |
 | `kulala-fmt:check`           | `kulala-fmt check $PATH`                                                                |

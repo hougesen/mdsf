@@ -2344,6 +2344,9 @@ child "2"   }
 mod test_kdoc_formatter {}
 
 #[cfg(test)]
+mod test_keep_sorted {}
+
+#[cfg(test)]
 mod test_ktfmt {
     #[test_with::executable(ktfmt)]
     fn test_ktfmt_kotlin_434b08006e9b780a() -> Result<(), Box<dyn core::error::Error>> {
