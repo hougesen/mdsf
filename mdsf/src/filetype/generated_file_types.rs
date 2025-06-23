@@ -1111,7 +1111,7 @@ mod test_language_to_ext {
     #[allow(clippy::too_many_lines)]
     #[test]
     fn test_pairings() {
-        let cases = [
+        let cases = vec![
             ("1c enterprise", ".bsl"),
             ("2-dimensional array", ".2da"),
             ("4d", ".4dm"),
