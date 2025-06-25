@@ -77,7 +77,7 @@
     "@biomejs/biome": "^2.0.5",
     "@eslint/js": "^9.29.0",
     "@types/mocha": "^10.0.10",
-    "@types/node": "22.x",
+    "@types/node": "24.x",
     "@types/vscode": "^1.99.0",
     "@typescript-eslint/eslint-plugin": "^8.35.0",
     "@typescript-eslint/parser": "^8.34.1",
