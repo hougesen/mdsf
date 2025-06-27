@@ -2,8 +2,14 @@
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
-#### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.10.0...HEAD)
+#### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.10.1...HEAD)
 
+#### [v0.10.1](https://github.com/hougesen/mdsf/compare/v0.10.0...v0.10.1)
+
+> 27 June 2025
+
+- chore: release v0.10.1 [`#1145`](https://github.com/hougesen/mdsf/pull/1145)
+- refactor: revert if let chain syntax [`#1144`](https://github.com/hougesen/mdsf/pull/1144)
 - chore: change version to dev [`da36c8a`](https://github.com/hougesen/mdsf/commit/da36c8a3cd694348f3d60ec5245ec7344da74b2b)
 
 #### [v0.10.0](https://github.com/hougesen/mdsf/compare/v0.9.6...v0.10.0)
