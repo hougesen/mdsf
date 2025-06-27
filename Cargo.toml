@@ -1,17 +1,17 @@
 [workspace]
+resolver = "3"
 members = ["codegen", "mdsf"]
 exclude = []
-resolver = "3"
 
 [workspace.package]
 version = "0.9.7-next"
-readme = "README.md"
-edition = "2024"
-homepage = "https://github.com/hougesen/mdsf?tab=readme-ov-file"
 authors = ["Mads Hougesen <mads@mhouge.dk>"]
-license = "MIT"
-repository = "https://github.com/hougesen/mdsf"
+edition = "2024"
 documentation = "https://github.com/hougesen/mdsf#readme"
+readme = "README.md"
+homepage = "https://github.com/hougesen/mdsf?tab=readme-ov-file"
+repository = "https://github.com/hougesen/mdsf"
+license = "MIT"
 
 [workspace.dependencies]
 assert_cmd = "2.0.17"
@@ -24,7 +24,7 @@ env_logger = "0.11.8"
 ignore = "0.4.23"
 json_comments = "0.2.2"
 log = "0.4.27"
-mdsf = { path = "./mdsf", features = ["json-schema"] }
+mdsf = { features = ["json-schema"], path = "./mdsf" }
 owo-colors = { version = "4.2.2", features = ["supports-colors"] }
 predicates = "3.1.3"
 process_control = { version = "5.1.1" }

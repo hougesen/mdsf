@@ -153,12 +153,9 @@ pub fn format_file(
 
                             set_exit_code_error();
                         }
-                        OnMissingLanguageDefinition::FailFast => {
-                            exit_with_error(&MdsfError::MissingLanguageDefinition(
-                                filename.to_path_buf(),
-                                language,
-                            ));
-                        }
+                        OnMissingLanguageDefinition::FailFast => exit_with_error(
+                            &MdsfError::MissingLanguageDefinition(filename.to_path_buf(), language),
+                        ),
                     }
                 }
 
