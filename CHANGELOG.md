@@ -4,6 +4,7 @@ All notable changes to this project will be documented in this file. Dates are d
 
 #### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.9.6...HEAD)
 
+- refactor(tombi): use stdin when formatting using tombi [`#1138`](https://github.com/hougesen/mdsf/pull/1138)
 - chore(dependabot): revert back to individual declarations [`#1135`](https://github.com/hougesen/mdsf/pull/1135)
 - build(deps): update schemars to v1.0.1 [`#1134`](https://github.com/hougesen/mdsf/pull/1134)
 - build(deps): bump owo-colors from 4.2.1 to 4.2.2 [`#1133`](https://github.com/hougesen/mdsf/pull/1133)

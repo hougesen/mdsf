@@ -20,6 +20,7 @@ run = [
 
 [tasks.format]
 run = [
+  "tombi format",
   "taplo format",
   "mise fmt",
   "cargo +nightly fmt",
@@ -73,7 +74,7 @@ run = ["npm i", "npm run lint:biome:fix", "npm run lint:eslint:fix"]
 
 [tasks.sort-json]
 run = [
-  'npx jsonlint -s -i mdsf.json',
+  "npx jsonlint -s -i mdsf.json",
   'find ./tools -type f -name "*.json" -exec npx jsonlint -s -i {} \;',
 ]
 
