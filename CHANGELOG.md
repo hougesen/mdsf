@@ -4,6 +4,8 @@ All notable changes to this project will be documented in this file. Dates are d
 
 #### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.10.0...HEAD)
 
+- chore: change version to dev [`da36c8a`](https://github.com/hougesen/mdsf/commit/da36c8a3cd694348f3d60ec5245ec7344da74b2b)
+
 #### [v0.10.0](https://github.com/hougesen/mdsf/compare/v0.9.6...v0.10.0)
 
 > 27 June 2025
