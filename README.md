@@ -1100,7 +1100,7 @@ That can be changed by specifying the `newline` config option.
 | `textlint`                   | `textlint $PATH`                                                                        |
 | `tlint:format`               | `tlint format $PATH`                                                                    |
 | `tofu:fmt`                   | `tofu fmt -write=true $PATH`                                                            |
-| `tombi:format`               | `tombi format $PATH`                                                                    |
+| `tombi:format`               | `tombi format -`                                                                        |
 | `tombi:lint`                 | `tombi lint $PATH`                                                                      |
 | `toml-sort`                  | `toml-sort -i $PATH`                                                                    |
 | `topiary`                    | `topiary format $PATH`                                                                  |

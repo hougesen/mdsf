@@ -4,7 +4,8 @@
   "categories": ["formatter", "linter"],
   "commands": {
     "format": {
-      "arguments": ["format", "$PATH"],
+      "arguments": ["format", "-"],
+      "stdin": true,
       "tests": [
         {
           "language": "toml",
