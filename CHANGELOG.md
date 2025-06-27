@@ -4,6 +4,7 @@ All notable changes to this project will be documented in this file. Dates are d
 
 #### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.9.6...HEAD)
 
+- refactor: apply rust v1.88.0 fixes [`#1139`](https://github.com/hougesen/mdsf/pull/1139)
 - refactor(tombi): use stdin when formatting using tombi [`#1138`](https://github.com/hougesen/mdsf/pull/1138)
 - chore(dependabot): revert back to individual declarations [`#1135`](https://github.com/hougesen/mdsf/pull/1135)
 - build(deps): update schemars to v1.0.1 [`#1134`](https://github.com/hougesen/mdsf/pull/1134)
