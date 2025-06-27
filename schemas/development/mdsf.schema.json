@@ -1723,7 +1723,7 @@
           "const": "tofu:fmt"
         },
         {
-          "description": "TOML Formatter / Linter\n\n[https://github.com/tombi-toml/tombi](https://github.com/tombi-toml/tombi)\n\n`tombi format $PATH`",
+          "description": "TOML Formatter / Linter\n\n[https://github.com/tombi-toml/tombi](https://github.com/tombi-toml/tombi)\n\n`tombi format -`",
           "type": "string",
           "const": "tombi:format"
         },

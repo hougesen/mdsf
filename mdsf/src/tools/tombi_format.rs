@@ -7,10 +7,10 @@ use crate::runners::CommandType;
 #[inline]
 pub fn set_args(
     mut cmd: std::process::Command,
-    file_path: &std::path::Path,
+    _file_path: &std::path::Path,
 ) -> std::process::Command {
     cmd.arg("format");
-    cmd.arg(file_path);
+    cmd.arg("-");
     cmd
 }
 
@@ -20,4 +20,4 @@ pub const COMMANDS: [CommandType; 3] = [
     CommandType::Pipx("tombi"),
 ];
 
-pub const IS_STDIN: bool = false;
+pub const IS_STDIN: bool = true;

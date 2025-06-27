@@ -2852,7 +2852,7 @@ pub enum Tooling {
     ///
     /// [https://github.com/tombi-toml/tombi](https://github.com/tombi-toml/tombi)
     ///
-    /// `tombi format $PATH`
+    /// `tombi format -`
     TombiFormat,
 
     #[serde(rename = "tombi:lint")]
