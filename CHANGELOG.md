@@ -27,6 +27,7 @@ All notable changes to this project will be documented in this file. Dates are d
 - build(deps): bump process_control from 5.1.0 to 5.1.1 [`#1104`](https://github.com/hougesen/mdsf/pull/1104)
 - build(deps): bump ureq from 3.0.11 to 3.0.12 [`#1105`](https://github.com/hougesen/mdsf/pull/1105)
 - test(tools): update biome test data [`edca6ce`](https://github.com/hougesen/mdsf/commit/edca6ce4d72f0a92797f58801bcaccfc40b86160)
+- build(deps): bump schemars from 1.0.1 to 1.0.2 [`0aa9d6d`](https://github.com/hougesen/mdsf/commit/0aa9d6d905d2bfd2327476f9bea4b523949abc98)
 - fix: migrate biome.json config [`3f75763`](https://github.com/hougesen/mdsf/commit/3f757638bcaebd76087cfa65077a40da5edbfd23)
 - chore(dependabot): explicit dependency file paths [`1178102`](https://github.com/hougesen/mdsf/commit/1178102cdf37980a6dd1eed1b38fb2590a5a6f68)
 - fix(dependabot): make directories value array [`f4c2bf1`](https://github.com/hougesen/mdsf/commit/f4c2bf19d9d71b74c38228173b9efb03d8200e86)

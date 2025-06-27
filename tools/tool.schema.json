@@ -7,10 +7,6 @@
       "type": "string",
       "default": "../tool.schema.json"
     },
-    "description": {
-      "type": "string",
-      "default": ""
-    },
     "binary": {
       "type": "string"
     },
@@ -30,6 +26,10 @@
     },
     "deprecated": {
       "type": "boolean"
+    },
+    "description": {
+      "type": "string",
+      "default": ""
     },
     "disable_ci_package_install": {
       "type": "boolean"
@@ -61,9 +61,6 @@
     "ToolCommand": {
       "type": "object",
       "properties": {
-        "description": {
-          "type": ["string", "null"]
-        },
         "arguments": {
           "type": "array",
           "items": {
@@ -72,6 +69,9 @@
         },
         "deprecated": {
           "type": "boolean"
+        },
+        "description": {
+          "type": ["string", "null"]
         },
         "homepage": {
           "type": ["string", "null"],
