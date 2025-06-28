@@ -6,7 +6,7 @@ All notable changes to this project will be documented in this file. Dates are d
 
 #### [v0.10.1](https://github.com/hougesen/mdsf/compare/v0.10.0...v0.10.1)
 
-> 27 June 2025
+> 28 June 2025
 
 - chore: release v0.10.1 [`#1145`](https://github.com/hougesen/mdsf/pull/1145)
 - refactor: revert if let chain syntax [`#1144`](https://github.com/hougesen/mdsf/pull/1144)
