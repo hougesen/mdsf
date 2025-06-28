@@ -4,6 +4,9 @@ All notable changes to this project will be documented in this file. Dates are d
 
 #### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.10.1...HEAD)
 
+- build(deps): bump schemars from 1.0.2 to 1.0.3 [`#1146`](https://github.com/hougesen/mdsf/pull/1146)
+- chore: set package version to dev [`8b47acc`](https://github.com/hougesen/mdsf/commit/8b47accc51bbb7585dbb8d00545d44349b776e35)
+
 #### [v0.10.1](https://github.com/hougesen/mdsf/compare/v0.10.0...v0.10.1)
 
 > 28 June 2025
