@@ -1,0 +1,22 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "cabal-gild",
+  "categories": ["formatter"],
+  "commands": {
+    "": {
+      "arguments": ["--input", "$PATH", "--output", "$PATH"],
+      "tests": []
+    }
+  },
+  "description": "Format Haskell package descriptions",
+  "homepage": "https://github.com/tfausak/cabal-gild",
+  "languages": ["cabal", "haskell"],
+  "packages": {
+    "cabal": {
+      "package": "cabal-gild"
+    },
+    "stack": {
+      "package": "cabal-gild"
+    }
+  }
+}

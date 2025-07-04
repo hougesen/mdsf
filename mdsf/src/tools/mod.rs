@@ -38,6 +38,7 @@ pub mod buf_lint;
 pub mod buildifier;
 pub mod cabal_fmt;
 pub mod cabal_format;
+pub mod cabal_gild;
 pub mod cabal_prettify;
 pub mod caddy_fmt;
 pub mod caramel_fmt;
@@ -638,6 +639,14 @@ pub enum Tooling {
     ///
     /// `cabal-fmt --inplace $PATH`
     CabalFmt,
+
+    #[serde(rename = "cabal-gild")]
+    /// Format Haskell package descriptions
+    ///
+    /// [https://github.com/tfausak/cabal-gild](https://github.com/tfausak/cabal-gild)
+    ///
+    /// `cabal-gild --input $PATH --output $PATH`
+    CabalGild,
 
     #[serde(rename = "cabal-prettify")]
     /// Prettify your Cabal package configuration files
@@ -3323,6 +3332,11 @@ impl Tooling {
                 cabal_format::set_args,
                 cabal_format::IS_STDIN,
             ),
+            Self::CabalGild => (
+                &cabal_gild::COMMANDS,
+                cabal_gild::set_args,
+                cabal_gild::IS_STDIN,
+            ),
             Self::CabalPrettify => (
                 &cabal_prettify::COMMANDS,
                 cabal_prettify::set_args,
@@ -4371,6 +4385,7 @@ impl AsRef<str> for Tooling {
             Self::Buildifier => "buildifier",
             Self::CabalFmt => "cabal-fmt",
             Self::CabalFormat => "cabal:format",
+            Self::CabalGild => "cabal-gild",
             Self::CabalPrettify => "cabal-prettify",
             Self::CaddyFmt => "caddy:fmt",
             Self::CaramelFmt => "caramel:fmt",
@@ -4743,6 +4758,7 @@ mod test_tooling {
         assert_eq!(Tooling::Buildifier, reverse(Tooling::Buildifier)?);
         assert_eq!(Tooling::CabalFmt, reverse(Tooling::CabalFmt)?);
         assert_eq!(Tooling::CabalFormat, reverse(Tooling::CabalFormat)?);
+        assert_eq!(Tooling::CabalGild, reverse(Tooling::CabalGild)?);
         assert_eq!(Tooling::CabalPrettify, reverse(Tooling::CabalPrettify)?);
         assert_eq!(Tooling::CaddyFmt, reverse(Tooling::CaddyFmt)?);
         assert_eq!(Tooling::CaramelFmt, reverse(Tooling::CaramelFmt)?);

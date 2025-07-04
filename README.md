@@ -457,7 +457,7 @@ That can be changed by specifying the `newline` config option.
 
 <!-- START_SECTION:supported-tools -->
 
-`mdsf` currently supports 317 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 318 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                                                                                 | Description                                                                                                                                   | Categories            | Languages                                                                                                                         |
 | ------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
@@ -491,6 +491,7 @@ That can be changed by specifying the `newline` config option.
 | [buf](https://buf.build/docs/reference/cli/buf/)                                     | The best way of working with Protocol Buffers                                                                                                 | `formatter`           | `protobuf`                                                                                                                        |
 | [buildifier](https://github.com/bazelbuild/buildtools)                               | A bazel BUILD file formatter and                                                                                                              | `formatter`           | `bazel`                                                                                                                           |
 | [cabal-fmt](https://github.com/phadej/cabal-fmt)                                     | An experiment of formatting .cabal files                                                                                                      | `formatter`           | `cabal`                                                                                                                           |
+| [cabal-gild](https://github.com/tfausak/cabal-gild)                                  | Format Haskell package descriptions                                                                                                           | `formatter`           | `cabal`, `haskell`                                                                                                                |
 | [cabal-prettify](https://github.com/kindaro/cabal-prettify)                          | Prettify your Cabal package configuration files                                                                                               | `formatter`           | `cabal`                                                                                                                           |
 | [cabal](https://www.haskell.org/cabal/)                                              | Cabal is a system for building and packaging Haskell libraries and programs                                                                   | `formatter`           | `cabal`                                                                                                                           |
 | [caddy](https://caddyserver.com/docs/command-line#caddy-fmt)                         | Formats or prettifies a Caddyfile                                                                                                             | `formatter`           | `caddy`                                                                                                                           |
@@ -785,7 +786,7 @@ That can be changed by specifying the `newline` config option.
 
 <!-- START_SECTION:supported-commands -->
 
-`mdsf` currently supports 353 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 354 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                         | Command                                                                                 |
 | ---------------------------- | --------------------------------------------------------------------------------------- |
@@ -824,6 +825,7 @@ That can be changed by specifying the `newline` config option.
 | `buf:lint`                   | `buf lint $PATH`                                                                        |
 | `buildifier`                 | `buildifier $PATH`                                                                      |
 | `cabal-fmt`                  | `cabal-fmt --inplace $PATH`                                                             |
+| `cabal-gild`                 | `cabal-gild --input $PATH --output $PATH`                                               |
 | `cabal-prettify`             | `cabal-prettify $PATH`                                                                  |
 | `cabal:format`               | `cabal format $PATH`                                                                    |
 | `caddy:fmt`                  | `caddy fmt $PATH -w`                                                                    |
