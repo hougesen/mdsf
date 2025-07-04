@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file. Dates are d
 
 #### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.10.1...HEAD)
 
+- build(deps-dev): bump eslint from 9.29.0 to 9.30.0 in /mdsf-vscode [`#1152`](https://github.com/hougesen/mdsf/pull/1152)
+- build(deps-dev): bump @eslint/js from 9.29.0 to 9.30.0 in /mdsf-vscode [`#1151`](https://github.com/hougesen/mdsf/pull/1151)
+- build(deps-dev): bump eslint from 9.29.0 to 9.30.0 in /github-action [`#1147`](https://github.com/hougesen/mdsf/pull/1147)
+- build(deps-dev): bump @eslint/js from 9.29.0 to 9.30.0 in /github-action [`#1149`](https://github.com/hougesen/mdsf/pull/1149)
 - build(deps): bump schemars from 1.0.2 to 1.0.3 [`#1146`](https://github.com/hougesen/mdsf/pull/1146)
 - chore: set package version to dev [`8b47acc`](https://github.com/hougesen/mdsf/commit/8b47accc51bbb7585dbb8d00545d44349b776e35)
 

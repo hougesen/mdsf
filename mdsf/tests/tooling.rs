@@ -727,6 +727,9 @@ executable msdf
 mod test_cabal_fmt {}
 
 #[cfg(test)]
+mod test_cabal_gild {}
+
+#[cfg(test)]
 mod test_cabal_prettify {}
 
 #[cfg(test)]

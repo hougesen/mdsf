@@ -343,6 +343,11 @@
           "const": "cabal-fmt"
         },
         {
+          "description": "Format Haskell package descriptions\n\n[https://github.com/tfausak/cabal-gild](https://github.com/tfausak/cabal-gild)\n\n`cabal-gild --input $PATH --output $PATH`",
+          "type": "string",
+          "const": "cabal-gild"
+        },
+        {
           "description": "Prettify your Cabal package configuration files\n\n[https://github.com/kindaro/cabal-prettify](https://github.com/kindaro/cabal-prettify)\n\n`cabal-prettify $PATH`",
           "type": "string",
           "const": "cabal-prettify"
