@@ -4,6 +4,7 @@ All notable changes to this project will be documented in this file. Dates are d
 
 #### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.10.1...HEAD)
 
+- ci: add permission set to mdsf.yml [`#1154`](https://github.com/hougesen/mdsf/pull/1154)
 - feat(tools): add support for cabal-gild [`#1153`](https://github.com/hougesen/mdsf/pull/1153)
 - build(deps-dev): bump eslint from 9.29.0 to 9.30.0 in /mdsf-vscode [`#1152`](https://github.com/hougesen/mdsf/pull/1152)
 - build(deps-dev): bump @eslint/js from 9.29.0 to 9.30.0 in /mdsf-vscode [`#1151`](https://github.com/hougesen/mdsf/pull/1151)
