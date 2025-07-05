@@ -2,6 +2,8 @@ name: mdsf
 on:
   push:
   workflow_dispatch:
+permissions:
+  contents: read
 jobs:
   verify:
     runs-on: ${{ matrix.os }}
