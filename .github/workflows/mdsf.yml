@@ -2,8 +2,6 @@ name: mdsf
 on:
   push:
   workflow_dispatch:
-permissions:
-  contents: read
 jobs:
   verify:
     runs-on: ${{ matrix.os }}
@@ -14,6 +12,8 @@ jobs:
           - macos-latest
           # disabled because of an issue with crlf
           # - windows-latest
+    permissions:
+      contents: read
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
