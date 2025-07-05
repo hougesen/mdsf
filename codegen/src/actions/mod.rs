@@ -3,7 +3,7 @@ use workflow::{
     WorkflowJobsStrategy, WorkflowJobsStrategyMatrix,
 };
 
-use crate::{error::CodegenError, tools::Tool};
+use crate::{actions::workflow::WorkflowJobsPermissions, error::CodegenError, tools::Tool};
 
 mod packages;
 mod workflow;
@@ -61,6 +61,9 @@ pub fn generate(plugins: &Vec<Tool>) -> Result<(), CodegenError> {
                     },
                 },
                 runs_on: "${{ matrix.os }}".to_owned(),
+                permissions: WorkflowJobsPermissions {
+                    contents: Some("read".to_owned()),
+                },
                 steps,
             },
         )]),

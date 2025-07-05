@@ -42,11 +42,17 @@ pub struct WorkflowJobsStep {
 }
 
 #[derive(serde::Serialize)]
+pub struct WorkflowJobsPermissions {
+    pub contents: Option<String>,
+}
+
+#[derive(serde::Serialize)]
 pub struct WorkflowJobs {
     pub name: String,
     pub strategy: WorkflowJobsStrategy,
     #[serde(rename = "runs-on")]
     pub runs_on: String,
+    pub permissions: WorkflowJobsPermissions,
     pub steps: Vec<WorkflowJobsStep>,
 }
 

@@ -4,6 +4,9 @@ All notable changes to this project will be documented in this file. Dates are d
 
 #### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.10.1...HEAD)
 
+- ci: add permission set to release-vscode.yml [`#1156`](https://github.com/hougesen/mdsf/pull/1156)
+- ci: set permissions for release-crates.yml [`#1157`](https://github.com/hougesen/mdsf/pull/1157)
+- ci: add permission sets to validate.yml [`#1155`](https://github.com/hougesen/mdsf/pull/1155)
 - ci: add permission set to mdsf.yml [`#1154`](https://github.com/hougesen/mdsf/pull/1154)
 - feat(tools): add support for cabal-gild [`#1153`](https://github.com/hougesen/mdsf/pull/1153)
 - build(deps-dev): bump eslint from 9.29.0 to 9.30.0 in /mdsf-vscode [`#1152`](https://github.com/hougesen/mdsf/pull/1152)
