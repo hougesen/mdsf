@@ -7,6 +7,8 @@ jobs:
   extension-release:
     name: Release Extension
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
       - uses: actions/checkout@v4
       - run: npm ci
