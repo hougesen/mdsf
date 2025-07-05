@@ -4,6 +4,7 @@ All notable changes to this project will be documented in this file. Dates are d
 
 #### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.10.1...HEAD)
 
+- ci: set permissions for test.yml [`#1158`](https://github.com/hougesen/mdsf/pull/1158)
 - ci: add permission set to release-vscode.yml [`#1156`](https://github.com/hougesen/mdsf/pull/1156)
 - ci: set permissions for release-crates.yml [`#1157`](https://github.com/hougesen/mdsf/pull/1157)
 - ci: add permission sets to validate.yml [`#1155`](https://github.com/hougesen/mdsf/pull/1155)
