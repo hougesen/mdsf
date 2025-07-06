@@ -4,6 +4,8 @@ All notable changes to this project will be documented in this file. Dates are d
 
 #### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.10.1...HEAD)
 
+- build(deps): bump schemars from 1.0.3 to 1.0.4 [`#1160`](https://github.com/hougesen/mdsf/pull/1160)
+- ci: set permissions for codegen.yml [`#1159`](https://github.com/hougesen/mdsf/pull/1159)
 - ci: set permissions for test.yml [`#1158`](https://github.com/hougesen/mdsf/pull/1158)
 - ci: add permission set to release-vscode.yml [`#1156`](https://github.com/hougesen/mdsf/pull/1156)
 - ci: set permissions for release-crates.yml [`#1157`](https://github.com/hougesen/mdsf/pull/1157)
