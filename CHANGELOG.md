@@ -4,6 +4,7 @@ All notable changes to this project will be documented in this file. Dates are d
 
 #### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.10.1...HEAD)
 
+- build(deps-dev): bump @biomejs/biome from 2.0.6 to 2.1.0 in /mdsf-vscode [`#1171`](https://github.com/hougesen/mdsf/pull/1171)
 - build(deps-dev): bump @typescript-eslint/parser in /mdsf-vscode [`#1169`](https://github.com/hougesen/mdsf/pull/1169)
 - build(deps-dev): bump @typescript-eslint/eslint-plugin in /mdsf-vscode [`#1168`](https://github.com/hougesen/mdsf/pull/1168)
 - build(deps-dev): bump @eslint/js from 9.30.0 to 9.30.1 in /github-action [`#1170`](https://github.com/hougesen/mdsf/pull/1170)
@@ -25,7 +26,7 @@ All notable changes to this project will be documented in this file. Dates are d
 - build(deps-dev): bump @eslint/js from 9.29.0 to 9.30.0 in /github-action [`#1149`](https://github.com/hougesen/mdsf/pull/1149)
 - build(deps): bump schemars from 1.0.2 to 1.0.3 [`#1146`](https://github.com/hougesen/mdsf/pull/1146)
 - chore: set package version to dev [`8b47acc`](https://github.com/hougesen/mdsf/commit/8b47accc51bbb7585dbb8d00545d44349b776e35)
-- build(deps-dev): bump @biomejs/biome from 2.0.6 to 2.1.0 in /mdsf-vscode [`fc0f6d4`](https://github.com/hougesen/mdsf/commit/fc0f6d400ad65cb8187cf6ca301476300edd245c)
+- build(deps-dev): bump @biomejs/biome in /github-action [`fe690bd`](https://github.com/hougesen/mdsf/commit/fe690bd641a812335c6a84b847e63f0f76244432)
 
 #### [v0.10.1](https://github.com/hougesen/mdsf/compare/v0.10.0...v0.10.1)
 
