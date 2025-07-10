@@ -1079,7 +1079,7 @@ That can be changed by specifying the `newline` config option.
 | `sqlfluff:format`            | `sqlfluff format --disable-progress-bar --nocolor --dialect ansi $PATH`                 |
 | `sqlfluff:lint`              | `sqlfluff lint --disable-progress-bar --nocolor --dialect ansi $PATH`                   |
 | `sqlfmt`                     | `sqlfmt $PATH`                                                                          |
-| `sqruff`                     | `sqruff fix --force $PATH`                                                              |
+| `sqruff`                     | `sqruff fix $PATH`                                                                      |
 | `squawk`                     | `squawk $PATH`                                                                          |
 | `standardjs`                 | `standard --fix --stdin`                                                                |
 | `standardrb`                 | `standardrb --fix $PATH`                                                                |
