@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file. Dates are d
 
 #### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.10.1...HEAD)
 
+- build(deps-dev): bump esbuild from 0.25.5 to 0.25.6 in /github-action [`#1174`](https://github.com/hougesen/mdsf/pull/1174)
+- build(deps-dev): bump esbuild from 0.25.5 to 0.25.6 in /mdsf-vscode [`#1175`](https://github.com/hougesen/mdsf/pull/1175)
+- build(deps-dev): bump globals from 16.2.0 to 16.3.0 in /github-action [`#1167`](https://github.com/hougesen/mdsf/pull/1167)
+- build(deps-dev): bump @typescript-eslint/eslint-plugin in /mdsf-vscode [`#1173`](https://github.com/hougesen/mdsf/pull/1173)
+- build(deps-dev): bump @biomejs/biome from 2.0.6 to 2.1.0 in /github-action [`#1172`](https://github.com/hougesen/mdsf/pull/1172)
 - build(deps-dev): bump @biomejs/biome from 2.0.6 to 2.1.0 in /mdsf-vscode [`#1171`](https://github.com/hougesen/mdsf/pull/1171)
 - build(deps-dev): bump @typescript-eslint/parser in /mdsf-vscode [`#1169`](https://github.com/hougesen/mdsf/pull/1169)
 - build(deps-dev): bump @typescript-eslint/eslint-plugin in /mdsf-vscode [`#1168`](https://github.com/hougesen/mdsf/pull/1168)
@@ -26,7 +31,8 @@ All notable changes to this project will be documented in this file. Dates are d
 - build(deps-dev): bump @eslint/js from 9.29.0 to 9.30.0 in /github-action [`#1149`](https://github.com/hougesen/mdsf/pull/1149)
 - build(deps): bump schemars from 1.0.2 to 1.0.3 [`#1146`](https://github.com/hougesen/mdsf/pull/1146)
 - chore: set package version to dev [`8b47acc`](https://github.com/hougesen/mdsf/commit/8b47accc51bbb7585dbb8d00545d44349b776e35)
-- build(deps-dev): bump @biomejs/biome in /github-action [`fe690bd`](https://github.com/hougesen/mdsf/commit/fe690bd641a812335c6a84b847e63f0f76244432)
+- chore: updated generated code [`3aff43b`](https://github.com/hougesen/mdsf/commit/3aff43b7073a567491ee6ce24962e841790adf1b)
+- refactor(tools) remove --force arg from sqruff [`028bb06`](https://github.com/hougesen/mdsf/commit/028bb0635a4552041c8054b2a7104e0620f14d01)
 
 #### [v0.10.1](https://github.com/hougesen/mdsf/compare/v0.10.0...v0.10.1)
 
