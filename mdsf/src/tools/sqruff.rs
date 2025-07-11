@@ -10,7 +10,6 @@ pub fn set_args(
     file_path: &std::path::Path,
 ) -> std::process::Command {
     cmd.arg("fix");
-    cmd.arg("--force");
     cmd.arg(file_path);
     cmd
 }

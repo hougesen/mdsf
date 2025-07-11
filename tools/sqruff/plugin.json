@@ -4,7 +4,7 @@
   "categories": ["formatter", "linter"],
   "commands": {
     "": {
-      "arguments": ["fix", "--force", "$PATH"],
+      "arguments": ["fix", "$PATH"],
       "tests": [
         {
           "language": "sql",
