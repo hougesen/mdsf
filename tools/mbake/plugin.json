@@ -1,0 +1,23 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "mbake",
+  "categories": ["formatter", "linter"],
+  "commands": {
+    "format": {
+      "arguments": ["format", "$PATH"],
+      "tests": []
+    },
+    "validate": {
+      "arguments": ["validate", "$PATH"],
+      "tests": []
+    }
+  },
+  "description": "mbake is a Makefile formatter and linter",
+  "homepage": "https://github.com/ebodshojaei/bake",
+  "languages": ["make"],
+  "packages": {
+    "pip": {
+      "package": "mbake"
+    }
+  }
+}

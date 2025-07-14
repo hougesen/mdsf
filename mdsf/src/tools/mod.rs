@@ -185,6 +185,8 @@ pub mod markdownfmt;
 pub mod markdownlint;
 pub mod markdownlint_cli_2;
 pub mod markuplint;
+pub mod mbake_format;
+pub mod mbake_validate;
 pub mod md_padding;
 pub mod mdformat;
 pub mod mdsf_format;
@@ -1823,6 +1825,22 @@ pub enum Tooling {
     ///
     /// `markuplint --fix $PATH`
     Markuplint,
+
+    #[serde(rename = "mbake:format")]
+    /// mbake is a Makefile formatter and linter
+    ///
+    /// [https://github.com/ebodshojaei/bake](https://github.com/ebodshojaei/bake)
+    ///
+    /// `mbake format $PATH`
+    MbakeFormat,
+
+    #[serde(rename = "mbake:validate")]
+    /// mbake is a Makefile formatter and linter
+    ///
+    /// [https://github.com/ebodshojaei/bake](https://github.com/ebodshojaei/bake)
+    ///
+    /// `mbake validate $PATH`
+    MbakeValidate,
 
     #[serde(rename = "md-padding")]
     /// Fix mixed spaces in Markdown: Chinese and English, numbers, links
@@ -3827,6 +3845,16 @@ impl Tooling {
                 markuplint::set_args,
                 markuplint::IS_STDIN,
             ),
+            Self::MbakeFormat => (
+                &mbake_format::COMMANDS,
+                mbake_format::set_args,
+                mbake_format::IS_STDIN,
+            ),
+            Self::MbakeValidate => (
+                &mbake_validate::COMMANDS,
+                mbake_validate::set_args,
+                mbake_validate::IS_STDIN,
+            ),
             Self::MdPadding => (
                 &md_padding::COMMANDS,
                 md_padding::set_args,
@@ -4532,6 +4560,8 @@ impl AsRef<str> for Tooling {
             Self::Markdownlint => "markdownlint",
             Self::MarkdownlintCli2 => "markdownlint-cli2",
             Self::Markuplint => "markuplint",
+            Self::MbakeFormat => "mbake:format",
+            Self::MbakeValidate => "mbake:validate",
             Self::MdPadding => "md-padding",
             Self::Mdformat => "mdformat",
             Self::MdsfFormat => "mdsf:format",
@@ -4938,6 +4968,8 @@ mod test_tooling {
             reverse(Tooling::MarkdownlintCli2)?
         );
         assert_eq!(Tooling::Markuplint, reverse(Tooling::Markuplint)?);
+        assert_eq!(Tooling::MbakeFormat, reverse(Tooling::MbakeFormat)?);
+        assert_eq!(Tooling::MbakeValidate, reverse(Tooling::MbakeValidate)?);
         assert_eq!(Tooling::MdPadding, reverse(Tooling::MdPadding)?);
         assert_eq!(Tooling::Mdformat, reverse(Tooling::Mdformat)?);
         assert_eq!(Tooling::MdsfFormat, reverse(Tooling::MdsfFormat)?);

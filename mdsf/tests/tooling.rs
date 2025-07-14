@@ -2647,6 +2647,12 @@ mod test_markdownlint_cli_2 {
 mod test_markuplint {}
 
 #[cfg(test)]
+mod test_mbake_format {}
+
+#[cfg(test)]
+mod test_mbake_validate {}
+
+#[cfg(test)]
 mod test_md_padding {}
 
 #[cfg(test)]
