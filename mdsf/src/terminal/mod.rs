@@ -105,6 +105,15 @@ pub fn print_error_saving_file(path: &std::path::Path, error: &std::io::Error) {
 }
 
 #[inline]
+pub fn print_config_schema_version_mismatch(version: &str) {
+    if version == "development" {
+        warn!("Your mdsf.json schema version is currently set to a development");
+    } else {
+        warn!("Your mdsf.json schema version does not match the CLI version");
+    }
+}
+
+#[inline]
 fn wrap_text(input: &str) -> String {
     if input.trim().is_empty() {
         return String::new();

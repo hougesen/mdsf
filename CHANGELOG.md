@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file. Dates are d
 
 #### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.10.1...HEAD)
 
+- feat(tools): support mbake [`#1189`](https://github.com/hougesen/mdsf/pull/1189)
+- build(deps-dev): bump @biomejs/biome from 2.1.0 to 2.1.1 in /mdsf-vscode [`#1185`](https://github.com/hougesen/mdsf/pull/1185)
+- build(deps-dev): bump eslint from 9.30.1 to 9.31.0 in /mdsf-vscode [`#1184`](https://github.com/hougesen/mdsf/pull/1184)
+- build(deps-dev): bump eslint from 9.30.1 to 9.31.0 in /github-action [`#1187`](https://github.com/hougesen/mdsf/pull/1187)
+- build(deps-dev): bump @biomejs/biome from 2.1.0 to 2.1.1 in /github-action [`#1182`](https://github.com/hougesen/mdsf/pull/1182)
+- build(deps-dev): bump @eslint/js from 9.30.1 to 9.31.0 in /mdsf-vscode [`#1180`](https://github.com/hougesen/mdsf/pull/1180)
 - build(deps): bump clap_complete from 4.5.54 to 4.5.55 [`#1177`](https://github.com/hougesen/mdsf/pull/1177)
 - build(deps): bump clap from 4.5.40 to 4.5.41 [`#1176`](https://github.com/hougesen/mdsf/pull/1176)
 - build(deps): bump clap_complete_nushell from 4.5.7 to 4.5.8 [`#1178`](https://github.com/hougesen/mdsf/pull/1178)
