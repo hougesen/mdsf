@@ -2,8 +2,16 @@
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
-#### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.10.1...HEAD)
+#### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.10.2...HEAD)
 
+#### [v0.10.2](https://github.com/hougesen/mdsf/compare/v0.10.1...v0.10.2)
+
+> 15 July 2025
+
+- chore: release v0.10.2 [`#1197`](https://github.com/hougesen/mdsf/pull/1197)
+- build(deps-dev): bump @typescript-eslint/eslint-plugin in /mdsf-vscode [`#1196`](https://github.com/hougesen/mdsf/pull/1196)
+- build(deps-dev): bump @typescript-eslint/parser in /mdsf-vscode [`#1194`](https://github.com/hougesen/mdsf/pull/1194)
+- feat(tools): support sorting json using jsonlint [`#1192`](https://github.com/hougesen/mdsf/pull/1192)
 - docs: explain msrv [`#1191`](https://github.com/hougesen/mdsf/pull/1191)
 - feat: warn if mdsf.json schema version does not match cli [`#1190`](https://github.com/hougesen/mdsf/pull/1190)
 - feat(tools): support mbake [`#1189`](https://github.com/hougesen/mdsf/pull/1189)
