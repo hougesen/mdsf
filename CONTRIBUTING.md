@@ -27,7 +27,6 @@ If we wanted to add support for mdsf (`mdsf format PATH_TO_FILE`) that would loo
 ```json
 {
   "$schema": "../tool.schema.json",
-
   "binary": "mdsf",
   "commands": {
     "format": {
@@ -39,7 +38,7 @@ If we wanted to add support for mdsf (`mdsf format PATH_TO_FILE`) that would loo
 
 As seen in the example above we used the argument `$PATH`. That is a special keyword that is automatically replaced with the actual path to the file.
 
-If you wish to test the tool locally you can generate the code for the new tool by running `just codegen`. Otherwise the code will automatically be generated when the `plugin.json` files is committed.
+If you wish to test the tool locally you can generate the code for the new tool by running `mise codegen`. Otherwise the code will automatically be generated when the `plugin.json` files is committed.
 
 ### Tool metadata
 
@@ -56,18 +55,17 @@ The current metadata keys are:
 | `categories`  | `string[]` | The purpose of the tool (`formatter` or `linter`).         |
 | `languages`   | `string[]` | The languages/file types the tool supports.                |
 
+`tools/mdsf/plugin.json`
+
 ```json
-// tools/mdsf/plugin.json
 {
   "$schema": "../tool.schema.json",
-
   "binary": "mdsf",
   "commands": {
     "format": {
       "arguments": ["format", "$PATH"]
     }
   },
-
   "description": "mdsf is a markdown codeblock formatter and linter",
   "homepage": "https://github.com/hougesen/mdsf",
   "languages": ["markdown"],

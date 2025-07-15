@@ -7,7 +7,7 @@
     "lua": "stylua",
     "nushell": "nufmt",
     "shell": "shfmt",
-    "toml": "taplo",
+    "toml": "tombi:format",
     "yaml": "prettier"
   },
   "runners": {

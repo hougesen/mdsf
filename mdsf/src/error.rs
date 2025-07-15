@@ -20,7 +20,7 @@ pub enum MdsfError {
     ConfigAlreadyExist,
     ConfigNotFound(std::path::PathBuf),
     // TODO: use &std::path::Path
-    ConfigParse(std::path::PathBuf),
+    ConfigParse((std::path::PathBuf, serde_json::Error)),
     Io(std::io::Error),
     /// Another alias clashes
     LanguageAliasClash(String, String, String),
@@ -51,8 +51,12 @@ impl core::fmt::Display for MdsfError {
             ),
             Self::ConfigAlreadyExist => write!(f, "A config already exists in this directory"),
             Self::ConfigNotFound(path) => write!(f, "No config found at: '{}'", path.display()),
-            Self::ConfigParse(path) => {
-                write!(f, "Error parsing config found at '{}'", path.display())
+            Self::ConfigParse((path, error)) => {
+                write!(
+                    f,
+                    "Error parsing config found at '{}' - {error}",
+                    path.display()
+                )
             }
             Self::Io(e) => e.fmt(f),
             Self::LanguageAliasClash(language, alias, already_set_by) => {

@@ -2161,6 +2161,23 @@ mod test_jsonlint {
 }
 
 #[cfg(test)]
+mod test_jsonlint_sort {
+    #[test_with::executable(jsonlint || npx || pnpm || deno || bunx)]
+    fn test_jsonlint_sort_json_d3194ce4b6550755() -> Result<(), Box<dyn core::error::Error>> {
+        let input = r#"{ "b": "b", "a": "a" }"#;
+
+        let output = r#"{
+  "a": "a",
+  "b": "b"
+}"#;
+
+        let ft = "json";
+
+        crate::common::run_tooling_test(mdsf::tools::Tooling::JsonlintSort, input, output, ft)
+    }
+}
+
+#[cfg(test)]
 mod test_jsonnet_lint {}
 
 #[cfg(test)]

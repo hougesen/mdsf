@@ -598,7 +598,7 @@ That can be changed by specifying the `newline` config option.
 | [js-beautify](https://github.com/beautifier/js-beautify)                             | A JavaScript formatter                                                                                                                        | `formatter`           | `javascript`                                                                                                                      |
 | [json5format](https://github.com/google/json5format)                                 | JSON5 (a.k.a., JSON for Humans) formatter that preserves contextual comments                                                                  | `formatter`           | `json5`, `json`                                                                                                                   |
 | [jsona](https://github.com/jsona/jsona)                                              | JSONA linter and formatter                                                                                                                    | `formatter`, `linter` | `jsona`                                                                                                                           |
-| [jsonlint](https://github.com/zaach/jsonlint)                                        | A JSON parser and validator with a CLI                                                                                                        | `formatter`, `linter` | `json`                                                                                                                            |
+| [jsonlint](https://github.com/zaach/jsonlint)                                        | A JSON parser and validator                                                                                                                   | `formatter`, `linter` | `json`                                                                                                                            |
 | [jsonnet-lint](https://jsonnet.org/learning/tools.html)                              | Linter for jsonnet files                                                                                                                      | `linter`              | `jsonnet`                                                                                                                         |
 | [jsonnetfmt](https://jsonnet.org/learning/tools.html)                                | Formatter for automatically fixing jsonnet stylistic problems                                                                                 | `formatter`           | `jsonnet`                                                                                                                         |
 | [jsonpp](https://github.com/jmhodges/jsonpp)                                         | A fast command line JSON pretty printer                                                                                                       | `formatter`           | `json`                                                                                                                            |
@@ -788,7 +788,7 @@ That can be changed by specifying the `newline` config option.
 
 <!-- START_SECTION:supported-commands -->
 
-`mdsf` currently supports 356 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 357 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                         | Command                                                                                 |
 | ---------------------------- | --------------------------------------------------------------------------------------- |
@@ -944,6 +944,7 @@ That can be changed by specifying the `newline` config option.
 | `json5format`                | `json5format -r $PATH`                                                                  |
 | `jsona:format`               | `jsona format $PATH`                                                                    |
 | `jsona:lint`                 | `jsona lint $PATH`                                                                      |
+| `jsonlint:sort`              | `jsonlint -s -i $PATH`                                                                  |
 | `jsonlint`                   | `jsonlint -i $PATH`                                                                     |
 | `jsonnet-lint`               | `jsonnet-lint $PATH`                                                                    |
 | `jsonnetfmt`                 | `jsonnetfmt -i $PATH`                                                                   |

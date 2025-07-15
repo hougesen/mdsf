@@ -4,6 +4,8 @@ All notable changes to this project will be documented in this file. Dates are d
 
 #### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.10.1...HEAD)
 
+- docs: explain msrv [`#1191`](https://github.com/hougesen/mdsf/pull/1191)
+- feat: warn if mdsf.json schema version does not match cli [`#1190`](https://github.com/hougesen/mdsf/pull/1190)
 - feat(tools): support mbake [`#1189`](https://github.com/hougesen/mdsf/pull/1189)
 - build(deps-dev): bump @biomejs/biome from 2.1.0 to 2.1.1 in /mdsf-vscode [`#1185`](https://github.com/hougesen/mdsf/pull/1185)
 - build(deps-dev): bump eslint from 9.30.1 to 9.31.0 in /mdsf-vscode [`#1184`](https://github.com/hougesen/mdsf/pull/1184)
