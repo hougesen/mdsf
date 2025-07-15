@@ -5,6 +5,7 @@ use crate::{
     error::MdsfError,
     execution::MdsfFormatter,
     languages::default_tools,
+    terminal::print_config_schema_version_mismatch,
     tools::Tooling,
 };
 
@@ -248,21 +249,27 @@ impl MdsfConfig {
     pub fn load(path: impl AsRef<std::path::Path>) -> Result<Self, MdsfError> {
         let path = path.as_ref();
 
-        match std::fs::read_to_string(path) {
-            Ok(raw_config) => Self::parse(&raw_config)
-                .map_err(|_serde_error| MdsfError::ConfigParse(path.to_path_buf())),
-            Err(error) => {
-                if error.kind() == std::io::ErrorKind::NotFound {
-                    return Err(MdsfError::ConfigNotFound(path.to_path_buf()));
-                }
-
-                Err(MdsfError::Io(error))
+        let contents = std::fs::read_to_string(path).map_err(|error| {
+            if error.kind() == std::io::ErrorKind::NotFound {
+                MdsfError::ConfigNotFound(path.to_path_buf())
+            } else {
+                MdsfError::Io(error)
             }
+        })?;
+
+        // TODO: do something with serde error
+        let parsed = Self::parse(&contents)
+            .map_err(|_serde_error| MdsfError::ConfigParse(path.to_path_buf()))?;
+
+        if let Some((version, false)) = parsed.parse_schema_version() {
+            print_config_schema_version_mismatch(version);
         }
+
+        Ok(parsed)
     }
 
     #[inline]
-    pub fn parse(input: &str) -> serde_json::Result<Self> {
+    fn parse(input: &str) -> serde_json::Result<Self> {
         let stripped = StripComments::with_settings(CommentSettings::c_style(), input.as_bytes());
 
         serde_json::from_reader(stripped)
@@ -301,6 +308,33 @@ impl MdsfConfig {
         }
 
         Ok(())
+    }
+
+    #[inline]
+    fn parse_schema_version(&self) -> Option<(&str, bool)> {
+        let package_version = env!("CARGO_PKG_VERSION");
+
+        if self.schema == default_schema_location() {
+            return Some((package_version, true));
+        }
+
+        let start = "https://raw.githubusercontent.com/hougesen/mdsf/main/schemas/";
+        let end = "/mdsf.schema.json";
+
+        // TODO: make this pretty
+        if self.schema.starts_with(start) && self.schema.ends_with(end) {
+            if let Some((_, remaining)) = self.schema.split_once(start) {
+                if !remaining.is_empty() {
+                    if let Some((version, _)) = remaining.rsplit_once(end) {
+                        if !version.is_empty() {
+                            return Some((version, version == package_version));
+                        }
+                    }
+                }
+            }
+        }
+
+        None
     }
 }
 
