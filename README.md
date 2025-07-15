@@ -457,7 +457,7 @@ That can be changed by specifying the `newline` config option.
 
 <!-- START_SECTION:supported-tools -->
 
-`mdsf` currently supports 318 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 319 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                                                                                 | Description                                                                                                                                   | Categories            | Languages                                                                                                                         |
 | ------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
@@ -621,6 +621,7 @@ That can be changed by specifying the `newline` config option.
 | [markdownlint-cli2](https://github.com/davidanson/markdownlint-cli2)                 | A fast, flexible, configuration-based command-line interface for linting Markdown/CommonMark files with the markdownlint library              | `linter`              | `markdown`                                                                                                                        |
 | [markdownlint](https://github.com/davidanson/markdownlint)                           | A Node.js style checker and lint tool for Markdown/CommonMark files                                                                           | `linter`              | `markdown`                                                                                                                        |
 | [markuplint](https://markuplint.dev/)                                                | An HTML linter for all markup developers                                                                                                      | `linter`              | `html`                                                                                                                            |
+| [mbake](https://github.com/ebodshojaei/bake)                                         | mbake is a Makefile formatter and linter                                                                                                      | `formatter`, `linter` | `make`                                                                                                                            |
 | [md-padding](https://github.com/harttle/md-padding)                                  | Fix mixed spaces in Markdown: Chinese and English, numbers, links                                                                             | `formatter`           | `markdown`                                                                                                                        |
 | [mdformat](https://github.com/executablebooks/mdformat)                              | CommonMark compliant Markdown formatter                                                                                                       | `formatter`           | `markdwon`                                                                                                                        |
 | [mdsf](https://github.com/hougesen/mdsf)                                             | Run mdsf inside mdsf                                                                                                                          | `formatter`           | `markdown`                                                                                                                        |
@@ -786,7 +787,7 @@ That can be changed by specifying the `newline` config option.
 
 <!-- START_SECTION:supported-commands -->
 
-`mdsf` currently supports 354 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 356 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                         | Command                                                                                 |
 | ---------------------------- | --------------------------------------------------------------------------------------- |
@@ -973,6 +974,8 @@ That can be changed by specifying the `newline` config option.
 | `markdownlint-cli2`          | `markdownlint-cli2 --fix $PATH`                                                         |
 | `markdownlint`               | `markdownlint --fix $PATH`                                                              |
 | `markuplint`                 | `markuplint --fix $PATH`                                                                |
+| `mbake:format`               | `mbake format $PATH`                                                                    |
+| `mbake:validate`             | `mbake validate $PATH`                                                                  |
 | `md-padding`                 | `md-padding -i $PATH`                                                                   |
 | `mdformat`                   | `mdformat $PATH`                                                                        |
 | `mdsf:format`                | `mdsf format $PATH`                                                                     |

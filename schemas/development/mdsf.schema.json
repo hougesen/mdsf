@@ -1083,6 +1083,16 @@
           "const": "markuplint"
         },
         {
+          "description": "mbake is a Makefile formatter and linter\n\n[https://github.com/ebodshojaei/bake](https://github.com/ebodshojaei/bake)\n\n`mbake format $PATH`",
+          "type": "string",
+          "const": "mbake:format"
+        },
+        {
+          "description": "mbake is a Makefile formatter and linter\n\n[https://github.com/ebodshojaei/bake](https://github.com/ebodshojaei/bake)\n\n`mbake validate $PATH`",
+          "type": "string",
+          "const": "mbake:validate"
+        },
+        {
           "description": "Fix mixed spaces in Markdown: Chinese and English, numbers, links\n\n[https://github.com/harttle/md-padding](https://github.com/harttle/md-padding)\n\n`md-padding -i $PATH`",
           "type": "string",
           "const": "md-padding"
