@@ -40,6 +40,7 @@ Format, and lint, markdown code snippets using your favorite tools.
   - [PowerShell](#powershell)
   - [Elvish](#elvish)
   - [Nushell](#nushell)
+- [Rust MSRV](#rust-msrv)
 - [Acknowledgement](#acknowledgement)
 - [Alternatives to mdsf](#alternatives-to-mdsf)
 
@@ -1219,6 +1220,14 @@ Generate completions for [nushell](https://github.com/nushell/nushell).
 ```nushell
 mdsf completions nushell
 ```
+
+## Rust MSRV
+
+mdsf is developed against the latest stable Rust version.
+
+Older version might be indirectly supported, but it is not guaranteed without prior agreement.
+
+Feel free to open an issue if you have a good reason for wanting support for a specific Rust compiler version.
 
 ## Acknowledgement
 
