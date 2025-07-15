@@ -928,9 +928,14 @@
           "const": "jsona:lint"
         },
         {
-          "description": "A JSON parser and validator with a CLI\n\n[https://github.com/zaach/jsonlint](https://github.com/zaach/jsonlint)\n\n`jsonlint -i $PATH`",
+          "description": "A JSON parser and validator\n\n[https://github.com/zaach/jsonlint](https://github.com/zaach/jsonlint)\n\n`jsonlint -i $PATH`",
           "type": "string",
           "const": "jsonlint"
+        },
+        {
+          "description": "Sort JSON using jsonlint\n\n[https://github.com/zaach/jsonlint](https://github.com/zaach/jsonlint)\n\n`jsonlint -s -i $PATH`",
+          "type": "string",
+          "const": "jsonlint:sort"
         },
         {
           "description": "Linter for jsonnet files\n\n[https://jsonnet.org/learning/tools.html](https://jsonnet.org/learning/tools.html)\n\n`jsonnet-lint $PATH`",

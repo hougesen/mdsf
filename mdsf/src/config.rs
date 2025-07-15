@@ -259,7 +259,7 @@ impl MdsfConfig {
 
         // TODO: do something with serde error
         let parsed = Self::parse(&contents)
-            .map_err(|_serde_error| MdsfError::ConfigParse(path.to_path_buf()))?;
+            .map_err(|serde_error| MdsfError::ConfigParse((path.to_path_buf(), serde_error)))?;
 
         if let Some((version, false)) = parsed.parse_schema_version() {
             print_config_schema_version_mismatch(version);
@@ -421,7 +421,7 @@ mod test_config {
 
         let output = MdsfConfig::load(file.path()).expect_err("it should return an error");
 
-        assert!(matches!(output, MdsfError::ConfigParse(_)));
+        assert!(matches!(output, MdsfError::ConfigParse((_, _))));
 
         Ok(())
     }

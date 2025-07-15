@@ -78,6 +78,11 @@ run = [
   'find ./tools -type f -name "*.json" -exec npx jsonlint -s -i {} \;',
 ]
 
+[tasks.spellcheck]
+run = [
+  "typos --exclude CHANGELOG.md --exclude github-action/dist --exclude schemas/ --exclude mdsf/src/filetype/generated_file_types.rs",
+]
+
 [tasks.test]
 run = [
   "RUST_BACKTRACE=full cargo nextest run --all-targets --all-features --no-fail-fast --release",

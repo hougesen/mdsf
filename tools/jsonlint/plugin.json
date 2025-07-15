@@ -12,9 +12,20 @@
           "test_output": "{\n  \"k\": \"v\"\n}"
         }
       ]
+    },
+    "sort": {
+      "arguments": ["-s", "-i", "$PATH"],
+      "description": "Sort JSON using jsonlint",
+      "tests": [
+        {
+          "language": "json",
+          "test_input": "{ \"b\": \"b\", \"a\": \"a\" }",
+          "test_output": "{\n  \"a\": \"a\",\n  \"b\": \"b\"\n}"
+        }
+      ]
     }
   },
-  "description": "A JSON parser and validator with a CLI",
+  "description": "A JSON parser and validator",
   "homepage": "https://github.com/zaach/jsonlint",
   "languages": ["json"],
   "packages": {

@@ -155,6 +155,7 @@ pub mod json_5_format;
 pub mod jsona_format;
 pub mod jsona_lint;
 pub mod jsonlint;
+pub mod jsonlint_sort;
 pub mod jsonnet_lint;
 pub mod jsonnetfmt;
 pub mod jsonpp;
@@ -1579,12 +1580,20 @@ pub enum Tooling {
     JsonaLint,
 
     #[serde(rename = "jsonlint")]
-    /// A JSON parser and validator with a CLI
+    /// A JSON parser and validator
     ///
     /// [https://github.com/zaach/jsonlint](https://github.com/zaach/jsonlint)
     ///
     /// `jsonlint -i $PATH`
     Jsonlint,
+
+    #[serde(rename = "jsonlint:sort")]
+    /// Sort JSON using jsonlint
+    ///
+    /// [https://github.com/zaach/jsonlint](https://github.com/zaach/jsonlint)
+    ///
+    /// `jsonlint -s -i $PATH`
+    JsonlintSort,
 
     #[serde(rename = "jsonnet-lint")]
     /// Linter for jsonnet files
@@ -3727,6 +3736,11 @@ impl Tooling {
                 jsona_lint::IS_STDIN,
             ),
             Self::Jsonlint => (&jsonlint::COMMANDS, jsonlint::set_args, jsonlint::IS_STDIN),
+            Self::JsonlintSort => (
+                &jsonlint_sort::COMMANDS,
+                jsonlint_sort::set_args,
+                jsonlint_sort::IS_STDIN,
+            ),
             Self::JsonnetLint => (
                 &jsonnet_lint::COMMANDS,
                 jsonnet_lint::set_args,
@@ -4530,6 +4544,7 @@ impl AsRef<str> for Tooling {
             Self::JsonaFormat => "jsona:format",
             Self::JsonaLint => "jsona:lint",
             Self::Jsonlint => "jsonlint",
+            Self::JsonlintSort => "jsonlint:sort",
             Self::JsonnetLint => "jsonnet-lint",
             Self::Jsonnetfmt => "jsonnetfmt",
             Self::Jsonpp => "jsonpp",
@@ -4926,6 +4941,7 @@ mod test_tooling {
         assert_eq!(Tooling::JsonaFormat, reverse(Tooling::JsonaFormat)?);
         assert_eq!(Tooling::JsonaLint, reverse(Tooling::JsonaLint)?);
         assert_eq!(Tooling::Jsonlint, reverse(Tooling::Jsonlint)?);
+        assert_eq!(Tooling::JsonlintSort, reverse(Tooling::JsonlintSort)?);
         assert_eq!(Tooling::JsonnetLint, reverse(Tooling::JsonnetLint)?);
         assert_eq!(Tooling::Jsonnetfmt, reverse(Tooling::Jsonnetfmt)?);
         assert_eq!(Tooling::Jsonpp, reverse(Tooling::Jsonpp)?);
