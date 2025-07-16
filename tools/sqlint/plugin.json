@@ -1,0 +1,19 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "sqlint",
+  "categories": ["linter"],
+  "commands": {
+    "": {
+      "arguments": ["$PATH"],
+      "tests": []
+    }
+  },
+  "description": "Simple SQL linter supporting ANSI and PostgreSQL syntaxes",
+  "homepage": "https://github.com/purcell/sqlint",
+  "languages": ["sql"],
+  "packages": {
+    "gem": {
+      "package": "sqlint"
+    }
+  }
+}
