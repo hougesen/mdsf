@@ -473,7 +473,7 @@ That can be changed by specifying the `newline` config option.
 
 <!-- START_SECTION:supported-tools -->
 
-`mdsf` currently supports 319 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 320 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                                                                                 | Description                                                                                                                                   | Categories            | Languages                                                                                                                         |
 | ------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
@@ -736,6 +736,7 @@ That can be changed by specifying the `newline` config option.
 | [sql-formatter](https://github.com/sql-formatter-org/sql-formatter)                  | A whitespace formatter for different query languages                                                                                          | `formatter`           | `sql`                                                                                                                             |
 | [sqlfluff](https://github.com/sqlfluff/sqlfluff)                                     | A modular SQL linter and auto-formatter with support for multiple dialects and templated code                                                 | `formatter`, `linter` | `sql`                                                                                                                             |
 | [sqlfmt](https://github.com/tconbeer/sqlfmt)                                         | sqlfmt formats your dbt SQL files so you don't have to                                                                                        | `formatter`           | `sql`                                                                                                                             |
+| [sqlint](https://github.com/purcell/sqlint)                                          | Simple SQL linter supporting ANSI and PostgreSQL syntaxes                                                                                     | `linter`              | `sql`                                                                                                                             |
 | [sqruff](https://github.com/quarylabs/sqruff)                                        | Fast SQL formatter/linter                                                                                                                     | `formatter`, `linter` | `sql`                                                                                                                             |
 | [squawk](https://github.com/sbdchd/squawk)                                           | Linter for Postgres migrations & SQL                                                                                                          | `linter`              | `postgresql`, `sql`                                                                                                               |
 | [standardjs](https://github.com/standard/standard)                                   | JavaScript style guide, linter, and formatter                                                                                                 | `formatter`, `linter` | `javascript`                                                                                                                      |
@@ -803,7 +804,7 @@ That can be changed by specifying the `newline` config option.
 
 <!-- START_SECTION:supported-commands -->
 
-`mdsf` currently supports 357 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 358 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                         | Command                                                                                 |
 | ---------------------------- | --------------------------------------------------------------------------------------- |
@@ -1099,6 +1100,7 @@ That can be changed by specifying the `newline` config option.
 | `sqlfluff:format`            | `sqlfluff format --disable-progress-bar --nocolor --dialect ansi $PATH`                 |
 | `sqlfluff:lint`              | `sqlfluff lint --disable-progress-bar --nocolor --dialect ansi $PATH`                   |
 | `sqlfmt`                     | `sqlfmt $PATH`                                                                          |
+| `sqlint`                     | `sqlint $PATH`                                                                          |
 | `sqruff`                     | `sqruff fix $PATH`                                                                      |
 | `squawk`                     | `squawk $PATH`                                                                          |
 | `standardjs`                 | `standard --fix --stdin`                                                                |

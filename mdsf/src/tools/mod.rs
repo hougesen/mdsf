@@ -294,6 +294,7 @@ pub mod sqlfluff_fix;
 pub mod sqlfluff_format;
 pub mod sqlfluff_lint;
 pub mod sqlfmt;
+pub mod sqlint;
 pub mod sqruff;
 pub mod squawk;
 pub mod standardjs;
@@ -2699,6 +2700,14 @@ pub enum Tooling {
     /// `sqlfmt $PATH`
     Sqlfmt,
 
+    #[serde(rename = "sqlint")]
+    /// Simple SQL linter supporting ANSI and PostgreSQL syntaxes
+    ///
+    /// [https://github.com/purcell/sqlint](https://github.com/purcell/sqlint)
+    ///
+    /// `sqlint $PATH`
+    Sqlint,
+
     #[serde(rename = "sqruff")]
     /// Fast SQL formatter/linter
     ///
@@ -4195,6 +4204,7 @@ impl Tooling {
                 sqlfluff_lint::IS_STDIN,
             ),
             Self::Sqlfmt => (&sqlfmt::COMMANDS, sqlfmt::set_args, sqlfmt::IS_STDIN),
+            Self::Sqlint => (&sqlint::COMMANDS, sqlint::set_args, sqlint::IS_STDIN),
             Self::Sqruff => (&sqruff::COMMANDS, sqruff::set_args, sqruff::IS_STDIN),
             Self::Squawk => (&squawk::COMMANDS, squawk::set_args, squawk::IS_STDIN),
             Self::Standardjs => (
@@ -4683,6 +4693,7 @@ impl AsRef<str> for Tooling {
             Self::SqlfluffFormat => "sqlfluff:format",
             Self::SqlfluffLint => "sqlfluff:lint",
             Self::Sqlfmt => "sqlfmt",
+            Self::Sqlint => "sqlint",
             Self::Sqruff => "sqruff",
             Self::Squawk => "squawk",
             Self::Standardjs => "standardjs",
@@ -5098,6 +5109,7 @@ mod test_tooling {
         assert_eq!(Tooling::SqlfluffFormat, reverse(Tooling::SqlfluffFormat)?);
         assert_eq!(Tooling::SqlfluffLint, reverse(Tooling::SqlfluffLint)?);
         assert_eq!(Tooling::Sqlfmt, reverse(Tooling::Sqlfmt)?);
+        assert_eq!(Tooling::Sqlint, reverse(Tooling::Sqlint)?);
         assert_eq!(Tooling::Sqruff, reverse(Tooling::Sqruff)?);
         assert_eq!(Tooling::Squawk, reverse(Tooling::Squawk)?);
         assert_eq!(Tooling::Standardjs, reverse(Tooling::Standardjs)?);

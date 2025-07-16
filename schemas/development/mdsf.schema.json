@@ -1628,6 +1628,11 @@
           "const": "sqlfmt"
         },
         {
+          "description": "Simple SQL linter supporting ANSI and PostgreSQL syntaxes\n\n[https://github.com/purcell/sqlint](https://github.com/purcell/sqlint)\n\n`sqlint $PATH`",
+          "type": "string",
+          "const": "sqlint"
+        },
+        {
           "description": "Fast SQL formatter/linter\n\n[https://github.com/quarylabs/sqruff](https://github.com/quarylabs/sqruff)\n\n`sqruff fix $PATH`",
           "type": "string",
           "const": "sqruff"

@@ -4094,6 +4094,9 @@ where foo = 'bar'
 }
 
 #[cfg(test)]
+mod test_sqlint {}
+
+#[cfg(test)]
 mod test_sqruff {
     #[test_with::executable(sqruff || pipx || uv)]
     fn test_sqruff_sql_c48780a07bf33db() -> Result<(), Box<dyn core::error::Error>> {

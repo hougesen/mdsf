@@ -4,8 +4,7 @@ All notable changes to this project will be documented in this file. Dates are d
 
 #### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.10.2...HEAD)
 
-- refactor(pre-commit): set language to system instead of rust [`9e79eca`](https://github.com/hougesen/mdsf/commit/9e79eca0405f5ffa417b1689e5f693ed23c263dd)
-- feat: setup precommit hooks [`37fac56`](https://github.com/hougesen/mdsf/commit/37fac560faad3794ea896f6c4485dfbf31e75cf9)
+- feat: setup precommit hooks [`#1198`](https://github.com/hougesen/mdsf/pull/1198)
 
 #### [v0.10.2](https://github.com/hougesen/mdsf/compare/v0.10.1...v0.10.2)
 
