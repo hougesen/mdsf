@@ -28,6 +28,7 @@ Format, and lint, markdown code snippets using your favorite tools.
   - [Vim / NeoVim](#vim--neovim)
     - [conform.nvim](#conformnvim)
   - [treefmt](#treefmt)
+  - [pre-commit](#pre-commit)
 - [Configuration](#configuration)
   - [Language aliases](#language-aliases)
   - [Newlines](#newlines)
@@ -366,6 +367,20 @@ Add the following to your `treefmt.toml` to run mdsf using [treefmt](https://git
 command = "mdsf"
 options = ["format"]
 includes = ["*.md"]
+```
+
+### pre-commit
+
+See [pre-commit](https://github.com/pre-commit/pre-commit) for instructions
+
+Sample `.pre-commit-config.yaml`:
+
+```yaml
+repos:
+  - repo: https://github.com/hougesen/mdsf
+    rev: main
+    hooks:
+      - id: mdsf-format
 ```
 
 ## Configuration
