@@ -1,0 +1,15 @@
+---
+- id: mdsf-format
+  name: mdsf format
+  entry: mdsf format
+  description: Run 'mdsf format' on changed files
+  require_serial: true
+  types: [markdown]
+  language: rust
+- id: mdsf-verify
+  name: mdsf verify
+  entry: mdsf verify
+  description: Run 'mdsf verify' on changed files
+  require_serial: true
+  types: [markdown]
+  language: rust

@@ -6,7 +6,7 @@ All notable changes to this project will be documented in this file. Dates are d
 
 #### [v0.10.2](https://github.com/hougesen/mdsf/compare/v0.10.1...v0.10.2)
 
-> 15 July 2025
+> 16 July 2025
 
 - chore: release v0.10.2 [`#1197`](https://github.com/hougesen/mdsf/pull/1197)
 - build(deps-dev): bump @typescript-eslint/eslint-plugin in /mdsf-vscode [`#1196`](https://github.com/hougesen/mdsf/pull/1196)
@@ -51,6 +51,7 @@ All notable changes to this project will be documented in this file. Dates are d
 - build(deps-dev): bump @eslint/js from 9.29.0 to 9.30.0 in /github-action [`#1149`](https://github.com/hougesen/mdsf/pull/1149)
 - build(deps): bump schemars from 1.0.2 to 1.0.3 [`#1146`](https://github.com/hougesen/mdsf/pull/1146)
 - chore: set package version to dev [`8b47acc`](https://github.com/hougesen/mdsf/commit/8b47accc51bbb7585dbb8d00545d44349b776e35)
+- build: set windows runner to windows-latest [`83f08d3`](https://github.com/hougesen/mdsf/commit/83f08d396c29c71a940e8ca2f594340066abfe92)
 
 #### [v0.10.1](https://github.com/hougesen/mdsf/compare/v0.10.0...v0.10.1)
 
