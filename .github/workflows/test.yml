@@ -211,6 +211,8 @@ jobs:
         run: ( ( which markdownlint ) || ( ( which npm && npm i -g markdownlint-cli ) ) || ( echo "Unable to install tool" ) )
       - name: markdownlint-cli2
         run: ( ( which markdownlint-cli2 ) || ( ( which npm && npm i -g markdownlint-cli2 ) || ( which brew &&  brew install markdownlint-cli2 ) ) || ( echo "Unable to install tool" ) )
+      - name: mbake
+        run: ( ( which mbake ) || ( ( which pipx && pipx install mbake ) ) || ( echo "Unable to install tool" ) )
       - name: mdsf
         run: ( ( which mdsf ) || ( ( which npm && npm i -g mdsf-cli ) || ( which cargo && ( cargo binstall mdsf || cargo install mdsf ) ) || ( which brew &&  brew install hougesen/tap/mdsf ) ) || ( echo "Unable to install tool" ) )
       - name: mise

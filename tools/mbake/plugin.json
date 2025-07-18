@@ -5,11 +5,23 @@
   "commands": {
     "format": {
       "arguments": ["format", "$PATH"],
-      "tests": []
+      "tests": [
+        {
+          "language": "Makefile",
+          "test_input": "CC:=gcc\nCFLAGS= -Wall -g\nSOURCES=main.c \\n  utils.c \\n  helper.c\n\n.PHONY: clean\nall: $(TARGET)\n\t$(CC) $(CFLAGS) -o $@ $^\n\n.PHONY: install\nclean:\n\trm -f *.o\n",
+          "test_output": "CC := gcc\nCFLAGS = -Wall -g\nSOURCES = main.c \\n  utils.c \\n  helper.c\n\n.PHONY: all clean install\n\nall: $(TARGET)\n\t$(CC) $(CFLAGS) -o $@ $^\n\nclean:\n\trm -f *.o\n"
+        }
+      ]
     },
     "validate": {
       "arguments": ["validate", "$PATH"],
-      "tests": []
+      "tests": [
+        {
+          "language": "Makefile",
+          "test_input": "CC := gcc\nCFLAGS = -Wall -g\nSOURCES = main.c \\n  utils.c \\n  helper.c\n\n.PHONY: all clean install\n\nall: $(TARGET)\n\t$(CC) $(CFLAGS) -o $@ $^\n\nclean:\n\trm -f *.o\n",
+          "test_output": "CC := gcc\nCFLAGS = -Wall -g\nSOURCES = main.c \\n  utils.c \\n  helper.c\n\n.PHONY: all clean install\n\nall: $(TARGET)\n\t$(CC) $(CFLAGS) -o $@ $^\n\nclean:\n\trm -f *.o\n"
+        }
+      ]
     }
   },
   "description": "mbake is a Makefile formatter and linter",
