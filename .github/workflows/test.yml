@@ -295,6 +295,8 @@ jobs:
         run: ( ( which sqlfluff ) || ( ( which pipx && pipx install sqlfluff ) ) || ( echo "Unable to install tool" ) )
       - name: sqlfmt
         run: ( ( which sqlfmt ) || ( ( which pipx && pipx install shandy-sqlfmt[jinjafmt] ) ) || ( echo "Unable to install tool" ) )
+      - name: sqlint
+        run: ( ( which sqlint ) || ( ( which gem && gem install sqlint ) ) || ( echo "Unable to install tool" ) )
       - name: sqruff
         run: ( ( which sqruff ) || ( ( which cargo && ( cargo binstall sqruff || cargo install sqruff ) ) || ( which pipx && pipx install sqruff ) ) || ( echo "Unable to install tool" ) )
       - name: squawk

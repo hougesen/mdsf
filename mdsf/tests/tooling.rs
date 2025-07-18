@@ -4160,7 +4160,22 @@ where foo = 'bar'
 }
 
 #[cfg(test)]
-mod test_sqlint {}
+mod test_sqlint {
+    #[test_with::executable(sqlint || gem)]
+    fn test_sqlint_sql_590c277c204e093c() -> Result<(), Box<dyn core::error::Error>> {
+        let input = r#"SELECT username FROM users
+WHERE id = 1;
+"#;
+
+        let output = r#"SELECT username FROM users
+WHERE id = 1;
+"#;
+
+        let ft = "sql";
+
+        crate::common::run_tooling_test(mdsf::tools::Tooling::Sqlint, input, output, ft)
+    }
+}
 
 #[cfg(test)]
 mod test_sqruff {
