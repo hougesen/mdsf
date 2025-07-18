@@ -5,7 +5,13 @@
   "commands": {
     "": {
       "arguments": ["$PATH"],
-      "tests": []
+      "tests": [
+        {
+          "language": "sql",
+          "test_input": "SELECT username FROM users\nWHERE id = 1;\n",
+          "test_output": "SELECT username FROM users\nWHERE id = 1;\n"
+        }
+      ]
     }
   },
   "description": "Simple SQL linter supporting ANSI and PostgreSQL syntaxes",
