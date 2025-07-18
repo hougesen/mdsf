@@ -2664,10 +2664,76 @@ mod test_markdownlint_cli_2 {
 mod test_markuplint {}
 
 #[cfg(test)]
-mod test_mbake_format {}
+mod test_mbake_format {
+    #[test_with::executable(mbake || pipx || uv)]
+    fn test_mbake_format_makefile_f4de03df813ed114() -> Result<(), Box<dyn core::error::Error>> {
+        let input = r#"CC:=gcc
+CFLAGS= -Wall -g
+SOURCES=main.c \n  utils.c \n  helper.c
+
+.PHONY: clean
+all: $(TARGET)
+	$(CC) $(CFLAGS) -o $@ $^
+
+.PHONY: install
+clean:
+	rm -f *.o
+"#;
+
+        let output = r#"CC := gcc
+CFLAGS = -Wall -g
+SOURCES = main.c \n  utils.c \n  helper.c
+
+.PHONY: all clean install
+
+all: $(TARGET)
+	$(CC) $(CFLAGS) -o $@ $^
+
+clean:
+	rm -f *.o
+"#;
+
+        let ft = "Makefile";
+
+        crate::common::run_tooling_test(mdsf::tools::Tooling::MbakeFormat, input, output, ft)
+    }
+}
 
 #[cfg(test)]
-mod test_mbake_validate {}
+mod test_mbake_validate {
+    #[test_with::executable(mbake || pipx || uv)]
+    fn test_mbake_validate_makefile_3892d48c3f3530c1() -> Result<(), Box<dyn core::error::Error>> {
+        let input = r#"CC := gcc
+CFLAGS = -Wall -g
+SOURCES = main.c \n  utils.c \n  helper.c
+
+.PHONY: all clean install
+
+all: $(TARGET)
+	$(CC) $(CFLAGS) -o $@ $^
+
+clean:
+	rm -f *.o
+"#;
+
+        let output = r#"CC := gcc
+CFLAGS = -Wall -g
+SOURCES = main.c \n  utils.c \n  helper.c
+
+.PHONY: all clean install
+
+all: $(TARGET)
+	$(CC) $(CFLAGS) -o $@ $^
+
+clean:
+	rm -f *.o
+"#;
+
+        let ft = "Makefile";
+
+        crate::common::run_tooling_test(mdsf::tools::Tooling::MbakeValidate, input, output, ft)
+    }
+}
 
 #[cfg(test)]
 mod test_md_padding {}

@@ -4,6 +4,7 @@ All notable changes to this project will be documented in this file. Dates are d
 
 #### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.10.2...HEAD)
 
+- feat(tools): add support for sqlint [`#1199`](https://github.com/hougesen/mdsf/pull/1199)
 - feat: setup precommit hooks [`#1198`](https://github.com/hougesen/mdsf/pull/1198)
 
 #### [v0.10.2](https://github.com/hougesen/mdsf/compare/v0.10.1...v0.10.2)
