@@ -3492,6 +3492,37 @@ def add(a: int, b: int) -> int:
 }
 
 #[cfg(test)]
+mod test_pymarkdownlnt_fix {
+    #[test_with::executable(pymarkdownlnt || pipx || uv)]
+    fn test_pymarkdownlnt_fix_markdown_db65f91c72704aab() -> Result<(), Box<dyn core::error::Error>>
+    {
+        let input = r#"Line 1
+
+
+
+
+Line 2
+
+
+
+
+Line 3
+"#;
+
+        let output = r#"Line 1
+
+Line 2
+
+Line 3
+"#;
+
+        let ft = "markdown";
+
+        crate::common::run_tooling_test(mdsf::tools::Tooling::PymarkdownlntFix, input, output, ft)
+    }
+}
+
+#[cfg(test)]
 mod test_pyment {}
 
 #[cfg(test)]

@@ -524,7 +524,7 @@ mod test_{module_name} {{{maybe_line_break}{tests}{maybe_line_break}}}
 use crate::runners::CommandType;
 
 #[inline]
-pub fn set_args(
+pub {set_args_is_const}fn set_args(
 {INDENT}{is_mut}cmd: std::process::Command,
 {INDENT}{unused_prefix}file_path: &std::path::Path,
 ) -> std::process::Command {{
@@ -536,6 +536,11 @@ pub const COMMANDS: [CommandType; {command_type_count}] = [{command_arr}];
 
 pub const IS_STDIN: bool = {is_stdin};
 ",
+                set_args_is_const = if options.arguments.is_empty() {
+                    "const "
+                } else {
+                    ""
+                },
                 unused_prefix = if options.stdin { "_" } else { "" },
                 is_mut = if string_args.is_empty() { "" } else { "mut " },
                 is_stdin = if options.stdin { "true" } else { "false" }
@@ -697,7 +702,7 @@ impl AsRef<str> for Tooling {
                 "{INDENT}#[serde(rename = \"{rename}\")]{maybe_deprecated}
 {description}
 {homepage}
-{INDENT}/// `{bin} {args}`
+{INDENT}/// `{bin}{space_if_args}{args}`
 {INDENT}{enum_value},",
                 rename = command.serde_rename,
                 maybe_deprecated = if command.deprecated {
@@ -706,6 +711,7 @@ impl AsRef<str> for Tooling {
                     ""
                 },
                 bin = plugin.binary,
+                space_if_args = if command.args.is_empty() { "" } else { " " },
                 args = command.args.join(" ")
             ));
 

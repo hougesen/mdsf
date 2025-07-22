@@ -17,7 +17,12 @@ pub fn generate_command_table(commands: Vec<crate::tools::GeneratedCommand>) -> 
 
         name_row_length = name_row_length.max(name.len());
 
-        let command = format!("`{} {}`", c.binary, c.args.join(" "));
+        let command = format!(
+            "`{}{}{}`",
+            c.binary,
+            if c.args.is_empty() { "" } else { " " },
+            c.args.join(" ")
+        );
 
         command_row_length = command_row_length.max(command.len());
 

@@ -473,7 +473,7 @@ That can be changed by specifying the `newline` config option.
 
 <!-- START_SECTION:supported-tools -->
 
-`mdsf` currently supports 320 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 321 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                                                                                 | Description                                                                                                                                   | Categories            | Languages                                                                                                                         |
 | ------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
@@ -695,6 +695,7 @@ That can be changed by specifying the `newline` config option.
 | [pyflakes](https://github.com/pycqa/pyflakes)                                        | A simple program which checks Python source files for errors                                                                                  | `linter`              | `python`                                                                                                                          |
 | [pyink](https://github.com/google/pyink)                                             | Pyink is a Python formatter, forked from Black with a few different formatting behaviors                                                      | `formatter`           | `python`                                                                                                                          |
 | [pylint](https://github.com/pylint-dev/pylint)                                       | Pylint is a static code analyser for Python 2 or 3                                                                                            | `linter`              | `python`                                                                                                                          |
+| [pymarkdownlnt](https://github.com/jackdewinter/pymarkdown)                          | A GitHub Flavored Markdown compliant Markdown linter                                                                                          | `formatter`, `linter` | `markdown`                                                                                                                        |
 | [pyment](https://github.com/dadadel/pyment)                                          | Format and convert Python docstrings and generates patches                                                                                    | `formatter`           | `python`                                                                                                                          |
 | [pyrefly](https://github.com/facebook/pyrefly)                                       | A fast type checker for Python                                                                                                                | `linter`              | `python`                                                                                                                          |
 | [pyupgrade](https://github.com/asottile/pyupgrade)                                   | A tool to automatically upgrade Python syntax to newer versions                                                                               | `linter`              | `python`                                                                                                                          |
@@ -804,7 +805,7 @@ That can be changed by specifying the `newline` config option.
 
 <!-- START_SECTION:supported-commands -->
 
-`mdsf` currently supports 358 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 359 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                         | Command                                                                                 |
 | ---------------------------- | --------------------------------------------------------------------------------------- |
@@ -870,7 +871,7 @@ That can be changed by specifying the `newline` config option.
 | `csscomb`                    | `csscomb -t $PATH`                                                                      |
 | `csslint`                    | `csslint --quiet $PATH`                                                                 |
 | `cue:fmt`                    | `cue fmt $PATH`                                                                         |
-| `cueimports`                 | `cueimports `                                                                           |
+| `cueimports`                 | `cueimports`                                                                            |
 | `curlylint`                  | `curlylint -q $PATH`                                                                    |
 | `d2:fmt`                     | `d2 fmt $PATH`                                                                          |
 | `dart:fix`                   | `dart fix --apply $PATH`                                                                |
@@ -952,10 +953,10 @@ That can be changed by specifying the `newline` config option.
 | `imba:fmt`                   | `imba fmt -f $PATH`                                                                     |
 | `inko:fmt`                   | `inko fmt $PATH`                                                                        |
 | `isort`                      | `isort --quiet $PATH`                                                                   |
-| `janet-format`               | `janet-format `                                                                         |
+| `janet-format`               | `janet-format`                                                                          |
 | `joker`                      | `joker --format --write $PATH`                                                          |
-| `jq`                         | `jq `                                                                                   |
-| `jqfmt`                      | `jqfmt `                                                                                |
+| `jq`                         | `jq`                                                                                    |
+| `jqfmt`                      | `jqfmt`                                                                                 |
 | `js-beautify`                | `js-beautify -r --type js -f $PATH`                                                     |
 | `json5format`                | `json5format -r $PATH`                                                                  |
 | `jsona:format`               | `jsona format $PATH`                                                                    |
@@ -1055,6 +1056,7 @@ That can be changed by specifying the `newline` config option.
 | `pyflakes`                   | `pyflakes $PATH`                                                                        |
 | `pyink`                      | `pyink --quiet $PATH`                                                                   |
 | `pylint`                     | `pylint --module-naming-style=any $PATH`                                                |
+| `pymarkdownlnt:fix`          | `pymarkdownlnt --return-code-scheme minimal fix $PATH`                                  |
 | `pyment`                     | `pyment -w $PATH`                                                                       |
 | `pyrefly`                    | `pyrefly check $PATH`                                                                   |
 | `pyupgrade`                  | `pyupgrade $PATH`                                                                       |
@@ -1156,7 +1158,7 @@ That can be changed by specifying the `newline` config option.
 | `xmllint`                    | `xmllint --format $PATH --output $PATH`                                                 |
 | `xo`                         | `xo --fix --stdin`                                                                      |
 | `xq:html`                    | `xq --html`                                                                             |
-| `xq`                         | `xq `                                                                                   |
+| `xq`                         | `xq`                                                                                    |
 | `yamlfix`                    | `yamlfix $PATH`                                                                         |
 | `yamlfmt`                    | `yamlfmt -quiet $PATH`                                                                  |
 | `yamllint`                   | `yamllint $PATH`                                                                        |

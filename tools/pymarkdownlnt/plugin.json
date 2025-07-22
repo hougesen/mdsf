@@ -1,0 +1,25 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "pymarkdownlnt",
+  "categories": ["formatter", "linter"],
+  "commands": {
+    "fix": {
+      "arguments": ["--return-code-scheme", "minimal", "fix", "$PATH"],
+      "tests": [
+        {
+          "language": "markdown",
+          "test_input": "Line 1\n\n\n\n\nLine 2\n\n\n\n\nLine 3\n",
+          "test_output": "Line 1\n\nLine 2\n\nLine 3\n"
+        }
+      ]
+    }
+  },
+  "description": "A GitHub Flavored Markdown compliant Markdown linter",
+  "homepage": "https://github.com/jackdewinter/pymarkdown",
+  "languages": ["markdown"],
+  "packages": {
+    "pip": {
+      "package": "pymarkdownlnt"
+    }
+  }
+}

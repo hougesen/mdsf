@@ -249,6 +249,7 @@ pub mod pydocstyle;
 pub mod pyflakes;
 pub mod pyink;
 pub mod pylint;
+pub mod pymarkdownlnt_fix;
 pub mod pyment;
 pub mod pyrefly;
 pub mod pyupgrade;
@@ -865,7 +866,7 @@ pub enum Tooling {
     ///
     /// [https://github.com/asdine/cueimports](https://github.com/asdine/cueimports)
     ///
-    /// `cueimports `
+    /// `cueimports`
     Cueimports,
 
     #[serde(rename = "curlylint")]
@@ -1521,7 +1522,7 @@ pub enum Tooling {
     ///
     /// [https://github.com/janet-lang/spork](https://github.com/janet-lang/spork)
     ///
-    /// `janet-format `
+    /// `janet-format`
     JanetFormat,
 
     #[serde(rename = "joker")]
@@ -1537,7 +1538,7 @@ pub enum Tooling {
     ///
     /// [https://github.com/jqlang/jq](https://github.com/jqlang/jq)
     ///
-    /// `jq `
+    /// `jq`
     Jq,
 
     #[serde(rename = "jqfmt")]
@@ -1545,7 +1546,7 @@ pub enum Tooling {
     ///
     /// [https://github.com/noperator/jqfmt](https://github.com/noperator/jqfmt)
     ///
-    /// `jqfmt `
+    /// `jqfmt`
     Jqfmt,
 
     #[serde(rename = "js-beautify")]
@@ -2339,6 +2340,14 @@ pub enum Tooling {
     ///
     /// `pylint --module-naming-style=any $PATH`
     Pylint,
+
+    #[serde(rename = "pymarkdownlnt:fix")]
+    /// A GitHub Flavored Markdown compliant Markdown linter
+    ///
+    /// [https://github.com/jackdewinter/pymarkdown](https://github.com/jackdewinter/pymarkdown)
+    ///
+    /// `pymarkdownlnt --return-code-scheme minimal fix $PATH`
+    PymarkdownlntFix,
 
     #[serde(rename = "pyment")]
     /// Format and convert Python docstrings and generates patches
@@ -3145,7 +3154,7 @@ pub enum Tooling {
     ///
     /// [https://github.com/sibprogrammer/xq](https://github.com/sibprogrammer/xq)
     ///
-    /// `xq `
+    /// `xq`
     Xq,
 
     #[serde(rename = "xq:html")]
@@ -4071,6 +4080,11 @@ impl Tooling {
             Self::Pyflakes => (&pyflakes::COMMANDS, pyflakes::set_args, pyflakes::IS_STDIN),
             Self::Pyink => (&pyink::COMMANDS, pyink::set_args, pyink::IS_STDIN),
             Self::Pylint => (&pylint::COMMANDS, pylint::set_args, pylint::IS_STDIN),
+            Self::PymarkdownlntFix => (
+                &pymarkdownlnt_fix::COMMANDS,
+                pymarkdownlnt_fix::set_args,
+                pymarkdownlnt_fix::IS_STDIN,
+            ),
             Self::Pyment => (&pyment::COMMANDS, pyment::set_args, pyment::IS_STDIN),
             Self::Pyrefly => (&pyrefly::COMMANDS, pyrefly::set_args, pyrefly::IS_STDIN),
             Self::Pyupgrade => (
@@ -4648,6 +4662,7 @@ impl AsRef<str> for Tooling {
             Self::Pyflakes => "pyflakes",
             Self::Pyink => "pyink",
             Self::Pylint => "pylint",
+            Self::PymarkdownlntFix => "pymarkdownlnt:fix",
             Self::Pyment => "pyment",
             Self::Pyrefly => "pyrefly",
             Self::Pyupgrade => "pyupgrade",
@@ -5061,6 +5076,10 @@ mod test_tooling {
         assert_eq!(Tooling::Pyflakes, reverse(Tooling::Pyflakes)?);
         assert_eq!(Tooling::Pyink, reverse(Tooling::Pyink)?);
         assert_eq!(Tooling::Pylint, reverse(Tooling::Pylint)?);
+        assert_eq!(
+            Tooling::PymarkdownlntFix,
+            reverse(Tooling::PymarkdownlntFix)?
+        );
         assert_eq!(Tooling::Pyment, reverse(Tooling::Pyment)?);
         assert_eq!(Tooling::Pyrefly, reverse(Tooling::Pyrefly)?);
         assert_eq!(Tooling::Pyupgrade, reverse(Tooling::Pyupgrade)?);
