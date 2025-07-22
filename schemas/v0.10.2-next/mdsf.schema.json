@@ -478,7 +478,7 @@
           "const": "cue:fmt"
         },
         {
-          "description": "CUE tool that updates your import lines, adding missing ones and removing unused ones\n\n[https://github.com/asdine/cueimports](https://github.com/asdine/cueimports)\n\n`cueimports `",
+          "description": "CUE tool that updates your import lines, adding missing ones and removing unused ones\n\n[https://github.com/asdine/cueimports](https://github.com/asdine/cueimports)\n\n`cueimports`",
           "type": "string",
           "const": "cueimports"
         },
@@ -888,7 +888,7 @@
           "const": "isort"
         },
         {
-          "description": "A formatter for Janet code.\n\n[https://github.com/janet-lang/spork](https://github.com/janet-lang/spork)\n\n`janet-format `",
+          "description": "A formatter for Janet code.\n\n[https://github.com/janet-lang/spork](https://github.com/janet-lang/spork)\n\n`janet-format`",
           "type": "string",
           "const": "janet-format"
         },
@@ -898,12 +898,12 @@
           "const": "joker"
         },
         {
-          "description": "JSON processor\n\n[https://github.com/jqlang/jq](https://github.com/jqlang/jq)\n\n`jq `",
+          "description": "JSON processor\n\n[https://github.com/jqlang/jq](https://github.com/jqlang/jq)\n\n`jq`",
           "type": "string",
           "const": "jq"
         },
         {
-          "description": "like gofmt, but for jq\n\n[https://github.com/noperator/jqfmt](https://github.com/noperator/jqfmt)\n\n`jqfmt `",
+          "description": "like gofmt, but for jq\n\n[https://github.com/noperator/jqfmt](https://github.com/noperator/jqfmt)\n\n`jqfmt`",
           "type": "string",
           "const": "jqfmt"
         },
@@ -1401,6 +1401,11 @@
           "description": "Pylint is a static code analyser for Python 2 or 3\n\n[https://github.com/pylint-dev/pylint](https://github.com/pylint-dev/pylint)\n\n`pylint --module-naming-style=any $PATH`",
           "type": "string",
           "const": "pylint"
+        },
+        {
+          "description": "A GitHub Flavored Markdown compliant Markdown linter\n\n[https://github.com/jackdewinter/pymarkdown](https://github.com/jackdewinter/pymarkdown)\n\n`pymarkdownlnt --return-code-scheme minimal fix $PATH`",
+          "type": "string",
+          "const": "pymarkdownlnt:fix"
         },
         {
           "description": "Format and convert Python docstrings and generates patches\n\n[https://github.com/dadadel/pyment](https://github.com/dadadel/pyment)\n\n`pyment -w $PATH`",
@@ -1903,7 +1908,7 @@
           "const": "xo"
         },
         {
-          "description": "Format XML\n\n[https://github.com/sibprogrammer/xq](https://github.com/sibprogrammer/xq)\n\n`xq `",
+          "description": "Format XML\n\n[https://github.com/sibprogrammer/xq](https://github.com/sibprogrammer/xq)\n\n`xq`",
           "type": "string",
           "const": "xq"
         },

@@ -4,10 +4,16 @@ All notable changes to this project will be documented in this file. Dates are d
 
 #### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.10.2...HEAD)
 
+- build(deps-dev): bump esbuild from 0.25.6 to 0.25.8 in /github-action [`#1205`](https://github.com/hougesen/mdsf/pull/1205)
+- build(deps-dev): bump esbuild from 0.25.6 to 0.25.8 in /mdsf-vscode [`#1202`](https://github.com/hougesen/mdsf/pull/1202)
+- build(deps): bump serde_json from 1.0.140 to 1.0.141 [`#1206`](https://github.com/hougesen/mdsf/pull/1206)
+- build(deps-dev): bump @biomejs/biome in /github-action [`#1204`](https://github.com/hougesen/mdsf/pull/1204)
+- build(deps-dev): bump @biomejs/biome from 2.1.1 to 2.1.2 in /mdsf-vscode [`#1203`](https://github.com/hougesen/mdsf/pull/1203)
 - test(tools): add test case for sqlint [`#1201`](https://github.com/hougesen/mdsf/pull/1201)
 - test(tools): add test cases for mbake [`#1200`](https://github.com/hougesen/mdsf/pull/1200)
 - feat(tools): add support for sqlint [`#1199`](https://github.com/hougesen/mdsf/pull/1199)
 - feat: setup precommit hooks [`#1198`](https://github.com/hougesen/mdsf/pull/1198)
+- build: upgrade cargo-dist to v0.28.1 [`13b152d`](https://github.com/hougesen/mdsf/commit/13b152d2bac13ae50a8108a649e5913a9f26aec4)
 
 #### [v0.10.2](https://github.com/hougesen/mdsf/compare/v0.10.1...v0.10.2)
 
