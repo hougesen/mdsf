@@ -2,8 +2,18 @@
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
-#### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.10.2...HEAD)
+#### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.10.3...HEAD)
 
+#### [v0.10.3](https://github.com/hougesen/mdsf/compare/v0.10.2...v0.10.3)
+
+> 25 July 2025
+
+- chore: release v0.10.3 [`#1215`](https://github.com/hougesen/mdsf/pull/1215)
+- build(deps-dev): bump @typescript-eslint/eslint-plugin in /mdsf-vscode [`#1214`](https://github.com/hougesen/mdsf/pull/1214)
+- build(deps-dev): bump @typescript-eslint/parser in /mdsf-vscode [`#1212`](https://github.com/hougesen/mdsf/pull/1212)
+- build(deps-dev): bump eslint from 9.31.0 to 9.32.0 in /mdsf-vscode [`#1210`](https://github.com/hougesen/mdsf/pull/1210)
+- build(deps-dev): bump eslint from 9.31.0 to 9.32.0 in /github-action [`#1211`](https://github.com/hougesen/mdsf/pull/1211)
+- build(cargo-dist): bump version to v0.28.2 [`#1208`](https://github.com/hougesen/mdsf/pull/1208)
 - build(deps-dev): bump esbuild from 0.25.6 to 0.25.8 in /github-action [`#1205`](https://github.com/hougesen/mdsf/pull/1205)
 - build(deps-dev): bump esbuild from 0.25.6 to 0.25.8 in /mdsf-vscode [`#1202`](https://github.com/hougesen/mdsf/pull/1202)
 - build(deps): bump serde_json from 1.0.140 to 1.0.141 [`#1206`](https://github.com/hougesen/mdsf/pull/1206)

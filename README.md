@@ -116,7 +116,7 @@ conda install conda-forge::mdsf
 <!-- START_SECTION:base-command-help -->
 
 ```
-mdsf 0.10.2-next
+mdsf 0.10.3
 Format, and lint, markdown code snippets using your favorite tools
 Mads Hougesen <mads@mhouge.dk>
 
