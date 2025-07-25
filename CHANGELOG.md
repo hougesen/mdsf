@@ -13,6 +13,7 @@ All notable changes to this project will be documented in this file. Dates are d
 - test(tools): add test cases for mbake [`#1200`](https://github.com/hougesen/mdsf/pull/1200)
 - feat(tools): add support for sqlint [`#1199`](https://github.com/hougesen/mdsf/pull/1199)
 - feat: setup precommit hooks [`#1198`](https://github.com/hougesen/mdsf/pull/1198)
+- feat(tools): add support for pymarkdownlnt (#1207) [`ec9d084`](https://github.com/hougesen/mdsf/commit/ec9d084f919c9096949a413d867bbefd13a386b4)
 - build: upgrade cargo-dist to v0.28.1 [`13b152d`](https://github.com/hougesen/mdsf/commit/13b152d2bac13ae50a8108a649e5913a9f26aec4)
 
 #### [v0.10.2](https://github.com/hougesen/mdsf/compare/v0.10.1...v0.10.2)
