@@ -254,6 +254,8 @@ pub mod pyment;
 pub mod pyrefly;
 pub mod pyupgrade;
 pub mod qmlfmt;
+pub mod qmlformat;
+pub mod qmllint;
 pub mod quick_lint_js;
 pub mod raco_fmt;
 pub mod reek;
@@ -2381,6 +2383,22 @@ pub enum Tooling {
     /// `qmlfmt -w $PATH`
     Qmlfmt,
 
+    #[serde(rename = "qmlformat")]
+    /// qmlformat is a tool that automatically formats QML files in accordance with the QML Coding Conventions
+    ///
+    /// [https://doc.qt.io/qt-6/qtqml-tooling-qmlformat.html](https://doc.qt.io/qt-6/qtqml-tooling-qmlformat.html)
+    ///
+    /// `qmlformat -i $PATH`
+    Qmlformat,
+
+    #[serde(rename = "qmllint")]
+    /// qmllint is a tool shipped with Qt, that verifies the syntatic validity of QML files
+    ///
+    /// [https://doc.qt.io/qt-6/qtqml-tooling-qmllint.html](https://doc.qt.io/qt-6/qtqml-tooling-qmllint.html)
+    ///
+    /// `qmllint $PATH`
+    Qmllint,
+
     #[serde(rename = "quick-lint-js")]
     /// quick-lint-js finds bugs in JavaScript programs
     ///
@@ -4093,6 +4111,12 @@ impl Tooling {
                 pyupgrade::IS_STDIN,
             ),
             Self::Qmlfmt => (&qmlfmt::COMMANDS, qmlfmt::set_args, qmlfmt::IS_STDIN),
+            Self::Qmlformat => (
+                &qmlformat::COMMANDS,
+                qmlformat::set_args,
+                qmlformat::IS_STDIN,
+            ),
+            Self::Qmllint => (&qmllint::COMMANDS, qmllint::set_args, qmllint::IS_STDIN),
             Self::QuickLintJs => (
                 &quick_lint_js::COMMANDS,
                 quick_lint_js::set_args,
@@ -4667,6 +4691,8 @@ impl AsRef<str> for Tooling {
             Self::Pyrefly => "pyrefly",
             Self::Pyupgrade => "pyupgrade",
             Self::Qmlfmt => "qmlfmt",
+            Self::Qmlformat => "qmlformat",
+            Self::Qmllint => "qmllint",
             Self::QuickLintJs => "quick-lint-js",
             Self::RacoFmt => "raco:fmt",
             Self::Reek => "reek",
@@ -5084,6 +5110,8 @@ mod test_tooling {
         assert_eq!(Tooling::Pyrefly, reverse(Tooling::Pyrefly)?);
         assert_eq!(Tooling::Pyupgrade, reverse(Tooling::Pyupgrade)?);
         assert_eq!(Tooling::Qmlfmt, reverse(Tooling::Qmlfmt)?);
+        assert_eq!(Tooling::Qmlformat, reverse(Tooling::Qmlformat)?);
+        assert_eq!(Tooling::Qmllint, reverse(Tooling::Qmllint)?);
         assert_eq!(Tooling::QuickLintJs, reverse(Tooling::QuickLintJs)?);
         assert_eq!(Tooling::RacoFmt, reverse(Tooling::RacoFmt)?);
         assert_eq!(Tooling::Reek, reverse(Tooling::Reek)?);

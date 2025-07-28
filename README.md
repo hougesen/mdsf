@@ -116,7 +116,7 @@ conda install conda-forge::mdsf
 <!-- START_SECTION:base-command-help -->
 
 ```
-mdsf 0.10.3
+mdsf 0.10.3-next
 Format, and lint, markdown code snippets using your favorite tools
 Mads Hougesen <mads@mhouge.dk>
 
@@ -473,7 +473,7 @@ That can be changed by specifying the `newline` config option.
 
 <!-- START_SECTION:supported-tools -->
 
-`mdsf` currently supports 321 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 323 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                                                                                 | Description                                                                                                                                   | Categories            | Languages                                                                                                                         |
 | ------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
@@ -700,6 +700,8 @@ That can be changed by specifying the `newline` config option.
 | [pyrefly](https://github.com/facebook/pyrefly)                                       | A fast type checker for Python                                                                                                                | `linter`              | `python`                                                                                                                          |
 | [pyupgrade](https://github.com/asottile/pyupgrade)                                   | A tool to automatically upgrade Python syntax to newer versions                                                                               | `linter`              | `python`                                                                                                                          |
 | [qmlfmt](https://github.com/jesperhh/qmlfmt)                                         | Command line application that formats QML files                                                                                               | `formatter`           | `qml`                                                                                                                             |
+| [qmlformat](https://doc.qt.io/qt-6/qtqml-tooling-qmlformat.html)                     | qmlformat is a tool that automatically formats QML files in accordance with the QML Coding Conventions                                        | `formatter`           | `qml`                                                                                                                             |
+| [qmllint](https://doc.qt.io/qt-6/qtqml-tooling-qmllint.html)                         | qmllint is a tool shipped with Qt, that verifies the syntatic validity of QML files                                                           | `linter`              | `qml`                                                                                                                             |
 | [quick-lint-js](https://github.com/quick-lint/quick-lint-js)                         | quick-lint-js finds bugs in JavaScript programs                                                                                               | `linter`              | `javascript`                                                                                                                      |
 | [raco](https://docs.racket-lang.org/fmt/)                                            | An extensible code formatter for Racket                                                                                                       | `formatter`           | `racket`                                                                                                                          |
 | [reek](https://github.com/troessner/reek)                                            | Code smell detector for Ruby                                                                                                                  | `linter`              | `ruby`                                                                                                                            |
@@ -805,7 +807,7 @@ That can be changed by specifying the `newline` config option.
 
 <!-- START_SECTION:supported-commands -->
 
-`mdsf` currently supports 359 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 361 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                         | Command                                                                                 |
 | ---------------------------- | --------------------------------------------------------------------------------------- |
@@ -1061,6 +1063,8 @@ That can be changed by specifying the `newline` config option.
 | `pyrefly`                    | `pyrefly check $PATH`                                                                   |
 | `pyupgrade`                  | `pyupgrade $PATH`                                                                       |
 | `qmlfmt`                     | `qmlfmt -w $PATH`                                                                       |
+| `qmlformat`                  | `qmlformat -i $PATH`                                                                    |
+| `qmllint`                    | `qmllint $PATH`                                                                         |
 | `quick-lint-js`              | `quick-lint-js $PATH`                                                                   |
 | `raco:fmt`                   | `raco fmt -i $PATH`                                                                     |
 | `reek`                       | `reek $PATH`                                                                            |

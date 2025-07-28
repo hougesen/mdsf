@@ -1,0 +1,15 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "qmllint",
+  "categories": ["linter"],
+  "commands": {
+    "": {
+      "arguments": ["$PATH"],
+      "tests": []
+    }
+  },
+  "description": "qmllint is a tool shipped with Qt, that verifies the syntatic validity of QML files",
+  "homepage": "https://doc.qt.io/qt-6/qtqml-tooling-qmllint.html",
+  "languages": ["qml"],
+  "packages": {}
+}
