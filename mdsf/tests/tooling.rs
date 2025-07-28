@@ -3567,6 +3567,12 @@ mod test_pyupgrade {
 mod test_qmlfmt {}
 
 #[cfg(test)]
+mod test_qmlformat {}
+
+#[cfg(test)]
+mod test_qmllint {}
+
+#[cfg(test)]
 mod test_quick_lint_js {}
 
 #[cfg(test)]

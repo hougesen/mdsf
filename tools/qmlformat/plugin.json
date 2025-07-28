@@ -1,0 +1,15 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "qmlformat",
+  "categories": ["formatter"],
+  "commands": {
+    "": {
+      "arguments": ["-i", "$PATH"],
+      "tests": []
+    }
+  },
+  "description": "qmlformat is a tool that automatically formats QML files in accordance with the QML Coding Conventions",
+  "homepage": "https://doc.qt.io/qt-6/qtqml-tooling-qmlformat.html",
+  "languages": ["qml"],
+  "packages": {}
+}
