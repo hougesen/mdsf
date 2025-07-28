@@ -2,7 +2,14 @@
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
-#### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.10.3...HEAD)
+#### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.10.4...HEAD)
+
+#### [v0.10.4](https://github.com/hougesen/mdsf/compare/v0.10.3...v0.10.4)
+
+> 28 July 2025
+
+- chore: release v0.10.4 [`#1217`](https://github.com/hougesen/mdsf/pull/1217)
+- feat(tools): add support for qmllint & qmlformat [`#1216`](https://github.com/hougesen/mdsf/pull/1216)
 
 #### [v0.10.3](https://github.com/hougesen/mdsf/compare/v0.10.2...v0.10.3)
 
