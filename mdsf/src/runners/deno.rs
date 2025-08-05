@@ -1,10 +1,15 @@
 #[inline]
-pub fn setup_deno_run_command(package_name: &str, _executable_name: &str) -> std::process::Command {
+pub fn setup_deno_run_command(package_name: &str, executable_name: &str) -> std::process::Command {
     let mut cmd = std::process::Command::new("deno");
 
     cmd.arg("run");
     cmd.arg("-A");
-    cmd.arg(format!("npm:{package_name}"));
+
+    if package_name == executable_name {
+        cmd.arg(format!("npm:{package_name}"));
+    } else {
+        cmd.arg(format!("npm:{package_name}/{executable_name}"));
+    }
 
     cmd
 }

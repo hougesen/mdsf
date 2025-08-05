@@ -1,16 +1,12 @@
 #[inline]
-pub fn setup_bunx_command(package_name: &str, executable_name: &str) -> std::process::Command {
+pub fn setup_bunx_command(package_name: &str, _executable_name: &str) -> std::process::Command {
     let mut cmd = std::process::Command::new("bunx");
 
     // Auto install package
     cmd.arg("--yes");
 
-    if package_name == executable_name {
-        cmd.arg(package_name);
-    } else {
-        // TODO: figure out how to actually select executable using bun
-        cmd.arg(package_name);
-    }
+    // TODO: figure out how to actually select executable using bun
+    cmd.arg(package_name);
 
     cmd
 }

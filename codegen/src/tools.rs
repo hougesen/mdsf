@@ -141,6 +141,7 @@ pub struct ToolPackagesNimble {
 
 #[derive(Debug, serde::Deserialize, schemars::JsonSchema, Clone, Default, serde::Serialize)]
 #[serde(deny_unknown_fields)]
+#[allow(clippy::struct_excessive_bools)]
 pub struct ToolPackagesNpm {
     #[serde(default, skip_serializing_if = "is_false")]
     pub disable_bunx: bool,
@@ -409,6 +410,7 @@ impl Tool {
     }
 
     #[allow(clippy::too_many_lines)]
+    #[allow(clippy::cognitive_complexity)]
     fn generate(&self) -> Vec<GeneratedCommand> {
         let mut all_commands = Vec::new();
 
@@ -471,11 +473,11 @@ impl Tool {
                     let mut flavors = Vec::new();
 
                     if !pip.disable_uv_tool_run {
-                        flavors.push("Uv")
+                        flavors.push("Uv");
                     }
 
                     if !pip.disable_pipx_run {
-                        flavors.push("Pipx")
+                        flavors.push("Pipx");
                     }
 
                     for flavor in flavors {
