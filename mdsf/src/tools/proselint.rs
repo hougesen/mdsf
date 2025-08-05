@@ -16,7 +16,7 @@ pub fn set_args(
 pub const COMMANDS: [CommandType; 3] = [
     CommandType::Direct("proselint"),
     CommandType::Uv("proselint", "proselint"),
-    CommandType::Pipx("proselint"),
+    CommandType::Pipx("proselint", "proselint"),
 ];
 
 pub const IS_STDIN: bool = false;

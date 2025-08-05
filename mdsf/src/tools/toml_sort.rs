@@ -17,7 +17,7 @@ pub fn set_args(
 pub const COMMANDS: [CommandType; 3] = [
     CommandType::Direct("toml-sort"),
     CommandType::Uv("toml-sort", "toml-sort"),
-    CommandType::Pipx("toml-sort"),
+    CommandType::Pipx("toml-sort", "toml-sort"),
 ];
 
 pub const IS_STDIN: bool = false;

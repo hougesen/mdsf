@@ -16,13 +16,13 @@ pub fn set_args(
 pub const COMMANDS: [CommandType; 9] = [
     CommandType::NodeModules("squawk"),
     CommandType::Direct("squawk"),
-    CommandType::Npm("squawk-cli"),
-    CommandType::Pnpm("squawk-cli"),
-    CommandType::Bun("squawk-cli"),
-    CommandType::Deno("squawk-cli"),
-    CommandType::Yarn("squawk-cli"),
+    CommandType::Npm("squawk-cli", "squawk-cli"),
+    CommandType::Pnpm("squawk-cli", "squawk-cli"),
+    CommandType::Bun("squawk-cli", "squawk-cli"),
+    CommandType::Deno("squawk-cli", "squawk-cli"),
+    CommandType::Yarn("squawk-cli", "squawk-cli"),
     CommandType::Uv("squawk-cli", "squawk-cli"),
-    CommandType::Pipx("squawk-cli"),
+    CommandType::Pipx("squawk-cli", "squawk-cli"),
 ];
 
 pub const IS_STDIN: bool = false;

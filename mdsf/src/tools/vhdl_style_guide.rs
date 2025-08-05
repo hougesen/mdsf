@@ -18,7 +18,7 @@ pub fn set_args(
 pub const COMMANDS: [CommandType; 3] = [
     CommandType::Direct("vsg"),
     CommandType::Uv("vsg", "vsg"),
-    CommandType::Pipx("vsg"),
+    CommandType::Pipx("vsg", "vsg"),
 ];
 
 pub const IS_STDIN: bool = false;

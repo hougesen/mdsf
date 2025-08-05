@@ -16,7 +16,7 @@ pub fn set_args(
 pub const COMMANDS: [CommandType; 3] = [
     CommandType::Direct("bashate"),
     CommandType::Uv("bashate", "bashate"),
-    CommandType::Pipx("bashate"),
+    CommandType::Pipx("bashate", "bashate"),
 ];
 
 pub const IS_STDIN: bool = false;

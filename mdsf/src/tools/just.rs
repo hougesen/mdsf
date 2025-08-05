@@ -19,13 +19,13 @@ pub fn set_args(
 pub const COMMANDS: [CommandType; 9] = [
     CommandType::NodeModules("just"),
     CommandType::Direct("just"),
-    CommandType::Npm("rust-just"),
-    CommandType::Pnpm("rust-just"),
-    CommandType::Bun("rust-just"),
-    CommandType::Deno("rust-just"),
-    CommandType::Yarn("rust-just"),
+    CommandType::Npm("rust-just", "rust-just"),
+    CommandType::Pnpm("rust-just", "rust-just"),
+    CommandType::Bun("rust-just", "rust-just"),
+    CommandType::Deno("rust-just", "rust-just"),
+    CommandType::Yarn("rust-just", "rust-just"),
     CommandType::Uv("rust-just", "just"),
-    CommandType::Pipx("rust-just"),
+    CommandType::Pipx("rust-just", "just"),
 ];
 
 pub const IS_STDIN: bool = false;

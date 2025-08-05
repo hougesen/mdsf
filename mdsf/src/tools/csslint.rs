@@ -17,11 +17,11 @@ pub fn set_args(
 pub const COMMANDS: [CommandType; 7] = [
     CommandType::NodeModules("csslint"),
     CommandType::Direct("csslint"),
-    CommandType::Npm("csslint"),
-    CommandType::Pnpm("csslint"),
-    CommandType::Bun("csslint"),
-    CommandType::Deno("csslint"),
-    CommandType::Yarn("csslint"),
+    CommandType::Npm("csslint", "csslint"),
+    CommandType::Pnpm("csslint", "csslint"),
+    CommandType::Bun("csslint", "csslint"),
+    CommandType::Deno("csslint", "csslint"),
+    CommandType::Yarn("csslint", "csslint"),
 ];
 
 pub const IS_STDIN: bool = false;

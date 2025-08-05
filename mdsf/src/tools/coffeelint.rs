@@ -17,11 +17,11 @@ pub fn set_args(
 pub const COMMANDS: [CommandType; 7] = [
     CommandType::NodeModules("coffeelint"),
     CommandType::Direct("coffeelint"),
-    CommandType::Npm("@coffeelint/cli"),
-    CommandType::Pnpm("@coffeelint/cli"),
-    CommandType::Bun("@coffeelint/cli"),
-    CommandType::Deno("@coffeelint/cli"),
-    CommandType::Yarn("@coffeelint/cli"),
+    CommandType::Npm("@coffeelint/cli", "@coffeelint/cli"),
+    CommandType::Pnpm("@coffeelint/cli", "@coffeelint/cli"),
+    CommandType::Bun("@coffeelint/cli", "@coffeelint/cli"),
+    CommandType::Deno("@coffeelint/cli", "@coffeelint/cli"),
+    CommandType::Yarn("@coffeelint/cli", "@coffeelint/cli"),
 ];
 
 pub const IS_STDIN: bool = false;

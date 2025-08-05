@@ -16,7 +16,7 @@ pub fn set_args(
 pub const COMMANDS: [CommandType; 3] = [
     CommandType::Direct("pycodestyle"),
     CommandType::Uv("pycodestyle", "pycodestyle"),
-    CommandType::Pipx("pycodestyle"),
+    CommandType::Pipx("pycodestyle", "pycodestyle"),
 ];
 
 pub const IS_STDIN: bool = false;

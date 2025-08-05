@@ -17,11 +17,11 @@ pub fn set_args(
 pub const COMMANDS: [CommandType; 7] = [
     CommandType::NodeModules("bslint"),
     CommandType::Direct("bslint"),
-    CommandType::Npm("bslint"),
-    CommandType::Pnpm("bslint"),
-    CommandType::Bun("bslint"),
-    CommandType::Deno("bslint"),
-    CommandType::Yarn("bslint"),
+    CommandType::Npm("bslint", "bslint"),
+    CommandType::Pnpm("bslint", "bslint"),
+    CommandType::Bun("bslint", "bslint"),
+    CommandType::Deno("bslint", "bslint"),
+    CommandType::Yarn("bslint", "bslint"),
 ];
 
 pub const IS_STDIN: bool = false;

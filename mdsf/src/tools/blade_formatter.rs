@@ -17,11 +17,11 @@ pub fn set_args(
 pub const COMMANDS: [CommandType; 7] = [
     CommandType::NodeModules("blade-formatter"),
     CommandType::Direct("blade-formatter"),
-    CommandType::Npm("blade-formatter"),
-    CommandType::Pnpm("blade-formatter"),
-    CommandType::Bun("blade-formatter"),
-    CommandType::Deno("blade-formatter"),
-    CommandType::Yarn("blade-formatter"),
+    CommandType::Npm("blade-formatter", "blade-formatter"),
+    CommandType::Pnpm("blade-formatter", "blade-formatter"),
+    CommandType::Bun("blade-formatter", "blade-formatter"),
+    CommandType::Deno("blade-formatter", "blade-formatter"),
+    CommandType::Yarn("blade-formatter", "blade-formatter"),
 ];
 
 pub const IS_STDIN: bool = false;

@@ -16,7 +16,7 @@ pub fn set_args(
 pub const COMMANDS: [CommandType; 3] = [
     CommandType::Direct("bean-black"),
     CommandType::Uv("beancount-black", "bean-black"),
-    CommandType::Pipx("beancount-black"),
+    CommandType::Pipx("beancount-black", "bean-black"),
 ];
 
 pub const IS_STDIN: bool = false;

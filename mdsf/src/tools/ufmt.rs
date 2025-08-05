@@ -17,7 +17,7 @@ pub fn set_args(
 pub const COMMANDS: [CommandType; 3] = [
     CommandType::Direct("ufmt"),
     CommandType::Uv("ufmt", "ufmt"),
-    CommandType::Pipx("ufmt"),
+    CommandType::Pipx("ufmt", "ufmt"),
 ];
 
 pub const IS_STDIN: bool = false;

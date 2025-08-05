@@ -16,7 +16,7 @@ pub fn set_args(
 pub const COMMANDS: [CommandType; 3] = [
     CommandType::Direct("pyflakes"),
     CommandType::Uv("pyflakes", "pyflakes"),
-    CommandType::Pipx("pyflakes"),
+    CommandType::Pipx("pyflakes", "pyflakes"),
 ];
 
 pub const IS_STDIN: bool = false;

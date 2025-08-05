@@ -17,7 +17,7 @@ pub fn set_args(
 pub const COMMANDS: [CommandType; 3] = [
     CommandType::Direct("ty"),
     CommandType::Uv("ty", "ty"),
-    CommandType::Pipx("ty"),
+    CommandType::Pipx("ty", "ty"),
 ];
 
 pub const IS_STDIN: bool = false;

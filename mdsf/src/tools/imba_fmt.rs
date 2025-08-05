@@ -18,11 +18,11 @@ pub fn set_args(
 pub const COMMANDS: [CommandType; 7] = [
     CommandType::NodeModules("imba"),
     CommandType::Direct("imba"),
-    CommandType::Npm("imba"),
-    CommandType::Pnpm("imba"),
-    CommandType::Bun("imba"),
-    CommandType::Deno("imba"),
-    CommandType::Yarn("imba"),
+    CommandType::Npm("imba", "imba"),
+    CommandType::Pnpm("imba", "imba"),
+    CommandType::Bun("imba", "imba"),
+    CommandType::Deno("imba", "imba"),
+    CommandType::Yarn("imba", "imba"),
 ];
 
 pub const IS_STDIN: bool = false;

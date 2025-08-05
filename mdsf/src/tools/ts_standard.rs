@@ -17,11 +17,11 @@ pub fn set_args(
 pub const COMMANDS: [CommandType; 7] = [
     CommandType::NodeModules("ts-standard"),
     CommandType::Direct("ts-standard"),
-    CommandType::Npm("ts-standard"),
-    CommandType::Pnpm("ts-standard"),
-    CommandType::Bun("ts-standard"),
-    CommandType::Deno("ts-standard"),
-    CommandType::Yarn("ts-standard"),
+    CommandType::Npm("ts-standard", "ts-standard"),
+    CommandType::Pnpm("ts-standard", "ts-standard"),
+    CommandType::Bun("ts-standard", "ts-standard"),
+    CommandType::Deno("ts-standard", "ts-standard"),
+    CommandType::Yarn("ts-standard", "ts-standard"),
 ];
 
 pub const IS_STDIN: bool = false;

@@ -17,7 +17,7 @@ pub fn set_args(
 pub const COMMANDS: [CommandType; 3] = [
     CommandType::Direct("pylint"),
     CommandType::Uv("pylint", "pylint"),
-    CommandType::Pipx("pylint"),
+    CommandType::Pipx("pylint", "pylint"),
 ];
 
 pub const IS_STDIN: bool = false;

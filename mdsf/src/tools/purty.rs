@@ -17,11 +17,11 @@ pub fn set_args(
 pub const COMMANDS: [CommandType; 7] = [
     CommandType::NodeModules("purty"),
     CommandType::Direct("purty"),
-    CommandType::Npm("purty"),
-    CommandType::Pnpm("purty"),
-    CommandType::Bun("purty"),
-    CommandType::Deno("purty"),
-    CommandType::Yarn("purty"),
+    CommandType::Npm("purty", "purty"),
+    CommandType::Pnpm("purty", "purty"),
+    CommandType::Bun("purty", "purty"),
+    CommandType::Deno("purty", "purty"),
+    CommandType::Yarn("purty", "purty"),
 ];
 
 pub const IS_STDIN: bool = false;

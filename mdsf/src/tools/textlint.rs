@@ -16,11 +16,11 @@ pub fn set_args(
 pub const COMMANDS: [CommandType; 7] = [
     CommandType::NodeModules("textlint"),
     CommandType::Direct("textlint"),
-    CommandType::Npm("textlint"),
-    CommandType::Pnpm("textlint"),
-    CommandType::Bun("textlint"),
-    CommandType::Deno("textlint"),
-    CommandType::Yarn("textlint"),
+    CommandType::Npm("textlint", "textlint"),
+    CommandType::Pnpm("textlint", "textlint"),
+    CommandType::Bun("textlint", "textlint"),
+    CommandType::Deno("textlint", "textlint"),
+    CommandType::Yarn("textlint", "textlint"),
 ];
 
 pub const IS_STDIN: bool = false;

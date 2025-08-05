@@ -17,7 +17,7 @@ pub fn set_args(
 pub const COMMANDS: [CommandType; 3] = [
     CommandType::Direct("yapf"),
     CommandType::Uv("yapf", "yapf"),
-    CommandType::Pipx("yapf"),
+    CommandType::Pipx("yapf", "yapf"),
 ];
 
 pub const IS_STDIN: bool = false;

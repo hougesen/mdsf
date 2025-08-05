@@ -16,11 +16,11 @@ pub fn set_args(
 pub const COMMANDS: [CommandType; 7] = [
     CommandType::NodeModules("write-good"),
     CommandType::Direct("write-good"),
-    CommandType::Npm("write-good"),
-    CommandType::Pnpm("write-good"),
-    CommandType::Bun("write-good"),
-    CommandType::Deno("write-good"),
-    CommandType::Yarn("write-good"),
+    CommandType::Npm("write-good", "write-good"),
+    CommandType::Pnpm("write-good", "write-good"),
+    CommandType::Bun("write-good", "write-good"),
+    CommandType::Deno("write-good", "write-good"),
+    CommandType::Yarn("write-good", "write-good"),
 ];
 
 pub const IS_STDIN: bool = false;

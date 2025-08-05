@@ -18,11 +18,11 @@ pub fn set_args(
 pub const COMMANDS: [CommandType; 7] = [
     CommandType::NodeModules("biome"),
     CommandType::Direct("biome"),
-    CommandType::Npm("@biomejs/biome"),
-    CommandType::Pnpm("@biomejs/biome"),
-    CommandType::Bun("@biomejs/biome"),
-    CommandType::Deno("@biomejs/biome"),
-    CommandType::Yarn("@biomejs/biome"),
+    CommandType::Npm("@biomejs/biome", "@biomejs/biome"),
+    CommandType::Pnpm("@biomejs/biome", "@biomejs/biome"),
+    CommandType::Bun("@biomejs/biome", "@biomejs/biome"),
+    CommandType::Deno("@biomejs/biome", "@biomejs/biome"),
+    CommandType::Yarn("@biomejs/biome", "@biomejs/biome"),
 ];
 
 pub const IS_STDIN: bool = false;

@@ -17,11 +17,11 @@ pub fn set_args(
 pub const COMMANDS: [CommandType; 7] = [
     CommandType::NodeModules("grafbase"),
     CommandType::Direct("grafbase"),
-    CommandType::Npm("grafbase"),
-    CommandType::Pnpm("grafbase"),
-    CommandType::Bun("grafbase"),
-    CommandType::Deno("grafbase"),
-    CommandType::Yarn("grafbase"),
+    CommandType::Npm("grafbase", "grafbase"),
+    CommandType::Pnpm("grafbase", "grafbase"),
+    CommandType::Bun("grafbase", "grafbase"),
+    CommandType::Deno("grafbase", "grafbase"),
+    CommandType::Yarn("grafbase", "grafbase"),
 ];
 
 pub const IS_STDIN: bool = false;

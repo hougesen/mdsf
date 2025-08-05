@@ -19,7 +19,7 @@ pub fn set_args(
 pub const COMMANDS: [CommandType; 3] = [
     CommandType::Direct("oelint-adv"),
     CommandType::Uv("oelint_adv", "oelint-adv"),
-    CommandType::Pipx("oelint_adv"),
+    CommandType::Pipx("oelint_adv", "oelint-adv"),
 ];
 
 pub const IS_STDIN: bool = false;

@@ -16,7 +16,7 @@ pub fn set_args(
 pub const COMMANDS: [CommandType; 3] = [
     CommandType::Direct("sphinx-lint"),
     CommandType::Uv("sphinx-lint", "sphinx-lint"),
-    CommandType::Pipx("sphinx-lint"),
+    CommandType::Pipx("sphinx-lint", "sphinx-lint"),
 ];
 
 pub const IS_STDIN: bool = false;

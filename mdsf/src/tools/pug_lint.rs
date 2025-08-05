@@ -16,11 +16,11 @@ pub fn set_args(
 pub const COMMANDS: [CommandType; 7] = [
     CommandType::NodeModules("pug-lint"),
     CommandType::Direct("pug-lint"),
-    CommandType::Npm("pug-lint"),
-    CommandType::Pnpm("pug-lint"),
-    CommandType::Bun("pug-lint"),
-    CommandType::Deno("pug-lint"),
-    CommandType::Yarn("pug-lint"),
+    CommandType::Npm("pug-lint", "pug-lint"),
+    CommandType::Pnpm("pug-lint", "pug-lint"),
+    CommandType::Bun("pug-lint", "pug-lint"),
+    CommandType::Deno("pug-lint", "pug-lint"),
+    CommandType::Yarn("pug-lint", "pug-lint"),
 ];
 
 pub const IS_STDIN: bool = false;

@@ -17,7 +17,7 @@ pub fn set_args(
 pub const COMMANDS: [CommandType; 3] = [
     CommandType::Direct("xmlformat"),
     CommandType::Uv("xmlformatter", "xmlformat"),
-    CommandType::Pipx("xmlformatter"),
+    CommandType::Pipx("xmlformatter", "xmlformat"),
 ];
 
 pub const IS_STDIN: bool = false;

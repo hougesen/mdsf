@@ -423,7 +423,10 @@ mod test_run_tools {
     #[test]
     fn it_should_skip_if_bun_runner_is_disabled() -> Result<(), MdsfError> {
         let (was_not_modified, _) = super::run_tools(
-            &[CommandType::Bun("thisbinarydoesnotexist")],
+            &[CommandType::Bun(
+                "thisbinarydoesnotexist",
+                "thisbinarydoesnotexist",
+            )],
             std::path::Path::new("thisdoesnotexist"),
             |_, _| unreachable!(),
             crate::testing::DEFAULT_TEST_FORMATTER_TIMEOUT,
@@ -452,7 +455,10 @@ mod test_run_tools {
     #[test]
     fn it_should_skip_if_deno_runner_is_disabled() -> Result<(), MdsfError> {
         let (was_not_modified, _) = super::run_tools(
-            &[CommandType::Deno("thisbinarydoesnotexist")],
+            &[CommandType::Deno(
+                "thisbinarydoesnotexist",
+                "thisbinarydoesnotexist",
+            )],
             std::path::Path::new("thisdoesnotexist"),
             |_, _| unreachable!(),
             crate::testing::DEFAULT_TEST_FORMATTER_TIMEOUT,
@@ -572,7 +578,10 @@ mod test_run_tools {
     #[test]
     fn it_should_skip_if_npx_runner_is_disabled() -> Result<(), MdsfError> {
         let (was_not_modified, _) = super::run_tools(
-            &[CommandType::Npm("thisbinarydoesnotexist")],
+            &[CommandType::Npm(
+                "thisbinarydoesnotexist",
+                "thisbinarydoesnotexist",
+            )],
             std::path::Path::new("thisdoesnotexist"),
             |_, _| unreachable!(),
             crate::testing::DEFAULT_TEST_FORMATTER_TIMEOUT,
@@ -602,7 +611,10 @@ mod test_run_tools {
     #[test]
     fn it_should_skip_if_pipx_runner_is_disabled() -> Result<(), MdsfError> {
         let (was_not_modified, _) = super::run_tools(
-            &[CommandType::Pipx("thisbinarydoesnotexist")],
+            &[CommandType::Pipx(
+                "thisbinarydoesnotexist",
+                "thisbinarydoesnotexist",
+            )],
             std::path::Path::new("thisdoesnotexist"),
             |_, _| unreachable!(),
             crate::testing::DEFAULT_TEST_FORMATTER_TIMEOUT,
@@ -632,7 +644,10 @@ mod test_run_tools {
     #[test]
     fn it_should_skip_if_pnpm_runner_is_disabled() -> Result<(), MdsfError> {
         let (was_not_modified, _) = super::run_tools(
-            &[CommandType::Pnpm("thisbinarydoesnotexist")],
+            &[CommandType::Pnpm(
+                "thisbinarydoesnotexist",
+                "thisbinarydoesnotexist",
+            )],
             std::path::Path::new("thisdoesnotexist"),
             |_, _| unreachable!(),
             crate::testing::DEFAULT_TEST_FORMATTER_TIMEOUT,
@@ -695,7 +710,10 @@ mod test_run_tools {
     #[test]
     fn it_should_skip_if_yarn_runner_is_disabled() -> Result<(), MdsfError> {
         let (was_not_modified, _) = super::run_tools(
-            &[CommandType::Yarn("thisbinarydoesnotexist")],
+            &[CommandType::Yarn(
+                "thisbinarydoesnotexist",
+                "thisbinarydoesnotexist",
+            )],
             std::path::Path::new("thisdoesnotexist"),
             |_, _| unreachable!(),
             crate::testing::DEFAULT_TEST_FORMATTER_TIMEOUT,

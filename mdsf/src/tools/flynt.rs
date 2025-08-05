@@ -16,7 +16,7 @@ pub fn set_args(
 pub const COMMANDS: [CommandType; 3] = [
     CommandType::Direct("flynt"),
     CommandType::Uv("flynt", "flynt"),
-    CommandType::Pipx("flynt"),
+    CommandType::Pipx("flynt", "flynt"),
 ];
 
 pub const IS_STDIN: bool = false;

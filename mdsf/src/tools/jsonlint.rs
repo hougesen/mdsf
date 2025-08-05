@@ -17,11 +17,11 @@ pub fn set_args(
 pub const COMMANDS: [CommandType; 7] = [
     CommandType::NodeModules("jsonlint"),
     CommandType::Direct("jsonlint"),
-    CommandType::Npm("jsonlint"),
-    CommandType::Pnpm("jsonlint"),
-    CommandType::Bun("jsonlint"),
-    CommandType::Deno("jsonlint"),
-    CommandType::Yarn("jsonlint"),
+    CommandType::Npm("jsonlint", "jsonlint"),
+    CommandType::Pnpm("jsonlint", "jsonlint"),
+    CommandType::Bun("jsonlint", "jsonlint"),
+    CommandType::Deno("jsonlint", "jsonlint"),
+    CommandType::Yarn("jsonlint", "jsonlint"),
 ];
 
 pub const IS_STDIN: bool = false;

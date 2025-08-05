@@ -17,7 +17,7 @@ pub fn set_args(
 pub const COMMANDS: [CommandType; 3] = [
     CommandType::Direct("autopep8"),
     CommandType::Uv("autopep8", "autopep8"),
-    CommandType::Pipx("autopep8"),
+    CommandType::Pipx("autopep8", "autopep8"),
 ];
 
 pub const IS_STDIN: bool = false;

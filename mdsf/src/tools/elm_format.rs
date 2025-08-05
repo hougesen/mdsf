@@ -18,11 +18,11 @@ pub fn set_args(
 pub const COMMANDS: [CommandType; 7] = [
     CommandType::NodeModules("elm-format"),
     CommandType::Direct("elm-format"),
-    CommandType::Npm("elm-format"),
-    CommandType::Pnpm("elm-format"),
-    CommandType::Bun("elm-format"),
-    CommandType::Deno("elm-format"),
-    CommandType::Yarn("elm-format"),
+    CommandType::Npm("elm-format", "elm-format"),
+    CommandType::Pnpm("elm-format", "elm-format"),
+    CommandType::Bun("elm-format", "elm-format"),
+    CommandType::Deno("elm-format", "elm-format"),
+    CommandType::Yarn("elm-format", "elm-format"),
 ];
 
 pub const IS_STDIN: bool = false;

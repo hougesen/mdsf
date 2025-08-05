@@ -18,7 +18,7 @@ pub fn set_args(
 pub const COMMANDS: [CommandType; 3] = [
     CommandType::Direct("gersemi"),
     CommandType::Uv("gersemi", "gersemi"),
-    CommandType::Pipx("gersemi"),
+    CommandType::Pipx("gersemi", "gersemi"),
 ];
 
 pub const IS_STDIN: bool = false;

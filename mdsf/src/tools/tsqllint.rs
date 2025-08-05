@@ -18,11 +18,11 @@ pub const COMMANDS: [CommandType; 8] = [
     CommandType::NodeModules("tsqllint"),
     CommandType::Dotnet("tsqllint"),
     CommandType::Direct("tsqllint"),
-    CommandType::Npm("tsqllint"),
-    CommandType::Pnpm("tsqllint"),
-    CommandType::Bun("tsqllint"),
-    CommandType::Deno("tsqllint"),
-    CommandType::Yarn("tsqllint"),
+    CommandType::Npm("tsqllint", "tsqllint"),
+    CommandType::Pnpm("tsqllint", "tsqllint"),
+    CommandType::Bun("tsqllint", "tsqllint"),
+    CommandType::Deno("tsqllint", "tsqllint"),
+    CommandType::Yarn("tsqllint", "tsqllint"),
 ];
 
 pub const IS_STDIN: bool = false;

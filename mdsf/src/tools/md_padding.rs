@@ -17,11 +17,11 @@ pub fn set_args(
 pub const COMMANDS: [CommandType; 7] = [
     CommandType::NodeModules("md-padding"),
     CommandType::Direct("md-padding"),
-    CommandType::Npm("md-padding"),
-    CommandType::Pnpm("md-padding"),
-    CommandType::Bun("md-padding"),
-    CommandType::Deno("md-padding"),
-    CommandType::Yarn("md-padding"),
+    CommandType::Npm("md-padding", "md-padding"),
+    CommandType::Pnpm("md-padding", "md-padding"),
+    CommandType::Bun("md-padding", "md-padding"),
+    CommandType::Deno("md-padding", "md-padding"),
+    CommandType::Yarn("md-padding", "md-padding"),
 ];
 
 pub const IS_STDIN: bool = false;

@@ -18,11 +18,11 @@ pub fn set_args(
 pub const COMMANDS: [CommandType; 7] = [
     CommandType::NodeModules("prisma"),
     CommandType::Direct("prisma"),
-    CommandType::Npm("prisma"),
-    CommandType::Pnpm("prisma"),
-    CommandType::Bun("prisma"),
-    CommandType::Deno("prisma"),
-    CommandType::Yarn("prisma"),
+    CommandType::Npm("prisma", "prisma"),
+    CommandType::Pnpm("prisma", "prisma"),
+    CommandType::Bun("prisma", "prisma"),
+    CommandType::Deno("prisma", "prisma"),
+    CommandType::Yarn("prisma", "prisma"),
 ];
 
 pub const IS_STDIN: bool = false;

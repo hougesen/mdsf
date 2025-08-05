@@ -17,11 +17,11 @@ pub fn set_args(
 pub const COMMANDS: [CommandType; 7] = [
     CommandType::NodeModules("bsfmt"),
     CommandType::Direct("bsfmt"),
-    CommandType::Npm("brighterscript-formatter"),
-    CommandType::Pnpm("brighterscript-formatter"),
-    CommandType::Bun("brighterscript-formatter"),
-    CommandType::Deno("brighterscript-formatter"),
-    CommandType::Yarn("brighterscript-formatter"),
+    CommandType::Npm("brighterscript-formatter", "brighterscript-formatter"),
+    CommandType::Pnpm("brighterscript-formatter", "brighterscript-formatter"),
+    CommandType::Bun("brighterscript-formatter", "brighterscript-formatter"),
+    CommandType::Deno("brighterscript-formatter", "brighterscript-formatter"),
+    CommandType::Yarn("brighterscript-formatter", "brighterscript-formatter"),
 ];
 
 pub const IS_STDIN: bool = false;

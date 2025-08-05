@@ -16,7 +16,7 @@ pub fn set_args(
 pub const COMMANDS: [CommandType; 3] = [
     CommandType::Direct("perflint"),
     CommandType::Uv("perflint", "perflint"),
-    CommandType::Pipx("perflint"),
+    CommandType::Pipx("perflint", "perflint"),
 ];
 
 pub const IS_STDIN: bool = false;

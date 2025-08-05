@@ -16,7 +16,7 @@ pub fn set_args(
 pub const COMMANDS: [CommandType; 3] = [
     CommandType::Direct("snakefmt"),
     CommandType::Uv("snakefmt", "snakefmt"),
-    CommandType::Pipx("snakefmt"),
+    CommandType::Pipx("snakefmt", "snakefmt"),
 ];
 
 pub const IS_STDIN: bool = false;

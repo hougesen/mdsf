@@ -17,11 +17,11 @@ pub fn set_args(
 pub const COMMANDS: [CommandType; 7] = [
     CommandType::NodeModules("mdsf"),
     CommandType::Direct("mdsf"),
-    CommandType::Npm("mdsf-cli"),
-    CommandType::Pnpm("mdsf-cli"),
-    CommandType::Bun("mdsf-cli"),
-    CommandType::Deno("mdsf-cli"),
-    CommandType::Yarn("mdsf-cli"),
+    CommandType::Npm("mdsf-cli", "mdsf-cli"),
+    CommandType::Pnpm("mdsf-cli", "mdsf-cli"),
+    CommandType::Bun("mdsf-cli", "mdsf-cli"),
+    CommandType::Deno("mdsf-cli", "mdsf-cli"),
+    CommandType::Yarn("mdsf-cli", "mdsf-cli"),
 ];
 
 pub const IS_STDIN: bool = false;

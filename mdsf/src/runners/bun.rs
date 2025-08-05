@@ -1,5 +1,5 @@
 #[inline]
-pub fn setup_bunx_command(package_name: &str) -> std::process::Command {
+pub fn setup_bunx_command(package_name: &str, executable_name: &str) -> std::process::Command {
     let mut cmd = std::process::Command::new("bunx");
 
     // Auto install package
@@ -23,7 +23,7 @@ mod test_bun {
             crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
 
         crate::execution::run_tools(
-            &[crate::runners::CommandType::Bun("prettier")],
+            &[crate::runners::CommandType::Bun("prettier", "prettier")],
             snippet.path(),
             crate::tools::prettier::set_args,
             crate::testing::DEFAULT_TEST_FORMATTER_TIMEOUT,
@@ -35,5 +35,11 @@ mod test_bun {
             },
         )
         .expect("it to succeed");
+    }
+
+    #[test_with::executable(bunx)]
+    #[test]
+    fn it_works_with_executable_name() {
+        todo!()
     }
 }

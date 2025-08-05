@@ -1,5 +1,5 @@
 #[inline]
-pub fn setup_deno_run_command(package_name: &str) -> std::process::Command {
+pub fn setup_deno_run_command(package_name: &str, executable_name: &str) -> std::process::Command {
     let mut cmd = std::process::Command::new("deno");
 
     cmd.arg("run");
@@ -22,7 +22,7 @@ mod test_deno {
             crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
 
         crate::execution::run_tools(
-            &[crate::runners::CommandType::Deno("prettier")],
+            &[crate::runners::CommandType::Deno("prettier", "prettier")],
             snippet.path(),
             crate::tools::prettier::set_args,
             crate::testing::DEFAULT_TEST_FORMATTER_TIMEOUT,
@@ -34,5 +34,11 @@ mod test_deno {
             },
         )
         .expect("it to succeed");
+    }
+
+    #[test_with::executable(deno)]
+    #[test]
+    fn it_works_with_executable_name() {
+        todo!()
     }
 }

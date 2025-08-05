@@ -16,7 +16,7 @@ pub fn set_args(
 pub const COMMANDS: [CommandType; 3] = [
     CommandType::Direct("pyupgrade"),
     CommandType::Uv("pyupgrade", "pyupgrade"),
-    CommandType::Pipx("pyupgrade"),
+    CommandType::Pipx("pyupgrade", "pyupgrade"),
 ];
 
 pub const IS_STDIN: bool = false;

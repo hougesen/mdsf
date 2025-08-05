@@ -6,7 +6,7 @@ pub fn setup_node_modules_command(binary_name: &str) -> std::process::Command {
 }
 
 #[inline]
-pub fn setup_npx_command(package_name: &str) -> std::process::Command {
+pub fn setup_npx_command(package_name: &str, executable_name: &str) -> std::process::Command {
     let mut cmd = std::process::Command::new("npx");
 
     // Auto install package
@@ -30,7 +30,7 @@ mod test_node {
             crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
 
         crate::execution::run_tools(
-            &[crate::runners::CommandType::Npm("prettier")],
+            &[crate::runners::CommandType::Npm("prettier", "prettier")],
             snippet.path(),
             crate::tools::prettier::set_args,
             crate::testing::DEFAULT_TEST_FORMATTER_TIMEOUT,
@@ -42,5 +42,11 @@ mod test_node {
             },
         )
         .expect("it to succeed");
+    }
+
+    #[test_with::executable(npx)]
+    #[test]
+    fn it_works_with_executable_name() {
+        todo!()
     }
 }

@@ -17,7 +17,7 @@ pub fn set_args(
 pub const COMMANDS: [CommandType; 3] = [
     CommandType::Direct("pyrefly"),
     CommandType::Uv("pyrefly", "pyrefly"),
-    CommandType::Pipx("pyrefly"),
+    CommandType::Pipx("pyrefly", "pyrefly"),
 ];
 
 pub const IS_STDIN: bool = false;

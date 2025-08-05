@@ -16,11 +16,11 @@ pub fn set_args(
 pub const COMMANDS: [CommandType; 7] = [
     CommandType::NodeModules("nginxbeautifier"),
     CommandType::Direct("nginxbeautifier"),
-    CommandType::Npm("nginxbeautifier"),
-    CommandType::Pnpm("nginxbeautifier"),
-    CommandType::Bun("nginxbeautifier"),
-    CommandType::Deno("nginxbeautifier"),
-    CommandType::Yarn("nginxbeautifier"),
+    CommandType::Npm("nginxbeautifier", "nginxbeautifier"),
+    CommandType::Pnpm("nginxbeautifier", "nginxbeautifier"),
+    CommandType::Bun("nginxbeautifier", "nginxbeautifier"),
+    CommandType::Deno("nginxbeautifier", "nginxbeautifier"),
+    CommandType::Yarn("nginxbeautifier", "nginxbeautifier"),
 ];
 
 pub const IS_STDIN: bool = false;

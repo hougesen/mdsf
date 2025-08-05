@@ -16,7 +16,7 @@ pub fn set_args(
 pub const COMMANDS: [CommandType; 3] = [
     CommandType::Direct("salt-lint"),
     CommandType::Uv("salt-lint", "salt-lint"),
-    CommandType::Pipx("salt-lint"),
+    CommandType::Pipx("salt-lint", "salt-lint"),
 ];
 
 pub const IS_STDIN: bool = false;

@@ -17,11 +17,11 @@ pub fn set_args(
 pub const COMMANDS: [CommandType; 7] = [
     CommandType::NodeModules("mise"),
     CommandType::Direct("mise"),
-    CommandType::Npm("@jdxcode/mise"),
-    CommandType::Pnpm("@jdxcode/mise"),
-    CommandType::Bun("@jdxcode/mise"),
-    CommandType::Deno("@jdxcode/mise"),
-    CommandType::Yarn("@jdxcode/mise"),
+    CommandType::Npm("@jdxcode/mise", "@jdxcode/mise"),
+    CommandType::Pnpm("@jdxcode/mise", "@jdxcode/mise"),
+    CommandType::Bun("@jdxcode/mise", "@jdxcode/mise"),
+    CommandType::Deno("@jdxcode/mise", "@jdxcode/mise"),
+    CommandType::Yarn("@jdxcode/mise", "@jdxcode/mise"),
 ];
 
 pub const IS_STDIN: bool = true;
