@@ -40,7 +40,11 @@ fn generate_brew(tool: &ToolPackagesBrew) -> String {
         .map(|tap| format!("brew tap {tap} &&"))
         .unwrap_or_default();
 
-    format!("( which brew && {} brew install {} )", tap, tool.package)
+    let package_name = &tool.package;
+
+    let cask = if tool.cask { "--cask " } else { "" };
+
+    format!("( which brew && {tap} brew install {cask}{package_name} )")
 }
 
 fn generate_luarocks(tool: &str) -> String {

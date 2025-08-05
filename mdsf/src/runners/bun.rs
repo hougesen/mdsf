@@ -5,7 +5,12 @@ pub fn setup_bunx_command(package_name: &str, executable_name: &str) -> std::pro
     // Auto install package
     cmd.arg("--yes");
 
-    cmd.arg(package_name);
+    if package_name == executable_name {
+        cmd.arg(package_name);
+    } else {
+        // TODO: figure out how to actually select executable using bun
+        cmd.arg(package_name);
+    }
 
     cmd
 }
@@ -40,6 +45,40 @@ mod test_bun {
     #[test_with::executable(bunx)]
     #[test]
     fn it_works_with_executable_name() {
-        todo!()
+        let input = r#"model Pet {  name: string;  age: int32;kind: "dog" | "cat" | "fish";}
+"#;
+
+        let output = r#"model Pet {
+  name: string;
+  age: int32;
+  kind: "dog" | "cat" | "fish";
+}
+"#;
+
+        let file_ext = crate::filetype::get_file_extension("typespec");
+
+        let snippet =
+            crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
+
+        let result = crate::execution::run_tools(
+            &[crate::runners::CommandType::Bun(
+                "@typespec/compiler",
+                "tsp",
+            )],
+            snippet.path(),
+            crate::tools::tsp_format::set_args,
+            crate::testing::DEFAULT_TEST_FORMATTER_TIMEOUT,
+            crate::tools::tsp_format::IS_STDIN,
+            crate::testing::DEFAULT_TEST_DEBUG_ENABLED,
+            &crate::config::MdsfConfigRunners {
+                bunx: true,
+                ..Default::default()
+            },
+        )
+        .expect("it to be successful")
+        .1
+        .expect("it to be some");
+
+        assert_eq!(result, output);
     }
 }

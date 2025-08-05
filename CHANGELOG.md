@@ -12,6 +12,7 @@ All notable changes to this project will be documented in this file. Dates are d
 - build(cargo-dist): bump version to v0.29.0 [`#1220`](https://github.com/hougesen/mdsf/pull/1220)
 - build(deps): bump serde_json from 1.0.141 to 1.0.142 [`#1219`](https://github.com/hougesen/mdsf/pull/1219)
 - build(deps): bump clap from 4.5.41 to 4.5.42 [`#1218`](https://github.com/hougesen/mdsf/pull/1218)
+- feat(runner): add support for npm package executable names [`cd69d07`](https://github.com/hougesen/mdsf/commit/cd69d071d60039f99e4d5b522bca0060f7b99f1f)
 
 #### [v0.10.4](https://github.com/hougesen/mdsf/compare/v0.10.3...v0.10.4)
 

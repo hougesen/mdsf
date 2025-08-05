@@ -17,5 +17,10 @@
   "description": "A tool for formatting Clojure code",
   "homepage": "https://github.com/greglook/cljstyle",
   "languages": ["clojure"],
-  "packages": {}
+  "packages": {
+    "brew": {
+      "cask": true,
+      "package": "cljstyle"
+    }
+  }
 }

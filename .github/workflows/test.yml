@@ -119,6 +119,8 @@ jobs:
         run: ( ( which buf ) || ( ( which npm && npm i -g @bufbuild/buf ) || ( which brew &&  brew install bufbuild/buf/buf ) ) || ( echo "Unable to install tool" ) )
       - name: clang-format
         run: ( ( which clang-format ) || ( ( which brew &&  brew install clang-format ) || ( which pipx && pipx install clang-format ) ) || ( echo "Unable to install tool" ) )
+      - name: cljstyle
+        run: ( ( which cljstyle ) || ( ( which brew &&  brew install --cask cljstyle ) ) || ( echo "Unable to install tool" ) )
       - name: coffeelint
         run: ( ( which coffeelint ) || ( ( which npm && npm i -g @coffeelint/cli ) ) || ( echo "Unable to install tool" ) )
       - name: cppcheck
@@ -133,6 +135,8 @@ jobs:
         run: ( ( which csscomb ) || ( ( which npm && npm i -g csscomb ) ) || ( echo "Unable to install tool" ) )
       - name: csslint
         run: ( ( which csslint ) || ( ( which npm && npm i -g csslint ) ) || ( echo "Unable to install tool" ) )
+      - name: deno
+        run: ( ( which deno ) || ( ( which cargo && ( cargo binstall deno || cargo install deno ) ) || ( which brew &&  brew install deno ) ) || ( echo "Unable to install tool" ) )
       - name: dfmt
         run: ( ( which dfmt ) || ( ( which brew &&  brew install dfmt ) ) || ( echo "Unable to install tool" ) )
       - name: dockerfmt

@@ -11,5 +11,9 @@
   "description": "Fish indenter and prettifier",
   "homepage": "https://fishshell.com/docs/current/cmds/fish_indent.html",
   "languages": ["fish"],
-  "packages": {}
+  "packages": {
+    "brew": {
+      "package": "fish"
+    }
+  }
 }

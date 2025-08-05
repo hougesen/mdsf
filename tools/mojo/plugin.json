@@ -11,5 +11,10 @@
   "description": "Formats Mojo source files",
   "homepage": "https://docs.modular.com/mojo/cli/format",
   "languages": ["mojo"],
-  "packages": {}
+  "packages": {
+    "pip": {
+      "executable": "mojo",
+      "package": "modular"
+    }
+  }
 }

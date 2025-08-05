@@ -58,6 +58,9 @@ pub struct ToolPackagesApt {
 #[derive(Debug, serde::Deserialize, schemars::JsonSchema, Clone, Default, serde::Serialize)]
 #[serde(deny_unknown_fields)]
 pub struct ToolPackagesBrew {
+    #[serde(default, skip_serializing_if = "is_false")]
+    pub cask: bool,
+
     pub package: String,
 
     #[serde(default, skip_serializing_if = "Option::is_none")]

@@ -4,7 +4,14 @@ pub fn setup_pipx_run_command(package_name: &str, executable_name: &str) -> std:
 
     cmd.arg("run");
     cmd.arg("--quiet");
-    cmd.arg(package_name);
+
+    if package_name == executable_name {
+        cmd.arg(package_name);
+    } else {
+        cmd.arg("--spec");
+        cmd.arg(package_name);
+        cmd.arg(executable_name);
+    }
 
     cmd
 }
@@ -96,7 +103,7 @@ end program example
             crate::tools::xmlformat::IS_STDIN,
             crate::testing::DEFAULT_TEST_DEBUG_ENABLED,
             &crate::config::MdsfConfigRunners {
-                uv: true,
+                pipx: true,
                 ..Default::default()
             },
         )
