@@ -119,8 +119,6 @@ jobs:
         run: ( ( which buf ) || ( ( which npm && npm i -g @bufbuild/buf ) || ( which brew &&  brew install bufbuild/buf/buf ) ) || ( echo "Unable to install tool" ) )
       - name: clang-format
         run: ( ( which clang-format ) || ( ( which brew &&  brew install clang-format ) || ( which pipx && pipx install clang-format ) ) || ( echo "Unable to install tool" ) )
-      - name: cljstyle
-        run: ( ( which cljstyle ) || ( ( which brew &&  brew install --cask cljstyle ) ) || ( echo "Unable to install tool" ) )
       - name: coffeelint
         run: ( ( which coffeelint ) || ( ( which npm && npm i -g @coffeelint/cli ) ) || ( echo "Unable to install tool" ) )
       - name: cppcheck

@@ -308,6 +308,9 @@
         "package": {
           "type": "string"
         },
+        "skip_brew_install": {
+          "type": "boolean"
+        },
         "tap": {
           "type": ["string", "null"]
         }

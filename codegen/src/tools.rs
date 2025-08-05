@@ -61,6 +61,9 @@ pub struct ToolPackagesBrew {
     #[serde(default, skip_serializing_if = "is_false")]
     pub cask: bool,
 
+    #[serde(default, skip_serializing_if = "is_false")]
+    pub skip_brew_install: bool,
+
     pub package: String,
 
     #[serde(default, skip_serializing_if = "Option::is_none")]

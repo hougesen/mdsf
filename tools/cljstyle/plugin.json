@@ -20,6 +20,7 @@
   "packages": {
     "brew": {
       "cask": true,
+      "skip_brew_install": true,
       "package": "cljstyle"
     }
   }
