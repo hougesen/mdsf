@@ -28,14 +28,15 @@ mod test_node {
     #[test_with::executable(npx)]
     #[test]
     fn it_can_execute_an_npm_package_script() {
-        let input = "";
+        let input = "[1,2,3,4,5,6]";
+        let output = "[1, 2, 3, 4, 5, 6]\n";
 
         let file_ext = crate::filetype::get_file_extension("json");
 
         let snippet =
             crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
 
-        crate::execution::run_tools(
+        let result = crate::execution::run_tools(
             &[crate::runners::CommandType::Npm("prettier", "prettier")],
             snippet.path(),
             crate::tools::prettier::set_args,
@@ -47,7 +48,11 @@ mod test_node {
                 ..Default::default()
             },
         )
-        .expect("it to succeed");
+        .expect("it to succeed")
+        .1
+        .expect("it to be some");
+
+        assert_eq!(result, output);
     }
 
     #[test_with::executable(npx)]

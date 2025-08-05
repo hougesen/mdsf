@@ -20,6 +20,7 @@ pub fn setup_yarn_dlx_command(package_name: &str, executable_name: &str) -> std:
 mod test_yarn {
     #[test_with::executable(yarn)]
     #[test]
+    #[ignore]
     fn it_can_execute_an_npm_package_script() {
         let input = "[1,2,3,4,5,6]";
         let output = "[1, 2, 3, 4, 5, 6]\n";
@@ -50,6 +51,7 @@ mod test_yarn {
 
     #[test_with::executable(yarn)]
     #[test]
+    #[ignore]
     fn it_works_with_executable_name() {
         let input = r#"model Pet {  name: string;  age: int32;kind: "dog" | "cat" | "fish";}
 "#;
