@@ -17,11 +17,11 @@ pub fn set_args(
 pub const COMMANDS: [CommandType; 7] = [
     CommandType::NodeModules("stylua"),
     CommandType::Direct("stylua"),
-    CommandType::Npm("@johnnymorganz/stylua-bin"),
-    CommandType::Pnpm("@johnnymorganz/stylua-bin"),
-    CommandType::Bun("@johnnymorganz/stylua-bin"),
-    CommandType::Deno("@johnnymorganz/stylua-bin"),
-    CommandType::Yarn("@johnnymorganz/stylua-bin"),
+    CommandType::Npm("@johnnymorganz/stylua-bin", "@johnnymorganz/stylua-bin"),
+    CommandType::Pnpm("@johnnymorganz/stylua-bin", "@johnnymorganz/stylua-bin"),
+    CommandType::Bun("@johnnymorganz/stylua-bin", "@johnnymorganz/stylua-bin"),
+    CommandType::Deno("@johnnymorganz/stylua-bin", "@johnnymorganz/stylua-bin"),
+    CommandType::Yarn("@johnnymorganz/stylua-bin", "@johnnymorganz/stylua-bin"),
 ];
 
 pub const IS_STDIN: bool = false;

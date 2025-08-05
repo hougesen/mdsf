@@ -17,7 +17,7 @@ pub fn set_args(
 pub const COMMANDS: [CommandType; 3] = [
     CommandType::Direct("clang-format"),
     CommandType::Uv("clang-format", "clang-format"),
-    CommandType::Pipx("clang-format"),
+    CommandType::Pipx("clang-format", "clang-format"),
 ];
 
 pub const IS_STDIN: bool = false;

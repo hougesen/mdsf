@@ -17,11 +17,11 @@ pub fn set_args(
 pub const COMMANDS: [CommandType; 7] = [
     CommandType::NodeModules("kulala-fmt"),
     CommandType::Direct("kulala-fmt"),
-    CommandType::Npm("@mistweaverco/kulala-fmt"),
-    CommandType::Pnpm("@mistweaverco/kulala-fmt"),
-    CommandType::Bun("@mistweaverco/kulala-fmt"),
-    CommandType::Deno("@mistweaverco/kulala-fmt"),
-    CommandType::Yarn("@mistweaverco/kulala-fmt"),
+    CommandType::Npm("@mistweaverco/kulala-fmt", "@mistweaverco/kulala-fmt"),
+    CommandType::Pnpm("@mistweaverco/kulala-fmt", "@mistweaverco/kulala-fmt"),
+    CommandType::Bun("@mistweaverco/kulala-fmt", "@mistweaverco/kulala-fmt"),
+    CommandType::Deno("@mistweaverco/kulala-fmt", "@mistweaverco/kulala-fmt"),
+    CommandType::Yarn("@mistweaverco/kulala-fmt", "@mistweaverco/kulala-fmt"),
 ];
 
 pub const IS_STDIN: bool = false;

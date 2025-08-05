@@ -16,11 +16,11 @@ pub fn set_args(
 pub const COMMANDS: [CommandType; 7] = [
     CommandType::NodeModules("stylefmt"),
     CommandType::Direct("stylefmt"),
-    CommandType::Npm("stylefmt"),
-    CommandType::Pnpm("stylefmt"),
-    CommandType::Bun("stylefmt"),
-    CommandType::Deno("stylefmt"),
-    CommandType::Yarn("stylefmt"),
+    CommandType::Npm("stylefmt", "stylefmt"),
+    CommandType::Pnpm("stylefmt", "stylefmt"),
+    CommandType::Bun("stylefmt", "stylefmt"),
+    CommandType::Deno("stylefmt", "stylefmt"),
+    CommandType::Yarn("stylefmt", "stylefmt"),
 ];
 
 pub const IS_STDIN: bool = false;

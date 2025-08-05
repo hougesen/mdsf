@@ -6,7 +6,7 @@ pub fn setup_php_vender_bin_command(binary_name: &str) -> std::process::Command 
 }
 
 #[cfg(test)]
-mod test_mago_format {
+mod test_composer {
     #[test_with::executable(./vendor/bin/mago)]
     fn test_composer_path() {
         let input = r#"<?php
@@ -28,7 +28,18 @@ echo 'Hello World!';
             crate::testing::DEFAULT_TEST_FORMATTER_TIMEOUT,
             crate::tools::mago_format::IS_STDIN,
             crate::testing::DEFAULT_TEST_DEBUG_ENABLED,
-            &crate::config::MdsfConfigRunners::default(),
+            &crate::config::MdsfConfigRunners {
+                bunx: false,
+                deno: false,
+                dotnet: false,
+                dub: false,
+                gem_exec: false,
+                npx: false,
+                pipx: false,
+                pnpm: false,
+                uv: false,
+                yarn: false,
+            },
         )
         .expect("it to be successful")
         .1

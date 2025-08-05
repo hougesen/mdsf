@@ -16,7 +16,7 @@ pub fn set_args(
 pub const COMMANDS: [CommandType; 3] = [
     CommandType::Direct("yamllint"),
     CommandType::Uv("yamllint", "yamllint"),
-    CommandType::Pipx("yamllint"),
+    CommandType::Pipx("yamllint", "yamllint"),
 ];
 
 pub const IS_STDIN: bool = false;

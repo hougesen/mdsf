@@ -17,11 +17,11 @@ pub fn set_args(
 pub const COMMANDS: [CommandType; 7] = [
     CommandType::NodeModules("autocorrect"),
     CommandType::Direct("autocorrect"),
-    CommandType::Npm("autocorrect-node"),
-    CommandType::Pnpm("autocorrect-node"),
-    CommandType::Bun("autocorrect-node"),
-    CommandType::Deno("autocorrect-node"),
-    CommandType::Yarn("autocorrect-node"),
+    CommandType::Npm("autocorrect-node", "autocorrect-node"),
+    CommandType::Pnpm("autocorrect-node", "autocorrect-node"),
+    CommandType::Bun("autocorrect-node", "autocorrect-node"),
+    CommandType::Deno("autocorrect-node", "autocorrect-node"),
+    CommandType::Yarn("autocorrect-node", "autocorrect-node"),
 ];
 
 pub const IS_STDIN: bool = false;

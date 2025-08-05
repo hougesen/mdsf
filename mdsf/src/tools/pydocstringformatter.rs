@@ -17,7 +17,7 @@ pub fn set_args(
 pub const COMMANDS: [CommandType; 3] = [
     CommandType::Direct("pydocstringformatter"),
     CommandType::Uv("pydocstringformatter", "pydocstringformatter"),
-    CommandType::Pipx("pydocstringformatter"),
+    CommandType::Pipx("pydocstringformatter", "pydocstringformatter"),
 ];
 
 pub const IS_STDIN: bool = false;

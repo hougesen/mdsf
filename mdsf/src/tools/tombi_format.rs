@@ -17,7 +17,7 @@ pub fn set_args(
 pub const COMMANDS: [CommandType; 3] = [
     CommandType::Direct("tombi"),
     CommandType::Uv("tombi", "tombi"),
-    CommandType::Pipx("tombi"),
+    CommandType::Pipx("tombi", "tombi"),
 ];
 
 pub const IS_STDIN: bool = true;

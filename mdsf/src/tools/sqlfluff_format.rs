@@ -21,7 +21,7 @@ pub fn set_args(
 pub const COMMANDS: [CommandType; 3] = [
     CommandType::Direct("sqlfluff"),
     CommandType::Uv("sqlfluff", "sqlfluff"),
-    CommandType::Pipx("sqlfluff"),
+    CommandType::Pipx("sqlfluff", "sqlfluff"),
 ];
 
 pub const IS_STDIN: bool = false;

@@ -16,11 +16,11 @@ pub fn set_args(
 pub const COMMANDS: [CommandType; 7] = [
     CommandType::NodeModules("doctoc"),
     CommandType::Direct("doctoc"),
-    CommandType::Npm("doctoc"),
-    CommandType::Pnpm("doctoc"),
-    CommandType::Bun("doctoc"),
-    CommandType::Deno("doctoc"),
-    CommandType::Yarn("doctoc"),
+    CommandType::Npm("doctoc", "doctoc"),
+    CommandType::Pnpm("doctoc", "doctoc"),
+    CommandType::Bun("doctoc", "doctoc"),
+    CommandType::Deno("doctoc", "doctoc"),
+    CommandType::Yarn("doctoc", "doctoc"),
 ];
 
 pub const IS_STDIN: bool = false;

@@ -21,11 +21,11 @@ pub fn set_args(
 pub const COMMANDS: [CommandType; 7] = [
     CommandType::NodeModules("prettier"),
     CommandType::Direct("prettier"),
-    CommandType::Npm("prettier"),
-    CommandType::Pnpm("prettier"),
-    CommandType::Bun("prettier"),
-    CommandType::Deno("prettier"),
-    CommandType::Yarn("prettier"),
+    CommandType::Npm("prettier", "prettier"),
+    CommandType::Pnpm("prettier", "prettier"),
+    CommandType::Bun("prettier", "prettier"),
+    CommandType::Deno("prettier", "prettier"),
+    CommandType::Yarn("prettier", "prettier"),
 ];
 
 pub const IS_STDIN: bool = false;

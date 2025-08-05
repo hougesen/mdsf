@@ -17,11 +17,11 @@ pub fn set_args(
 pub const COMMANDS: [CommandType; 7] = [
     CommandType::NodeModules("bibtex-tidy"),
     CommandType::Direct("bibtex-tidy"),
-    CommandType::Npm("bibtex-tidy"),
-    CommandType::Pnpm("bibtex-tidy"),
-    CommandType::Bun("bibtex-tidy"),
-    CommandType::Deno("bibtex-tidy"),
-    CommandType::Yarn("bibtex-tidy"),
+    CommandType::Npm("bibtex-tidy", "bibtex-tidy"),
+    CommandType::Pnpm("bibtex-tidy", "bibtex-tidy"),
+    CommandType::Bun("bibtex-tidy", "bibtex-tidy"),
+    CommandType::Deno("bibtex-tidy", "bibtex-tidy"),
+    CommandType::Yarn("bibtex-tidy", "bibtex-tidy"),
 ];
 
 pub const IS_STDIN: bool = false;

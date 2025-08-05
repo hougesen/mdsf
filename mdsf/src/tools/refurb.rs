@@ -16,7 +16,7 @@ pub fn set_args(
 pub const COMMANDS: [CommandType; 3] = [
     CommandType::Direct("refurb"),
     CommandType::Uv("refurb", "refurb"),
-    CommandType::Pipx("refurb"),
+    CommandType::Pipx("refurb", "refurb"),
 ];
 
 pub const IS_STDIN: bool = false;

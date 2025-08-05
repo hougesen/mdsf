@@ -4844,7 +4844,7 @@ mod test_ts_standard {}
 
 #[cfg(test)]
 mod test_tsp_format {
-    #[test_with::executable(tsp)]
+    #[test_with::executable(tsp || npx || pnpm || deno || bunx)]
     fn test_tsp_format_typespec_f4c58025c5f05edc() -> Result<(), Box<dyn core::error::Error>> {
         let input = r#"model Pet {  name: string;  age: int32;kind: "dog" | "cat" | "fish";}
 "#;

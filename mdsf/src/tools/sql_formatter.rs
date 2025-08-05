@@ -17,11 +17,11 @@ pub fn set_args(
 pub const COMMANDS: [CommandType; 7] = [
     CommandType::NodeModules("sql-formatter"),
     CommandType::Direct("sql-formatter"),
-    CommandType::Npm("sql-formatter"),
-    CommandType::Pnpm("sql-formatter"),
-    CommandType::Bun("sql-formatter"),
-    CommandType::Deno("sql-formatter"),
-    CommandType::Yarn("sql-formatter"),
+    CommandType::Npm("sql-formatter", "sql-formatter"),
+    CommandType::Pnpm("sql-formatter", "sql-formatter"),
+    CommandType::Bun("sql-formatter", "sql-formatter"),
+    CommandType::Deno("sql-formatter", "sql-formatter"),
+    CommandType::Yarn("sql-formatter", "sql-formatter"),
 ];
 
 pub const IS_STDIN: bool = false;

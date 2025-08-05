@@ -4,6 +4,13 @@ All notable changes to this project will be documented in this file. Dates are d
 
 #### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.10.4...HEAD)
 
+- feat(node): support packages with multiple executables [`#1226`](https://github.com/hougesen/mdsf/pull/1226)
+- build(deps-dev): bump typescript from 5.8.3 to 5.9.2 in /mdsf-vscode [`#1221`](https://github.com/hougesen/mdsf/pull/1221)
+- build(deps-dev): bump @typescript-eslint/eslint-plugin in /mdsf-vscode [`#1223`](https://github.com/hougesen/mdsf/pull/1223)
+- build(deps-dev): bump @biomejs/biome in /github-action [`#1224`](https://github.com/hougesen/mdsf/pull/1224)
+- build(deps-dev): bump @biomejs/biome from 2.1.2 to 2.1.3 in /mdsf-vscode [`#1225`](https://github.com/hougesen/mdsf/pull/1225)
+- build(deps-dev): bump @typescript-eslint/parser in /mdsf-vscode [`#1222`](https://github.com/hougesen/mdsf/pull/1222)
+- build(cargo-dist): bump version to v0.29.0 [`#1220`](https://github.com/hougesen/mdsf/pull/1220)
 - build(deps): bump serde_json from 1.0.141 to 1.0.142 [`#1219`](https://github.com/hougesen/mdsf/pull/1219)
 - build(deps): bump clap from 4.5.41 to 4.5.42 [`#1218`](https://github.com/hougesen/mdsf/pull/1218)
 

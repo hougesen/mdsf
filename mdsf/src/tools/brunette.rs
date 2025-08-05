@@ -17,7 +17,7 @@ pub fn set_args(
 pub const COMMANDS: [CommandType; 3] = [
     CommandType::Direct("brunette"),
     CommandType::Uv("brunette", "brunette"),
-    CommandType::Pipx("brunette"),
+    CommandType::Pipx("brunette", "brunette"),
 ];
 
 pub const IS_STDIN: bool = false;

@@ -17,11 +17,11 @@ pub fn set_args(
 pub const COMMANDS: [CommandType; 7] = [
     CommandType::NodeModules("rescript"),
     CommandType::Direct("rescript"),
-    CommandType::Npm("rescript"),
-    CommandType::Pnpm("rescript"),
-    CommandType::Bun("rescript"),
-    CommandType::Deno("rescript"),
-    CommandType::Yarn("rescript"),
+    CommandType::Npm("rescript", "rescript"),
+    CommandType::Pnpm("rescript", "rescript"),
+    CommandType::Bun("rescript", "rescript"),
+    CommandType::Deno("rescript", "rescript"),
+    CommandType::Yarn("rescript", "rescript"),
 ];
 
 pub const IS_STDIN: bool = false;

@@ -17,11 +17,11 @@ pub fn set_args(
 pub const COMMANDS: [CommandType; 7] = [
     CommandType::NodeModules("taplo"),
     CommandType::Direct("taplo"),
-    CommandType::Npm("@taplo/cli"),
-    CommandType::Pnpm("@taplo/cli"),
-    CommandType::Bun("@taplo/cli"),
-    CommandType::Deno("@taplo/cli"),
-    CommandType::Yarn("@taplo/cli"),
+    CommandType::Npm("@taplo/cli", "@taplo/cli"),
+    CommandType::Pnpm("@taplo/cli", "@taplo/cli"),
+    CommandType::Bun("@taplo/cli", "@taplo/cli"),
+    CommandType::Deno("@taplo/cli", "@taplo/cli"),
+    CommandType::Yarn("@taplo/cli", "@taplo/cli"),
 ];
 
 pub const IS_STDIN: bool = false;

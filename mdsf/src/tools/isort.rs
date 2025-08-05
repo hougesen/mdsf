@@ -17,7 +17,7 @@ pub fn set_args(
 pub const COMMANDS: [CommandType; 3] = [
     CommandType::Direct("isort"),
     CommandType::Uv("isort", "isort"),
-    CommandType::Pipx("isort"),
+    CommandType::Pipx("isort", "isort"),
 ];
 
 pub const IS_STDIN: bool = false;

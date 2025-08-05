@@ -58,6 +58,12 @@ pub struct ToolPackagesApt {
 #[derive(Debug, serde::Deserialize, schemars::JsonSchema, Clone, Default, serde::Serialize)]
 #[serde(deny_unknown_fields)]
 pub struct ToolPackagesBrew {
+    #[serde(default, skip_serializing_if = "is_false")]
+    pub cask: bool,
+
+    #[serde(default, skip_serializing_if = "is_false")]
+    pub skip_brew_install: bool,
+
     pub package: String,
 
     #[serde(default, skip_serializing_if = "Option::is_none")]
@@ -138,7 +144,26 @@ pub struct ToolPackagesNimble {
 
 #[derive(Debug, serde::Deserialize, schemars::JsonSchema, Clone, Default, serde::Serialize)]
 #[serde(deny_unknown_fields)]
+#[allow(clippy::struct_excessive_bools)]
 pub struct ToolPackagesNpm {
+    #[serde(default, skip_serializing_if = "is_false")]
+    pub disable_bunx: bool,
+
+    #[serde(default, skip_serializing_if = "is_false")]
+    pub disable_deno_run: bool,
+
+    #[serde(default, skip_serializing_if = "is_false")]
+    pub disable_npx: bool,
+
+    #[serde(default, skip_serializing_if = "is_false")]
+    pub disable_pnpm_dlx: bool,
+
+    #[serde(default, skip_serializing_if = "is_false")]
+    pub disable_yarn_exec: bool,
+
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub executable: Option<String>,
+
     pub package: String,
 }
 
@@ -388,6 +413,7 @@ impl Tool {
     }
 
     #[allow(clippy::too_many_lines)]
+    #[allow(clippy::cognitive_complexity)]
     fn generate(&self) -> Vec<GeneratedCommand> {
         let mut all_commands = Vec::new();
 
@@ -411,28 +437,56 @@ impl Tool {
                 command_types.push(format!("CommandType::Direct(\"{}\")", self.binary));
 
                 if let Some(npm) = &self.packages.npm {
-                    command_types.push(format!("CommandType::Npm(\"{}\")", &npm.package));
+                    let package_name = &npm.package;
+                    let executable_name = npm.executable.as_ref().unwrap_or(&npm.package);
 
-                    command_types.push(format!("CommandType::Pnpm(\"{}\")", &npm.package));
+                    let mut flavors = Vec::new();
 
-                    command_types.push(format!("CommandType::Bun(\"{}\")", &npm.package));
+                    if !npm.disable_npx {
+                        flavors.push("Npm");
+                    }
 
-                    command_types.push(format!("CommandType::Deno(\"{}\")", &npm.package));
+                    if !npm.disable_pnpm_dlx {
+                        flavors.push("Pnpm");
+                    }
 
-                    command_types.push(format!("CommandType::Yarn(\"{}\")", &npm.package));
+                    if !npm.disable_bunx {
+                        flavors.push("Bun");
+                    }
+
+                    if !npm.disable_deno_run {
+                        flavors.push("Deno");
+                    }
+
+                    if !npm.disable_yarn_exec {
+                        flavors.push("Yarn");
+                    }
+
+                    for flavor in flavors {
+                        command_types.push(format!(
+                            "CommandType::{flavor}(\"{package_name}\", \"{executable_name}\")"
+                        ));
+                    }
                 }
 
                 if let Some(pip) = &self.packages.pip {
+                    let package_name = &pip.package;
+                    let executable_name = pip.executable.as_ref().unwrap_or(&pip.package);
+
+                    let mut flavors = Vec::new();
+
                     if !pip.disable_uv_tool_run {
-                        command_types.push(format!(
-                            "CommandType::Uv(\"{}\", \"{}\")",
-                            &pip.package,
-                            &pip.executable.clone().as_ref().unwrap_or(&pip.package)
-                        ));
+                        flavors.push("Uv");
                     }
 
                     if !pip.disable_pipx_run {
-                        command_types.push(format!("CommandType::Pipx(\"{}\")", &pip.package));
+                        flavors.push("Pipx");
+                    }
+
+                    for flavor in flavors {
+                        command_types.push(format!(
+                            "CommandType::{flavor}(\"{package_name}\", \"{executable_name}\")"
+                        ));
                     }
                 }
 

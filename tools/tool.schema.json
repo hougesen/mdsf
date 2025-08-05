@@ -302,8 +302,14 @@
     "ToolPackagesBrew": {
       "type": "object",
       "properties": {
+        "cask": {
+          "type": "boolean"
+        },
         "package": {
           "type": "string"
+        },
+        "skip_brew_install": {
+          "type": "boolean"
         },
         "tap": {
           "type": ["string", "null"]
@@ -431,6 +437,24 @@
     "ToolPackagesNpm": {
       "type": "object",
       "properties": {
+        "disable_bunx": {
+          "type": "boolean"
+        },
+        "disable_deno_run": {
+          "type": "boolean"
+        },
+        "disable_npx": {
+          "type": "boolean"
+        },
+        "disable_pnpm_dlx": {
+          "type": "boolean"
+        },
+        "disable_yarn_exec": {
+          "type": "boolean"
+        },
+        "executable": {
+          "type": ["string", "null"]
+        },
         "package": {
           "type": "string"
         }

@@ -17,11 +17,11 @@ pub fn set_args(
 pub const COMMANDS: [CommandType; 7] = [
     CommandType::NodeModules("rustywind"),
     CommandType::Direct("rustywind"),
-    CommandType::Npm("rustywind"),
-    CommandType::Pnpm("rustywind"),
-    CommandType::Bun("rustywind"),
-    CommandType::Deno("rustywind"),
-    CommandType::Yarn("rustywind"),
+    CommandType::Npm("rustywind", "rustywind"),
+    CommandType::Pnpm("rustywind", "rustywind"),
+    CommandType::Bun("rustywind", "rustywind"),
+    CommandType::Deno("rustywind", "rustywind"),
+    CommandType::Yarn("rustywind", "rustywind"),
 ];
 
 pub const IS_STDIN: bool = false;

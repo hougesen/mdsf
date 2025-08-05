@@ -16,11 +16,11 @@ pub fn set_args(
 pub const COMMANDS: [CommandType; 7] = [
     CommandType::NodeModules("htmlhint"),
     CommandType::Direct("htmlhint"),
-    CommandType::Npm("htmlhint"),
-    CommandType::Pnpm("htmlhint"),
-    CommandType::Bun("htmlhint"),
-    CommandType::Deno("htmlhint"),
-    CommandType::Yarn("htmlhint"),
+    CommandType::Npm("htmlhint", "htmlhint"),
+    CommandType::Pnpm("htmlhint", "htmlhint"),
+    CommandType::Bun("htmlhint", "htmlhint"),
+    CommandType::Deno("htmlhint", "htmlhint"),
+    CommandType::Yarn("htmlhint", "htmlhint"),
 ];
 
 pub const IS_STDIN: bool = false;

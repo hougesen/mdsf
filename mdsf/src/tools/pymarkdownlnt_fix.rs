@@ -19,7 +19,7 @@ pub fn set_args(
 pub const COMMANDS: [CommandType; 3] = [
     CommandType::Direct("pymarkdownlnt"),
     CommandType::Uv("pymarkdownlnt", "pymarkdownlnt"),
-    CommandType::Pipx("pymarkdownlnt"),
+    CommandType::Pipx("pymarkdownlnt", "pymarkdownlnt"),
 ];
 
 pub const IS_STDIN: bool = false;

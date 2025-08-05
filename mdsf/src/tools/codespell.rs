@@ -18,7 +18,7 @@ pub fn set_args(
 pub const COMMANDS: [CommandType; 3] = [
     CommandType::Direct("codespell"),
     CommandType::Uv("codespell", "codespell"),
-    CommandType::Pipx("codespell"),
+    CommandType::Pipx("codespell", "codespell"),
 ];
 
 pub const IS_STDIN: bool = false;

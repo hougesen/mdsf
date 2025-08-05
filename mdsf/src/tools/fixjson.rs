@@ -17,11 +17,11 @@ pub fn set_args(
 pub const COMMANDS: [CommandType; 7] = [
     CommandType::NodeModules("fixjson"),
     CommandType::Direct("fixjson"),
-    CommandType::Npm("fixjson"),
-    CommandType::Pnpm("fixjson"),
-    CommandType::Bun("fixjson"),
-    CommandType::Deno("fixjson"),
-    CommandType::Yarn("fixjson"),
+    CommandType::Npm("fixjson", "fixjson"),
+    CommandType::Pnpm("fixjson", "fixjson"),
+    CommandType::Bun("fixjson", "fixjson"),
+    CommandType::Deno("fixjson", "fixjson"),
+    CommandType::Yarn("fixjson", "fixjson"),
 ];
 
 pub const IS_STDIN: bool = false;

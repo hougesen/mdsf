@@ -18,5 +18,10 @@
   "description": "CLI for managing TypeSpec configurations",
   "homepage": "https://github.com/microsoft/typespec",
   "languages": ["typespec"],
-  "packages": {}
+  "packages": {
+    "npm": {
+      "executable": "tsp",
+      "package": "@typespec/compiler"
+    }
+  }
 }

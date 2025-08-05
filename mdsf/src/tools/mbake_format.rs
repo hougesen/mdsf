@@ -17,7 +17,7 @@ pub fn set_args(
 pub const COMMANDS: [CommandType; 3] = [
     CommandType::Direct("mbake"),
     CommandType::Uv("mbake", "mbake"),
-    CommandType::Pipx("mbake"),
+    CommandType::Pipx("mbake", "mbake"),
 ];
 
 pub const IS_STDIN: bool = false;

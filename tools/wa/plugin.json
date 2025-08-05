@@ -12,5 +12,12 @@
   "description": "Formatter for the wa programming language",
   "homepage": "https://github.com/wa-lang/wa/",
   "languages": ["wa"],
-  "packages": {}
+  "packages": {
+    "brew": {
+      "package": "wa-lang/tap/wa"
+    },
+    "go": {
+      "package": "wa-lang.org/wa"
+    }
+  }
 }

@@ -19,5 +19,9 @@
   "description": "R formatter and language server",
   "homepage": "https://github.com/posit-dev/air",
   "languages": ["r"],
-  "packages": {}
+  "packages": {
+    "brew": {
+      "package": "air"
+    }
+  }
 }

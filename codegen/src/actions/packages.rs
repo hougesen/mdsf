@@ -40,7 +40,11 @@ fn generate_brew(tool: &ToolPackagesBrew) -> String {
         .map(|tap| format!("brew tap {tap} &&"))
         .unwrap_or_default();
 
-    format!("( which brew && {} brew install {} )", tap, tool.package)
+    let package_name = &tool.package;
+
+    let cask = if tool.cask { "--cask " } else { "" };
+
+    format!("( which brew && {tap} brew install {cask}{package_name} )")
 }
 
 fn generate_luarocks(tool: &str) -> String {
@@ -106,7 +110,9 @@ pub fn generate_install_steps(tools: &Vec<Tool>) -> Vec<WorkflowJobsStep> {
         }
 
         if let Some(brew) = &tool.packages.brew {
-            install_options.push(generate_brew(brew));
+            if !brew.skip_brew_install {
+                install_options.push(generate_brew(brew));
+            }
         }
 
         if let Some(apt) = &tool.packages.apt {

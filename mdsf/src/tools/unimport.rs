@@ -17,7 +17,7 @@ pub fn set_args(
 pub const COMMANDS: [CommandType; 3] = [
     CommandType::Direct("unimport"),
     CommandType::Uv("unimport", "unimport"),
-    CommandType::Pipx("unimport"),
+    CommandType::Pipx("unimport", "unimport"),
 ];
 
 pub const IS_STDIN: bool = false;

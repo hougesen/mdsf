@@ -17,11 +17,11 @@ pub fn set_args(
 pub const COMMANDS: [CommandType; 7] = [
     CommandType::NodeModules("csscomb"),
     CommandType::Direct("csscomb"),
-    CommandType::Npm("csscomb"),
-    CommandType::Pnpm("csscomb"),
-    CommandType::Bun("csscomb"),
-    CommandType::Deno("csscomb"),
-    CommandType::Yarn("csscomb"),
+    CommandType::Npm("csscomb", "csscomb"),
+    CommandType::Pnpm("csscomb", "csscomb"),
+    CommandType::Bun("csscomb", "csscomb"),
+    CommandType::Deno("csscomb", "csscomb"),
+    CommandType::Yarn("csscomb", "csscomb"),
 ];
 
 pub const IS_STDIN: bool = false;

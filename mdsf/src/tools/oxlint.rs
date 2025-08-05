@@ -17,11 +17,11 @@ pub fn set_args(
 pub const COMMANDS: [CommandType; 7] = [
     CommandType::NodeModules("oxlint"),
     CommandType::Direct("oxlint"),
-    CommandType::Npm("oxlint"),
-    CommandType::Pnpm("oxlint"),
-    CommandType::Bun("oxlint"),
-    CommandType::Deno("oxlint"),
-    CommandType::Yarn("oxlint"),
+    CommandType::Npm("oxlint", "oxlint"),
+    CommandType::Pnpm("oxlint", "oxlint"),
+    CommandType::Bun("oxlint", "oxlint"),
+    CommandType::Deno("oxlint", "oxlint"),
+    CommandType::Yarn("oxlint", "oxlint"),
 ];
 
 pub const IS_STDIN: bool = false;

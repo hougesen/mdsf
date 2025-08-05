@@ -19,11 +19,11 @@ pub fn set_args(
 pub const COMMANDS: [CommandType; 7] = [
     CommandType::NodeModules("kdlfmt"),
     CommandType::Direct("kdlfmt"),
-    CommandType::Npm("kdlfmt"),
-    CommandType::Pnpm("kdlfmt"),
-    CommandType::Bun("kdlfmt"),
-    CommandType::Deno("kdlfmt"),
-    CommandType::Yarn("kdlfmt"),
+    CommandType::Npm("kdlfmt", "kdlfmt"),
+    CommandType::Pnpm("kdlfmt", "kdlfmt"),
+    CommandType::Bun("kdlfmt", "kdlfmt"),
+    CommandType::Deno("kdlfmt", "kdlfmt"),
+    CommandType::Yarn("kdlfmt", "kdlfmt"),
 ];
 
 pub const IS_STDIN: bool = false;

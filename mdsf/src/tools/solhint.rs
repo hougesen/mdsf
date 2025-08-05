@@ -19,11 +19,11 @@ pub fn set_args(
 pub const COMMANDS: [CommandType; 7] = [
     CommandType::NodeModules("solhint"),
     CommandType::Direct("solhint"),
-    CommandType::Npm("solhint"),
-    CommandType::Pnpm("solhint"),
-    CommandType::Bun("solhint"),
-    CommandType::Deno("solhint"),
-    CommandType::Yarn("solhint"),
+    CommandType::Npm("solhint", "solhint"),
+    CommandType::Pnpm("solhint", "solhint"),
+    CommandType::Bun("solhint", "solhint"),
+    CommandType::Deno("solhint", "solhint"),
+    CommandType::Yarn("solhint", "solhint"),
 ];
 
 pub const IS_STDIN: bool = false;

@@ -89,6 +89,8 @@ jobs:
       - run: curl -LsSf https://github.com/posit-dev/air/releases/latest/download/air-installer.sh | sh
       - name: actionlint
         run: ( ( which actionlint ) || ( ( which brew &&  brew install actionlint ) || ( which go && go install github.com/rhysd/actionlint/cmd/actionlint@latest ) ) || ( echo "Unable to install tool" ) )
+      - name: air
+        run: ( ( which air ) || ( ( which brew &&  brew install air ) ) || ( echo "Unable to install tool" ) )
       - name: alejandra
         run: ( ( which alejandra ) || ( ( which cargo && ( cargo binstall alejandra || cargo install alejandra ) ) ) || ( echo "Unable to install tool" ) )
       - name: alex
@@ -131,6 +133,8 @@ jobs:
         run: ( ( which csscomb ) || ( ( which npm && npm i -g csscomb ) ) || ( echo "Unable to install tool" ) )
       - name: csslint
         run: ( ( which csslint ) || ( ( which npm && npm i -g csslint ) ) || ( echo "Unable to install tool" ) )
+      - name: deno
+        run: ( ( which deno ) || ( ( which cargo && ( cargo binstall deno || cargo install deno ) ) || ( which brew &&  brew install deno ) ) || ( echo "Unable to install tool" ) )
       - name: dfmt
         run: ( ( which dfmt ) || ( ( which brew &&  brew install dfmt ) ) || ( echo "Unable to install tool" ) )
       - name: dockerfmt
@@ -331,6 +335,8 @@ jobs:
         run: ( ( which toml-sort ) || ( ( which pipx && pipx install toml-sort ) ) || ( echo "Unable to install tool" ) )
       - name: topiary
         run: ( ( which topiary ) || ( ( which cargo && ( cargo binstall topiary-cli || cargo install topiary-cli ) ) ) || ( echo "Unable to install tool" ) )
+      - name: tsp
+        run: ( ( which tsp ) || ( ( which npm && npm i -g @typespec/compiler ) ) || ( echo "Unable to install tool" ) )
       - name: ty
         run: ( ( which ty ) || ( ( which pipx && pipx install ty ) ) || ( echo "Unable to install tool" ) )
       - name: typos

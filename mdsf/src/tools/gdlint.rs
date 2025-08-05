@@ -16,7 +16,7 @@ pub fn set_args(
 pub const COMMANDS: [CommandType; 3] = [
     CommandType::Direct("gdlint"),
     CommandType::Uv("gdtoolkit", "gdlint"),
-    CommandType::Pipx("gdtoolkit"),
+    CommandType::Pipx("gdtoolkit", "gdlint"),
 ];
 
 pub const IS_STDIN: bool = false;

@@ -17,11 +17,11 @@ pub fn set_args(
 pub const COMMANDS: [CommandType; 7] = [
     CommandType::NodeModules("npm-groovy-lint"),
     CommandType::Direct("npm-groovy-lint"),
-    CommandType::Npm("npm-groovy-lint"),
-    CommandType::Pnpm("npm-groovy-lint"),
-    CommandType::Bun("npm-groovy-lint"),
-    CommandType::Deno("npm-groovy-lint"),
-    CommandType::Yarn("npm-groovy-lint"),
+    CommandType::Npm("npm-groovy-lint", "npm-groovy-lint"),
+    CommandType::Pnpm("npm-groovy-lint", "npm-groovy-lint"),
+    CommandType::Bun("npm-groovy-lint", "npm-groovy-lint"),
+    CommandType::Deno("npm-groovy-lint", "npm-groovy-lint"),
+    CommandType::Yarn("npm-groovy-lint", "npm-groovy-lint"),
 ];
 
 pub const IS_STDIN: bool = false;

@@ -17,7 +17,7 @@ pub fn set_args(
 pub const COMMANDS: [CommandType; 3] = [
     CommandType::Direct("tryceratops"),
     CommandType::Uv("tryceratops", "tryceratops"),
-    CommandType::Pipx("tryceratops"),
+    CommandType::Pipx("tryceratops", "tryceratops"),
 ];
 
 pub const IS_STDIN: bool = false;

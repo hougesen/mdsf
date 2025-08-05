@@ -17,7 +17,7 @@ pub fn set_args(
 pub const COMMANDS: [CommandType; 3] = [
     CommandType::Direct("cmake-format"),
     CommandType::Uv("cmakelang", "cmake-format"),
-    CommandType::Pipx("cmakelang"),
+    CommandType::Pipx("cmakelang", "cmake-format"),
 ];
 
 pub const IS_STDIN: bool = false;

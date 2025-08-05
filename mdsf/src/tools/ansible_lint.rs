@@ -16,7 +16,7 @@ pub fn set_args(
 pub const COMMANDS: [CommandType; 3] = [
     CommandType::Direct("ansible-lint"),
     CommandType::Uv("ansible-lint", "ansible-lint"),
-    CommandType::Pipx("ansible-lint"),
+    CommandType::Pipx("ansible-lint", "ansible-lint"),
 ];
 
 pub const IS_STDIN: bool = false;
