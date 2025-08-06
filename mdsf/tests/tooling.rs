@@ -131,7 +131,7 @@ buildPythonPackage rec {
 
 #[cfg(test)]
 mod test_alex {
-    #[test_with::executable(alex || npx || pnpm || deno || bunx)]
+    #[test_with::executable(alex || bunx || deno || npx || pnpm || yarn)]
     fn test_alex_markdown_33c15403c156c629() -> Result<(), Box<dyn core::error::Error>> {
         let input = r#"hello
 "#;
@@ -361,7 +361,7 @@ mod test_bicep_format {}
 
 #[cfg(test)]
 mod test_biome_check {
-    #[test_with::executable(biome || npx || pnpm || deno || bunx)]
+    #[test_with::executable(biome || bunx || deno || npx || pnpm || yarn)]
     fn test_biome_check_typescript_8154bfdbd3b72275() -> Result<(), Box<dyn core::error::Error>> {
         let input = r#"
     async function asyncAddition(
@@ -387,7 +387,7 @@ number>
 
 #[cfg(test)]
 mod test_biome_check_unsafe {
-    #[test_with::executable(biome || npx || pnpm || deno || bunx)]
+    #[test_with::executable(biome || bunx || deno || npx || pnpm || yarn)]
     fn test_biome_check_unsafe_typescript_6cf769686a46e14b()
     -> Result<(), Box<dyn core::error::Error>> {
         let input = r#"
@@ -414,7 +414,7 @@ number>
 
 #[cfg(test)]
 mod test_biome_format {
-    #[test_with::executable(biome || npx || pnpm || deno || bunx)]
+    #[test_with::executable(biome || bunx || deno || npx || pnpm || yarn)]
     fn test_biome_format_javascript_4845e9b01c23667f() -> Result<(), Box<dyn core::error::Error>> {
         let input = r#"
     async function asyncAddition(
@@ -435,7 +435,7 @@ mod test_biome_format {
         crate::common::run_tooling_test(mdsf::tools::Tooling::BiomeFormat, input, output, ft)
     }
 
-    #[test_with::executable(biome || npx || pnpm || deno || bunx)]
+    #[test_with::executable(biome || bunx || deno || npx || pnpm || yarn)]
     fn test_biome_format_json_90a326e29048e3cd() -> Result<(), Box<dyn core::error::Error>> {
         let input = r#"
               {
@@ -459,7 +459,7 @@ mod test_biome_format {
         crate::common::run_tooling_test(mdsf::tools::Tooling::BiomeFormat, input, output, ft)
     }
 
-    #[test_with::executable(biome || npx || pnpm || deno || bunx)]
+    #[test_with::executable(biome || bunx || deno || npx || pnpm || yarn)]
     fn test_biome_format_typescript_8154bfdbd3b72275() -> Result<(), Box<dyn core::error::Error>> {
         let input = r#"
     async function asyncAddition(
@@ -485,7 +485,7 @@ number>
 
 #[cfg(test)]
 mod test_biome_lint {
-    #[test_with::executable(biome || npx || pnpm || deno || bunx)]
+    #[test_with::executable(biome || bunx || deno || npx || pnpm || yarn)]
     fn test_biome_lint_javascript_3b1c1d6fd9c2e176() -> Result<(), Box<dyn core::error::Error>> {
         let input = r#"let variable = 0;
 "#;
@@ -501,7 +501,7 @@ mod test_biome_lint {
 
 #[cfg(test)]
 mod test_biome_lint_unsafe {
-    #[test_with::executable(biome || npx || pnpm || deno || bunx)]
+    #[test_with::executable(biome || bunx || deno || npx || pnpm || yarn)]
     fn test_biome_lint_unsafe_javascript_9165f2e512bbc53f()
     -> Result<(), Box<dyn core::error::Error>> {
         let input = r#"const hello = "hello";
@@ -540,7 +540,7 @@ mod test_black {
 
 #[cfg(test)]
 mod test_blade_formatter {
-    #[test_with::executable(blade-formatter || npx || pnpm || deno || bunx)]
+    #[test_with::executable(blade-formatter || bunx || deno || npx || pnpm || yarn)]
     fn test_blade_formatter_blade_9ddeaf972bfb08c1() -> Result<(), Box<dyn core::error::Error>> {
         let input = r#"@extends('frontend.layouts.app')
 @section('title') foo
@@ -657,7 +657,7 @@ mod test_bslint {}
 
 #[cfg(test)]
 mod test_buf_format {
-    #[test_with::executable(buf || npx || pnpm || deno || bunx)]
+    #[test_with::executable(buf || bunx || deno || npx || pnpm || yarn)]
     fn test_buf_format_protobuf_10af516c8a015ab5() -> Result<(), Box<dyn core::error::Error>> {
         let input = r#"service SearchService {
                               rpc Search (SearchRequest) returns (SearchResponse);
@@ -969,7 +969,7 @@ mod test_codespell {}
 
 #[cfg(test)]
 mod test_coffeelint {
-    #[test_with::executable(coffeelint || npx || pnpm || deno || bunx)]
+    #[test_with::executable(coffeelint || bunx || deno || npx || pnpm || yarn)]
     fn test_coffeelint_coffeescript_7b620f6d6e2ab16d() -> Result<(), Box<dyn core::error::Error>> {
         let input = r#"add = (a, b) -> a + b"#;
 
@@ -1069,7 +1069,7 @@ mod test_csharpier {
 
 #[cfg(test)]
 mod test_css_beautify {
-    #[test_with::executable(css-beautify || npx || pnpm || deno || bunx)]
+    #[test_with::executable(css-beautify || bunx || deno || npx || pnpm || yarn)]
     fn test_css_beautify_css_5ad41f26f69aea3e() -> Result<(), Box<dyn core::error::Error>> {
         let input = r#"h1   {color: blue;} p    {color: red;}"#;
 
@@ -1089,7 +1089,7 @@ p {
 
 #[cfg(test)]
 mod test_csscomb {
-    #[test_with::executable(csscomb || npx || pnpm || deno || bunx)]
+    #[test_with::executable(csscomb || bunx || deno || npx || pnpm || yarn)]
     fn test_csscomb_css_bed67a883a4a1aae() -> Result<(), Box<dyn core::error::Error>> {
         let input = r#"h1   {color: blue;}
 p {color: red;}"#;
@@ -1112,7 +1112,7 @@ p
 
 #[cfg(test)]
 mod test_csslint {
-    #[test_with::executable(csslint || npx || pnpm || deno || bunx)]
+    #[test_with::executable(csslint || bunx || deno || npx || pnpm || yarn)]
     fn test_csslint_css_9b7fd0554eb344f() -> Result<(), Box<dyn core::error::Error>> {
         let input = r#"body {
   background: red;
@@ -1363,7 +1363,7 @@ case Erlang of movie->[hello(mike,joe,robert),credits]; language->formatting_arg
 
 #[cfg(test)]
 mod test_elm_format {
-    #[test_with::executable(elm-format || npx || pnpm || deno || bunx)]
+    #[test_with::executable(elm-format || bunx || deno || npx || pnpm || yarn)]
     fn test_elm_format_elm_4e120501af0177c4() -> Result<(), Box<dyn core::error::Error>> {
         let input = r#"import   Html       exposing   (text)
 
@@ -1460,7 +1460,7 @@ mod test_fish_indent {}
 
 #[cfg(test)]
 mod test_fixjson {
-    #[test_with::executable(fixjson || npx || pnpm || deno || bunx)]
+    #[test_with::executable(fixjson || bunx || deno || npx || pnpm || yarn)]
     fn test_fixjson_json_115ca7a7d8b2cc2b() -> Result<(), Box<dyn core::error::Error>> {
         let input = r#"{     "fixjson": "fixjson"  }"#;
 
@@ -1986,7 +1986,7 @@ add a b = a + b"#;
 
 #[cfg(test)]
 mod test_html_beautify {
-    #[test_with::executable(html-beautify || npx || pnpm || deno || bunx)]
+    #[test_with::executable(html-beautify || bunx || deno || npx || pnpm || yarn)]
     fn test_html_beautify_html_63850f31f2ef5caf() -> Result<(), Box<dyn core::error::Error>> {
         let input = r#"<div>
                     <p>
@@ -2121,7 +2121,7 @@ mod test_jqfmt {
 
 #[cfg(test)]
 mod test_js_beautify {
-    #[test_with::executable(js-beautify || npx || pnpm || deno || bunx)]
+    #[test_with::executable(js-beautify || bunx || deno || npx || pnpm || yarn)]
     fn test_js_beautify_javascript_151bf21bc63609e8() -> Result<(), Box<dyn core::error::Error>> {
         let input = r#"function add (a,b){return a +b }"#;
 
@@ -2146,7 +2146,7 @@ mod test_jsona_lint {}
 
 #[cfg(test)]
 mod test_jsonlint {
-    #[test_with::executable(jsonlint || npx || pnpm || deno || bunx)]
+    #[test_with::executable(jsonlint || bunx || deno || npx || pnpm || yarn)]
     fn test_jsonlint_json_5d1a6be238b35a5c() -> Result<(), Box<dyn core::error::Error>> {
         let input = r#"{ "k": "v" }"#;
 
@@ -2162,7 +2162,7 @@ mod test_jsonlint {
 
 #[cfg(test)]
 mod test_jsonlint_sort {
-    #[test_with::executable(jsonlint || npx || pnpm || deno || bunx)]
+    #[test_with::executable(jsonlint || bunx || deno || npx || pnpm || yarn)]
     fn test_jsonlint_sort_json_d3194ce4b6550755() -> Result<(), Box<dyn core::error::Error>> {
         let input = r#"{ "b": "b", "a": "a" }"#;
 
@@ -2231,7 +2231,7 @@ end
 
 #[cfg(test)]
 mod test_just {
-    #[test_with::executable(just || npx || pnpm || deno || bunx || pipx || uv)]
+    #[test_with::executable(just || bunx || deno || npx || pnpm || yarn || pipx || uv)]
     fn test_just_just_ef70afaf3ede68b9() -> Result<(), Box<dyn core::error::Error>> {
         let input = r#"build:
                 cargo build
@@ -2300,7 +2300,7 @@ mod test_kcl_lint {}
 
 #[cfg(test)]
 mod test_kdlfmt {
-    #[test_with::executable(kdlfmt || npx || pnpm || deno || bunx)]
+    #[test_with::executable(kdlfmt || bunx || deno || npx || pnpm || yarn)]
     fn test_kdlfmt_kdl_3d75351f7ec84869() -> Result<(), Box<dyn core::error::Error>> {
         let input = r#"world {    child "1"
 child "2"   }
@@ -2320,7 +2320,7 @@ child "2"   }
 
 #[cfg(test)]
 mod test_kdlfmt_v_1 {
-    #[test_with::executable(kdlfmt || npx || pnpm || deno || bunx)]
+    #[test_with::executable(kdlfmt || bunx || deno || npx || pnpm || yarn)]
     fn test_kdlfmt_v_1_kdl_4324893eeee4a998() -> Result<(), Box<dyn core::error::Error>> {
         let input = r#"world {
     child "1"
@@ -2342,7 +2342,7 @@ child "2"
 
 #[cfg(test)]
 mod test_kdlfmt_v_2 {
-    #[test_with::executable(kdlfmt || npx || pnpm || deno || bunx)]
+    #[test_with::executable(kdlfmt || bunx || deno || npx || pnpm || yarn)]
     fn test_kdlfmt_v_2_kdl_3d75351f7ec84869() -> Result<(), Box<dyn core::error::Error>> {
         let input = r#"world {    child "1"
 child "2"   }
@@ -2411,8 +2411,8 @@ fun add(
 
 #[cfg(test)]
 mod test_kulala_fmt_check {
-    #[ignore]
-    #[test_with::executable(kulala-fmt || npx || pnpm || deno || bunx)]
+    #[ignore = "Disabled in plugin file"]
+    #[test_with::executable(kulala-fmt || bunx || deno || npx || pnpm || yarn)]
     fn test_kulala_fmt_check_http_411ecc2948e745cf() -> Result<(), Box<dyn core::error::Error>> {
         let input = r#"###
 
@@ -2434,8 +2434,8 @@ GET https://mhouge.dk HTTP/1.1
 
 #[cfg(test)]
 mod test_kulala_fmt_format {
-    #[ignore]
-    #[test_with::executable(kulala-fmt || npx || pnpm || deno || bunx)]
+    #[ignore = "Disabled in plugin file"]
+    #[test_with::executable(kulala-fmt || bunx || deno || npx || pnpm || yarn)]
     fn test_kulala_fmt_format_http_51b00899e0a1c815() -> Result<(), Box<dyn core::error::Error>> {
         let input = r#"GET          https://mhouge.dk          "#;
 
@@ -2617,7 +2617,7 @@ this text has weird spacing
 
 #[cfg(test)]
 mod test_markdownlint {
-    #[test_with::executable(markdownlint || npx || pnpm || deno || bunx)]
+    #[test_with::executable(markdownlint || bunx || deno || npx || pnpm || yarn)]
     fn test_markdownlint_markdown_27f5778fc1db5182() -> Result<(), Box<dyn core::error::Error>> {
         let input = r#"# Hello world
 
@@ -2639,7 +2639,7 @@ mod test_markdownlint {
 
 #[cfg(test)]
 mod test_markdownlint_cli_2 {
-    #[test_with::executable(markdownlint-cli2 || npx || pnpm || deno || bunx)]
+    #[test_with::executable(markdownlint-cli2 || bunx || deno || npx || pnpm || yarn)]
     fn test_markdownlint_cli_2_markdown_27f5778fc1db5182() -> Result<(), Box<dyn core::error::Error>>
     {
         let input = r#"# Hello world
@@ -2743,7 +2743,7 @@ mod test_mdformat {}
 
 #[cfg(test)]
 mod test_mdsf_format {
-    #[test_with::executable(mdsf || npx || pnpm || deno || bunx)]
+    #[test_with::executable(mdsf || bunx || deno || npx || pnpm || yarn)]
     fn test_mdsf_format_markdown_1e1586f943958589() -> Result<(), Box<dyn core::error::Error>> {
         let input = r#""#;
 
@@ -2757,7 +2757,7 @@ mod test_mdsf_format {
 
 #[cfg(test)]
 mod test_mdsf_verify {
-    #[test_with::executable(mdsf || npx || pnpm || deno || bunx)]
+    #[test_with::executable(mdsf || bunx || deno || npx || pnpm || yarn)]
     fn test_mdsf_verify_markdown_1e1586f943958589() -> Result<(), Box<dyn core::error::Error>> {
         let input = r#""#;
 
@@ -2777,7 +2777,7 @@ mod test_meson_fmt {}
 
 #[cfg(test)]
 mod test_mise_fmt {
-    #[test_with::executable(mise || npx || pnpm || deno || bunx)]
+    #[test_with::executable(mise || bunx || deno || npx || pnpm || yarn)]
     fn test_mise_fmt_toml_7a3c9e91cda91a26() -> Result<(), Box<dyn core::error::Error>> {
         let input = r#"[env]
 NODE_ENV = 'production'
@@ -2876,7 +2876,7 @@ mod test_nasmfmt {}
 
 #[cfg(test)]
 mod test_nginxbeautifier {
-    #[test_with::executable(nginxbeautifier || npx || pnpm || deno || bunx)]
+    #[test_with::executable(nginxbeautifier || bunx || deno || npx || pnpm || yarn)]
     fn test_nginxbeautifier_conf_5c2a2e0d4f44354f() -> Result<(), Box<dyn core::error::Error>> {
         let input = r#"server {
     listen 80;
@@ -3098,7 +3098,7 @@ mod test_nph {
 
 #[cfg(test)]
 mod test_npm_groovy_lint {
-    #[test_with::executable(npm-groovy-lint || npx || pnpm || deno || bunx)]
+    #[test_with::executable(npm-groovy-lint || bunx || deno || npx || pnpm || yarn)]
     fn test_npm_groovy_lint_groovy_2dc2be09d8013576() -> Result<(), Box<dyn core::error::Error>> {
         let input = r#"                  def add(a, b) {
             return a + b
@@ -3191,7 +3191,7 @@ addNumbers a b = do
 
 #[cfg(test)]
 mod test_oxlint {
-    #[test_with::executable(oxlint || npx || pnpm || deno || bunx)]
+    #[test_with::executable(oxlint || bunx || deno || npx || pnpm || yarn)]
     fn test_oxlint_typescript_a2154a11ef1c153b() -> Result<(), Box<dyn core::error::Error>> {
         let input = r#"debugger;"#;
 
@@ -3249,7 +3249,7 @@ mod test_pint {}
 
 #[cfg(test)]
 mod test_prettier {
-    #[test_with::executable(prettier || npx || pnpm || deno || bunx)]
+    #[test_with::executable(prettier || bunx || deno || npx || pnpm || yarn)]
     fn test_prettier_javascript_f38217e7df306e3e() -> Result<(), Box<dyn core::error::Error>> {
         let input = r#"
     async function asyncAddition(
@@ -3270,7 +3270,7 @@ mod test_prettier {
         crate::common::run_tooling_test(mdsf::tools::Tooling::Prettier, input, output, ft)
     }
 
-    #[test_with::executable(prettier || npx || pnpm || deno || bunx)]
+    #[test_with::executable(prettier || bunx || deno || npx || pnpm || yarn)]
     fn test_prettier_json_8e1e8ed2224fd439() -> Result<(), Box<dyn core::error::Error>> {
         let input = r#"
               {
@@ -3303,7 +3303,7 @@ mod test_prettypst {}
 
 #[cfg(test)]
 mod test_prisma_format {
-    #[test_with::executable(prisma || npx || pnpm || deno || bunx)]
+    #[test_with::executable(prisma || bunx || deno || npx || pnpm || yarn)]
     fn test_prisma_format_schema_b6e70b1b6bb7472e() -> Result<(), Box<dyn core::error::Error>> {
         let input = r#"datasource          db             {
   provider                  = "postgresql"
@@ -3344,7 +3344,7 @@ mod test_puppet_lint {}
 
 #[cfg(test)]
 mod test_purs_tidy {
-    #[test_with::executable(purs-tidy || npx || pnpm || deno || bunx)]
+    #[test_with::executable(purs-tidy || bunx || deno || npx || pnpm || yarn)]
     fn test_purs_tidy_purescript_c9e6831b630f7f08() -> Result<(), Box<dyn core::error::Error>> {
         let input = r#"module       Test.Main   where
 
@@ -3376,7 +3376,7 @@ main = do
 
 #[cfg(test)]
 mod test_purty {
-    #[test_with::executable(purty || npx || pnpm || deno || bunx)]
+    #[test_with::executable(purty || bunx || deno || npx || pnpm || yarn)]
     fn test_purty_purescript_37730dad0a7f9fbd() -> Result<(), Box<dyn core::error::Error>> {
         let input = r#"module Mdsf where
 
@@ -3624,7 +3624,7 @@ import reorder_python_imports
 
 #[cfg(test)]
 mod test_rescript_format {
-    #[test_with::executable(rescript || npx || pnpm || deno || bunx)]
+    #[test_with::executable(rescript || bunx || deno || npx || pnpm || yarn)]
     fn test_rescript_format_rescript_59c7490e2a041de3() -> Result<(), Box<dyn core::error::Error>> {
         let input = r#"module Button = {
   @react.component
@@ -3822,7 +3822,7 @@ mod test_rustfmt {
 
 #[cfg(test)]
 mod test_rustywind {
-    #[test_with::executable(rustywind || npx || pnpm || deno || bunx)]
+    #[test_with::executable(rustywind || bunx || deno || npx || pnpm || yarn)]
     fn test_rustywind_html_f482eb2ece82bb0d() -> Result<(), Box<dyn core::error::Error>> {
         let input = r#"<div class="flex-col flex"></div>
 "#;
@@ -3891,7 +3891,7 @@ return add
 
 #[cfg(test)]
 mod test_semistandard {
-    #[test_with::executable(semistandard || npx || pnpm || deno || bunx)]
+    #[test_with::executable(semistandard || bunx || deno || npx || pnpm || yarn)]
     fn test_semistandard_javascript_dd13bf6b8d6e09a1() -> Result<(), Box<dyn core::error::Error>> {
         let input = r#"    async function asyncAddition(a,b  )
     {
@@ -4107,7 +4107,7 @@ mod test_sphinx_lint {}
 
 #[cfg(test)]
 mod test_sql_formatter {
-    #[test_with::executable(sql-formatter || npx || pnpm || deno || bunx)]
+    #[test_with::executable(sql-formatter || bunx || deno || npx || pnpm || yarn)]
     fn test_sql_formatter_sql_85ac36a4bf14f957() -> Result<(), Box<dyn core::error::Error>> {
         let input = r#"SELECT * FROM tbl WHERE foo = 'bar';"#;
 
@@ -4232,7 +4232,7 @@ mod test_sqruff {
 
 #[cfg(test)]
 mod test_squawk {
-    #[test_with::executable(squawk || npx || pnpm || deno || bunx || pipx || uv)]
+    #[test_with::executable(squawk || bunx || deno || npx || pnpm || yarn || pipx || uv)]
     fn test_squawk_sql_640a48e4cd6b38bb() -> Result<(), Box<dyn core::error::Error>> {
         let input = r#"SELECT username FROM users;"#;
 
@@ -4246,7 +4246,7 @@ mod test_squawk {
 
 #[cfg(test)]
 mod test_standardjs {
-    #[test_with::executable(standard || npx || pnpm || deno || bunx)]
+    #[test_with::executable(standard || bunx || deno || npx || pnpm || yarn)]
     fn test_standardjs_javascript_548a80949cde541f() -> Result<(), Box<dyn core::error::Error>> {
         let input = r#"
     async function asyncAddition(a,b  )
@@ -4297,7 +4297,7 @@ mod test_statix_fix {}
 
 #[cfg(test)]
 mod test_stylefmt {
-    #[test_with::executable(stylefmt || npx || pnpm || deno || bunx)]
+    #[test_with::executable(stylefmt || bunx || deno || npx || pnpm || yarn)]
     fn test_stylefmt_css_ed4f8407afa6d974() -> Result<(), Box<dyn core::error::Error>> {
         let input = r#"/* custom properties */
 :root{--fontSize: 1rem;
@@ -4418,7 +4418,7 @@ table {
         crate::common::run_tooling_test(mdsf::tools::Tooling::Stylefmt, input, output, ft)
     }
 
-    #[test_with::executable(stylefmt || npx || pnpm || deno || bunx)]
+    #[test_with::executable(stylefmt || bunx || deno || npx || pnpm || yarn)]
     fn test_stylefmt_scss_d3c6918bf17af7f3() -> Result<(), Box<dyn core::error::Error>> {
         let input = r#"// mixin for clearfix
 
@@ -4521,7 +4521,7 @@ addNumbers a b = do
 
 #[cfg(test)]
 mod test_stylua {
-    #[test_with::executable(stylua || npx || pnpm || deno || bunx)]
+    #[test_with::executable(stylua || bunx || deno || npx || pnpm || yarn)]
     fn test_stylua_lua_ab45775f0dc2fcca() -> Result<(), Box<dyn core::error::Error>> {
         let input = r#"
 
@@ -4611,7 +4611,7 @@ mod test_swiftformat {
 
 #[cfg(test)]
 mod test_taplo {
-    #[test_with::executable(taplo || npx || pnpm || deno || bunx)]
+    #[test_with::executable(taplo || bunx || deno || npx || pnpm || yarn)]
     fn test_taplo_toml_f9c7870e88d1963c() -> Result<(), Box<dyn core::error::Error>> {
         let input = r#"          package         =              "mdsf"
   author   = "Mads Hougesen"
@@ -4844,7 +4844,7 @@ mod test_ts_standard {}
 
 #[cfg(test)]
 mod test_tsp_format {
-    #[test_with::executable(tsp || npx || pnpm || deno || bunx)]
+    #[test_with::executable(tsp || bunx || deno || npx || pnpm || yarn)]
     fn test_tsp_format_typespec_f4c58025c5f05edc() -> Result<(), Box<dyn core::error::Error>> {
         let input = r#"model Pet {  name: string;  age: int32;kind: "dog" | "cat" | "fish";}
 "#;
@@ -5223,7 +5223,7 @@ mod test_xmllint {
 
 #[cfg(test)]
 mod test_xo {
-    #[test_with::executable(xo || npx || pnpm || deno || bunx)]
+    #[test_with::executable(xo || bunx || deno || npx || pnpm || yarn)]
     fn test_xo_javascript_77a8cbfa8cbcea9d() -> Result<(), Box<dyn core::error::Error>> {
         let input = r#"    function asyncAddition(a,b  )
     {

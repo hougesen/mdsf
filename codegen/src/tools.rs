@@ -106,6 +106,9 @@ pub struct ToolPackagesDotnet {
 #[derive(Debug, serde::Deserialize, schemars::JsonSchema, Clone, Default, serde::Serialize)]
 #[serde(deny_unknown_fields)]
 pub struct ToolPackagesDub {
+    #[serde(default, skip_serializing_if = "is_false")]
+    pub disable_dub_run: bool,
+
     pub package: String,
 }
 
@@ -352,11 +355,26 @@ impl Tool {
 
         let mut test_with_binaries = vec![self.binary.as_str()];
 
-        if self.packages.npm.is_some() {
-            test_with_binaries.push("npx");
-            test_with_binaries.push("pnpm");
-            test_with_binaries.push("deno");
-            test_with_binaries.push("bunx");
+        if let Some(npm) = self.packages.npm.as_ref() {
+            if !npm.disable_bunx {
+                test_with_binaries.push("bunx");
+            }
+
+            if !npm.disable_deno_run {
+                test_with_binaries.push("deno");
+            }
+
+            if !npm.disable_npx {
+                test_with_binaries.push("npx");
+            }
+
+            if !npm.disable_pnpm_dlx {
+                test_with_binaries.push("pnpm");
+            }
+
+            if !npm.disable_yarn_exec {
+                test_with_binaries.push("yarn");
+            }
         }
 
         if let Some(pip) = self.packages.pip.as_ref() {
@@ -369,7 +387,12 @@ impl Tool {
             }
         }
 
-        if self.packages.dub.is_some() {
+        if self
+            .packages
+            .dub
+            .as_ref()
+            .is_some_and(|package| !package.disable_dub_run)
+        {
             test_with_binaries.push("dub");
         }
 
@@ -385,7 +408,7 @@ impl Tool {
         let executable = test_with_binaries.join(" || ");
 
         let disable_attribute = if test.disabled {
-            format!("{INDENT}#[ignore]\n")
+            format!("{INDENT}#[ignore = \"Disabled in plugin file\"]\n")
         } else {
             String::new()
         };
@@ -491,7 +514,9 @@ impl Tool {
                 }
 
                 if let Some(dub) = &self.packages.dub {
-                    command_types.push(format!("CommandType::Dub(\"{}\")", &dub.package));
+                    if !dub.disable_dub_run {
+                        command_types.push(format!("CommandType::Dub(\"{}\")", &dub.package));
+                    }
                 }
 
                 if let Some(gem) = &self.packages.gem {
