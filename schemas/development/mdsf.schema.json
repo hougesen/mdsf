@@ -1038,7 +1038,7 @@
           "const": "luaformatter"
         },
         {
-          "description": "Typecheck and lint luau files\n\n[https://luau.org](https://luau.org)\n\n`luau-analyze $PATH`",
+          "description": "Typecheck and lint luau files\n\n[https://luau.org/](https://luau.org/)\n\n`luau-analyze $PATH`",
           "type": "string",
           "const": "luau-analyze"
         },

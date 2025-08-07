@@ -15,20 +15,24 @@ pub const GENERATED_FILE_COMMENT: &str =
 
 fn normalize_homepage(s: String) -> String {
     if s.starts_with("https://github.com/") || s.starts_with("https://gitlab.com/") {
-        return s.to_lowercase();
+        s.to_lowercase()
+    } else {
+        s
     }
+}
 
-    s
+fn normalize_description(s: String) -> String {
+    s.trim().to_string()
 }
 
 fn normalize_plugin(mut plugin: Tool) -> Tool {
     plugin.homepage = normalize_homepage(plugin.homepage);
-    plugin.description = plugin.description.trim().to_string();
+    plugin.description = normalize_description(plugin.description);
 
     for info in plugin.commands.values_mut() {
         info.homepage = info.homepage.clone().map(normalize_homepage);
 
-        info.description = info.description.clone().map(|d| d.trim().to_string());
+        info.description = info.description.clone().map(normalize_description);
 
         info.tests.sort_by(|a, b| {
             if a.language != b.language {

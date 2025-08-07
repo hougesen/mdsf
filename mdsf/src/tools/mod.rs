@@ -1762,7 +1762,7 @@ pub enum Tooling {
     #[serde(rename = "luau-analyze")]
     /// Typecheck and lint luau files
     ///
-    /// [https://luau.org](https://luau.org)
+    /// [https://luau.org/](https://luau.org/)
     ///
     /// `luau-analyze $PATH`
     LuauAnalyze,

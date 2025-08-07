@@ -374,6 +374,9 @@
     "ToolPackagesDub": {
       "type": "object",
       "properties": {
+        "disable_dub_run": {
+          "type": "boolean"
+        },
         "package": {
           "type": "string"
         }
