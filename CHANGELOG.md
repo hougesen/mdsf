@@ -4,6 +4,18 @@ All notable changes to this project will be documented in this file. Dates are d
 
 #### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.10.4...HEAD)
 
+- build(deps): bump clap from 4.5.43 to 4.5.44 [`#1238`](https://github.com/hougesen/mdsf/pull/1238)
+- build(deps): bump terminal_size from 0.4.2 to 0.4.3 [`#1239`](https://github.com/hougesen/mdsf/pull/1239)
+- build(deps-dev): bump @biomejs/biome in /github-action [`#1230`](https://github.com/hougesen/mdsf/pull/1230)
+- build(deps): bump clap_complete from 4.5.56 to 4.5.57 [`#1237`](https://github.com/hougesen/mdsf/pull/1237)
+- build(deps-dev): bump @biomejs/biome from 2.1.3 to 2.1.4 in /mdsf-vscode [`#1234`](https://github.com/hougesen/mdsf/pull/1234)
+- build(deps-dev): bump eslint from 9.32.0 to 9.33.0 in /mdsf-vscode [`#1236`](https://github.com/hougesen/mdsf/pull/1236)
+- build(deps-dev): bump eslint from 9.32.0 to 9.33.0 in /github-action [`#1231`](https://github.com/hougesen/mdsf/pull/1231)
+- build(deps-dev): bump @eslint/js from 9.32.0 to 9.33.0 in /github-action [`#1233`](https://github.com/hougesen/mdsf/pull/1233)
+- build(deps-dev): bump @eslint/js from 9.32.0 to 9.33.0 in /mdsf-vscode [`#1235`](https://github.com/hougesen/mdsf/pull/1235)
+- build(deps): bump clap_complete from 4.5.55 to 4.5.56 [`#1229`](https://github.com/hougesen/mdsf/pull/1229)
+- build(deps): bump clap from 4.5.42 to 4.5.43 [`#1228`](https://github.com/hougesen/mdsf/pull/1228)
+- refactor(codegen): support disabling dub run [`#1227`](https://github.com/hougesen/mdsf/pull/1227)
 - feat(node): support packages with multiple executables [`#1226`](https://github.com/hougesen/mdsf/pull/1226)
 - build(deps-dev): bump typescript from 5.8.3 to 5.9.2 in /mdsf-vscode [`#1221`](https://github.com/hougesen/mdsf/pull/1221)
 - build(deps-dev): bump @typescript-eslint/eslint-plugin in /mdsf-vscode [`#1223`](https://github.com/hougesen/mdsf/pull/1223)

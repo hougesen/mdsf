@@ -322,16 +322,14 @@ impl MdsfConfig {
         let end = "/mdsf.schema.json";
 
         // TODO: make this pretty
-        if self.schema.starts_with(start) && self.schema.ends_with(end) {
-            if let Some((_, remaining)) = self.schema.split_once(start) {
-                if !remaining.is_empty() {
-                    if let Some((version, _)) = remaining.rsplit_once(end) {
-                        if !version.is_empty() {
-                            return Some((version, version == package_version));
-                        }
-                    }
-                }
-            }
+        if self.schema.starts_with(start)
+            && self.schema.ends_with(end)
+            && let Some((_, remaining)) = self.schema.split_once(start)
+            && !remaining.is_empty()
+            && let Some((version, _)) = remaining.rsplit_once(end)
+            && !version.is_empty()
+        {
+            return Some((version, version == package_version));
         }
 
         None

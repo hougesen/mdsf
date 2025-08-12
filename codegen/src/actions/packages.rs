@@ -109,10 +109,10 @@ pub fn generate_install_steps(tools: &Vec<Tool>) -> Vec<WorkflowJobsStep> {
             install_options.push(generate_cargo(&cargo.package));
         }
 
-        if let Some(brew) = &tool.packages.brew {
-            if !brew.skip_brew_install {
-                install_options.push(generate_brew(brew));
-            }
+        if let Some(brew) = &tool.packages.brew
+            && !brew.skip_brew_install
+        {
+            install_options.push(generate_brew(brew));
         }
 
         if let Some(apt) = &tool.packages.apt {
