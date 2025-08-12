@@ -513,16 +513,16 @@ impl Tool {
                     }
                 }
 
-                if let Some(dub) = &self.packages.dub {
-                    if !dub.disable_dub_run {
-                        command_types.push(format!("CommandType::Dub(\"{}\")", &dub.package));
-                    }
+                if let Some(dub) = &self.packages.dub
+                    && !dub.disable_dub_run
+                {
+                    command_types.push(format!("CommandType::Dub(\"{}\")", &dub.package));
                 }
 
-                if let Some(gem) = &self.packages.gem {
-                    if !gem.disable_gem_exec {
-                        command_types.push(format!("CommandType::GemExec(\"{}\")", &gem.package));
-                    }
+                if let Some(gem) = &self.packages.gem
+                    && !gem.disable_gem_exec
+                {
+                    command_types.push(format!("CommandType::GemExec(\"{}\")", &gem.package));
                 }
             };
 

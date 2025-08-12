@@ -21,18 +21,17 @@ fn normalize_homepage(s: String) -> String {
     }
 }
 
-fn normalize_description(s: String) -> String {
+fn normalize_description(s: &str) -> String {
     s.trim().to_string()
 }
 
 fn normalize_plugin(mut plugin: Tool) -> Tool {
     plugin.homepage = normalize_homepage(plugin.homepage);
-    plugin.description = normalize_description(plugin.description);
+    plugin.description = normalize_description(&plugin.description);
 
     for info in plugin.commands.values_mut() {
         info.homepage = info.homepage.clone().map(normalize_homepage);
-
-        info.description = info.description.clone().map(normalize_description);
+        info.description = info.description.as_ref().map(|d| normalize_description(d));
 
         info.tests.sort_by(|a, b| {
             if a.language != b.language {
