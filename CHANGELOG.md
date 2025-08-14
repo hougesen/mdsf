@@ -4,6 +4,8 @@ All notable changes to this project will be documented in this file. Dates are d
 
 #### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.10.4...HEAD)
 
+- build(deps): bump clap from 4.5.44 to 4.5.45 [`#1241`](https://github.com/hougesen/mdsf/pull/1241)
+- refactor: use chained if let syntax [`#1240`](https://github.com/hougesen/mdsf/pull/1240)
 - build(deps): bump clap from 4.5.43 to 4.5.44 [`#1238`](https://github.com/hougesen/mdsf/pull/1238)
 - build(deps): bump terminal_size from 0.4.2 to 0.4.3 [`#1239`](https://github.com/hougesen/mdsf/pull/1239)
 - build(deps-dev): bump @biomejs/biome in /github-action [`#1230`](https://github.com/hougesen/mdsf/pull/1230)
