@@ -2666,7 +2666,7 @@ mod test_markuplint {}
 #[cfg(test)]
 mod test_mbake_format {
     #[test_with::executable(mbake || pipx || uv)]
-    fn test_mbake_format_makefile_f4de03df813ed114() -> Result<(), Box<dyn core::error::Error>> {
+    fn test_mbake_format_makefile_edbe638c5985a6ce() -> Result<(), Box<dyn core::error::Error>> {
         let input = r#"CC:=gcc
 CFLAGS= -Wall -g
 SOURCES=main.c \n  utils.c \n  helper.c
@@ -2684,11 +2684,11 @@ clean:
 CFLAGS = -Wall -g
 SOURCES = main.c \n  utils.c \n  helper.c
 
-.PHONY: all clean install
-
+.PHONY: clean
 all: $(TARGET)
 	$(CC) $(CFLAGS) -o $@ $^
 
+.PHONY: install
 clean:
 	rm -f *.o
 "#;

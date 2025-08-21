@@ -27,6 +27,7 @@ All notable changes to this project will be documented in this file. Dates are d
 - build(cargo-dist): bump version to v0.29.0 [`#1220`](https://github.com/hougesen/mdsf/pull/1220)
 - build(deps): bump serde_json from 1.0.141 to 1.0.142 [`#1219`](https://github.com/hougesen/mdsf/pull/1219)
 - build(deps): bump clap from 4.5.41 to 4.5.42 [`#1218`](https://github.com/hougesen/mdsf/pull/1218)
+- chore: update file extension mappings [`97aa793`](https://github.com/hougesen/mdsf/commit/97aa79390555aef4e5974221004e1dc04a376677)
 
 #### [v0.10.4](https://github.com/hougesen/mdsf/compare/v0.10.3...v0.10.4)
 
