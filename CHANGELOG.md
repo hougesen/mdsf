@@ -2,8 +2,23 @@
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
-#### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.10.4...HEAD)
+#### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.10.5...HEAD)
 
+#### [v0.10.5](https://github.com/hougesen/mdsf/compare/v0.10.4...v0.10.5)
+
+> 21 August 2025
+
+- chore: release v0.10.5 [`#1255`](https://github.com/hougesen/mdsf/pull/1255)
+- build(deps): bump ureq from 3.0.12 to 3.1.0 [`#1243`](https://github.com/hougesen/mdsf/pull/1243)
+- build(deps): bump tempfile from 3.20.0 to 3.21.0 [`#1244`](https://github.com/hougesen/mdsf/pull/1244)
+- build(deps): bump serde_json from 1.0.142 to 1.0.143 [`#1242`](https://github.com/hougesen/mdsf/pull/1242)
+- build(deps-dev): bump @typescript-eslint/eslint-plugin in /mdsf-vscode [`#1251`](https://github.com/hougesen/mdsf/pull/1251)
+- build(deps-dev): bump esbuild from 0.25.8 to 0.25.9 in /mdsf-vscode [`#1252`](https://github.com/hougesen/mdsf/pull/1252)
+- build(deps-dev): bump @typescript-eslint/parser in /mdsf-vscode [`#1253`](https://github.com/hougesen/mdsf/pull/1253)
+- build(deps-dev): bump esbuild from 0.25.8 to 0.25.9 in /github-action [`#1248`](https://github.com/hougesen/mdsf/pull/1248)
+- build(deps-dev): bump @biomejs/biome in /github-action [`#1250`](https://github.com/hougesen/mdsf/pull/1250)
+- build(deps-dev): bump @biomejs/biome from 2.1.4 to 2.2.0 in /mdsf-vscode [`#1249`](https://github.com/hougesen/mdsf/pull/1249)
+- test(mbake): update test data [`#1245`](https://github.com/hougesen/mdsf/pull/1245)
 - build(deps): bump clap from 4.5.44 to 4.5.45 [`#1241`](https://github.com/hougesen/mdsf/pull/1241)
 - refactor: use chained if let syntax [`#1240`](https://github.com/hougesen/mdsf/pull/1240)
 - build(deps): bump clap from 4.5.43 to 4.5.44 [`#1238`](https://github.com/hougesen/mdsf/pull/1238)
