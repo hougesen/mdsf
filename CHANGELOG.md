@@ -4,9 +4,11 @@ All notable changes to this project will be documented in this file. Dates are d
 
 #### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.10.5...HEAD)
 
+- build(deps): update test_with to v0.15.4 [`ff31eae`](https://github.com/hougesen/mdsf/commit/ff31eae7c78e7648a156ce5d770b3dabfed5b33a)
+
 #### [v0.10.5](https://github.com/hougesen/mdsf/compare/v0.10.4...v0.10.5)
 
-> 21 August 2025
+> 22 August 2025
 
 - chore: release v0.10.5 [`#1255`](https://github.com/hougesen/mdsf/pull/1255)
 - build(deps): bump ureq from 3.0.12 to 3.1.0 [`#1243`](https://github.com/hougesen/mdsf/pull/1243)

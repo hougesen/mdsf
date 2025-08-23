@@ -4,7 +4,7 @@ members = ["codegen", "mdsf"]
 exclude = []
 
 [workspace.package]
-version = "0.10.5"
+version = "0.10.5-next"
 authors = ["Mads Hougesen <mads@mhouge.dk>"]
 edition = "2024"
 documentation = "https://github.com/hougesen/mdsf#readme"
@@ -36,7 +36,7 @@ serde_yaml = { version = "0.9.34" }
 sha2 = "0.10.9"
 tempfile = "3.21.0"
 terminal_size = "0.4.3"
-test-with = { version = "0.14.11", default-features = false, features = [
+test-with = { version = "0.15.4", default-features = false, features = [
   "executable",
 ] }
 threadpool = "1.8.1"
