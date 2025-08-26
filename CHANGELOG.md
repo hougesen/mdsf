@@ -4,7 +4,12 @@ All notable changes to this project will be documented in this file. Dates are d
 
 #### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.10.5...HEAD)
 
-- build(deps): update test_with to v0.15.4 [`ff31eae`](https://github.com/hougesen/mdsf/commit/ff31eae7c78e7648a156ce5d770b3dabfed5b33a)
+- build(deps-dev): bump @biomejs/biome in /github-action [`#1259`](https://github.com/hougesen/mdsf/pull/1259)
+- build(deps): bump regex from 1.11.1 to 1.11.2 [`#1260`](https://github.com/hougesen/mdsf/pull/1260)
+- build(deps-dev): bump eslint from 9.33.0 to 9.34.0 in /github-action [`#1262`](https://github.com/hougesen/mdsf/pull/1262)
+- build(deps-dev): bump @biomejs/biome from 2.2.0 to 2.2.2 in /mdsf-vscode [`#1258`](https://github.com/hougesen/mdsf/pull/1258)
+- build(deps-dev): bump eslint from 9.33.0 to 9.34.0 in /mdsf-vscode [`#1257`](https://github.com/hougesen/mdsf/pull/1257)
+- build(deps): update test_with to v0.15.4 [`#1256`](https://github.com/hougesen/mdsf/pull/1256)
 
 #### [v0.10.5](https://github.com/hougesen/mdsf/compare/v0.10.4...v0.10.5)
 
