@@ -4,6 +4,8 @@ All notable changes to this project will be documented in this file. Dates are d
 
 #### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.10.5...HEAD)
 
+- build(deps-dev): bump @typescript-eslint/parser in /mdsf-vscode [`#1266`](https://github.com/hougesen/mdsf/pull/1266)
+- build(deps): bump clap to v4.5.46 [`#1264`](https://github.com/hougesen/mdsf/pull/1264)
 - build(deps-dev): bump @biomejs/biome in /github-action [`#1259`](https://github.com/hougesen/mdsf/pull/1259)
 - build(deps): bump regex from 1.11.1 to 1.11.2 [`#1260`](https://github.com/hougesen/mdsf/pull/1260)
 - build(deps-dev): bump eslint from 9.33.0 to 9.34.0 in /github-action [`#1262`](https://github.com/hougesen/mdsf/pull/1262)
