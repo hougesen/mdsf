@@ -4,6 +4,7 @@ All notable changes to this project will be documented in this file. Dates are d
 
 #### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.10.5...HEAD)
 
+- chore(dependabot): exclude cargo-dist workflow [`#1283`](https://github.com/hougesen/mdsf/pull/1283)
 - build(deps): bump actions/setup-go from 5 to 6 [`#1272`](https://github.com/hougesen/mdsf/pull/1272)
 - build(deps-dev): bump eslint from 9.34.0 to 9.35.0 in /github-action [`#1274`](https://github.com/hougesen/mdsf/pull/1274)
 - build(deps): bump actions/setup-python from 5 to 6 [`#1273`](https://github.com/hougesen/mdsf/pull/1273)
@@ -27,6 +28,7 @@ All notable changes to this project will be documented in this file. Dates are d
 - build(deps-dev): bump @biomejs/biome from 2.2.0 to 2.2.2 in /mdsf-vscode [`#1258`](https://github.com/hougesen/mdsf/pull/1258)
 - build(deps-dev): bump eslint from 9.33.0 to 9.34.0 in /mdsf-vscode [`#1257`](https://github.com/hougesen/mdsf/pull/1257)
 - build(deps): update test_with to v0.15.4 [`#1256`](https://github.com/hougesen/mdsf/pull/1256)
+- build(deps): bump actions/checkout from 4 to 5 [`852e455`](https://github.com/hougesen/mdsf/commit/852e45554ce77f8316121ef68ec683b2cd9ef26f)
 
 #### [v0.10.5](https://github.com/hougesen/mdsf/compare/v0.10.4...v0.10.5)
 
