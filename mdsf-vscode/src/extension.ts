@@ -79,7 +79,7 @@ async function formatFile(filePath: string, cwd?: string | URL | undefined) {
       output += data.toString();
     });
 
-    p.on("err", (err) => {
+    p.on("error", (err) => {
       console.error("format error", err);
 
       reject("Failed to start mdsf");
