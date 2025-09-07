@@ -2,8 +2,14 @@
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
-#### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.10.5...HEAD)
+#### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.10.6...HEAD)
 
+#### [v0.10.6](https://github.com/hougesen/mdsf/compare/v0.10.5...v0.10.6)
+
+> 7 September 2025
+
+- chore: release v0.10.6 [`#1286`](https://github.com/hougesen/mdsf/pull/1286)
+- build(deps): bump actions/setup-node from 4 to 5 [`#1276`](https://github.com/hougesen/mdsf/pull/1276)
 - build(deps): bump actions/checkout from 4 to 5 [`#1246`](https://github.com/hougesen/mdsf/pull/1246)
 - chore(dependabot): exclude cargo-dist workflow [`#1283`](https://github.com/hougesen/mdsf/pull/1283)
 - build(deps): bump actions/setup-go from 5 to 6 [`#1272`](https://github.com/hougesen/mdsf/pull/1272)
@@ -29,7 +35,6 @@ All notable changes to this project will be documented in this file. Dates are d
 - build(deps-dev): bump @biomejs/biome from 2.2.0 to 2.2.2 in /mdsf-vscode [`#1258`](https://github.com/hougesen/mdsf/pull/1258)
 - build(deps-dev): bump eslint from 9.33.0 to 9.34.0 in /mdsf-vscode [`#1257`](https://github.com/hougesen/mdsf/pull/1257)
 - build(deps): update test_with to v0.15.4 [`#1256`](https://github.com/hougesen/mdsf/pull/1256)
-- build(deps): bump actions/setup-node from 4 to 5 [`24ff4a8`](https://github.com/hougesen/mdsf/commit/24ff4a878adb6550599cba8b659c553517298e62)
 
 #### [v0.10.5](https://github.com/hougesen/mdsf/compare/v0.10.4...v0.10.5)
 
