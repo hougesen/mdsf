@@ -2,8 +2,15 @@
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
-#### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.10.6...HEAD)
+#### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.10.7...HEAD)
 
+#### [v0.10.7](https://github.com/hougesen/mdsf/compare/v0.10.6...v0.10.7)
+
+> 9 September 2025
+
+- chore: release v0.10.7 [`#1294`](https://github.com/hougesen/mdsf/pull/1294)
+- build(deps): bump tempfile from 3.21.0 to 3.22.0 [`#1293`](https://github.com/hougesen/mdsf/pull/1293)
+- feat(tools): add support for prettierd [`#1292`](https://github.com/hougesen/mdsf/pull/1292)
 - build(deps): bump ureq from 3.1.1 to 3.1.2 [`#1291`](https://github.com/hougesen/mdsf/pull/1291)
 - build(deps-dev): bump @typescript-eslint/eslint-plugin in /mdsf-vscode [`#1288`](https://github.com/hougesen/mdsf/pull/1288)
 - build(deps-dev): bump @typescript-eslint/parser in /mdsf-vscode [`#1289`](https://github.com/hougesen/mdsf/pull/1289)
