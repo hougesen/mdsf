@@ -245,6 +245,8 @@ jobs:
         run: ( ( which perflint ) || ( ( which pipx && pipx install perflint ) ) || ( echo "Unable to install tool" ) )
       - name: prettier
         run: ( ( which prettier ) || ( ( which npm && npm i -g prettier ) ) || ( echo "Unable to install tool" ) )
+      - name: prettierd
+        run: ( ( which prettierd ) || ( ( which npm && npm i -g @fsouza/prettierd ) || ( which brew &&  brew install prettierd ) ) || ( echo "Unable to install tool" ) )
       - name: prisma
         run: ( ( which prisma ) || ( ( which npm && npm i -g prisma ) ) || ( echo "Unable to install tool" ) )
       - name: purs-tidy

@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file. Dates are d
 
 #### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.10.6...HEAD)
 
+- build(deps): bump ureq from 3.1.1 to 3.1.2 [`#1291`](https://github.com/hougesen/mdsf/pull/1291)
+- build(deps-dev): bump @typescript-eslint/eslint-plugin in /mdsf-vscode [`#1288`](https://github.com/hougesen/mdsf/pull/1288)
+- build(deps-dev): bump @typescript-eslint/parser in /mdsf-vscode [`#1289`](https://github.com/hougesen/mdsf/pull/1289)
+- build(cargo-dist): bump version to v0.30.0 [`#1290`](https://github.com/hougesen/mdsf/pull/1290)
+
 #### [v0.10.6](https://github.com/hougesen/mdsf/compare/v0.10.5...v0.10.6)
 
 > 7 September 2025
