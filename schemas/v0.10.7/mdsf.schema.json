@@ -5,7 +5,7 @@
   "properties": {
     "$schema": {
       "type": "string",
-      "default": "https://raw.githubusercontent.com/hougesen/mdsf/main/schemas/v0.10.6-next/mdsf.schema.json"
+      "default": "https://raw.githubusercontent.com/hougesen/mdsf/main/schemas/v0.10.7/mdsf.schema.json"
     },
     "custom_file_extensions": {
       "description": "Used for settings custom file extensions for a given language.\n\n```json\n{\n  \"custom_file_extensions\": {\n    \"rust\": \".rust\"\n  }\n}\n```",
