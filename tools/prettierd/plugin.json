@@ -1,0 +1,54 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "prettierd",
+  "categories": ["formatter"],
+  "commands": {
+    "": {
+      "arguments": ["$PATH"],
+      "stdin": true,
+      "tests": [
+        {
+          "language": "javascript",
+          "test_input": "\n    async function asyncAddition(\n            a,b\n        ) {\n        return a+b\n    }\n\n            ",
+          "test_output": "async function asyncAddition(a, b) {\n  return a + b;\n}\n"
+        },
+        {
+          "language": "json",
+          "test_input": "\n              {\n              \"key\": \"value\",\n  \"key2\": [\n      \"value2\",\n      \"value3\",\n      1\n            , null]\n }\n  ",
+          "test_output": "{\n  \"key\": \"value\",\n  \"key2\": [\"value2\", \"value3\", 1, null]\n}\n"
+        }
+      ]
+    }
+  },
+  "description": "prettier, as a daemon, for improved formatting speed",
+  "homepage": "https://github.com/fsouza/prettierd",
+  "languages": [
+    "angular",
+    "css",
+    "ember",
+    "graphql",
+    "handlebars",
+    "html",
+    "javascript",
+    "json",
+    "less",
+    "markdown",
+    "scss",
+    "typescript",
+    "vue"
+  ],
+  "packages": {
+    "brew": {
+      "package": "prettierd"
+    },
+    "npm": {
+      "disable_bunx": true,
+      "disable_deno_run": true,
+      "disable_npx": true,
+      "disable_pnpm_dlx": true,
+      "disable_yarn_exec": true,
+      "executable": "prettierd",
+      "package": "@fsouza/prettierd"
+    }
+  }
+}

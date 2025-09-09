@@ -620,7 +620,7 @@ pub const IS_STDIN: bool = {is_stdin};
                 } else {
                     ""
                 },
-                unused_prefix = if options.stdin { "_" } else { "" },
+                unused_prefix = if args_includes_path { "" } else { "_" },
                 is_mut = if string_args.is_empty() { "" } else { "mut " },
                 is_stdin = if options.stdin { "true" } else { "false" }
             );

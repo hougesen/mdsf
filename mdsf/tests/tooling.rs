@@ -3296,6 +3296,54 @@ mod test_prettier {
 }
 
 #[cfg(test)]
+mod test_prettierd {
+    #[test_with::executable(prettierd)]
+    fn test_prettierd_javascript_f38217e7df306e3e() -> Result<(), Box<dyn core::error::Error>> {
+        let input = r#"
+    async function asyncAddition(
+            a,b
+        ) {
+        return a+b
+    }
+
+            "#;
+
+        let output = r#"async function asyncAddition(a, b) {
+  return a + b;
+}
+"#;
+
+        let ft = "javascript";
+
+        crate::common::run_tooling_test(mdsf::tools::Tooling::Prettierd, input, output, ft)
+    }
+
+    #[test_with::executable(prettierd)]
+    fn test_prettierd_json_8e1e8ed2224fd439() -> Result<(), Box<dyn core::error::Error>> {
+        let input = r#"
+              {
+              "key": "value",
+  "key2": [
+      "value2",
+      "value3",
+      1
+            , null]
+ }
+  "#;
+
+        let output = r#"{
+  "key": "value",
+  "key2": ["value2", "value3", 1, null]
+}
+"#;
+
+        let ft = "json";
+
+        crate::common::run_tooling_test(mdsf::tools::Tooling::Prettierd, input, output, ft)
+    }
+}
+
+#[cfg(test)]
 mod test_pretty_php {}
 
 #[cfg(test)]

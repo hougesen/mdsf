@@ -231,6 +231,7 @@ pub mod phpcbf;
 pub mod phpinsights_fix;
 pub mod pint;
 pub mod prettier;
+pub mod prettierd;
 pub mod pretty_php;
 pub mod prettypst;
 pub mod prisma_format;
@@ -2199,6 +2200,14 @@ pub enum Tooling {
     /// `prettier --embedded-language-formatting off --log-level error --write $PATH`
     Prettier,
 
+    #[serde(rename = "prettierd")]
+    /// prettier, as a daemon, for improved formatting speed
+    ///
+    /// [https://github.com/fsouza/prettierd](https://github.com/fsouza/prettierd)
+    ///
+    /// `prettierd $PATH`
+    Prettierd,
+
     #[serde(rename = "pretty-php")]
     /// The opinionated PHP code formatter
     ///
@@ -4036,6 +4045,11 @@ impl Tooling {
             ),
             Self::Pint => (&pint::COMMANDS, pint::set_args, pint::IS_STDIN),
             Self::Prettier => (&prettier::COMMANDS, prettier::set_args, prettier::IS_STDIN),
+            Self::Prettierd => (
+                &prettierd::COMMANDS,
+                prettierd::set_args,
+                prettierd::IS_STDIN,
+            ),
             Self::PrettyPhp => (
                 &pretty_php::COMMANDS,
                 pretty_php::set_args,
@@ -4668,6 +4682,7 @@ impl AsRef<str> for Tooling {
             Self::PhpinsightsFix => "phpinsights:fix",
             Self::Pint => "pint",
             Self::Prettier => "prettier",
+            Self::Prettierd => "prettierd",
             Self::PrettyPhp => "pretty-php",
             Self::Prettypst => "prettypst",
             Self::PrismaFormat => "prisma:format",
@@ -5081,6 +5096,7 @@ mod test_tooling {
         assert_eq!(Tooling::PhpinsightsFix, reverse(Tooling::PhpinsightsFix)?);
         assert_eq!(Tooling::Pint, reverse(Tooling::Pint)?);
         assert_eq!(Tooling::Prettier, reverse(Tooling::Prettier)?);
+        assert_eq!(Tooling::Prettierd, reverse(Tooling::Prettierd)?);
         assert_eq!(Tooling::PrettyPhp, reverse(Tooling::PrettyPhp)?);
         assert_eq!(Tooling::Prettypst, reverse(Tooling::Prettypst)?);
         assert_eq!(Tooling::PrismaFormat, reverse(Tooling::PrismaFormat)?);

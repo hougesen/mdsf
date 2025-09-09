@@ -473,7 +473,7 @@ That can be changed by specifying the `newline` config option.
 
 <!-- START_SECTION:supported-tools -->
 
-`mdsf` currently supports 323 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 324 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                                                                                 | Description                                                                                                                                   | Categories            | Languages                                                                                                                         |
 | ------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
@@ -677,6 +677,7 @@ That can be changed by specifying the `newline` config option.
 | [phpinsights](https://github.com/nunomaduro/phpinsights)                             | Instant PHP quality checks from your console                                                                                                  | `linter`              | `php`                                                                                                                             |
 | [pint](https://github.com/laravel/pint)                                              | Laravel Pint is an opinionated PHP code style fixer for minimalists                                                                           | `formatter`, `linter` | `php`                                                                                                                             |
 | [prettier](https://github.com/prettier/prettier)                                     | Prettier is an opinionated code formatter                                                                                                     | `formatter`           | `angular`, `css`, `ember`, `graphql`, `handlebars`, `html`, `javascript`, `json`, `less`, `markdown`, `scss`, `typescript`, `vue` |
+| [prettierd](https://github.com/fsouza/prettierd)                                     | prettier, as a daemon, for improved formatting speed                                                                                          | `formatter`           | `angular`, `css`, `ember`, `graphql`, `handlebars`, `html`, `javascript`, `json`, `less`, `markdown`, `scss`, `typescript`, `vue` |
 | [pretty-php](https://github.com/lkrms/pretty-php)                                    | The opinionated PHP code formatter                                                                                                            | `formatter`           | `php`                                                                                                                             |
 | [prettypst](https://github.com/antonwetzel/prettypst)                                | Formatter for Typst                                                                                                                           | `formatter`           | `typst`                                                                                                                           |
 | [prisma](https://www.prisma.io/docs/orm/tools/prisma-cli)                            | Commands for interacting with the prisma ORM                                                                                                  | `formatter`           | `prisma`                                                                                                                          |
@@ -807,7 +808,7 @@ That can be changed by specifying the `newline` config option.
 
 <!-- START_SECTION:supported-commands -->
 
-`mdsf` currently supports 361 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 362 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                         | Command                                                                                 |
 | ---------------------------- | --------------------------------------------------------------------------------------- |
@@ -1040,6 +1041,7 @@ That can be changed by specifying the `newline` config option.
 | `phpinsights:fix`            | `phpinsights fix $PATH --no-interaction --quiet`                                        |
 | `pint`                       | `pint $PATH`                                                                            |
 | `prettier`                   | `prettier --embedded-language-formatting off --log-level error --write $PATH`           |
+| `prettierd`                  | `prettierd $PATH`                                                                       |
 | `pretty-php`                 | `pretty-php $PATH`                                                                      |
 | `prettypst`                  | `prettypst $PATH`                                                                       |
 | `prisma:format`              | `prisma format --schema={$PATH_STRING}`                                                 |

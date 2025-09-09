@@ -1313,6 +1313,11 @@
           "const": "prettier"
         },
         {
+          "description": "prettier, as a daemon, for improved formatting speed\n\n[https://github.com/fsouza/prettierd](https://github.com/fsouza/prettierd)\n\n`prettierd $PATH`",
+          "type": "string",
+          "const": "prettierd"
+        },
+        {
           "description": "The opinionated PHP code formatter\n\n[https://github.com/lkrms/pretty-php](https://github.com/lkrms/pretty-php)\n\n`pretty-php $PATH`",
           "type": "string",
           "const": "pretty-php"
