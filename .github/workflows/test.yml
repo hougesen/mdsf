@@ -84,7 +84,7 @@ jobs:
           enable-cache: true
       - name: Install cargo-llvm-cov
         uses: taiki-e/install-action@cargo-llvm-cov
-      - run: rustup toolchain install stable --profile minimal
+      - run: rustup toolchain install stable
       - run: rustup component add rustfmt clippy
       - run: curl -LsSf https://github.com/posit-dev/air/releases/latest/download/air-installer.sh | sh
       - name: actionlint
