@@ -9,7 +9,7 @@
         {
           "language": "html",
           "test_input": "<div>\n                    <p>\n                    Mads was here\n                    </p>\n        </div>",
-          "test_output": "<div>\n  <p>\n    Mads was here\n  </p>\n</div>"
+          "test_output": "<div>\n\t<p>\n\t\tMads was here\n\t</p>\n</div>"
         }
       ]
     }
