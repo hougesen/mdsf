@@ -4,6 +4,13 @@ All notable changes to this project will be documented in this file. Dates are d
 
 #### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.10.7...HEAD)
 
+- build(deps): bump serde from 1.0.219 to 1.0.225 [`#1303`](https://github.com/hougesen/mdsf/pull/1303)
+- build(deps-dev): bump globals from 16.3.0 to 16.4.0 in /github-action [`#1295`](https://github.com/hougesen/mdsf/pull/1295)
+- build(deps-dev): bump globals from 16.3.0 to 16.4.0 in /mdsf-vscode [`#1296`](https://github.com/hougesen/mdsf/pull/1296)
+- build(deps): bump serde_json from 1.0.143 to 1.0.145 [`#1298`](https://github.com/hougesen/mdsf/pull/1298)
+- chore: update version to dev [`b96a84d`](https://github.com/hougesen/mdsf/commit/b96a84d6246b31234aea2b944cf667d2d5606b8e)
+- build(deps): bump regex from 1.11.2 to 1.11.3 [`61fef27`](https://github.com/hougesen/mdsf/commit/61fef27c9c02507945e6b8c2ed4383d8572ce8d4)
+
 #### [v0.10.7](https://github.com/hougesen/mdsf/compare/v0.10.6...v0.10.7)
 
 > 9 September 2025
