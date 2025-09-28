@@ -19,7 +19,7 @@ jobs:
       contents: write
     steps:
       - uses: actions/checkout@v5
-      - run: rustup toolchain install stable --profile minimal
+      - run: rustup toolchain install stable
       - uses: Swatinem/rust-cache@v2
       - uses: actions/setup-node@v5
         with:
