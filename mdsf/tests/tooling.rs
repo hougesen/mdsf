@@ -4597,7 +4597,7 @@ end
 #[cfg(test)]
 mod test_superhtml_fmt {
     #[test_with::executable(superhtml)]
-    fn test_superhtml_fmt_html_8183dae6d1f190e1() -> Result<(), Box<dyn core::error::Error>> {
+    fn test_superhtml_fmt_html_7a7c8fbd08a556f1() -> Result<(), Box<dyn core::error::Error>> {
         let input = r#"<div>
                     <p>
                     Mads was here
@@ -4605,9 +4605,9 @@ mod test_superhtml_fmt {
         </div>"#;
 
         let output = r#"<div>
-  <p>
-    Mads was here
-  </p>
+	<p>
+		Mads was here
+	</p>
 </div>"#;
 
         let ft = "html";
