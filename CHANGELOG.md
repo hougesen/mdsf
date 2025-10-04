@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file. Dates are d
 
 #### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.10.7...HEAD)
 
+- build(deps-dev): bump esbuild from 0.25.9 to 0.25.10 in /github-action [`#1305`](https://github.com/hougesen/mdsf/pull/1305)
+- build(deps-dev): bump esbuild from 0.25.9 to 0.25.10 in /mdsf-vscode [`#1306`](https://github.com/hougesen/mdsf/pull/1306)
+- build(deps): bump serde from 1.0.226 to 1.0.228 [`#1317`](https://github.com/hougesen/mdsf/pull/1317)
+- fix: update superhtml expected output [`#1316`](https://github.com/hougesen/mdsf/pull/1316)
 - build(deps): bump regex from 1.11.2 to 1.11.3 [`#1315`](https://github.com/hougesen/mdsf/pull/1315)
 - build(deps): bump serde from 1.0.219 to 1.0.225 [`#1303`](https://github.com/hougesen/mdsf/pull/1303)
 - build(deps-dev): bump globals from 16.3.0 to 16.4.0 in /github-action [`#1295`](https://github.com/hougesen/mdsf/pull/1295)
