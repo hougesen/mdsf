@@ -4,6 +4,7 @@ All notable changes to this project will be documented in this file. Dates are d
 
 #### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.10.7...HEAD)
 
+- ci: bump lua action versions [`#1334`](https://github.com/hougesen/mdsf/pull/1334)
 - build(deps): bump clap from 4.5.47 to 4.5.48 [`#1304`](https://github.com/hougesen/mdsf/pull/1304)
 - build(deps): bump tempfile from 3.22.0 to 3.23.0 [`#1313`](https://github.com/hougesen/mdsf/pull/1313)
 - build(deps): bump clap_complete from 4.5.57 to 4.5.58 [`#1302`](https://github.com/hougesen/mdsf/pull/1302)
