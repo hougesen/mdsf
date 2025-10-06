@@ -4,6 +4,19 @@ All notable changes to this project will be documented in this file. Dates are d
 
 #### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.10.7...HEAD)
 
+- build(deps): bump clap from 4.5.47 to 4.5.48 [`#1304`](https://github.com/hougesen/mdsf/pull/1304)
+- build(deps): bump tempfile from 3.22.0 to 3.23.0 [`#1313`](https://github.com/hougesen/mdsf/pull/1313)
+- build(deps): bump clap_complete from 4.5.57 to 4.5.58 [`#1302`](https://github.com/hougesen/mdsf/pull/1302)
+- build(deps-dev): bump eslint from 9.36.0 to 9.37.0 in /mdsf-vscode [`#1331`](https://github.com/hougesen/mdsf/pull/1331)
+- build(deps-dev): bump @eslint/js from 9.36.0 to 9.37.0 in /mdsf-vscode [`#1330`](https://github.com/hougesen/mdsf/pull/1330)
+- build(deps-dev): bump typescript from 5.9.2 to 5.9.3 in /mdsf-vscode [`#1328`](https://github.com/hougesen/mdsf/pull/1328)
+- build(deps-dev): bump @biomejs/biome from 2.2.3 to 2.2.5 in /mdsf-vscode [`#1326`](https://github.com/hougesen/mdsf/pull/1326)
+- build(deps-dev): bump @biomejs/biome in /github-action [`#1324`](https://github.com/hougesen/mdsf/pull/1324)
+- build(deps-dev): bump @typescript-eslint/eslint-plugin in /mdsf-vscode [`#1329`](https://github.com/hougesen/mdsf/pull/1329)
+- build(deps-dev): bump eslint from 9.36.0 to 9.37.0 in /github-action [`#1325`](https://github.com/hougesen/mdsf/pull/1325)
+- build(deps): bump owo-colors from 4.2.2 to 4.2.3 [`#1323`](https://github.com/hougesen/mdsf/pull/1323)
+- build(deps-dev): bump eslint from 9.35.0 to 9.36.0 in /mdsf-vscode [`#1307`](https://github.com/hougesen/mdsf/pull/1307)
+- build(deps-dev): bump eslint from 9.35.0 to 9.36.0 in /github-action [`#1312`](https://github.com/hougesen/mdsf/pull/1312)
 - build(deps-dev): bump esbuild from 0.25.9 to 0.25.10 in /github-action [`#1305`](https://github.com/hougesen/mdsf/pull/1305)
 - build(deps-dev): bump esbuild from 0.25.9 to 0.25.10 in /mdsf-vscode [`#1306`](https://github.com/hougesen/mdsf/pull/1306)
 - build(deps): bump serde from 1.0.226 to 1.0.228 [`#1317`](https://github.com/hougesen/mdsf/pull/1317)
@@ -14,6 +27,7 @@ All notable changes to this project will be documented in this file. Dates are d
 - build(deps-dev): bump globals from 16.3.0 to 16.4.0 in /mdsf-vscode [`#1296`](https://github.com/hougesen/mdsf/pull/1296)
 - build(deps): bump serde_json from 1.0.143 to 1.0.145 [`#1298`](https://github.com/hougesen/mdsf/pull/1298)
 - chore: update version to dev [`b96a84d`](https://github.com/hougesen/mdsf/commit/b96a84d6246b31234aea2b944cf667d2d5606b8e)
+- chore: update changelog [`32af35d`](https://github.com/hougesen/mdsf/commit/32af35d9178b6dd529aa88b07798196f30009609)
 
 #### [v0.10.7](https://github.com/hougesen/mdsf/compare/v0.10.6...v0.10.7)
 
