@@ -84,8 +84,8 @@
     { "uses": "julia-actions/cache@v2" },
     { "uses": "cargo-bins/cargo-binstall@main" },
     { "uses": "Homebrew/actions/setup-homebrew@master" },
-    { "uses": "leafo/gh-actions-lua@v11" },
-    { "uses": "leafo/gh-actions-luarocks@v5", "continue-on-error": true },
+    { "uses": "leafo/gh-actions-lua@v12" },
+    { "uses": "leafo/gh-actions-luarocks@v6", "continue-on-error": true },
     { "uses": "dlang-community/setup-dlang@v2" },
     {
       "uses": "oven-sh/setup-bun@v2",
