@@ -28,6 +28,7 @@ All notable changes to this project will be documented in this file. Dates are d
 - build(deps-dev): bump globals from 16.3.0 to 16.4.0 in /mdsf-vscode [`#1296`](https://github.com/hougesen/mdsf/pull/1296)
 - build(deps): bump serde_json from 1.0.143 to 1.0.145 [`#1298`](https://github.com/hougesen/mdsf/pull/1298)
 - chore: update version to dev [`b96a84d`](https://github.com/hougesen/mdsf/commit/b96a84d6246b31234aea2b944cf667d2d5606b8e)
+- build: remove custom runners from cargo-dist (#1335) [`58e243d`](https://github.com/hougesen/mdsf/commit/58e243d794cb5048b75afeea2d6e824b7999ddf8)
 - chore: update changelog [`32af35d`](https://github.com/hougesen/mdsf/commit/32af35d9178b6dd529aa88b07798196f30009609)
 
 #### [v0.10.7](https://github.com/hougesen/mdsf/compare/v0.10.6...v0.10.7)

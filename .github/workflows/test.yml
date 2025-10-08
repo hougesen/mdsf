@@ -185,6 +185,8 @@ jobs:
         run: ( ( which jqfmt ) || ( ( which go && go install github.com/noperator/jqfmt/cmd/jqfmt@latest ) ) || ( echo "Unable to install tool" ) )
       - name: js-beautify
         run: ( ( which js-beautify ) || ( ( which npm && npm i -g js-beautify ) ) || ( echo "Unable to install tool" ) )
+      - name: json_repair
+        run: ( ( which json_repair ) || ( ( which pipx && pipx install json-repair ) ) || ( echo "Unable to install tool" ) )
       - name: jsonlint
         run: ( ( which jsonlint ) || ( ( which npm && npm i -g jsonlint ) ) || ( echo "Unable to install tool" ) )
       - name: jsonpp

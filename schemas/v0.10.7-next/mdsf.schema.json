@@ -918,6 +918,11 @@
           "const": "json5format"
         },
         {
+          "description": "A python module to repair invalid JSON from LLMs\n\n[https://github.com/mangiucugna/json_repair](https://github.com/mangiucugna/json_repair)\n\n`json_repair -i $PATH`",
+          "type": "string",
+          "const": "json_repair"
+        },
+        {
           "description": "JSONA linter and formatter\n\n[https://github.com/jsona/jsona](https://github.com/jsona/jsona)\n\n`jsona format $PATH`",
           "type": "string",
           "const": "jsona:format"

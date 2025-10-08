@@ -473,7 +473,7 @@ That can be changed by specifying the `newline` config option.
 
 <!-- START_SECTION:supported-tools -->
 
-`mdsf` currently supports 324 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 325 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                                                                                 | Description                                                                                                                                   | Categories            | Languages                                                                                                                         |
 | ------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
@@ -612,6 +612,7 @@ That can be changed by specifying the `newline` config option.
 | [jqfmt](https://github.com/noperator/jqfmt)                                          | like gofmt, but for jq                                                                                                                        | `formatter`           | `jq`                                                                                                                              |
 | [js-beautify](https://github.com/beautifier/js-beautify)                             | A JavaScript formatter                                                                                                                        | `formatter`           | `javascript`                                                                                                                      |
 | [json5format](https://github.com/google/json5format)                                 | JSON5 (a.k.a., JSON for Humans) formatter that preserves contextual comments                                                                  | `formatter`           | `json5`, `json`                                                                                                                   |
+| [json_repair](https://github.com/mangiucugna/json_repair)                            | A python module to repair invalid JSON from LLMs                                                                                              | `linter`              | `json`                                                                                                                            |
 | [jsona](https://github.com/jsona/jsona)                                              | JSONA linter and formatter                                                                                                                    | `formatter`, `linter` | `jsona`                                                                                                                           |
 | [jsonlint](https://github.com/zaach/jsonlint)                                        | A JSON parser and validator                                                                                                                   | `formatter`, `linter` | `json`                                                                                                                            |
 | [jsonnet-lint](https://jsonnet.org/learning/tools.html)                              | Linter for jsonnet files                                                                                                                      | `linter`              | `jsonnet`                                                                                                                         |
@@ -808,7 +809,7 @@ That can be changed by specifying the `newline` config option.
 
 <!-- START_SECTION:supported-commands -->
 
-`mdsf` currently supports 362 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 363 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                         | Command                                                                                 |
 | ---------------------------- | --------------------------------------------------------------------------------------- |
@@ -962,6 +963,7 @@ That can be changed by specifying the `newline` config option.
 | `jqfmt`                      | `jqfmt`                                                                                 |
 | `js-beautify`                | `js-beautify -r --type js -f $PATH`                                                     |
 | `json5format`                | `json5format -r $PATH`                                                                  |
+| `json_repair`                | `json_repair -i $PATH`                                                                  |
 | `jsona:format`               | `jsona format $PATH`                                                                    |
 | `jsona:lint`                 | `jsona lint $PATH`                                                                      |
 | `jsonlint:sort`              | `jsonlint -s -i $PATH`                                                                  |
