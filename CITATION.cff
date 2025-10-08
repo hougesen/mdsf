@@ -8,6 +8,6 @@ authors:
   - given-names: Mads
     family-names: Hougesen
     email: mads@mhouge.dk
-    orcid: 'https://orcid.org/0009-0006-2972-3001'
-url: 'https://github.com/hougesen/mdsf'
+    orcid: "https://orcid.org/0009-0006-2972-3001"
+url: "https://github.com/hougesen/mdsf"
 license: MIT

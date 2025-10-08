@@ -4,6 +4,8 @@ All notable changes to this project will be documented in this file. Dates are d
 
 #### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.10.7...HEAD)
 
+- feat(tools): support json_repair [`#1336`](https://github.com/hougesen/mdsf/pull/1336)
+- chore: add citation file [`#1337`](https://github.com/hougesen/mdsf/pull/1337)
 - ci: bump lua action versions [`#1334`](https://github.com/hougesen/mdsf/pull/1334)
 - build(deps): bump clap from 4.5.47 to 4.5.48 [`#1304`](https://github.com/hougesen/mdsf/pull/1304)
 - build(deps): bump tempfile from 3.22.0 to 3.23.0 [`#1313`](https://github.com/hougesen/mdsf/pull/1313)
@@ -30,6 +32,7 @@ All notable changes to this project will be documented in this file. Dates are d
 - chore: update version to dev [`b96a84d`](https://github.com/hougesen/mdsf/commit/b96a84d6246b31234aea2b944cf667d2d5606b8e)
 - build: remove custom runners from cargo-dist (#1335) [`58e243d`](https://github.com/hougesen/mdsf/commit/58e243d794cb5048b75afeea2d6e824b7999ddf8)
 - chore: update changelog [`32af35d`](https://github.com/hougesen/mdsf/commit/32af35d9178b6dd529aa88b07798196f30009609)
+- build(deps): bump astral-sh/setup-uv from 6 to 7 [`9117ed1`](https://github.com/hougesen/mdsf/commit/9117ed182c8822c7db66adcfbb28a0ae4c0dd95b)
 
 #### [v0.10.7](https://github.com/hougesen/mdsf/compare/v0.10.6...v0.10.7)
 
