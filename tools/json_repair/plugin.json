@@ -1,0 +1,25 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "json_repair",
+  "categories": ["linter"],
+  "commands": {
+    "": {
+      "arguments": ["-i", "$PATH"],
+      "tests": [
+        {
+          "language": "json",
+          "test_input": "[1 2 3]",
+          "test_output": "[\n  1,\n  2,\n  3\n]\n"
+        }
+      ]
+    }
+  },
+  "description": "A python module to repair invalid JSON from LLMs",
+  "homepage": "https://github.com/mangiucugna/json_repair",
+  "languages": ["json"],
+  "packages": {
+    "pip": {
+      "package": "json-repair"
+    }
+  }
+}

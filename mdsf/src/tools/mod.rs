@@ -152,6 +152,7 @@ pub mod jq;
 pub mod jqfmt;
 pub mod js_beautify;
 pub mod json_5_format;
+pub mod json_repair;
 pub mod jsona_format;
 pub mod jsona_lint;
 pub mod jsonlint;
@@ -1567,6 +1568,14 @@ pub enum Tooling {
     ///
     /// `json5format -r $PATH`
     Json5Format,
+
+    #[serde(rename = "json_repair")]
+    /// A python module to repair invalid JSON from LLMs
+    ///
+    /// [https://github.com/mangiucugna/json_repair](https://github.com/mangiucugna/json_repair)
+    ///
+    /// `json_repair -i $PATH`
+    JsonRepair,
 
     #[serde(rename = "jsona:format")]
     /// JSONA linter and formatter
@@ -3770,6 +3779,11 @@ impl Tooling {
                 json_5_format::set_args,
                 json_5_format::IS_STDIN,
             ),
+            Self::JsonRepair => (
+                &json_repair::COMMANDS,
+                json_repair::set_args,
+                json_repair::IS_STDIN,
+            ),
             Self::JsonaFormat => (
                 &jsona_format::COMMANDS,
                 jsona_format::set_args,
@@ -4603,6 +4617,7 @@ impl AsRef<str> for Tooling {
             Self::Jqfmt => "jqfmt",
             Self::JsBeautify => "js-beautify",
             Self::Json5Format => "json5format",
+            Self::JsonRepair => "json_repair",
             Self::JsonaFormat => "jsona:format",
             Self::JsonaLint => "jsona:lint",
             Self::Jsonlint => "jsonlint",
@@ -5005,6 +5020,7 @@ mod test_tooling {
         assert_eq!(Tooling::Jqfmt, reverse(Tooling::Jqfmt)?);
         assert_eq!(Tooling::JsBeautify, reverse(Tooling::JsBeautify)?);
         assert_eq!(Tooling::Json5Format, reverse(Tooling::Json5Format)?);
+        assert_eq!(Tooling::JsonRepair, reverse(Tooling::JsonRepair)?);
         assert_eq!(Tooling::JsonaFormat, reverse(Tooling::JsonaFormat)?);
         assert_eq!(Tooling::JsonaLint, reverse(Tooling::JsonaLint)?);
         assert_eq!(Tooling::Jsonlint, reverse(Tooling::Jsonlint)?);

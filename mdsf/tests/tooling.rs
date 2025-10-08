@@ -2139,6 +2139,25 @@ mod test_js_beautify {
 mod test_json_5_format {}
 
 #[cfg(test)]
+mod test_json_repair {
+    #[test_with::executable(json_repair || pipx || uv)]
+    fn test_json_repair_json_590de0f66ae2a041() -> Result<(), Box<dyn core::error::Error>> {
+        let input = r#"[1 2 3]"#;
+
+        let output = r#"[
+  1,
+  2,
+  3
+]
+"#;
+
+        let ft = "json";
+
+        crate::common::run_tooling_test(mdsf::tools::Tooling::JsonRepair, input, output, ft)
+    }
+}
+
+#[cfg(test)]
 mod test_jsona_format {}
 
 #[cfg(test)]
