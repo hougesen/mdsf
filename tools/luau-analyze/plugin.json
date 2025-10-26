@@ -9,7 +9,7 @@
     }
   },
   "description": "Typecheck and lint luau files",
-  "homepage": "https://luau.org/",
+  "homepage": "https://luau.org",
   "languages": ["luau"],
   "packages": {}
 }

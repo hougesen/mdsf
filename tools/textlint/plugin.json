@@ -14,7 +14,7 @@
       "tests": []
     }
   },
-  "description": "The pluggable natural language linter for text and markdown",
+  "description": "textlint is the pluggable linter for natural language text",
   "homepage": "https://github.com/textlint/textlint",
   "languages": [],
   "packages": {

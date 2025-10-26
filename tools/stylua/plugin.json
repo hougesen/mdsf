@@ -14,7 +14,7 @@
       ]
     }
   },
-  "description": "An opinionated Lua code formatter",
+  "description": "A Lua code formatter",
   "homepage": "https://github.com/johnnymorganz/stylua",
   "languages": ["lua"],
   "packages": {

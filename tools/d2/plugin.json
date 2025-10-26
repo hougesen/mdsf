@@ -10,7 +10,7 @@
     }
   },
   "description": "A modern language that turns text to diagrams",
-  "homepage": "https://d2lang.com/",
+  "homepage": "https://d2lang.com",
   "languages": ["d2"],
   "packages": {
     "go": {

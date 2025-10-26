@@ -58,7 +58,7 @@
       ]
     }
   },
-  "description": "A fast linter and formatter for PHP",
+  "description": "Mago is a toolchain for PHP that aims to provide a set of tools to help developers write better code",
   "homepage": "https://github.com/carthage-software/mago",
   "languages": ["php"],
   "packages": {

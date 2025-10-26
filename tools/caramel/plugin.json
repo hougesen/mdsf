@@ -10,7 +10,7 @@
     }
   },
   "description": "Formatter for the Caramel programming language",
-  "homepage": "https://caramel.run/",
+  "homepage": "https://caramel.run",
   "languages": ["caramel"],
   "packages": {}
 }

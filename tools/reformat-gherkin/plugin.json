@@ -8,7 +8,7 @@
       "tests": []
     }
   },
-  "description": "Reformat-gherkin automatically formats Gherkin files",
+  "description": "Formatter for Gherkin language",
   "homepage": "https://github.com/ducminh-phan/reformat-gherkin",
   "languages": ["gherkin"],
   "packages": {

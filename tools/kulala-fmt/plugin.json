@@ -28,7 +28,7 @@
       ]
     }
   },
-  "description": "An opinionated .http and .rest file linter and formatter",
+  "description": "An opinionated .http and .rest files linter and formatter",
   "homepage": "https://github.com/mistweaverco/kulala-fmt",
   "languages": ["http"],
   "packages": {

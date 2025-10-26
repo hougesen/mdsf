@@ -14,7 +14,7 @@
       ]
     }
   },
-  "description": "HTML Language Server & Templating Language Library",
+  "description": "HTML Validator, Formatter, LSP, and Templating Language Library",
   "homepage": "https://github.com/kristoff-it/superhtml",
   "languages": ["html"],
   "packages": {

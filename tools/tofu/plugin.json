@@ -15,7 +15,7 @@
     }
   },
   "description": "The tofu fmt command is used to rewrite OpenTofu configuration files to a canonical format and style",
-  "homepage": "https://opentofu.org/docs/cli/commands/fmt/",
+  "homepage": "https://opentofu.org/docs/cli/commands/fmt",
   "languages": ["terraform", "tofu"],
   "packages": {
     "brew": {

@@ -6,7 +6,7 @@
     "format": {
       "arguments": ["format", "--write", "$PATH"],
       "description": "Format Protobuf files",
-      "homepage": "https://buf.build/docs/format/style/",
+      "homepage": "https://buf.build/docs/format/style",
       "tests": [
         {
           "language": "protobuf",
@@ -18,12 +18,12 @@
     "lint": {
       "arguments": ["lint", "$PATH"],
       "description": "Lint Protobuf files",
-      "homepage": "https://buf.build/docs/lint/overview/",
+      "homepage": "https://buf.build/docs/lint/overview",
       "tests": []
     }
   },
   "description": "The best way of working with Protocol Buffers",
-  "homepage": "https://buf.build/docs/reference/cli/buf/",
+  "homepage": "https://buf.build/docs/reference/cli/buf",
   "languages": ["protobuf"],
   "packages": {
     "brew": {

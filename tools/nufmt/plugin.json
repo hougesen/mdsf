@@ -8,7 +8,7 @@
       "tests": []
     }
   },
-  "description": "the nushell formatter",
+  "description": "The nushell formatter",
   "homepage": "https://github.com/nushell/nufmt",
   "languages": ["nushell"],
   "packages": {

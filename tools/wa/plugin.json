@@ -9,8 +9,8 @@
       "tests": []
     }
   },
-  "description": "Formatter for the wa programming language",
-  "homepage": "https://github.com/wa-lang/wa/",
+  "description": "The Wa Programming Language",
+  "homepage": "https://github.com/wa-lang/wa",
   "languages": ["wa"],
   "packages": {
     "brew": {

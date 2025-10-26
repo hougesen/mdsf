@@ -5,6 +5,7 @@
   "commands": {
     "": {
       "arguments": ["--fmt", "--unstable", "--justfile", "$PATH"],
+      "description": "Format Just files",
       "tests": [
         {
           "language": "just",
@@ -14,7 +15,7 @@
       ]
     }
   },
-  "description": "A formatter for justfiles",
+  "description": "Just a command runner",
   "homepage": "https://github.com/casey/just",
   "languages": ["just"],
   "packages": {

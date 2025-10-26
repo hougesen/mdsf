@@ -6,17 +6,17 @@
     "fmt": {
       "arguments": ["fmt", "$PATH"],
       "description": "Format go source code",
-      "homepage": "https://golangci-lint.run/usage/formatters/",
+      "homepage": "https://golangci-lint.run/usage/formatters",
       "tests": []
     },
     "run": {
       "arguments": ["run", "$PATH"],
-      "homepage": "https://golangci-lint.run/usage/linters/",
+      "homepage": "https://golangci-lint.run/usage/linters",
       "tests": []
     },
     "run:fix": {
       "arguments": ["run", "--fix", "$PATH"],
-      "homepage": "https://golangci-lint.run/usage/linters/",
+      "homepage": "https://golangci-lint.run/usage/linters",
       "tests": []
     }
   },

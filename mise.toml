@@ -23,7 +23,7 @@ run = [
   "tombi format",
   "taplo format",
   "mise fmt",
-  "cargo +nightly fmt",
+  "cargo fmt",
   "npx --yes prettier@latest --write --cache .",
   "cargo run -- format .",
   "dist init --yes",

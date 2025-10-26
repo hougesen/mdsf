@@ -8,7 +8,7 @@
       "tests": []
     }
   },
-  "description": "A code formatter for BrightScript and BrighterScript",
+  "description": "A code formatter for BrighterScript (and BrightScript)",
   "homepage": "https://github.com/rokucommunity/brighterscript-formatter",
   "languages": ["brighterscript", "brightscript"],
   "packages": {

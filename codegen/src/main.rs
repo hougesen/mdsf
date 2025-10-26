@@ -13,7 +13,11 @@ mod tools;
 pub const GENERATED_FILE_COMMENT: &str =
     "//!\n//! THIS FILE IS GENERATED USING CODE - DO NOT EDIT MANUALLY\n//!";
 
-fn normalize_homepage(s: String) -> String {
+fn normalize_homepage(mut s: String) -> String {
+    if s.ends_with('/') {
+        s.pop();
+    }
+
     if s.starts_with("https://github.com/") || s.starts_with("https://gitlab.com/") {
         s.to_lowercase()
     } else {
@@ -22,7 +26,7 @@ fn normalize_homepage(s: String) -> String {
 }
 
 fn normalize_description(s: &str) -> String {
-    s.trim().to_string()
+    s.trim().replace("  ", " ")
 }
 
 fn normalize_plugin(mut plugin: Tool) -> Tool {

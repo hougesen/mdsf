@@ -9,7 +9,7 @@
     }
   },
   "description": "A pluggable and configurable code formatting platform written in Rust",
-  "homepage": "https://dprint.dev/",
+  "homepage": "https://dprint.dev",
   "languages": [],
   "packages": {
     "brew": {

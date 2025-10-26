@@ -8,7 +8,7 @@
       "tests": []
     }
   },
-  "description": "A Python docstring linter that checks arguments, returns, yields, and raises sections",
+  "description": "A very fast Python docstring linter",
   "homepage": "https://github.com/jsh9/pydoclint",
   "languages": ["python"],
   "packages": {

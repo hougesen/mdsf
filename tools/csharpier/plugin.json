@@ -15,7 +15,7 @@
       ]
     }
   },
-  "description": "An Opinionated Code Formatter for C#",
+  "description": "CSharpier is an opinionated code formatter for C#",
   "homepage": "https://github.com/belav/csharpier",
   "languages": ["c#"],
   "packages": {

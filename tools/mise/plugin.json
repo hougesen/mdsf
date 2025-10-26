@@ -17,7 +17,7 @@
       ]
     }
   },
-  "description": "The front-end to your dev env",
+  "description": "dev tools, env vars, task runner",
   "homepage": "https://github.com/jdx/mise",
   "languages": [],
   "packages": {

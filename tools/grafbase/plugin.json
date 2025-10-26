@@ -5,7 +5,7 @@
   "commands": {
     "lint": {
       "arguments": ["lint", "$PATH"],
-      "description": "Lint a GraphQL schema",
+      "description": "Lint GraphQL schemas",
       "homepage": "https://grafbase.com/docs/reference/grafbase-cli/lint",
       "tests": []
     }

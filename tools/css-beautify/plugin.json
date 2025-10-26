@@ -14,7 +14,7 @@
       ]
     }
   },
-  "description": "A css formatter",
+  "description": "A CSS formatter",
   "homepage": "https://github.com/beautifier/js-beautify",
   "languages": ["css"],
   "packages": {

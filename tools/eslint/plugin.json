@@ -9,7 +9,7 @@
     }
   },
   "description": "Find and fix problems in your JavaScript code",
-  "homepage": "https://github.com/eslint/eslint/",
+  "homepage": "https://github.com/eslint/eslint",
   "languages": ["javascript", "typescript"],
   "packages": {
     "npm": {

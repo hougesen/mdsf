@@ -1,6 +1,6 @@
 {
   "name": "setup-mdsf",
-  "version": "0.10.8",
+  "version": "0.10.8-next",
   "description": "Setup mdsf cli in GitHub Actions",
   "main": "src/index.mjs",
   "repository": {

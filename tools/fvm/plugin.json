@@ -22,7 +22,7 @@
       ]
     }
   },
-  "description": "Run Dart and Flutter commands through fvm",
+  "description": "Flutter Version Management: A simple CLI to manage Flutter SDK versions",
   "homepage": "https://github.com/leoafarias/fvm",
   "languages": ["dart", "flutter"],
   "packages": {}

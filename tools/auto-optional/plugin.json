@@ -14,7 +14,7 @@
       ]
     }
   },
-  "description": "Adds the Optional type-hint to arguments where the default value is None",
+  "description": "Makes typed arguments Optional when the default argument is None",
   "homepage": "https://github.com/luttik/auto-optional",
   "languages": ["python"],
   "packages": {

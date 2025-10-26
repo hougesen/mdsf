@@ -14,7 +14,7 @@
       ]
     }
   },
-  "description": "A JavaScript formatter",
+  "description": "Beautifier for javascript",
   "homepage": "https://github.com/beautifier/js-beautify",
   "languages": ["javascript"],
   "packages": {

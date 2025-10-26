@@ -8,7 +8,7 @@
       "tests": []
     }
   },
-  "description": "Julia code formatter",
+  "description": "A code formatter for Julia with rules set in stone",
   "homepage": "https://github.com/fredrikekre/runic.jl",
   "languages": ["julia"],
   "packages": {

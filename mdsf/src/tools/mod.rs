@@ -442,7 +442,7 @@ pub enum Tooling {
     AtlasFmt,
 
     #[serde(rename = "auto-optional")]
-    /// Adds the Optional type-hint to arguments where the default value is None
+    /// Makes typed arguments Optional when the default argument is None
     ///
     /// [https://github.com/luttik/auto-optional](https://github.com/luttik/auto-optional)
     ///
@@ -466,7 +466,7 @@ pub enum Tooling {
     Autoflake,
 
     #[serde(rename = "autopep8")]
-    /// A tool that automatically formats Python code to conform to the PEP 8 style guid
+    /// A tool that automatically formats Python code to conform to the PEP 8 style guide
     ///
     /// [https://github.com/hhatto/autopep8](https://github.com/hhatto/autopep8)
     ///
@@ -586,7 +586,7 @@ pub enum Tooling {
     Bpfmt,
 
     #[serde(rename = "brittany")]
-    /// A Haskell source code formatter
+    /// Haskell source code formatter
     ///
     /// [https://github.com/lspitzner/brittany](https://github.com/lspitzner/brittany)
     ///
@@ -596,13 +596,13 @@ pub enum Tooling {
     #[serde(rename = "brunette")]
     /// A best practice Python code formatter
     ///
-    /// [https://github.com/odwyersoftware/brunette](https://github.com/odwyersoftware/brunette)
+    /// [https://pypi.org/project/brunette](https://pypi.org/project/brunette)
     ///
     /// `brunette --quiet $PATH`
     Brunette,
 
     #[serde(rename = "bsfmt")]
-    /// A code formatter for BrightScript and BrighterScript
+    /// A code formatter for BrighterScript (and BrightScript)
     ///
     /// [https://github.com/rokucommunity/brighterscript-formatter](https://github.com/rokucommunity/brighterscript-formatter)
     ///
@@ -620,7 +620,7 @@ pub enum Tooling {
     #[serde(rename = "buf:format")]
     /// Format Protobuf files
     ///
-    /// [https://buf.build/docs/format/style/](https://buf.build/docs/format/style/)
+    /// [https://buf.build/docs/format/style](https://buf.build/docs/format/style)
     ///
     /// `buf format --write $PATH`
     BufFormat,
@@ -628,13 +628,13 @@ pub enum Tooling {
     #[serde(rename = "buf:lint")]
     /// Lint Protobuf files
     ///
-    /// [https://buf.build/docs/lint/overview/](https://buf.build/docs/lint/overview/)
+    /// [https://buf.build/docs/lint/overview](https://buf.build/docs/lint/overview)
     ///
     /// `buf lint $PATH`
     BufLint,
 
     #[serde(rename = "buildifier")]
-    /// A bazel BUILD file formatter and
+    /// A bazel BUILD file formatter and editor
     ///
     /// [https://github.com/bazelbuild/buildtools](https://github.com/bazelbuild/buildtools)
     ///
@@ -668,7 +668,7 @@ pub enum Tooling {
     #[serde(rename = "cabal:format")]
     /// Reformat the .cabal file using the standard style
     ///
-    /// [https://www.haskell.org/cabal/](https://www.haskell.org/cabal/)
+    /// [https://www.haskell.org/cabal](https://www.haskell.org/cabal)
     ///
     /// `cabal format $PATH`
     CabalFormat,
@@ -684,7 +684,7 @@ pub enum Tooling {
     #[serde(rename = "caramel:fmt")]
     /// Format Caramel code
     ///
-    /// [https://caramel.run/](https://caramel.run/)
+    /// [https://caramel.run](https://caramel.run)
     ///
     /// `caramel fmt $PATH`
     CaramelFmt,
@@ -706,7 +706,7 @@ pub enum Tooling {
     CfnLint,
 
     #[serde(rename = "checkmake")]
-    /// Experimental linter/analyzer for Makefiles
+    /// Linter/analyzer for Makefiles
     ///
     /// [https://github.com/mrtazz/checkmake](https://github.com/mrtazz/checkmake)
     ///
@@ -724,7 +724,7 @@ pub enum Tooling {
     #[serde(rename = "clang-tidy")]
     /// clang-tidy is a clang-based C++ “linter” tool
     ///
-    /// [https://clang.llvm.org/extra/clang-tidy/](https://clang.llvm.org/extra/clang-tidy/)
+    /// [https://clang.llvm.org/extra/clang-tidy](https://clang.llvm.org/extra/clang-tidy)
     ///
     /// `clang-tidy --fix $PATH`
     ClangTidy,
@@ -796,7 +796,7 @@ pub enum Tooling {
     #[serde(rename = "cppcheck")]
     /// Cppcheck is a static analysis tool for C/C++ code
     ///
-    /// [https://cppcheck.sourceforge.io/](https://cppcheck.sourceforge.io/)
+    /// [https://cppcheck.sourceforge.io](https://cppcheck.sourceforge.io)
     ///
     /// `cppcheck $PATH`
     Cppcheck,
@@ -826,7 +826,7 @@ pub enum Tooling {
     CrystalFormat,
 
     #[serde(rename = "csharpier")]
-    /// An Opinionated Code Formatter for C#
+    /// CSharpier is an opinionated code formatter for C#
     ///
     /// [https://github.com/belav/csharpier](https://github.com/belav/csharpier)
     ///
@@ -834,7 +834,7 @@ pub enum Tooling {
     Csharpier,
 
     #[serde(rename = "css-beautify")]
-    /// A css formatter
+    /// A CSS formatter
     ///
     /// [https://github.com/beautifier/js-beautify](https://github.com/beautifier/js-beautify)
     ///
@@ -858,9 +858,9 @@ pub enum Tooling {
     Csslint,
 
     #[serde(rename = "cue:fmt")]
-    /// Validate and define text-based and dynamic configuration
+    /// Format CUE files
     ///
-    /// [https://cuelang.org/docs/reference/command/cue-help-fmt/](https://cuelang.org/docs/reference/command/cue-help-fmt/)
+    /// [https://cuelang.org/docs/reference/command/cue-help-fmt](https://cuelang.org/docs/reference/command/cue-help-fmt)
     ///
     /// `cue fmt $PATH`
     CueFmt,
@@ -884,7 +884,7 @@ pub enum Tooling {
     #[serde(rename = "d2:fmt")]
     /// Format d2 code
     ///
-    /// [https://d2lang.com/](https://d2lang.com/)
+    /// [https://d2lang.com](https://d2lang.com)
     ///
     /// `d2 fmt $PATH`
     D2Fmt,
@@ -908,7 +908,7 @@ pub enum Tooling {
     #[serde(rename = "dcm:fix")]
     /// Fixes issues produced by dcm analyze, dcm check-unused-code, dcm check-unused-files or dcm check-dependencies commands
     ///
-    /// [https://dcm.dev/docs/cli/formatting/fix/](https://dcm.dev/docs/cli/formatting/fix/)
+    /// [https://dcm.dev/docs/cli/formatting/fix](https://dcm.dev/docs/cli/formatting/fix)
     ///
     /// `dcm fix $PATH`
     DcmFix,
@@ -916,7 +916,7 @@ pub enum Tooling {
     #[serde(rename = "dcm:format")]
     /// Formats dart files
     ///
-    /// [https://dcm.dev/docs/cli/formatting/format/](https://dcm.dev/docs/cli/formatting/format/)
+    /// [https://dcm.dev/docs/cli/formatting/format](https://dcm.dev/docs/cli/formatting/format)
     ///
     /// `dcm format $PATH`
     DcmFormat,
@@ -932,7 +932,7 @@ pub enum Tooling {
     #[serde(rename = "deno:fmt")]
     /// Formatter and linter for JavaScript and TypeScript
     ///
-    /// [https://docs.deno.com/runtime/reference/cli/fmt/](https://docs.deno.com/runtime/reference/cli/fmt/)
+    /// [https://docs.deno.com/runtime/reference/cli/fmt](https://docs.deno.com/runtime/reference/cli/fmt)
     ///
     /// `deno fmt --quiet $PATH`
     DenoFmt,
@@ -940,7 +940,7 @@ pub enum Tooling {
     #[serde(rename = "deno:lint")]
     /// Formatter and linter for JavaScript and TypeScript
     ///
-    /// [https://docs.deno.com/runtime/reference/cli/lint/](https://docs.deno.com/runtime/reference/cli/lint/)
+    /// [https://docs.deno.com/runtime/reference/cli/lint](https://docs.deno.com/runtime/reference/cli/lint)
     ///
     /// `deno lint --fix $PATH`
     DenoLint,
@@ -956,7 +956,7 @@ pub enum Tooling {
     #[serde(rename = "dhall")]
     /// Format Dhall files
     ///
-    /// [https://dhall-lang.org/](https://dhall-lang.org/)
+    /// [https://dhall-lang.org](https://dhall-lang.org)
     ///
     /// `dhall format $PATH`
     Dhall,
@@ -972,7 +972,7 @@ pub enum Tooling {
     #[serde(rename = "djlint")]
     /// Lint & Format HTML Templates
     ///
-    /// [https://www.djlint.com/](https://www.djlint.com/)
+    /// [https://www.djlint.com](https://www.djlint.com)
     ///
     /// `djlint $PATH --reformat`
     Djlint,
@@ -1002,7 +1002,7 @@ pub enum Tooling {
     Dockfmt,
 
     #[serde(rename = "docstrfmt")]
-    /// A formatter for Sphinx flavored reStructuredText
+    /// A formatter for reStructuredText
     ///
     /// [https://github.com/lilspazjoekp/docstrfmt](https://github.com/lilspazjoekp/docstrfmt)
     ///
@@ -1028,7 +1028,7 @@ pub enum Tooling {
     #[serde(rename = "dprint:fmt")]
     /// A pluggable and configurable code formatting platform written in Rust
     ///
-    /// [https://dprint.dev/](https://dprint.dev/)
+    /// [https://dprint.dev](https://dprint.dev)
     ///
     /// `dprint fmt $PATH`
     DprintFmt,
@@ -1132,7 +1132,7 @@ pub enum Tooling {
     #[serde(rename = "eslint")]
     /// Find and fix problems in your JavaScript code
     ///
-    /// [https://github.com/eslint/eslint/](https://github.com/eslint/eslint/)
+    /// [https://github.com/eslint/eslint](https://github.com/eslint/eslint)
     ///
     /// `eslint --fix $PATH`
     Eslint,
@@ -1186,7 +1186,7 @@ pub enum Tooling {
     Fnlfmt,
 
     #[serde(rename = "forge:fmt")]
-    /// A Solidity formatter
+    /// Format Solidity code
     ///
     /// [https://github.com/foundry-rs/foundry](https://github.com/foundry-rs/foundry)
     ///
@@ -1194,7 +1194,7 @@ pub enum Tooling {
     ForgeFmt,
 
     #[serde(rename = "fortitude:check")]
-    /// A Fortran linter, written in Rust
+    /// A Fortran linter
     ///
     /// [https://github.com/plasmafair/fortitude](https://github.com/plasmafair/fortitude)
     ///
@@ -1202,7 +1202,7 @@ pub enum Tooling {
     FortitudeCheck,
 
     #[serde(rename = "fortitude:check:fix")]
-    /// A Fortran linter, written in Rust
+    /// A Fortran linter
     ///
     /// [https://github.com/plasmafair/fortitude](https://github.com/plasmafair/fortitude)
     ///
@@ -1210,7 +1210,7 @@ pub enum Tooling {
     FortitudeCheckFix,
 
     #[serde(rename = "fortitude:check:fix:unsafe")]
-    /// A Fortran linter, written in Rust
+    /// A Fortran linter
     ///
     /// [https://github.com/plasmafair/fortitude](https://github.com/plasmafair/fortitude)
     ///
@@ -1226,7 +1226,7 @@ pub enum Tooling {
     FortranLinter,
 
     #[serde(rename = "fourmolu")]
-    /// A formatter for Haskell source code
+    /// A fourk of ormolu that uses four space indentation and allows arbitrary configuration
     ///
     /// [https://github.com/fourmolu/fourmolu](https://github.com/fourmolu/fourmolu)
     ///
@@ -1298,7 +1298,7 @@ pub enum Tooling {
     Gersemi,
 
     #[serde(rename = "ghokin:fmt")]
-    /// Parallelized formatter with no external dependencies for gherkin (cucumber, behat)
+    /// Parallelized formatter with no external dependencies for gherkin (cucumber, behat...)
     ///
     /// [https://github.com/antham/ghokin](https://github.com/antham/ghokin)
     ///
@@ -1308,7 +1308,7 @@ pub enum Tooling {
     #[serde(rename = "gleam:format")]
     /// Format Gleam source code
     ///
-    /// [https://gleam.run/](https://gleam.run/)
+    /// [https://gleam.run](https://gleam.run)
     ///
     /// `gleam format $PATH`
     GleamFormat,
@@ -1356,7 +1356,7 @@ pub enum Tooling {
     #[serde(rename = "golangci-lint:fmt")]
     /// Format go source code
     ///
-    /// [https://golangci-lint.run/usage/formatters/](https://golangci-lint.run/usage/formatters/)
+    /// [https://golangci-lint.run/usage/formatters](https://golangci-lint.run/usage/formatters)
     ///
     /// `golangci-lint fmt $PATH`
     GolangciLintFmt,
@@ -1364,7 +1364,7 @@ pub enum Tooling {
     #[serde(rename = "golangci-lint:run")]
     /// Fast linters runner for Go
     ///
-    /// [https://golangci-lint.run/usage/linters/](https://golangci-lint.run/usage/linters/)
+    /// [https://golangci-lint.run/usage/linters](https://golangci-lint.run/usage/linters)
     ///
     /// `golangci-lint run $PATH`
     GolangciLintRun,
@@ -1372,7 +1372,7 @@ pub enum Tooling {
     #[serde(rename = "golangci-lint:run:fix")]
     /// Fast linters runner for Go
     ///
-    /// [https://golangci-lint.run/usage/linters/](https://golangci-lint.run/usage/linters/)
+    /// [https://golangci-lint.run/usage/linters](https://golangci-lint.run/usage/linters)
     ///
     /// `golangci-lint run --fix $PATH`
     GolangciLintRunFix,
@@ -1402,7 +1402,7 @@ pub enum Tooling {
     Gospel,
 
     #[serde(rename = "grafbase:lint")]
-    /// Lint a GraphQL schema
+    /// Lint GraphQL schemas
     ///
     /// [https://grafbase.com/docs/reference/grafbase-cli/lint](https://grafbase.com/docs/reference/grafbase-cli/lint)
     ///
@@ -1450,7 +1450,7 @@ pub enum Tooling {
     Hfmt,
 
     #[serde(rename = "hindent")]
-    /// Extensible Haskell pretty printer
+    /// Haskell pretty printer
     ///
     /// [https://github.com/mihaimaruseac/hindent](https://github.com/mihaimaruseac/hindent)
     ///
@@ -1492,7 +1492,7 @@ pub enum Tooling {
     #[serde(rename = "hurlfmt")]
     /// Formatter for hurl files
     ///
-    /// [https://hurl.dev/](https://hurl.dev/)
+    /// [https://hurl.dev](https://hurl.dev)
     ///
     /// `hurlfmt --in-place $PATH`
     Hurlfmt,
@@ -1500,7 +1500,7 @@ pub enum Tooling {
     #[serde(rename = "imba:fmt")]
     /// A formatter for Imba
     ///
-    /// [https://imba.io/](https://imba.io/)
+    /// [https://imba.io](https://imba.io)
     ///
     /// `imba fmt -f $PATH`
     ImbaFmt,
@@ -1538,7 +1538,7 @@ pub enum Tooling {
     Joker,
 
     #[serde(rename = "jq")]
-    /// JSON processor
+    /// Command-line JSON processor
     ///
     /// [https://github.com/jqlang/jq](https://github.com/jqlang/jq)
     ///
@@ -1554,7 +1554,7 @@ pub enum Tooling {
     Jqfmt,
 
     #[serde(rename = "js-beautify")]
-    /// A JavaScript formatter
+    /// Beautifier for javascript
     ///
     /// [https://github.com/beautifier/js-beautify](https://github.com/beautifier/js-beautify)
     ///
@@ -1562,7 +1562,7 @@ pub enum Tooling {
     JsBeautify,
 
     #[serde(rename = "json5format")]
-    /// JSON5 (a.k.a., JSON for Humans) formatter that preserves contextual comments
+    /// JSON5 formatter that preserves contextual comments
     ///
     /// [https://github.com/google/json5format](https://github.com/google/json5format)
     ///
@@ -1578,7 +1578,7 @@ pub enum Tooling {
     JsonRepair,
 
     #[serde(rename = "jsona:format")]
-    /// JSONA linter and formatter
+    /// Format JSONA
     ///
     /// [https://github.com/jsona/jsona](https://github.com/jsona/jsona)
     ///
@@ -1586,7 +1586,7 @@ pub enum Tooling {
     JsonaFormat,
 
     #[serde(rename = "jsona:lint")]
-    /// JSONA linter and formatter
+    /// Lint JSONA
     ///
     /// [https://github.com/jsona/jsona](https://github.com/jsona/jsona)
     ///
@@ -1642,7 +1642,7 @@ pub enum Tooling {
     JuliaformatterJl,
 
     #[serde(rename = "just")]
-    /// A formatter for justfiles
+    /// Format Just files
     ///
     /// [https://github.com/casey/just](https://github.com/casey/just)
     ///
@@ -1706,7 +1706,7 @@ pub enum Tooling {
     KeepSorted,
 
     #[serde(rename = "ktfmt")]
-    /// program that reformats Kotlin source code to comply with the common community standard for Kotlin code conventions
+    /// A program that reformats Kotlin source code to comply with the common community standard for Kotlin code conventions
     ///
     /// [https://github.com/facebook/ktfmt](https://github.com/facebook/ktfmt)
     ///
@@ -1772,7 +1772,7 @@ pub enum Tooling {
     #[serde(rename = "luau-analyze")]
     /// Typecheck and lint luau files
     ///
-    /// [https://luau.org/](https://luau.org/)
+    /// [https://luau.org](https://luau.org)
     ///
     /// `luau-analyze $PATH`
     LuauAnalyze,
@@ -1844,7 +1844,7 @@ pub enum Tooling {
     #[serde(rename = "markuplint")]
     /// An HTML linter for all markup developers
     ///
-    /// [https://markuplint.dev/](https://markuplint.dev/)
+    /// [https://markuplint.dev](https://markuplint.dev)
     ///
     /// `markuplint --fix $PATH`
     Markuplint,
@@ -1866,7 +1866,7 @@ pub enum Tooling {
     MbakeValidate,
 
     #[serde(rename = "md-padding")]
-    /// Fix mixed spaces in Markdown: Chinese and English, numbers, links
+    /// AST-based padding for Markdown and natural language, improving readability in multilingual documents
     ///
     /// [https://github.com/harttle/md-padding](https://github.com/harttle/md-padding)
     ///
@@ -1908,7 +1908,7 @@ pub enum Tooling {
     #[serde(rename = "meson:fmt")]
     /// Meson is an open source build system meant to be both extremely fast, and, even more importantly, as user friendly as possible
     ///
-    /// [https://mesonbuild.com/](https://mesonbuild.com/)
+    /// [https://mesonbuild.com](https://mesonbuild.com)
     ///
     /// `meson fmt -i $PATH`
     MesonFmt,
@@ -1924,7 +1924,7 @@ pub enum Tooling {
     #[serde(rename = "misspell")]
     /// Correct commonly misspelled English words in source files
     ///
-    /// [https://github.com/client9/misspell/](https://github.com/client9/misspell/)
+    /// [https://github.com/client9/misspell](https://github.com/client9/misspell)
     ///
     /// `misspell -w $PATH`
     Misspell,
@@ -1946,7 +1946,7 @@ pub enum Tooling {
     MojoFormat,
 
     #[serde(rename = "muon:fmt")]
-    /// An implementation of the meson build system
+    /// Format meson files
     ///
     /// [https://github.com/muon-build/muon](https://github.com/muon-build/muon)
     ///
@@ -1954,7 +1954,7 @@ pub enum Tooling {
     MuonFmt,
 
     #[serde(rename = "muon:lint")]
-    /// An implementation of the meson build system
+    /// Lint meson files
     ///
     /// [https://github.com/muon-build/muon](https://github.com/muon-build/muon)
     ///
@@ -1996,7 +1996,7 @@ pub enum Tooling {
     #[serde(rename = "nickel:format")]
     /// Better configuration for less
     ///
-    /// [https://nickel-lang.org/](https://nickel-lang.org/)
+    /// [https://nickel-lang.org](https://nickel-lang.org)
     ///
     /// `nickel format $PATH`
     NickelFormat,
@@ -2010,7 +2010,7 @@ pub enum Tooling {
     Nimpretty,
 
     #[serde(rename = "nixfmt")]
-    /// The official (but not yet stable) formatter for Nix code
+    /// The official formatter for Nix code
     ///
     /// [https://github.com/nixos/nixfmt](https://github.com/nixos/nixfmt)
     ///
@@ -2050,7 +2050,7 @@ pub enum Tooling {
     NpmGroovyLint,
 
     #[serde(rename = "nufmt")]
-    /// the nushell formatter
+    /// The nushell formatter
     ///
     /// [https://github.com/nushell/nufmt](https://github.com/nushell/nufmt)
     ///
@@ -2092,7 +2092,7 @@ pub enum Tooling {
     #[serde(rename = "opa:fmt")]
     /// Format Rego source files
     ///
-    /// [https://www.openpolicyagent.org/docs/latest/cli/](https://www.openpolicyagent.org/docs/latest/cli/)
+    /// [https://www.openpolicyagent.org/docs/latest/cli](https://www.openpolicyagent.org/docs/latest/cli)
     ///
     /// `opa fmt $PATH -w`
     OpaFmt,
@@ -2282,7 +2282,7 @@ pub enum Tooling {
     PuppetLint,
 
     #[serde(rename = "purs-tidy")]
-    /// PureScript code formatter
+    /// A syntax tidy-upper for PureScript
     ///
     /// [https://github.com/natefaubion/purescript-tidy](https://github.com/natefaubion/purescript-tidy)
     ///
@@ -2314,7 +2314,7 @@ pub enum Tooling {
     Pycodestyle,
 
     #[serde(rename = "pydoclint")]
-    /// A Python docstring linter that checks arguments, returns, yields, and raises sections
+    /// A very fast Python docstring linter
     ///
     /// [https://github.com/jsh9/pydoclint](https://github.com/jsh9/pydoclint)
     ///
@@ -2354,7 +2354,7 @@ pub enum Tooling {
     Pyink,
 
     #[serde(rename = "pylint")]
-    /// Pylint is a static code analyser for Python 2 or 3
+    /// Pylint is a static code analyser for Python 2 and 3
     ///
     /// [https://github.com/pylint-dev/pylint](https://github.com/pylint-dev/pylint)
     ///
@@ -2428,7 +2428,7 @@ pub enum Tooling {
     #[serde(rename = "raco:fmt")]
     /// An extensible code formatter for Racket
     ///
-    /// [https://docs.racket-lang.org/fmt/](https://docs.racket-lang.org/fmt/)
+    /// [https://docs.racket-lang.org/fmt](https://docs.racket-lang.org/fmt)
     ///
     /// `raco fmt -i $PATH`
     RacoFmt,
@@ -2450,7 +2450,7 @@ pub enum Tooling {
     Refmt,
 
     #[serde(rename = "reformat-gherkin")]
-    /// Reformat-gherkin automatically formats Gherkin files
+    /// Formatter for Gherkin language
     ///
     /// [https://github.com/ducminh-phan/reformat-gherkin](https://github.com/ducminh-phan/reformat-gherkin)
     ///
@@ -2506,7 +2506,7 @@ pub enum Tooling {
     Revive,
 
     #[serde(rename = "roc:format")]
-    /// Tools for the roc programming language
+    /// Format Roc code
     ///
     /// [https://github.com/roc-lang/roc](https://github.com/roc-lang/roc)
     ///
@@ -2562,7 +2562,7 @@ pub enum Tooling {
     Rufo,
 
     #[serde(rename = "rune:fmt")]
-    /// Tools for the Rune programming language
+    /// Format Rune source code
     ///
     /// [https://github.com/rune-rs/rune](https://github.com/rune-rs/rune)
     ///
@@ -2570,7 +2570,7 @@ pub enum Tooling {
     RuneFmt,
 
     #[serde(rename = "runic")]
-    /// Julia code formatter
+    /// A code formatter for Julia with rules set in stone
     ///
     /// [https://github.com/fredrikekre/runic.jl](https://github.com/fredrikekre/runic.jl)
     ///
@@ -2578,7 +2578,7 @@ pub enum Tooling {
     Runic,
 
     #[serde(rename = "rustfmt")]
-    /// The official code formatter for Rust
+    /// Format Rust code
     ///
     /// [https://github.com/rust-lang/rustfmt](https://github.com/rust-lang/rustfmt)
     ///
@@ -2650,7 +2650,7 @@ pub enum Tooling {
     Shellharden,
 
     #[serde(rename = "shfmt")]
-    /// Shell script formatter
+    /// A shell parser, formatter, and interpreter with bash support
     ///
     /// [https://github.com/mvdan/sh](https://github.com/mvdan/sh)
     ///
@@ -2666,7 +2666,7 @@ pub enum Tooling {
     Sleek,
 
     #[serde(rename = "slim-lint")]
-    /// Tool for analyzing Slim templates
+    /// Configurable tool for analyzing Slim templates
     ///
     /// [https://github.com/sds/slim-lint](https://github.com/sds/slim-lint)
     ///
@@ -2770,7 +2770,7 @@ pub enum Tooling {
     Squawk,
 
     #[serde(rename = "standardjs")]
-    /// JavaScript style guide, linter, and formatter
+    /// JavaScript Style Guide, with linter & automatic code fixer
     ///
     /// [https://github.com/standard/standard](https://github.com/standard/standard)
     ///
@@ -2826,7 +2826,7 @@ pub enum Tooling {
     StylishHaskell,
 
     #[serde(rename = "stylua")]
-    /// An opinionated Lua code formatter
+    /// A Lua code formatter
     ///
     /// [https://github.com/johnnymorganz/stylua](https://github.com/johnnymorganz/stylua)
     ///
@@ -2834,7 +2834,7 @@ pub enum Tooling {
     Stylua,
 
     #[serde(rename = "superhtml:fmt")]
-    /// HTML Language Server & Templating Language Library
+    /// HTML Validator, Formatter, LSP, and Templating Language Library
     ///
     /// [https://github.com/kristoff-it/superhtml](https://github.com/kristoff-it/superhtml)
     ///
@@ -2874,7 +2874,7 @@ pub enum Tooling {
     Taplo,
 
     #[serde(rename = "templ:fmt")]
-    /// Tooling for the Templ template language
+    /// Format Templ files
     ///
     /// [https://github.com/a-h/templ](https://github.com/a-h/templ)
     ///
@@ -2932,7 +2932,7 @@ pub enum Tooling {
     #[serde(rename = "tofu:fmt")]
     /// The tofu fmt command is used to rewrite OpenTofu configuration files to a canonical format and style
     ///
-    /// [https://opentofu.org/docs/cli/commands/fmt/](https://opentofu.org/docs/cli/commands/fmt/)
+    /// [https://opentofu.org/docs/cli/commands/fmt](https://opentofu.org/docs/cli/commands/fmt)
     ///
     /// `tofu fmt -write=true $PATH`
     TofuFmt,
@@ -3122,7 +3122,7 @@ pub enum Tooling {
     VhdlStyleGuide,
 
     #[serde(rename = "vint")]
-    /// Lint Vim script
+    /// Fast and Highly Extensible Vim script Language Lint
     ///
     /// [https://github.com/vimjas/vint](https://github.com/vimjas/vint)
     ///
@@ -3130,7 +3130,7 @@ pub enum Tooling {
     Vint,
 
     #[serde(rename = "vint:neovim")]
-    /// Lint Vim script
+    /// Fast and Highly Extensible Vim script Language Lint
     ///
     /// [https://github.com/vimjas/vint](https://github.com/vimjas/vint)
     ///
@@ -3140,7 +3140,7 @@ pub enum Tooling {
     #[serde(rename = "wa:fmt")]
     /// Format Wa source code
     ///
-    /// [https://github.com/wa-lang/wa/](https://github.com/wa-lang/wa/)
+    /// [https://github.com/wa-lang/wa](https://github.com/wa-lang/wa)
     ///
     /// `wa fmt $PATH`
     WaFmt,
@@ -3252,7 +3252,7 @@ pub enum Tooling {
     #[serde(rename = "zig:fmt")]
     /// Reformat Zig source into canonical form
     ///
-    /// [https://ziglang.org/](https://ziglang.org/)
+    /// [https://ziglang.org](https://ziglang.org)
     ///
     /// `zig fmt $PATH`
     ZigFmt,
@@ -3260,13 +3260,13 @@ pub enum Tooling {
     #[serde(rename = "ziggy:fmt")]
     /// Formats Ziggy documents and Ziggy schemas
     ///
-    /// [https://ziggy-lang.io/documentation/ziggy-fmt/](https://ziggy-lang.io/documentation/ziggy-fmt/)
+    /// [https://ziggy-lang.io/documentation/ziggy-fmt](https://ziggy-lang.io/documentation/ziggy-fmt)
     ///
     /// `ziggy fmt $PATH`
     ZiggyFmt,
 
     #[serde(rename = "zprint")]
-    /// Executables beautifully format Clojure and Clojurescript source code and s-expressions
+    /// Beautifully format Clojure and Clojurescript source code and s-expressions
     ///
     /// [https://github.com/kkinnear/zprint](https://github.com/kkinnear/zprint)
     ///

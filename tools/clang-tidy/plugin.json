@@ -9,7 +9,7 @@
     }
   },
   "description": "clang-tidy is a clang-based C++ “linter” tool",
-  "homepage": "https://clang.llvm.org/extra/clang-tidy/",
+  "homepage": "https://clang.llvm.org/extra/clang-tidy",
   "languages": ["c++"],
   "packages": {
     "pip": {
