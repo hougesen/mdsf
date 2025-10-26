@@ -16,7 +16,7 @@ pub const GENERATED_FILE_COMMENT: &str =
 fn normalize_homepage(mut s: String) -> String {
     if s.ends_with('/') {
         s.pop();
-    };
+    }
 
     if s.starts_with("https://github.com/") || s.starts_with("https://gitlab.com/") {
         s.to_lowercase()
