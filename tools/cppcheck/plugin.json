@@ -15,7 +15,7 @@
     }
   },
   "description": "Cppcheck is a static analysis tool for C/C++ code",
-  "homepage": "https://cppcheck.sourceforge.io/",
+  "homepage": "https://cppcheck.sourceforge.io",
   "languages": ["c", "c++"],
   "packages": {
     "apt": {

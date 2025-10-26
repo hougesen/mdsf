@@ -15,7 +15,7 @@
       ]
     }
   },
-  "description": "Dioxus cli",
+  "description": "Fullstack app framework for web, desktop, and mobile",
   "homepage": "https://github.com/dioxuslabs/dioxus",
   "languages": ["rsx", "rust"],
   "packages": {

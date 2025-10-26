@@ -11,7 +11,7 @@
     }
   },
   "description": "Tooling for V lang",
-  "homepage": "https://vlang.io/",
+  "homepage": "https://vlang.io",
   "languages": ["v"],
   "packages": {}
 }

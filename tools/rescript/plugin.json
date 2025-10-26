@@ -5,6 +5,7 @@
   "commands": {
     "format": {
       "arguments": ["format", "$PATH"],
+      "description": "Formatter for ReScript",
       "tests": [
         {
           "language": "rescript",
@@ -14,7 +15,7 @@
       ]
     }
   },
-  "description": "Formatter for ReScript",
+  "description": "ReScript is a robustly typed language that compiles to efficient and human-readable JavaScript",
   "homepage": "https://github.com/rescript-lang/rescript",
   "languages": ["rescript"],
   "packages": {

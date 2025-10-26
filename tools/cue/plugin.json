@@ -5,11 +5,12 @@
   "commands": {
     "fmt": {
       "arguments": ["fmt", "$PATH"],
-      "homepage": "https://cuelang.org/docs/reference/command/cue-help-fmt/",
+      "description": "Format CUE files",
+      "homepage": "https://cuelang.org/docs/reference/command/cue-help-fmt",
       "tests": []
     }
   },
-  "description": "Validate and define text-based and dynamic configuration",
+  "description": "The home of the CUE language! Validate and define text-based and dynamic configuration",
   "homepage": "https://github.com/cue-lang/cue",
   "languages": ["cue"],
   "packages": {

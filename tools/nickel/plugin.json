@@ -9,7 +9,7 @@
     }
   },
   "description": "Better configuration for less",
-  "homepage": "https://nickel-lang.org/",
+  "homepage": "https://nickel-lang.org",
   "languages": ["nickel"],
   "packages": {
     "brew": {

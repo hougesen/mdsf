@@ -5,14 +5,16 @@
   "commands": {
     "format": {
       "arguments": ["format", "$PATH"],
+      "description": "Format JSONA",
       "tests": []
     },
     "lint": {
       "arguments": ["lint", "$PATH"],
+      "description": "Lint JSONA",
       "tests": []
     }
   },
-  "description": "JSONA linter and formatter",
+  "description": "JSONA parser, linter, formatter, lsp and cli",
   "homepage": "https://github.com/jsona/jsona",
   "languages": ["jsona"],
   "packages": {

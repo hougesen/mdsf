@@ -5,14 +5,16 @@
   "commands": {
     "fmt": {
       "arguments": ["fmt", "-i", "$PATH"],
+      "description": "Format meson files",
       "tests": []
     },
     "lint": {
       "arguments": ["lint", "-i", "$PATH"],
+      "description": "Lint meson files",
       "tests": []
     }
   },
-  "description": "An implementation of the meson build system",
+  "description": "An implementation of the meson build system in c99",
   "homepage": "https://github.com/muon-build/muon",
   "languages": ["meson"],
   "packages": {}

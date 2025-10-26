@@ -14,7 +14,7 @@
       ]
     }
   },
-  "description": "Pylint is a static code analyser for Python 2 or 3",
+  "description": "Pylint is a static code analyser for Python 2 and 3",
   "homepage": "https://github.com/pylint-dev/pylint",
   "languages": ["python"],
   "packages": {

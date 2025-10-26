@@ -14,7 +14,7 @@
       ]
     }
   },
-  "description": "The official code formatter for Rust",
+  "description": "Format Rust code",
   "homepage": "https://github.com/rust-lang/rustfmt",
   "languages": ["rust"],
   "packages": {}

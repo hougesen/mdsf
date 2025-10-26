@@ -5,10 +5,11 @@
   "commands": {
     "fmt": {
       "arguments": ["fmt", "$PATH"],
+      "description": "Format Rune source code",
       "tests": []
     }
   },
-  "description": "Tools for the Rune programming language",
+  "description": "An embeddable dynamic programming language for Rust",
   "homepage": "https://github.com/rune-rs/rune",
   "languages": ["rune"],
   "packages": {}

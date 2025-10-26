@@ -14,7 +14,7 @@
       ]
     }
   },
-  "description": "A formatter for Haskell source code",
+  "description": "A fourk of ormolu that uses four space indentation and allows arbitrary configuration",
   "homepage": "https://github.com/fourmolu/fourmolu",
   "languages": ["haskell"],
   "packages": {

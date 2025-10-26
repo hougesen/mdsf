@@ -14,7 +14,7 @@
       ]
     }
   },
-  "description": "PureScript code formatter",
+  "description": "A syntax tidy-upper for PureScript",
   "homepage": "https://github.com/natefaubion/purescript-tidy",
   "languages": ["purescript"],
   "packages": {

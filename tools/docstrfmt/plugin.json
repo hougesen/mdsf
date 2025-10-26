@@ -8,7 +8,7 @@
       "tests": []
     }
   },
-  "description": "A formatter for Sphinx flavored reStructuredText",
+  "description": "A formatter for reStructuredText",
   "homepage": "https://github.com/lilspazjoekp/docstrfmt",
   "languages": ["python", "restructuredtext", "sphinx"],
   "packages": {

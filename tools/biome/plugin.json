@@ -74,7 +74,7 @@
       ]
     }
   },
-  "description": "One toolchain for your web project",
+  "description": "A toolchain for web projects",
   "homepage": "https://github.com/biomejs/biome",
   "languages": ["javascript", "json", "typescript", "vue"],
   "packages": {

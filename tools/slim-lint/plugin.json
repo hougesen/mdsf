@@ -8,7 +8,7 @@
       "tests": []
     }
   },
-  "description": "Tool for analyzing Slim templates",
+  "description": "Configurable tool for analyzing Slim templates",
   "homepage": "https://github.com/sds/slim-lint",
   "languages": ["slim"],
   "packages": {

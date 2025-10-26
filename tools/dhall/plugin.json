@@ -9,7 +9,7 @@
     }
   },
   "description": "Format Dhall files",
-  "homepage": "https://dhall-lang.org/",
+  "homepage": "https://dhall-lang.org",
   "languages": ["dhall"],
   "packages": {}
 }

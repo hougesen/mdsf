@@ -12,7 +12,7 @@
       "tests": []
     }
   },
-  "description": "Lint Vim script",
+  "description": "Fast and Highly Extensible Vim script Language Lint",
   "homepage": "https://github.com/vimjas/vint",
   "languages": ["vimscript"],
   "packages": {

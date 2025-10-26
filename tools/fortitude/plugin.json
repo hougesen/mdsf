@@ -47,7 +47,7 @@
       ]
     }
   },
-  "description": "A Fortran linter, written in Rust",
+  "description": "A Fortran linter",
   "homepage": "https://github.com/plasmafair/fortitude",
   "languages": [],
   "packages": {

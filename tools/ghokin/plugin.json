@@ -8,7 +8,7 @@
       "tests": []
     }
   },
-  "description": "Parallelized formatter with no external dependencies for gherkin (cucumber, behat)",
+  "description": "Parallelized formatter with no external dependencies for gherkin (cucumber, behat...)",
   "homepage": "https://github.com/antham/ghokin",
   "languages": ["behat", "cucumber", "gherkin"],
   "packages": {}

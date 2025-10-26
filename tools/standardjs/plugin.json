@@ -15,7 +15,7 @@
       ]
     }
   },
-  "description": "JavaScript style guide, linter, and formatter",
+  "description": "JavaScript Style Guide, with linter & automatic code fixer",
   "homepage": "https://github.com/standard/standard",
   "languages": ["javascript"],
   "name": "standardjs",

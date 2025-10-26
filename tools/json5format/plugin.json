@@ -8,7 +8,7 @@
       "tests": []
     }
   },
-  "description": "JSON5 (a.k.a., JSON for Humans) formatter that preserves contextual comments",
+  "description": "JSON5 formatter that preserves contextual comments",
   "homepage": "https://github.com/google/json5format",
   "languages": ["json", "json5"],
   "packages": {

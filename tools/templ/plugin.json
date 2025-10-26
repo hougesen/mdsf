@@ -5,10 +5,11 @@
   "commands": {
     "fmt": {
       "arguments": ["fmt", "$PATH"],
+      "description": "Format Templ files",
       "tests": []
     }
   },
-  "description": "Tooling for the Templ template language",
+  "description": "A language for writing HTML user interfaces in Go",
   "homepage": "https://github.com/a-h/templ",
   "languages": ["go", "templ"],
   "packages": {

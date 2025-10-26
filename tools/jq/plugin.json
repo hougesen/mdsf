@@ -15,7 +15,7 @@
       ]
     }
   },
-  "description": "JSON processor",
+  "description": "Command-line JSON processor",
   "homepage": "https://github.com/jqlang/jq",
   "languages": ["json"],
   "packages": {

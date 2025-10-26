@@ -8,7 +8,7 @@
       "tests": []
     }
   },
-  "description": "Experimental linter/analyzer for Makefiles",
+  "description": "Linter/analyzer for Makefiles",
   "homepage": "https://github.com/mrtazz/checkmake",
   "languages": ["makefile"],
   "packages": {

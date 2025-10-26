@@ -5,10 +5,11 @@
   "commands": {
     "fmt": {
       "arguments": ["fmt", "$PATH"],
+      "description": "Code formatter for the inko programming language",
       "tests": []
     }
   },
-  "description": "Code formatter for the inko programming language",
+  "description": "A language for building concurrent software with confidence",
   "homepage": "https://github.com/inko-lang/inko",
   "languages": ["inko"],
   "packages": {

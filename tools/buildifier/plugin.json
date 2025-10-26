@@ -8,7 +8,7 @@
       "tests": []
     }
   },
-  "description": "A bazel BUILD file formatter and",
+  "description": "A bazel BUILD file formatter and editor",
   "homepage": "https://github.com/bazelbuild/buildtools",
   "languages": ["bazel"],
   "packages": {

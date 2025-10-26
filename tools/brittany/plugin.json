@@ -8,7 +8,7 @@
       "tests": []
     }
   },
-  "description": "A Haskell source code formatter",
+  "description": "Haskell source code formatter",
   "homepage": "https://github.com/lspitzner/brittany",
   "languages": ["haskell"],
   "packages": {

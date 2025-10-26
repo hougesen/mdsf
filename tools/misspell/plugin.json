@@ -15,7 +15,7 @@
     }
   },
   "description": "Correct commonly misspelled English words in source files",
-  "homepage": "https://github.com/client9/misspell/",
+  "homepage": "https://github.com/client9/misspell",
   "languages": [],
   "packages": {
     "go": {

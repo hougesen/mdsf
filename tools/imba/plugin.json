@@ -9,7 +9,7 @@
     }
   },
   "description": "A formatter for Imba",
-  "homepage": "https://imba.io/",
+  "homepage": "https://imba.io",
   "languages": ["imba"],
   "packages": {
     "npm": {

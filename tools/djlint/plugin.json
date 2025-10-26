@@ -9,7 +9,7 @@
     }
   },
   "description": "Lint & Format HTML Templates",
-  "homepage": "https://www.djlint.com/",
+  "homepage": "https://www.djlint.com",
   "languages": ["handlebars", "html", "jinja", "mustache", "nunjucks", "twig"],
   "packages": {
     "brew": {

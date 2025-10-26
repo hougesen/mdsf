@@ -9,7 +9,7 @@
     }
   },
   "description": "An HTML linter for all markup developers",
-  "homepage": "https://markuplint.dev/",
+  "homepage": "https://markuplint.dev",
   "languages": ["html"],
   "packages": {
     "npm": {
