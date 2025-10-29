@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file. Dates are d
 
 #### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.10.8...HEAD)
 
+- build(deps): bump clap_complete_nushell from 4.5.8 to 4.5.9 [`#1348`](https://github.com/hougesen/mdsf/pull/1348)
+- build(deps): bump clap_complete from 4.5.58 to 4.5.59 [`#1349`](https://github.com/hougesen/mdsf/pull/1349)
+- build(deps): bump clap from 4.5.48 to 4.5.49 [`#1347`](https://github.com/hougesen/mdsf/pull/1347)
+- chore: update tools descriptions [`#1360`](https://github.com/hougesen/mdsf/pull/1360)
+
 #### [v0.10.8](https://github.com/hougesen/mdsf/compare/v0.10.7...v0.10.8)
 
 > 8 October 2025

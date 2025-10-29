@@ -4195,13 +4195,13 @@ WHERE
 #[cfg(test)]
 mod test_sqlfluff_fix {
     #[test_with::executable(sqlfluff || pipx || uv)]
-    fn test_sqlfluff_fix_sql_b635e876d74210b3() -> Result<(), Box<dyn core::error::Error>> {
+    fn test_sqlfluff_fix_sql_1d0ce1bc071aed78() -> Result<(), Box<dyn core::error::Error>> {
         let input = r#"SELECT  id                  FROM  tbl
-                        WHERE                      foo   = 'bar' LIMIT 10 ;
+                        WHERE                      foo   = 'bar' ;
 "#;
 
         let output = r#"SELECT id FROM tbl
-WHERE foo = 'bar' LIMIT 10;
+WHERE foo = 'bar';
 "#;
 
         let ft = "sql";
