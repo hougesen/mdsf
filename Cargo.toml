@@ -14,7 +14,7 @@ repository = "https://github.com/hougesen/mdsf"
 license = "MIT"
 
 [workspace.dependencies]
-assert_cmd = "2.0.17"
+assert_cmd = "2.1.1"
 clap = { version = "4.5.50", features = ["derive"] }
 clap_complete = "4.5.59"
 clap_complete_nushell = "4.5.9"
