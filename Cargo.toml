@@ -28,7 +28,7 @@ mdsf = { path = "./mdsf", features = ["json-schema"] }
 owo-colors = { version = "4.2.3", features = ["supports-colors"] }
 predicates = "3.1.3"
 process_control = { version = "5.2.0" }
-regex = "1.11.3"
+regex = "1.12.2"
 schemars = { version = "1.0.4" }
 serde = { version = "1.0.228", features = ["derive"] }
 serde_json = "1.0.145"
