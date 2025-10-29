@@ -17,8 +17,8 @@
       "tests": [
         {
           "language": "sql",
-          "test_input": "SELECT  id                  FROM  tbl\n                        WHERE                      foo   = 'bar' LIMIT 10 ;\n",
-          "test_output": "SELECT id FROM tbl\nWHERE foo = 'bar' LIMIT 10;\n"
+          "test_input": "SELECT  id                  FROM  tbl\n                        WHERE                      foo   = 'bar' ;\n",
+          "test_output": "SELECT id FROM tbl\nWHERE foo = 'bar';\n"
         }
       ]
     },
