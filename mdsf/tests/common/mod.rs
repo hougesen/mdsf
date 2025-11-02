@@ -1,6 +1,5 @@
 use std::io::Write;
 
-use assert_cmd::cargo::CargoError;
 use mdsf::{
     config::{MdsfConfig, MdsfConfigRunners},
     execution::MdsfFormatter,
@@ -68,11 +67,8 @@ fn setup_markdown_file(
     Ok(f)
 }
 
-fn run_format_command(
-    dir: &std::path::Path,
-    file: &std::path::Path,
-) -> Result<assert_cmd::Command, CargoError> {
-    let mut cmd = assert_cmd::Command::cargo_bin("mdsf")?;
+fn run_format_command(dir: &std::path::Path, file: &std::path::Path) -> assert_cmd::Command {
+    let mut cmd = assert_cmd::cargo_bin_cmd!("mdsf");
 
     cmd.current_dir(dir)
         .arg("format")
@@ -81,14 +77,11 @@ fn run_format_command(
         .arg("trace")
         .arg(file);
 
-    Ok(cmd)
+    cmd
 }
 
-fn run_verify_command(
-    dir: &std::path::Path,
-    file: &std::path::Path,
-) -> Result<assert_cmd::Command, CargoError> {
-    let mut cmd = assert_cmd::Command::cargo_bin("mdsf")?;
+fn run_verify_command(dir: &std::path::Path, file: &std::path::Path) -> assert_cmd::Command {
+    let mut cmd = assert_cmd::cargo_bin_cmd!("mdsf");
 
     cmd.current_dir(dir)
         .arg("verify")
@@ -97,7 +90,7 @@ fn run_verify_command(
         .arg("trace")
         .arg(file);
 
-    Ok(cmd)
+    cmd
 }
 
 pub fn run_tooling_test(
@@ -118,7 +111,7 @@ pub fn run_tooling_test(
     assert_eq!(std::fs::read_to_string(file.path())?, input);
 
     {
-        let cmd = run_verify_command(dir.path(), file.path())?.assert();
+        let cmd = run_verify_command(dir.path(), file.path()).assert();
 
         dbg!(&cmd);
 
@@ -141,7 +134,7 @@ pub fn run_tooling_test(
     };
 
     {
-        run_format_command(dir.path(), file.path())?
+        run_format_command(dir.path(), file.path())
             .assert()
             .success();
 
