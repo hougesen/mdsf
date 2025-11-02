@@ -4,8 +4,7 @@ mod test_cli {
 
     #[test]
     fn help_arg_outputs_message() {
-        assert_cmd::Command::cargo_bin("mdsf")
-            .unwrap()
+        assert_cmd::cargo_bin_cmd!("mdsf")
             .arg("--help")
             .assert()
             .success()
@@ -14,8 +13,7 @@ mod test_cli {
 
     #[test]
     fn version_arg_outputs_message() {
-        assert_cmd::Command::cargo_bin("mdsf")
-            .unwrap()
+        assert_cmd::cargo_bin_cmd!("mdsf")
             .arg("--version")
             .assert()
             .success()
@@ -27,8 +25,7 @@ mod test_cli {
 
         #[test]
         fn command_outputs_help_message() {
-            assert_cmd::Command::cargo_bin("mdsf")
-                .unwrap()
+            assert_cmd::cargo_bin_cmd!("mdsf")
                 .arg("help")
                 .assert()
                 .success()

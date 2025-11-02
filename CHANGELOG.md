@@ -4,6 +4,7 @@ All notable changes to this project will be documented in this file. Dates are d
 
 #### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.10.8...HEAD)
 
+- build(cargo-dist): bump version to v0.30.2 [`#1371`](https://github.com/hougesen/mdsf/pull/1371)
 - build(deps): bump ignore from 0.4.24 to 0.4.25 [`#1370`](https://github.com/hougesen/mdsf/pull/1370)
 - build(deps): bump clap_complete from 4.5.59 to 4.5.60 [`#1368`](https://github.com/hougesen/mdsf/pull/1368)
 - build(deps-dev): bump @biomejs/biome in /github-action [`#1365`](https://github.com/hougesen/mdsf/pull/1365)

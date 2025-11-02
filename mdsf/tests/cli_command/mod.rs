@@ -1,31 +1,31 @@
 use std::io::Write as _;
 
 pub fn cache_prune_command() -> assert_cmd::Command {
-    let mut cmd = assert_cmd::Command::cargo_bin("mdsf").unwrap();
+    let mut cmd = assert_cmd::cargo_bin_cmd!("mdsf");
     cmd.arg("cache-prune");
     cmd
 }
 
 pub fn completions_command() -> assert_cmd::Command {
-    let mut cmd = assert_cmd::Command::cargo_bin("mdsf").unwrap();
+    let mut cmd = assert_cmd::cargo_bin_cmd!("mdsf");
     cmd.arg("completions");
     cmd
 }
 
 pub fn init_command(dir: &std::path::Path) -> assert_cmd::Command {
-    let mut cmd = assert_cmd::Command::cargo_bin("mdsf").unwrap();
+    let mut cmd = assert_cmd::cargo_bin_cmd!("mdsf");
     cmd.arg("init").current_dir(dir);
     cmd
 }
 
 pub fn verify_command(dir: &std::path::Path) -> assert_cmd::Command {
-    let mut cmd = assert_cmd::Command::cargo_bin("mdsf").unwrap();
+    let mut cmd = assert_cmd::cargo_bin_cmd!("mdsf");
     cmd.arg("verify").current_dir(dir);
     cmd
 }
 
 pub fn format_command(dir: &std::path::Path) -> assert_cmd::Command {
-    let mut cmd = assert_cmd::Command::cargo_bin("mdsf").unwrap();
+    let mut cmd = assert_cmd::cargo_bin_cmd!("mdsf");
     cmd.arg("format").current_dir(dir);
     cmd
 }
