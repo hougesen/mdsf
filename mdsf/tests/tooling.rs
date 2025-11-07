@@ -3267,6 +3267,9 @@ mod test_phpinsights_fix {}
 mod test_pint {}
 
 #[cfg(test)]
+mod test_pkl_format {}
+
+#[cfg(test)]
 mod test_prettier {
     #[test_with::executable(prettier || bunx || deno || npx || pnpm || yarn)]
     fn test_prettier_javascript_f38217e7df306e3e() -> Result<(), Box<dyn core::error::Error>> {

@@ -473,7 +473,7 @@ That can be changed by specifying the `newline` config option.
 
 <!-- START_SECTION:supported-tools -->
 
-`mdsf` currently supports 325 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 326 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                                                                                 | Description                                                                                                                                   | Categories            | Languages                                                                                                                         |
 | ------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
@@ -677,6 +677,7 @@ That can be changed by specifying the `newline` config option.
 | [phpcbf](https://phpqa.io/projects/phpcbf.html)                                      | PHP Code Beautifier and Fixer fixes violations of a defined coding standard                                                                   | `formatter`           | `php`                                                                                                                             |
 | [phpinsights](https://github.com/nunomaduro/phpinsights)                             | Instant PHP quality checks from your console                                                                                                  | `linter`              | `php`                                                                                                                             |
 | [pint](https://github.com/laravel/pint)                                              | Laravel Pint is an opinionated PHP code style fixer for minimalists                                                                           | `formatter`, `linter` | `php`                                                                                                                             |
+| [pkl](https://github.com/apple/pkl)                                                  | A configuration as code language with rich validation and tooling                                                                             | `formatter`           | `pkl`                                                                                                                             |
 | [prettier](https://github.com/prettier/prettier)                                     | Prettier is an opinionated code formatter                                                                                                     | `formatter`           | `angular`, `css`, `ember`, `graphql`, `handlebars`, `html`, `javascript`, `json`, `less`, `markdown`, `scss`, `typescript`, `vue` |
 | [prettierd](https://github.com/fsouza/prettierd)                                     | prettier, as a daemon, for improved formatting speed                                                                                          | `formatter`           | `angular`, `css`, `ember`, `graphql`, `handlebars`, `html`, `javascript`, `json`, `less`, `markdown`, `scss`, `typescript`, `vue` |
 | [pretty-php](https://github.com/lkrms/pretty-php)                                    | The opinionated PHP code formatter                                                                                                            | `formatter`           | `php`                                                                                                                             |
@@ -809,7 +810,7 @@ That can be changed by specifying the `newline` config option.
 
 <!-- START_SECTION:supported-commands -->
 
-`mdsf` currently supports 363 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 364 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                         | Command                                                                                 |
 | ---------------------------- | --------------------------------------------------------------------------------------- |
@@ -1042,6 +1043,7 @@ That can be changed by specifying the `newline` config option.
 | `phpcbf`                     | `phpcbf $PATH`                                                                          |
 | `phpinsights:fix`            | `phpinsights fix $PATH --no-interaction --quiet`                                        |
 | `pint`                       | `pint $PATH`                                                                            |
+| `pkl:format`                 | `pkl -w $PATH`                                                                          |
 | `prettier`                   | `prettier --embedded-language-formatting off --log-level error --write $PATH`           |
 | `prettierd`                  | `prettierd $PATH`                                                                       |
 | `pretty-php`                 | `pretty-php $PATH`                                                                      |

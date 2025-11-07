@@ -4,6 +4,16 @@ All notable changes to this project will be documented in this file. Dates are d
 
 #### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.10.8...HEAD)
 
+- build(deps-dev): bump @biomejs/biome from 2.3.2 to 2.3.3 in /mdsf-vscode [`#1381`](https://github.com/hougesen/mdsf/pull/1381)
+- build(deps-dev): bump globals from 16.4.0 to 16.5.0 in /mdsf-vscode [`#1382`](https://github.com/hougesen/mdsf/pull/1382)
+- build(deps-dev): bump @biomejs/biome in /github-action [`#1385`](https://github.com/hougesen/mdsf/pull/1385)
+- build(deps-dev): bump esbuild from 0.25.11 to 0.25.12 in /github-action [`#1387`](https://github.com/hougesen/mdsf/pull/1387)
+- build(deps): bump clap_complete_nushell from 4.5.9 to 4.5.10 [`#1376`](https://github.com/hougesen/mdsf/pull/1376)
+- build(deps): bump schemars from 1.0.4 to 1.1.0 [`#1388`](https://github.com/hougesen/mdsf/pull/1388)
+- build(deps): bump test-with from 0.15.4 to 0.15.5 [`#1374`](https://github.com/hougesen/mdsf/pull/1374)
+- build(deps): bump convert_case from 0.8.0 to 0.9.0 [`#1389`](https://github.com/hougesen/mdsf/pull/1389)
+- build(deps): bump actions/setup-node from 4 to 6 [`#1353`](https://github.com/hougesen/mdsf/pull/1353)
+- refactor(test): use cargo_bin_cmd [`#1372`](https://github.com/hougesen/mdsf/pull/1372)
 - build(cargo-dist): bump version to v0.30.2 [`#1371`](https://github.com/hougesen/mdsf/pull/1371)
 - build(deps): bump ignore from 0.4.24 to 0.4.25 [`#1370`](https://github.com/hougesen/mdsf/pull/1370)
 - build(deps): bump clap_complete from 4.5.59 to 4.5.60 [`#1368`](https://github.com/hougesen/mdsf/pull/1368)

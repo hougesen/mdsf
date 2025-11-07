@@ -1313,6 +1313,11 @@
           "const": "pint"
         },
         {
+          "description": "Formats or checks formatting of Pkl files\n\n[https://pkl-lang.org/main/current/pkl-cli/index.html#command-format](https://pkl-lang.org/main/current/pkl-cli/index.html#command-format)\n\n`pkl -w $PATH`",
+          "type": "string",
+          "const": "pkl:format"
+        },
+        {
           "description": "Prettier is an opinionated code formatter\n\n[https://github.com/prettier/prettier](https://github.com/prettier/prettier)\n\n`prettier --embedded-language-formatting off --log-level error --write $PATH`",
           "type": "string",
           "const": "prettier"

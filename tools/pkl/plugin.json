@@ -1,0 +1,21 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "pkl",
+  "categories": ["formatter"],
+  "commands": {
+    "format": {
+      "arguments": ["-w", "$PATH"],
+      "description": "Formats or checks formatting of Pkl files",
+      "homepage": "https://pkl-lang.org/main/current/pkl-cli/index.html#command-format",
+      "tests": []
+    }
+  },
+  "description": "A configuration as code language with rich validation and tooling",
+  "homepage": "https://github.com/apple/pkl",
+  "languages": ["pkl"],
+  "packages": {
+    "brew": {
+      "package": "pkl"
+    }
+  }
+}
