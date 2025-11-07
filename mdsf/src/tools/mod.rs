@@ -231,6 +231,7 @@ pub mod php_cs_fixer_fix;
 pub mod phpcbf;
 pub mod phpinsights_fix;
 pub mod pint;
+pub mod pkl_format;
 pub mod prettier;
 pub mod prettierd;
 pub mod pretty_php;
@@ -2201,6 +2202,14 @@ pub enum Tooling {
     /// `pint $PATH`
     Pint,
 
+    #[serde(rename = "pkl:format")]
+    /// Formats or checks formatting of Pkl files
+    ///
+    /// [https://pkl-lang.org/main/current/pkl-cli/index.html#command-format](https://pkl-lang.org/main/current/pkl-cli/index.html#command-format)
+    ///
+    /// `pkl -w $PATH`
+    PklFormat,
+
     #[serde(rename = "prettier")]
     /// Prettier is an opinionated code formatter
     ///
@@ -4058,6 +4067,11 @@ impl Tooling {
                 phpinsights_fix::IS_STDIN,
             ),
             Self::Pint => (&pint::COMMANDS, pint::set_args, pint::IS_STDIN),
+            Self::PklFormat => (
+                &pkl_format::COMMANDS,
+                pkl_format::set_args,
+                pkl_format::IS_STDIN,
+            ),
             Self::Prettier => (&prettier::COMMANDS, prettier::set_args, prettier::IS_STDIN),
             Self::Prettierd => (
                 &prettierd::COMMANDS,
@@ -4696,6 +4710,7 @@ impl AsRef<str> for Tooling {
             Self::Phpcbf => "phpcbf",
             Self::PhpinsightsFix => "phpinsights:fix",
             Self::Pint => "pint",
+            Self::PklFormat => "pkl:format",
             Self::Prettier => "prettier",
             Self::Prettierd => "prettierd",
             Self::PrettyPhp => "pretty-php",
@@ -5111,6 +5126,7 @@ mod test_tooling {
         assert_eq!(Tooling::Phpcbf, reverse(Tooling::Phpcbf)?);
         assert_eq!(Tooling::PhpinsightsFix, reverse(Tooling::PhpinsightsFix)?);
         assert_eq!(Tooling::Pint, reverse(Tooling::Pint)?);
+        assert_eq!(Tooling::PklFormat, reverse(Tooling::PklFormat)?);
         assert_eq!(Tooling::Prettier, reverse(Tooling::Prettier)?);
         assert_eq!(Tooling::Prettierd, reverse(Tooling::Prettierd)?);
         assert_eq!(Tooling::PrettyPhp, reverse(Tooling::PrettyPhp)?);
