@@ -4,6 +4,8 @@ All notable changes to this project will be documented in this file. Dates are d
 
 #### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.10.8...HEAD)
 
+- build(deps-dev): bump globals from 16.4.0 to 16.5.0 in /github-action [`#1384`](https://github.com/hougesen/mdsf/pull/1384)
+- feat(tools): add support for pkl format [`#1390`](https://github.com/hougesen/mdsf/pull/1390)
 - build(deps-dev): bump @biomejs/biome from 2.3.2 to 2.3.3 in /mdsf-vscode [`#1381`](https://github.com/hougesen/mdsf/pull/1381)
 - build(deps-dev): bump globals from 16.4.0 to 16.5.0 in /mdsf-vscode [`#1382`](https://github.com/hougesen/mdsf/pull/1382)
 - build(deps-dev): bump @biomejs/biome in /github-action [`#1385`](https://github.com/hougesen/mdsf/pull/1385)
