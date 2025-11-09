@@ -48,6 +48,7 @@ All notable changes to this project will be documented in this file. Dates are d
 - chore: update tools descriptions [`#1360`](https://github.com/hougesen/mdsf/pull/1360)
 - refactor: start extracting logic for custom tools [`07b6a86`](https://github.com/hougesen/mdsf/commit/07b6a8665a4d796c4215805c2bfa75d4345871e9)
 - feat: set args function for custom tools [`69661e2`](https://github.com/hougesen/mdsf/commit/69661e2032820e536a03490107165b24402accc0)
+- refactor: MdsfFormatter to MdsfToolWrapper [`082120d`](https://github.com/hougesen/mdsf/commit/082120d5a42a034bff11efc490bb008c0f059c37)
 - test: custom tool execution [`9816537`](https://github.com/hougesen/mdsf/commit/98165374b71ed750c0d140c1fccbcf88ad8fd6a1)
 
 #### [v0.10.8](https://github.com/hougesen/mdsf/compare/v0.10.7...v0.10.8)
