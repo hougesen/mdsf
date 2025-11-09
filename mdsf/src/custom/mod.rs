@@ -16,6 +16,7 @@ impl core::fmt::Display for CustomTool {
     }
 }
 
+#[inline]
 fn build_set_args_fn(
     arguments: Vec<String>,
 ) -> impl Fn(std::process::Command, &std::path::Path) -> std::process::Command {
@@ -61,5 +62,168 @@ impl CustomTool {
             debug_enabled,
             config_runners,
         )
+    }
+}
+
+#[cfg(test)]
+mod test_custom_tool {
+    use crate::{
+        config::{MdsfConfig, MdsfConfigRunners, MdsfTool},
+        custom::CustomTool,
+        execution::MdsfFormatter,
+        format_file,
+        testing::{
+            DEFAULT_ON_MISSING_LANGUAGE_DEFINITION, DEFAULT_ON_MISSING_TOOL_BINARY,
+            DEFAULT_TEST_DEBUG_ENABLED, DEFAULT_TEST_FORMATTER_TIMEOUT,
+        },
+    };
+
+    #[test]
+    fn with_stdin_false() {
+        let input = r#"```rust
+pub
+                    async
+            fn    add( a: i32,
+                            b:i32 )->                   i32 {a+b}
+
+```"#;
+
+        let expected_output = r#"```rust
+pub async fn add(a: i32, b: i32) -> i32 {
+    a + b
+}
+```
+"#;
+
+        let tool = CustomTool {
+            binary: "rustfmt".to_string(),
+            arguments: vec![
+                "--edition".to_owned(),
+                "2024".to_owned(),
+                "--quiet".to_owned(),
+                "$PATH".to_owned(),
+            ],
+            stdin: false,
+        };
+
+        {
+            let config = MdsfConfig {
+                languages: std::collections::BTreeMap::from_iter([(
+                    "rust".to_string(),
+                    MdsfFormatter::Single(MdsfTool::Custom(tool.clone())),
+                )]),
+                runners: MdsfConfigRunners::default(),
+                ..Default::default()
+            };
+
+            let (modified, output) = format_file(
+                &config,
+                std::path::Path::new("."),
+                input,
+                DEFAULT_TEST_FORMATTER_TIMEOUT,
+                DEFAULT_TEST_DEBUG_ENABLED,
+                DEFAULT_ON_MISSING_TOOL_BINARY,
+                DEFAULT_ON_MISSING_LANGUAGE_DEFINITION,
+            );
+
+            assert!(modified);
+
+            assert_eq!(output, expected_output);
+        };
+
+        {
+            let config = MdsfConfig {
+                languages: std::collections::BTreeMap::from_iter([(
+                    "rust".to_string(),
+                    MdsfFormatter::Multiple(vec![MdsfFormatter::Single(MdsfTool::Custom(tool))]),
+                )]),
+                runners: MdsfConfigRunners::default(),
+                ..Default::default()
+            };
+
+            let (modified, output) = format_file(
+                &config,
+                std::path::Path::new("."),
+                input,
+                DEFAULT_TEST_FORMATTER_TIMEOUT,
+                DEFAULT_TEST_DEBUG_ENABLED,
+                DEFAULT_ON_MISSING_TOOL_BINARY,
+                DEFAULT_ON_MISSING_LANGUAGE_DEFINITION,
+            );
+
+            assert!(modified);
+
+            assert_eq!(output, expected_output);
+        };
+    }
+
+    #[test]
+    fn with_stdin_true() {
+        let input = r#"```toml
+[project ]
+name =     "hello"
+```"#;
+
+        let expected_output = r#"```toml
+[project]
+name = "hello"
+```
+"#;
+
+        let tool = CustomTool {
+            binary: "tombi".to_string(),
+            arguments: vec!["format".to_owned(), "-".to_owned()],
+            stdin: true,
+        };
+
+        {
+            let config = MdsfConfig {
+                languages: std::collections::BTreeMap::from_iter([(
+                    "toml".to_string(),
+                    MdsfFormatter::Single(MdsfTool::Custom(tool.clone())),
+                )]),
+                runners: MdsfConfigRunners::default(),
+                ..Default::default()
+            };
+
+            let (modified, output) = format_file(
+                &config,
+                std::path::Path::new("."),
+                input,
+                DEFAULT_TEST_FORMATTER_TIMEOUT,
+                DEFAULT_TEST_DEBUG_ENABLED,
+                DEFAULT_ON_MISSING_TOOL_BINARY,
+                DEFAULT_ON_MISSING_LANGUAGE_DEFINITION,
+            );
+
+            assert!(modified);
+
+            assert_eq!(output, expected_output);
+        };
+
+        {
+            let config = MdsfConfig {
+                languages: std::collections::BTreeMap::from_iter([(
+                    "toml".to_string(),
+                    MdsfFormatter::Multiple(vec![MdsfFormatter::Single(MdsfTool::Custom(tool))]),
+                )]),
+                runners: MdsfConfigRunners::default(),
+                ..Default::default()
+            };
+
+            let (modified, output) = format_file(
+                &config,
+                std::path::Path::new("."),
+                input,
+                DEFAULT_TEST_FORMATTER_TIMEOUT,
+                DEFAULT_TEST_DEBUG_ENABLED,
+                DEFAULT_ON_MISSING_TOOL_BINARY,
+                DEFAULT_ON_MISSING_LANGUAGE_DEFINITION,
+            );
+
+            assert!(modified);
+
+            assert_eq!(output, expected_output);
+        };
     }
 }
