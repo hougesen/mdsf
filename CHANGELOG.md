@@ -4,6 +4,13 @@ All notable changes to this project will be documented in this file. Dates are d
 
 #### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.10.8...HEAD)
 
+- build(deps-dev): bump eslint from 9.38.0 to 9.39.1 in /github-action [`#1396`](https://github.com/hougesen/mdsf/pull/1396)
+- build(deps-dev): bump @biomejs/biome in /github-action [`#1395`](https://github.com/hougesen/mdsf/pull/1395)
+- build(deps-dev): bump @biomejs/biome from 2.3.3 to 2.3.4 in /mdsf-vscode [`#1394`](https://github.com/hougesen/mdsf/pull/1394)
+- build(deps-dev): bump eslint from 9.38.0 to 9.39.1 in /mdsf-vscode [`#1399`](https://github.com/hougesen/mdsf/pull/1399)
+- build(deps-dev): bump @typescript-eslint/eslint-plugin in /mdsf-vscode [`#1397`](https://github.com/hougesen/mdsf/pull/1397)
+- chore(dependabot): run npm check once a month [`#1391`](https://github.com/hougesen/mdsf/pull/1391)
+- build(deps-dev): bump esbuild from 0.25.11 to 0.25.12 in /mdsf-vscode [`#1377`](https://github.com/hougesen/mdsf/pull/1377)
 - build(deps-dev): bump globals from 16.4.0 to 16.5.0 in /github-action [`#1384`](https://github.com/hougesen/mdsf/pull/1384)
 - feat(tools): add support for pkl format [`#1390`](https://github.com/hougesen/mdsf/pull/1390)
 - build(deps-dev): bump @biomejs/biome from 2.3.2 to 2.3.3 in /mdsf-vscode [`#1381`](https://github.com/hougesen/mdsf/pull/1381)

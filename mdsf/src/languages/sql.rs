@@ -1,13 +1,13 @@
-use crate::{execution::MdsfFormatter, tools::Tooling};
+use crate::{config::MdsfTool, execution::MdsfFormatter, tools::Tooling};
 
 #[inline]
-pub fn default_config() -> (String, MdsfFormatter<Tooling>) {
+pub fn default_config() -> (String, MdsfFormatter<MdsfTool>) {
     (
         "sql".to_string(),
         MdsfFormatter::Multiple(vec![MdsfFormatter::Multiple(vec![
-            MdsfFormatter::Single(Tooling::SqlFormatter),
-            MdsfFormatter::Single(Tooling::SqlfluffFormat),
-            MdsfFormatter::Single(Tooling::Sqlfmt),
+            MdsfFormatter::Single(MdsfTool::Preset(Tooling::SqlFormatter)),
+            MdsfFormatter::Single(MdsfTool::Preset(Tooling::SqlfluffFormat)),
+            MdsfFormatter::Single(MdsfTool::Preset(Tooling::Sqlfmt)),
         ])]),
     )
 }

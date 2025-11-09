@@ -1,6 +1,9 @@
-use crate::{execution::MdsfFormatter, tools::Tooling};
+use crate::{config::MdsfTool, execution::MdsfFormatter, tools::Tooling};
 
 #[inline]
-pub fn default_config() -> (String, MdsfFormatter<Tooling>) {
-    ("toml".to_string(), MdsfFormatter::Single(Tooling::Taplo))
+pub fn default_config() -> (String, MdsfFormatter<MdsfTool>) {
+    (
+        "toml".to_string(),
+        MdsfFormatter::Single(MdsfTool::Preset(Tooling::Taplo)),
+    )
 }

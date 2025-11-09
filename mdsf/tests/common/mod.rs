@@ -1,16 +1,15 @@
 use std::io::Write;
 
 use mdsf::{
-    config::{MdsfConfig, MdsfConfigRunners},
+    config::{MdsfConfig, MdsfConfigRunners, MdsfTool},
     execution::MdsfFormatter,
     filetype::get_file_extension,
-    tools::Tooling,
 };
 
 fn setup_config_file(
     dir: &std::path::Path,
     file_type: &str,
-    tool: Tooling,
+    tool: MdsfTool,
 ) -> Result<(), Box<dyn core::error::Error>> {
     let config = MdsfConfig {
         runners: MdsfConfigRunners::all(),
@@ -94,7 +93,7 @@ fn run_verify_command(dir: &std::path::Path, file: &std::path::Path) -> assert_c
 }
 
 pub fn run_tooling_test(
-    tool: Tooling,
+    tool: MdsfTool,
     input: &str,
     expected_output: &str,
     filetype: &str,

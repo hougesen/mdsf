@@ -12,6 +12,7 @@ use terminal::{
 pub mod caching;
 pub mod cli;
 pub mod config;
+pub mod custom;
 pub mod error;
 pub mod execution;
 pub mod filetype;
@@ -313,7 +314,7 @@ impl LineInfo<'_> {
 #[cfg(test)]
 mod test_lib {
     use crate::{
-        config::MdsfConfig,
+        config::{MdsfConfig, MdsfTool},
         error::MdsfError,
         execution::{MdsfFormatter, setup_snippet},
         filetype::get_file_extension,
@@ -348,7 +349,7 @@ fn add(a: i32, b: i32) -> i32 {
         let config = MdsfConfig {
             languages: std::collections::BTreeMap::from_iter([(
                 "rust".to_string(),
-                MdsfFormatter::Single(Tooling::Rustfmt),
+                MdsfFormatter::Single(MdsfTool::Preset(Tooling::Rustfmt)),
             )]),
             ..Default::default()
         };
@@ -427,7 +428,7 @@ fn           add(
             let mut config = MdsfConfig {
                 languages: std::collections::BTreeMap::from_iter([(
                     "rust".to_string(),
-                    MdsfFormatter::Single(Tooling::Rustfmt),
+                    MdsfFormatter::Single(MdsfTool::Preset(Tooling::Rustfmt)),
                 )]),
                 language_aliases: std::collections::BTreeMap::from_iter([(
                     "rs".to_string(),
@@ -529,7 +530,7 @@ fn add(a: i32, b: i32) -> i32 {
         let mut config = MdsfConfig {
             languages: std::collections::BTreeMap::from_iter([(
                 "rs".to_string(),
-                MdsfFormatter::Single(Tooling::Rustfmt),
+                MdsfFormatter::Single(MdsfTool::Preset(Tooling::Rustfmt)),
             )]),
             language_aliases: std::collections::BTreeMap::from_iter([(
                 "rust".to_string(),
@@ -602,14 +603,14 @@ type Whatever struct {
                     "go".to_string(),
                     MdsfFormatter::Multiple(vec![
                         MdsfFormatter::Multiple(vec![
-                            MdsfFormatter::Single(Tooling::Gci),
-                            MdsfFormatter::Single(Tooling::GoimportsReviser),
-                            MdsfFormatter::Single(Tooling::Goimports),
+                            MdsfFormatter::Single(MdsfTool::Preset(Tooling::Gci)),
+                            MdsfFormatter::Single(MdsfTool::Preset(Tooling::GoimportsReviser)),
+                            MdsfFormatter::Single(MdsfTool::Preset(Tooling::Goimports)),
                         ]),
                         MdsfFormatter::Multiple(vec![
-                            MdsfFormatter::Single(Tooling::Gofumpt),
-                            MdsfFormatter::Single(Tooling::Gofmt),
-                            MdsfFormatter::Single(Tooling::Crlfmt),
+                            MdsfFormatter::Single(MdsfTool::Preset(Tooling::Gofumpt)),
+                            MdsfFormatter::Single(MdsfTool::Preset(Tooling::Gofmt)),
+                            MdsfFormatter::Single(MdsfTool::Preset(Tooling::Crlfmt)),
                         ]),
                     ]),
                 )]),
@@ -657,7 +658,7 @@ type Whatever struct {
             let config = MdsfConfig {
                 languages: std::collections::BTreeMap::from_iter([(
                     "go".to_string(),
-                    MdsfFormatter::Single(Tooling::Gofmt),
+                    MdsfFormatter::Single(MdsfTool::Preset(Tooling::Gofmt)),
                 )]),
                 ..MdsfConfig::default()
             };
@@ -740,14 +741,14 @@ type Whatever struct {
                     "go".to_string(),
                     MdsfFormatter::Multiple(vec![
                         MdsfFormatter::Multiple(vec![
-                            MdsfFormatter::Single(Tooling::Gci),
-                            MdsfFormatter::Single(Tooling::GoimportsReviser),
-                            MdsfFormatter::Single(Tooling::Goimports),
+                            MdsfFormatter::Single(MdsfTool::Preset(Tooling::Gci)),
+                            MdsfFormatter::Single(MdsfTool::Preset(Tooling::GoimportsReviser)),
+                            MdsfFormatter::Single(MdsfTool::Preset(Tooling::Goimports)),
                         ]),
                         MdsfFormatter::Multiple(vec![
-                            MdsfFormatter::Single(Tooling::Gofumpt),
-                            MdsfFormatter::Single(Tooling::Gofmt),
-                            MdsfFormatter::Single(Tooling::Crlfmt),
+                            MdsfFormatter::Single(MdsfTool::Preset(Tooling::Gofumpt)),
+                            MdsfFormatter::Single(MdsfTool::Preset(Tooling::Gofmt)),
+                            MdsfFormatter::Single(MdsfTool::Preset(Tooling::Crlfmt)),
                         ]),
                     ]),
                 )]),
@@ -795,7 +796,7 @@ type Whatever struct {
             let config = MdsfConfig {
                 languages: std::collections::BTreeMap::from_iter([(
                     "go".to_string(),
-                    MdsfFormatter::Single(Tooling::Gofmt),
+                    MdsfFormatter::Single(MdsfTool::Preset(Tooling::Gofmt)),
                 )]),
 
                 ..MdsfConfig::default()
@@ -901,7 +902,7 @@ func add(a int, b int) int {
             let config = MdsfConfig {
                 languages: std::collections::BTreeMap::from_iter([(
                     "go".to_string(),
-                    MdsfFormatter::Single(Tooling::Gofmt),
+                    MdsfFormatter::Single(MdsfTool::Preset(Tooling::Gofmt)),
                 )]),
                 ..Default::default()
             };
@@ -947,7 +948,7 @@ func add(a int, b int) int {
             let config = MdsfConfig {
                 languages: std::collections::BTreeMap::from_iter([(
                     "go".to_string(),
-                    MdsfFormatter::Single(Tooling::Gofmt),
+                    MdsfFormatter::Single(MdsfTool::Preset(Tooling::Gofmt)),
                 )]),
                 ..MdsfConfig::default()
             };

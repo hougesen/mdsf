@@ -7,7 +7,7 @@ use which::which;
 use crate::{
     LineInfo,
     cli::OnMissingToolBinary,
-    config::{MdsfConfig, MdsfConfigRunners},
+    config::{MdsfConfig, MdsfConfigRunners, MdsfTool},
     error::{MdsfError, exit_with_error, set_exit_code_error},
     filetype::get_file_extension,
     get_project_dir,
@@ -266,14 +266,14 @@ impl core::fmt::Display for Tooling {
     }
 }
 
-impl Default for MdsfFormatter<Tooling> {
+impl Default for MdsfFormatter<MdsfTool> {
     #[inline]
     fn default() -> Self {
         Self::Multiple(Vec::new())
     }
 }
 
-impl MdsfFormatter<Tooling> {
+impl MdsfFormatter<MdsfTool> {
     #[inline]
     pub fn format(
         &self,
@@ -311,13 +311,23 @@ impl MdsfFormatter<Tooling> {
     ) -> Result<(bool, Option<String>), MdsfError> {
         match formatter {
             Self::Single(f) => {
-                let formatter_name: &str = f.as_ref();
+                let formatter_name: &str = match f {
+                    MdsfTool::Preset(t) => t.as_ref(),
+                    MdsfTool::Custom(t) => t.tool_name(),
+                };
 
                 print_tool_info(formatter_name, info);
 
                 let time = std::time::Instant::now();
 
-                let r = f.format_snippet(snippet_path, timeout, debug_enabled, config_runners);
+                let r = match f {
+                    MdsfTool::Custom(t) => {
+                        t.format_snippet(snippet_path, timeout, debug_enabled, config_runners)
+                    }
+                    MdsfTool::Preset(t) => {
+                        t.format_snippet(snippet_path, timeout, debug_enabled, config_runners)
+                    }
+                };
 
                 print_tool_time(formatter_name, info, time.elapsed());
 

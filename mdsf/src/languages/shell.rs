@@ -1,12 +1,12 @@
-use crate::{execution::MdsfFormatter, tools::Tooling};
+use crate::{config::MdsfTool, execution::MdsfFormatter, tools::Tooling};
 
 #[inline]
-pub fn default_config() -> (String, MdsfFormatter<Tooling>) {
+pub fn default_config() -> (String, MdsfFormatter<MdsfTool>) {
     (
         "shell".to_string(),
         MdsfFormatter::Multiple(vec![MdsfFormatter::Multiple(vec![
-            MdsfFormatter::Single(Tooling::Shfmt),
-            MdsfFormatter::Single(Tooling::Beautysh),
+            MdsfFormatter::Single(MdsfTool::Preset(Tooling::Shfmt)),
+            MdsfFormatter::Single(MdsfTool::Preset(Tooling::Beautysh)),
         ])]),
     )
 }

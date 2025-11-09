@@ -1,4 +1,4 @@
-use crate::{execution::MdsfFormatter, tools::Tooling};
+use crate::{config::MdsfTool, execution::MdsfFormatter};
 
 mod c;
 mod cpp;
@@ -17,7 +17,7 @@ mod typescript;
 mod yaml;
 
 #[inline]
-pub fn default_tools() -> std::collections::BTreeMap<String, MdsfFormatter<Tooling>> {
+pub fn default_tools() -> std::collections::BTreeMap<String, MdsfFormatter<MdsfTool>> {
     std::collections::BTreeMap::from_iter([
         c::default_config(),
         cpp::default_config(),

@@ -2,6 +2,7 @@ use json_comments::{CommentSettings, StripComments};
 
 use crate::{
     cli::{OnMissingLanguageDefinition, OnMissingToolBinary},
+    custom::CustomTool,
     error::MdsfError,
     execution::MdsfFormatter,
     languages::default_tools,
@@ -147,6 +148,32 @@ impl Newline {
     }
 }
 
+#[derive(Debug, serde::Serialize, serde::Deserialize, Hash, Clone, PartialEq, Eq)]
+#[cfg_attr(feature = "json-schema", derive(schemars::JsonSchema))]
+#[serde(untagged)]
+pub enum MdsfTool {
+    Preset(Tooling),
+
+    Custom(CustomTool),
+}
+
+impl From<Tooling> for MdsfTool {
+    #[inline]
+    fn from(value: Tooling) -> Self {
+        Self::Preset(value)
+    }
+}
+
+impl core::fmt::Display for MdsfTool {
+    #[inline]
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        match self {
+            Self::Preset(t) => t.fmt(f),
+            Self::Custom(t) => t.fmt(f),
+        }
+    }
+}
+
 #[derive(serde::Serialize, serde::Deserialize, Hash, Debug, PartialEq, Eq)]
 #[cfg_attr(feature = "json-schema", derive(schemars::JsonSchema))]
 pub struct MdsfConfig {
@@ -204,7 +231,7 @@ pub struct MdsfConfig {
     /// }
     /// ```
     #[serde(default)]
-    pub languages: std::collections::BTreeMap<String, MdsfFormatter<Tooling>>,
+    pub languages: std::collections::BTreeMap<String, MdsfFormatter<MdsfTool>>,
 
     /// The newline used for the output.
     ///

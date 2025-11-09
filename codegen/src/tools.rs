@@ -428,7 +428,7 @@ impl Tool {
 
 {INDENT}{INDENT}let ft = \"{test_language}\";
 
-{INDENT}{INDENT}crate::common::run_tooling_test(mdsf::tools::Tooling::{enum_value}, input, output, ft)
+{INDENT}{INDENT}crate::common::run_tooling_test(crate::config::MdsfTool::Preset(mdsf::tools::Tooling::{enum_value}), input, output, ft)
 {INDENT}}}",
         );
 
@@ -755,7 +755,7 @@ impl AsRef<str> for Tooling {
             let enum_value = &command.enum_value;
             let module_name = &command.module_name;
 
-            enum_value_names.insert(enum_value.to_string());
+            enum_value_names.insert(enum_value.clone());
 
             let homepage = if command.homepage.is_empty() {
                 String::new()

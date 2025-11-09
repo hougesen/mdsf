@@ -65,6 +65,25 @@
     }
   },
   "$defs": {
+    "CustomTool": {
+      "type": "object",
+      "properties": {
+        "arguments": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "binary": {
+          "type": "string"
+        },
+        "stdin": {
+          "type": "boolean",
+          "default": false
+        }
+      },
+      "required": ["binary", "arguments"]
+    },
     "MdsfConfigRunners": {
       "type": "object",
       "properties": {
@@ -113,13 +132,23 @@
     "MdsfFormatter": {
       "anyOf": [
         {
-          "$ref": "#/$defs/Tooling"
+          "$ref": "#/$defs/MdsfTool"
         },
         {
           "type": "array",
           "items": {
             "$ref": "#/$defs/MdsfFormatter"
           }
+        }
+      ]
+    },
+    "MdsfTool": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/Tooling"
+        },
+        {
+          "$ref": "#/$defs/CustomTool"
         }
       ]
     },
