@@ -1079,7 +1079,7 @@ That can be changed by specifying the `newline` config option.
 | `refurb`                     | `refurb $PATH`                                                                          |
 | `regal:fix`                  | `regal fix $PATH`                                                                       |
 | `regal:lint`                 | `regal lint $PATH`                                                                      |
-| `reorder-python-imports`     | `reorder-python-imports $PATH`                                                          |
+| `reorder-python-imports`     | `reorder-python-imports --exit-zero-even-if-unchanged $PATH`                            |
 | `rescript:format`            | `rescript format $PATH`                                                                 |
 | `revive`                     | `revive $PATH`                                                                          |
 | `roc:format`                 | `roc format $PATH`                                                                      |

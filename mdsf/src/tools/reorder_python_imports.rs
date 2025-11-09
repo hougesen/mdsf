@@ -9,6 +9,7 @@ pub fn set_args(
     mut cmd: std::process::Command,
     file_path: &std::path::Path,
 ) -> std::process::Command {
+    cmd.arg("--exit-zero-even-if-unchanged");
     cmd.arg(file_path);
     cmd
 }

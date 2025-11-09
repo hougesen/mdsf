@@ -4,7 +4,7 @@
   "categories": ["formatter"],
   "commands": {
     "": {
-      "arguments": ["$PATH"],
+      "arguments": ["--exit-zero-even-if-unchanged", "$PATH"],
       "tests": [
         {
           "language": "python",

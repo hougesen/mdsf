@@ -8531,7 +8531,10 @@ import reorder_python_imports
         crate::common::run_tooling_test(
             mdsf::config::MdsfTool::Custom(mdsf::custom::CustomTool {
                 binary: "reorder-python-imports".to_owned(),
-                arguments: vec!["$PATH".to_owned()],
+                arguments: vec![
+                    "--exit-zero-even-if-unchanged".to_owned(),
+                    "$PATH".to_owned(),
+                ],
                 stdin: false,
             }),
             input,

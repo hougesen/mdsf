@@ -2495,7 +2495,7 @@ pub enum Tooling {
     ///
     /// [https://github.com/asottile/reorder-python-imports](https://github.com/asottile/reorder-python-imports)
     ///
-    /// `reorder-python-imports $PATH`
+    /// `reorder-python-imports --exit-zero-even-if-unchanged $PATH`
     ReorderPythonImports,
 
     #[serde(rename = "rescript:format")]
