@@ -1522,7 +1522,7 @@
           "const": "regal:lint"
         },
         {
-          "description": "Rewrites source to reorder python imports\n\n[https://github.com/asottile/reorder-python-imports](https://github.com/asottile/reorder-python-imports)\n\n`reorder-python-imports --exit-zero-even-if-unchanged $PATH`",
+          "description": "Rewrites source to reorder python imports\n\n[https://github.com/asottile/reorder-python-imports](https://github.com/asottile/reorder-python-imports)\n\n`reorder-python-imports --exit-zero-even-if-changed $PATH`",
           "type": "string",
           "const": "reorder-python-imports"
         },

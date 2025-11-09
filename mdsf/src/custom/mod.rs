@@ -31,8 +31,7 @@ fn build_set_args_fn(
                 ));
             } else if arg.contains("$PATH") {
                 cmd.arg(arg.replace("$PATH", &file_path.to_string_lossy()));
-            }
-            {
+            } else {
                 cmd.arg(arg);
             }
         }
