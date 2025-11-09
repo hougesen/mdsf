@@ -29,7 +29,7 @@
       "description": "Defines which tools are used by the language.\n\n```json\n{\n    \"languages\": {\n      // Only run `ruff` on Python snippets,\n      \"python\": \"ruff:format\",\n      // Run `usort` on file and then `black`\n      \"python\": [\"usort\", \"black\"],\n      // Run `usort`, if that fails run `isort`, finally run `black`\n      \"python\": [[\"usort\", \"isort\"], \"black\"],\n\n      // Tools listed under \"*\" will be run on any snippet.\n      \"*\": [\"typos\"],\n\n      // Tools  listed under \"_\" will only be run when there is not tool configured for the file type OR globally (\"*\").\n      \"_\": \"prettier\"\n    }\n}\n```",
       "type": "object",
       "additionalProperties": {
-        "$ref": "#/$defs/MdsfFormatter"
+        "$ref": "#/$defs/MdsfToolWrapper"
       },
       "default": {}
     },
@@ -129,19 +129,6 @@
         }
       }
     },
-    "MdsfFormatter": {
-      "anyOf": [
-        {
-          "$ref": "#/$defs/MdsfTool"
-        },
-        {
-          "type": "array",
-          "items": {
-            "$ref": "#/$defs/MdsfFormatter"
-          }
-        }
-      ]
-    },
     "MdsfTool": {
       "anyOf": [
         {
@@ -149,6 +136,19 @@
         },
         {
           "$ref": "#/$defs/CustomTool"
+        }
+      ]
+    },
+    "MdsfToolWrapper": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/MdsfTool"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/MdsfToolWrapper"
+          }
         }
       ]
     },

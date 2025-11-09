@@ -1,18 +1,18 @@
-use crate::{config::MdsfTool, execution::MdsfFormatter, tools::Tooling};
+use crate::{config::MdsfTool, execution::MdsfToolWrapper, tools::Tooling};
 
 #[inline]
-pub fn default_config() -> (String, MdsfFormatter<MdsfTool>) {
+pub fn default_config() -> (String, MdsfToolWrapper<MdsfTool>) {
     (
         "go".to_string(),
-        MdsfFormatter::Multiple(vec![
-            MdsfFormatter::Multiple(vec![
-                MdsfFormatter::Single(MdsfTool::Preset(Tooling::Gci)),
-                MdsfFormatter::Single(MdsfTool::Preset(Tooling::GoimportsReviser)),
-                MdsfFormatter::Single(MdsfTool::Preset(Tooling::Goimports)),
+        MdsfToolWrapper::Multiple(vec![
+            MdsfToolWrapper::Multiple(vec![
+                MdsfToolWrapper::Single(MdsfTool::Preset(Tooling::Gci)),
+                MdsfToolWrapper::Single(MdsfTool::Preset(Tooling::GoimportsReviser)),
+                MdsfToolWrapper::Single(MdsfTool::Preset(Tooling::Goimports)),
             ]),
-            MdsfFormatter::Multiple(vec![
-                MdsfFormatter::Single(MdsfTool::Preset(Tooling::Gofumpt)),
-                MdsfFormatter::Single(MdsfTool::Preset(Tooling::Gofmt)),
+            MdsfToolWrapper::Multiple(vec![
+                MdsfToolWrapper::Single(MdsfTool::Preset(Tooling::Gofumpt)),
+                MdsfToolWrapper::Single(MdsfTool::Preset(Tooling::Gofmt)),
             ]),
         ]),
     )

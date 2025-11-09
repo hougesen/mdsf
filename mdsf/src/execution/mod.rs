@@ -246,12 +246,12 @@ pub fn format_snippet(
 #[derive(Debug, serde::Serialize, serde::Deserialize, Hash, Clone, PartialEq, Eq)]
 #[cfg_attr(feature = "json-schema", derive(schemars::JsonSchema))]
 #[serde(untagged)]
-pub enum MdsfFormatter<T>
+pub enum MdsfToolWrapper<T>
 where
     T: core::fmt::Display,
 {
     Single(T),
-    Multiple(Vec<MdsfFormatter<T>>),
+    Multiple(Vec<MdsfToolWrapper<T>>),
 }
 
 #[inline]
@@ -266,14 +266,14 @@ impl core::fmt::Display for Tooling {
     }
 }
 
-impl Default for MdsfFormatter<MdsfTool> {
+impl Default for MdsfToolWrapper<MdsfTool> {
     #[inline]
     fn default() -> Self {
         Self::Multiple(Vec::new())
     }
 }
 
-impl MdsfFormatter<MdsfTool> {
+impl MdsfToolWrapper<MdsfTool> {
     #[inline]
     pub fn format(
         &self,

@@ -5,7 +5,7 @@ mod format {
     use mdsf::{
         cli::{OnMissingLanguageDefinition, OnMissingToolBinary},
         config::{MdsfConfig, MdsfTool},
-        execution::MdsfFormatter,
+        execution::MdsfToolWrapper,
         tools::Tooling,
     };
     use predicates::prelude::PredicateBooleanExt;
@@ -445,7 +445,7 @@ mod format {
             on_missing_tool_binary: Some(OnMissingToolBinary::FailFast),
             languages: std::collections::BTreeMap::from_iter([(
                 "rust".to_string(),
-                MdsfFormatter::Single(MdsfTool::Preset(Tooling::VerylFmt)),
+                MdsfToolWrapper::Single(MdsfTool::Preset(Tooling::VerylFmt)),
             )]),
             ..Default::default()
         };
@@ -477,7 +477,7 @@ mod format {
             on_missing_tool_binary: None,
             languages: std::collections::BTreeMap::from_iter([(
                 "rust".to_string(),
-                MdsfFormatter::Single(MdsfTool::Preset(Tooling::VerylFmt)),
+                MdsfToolWrapper::Single(MdsfTool::Preset(Tooling::VerylFmt)),
             )]),
             ..Default::default()
         };
@@ -509,7 +509,7 @@ mod format {
             on_missing_tool_binary: Some(OnMissingToolBinary::Ignore),
             languages: std::collections::BTreeMap::from_iter([(
                 "rust".to_string(),
-                MdsfFormatter::Single(MdsfTool::Preset(Tooling::VerylFmt)),
+                MdsfToolWrapper::Single(MdsfTool::Preset(Tooling::VerylFmt)),
             )]),
             ..Default::default()
         };
@@ -539,7 +539,7 @@ mod format {
             on_missing_tool_binary: None,
             languages: std::collections::BTreeMap::from_iter([(
                 "rust".to_string(),
-                MdsfFormatter::Single(MdsfTool::Preset(Tooling::VerylFmt)),
+                MdsfToolWrapper::Single(MdsfTool::Preset(Tooling::VerylFmt)),
             )]),
             ..Default::default()
         };
@@ -571,7 +571,7 @@ mod format {
             on_missing_tool_binary: Some(OnMissingToolBinary::Fail),
             languages: std::collections::BTreeMap::from_iter([(
                 "rust".to_string(),
-                MdsfFormatter::Single(MdsfTool::Preset(Tooling::VerylFmt)),
+                MdsfToolWrapper::Single(MdsfTool::Preset(Tooling::VerylFmt)),
             )]),
             ..Default::default()
         };
@@ -601,7 +601,7 @@ mod format {
             on_missing_tool_binary: None,
             languages: std::collections::BTreeMap::from_iter([(
                 "rust".to_string(),
-                MdsfFormatter::Single(MdsfTool::Preset(Tooling::VerylFmt)),
+                MdsfToolWrapper::Single(MdsfTool::Preset(Tooling::VerylFmt)),
             )]),
             ..Default::default()
         };
@@ -633,7 +633,7 @@ mod format {
             on_missing_tool_binary: Some(OnMissingToolBinary::FailFast),
             languages: std::collections::BTreeMap::from_iter([(
                 "rust".to_string(),
-                MdsfFormatter::Single(MdsfTool::Preset(Tooling::VerylFmt)),
+                MdsfToolWrapper::Single(MdsfTool::Preset(Tooling::VerylFmt)),
             )]),
             ..Default::default()
         };

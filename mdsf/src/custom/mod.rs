@@ -11,7 +11,7 @@ pub struct CustomTool {
 
 impl core::fmt::Display for CustomTool {
     #[inline]
-    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+    fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
         write!(f, "{} (custom)", self.binary)
     }
 }
@@ -47,7 +47,7 @@ impl CustomTool {
         debug_enabled: bool,
         config_runners: &crate::config::MdsfConfigRunners,
     ) -> Result<(bool, Option<String>), crate::error::MdsfError> {
-        let command = crate::runners::CommandType::Custom(self.binary.to_string());
+        let command = crate::runners::CommandType::Custom(self.binary.clone());
 
         let is_stdin = self.stdin;
 
@@ -70,7 +70,7 @@ mod test_custom_tool {
     use crate::{
         config::{MdsfConfig, MdsfConfigRunners, MdsfTool},
         custom::CustomTool,
-        execution::MdsfFormatter,
+        execution::MdsfToolWrapper,
         format_file,
         testing::{
             DEFAULT_ON_MISSING_LANGUAGE_DEFINITION, DEFAULT_ON_MISSING_TOOL_BINARY,
@@ -110,7 +110,7 @@ pub async fn add(a: i32, b: i32) -> i32 {
             let config = MdsfConfig {
                 languages: std::collections::BTreeMap::from_iter([(
                     "rust".to_string(),
-                    MdsfFormatter::Single(MdsfTool::Custom(tool.clone())),
+                    MdsfToolWrapper::Single(MdsfTool::Custom(tool.clone())),
                 )]),
                 runners: MdsfConfigRunners::default(),
                 ..Default::default()
@@ -135,7 +135,9 @@ pub async fn add(a: i32, b: i32) -> i32 {
             let config = MdsfConfig {
                 languages: std::collections::BTreeMap::from_iter([(
                     "rust".to_string(),
-                    MdsfFormatter::Multiple(vec![MdsfFormatter::Single(MdsfTool::Custom(tool))]),
+                    MdsfToolWrapper::Multiple(vec![MdsfToolWrapper::Single(MdsfTool::Custom(
+                        tool,
+                    ))]),
                 )]),
                 runners: MdsfConfigRunners::default(),
                 ..Default::default()
@@ -180,7 +182,7 @@ name = "hello"
             let config = MdsfConfig {
                 languages: std::collections::BTreeMap::from_iter([(
                     "toml".to_string(),
-                    MdsfFormatter::Single(MdsfTool::Custom(tool.clone())),
+                    MdsfToolWrapper::Single(MdsfTool::Custom(tool.clone())),
                 )]),
                 runners: MdsfConfigRunners::default(),
                 ..Default::default()
@@ -205,7 +207,9 @@ name = "hello"
             let config = MdsfConfig {
                 languages: std::collections::BTreeMap::from_iter([(
                     "toml".to_string(),
-                    MdsfFormatter::Multiple(vec![MdsfFormatter::Single(MdsfTool::Custom(tool))]),
+                    MdsfToolWrapper::Multiple(vec![MdsfToolWrapper::Single(MdsfTool::Custom(
+                        tool,
+                    ))]),
                 )]),
                 runners: MdsfConfigRunners::default(),
                 ..Default::default()

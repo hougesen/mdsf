@@ -1,14 +1,6 @@
 use json_comments::{CommentSettings, StripComments};
 
-use crate::{
-    cli::{OnMissingLanguageDefinition, OnMissingToolBinary},
-    custom::CustomTool,
-    error::MdsfError,
-    execution::MdsfFormatter,
-    languages::default_tools,
-    terminal::print_config_schema_version_mismatch,
-    tools::Tooling,
-};
+use crate::error::MdsfError;
 
 #[allow(clippy::trivially_copy_pass_by_ref)]
 #[inline]
@@ -152,21 +144,14 @@ impl Newline {
 #[cfg_attr(feature = "json-schema", derive(schemars::JsonSchema))]
 #[serde(untagged)]
 pub enum MdsfTool {
-    Preset(Tooling),
+    Preset(crate::tools::Tooling),
 
-    Custom(CustomTool),
-}
-
-impl From<Tooling> for MdsfTool {
-    #[inline]
-    fn from(value: Tooling) -> Self {
-        Self::Preset(value)
-    }
+    Custom(crate::custom::CustomTool),
 }
 
 impl core::fmt::Display for MdsfTool {
     #[inline]
-    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+    fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
         match self {
             Self::Preset(t) => t.fmt(f),
             Self::Custom(t) => t.fmt(f),
@@ -231,7 +216,7 @@ pub struct MdsfConfig {
     /// }
     /// ```
     #[serde(default)]
-    pub languages: std::collections::BTreeMap<String, MdsfFormatter<MdsfTool>>,
+    pub languages: std::collections::BTreeMap<String, crate::execution::MdsfToolWrapper<MdsfTool>>,
 
     /// The newline used for the output.
     ///
@@ -241,11 +226,11 @@ pub struct MdsfConfig {
 
     /// What to do when a codeblock language has no tools defined.
     #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub on_missing_language_definition: Option<OnMissingLanguageDefinition>,
+    pub on_missing_language_definition: Option<crate::cli::OnMissingLanguageDefinition>,
 
     /// What to do when the binary of a tool cannot be found.
     #[serde(default, skip_serializing_if = "Option::is_none")]
-    pub on_missing_tool_binary: Option<OnMissingToolBinary>,
+    pub on_missing_tool_binary: Option<crate::cli::OnMissingToolBinary>,
 
     /// List of package registry script runners that should be enabled.
     ///
@@ -262,7 +247,7 @@ impl Default for MdsfConfig {
             custom_file_extensions: std::collections::BTreeMap::default(),
             format_finished_document: false,
             language_aliases: std::collections::BTreeMap::default(),
-            languages: default_tools(),
+            languages: crate::languages::default_tools(),
             newline: Newline::default(),
             on_missing_language_definition: None,
             on_missing_tool_binary: None,
@@ -289,7 +274,7 @@ impl MdsfConfig {
             .map_err(|serde_error| MdsfError::ConfigParse((path.to_path_buf(), serde_error)))?;
 
         if let Some((version, false)) = parsed.parse_schema_version() {
-            print_config_schema_version_mismatch(version);
+            crate::terminal::print_config_schema_version_mismatch(version);
         }
 
         Ok(parsed)

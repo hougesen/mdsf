@@ -1,21 +1,21 @@
-use crate::{config::MdsfTool, execution::MdsfFormatter, tools::Tooling};
+use crate::{config::MdsfTool, execution::MdsfToolWrapper, tools::Tooling};
 
 #[inline]
-pub fn default_config() -> (String, MdsfFormatter<MdsfTool>) {
+pub fn default_config() -> (String, MdsfToolWrapper<MdsfTool>) {
     (
         "python".to_string(),
-        MdsfFormatter::Multiple(vec![
-            MdsfFormatter::Multiple(vec![
-                MdsfFormatter::Single(MdsfTool::Preset(Tooling::Usort)),
-                MdsfFormatter::Single(MdsfTool::Preset(Tooling::Isort)),
+        MdsfToolWrapper::Multiple(vec![
+            MdsfToolWrapper::Multiple(vec![
+                MdsfToolWrapper::Single(MdsfTool::Preset(Tooling::Usort)),
+                MdsfToolWrapper::Single(MdsfTool::Preset(Tooling::Isort)),
             ]),
-            MdsfFormatter::Multiple(vec![
-                MdsfFormatter::Single(MdsfTool::Preset(Tooling::RuffFormat)),
-                MdsfFormatter::Single(MdsfTool::Preset(Tooling::Blue)),
-                MdsfFormatter::Single(MdsfTool::Preset(Tooling::Black)),
-                MdsfFormatter::Single(MdsfTool::Preset(Tooling::Yapf)),
-                MdsfFormatter::Single(MdsfTool::Preset(Tooling::Autopep8)),
-                MdsfFormatter::Single(MdsfTool::Preset(Tooling::Pyink)),
+            MdsfToolWrapper::Multiple(vec![
+                MdsfToolWrapper::Single(MdsfTool::Preset(Tooling::RuffFormat)),
+                MdsfToolWrapper::Single(MdsfTool::Preset(Tooling::Blue)),
+                MdsfToolWrapper::Single(MdsfTool::Preset(Tooling::Black)),
+                MdsfToolWrapper::Single(MdsfTool::Preset(Tooling::Yapf)),
+                MdsfToolWrapper::Single(MdsfTool::Preset(Tooling::Autopep8)),
+                MdsfToolWrapper::Single(MdsfTool::Preset(Tooling::Pyink)),
             ]),
         ]),
     )

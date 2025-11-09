@@ -2,7 +2,7 @@ use std::io::Write;
 
 use mdsf::{
     config::{MdsfConfig, MdsfConfigRunners, MdsfTool},
-    execution::MdsfFormatter,
+    execution::MdsfToolWrapper,
     filetype::get_file_extension,
 };
 
@@ -15,7 +15,7 @@ fn setup_config_file(
         runners: MdsfConfigRunners::all(),
         languages: std::collections::BTreeMap::from_iter([(
             file_type.to_string(),
-            MdsfFormatter::Single(tool),
+            MdsfToolWrapper::Single(tool),
         )]),
         format_finished_document: true,
         ..Default::default()
