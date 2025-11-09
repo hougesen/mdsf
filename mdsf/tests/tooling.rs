@@ -30,7 +30,7 @@ jobs:
         let ft = "yaml";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::Actionlint),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::Actionlint),
             input,
             output,
             ft,
@@ -62,7 +62,7 @@ foo <- function(bar = 1, baz = 2) {
         let ft = "r";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::AirFormat),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::AirFormat),
             input,
             output,
             ft,
@@ -136,7 +136,7 @@ buildPythonPackage rec {
         let ft = "nix";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::Alejandra),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::Alejandra),
             input,
             output,
             ft,
@@ -157,7 +157,7 @@ mod test_alex {
         let ft = "markdown";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::Alex),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::Alex),
             input,
             output,
             ft,
@@ -196,7 +196,7 @@ def foo(bar: Optional[str] = None):
         let ft = "python";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::AutoOptional),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::AutoOptional),
             input,
             output,
             ft,
@@ -246,7 +246,7 @@ def foo():
         let ft = "python";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::Autoflake),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::Autoflake),
             input,
             output,
             ft,
@@ -266,7 +266,7 @@ mod test_autopep_8 {
         let ft = "python";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::Autopep8),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::Autopep8),
             input,
             output,
             ft,
@@ -337,7 +337,7 @@ awk '{
         let ft = "bash";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::Bashate),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::Bashate),
             input,
             output,
             ft,
@@ -369,7 +369,7 @@ add() {
         let ft = "bash";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::Beautysh),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::Beautysh),
             input,
             output,
             ft,
@@ -395,7 +395,7 @@ add() {
         let ft = "shell";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::Beautysh),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::Beautysh),
             input,
             output,
             ft,
@@ -432,7 +432,7 @@ number>
         let ft = "typescript";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::BiomeCheck),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::BiomeCheck),
             input,
             output,
             ft,
@@ -464,7 +464,7 @@ number>
         let ft = "typescript";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::BiomeCheckUnsafe),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::BiomeCheckUnsafe),
             input,
             output,
             ft,
@@ -493,7 +493,7 @@ mod test_biome_format {
         let ft = "javascript";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::BiomeFormat),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::BiomeFormat),
             input,
             output,
             ft,
@@ -522,7 +522,7 @@ mod test_biome_format {
         let ft = "json";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::BiomeFormat),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::BiomeFormat),
             input,
             output,
             ft,
@@ -550,7 +550,7 @@ number>
         let ft = "typescript";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::BiomeFormat),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::BiomeFormat),
             input,
             output,
             ft,
@@ -571,7 +571,7 @@ mod test_biome_lint {
         let ft = "javascript";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::BiomeLint),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::BiomeLint),
             input,
             output,
             ft,
@@ -599,7 +599,7 @@ console.log(`${hello}${world}`);
         let ft = "javascript";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::BiomeLintUnsafe),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::BiomeLintUnsafe),
             input,
             output,
             ft,
@@ -620,7 +620,7 @@ mod test_black {
         let ft = "python";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::Black),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::Black),
             input,
             output,
             ft,
@@ -698,7 +698,7 @@ mod test_blade_formatter {
         let ft = "blade";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::BladeFormatter),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::BladeFormatter),
             input,
             output,
             ft,
@@ -719,7 +719,7 @@ mod test_blue {
         let ft = "python";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::Blue),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::Blue),
             input,
             output,
             ft,
@@ -746,7 +746,7 @@ mod test_brunette {
         let ft = "python";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::Brunette),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::Brunette),
             input,
             output,
             ft,
@@ -776,7 +776,7 @@ mod test_buf_format {
         let ft = "protobuf";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::BufFormat),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::BufFormat),
             input,
             output,
             ft,
@@ -830,7 +830,7 @@ executable msdf
         let ft = "cabal";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::CabalFormat),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::CabalFormat),
             input,
             output,
             ft,
@@ -879,7 +879,7 @@ mod test_clang_format {
         let ft = "c";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::ClangFormat),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::ClangFormat),
             input,
             output,
             ft,
@@ -901,7 +901,7 @@ mod test_clang_format {
         let ft = "cpp";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::ClangFormat),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::ClangFormat),
             input,
             output,
             ft,
@@ -931,7 +931,7 @@ class Adder {
         let ft = "csharp";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::ClangFormat),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::ClangFormat),
             input,
             output,
             ft,
@@ -957,7 +957,7 @@ class Adder {
         let ft = "java";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::ClangFormat),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::ClangFormat),
             input,
             output,
             ft,
@@ -979,7 +979,7 @@ class Adder {
         let ft = "javascript";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::ClangFormat),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::ClangFormat),
             input,
             output,
             ft,
@@ -1006,7 +1006,7 @@ class Adder {
         let ft = "json";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::ClangFormat),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::ClangFormat),
             input,
             output,
             ft,
@@ -1028,7 +1028,7 @@ class Adder {
         let ft = "objective-c";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::ClangFormat),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::ClangFormat),
             input,
             output,
             ft,
@@ -1047,7 +1047,7 @@ class Adder {
         let ft = "protobuf";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::ClangFormat),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::ClangFormat),
             input,
             output,
             ft,
@@ -1107,7 +1107,7 @@ mod test_cljstyle {
         let ft = "clojure";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::Cljstyle),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::Cljstyle),
             input,
             output,
             ft,
@@ -1138,7 +1138,7 @@ mod test_coffeelint {
         let ft = "coffeescript";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::Coffeelint),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::Coffeelint),
             input,
             output,
             ft,
@@ -1159,7 +1159,7 @@ mod test_cppcheck {
         let ft = "cpp";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::Cppcheck),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::Cppcheck),
             input,
             output,
             ft,
@@ -1182,7 +1182,7 @@ int add(int a, int b) { return a + b; }
         let ft = "cpp";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::Cpplint),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::Cpplint),
             input,
             output,
             ft,
@@ -1207,7 +1207,7 @@ end
         let ft = "crystal";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::CrystalFormat),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::CrystalFormat),
             input,
             output,
             ft,
@@ -1244,7 +1244,7 @@ mod test_csharpier {
         let ft = "csharp";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::Csharpier),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::Csharpier),
             input,
             output,
             ft,
@@ -1269,7 +1269,7 @@ p {
         let ft = "css";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::CssBeautify),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::CssBeautify),
             input,
             output,
             ft,
@@ -1297,7 +1297,7 @@ p
         let ft = "css";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::Csscomb),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::Csscomb),
             input,
             output,
             ft,
@@ -1322,7 +1322,7 @@ mod test_csslint {
         let ft = "css";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::Csslint),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::Csslint),
             input,
             output,
             ft,
@@ -1361,7 +1361,7 @@ mod test_dart_format {
         let ft = "dart";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::DartFormat),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::DartFormat),
             input,
             output,
             ft,
@@ -1397,7 +1397,7 @@ mod test_deno_fmt {
         let ft = "javascript";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::DenoFmt),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::DenoFmt),
             input,
             output,
             ft,
@@ -1431,7 +1431,7 @@ mod test_deno_fmt {
         let ft = "json";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::DenoFmt),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::DenoFmt),
             input,
             output,
             ft,
@@ -1456,7 +1456,7 @@ mod test_deno_fmt {
         let ft = "typescript";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::DenoFmt),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::DenoFmt),
             input,
             output,
             ft,
@@ -1483,7 +1483,7 @@ mod test_dfmt {
         let ft = "d";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::Dfmt),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::Dfmt),
             input,
             output,
             ft,
@@ -1518,7 +1518,7 @@ RUN echo "Hello world"
         let ft = "dockerfile";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::Dockerfmt),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::Dockerfmt),
             input,
             output,
             ft,
@@ -1567,7 +1567,7 @@ mod test_dx_fmt {
         let ft = "rust";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::DxFmt),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::DxFmt),
             input,
             output,
             ft,
@@ -1593,7 +1593,7 @@ case Erlang of movie->[hello(mike,joe,robert),credits]; language->formatting_arg
         let ft = "erlang";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::Efmt),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::Efmt),
             input,
             output,
             ft,
@@ -1626,7 +1626,7 @@ main =
         let ft = "elm";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::ElmFormat),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::ElmFormat),
             input,
             output,
             ft,
@@ -1657,7 +1657,7 @@ print!(add(1, 2))
         let ft = ".erg";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::ErgLint),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::ErgLint),
             input,
             output,
             ft,
@@ -1682,7 +1682,7 @@ case Erlang of movie->[hello(mike,joe,robert),credits]; language->formatting_arg
         let ft = "erlang";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::Erlfmt),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::Erlfmt),
             input,
             output,
             ft,
@@ -1707,7 +1707,7 @@ let add a b  =  a +  b
         let ft = "fsharp";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::Fantomas),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::Fantomas),
             input,
             output,
             ft,
@@ -1732,7 +1732,7 @@ mod test_fixjson {
         let ft = "json";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::Fixjson),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::Fixjson),
             input,
             output,
             ft,
@@ -1783,7 +1783,7 @@ end program example
         let ft = ".f90";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::FortitudeCheck),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::FortitudeCheck),
             input,
             output,
             ft,
@@ -1822,7 +1822,7 @@ end program example
         let ft = ".f90";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::FortitudeCheckFix),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::FortitudeCheckFix),
             input,
             output,
             ft,
@@ -1862,7 +1862,7 @@ end program example
         let ft = ".f90";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::FortitudeCheckFixUnsafe),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::FortitudeCheckFixUnsafe),
             input,
             output,
             ft,
@@ -1900,7 +1900,7 @@ end program example
         let ft = ".f90";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::FortranLinter),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::FortranLinter),
             input,
             output,
             ft,
@@ -1926,7 +1926,7 @@ addNumbers a b = do
         let ft = "haskell";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::Fourmolu),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::Fourmolu),
             input,
             output,
             ft,
@@ -1970,7 +1970,7 @@ end program
         let ft = "fortran";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::Fprettify),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::Fprettify),
             input,
             output,
             ft,
@@ -2000,7 +2000,7 @@ mod test_fvm_dart_format {
         let ft = "dart";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::FvmDartFormat),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::FvmDartFormat),
             input,
             output,
             ft,
@@ -2037,7 +2037,7 @@ mod test_gleam_format {
         let ft = "gleam";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::GleamFormat),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::GleamFormat),
             input,
             output,
             ft,
@@ -2070,7 +2070,7 @@ func add(a int, b int) int {
         let ft = "go";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::Gofmt),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::Gofmt),
             input,
             output,
             ft,
@@ -2100,7 +2100,7 @@ func add(a int, b int) int {
         let ft = "go";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::Gofumpt),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::Gofumpt),
             input,
             output,
             ft,
@@ -2142,7 +2142,7 @@ func add(a int, b int) int {
         let ft = "go";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::Goimports),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::Goimports),
             input,
             output,
             ft,
@@ -2196,7 +2196,7 @@ func add(a int, b int) int {
         let ft = "go";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::Golines),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::Golines),
             input,
             output,
             ft,
@@ -2226,7 +2226,7 @@ mod test_google_java_format {
         let ft = "java";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::GoogleJavaFormat),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::GoogleJavaFormat),
             input,
             output,
             ft,
@@ -2257,7 +2257,7 @@ print("Hello, world!")
         let ft = "grain";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::GrainFormat),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::GrainFormat),
             input,
             output,
             ft,
@@ -2295,7 +2295,7 @@ addNumbers a b = do
         let ft = "haskell";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::Hindent),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::Hindent),
             input,
             output,
             ft,
@@ -2316,7 +2316,7 @@ add a b = a + b"#;
         let ft = "haskell";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::Hlint),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::Hlint),
             input,
             output,
             ft,
@@ -2343,7 +2343,7 @@ mod test_html_beautify {
         let ft = "html";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::HtmlBeautify),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::HtmlBeautify),
             input,
             output,
             ft,
@@ -2371,7 +2371,7 @@ mod test_htmlbeautifier {
         let ft = "html";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::Htmlbeautifier),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::Htmlbeautifier),
             input,
             output,
             ft,
@@ -2393,7 +2393,7 @@ mod test_hurlfmt {
         let ft = "hurl";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::Hurlfmt),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::Hurlfmt),
             input,
             output,
             ft,
@@ -2434,7 +2434,7 @@ def add(a: int, b: int) -> int:
         let ft = "python";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::Isort),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::Isort),
             input,
             output,
             ft,
@@ -2462,7 +2462,7 @@ mod test_jq {
         let ft = "json";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::Jq),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::Jq),
             input,
             output,
             ft,
@@ -2481,7 +2481,7 @@ mod test_jqfmt {
         let ft = "jq";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::Jqfmt),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::Jqfmt),
             input,
             output,
             ft,
@@ -2502,7 +2502,7 @@ mod test_js_beautify {
         let ft = "javascript";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::JsBeautify),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::JsBeautify),
             input,
             output,
             ft,
@@ -2529,7 +2529,7 @@ mod test_json_repair {
         let ft = "json";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::JsonRepair),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::JsonRepair),
             input,
             output,
             ft,
@@ -2556,7 +2556,7 @@ mod test_jsonlint {
         let ft = "json";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::Jsonlint),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::Jsonlint),
             input,
             output,
             ft,
@@ -2578,7 +2578,7 @@ mod test_jsonlint_sort {
         let ft = "json";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::JsonlintSort),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::JsonlintSort),
             input,
             output,
             ft,
@@ -2614,7 +2614,7 @@ mod test_jsonpp {
         let ft = "json";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::Jsonpp),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::Jsonpp),
             input,
             output,
             ft,
@@ -2640,7 +2640,7 @@ end
         let ft = "julia";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::JuliaformatterJl),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::JuliaformatterJl),
             input,
             output,
             ft,
@@ -2665,7 +2665,7 @@ mod test_just {
         let ft = "just";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::Just),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::Just),
             input,
             output,
             ft,
@@ -2716,7 +2716,7 @@ spec = {
         let ft = "kcl";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::KclFmt),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::KclFmt),
             input,
             output,
             ft,
@@ -2744,7 +2744,7 @@ child "2"   }
         let ft = "kdl";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::Kdlfmt),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::Kdlfmt),
             input,
             output,
             ft,
@@ -2771,7 +2771,7 @@ child "2"
         let ft = "kdl";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::KdlfmtV1),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::KdlfmtV1),
             input,
             output,
             ft,
@@ -2796,7 +2796,7 @@ child "2"   }
         let ft = "kdl";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::KdlfmtV2),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::KdlfmtV2),
             input,
             output,
             ft,
@@ -2827,7 +2827,7 @@ mod test_ktfmt {
         let ft = "kotlin";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::Ktfmt),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::Ktfmt),
             input,
             output,
             ft,
@@ -2855,7 +2855,7 @@ fun add(
         let ft = "kotlin";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::Ktlint),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::Ktlint),
             input,
             output,
             ft,
@@ -2883,7 +2883,7 @@ GET https://mhouge.dk HTTP/1.1
         let ft = "http";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::KulalaFmtCheck),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::KulalaFmtCheck),
             input,
             output,
             ft,
@@ -2907,7 +2907,7 @@ GET https://mhouge.dk HTTP/1.1
         let ft = "http";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::KulalaFmtFormat),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::KulalaFmtFormat),
             input,
             output,
             ft,
@@ -2946,7 +2946,7 @@ end
         let ft = "lua";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::Luaformatter),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::Luaformatter),
             input,
             output,
             ft,
@@ -2979,7 +2979,7 @@ mod test_mado_check {
         let ft = "markdown";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::MadoCheck),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::MadoCheck),
             input,
             output,
             ft,
@@ -3003,7 +3003,7 @@ echo 'Hello World!';
         let ft = "php";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::MagoFormat),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::MagoFormat),
             input,
             output,
             ft,
@@ -3026,7 +3026,7 @@ echo 'Hello World!';
         let ft = "php";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::MagoLint),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::MagoLint),
             input,
             output,
             ft,
@@ -3049,7 +3049,7 @@ echo 'Hello World!';
         let ft = "php";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::MagoLintFix),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::MagoLintFix),
             input,
             output,
             ft,
@@ -3075,7 +3075,7 @@ echo 'Hello World!';
         let ft = "php";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::MagoLintFixUnsafe),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::MagoLintFixUnsafe),
             input,
             output,
             ft,
@@ -3106,7 +3106,7 @@ this text has weird spacing
         let ft = "markdown";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::Markdownfmt),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::Markdownfmt),
             input,
             output,
             ft,
@@ -3133,7 +3133,7 @@ mod test_markdownlint {
         let ft = "markdown";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::Markdownlint),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::Markdownlint),
             input,
             output,
             ft,
@@ -3161,7 +3161,7 @@ mod test_markdownlint_cli_2 {
         let ft = "markdown";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::MarkdownlintCli2),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::MarkdownlintCli2),
             input,
             output,
             ft,
@@ -3205,7 +3205,7 @@ clean:
         let ft = "Makefile";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::MbakeFormat),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::MbakeFormat),
             input,
             output,
             ft,
@@ -3246,7 +3246,7 @@ clean:
         let ft = "Makefile";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::MbakeValidate),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::MbakeValidate),
             input,
             output,
             ft,
@@ -3271,7 +3271,7 @@ mod test_mdsf_format {
         let ft = "markdown";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::MdsfFormat),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::MdsfFormat),
             input,
             output,
             ft,
@@ -3290,7 +3290,7 @@ mod test_mdsf_verify {
         let ft = "markdown";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::MdsfVerify),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::MdsfVerify),
             input,
             output,
             ft,
@@ -3349,7 +3349,7 @@ run = 'echo "running build tasks"'
         let ft = "toml";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::MiseFmt),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::MiseFmt),
             input,
             output,
             ft,
@@ -3370,7 +3370,7 @@ mod test_misspell {
         let ft = "markdown";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::Misspell),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::Misspell),
             input,
             output,
             ft,
@@ -3395,7 +3395,7 @@ end
         let ft = "elixir";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::MixFormat),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::MixFormat),
             input,
             output,
             ft,
@@ -3439,7 +3439,7 @@ mod test_nginxbeautifier {
         let ft = ".conf";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::Nginxbeautifier),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::Nginxbeautifier),
             input,
             output,
             ft,
@@ -3468,7 +3468,7 @@ mod test_nginxfmt {
         let ft = ".conf";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::Nginxfmt),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::Nginxfmt),
             input,
             output,
             ft,
@@ -3493,7 +3493,7 @@ mod test_nimpretty {
         let ft = "nim";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::Nimpretty),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::Nimpretty),
             input,
             output,
             ft,
@@ -3562,7 +3562,7 @@ buildPythonPackage rec {
         let ft = "nix";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::Nixfmt),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::Nixfmt),
             input,
             output,
             ft,
@@ -3636,7 +3636,7 @@ buildPythonPackage rec {
         let ft = "nix";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::NixpkgsFmt),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::NixpkgsFmt),
             input,
             output,
             ft,
@@ -3662,7 +3662,7 @@ mod test_nph {
         let ft = "nim";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::Nph),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::Nph),
             input,
             output,
             ft,
@@ -3690,7 +3690,7 @@ assert add(1, 2) == 3
         let ft = "groovy";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::NpmGroovyLint),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::NpmGroovyLint),
             input,
             output,
             ft,
@@ -3715,7 +3715,7 @@ let add a b  =  a +  b
         let ft = "ocaml";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::Ocamlformat),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::Ocamlformat),
             input,
             output,
             ft,
@@ -3740,7 +3740,7 @@ let add a b
         let ft = "ocaml";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::OcpIndent),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::OcpIndent),
             input,
             output,
             ft,
@@ -3775,7 +3775,7 @@ addNumbers a b = do
         let ft = "haskell";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::Ormolu),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::Ormolu),
             input,
             output,
             ft,
@@ -3794,7 +3794,7 @@ mod test_oxlint {
         let ft = "typescript";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::Oxlint),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::Oxlint),
             input,
             output,
             ft,
@@ -3825,7 +3825,7 @@ mod test_perflint {
         let ft = "python";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::Perflint),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::Perflint),
             input,
             output,
             ft,
@@ -3875,7 +3875,7 @@ mod test_prettier {
         let ft = "javascript";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::Prettier),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::Prettier),
             input,
             output,
             ft,
@@ -3904,7 +3904,7 @@ mod test_prettier {
         let ft = "json";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::Prettier),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::Prettier),
             input,
             output,
             ft,
@@ -3933,7 +3933,7 @@ mod test_prettierd {
         let ft = "javascript";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::Prettierd),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::Prettierd),
             input,
             output,
             ft,
@@ -3962,7 +3962,7 @@ mod test_prettierd {
         let ft = "json";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::Prettierd),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::Prettierd),
             input,
             output,
             ft,
@@ -3999,7 +3999,7 @@ mod test_prisma_format {
         let ft = "schema";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::PrismaFormat),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::PrismaFormat),
             input,
             output,
             ft,
@@ -4051,7 +4051,7 @@ main = do
         let ft = "purescript";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::PursTidy),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::PursTidy),
             input,
             output,
             ft,
@@ -4081,7 +4081,7 @@ add a b = a + b
         let ft = "purescript";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::Purty),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::Purty),
             input,
             output,
             ft,
@@ -4100,7 +4100,7 @@ mod test_pycln {
         let ft = "python";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::Pycln),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::Pycln),
             input,
             output,
             ft,
@@ -4133,7 +4133,7 @@ mod test_pyflakes {
         let ft = "python";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::Pyflakes),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::Pyflakes),
             input,
             output,
             ft,
@@ -4154,7 +4154,7 @@ mod test_pyink {
         let ft = "python";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::Pyink),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::Pyink),
             input,
             output,
             ft,
@@ -4193,7 +4193,7 @@ def add(a: int, b: int) -> int:
         let ft = "python";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::Pylint),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::Pylint),
             input,
             output,
             ft,
@@ -4229,7 +4229,7 @@ Line 3
         let ft = "markdown";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::PymarkdownlntFix),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::PymarkdownlntFix),
             input,
             output,
             ft,
@@ -4261,7 +4261,7 @@ add(1, 2)
         let ft = "python";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::Pyrefly),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::Pyrefly),
             input,
             output,
             ft,
@@ -4280,7 +4280,7 @@ mod test_pyupgrade {
         let ft = "python";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::Pyupgrade),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::Pyupgrade),
             input,
             output,
             ft,
@@ -4339,7 +4339,7 @@ import reorder_python_imports
         let ft = "python";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::ReorderPythonImports),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::ReorderPythonImports),
             input,
             output,
             ft,
@@ -4383,7 +4383,7 @@ mod test_rescript_format {
         let ft = "rescript";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::RescriptFormat),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::RescriptFormat),
             input,
             output,
             ft,
@@ -4426,7 +4426,7 @@ main =
         let ft = "roc";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::RocFormat),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::RocFormat),
             input,
             output,
             ft,
@@ -4453,7 +4453,7 @@ end
         let ft = "ruby";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::Rubocop),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::Rubocop),
             input,
             output,
             ft,
@@ -4477,7 +4477,7 @@ end
         let ft = "ruby";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::Rubyfmt),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::Rubyfmt),
             input,
             output,
             ft,
@@ -4500,7 +4500,7 @@ mod test_ruff_check {
         let ft = "python";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::RuffCheck),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::RuffCheck),
             input,
             output,
             ft,
@@ -4521,7 +4521,7 @@ mod test_ruff_format {
         let ft = "python";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::RuffFormat),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::RuffFormat),
             input,
             output,
             ft,
@@ -4545,7 +4545,7 @@ end
         let ft = "ruby";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::Rufo),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::Rufo),
             input,
             output,
             ft,
@@ -4577,7 +4577,7 @@ mod test_rustfmt {
         let ft = "rust";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::Rustfmt),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::Rustfmt),
             input,
             output,
             ft,
@@ -4598,7 +4598,7 @@ mod test_rustywind {
         let ft = "html";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::Rustywind),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::Rustywind),
             input,
             output,
             ft,
@@ -4629,7 +4629,7 @@ mod test_scalafmt {
         let ft = "scala";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::Scalafmt),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::Scalafmt),
             input,
             output,
             ft,
@@ -4661,7 +4661,7 @@ return add
         let ft = "lua";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::Selene),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::Selene),
             input,
             output,
             ft,
@@ -4691,7 +4691,7 @@ console.info(asyncAddition(1, 2));
         let ft = "javascript";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::Semistandard),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::Semistandard),
             input,
             output,
             ft,
@@ -4716,7 +4716,7 @@ echo "Hello World"
         let ft = "shell";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::Shellcheck),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::Shellcheck),
             input,
             output,
             ft,
@@ -4758,7 +4758,7 @@ add() {
         let ft = "bash";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::Shfmt),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::Shfmt),
             input,
             output,
             ft,
@@ -4794,7 +4794,7 @@ add() {
         let ft = "shell";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::Shfmt),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::Shfmt),
             input,
             output,
             ft,
@@ -4830,7 +4830,7 @@ add() {
         let ft = "zsh";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::Shfmt),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::Shfmt),
             input,
             output,
             ft,
@@ -4855,7 +4855,7 @@ WHERE
         let ft = "sql";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::Sleek),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::Sleek),
             input,
             output,
             ft,
@@ -4879,7 +4879,7 @@ mod test_smlfmt {
         let ft = ".sml";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::Smlfmt),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::Smlfmt),
             input,
             output,
             ft,
@@ -4911,7 +4911,7 @@ include: "rules/foo.smk"
         let ft = "snakemake";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::Snakefmt),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::Snakefmt),
             input,
             output,
             ft,
@@ -4942,7 +4942,7 @@ WHERE
         let ft = "sql";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::SqlFormatter),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::SqlFormatter),
             input,
             output,
             ft,
@@ -4965,7 +4965,7 @@ WHERE foo = 'bar';
         let ft = "sql";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::SqlfluffFix),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::SqlfluffFix),
             input,
             output,
             ft,
@@ -4987,7 +4987,7 @@ WHERE foo = 'bar';
         let ft = "sql";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::SqlfluffFormat),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::SqlfluffFormat),
             input,
             output,
             ft,
@@ -5010,7 +5010,7 @@ WHERE foo = 'bar' LIMIT 10;
         let ft = "sql";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::SqlfluffLint),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::SqlfluffLint),
             input,
             output,
             ft,
@@ -5033,7 +5033,7 @@ where foo = 'bar'
         let ft = "sql";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::Sqlfmt),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::Sqlfmt),
             input,
             output,
             ft,
@@ -5056,7 +5056,7 @@ WHERE id = 1;
         let ft = "sql";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::Sqlint),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::Sqlint),
             input,
             output,
             ft,
@@ -5077,7 +5077,7 @@ mod test_sqruff {
         let ft = "sql";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::Sqruff),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::Sqruff),
             input,
             output,
             ft,
@@ -5096,7 +5096,7 @@ mod test_squawk {
         let ft = "sql";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::Squawk),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::Squawk),
             input,
             output,
             ft,
@@ -5127,7 +5127,7 @@ console.info(asyncAddition(1, 2))
         let ft = "javascript";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::Standardjs),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::Standardjs),
             input,
             output,
             ft,
@@ -5151,7 +5151,7 @@ end
         let ft = "ruby";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::Standardrb),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::Standardrb),
             input,
             output,
             ft,
@@ -5286,7 +5286,7 @@ table {
         let ft = "css";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::Stylefmt),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::Stylefmt),
             input,
             output,
             ft,
@@ -5367,7 +5367,7 @@ padding: 12px
         let ft = "scss";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::Stylefmt),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::Stylefmt),
             input,
             output,
             ft,
@@ -5396,7 +5396,7 @@ addNumbers a b = do
         let ft = "haskell";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::StylishHaskell),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::StylishHaskell),
             input,
             output,
             ft,
@@ -5428,7 +5428,7 @@ end
         let ft = "lua";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::Stylua),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::Stylua),
             input,
             output,
             ft,
@@ -5455,7 +5455,7 @@ mod test_superhtml_fmt {
         let ft = "html";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::SuperhtmlFmt),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::SuperhtmlFmt),
             input,
             output,
             ft,
@@ -5482,7 +5482,7 @@ mod test_swift_format {
         let ft = "swift";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::SwiftFormat),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::SwiftFormat),
             input,
             output,
             ft,
@@ -5506,7 +5506,7 @@ mod test_swiftformat {
         let ft = "swift";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::Swiftformat),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::Swiftformat),
             input,
             output,
             ft,
@@ -5529,7 +5529,7 @@ author = "Mads Hougesen"
         let ft = "toml";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::Taplo),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::Taplo),
             input,
             output,
             ft,
@@ -5563,7 +5563,7 @@ mod test_terraform_fmt {
         let ft = "tf";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::TerraformFmt),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::TerraformFmt),
             input,
             output,
             ft,
@@ -5612,7 +5612,7 @@ E = m c^2
         let ft = "latex";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::TexFmt),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::TexFmt),
             input,
             output,
             ft,
@@ -5652,7 +5652,7 @@ mod test_tofu_fmt {
         let ft = ".tf";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::TofuFmt),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::TofuFmt),
             input,
             output,
             ft,
@@ -5674,7 +5674,7 @@ name = "hello"
         let ft = "toml";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::TombiFormat),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::TombiFormat),
             input,
             output,
             ft,
@@ -5697,7 +5697,7 @@ name = "hello"
         let ft = "toml";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::TombiLint),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::TombiLint),
             input,
             output,
             ft,
@@ -5736,7 +5736,7 @@ key = "something"
         let ft = "toml";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::TomlSort),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::TomlSort),
             input,
             output,
             ft,
@@ -5773,7 +5773,7 @@ mod test_topiary {
         let ft = "json";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::Topiary),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::Topiary),
             input,
             output,
             ft,
@@ -5804,7 +5804,7 @@ mod test_tsp_format {
         let ft = "typespec";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::TspFormat),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::TspFormat),
             input,
             output,
             ft,
@@ -5842,7 +5842,7 @@ add(1, 2)
         let ft = "python";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::Ty),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::Ty),
             input,
             output,
             ft,
@@ -5861,7 +5861,7 @@ mod test_typos {
         let ft = "python";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::Typos),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::Typos),
             input,
             output,
             ft,
@@ -5888,7 +5888,7 @@ mod test_ufmt {
         let ft = "python";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::Ufmt),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::Ufmt),
             input,
             output,
             ft,
@@ -5909,7 +5909,7 @@ mod test_uiua_fmt {
         let ft = "uiua";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::UiuaFmt),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::UiuaFmt),
             input,
             output,
             ft,
@@ -5930,7 +5930,7 @@ mod test_unimport {
         let ft = "python";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::Unimport),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::Unimport),
             input,
             output,
             ft,
@@ -5965,7 +5965,7 @@ def add(a: int, b: int) -> int:
         let ft = "python";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::Usort),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::Usort),
             input,
             output,
             ft,
@@ -5997,7 +5997,7 @@ mod test_verusfmt {
         let ft = "rust";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::Verusfmt),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::Verusfmt),
             input,
             output,
             ft,
@@ -6066,7 +6066,7 @@ pub module Delay #( // visibility control by `pub` keyword
         let ft = "veryl";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::VerylFmt),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::VerylFmt),
             input,
             output,
             ft,
@@ -6110,7 +6110,7 @@ end architecture rtl;
         let ft = "vhdl";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::VhdlStyleGuide),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::VhdlStyleGuide),
             input,
             output,
             ft,
@@ -6158,7 +6158,7 @@ end program
         let ft = "fortran";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::Wfindent),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::Wfindent),
             input,
             output,
             ft,
@@ -6191,7 +6191,7 @@ mod test_xmlformat {
         let ft = "xml";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::Xmlformat),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::Xmlformat),
             input,
             output,
             ft,
@@ -6223,7 +6223,7 @@ mod test_xmllint {
         let ft = "xml";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::Xmllint),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::Xmllint),
             input,
             output,
             ft,
@@ -6252,7 +6252,7 @@ console.info(asyncAddition(1, 2));
         let ft = "javascript";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::Xo),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::Xo),
             input,
             output,
             ft,
@@ -6282,7 +6282,7 @@ mod test_xq {
         let ft = "xml";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::Xq),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::Xq),
             input,
             output,
             ft,
@@ -6302,7 +6302,7 @@ mod test_xq_html {
         let ft = "html";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::XqHtml),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::XqHtml),
             input,
             output,
             ft,
@@ -6358,7 +6358,7 @@ updates:
         let ft = "yaml";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::Yamlfix),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::Yamlfix),
             input,
             output,
             ft,
@@ -6415,7 +6415,7 @@ updates:
         let ft = "yaml";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::Yamlfmt),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::Yamlfmt),
             input,
             output,
             ft,
@@ -6450,7 +6450,7 @@ jobs:
         let ft = "yaml";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::Yamllint),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::Yamllint),
             input,
             output,
             ft,
@@ -6471,7 +6471,7 @@ mod test_yapf {
         let ft = "python";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::Yapf),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::Yapf),
             input,
             output,
             ft,
@@ -6497,7 +6497,7 @@ mod test_yew_fmt {
         let ft = "rust";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::YewFmt),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::YewFmt),
             input,
             output,
             ft,
@@ -6519,7 +6519,7 @@ mod test_yq {
         let ft = "json";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::Yq),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::Yq),
             input,
             output,
             ft,
@@ -6546,7 +6546,7 @@ mod test_zig_fmt {
         let ft = "zig";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::ZigFmt),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::ZigFmt),
             input,
             output,
             ft,
@@ -6591,7 +6591,7 @@ mod test_zprint {
         let ft = "clojure";
 
         crate::common::run_tooling_test(
-            crate::config::MdsfTool::Preset(mdsf::tools::Tooling::Zprint),
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::Zprint),
             input,
             output,
             ft,

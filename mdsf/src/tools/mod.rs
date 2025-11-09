@@ -3293,9 +3293,10 @@ impl Tooling {
         debug_enabled: bool,
         config_runners: &crate::config::MdsfConfigRunners,
     ) -> Result<(bool, Option<String>), crate::error::MdsfError> {
+        #[allow(clippy::type_complexity)]
         let (commands, set_args_fn, is_stdin): (
             &[crate::runners::CommandType],
-            crate::execution::SetArgsFn,
+            fn(std::process::Command, &std::path::Path) -> std::process::Command,
             bool,
         ) = match self {
             Self::Actionlint => (

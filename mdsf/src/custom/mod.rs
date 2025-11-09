@@ -16,6 +16,22 @@ impl core::fmt::Display for CustomTool {
     }
 }
 
+fn build_set_args_fn(
+    arguments: Vec<String>,
+) -> impl Fn(std::process::Command, &std::path::Path) -> std::process::Command {
+    move |mut cmd: std::process::Command, file_path: &std::path::Path| -> std::process::Command {
+        for arg in &arguments {
+            if arg == "$PATH" {
+                cmd.arg(file_path);
+            } else {
+                cmd.arg(arg);
+            }
+        }
+
+        cmd
+    }
+}
+
 impl CustomTool {
     #[inline]
     pub fn tool_name(&self) -> &str {
@@ -25,11 +41,25 @@ impl CustomTool {
     #[inline]
     pub fn format_snippet(
         &self,
-        _snippet_path: &std::path::Path,
-        _timeout: u64,
-        _debug_enabled: bool,
-        _config_runners: &crate::config::MdsfConfigRunners,
+        snippet_path: &std::path::Path,
+        timeout: u64,
+        debug_enabled: bool,
+        config_runners: &crate::config::MdsfConfigRunners,
     ) -> Result<(bool, Option<String>), crate::error::MdsfError> {
-        todo!()
+        let command = crate::runners::CommandType::Custom(self.binary.to_string());
+
+        let is_stdin = self.stdin;
+
+        let args_fn = build_set_args_fn(self.arguments.clone());
+
+        crate::execution::run_tools(
+            &[command],
+            snippet_path,
+            args_fn,
+            timeout,
+            is_stdin,
+            debug_enabled,
+            config_runners,
+        )
     }
 }

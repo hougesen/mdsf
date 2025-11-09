@@ -391,18 +391,19 @@ impl MdsfFormatter<MdsfTool> {
     }
 }
 
-pub type SetArgsFn = fn(std::process::Command, &std::path::Path) -> std::process::Command;
-
 #[inline]
-pub fn run_tools(
+pub fn run_tools<F>(
     command_types: &[CommandType],
     file_path: &std::path::Path,
-    set_args_fn: SetArgsFn,
+    set_args_fn: F,
     timeout: u64,
     is_stdin: bool,
     debug_enabled: bool,
     config_runners: &MdsfConfigRunners,
-) -> Result<(bool, Option<String>), MdsfError> {
+) -> Result<(bool, Option<String>), MdsfError>
+where
+    F: Fn(std::process::Command, &std::path::Path) -> std::process::Command,
+{
     for (index, cmd) in command_types.iter().enumerate() {
         if !cmd.is_enabled(config_runners) {
             continue;

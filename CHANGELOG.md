@@ -46,6 +46,7 @@ All notable changes to this project will be documented in this file. Dates are d
 - build(deps): bump clap_complete from 4.5.58 to 4.5.59 [`#1349`](https://github.com/hougesen/mdsf/pull/1349)
 - build(deps): bump clap from 4.5.48 to 4.5.49 [`#1347`](https://github.com/hougesen/mdsf/pull/1347)
 - chore: update tools descriptions [`#1360`](https://github.com/hougesen/mdsf/pull/1360)
+- refactor: start extracting logic for custom tools [`07b6a86`](https://github.com/hougesen/mdsf/commit/07b6a8665a4d796c4215805c2bfa75d4345871e9)
 
 #### [v0.10.8](https://github.com/hougesen/mdsf/compare/v0.10.7...v0.10.8)
 
