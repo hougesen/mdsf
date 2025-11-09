@@ -32,6 +32,7 @@ Format, and lint, markdown code snippets using your favorite tools.
 - [Configuration](#configuration)
   - [Language aliases](#language-aliases)
   - [Newlines](#newlines)
+  - [Custom tools and commands](#custom-tools-and-commands)
   - [Tools](#tools)
   - [Commands](#commands)
 - [Shell completions](#shell-completions)
@@ -405,7 +406,7 @@ Options:
 
 <!-- END_SECTION:init-command-help -->
 
-`mdsf` supports running multiple formatters on the save code snippet.
+`mdsf` supports running multiple formatters on the code snippet.
 
 ```json
 {
@@ -463,6 +464,24 @@ That can be changed by specifying the `newline` config option.
   "newline": "lf" // "lf" | "cr" | "crlf"
 }
 ```
+
+### Custom tools and commands
+
+Custom commands can be defined in the `mdsf.json` file.
+
+```json
+{
+  "languages": {
+    "rust": {
+      "binary": "rustfmt",
+      "arguments": ["--edition", "2018", "$PATH"],
+      "stdin": false
+    }
+  }
+}
+```
+
+When defining the arguments the variable `$PATH` will automatically be replaced with the file path. `$PATH_STRING` will be replaced with the file path wrapped in quotes (`"./some/file/path.rs"`).
 
 ### Tools
 
