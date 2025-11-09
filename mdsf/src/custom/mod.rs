@@ -24,6 +24,8 @@ fn build_set_args_fn(
         for arg in &arguments {
             if arg == "$PATH" {
                 cmd.arg(file_path);
+            } else if arg.contains("$PATH_STRING") {
+                cmd.arg(arg.replace("$PATH_STRING", &file_path.to_string_lossy()));
             } else {
                 cmd.arg(arg);
             }
