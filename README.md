@@ -469,6 +469,8 @@ That can be changed by specifying the `newline` config option.
 
 Custom commands can be defined in the `mdsf.json` file.
 
+When defining the arguments the variable `$PATH` will automatically be replaced with the file path.
+
 ```json
 {
   "languages": {
@@ -480,8 +482,6 @@ Custom commands can be defined in the `mdsf.json` file.
   }
 }
 ```
-
-When defining the arguments the variable `$PATH` will automatically be replaced with the file path. `$PATH_STRING` will be replaced with the file path wrapped in quotes (`"./some/file/path.rs"`).
 
 ### Tools
 
@@ -927,7 +927,7 @@ When defining the arguments the variable `$PATH` will automatically be replaced 
 | `eradicate`                  | `eradicate --in-place $PATH`                                                            |
 | `erb-formatter`              | `erb-format $PATH --write`                                                              |
 | `erg:lint`                   | `erg lint $PATH`                                                                        |
-| `erlfmt`                     | `erlfmt -w $PATH_STRING`                                                                |
+| `erlfmt`                     | `erlfmt -w '$PATH'`                                                                     |
 | `eslint`                     | `eslint --fix $PATH`                                                                    |
 | `fantomas`                   | `fantomas $PATH`                                                                        |
 | `fish_indent`                | `fish_indent -w $PATH`                                                                  |
@@ -991,7 +991,7 @@ When defining the arguments the variable `$PATH` will automatically be replaced 
 | `jsonnet-lint`               | `jsonnet-lint $PATH`                                                                    |
 | `jsonnetfmt`                 | `jsonnetfmt -i $PATH`                                                                   |
 | `jsonpp`                     | `jsonpp -s`                                                                             |
-| `juliaformatter.jl`          | `julia -E using JuliaFormatter;format_file(\"{$PATH_STRING}\")`                         |
+| `juliaformatter.jl`          | `julia -E using JuliaFormatter;format_file(\"$PATH\")`                                  |
 | `just`                       | `just --fmt --unstable --justfile $PATH`                                                |
 | `kcl:fmt`                    | `kcl fmt $PATH`                                                                         |
 | `kcl:lint`                   | `kcl lint $PATH`                                                                        |
@@ -1067,7 +1067,7 @@ When defining the arguments the variable `$PATH` will automatically be replaced 
 | `prettierd`                  | `prettierd $PATH`                                                                       |
 | `pretty-php`                 | `pretty-php $PATH`                                                                      |
 | `prettypst`                  | `prettypst $PATH`                                                                       |
-| `prisma:format`              | `prisma format --schema={$PATH_STRING}`                                                 |
+| `prisma:format`              | `prisma format --schema=$PATH`                                                          |
 | `proselint`                  | `proselint $PATH`                                                                       |
 | `protolint`                  | `protolint lint -fix $PATH`                                                             |
 | `ptop`                       | `ptop $PATH $PATH`                                                                      |

@@ -19,9 +19,6 @@ pub struct ToolCommandTest {
     #[serde(default, skip_serializing_if = "is_false")]
     pub disabled: bool,
 
-    #[serde(default, skip_serializing_if = "is_false")]
-    pub disable_custom_command_test: bool,
-
     /// Codeblock language used when generating tests
     pub language: String,
 
@@ -583,19 +580,12 @@ impl Tool {
                     if arg == "$PATH" {
                         args_includes_path = true;
                         format!("{INDENT}cmd.arg(file_path);")
-                    } else if arg == "$PATH_STRING" {
+                    } else if arg.contains("$PATH") {
                         args_includes_path = true;
-
-                        let arg_str = "cmd.arg(format!(\"'{}'\", file_path.to_string_lossy()));";
-                        format!("{INDENT}{arg_str}")
-                    } else if arg.contains("$PATH_STRING") {
-                        args_includes_path = true;
-
-                        let declaration = "let fps = file_path.to_string_lossy();\n";
 
                         format!(
-                            "{INDENT}{declaration}{INDENT}cmd.arg(format!(\"{}\"));",
-                            arg.replace("$PATH_STRING", "fps")
+                            "{INDENT}cmd.arg(format!(\"{}\", file_path.to_string_lossy()));",
+                            arg.replace("$PATH", "{}")
                         )
                     } else {
                         format!("{INDENT}cmd.arg(\"{arg}\");")
@@ -633,13 +623,10 @@ mod test_{module_name} {{{maybe_line_break}{tests}{maybe_line_break}}}
                     .iter()
                     .filter(|test| !test.disabled)
                     .flat_map(|test| {
-                        let mut output = vec![self.generate_test(cmd, test)];
-
-                        if !test.disable_custom_command_test {
-                            output.push(self.generate_custom_tool_test(options, test));
-                        }
-
-                        output
+                        [
+                            self.generate_test(cmd, test),
+                            self.generate_custom_tool_test(options, test),
+                        ]
                     })
                     .collect::<Vec<_>>()
                     .join("\n\n")

@@ -667,7 +667,7 @@
           "const": "erg:lint"
         },
         {
-          "description": "An automated code formatter for Erlang\n\n[https://github.com/whatsapp/erlfmt](https://github.com/whatsapp/erlfmt)\n\n`erlfmt -w $PATH_STRING`",
+          "description": "An automated code formatter for Erlang\n\n[https://github.com/whatsapp/erlfmt](https://github.com/whatsapp/erlfmt)\n\n`erlfmt -w '$PATH'`",
           "type": "string",
           "const": "erlfmt"
         },
@@ -987,7 +987,7 @@
           "const": "jsonpp"
         },
         {
-          "description": "An opinionated code formatter for Julia. Plot twist - the opinion is your own\n\n[https://github.com/domluna/juliaformatter.jl](https://github.com/domluna/juliaformatter.jl)\n\n`julia -E using JuliaFormatter;format_file(\\\"{$PATH_STRING}\\\")`",
+          "description": "An opinionated code formatter for Julia. Plot twist - the opinion is your own\n\n[https://github.com/domluna/juliaformatter.jl](https://github.com/domluna/juliaformatter.jl)\n\n`julia -E using JuliaFormatter;format_file(\\\"$PATH\\\")`",
           "type": "string",
           "const": "juliaformatter.jl"
         },
@@ -1367,7 +1367,7 @@
           "const": "prettypst"
         },
         {
-          "description": "Commands for interacting with the prisma ORM\n\n[https://www.prisma.io/docs/orm/tools/prisma-cli](https://www.prisma.io/docs/orm/tools/prisma-cli)\n\n`prisma format --schema={$PATH_STRING}`",
+          "description": "Commands for interacting with the prisma ORM\n\n[https://www.prisma.io/docs/orm/tools/prisma-cli](https://www.prisma.io/docs/orm/tools/prisma-cli)\n\n`prisma format --schema=$PATH`",
           "type": "string",
           "const": "prisma:format"
         },

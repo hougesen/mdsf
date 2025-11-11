@@ -4,13 +4,9 @@
   "categories": ["formatter"],
   "commands": {
     "": {
-      "arguments": [
-        "-E",
-        "using JuliaFormatter;format_file(\\\"{$PATH_STRING}\\\")"
-      ],
+      "arguments": ["-E", "using JuliaFormatter;format_file(\\\"$PATH\\\")"],
       "tests": [
         {
-          "disable_custom_command_test": true,
           "language": "julia",
           "test_input": "function add( a:: Int32,  b::Int32 )\n            c = a+ b\n            return c\n            end ",
           "test_output": "function add(a::Int32, b::Int32)\n    c = a + b\n    return c\nend\n"

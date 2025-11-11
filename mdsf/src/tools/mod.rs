@@ -1127,7 +1127,7 @@ pub enum Tooling {
     ///
     /// [https://github.com/whatsapp/erlfmt](https://github.com/whatsapp/erlfmt)
     ///
-    /// `erlfmt -w $PATH_STRING`
+    /// `erlfmt -w '$PATH'`
     Erlfmt,
 
     #[serde(rename = "eslint")]
@@ -1639,7 +1639,7 @@ pub enum Tooling {
     ///
     /// [https://github.com/domluna/juliaformatter.jl](https://github.com/domluna/juliaformatter.jl)
     ///
-    /// `julia -E using JuliaFormatter;format_file(\"{$PATH_STRING}\")`
+    /// `julia -E using JuliaFormatter;format_file(\"$PATH\")`
     JuliaformatterJl,
 
     #[serde(rename = "just")]
@@ -2247,7 +2247,7 @@ pub enum Tooling {
     ///
     /// [https://www.prisma.io/docs/orm/tools/prisma-cli](https://www.prisma.io/docs/orm/tools/prisma-cli)
     ///
-    /// `prisma format --schema={$PATH_STRING}`
+    /// `prisma format --schema=$PATH`
     PrismaFormat,
 
     #[serde(rename = "proselint")]

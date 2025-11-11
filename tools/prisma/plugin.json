@@ -4,7 +4,7 @@
   "categories": ["formatter"],
   "commands": {
     "format": {
-      "arguments": ["format", "--schema={$PATH_STRING}"],
+      "arguments": ["format", "--schema=$PATH"],
       "tests": [
         {
           "language": "schema",

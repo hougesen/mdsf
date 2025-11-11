@@ -10,8 +10,7 @@ pub fn set_args(
     file_path: &std::path::Path,
 ) -> std::process::Command {
     cmd.arg("format");
-    let fps = file_path.to_string_lossy();
-    cmd.arg(format!("--schema={fps}"));
+    cmd.arg(format!("--schema={}", file_path.to_string_lossy()));
     cmd
 }
 

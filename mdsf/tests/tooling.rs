@@ -3361,7 +3361,7 @@ case Erlang of movie->[hello(mike,joe,robert),credits]; language->formatting_arg
         crate::common::run_tooling_test(
             mdsf::config::MdsfTool::Custom(mdsf::custom::CustomTool {
                 binary: "erlfmt".to_owned(),
-                arguments: vec!["-w".to_owned(), "$PATH_STRING".to_owned()],
+                arguments: vec!["-w".to_owned(), "'$PATH'".to_owned()],
                 stdin: false,
             }),
             input,
@@ -5231,6 +5231,36 @@ end
 
         crate::common::run_tooling_test(
             mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::JuliaformatterJl),
+            input,
+            output,
+            ft,
+        )
+    }
+
+    #[test_with::executable(julia)]
+    fn test_custom_tool_julia_julia_6775294e3dc9244() -> Result<(), Box<dyn core::error::Error>> {
+        let input = r#"function add( a:: Int32,  b::Int32 )
+            c = a+ b
+            return c
+            end "#;
+
+        let output = r#"function add(a::Int32, b::Int32)
+    c = a + b
+    return c
+end
+"#;
+
+        let ft = "julia";
+
+        crate::common::run_tooling_test(
+            mdsf::config::MdsfTool::Custom(mdsf::custom::CustomTool {
+                binary: "julia".to_owned(),
+                arguments: vec![
+                    "-E".to_owned(),
+                    "using JuliaFormatter;format_file(\"$PATH\")".to_owned(),
+                ],
+                stdin: false,
+            }),
             input,
             output,
             ft,
@@ -7859,7 +7889,7 @@ mod test_prisma_format {
         crate::common::run_tooling_test(
             mdsf::config::MdsfTool::Custom(mdsf::custom::CustomTool {
                 binary: "prisma".to_owned(),
-                arguments: vec!["format".to_owned(), "--schema={$PATH_STRING}".to_owned()],
+                arguments: vec!["format".to_owned(), "--schema=$PATH".to_owned()],
                 stdin: false,
             }),
             input,
