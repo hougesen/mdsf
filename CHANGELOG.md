@@ -2,8 +2,20 @@
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
-#### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.10.8...HEAD)
+#### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.11.0...HEAD)
 
+#### [v0.11.0](https://github.com/hougesen/mdsf/compare/v0.10.8...v0.11.0)
+
+> 11 November 2025
+
+- chore: release v0.11.0 [`#1408`](https://github.com/hougesen/mdsf/pull/1408)
+- build(deps-dev): bump esbuild from 0.25.12 to 0.27.0 in /mdsf-vscode [`#1402`](https://github.com/hougesen/mdsf/pull/1402)
+- build(deps-dev): bump @biomejs/biome from 2.3.4 to 2.3.5 in /mdsf-vscode [`#1406`](https://github.com/hougesen/mdsf/pull/1406)
+- build(deps-dev): bump @typescript-eslint/eslint-plugin in /mdsf-vscode [`#1405`](https://github.com/hougesen/mdsf/pull/1405)
+- build(deps-dev): bump esbuild from 0.25.12 to 0.27.0 in /github-action [`#1404`](https://github.com/hougesen/mdsf/pull/1404)
+- build(deps-dev): bump @biomejs/biome in /github-action [`#1403`](https://github.com/hougesen/mdsf/pull/1403)
+- build(deps): bump ureq from 3.1.2 to 3.1.4 [`#1401`](https://github.com/hougesen/mdsf/pull/1401)
+- feat: add experimental support for custom tools [`#1400`](https://github.com/hougesen/mdsf/pull/1400)
 - build(deps-dev): bump eslint from 9.38.0 to 9.39.1 in /github-action [`#1396`](https://github.com/hougesen/mdsf/pull/1396)
 - build(deps-dev): bump @biomejs/biome in /github-action [`#1395`](https://github.com/hougesen/mdsf/pull/1395)
 - build(deps-dev): bump @biomejs/biome from 2.3.3 to 2.3.4 in /mdsf-vscode [`#1394`](https://github.com/hougesen/mdsf/pull/1394)
@@ -46,19 +58,6 @@ All notable changes to this project will be documented in this file. Dates are d
 - build(deps): bump clap_complete from 4.5.58 to 4.5.59 [`#1349`](https://github.com/hougesen/mdsf/pull/1349)
 - build(deps): bump clap from 4.5.48 to 4.5.49 [`#1347`](https://github.com/hougesen/mdsf/pull/1347)
 - chore: update tools descriptions [`#1360`](https://github.com/hougesen/mdsf/pull/1360)
-- test: generate custom tool tests [`e988e30`](https://github.com/hougesen/mdsf/commit/e988e301a0a370027aa3f14b41de0c04e0b3f9dd)
-- refactor: start extracting logic for custom tools [`07b6a86`](https://github.com/hougesen/mdsf/commit/07b6a8665a4d796c4215805c2bfa75d4345871e9)
-- feat: set args function for custom tools [`69661e2`](https://github.com/hougesen/mdsf/commit/69661e2032820e536a03490107165b24402accc0)
-- refactor: MdsfFormatter to MdsfToolWrapper [`082120d`](https://github.com/hougesen/mdsf/commit/082120d5a42a034bff11efc490bb008c0f059c37)
-- test: custom tool execution [`9816537`](https://github.com/hougesen/mdsf/commit/98165374b71ed750c0d140c1fccbcf88ad8fd6a1)
-- refactor: merge PATH_STRING with PATH variable [`6fb4093`](https://github.com/hougesen/mdsf/commit/6fb4093e7c422bd403e7a689b7c13bfc6ffa2d12)
-- chore: disable juliaformatter custom formatter test [`f288f05`](https://github.com/hougesen/mdsf/commit/f288f053d0190ae2709fa3c5cdd0f6cf982d6c5f)
-- fix(pyupgrade): add --exit-zero-even-if-changed arg [`9bf537e`](https://github.com/hougesen/mdsf/commit/9bf537eb50cffc4d57615b85595ad1d476a3161d)
-- docs: short example of custom commands [`4389e2b`](https://github.com/hougesen/mdsf/commit/4389e2bbf464b5cc17b83fb8e63d2fd9697532d7)
-- fix: correct arg for reorder [`f7c4baa`](https://github.com/hougesen/mdsf/commit/f7c4baa16b9a03681155cc046ef96ecf450ac8ca)
-- fix: reorder-python-imports args [`9976da3`](https://github.com/hougesen/mdsf/commit/9976da3f94fba10d563ceb0c89c51cef75a985ea)
-- fix: correct support for [`3d17609`](https://github.com/hougesen/mdsf/commit/3d17609f7660d49bbdd86df658a764db6115f893)
-- feat: add support for arguments [`dd72cda`](https://github.com/hougesen/mdsf/commit/dd72cda6b140a0633503188627faca8a2abcef8e)
 
 #### [v0.10.8](https://github.com/hougesen/mdsf/compare/v0.10.7...v0.10.8)
 
