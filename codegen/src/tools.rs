@@ -19,6 +19,9 @@ pub struct ToolCommandTest {
     #[serde(default, skip_serializing_if = "is_false")]
     pub disabled: bool,
 
+    #[serde(default, skip_serializing_if = "is_false")]
+    pub disable_custom_command_test: bool,
+
     /// Codeblock language used when generating tests
     pub language: String,
 
@@ -629,10 +632,15 @@ mod test_{module_name} {{{maybe_line_break}{tests}{maybe_line_break}}}
                     .tests
                     .iter()
                     .filter(|test| !test.disabled)
-                    .flat_map(|test| [
-                        self.generate_test(cmd, test),
-                        self.generate_custom_tool_test(options, test),
-                    ])
+                    .flat_map(|test| {
+                        let mut output = vec![self.generate_test(cmd, test)];
+
+                        if !test.disable_custom_command_test {
+                            output.push(self.generate_custom_tool_test(options, test));
+                        }
+
+                        output
+                    })
                     .collect::<Vec<_>>()
                     .join("\n\n")
             );

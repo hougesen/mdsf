@@ -51,6 +51,7 @@ All notable changes to this project will be documented in this file. Dates are d
 - feat: set args function for custom tools [`69661e2`](https://github.com/hougesen/mdsf/commit/69661e2032820e536a03490107165b24402accc0)
 - refactor: MdsfFormatter to MdsfToolWrapper [`082120d`](https://github.com/hougesen/mdsf/commit/082120d5a42a034bff11efc490bb008c0f059c37)
 - test: custom tool execution [`9816537`](https://github.com/hougesen/mdsf/commit/98165374b71ed750c0d140c1fccbcf88ad8fd6a1)
+- docs: short example of custom commands [`4389e2b`](https://github.com/hougesen/mdsf/commit/4389e2bbf464b5cc17b83fb8e63d2fd9697532d7)
 - fix: correct arg for reorder [`f7c4baa`](https://github.com/hougesen/mdsf/commit/f7c4baa16b9a03681155cc046ef96ecf450ac8ca)
 - fix: reorder-python-imports args [`9976da3`](https://github.com/hougesen/mdsf/commit/9976da3f94fba10d563ceb0c89c51cef75a985ea)
 - fix: correct support for [`3d17609`](https://github.com/hougesen/mdsf/commit/3d17609f7660d49bbdd86df658a764db6115f893)

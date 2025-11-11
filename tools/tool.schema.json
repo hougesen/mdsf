@@ -94,6 +94,9 @@
     "ToolCommandTest": {
       "type": "object",
       "properties": {
+        "disable_custom_command_test": {
+          "type": "boolean"
+        },
         "disabled": {
           "type": "boolean"
         },
