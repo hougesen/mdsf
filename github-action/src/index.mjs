@@ -62,9 +62,7 @@ async function getPackageDownloadPath(version, file) {
   const parsedVersion = parseVersion(version);
 
   if (parsedVersion?.length) {
-    return `https://github.com/hougesen/mdsf/releases/download/${
-      parsedVersion
-    }/${file}`;
+    return `https://github.com/hougesen/mdsf/releases/download/${parsedVersion}/${file}`;
   }
 
   return `https://github.com/hougesen/mdsf/releases/latest/download/${file}`;

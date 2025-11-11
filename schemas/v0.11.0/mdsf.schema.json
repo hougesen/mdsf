@@ -5,7 +5,7 @@
   "properties": {
     "$schema": {
       "type": "string",
-      "default": "https://raw.githubusercontent.com/hougesen/mdsf/main/schemas/v0.10.7-next/mdsf.schema.json"
+      "default": "https://raw.githubusercontent.com/hougesen/mdsf/main/schemas/v0.11.0/mdsf.schema.json"
     },
     "custom_file_extensions": {
       "description": "Used for settings custom file extensions for a given language.\n\n```json\n{\n  \"custom_file_extensions\": {\n    \"rust\": \".rust\"\n  }\n}\n```",
@@ -29,7 +29,7 @@
       "description": "Defines which tools are used by the language.\n\n```json\n{\n    \"languages\": {\n      // Only run `ruff` on Python snippets,\n      \"python\": \"ruff:format\",\n      // Run `usort` on file and then `black`\n      \"python\": [\"usort\", \"black\"],\n      // Run `usort`, if that fails run `isort`, finally run `black`\n      \"python\": [[\"usort\", \"isort\"], \"black\"],\n\n      // Tools listed under \"*\" will be run on any snippet.\n      \"*\": [\"typos\"],\n\n      // Tools  listed under \"_\" will only be run when there is not tool configured for the file type OR globally (\"*\").\n      \"_\": \"prettier\"\n    }\n}\n```",
       "type": "object",
       "additionalProperties": {
-        "$ref": "#/$defs/MdsfFormatter"
+        "$ref": "#/$defs/MdsfToolWrapper"
       },
       "default": {}
     },
@@ -65,6 +65,25 @@
     }
   },
   "$defs": {
+    "CustomTool": {
+      "type": "object",
+      "properties": {
+        "arguments": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "binary": {
+          "type": "string"
+        },
+        "stdin": {
+          "type": "boolean",
+          "default": false
+        }
+      },
+      "required": ["binary", "arguments"]
+    },
     "MdsfConfigRunners": {
       "type": "object",
       "properties": {
@@ -110,15 +129,25 @@
         }
       }
     },
-    "MdsfFormatter": {
+    "MdsfTool": {
       "anyOf": [
         {
           "$ref": "#/$defs/Tooling"
         },
         {
+          "$ref": "#/$defs/CustomTool"
+        }
+      ]
+    },
+    "MdsfToolWrapper": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/MdsfTool"
+        },
+        {
           "type": "array",
           "items": {
-            "$ref": "#/$defs/MdsfFormatter"
+            "$ref": "#/$defs/MdsfToolWrapper"
           }
         }
       ]
@@ -213,7 +242,7 @@
           "const": "atlas:fmt"
         },
         {
-          "description": "Adds the Optional type-hint to arguments where the default value is None\n\n[https://github.com/luttik/auto-optional](https://github.com/luttik/auto-optional)\n\n`auto-optional $PATH`",
+          "description": "Makes typed arguments Optional when the default argument is None\n\n[https://github.com/luttik/auto-optional](https://github.com/luttik/auto-optional)\n\n`auto-optional $PATH`",
           "type": "string",
           "const": "auto-optional"
         },
@@ -228,7 +257,7 @@
           "const": "autoflake"
         },
         {
-          "description": "A tool that automatically formats Python code to conform to the PEP 8 style guid\n\n[https://github.com/hhatto/autopep8](https://github.com/hhatto/autopep8)\n\n`autopep8 --in-place $PATH`",
+          "description": "A tool that automatically formats Python code to conform to the PEP 8 style guide\n\n[https://github.com/hhatto/autopep8](https://github.com/hhatto/autopep8)\n\n`autopep8 --in-place $PATH`",
           "type": "string",
           "const": "autopep8"
         },
@@ -303,17 +332,17 @@
           "const": "bpfmt"
         },
         {
-          "description": "A Haskell source code formatter\n\n[https://github.com/lspitzner/brittany](https://github.com/lspitzner/brittany)\n\n`brittany --write-mode=inplace $PATH`",
+          "description": "Haskell source code formatter\n\n[https://github.com/lspitzner/brittany](https://github.com/lspitzner/brittany)\n\n`brittany --write-mode=inplace $PATH`",
           "type": "string",
           "const": "brittany"
         },
         {
-          "description": "A best practice Python code formatter\n\n[https://github.com/odwyersoftware/brunette](https://github.com/odwyersoftware/brunette)\n\n`brunette --quiet $PATH`",
+          "description": "A best practice Python code formatter\n\n[https://pypi.org/project/brunette](https://pypi.org/project/brunette)\n\n`brunette --quiet $PATH`",
           "type": "string",
           "const": "brunette"
         },
         {
-          "description": "A code formatter for BrightScript and BrighterScript\n\n[https://github.com/rokucommunity/brighterscript-formatter](https://github.com/rokucommunity/brighterscript-formatter)\n\n`bsfmt $PATH --write`",
+          "description": "A code formatter for BrighterScript (and BrightScript)\n\n[https://github.com/rokucommunity/brighterscript-formatter](https://github.com/rokucommunity/brighterscript-formatter)\n\n`bsfmt $PATH --write`",
           "type": "string",
           "const": "bsfmt"
         },
@@ -323,17 +352,17 @@
           "const": "bslint"
         },
         {
-          "description": "Format Protobuf files\n\n[https://buf.build/docs/format/style/](https://buf.build/docs/format/style/)\n\n`buf format --write $PATH`",
+          "description": "Format Protobuf files\n\n[https://buf.build/docs/format/style](https://buf.build/docs/format/style)\n\n`buf format --write $PATH`",
           "type": "string",
           "const": "buf:format"
         },
         {
-          "description": "Lint Protobuf files\n\n[https://buf.build/docs/lint/overview/](https://buf.build/docs/lint/overview/)\n\n`buf lint $PATH`",
+          "description": "Lint Protobuf files\n\n[https://buf.build/docs/lint/overview](https://buf.build/docs/lint/overview)\n\n`buf lint $PATH`",
           "type": "string",
           "const": "buf:lint"
         },
         {
-          "description": "A bazel BUILD file formatter and\n\n[https://github.com/bazelbuild/buildtools](https://github.com/bazelbuild/buildtools)\n\n`buildifier $PATH`",
+          "description": "A bazel BUILD file formatter and editor\n\n[https://github.com/bazelbuild/buildtools](https://github.com/bazelbuild/buildtools)\n\n`buildifier $PATH`",
           "type": "string",
           "const": "buildifier"
         },
@@ -353,7 +382,7 @@
           "const": "cabal-prettify"
         },
         {
-          "description": "Reformat the .cabal file using the standard style\n\n[https://www.haskell.org/cabal/](https://www.haskell.org/cabal/)\n\n`cabal format $PATH`",
+          "description": "Reformat the .cabal file using the standard style\n\n[https://www.haskell.org/cabal](https://www.haskell.org/cabal)\n\n`cabal format $PATH`",
           "type": "string",
           "const": "cabal:format"
         },
@@ -363,7 +392,7 @@
           "const": "caddy:fmt"
         },
         {
-          "description": "Format Caramel code\n\n[https://caramel.run/](https://caramel.run/)\n\n`caramel fmt $PATH`",
+          "description": "Format Caramel code\n\n[https://caramel.run](https://caramel.run)\n\n`caramel fmt $PATH`",
           "type": "string",
           "const": "caramel:fmt"
         },
@@ -378,7 +407,7 @@
           "const": "cfn-lint"
         },
         {
-          "description": "Experimental linter/analyzer for Makefiles\n\n[https://github.com/mrtazz/checkmake](https://github.com/mrtazz/checkmake)\n\n`checkmake $PATH`",
+          "description": "Linter/analyzer for Makefiles\n\n[https://github.com/mrtazz/checkmake](https://github.com/mrtazz/checkmake)\n\n`checkmake $PATH`",
           "type": "string",
           "const": "checkmake"
         },
@@ -388,7 +417,7 @@
           "const": "clang-format"
         },
         {
-          "description": "clang-tidy is a clang-based C++ “linter” tool\n\n[https://clang.llvm.org/extra/clang-tidy/](https://clang.llvm.org/extra/clang-tidy/)\n\n`clang-tidy --fix $PATH`",
+          "description": "clang-tidy is a clang-based C++ “linter” tool\n\n[https://clang.llvm.org/extra/clang-tidy](https://clang.llvm.org/extra/clang-tidy)\n\n`clang-tidy --fix $PATH`",
           "type": "string",
           "const": "clang-tidy"
         },
@@ -433,7 +462,7 @@
           "const": "coffeelint"
         },
         {
-          "description": "Cppcheck is a static analysis tool for C/C++ code\n\n[https://cppcheck.sourceforge.io/](https://cppcheck.sourceforge.io/)\n\n`cppcheck $PATH`",
+          "description": "Cppcheck is a static analysis tool for C/C++ code\n\n[https://cppcheck.sourceforge.io](https://cppcheck.sourceforge.io)\n\n`cppcheck $PATH`",
           "type": "string",
           "const": "cppcheck"
         },
@@ -453,12 +482,12 @@
           "const": "crystal:format"
         },
         {
-          "description": "An Opinionated Code Formatter for C#\n\n[https://github.com/belav/csharpier](https://github.com/belav/csharpier)\n\n`csharpier format --write-stdout`",
+          "description": "CSharpier is an opinionated code formatter for C#\n\n[https://github.com/belav/csharpier](https://github.com/belav/csharpier)\n\n`csharpier format --write-stdout`",
           "type": "string",
           "const": "csharpier"
         },
         {
-          "description": "A css formatter\n\n[https://github.com/beautifier/js-beautify](https://github.com/beautifier/js-beautify)\n\n`css-beautify -r --type css -f $PATH`",
+          "description": "A CSS formatter\n\n[https://github.com/beautifier/js-beautify](https://github.com/beautifier/js-beautify)\n\n`css-beautify -r --type css -f $PATH`",
           "type": "string",
           "const": "css-beautify"
         },
@@ -473,7 +502,7 @@
           "const": "csslint"
         },
         {
-          "description": "Validate and define text-based and dynamic configuration\n\n[https://cuelang.org/docs/reference/command/cue-help-fmt/](https://cuelang.org/docs/reference/command/cue-help-fmt/)\n\n`cue fmt $PATH`",
+          "description": "Format CUE files\n\n[https://cuelang.org/docs/reference/command/cue-help-fmt](https://cuelang.org/docs/reference/command/cue-help-fmt)\n\n`cue fmt $PATH`",
           "type": "string",
           "const": "cue:fmt"
         },
@@ -488,7 +517,7 @@
           "const": "curlylint"
         },
         {
-          "description": "Format d2 code\n\n[https://d2lang.com/](https://d2lang.com/)\n\n`d2 fmt $PATH`",
+          "description": "Format d2 code\n\n[https://d2lang.com](https://d2lang.com)\n\n`d2 fmt $PATH`",
           "type": "string",
           "const": "d2:fmt"
         },
@@ -503,12 +532,12 @@
           "const": "dart:format"
         },
         {
-          "description": "Fixes issues produced by dcm analyze, dcm check-unused-code, dcm check-unused-files or dcm check-dependencies commands\n\n[https://dcm.dev/docs/cli/formatting/fix/](https://dcm.dev/docs/cli/formatting/fix/)\n\n`dcm fix $PATH`",
+          "description": "Fixes issues produced by dcm analyze, dcm check-unused-code, dcm check-unused-files or dcm check-dependencies commands\n\n[https://dcm.dev/docs/cli/formatting/fix](https://dcm.dev/docs/cli/formatting/fix)\n\n`dcm fix $PATH`",
           "type": "string",
           "const": "dcm:fix"
         },
         {
-          "description": "Formats dart files\n\n[https://dcm.dev/docs/cli/formatting/format/](https://dcm.dev/docs/cli/formatting/format/)\n\n`dcm format $PATH`",
+          "description": "Formats dart files\n\n[https://dcm.dev/docs/cli/formatting/format](https://dcm.dev/docs/cli/formatting/format)\n\n`dcm format $PATH`",
           "type": "string",
           "const": "dcm:format"
         },
@@ -518,12 +547,12 @@
           "const": "deadnix"
         },
         {
-          "description": "Formatter and linter for JavaScript and TypeScript\n\n[https://docs.deno.com/runtime/reference/cli/fmt/](https://docs.deno.com/runtime/reference/cli/fmt/)\n\n`deno fmt --quiet $PATH`",
+          "description": "Formatter and linter for JavaScript and TypeScript\n\n[https://docs.deno.com/runtime/reference/cli/fmt](https://docs.deno.com/runtime/reference/cli/fmt)\n\n`deno fmt --quiet $PATH`",
           "type": "string",
           "const": "deno:fmt"
         },
         {
-          "description": "Formatter and linter for JavaScript and TypeScript\n\n[https://docs.deno.com/runtime/reference/cli/lint/](https://docs.deno.com/runtime/reference/cli/lint/)\n\n`deno lint --fix $PATH`",
+          "description": "Formatter and linter for JavaScript and TypeScript\n\n[https://docs.deno.com/runtime/reference/cli/lint](https://docs.deno.com/runtime/reference/cli/lint)\n\n`deno lint --fix $PATH`",
           "type": "string",
           "const": "deno:lint"
         },
@@ -533,7 +562,7 @@
           "const": "dfmt"
         },
         {
-          "description": "Format Dhall files\n\n[https://dhall-lang.org/](https://dhall-lang.org/)\n\n`dhall format $PATH`",
+          "description": "Format Dhall files\n\n[https://dhall-lang.org](https://dhall-lang.org)\n\n`dhall format $PATH`",
           "type": "string",
           "const": "dhall"
         },
@@ -543,7 +572,7 @@
           "const": "djade"
         },
         {
-          "description": "Lint & Format HTML Templates\n\n[https://www.djlint.com/](https://www.djlint.com/)\n\n`djlint $PATH --reformat`",
+          "description": "Lint & Format HTML Templates\n\n[https://www.djlint.com](https://www.djlint.com)\n\n`djlint $PATH --reformat`",
           "type": "string",
           "const": "djlint"
         },
@@ -563,7 +592,7 @@
           "const": "dockfmt"
         },
         {
-          "description": "A formatter for Sphinx flavored reStructuredText\n\n[https://github.com/lilspazjoekp/docstrfmt](https://github.com/lilspazjoekp/docstrfmt)\n\n`docstrfmt $PATH`",
+          "description": "A formatter for reStructuredText\n\n[https://github.com/lilspazjoekp/docstrfmt](https://github.com/lilspazjoekp/docstrfmt)\n\n`docstrfmt $PATH`",
           "type": "string",
           "const": "docstrfmt"
         },
@@ -578,7 +607,7 @@
           "const": "dotenv-linter:fix"
         },
         {
-          "description": "A pluggable and configurable code formatting platform written in Rust\n\n[https://dprint.dev/](https://dprint.dev/)\n\n`dprint fmt $PATH`",
+          "description": "A pluggable and configurable code formatting platform written in Rust\n\n[https://dprint.dev](https://dprint.dev)\n\n`dprint fmt $PATH`",
           "type": "string",
           "const": "dprint:fmt"
         },
@@ -638,12 +667,12 @@
           "const": "erg:lint"
         },
         {
-          "description": "An automated code formatter for Erlang\n\n[https://github.com/whatsapp/erlfmt](https://github.com/whatsapp/erlfmt)\n\n`erlfmt -w $PATH_STRING`",
+          "description": "An automated code formatter for Erlang\n\n[https://github.com/whatsapp/erlfmt](https://github.com/whatsapp/erlfmt)\n\n`erlfmt -w '$PATH'`",
           "type": "string",
           "const": "erlfmt"
         },
         {
-          "description": "Find and fix problems in your JavaScript code\n\n[https://github.com/eslint/eslint/](https://github.com/eslint/eslint/)\n\n`eslint --fix $PATH`",
+          "description": "Find and fix problems in your JavaScript code\n\n[https://github.com/eslint/eslint](https://github.com/eslint/eslint)\n\n`eslint --fix $PATH`",
           "type": "string",
           "const": "eslint"
         },
@@ -678,22 +707,22 @@
           "const": "fnlfmt"
         },
         {
-          "description": "A Solidity formatter\n\n[https://github.com/foundry-rs/foundry](https://github.com/foundry-rs/foundry)\n\n`forge fmt $PATH`",
+          "description": "Format Solidity code\n\n[https://github.com/foundry-rs/foundry](https://github.com/foundry-rs/foundry)\n\n`forge fmt $PATH`",
           "type": "string",
           "const": "forge:fmt"
         },
         {
-          "description": "A Fortran linter, written in Rust\n\n[https://github.com/plasmafair/fortitude](https://github.com/plasmafair/fortitude)\n\n`fortitude check --quiet --no-respect-gitignore $PATH`",
+          "description": "A Fortran linter\n\n[https://github.com/plasmafair/fortitude](https://github.com/plasmafair/fortitude)\n\n`fortitude check --quiet --no-respect-gitignore $PATH`",
           "type": "string",
           "const": "fortitude:check"
         },
         {
-          "description": "A Fortran linter, written in Rust\n\n[https://github.com/plasmafair/fortitude](https://github.com/plasmafair/fortitude)\n\n`fortitude check --quiet --no-respect-gitignore --fix $PATH`",
+          "description": "A Fortran linter\n\n[https://github.com/plasmafair/fortitude](https://github.com/plasmafair/fortitude)\n\n`fortitude check --quiet --no-respect-gitignore --fix $PATH`",
           "type": "string",
           "const": "fortitude:check:fix"
         },
         {
-          "description": "A Fortran linter, written in Rust\n\n[https://github.com/plasmafair/fortitude](https://github.com/plasmafair/fortitude)\n\n`fortitude check --quiet --no-respect-gitignore --fix --unsafe-fixes $PATH`",
+          "description": "A Fortran linter\n\n[https://github.com/plasmafair/fortitude](https://github.com/plasmafair/fortitude)\n\n`fortitude check --quiet --no-respect-gitignore --fix --unsafe-fixes $PATH`",
           "type": "string",
           "const": "fortitude:check:fix:unsafe"
         },
@@ -703,7 +732,7 @@
           "const": "fortran-linter"
         },
         {
-          "description": "A formatter for Haskell source code\n\n[https://github.com/fourmolu/fourmolu](https://github.com/fourmolu/fourmolu)\n\n`fourmolu -i $PATH`",
+          "description": "A fourk of ormolu that uses four space indentation and allows arbitrary configuration\n\n[https://github.com/fourmolu/fourmolu](https://github.com/fourmolu/fourmolu)\n\n`fourmolu -i $PATH`",
           "type": "string",
           "const": "fourmolu"
         },
@@ -748,12 +777,12 @@
           "const": "gersemi"
         },
         {
-          "description": "Parallelized formatter with no external dependencies for gherkin (cucumber, behat)\n\n[https://github.com/antham/ghokin](https://github.com/antham/ghokin)\n\n`ghokin fmt replace $PATH`",
+          "description": "Parallelized formatter with no external dependencies for gherkin (cucumber, behat...)\n\n[https://github.com/antham/ghokin](https://github.com/antham/ghokin)\n\n`ghokin fmt replace $PATH`",
           "type": "string",
           "const": "ghokin:fmt"
         },
         {
-          "description": "Format Gleam source code\n\n[https://gleam.run/](https://gleam.run/)\n\n`gleam format $PATH`",
+          "description": "Format Gleam source code\n\n[https://gleam.run](https://gleam.run)\n\n`gleam format $PATH`",
           "type": "string",
           "const": "gleam:format"
         },
@@ -783,17 +812,17 @@
           "const": "goimports-reviser"
         },
         {
-          "description": "Format go source code\n\n[https://golangci-lint.run/usage/formatters/](https://golangci-lint.run/usage/formatters/)\n\n`golangci-lint fmt $PATH`",
+          "description": "Format go source code\n\n[https://golangci-lint.run/usage/formatters](https://golangci-lint.run/usage/formatters)\n\n`golangci-lint fmt $PATH`",
           "type": "string",
           "const": "golangci-lint:fmt"
         },
         {
-          "description": "Fast linters runner for Go\n\n[https://golangci-lint.run/usage/linters/](https://golangci-lint.run/usage/linters/)\n\n`golangci-lint run $PATH`",
+          "description": "Fast linters runner for Go\n\n[https://golangci-lint.run/usage/linters](https://golangci-lint.run/usage/linters)\n\n`golangci-lint run $PATH`",
           "type": "string",
           "const": "golangci-lint:run"
         },
         {
-          "description": "Fast linters runner for Go\n\n[https://golangci-lint.run/usage/linters/](https://golangci-lint.run/usage/linters/)\n\n`golangci-lint run --fix $PATH`",
+          "description": "Fast linters runner for Go\n\n[https://golangci-lint.run/usage/linters](https://golangci-lint.run/usage/linters)\n\n`golangci-lint run --fix $PATH`",
           "type": "string",
           "const": "golangci-lint:run:fix"
         },
@@ -813,7 +842,7 @@
           "const": "gospel"
         },
         {
-          "description": "Lint a GraphQL schema\n\n[https://grafbase.com/docs/reference/grafbase-cli/lint](https://grafbase.com/docs/reference/grafbase-cli/lint)\n\n`grafbase lint $PATH`",
+          "description": "Lint GraphQL schemas\n\n[https://grafbase.com/docs/reference/grafbase-cli/lint](https://grafbase.com/docs/reference/grafbase-cli/lint)\n\n`grafbase lint $PATH`",
           "type": "string",
           "const": "grafbase:lint"
         },
@@ -843,7 +872,7 @@
           "const": "hfmt"
         },
         {
-          "description": "Extensible Haskell pretty printer\n\n[https://github.com/mihaimaruseac/hindent](https://github.com/mihaimaruseac/hindent)\n\n`hindent $PATH`",
+          "description": "Haskell pretty printer\n\n[https://github.com/mihaimaruseac/hindent](https://github.com/mihaimaruseac/hindent)\n\n`hindent $PATH`",
           "type": "string",
           "const": "hindent"
         },
@@ -868,12 +897,12 @@
           "const": "htmlhint"
         },
         {
-          "description": "Formatter for hurl files\n\n[https://hurl.dev/](https://hurl.dev/)\n\n`hurlfmt --in-place $PATH`",
+          "description": "Formatter for hurl files\n\n[https://hurl.dev](https://hurl.dev)\n\n`hurlfmt --in-place $PATH`",
           "type": "string",
           "const": "hurlfmt"
         },
         {
-          "description": "A formatter for Imba\n\n[https://imba.io/](https://imba.io/)\n\n`imba fmt -f $PATH`",
+          "description": "A formatter for Imba\n\n[https://imba.io](https://imba.io)\n\n`imba fmt -f $PATH`",
           "type": "string",
           "const": "imba:fmt"
         },
@@ -898,7 +927,7 @@
           "const": "joker"
         },
         {
-          "description": "JSON processor\n\n[https://github.com/jqlang/jq](https://github.com/jqlang/jq)\n\n`jq`",
+          "description": "Command-line JSON processor\n\n[https://github.com/jqlang/jq](https://github.com/jqlang/jq)\n\n`jq`",
           "type": "string",
           "const": "jq"
         },
@@ -908,12 +937,12 @@
           "const": "jqfmt"
         },
         {
-          "description": "A JavaScript formatter\n\n[https://github.com/beautifier/js-beautify](https://github.com/beautifier/js-beautify)\n\n`js-beautify -r --type js -f $PATH`",
+          "description": "Beautifier for javascript\n\n[https://github.com/beautifier/js-beautify](https://github.com/beautifier/js-beautify)\n\n`js-beautify -r --type js -f $PATH`",
           "type": "string",
           "const": "js-beautify"
         },
         {
-          "description": "JSON5 (a.k.a., JSON for Humans) formatter that preserves contextual comments\n\n[https://github.com/google/json5format](https://github.com/google/json5format)\n\n`json5format -r $PATH`",
+          "description": "JSON5 formatter that preserves contextual comments\n\n[https://github.com/google/json5format](https://github.com/google/json5format)\n\n`json5format -r $PATH`",
           "type": "string",
           "const": "json5format"
         },
@@ -923,12 +952,12 @@
           "const": "json_repair"
         },
         {
-          "description": "JSONA linter and formatter\n\n[https://github.com/jsona/jsona](https://github.com/jsona/jsona)\n\n`jsona format $PATH`",
+          "description": "Format JSONA\n\n[https://github.com/jsona/jsona](https://github.com/jsona/jsona)\n\n`jsona format $PATH`",
           "type": "string",
           "const": "jsona:format"
         },
         {
-          "description": "JSONA linter and formatter\n\n[https://github.com/jsona/jsona](https://github.com/jsona/jsona)\n\n`jsona lint $PATH`",
+          "description": "Lint JSONA\n\n[https://github.com/jsona/jsona](https://github.com/jsona/jsona)\n\n`jsona lint $PATH`",
           "type": "string",
           "const": "jsona:lint"
         },
@@ -958,12 +987,12 @@
           "const": "jsonpp"
         },
         {
-          "description": "An opinionated code formatter for Julia. Plot twist - the opinion is your own\n\n[https://github.com/domluna/juliaformatter.jl](https://github.com/domluna/juliaformatter.jl)\n\n`julia -E using JuliaFormatter;format_file(\\\"{$PATH_STRING}\\\")`",
+          "description": "An opinionated code formatter for Julia. Plot twist - the opinion is your own\n\n[https://github.com/domluna/juliaformatter.jl](https://github.com/domluna/juliaformatter.jl)\n\n`julia -E using JuliaFormatter;format_file(\\\"$PATH\\\")`",
           "type": "string",
           "const": "juliaformatter.jl"
         },
         {
-          "description": "A formatter for justfiles\n\n[https://github.com/casey/just](https://github.com/casey/just)\n\n`just --fmt --unstable --justfile $PATH`",
+          "description": "Format Just files\n\n[https://github.com/casey/just](https://github.com/casey/just)\n\n`just --fmt --unstable --justfile $PATH`",
           "type": "string",
           "const": "just"
         },
@@ -1003,7 +1032,7 @@
           "const": "keep-sorted"
         },
         {
-          "description": "program that reformats Kotlin source code to comply with the common community standard for Kotlin code conventions\n\n[https://github.com/facebook/ktfmt](https://github.com/facebook/ktfmt)\n\n`ktfmt $PATH`",
+          "description": "A program that reformats Kotlin source code to comply with the common community standard for Kotlin code conventions\n\n[https://github.com/facebook/ktfmt](https://github.com/facebook/ktfmt)\n\n`ktfmt $PATH`",
           "type": "string",
           "const": "ktfmt"
         },
@@ -1043,7 +1072,7 @@
           "const": "luaformatter"
         },
         {
-          "description": "Typecheck and lint luau files\n\n[https://luau.org/](https://luau.org/)\n\n`luau-analyze $PATH`",
+          "description": "Typecheck and lint luau files\n\n[https://luau.org](https://luau.org)\n\n`luau-analyze $PATH`",
           "type": "string",
           "const": "luau-analyze"
         },
@@ -1088,7 +1117,7 @@
           "const": "markdownlint-cli2"
         },
         {
-          "description": "An HTML linter for all markup developers\n\n[https://markuplint.dev/](https://markuplint.dev/)\n\n`markuplint --fix $PATH`",
+          "description": "An HTML linter for all markup developers\n\n[https://markuplint.dev](https://markuplint.dev)\n\n`markuplint --fix $PATH`",
           "type": "string",
           "const": "markuplint"
         },
@@ -1103,7 +1132,7 @@
           "const": "mbake:validate"
         },
         {
-          "description": "Fix mixed spaces in Markdown: Chinese and English, numbers, links\n\n[https://github.com/harttle/md-padding](https://github.com/harttle/md-padding)\n\n`md-padding -i $PATH`",
+          "description": "AST-based padding for Markdown and natural language, improving readability in multilingual documents\n\n[https://github.com/harttle/md-padding](https://github.com/harttle/md-padding)\n\n`md-padding -i $PATH`",
           "type": "string",
           "const": "md-padding"
         },
@@ -1128,7 +1157,7 @@
           "const": "mdslw"
         },
         {
-          "description": "Meson is an open source build system meant to be both extremely fast, and, even more importantly, as user friendly as possible\n\n[https://mesonbuild.com/](https://mesonbuild.com/)\n\n`meson fmt -i $PATH`",
+          "description": "Meson is an open source build system meant to be both extremely fast, and, even more importantly, as user friendly as possible\n\n[https://mesonbuild.com](https://mesonbuild.com)\n\n`meson fmt -i $PATH`",
           "type": "string",
           "const": "meson:fmt"
         },
@@ -1138,7 +1167,7 @@
           "const": "mise:fmt"
         },
         {
-          "description": "Correct commonly misspelled English words in source files\n\n[https://github.com/client9/misspell/](https://github.com/client9/misspell/)\n\n`misspell -w $PATH`",
+          "description": "Correct commonly misspelled English words in source files\n\n[https://github.com/client9/misspell](https://github.com/client9/misspell)\n\n`misspell -w $PATH`",
           "type": "string",
           "const": "misspell"
         },
@@ -1153,12 +1182,12 @@
           "const": "mojo:format"
         },
         {
-          "description": "An implementation of the meson build system\n\n[https://github.com/muon-build/muon](https://github.com/muon-build/muon)\n\n`muon fmt -i $PATH`",
+          "description": "Format meson files\n\n[https://github.com/muon-build/muon](https://github.com/muon-build/muon)\n\n`muon fmt -i $PATH`",
           "type": "string",
           "const": "muon:fmt"
         },
         {
-          "description": "An implementation of the meson build system\n\n[https://github.com/muon-build/muon](https://github.com/muon-build/muon)\n\n`muon lint -i $PATH`",
+          "description": "Lint meson files\n\n[https://github.com/muon-build/muon](https://github.com/muon-build/muon)\n\n`muon lint -i $PATH`",
           "type": "string",
           "const": "muon:lint"
         },
@@ -1183,7 +1212,7 @@
           "const": "nginxfmt"
         },
         {
-          "description": "Better configuration for less\n\n[https://nickel-lang.org/](https://nickel-lang.org/)\n\n`nickel format $PATH`",
+          "description": "Better configuration for less\n\n[https://nickel-lang.org](https://nickel-lang.org)\n\n`nickel format $PATH`",
           "type": "string",
           "const": "nickel:format"
         },
@@ -1193,7 +1222,7 @@
           "const": "nimpretty"
         },
         {
-          "description": "The official (but not yet stable) formatter for Nix code\n\n[https://github.com/nixos/nixfmt](https://github.com/nixos/nixfmt)\n\n`nixfmt $PATH`",
+          "description": "The official formatter for Nix code\n\n[https://github.com/nixos/nixfmt](https://github.com/nixos/nixfmt)\n\n`nixfmt $PATH`",
           "type": "string",
           "const": "nixfmt"
         },
@@ -1218,7 +1247,7 @@
           "const": "npm-groovy-lint"
         },
         {
-          "description": "the nushell formatter\n\n[https://github.com/nushell/nufmt](https://github.com/nushell/nufmt)\n\n`nufmt $PATH`",
+          "description": "The nushell formatter\n\n[https://github.com/nushell/nufmt](https://github.com/nushell/nufmt)\n\n`nufmt $PATH`",
           "type": "string",
           "const": "nufmt"
         },
@@ -1243,7 +1272,7 @@
           "const": "oelint-adv"
         },
         {
-          "description": "Format Rego source files\n\n[https://www.openpolicyagent.org/docs/latest/cli/](https://www.openpolicyagent.org/docs/latest/cli/)\n\n`opa fmt $PATH -w`",
+          "description": "Format Rego source files\n\n[https://www.openpolicyagent.org/docs/latest/cli](https://www.openpolicyagent.org/docs/latest/cli)\n\n`opa fmt $PATH -w`",
           "type": "string",
           "const": "opa:fmt"
         },
@@ -1313,6 +1342,11 @@
           "const": "pint"
         },
         {
+          "description": "Formats or checks formatting of Pkl files\n\n[https://pkl-lang.org/main/current/pkl-cli/index.html#command-format](https://pkl-lang.org/main/current/pkl-cli/index.html#command-format)\n\n`pkl -w $PATH`",
+          "type": "string",
+          "const": "pkl:format"
+        },
+        {
           "description": "Prettier is an opinionated code formatter\n\n[https://github.com/prettier/prettier](https://github.com/prettier/prettier)\n\n`prettier --embedded-language-formatting off --log-level error --write $PATH`",
           "type": "string",
           "const": "prettier"
@@ -1333,7 +1367,7 @@
           "const": "prettypst"
         },
         {
-          "description": "Commands for interacting with the prisma ORM\n\n[https://www.prisma.io/docs/orm/tools/prisma-cli](https://www.prisma.io/docs/orm/tools/prisma-cli)\n\n`prisma format --schema={$PATH_STRING}`",
+          "description": "Commands for interacting with the prisma ORM\n\n[https://www.prisma.io/docs/orm/tools/prisma-cli](https://www.prisma.io/docs/orm/tools/prisma-cli)\n\n`prisma format --schema=$PATH`",
           "type": "string",
           "const": "prisma:format"
         },
@@ -1363,7 +1397,7 @@
           "const": "puppet-lint"
         },
         {
-          "description": "PureScript code formatter\n\n[https://github.com/natefaubion/purescript-tidy](https://github.com/natefaubion/purescript-tidy)\n\n`purs-tidy format-in-place $PATH`",
+          "description": "A syntax tidy-upper for PureScript\n\n[https://github.com/natefaubion/purescript-tidy](https://github.com/natefaubion/purescript-tidy)\n\n`purs-tidy format-in-place $PATH`",
           "type": "string",
           "const": "purs-tidy"
         },
@@ -1383,7 +1417,7 @@
           "const": "pycodestyle"
         },
         {
-          "description": "A Python docstring linter that checks arguments, returns, yields, and raises sections\n\n[https://github.com/jsh9/pydoclint](https://github.com/jsh9/pydoclint)\n\n`pydoclint $PATH`",
+          "description": "A very fast Python docstring linter\n\n[https://github.com/jsh9/pydoclint](https://github.com/jsh9/pydoclint)\n\n`pydoclint $PATH`",
           "type": "string",
           "const": "pydoclint"
         },
@@ -1408,7 +1442,7 @@
           "const": "pyink"
         },
         {
-          "description": "Pylint is a static code analyser for Python 2 or 3\n\n[https://github.com/pylint-dev/pylint](https://github.com/pylint-dev/pylint)\n\n`pylint --module-naming-style=any $PATH`",
+          "description": "Pylint is a static code analyser for Python 2 and 3\n\n[https://github.com/pylint-dev/pylint](https://github.com/pylint-dev/pylint)\n\n`pylint --module-naming-style=any $PATH`",
           "type": "string",
           "const": "pylint"
         },
@@ -1428,7 +1462,7 @@
           "const": "pyrefly"
         },
         {
-          "description": "A tool to automatically upgrade Python syntax to newer versions\n\n[https://github.com/asottile/pyupgrade](https://github.com/asottile/pyupgrade)\n\n`pyupgrade $PATH`",
+          "description": "A tool to automatically upgrade Python syntax to newer versions\n\n[https://github.com/asottile/pyupgrade](https://github.com/asottile/pyupgrade)\n\n`pyupgrade --exit-zero-even-if-changed $PATH`",
           "type": "string",
           "const": "pyupgrade"
         },
@@ -1453,7 +1487,7 @@
           "const": "quick-lint-js"
         },
         {
-          "description": "An extensible code formatter for Racket\n\n[https://docs.racket-lang.org/fmt/](https://docs.racket-lang.org/fmt/)\n\n`raco fmt -i $PATH`",
+          "description": "An extensible code formatter for Racket\n\n[https://docs.racket-lang.org/fmt](https://docs.racket-lang.org/fmt)\n\n`raco fmt -i $PATH`",
           "type": "string",
           "const": "raco:fmt"
         },
@@ -1468,7 +1502,7 @@
           "const": "refmt"
         },
         {
-          "description": "Reformat-gherkin automatically formats Gherkin files\n\n[https://github.com/ducminh-phan/reformat-gherkin](https://github.com/ducminh-phan/reformat-gherkin)\n\n`reformat-gherkin $PATH`",
+          "description": "Formatter for Gherkin language\n\n[https://github.com/ducminh-phan/reformat-gherkin](https://github.com/ducminh-phan/reformat-gherkin)\n\n`reformat-gherkin $PATH`",
           "type": "string",
           "const": "reformat-gherkin"
         },
@@ -1488,7 +1522,7 @@
           "const": "regal:lint"
         },
         {
-          "description": "Rewrites source to reorder python imports\n\n[https://github.com/asottile/reorder-python-imports](https://github.com/asottile/reorder-python-imports)\n\n`reorder-python-imports $PATH`",
+          "description": "Rewrites source to reorder python imports\n\n[https://github.com/asottile/reorder-python-imports](https://github.com/asottile/reorder-python-imports)\n\n`reorder-python-imports --exit-zero-even-if-changed $PATH`",
           "type": "string",
           "const": "reorder-python-imports"
         },
@@ -1503,7 +1537,7 @@
           "const": "revive"
         },
         {
-          "description": "Tools for the roc programming language\n\n[https://github.com/roc-lang/roc](https://github.com/roc-lang/roc)\n\n`roc format $PATH`",
+          "description": "Format Roc code\n\n[https://github.com/roc-lang/roc](https://github.com/roc-lang/roc)\n\n`roc format $PATH`",
           "type": "string",
           "const": "roc:format"
         },
@@ -1538,17 +1572,17 @@
           "const": "rufo"
         },
         {
-          "description": "Tools for the Rune programming language\n\n[https://github.com/rune-rs/rune](https://github.com/rune-rs/rune)\n\n`rune fmt $PATH`",
+          "description": "Format Rune source code\n\n[https://github.com/rune-rs/rune](https://github.com/rune-rs/rune)\n\n`rune fmt $PATH`",
           "type": "string",
           "const": "rune:fmt"
         },
         {
-          "description": "Julia code formatter\n\n[https://github.com/fredrikekre/runic.jl](https://github.com/fredrikekre/runic.jl)\n\n`runic --inplace $PATH`",
+          "description": "A code formatter for Julia with rules set in stone\n\n[https://github.com/fredrikekre/runic.jl](https://github.com/fredrikekre/runic.jl)\n\n`runic --inplace $PATH`",
           "type": "string",
           "const": "runic"
         },
         {
-          "description": "The official code formatter for Rust\n\n[https://github.com/rust-lang/rustfmt](https://github.com/rust-lang/rustfmt)\n\n`rustfmt --edition 2021 --quiet $PATH`",
+          "description": "Format Rust code\n\n[https://github.com/rust-lang/rustfmt](https://github.com/rust-lang/rustfmt)\n\n`rustfmt --edition 2021 --quiet $PATH`",
           "type": "string",
           "const": "rustfmt"
         },
@@ -1593,7 +1627,7 @@
           "const": "shellharden"
         },
         {
-          "description": "Shell script formatter\n\n[https://github.com/mvdan/sh](https://github.com/mvdan/sh)\n\n`shfmt --write $PATH`",
+          "description": "A shell parser, formatter, and interpreter with bash support\n\n[https://github.com/mvdan/sh](https://github.com/mvdan/sh)\n\n`shfmt --write $PATH`",
           "type": "string",
           "const": "shfmt"
         },
@@ -1603,7 +1637,7 @@
           "const": "sleek"
         },
         {
-          "description": "Tool for analyzing Slim templates\n\n[https://github.com/sds/slim-lint](https://github.com/sds/slim-lint)\n\n`slim-lint $PATH`",
+          "description": "Configurable tool for analyzing Slim templates\n\n[https://github.com/sds/slim-lint](https://github.com/sds/slim-lint)\n\n`slim-lint $PATH`",
           "type": "string",
           "const": "slim-lint"
         },
@@ -1668,7 +1702,7 @@
           "const": "squawk"
         },
         {
-          "description": "JavaScript style guide, linter, and formatter\n\n[https://github.com/standard/standard](https://github.com/standard/standard)\n\n`standard --fix --stdin`",
+          "description": "JavaScript Style Guide, with linter & automatic code fixer\n\n[https://github.com/standard/standard](https://github.com/standard/standard)\n\n`standard --fix --stdin`",
           "type": "string",
           "const": "standardjs"
         },
@@ -1703,12 +1737,12 @@
           "const": "stylish-haskell"
         },
         {
-          "description": "An opinionated Lua code formatter\n\n[https://github.com/johnnymorganz/stylua](https://github.com/johnnymorganz/stylua)\n\n`stylua --verify $PATH`",
+          "description": "A Lua code formatter\n\n[https://github.com/johnnymorganz/stylua](https://github.com/johnnymorganz/stylua)\n\n`stylua --verify $PATH`",
           "type": "string",
           "const": "stylua"
         },
         {
-          "description": "HTML Language Server & Templating Language Library\n\n[https://github.com/kristoff-it/superhtml](https://github.com/kristoff-it/superhtml)\n\n`superhtml fmt $PATH`",
+          "description": "HTML Validator, Formatter, LSP, and Templating Language Library\n\n[https://github.com/kristoff-it/superhtml](https://github.com/kristoff-it/superhtml)\n\n`superhtml fmt $PATH`",
           "type": "string",
           "const": "superhtml:fmt"
         },
@@ -1733,7 +1767,7 @@
           "const": "taplo"
         },
         {
-          "description": "Tooling for the Templ template language\n\n[https://github.com/a-h/templ](https://github.com/a-h/templ)\n\n`templ fmt $PATH`",
+          "description": "Format Templ files\n\n[https://github.com/a-h/templ](https://github.com/a-h/templ)\n\n`templ fmt $PATH`",
           "type": "string",
           "const": "templ:fmt"
         },
@@ -1768,7 +1802,7 @@
           "const": "tlint:format"
         },
         {
-          "description": "The tofu fmt command is used to rewrite OpenTofu configuration files to a canonical format and style\n\n[https://opentofu.org/docs/cli/commands/fmt/](https://opentofu.org/docs/cli/commands/fmt/)\n\n`tofu fmt -write=true $PATH`",
+          "description": "The tofu fmt command is used to rewrite OpenTofu configuration files to a canonical format and style\n\n[https://opentofu.org/docs/cli/commands/fmt](https://opentofu.org/docs/cli/commands/fmt)\n\n`tofu fmt -write=true $PATH`",
           "type": "string",
           "const": "tofu:fmt"
         },
@@ -1888,17 +1922,17 @@
           "const": "vhdl-style-guide"
         },
         {
-          "description": "Lint Vim script\n\n[https://github.com/vimjas/vint](https://github.com/vimjas/vint)\n\n`vint $PATH`",
+          "description": "Fast and Highly Extensible Vim script Language Lint\n\n[https://github.com/vimjas/vint](https://github.com/vimjas/vint)\n\n`vint $PATH`",
           "type": "string",
           "const": "vint"
         },
         {
-          "description": "Lint Vim script\n\n[https://github.com/vimjas/vint](https://github.com/vimjas/vint)\n\n`vint --enable-neovim $PATH`",
+          "description": "Fast and Highly Extensible Vim script Language Lint\n\n[https://github.com/vimjas/vint](https://github.com/vimjas/vint)\n\n`vint --enable-neovim $PATH`",
           "type": "string",
           "const": "vint:neovim"
         },
         {
-          "description": "Format Wa source code\n\n[https://github.com/wa-lang/wa/](https://github.com/wa-lang/wa/)\n\n`wa fmt $PATH`",
+          "description": "Format Wa source code\n\n[https://github.com/wa-lang/wa](https://github.com/wa-lang/wa)\n\n`wa fmt $PATH`",
           "type": "string",
           "const": "wa:fmt"
         },
@@ -1968,17 +2002,17 @@
           "const": "yq"
         },
         {
-          "description": "Reformat Zig source into canonical form\n\n[https://ziglang.org/](https://ziglang.org/)\n\n`zig fmt $PATH`",
+          "description": "Reformat Zig source into canonical form\n\n[https://ziglang.org](https://ziglang.org)\n\n`zig fmt $PATH`",
           "type": "string",
           "const": "zig:fmt"
         },
         {
-          "description": "Formats Ziggy documents and Ziggy schemas\n\n[https://ziggy-lang.io/documentation/ziggy-fmt/](https://ziggy-lang.io/documentation/ziggy-fmt/)\n\n`ziggy fmt $PATH`",
+          "description": "Formats Ziggy documents and Ziggy schemas\n\n[https://ziggy-lang.io/documentation/ziggy-fmt](https://ziggy-lang.io/documentation/ziggy-fmt)\n\n`ziggy fmt $PATH`",
           "type": "string",
           "const": "ziggy:fmt"
         },
         {
-          "description": "Executables beautifully format Clojure and Clojurescript source code and s-expressions\n\n[https://github.com/kkinnear/zprint](https://github.com/kkinnear/zprint)\n\n`zprint -w $PATH`",
+          "description": "Beautifully format Clojure and Clojurescript source code and s-expressions\n\n[https://github.com/kkinnear/zprint](https://github.com/kkinnear/zprint)\n\n`zprint -w $PATH`",
           "type": "string",
           "const": "zprint"
         }
