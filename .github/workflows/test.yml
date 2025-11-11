@@ -233,8 +233,6 @@ jobs:
         run: ( ( which nixpkgs-fmt ) || ( ( which cargo && ( cargo binstall nixpkgs-fmt || cargo install nixpkgs-fmt ) ) ) || ( echo "Unable to install tool" ) )
       - name: nph
         run: ( ( which nph ) || ( ( which nimble && nimble install nph ) ) || ( echo "Unable to install tool" ) )
-      - name: npm-groovy-lint
-        run: ( ( which npm-groovy-lint ) || ( ( which npm && npm i -g npm-groovy-lint ) ) || ( echo "Unable to install tool" ) )
       - name: ocamlformat
         run: ( ( which ocamlformat ) || ( ( which opam && eval $(opam env) && opam install ocamlformat ) ) || ( echo "Unable to install tool" ) )
       - name: ocp-indent

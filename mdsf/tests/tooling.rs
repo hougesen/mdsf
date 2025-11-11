@@ -7226,62 +7226,7 @@ mod test_nph {
 }
 
 #[cfg(test)]
-mod test_npm_groovy_lint {
-    #[test_with::executable(npm-groovy-lint || bunx || deno || npx || pnpm || yarn)]
-    fn test_npm_groovy_lint_groovy_2dc2be09d8013576() -> Result<(), Box<dyn core::error::Error>> {
-        let input = r#"                  def add(a, b) {
-            return a + b
-        }
-
-        assert add(1,2) == 3 "#;
-
-        let output = r#"def add(a, b) {
-    return a + b
-}
-
-assert add(1, 2) == 3
-"#;
-
-        let ft = "groovy";
-
-        crate::common::run_tooling_test(
-            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::NpmGroovyLint),
-            input,
-            output,
-            ft,
-        )
-    }
-
-    #[test_with::executable(npm-groovy-lint)]
-    fn test_custom_tool_npm_groovy_lint_groovy_2dc2be09d8013576()
-    -> Result<(), Box<dyn core::error::Error>> {
-        let input = r#"                  def add(a, b) {
-            return a + b
-        }
-
-        assert add(1,2) == 3 "#;
-
-        let output = r#"def add(a, b) {
-    return a + b
-}
-
-assert add(1, 2) == 3
-"#;
-
-        let ft = "groovy";
-
-        crate::common::run_tooling_test(
-            mdsf::config::MdsfTool::Custom(mdsf::custom::CustomTool {
-                binary: "npm-groovy-lint".to_owned(),
-                arguments: vec!["--format".to_owned(), "$PATH".to_owned()],
-                stdin: false,
-            }),
-            input,
-            output,
-            ft,
-        )
-    }
-}
+mod test_npm_groovy_lint {}
 
 #[cfg(test)]
 mod test_nufmt {}

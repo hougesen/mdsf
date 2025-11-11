@@ -51,6 +51,7 @@ All notable changes to this project will be documented in this file. Dates are d
 - feat: set args function for custom tools [`69661e2`](https://github.com/hougesen/mdsf/commit/69661e2032820e536a03490107165b24402accc0)
 - refactor: MdsfFormatter to MdsfToolWrapper [`082120d`](https://github.com/hougesen/mdsf/commit/082120d5a42a034bff11efc490bb008c0f059c37)
 - test: custom tool execution [`9816537`](https://github.com/hougesen/mdsf/commit/98165374b71ed750c0d140c1fccbcf88ad8fd6a1)
+- refactor: merge PATH_STRING with PATH variable [`6fb4093`](https://github.com/hougesen/mdsf/commit/6fb4093e7c422bd403e7a689b7c13bfc6ffa2d12)
 - chore: disable juliaformatter custom formatter test [`f288f05`](https://github.com/hougesen/mdsf/commit/f288f053d0190ae2709fa3c5cdd0f6cf982d6c5f)
 - fix(pyupgrade): add --exit-zero-even-if-changed arg [`9bf537e`](https://github.com/hougesen/mdsf/commit/9bf537eb50cffc4d57615b85595ad1d476a3161d)
 - docs: short example of custom commands [`4389e2b`](https://github.com/hougesen/mdsf/commit/4389e2bbf464b5cc17b83fb8e63d2fd9697532d7)
