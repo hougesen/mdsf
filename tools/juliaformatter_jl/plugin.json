@@ -4,10 +4,7 @@
   "categories": ["formatter"],
   "commands": {
     "": {
-      "arguments": [
-        "-E",
-        "using JuliaFormatter;format_file(\\\"{$PATH_STRING}\\\")"
-      ],
+      "arguments": ["-E", "using JuliaFormatter;format_file(\\\"$PATH\\\")"],
       "tests": [
         {
           "language": "julia",

@@ -407,20 +407,14 @@ impl Tool {
 
         let executable = test_with_binaries.join(" || ");
 
-        let disable_attribute = if test.disabled {
-            format!("{INDENT}#[ignore = \"Disabled in plugin file\"]\n")
-        } else {
-            String::new()
-        };
-
         let test_input = &test.test_input;
 
         let test_output = &test.test_output;
 
         let test_language = &test.language;
 
-        let test_code = format!(
-            "{disable_attribute}{INDENT}#[test_with::executable({executable})]
+        format!(
+            "{INDENT}#[test_with::executable({executable})]
 {INDENT}fn {test_fn_name}() -> Result<(), Box<dyn core::error::Error>> {{
 {INDENT}{INDENT}let input = r#\"{test_input}\"#;
 
@@ -428,11 +422,53 @@ impl Tool {
 
 {INDENT}{INDENT}let ft = \"{test_language}\";
 
-{INDENT}{INDENT}crate::common::run_tooling_test(mdsf::tools::Tooling::{enum_value}, input, output, ft)
+{INDENT}{INDENT}crate::common::run_tooling_test(mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::{enum_value}), input, output, ft)
 {INDENT}}}",
+        )
+    }
+
+    fn generate_custom_tool_test(&self, options: &ToolCommand, test: &ToolCommandTest) -> String {
+        let binary = &self.binary;
+
+        let is_stdin = if options.stdin { "true" } else { "false" };
+
+        let arguments = options
+            .arguments
+            .iter()
+            .map(|arg| format!("\"{arg}\".to_owned()"))
+            .collect::<Vec<_>>()
+            .join(",");
+
+        let test_input = &test.test_input;
+        let test_output = &test.test_output;
+        let test_language = &test.language;
+
+        let mut hasher = DefaultHasher::new();
+
+        test.language.hash(&mut hasher);
+        test.test_input.hash(&mut hasher);
+        test.test_output.hash(&mut hasher);
+
+        let id = format!("{:x}", hasher.finish());
+
+        let test_fn_name = format!(
+            "test_custom_tool_{}_{}_{id}",
+            binary.to_case(Case::Snake).replace('.', ""),
+            test.language.to_case(Case::Snake).replace('.', "")
         );
 
-        test_code
+        format!(
+            "{INDENT}#[test_with::executable({binary})]
+{INDENT}fn {test_fn_name}() -> Result<(), Box<dyn core::error::Error>> {{
+{INDENT}{INDENT}let input = r#\"{test_input}\"#;
+
+{INDENT}{INDENT}let output = r#\"{test_output}\"#;
+
+{INDENT}{INDENT}let ft = \"{test_language}\";
+
+{INDENT}{INDENT}crate::common::run_tooling_test(mdsf::config::MdsfTool::Custom(mdsf::custom::CustomTool {{ binary: \"{binary}\".to_owned(), arguments: vec![{arguments}], stdin: {is_stdin} }}), input, output, ft)
+{INDENT}}}"
+        )
     }
 
     #[allow(clippy::too_many_lines)]
@@ -544,19 +580,12 @@ impl Tool {
                     if arg == "$PATH" {
                         args_includes_path = true;
                         format!("{INDENT}cmd.arg(file_path);")
-                    } else if arg == "$PATH_STRING" {
+                    } else if arg.contains("$PATH") {
                         args_includes_path = true;
-
-                        let arg_str = "cmd.arg(format!(\"'{}'\", file_path.to_string_lossy()));";
-                        format!("{INDENT}{arg_str}")
-                    } else if arg.contains("$PATH_STRING") {
-                        args_includes_path = true;
-
-                        let declaration = "let fps = file_path.to_string_lossy();\n";
 
                         format!(
-                            "{INDENT}{declaration}{INDENT}cmd.arg(format!(\"{}\"));",
-                            arg.replace("$PATH_STRING", "fps")
+                            "{INDENT}cmd.arg(format!(\"{}\", file_path.to_string_lossy()));",
+                            arg.replace("$PATH", "{}")
                         )
                     } else {
                         format!("{INDENT}cmd.arg(\"{arg}\");")
@@ -592,7 +621,13 @@ mod test_{module_name} {{{maybe_line_break}{tests}{maybe_line_break}}}
                 tests = options
                     .tests
                     .iter()
-                    .map(|test| self.generate_test(cmd, test))
+                    .filter(|test| !test.disabled)
+                    .flat_map(|test| {
+                        [
+                            self.generate_test(cmd, test),
+                            self.generate_custom_tool_test(options, test),
+                        ]
+                    })
                     .collect::<Vec<_>>()
                     .join("\n\n")
             );
@@ -755,7 +790,7 @@ impl AsRef<str> for Tooling {
             let enum_value = &command.enum_value;
             let module_name = &command.module_name;
 
-            enum_value_names.insert(enum_value.to_string());
+            enum_value_names.insert(enum_value.clone());
 
             let homepage = if command.homepage.is_empty() {
                 String::new()
@@ -860,9 +895,10 @@ impl Tooling {{
 {INDENT}{INDENT}debug_enabled: bool,
 {INDENT}{INDENT}config_runners: &crate::config::MdsfConfigRunners,
 {INDENT}) -> Result<(bool, Option<String>), crate::error::MdsfError> {{
+{INDENT}{INDENT}#[allow(clippy::type_complexity)]
 {INDENT}{INDENT}let (commands, set_args_fn, is_stdin): (
 {INDENT}{INDENT}{INDENT}&[crate::runners::CommandType],
-{INDENT}{INDENT}{INDENT}crate::execution::SetArgsFn,
+{INDENT}{INDENT}{INDENT}fn(std::process::Command, &std::path::Path) -> std::process::Command,
 {INDENT}{INDENT}{INDENT}bool,
 {INDENT}{INDENT}) = match self {{
 {}

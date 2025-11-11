@@ -7,7 +7,7 @@ use which::which;
 use crate::{
     LineInfo,
     cli::OnMissingToolBinary,
-    config::{MdsfConfig, MdsfConfigRunners},
+    config::{MdsfConfig, MdsfConfigRunners, MdsfTool},
     error::{MdsfError, exit_with_error, set_exit_code_error},
     filetype::get_file_extension,
     get_project_dir,
@@ -246,12 +246,12 @@ pub fn format_snippet(
 #[derive(Debug, serde::Serialize, serde::Deserialize, Hash, Clone, PartialEq, Eq)]
 #[cfg_attr(feature = "json-schema", derive(schemars::JsonSchema))]
 #[serde(untagged)]
-pub enum MdsfFormatter<T>
+pub enum MdsfToolWrapper<T>
 where
     T: core::fmt::Display,
 {
     Single(T),
-    Multiple(Vec<MdsfFormatter<T>>),
+    Multiple(Vec<MdsfToolWrapper<T>>),
 }
 
 #[inline]
@@ -266,14 +266,14 @@ impl core::fmt::Display for Tooling {
     }
 }
 
-impl Default for MdsfFormatter<Tooling> {
+impl Default for MdsfToolWrapper<MdsfTool> {
     #[inline]
     fn default() -> Self {
         Self::Multiple(Vec::new())
     }
 }
 
-impl MdsfFormatter<Tooling> {
+impl MdsfToolWrapper<MdsfTool> {
     #[inline]
     pub fn format(
         &self,
@@ -311,13 +311,23 @@ impl MdsfFormatter<Tooling> {
     ) -> Result<(bool, Option<String>), MdsfError> {
         match formatter {
             Self::Single(f) => {
-                let formatter_name: &str = f.as_ref();
+                let formatter_name: &str = match f {
+                    MdsfTool::Preset(t) => t.as_ref(),
+                    MdsfTool::Custom(t) => t.tool_name(),
+                };
 
                 print_tool_info(formatter_name, info);
 
                 let time = std::time::Instant::now();
 
-                let r = f.format_snippet(snippet_path, timeout, debug_enabled, config_runners);
+                let r = match f {
+                    MdsfTool::Custom(t) => {
+                        t.format_snippet(snippet_path, timeout, debug_enabled, config_runners)
+                    }
+                    MdsfTool::Preset(t) => {
+                        t.format_snippet(snippet_path, timeout, debug_enabled, config_runners)
+                    }
+                };
 
                 print_tool_time(formatter_name, info, time.elapsed());
 
@@ -381,18 +391,19 @@ impl MdsfFormatter<Tooling> {
     }
 }
 
-pub type SetArgsFn = fn(std::process::Command, &std::path::Path) -> std::process::Command;
-
 #[inline]
-pub fn run_tools(
+pub fn run_tools<F>(
     command_types: &[CommandType],
     file_path: &std::path::Path,
-    set_args_fn: SetArgsFn,
+    set_args_fn: F,
     timeout: u64,
     is_stdin: bool,
     debug_enabled: bool,
     config_runners: &MdsfConfigRunners,
-) -> Result<(bool, Option<String>), MdsfError> {
+) -> Result<(bool, Option<String>), MdsfError>
+where
+    F: Fn(std::process::Command, &std::path::Path) -> std::process::Command,
+{
     for (index, cmd) in command_types.iter().enumerate() {
         if !cmd.is_enabled(config_runners) {
             continue;

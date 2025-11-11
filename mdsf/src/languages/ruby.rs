@@ -1,14 +1,14 @@
-use crate::{execution::MdsfFormatter, tools::Tooling};
+use crate::{config::MdsfTool, execution::MdsfToolWrapper, tools::Tooling};
 
 #[inline]
-pub fn default_config() -> (String, MdsfFormatter<Tooling>) {
+pub fn default_config() -> (String, MdsfToolWrapper<MdsfTool>) {
     (
         "ruby".to_string(),
-        MdsfFormatter::Multiple(vec![MdsfFormatter::Multiple(vec![
-            MdsfFormatter::Single(Tooling::Rubocop),
-            MdsfFormatter::Single(Tooling::Rufo),
-            MdsfFormatter::Single(Tooling::Rubyfmt),
-            MdsfFormatter::Single(Tooling::Standardrb),
+        MdsfToolWrapper::Multiple(vec![MdsfToolWrapper::Multiple(vec![
+            MdsfToolWrapper::Single(MdsfTool::Preset(Tooling::Rubocop)),
+            MdsfToolWrapper::Single(MdsfTool::Preset(Tooling::Rufo)),
+            MdsfToolWrapper::Single(MdsfTool::Preset(Tooling::Rubyfmt)),
+            MdsfToolWrapper::Single(MdsfTool::Preset(Tooling::Standardrb)),
         ])]),
     )
 }

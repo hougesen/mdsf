@@ -1,5 +1,3 @@
-use crate::terminal::print_error;
-
 pub static HAS_ERROR: core::sync::atomic::AtomicBool = core::sync::atomic::AtomicBool::new(false);
 
 #[inline]
@@ -9,7 +7,7 @@ pub fn set_exit_code_error() {
 
 #[inline]
 pub fn exit_with_error(error: &MdsfError) -> ! {
-    print_error(error);
+    crate::terminal::print_error(error);
 
     std::process::exit(1)
 }

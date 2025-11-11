@@ -1,6 +1,9 @@
-use crate::{execution::MdsfFormatter, tools::Tooling};
+use crate::{config::MdsfTool, execution::MdsfToolWrapper, tools::Tooling};
 
 #[inline]
-pub fn default_config() -> (String, MdsfFormatter<Tooling>) {
-    ("yaml".to_string(), MdsfFormatter::Single(Tooling::Prettier))
+pub fn default_config() -> (String, MdsfToolWrapper<MdsfTool>) {
+    (
+        "yaml".to_string(),
+        MdsfToolWrapper::Single(MdsfTool::Preset(Tooling::Prettier)),
+    )
 }

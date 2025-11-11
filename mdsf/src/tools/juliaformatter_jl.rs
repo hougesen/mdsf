@@ -10,8 +10,10 @@ pub fn set_args(
     file_path: &std::path::Path,
 ) -> std::process::Command {
     cmd.arg("-E");
-    let fps = file_path.to_string_lossy();
-    cmd.arg(format!("using JuliaFormatter;format_file(\"{fps}\")"));
+    cmd.arg(format!(
+        "using JuliaFormatter;format_file(\"{}\")",
+        file_path.to_string_lossy()
+    ));
     cmd
 }
 

@@ -29,7 +29,7 @@
       "description": "Defines which tools are used by the language.\n\n```json\n{\n    \"languages\": {\n      // Only run `ruff` on Python snippets,\n      \"python\": \"ruff:format\",\n      // Run `usort` on file and then `black`\n      \"python\": [\"usort\", \"black\"],\n      // Run `usort`, if that fails run `isort`, finally run `black`\n      \"python\": [[\"usort\", \"isort\"], \"black\"],\n\n      // Tools listed under \"*\" will be run on any snippet.\n      \"*\": [\"typos\"],\n\n      // Tools  listed under \"_\" will only be run when there is not tool configured for the file type OR globally (\"*\").\n      \"_\": \"prettier\"\n    }\n}\n```",
       "type": "object",
       "additionalProperties": {
-        "$ref": "#/$defs/MdsfFormatter"
+        "$ref": "#/$defs/MdsfToolWrapper"
       },
       "default": {}
     },
@@ -65,6 +65,25 @@
     }
   },
   "$defs": {
+    "CustomTool": {
+      "type": "object",
+      "properties": {
+        "arguments": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "binary": {
+          "type": "string"
+        },
+        "stdin": {
+          "type": "boolean",
+          "default": false
+        }
+      },
+      "required": ["binary", "arguments"]
+    },
     "MdsfConfigRunners": {
       "type": "object",
       "properties": {
@@ -110,15 +129,25 @@
         }
       }
     },
-    "MdsfFormatter": {
+    "MdsfTool": {
       "anyOf": [
         {
           "$ref": "#/$defs/Tooling"
         },
         {
+          "$ref": "#/$defs/CustomTool"
+        }
+      ]
+    },
+    "MdsfToolWrapper": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/MdsfTool"
+        },
+        {
           "type": "array",
           "items": {
-            "$ref": "#/$defs/MdsfFormatter"
+            "$ref": "#/$defs/MdsfToolWrapper"
           }
         }
       ]
@@ -638,7 +667,7 @@
           "const": "erg:lint"
         },
         {
-          "description": "An automated code formatter for Erlang\n\n[https://github.com/whatsapp/erlfmt](https://github.com/whatsapp/erlfmt)\n\n`erlfmt -w $PATH_STRING`",
+          "description": "An automated code formatter for Erlang\n\n[https://github.com/whatsapp/erlfmt](https://github.com/whatsapp/erlfmt)\n\n`erlfmt -w '$PATH'`",
           "type": "string",
           "const": "erlfmt"
         },
@@ -958,7 +987,7 @@
           "const": "jsonpp"
         },
         {
-          "description": "An opinionated code formatter for Julia. Plot twist - the opinion is your own\n\n[https://github.com/domluna/juliaformatter.jl](https://github.com/domluna/juliaformatter.jl)\n\n`julia -E using JuliaFormatter;format_file(\\\"{$PATH_STRING}\\\")`",
+          "description": "An opinionated code formatter for Julia. Plot twist - the opinion is your own\n\n[https://github.com/domluna/juliaformatter.jl](https://github.com/domluna/juliaformatter.jl)\n\n`julia -E using JuliaFormatter;format_file(\\\"$PATH\\\")`",
           "type": "string",
           "const": "juliaformatter.jl"
         },
@@ -1338,7 +1367,7 @@
           "const": "prettypst"
         },
         {
-          "description": "Commands for interacting with the prisma ORM\n\n[https://www.prisma.io/docs/orm/tools/prisma-cli](https://www.prisma.io/docs/orm/tools/prisma-cli)\n\n`prisma format --schema={$PATH_STRING}`",
+          "description": "Commands for interacting with the prisma ORM\n\n[https://www.prisma.io/docs/orm/tools/prisma-cli](https://www.prisma.io/docs/orm/tools/prisma-cli)\n\n`prisma format --schema=$PATH`",
           "type": "string",
           "const": "prisma:format"
         },
@@ -1433,7 +1462,7 @@
           "const": "pyrefly"
         },
         {
-          "description": "A tool to automatically upgrade Python syntax to newer versions\n\n[https://github.com/asottile/pyupgrade](https://github.com/asottile/pyupgrade)\n\n`pyupgrade $PATH`",
+          "description": "A tool to automatically upgrade Python syntax to newer versions\n\n[https://github.com/asottile/pyupgrade](https://github.com/asottile/pyupgrade)\n\n`pyupgrade --exit-zero-even-if-changed $PATH`",
           "type": "string",
           "const": "pyupgrade"
         },
@@ -1493,7 +1522,7 @@
           "const": "regal:lint"
         },
         {
-          "description": "Rewrites source to reorder python imports\n\n[https://github.com/asottile/reorder-python-imports](https://github.com/asottile/reorder-python-imports)\n\n`reorder-python-imports $PATH`",
+          "description": "Rewrites source to reorder python imports\n\n[https://github.com/asottile/reorder-python-imports](https://github.com/asottile/reorder-python-imports)\n\n`reorder-python-imports --exit-zero-even-if-changed $PATH`",
           "type": "string",
           "const": "reorder-python-imports"
         },

@@ -4,7 +4,7 @@
   "categories": ["formatter"],
   "commands": {
     "": {
-      "arguments": ["$PATH"],
+      "arguments": ["--exit-zero-even-if-changed", "$PATH"],
       "tests": [
         {
           "language": "python",
@@ -18,6 +18,9 @@
   "homepage": "https://github.com/asottile/reorder-python-imports",
   "languages": ["python"],
   "packages": {
+    "brew": {
+      "package": "reorder-python-imports"
+    },
     "pip": {
       "package": "reorder-python-imports"
     }

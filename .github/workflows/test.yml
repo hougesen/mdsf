@@ -233,8 +233,6 @@ jobs:
         run: ( ( which nixpkgs-fmt ) || ( ( which cargo && ( cargo binstall nixpkgs-fmt || cargo install nixpkgs-fmt ) ) ) || ( echo "Unable to install tool" ) )
       - name: nph
         run: ( ( which nph ) || ( ( which nimble && nimble install nph ) ) || ( echo "Unable to install tool" ) )
-      - name: npm-groovy-lint
-        run: ( ( which npm-groovy-lint ) || ( ( which npm && npm i -g npm-groovy-lint ) ) || ( echo "Unable to install tool" ) )
       - name: ocamlformat
         run: ( ( which ocamlformat ) || ( ( which opam && eval $(opam env) && opam install ocamlformat ) ) || ( echo "Unable to install tool" ) )
       - name: ocp-indent
@@ -268,9 +266,9 @@ jobs:
       - name: pyrefly
         run: ( ( which pyrefly ) || ( ( which pipx && pipx install pyrefly ) ) || ( echo "Unable to install tool" ) )
       - name: pyupgrade
-        run: ( ( which pyupgrade ) || ( ( which pipx && pipx install pyupgrade ) ) || ( echo "Unable to install tool" ) )
+        run: ( ( which pyupgrade ) || ( ( which brew &&  brew install pyupgrade ) || ( which pipx && pipx install pyupgrade ) ) || ( echo "Unable to install tool" ) )
       - name: reorder-python-imports
-        run: ( ( which reorder-python-imports ) || ( ( which pipx && pipx install reorder-python-imports ) ) || ( echo "Unable to install tool" ) )
+        run: ( ( which reorder-python-imports ) || ( ( which brew &&  brew install reorder-python-imports ) || ( which pipx && pipx install reorder-python-imports ) ) || ( echo "Unable to install tool" ) )
       - name: rescript
         run: ( ( which rescript ) || ( ( which npm && npm i -g rescript ) ) || ( echo "Unable to install tool" ) )
       - name: rubocop

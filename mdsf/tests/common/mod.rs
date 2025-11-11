@@ -1,22 +1,21 @@
 use std::io::Write;
 
 use mdsf::{
-    config::{MdsfConfig, MdsfConfigRunners},
-    execution::MdsfFormatter,
+    config::{MdsfConfig, MdsfConfigRunners, MdsfTool},
+    execution::MdsfToolWrapper,
     filetype::get_file_extension,
-    tools::Tooling,
 };
 
 fn setup_config_file(
     dir: &std::path::Path,
     file_type: &str,
-    tool: Tooling,
+    tool: MdsfTool,
 ) -> Result<(), Box<dyn core::error::Error>> {
     let config = MdsfConfig {
         runners: MdsfConfigRunners::all(),
         languages: std::collections::BTreeMap::from_iter([(
             file_type.to_string(),
-            MdsfFormatter::Single(tool),
+            MdsfToolWrapper::Single(tool),
         )]),
         format_finished_document: true,
         ..Default::default()
@@ -94,7 +93,7 @@ fn run_verify_command(dir: &std::path::Path, file: &std::path::Path) -> assert_c
 }
 
 pub fn run_tooling_test(
-    tool: Tooling,
+    tool: MdsfTool,
     input: &str,
     expected_output: &str,
     filetype: &str,

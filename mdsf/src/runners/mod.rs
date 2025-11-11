@@ -27,6 +27,9 @@ pub enum CommandType {
     Pnpm(&'static str, &'static str),
     Uv(&'static str, &'static str),
     Yarn(&'static str, &'static str),
+
+    /// Used for custom tools
+    Custom(String),
 }
 
 impl CommandType {
@@ -36,6 +39,7 @@ impl CommandType {
         match self {
             Self::BinaryPath(_, _) => true,
             Self::Bun(_, _) => config_runners.bunx,
+            Self::Custom(_) => true,
             Self::Deno(_, _) => config_runners.deno,
             Self::Direct(_) => true,
             Self::Dotnet(_) => config_runners.dotnet,
@@ -58,6 +62,7 @@ impl CommandType {
             Self::Bun(package_name, executable_name) => {
                 bun::setup_bunx_command(package_name, executable_name)
             }
+            Self::Custom(binary_name) => std::process::Command::new(binary_name),
             Self::Deno(package_name, executable_name) => {
                 deno::setup_deno_run_command(package_name, executable_name)
             }

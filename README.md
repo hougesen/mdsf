@@ -32,6 +32,7 @@ Format, and lint, markdown code snippets using your favorite tools.
 - [Configuration](#configuration)
   - [Language aliases](#language-aliases)
   - [Newlines](#newlines)
+  - [Custom tools and commands](#custom-tools-and-commands)
   - [Tools](#tools)
   - [Commands](#commands)
 - [Shell completions](#shell-completions)
@@ -405,7 +406,7 @@ Options:
 
 <!-- END_SECTION:init-command-help -->
 
-`mdsf` supports running multiple formatters on the save code snippet.
+`mdsf` supports running multiple formatters on the code snippet.
 
 ```json
 {
@@ -461,6 +462,24 @@ That can be changed by specifying the `newline` config option.
 ```json
 {
   "newline": "lf" // "lf" | "cr" | "crlf"
+}
+```
+
+### Custom tools and commands
+
+Custom commands can be defined in the `mdsf.json` file.
+
+When defining the arguments the variable `$PATH` will automatically be replaced with the file path.
+
+```json
+{
+  "languages": {
+    "rust": {
+      "binary": "rustfmt",
+      "arguments": ["--edition", "2018", "$PATH"],
+      "stdin": false
+    }
+  }
 }
 ```
 
@@ -908,7 +927,7 @@ That can be changed by specifying the `newline` config option.
 | `eradicate`                  | `eradicate --in-place $PATH`                                                            |
 | `erb-formatter`              | `erb-format $PATH --write`                                                              |
 | `erg:lint`                   | `erg lint $PATH`                                                                        |
-| `erlfmt`                     | `erlfmt -w $PATH_STRING`                                                                |
+| `erlfmt`                     | `erlfmt -w '$PATH'`                                                                     |
 | `eslint`                     | `eslint --fix $PATH`                                                                    |
 | `fantomas`                   | `fantomas $PATH`                                                                        |
 | `fish_indent`                | `fish_indent -w $PATH`                                                                  |
@@ -972,7 +991,7 @@ That can be changed by specifying the `newline` config option.
 | `jsonnet-lint`               | `jsonnet-lint $PATH`                                                                    |
 | `jsonnetfmt`                 | `jsonnetfmt -i $PATH`                                                                   |
 | `jsonpp`                     | `jsonpp -s`                                                                             |
-| `juliaformatter.jl`          | `julia -E using JuliaFormatter;format_file(\"{$PATH_STRING}\")`                         |
+| `juliaformatter.jl`          | `julia -E using JuliaFormatter;format_file(\"$PATH\")`                                  |
 | `just`                       | `just --fmt --unstable --justfile $PATH`                                                |
 | `kcl:fmt`                    | `kcl fmt $PATH`                                                                         |
 | `kcl:lint`                   | `kcl lint $PATH`                                                                        |
@@ -1048,7 +1067,7 @@ That can be changed by specifying the `newline` config option.
 | `prettierd`                  | `prettierd $PATH`                                                                       |
 | `pretty-php`                 | `pretty-php $PATH`                                                                      |
 | `prettypst`                  | `prettypst $PATH`                                                                       |
-| `prisma:format`              | `prisma format --schema={$PATH_STRING}`                                                 |
+| `prisma:format`              | `prisma format --schema=$PATH`                                                          |
 | `proselint`                  | `proselint $PATH`                                                                       |
 | `protolint`                  | `protolint lint -fix $PATH`                                                             |
 | `ptop`                       | `ptop $PATH $PATH`                                                                      |
@@ -1067,7 +1086,7 @@ That can be changed by specifying the `newline` config option.
 | `pymarkdownlnt:fix`          | `pymarkdownlnt --return-code-scheme minimal fix $PATH`                                  |
 | `pyment`                     | `pyment -w $PATH`                                                                       |
 | `pyrefly`                    | `pyrefly check $PATH`                                                                   |
-| `pyupgrade`                  | `pyupgrade $PATH`                                                                       |
+| `pyupgrade`                  | `pyupgrade --exit-zero-even-if-changed $PATH`                                           |
 | `qmlfmt`                     | `qmlfmt -w $PATH`                                                                       |
 | `qmlformat`                  | `qmlformat -i $PATH`                                                                    |
 | `qmllint`                    | `qmllint $PATH`                                                                         |
@@ -1079,7 +1098,7 @@ That can be changed by specifying the `newline` config option.
 | `refurb`                     | `refurb $PATH`                                                                          |
 | `regal:fix`                  | `regal fix $PATH`                                                                       |
 | `regal:lint`                 | `regal lint $PATH`                                                                      |
-| `reorder-python-imports`     | `reorder-python-imports $PATH`                                                          |
+| `reorder-python-imports`     | `reorder-python-imports --exit-zero-even-if-changed $PATH`                              |
 | `rescript:format`            | `rescript format $PATH`                                                                 |
 | `revive`                     | `revive $PATH`                                                                          |
 | `roc:format`                 | `roc format $PATH`                                                                      |

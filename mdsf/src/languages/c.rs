@@ -1,6 +1,9 @@
-use crate::{execution::MdsfFormatter, tools::Tooling};
+use crate::{config::MdsfTool, execution::MdsfToolWrapper, tools::Tooling};
 
 #[inline]
-pub fn default_config() -> (String, MdsfFormatter<Tooling>) {
-    ("c".to_string(), MdsfFormatter::Single(Tooling::ClangFormat))
+pub fn default_config() -> (String, MdsfToolWrapper<MdsfTool>) {
+    (
+        "c".to_string(),
+        MdsfToolWrapper::Single(MdsfTool::Preset(Tooling::ClangFormat)),
+    )
 }

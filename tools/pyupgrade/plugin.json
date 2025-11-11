@@ -4,7 +4,7 @@
   "categories": ["linter"],
   "commands": {
     "": {
-      "arguments": ["$PATH"],
+      "arguments": ["--exit-zero-even-if-changed", "$PATH"],
       "tests": [
         {
           "language": "python",
@@ -18,6 +18,9 @@
   "homepage": "https://github.com/asottile/pyupgrade",
   "languages": ["python"],
   "packages": {
+    "brew": {
+      "package": "pyupgrade"
+    },
     "pip": {
       "package": "pyupgrade"
     }

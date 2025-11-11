@@ -1127,7 +1127,7 @@ pub enum Tooling {
     ///
     /// [https://github.com/whatsapp/erlfmt](https://github.com/whatsapp/erlfmt)
     ///
-    /// `erlfmt -w $PATH_STRING`
+    /// `erlfmt -w '$PATH'`
     Erlfmt,
 
     #[serde(rename = "eslint")]
@@ -1639,7 +1639,7 @@ pub enum Tooling {
     ///
     /// [https://github.com/domluna/juliaformatter.jl](https://github.com/domluna/juliaformatter.jl)
     ///
-    /// `julia -E using JuliaFormatter;format_file(\"{$PATH_STRING}\")`
+    /// `julia -E using JuliaFormatter;format_file(\"$PATH\")`
     JuliaformatterJl,
 
     #[serde(rename = "just")]
@@ -2247,7 +2247,7 @@ pub enum Tooling {
     ///
     /// [https://www.prisma.io/docs/orm/tools/prisma-cli](https://www.prisma.io/docs/orm/tools/prisma-cli)
     ///
-    /// `prisma format --schema={$PATH_STRING}`
+    /// `prisma format --schema=$PATH`
     PrismaFormat,
 
     #[serde(rename = "proselint")]
@@ -2399,7 +2399,7 @@ pub enum Tooling {
     ///
     /// [https://github.com/asottile/pyupgrade](https://github.com/asottile/pyupgrade)
     ///
-    /// `pyupgrade $PATH`
+    /// `pyupgrade --exit-zero-even-if-changed $PATH`
     Pyupgrade,
 
     #[serde(rename = "qmlfmt")]
@@ -2495,7 +2495,7 @@ pub enum Tooling {
     ///
     /// [https://github.com/asottile/reorder-python-imports](https://github.com/asottile/reorder-python-imports)
     ///
-    /// `reorder-python-imports $PATH`
+    /// `reorder-python-imports --exit-zero-even-if-changed $PATH`
     ReorderPythonImports,
 
     #[serde(rename = "rescript:format")]
@@ -3293,9 +3293,10 @@ impl Tooling {
         debug_enabled: bool,
         config_runners: &crate::config::MdsfConfigRunners,
     ) -> Result<(bool, Option<String>), crate::error::MdsfError> {
+        #[allow(clippy::type_complexity)]
         let (commands, set_args_fn, is_stdin): (
             &[crate::runners::CommandType],
-            crate::execution::SetArgsFn,
+            fn(std::process::Command, &std::path::Path) -> std::process::Command,
             bool,
         ) = match self {
             Self::Actionlint => (
