@@ -1462,7 +1462,7 @@
           "const": "pyrefly"
         },
         {
-          "description": "A tool to automatically upgrade Python syntax to newer versions\n\n[https://github.com/asottile/pyupgrade](https://github.com/asottile/pyupgrade)\n\n`pyupgrade $PATH`",
+          "description": "A tool to automatically upgrade Python syntax to newer versions\n\n[https://github.com/asottile/pyupgrade](https://github.com/asottile/pyupgrade)\n\n`pyupgrade --exit-zero-even-if-changed $PATH`",
           "type": "string",
           "const": "pyupgrade"
         },

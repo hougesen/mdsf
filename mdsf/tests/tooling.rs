@@ -8415,7 +8415,7 @@ mod test_pyupgrade {
         crate::common::run_tooling_test(
             mdsf::config::MdsfTool::Custom(mdsf::custom::CustomTool {
                 binary: "pyupgrade".to_owned(),
-                arguments: vec!["$PATH".to_owned()],
+                arguments: vec!["--exit-zero-even-if-changed".to_owned(), "$PATH".to_owned()],
                 stdin: false,
             }),
             input,

@@ -268,9 +268,9 @@ jobs:
       - name: pyrefly
         run: ( ( which pyrefly ) || ( ( which pipx && pipx install pyrefly ) ) || ( echo "Unable to install tool" ) )
       - name: pyupgrade
-        run: ( ( which pyupgrade ) || ( ( which pipx && pipx install pyupgrade ) ) || ( echo "Unable to install tool" ) )
+        run: ( ( which pyupgrade ) || ( ( which brew &&  brew install pyupgrade ) || ( which pipx && pipx install pyupgrade ) ) || ( echo "Unable to install tool" ) )
       - name: reorder-python-imports
-        run: ( ( which reorder-python-imports ) || ( ( which pipx && pipx install reorder-python-imports ) ) || ( echo "Unable to install tool" ) )
+        run: ( ( which reorder-python-imports ) || ( ( which brew &&  brew install reorder-python-imports ) || ( which pipx && pipx install reorder-python-imports ) ) || ( echo "Unable to install tool" ) )
       - name: rescript
         run: ( ( which rescript ) || ( ( which npm && npm i -g rescript ) ) || ( echo "Unable to install tool" ) )
       - name: rubocop

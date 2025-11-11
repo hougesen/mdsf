@@ -2399,7 +2399,7 @@ pub enum Tooling {
     ///
     /// [https://github.com/asottile/pyupgrade](https://github.com/asottile/pyupgrade)
     ///
-    /// `pyupgrade $PATH`
+    /// `pyupgrade --exit-zero-even-if-changed $PATH`
     Pyupgrade,
 
     #[serde(rename = "qmlfmt")]

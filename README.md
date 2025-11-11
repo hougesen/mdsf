@@ -1086,7 +1086,7 @@ When defining the arguments the variable `$PATH` will automatically be replaced 
 | `pymarkdownlnt:fix`          | `pymarkdownlnt --return-code-scheme minimal fix $PATH`                                  |
 | `pyment`                     | `pyment -w $PATH`                                                                       |
 | `pyrefly`                    | `pyrefly check $PATH`                                                                   |
-| `pyupgrade`                  | `pyupgrade $PATH`                                                                       |
+| `pyupgrade`                  | `pyupgrade --exit-zero-even-if-changed $PATH`                                           |
 | `qmlfmt`                     | `qmlfmt -w $PATH`                                                                       |
 | `qmlformat`                  | `qmlformat -i $PATH`                                                                    |
 | `qmllint`                    | `qmllint $PATH`                                                                         |
