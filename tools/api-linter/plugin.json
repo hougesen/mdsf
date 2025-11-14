@@ -1,0 +1,19 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "api-linter",
+  "categories": ["linter"],
+  "commands": {
+    "": {
+      "arguments": ["$PATH"],
+      "tests": []
+    }
+  },
+  "description": "A linter for APIs defined in protocol buffers",
+  "homepage": "https://github.com/googleapis/api-linter",
+  "languages": ["protobuf"],
+  "packages": {
+    "go": {
+      "package": "github.com/googleapis/api-linter/v2/cmd/api-linter@latest"
+    }
+  }
+}

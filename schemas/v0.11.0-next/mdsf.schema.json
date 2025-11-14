@@ -227,6 +227,11 @@
           "const": "ansible-lint"
         },
         {
+          "description": "A linter for APIs defined in protocol buffers\n\n[https://github.com/googleapis/api-linter](https://github.com/googleapis/api-linter)\n\n`api-linter $PATH`",
+          "type": "string",
+          "const": "api-linter"
+        },
+        {
           "description": "Go Assembler Formatter\n\n[https://github.com/klauspost/asmfmt](https://github.com/klauspost/asmfmt)\n\n`asmfmt -w $PATH`",
           "type": "string",
           "const": "asmfmt"

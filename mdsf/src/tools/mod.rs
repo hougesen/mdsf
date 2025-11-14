@@ -8,6 +8,7 @@ pub mod alejandra;
 pub mod alex;
 pub mod ameba;
 pub mod ansible_lint;
+pub mod api_linter;
 pub mod asmfmt;
 pub mod astyle;
 pub mod atlas_fmt;
@@ -420,6 +421,14 @@ pub enum Tooling {
     ///
     /// `ansible-lint $PATH`
     AnsibleLint,
+
+    #[serde(rename = "api-linter")]
+    /// A linter for APIs defined in protocol buffers
+    ///
+    /// [https://github.com/googleapis/api-linter](https://github.com/googleapis/api-linter)
+    ///
+    /// `api-linter $PATH`
+    ApiLinter,
 
     #[serde(rename = "asmfmt")]
     /// Go Assembler Formatter
@@ -3348,6 +3357,11 @@ impl Tooling {
                 ansible_lint::set_args,
                 ansible_lint::IS_STDIN,
             ),
+            Self::ApiLinter => (
+                &api_linter::COMMANDS,
+                api_linter::set_args,
+                api_linter::IS_STDIN,
+            ),
             Self::Asmfmt => (&asmfmt::COMMANDS, asmfmt::set_args, asmfmt::IS_STDIN),
             Self::Astyle => (&astyle::COMMANDS, astyle::set_args, astyle::IS_STDIN),
             Self::AtlasFmt => (
@@ -4530,6 +4544,7 @@ impl AsRef<str> for Tooling {
             Self::Alex => "alex",
             Self::Ameba => "ameba",
             Self::AnsibleLint => "ansible-lint",
+            Self::ApiLinter => "api-linter",
             Self::Asmfmt => "asmfmt",
             Self::Astyle => "astyle",
             Self::AtlasFmt => "atlas:fmt",
@@ -4913,6 +4928,7 @@ mod test_tooling {
         assert_eq!(Tooling::Alex, reverse(Tooling::Alex)?);
         assert_eq!(Tooling::Ameba, reverse(Tooling::Ameba)?);
         assert_eq!(Tooling::AnsibleLint, reverse(Tooling::AnsibleLint)?);
+        assert_eq!(Tooling::ApiLinter, reverse(Tooling::ApiLinter)?);
         assert_eq!(Tooling::Asmfmt, reverse(Tooling::Asmfmt)?);
         assert_eq!(Tooling::Astyle, reverse(Tooling::Astyle)?);
         assert_eq!(Tooling::AtlasFmt, reverse(Tooling::AtlasFmt)?);

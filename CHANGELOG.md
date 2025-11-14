@@ -4,6 +4,8 @@ All notable changes to this project will be documented in this file. Dates are d
 
 #### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.11.0...HEAD)
 
+- feat(tools): add support for rumdl [`#1409`](https://github.com/hougesen/mdsf/pull/1409)
+
 #### [v0.11.0](https://github.com/hougesen/mdsf/compare/v0.10.8...v0.11.0)
 
 > 11 November 2025
