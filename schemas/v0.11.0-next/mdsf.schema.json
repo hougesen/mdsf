@@ -2012,6 +2012,11 @@
           "const": "yapf"
         },
         {
+          "description": "Check your YARD docs like RuboCop checks your code - a linter for YARD documentation\n\n[https://github.com/mensfeld/yard-lint](https://github.com/mensfeld/yard-lint)\n\n`yard-lint $PATH`",
+          "type": "string",
+          "const": "yard-lint"
+        },
+        {
           "description": "Code formatter for the Yew framework\n\n[https://github.com/its-the-shrimp/yew-fmt](https://github.com/its-the-shrimp/yew-fmt)\n\n`yew-fmt --edition 2021 $PATH`",
           "type": "string",
           "const": "yew-fmt"

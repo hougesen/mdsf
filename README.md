@@ -492,7 +492,7 @@ When defining the arguments the variable `$PATH` will automatically be replaced 
 
 <!-- START_SECTION:supported-tools -->
 
-`mdsf` currently supports 328 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 329 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                                                                                 | Description                                                                                                                                   | Categories            | Languages                                                                                                                         |
 | ------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
@@ -819,6 +819,7 @@ When defining the arguments the variable `$PATH` will automatically be replaced 
 | [yamlfmt](https://github.com/google/yamlfmt)                                         | An extensible command line tool or library to format yaml files                                                                               | `formatter`           | `yaml`                                                                                                                            |
 | [yamllint](https://github.com/adrienverge/yamllint)                                  | A linter for YAML files                                                                                                                       | `linter`              | `yaml`                                                                                                                            |
 | [yapf](https://github.com/google/yapf)                                               | A formatter for Python files                                                                                                                  | `formatter`           | `python`                                                                                                                          |
+| [yard-lint](https://github.com/mensfeld/yard-lint)                                   | Check your YARD docs like RuboCop checks your code - a linter for YARD documentation                                                          | `linter`              | `ruby`                                                                                                                            |
 | [yew-fmt](https://github.com/its-the-shrimp/yew-fmt)                                 | Code formatter for the Yew framework                                                                                                          | `formatter`           | `rust`                                                                                                                            |
 | [yq](https://github.com/mikefarah/yq)                                                | yq is a portable command-line YAML, JSON, XML, CSV, TOML and properties processor                                                             | `formatter`           | `yaml`                                                                                                                            |
 | [zig](https://ziglang.org)                                                           | Reformat Zig source into canonical form                                                                                                       | `formatter`           | `zig`                                                                                                                             |
@@ -831,7 +832,7 @@ When defining the arguments the variable `$PATH` will automatically be replaced 
 
 <!-- START_SECTION:supported-commands -->
 
-`mdsf` currently supports 368 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 369 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                         | Command                                                                                 |
 | ---------------------------- | --------------------------------------------------------------------------------------- |
@@ -1198,6 +1199,7 @@ When defining the arguments the variable `$PATH` will automatically be replaced 
 | `yamlfmt`                    | `yamlfmt -quiet $PATH`                                                                  |
 | `yamllint`                   | `yamllint $PATH`                                                                        |
 | `yapf`                       | `yapf --in-place $PATH`                                                                 |
+| `yard-lint`                  | `yard-lint $PATH`                                                                       |
 | `yew-fmt`                    | `yew-fmt --edition 2021 $PATH`                                                          |
 | `yq`                         | `yq --inplace $PATH`                                                                    |
 | `zig:fmt`                    | `zig fmt $PATH`                                                                         |
