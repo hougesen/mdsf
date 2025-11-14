@@ -1,0 +1,19 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "yard-lint",
+  "categories": ["linter"],
+  "commands": {
+    "": {
+      "arguments": ["$PATH"],
+      "tests": []
+    }
+  },
+  "description": "Check your YARD docs like RuboCop checks your code - a linter for YARD documentation",
+  "homepage": "https://github.com/mensfeld/yard-lint",
+  "languages": ["ruby"],
+  "packages": {
+    "gem": {
+      "package": "yard-lint"
+    }
+  }
+}

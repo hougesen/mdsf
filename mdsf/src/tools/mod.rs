@@ -365,6 +365,7 @@ pub mod yamlfix;
 pub mod yamlfmt;
 pub mod yamllint;
 pub mod yapf;
+pub mod yard_lint;
 pub mod yew_fmt;
 pub mod yq;
 pub mod zig_fmt;
@@ -3278,6 +3279,14 @@ pub enum Tooling {
     /// `yapf --in-place $PATH`
     Yapf,
 
+    #[serde(rename = "yard-lint")]
+    /// Check your YARD docs like RuboCop checks your code - a linter for YARD documentation
+    ///
+    /// [https://github.com/mensfeld/yard-lint](https://github.com/mensfeld/yard-lint)
+    ///
+    /// `yard-lint $PATH`
+    YardLint,
+
     #[serde(rename = "yew-fmt")]
     /// Code formatter for the Yew framework
     ///
@@ -4510,6 +4519,11 @@ impl Tooling {
             Self::Yamlfmt => (&yamlfmt::COMMANDS, yamlfmt::set_args, yamlfmt::IS_STDIN),
             Self::Yamllint => (&yamllint::COMMANDS, yamllint::set_args, yamllint::IS_STDIN),
             Self::Yapf => (&yapf::COMMANDS, yapf::set_args, yapf::IS_STDIN),
+            Self::YardLint => (
+                &yard_lint::COMMANDS,
+                yard_lint::set_args,
+                yard_lint::IS_STDIN,
+            ),
             Self::YewFmt => (&yew_fmt::COMMANDS, yew_fmt::set_args, yew_fmt::IS_STDIN),
             Self::Yq => (&yq::COMMANDS, yq::set_args, yq::IS_STDIN),
             Self::ZigFmt => (&zig_fmt::COMMANDS, zig_fmt::set_args, zig_fmt::IS_STDIN),
@@ -4901,6 +4915,7 @@ impl AsRef<str> for Tooling {
             Self::Yamlfmt => "yamlfmt",
             Self::Yamllint => "yamllint",
             Self::Yapf => "yapf",
+            Self::YardLint => "yard-lint",
             Self::YewFmt => "yew-fmt",
             Self::Yq => "yq",
             Self::ZigFmt => "zig:fmt",
@@ -5333,6 +5348,7 @@ mod test_tooling {
         assert_eq!(Tooling::Yamlfmt, reverse(Tooling::Yamlfmt)?);
         assert_eq!(Tooling::Yamllint, reverse(Tooling::Yamllint)?);
         assert_eq!(Tooling::Yapf, reverse(Tooling::Yapf)?);
+        assert_eq!(Tooling::YardLint, reverse(Tooling::YardLint)?);
         assert_eq!(Tooling::YewFmt, reverse(Tooling::YewFmt)?);
         assert_eq!(Tooling::Yq, reverse(Tooling::Yq)?);
         assert_eq!(Tooling::ZigFmt, reverse(Tooling::ZigFmt)?);
