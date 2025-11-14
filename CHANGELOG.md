@@ -4,6 +4,7 @@ All notable changes to this project will be documented in this file. Dates are d
 
 #### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.11.0...HEAD)
 
+- feat(tools): add support for yard-lint [`#1411`](https://github.com/hougesen/mdsf/pull/1411)
 - feat(tools): add support for api-linter [`#1410`](https://github.com/hougesen/mdsf/pull/1410)
 - feat(tools): add support for rumdl [`#1409`](https://github.com/hougesen/mdsf/pull/1409)
 

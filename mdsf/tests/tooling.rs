@@ -2932,6 +2932,50 @@ RUN echo "Hello world"
 }
 
 #[cfg(test)]
+mod test_dune_format_dune_file {
+    #[test_with::executable(dune)]
+    fn test_dune_format_dune_file_dune_455f0e69457a3786() -> Result<(), Box<dyn core::error::Error>>
+    {
+        let input = r#"(executable
+           (name asd))"#;
+
+        let output = r#"(executable
+ (name asd))"#;
+
+        let ft = "dune";
+
+        crate::common::run_tooling_test(
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::DuneFormatDuneFile),
+            input,
+            output,
+            ft,
+        )
+    }
+
+    #[test_with::executable(dune)]
+    fn test_custom_tool_dune_dune_455f0e69457a3786() -> Result<(), Box<dyn core::error::Error>> {
+        let input = r#"(executable
+           (name asd))"#;
+
+        let output = r#"(executable
+ (name asd))"#;
+
+        let ft = "dune";
+
+        crate::common::run_tooling_test(
+            mdsf::config::MdsfTool::Custom(mdsf::custom::CustomTool {
+                binary: "dune".to_owned(),
+                arguments: vec!["format-dune-file".to_owned()],
+                stdin: true,
+            }),
+            input,
+            output,
+            ft,
+        )
+    }
+}
+
+#[cfg(test)]
 mod test_dx_fmt {
     #[test_with::executable(dx)]
     fn test_dx_fmt_rust_c07936252118b5c6() -> Result<(), Box<dyn core::error::Error>> {

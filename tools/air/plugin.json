@@ -16,7 +16,7 @@
       ]
     }
   },
-  "description": "R formatter and language server",
+  "description": "R formatter",
   "homepage": "https://github.com/posit-dev/air",
   "languages": ["r"],
   "packages": {

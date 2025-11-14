@@ -1,0 +1,27 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "dune",
+  "categories": ["formatter"],
+  "commands": {
+    "format-dune-file": {
+      "arguments": ["format-dune-file"],
+      "description": "Format dune files",
+      "stdin": true,
+      "tests": [
+        {
+          "language": "dune",
+          "test_input": "(executable\n           (name asd))",
+          "test_output": "(executable\n (name asd))"
+        }
+      ]
+    }
+  },
+  "description": "Build tool for OCaml projects",
+  "homepage": "https://github.com/ocaml/dune",
+  "languages": ["dune", "ocaml", "reasonml"],
+  "packages": {
+    "opam": {
+      "package": "dune"
+    }
+  }
+}

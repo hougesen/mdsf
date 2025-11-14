@@ -492,12 +492,12 @@ When defining the arguments the variable `$PATH` will automatically be replaced 
 
 <!-- START_SECTION:supported-tools -->
 
-`mdsf` currently supports 329 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 330 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                                                                                 | Description                                                                                                                                   | Categories            | Languages                                                                                                                         |
 | ------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
 | [actionlint](https://github.com/rhysd/actionlint)                                    | Static checker for GitHub Actions workflow files                                                                                              | `linter`              | `yaml`                                                                                                                            |
-| [air](https://github.com/posit-dev/air)                                              | R formatter and language server                                                                                                               | `formatter`           | `r`                                                                                                                               |
+| [air](https://github.com/posit-dev/air)                                              | R formatter                                                                                                                                   | `formatter`           | `r`                                                                                                                               |
 | [alejandra](https://github.com/kamadorueda/alejandra)                                | The Uncompromising Nix Code Formatter                                                                                                         | `formatter`           | `nix`                                                                                                                             |
 | [alex](https://github.com/get-alex/alex)                                             | Catch insensitive, inconsiderate writing                                                                                                      | `spell-check`         | `markdown`                                                                                                                        |
 | [ameba](https://github.com/crystal-ameba/ameba)                                      | A static code analysis tool for Crystal                                                                                                       | `linter`              | `crystal`                                                                                                                         |
@@ -573,6 +573,7 @@ When defining the arguments the variable `$PATH` will automatically be replaced 
 | [dotenv-linter](https://github.com/dotenv-linter/dotenv-linter)                      | Lightning-fast linter for .env files                                                                                                          | `linter`              | `env`                                                                                                                             |
 | [dprint](https://dprint.dev)                                                         | A pluggable and configurable code formatting platform written in Rust                                                                         | `formatter`           |                                                                                                                                   |
 | [dscanner](https://github.com/dlang-community/d-scanner)                             | Swiss-army knife for D source code                                                                                                            | `linter`              | `d`                                                                                                                               |
+| [dune](https://github.com/ocaml/dune)                                                | Build tool for OCaml projects                                                                                                                 | `formatter`           | `dune`, `ocaml`, `reasonml`                                                                                                       |
 | [duster](https://github.com/tighten/duster)                                          | Automatic configuration for Laravel apps to apply Tighten's standard linting & code standards                                                 | `formatter`, `linter` | `php`                                                                                                                             |
 | [dx](https://github.com/dioxuslabs/dioxus)                                           | Fullstack app framework for web, desktop, and mobile                                                                                          | `formatter`           | `rsx`, `rust`                                                                                                                     |
 | [easy-coding-standard](https://github.com/easy-coding-standard/easy-coding-standard) | The Easiest way to add coding standard to your PHP project                                                                                    | `formatter`, `linter` | `php`                                                                                                                             |
@@ -832,7 +833,7 @@ When defining the arguments the variable `$PATH` will automatically be replaced 
 
 <!-- START_SECTION:supported-commands -->
 
-`mdsf` currently supports 369 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 370 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                         | Command                                                                                 |
 | ---------------------------- | --------------------------------------------------------------------------------------- |
@@ -922,6 +923,7 @@ When defining the arguments the variable `$PATH` will automatically be replaced 
 | `dprint:fmt`                 | `dprint fmt $PATH`                                                                      |
 | `dscanner:fix`               | `dscanner fix $PATH`                                                                    |
 | `dscanner:lint`              | `dscanner lint $PATH`                                                                   |
+| `dune:format-dune-file`      | `dune format-dune-file`                                                                 |
 | `duster:fix`                 | `duster fix --quiet --no-interaction $PATH`                                             |
 | `duster:lint`                | `duster lint --quiet --no-interaction $PATH`                                            |
 | `dx:fmt`                     | `dx fmt --all-code --file $PATH`                                                        |

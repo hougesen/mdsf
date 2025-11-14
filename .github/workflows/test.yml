@@ -139,6 +139,8 @@ jobs:
         run: ( ( which dfmt ) || ( ( which brew &&  brew install dfmt ) ) || ( echo "Unable to install tool" ) )
       - name: dockerfmt
         run: ( ( which dockerfmt ) || ( ( which go && go install github.com/reteps/dockerfmt@latest ) ) || ( echo "Unable to install tool" ) )
+      - name: dune
+        run: ( ( which dune ) || ( ( which opam && eval $(opam env) && opam install dune ) ) || ( echo "Unable to install tool" ) )
       - name: dx
         run: ( ( which dx ) || ( ( which cargo && ( cargo binstall dioxus-cli || cargo install dioxus-cli ) ) ) || ( echo "Unable to install tool" ) )
       - name: efmt
