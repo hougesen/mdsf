@@ -333,21 +333,6 @@ mod test_alex {
 }
 
 #[cfg(test)]
-mod test_ameba {}
-
-#[cfg(test)]
-mod test_ansible_lint {}
-
-#[cfg(test)]
-mod test_asmfmt {}
-
-#[cfg(test)]
-mod test_astyle {}
-
-#[cfg(test)]
-mod test_atlas_fmt {}
-
-#[cfg(test)]
 mod test_auto_optional {
     #[test_with::executable(auto-optional || pipx || uv)]
     fn test_auto_optional_python_c43199b18f48026d() -> Result<(), Box<dyn core::error::Error>> {
@@ -396,9 +381,6 @@ def foo(bar: Optional[str] = None):
         )
     }
 }
-
-#[cfg(test)]
-mod test_autocorrect {}
 
 #[cfg(test)]
 mod test_autoflake {
@@ -686,9 +668,6 @@ awk '{
 }
 
 #[cfg(test)]
-mod test_beancount_black {}
-
-#[cfg(test)]
 mod test_beautysh {
     #[test_with::executable(beautysh)]
     fn test_beautysh_bash_a6831a7ad31bd0a6() -> Result<(), Box<dyn core::error::Error>> {
@@ -804,12 +783,6 @@ add() {
         )
     }
 }
-
-#[cfg(test)]
-mod test_bibtex_tidy {}
-
-#[cfg(test)]
-mod test_bicep_format {}
 
 #[cfg(test)]
 mod test_biome_check {
@@ -1491,12 +1464,6 @@ mod test_blue {
 }
 
 #[cfg(test)]
-mod test_bpfmt {}
-
-#[cfg(test)]
-mod test_brittany {}
-
-#[cfg(test)]
 mod test_brunette {
     #[test_with::executable(brunette || pipx || uv)]
     fn test_brunette_python_229ec2b01c2bfe3c() -> Result<(), Box<dyn core::error::Error>> {
@@ -1539,12 +1506,6 @@ mod test_brunette {
         )
     }
 }
-
-#[cfg(test)]
-mod test_bsfmt {}
-
-#[cfg(test)]
-mod test_bslint {}
 
 #[cfg(test)]
 mod test_buf_format {
@@ -1598,12 +1559,6 @@ mod test_buf_format {
         )
     }
 }
-
-#[cfg(test)]
-mod test_buf_lint {}
-
-#[cfg(test)]
-mod test_buildifier {}
 
 #[cfg(test)]
 mod test_cabal_format {
@@ -1701,30 +1656,6 @@ executable msdf
         )
     }
 }
-
-#[cfg(test)]
-mod test_cabal_fmt {}
-
-#[cfg(test)]
-mod test_cabal_gild {}
-
-#[cfg(test)]
-mod test_cabal_prettify {}
-
-#[cfg(test)]
-mod test_caddy_fmt {}
-
-#[cfg(test)]
-mod test_caramel_fmt {}
-
-#[cfg(test)]
-mod test_cedar_format {}
-
-#[cfg(test)]
-mod test_cfn_lint {}
-
-#[cfg(test)]
-mod test_checkmake {}
 
 #[cfg(test)]
 mod test_clang_format {
@@ -2150,15 +2081,6 @@ class Adder {
 }
 
 #[cfg(test)]
-mod test_clang_tidy {}
-
-#[cfg(test)]
-mod test_clj_kondo {}
-
-#[cfg(test)]
-mod test_cljfmt_fix {}
-
-#[cfg(test)]
 mod test_cljstyle {
     #[test_with::executable(cljstyle)]
     fn test_cljstyle_clojure_92fbb2f42ebeeb2e() -> Result<(), Box<dyn core::error::Error>> {
@@ -2261,18 +2183,6 @@ mod test_cljstyle {
         )
     }
 }
-
-#[cfg(test)]
-mod test_cmake_format {}
-
-#[cfg(test)]
-mod test_cmake_lint {}
-
-#[cfg(test)]
-mod test_codeql_query_format {}
-
-#[cfg(test)]
-mod test_codespell {}
 
 #[cfg(test)]
 mod test_coffeelint {
@@ -2403,9 +2313,6 @@ int add(int a, int b) { return a + b; }
         )
     }
 }
-
-#[cfg(test)]
-mod test_crlfmt {}
 
 #[cfg(test)]
 mod test_crystal_format {
@@ -2696,21 +2603,6 @@ mod test_csslint {
 }
 
 #[cfg(test)]
-mod test_cue_fmt {}
-
-#[cfg(test)]
-mod test_cueimports {}
-
-#[cfg(test)]
-mod test_curlylint {}
-
-#[cfg(test)]
-mod test_d_2_fmt {}
-
-#[cfg(test)]
-mod test_dart_fix {}
-
-#[cfg(test)]
 mod test_dart_format {
     #[test_with::executable(dart)]
     fn test_dart_format_dart_1e68d7619b4be391() -> Result<(), Box<dyn core::error::Error>> {
@@ -2758,15 +2650,6 @@ mod test_dart_format {
         )
     }
 }
-
-#[cfg(test)]
-mod test_dcm_fix {}
-
-#[cfg(test)]
-mod test_dcm_format {}
-
-#[cfg(test)]
-mod test_deadnix {}
 
 #[cfg(test)]
 mod test_deno_fmt {
@@ -2952,9 +2835,6 @@ mod test_deno_fmt {
 }
 
 #[cfg(test)]
-mod test_deno_lint {}
-
-#[cfg(test)]
 mod test_dfmt {
     #[test_with::executable(dfmt || dub)]
     fn test_dfmt_d_768f677c0817bc61() -> Result<(), Box<dyn core::error::Error>> {
@@ -3002,18 +2882,6 @@ mod test_dfmt {
         )
     }
 }
-
-#[cfg(test)]
-mod test_dhall {}
-
-#[cfg(test)]
-mod test_djade {}
-
-#[cfg(test)]
-mod test_djlint {}
-
-#[cfg(test)]
-mod test_docformatter {}
 
 #[cfg(test)]
 mod test_dockerfmt {
@@ -3064,33 +2932,6 @@ RUN echo "Hello world"
 }
 
 #[cfg(test)]
-mod test_dockfmt {}
-
-#[cfg(test)]
-mod test_docstrfmt {}
-
-#[cfg(test)]
-mod test_doctoc {}
-
-#[cfg(test)]
-mod test_dotenv_linter_fix {}
-
-#[cfg(test)]
-mod test_dprint_fmt {}
-
-#[cfg(test)]
-mod test_dscanner_fix {}
-
-#[cfg(test)]
-mod test_dscanner_lint {}
-
-#[cfg(test)]
-mod test_duster_fix {}
-
-#[cfg(test)]
-mod test_duster_lint {}
-
-#[cfg(test)]
 mod test_dx_fmt {
     #[test_with::executable(dx)]
     fn test_dx_fmt_rust_c07936252118b5c6() -> Result<(), Box<dyn core::error::Error>> {
@@ -3139,9 +2980,6 @@ mod test_dx_fmt {
         )
     }
 }
-
-#[cfg(test)]
-mod test_easy_coding_standard {}
 
 #[cfg(test)]
 mod test_efmt {
@@ -3263,12 +3101,6 @@ main =
 }
 
 #[cfg(test)]
-mod test_eradicate {}
-
-#[cfg(test)]
-mod test_erb_formatter {}
-
-#[cfg(test)]
 mod test_erg_lint {
     #[test_with::executable(erg)]
     fn test_erg_lint_erg_802e6b757d972583() -> Result<(), Box<dyn core::error::Error>> {
@@ -3372,9 +3204,6 @@ case Erlang of movie->[hello(mike,joe,robert),credits]; language->formatting_arg
 }
 
 #[cfg(test)]
-mod test_eslint {}
-
-#[cfg(test)]
 mod test_fantomas {
     #[test_with::executable(fantomas)]
     fn test_fantomas_fsharp_f3cb7f290d0660d3() -> Result<(), Box<dyn core::error::Error>> {
@@ -3421,9 +3250,6 @@ let add a b  =  a +  b
 }
 
 #[cfg(test)]
-mod test_fish_indent {}
-
-#[cfg(test)]
 mod test_fixjson {
     #[test_with::executable(fixjson || bunx || deno || npx || pnpm || yarn)]
     fn test_fixjson_json_115ca7a7d8b2cc2b() -> Result<(), Box<dyn core::error::Error>> {
@@ -3467,18 +3293,6 @@ mod test_fixjson {
         )
     }
 }
-
-#[cfg(test)]
-mod test_floskell {}
-
-#[cfg(test)]
-mod test_flynt {}
-
-#[cfg(test)]
-mod test_fnlfmt {}
-
-#[cfg(test)]
-mod test_forge_fmt {}
 
 #[cfg(test)]
 mod test_fortitude_check {
@@ -3962,12 +3776,6 @@ end program
 }
 
 #[cfg(test)]
-mod test_futhark_fmt {}
-
-#[cfg(test)]
-mod test_fvm_dart_fix {}
-
-#[cfg(test)]
 mod test_fvm_dart_format {
     #[test_with::executable(fvm)]
     fn test_fvm_dart_format_dart_1e68d7619b4be391() -> Result<(), Box<dyn core::error::Error>> {
@@ -4017,21 +3825,6 @@ mod test_fvm_dart_format {
 }
 
 #[cfg(test)]
-mod test_gci {}
-
-#[cfg(test)]
-mod test_gdformat {}
-
-#[cfg(test)]
-mod test_gdlint {}
-
-#[cfg(test)]
-mod test_gersemi {}
-
-#[cfg(test)]
-mod test_ghokin_fmt {}
-
-#[cfg(test)]
 mod test_gleam_format {
     #[test_with::executable(gleam)]
     fn test_gleam_format_gleam_d23656d11ef3a81d() -> Result<(), Box<dyn core::error::Error>> {
@@ -4075,9 +3868,6 @@ mod test_gleam_format {
         )
     }
 }
-
-#[cfg(test)]
-mod test_gluon_fmt {}
 
 #[cfg(test)]
 mod test_gofmt {
@@ -4287,18 +4077,6 @@ func add(a int, b int) int {
 }
 
 #[cfg(test)]
-mod test_goimports_reviser {}
-
-#[cfg(test)]
-mod test_golangci_lint_fmt {}
-
-#[cfg(test)]
-mod test_golangci_lint_run {}
-
-#[cfg(test)]
-mod test_golangci_lint_run_fix {}
-
-#[cfg(test)]
 mod test_golines {
     #[test_with::executable(golines)]
     fn test_golines_go_4af43f410d7fff15() -> Result<(), Box<dyn core::error::Error>> {
@@ -4446,12 +4224,6 @@ mod test_google_java_format {
 }
 
 #[cfg(test)]
-mod test_gospel {}
-
-#[cfg(test)]
-mod test_grafbase_lint {}
-
-#[cfg(test)]
 mod test_grain_format {
     #[test_with::executable(grain)]
     fn test_grain_format_grain_68b6e8ad56bbb476() -> Result<(), Box<dyn core::error::Error>> {
@@ -4506,18 +4278,6 @@ print("Hello, world!")
         )
     }
 }
-
-#[cfg(test)]
-mod test_hadolint {}
-
-#[cfg(test)]
-mod test_haml_lint {}
-
-#[cfg(test)]
-mod test_hclfmt {}
-
-#[cfg(test)]
-mod test_hfmt {}
 
 #[cfg(test)]
 mod test_hindent {
@@ -4738,9 +4498,6 @@ mod test_htmlbeautifier {
 }
 
 #[cfg(test)]
-mod test_htmlhint {}
-
-#[cfg(test)]
 mod test_hurlfmt {
     #[test_with::executable(hurlfmt)]
     fn test_hurlfmt_hurl_cc8490154955ef91() -> Result<(), Box<dyn core::error::Error>> {
@@ -4778,12 +4535,6 @@ mod test_hurlfmt {
         )
     }
 }
-
-#[cfg(test)]
-mod test_imba_fmt {}
-
-#[cfg(test)]
-mod test_inko_fmt {}
 
 #[cfg(test)]
 mod test_isort {
@@ -4855,12 +4606,6 @@ def add(a: int, b: int) -> int:
         )
     }
 }
-
-#[cfg(test)]
-mod test_janet_format {}
-
-#[cfg(test)]
-mod test_joker {}
 
 #[cfg(test)]
 mod test_jq {
@@ -4997,9 +4742,6 @@ mod test_js_beautify {
 }
 
 #[cfg(test)]
-mod test_json_5_format {}
-
-#[cfg(test)]
 mod test_json_repair {
     #[test_with::executable(json_repair || pipx || uv)]
     fn test_json_repair_json_590de0f66ae2a041() -> Result<(), Box<dyn core::error::Error>> {
@@ -5048,12 +4790,6 @@ mod test_json_repair {
         )
     }
 }
-
-#[cfg(test)]
-mod test_jsona_format {}
-
-#[cfg(test)]
-mod test_jsona_lint {}
 
 #[cfg(test)]
 mod test_jsonlint {
@@ -5144,12 +4880,6 @@ mod test_jsonlint_sort {
         )
     }
 }
-
-#[cfg(test)]
-mod test_jsonnet_lint {}
-
-#[cfg(test)]
-mod test_jsonnetfmt {}
 
 #[cfg(test)]
 mod test_jsonpp {
@@ -5428,9 +5158,6 @@ spec = {
 }
 
 #[cfg(test)]
-mod test_kcl_lint {}
-
-#[cfg(test)]
 mod test_kdlfmt {
     #[test_with::executable(kdlfmt || bunx || deno || npx || pnpm || yarn)]
     fn test_kdlfmt_kdl_3d75351f7ec84869() -> Result<(), Box<dyn core::error::Error>> {
@@ -5598,12 +5325,6 @@ child "2"   }
 }
 
 #[cfg(test)]
-mod test_kdoc_formatter {}
-
-#[cfg(test)]
-mod test_keep_sorted {}
-
-#[cfg(test)]
 mod test_ktfmt {
     #[test_with::executable(ktfmt)]
     fn test_ktfmt_kotlin_434b08006e9b780a() -> Result<(), Box<dyn core::error::Error>> {
@@ -5717,18 +5438,6 @@ fun add(
 }
 
 #[cfg(test)]
-mod test_kulala_fmt_check {}
-
-#[cfg(test)]
-mod test_kulala_fmt_format {}
-
-#[cfg(test)]
-mod test_leptosfmt {}
-
-#[cfg(test)]
-mod test_liquidsoap_prettier {}
-
-#[cfg(test)]
 mod test_luaformatter {
     #[test_with::executable(lua-format)]
     fn test_luaformatter_lua_df0e81b2c9a1a835() -> Result<(), Box<dyn core::error::Error>> {
@@ -5795,12 +5504,6 @@ end
         )
     }
 }
-
-#[cfg(test)]
-mod test_luacheck {}
-
-#[cfg(test)]
-mod test_luau_analyze {}
 
 #[cfg(test)]
 mod test_mado_check {
@@ -6238,9 +5941,6 @@ mod test_markdownlint_cli_2 {
 }
 
 #[cfg(test)]
-mod test_markuplint {}
-
-#[cfg(test)]
 mod test_mbake_format {
     #[test_with::executable(mbake || pipx || uv)]
     fn test_mbake_format_makefile_edbe638c5985a6ce() -> Result<(), Box<dyn core::error::Error>> {
@@ -6409,12 +6109,6 @@ clean:
 }
 
 #[cfg(test)]
-mod test_md_padding {}
-
-#[cfg(test)]
-mod test_mdformat {}
-
-#[cfg(test)]
 mod test_mdsf_format {
     #[test_with::executable(mdsf || bunx || deno || npx || pnpm || yarn)]
     fn test_mdsf_format_markdown_1e1586f943958589() -> Result<(), Box<dyn core::error::Error>> {
@@ -6493,12 +6187,6 @@ mod test_mdsf_verify {
         )
     }
 }
-
-#[cfg(test)]
-mod test_mdslw {}
-
-#[cfg(test)]
-mod test_meson_fmt {}
 
 #[cfg(test)]
 mod test_mise_fmt {
@@ -6703,21 +6391,6 @@ end
 }
 
 #[cfg(test)]
-mod test_mojo_format {}
-
-#[cfg(test)]
-mod test_muon_fmt {}
-
-#[cfg(test)]
-mod test_muon_lint {}
-
-#[cfg(test)]
-mod test_mypy {}
-
-#[cfg(test)]
-mod test_nasmfmt {}
-
-#[cfg(test)]
 mod test_nginxbeautifier {
     #[test_with::executable(nginxbeautifier || bunx || deno || npx || pnpm || yarn)]
     fn test_nginxbeautifier_conf_5c2a2e0d4f44354f() -> Result<(), Box<dyn core::error::Error>> {
@@ -6836,9 +6509,6 @@ mod test_nginxfmt {
         )
     }
 }
-
-#[cfg(test)]
-mod test_nickel_format {}
 
 #[cfg(test)]
 mod test_nimpretty {
@@ -7176,9 +6846,6 @@ buildPythonPackage rec {
 }
 
 #[cfg(test)]
-mod test_nomad_fmt {}
-
-#[cfg(test)]
 mod test_nph {
     #[test_with::executable(nph)]
     fn test_nph_nim_b53c066cb1d15828() -> Result<(), Box<dyn core::error::Error>> {
@@ -7224,12 +6891,6 @@ mod test_nph {
         )
     }
 }
-
-#[cfg(test)]
-mod test_npm_groovy_lint {}
-
-#[cfg(test)]
-mod test_nufmt {}
 
 #[cfg(test)]
 mod test_ocamlformat {
@@ -7335,15 +6996,6 @@ let add a b
 }
 
 #[cfg(test)]
-mod test_odinfmt {}
-
-#[cfg(test)]
-mod test_oelint_adv {}
-
-#[cfg(test)]
-mod test_opa_fmt {}
-
-#[cfg(test)]
 mod test_ormolu {
     #[test_with::executable(ormolu)]
     fn test_ormolu_haskell_c34a44cf19c5fdd7() -> Result<(), Box<dyn core::error::Error>> {
@@ -7442,18 +7094,6 @@ mod test_oxlint {
 }
 
 #[cfg(test)]
-mod test_packer_fix {}
-
-#[cfg(test)]
-mod test_packer_fmt {}
-
-#[cfg(test)]
-mod test_packer_validate {}
-
-#[cfg(test)]
-mod test_pasfmt {}
-
-#[cfg(test)]
 mod test_perflint {
     #[test_with::executable(perflint || pipx || uv)]
     fn test_perflint_python_2a683a1c25614024() -> Result<(), Box<dyn core::error::Error>> {
@@ -7492,27 +7132,6 @@ mod test_perflint {
         )
     }
 }
-
-#[cfg(test)]
-mod test_perltidy {}
-
-#[cfg(test)]
-mod test_pg_format {}
-
-#[cfg(test)]
-mod test_php_cs_fixer_fix {}
-
-#[cfg(test)]
-mod test_phpcbf {}
-
-#[cfg(test)]
-mod test_phpinsights_fix {}
-
-#[cfg(test)]
-mod test_pint {}
-
-#[cfg(test)]
-mod test_pkl_format {}
 
 #[cfg(test)]
 mod test_prettier {
@@ -7775,12 +7394,6 @@ mod test_prettierd {
 }
 
 #[cfg(test)]
-mod test_pretty_php {}
-
-#[cfg(test)]
-mod test_prettypst {}
-
-#[cfg(test)]
 mod test_prisma_format {
     #[test_with::executable(prisma || bunx || deno || npx || pnpm || yarn)]
     fn test_prisma_format_schema_b6e70b1b6bb7472e() -> Result<(), Box<dyn core::error::Error>> {
@@ -7843,21 +7456,6 @@ mod test_prisma_format {
         )
     }
 }
-
-#[cfg(test)]
-mod test_proselint {}
-
-#[cfg(test)]
-mod test_protolint {}
-
-#[cfg(test)]
-mod test_ptop {}
-
-#[cfg(test)]
-mod test_pug_lint {}
-
-#[cfg(test)]
-mod test_puppet_lint {}
 
 #[cfg(test)]
 mod test_purs_tidy {
@@ -8039,18 +7637,6 @@ mod test_pycln {
         )
     }
 }
-
-#[cfg(test)]
-mod test_pycodestyle {}
-
-#[cfg(test)]
-mod test_pydoclint {}
-
-#[cfg(test)]
-mod test_pydocstringformatter {}
-
-#[cfg(test)]
-mod test_pydocstyle {}
 
 #[cfg(test)]
 mod test_pyflakes {
@@ -8298,9 +7884,6 @@ Line 3
 }
 
 #[cfg(test)]
-mod test_pyment {}
-
-#[cfg(test)]
 mod test_pyrefly {
     #[test_with::executable(pyrefly || pipx || uv)]
     fn test_pyrefly_python_13af245604aaa0cd() -> Result<(), Box<dyn core::error::Error>> {
@@ -8399,39 +7982,6 @@ mod test_pyupgrade {
         )
     }
 }
-
-#[cfg(test)]
-mod test_qmlfmt {}
-
-#[cfg(test)]
-mod test_qmlformat {}
-
-#[cfg(test)]
-mod test_qmllint {}
-
-#[cfg(test)]
-mod test_quick_lint_js {}
-
-#[cfg(test)]
-mod test_raco_fmt {}
-
-#[cfg(test)]
-mod test_reek {}
-
-#[cfg(test)]
-mod test_refmt {}
-
-#[cfg(test)]
-mod test_reformat_gherkin {}
-
-#[cfg(test)]
-mod test_refurb {}
-
-#[cfg(test)]
-mod test_regal_fix {}
-
-#[cfg(test)]
-mod test_regal_lint {}
 
 #[cfg(test)]
 mod test_reorder_python_imports {
@@ -8577,9 +8127,6 @@ mod test_rescript_format {
 }
 
 #[cfg(test)]
-mod test_revive {}
-
-#[cfg(test)]
 mod test_roc_format {
     #[test_with::executable(roc)]
     fn test_roc_format_roc_1204aa2d8186919d() -> Result<(), Box<dyn core::error::Error>> {
@@ -8659,9 +8206,6 @@ main =
         )
     }
 }
-
-#[cfg(test)]
-mod test_rstfmt {}
 
 #[cfg(test)]
 mod test_rubocop {
@@ -8916,12 +8460,6 @@ end
 }
 
 #[cfg(test)]
-mod test_rune_fmt {}
-
-#[cfg(test)]
-mod test_runic {}
-
-#[cfg(test)]
 mod test_rustfmt {
     #[test_with::executable(rustfmt)]
     fn test_rustfmt_rust_70ad564760e773e9() -> Result<(), Box<dyn core::error::Error>> {
@@ -9024,9 +8562,6 @@ mod test_rustywind {
 }
 
 #[cfg(test)]
-mod test_salt_lint {}
-
-#[cfg(test)]
 mod test_scalafmt {
     #[test_with::executable(scalafmt)]
     fn test_scalafmt_scala_cbd61c065383c05b() -> Result<(), Box<dyn core::error::Error>> {
@@ -9088,9 +8623,6 @@ mod test_scalafmt {
         )
     }
 }
-
-#[cfg(test)]
-mod test_scalariform {}
 
 #[cfg(test)]
 mod test_selene {
@@ -9268,9 +8800,6 @@ echo "Hello World"
         )
     }
 }
-
-#[cfg(test)]
-mod test_shellharden {}
 
 #[cfg(test)]
 mod test_shfmt {
@@ -9555,9 +9084,6 @@ WHERE
 }
 
 #[cfg(test)]
-mod test_slim_lint {}
-
-#[cfg(test)]
 mod test_smlfmt {
     #[test_with::executable(smlfmt)]
     fn test_smlfmt_sml_ca3c4a53d8aa2d76() -> Result<(), Box<dyn core::error::Error>> {
@@ -9665,12 +9191,6 @@ include: "rules/foo.smk"
         )
     }
 }
-
-#[cfg(test)]
-mod test_solhint {}
-
-#[cfg(test)]
-mod test_sphinx_lint {}
 
 #[cfg(test)]
 mod test_sql_formatter {
@@ -10175,12 +9695,6 @@ end
 }
 
 #[cfg(test)]
-mod test_statix_check {}
-
-#[cfg(test)]
-mod test_statix_fix {}
-
-#[cfg(test)]
 mod test_stylefmt {
     #[test_with::executable(stylefmt || bunx || deno || npx || pnpm || yarn)]
     fn test_stylefmt_css_ed4f8407afa6d974() -> Result<(), Box<dyn core::error::Error>> {
@@ -10607,9 +10121,6 @@ padding: 12px
 }
 
 #[cfg(test)]
-mod test_stylelint {}
-
-#[cfg(test)]
 mod test_stylish_haskell {
     #[test_with::executable(stylish-haskell)]
     fn test_stylish_haskell_haskell_9589647c4239e2dd() -> Result<(), Box<dyn core::error::Error>> {
@@ -10785,9 +10296,6 @@ mod test_superhtml_fmt {
 }
 
 #[cfg(test)]
-mod test_svlint {}
-
-#[cfg(test)]
 mod test_swift_format {
     #[test_with::executable(swift-format)]
     fn test_swift_format_swift_5717762df3975151() -> Result<(), Box<dyn core::error::Error>> {
@@ -10935,9 +10443,6 @@ author = "Mads Hougesen"
 }
 
 #[cfg(test)]
-mod test_templ_fmt {}
-
-#[cfg(test)]
 mod test_terraform_fmt {
     #[test_with::executable(terraform)]
     fn test_terraform_fmt_tf_2c1d9f26008080c1() -> Result<(), Box<dyn core::error::Error>> {
@@ -11003,9 +10508,6 @@ mod test_terraform_fmt {
         )
     }
 }
-
-#[cfg(test)]
-mod test_terragrunt_hclfmt {}
 
 #[cfg(test)]
 mod test_tex_fmt {
@@ -11100,15 +10602,6 @@ E = m c^2
         )
     }
 }
-
-#[cfg(test)]
-mod test_textlint {}
-
-#[cfg(test)]
-mod test_textlint_fix {}
-
-#[cfg(test)]
-mod test_tlint_format {}
 
 #[cfg(test)]
 mod test_tofu_fmt {
@@ -11425,12 +10918,6 @@ mod test_topiary {
 }
 
 #[cfg(test)]
-mod test_tryceratops {}
-
-#[cfg(test)]
-mod test_ts_standard {}
-
-#[cfg(test)]
 mod test_tsp_format {
     #[test_with::executable(tsp || bunx || deno || npx || pnpm || yarn)]
     fn test_tsp_format_typespec_f4c58025c5f05edc() -> Result<(), Box<dyn core::error::Error>> {
@@ -11480,15 +10967,6 @@ mod test_tsp_format {
         )
     }
 }
-
-#[cfg(test)]
-mod test_tsqllint {}
-
-#[cfg(test)]
-mod test_twig_cs_fixer_lint {}
-
-#[cfg(test)]
-mod test_twigcs {}
 
 #[cfg(test)]
 mod test_ty {
@@ -11592,12 +11070,6 @@ mod test_typos {
         )
     }
 }
-
-#[cfg(test)]
-mod test_typstfmt {}
-
-#[cfg(test)]
-mod test_typstyle {}
 
 #[cfg(test)]
 mod test_ufmt {
@@ -11801,12 +11273,6 @@ def add(a: int, b: int) -> int:
 }
 
 #[cfg(test)]
-mod test_v_fmt {}
-
-#[cfg(test)]
-mod test_vacuum_lint {}
-
-#[cfg(test)]
 mod test_verusfmt {
     #[test_with::executable(verusfmt)]
     fn test_verusfmt_rust_70ad564760e773e9() -> Result<(), Box<dyn core::error::Error>> {
@@ -12000,12 +11466,6 @@ pub module Delay #( // visibility control by `pub` keyword
 }
 
 #[cfg(test)]
-mod test_vint {}
-
-#[cfg(test)]
-mod test_vint_neovim {}
-
-#[cfg(test)]
 mod test_vhdl_style_guide {
     #[test_with::executable(vsg || pipx || uv)]
     fn test_vhdl_style_guide_vhdl_a9606d208e8f0a57() -> Result<(), Box<dyn core::error::Error>> {
@@ -12081,9 +11541,6 @@ end architecture rtl;
         )
     }
 }
-
-#[cfg(test)]
-mod test_wa_fmt {}
 
 #[cfg(test)]
 mod test_wfindent {
@@ -12176,9 +11633,6 @@ end program
         )
     }
 }
-
-#[cfg(test)]
-mod test_write_good {}
 
 #[cfg(test)]
 mod test_xmlformat {
@@ -12973,9 +12427,6 @@ mod test_zig_fmt {
         )
     }
 }
-
-#[cfg(test)]
-mod test_ziggy_fmt {}
 
 #[cfg(test)]
 mod test_zprint {

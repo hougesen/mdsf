@@ -277,6 +277,9 @@ pub mod rubyfmt;
 pub mod ruff_check;
 pub mod ruff_format;
 pub mod rufo;
+pub mod rumdl_check;
+pub mod rumdl_check_fix;
+pub mod rumdl_fmt;
 pub mod rune_fmt;
 pub mod runic;
 pub mod rustfmt;
@@ -2570,6 +2573,30 @@ pub enum Tooling {
     /// `rufo --simple-exit $PATH`
     Rufo,
 
+    #[serde(rename = "rumdl:check")]
+    /// Lint Markdown
+    ///
+    /// [https://github.com/rvben/rumdl](https://github.com/rvben/rumdl)
+    ///
+    /// `rumdl check $PATH`
+    RumdlCheck,
+
+    #[serde(rename = "rumdl:check:fix")]
+    /// Lint Markdown and fix errors
+    ///
+    /// [https://github.com/rvben/rumdl](https://github.com/rvben/rumdl)
+    ///
+    /// `rumdl check --fix $PATH`
+    RumdlCheckFix,
+
+    #[serde(rename = "rumdl:fmt")]
+    /// Format markdown
+    ///
+    /// [https://github.com/rvben/rumdl](https://github.com/rvben/rumdl)
+    ///
+    /// `rumdl fmt $PATH`
+    RumdlFmt,
+
     #[serde(rename = "rune:fmt")]
     /// Format Rune source code
     ///
@@ -4214,6 +4241,21 @@ impl Tooling {
                 ruff_format::IS_STDIN,
             ),
             Self::Rufo => (&rufo::COMMANDS, rufo::set_args, rufo::IS_STDIN),
+            Self::RumdlCheck => (
+                &rumdl_check::COMMANDS,
+                rumdl_check::set_args,
+                rumdl_check::IS_STDIN,
+            ),
+            Self::RumdlCheckFix => (
+                &rumdl_check_fix::COMMANDS,
+                rumdl_check_fix::set_args,
+                rumdl_check_fix::IS_STDIN,
+            ),
+            Self::RumdlFmt => (
+                &rumdl_fmt::COMMANDS,
+                rumdl_fmt::set_args,
+                rumdl_fmt::IS_STDIN,
+            ),
             Self::RuneFmt => (&rune_fmt::COMMANDS, rune_fmt::set_args, rune_fmt::IS_STDIN),
             Self::Runic => (&runic::COMMANDS, runic::set_args, runic::IS_STDIN),
             Self::Rustfmt => (&rustfmt::COMMANDS, rustfmt::set_args, rustfmt::IS_STDIN),
@@ -4757,6 +4799,9 @@ impl AsRef<str> for Tooling {
             Self::RuffCheck => "ruff:check",
             Self::RuffFormat => "ruff:format",
             Self::Rufo => "rufo",
+            Self::RumdlCheck => "rumdl:check",
+            Self::RumdlCheckFix => "rumdl:check:fix",
+            Self::RumdlFmt => "rumdl:fmt",
             Self::RuneFmt => "rune:fmt",
             Self::Runic => "runic",
             Self::Rustfmt => "rustfmt",
@@ -5182,6 +5227,9 @@ mod test_tooling {
         assert_eq!(Tooling::RuffCheck, reverse(Tooling::RuffCheck)?);
         assert_eq!(Tooling::RuffFormat, reverse(Tooling::RuffFormat)?);
         assert_eq!(Tooling::Rufo, reverse(Tooling::Rufo)?);
+        assert_eq!(Tooling::RumdlCheck, reverse(Tooling::RumdlCheck)?);
+        assert_eq!(Tooling::RumdlCheckFix, reverse(Tooling::RumdlCheckFix)?);
+        assert_eq!(Tooling::RumdlFmt, reverse(Tooling::RumdlFmt)?);
         assert_eq!(Tooling::RuneFmt, reverse(Tooling::RuneFmt)?);
         assert_eq!(Tooling::Runic, reverse(Tooling::Runic)?);
         assert_eq!(Tooling::Rustfmt, reverse(Tooling::Rustfmt)?);

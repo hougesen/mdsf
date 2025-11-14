@@ -1,0 +1,30 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "rumdl",
+  "categories": ["formatter", "linter"],
+  "commands": {
+    "check": {
+      "arguments": ["check", "$PATH"],
+      "description": "Lint Markdown",
+      "tests": []
+    },
+    "check:fix": {
+      "arguments": ["check", "--fix", "$PATH"],
+      "description": "Lint Markdown and fix errors",
+      "tests": []
+    },
+    "fmt": {
+      "arguments": ["fmt", "$PATH"],
+      "description": "Format markdown",
+      "tests": []
+    }
+  },
+  "description": "A fast Markdown linter and formatter",
+  "homepage": "https://github.com/rvben/rumdl",
+  "languages": ["markdown"],
+  "packages": {
+    "cargo": {
+      "package": "rumdl"
+    }
+  }
+}
