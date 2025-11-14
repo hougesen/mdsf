@@ -117,7 +117,7 @@ conda install conda-forge::mdsf
 <!-- START_SECTION:base-command-help -->
 
 ```
-mdsf 0.11.0
+mdsf 0.11.0-next
 Format, and lint, markdown code snippets using your favorite tools
 Mads Hougesen <mads@mhouge.dk>
 
@@ -492,7 +492,7 @@ When defining the arguments the variable `$PATH` will automatically be replaced 
 
 <!-- START_SECTION:supported-tools -->
 
-`mdsf` currently supports 326 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 327 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                                                                                 | Description                                                                                                                                   | Categories            | Languages                                                                                                                         |
 | ------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
@@ -740,6 +740,7 @@ When defining the arguments the variable `$PATH` will automatically be replaced 
 | [rubyfmt](https://github.com/fables-tales/rubyfmt)                                   | Ruby Autoformatter                                                                                                                            | `formatter`           | `ruby`                                                                                                                            |
 | [ruff](https://github.com/astral-sh/ruff)                                            | An extremely fast Python linter and code formatter, written in Rust                                                                           | `formatter`, `linter` | `python`                                                                                                                          |
 | [rufo](https://github.com/ruby-formatter/rufo)                                       | The Ruby Formatter                                                                                                                            | `formatter`           | `ruby`                                                                                                                            |
+| [rumdl](https://github.com/rvben/rumdl)                                              | A fast Markdown linter and formatter                                                                                                          | `formatter`, `linter` | `markdown`                                                                                                                        |
 | [rune](https://github.com/rune-rs/rune)                                              | An embeddable dynamic programming language for Rust                                                                                           | `formatter`           | `rune`                                                                                                                            |
 | [runic](https://github.com/fredrikekre/runic.jl)                                     | A code formatter for Julia with rules set in stone                                                                                            | `formatter`           | `julia`                                                                                                                           |
 | [rustfmt](https://github.com/rust-lang/rustfmt)                                      | Format Rust code                                                                                                                              | `formatter`           | `rust`                                                                                                                            |
@@ -829,7 +830,7 @@ When defining the arguments the variable `$PATH` will automatically be replaced 
 
 <!-- START_SECTION:supported-commands -->
 
-`mdsf` currently supports 364 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 367 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                         | Command                                                                                 |
 | ---------------------------- | --------------------------------------------------------------------------------------- |
@@ -1108,6 +1109,9 @@ When defining the arguments the variable `$PATH` will automatically be replaced 
 | `ruff:check`                 | `ruff check --fix --quiet $PATH`                                                        |
 | `ruff:format`                | `ruff format --quiet $PATH`                                                             |
 | `rufo`                       | `rufo --simple-exit $PATH`                                                              |
+| `rumdl:check:fix`            | `rumdl check --fix $PATH`                                                               |
+| `rumdl:check`                | `rumdl check $PATH`                                                                     |
+| `rumdl:fmt`                  | `rumdl fmt $PATH`                                                                       |
 | `rune:fmt`                   | `rune fmt $PATH`                                                                        |
 | `runic`                      | `runic --inplace $PATH`                                                                 |
 | `rustfmt`                    | `rustfmt --edition 2021 --quiet $PATH`                                                  |

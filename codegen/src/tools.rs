@@ -613,24 +613,29 @@ impl Tool {
                 println!("Missing tests for: '{serde_rename}'");
             }
 
-            let test_mod = format!(
-                "#[cfg(test)]
+            let test_methods = options
+                .tests
+                .iter()
+                .filter(|test| !test.disabled)
+                .flat_map(|test| {
+                    [
+                        self.generate_test(cmd, test),
+                        self.generate_custom_tool_test(options, test),
+                    ]
+                })
+                .collect::<Vec<_>>();
+
+            let test_mod = if test_methods.is_empty() {
+                String::new()
+            } else {
+                format!(
+                    "#[cfg(test)]
 mod test_{module_name} {{{maybe_line_break}{tests}{maybe_line_break}}}
 ",
-                maybe_line_break = if options.tests.is_empty() { "" } else { "\n" },
-                tests = options
-                    .tests
-                    .iter()
-                    .filter(|test| !test.disabled)
-                    .flat_map(|test| {
-                        [
-                            self.generate_test(cmd, test),
-                            self.generate_custom_tool_test(options, test),
-                        ]
-                    })
-                    .collect::<Vec<_>>()
-                    .join("\n\n")
-            );
+                    maybe_line_break = if options.tests.is_empty() { "" } else { "\n" },
+                    tests = test_methods.join("\n\n")
+                )
+            };
 
             let code = format!(
                 "{GENERATED_FILE_COMMENT}
