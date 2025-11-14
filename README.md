@@ -492,7 +492,7 @@ When defining the arguments the variable `$PATH` will automatically be replaced 
 
 <!-- START_SECTION:supported-tools -->
 
-`mdsf` currently supports 327 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 328 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                                                                                 | Description                                                                                                                                   | Categories            | Languages                                                                                                                         |
 | ------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
@@ -502,6 +502,7 @@ When defining the arguments the variable `$PATH` will automatically be replaced 
 | [alex](https://github.com/get-alex/alex)                                             | Catch insensitive, inconsiderate writing                                                                                                      | `spell-check`         | `markdown`                                                                                                                        |
 | [ameba](https://github.com/crystal-ameba/ameba)                                      | A static code analysis tool for Crystal                                                                                                       | `linter`              | `crystal`                                                                                                                         |
 | [ansible-lint](https://github.com/ansible/ansible-lint)                              | ansible-lint checks playbooks for practices and behavior that could potentially be improved and can fix some of the most common ones for you  | `linter`              | `ansible`                                                                                                                         |
+| [api-linter](https://github.com/googleapis/api-linter)                               | A linter for APIs defined in protocol buffers                                                                                                 | `linter`              | `protobuf`                                                                                                                        |
 | [asmfmt](https://github.com/klauspost/asmfmt)                                        | Go Assembler Formatter                                                                                                                        | `formatter`           | `go`                                                                                                                              |
 | [astyle](https://gitlab.com/saalen/astyle)                                           | A Free, Fast, and Small Automatic Formatter for C, C++, C++/CLI, Objective-C, C#, and Java Source Code                                        | `formatter`           | `c#`, `c++`, `c`, `java`, `objective-c`                                                                                           |
 | [atlas](https://github.com/ariga/atlas)                                              | Manage your database schema as code                                                                                                           | `formatter`           | `hcl`                                                                                                                             |
@@ -830,7 +831,7 @@ When defining the arguments the variable `$PATH` will automatically be replaced 
 
 <!-- START_SECTION:supported-commands -->
 
-`mdsf` currently supports 367 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 368 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                         | Command                                                                                 |
 | ---------------------------- | --------------------------------------------------------------------------------------- |
@@ -840,6 +841,7 @@ When defining the arguments the variable `$PATH` will automatically be replaced 
 | `alex`                       | `alex --quiet $PATH`                                                                    |
 | `ameba`                      | `ameba --fix $PATH`                                                                     |
 | `ansible-lint`               | `ansible-lint $PATH`                                                                    |
+| `api-linter`                 | `api-linter $PATH`                                                                      |
 | `asmfmt`                     | `asmfmt -w $PATH`                                                                       |
 | `astyle`                     | `astyle --quiet $PATH`                                                                  |
 | `atlas:fmt`                  | `atlas schema fmt $PATH`                                                                |
