@@ -88,6 +88,7 @@ pub mod dotenv_linter_fix;
 pub mod dprint_fmt;
 pub mod dscanner_fix;
 pub mod dscanner_lint;
+pub mod dune_format_dune_file;
 pub mod duster_fix;
 pub mod duster_lint;
 pub mod dx_fmt;
@@ -1062,6 +1063,14 @@ pub enum Tooling {
     ///
     /// `dscanner lint $PATH`
     DscannerLint,
+
+    #[serde(rename = "dune:format-dune-file")]
+    /// Format dune files
+    ///
+    /// [https://github.com/ocaml/dune](https://github.com/ocaml/dune)
+    ///
+    /// `dune format-dune-file`
+    DuneFormatDuneFile,
 
     #[serde(rename = "duster:fix")]
     /// Automatic configuration for Laravel apps to apply Tighten's standard linting & code standards
@@ -3642,6 +3651,11 @@ impl Tooling {
                 dscanner_lint::set_args,
                 dscanner_lint::IS_STDIN,
             ),
+            Self::DuneFormatDuneFile => (
+                &dune_format_dune_file::COMMANDS,
+                dune_format_dune_file::set_args,
+                dune_format_dune_file::IS_STDIN,
+            ),
             Self::DusterFix => (
                 &duster_fix::COMMANDS,
                 duster_fix::set_args,
@@ -4638,6 +4652,7 @@ impl AsRef<str> for Tooling {
             Self::DprintFmt => "dprint:fmt",
             Self::DscannerFix => "dscanner:fix",
             Self::DscannerLint => "dscanner:lint",
+            Self::DuneFormatDuneFile => "dune:format-dune-file",
             Self::DusterFix => "duster:fix",
             Self::DusterLint => "duster:lint",
             Self::DxFmt => "dx:fmt",
@@ -5029,6 +5044,10 @@ mod test_tooling {
         assert_eq!(Tooling::DprintFmt, reverse(Tooling::DprintFmt)?);
         assert_eq!(Tooling::DscannerFix, reverse(Tooling::DscannerFix)?);
         assert_eq!(Tooling::DscannerLint, reverse(Tooling::DscannerLint)?);
+        assert_eq!(
+            Tooling::DuneFormatDuneFile,
+            reverse(Tooling::DuneFormatDuneFile)?
+        );
         assert_eq!(Tooling::DusterFix, reverse(Tooling::DusterFix)?);
         assert_eq!(Tooling::DusterLint, reverse(Tooling::DusterLint)?);
         assert_eq!(Tooling::DxFmt, reverse(Tooling::DxFmt)?);

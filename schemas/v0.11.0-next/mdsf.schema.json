@@ -627,6 +627,11 @@
           "const": "dscanner:lint"
         },
         {
+          "description": "Format dune files\n\n[https://github.com/ocaml/dune](https://github.com/ocaml/dune)\n\n`dune format-dune-file`",
+          "type": "string",
+          "const": "dune:format-dune-file"
+        },
+        {
           "description": "Automatic configuration for Laravel apps to apply Tighten's standard linting & code standards\n\n[https://github.com/tighten/duster](https://github.com/tighten/duster)\n\n`duster fix --quiet --no-interaction $PATH`",
           "type": "string",
           "const": "duster:fix"
