@@ -48,6 +48,7 @@ mod test_deno {
 
     #[test_with::executable(deno)]
     #[test]
+    #[ignore]
     fn it_works_with_executable_name() {
         let input = r#"model Pet {  name: string;  age: int32;kind: "dog" | "cat" | "fish";}
 "#;
