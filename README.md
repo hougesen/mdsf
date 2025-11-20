@@ -492,7 +492,7 @@ When defining the arguments the variable `$PATH` will automatically be replaced 
 
 <!-- START_SECTION:supported-tools -->
 
-`mdsf` currently supports 330 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 332 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                                                                                 | Description                                                                                                                                   | Categories            | Languages                                                                                                                         |
 | ------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
@@ -779,6 +779,8 @@ When defining the arguments the variable `$PATH` will automatically be replaced 
 | [swift-format](https://github.com/swiftlang/swift-format)                            | Formatting technology for Swift source code                                                                                                   | `formatter`           | `swift`                                                                                                                           |
 | [swiftformat](https://github.com/nicklockwood/swiftformat)                           | A command-line tool and Xcode Extension for formatting Swift code                                                                             | `formatter`           | `swift`                                                                                                                           |
 | [taplo](https://github.com/tamasfe/taplo)                                            | A TOML toolkit written in Rust                                                                                                                | `formatter`           | `toml`                                                                                                                            |
+| [tclfmt](https://github.com/nmoroze/tclint)                                          | Formatter for Tcl                                                                                                                             | `linter`              | `tcl`                                                                                                                             |
+| [tclint](https://github.com/nmoroze/tclint)                                          | Linter for Tcl                                                                                                                                | `linter`              | `tcl`                                                                                                                             |
 | [templ](https://github.com/a-h/templ)                                                | A language for writing HTML user interfaces in Go                                                                                             | `formatter`           | `go`, `templ`                                                                                                                     |
 | [terraform](https://www.terraform.io/docs/cli/commands/fmt.html)                     | The terraform fmt command is used to rewrite Terraform configuration files to a canonical format and style                                    | `formatter`           | `terraform`                                                                                                                       |
 | [terragrunt](https://terragrunt.gruntwork.io/docs/reference/cli-options/#hclfmt)     | Recursively find hcl files and rewrite them into a canonical format                                                                           | `formatter`           | `hcl`                                                                                                                             |
@@ -833,7 +835,7 @@ When defining the arguments the variable `$PATH` will automatically be replaced 
 
 <!-- START_SECTION:supported-commands -->
 
-`mdsf` currently supports 370 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 372 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                         | Command                                                                                 |
 | ---------------------------- | --------------------------------------------------------------------------------------- |
@@ -1156,6 +1158,8 @@ When defining the arguments the variable `$PATH` will automatically be replaced 
 | `swift-format`               | `swift-format --in-place $PATH`                                                         |
 | `swiftformat`                | `swiftformat --quiet $PATH`                                                             |
 | `taplo`                      | `taplo format $PATH`                                                                    |
+| `tclfmt`                     | `tclfmt $PATH`                                                                          |
+| `tclint`                     | `tclint $PATH`                                                                          |
 | `templ:fmt`                  | `templ fmt $PATH`                                                                       |
 | `terraform:fmt`              | `terraform fmt -write=true $PATH`                                                       |
 | `terragrunt:hclfmt`          | `terragrunt hclfmt --terragrunt-hclfmt-file $PATH`                                      |

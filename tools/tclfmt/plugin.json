@@ -1,0 +1,20 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "tclfmt",
+  "categories": ["linter"],
+  "commands": {
+    "": {
+      "arguments": ["$PATH"],
+      "tests": []
+    }
+  },
+  "description": "Formatter for Tcl",
+  "homepage": "https://github.com/nmoroze/tclint",
+  "languages": ["tcl"],
+  "packages": {
+    "pip": {
+      "executable": "tclfmt",
+      "package": "tclint"
+    }
+  }
+}

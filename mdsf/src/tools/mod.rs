@@ -321,6 +321,8 @@ pub mod svlint;
 pub mod swift_format;
 pub mod swiftformat;
 pub mod taplo;
+pub mod tclfmt;
+pub mod tclint;
 pub mod templ_fmt;
 pub mod terraform_fmt;
 pub mod terragrunt_hclfmt;
@@ -2928,6 +2930,22 @@ pub enum Tooling {
     /// `taplo format $PATH`
     Taplo,
 
+    #[serde(rename = "tclfmt")]
+    /// Formatter for Tcl
+    ///
+    /// [https://github.com/nmoroze/tclint](https://github.com/nmoroze/tclint)
+    ///
+    /// `tclfmt $PATH`
+    Tclfmt,
+
+    #[serde(rename = "tclint")]
+    /// Linter for Tcl
+    ///
+    /// [https://github.com/nmoroze/tclint](https://github.com/nmoroze/tclint)
+    ///
+    /// `tclint $PATH`
+    Tclint,
+
     #[serde(rename = "templ:fmt")]
     /// Format Templ files
     ///
@@ -4416,6 +4434,8 @@ impl Tooling {
                 swiftformat::IS_STDIN,
             ),
             Self::Taplo => (&taplo::COMMANDS, taplo::set_args, taplo::IS_STDIN),
+            Self::Tclfmt => (&tclfmt::COMMANDS, tclfmt::set_args, tclfmt::IS_STDIN),
+            Self::Tclint => (&tclint::COMMANDS, tclint::set_args, tclint::IS_STDIN),
             Self::TemplFmt => (
                 &templ_fmt::COMMANDS,
                 templ_fmt::set_args,
@@ -4885,6 +4905,8 @@ impl AsRef<str> for Tooling {
             Self::SwiftFormat => "swift-format",
             Self::Swiftformat => "swiftformat",
             Self::Taplo => "taplo",
+            Self::Tclfmt => "tclfmt",
+            Self::Tclint => "tclint",
             Self::TemplFmt => "templ:fmt",
             Self::TerraformFmt => "terraform:fmt",
             Self::TerragruntHclfmt => "terragrunt:hclfmt",
@@ -5319,6 +5341,8 @@ mod test_tooling {
         assert_eq!(Tooling::SwiftFormat, reverse(Tooling::SwiftFormat)?);
         assert_eq!(Tooling::Swiftformat, reverse(Tooling::Swiftformat)?);
         assert_eq!(Tooling::Taplo, reverse(Tooling::Taplo)?);
+        assert_eq!(Tooling::Tclfmt, reverse(Tooling::Tclfmt)?);
+        assert_eq!(Tooling::Tclint, reverse(Tooling::Tclint)?);
         assert_eq!(Tooling::TemplFmt, reverse(Tooling::TemplFmt)?);
         assert_eq!(Tooling::TerraformFmt, reverse(Tooling::TerraformFmt)?);
         assert_eq!(

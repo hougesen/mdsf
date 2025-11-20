@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file. Dates are d
 
 #### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.11.0...HEAD)
 
+- build(deps-dev): bump glob [`#1418`](https://github.com/hougesen/mdsf/pull/1418)
+- build(deps): bump clap from 4.5.51 to 4.5.52 [`#1416`](https://github.com/hougesen/mdsf/pull/1416)
+- test: disable deno exec name test [`#1417`](https://github.com/hougesen/mdsf/pull/1417)
+- build(deps-dev): bump js-yaml [`#1414`](https://github.com/hougesen/mdsf/pull/1414)
+- build(deps-dev): bump js-yaml [`#1413`](https://github.com/hougesen/mdsf/pull/1413)
+- feat(tools): add support for formatting dune files [`#1412`](https://github.com/hougesen/mdsf/pull/1412)
 - feat(tools): add support for yard-lint [`#1411`](https://github.com/hougesen/mdsf/pull/1411)
 - feat(tools): add support for api-linter [`#1410`](https://github.com/hougesen/mdsf/pull/1410)
 - feat(tools): add support for rumdl [`#1409`](https://github.com/hougesen/mdsf/pull/1409)

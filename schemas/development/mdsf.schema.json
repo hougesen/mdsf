@@ -1792,6 +1792,16 @@
           "const": "taplo"
         },
         {
+          "description": "Formatter for Tcl\n\n[https://github.com/nmoroze/tclint](https://github.com/nmoroze/tclint)\n\n`tclfmt $PATH`",
+          "type": "string",
+          "const": "tclfmt"
+        },
+        {
+          "description": "Linter for Tcl\n\n[https://github.com/nmoroze/tclint](https://github.com/nmoroze/tclint)\n\n`tclint $PATH`",
+          "type": "string",
+          "const": "tclint"
+        },
+        {
           "description": "Format Templ files\n\n[https://github.com/a-h/templ](https://github.com/a-h/templ)\n\n`templ fmt $PATH`",
           "type": "string",
           "const": "templ:fmt"

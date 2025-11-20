@@ -1,0 +1,19 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "tclint",
+  "categories": ["linter"],
+  "commands": {
+    "": {
+      "arguments": ["$PATH"],
+      "tests": []
+    }
+  },
+  "description": "Linter for Tcl",
+  "homepage": "https://github.com/nmoroze/tclint",
+  "languages": ["tcl"],
+  "packages": {
+    "pip": {
+      "package": "tclint"
+    }
+  }
+}
