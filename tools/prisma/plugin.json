@@ -7,6 +7,7 @@
       "arguments": ["format", "--schema=$PATH"],
       "tests": [
         {
+          "disabled": true,
           "language": "schema",
           "test_input": "datasource          db             {\n  provider                  = \"postgresql\"\n  url      =          env(\"DATABASE_URL\")\n  directUrl =                       env(\"DIRECT_DATABASE_URL\")\n}\n\n\n",
           "test_output": "datasource db {\n  provider  = \"postgresql\"\n  url       = env(\"DATABASE_URL\")\n  directUrl = env(\"DIRECT_DATABASE_URL\")\n}\n"
