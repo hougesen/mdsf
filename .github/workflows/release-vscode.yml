@@ -10,7 +10,7 @@ jobs:
     permissions:
       contents: read
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
       - run: npm ci
         working-directory: mdsf-vscode
       - name: Publish to VSCode
