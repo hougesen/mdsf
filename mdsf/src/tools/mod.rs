@@ -223,6 +223,7 @@ pub mod odinfmt;
 pub mod oelint_adv;
 pub mod opa_fmt;
 pub mod ormolu;
+pub mod oxfmt;
 pub mod oxlint;
 pub mod packer_fix;
 pub mod packer_fmt;
@@ -2147,6 +2148,14 @@ pub enum Tooling {
     ///
     /// `ormolu --mode inplace $PATH`
     Ormolu,
+
+    #[serde(rename = "oxfmt")]
+    /// Oxfmt a fast JavaScript/TypeScript formatter written in Rust
+    ///
+    /// [https://oxc.rs/docs/guide/usage/formatter.html](https://oxc.rs/docs/guide/usage/formatter.html)
+    ///
+    /// `oxfmt $PATH`
+    Oxfmt,
 
     #[serde(rename = "oxlint")]
     /// Oxlint is designed to catch erroneous or useless code without requiring any configurations by default
@@ -4134,6 +4143,7 @@ impl Tooling {
             ),
             Self::OpaFmt => (&opa_fmt::COMMANDS, opa_fmt::set_args, opa_fmt::IS_STDIN),
             Self::Ormolu => (&ormolu::COMMANDS, ormolu::set_args, ormolu::IS_STDIN),
+            Self::Oxfmt => (&oxfmt::COMMANDS, oxfmt::set_args, oxfmt::IS_STDIN),
             Self::Oxlint => (&oxlint::COMMANDS, oxlint::set_args, oxlint::IS_STDIN),
             Self::PackerFix => (
                 &packer_fix::COMMANDS,
@@ -4827,6 +4837,7 @@ impl AsRef<str> for Tooling {
             Self::OelintAdv => "oelint-adv",
             Self::OpaFmt => "opa:fmt",
             Self::Ormolu => "ormolu",
+            Self::Oxfmt => "oxfmt",
             Self::Oxlint => "oxlint",
             Self::PackerFix => "packer:fix",
             Self::PackerFmt => "packer:fmt",
@@ -5256,6 +5267,7 @@ mod test_tooling {
         assert_eq!(Tooling::OelintAdv, reverse(Tooling::OelintAdv)?);
         assert_eq!(Tooling::OpaFmt, reverse(Tooling::OpaFmt)?);
         assert_eq!(Tooling::Ormolu, reverse(Tooling::Ormolu)?);
+        assert_eq!(Tooling::Oxfmt, reverse(Tooling::Oxfmt)?);
         assert_eq!(Tooling::Oxlint, reverse(Tooling::Oxlint)?);
         assert_eq!(Tooling::PackerFix, reverse(Tooling::PackerFix)?);
         assert_eq!(Tooling::PackerFmt, reverse(Tooling::PackerFmt)?);

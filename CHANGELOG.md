@@ -4,6 +4,7 @@ All notable changes to this project will be documented in this file. Dates are d
 
 #### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.11.0...HEAD)
 
+- feat(tools): add support for miss_hit [`#1424`](https://github.com/hougesen/mdsf/pull/1424)
 - build(deps): bump actions/checkout from 5 to 6 [`#1423`](https://github.com/hougesen/mdsf/pull/1423)
 - build(deps): bump convert_case from 0.9.0 to 0.10.0 [`#1422`](https://github.com/hougesen/mdsf/pull/1422)
 - build(deps): bump clap from 4.5.52 to 4.5.53 [`#1419`](https://github.com/hougesen/mdsf/pull/1419)

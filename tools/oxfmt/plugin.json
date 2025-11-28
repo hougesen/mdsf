@@ -1,0 +1,25 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "oxfmt",
+  "categories": ["formatter"],
+  "commands": {
+    "": {
+      "arguments": ["$PATH"],
+      "tests": [
+        {
+          "language": "typescript",
+          "test_input": "const x =     10;",
+          "test_output": "const x = 10;\n"
+        }
+      ]
+    }
+  },
+  "description": "Oxfmt a fast JavaScript/TypeScript formatter written in Rust",
+  "homepage": "https://oxc.rs/docs/guide/usage/formatter.html",
+  "languages": ["javascript", "typescript"],
+  "packages": {
+    "npm": {
+      "package": "oxfmt"
+    }
+  }
+}

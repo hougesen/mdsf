@@ -1302,6 +1302,11 @@
           "const": "ormolu"
         },
         {
+          "description": "Oxfmt a fast JavaScript/TypeScript formatter written in Rust\n\n[https://oxc.rs/docs/guide/usage/formatter.html](https://oxc.rs/docs/guide/usage/formatter.html)\n\n`oxfmt $PATH`",
+          "type": "string",
+          "const": "oxfmt"
+        },
+        {
           "description": "Oxlint is designed to catch erroneous or useless code without requiring any configurations by default\n\n[https://oxc.rs/docs/guide/usage/linter.html](https://oxc.rs/docs/guide/usage/linter.html)\n\n`oxlint --fix $PATH`",
           "type": "string",
           "const": "oxlint"
