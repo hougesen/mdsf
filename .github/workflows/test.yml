@@ -239,6 +239,8 @@ jobs:
         run: ( ( which ocp-indent ) || ( ( which apt-get && sudo apt-get install -y ocp-indent ) || ( which opam && eval $(opam env) && opam install ocp-indent ) ) || ( echo "Unable to install tool" ) )
       - name: ormolu
         run: ( ( which ormolu ) || ( ( which brew &&  brew install ormolu ) || ( which apt-get && sudo apt-get install -y ormolu ) || ( which stack && stack install ormolu ) || ( which cabal && cabal install ormolu ) ) || ( echo "Unable to install tool" ) )
+      - name: oxfmt
+        run: ( ( which oxfmt ) || ( ( which npm && npm i -g oxfmt ) ) || ( echo "Unable to install tool" ) )
       - name: oxlint
         run: ( ( which oxlint ) || ( ( which npm && npm i -g oxlint ) ) || ( echo "Unable to install tool" ) )
       - name: perflint

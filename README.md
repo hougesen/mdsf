@@ -492,7 +492,7 @@ When defining the arguments the variable `$PATH` will automatically be replaced 
 
 <!-- START_SECTION:supported-tools -->
 
-`mdsf` currently supports 334 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 335 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                                                                                 | Description                                                                                                                                   | Categories            | Languages                                                                                                                         |
 | ------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
@@ -690,6 +690,7 @@ When defining the arguments the variable `$PATH` will automatically be replaced 
 | [oelint-adv](https://github.com/priv-kweihmann/oelint-adv)                           | Advanced oelint                                                                                                                               | `linter`              | `bitbake`                                                                                                                         |
 | [opa](https://www.openpolicyagent.org/docs/latest/cli)                               | Format Rego source files                                                                                                                      | `formatter`           | `rego`                                                                                                                            |
 | [ormolu](https://github.com/tweag/ormolu)                                            | A formatter for Haskell source code                                                                                                           | `formatter`           | `haskell`                                                                                                                         |
+| [oxfmt](https://oxc.rs/docs/guide/usage/formatter.html)                              | Oxfmt a fast JavaScript/TypeScript formatter written in Rust                                                                                  | `formatter`           | `javascript`, `typescript`                                                                                                        |
 | [oxlint](https://oxc.rs/docs/guide/usage/linter.html)                                | Oxlint is designed to catch erroneous or useless code without requiring any configurations by default                                         | `linter`              | `javascript`, `typescript`                                                                                                        |
 | [packer](https://developer.hashicorp.com/packer/docs/commands)                       | Packer is used to format HCL2 configuration files                                                                                             | `formatter`           | `hcl`                                                                                                                             |
 | [pasfmt](https://github.com/integrated-application-development/pasfmt)               | Delphi code formatter                                                                                                                         | `formatter`           | `delphi`, `pascal`                                                                                                                |
@@ -837,7 +838,7 @@ When defining the arguments the variable `$PATH` will automatically be replaced 
 
 <!-- START_SECTION:supported-commands -->
 
-`mdsf` currently supports 374 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 375 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                         | Command                                                                                 |
 | ---------------------------- | --------------------------------------------------------------------------------------- |
@@ -1062,6 +1063,7 @@ When defining the arguments the variable `$PATH` will automatically be replaced 
 | `oelint-adv`                 | `oelint-adv --fix --nobackup --quiet $PATH`                                             |
 | `opa:fmt`                    | `opa fmt $PATH -w`                                                                      |
 | `ormolu`                     | `ormolu --mode inplace $PATH`                                                           |
+| `oxfmt`                      | `oxfmt $PATH`                                                                           |
 | `oxlint`                     | `oxlint --fix $PATH`                                                                    |
 | `packer:fix`                 | `packer fix $PATH`                                                                      |
 | `packer:fmt`                 | `packer fmt $PATH`                                                                      |

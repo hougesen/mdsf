@@ -7098,6 +7098,48 @@ addNumbers a b = do
 }
 
 #[cfg(test)]
+mod test_oxfmt {
+    #[test_with::executable(oxfmt || bunx || deno || npx || pnpm || yarn)]
+    fn test_oxfmt_typescript_6e1a60dfe57a22a9() -> Result<(), Box<dyn core::error::Error>> {
+        let input = r#"const x =     10;"#;
+
+        let output = r#"const x = 10;
+"#;
+
+        let ft = "typescript";
+
+        crate::common::run_tooling_test(
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::Oxfmt),
+            input,
+            output,
+            ft,
+        )
+    }
+
+    #[test_with::executable(oxfmt)]
+    fn test_custom_tool_oxfmt_typescript_6e1a60dfe57a22a9()
+    -> Result<(), Box<dyn core::error::Error>> {
+        let input = r#"const x =     10;"#;
+
+        let output = r#"const x = 10;
+"#;
+
+        let ft = "typescript";
+
+        crate::common::run_tooling_test(
+            mdsf::config::MdsfTool::Custom(mdsf::custom::CustomTool {
+                binary: "oxfmt".to_owned(),
+                arguments: vec!["$PATH".to_owned()],
+                stdin: false,
+            }),
+            input,
+            output,
+            ft,
+        )
+    }
+}
+
+#[cfg(test)]
 mod test_oxlint {
     #[test_with::executable(oxlint || bunx || deno || npx || pnpm || yarn)]
     fn test_oxlint_typescript_a2154a11ef1c153b() -> Result<(), Box<dyn core::error::Error>> {
