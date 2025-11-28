@@ -1,0 +1,19 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "mh_style",
+  "categories": ["formatter"],
+  "commands": {
+    "": {
+      "arguments": ["$PATH"],
+      "tests": []
+    }
+  },
+  "description": "A formatter for MATLAB",
+  "homepage": "https://github.com/florianschanda/miss_hit",
+  "languages": ["matlab"],
+  "packages": {
+    "pip": {
+      "package": "miss_hit"
+    }
+  }
+}

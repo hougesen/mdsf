@@ -492,7 +492,7 @@ When defining the arguments the variable `$PATH` will automatically be replaced 
 
 <!-- START_SECTION:supported-tools -->
 
-`mdsf` currently supports 332 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 334 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                                                                                 | Description                                                                                                                                   | Categories            | Languages                                                                                                                         |
 | ------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
@@ -665,6 +665,8 @@ When defining the arguments the variable `$PATH` will automatically be replaced 
 | [mdsf](https://github.com/hougesen/mdsf)                                             | Run mdsf inside mdsf                                                                                                                          | `formatter`           | `markdown`                                                                                                                        |
 | [mdslw](https://github.com/razziel89/mdslw)                                          | Prepare your markdown for easy diff'ing!                                                                                                      | `formatter`           | `markdown`                                                                                                                        |
 | [meson](https://mesonbuild.com)                                                      | Meson is an open source build system meant to be both extremely fast, and, even more importantly, as user friendly as possible                | `formatter`           | `meson`                                                                                                                           |
+| [mh_lint](https://github.com/florianschanda/miss_hit)                                | A linter for MATLAB                                                                                                                           | `linter`              | `matlab`                                                                                                                          |
+| [mh_style](https://github.com/florianschanda/miss_hit)                               | A formatter for MATLAB                                                                                                                        | `formatter`           | `matlab`                                                                                                                          |
 | [mise](https://github.com/jdx/mise)                                                  | dev tools, env vars, task runner                                                                                                              |                       |                                                                                                                                   |
 | [misspell](https://github.com/client9/misspell)                                      | Correct commonly misspelled English words in source files                                                                                     | `spell-check`         |                                                                                                                                   |
 | [mix](https://hexdocs.pm/mix/main/Mix.Tasks.Format.html)                             | Code formatter for Elixir                                                                                                                     | `formatter`           | `elixir`                                                                                                                          |
@@ -835,7 +837,7 @@ When defining the arguments the variable `$PATH` will automatically be replaced 
 
 <!-- START_SECTION:supported-commands -->
 
-`mdsf` currently supports 372 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 374 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                         | Command                                                                                 |
 | ---------------------------- | --------------------------------------------------------------------------------------- |
@@ -1034,6 +1036,8 @@ When defining the arguments the variable `$PATH` will automatically be replaced 
 | `mdsf:verify`                | `mdsf verify $PATH`                                                                     |
 | `mdslw`                      | `mdslw $PATH`                                                                           |
 | `meson:fmt`                  | `meson fmt -i $PATH`                                                                    |
+| `mh_lint`                    | `mh_lint $PATH`                                                                         |
+| `mh_style`                   | `mh_style $PATH`                                                                        |
 | `mise:fmt`                   | `mise fmt --stdin`                                                                      |
 | `misspell`                   | `misspell -w $PATH`                                                                     |
 | `mix:format`                 | `mix format $PATH`                                                                      |

@@ -1172,6 +1172,16 @@
           "const": "meson:fmt"
         },
         {
+          "description": "A linter for MATLAB\n\n[https://github.com/florianschanda/miss_hit](https://github.com/florianschanda/miss_hit)\n\n`mh_lint $PATH`",
+          "type": "string",
+          "const": "mh_lint"
+        },
+        {
+          "description": "A formatter for MATLAB\n\n[https://github.com/florianschanda/miss_hit](https://github.com/florianschanda/miss_hit)\n\n`mh_style $PATH`",
+          "type": "string",
+          "const": "mh_style"
+        },
+        {
           "description": "Formats mise.toml\n\n[https://mise.jdx.dev/cli/fmt.html](https://mise.jdx.dev/cli/fmt.html)\n\n`mise fmt --stdin`",
           "type": "string",
           "const": "mise:fmt"
