@@ -197,6 +197,8 @@ pub mod mdsf_format;
 pub mod mdsf_verify;
 pub mod mdslw;
 pub mod meson_fmt;
+pub mod mh_lint;
+pub mod mh_style;
 pub mod mise_fmt;
 pub mod misspell;
 pub mod mix_format;
@@ -1937,6 +1939,22 @@ pub enum Tooling {
     ///
     /// `meson fmt -i $PATH`
     MesonFmt,
+
+    #[serde(rename = "mh_lint")]
+    /// A linter for MATLAB
+    ///
+    /// [https://github.com/florianschanda/miss_hit](https://github.com/florianschanda/miss_hit)
+    ///
+    /// `mh_lint $PATH`
+    MhLint,
+
+    #[serde(rename = "mh_style")]
+    /// A formatter for MATLAB
+    ///
+    /// [https://github.com/florianschanda/miss_hit](https://github.com/florianschanda/miss_hit)
+    ///
+    /// `mh_style $PATH`
+    MhStyle,
 
     #[serde(rename = "mise:fmt")]
     /// Formats mise.toml
@@ -4042,6 +4060,8 @@ impl Tooling {
                 meson_fmt::set_args,
                 meson_fmt::IS_STDIN,
             ),
+            Self::MhLint => (&mh_lint::COMMANDS, mh_lint::set_args, mh_lint::IS_STDIN),
+            Self::MhStyle => (&mh_style::COMMANDS, mh_style::set_args, mh_style::IS_STDIN),
             Self::MiseFmt => (&mise_fmt::COMMANDS, mise_fmt::set_args, mise_fmt::IS_STDIN),
             Self::Misspell => (&misspell::COMMANDS, misspell::set_args, misspell::IS_STDIN),
             Self::MixFormat => (
@@ -4781,6 +4801,8 @@ impl AsRef<str> for Tooling {
             Self::MdsfVerify => "mdsf:verify",
             Self::Mdslw => "mdslw",
             Self::MesonFmt => "meson:fmt",
+            Self::MhLint => "mh_lint",
+            Self::MhStyle => "mh_style",
             Self::MiseFmt => "mise:fmt",
             Self::Misspell => "misspell",
             Self::MixFormat => "mix:format",
@@ -5208,6 +5230,8 @@ mod test_tooling {
         assert_eq!(Tooling::MdsfVerify, reverse(Tooling::MdsfVerify)?);
         assert_eq!(Tooling::Mdslw, reverse(Tooling::Mdslw)?);
         assert_eq!(Tooling::MesonFmt, reverse(Tooling::MesonFmt)?);
+        assert_eq!(Tooling::MhLint, reverse(Tooling::MhLint)?);
+        assert_eq!(Tooling::MhStyle, reverse(Tooling::MhStyle)?);
         assert_eq!(Tooling::MiseFmt, reverse(Tooling::MiseFmt)?);
         assert_eq!(Tooling::Misspell, reverse(Tooling::Misspell)?);
         assert_eq!(Tooling::MixFormat, reverse(Tooling::MixFormat)?);

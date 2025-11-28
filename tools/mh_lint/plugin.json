@@ -1,0 +1,19 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "mh_lint",
+  "categories": ["linter"],
+  "commands": {
+    "": {
+      "arguments": ["$PATH"],
+      "tests": []
+    }
+  },
+  "description": "A linter for MATLAB",
+  "homepage": "https://github.com/florianschanda/miss_hit",
+  "languages": ["matlab"],
+  "packages": {
+    "pip": {
+      "package": "miss_hit"
+    }
+  }
+}

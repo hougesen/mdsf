@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file. Dates are d
 
 #### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.11.0...HEAD)
 
+- build(deps): bump actions/checkout from 5 to 6 [`#1423`](https://github.com/hougesen/mdsf/pull/1423)
+- build(deps): bump convert_case from 0.9.0 to 0.10.0 [`#1422`](https://github.com/hougesen/mdsf/pull/1422)
+- build(deps): bump clap from 4.5.52 to 4.5.53 [`#1419`](https://github.com/hougesen/mdsf/pull/1419)
+- build(deps): bump clap_complete from 4.5.60 to 4.5.61 [`#1420`](https://github.com/hougesen/mdsf/pull/1420)
+- feat(tools): add support for tclint and tclfmt [`#1421`](https://github.com/hougesen/mdsf/pull/1421)
 - build(deps-dev): bump glob [`#1418`](https://github.com/hougesen/mdsf/pull/1418)
 - build(deps): bump clap from 4.5.51 to 4.5.52 [`#1416`](https://github.com/hougesen/mdsf/pull/1416)
 - test: disable deno exec name test [`#1417`](https://github.com/hougesen/mdsf/pull/1417)
