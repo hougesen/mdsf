@@ -23,7 +23,7 @@ directories = { version = "6.0.0" }
 env_logger = "0.11.8"
 ignore = "0.4.25"
 json_comments = "0.2.2"
-log = "0.4.28"
+log = "0.4.29"
 mdsf = { path = "./mdsf", features = ["json-schema"] }
 owo-colors = { version = "4.2.3", features = ["supports-colors"] }
 predicates = "3.1.3"
