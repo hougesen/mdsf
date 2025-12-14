@@ -8526,7 +8526,239 @@ mod test_rustfmt {
                 binary: "rustfmt".to_owned(),
                 arguments: vec![
                     "--edition".to_owned(),
+                    "2024".to_owned(),
+                    "--quiet".to_owned(),
+                    "$PATH".to_owned(),
+                ],
+                stdin: false,
+            }),
+            input,
+            output,
+            ft,
+        )
+    }
+}
+
+#[cfg(test)]
+mod test_rustfmt_2015 {
+    #[test_with::executable(rustfmt)]
+    fn test_rustfmt_2015_rust_8b7b5628a82dce79() -> Result<(), Box<dyn core::error::Error>> {
+        let input = r#"pub
+                    
+            fn    add( a: i32,
+                            b:i32 )->                   i32 {a+b}
+    "#;
+
+        let output = r#"pub fn add(a: i32, b: i32) -> i32 {
+    a + b
+}
+"#;
+
+        let ft = "rust";
+
+        crate::common::run_tooling_test(
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::Rustfmt2015),
+            input,
+            output,
+            ft,
+        )
+    }
+
+    #[test_with::executable(rustfmt)]
+    fn test_custom_tool_rustfmt_rust_8b7b5628a82dce79() -> Result<(), Box<dyn core::error::Error>> {
+        let input = r#"pub
+                    
+            fn    add( a: i32,
+                            b:i32 )->                   i32 {a+b}
+    "#;
+
+        let output = r#"pub fn add(a: i32, b: i32) -> i32 {
+    a + b
+}
+"#;
+
+        let ft = "rust";
+
+        crate::common::run_tooling_test(
+            mdsf::config::MdsfTool::Custom(mdsf::custom::CustomTool {
+                binary: "rustfmt".to_owned(),
+                arguments: vec![
+                    "--edition".to_owned(),
+                    "2015".to_owned(),
+                    "--quiet".to_owned(),
+                    "$PATH".to_owned(),
+                ],
+                stdin: false,
+            }),
+            input,
+            output,
+            ft,
+        )
+    }
+}
+
+#[cfg(test)]
+mod test_rustfmt_2018 {
+    #[test_with::executable(rustfmt)]
+    fn test_rustfmt_2018_rust_8b7b5628a82dce79() -> Result<(), Box<dyn core::error::Error>> {
+        let input = r#"pub
+                    
+            fn    add( a: i32,
+                            b:i32 )->                   i32 {a+b}
+    "#;
+
+        let output = r#"pub fn add(a: i32, b: i32) -> i32 {
+    a + b
+}
+"#;
+
+        let ft = "rust";
+
+        crate::common::run_tooling_test(
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::Rustfmt2018),
+            input,
+            output,
+            ft,
+        )
+    }
+
+    #[test_with::executable(rustfmt)]
+    fn test_custom_tool_rustfmt_rust_8b7b5628a82dce79() -> Result<(), Box<dyn core::error::Error>> {
+        let input = r#"pub
+                    
+            fn    add( a: i32,
+                            b:i32 )->                   i32 {a+b}
+    "#;
+
+        let output = r#"pub fn add(a: i32, b: i32) -> i32 {
+    a + b
+}
+"#;
+
+        let ft = "rust";
+
+        crate::common::run_tooling_test(
+            mdsf::config::MdsfTool::Custom(mdsf::custom::CustomTool {
+                binary: "rustfmt".to_owned(),
+                arguments: vec![
+                    "--edition".to_owned(),
+                    "2018".to_owned(),
+                    "--quiet".to_owned(),
+                    "$PATH".to_owned(),
+                ],
+                stdin: false,
+            }),
+            input,
+            output,
+            ft,
+        )
+    }
+}
+
+#[cfg(test)]
+mod test_rustfmt_2021 {
+    #[test_with::executable(rustfmt)]
+    fn test_rustfmt_2021_rust_70ad564760e773e9() -> Result<(), Box<dyn core::error::Error>> {
+        let input = r#"pub
+                    async
+            fn    add( a: i32,
+                            b:i32 )->                   i32 {a+b}
+    "#;
+
+        let output = r#"pub async fn add(a: i32, b: i32) -> i32 {
+    a + b
+}
+"#;
+
+        let ft = "rust";
+
+        crate::common::run_tooling_test(
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::Rustfmt2021),
+            input,
+            output,
+            ft,
+        )
+    }
+
+    #[test_with::executable(rustfmt)]
+    fn test_custom_tool_rustfmt_rust_70ad564760e773e9() -> Result<(), Box<dyn core::error::Error>> {
+        let input = r#"pub
+                    async
+            fn    add( a: i32,
+                            b:i32 )->                   i32 {a+b}
+    "#;
+
+        let output = r#"pub async fn add(a: i32, b: i32) -> i32 {
+    a + b
+}
+"#;
+
+        let ft = "rust";
+
+        crate::common::run_tooling_test(
+            mdsf::config::MdsfTool::Custom(mdsf::custom::CustomTool {
+                binary: "rustfmt".to_owned(),
+                arguments: vec![
+                    "--edition".to_owned(),
                     "2021".to_owned(),
+                    "--quiet".to_owned(),
+                    "$PATH".to_owned(),
+                ],
+                stdin: false,
+            }),
+            input,
+            output,
+            ft,
+        )
+    }
+}
+
+#[cfg(test)]
+mod test_rustfmt_2024 {
+    #[test_with::executable(rustfmt)]
+    fn test_rustfmt_2024_rust_70ad564760e773e9() -> Result<(), Box<dyn core::error::Error>> {
+        let input = r#"pub
+                    async
+            fn    add( a: i32,
+                            b:i32 )->                   i32 {a+b}
+    "#;
+
+        let output = r#"pub async fn add(a: i32, b: i32) -> i32 {
+    a + b
+}
+"#;
+
+        let ft = "rust";
+
+        crate::common::run_tooling_test(
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::Rustfmt2024),
+            input,
+            output,
+            ft,
+        )
+    }
+
+    #[test_with::executable(rustfmt)]
+    fn test_custom_tool_rustfmt_rust_70ad564760e773e9() -> Result<(), Box<dyn core::error::Error>> {
+        let input = r#"pub
+                    async
+            fn    add( a: i32,
+                            b:i32 )->                   i32 {a+b}
+    "#;
+
+        let output = r#"pub async fn add(a: i32, b: i32) -> i32 {
+    a + b
+}
+"#;
+
+        let ft = "rust";
+
+        crate::common::run_tooling_test(
+            mdsf::config::MdsfTool::Custom(mdsf::custom::CustomTool {
+                binary: "rustfmt".to_owned(),
+                arguments: vec![
+                    "--edition".to_owned(),
+                    "2024".to_owned(),
                     "--quiet".to_owned(),
                     "$PATH".to_owned(),
                 ],

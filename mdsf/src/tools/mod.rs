@@ -291,6 +291,10 @@ pub mod rumdl_fmt;
 pub mod rune_fmt;
 pub mod runic;
 pub mod rustfmt;
+pub mod rustfmt_2015;
+pub mod rustfmt_2018;
+pub mod rustfmt_2021;
+pub mod rustfmt_2024;
 pub mod rustywind;
 pub mod salt_lint;
 pub mod scalafmt;
@@ -2693,8 +2697,40 @@ pub enum Tooling {
     ///
     /// [https://github.com/rust-lang/rustfmt](https://github.com/rust-lang/rustfmt)
     ///
-    /// `rustfmt --edition 2021 --quiet $PATH`
+    /// `rustfmt --edition 2024 --quiet $PATH`
     Rustfmt,
+
+    #[serde(rename = "rustfmt:2015")]
+    /// Format Rust code
+    ///
+    /// [https://github.com/rust-lang/rustfmt](https://github.com/rust-lang/rustfmt)
+    ///
+    /// `rustfmt --edition 2015 --quiet $PATH`
+    Rustfmt2015,
+
+    #[serde(rename = "rustfmt:2018")]
+    /// Format Rust code
+    ///
+    /// [https://github.com/rust-lang/rustfmt](https://github.com/rust-lang/rustfmt)
+    ///
+    /// `rustfmt --edition 2018 --quiet $PATH`
+    Rustfmt2018,
+
+    #[serde(rename = "rustfmt:2021")]
+    /// Format Rust code
+    ///
+    /// [https://github.com/rust-lang/rustfmt](https://github.com/rust-lang/rustfmt)
+    ///
+    /// `rustfmt --edition 2021 --quiet $PATH`
+    Rustfmt2021,
+
+    #[serde(rename = "rustfmt:2024")]
+    /// Format Rust code
+    ///
+    /// [https://github.com/rust-lang/rustfmt](https://github.com/rust-lang/rustfmt)
+    ///
+    /// `rustfmt --edition 2024 --quiet $PATH`
+    Rustfmt2024,
 
     #[serde(rename = "rustywind")]
     /// CLI for organizing Tailwind CSS classes
@@ -4386,6 +4422,26 @@ impl Tooling {
             Self::RuneFmt => (&rune_fmt::COMMANDS, rune_fmt::set_args, rune_fmt::IS_STDIN),
             Self::Runic => (&runic::COMMANDS, runic::set_args, runic::IS_STDIN),
             Self::Rustfmt => (&rustfmt::COMMANDS, rustfmt::set_args, rustfmt::IS_STDIN),
+            Self::Rustfmt2015 => (
+                &rustfmt_2015::COMMANDS,
+                rustfmt_2015::set_args,
+                rustfmt_2015::IS_STDIN,
+            ),
+            Self::Rustfmt2018 => (
+                &rustfmt_2018::COMMANDS,
+                rustfmt_2018::set_args,
+                rustfmt_2018::IS_STDIN,
+            ),
+            Self::Rustfmt2021 => (
+                &rustfmt_2021::COMMANDS,
+                rustfmt_2021::set_args,
+                rustfmt_2021::IS_STDIN,
+            ),
+            Self::Rustfmt2024 => (
+                &rustfmt_2024::COMMANDS,
+                rustfmt_2024::set_args,
+                rustfmt_2024::IS_STDIN,
+            ),
             Self::Rustywind => (
                 &rustywind::COMMANDS,
                 rustywind::set_args,
@@ -4947,6 +5003,10 @@ impl AsRef<str> for Tooling {
             Self::RuneFmt => "rune:fmt",
             Self::Runic => "runic",
             Self::Rustfmt => "rustfmt",
+            Self::Rustfmt2015 => "rustfmt:2015",
+            Self::Rustfmt2018 => "rustfmt:2018",
+            Self::Rustfmt2021 => "rustfmt:2021",
+            Self::Rustfmt2024 => "rustfmt:2024",
             Self::Rustywind => "rustywind",
             Self::SaltLint => "salt-lint",
             Self::Scalafmt => "scalafmt",
@@ -5392,6 +5452,10 @@ mod test_tooling {
         assert_eq!(Tooling::RuneFmt, reverse(Tooling::RuneFmt)?);
         assert_eq!(Tooling::Runic, reverse(Tooling::Runic)?);
         assert_eq!(Tooling::Rustfmt, reverse(Tooling::Rustfmt)?);
+        assert_eq!(Tooling::Rustfmt2015, reverse(Tooling::Rustfmt2015)?);
+        assert_eq!(Tooling::Rustfmt2018, reverse(Tooling::Rustfmt2018)?);
+        assert_eq!(Tooling::Rustfmt2021, reverse(Tooling::Rustfmt2021)?);
+        assert_eq!(Tooling::Rustfmt2024, reverse(Tooling::Rustfmt2024)?);
         assert_eq!(Tooling::Rustywind, reverse(Tooling::Rustywind)?);
         assert_eq!(Tooling::SaltLint, reverse(Tooling::SaltLint)?);
         assert_eq!(Tooling::Scalafmt, reverse(Tooling::Scalafmt)?);

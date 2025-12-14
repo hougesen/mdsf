@@ -4,7 +4,47 @@
   "categories": ["formatter"],
   "commands": {
     "": {
+      "arguments": ["--edition", "2024", "--quiet", "$PATH"],
+      "tests": [
+        {
+          "language": "rust",
+          "test_input": "pub\n                    async\n            fn    add( a: i32,\n                            b:i32 )->                   i32 {a+b}\n    ",
+          "test_output": "pub async fn add(a: i32, b: i32) -> i32 {\n    a + b\n}\n"
+        }
+      ]
+    },
+    "2015": {
+      "arguments": ["--edition", "2015", "--quiet", "$PATH"],
+      "tests": [
+        {
+          "language": "rust",
+          "test_input": "pub\n                    \n            fn    add( a: i32,\n                            b:i32 )->                   i32 {a+b}\n    ",
+          "test_output": "pub fn add(a: i32, b: i32) -> i32 {\n    a + b\n}\n"
+        }
+      ]
+    },
+    "2018": {
+      "arguments": ["--edition", "2018", "--quiet", "$PATH"],
+      "tests": [
+        {
+          "language": "rust",
+          "test_input": "pub\n                    \n            fn    add( a: i32,\n                            b:i32 )->                   i32 {a+b}\n    ",
+          "test_output": "pub fn add(a: i32, b: i32) -> i32 {\n    a + b\n}\n"
+        }
+      ]
+    },
+    "2021": {
       "arguments": ["--edition", "2021", "--quiet", "$PATH"],
+      "tests": [
+        {
+          "language": "rust",
+          "test_input": "pub\n                    async\n            fn    add( a: i32,\n                            b:i32 )->                   i32 {a+b}\n    ",
+          "test_output": "pub async fn add(a: i32, b: i32) -> i32 {\n    a + b\n}\n"
+        }
+      ]
+    },
+    "2024": {
+      "arguments": ["--edition", "2024", "--quiet", "$PATH"],
       "tests": [
         {
           "language": "rust",
