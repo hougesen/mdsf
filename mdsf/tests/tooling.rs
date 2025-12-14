@@ -11050,50 +11050,6 @@ add(1, 2)
 }
 
 #[cfg(test)]
-mod test_typos {
-    #[test_with::executable(typos)]
-    fn test_typos_python_cba663e4f5e54b7f() -> Result<(), Box<dyn core::error::Error>> {
-        let input = r#"anouncement"#;
-
-        let output = r#"announcement"#;
-
-        let ft = "python";
-
-        crate::common::run_tooling_test(
-            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::Typos),
-            input,
-            output,
-            ft,
-        )
-    }
-
-    #[test_with::executable(typos)]
-    fn test_custom_tool_typos_python_cba663e4f5e54b7f() -> Result<(), Box<dyn core::error::Error>> {
-        let input = r#"anouncement"#;
-
-        let output = r#"announcement"#;
-
-        let ft = "python";
-
-        crate::common::run_tooling_test(
-            mdsf::config::MdsfTool::Custom(mdsf::custom::CustomTool {
-                binary: "typos".to_owned(),
-                arguments: vec![
-                    "-w".to_owned(),
-                    "--no-ignore".to_owned(),
-                    "--hidden".to_owned(),
-                    "$PATH".to_owned(),
-                ],
-                stdin: false,
-            }),
-            input,
-            output,
-            ft,
-        )
-    }
-}
-
-#[cfg(test)]
 mod test_ufmt {
     #[test_with::executable(ufmt || pipx || uv)]
     fn test_ufmt_python_229ec2b01c2bfe3c() -> Result<(), Box<dyn core::error::Error>> {

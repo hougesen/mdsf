@@ -4,6 +4,7 @@ All notable changes to this project will be documented in this file. Dates are d
 
 #### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.11.0...HEAD)
 
+- feat(tools): add support for mago analyze [`#1428`](https://github.com/hougesen/mdsf/pull/1428)
 - build(deps): bump test-with from 0.15.5 to 0.15.6 [`#1427`](https://github.com/hougesen/mdsf/pull/1427)
 - build(deps): bump log from 0.4.28 to 0.4.29 [`#1426`](https://github.com/hougesen/mdsf/pull/1426)
 - feat: add support for oxfmt [`#1425`](https://github.com/hougesen/mdsf/pull/1425)
