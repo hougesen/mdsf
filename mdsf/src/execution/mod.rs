@@ -251,7 +251,7 @@ where
     T: core::fmt::Display,
 {
     Single(T),
-    Multiple(Vec<MdsfToolWrapper<T>>),
+    Multiple(Vec<Self>),
 }
 
 #[inline]
