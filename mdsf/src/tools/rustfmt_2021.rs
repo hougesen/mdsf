@@ -10,7 +10,7 @@ pub fn set_args(
     file_path: &std::path::Path,
 ) -> std::process::Command {
     cmd.arg("--edition");
-    cmd.arg("2024");
+    cmd.arg("2021");
     cmd.arg("--quiet");
     cmd.arg(file_path);
     cmd

@@ -838,7 +838,7 @@ When defining the arguments the variable `$PATH` will automatically be replaced 
 
 <!-- START_SECTION:supported-commands -->
 
-`mdsf` currently supports 378 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 382 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                         | Command                                                                                 |
 | ---------------------------- | --------------------------------------------------------------------------------------- |
@@ -1130,7 +1130,11 @@ When defining the arguments the variable `$PATH` will automatically be replaced 
 | `rumdl:fmt`                  | `rumdl fmt $PATH`                                                                       |
 | `rune:fmt`                   | `rune fmt $PATH`                                                                        |
 | `runic`                      | `runic --inplace $PATH`                                                                 |
-| `rustfmt`                    | `rustfmt --edition 2021 --quiet $PATH`                                                  |
+| `rustfmt:2015`               | `rustfmt --edition 2015 --quiet $PATH`                                                  |
+| `rustfmt:2018`               | `rustfmt --edition 2018 --quiet $PATH`                                                  |
+| `rustfmt:2021`               | `rustfmt --edition 2021 --quiet $PATH`                                                  |
+| `rustfmt:2024`               | `rustfmt --edition 2024 --quiet $PATH`                                                  |
+| `rustfmt`                    | `rustfmt --edition 2024 --quiet $PATH`                                                  |
 | `rustywind`                  | `rustywind --write $PATH`                                                               |
 | `salt-lint`                  | `salt-lint $PATH`                                                                       |
 | `scalafmt`                   | `scalafmt --quiet --mode any $PATH`                                                     |
