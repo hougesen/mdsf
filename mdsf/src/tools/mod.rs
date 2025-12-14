@@ -181,6 +181,9 @@ pub mod luacheck;
 pub mod luaformatter;
 pub mod luau_analyze;
 pub mod mado_check;
+pub mod mago_analyze;
+pub mod mago_analyze_fix;
+pub mod mago_analyze_fix_unsafe;
 pub mod mago_format;
 pub mod mago_lint;
 pub mod mago_lint_fix;
@@ -1812,6 +1815,30 @@ pub enum Tooling {
     ///
     /// `mado check $PATH`
     MadoCheck,
+
+    #[serde(rename = "mago:analyze")]
+    /// Mago is a toolchain for PHP that aims to provide a set of tools to help developers write better code
+    ///
+    /// [https://github.com/carthage-software/mago](https://github.com/carthage-software/mago)
+    ///
+    /// `mago analyze $PATH`
+    MagoAnalyze,
+
+    #[serde(rename = "mago:analyze:fix")]
+    /// Mago is a toolchain for PHP that aims to provide a set of tools to help developers write better code
+    ///
+    /// [https://github.com/carthage-software/mago](https://github.com/carthage-software/mago)
+    ///
+    /// `mago analyze --fix $PATH`
+    MagoAnalyzeFix,
+
+    #[serde(rename = "mago:analyze:fix:unsafe")]
+    /// Mago is a toolchain for PHP that aims to provide a set of tools to help developers write better code
+    ///
+    /// [https://github.com/carthage-software/mago](https://github.com/carthage-software/mago)
+    ///
+    /// `mago analyze --fix --potentially-unsafe --unsafe $PATH`
+    MagoAnalyzeFixUnsafe,
 
     #[serde(rename = "mago:format")]
     /// The format command is used to format PHP files in your project according to the rules defined in your mago.toml configuration file
@@ -3997,6 +4024,21 @@ impl Tooling {
                 mado_check::set_args,
                 mado_check::IS_STDIN,
             ),
+            Self::MagoAnalyze => (
+                &mago_analyze::COMMANDS,
+                mago_analyze::set_args,
+                mago_analyze::IS_STDIN,
+            ),
+            Self::MagoAnalyzeFix => (
+                &mago_analyze_fix::COMMANDS,
+                mago_analyze_fix::set_args,
+                mago_analyze_fix::IS_STDIN,
+            ),
+            Self::MagoAnalyzeFixUnsafe => (
+                &mago_analyze_fix_unsafe::COMMANDS,
+                mago_analyze_fix_unsafe::set_args,
+                mago_analyze_fix_unsafe::IS_STDIN,
+            ),
             Self::MagoFormat => (
                 &mago_format::COMMANDS,
                 mago_format::set_args,
@@ -4795,6 +4837,9 @@ impl AsRef<str> for Tooling {
             Self::Luaformatter => "luaformatter",
             Self::LuauAnalyze => "luau-analyze",
             Self::MadoCheck => "mado:check",
+            Self::MagoAnalyze => "mago:analyze",
+            Self::MagoAnalyzeFix => "mago:analyze:fix",
+            Self::MagoAnalyzeFixUnsafe => "mago:analyze:fix:unsafe",
             Self::MagoFormat => "mago:format",
             Self::MagoLint => "mago:lint",
             Self::MagoLintFix => "mago:lint:fix",
@@ -5219,6 +5264,12 @@ mod test_tooling {
         assert_eq!(Tooling::Luaformatter, reverse(Tooling::Luaformatter)?);
         assert_eq!(Tooling::LuauAnalyze, reverse(Tooling::LuauAnalyze)?);
         assert_eq!(Tooling::MadoCheck, reverse(Tooling::MadoCheck)?);
+        assert_eq!(Tooling::MagoAnalyze, reverse(Tooling::MagoAnalyze)?);
+        assert_eq!(Tooling::MagoAnalyzeFix, reverse(Tooling::MagoAnalyzeFix)?);
+        assert_eq!(
+            Tooling::MagoAnalyzeFixUnsafe,
+            reverse(Tooling::MagoAnalyzeFixUnsafe)?
+        );
         assert_eq!(Tooling::MagoFormat, reverse(Tooling::MagoFormat)?);
         assert_eq!(Tooling::MagoLint, reverse(Tooling::MagoLint)?);
         assert_eq!(Tooling::MagoLintFix, reverse(Tooling::MagoLintFix)?);

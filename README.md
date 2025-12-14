@@ -838,7 +838,7 @@ When defining the arguments the variable `$PATH` will automatically be replaced 
 
 <!-- START_SECTION:supported-commands -->
 
-`mdsf` currently supports 375 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 378 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                         | Command                                                                                 |
 | ---------------------------- | --------------------------------------------------------------------------------------- |
@@ -1021,6 +1021,9 @@ When defining the arguments the variable `$PATH` will automatically be replaced 
 | `luaformatter`               | `lua-format -i $PATH`                                                                   |
 | `luau-analyze`               | `luau-analyze $PATH`                                                                    |
 | `mado:check`                 | `mado check $PATH`                                                                      |
+| `mago:analyze:fix:unsafe`    | `mago analyze --fix --potentially-unsafe --unsafe $PATH`                                |
+| `mago:analyze:fix`           | `mago analyze --fix $PATH`                                                              |
+| `mago:analyze`               | `mago analyze $PATH`                                                                    |
 | `mago:format`                | `mago format $PATH`                                                                     |
 | `mago:lint:fix:unsafe`       | `mago lint --fix --potentially-unsafe --unsafe $PATH`                                   |
 | `mago:lint:fix`              | `mago lint --fix $PATH`                                                                 |
