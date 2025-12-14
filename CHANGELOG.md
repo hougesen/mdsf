@@ -4,6 +4,9 @@ All notable changes to this project will be documented in this file. Dates are d
 
 #### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.11.0...HEAD)
 
+- build(deps): bump test-with from 0.15.5 to 0.15.6 [`#1427`](https://github.com/hougesen/mdsf/pull/1427)
+- build(deps): bump log from 0.4.28 to 0.4.29 [`#1426`](https://github.com/hougesen/mdsf/pull/1426)
+- feat: add support for oxfmt [`#1425`](https://github.com/hougesen/mdsf/pull/1425)
 - feat(tools): add support for miss_hit [`#1424`](https://github.com/hougesen/mdsf/pull/1424)
 - build(deps): bump actions/checkout from 5 to 6 [`#1423`](https://github.com/hougesen/mdsf/pull/1423)
 - build(deps): bump convert_case from 0.9.0 to 0.10.0 [`#1422`](https://github.com/hougesen/mdsf/pull/1422)

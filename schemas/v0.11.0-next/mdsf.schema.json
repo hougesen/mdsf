@@ -1092,6 +1092,21 @@
           "const": "mado:check"
         },
         {
+          "description": "Mago is a toolchain for PHP that aims to provide a set of tools to help developers write better code\n\n[https://github.com/carthage-software/mago](https://github.com/carthage-software/mago)\n\n`mago analyze $PATH`",
+          "type": "string",
+          "const": "mago:analyze"
+        },
+        {
+          "description": "Mago is a toolchain for PHP that aims to provide a set of tools to help developers write better code\n\n[https://github.com/carthage-software/mago](https://github.com/carthage-software/mago)\n\n`mago analyze --fix $PATH`",
+          "type": "string",
+          "const": "mago:analyze:fix"
+        },
+        {
+          "description": "Mago is a toolchain for PHP that aims to provide a set of tools to help developers write better code\n\n[https://github.com/carthage-software/mago](https://github.com/carthage-software/mago)\n\n`mago analyze --fix --potentially-unsafe --unsafe $PATH`",
+          "type": "string",
+          "const": "mago:analyze:fix:unsafe"
+        },
+        {
           "description": "The format command is used to format PHP files in your project according to the rules defined in your mago.toml configuration file\n\n[https://mago.carthage.software/#/getting-started/cli?id=mago-format](https://mago.carthage.software/#/getting-started/cli?id=mago-format)\n\n`mago format $PATH`",
           "type": "string",
           "const": "mago:format"

@@ -3,6 +3,24 @@
   "binary": "mago",
   "categories": ["formatter", "linter"],
   "commands": {
+    "analyze": {
+      "arguments": ["analyze", "$PATH"],
+      "tests": []
+    },
+    "analyze:fix": {
+      "arguments": ["analyze", "--fix", "$PATH"],
+      "tests": []
+    },
+    "analyze:fix:unsafe": {
+      "arguments": [
+        "analyze",
+        "--fix",
+        "--potentially-unsafe",
+        "--unsafe",
+        "$PATH"
+      ],
+      "tests": []
+    },
     "format": {
       "arguments": ["format", "$PATH"],
       "description": "The format command is used to format PHP files in your project according to the rules defined in your mago.toml configuration file",
