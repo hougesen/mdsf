@@ -4,6 +4,9 @@ All notable changes to this project will be documented in this file. Dates are d
 
 #### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.11.0...HEAD)
 
+- build(deps-dev): bump @biomejs/biome in /github-action [`#1433`](https://github.com/hougesen/mdsf/pull/1433)
+- build(deps): bump actions/cache from 4 to 5 [`#1431`](https://github.com/hougesen/mdsf/pull/1431)
+- refactor(tools): set default rustfmt edition to 2024 [`#1430`](https://github.com/hougesen/mdsf/pull/1430)
 - fix(tools): disable typos since it is flaky [`#1429`](https://github.com/hougesen/mdsf/pull/1429)
 - feat(tools): add support for mago analyze [`#1428`](https://github.com/hougesen/mdsf/pull/1428)
 - build(deps): bump test-with from 0.15.5 to 0.15.6 [`#1427`](https://github.com/hougesen/mdsf/pull/1427)
