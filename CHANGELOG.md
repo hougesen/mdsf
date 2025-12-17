@@ -2,8 +2,13 @@
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
-#### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.11.0...HEAD)
+#### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.11.1...HEAD)
 
+#### [v0.11.1](https://github.com/hougesen/mdsf/compare/v0.11.0...v0.11.1)
+
+> 17 December 2025
+
+- build: generate new github action bundle [`#1450`](https://github.com/hougesen/mdsf/pull/1450)
 - build(deps): bump actions/cache from 4 to 5 [`#1447`](https://github.com/hougesen/mdsf/pull/1447)
 - build(deps-dev): bump esbuild from 0.27.1 to 0.27.2 in /github-action [`#1448`](https://github.com/hougesen/mdsf/pull/1448)
 - build(deps-dev): bump @biomejs/biome in /mdsf-vscode [`#1449`](https://github.com/hougesen/mdsf/pull/1449)
