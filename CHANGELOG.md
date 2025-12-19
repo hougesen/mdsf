@@ -4,10 +4,13 @@ All notable changes to this project will be documented in this file. Dates are d
 
 #### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.11.1...HEAD)
 
+- build(deps): bump clap_complete from 4.5.61 to 4.5.62 [`#1452`](https://github.com/hougesen/mdsf/pull/1452)
+
 #### [v0.11.1](https://github.com/hougesen/mdsf/compare/v0.11.0...v0.11.1)
 
 > 17 December 2025
 
+- chore: release v0.11.1 [`#1451`](https://github.com/hougesen/mdsf/pull/1451)
 - build: generate new github action bundle [`#1450`](https://github.com/hougesen/mdsf/pull/1450)
 - build(deps): bump actions/cache from 4 to 5 [`#1447`](https://github.com/hougesen/mdsf/pull/1447)
 - build(deps-dev): bump esbuild from 0.27.1 to 0.27.2 in /github-action [`#1448`](https://github.com/hougesen/mdsf/pull/1448)
