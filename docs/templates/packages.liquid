@@ -1,0 +1,9 @@
+<div style="display: flex; gap: 1rem;">
+    {% for plugin in plugins %}
+        <div style="border: 1px solid black; border-radius: 0.125rem;">
+            <a href="/plugins/{{ plugin.binary }}">{{ plugin.binary }}</a>
+
+            <p>{{ plugin.description }}</p>
+        </div>
+    {% endfor %}
+</div>
