@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+      {{ binary }}
+      - mdsf
+    </title>
+
+    <meta name="description" content="{{ description }}">
+  </head>
+  <body>
+    <h1 style="font-size: 2rem; font-weight: 700;">{{ binary }}</h1>
+
+    <p>{{ description }}</p>
+
+    <a href="{{ homepage}}">Homepage</a>
+
+    <h2>Commands</h2>
+
+    {% for command in commands %}
+      <div>
+        <h3>{{ command.name }}</h3>
+
+        <p>Arguments</p>
+      </div>
+    {% endfor %}
+  </body>
+</html>

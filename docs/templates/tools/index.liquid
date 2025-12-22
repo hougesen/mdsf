@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Packages - mdsf</title>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        line-height: 1.6;
+      }
+
+      *:before,
+      *:after {
+        margin: 0;
+        padding: 0;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        line-height: 1.6;
+      }
+
+      body,
+      html {
+        font-family: 'Open Sans', sans-serif;
+        height: 100%;
+        padding-top: 0;
+        width: 100%;
+      }
+
+      main {
+        padding: 1rem 2rem;
+      }
+
+      .tools {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .tools .tool {
+        border-radius: 0.125rem;
+        border: 1px solid black;
+        padding: 1rem;
+      }
+
+      .tool .title {
+        color: black;
+        font-size: 1.5rem;
+        font-weight: 600;
+      }
+
+      .tool .tag {
+        border-radius: 0.125rem;
+        border: 1px solid black;
+        font-size: 0.75rem;
+        font-weight: 600;
+        padding: 0.125rem;
+        width: fit-content;
+      }
+
+      .tool .tags {
+        display: flex;
+        gap: 0.5rem;
+        margin-top: 0.5rem;
+      }
+
+      #search {
+        border-radius: 0.125rem;
+        border: 1px solid black;
+        font-size: 1.25rem;
+        margin: 1rem 0;
+        padding: 0.5rem 1rem;
+        width: 100%;
+      }
+
+      nav {
+        display: flex;
+        gap: 1rem;
+      }
+
+      nav a {
+        color: black;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <nav>
+        <a href="/index.html">Guide</a>
+
+        <a href="/tools/index.html">Tools</a>
+
+        <a href="https://github.com/hougesen/mdsf" target="_blank" style="margin-left: auto">GitHub</a>
+      </nav>
+
+      <input id="search" type="text" placeholder="Search" name="search" aria-label="Search for tool">
+
+      <div class="tools">
+        {% for tool in tools %}
+          <div
+            class="tool"
+            data-binary="{{ tool.binary }}"
+            data-name="{{ tool.name }}"
+            data-description="{{ tool.description }}"
+          >
+            <a class="title" href="/tools/{{ tool.binary }}/index.html">{{ tool.binary }}</a>
+
+            <p class="description">{{ tool.description }}</p>
+
+            <div class="tags">
+              {% for category in tool.categories %}
+                <p class="tag">
+                  {{ category }}
+                </p>
+              {% endfor %}
+
+              |
+
+              {% for language in tool.languages %}
+                <p class="tag">
+                  {{ language }}
+                </p>
+              {% endfor %}
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </main>
+
+    <script>
+      function shouldShowTool(searchText, element) {
+        if (!searchText) {
+          return true;
+        }
+
+        if (element?.getAttribute('data-binary')?.toLowerCase()?.includes(searchText)) {
+          return true;
+        }
+
+        if (element?.getAttribute('data-name')?.toLowerCase()?.includes(searchText)) {
+          return true;
+        }
+
+        if (element?.getAttribute('data-description')?.toLowerCase()?.includes(searchText)) {
+          return true;
+        }
+
+        return false;
+      }
+
+      document.querySelector('#search').addEventListener('input', (e) => {
+        console.info('e', e);
+        const searchText = (e?.target?.value || '').trim().toLowerCase();
+
+        document.querySelectorAll('.tool').forEach((toolElement) => {
+          toolElement.style.display = shouldShowTool(searchText, toolElement) ? null : 'none';
+        });
+      });
+    </script>
+  </body>
+</html>
