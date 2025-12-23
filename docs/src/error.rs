@@ -18,19 +18,19 @@ impl core::fmt::Display for Error {
 }
 
 impl From<std::io::Error> for Error {
-    fn from(value: std::io::Error) -> Error {
-        Error::Io(value)
+    fn from(value: std::io::Error) -> Self {
+        Self::Io(value)
     }
 }
 
 impl From<liquid::Error> for Error {
-    fn from(value: liquid::Error) -> Error {
-        Error::Liquid(value)
+    fn from(value: liquid::Error) -> Self {
+        Self::Liquid(value)
     }
 }
 
 impl From<serde_json::Error> for Error {
-    fn from(value: serde_json::Error) -> Error {
-        Error::SerdeJson(value)
+    fn from(value: serde_json::Error) -> Self {
+        Self::SerdeJson(value)
     }
 }

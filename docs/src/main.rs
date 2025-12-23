@@ -67,25 +67,25 @@ fn main() -> Result<(), crate::error::Error> {
 
     let tools = find_tools()?;
 
-    let tools_dir = path.join("tools");
-
-    let _ = std::fs::create_dir_all(&tools_dir);
     std::fs::write(
-        tools_dir.join("index.html"),
+        path.join("index.html"),
         tools::generate_tool_list(&parser, &tools)?,
     )?;
 
+    let tools_dir = path.join("tools");
+    let _ = std::fs::create_dir_all(&tools_dir);
+
     for tool in &tools {
-        let tool_dir = tools_dir.join(if tool.name.is_empty() {
+        let dir = tools_dir.join(if tool.name.is_empty() {
             tool.binary.clone()
         } else {
             tool.name.clone()
         });
 
-        let _ = std::fs::create_dir_all(&tool_dir);
+        let _ = std::fs::create_dir_all(&dir);
 
         std::fs::write(
-            tool_dir.join("index.html"),
+            dir.join("index.html"),
             tools::generate_tool_site(&parser, tool)?,
         )?;
     }
