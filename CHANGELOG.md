@@ -10,6 +10,7 @@ All notable changes to this project will be documented in this file. Dates are d
 - feat: support searching in tools [`748e9f0`](https://github.com/hougesen/mdsf/commit/748e9f0402ce12b8b0092f47c83bba5c62808ed6)
 - style: individual tool page [`981f402`](https://github.com/hougesen/mdsf/commit/981f402a939a54b0368bc578c47e6e6d8f30bc65)
 - build: workflow for deploying to github pages [`391941e`](https://github.com/hougesen/mdsf/commit/391941e3b287c27bf995eac4a8bdc86397c9f7c4)
+- chore: run on all pushes [`9a8545b`](https://github.com/hougesen/mdsf/commit/9a8545b4c7f00eb6025f311e644b20129aa57eeb)
 
 #### [v0.11.1](https://github.com/hougesen/mdsf/compare/v0.11.0...v0.11.1)
 
