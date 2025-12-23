@@ -1,4 +1,5 @@
-name: mdsf
+---
+name: verify documentation using mdsf
 on:
   push:
   workflow_dispatch:

@@ -1,3 +1,4 @@
+---
 name: VS Code Extension Release
 on:
   push:
