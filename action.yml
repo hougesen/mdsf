@@ -1,3 +1,4 @@
+---
 name: setup-mdsf
 author: hougesen
 description: Setup mdsf cli in GitHub Actions

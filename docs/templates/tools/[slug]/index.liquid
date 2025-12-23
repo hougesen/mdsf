@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+      {{ binary }}
+      - mdsf
+    </title>
+    <meta name="description" content="{{ description }}">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  </head>
+  <body>
+    <main class="container py-8 px-4 mx-auto">
+      <nav class="flex gap-4 mb-4">
+        <a href="/" class="text-lg text-black underline">mdsf</a>
+
+        <a
+          href="https://github.com/hougesen/mdsf"
+          class="ml-auto text-xl text-black underline"
+          target="_blank"
+          >GitHub</a
+        >
+      </nav>
+
+      <h1 class="text-3xl font-bold">
+        {% if name == '' %}
+          {{ binary }}
+        {% else %}
+          {{ name }}
+        {% endif %}
+      </h1>
+
+      <p class="mb-1">
+        {{ description }}
+      </p>
+
+      <a
+        class="mt-2 underline"
+        rel="noopener noreferrer"
+        target="_blank"
+        href="{{ homepage }}"
+        >Homepage</a
+      >
+
+      <h2 class="mt-2 mb-1 font-bold">Categories</h2>
+
+      <div class="flex flex-wrap gap-2 items-center mb-4">
+        {% for category in categories %}
+          <p class="p-1 text-sm font-medium border w-fit">
+            {{ category }}
+          </p>
+        {% endfor %}
+      </div>
+
+      <h2 class="mt-2 mb-1 font-bold">Languages</h2>
+
+      <div class="flex flex-wrap gap-2 items-center mb-4">
+        {% for language in languages %}
+          <p class="p-1 text-sm font-medium border w-fit">
+            {{ language }}
+          </p>
+        {% endfor %}
+      </div>
+
+      <h2 class="my-2 text-2xl font-bold">Commands</h2>
+
+      <div class="flex flex-col gap-4">
+        {% for command in commands %}
+          <div class="p-4 rounded border">
+            <h3 class="text-xl font-semibold underline">
+              {{ command.name }}
+            </h3>
+
+            <p class="my-1">
+              {{ command.description }}
+            </p>
+
+            <a
+              class="underline"
+              rel="noopener noreferrer"
+              target="_blank"
+              href="{{ command.homepage }}"
+              >Homepage</a
+            >
+
+            <div class="flex mt-4">
+              <p class="mr-2 font-medium">Arguments:</p>
+
+              <p class="p-1 text-sm font-semibold bg-gray-200 rounded w-fit">
+                <span>
+                  {% for arg in command.arguments %}
+                    {{ arg }}
+                  {% endfor %}
+                </span>
+              </p>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </main>
+  </body>
+</html>

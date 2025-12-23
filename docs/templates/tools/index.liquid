@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mdsf</title>
+    <meta name="description" content="Format markdown code blocks using your favorite tools">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  </head>
+  <body>
+    <main class="container py-8 px-4 mx-auto">
+      <nav class="flex gap-4 mb-4">
+        <a href="/" class="text-lg text-black underline">mdsf</a>
+
+        <a
+          href="https://github.com/hougesen/mdsf"
+          class="ml-auto text-xl text-black underline"
+          target="_blank"
+          >GitHub</a
+        >
+      </nav>
+
+      <h1 class="text-3xl font-bold mb-2">Tools</h1>
+
+      <input
+        id="search"
+        type="text"
+        placeholder="Search"
+        name="search"
+        aria-label="Search for tool"
+        class="py-3 px-2 mb-4 w-full text-xl border rounded-xs"
+      >
+
+      <div class="flex flex-col gap-4">
+        {% for tool in tools %}
+          <div
+            class="p-4 border tool rounded-xs"
+            data-binary="{{ tool.binary }}"
+            data-name="{{ tool.name }}"
+            data-description="{{ tool.description }}"
+          >
+            {% if tool.name == '' %}
+              <a
+                class="text-xl font-semibold text-black"
+                href="/tools/{{ tool.binary }}/"
+              >
+                {{- tool.binary -}}
+              </a>
+            {% else %}
+              <a
+                class="text-xl font-semibold text-black"
+                href="/tools/{{ tool.name }}/"
+              >
+                {{- tool.name -}}
+              </a>
+            {% endif %}
+
+            <p>{{ tool.description }}</p>
+
+            <div class="flex flex-wrap gap-2 items-center mt-2">
+              {% for category in tool.categories %}
+                <p class="p-1 text-sm font-medium border w-fit">
+                  {{ category }}
+                </p>
+              {% endfor %}
+
+              <p class="hidden md:block">|</p>
+
+              {% for language in tool.languages %}
+                <p class="p-1 text-sm font-medium border w-fit">
+                  {{ language }}
+                </p>
+              {% endfor %}
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </main>
+
+    <script>
+      function shouldShowTool(searchText, element) {
+        if (!searchText) {
+          return true;
+        }
+
+        if (element?.getAttribute('data-binary')?.toLowerCase()?.includes(searchText)) {
+          return true;
+        }
+
+        if (element?.getAttribute('data-name')?.toLowerCase()?.includes(searchText)) {
+          return true;
+        }
+
+        if (element?.getAttribute('data-description')?.toLowerCase()?.includes(searchText)) {
+          return true;
+        }
+
+        return false;
+      }
+
+      document.querySelector('#search').addEventListener('input', (e) => {
+        const searchText = (e?.target?.value || '').trim().toLowerCase();
+
+        document.querySelectorAll('.tool').forEach((toolElement) => {
+          toolElement.style.display = shouldShowTool(searchText, toolElement) ? null : 'none';
+        });
+      });
+    </script>
+  </body>
+</html>

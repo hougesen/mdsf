@@ -1,3 +1,4 @@
+---
 coverage:
   status:
     project:
@@ -6,6 +7,4 @@ coverage:
     patch:
       default:
         informational: true
-ignore:
-  - codegen
-  - codegen/
+ignore: [codegen, codegen/]
