@@ -3,125 +3,68 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Packages - mdsf</title>
-
-    <style>
-      * {
-        margin: 0;
-        padding: 0;
-        -webkit-box-sizing: border-box;
-        box-sizing: border-box;
-        line-height: 1.6;
-      }
-
-      *:before,
-      *:after {
-        margin: 0;
-        padding: 0;
-        -webkit-box-sizing: border-box;
-        box-sizing: border-box;
-        line-height: 1.6;
-      }
-
-      body,
-      html {
-        font-family: 'Open Sans', sans-serif;
-        height: 100%;
-        padding-top: 0;
-        width: 100%;
-      }
-
-      main {
-        padding: 1rem 2rem;
-      }
-
-      .tools {
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
-      }
-
-      .tools .tool {
-        border-radius: 0.125rem;
-        border: 1px solid black;
-        padding: 1rem;
-      }
-
-      .tool .title {
-        color: black;
-        font-size: 1.5rem;
-        font-weight: 600;
-      }
-
-      .tool .tag {
-        border-radius: 0.125rem;
-        border: 1px solid black;
-        font-size: 0.75rem;
-        font-weight: 600;
-        padding: 0.125rem;
-        width: fit-content;
-      }
-
-      .tool .tags {
-        display: flex;
-        gap: 0.5rem;
-        margin-top: 0.5rem;
-      }
-
-      #search {
-        border-radius: 0.125rem;
-        border: 1px solid black;
-        font-size: 1.25rem;
-        margin: 1rem 0;
-        padding: 0.5rem 1rem;
-        width: 100%;
-      }
-
-      nav {
-        display: flex;
-        gap: 1rem;
-      }
-
-      nav a {
-        color: black;
-      }
-    </style>
+    <title>Tools - mdsf</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
   </head>
   <body>
-    <main>
-      <nav>
-        <a href="/index.html">Guide</a>
+    <main class="container py-8 px-4 mx-auto">
+      <nav class="flex gap-4 mb-4">
+        <a href="/tools/index.html" class="text-lg text-black underline">Tools</a>
 
-        <a href="/tools/index.html">Tools</a>
-
-        <a href="https://github.com/hougesen/mdsf" target="_blank" style="margin-left: auto">GitHub</a>
+        <a
+          href="https://github.com/hougesen/mdsf"
+          class="ml-auto text-xl text-black underline"
+          target="_blank"
+          >GitHub</a
+        >
       </nav>
 
-      <input id="search" type="text" placeholder="Search" name="search" aria-label="Search for tool">
+      <input
+        id="search"
+        type="text"
+        placeholder="Search"
+        name="search"
+        aria-label="Search for tool"
+        class="py-3 px-2 mb-4 w-full text-xl border rounded-xs"
+      >
 
-      <div class="tools">
+      <div class="flex flex-col gap-4">
         {% for tool in tools %}
           <div
-            class="tool"
+            class="p-4 border tool rounded-xs"
             data-binary="{{ tool.binary }}"
             data-name="{{ tool.name }}"
             data-description="{{ tool.description }}"
           >
-            <a class="title" href="/tools/{{ tool.binary }}/index.html">{{ tool.binary }}</a>
+            {% if tool.name == '' %}
+              <a
+                class="text-xl font-semibold text-black"
+                href="/tools/{{ tool.binary }}/index.html"
+              >
+                {{- tool.binary -}}
+              </a>
+            {% else %}
+              <a
+                class="text-xl font-semibold text-black"
+                href="/tools/{{ tool.name }}/index.html"
+              >
+                {{- tool.name -}}
+              </a>
+            {% endif %}
 
-            <p class="description">{{ tool.description }}</p>
+            <p>{{ tool.description }}</p>
 
-            <div class="tags">
+            <div class="flex flex-wrap gap-2 items-center mt-2">
               {% for category in tool.categories %}
-                <p class="tag">
+                <p class="p-1 text-sm font-medium border w-fit">
                   {{ category }}
                 </p>
               {% endfor %}
 
-              |
+              <p class="hidden md:block">|</p>
 
               {% for language in tool.languages %}
-                <p class="tag">
+                <p class="p-1 text-sm font-medium border w-fit">
                   {{ language }}
                 </p>
               {% endfor %}
@@ -153,7 +96,6 @@
       }
 
       document.querySelector('#search').addEventListener('input', (e) => {
-        console.info('e', e);
         const searchText = (e?.target?.value || '').trim().toLowerCase();
 
         document.querySelectorAll('.tool').forEach((toolElement) => {

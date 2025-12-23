@@ -19,6 +19,12 @@ updates:
     open-pull-requests-limit: 100
     schedule:
       interval: daily
+  - package-ecosystem: cargo
+    assignees: [hougesen]
+    directory: /docs
+    open-pull-requests-limit: 100
+    schedule:
+      interval: daily
   - package-ecosystem: github-actions
     assignees: [hougesen]
     directory: /

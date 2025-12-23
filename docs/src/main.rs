@@ -3,31 +3,31 @@ mod tools;
 
 #[derive(serde::Deserialize, Debug)]
 pub struct ToolFileCommand {
-    #[serde(default)]
-    pub homepage: String,
+    pub arguments: Vec<String>,
 
     #[serde(default)]
     pub description: String,
 
     #[serde(default)]
-    pub stdin: bool,
+    pub homepage: String,
 
-    pub arguments: Vec<String>,
+    #[serde(default)]
+    pub stdin: bool,
 }
 
 #[derive(serde::Deserialize, Debug)]
 pub struct ToolFile {
     pub binary: String,
 
-    pub description: String,
-
-    pub languages: Vec<String>,
-
-    pub homepage: String,
-
     pub categories: Vec<String>,
 
     pub commands: std::collections::BTreeMap<String, ToolFileCommand>,
+
+    pub description: String,
+
+    pub homepage: String,
+
+    pub languages: Vec<String>,
 
     #[serde(default)]
     pub name: String,

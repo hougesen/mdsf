@@ -35,11 +35,17 @@ pub fn generate_tool_site(
         .commands
         .iter()
         .map(|(k, v)| {
+            let name = if k.is_empty() {
+                tool.binary.clone()
+            } else {
+                format!("{}:{k}", tool.binary)
+            };
+
             liquid::object!({
                 "arguments": v.arguments,
                 "description": v.description,
                 "homepage": v.homepage,
-                "name": k,
+                "name": name,
             })
         })
         .collect::<Vec<_>>();

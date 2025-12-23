@@ -4,7 +4,10 @@ All notable changes to this project will be documented in this file. Dates are d
 
 #### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.11.1...HEAD)
 
+- chore: set version to dev [`#1453`](https://github.com/hougesen/mdsf/pull/1453)
 - build(deps): bump clap_complete from 4.5.61 to 4.5.62 [`#1452`](https://github.com/hougesen/mdsf/pull/1452)
+- feat: basic template for package list [`44d8f99`](https://github.com/hougesen/mdsf/commit/44d8f99cd78c07f25d36133668ac53bbad1b63ac)
+- feat: support searching in tools [`748e9f0`](https://github.com/hougesen/mdsf/commit/748e9f0402ce12b8b0092f47c83bba5c62808ed6)
 
 #### [v0.11.1](https://github.com/hougesen/mdsf/compare/v0.11.0...v0.11.1)
 
