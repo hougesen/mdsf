@@ -23,6 +23,9 @@
     },
     "go": {
       "package": "github.com/rhysd/actionlint/cmd/actionlint@latest"
+    },
+    "mise": {
+      "package": "actionlint"
     }
   }
 }

@@ -80,13 +80,14 @@ jobs:
       - uses: astral-sh/setup-uv@v7
         with:
           enable-cache: true
+      - uses: jdx/mise-action@v3
       - name: Install cargo-llvm-cov
         uses: taiki-e/install-action@cargo-llvm-cov
       - run: rustup toolchain install stable
       - run: rustup component add rustfmt clippy
       - run: curl -LsSf https://github.com/posit-dev/air/releases/latest/download/air-installer.sh | sh
       - name: actionlint
-        run: ( ( which actionlint ) || ( ( which brew &&  brew install actionlint ) || ( which go && go install github.com/rhysd/actionlint/cmd/actionlint@latest ) ) || ( echo "Unable to install tool" ) )
+        run: ( ( which actionlint ) || ( ( which mise && mise use actionlint ) || ( which brew &&  brew install actionlint ) || ( which go && go install github.com/rhysd/actionlint/cmd/actionlint@latest ) ) || ( echo "Unable to install tool" ) )
       - name: air
         run: ( ( which air ) || ( ( which brew &&  brew install air ) ) || ( echo "Unable to install tool" ) )
       - name: alejandra
@@ -114,7 +115,7 @@ jobs:
       - name: brunette
         run: ( ( which brunette ) || ( ( which pipx && pipx install brunette ) ) || ( echo "Unable to install tool" ) )
       - name: buf
-        run: ( ( which buf ) || ( ( which npm && npm i -g @bufbuild/buf ) || ( which brew &&  brew install bufbuild/buf/buf ) ) || ( echo "Unable to install tool" ) )
+        run: ( ( which buf ) || ( ( which mise && mise use buf ) || ( which npm && npm i -g @bufbuild/buf ) || ( which brew &&  brew install bufbuild/buf/buf ) ) || ( echo "Unable to install tool" ) )
       - name: clang-format
         run: ( ( which clang-format ) || ( ( which brew &&  brew install clang-format ) || ( which pipx && pipx install clang-format ) ) || ( echo "Unable to install tool" ) )
       - name: coffeelint
@@ -180,7 +181,7 @@ jobs:
       - name: isort
         run: ( ( which isort ) || ( ( which pipx && pipx install isort ) ) || ( echo "Unable to install tool" ) )
       - name: jq
-        run: ( ( which jq ) || ( ( which apt-get && sudo apt-get install -y jq ) ) || ( echo "Unable to install tool" ) )
+        run: ( ( which jq ) || ( ( which mise && mise use jq ) || ( which apt-get && sudo apt-get install -y jq ) ) || ( echo "Unable to install tool" ) )
       - name: jqfmt
         run: ( ( which jqfmt ) || ( ( which go && go install github.com/noperator/jqfmt/cmd/jqfmt@latest ) ) || ( echo "Unable to install tool" ) )
       - name: js-beautify
@@ -194,7 +195,7 @@ jobs:
       - name: julia
         run: ( ( which juliaformatter.jl ) || ( ( which julia && julia  -e 'import Pkg; Pkg.add("JuliaFormatter")' ) ) || ( echo "Unable to install tool" ) )
       - name: just
-        run: ( ( which just ) || ( ( which npm && npm i -g rust-just ) || ( which cargo && ( cargo binstall just || cargo install just ) ) || ( which brew &&  brew install just ) || ( which pipx && pipx install rust-just ) ) || ( echo "Unable to install tool" ) )
+        run: ( ( which just ) || ( ( which mise && mise use just ) || ( which npm && npm i -g rust-just ) || ( which cargo && ( cargo binstall just || cargo install just ) ) || ( which brew &&  brew install just ) || ( which pipx && pipx install rust-just ) ) || ( echo "Unable to install tool" ) )
       - name: kcl
         run: ( ( which kcl ) || ( ( which brew &&  brew install kcl-lang/tap/kcl ) || ( which go && go install kcl-lang.io/cli/cmd/kcl@latest ) ) || ( echo "Unable to install tool" ) )
       - name: kdlfmt
@@ -278,7 +279,7 @@ jobs:
       - name: rubyfmt
         run: ( ( which rubyfmt ) || ( ( which brew &&  brew install rubyfmt ) ) || ( echo "Unable to install tool" ) )
       - name: ruff
-        run: ( ( which ruff ) || ( ( which brew &&  brew install ruff ) || ( which pipx && pipx install ruff ) ) || ( echo "Unable to install tool" ) )
+        run: ( ( which ruff ) || ( ( which mise && mise use ruff ) || ( which brew &&  brew install ruff ) || ( which pipx && pipx install ruff ) ) || ( echo "Unable to install tool" ) )
       - name: rufo
         run: ( ( which rufo ) || ( ( which gem && gem install rufo ) ) || ( echo "Unable to install tool" ) )
       - name: rustywind
@@ -292,7 +293,7 @@ jobs:
       - name: shellcheck
         run: ( ( which shellcheck ) || ( ( which brew &&  brew install shellcheck ) || ( which apt-get && sudo apt-get install -y shellcheck ) || ( which stack && stack install ShellCheck ) || ( which cabal && cabal install ShellCheck ) ) || ( echo "Unable to install tool" ) )
       - name: shfmt
-        run: ( ( which shfmt ) || ( ( which brew &&  brew install shfmt ) || ( which go && go install mvdan.cc/sh/v3/cmd/shfmt@latest ) ) || ( echo "Unable to install tool" ) )
+        run: ( ( which shfmt ) || ( ( which mise && mise use shfmt ) || ( which brew &&  brew install shfmt ) || ( which go && go install mvdan.cc/sh/v3/cmd/shfmt@latest ) ) || ( echo "Unable to install tool" ) )
       - name: sleek
         run: ( ( which sleek ) || ( ( which cargo && ( cargo binstall sleek || cargo install sleek ) ) || ( which brew &&  brew install sleek ) ) || ( echo "Unable to install tool" ) )
       - name: smlfmt
@@ -324,9 +325,9 @@ jobs:
       - name: superhtml
         run: ( ( which superhtml ) || ( ( which brew &&  brew install superhtml ) ) || ( echo "Unable to install tool" ) )
       - name: swiftformat
-        run: ( ( which swiftformat ) || ( ( which brew &&  brew install swiftformat ) ) || ( echo "Unable to install tool" ) )
+        run: ( ( which swiftformat ) || ( ( which mise && mise use swiftformat ) || ( which brew &&  brew install swiftformat ) ) || ( echo "Unable to install tool" ) )
       - name: taplo
-        run: ( ( which taplo ) || ( ( which npm && npm i -g @taplo/cli ) || ( which cargo && ( cargo binstall taplo-cli || cargo install taplo-cli ) ) || ( which brew &&  brew install taplo ) ) || ( echo "Unable to install tool" ) )
+        run: ( ( which taplo ) || ( ( which mise && mise use taplo ) || ( which npm && npm i -g @taplo/cli ) || ( which cargo && ( cargo binstall taplo-cli || cargo install taplo-cli ) ) || ( which brew &&  brew install taplo ) ) || ( echo "Unable to install tool" ) )
       - name: terraform
         run: ( ( which terraform ) || ( ( which brew && brew tap hashicorp/tap && brew install hashicorp/tap/terraform ) ) || ( echo "Unable to install tool" ) )
       - name: tex-fmt
@@ -344,7 +345,7 @@ jobs:
       - name: ty
         run: ( ( which ty ) || ( ( which pipx && pipx install ty ) ) || ( echo "Unable to install tool" ) )
       - name: typos
-        run: ( ( which typos ) || ( ( which cargo && ( cargo binstall typos-cli || cargo install typos-cli ) ) || ( which brew &&  brew install typos-cli ) ) || ( echo "Unable to install tool" ) )
+        run: ( ( which typos ) || ( ( which mise && mise use typos ) || ( which cargo && ( cargo binstall typos-cli || cargo install typos-cli ) ) || ( which brew &&  brew install typos-cli ) ) || ( echo "Unable to install tool" ) )
       - name: ufmt
         run: ( ( which ufmt ) || ( ( which pipx && pipx install ufmt ) ) || ( echo "Unable to install tool" ) )
       - name: uiua
@@ -370,7 +371,7 @@ jobs:
       - name: yamlfix
         run: ( ( which yamlfix ) || ( ( which brew &&  brew install yamlfix ) || ( which pipx && pipx install yamlfix ) ) || ( echo "Unable to install tool" ) )
       - name: yamlfmt
-        run: ( ( which yamlfmt ) || ( ( which brew &&  brew install yamlfmt ) || ( which go && go install github.com/google/yamlfmt/cmd/yamlfmt@latest ) ) || ( echo "Unable to install tool" ) )
+        run: ( ( which yamlfmt ) || ( ( which mise && mise use yamlfmt ) || ( which brew &&  brew install yamlfmt ) || ( which go && go install github.com/google/yamlfmt/cmd/yamlfmt@latest ) ) || ( echo "Unable to install tool" ) )
       - name: yamllint
         run: ( ( which yamllint ) || ( ( which brew &&  brew install yamllint ) || ( which pipx && pipx install yamllint ) ) || ( echo "Unable to install tool" ) )
       - name: yapf
@@ -378,7 +379,7 @@ jobs:
       - name: yew-fmt
         run: ( ( which yew-fmt ) || ( ( which cargo && ( cargo binstall yew-fmt || cargo install yew-fmt ) ) ) || ( echo "Unable to install tool" ) )
       - name: yq
-        run: ( ( which yq ) || ( ( which brew &&  brew install yq ) || ( which apt-get && sudo apt-get install -y yq ) || ( which go && go install github.com/mikefarah/yq/v4@latest ) ) || ( echo "Unable to install tool" ) )
+        run: ( ( which yq ) || ( ( which mise && mise use yq ) || ( which brew &&  brew install yq ) || ( which apt-get && sudo apt-get install -y yq ) || ( which go && go install github.com/mikefarah/yq/v4@latest ) ) || ( echo "Unable to install tool" ) )
       - run: hash -r
       - name: Run tests
         run: cargo test

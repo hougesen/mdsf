@@ -24,6 +24,9 @@
     },
     "cargo": {
       "package": "typos-cli"
+    },
+    "mise": {
+      "package": "typos"
     }
   }
 }

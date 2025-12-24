@@ -1,5 +1,11 @@
-use super::workflow::WorkflowJobsStep;
-use crate::tools::{Tool, ToolPackagesBrew, ToolPackagesComposer};
+use crate::{
+    actions::workflow::WorkflowJobsStep,
+    tools::{Tool, ToolPackagesBrew, ToolPackagesComposer, ToolPackagesMise},
+};
+
+fn generate_mise(tool: &ToolPackagesMise) -> String {
+    format!("( which mise && mise use {} )", tool.package)
+}
 
 fn generate_cargo(tool: &str) -> String {
     format!("( which cargo && ( cargo binstall {tool} || cargo install {tool} ) )")
@@ -100,6 +106,10 @@ pub fn generate_install_steps(tools: &Vec<Tool>) -> Vec<WorkflowJobsStep> {
         }
 
         let mut install_options = Vec::new();
+
+        if let Some(mise) = &tool.packages.mise {
+            install_options.push(generate_mise(&mise));
+        }
 
         if let Some(npm) = &tool.packages.npm {
             install_options.push(generate_npm(&npm.package));

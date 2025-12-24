@@ -16,6 +16,9 @@
   "packages": {
     "brew": {
       "package": "pkl"
+    },
+    "mise": {
+      "package": "pkl"
     }
   }
 }

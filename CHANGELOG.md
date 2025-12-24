@@ -4,6 +4,7 @@ All notable changes to this project will be documented in this file. Dates are d
 
 #### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.11.1...HEAD)
 
+- feat(tools): add support for swiftlint [`#1461`](https://github.com/hougesen/mdsf/pull/1461)
 - build: upgrade all packages to node 24 [`#1460`](https://github.com/hougesen/mdsf/pull/1460)
 - build(deps-dev): bump @typescript-eslint/eslint-plugin in /mdsf-vscode [`#1456`](https://github.com/hougesen/mdsf/pull/1456)
 - build(deps): bump tempfile from 3.23.0 to 3.24.0 [`#1459`](https://github.com/hougesen/mdsf/pull/1459)

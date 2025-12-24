@@ -23,6 +23,9 @@
     },
     "go": {
       "package": "github.com/google/yamlfmt/cmd/yamlfmt@latest"
+    },
+    "mise": {
+      "package": "yamlfmt"
     }
   }
 }

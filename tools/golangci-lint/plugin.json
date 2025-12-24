@@ -29,6 +29,9 @@
     },
     "go": {
       "package": "github.com/golangci/golangci-lint/v2/cmd/golangci-lint@v2.0.2"
+    },
+    "mise": {
+      "package": "golangci-lint"
     }
   }
 }

@@ -21,6 +21,9 @@
   "packages": {
     "apt": {
       "package": "jq"
+    },
+    "mise": {
+      "package": "jq"
     }
   }
 }

@@ -29,6 +29,9 @@
     "brew": {
       "package": "bufbuild/buf/buf"
     },
+    "mise": {
+      "package": "buf"
+    },
     "npm": {
       "package": "@bufbuild/buf"
     }
