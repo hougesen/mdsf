@@ -330,6 +330,7 @@ pub mod superhtml_fmt;
 pub mod svlint;
 pub mod swift_format;
 pub mod swiftformat;
+pub mod swiftlint;
 pub mod taplo;
 pub mod tclfmt;
 pub mod tclint;
@@ -3012,6 +3013,14 @@ pub enum Tooling {
     /// `swiftformat --quiet $PATH`
     Swiftformat,
 
+    #[serde(rename = "swiftlint")]
+    /// A tool to enforce Swift style and conventions
+    ///
+    /// [https://github.com/realm/swiftlint](https://github.com/realm/swiftlint)
+    ///
+    /// `swiftlint $PATH`
+    Swiftlint,
+
     #[serde(rename = "taplo")]
     /// A TOML toolkit written in Rust
     ///
@@ -4561,6 +4570,11 @@ impl Tooling {
                 swiftformat::set_args,
                 swiftformat::IS_STDIN,
             ),
+            Self::Swiftlint => (
+                &swiftlint::COMMANDS,
+                swiftlint::set_args,
+                swiftlint::IS_STDIN,
+            ),
             Self::Taplo => (&taplo::COMMANDS, taplo::set_args, taplo::IS_STDIN),
             Self::Tclfmt => (&tclfmt::COMMANDS, tclfmt::set_args, tclfmt::IS_STDIN),
             Self::Tclint => (&tclint::COMMANDS, tclint::set_args, tclint::IS_STDIN),
@@ -5042,6 +5056,7 @@ impl AsRef<str> for Tooling {
             Self::Svlint => "svlint",
             Self::SwiftFormat => "swift-format",
             Self::Swiftformat => "swiftformat",
+            Self::Swiftlint => "swiftlint",
             Self::Taplo => "taplo",
             Self::Tclfmt => "tclfmt",
             Self::Tclint => "tclint",
@@ -5491,6 +5506,7 @@ mod test_tooling {
         assert_eq!(Tooling::Svlint, reverse(Tooling::Svlint)?);
         assert_eq!(Tooling::SwiftFormat, reverse(Tooling::SwiftFormat)?);
         assert_eq!(Tooling::Swiftformat, reverse(Tooling::Swiftformat)?);
+        assert_eq!(Tooling::Swiftlint, reverse(Tooling::Swiftlint)?);
         assert_eq!(Tooling::Taplo, reverse(Tooling::Taplo)?);
         assert_eq!(Tooling::Tclfmt, reverse(Tooling::Tclfmt)?);
         assert_eq!(Tooling::Tclint, reverse(Tooling::Tclint)?);

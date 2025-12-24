@@ -1837,6 +1837,11 @@
           "const": "swiftformat"
         },
         {
+          "description": "A tool to enforce Swift style and conventions\n\n[https://github.com/realm/swiftlint](https://github.com/realm/swiftlint)\n\n`swiftlint $PATH`",
+          "type": "string",
+          "const": "swiftlint"
+        },
+        {
           "description": "A TOML toolkit written in Rust\n\n[https://github.com/tamasfe/taplo](https://github.com/tamasfe/taplo)\n\n`taplo format $PATH`",
           "type": "string",
           "const": "taplo"

@@ -1,0 +1,19 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "swiftlint",
+  "categories": ["linter"],
+  "commands": {
+    "": {
+      "arguments": ["$PATH"],
+      "tests": []
+    }
+  },
+  "description": "A tool to enforce Swift style and conventions",
+  "homepage": "https://github.com/realm/swiftlint",
+  "languages": ["swift"],
+  "packages": {
+    "brew": {
+      "package": "swiftlint"
+    }
+  }
+}
