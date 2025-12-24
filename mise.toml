@@ -98,4 +98,5 @@ run = [
 ]
 
 [tools]
+node = "24"
 ruby = "3"

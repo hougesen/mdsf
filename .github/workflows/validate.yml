@@ -32,7 +32,7 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest]
-        node: [20]
+        node: [24]
     defaults:
       run:
         working-directory: ./github-action
@@ -59,7 +59,7 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest]
-        node: [20]
+        node: [24]
     defaults:
       run:
         working-directory: ./mdsf-vscode
