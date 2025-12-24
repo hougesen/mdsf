@@ -492,7 +492,7 @@ When defining the arguments the variable `$PATH` will automatically be replaced 
 
 <!-- START_SECTION:supported-tools -->
 
-`mdsf` currently supports 335 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 336 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                                                                                 | Description                                                                                                                                   | Categories            | Languages                                                                                                                         |
 | ------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
@@ -781,6 +781,7 @@ When defining the arguments the variable `$PATH` will automatically be replaced 
 | [svlint](https://github.com/dalance/svlint)                                          | SystemVerilog linter                                                                                                                          | `linter`              | `systemverilog`                                                                                                                   |
 | [swift-format](https://github.com/swiftlang/swift-format)                            | Formatting technology for Swift source code                                                                                                   | `formatter`           | `swift`                                                                                                                           |
 | [swiftformat](https://github.com/nicklockwood/swiftformat)                           | A command-line tool and Xcode Extension for formatting Swift code                                                                             | `formatter`           | `swift`                                                                                                                           |
+| [swiftlint](https://github.com/realm/swiftlint)                                      | A tool to enforce Swift style and conventions                                                                                                 | `linter`              | `swift`                                                                                                                           |
 | [taplo](https://github.com/tamasfe/taplo)                                            | A TOML toolkit written in Rust                                                                                                                | `formatter`           | `toml`                                                                                                                            |
 | [tclfmt](https://github.com/nmoroze/tclint)                                          | Formatter for Tcl                                                                                                                             | `linter`              | `tcl`                                                                                                                             |
 | [tclint](https://github.com/nmoroze/tclint)                                          | Linter for Tcl                                                                                                                                | `linter`              | `tcl`                                                                                                                             |
@@ -838,7 +839,7 @@ When defining the arguments the variable `$PATH` will automatically be replaced 
 
 <!-- START_SECTION:supported-commands -->
 
-`mdsf` currently supports 382 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 383 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                         | Command                                                                                 |
 | ---------------------------- | --------------------------------------------------------------------------------------- |
@@ -1170,6 +1171,7 @@ When defining the arguments the variable `$PATH` will automatically be replaced 
 | `svlint`                     | `svlint $PATH`                                                                          |
 | `swift-format`               | `swift-format --in-place $PATH`                                                         |
 | `swiftformat`                | `swiftformat --quiet $PATH`                                                             |
+| `swiftlint`                  | `swiftlint $PATH`                                                                       |
 | `taplo`                      | `taplo format $PATH`                                                                    |
 | `tclfmt`                     | `tclfmt $PATH`                                                                          |
 | `tclint`                     | `tclint $PATH`                                                                          |
