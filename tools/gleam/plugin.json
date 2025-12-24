@@ -17,5 +17,9 @@
   "description": "Format Gleam source code",
   "homepage": "https://gleam.run",
   "languages": ["gleam"],
-  "packages": {}
+  "packages": {
+    "mise": {
+      "package": "gleam"
+    }
+  }
 }
