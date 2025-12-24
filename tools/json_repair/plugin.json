@@ -14,7 +14,7 @@
       ]
     }
   },
-  "description": "A python module to repair invalid JSON from LLMs",
+  "description": "A module to repair invalid JSON from LLMs",
   "homepage": "https://github.com/mangiucugna/json_repair",
   "languages": ["json"],
   "packages": {

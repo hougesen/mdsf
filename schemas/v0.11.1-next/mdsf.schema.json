@@ -962,7 +962,7 @@
           "const": "json5format"
         },
         {
-          "description": "A python module to repair invalid JSON from LLMs\n\n[https://github.com/mangiucugna/json_repair](https://github.com/mangiucugna/json_repair)\n\n`json_repair -i $PATH`",
+          "description": "A module to repair invalid JSON from LLMs\n\n[https://github.com/mangiucugna/json_repair](https://github.com/mangiucugna/json_repair)\n\n`json_repair -i $PATH`",
           "type": "string",
           "const": "json_repair"
         },
@@ -1055,6 +1055,11 @@
           "description": "An anti-bikeshedding Kotlin linter with built-in formatter\n\n[https://github.com/pinterest/ktlint](https://github.com/pinterest/ktlint)\n\n`ktlint --format --log-level=error $PATH`",
           "type": "string",
           "const": "ktlint"
+        },
+        {
+          "description": "KubeLinter is a static analysis tool that checks Kubernetes YAML files and Helm charts to ensure the applications represented in them adhere to best practices\n\n[https://github.com/stackrox/kube-linter](https://github.com/stackrox/kube-linter)\n\n`kube-linter lint $PATH`",
+          "type": "string",
+          "const": "kube-linter:lint"
         },
         {
           "description": "Check if .http and .rest code is formatted\n\n[https://github.com/mistweaverco/kulala-fmt](https://github.com/mistweaverco/kulala-fmt)\n\n`kulala-fmt check $PATH`",

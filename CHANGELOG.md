@@ -4,6 +4,7 @@ All notable changes to this project will be documented in this file. Dates are d
 
 #### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.11.1...HEAD)
 
+- feat(tools): add support for action-validator [`#1463`](https://github.com/hougesen/mdsf/pull/1463)
 - feat: support installing packages using mise for testing [`#1462`](https://github.com/hougesen/mdsf/pull/1462)
 - feat(tools): add support for swiftlint [`#1461`](https://github.com/hougesen/mdsf/pull/1461)
 - build: upgrade all packages to node 24 [`#1460`](https://github.com/hougesen/mdsf/pull/1460)

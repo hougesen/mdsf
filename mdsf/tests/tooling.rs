@@ -1422,7 +1422,7 @@ mod test_blade_formatter {
 
 #[cfg(test)]
 mod test_blue {
-    #[test_with::executable(blue || pipx || uv)]
+    #[test_with::executable(blue || uv)]
     fn test_blue_python_229ec2b01c2bfe3c() -> Result<(), Box<dyn core::error::Error>> {
         let input = r#"def add( a: int ,  b:int)->int: return a+b"#;
 
@@ -1465,7 +1465,7 @@ mod test_blue {
 
 #[cfg(test)]
 mod test_brunette {
-    #[test_with::executable(brunette || pipx || uv)]
+    #[test_with::executable(brunette || uv)]
     fn test_brunette_python_229ec2b01c2bfe3c() -> Result<(), Box<dyn core::error::Error>> {
         let input = r#"def add( a: int ,  b:int)->int: return a+b"#;
 
