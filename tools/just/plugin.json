@@ -25,6 +25,9 @@
     "cargo": {
       "package": "just"
     },
+    "mise": {
+      "package": "just"
+    },
     "npm": {
       "package": "rust-just"
     },

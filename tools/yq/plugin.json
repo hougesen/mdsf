@@ -26,6 +26,9 @@
     },
     "go": {
       "package": "github.com/mikefarah/yq/v4@latest"
+    },
+    "mise": {
+      "package": "yq"
     }
   }
 }

@@ -15,6 +15,9 @@
     "brew": {
       "package": "cfn-lint"
     },
+    "mise": {
+      "package": "cfn-lint"
+    },
     "pip": {
       "package": "cfn-lint"
     }

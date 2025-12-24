@@ -15,12 +15,16 @@
     }
   },
   "description": "A tool for formatting Clojure code",
+  "disable_ci_package_install": true,
   "homepage": "https://github.com/greglook/cljstyle",
   "languages": ["clojure"],
   "packages": {
     "brew": {
       "cask": true,
       "skip_brew_install": true,
+      "package": "cljstyle"
+    },
+    "mise": {
       "package": "cljstyle"
     }
   }

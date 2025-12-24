@@ -235,6 +235,16 @@
             }
           ]
         },
+        "mise": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ToolPackagesMise"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
         "nimble": {
           "anyOf": [
             {
@@ -418,6 +428,16 @@
       "required": ["package"]
     },
     "ToolPackagesLuarocks": {
+      "type": "object",
+      "properties": {
+        "package": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false,
+      "required": ["package"]
+    },
+    "ToolPackagesMise": {
       "type": "object",
       "properties": {
         "package": {

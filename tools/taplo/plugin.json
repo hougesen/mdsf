@@ -24,6 +24,9 @@
     "cargo": {
       "package": "taplo-cli"
     },
+    "mise": {
+      "package": "taplo"
+    },
     "npm": {
       "package": "@taplo/cli"
     }

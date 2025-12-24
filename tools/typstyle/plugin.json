@@ -17,6 +17,9 @@
     },
     "cargo": {
       "package": "typstyle"
+    },
+    "mise": {
+      "package": "typstyle"
     }
   }
 }

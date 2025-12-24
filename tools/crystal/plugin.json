@@ -19,5 +19,9 @@
   "description": "Tools for the Crystal programming language",
   "homepage": "https://crystal-lang.org",
   "languages": ["crystal"],
-  "packages": {}
+  "packages": {
+    "mise": {
+      "package": "crystal"
+    }
+  }
 }

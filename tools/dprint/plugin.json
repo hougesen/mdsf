@@ -18,6 +18,9 @@
     "cargo": {
       "package": "dprint"
     },
+    "mise": {
+      "package": "dprint"
+    },
     "npm": {
       "package": "dprint"
     }

@@ -141,6 +141,12 @@ pub struct ToolPackagesLuarocks {
 
 #[derive(Debug, serde::Deserialize, schemars::JsonSchema, Clone, Default, serde::Serialize)]
 #[serde(deny_unknown_fields)]
+pub struct ToolPackagesMise {
+    pub package: String,
+}
+
+#[derive(Debug, serde::Deserialize, schemars::JsonSchema, Clone, Default, serde::Serialize)]
+#[serde(deny_unknown_fields)]
 pub struct ToolPackagesNimble {
     pub package: String,
 }
@@ -232,6 +238,9 @@ pub struct ToolPackages {
 
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub luarocks: Option<ToolPackagesLuarocks>,
+
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub mise: Option<ToolPackagesMise>,
 
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub nimble: Option<ToolPackagesNimble>,

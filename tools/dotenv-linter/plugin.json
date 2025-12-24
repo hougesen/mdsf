@@ -17,6 +17,9 @@
     },
     "cargo": {
       "package": "dotenv-linter"
+    },
+    "mise": {
+      "package": "dotenv-linter"
     }
   }
 }

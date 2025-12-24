@@ -1,5 +1,11 @@
-use super::workflow::WorkflowJobsStep;
-use crate::tools::{Tool, ToolPackagesBrew, ToolPackagesComposer};
+use crate::{
+    actions::workflow::WorkflowJobsStep,
+    tools::{Tool, ToolPackagesBrew, ToolPackagesComposer, ToolPackagesMise},
+};
+
+fn generate_mise(tool: &ToolPackagesMise) -> String {
+    format!("( which mise && mise use -g {} )", tool.package)
+}
 
 fn generate_cargo(tool: &str) -> String {
     format!("( which cargo && ( cargo binstall {tool} || cargo install {tool} ) )")
@@ -37,14 +43,14 @@ fn generate_brew(tool: &ToolPackagesBrew) -> String {
     let tap = tool
         .tap
         .as_ref()
-        .map(|tap| format!("brew tap {tap} &&"))
+        .map(|tap| format!("brew tap {tap} && "))
         .unwrap_or_default();
 
     let package_name = &tool.package;
 
     let cask = if tool.cask { "--cask " } else { "" };
 
-    format!("( which brew && {tap} brew install {cask}{package_name} )")
+    format!("( which brew && {tap}brew install {cask}{package_name} )")
 }
 
 fn generate_luarocks(tool: &str) -> String {
@@ -82,24 +88,24 @@ pub fn generate_install_steps(tools: &Vec<Tool>) -> Vec<WorkflowJobsStep> {
     let mut steps = Vec::new();
 
     for tool in tools {
-        let mut has_tests = false;
-
-        for options in tool.commands.values() {
-            if !options.tests.is_empty() {
-                has_tests = true;
-                break;
-            }
+        if tool.disable_ci_package_install {
+            continue;
         }
+
+        let has_tests = tool
+            .commands
+            .values()
+            .any(|command| !command.tests.is_empty() && command.tests.iter().any(|t| !t.disabled));
 
         if !has_tests {
             continue;
         }
 
-        if tool.disable_ci_package_install {
-            continue;
-        }
-
         let mut install_options = Vec::new();
+
+        if let Some(mise) = &tool.packages.mise {
+            install_options.push(generate_mise(mise));
+        }
 
         if let Some(npm) = &tool.packages.npm {
             install_options.push(generate_npm(&npm.package));
@@ -176,18 +182,17 @@ pub fn generate_install_steps(tools: &Vec<Tool>) -> Vec<WorkflowJobsStep> {
                 &tool.binary
             };
 
-            let run = format!(
-                "( ( which {binary_name} ) || ( {} ) || ( echo \"Unable to install tool\" ) )",
-                install_options.join(" || ")
-            );
+            for install_option in install_options {
+                let run = format!("which {binary_name} || {install_option}");
 
-            steps.push(WorkflowJobsStep {
-                name: Some(tool.binary.clone()),
-                run: Some(run),
-                uses: None,
-                with: None,
-                continue_on_error: None,
-            });
+                steps.push(WorkflowJobsStep {
+                    name: None,
+                    run: Some(run),
+                    uses: None,
+                    with: None,
+                    continue_on_error: Some(true),
+                });
+            }
         }
     }
 

@@ -94,6 +94,7 @@
         "enable-cache": true
       }
     },
+    { "uses": "jdx/mise-action@v3" },
     {
       "name": "Install cargo-llvm-cov",
       "uses": "taiki-e/install-action@cargo-llvm-cov"

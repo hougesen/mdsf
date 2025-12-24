@@ -20,6 +20,9 @@
   "packages": {
     "brew": {
       "package": "swiftformat"
+    },
+    "mise": {
+      "package": "swiftformat"
     }
   }
 }

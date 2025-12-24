@@ -33,6 +33,9 @@
     "brew": {
       "package": "ruff"
     },
+    "mise": {
+      "package": "ruff"
+    },
     "pip": {
       "package": "ruff"
     }

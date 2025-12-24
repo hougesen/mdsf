@@ -65,6 +65,9 @@
     "brew": {
       "package": "clang-format"
     },
+    "mise": {
+      "package": "clang-format"
+    },
     "pip": {
       "package": "clang-format"
     }

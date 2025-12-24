@@ -20,6 +20,9 @@
   "packages": {
     "go": {
       "package": "mvdan.cc/gofumpt@latest"
+    },
+    "mise": {
+      "package": "gofumpt"
     }
   }
 }
