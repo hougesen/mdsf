@@ -1,0 +1,22 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "action-validator",
+  "categories": ["linter"],
+  "commands": {
+    "": {
+      "arguments": ["$PATH"],
+      "tests": []
+    }
+  },
+  "description": "Tool to validate GitHub Action and Workflow YAML files",
+  "homepage": "https://github.com/mpalmer/action-validator",
+  "languages": ["yaml"],
+  "packages": {
+    "cargo": {
+      "package": "action-validator"
+    },
+    "mise": {
+      "package": "action-validator"
+    }
+  }
+}

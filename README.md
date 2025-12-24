@@ -492,10 +492,11 @@ When defining the arguments the variable `$PATH` will automatically be replaced 
 
 <!-- START_SECTION:supported-tools -->
 
-`mdsf` currently supports 336 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 337 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                                                                                 | Description                                                                                                                                   | Categories            | Languages                                                                                                                         |
 | ------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
+| [action-validator](https://github.com/mpalmer/action-validator)                      | Tool to validate GitHub Action and Workflow YAML files                                                                                        | `linter`              | `yaml`                                                                                                                            |
 | [actionlint](https://github.com/rhysd/actionlint)                                    | Static checker for GitHub Actions workflow files                                                                                              | `linter`              | `yaml`                                                                                                                            |
 | [air](https://github.com/posit-dev/air)                                              | R formatter                                                                                                                                   | `formatter`           | `r`                                                                                                                               |
 | [alejandra](https://github.com/kamadorueda/alejandra)                                | The Uncompromising Nix Code Formatter                                                                                                         | `formatter`           | `nix`                                                                                                                             |
@@ -839,10 +840,11 @@ When defining the arguments the variable `$PATH` will automatically be replaced 
 
 <!-- START_SECTION:supported-commands -->
 
-`mdsf` currently supports 383 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 384 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                         | Command                                                                                 |
 | ---------------------------- | --------------------------------------------------------------------------------------- |
+| `action-validator`           | `action-validator $PATH`                                                                |
 | `actionlint`                 | `actionlint $PATH`                                                                      |
 | `air:format`                 | `air format $PATH`                                                                      |
 | `alejandra`                  | `alejandra --quiet $PATH`                                                               |

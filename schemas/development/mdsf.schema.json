@@ -197,6 +197,11 @@
     "Tooling": {
       "oneOf": [
         {
+          "description": "Tool to validate GitHub Action and Workflow YAML files\n\n[https://github.com/mpalmer/action-validator](https://github.com/mpalmer/action-validator)\n\n`action-validator $PATH`",
+          "type": "string",
+          "const": "action-validator"
+        },
+        {
           "description": "Static checker for GitHub Actions workflow files\n\n[https://github.com/rhysd/actionlint](https://github.com/rhysd/actionlint)\n\n`actionlint $PATH`",
           "type": "string",
           "const": "actionlint"

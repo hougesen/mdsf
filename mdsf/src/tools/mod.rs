@@ -2,6 +2,7 @@
 //! THIS FILE IS GENERATED USING CODE - DO NOT EDIT MANUALLY
 //!
 
+pub mod action_validator;
 pub mod actionlint;
 pub mod air_format;
 pub mod alejandra;
@@ -389,6 +390,14 @@ pub mod zprint;
 #[derive(serde::Serialize, serde::Deserialize, Hash, Clone, Copy, Debug, PartialEq, Eq)]
 #[cfg_attr(feature = "json-schema", derive(schemars::JsonSchema))]
 pub enum Tooling {
+    #[serde(rename = "action-validator")]
+    /// Tool to validate GitHub Action and Workflow YAML files
+    ///
+    /// [https://github.com/mpalmer/action-validator](https://github.com/mpalmer/action-validator)
+    ///
+    /// `action-validator $PATH`
+    ActionValidator,
+
     #[serde(rename = "actionlint")]
     /// Static checker for GitHub Actions workflow files
     ///
@@ -3470,6 +3479,11 @@ impl Tooling {
             fn(std::process::Command, &std::path::Path) -> std::process::Command,
             bool,
         ) = match self {
+            Self::ActionValidator => (
+                &action_validator::COMMANDS,
+                action_validator::set_args,
+                action_validator::IS_STDIN,
+            ),
             Self::Actionlint => (
                 &actionlint::COMMANDS,
                 actionlint::set_args,
@@ -4728,6 +4742,7 @@ impl AsRef<str> for Tooling {
     #[inline]
     fn as_ref(&self) -> &str {
         match self {
+            Self::ActionValidator => "action-validator",
             Self::Actionlint => "actionlint",
             Self::AirFormat => "air:format",
             Self::Alejandra => "alejandra",
@@ -5127,6 +5142,7 @@ mod test_tooling {
     #[allow(clippy::too_many_lines)]
     #[test]
     fn value_is_reversible() -> Result<(), serde_json::Error> {
+        assert_eq!(Tooling::ActionValidator, reverse(Tooling::ActionValidator)?);
         assert_eq!(Tooling::Actionlint, reverse(Tooling::Actionlint)?);
         assert_eq!(Tooling::AirFormat, reverse(Tooling::AirFormat)?);
         assert_eq!(Tooling::Alejandra, reverse(Tooling::Alejandra)?);

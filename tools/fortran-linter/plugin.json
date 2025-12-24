@@ -18,9 +18,6 @@
   "homepage": "https://github.com/cphyc/fortran-linter",
   "languages": ["fortran"],
   "packages": {
-    "brew": {
-      "package": "fprettify"
-    },
     "pip": {
       "package": "fortran-linter"
     }

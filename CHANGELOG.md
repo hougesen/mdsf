@@ -4,6 +4,7 @@ All notable changes to this project will be documented in this file. Dates are d
 
 #### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.11.1...HEAD)
 
+- feat: support installing packages using mise for testing [`#1462`](https://github.com/hougesen/mdsf/pull/1462)
 - feat(tools): add support for swiftlint [`#1461`](https://github.com/hougesen/mdsf/pull/1461)
 - build: upgrade all packages to node 24 [`#1460`](https://github.com/hougesen/mdsf/pull/1460)
 - build(deps-dev): bump @typescript-eslint/eslint-plugin in /mdsf-vscode [`#1456`](https://github.com/hougesen/mdsf/pull/1456)
@@ -14,8 +15,6 @@ All notable changes to this project will be documented in this file. Dates are d
 - build(deps): bump serde_json from 1.0.145 to 1.0.146 [`#1454`](https://github.com/hougesen/mdsf/pull/1454)
 - chore: set version to dev [`#1453`](https://github.com/hougesen/mdsf/pull/1453)
 - build(deps): bump clap_complete from 4.5.61 to 4.5.62 [`#1452`](https://github.com/hougesen/mdsf/pull/1452)
-- feat: support installing packages using mise for testing [`691e389`](https://github.com/hougesen/mdsf/commit/691e389093fb0f5fe7a6331f63996ca2f6a82f0e)
-- chore: add mise for more packages [`e566560`](https://github.com/hougesen/mdsf/commit/e5665602765bde4a69c78b0d91e85104571c31da)
 
 #### [v0.11.1](https://github.com/hougesen/mdsf/compare/v0.11.0...v0.11.1)
 
