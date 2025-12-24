@@ -29,6 +29,9 @@
   "homepage": "https://github.com/tombi-toml/tombi",
   "languages": ["toml"],
   "packages": {
+    "mise": {
+      "package": "tombi"
+    },
     "pip": {
       "package": "tombi"
     }

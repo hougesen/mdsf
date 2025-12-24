@@ -21,6 +21,9 @@
     "brew": {
       "package": "markdownlint-cli2"
     },
+    "mise": {
+      "package": "markdownlint-cli2"
+    },
     "npm": {
       "package": "markdownlint-cli2"
     }

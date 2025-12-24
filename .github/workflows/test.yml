@@ -117,13 +117,15 @@ jobs:
       - name: buf
         run: ( ( which buf ) || ( ( which mise && mise use buf ) || ( which npm && npm i -g @bufbuild/buf ) || ( which brew &&  brew install bufbuild/buf/buf ) ) || ( echo "Unable to install tool" ) )
       - name: clang-format
-        run: ( ( which clang-format ) || ( ( which brew &&  brew install clang-format ) || ( which pipx && pipx install clang-format ) ) || ( echo "Unable to install tool" ) )
+        run: ( ( which clang-format ) || ( ( which mise && mise use clang-format ) || ( which brew &&  brew install clang-format ) || ( which pipx && pipx install clang-format ) ) || ( echo "Unable to install tool" ) )
       - name: coffeelint
         run: ( ( which coffeelint ) || ( ( which npm && npm i -g @coffeelint/cli ) ) || ( echo "Unable to install tool" ) )
       - name: cppcheck
         run: ( ( which cppcheck ) || ( ( which brew &&  brew install cppcheck ) || ( which apt-get && sudo apt-get install -y cppcheck ) ) || ( echo "Unable to install tool" ) )
       - name: cpplint
         run: ( ( which cpplint ) || ( ( which brew &&  brew install cpplint ) || ( which apt-get && sudo apt-get install -y cpplint ) || ( which pipx && pipx install cpplint ) ) || ( echo "Unable to install tool" ) )
+      - name: crystal
+        run: ( ( which crystal ) || ( ( which mise && mise use crystal ) ) || ( echo "Unable to install tool" ) )
       - name: csharpier
         run: ( ( which csharpier ) || ( ( which dotnet && dotnet tool install -g csharpier ) ) || ( echo "Unable to install tool" ) )
       - name: css-beautify
@@ -161,7 +163,7 @@ jobs:
       - name: fprettify
         run: ( ( which fprettify ) || ( ( which brew &&  brew install fprettify ) || ( which pipx && pipx install fprettify ) ) || ( echo "Unable to install tool" ) )
       - name: gofumpt
-        run: ( ( which gofumpt ) || ( ( which go && go install mvdan.cc/gofumpt@latest ) ) || ( echo "Unable to install tool" ) )
+        run: ( ( which gofumpt ) || ( ( which mise && mise use gofumpt ) || ( which go && go install mvdan.cc/gofumpt@latest ) ) || ( echo "Unable to install tool" ) )
       - name: goimports
         run: ( ( which goimports ) || ( ( which go && go install golang.org/x/tools/cmd/goimports@latest ) ) || ( echo "Unable to install tool" ) )
       - name: golines
@@ -203,7 +205,7 @@ jobs:
       - name: ktfmt
         run: ( ( which ktfmt ) || ( ( which brew &&  brew install ktfmt ) ) || ( echo "Unable to install tool" ) )
       - name: ktlint
-        run: ( ( which ktlint ) || ( ( which brew &&  brew install ktlint ) ) || ( echo "Unable to install tool" ) )
+        run: ( ( which ktlint ) || ( ( which mise && mise use ktlint ) || ( which brew &&  brew install ktlint ) ) || ( echo "Unable to install tool" ) )
       - name: kulala-fmt
         run: ( ( which kulala-fmt ) || ( ( which npm && npm i -g @mistweaverco/kulala-fmt ) ) || ( echo "Unable to install tool" ) )
       - name: lua-format
@@ -217,7 +219,7 @@ jobs:
       - name: markdownlint
         run: ( ( which markdownlint ) || ( ( which npm && npm i -g markdownlint-cli ) ) || ( echo "Unable to install tool" ) )
       - name: markdownlint-cli2
-        run: ( ( which markdownlint-cli2 ) || ( ( which npm && npm i -g markdownlint-cli2 ) || ( which brew &&  brew install markdownlint-cli2 ) ) || ( echo "Unable to install tool" ) )
+        run: ( ( which markdownlint-cli2 ) || ( ( which mise && mise use markdownlint-cli2 ) || ( which npm && npm i -g markdownlint-cli2 ) || ( which brew &&  brew install markdownlint-cli2 ) ) || ( echo "Unable to install tool" ) )
       - name: mbake
         run: ( ( which mbake ) || ( ( which pipx && pipx install mbake ) ) || ( echo "Unable to install tool" ) )
       - name: mdsf
@@ -243,7 +245,7 @@ jobs:
       - name: oxfmt
         run: ( ( which oxfmt ) || ( ( which npm && npm i -g oxfmt ) ) || ( echo "Unable to install tool" ) )
       - name: oxlint
-        run: ( ( which oxlint ) || ( ( which npm && npm i -g oxlint ) ) || ( echo "Unable to install tool" ) )
+        run: ( ( which oxlint ) || ( ( which mise && mise use oxlint ) || ( which npm && npm i -g oxlint ) ) || ( echo "Unable to install tool" ) )
       - name: perflint
         run: ( ( which perflint ) || ( ( which pipx && pipx install perflint ) ) || ( echo "Unable to install tool" ) )
       - name: prettier
@@ -323,7 +325,7 @@ jobs:
       - name: stylua
         run: ( ( which stylua ) || ( ( which npm && npm i -g @johnnymorganz/stylua-bin ) || ( which cargo && ( cargo binstall stylua || cargo install stylua ) ) || ( which brew &&  brew install stylua ) ) || ( echo "Unable to install tool" ) )
       - name: superhtml
-        run: ( ( which superhtml ) || ( ( which brew &&  brew install superhtml ) ) || ( echo "Unable to install tool" ) )
+        run: ( ( which superhtml ) || ( ( which mise && mise use superhtml ) || ( which brew &&  brew install superhtml ) ) || ( echo "Unable to install tool" ) )
       - name: swiftformat
         run: ( ( which swiftformat ) || ( ( which mise && mise use swiftformat ) || ( which brew &&  brew install swiftformat ) ) || ( echo "Unable to install tool" ) )
       - name: taplo
@@ -335,7 +337,7 @@ jobs:
       - name: tofu
         run: ( ( which tofu ) || ( ( which brew &&  brew install opentofu ) ) || ( echo "Unable to install tool" ) )
       - name: tombi
-        run: ( ( which tombi ) || ( ( which pipx && pipx install tombi ) ) || ( echo "Unable to install tool" ) )
+        run: ( ( which tombi ) || ( ( which mise && mise use tombi ) || ( which pipx && pipx install tombi ) ) || ( echo "Unable to install tool" ) )
       - name: toml-sort
         run: ( ( which toml-sort ) || ( ( which pipx && pipx install toml-sort ) ) || ( echo "Unable to install tool" ) )
       - name: topiary

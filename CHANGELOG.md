@@ -14,6 +14,7 @@ All notable changes to this project will be documented in this file. Dates are d
 - build(deps): bump serde_json from 1.0.145 to 1.0.146 [`#1454`](https://github.com/hougesen/mdsf/pull/1454)
 - chore: set version to dev [`#1453`](https://github.com/hougesen/mdsf/pull/1453)
 - build(deps): bump clap_complete from 4.5.61 to 4.5.62 [`#1452`](https://github.com/hougesen/mdsf/pull/1452)
+- feat: support installing packages using mise for testing [`691e389`](https://github.com/hougesen/mdsf/commit/691e389093fb0f5fe7a6331f63996ca2f6a82f0e)
 
 #### [v0.11.1](https://github.com/hougesen/mdsf/compare/v0.11.0...v0.11.1)
 

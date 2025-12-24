@@ -19,6 +19,9 @@
     },
     "go": {
       "package": "cuelang.org/go/cmd/cue@latest"
+    },
+    "mise": {
+      "package": "cue"
     }
   }
 }

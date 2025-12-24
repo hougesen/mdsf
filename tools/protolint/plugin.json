@@ -19,6 +19,9 @@
     "go": {
       "package": "github.com/yoheimuta/protolint/cmd/protolint@latest"
     },
+    "mise": {
+      "package": "protolint"
+    },
     "npm": {
       "package": "protolint"
     }

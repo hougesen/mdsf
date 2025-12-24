@@ -18,6 +18,9 @@
   "homepage": "https://oxc.rs/docs/guide/usage/linter.html",
   "languages": ["javascript", "typescript"],
   "packages": {
+    "mise": {
+      "package": "oxlint"
+    },
     "npm": {
       "package": "oxlint"
     }

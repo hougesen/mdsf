@@ -15,6 +15,9 @@
     "brew": {
       "package": "daveshanley/vacuum/vacuum"
     },
+    "mise": {
+      "package": "vacuum"
+    },
     "npm": {
       "package": "@quobix/vacuum"
     }

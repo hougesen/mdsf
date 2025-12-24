@@ -17,6 +17,9 @@
     },
     "go": {
       "package": "github.com/bazelbuild/buildtools/buildifier@latest"
+    },
+    "mise": {
+      "package": "buildifier"
     }
   }
 }
