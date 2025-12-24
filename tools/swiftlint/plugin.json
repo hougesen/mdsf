@@ -14,9 +14,6 @@
   "packages": {
     "brew": {
       "package": "swiftlint"
-    },
-    "mise": {
-      "package": "swiftlint"
     }
   }
 }
