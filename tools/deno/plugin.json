@@ -39,6 +39,9 @@
     },
     "cargo": {
       "package": "deno"
+    },
+    "mise": {
+      "package": "deno"
     }
   }
 }

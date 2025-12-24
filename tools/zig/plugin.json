@@ -18,5 +18,9 @@
   "description": "Reformat Zig source into canonical form",
   "homepage": "https://ziglang.org",
   "languages": ["zig"],
-  "packages": {}
+  "packages": {
+    "mise": {
+      "package": "zig"
+    }
+  }
 }

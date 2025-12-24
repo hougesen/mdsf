@@ -15,6 +15,7 @@ All notable changes to this project will be documented in this file. Dates are d
 - chore: set version to dev [`#1453`](https://github.com/hougesen/mdsf/pull/1453)
 - build(deps): bump clap_complete from 4.5.61 to 4.5.62 [`#1452`](https://github.com/hougesen/mdsf/pull/1452)
 - feat: support installing packages using mise for testing [`691e389`](https://github.com/hougesen/mdsf/commit/691e389093fb0f5fe7a6331f63996ca2f6a82f0e)
+- chore: add mise for more packages [`e566560`](https://github.com/hougesen/mdsf/commit/e5665602765bde4a69c78b0d91e85104571c31da)
 
 #### [v0.11.1](https://github.com/hougesen/mdsf/compare/v0.11.0...v0.11.1)
 

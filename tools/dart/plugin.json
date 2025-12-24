@@ -25,5 +25,9 @@
   "description": "Formatter and linter for Dart",
   "homepage": "https://dart.dev/tools",
   "languages": ["dart", "flutter"],
-  "packages": {}
+  "packages": {
+    "mise": {
+      "package": "dart"
+    }
+  }
 }

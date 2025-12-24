@@ -24,6 +24,9 @@
     "cargo": {
       "package": "stylua"
     },
+    "mise": {
+      "package": "stylua"
+    },
     "npm": {
       "package": "@johnnymorganz/stylua-bin"
     }

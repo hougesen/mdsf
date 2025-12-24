@@ -86,302 +86,470 @@ jobs:
       - run: rustup toolchain install stable
       - run: rustup component add rustfmt clippy
       - run: curl -LsSf https://github.com/posit-dev/air/releases/latest/download/air-installer.sh | sh
-      - name: actionlint
-        run: ( ( which actionlint ) || ( ( which mise && mise use actionlint ) || ( which brew &&  brew install actionlint ) || ( which go && go install github.com/rhysd/actionlint/cmd/actionlint@latest ) ) || ( echo "Unable to install tool" ) )
-      - name: air
-        run: ( ( which air ) || ( ( which brew &&  brew install air ) ) || ( echo "Unable to install tool" ) )
-      - name: alejandra
-        run: ( ( which alejandra ) || ( ( which cargo && ( cargo binstall alejandra || cargo install alejandra ) ) ) || ( echo "Unable to install tool" ) )
-      - name: alex
-        run: ( ( which alex ) || ( ( which npm && npm i -g alex ) ) || ( echo "Unable to install tool" ) )
-      - name: auto-optional
-        run: ( ( which auto-optional ) || ( ( which pipx && pipx install auto-optional ) ) || ( echo "Unable to install tool" ) )
-      - name: autoflake
-        run: ( ( which autoflake ) || ( ( which pipx && pipx install autoflake ) ) || ( echo "Unable to install tool" ) )
-      - name: autopep8
-        run: ( ( which autopep8 ) || ( ( which pipx && pipx install autopep8 ) ) || ( echo "Unable to install tool" ) )
-      - name: bashate
-        run: ( ( which bashate ) || ( ( which brew &&  brew install bashate ) || ( which pipx && pipx install bashate ) ) || ( echo "Unable to install tool" ) )
-      - name: beautysh
-        run: ( ( which beautysh ) || ( ( which brew &&  brew install beautysh ) ) || ( echo "Unable to install tool" ) )
-      - name: biome
-        run: ( ( which biome ) || ( ( which npm && npm i -g @biomejs/biome ) ) || ( echo "Unable to install tool" ) )
-      - name: black
-        run: ( ( which black ) || ( ( which brew &&  brew install black ) || ( which pipx && pipx install black ) ) || ( echo "Unable to install tool" ) )
-      - name: blade-formatter
-        run: ( ( which blade-formatter ) || ( ( which npm && npm i -g blade-formatter ) ) || ( echo "Unable to install tool" ) )
-      - name: blue
-        run: ( ( which blue ) || ( ( which pipx && pipx install blue ) ) || ( echo "Unable to install tool" ) )
-      - name: brunette
-        run: ( ( which brunette ) || ( ( which pipx && pipx install brunette ) ) || ( echo "Unable to install tool" ) )
-      - name: buf
-        run: ( ( which buf ) || ( ( which mise && mise use buf ) || ( which npm && npm i -g @bufbuild/buf ) || ( which brew &&  brew install bufbuild/buf/buf ) ) || ( echo "Unable to install tool" ) )
-      - name: clang-format
-        run: ( ( which clang-format ) || ( ( which mise && mise use clang-format ) || ( which brew &&  brew install clang-format ) || ( which pipx && pipx install clang-format ) ) || ( echo "Unable to install tool" ) )
-      - name: coffeelint
-        run: ( ( which coffeelint ) || ( ( which npm && npm i -g @coffeelint/cli ) ) || ( echo "Unable to install tool" ) )
-      - name: cppcheck
-        run: ( ( which cppcheck ) || ( ( which brew &&  brew install cppcheck ) || ( which apt-get && sudo apt-get install -y cppcheck ) ) || ( echo "Unable to install tool" ) )
-      - name: cpplint
-        run: ( ( which cpplint ) || ( ( which brew &&  brew install cpplint ) || ( which apt-get && sudo apt-get install -y cpplint ) || ( which pipx && pipx install cpplint ) ) || ( echo "Unable to install tool" ) )
-      - name: crystal
-        run: ( ( which crystal ) || ( ( which mise && mise use crystal ) ) || ( echo "Unable to install tool" ) )
-      - name: csharpier
-        run: ( ( which csharpier ) || ( ( which dotnet && dotnet tool install -g csharpier ) ) || ( echo "Unable to install tool" ) )
-      - name: css-beautify
-        run: ( ( which css-beautify ) || ( ( which npm && npm i -g js-beautify ) ) || ( echo "Unable to install tool" ) )
-      - name: csscomb
-        run: ( ( which csscomb ) || ( ( which npm && npm i -g csscomb ) ) || ( echo "Unable to install tool" ) )
-      - name: csslint
-        run: ( ( which csslint ) || ( ( which npm && npm i -g csslint ) ) || ( echo "Unable to install tool" ) )
-      - name: deno
-        run: ( ( which deno ) || ( ( which cargo && ( cargo binstall deno || cargo install deno ) ) || ( which brew &&  brew install deno ) ) || ( echo "Unable to install tool" ) )
-      - name: dfmt
-        run: ( ( which dfmt ) || ( ( which brew &&  brew install dfmt ) ) || ( echo "Unable to install tool" ) )
-      - name: dockerfmt
-        run: ( ( which dockerfmt ) || ( ( which go && go install github.com/reteps/dockerfmt@latest ) ) || ( echo "Unable to install tool" ) )
-      - name: dune
-        run: ( ( which dune ) || ( ( which opam && eval $(opam env) && opam install dune ) ) || ( echo "Unable to install tool" ) )
-      - name: dx
-        run: ( ( which dx ) || ( ( which cargo && ( cargo binstall dioxus-cli || cargo install dioxus-cli ) ) ) || ( echo "Unable to install tool" ) )
-      - name: efmt
-        run: ( ( which efmt ) || ( ( which cargo && ( cargo binstall efmt || cargo install efmt ) ) ) || ( echo "Unable to install tool" ) )
-      - name: elm-format
-        run: ( ( which elm-format ) || ( ( which npm && npm i -g elm-format ) ) || ( echo "Unable to install tool" ) )
-      - name: erg
-        run: ( ( which erg ) || ( ( which cargo && ( cargo binstall erg || cargo install erg ) ) ) || ( echo "Unable to install tool" ) )
-      - name: fantomas
-        run: ( ( which fantomas ) || ( ( which dotnet && dotnet tool install -g fantomas ) ) || ( echo "Unable to install tool" ) )
-      - name: fixjson
-        run: ( ( which fixjson ) || ( ( which npm && npm i -g fixjson ) ) || ( echo "Unable to install tool" ) )
-      - name: fortitude
-        run: ( ( which fortitude ) || ( ( which brew &&  brew install fortitude ) || ( which pipx && pipx install fortitude-lint ) ) || ( echo "Unable to install tool" ) )
-      - name: fortran-linter
-        run: ( ( which fortran-linter ) || ( ( which brew &&  brew install fprettify ) || ( which pipx && pipx install fortran-linter ) ) || ( echo "Unable to install tool" ) )
-      - name: fourmolu
-        run: ( ( which fourmolu ) || ( ( which brew &&  brew install fourmolu ) || ( which stack && stack install fourmolu ) || ( which cabal && cabal install fourmolu ) ) || ( echo "Unable to install tool" ) )
-      - name: fprettify
-        run: ( ( which fprettify ) || ( ( which brew &&  brew install fprettify ) || ( which pipx && pipx install fprettify ) ) || ( echo "Unable to install tool" ) )
-      - name: gofumpt
-        run: ( ( which gofumpt ) || ( ( which mise && mise use gofumpt ) || ( which go && go install mvdan.cc/gofumpt@latest ) ) || ( echo "Unable to install tool" ) )
-      - name: goimports
-        run: ( ( which goimports ) || ( ( which go && go install golang.org/x/tools/cmd/goimports@latest ) ) || ( echo "Unable to install tool" ) )
-      - name: golines
-        run: ( ( which golines ) || ( ( which go && go install github.com/segmentio/golines@latest ) ) || ( echo "Unable to install tool" ) )
-      - name: google-java-format
-        run: ( ( which google-java-format ) || ( ( which brew &&  brew install google-java-format ) ) || ( echo "Unable to install tool" ) )
-      - name: hindent
-        run: ( ( which hindent ) || ( ( which apt-get && sudo apt-get install -y hindent ) || ( which stack && stack install hindent ) ) || ( echo "Unable to install tool" ) )
-      - name: hlint
-        run: ( ( which hlint ) || ( ( which brew &&  brew install hlint ) || ( which stack && stack install hlint ) || ( which cabal && cabal install hlint ) ) || ( echo "Unable to install tool" ) )
-      - name: html-beautify
-        run: ( ( which html-beautify ) || ( ( which npm && npm i -g js-beautify ) ) || ( echo "Unable to install tool" ) )
-      - name: htmlbeautifier
-        run: ( ( which htmlbeautifier ) || ( ( which gem && gem install htmlbeautifier ) ) || ( echo "Unable to install tool" ) )
-      - name: hurlfmt
-        run: ( ( which hurlfmt ) || ( ( which cargo && ( cargo binstall hurlfmt || cargo install hurlfmt ) ) ) || ( echo "Unable to install tool" ) )
-      - name: isort
-        run: ( ( which isort ) || ( ( which pipx && pipx install isort ) ) || ( echo "Unable to install tool" ) )
-      - name: jq
-        run: ( ( which jq ) || ( ( which mise && mise use jq ) || ( which apt-get && sudo apt-get install -y jq ) ) || ( echo "Unable to install tool" ) )
-      - name: jqfmt
-        run: ( ( which jqfmt ) || ( ( which go && go install github.com/noperator/jqfmt/cmd/jqfmt@latest ) ) || ( echo "Unable to install tool" ) )
-      - name: js-beautify
-        run: ( ( which js-beautify ) || ( ( which npm && npm i -g js-beautify ) ) || ( echo "Unable to install tool" ) )
-      - name: json_repair
-        run: ( ( which json_repair ) || ( ( which pipx && pipx install json-repair ) ) || ( echo "Unable to install tool" ) )
-      - name: jsonlint
-        run: ( ( which jsonlint ) || ( ( which npm && npm i -g jsonlint ) ) || ( echo "Unable to install tool" ) )
-      - name: jsonpp
-        run: ( ( which jsonpp ) || ( ( which brew &&  brew install jsonpp ) ) || ( echo "Unable to install tool" ) )
-      - name: julia
-        run: ( ( which juliaformatter.jl ) || ( ( which julia && julia  -e 'import Pkg; Pkg.add("JuliaFormatter")' ) ) || ( echo "Unable to install tool" ) )
-      - name: just
-        run: ( ( which just ) || ( ( which mise && mise use just ) || ( which npm && npm i -g rust-just ) || ( which cargo && ( cargo binstall just || cargo install just ) ) || ( which brew &&  brew install just ) || ( which pipx && pipx install rust-just ) ) || ( echo "Unable to install tool" ) )
-      - name: kcl
-        run: ( ( which kcl ) || ( ( which brew &&  brew install kcl-lang/tap/kcl ) || ( which go && go install kcl-lang.io/cli/cmd/kcl@latest ) ) || ( echo "Unable to install tool" ) )
-      - name: kdlfmt
-        run: ( ( which kdlfmt ) || ( ( which npm && npm i -g kdlfmt ) || ( which cargo && ( cargo binstall kdlfmt || cargo install kdlfmt ) ) || ( which brew &&  brew install hougesen/tap/kdlfmt ) ) || ( echo "Unable to install tool" ) )
-      - name: ktfmt
-        run: ( ( which ktfmt ) || ( ( which brew &&  brew install ktfmt ) ) || ( echo "Unable to install tool" ) )
-      - name: ktlint
-        run: ( ( which ktlint ) || ( ( which mise && mise use ktlint ) || ( which brew &&  brew install ktlint ) ) || ( echo "Unable to install tool" ) )
-      - name: kulala-fmt
-        run: ( ( which kulala-fmt ) || ( ( which npm && npm i -g @mistweaverco/kulala-fmt ) ) || ( echo "Unable to install tool" ) )
-      - name: lua-format
-        run: ( ( which lua-format ) || ( ( which luarocks && luarocks install luaformatter ) ) || ( echo "Unable to install tool" ) )
-      - name: mado
-        run: ( ( which mado ) || ( ( which brew && brew tap akiomik/mado https://github.com/akiomik/mado.git && brew install mado ) ) || ( echo "Unable to install tool" ) )
-      - name: mago
-        run: ( ( which mago ) || ( ( which cargo && ( cargo binstall mago || cargo install mago ) ) || ( which brew &&  brew install mago ) || ( which composer && composer require carthage-software/mago ) ) || ( echo "Unable to install tool" ) )
-      - name: markdownfmt
-        run: ( ( which markdownfmt ) || ( ( which go && go install github.com/shurcooL/markdownfmt@latest ) ) || ( echo "Unable to install tool" ) )
-      - name: markdownlint
-        run: ( ( which markdownlint ) || ( ( which npm && npm i -g markdownlint-cli ) ) || ( echo "Unable to install tool" ) )
-      - name: markdownlint-cli2
-        run: ( ( which markdownlint-cli2 ) || ( ( which mise && mise use markdownlint-cli2 ) || ( which npm && npm i -g markdownlint-cli2 ) || ( which brew &&  brew install markdownlint-cli2 ) ) || ( echo "Unable to install tool" ) )
-      - name: mbake
-        run: ( ( which mbake ) || ( ( which pipx && pipx install mbake ) ) || ( echo "Unable to install tool" ) )
-      - name: mdsf
-        run: ( ( which mdsf ) || ( ( which npm && npm i -g mdsf-cli ) || ( which cargo && ( cargo binstall mdsf || cargo install mdsf ) ) || ( which brew &&  brew install hougesen/tap/mdsf ) ) || ( echo "Unable to install tool" ) )
-      - name: mise
-        run: ( ( which mise ) || ( ( which npm && npm i -g @jdxcode/mise ) || ( which cargo && ( cargo binstall mise || cargo install mise ) ) || ( which brew &&  brew install mise ) ) || ( echo "Unable to install tool" ) )
-      - name: misspell
-        run: ( ( which misspell ) || ( ( which go && go install github.com/client9/misspell/cmd/misspell@latest ) ) || ( echo "Unable to install tool" ) )
-      - name: nginxbeautifier
-        run: ( ( which nginxbeautifier ) || ( ( which npm && npm i -g nginxbeautifier ) ) || ( echo "Unable to install tool" ) )
-      - name: nginxfmt
-        run: ( ( which nginxfmt ) || ( ( which pipx && pipx install nginxfmt ) ) || ( echo "Unable to install tool" ) )
-      - name: nixpkgs-fmt
-        run: ( ( which nixpkgs-fmt ) || ( ( which cargo && ( cargo binstall nixpkgs-fmt || cargo install nixpkgs-fmt ) ) ) || ( echo "Unable to install tool" ) )
-      - name: nph
-        run: ( ( which nph ) || ( ( which nimble && nimble install nph ) ) || ( echo "Unable to install tool" ) )
-      - name: ocamlformat
-        run: ( ( which ocamlformat ) || ( ( which opam && eval $(opam env) && opam install ocamlformat ) ) || ( echo "Unable to install tool" ) )
-      - name: ocp-indent
-        run: ( ( which ocp-indent ) || ( ( which apt-get && sudo apt-get install -y ocp-indent ) || ( which opam && eval $(opam env) && opam install ocp-indent ) ) || ( echo "Unable to install tool" ) )
-      - name: ormolu
-        run: ( ( which ormolu ) || ( ( which brew &&  brew install ormolu ) || ( which apt-get && sudo apt-get install -y ormolu ) || ( which stack && stack install ormolu ) || ( which cabal && cabal install ormolu ) ) || ( echo "Unable to install tool" ) )
-      - name: oxfmt
-        run: ( ( which oxfmt ) || ( ( which npm && npm i -g oxfmt ) ) || ( echo "Unable to install tool" ) )
-      - name: oxlint
-        run: ( ( which oxlint ) || ( ( which mise && mise use oxlint ) || ( which npm && npm i -g oxlint ) ) || ( echo "Unable to install tool" ) )
-      - name: perflint
-        run: ( ( which perflint ) || ( ( which pipx && pipx install perflint ) ) || ( echo "Unable to install tool" ) )
-      - name: prettier
-        run: ( ( which prettier ) || ( ( which npm && npm i -g prettier ) ) || ( echo "Unable to install tool" ) )
-      - name: prettierd
-        run: ( ( which prettierd ) || ( ( which npm && npm i -g @fsouza/prettierd ) || ( which brew &&  brew install prettierd ) ) || ( echo "Unable to install tool" ) )
-      - name: prisma
-        run: ( ( which prisma ) || ( ( which npm && npm i -g prisma ) ) || ( echo "Unable to install tool" ) )
-      - name: purs-tidy
-        run: ( ( which purs-tidy ) || ( ( which npm && npm i -g purs-tidy ) ) || ( echo "Unable to install tool" ) )
-      - name: purty
-        run: ( ( which purty ) || ( ( which npm && npm i -g purty ) ) || ( echo "Unable to install tool" ) )
-      - name: pycln
-        run: ( ( which pycln ) || ( ( which pipx && pipx install pycln ) ) || ( echo "Unable to install tool" ) )
-      - name: pyflakes
-        run: ( ( which pyflakes ) || ( ( which pipx && pipx install pyflakes ) ) || ( echo "Unable to install tool" ) )
-      - name: pyink
-        run: ( ( which pyink ) || ( ( which pipx && pipx install pyink ) ) || ( echo "Unable to install tool" ) )
-      - name: pylint
-        run: ( ( which pylint ) || ( ( which pipx && pipx install pylint ) ) || ( echo "Unable to install tool" ) )
-      - name: pymarkdownlnt
-        run: ( ( which pymarkdownlnt ) || ( ( which pipx && pipx install pymarkdownlnt ) ) || ( echo "Unable to install tool" ) )
-      - name: pyrefly
-        run: ( ( which pyrefly ) || ( ( which pipx && pipx install pyrefly ) ) || ( echo "Unable to install tool" ) )
-      - name: pyupgrade
-        run: ( ( which pyupgrade ) || ( ( which brew &&  brew install pyupgrade ) || ( which pipx && pipx install pyupgrade ) ) || ( echo "Unable to install tool" ) )
-      - name: reorder-python-imports
-        run: ( ( which reorder-python-imports ) || ( ( which brew &&  brew install reorder-python-imports ) || ( which pipx && pipx install reorder-python-imports ) ) || ( echo "Unable to install tool" ) )
-      - name: rescript
-        run: ( ( which rescript ) || ( ( which npm && npm i -g rescript ) ) || ( echo "Unable to install tool" ) )
-      - name: rubocop
-        run: ( ( which rubocop ) || ( ( which gem && gem install rubocop ) ) || ( echo "Unable to install tool" ) )
-      - name: rubyfmt
-        run: ( ( which rubyfmt ) || ( ( which brew &&  brew install rubyfmt ) ) || ( echo "Unable to install tool" ) )
-      - name: ruff
-        run: ( ( which ruff ) || ( ( which mise && mise use ruff ) || ( which brew &&  brew install ruff ) || ( which pipx && pipx install ruff ) ) || ( echo "Unable to install tool" ) )
-      - name: rufo
-        run: ( ( which rufo ) || ( ( which gem && gem install rufo ) ) || ( echo "Unable to install tool" ) )
-      - name: rustywind
-        run: ( ( which rustywind ) || ( ( which npm && npm i -g rustywind ) || ( which cargo && ( cargo binstall rustywind || cargo install rustywind ) ) ) || ( echo "Unable to install tool" ) )
-      - name: scalafmt
-        run: ( ( which scalafmt ) || ( ( which cs && cs install scalafmt ) ) || ( echo "Unable to install tool" ) )
-      - name: selene
-        run: ( ( which selene ) || ( ( which cargo && ( cargo binstall selene || cargo install selene ) ) ) || ( echo "Unable to install tool" ) )
-      - name: semistandard
-        run: ( ( which semistandard ) || ( ( which npm && npm i -g semistandard ) ) || ( echo "Unable to install tool" ) )
-      - name: shellcheck
-        run: ( ( which shellcheck ) || ( ( which brew &&  brew install shellcheck ) || ( which apt-get && sudo apt-get install -y shellcheck ) || ( which stack && stack install ShellCheck ) || ( which cabal && cabal install ShellCheck ) ) || ( echo "Unable to install tool" ) )
-      - name: shfmt
-        run: ( ( which shfmt ) || ( ( which mise && mise use shfmt ) || ( which brew &&  brew install shfmt ) || ( which go && go install mvdan.cc/sh/v3/cmd/shfmt@latest ) ) || ( echo "Unable to install tool" ) )
-      - name: sleek
-        run: ( ( which sleek ) || ( ( which cargo && ( cargo binstall sleek || cargo install sleek ) ) || ( which brew &&  brew install sleek ) ) || ( echo "Unable to install tool" ) )
-      - name: smlfmt
-        run: ( ( which smlfmt ) || ( ( which brew &&  brew install smlfmt ) ) || ( echo "Unable to install tool" ) )
-      - name: snakefmt
-        run: ( ( which snakefmt ) || ( ( which brew &&  brew install snakefmt ) || ( which pipx && pipx install snakefmt ) ) || ( echo "Unable to install tool" ) )
-      - name: sql-formatter
-        run: ( ( which sql-formatter ) || ( ( which npm && npm i -g sql-formatter ) ) || ( echo "Unable to install tool" ) )
-      - name: sqlfluff
-        run: ( ( which sqlfluff ) || ( ( which pipx && pipx install sqlfluff ) ) || ( echo "Unable to install tool" ) )
-      - name: sqlfmt
-        run: ( ( which sqlfmt ) || ( ( which pipx && pipx install shandy-sqlfmt[jinjafmt] ) ) || ( echo "Unable to install tool" ) )
-      - name: sqlint
-        run: ( ( which sqlint ) || ( ( which gem && gem install sqlint ) ) || ( echo "Unable to install tool" ) )
-      - name: sqruff
-        run: ( ( which sqruff ) || ( ( which cargo && ( cargo binstall sqruff || cargo install sqruff ) ) || ( which pipx && pipx install sqruff ) ) || ( echo "Unable to install tool" ) )
-      - name: squawk
-        run: ( ( which squawk ) || ( ( which npm && npm i -g squawk-cli ) || ( which pipx && pipx install squawk-cli ) ) || ( echo "Unable to install tool" ) )
-      - name: standard
-        run: ( ( which standard ) || ( ( which npm && npm i -g standard ) ) || ( echo "Unable to install tool" ) )
-      - name: standardrb
-        run: ( ( which standardrb ) || ( ( which gem && gem install standardrb ) ) || ( echo "Unable to install tool" ) )
-      - name: stylefmt
-        run: ( ( which stylefmt ) || ( ( which npm && npm i -g stylefmt ) ) || ( echo "Unable to install tool" ) )
-      - name: stylish-haskell
-        run: ( ( which stylish-haskell ) || ( ( which brew &&  brew install stylish-haskell ) || ( which stack && stack install stylish-haskell ) || ( which cabal && cabal install stylish-haskell ) ) || ( echo "Unable to install tool" ) )
-      - name: stylua
-        run: ( ( which stylua ) || ( ( which npm && npm i -g @johnnymorganz/stylua-bin ) || ( which cargo && ( cargo binstall stylua || cargo install stylua ) ) || ( which brew &&  brew install stylua ) ) || ( echo "Unable to install tool" ) )
-      - name: superhtml
-        run: ( ( which superhtml ) || ( ( which mise && mise use superhtml ) || ( which brew &&  brew install superhtml ) ) || ( echo "Unable to install tool" ) )
-      - name: swiftformat
-        run: ( ( which swiftformat ) || ( ( which mise && mise use swiftformat ) || ( which brew &&  brew install swiftformat ) ) || ( echo "Unable to install tool" ) )
-      - name: taplo
-        run: ( ( which taplo ) || ( ( which mise && mise use taplo ) || ( which npm && npm i -g @taplo/cli ) || ( which cargo && ( cargo binstall taplo-cli || cargo install taplo-cli ) ) || ( which brew &&  brew install taplo ) ) || ( echo "Unable to install tool" ) )
-      - name: terraform
-        run: ( ( which terraform ) || ( ( which brew && brew tap hashicorp/tap && brew install hashicorp/tap/terraform ) ) || ( echo "Unable to install tool" ) )
-      - name: tex-fmt
-        run: ( ( which tex-fmt ) || ( ( which cargo && ( cargo binstall tex-fmt || cargo install tex-fmt ) ) || ( which brew &&  brew install tex-fmt ) || ( which apt-get && sudo apt-get install -y tex-fmt ) ) || ( echo "Unable to install tool" ) )
-      - name: tofu
-        run: ( ( which tofu ) || ( ( which brew &&  brew install opentofu ) ) || ( echo "Unable to install tool" ) )
-      - name: tombi
-        run: ( ( which tombi ) || ( ( which mise && mise use tombi ) || ( which pipx && pipx install tombi ) ) || ( echo "Unable to install tool" ) )
-      - name: toml-sort
-        run: ( ( which toml-sort ) || ( ( which pipx && pipx install toml-sort ) ) || ( echo "Unable to install tool" ) )
-      - name: topiary
-        run: ( ( which topiary ) || ( ( which cargo && ( cargo binstall topiary-cli || cargo install topiary-cli ) ) ) || ( echo "Unable to install tool" ) )
-      - name: tsp
-        run: ( ( which tsp ) || ( ( which npm && npm i -g @typespec/compiler ) ) || ( echo "Unable to install tool" ) )
-      - name: ty
-        run: ( ( which ty ) || ( ( which pipx && pipx install ty ) ) || ( echo "Unable to install tool" ) )
-      - name: typos
-        run: ( ( which typos ) || ( ( which mise && mise use typos ) || ( which cargo && ( cargo binstall typos-cli || cargo install typos-cli ) ) || ( which brew &&  brew install typos-cli ) ) || ( echo "Unable to install tool" ) )
-      - name: ufmt
-        run: ( ( which ufmt ) || ( ( which pipx && pipx install ufmt ) ) || ( echo "Unable to install tool" ) )
-      - name: uiua
-        run: ( ( which uiua ) || ( ( which cargo && ( cargo binstall uiua || cargo install uiua ) ) ) || ( echo "Unable to install tool" ) )
-      - name: unimport
-        run: ( ( which unimport ) || ( ( which pipx && pipx install unimport ) ) || ( echo "Unable to install tool" ) )
-      - name: usort
-        run: ( ( which usort ) || ( ( which pipx && pipx install usort ) ) || ( echo "Unable to install tool" ) )
-      - name: verusfmt
-        run: ( ( which verusfmt ) || ( ( which cargo && ( cargo binstall verusfmt || cargo install verusfmt ) ) ) || ( echo "Unable to install tool" ) )
-      - name: vsg
-        run: ( ( which vsg ) || ( ( which pipx && pipx install vsg ) ) || ( echo "Unable to install tool" ) )
-      - name: wfindent
-        run: ( ( which wfindent ) || ( ( which brew &&  brew install findent ) || ( which apt-get && sudo apt-get install -y findent ) ) || ( echo "Unable to install tool" ) )
-      - name: xmlformat
-        run: ( ( which xmlformat ) || ( ( which pipx && pipx install xmlformatter ) ) || ( echo "Unable to install tool" ) )
-      - name: xmllint
-        run: ( ( which xmllint ) || ( ( which apt-get && sudo apt-get install -y libxml2-utils ) ) || ( echo "Unable to install tool" ) )
-      - name: xo
-        run: ( ( which xo ) || ( ( which npm && npm i -g xo ) ) || ( echo "Unable to install tool" ) )
-      - name: xq
-        run: ( ( which xq ) || ( ( which brew &&  brew install xq ) || ( which apt-get && sudo apt-get install -y xq ) ) || ( echo "Unable to install tool" ) )
-      - name: yamlfix
-        run: ( ( which yamlfix ) || ( ( which brew &&  brew install yamlfix ) || ( which pipx && pipx install yamlfix ) ) || ( echo "Unable to install tool" ) )
-      - name: yamlfmt
-        run: ( ( which yamlfmt ) || ( ( which mise && mise use yamlfmt ) || ( which brew &&  brew install yamlfmt ) || ( which go && go install github.com/google/yamlfmt/cmd/yamlfmt@latest ) ) || ( echo "Unable to install tool" ) )
-      - name: yamllint
-        run: ( ( which yamllint ) || ( ( which brew &&  brew install yamllint ) || ( which pipx && pipx install yamllint ) ) || ( echo "Unable to install tool" ) )
-      - name: yapf
-        run: ( ( which yapf ) || ( ( which brew &&  brew install yapf ) || ( which pipx && pipx install yapf ) ) || ( echo "Unable to install tool" ) )
-      - name: yew-fmt
-        run: ( ( which yew-fmt ) || ( ( which cargo && ( cargo binstall yew-fmt || cargo install yew-fmt ) ) ) || ( echo "Unable to install tool" ) )
-      - name: yq
-        run: ( ( which yq ) || ( ( which mise && mise use yq ) || ( which brew &&  brew install yq ) || ( which apt-get && sudo apt-get install -y yq ) || ( which go && go install github.com/mikefarah/yq/v4@latest ) ) || ( echo "Unable to install tool" ) )
+      - run: which actionlint || ( which mise && mise use -g actionlint )
+        continue-on-error: true
+      - run: which actionlint || ( which brew && brew install actionlint )
+        continue-on-error: true
+      - run: which actionlint || ( which go && go install github.com/rhysd/actionlint/cmd/actionlint@latest )
+        continue-on-error: true
+      - run: which air || ( which brew && brew install air )
+        continue-on-error: true
+      - run: which alejandra || ( which cargo && ( cargo binstall alejandra || cargo install alejandra ) )
+        continue-on-error: true
+      - run: which alex || ( which npm && npm i -g alex )
+        continue-on-error: true
+      - run: which auto-optional || ( which pipx && pipx install auto-optional )
+        continue-on-error: true
+      - run: which autoflake || ( which pipx && pipx install autoflake )
+        continue-on-error: true
+      - run: which autopep8 || ( which pipx && pipx install autopep8 )
+        continue-on-error: true
+      - run: which bashate || ( which brew && brew install bashate )
+        continue-on-error: true
+      - run: which bashate || ( which pipx && pipx install bashate )
+        continue-on-error: true
+      - run: which beautysh || ( which brew && brew install beautysh )
+        continue-on-error: true
+      - run: which biome || ( which mise && mise use -g biome )
+        continue-on-error: true
+      - run: which biome || ( which npm && npm i -g @biomejs/biome )
+        continue-on-error: true
+      - run: which biome || ( which brew && brew install biome )
+        continue-on-error: true
+      - run: which black || ( which brew && brew install black )
+        continue-on-error: true
+      - run: which black || ( which pipx && pipx install black )
+        continue-on-error: true
+      - run: which blade-formatter || ( which npm && npm i -g blade-formatter )
+        continue-on-error: true
+      - run: which blue || ( which pipx && pipx install blue )
+        continue-on-error: true
+      - run: which brunette || ( which pipx && pipx install brunette )
+        continue-on-error: true
+      - run: which buf || ( which mise && mise use -g buf )
+        continue-on-error: true
+      - run: which buf || ( which npm && npm i -g @bufbuild/buf )
+        continue-on-error: true
+      - run: which buf || ( which brew && brew install bufbuild/buf/buf )
+        continue-on-error: true
+      - run: which clang-format || ( which mise && mise use -g clang-format )
+        continue-on-error: true
+      - run: which clang-format || ( which brew && brew install clang-format )
+        continue-on-error: true
+      - run: which clang-format || ( which pipx && pipx install clang-format )
+        continue-on-error: true
+      - run: which coffeelint || ( which npm && npm i -g @coffeelint/cli )
+        continue-on-error: true
+      - run: which cppcheck || ( which brew && brew install cppcheck )
+        continue-on-error: true
+      - run: which cppcheck || ( which apt-get && sudo apt-get install -y cppcheck )
+        continue-on-error: true
+      - run: which cpplint || ( which brew && brew install cpplint )
+        continue-on-error: true
+      - run: which cpplint || ( which apt-get && sudo apt-get install -y cpplint )
+        continue-on-error: true
+      - run: which cpplint || ( which pipx && pipx install cpplint )
+        continue-on-error: true
+      - run: which crystal || ( which mise && mise use -g crystal )
+        continue-on-error: true
+      - run: which csharpier || ( which dotnet && dotnet tool install -g csharpier )
+        continue-on-error: true
+      - run: which css-beautify || ( which npm && npm i -g js-beautify )
+        continue-on-error: true
+      - run: which csscomb || ( which npm && npm i -g csscomb )
+        continue-on-error: true
+      - run: which csslint || ( which npm && npm i -g csslint )
+        continue-on-error: true
+      - run: which dart || ( which mise && mise use -g dart )
+        continue-on-error: true
+      - run: which deno || ( which mise && mise use -g deno )
+        continue-on-error: true
+      - run: which deno || ( which cargo && ( cargo binstall deno || cargo install deno ) )
+        continue-on-error: true
+      - run: which deno || ( which brew && brew install deno )
+        continue-on-error: true
+      - run: which dfmt || ( which brew && brew install dfmt )
+        continue-on-error: true
+      - run: which dockerfmt || ( which go && go install github.com/reteps/dockerfmt@latest )
+        continue-on-error: true
+      - run: which dune || ( which opam && eval $(opam env) && opam install dune )
+        continue-on-error: true
+      - run: which dx || ( which cargo && ( cargo binstall dioxus-cli || cargo install dioxus-cli ) )
+        continue-on-error: true
+      - run: which efmt || ( which cargo && ( cargo binstall efmt || cargo install efmt ) )
+        continue-on-error: true
+      - run: which elm-format || ( which npm && npm i -g elm-format )
+        continue-on-error: true
+      - run: which erg || ( which cargo && ( cargo binstall erg || cargo install erg ) )
+        continue-on-error: true
+      - run: which fantomas || ( which dotnet && dotnet tool install -g fantomas )
+        continue-on-error: true
+      - run: which fixjson || ( which npm && npm i -g fixjson )
+        continue-on-error: true
+      - run: which fortitude || ( which brew && brew install fortitude )
+        continue-on-error: true
+      - run: which fortitude || ( which pipx && pipx install fortitude-lint )
+        continue-on-error: true
+      - run: which fortran-linter || ( which brew && brew install fprettify )
+        continue-on-error: true
+      - run: which fortran-linter || ( which pipx && pipx install fortran-linter )
+        continue-on-error: true
+      - run: which fourmolu || ( which brew && brew install fourmolu )
+        continue-on-error: true
+      - run: which fourmolu || ( which stack && stack install fourmolu )
+        continue-on-error: true
+      - run: which fourmolu || ( which cabal && cabal install fourmolu )
+        continue-on-error: true
+      - run: which fprettify || ( which brew && brew install fprettify )
+        continue-on-error: true
+      - run: which fprettify || ( which pipx && pipx install fprettify )
+        continue-on-error: true
+      - run: which gofumpt || ( which mise && mise use -g gofumpt )
+        continue-on-error: true
+      - run: which gofumpt || ( which go && go install mvdan.cc/gofumpt@latest )
+        continue-on-error: true
+      - run: which goimports || ( which go && go install golang.org/x/tools/cmd/goimports@latest )
+        continue-on-error: true
+      - run: which golines || ( which go && go install github.com/segmentio/golines@latest )
+        continue-on-error: true
+      - run: which google-java-format || ( which brew && brew install google-java-format )
+        continue-on-error: true
+      - run: which hindent || ( which apt-get && sudo apt-get install -y hindent )
+        continue-on-error: true
+      - run: which hindent || ( which stack && stack install hindent )
+        continue-on-error: true
+      - run: which hlint || ( which brew && brew install hlint )
+        continue-on-error: true
+      - run: which hlint || ( which stack && stack install hlint )
+        continue-on-error: true
+      - run: which hlint || ( which cabal && cabal install hlint )
+        continue-on-error: true
+      - run: which html-beautify || ( which npm && npm i -g js-beautify )
+        continue-on-error: true
+      - run: which htmlbeautifier || ( which gem && gem install htmlbeautifier )
+        continue-on-error: true
+      - run: which hurlfmt || ( which cargo && ( cargo binstall hurlfmt || cargo install hurlfmt ) )
+        continue-on-error: true
+      - run: which isort || ( which pipx && pipx install isort )
+        continue-on-error: true
+      - run: which jq || ( which mise && mise use -g jq )
+        continue-on-error: true
+      - run: which jq || ( which apt-get && sudo apt-get install -y jq )
+        continue-on-error: true
+      - run: which jqfmt || ( which go && go install github.com/noperator/jqfmt/cmd/jqfmt@latest )
+        continue-on-error: true
+      - run: which js-beautify || ( which npm && npm i -g js-beautify )
+        continue-on-error: true
+      - run: which json_repair || ( which pipx && pipx install json-repair )
+        continue-on-error: true
+      - run: which jsonlint || ( which npm && npm i -g jsonlint )
+        continue-on-error: true
+      - run: which jsonpp || ( which brew && brew install jsonpp )
+        continue-on-error: true
+      - run: which juliaformatter.jl || ( which julia && julia  -e 'import Pkg; Pkg.add("JuliaFormatter")' )
+        continue-on-error: true
+      - run: which just || ( which mise && mise use -g just )
+        continue-on-error: true
+      - run: which just || ( which npm && npm i -g rust-just )
+        continue-on-error: true
+      - run: which just || ( which cargo && ( cargo binstall just || cargo install just ) )
+        continue-on-error: true
+      - run: which just || ( which brew && brew install just )
+        continue-on-error: true
+      - run: which just || ( which pipx && pipx install rust-just )
+        continue-on-error: true
+      - run: which kcl || ( which brew && brew install kcl-lang/tap/kcl )
+        continue-on-error: true
+      - run: which kcl || ( which go && go install kcl-lang.io/cli/cmd/kcl@latest )
+        continue-on-error: true
+      - run: which kdlfmt || ( which npm && npm i -g kdlfmt )
+        continue-on-error: true
+      - run: which kdlfmt || ( which cargo && ( cargo binstall kdlfmt || cargo install kdlfmt ) )
+        continue-on-error: true
+      - run: which kdlfmt || ( which brew && brew install hougesen/tap/kdlfmt )
+        continue-on-error: true
+      - run: which ktfmt || ( which brew && brew install ktfmt )
+        continue-on-error: true
+      - run: which ktlint || ( which mise && mise use -g ktlint )
+        continue-on-error: true
+      - run: which ktlint || ( which brew && brew install ktlint )
+        continue-on-error: true
+      - run: which lua-format || ( which luarocks && luarocks install luaformatter )
+        continue-on-error: true
+      - run: which mado || ( which brew && brew tap akiomik/mado https://github.com/akiomik/mado.git && brew install mado )
+        continue-on-error: true
+      - run: which mago || ( which cargo && ( cargo binstall mago || cargo install mago ) )
+        continue-on-error: true
+      - run: which mago || ( which brew && brew install mago )
+        continue-on-error: true
+      - run: which mago || ( which composer && composer require carthage-software/mago )
+        continue-on-error: true
+      - run: which markdownfmt || ( which go && go install github.com/shurcooL/markdownfmt@latest )
+        continue-on-error: true
+      - run: which markdownlint || ( which npm && npm i -g markdownlint-cli )
+        continue-on-error: true
+      - run: which markdownlint-cli2 || ( which mise && mise use -g markdownlint-cli2 )
+        continue-on-error: true
+      - run: which markdownlint-cli2 || ( which npm && npm i -g markdownlint-cli2 )
+        continue-on-error: true
+      - run: which markdownlint-cli2 || ( which brew && brew install markdownlint-cli2 )
+        continue-on-error: true
+      - run: which mbake || ( which pipx && pipx install mbake )
+        continue-on-error: true
+      - run: which mdsf || ( which npm && npm i -g mdsf-cli )
+        continue-on-error: true
+      - run: which mdsf || ( which cargo && ( cargo binstall mdsf || cargo install mdsf ) )
+        continue-on-error: true
+      - run: which mdsf || ( which brew && brew install hougesen/tap/mdsf )
+        continue-on-error: true
+      - run: which mise || ( which npm && npm i -g @jdxcode/mise )
+        continue-on-error: true
+      - run: which mise || ( which cargo && ( cargo binstall mise || cargo install mise ) )
+        continue-on-error: true
+      - run: which mise || ( which brew && brew install mise )
+        continue-on-error: true
+      - run: which misspell || ( which go && go install github.com/client9/misspell/cmd/misspell@latest )
+        continue-on-error: true
+      - run: which nginxbeautifier || ( which npm && npm i -g nginxbeautifier )
+        continue-on-error: true
+      - run: which nginxfmt || ( which pipx && pipx install nginxfmt )
+        continue-on-error: true
+      - run: which nixpkgs-fmt || ( which cargo && ( cargo binstall nixpkgs-fmt || cargo install nixpkgs-fmt ) )
+        continue-on-error: true
+      - run: which nph || ( which nimble && nimble install nph )
+        continue-on-error: true
+      - run: which ocamlformat || ( which opam && eval $(opam env) && opam install ocamlformat )
+        continue-on-error: true
+      - run: which ocp-indent || ( which apt-get && sudo apt-get install -y ocp-indent )
+        continue-on-error: true
+      - run: which ocp-indent || ( which opam && eval $(opam env) && opam install ocp-indent )
+        continue-on-error: true
+      - run: which ormolu || ( which brew && brew install ormolu )
+        continue-on-error: true
+      - run: which ormolu || ( which apt-get && sudo apt-get install -y ormolu )
+        continue-on-error: true
+      - run: which ormolu || ( which stack && stack install ormolu )
+        continue-on-error: true
+      - run: which ormolu || ( which cabal && cabal install ormolu )
+        continue-on-error: true
+      - run: which oxfmt || ( which npm && npm i -g oxfmt )
+        continue-on-error: true
+      - run: which oxlint || ( which mise && mise use -g oxlint )
+        continue-on-error: true
+      - run: which oxlint || ( which npm && npm i -g oxlint )
+        continue-on-error: true
+      - run: which perflint || ( which pipx && pipx install perflint )
+        continue-on-error: true
+      - run: which prettier || ( which npm && npm i -g prettier )
+        continue-on-error: true
+      - run: which prettierd || ( which npm && npm i -g @fsouza/prettierd )
+        continue-on-error: true
+      - run: which prettierd || ( which brew && brew install prettierd )
+        continue-on-error: true
+      - run: which purs-tidy || ( which npm && npm i -g purs-tidy )
+        continue-on-error: true
+      - run: which purty || ( which npm && npm i -g purty )
+        continue-on-error: true
+      - run: which pycln || ( which pipx && pipx install pycln )
+        continue-on-error: true
+      - run: which pyflakes || ( which pipx && pipx install pyflakes )
+        continue-on-error: true
+      - run: which pyink || ( which pipx && pipx install pyink )
+        continue-on-error: true
+      - run: which pylint || ( which pipx && pipx install pylint )
+        continue-on-error: true
+      - run: which pymarkdownlnt || ( which pipx && pipx install pymarkdownlnt )
+        continue-on-error: true
+      - run: which pyrefly || ( which pipx && pipx install pyrefly )
+        continue-on-error: true
+      - run: which pyupgrade || ( which brew && brew install pyupgrade )
+        continue-on-error: true
+      - run: which pyupgrade || ( which pipx && pipx install pyupgrade )
+        continue-on-error: true
+      - run: which reorder-python-imports || ( which brew && brew install reorder-python-imports )
+        continue-on-error: true
+      - run: which reorder-python-imports || ( which pipx && pipx install reorder-python-imports )
+        continue-on-error: true
+      - run: which rescript || ( which npm && npm i -g rescript )
+        continue-on-error: true
+      - run: which rubocop || ( which gem && gem install rubocop )
+        continue-on-error: true
+      - run: which rubyfmt || ( which brew && brew install rubyfmt )
+        continue-on-error: true
+      - run: which ruff || ( which mise && mise use -g ruff )
+        continue-on-error: true
+      - run: which ruff || ( which brew && brew install ruff )
+        continue-on-error: true
+      - run: which ruff || ( which pipx && pipx install ruff )
+        continue-on-error: true
+      - run: which rufo || ( which gem && gem install rufo )
+        continue-on-error: true
+      - run: which rustywind || ( which npm && npm i -g rustywind )
+        continue-on-error: true
+      - run: which rustywind || ( which cargo && ( cargo binstall rustywind || cargo install rustywind ) )
+        continue-on-error: true
+      - run: which scalafmt || ( which cs && cs install scalafmt )
+        continue-on-error: true
+      - run: which selene || ( which cargo && ( cargo binstall selene || cargo install selene ) )
+        continue-on-error: true
+      - run: which semistandard || ( which npm && npm i -g semistandard )
+        continue-on-error: true
+      - run: which shellcheck || ( which mise && mise use -g shellcheck )
+        continue-on-error: true
+      - run: which shellcheck || ( which brew && brew install shellcheck )
+        continue-on-error: true
+      - run: which shellcheck || ( which apt-get && sudo apt-get install -y shellcheck )
+        continue-on-error: true
+      - run: which shellcheck || ( which stack && stack install ShellCheck )
+        continue-on-error: true
+      - run: which shellcheck || ( which cabal && cabal install ShellCheck )
+        continue-on-error: true
+      - run: which shfmt || ( which mise && mise use -g shfmt )
+        continue-on-error: true
+      - run: which shfmt || ( which brew && brew install shfmt )
+        continue-on-error: true
+      - run: which shfmt || ( which go && go install mvdan.cc/sh/v3/cmd/shfmt@latest )
+        continue-on-error: true
+      - run: which sleek || ( which cargo && ( cargo binstall sleek || cargo install sleek ) )
+        continue-on-error: true
+      - run: which sleek || ( which brew && brew install sleek )
+        continue-on-error: true
+      - run: which smlfmt || ( which brew && brew install smlfmt )
+        continue-on-error: true
+      - run: which snakefmt || ( which brew && brew install snakefmt )
+        continue-on-error: true
+      - run: which snakefmt || ( which pipx && pipx install snakefmt )
+        continue-on-error: true
+      - run: which sql-formatter || ( which npm && npm i -g sql-formatter )
+        continue-on-error: true
+      - run: which sqlfluff || ( which pipx && pipx install sqlfluff )
+        continue-on-error: true
+      - run: which sqlfmt || ( which pipx && pipx install shandy-sqlfmt[jinjafmt] )
+        continue-on-error: true
+      - run: which sqlint || ( which gem && gem install sqlint )
+        continue-on-error: true
+      - run: which sqruff || ( which cargo && ( cargo binstall sqruff || cargo install sqruff ) )
+        continue-on-error: true
+      - run: which sqruff || ( which pipx && pipx install sqruff )
+        continue-on-error: true
+      - run: which squawk || ( which npm && npm i -g squawk-cli )
+        continue-on-error: true
+      - run: which squawk || ( which pipx && pipx install squawk-cli )
+        continue-on-error: true
+      - run: which standard || ( which npm && npm i -g standard )
+        continue-on-error: true
+      - run: which standardrb || ( which gem && gem install standardrb )
+        continue-on-error: true
+      - run: which stylefmt || ( which npm && npm i -g stylefmt )
+        continue-on-error: true
+      - run: which stylish-haskell || ( which brew && brew install stylish-haskell )
+        continue-on-error: true
+      - run: which stylish-haskell || ( which stack && stack install stylish-haskell )
+        continue-on-error: true
+      - run: which stylish-haskell || ( which cabal && cabal install stylish-haskell )
+        continue-on-error: true
+      - run: which stylua || ( which mise && mise use -g stylua )
+        continue-on-error: true
+      - run: which stylua || ( which npm && npm i -g @johnnymorganz/stylua-bin )
+        continue-on-error: true
+      - run: which stylua || ( which cargo && ( cargo binstall stylua || cargo install stylua ) )
+        continue-on-error: true
+      - run: which stylua || ( which brew && brew install stylua )
+        continue-on-error: true
+      - run: which superhtml || ( which mise && mise use -g superhtml )
+        continue-on-error: true
+      - run: which superhtml || ( which brew && brew install superhtml )
+        continue-on-error: true
+      - run: which swiftformat || ( which mise && mise use -g swiftformat )
+        continue-on-error: true
+      - run: which swiftformat || ( which brew && brew install swiftformat )
+        continue-on-error: true
+      - run: which taplo || ( which mise && mise use -g taplo )
+        continue-on-error: true
+      - run: which taplo || ( which npm && npm i -g @taplo/cli )
+        continue-on-error: true
+      - run: which taplo || ( which cargo && ( cargo binstall taplo-cli || cargo install taplo-cli ) )
+        continue-on-error: true
+      - run: which taplo || ( which brew && brew install taplo )
+        continue-on-error: true
+      - run: which terraform || ( which brew && brew tap hashicorp/tap && brew install hashicorp/tap/terraform )
+        continue-on-error: true
+      - run: which tex-fmt || ( which cargo && ( cargo binstall tex-fmt || cargo install tex-fmt ) )
+        continue-on-error: true
+      - run: which tex-fmt || ( which brew && brew install tex-fmt )
+        continue-on-error: true
+      - run: which tex-fmt || ( which apt-get && sudo apt-get install -y tex-fmt )
+        continue-on-error: true
+      - run: which tofu || ( which brew && brew install opentofu )
+        continue-on-error: true
+      - run: which tombi || ( which mise && mise use -g tombi )
+        continue-on-error: true
+      - run: which tombi || ( which pipx && pipx install tombi )
+        continue-on-error: true
+      - run: which toml-sort || ( which pipx && pipx install toml-sort )
+        continue-on-error: true
+      - run: which topiary || ( which cargo && ( cargo binstall topiary-cli || cargo install topiary-cli ) )
+        continue-on-error: true
+      - run: which tsp || ( which npm && npm i -g @typespec/compiler )
+        continue-on-error: true
+      - run: which ty || ( which pipx && pipx install ty )
+        continue-on-error: true
+      - run: which ufmt || ( which pipx && pipx install ufmt )
+        continue-on-error: true
+      - run: which uiua || ( which cargo && ( cargo binstall uiua || cargo install uiua ) )
+        continue-on-error: true
+      - run: which unimport || ( which pipx && pipx install unimport )
+        continue-on-error: true
+      - run: which usort || ( which pipx && pipx install usort )
+        continue-on-error: true
+      - run: which verusfmt || ( which cargo && ( cargo binstall verusfmt || cargo install verusfmt ) )
+        continue-on-error: true
+      - run: which vsg || ( which pipx && pipx install vsg )
+        continue-on-error: true
+      - run: which wfindent || ( which brew && brew install findent )
+        continue-on-error: true
+      - run: which wfindent || ( which apt-get && sudo apt-get install -y findent )
+        continue-on-error: true
+      - run: which xmlformat || ( which pipx && pipx install xmlformatter )
+        continue-on-error: true
+      - run: which xmllint || ( which apt-get && sudo apt-get install -y libxml2-utils )
+        continue-on-error: true
+      - run: which xo || ( which npm && npm i -g xo )
+        continue-on-error: true
+      - run: which xq || ( which brew && brew install xq )
+        continue-on-error: true
+      - run: which xq || ( which apt-get && sudo apt-get install -y xq )
+        continue-on-error: true
+      - run: which yamlfix || ( which brew && brew install yamlfix )
+        continue-on-error: true
+      - run: which yamlfix || ( which pipx && pipx install yamlfix )
+        continue-on-error: true
+      - run: which yamlfmt || ( which mise && mise use -g yamlfmt )
+        continue-on-error: true
+      - run: which yamlfmt || ( which brew && brew install yamlfmt )
+        continue-on-error: true
+      - run: which yamlfmt || ( which go && go install github.com/google/yamlfmt/cmd/yamlfmt@latest )
+        continue-on-error: true
+      - run: which yamllint || ( which brew && brew install yamllint )
+        continue-on-error: true
+      - run: which yamllint || ( which pipx && pipx install yamllint )
+        continue-on-error: true
+      - run: which yapf || ( which brew && brew install yapf )
+        continue-on-error: true
+      - run: which yapf || ( which pipx && pipx install yapf )
+        continue-on-error: true
+      - run: which yew-fmt || ( which cargo && ( cargo binstall yew-fmt || cargo install yew-fmt ) )
+        continue-on-error: true
+      - run: which yq || ( which mise && mise use -g yq )
+        continue-on-error: true
+      - run: which yq || ( which brew && brew install yq )
+        continue-on-error: true
+      - run: which yq || ( which apt-get && sudo apt-get install -y yq )
+        continue-on-error: true
+      - run: which yq || ( which go && go install github.com/mikefarah/yq/v4@latest )
+        continue-on-error: true
+      - run: which zig || ( which mise && mise use -g zig )
+        continue-on-error: true
       - run: hash -r
       - name: Run tests
         run: cargo test
