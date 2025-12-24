@@ -19,6 +19,7 @@
   "languages": ["python"],
   "packages": {
     "pip": {
+      "disable_pipx_run": true,
       "package": "blue"
     }
   }

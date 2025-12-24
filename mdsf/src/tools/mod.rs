@@ -174,6 +174,7 @@ pub mod kdoc_formatter;
 pub mod keep_sorted;
 pub mod ktfmt;
 pub mod ktlint;
+pub mod kube_linter_lint;
 pub mod kulala_fmt_check;
 pub mod kulala_fmt_format;
 pub mod leptosfmt;
@@ -1615,7 +1616,7 @@ pub enum Tooling {
     Json5Format,
 
     #[serde(rename = "json_repair")]
-    /// A python module to repair invalid JSON from LLMs
+    /// A module to repair invalid JSON from LLMs
     ///
     /// [https://github.com/mangiucugna/json_repair](https://github.com/mangiucugna/json_repair)
     ///
@@ -1765,6 +1766,14 @@ pub enum Tooling {
     ///
     /// `ktlint --format --log-level=error $PATH`
     Ktlint,
+
+    #[serde(rename = "kube-linter:lint")]
+    /// KubeLinter is a static analysis tool that checks Kubernetes YAML files and Helm charts to ensure the applications represented in them adhere to best practices
+    ///
+    /// [https://github.com/stackrox/kube-linter](https://github.com/stackrox/kube-linter)
+    ///
+    /// `kube-linter lint $PATH`
+    KubeLinterLint,
 
     #[serde(rename = "kulala-fmt:check")]
     /// Check if .http and .rest code is formatted
@@ -4047,6 +4056,11 @@ impl Tooling {
             ),
             Self::Ktfmt => (&ktfmt::COMMANDS, ktfmt::set_args, ktfmt::IS_STDIN),
             Self::Ktlint => (&ktlint::COMMANDS, ktlint::set_args, ktlint::IS_STDIN),
+            Self::KubeLinterLint => (
+                &kube_linter_lint::COMMANDS,
+                kube_linter_lint::set_args,
+                kube_linter_lint::IS_STDIN,
+            ),
             Self::KulalaFmtCheck => (
                 &kulala_fmt_check::COMMANDS,
                 kulala_fmt_check::set_args,
@@ -4914,6 +4928,7 @@ impl AsRef<str> for Tooling {
             Self::KeepSorted => "keep-sorted",
             Self::Ktfmt => "ktfmt",
             Self::Ktlint => "ktlint",
+            Self::KubeLinterLint => "kube-linter:lint",
             Self::KulalaFmtCheck => "kulala-fmt:check",
             Self::KulalaFmtFormat => "kulala-fmt:format",
             Self::Leptosfmt => "leptosfmt",
@@ -5344,6 +5359,7 @@ mod test_tooling {
         assert_eq!(Tooling::KeepSorted, reverse(Tooling::KeepSorted)?);
         assert_eq!(Tooling::Ktfmt, reverse(Tooling::Ktfmt)?);
         assert_eq!(Tooling::Ktlint, reverse(Tooling::Ktlint)?);
+        assert_eq!(Tooling::KubeLinterLint, reverse(Tooling::KubeLinterLint)?);
         assert_eq!(Tooling::KulalaFmtCheck, reverse(Tooling::KulalaFmtCheck)?);
         assert_eq!(Tooling::KulalaFmtFormat, reverse(Tooling::KulalaFmtFormat)?);
         assert_eq!(Tooling::Leptosfmt, reverse(Tooling::Leptosfmt)?);
