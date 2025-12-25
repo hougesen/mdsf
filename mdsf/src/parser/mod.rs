@@ -2,6 +2,8 @@ use core::{iter::Enumerate, str::Lines};
 
 use regex::Regex;
 
+pub mod v2;
+
 const GO_TEMPORARY_PACKAGE_NAME: &str = "package mdsfformattertemporarynamespace\n";
 
 #[inline]

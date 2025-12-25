@@ -37,6 +37,7 @@ json_comments = { workspace = true }
 log = { workspace = true }
 owo-colors = { workspace = true }
 process_control = { workspace = true }
+pulldown-cmark = { workspace = true }
 regex = { workspace = true }
 schemars = { workspace = true, optional = true }
 serde = { workspace = true }

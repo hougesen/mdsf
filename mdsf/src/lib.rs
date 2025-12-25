@@ -319,13 +319,12 @@ mod test_lib {
         execution::{MdsfToolWrapper, setup_snippet},
         filetype::get_file_extension,
         format_file, handle_file,
-        testing::{DEFAULT_ON_MISSING_LANGUAGE_DEFINITION, DEFAULT_ON_MISSING_TOOL_BINARY},
+        testing::{
+            DEFAULT_ON_MISSING_LANGUAGE_DEFINITION, DEFAULT_ON_MISSING_TOOL_BINARY,
+            DEFAULT_TEST_DEBUG_ENABLED, DEFAULT_TEST_FORMATTER_TIMEOUT,
+        },
         tools::Tooling,
     };
-
-    const DEBUG_ENABLED: bool = true;
-
-    const TIMEOUT: u64 = 0;
 
     const DRY_RUN: bool = false;
 
@@ -359,8 +358,8 @@ fn add(a: i32, b: i32) -> i32 {
                 &config,
                 std::path::Path::new("."),
                 input,
-                TIMEOUT,
-                DEBUG_ENABLED,
+                DEFAULT_TEST_FORMATTER_TIMEOUT,
+                DEFAULT_TEST_DEBUG_ENABLED,
                 DEFAULT_ON_MISSING_TOOL_BINARY,
                 DEFAULT_ON_MISSING_LANGUAGE_DEFINITION,
             );
@@ -379,8 +378,8 @@ fn add(a: i32, b: i32) -> i32 {
                 file.path(),
                 DRY_RUN,
                 None,
-                TIMEOUT,
-                DEBUG_ENABLED,
+                DEFAULT_TEST_FORMATTER_TIMEOUT,
+                DEFAULT_TEST_DEBUG_ENABLED,
                 DEFAULT_ON_MISSING_TOOL_BINARY,
                 DEFAULT_ON_MISSING_LANGUAGE_DEFINITION,
             ));
@@ -444,8 +443,8 @@ fn           add(
                     &config,
                     std::path::Path::new("."),
                     &input,
-                    TIMEOUT,
-                    DEBUG_ENABLED,
+                    DEFAULT_TEST_FORMATTER_TIMEOUT,
+                    DEFAULT_TEST_DEBUG_ENABLED,
                     DEFAULT_ON_MISSING_TOOL_BINARY,
                     DEFAULT_ON_MISSING_LANGUAGE_DEFINITION,
                 );
@@ -464,8 +463,8 @@ fn           add(
                     file.path(),
                     DRY_RUN,
                     None,
-                    TIMEOUT,
-                    DEBUG_ENABLED,
+                    DEFAULT_TEST_FORMATTER_TIMEOUT,
+                    DEFAULT_TEST_DEBUG_ENABLED,
                     DEFAULT_ON_MISSING_TOOL_BINARY,
                     DEFAULT_ON_MISSING_LANGUAGE_DEFINITION,
                 ));
@@ -545,8 +544,8 @@ fn add(a: i32, b: i32) -> i32 {
             &config,
             std::path::Path::new("."),
             input,
-            TIMEOUT,
-            DEBUG_ENABLED,
+            DEFAULT_TEST_FORMATTER_TIMEOUT,
+            DEFAULT_TEST_DEBUG_ENABLED,
             DEFAULT_ON_MISSING_TOOL_BINARY,
             DEFAULT_ON_MISSING_LANGUAGE_DEFINITION,
         );
@@ -622,8 +621,8 @@ type Whatever struct {
                     &config,
                     std::path::Path::new("."),
                     input,
-                    TIMEOUT,
-                    DEBUG_ENABLED,
+                    DEFAULT_TEST_FORMATTER_TIMEOUT,
+                    DEFAULT_TEST_DEBUG_ENABLED,
                     DEFAULT_ON_MISSING_TOOL_BINARY,
                     DEFAULT_ON_MISSING_LANGUAGE_DEFINITION,
                 );
@@ -642,8 +641,8 @@ type Whatever struct {
                     file.path(),
                     DRY_RUN,
                     None,
-                    TIMEOUT,
-                    DEBUG_ENABLED,
+                    DEFAULT_TEST_FORMATTER_TIMEOUT,
+                    DEFAULT_TEST_DEBUG_ENABLED,
                     DEFAULT_ON_MISSING_TOOL_BINARY,
                     DEFAULT_ON_MISSING_LANGUAGE_DEFINITION,
                 ));
@@ -668,8 +667,8 @@ type Whatever struct {
                     &config,
                     std::path::Path::new("."),
                     input,
-                    TIMEOUT,
-                    DEBUG_ENABLED,
+                    DEFAULT_TEST_FORMATTER_TIMEOUT,
+                    DEFAULT_TEST_DEBUG_ENABLED,
                     DEFAULT_ON_MISSING_TOOL_BINARY,
                     DEFAULT_ON_MISSING_LANGUAGE_DEFINITION,
                 );
@@ -688,8 +687,8 @@ type Whatever struct {
                     file.path(),
                     DRY_RUN,
                     None,
-                    TIMEOUT,
-                    DEBUG_ENABLED,
+                    DEFAULT_TEST_FORMATTER_TIMEOUT,
+                    DEFAULT_TEST_DEBUG_ENABLED,
                     DEFAULT_ON_MISSING_TOOL_BINARY,
                     DEFAULT_ON_MISSING_LANGUAGE_DEFINITION,
                 ));
@@ -760,8 +759,8 @@ type Whatever struct {
                     &config,
                     std::path::Path::new("."),
                     input,
-                    TIMEOUT,
-                    DEBUG_ENABLED,
+                    DEFAULT_TEST_FORMATTER_TIMEOUT,
+                    DEFAULT_TEST_DEBUG_ENABLED,
                     DEFAULT_ON_MISSING_TOOL_BINARY,
                     DEFAULT_ON_MISSING_LANGUAGE_DEFINITION,
                 );
@@ -780,8 +779,8 @@ type Whatever struct {
                     file.path(),
                     DRY_RUN,
                     None,
-                    TIMEOUT,
-                    DEBUG_ENABLED,
+                    DEFAULT_TEST_FORMATTER_TIMEOUT,
+                    DEFAULT_TEST_DEBUG_ENABLED,
                     DEFAULT_ON_MISSING_TOOL_BINARY,
                     DEFAULT_ON_MISSING_LANGUAGE_DEFINITION,
                 ));
@@ -807,8 +806,8 @@ type Whatever struct {
                     &config,
                     std::path::Path::new("."),
                     input,
-                    TIMEOUT,
-                    DEBUG_ENABLED,
+                    DEFAULT_TEST_FORMATTER_TIMEOUT,
+                    DEFAULT_TEST_DEBUG_ENABLED,
                     DEFAULT_ON_MISSING_TOOL_BINARY,
                     DEFAULT_ON_MISSING_LANGUAGE_DEFINITION,
                 );
@@ -827,8 +826,8 @@ type Whatever struct {
                     file.path(),
                     DRY_RUN,
                     None,
-                    TIMEOUT,
-                    DEBUG_ENABLED,
+                    DEFAULT_TEST_FORMATTER_TIMEOUT,
+                    DEFAULT_TEST_DEBUG_ENABLED,
                     DEFAULT_ON_MISSING_TOOL_BINARY,
                     DEFAULT_ON_MISSING_LANGUAGE_DEFINITION,
                 ));
@@ -912,8 +911,8 @@ func add(a int, b int) int {
                     &config,
                     std::path::Path::new("."),
                     input,
-                    TIMEOUT,
-                    DEBUG_ENABLED,
+                    DEFAULT_TEST_FORMATTER_TIMEOUT,
+                    DEFAULT_TEST_DEBUG_ENABLED,
                     DEFAULT_ON_MISSING_TOOL_BINARY,
                     DEFAULT_ON_MISSING_LANGUAGE_DEFINITION,
                 );
@@ -932,8 +931,8 @@ func add(a int, b int) int {
                     file.path(),
                     DRY_RUN,
                     None,
-                    TIMEOUT,
-                    DEBUG_ENABLED,
+                    DEFAULT_TEST_FORMATTER_TIMEOUT,
+                    DEFAULT_TEST_DEBUG_ENABLED,
                     DEFAULT_ON_MISSING_TOOL_BINARY,
                     DEFAULT_ON_MISSING_LANGUAGE_DEFINITION,
                 ));
@@ -958,8 +957,8 @@ func add(a int, b int) int {
                     &config,
                     std::path::Path::new("."),
                     input,
-                    TIMEOUT,
-                    DEBUG_ENABLED,
+                    DEFAULT_TEST_FORMATTER_TIMEOUT,
+                    DEFAULT_TEST_DEBUG_ENABLED,
                     DEFAULT_ON_MISSING_TOOL_BINARY,
                     DEFAULT_ON_MISSING_LANGUAGE_DEFINITION,
                 );
@@ -978,8 +977,8 @@ func add(a int, b int) int {
                     file.path(),
                     DRY_RUN,
                     None,
-                    TIMEOUT,
-                    DEBUG_ENABLED,
+                    DEFAULT_TEST_FORMATTER_TIMEOUT,
+                    DEFAULT_TEST_DEBUG_ENABLED,
                     DEFAULT_ON_MISSING_TOOL_BINARY,
                     DEFAULT_ON_MISSING_LANGUAGE_DEFINITION,
                 ));
