@@ -3,7 +3,7 @@ use cli::{OnMissingLanguageDefinition, OnMissingToolBinary};
 use config::MdsfConfig;
 use error::{MdsfError, exit_with_error, set_exit_code_error};
 use execution::format_snippet;
-use parser::{indent_codeblock, parse_generic_codeblock, parse_go_codeblock, remove_go_package};
+use parser::{add_mdsf_go_package, remove_mdsf_go_package};
 use terminal::{
     print_changed_file, print_changed_file_error, print_error_reading_file,
     print_error_saving_file, print_unchanged_file, print_unknown_language,
@@ -41,34 +41,6 @@ pub fn get_project_dir() -> &'static std::path::Path {
 }
 
 #[inline]
-fn parse_codeblock_language(text: &str) -> String {
-    text.trim()
-        .strip_prefix("```")
-        .map(str::trim)
-        .and_then(|s| s.split_whitespace().next())
-        .map(std::string::ToString::to_string)
-        .unwrap_or_default()
-}
-
-#[cfg(test)]
-mod test_parse_codeblock_language {
-    use crate::parse_codeblock_language;
-
-    #[test]
-    fn it_should_extract_language() {
-        assert_eq!("go", parse_codeblock_language("```go"));
-
-        assert_eq!("go", parse_codeblock_language("```go     "));
-
-        assert_eq!("go", parse_codeblock_language("```go    "));
-
-        assert_eq!("go", parse_codeblock_language("   ```go"));
-
-        assert_eq!("go", parse_codeblock_language("```go x=1"));
-    }
-}
-
-#[inline]
 pub fn format_file(
     config: &MdsfConfig,
     filename: &std::path::Path,
@@ -78,73 +50,28 @@ pub fn format_file(
     on_missing_tool_binary: OnMissingToolBinary,
     on_missing_language_definition: OnMissingLanguageDefinition,
 ) -> (bool, String) {
-    let mut output = String::with_capacity(input.len() + 128);
+    let mut options = pulldown_cmark::Options::all();
+    options.remove(pulldown_cmark::Options::ENABLE_SMART_PUNCTUATION);
 
-    let mut lines = input.lines().enumerate();
+    let mut codeblock_language = None;
 
-    while let Some((line_index, line)) = lines.next() {
-        // TODO: implement support for code blocks with 4 `
-        let trimmed_line = line.trim_start();
+    let mut changes = Vec::new();
 
-        if trimmed_line.starts_with("```") {
-            let indentation = line.replace(trimmed_line, "");
+    for (event, range) in pulldown_cmark::Parser::new_ext(input, options).into_offset_iter() {
+        match event {
+            pulldown_cmark::Event::Start(pulldown_cmark::Tag::CodeBlock(
+                pulldown_cmark::CodeBlockKind::Fenced(language),
+            )) => {
+                let language = language.to_string();
 
-            let language = parse_codeblock_language(trimmed_line);
-
-            // "*" is always ran
-            // "_" is fallback formatters
-            if config.languages.contains_key(&language)
-                || config.languages.contains_key("*")
-                || config.languages.contains_key("_")
-            {
-                let is_go = language == "go" || language == "golang";
-
-                let (is_snippet, code_snippet, snippet_lines) = if is_go {
-                    parse_go_codeblock(&mut lines)
-                } else {
-                    parse_generic_codeblock(&mut lines)
-                };
-
-                if is_snippet {
-                    let formatted = format_snippet(
-                        config,
-                        &LineInfo {
-                            filename,
-                            language: &language,
-                            start: line_index + 1,
-                            end: line_index + snippet_lines + 1,
-                        },
-                        &code_snippet,
-                        timeout,
-                        debug_enabled,
-                        on_missing_tool_binary,
-                    );
-
-                    let formatted = if is_go {
-                        remove_go_package(formatted)
-                    } else {
-                        formatted
-                    };
-
-                    let formatted = formatted.trim().to_owned();
-
-                    let formatted = indent_codeblock(&indentation, formatted);
-
-                    output.push_str(line);
-
-                    output.push(crate::config::LF_NEWLINE_CHAR);
-
-                    output.push_str(&formatted);
-
-                    output.push(crate::config::LF_NEWLINE_CHAR);
-                    output.push_str(&indentation);
-                    output.push_str("```");
-                } else {
-                    output.push_str(line);
-                    output.push_str(&code_snippet);
-                }
-            } else {
-                if !language.is_empty() {
+                // "*" is always ran
+                // "_" is fallback formatters
+                if config.languages.contains_key(&language)
+                    || config.languages.contains_key("*")
+                    || config.languages.contains_key("_")
+                {
+                    codeblock_language = Some(language);
+                } else if !language.is_empty() {
                     match on_missing_language_definition {
                         OnMissingLanguageDefinition::Ignore => {
                             print_unknown_language(&language, filename, false);
@@ -159,14 +86,56 @@ pub fn format_file(
                         ),
                     }
                 }
-
-                output.push_str(line);
             }
-        } else {
-            output.push_str(line);
-        }
 
-        output.push(crate::config::LF_NEWLINE_CHAR);
+            pulldown_cmark::Event::Text(input_code) => {
+                if let Some(ref language) = codeblock_language {
+                    let is_go = language == "go" || language == "golang";
+
+                    let formatted = if language == "go" || language == "golang" {
+                        add_mdsf_go_package(input_code.to_string())
+                    } else {
+                        input_code.to_string()
+                    };
+
+                    let formatted = format_snippet(
+                        config,
+                        &LineInfo {
+                            filename,
+                            language,
+                            start: range.start - 1,
+                            end: range.end + 1,
+                        },
+                        &formatted,
+                        timeout,
+                        debug_enabled,
+                        on_missing_tool_binary,
+                    );
+
+                    let formatted = if is_go {
+                        remove_mdsf_go_package(formatted)
+                    } else {
+                        formatted
+                    };
+
+                    if input_code.to_string() != formatted {
+                        changes.push((formatted, range));
+                    }
+                }
+            }
+
+            pulldown_cmark::Event::End(pulldown_cmark::TagEnd::CodeBlock) => {
+                codeblock_language = None;
+            }
+
+            _ => {}
+        }
+    }
+
+    let mut output = input.to_string();
+
+    for (codeblock, range) in changes.into_iter().rev() {
+        output.replace_range(range, &codeblock);
     }
 
     if config.format_finished_document && !output.is_empty() {
@@ -342,8 +311,7 @@ fn           add(
 fn add(a: i32, b: i32) -> i32 {
     a + b
 }
-```
-";
+```";
 
         let config = MdsfConfig {
             languages: std::collections::BTreeMap::from_iter([(
@@ -449,9 +417,9 @@ fn           add(
                     DEFAULT_ON_MISSING_LANGUAGE_DEFINITION,
                 );
 
-                assert!(modified);
-
                 assert_eq!(output, expected_output);
+
+                assert!(modified);
             };
 
             {
@@ -627,9 +595,9 @@ type Whatever struct {
                     DEFAULT_ON_MISSING_LANGUAGE_DEFINITION,
                 );
 
-                assert!(modified);
-
                 assert_eq!(output, expected_output);
+
+                assert!(modified);
             };
 
             {
@@ -673,9 +641,9 @@ type Whatever struct {
                     DEFAULT_ON_MISSING_LANGUAGE_DEFINITION,
                 );
 
-                assert!(modified);
-
                 assert_eq!(output, expected_output);
+
+                assert!(modified);
             };
 
             {

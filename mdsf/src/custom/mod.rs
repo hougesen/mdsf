@@ -94,8 +94,7 @@ pub
 pub async fn add(a: i32, b: i32) -> i32 {
     a + b
 }
-```
-"#;
+```"#;
 
         let tool = CustomTool {
             binary: "rustfmt".to_string(),
@@ -171,8 +170,7 @@ name =     "hello"
         let expected_output = r#"```toml
 [project]
 name = "hello"
-```
-"#;
+```"#;
 
         let tool = CustomTool {
             binary: "tombi".to_string(),

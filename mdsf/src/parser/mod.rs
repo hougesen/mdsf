@@ -1,52 +1,22 @@
-use core::{iter::Enumerate, str::Lines};
-
-use regex::Regex;
-
-pub mod v2;
-
 const GO_TEMPORARY_PACKAGE_NAME: &str = "package mdsfformattertemporarynamespace\n";
 
 #[inline]
-pub fn parse_generic_codeblock(lines: &mut Enumerate<Lines>) -> (bool, String, usize) {
-    let mut code_snippet = String::new();
-
-    let mut is_snippet = false;
-
-    let mut snippet_lines = 0;
-
-    for (_, subline) in lines.by_ref() {
-        snippet_lines += 1;
-
-        if subline.trim() == "```" {
-            is_snippet = true;
-            break;
-        }
-
-        code_snippet.push_str(subline);
-
-        code_snippet.push(crate::config::LF_NEWLINE_CHAR);
+pub fn add_mdsf_go_package(snippet: String) -> String {
+    if GO_PACKAGE_RE.is_match(&snippet) {
+        snippet
+    } else {
+        let mut snippet = snippet;
+        snippet.insert_str(0, GO_TEMPORARY_PACKAGE_NAME);
+        snippet
     }
-
-    (is_snippet, code_snippet, snippet_lines)
-}
-
-#[inline]
-pub fn parse_go_codeblock(lines: &mut Enumerate<Lines>) -> (bool, String, usize) {
-    let (is_snippet, mut code_snippet, snippet_lines) = parse_generic_codeblock(lines);
-
-    if is_snippet && !GO_PACKAGE_RE.is_match(&code_snippet) {
-        code_snippet.insert_str(0, GO_TEMPORARY_PACKAGE_NAME);
-    }
-
-    (is_snippet, code_snippet, snippet_lines)
 }
 
 // TODO: check for multiline comments
-pub static GO_PACKAGE_RE: std::sync::LazyLock<Regex> =
-    std::sync::LazyLock::new(|| Regex::new(r"^\s*package\s+\w").unwrap());
+pub static GO_PACKAGE_RE: std::sync::LazyLock<regex::Regex> =
+    std::sync::LazyLock::new(|| regex::Regex::new(r"^\s*package\s+\w").unwrap());
 
 #[inline]
-pub fn remove_go_package(snippet: String) -> String {
+pub fn remove_mdsf_go_package(snippet: String) -> String {
     if snippet.contains(GO_TEMPORARY_PACKAGE_NAME) {
         snippet.replace(GO_TEMPORARY_PACKAGE_NAME, "")
     } else {

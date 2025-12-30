@@ -4,6 +4,7 @@ All notable changes to this project will be documented in this file. Dates are d
 
 #### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.11.1...HEAD)
 
+- feat(tools): add support for kube-linter [`#1464`](https://github.com/hougesen/mdsf/pull/1464)
 - feat(tools): add support for action-validator [`#1463`](https://github.com/hougesen/mdsf/pull/1463)
 - feat: support installing packages using mise for testing [`#1462`](https://github.com/hougesen/mdsf/pull/1462)
 - feat(tools): add support for swiftlint [`#1461`](https://github.com/hougesen/mdsf/pull/1461)
@@ -16,6 +17,7 @@ All notable changes to this project will be documented in this file. Dates are d
 - build(deps): bump serde_json from 1.0.145 to 1.0.146 [`#1454`](https://github.com/hougesen/mdsf/pull/1454)
 - chore: set version to dev [`#1453`](https://github.com/hougesen/mdsf/pull/1453)
 - build(deps): bump clap_complete from 4.5.61 to 4.5.62 [`#1452`](https://github.com/hougesen/mdsf/pull/1452)
+- feat: make prototype using pulldown-cmark using range replacement [`c617d0d`](https://github.com/hougesen/mdsf/commit/c617d0d0e41044fe825a68dc86e5d38938812857)
 
 #### [v0.11.1](https://github.com/hougesen/mdsf/compare/v0.11.0...v0.11.1)
 
