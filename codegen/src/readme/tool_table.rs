@@ -1,5 +1,4 @@
-use super::pad_right;
-use crate::tools::Tool;
+use crate::{readme::pad_right, tools::Tool};
 
 pub fn generate(plugins: &[Tool]) -> String {
     let tool_count = plugins.len();

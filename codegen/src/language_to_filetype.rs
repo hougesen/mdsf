@@ -1,4 +1,4 @@
-use crate::{GENERATED_FILE_COMMENT, error::CodegenError};
+use crate::GENERATED_FILE_COMMENT;
 
 #[derive(serde::Deserialize)]
 struct LinguishLanguage {
@@ -6,14 +6,14 @@ struct LinguishLanguage {
     aliases: Option<Vec<String>>,
 }
 
-fn get_linguish_languages()
--> Result<std::collections::HashMap<String, LinguishLanguage>, CodegenError> {
+fn get_linguish_languages() -> anyhow::Result<std::collections::HashMap<String, LinguishLanguage>> {
     let url = "https://raw.githubusercontent.com/github-linguist/linguist/master/lib/linguist/languages.yml";
 
     let body = ureq::get(url).call()?.body_mut().read_to_string()?;
 
-    serde_yaml::from_str::<std::collections::HashMap<String, LinguishLanguage>>(&body)
-        .map_err(CodegenError::from)
+    let value = serde_yaml::from_str::<std::collections::HashMap<String, LinguishLanguage>>(&body)?;
+
+    Ok(value)
 }
 
 const WHITESPACE: &str = "    ";
@@ -98,7 +98,7 @@ mod test_language_to_ext {{
     )
 }
 
-pub fn generate() -> Result<(), CodegenError> {
+pub fn generate() -> anyhow::Result<()> {
     println!("generate language_to_ft");
 
     let languages = get_linguish_languages()?;

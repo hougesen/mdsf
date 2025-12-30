@@ -729,6 +729,7 @@ dependencies = [
 name = "mdsf-codegen"
 version = "0.11.1-next"
 dependencies = [
+ "anyhow",
  "convert_case",
  "ignore",
  "mdsf",

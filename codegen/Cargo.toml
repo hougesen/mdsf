@@ -13,6 +13,7 @@ categories = []
 publish = false
 
 [dependencies]
+anyhow = { workspace = true }
 convert_case = { workspace = true }
 ignore = { workspace = true }
 mdsf = { workspace = true }

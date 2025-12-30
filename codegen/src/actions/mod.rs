@@ -1,9 +1,10 @@
-use workflow::{
-    Workflow, WorkflowConcurrency, WorkflowEnv, WorkflowJobs, WorkflowJobsStep,
-    WorkflowJobsStrategy, WorkflowJobsStrategyMatrix,
+use crate::{
+    actions::workflow::{
+        Workflow, WorkflowConcurrency, WorkflowEnv, WorkflowJobs, WorkflowJobsPermissions,
+        WorkflowJobsStep, WorkflowJobsStrategy, WorkflowJobsStrategyMatrix,
+    },
+    tools::Tool,
 };
-
-use crate::{actions::workflow::WorkflowJobsPermissions, error::CodegenError, tools::Tool};
 
 mod packages;
 mod workflow;
@@ -19,7 +20,7 @@ struct BaseSteps {
     post_packages: Vec<WorkflowJobsStep>,
 }
 
-fn get_base_steps() -> Result<BaseSteps, CodegenError> {
+fn get_base_steps() -> anyhow::Result<BaseSteps> {
     let contents = serde_json::from_str::<BaseSteps>(&std::fs::read_to_string(
         "./codegen/test-workflow.json",
     )?)?;
@@ -27,7 +28,7 @@ fn get_base_steps() -> Result<BaseSteps, CodegenError> {
     Ok(contents)
 }
 
-pub fn generate(plugins: &Vec<Tool>) -> Result<(), CodegenError> {
+pub fn generate(plugins: &Vec<Tool>) -> anyhow::Result<()> {
     let mut steps: Vec<workflow::WorkflowJobsStep> = Vec::new();
 
     let mut base_steps = get_base_steps()?;

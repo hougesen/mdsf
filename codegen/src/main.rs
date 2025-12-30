@@ -1,9 +1,7 @@
-use error::CodegenError;
-use tools::Tool;
+use crate::tools::Tool;
 
 mod actions;
 mod contributing;
-mod error;
 mod language_to_filetype;
 pub mod markdown;
 mod readme;
@@ -69,7 +67,7 @@ fn normalize_plugin(mut plugin: Tool) -> Tool {
     plugin
 }
 
-fn get_plugin_files() -> Result<Vec<Tool>, CodegenError> {
+fn get_plugin_files() -> anyhow::Result<Vec<Tool>> {
     let tool_folder = "tools";
 
     let _ = std::fs::create_dir_all(tool_folder);
@@ -97,7 +95,7 @@ fn get_plugin_files() -> Result<Vec<Tool>, CodegenError> {
     Ok(tools)
 }
 
-fn main() -> Result<(), CodegenError> {
+fn main() -> anyhow::Result<()> {
     let plugins = get_plugin_files()?;
 
     let generated_commands = tools::generate(&plugins)?;

@@ -1,4 +1,4 @@
-use super::pad_right;
+use crate::readme::pad_right;
 
 pub fn generate_command_table(commands: Vec<crate::tools::GeneratedCommand>) -> String {
     let mut table: std::collections::BTreeMap<String, String> = std::collections::BTreeMap::new();

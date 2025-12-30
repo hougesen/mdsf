@@ -1,6 +1,4 @@
-use crate::error::CodegenError;
-
-pub fn generate(path: &std::path::Path) -> Result<String, CodegenError> {
+pub fn generate(path: &std::path::Path) -> anyhow::Result<String> {
     let output = std::process::Command::new("npx")
         .arg("--yes")
         .arg("markdown-toc")

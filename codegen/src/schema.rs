@@ -1,8 +1,8 @@
 use mdsf::config::MdsfConfig;
 
-use crate::{error::CodegenError, tools::Tool};
+use crate::tools::Tool;
 
-pub fn generate() -> Result<(), CodegenError> {
+pub fn generate() -> anyhow::Result<()> {
     println!("generate schema");
 
     let package_version = env!("CARGO_PKG_VERSION");

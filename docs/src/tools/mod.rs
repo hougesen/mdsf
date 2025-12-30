@@ -19,7 +19,7 @@ pub fn generate_tool_list(
         .collect::<Vec<_>>();
 
     let globals = liquid::object!({
-        "tools": tools,
+        "tools": &tools,
     });
 
     parser
@@ -45,7 +45,7 @@ pub fn generate_tool_site(
                 "arguments": v.arguments,
                 "description": v.description,
                 "homepage": v.homepage,
-                "name": name,
+                "name": &name,
             })
         })
         .collect::<Vec<_>>();
@@ -53,7 +53,7 @@ pub fn generate_tool_site(
     let globals = liquid::object!({
         "binary": tool.binary,
         "categories": tool.categories,
-        "commands": commands,
+        "commands": &commands,
         "description": tool.description,
         "homepage": tool.homepage,
         "languages": tool.languages,
