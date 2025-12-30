@@ -1,4 +1,3 @@
-mod error;
 mod tools;
 
 #[derive(serde::Deserialize, Debug)]
@@ -33,7 +32,7 @@ pub struct ToolFile {
     pub name: String,
 }
 
-fn find_tools() -> Result<Vec<ToolFile>, crate::error::Error> {
+fn find_tools() -> anyhow::Result<Vec<ToolFile>> {
     let mut files = Vec::new();
 
     for entry in std::fs::read_dir("tools")? {
@@ -57,7 +56,7 @@ fn setup_liquid_parser() -> Result<liquid::Parser, liquid::Error> {
     liquid::ParserBuilder::with_stdlib().build()
 }
 
-fn main() -> Result<(), crate::error::Error> {
+fn main() -> anyhow::Result<()> {
     let parser = setup_liquid_parser()?;
 
     let path = std::path::Path::new("docs/www");
