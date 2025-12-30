@@ -20,7 +20,7 @@ pub fn setup_uv_run_command(package_name: &str, executable_name: &str) -> std::p
 #[cfg(test)]
 mod test_uv {
     #[test_with::executable(uv)]
-    fn it_works_without_executable_name() {
+    fn it_works_without_executable_name() -> Result<(), Box<dyn core::error::Error>> {
         let input = r#"program example
     implicit none (type, external)
 
@@ -46,8 +46,7 @@ end program example
 
         let file_ext = crate::filetype::get_file_extension(".f90");
 
-        let snippet =
-            crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
+        let snippet = crate::execution::setup_snippet(input, &file_ext)?;
 
         let result = crate::execution::run_tools(
             &[crate::runners::CommandType::Uv(
@@ -63,16 +62,16 @@ end program example
                 uv: true,
                 ..Default::default()
             },
-        )
-        .expect("it to be successful")
-        .1
-        .expect("it to be some");
+        )?;
 
-        assert_eq!(result, output);
+        assert!(!result.0);
+        assert_eq!(result.1, Some(output.to_string()));
+
+        Ok(())
     }
 
     #[test_with::executable(uv)]
-    fn it_works_with_executable_name() {
+    fn it_works_with_executable_name() -> Result<(), Box<dyn core::error::Error>> {
         let input = r#"
 <note>
   <to>Tove</to>
@@ -90,8 +89,7 @@ end program example
 
         let file_ext = crate::filetype::get_file_extension("xml");
 
-        let snippet =
-            crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
+        let snippet = crate::execution::setup_snippet(input, &file_ext)?;
 
         let result = crate::execution::run_tools(
             &[crate::runners::CommandType::Uv("xmlformatter", "xmlformat")],
@@ -104,11 +102,11 @@ end program example
                 uv: true,
                 ..Default::default()
             },
-        )
-        .expect("it to be successful")
-        .1
-        .expect("it to be some");
+        )?;
 
-        assert_eq!(result, output);
+        assert!(!result.0);
+        assert_eq!(result.1, Some(output.to_string()));
+
+        Ok(())
     }
 }

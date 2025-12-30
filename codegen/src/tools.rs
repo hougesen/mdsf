@@ -868,8 +868,7 @@ mod common;
 ",
             all_tests.join("\n")
         ),
-    )
-    .unwrap();
+    )?;
 
     let mut modules = files
         .iter()

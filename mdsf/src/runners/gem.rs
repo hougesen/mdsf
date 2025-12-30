@@ -11,7 +11,7 @@ pub fn setup_gem_exec_command(package_name: &str) -> std::process::Command {
 #[cfg(test)]
 mod test_gem_exec {
     #[test_with::executable(gem)]
-    fn can_execute_command() {
+    fn can_execute_command() -> Result<(), Box<dyn core::error::Error>> {
         let input = r#"<div>
                     <p>
                     Mads was here
@@ -27,8 +27,7 @@ mod test_gem_exec {
 
         let file_ext = crate::filetype::get_file_extension("html");
 
-        let snippet =
-            crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
+        let snippet = crate::execution::setup_snippet(input, &file_ext)?;
 
         let result = crate::execution::run_tools(
             &[crate::runners::CommandType::GemExec("htmlbeautifier")],
@@ -41,11 +40,11 @@ mod test_gem_exec {
                 gem_exec: true,
                 ..Default::default()
             },
-        )
-        .expect("it to be successful")
-        .1
-        .expect("it to be some");
+        )?;
 
-        assert_eq!(result, output);
+        assert!(!result.0);
+        assert_eq!(result.1, Some(output.to_string()));
+
+        Ok(())
     }
 }

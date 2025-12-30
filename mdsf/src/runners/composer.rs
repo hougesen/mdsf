@@ -8,7 +8,7 @@ pub fn setup_php_vender_bin_command(binary_name: &str) -> std::process::Command 
 #[cfg(test)]
 mod test_composer {
     #[test_with::executable(./vendor/bin/mago)]
-    fn test_composer_path() {
+    fn test_composer_path() -> Result<(), Box<dyn core::error::Error>> {
         let input = r#"<?php
 echo "Hello World!";
 ?>"#;
@@ -19,8 +19,7 @@ echo 'Hello World!';
 
         let file_ext = crate::filetype::get_file_extension("php");
 
-        let snippet =
-            crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
+        let snippet = crate::execution::setup_snippet(input, &file_ext)?;
         let result = crate::execution::run_tools(
             &[crate::runners::CommandType::PhpVendor("mago")],
             snippet.path(),
@@ -40,11 +39,11 @@ echo 'Hello World!';
                 uv: false,
                 yarn: false,
             },
-        )
-        .expect("it to be successful")
-        .1
-        .expect("it to be some");
+        )?;
 
-        assert_eq!(result, output);
+        assert!(!result.0);
+        assert_eq!(result.1, Some(output.to_string()));
+
+        Ok(())
     }
 }

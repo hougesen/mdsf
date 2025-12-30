@@ -14,7 +14,7 @@ pub fn setup_dub_run_command(package_name: &str) -> std::process::Command {
 #[cfg(test)]
 mod test_dub {
     #[test_with::executable(dub)]
-    fn it_can_execute_d_packages() {
+    fn it_can_execute_d_packages() -> Result<(), Box<dyn core::error::Error>> {
         let input = r#"int add(int a,int b){return a + b;}
 "#;
 
@@ -26,8 +26,7 @@ mod test_dub {
 
         let file_ext = crate::filetype::get_file_extension("d");
 
-        let snippet =
-            crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
+        let snippet = crate::execution::setup_snippet(input, &file_ext)?;
 
         let result = crate::execution::run_tools(
             &[crate::runners::CommandType::Dub("dfmt")],
@@ -40,11 +39,11 @@ mod test_dub {
                 dub: true,
                 ..Default::default()
             },
-        )
-        .expect("it to be successful")
-        .1
-        .expect("it to be some");
+        )?;
 
-        assert_eq!(result, output);
+        assert!(!result.0);
+        assert_eq!(result.1, Some(output.to_string()));
+
+        Ok(())
     }
 }

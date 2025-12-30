@@ -30,21 +30,24 @@ pub fn format_command(dir: &std::path::Path) -> assert_cmd::Command {
     cmd
 }
 
-pub fn setup_test_dir() -> tempfile::TempDir {
-    tempfile::TempDir::with_prefix("mdsf").unwrap()
+pub fn setup_test_dir() -> Result<tempfile::TempDir, std::io::Error> {
+    tempfile::TempDir::with_prefix("mdsf")
 }
 
-pub fn setup_test_input(dir: &std::path::Path, code: &str) -> tempfile::NamedTempFile {
+pub fn setup_test_input(
+    dir: &std::path::Path,
+    code: &str,
+) -> Result<tempfile::NamedTempFile, std::io::Error> {
     let mut b = tempfile::Builder::new();
 
     b.rand_bytes(12).suffix(".md");
 
-    let mut f = b.tempfile_in(dir).unwrap();
+    let mut f = b.tempfile_in(dir)?;
 
-    f.write_all(code.as_bytes()).unwrap();
-    f.flush().unwrap();
+    f.write_all(code.as_bytes())?;
+    f.flush()?;
 
-    f
+    Ok(f)
 }
 
 pub const BROKEN_CODE: &str = "```rust
