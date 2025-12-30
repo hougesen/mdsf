@@ -112,8 +112,6 @@ pub fn run_tooling_test(
     {
         let cmd = run_verify_command(dir.path(), file.path()).assert();
 
-        dbg!(&cmd);
-
         if input == expected_output {
             cmd.success()
                 .stderr(predicates::str::contains(" (unchanged)"));

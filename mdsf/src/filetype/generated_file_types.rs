@@ -2244,7 +2244,7 @@ mod test_language_to_ext {
         ];
 
         for (input, output) in cases {
-            assert_eq!(output, language_to_ext(input).unwrap());
+            assert!(language_to_ext(input).is_some_and(|o| o == output));
         }
     }
 }

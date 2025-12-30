@@ -319,18 +319,17 @@ mod test_lib {
         execution::{MdsfToolWrapper, setup_snippet},
         filetype::get_file_extension,
         format_file, handle_file,
-        testing::{DEFAULT_ON_MISSING_LANGUAGE_DEFINITION, DEFAULT_ON_MISSING_TOOL_BINARY},
+        testing::{
+            DEFAULT_ON_MISSING_LANGUAGE_DEFINITION, DEFAULT_ON_MISSING_TOOL_BINARY,
+            DEFAULT_TEST_DEBUG_ENABLED, DEFAULT_TEST_FORMATTER_TIMEOUT,
+        },
         tools::Tooling,
     };
-
-    const DEBUG_ENABLED: bool = true;
-
-    const TIMEOUT: u64 = 0;
 
     const DRY_RUN: bool = false;
 
     #[test]
-    fn it_should_format_the_code() {
+    fn it_should_format_the_code() -> Result<(), std::io::Error> {
         let input = "```rust
 fn           add(
      a:
@@ -359,8 +358,8 @@ fn add(a: i32, b: i32) -> i32 {
                 &config,
                 std::path::Path::new("."),
                 input,
-                TIMEOUT,
-                DEBUG_ENABLED,
+                DEFAULT_TEST_FORMATTER_TIMEOUT,
+                DEFAULT_TEST_DEBUG_ENABLED,
                 DEFAULT_ON_MISSING_TOOL_BINARY,
                 DEFAULT_ON_MISSING_LANGUAGE_DEFINITION,
             );
@@ -371,24 +370,25 @@ fn add(a: i32, b: i32) -> i32 {
         };
 
         {
-            let file =
-                setup_snippet(input, &get_file_extension("markdown")).expect("it to create a file");
+            let file = setup_snippet(input, &get_file_extension("markdown"))?;
 
             assert!(handle_file(
                 &config,
                 file.path(),
                 DRY_RUN,
                 None,
-                TIMEOUT,
-                DEBUG_ENABLED,
+                DEFAULT_TEST_FORMATTER_TIMEOUT,
+                DEFAULT_TEST_DEBUG_ENABLED,
                 DEFAULT_ON_MISSING_TOOL_BINARY,
                 DEFAULT_ON_MISSING_LANGUAGE_DEFINITION,
             ));
 
-            let output = std::fs::read_to_string(file.path()).expect("it to return the string");
+            let output = std::fs::read_to_string(file.path())?;
 
             assert_eq!(output, expected_output);
         };
+
+        Ok(())
     }
 
     #[test]
@@ -444,8 +444,8 @@ fn           add(
                     &config,
                     std::path::Path::new("."),
                     &input,
-                    TIMEOUT,
-                    DEBUG_ENABLED,
+                    DEFAULT_TEST_FORMATTER_TIMEOUT,
+                    DEFAULT_TEST_DEBUG_ENABLED,
                     DEFAULT_ON_MISSING_TOOL_BINARY,
                     DEFAULT_ON_MISSING_LANGUAGE_DEFINITION,
                 );
@@ -456,21 +456,20 @@ fn           add(
             };
 
             {
-                let file = setup_snippet(&input, &get_file_extension("markdown"))
-                    .expect("it to create a file");
+                let file = setup_snippet(&input, &get_file_extension("markdown"))?;
 
                 assert!(handle_file(
                     &config,
                     file.path(),
                     DRY_RUN,
                     None,
-                    TIMEOUT,
-                    DEBUG_ENABLED,
+                    DEFAULT_TEST_FORMATTER_TIMEOUT,
+                    DEFAULT_TEST_DEBUG_ENABLED,
                     DEFAULT_ON_MISSING_TOOL_BINARY,
                     DEFAULT_ON_MISSING_LANGUAGE_DEFINITION,
                 ));
 
-                let output = std::fs::read_to_string(file.path()).expect("it to return the string");
+                let output = std::fs::read_to_string(file.path())?;
 
                 assert_eq!(output, expected_output);
             };
@@ -545,8 +544,8 @@ fn add(a: i32, b: i32) -> i32 {
             &config,
             std::path::Path::new("."),
             input,
-            TIMEOUT,
-            DEBUG_ENABLED,
+            DEFAULT_TEST_FORMATTER_TIMEOUT,
+            DEFAULT_TEST_DEBUG_ENABLED,
             DEFAULT_ON_MISSING_TOOL_BINARY,
             DEFAULT_ON_MISSING_LANGUAGE_DEFINITION,
         );
@@ -561,7 +560,7 @@ fn add(a: i32, b: i32) -> i32 {
     #[allow(clippy::too_many_lines)]
     #[test_with::executable(gofmt)]
     #[test]
-    fn it_should_support_go_with_package() {
+    fn it_should_support_go_with_package() -> Result<(), std::io::Error> {
         let input = "```go
 package main
 
@@ -622,8 +621,8 @@ type Whatever struct {
                     &config,
                     std::path::Path::new("."),
                     input,
-                    TIMEOUT,
-                    DEBUG_ENABLED,
+                    DEFAULT_TEST_FORMATTER_TIMEOUT,
+                    DEFAULT_TEST_DEBUG_ENABLED,
                     DEFAULT_ON_MISSING_TOOL_BINARY,
                     DEFAULT_ON_MISSING_LANGUAGE_DEFINITION,
                 );
@@ -634,21 +633,20 @@ type Whatever struct {
             };
 
             {
-                let file = setup_snippet(input, &get_file_extension("markdown"))
-                    .expect("it to create a file");
+                let file = setup_snippet(input, &get_file_extension("markdown"))?;
 
                 assert!(handle_file(
                     &config,
                     file.path(),
                     DRY_RUN,
                     None,
-                    TIMEOUT,
-                    DEBUG_ENABLED,
+                    DEFAULT_TEST_FORMATTER_TIMEOUT,
+                    DEFAULT_TEST_DEBUG_ENABLED,
                     DEFAULT_ON_MISSING_TOOL_BINARY,
                     DEFAULT_ON_MISSING_LANGUAGE_DEFINITION,
                 ));
 
-                let output = std::fs::read_to_string(file.path()).expect("it to return the string");
+                let output = std::fs::read_to_string(file.path())?;
 
                 assert_eq!(output, expected_output);
             };
@@ -668,8 +666,8 @@ type Whatever struct {
                     &config,
                     std::path::Path::new("."),
                     input,
-                    TIMEOUT,
-                    DEBUG_ENABLED,
+                    DEFAULT_TEST_FORMATTER_TIMEOUT,
+                    DEFAULT_TEST_DEBUG_ENABLED,
                     DEFAULT_ON_MISSING_TOOL_BINARY,
                     DEFAULT_ON_MISSING_LANGUAGE_DEFINITION,
                 );
@@ -680,30 +678,31 @@ type Whatever struct {
             };
 
             {
-                let file = setup_snippet(input, &get_file_extension("markdown"))
-                    .expect("it to create a file");
+                let file = setup_snippet(input, &get_file_extension("markdown"))?;
 
                 assert!(handle_file(
                     &config,
                     file.path(),
                     DRY_RUN,
                     None,
-                    TIMEOUT,
-                    DEBUG_ENABLED,
+                    DEFAULT_TEST_FORMATTER_TIMEOUT,
+                    DEFAULT_TEST_DEBUG_ENABLED,
                     DEFAULT_ON_MISSING_TOOL_BINARY,
                     DEFAULT_ON_MISSING_LANGUAGE_DEFINITION,
                 ));
 
-                let output = std::fs::read_to_string(file.path()).expect("it to return the string");
+                let output = std::fs::read_to_string(file.path())?;
 
                 assert_eq!(output, expected_output);
             };
         }
+
+        Ok(())
     }
 
     #[allow(clippy::too_many_lines)]
     #[test]
-    fn it_should_add_go_package_if_missing() {
+    fn it_should_add_go_package_if_missing() -> Result<(), std::io::Error> {
         let input = "```go
 import (
 \t\"errors\"
@@ -760,8 +759,8 @@ type Whatever struct {
                     &config,
                     std::path::Path::new("."),
                     input,
-                    TIMEOUT,
-                    DEBUG_ENABLED,
+                    DEFAULT_TEST_FORMATTER_TIMEOUT,
+                    DEFAULT_TEST_DEBUG_ENABLED,
                     DEFAULT_ON_MISSING_TOOL_BINARY,
                     DEFAULT_ON_MISSING_LANGUAGE_DEFINITION,
                 );
@@ -772,21 +771,20 @@ type Whatever struct {
             };
 
             {
-                let file = setup_snippet(input, &get_file_extension("markdown"))
-                    .expect("it to create a file");
+                let file = setup_snippet(input, &get_file_extension("markdown"))?;
 
                 assert!(handle_file(
                     &config,
                     file.path(),
                     DRY_RUN,
                     None,
-                    TIMEOUT,
-                    DEBUG_ENABLED,
+                    DEFAULT_TEST_FORMATTER_TIMEOUT,
+                    DEFAULT_TEST_DEBUG_ENABLED,
                     DEFAULT_ON_MISSING_TOOL_BINARY,
                     DEFAULT_ON_MISSING_LANGUAGE_DEFINITION,
                 ));
 
-                let output = std::fs::read_to_string(file.path()).expect("it to return the string");
+                let output = std::fs::read_to_string(file.path())?;
 
                 assert_eq!(output, expected_output);
             };
@@ -807,8 +805,8 @@ type Whatever struct {
                     &config,
                     std::path::Path::new("."),
                     input,
-                    TIMEOUT,
-                    DEBUG_ENABLED,
+                    DEFAULT_TEST_FORMATTER_TIMEOUT,
+                    DEFAULT_TEST_DEBUG_ENABLED,
                     DEFAULT_ON_MISSING_TOOL_BINARY,
                     DEFAULT_ON_MISSING_LANGUAGE_DEFINITION,
                 );
@@ -819,30 +817,31 @@ type Whatever struct {
             };
 
             {
-                let file = setup_snippet(input, &get_file_extension("markdown"))
-                    .expect("it to create a file");
+                let file = setup_snippet(input, &get_file_extension("markdown"))?;
 
                 assert!(handle_file(
                     &config,
                     file.path(),
                     DRY_RUN,
                     None,
-                    TIMEOUT,
-                    DEBUG_ENABLED,
+                    DEFAULT_TEST_FORMATTER_TIMEOUT,
+                    DEFAULT_TEST_DEBUG_ENABLED,
                     DEFAULT_ON_MISSING_TOOL_BINARY,
                     DEFAULT_ON_MISSING_LANGUAGE_DEFINITION,
                 ));
 
-                let output = std::fs::read_to_string(file.path()).expect("it to return the string");
+                let output = std::fs::read_to_string(file.path())?;
 
                 assert_eq!(output, expected_output);
             };
         }
+
+        Ok(())
     }
 
     #[allow(clippy::too_many_lines)]
     #[test]
-    fn it_should_not_care_if_go_package_is_set() {
+    fn it_should_not_care_if_go_package_is_set() -> Result<(), std::io::Error> {
         let input = "With package name
 
 ```go
@@ -912,8 +911,8 @@ func add(a int, b int) int {
                     &config,
                     std::path::Path::new("."),
                     input,
-                    TIMEOUT,
-                    DEBUG_ENABLED,
+                    DEFAULT_TEST_FORMATTER_TIMEOUT,
+                    DEFAULT_TEST_DEBUG_ENABLED,
                     DEFAULT_ON_MISSING_TOOL_BINARY,
                     DEFAULT_ON_MISSING_LANGUAGE_DEFINITION,
                 );
@@ -924,21 +923,20 @@ func add(a int, b int) int {
             };
 
             {
-                let file = setup_snippet(input, &get_file_extension("markdown"))
-                    .expect("it to create a file");
+                let file = setup_snippet(input, &get_file_extension("markdown"))?;
 
                 assert!(handle_file(
                     &config,
                     file.path(),
                     DRY_RUN,
                     None,
-                    TIMEOUT,
-                    DEBUG_ENABLED,
+                    DEFAULT_TEST_FORMATTER_TIMEOUT,
+                    DEFAULT_TEST_DEBUG_ENABLED,
                     DEFAULT_ON_MISSING_TOOL_BINARY,
                     DEFAULT_ON_MISSING_LANGUAGE_DEFINITION,
                 ));
 
-                let output = std::fs::read_to_string(file.path()).expect("it to return the string");
+                let output = std::fs::read_to_string(file.path())?;
 
                 assert_eq!(output, expected_output);
             };
@@ -958,8 +956,8 @@ func add(a int, b int) int {
                     &config,
                     std::path::Path::new("."),
                     input,
-                    TIMEOUT,
-                    DEBUG_ENABLED,
+                    DEFAULT_TEST_FORMATTER_TIMEOUT,
+                    DEFAULT_TEST_DEBUG_ENABLED,
                     DEFAULT_ON_MISSING_TOOL_BINARY,
                     DEFAULT_ON_MISSING_LANGUAGE_DEFINITION,
                 );
@@ -970,24 +968,25 @@ func add(a int, b int) int {
             };
 
             {
-                let file = setup_snippet(input, &get_file_extension("markdown"))
-                    .expect("it to create a file");
+                let file = setup_snippet(input, &get_file_extension("markdown"))?;
 
                 assert!(handle_file(
                     &config,
                     file.path(),
                     DRY_RUN,
                     None,
-                    TIMEOUT,
-                    DEBUG_ENABLED,
+                    DEFAULT_TEST_FORMATTER_TIMEOUT,
+                    DEFAULT_TEST_DEBUG_ENABLED,
                     DEFAULT_ON_MISSING_TOOL_BINARY,
                     DEFAULT_ON_MISSING_LANGUAGE_DEFINITION,
                 ));
 
-                let output = std::fs::read_to_string(file.path()).expect("it to return the string");
+                let output = std::fs::read_to_string(file.path())?;
 
                 assert_eq!(output, expected_output);
             };
         }
+
+        Ok(())
     }
 }

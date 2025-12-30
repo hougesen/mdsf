@@ -10,48 +10,53 @@ mod verify {
     };
 
     #[test]
-    fn help_arg_outputs_message() {
-        let dir = setup_test_dir();
+    fn help_arg_outputs_message() -> Result<(), std::io::Error> {
+        let dir = setup_test_dir()?;
 
         verify_command(dir.path())
             .arg("--help")
             .assert()
             .success()
             .stdout(predicates::str::is_empty().not());
+        Ok(())
     }
 
     #[test]
-    fn success_with_formatted_input() {
-        let dir = setup_test_dir();
+    fn success_with_formatted_input() -> Result<(), std::io::Error> {
+        let dir = setup_test_dir()?;
 
         init_command(dir.path()).assert().success();
 
-        let file = setup_test_input(dir.path(), FORMATTED_CODE);
+        let file = setup_test_input(dir.path(), FORMATTED_CODE)?;
 
         verify_command(dir.path())
             .arg(file.path())
             .assert()
             .success();
+
+        Ok(())
     }
 
     #[test]
-    fn success_with_formatted_input_and_debug_arg() {
-        let dir = setup_test_dir();
+    fn success_with_formatted_input_and_debug_arg() -> Result<(), std::io::Error> {
+        let dir = setup_test_dir()?;
 
         init_command(dir.path()).assert().success();
 
-        let file = setup_test_input(dir.path(), FORMATTED_CODE);
+        let file = setup_test_input(dir.path(), FORMATTED_CODE)?;
 
         verify_command(dir.path())
             .arg("--debug")
             .arg(file.path())
             .assert()
             .success();
+
+        Ok(())
     }
 
     #[test]
-    fn success_with_formatted_input_stdin() {
-        let dir = setup_test_dir();
+    fn success_with_formatted_input_stdin() -> Result<(), std::io::Error> {
+        let dir = setup_test_dir()?;
 
         init_command(dir.path()).assert().success();
 
@@ -60,25 +65,29 @@ mod verify {
             .write_stdin(FORMATTED_CODE)
             .assert()
             .success();
+
+        Ok(())
     }
 
     #[test]
-    fn fails_with_broken_input() {
-        let dir = setup_test_dir();
+    fn fails_with_broken_input() -> Result<(), std::io::Error> {
+        let dir = setup_test_dir()?;
 
         init_command(dir.path()).assert().success();
 
-        let file = setup_test_input(dir.path(), BROKEN_CODE);
+        let file = setup_test_input(dir.path(), BROKEN_CODE)?;
 
         verify_command(dir.path())
             .arg(file.path())
             .assert()
             .failure();
+
+        Ok(())
     }
 
     #[test]
-    fn fails_with_broken_input_stdin() {
-        let dir = setup_test_dir();
+    fn fails_with_broken_input_stdin() -> Result<(), std::io::Error> {
+        let dir = setup_test_dir()?;
 
         init_command(dir.path()).assert().success();
 
@@ -87,11 +96,13 @@ mod verify {
             .write_stdin(BROKEN_CODE)
             .assert()
             .failure();
+
+        Ok(())
     }
 
     #[test]
-    fn accepts_multiple_file_paths_formatted() {
-        let dir = setup_test_dir();
+    fn accepts_multiple_file_paths_formatted() -> Result<(), std::io::Error> {
+        let dir = setup_test_dir()?;
 
         init_command(dir.path()).assert().success();
 
@@ -100,7 +111,7 @@ mod verify {
         let mut files = Vec::new();
 
         for _ in 0..5 {
-            let file = setup_test_input(dir.path(), FORMATTED_CODE);
+            let file = setup_test_input(dir.path(), FORMATTED_CODE)?;
 
             cmd.arg(file.path());
 
@@ -111,14 +122,16 @@ mod verify {
 
         // Validate the files wasn't changed
         for file in files {
-            let output = std::fs::read_to_string(file.path()).unwrap();
+            let output = std::fs::read_to_string(file.path())?;
             assert_eq!(FORMATTED_CODE, output);
         }
+
+        Ok(())
     }
 
     #[test]
-    fn accepts_multiple_file_paths_formatted_with_threads_argument() {
-        let dir = setup_test_dir();
+    fn accepts_multiple_file_paths_formatted_with_threads_argument() -> Result<(), std::io::Error> {
+        let dir = setup_test_dir()?;
 
         init_command(dir.path()).assert().success();
 
@@ -129,7 +142,7 @@ mod verify {
         let mut files = Vec::new();
 
         for _ in 0..5 {
-            let file = setup_test_input(dir.path(), FORMATTED_CODE);
+            let file = setup_test_input(dir.path(), FORMATTED_CODE)?;
 
             cmd.arg(file.path());
 
@@ -140,14 +153,17 @@ mod verify {
 
         // Validate the files wasn't changed
         for file in files {
-            let output = std::fs::read_to_string(file.path()).unwrap();
+            let output = std::fs::read_to_string(file.path())?;
             assert_eq!(FORMATTED_CODE, output);
         }
+
+        Ok(())
     }
 
     #[test]
-    fn accepts_multiple_file_paths_formatted_with_threads_argument_zero() {
-        let dir = setup_test_dir();
+    fn accepts_multiple_file_paths_formatted_with_threads_argument_zero()
+    -> Result<(), std::io::Error> {
+        let dir = setup_test_dir()?;
 
         init_command(dir.path()).assert().success();
 
@@ -158,7 +174,7 @@ mod verify {
         let mut files = Vec::new();
 
         for _ in 0..5 {
-            let file = setup_test_input(dir.path(), FORMATTED_CODE);
+            let file = setup_test_input(dir.path(), FORMATTED_CODE)?;
 
             cmd.arg(file.path());
 
@@ -169,14 +185,16 @@ mod verify {
 
         // Validate the files wasn't changed
         for file in files {
-            let output = std::fs::read_to_string(file.path()).unwrap();
+            let output = std::fs::read_to_string(file.path())?;
             assert_eq!(FORMATTED_CODE, output);
         }
+
+        Ok(())
     }
 
     #[test]
-    fn accepts_multiple_file_paths_broken() {
-        let dir = setup_test_dir();
+    fn accepts_multiple_file_paths_broken() -> Result<(), Box<dyn core::error::Error>> {
+        let dir = setup_test_dir()?;
 
         init_command(dir.path()).assert().success();
 
@@ -185,7 +203,7 @@ mod verify {
         let mut files = Vec::new();
 
         for _ in 0..5 {
-            let file = setup_test_input(dir.path(), BROKEN_CODE);
+            let file = setup_test_input(dir.path(), BROKEN_CODE)?;
 
             cmd.arg(file.path());
 
@@ -196,14 +214,16 @@ mod verify {
 
         // Validate the files wasn't changed
         for file in files {
-            let output = std::fs::read_to_string(file.path()).unwrap();
+            let output = std::fs::read_to_string(file.path())?;
             assert_eq!(BROKEN_CODE, output);
         }
+
+        Ok(())
     }
 
     #[test]
-    fn accepts_multiple_file_paths_mixed() {
-        let dir = setup_test_dir();
+    fn accepts_multiple_file_paths_mixed() -> Result<(), std::io::Error> {
+        let dir = setup_test_dir()?;
 
         init_command(dir.path()).assert().success();
 
@@ -218,7 +238,7 @@ mod verify {
                 BROKEN_CODE
             };
 
-            let file = setup_test_input(dir.path(), input);
+            let file = setup_test_input(dir.path(), input)?;
 
             cmd.arg(file.path());
 
@@ -229,21 +249,25 @@ mod verify {
 
         // Validate the files wasn't changed
         for (file, input) in files {
-            let output = std::fs::read_to_string(file.path()).unwrap();
+            let output = std::fs::read_to_string(file.path())?;
             assert_eq!(input, output);
         }
+
+        Ok(())
     }
 
     #[test]
-    fn fails_without_input() {
-        let dir = setup_test_dir();
+    fn fails_without_input() -> Result<(), std::io::Error> {
+        let dir = setup_test_dir()?;
 
         verify_command(dir.path()).assert().failure();
+
+        Ok(())
     }
 
     #[test]
-    fn supports_log_level_argument() {
-        let dir = setup_test_dir();
+    fn supports_log_level_argument() -> Result<(), std::io::Error> {
+        let dir = setup_test_dir()?;
 
         init_command(dir.path()).assert().success();
 
@@ -255,11 +279,13 @@ mod verify {
             .assert()
             .success()
             .stderr(predicates::str::is_empty());
+
+        Ok(())
     }
 
     #[test]
-    fn on_missing_language_definition_prioritize_cli() {
-        let dir = setup_test_dir();
+    fn on_missing_language_definition_prioritize_cli() -> Result<(), Box<dyn core::error::Error>> {
+        let dir = setup_test_dir()?;
 
         let config = MdsfConfig {
             on_missing_language_definition: Some(OnMissingLanguageDefinition::FailFast),
@@ -269,11 +295,10 @@ mod verify {
 
         std::fs::write(
             dir.path().join("mdsf.json"),
-            serde_json::to_string(&config).unwrap(),
-        )
-        .unwrap();
+            serde_json::to_string(&config)?,
+        )?;
 
-        let file = setup_test_input(dir.path(), BROKEN_CODE);
+        let file = setup_test_input(dir.path(), BROKEN_CODE)?;
 
         verify_command(dir.path())
             .arg("--on-missing-language-definition")
@@ -282,11 +307,13 @@ mod verify {
             .assert()
             .success()
             .stderr(predicates::str::contains(" no tool configured for 'rust'"));
+
+        Ok(())
     }
 
     #[test]
-    fn on_missing_language_definition_ignore_cli() {
-        let dir = setup_test_dir();
+    fn on_missing_language_definition_ignore_cli() -> Result<(), Box<dyn core::error::Error>> {
+        let dir = setup_test_dir()?;
 
         let config = MdsfConfig {
             on_missing_language_definition: None,
@@ -296,11 +323,10 @@ mod verify {
 
         std::fs::write(
             dir.path().join("mdsf.json"),
-            serde_json::to_string(&config).unwrap(),
-        )
-        .unwrap();
+            serde_json::to_string(&config)?,
+        )?;
 
-        let file = setup_test_input(dir.path(), BROKEN_CODE);
+        let file = setup_test_input(dir.path(), BROKEN_CODE)?;
 
         verify_command(dir.path())
             .arg("--on-missing-language-definition")
@@ -309,11 +335,13 @@ mod verify {
             .assert()
             .success()
             .stderr(predicates::str::contains(" no tool configured for 'rust'"));
+
+        Ok(())
     }
 
     #[test]
-    fn on_missing_language_definition_ignore_config() {
-        let dir = setup_test_dir();
+    fn on_missing_language_definition_ignore_config() -> Result<(), Box<dyn core::error::Error>> {
+        let dir = setup_test_dir()?;
 
         let config = MdsfConfig {
             on_missing_language_definition: Some(OnMissingLanguageDefinition::Ignore),
@@ -323,22 +351,23 @@ mod verify {
 
         std::fs::write(
             dir.path().join("mdsf.json"),
-            serde_json::to_string(&config).unwrap(),
-        )
-        .unwrap();
+            serde_json::to_string(&config)?,
+        )?;
 
-        let file = setup_test_input(dir.path(), BROKEN_CODE);
+        let file = setup_test_input(dir.path(), BROKEN_CODE)?;
 
         verify_command(dir.path())
             .arg(file.path())
             .assert()
             .success()
             .stderr(predicates::str::contains(" no tool configured for 'rust'"));
+
+        Ok(())
     }
 
     #[test]
-    fn on_missing_language_definition_fail_cli() {
-        let dir = setup_test_dir();
+    fn on_missing_language_definition_fail_cli() -> Result<(), Box<dyn core::error::Error>> {
+        let dir = setup_test_dir()?;
 
         let config = MdsfConfig {
             on_missing_language_definition: None,
@@ -348,11 +377,10 @@ mod verify {
 
         std::fs::write(
             dir.path().join("mdsf.json"),
-            serde_json::to_string(&config).unwrap(),
-        )
-        .unwrap();
+            serde_json::to_string(&config)?,
+        )?;
 
-        let file = setup_test_input(dir.path(), BROKEN_CODE);
+        let file = setup_test_input(dir.path(), BROKEN_CODE)?;
 
         verify_command(dir.path())
             .arg("--on-missing-language-definition")
@@ -361,11 +389,13 @@ mod verify {
             .assert()
             .failure()
             .stderr(predicates::str::contains(" no tool configured for 'rust'"));
+
+        Ok(())
     }
 
     #[test]
-    fn on_missing_language_definition_fail_config() {
-        let dir = setup_test_dir();
+    fn on_missing_language_definition_fail_config() -> Result<(), Box<dyn core::error::Error>> {
+        let dir = setup_test_dir()?;
 
         let config = MdsfConfig {
             on_missing_language_definition: Some(OnMissingLanguageDefinition::Fail),
@@ -375,22 +405,23 @@ mod verify {
 
         std::fs::write(
             dir.path().join("mdsf.json"),
-            serde_json::to_string(&config).unwrap(),
-        )
-        .unwrap();
+            serde_json::to_string(&config)?,
+        )?;
 
-        let file = setup_test_input(dir.path(), BROKEN_CODE);
+        let file = setup_test_input(dir.path(), BROKEN_CODE)?;
 
         verify_command(dir.path())
             .arg(file.path())
             .assert()
             .failure()
             .stderr(predicates::str::contains(" no tool configured for 'rust'"));
+
+        Ok(())
     }
 
     #[test]
-    fn on_missing_language_definition_fail_fast_cli() {
-        let dir = setup_test_dir();
+    fn on_missing_language_definition_fail_fast_cli() -> Result<(), Box<dyn core::error::Error>> {
+        let dir = setup_test_dir()?;
 
         let config = MdsfConfig {
             on_missing_language_definition: None,
@@ -400,11 +431,10 @@ mod verify {
 
         std::fs::write(
             dir.path().join("mdsf.json"),
-            serde_json::to_string(&config).unwrap(),
-        )
-        .unwrap();
+            serde_json::to_string(&config)?,
+        )?;
 
-        let file = setup_test_input(dir.path(), BROKEN_CODE);
+        let file = setup_test_input(dir.path(), BROKEN_CODE)?;
 
         verify_command(dir.path())
             .arg("--on-missing-language-definition")
@@ -413,11 +443,14 @@ mod verify {
             .assert()
             .failure()
             .stderr(predicates::str::contains(" no tool configured for 'rust'"));
+
+        Ok(())
     }
 
     #[test]
-    fn on_missing_language_definition_fail_fast_config() {
-        let dir = setup_test_dir();
+    fn on_missing_language_definition_fail_fast_config() -> Result<(), Box<dyn core::error::Error>>
+    {
+        let dir = setup_test_dir()?;
 
         let config = MdsfConfig {
             on_missing_language_definition: Some(OnMissingLanguageDefinition::FailFast),
@@ -427,16 +460,17 @@ mod verify {
 
         std::fs::write(
             dir.path().join("mdsf.json"),
-            serde_json::to_string(&config).unwrap(),
-        )
-        .unwrap();
+            serde_json::to_string(&config)?,
+        )?;
 
-        let file = setup_test_input(dir.path(), BROKEN_CODE);
+        let file = setup_test_input(dir.path(), BROKEN_CODE)?;
 
         verify_command(dir.path())
             .arg(file.path())
             .assert()
             .failure()
             .stderr(predicates::str::contains(" no tool configured for 'rust'"));
+
+        Ok(())
     }
 }

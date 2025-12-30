@@ -1,7 +1,7 @@
 use mdsf::{caching::CACHE_DIR, get_project_dir};
 
 #[inline]
-pub fn run() -> std::io::Result<()> {
+pub fn run() -> Result<(), std::io::Error> {
     let cache_dir = get_project_dir().join(CACHE_DIR);
 
     let exists = cache_dir.try_exists()?;
@@ -18,23 +18,21 @@ mod test_run {
     use mdsf::{caching::CACHE_DIR, get_project_dir};
 
     #[test]
-    fn it_should_remove_cache_directory() {
+    fn it_should_remove_cache_directory() -> Result<(), std::io::Error> {
         let cache_dir = get_project_dir().join(CACHE_DIR);
 
-        std::fs::create_dir_all(&cache_dir).expect("it to create dirs if missing");
+        std::fs::create_dir_all(&cache_dir)?;
 
-        let exists_before = cache_dir
-            .try_exists()
-            .expect("it to determine if it exists");
+        let exists_before = cache_dir.try_exists()?;
 
         assert!(exists_before);
 
-        super::run().expect("it to remove the directory");
+        super::run()?;
 
-        let exists_after = cache_dir
-            .try_exists()
-            .expect("it to determine if it exists");
+        let exists_after = cache_dir.try_exists()?;
 
         assert!(!exists_after);
+
+        Ok(())
     }
 }

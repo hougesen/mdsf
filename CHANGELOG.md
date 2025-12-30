@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file. Dates are d
 
 #### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.11.1...HEAD)
 
+- build(deps): bump serde_json from 1.0.147 to 1.0.148 [`#1466`](https://github.com/hougesen/mdsf/pull/1466)
+- build(deps): bump clap_complete from 4.5.62 to 4.5.63 [`#1467`](https://github.com/hougesen/mdsf/pull/1467)
+- build(deps): bump schemars from 1.1.0 to 1.2.0 [`#1465`](https://github.com/hougesen/mdsf/pull/1465)
+- feat(tools): add support for kube-linter [`#1464`](https://github.com/hougesen/mdsf/pull/1464)
 - feat(tools): add support for action-validator [`#1463`](https://github.com/hougesen/mdsf/pull/1463)
 - feat: support installing packages using mise for testing [`#1462`](https://github.com/hougesen/mdsf/pull/1462)
 - feat(tools): add support for swiftlint [`#1461`](https://github.com/hougesen/mdsf/pull/1461)

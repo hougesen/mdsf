@@ -42,7 +42,7 @@ impl CacheEntry {
     }
 
     #[inline]
-    pub fn set(&self, content: &str) -> std::io::Result<()> {
+    pub fn set(&self, content: &str) -> Result<(), std::io::Error> {
         let p = self.to_path();
 
         if let Some(parent) = p.parent() {
@@ -53,7 +53,7 @@ impl CacheEntry {
     }
 
     #[cfg(test)]
-    pub fn delete(&self) -> std::io::Result<()> {
+    pub fn delete(&self) -> Result<(), std::io::Error> {
         let p = self.to_path();
 
         let exists = p.try_exists()?;
@@ -72,7 +72,7 @@ mod test_cache_entry {
     use crate::config::MdsfConfig;
 
     #[test]
-    fn it_should_work() {
+    fn it_should_work() -> Result<(), std::io::Error> {
         let config = MdsfConfig::default();
         let file_path = std::path::Path::new("mdsf");
 
@@ -80,21 +80,19 @@ mod test_cache_entry {
 
         let cache_entry = CacheEntry::new(hash_config(&config), file_path, original_content);
 
-        cache_entry
-            .delete()
-            .expect("it to delete any existing cache entry");
+        cache_entry.delete()?;
 
-        assert!(cache_entry.get().is_none());
+        assert_eq!(None, cache_entry.get());
 
         let updated_content = "This is the content after being set";
 
-        cache_entry
-            .set(updated_content)
-            .expect("it to update the cache");
+        cache_entry.set(updated_content)?;
 
-        let cached_content = cache_entry.get().expect("it to return the update content");
+        let cached_content = cache_entry.get();
 
-        assert_eq!(updated_content, cached_content);
+        assert_eq!(Some(updated_content.to_string()), cached_content);
+
+        Ok(())
     }
 }
 

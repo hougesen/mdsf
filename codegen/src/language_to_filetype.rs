@@ -87,7 +87,7 @@ mod test_language_to_ext {{
 {WHITESPACE}{WHITESPACE}];
 
 {WHITESPACE}{WHITESPACE}for (input, output) in cases {{
-{WHITESPACE}{WHITESPACE}{WHITESPACE}assert_eq!(output, language_to_ext(input).unwrap());
+{WHITESPACE}{WHITESPACE}{WHITESPACE}assert!(language_to_ext(input).is_some_and(|o| o == output));
 {WHITESPACE}{WHITESPACE}}}
 
 {WHITESPACE}}}

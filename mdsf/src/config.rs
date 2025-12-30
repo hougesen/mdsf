@@ -363,25 +363,28 @@ mod test_config {
     use crate::{error::MdsfError, execution::setup_snippet};
 
     #[test]
-    fn schema_should_be_serializable() {
+    fn schema_should_be_serializable() -> Result<(), serde_json::Error> {
         let config = MdsfConfig::default();
 
-        let json = serde_json::to_string_pretty(&config).expect("it to be serializable");
+        let json = serde_json::to_string_pretty(&config)?;
 
-        let loaded = serde_json::from_str::<MdsfConfig>(&json).expect("it to be parsed");
+        let loaded = serde_json::from_str::<MdsfConfig>(&json)?;
 
         assert_eq!(config, loaded);
+
+        Ok(())
     }
 
     #[test]
     #[cfg(feature = "json-schema")]
-    fn json_schema_should_be_serializable() {
-        serde_json::to_string_pretty(&schemars::schema_for!(MdsfConfig))
-            .expect("it to be serializable");
+    fn json_schema_should_be_serializable() -> Result<(), serde_json::Error> {
+        serde_json::to_string_pretty(&schemars::schema_for!(MdsfConfig))?;
+
+        Ok(())
     }
 
     #[test]
-    fn it_should_ignore_comments() {
+    fn it_should_ignore_comments() -> Result<(), serde_json::Error> {
         let r = r#"{
     // this is a slash comment
     "javascript":  ["prettier"],
@@ -395,7 +398,9 @@ mod test_config {
 
 }"#;
 
-        MdsfConfig::parse(r).expect("it to parse the config");
+        MdsfConfig::parse(r)?;
+
+        Ok(())
     }
 
     #[test]
@@ -406,7 +411,7 @@ mod test_config {
 
         std::fs::write(f.path(), serde_json::to_string(&default_config)?)?;
 
-        let loaded = MdsfConfig::load(f.path()).expect("it to return the config");
+        let loaded = MdsfConfig::load(f.path())?;
 
         assert_eq!(default_config, loaded);
 
@@ -424,7 +429,7 @@ mod test_config {
     }
 
     #[test]
-    fn it_should_error_on_broken_config() -> std::io::Result<()> {
+    fn it_should_error_on_broken_config() -> Result<(), std::io::Error> {
         let input = "{thisisnotvalidjson}";
 
         let file = setup_snippet(input, ".json")?;

@@ -69,39 +69,36 @@ fn normalize_plugin(mut plugin: Tool) -> Tool {
     plugin
 }
 
-fn get_plugin_files() -> Vec<Tool> {
+fn get_plugin_files() -> Result<Vec<Tool>, CodegenError> {
     let tool_folder = "tools";
 
     let _ = std::fs::create_dir_all(tool_folder);
 
     let walker = ignore::WalkBuilder::new(tool_folder).build().flatten();
 
-    let mut tools = walker
-        .filter_map(|entry| {
-            if entry.file_name() == "plugin.json" {
-                println!("{}", entry.path().display());
+    let mut tools = Vec::new();
 
-                let content = std::fs::read_to_string(entry.path()).unwrap();
+    for entry in walker {
+        if entry.file_name() == "plugin.json" {
+            println!("{}", entry.path().display());
 
-                let plugin = normalize_plugin(serde_json::from_str::<Tool>(&content).unwrap());
+            let content = std::fs::read_to_string(entry.path())?;
 
-                std::fs::write(entry.path(), serde_json::to_string_pretty(&plugin).unwrap())
-                    .unwrap();
+            let plugin = normalize_plugin(serde_json::from_str::<Tool>(&content)?);
 
-                Some(plugin)
-            } else {
-                None
-            }
-        })
-        .collect::<Vec<_>>();
+            std::fs::write(entry.path(), serde_json::to_string_pretty(&plugin)?)?;
+
+            tools.push(plugin);
+        }
+    }
 
     tools.sort_unstable_by(|a, b| a.binary.cmp(&b.binary));
 
-    tools
+    Ok(tools)
 }
 
 fn main() -> Result<(), CodegenError> {
-    let plugins = get_plugin_files();
+    let plugins = get_plugin_files()?;
 
     let generated_commands = tools::generate(&plugins)?;
 

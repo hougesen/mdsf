@@ -17,14 +17,13 @@ pub fn setup_pnpm_dlx_command(package_name: &str, executable_name: &str) -> std:
 mod test_pnpm {
     #[test_with::executable(pnpm)]
     #[test]
-    fn it_can_execute_an_npm_package_script() {
+    fn it_can_execute_an_npm_package_script() -> Result<(), Box<dyn core::error::Error>> {
         let input = "[1,2,3,4,5,6]";
         let output = "[1, 2, 3, 4, 5, 6]\n";
 
         let file_ext = crate::filetype::get_file_extension("json");
 
-        let snippet =
-            crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
+        let snippet = crate::execution::setup_snippet(input, &file_ext)?;
 
         let result = crate::execution::run_tools(
             &[crate::runners::CommandType::Pnpm("prettier", "prettier")],
@@ -37,17 +36,17 @@ mod test_pnpm {
                 pnpm: true,
                 ..Default::default()
             },
-        )
-        .expect("it to succeed")
-        .1
-        .expect("it to be some");
+        )?;
 
-        assert_eq!(result, output);
+        assert!(!result.0);
+        assert_eq!(result.1, Some(output.to_string()));
+
+        Ok(())
     }
 
     #[test_with::executable(pnpm)]
     #[test]
-    fn it_works_with_executable_name() {
+    fn it_works_with_executable_name() -> Result<(), Box<dyn core::error::Error>> {
         let input = r#"model Pet {  name: string;  age: int32;kind: "dog" | "cat" | "fish";}
 "#;
 
@@ -60,8 +59,7 @@ mod test_pnpm {
 
         let file_ext = crate::filetype::get_file_extension("typespec");
 
-        let snippet =
-            crate::execution::setup_snippet(input, &file_ext).expect("it to create a snippet file");
+        let snippet = crate::execution::setup_snippet(input, &file_ext)?;
 
         let result = crate::execution::run_tools(
             &[crate::runners::CommandType::Pnpm(
@@ -77,11 +75,11 @@ mod test_pnpm {
                 pnpm: true,
                 ..Default::default()
             },
-        )
-        .expect("it to be successful")
-        .1
-        .expect("it to be some");
+        )?;
 
-        assert_eq!(result, output);
+        assert!(!result.0);
+        assert_eq!(result.1, Some(output.to_string()));
+
+        Ok(())
     }
 }
