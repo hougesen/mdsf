@@ -15,11 +15,11 @@
     }
   },
   "description": "A golang formatter that fixes long lines",
-  "homepage": "https://github.com/segmentio/golines",
+  "homepage": "https://github.com/golangci/golines",
   "languages": ["go"],
   "packages": {
     "go": {
-      "package": "github.com/segmentio/golines@latest"
+      "package": "github.com/golangci/golines@latest"
     }
   }
 }

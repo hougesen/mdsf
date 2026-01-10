@@ -842,7 +842,7 @@
           "const": "golangci-lint:run:fix"
         },
         {
-          "description": "A golang formatter that fixes long lines\n\n[https://github.com/segmentio/golines](https://github.com/segmentio/golines)\n\n`golines -w $PATH`",
+          "description": "A golang formatter that fixes long lines\n\n[https://github.com/golangci/golines](https://github.com/golangci/golines)\n\n`golines -w $PATH`",
           "type": "string",
           "const": "golines"
         },
@@ -1680,6 +1680,11 @@
           "description": "A command-line utility that checks for best practices in SaltStack\n\n[https://github.com/warpnet/salt-lint](https://github.com/warpnet/salt-lint)\n\n`salt-lint $PATH`",
           "type": "string",
           "const": "salt-lint"
+        },
+        {
+          "description": "Code formatter for Scala\n\n[https://www.scala-lang.org](https://www.scala-lang.org)\n\n`scala fmt $PATH`",
+          "type": "string",
+          "const": "scala"
         },
         {
           "description": "Code formatter for Scala\n\n[https://github.com/scalameta/scalafmt](https://github.com/scalameta/scalafmt)\n\n`scalafmt --quiet --mode any $PATH`",

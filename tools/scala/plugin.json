@@ -1,0 +1,21 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "scala",
+  "categories": ["formatter"],
+  "commands": {
+    "": {
+      "arguments": ["fmt", "$PATH"],
+      "tests": [
+        {
+          "language": "scala",
+          "test_input": "object Addition {\n             def main() = {\n                 println(1 + 3)\n             }\n    }",
+          "test_output": "object Addition {\n  def main() = {\n    println(1 + 3)\n  }\n}\n"
+        }
+      ]
+    }
+  },
+  "description": "Code formatter for Scala",
+  "homepage": "https://www.scala-lang.org",
+  "languages": ["scala"],
+  "packages": {}
+}

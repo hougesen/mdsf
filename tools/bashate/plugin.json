@@ -15,6 +15,7 @@
     }
   },
   "description": "Code style enforcement for bash programs",
+  "disable_ci_package_install": true,
   "homepage": "https://github.com/openstack/bashate",
   "languages": ["bash"],
   "packages": {

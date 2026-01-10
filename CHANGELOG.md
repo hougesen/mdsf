@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file. Dates are d
 
 #### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.11.1...HEAD)
 
+- build(deps): bump clap_complete from 4.5.64 to 4.5.65 [`#1474`](https://github.com/hougesen/mdsf/pull/1474)
+- build(deps-dev): bump @typescript-eslint/eslint-plugin in /mdsf-vscode [`#1471`](https://github.com/hougesen/mdsf/pull/1471)
+- build(deps): bump clap_complete from 4.5.63 to 4.5.64 [`#1469`](https://github.com/hougesen/mdsf/pull/1469)
+- refactor: remove all usage of unwrap and expect in tests [`#1468`](https://github.com/hougesen/mdsf/pull/1468)
 - build(deps): bump serde_json from 1.0.147 to 1.0.148 [`#1466`](https://github.com/hougesen/mdsf/pull/1466)
 - build(deps): bump clap_complete from 4.5.62 to 4.5.63 [`#1467`](https://github.com/hougesen/mdsf/pull/1467)
 - build(deps): bump schemars from 1.1.0 to 1.2.0 [`#1465`](https://github.com/hougesen/mdsf/pull/1465)

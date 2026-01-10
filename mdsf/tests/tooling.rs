@@ -8816,6 +8816,63 @@ mod test_rustywind {
 }
 
 #[cfg(test)]
+mod test_scala {
+    #[test_with::executable(scala)]
+    fn test_scala_scala_cbd61c065383c05b() -> Result<(), Box<dyn core::error::Error>> {
+        let input = r#"object Addition {
+             def main() = {
+                 println(1 + 3)
+             }
+    }"#;
+
+        let output = r#"object Addition {
+  def main() = {
+    println(1 + 3)
+  }
+}
+"#;
+
+        let ft = "scala";
+
+        crate::common::run_tooling_test(
+            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::Scala),
+            input,
+            output,
+            ft,
+        )
+    }
+
+    #[test_with::executable(scala)]
+    fn test_custom_tool_scala_scala_cbd61c065383c05b() -> Result<(), Box<dyn core::error::Error>> {
+        let input = r#"object Addition {
+             def main() = {
+                 println(1 + 3)
+             }
+    }"#;
+
+        let output = r#"object Addition {
+  def main() = {
+    println(1 + 3)
+  }
+}
+"#;
+
+        let ft = "scala";
+
+        crate::common::run_tooling_test(
+            mdsf::config::MdsfTool::Custom(mdsf::custom::CustomTool {
+                binary: "scala".to_owned(),
+                arguments: vec!["fmt".to_owned(), "$PATH".to_owned()],
+                stdin: false,
+            }),
+            input,
+            output,
+            ft,
+        )
+    }
+}
+
+#[cfg(test)]
 mod test_scalafmt {
     #[test_with::executable(scalafmt)]
     fn test_scalafmt_scala_cbd61c065383c05b() -> Result<(), Box<dyn core::error::Error>> {

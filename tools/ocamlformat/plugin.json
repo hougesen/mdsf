@@ -20,6 +20,7 @@
     }
   },
   "description": "Auto-formatter for OCaml code",
+  "disable_ci_package_install": true,
   "homepage": "https://github.com/ocaml-ppx/ocamlformat",
   "languages": ["ocaml"],
   "packages": {
