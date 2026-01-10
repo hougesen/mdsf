@@ -299,6 +299,7 @@ pub mod rustfmt_2021;
 pub mod rustfmt_2024;
 pub mod rustywind;
 pub mod salt_lint;
+pub mod scala;
 pub mod scalafmt;
 pub mod scalariform;
 pub mod selene;
@@ -1426,7 +1427,7 @@ pub enum Tooling {
     #[serde(rename = "golines")]
     /// A golang formatter that fixes long lines
     ///
-    /// [https://github.com/segmentio/golines](https://github.com/segmentio/golines)
+    /// [https://github.com/golangci/golines](https://github.com/golangci/golines)
     ///
     /// `golines -w $PATH`
     Golines,
@@ -2766,6 +2767,14 @@ pub enum Tooling {
     ///
     /// `salt-lint $PATH`
     SaltLint,
+
+    #[serde(rename = "scala")]
+    /// Code formatter for Scala
+    ///
+    /// [https://www.scala-lang.org](https://www.scala-lang.org)
+    ///
+    /// `scala fmt $PATH`
+    Scala,
 
     #[serde(rename = "scalafmt")]
     /// Code formatter for Scala
@@ -4489,6 +4498,7 @@ impl Tooling {
                 salt_lint::set_args,
                 salt_lint::IS_STDIN,
             ),
+            Self::Scala => (&scala::COMMANDS, scala::set_args, scala::IS_STDIN),
             Self::Scalafmt => (&scalafmt::COMMANDS, scalafmt::set_args, scalafmt::IS_STDIN),
             Self::Scalariform => (
                 &scalariform::COMMANDS,
@@ -5053,6 +5063,7 @@ impl AsRef<str> for Tooling {
             Self::Rustfmt2024 => "rustfmt:2024",
             Self::Rustywind => "rustywind",
             Self::SaltLint => "salt-lint",
+            Self::Scala => "scala",
             Self::Scalafmt => "scalafmt",
             Self::Scalariform => "scalariform",
             Self::Selene => "selene",
@@ -5505,6 +5516,7 @@ mod test_tooling {
         assert_eq!(Tooling::Rustfmt2024, reverse(Tooling::Rustfmt2024)?);
         assert_eq!(Tooling::Rustywind, reverse(Tooling::Rustywind)?);
         assert_eq!(Tooling::SaltLint, reverse(Tooling::SaltLint)?);
+        assert_eq!(Tooling::Scala, reverse(Tooling::Scala)?);
         assert_eq!(Tooling::Scalafmt, reverse(Tooling::Scalafmt)?);
         assert_eq!(Tooling::Scalariform, reverse(Tooling::Scalariform)?);
         assert_eq!(Tooling::Selene, reverse(Tooling::Selene)?);

@@ -61,7 +61,7 @@ jobs:
       - uses: ocaml/setup-ocaml@v3
         with:
           dune-cache: true
-          ocaml-compiler: "5.1"
+          ocaml-compiler: 5
       - uses: actions/setup-java@v5
         with:
           distribution: temurin
@@ -103,10 +103,6 @@ jobs:
       - run: which autoflake || ( which pipx && pipx install autoflake )
         continue-on-error: true
       - run: which autopep8 || ( which pipx && pipx install autopep8 )
-        continue-on-error: true
-      - run: which bashate || ( which brew && brew install bashate )
-        continue-on-error: true
-      - run: which bashate || ( which pipx && pipx install bashate )
         continue-on-error: true
       - run: which beautysh || ( which brew && brew install beautysh )
         continue-on-error: true
@@ -210,9 +206,7 @@ jobs:
         continue-on-error: true
       - run: which goimports || ( which go && go install golang.org/x/tools/cmd/goimports@latest )
         continue-on-error: true
-      - run: which golines || ( which go && go install github.com/segmentio/golines@latest )
-        continue-on-error: true
-      - run: which google-java-format || ( which brew && brew install google-java-format )
+      - run: which golines || ( which go && go install github.com/golangci/golines@latest )
         continue-on-error: true
       - run: which grain || ( which mise && mise use -g grain )
         continue-on-error: true
@@ -317,10 +311,6 @@ jobs:
       - run: which nginxfmt || ( which pipx && pipx install nginxfmt )
         continue-on-error: true
       - run: which nixpkgs-fmt || ( which cargo && ( cargo binstall nixpkgs-fmt || cargo install nixpkgs-fmt ) )
-        continue-on-error: true
-      - run: which nph || ( which nimble && nimble install nph )
-        continue-on-error: true
-      - run: which ocamlformat || ( which opam && eval $(opam env) && opam install ocamlformat )
         continue-on-error: true
       - run: which ocp-indent || ( which apt-get && sudo apt-get install -y ocp-indent )
         continue-on-error: true

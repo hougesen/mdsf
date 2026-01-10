@@ -15,6 +15,7 @@
     }
   },
   "description": "An opinionated code formatter for Nim",
+  "disable_ci_package_install": true,
   "homepage": "https://github.com/arnetheduck/nph",
   "languages": ["nim"],
   "packages": {
