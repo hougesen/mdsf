@@ -27,6 +27,7 @@ All notable changes to this project will be documented in this file. Dates are d
 - build(deps): bump serde_json from 1.0.145 to 1.0.146 [`#1454`](https://github.com/hougesen/mdsf/pull/1454)
 - chore: set version to dev [`#1453`](https://github.com/hougesen/mdsf/pull/1453)
 - build(deps): bump clap_complete from 4.5.61 to 4.5.62 [`#1452`](https://github.com/hougesen/mdsf/pull/1452)
+- feat(tools): add fix and check to twig-cs-fixer [`728e52e`](https://github.com/hougesen/mdsf/commit/728e52ebf88e8674e17143046f50a7445abda107)
 - chore: updated generated code [`32d5d43`](https://github.com/hougesen/mdsf/commit/32d5d43be31c56ad68484bfd430e7410433c20a6)
 - build(deps): bump assert_cmd from 2.1.1 to 2.1.2 [`05700a8`](https://github.com/hougesen/mdsf/commit/05700a8ef4e051c50a3be7323f38e88aaab61dc9)
 

@@ -252,6 +252,11 @@
           "const": "atlas:fmt"
         },
         {
+          "description": "Lints Atlas HCL files\n\n[https://atlasgo.io/cli-reference#atlas-migrate-lint](https://atlasgo.io/cli-reference#atlas-migrate-lint)\n\n`atlas schema lint $PATH`",
+          "type": "string",
+          "const": "atlas:lint"
+        },
+        {
           "description": "Makes typed arguments Optional when the default argument is None\n\n[https://github.com/luttik/auto-optional](https://github.com/luttik/auto-optional)\n\n`auto-optional $PATH`",
           "type": "string",
           "const": "auto-optional"
