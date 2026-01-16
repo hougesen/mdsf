@@ -3,6 +3,10 @@
   "binary": "ghokin",
   "categories": ["formatter"],
   "commands": {
+    "check": {
+      "arguments": ["check", "$PATH"],
+      "tests": []
+    },
     "fmt": {
       "arguments": ["fmt", "replace", "$PATH"],
       "tests": []
@@ -11,5 +15,9 @@
   "description": "Parallelized formatter with no external dependencies for gherkin (cucumber, behat...)",
   "homepage": "https://github.com/antham/ghokin",
   "languages": ["behat", "cucumber", "gherkin"],
-  "packages": {}
+  "packages": {
+    "go": {
+      "package": "github.com/antham/ghokin@latest"
+    }
+  }
 }

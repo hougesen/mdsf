@@ -123,6 +123,7 @@ pub mod gci;
 pub mod gdformat;
 pub mod gdlint;
 pub mod gersemi;
+pub mod ghokin_check;
 pub mod ghokin_fmt;
 pub mod gleam_format;
 pub mod gluon_fmt;
@@ -1364,6 +1365,14 @@ pub enum Tooling {
     ///
     /// `gersemi -i -q $PATH`
     Gersemi,
+
+    #[serde(rename = "ghokin:check")]
+    /// Parallelized formatter with no external dependencies for gherkin (cucumber, behat...)
+    ///
+    /// [https://github.com/antham/ghokin](https://github.com/antham/ghokin)
+    ///
+    /// `ghokin check $PATH`
+    GhokinCheck,
 
     #[serde(rename = "ghokin:fmt")]
     /// Parallelized formatter with no external dependencies for gherkin (cucumber, behat...)
@@ -3959,6 +3968,11 @@ impl Tooling {
             Self::Gdformat => (&gdformat::COMMANDS, gdformat::set_args, gdformat::IS_STDIN),
             Self::Gdlint => (&gdlint::COMMANDS, gdlint::set_args, gdlint::IS_STDIN),
             Self::Gersemi => (&gersemi::COMMANDS, gersemi::set_args, gersemi::IS_STDIN),
+            Self::GhokinCheck => (
+                &ghokin_check::COMMANDS,
+                ghokin_check::set_args,
+                ghokin_check::IS_STDIN,
+            ),
             Self::GhokinFmt => (
                 &ghokin_fmt::COMMANDS,
                 ghokin_fmt::set_args,
@@ -4961,6 +4975,7 @@ impl AsRef<str> for Tooling {
             Self::Gdformat => "gdformat",
             Self::Gdlint => "gdlint",
             Self::Gersemi => "gersemi",
+            Self::GhokinCheck => "ghokin:check",
             Self::GhokinFmt => "ghokin:fmt",
             Self::GleamFormat => "gleam:format",
             Self::GluonFmt => "gluon:fmt",
@@ -5386,6 +5401,7 @@ mod test_tooling {
         assert_eq!(Tooling::Gdformat, reverse(Tooling::Gdformat)?);
         assert_eq!(Tooling::Gdlint, reverse(Tooling::Gdlint)?);
         assert_eq!(Tooling::Gersemi, reverse(Tooling::Gersemi)?);
+        assert_eq!(Tooling::GhokinCheck, reverse(Tooling::GhokinCheck)?);
         assert_eq!(Tooling::GhokinFmt, reverse(Tooling::GhokinFmt)?);
         assert_eq!(Tooling::GleamFormat, reverse(Tooling::GleamFormat)?);
         assert_eq!(Tooling::GluonFmt, reverse(Tooling::GluonFmt)?);
