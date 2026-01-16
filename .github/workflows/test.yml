@@ -69,7 +69,7 @@ jobs:
       - uses: haskell-actions/setup@v2
       - uses: julia-actions/cache@v2
       - uses: cargo-bins/cargo-binstall@main
-      - uses: Homebrew/actions/setup-homebrew@master
+      - uses: homebrew/actions/setup-homebrew@main
       - uses: leafo/gh-actions-lua@v12
       - uses: leafo/gh-actions-luarocks@v6
         continue-on-error: true
@@ -95,6 +95,8 @@ jobs:
       - run: which air || ( which brew && brew install air )
         continue-on-error: true
       - run: which alejandra || ( which cargo && ( cargo binstall alejandra || cargo install alejandra ) )
+        continue-on-error: true
+      - run: which alejandra || ( which brew && brew install alejandra )
         continue-on-error: true
       - run: which alex || ( which npm && npm i -g alex )
         continue-on-error: true

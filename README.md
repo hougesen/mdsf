@@ -592,7 +592,7 @@ When defining the arguments the variable `$PATH` will automatically be replaced 
 | [flynt](https://github.com/ikamensh/flynt)                                           | A tool to automatically convert old string literal formatting to f-strings                                                                                     | `formatter`           | `python`                                                                                                                          |
 | [fnlfmt](https://git.sr.ht/~technomancy/fnlfmt)                                      | A formatter for Fennel code                                                                                                                                    | `formatter`           | `fennel`                                                                                                                          |
 | [forge](https://github.com/foundry-rs/foundry)                                       | Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust                                                   | `formatter`           | `solidity`                                                                                                                        |
-| [fortitude](https://github.com/plasmafair/fortitude)                                 | A Fortran linter                                                                                                                                               | `linter`              |                                                                                                                                   |
+| [fortitude](https://github.com/plasmafair/fortitude)                                 | A Fortran linter                                                                                                                                               | `linter`              | `fortran`                                                                                                                         |
 | [fortran-linter](https://github.com/cphyc/fortran-linter)                            | A simple fortran syntax checker, including automatic fixing of the code                                                                                        | `formatter`, `linter` | `fortran`                                                                                                                         |
 | [fourmolu](https://github.com/fourmolu/fourmolu)                                     | A fourk of ormolu that uses four space indentation and allows arbitrary configuration                                                                          | `formatter`           | `haskell`                                                                                                                         |
 | [fprettify](https://github.com/fortran-lang/fprettify)                               | Auto-formatter for modern Fortran source code                                                                                                                  | `formatter`           | `fortran`                                                                                                                         |
@@ -842,7 +842,7 @@ When defining the arguments the variable `$PATH` will automatically be replaced 
 
 <!-- START_SECTION:supported-commands -->
 
-`mdsf` currently supports 386 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 388 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                         | Command                                                                                 |
 | ---------------------------- | --------------------------------------------------------------------------------------- |
@@ -1197,7 +1197,9 @@ When defining the arguments the variable `$PATH` will automatically be replaced 
 | `ts-standard`                | `ts-standard --fix $PATH`                                                               |
 | `tsp:format`                 | `tsp format $PATH`                                                                      |
 | `tsqllint`                   | `tsqllint --fix $PATH`                                                                  |
-| `twig-cs-fixer:lint`         | `twig-cs-fixer lint $PATH --fix --no-interaction --quiet`                               |
+| `twig-cs-fixer:check`        | `twig-cs-fixer check $PATH --no-interaction`                                            |
+| `twig-cs-fixer:fix`          | `twig-cs-fixer fix $PATH --no-interaction`                                              |
+| `twig-cs-fixer:lint`         | `twig-cs-fixer lint $PATH --no-interaction`                                             |
 | `twigcs`                     | `twigcs $PATH`                                                                          |
 | `ty`                         | `ty check $PATH`                                                                        |
 | `typos`                      | `typos -w --no-ignore --hidden $PATH`                                                   |

@@ -3,8 +3,16 @@
   "binary": "twig-cs-fixer",
   "categories": ["formatter", "linter"],
   "commands": {
+    "check": {
+      "arguments": ["check", "$PATH", "--no-interaction"],
+      "tests": []
+    },
+    "fix": {
+      "arguments": ["fix", "$PATH", "--no-interaction"],
+      "tests": []
+    },
     "lint": {
-      "arguments": ["lint", "$PATH", "--fix", "--no-interaction", "--quiet"],
+      "arguments": ["lint", "$PATH", "--no-interaction"],
       "tests": []
     }
   },
