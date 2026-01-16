@@ -30,7 +30,7 @@
     "lint:eslint:fix": "eslint --fix ."
   },
   "dependencies": {
-    "@actions/core": "^2.0.1",
+    "@actions/core": "^2.0.2",
     "@actions/tool-cache": "^2.0.2"
   },
   "devDependencies": {
