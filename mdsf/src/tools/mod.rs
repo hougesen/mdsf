@@ -389,6 +389,7 @@ pub mod yard_lint;
 pub mod yew_fmt;
 pub mod yq;
 pub mod zig_fmt;
+pub mod ziggy_check;
 pub mod ziggy_fmt;
 pub mod zprint;
 
@@ -3491,6 +3492,14 @@ pub enum Tooling {
     /// `zig fmt $PATH`
     ZigFmt,
 
+    #[serde(rename = "ziggy:check")]
+    /// Checks Ziggy Documents for schema adherence
+    ///
+    /// [https://ziggy-lang.io/documentation/ziggy-check](https://ziggy-lang.io/documentation/ziggy-check)
+    ///
+    /// `ziggy check $PATH`
+    ZiggyCheck,
+
     #[serde(rename = "ziggy:fmt")]
     /// Formats Ziggy documents and Ziggy schemas
     ///
@@ -4783,6 +4792,11 @@ impl Tooling {
             Self::YewFmt => (&yew_fmt::COMMANDS, yew_fmt::set_args, yew_fmt::IS_STDIN),
             Self::Yq => (&yq::COMMANDS, yq::set_args, yq::IS_STDIN),
             Self::ZigFmt => (&zig_fmt::COMMANDS, zig_fmt::set_args, zig_fmt::IS_STDIN),
+            Self::ZiggyCheck => (
+                &ziggy_check::COMMANDS,
+                ziggy_check::set_args,
+                ziggy_check::IS_STDIN,
+            ),
             Self::ZiggyFmt => (
                 &ziggy_fmt::COMMANDS,
                 ziggy_fmt::set_args,
@@ -5195,6 +5209,7 @@ impl AsRef<str> for Tooling {
             Self::YewFmt => "yew-fmt",
             Self::Yq => "yq",
             Self::ZigFmt => "zig:fmt",
+            Self::ZiggyCheck => "ziggy:check",
             Self::ZiggyFmt => "ziggy:fmt",
             Self::Zprint => "zprint",
         }
@@ -5657,6 +5672,7 @@ mod test_tooling {
         assert_eq!(Tooling::YewFmt, reverse(Tooling::YewFmt)?);
         assert_eq!(Tooling::Yq, reverse(Tooling::Yq)?);
         assert_eq!(Tooling::ZigFmt, reverse(Tooling::ZigFmt)?);
+        assert_eq!(Tooling::ZiggyCheck, reverse(Tooling::ZiggyCheck)?);
         assert_eq!(Tooling::ZiggyFmt, reverse(Tooling::ZiggyFmt)?);
         assert_eq!(Tooling::Zprint, reverse(Tooling::Zprint)?);
 

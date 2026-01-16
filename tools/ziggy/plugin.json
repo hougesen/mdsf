@@ -3,6 +3,12 @@
   "binary": "ziggy",
   "categories": ["formatter"],
   "commands": {
+    "check": {
+      "arguments": ["check", "$PATH"],
+      "description": "Checks Ziggy Documents for schema adherence",
+      "homepage": "https://ziggy-lang.io/documentation/ziggy-check",
+      "tests": []
+    },
     "fmt": {
       "arguments": ["fmt", "$PATH"],
       "description": "Formats Ziggy documents and Ziggy schemas",

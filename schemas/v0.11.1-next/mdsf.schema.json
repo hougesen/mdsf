@@ -2132,6 +2132,11 @@
           "const": "zig:fmt"
         },
         {
+          "description": "Checks Ziggy Documents for schema adherence\n\n[https://ziggy-lang.io/documentation/ziggy-check](https://ziggy-lang.io/documentation/ziggy-check)\n\n`ziggy check $PATH`",
+          "type": "string",
+          "const": "ziggy:check"
+        },
+        {
           "description": "Formats Ziggy documents and Ziggy schemas\n\n[https://ziggy-lang.io/documentation/ziggy-fmt](https://ziggy-lang.io/documentation/ziggy-fmt)\n\n`ziggy fmt $PATH`",
           "type": "string",
           "const": "ziggy:fmt"

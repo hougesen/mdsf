@@ -842,7 +842,7 @@ When defining the arguments the variable `$PATH` will automatically be replaced 
 
 <!-- START_SECTION:supported-commands -->
 
-`mdsf` currently supports 389 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 390 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                         | Command                                                                                 |
 | ---------------------------- | --------------------------------------------------------------------------------------- |
@@ -1233,6 +1233,7 @@ When defining the arguments the variable `$PATH` will automatically be replaced 
 | `yew-fmt`                    | `yew-fmt --edition 2021 $PATH`                                                          |
 | `yq`                         | `yq --inplace $PATH`                                                                    |
 | `zig:fmt`                    | `zig fmt $PATH`                                                                         |
+| `ziggy:check`                | `ziggy check $PATH`                                                                     |
 | `ziggy:fmt`                  | `ziggy fmt $PATH`                                                                       |
 | `zprint`                     | `zprint -w $PATH`                                                                       |
 
