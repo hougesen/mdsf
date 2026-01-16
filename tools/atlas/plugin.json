@@ -8,6 +8,12 @@
       "description": "Formats Atlas HCL files",
       "homepage": "https://atlasgo.io/cli-reference#atlas-schema-fmt",
       "tests": []
+    },
+    "lint": {
+      "arguments": ["schema", "lint", "$PATH"],
+      "description": "Lints Atlas HCL files",
+      "homepage": "https://atlasgo.io/cli-reference#atlas-migrate-lint",
+      "tests": []
     }
   },
   "description": "Manage your database schema as code",

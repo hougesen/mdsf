@@ -842,7 +842,7 @@ When defining the arguments the variable `$PATH` will automatically be replaced 
 
 <!-- START_SECTION:supported-commands -->
 
-`mdsf` currently supports 388 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 389 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                         | Command                                                                                 |
 | ---------------------------- | --------------------------------------------------------------------------------------- |
@@ -857,6 +857,7 @@ When defining the arguments the variable `$PATH` will automatically be replaced 
 | `asmfmt`                     | `asmfmt -w $PATH`                                                                       |
 | `astyle`                     | `astyle --quiet $PATH`                                                                  |
 | `atlas:fmt`                  | `atlas schema fmt $PATH`                                                                |
+| `atlas:lint`                 | `atlas schema lint $PATH`                                                               |
 | `auto-optional`              | `auto-optional $PATH`                                                                   |
 | `autocorrect`                | `autocorrect --fix $PATH`                                                               |
 | `autoflake`                  | `autoflake --quiet --in-place $PATH`                                                    |

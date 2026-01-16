@@ -13,6 +13,7 @@ pub mod api_linter;
 pub mod asmfmt;
 pub mod astyle;
 pub mod atlas_fmt;
+pub mod atlas_lint;
 pub mod auto_optional;
 pub mod autocorrect;
 pub mod autoflake;
@@ -481,6 +482,14 @@ pub enum Tooling {
     ///
     /// `atlas schema fmt $PATH`
     AtlasFmt,
+
+    #[serde(rename = "atlas:lint")]
+    /// Lints Atlas HCL files
+    ///
+    /// [https://atlasgo.io/cli-reference#atlas-migrate-lint](https://atlasgo.io/cli-reference#atlas-migrate-lint)
+    ///
+    /// `atlas schema lint $PATH`
+    AtlasLint,
 
     #[serde(rename = "auto-optional")]
     /// Makes typed arguments Optional when the default argument is None
@@ -3554,6 +3563,11 @@ impl Tooling {
                 atlas_fmt::set_args,
                 atlas_fmt::IS_STDIN,
             ),
+            Self::AtlasLint => (
+                &atlas_lint::COMMANDS,
+                atlas_lint::set_args,
+                atlas_lint::IS_STDIN,
+            ),
             Self::AutoOptional => (
                 &auto_optional::COMMANDS,
                 auto_optional::set_args,
@@ -4805,6 +4819,7 @@ impl AsRef<str> for Tooling {
             Self::Asmfmt => "asmfmt",
             Self::Astyle => "astyle",
             Self::AtlasFmt => "atlas:fmt",
+            Self::AtlasLint => "atlas:lint",
             Self::AutoOptional => "auto-optional",
             Self::Autocorrect => "autocorrect",
             Self::Autoflake => "autoflake",
@@ -5209,6 +5224,7 @@ mod test_tooling {
         assert_eq!(Tooling::Asmfmt, reverse(Tooling::Asmfmt)?);
         assert_eq!(Tooling::Astyle, reverse(Tooling::Astyle)?);
         assert_eq!(Tooling::AtlasFmt, reverse(Tooling::AtlasFmt)?);
+        assert_eq!(Tooling::AtlasLint, reverse(Tooling::AtlasLint)?);
         assert_eq!(Tooling::AutoOptional, reverse(Tooling::AutoOptional)?);
         assert_eq!(Tooling::Autocorrect, reverse(Tooling::Autocorrect)?);
         assert_eq!(Tooling::Autoflake, reverse(Tooling::Autoflake)?);
