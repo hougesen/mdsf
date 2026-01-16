@@ -3,12 +3,18 @@
   "binary": "dhall",
   "categories": ["formatter"],
   "commands": {
-    "": {
+    "format": {
       "arguments": ["format", "$PATH"],
+      "description": "Format Dhall files",
+      "tests": []
+    },
+    "lint": {
+      "arguments": ["lint", "$PATH"],
+      "description": "Lint Dhall files",
       "tests": []
     }
   },
-  "description": "Format Dhall files",
+  "description": "Tools for the Dhall configuration language",
   "homepage": "https://dhall-lang.org",
   "languages": ["dhall"],
   "packages": {}

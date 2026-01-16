@@ -563,7 +563,7 @@ When defining the arguments the variable `$PATH` will automatically be replaced 
 | [deadnix](https://github.com/astro/deadnix)                                          | Scan Nix files for dead code                                                                                                                                   | `linter`              | `nix`                                                                                                                             |
 | [deno](https://docs.deno.com/runtime/reference/cli)                                  | Formatter and linter for JavaScript and TypeScript                                                                                                             | `formatter`, `linter` | `javascript`, `json`, `typescript`                                                                                                |
 | [dfmt](https://github.com/dlang-community/dfmt)                                      | Dfmt is a formatter for D source code                                                                                                                          | `formatter`           | `d`                                                                                                                               |
-| [dhall](https://dhall-lang.org)                                                      | Format Dhall files                                                                                                                                             | `formatter`           | `dhall`                                                                                                                           |
+| [dhall](https://dhall-lang.org)                                                      | Tools for the Dhall configuration language                                                                                                                     | `formatter`           | `dhall`                                                                                                                           |
 | [djade](https://github.com/adamchainz/djade)                                         | A Django template formatter                                                                                                                                    | `formatter`           | `django`, `python`                                                                                                                |
 | [djlint](https://www.djlint.com)                                                     | Lint & Format HTML Templates                                                                                                                                   | `formatter`, `linter` | `handlebars`, `html`, `jinja`, `mustache`, `nunjucks`, `twig`                                                                     |
 | [docformatter](https://github.com/pycqa/docformatter)                                | Formats docstrings to follow PEP 257                                                                                                                           | `formatter`           | `python`                                                                                                                          |
@@ -842,7 +842,7 @@ When defining the arguments the variable `$PATH` will automatically be replaced 
 
 <!-- START_SECTION:supported-commands -->
 
-`mdsf` currently supports 390 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 391 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                         | Command                                                                                 |
 | ---------------------------- | --------------------------------------------------------------------------------------- |
@@ -922,7 +922,8 @@ When defining the arguments the variable `$PATH` will automatically be replaced 
 | `deno:fmt`                   | `deno fmt --quiet $PATH`                                                                |
 | `deno:lint`                  | `deno lint --fix $PATH`                                                                 |
 | `dfmt`                       | `dfmt -i $PATH`                                                                         |
-| `dhall`                      | `dhall format $PATH`                                                                    |
+| `dhall:format`               | `dhall format $PATH`                                                                    |
+| `dhall:lint`                 | `dhall lint $PATH`                                                                      |
 | `djade`                      | `djade $PATH`                                                                           |
 | `djlint`                     | `djlint $PATH --reformat`                                                               |
 | `docformatter`               | `docformatter --in-place $PATH`                                                         |
