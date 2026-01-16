@@ -4,6 +4,9 @@ All notable changes to this project will be documented in this file. Dates are d
 
 #### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.11.1...HEAD)
 
+- build(deps): bump serde_json from 1.0.148 to 1.0.149 [`#1473`](https://github.com/hougesen/mdsf/pull/1473)
+- build(deps): bump clap from 4.5.53 to 4.5.54 [`#1472`](https://github.com/hougesen/mdsf/pull/1472)
+- feat(tools): add support for the scala cli [`#1475`](https://github.com/hougesen/mdsf/pull/1475)
 - build(deps): bump clap_complete from 4.5.64 to 4.5.65 [`#1474`](https://github.com/hougesen/mdsf/pull/1474)
 - build(deps-dev): bump @typescript-eslint/eslint-plugin in /mdsf-vscode [`#1471`](https://github.com/hougesen/mdsf/pull/1471)
 - build(deps): bump clap_complete from 4.5.63 to 4.5.64 [`#1469`](https://github.com/hougesen/mdsf/pull/1469)
@@ -24,6 +27,8 @@ All notable changes to this project will be documented in this file. Dates are d
 - build(deps): bump serde_json from 1.0.145 to 1.0.146 [`#1454`](https://github.com/hougesen/mdsf/pull/1454)
 - chore: set version to dev [`#1453`](https://github.com/hougesen/mdsf/pull/1453)
 - build(deps): bump clap_complete from 4.5.61 to 4.5.62 [`#1452`](https://github.com/hougesen/mdsf/pull/1452)
+- chore: updated generated code [`32d5d43`](https://github.com/hougesen/mdsf/commit/32d5d43be31c56ad68484bfd430e7410433c20a6)
+- build(deps): bump assert_cmd from 2.1.1 to 2.1.2 [`05700a8`](https://github.com/hougesen/mdsf/commit/05700a8ef4e051c50a3be7323f38e88aaab61dc9)
 
 #### [v0.11.1](https://github.com/hougesen/mdsf/compare/v0.11.0...v0.11.1)
 

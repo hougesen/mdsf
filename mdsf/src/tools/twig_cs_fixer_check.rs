@@ -9,7 +9,7 @@ pub fn set_args(
     mut cmd: std::process::Command,
     file_path: &std::path::Path,
 ) -> std::process::Command {
-    cmd.arg("lint");
+    cmd.arg("check");
     cmd.arg(file_path);
     cmd.arg("--no-interaction");
     cmd

@@ -18,6 +18,9 @@
   "homepage": "https://github.com/kamadorueda/alejandra",
   "languages": ["nix"],
   "packages": {
+    "brew": {
+      "package": "alejandra"
+    },
     "cargo": {
       "package": "alejandra"
     }

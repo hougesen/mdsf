@@ -1952,7 +1952,17 @@
           "const": "tsqllint"
         },
         {
-          "description": "A tool to automatically fix Twig Coding Standards issues\n\n[https://github.com/vincentlanglet/twig-cs-fixer](https://github.com/vincentlanglet/twig-cs-fixer)\n\n`twig-cs-fixer lint $PATH --fix --no-interaction --quiet`",
+          "description": "A tool to automatically fix Twig Coding Standards issues\n\n[https://github.com/vincentlanglet/twig-cs-fixer](https://github.com/vincentlanglet/twig-cs-fixer)\n\n`twig-cs-fixer check $PATH --no-interaction`",
+          "type": "string",
+          "const": "twig-cs-fixer:check"
+        },
+        {
+          "description": "A tool to automatically fix Twig Coding Standards issues\n\n[https://github.com/vincentlanglet/twig-cs-fixer](https://github.com/vincentlanglet/twig-cs-fixer)\n\n`twig-cs-fixer fix $PATH --no-interaction`",
+          "type": "string",
+          "const": "twig-cs-fixer:fix"
+        },
+        {
+          "description": "A tool to automatically fix Twig Coding Standards issues\n\n[https://github.com/vincentlanglet/twig-cs-fixer](https://github.com/vincentlanglet/twig-cs-fixer)\n\n`twig-cs-fixer lint $PATH --no-interaction`",
           "type": "string",
           "const": "twig-cs-fixer:lint"
         },

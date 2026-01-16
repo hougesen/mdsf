@@ -353,6 +353,8 @@ pub mod tryceratops;
 pub mod ts_standard;
 pub mod tsp_format;
 pub mod tsqllint;
+pub mod twig_cs_fixer_check;
+pub mod twig_cs_fixer_fix;
 pub mod twig_cs_fixer_lint;
 pub mod twigcs;
 pub mod ty;
@@ -3200,12 +3202,28 @@ pub enum Tooling {
     /// `tsqllint --fix $PATH`
     Tsqllint,
 
+    #[serde(rename = "twig-cs-fixer:check")]
+    /// A tool to automatically fix Twig Coding Standards issues
+    ///
+    /// [https://github.com/vincentlanglet/twig-cs-fixer](https://github.com/vincentlanglet/twig-cs-fixer)
+    ///
+    /// `twig-cs-fixer check $PATH --no-interaction`
+    TwigCsFixerCheck,
+
+    #[serde(rename = "twig-cs-fixer:fix")]
+    /// A tool to automatically fix Twig Coding Standards issues
+    ///
+    /// [https://github.com/vincentlanglet/twig-cs-fixer](https://github.com/vincentlanglet/twig-cs-fixer)
+    ///
+    /// `twig-cs-fixer fix $PATH --no-interaction`
+    TwigCsFixerFix,
+
     #[serde(rename = "twig-cs-fixer:lint")]
     /// A tool to automatically fix Twig Coding Standards issues
     ///
     /// [https://github.com/vincentlanglet/twig-cs-fixer](https://github.com/vincentlanglet/twig-cs-fixer)
     ///
-    /// `twig-cs-fixer lint $PATH --fix --no-interaction --quiet`
+    /// `twig-cs-fixer lint $PATH --no-interaction`
     TwigCsFixerLint,
 
     #[serde(rename = "twigcs")]
@@ -4676,6 +4694,16 @@ impl Tooling {
                 tsp_format::IS_STDIN,
             ),
             Self::Tsqllint => (&tsqllint::COMMANDS, tsqllint::set_args, tsqllint::IS_STDIN),
+            Self::TwigCsFixerCheck => (
+                &twig_cs_fixer_check::COMMANDS,
+                twig_cs_fixer_check::set_args,
+                twig_cs_fixer_check::IS_STDIN,
+            ),
+            Self::TwigCsFixerFix => (
+                &twig_cs_fixer_fix::COMMANDS,
+                twig_cs_fixer_fix::set_args,
+                twig_cs_fixer_fix::IS_STDIN,
+            ),
             Self::TwigCsFixerLint => (
                 &twig_cs_fixer_lint::COMMANDS,
                 twig_cs_fixer_lint::set_args,
@@ -5117,6 +5145,8 @@ impl AsRef<str> for Tooling {
             Self::TsStandard => "ts-standard",
             Self::TspFormat => "tsp:format",
             Self::Tsqllint => "tsqllint",
+            Self::TwigCsFixerCheck => "twig-cs-fixer:check",
+            Self::TwigCsFixerFix => "twig-cs-fixer:fix",
             Self::TwigCsFixerLint => "twig-cs-fixer:lint",
             Self::Twigcs => "twigcs",
             Self::Ty => "ty",
@@ -5573,6 +5603,11 @@ mod test_tooling {
         assert_eq!(Tooling::TsStandard, reverse(Tooling::TsStandard)?);
         assert_eq!(Tooling::TspFormat, reverse(Tooling::TspFormat)?);
         assert_eq!(Tooling::Tsqllint, reverse(Tooling::Tsqllint)?);
+        assert_eq!(
+            Tooling::TwigCsFixerCheck,
+            reverse(Tooling::TwigCsFixerCheck)?
+        );
+        assert_eq!(Tooling::TwigCsFixerFix, reverse(Tooling::TwigCsFixerFix)?);
         assert_eq!(Tooling::TwigCsFixerLint, reverse(Tooling::TwigCsFixerLint)?);
         assert_eq!(Tooling::Twigcs, reverse(Tooling::Twigcs)?);
         assert_eq!(Tooling::Ty, reverse(Tooling::Ty)?);
