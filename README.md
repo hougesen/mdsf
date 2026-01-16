@@ -842,7 +842,7 @@ When defining the arguments the variable `$PATH` will automatically be replaced 
 
 <!-- START_SECTION:supported-commands -->
 
-`mdsf` currently supports 391 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 392 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                         | Command                                                                                 |
 | ---------------------------- | --------------------------------------------------------------------------------------- |
@@ -967,6 +967,7 @@ When defining the arguments the variable `$PATH` will automatically be replaced 
 | `gdformat`                   | `gdformat $PATH`                                                                        |
 | `gdlint`                     | `gdlint $PATH`                                                                          |
 | `gersemi`                    | `gersemi -i -q $PATH`                                                                   |
+| `ghokin:check`               | `ghokin check $PATH`                                                                    |
 | `ghokin:fmt`                 | `ghokin fmt replace $PATH`                                                              |
 | `gleam:format`               | `gleam format $PATH`                                                                    |
 | `gluon:fmt`                  | `gluon fmt $PATH`                                                                       |

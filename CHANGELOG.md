@@ -28,6 +28,7 @@ All notable changes to this project will be documented in this file. Dates are d
 - chore: set version to dev [`#1453`](https://github.com/hougesen/mdsf/pull/1453)
 - build(deps): bump clap_complete from 4.5.61 to 4.5.62 [`#1452`](https://github.com/hougesen/mdsf/pull/1452)
 - feat(tools): add fix and check to twig-cs-fixer [`728e52e`](https://github.com/hougesen/mdsf/commit/728e52ebf88e8674e17143046f50a7445abda107)
+- feat(tools): add dhall:lint [`443c95f`](https://github.com/hougesen/mdsf/commit/443c95fff88a7d7b50133239da476cbcb5728817)
 - feat(tools): add atlas:lint [`0295214`](https://github.com/hougesen/mdsf/commit/0295214626ae34fd68fbec1e1d7f0946c1291f0e)
 - feat(tools): add ziggy:lint [`81f7a59`](https://github.com/hougesen/mdsf/commit/81f7a5931b6f63f223eeeb5f1484628afa1ac962)
 - chore: updated generated code [`32d5d43`](https://github.com/hougesen/mdsf/commit/32d5d43be31c56ad68484bfd430e7410433c20a6)

@@ -802,6 +802,11 @@
           "const": "gersemi"
         },
         {
+          "description": "Parallelized formatter with no external dependencies for gherkin (cucumber, behat...)\n\n[https://github.com/antham/ghokin](https://github.com/antham/ghokin)\n\n`ghokin check $PATH`",
+          "type": "string",
+          "const": "ghokin:check"
+        },
+        {
           "description": "Parallelized formatter with no external dependencies for gherkin (cucumber, behat...)\n\n[https://github.com/antham/ghokin](https://github.com/antham/ghokin)\n\n`ghokin fmt replace $PATH`",
           "type": "string",
           "const": "ghokin:fmt"
