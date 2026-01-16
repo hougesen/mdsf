@@ -579,7 +579,12 @@
         {
           "description": "Format Dhall files\n\n[https://dhall-lang.org](https://dhall-lang.org)\n\n`dhall format $PATH`",
           "type": "string",
-          "const": "dhall"
+          "const": "dhall:format"
+        },
+        {
+          "description": "Lint Dhall files\n\n[https://dhall-lang.org](https://dhall-lang.org)\n\n`dhall lint $PATH`",
+          "type": "string",
+          "const": "dhall:lint"
         },
         {
           "description": "A Django template formatter\n\n[https://github.com/adamchainz/djade](https://github.com/adamchainz/djade)\n\n`djade $PATH`",

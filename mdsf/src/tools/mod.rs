@@ -78,7 +78,8 @@ pub mod deadnix;
 pub mod deno_fmt;
 pub mod deno_lint;
 pub mod dfmt;
-pub mod dhall;
+pub mod dhall_format;
+pub mod dhall_lint;
 pub mod djade;
 pub mod djlint;
 pub mod docformatter;
@@ -1004,13 +1005,21 @@ pub enum Tooling {
     /// `dfmt -i $PATH`
     Dfmt,
 
-    #[serde(rename = "dhall")]
+    #[serde(rename = "dhall:format")]
     /// Format Dhall files
     ///
     /// [https://dhall-lang.org](https://dhall-lang.org)
     ///
     /// `dhall format $PATH`
-    Dhall,
+    DhallFormat,
+
+    #[serde(rename = "dhall:lint")]
+    /// Lint Dhall files
+    ///
+    /// [https://dhall-lang.org](https://dhall-lang.org)
+    ///
+    /// `dhall lint $PATH`
+    DhallLint,
 
     #[serde(rename = "djade")]
     /// A Django template formatter
@@ -3801,7 +3810,16 @@ impl Tooling {
                 deno_lint::IS_STDIN,
             ),
             Self::Dfmt => (&dfmt::COMMANDS, dfmt::set_args, dfmt::IS_STDIN),
-            Self::Dhall => (&dhall::COMMANDS, dhall::set_args, dhall::IS_STDIN),
+            Self::DhallFormat => (
+                &dhall_format::COMMANDS,
+                dhall_format::set_args,
+                dhall_format::IS_STDIN,
+            ),
+            Self::DhallLint => (
+                &dhall_lint::COMMANDS,
+                dhall_lint::set_args,
+                dhall_lint::IS_STDIN,
+            ),
             Self::Djade => (&djade::COMMANDS, djade::set_args, djade::IS_STDIN),
             Self::Djlint => (&djlint::COMMANDS, djlint::set_args, djlint::IS_STDIN),
             Self::Docformatter => (
@@ -4898,7 +4916,8 @@ impl AsRef<str> for Tooling {
             Self::DenoFmt => "deno:fmt",
             Self::DenoLint => "deno:lint",
             Self::Dfmt => "dfmt",
-            Self::Dhall => "dhall",
+            Self::DhallFormat => "dhall:format",
+            Self::DhallLint => "dhall:lint",
             Self::Djade => "djade",
             Self::Djlint => "djlint",
             Self::Docformatter => "docformatter",
@@ -5310,7 +5329,8 @@ mod test_tooling {
         assert_eq!(Tooling::DenoFmt, reverse(Tooling::DenoFmt)?);
         assert_eq!(Tooling::DenoLint, reverse(Tooling::DenoLint)?);
         assert_eq!(Tooling::Dfmt, reverse(Tooling::Dfmt)?);
-        assert_eq!(Tooling::Dhall, reverse(Tooling::Dhall)?);
+        assert_eq!(Tooling::DhallFormat, reverse(Tooling::DhallFormat)?);
+        assert_eq!(Tooling::DhallLint, reverse(Tooling::DhallLint)?);
         assert_eq!(Tooling::Djade, reverse(Tooling::Djade)?);
         assert_eq!(Tooling::Djlint, reverse(Tooling::Djlint)?);
         assert_eq!(Tooling::Docformatter, reverse(Tooling::Docformatter)?);
