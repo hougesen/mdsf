@@ -31,6 +31,10 @@ jobs:
       - run: cargo run --package mdsf-codegen
       - run: cargo fmt
       - run: cargo run -- format README.md
+      - run: npm install
+        working-directory: ./github-action
+      - run: npm run build
+        working-directory: ./github-action
       - run: npx prettier@latest --write schemas mdsf.json README.md tools
       - uses: EndBug/add-and-commit@v9
         with:
