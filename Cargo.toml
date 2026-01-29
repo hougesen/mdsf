@@ -37,7 +37,7 @@ serde_yaml = { version = "0.9.34" }
 sha2 = "0.10.9"
 tempfile = "3.24.0"
 terminal_size = "0.4.3"
-test-with = { version = "0.15.6", default-features = false, features = [
+test-with = { version = "0.15.7", default-features = false, features = [
   "executable",
 ] }
 threadpool = "1.8.1"
