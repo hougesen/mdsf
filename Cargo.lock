@@ -593,10 +593,14 @@ dependencies = [
 ]
 
 [[package]]
-name = "json_comments"
-version = "0.2.2"
+name = "json5"
+version = "1.3.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "9dbbfed4e59ba9750e15ba154fdfd9329cee16ff3df539c2666b70f58cc32105"
+checksum = "56c86c72f9e1d3fe29baa32cab8896548eef9aae271fce4e796d16b583fdf6d5"
+dependencies = [
+ "serde",
+ "ucd-trie",
+]
 
 [[package]]
 name = "kstring"
@@ -701,7 +705,7 @@ dependencies = [
  "directories",
  "env_logger",
  "ignore",
- "json_comments",
+ "json5",
  "log",
  "owo-colors",
  "predicates",

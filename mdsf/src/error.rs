@@ -18,7 +18,7 @@ pub enum MdsfError {
     ConfigAlreadyExist,
     ConfigNotFound(std::path::PathBuf),
     // TODO: use &std::path::Path
-    ConfigParse((std::path::PathBuf, serde_json::Error)),
+    ConfigParse((std::path::PathBuf, json5::Error)),
     Io(std::io::Error),
     /// Another alias clashes
     LanguageAliasClash(String, String, String),

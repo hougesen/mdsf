@@ -38,9 +38,11 @@ All notable changes to this project will be documented in this file. Dates are d
 - feat(tools): add ziggy:lint [`81f7a59`](https://github.com/hougesen/mdsf/commit/81f7a5931b6f63f223eeeb5f1484628afa1ac962)
 - chore: bump @actions/tool-cache from 2.0.2 to 3.0.0 in /github-action [`44a320b`](https://github.com/hougesen/mdsf/commit/44a320b00f2c801ed47cd028f7cd0e1de6ce2cd7)
 - chore: bump @actions/core from 2.0.1 to 2.0.2 in /github-action [`cc11263`](https://github.com/hougesen/mdsf/commit/cc11263b9c51035ad7278ab217e0fa3c80554529)
+- ci: generate github action build on push [`c3fe2d9`](https://github.com/hougesen/mdsf/commit/c3fe2d9863a4cc22fa4de596039f738645ec79ea)
 - chore: bump globals from 16.5.0 to 17.0.0 in /mdsf-vscode [`74cb454`](https://github.com/hougesen/mdsf/commit/74cb454b93acb841db9b2a6fc91c8272b14179aa)
 - chore: bump globals from 16.5.0 to 17.0.0 in /github-action [`ed5275a`](https://github.com/hougesen/mdsf/commit/ed5275a972304562b29a9bd48f2ac7589e661bbf)
 - chore: updated generated code [`32d5d43`](https://github.com/hougesen/mdsf/commit/32d5d43be31c56ad68484bfd430e7410433c20a6)
+- chore: bump test-with from 0.15.6 to 0.15.7 [`79bfaff`](https://github.com/hougesen/mdsf/commit/79bfaff2657ef4b69e1510edfe8966572d7aea58)
 - build(deps): bump assert_cmd from 2.1.1 to 2.1.2 [`05700a8`](https://github.com/hougesen/mdsf/commit/05700a8ef4e051c50a3be7323f38e88aaab61dc9)
 
 #### [v0.11.1](https://github.com/hougesen/mdsf/compare/v0.11.0...v0.11.1)

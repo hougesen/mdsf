@@ -1,6 +1,4 @@
-use json_comments::{CommentSettings, StripComments};
-
-use crate::error::MdsfError;
+use crate::{error::MdsfError, terminal::print_config_not_found};
 
 #[allow(clippy::trivially_copy_pass_by_ref)]
 #[inline]
@@ -258,6 +256,34 @@ impl Default for MdsfConfig {
 
 impl MdsfConfig {
     #[inline]
+    pub fn auto_load() -> Result<Self, MdsfError> {
+        let dir = std::env::current_dir()?;
+
+        for name in [
+            "mdsf.json",
+            ".mdsf.json",
+            "mdsf.jsonc",
+            ".mdsf.jsonc",
+            "mdsf.json5",
+            ".mdsf.json5",
+        ] {
+            let path = dir.join(name);
+
+            let c = Self::load(path);
+
+            if let Err(MdsfError::ConfigNotFound(_)) = c {
+                continue;
+            }
+
+            return c;
+        }
+
+        print_config_not_found(&dir);
+
+        Ok(Self::default())
+    }
+
+    #[inline]
     pub fn load(path: impl AsRef<std::path::Path>) -> Result<Self, MdsfError> {
         let path = path.as_ref();
 
@@ -269,22 +295,12 @@ impl MdsfConfig {
             }
         })?;
 
-        // TODO: do something with serde error
-        let parsed = Self::parse(&contents)
-            .map_err(|serde_error| MdsfError::ConfigParse((path.to_path_buf(), serde_error)))?;
-
-        if let Some((version, false)) = parsed.parse_schema_version() {
-            crate::terminal::print_config_schema_version_mismatch(version);
-        }
-
-        Ok(parsed)
+        Self::parse(&contents).map_err(|err| MdsfError::ConfigParse((path.to_path_buf(), err)))
     }
 
     #[inline]
-    fn parse(input: &str) -> serde_json::Result<Self> {
-        let stripped = StripComments::with_settings(CommentSettings::c_style(), input.as_bytes());
-
-        serde_json::from_reader(stripped)
+    fn parse(input: &str) -> Result<Self, json5::Error> {
+        json5::from_str(input)
     }
 
     #[inline]
@@ -323,7 +339,7 @@ impl MdsfConfig {
     }
 
     #[inline]
-    fn parse_schema_version(&self) -> Option<(&str, bool)> {
+    pub fn parse_schema_version(&self) -> Option<(&str, bool)> {
         let package_version = env!("CARGO_PKG_VERSION");
 
         if self.schema == default_schema_location() {
@@ -384,7 +400,7 @@ mod test_config {
     }
 
     #[test]
-    fn it_should_ignore_comments() -> Result<(), serde_json::Error> {
+    fn it_should_ignore_comments() -> Result<(), json5::Error> {
         let r = r#"{
     // this is a slash comment
     "javascript":  ["prettier"],
