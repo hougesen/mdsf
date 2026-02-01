@@ -1,6 +1,3 @@
-use core::sync::atomic::AtomicU32;
-use std::{env::current_dir, sync::Arc};
-
 use clap::builder::OsStr;
 use mdsf::{
     caching::hash_config,
@@ -9,7 +6,7 @@ use mdsf::{
     error::MdsfError,
     execution::setup_snippet,
     format_file, handle_file,
-    terminal::print_config_not_found,
+    terminal::print_config_schema_version_mismatch,
 };
 use threadpool::ThreadPool;
 
@@ -23,7 +20,7 @@ fn determine_threads_to_use(argument: Option<usize>) -> usize {
         return thread_arg.to_owned();
     }
 
-    if let Ok(available_threads) = std::thread::available_parallelism().map(usize::from)
+    if let Ok(available_threads) = std::thread::available_parallelism().map(core::num::NonZero::get)
         && available_threads > 0
     {
         return available_threads;
@@ -34,19 +31,13 @@ fn determine_threads_to_use(argument: Option<usize>) -> usize {
 
 #[inline]
 pub fn run(args: FormatCommandArguments, dry_run: bool) -> Result<(), MdsfError> {
-    let mut conf = if let Some(config_path) = args.config {
-        MdsfConfig::load(config_path)
-    } else {
-        let c = MdsfConfig::load(current_dir()?.join("mdsf.json"));
+    let mut conf = args
+        .config
+        .map_or_else(MdsfConfig::auto_load, MdsfConfig::load)?;
 
-        if let Err(MdsfError::ConfigNotFound(path)) = c {
-            print_config_not_found(&path);
-
-            Ok(MdsfConfig::default())
-        } else {
-            c
-        }
-    }?;
+    if let Some((version, false)) = conf.parse_schema_version() {
+        print_config_schema_version_mismatch(version);
+    }
 
     conf.setup_language_aliases()?;
 
@@ -56,7 +47,7 @@ pub fn run(args: FormatCommandArguments, dry_run: bool) -> Result<(), MdsfError>
         None
     };
 
-    let changed_file_count = Arc::new(AtomicU32::new(0));
+    let changed_file_count = std::sync::Arc::new(core::sync::atomic::AtomicU32::new(0));
 
     let on_missing_tool_binary = args
         .on_missing_tool_binary
@@ -107,7 +98,7 @@ pub fn run(args: FormatCommandArguments, dry_run: bool) -> Result<(), MdsfError>
 
         let pool = ThreadPool::new(thread_count);
 
-        let shared_config = Arc::new(conf);
+        let shared_config = std::sync::Arc::new(conf);
 
         for entry in walk_builder.build().flatten() {
             let file_path = entry.path().to_path_buf();

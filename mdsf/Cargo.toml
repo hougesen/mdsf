@@ -33,7 +33,7 @@ clap_complete_nushell = { workspace = true }
 directories = { workspace = true }
 env_logger = { workspace = true }
 ignore = { workspace = true }
-json_comments = { workspace = true }
+json5 = { workspace = true }
 log = { workspace = true }
 owo-colors = { workspace = true }
 process_control = { workspace = true }
