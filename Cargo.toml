@@ -41,7 +41,7 @@ test-with = { version = "0.15.7", default-features = false, features = [
   "executable",
 ] }
 threadpool = "1.8.1"
-ureq = "3.1.4"
+ureq = "3.2.0"
 which = "8.0.0"
 
 # The profile that 'cargo dist' will build with
