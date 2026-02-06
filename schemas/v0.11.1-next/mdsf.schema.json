@@ -657,7 +657,7 @@
           "const": "duster:lint"
         },
         {
-          "description": "Format `rsx!` snippets in Rust files.\n\n[https://github.com/dioxuslabs/dioxus](https://github.com/dioxuslabs/dioxus)\n\n`dx fmt --all-code --file $PATH`",
+          "description": "Format `rsx!` snippets in Rust files\n\n[https://github.com/dioxuslabs/dioxus](https://github.com/dioxuslabs/dioxus)\n\n`dx fmt --all-code --file $PATH`",
           "type": "string",
           "const": "dx:fmt"
         },
@@ -947,7 +947,7 @@
           "const": "isort"
         },
         {
-          "description": "A formatter for Janet code.\n\n[https://github.com/janet-lang/spork](https://github.com/janet-lang/spork)\n\n`janet-format`",
+          "description": "A formatter for Janet code\n\n[https://github.com/janet-lang/spork](https://github.com/janet-lang/spork)\n\n`janet-format`",
           "type": "string",
           "const": "janet-format"
         },
@@ -1392,7 +1392,7 @@
           "const": "php-cs-fixer:fix"
         },
         {
-          "description": "PHP Code Beautifier and Fixer fixes violations of a defined coding standard\n\n[https://phpqa.io/projects/phpcbf.html](https://phpqa.io/projects/phpcbf.html)\n\n`phpcbf $PATH`",
+          "description": "PHP Code Beautifier and Fixer fixes violations of a defined coding standard\n\n[https://github.com/phpcsstandards/php_codesniffer](https://github.com/phpcsstandards/php_codesniffer)\n\n`phpcbf $PATH`",
           "type": "string",
           "const": "phpcbf"
         },
@@ -1985,6 +1985,11 @@
           "description": "The missing checkstyle for twig\n\n[https://github.com/friendsoftwig/twigcs](https://github.com/friendsoftwig/twigcs)\n\n`twigcs $PATH`",
           "type": "string",
           "const": "twigcs"
+        },
+        {
+          "description": "txtpbfmt parses, edits and formats text proto files in a way that preserves comments\n\n[https://github.com/protocolbuffers/txtpbfmt](https://github.com/protocolbuffers/txtpbfmt)\n\n`txtpbfmt $PATH`",
+          "type": "string",
+          "const": "txtpbfmt"
         },
         {
           "description": "An extremely fast Python type checker written in Rust\n\n[https://github.com/astral-sh/ty](https://github.com/astral-sh/ty)\n\n`ty check $PATH`",

@@ -7,3 +7,5 @@ myapp.log
 node_modules
 docs/www/
 .vscode
+
+/vendor/

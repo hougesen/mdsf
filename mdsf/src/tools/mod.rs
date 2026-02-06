@@ -360,6 +360,7 @@ pub mod twig_cs_fixer_check;
 pub mod twig_cs_fixer_fix;
 pub mod twig_cs_fixer_lint;
 pub mod twigcs;
+pub mod txtpbfmt;
 pub mod ty;
 pub mod typos;
 pub mod typstfmt;
@@ -1135,7 +1136,7 @@ pub enum Tooling {
     DusterLint,
 
     #[serde(rename = "dx:fmt")]
-    /// Format `rsx!` snippets in Rust files.
+    /// Format `rsx!` snippets in Rust files
     ///
     /// [https://github.com/dioxuslabs/dioxus](https://github.com/dioxuslabs/dioxus)
     ///
@@ -1599,7 +1600,7 @@ pub enum Tooling {
     Isort,
 
     #[serde(rename = "janet-format")]
-    /// A formatter for Janet code.
+    /// A formatter for Janet code
     ///
     /// [https://github.com/janet-lang/spork](https://github.com/janet-lang/spork)
     ///
@@ -2313,7 +2314,7 @@ pub enum Tooling {
     #[serde(rename = "phpcbf")]
     /// PHP Code Beautifier and Fixer fixes violations of a defined coding standard
     ///
-    /// [https://phpqa.io/projects/phpcbf.html](https://phpqa.io/projects/phpcbf.html)
+    /// [https://github.com/phpcsstandards/php_codesniffer](https://github.com/phpcsstandards/php_codesniffer)
     ///
     /// `phpcbf $PATH`
     Phpcbf,
@@ -3261,6 +3262,14 @@ pub enum Tooling {
     ///
     /// `twigcs $PATH`
     Twigcs,
+
+    #[serde(rename = "txtpbfmt")]
+    /// txtpbfmt parses, edits and formats text proto files in a way that preserves comments
+    ///
+    /// [https://github.com/protocolbuffers/txtpbfmt](https://github.com/protocolbuffers/txtpbfmt)
+    ///
+    /// `txtpbfmt $PATH`
+    Txtpbfmt,
 
     #[serde(rename = "ty")]
     /// An extremely fast Python type checker written in Rust
@@ -4765,6 +4774,7 @@ impl Tooling {
                 twig_cs_fixer_lint::IS_STDIN,
             ),
             Self::Twigcs => (&twigcs::COMMANDS, twigcs::set_args, twigcs::IS_STDIN),
+            Self::Txtpbfmt => (&txtpbfmt::COMMANDS, txtpbfmt::set_args, txtpbfmt::IS_STDIN),
             Self::Ty => (&ty::COMMANDS, ty::set_args, ty::IS_STDIN),
             Self::Typos => (&typos::COMMANDS, typos::set_args, typos::IS_STDIN),
             Self::Typstfmt => (&typstfmt::COMMANDS, typstfmt::set_args, typstfmt::IS_STDIN),
@@ -5212,6 +5222,7 @@ impl AsRef<str> for Tooling {
             Self::TwigCsFixerFix => "twig-cs-fixer:fix",
             Self::TwigCsFixerLint => "twig-cs-fixer:lint",
             Self::Twigcs => "twigcs",
+            Self::Txtpbfmt => "txtpbfmt",
             Self::Ty => "ty",
             Self::Typos => "typos",
             Self::Typstfmt => "typstfmt",
@@ -5677,6 +5688,7 @@ mod test_tooling {
         assert_eq!(Tooling::TwigCsFixerFix, reverse(Tooling::TwigCsFixerFix)?);
         assert_eq!(Tooling::TwigCsFixerLint, reverse(Tooling::TwigCsFixerLint)?);
         assert_eq!(Tooling::Twigcs, reverse(Tooling::Twigcs)?);
+        assert_eq!(Tooling::Txtpbfmt, reverse(Tooling::Txtpbfmt)?);
         assert_eq!(Tooling::Ty, reverse(Tooling::Ty)?);
         assert_eq!(Tooling::Typos, reverse(Tooling::Typos)?);
         assert_eq!(Tooling::Typstfmt, reverse(Tooling::Typstfmt)?);

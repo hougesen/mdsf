@@ -1,0 +1,19 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "txtpbfmt",
+  "categories": ["formatter"],
+  "commands": {
+    "": {
+      "arguments": ["$PATH"],
+      "tests": []
+    }
+  },
+  "description": "txtpbfmt parses, edits and formats text proto files in a way that preserves comments",
+  "homepage": "https://github.com/protocolbuffers/txtpbfmt",
+  "languages": ["protobuf"],
+  "packages": {
+    "go": {
+      "package": "github.com/protocolbuffers/txtpbfmt/cmd/txtpbfmt@latest"
+    }
+  }
+}
