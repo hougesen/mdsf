@@ -9,7 +9,7 @@
       "tests": []
     }
   },
-  "description": "A formatter for Janet code.",
+  "description": "A formatter for Janet code",
   "homepage": "https://github.com/janet-lang/spork",
   "languages": ["janet"],
   "packages": {}

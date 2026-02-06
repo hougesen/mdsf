@@ -9,7 +9,7 @@
     }
   },
   "description": "PHP Code Beautifier and Fixer fixes violations of a defined coding standard",
-  "homepage": "https://phpqa.io/projects/phpcbf.html",
+  "homepage": "https://github.com/phpcsstandards/php_codesniffer",
   "languages": ["php"],
   "packages": {
     "composer": {

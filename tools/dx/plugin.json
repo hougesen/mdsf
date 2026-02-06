@@ -5,7 +5,7 @@
   "commands": {
     "fmt": {
       "arguments": ["fmt", "--all-code", "--file", "$PATH"],
-      "description": "Format `rsx!` snippets in Rust files.",
+      "description": "Format `rsx!` snippets in Rust files",
       "tests": [
         {
           "language": "rust",
