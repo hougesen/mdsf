@@ -1,4 +1,3 @@
-use clap::builder::OsStr;
 use mdsf::{
     caching::hash_config,
     cli::{FormatCommandArguments, read_stdin},
@@ -92,8 +91,6 @@ pub fn run(args: FormatCommandArguments, dry_run: bool) -> Result<(), MdsfError>
             walk_builder.add(p);
         });
 
-        let md_ext = OsStr::from("md");
-
         let thread_count = determine_threads_to_use(args.threads).max(1);
 
         let pool = ThreadPool::new(thread_count);
@@ -103,7 +100,11 @@ pub fn run(args: FormatCommandArguments, dry_run: bool) -> Result<(), MdsfError>
         for entry in walk_builder.build().flatten() {
             let file_path = entry.path().to_path_buf();
 
-            if file_path.extension() == Some(&md_ext) {
+            if file_path.extension().is_some_and(|ext_os| {
+                ext_os
+                    .to_str()
+                    .is_some_and(|ext_str| shared_config.files.is_enabled_file_extension(ext_str))
+            }) {
                 let config_ref = shared_config.clone();
 
                 let changed_file_count_ref = changed_file_count.clone();

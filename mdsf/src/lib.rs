@@ -169,12 +169,15 @@ pub fn format_file(
         output.push(crate::config::LF_NEWLINE_CHAR);
     }
 
-    if config.format_finished_document && !output.is_empty() {
+    if config.format_finished_document
+        && !output.is_empty()
+        && let Some(lang) = filename.extension().and_then(|ext| ext.to_str())
+    {
         output = format_snippet(
             config,
             &LineInfo {
                 filename,
-                language: "markdown",
+                language: lang,
                 start: 0,
                 end: 0,
             },
