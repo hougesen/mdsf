@@ -19,6 +19,7 @@ pub enum MdsfError {
     ConfigNotFound(std::path::PathBuf),
     // TODO: use &std::path::Path
     ConfigParse((std::path::PathBuf, json5::Error)),
+    EmptyFilesExtensions,
     Io(std::io::Error),
     /// Another alias clashes
     LanguageAliasClash(String, String, String),
@@ -30,10 +31,10 @@ pub enum MdsfError {
     MissingBinary(String),
     MissingLanguageDefinition(std::path::PathBuf, String),
     MissingInput,
-    ReadStdinError(std::io::Error),
+    ReadStdin(std::io::Error),
     SerializeConfig(serde_json::Error),
-    StdinWriteError,
-    ToolError(String),
+    StdinWrite,
+    Tool(String),
 }
 
 impl core::error::Error for MdsfError {}
@@ -56,6 +57,7 @@ impl core::fmt::Display for MdsfError {
                     path.display()
                 )
             }
+            Self::EmptyFilesExtensions => write!(f, "No file extensions defined in mdsf.json"),
             Self::Io(e) => e.fmt(f),
             Self::LanguageAliasClash(language, alias, already_set_by) => {
                 write!(
@@ -76,10 +78,10 @@ impl core::fmt::Display for MdsfError {
                 write!(f, "{} no tool configured for '{language}'", path.display())
             }
             Self::MissingInput => write!(f, "No input was provided to mdsf"),
-            Self::ReadStdinError(error) => write!(f, "Error reading from stdin: {error}"),
+            Self::ReadStdin(error) => write!(f, "Error reading from stdin: {error}"),
             Self::SerializeConfig(e) => write!(f, "Error serializing config: {e}"),
-            Self::StdinWriteError => write!(f, "Error writing to stdin"),
-            Self::ToolError(stderr) => {
+            Self::StdinWrite => write!(f, "Error writing to stdin"),
+            Self::Tool(stderr) => {
                 let trimmed_stderr = stderr.trim();
 
                 if trimmed_stderr.is_empty() {

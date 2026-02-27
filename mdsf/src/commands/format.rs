@@ -57,7 +57,7 @@ pub fn run(args: FormatCommandArguments, dry_run: bool) -> Result<(), MdsfError>
         .unwrap_or_else(|| conf.on_missing_language_definition.unwrap_or_default());
 
     if args.stdin {
-        let stdin_input = read_stdin().map_err(MdsfError::ReadStdinError)?;
+        let stdin_input = read_stdin().map_err(MdsfError::ReadStdin)?;
 
         let f = setup_snippet(&stdin_input, ".md")?;
 
@@ -79,6 +79,10 @@ pub fn run(args: FormatCommandArguments, dry_run: bool) -> Result<(), MdsfError>
             println!("{output}");
         }
     } else if let Some(first_path) = args.input.first() {
+        if conf.files.extensions.is_empty() {
+            return Err(MdsfError::EmptyFilesExtensions);
+        }
+
         let mut walk_builder = ignore::WalkBuilder::new(first_path);
 
         walk_builder

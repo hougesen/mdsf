@@ -943,7 +943,7 @@ impl AsRef<str> for Tooling {{
         modules.join("\n"),
         tooling_enum_content.join("\n\n"),
         format_snippet_content.join("\n"),
-        as_ref_content.join("\n"),
+        as_ref_content.join("\n")
     );
 
     std::fs::write(format!("{folder}/mod.rs"), mod_file_contents)?;
