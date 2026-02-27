@@ -177,7 +177,7 @@ pub fn format_file(
             config,
             &LineInfo {
                 filename,
-                language: lang,
+                language: if lang == "md" { "markdown" } else { lang },
                 start: 0,
                 end: 0,
             },
