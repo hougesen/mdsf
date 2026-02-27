@@ -4,6 +4,16 @@ All notable changes to this project will be documented in this file. Dates are d
 
 #### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.11.1...HEAD)
 
+- chore: bump @biomejs/biome from 2.3.13 to 2.4.4 in /github-action [`#1530`](https://github.com/hougesen/mdsf/pull/1530)
+- chore: bump eslint from 9.39.2 to 10.0.2 in /github-action [`#1529`](https://github.com/hougesen/mdsf/pull/1529)
+- chore: bump clap_complete from 4.5.65 to 4.5.66 [`#1521`](https://github.com/hougesen/mdsf/pull/1521)
+- feat: support formatting custom file extensions [`#1528`](https://github.com/hougesen/mdsf/pull/1528)
+- chore: bump predicates from 3.1.3 to 3.1.4 [`#1520`](https://github.com/hougesen/mdsf/pull/1520)
+- chore: bump minimatch [`#1526`](https://github.com/hougesen/mdsf/pull/1526)
+- chore: bump minimatch [`#1527`](https://github.com/hougesen/mdsf/pull/1527)
+- build(carg-dist): upgrade to v0.31.0 [`#1525`](https://github.com/hougesen/mdsf/pull/1525)
+- chore: bump tempfile from 3.24.0 to 3.25.0 [`#1518`](https://github.com/hougesen/mdsf/pull/1518)
+- chore: bump clap from 4.5.57 to 4.5.58 [`#1522`](https://github.com/hougesen/mdsf/pull/1522)
 - build(deps): bump serde_json from 1.0.148 to 1.0.149 [`#1473`](https://github.com/hougesen/mdsf/pull/1473)
 - build(deps): bump clap from 4.5.53 to 4.5.54 [`#1472`](https://github.com/hougesen/mdsf/pull/1472)
 - feat(tools): add support for the scala cli [`#1475`](https://github.com/hougesen/mdsf/pull/1475)

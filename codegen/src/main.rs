@@ -8,6 +8,7 @@ mod language_to_filetype;
 pub mod markdown;
 mod readme;
 mod schema;
+mod stable_schema;
 mod tools;
 
 pub const GENERATED_FILE_COMMENT: &str =
@@ -111,6 +112,8 @@ fn main() -> Result<(), CodegenError> {
     actions::generate(&plugins)?;
 
     contributing::generate()?;
+
+    stable_schema::setup()?;
 
     Ok(())
 }
