@@ -8,7 +8,7 @@
       "tests": []
     }
   },
-  "description": "qmllint is a tool shipped with Qt, that verifies the syntatic validity of QML files",
+  "description": "qmllint is a tool shipped with Qt, that verifies the syntactic validity of QML files",
   "homepage": "https://doc.qt.io/qt-6/qtqml-tooling-qmllint.html",
   "languages": ["qml"],
   "packages": {}

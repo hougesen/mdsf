@@ -272,6 +272,8 @@ impl MdsfConfig {
             ".mdsf.jsonc",
             "mdsf.json5",
             ".mdsf.json5",
+            "mdsf.toml",
+            ".mdsf.toml",
         ] {
             let path = dir.join(name);
 
@@ -301,12 +303,30 @@ impl MdsfConfig {
             }
         })?;
 
-        Self::parse(&contents).map_err(|err| MdsfError::ConfigParse((path.to_path_buf(), err)))
+        Self::parse(&contents, path)
     }
 
     #[inline]
-    fn parse(input: &str) -> Result<Self, json5::Error> {
+    fn parse(input: &str, path: &std::path::Path) -> Result<Self, MdsfError> {
+        match path.extension().and_then(|ext| ext.to_str()) {
+            Some("json" | "jsonc" | "json5") => Self::parse_json(input)
+                .map_err(|err| MdsfError::ConfigParseJson((path.to_path_buf(), err))),
+            Some("toml") => Self::parse_toml(input)
+                .map_err(|err| MdsfError::ConfigParseToml((path.to_path_buf(), err))),
+            _ => Self::parse_json(input)
+                .map_err(|_| Self::parse_toml(input))
+                .map_err(|_| MdsfError::ConfigParseUnknownFormat(path.to_path_buf())),
+        }
+    }
+
+    #[inline]
+    fn parse_json(input: &str) -> Result<Self, json5::Error> {
         json5::from_str(input)
+    }
+
+    #[inline]
+    fn parse_toml(input: &str) -> Result<Self, toml::de::Error> {
+        toml::from_str(input)
     }
 
     #[inline]
@@ -420,7 +440,7 @@ mod test_config {
 
 }"#;
 
-        MdsfConfig::parse(r)?;
+        MdsfConfig::parse_json(r)?;
 
         Ok(())
     }
@@ -458,7 +478,7 @@ mod test_config {
 
         let output = MdsfConfig::load(file.path()).expect_err("it should return an error");
 
-        assert!(matches!(output, MdsfError::ConfigParse((_, _))));
+        assert!(matches!(output, MdsfError::ConfigParseJson((_, _))));
 
         Ok(())
     }

@@ -2552,7 +2552,7 @@ pub enum Tooling {
     Qmlformat,
 
     #[serde(rename = "qmllint")]
-    /// qmllint is a tool shipped with Qt, that verifies the syntatic validity of QML files
+    /// qmllint is a tool shipped with Qt, that verifies the syntactic validity of QML files
     ///
     /// [https://doc.qt.io/qt-6/qtqml-tooling-qmllint.html](https://doc.qt.io/qt-6/qtqml-tooling-qmllint.html)
     ///

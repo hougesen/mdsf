@@ -18,7 +18,9 @@ pub enum MdsfError {
     ConfigAlreadyExist,
     ConfigNotFound(std::path::PathBuf),
     // TODO: use &std::path::Path
-    ConfigParse((std::path::PathBuf, json5::Error)),
+    ConfigParseJson((std::path::PathBuf, json5::Error)),
+    ConfigParseToml((std::path::PathBuf, toml::de::Error)),
+    ConfigParseUnknownFormat(std::path::PathBuf),
     EmptyFilesExtensions,
     Io(std::io::Error),
     /// Another alias clashes
@@ -50,21 +52,27 @@ impl core::fmt::Display for MdsfError {
             ),
             Self::ConfigAlreadyExist => write!(f, "A config already exists in this directory"),
             Self::ConfigNotFound(path) => write!(f, "No config found at: '{}'", path.display()),
-            Self::ConfigParse((path, error)) => {
-                write!(
-                    f,
-                    "Error parsing config found at '{}' - {error}",
-                    path.display()
-                )
-            }
+            Self::ConfigParseJson((path, error)) => write!(
+                f,
+                "Error parsing config found at '{}' - {error}",
+                path.display()
+            ),
+            Self::ConfigParseToml((path, error)) => write!(
+                f,
+                "Error parsing config found at '{}' - {error}",
+                path.display()
+            ),
+            Self::ConfigParseUnknownFormat(path) => write!(
+                f,
+                "Error parsing config found at '{}' - no suitable parser found",
+                path.display()
+            ),
             Self::EmptyFilesExtensions => write!(f, "No file extensions defined in mdsf.json"),
             Self::Io(e) => e.fmt(f),
-            Self::LanguageAliasClash(language, alias, already_set_by) => {
-                write!(
-                    f,
-                    "'{language}' cannot be aliases to '{alias}' since it is already an alias of '{already_set_by}'"
-                )
-            }
+            Self::LanguageAliasClash(language, alias, already_set_by) => write!(
+                f,
+                "'{language}' cannot be aliases to '{alias}' since it is already an alias of '{already_set_by}'"
+            ),
             Self::LanguageAliasLanguagesContainsLanguage(language) => write!(
                 f,
                 "'{language}' cannot be used with an alias since it already has tools specified"
