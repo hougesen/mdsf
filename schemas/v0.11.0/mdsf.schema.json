@@ -1477,7 +1477,7 @@
           "const": "qmlformat"
         },
         {
-          "description": "qmllint is a tool shipped with Qt, that verifies the syntatic validity of QML files\n\n[https://doc.qt.io/qt-6/qtqml-tooling-qmllint.html](https://doc.qt.io/qt-6/qtqml-tooling-qmllint.html)\n\n`qmllint $PATH`",
+          "description": "qmllint is a tool shipped with Qt, that verifies the syntactic validity of QML files\n\n[https://doc.qt.io/qt-6/qtqml-tooling-qmllint.html](https://doc.qt.io/qt-6/qtqml-tooling-qmllint.html)\n\n`qmllint $PATH`",
           "type": "string",
           "const": "qmllint"
         },

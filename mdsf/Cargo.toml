@@ -45,6 +45,7 @@ sha2 = { workspace = true }
 tempfile = { workspace = true }
 terminal_size = { workspace = true }
 threadpool = { workspace = true }
+toml = { workspace = true }
 which = { workspace = true }
 
 [dev-dependencies]
