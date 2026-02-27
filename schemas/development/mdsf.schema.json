@@ -14,6 +14,9 @@
         "type": "string"
       }
     },
+    "files": {
+      "$ref": "#/$defs/MdsfConfigFiles"
+    },
     "format_finished_document": {
       "description": "Run the selected markdown tools on the finished output.\n\nDefault: `false`",
       "type": "boolean"
@@ -83,6 +86,20 @@
         }
       },
       "required": ["binary", "arguments"]
+    },
+    "MdsfConfigFiles": {
+      "type": "object",
+      "properties": {
+        "extensions": {
+          "description": "File extensions that should be formatted using `mdsf`",
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        }
+      },
+      "required": ["extensions"]
     },
     "MdsfConfigRunners": {
       "type": "object",

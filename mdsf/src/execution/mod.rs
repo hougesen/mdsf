@@ -78,7 +78,7 @@ fn handle_post_execution(
                         .map_err(MdsfError::from)
                 }
             } else {
-                Err(MdsfError::ToolError(
+                Err(MdsfError::Tool(
                     String::from_utf8_lossy(&output.stderr).to_string(),
                 ))
             }
@@ -115,7 +115,7 @@ fn spawn_command(
             .stdout(std::process::Stdio::piped())
             .spawn()?;
 
-        let child_stdin = handle.stdin.as_mut().ok_or(MdsfError::StdinWriteError)?;
+        let child_stdin = handle.stdin.as_mut().ok_or(MdsfError::StdinWrite)?;
 
         child_stdin.write_all(&file_content)?;
         child_stdin.flush()?;
@@ -331,7 +331,7 @@ impl MdsfToolWrapper<MdsfTool> {
 
                 print_tool_time(formatter_name, info, time.elapsed());
 
-                if let Err(MdsfError::ToolError(stderr)) = r {
+                if let Err(MdsfError::Tool(stderr)) = r {
                     print_error_running_tool(formatter_name, info, &stderr);
 
                     Ok((false, None))

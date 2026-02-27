@@ -1,4 +1,6 @@
-use crate::{error::MdsfError, terminal::print_config_not_found};
+use crate::{config::files::MdsfConfigFiles, error::MdsfError, terminal::print_config_not_found};
+
+mod files;
 
 #[allow(clippy::trivially_copy_pass_by_ref)]
 #[inline]
@@ -175,6 +177,9 @@ pub struct MdsfConfig {
     #[serde(default, skip_serializing_if = "std::collections::BTreeMap::is_empty")]
     pub custom_file_extensions: std::collections::BTreeMap<String, String>,
 
+    #[serde(default, skip_serializing_if = "MdsfConfigFiles::is_default")]
+    pub files: MdsfConfigFiles,
+
     /// Run the selected markdown tools on the finished output.
     ///
     /// Default: `false`
@@ -243,6 +248,7 @@ impl Default for MdsfConfig {
         Self {
             schema: default_schema_location(),
             custom_file_extensions: std::collections::BTreeMap::default(),
+            files: MdsfConfigFiles::default(),
             format_finished_document: false,
             language_aliases: std::collections::BTreeMap::default(),
             languages: crate::languages::default_tools(),
