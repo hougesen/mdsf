@@ -5,7 +5,7 @@
   "properties": {
     "$schema": {
       "type": "string",
-      "default": "https://raw.githubusercontent.com/hougesen/mdsf/main/schemas/v0.11.1/mdsf.schema.json"
+      "default": "https://raw.githubusercontent.com/hougesen/mdsf/main/schemas/v0.12.0/mdsf.schema.json"
     },
     "custom_file_extensions": {
       "description": "Used for settings custom file extensions for a given language.\n\n```json\n{\n  \"custom_file_extensions\": {\n    \"rust\": \".rust\"\n  }\n}\n```",
@@ -13,6 +13,9 @@
       "additionalProperties": {
         "type": "string"
       }
+    },
+    "files": {
+      "$ref": "#/$defs/MdsfConfigFiles"
     },
     "format_finished_document": {
       "description": "Run the selected markdown tools on the finished output.\n\nDefault: `false`",
@@ -83,6 +86,20 @@
         }
       },
       "required": ["binary", "arguments"]
+    },
+    "MdsfConfigFiles": {
+      "type": "object",
+      "properties": {
+        "extensions": {
+          "description": "File extensions that should be formatted using `mdsf`",
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        }
+      },
+      "required": ["extensions"]
     },
     "MdsfConfigRunners": {
       "type": "object",
@@ -197,6 +214,11 @@
     "Tooling": {
       "oneOf": [
         {
+          "description": "Tool to validate GitHub Action and Workflow YAML files\n\n[https://github.com/mpalmer/action-validator](https://github.com/mpalmer/action-validator)\n\n`action-validator $PATH`",
+          "type": "string",
+          "const": "action-validator"
+        },
+        {
           "description": "Static checker for GitHub Actions workflow files\n\n[https://github.com/rhysd/actionlint](https://github.com/rhysd/actionlint)\n\n`actionlint $PATH`",
           "type": "string",
           "const": "actionlint"
@@ -245,6 +267,11 @@
           "description": "Formats Atlas HCL files\n\n[https://atlasgo.io/cli-reference#atlas-schema-fmt](https://atlasgo.io/cli-reference#atlas-schema-fmt)\n\n`atlas schema fmt $PATH`",
           "type": "string",
           "const": "atlas:fmt"
+        },
+        {
+          "description": "Lints Atlas HCL files\n\n[https://atlasgo.io/cli-reference#atlas-migrate-lint](https://atlasgo.io/cli-reference#atlas-migrate-lint)\n\n`atlas schema lint $PATH`",
+          "type": "string",
+          "const": "atlas:lint"
         },
         {
           "description": "Makes typed arguments Optional when the default argument is None\n\n[https://github.com/luttik/auto-optional](https://github.com/luttik/auto-optional)\n\n`auto-optional $PATH`",
@@ -569,7 +596,12 @@
         {
           "description": "Format Dhall files\n\n[https://dhall-lang.org](https://dhall-lang.org)\n\n`dhall format $PATH`",
           "type": "string",
-          "const": "dhall"
+          "const": "dhall:format"
+        },
+        {
+          "description": "Lint Dhall files\n\n[https://dhall-lang.org](https://dhall-lang.org)\n\n`dhall lint $PATH`",
+          "type": "string",
+          "const": "dhall:lint"
         },
         {
           "description": "A Django template formatter\n\n[https://github.com/adamchainz/djade](https://github.com/adamchainz/djade)\n\n`djade $PATH`",
@@ -642,7 +674,7 @@
           "const": "duster:lint"
         },
         {
-          "description": "Format `rsx!` snippets in Rust files.\n\n[https://github.com/dioxuslabs/dioxus](https://github.com/dioxuslabs/dioxus)\n\n`dx fmt --all-code --file $PATH`",
+          "description": "Format `rsx!` snippets in Rust files\n\n[https://github.com/dioxuslabs/dioxus](https://github.com/dioxuslabs/dioxus)\n\n`dx fmt --all-code --file $PATH`",
           "type": "string",
           "const": "dx:fmt"
         },
@@ -787,6 +819,11 @@
           "const": "gersemi"
         },
         {
+          "description": "Parallelized formatter with no external dependencies for gherkin (cucumber, behat...)\n\n[https://github.com/antham/ghokin](https://github.com/antham/ghokin)\n\n`ghokin check $PATH`",
+          "type": "string",
+          "const": "ghokin:check"
+        },
+        {
           "description": "Parallelized formatter with no external dependencies for gherkin (cucumber, behat...)\n\n[https://github.com/antham/ghokin](https://github.com/antham/ghokin)\n\n`ghokin fmt replace $PATH`",
           "type": "string",
           "const": "ghokin:fmt"
@@ -837,7 +874,7 @@
           "const": "golangci-lint:run:fix"
         },
         {
-          "description": "A golang formatter that fixes long lines\n\n[https://github.com/segmentio/golines](https://github.com/segmentio/golines)\n\n`golines -w $PATH`",
+          "description": "A golang formatter that fixes long lines\n\n[https://github.com/golangci/golines](https://github.com/golangci/golines)\n\n`golines -w $PATH`",
           "type": "string",
           "const": "golines"
         },
@@ -927,7 +964,7 @@
           "const": "isort"
         },
         {
-          "description": "A formatter for Janet code.\n\n[https://github.com/janet-lang/spork](https://github.com/janet-lang/spork)\n\n`janet-format`",
+          "description": "A formatter for Janet code\n\n[https://github.com/janet-lang/spork](https://github.com/janet-lang/spork)\n\n`janet-format`",
           "type": "string",
           "const": "janet-format"
         },
@@ -957,7 +994,7 @@
           "const": "json5format"
         },
         {
-          "description": "A python module to repair invalid JSON from LLMs\n\n[https://github.com/mangiucugna/json_repair](https://github.com/mangiucugna/json_repair)\n\n`json_repair -i $PATH`",
+          "description": "A module to repair invalid JSON from LLMs\n\n[https://github.com/mangiucugna/json_repair](https://github.com/mangiucugna/json_repair)\n\n`json_repair -i $PATH`",
           "type": "string",
           "const": "json_repair"
         },
@@ -1050,6 +1087,11 @@
           "description": "An anti-bikeshedding Kotlin linter with built-in formatter\n\n[https://github.com/pinterest/ktlint](https://github.com/pinterest/ktlint)\n\n`ktlint --format --log-level=error $PATH`",
           "type": "string",
           "const": "ktlint"
+        },
+        {
+          "description": "KubeLinter is a static analysis tool that checks Kubernetes YAML files and Helm charts to ensure the applications represented in them adhere to best practices\n\n[https://github.com/stackrox/kube-linter](https://github.com/stackrox/kube-linter)\n\n`kube-linter lint $PATH`",
+          "type": "string",
+          "const": "kube-linter:lint"
         },
         {
           "description": "Check if .http and .rest code is formatted\n\n[https://github.com/mistweaverco/kulala-fmt](https://github.com/mistweaverco/kulala-fmt)\n\n`kulala-fmt check $PATH`",
@@ -1367,7 +1409,7 @@
           "const": "php-cs-fixer:fix"
         },
         {
-          "description": "PHP Code Beautifier and Fixer fixes violations of a defined coding standard\n\n[https://phpqa.io/projects/phpcbf.html](https://phpqa.io/projects/phpcbf.html)\n\n`phpcbf $PATH`",
+          "description": "PHP Code Beautifier and Fixer fixes violations of a defined coding standard\n\n[https://github.com/phpcsstandards/php_codesniffer](https://github.com/phpcsstandards/php_codesniffer)\n\n`phpcbf $PATH`",
           "type": "string",
           "const": "phpcbf"
         },
@@ -1672,6 +1714,11 @@
           "const": "salt-lint"
         },
         {
+          "description": "Code formatter for Scala\n\n[https://www.scala-lang.org](https://www.scala-lang.org)\n\n`scala fmt $PATH`",
+          "type": "string",
+          "const": "scala"
+        },
+        {
           "description": "Code formatter for Scala\n\n[https://github.com/scalameta/scalafmt](https://github.com/scalameta/scalafmt)\n\n`scalafmt --quiet --mode any $PATH`",
           "type": "string",
           "const": "scalafmt"
@@ -1837,6 +1884,11 @@
           "const": "swiftformat"
         },
         {
+          "description": "A tool to enforce Swift style and conventions\n\n[https://github.com/realm/swiftlint](https://github.com/realm/swiftlint)\n\n`swiftlint $PATH`",
+          "type": "string",
+          "const": "swiftlint"
+        },
+        {
           "description": "A TOML toolkit written in Rust\n\n[https://github.com/tamasfe/taplo](https://github.com/tamasfe/taplo)\n\n`taplo format $PATH`",
           "type": "string",
           "const": "taplo"
@@ -1932,7 +1984,17 @@
           "const": "tsqllint"
         },
         {
-          "description": "A tool to automatically fix Twig Coding Standards issues\n\n[https://github.com/vincentlanglet/twig-cs-fixer](https://github.com/vincentlanglet/twig-cs-fixer)\n\n`twig-cs-fixer lint $PATH --fix --no-interaction --quiet`",
+          "description": "A tool to automatically fix Twig Coding Standards issues\n\n[https://github.com/vincentlanglet/twig-cs-fixer](https://github.com/vincentlanglet/twig-cs-fixer)\n\n`twig-cs-fixer check $PATH --no-interaction`",
+          "type": "string",
+          "const": "twig-cs-fixer:check"
+        },
+        {
+          "description": "A tool to automatically fix Twig Coding Standards issues\n\n[https://github.com/vincentlanglet/twig-cs-fixer](https://github.com/vincentlanglet/twig-cs-fixer)\n\n`twig-cs-fixer fix $PATH --no-interaction`",
+          "type": "string",
+          "const": "twig-cs-fixer:fix"
+        },
+        {
+          "description": "A tool to automatically fix Twig Coding Standards issues\n\n[https://github.com/vincentlanglet/twig-cs-fixer](https://github.com/vincentlanglet/twig-cs-fixer)\n\n`twig-cs-fixer lint $PATH --no-interaction`",
           "type": "string",
           "const": "twig-cs-fixer:lint"
         },
@@ -1940,6 +2002,11 @@
           "description": "The missing checkstyle for twig\n\n[https://github.com/friendsoftwig/twigcs](https://github.com/friendsoftwig/twigcs)\n\n`twigcs $PATH`",
           "type": "string",
           "const": "twigcs"
+        },
+        {
+          "description": "txtpbfmt parses, edits and formats text proto files in a way that preserves comments\n\n[https://github.com/protocolbuffers/txtpbfmt](https://github.com/protocolbuffers/txtpbfmt)\n\n`txtpbfmt $PATH`",
+          "type": "string",
+          "const": "txtpbfmt"
         },
         {
           "description": "An extremely fast Python type checker written in Rust\n\n[https://github.com/astral-sh/ty](https://github.com/astral-sh/ty)\n\n`ty check $PATH`",
@@ -2097,6 +2164,11 @@
           "const": "zig:fmt"
         },
         {
+          "description": "Checks Ziggy Documents for schema adherence\n\n[https://ziggy-lang.io/documentation/ziggy-check](https://ziggy-lang.io/documentation/ziggy-check)\n\n`ziggy check $PATH`",
+          "type": "string",
+          "const": "ziggy:check"
+        },
+        {
           "description": "Formats Ziggy documents and Ziggy schemas\n\n[https://ziggy-lang.io/documentation/ziggy-fmt](https://ziggy-lang.io/documentation/ziggy-fmt)\n\n`ziggy fmt $PATH`",
           "type": "string",
           "const": "ziggy:fmt"
@@ -2105,6 +2177,26 @@
           "description": "Beautifully format Clojure and Clojurescript source code and s-expressions\n\n[https://github.com/kkinnear/zprint](https://github.com/kkinnear/zprint)\n\n`zprint -w $PATH`",
           "type": "string",
           "const": "zprint"
+        },
+        {
+          "description": "Linter for Zshell scripting language\n\n[https://github.com/psprint/zsh-sweep](https://github.com/psprint/zsh-sweep)\n\n`zsweep --auto $PATH`",
+          "type": "string",
+          "const": "zsweep"
+        },
+        {
+          "description": "Python Type Checker\n\n[https://github.com/zubanls/zuban](https://github.com/zubanls/zuban)\n\n`zuban $PATH`",
+          "type": "string",
+          "const": "zuban"
+        },
+        {
+          "description": "Python Type Checker\n\n[https://github.com/zubanls/zuban](https://github.com/zubanls/zuban)\n\n`zuban check $PATH`",
+          "type": "string",
+          "const": "zuban:check"
+        },
+        {
+          "description": "Python Type Checker\n\n[https://github.com/zubanls/zuban](https://github.com/zubanls/zuban)\n\n`zuban mypy $PATH`",
+          "type": "string",
+          "const": "zuban:mypy"
         }
       ]
     }
