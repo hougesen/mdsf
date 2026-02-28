@@ -396,6 +396,9 @@ pub mod ziggy_check;
 pub mod ziggy_fmt;
 pub mod zprint;
 pub mod zsweep;
+pub mod zuban;
+pub mod zuban_check;
+pub mod zuban_mypy;
 
 #[derive(serde::Serialize, serde::Deserialize, Hash, Clone, Copy, Debug, PartialEq, Eq)]
 #[cfg_attr(feature = "json-schema", derive(schemars::JsonSchema))]
@@ -3551,6 +3554,30 @@ pub enum Tooling {
     ///
     /// `zsweep --auto $PATH`
     Zsweep,
+
+    #[serde(rename = "zuban")]
+    /// Python Type Checker
+    ///
+    /// [https://github.com/zubanls/zuban](https://github.com/zubanls/zuban)
+    ///
+    /// `zuban $PATH`
+    Zuban,
+
+    #[serde(rename = "zuban:check")]
+    /// Python Type Checker
+    ///
+    /// [https://github.com/zubanls/zuban](https://github.com/zubanls/zuban)
+    ///
+    /// `zuban check $PATH`
+    ZubanCheck,
+
+    #[serde(rename = "zuban:mypy")]
+    /// Python Type Checker
+    ///
+    /// [https://github.com/zubanls/zuban](https://github.com/zubanls/zuban)
+    ///
+    /// `zuban mypy $PATH`
+    ZubanMypy,
 }
 
 impl Tooling {
@@ -4855,6 +4882,17 @@ impl Tooling {
             ),
             Self::Zprint => (&zprint::COMMANDS, zprint::set_args, zprint::IS_STDIN),
             Self::Zsweep => (&zsweep::COMMANDS, zsweep::set_args, zsweep::IS_STDIN),
+            Self::Zuban => (&zuban::COMMANDS, zuban::set_args, zuban::IS_STDIN),
+            Self::ZubanCheck => (
+                &zuban_check::COMMANDS,
+                zuban_check::set_args,
+                zuban_check::IS_STDIN,
+            ),
+            Self::ZubanMypy => (
+                &zuban_mypy::COMMANDS,
+                zuban_mypy::set_args,
+                zuban_mypy::IS_STDIN,
+            ),
         };
 
         crate::execution::run_tools(
@@ -5268,6 +5306,9 @@ impl AsRef<str> for Tooling {
             Self::ZiggyFmt => "ziggy:fmt",
             Self::Zprint => "zprint",
             Self::Zsweep => "zsweep",
+            Self::Zuban => "zuban",
+            Self::ZubanCheck => "zuban:check",
+            Self::ZubanMypy => "zuban:mypy",
         }
     }
 }
@@ -5735,6 +5776,9 @@ mod test_tooling {
         assert_eq!(Tooling::ZiggyFmt, reverse(Tooling::ZiggyFmt)?);
         assert_eq!(Tooling::Zprint, reverse(Tooling::Zprint)?);
         assert_eq!(Tooling::Zsweep, reverse(Tooling::Zsweep)?);
+        assert_eq!(Tooling::Zuban, reverse(Tooling::Zuban)?);
+        assert_eq!(Tooling::ZubanCheck, reverse(Tooling::ZubanCheck)?);
+        assert_eq!(Tooling::ZubanMypy, reverse(Tooling::ZubanMypy)?);
 
         Ok(())
     }

@@ -1,0 +1,23 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "zuban",
+  "categories": ["linter"],
+  "commands": {
+    "": {
+      "arguments": ["$PATH"],
+      "tests": []
+    },
+    "check": {
+      "arguments": ["check", "$PATH"],
+      "tests": []
+    },
+    "mypy": {
+      "arguments": ["mypy", "$PATH"],
+      "tests": []
+    }
+  },
+  "description": "Python Type Checker",
+  "homepage": "https://github.com/zubanls/zuban",
+  "languages": ["python"],
+  "packages": {}
+}

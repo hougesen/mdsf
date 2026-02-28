@@ -492,7 +492,7 @@ When defining the arguments the variable `$PATH` will automatically be replaced 
 
 <!-- START_SECTION:supported-tools -->
 
-`mdsf` currently supports 341 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 342 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                                                                                 | Description                                                                                                                                                    | Categories            | Languages                                                                                                                         |
 | ------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
@@ -837,6 +837,7 @@ When defining the arguments the variable `$PATH` will automatically be replaced 
 | [ziggy](https://ziggy-lang.io)                                                       | Formats Ziggy documents and Ziggy schemas                                                                                                                      | `formatter`           | `ziggy`                                                                                                                           |
 | [zprint](https://github.com/kkinnear/zprint)                                         | Beautifully format Clojure and Clojurescript source code and s-expressions                                                                                     | `formatter`           | `clojure`, `clojurescript`                                                                                                        |
 | [zsweep](https://github.com/psprint/zsh-sweep)                                       | Linter for Zshell scripting language                                                                                                                           | `linter`              | `zsh`                                                                                                                             |
+| [zuban](https://github.com/zubanls/zuban)                                            | Python Type Checker                                                                                                                                            | `linter`              | `python`                                                                                                                          |
 
 <!-- END_SECTION:supported-tools -->
 
@@ -844,7 +845,7 @@ When defining the arguments the variable `$PATH` will automatically be replaced 
 
 <!-- START_SECTION:supported-commands -->
 
-`mdsf` currently supports 394 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 397 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                         | Command                                                                                 |
 | ---------------------------- | --------------------------------------------------------------------------------------- |
@@ -1242,6 +1243,9 @@ When defining the arguments the variable `$PATH` will automatically be replaced 
 | `ziggy:fmt`                  | `ziggy fmt $PATH`                                                                       |
 | `zprint`                     | `zprint -w $PATH`                                                                       |
 | `zsweep`                     | `zsweep --auto $PATH`                                                                   |
+| `zuban:check`                | `zuban check $PATH`                                                                     |
+| `zuban:mypy`                 | `zuban mypy $PATH`                                                                      |
+| `zuban`                      | `zuban $PATH`                                                                           |
 
 <!-- END_SECTION:supported-commands -->
 

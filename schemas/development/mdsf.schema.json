@@ -2182,6 +2182,21 @@
           "description": "Linter for Zshell scripting language\n\n[https://github.com/psprint/zsh-sweep](https://github.com/psprint/zsh-sweep)\n\n`zsweep --auto $PATH`",
           "type": "string",
           "const": "zsweep"
+        },
+        {
+          "description": "Python Type Checker\n\n[https://github.com/zubanls/zuban](https://github.com/zubanls/zuban)\n\n`zuban $PATH`",
+          "type": "string",
+          "const": "zuban"
+        },
+        {
+          "description": "Python Type Checker\n\n[https://github.com/zubanls/zuban](https://github.com/zubanls/zuban)\n\n`zuban check $PATH`",
+          "type": "string",
+          "const": "zuban:check"
+        },
+        {
+          "description": "Python Type Checker\n\n[https://github.com/zubanls/zuban](https://github.com/zubanls/zuban)\n\n`zuban mypy $PATH`",
+          "type": "string",
+          "const": "zuban:mypy"
         }
       ]
     }
