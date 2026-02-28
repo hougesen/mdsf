@@ -510,7 +510,7 @@ When defining the arguments the variable `$PATH` will automatically be replaced 
 
 <!-- START_SECTION:supported-tools -->
 
-`mdsf` currently supports 343 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 344 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                                                                                 | Description                                                                                                                                                    | Categories            | Languages                                                                                                                         |
 | ------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
@@ -583,6 +583,7 @@ When defining the arguments the variable `$PATH` will automatically be replaced 
 | [dfmt](https://github.com/dlang-community/dfmt)                                      | Dfmt is a formatter for D source code                                                                                                                          | `formatter`           | `d`                                                                                                                               |
 | [dhall](https://dhall-lang.org)                                                      | Tools for the Dhall configuration language                                                                                                                     | `formatter`           | `dhall`                                                                                                                           |
 | [djade](https://github.com/adamchainz/djade)                                         | A Django template formatter                                                                                                                                    | `formatter`           | `django`, `python`                                                                                                                |
+| [djangofmt](https://github.com/unknownplatypus/djangofmt)                            | A fast, HTML aware, Django template formatter                                                                                                                  | `formatter`           | `django`, `html`, `python`                                                                                                        |
 | [djlint](https://www.djlint.com)                                                     | Lint & Format HTML Templates                                                                                                                                   | `formatter`, `linter` | `handlebars`, `html`, `jinja`, `mustache`, `nunjucks`, `twig`                                                                     |
 | [docformatter](https://github.com/pycqa/docformatter)                                | Formats docstrings to follow PEP 257                                                                                                                           | `formatter`           | `python`                                                                                                                          |
 | [dockerfmt](https://github.com/reteps/dockerfmt)                                     | Dockerfile formatter. a modern dockfmt                                                                                                                         | `formatter`           | `docker`                                                                                                                          |
@@ -864,7 +865,7 @@ When defining the arguments the variable `$PATH` will automatically be replaced 
 
 <!-- START_SECTION:supported-commands -->
 
-`mdsf` currently supports 399 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 400 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                         | Command                                                                                 |
 | ---------------------------- | --------------------------------------------------------------------------------------- |
@@ -947,6 +948,7 @@ When defining the arguments the variable `$PATH` will automatically be replaced 
 | `dhall:format`               | `dhall format $PATH`                                                                    |
 | `dhall:lint`                 | `dhall lint $PATH`                                                                      |
 | `djade`                      | `djade $PATH`                                                                           |
+| `djangofmt`                  | `djangofmt $PATH`                                                                       |
 | `djlint`                     | `djlint $PATH --reformat`                                                               |
 | `docformatter`               | `docformatter --in-place $PATH`                                                         |
 | `dockerfmt`                  | `dockerfmt -w -n $PATH`                                                                 |

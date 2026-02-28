@@ -81,6 +81,7 @@ pub mod dfmt;
 pub mod dhall_format;
 pub mod dhall_lint;
 pub mod djade;
+pub mod djangofmt;
 pub mod djlint;
 pub mod docformatter;
 pub mod dockerfmt;
@@ -1036,6 +1037,14 @@ pub enum Tooling {
     ///
     /// `djade $PATH`
     Djade,
+
+    #[serde(rename = "djangofmt")]
+    /// A fast, HTML aware, Django template formatter
+    ///
+    /// [https://github.com/unknownplatypus/djangofmt](https://github.com/unknownplatypus/djangofmt)
+    ///
+    /// `djangofmt $PATH`
+    Djangofmt,
 
     #[serde(rename = "djlint")]
     /// Lint & Format HTML Templates
@@ -3893,6 +3902,11 @@ impl Tooling {
                 dhall_lint::IS_STDIN,
             ),
             Self::Djade => (&djade::COMMANDS, djade::set_args, djade::IS_STDIN),
+            Self::Djangofmt => (
+                &djangofmt::COMMANDS,
+                djangofmt::set_args,
+                djangofmt::IS_STDIN,
+            ),
             Self::Djlint => (&djlint::COMMANDS, djlint::set_args, djlint::IS_STDIN),
             Self::Docformatter => (
                 &docformatter::COMMANDS,
@@ -5019,6 +5033,7 @@ impl AsRef<str> for Tooling {
             Self::DhallFormat => "dhall:format",
             Self::DhallLint => "dhall:lint",
             Self::Djade => "djade",
+            Self::Djangofmt => "djangofmt",
             Self::Djlint => "djlint",
             Self::Docformatter => "docformatter",
             Self::Dockerfmt => "dockerfmt",
@@ -5440,6 +5455,7 @@ mod test_tooling {
         assert_eq!(Tooling::DhallFormat, reverse(Tooling::DhallFormat)?);
         assert_eq!(Tooling::DhallLint, reverse(Tooling::DhallLint)?);
         assert_eq!(Tooling::Djade, reverse(Tooling::Djade)?);
+        assert_eq!(Tooling::Djangofmt, reverse(Tooling::Djangofmt)?);
         assert_eq!(Tooling::Djlint, reverse(Tooling::Djlint)?);
         assert_eq!(Tooling::Docformatter, reverse(Tooling::Docformatter)?);
         assert_eq!(Tooling::Dockerfmt, reverse(Tooling::Dockerfmt)?);
