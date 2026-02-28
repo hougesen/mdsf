@@ -1,0 +1,23 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "panache",
+  "categories": ["formatter"],
+  "commands": {
+    "format": {
+      "arguments": ["format", "$PATH"],
+      "tests": []
+    },
+    "lint": {
+      "arguments": ["lint", "$PATH"],
+      "tests": []
+    }
+  },
+  "description": "A formatter and linter for Pandoc markdown, Quarto, and RMarkdown",
+  "homepage": "https://github.com/jolars/panache",
+  "languages": ["markdown", "pandoc", "quarto", "rmarkdown"],
+  "packages": {
+    "cargo": {
+      "package": "panache"
+    }
+  }
+}

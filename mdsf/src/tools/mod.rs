@@ -236,6 +236,8 @@ pub mod oxlint;
 pub mod packer_fix;
 pub mod packer_fmt;
 pub mod packer_validate;
+pub mod panache_format;
+pub mod panache_lint;
 pub mod pasfmt;
 pub mod perflint;
 pub mod perltidy;
@@ -2274,6 +2276,22 @@ pub enum Tooling {
     ///
     /// `packer validate $PATH`
     PackerValidate,
+
+    #[serde(rename = "panache:format")]
+    /// A formatter and linter for Pandoc markdown, Quarto, and RMarkdown
+    ///
+    /// [https://github.com/jolars/panache](https://github.com/jolars/panache)
+    ///
+    /// `panache format $PATH`
+    PanacheFormat,
+
+    #[serde(rename = "panache:lint")]
+    /// A formatter and linter for Pandoc markdown, Quarto, and RMarkdown
+    ///
+    /// [https://github.com/jolars/panache](https://github.com/jolars/panache)
+    ///
+    /// `panache lint $PATH`
+    PanacheLint,
 
     #[serde(rename = "pasfmt")]
     /// Delphi code formatter
@@ -4402,6 +4420,16 @@ impl Tooling {
                 packer_validate::set_args,
                 packer_validate::IS_STDIN,
             ),
+            Self::PanacheFormat => (
+                &panache_format::COMMANDS,
+                panache_format::set_args,
+                panache_format::IS_STDIN,
+            ),
+            Self::PanacheLint => (
+                &panache_lint::COMMANDS,
+                panache_lint::set_args,
+                panache_lint::IS_STDIN,
+            ),
             Self::Pasfmt => (&pasfmt::COMMANDS, pasfmt::set_args, pasfmt::IS_STDIN),
             Self::Perflint => (&perflint::COMMANDS, perflint::set_args, perflint::IS_STDIN),
             Self::Perltidy => (&perltidy::COMMANDS, perltidy::set_args, perltidy::IS_STDIN),
@@ -5146,6 +5174,8 @@ impl AsRef<str> for Tooling {
             Self::PackerFix => "packer:fix",
             Self::PackerFmt => "packer:fmt",
             Self::PackerValidate => "packer:validate",
+            Self::PanacheFormat => "panache:format",
+            Self::PanacheLint => "panache:lint",
             Self::Pasfmt => "pasfmt",
             Self::Perflint => "perflint",
             Self::Perltidy => "perltidy",
@@ -5601,6 +5631,8 @@ mod test_tooling {
         assert_eq!(Tooling::PackerFix, reverse(Tooling::PackerFix)?);
         assert_eq!(Tooling::PackerFmt, reverse(Tooling::PackerFmt)?);
         assert_eq!(Tooling::PackerValidate, reverse(Tooling::PackerValidate)?);
+        assert_eq!(Tooling::PanacheFormat, reverse(Tooling::PanacheFormat)?);
+        assert_eq!(Tooling::PanacheLint, reverse(Tooling::PanacheLint)?);
         assert_eq!(Tooling::Pasfmt, reverse(Tooling::Pasfmt)?);
         assert_eq!(Tooling::Perflint, reverse(Tooling::Perflint)?);
         assert_eq!(Tooling::Perltidy, reverse(Tooling::Perltidy)?);
