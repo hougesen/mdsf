@@ -4,7 +4,7 @@ members = ["codegen", "docs", "mdsf"]
 exclude = []
 
 [workspace.package]
-version = "0.11.1-next"
+version = "0.12.0"
 authors = ["Mads Hougesen <mads@mhouge.dk>"]
 edition = "2024"
 documentation = "https://github.com/hougesen/mdsf#readme"

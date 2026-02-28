@@ -2,8 +2,13 @@
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
-#### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.11.1...HEAD)
+#### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.12.0...HEAD)
 
+#### [v0.12.0](https://github.com/hougesen/mdsf/compare/v0.11.1...v0.12.0)
+
+> 28 February 2026
+
+- feat(init): specify schema version with --schema-version [`#1550`](https://github.com/hougesen/mdsf/pull/1550)
 - feat(init): specify file format [`#1549`](https://github.com/hougesen/mdsf/pull/1549)
 - chore: bump env_logger from 0.11.8 to 0.11.9 [`#1519`](https://github.com/hougesen/mdsf/pull/1519)
 - chore: bump @eslint/js from 9.39.2 to 10.0.1 in /mdsf-vscode [`#1545`](https://github.com/hougesen/mdsf/pull/1545)

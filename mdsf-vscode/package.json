@@ -3,7 +3,7 @@
   "displayName": "mdsf",
   "publisher": "hougesen",
   "description": "Format markdown code blocks using mdsf",
-  "version": "0.11.1-next",
+  "version": "0.12.0",
   "engines": {
     "vscode": "^1.99.0"
   },
