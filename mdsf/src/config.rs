@@ -1,4 +1,7 @@
-use crate::{config::files::MdsfConfigFiles, error::MdsfError, terminal::print_config_not_found};
+use crate::{
+    cli::InitCommandSchemaVersion, config::files::MdsfConfigFiles, error::MdsfError,
+    terminal::print_config_not_found,
+};
 
 mod files;
 
@@ -408,12 +411,25 @@ impl MdsfConfig {
 }
 
 #[inline]
-fn default_schema_location() -> String {
-    let package_version = env!("CARGO_PKG_VERSION");
-
+pub fn schema_url(v: InitCommandSchemaVersion) -> String {
     format!(
-        "https://raw.githubusercontent.com/hougesen/mdsf/main/schemas/v{package_version}/mdsf.schema.json"
+        "https://raw.githubusercontent.com/hougesen/mdsf/main/schemas/{maybe_v}{package_version}/mdsf.schema.json",
+        maybe_v = if v == InitCommandSchemaVersion::Locked {
+            "v"
+        } else {
+            ""
+        },
+        package_version = match v {
+            InitCommandSchemaVersion::Locked => env!("CARGO_PKG_VERSION"),
+            InitCommandSchemaVersion::Stable => "stable",
+            InitCommandSchemaVersion::Development => "development",
+        }
     )
+}
+
+#[inline]
+fn default_schema_location() -> String {
+    schema_url(InitCommandSchemaVersion::Locked)
 }
 
 #[cfg(test)]

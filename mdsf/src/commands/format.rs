@@ -34,7 +34,9 @@ pub fn run(args: FormatCommandArguments, dry_run: bool) -> Result<(), MdsfError>
         .config
         .map_or_else(MdsfConfig::auto_load, MdsfConfig::load)?;
 
-    if let Some((version, false)) = conf.parse_schema_version() {
+    if let Some((version, false)) = conf.parse_schema_version()
+        && !(version == "development" || version == "stable")
+    {
         print_config_schema_version_mismatch(version);
     }
 

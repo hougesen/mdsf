@@ -106,11 +106,11 @@ pub fn print_error_saving_file(path: &std::path::Path, error: &std::io::Error) {
 
 #[inline]
 pub fn print_config_schema_version_mismatch(version: &str) {
-    if version == "development" {
-        warn!("Your mdsf.json schema version is currently set to a development");
-    } else {
-        warn!("Your mdsf.json schema version does not match the CLI version");
-    }
+    let cli_version = env!("CARGO_PKG_VERSION");
+
+    warn!(
+        "Your mdsf.json schema version ({version}) does not match the CLI version ({cli_version})"
+    );
 }
 
 #[inline]
