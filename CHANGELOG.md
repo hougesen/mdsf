@@ -4,6 +4,7 @@ All notable changes to this project will be documented in this file. Dates are d
 
 #### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.11.1...HEAD)
 
+- feat: support reading config from mdsf.toml [`#1543`](https://github.com/hougesen/mdsf/pull/1543)
 - chore: bump @typescript-eslint/eslint-plugin in /mdsf-vscode [`#1536`](https://github.com/hougesen/mdsf/pull/1536)
 - chore: bump tempfile from 3.25.0 to 3.26.0 [`#1539`](https://github.com/hougesen/mdsf/pull/1539)
 - chore: bump @eslint/js from 9.39.2 to 10.0.1 in /github-action [`#1531`](https://github.com/hougesen/mdsf/pull/1531)

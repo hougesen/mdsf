@@ -395,6 +395,7 @@ pub mod zig_fmt;
 pub mod ziggy_check;
 pub mod ziggy_fmt;
 pub mod zprint;
+pub mod zsweep;
 
 #[derive(serde::Serialize, serde::Deserialize, Hash, Clone, Copy, Debug, PartialEq, Eq)]
 #[cfg_attr(feature = "json-schema", derive(schemars::JsonSchema))]
@@ -3542,6 +3543,14 @@ pub enum Tooling {
     ///
     /// `zprint -w $PATH`
     Zprint,
+
+    #[serde(rename = "zsweep")]
+    /// Linter for Zshell scripting language
+    ///
+    /// [https://github.com/psprint/zsh-sweep](https://github.com/psprint/zsh-sweep)
+    ///
+    /// `zsweep --auto $PATH`
+    Zsweep,
 }
 
 impl Tooling {
@@ -4845,6 +4854,7 @@ impl Tooling {
                 ziggy_fmt::IS_STDIN,
             ),
             Self::Zprint => (&zprint::COMMANDS, zprint::set_args, zprint::IS_STDIN),
+            Self::Zsweep => (&zsweep::COMMANDS, zsweep::set_args, zsweep::IS_STDIN),
         };
 
         crate::execution::run_tools(
@@ -5257,6 +5267,7 @@ impl AsRef<str> for Tooling {
             Self::ZiggyCheck => "ziggy:check",
             Self::ZiggyFmt => "ziggy:fmt",
             Self::Zprint => "zprint",
+            Self::Zsweep => "zsweep",
         }
     }
 }
@@ -5723,6 +5734,7 @@ mod test_tooling {
         assert_eq!(Tooling::ZiggyCheck, reverse(Tooling::ZiggyCheck)?);
         assert_eq!(Tooling::ZiggyFmt, reverse(Tooling::ZiggyFmt)?);
         assert_eq!(Tooling::Zprint, reverse(Tooling::Zprint)?);
+        assert_eq!(Tooling::Zsweep, reverse(Tooling::Zsweep)?);
 
         Ok(())
     }
