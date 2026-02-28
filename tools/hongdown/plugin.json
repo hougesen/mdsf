@@ -1,0 +1,25 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "hongdown",
+  "categories": ["formatter"],
+  "commands": {
+    "": {
+      "arguments": ["-w", "$PATH"],
+      "tests": []
+    }
+  },
+  "description": "Hongdown is a Markdown formatter that enforces Hong Minhee's Markdown style conventions",
+  "homepage": "https://github.com/dahlia/hongdown",
+  "languages": ["markdown"],
+  "packages": {
+    "cargo": {
+      "package": "hongdown"
+    },
+    "mise": {
+      "package": "github:dahlia/hongdown"
+    },
+    "npm": {
+      "package": "hongdown"
+    }
+  }
+}

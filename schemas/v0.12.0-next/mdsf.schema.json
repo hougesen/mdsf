@@ -934,6 +934,11 @@
           "const": "hlint"
         },
         {
+          "description": "Hongdown is a Markdown formatter that enforces Hong Minhee's Markdown style conventions\n\n[https://github.com/dahlia/hongdown](https://github.com/dahlia/hongdown)\n\n`hongdown -w $PATH`",
+          "type": "string",
+          "const": "hongdown"
+        },
+        {
           "description": "A html formatter\n\n[https://github.com/beautifier/js-beautify](https://github.com/beautifier/js-beautify)\n\n`html-beautify -r --type html -f $PATH`",
           "type": "string",
           "const": "html-beautify"
