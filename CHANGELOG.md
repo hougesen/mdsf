@@ -8,6 +8,7 @@ All notable changes to this project will be documented in this file. Dates are d
 
 > 28 February 2026
 
+- chore: release v0.12.0 [`#1551`](https://github.com/hougesen/mdsf/pull/1551)
 - feat(init): specify schema version with --schema-version [`#1550`](https://github.com/hougesen/mdsf/pull/1550)
 - feat(init): specify file format [`#1549`](https://github.com/hougesen/mdsf/pull/1549)
 - chore: bump env_logger from 0.11.8 to 0.11.9 [`#1519`](https://github.com/hougesen/mdsf/pull/1519)

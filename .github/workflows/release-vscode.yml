@@ -16,7 +16,7 @@ jobs:
         working-directory: mdsf-vscode
       - name: Publish to VSCode
         working-directory: mdsf-vscode
-        run: npx vsce publish --pat ${{ secrets.VSCODE_MARKETPLACE_TOKEN }}
+        run: npx @vscode/vsce publish --pat ${{ secrets.VSCODE_MARKETPLACE_TOKEN }}
       - name: Publish OpenVSX
         working-directory: mdsf-vscode
         run: npx ovsx publish --pat ${{ secrets.OVSX_TOKEN }}
