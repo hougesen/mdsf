@@ -274,6 +274,10 @@ impl MdsfConfig {
             ".mdsf.json5",
             "mdsf.toml",
             ".mdsf.toml",
+            "mdsf.yml",
+            ".mdsf.yml",
+            "mdsf.yaml",
+            ".mdsf.yaml",
         ] {
             let path = dir.join(name);
 
@@ -313,8 +317,11 @@ impl MdsfConfig {
                 .map_err(|err| MdsfError::ConfigParseJson((path.to_path_buf(), err))),
             Some("toml") => Self::parse_toml(input)
                 .map_err(|err| MdsfError::ConfigParseToml((path.to_path_buf(), err))),
+            Some("yml" | "yaml") => Self::parse_yaml(input)
+                .map_err(|err| MdsfError::ConfigParseYaml((path.to_path_buf(), err))),
             _ => Self::parse_json(input)
                 .map_err(|_| Self::parse_toml(input))
+                .map_err(|_| Self::parse_yaml(input))
                 .map_err(|_| MdsfError::ConfigParseUnknownFormat(path.to_path_buf())),
         }
     }
@@ -327,6 +334,11 @@ impl MdsfConfig {
     #[inline]
     fn parse_toml(input: &str) -> Result<Self, toml::de::Error> {
         toml::from_str(input)
+    }
+
+    #[inline]
+    fn parse_yaml(input: &str) -> Result<Self, serde_yaml::Error> {
+        serde_yaml::from_str(input)
     }
 
     #[inline]
