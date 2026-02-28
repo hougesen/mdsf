@@ -39,6 +39,7 @@ pub mod bslint;
 pub mod buf_format;
 pub mod buf_lint;
 pub mod buildifier;
+pub mod c_3_fmt;
 pub mod cabal_fmt;
 pub mod cabal_format;
 pub mod cabal_gild;
@@ -702,6 +703,14 @@ pub enum Tooling {
     ///
     /// `buildifier $PATH`
     Buildifier,
+
+    #[serde(rename = "c3fmt")]
+    /// A customizable code formatter for the C3 language
+    ///
+    /// [https://github.com/lmichaudel/c3fmt](https://github.com/lmichaudel/c3fmt)
+    ///
+    /// `c3fmt --in-place $PATH`
+    C3Fmt,
 
     #[serde(rename = "cabal-fmt")]
     /// An experiment of formatting .cabal files
@@ -3761,6 +3770,7 @@ impl Tooling {
                 buildifier::set_args,
                 buildifier::IS_STDIN,
             ),
+            Self::C3Fmt => (&c_3_fmt::COMMANDS, c_3_fmt::set_args, c_3_fmt::IS_STDIN),
             Self::CabalFmt => (
                 &cabal_fmt::COMMANDS,
                 cabal_fmt::set_args,
@@ -5001,6 +5011,7 @@ impl AsRef<str> for Tooling {
             Self::BufFormat => "buf:format",
             Self::BufLint => "buf:lint",
             Self::Buildifier => "buildifier",
+            Self::C3Fmt => "c3fmt",
             Self::CabalFmt => "cabal-fmt",
             Self::CabalFormat => "cabal:format",
             Self::CabalGild => "cabal-gild",
@@ -5421,6 +5432,7 @@ mod test_tooling {
         assert_eq!(Tooling::BufFormat, reverse(Tooling::BufFormat)?);
         assert_eq!(Tooling::BufLint, reverse(Tooling::BufLint)?);
         assert_eq!(Tooling::Buildifier, reverse(Tooling::Buildifier)?);
+        assert_eq!(Tooling::C3Fmt, reverse(Tooling::C3Fmt)?);
         assert_eq!(Tooling::CabalFmt, reverse(Tooling::CabalFmt)?);
         assert_eq!(Tooling::CabalFormat, reverse(Tooling::CabalFormat)?);
         assert_eq!(Tooling::CabalGild, reverse(Tooling::CabalGild)?);

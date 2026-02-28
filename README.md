@@ -510,7 +510,7 @@ When defining the arguments the variable `$PATH` will automatically be replaced 
 
 <!-- START_SECTION:supported-tools -->
 
-`mdsf` currently supports 345 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 346 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                                                                                 | Description                                                                                                                                                    | Categories            | Languages                                                                                                                         |
 | ------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
@@ -545,6 +545,7 @@ When defining the arguments the variable `$PATH` will automatically be replaced 
 | [bslint](https://github.com/rokucommunity/bslint)                                    | A linter for BrightScript and BrighterScript                                                                                                                   | `linter`              | `brightscript`, `brightscripter`                                                                                                  |
 | [buf](https://buf.build/docs/reference/cli/buf)                                      | The best way of working with Protocol Buffers                                                                                                                  | `formatter`           | `protobuf`                                                                                                                        |
 | [buildifier](https://github.com/bazelbuild/buildtools)                               | A bazel BUILD file formatter and editor                                                                                                                        | `formatter`           | `bazel`                                                                                                                           |
+| [c3fmt](https://github.com/lmichaudel/c3fmt)                                         | A customizable code formatter for the C3 language                                                                                                              | `formatter`           | `c3`                                                                                                                              |
 | [cabal-fmt](https://github.com/phadej/cabal-fmt)                                     | An experiment of formatting .cabal files                                                                                                                       | `formatter`           | `cabal`                                                                                                                           |
 | [cabal-gild](https://github.com/tfausak/cabal-gild)                                  | Format Haskell package descriptions                                                                                                                            | `formatter`           | `cabal`, `haskell`                                                                                                                |
 | [cabal-prettify](https://github.com/kindaro/cabal-prettify)                          | Prettify your Cabal package configuration files                                                                                                                | `formatter`           | `cabal`                                                                                                                           |
@@ -866,7 +867,7 @@ When defining the arguments the variable `$PATH` will automatically be replaced 
 
 <!-- START_SECTION:supported-commands -->
 
-`mdsf` currently supports 401 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 402 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                         | Command                                                                                 |
 | ---------------------------- | --------------------------------------------------------------------------------------- |
@@ -907,6 +908,7 @@ When defining the arguments the variable `$PATH` will automatically be replaced 
 | `buf:format`                 | `buf format --write $PATH`                                                              |
 | `buf:lint`                   | `buf lint $PATH`                                                                        |
 | `buildifier`                 | `buildifier $PATH`                                                                      |
+| `c3fmt`                      | `c3fmt --in-place $PATH`                                                                |
 | `cabal-fmt`                  | `cabal-fmt --inplace $PATH`                                                             |
 | `cabal-gild`                 | `cabal-gild --input $PATH --output $PATH`                                               |
 | `cabal-prettify`             | `cabal-prettify $PATH`                                                                  |

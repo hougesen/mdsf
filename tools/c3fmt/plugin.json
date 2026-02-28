@@ -1,0 +1,15 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "c3fmt",
+  "categories": ["formatter"],
+  "commands": {
+    "": {
+      "arguments": ["--in-place", "$PATH"],
+      "tests": []
+    }
+  },
+  "description": "A customizable code formatter for the C3 language",
+  "homepage": "https://github.com/lmichaudel/c3fmt",
+  "languages": ["c3"],
+  "packages": {}
+}
