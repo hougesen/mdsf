@@ -262,10 +262,8 @@ impl Default for MdsfConfig {
 
 impl MdsfConfig {
     #[inline]
-    pub fn auto_load() -> Result<Self, MdsfError> {
-        let dir = std::env::current_dir()?;
-
-        for name in [
+    pub const fn supported_file_name() -> [&'static str; 12] {
+        [
             "mdsf.json",
             ".mdsf.json",
             "mdsf.jsonc",
@@ -278,7 +276,14 @@ impl MdsfConfig {
             ".mdsf.yml",
             "mdsf.yaml",
             ".mdsf.yaml",
-        ] {
+        ]
+    }
+
+    #[inline]
+    pub fn auto_load() -> Result<Self, MdsfError> {
+        let dir = std::env::current_dir()?;
+
+        for name in Self::supported_file_name() {
             let path = dir.join(name);
 
             let c = Self::load(path);

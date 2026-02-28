@@ -207,11 +207,68 @@ impl From<VerifyCommandArguments> for FormatCommandArguments {
     }
 }
 
+#[derive(Clone, Copy, PartialEq, Eq, Debug, Default)]
+pub enum ConfigFileFormat {
+    #[default]
+    Json,
+    Json5,
+    JsonC,
+    Toml,
+    Yaml,
+}
+
+impl ConfigFileFormat {
+    #[inline]
+    pub const fn extension(&self) -> &'static str {
+        match self {
+            Self::Json => "json",
+            Self::Json5 => "json5",
+            Self::JsonC => "jsonc",
+            Self::Toml => "toml",
+            Self::Yaml => "yml",
+        }
+    }
+}
+
+impl core::fmt::Display for ConfigFileFormat {
+    #[inline]
+    fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
+        match self {
+            Self::Json => write!(f, "json"),
+            Self::Json5 => write!(f, "json5"),
+            Self::JsonC => write!(f, "jsonc"),
+            Self::Toml => write!(f, "toml"),
+            Self::Yaml => write!(f, "yaml"),
+        }
+    }
+}
+
+impl clap::ValueEnum for ConfigFileFormat {
+    #[inline]
+    fn value_variants<'a>() -> &'a [Self] {
+        &[Self::Json, Self::Json5, Self::JsonC, Self::Toml, Self::Yaml]
+    }
+
+    #[inline]
+    fn to_possible_value(&self) -> Option<clap::builder::PossibleValue> {
+        Some(match self {
+            Self::Json => clap::builder::PossibleValue::new("json"),
+            Self::Json5 => clap::builder::PossibleValue::new("json5").hide(true),
+            Self::JsonC => clap::builder::PossibleValue::new("jsonc").hide(true),
+            Self::Toml => clap::builder::PossibleValue::new("toml"),
+            Self::Yaml => clap::builder::PossibleValue::new("yaml").alias("yml"),
+        })
+    }
+}
+
 #[derive(Args, Debug)]
 pub struct InitCommandArguments {
     /// Create config even if one already exists in current directory.
     #[arg(long, default_value_t = false)]
     pub force: bool,
+
+    #[arg(long, default_value_t)]
+    pub format: ConfigFileFormat,
 }
 
 #[derive(clap::ValueEnum, Clone, Copy, PartialEq, Eq, Debug, Default)]

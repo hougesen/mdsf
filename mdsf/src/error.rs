@@ -35,7 +35,9 @@ pub enum MdsfError {
     MissingLanguageDefinition(std::path::PathBuf, String),
     MissingInput,
     ReadStdin(std::io::Error),
-    SerializeConfig(serde_json::Error),
+    SerializeConfigJson(serde_json::Error),
+    SerializeConfigToml(toml::ser::Error),
+    SerializeConfigYaml(serde_yaml::Error),
     StdinWrite,
     Tool(String),
 }
@@ -93,7 +95,9 @@ impl core::fmt::Display for MdsfError {
             }
             Self::MissingInput => write!(f, "No input was provided to mdsf"),
             Self::ReadStdin(error) => write!(f, "Error reading from stdin: {error}"),
-            Self::SerializeConfig(e) => write!(f, "Error serializing config: {e}"),
+            Self::SerializeConfigJson(e) => write!(f, "Error serializing config: {e}"),
+            Self::SerializeConfigToml(e) => write!(f, "Error serializing config: {e}"),
+            Self::SerializeConfigYaml(e) => write!(f, "Error serializing config: {e}"),
             Self::StdinWrite => write!(f, "Error writing to stdin"),
             Self::Tool(stderr) => {
                 let trimmed_stderr = stderr.trim();

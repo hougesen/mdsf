@@ -399,6 +399,7 @@ Usage: mdsf init [OPTIONS]
 
 Options:
       --force                  Create config even if one already exists in current directory
+      --format <FORMAT>        [default: json] [possible values: json, toml, yaml]
       --log-level <LOG_LEVEL>  [possible values: trace, debug, info, warn, error, off]
   -h, --help                   Print help
   -V, --version                Print version
