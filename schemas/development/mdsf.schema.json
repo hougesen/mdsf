@@ -609,6 +609,11 @@
           "const": "djade"
         },
         {
+          "description": "A fast, HTML aware, Django template formatter\n\n[https://github.com/unknownplatypus/djangofmt](https://github.com/unknownplatypus/djangofmt)\n\n`djangofmt $PATH`",
+          "type": "string",
+          "const": "djangofmt"
+        },
+        {
           "description": "Lint & Format HTML Templates\n\n[https://www.djlint.com](https://www.djlint.com)\n\n`djlint $PATH --reformat`",
           "type": "string",
           "const": "djlint"

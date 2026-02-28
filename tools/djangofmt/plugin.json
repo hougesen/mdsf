@@ -1,0 +1,19 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "djangofmt",
+  "categories": ["formatter"],
+  "commands": {
+    "": {
+      "arguments": ["$PATH"],
+      "tests": []
+    }
+  },
+  "description": "A fast, HTML aware, Django template formatter",
+  "homepage": "https://github.com/unknownplatypus/djangofmt",
+  "languages": ["django", "html", "python"],
+  "packages": {
+    "pip": {
+      "package": "djangofmt"
+    }
+  }
+}
