@@ -399,6 +399,11 @@
           "const": "buildifier"
         },
         {
+          "description": "A customizable code formatter for the C3 language\n\n[https://github.com/lmichaudel/c3fmt](https://github.com/lmichaudel/c3fmt)\n\n`c3fmt --in-place $PATH`",
+          "type": "string",
+          "const": "c3fmt"
+        },
+        {
           "description": "An experiment of formatting .cabal files\n\n[https://github.com/phadej/cabal-fmt](https://github.com/phadej/cabal-fmt)\n\n`cabal-fmt --inplace $PATH`",
           "type": "string",
           "const": "cabal-fmt"
