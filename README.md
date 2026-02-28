@@ -492,7 +492,7 @@ When defining the arguments the variable `$PATH` will automatically be replaced 
 
 <!-- START_SECTION:supported-tools -->
 
-`mdsf` currently supports 340 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 341 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                                                                                 | Description                                                                                                                                                    | Categories            | Languages                                                                                                                         |
 | ------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
@@ -836,6 +836,7 @@ When defining the arguments the variable `$PATH` will automatically be replaced 
 | [zig](https://ziglang.org)                                                           | Reformat Zig source into canonical form                                                                                                                        | `formatter`           | `zig`                                                                                                                             |
 | [ziggy](https://ziggy-lang.io)                                                       | Formats Ziggy documents and Ziggy schemas                                                                                                                      | `formatter`           | `ziggy`                                                                                                                           |
 | [zprint](https://github.com/kkinnear/zprint)                                         | Beautifully format Clojure and Clojurescript source code and s-expressions                                                                                     | `formatter`           | `clojure`, `clojurescript`                                                                                                        |
+| [zsweep](https://github.com/psprint/zsh-sweep)                                       | Linter for Zshell scripting language                                                                                                                           | `linter`              | `zsh`                                                                                                                             |
 
 <!-- END_SECTION:supported-tools -->
 
@@ -843,7 +844,7 @@ When defining the arguments the variable `$PATH` will automatically be replaced 
 
 <!-- START_SECTION:supported-commands -->
 
-`mdsf` currently supports 393 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 394 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                         | Command                                                                                 |
 | ---------------------------- | --------------------------------------------------------------------------------------- |
@@ -1240,6 +1241,7 @@ When defining the arguments the variable `$PATH` will automatically be replaced 
 | `ziggy:check`                | `ziggy check $PATH`                                                                     |
 | `ziggy:fmt`                  | `ziggy fmt $PATH`                                                                       |
 | `zprint`                     | `zprint -w $PATH`                                                                       |
+| `zsweep`                     | `zsweep --auto $PATH`                                                                   |
 
 <!-- END_SECTION:supported-commands -->
 

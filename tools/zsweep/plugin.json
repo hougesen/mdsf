@@ -1,0 +1,15 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "zsweep",
+  "categories": ["linter"],
+  "commands": {
+    "": {
+      "arguments": ["--auto", "$PATH"],
+      "tests": []
+    }
+  },
+  "description": "Linter for Zshell scripting language",
+  "homepage": "https://github.com/psprint/zsh-sweep",
+  "languages": ["zsh"],
+  "packages": {}
+}
