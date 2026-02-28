@@ -4,6 +4,7 @@ All notable changes to this project will be documented in this file. Dates are d
 
 #### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.11.1...HEAD)
 
+- feat(init): specify file format [`#1549`](https://github.com/hougesen/mdsf/pull/1549)
 - chore: bump env_logger from 0.11.8 to 0.11.9 [`#1519`](https://github.com/hougesen/mdsf/pull/1519)
 - chore: bump @eslint/js from 9.39.2 to 10.0.1 in /mdsf-vscode [`#1545`](https://github.com/hougesen/mdsf/pull/1545)
 - feat: support defining config using yaml [`#1548`](https://github.com/hougesen/mdsf/pull/1548)

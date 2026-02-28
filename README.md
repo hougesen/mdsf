@@ -132,7 +132,7 @@ Commands:
   help         Print this message or the help of the given subcommand(s)
 
 Options:
-      --log-level <LOG_LEVEL>  [possible values: trace, debug, info, warn, error, off]
+      --log-level <LOG_LEVEL>  [default: debug] [possible values: trace, debug, info, warn, error, off]
   -h, --help                   Print help
   -V, --version                Print version
 ```
@@ -177,6 +177,7 @@ Options:
           Cache results
 
       --log-level <LOG_LEVEL>
+          [default: debug]
           [possible values: trace, debug, info, warn, error, off]
 
       --timeout <TIMEOUT>
@@ -185,12 +186,16 @@ Options:
           Defaults to no timeout.
 
       --on-missing-language-definition <ON_MISSING_LANGUAGE_DEFINITION>
-          What to do when a codeblock language has no tools defined
+          What to do when a codeblock language has no tools defined.
+
+          Falls back to the value defined in your config file, if no argument is provided.
 
           [possible values: ignore, fail, fail-fast]
 
       --on-missing-tool-binary <ON_MISSING_TOOL_BINARY>
-          What to do when the binary of a tool cannot be found
+          What to do when the binary of a tool cannot be found.
+
+          Falls back to the value defined in your config file, if no argument is provided.
 
           [possible values: ignore, fail, fail-fast]
 
@@ -223,7 +228,7 @@ Remove caches
 Usage: mdsf cache-prune [OPTIONS]
 
 Options:
-      --log-level <LOG_LEVEL>  [possible values: trace, debug, info, warn, error, off]
+      --log-level <LOG_LEVEL>  [default: debug] [possible values: trace, debug, info, warn, error, off]
   -h, --help                   Print help
   -V, --version                Print version
 ```
@@ -270,15 +275,20 @@ Options:
           Defaults to no timeout.
 
       --log-level <LOG_LEVEL>
+          [default: debug]
           [possible values: trace, debug, info, warn, error, off]
 
       --on-missing-language-definition <ON_MISSING_LANGUAGE_DEFINITION>
-          What to do when a codeblock language has no tools defined
+          What to do when a codeblock language has no tools defined.
+
+          Falls back to the value defined in your config file, if no argument is provided.
 
           [possible values: ignore, fail, fail-fast]
 
       --on-missing-tool-binary <ON_MISSING_TOOL_BINARY>
-          What to do when the binary of a tool cannot be found
+          What to do when the binary of a tool cannot be found.
+
+          Falls back to the value defined in your config file, if no argument is provided.
 
           [possible values: ignore, fail, fail-fast]
 
@@ -398,11 +408,18 @@ Create a new mdsf config
 Usage: mdsf init [OPTIONS]
 
 Options:
-      --force                  Create config even if one already exists in current directory
-      --format <FORMAT>        [default: json] [possible values: json, toml, yaml]
-      --log-level <LOG_LEVEL>  [possible values: trace, debug, info, warn, error, off]
-  -h, --help                   Print help
-  -V, --version                Print version
+      --force
+          Create config even if one already exists in current directory
+      --format <FORMAT>
+          [default: json] [possible values: json, toml, yaml]
+      --schema-version <SCHEMA_VERSION>
+          [default: locked] [possible values: locked, stable, development]
+      --log-level <LOG_LEVEL>
+          [default: debug] [possible values: trace, debug, info, warn, error, off]
+  -h, --help
+          Print help
+  -V, --version
+          Print version
 ```
 
 <!-- END_SECTION:init-command-help -->
@@ -1265,7 +1282,7 @@ Arguments:
   <SHELL>  [possible values: bash, elvish, fish, nushell, powershell, zsh]
 
 Options:
-      --log-level <LOG_LEVEL>  [possible values: trace, debug, info, warn, error, off]
+      --log-level <LOG_LEVEL>  [default: debug] [possible values: trace, debug, info, warn, error, off]
   -h, --help                   Print help
   -V, --version                Print version
 ```

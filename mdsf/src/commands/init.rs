@@ -1,5 +1,7 @@
 use mdsf::{
-    cli::ConfigFileFormat, cli::InitCommandArguments, config::MdsfConfig, error::MdsfError,
+    cli::{ConfigFileFormat, InitCommandArguments},
+    config::{MdsfConfig, schema_url},
+    error::MdsfError,
 };
 
 #[inline]
@@ -8,7 +10,10 @@ pub fn run(args: &InitCommandArguments) -> Result<(), MdsfError> {
         raise_if_config_file_already_exists()?;
     }
 
-    let default_config = MdsfConfig::default();
+    let default_config = MdsfConfig {
+        schema: schema_url(args.schema_version),
+        ..Default::default()
+    };
 
     let serialized_config = match args.format {
         ConfigFileFormat::Json | ConfigFileFormat::Json5 | ConfigFileFormat::JsonC => {

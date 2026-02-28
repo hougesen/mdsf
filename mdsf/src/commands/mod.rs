@@ -14,7 +14,7 @@ mod prune_cache;
 pub fn run_command() -> Result<(), MdsfError> {
     let c = Cli::parse();
 
-    setup_logger(c.log_level.unwrap_or_default());
+    setup_logger(c.log_level);
 
     match c.command {
         Commands::CachePrune => prune_cache::run().map_err(MdsfError::from),

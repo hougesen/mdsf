@@ -16,8 +16,8 @@ pub struct Cli {
     #[command(subcommand)]
     pub command: Commands,
 
-    #[arg(long, value_enum, global = true)]
-    pub log_level: Option<LogLevel>,
+    #[arg(long, value_enum, global = true, default_value_t)]
+    pub log_level: LogLevel,
 }
 
 #[derive(Subcommand, Debug)]
@@ -66,9 +66,9 @@ impl clap::ValueEnum for OnMissingToolBinary {
     #[inline]
     fn to_possible_value(&self) -> Option<clap::builder::PossibleValue> {
         Some(match self {
-            Self::Ignore => clap::builder::PossibleValue::new("ignore"),
             Self::Fail => clap::builder::PossibleValue::new("fail"),
             Self::FailFast => clap::builder::PossibleValue::new("fail-fast"),
+            Self::Ignore => clap::builder::PossibleValue::new("ignore"),
         })
     }
 }
@@ -101,9 +101,9 @@ impl clap::ValueEnum for OnMissingLanguageDefinition {
     #[inline]
     fn to_possible_value(&self) -> Option<clap::builder::PossibleValue> {
         Some(match self {
-            Self::Ignore => clap::builder::PossibleValue::new("ignore"),
             Self::Fail => clap::builder::PossibleValue::new("fail"),
             Self::FailFast => clap::builder::PossibleValue::new("fail-fast"),
+            Self::Ignore => clap::builder::PossibleValue::new("ignore"),
         })
     }
 }
@@ -143,10 +143,14 @@ pub struct FormatCommandArguments {
     pub timeout: Option<u64>,
 
     /// What to do when a codeblock language has no tools defined.
+    ///
+    /// Falls back to the value defined in your config file, if no argument is provided.
     #[arg(long)]
     pub on_missing_language_definition: Option<OnMissingLanguageDefinition>,
 
     /// What to do when the binary of a tool cannot be found.
+    ///
+    /// Falls back to the value defined in your config file, if no argument is provided.
     #[arg(long)]
     pub on_missing_tool_binary: Option<OnMissingToolBinary>,
 }
@@ -182,10 +186,14 @@ pub struct VerifyCommandArguments {
     pub timeout: Option<u64>,
 
     /// What to do when a codeblock language has no tools defined.
+    ///
+    /// Falls back to the value defined in your config file, if no argument is provided.
     #[arg(long)]
     pub on_missing_language_definition: Option<OnMissingLanguageDefinition>,
 
     /// What to do when the binary of a tool cannot be found.
+    ///
+    /// Falls back to the value defined in your config file, if no argument is provided.
     #[arg(long)]
     pub on_missing_tool_binary: Option<OnMissingToolBinary>,
 }
@@ -261,6 +269,46 @@ impl clap::ValueEnum for ConfigFileFormat {
     }
 }
 
+#[derive(Clone, Copy, PartialEq, Eq, Debug, Default)]
+pub enum InitCommandSchemaVersion {
+    /// Schema that uses your current mdsf version.
+    #[default]
+    Locked,
+
+    /// Schema of the latest released version of mdsf.
+    Stable,
+
+    /// Schema based on the latest commit on the main branch of mdsf.
+    Development,
+}
+
+impl clap::ValueEnum for InitCommandSchemaVersion {
+    #[inline]
+    fn value_variants<'a>() -> &'a [Self] {
+        &[Self::Locked, Self::Stable, Self::Development]
+    }
+
+    #[inline]
+    fn to_possible_value(&self) -> Option<clap::builder::PossibleValue> {
+        Some(match self {
+            Self::Development => clap::builder::PossibleValue::new("development"),
+            Self::Locked => clap::builder::PossibleValue::new("locked"),
+            Self::Stable => clap::builder::PossibleValue::new("stable"),
+        })
+    }
+}
+
+impl core::fmt::Display for InitCommandSchemaVersion {
+    #[inline]
+    fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
+        match self {
+            Self::Development => write!(f, "development"),
+            Self::Locked => write!(f, "locked"),
+            Self::Stable => write!(f, "stable"),
+        }
+    }
+}
+
 #[derive(Args, Debug)]
 pub struct InitCommandArguments {
     /// Create config even if one already exists in current directory.
@@ -269,6 +317,9 @@ pub struct InitCommandArguments {
 
     #[arg(long, default_value_t)]
     pub format: ConfigFileFormat,
+
+    #[arg(long, default_value_t)]
+    pub schema_version: InitCommandSchemaVersion,
 }
 
 #[derive(clap::ValueEnum, Clone, Copy, PartialEq, Eq, Debug, Default)]
