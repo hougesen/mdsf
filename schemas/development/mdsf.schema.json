@@ -1384,6 +1384,16 @@
           "const": "packer:validate"
         },
         {
+          "description": "A formatter and linter for Pandoc markdown, Quarto, and RMarkdown\n\n[https://github.com/jolars/panache](https://github.com/jolars/panache)\n\n`panache format $PATH`",
+          "type": "string",
+          "const": "panache:format"
+        },
+        {
+          "description": "A formatter and linter for Pandoc markdown, Quarto, and RMarkdown\n\n[https://github.com/jolars/panache](https://github.com/jolars/panache)\n\n`panache lint $PATH`",
+          "type": "string",
+          "const": "panache:lint"
+        },
+        {
           "description": "Delphi code formatter\n\n[https://github.com/integrated-application-development/pasfmt](https://github.com/integrated-application-development/pasfmt)\n\n`pasfmt $PATH`",
           "type": "string",
           "const": "pasfmt"

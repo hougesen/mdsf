@@ -510,7 +510,7 @@ When defining the arguments the variable `$PATH` will automatically be replaced 
 
 <!-- START_SECTION:supported-tools -->
 
-`mdsf` currently supports 342 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 343 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                                                                                 | Description                                                                                                                                                    | Categories            | Languages                                                                                                                         |
 | ------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
@@ -713,6 +713,7 @@ When defining the arguments the variable `$PATH` will automatically be replaced 
 | [oxfmt](https://oxc.rs/docs/guide/usage/formatter.html)                              | Oxfmt a fast JavaScript/TypeScript formatter written in Rust                                                                                                   | `formatter`           | `javascript`, `typescript`                                                                                                        |
 | [oxlint](https://oxc.rs/docs/guide/usage/linter.html)                                | Oxlint is designed to catch erroneous or useless code without requiring any configurations by default                                                          | `linter`              | `javascript`, `typescript`                                                                                                        |
 | [packer](https://developer.hashicorp.com/packer/docs/commands)                       | Packer is used to format HCL2 configuration files                                                                                                              | `formatter`           | `hcl`                                                                                                                             |
+| [panache](https://github.com/jolars/panache)                                         | A formatter and linter for Pandoc markdown, Quarto, and RMarkdown                                                                                              | `formatter`           | `markdown`, `pandoc`, `quarto`, `rmarkdown`                                                                                       |
 | [pasfmt](https://github.com/integrated-application-development/pasfmt)               | Delphi code formatter                                                                                                                                          | `formatter`           | `delphi`, `pascal`                                                                                                                |
 | [perflint](https://github.com/tonybaloney/perflint)                                  | Python Linter for performance anti patterns                                                                                                                    | `linter`              | `python`                                                                                                                          |
 | [perltidy](https://github.com/perltidy/perltidy)                                     | Perl::Tidy, a source code formatter for Perl                                                                                                                   | `formatter`           | `perl`                                                                                                                            |
@@ -863,7 +864,7 @@ When defining the arguments the variable `$PATH` will automatically be replaced 
 
 <!-- START_SECTION:supported-commands -->
 
-`mdsf` currently supports 397 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 399 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                         | Command                                                                                 |
 | ---------------------------- | --------------------------------------------------------------------------------------- |
@@ -1101,6 +1102,8 @@ When defining the arguments the variable `$PATH` will automatically be replaced 
 | `packer:fix`                 | `packer fix $PATH`                                                                      |
 | `packer:fmt`                 | `packer fmt $PATH`                                                                      |
 | `packer:validate`            | `packer validate $PATH`                                                                 |
+| `panache:format`             | `panache format $PATH`                                                                  |
+| `panache:lint`               | `panache lint $PATH`                                                                    |
 | `pasfmt`                     | `pasfmt $PATH`                                                                          |
 | `perflint`                   | `perflint $PATH`                                                                        |
 | `perltidy`                   | `perltidy -b $PATH`                                                                     |
