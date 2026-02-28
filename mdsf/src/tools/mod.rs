@@ -146,6 +146,7 @@ pub mod hclfmt;
 pub mod hfmt;
 pub mod hindent;
 pub mod hlint;
+pub mod hongdown;
 pub mod html_beautify;
 pub mod htmlbeautifier;
 pub mod htmlhint;
@@ -1557,6 +1558,14 @@ pub enum Tooling {
     ///
     /// `hlint $PATH`
     Hlint,
+
+    #[serde(rename = "hongdown")]
+    /// Hongdown is a Markdown formatter that enforces Hong Minhee's Markdown style conventions
+    ///
+    /// [https://github.com/dahlia/hongdown](https://github.com/dahlia/hongdown)
+    ///
+    /// `hongdown -w $PATH`
+    Hongdown,
 
     #[serde(rename = "html-beautify")]
     /// A html formatter
@@ -4119,6 +4128,7 @@ impl Tooling {
             Self::Hfmt => (&hfmt::COMMANDS, hfmt::set_args, hfmt::IS_STDIN),
             Self::Hindent => (&hindent::COMMANDS, hindent::set_args, hindent::IS_STDIN),
             Self::Hlint => (&hlint::COMMANDS, hlint::set_args, hlint::IS_STDIN),
+            Self::Hongdown => (&hongdown::COMMANDS, hongdown::set_args, hongdown::IS_STDIN),
             Self::HtmlBeautify => (
                 &html_beautify::COMMANDS,
                 html_beautify::set_args,
@@ -5098,6 +5108,7 @@ impl AsRef<str> for Tooling {
             Self::Hfmt => "hfmt",
             Self::Hindent => "hindent",
             Self::Hlint => "hlint",
+            Self::Hongdown => "hongdown",
             Self::HtmlBeautify => "html-beautify",
             Self::Htmlbeautifier => "htmlbeautifier",
             Self::Htmlhint => "htmlhint",
@@ -5541,6 +5552,7 @@ mod test_tooling {
         assert_eq!(Tooling::Hfmt, reverse(Tooling::Hfmt)?);
         assert_eq!(Tooling::Hindent, reverse(Tooling::Hindent)?);
         assert_eq!(Tooling::Hlint, reverse(Tooling::Hlint)?);
+        assert_eq!(Tooling::Hongdown, reverse(Tooling::Hongdown)?);
         assert_eq!(Tooling::HtmlBeautify, reverse(Tooling::HtmlBeautify)?);
         assert_eq!(Tooling::Htmlbeautifier, reverse(Tooling::Htmlbeautifier)?);
         assert_eq!(Tooling::Htmlhint, reverse(Tooling::Htmlhint)?);

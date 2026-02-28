@@ -510,7 +510,7 @@ When defining the arguments the variable `$PATH` will automatically be replaced 
 
 <!-- START_SECTION:supported-tools -->
 
-`mdsf` currently supports 344 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 345 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                                                                                 | Description                                                                                                                                                    | Categories            | Languages                                                                                                                         |
 | ------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
@@ -640,6 +640,7 @@ When defining the arguments the variable `$PATH` will automatically be replaced 
 | [hfmt](https://github.com/danstiner/hfmt)                                            | Format Haskell programs. Inspired by the gofmt utility                                                                                                         | `formatter`           | `haskell`                                                                                                                         |
 | [hindent](https://github.com/mihaimaruseac/hindent)                                  | Haskell pretty printer                                                                                                                                         | `formatter`           | `haskell`                                                                                                                         |
 | [hlint](https://github.com/ndmitchell/hlint)                                         | Haskell source code suggestions                                                                                                                                | `linter`              | `haskell`                                                                                                                         |
+| [hongdown](https://github.com/dahlia/hongdown)                                       | Hongdown is a Markdown formatter that enforces Hong Minhee's Markdown style conventions                                                                        | `formatter`           | `markdown`                                                                                                                        |
 | [html-beautify](https://github.com/beautifier/js-beautify)                           | A html formatter                                                                                                                                               | `formatter`           | `html`                                                                                                                            |
 | [htmlbeautifier](https://github.com/threedaymonk/htmlbeautifier)                     | A normaliser/beautifier for HTML that also understands embedded Ruby. Ideal for tidying up Rails templates                                                     | `formatter`           | `erb`, `html`, `ruby`                                                                                                             |
 | [htmlhint](https://github.com/htmlhint/htmlhint)                                     | The static code analysis tool you need for your HTML                                                                                                           | `linter`              | `html`                                                                                                                            |
@@ -865,7 +866,7 @@ When defining the arguments the variable `$PATH` will automatically be replaced 
 
 <!-- START_SECTION:supported-commands -->
 
-`mdsf` currently supports 400 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 401 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                         | Command                                                                                 |
 | ---------------------------- | --------------------------------------------------------------------------------------- |
@@ -1013,6 +1014,7 @@ When defining the arguments the variable `$PATH` will automatically be replaced 
 | `hfmt`                       | `hfmt -w $PATH`                                                                         |
 | `hindent`                    | `hindent $PATH`                                                                         |
 | `hlint`                      | `hlint $PATH`                                                                           |
+| `hongdown`                   | `hongdown -w $PATH`                                                                     |
 | `html-beautify`              | `html-beautify -r --type html -f $PATH`                                                 |
 | `htmlbeautifier`             | `htmlbeautifier $PATH`                                                                  |
 | `htmlhint`                   | `htmlhint $PATH`                                                                        |
