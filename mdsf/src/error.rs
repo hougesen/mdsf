@@ -20,6 +20,7 @@ pub enum MdsfError {
     // TODO: use &std::path::Path
     ConfigParseJson((std::path::PathBuf, json5::Error)),
     ConfigParseToml((std::path::PathBuf, toml::de::Error)),
+    ConfigParseYaml((std::path::PathBuf, serde_yaml::Error)),
     ConfigParseUnknownFormat(std::path::PathBuf),
     EmptyFilesExtensions,
     Io(std::io::Error),
@@ -58,6 +59,11 @@ impl core::fmt::Display for MdsfError {
                 path.display()
             ),
             Self::ConfigParseToml((path, error)) => write!(
+                f,
+                "Error parsing config found at '{}' - {error}",
+                path.display()
+            ),
+            Self::ConfigParseYaml((path, error)) => write!(
                 f,
                 "Error parsing config found at '{}' - {error}",
                 path.display()
