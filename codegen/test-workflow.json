@@ -76,7 +76,7 @@
       }
     },
     { "uses": "haskell-actions/setup@v2" },
-    { "uses": "julia-actions/cache@v2" },
+    { "uses": "julia-actions/cache@v3" },
     { "uses": "cargo-bins/cargo-binstall@main" },
     { "uses": "homebrew/actions/setup-homebrew@main" },
     { "uses": "leafo/gh-actions-lua@v12" },
