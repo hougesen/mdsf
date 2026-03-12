@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file. Dates are d
 
 #### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.12.0...HEAD)
 
+- chore: bump julia-actions/cache from 2 to 3 [`#1561`](https://github.com/hougesen/mdsf/pull/1561)
+- chore: bump toml from 1.0.4+spec-1.1.0 to 1.0.6+spec-1.1.0 [`#1563`](https://github.com/hougesen/mdsf/pull/1563)
+- chore: bump which from 8.0.1 to 8.0.2 [`#1562`](https://github.com/hougesen/mdsf/pull/1562)
+- chore: bump toml from 1.0.3+spec-1.1.0 to 1.0.4+spec-1.1.0 [`#1559`](https://github.com/hougesen/mdsf/pull/1559)
+- chore: bump which from 8.0.0 to 8.0.1 [`#1560`](https://github.com/hougesen/mdsf/pull/1560)
+- chore: bump globals from 17.3.0 to 17.4.0 in /mdsf-vscode [`#1557`](https://github.com/hougesen/mdsf/pull/1557)
+- chore: bump globals from 17.3.0 to 17.4.0 in /github-action [`#1558`](https://github.com/hougesen/mdsf/pull/1558)
+- feat(tools): add support for c3fmt [`#1556`](https://github.com/hougesen/mdsf/pull/1556)
 - feat(tools): add support for hongdown [`#1555`](https://github.com/hougesen/mdsf/pull/1555)
 - feat(tools): add support for djangofmt [`#1554`](https://github.com/hougesen/mdsf/pull/1554)
 - feat(tools): add support for panache [`#1553`](https://github.com/hougesen/mdsf/pull/1553)

@@ -510,7 +510,7 @@ When defining the arguments the variable `$PATH` will automatically be replaced 
 
 <!-- START_SECTION:supported-tools -->
 
-`mdsf` currently supports 346 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 347 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                                                                                 | Description                                                                                                                                                    | Categories            | Languages                                                                                                                         |
 | ------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
@@ -640,6 +640,7 @@ When defining the arguments the variable `$PATH` will automatically be replaced 
 | [hclfmt](https://github.com/hashicorp/hcl)                                           | Formatter for hcl files                                                                                                                                        | `formatter`           | `hcl`                                                                                                                             |
 | [hfmt](https://github.com/danstiner/hfmt)                                            | Format Haskell programs. Inspired by the gofmt utility                                                                                                         | `formatter`           | `haskell`                                                                                                                         |
 | [hindent](https://github.com/mihaimaruseac/hindent)                                  | Haskell pretty printer                                                                                                                                         | `formatter`           | `haskell`                                                                                                                         |
+| [hledger-fmt](https://github.com/mondeja/hledger-fmt)                                | Opinionated hledger's journal files formatter                                                                                                                  | `formatter`           | `hledger`                                                                                                                         |
 | [hlint](https://github.com/ndmitchell/hlint)                                         | Haskell source code suggestions                                                                                                                                | `linter`              | `haskell`                                                                                                                         |
 | [hongdown](https://github.com/dahlia/hongdown)                                       | Hongdown is a Markdown formatter that enforces Hong Minhee's Markdown style conventions                                                                        | `formatter`           | `markdown`                                                                                                                        |
 | [html-beautify](https://github.com/beautifier/js-beautify)                           | A html formatter                                                                                                                                               | `formatter`           | `html`                                                                                                                            |
@@ -867,7 +868,7 @@ When defining the arguments the variable `$PATH` will automatically be replaced 
 
 <!-- START_SECTION:supported-commands -->
 
-`mdsf` currently supports 402 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 403 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                         | Command                                                                                 |
 | ---------------------------- | --------------------------------------------------------------------------------------- |
@@ -1015,6 +1016,7 @@ When defining the arguments the variable `$PATH` will automatically be replaced 
 | `hclfmt`                     | `hclfmt -w $PATH`                                                                       |
 | `hfmt`                       | `hfmt -w $PATH`                                                                         |
 | `hindent`                    | `hindent $PATH`                                                                         |
+| `hledger-fmt`                | `hledger-fmt --no-diff --exit-zero-on-changes -`                                        |
 | `hlint`                      | `hlint $PATH`                                                                           |
 | `hongdown`                   | `hongdown -w $PATH`                                                                     |
 | `html-beautify`              | `html-beautify -r --type html -f $PATH`                                                 |

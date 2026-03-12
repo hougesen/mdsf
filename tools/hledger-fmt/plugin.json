@@ -1,0 +1,20 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "hledger-fmt",
+  "categories": ["formatter"],
+  "commands": {
+    "": {
+      "arguments": ["--no-diff", "--exit-zero-on-changes", "-"],
+      "stdin": true,
+      "tests": []
+    }
+  },
+  "description": "Opinionated hledger's journal files formatter",
+  "homepage": "https://github.com/mondeja/hledger-fmt",
+  "languages": ["hledger"],
+  "packages": {
+    "cargo": {
+      "package": "hledger-fmt"
+    }
+  }
+}

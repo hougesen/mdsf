@@ -146,6 +146,7 @@ pub mod haml_lint;
 pub mod hclfmt;
 pub mod hfmt;
 pub mod hindent;
+pub mod hledger_fmt;
 pub mod hlint;
 pub mod hongdown;
 pub mod html_beautify;
@@ -1559,6 +1560,14 @@ pub enum Tooling {
     ///
     /// `hindent $PATH`
     Hindent,
+
+    #[serde(rename = "hledger-fmt")]
+    /// Opinionated hledger's journal files formatter
+    ///
+    /// [https://github.com/mondeja/hledger-fmt](https://github.com/mondeja/hledger-fmt)
+    ///
+    /// `hledger-fmt --no-diff --exit-zero-on-changes -`
+    HledgerFmt,
 
     #[serde(rename = "hlint")]
     /// Haskell source code suggestions
@@ -4137,6 +4146,11 @@ impl Tooling {
             Self::Hclfmt => (&hclfmt::COMMANDS, hclfmt::set_args, hclfmt::IS_STDIN),
             Self::Hfmt => (&hfmt::COMMANDS, hfmt::set_args, hfmt::IS_STDIN),
             Self::Hindent => (&hindent::COMMANDS, hindent::set_args, hindent::IS_STDIN),
+            Self::HledgerFmt => (
+                &hledger_fmt::COMMANDS,
+                hledger_fmt::set_args,
+                hledger_fmt::IS_STDIN,
+            ),
             Self::Hlint => (&hlint::COMMANDS, hlint::set_args, hlint::IS_STDIN),
             Self::Hongdown => (&hongdown::COMMANDS, hongdown::set_args, hongdown::IS_STDIN),
             Self::HtmlBeautify => (
@@ -5118,6 +5132,7 @@ impl AsRef<str> for Tooling {
             Self::Hclfmt => "hclfmt",
             Self::Hfmt => "hfmt",
             Self::Hindent => "hindent",
+            Self::HledgerFmt => "hledger-fmt",
             Self::Hlint => "hlint",
             Self::Hongdown => "hongdown",
             Self::HtmlBeautify => "html-beautify",
@@ -5563,6 +5578,7 @@ mod test_tooling {
         assert_eq!(Tooling::Hclfmt, reverse(Tooling::Hclfmt)?);
         assert_eq!(Tooling::Hfmt, reverse(Tooling::Hfmt)?);
         assert_eq!(Tooling::Hindent, reverse(Tooling::Hindent)?);
+        assert_eq!(Tooling::HledgerFmt, reverse(Tooling::HledgerFmt)?);
         assert_eq!(Tooling::Hlint, reverse(Tooling::Hlint)?);
         assert_eq!(Tooling::Hongdown, reverse(Tooling::Hongdown)?);
         assert_eq!(Tooling::HtmlBeautify, reverse(Tooling::HtmlBeautify)?);

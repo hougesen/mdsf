@@ -934,6 +934,11 @@
           "const": "hindent"
         },
         {
+          "description": "Opinionated hledger's journal files formatter\n\n[https://github.com/mondeja/hledger-fmt](https://github.com/mondeja/hledger-fmt)\n\n`hledger-fmt --no-diff --exit-zero-on-changes -`",
+          "type": "string",
+          "const": "hledger-fmt"
+        },
+        {
           "description": "Haskell source code suggestions\n\n[https://github.com/ndmitchell/hlint](https://github.com/ndmitchell/hlint)\n\n`hlint $PATH`",
           "type": "string",
           "const": "hlint"
