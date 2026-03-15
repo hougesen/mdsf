@@ -80,7 +80,7 @@ jobs:
       - uses: astral-sh/setup-uv@v7
         with:
           enable-cache: true
-      - uses: jdx/mise-action@v3
+      - uses: jdx/mise-action@v4
       - name: Install cargo-llvm-cov
         uses: taiki-e/install-action@cargo-llvm-cov
       - run: rustup toolchain install stable
