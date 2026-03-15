@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file. Dates are d
 
 #### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.12.0...HEAD)
 
+- chore: bump @biomejs/biome from 2.4.6 to 2.4.7 in /github-action [`#1582`](https://github.com/hougesen/mdsf/pull/1582)
+- chore: bump @biomejs/biome from 2.4.6 to 2.4.7 in /mdsf-vscode [`#1581`](https://github.com/hougesen/mdsf/pull/1581)
+- chore: bump jdx/mise-action from 3 to 4 [`#1580`](https://github.com/hougesen/mdsf/pull/1580)
+- chore: bump undici from 6.23.0 to 6.24.0 in /github-action in the npm_and_yarn group across 1 directory [`#1579`](https://github.com/hougesen/mdsf/pull/1579)
 - chore: bump @biomejs/biome from 2.4.4 to 2.4.6 in /github-action [`#1565`](https://github.com/hougesen/mdsf/pull/1565)
 - chore: bump @typescript-eslint/eslint-plugin in /mdsf-vscode [`#1567`](https://github.com/hougesen/mdsf/pull/1567)
 - chore: bump @biomejs/biome from 2.4.4 to 2.4.6 in /mdsf-vscode [`#1569`](https://github.com/hougesen/mdsf/pull/1569)
@@ -30,7 +34,6 @@ All notable changes to this project will be documented in this file. Dates are d
 - feat(tools): add support for djangofmt [`#1554`](https://github.com/hougesen/mdsf/pull/1554)
 - feat(tools): add support for panache [`#1553`](https://github.com/hougesen/mdsf/pull/1553)
 - chore: publish to vscode using @vscode/vsce instead of vsce [`#1552`](https://github.com/hougesen/mdsf/pull/1552)
-- chore: bump jdx/mise-action from 3 to 4 [`3c0d406`](https://github.com/hougesen/mdsf/commit/3c0d40675da81a410fceeb1d0670399f70bcc70c)
 
 #### [v0.12.0](https://github.com/hougesen/mdsf/compare/v0.11.1...v0.12.0)
 

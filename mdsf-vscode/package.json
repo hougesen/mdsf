@@ -5,7 +5,7 @@
   "description": "Format markdown code blocks using mdsf",
   "version": "0.12.0-next",
   "engines": {
-    "vscode": "^1.99.0"
+    "vscode": "^1.110.0"
   },
   "categories": [
     "Formatters",
@@ -77,8 +77,8 @@
     "@biomejs/biome": "^2.4.7",
     "@eslint/js": "^10.0.1",
     "@types/mocha": "^10.0.10",
-    "@types/node": "24.x",
-    "@types/vscode": "1.99.0",
+    "@types/node": "^24.12.0",
+    "@types/vscode": "1.110.0",
     "@typescript-eslint/eslint-plugin": "^8.57.0",
     "@typescript-eslint/parser": "^8.57.0",
     "@vscode/test-cli": "^0.0.12",
