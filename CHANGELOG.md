@@ -4,6 +4,20 @@ All notable changes to this project will be documented in this file. Dates are d
 
 #### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.12.0...HEAD)
 
+- chore: bump @biomejs/biome from 2.4.4 to 2.4.6 in /github-action [`#1565`](https://github.com/hougesen/mdsf/pull/1565)
+- chore: bump @typescript-eslint/eslint-plugin in /mdsf-vscode [`#1567`](https://github.com/hougesen/mdsf/pull/1567)
+- chore: bump @biomejs/biome from 2.4.4 to 2.4.6 in /mdsf-vscode [`#1569`](https://github.com/hougesen/mdsf/pull/1569)
+- chore: bump @typescript-eslint/parser in /mdsf-vscode [`#1568`](https://github.com/hougesen/mdsf/pull/1568)
+- chore: bump eslint from 10.0.2 to 10.0.3 in /github-action [`#1566`](https://github.com/hougesen/mdsf/pull/1566)
+- chore: bump eslint from 10.0.2 to 10.0.3 in /mdsf-vscode [`#1570`](https://github.com/hougesen/mdsf/pull/1570)
+- chore: bump clap_complete from 4.5.66 to 4.6.0 [`#1575`](https://github.com/hougesen/mdsf/pull/1575)
+- chore: bump assert_cmd from 2.1.2 to 2.2.0 [`#1571`](https://github.com/hougesen/mdsf/pull/1571)
+- chore: bump tempfile from 3.26.0 to 3.27.0 [`#1572`](https://github.com/hougesen/mdsf/pull/1572)
+- chore: bump clap_complete_nushell from 4.5.10 to 4.6.0 [`#1578`](https://github.com/hougesen/mdsf/pull/1578)
+- chore: bump esbuild from 0.27.3 to 0.27.4 in /mdsf-vscode [`#1574`](https://github.com/hougesen/mdsf/pull/1574)
+- chore: bump clap from 4.5.60 to 4.6.0 [`#1576`](https://github.com/hougesen/mdsf/pull/1576)
+- chore: bump esbuild from 0.27.3 to 0.27.4 in /github-action [`#1577`](https://github.com/hougesen/mdsf/pull/1577)
+- feat(tools): add support for hledger-fmt [`#1573`](https://github.com/hougesen/mdsf/pull/1573)
 - chore: bump julia-actions/cache from 2 to 3 [`#1561`](https://github.com/hougesen/mdsf/pull/1561)
 - chore: bump toml from 1.0.4+spec-1.1.0 to 1.0.6+spec-1.1.0 [`#1563`](https://github.com/hougesen/mdsf/pull/1563)
 - chore: bump which from 8.0.1 to 8.0.2 [`#1562`](https://github.com/hougesen/mdsf/pull/1562)
@@ -16,6 +30,7 @@ All notable changes to this project will be documented in this file. Dates are d
 - feat(tools): add support for djangofmt [`#1554`](https://github.com/hougesen/mdsf/pull/1554)
 - feat(tools): add support for panache [`#1553`](https://github.com/hougesen/mdsf/pull/1553)
 - chore: publish to vscode using @vscode/vsce instead of vsce [`#1552`](https://github.com/hougesen/mdsf/pull/1552)
+- chore: bump jdx/mise-action from 3 to 4 [`3c0d406`](https://github.com/hougesen/mdsf/commit/3c0d40675da81a410fceeb1d0670399f70bcc70c)
 
 #### [v0.12.0](https://github.com/hougesen/mdsf/compare/v0.11.1...v0.12.0)
 
