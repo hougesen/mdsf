@@ -36,7 +36,7 @@ jobs:
       - run: npm run build
         working-directory: ./github-action
       - run: npx prettier@latest --write schemas mdsf.json README.md tools
-      - uses: EndBug/add-and-commit@v9
+      - uses: EndBug/add-and-commit@v10
         with:
           add: schemas mdsf.json README.md tools mdsf/ github-action/dist
           message: "chore: updated generated code"
