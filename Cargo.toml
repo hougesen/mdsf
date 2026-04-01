@@ -41,7 +41,7 @@ test-with = { version = "0.16.0", default-features = false, features = [
   "executable",
 ] }
 threadpool = "1.8.1"
-toml = "1.1.0"
+toml = "1.1.1"
 ureq = "3.3.0"
 which = "8.0.2"
 
