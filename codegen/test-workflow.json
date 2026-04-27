@@ -79,7 +79,7 @@
     { "uses": "julia-actions/cache@v3" },
     { "uses": "cargo-bins/cargo-binstall@main" },
     { "uses": "homebrew/actions/setup-homebrew@main" },
-    { "uses": "leafo/gh-actions-lua@v12" },
+    { "uses": "leafo/gh-actions-lua@v13" },
     { "uses": "leafo/gh-actions-luarocks@v6", "continue-on-error": true },
     { "uses": "dlang-community/setup-dlang@v2" },
     {
