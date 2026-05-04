@@ -1364,3 +1364,4 @@ mdsf was inspired by the amazing neovim formatting plugin [conform.nvim](https:/
 
 - [conform.nvim](https://github.com/stevearc/conform.nvim) using `injected` mode.
 - [mdformat](https://github.com/executablebooks/mdformat).
+Update.
