@@ -43,7 +43,7 @@
     },
     { "uses": "jiro4989/setup-nim-action@v2" },
     { "uses": "mlugg/setup-zig@v2" },
-    { "uses": "uncenter/setup-taplo@v1" },
+    { "uses": "uncenter/setup-taplo@v2" },
     {
       "uses": "actions/setup-go@v6",
       "with": {
