@@ -1,8 +1,6 @@
 use core::hash::{Hash, Hasher};
 use std::hash::DefaultHasher;
 
-use sha2::{Digest, Sha256};
-
 use crate::{config::MdsfConfig, get_project_dir};
 
 pub const CACHE_DIR: &str = "caches/";
@@ -125,11 +123,13 @@ mod test_hash_config {
 
 #[inline]
 pub fn hash_text_block(text: &str) -> String {
-    let mut h = Sha256::new();
+    use sha2::Digest;
 
-    h.update(text);
-
-    format!("{:X}", h.finalize())
+    sha2::Sha256::digest(text)
+        .as_slice()
+        .iter()
+        .map(|value| format!("{value:x}"))
+        .collect::<String>()
 }
 
 #[cfg(test)]
@@ -141,6 +141,11 @@ mod test_hash_text_block {
         assert_eq!(
             hash_text_block("mads was here"),
             hash_text_block("mads was here"),
+        );
+
+        assert_eq!(
+            hash_text_block("mads was here"),
+            "3c90fa2a85f0d72142cea6ea8a5c1f8139e66160cb7737ab2c64e35e9555907d"
         );
     }
 }
