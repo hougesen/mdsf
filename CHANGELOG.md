@@ -4,6 +4,7 @@ All notable changes to this project will be documented in this file. Dates are d
 
 #### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.12.0...HEAD)
 
+- feat(tools): add support for openapi-format [`#1643`](https://github.com/hougesen/mdsf/pull/1643)
 - chore: bump clap_complete from 4.6.3 to 4.6.4 [`#1640`](https://github.com/hougesen/mdsf/pull/1640)
 - chore: bump assert_cmd from 2.2.1 to 2.2.2 [`#1641`](https://github.com/hougesen/mdsf/pull/1641)
 - chore: bump pnpm/action-setup from 5 to 6 [`#1618`](https://github.com/hougesen/mdsf/pull/1618)
@@ -85,6 +86,7 @@ All notable changes to this project will be documented in this file. Dates are d
 - feat(tools): add support for djangofmt [`#1554`](https://github.com/hougesen/mdsf/pull/1554)
 - feat(tools): add support for panache [`#1553`](https://github.com/hougesen/mdsf/pull/1553)
 - chore: publish to vscode using @vscode/vsce instead of vsce [`#1552`](https://github.com/hougesen/mdsf/pull/1552)
+- chore: bump sha2 from 0.10.9 to 0.11.0 [`31034da`](https://github.com/hougesen/mdsf/commit/31034daae9e3746e0bde9d54c8f4b615a3e3e958)
 
 #### [v0.12.0](https://github.com/hougesen/mdsf/compare/v0.11.1...v0.12.0)
 
