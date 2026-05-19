@@ -1374,6 +1374,11 @@
           "const": "opa:fmt"
         },
         {
+          "description": "Format an OpenAPI document by ordering, formatting and filtering fields\n\n[https://github.com/thim81/openapi-format](https://github.com/thim81/openapi-format)\n\n`openapi-format $PATH --output $PATH`",
+          "type": "string",
+          "const": "openapi-format"
+        },
+        {
           "description": "A formatter for Haskell source code\n\n[https://github.com/tweag/ormolu](https://github.com/tweag/ormolu)\n\n`ormolu --mode inplace $PATH`",
           "type": "string",
           "const": "ormolu"

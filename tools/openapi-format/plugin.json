@@ -1,0 +1,19 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "openapi-format",
+  "categories": ["formatter"],
+  "commands": {
+    "": {
+      "arguments": ["$PATH", "--output", "$PATH"],
+      "tests": []
+    }
+  },
+  "description": "Format an OpenAPI document by ordering, formatting and filtering fields",
+  "homepage": "https://github.com/thim81/openapi-format",
+  "languages": ["json", "openapi", "yaml"],
+  "packages": {
+    "npm": {
+      "package": "openapi-format"
+    }
+  }
+}

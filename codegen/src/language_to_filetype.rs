@@ -42,7 +42,7 @@ fn build_mapping(languages: std::collections::HashMap<String, LinguishLanguage>)
 
     let mut test_cases = std::collections::HashSet::new();
 
-    for (language, ext) in primary.into_iter().chain(secondary.into_iter()) {
+    for (language, ext) in primary.into_iter().chain(secondary) {
         test_cases.insert(format!(
             "{WHITESPACE}{WHITESPACE}{WHITESPACE}(\"{language}\", \"{ext}\"),"
         ));

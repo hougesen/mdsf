@@ -234,6 +234,7 @@ pub mod ocp_indent;
 pub mod odinfmt;
 pub mod oelint_adv;
 pub mod opa_fmt;
+pub mod openapi_format;
 pub mod ormolu;
 pub mod oxfmt;
 pub mod oxlint;
@@ -2264,6 +2265,14 @@ pub enum Tooling {
     ///
     /// `opa fmt $PATH -w`
     OpaFmt,
+
+    #[serde(rename = "openapi-format")]
+    /// Format an OpenAPI document by ordering, formatting and filtering fields
+    ///
+    /// [https://github.com/thim81/openapi-format](https://github.com/thim81/openapi-format)
+    ///
+    /// `openapi-format $PATH --output $PATH`
+    OpenapiFormat,
 
     #[serde(rename = "ormolu")]
     /// A formatter for Haskell source code
@@ -4450,6 +4459,11 @@ impl Tooling {
                 oelint_adv::IS_STDIN,
             ),
             Self::OpaFmt => (&opa_fmt::COMMANDS, opa_fmt::set_args, opa_fmt::IS_STDIN),
+            Self::OpenapiFormat => (
+                &openapi_format::COMMANDS,
+                openapi_format::set_args,
+                openapi_format::IS_STDIN,
+            ),
             Self::Ormolu => (&ormolu::COMMANDS, ormolu::set_args, ormolu::IS_STDIN),
             Self::Oxfmt => (&oxfmt::COMMANDS, oxfmt::set_args, oxfmt::IS_STDIN),
             Self::Oxlint => (&oxlint::COMMANDS, oxlint::set_args, oxlint::IS_STDIN),
@@ -5220,6 +5234,7 @@ impl AsRef<str> for Tooling {
             Self::Odinfmt => "odinfmt",
             Self::OelintAdv => "oelint-adv",
             Self::OpaFmt => "opa:fmt",
+            Self::OpenapiFormat => "openapi-format",
             Self::Ormolu => "ormolu",
             Self::Oxfmt => "oxfmt",
             Self::Oxlint => "oxlint",
@@ -5681,6 +5696,7 @@ mod test_tooling {
         assert_eq!(Tooling::Odinfmt, reverse(Tooling::Odinfmt)?);
         assert_eq!(Tooling::OelintAdv, reverse(Tooling::OelintAdv)?);
         assert_eq!(Tooling::OpaFmt, reverse(Tooling::OpaFmt)?);
+        assert_eq!(Tooling::OpenapiFormat, reverse(Tooling::OpenapiFormat)?);
         assert_eq!(Tooling::Ormolu, reverse(Tooling::Ormolu)?);
         assert_eq!(Tooling::Oxfmt, reverse(Tooling::Oxfmt)?);
         assert_eq!(Tooling::Oxlint, reverse(Tooling::Oxlint)?);

@@ -510,7 +510,7 @@ When defining the arguments the variable `$PATH` will automatically be replaced 
 
 <!-- START_SECTION:supported-tools -->
 
-`mdsf` currently supports 347 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 348 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                                                                                 | Description                                                                                                                                                    | Categories            | Languages                                                                                                                         |
 | ------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
@@ -713,6 +713,7 @@ When defining the arguments the variable `$PATH` will automatically be replaced 
 | [odinfmt](https://github.com/danielgavin/ols)                                        | Formatter for the Odin programming language                                                                                                                    | `formatter`           | `odin`                                                                                                                            |
 | [oelint-adv](https://github.com/priv-kweihmann/oelint-adv)                           | Advanced oelint                                                                                                                                                | `linter`              | `bitbake`                                                                                                                         |
 | [opa](https://www.openpolicyagent.org/docs/latest/cli)                               | Format Rego source files                                                                                                                                       | `formatter`           | `rego`                                                                                                                            |
+| [openapi-format](https://github.com/thim81/openapi-format)                           | Format an OpenAPI document by ordering, formatting and filtering fields                                                                                        | `formatter`           | `json`, `openapi`, `yaml`                                                                                                         |
 | [ormolu](https://github.com/tweag/ormolu)                                            | A formatter for Haskell source code                                                                                                                            | `formatter`           | `haskell`                                                                                                                         |
 | [oxfmt](https://oxc.rs/docs/guide/usage/formatter.html)                              | Oxfmt a fast JavaScript/TypeScript formatter written in Rust                                                                                                   | `formatter`           | `javascript`, `typescript`                                                                                                        |
 | [oxlint](https://oxc.rs/docs/guide/usage/linter.html)                                | Oxlint is designed to catch erroneous or useless code without requiring any configurations by default                                                          | `linter`              | `javascript`, `typescript`                                                                                                        |
@@ -868,7 +869,7 @@ When defining the arguments the variable `$PATH` will automatically be replaced 
 
 <!-- START_SECTION:supported-commands -->
 
-`mdsf` currently supports 403 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 404 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                         | Command                                                                                 |
 | ---------------------------- | --------------------------------------------------------------------------------------- |
@@ -1104,6 +1105,7 @@ When defining the arguments the variable `$PATH` will automatically be replaced 
 | `odinfmt`                    | `odinfmt -w $PATH`                                                                      |
 | `oelint-adv`                 | `oelint-adv --fix --nobackup --quiet $PATH`                                             |
 | `opa:fmt`                    | `opa fmt $PATH -w`                                                                      |
+| `openapi-format`             | `openapi-format $PATH --output $PATH`                                                   |
 | `ormolu`                     | `ormolu --mode inplace $PATH`                                                           |
 | `oxfmt`                      | `oxfmt $PATH`                                                                           |
 | `oxlint`                     | `oxlint --fix $PATH`                                                                    |

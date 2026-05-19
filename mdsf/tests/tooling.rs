@@ -1464,50 +1464,6 @@ mod test_blue {
 }
 
 #[cfg(test)]
-mod test_brunette {
-    #[test_with::executable(brunette || uv)]
-    fn test_brunette_python_229ec2b01c2bfe3c() -> Result<(), Box<dyn core::error::Error>> {
-        let input = r#"def add( a: int ,  b:int)->int: return a+b"#;
-
-        let output = r#"def add(a: int, b: int) -> int:
-    return a + b
-"#;
-
-        let ft = "python";
-
-        crate::common::run_tooling_test(
-            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::Brunette),
-            input,
-            output,
-            ft,
-        )
-    }
-
-    #[test_with::executable(brunette)]
-    fn test_custom_tool_brunette_python_229ec2b01c2bfe3c() -> Result<(), Box<dyn core::error::Error>>
-    {
-        let input = r#"def add( a: int ,  b:int)->int: return a+b"#;
-
-        let output = r#"def add(a: int, b: int) -> int:
-    return a + b
-"#;
-
-        let ft = "python";
-
-        crate::common::run_tooling_test(
-            mdsf::config::MdsfTool::Custom(mdsf::custom::CustomTool {
-                binary: "brunette".to_owned(),
-                arguments: vec!["--quiet".to_owned(), "$PATH".to_owned()],
-                stdin: false,
-            }),
-            input,
-            output,
-            ft,
-        )
-    }
-}
-
-#[cfg(test)]
 mod test_buf_format {
     #[test_with::executable(buf || bunx || deno || npx || pnpm || yarn)]
     fn test_buf_format_protobuf_10af516c8a015ab5() -> Result<(), Box<dyn core::error::Error>> {
@@ -7130,46 +7086,6 @@ mod test_oxfmt {
             mdsf::config::MdsfTool::Custom(mdsf::custom::CustomTool {
                 binary: "oxfmt".to_owned(),
                 arguments: vec!["$PATH".to_owned()],
-                stdin: false,
-            }),
-            input,
-            output,
-            ft,
-        )
-    }
-}
-
-#[cfg(test)]
-mod test_oxlint {
-    #[test_with::executable(oxlint || bunx || deno || npx || pnpm || yarn)]
-    fn test_oxlint_typescript_a2154a11ef1c153b() -> Result<(), Box<dyn core::error::Error>> {
-        let input = r#"debugger;"#;
-
-        let output = r#""#;
-
-        let ft = "typescript";
-
-        crate::common::run_tooling_test(
-            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::Oxlint),
-            input,
-            output,
-            ft,
-        )
-    }
-
-    #[test_with::executable(oxlint)]
-    fn test_custom_tool_oxlint_typescript_a2154a11ef1c153b()
-    -> Result<(), Box<dyn core::error::Error>> {
-        let input = r#"debugger;"#;
-
-        let output = r#""#;
-
-        let ft = "typescript";
-
-        crate::common::run_tooling_test(
-            mdsf::config::MdsfTool::Custom(mdsf::custom::CustomTool {
-                binary: "oxlint".to_owned(),
-                arguments: vec!["--fix".to_owned(), "$PATH".to_owned()],
                 stdin: false,
             }),
             input,
