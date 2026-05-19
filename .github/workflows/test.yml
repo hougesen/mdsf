@@ -122,8 +122,6 @@ jobs:
         continue-on-error: true
       - run: which blue || ( which pipx && pipx install blue )
         continue-on-error: true
-      - run: which brunette || ( which pipx && pipx install brunette )
-        continue-on-error: true
       - run: which buf || ( which mise && mise use -g buf )
         continue-on-error: true
       - run: which buf || ( which npm && npm i -g @bufbuild/buf )
@@ -327,10 +325,6 @@ jobs:
       - run: which ormolu || ( which cabal && cabal install ormolu )
         continue-on-error: true
       - run: which oxfmt || ( which npm && npm i -g oxfmt )
-        continue-on-error: true
-      - run: which oxlint || ( which mise && mise use -g oxlint )
-        continue-on-error: true
-      - run: which oxlint || ( which npm && npm i -g oxlint )
         continue-on-error: true
       - run: which perflint || ( which pipx && pipx install perflint )
         continue-on-error: true
