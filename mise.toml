@@ -23,7 +23,6 @@ run = ["cargo run --bin docs"]
 
 [tasks.format]
 run = [
-  "tombi format",
   "taplo format",
   "mise fmt",
   "cargo fmt",

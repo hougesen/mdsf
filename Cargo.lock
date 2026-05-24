@@ -102,9 +102,9 @@ checksum = "f648697f71a7eddd152c1ae26151f580c69635bfcb747574886317877ccf1a5a"
 
 [[package]]
 name = "autocfg"
-version = "1.5.0"
+version = "1.5.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "c08606f8c3cbf4ce6ec8e28fb0014a2c086708fe954eaa885384a6165172e7e8"
+checksum = "f2032f911046de80f0a198e0901378627c33f59ea0ac00e363d481118bd70a53"
 
 [[package]]
 name = "base64"
@@ -379,7 +379,7 @@ dependencies = [
 
 [[package]]
 name = "docs"
-version = "0.12.0-next"
+version = "0.12.1"
 dependencies = [
  "liquid",
  "serde",
@@ -394,9 +394,9 @@ checksum = "d0881ea181b1df73ff77ffaaf9c7544ecc11e82fba9b5f27b262a3c73a332555"
 
 [[package]]
 name = "either"
-version = "1.15.0"
+version = "1.16.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "48c757948c5ede0e46177b7add2e67155f70e33c07fea8284df6576da70b3719"
+checksum = "91622ff5e7162018101f2fea40d6ebf4a78bbe5a49736a2020649edf9693679e"
 
 [[package]]
 name = "env_filter"
@@ -778,7 +778,7 @@ checksum = "5e5032e24019045c762d3c0f28f5b6b8bbf38563a65908389bf7978758920897"
 
 [[package]]
 name = "mdsf"
-version = "0.12.0-next"
+version = "0.12.1"
 dependencies = [
  "assert_cmd",
  "clap",
@@ -808,7 +808,7 @@ dependencies = [
 
 [[package]]
 name = "mdsf-codegen"
-version = "0.12.0-next"
+version = "0.12.1"
 dependencies = [
  "convert_case",
  "ignore",

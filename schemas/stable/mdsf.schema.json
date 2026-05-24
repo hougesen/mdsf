@@ -5,7 +5,7 @@
   "properties": {
     "$schema": {
       "type": "string",
-      "default": "https://raw.githubusercontent.com/hougesen/mdsf/main/schemas/v0.12.0/mdsf.schema.json"
+      "default": "https://raw.githubusercontent.com/hougesen/mdsf/main/schemas/v0.12.1/mdsf.schema.json"
     },
     "custom_file_extensions": {
       "description": "Used for settings custom file extensions for a given language.\n\n```json\n{\n  \"custom_file_extensions\": {\n    \"rust\": \".rust\"\n  }\n}\n```",
@@ -399,6 +399,11 @@
           "const": "buildifier"
         },
         {
+          "description": "A customizable code formatter for the C3 language\n\n[https://github.com/lmichaudel/c3fmt](https://github.com/lmichaudel/c3fmt)\n\n`c3fmt --in-place $PATH`",
+          "type": "string",
+          "const": "c3fmt"
+        },
+        {
           "description": "An experiment of formatting .cabal files\n\n[https://github.com/phadej/cabal-fmt](https://github.com/phadej/cabal-fmt)\n\n`cabal-fmt --inplace $PATH`",
           "type": "string",
           "const": "cabal-fmt"
@@ -607,6 +612,11 @@
           "description": "A Django template formatter\n\n[https://github.com/adamchainz/djade](https://github.com/adamchainz/djade)\n\n`djade $PATH`",
           "type": "string",
           "const": "djade"
+        },
+        {
+          "description": "A fast, HTML aware, Django template formatter\n\n[https://github.com/unknownplatypus/djangofmt](https://github.com/unknownplatypus/djangofmt)\n\n`djangofmt $PATH`",
+          "type": "string",
+          "const": "djangofmt"
         },
         {
           "description": "Lint & Format HTML Templates\n\n[https://www.djlint.com](https://www.djlint.com)\n\n`djlint $PATH --reformat`",
@@ -924,9 +934,19 @@
           "const": "hindent"
         },
         {
+          "description": "Opinionated hledger's journal files formatter\n\n[https://github.com/mondeja/hledger-fmt](https://github.com/mondeja/hledger-fmt)\n\n`hledger-fmt --no-diff --exit-zero-on-changes -`",
+          "type": "string",
+          "const": "hledger-fmt"
+        },
+        {
           "description": "Haskell source code suggestions\n\n[https://github.com/ndmitchell/hlint](https://github.com/ndmitchell/hlint)\n\n`hlint $PATH`",
           "type": "string",
           "const": "hlint"
+        },
+        {
+          "description": "Hongdown is a Markdown formatter that enforces Hong Minhee's Markdown style conventions\n\n[https://github.com/dahlia/hongdown](https://github.com/dahlia/hongdown)\n\n`hongdown -w $PATH`",
+          "type": "string",
+          "const": "hongdown"
         },
         {
           "description": "A html formatter\n\n[https://github.com/beautifier/js-beautify](https://github.com/beautifier/js-beautify)\n\n`html-beautify -r --type html -f $PATH`",
@@ -1354,6 +1374,11 @@
           "const": "opa:fmt"
         },
         {
+          "description": "Format an OpenAPI document by ordering, formatting and filtering fields\n\n[https://github.com/thim81/openapi-format](https://github.com/thim81/openapi-format)\n\n`openapi-format $PATH --output $PATH`",
+          "type": "string",
+          "const": "openapi-format"
+        },
+        {
           "description": "A formatter for Haskell source code\n\n[https://github.com/tweag/ormolu](https://github.com/tweag/ormolu)\n\n`ormolu --mode inplace $PATH`",
           "type": "string",
           "const": "ormolu"
@@ -1382,6 +1407,16 @@
           "description": "Used to validate the syntax and configuration of a template\n\n[https://developer.hashicorp.com/packer/docs/commands](https://developer.hashicorp.com/packer/docs/commands)\n\n`packer validate $PATH`",
           "type": "string",
           "const": "packer:validate"
+        },
+        {
+          "description": "A formatter and linter for Pandoc markdown, Quarto, and RMarkdown\n\n[https://github.com/jolars/panache](https://github.com/jolars/panache)\n\n`panache format $PATH`",
+          "type": "string",
+          "const": "panache:format"
+        },
+        {
+          "description": "A formatter and linter for Pandoc markdown, Quarto, and RMarkdown\n\n[https://github.com/jolars/panache](https://github.com/jolars/panache)\n\n`panache lint $PATH`",
+          "type": "string",
+          "const": "panache:lint"
         },
         {
           "description": "Delphi code formatter\n\n[https://github.com/integrated-application-development/pasfmt](https://github.com/integrated-application-development/pasfmt)\n\n`pasfmt $PATH`",

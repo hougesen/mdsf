@@ -4,6 +4,9 @@ All notable changes to this project will be documented in this file. Dates are d
 
 #### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.12.0...HEAD)
 
+- chore(codecov): setup components [`#1655`](https://github.com/hougesen/mdsf/pull/1655)
+- chore: bump typescript from 5.9.3 to 6.0.3 in /mdsf-vscode [`#1633`](https://github.com/hougesen/mdsf/pull/1633)
+- test(vscode): setup code coverage [`#1654`](https://github.com/hougesen/mdsf/pull/1654)
 - chore: bump serde_json from 1.0.149 to 1.0.150 [`#1653`](https://github.com/hougesen/mdsf/pull/1653)
 - chore: bump eslint from 10.3.0 to 10.4.0 in /mdsf-vscode [`#1652`](https://github.com/hougesen/mdsf/pull/1652)
 - chore: bump @biomejs/biome from 2.4.10 to 2.4.15 in /mdsf-vscode [`#1651`](https://github.com/hougesen/mdsf/pull/1651)
@@ -96,7 +99,6 @@ All notable changes to this project will be documented in this file. Dates are d
 - feat(tools): add support for djangofmt [`#1554`](https://github.com/hougesen/mdsf/pull/1554)
 - feat(tools): add support for panache [`#1553`](https://github.com/hougesen/mdsf/pull/1553)
 - chore: publish to vscode using @vscode/vsce instead of vsce [`#1552`](https://github.com/hougesen/mdsf/pull/1552)
-- test(vscode): setup code coverage [`893ec0c`](https://github.com/hougesen/mdsf/commit/893ec0cf60f1cf953f335293d680a059bf442ffb)
 
 #### [v0.12.0](https://github.com/hougesen/mdsf/compare/v0.11.1...v0.12.0)
 
