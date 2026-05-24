@@ -7,4 +7,25 @@ coverage:
     patch:
       default:
         informational: true
-ignore: [codegen, codegen/]
+component_management:
+  default_rules:
+    statuses:
+      - type: project
+        target: auto
+        branches: ["!main"]
+  individual_components:
+    - component_id: cli
+      name: cli
+      paths: [mdsf/**]
+    - component_id: github-action
+      name: github-action
+      paths: [github-action/**]
+    - component_id: vscode
+      name: vscode
+      paths: [mdsf-vscode/**]
+    - component_id: codegen
+      name: codegen
+      paths: [codegen/**]
+    - component_id: documentation
+      name: documentation
+      paths: [docs/**]
