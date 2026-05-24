@@ -8,8 +8,13 @@ use crate::{actions::workflow::WorkflowJobsPermissions, error::CodegenError, too
 mod packages;
 mod workflow;
 
-#[derive(serde::Deserialize)]
+#[derive(serde::Deserialize, schemars::JsonSchema)]
+#[schemars(deny_unknown_fields)]
 struct BaseSteps {
+    #[serde(rename = "$schema", skip_serializing_if = "Option::is_none")]
+    #[allow(dead_code)]
+    schema: Option<String>,
+
     uses: Vec<WorkflowJobsStep>,
 
     #[serde(rename = "post:uses")]
@@ -28,6 +33,11 @@ fn get_base_steps() -> Result<BaseSteps, CodegenError> {
 }
 
 pub fn generate(plugins: &Vec<Tool>) -> Result<(), CodegenError> {
+    std::fs::write(
+        "./codegen/test-workflow.schema.json",
+        serde_json::to_string_pretty(&schemars::schema_for!(BaseSteps))?,
+    )?;
+
     let mut steps: Vec<workflow::WorkflowJobsStep> = Vec::new();
 
     let mut base_steps = get_base_steps()?;

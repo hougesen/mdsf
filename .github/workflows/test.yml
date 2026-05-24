@@ -541,11 +541,14 @@ jobs:
       - run: hash -r
       - name: Run tests
         run: cargo test
-      - name: Generate code coverage
+      - name: Generate code coverage (CLI)
         run: cargo llvm-cov --all-features --all-targets --workspace --codecov --output-path codecov.json
+      - name: Generate code coverage (VS Code)
+        run: npm install && xvfb-run -a npm run test:coverage
+        working-directory: ./mdsf-vscode
       - name: Upload code coverage
         uses: codecov/codecov-action@v6
         with:
-          files: codecov.json
+          files: codecov.json,mdsf-vscode/coverage/lcov.info
           slug: hougesen/mdsf
           token: ${{ secrets.CODECOV_TOKEN }}

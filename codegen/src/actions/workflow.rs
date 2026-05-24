@@ -1,11 +1,11 @@
-#[derive(serde::Serialize)]
+#[derive(serde::Serialize, schemars::JsonSchema)]
 pub struct WorkflowConcurrency {
     pub group: String,
     #[serde(rename = "cancel-in-progress")]
     pub cancel_in_progress: bool,
 }
 
-#[derive(serde::Serialize)]
+#[derive(serde::Serialize, schemars::JsonSchema)]
 pub struct WorkflowEnv {
     #[serde(rename = "CARGO_TERM_COLOR")]
     pub cargo_term_color: String,
@@ -13,17 +13,17 @@ pub struct WorkflowEnv {
     pub rust_backtrace: String,
 }
 
-#[derive(serde::Serialize)]
+#[derive(serde::Serialize, schemars::JsonSchema)]
 pub struct WorkflowJobsStrategyMatrix {
     pub os: Vec<String>,
 }
 
-#[derive(serde::Serialize)]
+#[derive(serde::Serialize, schemars::JsonSchema)]
 pub struct WorkflowJobsStrategy {
     pub matrix: WorkflowJobsStrategyMatrix,
 }
 
-#[derive(serde::Serialize, serde::Deserialize)]
+#[derive(serde::Serialize, serde::Deserialize, schemars::JsonSchema)]
 pub struct WorkflowJobsStep {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub name: Option<String>,
@@ -37,16 +37,19 @@ pub struct WorkflowJobsStep {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub run: Option<String>,
 
+    #[serde(rename = "working-directory", skip_serializing_if = "Option::is_none")]
+    pub working_directory: Option<String>,
+
     #[serde(rename = "continue-on-error", skip_serializing_if = "Option::is_none")]
     pub continue_on_error: Option<bool>,
 }
 
-#[derive(serde::Serialize)]
+#[derive(serde::Serialize, schemars::JsonSchema)]
 pub struct WorkflowJobsPermissions {
     pub contents: Option<String>,
 }
 
-#[derive(serde::Serialize)]
+#[derive(serde::Serialize, schemars::JsonSchema)]
 pub struct WorkflowJobs {
     pub name: String,
     pub strategy: WorkflowJobsStrategy,
@@ -56,7 +59,7 @@ pub struct WorkflowJobs {
     pub steps: Vec<WorkflowJobsStep>,
 }
 
-#[derive(serde::Serialize)]
+#[derive(serde::Serialize, schemars::JsonSchema)]
 pub struct Workflow {
     pub name: String,
     pub on: Vec<String>,

@@ -96,6 +96,7 @@ All notable changes to this project will be documented in this file. Dates are d
 - feat(tools): add support for djangofmt [`#1554`](https://github.com/hougesen/mdsf/pull/1554)
 - feat(tools): add support for panache [`#1553`](https://github.com/hougesen/mdsf/pull/1553)
 - chore: publish to vscode using @vscode/vsce instead of vsce [`#1552`](https://github.com/hougesen/mdsf/pull/1552)
+- test(vscode): setup code coverage [`893ec0c`](https://github.com/hougesen/mdsf/commit/893ec0cf60f1cf953f335293d680a059bf442ffb)
 
 #### [v0.12.0](https://github.com/hougesen/mdsf/compare/v0.11.1...v0.12.0)
 

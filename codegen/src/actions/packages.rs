@@ -186,11 +186,12 @@ pub fn generate_install_steps(tools: &Vec<Tool>) -> Vec<WorkflowJobsStep> {
                 let run = format!("which {binary_name} || {install_option}");
 
                 steps.push(WorkflowJobsStep {
+                    continue_on_error: Some(true),
                     name: None,
                     run: Some(run),
                     uses: None,
                     with: None,
-                    continue_on_error: Some(true),
+                    working_directory: None,
                 });
             }
         }
