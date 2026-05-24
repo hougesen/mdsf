@@ -81,3 +81,4 @@ jobs:
       - run: npm run lint:biome
       - run: npm run lint:eslint
       - run: npm run compile
+      - run: npm run test

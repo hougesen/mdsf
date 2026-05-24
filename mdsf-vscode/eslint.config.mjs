@@ -41,5 +41,7 @@ export default [
       semi: "warn",
     },
   },
-  { ignores: ["dist", "./dist/*", "out"] },
+  {
+    ignores: ["dist", "./dist/*", "out", ".vscode-test"],
+  },
 ];

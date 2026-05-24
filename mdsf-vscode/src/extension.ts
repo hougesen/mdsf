@@ -8,25 +8,25 @@ const SUPPORTED_DOCUMENT_TYPES = ["markdown"];
 
 const COMMAND_SHOW_TERMINAL_OUTPUT = "mdsf.showTerminalOutput";
 
-enum Status {
+export enum Status {
   Ready = 0,
   Running = 1,
   Error = 2,
 }
 
-class StatusItem implements vscode.Disposable {
-  statusItem!: vscode.LanguageStatusItem;
+export class StatusItem implements vscode.Disposable {
+  languageStatusItem!: vscode.LanguageStatusItem;
 
   constructor() {
-    this.statusItem = vscode.languages.createLanguageStatusItem(
+    this.languageStatusItem = vscode.languages.createLanguageStatusItem(
       "mdsf",
       SUPPORTED_DOCUMENT_TYPES,
     );
 
-    this.statusItem.name = "mdsf";
-    this.statusItem.text = "mdsf";
+    this.languageStatusItem.name = "mdsf";
+    this.languageStatusItem.text = "mdsf";
 
-    this.statusItem.command = {
+    this.languageStatusItem.command = {
       title: "Show mdsf output",
       command: COMMAND_SHOW_TERMINAL_OUTPUT,
     };
@@ -34,34 +34,39 @@ class StatusItem implements vscode.Disposable {
     this.setFormattingStatus(Status.Ready);
   }
 
-  setFormattingStatus(state: Status) {
+  setFormattingStatus(state: Status): void {
     switch (state) {
       case Status.Running: {
-        this.statusItem.detail = "Running mdsf";
-        this.statusItem.severity = vscode.LanguageStatusSeverity.Information;
+        this.languageStatusItem.detail = "Running mdsf";
+        this.languageStatusItem.severity =
+          vscode.LanguageStatusSeverity.Information;
         break;
       }
 
       case Status.Ready: {
-        this.statusItem.detail = "Ready to format";
-        this.statusItem.severity = vscode.LanguageStatusSeverity.Information;
+        this.languageStatusItem.detail = "Ready to format";
+        this.languageStatusItem.severity =
+          vscode.LanguageStatusSeverity.Information;
         break;
       }
 
       case Status.Error: {
-        this.statusItem.detail = "Failed to format file";
-        this.statusItem.severity = vscode.LanguageStatusSeverity.Error;
+        this.languageStatusItem.detail = "Failed to format file";
+        this.languageStatusItem.severity = vscode.LanguageStatusSeverity.Error;
         break;
       }
     }
   }
 
-  dispose() {
-    this.statusItem.dispose();
+  dispose(): void {
+    this.languageStatusItem.dispose();
   }
 }
 
-async function formatFile(filePath: string, cwd?: string | URL | undefined) {
+async function formatFile(
+  filePath: string,
+  cwd?: string | URL | undefined,
+): Promise<string> {
   return new Promise<string>((resolve, reject) => {
     const p = spawn("mdsf", ["format", filePath], { cwd });
 
@@ -87,7 +92,7 @@ async function formatFile(filePath: string, cwd?: string | URL | undefined) {
   });
 }
 
-export function activate(context: vscode.ExtensionContext) {
+export function activate(context: vscode.ExtensionContext): void {
   console.log("mdsf activated");
 
   const statusItem = new StatusItem();
