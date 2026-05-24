@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "BaseSteps",
+  "type": "object",
+  "properties": {
+    "$schema": {
+      "type": ["string", "null"]
+    },
+    "post:packages": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/WorkflowJobsStep"
+      }
+    },
+    "post:uses": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/WorkflowJobsStep"
+      }
+    },
+    "uses": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/WorkflowJobsStep"
+      }
+    }
+  },
+  "additionalProperties": false,
+  "required": ["uses", "post:uses", "post:packages"],
+  "$defs": {
+    "WorkflowJobsStep": {
+      "type": "object",
+      "properties": {
+        "continue-on-error": {
+          "type": ["boolean", "null"]
+        },
+        "name": {
+          "type": ["string", "null"]
+        },
+        "run": {
+          "type": ["string", "null"]
+        },
+        "uses": {
+          "type": ["string", "null"]
+        },
+        "with": {
+          "type": ["object", "null"],
+          "additionalProperties": true
+        },
+        "working-directory": {
+          "type": ["string", "null"]
+        }
+      }
+    }
+  }
+}

@@ -4,6 +4,16 @@ All notable changes to this project will be documented in this file. Dates are d
 
 #### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.12.0...HEAD)
 
+- chore: bump serde_json from 1.0.149 to 1.0.150 [`#1653`](https://github.com/hougesen/mdsf/pull/1653)
+- chore: bump eslint from 10.3.0 to 10.4.0 in /mdsf-vscode [`#1652`](https://github.com/hougesen/mdsf/pull/1652)
+- chore: bump @biomejs/biome from 2.4.10 to 2.4.15 in /mdsf-vscode [`#1651`](https://github.com/hougesen/mdsf/pull/1651)
+- chore: bump eslint from 10.3.0 to 10.4.0 in /github-action [`#1648`](https://github.com/hougesen/mdsf/pull/1648)
+- chore: bump clap_complete from 4.6.4 to 4.6.5 [`#1642`](https://github.com/hougesen/mdsf/pull/1642)
+- chore: bump @typescript-eslint/eslint-plugin in /mdsf-vscode [`#1645`](https://github.com/hougesen/mdsf/pull/1645)
+- chore: bump globals from 17.4.0 to 17.6.0 in /mdsf-vscode [`#1650`](https://github.com/hougesen/mdsf/pull/1650)
+- chore: bump @biomejs/biome from 2.4.13 to 2.4.15 in /github-action [`#1646`](https://github.com/hougesen/mdsf/pull/1646)
+- chore: bump globals from 17.5.0 to 17.6.0 in /github-action [`#1644`](https://github.com/hougesen/mdsf/pull/1644)
+- chore: bump sha2 from 0.10.9 to 0.11.0 [`#1607`](https://github.com/hougesen/mdsf/pull/1607)
 - feat(tools): add support for openapi-format [`#1643`](https://github.com/hougesen/mdsf/pull/1643)
 - chore: bump clap_complete from 4.6.3 to 4.6.4 [`#1640`](https://github.com/hougesen/mdsf/pull/1640)
 - chore: bump assert_cmd from 2.2.1 to 2.2.2 [`#1641`](https://github.com/hougesen/mdsf/pull/1641)
@@ -86,7 +96,7 @@ All notable changes to this project will be documented in this file. Dates are d
 - feat(tools): add support for djangofmt [`#1554`](https://github.com/hougesen/mdsf/pull/1554)
 - feat(tools): add support for panache [`#1553`](https://github.com/hougesen/mdsf/pull/1553)
 - chore: publish to vscode using @vscode/vsce instead of vsce [`#1552`](https://github.com/hougesen/mdsf/pull/1552)
-- chore: bump sha2 from 0.10.9 to 0.11.0 [`31034da`](https://github.com/hougesen/mdsf/commit/31034daae9e3746e0bde9d54c8f4b615a3e3e958)
+- test(vscode): setup code coverage [`893ec0c`](https://github.com/hougesen/mdsf/commit/893ec0cf60f1cf953f335293d680a059bf442ffb)
 
 #### [v0.12.0](https://github.com/hougesen/mdsf/compare/v0.11.1...v0.12.0)
 
