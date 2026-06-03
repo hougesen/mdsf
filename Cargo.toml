@@ -24,7 +24,7 @@ env_logger = "0.11.10"
 ignore = "0.4.25"
 json5 = "1.3.1"
 liquid = "0.26.11"
-log = "0.4.29"
+log = "0.4.30"
 mdsf = { path = "./mdsf", features = ["json-schema"] }
 owo-colors = { version = "4.3.0", features = ["supports-colors"] }
 predicates = "3.1.4"
