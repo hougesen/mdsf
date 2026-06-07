@@ -547,7 +547,7 @@ jobs:
         run: npm install && xvfb-run -a npm run test:coverage
         working-directory: ./mdsf-vscode
       - name: Upload code coverage
-        uses: codecov/codecov-action@v6
+        uses: codecov/codecov-action@v7
         with:
           files: codecov.json,mdsf-vscode/coverage/lcov.info
           slug: hougesen/mdsf
