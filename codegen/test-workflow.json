@@ -122,7 +122,7 @@
     },
     {
       "name": "Upload code coverage",
-      "uses": "codecov/codecov-action@v6",
+      "uses": "codecov/codecov-action@v7",
       "with": {
         "files": "codecov.json,mdsf-vscode/coverage/lcov.info",
         "token": "${{ secrets.CODECOV_TOKEN }}",
