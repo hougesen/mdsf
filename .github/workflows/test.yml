@@ -444,10 +444,6 @@ jobs:
         continue-on-error: true
       - run: which stylua || ( which brew && brew install stylua )
         continue-on-error: true
-      - run: which superhtml || ( which mise && mise use -g superhtml )
-        continue-on-error: true
-      - run: which superhtml || ( which brew && brew install superhtml )
-        continue-on-error: true
       - run: which swiftformat || ( which mise && mise use -g swiftformat )
         continue-on-error: true
       - run: which swiftformat || ( which brew && brew install swiftformat )

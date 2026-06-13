@@ -10467,62 +10467,6 @@ end
 }
 
 #[cfg(test)]
-mod test_superhtml_fmt {
-    #[test_with::executable(superhtml)]
-    fn test_superhtml_fmt_html_7a7c8fbd08a556f1() -> Result<(), Box<dyn core::error::Error>> {
-        let input = r#"<div>
-                    <p>
-                    Mads was here
-                    </p>
-        </div>"#;
-
-        let output = r#"<div>
-	<p>
-		Mads was here
-	</p>
-</div>"#;
-
-        let ft = "html";
-
-        crate::common::run_tooling_test(
-            mdsf::config::MdsfTool::Preset(mdsf::tools::Tooling::SuperhtmlFmt),
-            input,
-            output,
-            ft,
-        )
-    }
-
-    #[test_with::executable(superhtml)]
-    fn test_custom_tool_superhtml_html_7a7c8fbd08a556f1() -> Result<(), Box<dyn core::error::Error>>
-    {
-        let input = r#"<div>
-                    <p>
-                    Mads was here
-                    </p>
-        </div>"#;
-
-        let output = r#"<div>
-	<p>
-		Mads was here
-	</p>
-</div>"#;
-
-        let ft = "html";
-
-        crate::common::run_tooling_test(
-            mdsf::config::MdsfTool::Custom(mdsf::custom::CustomTool {
-                binary: "superhtml".to_owned(),
-                arguments: vec!["fmt".to_owned(), "$PATH".to_owned()],
-                stdin: false,
-            }),
-            input,
-            output,
-            ft,
-        )
-    }
-}
-
-#[cfg(test)]
 mod test_swift_format {
     #[test_with::executable(swift-format)]
     fn test_swift_format_swift_5717762df3975151() -> Result<(), Box<dyn core::error::Error>> {

@@ -869,7 +869,7 @@ When defining the arguments the variable `$PATH` will automatically be replaced 
 
 <!-- START_SECTION:supported-commands -->
 
-`mdsf` currently supports 404 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 405 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                         | Command                                                                                 |
 | ---------------------------- | --------------------------------------------------------------------------------------- |
@@ -1210,6 +1210,7 @@ When defining the arguments the variable `$PATH` will automatically be replaced 
 | `stylelint`                  | `stylelint --fix $PATH`                                                                 |
 | `stylish-haskell`            | `stylish-haskell --inplace $PATH`                                                       |
 | `stylua`                     | `stylua --verify $PATH`                                                                 |
+| `superhtml:check`            | `superhtml check $PATH`                                                                 |
 | `superhtml:fmt`              | `superhtml fmt $PATH`                                                                   |
 | `svlint`                     | `svlint $PATH`                                                                          |
 | `swift-format`               | `swift-format --in-place $PATH`                                                         |
