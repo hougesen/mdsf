@@ -339,6 +339,7 @@ pub mod stylefmt;
 pub mod stylelint;
 pub mod stylish_haskell;
 pub mod stylua;
+pub mod superhtml_check;
 pub mod superhtml_fmt;
 pub mod svlint;
 pub mod swift_format;
@@ -3106,6 +3107,14 @@ pub enum Tooling {
     /// `stylua --verify $PATH`
     Stylua,
 
+    #[serde(rename = "superhtml:check")]
+    /// HTML Validator, Formatter, LSP, and Templating Language Library
+    ///
+    /// [https://github.com/kristoff-it/superhtml](https://github.com/kristoff-it/superhtml)
+    ///
+    /// `superhtml check $PATH`
+    SuperhtmlCheck,
+
     #[serde(rename = "superhtml:fmt")]
     /// HTML Validator, Formatter, LSP, and Templating Language Library
     ///
@@ -4800,6 +4809,11 @@ impl Tooling {
                 stylish_haskell::IS_STDIN,
             ),
             Self::Stylua => (&stylua::COMMANDS, stylua::set_args, stylua::IS_STDIN),
+            Self::SuperhtmlCheck => (
+                &superhtml_check::COMMANDS,
+                superhtml_check::set_args,
+                superhtml_check::IS_STDIN,
+            ),
             Self::SuperhtmlFmt => (
                 &superhtml_fmt::COMMANDS,
                 superhtml_fmt::set_args,
@@ -5339,6 +5353,7 @@ impl AsRef<str> for Tooling {
             Self::Stylelint => "stylelint",
             Self::StylishHaskell => "stylish-haskell",
             Self::Stylua => "stylua",
+            Self::SuperhtmlCheck => "superhtml:check",
             Self::SuperhtmlFmt => "superhtml:fmt",
             Self::Svlint => "svlint",
             Self::SwiftFormat => "swift-format",
@@ -5810,6 +5825,7 @@ mod test_tooling {
         assert_eq!(Tooling::Stylelint, reverse(Tooling::Stylelint)?);
         assert_eq!(Tooling::StylishHaskell, reverse(Tooling::StylishHaskell)?);
         assert_eq!(Tooling::Stylua, reverse(Tooling::Stylua)?);
+        assert_eq!(Tooling::SuperhtmlCheck, reverse(Tooling::SuperhtmlCheck)?);
         assert_eq!(Tooling::SuperhtmlFmt, reverse(Tooling::SuperhtmlFmt)?);
         assert_eq!(Tooling::Svlint, reverse(Tooling::Svlint)?);
         assert_eq!(Tooling::SwiftFormat, reverse(Tooling::SwiftFormat)?);

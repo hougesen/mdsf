@@ -4,12 +4,14 @@ All notable changes to this project will be documented in this file. Dates are d
 
 #### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.12.1...HEAD)
 
+- chore: bump codecov/codecov-action from 6 to 7 [`#1668`](https://github.com/hougesen/mdsf/pull/1668)
+- chore: bump @typescript-eslint/eslint-plugin in /mdsf-vscode [`#1660`](https://github.com/hougesen/mdsf/pull/1660)
+- chore: bump log from 0.4.30 to 0.4.32 [`#1666`](https://github.com/hougesen/mdsf/pull/1666)
+- chore: bump eslint from 10.4.0 to 10.4.1 in /github-action [`#1663`](https://github.com/hougesen/mdsf/pull/1663)
 - chore: bump @biomejs/biome from 2.4.15 to 2.4.16 in /mdsf-vscode [`#1662`](https://github.com/hougesen/mdsf/pull/1662)
 - chore: bump @biomejs/biome from 2.4.15 to 2.4.16 in /github-action [`#1664`](https://github.com/hougesen/mdsf/pull/1664)
 - chore: bump eslint from 10.4.0 to 10.4.1 in /mdsf-vscode [`#1659`](https://github.com/hougesen/mdsf/pull/1659)
 - chore: bump log from 0.4.29 to 0.4.30 [`#1657`](https://github.com/hougesen/mdsf/pull/1657)
-- chore: updated generated code [`58d2792`](https://github.com/hougesen/mdsf/commit/58d279269e455a6239246939904c502e52dc110a)
-- chore: bump codecov/codecov-action from 6 to 7 [`e50d85a`](https://github.com/hougesen/mdsf/commit/e50d85ac1160d7b0bf50635cb9fe13eb98ebe02e)
 
 #### [v0.12.1](https://github.com/hougesen/mdsf/compare/v0.12.0...v0.12.1)
 
