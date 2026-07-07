@@ -5,28 +5,28 @@ updates:
     assignees: [hougesen]
     directory: /
     schedule:
-      interval: daily
+      interval: monthly
   - package-ecosystem: cargo
     assignees: [hougesen]
     directory: /mdsf
     schedule:
-      interval: daily
+      interval: monthly
   - package-ecosystem: cargo
     assignees: [hougesen]
     directory: /codegen
     schedule:
-      interval: daily
+      interval: monthly
   - package-ecosystem: cargo
     assignees: [hougesen]
     directory: /docs
     schedule:
-      interval: daily
+      interval: monthly
   - package-ecosystem: github-actions
     assignees: [hougesen]
     directory: /
     exclude-paths: [.github/workflows/release.yml]
     schedule:
-      interval: weekly
+      interval: monthly
   - package-ecosystem: npm
     assignees: [hougesen]
     directory: /mdsf-vscode
