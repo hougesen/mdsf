@@ -106,6 +106,9 @@ pub mod erg_lint;
 pub mod erlfmt;
 pub mod eslint;
 pub mod fantomas;
+pub mod fatou_format;
+pub mod fatou_lint;
+pub mod fatou_lint_fix;
 pub mod fish_indent;
 pub mod fixjson;
 pub mod floskell;
@@ -1242,6 +1245,30 @@ pub enum Tooling {
     ///
     /// `fantomas $PATH`
     Fantomas,
+
+    #[serde(rename = "fatou:format")]
+    /// Julia formatter and linter built in Rust
+    ///
+    /// [https://github.com/jolars/fatou](https://github.com/jolars/fatou)
+    ///
+    /// `fatou format $PATH`
+    FatouFormat,
+
+    #[serde(rename = "fatou:lint")]
+    /// Julia formatter and linter built in Rust
+    ///
+    /// [https://github.com/jolars/fatou](https://github.com/jolars/fatou)
+    ///
+    /// `fatou lint $PATH`
+    FatouLint,
+
+    #[serde(rename = "fatou:lint:fix")]
+    /// Julia formatter and linter built in Rust
+    ///
+    /// [https://github.com/jolars/fatou](https://github.com/jolars/fatou)
+    ///
+    /// `fatou lint --fix $PATH`
+    FatouLintFix,
 
     #[serde(rename = "fish_indent")]
     /// Fish indenter and prettifier
@@ -4032,6 +4059,21 @@ impl Tooling {
             Self::Erlfmt => (&erlfmt::COMMANDS, erlfmt::set_args, erlfmt::IS_STDIN),
             Self::Eslint => (&eslint::COMMANDS, eslint::set_args, eslint::IS_STDIN),
             Self::Fantomas => (&fantomas::COMMANDS, fantomas::set_args, fantomas::IS_STDIN),
+            Self::FatouFormat => (
+                &fatou_format::COMMANDS,
+                fatou_format::set_args,
+                fatou_format::IS_STDIN,
+            ),
+            Self::FatouLint => (
+                &fatou_lint::COMMANDS,
+                fatou_lint::set_args,
+                fatou_lint::IS_STDIN,
+            ),
+            Self::FatouLintFix => (
+                &fatou_lint_fix::COMMANDS,
+                fatou_lint_fix::set_args,
+                fatou_lint_fix::IS_STDIN,
+            ),
             Self::FishIndent => (
                 &fish_indent::COMMANDS,
                 fish_indent::set_args,
@@ -5120,6 +5162,9 @@ impl AsRef<str> for Tooling {
             Self::Erlfmt => "erlfmt",
             Self::Eslint => "eslint",
             Self::Fantomas => "fantomas",
+            Self::FatouFormat => "fatou:format",
+            Self::FatouLint => "fatou:lint",
+            Self::FatouLintFix => "fatou:lint:fix",
             Self::FishIndent => "fish_indent",
             Self::Fixjson => "fixjson",
             Self::Floskell => "floskell",
@@ -5553,6 +5598,9 @@ mod test_tooling {
         assert_eq!(Tooling::Erlfmt, reverse(Tooling::Erlfmt)?);
         assert_eq!(Tooling::Eslint, reverse(Tooling::Eslint)?);
         assert_eq!(Tooling::Fantomas, reverse(Tooling::Fantomas)?);
+        assert_eq!(Tooling::FatouFormat, reverse(Tooling::FatouFormat)?);
+        assert_eq!(Tooling::FatouLint, reverse(Tooling::FatouLint)?);
+        assert_eq!(Tooling::FatouLintFix, reverse(Tooling::FatouLintFix)?);
         assert_eq!(Tooling::FishIndent, reverse(Tooling::FishIndent)?);
         assert_eq!(Tooling::Fixjson, reverse(Tooling::Fixjson)?);
         assert_eq!(Tooling::Floskell, reverse(Tooling::Floskell)?);
