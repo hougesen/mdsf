@@ -510,7 +510,7 @@ When defining the arguments the variable `$PATH` will automatically be replaced 
 
 <!-- START_SECTION:supported-tools -->
 
-`mdsf` currently supports 348 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 349 tools. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                                                                                 | Description                                                                                                                                                    | Categories            | Languages                                                                                                                         |
 | ------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
@@ -606,6 +606,7 @@ When defining the arguments the variable `$PATH` will automatically be replaced 
 | [erlfmt](https://github.com/whatsapp/erlfmt)                                         | An automated code formatter for Erlang                                                                                                                         | `formatter`           | `erlang`                                                                                                                          |
 | [eslint](https://github.com/eslint/eslint)                                           | Find and fix problems in your JavaScript code                                                                                                                  | `linter`              | `javascript`, `typescript`                                                                                                        |
 | [fantomas](https://github.com/fsprojects/fantomas)                                   | FSharp source code formatter                                                                                                                                   | `formatter`           | `f#`                                                                                                                              |
+| [fatou](https://github.com/jolars/fatou)                                             | Julia formatter and linter built in Rust                                                                                                                       | `formatter`, `linter` | `julia`                                                                                                                           |
 | [fish_indent](https://fishshell.com/docs/current/cmds/fish_indent.html)              | Fish indenter and prettifier                                                                                                                                   | `formatter`           | `fish`                                                                                                                            |
 | [fixjson](https://github.com/rhysd/fixjson)                                          | JSON Fixer for Humans using (relaxed) JSON5                                                                                                                    | `formatter`, `linter` | `json5`, `json`                                                                                                                   |
 | [floskell](https://github.com/ennocramer/floskell)                                   | Floskell is a flexible Haskell source code pretty printer                                                                                                      | `formatter`           | `haskell`                                                                                                                         |
@@ -869,7 +870,7 @@ When defining the arguments the variable `$PATH` will automatically be replaced 
 
 <!-- START_SECTION:supported-commands -->
 
-`mdsf` currently supports 405 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
+`mdsf` currently supports 408 commands. Feel free to open an issue/pull-request if your favorite tool/command is missing! 😃
 
 | Name                         | Command                                                                                 |
 | ---------------------------- | --------------------------------------------------------------------------------------- |
@@ -977,6 +978,9 @@ When defining the arguments the variable `$PATH` will automatically be replaced 
 | `erlfmt`                     | `erlfmt -w '$PATH'`                                                                     |
 | `eslint`                     | `eslint --fix $PATH`                                                                    |
 | `fantomas`                   | `fantomas $PATH`                                                                        |
+| `fatou:format`               | `fatou format $PATH`                                                                    |
+| `fatou:lint:fix`             | `fatou lint --fix $PATH`                                                                |
+| `fatou:lint`                 | `fatou lint $PATH`                                                                      |
 | `fish_indent`                | `fish_indent -w $PATH`                                                                  |
 | `fixjson`                    | `fixjson -w $PATH`                                                                      |
 | `floskell`                   | `floskell $PATH`                                                                        |

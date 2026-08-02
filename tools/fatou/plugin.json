@@ -1,0 +1,33 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "fatou",
+  "categories": ["formatter", "linter"],
+  "commands": {
+    "format": {
+      "arguments": ["format", "$PATH"],
+      "tests": []
+    },
+    "lint": {
+      "arguments": ["lint", "$PATH"],
+      "tests": []
+    },
+    "lint:fix": {
+      "arguments": ["lint", "--fix", "$PATH"],
+      "tests": []
+    }
+  },
+  "description": "Julia formatter and linter built in Rust",
+  "homepage": "https://github.com/jolars/fatou",
+  "languages": ["julia"],
+  "packages": {
+    "cargo": {
+      "package": "fatou"
+    },
+    "npm": {
+      "package": "fatou"
+    },
+    "pip": {
+      "package": "fatou"
+    }
+  }
+}

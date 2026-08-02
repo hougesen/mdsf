@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file. Dates are d
 
 #### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.12.1...HEAD)
 
+- chore: bump clap_complete_nushell from 4.6.0 to 4.6.1 [`#1711`](https://github.com/hougesen/mdsf/pull/1711)
+- chore: bump eslint from 10.4.1 to 10.6.0 in /mdsf-vscode [`#1700`](https://github.com/hougesen/mdsf/pull/1700)
+- chore: bump @typescript-eslint/parser in /mdsf-vscode [`#1697`](https://github.com/hougesen/mdsf/pull/1697)
+- chore: bump eslint from 10.4.1 to 10.6.0 in /github-action [`#1691`](https://github.com/hougesen/mdsf/pull/1691)
+- chore: bump globals from 17.6.0 to 17.7.0 in /mdsf-vscode [`#1686`](https://github.com/hougesen/mdsf/pull/1686)
+- chore: change dependabot to monthly [`#1696`](https://github.com/hougesen/mdsf/pull/1696)
 - chore: bump env_logger from 0.11.10 to 0.11.11 [`#1682`](https://github.com/hougesen/mdsf/pull/1682)
 - chore: bump clap_complete from 4.6.5 to 4.6.7 [`#1693`](https://github.com/hougesen/mdsf/pull/1693)
 - chore: bump globals from 17.6.0 to 17.7.0 in /github-action [`#1690`](https://github.com/hougesen/mdsf/pull/1690)

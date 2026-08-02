@@ -734,6 +734,21 @@
           "const": "fantomas"
         },
         {
+          "description": "Julia formatter and linter built in Rust\n\n[https://github.com/jolars/fatou](https://github.com/jolars/fatou)\n\n`fatou format $PATH`",
+          "type": "string",
+          "const": "fatou:format"
+        },
+        {
+          "description": "Julia formatter and linter built in Rust\n\n[https://github.com/jolars/fatou](https://github.com/jolars/fatou)\n\n`fatou lint $PATH`",
+          "type": "string",
+          "const": "fatou:lint"
+        },
+        {
+          "description": "Julia formatter and linter built in Rust\n\n[https://github.com/jolars/fatou](https://github.com/jolars/fatou)\n\n`fatou lint --fix $PATH`",
+          "type": "string",
+          "const": "fatou:lint:fix"
+        },
+        {
           "description": "Fish indenter and prettifier\n\n[https://fishshell.com/docs/current/cmds/fish_indent.html](https://fishshell.com/docs/current/cmds/fish_indent.html)\n\n`fish_indent -w $PATH`",
           "type": "string",
           "const": "fish_indent"
