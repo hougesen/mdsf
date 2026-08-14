@@ -4,6 +4,8 @@ All notable changes to this project will be documented in this file. Dates are d
 
 #### [Unreleased](https://github.com/hougesen/mdsf/compare/v0.12.1...HEAD)
 
+- chore: bump @vscode/test-cli from 0.0.12 to 0.0.15 in /mdsf-vscode [`#1699`](https://github.com/hougesen/mdsf/pull/1699)
+- feat(tools): fatou [`#1720`](https://github.com/hougesen/mdsf/pull/1720)
 - chore: bump clap_complete_nushell from 4.6.0 to 4.6.1 [`#1711`](https://github.com/hougesen/mdsf/pull/1711)
 - chore: bump eslint from 10.4.1 to 10.6.0 in /mdsf-vscode [`#1700`](https://github.com/hougesen/mdsf/pull/1700)
 - chore: bump @typescript-eslint/parser in /mdsf-vscode [`#1697`](https://github.com/hougesen/mdsf/pull/1697)
