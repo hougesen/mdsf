@@ -100,9 +100,9 @@ pub fn format_file(
                 let is_go = language == "go" || language == "golang";
 
                 let (is_snippet, code_snippet, snippet_lines) = if is_go {
-                    parse_go_codeblock(&mut lines)
+                    parse_go_codeblock(&mut lines, &indentation)
                 } else {
-                    parse_generic_codeblock(&mut lines)
+                    parse_generic_codeblock(&mut lines, &indentation)
                 };
 
                 if is_snippet {
