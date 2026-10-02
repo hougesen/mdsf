@@ -32,16 +32,38 @@ pub fn parse_generic_codeblock(lines: &mut Enumerate<Lines>) -> (bool, String, u
 pub fn parse_go_codeblock(lines: &mut Enumerate<Lines>) -> (bool, String, usize) {
     let (is_snippet, mut code_snippet, snippet_lines) = parse_generic_codeblock(lines);
 
-    if is_snippet && !GO_PACKAGE_RE.is_match(&code_snippet) {
+    if is_snippet && !has_go_package(&code_snippet) {
         code_snippet.insert_str(0, GO_TEMPORARY_PACKAGE_NAME);
     }
 
     (is_snippet, code_snippet, snippet_lines)
 }
 
-// TODO: check for multiline comments
 pub static GO_PACKAGE_RE: std::sync::LazyLock<Regex> =
     std::sync::LazyLock::new(|| Regex::new(r"^\s*package\s+\w").unwrap());
+
+/// A Go package clause is the first token of a file that is neither a comment
+/// nor whitespace, so leading comments are skipped before looking for it.
+#[inline]
+pub fn has_go_package(snippet: &str) -> bool {
+    let mut rest = snippet.trim_start();
+
+    loop {
+        if let Some(after) = rest.strip_prefix("//") {
+            rest = after
+                .split_once('\n')
+                .map_or("", |(_, tail)| tail)
+                .trim_start();
+        } else if let Some(after) = rest.strip_prefix("/*") {
+            rest = after
+                .split_once("*/")
+                .map_or("", |(_, tail)| tail)
+                .trim_start();
+        } else {
+            return GO_PACKAGE_RE.is_match(rest);
+        }
+    }
+}
 
 #[inline]
 pub fn remove_go_package(snippet: String) -> String {
@@ -96,6 +118,36 @@ mod test_go_package_re {
             "//\tpackage mdsf",
         ] {
             assert!(!GO_PACKAGE_RE.is_match(s), "'{s}' matched");
+        }
+    }
+}
+
+#[cfg(test)]
+mod test_has_go_package {
+    use crate::parser::has_go_package;
+
+    #[test]
+    fn it_should_match() {
+        for s in [
+            "package mdsf",
+            "// mdsf.go\npackage mdsf",
+            "//go:build integration\n\npackage mdsf",
+            "// mdsf.go\n// second line\npackage mdsf",
+            "/*\nI like my\npackage manager\n*/\npackage mdsf",
+        ] {
+            assert!(has_go_package(s), "'{s}' did not match");
+        }
+    }
+
+    #[test]
+    fn it_should_not_match() {
+        for s in [
+            "const foo = 1",
+            "// package mdsf",
+            "// mdsf.go\nconst foo = 1",
+            "/*\nI like my\npackage manager\n*/\n\nconst foo = 1",
+        ] {
+            assert!(!has_go_package(s), "'{s}' matched");
         }
     }
 }
