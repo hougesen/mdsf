@@ -1,0 +1,32 @@
+{
+  "$schema": "../tool.schema.json",
+  "binary": "shuck",
+  "categories": ["formatter", "linter"],
+  "commands": {
+    "check": {
+      "arguments": ["check", "$FILE"],
+      "description": "Lint file"
+    },
+    "format": {
+      "arguments": ["format", "$FILE"],
+      "description": "Format file"
+    }
+  },
+  "description": "A lightning fast shell linter/formatter with zsh support",
+  "homepage": "https://github.com/ewhauser/shuck",
+  "languages": ["shell", "zsh"],
+  "packages": {
+    "brew": {
+      "package": "ewhauser/tap/shuck-cli"
+    },
+    "cargo": {
+      "package": "shuck-cli"
+    },
+    "pip": {
+      "disable_pipx_run": true,
+      "disable_uv_tool_run": true,
+      "executable": "shuck",
+      "package": "shuck-cli"
+    }
+  }
+}
